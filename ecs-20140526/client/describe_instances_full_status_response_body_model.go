@@ -106,7 +106,12 @@ func (s *DescribeInstancesFullStatusResponseBody) SetTotalCount(v int32) *Descri
 }
 
 func (s *DescribeInstancesFullStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceFullStatusSet != nil {
+		if err := s.InstanceFullStatusSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesFullStatusResponseBodyInstanceFullStatusSet struct {
@@ -131,7 +136,16 @@ func (s *DescribeInstancesFullStatusResponseBodyInstanceFullStatusSet) SetInstan
 }
 
 func (s *DescribeInstancesFullStatusResponseBodyInstanceFullStatusSet) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceFullStatusType != nil {
+		for _, item := range s.InstanceFullStatusType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFullStatusType struct {
@@ -194,7 +208,22 @@ func (s *DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFul
 }
 
 func (s *DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFullStatusType) Validate() error {
-	return dara.Validate(s)
+	if s.HealthStatus != nil {
+		if err := s.HealthStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScheduledSystemEventSet != nil {
+		if err := s.ScheduledSystemEventSet.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Status != nil {
+		if err := s.Status.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFullStatusTypeHealthStatus struct {
@@ -264,7 +293,16 @@ func (s *DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFul
 }
 
 func (s *DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSet) Validate() error {
-	return dara.Validate(s)
+	if s.ScheduledSystemEventType != nil {
+		for _, item := range s.ScheduledSystemEventType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSetScheduledSystemEventType struct {
@@ -413,7 +451,22 @@ func (s *DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFul
 }
 
 func (s *DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSetScheduledSystemEventType) Validate() error {
-	return dara.Validate(s)
+	if s.EventCycleStatus != nil {
+		if err := s.EventCycleStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EventType != nil {
+		if err := s.EventType.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExtendedAttribute != nil {
+		if err := s.ExtendedAttribute.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSetScheduledSystemEventTypeEventCycleStatus struct {
@@ -559,7 +612,12 @@ func (s *DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFul
 }
 
 func (s *DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSetScheduledSystemEventTypeExtendedAttribute) Validate() error {
-	return dara.Validate(s)
+	if s.InactiveDisks != nil {
+		if err := s.InactiveDisks.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSetScheduledSystemEventTypeExtendedAttributeInactiveDisks struct {
@@ -584,7 +642,16 @@ func (s *DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFul
 }
 
 func (s *DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSetScheduledSystemEventTypeExtendedAttributeInactiveDisks) Validate() error {
-	return dara.Validate(s)
+	if s.InactiveDisk != nil {
+		for _, item := range s.InactiveDisk {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesFullStatusResponseBodyInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSetScheduledSystemEventTypeExtendedAttributeInactiveDisksInactiveDisk struct {

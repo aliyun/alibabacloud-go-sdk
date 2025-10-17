@@ -297,7 +297,26 @@ func (s *ModifyInstanceSpecRequest) SetResourceOwnerId(v int64) *ModifyInstanceS
 }
 
 func (s *ModifyInstanceSpecRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SystemDisk != nil {
+		if err := s.SystemDisk.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Temporary != nil {
+		if err := s.Temporary.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Disk != nil {
+		for _, item := range s.Disk {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyInstanceSpecRequestSystemDisk struct {

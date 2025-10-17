@@ -121,7 +121,12 @@ func (s *DescribeCommandsResponseBody) SetTotalCount(v int64) *DescribeCommandsR
 }
 
 func (s *DescribeCommandsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Commands != nil {
+		if err := s.Commands.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCommandsResponseBodyCommands struct {
@@ -146,7 +151,16 @@ func (s *DescribeCommandsResponseBodyCommands) SetCommand(v []*DescribeCommandsR
 }
 
 func (s *DescribeCommandsResponseBodyCommands) Validate() error {
-	return dara.Validate(s)
+	if s.Command != nil {
+		for _, item := range s.Command {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCommandsResponseBodyCommandsCommand struct {
@@ -438,7 +452,22 @@ func (s *DescribeCommandsResponseBodyCommandsCommand) SetWorkingDir(v string) *D
 }
 
 func (s *DescribeCommandsResponseBodyCommandsCommand) Validate() error {
-	return dara.Validate(s)
+	if s.ParameterDefinitions != nil {
+		if err := s.ParameterDefinitions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ParameterNames != nil {
+		if err := s.ParameterNames.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCommandsResponseBodyCommandsCommandParameterDefinitions struct {
@@ -463,7 +492,16 @@ func (s *DescribeCommandsResponseBodyCommandsCommandParameterDefinitions) SetPar
 }
 
 func (s *DescribeCommandsResponseBodyCommandsCommandParameterDefinitions) Validate() error {
-	return dara.Validate(s)
+	if s.ParameterDefinition != nil {
+		for _, item := range s.ParameterDefinition {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCommandsResponseBodyCommandsCommandParameterDefinitionsParameterDefinition struct {
@@ -570,7 +608,12 @@ func (s *DescribeCommandsResponseBodyCommandsCommandParameterDefinitionsParamete
 }
 
 func (s *DescribeCommandsResponseBodyCommandsCommandParameterDefinitionsParameterDefinition) Validate() error {
-	return dara.Validate(s)
+	if s.PossibleValues != nil {
+		if err := s.PossibleValues.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCommandsResponseBodyCommandsCommandParameterDefinitionsParameterDefinitionPossibleValues struct {
@@ -645,7 +688,16 @@ func (s *DescribeCommandsResponseBodyCommandsCommandTags) SetTag(v []*DescribeCo
 }
 
 func (s *DescribeCommandsResponseBodyCommandsCommandTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCommandsResponseBodyCommandsCommandTagsTag struct {

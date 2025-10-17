@@ -297,7 +297,16 @@ func (s *DescribeManagedInstancesRequest) SetTag(v []*DescribeManagedInstancesRe
 }
 
 func (s *DescribeManagedInstancesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeManagedInstancesRequestTag struct {

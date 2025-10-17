@@ -53,7 +53,12 @@ func (s *DeleteSnapshotGroupResponseBody) SetRequestId(v string) *DeleteSnapshot
 }
 
 func (s *DeleteSnapshotGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OperationProgressSet != nil {
+		if err := s.OperationProgressSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteSnapshotGroupResponseBodyOperationProgressSet struct {
@@ -78,7 +83,16 @@ func (s *DeleteSnapshotGroupResponseBodyOperationProgressSet) SetOperationProgre
 }
 
 func (s *DeleteSnapshotGroupResponseBodyOperationProgressSet) Validate() error {
-	return dara.Validate(s)
+	if s.OperationProgress != nil {
+		for _, item := range s.OperationProgress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteSnapshotGroupResponseBodyOperationProgressSetOperationProgress struct {
@@ -153,7 +167,12 @@ func (s *DeleteSnapshotGroupResponseBodyOperationProgressSetOperationProgress) S
 }
 
 func (s *DeleteSnapshotGroupResponseBodyOperationProgressSetOperationProgress) Validate() error {
-	return dara.Validate(s)
+	if s.RelatedItemSet != nil {
+		if err := s.RelatedItemSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteSnapshotGroupResponseBodyOperationProgressSetOperationProgressRelatedItemSet struct {
@@ -178,7 +197,16 @@ func (s *DeleteSnapshotGroupResponseBodyOperationProgressSetOperationProgressRel
 }
 
 func (s *DeleteSnapshotGroupResponseBodyOperationProgressSetOperationProgressRelatedItemSet) Validate() error {
-	return dara.Validate(s)
+	if s.RelatedItem != nil {
+		for _, item := range s.RelatedItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteSnapshotGroupResponseBodyOperationProgressSetOperationProgressRelatedItemSetRelatedItem struct {

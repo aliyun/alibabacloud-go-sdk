@@ -59,5 +59,10 @@ func (s *RedeployInstanceResponse) SetBody(v *RedeployInstanceResponseBody) *Red
 }
 
 func (s *RedeployInstanceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -224,7 +224,12 @@ func (s *StartTerminalSessionRequest) SetUsername(v string) *StartTerminalSessio
 }
 
 func (s *StartTerminalSessionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EncryptionOptions != nil {
+		if err := s.EncryptionOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartTerminalSessionRequestEncryptionOptions struct {

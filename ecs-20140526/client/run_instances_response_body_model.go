@@ -87,7 +87,12 @@ func (s *RunInstancesResponseBody) SetTradePrice(v float32) *RunInstancesRespons
 }
 
 func (s *RunInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceIdSets != nil {
+		if err := s.InstanceIdSets.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunInstancesResponseBodyInstanceIdSets struct {

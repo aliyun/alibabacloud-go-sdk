@@ -182,7 +182,12 @@ func (s *PurchaseElasticityAssuranceRequest) SetStartTime(v string) *PurchaseEla
 }
 
 func (s *PurchaseElasticityAssuranceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PrivatePoolOptions != nil {
+		if err := s.PrivatePoolOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PurchaseElasticityAssuranceRequestPrivatePoolOptions struct {

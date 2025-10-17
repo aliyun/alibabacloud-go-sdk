@@ -72,7 +72,12 @@ func (s *DescribeSnapshotGroupsResponseBody) SetSnapshotGroups(v *DescribeSnapsh
 }
 
 func (s *DescribeSnapshotGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SnapshotGroups != nil {
+		if err := s.SnapshotGroups.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSnapshotGroupsResponseBodySnapshotGroups struct {
@@ -97,7 +102,16 @@ func (s *DescribeSnapshotGroupsResponseBodySnapshotGroups) SetSnapshotGroup(v []
 }
 
 func (s *DescribeSnapshotGroupsResponseBodySnapshotGroups) Validate() error {
-	return dara.Validate(s)
+	if s.SnapshotGroup != nil {
+		for _, item := range s.SnapshotGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroup struct {
@@ -260,7 +274,17 @@ func (s *DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroup) SetTags(
 }
 
 func (s *DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroup) Validate() error {
-	return dara.Validate(s)
+	if s.Snapshots != nil {
+		if err := s.Snapshots.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupSnapshots struct {
@@ -285,7 +309,16 @@ func (s *DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupSnapshots)
 }
 
 func (s *DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupSnapshots) Validate() error {
-	return dara.Validate(s)
+	if s.Snapshot != nil {
+		for _, item := range s.Snapshot {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupSnapshotsSnapshot struct {
@@ -432,7 +465,12 @@ func (s *DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupSnapshotsS
 }
 
 func (s *DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupSnapshotsSnapshot) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupSnapshotsSnapshotTags struct {
@@ -457,7 +495,16 @@ func (s *DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupSnapshotsS
 }
 
 func (s *DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupSnapshotsSnapshotTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupSnapshotsSnapshotTagsTag struct {
@@ -527,7 +574,16 @@ func (s *DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupTags) SetT
 }
 
 func (s *DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupTagsTag struct {

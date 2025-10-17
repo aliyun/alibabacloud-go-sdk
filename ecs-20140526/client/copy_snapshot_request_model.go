@@ -294,7 +294,25 @@ func (s *CopySnapshotRequest) SetTag(v []*CopySnapshotRequestTag) *CopySnapshotR
 }
 
 func (s *CopySnapshotRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Arn != nil {
+		for _, item := range s.Arn {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CopySnapshotRequestArn struct {

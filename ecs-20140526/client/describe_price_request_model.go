@@ -655,7 +655,35 @@ func (s *DescribePriceRequest) SetZoneId(v string) *DescribePriceRequest {
 }
 
 func (s *DescribePriceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DataDisk != nil {
+		for _, item := range s.DataDisk {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SchedulerOptions != nil {
+		if err := s.SchedulerOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SystemDisk != nil {
+		if err := s.SystemDisk.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RecurrenceRules != nil {
+		for _, item := range s.RecurrenceRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePriceRequestDataDisk struct {

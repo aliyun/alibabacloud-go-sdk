@@ -522,7 +522,25 @@ func (s *InvokeCommandRequest) SetWorkingDir(v string) *InvokeCommandRequest {
 }
 
 func (s *InvokeCommandRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceTag != nil {
+		for _, item := range s.ResourceTag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InvokeCommandRequestResourceTag struct {

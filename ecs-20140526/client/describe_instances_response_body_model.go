@@ -123,7 +123,12 @@ func (s *DescribeInstancesResponseBody) SetTotalCount(v int32) *DescribeInstance
 }
 
 func (s *DescribeInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		if err := s.Instances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstances struct {
@@ -148,7 +153,16 @@ func (s *DescribeInstancesResponseBodyInstances) SetInstance(v []*DescribeInstan
 }
 
 func (s *DescribeInstancesResponseBodyInstances) Validate() error {
-	return dara.Validate(s)
+	if s.Instance != nil {
+		for _, item := range s.Instance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstance struct {
@@ -1170,7 +1184,102 @@ func (s *DescribeInstancesResponseBodyInstancesInstance) SetZoneId(v string) *De
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstance) Validate() error {
-	return dara.Validate(s)
+	if s.AdditionalInfo != nil {
+		if err := s.AdditionalInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ClockOptions != nil {
+		if err := s.ClockOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CpuOptions != nil {
+		if err := s.CpuOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DedicatedHostAttribute != nil {
+		if err := s.DedicatedHostAttribute.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DedicatedInstanceAttribute != nil {
+		if err := s.DedicatedInstanceAttribute.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EcsCapacityReservationAttr != nil {
+		if err := s.EcsCapacityReservationAttr.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EipAddress != nil {
+		if err := s.EipAddress.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HibernationOptions != nil {
+		if err := s.HibernationOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageOptions != nil {
+		if err := s.ImageOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InnerIpAddress != nil {
+		if err := s.InnerIpAddress.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MetadataOptions != nil {
+		if err := s.MetadataOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkInterfaces != nil {
+		if err := s.NetworkInterfaces.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OperationLocks != nil {
+		if err := s.OperationLocks.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrivateDnsNameOptions != nil {
+		if err := s.PrivateDnsNameOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PublicIpAddress != nil {
+		if err := s.PublicIpAddress.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RdmaIpAddress != nil {
+		if err := s.RdmaIpAddress.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityGroupIds != nil {
+		if err := s.SecurityGroupIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VpcAttributes != nil {
+		if err := s.VpcAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo struct {
@@ -1789,7 +1898,16 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfaces) SetNet
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfaces) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkInterface != nil {
+		for _, item := range s.NetworkInterface {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterface struct {
@@ -1912,7 +2030,27 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkI
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterface) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv4PrefixSets != nil {
+		if err := s.Ipv4PrefixSets.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Ipv6PrefixSets != nil {
+		if err := s.Ipv6PrefixSets.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Ipv6Sets != nil {
+		if err := s.Ipv6Sets.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrivateIpSets != nil {
+		if err := s.PrivateIpSets.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaceIpv4PrefixSets struct {
@@ -1937,7 +2075,16 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkI
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaceIpv4PrefixSets) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv4PrefixSet != nil {
+		for _, item := range s.Ipv4PrefixSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaceIpv4PrefixSetsIpv4PrefixSet struct {
@@ -1988,7 +2135,16 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkI
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6PrefixSets) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6PrefixSet != nil {
+		for _, item := range s.Ipv6PrefixSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6PrefixSetsIpv6PrefixSet struct {
@@ -2043,7 +2199,16 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkI
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6Sets) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6Set != nil {
+		for _, item := range s.Ipv6Set {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaceIpv6SetsIpv6Set struct {
@@ -2098,7 +2263,16 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkI
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacePrivateIpSets) Validate() error {
-	return dara.Validate(s)
+	if s.PrivateIpSet != nil {
+		for _, item := range s.PrivateIpSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacePrivateIpSetsPrivateIpSet struct {
@@ -2189,7 +2363,16 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceOperationLocks) SetLockRe
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceOperationLocks) Validate() error {
-	return dara.Validate(s)
+	if s.LockReason != nil {
+		for _, item := range s.LockReason {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceOperationLocksLockReason struct {
@@ -2466,7 +2649,16 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceTags) SetTag(v []*Describ
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceTagsTag struct {
@@ -2582,7 +2774,12 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceVpcAttributes) SetVpcId(v
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceVpcAttributes) Validate() error {
-	return dara.Validate(s)
+	if s.PrivateIpAddress != nil {
+		if err := s.PrivateIpAddress.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceVpcAttributesPrivateIpAddress struct {

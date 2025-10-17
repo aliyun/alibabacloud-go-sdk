@@ -140,7 +140,12 @@ func (s *DescribeElasticityAssuranceInstancesRequest) SetResourceOwnerId(v int64
 }
 
 func (s *DescribeElasticityAssuranceInstancesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PrivatePoolOptions != nil {
+		if err := s.PrivatePoolOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeElasticityAssuranceInstancesRequestPrivatePoolOptions struct {

@@ -311,15 +311,13 @@ type DescribeDisksRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Specifies whether the multi-attach feature is enabled for the disk. Valid values:
+	// Specifies whether to enable the multi-attach feature for the disk. Valid values:
 	//
-	// 	- Disabled: The multi-attach feature is not enabled for the disk.
+	// 	- Disabled
 	//
-	// 	- Enabled: The multi-attach feature is enabled for the disk.
+	// 	- Enabled
 	//
 	// 	- LegacyShared: Shared Block Storage devices are queried.
-	//
-	// The multi-attach feature is available to select users. To use this feature, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm#/ticket/list).
 	//
 	// example:
 	//
@@ -736,7 +734,25 @@ func (s *DescribeDisksRequest) SetZoneId(v string) *DescribeDisksRequest {
 }
 
 func (s *DescribeDisksRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		for _, item := range s.Filter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDisksRequestFilter struct {

@@ -53,7 +53,12 @@ func (s *DescribeDedicatedHostAutoRenewResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribeDedicatedHostAutoRenewResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DedicatedHostRenewAttributes != nil {
+		if err := s.DedicatedHostRenewAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDedicatedHostAutoRenewResponseBodyDedicatedHostRenewAttributes struct {
@@ -78,7 +83,16 @@ func (s *DescribeDedicatedHostAutoRenewResponseBodyDedicatedHostRenewAttributes)
 }
 
 func (s *DescribeDedicatedHostAutoRenewResponseBodyDedicatedHostRenewAttributes) Validate() error {
-	return dara.Validate(s)
+	if s.DedicatedHostRenewAttribute != nil {
+		for _, item := range s.DedicatedHostRenewAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDedicatedHostAutoRenewResponseBodyDedicatedHostRenewAttributesDedicatedHostRenewAttribute struct {

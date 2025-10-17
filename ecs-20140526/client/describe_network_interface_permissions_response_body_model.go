@@ -104,7 +104,12 @@ func (s *DescribeNetworkInterfacePermissionsResponseBody) SetTotalCount(v int32)
 }
 
 func (s *DescribeNetworkInterfacePermissionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkInterfacePermissions != nil {
+		if err := s.NetworkInterfacePermissions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkInterfacePermissionsResponseBodyNetworkInterfacePermissions struct {
@@ -129,7 +134,16 @@ func (s *DescribeNetworkInterfacePermissionsResponseBodyNetworkInterfacePermissi
 }
 
 func (s *DescribeNetworkInterfacePermissionsResponseBodyNetworkInterfacePermissions) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkInterfacePermission != nil {
+		for _, item := range s.NetworkInterfacePermission {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkInterfacePermissionsResponseBodyNetworkInterfacePermissionsNetworkInterfacePermission struct {

@@ -59,6 +59,11 @@ func (s *ExportSnapshotResponse) SetBody(v *ExportSnapshotResponseBody) *ExportS
 }
 
 func (s *ExportSnapshotResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

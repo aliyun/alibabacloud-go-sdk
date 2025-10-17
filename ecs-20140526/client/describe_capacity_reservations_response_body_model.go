@@ -104,7 +104,12 @@ func (s *DescribeCapacityReservationsResponseBody) SetTotalCount(v int32) *Descr
 }
 
 func (s *DescribeCapacityReservationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CapacityReservationSet != nil {
+		if err := s.CapacityReservationSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCapacityReservationsResponseBodyCapacityReservationSet struct {
@@ -129,7 +134,16 @@ func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSet) SetCapa
 }
 
 func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSet) Validate() error {
-	return dara.Validate(s)
+	if s.CapacityReservationItem != nil {
+		for _, item := range s.CapacityReservationItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem struct {
@@ -451,7 +465,17 @@ func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityR
 }
 
 func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem) Validate() error {
-	return dara.Validate(s)
+	if s.AllocatedResources != nil {
+		if err := s.AllocatedResources.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemAllocatedResources struct {
@@ -476,7 +500,16 @@ func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityR
 }
 
 func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemAllocatedResources) Validate() error {
-	return dara.Validate(s)
+	if s.AllocatedResource != nil {
+		for _, item := range s.AllocatedResource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource struct {
@@ -577,7 +610,12 @@ func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityR
 }
 
 func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource) Validate() error {
-	return dara.Validate(s)
+	if s.CapacityReservationUsages != nil {
+		if err := s.CapacityReservationUsages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResourceCapacityReservationUsages struct {
@@ -602,7 +640,16 @@ func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityR
 }
 
 func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResourceCapacityReservationUsages) Validate() error {
-	return dara.Validate(s)
+	if s.CapacityReservationUsage != nil {
+		for _, item := range s.CapacityReservationUsage {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResourceCapacityReservationUsagesCapacityReservationUsage struct {
@@ -687,7 +734,16 @@ func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityR
 }
 
 func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemTagsTag struct {

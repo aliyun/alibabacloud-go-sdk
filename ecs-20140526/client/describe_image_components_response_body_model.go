@@ -104,7 +104,12 @@ func (s *DescribeImageComponentsResponseBody) SetTotalCount(v int32) *DescribeIm
 }
 
 func (s *DescribeImageComponentsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ImageComponent != nil {
+		if err := s.ImageComponent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImageComponentsResponseBodyImageComponent struct {
@@ -129,7 +134,16 @@ func (s *DescribeImageComponentsResponseBodyImageComponent) SetImageComponentSet
 }
 
 func (s *DescribeImageComponentsResponseBodyImageComponent) Validate() error {
-	return dara.Validate(s)
+	if s.ImageComponentSet != nil {
+		for _, item := range s.ImageComponentSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageComponentsResponseBodyImageComponentImageComponentSet struct {
@@ -320,7 +334,17 @@ func (s *DescribeImageComponentsResponseBodyImageComponentImageComponentSet) Set
 }
 
 func (s *DescribeImageComponentsResponseBodyImageComponentImageComponentSet) Validate() error {
-	return dara.Validate(s)
+	if s.Parameters != nil {
+		if err := s.Parameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImageComponentsResponseBodyImageComponentImageComponentSetParameters struct {
@@ -345,7 +369,16 @@ func (s *DescribeImageComponentsResponseBodyImageComponentImageComponentSetParam
 }
 
 func (s *DescribeImageComponentsResponseBodyImageComponentImageComponentSetParameters) Validate() error {
-	return dara.Validate(s)
+	if s.Parameter != nil {
+		for _, item := range s.Parameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageComponentsResponseBodyImageComponentImageComponentSetParametersParameter struct {
@@ -438,7 +471,16 @@ func (s *DescribeImageComponentsResponseBodyImageComponentImageComponentSetTags)
 }
 
 func (s *DescribeImageComponentsResponseBodyImageComponentImageComponentSetTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageComponentsResponseBodyImageComponentImageComponentSetTagsTag struct {

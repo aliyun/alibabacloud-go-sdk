@@ -261,7 +261,12 @@ func (s *ModifyImageAttributeRequest) SetStatus(v string) *ModifyImageAttributeR
 }
 
 func (s *ModifyImageAttributeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Features != nil {
+		if err := s.Features.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyImageAttributeRequestFeatures struct {

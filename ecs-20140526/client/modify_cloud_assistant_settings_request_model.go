@@ -167,7 +167,27 @@ func (s *ModifyCloudAssistantSettingsRequest) SetSlsDeliveryConfig(v *ModifyClou
 }
 
 func (s *ModifyCloudAssistantSettingsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AgentUpgradeConfig != nil {
+		if err := s.AgentUpgradeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OssDeliveryConfig != nil {
+		if err := s.OssDeliveryConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SessionManagerConfig != nil {
+		if err := s.SessionManagerConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SlsDeliveryConfig != nil {
+		if err := s.SlsDeliveryConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyCloudAssistantSettingsRequestAgentUpgradeConfig struct {

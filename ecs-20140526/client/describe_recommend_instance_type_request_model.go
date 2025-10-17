@@ -60,13 +60,13 @@ type DescribeRecommendInstanceTypeRequest struct {
 	//
 	// 2
 	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	// The billing method of ECS instances. For more information, see [Billing overview](https://help.aliyun.com/document_detail/25398.html). Valid values:
+	// The billing method of the ECS instance. For more information, see [Billing overview](https://help.aliyun.com/document_detail/25398.html). Valid values:
 	//
-	// 	- PrePaid: subscription
+	// 	- PrePaid: subscription.
 	//
 	// 	- PostPaid: pay-as-you-go
 	//
-	// Default value: PostPaid.
+	// Default value: PostPaid
 	//
 	// example:
 	//
@@ -144,13 +144,13 @@ type DescribeRecommendInstanceTypeRequest struct {
 	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The policy that is used to recommend instance types. Valid values:
+	// The policy for recommending instance types. Valid values:
 	//
 	// 	- InventoryFirst: recommends instance types in descending order of resource availability.
 	//
 	// 	- PriceFirst: recommends the most cost-effective instance types. Recommended instance types appear based on the hourly prices of vCPUs in ascending order.
 	//
-	// 	- NewProductFirst: recommends the latest instance types.
+	// 	- NewProductFirst: recommends the latest instance types first.
 	//
 	// Default value: InventoryFirst.
 	//
@@ -168,7 +168,7 @@ type DescribeRecommendInstanceTypeRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The scenario in which instance types are recommended. Valid values:
+	// Specifies the scenarios in which instance types are recommended. Valid values:
 	//
 	// 	- UPGRADE: instance type upgrade or downgrade
 	//
@@ -180,13 +180,13 @@ type DescribeRecommendInstanceTypeRequest struct {
 	//
 	// CREATE
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	// The bidding policy of spot instances. Valid values:
+	// The bidding policy of the spot instance. Valid values:
 	//
-	// 	- NoSpot: The instances are regular pay-as-you-go instances.
+	// 	- NoSpot: The instance is created as a pay-as-you-go instance.
 	//
-	// 	- SpotWithPriceLimit: The instances are created as spot instances for which you can specify the maximum hourly price.
+	// 	- SpotWithPriceLimit: The instance is a spot instance that has a user-defined maximum hourly price.
 	//
-	// 	- SpotAsPriceGo: The instances are spot instances for which the market price at the time of purchase is automatically used as the bid price. The market price can be up to the pay-as-you-go price.
+	// 	- SpotAsPriceGo: The instance is a spot instance for which the market price at the time of purchase is automatically used as the bid price. The market price can be up to the pay-as-you-go price.
 	//
 	// >  If you specify `SpotStrategy`, you must set `InstanceChargeType` to `PostPaid`.
 	//

@@ -186,7 +186,25 @@ func (s *ModifyPortRangeListRequest) SetResourceOwnerId(v int64) *ModifyPortRang
 }
 
 func (s *ModifyPortRangeListRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AddEntry != nil {
+		for _, item := range s.AddEntry {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RemoveEntry != nil {
+		for _, item := range s.RemoveEntry {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyPortRangeListRequestAddEntry struct {

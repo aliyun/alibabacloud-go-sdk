@@ -121,7 +121,12 @@ func (s *DescribeDedicatedHostsResponseBody) SetTotalCount(v int32) *DescribeDed
 }
 
 func (s *DescribeDedicatedHostsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DedicatedHosts != nil {
+		if err := s.DedicatedHosts.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDedicatedHostsResponseBodyDedicatedHosts struct {
@@ -146,7 +151,16 @@ func (s *DescribeDedicatedHostsResponseBodyDedicatedHosts) SetDedicatedHost(v []
 }
 
 func (s *DescribeDedicatedHostsResponseBodyDedicatedHosts) Validate() error {
-	return dara.Validate(s)
+	if s.DedicatedHost != nil {
+		for _, item := range s.DedicatedHost {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHost struct {
@@ -637,7 +651,57 @@ func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHost) SetZoneI
 }
 
 func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHost) Validate() error {
-	return dara.Validate(s)
+	if s.SchedulerOptions != nil {
+		if err := s.SchedulerOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Capacity != nil {
+		if err := s.Capacity.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HostDetailInfo != nil {
+		if err := s.HostDetailInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Instances != nil {
+		if err := s.Instances.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkAttributes != nil {
+		if err := s.NetworkAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OperationLocks != nil {
+		if err := s.OperationLocks.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SupportedCustomInstanceTypeFamilies != nil {
+		if err := s.SupportedCustomInstanceTypeFamilies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SupportedInstanceTypeFamilies != nil {
+		if err := s.SupportedInstanceTypeFamilies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SupportedInstanceTypesList != nil {
+		if err := s.SupportedInstanceTypesList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostSchedulerOptions struct {
@@ -833,7 +897,17 @@ func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostCapacity) 
 }
 
 func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostCapacity) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableInstanceTypes != nil {
+		if err := s.AvailableInstanceTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SocketCapacities != nil {
+		if err := s.SocketCapacities.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostCapacityAvailableInstanceTypes struct {
@@ -858,7 +932,16 @@ func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostCapacityAv
 }
 
 func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostCapacityAvailableInstanceTypes) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableInstanceType != nil {
+		for _, item := range s.AvailableInstanceType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostCapacityAvailableInstanceTypesAvailableInstanceType struct {
@@ -918,7 +1001,16 @@ func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostCapacitySo
 }
 
 func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostCapacitySocketCapacities) Validate() error {
-	return dara.Validate(s)
+	if s.SocketCapacity != nil {
+		for _, item := range s.SocketCapacity {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostCapacitySocketCapacitiesSocketCapacity struct {
@@ -1063,7 +1155,16 @@ func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostInstances)
 }
 
 func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostInstances) Validate() error {
-	return dara.Validate(s)
+	if s.Instance != nil {
+		for _, item := range s.Instance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostInstancesInstance struct {
@@ -1208,7 +1309,16 @@ func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostOperationL
 }
 
 func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostOperationLocks) Validate() error {
-	return dara.Validate(s)
+	if s.OperationLock != nil {
+		for _, item := range s.OperationLock {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostOperationLocksOperationLock struct {
@@ -1342,7 +1452,16 @@ func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostTags) SetT
 }
 
 func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostTagsTag struct {

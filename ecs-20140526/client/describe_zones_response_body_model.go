@@ -53,7 +53,12 @@ func (s *DescribeZonesResponseBody) SetZones(v *DescribeZonesResponseBodyZones) 
 }
 
 func (s *DescribeZonesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Zones != nil {
+		if err := s.Zones.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeZonesResponseBodyZones struct {
@@ -78,7 +83,16 @@ func (s *DescribeZonesResponseBodyZones) SetZone(v []*DescribeZonesResponseBodyZ
 }
 
 func (s *DescribeZonesResponseBodyZones) Validate() error {
-	return dara.Validate(s)
+	if s.Zone != nil {
+		for _, item := range s.Zone {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeZonesResponseBodyZonesZone struct {
@@ -237,7 +251,42 @@ func (s *DescribeZonesResponseBodyZonesZone) SetZoneType(v string) *DescribeZone
 }
 
 func (s *DescribeZonesResponseBodyZonesZone) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableDedicatedHostTypes != nil {
+		if err := s.AvailableDedicatedHostTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AvailableDiskCategories != nil {
+		if err := s.AvailableDiskCategories.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AvailableInstanceTypes != nil {
+		if err := s.AvailableInstanceTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AvailableResourceCreation != nil {
+		if err := s.AvailableResourceCreation.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AvailableResources != nil {
+		if err := s.AvailableResources.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AvailableVolumeCategories != nil {
+		if err := s.AvailableVolumeCategories.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DedicatedHostGenerations != nil {
+		if err := s.DedicatedHostGenerations.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeZonesResponseBodyZonesZoneAvailableDedicatedHostTypes struct {
@@ -362,7 +411,16 @@ func (s *DescribeZonesResponseBodyZonesZoneAvailableResources) SetResourcesInfo(
 }
 
 func (s *DescribeZonesResponseBodyZonesZoneAvailableResources) Validate() error {
-	return dara.Validate(s)
+	if s.ResourcesInfo != nil {
+		for _, item := range s.ResourcesInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeZonesResponseBodyZonesZoneAvailableResourcesResourcesInfo struct {
@@ -458,7 +516,37 @@ func (s *DescribeZonesResponseBodyZonesZoneAvailableResourcesResourcesInfo) SetS
 }
 
 func (s *DescribeZonesResponseBodyZonesZoneAvailableResourcesResourcesInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DataDiskCategories != nil {
+		if err := s.DataDiskCategories.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceGenerations != nil {
+		if err := s.InstanceGenerations.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceTypeFamilies != nil {
+		if err := s.InstanceTypeFamilies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceTypes != nil {
+		if err := s.InstanceTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkTypes != nil {
+		if err := s.NetworkTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SystemDiskCategories != nil {
+		if err := s.SystemDiskCategories.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeZonesResponseBodyZonesZoneAvailableResourcesResourcesInfoDataDiskCategories struct {

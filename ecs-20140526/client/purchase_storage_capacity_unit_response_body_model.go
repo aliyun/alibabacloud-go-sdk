@@ -70,7 +70,12 @@ func (s *PurchaseStorageCapacityUnitResponseBody) SetStorageCapacityUnitIds(v *P
 }
 
 func (s *PurchaseStorageCapacityUnitResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StorageCapacityUnitIds != nil {
+		if err := s.StorageCapacityUnitIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PurchaseStorageCapacityUnitResponseBodyStorageCapacityUnitIds struct {

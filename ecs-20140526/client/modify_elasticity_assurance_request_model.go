@@ -168,7 +168,21 @@ func (s *ModifyElasticityAssuranceRequest) SetResourceOwnerId(v int64) *ModifyEl
 }
 
 func (s *ModifyElasticityAssuranceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PrivatePoolOptions != nil {
+		if err := s.PrivatePoolOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RecurrenceRules != nil {
+		for _, item := range s.RecurrenceRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyElasticityAssuranceRequestPrivatePoolOptions struct {

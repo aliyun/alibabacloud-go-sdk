@@ -59,5 +59,10 @@ func (s *ModifySnapshotCategoryResponse) SetBody(v *ModifySnapshotCategoryRespon
 }
 
 func (s *ModifySnapshotCategoryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

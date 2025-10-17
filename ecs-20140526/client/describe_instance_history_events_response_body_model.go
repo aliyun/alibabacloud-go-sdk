@@ -137,7 +137,12 @@ func (s *DescribeInstanceHistoryEventsResponseBody) SetTotalCount(v int32) *Desc
 }
 
 func (s *DescribeInstanceHistoryEventsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceSystemEventSet != nil {
+		if err := s.InstanceSystemEventSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSet struct {
@@ -162,7 +167,16 @@ func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSet) SetIns
 }
 
 func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSet) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceSystemEventType != nil {
+		for _, item := range s.InstanceSystemEventType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventType struct {
@@ -351,7 +365,22 @@ func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstance
 }
 
 func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventType) Validate() error {
-	return dara.Validate(s)
+	if s.EventCycleStatus != nil {
+		if err := s.EventCycleStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EventType != nil {
+		if err := s.EventType.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExtendedAttribute != nil {
+		if err := s.ExtendedAttribute.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeEventCycleStatus struct {
@@ -686,7 +715,17 @@ func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstance
 }
 
 func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttribute) Validate() error {
-	return dara.Validate(s)
+	if s.InactiveDisks != nil {
+		if err := s.InactiveDisks.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MigrationOptions != nil {
+		if err := s.MigrationOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttributeInactiveDisks struct {
@@ -711,7 +750,16 @@ func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstance
 }
 
 func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttributeInactiveDisks) Validate() error {
-	return dara.Validate(s)
+	if s.InactiveDisk != nil {
+		for _, item := range s.InactiveDisk {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttributeInactiveDisksInactiveDisk struct {

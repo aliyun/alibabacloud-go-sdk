@@ -53,7 +53,12 @@ func (s *StopInstancesResponseBody) SetRequestId(v string) *StopInstancesRespons
 }
 
 func (s *StopInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceResponses != nil {
+		if err := s.InstanceResponses.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StopInstancesResponseBodyInstanceResponses struct {
@@ -78,7 +83,16 @@ func (s *StopInstancesResponseBodyInstanceResponses) SetInstanceResponse(v []*St
 }
 
 func (s *StopInstancesResponseBodyInstanceResponses) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceResponse != nil {
+		for _, item := range s.InstanceResponse {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StopInstancesResponseBodyInstanceResponsesInstanceResponse struct {

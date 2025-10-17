@@ -216,7 +216,16 @@ func (s *DescribeEipAddressesRequest) SetStatus(v string) *DescribeEipAddressesR
 }
 
 func (s *DescribeEipAddressesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		for _, item := range s.Filter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEipAddressesRequestFilter struct {

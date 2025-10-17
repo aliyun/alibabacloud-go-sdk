@@ -239,7 +239,12 @@ func (s *ModifyDedicatedHostAttributeRequest) SetResourceOwnerId(v int64) *Modif
 }
 
 func (s *ModifyDedicatedHostAttributeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkAttributes != nil {
+		if err := s.NetworkAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyDedicatedHostAttributeRequestNetworkAttributes struct {

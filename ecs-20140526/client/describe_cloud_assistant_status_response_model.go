@@ -59,5 +59,10 @@ func (s *DescribeCloudAssistantStatusResponse) SetBody(v *DescribeCloudAssistant
 }
 
 func (s *DescribeCloudAssistantStatusResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

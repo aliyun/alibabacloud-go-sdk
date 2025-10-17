@@ -104,7 +104,12 @@ func (s *DescribeInstanceAttachmentAttributesResponseBody) SetTotalCount(v int32
 }
 
 func (s *DescribeInstanceAttachmentAttributesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		if err := s.Instances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceAttachmentAttributesResponseBodyInstances struct {
@@ -129,7 +134,16 @@ func (s *DescribeInstanceAttachmentAttributesResponseBodyInstances) SetInstance(
 }
 
 func (s *DescribeInstanceAttachmentAttributesResponseBodyInstances) Validate() error {
-	return dara.Validate(s)
+	if s.Instance != nil {
+		for _, item := range s.Instance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceAttachmentAttributesResponseBodyInstancesInstance struct {

@@ -53,7 +53,12 @@ func (s *DescribeReservedInstanceAutoRenewAttributeResponseBody) SetReservedInst
 }
 
 func (s *DescribeReservedInstanceAutoRenewAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ReservedInstanceRenewAttributes != nil {
+		if err := s.ReservedInstanceRenewAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeReservedInstanceAutoRenewAttributeResponseBodyReservedInstanceRenewAttributes struct {
@@ -78,7 +83,16 @@ func (s *DescribeReservedInstanceAutoRenewAttributeResponseBodyReservedInstanceR
 }
 
 func (s *DescribeReservedInstanceAutoRenewAttributeResponseBodyReservedInstanceRenewAttributes) Validate() error {
-	return dara.Validate(s)
+	if s.ReservedInstanceRenewAttribute != nil {
+		for _, item := range s.ReservedInstanceRenewAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeReservedInstanceAutoRenewAttributeResponseBodyReservedInstanceRenewAttributesReservedInstanceRenewAttribute struct {

@@ -53,7 +53,12 @@ func (s *CreateNetworkInterfacePermissionResponseBody) SetRequestId(v string) *C
 }
 
 func (s *CreateNetworkInterfacePermissionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkInterfacePermission != nil {
+		if err := s.NetworkInterfacePermission.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateNetworkInterfacePermissionResponseBodyNetworkInterfacePermission struct {

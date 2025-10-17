@@ -53,7 +53,12 @@ func (s *DescribeSecurityGroupReferencesResponseBody) SetSecurityGroupReferences
 }
 
 func (s *DescribeSecurityGroupReferencesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityGroupReferences != nil {
+		if err := s.SecurityGroupReferences.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityGroupReferencesResponseBodySecurityGroupReferences struct {
@@ -78,7 +83,16 @@ func (s *DescribeSecurityGroupReferencesResponseBodySecurityGroupReferences) Set
 }
 
 func (s *DescribeSecurityGroupReferencesResponseBodySecurityGroupReferences) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityGroupReference != nil {
+		for _, item := range s.SecurityGroupReference {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityGroupReferencesResponseBodySecurityGroupReferencesSecurityGroupReference struct {
@@ -119,7 +133,12 @@ func (s *DescribeSecurityGroupReferencesResponseBodySecurityGroupReferencesSecur
 }
 
 func (s *DescribeSecurityGroupReferencesResponseBodySecurityGroupReferencesSecurityGroupReference) Validate() error {
-	return dara.Validate(s)
+	if s.ReferencingSecurityGroups != nil {
+		if err := s.ReferencingSecurityGroups.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityGroupReferencesResponseBodySecurityGroupReferencesSecurityGroupReferenceReferencingSecurityGroups struct {
@@ -144,7 +163,16 @@ func (s *DescribeSecurityGroupReferencesResponseBodySecurityGroupReferencesSecur
 }
 
 func (s *DescribeSecurityGroupReferencesResponseBodySecurityGroupReferencesSecurityGroupReferenceReferencingSecurityGroups) Validate() error {
-	return dara.Validate(s)
+	if s.ReferencingSecurityGroup != nil {
+		for _, item := range s.ReferencingSecurityGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityGroupReferencesResponseBodySecurityGroupReferencesSecurityGroupReferenceReferencingSecurityGroupsReferencingSecurityGroup struct {

@@ -70,7 +70,12 @@ func (s *DescribeDiskMonitorDataResponseBody) SetTotalCount(v int32) *DescribeDi
 }
 
 func (s *DescribeDiskMonitorDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorData != nil {
+		if err := s.MonitorData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDiskMonitorDataResponseBodyMonitorData struct {
@@ -95,7 +100,16 @@ func (s *DescribeDiskMonitorDataResponseBodyMonitorData) SetDiskMonitorData(v []
 }
 
 func (s *DescribeDiskMonitorDataResponseBodyMonitorData) Validate() error {
-	return dara.Validate(s)
+	if s.DiskMonitorData != nil {
+		for _, item := range s.DiskMonitorData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDiskMonitorDataResponseBodyMonitorDataDiskMonitorData struct {

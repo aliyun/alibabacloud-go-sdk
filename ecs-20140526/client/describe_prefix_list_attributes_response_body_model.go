@@ -159,7 +159,12 @@ func (s *DescribePrefixListAttributesResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribePrefixListAttributesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Entries != nil {
+		if err := s.Entries.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePrefixListAttributesResponseBodyEntries struct {
@@ -184,7 +189,16 @@ func (s *DescribePrefixListAttributesResponseBodyEntries) SetEntry(v []*Describe
 }
 
 func (s *DescribePrefixListAttributesResponseBodyEntries) Validate() error {
-	return dara.Validate(s)
+	if s.Entry != nil {
+		for _, item := range s.Entry {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePrefixListAttributesResponseBodyEntriesEntry struct {

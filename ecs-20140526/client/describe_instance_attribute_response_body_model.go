@@ -644,7 +644,47 @@ func (s *DescribeInstanceAttributeResponseBody) SetZoneId(v string) *DescribeIns
 }
 
 func (s *DescribeInstanceAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DedicatedHostAttribute != nil {
+		if err := s.DedicatedHostAttribute.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EipAddress != nil {
+		if err := s.EipAddress.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InnerIpAddress != nil {
+		if err := s.InnerIpAddress.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkOptions != nil {
+		if err := s.NetworkOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OperationLocks != nil {
+		if err := s.OperationLocks.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PublicIpAddress != nil {
+		if err := s.PublicIpAddress.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityGroupIds != nil {
+		if err := s.SecurityGroupIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VpcAttributes != nil {
+		if err := s.VpcAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceAttributeResponseBodyDedicatedHostAttribute struct {
@@ -871,7 +911,16 @@ func (s *DescribeInstanceAttributeResponseBodyOperationLocks) SetLockReason(v []
 }
 
 func (s *DescribeInstanceAttributeResponseBodyOperationLocks) Validate() error {
-	return dara.Validate(s)
+	if s.LockReason != nil {
+		for _, item := range s.LockReason {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceAttributeResponseBodyOperationLocksLockReason struct {
@@ -1032,7 +1081,12 @@ func (s *DescribeInstanceAttributeResponseBodyVpcAttributes) SetVpcId(v string) 
 }
 
 func (s *DescribeInstanceAttributeResponseBodyVpcAttributes) Validate() error {
-	return dara.Validate(s)
+	if s.PrivateIpAddress != nil {
+		if err := s.PrivateIpAddress.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceAttributeResponseBodyVpcAttributesPrivateIpAddress struct {

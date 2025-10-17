@@ -47,7 +47,12 @@ func (s *DescribeNewProjectEipMonitorDataResponseBody) SetRequestId(v string) *D
 }
 
 func (s *DescribeNewProjectEipMonitorDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EipMonitorDatas != nil {
+		if err := s.EipMonitorDatas.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNewProjectEipMonitorDataResponseBodyEipMonitorDatas struct {
@@ -72,7 +77,16 @@ func (s *DescribeNewProjectEipMonitorDataResponseBodyEipMonitorDatas) SetEipMoni
 }
 
 func (s *DescribeNewProjectEipMonitorDataResponseBodyEipMonitorDatas) Validate() error {
-	return dara.Validate(s)
+	if s.EipMonitorData != nil {
+		for _, item := range s.EipMonitorData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNewProjectEipMonitorDataResponseBodyEipMonitorDatasEipMonitorData struct {

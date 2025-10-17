@@ -59,5 +59,10 @@ func (s *ModifyImageShareGroupPermissionResponse) SetBody(v *ModifyImageShareGro
 }
 
 func (s *ModifyImageShareGroupPermissionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

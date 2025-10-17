@@ -104,7 +104,12 @@ func (s *DescribeLaunchTemplatesResponseBody) SetTotalCount(v int32) *DescribeLa
 }
 
 func (s *DescribeLaunchTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LaunchTemplateSets != nil {
+		if err := s.LaunchTemplateSets.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLaunchTemplatesResponseBodyLaunchTemplateSets struct {
@@ -129,7 +134,16 @@ func (s *DescribeLaunchTemplatesResponseBodyLaunchTemplateSets) SetLaunchTemplat
 }
 
 func (s *DescribeLaunchTemplatesResponseBodyLaunchTemplateSets) Validate() error {
-	return dara.Validate(s)
+	if s.LaunchTemplateSet != nil {
+		for _, item := range s.LaunchTemplateSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLaunchTemplatesResponseBodyLaunchTemplateSetsLaunchTemplateSet struct {
@@ -281,7 +295,12 @@ func (s *DescribeLaunchTemplatesResponseBodyLaunchTemplateSetsLaunchTemplateSet)
 }
 
 func (s *DescribeLaunchTemplatesResponseBodyLaunchTemplateSetsLaunchTemplateSet) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLaunchTemplatesResponseBodyLaunchTemplateSetsLaunchTemplateSetTags struct {
@@ -306,7 +325,16 @@ func (s *DescribeLaunchTemplatesResponseBodyLaunchTemplateSetsLaunchTemplateSetT
 }
 
 func (s *DescribeLaunchTemplatesResponseBodyLaunchTemplateSetsLaunchTemplateSetTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLaunchTemplatesResponseBodyLaunchTemplateSetsLaunchTemplateSetTagsTag struct {

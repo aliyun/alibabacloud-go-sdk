@@ -285,7 +285,21 @@ func (s *DescribeDisksFullStatusRequest) SetTag(v []*DescribeDisksFullStatusRequ
 }
 
 func (s *DescribeDisksFullStatusRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EventTime != nil {
+		if err := s.EventTime.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDisksFullStatusRequestEventTime struct {

@@ -104,7 +104,12 @@ func (s *DescribeHpcClustersResponseBody) SetTotalCount(v int32) *DescribeHpcClu
 }
 
 func (s *DescribeHpcClustersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HpcClusters != nil {
+		if err := s.HpcClusters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHpcClustersResponseBodyHpcClusters struct {
@@ -129,7 +134,16 @@ func (s *DescribeHpcClustersResponseBodyHpcClusters) SetHpcCluster(v []*Describe
 }
 
 func (s *DescribeHpcClustersResponseBodyHpcClusters) Validate() error {
-	return dara.Validate(s)
+	if s.HpcCluster != nil {
+		for _, item := range s.HpcCluster {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHpcClustersResponseBodyHpcClustersHpcCluster struct {

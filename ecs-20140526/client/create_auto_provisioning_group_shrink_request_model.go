@@ -651,7 +651,53 @@ func (s *CreateAutoProvisioningGroupShrinkRequest) SetValidUntil(v string) *Crea
 }
 
 func (s *CreateAutoProvisioningGroupShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.LaunchConfiguration != nil {
+		if err := s.LaunchConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataDiskConfig != nil {
+		for _, item := range s.DataDiskConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LaunchTemplateConfig != nil {
+		for _, item := range s.LaunchTemplateConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PrePaidOptions != nil {
+		if err := s.PrePaidOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SystemDiskConfig != nil {
+		for _, item := range s.SystemDiskConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAutoProvisioningGroupShrinkRequestLaunchConfiguration struct {
@@ -1394,7 +1440,54 @@ func (s *CreateAutoProvisioningGroupShrinkRequestLaunchConfiguration) SetSpotInt
 }
 
 func (s *CreateAutoProvisioningGroupShrinkRequestLaunchConfiguration) Validate() error {
-	return dara.Validate(s)
+	if s.Arn != nil {
+		for _, item := range s.Arn {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DataDisk != nil {
+		for _, item := range s.DataDisk {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SystemDisk != nil {
+		if err := s.SystemDisk.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.CpuOptions != nil {
+		if err := s.CpuOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageOptions != nil {
+		if err := s.ImageOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SchedulerOptions != nil {
+		if err := s.SchedulerOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationArn struct {
@@ -2333,7 +2426,16 @@ func (s *CreateAutoProvisioningGroupShrinkRequestPrePaidOptions) SetSpecifyCapac
 }
 
 func (s *CreateAutoProvisioningGroupShrinkRequestPrePaidOptions) Validate() error {
-	return dara.Validate(s)
+	if s.SpecifyCapacityDistribution != nil {
+		for _, item := range s.SpecifyCapacityDistribution {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAutoProvisioningGroupShrinkRequestPrePaidOptionsSpecifyCapacityDistribution struct {

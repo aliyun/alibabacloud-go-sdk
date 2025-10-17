@@ -53,7 +53,12 @@ func (s *DescribeInstanceTopologyResponseBody) SetTopologys(v *DescribeInstanceT
 }
 
 func (s *DescribeInstanceTopologyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Topologys != nil {
+		if err := s.Topologys.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceTopologyResponseBodyTopologys struct {
@@ -78,7 +83,16 @@ func (s *DescribeInstanceTopologyResponseBodyTopologys) SetTopology(v []*Describ
 }
 
 func (s *DescribeInstanceTopologyResponseBodyTopologys) Validate() error {
-	return dara.Validate(s)
+	if s.Topology != nil {
+		for _, item := range s.Topology {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceTopologyResponseBodyTopologysTopology struct {

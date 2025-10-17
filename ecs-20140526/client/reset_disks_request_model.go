@@ -128,7 +128,16 @@ func (s *ResetDisksRequest) SetResourceOwnerId(v int64) *ResetDisksRequest {
 }
 
 func (s *ResetDisksRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Disk != nil {
+		for _, item := range s.Disk {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ResetDisksRequestDisk struct {

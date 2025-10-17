@@ -47,7 +47,12 @@ func (s *DescribeClustersResponseBody) SetRequestId(v string) *DescribeClustersR
 }
 
 func (s *DescribeClustersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Clusters != nil {
+		if err := s.Clusters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClustersResponseBodyClusters struct {
@@ -72,7 +77,16 @@ func (s *DescribeClustersResponseBodyClusters) SetCluster(v []*DescribeClustersR
 }
 
 func (s *DescribeClustersResponseBodyClusters) Validate() error {
-	return dara.Validate(s)
+	if s.Cluster != nil {
+		for _, item := range s.Cluster {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClustersResponseBodyClustersCluster struct {

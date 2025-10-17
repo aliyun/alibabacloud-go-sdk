@@ -59,5 +59,10 @@ func (s *DeleteRouteEntryResponse) SetBody(v *DeleteRouteEntryResponseBody) *Del
 }
 
 func (s *DeleteRouteEntryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *CreateActivationResponse) SetBody(v *CreateActivationResponseBody) *Cre
 }
 
 func (s *CreateActivationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

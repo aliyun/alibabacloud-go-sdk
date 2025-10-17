@@ -104,7 +104,12 @@ func (s *AttachKeyPairResponseBody) SetTotalCount(v string) *AttachKeyPairRespon
 }
 
 func (s *AttachKeyPairResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		if err := s.Results.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AttachKeyPairResponseBodyResults struct {
@@ -129,7 +134,16 @@ func (s *AttachKeyPairResponseBodyResults) SetResult(v []*AttachKeyPairResponseB
 }
 
 func (s *AttachKeyPairResponseBodyResults) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AttachKeyPairResponseBodyResultsResult struct {

@@ -104,7 +104,12 @@ func (s *DescribeInstanceMaintenanceAttributesResponseBody) SetTotalCount(v int3
 }
 
 func (s *DescribeInstanceMaintenanceAttributesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MaintenanceAttributes != nil {
+		if err := s.MaintenanceAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceMaintenanceAttributesResponseBodyMaintenanceAttributes struct {
@@ -129,7 +134,16 @@ func (s *DescribeInstanceMaintenanceAttributesResponseBodyMaintenanceAttributes)
 }
 
 func (s *DescribeInstanceMaintenanceAttributesResponseBodyMaintenanceAttributes) Validate() error {
-	return dara.Validate(s)
+	if s.MaintenanceAttribute != nil {
+		for _, item := range s.MaintenanceAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceMaintenanceAttributesResponseBodyMaintenanceAttributesMaintenanceAttribute struct {
@@ -196,7 +210,17 @@ func (s *DescribeInstanceMaintenanceAttributesResponseBodyMaintenanceAttributesM
 }
 
 func (s *DescribeInstanceMaintenanceAttributesResponseBodyMaintenanceAttributesMaintenanceAttribute) Validate() error {
-	return dara.Validate(s)
+	if s.ActionOnMaintenance != nil {
+		if err := s.ActionOnMaintenance.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MaintenanceWindows != nil {
+		if err := s.MaintenanceWindows.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceMaintenanceAttributesResponseBodyMaintenanceAttributesMaintenanceAttributeActionOnMaintenance struct {
@@ -258,7 +282,12 @@ func (s *DescribeInstanceMaintenanceAttributesResponseBodyMaintenanceAttributesM
 }
 
 func (s *DescribeInstanceMaintenanceAttributesResponseBodyMaintenanceAttributesMaintenanceAttributeActionOnMaintenance) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedValues != nil {
+		if err := s.SupportedValues.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceMaintenanceAttributesResponseBodyMaintenanceAttributesMaintenanceAttributeActionOnMaintenanceSupportedValues struct {
@@ -308,7 +337,16 @@ func (s *DescribeInstanceMaintenanceAttributesResponseBodyMaintenanceAttributesM
 }
 
 func (s *DescribeInstanceMaintenanceAttributesResponseBodyMaintenanceAttributesMaintenanceAttributeMaintenanceWindows) Validate() error {
-	return dara.Validate(s)
+	if s.MaintenanceWindow != nil {
+		for _, item := range s.MaintenanceWindow {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceMaintenanceAttributesResponseBodyMaintenanceAttributesMaintenanceAttributeMaintenanceWindowsMaintenanceWindow struct {

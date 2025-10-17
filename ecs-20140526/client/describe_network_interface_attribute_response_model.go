@@ -59,5 +59,10 @@ func (s *DescribeNetworkInterfaceAttributeResponse) SetBody(v *DescribeNetworkIn
 }
 
 func (s *DescribeNetworkInterfaceAttributeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

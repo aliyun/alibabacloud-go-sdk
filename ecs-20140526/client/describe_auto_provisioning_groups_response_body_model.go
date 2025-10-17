@@ -104,7 +104,12 @@ func (s *DescribeAutoProvisioningGroupsResponseBody) SetTotalCount(v int32) *Des
 }
 
 func (s *DescribeAutoProvisioningGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AutoProvisioningGroups != nil {
+		if err := s.AutoProvisioningGroups.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroups struct {
@@ -129,7 +134,16 @@ func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroups) SetAu
 }
 
 func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroups) Validate() error {
-	return dara.Validate(s)
+	if s.AutoProvisioningGroup != nil {
+		for _, item := range s.AutoProvisioningGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroup struct {
@@ -477,7 +491,32 @@ func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoPro
 }
 
 func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroup) Validate() error {
-	return dara.Validate(s)
+	if s.LaunchTemplateConfigs != nil {
+		if err := s.LaunchTemplateConfigs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PayAsYouGoOptions != nil {
+		if err := s.PayAsYouGoOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SpotOptions != nil {
+		if err := s.SpotOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TargetCapacitySpecification != nil {
+		if err := s.TargetCapacitySpecification.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupLaunchTemplateConfigs struct {
@@ -502,7 +541,16 @@ func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoPro
 }
 
 func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupLaunchTemplateConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.LaunchTemplateConfig != nil {
+		for _, item := range s.LaunchTemplateConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupLaunchTemplateConfigsLaunchTemplateConfig struct {
@@ -723,7 +771,16 @@ func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoPro
 }
 
 func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupTagsTag struct {

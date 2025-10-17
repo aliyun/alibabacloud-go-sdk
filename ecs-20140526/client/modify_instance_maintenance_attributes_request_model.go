@@ -166,7 +166,16 @@ func (s *ModifyInstanceMaintenanceAttributesRequest) SetResourceOwnerId(v int64)
 }
 
 func (s *ModifyInstanceMaintenanceAttributesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.MaintenanceWindow != nil {
+		for _, item := range s.MaintenanceWindow {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyInstanceMaintenanceAttributesRequestMaintenanceWindow struct {

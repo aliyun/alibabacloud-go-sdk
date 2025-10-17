@@ -53,7 +53,12 @@ func (s *ModifyReservedInstancesResponseBody) SetReservedInstanceIdSets(v *Modif
 }
 
 func (s *ModifyReservedInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ReservedInstanceIdSets != nil {
+		if err := s.ReservedInstanceIdSets.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyReservedInstancesResponseBodyReservedInstanceIdSets struct {

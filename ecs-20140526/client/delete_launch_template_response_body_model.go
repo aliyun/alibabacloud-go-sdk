@@ -72,7 +72,12 @@ func (s *DeleteLaunchTemplateResponseBody) SetRequestId(v string) *DeleteLaunchT
 }
 
 func (s *DeleteLaunchTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LaunchTemplateVersionNumbers != nil {
+		if err := s.LaunchTemplateVersionNumbers.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteLaunchTemplateResponseBodyLaunchTemplateVersionNumbers struct {

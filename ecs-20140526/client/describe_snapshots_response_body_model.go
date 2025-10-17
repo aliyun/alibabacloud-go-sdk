@@ -50,7 +50,9 @@ type DescribeSnapshotsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Details about the snapshots.
 	Snapshots *DescribeSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
-	// The total number of snapshots returned.
+	// The total number of snapshots.
+	//
+	// > When using the `MaxResults` and `NextToken` parameters for a paginated query, the returned `TotalCount` parameter value is invalid.
 	//
 	// example:
 	//
@@ -121,7 +123,12 @@ func (s *DescribeSnapshotsResponseBody) SetTotalCount(v int32) *DescribeSnapshot
 }
 
 func (s *DescribeSnapshotsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Snapshots != nil {
+		if err := s.Snapshots.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSnapshotsResponseBodySnapshots struct {
@@ -146,7 +153,16 @@ func (s *DescribeSnapshotsResponseBodySnapshots) SetSnapshot(v []*DescribeSnapsh
 }
 
 func (s *DescribeSnapshotsResponseBodySnapshots) Validate() error {
-	return dara.Validate(s)
+	if s.Snapshot != nil {
+		for _, item := range s.Snapshot {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSnapshotsResponseBodySnapshotsSnapshot struct {
@@ -642,7 +658,12 @@ func (s *DescribeSnapshotsResponseBodySnapshotsSnapshot) SetUsage(v string) *Des
 }
 
 func (s *DescribeSnapshotsResponseBodySnapshotsSnapshot) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSnapshotsResponseBodySnapshotsSnapshotTags struct {
@@ -667,7 +688,16 @@ func (s *DescribeSnapshotsResponseBodySnapshotsSnapshotTags) SetTag(v []*Describ
 }
 
 func (s *DescribeSnapshotsResponseBodySnapshotsSnapshotTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSnapshotsResponseBodySnapshotsSnapshotTagsTag struct {

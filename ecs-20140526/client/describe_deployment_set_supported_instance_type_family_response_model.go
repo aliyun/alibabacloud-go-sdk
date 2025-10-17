@@ -59,5 +59,10 @@ func (s *DescribeDeploymentSetSupportedInstanceTypeFamilyResponse) SetBody(v *De
 }
 
 func (s *DescribeDeploymentSetSupportedInstanceTypeFamilyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

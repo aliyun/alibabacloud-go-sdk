@@ -83,7 +83,17 @@ func (s *AssignIpv6AddressesResponseBody) SetRequestId(v string) *AssignIpv6Addr
 }
 
 func (s *AssignIpv6AddressesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6PrefixSets != nil {
+		if err := s.Ipv6PrefixSets.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Ipv6Sets != nil {
+		if err := s.Ipv6Sets.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AssignIpv6AddressesResponseBodyIpv6PrefixSets struct {

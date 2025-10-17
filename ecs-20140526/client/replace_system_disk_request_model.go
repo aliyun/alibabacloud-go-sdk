@@ -368,7 +368,21 @@ func (s *ReplaceSystemDiskRequest) SetUseAdditionalService(v bool) *ReplaceSyste
 }
 
 func (s *ReplaceSystemDiskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SystemDisk != nil {
+		if err := s.SystemDisk.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Arn != nil {
+		for _, item := range s.Arn {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ReplaceSystemDiskRequestSystemDisk struct {

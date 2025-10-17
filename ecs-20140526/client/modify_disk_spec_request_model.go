@@ -224,7 +224,12 @@ func (s *ModifyDiskSpecRequest) SetResourceOwnerId(v int64) *ModifyDiskSpecReque
 }
 
 func (s *ModifyDiskSpecRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PerformanceControlOptions != nil {
+		if err := s.PerformanceControlOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyDiskSpecRequestPerformanceControlOptions struct {

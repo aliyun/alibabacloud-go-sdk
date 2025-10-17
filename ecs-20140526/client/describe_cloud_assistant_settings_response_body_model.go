@@ -92,7 +92,27 @@ func (s *DescribeCloudAssistantSettingsResponseBody) SetSlsDeliveryConfigs(v *De
 }
 
 func (s *DescribeCloudAssistantSettingsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AgentUpgradeConfig != nil {
+		if err := s.AgentUpgradeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OssDeliveryConfigs != nil {
+		if err := s.OssDeliveryConfigs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SessionManagerConfig != nil {
+		if err := s.SessionManagerConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SlsDeliveryConfigs != nil {
+		if err := s.SlsDeliveryConfigs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudAssistantSettingsResponseBodyAgentUpgradeConfig struct {
@@ -148,7 +168,12 @@ func (s *DescribeCloudAssistantSettingsResponseBodyAgentUpgradeConfig) SetTimeZo
 }
 
 func (s *DescribeCloudAssistantSettingsResponseBodyAgentUpgradeConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AllowedUpgradeWindows != nil {
+		if err := s.AllowedUpgradeWindows.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudAssistantSettingsResponseBodyAgentUpgradeConfigAllowedUpgradeWindows struct {
@@ -198,7 +223,16 @@ func (s *DescribeCloudAssistantSettingsResponseBodyOssDeliveryConfigs) SetOssDel
 }
 
 func (s *DescribeCloudAssistantSettingsResponseBodyOssDeliveryConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.OssDeliveryConfig != nil {
+		for _, item := range s.OssDeliveryConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudAssistantSettingsResponseBodyOssDeliveryConfigsOssDeliveryConfig struct {
@@ -395,7 +429,16 @@ func (s *DescribeCloudAssistantSettingsResponseBodySlsDeliveryConfigs) SetSlsDel
 }
 
 func (s *DescribeCloudAssistantSettingsResponseBodySlsDeliveryConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.SlsDeliveryConfig != nil {
+		for _, item := range s.SlsDeliveryConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudAssistantSettingsResponseBodySlsDeliveryConfigsSlsDeliveryConfig struct {

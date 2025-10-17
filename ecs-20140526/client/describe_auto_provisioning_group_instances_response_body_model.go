@@ -104,7 +104,12 @@ func (s *DescribeAutoProvisioningGroupInstancesResponseBody) SetTotalCount(v int
 }
 
 func (s *DescribeAutoProvisioningGroupInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		if err := s.Instances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAutoProvisioningGroupInstancesResponseBodyInstances struct {
@@ -129,7 +134,16 @@ func (s *DescribeAutoProvisioningGroupInstancesResponseBodyInstances) SetInstanc
 }
 
 func (s *DescribeAutoProvisioningGroupInstancesResponseBodyInstances) Validate() error {
-	return dara.Validate(s)
+	if s.Instance != nil {
+		for _, item := range s.Instance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAutoProvisioningGroupInstancesResponseBodyInstancesInstance struct {

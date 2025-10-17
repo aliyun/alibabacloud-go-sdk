@@ -389,7 +389,22 @@ func (s *ModifyInstanceAttributeRequest) SetUserData(v string) *ModifyInstanceAt
 }
 
 func (s *ModifyInstanceAttributeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CpuOptions != nil {
+		if err := s.CpuOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrivateDnsNameOptions != nil {
+		if err := s.PrivateDnsNameOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RemoteConnectionOptions != nil {
+		if err := s.RemoteConnectionOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyInstanceAttributeRequestCpuOptions struct {

@@ -658,7 +658,31 @@ func (s *CreateNetworkInterfaceRequest) SetVisible(v bool) *CreateNetworkInterfa
 }
 
 func (s *CreateNetworkInterfaceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ConnectionTrackingConfiguration != nil {
+		if err := s.ConnectionTrackingConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EnhancedNetwork != nil {
+		if err := s.EnhancedNetwork.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkInterfaceTrafficConfig != nil {
+		if err := s.NetworkInterfaceTrafficConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateNetworkInterfaceRequestConnectionTrackingConfiguration struct {

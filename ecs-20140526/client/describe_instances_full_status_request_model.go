@@ -286,7 +286,17 @@ func (s *DescribeInstancesFullStatusRequest) SetStatus(v string) *DescribeInstan
 }
 
 func (s *DescribeInstancesFullStatusRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EventPublishTime != nil {
+		if err := s.EventPublishTime.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NotBefore != nil {
+		if err := s.NotBefore.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesFullStatusRequestEventPublishTime struct {

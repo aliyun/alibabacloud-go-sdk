@@ -53,7 +53,12 @@ func (s *DeleteLaunchTemplateVersionResponseBody) SetRequestId(v string) *Delete
 }
 
 func (s *DeleteLaunchTemplateVersionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LaunchTemplateVersions != nil {
+		if err := s.LaunchTemplateVersions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteLaunchTemplateVersionResponseBodyLaunchTemplateVersions struct {
@@ -78,7 +83,16 @@ func (s *DeleteLaunchTemplateVersionResponseBodyLaunchTemplateVersions) SetLaunc
 }
 
 func (s *DeleteLaunchTemplateVersionResponseBodyLaunchTemplateVersions) Validate() error {
-	return dara.Validate(s)
+	if s.LaunchTemplateVersion != nil {
+		for _, item := range s.LaunchTemplateVersion {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteLaunchTemplateVersionResponseBodyLaunchTemplateVersionsLaunchTemplateVersion struct {

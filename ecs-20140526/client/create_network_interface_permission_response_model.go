@@ -59,5 +59,10 @@ func (s *CreateNetworkInterfacePermissionResponse) SetBody(v *CreateNetworkInter
 }
 
 func (s *CreateNetworkInterfacePermissionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

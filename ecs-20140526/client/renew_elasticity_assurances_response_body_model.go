@@ -70,7 +70,12 @@ func (s *RenewElasticityAssurancesResponseBody) SetRequestId(v string) *RenewEla
 }
 
 func (s *RenewElasticityAssurancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PrivatePoolOptionsIdSet != nil {
+		if err := s.PrivatePoolOptionsIdSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RenewElasticityAssurancesResponseBodyPrivatePoolOptionsIdSet struct {

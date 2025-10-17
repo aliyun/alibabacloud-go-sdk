@@ -59,5 +59,10 @@ func (s *ModifyInstanceVpcAttributeResponse) SetBody(v *ModifyInstanceVpcAttribu
 }
 
 func (s *ModifyInstanceVpcAttributeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

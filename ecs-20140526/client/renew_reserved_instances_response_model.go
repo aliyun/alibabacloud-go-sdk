@@ -59,5 +59,10 @@ func (s *RenewReservedInstancesResponse) SetBody(v *RenewReservedInstancesRespon
 }
 
 func (s *RenewReservedInstancesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

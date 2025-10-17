@@ -83,7 +83,12 @@ func (s *DescribeVRoutersResponseBody) SetVRouters(v *DescribeVRoutersResponseBo
 }
 
 func (s *DescribeVRoutersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VRouters != nil {
+		if err := s.VRouters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVRoutersResponseBodyVRouters struct {
@@ -108,7 +113,16 @@ func (s *DescribeVRoutersResponseBodyVRouters) SetVRouter(v []*DescribeVRoutersR
 }
 
 func (s *DescribeVRoutersResponseBodyVRouters) Validate() error {
-	return dara.Validate(s)
+	if s.VRouter != nil {
+		for _, item := range s.VRouter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVRoutersResponseBodyVRoutersVRouter struct {
@@ -193,7 +207,12 @@ func (s *DescribeVRoutersResponseBodyVRoutersVRouter) SetVpcId(v string) *Descri
 }
 
 func (s *DescribeVRoutersResponseBodyVRoutersVRouter) Validate() error {
-	return dara.Validate(s)
+	if s.RouteTableIds != nil {
+		if err := s.RouteTableIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVRoutersResponseBodyVRoutersVRouterRouteTableIds struct {

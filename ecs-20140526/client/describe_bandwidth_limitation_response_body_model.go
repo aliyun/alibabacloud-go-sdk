@@ -53,7 +53,12 @@ func (s *DescribeBandwidthLimitationResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeBandwidthLimitationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Bandwidths != nil {
+		if err := s.Bandwidths.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBandwidthLimitationResponseBodyBandwidths struct {
@@ -78,7 +83,16 @@ func (s *DescribeBandwidthLimitationResponseBodyBandwidths) SetBandwidth(v []*De
 }
 
 func (s *DescribeBandwidthLimitationResponseBodyBandwidths) Validate() error {
-	return dara.Validate(s)
+	if s.Bandwidth != nil {
+		for _, item := range s.Bandwidth {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBandwidthLimitationResponseBodyBandwidthsBandwidth struct {

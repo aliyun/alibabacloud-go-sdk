@@ -83,7 +83,12 @@ func (s *DescribeBandwidthPackagesResponseBody) SetTotalCount(v int32) *Describe
 }
 
 func (s *DescribeBandwidthPackagesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BandwidthPackages != nil {
+		if err := s.BandwidthPackages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBandwidthPackagesResponseBodyBandwidthPackages struct {
@@ -108,7 +113,16 @@ func (s *DescribeBandwidthPackagesResponseBodyBandwidthPackages) SetBandwidthPac
 }
 
 func (s *DescribeBandwidthPackagesResponseBodyBandwidthPackages) Validate() error {
-	return dara.Validate(s)
+	if s.BandwidthPackage != nil {
+		for _, item := range s.BandwidthPackage {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBandwidthPackagesResponseBodyBandwidthPackagesBandwidthPackage struct {
@@ -273,7 +287,12 @@ func (s *DescribeBandwidthPackagesResponseBodyBandwidthPackagesBandwidthPackage)
 }
 
 func (s *DescribeBandwidthPackagesResponseBodyBandwidthPackagesBandwidthPackage) Validate() error {
-	return dara.Validate(s)
+	if s.PublicIpAddresses != nil {
+		if err := s.PublicIpAddresses.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBandwidthPackagesResponseBodyBandwidthPackagesBandwidthPackagePublicIpAddresses struct {
@@ -298,7 +317,16 @@ func (s *DescribeBandwidthPackagesResponseBodyBandwidthPackagesBandwidthPackageP
 }
 
 func (s *DescribeBandwidthPackagesResponseBodyBandwidthPackagesBandwidthPackagePublicIpAddresses) Validate() error {
-	return dara.Validate(s)
+	if s.PublicIpAddresse != nil {
+		for _, item := range s.PublicIpAddresse {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBandwidthPackagesResponseBodyBandwidthPackagesBandwidthPackagePublicIpAddressesPublicIpAddresse struct {

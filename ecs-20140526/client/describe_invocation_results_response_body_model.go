@@ -53,7 +53,12 @@ func (s *DescribeInvocationResultsResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeInvocationResultsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Invocation != nil {
+		if err := s.Invocation.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInvocationResultsResponseBodyInvocation struct {
@@ -139,7 +144,12 @@ func (s *DescribeInvocationResultsResponseBodyInvocation) SetTotalCount(v int64)
 }
 
 func (s *DescribeInvocationResultsResponseBodyInvocation) Validate() error {
-	return dara.Validate(s)
+	if s.InvocationResults != nil {
+		if err := s.InvocationResults.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInvocationResultsResponseBodyInvocationInvocationResults struct {
@@ -164,7 +174,16 @@ func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResults) SetIn
 }
 
 func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResults) Validate() error {
-	return dara.Validate(s)
+	if s.InvocationResult != nil {
+		for _, item := range s.InvocationResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult struct {
@@ -385,10 +404,31 @@ type DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationR
 	// example:
 	//
 	// python3 -u {{ACS::ScriptFileName|Ext(".py")}}
-	Launcher          *string `json:"Launcher,omitempty" xml:"Launcher,omitempty"`
+	Launcher *string `json:"Launcher,omitempty" xml:"Launcher,omitempty"`
+	// Command to execute the Output OSS delivery configuration.
+	//
+	// example:
+	//
+	// oss://testBucket/testPrefix
 	OssOutputDelivery *string `json:"OssOutputDelivery,omitempty" xml:"OssOutputDelivery,omitempty"`
-	OssOutputStatus   *string `json:"OssOutputStatus,omitempty" xml:"OssOutputStatus,omitempty"`
-	OssOutputUri      *string `json:"OssOutputUri,omitempty" xml:"OssOutputUri,omitempty"`
+	// The output delivery status of the command execution. Valid values:
+	//
+	// 	- InProgress: The delivery is in progress.
+	//
+	// 	- Finished: The delivery is complete.
+	//
+	// 	- Failed: The delivery failed.
+	//
+	// example:
+	//
+	// Finished
+	OssOutputStatus *string `json:"OssOutputStatus,omitempty" xml:"OssOutputStatus,omitempty"`
+	// The command execution Output delivers the object URI to OSS. This field is an empty string when the delivery fails or is in progress.
+	//
+	// example:
+	//
+	// oss://testBucket/testPrefix/output.txt
+	OssOutputUri *string `json:"OssOutputUri,omitempty" xml:"OssOutputUri,omitempty"`
 	// The command output.
 	//
 	// 	- If ContentEncoding is set to PlainText in the request, the original command output is returned.
@@ -657,7 +697,12 @@ func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocat
 }
 
 func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResultTags struct {
@@ -682,7 +727,16 @@ func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocat
 }
 
 func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResultTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResultTagsTag struct {

@@ -1572,7 +1572,93 @@ func (s *RunInstancesRequest) SetZoneId(v string) *RunInstancesRequest {
 }
 
 func (s *RunInstancesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CpuOptions != nil {
+		if err := s.CpuOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HibernationOptions != nil {
+		if err := s.HibernationOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrivatePoolOptions != nil {
+		if err := s.PrivatePoolOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SchedulerOptions != nil {
+		if err := s.SchedulerOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityOptions != nil {
+		if err := s.SecurityOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SystemDisk != nil {
+		if err := s.SystemDisk.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Arn != nil {
+		for _, item := range s.Arn {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ClockOptions != nil {
+		if err := s.ClockOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataDisk != nil {
+		for _, item := range s.DataDisk {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ImageOptions != nil {
+		if err := s.ImageOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkInterface != nil {
+		for _, item := range s.NetworkInterface {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NetworkOptions != nil {
+		if err := s.NetworkOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrivateDnsNameOptions != nil {
+		if err := s.PrivateDnsNameOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunInstancesRequestCpuOptions struct {

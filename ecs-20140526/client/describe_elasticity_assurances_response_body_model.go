@@ -104,7 +104,12 @@ func (s *DescribeElasticityAssurancesResponseBody) SetTotalCount(v int32) *Descr
 }
 
 func (s *DescribeElasticityAssurancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ElasticityAssuranceSet != nil {
+		if err := s.ElasticityAssuranceSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeElasticityAssurancesResponseBodyElasticityAssuranceSet struct {
@@ -129,7 +134,16 @@ func (s *DescribeElasticityAssurancesResponseBodyElasticityAssuranceSet) SetElas
 }
 
 func (s *DescribeElasticityAssurancesResponseBodyElasticityAssuranceSet) Validate() error {
-	return dara.Validate(s)
+	if s.ElasticityAssuranceItem != nil {
+		for _, item := range s.ElasticityAssuranceItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticityAssuranceItem struct {
@@ -437,7 +451,22 @@ func (s *DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticit
 }
 
 func (s *DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticityAssuranceItem) Validate() error {
-	return dara.Validate(s)
+	if s.AllocatedResources != nil {
+		if err := s.AllocatedResources.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RecurrenceRules != nil {
+		if err := s.RecurrenceRules.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticityAssuranceItemAllocatedResources struct {
@@ -462,7 +491,16 @@ func (s *DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticit
 }
 
 func (s *DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticityAssuranceItemAllocatedResources) Validate() error {
-	return dara.Validate(s)
+	if s.AllocatedResource != nil {
+		for _, item := range s.AllocatedResource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticityAssuranceItemAllocatedResourcesAllocatedResource struct {
@@ -563,7 +601,12 @@ func (s *DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticit
 }
 
 func (s *DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticityAssuranceItemAllocatedResourcesAllocatedResource) Validate() error {
-	return dara.Validate(s)
+	if s.ElasticityAssuranceUsages != nil {
+		if err := s.ElasticityAssuranceUsages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticityAssuranceItemAllocatedResourcesAllocatedResourceElasticityAssuranceUsages struct {
@@ -588,7 +631,16 @@ func (s *DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticit
 }
 
 func (s *DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticityAssuranceItemAllocatedResourcesAllocatedResourceElasticityAssuranceUsages) Validate() error {
-	return dara.Validate(s)
+	if s.ElasticityAssuranceUsage != nil {
+		for _, item := range s.ElasticityAssuranceUsage {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticityAssuranceItemAllocatedResourcesAllocatedResourceElasticityAssuranceUsagesElasticityAssuranceUsage struct {
@@ -673,7 +725,16 @@ func (s *DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticit
 }
 
 func (s *DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticityAssuranceItemRecurrenceRules) Validate() error {
-	return dara.Validate(s)
+	if s.RecurrenceRule != nil {
+		for _, item := range s.RecurrenceRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticityAssuranceItemRecurrenceRulesRecurrenceRule struct {
@@ -785,7 +846,16 @@ func (s *DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticit
 }
 
 func (s *DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticityAssuranceItemTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeElasticityAssurancesResponseBodyElasticityAssuranceSetElasticityAssuranceItemTagsTag struct {

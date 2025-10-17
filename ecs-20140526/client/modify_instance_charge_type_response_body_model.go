@@ -70,7 +70,12 @@ func (s *ModifyInstanceChargeTypeResponseBody) SetRequestId(v string) *ModifyIns
 }
 
 func (s *ModifyInstanceChargeTypeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FeeOfInstances != nil {
+		if err := s.FeeOfInstances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyInstanceChargeTypeResponseBodyFeeOfInstances struct {
@@ -95,7 +100,16 @@ func (s *ModifyInstanceChargeTypeResponseBodyFeeOfInstances) SetFeeOfInstance(v 
 }
 
 func (s *ModifyInstanceChargeTypeResponseBodyFeeOfInstances) Validate() error {
-	return dara.Validate(s)
+	if s.FeeOfInstance != nil {
+		for _, item := range s.FeeOfInstance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyInstanceChargeTypeResponseBodyFeeOfInstancesFeeOfInstance struct {

@@ -104,7 +104,12 @@ func (s *DescribeStorageSetDetailsResponseBody) SetTotalCount(v int32) *Describe
 }
 
 func (s *DescribeStorageSetDetailsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Disks != nil {
+		if err := s.Disks.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeStorageSetDetailsResponseBodyDisks struct {
@@ -129,7 +134,16 @@ func (s *DescribeStorageSetDetailsResponseBodyDisks) SetDisk(v []*DescribeStorag
 }
 
 func (s *DescribeStorageSetDetailsResponseBodyDisks) Validate() error {
-	return dara.Validate(s)
+	if s.Disk != nil {
+		for _, item := range s.Disk {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeStorageSetDetailsResponseBodyDisksDisk struct {

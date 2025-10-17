@@ -83,7 +83,12 @@ func (s *DescribeNatGatewaysResponseBody) SetTotalCount(v int32) *DescribeNatGat
 }
 
 func (s *DescribeNatGatewaysResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NatGateways != nil {
+		if err := s.NatGateways.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNatGatewaysResponseBodyNatGateways struct {
@@ -108,7 +113,16 @@ func (s *DescribeNatGatewaysResponseBodyNatGateways) SetNatGateway(v []*Describe
 }
 
 func (s *DescribeNatGatewaysResponseBodyNatGateways) Validate() error {
-	return dara.Validate(s)
+	if s.NatGateway != nil {
+		for _, item := range s.NatGateway {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGateway struct {
@@ -243,7 +257,17 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) SetVpcId(v string
 }
 
 func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) Validate() error {
-	return dara.Validate(s)
+	if s.BandwidthPackageIds != nil {
+		if err := s.BandwidthPackageIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ForwardTableIds != nil {
+		if err := s.ForwardTableIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayBandwidthPackageIds struct {

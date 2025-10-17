@@ -59,5 +59,10 @@ func (s *PurchaseElasticityAssuranceResponse) SetBody(v *PurchaseElasticityAssur
 }
 
 func (s *PurchaseElasticityAssuranceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

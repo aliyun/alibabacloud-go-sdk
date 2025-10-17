@@ -121,7 +121,12 @@ func (s *ModifyInstanceAttachmentAttributesRequest) SetResourceOwnerId(v int64) 
 }
 
 func (s *ModifyInstanceAttachmentAttributesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PrivatePoolOptions != nil {
+		if err := s.PrivatePoolOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyInstanceAttachmentAttributesRequestPrivatePoolOptions struct {

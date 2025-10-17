@@ -104,7 +104,12 @@ func (s *DescribeReservedInstancesResponseBody) SetTotalCount(v int32) *Describe
 }
 
 func (s *DescribeReservedInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ReservedInstances != nil {
+		if err := s.ReservedInstances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeReservedInstancesResponseBodyReservedInstances struct {
@@ -129,7 +134,16 @@ func (s *DescribeReservedInstancesResponseBodyReservedInstances) SetReservedInst
 }
 
 func (s *DescribeReservedInstancesResponseBodyReservedInstances) Validate() error {
-	return dara.Validate(s)
+	if s.ReservedInstance != nil {
+		for _, item := range s.ReservedInstance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeReservedInstancesResponseBodyReservedInstancesReservedInstance struct {
@@ -414,7 +428,17 @@ func (s *DescribeReservedInstancesResponseBodyReservedInstancesReservedInstance)
 }
 
 func (s *DescribeReservedInstancesResponseBodyReservedInstancesReservedInstance) Validate() error {
-	return dara.Validate(s)
+	if s.OperationLocks != nil {
+		if err := s.OperationLocks.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeReservedInstancesResponseBodyReservedInstancesReservedInstanceOperationLocks struct {
@@ -439,7 +463,16 @@ func (s *DescribeReservedInstancesResponseBodyReservedInstancesReservedInstanceO
 }
 
 func (s *DescribeReservedInstancesResponseBodyReservedInstancesReservedInstanceOperationLocks) Validate() error {
-	return dara.Validate(s)
+	if s.OperationLock != nil {
+		for _, item := range s.OperationLock {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeReservedInstancesResponseBodyReservedInstancesReservedInstanceOperationLocksOperationLock struct {
@@ -494,7 +527,16 @@ func (s *DescribeReservedInstancesResponseBodyReservedInstancesReservedInstanceT
 }
 
 func (s *DescribeReservedInstancesResponseBodyReservedInstancesReservedInstanceTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeReservedInstancesResponseBodyReservedInstancesReservedInstanceTagsTag struct {

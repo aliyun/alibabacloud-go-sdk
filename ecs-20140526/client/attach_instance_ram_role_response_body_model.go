@@ -104,7 +104,12 @@ func (s *AttachInstanceRamRoleResponseBody) SetTotalCount(v int32) *AttachInstan
 }
 
 func (s *AttachInstanceRamRoleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AttachInstanceRamRoleResults != nil {
+		if err := s.AttachInstanceRamRoleResults.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AttachInstanceRamRoleResponseBodyAttachInstanceRamRoleResults struct {
@@ -129,7 +134,16 @@ func (s *AttachInstanceRamRoleResponseBodyAttachInstanceRamRoleResults) SetAttac
 }
 
 func (s *AttachInstanceRamRoleResponseBodyAttachInstanceRamRoleResults) Validate() error {
-	return dara.Validate(s)
+	if s.AttachInstanceRamRoleResult != nil {
+		for _, item := range s.AttachInstanceRamRoleResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AttachInstanceRamRoleResponseBodyAttachInstanceRamRoleResultsAttachInstanceRamRoleResult struct {

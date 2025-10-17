@@ -236,7 +236,12 @@ func (s *RenewElasticityAssurancesRequest) SetResourceOwnerId(v int64) *RenewEla
 }
 
 func (s *RenewElasticityAssurancesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PrivatePoolOptions != nil {
+		if err := s.PrivatePoolOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RenewElasticityAssurancesRequestPrivatePoolOptions struct {

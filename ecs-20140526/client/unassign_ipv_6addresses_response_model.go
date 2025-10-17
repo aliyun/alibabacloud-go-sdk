@@ -59,5 +59,10 @@ func (s *UnassignIpv6AddressesResponse) SetBody(v *UnassignIpv6AddressesResponse
 }
 
 func (s *UnassignIpv6AddressesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

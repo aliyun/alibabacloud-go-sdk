@@ -59,5 +59,10 @@ func (s *ModifyCapacityReservationResponse) SetBody(v *ModifyCapacityReservation
 }
 
 func (s *ModifyCapacityReservationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

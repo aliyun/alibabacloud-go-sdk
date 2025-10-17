@@ -121,7 +121,12 @@ func (s *DescribeTasksResponseBody) SetTotalCount(v int32) *DescribeTasksRespons
 }
 
 func (s *DescribeTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TaskSet != nil {
+		if err := s.TaskSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTasksResponseBodyTaskSet struct {
@@ -146,7 +151,16 @@ func (s *DescribeTasksResponseBodyTaskSet) SetTask(v []*DescribeTasksResponseBod
 }
 
 func (s *DescribeTasksResponseBodyTaskSet) Validate() error {
-	return dara.Validate(s)
+	if s.Task != nil {
+		for _, item := range s.Task {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTasksResponseBodyTaskSetTask struct {

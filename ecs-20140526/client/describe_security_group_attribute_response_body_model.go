@@ -188,7 +188,17 @@ func (s *DescribeSecurityGroupAttributeResponseBody) SetVpcId(v string) *Describ
 }
 
 func (s *DescribeSecurityGroupAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Permissions != nil {
+		if err := s.Permissions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SnapshotPolicyIds != nil {
+		if err := s.SnapshotPolicyIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityGroupAttributeResponseBodyPermissions struct {
@@ -213,7 +223,16 @@ func (s *DescribeSecurityGroupAttributeResponseBodyPermissions) SetPermission(v 
 }
 
 func (s *DescribeSecurityGroupAttributeResponseBodyPermissions) Validate() error {
-	return dara.Validate(s)
+	if s.Permission != nil {
+		for _, item := range s.Permission {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityGroupAttributeResponseBodyPermissionsPermission struct {

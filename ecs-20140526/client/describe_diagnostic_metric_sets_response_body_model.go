@@ -70,7 +70,16 @@ func (s *DescribeDiagnosticMetricSetsResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribeDiagnosticMetricSetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MetricSets != nil {
+		for _, item := range s.MetricSets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDiagnosticMetricSetsResponseBodyMetricSets struct {

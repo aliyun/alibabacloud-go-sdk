@@ -83,7 +83,12 @@ func (s *DescribeAccessPointsResponseBody) SetTotalCount(v int32) *DescribeAcces
 }
 
 func (s *DescribeAccessPointsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AccessPointSet != nil {
+		if err := s.AccessPointSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAccessPointsResponseBodyAccessPointSet struct {
@@ -108,7 +113,16 @@ func (s *DescribeAccessPointsResponseBodyAccessPointSet) SetAccessPointType(v []
 }
 
 func (s *DescribeAccessPointsResponseBodyAccessPointSet) Validate() error {
-	return dara.Validate(s)
+	if s.AccessPointType != nil {
+		for _, item := range s.AccessPointType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAccessPointsResponseBodyAccessPointSetAccessPointType struct {

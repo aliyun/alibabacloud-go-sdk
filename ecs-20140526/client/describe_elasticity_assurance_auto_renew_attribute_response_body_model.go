@@ -53,7 +53,12 @@ func (s *DescribeElasticityAssuranceAutoRenewAttributeResponseBody) SetRequestId
 }
 
 func (s *DescribeElasticityAssuranceAutoRenewAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ElasticityAssuranceRenewAttributes != nil {
+		if err := s.ElasticityAssuranceRenewAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeElasticityAssuranceAutoRenewAttributeResponseBodyElasticityAssuranceRenewAttributes struct {
@@ -78,7 +83,16 @@ func (s *DescribeElasticityAssuranceAutoRenewAttributeResponseBodyElasticityAssu
 }
 
 func (s *DescribeElasticityAssuranceAutoRenewAttributeResponseBodyElasticityAssuranceRenewAttributes) Validate() error {
-	return dara.Validate(s)
+	if s.ElasticityAssuranceRenewAttribute != nil {
+		for _, item := range s.ElasticityAssuranceRenewAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeElasticityAssuranceAutoRenewAttributeResponseBodyElasticityAssuranceRenewAttributesElasticityAssuranceRenewAttribute struct {

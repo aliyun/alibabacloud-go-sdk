@@ -1161,7 +1161,49 @@ func (s *CreateInstanceRequest) SetZoneId(v string) *CreateInstanceRequest {
 }
 
 func (s *CreateInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.HibernationOptions != nil {
+		if err := s.HibernationOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrivatePoolOptions != nil {
+		if err := s.PrivatePoolOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SystemDisk != nil {
+		if err := s.SystemDisk.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Arn != nil {
+		for _, item := range s.Arn {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DataDisk != nil {
+		for _, item := range s.DataDisk {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateInstanceRequestHibernationOptions struct {

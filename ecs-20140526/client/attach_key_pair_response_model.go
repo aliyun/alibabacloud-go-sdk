@@ -59,5 +59,10 @@ func (s *AttachKeyPairResponse) SetBody(v *AttachKeyPairResponseBody) *AttachKey
 }
 
 func (s *AttachKeyPairResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

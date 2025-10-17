@@ -146,7 +146,16 @@ func (s *CreateNatGatewayRequest) SetVpcId(v string) *CreateNatGatewayRequest {
 }
 
 func (s *CreateNatGatewayRequest) Validate() error {
-	return dara.Validate(s)
+	if s.BandwidthPackage != nil {
+		for _, item := range s.BandwidthPackage {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateNatGatewayRequestBandwidthPackage struct {

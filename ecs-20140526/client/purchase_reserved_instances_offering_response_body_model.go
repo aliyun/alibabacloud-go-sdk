@@ -70,7 +70,12 @@ func (s *PurchaseReservedInstancesOfferingResponseBody) SetReservedInstanceIdSet
 }
 
 func (s *PurchaseReservedInstancesOfferingResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ReservedInstanceIdSets != nil {
+		if err := s.ReservedInstanceIdSets.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PurchaseReservedInstancesOfferingResponseBodyReservedInstanceIdSets struct {

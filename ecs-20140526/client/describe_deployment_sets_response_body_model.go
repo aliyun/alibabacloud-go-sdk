@@ -121,7 +121,12 @@ func (s *DescribeDeploymentSetsResponseBody) SetTotalCount(v int32) *DescribeDep
 }
 
 func (s *DescribeDeploymentSetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeploymentSets != nil {
+		if err := s.DeploymentSets.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDeploymentSetsResponseBodyDeploymentSets struct {
@@ -146,7 +151,16 @@ func (s *DescribeDeploymentSetsResponseBodyDeploymentSets) SetDeploymentSet(v []
 }
 
 func (s *DescribeDeploymentSetsResponseBodyDeploymentSets) Validate() error {
-	return dara.Validate(s)
+	if s.DeploymentSet != nil {
+		for _, item := range s.DeploymentSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet struct {
@@ -345,7 +359,17 @@ func (s *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) SetStrat
 }
 
 func (s *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) Validate() error {
-	return dara.Validate(s)
+	if s.Capacities != nil {
+		if err := s.Capacities.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceIds != nil {
+		if err := s.InstanceIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities struct {
@@ -370,7 +394,16 @@ func (s *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities
 }
 
 func (s *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities) Validate() error {
-	return dara.Validate(s)
+	if s.Capacity != nil {
+		for _, item := range s.Capacity {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacitiesCapacity struct {

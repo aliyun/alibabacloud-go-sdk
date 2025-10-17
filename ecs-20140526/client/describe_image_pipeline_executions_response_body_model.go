@@ -104,7 +104,12 @@ func (s *DescribeImagePipelineExecutionsResponseBody) SetTotalCount(v int32) *De
 }
 
 func (s *DescribeImagePipelineExecutionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ImagePipelineExecution != nil {
+		if err := s.ImagePipelineExecution.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImagePipelineExecutionsResponseBodyImagePipelineExecution struct {
@@ -129,7 +134,16 @@ func (s *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecution) SetI
 }
 
 func (s *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecution) Validate() error {
-	return dara.Validate(s)
+	if s.ImagePipelineExecutionSet != nil {
+		for _, item := range s.ImagePipelineExecutionSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipelineExecutionSet struct {
@@ -299,7 +313,12 @@ func (s *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImageP
 }
 
 func (s *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipelineExecutionSet) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipelineExecutionSetTags struct {
@@ -324,7 +343,16 @@ func (s *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImageP
 }
 
 func (s *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipelineExecutionSetTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipelineExecutionSetTagsTag struct {

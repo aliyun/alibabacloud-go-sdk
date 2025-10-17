@@ -59,5 +59,10 @@ func (s *ReplaceSystemDiskResponse) SetBody(v *ReplaceSystemDiskResponseBody) *R
 }
 
 func (s *ReplaceSystemDiskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

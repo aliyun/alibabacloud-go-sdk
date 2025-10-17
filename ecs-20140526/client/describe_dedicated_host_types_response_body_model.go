@@ -53,7 +53,12 @@ func (s *DescribeDedicatedHostTypesResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeDedicatedHostTypesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DedicatedHostTypes != nil {
+		if err := s.DedicatedHostTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDedicatedHostTypesResponseBodyDedicatedHostTypes struct {
@@ -78,7 +83,16 @@ func (s *DescribeDedicatedHostTypesResponseBodyDedicatedHostTypes) SetDedicatedH
 }
 
 func (s *DescribeDedicatedHostTypesResponseBodyDedicatedHostTypes) Validate() error {
-	return dara.Validate(s)
+	if s.DedicatedHostType != nil {
+		for _, item := range s.DedicatedHostType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDedicatedHostTypesResponseBodyDedicatedHostTypesDedicatedHostType struct {
@@ -310,7 +324,17 @@ func (s *DescribeDedicatedHostTypesResponseBodyDedicatedHostTypesDedicatedHostTy
 }
 
 func (s *DescribeDedicatedHostTypesResponseBodyDedicatedHostTypesDedicatedHostType) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedInstanceTypeFamilies != nil {
+		if err := s.SupportedInstanceTypeFamilies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SupportedInstanceTypesList != nil {
+		if err := s.SupportedInstanceTypesList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDedicatedHostTypesResponseBodyDedicatedHostTypesDedicatedHostTypeSupportedInstanceTypeFamilies struct {

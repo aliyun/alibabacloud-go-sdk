@@ -70,7 +70,12 @@ func (s *RenewReservedInstancesResponseBody) SetReservedInstanceIdSets(v *RenewR
 }
 
 func (s *RenewReservedInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ReservedInstanceIdSets != nil {
+		if err := s.ReservedInstanceIdSets.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RenewReservedInstancesResponseBodyReservedInstanceIdSets struct {

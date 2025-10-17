@@ -121,7 +121,12 @@ func (s *DescribeInvocationsResponseBody) SetTotalCount(v int64) *DescribeInvoca
 }
 
 func (s *DescribeInvocationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Invocations != nil {
+		if err := s.Invocations.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInvocationsResponseBodyInvocations struct {
@@ -146,7 +151,16 @@ func (s *DescribeInvocationsResponseBodyInvocations) SetInvocation(v []*Describe
 }
 
 func (s *DescribeInvocationsResponseBodyInvocations) Validate() error {
-	return dara.Validate(s)
+	if s.Invocation != nil {
+		for _, item := range s.Invocation {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInvocationsResponseBodyInvocationsInvocation struct {
@@ -267,7 +281,12 @@ type DescribeInvocationsResponseBodyInvocationsInvocation struct {
 	// example:
 	//
 	// python3 -u {{ACS::ScriptFileName|Ext(".py")}}
-	Launcher          *string `json:"Launcher,omitempty" xml:"Launcher,omitempty"`
+	Launcher *string `json:"Launcher,omitempty" xml:"Launcher,omitempty"`
+	// Command to execute the Output OSS delivery configuration.
+	//
+	// example:
+	//
+	// oss://testBucket/testPrefix
 	OssOutputDelivery *string `json:"OssOutputDelivery,omitempty" xml:"OssOutputDelivery,omitempty"`
 	// The custom parameters in the command.
 	//
@@ -547,7 +566,17 @@ func (s *DescribeInvocationsResponseBodyInvocationsInvocation) SetWorkingDir(v s
 }
 
 func (s *DescribeInvocationsResponseBodyInvocationsInvocation) Validate() error {
-	return dara.Validate(s)
+	if s.InvokeInstances != nil {
+		if err := s.InvokeInstances.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstances struct {
@@ -572,7 +601,16 @@ func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstances) Se
 }
 
 func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstances) Validate() error {
-	return dara.Validate(s)
+	if s.InvokeInstance != nil {
+		for _, item := range s.InvokeInstance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstancesInvokeInstance struct {
@@ -744,8 +782,24 @@ type DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstancesInvokeIn
 	//
 	// Success
 	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
-	OssOutputStatus  *string `json:"OssOutputStatus,omitempty" xml:"OssOutputStatus,omitempty"`
-	OssOutputUri     *string `json:"OssOutputUri,omitempty" xml:"OssOutputUri,omitempty"`
+	// The output delivery status of the command execution. Valid values:
+	//
+	// 	- InProgress: The delivery is in progress.
+	//
+	// 	- Finished: The delivery is complete.
+	//
+	// 	- Failed: The delivery failed.
+	//
+	// example:
+	//
+	// Finished
+	OssOutputStatus *string `json:"OssOutputStatus,omitempty" xml:"OssOutputStatus,omitempty"`
+	// The command execution Output delivers the object URI to OSS. This field is an empty string when the delivery fails or is in progress.
+	//
+	// example:
+	//
+	// oss://testBucket/testPrefix/output.txt
+	OssOutputUri *string `json:"OssOutputUri,omitempty" xml:"OssOutputUri,omitempty"`
 	// The command output.
 	//
 	// 	- If ContentEncoding is set to PlainText in the request, the original command output is returned.
@@ -979,7 +1033,16 @@ func (s *DescribeInvocationsResponseBodyInvocationsInvocationTags) SetTag(v []*D
 }
 
 func (s *DescribeInvocationsResponseBodyInvocationsInvocationTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInvocationsResponseBodyInvocationsInvocationTagsTag struct {

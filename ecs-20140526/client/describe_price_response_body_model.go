@@ -53,7 +53,12 @@ func (s *DescribePriceResponseBody) SetRequestId(v string) *DescribePriceRespons
 }
 
 func (s *DescribePriceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PriceInfo != nil {
+		if err := s.PriceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodyPriceInfo struct {
@@ -101,7 +106,22 @@ func (s *DescribePriceResponseBodyPriceInfo) SetRules(v *DescribePriceResponseBo
 }
 
 func (s *DescribePriceResponseBodyPriceInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Price != nil {
+		if err := s.Price.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RelatedPrice != nil {
+		if err := s.RelatedPrice.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		if err := s.Rules.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodyPriceInfoPrice struct {
@@ -208,7 +228,12 @@ func (s *DescribePriceResponseBodyPriceInfoPrice) SetTradePrice(v float32) *Desc
 }
 
 func (s *DescribePriceResponseBodyPriceInfoPrice) Validate() error {
-	return dara.Validate(s)
+	if s.DetailInfos != nil {
+		if err := s.DetailInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodyPriceInfoPriceDetailInfos struct {
@@ -233,7 +258,16 @@ func (s *DescribePriceResponseBodyPriceInfoPriceDetailInfos) SetDetailInfo(v []*
 }
 
 func (s *DescribePriceResponseBodyPriceInfoPriceDetailInfos) Validate() error {
-	return dara.Validate(s)
+	if s.DetailInfo != nil {
+		for _, item := range s.DetailInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodyPriceInfoPriceDetailInfosDetailInfo struct {
@@ -329,7 +363,12 @@ func (s *DescribePriceResponseBodyPriceInfoPriceDetailInfosDetailInfo) SetTradeP
 }
 
 func (s *DescribePriceResponseBodyPriceInfoPriceDetailInfosDetailInfo) Validate() error {
-	return dara.Validate(s)
+	if s.SubRules != nil {
+		if err := s.SubRules.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodyPriceInfoPriceDetailInfosDetailInfoSubRules struct {
@@ -354,7 +393,16 @@ func (s *DescribePriceResponseBodyPriceInfoPriceDetailInfosDetailInfoSubRules) S
 }
 
 func (s *DescribePriceResponseBodyPriceInfoPriceDetailInfosDetailInfoSubRules) Validate() error {
-	return dara.Validate(s)
+	if s.Rule != nil {
+		for _, item := range s.Rule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodyPriceInfoPriceDetailInfosDetailInfoSubRulesRule struct {
@@ -425,7 +473,12 @@ func (s *DescribePriceResponseBodyPriceInfoRelatedPrice) SetMarketplaceImagePric
 }
 
 func (s *DescribePriceResponseBodyPriceInfoRelatedPrice) Validate() error {
-	return dara.Validate(s)
+	if s.MarketplaceImagePrice != nil {
+		if err := s.MarketplaceImagePrice.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice struct {
@@ -529,7 +582,16 @@ func (s *DescribePriceResponseBodyPriceInfoRules) SetRule(v []*DescribePriceResp
 }
 
 func (s *DescribePriceResponseBodyPriceInfoRules) Validate() error {
-	return dara.Validate(s)
+	if s.Rule != nil {
+		for _, item := range s.Rule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodyPriceInfoRulesRule struct {

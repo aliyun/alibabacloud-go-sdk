@@ -50,7 +50,9 @@ type DescribeSnapshotLinksResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the snapshot chains.
 	SnapshotLinks *DescribeSnapshotLinksResponseBodySnapshotLinks `json:"SnapshotLinks,omitempty" xml:"SnapshotLinks,omitempty" type:"Struct"`
-	// The total number of entries returned.
+	// The total number of snapshot chains.
+	//
+	// > When using the `MaxResults` and `NextToken` parameters for a paginated query, the returned `TotalCount` parameter value is invalid.
 	//
 	// example:
 	//
@@ -121,7 +123,12 @@ func (s *DescribeSnapshotLinksResponseBody) SetTotalCount(v int32) *DescribeSnap
 }
 
 func (s *DescribeSnapshotLinksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SnapshotLinks != nil {
+		if err := s.SnapshotLinks.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSnapshotLinksResponseBodySnapshotLinks struct {
@@ -146,7 +153,16 @@ func (s *DescribeSnapshotLinksResponseBodySnapshotLinks) SetSnapshotLink(v []*De
 }
 
 func (s *DescribeSnapshotLinksResponseBodySnapshotLinks) Validate() error {
-	return dara.Validate(s)
+	if s.SnapshotLink != nil {
+		for _, item := range s.SnapshotLink {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSnapshotLinksResponseBodySnapshotLinksSnapshotLink struct {

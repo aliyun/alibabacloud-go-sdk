@@ -335,7 +335,21 @@ func (s *ModifyPrepayInstanceSpecRequest) SetResourceOwnerId(v int64) *ModifyPre
 }
 
 func (s *ModifyPrepayInstanceSpecRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SystemDisk != nil {
+		if err := s.SystemDisk.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Disk != nil {
+		for _, item := range s.Disk {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyPrepayInstanceSpecRequestSystemDisk struct {

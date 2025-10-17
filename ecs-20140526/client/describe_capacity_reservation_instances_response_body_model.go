@@ -104,7 +104,12 @@ func (s *DescribeCapacityReservationInstancesResponseBody) SetTotalCount(v int32
 }
 
 func (s *DescribeCapacityReservationInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CapacityReservationItem != nil {
+		if err := s.CapacityReservationItem.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCapacityReservationInstancesResponseBodyCapacityReservationItem struct {
@@ -129,7 +134,16 @@ func (s *DescribeCapacityReservationInstancesResponseBodyCapacityReservationItem
 }
 
 func (s *DescribeCapacityReservationInstancesResponseBodyCapacityReservationItem) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceIdSet != nil {
+		for _, item := range s.InstanceIdSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCapacityReservationInstancesResponseBodyCapacityReservationItemInstanceIdSet struct {

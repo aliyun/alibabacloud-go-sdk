@@ -104,7 +104,12 @@ func (s *DescribeTagsResponseBody) SetTotalCount(v int32) *DescribeTagsResponseB
 }
 
 func (s *DescribeTagsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTagsResponseBodyTags struct {
@@ -129,7 +134,16 @@ func (s *DescribeTagsResponseBodyTags) SetTag(v []*DescribeTagsResponseBodyTagsT
 }
 
 func (s *DescribeTagsResponseBodyTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTagsResponseBodyTagsTag struct {
@@ -185,7 +199,12 @@ func (s *DescribeTagsResponseBodyTagsTag) SetTagValue(v string) *DescribeTagsRes
 }
 
 func (s *DescribeTagsResponseBodyTagsTag) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceTypeCount != nil {
+		if err := s.ResourceTypeCount.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTagsResponseBodyTagsTagResourceTypeCount struct {

@@ -104,7 +104,12 @@ func (s *DescribeKeyPairsResponseBody) SetTotalCount(v int32) *DescribeKeyPairsR
 }
 
 func (s *DescribeKeyPairsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.KeyPairs != nil {
+		if err := s.KeyPairs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeKeyPairsResponseBodyKeyPairs struct {
@@ -129,7 +134,16 @@ func (s *DescribeKeyPairsResponseBodyKeyPairs) SetKeyPair(v []*DescribeKeyPairsR
 }
 
 func (s *DescribeKeyPairsResponseBodyKeyPairs) Validate() error {
-	return dara.Validate(s)
+	if s.KeyPair != nil {
+		for _, item := range s.KeyPair {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeKeyPairsResponseBodyKeyPairsKeyPair struct {
@@ -230,7 +244,12 @@ func (s *DescribeKeyPairsResponseBodyKeyPairsKeyPair) SetTags(v *DescribeKeyPair
 }
 
 func (s *DescribeKeyPairsResponseBodyKeyPairsKeyPair) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeKeyPairsResponseBodyKeyPairsKeyPairTags struct {
@@ -255,7 +274,16 @@ func (s *DescribeKeyPairsResponseBodyKeyPairsKeyPairTags) SetTag(v []*DescribeKe
 }
 
 func (s *DescribeKeyPairsResponseBodyKeyPairsKeyPairTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeKeyPairsResponseBodyKeyPairsKeyPairTagsTag struct {

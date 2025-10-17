@@ -104,7 +104,12 @@ func (s *DescribeAutoProvisioningGroupHistoryResponseBody) SetTotalCount(v int32
 }
 
 func (s *DescribeAutoProvisioningGroupHistoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AutoProvisioningGroupHistories != nil {
+		if err := s.AutoProvisioningGroupHistories.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistories struct {
@@ -129,7 +134,16 @@ func (s *DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHi
 }
 
 func (s *DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistories) Validate() error {
-	return dara.Validate(s)
+	if s.AutoProvisioningGroupHistory != nil {
+		for _, item := range s.AutoProvisioningGroupHistory {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistory struct {
@@ -221,7 +235,12 @@ func (s *DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHi
 }
 
 func (s *DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistory) Validate() error {
-	return dara.Validate(s)
+	if s.ActivityDetails != nil {
+		if err := s.ActivityDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetails struct {
@@ -246,7 +265,16 @@ func (s *DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHi
 }
 
 func (s *DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetails) Validate() error {
-	return dara.Validate(s)
+	if s.ActivityDetail != nil {
+		for _, item := range s.ActivityDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetailsActivityDetail struct {

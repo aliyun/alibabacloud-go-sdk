@@ -16,15 +16,15 @@ type iModifyInstanceNetworkOptionsResponseBody interface {
 }
 
 type ModifyInstanceNetworkOptionsResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the redeployment task.
+	// The ID of the task for which the bandwidth weight is modified.
 	//
-	// You can call the [DescribeTasks](https://help.aliyun.com/document_detail/25622.html) operation to query the redeployment result.
+	// You can use the [DescribeTasks](https://help.aliyun.com/document_detail/25622.html) interface to modify the bandwidth weight result.
 	//
 	// example:
 	//

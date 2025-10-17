@@ -373,7 +373,37 @@ func (s *CreateNetworkInterfaceResponseBody) SetZoneId(v string) *CreateNetworkI
 }
 
 func (s *CreateNetworkInterfaceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv4PrefixSets != nil {
+		if err := s.Ipv4PrefixSets.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Ipv6PrefixSets != nil {
+		if err := s.Ipv6PrefixSets.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Ipv6Sets != nil {
+		if err := s.Ipv6Sets.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrivateIpSets != nil {
+		if err := s.PrivateIpSets.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityGroupIds != nil {
+		if err := s.SecurityGroupIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateNetworkInterfaceResponseBodyIpv4PrefixSets struct {
@@ -398,7 +428,16 @@ func (s *CreateNetworkInterfaceResponseBodyIpv4PrefixSets) SetIpv4PrefixSet(v []
 }
 
 func (s *CreateNetworkInterfaceResponseBodyIpv4PrefixSets) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv4PrefixSet != nil {
+		for _, item := range s.Ipv4PrefixSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateNetworkInterfaceResponseBodyIpv4PrefixSetsIpv4PrefixSet struct {
@@ -453,7 +492,16 @@ func (s *CreateNetworkInterfaceResponseBodyIpv6PrefixSets) SetIpv6PrefixSet(v []
 }
 
 func (s *CreateNetworkInterfaceResponseBodyIpv6PrefixSets) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6PrefixSet != nil {
+		for _, item := range s.Ipv6PrefixSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateNetworkInterfaceResponseBodyIpv6PrefixSetsIpv6PrefixSet struct {
@@ -508,7 +556,16 @@ func (s *CreateNetworkInterfaceResponseBodyIpv6Sets) SetIpv6Set(v []*CreateNetwo
 }
 
 func (s *CreateNetworkInterfaceResponseBodyIpv6Sets) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6Set != nil {
+		for _, item := range s.Ipv6Set {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateNetworkInterfaceResponseBodyIpv6SetsIpv6Set struct {
@@ -563,7 +620,16 @@ func (s *CreateNetworkInterfaceResponseBodyPrivateIpSets) SetPrivateIpSet(v []*C
 }
 
 func (s *CreateNetworkInterfaceResponseBodyPrivateIpSets) Validate() error {
-	return dara.Validate(s)
+	if s.PrivateIpSet != nil {
+		for _, item := range s.PrivateIpSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateNetworkInterfaceResponseBodyPrivateIpSetsPrivateIpSet struct {
@@ -658,7 +724,16 @@ func (s *CreateNetworkInterfaceResponseBodyTags) SetTag(v []*CreateNetworkInterf
 }
 
 func (s *CreateNetworkInterfaceResponseBodyTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateNetworkInterfaceResponseBodyTagsTag struct {

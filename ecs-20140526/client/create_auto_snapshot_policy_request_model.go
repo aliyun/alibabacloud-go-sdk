@@ -291,7 +291,21 @@ func (s *CreateAutoSnapshotPolicyRequest) SetTimePoints(v string) *CreateAutoSna
 }
 
 func (s *CreateAutoSnapshotPolicyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CopyEncryptionConfiguration != nil {
+		if err := s.CopyEncryptionConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAutoSnapshotPolicyRequestCopyEncryptionConfiguration struct {
@@ -353,7 +367,16 @@ func (s *CreateAutoSnapshotPolicyRequestCopyEncryptionConfiguration) SetKMSKeyId
 }
 
 func (s *CreateAutoSnapshotPolicyRequestCopyEncryptionConfiguration) Validate() error {
-	return dara.Validate(s)
+	if s.Arn != nil {
+		for _, item := range s.Arn {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAutoSnapshotPolicyRequestCopyEncryptionConfigurationArn struct {

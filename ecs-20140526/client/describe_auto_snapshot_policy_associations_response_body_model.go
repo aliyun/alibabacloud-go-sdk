@@ -59,7 +59,12 @@ func (s *DescribeAutoSnapshotPolicyAssociationsResponseBody) SetRequestId(v stri
 }
 
 func (s *DescribeAutoSnapshotPolicyAssociationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AutoSnapshotPolicyAssociations != nil {
+		if err := s.AutoSnapshotPolicyAssociations.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAutoSnapshotPolicyAssociationsResponseBodyAutoSnapshotPolicyAssociations struct {
@@ -84,7 +89,16 @@ func (s *DescribeAutoSnapshotPolicyAssociationsResponseBodyAutoSnapshotPolicyAss
 }
 
 func (s *DescribeAutoSnapshotPolicyAssociationsResponseBodyAutoSnapshotPolicyAssociations) Validate() error {
-	return dara.Validate(s)
+	if s.AutoSnapshotPolicyAssociation != nil {
+		for _, item := range s.AutoSnapshotPolicyAssociation {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAutoSnapshotPolicyAssociationsResponseBodyAutoSnapshotPolicyAssociationsAutoSnapshotPolicyAssociation struct {

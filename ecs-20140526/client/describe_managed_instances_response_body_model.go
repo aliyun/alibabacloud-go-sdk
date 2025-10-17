@@ -121,7 +121,16 @@ func (s *DescribeManagedInstancesResponseBody) SetTotalCount(v int64) *DescribeM
 }
 
 func (s *DescribeManagedInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeManagedInstancesResponseBodyInstances struct {
@@ -376,7 +385,16 @@ func (s *DescribeManagedInstancesResponseBodyInstances) SetTags(v []*DescribeMan
 }
 
 func (s *DescribeManagedInstancesResponseBodyInstances) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeManagedInstancesResponseBodyInstancesTags struct {

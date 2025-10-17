@@ -53,7 +53,12 @@ func (s *AssignPrivateIpAddressesResponseBody) SetRequestId(v string) *AssignPri
 }
 
 func (s *AssignPrivateIpAddressesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AssignedPrivateIpAddressesSet != nil {
+		if err := s.AssignedPrivateIpAddressesSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet struct {
@@ -105,7 +110,17 @@ func (s *AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet) SetP
 }
 
 func (s *AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv4PrefixSet != nil {
+		if err := s.Ipv4PrefixSet.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrivateIpSet != nil {
+		if err := s.PrivateIpSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSetIpv4PrefixSet struct {

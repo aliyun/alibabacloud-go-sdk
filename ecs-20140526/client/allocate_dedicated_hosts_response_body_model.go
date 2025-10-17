@@ -72,7 +72,12 @@ func (s *AllocateDedicatedHostsResponseBody) SetRequestId(v string) *AllocateDed
 }
 
 func (s *AllocateDedicatedHostsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DedicatedHostIdSets != nil {
+		if err := s.DedicatedHostIdSets.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AllocateDedicatedHostsResponseBodyDedicatedHostIdSets struct {

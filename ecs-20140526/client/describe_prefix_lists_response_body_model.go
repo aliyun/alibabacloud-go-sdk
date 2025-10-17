@@ -70,7 +70,12 @@ func (s *DescribePrefixListsResponseBody) SetRequestId(v string) *DescribePrefix
 }
 
 func (s *DescribePrefixListsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PrefixLists != nil {
+		if err := s.PrefixLists.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePrefixListsResponseBodyPrefixLists struct {
@@ -95,7 +100,16 @@ func (s *DescribePrefixListsResponseBodyPrefixLists) SetPrefixList(v []*Describe
 }
 
 func (s *DescribePrefixListsResponseBodyPrefixLists) Validate() error {
-	return dara.Validate(s)
+	if s.PrefixList != nil {
+		for _, item := range s.PrefixList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePrefixListsResponseBodyPrefixListsPrefixList struct {
@@ -245,7 +259,12 @@ func (s *DescribePrefixListsResponseBodyPrefixListsPrefixList) SetTags(v *Descri
 }
 
 func (s *DescribePrefixListsResponseBodyPrefixListsPrefixList) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePrefixListsResponseBodyPrefixListsPrefixListTags struct {
@@ -270,7 +289,16 @@ func (s *DescribePrefixListsResponseBodyPrefixListsPrefixListTags) SetTag(v []*D
 }
 
 func (s *DescribePrefixListsResponseBodyPrefixListsPrefixListTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePrefixListsResponseBodyPrefixListsPrefixListTagsTag struct {

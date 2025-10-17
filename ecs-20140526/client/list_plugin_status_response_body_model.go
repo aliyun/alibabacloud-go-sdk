@@ -121,7 +121,12 @@ func (s *ListPluginStatusResponseBody) SetTotalCount(v int64) *ListPluginStatusR
 }
 
 func (s *ListPluginStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstancePluginStatusSet != nil {
+		if err := s.InstancePluginStatusSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPluginStatusResponseBodyInstancePluginStatusSet struct {
@@ -146,7 +151,16 @@ func (s *ListPluginStatusResponseBodyInstancePluginStatusSet) SetInstancePluginS
 }
 
 func (s *ListPluginStatusResponseBodyInstancePluginStatusSet) Validate() error {
-	return dara.Validate(s)
+	if s.InstancePluginStatus != nil {
+		for _, item := range s.InstancePluginStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatus struct {
@@ -187,7 +201,12 @@ func (s *ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatus
 }
 
 func (s *ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatus) Validate() error {
-	return dara.Validate(s)
+	if s.PluginStatusSet != nil {
+		if err := s.PluginStatusSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSet struct {
@@ -212,7 +231,16 @@ func (s *ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatus
 }
 
 func (s *ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSet) Validate() error {
-	return dara.Validate(s)
+	if s.PluginStatus != nil {
+		for _, item := range s.PluginStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSetPluginStatus struct {

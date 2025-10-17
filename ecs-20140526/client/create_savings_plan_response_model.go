@@ -59,5 +59,10 @@ func (s *CreateSavingsPlanResponse) SetBody(v *CreateSavingsPlanResponseBody) *C
 }
 
 func (s *CreateSavingsPlanResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

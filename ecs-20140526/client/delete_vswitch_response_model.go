@@ -59,5 +59,10 @@ func (s *DeleteVSwitchResponse) SetBody(v *DeleteVSwitchResponseBody) *DeleteVSw
 }
 
 func (s *DeleteVSwitchResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

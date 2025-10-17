@@ -83,7 +83,12 @@ func (s *DescribePhysicalConnectionsResponseBody) SetTotalCount(v int32) *Descri
 }
 
 func (s *DescribePhysicalConnectionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PhysicalConnectionSet != nil {
+		if err := s.PhysicalConnectionSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePhysicalConnectionsResponseBodyPhysicalConnectionSet struct {
@@ -108,7 +113,16 @@ func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSet) SetPhysic
 }
 
 func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSet) Validate() error {
-	return dara.Validate(s)
+	if s.PhysicalConnectionType != nil {
+		for _, item := range s.PhysicalConnectionType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType struct {

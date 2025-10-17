@@ -104,7 +104,12 @@ func (s *DetachInstanceRamRoleResponseBody) SetTotalCount(v int32) *DetachInstan
 }
 
 func (s *DetachInstanceRamRoleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DetachInstanceRamRoleResults != nil {
+		if err := s.DetachInstanceRamRoleResults.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DetachInstanceRamRoleResponseBodyDetachInstanceRamRoleResults struct {
@@ -129,7 +134,16 @@ func (s *DetachInstanceRamRoleResponseBodyDetachInstanceRamRoleResults) SetDetac
 }
 
 func (s *DetachInstanceRamRoleResponseBodyDetachInstanceRamRoleResults) Validate() error {
-	return dara.Validate(s)
+	if s.DetachInstanceRamRoleResult != nil {
+		for _, item := range s.DetachInstanceRamRoleResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DetachInstanceRamRoleResponseBodyDetachInstanceRamRoleResultsDetachInstanceRamRoleResult struct {
@@ -215,7 +229,12 @@ func (s *DetachInstanceRamRoleResponseBodyDetachInstanceRamRoleResultsDetachInst
 }
 
 func (s *DetachInstanceRamRoleResponseBodyDetachInstanceRamRoleResultsDetachInstanceRamRoleResult) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceRamRoleSets != nil {
+		if err := s.InstanceRamRoleSets.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DetachInstanceRamRoleResponseBodyDetachInstanceRamRoleResultsDetachInstanceRamRoleResultInstanceRamRoleSets struct {
@@ -240,7 +259,16 @@ func (s *DetachInstanceRamRoleResponseBodyDetachInstanceRamRoleResultsDetachInst
 }
 
 func (s *DetachInstanceRamRoleResponseBodyDetachInstanceRamRoleResultsDetachInstanceRamRoleResultInstanceRamRoleSets) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceRamRoleSet != nil {
+		for _, item := range s.InstanceRamRoleSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DetachInstanceRamRoleResponseBodyDetachInstanceRamRoleResultsDetachInstanceRamRoleResultInstanceRamRoleSetsInstanceRamRoleSet struct {

@@ -59,5 +59,10 @@ func (s *PurchaseStorageCapacityUnitResponse) SetBody(v *PurchaseStorageCapacity
 }
 
 func (s *PurchaseStorageCapacityUnitResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

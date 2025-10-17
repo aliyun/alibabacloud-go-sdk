@@ -70,7 +70,16 @@ func (s *DescribePortRangeListsResponseBody) SetRequestId(v string) *DescribePor
 }
 
 func (s *DescribePortRangeListsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PortRangeLists != nil {
+		for _, item := range s.PortRangeLists {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePortRangeListsResponseBodyPortRangeLists struct {
@@ -201,7 +210,16 @@ func (s *DescribePortRangeListsResponseBodyPortRangeLists) SetTags(v []*Describe
 }
 
 func (s *DescribePortRangeListsResponseBodyPortRangeLists) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePortRangeListsResponseBodyPortRangeListsTags struct {

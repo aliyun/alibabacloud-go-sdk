@@ -59,5 +59,10 @@ func (s *DeleteHpcClusterResponse) SetBody(v *DeleteHpcClusterResponseBody) *Del
 }
 
 func (s *DeleteHpcClusterResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

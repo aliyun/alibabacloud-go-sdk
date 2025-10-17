@@ -104,7 +104,12 @@ func (s *DescribeResourceByTagsResponseBody) SetTotalCount(v int32) *DescribeRes
 }
 
 func (s *DescribeResourceByTagsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Resources != nil {
+		if err := s.Resources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeResourceByTagsResponseBodyResources struct {
@@ -129,7 +134,16 @@ func (s *DescribeResourceByTagsResponseBodyResources) SetResource(v []*DescribeR
 }
 
 func (s *DescribeResourceByTagsResponseBodyResources) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		for _, item := range s.Resource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeResourceByTagsResponseBodyResourcesResource struct {

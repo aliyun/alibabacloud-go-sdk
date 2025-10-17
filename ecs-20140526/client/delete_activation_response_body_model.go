@@ -53,7 +53,12 @@ func (s *DeleteActivationResponseBody) SetRequestId(v string) *DeleteActivationR
 }
 
 func (s *DeleteActivationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Activation != nil {
+		if err := s.Activation.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteActivationResponseBodyActivation struct {

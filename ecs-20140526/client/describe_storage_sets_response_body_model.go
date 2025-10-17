@@ -104,7 +104,12 @@ func (s *DescribeStorageSetsResponseBody) SetTotalCount(v int32) *DescribeStorag
 }
 
 func (s *DescribeStorageSetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StorageSets != nil {
+		if err := s.StorageSets.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeStorageSetsResponseBodyStorageSets struct {
@@ -129,7 +134,16 @@ func (s *DescribeStorageSetsResponseBodyStorageSets) SetStorageSet(v []*Describe
 }
 
 func (s *DescribeStorageSetsResponseBodyStorageSets) Validate() error {
-	return dara.Validate(s)
+	if s.StorageSet != nil {
+		for _, item := range s.StorageSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeStorageSetsResponseBodyStorageSetsStorageSet struct {
@@ -269,7 +283,12 @@ func (s *DescribeStorageSetsResponseBodyStorageSetsStorageSet) SetZoneId(v strin
 }
 
 func (s *DescribeStorageSetsResponseBodyStorageSetsStorageSet) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeStorageSetsResponseBodyStorageSetsStorageSetTags struct {
@@ -294,7 +313,16 @@ func (s *DescribeStorageSetsResponseBodyStorageSetsStorageSetTags) SetTag(v []*D
 }
 
 func (s *DescribeStorageSetsResponseBodyStorageSetsStorageSetTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeStorageSetsResponseBodyStorageSetsStorageSetTagsTag struct {

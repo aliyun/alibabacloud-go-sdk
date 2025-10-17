@@ -104,7 +104,12 @@ func (s *DescribeStorageCapacityUnitsResponseBody) SetTotalCount(v int32) *Descr
 }
 
 func (s *DescribeStorageCapacityUnitsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StorageCapacityUnits != nil {
+		if err := s.StorageCapacityUnits.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeStorageCapacityUnitsResponseBodyStorageCapacityUnits struct {
@@ -129,7 +134,16 @@ func (s *DescribeStorageCapacityUnitsResponseBodyStorageCapacityUnits) SetStorag
 }
 
 func (s *DescribeStorageCapacityUnitsResponseBodyStorageCapacityUnits) Validate() error {
-	return dara.Validate(s)
+	if s.StorageCapacityUnit != nil {
+		for _, item := range s.StorageCapacityUnit {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeStorageCapacityUnitsResponseBodyStorageCapacityUnitsStorageCapacityUnit struct {
@@ -317,7 +331,12 @@ func (s *DescribeStorageCapacityUnitsResponseBodyStorageCapacityUnitsStorageCapa
 }
 
 func (s *DescribeStorageCapacityUnitsResponseBodyStorageCapacityUnitsStorageCapacityUnit) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeStorageCapacityUnitsResponseBodyStorageCapacityUnitsStorageCapacityUnitTags struct {
@@ -342,7 +361,16 @@ func (s *DescribeStorageCapacityUnitsResponseBodyStorageCapacityUnitsStorageCapa
 }
 
 func (s *DescribeStorageCapacityUnitsResponseBodyStorageCapacityUnitsStorageCapacityUnitTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeStorageCapacityUnitsResponseBodyStorageCapacityUnitsStorageCapacityUnitTagsTag struct {

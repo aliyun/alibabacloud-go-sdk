@@ -83,7 +83,12 @@ func (s *DescribeRouteTablesResponseBody) SetTotalCount(v int32) *DescribeRouteT
 }
 
 func (s *DescribeRouteTablesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RouteTables != nil {
+		if err := s.RouteTables.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRouteTablesResponseBodyRouteTables struct {
@@ -108,7 +113,16 @@ func (s *DescribeRouteTablesResponseBodyRouteTables) SetRouteTable(v []*Describe
 }
 
 func (s *DescribeRouteTablesResponseBodyRouteTables) Validate() error {
-	return dara.Validate(s)
+	if s.RouteTable != nil {
+		for _, item := range s.RouteTable {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRouteTablesResponseBodyRouteTablesRouteTable struct {
@@ -183,7 +197,12 @@ func (s *DescribeRouteTablesResponseBodyRouteTablesRouteTable) SetVRouterId(v st
 }
 
 func (s *DescribeRouteTablesResponseBodyRouteTablesRouteTable) Validate() error {
-	return dara.Validate(s)
+	if s.RouteEntrys != nil {
+		if err := s.RouteEntrys.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrys struct {
@@ -208,7 +227,16 @@ func (s *DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrys) SetRou
 }
 
 func (s *DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrys) Validate() error {
-	return dara.Validate(s)
+	if s.RouteEntry != nil {
+		for _, item := range s.RouteEntry {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrysRouteEntry struct {
@@ -293,7 +321,12 @@ func (s *DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrysRouteEnt
 }
 
 func (s *DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrysRouteEntry) Validate() error {
-	return dara.Validate(s)
+	if s.NextHops != nil {
+		if err := s.NextHops.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrysRouteEntryNextHops struct {
@@ -318,7 +351,16 @@ func (s *DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrysRouteEnt
 }
 
 func (s *DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrysRouteEntryNextHops) Validate() error {
-	return dara.Validate(s)
+	if s.NextHop != nil {
+		for _, item := range s.NextHop {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrysRouteEntryNextHopsNextHop struct {

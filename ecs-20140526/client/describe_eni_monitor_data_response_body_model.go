@@ -70,7 +70,12 @@ func (s *DescribeEniMonitorDataResponseBody) SetTotalCount(v int32) *DescribeEni
 }
 
 func (s *DescribeEniMonitorDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorData != nil {
+		if err := s.MonitorData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEniMonitorDataResponseBodyMonitorData struct {
@@ -95,7 +100,16 @@ func (s *DescribeEniMonitorDataResponseBodyMonitorData) SetEniMonitorData(v []*D
 }
 
 func (s *DescribeEniMonitorDataResponseBodyMonitorData) Validate() error {
-	return dara.Validate(s)
+	if s.EniMonitorData != nil {
+		for _, item := range s.EniMonitorData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEniMonitorDataResponseBodyMonitorDataEniMonitorData struct {

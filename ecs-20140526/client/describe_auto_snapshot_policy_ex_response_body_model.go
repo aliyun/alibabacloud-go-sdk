@@ -104,7 +104,12 @@ func (s *DescribeAutoSnapshotPolicyExResponseBody) SetTotalCount(v int32) *Descr
 }
 
 func (s *DescribeAutoSnapshotPolicyExResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AutoSnapshotPolicies != nil {
+		if err := s.AutoSnapshotPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPolicies struct {
@@ -129,7 +134,16 @@ func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPolicies) SetAutoSn
 }
 
 func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.AutoSnapshotPolicy != nil {
+		for _, item := range s.AutoSnapshotPolicy {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicy struct {
@@ -407,7 +421,17 @@ func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapsho
 }
 
 func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.CopyEncryptionConfiguration != nil {
+		if err := s.CopyEncryptionConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyCopyEncryptionConfiguration struct {
@@ -483,7 +507,16 @@ func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapsho
 }
 
 func (s *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTagsTag struct {

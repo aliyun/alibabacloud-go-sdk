@@ -1036,7 +1036,58 @@ func (s *CreateLaunchTemplateRequest) SetZoneId(v string) *CreateLaunchTemplateR
 }
 
 func (s *CreateLaunchTemplateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SystemDisk != nil {
+		if err := s.SystemDisk.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataDisk != nil {
+		for _, item := range s.DataDisk {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ImageOptions != nil {
+		if err := s.ImageOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkInterface != nil {
+		for _, item := range s.NetworkInterface {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SecurityOptions != nil {
+		if err := s.SecurityOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TemplateTag != nil {
+		for _, item := range s.TemplateTag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateLaunchTemplateRequestSystemDisk struct {

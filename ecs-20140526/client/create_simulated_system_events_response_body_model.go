@@ -53,7 +53,12 @@ func (s *CreateSimulatedSystemEventsResponseBody) SetRequestId(v string) *Create
 }
 
 func (s *CreateSimulatedSystemEventsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EventIdSet != nil {
+		if err := s.EventIdSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateSimulatedSystemEventsResponseBodyEventIdSet struct {

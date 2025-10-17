@@ -244,7 +244,12 @@ func (s *DescribeTaskAttributeResponseBody) SetTotalCount(v int32) *DescribeTask
 }
 
 func (s *DescribeTaskAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OperationProgressSet != nil {
+		if err := s.OperationProgressSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTaskAttributeResponseBodyOperationProgressSet struct {
@@ -269,7 +274,16 @@ func (s *DescribeTaskAttributeResponseBodyOperationProgressSet) SetOperationProg
 }
 
 func (s *DescribeTaskAttributeResponseBodyOperationProgressSet) Validate() error {
-	return dara.Validate(s)
+	if s.OperationProgress != nil {
+		for _, item := range s.OperationProgress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTaskAttributeResponseBodyOperationProgressSetOperationProgress struct {
@@ -340,7 +354,12 @@ func (s *DescribeTaskAttributeResponseBodyOperationProgressSetOperationProgress)
 }
 
 func (s *DescribeTaskAttributeResponseBodyOperationProgressSetOperationProgress) Validate() error {
-	return dara.Validate(s)
+	if s.RelatedItemSet != nil {
+		if err := s.RelatedItemSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTaskAttributeResponseBodyOperationProgressSetOperationProgressRelatedItemSet struct {
@@ -365,7 +384,16 @@ func (s *DescribeTaskAttributeResponseBodyOperationProgressSetOperationProgressR
 }
 
 func (s *DescribeTaskAttributeResponseBodyOperationProgressSetOperationProgressRelatedItemSet) Validate() error {
-	return dara.Validate(s)
+	if s.RelatedItem != nil {
+		for _, item := range s.RelatedItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTaskAttributeResponseBodyOperationProgressSetOperationProgressRelatedItemSetRelatedItem struct {

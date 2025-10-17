@@ -651,7 +651,58 @@ func (s *CreateAutoProvisioningGroupRequest) SetValidUntil(v string) *CreateAuto
 }
 
 func (s *CreateAutoProvisioningGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.LaunchConfiguration != nil {
+		if err := s.LaunchConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataDiskConfig != nil {
+		for _, item := range s.DataDiskConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LaunchTemplateConfig != nil {
+		for _, item := range s.LaunchTemplateConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PrePaidOptions != nil {
+		if err := s.PrePaidOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourcePoolOptions != nil {
+		if err := s.ResourcePoolOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SystemDiskConfig != nil {
+		for _, item := range s.SystemDiskConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAutoProvisioningGroupRequestLaunchConfiguration struct {
@@ -1394,7 +1445,54 @@ func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetSpotInterrupt
 }
 
 func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) Validate() error {
-	return dara.Validate(s)
+	if s.Arn != nil {
+		for _, item := range s.Arn {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DataDisk != nil {
+		for _, item := range s.DataDisk {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SystemDisk != nil {
+		if err := s.SystemDisk.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.CpuOptions != nil {
+		if err := s.CpuOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageOptions != nil {
+		if err := s.ImageOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SchedulerOptions != nil {
+		if err := s.SchedulerOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAutoProvisioningGroupRequestLaunchConfigurationArn struct {
@@ -2333,7 +2431,16 @@ func (s *CreateAutoProvisioningGroupRequestPrePaidOptions) SetSpecifyCapacityDis
 }
 
 func (s *CreateAutoProvisioningGroupRequestPrePaidOptions) Validate() error {
-	return dara.Validate(s)
+	if s.SpecifyCapacityDistribution != nil {
+		for _, item := range s.SpecifyCapacityDistribution {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAutoProvisioningGroupRequestPrePaidOptionsSpecifyCapacityDistribution struct {

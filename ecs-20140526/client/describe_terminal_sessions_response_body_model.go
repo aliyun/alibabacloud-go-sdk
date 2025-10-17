@@ -70,7 +70,12 @@ func (s *DescribeTerminalSessionsResponseBody) SetSessions(v *DescribeTerminalSe
 }
 
 func (s *DescribeTerminalSessionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Sessions != nil {
+		if err := s.Sessions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTerminalSessionsResponseBodySessions struct {
@@ -95,7 +100,16 @@ func (s *DescribeTerminalSessionsResponseBodySessions) SetSession(v []*DescribeT
 }
 
 func (s *DescribeTerminalSessionsResponseBodySessions) Validate() error {
-	return dara.Validate(s)
+	if s.Session != nil {
+		for _, item := range s.Session {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTerminalSessionsResponseBodySessionsSession struct {
@@ -253,7 +267,12 @@ func (s *DescribeTerminalSessionsResponseBodySessionsSession) SetUsername(v stri
 }
 
 func (s *DescribeTerminalSessionsResponseBodySessionsSession) Validate() error {
-	return dara.Validate(s)
+	if s.Connections != nil {
+		if err := s.Connections.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTerminalSessionsResponseBodySessionsSessionConnections struct {
@@ -278,7 +297,16 @@ func (s *DescribeTerminalSessionsResponseBodySessionsSessionConnections) SetConn
 }
 
 func (s *DescribeTerminalSessionsResponseBodySessionsSessionConnections) Validate() error {
-	return dara.Validate(s)
+	if s.Connection != nil {
+		for _, item := range s.Connection {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTerminalSessionsResponseBodySessionsSessionConnectionsConnection struct {

@@ -119,7 +119,12 @@ func (s *ReleaseCapacityReservationRequest) SetResourceOwnerId(v int64) *Release
 }
 
 func (s *ReleaseCapacityReservationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PrivatePoolOptions != nil {
+		if err := s.PrivatePoolOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ReleaseCapacityReservationRequestPrivatePoolOptions struct {

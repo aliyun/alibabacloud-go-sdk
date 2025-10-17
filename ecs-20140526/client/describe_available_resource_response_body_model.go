@@ -53,7 +53,12 @@ func (s *DescribeAvailableResourceResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeAvailableResourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableZones != nil {
+		if err := s.AvailableZones.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZones struct {
@@ -78,7 +83,16 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZones) SetAvailableZone(v
 }
 
 func (s *DescribeAvailableResourceResponseBodyAvailableZones) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableZone != nil {
+		for _, item := range s.AvailableZone {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone struct {
@@ -176,7 +190,12 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) SetZo
 }
 
 func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableResources != nil {
+		if err := s.AvailableResources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailableResources struct {
@@ -201,7 +220,16 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailab
 }
 
 func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailableResources) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableResource != nil {
+		for _, item := range s.AvailableResource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailableResourcesAvailableResource struct {
@@ -256,7 +284,12 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailab
 }
 
 func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailableResourcesAvailableResource) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedResources != nil {
+		if err := s.SupportedResources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailableResourcesAvailableResourceSupportedResources struct {
@@ -281,7 +314,16 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailab
 }
 
 func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailableResourcesAvailableResourceSupportedResources) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedResource != nil {
+		for _, item := range s.SupportedResource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailableResourcesAvailableResourceSupportedResourcesSupportedResource struct {

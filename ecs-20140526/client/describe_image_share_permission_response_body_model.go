@@ -151,7 +151,17 @@ func (s *DescribeImageSharePermissionResponseBody) SetTotalCount(v int32) *Descr
 }
 
 func (s *DescribeImageSharePermissionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Accounts != nil {
+		if err := s.Accounts.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ShareGroups != nil {
+		if err := s.ShareGroups.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImageSharePermissionResponseBodyAccounts struct {
@@ -176,7 +186,16 @@ func (s *DescribeImageSharePermissionResponseBodyAccounts) SetAccount(v []*Descr
 }
 
 func (s *DescribeImageSharePermissionResponseBodyAccounts) Validate() error {
-	return dara.Validate(s)
+	if s.Account != nil {
+		for _, item := range s.Account {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageSharePermissionResponseBodyAccountsAccount struct {
@@ -246,7 +265,16 @@ func (s *DescribeImageSharePermissionResponseBodyShareGroups) SetShareGroup(v []
 }
 
 func (s *DescribeImageSharePermissionResponseBodyShareGroups) Validate() error {
-	return dara.Validate(s)
+	if s.ShareGroup != nil {
+		for _, item := range s.ShareGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageSharePermissionResponseBodyShareGroupsShareGroup struct {

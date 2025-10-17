@@ -59,5 +59,10 @@ func (s *CreateImageComponentResponse) SetBody(v *CreateImageComponentResponseBo
 }
 
 func (s *CreateImageComponentResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

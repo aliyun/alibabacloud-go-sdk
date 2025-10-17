@@ -59,5 +59,10 @@ func (s *DescribeAutoSnapshotPolicyExResponse) SetBody(v *DescribeAutoSnapshotPo
 }
 
 func (s *DescribeAutoSnapshotPolicyExResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

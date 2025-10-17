@@ -53,7 +53,12 @@ func (s *DescribeImageFromFamilyResponseBody) SetRequestId(v string) *DescribeIm
 }
 
 func (s *DescribeImageFromFamilyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Image != nil {
+		if err := s.Image.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImageFromFamilyResponseBodyImage struct {
@@ -433,7 +438,17 @@ func (s *DescribeImageFromFamilyResponseBodyImage) SetUsage(v string) *DescribeI
 }
 
 func (s *DescribeImageFromFamilyResponseBodyImage) Validate() error {
-	return dara.Validate(s)
+	if s.DiskDeviceMappings != nil {
+		if err := s.DiskDeviceMappings.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImageFromFamilyResponseBodyImageDiskDeviceMappings struct {
@@ -458,7 +473,16 @@ func (s *DescribeImageFromFamilyResponseBodyImageDiskDeviceMappings) SetDiskDevi
 }
 
 func (s *DescribeImageFromFamilyResponseBodyImageDiskDeviceMappings) Validate() error {
-	return dara.Validate(s)
+	if s.DiskDeviceMapping != nil {
+		for _, item := range s.DiskDeviceMapping {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageFromFamilyResponseBodyImageDiskDeviceMappingsDiskDeviceMapping struct {
@@ -605,7 +629,16 @@ func (s *DescribeImageFromFamilyResponseBodyImageTags) SetTag(v []*DescribeImage
 }
 
 func (s *DescribeImageFromFamilyResponseBodyImageTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageFromFamilyResponseBodyImageTagsTag struct {

@@ -59,5 +59,10 @@ func (s *DescribeVpcsResponse) SetBody(v *DescribeVpcsResponseBody) *DescribeVpc
 }
 
 func (s *DescribeVpcsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

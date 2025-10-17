@@ -104,7 +104,12 @@ func (s *DescribeDisksFullStatusResponseBody) SetTotalCount(v int32) *DescribeDi
 }
 
 func (s *DescribeDisksFullStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DiskFullStatusSet != nil {
+		if err := s.DiskFullStatusSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDisksFullStatusResponseBodyDiskFullStatusSet struct {
@@ -129,7 +134,16 @@ func (s *DescribeDisksFullStatusResponseBodyDiskFullStatusSet) SetDiskFullStatus
 }
 
 func (s *DescribeDisksFullStatusResponseBodyDiskFullStatusSet) Validate() error {
-	return dara.Validate(s)
+	if s.DiskFullStatusType != nil {
+		for _, item := range s.DiskFullStatusType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDisksFullStatusResponseBodyDiskFullStatusSetDiskFullStatusType struct {
@@ -226,7 +240,22 @@ func (s *DescribeDisksFullStatusResponseBodyDiskFullStatusSetDiskFullStatusType)
 }
 
 func (s *DescribeDisksFullStatusResponseBodyDiskFullStatusSetDiskFullStatusType) Validate() error {
-	return dara.Validate(s)
+	if s.DiskEventSet != nil {
+		if err := s.DiskEventSet.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HealthStatus != nil {
+		if err := s.HealthStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Status != nil {
+		if err := s.Status.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDisksFullStatusResponseBodyDiskFullStatusSetDiskFullStatusTypeDiskEventSet struct {
@@ -251,7 +280,16 @@ func (s *DescribeDisksFullStatusResponseBodyDiskFullStatusSetDiskFullStatusTypeD
 }
 
 func (s *DescribeDisksFullStatusResponseBodyDiskFullStatusSetDiskFullStatusTypeDiskEventSet) Validate() error {
-	return dara.Validate(s)
+	if s.DiskEventType != nil {
+		for _, item := range s.DiskEventType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDisksFullStatusResponseBodyDiskFullStatusSetDiskFullStatusTypeDiskEventSetDiskEventType struct {
@@ -337,7 +375,12 @@ func (s *DescribeDisksFullStatusResponseBodyDiskFullStatusSetDiskFullStatusTypeD
 }
 
 func (s *DescribeDisksFullStatusResponseBodyDiskFullStatusSetDiskFullStatusTypeDiskEventSetDiskEventType) Validate() error {
-	return dara.Validate(s)
+	if s.EventType != nil {
+		if err := s.EventType.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDisksFullStatusResponseBodyDiskFullStatusSetDiskFullStatusTypeDiskEventSetDiskEventTypeEventType struct {

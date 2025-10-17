@@ -121,7 +121,12 @@ func (s *DescribeSendFileResultsResponseBody) SetTotalCount(v int64) *DescribeSe
 }
 
 func (s *DescribeSendFileResultsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Invocations != nil {
+		if err := s.Invocations.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSendFileResultsResponseBodyInvocations struct {
@@ -146,7 +151,16 @@ func (s *DescribeSendFileResultsResponseBodyInvocations) SetInvocation(v []*Desc
 }
 
 func (s *DescribeSendFileResultsResponseBodyInvocations) Validate() error {
-	return dara.Validate(s)
+	if s.Invocation != nil {
+		for _, item := range s.Invocation {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSendFileResultsResponseBodyInvocationsInvocation struct {
@@ -402,7 +416,17 @@ func (s *DescribeSendFileResultsResponseBodyInvocationsInvocation) SetVmCount(v 
 }
 
 func (s *DescribeSendFileResultsResponseBodyInvocationsInvocation) Validate() error {
-	return dara.Validate(s)
+	if s.InvokeInstances != nil {
+		if err := s.InvokeInstances.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeInstances struct {
@@ -427,7 +451,16 @@ func (s *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeInstances
 }
 
 func (s *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeInstances) Validate() error {
-	return dara.Validate(s)
+	if s.InvokeInstance != nil {
+		for _, item := range s.InvokeInstance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeInstancesInvokeInstance struct {
@@ -677,7 +710,16 @@ func (s *DescribeSendFileResultsResponseBodyInvocationsInvocationTags) SetTag(v 
 }
 
 func (s *DescribeSendFileResultsResponseBodyInvocationsInvocationTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSendFileResultsResponseBodyInvocationsInvocationTagsTag struct {

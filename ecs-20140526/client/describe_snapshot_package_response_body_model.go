@@ -104,7 +104,12 @@ func (s *DescribeSnapshotPackageResponseBody) SetTotalCount(v int32) *DescribeSn
 }
 
 func (s *DescribeSnapshotPackageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SnapshotPackages != nil {
+		if err := s.SnapshotPackages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSnapshotPackageResponseBodySnapshotPackages struct {
@@ -129,7 +134,16 @@ func (s *DescribeSnapshotPackageResponseBodySnapshotPackages) SetSnapshotPackage
 }
 
 func (s *DescribeSnapshotPackageResponseBodySnapshotPackages) Validate() error {
-	return dara.Validate(s)
+	if s.SnapshotPackage != nil {
+		for _, item := range s.SnapshotPackage {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSnapshotPackageResponseBodySnapshotPackagesSnapshotPackage struct {

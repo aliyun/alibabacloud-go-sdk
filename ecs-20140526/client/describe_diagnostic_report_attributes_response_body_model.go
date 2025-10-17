@@ -260,7 +260,12 @@ func (s *DescribeDiagnosticReportAttributesResponseBody) SetStatus(v string) *De
 }
 
 func (s *DescribeDiagnosticReportAttributesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MetricResults != nil {
+		if err := s.MetricResults.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDiagnosticReportAttributesResponseBodyMetricResults struct {
@@ -285,7 +290,16 @@ func (s *DescribeDiagnosticReportAttributesResponseBodyMetricResults) SetMetricR
 }
 
 func (s *DescribeDiagnosticReportAttributesResponseBodyMetricResults) Validate() error {
-	return dara.Validate(s)
+	if s.MetricResult != nil {
+		for _, item := range s.MetricResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResult struct {
@@ -389,7 +403,12 @@ func (s *DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResult
 }
 
 func (s *DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResult) Validate() error {
-	return dara.Validate(s)
+	if s.Issues != nil {
+		if err := s.Issues.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResultIssues struct {
@@ -414,7 +433,16 @@ func (s *DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResult
 }
 
 func (s *DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResultIssues) Validate() error {
-	return dara.Validate(s)
+	if s.Issue != nil {
+		for _, item := range s.Issue {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResultIssuesIssue struct {

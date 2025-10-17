@@ -59,5 +59,10 @@ func (s *DescribeInstanceModificationPriceResponse) SetBody(v *DescribeInstanceM
 }
 
 func (s *DescribeInstanceModificationPriceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

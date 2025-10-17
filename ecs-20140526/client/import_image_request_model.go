@@ -434,7 +434,30 @@ func (s *ImportImageRequest) SetTag(v []*ImportImageRequestTag) *ImportImageRequ
 }
 
 func (s *ImportImageRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DiskDeviceMapping != nil {
+		for _, item := range s.DiskDeviceMapping {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Features != nil {
+		if err := s.Features.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ImportImageRequestDiskDeviceMapping struct {

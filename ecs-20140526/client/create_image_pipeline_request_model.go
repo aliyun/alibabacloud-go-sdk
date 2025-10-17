@@ -541,7 +541,31 @@ func (s *CreateImagePipelineRequest) SetVSwitchId(v string) *CreateImagePipeline
 }
 
 func (s *CreateImagePipelineRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AdvancedOptions != nil {
+		if err := s.AdvancedOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageOptions != nil {
+		if err := s.ImageOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImportImageOptions != nil {
+		if err := s.ImportImageOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateImagePipelineRequestAdvancedOptions struct {
@@ -680,7 +704,21 @@ func (s *CreateImagePipelineRequestImageOptions) SetImageTags(v []*CreateImagePi
 }
 
 func (s *CreateImagePipelineRequestImageOptions) Validate() error {
-	return dara.Validate(s)
+	if s.ImageFeatures != nil {
+		if err := s.ImageFeatures.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageTags != nil {
+		for _, item := range s.ImageTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateImagePipelineRequestImageOptionsImageFeatures struct {
@@ -790,7 +828,8 @@ type CreateImagePipelineRequestImportImageOptions struct {
 	// example:
 	//
 	// BIOS
-	BootMode *string `json:"BootMode,omitempty" xml:"BootMode,omitempty"`
+	BootMode    *string `json:"BootMode,omitempty" xml:"BootMode,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The information of disks from which the custom images are created.
 	//
 	// 	- When the N value is 1, this parameter creates a custom image from the system disk.
@@ -798,7 +837,9 @@ type CreateImagePipelineRequestImportImageOptions struct {
 	// 	- When the N value is an integer in the range of 2 to 17, this parameter creates a custom image from a data disk.
 	DiskDeviceMappings []*CreateImagePipelineRequestImportImageOptionsDiskDeviceMappings `json:"DiskDeviceMappings,omitempty" xml:"DiskDeviceMappings,omitempty" type:"Repeated"`
 	// The attributes of the image.
-	Features *CreateImagePipelineRequestImportImageOptionsFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Struct"`
+	Features        *CreateImagePipelineRequestImportImageOptionsFeatures          `json:"Features,omitempty" xml:"Features,omitempty" type:"Struct"`
+	ImageName       *string                                                        `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	ImportImageTags []*CreateImagePipelineRequestImportImageOptionsImportImageTags `json:"ImportImageTags,omitempty" xml:"ImportImageTags,omitempty" type:"Repeated"`
 	// The type of the license to use to activate the operating system after the image is imported. Valid values:
 	//
 	// 	- Auto: ECS detects the operating system of the image and allocates a license to the operating system. In this mode, the system first checks whether a license allocated by an official Alibaba Cloud channel is available for the operating system version specified by `Platform`. If a license allocated by an official Alibaba Cloud channel is available for the operating system version, the system allocates the license to the imported image. If no such license is available, the Bring Your Own License (BYOL) mode is used.
@@ -892,7 +933,9 @@ type CreateImagePipelineRequestImportImageOptions struct {
 	// example:
 	//
 	// false
-	RetainImportedImage *bool `json:"RetainImportedImage,omitempty" xml:"RetainImportedImage,omitempty"`
+	RetainImportedImage *bool   `json:"RetainImportedImage,omitempty" xml:"RetainImportedImage,omitempty"`
+	RetentionStrategy   *string `json:"RetentionStrategy,omitempty" xml:"RetentionStrategy,omitempty"`
+	RoleName            *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s CreateImagePipelineRequestImportImageOptions) String() string {
@@ -911,12 +954,24 @@ func (s *CreateImagePipelineRequestImportImageOptions) GetBootMode() *string {
 	return s.BootMode
 }
 
+func (s *CreateImagePipelineRequestImportImageOptions) GetDescription() *string {
+	return s.Description
+}
+
 func (s *CreateImagePipelineRequestImportImageOptions) GetDiskDeviceMappings() []*CreateImagePipelineRequestImportImageOptionsDiskDeviceMappings {
 	return s.DiskDeviceMappings
 }
 
 func (s *CreateImagePipelineRequestImportImageOptions) GetFeatures() *CreateImagePipelineRequestImportImageOptionsFeatures {
 	return s.Features
+}
+
+func (s *CreateImagePipelineRequestImportImageOptions) GetImageName() *string {
+	return s.ImageName
+}
+
+func (s *CreateImagePipelineRequestImportImageOptions) GetImportImageTags() []*CreateImagePipelineRequestImportImageOptionsImportImageTags {
+	return s.ImportImageTags
 }
 
 func (s *CreateImagePipelineRequestImportImageOptions) GetLicenseType() *string {
@@ -935,6 +990,14 @@ func (s *CreateImagePipelineRequestImportImageOptions) GetRetainImportedImage() 
 	return s.RetainImportedImage
 }
 
+func (s *CreateImagePipelineRequestImportImageOptions) GetRetentionStrategy() *string {
+	return s.RetentionStrategy
+}
+
+func (s *CreateImagePipelineRequestImportImageOptions) GetRoleName() *string {
+	return s.RoleName
+}
+
 func (s *CreateImagePipelineRequestImportImageOptions) SetArchitecture(v string) *CreateImagePipelineRequestImportImageOptions {
 	s.Architecture = &v
 	return s
@@ -945,6 +1008,11 @@ func (s *CreateImagePipelineRequestImportImageOptions) SetBootMode(v string) *Cr
 	return s
 }
 
+func (s *CreateImagePipelineRequestImportImageOptions) SetDescription(v string) *CreateImagePipelineRequestImportImageOptions {
+	s.Description = &v
+	return s
+}
+
 func (s *CreateImagePipelineRequestImportImageOptions) SetDiskDeviceMappings(v []*CreateImagePipelineRequestImportImageOptionsDiskDeviceMappings) *CreateImagePipelineRequestImportImageOptions {
 	s.DiskDeviceMappings = v
 	return s
@@ -952,6 +1020,16 @@ func (s *CreateImagePipelineRequestImportImageOptions) SetDiskDeviceMappings(v [
 
 func (s *CreateImagePipelineRequestImportImageOptions) SetFeatures(v *CreateImagePipelineRequestImportImageOptionsFeatures) *CreateImagePipelineRequestImportImageOptions {
 	s.Features = v
+	return s
+}
+
+func (s *CreateImagePipelineRequestImportImageOptions) SetImageName(v string) *CreateImagePipelineRequestImportImageOptions {
+	s.ImageName = &v
+	return s
+}
+
+func (s *CreateImagePipelineRequestImportImageOptions) SetImportImageTags(v []*CreateImagePipelineRequestImportImageOptionsImportImageTags) *CreateImagePipelineRequestImportImageOptions {
+	s.ImportImageTags = v
 	return s
 }
 
@@ -975,8 +1053,41 @@ func (s *CreateImagePipelineRequestImportImageOptions) SetRetainImportedImage(v 
 	return s
 }
 
+func (s *CreateImagePipelineRequestImportImageOptions) SetRetentionStrategy(v string) *CreateImagePipelineRequestImportImageOptions {
+	s.RetentionStrategy = &v
+	return s
+}
+
+func (s *CreateImagePipelineRequestImportImageOptions) SetRoleName(v string) *CreateImagePipelineRequestImportImageOptions {
+	s.RoleName = &v
+	return s
+}
+
 func (s *CreateImagePipelineRequestImportImageOptions) Validate() error {
-	return dara.Validate(s)
+	if s.DiskDeviceMappings != nil {
+		for _, item := range s.DiskDeviceMappings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Features != nil {
+		if err := s.Features.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImportImageTags != nil {
+		for _, item := range s.ImportImageTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateImagePipelineRequestImportImageOptionsDiskDeviceMappings struct {
@@ -1071,6 +1182,7 @@ func (s *CreateImagePipelineRequestImportImageOptionsDiskDeviceMappings) Validat
 }
 
 type CreateImagePipelineRequestImportImageOptionsFeatures struct {
+	ImdsSupport *string `json:"ImdsSupport,omitempty" xml:"ImdsSupport,omitempty"`
 	// Specifies whether the imported source image supports the Non-Volatile Memory Express (NVMe) protocol. Valid values:
 	//
 	// 	- supported: The image supports the NVMe protocol. Instances created from the image also support the NVMe protocol.
@@ -1093,8 +1205,17 @@ func (s CreateImagePipelineRequestImportImageOptionsFeatures) GoString() string 
 	return s.String()
 }
 
+func (s *CreateImagePipelineRequestImportImageOptionsFeatures) GetImdsSupport() *string {
+	return s.ImdsSupport
+}
+
 func (s *CreateImagePipelineRequestImportImageOptionsFeatures) GetNvmeSupport() *string {
 	return s.NvmeSupport
+}
+
+func (s *CreateImagePipelineRequestImportImageOptionsFeatures) SetImdsSupport(v string) *CreateImagePipelineRequestImportImageOptionsFeatures {
+	s.ImdsSupport = &v
+	return s
 }
 
 func (s *CreateImagePipelineRequestImportImageOptionsFeatures) SetNvmeSupport(v string) *CreateImagePipelineRequestImportImageOptionsFeatures {
@@ -1103,6 +1224,41 @@ func (s *CreateImagePipelineRequestImportImageOptionsFeatures) SetNvmeSupport(v 
 }
 
 func (s *CreateImagePipelineRequestImportImageOptionsFeatures) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateImagePipelineRequestImportImageOptionsImportImageTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateImagePipelineRequestImportImageOptionsImportImageTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateImagePipelineRequestImportImageOptionsImportImageTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImagePipelineRequestImportImageOptionsImportImageTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateImagePipelineRequestImportImageOptionsImportImageTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateImagePipelineRequestImportImageOptionsImportImageTags) SetKey(v string) *CreateImagePipelineRequestImportImageOptionsImportImageTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateImagePipelineRequestImportImageOptionsImportImageTags) SetValue(v string) *CreateImagePipelineRequestImportImageOptionsImportImageTags {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateImagePipelineRequestImportImageOptionsImportImageTags) Validate() error {
 	return dara.Validate(s)
 }
 

@@ -59,5 +59,10 @@ func (s *DescribeEniMonitorDataResponse) SetBody(v *DescribeEniMonitorDataRespon
 }
 
 func (s *DescribeEniMonitorDataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -142,7 +142,12 @@ func (s *DescribeSecurityGroupsResponseBody) SetTotalCount(v int32) *DescribeSec
 }
 
 func (s *DescribeSecurityGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityGroups != nil {
+		if err := s.SecurityGroups.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityGroupsResponseBodySecurityGroups struct {
@@ -167,7 +172,16 @@ func (s *DescribeSecurityGroupsResponseBodySecurityGroups) SetSecurityGroup(v []
 }
 
 func (s *DescribeSecurityGroupsResponseBodySecurityGroups) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityGroup != nil {
+		for _, item := range s.SecurityGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup struct {
@@ -400,7 +414,12 @@ func (s *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup) SetVpcId
 }
 
 func (s *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupTags struct {
@@ -425,7 +444,16 @@ func (s *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupTags) SetT
 }
 
 func (s *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupTagsTag struct {

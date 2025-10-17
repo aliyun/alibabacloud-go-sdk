@@ -204,7 +204,16 @@ func (s *DescribeLaunchTemplatesRequest) SetTemplateTag(v []*DescribeLaunchTempl
 }
 
 func (s *DescribeLaunchTemplatesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TemplateTag != nil {
+		for _, item := range s.TemplateTag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLaunchTemplatesRequestTemplateTag struct {

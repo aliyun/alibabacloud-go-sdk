@@ -71,7 +71,17 @@ func (s *CreateNatGatewayResponseBody) SetRequestId(v string) *CreateNatGatewayR
 }
 
 func (s *CreateNatGatewayResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BandwidthPackageIds != nil {
+		if err := s.BandwidthPackageIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ForwardTableIds != nil {
+		if err := s.ForwardTableIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateNatGatewayResponseBodyBandwidthPackageIds struct {

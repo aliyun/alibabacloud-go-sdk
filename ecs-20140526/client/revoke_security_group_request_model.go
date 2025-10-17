@@ -437,7 +437,16 @@ func (s *RevokeSecurityGroupRequest) SetSourcePrefixListId(v string) *RevokeSecu
 }
 
 func (s *RevokeSecurityGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Permissions != nil {
+		for _, item := range s.Permissions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RevokeSecurityGroupRequestPermissions struct {

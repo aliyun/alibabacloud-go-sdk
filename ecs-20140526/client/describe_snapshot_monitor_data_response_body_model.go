@@ -53,7 +53,12 @@ func (s *DescribeSnapshotMonitorDataResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeSnapshotMonitorDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorData != nil {
+		if err := s.MonitorData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSnapshotMonitorDataResponseBodyMonitorData struct {
@@ -78,7 +83,16 @@ func (s *DescribeSnapshotMonitorDataResponseBodyMonitorData) SetDataPoint(v []*D
 }
 
 func (s *DescribeSnapshotMonitorDataResponseBodyMonitorData) Validate() error {
-	return dara.Validate(s)
+	if s.DataPoint != nil {
+		for _, item := range s.DataPoint {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSnapshotMonitorDataResponseBodyMonitorDataDataPoint struct {

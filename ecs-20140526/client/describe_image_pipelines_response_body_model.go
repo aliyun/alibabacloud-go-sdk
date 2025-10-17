@@ -104,7 +104,12 @@ func (s *DescribeImagePipelinesResponseBody) SetTotalCount(v int32) *DescribeIma
 }
 
 func (s *DescribeImagePipelinesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ImagePipeline != nil {
+		if err := s.ImagePipeline.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImagePipelinesResponseBodyImagePipeline struct {
@@ -129,7 +134,16 @@ func (s *DescribeImagePipelinesResponseBodyImagePipeline) SetImagePipelineSet(v 
 }
 
 func (s *DescribeImagePipelinesResponseBodyImagePipeline) Validate() error {
-	return dara.Validate(s)
+	if s.ImagePipelineSet != nil {
+		for _, item := range s.ImagePipelineSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet struct {
@@ -504,7 +518,37 @@ func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet) SetVSw
 }
 
 func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet) Validate() error {
-	return dara.Validate(s)
+	if s.AddAccounts != nil {
+		if err := s.AddAccounts.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AdvancedOptions != nil {
+		if err := s.AdvancedOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageOptions != nil {
+		if err := s.ImageOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImportImageOptions != nil {
+		if err := s.ImportImageOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ToRegionIds != nil {
+		if err := s.ToRegionIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetAddAccounts struct {
@@ -664,7 +708,17 @@ func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageOpt
 }
 
 func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageOptions) Validate() error {
-	return dara.Validate(s)
+	if s.ImageFeatures != nil {
+		if err := s.ImageFeatures.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageTags != nil {
+		if err := s.ImageTags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageOptionsImageFeatures struct {
@@ -725,7 +779,16 @@ func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageOpt
 }
 
 func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageOptionsImageTags) Validate() error {
-	return dara.Validate(s)
+	if s.ImageTag != nil {
+		for _, item := range s.ImageTag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageOptionsImageTagsImageTag struct {
@@ -793,7 +856,8 @@ type DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageO
 	// example:
 	//
 	// BIOS
-	BootMode *string `json:"BootMode,omitempty" xml:"BootMode,omitempty"`
+	BootMode    *string `json:"BootMode,omitempty" xml:"BootMode,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The information of disks from which the custom images are created.
 	//
 	// 	- When the value of N is 1, a custom image is created from the system disk.
@@ -801,7 +865,9 @@ type DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageO
 	// 	- When the value of N is an integer in the range of 2 to 17, a custom image is created from a data disk.
 	DiskDeviceMappings *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsDiskDeviceMappings `json:"DiskDeviceMappings,omitempty" xml:"DiskDeviceMappings,omitempty" type:"Struct"`
 	// The feature attributes of the image.
-	Features *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Struct"`
+	Features        *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsFeatures        `json:"Features,omitempty" xml:"Features,omitempty" type:"Struct"`
+	ImageName       *string                                                                                           `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	ImportImageTags *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTags `json:"ImportImageTags,omitempty" xml:"ImportImageTags,omitempty" type:"Struct"`
 	// The type of the license to use to activate the operating system after the image is imported. Valid values:
 	//
 	// 	- Auto: ECS detects the operating system of the image and allocates a license to the operating system In this mode, the system first checks whether a license allocated by an official Alibaba Cloud channel is specified in the `Platform`. If a license allocated by an official Alibaba Cloud channel is specified, the system allocates the license to the imported image. If no such license is specified, the Bring Your Own License (BYOL) mode is used.
@@ -889,7 +955,9 @@ type DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageO
 	// example:
 	//
 	// false
-	RetainImportedImage *bool `json:"RetainImportedImage,omitempty" xml:"RetainImportedImage,omitempty"`
+	RetainImportedImage *bool   `json:"RetainImportedImage,omitempty" xml:"RetainImportedImage,omitempty"`
+	RetentionStrategy   *string `json:"RetentionStrategy,omitempty" xml:"RetentionStrategy,omitempty"`
+	RoleName            *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions) String() string {
@@ -908,12 +976,24 @@ func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportIm
 	return s.BootMode
 }
 
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions) GetDescription() *string {
+	return s.Description
+}
+
 func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions) GetDiskDeviceMappings() *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsDiskDeviceMappings {
 	return s.DiskDeviceMappings
 }
 
 func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions) GetFeatures() *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsFeatures {
 	return s.Features
+}
+
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions) GetImageName() *string {
+	return s.ImageName
+}
+
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions) GetImportImageTags() *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTags {
+	return s.ImportImageTags
 }
 
 func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions) GetLicenseType() *string {
@@ -932,6 +1012,14 @@ func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportIm
 	return s.RetainImportedImage
 }
 
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions) GetRetentionStrategy() *string {
+	return s.RetentionStrategy
+}
+
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions) GetRoleName() *string {
+	return s.RoleName
+}
+
 func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions) SetArchitecture(v string) *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions {
 	s.Architecture = &v
 	return s
@@ -942,6 +1030,11 @@ func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportIm
 	return s
 }
 
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions) SetDescription(v string) *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions {
+	s.Description = &v
+	return s
+}
+
 func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions) SetDiskDeviceMappings(v *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsDiskDeviceMappings) *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions {
 	s.DiskDeviceMappings = v
 	return s
@@ -949,6 +1042,16 @@ func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportIm
 
 func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions) SetFeatures(v *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsFeatures) *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions {
 	s.Features = v
+	return s
+}
+
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions) SetImageName(v string) *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions {
+	s.ImageName = &v
+	return s
+}
+
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions) SetImportImageTags(v *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTags) *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions {
+	s.ImportImageTags = v
 	return s
 }
 
@@ -972,8 +1075,33 @@ func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportIm
 	return s
 }
 
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions) SetRetentionStrategy(v string) *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions {
+	s.RetentionStrategy = &v
+	return s
+}
+
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions) SetRoleName(v string) *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions {
+	s.RoleName = &v
+	return s
+}
+
 func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions) Validate() error {
-	return dara.Validate(s)
+	if s.DiskDeviceMappings != nil {
+		if err := s.DiskDeviceMappings.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Features != nil {
+		if err := s.Features.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImportImageTags != nil {
+		if err := s.ImportImageTags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsDiskDeviceMappings struct {
@@ -998,7 +1126,16 @@ func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportIm
 }
 
 func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsDiskDeviceMappings) Validate() error {
-	return dara.Validate(s)
+	if s.DiskDeviceMapping != nil {
+		for _, item := range s.DiskDeviceMapping {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsDiskDeviceMappingsDiskDeviceMapping struct {
@@ -1091,6 +1228,7 @@ func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportIm
 }
 
 type DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsFeatures struct {
+	ImdsSupport *string `json:"ImdsSupport,omitempty" xml:"ImdsSupport,omitempty"`
 	// Indicates whether the image supports the NVMe protocol. Valid values:
 	//
 	// 	- supported: The image supports the NVMe protocol. Instances created from the image also support the NVMe protocol.
@@ -1111,8 +1249,17 @@ func (s DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportIma
 	return s.String()
 }
 
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsFeatures) GetImdsSupport() *string {
+	return s.ImdsSupport
+}
+
 func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsFeatures) GetNvmeSupport() *string {
 	return s.NvmeSupport
+}
+
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsFeatures) SetImdsSupport(v string) *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsFeatures {
+	s.ImdsSupport = &v
+	return s
 }
 
 func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsFeatures) SetNvmeSupport(v string) *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsFeatures {
@@ -1121,6 +1268,75 @@ func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportIm
 }
 
 func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsFeatures) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTags struct {
+	ImportImageTag []*DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTagsImportImageTag `json:"ImportImageTag,omitempty" xml:"ImportImageTag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTags) GetImportImageTag() []*DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTagsImportImageTag {
+	return s.ImportImageTag
+}
+
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTags) SetImportImageTag(v []*DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTagsImportImageTag) *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTags {
+	s.ImportImageTag = v
+	return s
+}
+
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTags) Validate() error {
+	if s.ImportImageTag != nil {
+		for _, item := range s.ImportImageTag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTagsImportImageTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTagsImportImageTag) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTagsImportImageTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTagsImportImageTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTagsImportImageTag) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTagsImportImageTag) SetKey(v string) *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTagsImportImageTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTagsImportImageTag) SetValue(v string) *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTagsImportImageTag {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptionsImportImageTagsImportImageTag) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -1146,7 +1362,16 @@ func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetTags) Se
 }
 
 func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetTagsTag struct {

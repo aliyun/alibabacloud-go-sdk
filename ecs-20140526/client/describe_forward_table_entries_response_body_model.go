@@ -83,7 +83,12 @@ func (s *DescribeForwardTableEntriesResponseBody) SetTotalCount(v int32) *Descri
 }
 
 func (s *DescribeForwardTableEntriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ForwardTableEntries != nil {
+		if err := s.ForwardTableEntries.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeForwardTableEntriesResponseBodyForwardTableEntries struct {
@@ -108,7 +113,16 @@ func (s *DescribeForwardTableEntriesResponseBodyForwardTableEntries) SetForwardT
 }
 
 func (s *DescribeForwardTableEntriesResponseBodyForwardTableEntries) Validate() error {
-	return dara.Validate(s)
+	if s.ForwardTableEntry != nil {
+		for _, item := range s.ForwardTableEntry {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeForwardTableEntriesResponseBodyForwardTableEntriesForwardTableEntry struct {

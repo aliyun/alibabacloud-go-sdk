@@ -434,7 +434,16 @@ func (s *DescribeInvocationsRequest) SetTimed(v bool) *DescribeInvocationsReques
 }
 
 func (s *DescribeInvocationsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInvocationsRequestTag struct {

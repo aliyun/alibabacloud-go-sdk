@@ -59,5 +59,10 @@ func (s *ResetDisksResponse) SetBody(v *ResetDisksResponseBody) *ResetDisksRespo
 }
 
 func (s *ResetDisksResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -633,7 +633,72 @@ func (s *DescribeNetworkInterfaceAttributeResponseBody) SetZoneId(v string) *Des
 }
 
 func (s *DescribeNetworkInterfaceAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AssociatedPublicIp != nil {
+		if err := s.AssociatedPublicIp.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Attachment != nil {
+		if err := s.Attachment.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BondInterfaceSpecification != nil {
+		if err := s.BondInterfaceSpecification.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ConnectionTrackingConfiguration != nil {
+		if err := s.ConnectionTrackingConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EnhancedNetwork != nil {
+		if err := s.EnhancedNetwork.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Ipv4PrefixSets != nil {
+		if err := s.Ipv4PrefixSets.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Ipv6PrefixSets != nil {
+		if err := s.Ipv6PrefixSets.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Ipv6Sets != nil {
+		if err := s.Ipv6Sets.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkInterfaceTrafficConfig != nil {
+		if err := s.NetworkInterfaceTrafficConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrivateIpSets != nil {
+		if err := s.PrivateIpSets.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityGroupIds != nil {
+		if err := s.SecurityGroupIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SlaveInterfaceSpecification != nil {
+		if err := s.SlaveInterfaceSpecification.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkInterfaceAttributeResponseBodyAssociatedPublicIp struct {
@@ -768,7 +833,12 @@ func (s *DescribeNetworkInterfaceAttributeResponseBodyAttachment) SetTrunkNetwor
 }
 
 func (s *DescribeNetworkInterfaceAttributeResponseBodyAttachment) Validate() error {
-	return dara.Validate(s)
+	if s.MemberNetworkInterfaceIds != nil {
+		if err := s.MemberNetworkInterfaceIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkInterfaceAttributeResponseBodyAttachmentMemberNetworkInterfaceIds struct {
@@ -834,7 +904,12 @@ func (s *DescribeNetworkInterfaceAttributeResponseBodyBondInterfaceSpecification
 }
 
 func (s *DescribeNetworkInterfaceAttributeResponseBodyBondInterfaceSpecification) Validate() error {
-	return dara.Validate(s)
+	if s.SlaveInterfaceSpecification != nil {
+		if err := s.SlaveInterfaceSpecification.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkInterfaceAttributeResponseBodyBondInterfaceSpecificationSlaveInterfaceSpecification struct {
@@ -859,7 +934,16 @@ func (s *DescribeNetworkInterfaceAttributeResponseBodyBondInterfaceSpecification
 }
 
 func (s *DescribeNetworkInterfaceAttributeResponseBodyBondInterfaceSpecificationSlaveInterfaceSpecification) Validate() error {
-	return dara.Validate(s)
+	if s.SlaveInterfaceSpecificationSet != nil {
+		for _, item := range s.SlaveInterfaceSpecificationSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkInterfaceAttributeResponseBodyBondInterfaceSpecificationSlaveInterfaceSpecificationSlaveInterfaceSpecificationSet struct {
@@ -1073,7 +1157,16 @@ func (s *DescribeNetworkInterfaceAttributeResponseBodyIpv4PrefixSets) SetIpv4Pre
 }
 
 func (s *DescribeNetworkInterfaceAttributeResponseBodyIpv4PrefixSets) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv4PrefixSet != nil {
+		for _, item := range s.Ipv4PrefixSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkInterfaceAttributeResponseBodyIpv4PrefixSetsIpv4PrefixSet struct {
@@ -1128,7 +1221,16 @@ func (s *DescribeNetworkInterfaceAttributeResponseBodyIpv6PrefixSets) SetIpv6Pre
 }
 
 func (s *DescribeNetworkInterfaceAttributeResponseBodyIpv6PrefixSets) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6PrefixSet != nil {
+		for _, item := range s.Ipv6PrefixSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkInterfaceAttributeResponseBodyIpv6PrefixSetsIpv6PrefixSet struct {
@@ -1183,7 +1285,16 @@ func (s *DescribeNetworkInterfaceAttributeResponseBodyIpv6Sets) SetIpv6Set(v []*
 }
 
 func (s *DescribeNetworkInterfaceAttributeResponseBodyIpv6Sets) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6Set != nil {
+		for _, item := range s.Ipv6Set {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkInterfaceAttributeResponseBodyIpv6SetsIpv6Set struct {
@@ -1298,7 +1409,16 @@ func (s *DescribeNetworkInterfaceAttributeResponseBodyPrivateIpSets) SetPrivateI
 }
 
 func (s *DescribeNetworkInterfaceAttributeResponseBodyPrivateIpSets) Validate() error {
-	return dara.Validate(s)
+	if s.PrivateIpSet != nil {
+		for _, item := range s.PrivateIpSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkInterfaceAttributeResponseBodyPrivateIpSetsPrivateIpSet struct {
@@ -1358,7 +1478,12 @@ func (s *DescribeNetworkInterfaceAttributeResponseBodyPrivateIpSetsPrivateIpSet)
 }
 
 func (s *DescribeNetworkInterfaceAttributeResponseBodyPrivateIpSetsPrivateIpSet) Validate() error {
-	return dara.Validate(s)
+	if s.AssociatedPublicIp != nil {
+		if err := s.AssociatedPublicIp.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkInterfaceAttributeResponseBodyPrivateIpSetsPrivateIpSetAssociatedPublicIp struct {
@@ -1513,7 +1638,16 @@ func (s *DescribeNetworkInterfaceAttributeResponseBodyTags) SetTag(v []*Describe
 }
 
 func (s *DescribeNetworkInterfaceAttributeResponseBodyTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkInterfaceAttributeResponseBodyTagsTag struct {

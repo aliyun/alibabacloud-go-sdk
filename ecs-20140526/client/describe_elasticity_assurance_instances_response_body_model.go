@@ -104,7 +104,12 @@ func (s *DescribeElasticityAssuranceInstancesResponseBody) SetTotalCount(v int32
 }
 
 func (s *DescribeElasticityAssuranceInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ElasticityAssuranceItem != nil {
+		if err := s.ElasticityAssuranceItem.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeElasticityAssuranceInstancesResponseBodyElasticityAssuranceItem struct {
@@ -129,7 +134,16 @@ func (s *DescribeElasticityAssuranceInstancesResponseBodyElasticityAssuranceItem
 }
 
 func (s *DescribeElasticityAssuranceInstancesResponseBodyElasticityAssuranceItem) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceIdSet != nil {
+		for _, item := range s.InstanceIdSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeElasticityAssuranceInstancesResponseBodyElasticityAssuranceItemInstanceIdSet struct {

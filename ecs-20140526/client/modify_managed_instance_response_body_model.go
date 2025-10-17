@@ -53,7 +53,12 @@ func (s *ModifyManagedInstanceResponseBody) SetRequestId(v string) *ModifyManage
 }
 
 func (s *ModifyManagedInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instance != nil {
+		if err := s.Instance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyManagedInstanceResponseBodyInstance struct {

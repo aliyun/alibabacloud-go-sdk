@@ -53,7 +53,12 @@ func (s *DescribeAccountAttributesResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeAccountAttributesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AccountAttributeItems != nil {
+		if err := s.AccountAttributeItems.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAccountAttributesResponseBodyAccountAttributeItems struct {
@@ -78,7 +83,16 @@ func (s *DescribeAccountAttributesResponseBodyAccountAttributeItems) SetAccountA
 }
 
 func (s *DescribeAccountAttributesResponseBodyAccountAttributeItems) Validate() error {
-	return dara.Validate(s)
+	if s.AccountAttributeItem != nil {
+		for _, item := range s.AccountAttributeItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAccountAttributesResponseBodyAccountAttributeItemsAccountAttributeItem struct {
@@ -149,7 +163,12 @@ func (s *DescribeAccountAttributesResponseBodyAccountAttributeItemsAccountAttrib
 }
 
 func (s *DescribeAccountAttributesResponseBodyAccountAttributeItemsAccountAttributeItem) Validate() error {
-	return dara.Validate(s)
+	if s.AttributeValues != nil {
+		if err := s.AttributeValues.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAccountAttributesResponseBodyAccountAttributeItemsAccountAttributeItemAttributeValues struct {
@@ -174,7 +193,16 @@ func (s *DescribeAccountAttributesResponseBodyAccountAttributeItemsAccountAttrib
 }
 
 func (s *DescribeAccountAttributesResponseBodyAccountAttributeItemsAccountAttributeItemAttributeValues) Validate() error {
-	return dara.Validate(s)
+	if s.ValueItem != nil {
+		for _, item := range s.ValueItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAccountAttributesResponseBodyAccountAttributeItemsAccountAttributeItemAttributeValuesValueItem struct {

@@ -47,7 +47,12 @@ func (s *DescribeSavingsPlanPriceResponseBody) SetRequestId(v string) *DescribeS
 }
 
 func (s *DescribeSavingsPlanPriceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PriceInfo != nil {
+		if err := s.PriceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSavingsPlanPriceResponseBodyPriceInfo struct {
@@ -82,7 +87,21 @@ func (s *DescribeSavingsPlanPriceResponseBodyPriceInfo) SetRules(v []*DescribeSa
 }
 
 func (s *DescribeSavingsPlanPriceResponseBodyPriceInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Price != nil {
+		if err := s.Price.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSavingsPlanPriceResponseBodyPriceInfoPrice struct {

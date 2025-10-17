@@ -70,7 +70,12 @@ func (s *DescribeDiagnosticReportsResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeDiagnosticReportsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Reports != nil {
+		if err := s.Reports.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDiagnosticReportsResponseBodyReports struct {
@@ -95,7 +100,16 @@ func (s *DescribeDiagnosticReportsResponseBodyReports) SetReport(v []*DescribeDi
 }
 
 func (s *DescribeDiagnosticReportsResponseBodyReports) Validate() error {
-	return dara.Validate(s)
+	if s.Report != nil {
+		for _, item := range s.Report {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDiagnosticReportsResponseBodyReportsReport struct {
@@ -281,7 +295,12 @@ func (s *DescribeDiagnosticReportsResponseBodyReportsReport) SetStatus(v string)
 }
 
 func (s *DescribeDiagnosticReportsResponseBodyReportsReport) Validate() error {
-	return dara.Validate(s)
+	if s.Issues != nil {
+		if err := s.Issues.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDiagnosticReportsResponseBodyReportsReportIssues struct {
@@ -306,7 +325,16 @@ func (s *DescribeDiagnosticReportsResponseBodyReportsReportIssues) SetIssue(v []
 }
 
 func (s *DescribeDiagnosticReportsResponseBodyReportsReportIssues) Validate() error {
-	return dara.Validate(s)
+	if s.Issue != nil {
+		for _, item := range s.Issue {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDiagnosticReportsResponseBodyReportsReportIssuesIssue struct {

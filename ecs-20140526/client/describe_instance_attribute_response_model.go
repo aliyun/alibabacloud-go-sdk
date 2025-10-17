@@ -59,5 +59,10 @@ func (s *DescribeInstanceAttributeResponse) SetBody(v *DescribeInstanceAttribute
 }
 
 func (s *DescribeInstanceAttributeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

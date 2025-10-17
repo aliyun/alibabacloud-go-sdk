@@ -52,10 +52,6 @@ type DescribeDiagnosticMetricsRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource type supported by the diagnostic metric.
 	//
-	// Valid values:
-	//
-	// 	- instance
-	//
 	// example:
 	//
 	// instance

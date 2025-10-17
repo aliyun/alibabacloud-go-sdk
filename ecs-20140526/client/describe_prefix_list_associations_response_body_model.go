@@ -70,7 +70,12 @@ func (s *DescribePrefixListAssociationsResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribePrefixListAssociationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PrefixListAssociations != nil {
+		if err := s.PrefixListAssociations.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePrefixListAssociationsResponseBodyPrefixListAssociations struct {
@@ -95,7 +100,16 @@ func (s *DescribePrefixListAssociationsResponseBodyPrefixListAssociations) SetPr
 }
 
 func (s *DescribePrefixListAssociationsResponseBodyPrefixListAssociations) Validate() error {
-	return dara.Validate(s)
+	if s.PrefixListAssociation != nil {
+		for _, item := range s.PrefixListAssociation {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePrefixListAssociationsResponseBodyPrefixListAssociationsPrefixListAssociation struct {

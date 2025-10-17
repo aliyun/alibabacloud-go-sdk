@@ -122,7 +122,16 @@ func (s *CancelImagePipelineExecutionRequest) SetTemplateTag(v []*CancelImagePip
 }
 
 func (s *CancelImagePipelineExecutionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TemplateTag != nil {
+		for _, item := range s.TemplateTag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CancelImagePipelineExecutionRequestTemplateTag struct {

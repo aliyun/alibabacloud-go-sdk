@@ -83,7 +83,12 @@ func (s *DescribeEipAddressesResponseBody) SetTotalCount(v int32) *DescribeEipAd
 }
 
 func (s *DescribeEipAddressesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EipAddresses != nil {
+		if err := s.EipAddresses.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEipAddressesResponseBodyEipAddresses struct {
@@ -108,7 +113,16 @@ func (s *DescribeEipAddressesResponseBodyEipAddresses) SetEipAddress(v []*Descri
 }
 
 func (s *DescribeEipAddressesResponseBodyEipAddresses) Validate() error {
-	return dara.Validate(s)
+	if s.EipAddress != nil {
+		for _, item := range s.EipAddress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEipAddressesResponseBodyEipAddressesEipAddress struct {
@@ -253,7 +267,12 @@ func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddress) SetStatus(v str
 }
 
 func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddress) Validate() error {
-	return dara.Validate(s)
+	if s.OperationLocks != nil {
+		if err := s.OperationLocks.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEipAddressesResponseBodyEipAddressesEipAddressOperationLocks struct {
@@ -278,7 +297,16 @@ func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddressOperationLocks) S
 }
 
 func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddressOperationLocks) Validate() error {
-	return dara.Validate(s)
+	if s.LockReason != nil {
+		for _, item := range s.LockReason {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEipAddressesResponseBodyEipAddressesEipAddressOperationLocksLockReason struct {

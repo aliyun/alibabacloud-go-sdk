@@ -53,7 +53,12 @@ func (s *ResetDisksResponseBody) SetRequestId(v string) *ResetDisksResponseBody 
 }
 
 func (s *ResetDisksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OperationProgressSet != nil {
+		if err := s.OperationProgressSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ResetDisksResponseBodyOperationProgressSet struct {
@@ -78,7 +83,16 @@ func (s *ResetDisksResponseBodyOperationProgressSet) SetOperationProgress(v []*R
 }
 
 func (s *ResetDisksResponseBodyOperationProgressSet) Validate() error {
-	return dara.Validate(s)
+	if s.OperationProgress != nil {
+		for _, item := range s.OperationProgress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ResetDisksResponseBodyOperationProgressSetOperationProgress struct {
@@ -153,7 +167,12 @@ func (s *ResetDisksResponseBodyOperationProgressSetOperationProgress) SetRelated
 }
 
 func (s *ResetDisksResponseBodyOperationProgressSetOperationProgress) Validate() error {
-	return dara.Validate(s)
+	if s.RelatedItemSet != nil {
+		if err := s.RelatedItemSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ResetDisksResponseBodyOperationProgressSetOperationProgressRelatedItemSet struct {
@@ -178,7 +197,16 @@ func (s *ResetDisksResponseBodyOperationProgressSetOperationProgressRelatedItemS
 }
 
 func (s *ResetDisksResponseBodyOperationProgressSetOperationProgressRelatedItemSet) Validate() error {
-	return dara.Validate(s)
+	if s.RelatedItem != nil {
+		for _, item := range s.RelatedItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ResetDisksResponseBodyOperationProgressSetOperationProgressRelatedItemSetRelatedItem struct {

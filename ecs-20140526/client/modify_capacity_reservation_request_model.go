@@ -218,7 +218,12 @@ func (s *ModifyCapacityReservationRequest) SetStartTime(v string) *ModifyCapacit
 }
 
 func (s *ModifyCapacityReservationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PrivatePoolOptions != nil {
+		if err := s.PrivatePoolOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyCapacityReservationRequestPrivatePoolOptions struct {

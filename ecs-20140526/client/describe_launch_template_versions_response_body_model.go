@@ -104,7 +104,12 @@ func (s *DescribeLaunchTemplateVersionsResponseBody) SetTotalCount(v int32) *Des
 }
 
 func (s *DescribeLaunchTemplateVersionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LaunchTemplateVersionSets != nil {
+		if err := s.LaunchTemplateVersionSets.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSets struct {
@@ -129,7 +134,16 @@ func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSets) Se
 }
 
 func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSets) Validate() error {
-	return dara.Validate(s)
+	if s.LaunchTemplateVersionSet != nil {
+		for _, item := range s.LaunchTemplateVersionSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSet struct {
@@ -275,7 +289,12 @@ func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaun
 }
 
 func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSet) Validate() error {
-	return dara.Validate(s)
+	if s.LaunchTemplateData != nil {
+		if err := s.LaunchTemplateData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateData struct {
@@ -1024,7 +1043,42 @@ func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaun
 }
 
 func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateData) Validate() error {
-	return dara.Validate(s)
+	if s.SystemDisk != nil {
+		if err := s.SystemDisk.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataDisks != nil {
+		if err := s.DataDisks.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageOptions != nil {
+		if err := s.ImageOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkInterfaces != nil {
+		if err := s.NetworkInterfaces.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityGroupIds != nil {
+		if err := s.SecurityGroupIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityOptions != nil {
+		if err := s.SecurityOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataSystemDisk struct {
@@ -1184,7 +1238,16 @@ func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaun
 }
 
 func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataDataDisks) Validate() error {
-	return dara.Validate(s)
+	if s.DataDisk != nil {
+		for _, item := range s.DataDisk {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataDataDisksDataDisk struct {
@@ -1475,7 +1538,16 @@ func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaun
 }
 
 func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataNetworkInterfaces) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkInterface != nil {
+		for _, item := range s.NetworkInterface {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataNetworkInterfacesNetworkInterface struct {
@@ -1633,7 +1705,12 @@ func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaun
 }
 
 func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataNetworkInterfacesNetworkInterface) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityGroupIds != nil {
+		if err := s.SecurityGroupIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataNetworkInterfacesNetworkInterfaceSecurityGroupIds struct {
@@ -1733,7 +1810,16 @@ func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaun
 }
 
 func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataTags) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceTag != nil {
+		for _, item := range s.InstanceTag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataTagsInstanceTag struct {

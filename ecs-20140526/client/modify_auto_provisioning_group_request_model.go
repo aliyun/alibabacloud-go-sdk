@@ -272,7 +272,16 @@ func (s *ModifyAutoProvisioningGroupRequest) SetTotalTargetCapacity(v string) *M
 }
 
 func (s *ModifyAutoProvisioningGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.LaunchTemplateConfig != nil {
+		for _, item := range s.LaunchTemplateConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyAutoProvisioningGroupRequestLaunchTemplateConfig struct {

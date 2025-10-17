@@ -70,7 +70,12 @@ func (s *DescribeInstanceTypesResponseBody) SetRequestId(v string) *DescribeInst
 }
 
 func (s *DescribeInstanceTypesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceTypes != nil {
+		if err := s.InstanceTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceTypesResponseBodyInstanceTypes struct {
@@ -95,7 +100,16 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypes) SetInstanceType(v []*De
 }
 
 func (s *DescribeInstanceTypesResponseBodyInstanceTypes) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceType != nil {
+		for _, item := range s.InstanceType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceTypesResponseBodyInstanceTypesInstanceType struct {
@@ -822,7 +836,42 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetTotalEni
 }
 
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) Validate() error {
-	return dara.Validate(s)
+	if s.Attributes != nil {
+		if err := s.Attributes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Clock != nil {
+		if err := s.Clock.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CpuOptions != nil {
+		if err := s.CpuOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EnhancedNetwork != nil {
+		if err := s.EnhancedNetwork.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkCards != nil {
+		if err := s.NetworkCards.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkInfo != nil {
+		if err := s.NetworkInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SupportedBootModes != nil {
+		if err := s.SupportedBootModes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeAttributes struct {
@@ -847,7 +896,16 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeAttributes) S
 }
 
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeAttributes) Validate() error {
-	return dara.Validate(s)
+	if s.Attribute != nil {
+		for _, item := range s.Attribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeAttributesAttribute struct {
@@ -1014,7 +1072,12 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptions) S
 }
 
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptions) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedTopologyTypes != nil {
+		if err := s.SupportedTopologyTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptionsSupportedTopologyTypes struct {
@@ -1124,7 +1187,16 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkCards)
 }
 
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkCards) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkCardInfo != nil {
+		for _, item := range s.NetworkCardInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkCardsNetworkCardInfo struct {
@@ -1179,7 +1251,12 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfo) 
 }
 
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfo) Validate() error {
-	return dara.Validate(s)
+	if s.BandwidthWeighting != nil {
+		if err := s.BandwidthWeighting.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeighting struct {
@@ -1204,7 +1281,12 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBa
 }
 
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeighting) Validate() error {
-	return dara.Validate(s)
+	if s.WeightingInfos != nil {
+		if err := s.WeightingInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfos struct {
@@ -1229,7 +1311,16 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBa
 }
 
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfos) Validate() error {
-	return dara.Validate(s)
+	if s.WeightingInfo != nil {
+		for _, item := range s.WeightingInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo struct {

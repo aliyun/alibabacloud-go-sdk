@@ -87,7 +87,12 @@ func (s *DescribeInstanceRamRoleResponseBody) SetTotalCount(v int32) *DescribeIn
 }
 
 func (s *DescribeInstanceRamRoleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceRamRoleSets != nil {
+		if err := s.InstanceRamRoleSets.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceRamRoleResponseBodyInstanceRamRoleSets struct {
@@ -112,7 +117,16 @@ func (s *DescribeInstanceRamRoleResponseBodyInstanceRamRoleSets) SetInstanceRamR
 }
 
 func (s *DescribeInstanceRamRoleResponseBodyInstanceRamRoleSets) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceRamRoleSet != nil {
+		for _, item := range s.InstanceRamRoleSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceRamRoleResponseBodyInstanceRamRoleSetsInstanceRamRoleSet struct {

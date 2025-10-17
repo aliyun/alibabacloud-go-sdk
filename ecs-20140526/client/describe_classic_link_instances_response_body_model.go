@@ -104,7 +104,12 @@ func (s *DescribeClassicLinkInstancesResponseBody) SetTotalCount(v int32) *Descr
 }
 
 func (s *DescribeClassicLinkInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Links != nil {
+		if err := s.Links.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClassicLinkInstancesResponseBodyLinks struct {
@@ -129,7 +134,16 @@ func (s *DescribeClassicLinkInstancesResponseBodyLinks) SetLink(v []*DescribeCla
 }
 
 func (s *DescribeClassicLinkInstancesResponseBodyLinks) Validate() error {
-	return dara.Validate(s)
+	if s.Link != nil {
+		for _, item := range s.Link {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClassicLinkInstancesResponseBodyLinksLink struct {

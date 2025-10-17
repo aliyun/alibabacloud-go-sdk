@@ -70,7 +70,12 @@ func (s *CreateAutoProvisioningGroupResponseBody) SetRequestId(v string) *Create
 }
 
 func (s *CreateAutoProvisioningGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LaunchResults != nil {
+		if err := s.LaunchResults.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAutoProvisioningGroupResponseBodyLaunchResults struct {
@@ -95,7 +100,16 @@ func (s *CreateAutoProvisioningGroupResponseBodyLaunchResults) SetLaunchResult(v
 }
 
 func (s *CreateAutoProvisioningGroupResponseBodyLaunchResults) Validate() error {
-	return dara.Validate(s)
+	if s.LaunchResult != nil {
+		for _, item := range s.LaunchResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAutoProvisioningGroupResponseBodyLaunchResultsLaunchResult struct {
@@ -217,7 +231,12 @@ func (s *CreateAutoProvisioningGroupResponseBodyLaunchResultsLaunchResult) SetZo
 }
 
 func (s *CreateAutoProvisioningGroupResponseBodyLaunchResultsLaunchResult) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceIds != nil {
+		if err := s.InstanceIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAutoProvisioningGroupResponseBodyLaunchResultsLaunchResultInstanceIds struct {

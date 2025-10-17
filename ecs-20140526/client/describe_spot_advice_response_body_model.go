@@ -72,7 +72,12 @@ func (s *DescribeSpotAdviceResponseBody) SetRequestId(v string) *DescribeSpotAdv
 }
 
 func (s *DescribeSpotAdviceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableSpotZones != nil {
+		if err := s.AvailableSpotZones.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSpotAdviceResponseBodyAvailableSpotZones struct {
@@ -97,7 +102,16 @@ func (s *DescribeSpotAdviceResponseBodyAvailableSpotZones) SetAvailableSpotZone(
 }
 
 func (s *DescribeSpotAdviceResponseBodyAvailableSpotZones) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableSpotZone != nil {
+		for _, item := range s.AvailableSpotZone {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSpotAdviceResponseBodyAvailableSpotZonesAvailableSpotZone struct {
@@ -138,7 +152,12 @@ func (s *DescribeSpotAdviceResponseBodyAvailableSpotZonesAvailableSpotZone) SetZ
 }
 
 func (s *DescribeSpotAdviceResponseBodyAvailableSpotZonesAvailableSpotZone) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableSpotResources != nil {
+		if err := s.AvailableSpotResources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSpotAdviceResponseBodyAvailableSpotZonesAvailableSpotZoneAvailableSpotResources struct {
@@ -163,7 +182,16 @@ func (s *DescribeSpotAdviceResponseBodyAvailableSpotZonesAvailableSpotZoneAvaila
 }
 
 func (s *DescribeSpotAdviceResponseBodyAvailableSpotZonesAvailableSpotZoneAvailableSpotResources) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableSpotResource != nil {
+		for _, item := range s.AvailableSpotResource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSpotAdviceResponseBodyAvailableSpotZonesAvailableSpotZoneAvailableSpotResourcesAvailableSpotResource struct {

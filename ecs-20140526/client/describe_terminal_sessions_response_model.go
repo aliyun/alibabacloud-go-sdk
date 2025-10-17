@@ -59,5 +59,10 @@ func (s *DescribeTerminalSessionsResponse) SetBody(v *DescribeTerminalSessionsRe
 }
 
 func (s *DescribeTerminalSessionsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

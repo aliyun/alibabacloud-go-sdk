@@ -87,7 +87,12 @@ func (s *DescribeSpotPriceHistoryResponseBody) SetSpotPrices(v *DescribeSpotPric
 }
 
 func (s *DescribeSpotPriceHistoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SpotPrices != nil {
+		if err := s.SpotPrices.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSpotPriceHistoryResponseBodySpotPrices struct {
@@ -112,7 +117,16 @@ func (s *DescribeSpotPriceHistoryResponseBodySpotPrices) SetSpotPriceType(v []*D
 }
 
 func (s *DescribeSpotPriceHistoryResponseBodySpotPrices) Validate() error {
-	return dara.Validate(s)
+	if s.SpotPriceType != nil {
+		for _, item := range s.SpotPriceType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSpotPriceHistoryResponseBodySpotPricesSpotPriceType struct {

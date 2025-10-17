@@ -53,7 +53,12 @@ func (s *DescribeInstanceTypeFamiliesResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribeInstanceTypeFamiliesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceTypeFamilies != nil {
+		if err := s.InstanceTypeFamilies.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceTypeFamiliesResponseBodyInstanceTypeFamilies struct {
@@ -78,7 +83,16 @@ func (s *DescribeInstanceTypeFamiliesResponseBodyInstanceTypeFamilies) SetInstan
 }
 
 func (s *DescribeInstanceTypeFamiliesResponseBodyInstanceTypeFamilies) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceTypeFamily != nil {
+		for _, item := range s.InstanceTypeFamily {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceTypeFamiliesResponseBodyInstanceTypeFamiliesInstanceTypeFamily struct {

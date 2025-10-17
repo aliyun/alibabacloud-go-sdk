@@ -70,7 +70,16 @@ func (s *DescribePortRangeListAssociationsResponseBody) SetRequestId(v string) *
 }
 
 func (s *DescribePortRangeListAssociationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PortRangeListAssociations != nil {
+		for _, item := range s.PortRangeListAssociations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePortRangeListAssociationsResponseBodyPortRangeListAssociations struct {

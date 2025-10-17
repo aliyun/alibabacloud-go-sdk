@@ -153,7 +153,21 @@ func (s *DescribeInstanceModificationPriceRequest) SetResourceOwnerId(v int64) *
 }
 
 func (s *DescribeInstanceModificationPriceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SystemDisk != nil {
+		if err := s.SystemDisk.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataDisk != nil {
+		for _, item := range s.DataDisk {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceModificationPriceRequestSystemDisk struct {

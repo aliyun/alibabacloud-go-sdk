@@ -20,7 +20,7 @@ type iModifyDedicatedHostsChargeTypeResponseBody interface {
 type ModifyDedicatedHostsChargeTypeResponseBody struct {
 	// Details about the charges for the order.
 	FeeOfInstances *ModifyDedicatedHostsChargeTypeResponseBodyFeeOfInstances `json:"FeeOfInstances,omitempty" xml:"FeeOfInstances,omitempty" type:"Struct"`
-	// The order ID.
+	// The ID of the order. This is returned only when the payment method is changed to subscription.
 	//
 	// example:
 	//
@@ -70,7 +70,12 @@ func (s *ModifyDedicatedHostsChargeTypeResponseBody) SetRequestId(v string) *Mod
 }
 
 func (s *ModifyDedicatedHostsChargeTypeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FeeOfInstances != nil {
+		if err := s.FeeOfInstances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyDedicatedHostsChargeTypeResponseBodyFeeOfInstances struct {
@@ -95,7 +100,16 @@ func (s *ModifyDedicatedHostsChargeTypeResponseBodyFeeOfInstances) SetFeeOfInsta
 }
 
 func (s *ModifyDedicatedHostsChargeTypeResponseBodyFeeOfInstances) Validate() error {
-	return dara.Validate(s)
+	if s.FeeOfInstance != nil {
+		for _, item := range s.FeeOfInstance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyDedicatedHostsChargeTypeResponseBodyFeeOfInstancesFeeOfInstance struct {

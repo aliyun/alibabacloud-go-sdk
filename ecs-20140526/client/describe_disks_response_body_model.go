@@ -52,7 +52,7 @@ type DescribeDisksResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
 	//
-	// > For paginated queries using MaxResults and NextToken, the TotalCount value in the response is invalid and should be ignored.
+	// > When using the `MaxResults` and `NextToken` parameters for a paginated query, the returned `TotalCount` parameter value is invalid.
 	//
 	// example:
 	//
@@ -123,7 +123,12 @@ func (s *DescribeDisksResponseBody) SetTotalCount(v int32) *DescribeDisksRespons
 }
 
 func (s *DescribeDisksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Disks != nil {
+		if err := s.Disks.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDisksResponseBodyDisks struct {
@@ -148,7 +153,16 @@ func (s *DescribeDisksResponseBodyDisks) SetDisk(v []*DescribeDisksResponseBodyD
 }
 
 func (s *DescribeDisksResponseBodyDisks) Validate() error {
-	return dara.Validate(s)
+	if s.Disk != nil {
+		for _, item := range s.Disk {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDisksResponseBodyDisksDisk struct {
@@ -966,7 +980,32 @@ func (s *DescribeDisksResponseBodyDisksDisk) SetZoneId(v string) *DescribeDisksR
 }
 
 func (s *DescribeDisksResponseBodyDisksDisk) Validate() error {
-	return dara.Validate(s)
+	if s.Attachments != nil {
+		if err := s.Attachments.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MountInstances != nil {
+		if err := s.MountInstances.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OperationLocks != nil {
+		if err := s.OperationLocks.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Placement != nil {
+		if err := s.Placement.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDisksResponseBodyDisksDiskAttachments struct {
@@ -991,7 +1030,16 @@ func (s *DescribeDisksResponseBodyDisksDiskAttachments) SetAttachment(v []*Descr
 }
 
 func (s *DescribeDisksResponseBodyDisksDiskAttachments) Validate() error {
-	return dara.Validate(s)
+	if s.Attachment != nil {
+		for _, item := range s.Attachment {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDisksResponseBodyDisksDiskAttachmentsAttachment struct {
@@ -1076,7 +1124,16 @@ func (s *DescribeDisksResponseBodyDisksDiskMountInstances) SetMountInstance(v []
 }
 
 func (s *DescribeDisksResponseBodyDisksDiskMountInstances) Validate() error {
-	return dara.Validate(s)
+	if s.MountInstance != nil {
+		for _, item := range s.MountInstance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDisksResponseBodyDisksDiskMountInstancesMountInstance struct {
@@ -1161,7 +1218,16 @@ func (s *DescribeDisksResponseBodyDisksDiskOperationLocks) SetOperationLock(v []
 }
 
 func (s *DescribeDisksResponseBodyDisksDiskOperationLocks) Validate() error {
-	return dara.Validate(s)
+	if s.OperationLock != nil {
+		for _, item := range s.OperationLock {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDisksResponseBodyDisksDiskOperationLocksOperationLock struct {
@@ -1248,7 +1314,16 @@ func (s *DescribeDisksResponseBodyDisksDiskTags) SetTag(v []*DescribeDisksRespon
 }
 
 func (s *DescribeDisksResponseBodyDisksDiskTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDisksResponseBodyDisksDiskTagsTag struct {

@@ -104,7 +104,12 @@ func (s *DescribeInstanceStatusResponseBody) SetTotalCount(v int32) *DescribeIns
 }
 
 func (s *DescribeInstanceStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceStatuses != nil {
+		if err := s.InstanceStatuses.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceStatusResponseBodyInstanceStatuses struct {
@@ -129,7 +134,16 @@ func (s *DescribeInstanceStatusResponseBodyInstanceStatuses) SetInstanceStatus(v
 }
 
 func (s *DescribeInstanceStatusResponseBodyInstanceStatuses) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceStatus != nil {
+		for _, item := range s.InstanceStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceStatusResponseBodyInstanceStatusesInstanceStatus struct {

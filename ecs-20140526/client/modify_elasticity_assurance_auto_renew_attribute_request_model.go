@@ -171,7 +171,12 @@ func (s *ModifyElasticityAssuranceAutoRenewAttributeRequest) SetResourceOwnerId(
 }
 
 func (s *ModifyElasticityAssuranceAutoRenewAttributeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PrivatePoolOptions != nil {
+		if err := s.PrivatePoolOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyElasticityAssuranceAutoRenewAttributeRequestPrivatePoolOptions struct {

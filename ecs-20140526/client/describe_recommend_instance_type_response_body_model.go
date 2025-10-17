@@ -53,7 +53,12 @@ func (s *DescribeRecommendInstanceTypeResponseBody) SetRequestId(v string) *Desc
 }
 
 func (s *DescribeRecommendInstanceTypeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRecommendInstanceTypeResponseBodyData struct {
@@ -78,7 +83,16 @@ func (s *DescribeRecommendInstanceTypeResponseBodyData) SetRecommendInstanceType
 }
 
 func (s *DescribeRecommendInstanceTypeResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.RecommendInstanceType != nil {
+		for _, item := range s.RecommendInstanceType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRecommendInstanceTypeResponseBodyDataRecommendInstanceType struct {
@@ -235,7 +249,17 @@ func (s *DescribeRecommendInstanceTypeResponseBodyDataRecommendInstanceType) Set
 }
 
 func (s *DescribeRecommendInstanceTypeResponseBodyDataRecommendInstanceType) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceType != nil {
+		if err := s.InstanceType.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Zones != nil {
+		if err := s.Zones.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRecommendInstanceTypeResponseBodyDataRecommendInstanceTypeInstanceType struct {
@@ -365,7 +389,16 @@ func (s *DescribeRecommendInstanceTypeResponseBodyDataRecommendInstanceTypeZones
 }
 
 func (s *DescribeRecommendInstanceTypeResponseBodyDataRecommendInstanceTypeZones) Validate() error {
-	return dara.Validate(s)
+	if s.Zone != nil {
+		for _, item := range s.Zone {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRecommendInstanceTypeResponseBodyDataRecommendInstanceTypeZonesZone struct {
@@ -406,7 +439,12 @@ func (s *DescribeRecommendInstanceTypeResponseBodyDataRecommendInstanceTypeZones
 }
 
 func (s *DescribeRecommendInstanceTypeResponseBodyDataRecommendInstanceTypeZonesZone) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkTypes != nil {
+		if err := s.NetworkTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRecommendInstanceTypeResponseBodyDataRecommendInstanceTypeZonesZoneNetworkTypes struct {

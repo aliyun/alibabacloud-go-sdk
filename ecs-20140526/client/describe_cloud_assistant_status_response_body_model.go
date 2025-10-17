@@ -121,7 +121,12 @@ func (s *DescribeCloudAssistantStatusResponseBody) SetTotalCount(v int64) *Descr
 }
 
 func (s *DescribeCloudAssistantStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceCloudAssistantStatusSet != nil {
+		if err := s.InstanceCloudAssistantStatusSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudAssistantStatusResponseBodyInstanceCloudAssistantStatusSet struct {
@@ -146,7 +151,16 @@ func (s *DescribeCloudAssistantStatusResponseBodyInstanceCloudAssistantStatusSet
 }
 
 func (s *DescribeCloudAssistantStatusResponseBodyInstanceCloudAssistantStatusSet) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceCloudAssistantStatus != nil {
+		for _, item := range s.InstanceCloudAssistantStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudAssistantStatusResponseBodyInstanceCloudAssistantStatusSetInstanceCloudAssistantStatus struct {

@@ -104,7 +104,12 @@ func (s *DescribeDedicatedHostClustersResponseBody) SetTotalCount(v int32) *Desc
 }
 
 func (s *DescribeDedicatedHostClustersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DedicatedHostClusters != nil {
+		if err := s.DedicatedHostClusters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDedicatedHostClustersResponseBodyDedicatedHostClusters struct {
@@ -129,7 +134,16 @@ func (s *DescribeDedicatedHostClustersResponseBodyDedicatedHostClusters) SetDedi
 }
 
 func (s *DescribeDedicatedHostClustersResponseBodyDedicatedHostClusters) Validate() error {
-	return dara.Validate(s)
+	if s.DedicatedHostCluster != nil {
+		for _, item := range s.DedicatedHostCluster {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDedicatedHostClustersResponseBodyDedicatedHostClustersDedicatedHostCluster struct {
@@ -267,7 +281,22 @@ func (s *DescribeDedicatedHostClustersResponseBodyDedicatedHostClustersDedicated
 }
 
 func (s *DescribeDedicatedHostClustersResponseBodyDedicatedHostClustersDedicatedHostCluster) Validate() error {
-	return dara.Validate(s)
+	if s.DedicatedHostClusterCapacity != nil {
+		if err := s.DedicatedHostClusterCapacity.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DedicatedHostIds != nil {
+		if err := s.DedicatedHostIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDedicatedHostClustersResponseBodyDedicatedHostClustersDedicatedHostClusterDedicatedHostClusterCapacity struct {
@@ -364,7 +393,17 @@ func (s *DescribeDedicatedHostClustersResponseBodyDedicatedHostClustersDedicated
 }
 
 func (s *DescribeDedicatedHostClustersResponseBodyDedicatedHostClustersDedicatedHostClusterDedicatedHostClusterCapacity) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableInstanceTypes != nil {
+		if err := s.AvailableInstanceTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LocalStorageCapacities != nil {
+		if err := s.LocalStorageCapacities.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDedicatedHostClustersResponseBodyDedicatedHostClustersDedicatedHostClusterDedicatedHostClusterCapacityAvailableInstanceTypes struct {
@@ -389,7 +428,16 @@ func (s *DescribeDedicatedHostClustersResponseBodyDedicatedHostClustersDedicated
 }
 
 func (s *DescribeDedicatedHostClustersResponseBodyDedicatedHostClustersDedicatedHostClusterDedicatedHostClusterCapacityAvailableInstanceTypes) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableInstanceType != nil {
+		for _, item := range s.AvailableInstanceType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDedicatedHostClustersResponseBodyDedicatedHostClustersDedicatedHostClusterDedicatedHostClusterCapacityAvailableInstanceTypesAvailableInstanceType struct {
@@ -459,7 +507,16 @@ func (s *DescribeDedicatedHostClustersResponseBodyDedicatedHostClustersDedicated
 }
 
 func (s *DescribeDedicatedHostClustersResponseBodyDedicatedHostClustersDedicatedHostClusterDedicatedHostClusterCapacityLocalStorageCapacities) Validate() error {
-	return dara.Validate(s)
+	if s.LocalStorageCapacity != nil {
+		for _, item := range s.LocalStorageCapacity {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDedicatedHostClustersResponseBodyDedicatedHostClustersDedicatedHostClusterDedicatedHostClusterCapacityLocalStorageCapacitiesLocalStorageCapacity struct {
@@ -579,7 +636,16 @@ func (s *DescribeDedicatedHostClustersResponseBodyDedicatedHostClustersDedicated
 }
 
 func (s *DescribeDedicatedHostClustersResponseBodyDedicatedHostClustersDedicatedHostClusterTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDedicatedHostClustersResponseBodyDedicatedHostClustersDedicatedHostClusterTagsTag struct {

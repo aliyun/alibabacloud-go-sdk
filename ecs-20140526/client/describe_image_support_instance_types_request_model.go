@@ -129,7 +129,16 @@ func (s *DescribeImageSupportInstanceTypesRequest) SetResourceOwnerId(v int64) *
 }
 
 func (s *DescribeImageSupportInstanceTypesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		for _, item := range s.Filter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageSupportInstanceTypesRequestFilter struct {

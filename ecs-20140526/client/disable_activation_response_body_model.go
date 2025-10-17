@@ -53,7 +53,12 @@ func (s *DisableActivationResponseBody) SetRequestId(v string) *DisableActivatio
 }
 
 func (s *DisableActivationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Activation != nil {
+		if err := s.Activation.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DisableActivationResponseBodyActivation struct {
