@@ -100,6 +100,10 @@ func (s *DescribeDesktopGroupSessionsResponseBody) Validate() error {
 }
 
 type DescribeDesktopGroupSessionsResponseBodySessions struct {
+	// example:
+	//
+	// SIMPLE
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// The IP address of the client.
 	//
 	// example:
@@ -136,6 +140,10 @@ type DescribeDesktopGroupSessionsResponseBodySessions struct {
 	//
 	// ecd-g6t1ukbaea****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// example:
+	//
+	// SIMPLE
+	DirectoryType *string `json:"DirectoryType,omitempty" xml:"DirectoryType,omitempty"`
 	// The point in time when the end user applies for administrator assistance.
 	//
 	// example:
@@ -253,6 +261,10 @@ func (s DescribeDesktopGroupSessionsResponseBodySessions) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) GetAccountType() *string {
+	return s.AccountType
+}
+
 func (s *DescribeDesktopGroupSessionsResponseBodySessions) GetClientIp() *string {
 	return s.ClientIp
 }
@@ -275,6 +287,10 @@ func (s *DescribeDesktopGroupSessionsResponseBodySessions) GetDesktopGroupName()
 
 func (s *DescribeDesktopGroupSessionsResponseBodySessions) GetDesktopId() *string {
 	return s.DesktopId
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) GetDirectoryType() *string {
+	return s.DirectoryType
 }
 
 func (s *DescribeDesktopGroupSessionsResponseBodySessions) GetEndUserApplyCoordinateTime() *int64 {
@@ -333,6 +349,11 @@ func (s *DescribeDesktopGroupSessionsResponseBodySessions) GetTotalConnectionDur
 	return s.TotalConnectionDuration
 }
 
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetAccountType(v string) *DescribeDesktopGroupSessionsResponseBodySessions {
+	s.AccountType = &v
+	return s
+}
+
 func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetClientIp(v string) *DescribeDesktopGroupSessionsResponseBodySessions {
 	s.ClientIp = &v
 	return s
@@ -360,6 +381,11 @@ func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetDesktopGroupName(v
 
 func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetDesktopId(v string) *DescribeDesktopGroupSessionsResponseBodySessions {
 	s.DesktopId = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetDirectoryType(v string) *DescribeDesktopGroupSessionsResponseBodySessions {
+	s.DirectoryType = &v
 	return s
 }
 

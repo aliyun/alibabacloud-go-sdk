@@ -83,6 +83,10 @@ func (s *DescribeDesktopSessionsResponseBody) Validate() error {
 }
 
 type DescribeDesktopSessionsResponseBodySessions struct {
+	// example:
+	//
+	// SIMPLE
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// The IP address of the client.
 	//
 	// example:
@@ -113,6 +117,10 @@ type DescribeDesktopSessionsResponseBodySessions struct {
 	//
 	// testDesktop
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	// example:
+	//
+	// SIMPLE
+	DirectoryType *string `json:"DirectoryType,omitempty" xml:"DirectoryType,omitempty"`
 	// The duration of the remote assistance. Unit: seconds.
 	//
 	// example:
@@ -237,6 +245,10 @@ func (s DescribeDesktopSessionsResponseBodySessions) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDesktopSessionsResponseBodySessions) GetAccountType() *string {
+	return s.AccountType
+}
+
 func (s *DescribeDesktopSessionsResponseBodySessions) GetClientIp() *string {
 	return s.ClientIp
 }
@@ -255,6 +267,10 @@ func (s *DescribeDesktopSessionsResponseBodySessions) GetDesktopId() *string {
 
 func (s *DescribeDesktopSessionsResponseBodySessions) GetDesktopName() *string {
 	return s.DesktopName
+}
+
+func (s *DescribeDesktopSessionsResponseBodySessions) GetDirectoryType() *string {
+	return s.DirectoryType
 }
 
 func (s *DescribeDesktopSessionsResponseBodySessions) GetEndUserApplyCoordinateTime() *int64 {
@@ -321,6 +337,11 @@ func (s *DescribeDesktopSessionsResponseBodySessions) GetTotalConnectionTime() *
 	return s.TotalConnectionTime
 }
 
+func (s *DescribeDesktopSessionsResponseBodySessions) SetAccountType(v string) *DescribeDesktopSessionsResponseBodySessions {
+	s.AccountType = &v
+	return s
+}
+
 func (s *DescribeDesktopSessionsResponseBodySessions) SetClientIp(v string) *DescribeDesktopSessionsResponseBodySessions {
 	s.ClientIp = &v
 	return s
@@ -343,6 +364,11 @@ func (s *DescribeDesktopSessionsResponseBodySessions) SetDesktopId(v string) *De
 
 func (s *DescribeDesktopSessionsResponseBodySessions) SetDesktopName(v string) *DescribeDesktopSessionsResponseBodySessions {
 	s.DesktopName = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsResponseBodySessions) SetDirectoryType(v string) *DescribeDesktopSessionsResponseBodySessions {
+	s.DirectoryType = &v
 	return s
 }
 
@@ -445,7 +471,13 @@ func (s *DescribeDesktopSessionsResponseBodySessions) Validate() error {
 }
 
 type DescribeDesktopSessionsResponseBodySessionsResourceGroups struct {
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// rg-8whrmo2gtsb8bxxxx
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// RgTest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
