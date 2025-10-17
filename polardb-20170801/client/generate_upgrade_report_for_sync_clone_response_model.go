@@ -59,5 +59,10 @@ func (s *GenerateUpgradeReportForSyncCloneResponse) SetBody(v *GenerateUpgradeRe
 }
 
 func (s *GenerateUpgradeReportForSyncCloneResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

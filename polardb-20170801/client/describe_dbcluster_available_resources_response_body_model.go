@@ -53,7 +53,16 @@ func (s *DescribeDBClusterAvailableResourcesResponseBody) SetRequestId(v string)
 }
 
 func (s *DescribeDBClusterAvailableResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableZones != nil {
+		for _, item := range s.AvailableZones {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterAvailableResourcesResponseBodyAvailableZones struct {
@@ -109,7 +118,16 @@ func (s *DescribeDBClusterAvailableResourcesResponseBodyAvailableZones) SetZoneI
 }
 
 func (s *DescribeDBClusterAvailableResourcesResponseBodyAvailableZones) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedEngines != nil {
+		for _, item := range s.SupportedEngines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterAvailableResourcesResponseBodyAvailableZonesSupportedEngines struct {
@@ -150,7 +168,16 @@ func (s *DescribeDBClusterAvailableResourcesResponseBodyAvailableZonesSupportedE
 }
 
 func (s *DescribeDBClusterAvailableResourcesResponseBodyAvailableZonesSupportedEngines) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableResources != nil {
+		for _, item := range s.AvailableResources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterAvailableResourcesResponseBodyAvailableZonesSupportedEnginesAvailableResources struct {

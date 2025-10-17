@@ -97,7 +97,12 @@ func (s *DescribeAIDBClustersResponseBody) SetTotalRecordCount(v int32) *Describ
 }
 
 func (s *DescribeAIDBClustersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAIDBClustersResponseBodyItems struct {
@@ -122,7 +127,16 @@ func (s *DescribeAIDBClustersResponseBodyItems) SetDBCluster(v []*DescribeAIDBCl
 }
 
 func (s *DescribeAIDBClustersResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.DBCluster != nil {
+		for _, item := range s.DBCluster {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAIDBClustersResponseBodyItemsDBCluster struct {
@@ -178,6 +192,10 @@ type DescribeAIDBClustersResponseBodyItemsDBCluster struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// pc-**************
+	RelativeDBClusterId *string `json:"RelativeDBClusterId,omitempty" xml:"RelativeDBClusterId,omitempty"`
 	// example:
 	//
 	// container
@@ -260,6 +278,10 @@ func (s *DescribeAIDBClustersResponseBodyItemsDBCluster) GetPayType() *string {
 
 func (s *DescribeAIDBClustersResponseBodyItemsDBCluster) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *DescribeAIDBClustersResponseBodyItemsDBCluster) GetRelativeDBClusterId() *string {
+	return s.RelativeDBClusterId
 }
 
 func (s *DescribeAIDBClustersResponseBodyItemsDBCluster) GetRunType() *string {
@@ -355,6 +377,11 @@ func (s *DescribeAIDBClustersResponseBodyItemsDBCluster) SetRegionId(v string) *
 	return s
 }
 
+func (s *DescribeAIDBClustersResponseBodyItemsDBCluster) SetRelativeDBClusterId(v string) *DescribeAIDBClustersResponseBodyItemsDBCluster {
+	s.RelativeDBClusterId = &v
+	return s
+}
+
 func (s *DescribeAIDBClustersResponseBodyItemsDBCluster) SetRunType(v string) *DescribeAIDBClustersResponseBodyItemsDBCluster {
 	s.RunType = &v
 	return s
@@ -391,7 +418,12 @@ func (s *DescribeAIDBClustersResponseBodyItemsDBCluster) SetZoneId(v string) *De
 }
 
 func (s *DescribeAIDBClustersResponseBodyItemsDBCluster) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAIDBClustersResponseBodyItemsDBClusterTags struct {
@@ -416,7 +448,16 @@ func (s *DescribeAIDBClustersResponseBodyItemsDBClusterTags) SetTag(v []*Describ
 }
 
 func (s *DescribeAIDBClustersResponseBodyItemsDBClusterTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAIDBClustersResponseBodyItemsDBClusterTagsTag struct {

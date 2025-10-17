@@ -50,7 +50,16 @@ func (s *DescribeResourcePackagesResponseBody) SetResourcePackageList(v []*Descr
 }
 
 func (s *DescribeResourcePackagesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourcePackageList != nil {
+		for _, item := range s.ResourcePackageList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeResourcePackagesResponseBodyResourcePackageList struct {
@@ -189,7 +198,25 @@ func (s *DescribeResourcePackagesResponseBodyResourcePackageList) SetUsedCapacit
 }
 
 func (s *DescribeResourcePackagesResponseBodyResourcePackageList) Validate() error {
-	return dara.Validate(s)
+	if s.ResourcePackageQuotaList != nil {
+		for _, item := range s.ResourcePackageQuotaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeResourcePackagesResponseBodyResourcePackageListResourcePackageQuotaList struct {

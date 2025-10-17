@@ -95,7 +95,16 @@ func (s *DescribeVpcsResponseBody) SetVpcs(v []*DescribeVpcsResponseBodyVpcs) *D
 }
 
 func (s *DescribeVpcsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Vpcs != nil {
+		for _, item := range s.Vpcs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcsResponseBodyVpcs struct {
@@ -250,7 +259,16 @@ func (s *DescribeVpcsResponseBodyVpcs) SetVpcName(v string) *DescribeVpcsRespons
 }
 
 func (s *DescribeVpcsResponseBodyVpcs) Validate() error {
-	return dara.Validate(s)
+	if s.VSwitchs != nil {
+		for _, item := range s.VSwitchs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcsResponseBodyVpcsVSwitchs struct {

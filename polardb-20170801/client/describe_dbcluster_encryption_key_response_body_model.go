@@ -50,7 +50,16 @@ func (s *DescribeDBClusterEncryptionKeyResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribeDBClusterEncryptionKeyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EncryptionKeyList != nil {
+		for _, item := range s.EncryptionKeyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterEncryptionKeyResponseBodyEncryptionKeyList struct {

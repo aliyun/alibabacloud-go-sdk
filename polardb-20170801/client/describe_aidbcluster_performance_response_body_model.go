@@ -155,7 +155,16 @@ func (s *DescribeAIDBClusterPerformanceResponseBody) SetStartTime(v string) *Des
 }
 
 func (s *DescribeAIDBClusterPerformanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PerformanceKeys != nil {
+		for _, item := range s.PerformanceKeys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAIDBClusterPerformanceResponseBodyPerformanceKeys struct {
@@ -219,7 +228,16 @@ func (s *DescribeAIDBClusterPerformanceResponseBodyPerformanceKeys) SetPoints(v 
 }
 
 func (s *DescribeAIDBClusterPerformanceResponseBodyPerformanceKeys) Validate() error {
-	return dara.Validate(s)
+	if s.Points != nil {
+		for _, item := range s.Points {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAIDBClusterPerformanceResponseBodyPerformanceKeysPoints struct {

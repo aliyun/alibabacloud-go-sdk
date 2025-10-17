@@ -95,7 +95,12 @@ func (s *DescribeApplicationsResponseBody) SetTotalRecordCount(v int32) *Describ
 }
 
 func (s *DescribeApplicationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationsResponseBodyItems struct {
@@ -120,7 +125,16 @@ func (s *DescribeApplicationsResponseBodyItems) SetApplications(v []*DescribeApp
 }
 
 func (s *DescribeApplicationsResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.Applications != nil {
+		for _, item := range s.Applications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationsResponseBodyItemsApplications struct {
@@ -301,7 +315,12 @@ func (s *DescribeApplicationsResponseBodyItemsApplications) SetZoneId(v string) 
 }
 
 func (s *DescribeApplicationsResponseBodyItemsApplications) Validate() error {
-	return dara.Validate(s)
+	if s.Endpoints != nil {
+		if err := s.Endpoints.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationsResponseBodyItemsApplicationsEndpoints struct {
@@ -326,7 +345,16 @@ func (s *DescribeApplicationsResponseBodyItemsApplicationsEndpoints) SetEndpoint
 }
 
 func (s *DescribeApplicationsResponseBodyItemsApplicationsEndpoints) Validate() error {
-	return dara.Validate(s)
+	if s.Endpoint != nil {
+		for _, item := range s.Endpoint {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationsResponseBodyItemsApplicationsEndpointsEndpoint struct {

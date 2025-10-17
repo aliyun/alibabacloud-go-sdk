@@ -401,7 +401,12 @@ func (s *DescribeBackupPolicyResponseBody) SetRequestId(v string) *DescribeBacku
 }
 
 func (s *DescribeBackupPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AdvancedDataPolicies != nil {
+		if err := s.AdvancedDataPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBackupPolicyResponseBodyAdvancedDataPolicies struct {
@@ -426,7 +431,16 @@ func (s *DescribeBackupPolicyResponseBodyAdvancedDataPolicies) SetAdvancedDataPo
 }
 
 func (s *DescribeBackupPolicyResponseBodyAdvancedDataPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.AdvancedDataPolicy != nil {
+		for _, item := range s.AdvancedDataPolicy {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy struct {

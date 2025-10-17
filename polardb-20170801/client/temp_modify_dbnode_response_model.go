@@ -59,5 +59,10 @@ func (s *TempModifyDBNodeResponse) SetBody(v *TempModifyDBNodeResponseBody) *Tem
 }
 
 func (s *TempModifyDBNodeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

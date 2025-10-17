@@ -99,7 +99,12 @@ func (s *DescribeSQLRateLimitingRulesResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribeSQLRateLimitingRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSQLRateLimitingRulesResponseBodyData struct {

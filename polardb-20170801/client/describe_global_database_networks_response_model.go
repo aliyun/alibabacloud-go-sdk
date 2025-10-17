@@ -59,5 +59,10 @@ func (s *DescribeGlobalDatabaseNetworksResponse) SetBody(v *DescribeGlobalDataba
 }
 
 func (s *DescribeGlobalDatabaseNetworksResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

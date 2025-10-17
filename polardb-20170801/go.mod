@@ -1,8 +1,8 @@
-module github.com/alibabacloud-go/polardb-20170801/v6
+module github.com/alibabacloud-go/polardb-20170801/v7
 
 go 1.14
 
 require (
-	github.com/alibabacloud-go/darabonba-openapi/v2 v2.1.12
-	github.com/alibabacloud-go/tea v1.3.12
+	github.com/alibabacloud-go/darabonba-openapi/v2 v2.1.13
+	github.com/alibabacloud-go/tea v1.3.13
 )

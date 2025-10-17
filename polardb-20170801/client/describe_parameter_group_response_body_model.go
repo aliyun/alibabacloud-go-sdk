@@ -53,7 +53,16 @@ func (s *DescribeParameterGroupResponseBody) SetRequestId(v string) *DescribePar
 }
 
 func (s *DescribeParameterGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ParameterGroup != nil {
+		for _, item := range s.ParameterGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeParameterGroupResponseBodyParameterGroup struct {
@@ -224,7 +233,16 @@ func (s *DescribeParameterGroupResponseBodyParameterGroup) SetParameterGroupType
 }
 
 func (s *DescribeParameterGroupResponseBodyParameterGroup) Validate() error {
-	return dara.Validate(s)
+	if s.ParameterDetail != nil {
+		for _, item := range s.ParameterDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeParameterGroupResponseBodyParameterGroupParameterDetail struct {

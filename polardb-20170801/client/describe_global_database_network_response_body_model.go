@@ -249,7 +249,30 @@ func (s *DescribeGlobalDatabaseNetworkResponseBody) SetResourceGroupId(v string)
 }
 
 func (s *DescribeGlobalDatabaseNetworkResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Connections != nil {
+		for _, item := range s.Connections {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DBClusters != nil {
+		for _, item := range s.DBClusters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Labels != nil {
+		if err := s.Labels.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGlobalDatabaseNetworkResponseBodyConnections struct {
@@ -590,7 +613,16 @@ func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClusters) SetStorageUsed(v s
 }
 
 func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClusters) Validate() error {
-	return dara.Validate(s)
+	if s.DBNodes != nil {
+		for _, item := range s.DBNodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGlobalDatabaseNetworkResponseBodyDBClustersDBNodes struct {

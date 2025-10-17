@@ -95,7 +95,16 @@ func (s *DescribeDBClusterProxyResponseBody) SetRequestId(v string) *DescribeDBC
 }
 
 func (s *DescribeDBClusterProxyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ChildInstances != nil {
+		for _, item := range s.ChildInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterProxyResponseBodyChildInstances struct {

@@ -110,7 +110,16 @@ func (s *DescribeDBNodesParametersResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeDBNodesParametersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBNodeIds != nil {
+		for _, item := range s.DBNodeIds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBNodesParametersResponseBodyDBNodeIds struct {
@@ -151,7 +160,16 @@ func (s *DescribeDBNodesParametersResponseBodyDBNodeIds) SetRunningParameters(v 
 }
 
 func (s *DescribeDBNodesParametersResponseBodyDBNodeIds) Validate() error {
-	return dara.Validate(s)
+	if s.RunningParameters != nil {
+		for _, item := range s.RunningParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBNodesParametersResponseBodyDBNodeIdsRunningParameters struct {

@@ -183,7 +183,16 @@ func (s *TempModifyDBNodeRequest) SetRestoreTime(v string) *TempModifyDBNodeRequ
 }
 
 func (s *TempModifyDBNodeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DBNode != nil {
+		for _, item := range s.DBNode {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TempModifyDBNodeRequestDBNode struct {

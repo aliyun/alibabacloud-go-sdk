@@ -52,7 +52,16 @@ func (s *DescribeDBMiniEngineVersionsResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribeDBMiniEngineVersionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBRevisionVersionList != nil {
+		for _, item := range s.DBRevisionVersionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBMiniEngineVersionsResponseBodyDBRevisionVersionList struct {

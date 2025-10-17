@@ -95,7 +95,12 @@ func (s *DescribeGlobalDataNetworkListResponseBody) SetTotalRecordCount(v string
 }
 
 func (s *DescribeGlobalDataNetworkListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGlobalDataNetworkListResponseBodyItems struct {
@@ -120,7 +125,16 @@ func (s *DescribeGlobalDataNetworkListResponseBodyItems) SetNetworks(v []*Descri
 }
 
 func (s *DescribeGlobalDataNetworkListResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.Networks != nil {
+		for _, item := range s.Networks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGlobalDataNetworkListResponseBodyItemsNetworks struct {
@@ -209,7 +223,21 @@ func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworks) SetNetworkTopol
 }
 
 func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworks) Validate() error {
-	return dara.Validate(s)
+	if s.Channels != nil {
+		for _, item := range s.Channels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NetworkTopology != nil {
+		if err := s.NetworkTopology.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGlobalDataNetworkListResponseBodyItemsNetworksChannels struct {
@@ -311,7 +339,25 @@ func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopology) 
 }
 
 func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopology) Validate() error {
-	return dara.Validate(s)
+	if s.Destinations != nil {
+		for _, item := range s.Destinations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Sources != nil {
+		for _, item := range s.Sources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDestinations struct {

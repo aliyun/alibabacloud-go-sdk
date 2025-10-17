@@ -87,7 +87,12 @@ func (s *DescribeDatabasesResponseBody) SetRequestId(v string) *DescribeDatabase
 }
 
 func (s *DescribeDatabasesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Databases != nil {
+		if err := s.Databases.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDatabasesResponseBodyDatabases struct {
@@ -112,7 +117,16 @@ func (s *DescribeDatabasesResponseBodyDatabases) SetDatabase(v []*DescribeDataba
 }
 
 func (s *DescribeDatabasesResponseBodyDatabases) Validate() error {
-	return dara.Validate(s)
+	if s.Database != nil {
+		for _, item := range s.Database {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDatabasesResponseBodyDatabasesDatabase struct {
@@ -242,7 +256,12 @@ func (s *DescribeDatabasesResponseBodyDatabasesDatabase) SetMasterID(v string) *
 }
 
 func (s *DescribeDatabasesResponseBodyDatabasesDatabase) Validate() error {
-	return dara.Validate(s)
+	if s.Accounts != nil {
+		if err := s.Accounts.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDatabasesResponseBodyDatabasesDatabaseAccounts struct {
@@ -267,7 +286,16 @@ func (s *DescribeDatabasesResponseBodyDatabasesDatabaseAccounts) SetAccount(v []
 }
 
 func (s *DescribeDatabasesResponseBodyDatabasesDatabaseAccounts) Validate() error {
-	return dara.Validate(s)
+	if s.Account != nil {
+		for _, item := range s.Account {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDatabasesResponseBodyDatabasesDatabaseAccountsAccount struct {

@@ -303,7 +303,25 @@ func (s *DescribeDBClusterVersionResponseBody) SetRequestId(v string) *DescribeD
 }
 
 func (s *DescribeDBClusterVersionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBRevisionVersionList != nil {
+		for _, item := range s.DBRevisionVersionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ProxyRevisionVersionList != nil {
+		for _, item := range s.ProxyRevisionVersionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterVersionResponseBodyDBRevisionVersionList struct {

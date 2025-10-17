@@ -53,7 +53,16 @@ func (s *DescribeParameterGroupsResponseBody) SetRequestId(v string) *DescribePa
 }
 
 func (s *DescribeParameterGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ParameterGroups != nil {
+		for _, item := range s.ParameterGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeParameterGroupsResponseBodyParameterGroups struct {

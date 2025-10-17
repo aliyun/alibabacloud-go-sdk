@@ -59,5 +59,10 @@ func (s *DescribePolarSQLCollectorPolicyResponse) SetBody(v *DescribePolarSQLCol
 }
 
 func (s *DescribePolarSQLCollectorPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

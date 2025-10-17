@@ -179,7 +179,34 @@ func (s *DescribeDBLogFilesResponseBody) SetTotalRecords(v int32) *DescribeDBLog
 }
 
 func (s *DescribeDBLogFilesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HaLogItems != nil {
+		for _, item := range s.HaLogItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SwitchListItems != nil {
+		for _, item := range s.SwitchListItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SwitchLogItems != nil {
+		for _, item := range s.SwitchLogItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBLogFilesResponseBodyHaLogItems struct {
@@ -425,7 +452,25 @@ func (s *DescribeDBLogFilesResponseBodySwitchListItems) SetSwitchStepItems(v []*
 }
 
 func (s *DescribeDBLogFilesResponseBodySwitchListItems) Validate() error {
-	return dara.Validate(s)
+	if s.SwitchLogItems != nil {
+		for _, item := range s.SwitchLogItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SwitchStepItems != nil {
+		for _, item := range s.SwitchStepItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBLogFilesResponseBodySwitchListItemsSwitchLogItems struct {
@@ -530,7 +575,16 @@ func (s *DescribeDBLogFilesResponseBodySwitchListItemsSwitchLogItems) SetSwitchS
 }
 
 func (s *DescribeDBLogFilesResponseBodySwitchListItemsSwitchLogItems) Validate() error {
-	return dara.Validate(s)
+	if s.SwitchStepItems != nil {
+		for _, item := range s.SwitchStepItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBLogFilesResponseBodySwitchListItemsSwitchLogItemsSwitchStepItems struct {
@@ -795,7 +849,16 @@ func (s *DescribeDBLogFilesResponseBodySwitchLogItems) SetSwitchStepItems(v []*D
 }
 
 func (s *DescribeDBLogFilesResponseBodySwitchLogItems) Validate() error {
-	return dara.Validate(s)
+	if s.SwitchStepItems != nil {
+		for _, item := range s.SwitchStepItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBLogFilesResponseBodySwitchLogItemsSwitchStepItems struct {

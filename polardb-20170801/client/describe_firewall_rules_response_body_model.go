@@ -97,7 +97,12 @@ func (s *DescribeFirewallRulesResponseBody) SetSuccess(v bool) *DescribeFirewall
 }
 
 func (s *DescribeFirewallRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeFirewallRulesResponseBodyData struct {

@@ -66,7 +66,17 @@ func (s *DescribeDBClusterAccessWhitelistResponseBody) SetRequestId(v string) *D
 }
 
 func (s *DescribeDBClusterAccessWhitelistResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBClusterSecurityGroups != nil {
+		if err := s.DBClusterSecurityGroups.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterAccessWhitelistResponseBodyDBClusterSecurityGroups struct {
@@ -91,7 +101,16 @@ func (s *DescribeDBClusterAccessWhitelistResponseBodyDBClusterSecurityGroups) Se
 }
 
 func (s *DescribeDBClusterAccessWhitelistResponseBodyDBClusterSecurityGroups) Validate() error {
-	return dara.Validate(s)
+	if s.DBClusterSecurityGroup != nil {
+		for _, item := range s.DBClusterSecurityGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterAccessWhitelistResponseBodyDBClusterSecurityGroupsDBClusterSecurityGroup struct {
@@ -161,7 +180,16 @@ func (s *DescribeDBClusterAccessWhitelistResponseBodyItems) SetDBClusterIPArray(
 }
 
 func (s *DescribeDBClusterAccessWhitelistResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.DBClusterIPArray != nil {
+		for _, item := range s.DBClusterIPArray {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterAccessWhitelistResponseBodyItemsDBClusterIPArray struct {

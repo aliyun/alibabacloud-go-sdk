@@ -104,7 +104,16 @@ func (s *DescribeGlobalDatabaseNetworksResponseBody) SetTotalRecordCount(v int32
 }
 
 func (s *DescribeGlobalDatabaseNetworksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGlobalDatabaseNetworksResponseBodyItems struct {
@@ -248,7 +257,21 @@ func (s *DescribeGlobalDatabaseNetworksResponseBodyItems) SetLabels(v *DescribeG
 }
 
 func (s *DescribeGlobalDatabaseNetworksResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.DBClusters != nil {
+		for _, item := range s.DBClusters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Labels != nil {
+		if err := s.Labels.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGlobalDatabaseNetworksResponseBodyItemsDBClusters struct {

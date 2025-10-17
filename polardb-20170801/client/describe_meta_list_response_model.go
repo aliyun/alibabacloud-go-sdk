@@ -59,5 +59,10 @@ func (s *DescribeMetaListResponse) SetBody(v *DescribeMetaListResponseBody) *Des
 }
 
 func (s *DescribeMetaListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

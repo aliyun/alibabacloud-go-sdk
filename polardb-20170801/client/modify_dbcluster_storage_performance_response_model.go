@@ -59,5 +59,10 @@ func (s *ModifyDBClusterStoragePerformanceResponse) SetBody(v *ModifyDBClusterSt
 }
 
 func (s *ModifyDBClusterStoragePerformanceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

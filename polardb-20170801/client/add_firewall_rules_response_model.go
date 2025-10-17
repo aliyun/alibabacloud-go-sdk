@@ -59,5 +59,10 @@ func (s *AddFirewallRulesResponse) SetBody(v *AddFirewallRulesResponseBody) *Add
 }
 
 func (s *AddFirewallRulesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

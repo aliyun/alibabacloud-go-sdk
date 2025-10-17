@@ -77,7 +77,17 @@ func (s *DescribeDBClusterNetInfoResponseBody) SetRequestId(v string) *DescribeD
 }
 
 func (s *DescribeDBClusterNetInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBClusterNetInfos != nil {
+		if err := s.DBClusterNetInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DBNodeNetInfos != nil {
+		if err := s.DBNodeNetInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterNetInfoResponseBodyDBClusterNetInfos struct {
@@ -102,7 +112,16 @@ func (s *DescribeDBClusterNetInfoResponseBodyDBClusterNetInfos) SetDBClusterNetI
 }
 
 func (s *DescribeDBClusterNetInfoResponseBodyDBClusterNetInfos) Validate() error {
-	return dara.Validate(s)
+	if s.DBClusterNetInfo != nil {
+		for _, item := range s.DBClusterNetInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterNetInfoResponseBodyDBClusterNetInfosDBClusterNetInfo struct {
@@ -233,7 +252,16 @@ func (s *DescribeDBClusterNetInfoResponseBodyDBNodeNetInfos) SetDBNodeNetInfo(v 
 }
 
 func (s *DescribeDBClusterNetInfoResponseBodyDBNodeNetInfos) Validate() error {
-	return dara.Validate(s)
+	if s.DBNodeNetInfo != nil {
+		for _, item := range s.DBNodeNetInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterNetInfoResponseBodyDBNodeNetInfosDBNodeNetInfo struct {
@@ -284,7 +312,12 @@ func (s *DescribeDBClusterNetInfoResponseBodyDBNodeNetInfosDBNodeNetInfo) SetNet
 }
 
 func (s *DescribeDBClusterNetInfoResponseBodyDBNodeNetInfosDBNodeNetInfo) Validate() error {
-	return dara.Validate(s)
+	if s.NetInfos != nil {
+		if err := s.NetInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterNetInfoResponseBodyDBNodeNetInfosDBNodeNetInfoNetInfos struct {
@@ -309,7 +342,16 @@ func (s *DescribeDBClusterNetInfoResponseBodyDBNodeNetInfosDBNodeNetInfoNetInfos
 }
 
 func (s *DescribeDBClusterNetInfoResponseBodyDBNodeNetInfosDBNodeNetInfoNetInfos) Validate() error {
-	return dara.Validate(s)
+	if s.NetInfo != nil {
+		for _, item := range s.NetInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterNetInfoResponseBodyDBNodeNetInfosDBNodeNetInfoNetInfosNetInfo struct {

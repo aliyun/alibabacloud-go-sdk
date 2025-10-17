@@ -11,6 +11,8 @@ type iModifyDBNodesClassRequest interface {
 	GoString() string
 	SetClientToken(v string) *ModifyDBNodesClassRequest
 	GetClientToken() *string
+	SetCloudProvider(v string) *ModifyDBNodesClassRequest
+	GetCloudProvider() *string
 	SetDBClusterId(v string) *ModifyDBNodesClassRequest
 	GetDBClusterId() *string
 	SetDBNode(v []*ModifyDBNodesClassRequestDBNode) *ModifyDBNodesClassRequest
@@ -42,6 +44,10 @@ type ModifyDBNodesClassRequest struct {
 	//
 	// 6000170000591aed949d0f54a343f1a4233c1e7d1c5c******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// ENS
+	CloudProvider *string `json:"CloudProvider,omitempty" xml:"CloudProvider,omitempty"`
 	// The cluster ID.
 	//
 	// This parameter is required.
@@ -117,6 +123,10 @@ func (s *ModifyDBNodesClassRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *ModifyDBNodesClassRequest) GetCloudProvider() *string {
+	return s.CloudProvider
+}
+
 func (s *ModifyDBNodesClassRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
@@ -163,6 +173,11 @@ func (s *ModifyDBNodesClassRequest) GetSubCategory() *string {
 
 func (s *ModifyDBNodesClassRequest) SetClientToken(v string) *ModifyDBNodesClassRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyDBNodesClassRequest) SetCloudProvider(v string) *ModifyDBNodesClassRequest {
+	s.CloudProvider = &v
 	return s
 }
 
@@ -222,7 +237,16 @@ func (s *ModifyDBNodesClassRequest) SetSubCategory(v string) *ModifyDBNodesClass
 }
 
 func (s *ModifyDBNodesClassRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DBNode != nil {
+		for _, item := range s.DBNode {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyDBNodesClassRequestDBNode struct {

@@ -70,7 +70,16 @@ func (s *DescribeDBLinksResponseBody) SetRequestId(v string) *DescribeDBLinksRes
 }
 
 func (s *DescribeDBLinksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBLinkInfos != nil {
+		for _, item := range s.DBLinkInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBLinksResponseBodyDBLinkInfos struct {

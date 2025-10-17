@@ -11,6 +11,8 @@ type iDeleteDBNodesRequest interface {
 	GoString() string
 	SetClientToken(v string) *DeleteDBNodesRequest
 	GetClientToken() *string
+	SetCloudProvider(v string) *DeleteDBNodesRequest
+	GetCloudProvider() *string
 	SetDBClusterId(v string) *DeleteDBNodesRequest
 	GetDBClusterId() *string
 	SetDBNodeId(v []*string) *DeleteDBNodesRequest
@@ -34,6 +36,10 @@ type DeleteDBNodesRequest struct {
 	//
 	// 6000170000591aed949d0f54a343f1a42***********
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// ENS
+	CloudProvider *string `json:"CloudProvider,omitempty" xml:"CloudProvider,omitempty"`
 	// The ID of the cluster.
 	//
 	// This parameter is required.
@@ -90,6 +96,10 @@ func (s *DeleteDBNodesRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *DeleteDBNodesRequest) GetCloudProvider() *string {
+	return s.CloudProvider
+}
+
 func (s *DeleteDBNodesRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
@@ -120,6 +130,11 @@ func (s *DeleteDBNodesRequest) GetResourceOwnerId() *int64 {
 
 func (s *DeleteDBNodesRequest) SetClientToken(v string) *DeleteDBNodesRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteDBNodesRequest) SetCloudProvider(v string) *DeleteDBNodesRequest {
+	s.CloudProvider = &v
 	return s
 }
 

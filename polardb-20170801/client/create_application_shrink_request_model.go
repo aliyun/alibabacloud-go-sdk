@@ -39,6 +39,8 @@ type iCreateApplicationShrinkRequest interface {
 	GetUsedTime() *string
 	SetVSwitchId(v string) *CreateApplicationShrinkRequest
 	GetVSwitchId() *string
+	SetVpcId(v string) *CreateApplicationShrinkRequest
+	GetVpcId() *string
 	SetZoneId(v string) *CreateApplicationShrinkRequest
 	GetZoneId() *string
 }
@@ -102,6 +104,7 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// vsw-*********************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// example:
 	//
 	// cn-beijing-k
@@ -174,6 +177,10 @@ func (s *CreateApplicationShrinkRequest) GetUsedTime() *string {
 
 func (s *CreateApplicationShrinkRequest) GetVSwitchId() *string {
 	return s.VSwitchId
+}
+
+func (s *CreateApplicationShrinkRequest) GetVpcId() *string {
+	return s.VpcId
 }
 
 func (s *CreateApplicationShrinkRequest) GetZoneId() *string {
@@ -252,6 +259,11 @@ func (s *CreateApplicationShrinkRequest) SetUsedTime(v string) *CreateApplicatio
 
 func (s *CreateApplicationShrinkRequest) SetVSwitchId(v string) *CreateApplicationShrinkRequest {
 	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetVpcId(v string) *CreateApplicationShrinkRequest {
+	s.VpcId = &v
 	return s
 }
 

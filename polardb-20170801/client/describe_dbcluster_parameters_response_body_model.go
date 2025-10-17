@@ -173,7 +173,17 @@ func (s *DescribeDBClusterParametersResponseBody) SetRunningParameters(v *Descri
 }
 
 func (s *DescribeDBClusterParametersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Parameters != nil {
+		if err := s.Parameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RunningParameters != nil {
+		if err := s.RunningParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterParametersResponseBodyParameters struct {
@@ -198,7 +208,16 @@ func (s *DescribeDBClusterParametersResponseBodyParameters) SetParameters(v []*D
 }
 
 func (s *DescribeDBClusterParametersResponseBodyParameters) Validate() error {
-	return dara.Validate(s)
+	if s.Parameters != nil {
+		for _, item := range s.Parameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterParametersResponseBodyParametersParameters struct {
@@ -453,7 +472,16 @@ func (s *DescribeDBClusterParametersResponseBodyRunningParameters) SetParameter(
 }
 
 func (s *DescribeDBClusterParametersResponseBodyRunningParameters) Validate() error {
-	return dara.Validate(s)
+	if s.Parameter != nil {
+		for _, item := range s.Parameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterParametersResponseBodyRunningParametersParameter struct {

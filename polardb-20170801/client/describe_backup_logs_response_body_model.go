@@ -104,7 +104,12 @@ func (s *DescribeBackupLogsResponseBody) SetTotalRecordCount(v string) *Describe
 }
 
 func (s *DescribeBackupLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBackupLogsResponseBodyItems struct {
@@ -129,7 +134,16 @@ func (s *DescribeBackupLogsResponseBodyItems) SetBackupLog(v []*DescribeBackupLo
 }
 
 func (s *DescribeBackupLogsResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.BackupLog != nil {
+		for _, item := range s.BackupLog {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBackupLogsResponseBodyItemsBackupLog struct {

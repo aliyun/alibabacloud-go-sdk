@@ -53,7 +53,12 @@ func (s *DescribeBackupTasksResponseBody) SetRequestId(v string) *DescribeBackup
 }
 
 func (s *DescribeBackupTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBackupTasksResponseBodyItems struct {
@@ -78,7 +83,16 @@ func (s *DescribeBackupTasksResponseBodyItems) SetBackupJob(v []*DescribeBackupT
 }
 
 func (s *DescribeBackupTasksResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.BackupJob != nil {
+		for _, item := range s.BackupJob {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBackupTasksResponseBodyItemsBackupJob struct {

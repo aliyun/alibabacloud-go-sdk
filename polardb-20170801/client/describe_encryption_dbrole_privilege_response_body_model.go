@@ -97,7 +97,12 @@ func (s *DescribeEncryptionDBRolePrivilegeResponseBody) SetSuccess(v bool) *Desc
 }
 
 func (s *DescribeEncryptionDBRolePrivilegeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEncryptionDBRolePrivilegeResponseBodyData struct {
@@ -122,7 +127,16 @@ func (s *DescribeEncryptionDBRolePrivilegeResponseBodyData) SetRolePrivilegeList
 }
 
 func (s *DescribeEncryptionDBRolePrivilegeResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.RolePrivilegeList != nil {
+		for _, item := range s.RolePrivilegeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEncryptionDBRolePrivilegeResponseBodyDataRolePrivilegeList struct {

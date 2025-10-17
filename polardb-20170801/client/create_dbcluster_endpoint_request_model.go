@@ -27,6 +27,8 @@ type iCreateDBClusterEndpointRequest interface {
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *CreateDBClusterEndpointRequest
 	GetOwnerId() *int64
+	SetPolarFsInstanceId(v string) *CreateDBClusterEndpointRequest
+	GetPolarFsInstanceId() *string
 	SetPolarSccTimeoutAction(v string) *CreateDBClusterEndpointRequest
 	GetPolarSccTimeoutAction() *string
 	SetPolarSccWaitTimeout(v string) *CreateDBClusterEndpointRequest
@@ -144,6 +146,10 @@ type CreateDBClusterEndpointRequest struct {
 	Nodes        *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// pfs-test****
+	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
 	// Global consistency timeout strategy. The value range is as follows:
 	//
 	// - **0**: Send the request to the primary node
@@ -230,6 +236,10 @@ func (s *CreateDBClusterEndpointRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
 
+func (s *CreateDBClusterEndpointRequest) GetPolarFsInstanceId() *string {
+	return s.PolarFsInstanceId
+}
+
 func (s *CreateDBClusterEndpointRequest) GetPolarSccTimeoutAction() *string {
 	return s.PolarSccTimeoutAction
 }
@@ -296,6 +306,11 @@ func (s *CreateDBClusterEndpointRequest) SetOwnerAccount(v string) *CreateDBClus
 
 func (s *CreateDBClusterEndpointRequest) SetOwnerId(v int64) *CreateDBClusterEndpointRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateDBClusterEndpointRequest) SetPolarFsInstanceId(v string) *CreateDBClusterEndpointRequest {
+	s.PolarFsInstanceId = &v
 	return s
 }
 

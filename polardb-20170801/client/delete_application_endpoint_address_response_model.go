@@ -59,5 +59,10 @@ func (s *DeleteApplicationEndpointAddressResponse) SetBody(v *DeleteApplicationE
 }
 
 func (s *DeleteApplicationEndpointAddressResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

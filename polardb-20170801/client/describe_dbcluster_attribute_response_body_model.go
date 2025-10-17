@@ -109,6 +109,10 @@ type iDescribeDBClusterAttributeResponseBody interface {
 	GetRowCompression() *string
 	SetSQLSize(v int64) *DescribeDBClusterAttributeResponseBody
 	GetSQLSize() *int64
+	SetSearchCompressStorageUsed(v int64) *DescribeDBClusterAttributeResponseBody
+	GetSearchCompressStorageUsed() *int64
+	SetSearchStorageUsed(v int64) *DescribeDBClusterAttributeResponseBody
+	GetSearchStorageUsed() *int64
 	SetServerlessType(v string) *DescribeDBClusterAttributeResponseBody
 	GetServerlessType() *string
 	SetSourceDBCluster(v string) *DescribeDBClusterAttributeResponseBody
@@ -554,7 +558,9 @@ type DescribeDBClusterAttributeResponseBody struct {
 	// example:
 	//
 	// 0
-	SQLSize *int64 `json:"SQLSize,omitempty" xml:"SQLSize,omitempty"`
+	SQLSize                   *int64 `json:"SQLSize,omitempty" xml:"SQLSize,omitempty"`
+	SearchCompressStorageUsed *int64 `json:"SearchCompressStorageUsed,omitempty" xml:"SearchCompressStorageUsed,omitempty"`
+	SearchStorageUsed         *int64 `json:"SearchStorageUsed,omitempty" xml:"SearchStorageUsed,omitempty"`
 	// Serverless type. Valid values are as follows:
 	//
 	// - AgileServerless: Agile - SteadyServerless: Stable
@@ -881,6 +887,14 @@ func (s *DescribeDBClusterAttributeResponseBody) GetSQLSize() *int64 {
 	return s.SQLSize
 }
 
+func (s *DescribeDBClusterAttributeResponseBody) GetSearchCompressStorageUsed() *int64 {
+	return s.SearchCompressStorageUsed
+}
+
+func (s *DescribeDBClusterAttributeResponseBody) GetSearchStorageUsed() *int64 {
+	return s.SearchStorageUsed
+}
+
 func (s *DescribeDBClusterAttributeResponseBody) GetServerlessType() *string {
 	return s.ServerlessType
 }
@@ -1195,6 +1209,16 @@ func (s *DescribeDBClusterAttributeResponseBody) SetSQLSize(v int64) *DescribeDB
 	return s
 }
 
+func (s *DescribeDBClusterAttributeResponseBody) SetSearchCompressStorageUsed(v int64) *DescribeDBClusterAttributeResponseBody {
+	s.SearchCompressStorageUsed = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBody) SetSearchStorageUsed(v int64) *DescribeDBClusterAttributeResponseBody {
+	s.SearchStorageUsed = &v
+	return s
+}
+
 func (s *DescribeDBClusterAttributeResponseBody) SetServerlessType(v string) *DescribeDBClusterAttributeResponseBody {
 	s.ServerlessType = &v
 	return s
@@ -1276,7 +1300,25 @@ func (s *DescribeDBClusterAttributeResponseBody) SetZoneIds(v string) *DescribeD
 }
 
 func (s *DescribeDBClusterAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBNodes != nil {
+		for _, item := range s.DBNodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterAttributeResponseBodyDBNodes struct {

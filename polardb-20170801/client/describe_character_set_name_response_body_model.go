@@ -70,7 +70,12 @@ func (s *DescribeCharacterSetNameResponseBody) SetRequestId(v string) *DescribeC
 }
 
 func (s *DescribeCharacterSetNameResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CharacterSetNameItems != nil {
+		if err := s.CharacterSetNameItems.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCharacterSetNameResponseBodyCharacterSetNameItems struct {

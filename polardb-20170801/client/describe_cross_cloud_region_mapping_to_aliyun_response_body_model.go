@@ -50,7 +50,16 @@ func (s *DescribeCrossCloudRegionMappingToAliyunResponseBody) SetRequestId(v str
 }
 
 func (s *DescribeCrossCloudRegionMappingToAliyunResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CrossCloudRegionMappingList != nil {
+		for _, item := range s.CrossCloudRegionMappingList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCrossCloudRegionMappingToAliyunResponseBodyCrossCloudRegionMappingList struct {

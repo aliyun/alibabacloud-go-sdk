@@ -59,5 +59,10 @@ func (s *ManuallyStartDBClusterResponse) SetBody(v *ManuallyStartDBClusterRespon
 }
 
 func (s *ManuallyStartDBClusterResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

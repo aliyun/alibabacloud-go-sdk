@@ -70,7 +70,16 @@ func (s *ModifyGlobalSecurityIPGroupRelationResponseBody) SetRequestId(v string)
 }
 
 func (s *ModifyGlobalSecurityIPGroupRelationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GlobalSecurityIPGroupRel != nil {
+		for _, item := range s.GlobalSecurityIPGroupRel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel struct {

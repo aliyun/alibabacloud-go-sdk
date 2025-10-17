@@ -104,7 +104,12 @@ func (s *DescribeDBClustersResponseBody) SetTotalRecordCount(v int32) *DescribeD
 }
 
 func (s *DescribeDBClustersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBClustersResponseBodyItems struct {
@@ -129,7 +134,16 @@ func (s *DescribeDBClustersResponseBodyItems) SetDBCluster(v []*DescribeDBCluste
 }
 
 func (s *DescribeDBClustersResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.DBCluster != nil {
+		for _, item := range s.DBCluster {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClustersResponseBodyItemsDBCluster struct {
@@ -320,7 +334,8 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	// example:
 	//
 	// rg-************
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SearchStorageUsed *int64  `json:"SearchStorageUsed,omitempty" xml:"SearchStorageUsed,omitempty"`
 	// Indicates whether the cluster is a serverless cluster. **AgileServerless*	- indicates the cluster is a serverless cluster. No value is returned for a common cluster.
 	//
 	// example:
@@ -501,6 +516,10 @@ func (s *DescribeDBClustersResponseBodyItemsDBCluster) GetResourceGroupId() *str
 	return s.ResourceGroupId
 }
 
+func (s *DescribeDBClustersResponseBodyItemsDBCluster) GetSearchStorageUsed() *int64 {
+	return s.SearchStorageUsed
+}
+
 func (s *DescribeDBClustersResponseBodyItemsDBCluster) GetServerlessType() *string {
 	return s.ServerlessType
 }
@@ -665,6 +684,11 @@ func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetResourceGroupId(v stri
 	return s
 }
 
+func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetSearchStorageUsed(v int64) *DescribeDBClustersResponseBodyItemsDBCluster {
+	s.SearchStorageUsed = &v
+	return s
+}
+
 func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetServerlessType(v string) *DescribeDBClustersResponseBodyItemsDBCluster {
 	s.ServerlessType = &v
 	return s
@@ -721,7 +745,17 @@ func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetZoneId(v string) *Desc
 }
 
 func (s *DescribeDBClustersResponseBodyItemsDBCluster) Validate() error {
-	return dara.Validate(s)
+	if s.DBNodes != nil {
+		if err := s.DBNodes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBClustersResponseBodyItemsDBClusterDBNodes struct {
@@ -746,7 +780,16 @@ func (s *DescribeDBClustersResponseBodyItemsDBClusterDBNodes) SetDBNode(v []*Des
 }
 
 func (s *DescribeDBClustersResponseBodyItemsDBClusterDBNodes) Validate() error {
-	return dara.Validate(s)
+	if s.DBNode != nil {
+		for _, item := range s.DBNode {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClustersResponseBodyItemsDBClusterDBNodesDBNode struct {
@@ -926,7 +969,16 @@ func (s *DescribeDBClustersResponseBodyItemsDBClusterTags) SetTag(v []*DescribeD
 }
 
 func (s *DescribeDBClustersResponseBodyItemsDBClusterTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClustersResponseBodyItemsDBClusterTagsTag struct {

@@ -23,6 +23,8 @@ type iCreateDBClusterRequest interface {
 	GetClientToken() *string
 	SetCloneDataPoint(v string) *CreateDBClusterRequest
 	GetCloneDataPoint() *string
+	SetCloudProvider(v string) *CreateDBClusterRequest
+	GetCloudProvider() *string
 	SetClusterNetworkType(v string) *CreateDBClusterRequest
 	GetClusterNetworkType() *string
 	SetCreationCategory(v string) *CreateDBClusterRequest
@@ -43,6 +45,8 @@ type iCreateDBClusterRequest interface {
 	GetDBVersion() *string
 	SetDefaultTimeZone(v string) *CreateDBClusterRequest
 	GetDefaultTimeZone() *string
+	SetEnsRegionId(v string) *CreateDBClusterRequest
+	GetEnsRegionId() *string
 	SetGDNId(v string) *CreateDBClusterRequest
 	GetGDNId() *string
 	SetHotStandbyCluster(v string) *CreateDBClusterRequest
@@ -210,6 +214,10 @@ type CreateDBClusterRequest struct {
 	//
 	// LATEST
 	CloneDataPoint *string `json:"CloneDataPoint,omitempty" xml:"CloneDataPoint,omitempty"`
+	// example:
+	//
+	// ENS
+	CloudProvider *string `json:"CloudProvider,omitempty" xml:"CloudProvider,omitempty"`
 	// Cluster network type, currently only VPC is supported, with a fixed value of **VPC**.
 	//
 	// example:
@@ -398,6 +406,10 @@ type CreateDBClusterRequest struct {
 	//
 	// SYSTEM
 	DefaultTimeZone *string `json:"DefaultTimeZone,omitempty" xml:"DefaultTimeZone,omitempty"`
+	// example:
+	//
+	// vn-hanoi-3
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	// Global Database Network (GDN) ID.
 	//
 	// > This parameter is required when **CreationOption*	- is **CreateGdnStandby**.
@@ -809,6 +821,10 @@ func (s *CreateDBClusterRequest) GetCloneDataPoint() *string {
 	return s.CloneDataPoint
 }
 
+func (s *CreateDBClusterRequest) GetCloudProvider() *string {
+	return s.CloudProvider
+}
+
 func (s *CreateDBClusterRequest) GetClusterNetworkType() *string {
 	return s.ClusterNetworkType
 }
@@ -847,6 +863,10 @@ func (s *CreateDBClusterRequest) GetDBVersion() *string {
 
 func (s *CreateDBClusterRequest) GetDefaultTimeZone() *string {
 	return s.DefaultTimeZone
+}
+
+func (s *CreateDBClusterRequest) GetEnsRegionId() *string {
+	return s.EnsRegionId
 }
 
 func (s *CreateDBClusterRequest) GetGDNId() *string {
@@ -1052,6 +1072,11 @@ func (s *CreateDBClusterRequest) SetCloneDataPoint(v string) *CreateDBClusterReq
 	return s
 }
 
+func (s *CreateDBClusterRequest) SetCloudProvider(v string) *CreateDBClusterRequest {
+	s.CloudProvider = &v
+	return s
+}
+
 func (s *CreateDBClusterRequest) SetClusterNetworkType(v string) *CreateDBClusterRequest {
 	s.ClusterNetworkType = &v
 	return s
@@ -1099,6 +1124,11 @@ func (s *CreateDBClusterRequest) SetDBVersion(v string) *CreateDBClusterRequest 
 
 func (s *CreateDBClusterRequest) SetDefaultTimeZone(v string) *CreateDBClusterRequest {
 	s.DefaultTimeZone = &v
+	return s
+}
+
+func (s *CreateDBClusterRequest) SetEnsRegionId(v string) *CreateDBClusterRequest {
+	s.EnsRegionId = &v
 	return s
 }
 
@@ -1313,7 +1343,16 @@ func (s *CreateDBClusterRequest) SetZoneId(v string) *CreateDBClusterRequest {
 }
 
 func (s *CreateDBClusterRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDBClusterRequestTag struct {

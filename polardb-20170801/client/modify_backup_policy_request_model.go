@@ -432,7 +432,16 @@ func (s *ModifyBackupPolicyRequest) SetResourceOwnerId(v int64) *ModifyBackupPol
 }
 
 func (s *ModifyBackupPolicyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AdvancedDataPolicies != nil {
+		for _, item := range s.AdvancedDataPolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyBackupPolicyRequestAdvancedDataPolicies struct {

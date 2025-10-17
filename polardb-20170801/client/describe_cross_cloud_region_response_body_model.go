@@ -50,7 +50,16 @@ func (s *DescribeCrossCloudRegionResponseBody) SetRequestId(v string) *DescribeC
 }
 
 func (s *DescribeCrossCloudRegionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CrossCloudRegionList != nil {
+		for _, item := range s.CrossCloudRegionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCrossCloudRegionResponseBodyCrossCloudRegionList struct {
@@ -114,7 +123,16 @@ func (s *DescribeCrossCloudRegionResponseBodyCrossCloudRegionList) SetProjectId(
 }
 
 func (s *DescribeCrossCloudRegionResponseBodyCrossCloudRegionList) Validate() error {
-	return dara.Validate(s)
+	if s.CrossCloudZoneList != nil {
+		for _, item := range s.CrossCloudZoneList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCrossCloudRegionResponseBodyCrossCloudRegionListCrossCloudZoneList struct {

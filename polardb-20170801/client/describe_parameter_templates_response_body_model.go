@@ -121,7 +121,12 @@ func (s *DescribeParameterTemplatesResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeParameterTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Parameters != nil {
+		if err := s.Parameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeParameterTemplatesResponseBodyParameters struct {
@@ -146,7 +151,16 @@ func (s *DescribeParameterTemplatesResponseBodyParameters) SetTemplateRecord(v [
 }
 
 func (s *DescribeParameterTemplatesResponseBodyParameters) Validate() error {
-	return dara.Validate(s)
+	if s.TemplateRecord != nil {
+		for _, item := range s.TemplateRecord {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeParameterTemplatesResponseBodyParametersTemplateRecord struct {

@@ -136,7 +136,12 @@ func (s *DescribeLogBackupPolicyResponseBody) SetRequestId(v string) *DescribeLo
 }
 
 func (s *DescribeLogBackupPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AdvancedLogPolicies != nil {
+		if err := s.AdvancedLogPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLogBackupPolicyResponseBodyAdvancedLogPolicies struct {
@@ -161,7 +166,16 @@ func (s *DescribeLogBackupPolicyResponseBodyAdvancedLogPolicies) SetAdvancedLogP
 }
 
 func (s *DescribeLogBackupPolicyResponseBodyAdvancedLogPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.AdvancedLogPolicy != nil {
+		for _, item := range s.AdvancedLogPolicy {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy struct {

@@ -50,7 +50,16 @@ func (s *DescribeCrossCloudLevelsResponseBody) SetRequestId(v string) *DescribeC
 }
 
 func (s *DescribeCrossCloudLevelsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CrossCloudLevelList != nil {
+		for _, item := range s.CrossCloudLevelList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCrossCloudLevelsResponseBodyCrossCloudLevelList struct {

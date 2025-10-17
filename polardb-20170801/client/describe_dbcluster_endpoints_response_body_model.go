@@ -53,7 +53,16 @@ func (s *DescribeDBClusterEndpointsResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeDBClusterEndpointsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterEndpointsResponseBodyItems struct {
@@ -305,7 +314,16 @@ func (s *DescribeDBClusterEndpointsResponseBodyItems) SetSccMode(v string) *Desc
 }
 
 func (s *DescribeDBClusterEndpointsResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.AddressItems != nil {
+		for _, item := range s.AddressItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterEndpointsResponseBodyItemsAddressItems struct {

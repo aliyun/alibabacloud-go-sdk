@@ -200,7 +200,16 @@ func (s *CreateDBEndpointAddressRequest) SetZoneInfo(v []*CreateDBEndpointAddres
 }
 
 func (s *CreateDBEndpointAddressRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ZoneInfo != nil {
+		for _, item := range s.ZoneInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDBEndpointAddressRequestZoneInfo struct {

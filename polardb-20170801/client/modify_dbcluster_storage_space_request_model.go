@@ -11,6 +11,8 @@ type iModifyDBClusterStorageSpaceRequest interface {
 	GoString() string
 	SetClientToken(v string) *ModifyDBClusterStorageSpaceRequest
 	GetClientToken() *string
+	SetCloudProvider(v string) *ModifyDBClusterStorageSpaceRequest
+	GetCloudProvider() *string
 	SetDBClusterId(v string) *ModifyDBClusterStorageSpaceRequest
 	GetDBClusterId() *string
 	SetOwnerAccount(v string) *ModifyDBClusterStorageSpaceRequest
@@ -38,6 +40,10 @@ type ModifyDBClusterStorageSpaceRequest struct {
 	//
 	// 6000170000591aed949d0f54a343f1a4233c1e7d1c5c******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// ENS
+	CloudProvider *string `json:"CloudProvider,omitempty" xml:"CloudProvider,omitempty"`
 	// The cluster ID.
 	//
 	// This parameter is required.
@@ -106,6 +112,10 @@ func (s *ModifyDBClusterStorageSpaceRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *ModifyDBClusterStorageSpaceRequest) GetCloudProvider() *string {
+	return s.CloudProvider
+}
+
 func (s *ModifyDBClusterStorageSpaceRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
@@ -144,6 +154,11 @@ func (s *ModifyDBClusterStorageSpaceRequest) GetSubCategory() *string {
 
 func (s *ModifyDBClusterStorageSpaceRequest) SetClientToken(v string) *ModifyDBClusterStorageSpaceRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyDBClusterStorageSpaceRequest) SetCloudProvider(v string) *ModifyDBClusterStorageSpaceRequest {
+	s.CloudProvider = &v
 	return s
 }
 

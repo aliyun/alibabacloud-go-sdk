@@ -19,6 +19,8 @@ type iDescribeDBClusterEndpointsRequest interface {
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *DescribeDBClusterEndpointsRequest
 	GetOwnerId() *int64
+	SetPolarFsInstanceId(v string) *DescribeDBClusterEndpointsRequest
+	GetPolarFsInstanceId() *string
 	SetResourceOwnerAccount(v string) *DescribeDBClusterEndpointsRequest
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *DescribeDBClusterEndpointsRequest
@@ -45,9 +47,13 @@ type DescribeDBClusterEndpointsRequest struct {
 	// example:
 	//
 	// AI
-	DescribeType         *string `json:"DescribeType,omitempty" xml:"DescribeType,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DescribeType *string `json:"DescribeType,omitempty" xml:"DescribeType,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// pfs-test*****
+	PolarFsInstanceId    *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -80,6 +86,10 @@ func (s *DescribeDBClusterEndpointsRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
 
+func (s *DescribeDBClusterEndpointsRequest) GetPolarFsInstanceId() *string {
+	return s.PolarFsInstanceId
+}
+
 func (s *DescribeDBClusterEndpointsRequest) GetResourceOwnerAccount() *string {
 	return s.ResourceOwnerAccount
 }
@@ -110,6 +120,11 @@ func (s *DescribeDBClusterEndpointsRequest) SetOwnerAccount(v string) *DescribeD
 
 func (s *DescribeDBClusterEndpointsRequest) SetOwnerId(v int64) *DescribeDBClusterEndpointsRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDBClusterEndpointsRequest) SetPolarFsInstanceId(v string) *DescribeDBClusterEndpointsRequest {
+	s.PolarFsInstanceId = &v
 	return s
 }
 

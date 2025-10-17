@@ -59,5 +59,10 @@ func (s *DeleteExtensionsResponse) SetBody(v *DeleteExtensionsResponseBody) *Del
 }
 
 func (s *DeleteExtensionsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

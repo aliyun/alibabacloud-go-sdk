@@ -285,7 +285,25 @@ func (s *DescribeDBClusterMigrationResponseBody) SetTopologies(v string) *Descri
 }
 
 func (s *DescribeDBClusterMigrationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBClusterEndpointList != nil {
+		for _, item := range s.DBClusterEndpointList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RdsEndpointList != nil {
+		for _, item := range s.RdsEndpointList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterMigrationResponseBodyDBClusterEndpointList struct {
@@ -360,7 +378,16 @@ func (s *DescribeDBClusterMigrationResponseBodyDBClusterEndpointList) SetReadWri
 }
 
 func (s *DescribeDBClusterMigrationResponseBodyDBClusterEndpointList) Validate() error {
-	return dara.Validate(s)
+	if s.AddressItems != nil {
+		for _, item := range s.AddressItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterMigrationResponseBodyDBClusterEndpointListAddressItems struct {
@@ -573,7 +600,16 @@ func (s *DescribeDBClusterMigrationResponseBodyRdsEndpointList) SetEndpointType(
 }
 
 func (s *DescribeDBClusterMigrationResponseBodyRdsEndpointList) Validate() error {
-	return dara.Validate(s)
+	if s.AddressItems != nil {
+		for _, item := range s.AddressItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterMigrationResponseBodyRdsEndpointListAddressItems struct {

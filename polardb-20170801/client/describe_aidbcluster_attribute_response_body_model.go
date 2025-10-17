@@ -403,10 +403,38 @@ func (s *DescribeAIDBClusterAttributeResponseBody) SetZoneIds(v string) *Describ
 }
 
 func (s *DescribeAIDBClusterAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBNodes != nil {
+		for _, item := range s.DBNodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EndpointList != nil {
+		for _, item := range s.EndpointList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Volumes != nil {
+		for _, item := range s.Volumes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAIDBClusterAttributeResponseBodyDBNodes struct {
+	ChildVolumes []*DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes `json:"ChildVolumes,omitempty" xml:"ChildVolumes,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2
@@ -450,8 +478,7 @@ type DescribeAIDBClusterAttributeResponseBodyDBNodes struct {
 	// example:
 	//
 	// vsw-*********************
-	VSwitchId *string                                                   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	Volumes   []*DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes `json:"Volumes,omitempty" xml:"Volumes,omitempty" type:"Repeated"`
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// example:
 	//
 	// cn-hangzhou-d
@@ -464,6 +491,10 @@ func (s DescribeAIDBClusterAttributeResponseBodyDBNodes) String() string {
 
 func (s DescribeAIDBClusterAttributeResponseBodyDBNodes) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetChildVolumes() []*DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes {
+	return s.ChildVolumes
 }
 
 func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetCpuCores() *string {
@@ -510,12 +541,13 @@ func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetVSwitchId() *string
 	return s.VSwitchId
 }
 
-func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetVolumes() []*DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes {
-	return s.Volumes
-}
-
 func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetZoneId() *string {
 	return s.ZoneId
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetChildVolumes(v []*DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes) *DescribeAIDBClusterAttributeResponseBodyDBNodes {
+	s.ChildVolumes = v
+	return s
 }
 
 func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetCpuCores(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodes {
@@ -573,21 +605,25 @@ func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetVSwitchId(v string)
 	return s
 }
 
-func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetVolumes(v []*DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes) *DescribeAIDBClusterAttributeResponseBodyDBNodes {
-	s.Volumes = v
-	return s
-}
-
 func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetZoneId(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodes {
 	s.ZoneId = &v
 	return s
 }
 
 func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) Validate() error {
-	return dara.Validate(s)
+	if s.ChildVolumes != nil {
+		for _, item := range s.ChildVolumes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
-type DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes struct {
+type DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes struct {
 	// example:
 	//
 	// /tmp/CrowdStrike
@@ -610,60 +646,60 @@ type DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes struct {
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 }
 
-func (s DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes) String() string {
+func (s DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes) String() string {
 	return dara.Prettify(s)
 }
 
-func (s DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes) GoString() string {
+func (s DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes) GetMountPath() *string {
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes) GetMountPath() *string {
 	return s.MountPath
 }
 
-func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes) GetName() *string {
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes) GetName() *string {
 	return s.Name
 }
 
-func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes) GetSizeGB() *string {
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes) GetSizeGB() *string {
 	return s.SizeGB
 }
 
-func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes) GetStorageCategory() *string {
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes) GetStorageCategory() *string {
 	return s.StorageCategory
 }
 
-func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes) GetStorageType() *string {
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes) GetStorageType() *string {
 	return s.StorageType
 }
 
-func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes) SetMountPath(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes {
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes) SetMountPath(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes {
 	s.MountPath = &v
 	return s
 }
 
-func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes) SetName(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes {
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes) SetName(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes {
 	s.Name = &v
 	return s
 }
 
-func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes) SetSizeGB(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes {
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes) SetSizeGB(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes {
 	s.SizeGB = &v
 	return s
 }
 
-func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes) SetStorageCategory(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes {
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes) SetStorageCategory(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes {
 	s.StorageCategory = &v
 	return s
 }
 
-func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes) SetStorageType(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes {
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes) SetStorageType(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes {
 	s.StorageType = &v
 	return s
 }
 
-func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesVolumes) Validate() error {
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -689,7 +725,16 @@ func (s *DescribeAIDBClusterAttributeResponseBodyEndpointList) SetNetInfoItems(v
 }
 
 func (s *DescribeAIDBClusterAttributeResponseBodyEndpointList) Validate() error {
-	return dara.Validate(s)
+	if s.NetInfoItems != nil {
+		for _, item := range s.NetInfoItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems struct {

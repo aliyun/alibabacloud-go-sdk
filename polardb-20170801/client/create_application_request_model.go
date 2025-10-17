@@ -39,6 +39,8 @@ type iCreateApplicationRequest interface {
 	GetUsedTime() *string
 	SetVSwitchId(v string) *CreateApplicationRequest
 	GetVSwitchId() *string
+	SetVpcId(v string) *CreateApplicationRequest
+	GetVpcId() *string
 	SetZoneId(v string) *CreateApplicationRequest
 	GetZoneId() *string
 }
@@ -102,6 +104,7 @@ type CreateApplicationRequest struct {
 	//
 	// vsw-*********************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// example:
 	//
 	// cn-beijing-k
@@ -174,6 +177,10 @@ func (s *CreateApplicationRequest) GetUsedTime() *string {
 
 func (s *CreateApplicationRequest) GetVSwitchId() *string {
 	return s.VSwitchId
+}
+
+func (s *CreateApplicationRequest) GetVpcId() *string {
+	return s.VpcId
 }
 
 func (s *CreateApplicationRequest) GetZoneId() *string {
@@ -255,13 +262,36 @@ func (s *CreateApplicationRequest) SetVSwitchId(v string) *CreateApplicationRequ
 	return s
 }
 
+func (s *CreateApplicationRequest) SetVpcId(v string) *CreateApplicationRequest {
+	s.VpcId = &v
+	return s
+}
+
 func (s *CreateApplicationRequest) SetZoneId(v string) *CreateApplicationRequest {
 	s.ZoneId = &v
 	return s
 }
 
 func (s *CreateApplicationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Components != nil {
+		for _, item := range s.Components {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Endpoints != nil {
+		for _, item := range s.Endpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateApplicationRequestComponents struct {
@@ -281,6 +311,8 @@ type CreateApplicationRequestComponents struct {
 	//
 	// gateway
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
+	ScaleMax      *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
+	ScaleMin      *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
 	// example:
 	//
 	// sg-********************
@@ -323,6 +355,14 @@ func (s *CreateApplicationRequestComponents) GetComponentType() *string {
 	return s.ComponentType
 }
 
+func (s *CreateApplicationRequestComponents) GetScaleMax() *string {
+	return s.ScaleMax
+}
+
+func (s *CreateApplicationRequestComponents) GetScaleMin() *string {
+	return s.ScaleMin
+}
+
 func (s *CreateApplicationRequestComponents) GetSecurityGroups() *string {
 	return s.SecurityGroups
 }
@@ -356,6 +396,16 @@ func (s *CreateApplicationRequestComponents) SetComponentReplica(v int64) *Creat
 
 func (s *CreateApplicationRequestComponents) SetComponentType(v string) *CreateApplicationRequestComponents {
 	s.ComponentType = &v
+	return s
+}
+
+func (s *CreateApplicationRequestComponents) SetScaleMax(v string) *CreateApplicationRequestComponents {
+	s.ScaleMax = &v
+	return s
+}
+
+func (s *CreateApplicationRequestComponents) SetScaleMin(v string) *CreateApplicationRequestComponents {
+	s.ScaleMin = &v
 	return s
 }
 

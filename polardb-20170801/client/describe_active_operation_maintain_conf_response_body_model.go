@@ -65,7 +65,12 @@ func (s *DescribeActiveOperationMaintainConfResponseBody) SetRequestId(v string)
 }
 
 func (s *DescribeActiveOperationMaintainConfResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeActiveOperationMaintainConfResponseBodyConfig struct {

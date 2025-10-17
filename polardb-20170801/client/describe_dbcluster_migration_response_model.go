@@ -59,5 +59,10 @@ func (s *DescribeDBClusterMigrationResponse) SetBody(v *DescribeDBClusterMigrati
 }
 
 func (s *DescribeDBClusterMigrationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

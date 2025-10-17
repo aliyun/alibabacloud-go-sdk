@@ -104,7 +104,12 @@ func (s *DescribeDBClustersWithBackupsResponseBody) SetTotalRecordCount(v int32)
 }
 
 func (s *DescribeDBClustersWithBackupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBClustersWithBackupsResponseBodyItems struct {
@@ -129,7 +134,16 @@ func (s *DescribeDBClustersWithBackupsResponseBodyItems) SetDBCluster(v []*Descr
 }
 
 func (s *DescribeDBClustersWithBackupsResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.DBCluster != nil {
+		for _, item := range s.DBCluster {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClustersWithBackupsResponseBodyItemsDBCluster struct {

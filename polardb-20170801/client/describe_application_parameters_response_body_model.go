@@ -62,7 +62,17 @@ func (s *DescribeApplicationParametersResponseBody) SetRequestId(v string) *Desc
 }
 
 func (s *DescribeApplicationParametersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ParameterTemplates != nil {
+		if err := s.ParameterTemplates.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Parameters != nil {
+		if err := s.Parameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationParametersResponseBodyParameterTemplates struct {
@@ -87,7 +97,16 @@ func (s *DescribeApplicationParametersResponseBodyParameterTemplates) SetCompone
 }
 
 func (s *DescribeApplicationParametersResponseBodyParameterTemplates) Validate() error {
-	return dara.Validate(s)
+	if s.ComponentParameterTemplates != nil {
+		for _, item := range s.ComponentParameterTemplates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationParametersResponseBodyParameterTemplatesComponentParameterTemplates struct {
@@ -138,7 +157,16 @@ func (s *DescribeApplicationParametersResponseBodyParameterTemplatesComponentPar
 }
 
 func (s *DescribeApplicationParametersResponseBodyParameterTemplatesComponentParameterTemplates) Validate() error {
-	return dara.Validate(s)
+	if s.Parameters != nil {
+		for _, item := range s.Parameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationParametersResponseBodyParameterTemplatesComponentParameterTemplatesParameters struct {
@@ -269,7 +297,16 @@ func (s *DescribeApplicationParametersResponseBodyParameters) SetComponentParame
 }
 
 func (s *DescribeApplicationParametersResponseBodyParameters) Validate() error {
-	return dara.Validate(s)
+	if s.ComponentParameters != nil {
+		for _, item := range s.ComponentParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationParametersResponseBodyParametersComponentParameters struct {
@@ -320,7 +357,16 @@ func (s *DescribeApplicationParametersResponseBodyParametersComponentParameters)
 }
 
 func (s *DescribeApplicationParametersResponseBodyParametersComponentParameters) Validate() error {
-	return dara.Validate(s)
+	if s.Parameters != nil {
+		for _, item := range s.Parameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationParametersResponseBodyParametersComponentParametersParameters struct {

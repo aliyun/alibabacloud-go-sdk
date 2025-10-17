@@ -138,7 +138,12 @@ func (s *DescribeDBProxyPerformanceResponseBody) SetStartTime(v string) *Describ
 }
 
 func (s *DescribeDBProxyPerformanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PerformanceKeys != nil {
+		if err := s.PerformanceKeys.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBProxyPerformanceResponseBodyPerformanceKeys struct {
@@ -163,7 +168,16 @@ func (s *DescribeDBProxyPerformanceResponseBodyPerformanceKeys) SetPerformanceIt
 }
 
 func (s *DescribeDBProxyPerformanceResponseBodyPerformanceKeys) Validate() error {
-	return dara.Validate(s)
+	if s.PerformanceItem != nil {
+		for _, item := range s.PerformanceItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItem struct {
@@ -234,7 +248,12 @@ func (s *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItem) S
 }
 
 func (s *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItem) Validate() error {
-	return dara.Validate(s)
+	if s.Points != nil {
+		if err := s.Points.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItemPoints struct {
@@ -259,7 +278,16 @@ func (s *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItemPoi
 }
 
 func (s *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItemPoints) Validate() error {
-	return dara.Validate(s)
+	if s.PerformanceItemValue != nil {
+		for _, item := range s.PerformanceItemValue {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue struct {

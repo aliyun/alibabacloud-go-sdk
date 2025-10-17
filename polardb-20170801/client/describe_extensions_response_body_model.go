@@ -72,7 +72,25 @@ func (s *DescribeExtensionsResponseBody) SetUninstalledExtensions(v []*DescribeE
 }
 
 func (s *DescribeExtensionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstalledExtensions != nil {
+		for _, item := range s.InstalledExtensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UninstalledExtensions != nil {
+		for _, item := range s.UninstalledExtensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeExtensionsResponseBodyInstalledExtensions struct {

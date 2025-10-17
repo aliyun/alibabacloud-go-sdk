@@ -156,7 +156,16 @@ func (s *DescribeHALogsResponseBody) SetTotalRecords(v int32) *DescribeHALogsRes
 }
 
 func (s *DescribeHALogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HaLogItems != nil {
+		for _, item := range s.HaLogItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHALogsResponseBodyHaLogItems struct {

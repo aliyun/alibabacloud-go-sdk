@@ -59,5 +59,10 @@ func (s *CreateColdStorageInstanceResponse) SetBody(v *CreateColdStorageInstance
 }
 
 func (s *CreateColdStorageInstanceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

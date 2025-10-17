@@ -104,7 +104,16 @@ func (s *DescribeVSwitchesResponseBody) SetVSwitchs(v []*DescribeVSwitchesRespon
 }
 
 func (s *DescribeVSwitchesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VSwitchs != nil {
+		for _, item := range s.VSwitchs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVSwitchesResponseBodyVSwitchs struct {

@@ -125,7 +125,16 @@ func (s *CreateApplicationResponseBody) SetResourceGroupId(v string) *CreateAppl
 }
 
 func (s *CreateApplicationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Components != nil {
+		for _, item := range s.Components {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateApplicationResponseBodyComponents struct {

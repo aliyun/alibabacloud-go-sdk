@@ -47,6 +47,8 @@ type iDescribeApplicationAttributeResponseBody interface {
 	GetSecurityGroups() []*DescribeApplicationAttributeResponseBodySecurityGroups
 	SetSecurityIPArrays(v []*DescribeApplicationAttributeResponseBodySecurityIPArrays) *DescribeApplicationAttributeResponseBody
 	GetSecurityIPArrays() []*DescribeApplicationAttributeResponseBodySecurityIPArrays
+	SetServerlessType(v string) *DescribeApplicationAttributeResponseBody
+	GetServerlessType() *string
 	SetStatus(v string) *DescribeApplicationAttributeResponseBody
 	GetStatus() *string
 	SetUpgradeAvailable(v string) *DescribeApplicationAttributeResponseBody
@@ -126,6 +128,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	RequestId        *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityGroups   []*DescribeApplicationAttributeResponseBodySecurityGroups   `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
 	SecurityIPArrays []*DescribeApplicationAttributeResponseBodySecurityIPArrays `json:"SecurityIPArrays,omitempty" xml:"SecurityIPArrays,omitempty" type:"Repeated"`
+	ServerlessType   *string                                                     `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
 	// example:
 	//
 	// Activated
@@ -238,6 +241,10 @@ func (s *DescribeApplicationAttributeResponseBody) GetSecurityGroups() []*Descri
 
 func (s *DescribeApplicationAttributeResponseBody) GetSecurityIPArrays() []*DescribeApplicationAttributeResponseBodySecurityIPArrays {
 	return s.SecurityIPArrays
+}
+
+func (s *DescribeApplicationAttributeResponseBody) GetServerlessType() *string {
+	return s.ServerlessType
 }
 
 func (s *DescribeApplicationAttributeResponseBody) GetStatus() *string {
@@ -359,6 +366,11 @@ func (s *DescribeApplicationAttributeResponseBody) SetSecurityIPArrays(v []*Desc
 	return s
 }
 
+func (s *DescribeApplicationAttributeResponseBody) SetServerlessType(v string) *DescribeApplicationAttributeResponseBody {
+	s.ServerlessType = &v
+	return s
+}
+
 func (s *DescribeApplicationAttributeResponseBody) SetStatus(v string) *DescribeApplicationAttributeResponseBody {
 	s.Status = &v
 	return s
@@ -390,7 +402,43 @@ func (s *DescribeApplicationAttributeResponseBody) SetZoneId(v string) *Describe
 }
 
 func (s *DescribeApplicationAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Components != nil {
+		for _, item := range s.Components {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Endpoints != nil {
+		for _, item := range s.Endpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SecurityGroups != nil {
+		for _, item := range s.SecurityGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SecurityIPArrays != nil {
+		for _, item := range s.SecurityIPArrays {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationAttributeResponseBodyComponents struct {
@@ -539,7 +587,30 @@ func (s *DescribeApplicationAttributeResponseBodyComponents) SetTopology(v *Desc
 }
 
 func (s *DescribeApplicationAttributeResponseBodyComponents) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityGroups != nil {
+		for _, item := range s.SecurityGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SecurityIPArrays != nil {
+		for _, item := range s.SecurityIPArrays {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Topology != nil {
+		if err := s.Topology.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationAttributeResponseBodyComponentsSecurityGroups struct {

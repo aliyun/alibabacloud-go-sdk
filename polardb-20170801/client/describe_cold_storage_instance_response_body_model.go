@@ -197,7 +197,25 @@ func (s *DescribeColdStorageInstanceResponseBody) SetTotalRecord(v int32) *Descr
 }
 
 func (s *DescribeColdStorageInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OssClusterInfoList != nil {
+		for _, item := range s.OssClusterInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tables != nil {
+		for _, item := range s.Tables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeColdStorageInstanceResponseBodyOssClusterInfoList struct {
@@ -406,7 +424,16 @@ func (s *DescribeColdStorageInstanceResponseBodyTables) SetTableName(v string) *
 }
 
 func (s *DescribeColdStorageInstanceResponseBodyTables) Validate() error {
-	return dara.Validate(s)
+	if s.ChildObjects != nil {
+		for _, item := range s.ChildObjects {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeColdStorageInstanceResponseBodyTablesChildObjects struct {

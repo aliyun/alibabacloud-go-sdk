@@ -52,7 +52,16 @@ func (s *DescribeNetworkChannelResponseBody) SetRequestId(v string) *DescribeNet
 }
 
 func (s *DescribeNetworkChannelResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ChannelInfos != nil {
+		for _, item := range s.ChannelInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkChannelResponseBodyChannelInfos struct {

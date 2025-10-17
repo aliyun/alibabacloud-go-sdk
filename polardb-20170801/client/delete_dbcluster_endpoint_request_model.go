@@ -17,6 +17,8 @@ type iDeleteDBClusterEndpointRequest interface {
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *DeleteDBClusterEndpointRequest
 	GetOwnerId() *int64
+	SetPolarFsInstanceId(v string) *DeleteDBClusterEndpointRequest
+	GetPolarFsInstanceId() *string
 	SetResourceOwnerAccount(v string) *DeleteDBClusterEndpointRequest
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *DeleteDBClusterEndpointRequest
@@ -39,9 +41,13 @@ type DeleteDBClusterEndpointRequest struct {
 	// example:
 	//
 	// pe-******************
-	DBEndpointId         *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// pfs-test*****
+	PolarFsInstanceId    *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -70,6 +76,10 @@ func (s *DeleteDBClusterEndpointRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
 
+func (s *DeleteDBClusterEndpointRequest) GetPolarFsInstanceId() *string {
+	return s.PolarFsInstanceId
+}
+
 func (s *DeleteDBClusterEndpointRequest) GetResourceOwnerAccount() *string {
 	return s.ResourceOwnerAccount
 }
@@ -95,6 +105,11 @@ func (s *DeleteDBClusterEndpointRequest) SetOwnerAccount(v string) *DeleteDBClus
 
 func (s *DeleteDBClusterEndpointRequest) SetOwnerId(v int64) *DeleteDBClusterEndpointRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteDBClusterEndpointRequest) SetPolarFsInstanceId(v string) *DeleteDBClusterEndpointRequest {
+	s.PolarFsInstanceId = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iCreateDBNodesRequest interface {
 	GoString() string
 	SetClientToken(v string) *CreateDBNodesRequest
 	GetClientToken() *string
+	SetCloudProvider(v string) *CreateDBNodesRequest
+	GetCloudProvider() *string
 	SetDBClusterId(v string) *CreateDBNodesRequest
 	GetDBClusterId() *string
 	SetDBNode(v []*CreateDBNodesRequestDBNode) *CreateDBNodesRequest
@@ -44,6 +46,10 @@ type CreateDBNodesRequest struct {
 	//
 	// 6000170000591aed949d0f54a343f1a4233c1e7d1c5c******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// ENS
+	CloudProvider *string `json:"CloudProvider,omitempty" xml:"CloudProvider,omitempty"`
 	// The ID of the cluster.
 	//
 	// This parameter is required.
@@ -144,6 +150,10 @@ func (s *CreateDBNodesRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *CreateDBNodesRequest) GetCloudProvider() *string {
+	return s.CloudProvider
+}
+
 func (s *CreateDBNodesRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
@@ -194,6 +204,11 @@ func (s *CreateDBNodesRequest) GetResourceOwnerId() *int64 {
 
 func (s *CreateDBNodesRequest) SetClientToken(v string) *CreateDBNodesRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateDBNodesRequest) SetCloudProvider(v string) *CreateDBNodesRequest {
+	s.CloudProvider = &v
 	return s
 }
 
@@ -258,7 +273,16 @@ func (s *CreateDBNodesRequest) SetResourceOwnerId(v int64) *CreateDBNodesRequest
 }
 
 func (s *CreateDBNodesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DBNode != nil {
+		for _, item := range s.DBNode {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDBNodesRequestDBNode struct {

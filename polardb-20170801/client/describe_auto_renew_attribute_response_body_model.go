@@ -104,7 +104,12 @@ func (s *DescribeAutoRenewAttributeResponseBody) SetTotalRecordCount(v int32) *D
 }
 
 func (s *DescribeAutoRenewAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAutoRenewAttributeResponseBodyItems struct {
@@ -129,7 +134,16 @@ func (s *DescribeAutoRenewAttributeResponseBodyItems) SetAutoRenewAttribute(v []
 }
 
 func (s *DescribeAutoRenewAttributeResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.AutoRenewAttribute != nil {
+		for _, item := range s.AutoRenewAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAutoRenewAttributeResponseBodyItemsAutoRenewAttribute struct {

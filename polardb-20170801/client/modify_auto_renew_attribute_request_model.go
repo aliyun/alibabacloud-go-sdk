@@ -9,6 +9,8 @@ type iModifyAutoRenewAttributeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCloudProvider(v string) *ModifyAutoRenewAttributeRequest
+	GetCloudProvider() *string
 	SetDBClusterIds(v string) *ModifyAutoRenewAttributeRequest
 	GetDBClusterIds() *string
 	SetDuration(v string) *ModifyAutoRenewAttributeRequest
@@ -32,6 +34,10 @@ type iModifyAutoRenewAttributeRequest interface {
 }
 
 type ModifyAutoRenewAttributeRequest struct {
+	// example:
+	//
+	// ENS
+	CloudProvider *string `json:"CloudProvider,omitempty" xml:"CloudProvider,omitempty"`
 	// The cluster ID. If you need to specify multiple cluster IDs, separate the cluster IDs with commas (,).
 	//
 	// This parameter is required.
@@ -114,6 +120,10 @@ func (s ModifyAutoRenewAttributeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyAutoRenewAttributeRequest) GetCloudProvider() *string {
+	return s.CloudProvider
+}
+
 func (s *ModifyAutoRenewAttributeRequest) GetDBClusterIds() *string {
 	return s.DBClusterIds
 }
@@ -152,6 +162,11 @@ func (s *ModifyAutoRenewAttributeRequest) GetResourceOwnerAccount() *string {
 
 func (s *ModifyAutoRenewAttributeRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
+}
+
+func (s *ModifyAutoRenewAttributeRequest) SetCloudProvider(v string) *ModifyAutoRenewAttributeRequest {
+	s.CloudProvider = &v
+	return s
 }
 
 func (s *ModifyAutoRenewAttributeRequest) SetDBClusterIds(v string) *ModifyAutoRenewAttributeRequest {

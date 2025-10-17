@@ -59,5 +59,10 @@ func (s *RemoveDBClusterFromGDNResponse) SetBody(v *RemoveDBClusterFromGDNRespon
 }
 
 func (s *RemoveDBClusterFromGDNResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

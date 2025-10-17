@@ -11,6 +11,8 @@ type iModifyDBNodeClassRequest interface {
 	GoString() string
 	SetClientToken(v string) *ModifyDBNodeClassRequest
 	GetClientToken() *string
+	SetCloudProvider(v string) *ModifyDBNodeClassRequest
+	GetCloudProvider() *string
 	SetDBClusterId(v string) *ModifyDBNodeClassRequest
 	GetDBClusterId() *string
 	SetDBNodeTargetClass(v string) *ModifyDBNodeClassRequest
@@ -44,6 +46,10 @@ type ModifyDBNodeClassRequest struct {
 	//
 	// 6000170000591aed949d0f54a343f1a4233c1e7d1c5c******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// ENS
+	CloudProvider *string `json:"CloudProvider,omitempty" xml:"CloudProvider,omitempty"`
 	// The ID of the cluster.
 	//
 	// This parameter is required.
@@ -135,6 +141,10 @@ func (s *ModifyDBNodeClassRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *ModifyDBNodeClassRequest) GetCloudProvider() *string {
+	return s.CloudProvider
+}
+
 func (s *ModifyDBNodeClassRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
@@ -185,6 +195,11 @@ func (s *ModifyDBNodeClassRequest) GetSubCategory() *string {
 
 func (s *ModifyDBNodeClassRequest) SetClientToken(v string) *ModifyDBNodeClassRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyDBNodeClassRequest) SetCloudProvider(v string) *ModifyDBNodeClassRequest {
+	s.CloudProvider = &v
 	return s
 }
 

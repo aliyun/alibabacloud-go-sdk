@@ -89,7 +89,12 @@ func (s *DescribeScheduleTasksResponseBody) SetSuccess(v bool) *DescribeSchedule
 }
 
 func (s *DescribeScheduleTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeScheduleTasksResponseBodyData struct {
@@ -160,7 +165,16 @@ func (s *DescribeScheduleTasksResponseBodyData) SetTotalRecordCount(v int32) *De
 }
 
 func (s *DescribeScheduleTasksResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.TimerInfos != nil {
+		for _, item := range s.TimerInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeScheduleTasksResponseBodyDataTimerInfos struct {

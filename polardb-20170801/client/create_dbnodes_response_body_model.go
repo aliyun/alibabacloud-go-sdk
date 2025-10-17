@@ -87,7 +87,12 @@ func (s *CreateDBNodesResponseBody) SetRequestId(v string) *CreateDBNodesRespons
 }
 
 func (s *CreateDBNodesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBNodeIds != nil {
+		if err := s.DBNodeIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDBNodesResponseBodyDBNodeIds struct {
