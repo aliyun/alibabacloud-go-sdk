@@ -59,5 +59,10 @@ func (s *UpdateKyuubiTokenResponse) SetBody(v *UpdateKyuubiTokenResponseBody) *U
 }
 
 func (s *UpdateKyuubiTokenResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

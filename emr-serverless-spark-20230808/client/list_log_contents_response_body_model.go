@@ -53,7 +53,12 @@ func (s *ListLogContentsResponseBody) SetRequestId(v string) *ListLogContentsRes
 }
 
 func (s *ListLogContentsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ListLogContent != nil {
+		if err := s.ListLogContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLogContentsResponseBodyListLogContent struct {
@@ -94,7 +99,16 @@ func (s *ListLogContentsResponseBodyListLogContent) SetTotalLength(v int64) *Lis
 }
 
 func (s *ListLogContentsResponseBodyListLogContent) Validate() error {
-	return dara.Validate(s)
+	if s.Contents != nil {
+		for _, item := range s.Contents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLogContentsResponseBodyListLogContentContents struct {

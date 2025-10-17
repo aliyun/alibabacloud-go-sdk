@@ -50,7 +50,12 @@ func (s *ListKyuubiTokenResponseBody) SetRequestId(v string) *ListKyuubiTokenRes
 }
 
 func (s *ListKyuubiTokenResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListKyuubiTokenResponseBodyData struct {
@@ -75,7 +80,16 @@ func (s *ListKyuubiTokenResponseBodyData) SetTokens(v []*ListKyuubiTokenResponse
 }
 
 func (s *ListKyuubiTokenResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Tokens != nil {
+		for _, item := range s.Tokens {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListKyuubiTokenResponseBodyDataTokens struct {

@@ -50,7 +50,12 @@ func (s *ListSqlStatementContentsResponseBody) SetSqlStatementContents(v *ListSq
 }
 
 func (s *ListSqlStatementContentsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SqlStatementContents != nil {
+		if err := s.SqlStatementContents.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSqlStatementContentsResponseBodySqlStatementContents struct {

@@ -92,7 +92,12 @@ func (s *UpdateKyuubiTokenRequest) SetRegionId(v string) *UpdateKyuubiTokenReque
 }
 
 func (s *UpdateKyuubiTokenRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AutoExpireConfiguration != nil {
+		if err := s.AutoExpireConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateKyuubiTokenRequestAutoExpireConfiguration struct {

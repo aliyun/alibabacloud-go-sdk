@@ -107,5 +107,10 @@ func (s *TaskSnapshot) SetVersion(v string) *TaskSnapshot {
 }
 
 func (s *TaskSnapshot) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		if err := s.Item.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

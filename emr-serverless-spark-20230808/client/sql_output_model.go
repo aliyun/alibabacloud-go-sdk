@@ -47,7 +47,21 @@ func (s *SqlOutput) SetSchema(v *SqlOutputSchema) *SqlOutput {
 }
 
 func (s *SqlOutput) Validate() error {
-	return dara.Validate(s)
+	if s.Rows != nil {
+		for _, item := range s.Rows {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Schema != nil {
+		if err := s.Schema.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SqlOutputRows struct {
@@ -100,7 +114,16 @@ func (s *SqlOutputSchema) SetFields(v []*SqlOutputSchemaFields) *SqlOutputSchema
 }
 
 func (s *SqlOutputSchema) Validate() error {
-	return dara.Validate(s)
+	if s.Fields != nil {
+		for _, item := range s.Fields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SqlOutputSchemaFields struct {

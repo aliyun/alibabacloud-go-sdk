@@ -61,7 +61,12 @@ func (s *GetCuHoursResponseBody) SetRequestId(v string) *GetCuHoursResponseBody 
 }
 
 func (s *GetCuHoursResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCuHoursResponseBodyData struct {

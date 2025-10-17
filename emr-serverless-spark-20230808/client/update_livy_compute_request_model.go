@@ -264,7 +264,17 @@ func (s *UpdateLivyComputeRequest) SetRegionId(v string) *UpdateLivyComputeReque
 }
 
 func (s *UpdateLivyComputeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AutoStartConfiguration != nil {
+		if err := s.AutoStartConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AutoStopConfiguration != nil {
+		if err := s.AutoStopConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateLivyComputeRequestAutoStartConfiguration struct {

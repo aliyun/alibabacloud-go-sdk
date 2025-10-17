@@ -53,7 +53,12 @@ func (s *GetSqlStatementResponseBody) SetRequestId(v string) *GetSqlStatementRes
 }
 
 func (s *GetSqlStatementResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSqlStatementResponseBodyData struct {
@@ -162,7 +167,16 @@ func (s *GetSqlStatementResponseBodyData) SetStatementId(v string) *GetSqlStatem
 }
 
 func (s *GetSqlStatementResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.SqlOutputs != nil {
+		for _, item := range s.SqlOutputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSqlStatementResponseBodyDataSqlOutputs struct {

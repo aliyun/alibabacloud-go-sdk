@@ -53,7 +53,12 @@ func (s *GetSessionClusterResponseBody) SetSessionCluster(v *GetSessionClusterRe
 }
 
 func (s *GetSessionClusterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SessionCluster != nil {
+		if err := s.SessionCluster.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSessionClusterResponseBodySessionCluster struct {
@@ -433,7 +438,31 @@ func (s *GetSessionClusterResponseBodySessionCluster) SetWorkspaceId(v string) *
 }
 
 func (s *GetSessionClusterResponseBodySessionCluster) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicationConfigs != nil {
+		for _, item := range s.ApplicationConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AutoStartConfiguration != nil {
+		if err := s.AutoStartConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AutoStopConfiguration != nil {
+		if err := s.AutoStopConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StateChangeReason != nil {
+		if err := s.StateChangeReason.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSessionClusterResponseBodySessionClusterApplicationConfigs struct {

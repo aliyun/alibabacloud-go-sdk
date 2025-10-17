@@ -35,7 +35,12 @@ func (s *JobDriver) SetSparkSubmit(v *JobDriverSparkSubmit) *JobDriver {
 }
 
 func (s *JobDriver) Validate() error {
-	return dara.Validate(s)
+	if s.SparkSubmit != nil {
+		if err := s.SparkSubmit.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type JobDriverSparkSubmit struct {

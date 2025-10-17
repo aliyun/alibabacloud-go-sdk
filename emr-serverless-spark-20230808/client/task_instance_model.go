@@ -119,5 +119,10 @@ func (s *TaskInstance) SetWorkspaceBizId(v string) *TaskInstance {
 }
 
 func (s *TaskInstance) Validate() error {
-	return dara.Validate(s)
+	if s.TaskInfo != nil {
+		if err := s.TaskInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

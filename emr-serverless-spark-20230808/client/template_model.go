@@ -250,5 +250,14 @@ func (s *Template) SetTemplateType(v string) *Template {
 }
 
 func (s *Template) Validate() error {
-	return dara.Validate(s)
+	if s.SparkConf != nil {
+		for _, item := range s.SparkConf {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -80,7 +80,12 @@ func (s *CreateLivyComputeTokenResponseBody) SetRequestId(v string) *CreateLivyC
 }
 
 func (s *CreateLivyComputeTokenResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateLivyComputeTokenResponseBodyData struct {

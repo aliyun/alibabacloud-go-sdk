@@ -103,7 +103,16 @@ func (s *ListMembersResponseBody) SetTotalCount(v int32) *ListMembersResponseBod
 }
 
 func (s *ListMembersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Members != nil {
+		for _, item := range s.Members {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMembersResponseBodyMembers struct {
@@ -226,7 +235,25 @@ func (s *ListMembersResponseBodyMembers) SetVisible(v bool) *ListMembersResponse
 }
 
 func (s *ListMembersResponseBodyMembers) Validate() error {
-	return dara.Validate(s)
+	if s.Actions != nil {
+		for _, item := range s.Actions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Roles != nil {
+		for _, item := range s.Roles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMembersResponseBodyMembersActions struct {
@@ -402,7 +429,16 @@ func (s *ListMembersResponseBodyMembersRoles) SetRoleName(v string) *ListMembers
 }
 
 func (s *ListMembersResponseBodyMembersRoles) Validate() error {
-	return dara.Validate(s)
+	if s.Actions != nil {
+		for _, item := range s.Actions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMembersResponseBodyMembersRolesActions struct {

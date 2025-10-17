@@ -267,7 +267,17 @@ func (s *CreateLivyComputeRequest) SetRegionId(v string) *CreateLivyComputeReque
 }
 
 func (s *CreateLivyComputeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AutoStartConfiguration != nil {
+		if err := s.AutoStartConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AutoStopConfiguration != nil {
+		if err := s.AutoStopConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateLivyComputeRequestAutoStartConfiguration struct {

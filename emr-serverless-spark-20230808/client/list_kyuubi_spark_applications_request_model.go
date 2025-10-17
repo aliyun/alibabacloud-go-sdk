@@ -152,7 +152,12 @@ func (s *ListKyuubiSparkApplicationsRequest) SetStartTime(v *ListKyuubiSparkAppl
 }
 
 func (s *ListKyuubiSparkApplicationsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.StartTime != nil {
+		if err := s.StartTime.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListKyuubiSparkApplicationsRequestStartTime struct {

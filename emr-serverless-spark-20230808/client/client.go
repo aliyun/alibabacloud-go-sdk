@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -67,9 +68,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AddMembersResponse
 func (client *Client) AddMembersWithOptions(request *AddMembersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddMembersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -141,9 +144,11 @@ func (client *Client) AddMembers(request *AddMembersRequest) (_result *AddMember
 //
 // @return CancelJobRunResponse
 func (client *Client) CancelJobRunWithOptions(workspaceId *string, jobRunId *string, request *CancelJobRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CancelJobRunResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -205,9 +210,11 @@ func (client *Client) CancelJobRun(workspaceId *string, jobRunId *string, reques
 //
 // @return CreateKyuubiTokenResponse
 func (client *Client) CreateKyuubiTokenWithOptions(workspaceId *string, kyuubiServiceId *string, request *CreateKyuubiTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateKyuubiTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -287,9 +294,11 @@ func (client *Client) CreateKyuubiToken(workspaceId *string, kyuubiServiceId *st
 //
 // @return CreateLivyComputeResponse
 func (client *Client) CreateLivyComputeWithOptions(workspaceBizId *string, request *CreateLivyComputeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateLivyComputeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -413,9 +422,11 @@ func (client *Client) CreateLivyCompute(workspaceBizId *string, request *CreateL
 //
 // @return CreateLivyComputeTokenResponse
 func (client *Client) CreateLivyComputeTokenWithOptions(workspaceBizId *string, livyComputeId *string, request *CreateLivyComputeTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateLivyComputeTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -491,9 +502,11 @@ func (client *Client) CreateLivyComputeToken(workspaceBizId *string, livyCompute
 //
 // @return CreateProcessDefinitionWithScheduleResponse
 func (client *Client) CreateProcessDefinitionWithScheduleWithOptions(bizId *string, tmpReq *CreateProcessDefinitionWithScheduleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateProcessDefinitionWithScheduleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateProcessDefinitionWithScheduleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -641,9 +654,11 @@ func (client *Client) CreateProcessDefinitionWithSchedule(bizId *string, request
 //
 // @return CreateSessionClusterResponse
 func (client *Client) CreateSessionClusterWithOptions(workspaceId *string, request *CreateSessionClusterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateSessionClusterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -755,9 +770,11 @@ func (client *Client) CreateSessionCluster(workspaceId *string, request *CreateS
 //
 // @return CreateSqlStatementResponse
 func (client *Client) CreateSqlStatementWithOptions(workspaceId *string, request *CreateSqlStatementRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateSqlStatementResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -845,9 +862,11 @@ func (client *Client) CreateSqlStatement(workspaceId *string, request *CreateSql
 //
 // @return CreateWorkspaceResponse
 func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateWorkspaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -975,9 +994,11 @@ func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result 
 //
 // @return DeleteKyuubiTokenResponse
 func (client *Client) DeleteKyuubiTokenWithOptions(workspaceId *string, kyuubiServiceId *string, tokenId *string, request *DeleteKyuubiTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteKyuubiTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1039,9 +1060,11 @@ func (client *Client) DeleteKyuubiToken(workspaceId *string, kyuubiServiceId *st
 //
 // @return DeleteLivyComputeResponse
 func (client *Client) DeleteLivyComputeWithOptions(workspaceBizId *string, livyComputeId *string, request *DeleteLivyComputeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteLivyComputeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1103,9 +1126,11 @@ func (client *Client) DeleteLivyCompute(workspaceBizId *string, livyComputeId *s
 //
 // @return DeleteLivyComputeTokenResponse
 func (client *Client) DeleteLivyComputeTokenWithOptions(workspaceBizId *string, livyComputeId *string, tokenId *string, request *DeleteLivyComputeTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteLivyComputeTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1167,9 +1192,11 @@ func (client *Client) DeleteLivyComputeToken(workspaceBizId *string, livyCompute
 //
 // @return EditWorkspaceQueueResponse
 func (client *Client) EditWorkspaceQueueWithOptions(request *EditWorkspaceQueueRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EditWorkspaceQueueResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1249,9 +1276,11 @@ func (client *Client) EditWorkspaceQueue(request *EditWorkspaceQueueRequest) (_r
 //
 // @return GetCuHoursResponse
 func (client *Client) GetCuHoursWithOptions(workspaceId *string, queue *string, request *GetCuHoursRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCuHoursResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -1317,9 +1346,11 @@ func (client *Client) GetCuHours(workspaceId *string, queue *string, request *Ge
 //
 // @return GetDoctorApplicationResponse
 func (client *Client) GetDoctorApplicationWithOptions(workspaceId *string, runId *string, request *GetDoctorApplicationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDoctorApplicationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Locale) {
@@ -1389,9 +1420,11 @@ func (client *Client) GetDoctorApplication(workspaceId *string, runId *string, r
 //
 // @return GetJobRunResponse
 func (client *Client) GetJobRunWithOptions(workspaceId *string, jobRunId *string, request *GetJobRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetJobRunResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1453,9 +1486,11 @@ func (client *Client) GetJobRun(workspaceId *string, jobRunId *string, request *
 //
 // @return GetKyuubiTokenResponse
 func (client *Client) GetKyuubiTokenWithOptions(workspaceId *string, kyuubiServiceId *string, tokenId *string, request *GetKyuubiTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetKyuubiTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1517,9 +1552,11 @@ func (client *Client) GetKyuubiToken(workspaceId *string, kyuubiServiceId *strin
 //
 // @return GetLivyComputeResponse
 func (client *Client) GetLivyComputeWithOptions(workspaceBizId *string, livyComputeId *string, request *GetLivyComputeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetLivyComputeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1581,9 +1618,11 @@ func (client *Client) GetLivyCompute(workspaceBizId *string, livyComputeId *stri
 //
 // @return GetLivyComputeTokenResponse
 func (client *Client) GetLivyComputeTokenWithOptions(workspaceBizId *string, livyComputeId *string, tokenId *string, request *GetLivyComputeTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetLivyComputeTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1645,9 +1684,11 @@ func (client *Client) GetLivyComputeToken(workspaceBizId *string, livyComputeId 
 //
 // @return GetSessionClusterResponse
 func (client *Client) GetSessionClusterWithOptions(workspaceId *string, sessionClusterId *string, request *GetSessionClusterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSessionClusterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1709,9 +1750,11 @@ func (client *Client) GetSessionCluster(workspaceId *string, sessionClusterId *s
 //
 // @return GetSqlStatementResponse
 func (client *Client) GetSqlStatementWithOptions(workspaceId *string, statementId *string, request *GetSqlStatementRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSqlStatementResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1773,9 +1816,11 @@ func (client *Client) GetSqlStatement(workspaceId *string, statementId *string, 
 //
 // @return GetTemplateResponse
 func (client *Client) GetTemplateWithOptions(workspaceBizId *string, request *GetTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1845,9 +1890,11 @@ func (client *Client) GetTemplate(workspaceBizId *string, request *GetTemplateRe
 //
 // @return GrantRoleToUsersResponse
 func (client *Client) GrantRoleToUsersWithOptions(request *GrantRoleToUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GrantRoleToUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1909,6 +1956,158 @@ func (client *Client) GrantRoleToUsers(request *GrantRoleToUsersRequest) (_resul
 
 // Summary:
 //
+// 查看数据目录列表
+//
+// @param request - ListCatalogsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCatalogsResponse
+func (client *Client) ListCatalogsWithOptions(workspaceId *string, request *ListCatalogsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListCatalogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Environment) {
+		query["environment"] = request.Environment
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCatalogs"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/catalogs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCatalogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看数据目录列表
+//
+// @param request - ListCatalogsRequest
+//
+// @return ListCatalogsResponse
+func (client *Client) ListCatalogs(workspaceId *string, request *ListCatalogsRequest) (_result *ListCatalogsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListCatalogsResponse{}
+	_body, _err := client.ListCatalogsWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出作业的executors
+//
+// @param request - ListJobExecutorsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListJobExecutorsResponse
+func (client *Client) ListJobExecutorsWithOptions(workspaceId *string, jobRunId *string, request *ListJobExecutorsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListJobExecutorsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExecutorType) {
+		query["executorType"] = request.ExecutorType
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListJobExecutors"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/jobRuns/" + dara.PercentEncode(dara.StringValue(jobRunId)) + "/executors"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListJobExecutorsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出作业的executors
+//
+// @param request - ListJobExecutorsRequest
+//
+// @return ListJobExecutorsResponse
+func (client *Client) ListJobExecutors(workspaceId *string, jobRunId *string, request *ListJobExecutorsRequest) (_result *ListJobExecutorsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListJobExecutorsResponse{}
+	_body, _err := client.ListJobExecutorsWithOptions(workspaceId, jobRunId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of Spark jobs.
 //
 // @param tmpReq - ListJobRunsRequest
@@ -1919,9 +2118,11 @@ func (client *Client) GrantRoleToUsers(request *GrantRoleToUsersRequest) (_resul
 //
 // @return ListJobRunsResponse
 func (client *Client) ListJobRunsWithOptions(workspaceId *string, tmpReq *ListJobRunsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListJobRunsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListJobRunsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2111,9 +2312,11 @@ func (client *Client) ListKyuubiServices(workspaceId *string) (_result *ListKyuu
 //
 // @return ListKyuubiSparkApplicationsResponse
 func (client *Client) ListKyuubiSparkApplicationsWithOptions(workspaceId *string, kyuubiServiceId *string, tmpReq *ListKyuubiSparkApplicationsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListKyuubiSparkApplicationsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListKyuubiSparkApplicationsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2217,9 +2420,11 @@ func (client *Client) ListKyuubiSparkApplications(workspaceId *string, kyuubiSer
 //
 // @return ListKyuubiTokenResponse
 func (client *Client) ListKyuubiTokenWithOptions(workspaceId *string, kyuubiServiceId *string, request *ListKyuubiTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListKyuubiTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2281,9 +2486,11 @@ func (client *Client) ListKyuubiToken(workspaceId *string, kyuubiServiceId *stri
 //
 // @return ListLivyComputeResponse
 func (client *Client) ListLivyComputeWithOptions(workspaceBizId *string, request *ListLivyComputeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListLivyComputeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EnvironmentId) {
@@ -2349,9 +2556,11 @@ func (client *Client) ListLivyCompute(workspaceBizId *string, request *ListLivyC
 //
 // @return ListLivyComputeTokenResponse
 func (client *Client) ListLivyComputeTokenWithOptions(workspaceBizId *string, livyComputeId *string, request *ListLivyComputeTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListLivyComputeTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2413,9 +2622,11 @@ func (client *Client) ListLivyComputeToken(workspaceBizId *string, livyComputeId
 //
 // @return ListLogContentsResponse
 func (client *Client) ListLogContentsWithOptions(workspaceId *string, request *ListLogContentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListLogContentsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileName) {
@@ -2489,9 +2700,11 @@ func (client *Client) ListLogContents(workspaceId *string, request *ListLogConte
 //
 // @return ListMembersResponse
 func (client *Client) ListMembersWithOptions(workspaceId *string, request *ListMembersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMembersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -2561,9 +2774,11 @@ func (client *Client) ListMembers(workspaceId *string, request *ListMembersReque
 //
 // @return ListReleaseVersionsResponse
 func (client *Client) ListReleaseVersionsWithOptions(request *ListReleaseVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListReleaseVersionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2645,9 +2860,11 @@ func (client *Client) ListReleaseVersions(request *ListReleaseVersionsRequest) (
 //
 // @return ListSessionClustersResponse
 func (client *Client) ListSessionClustersWithOptions(workspaceId *string, request *ListSessionClustersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSessionClustersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Kind) {
@@ -2729,9 +2946,11 @@ func (client *Client) ListSessionClusters(workspaceId *string, request *ListSess
 //
 // @return ListSqlStatementContentsResponse
 func (client *Client) ListSqlStatementContentsWithOptions(workspaceId *string, request *ListSqlStatementContentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSqlStatementContentsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileName) {
@@ -2791,6 +3010,72 @@ func (client *Client) ListSqlStatementContents(workspaceId *string, request *Lis
 
 // Summary:
 //
+// 获取任务模板列表
+//
+// @param request - ListTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTemplateResponse
+func (client *Client) ListTemplateWithOptions(workspaceBizId *string, request *ListTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTemplate"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/interactive/v1/workspace/" + dara.PercentEncode(dara.StringValue(workspaceBizId)) + "/template/listing"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取任务模板列表
+//
+// @param request - ListTemplateRequest
+//
+// @return ListTemplateResponse
+func (client *Client) ListTemplate(workspaceBizId *string, request *ListTemplateRequest) (_result *ListTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTemplateResponse{}
+	_body, _err := client.ListTemplateWithOptions(workspaceBizId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the list of queues in a Spark workspace.
 //
 // @param request - ListWorkspaceQueuesRequest
@@ -2801,9 +3086,11 @@ func (client *Client) ListSqlStatementContents(workspaceId *string, request *Lis
 //
 // @return ListWorkspaceQueuesResponse
 func (client *Client) ListWorkspaceQueuesWithOptions(workspaceId *string, request *ListWorkspaceQueuesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWorkspaceQueuesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Environment) {
@@ -2869,9 +3156,11 @@ func (client *Client) ListWorkspaceQueues(workspaceId *string, request *ListWork
 //
 // @return ListWorkspacesResponse
 func (client *Client) ListWorkspacesWithOptions(tmpReq *ListWorkspacesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWorkspacesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListWorkspacesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2959,9 +3248,11 @@ func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *L
 //
 // @return RefreshLivyComputeTokenResponse
 func (client *Client) RefreshLivyComputeTokenWithOptions(workspaceBizId *string, livyComputeId *string, tokenId *string, request *RefreshLivyComputeTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RefreshLivyComputeTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3037,9 +3328,11 @@ func (client *Client) RefreshLivyComputeToken(workspaceBizId *string, livyComput
 //
 // @return StartJobRunResponse
 func (client *Client) StartJobRunWithOptions(workspaceId *string, request *StartJobRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartJobRunResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3151,9 +3444,11 @@ func (client *Client) StartJobRun(workspaceId *string, request *StartJobRunReque
 //
 // @return StartLivyComputeResponse
 func (client *Client) StartLivyComputeWithOptions(workspaceBizId *string, livyComputeId *string, request *StartLivyComputeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartLivyComputeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3215,9 +3510,11 @@ func (client *Client) StartLivyCompute(workspaceBizId *string, livyComputeId *st
 //
 // @return StartProcessInstanceResponse
 func (client *Client) StartProcessInstanceWithOptions(bizId *string, request *StartProcessInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartProcessInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Action) {
@@ -3319,9 +3616,11 @@ func (client *Client) StartProcessInstance(bizId *string, request *StartProcessI
 //
 // @return StartSessionClusterResponse
 func (client *Client) StartSessionClusterWithOptions(workspaceId *string, request *StartSessionClusterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartSessionClusterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3393,9 +3692,11 @@ func (client *Client) StartSessionCluster(workspaceId *string, request *StartSes
 //
 // @return StopLivyComputeResponse
 func (client *Client) StopLivyComputeWithOptions(workspaceBizId *string, livyComputeId *string, request *StopLivyComputeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopLivyComputeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3457,9 +3758,11 @@ func (client *Client) StopLivyCompute(workspaceBizId *string, livyComputeId *str
 //
 // @return StopSessionClusterResponse
 func (client *Client) StopSessionClusterWithOptions(workspaceId *string, request *StopSessionClusterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopSessionClusterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3531,9 +3834,11 @@ func (client *Client) StopSessionCluster(workspaceId *string, request *StopSessi
 //
 // @return TerminateSqlStatementResponse
 func (client *Client) TerminateSqlStatementWithOptions(workspaceId *string, statementId *string, request *TerminateSqlStatementRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TerminateSqlStatementResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3595,9 +3900,11 @@ func (client *Client) TerminateSqlStatement(workspaceId *string, statementId *st
 //
 // @return UpdateKyuubiTokenResponse
 func (client *Client) UpdateKyuubiTokenWithOptions(workspaceId *string, kyuubiServiceId *string, tokenId *string, request *UpdateKyuubiTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateKyuubiTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3677,9 +3984,11 @@ func (client *Client) UpdateKyuubiToken(workspaceId *string, kyuubiServiceId *st
 //
 // @return UpdateLivyComputeResponse
 func (client *Client) UpdateLivyComputeWithOptions(workspaceBizId *string, livyComputeId *string, request *UpdateLivyComputeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateLivyComputeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3803,9 +4112,11 @@ func (client *Client) UpdateLivyCompute(workspaceBizId *string, livyComputeId *s
 //
 // @return UpdateProcessDefinitionWithScheduleResponse
 func (client *Client) UpdateProcessDefinitionWithScheduleWithOptions(bizId *string, code *string, tmpReq *UpdateProcessDefinitionWithScheduleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateProcessDefinitionWithScheduleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateProcessDefinitionWithScheduleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)

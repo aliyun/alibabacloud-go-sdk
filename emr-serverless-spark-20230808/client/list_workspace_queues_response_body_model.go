@@ -104,7 +104,16 @@ func (s *ListWorkspaceQueuesResponseBody) SetTotalCount(v int32) *ListWorkspaceQ
 }
 
 func (s *ListWorkspaceQueuesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Queues != nil {
+		for _, item := range s.Queues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWorkspaceQueuesResponseBodyQueues struct {
@@ -344,7 +353,16 @@ func (s *ListWorkspaceQueuesResponseBodyQueues) SetWorkspaceId(v string) *ListWo
 }
 
 func (s *ListWorkspaceQueuesResponseBodyQueues) Validate() error {
-	return dara.Validate(s)
+	if s.AllowActions != nil {
+		for _, item := range s.AllowActions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWorkspaceQueuesResponseBodyQueuesAllowActions struct {

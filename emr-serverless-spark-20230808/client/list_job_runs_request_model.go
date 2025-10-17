@@ -268,7 +268,26 @@ func (s *ListJobRunsRequest) SetTags(v []*ListJobRunsRequestTags) *ListJobRunsRe
 }
 
 func (s *ListJobRunsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EndTime != nil {
+		if err := s.EndTime.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StartTime != nil {
+		if err := s.StartTime.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListJobRunsRequestEndTime struct {

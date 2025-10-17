@@ -162,5 +162,10 @@ func (s *Artifact) SetName(v string) *Artifact {
 }
 
 func (s *Artifact) Validate() error {
-	return dara.Validate(s)
+	if s.Credential != nil {
+		if err := s.Credential.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

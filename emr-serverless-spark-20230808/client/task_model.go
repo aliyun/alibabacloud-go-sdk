@@ -569,7 +569,21 @@ func (s *Task) SetType(v string) *Task {
 }
 
 func (s *Task) Validate() error {
-	return dara.Validate(s)
+	if s.Credential != nil {
+		if err := s.Credential.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SparkConf != nil {
+		for _, item := range s.SparkConf {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TaskCredential struct {

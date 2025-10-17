@@ -80,7 +80,12 @@ func (s *CreateLivyComputeTokenRequest) SetRegionId(v string) *CreateLivyCompute
 }
 
 func (s *CreateLivyComputeTokenRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AutoExpireConfiguration != nil {
+		if err := s.AutoExpireConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateLivyComputeTokenRequestAutoExpireConfiguration struct {

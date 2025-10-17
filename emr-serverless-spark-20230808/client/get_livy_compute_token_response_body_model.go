@@ -80,7 +80,12 @@ func (s *GetLivyComputeTokenResponseBody) SetRequestId(v string) *GetLivyCompute
 }
 
 func (s *GetLivyComputeTokenResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLivyComputeTokenResponseBodyData struct {
@@ -198,7 +203,12 @@ func (s *GetLivyComputeTokenResponseBodyData) SetTokenId(v string) *GetLivyCompu
 }
 
 func (s *GetLivyComputeTokenResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AutoExpireConfiguration != nil {
+		if err := s.AutoExpireConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration struct {

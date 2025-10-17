@@ -104,7 +104,16 @@ func (s *ListReleaseVersionsResponseBody) SetTotalCount(v int32) *ListReleaseVer
 }
 
 func (s *ListReleaseVersionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ReleaseVersions != nil {
+		for _, item := range s.ReleaseVersions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListReleaseVersionsResponseBodyReleaseVersions struct {

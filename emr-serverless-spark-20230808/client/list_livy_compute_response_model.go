@@ -59,5 +59,10 @@ func (s *ListLivyComputeResponse) SetBody(v *ListLivyComputeResponseBody) *ListL
 }
 
 func (s *ListLivyComputeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

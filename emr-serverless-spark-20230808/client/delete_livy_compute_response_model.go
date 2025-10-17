@@ -59,5 +59,10 @@ func (s *DeleteLivyComputeResponse) SetBody(v *DeleteLivyComputeResponseBody) *D
 }
 
 func (s *DeleteLivyComputeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

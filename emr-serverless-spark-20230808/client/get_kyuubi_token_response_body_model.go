@@ -50,7 +50,12 @@ func (s *GetKyuubiTokenResponseBody) SetRequestId(v string) *GetKyuubiTokenRespo
 }
 
 func (s *GetKyuubiTokenResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetKyuubiTokenResponseBodyData struct {
@@ -178,7 +183,12 @@ func (s *GetKyuubiTokenResponseBodyData) SetTokenId(v string) *GetKyuubiTokenRes
 }
 
 func (s *GetKyuubiTokenResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AutoExpireConfiguration != nil {
+		if err := s.AutoExpireConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetKyuubiTokenResponseBodyDataAutoExpireConfiguration struct {

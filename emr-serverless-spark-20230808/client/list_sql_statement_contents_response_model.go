@@ -59,5 +59,10 @@ func (s *ListSqlStatementContentsResponse) SetBody(v *ListSqlStatementContentsRe
 }
 
 func (s *ListSqlStatementContentsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

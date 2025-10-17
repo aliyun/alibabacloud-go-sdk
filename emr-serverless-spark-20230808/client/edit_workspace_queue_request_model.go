@@ -92,7 +92,12 @@ func (s *EditWorkspaceQueueRequest) SetRegionId(v string) *EditWorkspaceQueueReq
 }
 
 func (s *EditWorkspaceQueueRequest) Validate() error {
-  return dara.Validate(s)
+  if s.ResourceSpec != nil {
+    if err := s.ResourceSpec.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type EditWorkspaceQueueRequestResourceSpec struct {

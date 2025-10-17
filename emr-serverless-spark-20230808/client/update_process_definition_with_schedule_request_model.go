@@ -318,7 +318,39 @@ func (s *UpdateProcessDefinitionWithScheduleRequest) SetTimeout(v int32) *Update
 }
 
 func (s *UpdateProcessDefinitionWithScheduleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.GlobalParams != nil {
+		for _, item := range s.GlobalParams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Schedule != nil {
+		if err := s.Schedule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TaskDefinitionJson != nil {
+		for _, item := range s.TaskDefinitionJson {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TaskRelationJson != nil {
+		for _, item := range s.TaskRelationJson {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateProcessDefinitionWithScheduleRequestGlobalParams struct {
@@ -628,7 +660,12 @@ func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson) SetTimeou
 }
 
 func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson) Validate() error {
-	return dara.Validate(s)
+	if s.TaskParams != nil {
+		if err := s.TaskParams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams struct {
@@ -876,7 +913,25 @@ func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams)
 }
 
 func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) Validate() error {
-	return dara.Validate(s)
+	if s.LocalParams != nil {
+		for _, item := range s.LocalParams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SparkConf != nil {
+		for _, item := range s.SparkConf {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsLocalParams struct {

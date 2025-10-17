@@ -80,7 +80,12 @@ func (s *ListLivyComputeTokenResponseBody) SetRequestId(v string) *ListLivyCompu
 }
 
 func (s *ListLivyComputeTokenResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLivyComputeTokenResponseBodyData struct {
@@ -105,7 +110,16 @@ func (s *ListLivyComputeTokenResponseBodyData) SetTokens(v []*ListLivyComputeTok
 }
 
 func (s *ListLivyComputeTokenResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Tokens != nil {
+		for _, item := range s.Tokens {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLivyComputeTokenResponseBodyDataTokens struct {

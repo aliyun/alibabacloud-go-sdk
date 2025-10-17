@@ -53,7 +53,12 @@ func (s *GetJobRunResponseBody) SetRequestId(v string) *GetJobRunResponseBody {
 }
 
 func (s *GetJobRunResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.JobRun != nil {
+		if err := s.JobRun.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetJobRunResponseBodyJobRun struct {
@@ -354,7 +359,36 @@ func (s *GetJobRunResponseBodyJobRun) SetWorkspaceId(v string) *GetJobRunRespons
 }
 
 func (s *GetJobRunResponseBodyJobRun) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigurationOverrides != nil {
+		if err := s.ConfigurationOverrides.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.JobDriver != nil {
+		if err := s.JobDriver.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Log != nil {
+		if err := s.Log.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StateChangeReason != nil {
+		if err := s.StateChangeReason.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetJobRunResponseBodyJobRunConfigurationOverrides struct {
@@ -380,7 +414,16 @@ func (s *GetJobRunResponseBodyJobRunConfigurationOverrides) SetConfigurations(v 
 }
 
 func (s *GetJobRunResponseBodyJobRunConfigurationOverrides) Validate() error {
-	return dara.Validate(s)
+	if s.Configurations != nil {
+		for _, item := range s.Configurations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetJobRunResponseBodyJobRunStateChangeReason struct {

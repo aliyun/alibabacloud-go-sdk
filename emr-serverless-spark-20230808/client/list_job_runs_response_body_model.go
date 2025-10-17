@@ -104,7 +104,16 @@ func (s *ListJobRunsResponseBody) SetTotalCount(v int32) *ListJobRunsResponseBod
 }
 
 func (s *ListJobRunsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.JobRuns != nil {
+		for _, item := range s.JobRuns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListJobRunsResponseBodyJobRuns struct {
@@ -420,7 +429,36 @@ func (s *ListJobRunsResponseBodyJobRuns) SetWorkspaceId(v string) *ListJobRunsRe
 }
 
 func (s *ListJobRunsResponseBodyJobRuns) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigurationOverrides != nil {
+		if err := s.ConfigurationOverrides.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.JobDriver != nil {
+		if err := s.JobDriver.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Log != nil {
+		if err := s.Log.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StateChangeReason != nil {
+		if err := s.StateChangeReason.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListJobRunsResponseBodyJobRunsConfigurationOverrides struct {
@@ -446,7 +484,16 @@ func (s *ListJobRunsResponseBodyJobRunsConfigurationOverrides) SetConfigurations
 }
 
 func (s *ListJobRunsResponseBodyJobRunsConfigurationOverrides) Validate() error {
-	return dara.Validate(s)
+	if s.Configurations != nil {
+		for _, item := range s.Configurations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListJobRunsResponseBodyJobRunsStateChangeReason struct {

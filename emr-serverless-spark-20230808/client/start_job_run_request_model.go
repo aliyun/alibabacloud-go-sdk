@@ -238,7 +238,26 @@ func (s *StartJobRunRequest) SetRegionId(v string) *StartJobRunRequest {
 }
 
 func (s *StartJobRunRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigurationOverrides != nil {
+		if err := s.ConfigurationOverrides.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.JobDriver != nil {
+		if err := s.JobDriver.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartJobRunRequestConfigurationOverrides struct {
@@ -264,7 +283,16 @@ func (s *StartJobRunRequestConfigurationOverrides) SetConfigurations(v []*StartJ
 }
 
 func (s *StartJobRunRequestConfigurationOverrides) Validate() error {
-	return dara.Validate(s)
+	if s.Configurations != nil {
+		for _, item := range s.Configurations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartJobRunRequestConfigurationOverridesConfigurations struct {

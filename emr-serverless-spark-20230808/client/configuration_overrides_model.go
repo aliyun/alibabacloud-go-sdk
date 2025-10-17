@@ -35,7 +35,16 @@ func (s *ConfigurationOverrides) SetConfigurations(v []*ConfigurationOverridesCo
 }
 
 func (s *ConfigurationOverrides) Validate() error {
-	return dara.Validate(s)
+	if s.Configurations != nil {
+		for _, item := range s.Configurations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ConfigurationOverridesConfigurations struct {

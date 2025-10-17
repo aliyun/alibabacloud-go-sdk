@@ -104,7 +104,16 @@ func (s *ListWorkspacesResponseBody) SetWorkspaces(v []*ListWorkspacesResponseBo
 }
 
 func (s *ListWorkspacesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Workspaces != nil {
+		for _, item := range s.Workspaces {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWorkspacesResponseBodyWorkspaces struct {
@@ -440,7 +449,26 @@ func (s *ListWorkspacesResponseBodyWorkspaces) SetWorkspaceStatus(v string) *Lis
 }
 
 func (s *ListWorkspacesResponseBodyWorkspaces) Validate() error {
-	return dara.Validate(s)
+	if s.PrePaidQuota != nil {
+		if err := s.PrePaidQuota.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StateChangeReason != nil {
+		if err := s.StateChangeReason.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWorkspacesResponseBodyWorkspacesPrePaidQuota struct {

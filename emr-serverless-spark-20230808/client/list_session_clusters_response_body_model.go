@@ -104,7 +104,16 @@ func (s *ListSessionClustersResponseBody) SetTotalCount(v int32) *ListSessionClu
 }
 
 func (s *ListSessionClustersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SessionClusters != nil {
+		for _, item := range s.SessionClusters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSessionClustersResponseBodySessionClusters struct {
@@ -471,7 +480,31 @@ func (s *ListSessionClustersResponseBodySessionClusters) SetWorkspaceId(v string
 }
 
 func (s *ListSessionClustersResponseBodySessionClusters) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicationConfigs != nil {
+		for _, item := range s.ApplicationConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AutoStartConfiguration != nil {
+		if err := s.AutoStartConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AutoStopConfiguration != nil {
+		if err := s.AutoStopConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StateChangeReason != nil {
+		if err := s.StateChangeReason.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSessionClustersResponseBodySessionClustersApplicationConfigs struct {

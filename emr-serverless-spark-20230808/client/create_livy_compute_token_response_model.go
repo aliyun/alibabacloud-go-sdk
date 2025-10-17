@@ -59,5 +59,10 @@ func (s *CreateLivyComputeTokenResponse) SetBody(v *CreateLivyComputeTokenRespon
 }
 
 func (s *CreateLivyComputeTokenResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
