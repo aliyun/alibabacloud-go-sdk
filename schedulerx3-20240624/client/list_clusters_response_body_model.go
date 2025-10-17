@@ -98,7 +98,12 @@ func (s *ListClustersResponseBody) SetSuccess(v bool) *ListClustersResponseBody 
 }
 
 func (s *ListClustersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListClustersResponseBodyData struct {
@@ -163,7 +168,16 @@ func (s *ListClustersResponseBodyData) SetTotal(v int32) *ListClustersResponseBo
 }
 
 func (s *ListClustersResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListClustersResponseBodyDataRecords struct {
@@ -386,7 +400,16 @@ func (s *ListClustersResponseBodyDataRecords) SetVpcId(v string) *ListClustersRe
 }
 
 func (s *ListClustersResponseBodyDataRecords) Validate() error {
-	return dara.Validate(s)
+	if s.VSwitches != nil {
+		for _, item := range s.VSwitches {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListClustersResponseBodyDataRecordsVSwitches struct {

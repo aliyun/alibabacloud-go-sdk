@@ -96,7 +96,12 @@ func (s *ListAlarmEventResponseBody) SetSuccess(v bool) *ListAlarmEventResponseB
 }
 
 func (s *ListAlarmEventResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAlarmEventResponseBodyData struct {
@@ -160,7 +165,16 @@ func (s *ListAlarmEventResponseBodyData) SetTotal(v int64) *ListAlarmEventRespon
 }
 
 func (s *ListAlarmEventResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAlarmEventResponseBodyDataRecords struct {

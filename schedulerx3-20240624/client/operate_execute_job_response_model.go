@@ -59,5 +59,10 @@ func (s *OperateExecuteJobResponse) SetBody(v *OperateExecuteJobResponseBody) *O
 }
 
 func (s *OperateExecuteJobResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

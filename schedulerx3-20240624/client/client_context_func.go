@@ -17,9 +17,11 @@ import (
 //
 // @return CreateAppResponse
 func (client *Client) CreateAppWithContext(ctx context.Context, request *CreateAppRequest, runtime *dara.RuntimeOptions) (_result *CreateAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AccessToken) {
@@ -87,9 +89,11 @@ func (client *Client) CreateAppWithContext(ctx context.Context, request *CreateA
 //
 // @return CreateClusterResponse
 func (client *Client) CreateClusterWithContext(ctx context.Context, tmpReq *CreateClusterRequest, runtime *dara.RuntimeOptions) (_result *CreateClusterResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateClusterShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -169,9 +173,11 @@ func (client *Client) CreateClusterWithContext(ctx context.Context, tmpReq *Crea
 //
 // @return CreateJobResponse
 func (client *Client) CreateJobWithContext(ctx context.Context, tmpReq *CreateJobRequest, runtime *dara.RuntimeOptions) (_result *CreateJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -313,9 +319,11 @@ func (client *Client) CreateJobWithContext(ctx context.Context, tmpReq *CreateJo
 //
 // @return DeleteAppResponse
 func (client *Client) DeleteAppWithContext(ctx context.Context, request *DeleteAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -359,9 +367,11 @@ func (client *Client) DeleteAppWithContext(ctx context.Context, request *DeleteA
 //
 // @return DeleteClusterResponse
 func (client *Client) DeleteClusterWithContext(ctx context.Context, request *DeleteClusterRequest, runtime *dara.RuntimeOptions) (_result *DeleteClusterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -401,9 +411,11 @@ func (client *Client) DeleteClusterWithContext(ctx context.Context, request *Del
 //
 // @return DeleteJobsResponse
 func (client *Client) DeleteJobsWithContext(ctx context.Context, tmpReq *DeleteJobsRequest, runtime *dara.RuntimeOptions) (_result *DeleteJobsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteJobsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -457,9 +469,11 @@ func (client *Client) DeleteJobsWithContext(ctx context.Context, tmpReq *DeleteJ
 //
 // @return ExportJobsResponse
 func (client *Client) ExportJobsWithContext(ctx context.Context, tmpReq *ExportJobsRequest, runtime *dara.RuntimeOptions) (_result *ExportJobsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ExportJobsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -517,9 +531,11 @@ func (client *Client) ExportJobsWithContext(ctx context.Context, tmpReq *ExportJ
 //
 // @return GetAppResponse
 func (client *Client) GetAppWithContext(ctx context.Context, request *GetAppRequest, runtime *dara.RuntimeOptions) (_result *GetAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -563,9 +579,11 @@ func (client *Client) GetAppWithContext(ctx context.Context, request *GetAppRequ
 //
 // @return GetClusterResponse
 func (client *Client) GetClusterWithContext(ctx context.Context, request *GetClusterRequest, runtime *dara.RuntimeOptions) (_result *GetClusterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -601,9 +619,11 @@ func (client *Client) GetClusterWithContext(ctx context.Context, request *GetClu
 //
 // @return GetDesigateInfoResponse
 func (client *Client) GetDesigateInfoWithContext(ctx context.Context, request *GetDesigateInfoRequest, runtime *dara.RuntimeOptions) (_result *GetDesigateInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -639,9 +659,11 @@ func (client *Client) GetDesigateInfoWithContext(ctx context.Context, request *G
 //
 // @return GetJobExecutionResponse
 func (client *Client) GetJobExecutionWithContext(ctx context.Context, request *GetJobExecutionRequest, runtime *dara.RuntimeOptions) (_result *GetJobExecutionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -693,9 +715,11 @@ func (client *Client) GetJobExecutionWithContext(ctx context.Context, request *G
 //
 // @return GetJobExecutionProgressResponse
 func (client *Client) GetJobExecutionProgressWithContext(ctx context.Context, request *GetJobExecutionProgressRequest, runtime *dara.RuntimeOptions) (_result *GetJobExecutionProgressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -731,9 +755,11 @@ func (client *Client) GetJobExecutionProgressWithContext(ctx context.Context, re
 //
 // @return GetJobExecutionThreadDumpResponse
 func (client *Client) GetJobExecutionThreadDumpWithContext(ctx context.Context, request *GetJobExecutionThreadDumpRequest, runtime *dara.RuntimeOptions) (_result *GetJobExecutionThreadDumpResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -769,9 +795,11 @@ func (client *Client) GetJobExecutionThreadDumpWithContext(ctx context.Context, 
 //
 // @return GetLogResponse
 func (client *Client) GetLogWithContext(ctx context.Context, request *GetLogRequest, runtime *dara.RuntimeOptions) (_result *GetLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -807,9 +835,11 @@ func (client *Client) GetLogWithContext(ctx context.Context, request *GetLogRequ
 //
 // @return GetLogEventResponse
 func (client *Client) GetLogEventWithContext(ctx context.Context, request *GetLogEventRequest, runtime *dara.RuntimeOptions) (_result *GetLogEventResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -845,9 +875,11 @@ func (client *Client) GetLogEventWithContext(ctx context.Context, request *GetLo
 //
 // @return ImportCalendarResponse
 func (client *Client) ImportCalendarWithContext(ctx context.Context, request *ImportCalendarRequest, runtime *dara.RuntimeOptions) (_result *ImportCalendarResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -899,9 +931,11 @@ func (client *Client) ImportCalendarWithContext(ctx context.Context, request *Im
 //
 // @return ImportJobsResponse
 func (client *Client) ImportJobsWithContext(ctx context.Context, request *ImportJobsRequest, runtime *dara.RuntimeOptions) (_result *ImportJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoCreateApp) {
@@ -953,9 +987,11 @@ func (client *Client) ImportJobsWithContext(ctx context.Context, request *Import
 //
 // @return ListAlarmEventResponse
 func (client *Client) ListAlarmEventWithContext(ctx context.Context, request *ListAlarmEventRequest, runtime *dara.RuntimeOptions) (_result *ListAlarmEventResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -991,9 +1027,11 @@ func (client *Client) ListAlarmEventWithContext(ctx context.Context, request *Li
 //
 // @return ListAppNamesResponse
 func (client *Client) ListAppNamesWithContext(ctx context.Context, request *ListAppNamesRequest, runtime *dara.RuntimeOptions) (_result *ListAppNamesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1029,9 +1067,11 @@ func (client *Client) ListAppNamesWithContext(ctx context.Context, request *List
 //
 // @return ListAppsResponse
 func (client *Client) ListAppsWithContext(ctx context.Context, request *ListAppsRequest, runtime *dara.RuntimeOptions) (_result *ListAppsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1067,9 +1107,11 @@ func (client *Client) ListAppsWithContext(ctx context.Context, request *ListApps
 //
 // @return ListCalendarNamesResponse
 func (client *Client) ListCalendarNamesWithContext(ctx context.Context, request *ListCalendarNamesRequest, runtime *dara.RuntimeOptions) (_result *ListCalendarNamesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1105,9 +1147,11 @@ func (client *Client) ListCalendarNamesWithContext(ctx context.Context, request 
 //
 // @return ListClustersResponse
 func (client *Client) ListClustersWithContext(ctx context.Context, request *ListClustersRequest, runtime *dara.RuntimeOptions) (_result *ListClustersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1143,9 +1187,11 @@ func (client *Client) ListClustersWithContext(ctx context.Context, request *List
 //
 // @return ListExecutorsResponse
 func (client *Client) ListExecutorsWithContext(ctx context.Context, request *ListExecutorsRequest, runtime *dara.RuntimeOptions) (_result *ListExecutorsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1181,9 +1227,11 @@ func (client *Client) ListExecutorsWithContext(ctx context.Context, request *Lis
 //
 // @return ListJobExecutionsResponse
 func (client *Client) ListJobExecutionsWithContext(ctx context.Context, request *ListJobExecutionsRequest, runtime *dara.RuntimeOptions) (_result *ListJobExecutionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1219,9 +1267,11 @@ func (client *Client) ListJobExecutionsWithContext(ctx context.Context, request 
 //
 // @return ListJobScriptHistoryResponse
 func (client *Client) ListJobScriptHistoryWithContext(ctx context.Context, request *ListJobScriptHistoryRequest, runtime *dara.RuntimeOptions) (_result *ListJobScriptHistoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -1277,9 +1327,11 @@ func (client *Client) ListJobScriptHistoryWithContext(ctx context.Context, reque
 //
 // @return ListJobsResponse
 func (client *Client) ListJobsWithContext(ctx context.Context, request *ListJobsRequest, runtime *dara.RuntimeOptions) (_result *ListJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1315,9 +1367,11 @@ func (client *Client) ListJobsWithContext(ctx context.Context, request *ListJobs
 //
 // @return ListLablesResponse
 func (client *Client) ListLablesWithContext(ctx context.Context, request *ListLablesRequest, runtime *dara.RuntimeOptions) (_result *ListLablesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1353,9 +1407,11 @@ func (client *Client) ListLablesWithContext(ctx context.Context, request *ListLa
 //
 // @return ListScheduleEventResponse
 func (client *Client) ListScheduleEventWithContext(ctx context.Context, request *ListScheduleEventRequest, runtime *dara.RuntimeOptions) (_result *ListScheduleEventResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1391,9 +1447,11 @@ func (client *Client) ListScheduleEventWithContext(ctx context.Context, request 
 //
 // @return ListScheduleTimesResponse
 func (client *Client) ListScheduleTimesWithContext(ctx context.Context, request *ListScheduleTimesRequest, runtime *dara.RuntimeOptions) (_result *ListScheduleTimesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1429,9 +1487,11 @@ func (client *Client) ListScheduleTimesWithContext(ctx context.Context, request 
 //
 // @return OperateDesignateExecutorsResponse
 func (client *Client) OperateDesignateExecutorsWithContext(ctx context.Context, tmpReq *OperateDesignateExecutorsRequest, runtime *dara.RuntimeOptions) (_result *OperateDesignateExecutorsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &OperateDesignateExecutorsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1497,9 +1557,11 @@ func (client *Client) OperateDesignateExecutorsWithContext(ctx context.Context, 
 //
 // @return OperateDisableJobsResponse
 func (client *Client) OperateDisableJobsWithContext(ctx context.Context, tmpReq *OperateDisableJobsRequest, runtime *dara.RuntimeOptions) (_result *OperateDisableJobsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &OperateDisableJobsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1553,9 +1615,11 @@ func (client *Client) OperateDisableJobsWithContext(ctx context.Context, tmpReq 
 //
 // @return OperateEnableJobsResponse
 func (client *Client) OperateEnableJobsWithContext(ctx context.Context, tmpReq *OperateEnableJobsRequest, runtime *dara.RuntimeOptions) (_result *OperateEnableJobsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &OperateEnableJobsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1609,9 +1673,11 @@ func (client *Client) OperateEnableJobsWithContext(ctx context.Context, tmpReq *
 //
 // @return OperateExecuteJobResponse
 func (client *Client) OperateExecuteJobWithContext(ctx context.Context, request *OperateExecuteJobRequest, runtime *dara.RuntimeOptions) (_result *OperateExecuteJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -1671,9 +1737,11 @@ func (client *Client) OperateExecuteJobWithContext(ctx context.Context, request 
 //
 // @return OperateRerunJobResponse
 func (client *Client) OperateRerunJobWithContext(ctx context.Context, request *OperateRerunJobRequest, runtime *dara.RuntimeOptions) (_result *OperateRerunJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -1733,9 +1801,11 @@ func (client *Client) OperateRerunJobWithContext(ctx context.Context, request *O
 //
 // @return OperateRetryJobExecutionResponse
 func (client *Client) OperateRetryJobExecutionWithContext(ctx context.Context, tmpReq *OperateRetryJobExecutionRequest, runtime *dara.RuntimeOptions) (_result *OperateRetryJobExecutionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &OperateRetryJobExecutionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1793,9 +1863,11 @@ func (client *Client) OperateRetryJobExecutionWithContext(ctx context.Context, t
 //
 // @return OperateStopJobExecutionResponse
 func (client *Client) OperateStopJobExecutionWithContext(ctx context.Context, tmpReq *OperateStopJobExecutionRequest, runtime *dara.RuntimeOptions) (_result *OperateStopJobExecutionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &OperateStopJobExecutionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1853,9 +1925,11 @@ func (client *Client) OperateStopJobExecutionWithContext(ctx context.Context, tm
 //
 // @return UpdateAppResponse
 func (client *Client) UpdateAppWithContext(ctx context.Context, request *UpdateAppRequest, runtime *dara.RuntimeOptions) (_result *UpdateAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AccessToken) {
@@ -1919,9 +1993,11 @@ func (client *Client) UpdateAppWithContext(ctx context.Context, request *UpdateA
 //
 // @return UpdateClusterResponse
 func (client *Client) UpdateClusterWithContext(ctx context.Context, request *UpdateClusterRequest, runtime *dara.RuntimeOptions) (_result *UpdateClusterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -1965,9 +2041,11 @@ func (client *Client) UpdateClusterWithContext(ctx context.Context, request *Upd
 //
 // @return UpdateJobResponse
 func (client *Client) UpdateJobWithContext(ctx context.Context, tmpReq *UpdateJobRequest, runtime *dara.RuntimeOptions) (_result *UpdateJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2105,9 +2183,11 @@ func (client *Client) UpdateJobWithContext(ctx context.Context, tmpReq *UpdateJo
 //
 // @return UpdateJobScriptResponse
 func (client *Client) UpdateJobScriptWithContext(ctx context.Context, request *UpdateJobScriptRequest, runtime *dara.RuntimeOptions) (_result *UpdateJobScriptResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {

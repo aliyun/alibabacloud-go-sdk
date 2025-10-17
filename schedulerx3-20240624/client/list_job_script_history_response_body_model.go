@@ -113,7 +113,12 @@ func (s *ListJobScriptHistoryResponseBody) SetSuccess(v bool) *ListJobScriptHist
 }
 
 func (s *ListJobScriptHistoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListJobScriptHistoryResponseBodyData struct {
@@ -165,7 +170,16 @@ func (s *ListJobScriptHistoryResponseBodyData) SetTotal(v string) *ListJobScript
 }
 
 func (s *ListJobScriptHistoryResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListJobScriptHistoryResponseBodyDataRecords struct {

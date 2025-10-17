@@ -29,8 +29,12 @@ type iGetLogRequest interface {
 	GetOffset() *int32
 	SetReverse(v bool) *GetLogRequest
 	GetReverse() *bool
+	SetScheduleTime(v int64) *GetLogRequest
+	GetScheduleTime() *int64
 	SetStartTime(v int64) *GetLogRequest
 	GetStartTime() *int64
+	SetWorkerAddr(v string) *GetLogRequest
+	GetWorkerAddr() *string
 }
 
 type GetLogRequest struct {
@@ -80,8 +84,16 @@ type GetLogRequest struct {
 	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
 	// example:
 	//
+	// 2023-10-01 12:00:00
+	ScheduleTime *int64 `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	// example:
+	//
 	// 1721636220
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 192.168.1.100
+	WorkerAddr *string `json:"WorkerAddr,omitempty" xml:"WorkerAddr,omitempty"`
 }
 
 func (s GetLogRequest) String() string {
@@ -132,8 +144,16 @@ func (s *GetLogRequest) GetReverse() *bool {
 	return s.Reverse
 }
 
+func (s *GetLogRequest) GetScheduleTime() *int64 {
+	return s.ScheduleTime
+}
+
 func (s *GetLogRequest) GetStartTime() *int64 {
 	return s.StartTime
+}
+
+func (s *GetLogRequest) GetWorkerAddr() *string {
+	return s.WorkerAddr
 }
 
 func (s *GetLogRequest) SetAppName(v string) *GetLogRequest {
@@ -186,8 +206,18 @@ func (s *GetLogRequest) SetReverse(v bool) *GetLogRequest {
 	return s
 }
 
+func (s *GetLogRequest) SetScheduleTime(v int64) *GetLogRequest {
+	s.ScheduleTime = &v
+	return s
+}
+
 func (s *GetLogRequest) SetStartTime(v int64) *GetLogRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *GetLogRequest) SetWorkerAddr(v string) *GetLogRequest {
+	s.WorkerAddr = &v
 	return s
 }
 

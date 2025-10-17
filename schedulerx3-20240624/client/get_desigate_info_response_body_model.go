@@ -96,7 +96,12 @@ func (s *GetDesigateInfoResponseBody) SetSuccess(v bool) *GetDesigateInfoRespons
 }
 
 func (s *GetDesigateInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDesigateInfoResponseBodyData struct {

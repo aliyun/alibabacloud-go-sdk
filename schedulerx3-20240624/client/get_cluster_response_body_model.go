@@ -96,7 +96,12 @@ func (s *GetClusterResponseBody) SetSuccess(v bool) *GetClusterResponseBody {
 }
 
 func (s *GetClusterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetClusterResponseBodyData struct {
@@ -430,7 +435,16 @@ func (s *GetClusterResponseBodyData) SetZones(v []*string) *GetClusterResponseBo
 }
 
 func (s *GetClusterResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.VSwitches != nil {
+		for _, item := range s.VSwitches {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetClusterResponseBodyDataVSwitches struct {

@@ -84,7 +84,12 @@ func (s *ListJobsResponseBody) SetSuccess(v bool) *ListJobsResponseBody {
 }
 
 func (s *ListJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListJobsResponseBodyData struct {
@@ -149,7 +154,16 @@ func (s *ListJobsResponseBodyData) SetTotal(v int32) *ListJobsResponseBodyData {
 }
 
 func (s *ListJobsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListJobsResponseBodyDataRecords struct {

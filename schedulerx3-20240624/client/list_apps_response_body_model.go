@@ -96,7 +96,12 @@ func (s *ListAppsResponseBody) SetSuccess(v bool) *ListAppsResponseBody {
 }
 
 func (s *ListAppsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAppsResponseBodyData struct {
@@ -161,7 +166,16 @@ func (s *ListAppsResponseBodyData) SetTotal(v int32) *ListAppsResponseBodyData {
 }
 
 func (s *ListAppsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAppsResponseBodyDataRecords struct {

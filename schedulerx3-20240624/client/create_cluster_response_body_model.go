@@ -111,7 +111,12 @@ func (s *CreateClusterResponseBody) SetSuccess(v bool) *CreateClusterResponseBod
 }
 
 func (s *CreateClusterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateClusterResponseBodyData struct {

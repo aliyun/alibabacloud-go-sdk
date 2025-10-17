@@ -96,7 +96,12 @@ func (s *ListScheduleEventResponseBody) SetSuccess(v bool) *ListScheduleEventRes
 }
 
 func (s *ListScheduleEventResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListScheduleEventResponseBodyData struct {
@@ -160,7 +165,16 @@ func (s *ListScheduleEventResponseBodyData) SetTotal(v int64) *ListScheduleEvent
 }
 
 func (s *ListScheduleEventResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListScheduleEventResponseBodyDataRecords struct {

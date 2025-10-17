@@ -381,7 +381,21 @@ func (s *CreateJobRequest) SetWeight(v int32) *CreateJobRequest {
 }
 
 func (s *CreateJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.NoticeConfig != nil {
+		if err := s.NoticeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NoticeContacts != nil {
+		for _, item := range s.NoticeContacts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateJobRequestNoticeConfig struct {

@@ -96,7 +96,12 @@ func (s *GetJobExecutionProgressResponseBody) SetSuccess(v bool) *GetJobExecutio
 }
 
 func (s *GetJobExecutionProgressResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetJobExecutionProgressResponseBodyData struct {
@@ -197,7 +202,44 @@ func (s *GetJobExecutionProgressResponseBodyData) SetWorkerProgress(v []*GetJobE
 }
 
 func (s *GetJobExecutionProgressResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.RootProgress != nil {
+		if err := s.RootProgress.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ShardingProgress != nil {
+		for _, item := range s.ShardingProgress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TaskProgress != nil {
+		for _, item := range s.TaskProgress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TotalProgress != nil {
+		if err := s.TotalProgress.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WorkerProgress != nil {
+		for _, item := range s.WorkerProgress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetJobExecutionProgressResponseBodyDataRootProgress struct {
@@ -330,7 +372,12 @@ func (s *GetJobExecutionProgressResponseBodyDataShardingProgress) SetWorkerAddr(
 }
 
 func (s *GetJobExecutionProgressResponseBodyDataShardingProgress) Validate() error {
-	return dara.Validate(s)
+	if s.StatusType != nil {
+		if err := s.StatusType.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetJobExecutionProgressResponseBodyDataShardingProgressStatusType struct {

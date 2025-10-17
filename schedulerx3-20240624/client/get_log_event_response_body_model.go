@@ -96,7 +96,12 @@ func (s *GetLogEventResponseBody) SetSuccess(v bool) *GetLogEventResponseBody {
 }
 
 func (s *GetLogEventResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLogEventResponseBodyData struct {
@@ -161,7 +166,16 @@ func (s *GetLogEventResponseBodyData) SetTotal(v int64) *GetLogEventResponseBody
 }
 
 func (s *GetLogEventResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLogEventResponseBodyDataRecords struct {
