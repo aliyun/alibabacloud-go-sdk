@@ -11,10 +11,14 @@ type iCreatePowerForecastByFileUrlJobRequest interface {
 	GoString() string
 	SetBusinessKey(v string) *CreatePowerForecastByFileUrlJobRequest
 	GetBusinessKey() *string
+	SetDataMode(v string) *CreatePowerForecastByFileUrlJobRequest
+	GetDataMode() *string
 	SetDeviceType(v string) *CreatePowerForecastByFileUrlJobRequest
 	GetDeviceType() *string
 	SetDuration(v int32) *CreatePowerForecastByFileUrlJobRequest
 	GetDuration() *int32
+	SetForecastHorizon(v string) *CreatePowerForecastByFileUrlJobRequest
+	GetForecastHorizon() *string
 	SetFreq(v string) *CreatePowerForecastByFileUrlJobRequest
 	GetFreq() *string
 	SetHistoryUrl(v string) *CreatePowerForecastByFileUrlJobRequest
@@ -42,12 +46,20 @@ type CreatePowerForecastByFileUrlJobRequest struct {
 	BusinessKey *string `json:"BusinessKey,omitempty" xml:"BusinessKey,omitempty"`
 	// example:
 	//
+	// FULL
+	DataMode *string `json:"DataMode,omitempty" xml:"DataMode,omitempty"`
+	// example:
+	//
 	// solarInverter
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// DAY_AHEAD
+	ForecastHorizon *string `json:"ForecastHorizon,omitempty" xml:"ForecastHorizon,omitempty"`
 	// example:
 	//
 	// FIFTEEN_MIN
@@ -95,12 +107,20 @@ func (s *CreatePowerForecastByFileUrlJobRequest) GetBusinessKey() *string {
 	return s.BusinessKey
 }
 
+func (s *CreatePowerForecastByFileUrlJobRequest) GetDataMode() *string {
+	return s.DataMode
+}
+
 func (s *CreatePowerForecastByFileUrlJobRequest) GetDeviceType() *string {
 	return s.DeviceType
 }
 
 func (s *CreatePowerForecastByFileUrlJobRequest) GetDuration() *int32 {
 	return s.Duration
+}
+
+func (s *CreatePowerForecastByFileUrlJobRequest) GetForecastHorizon() *string {
+	return s.ForecastHorizon
 }
 
 func (s *CreatePowerForecastByFileUrlJobRequest) GetFreq() *string {
@@ -144,6 +164,11 @@ func (s *CreatePowerForecastByFileUrlJobRequest) SetBusinessKey(v string) *Creat
 	return s
 }
 
+func (s *CreatePowerForecastByFileUrlJobRequest) SetDataMode(v string) *CreatePowerForecastByFileUrlJobRequest {
+	s.DataMode = &v
+	return s
+}
+
 func (s *CreatePowerForecastByFileUrlJobRequest) SetDeviceType(v string) *CreatePowerForecastByFileUrlJobRequest {
 	s.DeviceType = &v
 	return s
@@ -151,6 +176,11 @@ func (s *CreatePowerForecastByFileUrlJobRequest) SetDeviceType(v string) *Create
 
 func (s *CreatePowerForecastByFileUrlJobRequest) SetDuration(v int32) *CreatePowerForecastByFileUrlJobRequest {
 	s.Duration = &v
+	return s
+}
+
+func (s *CreatePowerForecastByFileUrlJobRequest) SetForecastHorizon(v string) *CreatePowerForecastByFileUrlJobRequest {
+	s.ForecastHorizon = &v
 	return s
 }
 
@@ -200,7 +230,12 @@ func (s *CreatePowerForecastByFileUrlJobRequest) SetValueColumn(v string) *Creat
 }
 
 func (s *CreatePowerForecastByFileUrlJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Location != nil {
+		if err := s.Location.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreatePowerForecastByFileUrlJobRequestLocation struct {

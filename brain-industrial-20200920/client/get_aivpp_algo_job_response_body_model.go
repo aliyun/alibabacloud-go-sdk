@@ -97,7 +97,12 @@ func (s *GetAivppAlgoJobResponseBody) SetSuccess(v string) *GetAivppAlgoJobRespo
 }
 
 func (s *GetAivppAlgoJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAivppAlgoJobResponseBodyData struct {
@@ -200,7 +205,12 @@ func (s *GetAivppAlgoJobResponseBodyData) SetStatus(v string) *GetAivppAlgoJobRe
 }
 
 func (s *GetAivppAlgoJobResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Response != nil {
+		if err := s.Response.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAivppAlgoJobResponseBodyDataResponse struct {

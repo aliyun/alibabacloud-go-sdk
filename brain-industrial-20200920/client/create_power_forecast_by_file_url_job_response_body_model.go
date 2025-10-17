@@ -95,7 +95,12 @@ func (s *CreatePowerForecastByFileUrlJobResponseBody) SetSuccess(v string) *Crea
 }
 
 func (s *CreatePowerForecastByFileUrlJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreatePowerForecastByFileUrlJobResponseBodyData struct {
@@ -198,7 +203,12 @@ func (s *CreatePowerForecastByFileUrlJobResponseBodyData) SetStatus(v string) *C
 }
 
 func (s *CreatePowerForecastByFileUrlJobResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Response != nil {
+		if err := s.Response.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreatePowerForecastByFileUrlJobResponseBodyDataResponse struct {

@@ -173,7 +173,39 @@ func (s *CreateEssOptJobRequest) SetTopoType(v string) *CreateEssOptJobRequest {
 }
 
 func (s *CreateEssOptJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ElecPrice != nil {
+		for _, item := range s.ElecPrice {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.GenPrice != nil {
+		for _, item := range s.GenPrice {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Location != nil {
+		if err := s.Location.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SystemData != nil {
+		for _, item := range s.SystemData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateEssOptJobRequestElecPrice struct {

@@ -11,10 +11,14 @@ type iCreatePowerForecastJobShrinkRequest interface {
 	GoString() string
 	SetBusinessKey(v string) *CreatePowerForecastJobShrinkRequest
 	GetBusinessKey() *string
+	SetDataMode(v string) *CreatePowerForecastJobShrinkRequest
+	GetDataMode() *string
 	SetDeviceType(v string) *CreatePowerForecastJobShrinkRequest
 	GetDeviceType() *string
 	SetDuration(v int32) *CreatePowerForecastJobShrinkRequest
 	GetDuration() *int32
+	SetForecastHorizon(v string) *CreatePowerForecastJobShrinkRequest
+	GetForecastHorizon() *string
 	SetFreq(v string) *CreatePowerForecastJobShrinkRequest
 	GetFreq() *string
 	SetHistoryDataShrink(v string) *CreatePowerForecastJobShrinkRequest
@@ -35,12 +39,20 @@ type CreatePowerForecastJobShrinkRequest struct {
 	BusinessKey *string `json:"BusinessKey,omitempty" xml:"BusinessKey,omitempty"`
 	// example:
 	//
+	// FULL
+	DataMode *string `json:"DataMode,omitempty" xml:"DataMode,omitempty"`
+	// example:
+	//
 	// electricityMeter
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// DAY_AHEAD
+	ForecastHorizon *string `json:"ForecastHorizon,omitempty" xml:"ForecastHorizon,omitempty"`
 	// example:
 	//
 	// FIFTEEN_MIN
@@ -77,12 +89,20 @@ func (s *CreatePowerForecastJobShrinkRequest) GetBusinessKey() *string {
 	return s.BusinessKey
 }
 
+func (s *CreatePowerForecastJobShrinkRequest) GetDataMode() *string {
+	return s.DataMode
+}
+
 func (s *CreatePowerForecastJobShrinkRequest) GetDeviceType() *string {
 	return s.DeviceType
 }
 
 func (s *CreatePowerForecastJobShrinkRequest) GetDuration() *int32 {
 	return s.Duration
+}
+
+func (s *CreatePowerForecastJobShrinkRequest) GetForecastHorizon() *string {
+	return s.ForecastHorizon
 }
 
 func (s *CreatePowerForecastJobShrinkRequest) GetFreq() *string {
@@ -118,6 +138,11 @@ func (s *CreatePowerForecastJobShrinkRequest) SetBusinessKey(v string) *CreatePo
 	return s
 }
 
+func (s *CreatePowerForecastJobShrinkRequest) SetDataMode(v string) *CreatePowerForecastJobShrinkRequest {
+	s.DataMode = &v
+	return s
+}
+
 func (s *CreatePowerForecastJobShrinkRequest) SetDeviceType(v string) *CreatePowerForecastJobShrinkRequest {
 	s.DeviceType = &v
 	return s
@@ -125,6 +150,11 @@ func (s *CreatePowerForecastJobShrinkRequest) SetDeviceType(v string) *CreatePow
 
 func (s *CreatePowerForecastJobShrinkRequest) SetDuration(v int32) *CreatePowerForecastJobShrinkRequest {
 	s.Duration = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobShrinkRequest) SetForecastHorizon(v string) *CreatePowerForecastJobShrinkRequest {
+	s.ForecastHorizon = &v
 	return s
 }
 

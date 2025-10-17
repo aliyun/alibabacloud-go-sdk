@@ -200,7 +200,16 @@ func (s *ListLicensesResponseBody) SetTotalPageCount(v string) *ListLicensesResp
 }
 
 func (s *ListLicensesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LicenseList != nil {
+		for _, item := range s.LicenseList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLicensesResponseBodyLicenseList struct {

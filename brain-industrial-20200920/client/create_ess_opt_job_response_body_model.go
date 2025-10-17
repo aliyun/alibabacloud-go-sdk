@@ -97,7 +97,12 @@ func (s *CreateEssOptJobResponseBody) SetSuccess(v string) *CreateEssOptJobRespo
 }
 
 func (s *CreateEssOptJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateEssOptJobResponseBodyData struct {
@@ -200,7 +205,12 @@ func (s *CreateEssOptJobResponseBodyData) SetStatus(v string) *CreateEssOptJobRe
 }
 
 func (s *CreateEssOptJobResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Response != nil {
+		if err := s.Response.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateEssOptJobResponseBodyDataResponse struct {

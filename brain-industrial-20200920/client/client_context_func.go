@@ -17,9 +17,11 @@ import (
 //
 // @return ActivateLicenseResponse
 func (client *Client) ActivateLicenseWithContext(ctx context.Context, request *ActivateLicenseRequest, runtime *dara.RuntimeOptions) (_result *ActivateLicenseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Fingerprint) {
@@ -71,9 +73,11 @@ func (client *Client) ActivateLicenseWithContext(ctx context.Context, request *A
 //
 // @return AicsOpenApiInvokeResponse
 func (client *Client) AicsOpenApiInvokeWithContext(ctx context.Context, tmpReq *AicsOpenApiInvokeRequest, runtime *dara.RuntimeOptions) (_result *AicsOpenApiInvokeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AicsOpenApiInvokeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -137,9 +141,11 @@ func (client *Client) AicsOpenApiInvokeWithContext(ctx context.Context, tmpReq *
 //
 // @return CreateEssOptJobResponse
 func (client *Client) CreateEssOptJobWithContext(ctx context.Context, tmpReq *CreateEssOptJobRequest, runtime *dara.RuntimeOptions) (_result *CreateEssOptJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateEssOptJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -237,13 +243,19 @@ func (client *Client) CreateEssOptJobWithContext(ctx context.Context, tmpReq *Cr
 //
 // @return CreateLoadForecastByFileUrlJobResponse
 func (client *Client) CreateLoadForecastByFileUrlJobWithContext(ctx context.Context, request *CreateLoadForecastByFileUrlJobRequest, runtime *dara.RuntimeOptions) (_result *CreateLoadForecastByFileUrlJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessKey) {
 		body["BusinessKey"] = request.BusinessKey
+	}
+
+	if !dara.IsNil(request.DataMode) {
+		body["DataMode"] = request.DataMode
 	}
 
 	if !dara.IsNil(request.DeviceType) {
@@ -252,6 +264,10 @@ func (client *Client) CreateLoadForecastByFileUrlJobWithContext(ctx context.Cont
 
 	if !dara.IsNil(request.Duration) {
 		body["Duration"] = request.Duration
+	}
+
+	if !dara.IsNil(request.ForecastHorizon) {
+		body["ForecastHorizon"] = request.ForecastHorizon
 	}
 
 	if !dara.IsNil(request.Freq) {
@@ -319,9 +335,11 @@ func (client *Client) CreateLoadForecastByFileUrlJobWithContext(ctx context.Cont
 //
 // @return CreateLoadForecastJobResponse
 func (client *Client) CreateLoadForecastJobWithContext(ctx context.Context, tmpReq *CreateLoadForecastJobRequest, runtime *dara.RuntimeOptions) (_result *CreateLoadForecastJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateLoadForecastJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -334,12 +352,20 @@ func (client *Client) CreateLoadForecastJobWithContext(ctx context.Context, tmpR
 		body["BusinessKey"] = request.BusinessKey
 	}
 
+	if !dara.IsNil(request.DataMode) {
+		body["DataMode"] = request.DataMode
+	}
+
 	if !dara.IsNil(request.DeviceType) {
 		body["DeviceType"] = request.DeviceType
 	}
 
 	if !dara.IsNil(request.Duration) {
 		body["Duration"] = request.Duration
+	}
+
+	if !dara.IsNil(request.ForecastHorizon) {
+		body["ForecastHorizon"] = request.ForecastHorizon
 	}
 
 	if !dara.IsNil(request.Freq) {
@@ -399,9 +425,11 @@ func (client *Client) CreateLoadForecastJobWithContext(ctx context.Context, tmpR
 //
 // @return CreatePowerForecastByFileUrlJobResponse
 func (client *Client) CreatePowerForecastByFileUrlJobWithContext(ctx context.Context, tmpReq *CreatePowerForecastByFileUrlJobRequest, runtime *dara.RuntimeOptions) (_result *CreatePowerForecastByFileUrlJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreatePowerForecastByFileUrlJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -414,12 +442,20 @@ func (client *Client) CreatePowerForecastByFileUrlJobWithContext(ctx context.Con
 		body["BusinessKey"] = request.BusinessKey
 	}
 
+	if !dara.IsNil(request.DataMode) {
+		body["DataMode"] = request.DataMode
+	}
+
 	if !dara.IsNil(request.DeviceType) {
 		body["DeviceType"] = request.DeviceType
 	}
 
 	if !dara.IsNil(request.Duration) {
 		body["Duration"] = request.Duration
+	}
+
+	if !dara.IsNil(request.ForecastHorizon) {
+		body["ForecastHorizon"] = request.ForecastHorizon
 	}
 
 	if !dara.IsNil(request.Freq) {
@@ -491,9 +527,11 @@ func (client *Client) CreatePowerForecastByFileUrlJobWithContext(ctx context.Con
 //
 // @return CreatePowerForecastJobResponse
 func (client *Client) CreatePowerForecastJobWithContext(ctx context.Context, tmpReq *CreatePowerForecastJobRequest, runtime *dara.RuntimeOptions) (_result *CreatePowerForecastJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreatePowerForecastJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -510,12 +548,20 @@ func (client *Client) CreatePowerForecastJobWithContext(ctx context.Context, tmp
 		body["BusinessKey"] = request.BusinessKey
 	}
 
+	if !dara.IsNil(request.DataMode) {
+		body["DataMode"] = request.DataMode
+	}
+
 	if !dara.IsNil(request.DeviceType) {
 		body["DeviceType"] = request.DeviceType
 	}
 
 	if !dara.IsNil(request.Duration) {
 		body["Duration"] = request.Duration
+	}
+
+	if !dara.IsNil(request.ForecastHorizon) {
+		body["ForecastHorizon"] = request.ForecastHorizon
 	}
 
 	if !dara.IsNil(request.Freq) {
@@ -579,9 +625,11 @@ func (client *Client) CreatePowerForecastJobWithContext(ctx context.Context, tmp
 //
 // @return GetAivppAlgoJobResponse
 func (client *Client) GetAivppAlgoJobWithContext(ctx context.Context, request *GetAivppAlgoJobRequest, runtime *dara.RuntimeOptions) (_result *GetAivppAlgoJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -621,9 +669,11 @@ func (client *Client) GetAivppAlgoJobWithContext(ctx context.Context, request *G
 //
 // @return GetLicenseResponse
 func (client *Client) GetLicenseWithContext(ctx context.Context, request *GetLicenseRequest, runtime *dara.RuntimeOptions) (_result *GetLicenseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -667,9 +717,11 @@ func (client *Client) GetLicenseWithContext(ctx context.Context, request *GetLic
 //
 // @return ListAivppResourcesResponse
 func (client *Client) ListAivppResourcesWithContext(ctx context.Context, request *ListAivppResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListAivppResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -713,9 +765,11 @@ func (client *Client) ListAivppResourcesWithContext(ctx context.Context, request
 //
 // @return ListLicensesResponse
 func (client *Client) ListLicensesWithContext(ctx context.Context, request *ListLicensesRequest, runtime *dara.RuntimeOptions) (_result *ListLicensesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -763,9 +817,11 @@ func (client *Client) ListLicensesWithContext(ctx context.Context, request *List
 //
 // @return ListUserResourcesResponse
 func (client *Client) ListUserResourcesWithContext(ctx context.Context, request *ListUserResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListUserResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CommodityCode) {
@@ -805,9 +861,11 @@ func (client *Client) ListUserResourcesWithContext(ctx context.Context, request 
 //
 // @return UpdateLicenseDescriptionResponse
 func (client *Client) UpdateLicenseDescriptionWithContext(ctx context.Context, request *UpdateLicenseDescriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateLicenseDescriptionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {

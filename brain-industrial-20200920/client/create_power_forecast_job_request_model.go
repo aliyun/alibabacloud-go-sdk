@@ -11,10 +11,14 @@ type iCreatePowerForecastJobRequest interface {
 	GoString() string
 	SetBusinessKey(v string) *CreatePowerForecastJobRequest
 	GetBusinessKey() *string
+	SetDataMode(v string) *CreatePowerForecastJobRequest
+	GetDataMode() *string
 	SetDeviceType(v string) *CreatePowerForecastJobRequest
 	GetDeviceType() *string
 	SetDuration(v int32) *CreatePowerForecastJobRequest
 	GetDuration() *int32
+	SetForecastHorizon(v string) *CreatePowerForecastJobRequest
+	GetForecastHorizon() *string
 	SetFreq(v string) *CreatePowerForecastJobRequest
 	GetFreq() *string
 	SetHistoryData(v []*CreatePowerForecastJobRequestHistoryData) *CreatePowerForecastJobRequest
@@ -35,12 +39,20 @@ type CreatePowerForecastJobRequest struct {
 	BusinessKey *string `json:"BusinessKey,omitempty" xml:"BusinessKey,omitempty"`
 	// example:
 	//
+	// FULL
+	DataMode *string `json:"DataMode,omitempty" xml:"DataMode,omitempty"`
+	// example:
+	//
 	// electricityMeter
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// DAY_AHEAD
+	ForecastHorizon *string `json:"ForecastHorizon,omitempty" xml:"ForecastHorizon,omitempty"`
 	// example:
 	//
 	// FIFTEEN_MIN
@@ -77,12 +89,20 @@ func (s *CreatePowerForecastJobRequest) GetBusinessKey() *string {
 	return s.BusinessKey
 }
 
+func (s *CreatePowerForecastJobRequest) GetDataMode() *string {
+	return s.DataMode
+}
+
 func (s *CreatePowerForecastJobRequest) GetDeviceType() *string {
 	return s.DeviceType
 }
 
 func (s *CreatePowerForecastJobRequest) GetDuration() *int32 {
 	return s.Duration
+}
+
+func (s *CreatePowerForecastJobRequest) GetForecastHorizon() *string {
+	return s.ForecastHorizon
 }
 
 func (s *CreatePowerForecastJobRequest) GetFreq() *string {
@@ -118,6 +138,11 @@ func (s *CreatePowerForecastJobRequest) SetBusinessKey(v string) *CreatePowerFor
 	return s
 }
 
+func (s *CreatePowerForecastJobRequest) SetDataMode(v string) *CreatePowerForecastJobRequest {
+	s.DataMode = &v
+	return s
+}
+
 func (s *CreatePowerForecastJobRequest) SetDeviceType(v string) *CreatePowerForecastJobRequest {
 	s.DeviceType = &v
 	return s
@@ -125,6 +150,11 @@ func (s *CreatePowerForecastJobRequest) SetDeviceType(v string) *CreatePowerFore
 
 func (s *CreatePowerForecastJobRequest) SetDuration(v int32) *CreatePowerForecastJobRequest {
 	s.Duration = &v
+	return s
+}
+
+func (s *CreatePowerForecastJobRequest) SetForecastHorizon(v string) *CreatePowerForecastJobRequest {
+	s.ForecastHorizon = &v
 	return s
 }
 
@@ -164,7 +194,21 @@ func (s *CreatePowerForecastJobRequest) SetTimeZone(v string) *CreatePowerForeca
 }
 
 func (s *CreatePowerForecastJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.HistoryData != nil {
+		for _, item := range s.HistoryData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Location != nil {
+		if err := s.Location.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreatePowerForecastJobRequestHistoryData struct {

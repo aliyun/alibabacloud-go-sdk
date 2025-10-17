@@ -11,10 +11,14 @@ type iCreateLoadForecastByFileUrlJobRequest interface {
 	GoString() string
 	SetBusinessKey(v string) *CreateLoadForecastByFileUrlJobRequest
 	GetBusinessKey() *string
+	SetDataMode(v string) *CreateLoadForecastByFileUrlJobRequest
+	GetDataMode() *string
 	SetDeviceType(v string) *CreateLoadForecastByFileUrlJobRequest
 	GetDeviceType() *string
 	SetDuration(v int32) *CreateLoadForecastByFileUrlJobRequest
 	GetDuration() *int32
+	SetForecastHorizon(v string) *CreateLoadForecastByFileUrlJobRequest
+	GetForecastHorizon() *string
 	SetFreq(v string) *CreateLoadForecastByFileUrlJobRequest
 	GetFreq() *string
 	SetHistoryUrl(v string) *CreateLoadForecastByFileUrlJobRequest
@@ -40,12 +44,20 @@ type CreateLoadForecastByFileUrlJobRequest struct {
 	BusinessKey *string `json:"BusinessKey,omitempty" xml:"BusinessKey,omitempty"`
 	// example:
 	//
+	// FULL
+	DataMode *string `json:"DataMode,omitempty" xml:"DataMode,omitempty"`
+	// example:
+	//
 	// electricityMeter
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// DAY_AHEAD
+	ForecastHorizon *string `json:"ForecastHorizon,omitempty" xml:"ForecastHorizon,omitempty"`
 	// example:
 	//
 	// FIFTEEN_MIN
@@ -92,12 +104,20 @@ func (s *CreateLoadForecastByFileUrlJobRequest) GetBusinessKey() *string {
 	return s.BusinessKey
 }
 
+func (s *CreateLoadForecastByFileUrlJobRequest) GetDataMode() *string {
+	return s.DataMode
+}
+
 func (s *CreateLoadForecastByFileUrlJobRequest) GetDeviceType() *string {
 	return s.DeviceType
 }
 
 func (s *CreateLoadForecastByFileUrlJobRequest) GetDuration() *int32 {
 	return s.Duration
+}
+
+func (s *CreateLoadForecastByFileUrlJobRequest) GetForecastHorizon() *string {
+	return s.ForecastHorizon
 }
 
 func (s *CreateLoadForecastByFileUrlJobRequest) GetFreq() *string {
@@ -137,6 +157,11 @@ func (s *CreateLoadForecastByFileUrlJobRequest) SetBusinessKey(v string) *Create
 	return s
 }
 
+func (s *CreateLoadForecastByFileUrlJobRequest) SetDataMode(v string) *CreateLoadForecastByFileUrlJobRequest {
+	s.DataMode = &v
+	return s
+}
+
 func (s *CreateLoadForecastByFileUrlJobRequest) SetDeviceType(v string) *CreateLoadForecastByFileUrlJobRequest {
 	s.DeviceType = &v
 	return s
@@ -144,6 +169,11 @@ func (s *CreateLoadForecastByFileUrlJobRequest) SetDeviceType(v string) *CreateL
 
 func (s *CreateLoadForecastByFileUrlJobRequest) SetDuration(v int32) *CreateLoadForecastByFileUrlJobRequest {
 	s.Duration = &v
+	return s
+}
+
+func (s *CreateLoadForecastByFileUrlJobRequest) SetForecastHorizon(v string) *CreateLoadForecastByFileUrlJobRequest {
+	s.ForecastHorizon = &v
 	return s
 }
 

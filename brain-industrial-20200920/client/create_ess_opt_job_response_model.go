@@ -59,5 +59,10 @@ func (s *CreateEssOptJobResponse) SetBody(v *CreateEssOptJobResponseBody) *Creat
 }
 
 func (s *CreateEssOptJobResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

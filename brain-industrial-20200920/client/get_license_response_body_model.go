@@ -125,7 +125,12 @@ func (s *GetLicenseResponseBody) SetSuccess(v string) *GetLicenseResponseBody {
 }
 
 func (s *GetLicenseResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLicenseResponseBodyData struct {
@@ -405,7 +410,16 @@ func (s *GetLicenseResponseBodyData) SetUnActivateAllDuration(v string) *GetLice
 }
 
 func (s *GetLicenseResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ActivateRecord != nil {
+		for _, item := range s.ActivateRecord {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLicenseResponseBodyDataActivateRecord struct {

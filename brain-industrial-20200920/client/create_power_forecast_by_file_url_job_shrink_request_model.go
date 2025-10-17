@@ -11,10 +11,14 @@ type iCreatePowerForecastByFileUrlJobShrinkRequest interface {
 	GoString() string
 	SetBusinessKey(v string) *CreatePowerForecastByFileUrlJobShrinkRequest
 	GetBusinessKey() *string
+	SetDataMode(v string) *CreatePowerForecastByFileUrlJobShrinkRequest
+	GetDataMode() *string
 	SetDeviceType(v string) *CreatePowerForecastByFileUrlJobShrinkRequest
 	GetDeviceType() *string
 	SetDuration(v int32) *CreatePowerForecastByFileUrlJobShrinkRequest
 	GetDuration() *int32
+	SetForecastHorizon(v string) *CreatePowerForecastByFileUrlJobShrinkRequest
+	GetForecastHorizon() *string
 	SetFreq(v string) *CreatePowerForecastByFileUrlJobShrinkRequest
 	GetFreq() *string
 	SetHistoryUrl(v string) *CreatePowerForecastByFileUrlJobShrinkRequest
@@ -42,12 +46,20 @@ type CreatePowerForecastByFileUrlJobShrinkRequest struct {
 	BusinessKey *string `json:"BusinessKey,omitempty" xml:"BusinessKey,omitempty"`
 	// example:
 	//
+	// FULL
+	DataMode *string `json:"DataMode,omitempty" xml:"DataMode,omitempty"`
+	// example:
+	//
 	// solarInverter
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// DAY_AHEAD
+	ForecastHorizon *string `json:"ForecastHorizon,omitempty" xml:"ForecastHorizon,omitempty"`
 	// example:
 	//
 	// FIFTEEN_MIN
@@ -95,12 +107,20 @@ func (s *CreatePowerForecastByFileUrlJobShrinkRequest) GetBusinessKey() *string 
 	return s.BusinessKey
 }
 
+func (s *CreatePowerForecastByFileUrlJobShrinkRequest) GetDataMode() *string {
+	return s.DataMode
+}
+
 func (s *CreatePowerForecastByFileUrlJobShrinkRequest) GetDeviceType() *string {
 	return s.DeviceType
 }
 
 func (s *CreatePowerForecastByFileUrlJobShrinkRequest) GetDuration() *int32 {
 	return s.Duration
+}
+
+func (s *CreatePowerForecastByFileUrlJobShrinkRequest) GetForecastHorizon() *string {
+	return s.ForecastHorizon
 }
 
 func (s *CreatePowerForecastByFileUrlJobShrinkRequest) GetFreq() *string {
@@ -144,6 +164,11 @@ func (s *CreatePowerForecastByFileUrlJobShrinkRequest) SetBusinessKey(v string) 
 	return s
 }
 
+func (s *CreatePowerForecastByFileUrlJobShrinkRequest) SetDataMode(v string) *CreatePowerForecastByFileUrlJobShrinkRequest {
+	s.DataMode = &v
+	return s
+}
+
 func (s *CreatePowerForecastByFileUrlJobShrinkRequest) SetDeviceType(v string) *CreatePowerForecastByFileUrlJobShrinkRequest {
 	s.DeviceType = &v
 	return s
@@ -151,6 +176,11 @@ func (s *CreatePowerForecastByFileUrlJobShrinkRequest) SetDeviceType(v string) *
 
 func (s *CreatePowerForecastByFileUrlJobShrinkRequest) SetDuration(v int32) *CreatePowerForecastByFileUrlJobShrinkRequest {
 	s.Duration = &v
+	return s
+}
+
+func (s *CreatePowerForecastByFileUrlJobShrinkRequest) SetForecastHorizon(v string) *CreatePowerForecastByFileUrlJobShrinkRequest {
+	s.ForecastHorizon = &v
 	return s
 }
 

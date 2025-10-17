@@ -97,7 +97,12 @@ func (s *CreateLoadForecastJobResponseBody) SetSuccess(v string) *CreateLoadFore
 }
 
 func (s *CreateLoadForecastJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateLoadForecastJobResponseBodyData struct {
@@ -200,7 +205,12 @@ func (s *CreateLoadForecastJobResponseBodyData) SetStatus(v string) *CreateLoadF
 }
 
 func (s *CreateLoadForecastJobResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Response != nil {
+		if err := s.Response.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateLoadForecastJobResponseBodyDataResponse struct {
