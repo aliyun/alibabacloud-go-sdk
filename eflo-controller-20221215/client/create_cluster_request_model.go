@@ -207,7 +207,39 @@ func (s *CreateClusterRequest) SetTag(v []*CreateClusterRequestTag) *CreateClust
 }
 
 func (s *CreateClusterRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Components != nil {
+		for _, item := range s.Components {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Networks != nil {
+		if err := s.Networks.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeGroups != nil {
+		for _, item := range s.NodeGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateClusterRequestComponents struct {
@@ -248,7 +280,12 @@ func (s *CreateClusterRequestComponents) SetComponentType(v string) *CreateClust
 }
 
 func (s *CreateClusterRequestComponents) Validate() error {
-	return dara.Validate(s)
+	if s.ComponentConfig != nil {
+		if err := s.ComponentConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateClusterRequestComponentsComponentConfig struct {
@@ -468,7 +505,26 @@ func (s *CreateClusterRequestNetworks) SetVpdInfo(v *CreateClusterRequestNetwork
 }
 
 func (s *CreateClusterRequestNetworks) Validate() error {
-	return dara.Validate(s)
+	if s.IpAllocationPolicy != nil {
+		for _, item := range s.IpAllocationPolicy {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NewVpdInfo != nil {
+		if err := s.NewVpdInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VpdInfo != nil {
+		if err := s.VpdInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateClusterRequestNetworksIpAllocationPolicy struct {
@@ -516,7 +572,30 @@ func (s *CreateClusterRequestNetworksIpAllocationPolicy) SetNodePolicy(v []*Crea
 }
 
 func (s *CreateClusterRequestNetworksIpAllocationPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.BondPolicy != nil {
+		if err := s.BondPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MachineTypePolicy != nil {
+		for _, item := range s.MachineTypePolicy {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NodePolicy != nil {
+		for _, item := range s.NodePolicy {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateClusterRequestNetworksIpAllocationPolicyBondPolicy struct {
@@ -557,7 +636,16 @@ func (s *CreateClusterRequestNetworksIpAllocationPolicyBondPolicy) SetBonds(v []
 }
 
 func (s *CreateClusterRequestNetworksIpAllocationPolicyBondPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.Bonds != nil {
+		for _, item := range s.Bonds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds struct {
@@ -643,7 +731,16 @@ func (s *CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy) SetMac
 }
 
 func (s *CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy) Validate() error {
-	return dara.Validate(s)
+	if s.Bonds != nil {
+		for _, item := range s.Bonds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds struct {
@@ -729,7 +826,16 @@ func (s *CreateClusterRequestNetworksIpAllocationPolicyNodePolicy) SetNodeId(v s
 }
 
 func (s *CreateClusterRequestNetworksIpAllocationPolicyNodePolicy) Validate() error {
-	return dara.Validate(s)
+	if s.Bonds != nil {
+		for _, item := range s.Bonds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds struct {
@@ -890,7 +996,16 @@ func (s *CreateClusterRequestNetworksNewVpdInfo) SetVpdSubnets(v []*CreateCluste
 }
 
 func (s *CreateClusterRequestNetworksNewVpdInfo) Validate() error {
-	return dara.Validate(s)
+	if s.VpdSubnets != nil {
+		for _, item := range s.VpdSubnets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateClusterRequestNetworksNewVpdInfoVpdSubnets struct {
@@ -1188,7 +1303,30 @@ func (s *CreateClusterRequestNodeGroups) SetZoneId(v string) *CreateClusterReque
 }
 
 func (s *CreateClusterRequestNodeGroups) Validate() error {
-	return dara.Validate(s)
+	if s.HyperNodes != nil {
+		for _, item := range s.HyperNodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SystemDisk != nil {
+		if err := s.SystemDisk.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateClusterRequestNodeGroupsHyperNodes struct {
@@ -1263,7 +1401,16 @@ func (s *CreateClusterRequestNodeGroupsHyperNodes) SetVpcId(v string) *CreateClu
 }
 
 func (s *CreateClusterRequestNodeGroupsHyperNodes) Validate() error {
-	return dara.Validate(s)
+	if s.DataDisk != nil {
+		for _, item := range s.DataDisk {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateClusterRequestNodeGroupsHyperNodesDataDisk struct {
@@ -1419,7 +1566,16 @@ func (s *CreateClusterRequestNodeGroupsNodes) SetVpcId(v string) *CreateClusterR
 }
 
 func (s *CreateClusterRequestNodeGroupsNodes) Validate() error {
-	return dara.Validate(s)
+	if s.DataDisk != nil {
+		for _, item := range s.DataDisk {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateClusterRequestNodeGroupsNodesDataDisk struct {

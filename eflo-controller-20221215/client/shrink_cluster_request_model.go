@@ -70,7 +70,16 @@ func (s *ShrinkClusterRequest) SetNodeGroups(v []*ShrinkClusterRequestNodeGroups
 }
 
 func (s *ShrinkClusterRequest) Validate() error {
-	return dara.Validate(s)
+	if s.NodeGroups != nil {
+		for _, item := range s.NodeGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ShrinkClusterRequestNodeGroups struct {
@@ -121,7 +130,25 @@ func (s *ShrinkClusterRequestNodeGroups) SetNodes(v []*ShrinkClusterRequestNodeG
 }
 
 func (s *ShrinkClusterRequestNodeGroups) Validate() error {
-	return dara.Validate(s)
+	if s.HyperNodes != nil {
+		for _, item := range s.HyperNodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ShrinkClusterRequestNodeGroupsHyperNodes struct {

@@ -70,7 +70,16 @@ func (s *ListFreeNodesResponseBody) SetRequestId(v string) *ListFreeNodesRespons
 }
 
 func (s *ListFreeNodesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFreeNodesResponseBodyNodes struct {
@@ -259,7 +268,16 @@ func (s *ListFreeNodesResponseBodyNodes) SetZoneId(v string) *ListFreeNodesRespo
 }
 
 func (s *ListFreeNodesResponseBodyNodes) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFreeNodesResponseBodyNodesTags struct {

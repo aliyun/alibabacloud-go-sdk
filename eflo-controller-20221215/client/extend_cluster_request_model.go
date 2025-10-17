@@ -113,7 +113,25 @@ func (s *ExtendClusterRequest) SetVpdSubnets(v []*string) *ExtendClusterRequest 
 }
 
 func (s *ExtendClusterRequest) Validate() error {
-  return dara.Validate(s)
+  if s.IpAllocationPolicy != nil {
+    for _, item := range s.IpAllocationPolicy {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  if s.NodeGroups != nil {
+    for _, item := range s.NodeGroups {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type ExtendClusterRequestIpAllocationPolicy struct {
@@ -161,7 +179,30 @@ func (s *ExtendClusterRequestIpAllocationPolicy) SetNodePolicy(v []*ExtendCluste
 }
 
 func (s *ExtendClusterRequestIpAllocationPolicy) Validate() error {
-  return dara.Validate(s)
+  if s.BondPolicy != nil {
+    if err := s.BondPolicy.Validate(); err != nil {
+      return err
+    }
+  }
+  if s.MachineTypePolicy != nil {
+    for _, item := range s.MachineTypePolicy {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  if s.NodePolicy != nil {
+    for _, item := range s.NodePolicy {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type ExtendClusterRequestIpAllocationPolicyBondPolicy struct {
@@ -202,7 +243,16 @@ func (s *ExtendClusterRequestIpAllocationPolicyBondPolicy) SetBonds(v []*ExtendC
 }
 
 func (s *ExtendClusterRequestIpAllocationPolicyBondPolicy) Validate() error {
-  return dara.Validate(s)
+  if s.Bonds != nil {
+    for _, item := range s.Bonds {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type ExtendClusterRequestIpAllocationPolicyBondPolicyBonds struct {
@@ -288,7 +338,16 @@ func (s *ExtendClusterRequestIpAllocationPolicyMachineTypePolicy) SetMachineType
 }
 
 func (s *ExtendClusterRequestIpAllocationPolicyMachineTypePolicy) Validate() error {
-  return dara.Validate(s)
+  if s.Bonds != nil {
+    for _, item := range s.Bonds {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds struct {
@@ -389,7 +448,16 @@ func (s *ExtendClusterRequestIpAllocationPolicyNodePolicy) SetNodeId(v string) *
 }
 
 func (s *ExtendClusterRequestIpAllocationPolicyNodePolicy) Validate() error {
-  return dara.Validate(s)
+  if s.Bonds != nil {
+    for _, item := range s.Bonds {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type ExtendClusterRequestIpAllocationPolicyNodePolicyBonds struct {
@@ -644,7 +712,34 @@ func (s *ExtendClusterRequestNodeGroups) SetZoneId(v string) *ExtendClusterReque
 }
 
 func (s *ExtendClusterRequestNodeGroups) Validate() error {
-  return dara.Validate(s)
+  if s.HyperNodes != nil {
+    for _, item := range s.HyperNodes {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  if s.NodeTag != nil {
+    for _, item := range s.NodeTag {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  if s.Nodes != nil {
+    for _, item := range s.Nodes {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type ExtendClusterRequestNodeGroupsHyperNodes struct {
@@ -719,7 +814,16 @@ func (s *ExtendClusterRequestNodeGroupsHyperNodes) SetVpcId(v string) *ExtendClu
 }
 
 func (s *ExtendClusterRequestNodeGroupsHyperNodes) Validate() error {
-  return dara.Validate(s)
+  if s.DataDisk != nil {
+    for _, item := range s.DataDisk {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type ExtendClusterRequestNodeGroupsHyperNodesDataDisk struct {
@@ -920,7 +1024,16 @@ func (s *ExtendClusterRequestNodeGroupsNodes) SetVpcId(v string) *ExtendClusterR
 }
 
 func (s *ExtendClusterRequestNodeGroupsNodes) Validate() error {
-  return dara.Validate(s)
+  if s.DataDisk != nil {
+    for _, item := range s.DataDisk {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type ExtendClusterRequestNodeGroupsNodesDataDisk struct {

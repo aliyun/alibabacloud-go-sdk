@@ -70,7 +70,16 @@ func (s *ListClusterNodesResponseBody) SetRequestId(v string) *ListClusterNodesR
 }
 
 func (s *ListClusterNodesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListClusterNodesResponseBodyNodes struct {
@@ -418,7 +427,25 @@ func (s *ListClusterNodesResponseBodyNodes) SetZoneId(v string) *ListClusterNode
 }
 
 func (s *ListClusterNodesResponseBodyNodes) Validate() error {
-	return dara.Validate(s)
+	if s.Networks != nil {
+		for _, item := range s.Networks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListClusterNodesResponseBodyNodesNetworks struct {

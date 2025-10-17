@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -65,9 +66,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return ApproveOperationResponse
 func (client *Client) ApproveOperationWithOptions(request *ApproveOperationRequest, runtime *dara.RuntimeOptions) (_result *ApproveOperationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.NodeId) {
@@ -129,9 +132,11 @@ func (client *Client) ApproveOperation(request *ApproveOperationRequest) (_resul
 //
 // @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceGroupId) {
@@ -201,9 +206,11 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 //
 // @return CloseSessionResponse
 func (client *Client) CloseSessionWithOptions(request *CloseSessionRequest, runtime *dara.RuntimeOptions) (_result *CloseSessionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.SessionId) {
@@ -265,9 +272,11 @@ func (client *Client) CloseSession(request *CloseSessionRequest) (_result *Close
 //
 // @return CreateClusterResponse
 func (client *Client) CreateClusterWithOptions(tmpReq *CreateClusterRequest, runtime *dara.RuntimeOptions) (_result *CreateClusterResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateClusterShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -389,9 +398,11 @@ func (client *Client) CreateCluster(request *CreateClusterRequest) (_result *Cre
 //
 // @return CreateDiagnosticTaskResponse
 func (client *Client) CreateDiagnosticTaskWithOptions(tmpReq *CreateDiagnosticTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateDiagnosticTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDiagnosticTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -475,9 +486,11 @@ func (client *Client) CreateDiagnosticTask(request *CreateDiagnosticTaskRequest)
 //
 // @return CreateNetTestTaskResponse
 func (client *Client) CreateNetTestTaskWithOptions(tmpReq *CreateNetTestTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateNetTestTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateNetTestTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -581,9 +594,11 @@ func (client *Client) CreateNetTestTask(request *CreateNetTestTaskRequest) (_res
 //
 // @return CreateNodeGroupResponse
 func (client *Client) CreateNodeGroupWithOptions(tmpReq *CreateNodeGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateNodeGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateNodeGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -663,9 +678,11 @@ func (client *Client) CreateNodeGroup(request *CreateNodeGroupRequest) (_result 
 //
 // @return CreateSessionResponse
 func (client *Client) CreateSessionWithOptions(request *CreateSessionRequest, runtime *dara.RuntimeOptions) (_result *CreateSessionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.NodeId) {
@@ -735,9 +752,11 @@ func (client *Client) CreateSession(request *CreateSessionRequest) (_result *Cre
 //
 // @return CreateVscResponse
 func (client *Client) CreateVscWithOptions(request *CreateVscRequest, runtime *dara.RuntimeOptions) (_result *CreateVscResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -817,9 +836,11 @@ func (client *Client) CreateVsc(request *CreateVscRequest) (_result *CreateVscRe
 //
 // @return DeleteClusterResponse
 func (client *Client) DeleteClusterWithOptions(request *DeleteClusterRequest, runtime *dara.RuntimeOptions) (_result *DeleteClusterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -877,9 +898,11 @@ func (client *Client) DeleteCluster(request *DeleteClusterRequest) (_result *Del
 //
 // @return DeleteNodeResponse
 func (client *Client) DeleteNodeWithOptions(request *DeleteNodeRequest, runtime *dara.RuntimeOptions) (_result *DeleteNodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.NodeId) {
@@ -937,9 +960,11 @@ func (client *Client) DeleteNode(request *DeleteNodeRequest) (_result *DeleteNod
 //
 // @return DeleteNodeGroupResponse
 func (client *Client) DeleteNodeGroupWithOptions(request *DeleteNodeGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteNodeGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -1001,9 +1026,11 @@ func (client *Client) DeleteNodeGroup(request *DeleteNodeGroupRequest) (_result 
 //
 // @return DeleteVscResponse
 func (client *Client) DeleteVscWithOptions(request *DeleteVscRequest, runtime *dara.RuntimeOptions) (_result *DeleteVscResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1067,9 +1094,11 @@ func (client *Client) DeleteVsc(request *DeleteVscRequest) (_result *DeleteVscRe
 //
 // @return DescribeClusterResponse
 func (client *Client) DescribeClusterWithOptions(request *DescribeClusterRequest, runtime *dara.RuntimeOptions) (_result *DescribeClusterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -1131,9 +1160,11 @@ func (client *Client) DescribeCluster(request *DescribeClusterRequest) (_result 
 //
 // @return DescribeDiagnosticResultResponse
 func (client *Client) DescribeDiagnosticResultWithOptions(request *DescribeDiagnosticResultRequest, runtime *dara.RuntimeOptions) (_result *DescribeDiagnosticResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DiagnosticId) {
@@ -1195,9 +1226,11 @@ func (client *Client) DescribeDiagnosticResult(request *DescribeDiagnosticResult
 //
 // @return DescribeInvocationsResponse
 func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeInvocationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ContentEncoding) {
@@ -1267,9 +1300,11 @@ func (client *Client) DescribeInvocations(request *DescribeInvocationsRequest) (
 //
 // @return DescribeNetTestResultResponse
 func (client *Client) DescribeNetTestResultWithOptions(request *DescribeNetTestResultRequest, runtime *dara.RuntimeOptions) (_result *DescribeNetTestResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.TestId) {
@@ -1327,9 +1362,11 @@ func (client *Client) DescribeNetTestResult(request *DescribeNetTestResultReques
 //
 // @return DescribeNodeResponse
 func (client *Client) DescribeNodeWithOptions(request *DescribeNodeRequest, runtime *dara.RuntimeOptions) (_result *DescribeNodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.NodeId) {
@@ -1387,9 +1424,11 @@ func (client *Client) DescribeNode(request *DescribeNodeRequest) (_result *Descr
 //
 // @return DescribeNodeTypeResponse
 func (client *Client) DescribeNodeTypeWithOptions(request *DescribeNodeTypeRequest, runtime *dara.RuntimeOptions) (_result *DescribeNodeTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.NodeType) {
@@ -1447,9 +1486,11 @@ func (client *Client) DescribeNodeType(request *DescribeNodeTypeRequest) (_resul
 //
 // @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -1507,9 +1548,11 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 //
 // @return DescribeSendFileResultsResponse
 func (client *Client) DescribeSendFileResultsWithOptions(request *DescribeSendFileResultsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSendFileResultsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InvokeId) {
@@ -1571,9 +1614,11 @@ func (client *Client) DescribeSendFileResults(request *DescribeSendFileResultsRe
 //
 // @return DescribeTaskResponse
 func (client *Client) DescribeTaskWithOptions(request *DescribeTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -1631,9 +1676,11 @@ func (client *Client) DescribeTask(request *DescribeTaskRequest) (_result *Descr
 //
 // @return DescribeVscResponse
 func (client *Client) DescribeVscWithOptions(request *DescribeVscRequest, runtime *dara.RuntimeOptions) (_result *DescribeVscResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.VscId) {
@@ -1691,9 +1738,11 @@ func (client *Client) DescribeVsc(request *DescribeVscRequest) (_result *Describ
 //
 // @return DescribeZonesResponse
 func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, runtime *dara.RuntimeOptions) (_result *DescribeZonesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -1751,9 +1800,11 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 //
 // @return ExtendClusterResponse
 func (client *Client) ExtendClusterWithOptions(tmpReq *ExtendClusterRequest, runtime *dara.RuntimeOptions) (_result *ExtendClusterResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ExtendClusterShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1845,9 +1896,11 @@ func (client *Client) ExtendCluster(request *ExtendClusterRequest) (_result *Ext
 //
 // @return ListClusterNodesResponse
 func (client *Client) ListClusterNodesWithOptions(request *ListClusterNodesRequest, runtime *dara.RuntimeOptions) (_result *ListClusterNodesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Tags) {
@@ -1931,9 +1984,11 @@ func (client *Client) ListClusterNodes(request *ListClusterNodesRequest) (_resul
 //
 // @return ListClustersResponse
 func (client *Client) ListClustersWithOptions(request *ListClustersRequest, runtime *dara.RuntimeOptions) (_result *ListClustersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Tags) {
@@ -2005,9 +2060,11 @@ func (client *Client) ListClusters(request *ListClustersRequest) (_result *ListC
 //
 // @return ListDiagnosticResultsResponse
 func (client *Client) ListDiagnosticResultsWithOptions(request *ListDiagnosticResultsRequest, runtime *dara.RuntimeOptions) (_result *ListDiagnosticResultsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DiagType) {
@@ -2077,9 +2134,11 @@ func (client *Client) ListDiagnosticResults(request *ListDiagnosticResultsReques
 //
 // @return ListFreeNodesResponse
 func (client *Client) ListFreeNodesWithOptions(request *ListFreeNodesRequest, runtime *dara.RuntimeOptions) (_result *ListFreeNodesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Tags) {
@@ -2163,9 +2222,11 @@ func (client *Client) ListFreeNodes(request *ListFreeNodesRequest) (_result *Lis
 //
 // @return ListImagesResponse
 func (client *Client) ListImagesWithOptions(request *ListImagesRequest, runtime *dara.RuntimeOptions) (_result *ListImagesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Architecture) {
@@ -2231,9 +2292,11 @@ func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImage
 //
 // @return ListMachineNetworkInfoResponse
 func (client *Client) ListMachineNetworkInfoWithOptions(tmpReq *ListMachineNetworkInfoRequest, runtime *dara.RuntimeOptions) (_result *ListMachineNetworkInfoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListMachineNetworkInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2297,9 +2360,11 @@ func (client *Client) ListMachineNetworkInfo(request *ListMachineNetworkInfoRequ
 //
 // @return ListMachineTypesResponse
 func (client *Client) ListMachineTypesWithOptions(request *ListMachineTypesRequest, runtime *dara.RuntimeOptions) (_result *ListMachineTypesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -2361,9 +2426,11 @@ func (client *Client) ListMachineTypes(request *ListMachineTypesRequest) (_resul
 //
 // @return ListNetTestResultsResponse
 func (client *Client) ListNetTestResultsWithOptions(request *ListNetTestResultsRequest, runtime *dara.RuntimeOptions) (_result *ListNetTestResultsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -2437,9 +2504,11 @@ func (client *Client) ListNetTestResults(request *ListNetTestResultsRequest) (_r
 //
 // @return ListNodeGroupsResponse
 func (client *Client) ListNodeGroupsWithOptions(request *ListNodeGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListNodeGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -2509,9 +2578,11 @@ func (client *Client) ListNodeGroups(request *ListNodeGroupsRequest) (_result *L
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NextToken) {
@@ -2632,9 +2703,11 @@ func (client *Client) ListUserClusterTypes() (_result *ListUserClusterTypesRespo
 //
 // @return ListVscsResponse
 func (client *Client) ListVscsWithOptions(tmpReq *ListVscsRequest, runtime *dara.RuntimeOptions) (_result *ListVscsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListVscsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2720,9 +2793,11 @@ func (client *Client) ListVscs(request *ListVscsRequest) (_result *ListVscsRespo
 //
 // @return RebootNodesResponse
 func (client *Client) RebootNodesWithOptions(tmpReq *RebootNodesRequest, runtime *dara.RuntimeOptions) (_result *RebootNodesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RebootNodesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2794,9 +2869,11 @@ func (client *Client) RebootNodes(request *RebootNodesRequest) (_result *RebootN
 //
 // @return ReimageNodesResponse
 func (client *Client) ReimageNodesWithOptions(tmpReq *ReimageNodesRequest, runtime *dara.RuntimeOptions) (_result *ReimageNodesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ReimageNodesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2872,9 +2949,11 @@ func (client *Client) ReimageNodes(request *ReimageNodesRequest) (_result *Reima
 //
 // @return RunCommandResponse
 func (client *Client) RunCommandWithOptions(tmpReq *RunCommandRequest, runtime *dara.RuntimeOptions) (_result *RunCommandResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RunCommandShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3002,9 +3081,11 @@ func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunComman
 //
 // @return SendFileResponse
 func (client *Client) SendFileWithOptions(tmpReq *SendFileRequest, runtime *dara.RuntimeOptions) (_result *SendFileResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SendFileShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3108,9 +3189,11 @@ func (client *Client) SendFile(request *SendFileRequest) (_result *SendFileRespo
 //
 // @return ShrinkClusterResponse
 func (client *Client) ShrinkClusterWithOptions(tmpReq *ShrinkClusterRequest, runtime *dara.RuntimeOptions) (_result *ShrinkClusterResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ShrinkClusterShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3182,9 +3265,11 @@ func (client *Client) ShrinkCluster(request *ShrinkClusterRequest) (_result *Shr
 //
 // @return StopInvocationResponse
 func (client *Client) StopInvocationWithOptions(tmpReq *StopInvocationRequest, runtime *dara.RuntimeOptions) (_result *StopInvocationResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &StopInvocationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3252,9 +3337,11 @@ func (client *Client) StopInvocation(request *StopInvocationRequest) (_result *S
 //
 // @return StopNodesResponse
 func (client *Client) StopNodesWithOptions(tmpReq *StopNodesRequest, runtime *dara.RuntimeOptions) (_result *StopNodesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &StopNodesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3322,9 +3409,11 @@ func (client *Client) StopNodes(request *StopNodesRequest) (_result *StopNodesRe
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3394,9 +3483,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -3470,9 +3561,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 //
 // @return UpdateNodeGroupResponse
 func (client *Client) UpdateNodeGroupWithOptions(request *UpdateNodeGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateNodeGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FileSystemMountEnabled) {

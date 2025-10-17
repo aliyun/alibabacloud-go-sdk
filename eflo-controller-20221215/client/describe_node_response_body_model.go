@@ -434,7 +434,25 @@ func (s *DescribeNodeResponseBody) SetZoneId(v string) *DescribeNodeResponseBody
 }
 
 func (s *DescribeNodeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Disks != nil {
+		for _, item := range s.Disks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Networks != nil {
+		for _, item := range s.Networks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNodeResponseBodyDisks struct {
