@@ -47,7 +47,17 @@ func (s *Lifecycle) SetPreStop(v *LifecyclePreStop) *Lifecycle {
 }
 
 func (s *Lifecycle) Validate() error {
-	return dara.Validate(s)
+	if s.PostStart != nil {
+		if err := s.PostStart.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PreStop != nil {
+		if err := s.PreStop.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type LifecyclePostStart struct {
@@ -72,7 +82,12 @@ func (s *LifecyclePostStart) SetExec(v *LifecyclePostStartExec) *LifecyclePostSt
 }
 
 func (s *LifecyclePostStart) Validate() error {
-	return dara.Validate(s)
+	if s.Exec != nil {
+		if err := s.Exec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type LifecyclePostStartExec struct {
@@ -122,7 +137,12 @@ func (s *LifecyclePreStop) SetExec(v *LifecyclePreStopExec) *LifecyclePreStop {
 }
 
 func (s *LifecyclePreStop) Validate() error {
-	return dara.Validate(s)
+	if s.Exec != nil {
+		if err := s.Exec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type LifecyclePreStopExec struct {

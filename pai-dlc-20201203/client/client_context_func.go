@@ -23,9 +23,11 @@ import (
 //
 // @return CreateJobResponse
 func (client *Client) CreateJobWithContext(ctx context.Context, request *CreateJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {
@@ -148,9 +150,11 @@ func (client *Client) CreateJobWithContext(ctx context.Context, request *CreateJ
 //
 // @return CreateTensorboardResponse
 func (client *Client) CreateTensorboardWithContext(ctx context.Context, request *CreateTensorboardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTensorboardResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {
@@ -302,9 +306,11 @@ func (client *Client) DeleteJobWithContext(ctx context.Context, JobId *string, h
 //
 // @return DeleteTensorboardResponse
 func (client *Client) DeleteTensorboardWithContext(ctx context.Context, TensorboardId *string, request *DeleteTensorboardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTensorboardResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.WorkspaceId) {
@@ -347,9 +353,11 @@ func (client *Client) DeleteTensorboardWithContext(ctx context.Context, Tensorbo
 //
 // @return GetDashboardResponse
 func (client *Client) GetDashboardWithContext(ctx context.Context, jobId *string, request *GetDashboardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDashboardResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsShared) {
@@ -396,9 +404,11 @@ func (client *Client) GetDashboardWithContext(ctx context.Context, jobId *string
 //
 // @return GetJobResponse
 func (client *Client) GetJobWithContext(ctx context.Context, JobId *string, request *GetJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NeedDetail) {
@@ -441,9 +451,11 @@ func (client *Client) GetJobWithContext(ctx context.Context, JobId *string, requ
 //
 // @return GetJobEventsResponse
 func (client *Client) GetJobEventsWithContext(ctx context.Context, JobId *string, request *GetJobEventsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetJobEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -494,9 +506,11 @@ func (client *Client) GetJobEventsWithContext(ctx context.Context, JobId *string
 //
 // @return GetJobMetricsResponse
 func (client *Client) GetJobMetricsWithContext(ctx context.Context, JobId *string, request *GetJobMetricsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetJobMetricsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -555,9 +569,11 @@ func (client *Client) GetJobMetricsWithContext(ctx context.Context, JobId *strin
 //
 // @return GetJobSanityCheckResultResponse
 func (client *Client) GetJobSanityCheckResultWithContext(ctx context.Context, JobId *string, request *GetJobSanityCheckResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetJobSanityCheckResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SanityCheckNumber) {
@@ -608,9 +624,11 @@ func (client *Client) GetJobSanityCheckResultWithContext(ctx context.Context, Jo
 //
 // @return GetPodEventsResponse
 func (client *Client) GetPodEventsWithContext(ctx context.Context, JobId *string, PodId *string, request *GetPodEventsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPodEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -665,9 +683,11 @@ func (client *Client) GetPodEventsWithContext(ctx context.Context, JobId *string
 //
 // @return GetPodLogsResponse
 func (client *Client) GetPodLogsWithContext(ctx context.Context, JobId *string, PodId *string, request *GetPodLogsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPodLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DownloadToFile) {
@@ -730,9 +750,11 @@ func (client *Client) GetPodLogsWithContext(ctx context.Context, JobId *string, 
 //
 // @return GetRayDashboardResponse
 func (client *Client) GetRayDashboardWithContext(ctx context.Context, jobId *string, request *GetRayDashboardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRayDashboardResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsShared) {
@@ -779,9 +801,11 @@ func (client *Client) GetRayDashboardWithContext(ctx context.Context, jobId *str
 //
 // @return GetTensorboardResponse
 func (client *Client) GetTensorboardWithContext(ctx context.Context, TensorboardId *string, request *GetTensorboardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTensorboardResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JodId) {
@@ -832,9 +856,11 @@ func (client *Client) GetTensorboardWithContext(ctx context.Context, Tensorboard
 //
 // @return GetTensorboardSharedUrlResponse
 func (client *Client) GetTensorboardSharedUrlWithContext(ctx context.Context, TensorboardId *string, request *GetTensorboardSharedUrlRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTensorboardSharedUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExpireTimeSeconds) {
@@ -877,9 +903,11 @@ func (client *Client) GetTensorboardSharedUrlWithContext(ctx context.Context, Te
 //
 // @return GetTokenResponse
 func (client *Client) GetTokenWithContext(ctx context.Context, request *GetTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExpireTime) {
@@ -930,9 +958,11 @@ func (client *Client) GetTokenWithContext(ctx context.Context, request *GetToken
 //
 // @return GetWebTerminalResponse
 func (client *Client) GetWebTerminalWithContext(ctx context.Context, JobId *string, PodId *string, request *GetWebTerminalRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetWebTerminalResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsShared) {
@@ -979,9 +1009,11 @@ func (client *Client) GetWebTerminalWithContext(ctx context.Context, JobId *stri
 //
 // @return ListEcsSpecsResponse
 func (client *Client) ListEcsSpecsWithContext(ctx context.Context, request *ListEcsSpecsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListEcsSpecsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceleratorType) {
@@ -1048,9 +1080,11 @@ func (client *Client) ListEcsSpecsWithContext(ctx context.Context, request *List
 //
 // @return ListJobSanityCheckResultsResponse
 func (client *Client) ListJobSanityCheckResultsWithContext(ctx context.Context, JobId *string, request *ListJobSanityCheckResultsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListJobSanityCheckResultsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Order) {
@@ -1093,9 +1127,11 @@ func (client *Client) ListJobSanityCheckResultsWithContext(ctx context.Context, 
 //
 // @return ListJobsResponse
 func (client *Client) ListJobsWithContext(ctx context.Context, tmpReq *ListJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListJobsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListJobsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1118,6 +1154,10 @@ func (client *Client) ListJobsWithContext(ctx context.Context, tmpReq *ListJobsR
 
 	if !dara.IsNil(request.DisplayName) {
 		query["DisplayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.DisplayNameSearchMode) {
+		query["DisplayNameSearchMode"] = request.DisplayNameSearchMode
 	}
 
 	if !dara.IsNil(request.EndTime) {
@@ -1240,9 +1280,11 @@ func (client *Client) ListJobsWithContext(ctx context.Context, tmpReq *ListJobsR
 //
 // @return ListTensorboardsResponse
 func (client *Client) ListTensorboardsWithContext(ctx context.Context, request *ListTensorboardsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTensorboardsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {
@@ -1361,9 +1403,11 @@ func (client *Client) ListTensorboardsWithContext(ctx context.Context, request *
 //
 // @return StartTensorboardResponse
 func (client *Client) StartTensorboardWithContext(ctx context.Context, TensorboardId *string, request *StartTensorboardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartTensorboardResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.WorkspaceId) {
@@ -1439,9 +1483,11 @@ func (client *Client) StopJobWithContext(ctx context.Context, JobId *string, hea
 //
 // @return StopTensorboardResponse
 func (client *Client) StopTensorboardWithContext(ctx context.Context, TensorboardId *string, request *StopTensorboardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopTensorboardResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.WorkspaceId) {
@@ -1484,9 +1530,11 @@ func (client *Client) StopTensorboardWithContext(ctx context.Context, Tensorboar
 //
 // @return UpdateJobResponse
 func (client *Client) UpdateJobWithContext(ctx context.Context, JobId *string, request *UpdateJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {
@@ -1533,9 +1581,11 @@ func (client *Client) UpdateJobWithContext(ctx context.Context, JobId *string, r
 //
 // @return UpdateTensorboardResponse
 func (client *Client) UpdateTensorboardWithContext(ctx context.Context, TensorboardId *string, request *UpdateTensorboardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTensorboardResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {

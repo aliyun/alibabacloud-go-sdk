@@ -70,5 +70,14 @@ func (s *GetJobSanityCheckResultResponseBody) SetSanityCheckResult(v []*SanityCh
 }
 
 func (s *GetJobSanityCheckResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SanityCheckResult != nil {
+		for _, item := range s.SanityCheckResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

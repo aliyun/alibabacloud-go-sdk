@@ -431,5 +431,19 @@ func (s *Tensorboard) SetWorkspaceId(v string) *Tensorboard {
 }
 
 func (s *Tensorboard) Validate() error {
-	return dara.Validate(s)
+	if s.TensorboardDataSources != nil {
+		for _, item := range s.TensorboardDataSources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TensorboardSpec != nil {
+		if err := s.TensorboardSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

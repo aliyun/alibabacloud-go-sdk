@@ -718,7 +718,77 @@ func (s *GetJobResponseBody) SetWorkspaceName(v string) *GetJobResponseBody {
 }
 
 func (s *GetJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CodeSource != nil {
+		if err := s.CodeSource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CredentialConfig != nil {
+		if err := s.CredentialConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataSources != nil {
+		for _, item := range s.DataSources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ElasticSpec != nil {
+		if err := s.ElasticSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.JobSpecs != nil {
+		for _, item := range s.JobSpecs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Pods != nil {
+		for _, item := range s.Pods {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RestartRecord != nil {
+		for _, item := range s.RestartRecord {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Settings != nil {
+		if err := s.Settings.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StatusHistory != nil {
+		for _, item := range s.StatusHistory {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserVpc != nil {
+		if err := s.UserVpc.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetJobResponseBodyCodeSource struct {
@@ -1043,7 +1113,16 @@ func (s *GetJobResponseBodyPods) SetType(v string) *GetJobResponseBodyPods {
 }
 
 func (s *GetJobResponseBodyPods) Validate() error {
-	return dara.Validate(s)
+	if s.HistoryPods != nil {
+		for _, item := range s.HistoryPods {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetJobResponseBodyPodsHistoryPods struct {
@@ -1317,7 +1396,16 @@ func (s *GetJobResponseBodyRestartRecord) SetTriggerID(v string) *GetJobResponse
 }
 
 func (s *GetJobResponseBodyRestartRecord) Validate() error {
-	return dara.Validate(s)
+	if s.DetailErrorInfoList != nil {
+		for _, item := range s.DetailErrorInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetJobResponseBodyRestartRecordDetailErrorInfoList struct {

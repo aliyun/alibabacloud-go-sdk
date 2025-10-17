@@ -110,5 +110,14 @@ func (s *QuotaDetail) SetMemory(v string) *QuotaDetail {
 }
 
 func (s *QuotaDetail) Validate() error {
-	return dara.Validate(s)
+	if s.GPUDetails != nil {
+		for _, item := range s.GPUDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

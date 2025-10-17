@@ -59,5 +59,10 @@ func (s *GetPodLogsResponse) SetBody(v *GetPodLogsResponseBody) *GetPodLogsRespo
 }
 
 func (s *GetPodLogsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

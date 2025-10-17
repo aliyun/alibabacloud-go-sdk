@@ -89,5 +89,15 @@ func (s *SecurityContext) SetSeccompProfile(v *SeccompProfile) *SecurityContext 
 }
 
 func (s *SecurityContext) Validate() error {
-	return dara.Validate(s)
+	if s.Capabilities != nil {
+		if err := s.Capabilities.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SeccompProfile != nil {
+		if err := s.SeccompProfile.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

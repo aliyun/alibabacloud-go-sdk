@@ -97,6 +97,29 @@ func (s *ExtraPodSpec) SetSideCarContainers(v []*ContainerSpec) *ExtraPodSpec {
 }
 
 func (s *ExtraPodSpec) Validate() error {
-  return dara.Validate(s)
+  if s.InitContainers != nil {
+    for _, item := range s.InitContainers {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  if s.Lifecycle != nil {
+    if err := s.Lifecycle.Validate(); err != nil {
+      return err
+    }
+  }
+  if s.SideCarContainers != nil {
+    for _, item := range s.SideCarContainers {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 

@@ -408,7 +408,50 @@ func (s *CreateJobRequest) SetWorkspaceId(v string) *CreateJobRequest {
 }
 
 func (s *CreateJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CodeSource != nil {
+		if err := s.CodeSource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CredentialConfig != nil {
+		if err := s.CredentialConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataSources != nil {
+		for _, item := range s.DataSources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ElasticSpec != nil {
+		if err := s.ElasticSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.JobSpecs != nil {
+		for _, item := range s.JobSpecs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Settings != nil {
+		if err := s.Settings.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserVpc != nil {
+		if err := s.UserVpc.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateJobRequestCodeSource struct {

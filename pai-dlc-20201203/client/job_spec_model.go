@@ -245,5 +245,54 @@ func (s *JobSpec) SetUseSpotInstance(v bool) *JobSpec {
 }
 
 func (s *JobSpec) Validate() error {
-	return dara.Validate(s)
+	if s.AssignNodeSpec != nil {
+		if err := s.AssignNodeSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AutoScalingSpec != nil {
+		if err := s.AutoScalingSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExtraPodSpec != nil {
+		if err := s.ExtraPodSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageConfig != nil {
+		if err := s.ImageConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LocalMountSpecs != nil {
+		for _, item := range s.LocalMountSpecs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResourceConfig != nil {
+		if err := s.ResourceConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceSpec != nil {
+		if err := s.ServiceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SpotSpec != nil {
+		if err := s.SpotSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SystemDisk != nil {
+		if err := s.SystemDisk.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

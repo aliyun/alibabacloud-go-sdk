@@ -152,5 +152,30 @@ func (s *Quota) SetUsedTideQuota(v *QuotaDetail) *Quota {
 }
 
 func (s *Quota) Validate() error {
-	return dara.Validate(s)
+	if s.QuotaConfig != nil {
+		if err := s.QuotaConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalQuota != nil {
+		if err := s.TotalQuota.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalTideQuota != nil {
+		if err := s.TotalTideQuota.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UsedQuota != nil {
+		if err := s.UsedQuota.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UsedTideQuota != nil {
+		if err := s.UsedTideQuota.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -83,5 +83,10 @@ func (s *CredentialRole) SetRoleType(v string) *CredentialRole {
 }
 
 func (s *CredentialRole) Validate() error {
-	return dara.Validate(s)
+	if s.AssumeUserInfo != nil {
+		if err := s.AssumeUserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *GetRayDashboardResponse) SetBody(v *GetRayDashboardResponseBody) *GetRa
 }
 
 func (s *GetRayDashboardResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

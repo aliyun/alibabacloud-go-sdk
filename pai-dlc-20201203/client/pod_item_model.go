@@ -191,5 +191,14 @@ func (s *PodItem) SetType(v string) *PodItem {
 }
 
 func (s *PodItem) Validate() error {
-	return dara.Validate(s)
+	if s.HistoryPods != nil {
+		for _, item := range s.HistoryPods {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

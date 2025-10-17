@@ -70,5 +70,14 @@ func (s *GetJobMetricsResponseBody) SetRequestId(v string) *GetJobMetricsRespons
 }
 
 func (s *GetJobMetricsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PodMetrics != nil {
+		for _, item := range s.PodMetrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

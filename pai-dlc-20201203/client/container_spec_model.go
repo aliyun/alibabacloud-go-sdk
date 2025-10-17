@@ -116,5 +116,19 @@ func (s *ContainerSpec) SetWorkingDir(v string) *ContainerSpec {
 }
 
 func (s *ContainerSpec) Validate() error {
-	return dara.Validate(s)
+	if s.Env != nil {
+		for _, item := range s.Env {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Resources != nil {
+		if err := s.Resources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

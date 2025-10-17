@@ -17,6 +17,8 @@ type iListJobsShrinkRequest interface {
 	GetCaller() *string
 	SetDisplayName(v string) *ListJobsShrinkRequest
 	GetDisplayName() *string
+	SetDisplayNameSearchMode(v string) *ListJobsShrinkRequest
+	GetDisplayNameSearchMode() *string
 	SetEndTime(v string) *ListJobsShrinkRequest
 	GetEndTime() *string
 	SetFromAllWorkspaces(v bool) *ListJobsShrinkRequest
@@ -89,7 +91,8 @@ type ListJobsShrinkRequest struct {
 	// example:
 	//
 	// tf-mnist-test
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	DisplayName           *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	DisplayNameSearchMode *string `json:"DisplayNameSearchMode,omitempty" xml:"DisplayNameSearchMode,omitempty"`
 	// The end time of the query. Use the job creation time to filter data. The default value is the current time.
 	//
 	// example:
@@ -297,6 +300,10 @@ func (s *ListJobsShrinkRequest) GetDisplayName() *string {
 	return s.DisplayName
 }
 
+func (s *ListJobsShrinkRequest) GetDisplayNameSearchMode() *string {
+	return s.DisplayNameSearchMode
+}
+
 func (s *ListJobsShrinkRequest) GetEndTime() *string {
 	return s.EndTime
 }
@@ -398,6 +405,11 @@ func (s *ListJobsShrinkRequest) SetCaller(v string) *ListJobsShrinkRequest {
 
 func (s *ListJobsShrinkRequest) SetDisplayName(v string) *ListJobsShrinkRequest {
 	s.DisplayName = &v
+	return s
+}
+
+func (s *ListJobsShrinkRequest) SetDisplayNameSearchMode(v string) *ListJobsShrinkRequest {
+	s.DisplayNameSearchMode = &v
 	return s
 }
 

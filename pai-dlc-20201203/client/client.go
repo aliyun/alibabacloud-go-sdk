@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -116,9 +117,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return CreateJobResponse
 func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {
@@ -264,9 +267,11 @@ func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobRe
 //
 // @return CreateTensorboardResponse
 func (client *Client) CreateTensorboardWithOptions(request *CreateTensorboardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTensorboardResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {
@@ -454,9 +459,11 @@ func (client *Client) DeleteJob(JobId *string) (_result *DeleteJobResponse, _err
 //
 // @return DeleteTensorboardResponse
 func (client *Client) DeleteTensorboardWithOptions(TensorboardId *string, request *DeleteTensorboardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTensorboardResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.WorkspaceId) {
@@ -518,9 +525,11 @@ func (client *Client) DeleteTensorboard(TensorboardId *string, request *DeleteTe
 //
 // @return GetDashboardResponse
 func (client *Client) GetDashboardWithOptions(jobId *string, request *GetDashboardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDashboardResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsShared) {
@@ -586,9 +595,11 @@ func (client *Client) GetDashboard(jobId *string, request *GetDashboardRequest) 
 //
 // @return GetJobResponse
 func (client *Client) GetJobWithOptions(JobId *string, request *GetJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NeedDetail) {
@@ -650,9 +661,11 @@ func (client *Client) GetJob(JobId *string, request *GetJobRequest) (_result *Ge
 //
 // @return GetJobEventsResponse
 func (client *Client) GetJobEventsWithOptions(JobId *string, request *GetJobEventsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetJobEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -722,9 +735,11 @@ func (client *Client) GetJobEvents(JobId *string, request *GetJobEventsRequest) 
 //
 // @return GetJobMetricsResponse
 func (client *Client) GetJobMetricsWithOptions(JobId *string, request *GetJobMetricsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetJobMetricsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -802,9 +817,11 @@ func (client *Client) GetJobMetrics(JobId *string, request *GetJobMetricsRequest
 //
 // @return GetJobSanityCheckResultResponse
 func (client *Client) GetJobSanityCheckResultWithOptions(JobId *string, request *GetJobSanityCheckResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetJobSanityCheckResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SanityCheckNumber) {
@@ -874,9 +891,11 @@ func (client *Client) GetJobSanityCheckResult(JobId *string, request *GetJobSani
 //
 // @return GetPodEventsResponse
 func (client *Client) GetPodEventsWithOptions(JobId *string, PodId *string, request *GetPodEventsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPodEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -950,9 +969,11 @@ func (client *Client) GetPodEvents(JobId *string, PodId *string, request *GetPod
 //
 // @return GetPodLogsResponse
 func (client *Client) GetPodLogsWithOptions(JobId *string, PodId *string, request *GetPodLogsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPodLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DownloadToFile) {
@@ -1034,9 +1055,11 @@ func (client *Client) GetPodLogs(JobId *string, PodId *string, request *GetPodLo
 //
 // @return GetRayDashboardResponse
 func (client *Client) GetRayDashboardWithOptions(jobId *string, request *GetRayDashboardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRayDashboardResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsShared) {
@@ -1106,9 +1129,11 @@ func (client *Client) GetRayDashboard(jobId *string, request *GetRayDashboardReq
 //
 // @return GetTensorboardResponse
 func (client *Client) GetTensorboardWithOptions(TensorboardId *string, request *GetTensorboardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTensorboardResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JodId) {
@@ -1178,9 +1203,11 @@ func (client *Client) GetTensorboard(TensorboardId *string, request *GetTensorbo
 //
 // @return GetTensorboardSharedUrlResponse
 func (client *Client) GetTensorboardSharedUrlWithOptions(TensorboardId *string, request *GetTensorboardSharedUrlRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTensorboardSharedUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExpireTimeSeconds) {
@@ -1242,9 +1269,11 @@ func (client *Client) GetTensorboardSharedUrl(TensorboardId *string, request *Ge
 //
 // @return GetTokenResponse
 func (client *Client) GetTokenWithOptions(request *GetTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExpireTime) {
@@ -1314,9 +1343,11 @@ func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenRespo
 //
 // @return GetWebTerminalResponse
 func (client *Client) GetWebTerminalWithOptions(JobId *string, PodId *string, request *GetWebTerminalRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetWebTerminalResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsShared) {
@@ -1382,9 +1413,11 @@ func (client *Client) GetWebTerminal(JobId *string, PodId *string, request *GetW
 //
 // @return ListEcsSpecsResponse
 func (client *Client) ListEcsSpecsWithOptions(request *ListEcsSpecsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListEcsSpecsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceleratorType) {
@@ -1470,9 +1503,11 @@ func (client *Client) ListEcsSpecs(request *ListEcsSpecsRequest) (_result *ListE
 //
 // @return ListJobSanityCheckResultsResponse
 func (client *Client) ListJobSanityCheckResultsWithOptions(JobId *string, request *ListJobSanityCheckResultsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListJobSanityCheckResultsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Order) {
@@ -1534,9 +1569,11 @@ func (client *Client) ListJobSanityCheckResults(JobId *string, request *ListJobS
 //
 // @return ListJobsResponse
 func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListJobsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListJobsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1559,6 +1596,10 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, headers map[s
 
 	if !dara.IsNil(request.DisplayName) {
 		query["DisplayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.DisplayNameSearchMode) {
+		query["DisplayNameSearchMode"] = request.DisplayNameSearchMode
 	}
 
 	if !dara.IsNil(request.EndTime) {
@@ -1700,9 +1741,11 @@ func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsRespo
 //
 // @return ListTensorboardsResponse
 func (client *Client) ListTensorboardsWithOptions(request *ListTensorboardsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTensorboardsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {
@@ -1840,9 +1883,11 @@ func (client *Client) ListTensorboards(request *ListTensorboardsRequest) (_resul
 //
 // @return StartTensorboardResponse
 func (client *Client) StartTensorboardWithOptions(TensorboardId *string, request *StartTensorboardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartTensorboardResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.WorkspaceId) {
@@ -1954,9 +1999,11 @@ func (client *Client) StopJob(JobId *string) (_result *StopJobResponse, _err err
 //
 // @return StopTensorboardResponse
 func (client *Client) StopTensorboardWithOptions(TensorboardId *string, request *StopTensorboardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopTensorboardResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.WorkspaceId) {
@@ -2018,9 +2065,11 @@ func (client *Client) StopTensorboard(TensorboardId *string, request *StopTensor
 //
 // @return UpdateJobResponse
 func (client *Client) UpdateJobWithOptions(JobId *string, request *UpdateJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {
@@ -2086,9 +2135,11 @@ func (client *Client) UpdateJob(JobId *string, request *UpdateJobRequest) (_resu
 //
 // @return UpdateTensorboardResponse
 func (client *Client) UpdateTensorboardWithOptions(TensorboardId *string, request *UpdateTensorboardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTensorboardResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {

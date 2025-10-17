@@ -70,5 +70,14 @@ func (s *ListJobsResponseBody) SetTotalCount(v int64) *ListJobsResponseBody {
 }
 
 func (s *ListJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Jobs != nil {
+		for _, item := range s.Jobs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

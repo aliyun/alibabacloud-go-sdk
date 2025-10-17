@@ -335,5 +335,15 @@ func (s *JobSettings) SetTags(v map[string]*string) *JobSettings {
 }
 
 func (s *JobSettings) Validate() error {
-	return dara.Validate(s)
+	if s.DataJuicerConfig != nil {
+		if err := s.DataJuicerConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ModelConfig != nil {
+		if err := s.ModelConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

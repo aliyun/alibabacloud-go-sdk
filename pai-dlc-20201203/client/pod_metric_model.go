@@ -50,5 +50,14 @@ func (s *PodMetric) SetPodId(v string) *PodMetric {
 }
 
 func (s *PodMetric) Validate() error {
-	return dara.Validate(s)
+	if s.Metrics != nil {
+		for _, item := range s.Metrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -59,5 +59,14 @@ func (s *CredentialConfig) SetEnableCredentialInject(v bool) *CredentialConfig {
 }
 
 func (s *CredentialConfig) Validate() error {
-	return dara.Validate(s)
+	if s.CredentialConfigItems != nil {
+		for _, item := range s.CredentialConfigItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

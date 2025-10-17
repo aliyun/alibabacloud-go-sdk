@@ -146,5 +146,37 @@ func (s *Workspace) SetWorkspaceName(v string) *Workspace {
 }
 
 func (s *Workspace) Validate() error {
-	return dara.Validate(s)
+	if s.Members != nil {
+		for _, item := range s.Members {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Quotas != nil {
+		for _, item := range s.Quotas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TotalResources != nil {
+		if err := s.TotalResources.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WorkspaceAdmins != nil {
+		for _, item := range s.WorkspaceAdmins {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

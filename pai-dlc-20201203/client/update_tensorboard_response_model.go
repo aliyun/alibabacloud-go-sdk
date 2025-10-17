@@ -59,5 +59,10 @@ func (s *UpdateTensorboardResponse) SetBody(v *UpdateTensorboardResponseBody) *U
 }
 
 func (s *UpdateTensorboardResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
