@@ -80,7 +80,16 @@ func (s *DescribeAppLayoutsResponseBody) SetTotalPage(v int64) *DescribeAppLayou
 }
 
 func (s *DescribeAppLayoutsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Layouts != nil {
+		for _, item := range s.Layouts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAppLayoutsResponseBodyLayouts struct {
@@ -131,7 +140,16 @@ func (s *DescribeAppLayoutsResponseBodyLayouts) SetPanes(v []*DescribeAppLayouts
 }
 
 func (s *DescribeAppLayoutsResponseBodyLayouts) Validate() error {
-	return dara.Validate(s)
+	if s.Panes != nil {
+		for _, item := range s.Panes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAppLayoutsResponseBodyLayoutsPanes struct {

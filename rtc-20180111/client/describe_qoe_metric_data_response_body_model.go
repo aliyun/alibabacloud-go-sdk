@@ -62,7 +62,25 @@ func (s *DescribeQoeMetricDataResponseBody) SetVideoData(v []*DescribeQoeMetricD
 }
 
 func (s *DescribeQoeMetricDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AudioData != nil {
+		for _, item := range s.AudioData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VideoData != nil {
+		for _, item := range s.VideoData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeQoeMetricDataResponseBodyAudioData struct {
@@ -113,7 +131,16 @@ func (s *DescribeQoeMetricDataResponseBodyAudioData) SetUserId(v string) *Descri
 }
 
 func (s *DescribeQoeMetricDataResponseBodyAudioData) Validate() error {
-	return dara.Validate(s)
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeQoeMetricDataResponseBodyAudioDataNodes struct {
@@ -205,7 +232,16 @@ func (s *DescribeQoeMetricDataResponseBodyVideoData) SetUserId(v string) *Descri
 }
 
 func (s *DescribeQoeMetricDataResponseBodyVideoData) Validate() error {
-	return dara.Validate(s)
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeQoeMetricDataResponseBodyVideoDataNodes struct {

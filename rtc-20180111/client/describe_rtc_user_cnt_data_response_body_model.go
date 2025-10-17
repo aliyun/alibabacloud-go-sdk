@@ -50,7 +50,12 @@ func (s *DescribeRtcUserCntDataResponseBody) SetUserCntDataPerInterval(v *Descri
 }
 
 func (s *DescribeRtcUserCntDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserCntDataPerInterval != nil {
+		if err := s.UserCntDataPerInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRtcUserCntDataResponseBodyUserCntDataPerInterval struct {
@@ -75,7 +80,16 @@ func (s *DescribeRtcUserCntDataResponseBodyUserCntDataPerInterval) SetUserCntMod
 }
 
 func (s *DescribeRtcUserCntDataResponseBodyUserCntDataPerInterval) Validate() error {
-	return dara.Validate(s)
+	if s.UserCntModule != nil {
+		for _, item := range s.UserCntModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRtcUserCntDataResponseBodyUserCntDataPerIntervalUserCntModule struct {

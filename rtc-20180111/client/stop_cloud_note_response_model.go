@@ -59,5 +59,10 @@ func (s *StopCloudNoteResponse) SetBody(v *StopCloudNoteResponseBody) *StopCloud
 }
 
 func (s *StopCloudNoteResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

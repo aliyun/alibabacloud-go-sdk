@@ -59,5 +59,10 @@ func (s *ModifyMPULayoutResponse) SetBody(v *ModifyMPULayoutResponseBody) *Modif
 }
 
 func (s *ModifyMPULayoutResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

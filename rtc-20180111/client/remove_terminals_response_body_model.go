@@ -50,7 +50,12 @@ func (s *RemoveTerminalsResponseBody) SetTerminals(v *RemoveTerminalsResponseBod
 }
 
 func (s *RemoveTerminalsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Terminals != nil {
+		if err := s.Terminals.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RemoveTerminalsResponseBodyTerminals struct {
@@ -75,7 +80,16 @@ func (s *RemoveTerminalsResponseBodyTerminals) SetTerminal(v []*RemoveTerminalsR
 }
 
 func (s *RemoveTerminalsResponseBodyTerminals) Validate() error {
-	return dara.Validate(s)
+	if s.Terminal != nil {
+		for _, item := range s.Terminal {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RemoveTerminalsResponseBodyTerminalsTerminal struct {

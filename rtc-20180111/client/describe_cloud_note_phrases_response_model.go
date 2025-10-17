@@ -59,5 +59,10 @@ func (s *DescribeCloudNotePhrasesResponse) SetBody(v *DescribeCloudNotePhrasesRe
 }
 
 func (s *DescribeCloudNotePhrasesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

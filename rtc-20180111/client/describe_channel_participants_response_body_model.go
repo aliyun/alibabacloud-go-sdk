@@ -95,7 +95,12 @@ func (s *DescribeChannelParticipantsResponseBody) SetUserList(v *DescribeChannel
 }
 
 func (s *DescribeChannelParticipantsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserList != nil {
+		if err := s.UserList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeChannelParticipantsResponseBodyUserList struct {

@@ -446,7 +446,48 @@ func (s *StartMPUTaskRequest) SetWatermarks(v []*StartMPUTaskRequestWatermarks) 
 }
 
 func (s *StartMPUTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Backgrounds != nil {
+		for _, item := range s.Backgrounds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ClockWidgets != nil {
+		for _, item := range s.ClockWidgets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EnhancedParam != nil {
+		if err := s.EnhancedParam.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserPanes != nil {
+		for _, item := range s.UserPanes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Watermarks != nil {
+		for _, item := range s.Watermarks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartMPUTaskRequestBackgrounds struct {
@@ -838,7 +879,25 @@ func (s *StartMPUTaskRequestUserPanes) SetUserId(v string) *StartMPUTaskRequestU
 }
 
 func (s *StartMPUTaskRequestUserPanes) Validate() error {
-	return dara.Validate(s)
+	if s.Images != nil {
+		for _, item := range s.Images {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Texts != nil {
+		for _, item := range s.Texts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartMPUTaskRequestUserPanesImages struct {

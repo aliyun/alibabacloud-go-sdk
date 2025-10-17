@@ -50,7 +50,16 @@ func (s *DescribeQualityOverallDataResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeQualityOverallDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.QualityOverallData != nil {
+		for _, item := range s.QualityOverallData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeQualityOverallDataResponseBodyQualityOverallData struct {
@@ -101,7 +110,16 @@ func (s *DescribeQualityOverallDataResponseBodyQualityOverallData) SetType(v str
 }
 
 func (s *DescribeQualityOverallDataResponseBodyQualityOverallData) Validate() error {
-	return dara.Validate(s)
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeQualityOverallDataResponseBodyQualityOverallDataNodes struct {

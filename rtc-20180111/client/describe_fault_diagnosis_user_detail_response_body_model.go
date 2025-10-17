@@ -98,7 +98,31 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBody) SetUserDetail(v *Describe
 }
 
 func (s *DescribeFaultDiagnosisUserDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CallInfo != nil {
+		if err := s.CallInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FactorList != nil {
+		for _, item := range s.FactorList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FaultMetricData != nil {
+		if err := s.FaultMetricData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserDetail != nil {
+		if err := s.UserDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyCallInfo struct {
@@ -254,7 +278,25 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorList) SetRelatedMetri
 }
 
 func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorList) Validate() error {
-	return dara.Validate(s)
+	if s.RelatedEventDatas != nil {
+		for _, item := range s.RelatedEventDatas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RelatedMetricDatas != nil {
+		for _, item := range s.RelatedMetricDatas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas struct {
@@ -305,7 +347,16 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas
 }
 
 func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas) Validate() error {
-	return dara.Validate(s)
+	if s.EventDataItems != nil {
+		for _, item := range s.EventDataItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItems struct {
@@ -343,7 +394,16 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas
 }
 
 func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItems) Validate() error {
-	return dara.Validate(s)
+	if s.EventList != nil {
+		for _, item := range s.EventList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList struct {
@@ -461,7 +521,16 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricData
 }
 
 func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatas) Validate() error {
-	return dara.Validate(s)
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatasNodes struct {
@@ -537,7 +606,16 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricData) SetNodes(v
 }
 
 func (s *DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricData) Validate() error {
-	return dara.Validate(s)
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricDataNodes struct {
@@ -720,7 +798,16 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyUserDetail) SetUserId(v str
 }
 
 func (s *DescribeFaultDiagnosisUserDetailResponseBodyUserDetail) Validate() error {
-	return dara.Validate(s)
+	if s.OnlinePeriods != nil {
+		for _, item := range s.OnlinePeriods {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyUserDetailOnlinePeriods struct {

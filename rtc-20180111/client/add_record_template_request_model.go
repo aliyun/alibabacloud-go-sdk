@@ -307,7 +307,34 @@ func (s *AddRecordTemplateRequest) SetWatermarks(v []*AddRecordTemplateRequestWa
 }
 
 func (s *AddRecordTemplateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Backgrounds != nil {
+		for _, item := range s.Backgrounds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ClockWidgets != nil {
+		for _, item := range s.ClockWidgets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Watermarks != nil {
+		for _, item := range s.Watermarks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddRecordTemplateRequestBackgrounds struct {

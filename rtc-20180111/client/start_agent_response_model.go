@@ -59,5 +59,10 @@ func (s *StartAgentResponse) SetBody(v *StartAgentResponseBody) *StartAgentRespo
 }
 
 func (s *StartAgentResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

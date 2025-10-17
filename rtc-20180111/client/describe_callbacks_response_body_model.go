@@ -52,7 +52,16 @@ func (s *DescribeCallbacksResponseBody) SetRequestId(v string) *DescribeCallback
 }
 
 func (s *DescribeCallbacksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Callbacks != nil {
+		for _, item := range s.Callbacks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCallbacksResponseBodyCallbacks struct {

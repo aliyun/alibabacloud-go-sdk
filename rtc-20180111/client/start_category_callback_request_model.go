@@ -53,7 +53,12 @@ func (s *StartCategoryCallbackRequest) SetCallback(v *StartCategoryCallbackReque
 }
 
 func (s *StartCategoryCallbackRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Callback != nil {
+		if err := s.Callback.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartCategoryCallbackRequestCallback struct {

@@ -326,7 +326,67 @@ func (s *StartCloudRecordShrinkRequest) SetTexts(v []*StartCloudRecordShrinkRequ
 }
 
 func (s *StartCloudRecordShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Backgrounds != nil {
+		for _, item := range s.Backgrounds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BgColor != nil {
+		if err := s.BgColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ClockWidgets != nil {
+		for _, item := range s.ClockWidgets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Images != nil {
+		for _, item := range s.Images {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Panes != nil {
+		for _, item := range s.Panes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RegionColor != nil {
+		if err := s.RegionColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StorageConfig != nil {
+		if err := s.StorageConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Texts != nil {
+		for _, item := range s.Texts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartCloudRecordShrinkRequestBackgrounds struct {
@@ -675,7 +735,17 @@ func (s *StartCloudRecordShrinkRequestClockWidgets) SetZone(v int32) *StartCloud
 }
 
 func (s *StartCloudRecordShrinkRequestClockWidgets) Validate() error {
-	return dara.Validate(s)
+	if s.BoxColor != nil {
+		if err := s.BoxColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FontColor != nil {
+		if err := s.FontColor.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartCloudRecordShrinkRequestClockWidgetsBoxColor struct {
@@ -1046,7 +1116,39 @@ func (s *StartCloudRecordShrinkRequestPanes) SetWhiteboard(v *StartCloudRecordSh
 }
 
 func (s *StartCloudRecordShrinkRequestPanes) Validate() error {
-	return dara.Validate(s)
+	if s.Backgrounds != nil {
+		for _, item := range s.Backgrounds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Images != nil {
+		for _, item := range s.Images {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Texts != nil {
+		for _, item := range s.Texts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Whiteboard != nil {
+		if err := s.Whiteboard.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartCloudRecordShrinkRequestPanesBackgrounds struct {
@@ -1511,7 +1613,17 @@ func (s *StartCloudRecordShrinkRequestPanesTexts) SetY(v float64) *StartCloudRec
 }
 
 func (s *StartCloudRecordShrinkRequestPanesTexts) Validate() error {
-	return dara.Validate(s)
+	if s.BoxColor != nil {
+		if err := s.BoxColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FontColor != nil {
+		if err := s.FontColor.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartCloudRecordShrinkRequestPanesTextsBoxColor struct {
@@ -1982,7 +2094,17 @@ func (s *StartCloudRecordShrinkRequestTexts) SetY(v float64) *StartCloudRecordSh
 }
 
 func (s *StartCloudRecordShrinkRequestTexts) Validate() error {
-	return dara.Validate(s)
+	if s.BoxColor != nil {
+		if err := s.BoxColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FontColor != nil {
+		if err := s.FontColor.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartCloudRecordShrinkRequestTextsBoxColor struct {

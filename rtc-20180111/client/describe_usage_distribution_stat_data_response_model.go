@@ -59,5 +59,10 @@ func (s *DescribeUsageDistributionStatDataResponse) SetBody(v *DescribeUsageDist
 }
 
 func (s *DescribeUsageDistributionStatDataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

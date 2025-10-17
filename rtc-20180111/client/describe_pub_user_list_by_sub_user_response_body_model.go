@@ -77,7 +77,21 @@ func (s *DescribePubUserListBySubUserResponseBody) SetSubUserDetail(v *DescribeP
 }
 
 func (s *DescribePubUserListBySubUserResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PubUserDetailList != nil {
+		for _, item := range s.PubUserDetailList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SubUserDetail != nil {
+		if err := s.SubUserDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePubUserListBySubUserResponseBodyPubUserDetailList struct {
@@ -295,7 +309,16 @@ func (s *DescribePubUserListBySubUserResponseBodyPubUserDetailList) SetUserIdAli
 }
 
 func (s *DescribePubUserListBySubUserResponseBodyPubUserDetailList) Validate() error {
-	return dara.Validate(s)
+	if s.OnlinePeriods != nil {
+		for _, item := range s.OnlinePeriods {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePubUserListBySubUserResponseBodyPubUserDetailListOnlinePeriods struct {
@@ -544,7 +567,16 @@ func (s *DescribePubUserListBySubUserResponseBodySubUserDetail) SetUserIdAlias(v
 }
 
 func (s *DescribePubUserListBySubUserResponseBodySubUserDetail) Validate() error {
-	return dara.Validate(s)
+	if s.OnlinePeriods != nil {
+		for _, item := range s.OnlinePeriods {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePubUserListBySubUserResponseBodySubUserDetailOnlinePeriods struct {

@@ -67,7 +67,12 @@ func (s *DeleteAppLayoutRequest) SetLayout(v *DeleteAppLayoutRequestLayout) *Del
 }
 
 func (s *DeleteAppLayoutRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Layout != nil {
+		if err := s.Layout.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteAppLayoutRequestLayout struct {

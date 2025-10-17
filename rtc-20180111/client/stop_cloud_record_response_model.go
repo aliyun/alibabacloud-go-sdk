@@ -59,5 +59,10 @@ func (s *StopCloudRecordResponse) SetBody(v *StopCloudRecordResponseBody) *StopC
 }
 
 func (s *StopCloudRecordResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -52,7 +52,16 @@ func (s *DescribeAllCallbackResponseBody) SetRequestId(v string) *DescribeAllCal
 }
 
 func (s *DescribeAllCallbackResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Callbacks != nil {
+		for _, item := range s.Callbacks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAllCallbackResponseBodyCallbacks struct {
@@ -103,7 +112,16 @@ func (s *DescribeAllCallbackResponseBodyCallbacks) SetSubEvent(v []*DescribeAllC
 }
 
 func (s *DescribeAllCallbackResponseBodyCallbacks) Validate() error {
-	return dara.Validate(s)
+	if s.SubEvent != nil {
+		for _, item := range s.SubEvent {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAllCallbackResponseBodyCallbacksSubEvent struct {

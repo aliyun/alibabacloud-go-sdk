@@ -97,7 +97,12 @@ func (s *DescribeAppRecordTemplatesRequest) SetPageSize(v int32) *DescribeAppRec
 }
 
 func (s *DescribeAppRecordTemplatesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Condition != nil {
+		if err := s.Condition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAppRecordTemplatesRequestCondition struct {

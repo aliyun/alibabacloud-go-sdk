@@ -59,5 +59,10 @@ func (s *DescribeAppStreamingOutTemplatesResponse) SetBody(v *DescribeAppStreami
 }
 
 func (s *DescribeAppStreamingOutTemplatesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -50,7 +50,16 @@ func (s *DescribeAutoLiveStreamRuleResponseBody) SetRules(v []*DescribeAutoLiveS
 }
 
 func (s *DescribeAutoLiveStreamRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAutoLiveStreamRuleResponseBodyRules struct {

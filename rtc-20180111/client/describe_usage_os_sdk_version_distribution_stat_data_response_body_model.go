@@ -50,7 +50,16 @@ func (s *DescribeUsageOsSdkVersionDistributionStatDataResponseBody) SetUsageOsSd
 }
 
 func (s *DescribeUsageOsSdkVersionDistributionStatDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UsageOsSdkVersionStatList != nil {
+		for _, item := range s.UsageOsSdkVersionStatList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUsageOsSdkVersionDistributionStatDataResponseBodyUsageOsSdkVersionStatList struct {

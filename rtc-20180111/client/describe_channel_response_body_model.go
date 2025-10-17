@@ -63,7 +63,12 @@ func (s *DescribeChannelResponseBody) SetRequestId(v string) *DescribeChannelRes
 }
 
 func (s *DescribeChannelResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Channel != nil {
+		if err := s.Channel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeChannelResponseBodyChannel struct {

@@ -53,7 +53,12 @@ func (s *DeleteAppStreamingOutTemplateRequest) SetStreamingOutTemplate(v *Delete
 }
 
 func (s *DeleteAppStreamingOutTemplateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.StreamingOutTemplate != nil {
+		if err := s.StreamingOutTemplate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteAppStreamingOutTemplateRequestStreamingOutTemplate struct {

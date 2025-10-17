@@ -163,7 +163,57 @@ func (s *UpdateCloudRecordRequest) SetTexts(v []*UpdateCloudRecordRequestTexts) 
 }
 
 func (s *UpdateCloudRecordRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Backgrounds != nil {
+		for _, item := range s.Backgrounds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ClockWidgets != nil {
+		for _, item := range s.ClockWidgets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Images != nil {
+		for _, item := range s.Images {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LayoutSpecifiedUsers != nil {
+		if err := s.LayoutSpecifiedUsers.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Panes != nil {
+		for _, item := range s.Panes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Texts != nil {
+		for _, item := range s.Texts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateCloudRecordRequestBackgrounds struct {
@@ -458,7 +508,17 @@ func (s *UpdateCloudRecordRequestClockWidgets) SetZone(v int32) *UpdateCloudReco
 }
 
 func (s *UpdateCloudRecordRequestClockWidgets) Validate() error {
-	return dara.Validate(s)
+	if s.BoxColor != nil {
+		if err := s.BoxColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FontColor != nil {
+		if err := s.FontColor.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateCloudRecordRequestClockWidgetsBoxColor struct {
@@ -864,7 +924,39 @@ func (s *UpdateCloudRecordRequestPanes) SetWhiteboard(v *UpdateCloudRecordReques
 }
 
 func (s *UpdateCloudRecordRequestPanes) Validate() error {
-	return dara.Validate(s)
+	if s.Backgrounds != nil {
+		for _, item := range s.Backgrounds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Images != nil {
+		for _, item := range s.Images {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Texts != nil {
+		for _, item := range s.Texts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Whiteboard != nil {
+		if err := s.Whiteboard.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateCloudRecordRequestPanesBackgrounds struct {
@@ -1329,7 +1421,17 @@ func (s *UpdateCloudRecordRequestPanesTexts) SetY(v float64) *UpdateCloudRecordR
 }
 
 func (s *UpdateCloudRecordRequestPanesTexts) Validate() error {
-	return dara.Validate(s)
+	if s.BoxColor != nil {
+		if err := s.BoxColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FontColor != nil {
+		if err := s.FontColor.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateCloudRecordRequestPanesTextsBoxColor struct {
@@ -1633,7 +1735,17 @@ func (s *UpdateCloudRecordRequestTexts) SetY(v float64) *UpdateCloudRecordReques
 }
 
 func (s *UpdateCloudRecordRequestTexts) Validate() error {
-	return dara.Validate(s)
+	if s.BoxColor != nil {
+		if err := s.BoxColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FontColor != nil {
+		if err := s.FontColor.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateCloudRecordRequestTextsBoxColor struct {

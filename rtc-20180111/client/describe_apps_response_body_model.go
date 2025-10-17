@@ -80,7 +80,12 @@ func (s *DescribeAppsResponseBody) SetTotalPage(v int32) *DescribeAppsResponseBo
 }
 
 func (s *DescribeAppsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AppList != nil {
+		if err := s.AppList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAppsResponseBodyAppList struct {
@@ -105,7 +110,16 @@ func (s *DescribeAppsResponseBodyAppList) SetApp(v []*DescribeAppsResponseBodyAp
 }
 
 func (s *DescribeAppsResponseBodyAppList) Validate() error {
-	return dara.Validate(s)
+	if s.App != nil {
+		for _, item := range s.App {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAppsResponseBodyAppListApp struct {
@@ -218,7 +232,12 @@ func (s *DescribeAppsResponseBodyAppListApp) SetVersion(v string) *DescribeAppsR
 }
 
 func (s *DescribeAppsResponseBodyAppListApp) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceAreas != nil {
+		if err := s.ServiceAreas.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAppsResponseBodyAppListAppServiceAreas struct {

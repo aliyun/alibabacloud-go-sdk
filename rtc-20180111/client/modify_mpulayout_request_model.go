@@ -111,7 +111,16 @@ func (s *ModifyMPULayoutRequest) SetPanes(v []*ModifyMPULayoutRequestPanes) *Mod
 }
 
 func (s *ModifyMPULayoutRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Panes != nil {
+		for _, item := range s.Panes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyMPULayoutRequestPanes struct {

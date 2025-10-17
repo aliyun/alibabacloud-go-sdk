@@ -326,7 +326,77 @@ func (s *StartCloudRecordRequest) SetTexts(v []*StartCloudRecordRequestTexts) *S
 }
 
 func (s *StartCloudRecordRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Backgrounds != nil {
+		for _, item := range s.Backgrounds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BgColor != nil {
+		if err := s.BgColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ClockWidgets != nil {
+		for _, item := range s.ClockWidgets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Images != nil {
+		for _, item := range s.Images {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LayoutSpecifiedUsers != nil {
+		if err := s.LayoutSpecifiedUsers.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Panes != nil {
+		for _, item := range s.Panes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RegionColor != nil {
+		if err := s.RegionColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SingleStreamingRecord != nil {
+		if err := s.SingleStreamingRecord.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StorageConfig != nil {
+		if err := s.StorageConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Texts != nil {
+		for _, item := range s.Texts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartCloudRecordRequestBackgrounds struct {
@@ -675,7 +745,17 @@ func (s *StartCloudRecordRequestClockWidgets) SetZone(v int32) *StartCloudRecord
 }
 
 func (s *StartCloudRecordRequestClockWidgets) Validate() error {
-	return dara.Validate(s)
+	if s.BoxColor != nil {
+		if err := s.BoxColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FontColor != nil {
+		if err := s.FontColor.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartCloudRecordRequestClockWidgetsBoxColor struct {
@@ -1083,7 +1163,39 @@ func (s *StartCloudRecordRequestPanes) SetWhiteboard(v *StartCloudRecordRequestP
 }
 
 func (s *StartCloudRecordRequestPanes) Validate() error {
-	return dara.Validate(s)
+	if s.Backgrounds != nil {
+		for _, item := range s.Backgrounds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Images != nil {
+		for _, item := range s.Images {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Texts != nil {
+		for _, item := range s.Texts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Whiteboard != nil {
+		if err := s.Whiteboard.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartCloudRecordRequestPanesBackgrounds struct {
@@ -1548,7 +1660,17 @@ func (s *StartCloudRecordRequestPanesTexts) SetY(v float64) *StartCloudRecordReq
 }
 
 func (s *StartCloudRecordRequestPanesTexts) Validate() error {
-	return dara.Validate(s)
+	if s.BoxColor != nil {
+		if err := s.BoxColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FontColor != nil {
+		if err := s.FontColor.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartCloudRecordRequestPanesTextsBoxColor struct {
@@ -1742,6 +1864,7 @@ func (s *StartCloudRecordRequestRegionColor) Validate() error {
 }
 
 type StartCloudRecordRequestSingleStreamingRecord struct {
+	AvMerge *bool `json:"AvMerge,omitempty" xml:"AvMerge,omitempty"`
 	// This parameter is required.
 	SpecifiedStreams      []*StartCloudRecordRequestSingleStreamingRecordSpecifiedStreams    `json:"SpecifiedStreams,omitempty" xml:"SpecifiedStreams,omitempty" type:"Repeated"`
 	TranscodingParameters *StartCloudRecordRequestSingleStreamingRecordTranscodingParameters `json:"TranscodingParameters,omitempty" xml:"TranscodingParameters,omitempty" type:"Struct"`
@@ -1755,12 +1878,21 @@ func (s StartCloudRecordRequestSingleStreamingRecord) GoString() string {
 	return s.String()
 }
 
+func (s *StartCloudRecordRequestSingleStreamingRecord) GetAvMerge() *bool {
+	return s.AvMerge
+}
+
 func (s *StartCloudRecordRequestSingleStreamingRecord) GetSpecifiedStreams() []*StartCloudRecordRequestSingleStreamingRecordSpecifiedStreams {
 	return s.SpecifiedStreams
 }
 
 func (s *StartCloudRecordRequestSingleStreamingRecord) GetTranscodingParameters() *StartCloudRecordRequestSingleStreamingRecordTranscodingParameters {
 	return s.TranscodingParameters
+}
+
+func (s *StartCloudRecordRequestSingleStreamingRecord) SetAvMerge(v bool) *StartCloudRecordRequestSingleStreamingRecord {
+	s.AvMerge = &v
+	return s
 }
 
 func (s *StartCloudRecordRequestSingleStreamingRecord) SetSpecifiedStreams(v []*StartCloudRecordRequestSingleStreamingRecordSpecifiedStreams) *StartCloudRecordRequestSingleStreamingRecord {
@@ -1774,7 +1906,21 @@ func (s *StartCloudRecordRequestSingleStreamingRecord) SetTranscodingParameters(
 }
 
 func (s *StartCloudRecordRequestSingleStreamingRecord) Validate() error {
-	return dara.Validate(s)
+	if s.SpecifiedStreams != nil {
+		for _, item := range s.SpecifiedStreams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TranscodingParameters != nil {
+		if err := s.TranscodingParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartCloudRecordRequestSingleStreamingRecordSpecifiedStreams struct {
@@ -1828,8 +1974,11 @@ func (s *StartCloudRecordRequestSingleStreamingRecordSpecifiedStreams) Validate(
 }
 
 type StartCloudRecordRequestSingleStreamingRecordTranscodingParameters struct {
-	Audio     *StartCloudRecordRequestSingleStreamingRecordTranscodingParametersAudio `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	Container *string                                                                 `json:"Container,omitempty" xml:"Container,omitempty"`
+	Audio *StartCloudRecordRequestSingleStreamingRecordTranscodingParametersAudio `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
+	// example:
+	//
+	// aac
+	Container *string `json:"Container,omitempty" xml:"Container,omitempty"`
 }
 
 func (s StartCloudRecordRequestSingleStreamingRecordTranscodingParameters) String() string {
@@ -1859,7 +2008,12 @@ func (s *StartCloudRecordRequestSingleStreamingRecordTranscodingParameters) SetC
 }
 
 func (s *StartCloudRecordRequestSingleStreamingRecordTranscodingParameters) Validate() error {
-	return dara.Validate(s)
+	if s.Audio != nil {
+		if err := s.Audio.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartCloudRecordRequestSingleStreamingRecordTranscodingParametersAudio struct {
@@ -2185,7 +2339,17 @@ func (s *StartCloudRecordRequestTexts) SetY(v float64) *StartCloudRecordRequestT
 }
 
 func (s *StartCloudRecordRequestTexts) Validate() error {
-	return dara.Validate(s)
+	if s.BoxColor != nil {
+		if err := s.BoxColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FontColor != nil {
+		if err := s.FontColor.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartCloudRecordRequestTextsBoxColor struct {

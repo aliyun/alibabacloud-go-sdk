@@ -59,5 +59,10 @@ func (s *DescribeAppAgentTemplatesResponse) SetBody(v *DescribeAppAgentTemplates
 }
 
 func (s *DescribeAppAgentTemplatesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

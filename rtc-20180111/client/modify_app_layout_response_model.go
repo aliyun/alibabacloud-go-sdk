@@ -59,5 +59,10 @@ func (s *ModifyAppLayoutResponse) SetBody(v *ModifyAppLayoutResponseBody) *Modif
 }
 
 func (s *ModifyAppLayoutResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

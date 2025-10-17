@@ -62,7 +62,17 @@ func (s *DescribeFaultDiagnosisOverallDataResponseBody) SetRequestId(v string) *
 }
 
 func (s *DescribeFaultDiagnosisOverallDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MetricData != nil {
+		if err := s.MetricData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OverallData != nil {
+		if err := s.OverallData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeFaultDiagnosisOverallDataResponseBodyMetricData struct {
@@ -87,7 +97,16 @@ func (s *DescribeFaultDiagnosisOverallDataResponseBodyMetricData) SetNodes(v []*
 }
 
 func (s *DescribeFaultDiagnosisOverallDataResponseBodyMetricData) Validate() error {
-	return dara.Validate(s)
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFaultDiagnosisOverallDataResponseBodyMetricDataNodes struct {

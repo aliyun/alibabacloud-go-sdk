@@ -80,7 +80,12 @@ func (s *DescribeMPULayoutInfoListResponseBody) SetTotalPage(v int64) *DescribeM
 }
 
 func (s *DescribeMPULayoutInfoListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Layouts != nil {
+		if err := s.Layouts.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMPULayoutInfoListResponseBodyLayouts struct {
@@ -105,7 +110,16 @@ func (s *DescribeMPULayoutInfoListResponseBodyLayouts) SetLayout(v []*DescribeMP
 }
 
 func (s *DescribeMPULayoutInfoListResponseBodyLayouts) Validate() error {
-	return dara.Validate(s)
+	if s.Layout != nil {
+		for _, item := range s.Layout {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMPULayoutInfoListResponseBodyLayoutsLayout struct {
@@ -169,7 +183,12 @@ func (s *DescribeMPULayoutInfoListResponseBodyLayoutsLayout) SetPanes(v *Describ
 }
 
 func (s *DescribeMPULayoutInfoListResponseBodyLayoutsLayout) Validate() error {
-	return dara.Validate(s)
+	if s.Panes != nil {
+		if err := s.Panes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMPULayoutInfoListResponseBodyLayoutsLayoutPanes struct {
@@ -194,7 +213,16 @@ func (s *DescribeMPULayoutInfoListResponseBodyLayoutsLayoutPanes) SetPanes(v []*
 }
 
 func (s *DescribeMPULayoutInfoListResponseBodyLayoutsLayoutPanes) Validate() error {
-	return dara.Validate(s)
+	if s.Panes != nil {
+		for _, item := range s.Panes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMPULayoutInfoListResponseBodyLayoutsLayoutPanesPanes struct {

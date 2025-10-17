@@ -95,7 +95,12 @@ func (s *DescribeRtcChannelListResponseBody) SetTotalCnt(v int64) *DescribeRtcCh
 }
 
 func (s *DescribeRtcChannelListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ChannelList != nil {
+		if err := s.ChannelList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRtcChannelListResponseBodyChannelList struct {
@@ -120,7 +125,16 @@ func (s *DescribeRtcChannelListResponseBodyChannelList) SetChannelList(v []*Desc
 }
 
 func (s *DescribeRtcChannelListResponseBodyChannelList) Validate() error {
-	return dara.Validate(s)
+	if s.ChannelList != nil {
+		for _, item := range s.ChannelList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRtcChannelListResponseBodyChannelListChannelList struct {
@@ -197,7 +211,12 @@ func (s *DescribeRtcChannelListResponseBodyChannelListChannelList) SetTotalUserC
 }
 
 func (s *DescribeRtcChannelListResponseBodyChannelListChannelList) Validate() error {
-	return dara.Validate(s)
+	if s.CallArea != nil {
+		if err := s.CallArea.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRtcChannelListResponseBodyChannelListChannelListCallArea struct {

@@ -50,7 +50,16 @@ func (s *DescribeQualityOsSdkVersionDistributionStatDataResponseBody) SetRequest
 }
 
 func (s *DescribeQualityOsSdkVersionDistributionStatDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.QualityOsSdkVersionStatDataList != nil {
+		for _, item := range s.QualityOsSdkVersionStatDataList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeQualityOsSdkVersionDistributionStatDataResponseBodyQualityOsSdkVersionStatDataList struct {

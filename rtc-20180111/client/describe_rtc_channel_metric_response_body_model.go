@@ -50,7 +50,12 @@ func (s *DescribeRtcChannelMetricResponseBody) SetRequestId(v string) *DescribeR
 }
 
 func (s *DescribeRtcChannelMetricResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ChannelMetricInfo != nil {
+		if err := s.ChannelMetricInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRtcChannelMetricResponseBodyChannelMetricInfo struct {
@@ -85,7 +90,17 @@ func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfo) SetDuration(v *D
 }
 
 func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ChannelMetric != nil {
+		if err := s.ChannelMetric.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Duration != nil {
+		if err := s.Duration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric struct {
@@ -213,7 +228,17 @@ func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDuration) SetSubDu
 }
 
 func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDuration) Validate() error {
-	return dara.Validate(s)
+	if s.PubDuration != nil {
+		if err := s.PubDuration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubDuration != nil {
+		if err := s.SubDuration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuration struct {

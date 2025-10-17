@@ -214,7 +214,67 @@ func (s *UpdateStreamingOutRequest) SetTexts(v []*UpdateStreamingOutRequestTexts
 }
 
 func (s *UpdateStreamingOutRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Backgrounds != nil {
+		for _, item := range s.Backgrounds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BgColor != nil {
+		if err := s.BgColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ClockWidgets != nil {
+		for _, item := range s.ClockWidgets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Images != nil {
+		for _, item := range s.Images {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LayoutSpecifiedUsers != nil {
+		if err := s.LayoutSpecifiedUsers.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Panes != nil {
+		for _, item := range s.Panes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RegionColor != nil {
+		if err := s.RegionColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Texts != nil {
+		for _, item := range s.Texts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateStreamingOutRequestBackgrounds struct {
@@ -563,7 +623,17 @@ func (s *UpdateStreamingOutRequestClockWidgets) SetZone(v int32) *UpdateStreamin
 }
 
 func (s *UpdateStreamingOutRequestClockWidgets) Validate() error {
-	return dara.Validate(s)
+	if s.BoxColor != nil {
+		if err := s.BoxColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FontColor != nil {
+		if err := s.FontColor.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateStreamingOutRequestClockWidgetsBoxColor struct {
@@ -967,7 +1037,39 @@ func (s *UpdateStreamingOutRequestPanes) SetWhiteboard(v *UpdateStreamingOutRequ
 }
 
 func (s *UpdateStreamingOutRequestPanes) Validate() error {
-	return dara.Validate(s)
+	if s.Backgrounds != nil {
+		for _, item := range s.Backgrounds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Images != nil {
+		for _, item := range s.Images {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Texts != nil {
+		for _, item := range s.Texts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Whiteboard != nil {
+		if err := s.Whiteboard.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateStreamingOutRequestPanesBackgrounds struct {
@@ -1432,7 +1534,17 @@ func (s *UpdateStreamingOutRequestPanesTexts) SetY(v float64) *UpdateStreamingOu
 }
 
 func (s *UpdateStreamingOutRequestPanesTexts) Validate() error {
-	return dara.Validate(s)
+	if s.BoxColor != nil {
+		if err := s.BoxColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FontColor != nil {
+		if err := s.FontColor.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateStreamingOutRequestPanesTextsBoxColor struct {
@@ -1790,7 +1902,17 @@ func (s *UpdateStreamingOutRequestTexts) SetY(v float64) *UpdateStreamingOutRequ
 }
 
 func (s *UpdateStreamingOutRequestTexts) Validate() error {
-	return dara.Validate(s)
+	if s.BoxColor != nil {
+		if err := s.BoxColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FontColor != nil {
+		if err := s.FontColor.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateStreamingOutRequestTextsBoxColor struct {

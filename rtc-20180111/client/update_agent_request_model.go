@@ -86,7 +86,12 @@ func (s *UpdateAgentRequest) SetVoiceChatConfig(v *UpdateAgentRequestVoiceChatCo
 }
 
 func (s *UpdateAgentRequest) Validate() error {
-	return dara.Validate(s)
+	if s.VoiceChatConfig != nil {
+		if err := s.VoiceChatConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateAgentRequestVoiceChatConfig struct {

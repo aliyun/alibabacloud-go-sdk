@@ -53,7 +53,12 @@ func (s *DeleteCloudNotePhrasesRequest) SetPhrase(v *DeleteCloudNotePhrasesReque
 }
 
 func (s *DeleteCloudNotePhrasesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Phrase != nil {
+		if err := s.Phrase.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteCloudNotePhrasesRequestPhrase struct {

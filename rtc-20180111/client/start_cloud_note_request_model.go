@@ -210,7 +210,52 @@ func (s *StartCloudNoteRequest) SetTranscription(v *StartCloudNoteRequestTranscr
 }
 
 func (s *StartCloudNoteRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AutoChapters != nil {
+		if err := s.AutoChapters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomPrompt != nil {
+		if err := s.CustomPrompt.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MeetingAssistance != nil {
+		if err := s.MeetingAssistance.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RealtimeSubtitle != nil {
+		if err := s.RealtimeSubtitle.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceInspection != nil {
+		if err := s.ServiceInspection.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StorageConfig != nil {
+		if err := s.StorageConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Summarization != nil {
+		if err := s.Summarization.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TextPolish != nil {
+		if err := s.TextPolish.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Transcription != nil {
+		if err := s.Transcription.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartCloudNoteRequestAutoChapters struct {
@@ -271,7 +316,16 @@ func (s *StartCloudNoteRequestCustomPrompt) SetEnabled(v bool) *StartCloudNoteRe
 }
 
 func (s *StartCloudNoteRequestCustomPrompt) Validate() error {
-	return dara.Validate(s)
+	if s.CustomPromptContents != nil {
+		for _, item := range s.CustomPromptContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartCloudNoteRequestCustomPromptCustomPromptContents struct {
@@ -413,7 +467,12 @@ func (s *StartCloudNoteRequestRealtimeSubtitle) SetTranslation(v *StartCloudNote
 }
 
 func (s *StartCloudNoteRequestRealtimeSubtitle) Validate() error {
-	return dara.Validate(s)
+	if s.Translation != nil {
+		if err := s.Translation.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartCloudNoteRequestRealtimeSubtitleTranslation struct {
@@ -507,7 +566,16 @@ func (s *StartCloudNoteRequestServiceInspection) SetSceneIntroduction(v string) 
 }
 
 func (s *StartCloudNoteRequestServiceInspection) Validate() error {
-	return dara.Validate(s)
+	if s.InspectionContents != nil {
+		for _, item := range s.InspectionContents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartCloudNoteRequestServiceInspectionInspectionContents struct {

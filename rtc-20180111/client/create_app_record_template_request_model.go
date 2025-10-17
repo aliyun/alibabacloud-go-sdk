@@ -68,7 +68,12 @@ func (s *CreateAppRecordTemplateRequest) SetRecordTemplate(v *CreateAppRecordTem
 }
 
 func (s *CreateAppRecordTemplateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RecordTemplate != nil {
+		if err := s.RecordTemplate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAppRecordTemplateRequestRecordTemplate struct {

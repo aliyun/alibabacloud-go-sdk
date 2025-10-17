@@ -50,7 +50,16 @@ func (s *DescribeEndPointEventListResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeEndPointEventListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEndPointEventListResponseBodyNodes struct {
@@ -88,7 +97,16 @@ func (s *DescribeEndPointEventListResponseBodyNodes) SetUserId(v string) *Descri
 }
 
 func (s *DescribeEndPointEventListResponseBodyNodes) Validate() error {
-	return dara.Validate(s)
+	if s.EventDataItems != nil {
+		for _, item := range s.EventDataItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEndPointEventListResponseBodyNodesEventDataItems struct {
@@ -126,7 +144,16 @@ func (s *DescribeEndPointEventListResponseBodyNodesEventDataItems) SetTs(v int64
 }
 
 func (s *DescribeEndPointEventListResponseBodyNodesEventDataItems) Validate() error {
-	return dara.Validate(s)
+	if s.EventList != nil {
+		for _, item := range s.EventList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList struct {

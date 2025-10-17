@@ -68,7 +68,12 @@ func (s *ModifyAppLayoutRequest) SetLayout(v *ModifyAppLayoutRequestLayout) *Mod
 }
 
 func (s *ModifyAppLayoutRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Layout != nil {
+		if err := s.Layout.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyAppLayoutRequestLayout struct {
@@ -123,7 +128,16 @@ func (s *ModifyAppLayoutRequestLayout) SetPanes(v []*ModifyAppLayoutRequestLayou
 }
 
 func (s *ModifyAppLayoutRequestLayout) Validate() error {
-	return dara.Validate(s)
+	if s.Panes != nil {
+		for _, item := range s.Panes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyAppLayoutRequestLayoutPanes struct {

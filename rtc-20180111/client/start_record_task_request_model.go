@@ -325,7 +325,16 @@ func (s *StartRecordTaskRequest) SetUserPanes(v []*StartRecordTaskRequestUserPan
 }
 
 func (s *StartRecordTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UserPanes != nil {
+		for _, item := range s.UserPanes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartRecordTaskRequestUserPanes struct {
@@ -399,7 +408,25 @@ func (s *StartRecordTaskRequestUserPanes) SetUserId(v string) *StartRecordTaskRe
 }
 
 func (s *StartRecordTaskRequestUserPanes) Validate() error {
-	return dara.Validate(s)
+	if s.Images != nil {
+		for _, item := range s.Images {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Texts != nil {
+		for _, item := range s.Texts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartRecordTaskRequestUserPanesImages struct {

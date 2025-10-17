@@ -59,5 +59,10 @@ func (s *DescribeAppKeyResponse) SetBody(v *DescribeAppKeyResponseBody) *Describ
 }
 
 func (s *DescribeAppKeyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *StartCloudNoteResponse) SetBody(v *StartCloudNoteResponseBody) *StartCl
 }
 
 func (s *StartCloudNoteResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

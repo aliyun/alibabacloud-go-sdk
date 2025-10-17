@@ -62,7 +62,25 @@ func (s *DescribeEndPointMetricDataResponseBody) SetSubMetrics(v []*DescribeEndP
 }
 
 func (s *DescribeEndPointMetricDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PubMetrics != nil {
+		for _, item := range s.PubMetrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SubMetrics != nil {
+		for _, item := range s.SubMetrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEndPointMetricDataResponseBodyPubMetrics struct {
@@ -113,7 +131,16 @@ func (s *DescribeEndPointMetricDataResponseBodyPubMetrics) SetUserId(v string) *
 }
 
 func (s *DescribeEndPointMetricDataResponseBodyPubMetrics) Validate() error {
-	return dara.Validate(s)
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEndPointMetricDataResponseBodyPubMetricsNodes struct {
@@ -215,7 +242,16 @@ func (s *DescribeEndPointMetricDataResponseBodySubMetrics) SetUserId(v string) *
 }
 
 func (s *DescribeEndPointMetricDataResponseBodySubMetrics) Validate() error {
-	return dara.Validate(s)
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEndPointMetricDataResponseBodySubMetricsNodes struct {

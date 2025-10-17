@@ -50,7 +50,16 @@ func (s *DescribeUsageOverallDataResponseBody) SetUsageOverallData(v []*Describe
 }
 
 func (s *DescribeUsageOverallDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UsageOverallData != nil {
+		for _, item := range s.UsageOverallData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUsageOverallDataResponseBodyUsageOverallData struct {
@@ -88,7 +97,16 @@ func (s *DescribeUsageOverallDataResponseBodyUsageOverallData) SetType(v string)
 }
 
 func (s *DescribeUsageOverallDataResponseBodyUsageOverallData) Validate() error {
-	return dara.Validate(s)
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUsageOverallDataResponseBodyUsageOverallDataNodes struct {

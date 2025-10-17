@@ -82,7 +82,16 @@ func (s *DescribeAppStreamingOutTemplatesResponseBody) SetTotalPage(v int64) *De
 }
 
 func (s *DescribeAppStreamingOutTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Templates != nil {
+		for _, item := range s.Templates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAppStreamingOutTemplatesResponseBodyTemplates struct {

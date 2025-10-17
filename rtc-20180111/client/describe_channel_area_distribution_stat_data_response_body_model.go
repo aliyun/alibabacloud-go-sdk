@@ -50,7 +50,16 @@ func (s *DescribeChannelAreaDistributionStatDataResponseBody) SetRequestId(v str
 }
 
 func (s *DescribeChannelAreaDistributionStatDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AreaStatList != nil {
+		for _, item := range s.AreaStatList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeChannelAreaDistributionStatDataResponseBodyAreaStatList struct {

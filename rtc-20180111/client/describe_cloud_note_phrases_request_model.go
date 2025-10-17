@@ -82,7 +82,12 @@ func (s *DescribeCloudNotePhrasesRequest) SetPageSize(v int32) *DescribeCloudNot
 }
 
 func (s *DescribeCloudNotePhrasesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Condition != nil {
+		if err := s.Condition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudNotePhrasesRequestCondition struct {

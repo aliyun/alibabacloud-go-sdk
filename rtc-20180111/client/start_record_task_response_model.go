@@ -59,5 +59,10 @@ func (s *StartRecordTaskResponse) SetBody(v *StartRecordTaskResponseBody) *Start
 }
 
 func (s *StartRecordTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

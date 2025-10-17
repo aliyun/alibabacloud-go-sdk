@@ -53,7 +53,12 @@ func (s *CreateCloudNotePhrasesRequest) SetPhrase(v *CreateCloudNotePhrasesReque
 }
 
 func (s *CreateCloudNotePhrasesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Phrase != nil {
+		if err := s.Phrase.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateCloudNotePhrasesRequestPhrase struct {
@@ -107,7 +112,16 @@ func (s *CreateCloudNotePhrasesRequestPhrase) SetWordWeights(v []*CreateCloudNot
 }
 
 func (s *CreateCloudNotePhrasesRequestPhrase) Validate() error {
-	return dara.Validate(s)
+	if s.WordWeights != nil {
+		for _, item := range s.WordWeights {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateCloudNotePhrasesRequestPhraseWordWeights struct {

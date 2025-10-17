@@ -50,7 +50,16 @@ func (s *DescribeQualityAreaDistributionStatDataResponseBody) SetRequestId(v str
 }
 
 func (s *DescribeQualityAreaDistributionStatDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.QualityStatDataList != nil {
+		for _, item := range s.QualityStatDataList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeQualityAreaDistributionStatDataResponseBodyQualityStatDataList struct {

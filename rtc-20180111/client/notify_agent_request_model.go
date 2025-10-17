@@ -137,7 +137,12 @@ func (s *NotifyAgentRequest) SetTaskId(v string) *NotifyAgentRequest {
 }
 
 func (s *NotifyAgentRequest) Validate() error {
-	return dara.Validate(s)
+	if s.BackgroundMusic != nil {
+		if err := s.BackgroundMusic.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type NotifyAgentRequestBackgroundMusic struct {

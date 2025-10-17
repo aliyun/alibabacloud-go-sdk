@@ -95,7 +95,16 @@ func (s *DescribeUserInfoInChannelResponseBody) SetTimestamp(v int32) *DescribeU
 }
 
 func (s *DescribeUserInfoInChannelResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Property != nil {
+		for _, item := range s.Property {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUserInfoInChannelResponseBodyProperty struct {

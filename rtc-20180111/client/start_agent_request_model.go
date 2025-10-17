@@ -116,7 +116,17 @@ func (s *StartAgentRequest) SetVoiceChatConfig(v *StartAgentRequestVoiceChatConf
 }
 
 func (s *StartAgentRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RtcConfig != nil {
+		if err := s.RtcConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VoiceChatConfig != nil {
+		if err := s.VoiceChatConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartAgentRequestRtcConfig struct {
@@ -287,7 +297,42 @@ func (s *StartAgentRequestVoiceChatConfig) SetTTSConfig(v *StartAgentRequestVoic
 }
 
 func (s *StartAgentRequestVoiceChatConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ASRConfig != nil {
+		if err := s.ASRConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AgentSilenceConfig != nil {
+		if err := s.AgentSilenceConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AmbientSoundConfig != nil {
+		if err := s.AmbientSoundConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BackChannelConfig != nil {
+		if err := s.BackChannelConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InterruptConfig != nil {
+		if err := s.InterruptConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LLMConfig != nil {
+		if err := s.LLMConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TTSConfig != nil {
+		if err := s.TTSConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartAgentRequestVoiceChatConfigASRConfig struct {
@@ -374,7 +419,12 @@ func (s *StartAgentRequestVoiceChatConfigASRConfig) SetVocabularyId(v string) *S
 }
 
 func (s *StartAgentRequestVoiceChatConfigASRConfig) Validate() error {
-	return dara.Validate(s)
+	if s.VadConfig != nil {
+		if err := s.VadConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartAgentRequestVoiceChatConfigASRConfigVadConfig struct {

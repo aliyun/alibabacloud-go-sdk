@@ -80,7 +80,16 @@ func (s *DescribeRecordFilesResponseBody) SetTotalPage(v int64) *DescribeRecordF
 }
 
 func (s *DescribeRecordFilesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RecordFiles != nil {
+		for _, item := range s.RecordFiles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRecordFilesResponseBodyRecordFiles struct {

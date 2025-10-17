@@ -50,7 +50,16 @@ func (s *DescribeUsageDistributionStatDataResponseBody) SetUsageStatList(v []*De
 }
 
 func (s *DescribeUsageDistributionStatDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UsageStatList != nil {
+		for _, item := range s.UsageStatList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUsageDistributionStatDataResponseBodyUsageStatList struct {

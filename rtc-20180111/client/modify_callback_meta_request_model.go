@@ -65,7 +65,12 @@ func (s *ModifyCallbackMetaRequest) SetOwnerId(v int64) *ModifyCallbackMetaReque
 }
 
 func (s *ModifyCallbackMetaRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Callback != nil {
+		if err := s.Callback.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyCallbackMetaRequestCallback struct {

@@ -59,5 +59,10 @@ func (s *DescribeChannelResponse) SetBody(v *DescribeChannelResponseBody) *Descr
 }
 
 func (s *DescribeChannelResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

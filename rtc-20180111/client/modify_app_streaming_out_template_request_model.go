@@ -53,7 +53,12 @@ func (s *ModifyAppStreamingOutTemplateRequest) SetStreamingOutTemplate(v *Modify
 }
 
 func (s *ModifyAppStreamingOutTemplateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.StreamingOutTemplate != nil {
+		if err := s.StreamingOutTemplate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyAppStreamingOutTemplateRequestStreamingOutTemplate struct {

@@ -50,7 +50,12 @@ func (s *DescribeRtcDurationDataResponseBody) SetRequestId(v string) *DescribeRt
 }
 
 func (s *DescribeRtcDurationDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DurationDataPerInterval != nil {
+		if err := s.DurationDataPerInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRtcDurationDataResponseBodyDurationDataPerInterval struct {
@@ -75,7 +80,16 @@ func (s *DescribeRtcDurationDataResponseBodyDurationDataPerInterval) SetDuration
 }
 
 func (s *DescribeRtcDurationDataResponseBodyDurationDataPerInterval) Validate() error {
-	return dara.Validate(s)
+	if s.DurationModule != nil {
+		for _, item := range s.DurationModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule struct {

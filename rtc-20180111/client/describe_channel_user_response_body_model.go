@@ -74,7 +74,16 @@ func (s *DescribeChannelUserResponseBody) SetSessions(v []*DescribeChannelUserRe
 }
 
 func (s *DescribeChannelUserResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Sessions != nil {
+		for _, item := range s.Sessions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeChannelUserResponseBodySessions struct {

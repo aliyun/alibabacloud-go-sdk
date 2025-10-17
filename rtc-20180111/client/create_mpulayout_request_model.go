@@ -97,7 +97,16 @@ func (s *CreateMPULayoutRequest) SetPanes(v []*CreateMPULayoutRequestPanes) *Cre
 }
 
 func (s *CreateMPULayoutRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Panes != nil {
+		for _, item := range s.Panes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateMPULayoutRequestPanes struct {

@@ -62,7 +62,21 @@ func (s *DescribeCallResponseBody) SetUserDetailList(v []*DescribeCallResponseBo
 }
 
 func (s *DescribeCallResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CallInfo != nil {
+		if err := s.CallInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserDetailList != nil {
+		for _, item := range s.UserDetailList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCallResponseBodyCallInfo struct {
@@ -362,7 +376,21 @@ func (s *DescribeCallResponseBodyUserDetailList) SetUserId(v string) *DescribeCa
 }
 
 func (s *DescribeCallResponseBodyUserDetailList) Validate() error {
-	return dara.Validate(s)
+	if s.DurMetricStatData != nil {
+		if err := s.DurMetricStatData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OnlinePeriods != nil {
+		for _, item := range s.OnlinePeriods {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCallResponseBodyUserDetailListDurMetricStatData struct {

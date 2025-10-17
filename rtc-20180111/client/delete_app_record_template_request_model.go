@@ -68,7 +68,12 @@ func (s *DeleteAppRecordTemplateRequest) SetTemplate(v *DeleteAppRecordTemplateR
 }
 
 func (s *DeleteAppRecordTemplateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Template != nil {
+		if err := s.Template.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteAppRecordTemplateRequestTemplate struct {

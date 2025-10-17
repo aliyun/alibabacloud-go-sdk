@@ -59,5 +59,10 @@ func (s *DescribeRtcPeakChannelCntDataResponse) SetBody(v *DescribeRtcPeakChanne
 }
 
 func (s *DescribeRtcPeakChannelCntDataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

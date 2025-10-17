@@ -215,7 +215,42 @@ func (s *ModifyAppAgentTemplateRequest) SetType(v int32) *ModifyAppAgentTemplate
 }
 
 func (s *ModifyAppAgentTemplateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AgentSilenceConfig != nil {
+		if err := s.AgentSilenceConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AmbientSoundConfig != nil {
+		if err := s.AmbientSoundConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AsrConfig != nil {
+		if err := s.AsrConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BackChannelConfig != nil {
+		if err := s.BackChannelConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InterruptConfig != nil {
+		if err := s.InterruptConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LlmConfig != nil {
+		if err := s.LlmConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TtsConfig != nil {
+		if err := s.TtsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyAppAgentTemplateRequestAgentSilenceConfig struct {
@@ -396,7 +431,21 @@ func (s *ModifyAppAgentTemplateRequestAsrConfig) SetWordWeights(v []*ModifyAppAg
 }
 
 func (s *ModifyAppAgentTemplateRequestAsrConfig) Validate() error {
-	return dara.Validate(s)
+	if s.VadConfig != nil {
+		if err := s.VadConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WordWeights != nil {
+		for _, item := range s.WordWeights {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyAppAgentTemplateRequestAsrConfigVadConfig struct {

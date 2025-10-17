@@ -82,7 +82,16 @@ func (s *DescribeCloudNotePhrasesResponseBody) SetTotalPage(v int64) *DescribeCl
 }
 
 func (s *DescribeCloudNotePhrasesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Phrases != nil {
+		for _, item := range s.Phrases {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudNotePhrasesResponseBodyPhrases struct {
@@ -160,7 +169,16 @@ func (s *DescribeCloudNotePhrasesResponseBodyPhrases) SetWordWeights(v []*Descri
 }
 
 func (s *DescribeCloudNotePhrasesResponseBodyPhrases) Validate() error {
-	return dara.Validate(s)
+	if s.WordWeights != nil {
+		for _, item := range s.WordWeights {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudNotePhrasesResponseBodyPhrasesWordWeights struct {

@@ -95,7 +95,16 @@ func (s *DescribeCallListResponseBody) SetTotalCnt(v int32) *DescribeCallListRes
 }
 
 func (s *DescribeCallListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CallList != nil {
+		for _, item := range s.CallList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCallListResponseBodyCallList struct {

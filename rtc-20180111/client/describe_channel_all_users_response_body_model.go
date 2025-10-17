@@ -62,7 +62,16 @@ func (s *DescribeChannelAllUsersResponseBody) SetUsers(v []*DescribeChannelAllUs
 }
 
 func (s *DescribeChannelAllUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Users != nil {
+		for _, item := range s.Users {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeChannelAllUsersResponseBodyUsers struct {

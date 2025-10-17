@@ -210,7 +210,12 @@ func (s *StartCloudNoteShrinkRequest) SetTranscriptionShrink(v string) *StartClo
 }
 
 func (s *StartCloudNoteShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.StorageConfig != nil {
+		if err := s.StorageConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartCloudNoteShrinkRequestStorageConfig struct {

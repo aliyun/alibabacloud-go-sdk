@@ -95,7 +95,16 @@ func (s *DescribeFaultDiagnosisUserListResponseBody) SetUserList(v []*DescribeFa
 }
 
 func (s *DescribeFaultDiagnosisUserListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserList != nil {
+		for _, item := range s.UserList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFaultDiagnosisUserListResponseBodyUserList struct {
@@ -185,7 +194,16 @@ func (s *DescribeFaultDiagnosisUserListResponseBodyUserList) SetUserId(v string)
 }
 
 func (s *DescribeFaultDiagnosisUserListResponseBodyUserList) Validate() error {
-	return dara.Validate(s)
+	if s.FaultList != nil {
+		for _, item := range s.FaultList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFaultDiagnosisUserListResponseBodyUserListFaultList struct {

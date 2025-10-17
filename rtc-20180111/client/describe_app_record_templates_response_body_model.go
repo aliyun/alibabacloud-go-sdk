@@ -82,7 +82,16 @@ func (s *DescribeAppRecordTemplatesResponseBody) SetTotalPage(v int64) *Describe
 }
 
 func (s *DescribeAppRecordTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Templates != nil {
+		for _, item := range s.Templates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAppRecordTemplatesResponseBodyTemplates struct {

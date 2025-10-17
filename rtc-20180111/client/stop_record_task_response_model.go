@@ -59,5 +59,10 @@ func (s *StopRecordTaskResponse) SetBody(v *StopRecordTaskResponseBody) *StopRec
 }
 
 func (s *StopRecordTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

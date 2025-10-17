@@ -97,7 +97,16 @@ func (s *DescribeCloudNotesResponseBody) SetTotalCnt(v int32) *DescribeCloudNote
 }
 
 func (s *DescribeCloudNotesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudNotesResponseBodyItems struct {

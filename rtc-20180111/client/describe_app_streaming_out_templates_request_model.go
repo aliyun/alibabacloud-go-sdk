@@ -82,7 +82,12 @@ func (s *DescribeAppStreamingOutTemplatesRequest) SetPageSize(v int32) *Describe
 }
 
 func (s *DescribeAppStreamingOutTemplatesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Condition != nil {
+		if err := s.Condition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAppStreamingOutTemplatesRequestCondition struct {

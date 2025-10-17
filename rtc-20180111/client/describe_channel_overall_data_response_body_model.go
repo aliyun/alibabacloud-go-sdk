@@ -74,7 +74,26 @@ func (s *DescribeChannelOverallDataResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeChannelOverallDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CallInfo != nil {
+		if err := s.CallInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MetricDatas != nil {
+		for _, item := range s.MetricDatas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OverallData != nil {
+		if err := s.OverallData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeChannelOverallDataResponseBodyCallInfo struct {
@@ -205,7 +224,16 @@ func (s *DescribeChannelOverallDataResponseBodyMetricDatas) SetType(v string) *D
 }
 
 func (s *DescribeChannelOverallDataResponseBodyMetricDatas) Validate() error {
-	return dara.Validate(s)
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeChannelOverallDataResponseBodyMetricDatasNodes struct {

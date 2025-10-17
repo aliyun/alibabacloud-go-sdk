@@ -82,7 +82,16 @@ func (s *DescribeAppAgentTemplatesResponseBody) SetTotalPage(v int64) *DescribeA
 }
 
 func (s *DescribeAppAgentTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Templates != nil {
+		for _, item := range s.Templates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAppAgentTemplatesResponseBodyTemplates struct {
@@ -258,7 +267,42 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetType(v int32) *Descr
 }
 
 func (s *DescribeAppAgentTemplatesResponseBodyTemplates) Validate() error {
-	return dara.Validate(s)
+	if s.AgentSilenceConfig != nil {
+		if err := s.AgentSilenceConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AmbientSoundConfig != nil {
+		if err := s.AmbientSoundConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AsrConfig != nil {
+		if err := s.AsrConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BackChannelConfig != nil {
+		if err := s.BackChannelConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InterruptConfig != nil {
+		if err := s.InterruptConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LlmConfig != nil {
+		if err := s.LlmConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TtsConfig != nil {
+		if err := s.TtsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig struct {
@@ -425,7 +469,21 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig) SetWordWeights
 }
 
 func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig) Validate() error {
-	return dara.Validate(s)
+	if s.VadConfig != nil {
+		if err := s.VadConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WordWeights != nil {
+		for _, item := range s.WordWeights {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigVadConfig struct {

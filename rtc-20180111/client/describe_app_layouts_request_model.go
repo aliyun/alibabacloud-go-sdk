@@ -82,7 +82,12 @@ func (s *DescribeAppLayoutsRequest) SetPageSize(v int32) *DescribeAppLayoutsRequ
 }
 
 func (s *DescribeAppLayoutsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Condition != nil {
+		if err := s.Condition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAppLayoutsRequestCondition struct {

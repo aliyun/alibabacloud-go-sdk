@@ -59,5 +59,10 @@ func (s *DescribeCallListResponse) SetBody(v *DescribeCallListResponseBody) *Des
 }
 
 func (s *DescribeCallListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

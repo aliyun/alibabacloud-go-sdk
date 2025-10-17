@@ -50,7 +50,12 @@ func (s *DescribeRtcPeakChannelCntDataResponseBody) SetRequestId(v string) *Desc
 }
 
 func (s *DescribeRtcPeakChannelCntDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PeakChannelCntDataPerInterval != nil {
+		if err := s.PeakChannelCntDataPerInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerInterval struct {
@@ -75,7 +80,16 @@ func (s *DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerInterval)
 }
 
 func (s *DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerInterval) Validate() error {
-	return dara.Validate(s)
+	if s.PeakChannelCntModule != nil {
+		for _, item := range s.PeakChannelCntModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerIntervalPeakChannelCntModule struct {

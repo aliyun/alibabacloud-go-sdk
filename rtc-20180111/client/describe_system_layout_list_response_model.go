@@ -59,5 +59,10 @@ func (s *DescribeSystemLayoutListResponse) SetBody(v *DescribeSystemLayoutListRe
 }
 
 func (s *DescribeSystemLayoutListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

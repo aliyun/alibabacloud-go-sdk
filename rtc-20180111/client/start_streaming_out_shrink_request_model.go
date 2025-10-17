@@ -307,7 +307,62 @@ func (s *StartStreamingOutShrinkRequest) SetUrl(v string) *StartStreamingOutShri
 }
 
 func (s *StartStreamingOutShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Backgrounds != nil {
+		for _, item := range s.Backgrounds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BgColor != nil {
+		if err := s.BgColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ClockWidgets != nil {
+		for _, item := range s.ClockWidgets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Images != nil {
+		for _, item := range s.Images {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Panes != nil {
+		for _, item := range s.Panes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RegionColor != nil {
+		if err := s.RegionColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Texts != nil {
+		for _, item := range s.Texts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartStreamingOutShrinkRequestBackgrounds struct {
@@ -656,7 +711,17 @@ func (s *StartStreamingOutShrinkRequestClockWidgets) SetZone(v int32) *StartStre
 }
 
 func (s *StartStreamingOutShrinkRequestClockWidgets) Validate() error {
-	return dara.Validate(s)
+	if s.BoxColor != nil {
+		if err := s.BoxColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FontColor != nil {
+		if err := s.FontColor.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartStreamingOutShrinkRequestClockWidgetsBoxColor struct {
@@ -1025,7 +1090,39 @@ func (s *StartStreamingOutShrinkRequestPanes) SetWhiteboard(v *StartStreamingOut
 }
 
 func (s *StartStreamingOutShrinkRequestPanes) Validate() error {
-	return dara.Validate(s)
+	if s.Backgrounds != nil {
+		for _, item := range s.Backgrounds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Images != nil {
+		for _, item := range s.Images {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Texts != nil {
+		for _, item := range s.Texts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Whiteboard != nil {
+		if err := s.Whiteboard.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartStreamingOutShrinkRequestPanesBackgrounds struct {
@@ -1490,7 +1587,17 @@ func (s *StartStreamingOutShrinkRequestPanesTexts) SetY(v float64) *StartStreami
 }
 
 func (s *StartStreamingOutShrinkRequestPanesTexts) Validate() error {
-	return dara.Validate(s)
+	if s.BoxColor != nil {
+		if err := s.BoxColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FontColor != nil {
+		if err := s.FontColor.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartStreamingOutShrinkRequestPanesTextsBoxColor struct {
@@ -1848,7 +1955,17 @@ func (s *StartStreamingOutShrinkRequestTexts) SetY(v float64) *StartStreamingOut
 }
 
 func (s *StartStreamingOutShrinkRequestTexts) Validate() error {
-	return dara.Validate(s)
+	if s.BoxColor != nil {
+		if err := s.BoxColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FontColor != nil {
+		if err := s.FontColor.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartStreamingOutShrinkRequestTextsBoxColor struct {

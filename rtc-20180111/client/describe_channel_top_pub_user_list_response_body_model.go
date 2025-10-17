@@ -50,7 +50,16 @@ func (s *DescribeChannelTopPubUserListResponseBody) SetTopPubUserDetailList(v []
 }
 
 func (s *DescribeChannelTopPubUserListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TopPubUserDetailList != nil {
+		for _, item := range s.TopPubUserDetailList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeChannelTopPubUserListResponseBodyTopPubUserDetailList struct {
@@ -153,7 +162,16 @@ func (s *DescribeChannelTopPubUserListResponseBodyTopPubUserDetailList) SetUserI
 }
 
 func (s *DescribeChannelTopPubUserListResponseBodyTopPubUserDetailList) Validate() error {
-	return dara.Validate(s)
+	if s.OnlinePeriods != nil {
+		for _, item := range s.OnlinePeriods {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeChannelTopPubUserListResponseBodyTopPubUserDetailListOnlinePeriods struct {

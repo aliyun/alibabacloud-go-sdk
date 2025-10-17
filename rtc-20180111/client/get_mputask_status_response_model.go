@@ -59,5 +59,10 @@ func (s *GetMPUTaskStatusResponse) SetBody(v *GetMPUTaskStatusResponseBody) *Get
 }
 
 func (s *GetMPUTaskStatusResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -307,7 +307,67 @@ func (s *StartStreamingOutRequest) SetUrl(v string) *StartStreamingOutRequest {
 }
 
 func (s *StartStreamingOutRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Backgrounds != nil {
+		for _, item := range s.Backgrounds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BgColor != nil {
+		if err := s.BgColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ClockWidgets != nil {
+		for _, item := range s.ClockWidgets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Images != nil {
+		for _, item := range s.Images {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LayoutSpecifiedUsers != nil {
+		if err := s.LayoutSpecifiedUsers.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Panes != nil {
+		for _, item := range s.Panes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RegionColor != nil {
+		if err := s.RegionColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Texts != nil {
+		for _, item := range s.Texts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartStreamingOutRequestBackgrounds struct {
@@ -656,7 +716,17 @@ func (s *StartStreamingOutRequestClockWidgets) SetZone(v int32) *StartStreamingO
 }
 
 func (s *StartStreamingOutRequestClockWidgets) Validate() error {
-	return dara.Validate(s)
+	if s.BoxColor != nil {
+		if err := s.BoxColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FontColor != nil {
+		if err := s.FontColor.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartStreamingOutRequestClockWidgetsBoxColor struct {
@@ -1062,7 +1132,39 @@ func (s *StartStreamingOutRequestPanes) SetWhiteboard(v *StartStreamingOutReques
 }
 
 func (s *StartStreamingOutRequestPanes) Validate() error {
-	return dara.Validate(s)
+	if s.Backgrounds != nil {
+		for _, item := range s.Backgrounds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Images != nil {
+		for _, item := range s.Images {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Texts != nil {
+		for _, item := range s.Texts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Whiteboard != nil {
+		if err := s.Whiteboard.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartStreamingOutRequestPanesBackgrounds struct {
@@ -1527,7 +1629,17 @@ func (s *StartStreamingOutRequestPanesTexts) SetY(v float64) *StartStreamingOutR
 }
 
 func (s *StartStreamingOutRequestPanesTexts) Validate() error {
-	return dara.Validate(s)
+	if s.BoxColor != nil {
+		if err := s.BoxColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FontColor != nil {
+		if err := s.FontColor.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartStreamingOutRequestPanesTextsBoxColor struct {
@@ -1885,7 +1997,17 @@ func (s *StartStreamingOutRequestTexts) SetY(v float64) *StartStreamingOutReques
 }
 
 func (s *StartStreamingOutRequestTexts) Validate() error {
-	return dara.Validate(s)
+	if s.BoxColor != nil {
+		if err := s.BoxColor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FontColor != nil {
+		if err := s.FontColor.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartStreamingOutRequestTextsBoxColor struct {
