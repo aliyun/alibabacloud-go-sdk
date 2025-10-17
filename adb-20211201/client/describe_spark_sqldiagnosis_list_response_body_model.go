@@ -121,7 +121,16 @@ func (s *DescribeSparkSQLDiagnosisListResponseBody) SetTotalCount(v int32) *Desc
 }
 
 func (s *DescribeSparkSQLDiagnosisListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SQLDiagnosisList != nil {
+		for _, item := range s.SQLDiagnosisList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList struct {

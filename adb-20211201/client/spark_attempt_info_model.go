@@ -95,5 +95,10 @@ func (s *SparkAttemptInfo) SetState(v string) *SparkAttemptInfo {
 }
 
 func (s *SparkAttemptInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		if err := s.Detail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

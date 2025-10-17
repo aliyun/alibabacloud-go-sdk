@@ -599,5 +599,60 @@ func (s *TableModel) SetViewSecurityMode(v string) *TableModel {
 }
 
 func (s *TableModel) Validate() error {
-	return dara.Validate(s)
+	if s.Cols != nil {
+		for _, item := range s.Cols {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DistributeColumns != nil {
+		for _, item := range s.DistributeColumns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Indexes != nil {
+		for _, item := range s.Indexes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PartitionKeys != nil {
+		for _, item := range s.PartitionKeys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RouteColumns != nil {
+		for _, item := range s.RouteColumns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RouteEffectiveColumn != nil {
+		if err := s.RouteEffectiveColumn.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Sd != nil {
+		if err := s.Sd.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

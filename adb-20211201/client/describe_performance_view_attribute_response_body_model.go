@@ -162,7 +162,12 @@ func (s *DescribePerformanceViewAttributeResponseBody) SetViewName(v string) *De
 }
 
 func (s *DescribePerformanceViewAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ViewDetail != nil {
+		if err := s.ViewDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePerformanceViewAttributeResponseBodyViewDetail struct {
@@ -222,7 +227,16 @@ func (s *DescribePerformanceViewAttributeResponseBodyViewDetail) SetChartsPerLin
 }
 
 func (s *DescribePerformanceViewAttributeResponseBodyViewDetail) Validate() error {
-	return dara.Validate(s)
+	if s.Categories != nil {
+		for _, item := range s.Categories {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePerformanceViewAttributeResponseBodyViewDetailCategories struct {
@@ -271,7 +285,16 @@ func (s *DescribePerformanceViewAttributeResponseBodyViewDetailCategories) SetKe
 }
 
 func (s *DescribePerformanceViewAttributeResponseBodyViewDetailCategories) Validate() error {
-	return dara.Validate(s)
+	if s.Keys != nil {
+		for _, item := range s.Keys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys struct {

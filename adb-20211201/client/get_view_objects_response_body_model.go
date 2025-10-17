@@ -110,7 +110,12 @@ func (s *GetViewObjectsResponseBody) SetTotalCount(v int64) *GetViewObjectsRespo
 }
 
 func (s *GetViewObjectsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetViewObjectsResponseBodyData struct {
@@ -187,5 +192,14 @@ func (s *GetViewObjectsResponseBodyData) SetTotalCount(v int64) *GetViewObjectsR
 }
 
 func (s *GetViewObjectsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.TableSummaryModels != nil {
+		for _, item := range s.TableSummaryModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

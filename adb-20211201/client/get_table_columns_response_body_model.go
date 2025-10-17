@@ -110,7 +110,12 @@ func (s *GetTableColumnsResponseBody) SetTotalCount(v int64) *GetTableColumnsRes
 }
 
 func (s *GetTableColumnsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTableColumnsResponseBodyData struct {
@@ -187,5 +192,10 @@ func (s *GetTableColumnsResponseBodyData) SetTotalCount(v int64) *GetTableColumn
 }
 
 func (s *GetTableColumnsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Table != nil {
+		if err := s.Table.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

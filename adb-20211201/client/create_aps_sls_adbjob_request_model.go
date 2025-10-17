@@ -587,7 +587,21 @@ func (s *CreateApsSlsADBJobRequest) SetWorkloadName(v string) *CreateApsSlsADBJo
 }
 
 func (s *CreateApsSlsADBJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Columns != nil {
+		for _, item := range s.Columns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UnixTimestampConvert != nil {
+		if err := s.UnixTimestampConvert.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateApsSlsADBJobRequestColumns struct {

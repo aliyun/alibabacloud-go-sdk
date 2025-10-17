@@ -66,7 +66,16 @@ func (s *DescribeDiagnosisSQLInfoResponseBody) SetStageInfos(v []*DescribeDiagno
 }
 
 func (s *DescribeDiagnosisSQLInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StageInfos != nil {
+		for _, item := range s.StageInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDiagnosisSQLInfoResponseBodyStageInfos struct {

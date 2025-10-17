@@ -108,7 +108,16 @@ func (s *DescribeApsProgressResponseBody) SetTotalTableCount(v int32) *DescribeA
 }
 
 func (s *DescribeApsProgressResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApsHiveProgress != nil {
+		for _, item := range s.ApsHiveProgress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApsProgressResponseBodyApsHiveProgress struct {

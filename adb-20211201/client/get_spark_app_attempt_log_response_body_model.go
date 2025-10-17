@@ -53,7 +53,12 @@ func (s *GetSparkAppAttemptLogResponseBody) SetRequestId(v string) *GetSparkAppA
 }
 
 func (s *GetSparkAppAttemptLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSparkAppAttemptLogResponseBodyData struct {

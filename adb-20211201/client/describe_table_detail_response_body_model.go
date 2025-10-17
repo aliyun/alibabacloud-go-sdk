@@ -154,7 +154,12 @@ func (s *DescribeTableDetailResponseBody) SetTotalCount(v string) *DescribeTable
 }
 
 func (s *DescribeTableDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTableDetailResponseBodyItems struct {
@@ -180,7 +185,16 @@ func (s *DescribeTableDetailResponseBodyItems) SetShard(v []*DescribeTableDetail
 }
 
 func (s *DescribeTableDetailResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.Shard != nil {
+		for _, item := range s.Shard {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTableDetailResponseBodyItemsShard struct {

@@ -105,5 +105,10 @@ func (s *GetSparkAppInfoResponseBody) SetRequestId(v string) *GetSparkAppInfoRes
 }
 
 func (s *GetSparkAppInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

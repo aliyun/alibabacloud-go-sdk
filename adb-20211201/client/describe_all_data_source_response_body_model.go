@@ -79,7 +79,22 @@ func (s *DescribeAllDataSourceResponseBody) SetTables(v *DescribeAllDataSourceRe
 }
 
 func (s *DescribeAllDataSourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Columns != nil {
+		if err := s.Columns.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Schemas != nil {
+		if err := s.Schemas.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tables != nil {
+		if err := s.Tables.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAllDataSourceResponseBodyColumns struct {
@@ -104,7 +119,16 @@ func (s *DescribeAllDataSourceResponseBodyColumns) SetColumn(v []*DescribeAllDat
 }
 
 func (s *DescribeAllDataSourceResponseBodyColumns) Validate() error {
-	return dara.Validate(s)
+	if s.Column != nil {
+		for _, item := range s.Column {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAllDataSourceResponseBodyColumnsColumn struct {
@@ -257,7 +281,16 @@ func (s *DescribeAllDataSourceResponseBodySchemas) SetSchema(v []*DescribeAllDat
 }
 
 func (s *DescribeAllDataSourceResponseBodySchemas) Validate() error {
-	return dara.Validate(s)
+	if s.Schema != nil {
+		for _, item := range s.Schema {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAllDataSourceResponseBodySchemasSchema struct {
@@ -327,7 +360,16 @@ func (s *DescribeAllDataSourceResponseBodyTables) SetTable(v []*DescribeAllDataS
 }
 
 func (s *DescribeAllDataSourceResponseBodyTables) Validate() error {
-	return dara.Validate(s)
+	if s.Table != nil {
+		for _, item := range s.Table {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAllDataSourceResponseBodyTablesTable struct {

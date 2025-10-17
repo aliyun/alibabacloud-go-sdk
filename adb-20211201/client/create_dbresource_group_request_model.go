@@ -364,7 +364,21 @@ func (s *CreateDBResourceGroupRequest) SetTargetResourceGroupName(v string) *Cre
 }
 
 func (s *CreateDBResourceGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RayConfig != nil {
+		if err := s.RayConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDBResourceGroupRequestRayConfig struct {
@@ -455,7 +469,16 @@ func (s *CreateDBResourceGroupRequestRayConfig) SetWorkerGroups(v []*CreateDBRes
 }
 
 func (s *CreateDBResourceGroupRequestRayConfig) Validate() error {
-	return dara.Validate(s)
+	if s.WorkerGroups != nil {
+		for _, item := range s.WorkerGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDBResourceGroupRequestRayConfigWorkerGroups struct {

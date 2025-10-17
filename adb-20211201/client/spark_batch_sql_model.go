@@ -200,5 +200,14 @@ func (s *SparkBatchSQL) SetUid(v int64) *SparkBatchSQL {
 }
 
 func (s *SparkBatchSQL) Validate() error {
-	return dara.Validate(s)
+	if s.Statements != nil {
+		for _, item := range s.Statements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

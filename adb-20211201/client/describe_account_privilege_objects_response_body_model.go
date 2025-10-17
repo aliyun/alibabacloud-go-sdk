@@ -104,7 +104,16 @@ func (s *DescribeAccountPrivilegeObjectsResponseBody) SetTotalCount(v int64) *De
 }
 
 func (s *DescribeAccountPrivilegeObjectsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAccountPrivilegeObjectsResponseBodyData struct {

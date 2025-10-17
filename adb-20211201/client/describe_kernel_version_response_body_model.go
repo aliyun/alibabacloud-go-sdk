@@ -87,7 +87,16 @@ func (s *DescribeKernelVersionResponseBody) SetRequestId(v string) *DescribeKern
 }
 
 func (s *DescribeKernelVersionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableKernelVersions != nil {
+		for _, item := range s.AvailableKernelVersions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeKernelVersionResponseBodyAvailableKernelVersions struct {

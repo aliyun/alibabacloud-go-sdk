@@ -57,5 +57,10 @@ func (s *GetSparkWarehouseBatchSQLResponseBody) SetRequestId(v string) *GetSpark
 }
 
 func (s *GetSparkWarehouseBatchSQLResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

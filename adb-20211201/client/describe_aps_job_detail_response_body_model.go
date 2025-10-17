@@ -57,7 +57,12 @@ func (s *DescribeApsJobDetailResponseBody) SetRequestId(v string) *DescribeApsJo
 }
 
 func (s *DescribeApsJobDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.APSJobDetail != nil {
+		if err := s.APSJobDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApsJobDetailResponseBodyAPSJobDetail struct {

@@ -112,7 +112,12 @@ func (s *DescribeApsResourceGroupsResponseBody) SetSuccess(v bool) *DescribeApsR
 }
 
 func (s *DescribeApsResourceGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApsResourceGroupsResponseBodyData struct {
@@ -157,7 +162,16 @@ func (s *DescribeApsResourceGroupsResponseBodyData) SetStep(v int64) *DescribeAp
 }
 
 func (s *DescribeApsResourceGroupsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceGroups != nil {
+		for _, item := range s.ResourceGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApsResourceGroupsResponseBodyDataResourceGroups struct {

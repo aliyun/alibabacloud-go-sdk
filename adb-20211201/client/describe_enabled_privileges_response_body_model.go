@@ -53,7 +53,16 @@ func (s *DescribeEnabledPrivilegesResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeEnabledPrivilegesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEnabledPrivilegesResponseBodyData struct {
@@ -111,7 +120,16 @@ func (s *DescribeEnabledPrivilegesResponseBodyData) SetScope(v string) *Describe
 }
 
 func (s *DescribeEnabledPrivilegesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Privileges != nil {
+		for _, item := range s.Privileges {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEnabledPrivilegesResponseBodyDataPrivileges struct {

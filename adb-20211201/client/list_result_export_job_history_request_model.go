@@ -223,7 +223,12 @@ func (s *ListResultExportJobHistoryRequest) SetStatusList(v []*string) *ListResu
 }
 
 func (s *ListResultExportJobHistoryRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Order != nil {
+		if err := s.Order.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListResultExportJobHistoryRequestOrder struct {

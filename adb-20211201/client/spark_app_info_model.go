@@ -125,5 +125,10 @@ func (s *SparkAppInfo) SetState(v string) *SparkAppInfo {
 }
 
 func (s *SparkAppInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		if err := s.Detail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

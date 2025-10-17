@@ -53,7 +53,12 @@ func (s *ListSparkWarehouseBatchSQLResponseBody) SetRequestId(v string) *ListSpa
 }
 
 func (s *ListSparkWarehouseBatchSQLResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSparkWarehouseBatchSQLResponseBodyData struct {
@@ -124,5 +129,14 @@ func (s *ListSparkWarehouseBatchSQLResponseBodyData) SetTotal(v int64) *ListSpar
 }
 
 func (s *ListSparkWarehouseBatchSQLResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Queries != nil {
+		for _, item := range s.Queries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *PreloadSparkAppMetricsResponseBody) SetRequestId(v string) *PreloadSpar
 }
 
 func (s *PreloadSparkAppMetricsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PreloadSparkAppMetricsResponseBodyData struct {
@@ -143,7 +148,12 @@ func (s *PreloadSparkAppMetricsResponseBodyData) SetScanMetrics(v *PreloadSparkA
 }
 
 func (s *PreloadSparkAppMetricsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ScanMetrics != nil {
+		if err := s.ScanMetrics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PreloadSparkAppMetricsResponseBodyDataScanMetrics struct {

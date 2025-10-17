@@ -120,7 +120,16 @@ func (s *DescribeBadSqlDetectionResponseBody) SetTotalCount(v string) *DescribeB
 }
 
 func (s *DescribeBadSqlDetectionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DetectionItems != nil {
+		for _, item := range s.DetectionItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBadSqlDetectionResponseBodyDetectionItems struct {
@@ -197,7 +206,16 @@ func (s *DescribeBadSqlDetectionResponseBodyDetectionItems) SetStatus(v string) 
 }
 
 func (s *DescribeBadSqlDetectionResponseBodyDetectionItems) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBadSqlDetectionResponseBodyDetectionItemsResults struct {
@@ -377,7 +395,16 @@ func (s *DescribeBadSqlDetectionResponseBodyDetectionItemsResults) SetTotalStage
 }
 
 func (s *DescribeBadSqlDetectionResponseBodyDetectionItemsResults) Validate() error {
-	return dara.Validate(s)
+	if s.DiagnosisResults != nil {
+		for _, item := range s.DiagnosisResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBadSqlDetectionResponseBodyDetectionItemsResultsDiagnosisResults struct {

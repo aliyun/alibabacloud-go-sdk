@@ -87,7 +87,16 @@ func (s *DescribeControllerDetectionResponseBody) SetTotalCount(v string) *Descr
 }
 
 func (s *DescribeControllerDetectionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DetectionItems != nil {
+		for _, item := range s.DetectionItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeControllerDetectionResponseBodyDetectionItems struct {

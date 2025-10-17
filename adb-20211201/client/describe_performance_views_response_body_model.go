@@ -88,7 +88,16 @@ func (s *DescribePerformanceViewsResponseBody) SetViews(v []*DescribePerformance
 }
 
 func (s *DescribePerformanceViewsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Views != nil {
+		for _, item := range s.Views {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePerformanceViewsResponseBodyViews struct {

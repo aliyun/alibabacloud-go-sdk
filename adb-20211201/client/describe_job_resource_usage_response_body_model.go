@@ -70,7 +70,12 @@ func (s *DescribeJobResourceUsageResponseBody) SetRequestId(v string) *DescribeJ
 }
 
 func (s *DescribeJobResourceUsageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeJobResourceUsageResponseBodyData struct {
@@ -171,7 +176,16 @@ func (s *DescribeJobResourceUsageResponseBodyData) SetTotalCount(v int32) *Descr
 }
 
 func (s *DescribeJobResourceUsageResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.JobAcuUsage != nil {
+		for _, item := range s.JobAcuUsage {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeJobResourceUsageResponseBodyDataJobAcuUsage struct {
@@ -267,7 +281,12 @@ func (s *DescribeJobResourceUsageResponseBodyDataJobAcuUsage) SetUseCachePool(v 
 }
 
 func (s *DescribeJobResourceUsageResponseBodyDataJobAcuUsage) Validate() error {
-	return dara.Validate(s)
+	if s.AcuUsageDetail != nil {
+		if err := s.AcuUsageDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeJobResourceUsageResponseBodyDataJobAcuUsageAcuUsageDetail struct {

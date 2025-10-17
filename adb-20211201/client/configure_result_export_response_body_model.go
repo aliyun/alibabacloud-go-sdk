@@ -110,7 +110,12 @@ func (s *ConfigureResultExportResponseBody) SetSuccess(v bool) *ConfigureResultE
 }
 
 func (s *ConfigureResultExportResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ConfigureResultExportResponseBodyData struct {
@@ -158,7 +163,17 @@ func (s *ConfigureResultExportResponseBodyData) SetSlsInfo(v *ConfigureResultExp
 }
 
 func (s *ConfigureResultExportResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.OssInfo != nil {
+		if err := s.OssInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SlsInfo != nil {
+		if err := s.SlsInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ConfigureResultExportResponseBodyDataOssInfo struct {

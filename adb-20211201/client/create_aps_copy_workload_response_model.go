@@ -59,5 +59,10 @@ func (s *CreateApsCopyWorkloadResponse) SetBody(v *CreateApsCopyWorkloadResponse
 }
 
 func (s *CreateApsCopyWorkloadResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *DescribeClusterAccessWhiteListResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribeClusterAccessWhiteListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterAccessWhiteListResponseBodyItems struct {
@@ -78,7 +83,16 @@ func (s *DescribeClusterAccessWhiteListResponseBodyItems) SetIPArray(v []*Descri
 }
 
 func (s *DescribeClusterAccessWhiteListResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.IPArray != nil {
+		for _, item := range s.IPArray {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClusterAccessWhiteListResponseBodyItemsIPArray struct {

@@ -150,7 +150,16 @@ func (s *DescribeAdbMySqlIndexesResponseBody) SetTableName(v string) *DescribeAd
 }
 
 func (s *DescribeAdbMySqlIndexesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Indexes != nil {
+		for _, item := range s.Indexes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAdbMySqlIndexesResponseBodyIndexes struct {

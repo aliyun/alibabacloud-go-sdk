@@ -53,5 +53,10 @@ func (s *KillSparkLogAnalyzeTaskResponseBody) SetRequestId(v string) *KillSparkL
 }
 
 func (s *KillSparkLogAnalyzeTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

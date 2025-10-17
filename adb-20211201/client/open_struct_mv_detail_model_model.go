@@ -227,7 +227,16 @@ func (s *OpenStructMvDetailModel) SetUpdatedAt(v string) *OpenStructMvDetailMode
 }
 
 func (s *OpenStructMvDetailModel) Validate() error {
-	return dara.Validate(s)
+	if s.BaseTableInfos != nil {
+		for _, item := range s.BaseTableInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type OpenStructMvDetailModelBaseTableInfos struct {

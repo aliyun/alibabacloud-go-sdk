@@ -131,5 +131,10 @@ func (s *StorageDescriptorModel) SetStoredAsSubDirectories(v bool) *StorageDescr
 }
 
 func (s *StorageDescriptorModel) Validate() error {
-	return dara.Validate(s)
+	if s.SerDeInfo != nil {
+		if err := s.SerDeInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

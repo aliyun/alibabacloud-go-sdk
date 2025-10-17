@@ -110,7 +110,16 @@ func (s *DescribeDiagnosisRecordsResponseBody) SetTotalCount(v int32) *DescribeD
 }
 
 func (s *DescribeDiagnosisRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Querys != nil {
+		for _, item := range s.Querys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDiagnosisRecordsResponseBodyQuerys struct {
@@ -512,7 +521,16 @@ func (s *DescribeDiagnosisRecordsResponseBodyQuerys) SetUserName(v string) *Desc
 }
 
 func (s *DescribeDiagnosisRecordsResponseBodyQuerys) Validate() error {
-	return dara.Validate(s)
+	if s.QueryProperties != nil {
+		for _, item := range s.QueryProperties {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDiagnosisRecordsResponseBodyQuerysQueryProperties struct {

@@ -59,5 +59,10 @@ func (s *DescribeCompactionServiceSwitchResponse) SetBody(v *DescribeCompactionS
 }
 
 func (s *DescribeCompactionServiceSwitchResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

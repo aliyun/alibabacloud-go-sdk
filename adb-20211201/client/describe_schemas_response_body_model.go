@@ -53,7 +53,12 @@ func (s *DescribeSchemasResponseBody) SetRequestId(v string) *DescribeSchemasRes
 }
 
 func (s *DescribeSchemasResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSchemasResponseBodyItems struct {
@@ -78,7 +83,16 @@ func (s *DescribeSchemasResponseBodyItems) SetSchema(v []*DescribeSchemasRespons
 }
 
 func (s *DescribeSchemasResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.Schema != nil {
+		for _, item := range s.Schema {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSchemasResponseBodyItemsSchema struct {

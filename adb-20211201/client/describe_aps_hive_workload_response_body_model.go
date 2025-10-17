@@ -57,7 +57,12 @@ func (s *DescribeApsHiveWorkloadResponseBody) SetRequestId(v string) *DescribeAp
 }
 
 func (s *DescribeApsHiveWorkloadResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApsWorkload != nil {
+		if err := s.ApsWorkload.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApsHiveWorkloadResponseBodyApsWorkload struct {

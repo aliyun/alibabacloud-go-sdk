@@ -171,7 +171,16 @@ func (s *DescribeApsActionLogsResponseBody) SetWorkloadId(v string) *DescribeAps
 }
 
 func (s *DescribeApsActionLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ActionLogs != nil {
+		for _, item := range s.ActionLogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApsActionLogsResponseBodyActionLogs struct {

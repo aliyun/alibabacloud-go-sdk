@@ -59,5 +59,10 @@ func (s *DescribeAccountPrivilegesResponse) SetBody(v *DescribeAccountPrivileges
 }
 
 func (s *DescribeAccountPrivilegesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

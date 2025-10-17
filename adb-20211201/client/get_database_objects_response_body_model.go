@@ -110,7 +110,12 @@ func (s *GetDatabaseObjectsResponseBody) SetTotalCount(v int64) *GetDatabaseObje
 }
 
 func (s *GetDatabaseObjectsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDatabaseObjectsResponseBodyData struct {
@@ -189,5 +194,14 @@ func (s *GetDatabaseObjectsResponseBodyData) SetTotalCount(v int64) *GetDatabase
 }
 
 func (s *GetDatabaseObjectsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DatabaseSummaryModels != nil {
+		for _, item := range s.DatabaseSummaryModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

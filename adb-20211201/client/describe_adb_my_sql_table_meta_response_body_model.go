@@ -95,7 +95,12 @@ func (s *DescribeAdbMySqlTableMetaResponseBody) SetTableMeta(v *DescribeAdbMySql
 }
 
 func (s *DescribeAdbMySqlTableMetaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TableMeta != nil {
+		if err := s.TableMeta.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAdbMySqlTableMetaResponseBodyTableMeta struct {

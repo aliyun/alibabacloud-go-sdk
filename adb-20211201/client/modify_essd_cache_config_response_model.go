@@ -59,5 +59,10 @@ func (s *ModifyEssdCacheConfigResponse) SetBody(v *ModifyEssdCacheConfigResponse
 }
 
 func (s *ModifyEssdCacheConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

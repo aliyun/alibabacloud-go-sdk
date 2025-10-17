@@ -59,5 +59,10 @@ func (s *ApplyAdviceByIdResponse) SetBody(v *ApplyAdviceByIdResponseBody) *Apply
 }
 
 func (s *ApplyAdviceByIdResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

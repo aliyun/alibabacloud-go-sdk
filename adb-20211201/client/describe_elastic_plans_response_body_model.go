@@ -104,7 +104,16 @@ func (s *DescribeElasticPlansResponseBody) SetTotalCount(v int32) *DescribeElast
 }
 
 func (s *DescribeElasticPlansResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ElasticPlans != nil {
+		for _, item := range s.ElasticPlans {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeElasticPlansResponseBodyElasticPlans struct {

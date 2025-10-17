@@ -104,7 +104,12 @@ func (s *ListSparkAppsResponseBody) SetTotalCount(v int64) *ListSparkAppsRespons
 }
 
 func (s *ListSparkAppsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSparkAppsResponseBodyData struct {
@@ -199,5 +204,14 @@ func (s *ListSparkAppsResponseBodyData) SetTotalCount(v int64) *ListSparkAppsRes
 }
 
 func (s *ListSparkAppsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AppInfoList != nil {
+		for _, item := range s.AppInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

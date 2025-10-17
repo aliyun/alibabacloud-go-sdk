@@ -184,7 +184,16 @@ func (s *ListLakeStoragesResponseBody) SetTotalCount(v int32) *ListLakeStoragesR
 }
 
 func (s *ListLakeStoragesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLakeStoragesResponseBodyItems struct {
@@ -409,7 +418,16 @@ func (s *ListLakeStoragesResponseBodyItems) SetUpdateTime(v string) *ListLakeSto
 }
 
 func (s *ListLakeStoragesResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.Permissions != nil {
+		for _, item := range s.Permissions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLakeStoragesResponseBodyItemsPermissions struct {

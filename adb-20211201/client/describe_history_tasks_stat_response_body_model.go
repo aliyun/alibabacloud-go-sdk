@@ -122,7 +122,21 @@ func (s *DescribeHistoryTasksStatResponseBody) SetSuccess(v bool) *DescribeHisto
 }
 
 func (s *DescribeHistoryTasksStatResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AccessDeniedDetail != nil {
+		if err := s.AccessDeniedDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHistoryTasksStatResponseBodyAccessDeniedDetail struct {

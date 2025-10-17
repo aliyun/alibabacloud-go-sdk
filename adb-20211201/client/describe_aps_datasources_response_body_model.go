@@ -108,7 +108,16 @@ func (s *DescribeApsDatasourcesResponseBody) SetTotalCount(v string) *DescribeAp
 }
 
 func (s *DescribeApsDatasourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApsDatasources != nil {
+		for _, item := range s.ApsDatasources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApsDatasourcesResponseBodyApsDatasources struct {

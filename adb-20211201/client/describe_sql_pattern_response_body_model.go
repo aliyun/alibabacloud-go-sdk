@@ -104,7 +104,16 @@ func (s *DescribeSqlPatternResponseBody) SetTotalCount(v int32) *DescribeSqlPatt
 }
 
 func (s *DescribeSqlPatternResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSqlPatternResponseBodyItems struct {

@@ -53,7 +53,12 @@ func (s *DescribeColumnsResponseBody) SetRequestId(v string) *DescribeColumnsRes
 }
 
 func (s *DescribeColumnsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeColumnsResponseBodyItems struct {
@@ -78,7 +83,16 @@ func (s *DescribeColumnsResponseBodyItems) SetColumn(v []*DescribeColumnsRespons
 }
 
 func (s *DescribeColumnsResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.Column != nil {
+		for _, item := range s.Column {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeColumnsResponseBodyItemsColumn struct {

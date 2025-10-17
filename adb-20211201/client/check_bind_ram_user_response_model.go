@@ -59,5 +59,10 @@ func (s *CheckBindRamUserResponse) SetBody(v *CheckBindRamUserResponseBody) *Che
 }
 
 func (s *CheckBindRamUserResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

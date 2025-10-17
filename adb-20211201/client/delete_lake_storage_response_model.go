@@ -59,5 +59,10 @@ func (s *DeleteLakeStorageResponse) SetBody(v *DeleteLakeStorageResponseBody) *D
 }
 
 func (s *DeleteLakeStorageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

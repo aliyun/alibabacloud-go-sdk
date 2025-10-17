@@ -96,7 +96,17 @@ func (s *ConfigureResultExportRequest) SetSlsInfo(v *ConfigureResultExportReques
 }
 
 func (s *ConfigureResultExportRequest) Validate() error {
-	return dara.Validate(s)
+	if s.OssInfo != nil {
+		if err := s.OssInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SlsInfo != nil {
+		if err := s.SlsInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ConfigureResultExportRequestOssInfo struct {

@@ -53,7 +53,12 @@ func (s *GetSparkReplSessionResponseBody) SetRequestId(v string) *GetSparkReplSe
 }
 
 func (s *GetSparkReplSessionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSparkReplSessionResponseBodyData struct {

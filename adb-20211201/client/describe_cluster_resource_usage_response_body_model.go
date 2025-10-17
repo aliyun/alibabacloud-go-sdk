@@ -70,7 +70,12 @@ func (s *DescribeClusterResourceUsageResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribeClusterResourceUsageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterResourceUsageResponseBodyData struct {
@@ -141,7 +146,16 @@ func (s *DescribeClusterResourceUsageResponseBodyData) SetStartTime(v string) *D
 }
 
 func (s *DescribeClusterResourceUsageResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AcuInfo != nil {
+		for _, item := range s.AcuInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClusterResourceUsageResponseBodyDataAcuInfo struct {

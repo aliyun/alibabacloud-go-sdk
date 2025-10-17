@@ -59,5 +59,10 @@ func (s *UnbindAccountResponse) SetBody(v *UnbindAccountResponseBody) *UnbindAcc
 }
 
 func (s *UnbindAccountResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

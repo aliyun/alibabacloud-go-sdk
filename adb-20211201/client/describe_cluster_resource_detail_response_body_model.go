@@ -70,7 +70,12 @@ func (s *DescribeClusterResourceDetailResponseBody) SetRequestId(v string) *Desc
 }
 
 func (s *DescribeClusterResourceDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterResourceDetailResponseBodyData struct {
@@ -156,7 +161,16 @@ func (s *DescribeClusterResourceDetailResponseBodyData) SetStorageResource(v str
 }
 
 func (s *DescribeClusterResourceDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceGroupList != nil {
+		for _, item := range s.ResourceGroupList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClusterResourceDetailResponseBodyDataResourceGroupList struct {

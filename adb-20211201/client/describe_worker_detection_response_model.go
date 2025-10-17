@@ -59,5 +59,10 @@ func (s *DescribeWorkerDetectionResponse) SetBody(v *DescribeWorkerDetectionResp
 }
 
 func (s *DescribeWorkerDetectionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

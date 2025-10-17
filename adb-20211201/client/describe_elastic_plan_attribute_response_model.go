@@ -59,5 +59,10 @@ func (s *DescribeElasticPlanAttributeResponse) SetBody(v *DescribeElasticPlanAtt
 }
 
 func (s *DescribeElasticPlanAttributeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

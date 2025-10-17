@@ -59,6 +59,11 @@ func (s *ExecuteSparkWarehouseBatchSQLResponse) SetBody(v *ExecuteSparkWarehouse
 }
 
 func (s *ExecuteSparkWarehouseBatchSQLResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

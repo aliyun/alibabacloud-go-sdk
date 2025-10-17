@@ -131,5 +131,14 @@ func (s *CstoreIndexModel) SetUpdateTime(v string) *CstoreIndexModel {
 }
 
 func (s *CstoreIndexModel) Validate() error {
-	return dara.Validate(s)
+	if s.IndexColumns != nil {
+		for _, item := range s.IndexColumns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

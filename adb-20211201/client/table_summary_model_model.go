@@ -143,5 +143,10 @@ func (s *TableSummaryModel) SetUpdateTime(v string) *TableSummaryModel {
 }
 
 func (s *TableSummaryModel) Validate() error {
-	return dara.Validate(s)
+	if s.MvDetailModel != nil {
+		if err := s.MvDetailModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

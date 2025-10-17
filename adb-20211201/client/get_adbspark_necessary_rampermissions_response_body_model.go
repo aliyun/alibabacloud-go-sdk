@@ -50,7 +50,12 @@ func (s *GetADBSparkNecessaryRAMPermissionsResponseBody) SetRequestId(v string) 
 }
 
 func (s *GetADBSparkNecessaryRAMPermissionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetADBSparkNecessaryRAMPermissionsResponseBodyData struct {
@@ -101,7 +106,12 @@ func (s *GetADBSparkNecessaryRAMPermissionsResponseBodyData) SetSuggestion(v str
 }
 
 func (s *GetADBSparkNecessaryRAMPermissionsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DeniedDetail != nil {
+		if err := s.DeniedDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetADBSparkNecessaryRAMPermissionsResponseBodyDataDeniedDetail struct {

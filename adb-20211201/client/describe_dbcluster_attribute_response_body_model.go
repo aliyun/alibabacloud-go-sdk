@@ -53,7 +53,12 @@ func (s *DescribeDBClusterAttributeResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeDBClusterAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterAttributeResponseBodyItems struct {
@@ -78,7 +83,16 @@ func (s *DescribeDBClusterAttributeResponseBodyItems) SetDBCluster(v []*Describe
 }
 
 func (s *DescribeDBClusterAttributeResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.DBCluster != nil {
+		for _, item := range s.DBCluster {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
@@ -840,7 +854,17 @@ func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetZoneId(v strin
 }
 
 func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TaskInfo != nil {
+		if err := s.TaskInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterAttributeResponseBodyItemsDBClusterTags struct {
@@ -865,7 +889,16 @@ func (s *DescribeDBClusterAttributeResponseBodyItemsDBClusterTags) SetTag(v []*D
 }
 
 func (s *DescribeDBClusterAttributeResponseBodyItemsDBClusterTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterAttributeResponseBodyItemsDBClusterTagsTag struct {
@@ -989,7 +1022,12 @@ func (s *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo) SetStepLi
 }
 
 func (s *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo) Validate() error {
-	return dara.Validate(s)
+	if s.StepList != nil {
+		if err := s.StepList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepList struct {
@@ -1014,7 +1052,16 @@ func (s *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepList) S
 }
 
 func (s *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepList) Validate() error {
-	return dara.Validate(s)
+	if s.StepList != nil {
+		for _, item := range s.StepList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList struct {

@@ -53,7 +53,12 @@ func (s *ListSparkAppAttemptsResponseBody) SetRequestId(v string) *ListSparkAppA
 }
 
 func (s *ListSparkAppAttemptsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSparkAppAttemptsResponseBodyData struct {
@@ -176,5 +181,14 @@ func (s *ListSparkAppAttemptsResponseBodyData) SetTotalCount(v int64) *ListSpark
 }
 
 func (s *ListSparkAppAttemptsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AttemptInfoList != nil {
+		for _, item := range s.AttemptInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

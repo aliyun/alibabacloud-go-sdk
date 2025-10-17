@@ -53,7 +53,12 @@ func (s *GetSparkAppMetricsResponseBody) SetRequestId(v string) *GetSparkAppMetr
 }
 
 func (s *GetSparkAppMetricsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSparkAppMetricsResponseBodyData struct {
@@ -143,7 +148,12 @@ func (s *GetSparkAppMetricsResponseBodyData) SetScanMetrics(v *GetSparkAppMetric
 }
 
 func (s *GetSparkAppMetricsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ScanMetrics != nil {
+		if err := s.ScanMetrics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSparkAppMetricsResponseBodyDataScanMetrics struct {

@@ -59,5 +59,10 @@ func (s *DescribeComputeResourceUsageResponse) SetBody(v *DescribeComputeResourc
 }
 
 func (s *DescribeComputeResourceUsageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

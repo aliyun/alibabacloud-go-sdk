@@ -184,7 +184,16 @@ func (s *DescribeApsJobsResponseBody) SetTotalCount(v string) *DescribeApsJobsRe
 }
 
 func (s *DescribeApsJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.APSJobs != nil {
+		for _, item := range s.APSJobs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApsJobsResponseBodyAPSJobs struct {

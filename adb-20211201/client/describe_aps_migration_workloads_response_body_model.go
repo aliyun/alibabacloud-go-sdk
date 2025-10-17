@@ -104,7 +104,16 @@ func (s *DescribeApsMigrationWorkloadsResponseBody) SetTotalCount(v int32) *Desc
 }
 
 func (s *DescribeApsMigrationWorkloadsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MigrationWorkloads != nil {
+		for _, item := range s.MigrationWorkloads {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads struct {

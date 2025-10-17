@@ -59,5 +59,10 @@ func (s *DescribeSQLWebSocketDomainResponse) SetBody(v *DescribeSQLWebSocketDoma
 }
 
 func (s *DescribeSQLWebSocketDomainResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

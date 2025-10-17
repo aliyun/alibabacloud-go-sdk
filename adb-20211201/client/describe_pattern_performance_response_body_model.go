@@ -159,7 +159,16 @@ func (s *DescribePatternPerformanceResponseBody) SetUser(v string) *DescribePatt
 }
 
 func (s *DescribePatternPerformanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Performances != nil {
+		for _, item := range s.Performances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePatternPerformanceResponseBodyPerformances struct {
@@ -233,7 +242,16 @@ func (s *DescribePatternPerformanceResponseBodyPerformances) SetUnit(v string) *
 }
 
 func (s *DescribePatternPerformanceResponseBodyPerformances) Validate() error {
-	return dara.Validate(s)
+	if s.Series != nil {
+		for _, item := range s.Series {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePatternPerformanceResponseBodyPerformancesSeries struct {

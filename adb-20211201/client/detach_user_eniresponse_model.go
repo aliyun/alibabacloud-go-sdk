@@ -59,5 +59,10 @@ func (s *DetachUserENIResponse) SetBody(v *DetachUserENIResponseBody) *DetachUse
 }
 
 func (s *DetachUserENIResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

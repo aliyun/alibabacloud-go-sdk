@@ -53,7 +53,12 @@ func (s *CreateSparkTemplateResponseBody) SetRequestId(v string) *CreateSparkTem
 }
 
 func (s *CreateSparkTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateSparkTemplateResponseBodyData struct {

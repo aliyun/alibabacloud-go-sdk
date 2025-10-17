@@ -104,5 +104,10 @@ func (s *GetTableResponseBody) SetTable(v *TableModel) *GetTableResponseBody {
 }
 
 func (s *GetTableResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Table != nil {
+		if err := s.Table.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

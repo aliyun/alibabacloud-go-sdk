@@ -116,7 +116,22 @@ func (s *DescribeDBClusterHealthStatusResponseBody) SetWorker(v *DescribeDBClust
 }
 
 func (s *DescribeDBClusterHealthStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CS != nil {
+		if err := s.CS.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Executor != nil {
+		if err := s.Executor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Worker != nil {
+		if err := s.Worker.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterHealthStatusResponseBodyCS struct {

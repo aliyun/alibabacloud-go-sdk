@@ -87,7 +87,16 @@ func (s *DescribeAbnormalPatternDetectionResponseBody) SetTotalCount(v string) *
 }
 
 func (s *DescribeAbnormalPatternDetectionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DetectionItems != nil {
+		for _, item := range s.DetectionItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAbnormalPatternDetectionResponseBodyDetectionItems struct {
@@ -128,7 +137,16 @@ func (s *DescribeAbnormalPatternDetectionResponseBodyDetectionItems) SetResults(
 }
 
 func (s *DescribeAbnormalPatternDetectionResponseBodyDetectionItems) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults struct {

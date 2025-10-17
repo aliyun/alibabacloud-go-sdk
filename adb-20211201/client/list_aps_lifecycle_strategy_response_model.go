@@ -59,5 +59,10 @@ func (s *ListApsLifecycleStrategyResponse) SetBody(v *ListApsLifecycleStrategyRe
 }
 
 func (s *ListApsLifecycleStrategyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

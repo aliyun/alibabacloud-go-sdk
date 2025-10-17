@@ -133,7 +133,12 @@ func (s *UpdateLakeStorageResponseBody) SetSuccess(v bool) *UpdateLakeStorageRes
 }
 
 func (s *UpdateLakeStorageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateLakeStorageResponseBodyData struct {
@@ -358,7 +363,16 @@ func (s *UpdateLakeStorageResponseBodyData) SetUpdateTime(v string) *UpdateLakeS
 }
 
 func (s *UpdateLakeStorageResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Permissions != nil {
+		for _, item := range s.Permissions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateLakeStorageResponseBodyDataPermissions struct {

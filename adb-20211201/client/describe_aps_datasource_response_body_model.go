@@ -53,7 +53,12 @@ func (s *DescribeApsDatasourceResponseBody) SetRequestId(v string) *DescribeApsD
 }
 
 func (s *DescribeApsDatasourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApsDatasource != nil {
+		if err := s.ApsDatasource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApsDatasourceResponseBodyApsDatasource struct {
@@ -233,7 +238,37 @@ func (s *DescribeApsDatasourceResponseBodyApsDatasource) SetSlsInfo(v *DescribeA
 }
 
 func (s *DescribeApsDatasourceResponseBodyApsDatasource) Validate() error {
-	return dara.Validate(s)
+	if s.DatabricksInfo != nil {
+		if err := s.DatabricksInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HiveInfo != nil {
+		if err := s.HiveInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.KafkaInfo != nil {
+		if err := s.KafkaInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PolarDBMysqlInfo != nil {
+		if err := s.PolarDBMysqlInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RdsMysqlInfo != nil {
+		if err := s.RdsMysqlInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SlsInfo != nil {
+		if err := s.SlsInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApsDatasourceResponseBodyApsDatasourceDatabricksInfo struct {

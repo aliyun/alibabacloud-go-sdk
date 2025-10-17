@@ -133,7 +133,12 @@ func (s *GetLakeStorageResponseBody) SetSuccess(v bool) *GetLakeStorageResponseB
 }
 
 func (s *GetLakeStorageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLakeStorageResponseBodyData struct {
@@ -358,7 +363,16 @@ func (s *GetLakeStorageResponseBodyData) SetUpdateTime(v string) *GetLakeStorage
 }
 
 func (s *GetLakeStorageResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Permissions != nil {
+		for _, item := range s.Permissions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLakeStorageResponseBodyDataPermissions struct {

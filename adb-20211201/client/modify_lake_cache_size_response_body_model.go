@@ -70,7 +70,12 @@ func (s *ModifyLakeCacheSizeResponseBody) SetRequestId(v string) *ModifyLakeCach
 }
 
 func (s *ModifyLakeCacheSizeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyLakeCacheSizeResponseBodyData struct {

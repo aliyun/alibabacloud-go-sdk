@@ -59,5 +59,10 @@ func (s *StartSparkReplSessionResponse) SetBody(v *StartSparkReplSessionResponse
 }
 
 func (s *StartSparkReplSessionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

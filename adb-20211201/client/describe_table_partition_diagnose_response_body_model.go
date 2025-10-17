@@ -201,7 +201,25 @@ func (s *DescribeTablePartitionDiagnoseResponseBody) SetTotalCount(v int32) *Des
 }
 
 func (s *DescribeTablePartitionDiagnoseResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DetectionItems != nil {
+		for _, item := range s.DetectionItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTablePartitionDiagnoseResponseBodyDetectionItems struct {

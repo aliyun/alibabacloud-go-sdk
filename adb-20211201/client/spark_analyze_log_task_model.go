@@ -170,5 +170,10 @@ func (s *SparkAnalyzeLogTask) SetUserId(v int64) *SparkAnalyzeLogTask {
 }
 
 func (s *SparkAnalyzeLogTask) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

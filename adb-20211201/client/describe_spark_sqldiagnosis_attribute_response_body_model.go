@@ -149,7 +149,26 @@ func (s *DescribeSparkSQLDiagnosisAttributeResponseBody) SetRoot(v *OperatorNode
 }
 
 func (s *DescribeSparkSQLDiagnosisAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DiagnosisInfos != nil {
+		for _, item := range s.DiagnosisInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OperatorListSortedByMetrics != nil {
+		if err := s.OperatorListSortedByMetrics.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Root != nil {
+		if err := s.Root.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetrics struct {
@@ -186,5 +205,23 @@ func (s *DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetri
 }
 
 func (s *DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetrics) Validate() error {
-	return dara.Validate(s)
+	if s.OperatorListSortedByExclusiveTime != nil {
+		for _, item := range s.OperatorListSortedByExclusiveTime {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OperatorListSortedByMaxMemory != nil {
+		for _, item := range s.OperatorListSortedByMaxMemory {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

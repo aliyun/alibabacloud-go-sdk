@@ -70,7 +70,12 @@ func (s *DescribeClusterNetInfoResponseBody) SetRequestId(v string) *DescribeClu
 }
 
 func (s *DescribeClusterNetInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterNetInfoResponseBodyItems struct {
@@ -95,7 +100,16 @@ func (s *DescribeClusterNetInfoResponseBodyItems) SetAddress(v []*DescribeCluste
 }
 
 func (s *DescribeClusterNetInfoResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.Address != nil {
+		for _, item := range s.Address {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClusterNetInfoResponseBodyItemsAddress struct {
@@ -246,7 +260,12 @@ func (s *DescribeClusterNetInfoResponseBodyItemsAddress) SetVSwitchId(v string) 
 }
 
 func (s *DescribeClusterNetInfoResponseBodyItemsAddress) Validate() error {
-	return dara.Validate(s)
+	if s.Ports != nil {
+		if err := s.Ports.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterNetInfoResponseBodyItemsAddressPorts struct {
@@ -271,7 +290,16 @@ func (s *DescribeClusterNetInfoResponseBodyItemsAddressPorts) SetPorts(v []*Desc
 }
 
 func (s *DescribeClusterNetInfoResponseBodyItemsAddressPorts) Validate() error {
-	return dara.Validate(s)
+	if s.Ports != nil {
+		for _, item := range s.Ports {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClusterNetInfoResponseBodyItemsAddressPortsPorts struct {

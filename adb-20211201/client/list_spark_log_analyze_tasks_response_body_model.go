@@ -53,7 +53,12 @@ func (s *ListSparkLogAnalyzeTasksResponseBody) SetRequestId(v string) *ListSpark
 }
 
 func (s *ListSparkLogAnalyzeTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSparkLogAnalyzeTasksResponseBodyData struct {
@@ -124,5 +129,14 @@ func (s *ListSparkLogAnalyzeTasksResponseBodyData) SetTotalCount(v int64) *ListS
 }
 
 func (s *ListSparkLogAnalyzeTasksResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.TaskList != nil {
+		for _, item := range s.TaskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

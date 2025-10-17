@@ -123,7 +123,16 @@ func (s *DescribeAvailableAdvicesResponseBody) SetTotalCount(v int64) *DescribeA
 }
 
 func (s *DescribeAvailableAdvicesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableAdvicesResponseBodyItems struct {

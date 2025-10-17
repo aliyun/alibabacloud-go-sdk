@@ -185,7 +185,12 @@ func (s *CreatePerformanceViewRequest) SetViewName(v string) *CreatePerformanceV
 }
 
 func (s *CreatePerformanceViewRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ViewDetail != nil {
+		if err := s.ViewDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreatePerformanceViewRequestViewDetail struct {
@@ -245,7 +250,16 @@ func (s *CreatePerformanceViewRequestViewDetail) SetChartsPerLine(v int32) *Crea
 }
 
 func (s *CreatePerformanceViewRequestViewDetail) Validate() error {
-	return dara.Validate(s)
+	if s.Categories != nil {
+		for _, item := range s.Categories {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreatePerformanceViewRequestViewDetailCategories struct {
@@ -294,7 +308,16 @@ func (s *CreatePerformanceViewRequestViewDetailCategories) SetKeys(v []*CreatePe
 }
 
 func (s *CreatePerformanceViewRequestViewDetailCategories) Validate() error {
-	return dara.Validate(s)
+	if s.Keys != nil {
+		for _, item := range s.Keys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreatePerformanceViewRequestViewDetailCategoriesKeys struct {

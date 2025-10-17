@@ -180,7 +180,16 @@ func (s *ListApsLifecycleStrategyResponseBody) SetTotalCount(v int64) *ListApsLi
 }
 
 func (s *ListApsLifecycleStrategyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApsLifecycleStrategyResponseBodyItems struct {
@@ -375,7 +384,16 @@ func (s *ListApsLifecycleStrategyResponseBodyItems) SetStrategyValue(v string) *
 }
 
 func (s *ListApsLifecycleStrategyResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.OperationTables != nil {
+		for _, item := range s.OperationTables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApsLifecycleStrategyResponseBodyItemsOperationTables struct {

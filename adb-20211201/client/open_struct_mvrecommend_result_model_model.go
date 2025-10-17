@@ -95,5 +95,14 @@ func (s *OpenStructMVRecommendResultModel) SetSupportIncrementalRefresh(v bool) 
 }
 
 func (s *OpenStructMVRecommendResultModel) Validate() error {
-	return dara.Validate(s)
+	if s.BaseTables != nil {
+		for _, item := range s.BaseTables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

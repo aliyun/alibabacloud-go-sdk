@@ -456,7 +456,16 @@ func (s *CreateApsKafkaHudiJobRequest) SetWorkloadName(v string) *CreateApsKafka
 }
 
 func (s *CreateApsKafkaHudiJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Columns != nil {
+		for _, item := range s.Columns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateApsKafkaHudiJobRequestColumns struct {

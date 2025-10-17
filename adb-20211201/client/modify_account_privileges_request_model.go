@@ -95,7 +95,16 @@ func (s *ModifyAccountPrivilegesRequest) SetRegionId(v string) *ModifyAccountPri
 }
 
 func (s *ModifyAccountPrivilegesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AccountPrivileges != nil {
+		for _, item := range s.AccountPrivileges {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyAccountPrivilegesRequestAccountPrivileges struct {
@@ -147,7 +156,12 @@ func (s *ModifyAccountPrivilegesRequestAccountPrivileges) SetPrivileges(v []*str
 }
 
 func (s *ModifyAccountPrivilegesRequestAccountPrivileges) Validate() error {
-	return dara.Validate(s)
+	if s.PrivilegeObject != nil {
+		if err := s.PrivilegeObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyAccountPrivilegesRequestAccountPrivilegesPrivilegeObject struct {

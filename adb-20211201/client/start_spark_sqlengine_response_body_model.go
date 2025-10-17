@@ -53,7 +53,12 @@ func (s *StartSparkSQLEngineResponseBody) SetRequestId(v string) *StartSparkSQLE
 }
 
 func (s *StartSparkSQLEngineResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartSparkSQLEngineResponseBodyData struct {

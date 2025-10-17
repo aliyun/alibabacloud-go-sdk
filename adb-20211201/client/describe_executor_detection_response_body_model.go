@@ -87,7 +87,16 @@ func (s *DescribeExecutorDetectionResponseBody) SetTotalCount(v string) *Describ
 }
 
 func (s *DescribeExecutorDetectionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DetectionItems != nil {
+		for _, item := range s.DetectionItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeExecutorDetectionResponseBodyDetectionItems struct {
@@ -164,7 +173,12 @@ func (s *DescribeExecutorDetectionResponseBodyDetectionItems) SetStatus(v string
 }
 
 func (s *DescribeExecutorDetectionResponseBodyDetectionItems) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		if err := s.Results.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeExecutorDetectionResponseBodyDetectionItemsResults struct {
@@ -201,7 +215,25 @@ func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResults) SetOperator
 }
 
 func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResults) Validate() error {
-	return dara.Validate(s)
+	if s.OperatorAgg != nil {
+		for _, item := range s.OperatorAgg {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OperatorDetails != nil {
+		for _, item := range s.OperatorDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAgg struct {
@@ -242,7 +274,16 @@ func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAgg) 
 }
 
 func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAgg) Validate() error {
-	return dara.Validate(s)
+	if s.SearchResults != nil {
+		for _, item := range s.SearchResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults struct {
@@ -373,7 +414,16 @@ func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetai
 }
 
 func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetails) Validate() error {
-	return dara.Validate(s)
+	if s.SearchResults != nil {
+		for _, item := range s.SearchResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults struct {

@@ -70,7 +70,12 @@ func (s *DescribeStorageResourceUsageResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribeStorageResourceUsageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeStorageResourceUsageResponseBodyData struct {
@@ -141,7 +146,16 @@ func (s *DescribeStorageResourceUsageResponseBodyData) SetStartTime(v string) *D
 }
 
 func (s *DescribeStorageResourceUsageResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AcuInfo != nil {
+		for _, item := range s.AcuInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeStorageResourceUsageResponseBodyDataAcuInfo struct {

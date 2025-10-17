@@ -59,5 +59,10 @@ func (s *DescribeApsHiveWorkloadResponse) SetBody(v *DescribeApsHiveWorkloadResp
 }
 
 func (s *DescribeApsHiveWorkloadResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

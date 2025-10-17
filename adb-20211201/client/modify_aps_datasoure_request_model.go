@@ -199,7 +199,32 @@ func (s *ModifyApsDatasoureRequest) SetSlsInfo(v *ModifyApsDatasoureRequestSlsIn
 }
 
 func (s *ModifyApsDatasoureRequest) Validate() error {
-	return dara.Validate(s)
+	if s.KafkaInfo != nil {
+		if err := s.KafkaInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LakehouseId != nil {
+		if err := s.LakehouseId.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PolarDBMysqlInfo != nil {
+		if err := s.PolarDBMysqlInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RdsMysqlInfo != nil {
+		if err := s.RdsMysqlInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SlsInfo != nil {
+		if err := s.SlsInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyApsDatasoureRequestKafkaInfo struct {

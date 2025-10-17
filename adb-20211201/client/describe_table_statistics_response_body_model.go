@@ -138,7 +138,12 @@ func (s *DescribeTableStatisticsResponseBody) SetTotalCount(v string) *DescribeT
 }
 
 func (s *DescribeTableStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTableStatisticsResponseBodyItems struct {
@@ -163,7 +168,16 @@ func (s *DescribeTableStatisticsResponseBodyItems) SetTableStatisticRecords(v []
 }
 
 func (s *DescribeTableStatisticsResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.TableStatisticRecords != nil {
+		for _, item := range s.TableStatisticRecords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTableStatisticsResponseBodyItemsTableStatisticRecords struct {

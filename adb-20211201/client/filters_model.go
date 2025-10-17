@@ -107,7 +107,22 @@ func (s *Filters) SetTermiatedTimeRange(v *FiltersTermiatedTimeRange) *Filters {
 }
 
 func (s *Filters) Validate() error {
-	return dara.Validate(s)
+	if s.ExecutionTimeRange != nil {
+		if err := s.ExecutionTimeRange.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubmitTimeRange != nil {
+		if err := s.SubmitTimeRange.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TermiatedTimeRange != nil {
+		if err := s.TermiatedTimeRange.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FiltersExecutionTimeRange struct {

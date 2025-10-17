@@ -264,5 +264,14 @@ func (s *DescribeSparkAppDiagnosisInfoResponseBody) SetState(v string) *Describe
 }
 
 func (s *DescribeSparkAppDiagnosisInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DiagnosisInfoList != nil {
+		for _, item := range s.DiagnosisInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

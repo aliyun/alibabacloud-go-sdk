@@ -53,7 +53,12 @@ func (s *DescribeAccountAllPrivilegesResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribeAccountAllPrivilegesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAccountAllPrivilegesResponseBodyData struct {
@@ -109,7 +114,16 @@ func (s *DescribeAccountAllPrivilegesResponseBodyData) SetTruncated(v bool) *Des
 }
 
 func (s *DescribeAccountAllPrivilegesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAccountAllPrivilegesResponseBodyDataResult struct {
@@ -161,7 +175,12 @@ func (s *DescribeAccountAllPrivilegesResponseBodyDataResult) SetPrivileges(v []*
 }
 
 func (s *DescribeAccountAllPrivilegesResponseBodyDataResult) Validate() error {
-	return dara.Validate(s)
+	if s.PrivilegeObject != nil {
+		if err := s.PrivilegeObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAccountAllPrivilegesResponseBodyDataResultPrivilegeObject struct {

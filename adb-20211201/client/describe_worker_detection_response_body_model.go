@@ -87,7 +87,16 @@ func (s *DescribeWorkerDetectionResponseBody) SetTotalCount(v string) *DescribeW
 }
 
 func (s *DescribeWorkerDetectionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DetectionItems != nil {
+		for _, item := range s.DetectionItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWorkerDetectionResponseBodyDetectionItems struct {
@@ -164,7 +173,12 @@ func (s *DescribeWorkerDetectionResponseBodyDetectionItems) SetStatus(v string) 
 }
 
 func (s *DescribeWorkerDetectionResponseBodyDetectionItems) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		if err := s.Results.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeWorkerDetectionResponseBodyDetectionItemsResults struct {
@@ -234,7 +248,52 @@ func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResults) SetTopAccessT
 }
 
 func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResults) Validate() error {
-	return dara.Validate(s)
+	if s.OperatorAgg != nil {
+		for _, item := range s.OperatorAgg {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OperatorDetails != nil {
+		for _, item := range s.OperatorDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PartitionedTables != nil {
+		for _, item := range s.PartitionedTables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SkewedTables != nil {
+		for _, item := range s.SkewedTables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TopAccessTables != nil {
+		for _, item := range s.TopAccessTables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAgg struct {
@@ -275,7 +334,16 @@ func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAgg) Se
 }
 
 func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAgg) Validate() error {
-	return dara.Validate(s)
+	if s.SearchResults != nil {
+		for _, item := range s.SearchResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults struct {
@@ -406,7 +474,16 @@ func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetails
 }
 
 func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetails) Validate() error {
-	return dara.Validate(s)
+	if s.SearchResults != nil {
+		for _, item := range s.SearchResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults struct {
@@ -882,7 +959,16 @@ func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTables
 }
 
 func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTables) Validate() error {
-	return dara.Validate(s)
+	if s.SearchResults != nil {
+		for _, item := range s.SearchResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSearchResults struct {

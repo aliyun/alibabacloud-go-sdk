@@ -59,5 +59,10 @@ func (s *ModifyClusterAccessWhiteListResponse) SetBody(v *ModifyClusterAccessWhi
 }
 
 func (s *ModifyClusterAccessWhiteListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

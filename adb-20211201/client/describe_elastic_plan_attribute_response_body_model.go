@@ -53,7 +53,12 @@ func (s *DescribeElasticPlanAttributeResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribeElasticPlanAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ElasticPlan != nil {
+		if err := s.ElasticPlan.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeElasticPlanAttributeResponseBodyElasticPlan struct {

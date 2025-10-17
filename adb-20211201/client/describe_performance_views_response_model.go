@@ -59,5 +59,10 @@ func (s *DescribePerformanceViewsResponse) SetBody(v *DescribePerformanceViewsRe
 }
 
 func (s *DescribePerformanceViewsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *DescribeDBClusterSpaceSummaryResponseBody) SetRequestId(v string) *Desc
 }
 
 func (s *DescribeDBClusterSpaceSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterSpaceSummaryResponseBodyData struct {
@@ -118,7 +123,22 @@ func (s *DescribeDBClusterSpaceSummaryResponseBodyData) SetTotalSize(v string) *
 }
 
 func (s *DescribeDBClusterSpaceSummaryResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ColdData != nil {
+		if err := s.ColdData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataGrowth != nil {
+		if err := s.DataGrowth.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HotData != nil {
+		if err := s.HotData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterSpaceSummaryResponseBodyDataColdData struct {

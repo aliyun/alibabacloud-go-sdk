@@ -150,7 +150,21 @@ func (s *DescribeInclinedTablesResponseBody) SetTotalCount(v string) *DescribeIn
 }
 
 func (s *DescribeInclinedTablesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DetectionItems != nil {
+		for _, item := range s.DetectionItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInclinedTablesResponseBodyDetectionItems struct {
@@ -240,7 +254,16 @@ func (s *DescribeInclinedTablesResponseBodyItems) SetTable(v []*DescribeInclined
 }
 
 func (s *DescribeInclinedTablesResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.Table != nil {
+		for _, item := range s.Table {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInclinedTablesResponseBodyItemsTable struct {

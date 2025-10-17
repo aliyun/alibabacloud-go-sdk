@@ -53,7 +53,16 @@ func (s *DescribeDBResourceGroupResponseBody) SetRequestId(v string) *DescribeDB
 }
 
 func (s *DescribeDBResourceGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GroupsInfo != nil {
+		for _, item := range s.GroupsInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
@@ -413,22 +422,49 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetUpdateTime(v string) 
 }
 
 func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) Validate() error {
-	return dara.Validate(s)
+	if s.RayConfig != nil {
+		if err := s.RayConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig struct {
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// if can be null:
+	// true
+	AppConfig *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfig `json:"AppConfig,omitempty" xml:"AppConfig,omitempty" type:"Struct"`
+	Category  *string                                                          `json:"Category,omitempty" xml:"Category,omitempty"`
 	// if can be null:
 	// false
-	EnableUserEni       *bool                                                                 `json:"EnableUserEni,omitempty" xml:"EnableUserEni,omitempty"`
-	HeadAllocateUnit    *string                                                               `json:"HeadAllocateUnit,omitempty" xml:"HeadAllocateUnit,omitempty"`
-	HeadDiskCapacity    *string                                                               `json:"HeadDiskCapacity,omitempty" xml:"HeadDiskCapacity,omitempty"`
-	HeadSpec            *string                                                               `json:"HeadSpec,omitempty" xml:"HeadSpec,omitempty"`
-	HeadSpecType        *string                                                               `json:"HeadSpecType,omitempty" xml:"HeadSpecType,omitempty"`
-	RayClusterAddress   *string                                                               `json:"RayClusterAddress,omitempty" xml:"RayClusterAddress,omitempty"`
-	RayDashboardAddress *string                                                               `json:"RayDashboardAddress,omitempty" xml:"RayDashboardAddress,omitempty"`
-	RayGrafanaAddress   *string                                                               `json:"RayGrafanaAddress,omitempty" xml:"RayGrafanaAddress,omitempty"`
-	WorkerGroups        []*DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups `json:"WorkerGroups,omitempty" xml:"WorkerGroups,omitempty" type:"Repeated"`
+	EnableUserEni    *bool   `json:"EnableUserEni,omitempty" xml:"EnableUserEni,omitempty"`
+	HeadAllocateUnit *string `json:"HeadAllocateUnit,omitempty" xml:"HeadAllocateUnit,omitempty"`
+	HeadDiskCapacity *string `json:"HeadDiskCapacity,omitempty" xml:"HeadDiskCapacity,omitempty"`
+	HeadSpec         *string `json:"HeadSpec,omitempty" xml:"HeadSpec,omitempty"`
+	HeadSpecType     *string `json:"HeadSpecType,omitempty" xml:"HeadSpecType,omitempty"`
+	// example:
+	//
+	// http://ray-cluster-address.example.com
+	RayClusterAddress *string `json:"RayClusterAddress,omitempty" xml:"RayClusterAddress,omitempty"`
+	// example:
+	//
+	// http://ray-dashboard-address.example.com
+	RayDashboardAddress *string `json:"RayDashboardAddress,omitempty" xml:"RayDashboardAddress,omitempty"`
+	// example:
+	//
+	// http://ray-grafana-address.example.com
+	RayGrafanaAddress *string                                                                `json:"RayGrafanaAddress,omitempty" xml:"RayGrafanaAddress,omitempty"`
+	StorageMounts     []*DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts `json:"StorageMounts,omitempty" xml:"StorageMounts,omitempty" type:"Repeated"`
+	WorkerGroups      []*DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups  `json:"WorkerGroups,omitempty" xml:"WorkerGroups,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) String() string {
@@ -437,6 +473,10 @@ func (s DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) String() string 
 
 func (s DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) GetAppConfig() *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfig {
+	return s.AppConfig
 }
 
 func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) GetCategory() *string {
@@ -475,8 +515,17 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) GetRayGrafanaAd
 	return s.RayGrafanaAddress
 }
 
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) GetStorageMounts() []*DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts {
+	return s.StorageMounts
+}
+
 func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) GetWorkerGroups() []*DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups {
 	return s.WorkerGroups
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) SetAppConfig(v *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfig) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig {
+	s.AppConfig = v
+	return s
 }
 
 func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) SetCategory(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig {
@@ -524,23 +573,225 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) SetRayGrafanaAd
 	return s
 }
 
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) SetStorageMounts(v []*DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig {
+	s.StorageMounts = v
+	return s
+}
+
 func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) SetWorkerGroups(v []*DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig {
 	s.WorkerGroups = v
 	return s
 }
 
 func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) Validate() error {
+	if s.AppConfig != nil {
+		if err := s.AppConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StorageMounts != nil {
+		for _, item := range s.StorageMounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.WorkerGroups != nil {
+		for _, item := range s.WorkerGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfig struct {
+	// example:
+	//
+	// app01
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// IsaacLab
+	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// if can be null:
+	// true
+	ImageSelector *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfigImageSelector `json:"ImageSelector,omitempty" xml:"ImageSelector,omitempty" type:"Struct"`
+}
+
+func (s DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfig) GetAppName() *string {
+	return s.AppName
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfig) GetAppType() *string {
+	return s.AppType
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfig) GetImageSelector() *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfigImageSelector {
+	return s.ImageSelector
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfig) SetAppName(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfig {
+	s.AppName = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfig) SetAppType(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfig {
+	s.AppType = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfig) SetImageSelector(v *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfigImageSelector) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfig {
+	s.ImageSelector = v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfig) Validate() error {
+	if s.ImageSelector != nil {
+		if err := s.ImageSelector.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfigImageSelector struct {
+	// example:
+	//
+	// lab2.10.0-ray2.43.0
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// example:
+	//
+	// vLLM
+	InferenceEngine *string `json:"InferenceEngine,omitempty" xml:"InferenceEngine,omitempty"`
+	// example:
+	//
+	// Deepseek-R1
+	LlmModel *string `json:"LlmModel,omitempty" xml:"LlmModel,omitempty"`
+}
+
+func (s DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfigImageSelector) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfigImageSelector) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfigImageSelector) GetImage() *string {
+	return s.Image
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfigImageSelector) GetInferenceEngine() *string {
+	return s.InferenceEngine
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfigImageSelector) GetLlmModel() *string {
+	return s.LlmModel
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfigImageSelector) SetImage(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfigImageSelector {
+	s.Image = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfigImageSelector) SetInferenceEngine(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfigImageSelector {
+	s.InferenceEngine = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfigImageSelector) SetLlmModel(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfigImageSelector {
+	s.LlmModel = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfigImageSelector) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts struct {
+	// example:
+	//
+	// /mnt/data01
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// example:
+	//
+	// 1
+	StorageId *int64 `json:"StorageId,omitempty" xml:"StorageId,omitempty"`
+}
+
+func (s DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts) GetMountPath() *string {
+	return s.MountPath
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts) GetStorageId() *int64 {
+	return s.StorageId
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts) SetMountPath(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts {
+	s.MountPath = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts) SetStorageId(v int64) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts {
+	s.StorageId = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts) Validate() error {
 	return dara.Validate(s)
 }
 
 type DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups struct {
-	AllocateUnit       *string `json:"AllocateUnit,omitempty" xml:"AllocateUnit,omitempty"`
-	GroupName          *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	MaxWorkerQuantity  *int32  `json:"MaxWorkerQuantity,omitempty" xml:"MaxWorkerQuantity,omitempty"`
-	MinWorkerQuantity  *int32  `json:"MinWorkerQuantity,omitempty" xml:"MinWorkerQuantity,omitempty"`
+	// example:
+	//
+	// 1
+	AllocateUnit *string `json:"AllocateUnit,omitempty" xml:"AllocateUnit,omitempty"`
+	// example:
+	//
+	// g01
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// 1
+	MaxWorkerQuantity *int32 `json:"MaxWorkerQuantity,omitempty" xml:"MaxWorkerQuantity,omitempty"`
+	// example:
+	//
+	// 1
+	MinWorkerQuantity *int32 `json:"MinWorkerQuantity,omitempty" xml:"MinWorkerQuantity,omitempty"`
+	// example:
+	//
+	// 100G
 	WorkerDiskCapacity *string `json:"WorkerDiskCapacity,omitempty" xml:"WorkerDiskCapacity,omitempty"`
-	WorkerSpecName     *string `json:"WorkerSpecName,omitempty" xml:"WorkerSpecName,omitempty"`
-	WorkerSpecType     *string `json:"WorkerSpecType,omitempty" xml:"WorkerSpecType,omitempty"`
+	// example:
+	//
+	// large
+	WorkerSpecName *string `json:"WorkerSpecName,omitempty" xml:"WorkerSpecName,omitempty"`
+	// example:
+	//
+	// CPU
+	WorkerSpecType *string `json:"WorkerSpecType,omitempty" xml:"WorkerSpecType,omitempty"`
 }
 
 func (s DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups) String() string {

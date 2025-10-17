@@ -59,5 +59,10 @@ func (s *DisableElasticPlanResponse) SetBody(v *DisableElasticPlanResponseBody) 
 }
 
 func (s *DisableElasticPlanResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

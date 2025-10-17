@@ -53,7 +53,12 @@ func (s *DeleteSparkTemplateFileResponseBody) SetRequestId(v string) *DeleteSpar
 }
 
 func (s *DeleteSparkTemplateFileResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteSparkTemplateFileResponseBodyData struct {
