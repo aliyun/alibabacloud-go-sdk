@@ -26,30 +26,56 @@ type iDeepfakeDetectIntlStreamRequest interface {
 }
 
 type DeepfakeDetectIntlStreamRequest struct {
+	// Enter the Base64 encoded format of the face image; for video formats, it is recommended to input via stream.
+	//
 	// example:
 	//
 	// /9j/4AAQSkZJRgABAQAASxxxxxxx
 	FaceBase64 *string `json:"FaceBase64,omitempty" xml:"FaceBase64,omitempty"`
+	// Image input stream.
+	//
 	// example:
 	//
 	// -
 	FaceFile *string `json:"FaceFile,omitempty" xml:"FaceFile,omitempty"`
+	// Face material input type:
+	//
+	// - IMAGE (default): Face image
+	//
+	// - VIDEO: Face video
+	//
+	// Note: Video processing takes longer, it is recommended to set the timeout > 3S.
+	//
 	// example:
 	//
 	// IMAGE
 	FaceInputType *string `json:"FaceInputType,omitempty" xml:"FaceInputType,omitempty"`
+	// Enter the URL address of the face image.
+	//
 	// example:
 	//
 	// https://cn-shanghai-aliyun-cloudauth-xxxxxx.oss-cn-shanghai.aliyuncs.com/verify/xxxxx/xxxxx.jpeg
 	FaceUrl *string `json:"FaceUrl,omitempty" xml:"FaceUrl,omitempty"`
+	// A unique identifier for the merchant\\"s request, consisting of a 32-character alphanumeric combination.
+	//
+	// The first few characters are composed of a custom abbreviation defined by the merchant, the middle part can include a period of time, and the latter part can use a random or incremental sequence.
+	//
 	// example:
 	//
 	// e0c34a***353888
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	// The product solution to be integrated.
+	//
+	// Value: FACE_DEEPFAKE
+	//
 	// example:
 	//
 	// FACE_DEEPFAKE
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// Your custom authentication scenario ID, used for querying related records by entering this scenario ID in the console later.
+	//
+	// Supports a combination of 10 characters, including letters, numbers, or underscores.
+	//
 	// example:
 	//
 	// 123****123

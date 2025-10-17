@@ -59,5 +59,10 @@ func (s *ModifyFaceGroupResponse) SetBody(v *ModifyFaceGroupResponseBody) *Modif
 }
 
 func (s *ModifyFaceGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

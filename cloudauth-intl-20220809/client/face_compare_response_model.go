@@ -59,5 +59,10 @@ func (s *FaceCompareResponse) SetBody(v *FaceCompareResponseBody) *FaceCompareRe
 }
 
 func (s *FaceCompareResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

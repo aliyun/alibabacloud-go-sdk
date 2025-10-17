@@ -28,40 +28,56 @@ type iQueryFaceRecordRequest interface {
 }
 
 type QueryFaceRecordRequest struct {
+	// Current Page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Face Group Code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Cu****D08q
 	FaceGroupCode *string `json:"FaceGroupCode,omitempty" xml:"FaceGroupCode,omitempty"`
+	// Face ID.
+	//
 	// example:
 	//
 	// 5006538
 	FaceId *string `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
+	// Number of rows per page for paginated queries.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Merchant User ID.
+	//
 	// example:
 	//
 	// CuN6hiD08qr
 	MerchantUserId *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
+	// Used to request the next page of search results.
+	//
 	// example:
 	//
 	// AAAAARbaCuN6hiD08qrLdwJ9Fh0OP1yH8z+7FV4KKGUw4X32
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Number of items per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Registration Type.
+	//
 	// example:
 	//
 	// MANUAL

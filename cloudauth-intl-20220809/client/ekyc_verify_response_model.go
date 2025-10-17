@@ -59,6 +59,11 @@ func (s *EkycVerifyResponse) SetBody(v *EkycVerifyResponseBody) *EkycVerifyRespo
 }
 
 func (s *EkycVerifyResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

@@ -87,7 +87,12 @@ func (s *CardOcrResponseBody) SetResult(v *CardOcrResponseBodyResult) *CardOcrRe
 }
 
 func (s *CardOcrResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CardOcrResponseBodyResult struct {

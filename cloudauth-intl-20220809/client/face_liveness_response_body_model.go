@@ -87,7 +87,12 @@ func (s *FaceLivenessResponseBody) SetResult(v *FaceLivenessResponseBodyResult) 
 }
 
 func (s *FaceLivenessResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FaceLivenessResponseBodyResult struct {
@@ -162,7 +167,12 @@ func (s *FaceLivenessResponseBodyResult) SetTransactionId(v string) *FaceLivenes
 }
 
 func (s *FaceLivenessResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.ExtFaceInfo != nil {
+		if err := s.ExtFaceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FaceLivenessResponseBodyResultExtFaceInfo struct {

@@ -87,7 +87,12 @@ func (s *Mobile2MetaVerifyIntlResponseBody) SetResult(v *Mobile2MetaVerifyIntlRe
 }
 
 func (s *Mobile2MetaVerifyIntlResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type Mobile2MetaVerifyIntlResponseBodyResult struct {

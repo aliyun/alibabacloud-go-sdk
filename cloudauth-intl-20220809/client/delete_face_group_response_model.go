@@ -59,5 +59,10 @@ func (s *DeleteFaceGroupResponse) SetBody(v *DeleteFaceGroupResponseBody) *Delet
 }
 
 func (s *DeleteFaceGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

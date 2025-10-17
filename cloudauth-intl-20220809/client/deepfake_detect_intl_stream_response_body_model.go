@@ -20,18 +20,25 @@ type iDeepfakeDetectIntlStreamResponseBody interface {
 }
 
 type DeepfakeDetectIntlStreamResponseBody struct {
+	// Return code
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return message
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 4EB35****87EBA1
-	RequestId    *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned result information.
 	ResultObject *DeepfakeDetectIntlStreamResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -80,15 +87,39 @@ func (s *DeepfakeDetectIntlStreamResponseBody) SetResultObject(v *DeepfakeDetect
 }
 
 func (s *DeepfakeDetectIntlStreamResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeepfakeDetectIntlStreamResponseBodyResultObject struct {
+	// Risk result:
+	//
+	// - **0**: Low risk
+	//
+	// - **1**: High risk
+	//
+	// - **2**: Suspicious
+	//
 	// example:
 	//
 	// 1
-	Result    *string            `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Risk score map.
 	RiskScore map[string]*string `json:"RiskScore,omitempty" xml:"RiskScore,omitempty"`
+	// Risk tags. Multiple tags are separated by commas (,), including:
+	//
+	// - SuspectDeepForgery: Suspected deep forgery
+	//
+	// - SuspectPSFace: Suspected synthetic attack
+	//
+	// - SuspectTemple: Suspected template attack
+	//
+	// - SuspectRemake: Suspected presentation attack
+	//
 	// example:
 	//
 	// SuspectDeepForgery

@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -95,9 +96,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AddressCompareIntlResponse
 func (client *Client) AddressCompareIntlWithOptions(request *AddressCompareIntlRequest, runtime *dara.RuntimeOptions) (_result *AddressCompareIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DefaultCountry) {
@@ -175,9 +178,11 @@ func (client *Client) AddressCompareIntl(request *AddressCompareIntlRequest) (_r
 //
 // @return AddressVerifyIntlResponse
 func (client *Client) AddressVerifyIntlWithOptions(request *AddressVerifyIntlRequest, runtime *dara.RuntimeOptions) (_result *AddressVerifyIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddressType) {
@@ -279,9 +284,11 @@ func (client *Client) AddressVerifyIntl(request *AddressVerifyIntlRequest) (_res
 //
 // @return AddressVerifyV2IntlResponse
 func (client *Client) AddressVerifyV2IntlWithOptions(request *AddressVerifyV2IntlRequest, runtime *dara.RuntimeOptions) (_result *AddressVerifyV2IntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeviceToken) {
@@ -363,9 +370,11 @@ func (client *Client) AddressVerifyV2Intl(request *AddressVerifyV2IntlRequest) (
 //
 // @return BankMetaVerifyIntlResponse
 func (client *Client) BankMetaVerifyIntlWithOptions(request *BankMetaVerifyIntlRequest, runtime *dara.RuntimeOptions) (_result *BankMetaVerifyIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BankCard) {
@@ -461,9 +470,11 @@ func (client *Client) BankMetaVerifyIntl(request *BankMetaVerifyIntlRequest) (_r
 //
 // @return CardOcrResponse
 func (client *Client) CardOcrWithOptions(request *CardOcrRequest, runtime *dara.RuntimeOptions) (_result *CardOcrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DocType) {
@@ -558,9 +569,11 @@ func (client *Client) CardOcr(request *CardOcrRequest) (_result *CardOcrResponse
 //
 // @return CheckResultResponse
 func (client *Client) CheckResultWithOptions(request *CheckResultRequest, runtime *dara.RuntimeOptions) (_result *CheckResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExtraImageControlList) {
@@ -634,9 +647,11 @@ func (client *Client) CheckResult(request *CheckResultRequest) (_result *CheckRe
 //
 // @return CheckVerifyLogResponse
 func (client *Client) CheckVerifyLogWithOptions(request *CheckVerifyLogRequest, runtime *dara.RuntimeOptions) (_result *CheckVerifyLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.MerchantBizId) {
@@ -690,7 +705,11 @@ func (client *Client) CheckVerifyLog(request *CheckVerifyLogRequest) (_result *C
 
 // Summary:
 //
-// 凭证识别查询
+// # Credential Recognition Query
+//
+// Description:
+//
+// After obtaining the TransactionId, you can use this interface on the server side to get the corresponding authentication result.
 //
 // @param request - CredentialGetResultIntlRequest
 //
@@ -698,9 +717,11 @@ func (client *Client) CheckVerifyLog(request *CheckVerifyLogRequest) (_result *C
 //
 // @return CredentialGetResultIntlResponse
 func (client *Client) CredentialGetResultIntlWithOptions(request *CredentialGetResultIntlRequest, runtime *dara.RuntimeOptions) (_result *CredentialGetResultIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TransactionId) {
@@ -732,7 +753,11 @@ func (client *Client) CredentialGetResultIntlWithOptions(request *CredentialGetR
 
 // Summary:
 //
-// 凭证识别查询
+// # Credential Recognition Query
+//
+// Description:
+//
+// After obtaining the TransactionId, you can use this interface on the server side to get the corresponding authentication result.
 //
 // @param request - CredentialGetResultIntlRequest
 //
@@ -762,9 +787,11 @@ func (client *Client) CredentialGetResultIntl(request *CredentialGetResultIntlRe
 //
 // @return CredentialRecognitionIntlResponse
 func (client *Client) CredentialRecognitionIntlWithOptions(request *CredentialRecognitionIntlRequest, runtime *dara.RuntimeOptions) (_result *CredentialRecognitionIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DocType) {
@@ -840,7 +867,11 @@ func (client *Client) CredentialRecognitionIntl(request *CredentialRecognitionIn
 
 // Summary:
 //
-// 凭证识别提交
+// # Credential Recognition Submission
+//
+// Description:
+//
+// Initialization interface for credential recognition OCR, through which you can obtain the transactionId.
 //
 // @param request - CredentialSubmitIntlRequest
 //
@@ -848,9 +879,11 @@ func (client *Client) CredentialRecognitionIntl(request *CredentialRecognitionIn
 //
 // @return CredentialSubmitIntlResponse
 func (client *Client) CredentialSubmitIntlWithOptions(request *CredentialSubmitIntlRequest, runtime *dara.RuntimeOptions) (_result *CredentialSubmitIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DocType) {
@@ -912,7 +945,11 @@ func (client *Client) CredentialSubmitIntlWithOptions(request *CredentialSubmitI
 
 // Summary:
 //
-// 凭证识别提交
+// # Credential Recognition Submission
+//
+// Description:
+//
+// Initialization interface for credential recognition OCR, through which you can obtain the transactionId.
 //
 // @param request - CredentialSubmitIntlRequest
 //
@@ -942,9 +979,11 @@ func (client *Client) CredentialSubmitIntl(request *CredentialSubmitIntlRequest)
 //
 // @return CredentialVerifyIntlResponse
 func (client *Client) CredentialVerifyIntlWithOptions(request *CredentialVerifyIntlRequest, runtime *dara.RuntimeOptions) (_result *CredentialVerifyIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CredName) {
@@ -1135,9 +1174,11 @@ func (client *Client) CredentialVerifyIntlAdvance(request *CredentialVerifyIntlA
 //
 // @return DeepfakeDetectIntlResponse
 func (client *Client) DeepfakeDetectIntlWithOptions(request *DeepfakeDetectIntlRequest, runtime *dara.RuntimeOptions) (_result *DeepfakeDetectIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FaceInputType) {
@@ -1213,7 +1254,11 @@ func (client *Client) DeepfakeDetectIntl(request *DeepfakeDetectIntlRequest) (_r
 
 // Summary:
 //
-// deepfake文件流api
+// deepfake file stream API
+//
+// Description:
+//
+// Input a face image and use the algorithm to detect if there is a risk of deepfake. This includes risk scenarios such as AIGC-generated faces, deepfake face swaps, template faces, and rephotographed faces, and outputs risk labels and confidence scores.
 //
 // @param request - DeepfakeDetectIntlStreamRequest
 //
@@ -1221,9 +1266,11 @@ func (client *Client) DeepfakeDetectIntl(request *DeepfakeDetectIntlRequest) (_r
 //
 // @return DeepfakeDetectIntlStreamResponse
 func (client *Client) DeepfakeDetectIntlStreamWithOptions(request *DeepfakeDetectIntlStreamRequest, runtime *dara.RuntimeOptions) (_result *DeepfakeDetectIntlStreamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FaceBase64) {
@@ -1279,7 +1326,11 @@ func (client *Client) DeepfakeDetectIntlStreamWithOptions(request *DeepfakeDetec
 
 // Summary:
 //
-// deepfake文件流api
+// deepfake file stream API
+//
+// Description:
+//
+// Input a face image and use the algorithm to detect if there is a risk of deepfake. This includes risk scenarios such as AIGC-generated faces, deepfake face swaps, template faces, and rephotographed faces, and outputs risk labels and confidence scores.
 //
 // @param request - DeepfakeDetectIntlStreamRequest
 //
@@ -1412,9 +1463,11 @@ func (client *Client) DeepfakeDetectIntlStreamAdvance(request *DeepfakeDetectInt
 //
 // @return DeleteFaceGroupResponse
 func (client *Client) DeleteFaceGroupWithOptions(request *DeleteFaceGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteFaceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -1472,9 +1525,11 @@ func (client *Client) DeleteFaceGroup(request *DeleteFaceGroupRequest) (_result 
 //
 // @return DeleteFaceRecordResponse
 func (client *Client) DeleteFaceRecordWithOptions(request *DeleteFaceRecordRequest, runtime *dara.RuntimeOptions) (_result *DeleteFaceRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -1532,9 +1587,11 @@ func (client *Client) DeleteFaceRecord(request *DeleteFaceRecordRequest) (_resul
 //
 // @return DeleteVerifyResultResponse
 func (client *Client) DeleteVerifyResultWithOptions(request *DeleteVerifyResultRequest, runtime *dara.RuntimeOptions) (_result *DeleteVerifyResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeleteAfterQuery) {
@@ -1600,9 +1657,11 @@ func (client *Client) DeleteVerifyResult(request *DeleteVerifyResultRequest) (_r
 //
 // @return DocOcrResponse
 func (client *Client) DocOcrWithOptions(request *DocOcrRequest, runtime *dara.RuntimeOptions) (_result *DocOcrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CardSide) {
@@ -1702,10 +1761,17 @@ func (client *Client) DocOcr(request *DocOcrRequest) (_result *DocOcrResponse, _
 //
 // @return DocOcrMaxResponse
 func (client *Client) DocOcrMaxWithOptions(request *DocOcrMaxRequest, runtime *dara.RuntimeOptions) (_result *DocOcrMaxResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OcrValueStandard) {
+		query["OcrValueStandard"] = request.OcrValueStandard
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DocPage) {
 		body["DocPage"] = request.DocPage
@@ -1760,7 +1826,8 @@ func (client *Client) DocOcrMaxWithOptions(request *DocOcrMaxRequest, runtime *d
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DocOcrMax"),
@@ -1810,9 +1877,11 @@ func (client *Client) DocOcrMax(request *DocOcrMaxRequest) (_result *DocOcrMaxRe
 //
 // @return EkycVerifyResponse
 func (client *Client) EkycVerifyWithOptions(request *EkycVerifyRequest, runtime *dara.RuntimeOptions) (_result *EkycVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Authorize) {
@@ -1920,9 +1989,11 @@ func (client *Client) EkycVerify(request *EkycVerifyRequest) (_result *EkycVerif
 //
 // @return FaceCompareResponse
 func (client *Client) FaceCompareWithOptions(request *FaceCompareRequest, runtime *dara.RuntimeOptions) (_result *FaceCompareResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FacePictureQualityCheck) {
@@ -1994,7 +2065,7 @@ func (client *Client) FaceCompare(request *FaceCompareRequest) (_result *FaceCom
 
 // Summary:
 //
-// 人脸交叉比对
+// # Face Cross Comparison
 //
 // @param request - FaceCrossCompareIntlRequest
 //
@@ -2002,9 +2073,11 @@ func (client *Client) FaceCompare(request *FaceCompareRequest) (_result *FaceCom
 //
 // @return FaceCrossCompareIntlResponse
 func (client *Client) FaceCrossCompareIntlWithOptions(request *FaceCrossCompareIntlRequest, runtime *dara.RuntimeOptions) (_result *FaceCrossCompareIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CompareModel) {
@@ -2076,7 +2149,7 @@ func (client *Client) FaceCrossCompareIntlWithOptions(request *FaceCrossCompareI
 
 // Summary:
 //
-// 人脸交叉比对
+// # Face Cross Comparison
 //
 // @param request - FaceCrossCompareIntlRequest
 //
@@ -2102,9 +2175,11 @@ func (client *Client) FaceCrossCompareIntl(request *FaceCrossCompareIntlRequest)
 //
 // @return FaceDuplicationCheckIntlResponse
 func (client *Client) FaceDuplicationCheckIntlWithOptions(request *FaceDuplicationCheckIntlRequest, runtime *dara.RuntimeOptions) (_result *FaceDuplicationCheckIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProductCode) {
@@ -2224,9 +2299,11 @@ func (client *Client) FaceDuplicationCheckIntl(request *FaceDuplicationCheckIntl
 //
 // @return FaceGuardRiskResponse
 func (client *Client) FaceGuardRiskWithOptions(request *FaceGuardRiskRequest, runtime *dara.RuntimeOptions) (_result *FaceGuardRiskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -2296,9 +2373,11 @@ func (client *Client) FaceGuardRisk(request *FaceGuardRiskRequest) (_result *Fac
 //
 // @return FaceLivenessResponse
 func (client *Client) FaceLivenessWithOptions(request *FaceLivenessRequest, runtime *dara.RuntimeOptions) (_result *FaceLivenessResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Crop) {
@@ -2386,9 +2465,11 @@ func (client *Client) FaceLiveness(request *FaceLivenessRequest) (_result *FaceL
 //
 // @return FraudResultCallBackResponse
 func (client *Client) FraudResultCallBackWithOptions(request *FraudResultCallBackRequest, runtime *dara.RuntimeOptions) (_result *FraudResultCallBackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertifyId) {
@@ -2458,9 +2539,11 @@ func (client *Client) FraudResultCallBack(request *FraudResultCallBackRequest) (
 //
 // @return Id2MetaPeriodVerifyIntlResponse
 func (client *Client) Id2MetaPeriodVerifyIntlWithOptions(request *Id2MetaPeriodVerifyIntlRequest, runtime *dara.RuntimeOptions) (_result *Id2MetaPeriodVerifyIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DocName) {
@@ -2550,9 +2633,11 @@ func (client *Client) Id2MetaPeriodVerifyIntl(request *Id2MetaPeriodVerifyIntlRe
 //
 // @return Id2MetaVerifyIntlResponse
 func (client *Client) Id2MetaVerifyIntlWithOptions(request *Id2MetaVerifyIntlRequest, runtime *dara.RuntimeOptions) (_result *Id2MetaVerifyIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IdentifyNum) {
@@ -2622,9 +2707,11 @@ func (client *Client) Id2MetaVerifyIntl(request *Id2MetaVerifyIntlRequest) (_res
 //
 // @return InitializeResponse
 func (client *Client) InitializeWithOptions(tmpReq *InitializeRequest, runtime *dara.RuntimeOptions) (_result *InitializeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &InitializeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2933,9 +3020,11 @@ func (client *Client) KeepaliveIntl() (_result *KeepaliveIntlResponse, _err erro
 //
 // @return Mobile2MetaVerifyIntlResponse
 func (client *Client) Mobile2MetaVerifyIntlWithOptions(request *Mobile2MetaVerifyIntlRequest, runtime *dara.RuntimeOptions) (_result *Mobile2MetaVerifyIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Mobile) {
@@ -3005,9 +3094,11 @@ func (client *Client) Mobile2MetaVerifyIntl(request *Mobile2MetaVerifyIntlReques
 //
 // @return Mobile3MetaVerifyIntlResponse
 func (client *Client) Mobile3MetaVerifyIntlWithOptions(request *Mobile3MetaVerifyIntlRequest, runtime *dara.RuntimeOptions) (_result *Mobile3MetaVerifyIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IdentifyNum) {
@@ -3081,9 +3172,11 @@ func (client *Client) Mobile3MetaVerifyIntl(request *Mobile3MetaVerifyIntlReques
 //
 // @return ModifyFaceGroupResponse
 func (client *Client) ModifyFaceGroupWithOptions(request *ModifyFaceGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyFaceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -3149,9 +3242,11 @@ func (client *Client) ModifyFaceGroup(request *ModifyFaceGroupRequest) (_result 
 //
 // @return ModifyFaceRecordResponse
 func (client *Client) ModifyFaceRecordWithOptions(request *ModifyFaceRecordRequest, runtime *dara.RuntimeOptions) (_result *ModifyFaceRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FaceGroupCode) {
@@ -3213,9 +3308,11 @@ func (client *Client) ModifyFaceRecord(request *ModifyFaceRecordRequest) (_resul
 //
 // @return QueryFaceGroupResponse
 func (client *Client) QueryFaceGroupWithOptions(request *QueryFaceGroupRequest, runtime *dara.RuntimeOptions) (_result *QueryFaceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -3285,7 +3382,7 @@ func (client *Client) QueryFaceGroup(request *QueryFaceGroupRequest) (_result *Q
 
 // Summary:
 //
-// 查询人脸记录
+// # Query Face Records
 //
 // @param request - QueryFaceRecordRequest
 //
@@ -3293,9 +3390,11 @@ func (client *Client) QueryFaceGroup(request *QueryFaceGroupRequest) (_result *Q
 //
 // @return QueryFaceRecordResponse
 func (client *Client) QueryFaceRecordWithOptions(request *QueryFaceRecordRequest, runtime *dara.RuntimeOptions) (_result *QueryFaceRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -3355,7 +3454,7 @@ func (client *Client) QueryFaceRecordWithOptions(request *QueryFaceRecordRequest
 
 // Summary:
 //
-// 查询人脸记录
+// # Query Face Records
 //
 // @param request - QueryFaceRecordRequest
 //
@@ -3373,7 +3472,7 @@ func (client *Client) QueryFaceRecord(request *QueryFaceRecordRequest) (_result 
 
 // Summary:
 //
-// 获取临时token
+// # Get Temporary Token
 //
 // @param request - TempAccessTokenIntlRequest
 //
@@ -3381,9 +3480,11 @@ func (client *Client) QueryFaceRecord(request *QueryFaceRecordRequest) (_result 
 //
 // @return TempAccessTokenIntlResponse
 func (client *Client) TempAccessTokenIntlWithOptions(request *TempAccessTokenIntlRequest, runtime *dara.RuntimeOptions) (_result *TempAccessTokenIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Type) {
@@ -3415,7 +3516,7 @@ func (client *Client) TempAccessTokenIntlWithOptions(request *TempAccessTokenInt
 
 // Summary:
 //
-// 获取临时token
+// # Get Temporary Token
 //
 // @param request - TempAccessTokenIntlRequest
 //
@@ -3433,7 +3534,7 @@ func (client *Client) TempAccessTokenIntl(request *TempAccessTokenIntlRequest) (
 
 // Summary:
 //
-// 获取文件临时地址
+// # Get Temporary File URL
 //
 // @param request - TempOssUrlIntlRequest
 //
@@ -3441,9 +3542,11 @@ func (client *Client) TempAccessTokenIntl(request *TempAccessTokenIntlRequest) (
 //
 // @return TempOssUrlIntlResponse
 func (client *Client) TempOssUrlIntlWithOptions(request *TempOssUrlIntlRequest, runtime *dara.RuntimeOptions) (_result *TempOssUrlIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ObjectName) {
@@ -3475,7 +3578,7 @@ func (client *Client) TempOssUrlIntlWithOptions(request *TempOssUrlIntlRequest, 
 
 // Summary:
 //
-// 获取文件临时地址
+// # Get Temporary File URL
 //
 // @param request - TempOssUrlIntlRequest
 //

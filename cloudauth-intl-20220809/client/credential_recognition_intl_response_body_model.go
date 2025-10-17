@@ -87,7 +87,12 @@ func (s *CredentialRecognitionIntlResponseBody) SetResult(v *CredentialRecogniti
 }
 
 func (s *CredentialRecognitionIntlResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CredentialRecognitionIntlResponseBodyResult struct {

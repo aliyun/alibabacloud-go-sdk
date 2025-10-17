@@ -21,9 +21,11 @@ import (
 //
 // @return AddressCompareIntlResponse
 func (client *Client) AddressCompareIntlWithContext(ctx context.Context, request *AddressCompareIntlRequest, runtime *dara.RuntimeOptions) (_result *AddressCompareIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DefaultCountry) {
@@ -79,9 +81,11 @@ func (client *Client) AddressCompareIntlWithContext(ctx context.Context, request
 //
 // @return AddressVerifyIntlResponse
 func (client *Client) AddressVerifyIntlWithContext(ctx context.Context, request *AddressVerifyIntlRequest, runtime *dara.RuntimeOptions) (_result *AddressVerifyIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddressType) {
@@ -161,9 +165,11 @@ func (client *Client) AddressVerifyIntlWithContext(ctx context.Context, request 
 //
 // @return AddressVerifyV2IntlResponse
 func (client *Client) AddressVerifyV2IntlWithContext(ctx context.Context, request *AddressVerifyV2IntlRequest, runtime *dara.RuntimeOptions) (_result *AddressVerifyV2IntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeviceToken) {
@@ -227,9 +233,11 @@ func (client *Client) AddressVerifyV2IntlWithContext(ctx context.Context, reques
 //
 // @return BankMetaVerifyIntlResponse
 func (client *Client) BankMetaVerifyIntlWithContext(ctx context.Context, request *BankMetaVerifyIntlRequest, runtime *dara.RuntimeOptions) (_result *BankMetaVerifyIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BankCard) {
@@ -303,9 +311,11 @@ func (client *Client) BankMetaVerifyIntlWithContext(ctx context.Context, request
 //
 // @return CardOcrResponse
 func (client *Client) CardOcrWithContext(ctx context.Context, request *CardOcrRequest, runtime *dara.RuntimeOptions) (_result *CardOcrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DocType) {
@@ -379,9 +389,11 @@ func (client *Client) CardOcrWithContext(ctx context.Context, request *CardOcrRe
 //
 // @return CheckResultResponse
 func (client *Client) CheckResultWithContext(ctx context.Context, request *CheckResultRequest, runtime *dara.RuntimeOptions) (_result *CheckResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExtraImageControlList) {
@@ -437,9 +449,11 @@ func (client *Client) CheckResultWithContext(ctx context.Context, request *Check
 //
 // @return CheckVerifyLogResponse
 func (client *Client) CheckVerifyLogWithContext(ctx context.Context, request *CheckVerifyLogRequest, runtime *dara.RuntimeOptions) (_result *CheckVerifyLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.MerchantBizId) {
@@ -475,7 +489,11 @@ func (client *Client) CheckVerifyLogWithContext(ctx context.Context, request *Ch
 
 // Summary:
 //
-// 凭证识别查询
+// # Credential Recognition Query
+//
+// Description:
+//
+// After obtaining the TransactionId, you can use this interface on the server side to get the corresponding authentication result.
 //
 // @param request - CredentialGetResultIntlRequest
 //
@@ -483,9 +501,11 @@ func (client *Client) CheckVerifyLogWithContext(ctx context.Context, request *Ch
 //
 // @return CredentialGetResultIntlResponse
 func (client *Client) CredentialGetResultIntlWithContext(ctx context.Context, request *CredentialGetResultIntlRequest, runtime *dara.RuntimeOptions) (_result *CredentialGetResultIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TransactionId) {
@@ -529,9 +549,11 @@ func (client *Client) CredentialGetResultIntlWithContext(ctx context.Context, re
 //
 // @return CredentialRecognitionIntlResponse
 func (client *Client) CredentialRecognitionIntlWithContext(ctx context.Context, request *CredentialRecognitionIntlRequest, runtime *dara.RuntimeOptions) (_result *CredentialRecognitionIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DocType) {
@@ -585,7 +607,11 @@ func (client *Client) CredentialRecognitionIntlWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 凭证识别提交
+// # Credential Recognition Submission
+//
+// Description:
+//
+// Initialization interface for credential recognition OCR, through which you can obtain the transactionId.
 //
 // @param request - CredentialSubmitIntlRequest
 //
@@ -593,9 +619,11 @@ func (client *Client) CredentialRecognitionIntlWithContext(ctx context.Context, 
 //
 // @return CredentialSubmitIntlResponse
 func (client *Client) CredentialSubmitIntlWithContext(ctx context.Context, request *CredentialSubmitIntlRequest, runtime *dara.RuntimeOptions) (_result *CredentialSubmitIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DocType) {
@@ -669,9 +697,11 @@ func (client *Client) CredentialSubmitIntlWithContext(ctx context.Context, reque
 //
 // @return CredentialVerifyIntlResponse
 func (client *Client) CredentialVerifyIntlWithContext(ctx context.Context, request *CredentialVerifyIntlRequest, runtime *dara.RuntimeOptions) (_result *CredentialVerifyIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CredName) {
@@ -733,9 +763,11 @@ func (client *Client) CredentialVerifyIntlWithContext(ctx context.Context, reque
 //
 // @return DeepfakeDetectIntlResponse
 func (client *Client) DeepfakeDetectIntlWithContext(ctx context.Context, request *DeepfakeDetectIntlRequest, runtime *dara.RuntimeOptions) (_result *DeepfakeDetectIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FaceInputType) {
@@ -789,7 +821,11 @@ func (client *Client) DeepfakeDetectIntlWithContext(ctx context.Context, request
 
 // Summary:
 //
-// deepfake文件流api
+// deepfake file stream API
+//
+// Description:
+//
+// Input a face image and use the algorithm to detect if there is a risk of deepfake. This includes risk scenarios such as AIGC-generated faces, deepfake face swaps, template faces, and rephotographed faces, and outputs risk labels and confidence scores.
 //
 // @param request - DeepfakeDetectIntlStreamRequest
 //
@@ -797,9 +833,11 @@ func (client *Client) DeepfakeDetectIntlWithContext(ctx context.Context, request
 //
 // @return DeepfakeDetectIntlStreamResponse
 func (client *Client) DeepfakeDetectIntlStreamWithContext(ctx context.Context, request *DeepfakeDetectIntlStreamRequest, runtime *dara.RuntimeOptions) (_result *DeepfakeDetectIntlStreamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FaceBase64) {
@@ -863,9 +901,11 @@ func (client *Client) DeepfakeDetectIntlStreamWithContext(ctx context.Context, r
 //
 // @return DeleteFaceGroupResponse
 func (client *Client) DeleteFaceGroupWithContext(ctx context.Context, request *DeleteFaceGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteFaceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -905,9 +945,11 @@ func (client *Client) DeleteFaceGroupWithContext(ctx context.Context, request *D
 //
 // @return DeleteFaceRecordResponse
 func (client *Client) DeleteFaceRecordWithContext(ctx context.Context, request *DeleteFaceRecordRequest, runtime *dara.RuntimeOptions) (_result *DeleteFaceRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -947,9 +989,11 @@ func (client *Client) DeleteFaceRecordWithContext(ctx context.Context, request *
 //
 // @return DeleteVerifyResultResponse
 func (client *Client) DeleteVerifyResultWithContext(ctx context.Context, request *DeleteVerifyResultRequest, runtime *dara.RuntimeOptions) (_result *DeleteVerifyResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeleteAfterQuery) {
@@ -997,9 +1041,11 @@ func (client *Client) DeleteVerifyResultWithContext(ctx context.Context, request
 //
 // @return DocOcrResponse
 func (client *Client) DocOcrWithContext(ctx context.Context, request *DocOcrRequest, runtime *dara.RuntimeOptions) (_result *DocOcrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CardSide) {
@@ -1081,10 +1127,17 @@ func (client *Client) DocOcrWithContext(ctx context.Context, request *DocOcrRequ
 //
 // @return DocOcrMaxResponse
 func (client *Client) DocOcrMaxWithContext(ctx context.Context, request *DocOcrMaxRequest, runtime *dara.RuntimeOptions) (_result *DocOcrMaxResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OcrValueStandard) {
+		query["OcrValueStandard"] = request.OcrValueStandard
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DocPage) {
 		body["DocPage"] = request.DocPage
@@ -1139,7 +1192,8 @@ func (client *Client) DocOcrMaxWithContext(ctx context.Context, request *DocOcrM
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DocOcrMax"),
@@ -1171,9 +1225,11 @@ func (client *Client) DocOcrMaxWithContext(ctx context.Context, request *DocOcrM
 //
 // @return EkycVerifyResponse
 func (client *Client) EkycVerifyWithContext(ctx context.Context, request *EkycVerifyRequest, runtime *dara.RuntimeOptions) (_result *EkycVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Authorize) {
@@ -1263,9 +1319,11 @@ func (client *Client) EkycVerifyWithContext(ctx context.Context, request *EkycVe
 //
 // @return FaceCompareResponse
 func (client *Client) FaceCompareWithContext(ctx context.Context, request *FaceCompareRequest, runtime *dara.RuntimeOptions) (_result *FaceCompareResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FacePictureQualityCheck) {
@@ -1319,7 +1377,7 @@ func (client *Client) FaceCompareWithContext(ctx context.Context, request *FaceC
 
 // Summary:
 //
-// 人脸交叉比对
+// # Face Cross Comparison
 //
 // @param request - FaceCrossCompareIntlRequest
 //
@@ -1327,9 +1385,11 @@ func (client *Client) FaceCompareWithContext(ctx context.Context, request *FaceC
 //
 // @return FaceCrossCompareIntlResponse
 func (client *Client) FaceCrossCompareIntlWithContext(ctx context.Context, request *FaceCrossCompareIntlRequest, runtime *dara.RuntimeOptions) (_result *FaceCrossCompareIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CompareModel) {
@@ -1409,9 +1469,11 @@ func (client *Client) FaceCrossCompareIntlWithContext(ctx context.Context, reque
 //
 // @return FaceDuplicationCheckIntlResponse
 func (client *Client) FaceDuplicationCheckIntlWithContext(ctx context.Context, request *FaceDuplicationCheckIntlRequest, runtime *dara.RuntimeOptions) (_result *FaceDuplicationCheckIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProductCode) {
@@ -1513,9 +1575,11 @@ func (client *Client) FaceDuplicationCheckIntlWithContext(ctx context.Context, r
 //
 // @return FaceGuardRiskResponse
 func (client *Client) FaceGuardRiskWithContext(ctx context.Context, request *FaceGuardRiskRequest, runtime *dara.RuntimeOptions) (_result *FaceGuardRiskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -1567,9 +1631,11 @@ func (client *Client) FaceGuardRiskWithContext(ctx context.Context, request *Fac
 //
 // @return FaceLivenessResponse
 func (client *Client) FaceLivenessWithContext(ctx context.Context, request *FaceLivenessRequest, runtime *dara.RuntimeOptions) (_result *FaceLivenessResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Crop) {
@@ -1639,9 +1705,11 @@ func (client *Client) FaceLivenessWithContext(ctx context.Context, request *Face
 //
 // @return FraudResultCallBackResponse
 func (client *Client) FraudResultCallBackWithContext(ctx context.Context, request *FraudResultCallBackRequest, runtime *dara.RuntimeOptions) (_result *FraudResultCallBackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertifyId) {
@@ -1693,9 +1761,11 @@ func (client *Client) FraudResultCallBackWithContext(ctx context.Context, reques
 //
 // @return Id2MetaPeriodVerifyIntlResponse
 func (client *Client) Id2MetaPeriodVerifyIntlWithContext(ctx context.Context, request *Id2MetaPeriodVerifyIntlRequest, runtime *dara.RuntimeOptions) (_result *Id2MetaPeriodVerifyIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DocName) {
@@ -1767,9 +1837,11 @@ func (client *Client) Id2MetaPeriodVerifyIntlWithContext(ctx context.Context, re
 //
 // @return Id2MetaVerifyIntlResponse
 func (client *Client) Id2MetaVerifyIntlWithContext(ctx context.Context, request *Id2MetaVerifyIntlRequest, runtime *dara.RuntimeOptions) (_result *Id2MetaVerifyIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IdentifyNum) {
@@ -1821,9 +1893,11 @@ func (client *Client) Id2MetaVerifyIntlWithContext(ctx context.Context, request 
 //
 // @return InitializeResponse
 func (client *Client) InitializeWithContext(ctx context.Context, tmpReq *InitializeRequest, runtime *dara.RuntimeOptions) (_result *InitializeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &InitializeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2067,9 +2141,11 @@ func (client *Client) InitializeWithContext(ctx context.Context, tmpReq *Initial
 //
 // @return Mobile2MetaVerifyIntlResponse
 func (client *Client) Mobile2MetaVerifyIntlWithContext(ctx context.Context, request *Mobile2MetaVerifyIntlRequest, runtime *dara.RuntimeOptions) (_result *Mobile2MetaVerifyIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Mobile) {
@@ -2121,9 +2197,11 @@ func (client *Client) Mobile2MetaVerifyIntlWithContext(ctx context.Context, requ
 //
 // @return Mobile3MetaVerifyIntlResponse
 func (client *Client) Mobile3MetaVerifyIntlWithContext(ctx context.Context, request *Mobile3MetaVerifyIntlRequest, runtime *dara.RuntimeOptions) (_result *Mobile3MetaVerifyIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IdentifyNum) {
@@ -2179,9 +2257,11 @@ func (client *Client) Mobile3MetaVerifyIntlWithContext(ctx context.Context, requ
 //
 // @return ModifyFaceGroupResponse
 func (client *Client) ModifyFaceGroupWithContext(ctx context.Context, request *ModifyFaceGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyFaceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -2229,9 +2309,11 @@ func (client *Client) ModifyFaceGroupWithContext(ctx context.Context, request *M
 //
 // @return ModifyFaceRecordResponse
 func (client *Client) ModifyFaceRecordWithContext(ctx context.Context, request *ModifyFaceRecordRequest, runtime *dara.RuntimeOptions) (_result *ModifyFaceRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FaceGroupCode) {
@@ -2275,9 +2357,11 @@ func (client *Client) ModifyFaceRecordWithContext(ctx context.Context, request *
 //
 // @return QueryFaceGroupResponse
 func (client *Client) QueryFaceGroupWithContext(ctx context.Context, request *QueryFaceGroupRequest, runtime *dara.RuntimeOptions) (_result *QueryFaceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -2329,7 +2413,7 @@ func (client *Client) QueryFaceGroupWithContext(ctx context.Context, request *Qu
 
 // Summary:
 //
-// 查询人脸记录
+// # Query Face Records
 //
 // @param request - QueryFaceRecordRequest
 //
@@ -2337,9 +2421,11 @@ func (client *Client) QueryFaceGroupWithContext(ctx context.Context, request *Qu
 //
 // @return QueryFaceRecordResponse
 func (client *Client) QueryFaceRecordWithContext(ctx context.Context, request *QueryFaceRecordRequest, runtime *dara.RuntimeOptions) (_result *QueryFaceRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -2399,7 +2485,7 @@ func (client *Client) QueryFaceRecordWithContext(ctx context.Context, request *Q
 
 // Summary:
 //
-// 获取临时token
+// # Get Temporary Token
 //
 // @param request - TempAccessTokenIntlRequest
 //
@@ -2407,9 +2493,11 @@ func (client *Client) QueryFaceRecordWithContext(ctx context.Context, request *Q
 //
 // @return TempAccessTokenIntlResponse
 func (client *Client) TempAccessTokenIntlWithContext(ctx context.Context, request *TempAccessTokenIntlRequest, runtime *dara.RuntimeOptions) (_result *TempAccessTokenIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Type) {
@@ -2441,7 +2529,7 @@ func (client *Client) TempAccessTokenIntlWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取文件临时地址
+// # Get Temporary File URL
 //
 // @param request - TempOssUrlIntlRequest
 //
@@ -2449,9 +2537,11 @@ func (client *Client) TempAccessTokenIntlWithContext(ctx context.Context, reques
 //
 // @return TempOssUrlIntlResponse
 func (client *Client) TempOssUrlIntlWithContext(ctx context.Context, request *TempOssUrlIntlRequest, runtime *dara.RuntimeOptions) (_result *TempOssUrlIntlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ObjectName) {

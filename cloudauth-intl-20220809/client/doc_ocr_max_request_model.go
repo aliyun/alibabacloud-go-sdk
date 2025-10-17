@@ -27,6 +27,8 @@ type iDocOcrMaxRequest interface {
 	GetMerchantUserId() *string
 	SetOcrModel(v string) *DocOcrMaxRequest
 	GetOcrModel() *string
+	SetOcrValueStandard(v string) *DocOcrMaxRequest
+	GetOcrValueStandard() *string
 	SetProductCode(v string) *DocOcrMaxRequest
 	GetProductCode() *string
 	SetPrompt(v string) *DocOcrMaxRequest
@@ -116,6 +118,10 @@ type DocOcrMaxRequest struct {
 	//
 	// 0
 	OcrModel *string `json:"OcrModel,omitempty" xml:"OcrModel,omitempty"`
+	// example:
+	//
+	// 0
+	OcrValueStandard *string `json:"OcrValueStandard,omitempty" xml:"OcrValueStandard,omitempty"`
 	// The product solution to be integrated.
 	//
 	// Value: ID_OCR_MAX
@@ -192,6 +198,10 @@ func (s *DocOcrMaxRequest) GetOcrModel() *string {
 	return s.OcrModel
 }
 
+func (s *DocOcrMaxRequest) GetOcrValueStandard() *string {
+	return s.OcrValueStandard
+}
+
 func (s *DocOcrMaxRequest) GetProductCode() *string {
 	return s.ProductCode
 }
@@ -250,6 +260,11 @@ func (s *DocOcrMaxRequest) SetMerchantUserId(v string) *DocOcrMaxRequest {
 
 func (s *DocOcrMaxRequest) SetOcrModel(v string) *DocOcrMaxRequest {
 	s.OcrModel = &v
+	return s
+}
+
+func (s *DocOcrMaxRequest) SetOcrValueStandard(v string) *DocOcrMaxRequest {
+	s.OcrValueStandard = &v
 	return s
 }
 

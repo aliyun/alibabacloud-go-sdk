@@ -20,16 +20,21 @@ type iTempOssUrlIntlResponseBody interface {
 }
 
 type TempOssUrlIntlResponseBody struct {
+	// Return code.
+	//
 	// example:
 	//
 	// Success
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Result.
 	Data *TempOssUrlIntlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -82,10 +87,17 @@ func (s *TempOssUrlIntlResponseBody) SetRequestId(v string) *TempOssUrlIntlRespo
 }
 
 func (s *TempOssUrlIntlResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TempOssUrlIntlResponseBodyData struct {
+	// File URL
+	//
 	// example:
 	//
 	// http://bzxh.cdn.weijin365.com/assets/index-55338127.png

@@ -14,6 +14,8 @@ type iTempAccessTokenIntlRequest interface {
 }
 
 type TempAccessTokenIntlRequest struct {
+	// Type.
+	//
 	// example:
 	//
 	// none

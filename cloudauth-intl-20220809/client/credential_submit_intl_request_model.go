@@ -28,44 +28,68 @@ type iCredentialSubmitIntlRequest interface {
 }
 
 type CredentialSubmitIntlRequest struct {
+	// Base64 encoding of the image. If you choose to upload the photo this way, please check the photo size and avoid uploading overly large photos.
+	//
 	// example:
 	//
 	// base64
 	CredentialOcrPictureBase64 *string `json:"CredentialOcrPictureBase64,omitempty" xml:"CredentialOcrPictureBase64,omitempty"`
+	// Image URL, accessible via HTTP or HTTPS on the public network.
+	//
 	// example:
 	//
 	// https://***
 	CredentialOcrPictureUrl *string `json:"CredentialOcrPictureUrl,omitempty" xml:"CredentialOcrPictureUrl,omitempty"`
+	// Credential type:
+	//
+	// - 02: Vehicle registration certificate
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 01
+	// 02
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// Whether to enable tampering detection
+	//
+	// - true: Enable
+	//
+	// - false: Disable
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	FraudCheck *string `json:"FraudCheck,omitempty" xml:"FraudCheck,omitempty"`
+	// A unique business identifier defined on the merchant side, used for troubleshooting issues later. Supports a combination of letters and digits, with a maximum length of 32 characters. Ensure uniqueness.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// e0c34a***353888
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	// Extraction type:
+	//
+	// - 0201: Thai vehicle registration certificate
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 0101
+	// 0201
 	OcrArea *string `json:"OcrArea,omitempty" xml:"OcrArea,omitempty"`
+	// The product solution to be integrated. Value: CREDENTIAL_RECOGNITION.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CREDENTIAL_RECOGNITION
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// Your custom authentication scenario ID, used for querying related records by entering this scenario ID in the console later. Supports a combination of 10 characters, digits, or underscores.
+	//
 	// This parameter is required.
 	//
 	// example:

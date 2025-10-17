@@ -59,5 +59,10 @@ func (s *QueryFaceGroupResponse) SetBody(v *QueryFaceGroupResponseBody) *QueryFa
 }
 
 func (s *QueryFaceGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

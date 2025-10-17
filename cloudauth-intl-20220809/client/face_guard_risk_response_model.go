@@ -59,5 +59,10 @@ func (s *FaceGuardRiskResponse) SetBody(v *FaceGuardRiskResponseBody) *FaceGuard
 }
 
 func (s *FaceGuardRiskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

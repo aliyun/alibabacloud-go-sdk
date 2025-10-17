@@ -20,21 +20,26 @@ type iFaceCrossCompareIntlResponseBody interface {
 }
 
 type FaceCrossCompareIntlResponseBody struct {
+	// Return code.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 130A2C10-B9EE-4D84-88E3-5384FF039795
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *FaceCrossCompareIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return result.
+	Result *FaceCrossCompareIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s FaceCrossCompareIntlResponseBody) String() string {
@@ -82,26 +87,45 @@ func (s *FaceCrossCompareIntlResponseBody) SetResult(v *FaceCrossCompareIntlResp
 }
 
 func (s *FaceCrossCompareIntlResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FaceCrossCompareIntlResponseBodyResult struct {
+	// A to B comparison score, range 0～100.
+	//
 	// example:
 	//
 	// 99
 	FaceComparisonScoreA2B *float64 `json:"FaceComparisonScoreA2B,omitempty" xml:"FaceComparisonScoreA2B,omitempty"`
+	// B to C comparison score, range 0～100.
+	//
 	// example:
 	//
 	// 99
 	FaceComparisonScoreB2C *float64 `json:"FaceComparisonScoreB2C,omitempty" xml:"FaceComparisonScoreB2C,omitempty"`
+	// C to A comparison score, range 0～100.
+	//
 	// example:
 	//
 	// 99
 	FaceComparisonScoreC2A *float64 `json:"FaceComparisonScoreC2A,omitempty" xml:"FaceComparisonScoreC2A,omitempty"`
+	// Final verification result, values:
+	//
+	// - Y: Pass
+	//
+	// - N: Fail
+	//
 	// example:
 	//
 	// Y
 	FacePassed *string `json:"FacePassed,omitempty" xml:"FacePassed,omitempty"`
+	// Unique identifier for the authentication request.
+	//
 	// example:
 	//
 	// 4ab0b***cbde97

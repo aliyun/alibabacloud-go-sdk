@@ -20,21 +20,26 @@ type iCredentialGetResultIntlResponseBody interface {
 }
 
 type CredentialGetResultIntlResponseBody struct {
+	// Return code.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 5E63B760-0ECB-5C07-8503-A65C27876968
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *CredentialGetResultIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return result.
+	Result *CredentialGetResultIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s CredentialGetResultIntlResponseBody) String() string {
@@ -82,10 +87,17 @@ func (s *CredentialGetResultIntlResponseBody) SetResult(v *CredentialGetResultIn
 }
 
 func (s *CredentialGetResultIntlResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CredentialGetResultIntlResponseBodyResult struct {
+	// Identified key information, in JSON format.
+	//
 	// example:
 	//
 	// {
@@ -96,10 +108,20 @@ type CredentialGetResultIntlResponseBodyResult struct {
 	//
 	// }
 	ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
+	// Task status:
+	//
+	// - PROCESSING: In progress (please continue polling)
+	//
+	// - SUCCESS: Execution succeeded
+	//
+	// - FAILED: Execution failed
+	//
 	// example:
 	//
 	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Authentication result description. For more information, see ResultObject.SubCode error codes.
+	//
 	// example:
 	//
 	// 200

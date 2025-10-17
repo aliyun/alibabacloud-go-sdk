@@ -14,11 +14,13 @@ type iCredentialGetResultIntlRequest interface {
 }
 
 type CredentialGetResultIntlRequest struct {
+	// Unique identifier for the authentication request
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 4ab0b***cbde97
+	// 4ab0b***abde97
 	TransactionId *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
 }
 

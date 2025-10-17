@@ -59,5 +59,10 @@ func (s *AddressVerifyIntlResponse) SetBody(v *AddressVerifyIntlResponseBody) *A
 }
 
 func (s *AddressVerifyIntlResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -87,7 +87,12 @@ func (s *FaceGuardRiskResponseBody) SetResult(v *FaceGuardRiskResponseBodyResult
 }
 
 func (s *FaceGuardRiskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FaceGuardRiskResponseBodyResult struct {

@@ -1,3 +1,7 @@
+2025-10-17 Version: v3.14.1
+- Update API DocOcrMax: add request parameters OcrValueStandard.
+
+
 2025-10-11 Version: v3.14.0
 - Support API DeepfakeDetectIntlStream.
 

@@ -20,21 +20,26 @@ type iCredentialSubmitIntlResponseBody interface {
 }
 
 type CredentialSubmitIntlResponseBody struct {
+	// Return code
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 5E63B760-0ECB-5C07-8503-A65C27876968
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *CredentialSubmitIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return result.
+	Result *CredentialSubmitIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s CredentialSubmitIntlResponseBody) String() string {
@@ -82,10 +87,17 @@ func (s *CredentialSubmitIntlResponseBody) SetResult(v *CredentialSubmitIntlResp
 }
 
 func (s *CredentialSubmitIntlResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CredentialSubmitIntlResponseBodyResult struct {
+	// Unique identifier of the authentication request.
+	//
 	// example:
 	//
 	// 4ab0b***cbde97

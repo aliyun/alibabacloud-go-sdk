@@ -87,7 +87,12 @@ func (s *DeleteVerifyResultResponseBody) SetResult(v *DeleteVerifyResultResponse
 }
 
 func (s *DeleteVerifyResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteVerifyResultResponseBodyResult struct {

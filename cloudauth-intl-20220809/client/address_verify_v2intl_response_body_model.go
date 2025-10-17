@@ -87,7 +87,12 @@ func (s *AddressVerifyV2IntlResponseBody) SetResult(v *AddressVerifyV2IntlRespon
 }
 
 func (s *AddressVerifyV2IntlResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddressVerifyV2IntlResponseBodyResult struct {

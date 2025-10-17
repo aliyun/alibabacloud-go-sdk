@@ -87,7 +87,12 @@ func (s *Id2MetaPeriodVerifyIntlResponseBody) SetResult(v *Id2MetaPeriodVerifyIn
 }
 
 func (s *Id2MetaPeriodVerifyIntlResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type Id2MetaPeriodVerifyIntlResponseBodyResult struct {

@@ -87,7 +87,12 @@ func (s *KeepaliveIntlResponseBody) SetResult(v *KeepaliveIntlResponseBodyResult
 }
 
 func (s *KeepaliveIntlResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type KeepaliveIntlResponseBodyResult struct {

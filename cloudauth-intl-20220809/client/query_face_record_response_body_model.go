@@ -32,41 +32,58 @@ type iQueryFaceRecordResponseBody interface {
 }
 
 type QueryFaceRecordResponseBody struct {
+	// Return code.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Current query page number.
+	//
 	// example:
 	//
 	// 2
-	CurrentPage *int64                              `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*QueryFaceRecordResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// List of returned information.
+	Items []*QueryFaceRecordResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// Maximum number of data entries per page.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Token for the next query start.
+	//
 	// example:
 	//
 	// AAAAARfZmVDe9NvRXloR5+8CK9nwqHyx44CQz3pa71+mmu0e
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Number of items per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 7F971622-38C0-5F56-B2EC-315367979B4F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 6
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -172,30 +189,51 @@ func (s *QueryFaceRecordResponseBody) SetTotalPage(v int32) *QueryFaceRecordResp
 }
 
 func (s *QueryFaceRecordResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryFaceRecordResponseBodyItems struct {
+	// Face ID.
+	//
 	// example:
 	//
 	// 230642938
 	FaceId *string `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 2025-01-15T02:20:28Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Primary key ID.
+	//
 	// example:
 	//
 	// 16112
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Face image URL.
+	//
 	// example:
 	//
 	// http://www.xxxx.com/1.jpg
 	ImgOssUrl *string `json:"ImgOssUrl,omitempty" xml:"ImgOssUrl,omitempty"`
+	// Merchant User ID.
+	//
 	// example:
 	//
 	// CuN6hiD08qr
 	MerchantUserId *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
+	// Registration type.
+	//
 	// example:
 	//
 	// MANUAL
