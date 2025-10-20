@@ -41,6 +41,8 @@ type iCreateWuyingServerRequest interface {
 	GetPromotionId() *string
 	SetServerInstanceType(v string) *CreateWuyingServerRequest
 	GetServerInstanceType() *string
+	SetServerPortRange(v string) *CreateWuyingServerRequest
+	GetServerPortRange() *string
 	SetSystemDiskCategory(v string) *CreateWuyingServerRequest
 	GetSystemDiskCategory() *string
 	SetSystemDiskPerformanceLevel(v string) *CreateWuyingServerRequest
@@ -111,6 +113,7 @@ type CreateWuyingServerRequest struct {
 	//
 	// eds.proworkstation_flagship_elite_ne.96c384g.192g4x
 	ServerInstanceType *string `json:"ServerInstanceType,omitempty" xml:"ServerInstanceType,omitempty"`
+	ServerPortRange    *string `json:"ServerPortRange,omitempty" xml:"ServerPortRange,omitempty"`
 	// example:
 	//
 	// cloud_auto
@@ -201,6 +204,10 @@ func (s *CreateWuyingServerRequest) GetPromotionId() *string {
 
 func (s *CreateWuyingServerRequest) GetServerInstanceType() *string {
 	return s.ServerInstanceType
+}
+
+func (s *CreateWuyingServerRequest) GetServerPortRange() *string {
+	return s.ServerPortRange
 }
 
 func (s *CreateWuyingServerRequest) GetSystemDiskCategory() *string {
@@ -304,6 +311,11 @@ func (s *CreateWuyingServerRequest) SetPromotionId(v string) *CreateWuyingServer
 
 func (s *CreateWuyingServerRequest) SetServerInstanceType(v string) *CreateWuyingServerRequest {
 	s.ServerInstanceType = &v
+	return s
+}
+
+func (s *CreateWuyingServerRequest) SetServerPortRange(v string) *CreateWuyingServerRequest {
+	s.ServerPortRange = &v
 	return s
 }
 

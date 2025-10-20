@@ -546,6 +546,10 @@ func (client *Client) CreateWuyingServerWithContext(ctx context.Context, request
 		body["ServerInstanceType"] = request.ServerInstanceType
 	}
 
+	if !dara.IsNil(request.ServerPortRange) {
+		body["ServerPortRange"] = request.ServerPortRange
+	}
+
 	if !dara.IsNil(request.SystemDiskCategory) {
 		body["SystemDiskCategory"] = request.SystemDiskCategory
 	}
@@ -695,6 +699,46 @@ func (client *Client) DeleteAppInstancesWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAppInstancesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeleteImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteImageResponse
+func (client *Client) DeleteImageWithContext(ctx context.Context, request *DeleteImageRequest, runtime *dara.RuntimeOptions) (_result *DeleteImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ImageId) {
+		body["ImageId"] = request.ImageId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteImage"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteImageResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2739,6 +2783,66 @@ func (client *Client) RestartWuyingServerWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &RestartWuyingServerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - StartTaskForDistributeImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartTaskForDistributeImageResponse
+func (client *Client) StartTaskForDistributeImageWithContext(ctx context.Context, request *StartTaskForDistributeImageRequest, runtime *dara.RuntimeOptions) (_result *StartTaskForDistributeImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DestinationRegionList) {
+		body["DestinationRegionList"] = request.DestinationRegionList
+	}
+
+	if !dara.IsNil(request.ImageId) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.RetryType) {
+		body["RetryType"] = request.RetryType
+	}
+
+	if !dara.IsNil(request.SourceRegion) {
+		body["SourceRegion"] = request.SourceRegion
+	}
+
+	if !dara.IsNil(request.VersionId) {
+		body["VersionId"] = request.VersionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartTaskForDistributeImage"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartTaskForDistributeImageResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
