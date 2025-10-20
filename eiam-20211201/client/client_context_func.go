@@ -577,6 +577,54 @@ func (client *Client) CreateApplicationTokenWithContext(ctx context.Context, req
 
 // Summary:
 //
+// 创建品牌
+//
+// @param request - CreateBrandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBrandResponse
+func (client *Client) CreateBrandWithContext(ctx context.Context, request *CreateBrandRequest, runtime *dara.RuntimeOptions) (_result *CreateBrandResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BrandName) {
+		query["BrandName"] = request.BrandName
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateBrand"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateBrandResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Create Conditional Access Policy
 //
 // Description:
@@ -1549,6 +1597,54 @@ func (client *Client) DeleteApplicationTokenWithContext(ctx context.Context, req
 
 // Summary:
 //
+// 删除品牌
+//
+// @param request - DeleteBrandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBrandResponse
+func (client *Client) DeleteBrandWithContext(ctx context.Context, request *DeleteBrandRequest, runtime *dara.RuntimeOptions) (_result *DeleteBrandResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BrandId) {
+		query["BrandId"] = request.BrandId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteBrand"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteBrandResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Delete Conditional Access Policy
 //
 // Description:
@@ -2485,6 +2581,54 @@ func (client *Client) DisableApplicationTokenWithContext(ctx context.Context, re
 
 // Summary:
 //
+// 禁用品牌
+//
+// @param request - DisableBrandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableBrandResponse
+func (client *Client) DisableBrandWithContext(ctx context.Context, request *DisableBrandRequest, runtime *dara.RuntimeOptions) (_result *DisableBrandResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BrandId) {
+		query["BrandId"] = request.BrandId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableBrand"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableBrandResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Disable Conditional Access Policy
 //
 // Description:
@@ -3173,6 +3317,54 @@ func (client *Client) EnableApplicationTokenWithContext(ctx context.Context, req
 
 // Summary:
 //
+// 启用品牌
+//
+// @param request - EnableBrandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableBrandResponse
+func (client *Client) EnableBrandWithContext(ctx context.Context, request *EnableBrandRequest, runtime *dara.RuntimeOptions) (_result *EnableBrandResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BrandId) {
+		query["BrandId"] = request.BrandId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableBrand"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableBrandResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Enable Conditional Access Policy
 //
 // Description:
@@ -3849,6 +4041,54 @@ func (client *Client) GetApplicationTemplateWithContext(ctx context.Context, req
 
 // Summary:
 //
+// 获取品牌详情
+//
+// @param request - GetBrandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBrandResponse
+func (client *Client) GetBrandWithContext(ctx context.Context, request *GetBrandRequest, runtime *dara.RuntimeOptions) (_result *GetBrandResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BrandId) {
+		query["BrandId"] = request.BrandId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetBrand"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetBrandResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Get Conditional Access Policy
 //
 // Description:
@@ -4315,6 +4555,54 @@ func (client *Client) GetInstanceLicenseWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetInstanceLicenseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取品牌登录后跳转应用
+//
+// @param request - GetLoginRedirectApplicationForBrandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLoginRedirectApplicationForBrandResponse
+func (client *Client) GetLoginRedirectApplicationForBrandWithContext(ctx context.Context, request *GetLoginRedirectApplicationForBrandRequest, runtime *dara.RuntimeOptions) (_result *GetLoginRedirectApplicationForBrandResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BrandId) {
+		query["BrandId"] = request.BrandId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetLoginRedirectApplicationForBrand"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetLoginRedirectApplicationForBrandResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5539,6 +5827,62 @@ func (client *Client) ListApplicationsForUserWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListApplicationsForUserResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取品牌列表
+//
+// @param request - ListBrandsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBrandsResponse
+func (client *Client) ListBrandsWithContext(ctx context.Context, request *ListBrandsRequest, runtime *dara.RuntimeOptions) (_result *ListBrandsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PreviousToken) {
+		query["PreviousToken"] = request.PreviousToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListBrands"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListBrandsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7977,6 +8321,58 @@ func (client *Client) SetIdentityProviderUdPullConfigurationWithContext(ctx cont
 
 // Summary:
 //
+// 为品牌设置登录后跳转应用
+//
+// @param request - SetLoginRedirectApplicationForBrandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetLoginRedirectApplicationForBrandResponse
+func (client *Client) SetLoginRedirectApplicationForBrandWithContext(ctx context.Context, request *SetLoginRedirectApplicationForBrandRequest, runtime *dara.RuntimeOptions) (_result *SetLoginRedirectApplicationForBrandResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.BrandId) {
+		query["BrandId"] = request.BrandId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetLoginRedirectApplicationForBrand"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetLoginRedirectApplicationForBrandResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Configures a password complexity policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
 //
 // @param request - SetPasswordComplexityConfigurationRequest
@@ -8713,6 +9109,58 @@ func (client *Client) UpdateApplicationTokenExpirationTimeWithContext(ctx contex
 
 // Summary:
 //
+// 修改品牌
+//
+// @param request - UpdateBrandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateBrandResponse
+func (client *Client) UpdateBrandWithContext(ctx context.Context, request *UpdateBrandRequest, runtime *dara.RuntimeOptions) (_result *UpdateBrandResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BrandId) {
+		query["BrandId"] = request.BrandId
+	}
+
+	if !dara.IsNil(request.BrandName) {
+		query["BrandName"] = request.BrandName
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateBrand"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateBrandResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Update Conditional Access Policy
 //
 // Description:
@@ -8839,6 +9287,58 @@ func (client *Client) UpdateConditionalAccessPolicyDescriptionWithContext(ctx co
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateConditionalAccessPolicyDescriptionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改域名关联的品牌。
+//
+// @param request - UpdateDomainBrandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDomainBrandResponse
+func (client *Client) UpdateDomainBrandWithContext(ctx context.Context, request *UpdateDomainBrandRequest, runtime *dara.RuntimeOptions) (_result *UpdateDomainBrandResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BrandId) {
+		query["BrandId"] = request.BrandId
+	}
+
+	if !dara.IsNil(request.DomainId) {
+		query["DomainId"] = request.DomainId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDomainBrand"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDomainBrandResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
