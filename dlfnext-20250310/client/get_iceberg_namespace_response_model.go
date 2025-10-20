@@ -59,5 +59,10 @@ func (s *GetIcebergNamespaceResponse) SetBody(v *Namespace) *GetIcebergNamespace
 }
 
 func (s *GetIcebergNamespaceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

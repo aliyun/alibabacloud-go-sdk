@@ -59,5 +59,10 @@ func (s *GetDatabaseSummaryResponse) SetBody(v *DatabaseSummary) *GetDatabaseSum
 }
 
 func (s *GetDatabaseSummaryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

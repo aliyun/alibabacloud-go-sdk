@@ -119,7 +119,12 @@ func (s *Permission) SetView(v string) *Permission {
 }
 
 func (s *Permission) Validate() error {
-	return dara.Validate(s)
+	if s.Columns != nil {
+		if err := s.Columns.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PermissionColumns struct {

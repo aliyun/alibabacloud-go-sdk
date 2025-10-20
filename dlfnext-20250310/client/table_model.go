@@ -191,5 +191,10 @@ func (s *Table) SetUpdatedBy(v string) *Table {
 }
 
 func (s *Table) Validate() error {
-	return dara.Validate(s)
+	if s.Schema != nil {
+		if err := s.Schema.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

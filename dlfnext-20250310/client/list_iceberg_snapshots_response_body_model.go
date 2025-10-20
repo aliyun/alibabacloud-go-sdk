@@ -50,5 +50,14 @@ func (s *ListIcebergSnapshotsResponseBody) SetSnapshots(v []*IcebergSnapshot) *L
 }
 
 func (s *ListIcebergSnapshotsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Snapshots != nil {
+		for _, item := range s.Snapshots {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

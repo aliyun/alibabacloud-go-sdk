@@ -35,5 +35,14 @@ func (s *AlterTableRequest) SetChanges(v []*FullSchemaChange) *AlterTableRequest
 }
 
 func (s *AlterTableRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Changes != nil {
+		for _, item := range s.Changes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

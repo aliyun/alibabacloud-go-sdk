@@ -50,5 +50,14 @@ func (s *ListIcebergNamespaceDetailsResponseBody) SetNextPageToken(v string) *Li
 }
 
 func (s *ListIcebergNamespaceDetailsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NamespaceDetails != nil {
+		for _, item := range s.NamespaceDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

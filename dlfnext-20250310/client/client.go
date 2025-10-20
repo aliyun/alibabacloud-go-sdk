@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -67,9 +68,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AlterCatalogResponse
 func (client *Client) AlterCatalogWithOptions(catalog *string, request *AlterCatalogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AlterCatalogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Removals) {
@@ -135,9 +138,11 @@ func (client *Client) AlterCatalog(catalog *string, request *AlterCatalogRequest
 //
 // @return AlterDatabaseResponse
 func (client *Client) AlterDatabaseWithOptions(catalogId *string, database *string, request *AlterDatabaseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AlterDatabaseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Removals) {
@@ -203,9 +208,11 @@ func (client *Client) AlterDatabase(catalogId *string, database *string, request
 //
 // @return AlterReceiverResponse
 func (client *Client) AlterReceiverWithOptions(receiver *string, request *AlterReceiverRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AlterReceiverResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Comment) {
@@ -271,9 +278,11 @@ func (client *Client) AlterReceiver(receiver *string, request *AlterReceiverRequ
 //
 // @return AlterShareResponse
 func (client *Client) AlterShareWithOptions(share *string, request *AlterShareRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AlterShareResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Comment) {
@@ -343,9 +352,11 @@ func (client *Client) AlterShare(share *string, request *AlterShareRequest) (_re
 //
 // @return AlterShareReceiversResponse
 func (client *Client) AlterShareReceiversWithOptions(share *string, request *AlterShareReceiversRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AlterShareReceiversResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AddedReceivers) {
@@ -411,9 +422,11 @@ func (client *Client) AlterShareReceivers(share *string, request *AlterShareRece
 //
 // @return AlterShareResourcesResponse
 func (client *Client) AlterShareResourcesWithOptions(share *string, request *AlterShareResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AlterShareResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogId) {
@@ -479,9 +492,11 @@ func (client *Client) AlterShareResources(share *string, request *AlterShareReso
 //
 // @return AlterTableResponse
 func (client *Client) AlterTableWithOptions(catalogId *string, database *string, table *string, request *AlterTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AlterTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Changes) {
@@ -543,9 +558,11 @@ func (client *Client) AlterTable(catalogId *string, database *string, table *str
 //
 // @return BatchGrantPermissionsResponse
 func (client *Client) BatchGrantPermissionsWithOptions(catalogId *string, request *BatchGrantPermissionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchGrantPermissionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Permissions) {
@@ -607,9 +624,11 @@ func (client *Client) BatchGrantPermissions(catalogId *string, request *BatchGra
 //
 // @return BatchRevokePermissionsResponse
 func (client *Client) BatchRevokePermissionsWithOptions(catalogId *string, request *BatchRevokePermissionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchRevokePermissionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Permissions) {
@@ -671,9 +690,11 @@ func (client *Client) BatchRevokePermissions(catalogId *string, request *BatchRe
 //
 // @return CreateCatalogResponse
 func (client *Client) CreateCatalogWithOptions(request *CreateCatalogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateCatalogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.IsShared) {
@@ -751,9 +772,11 @@ func (client *Client) CreateCatalog(request *CreateCatalogRequest) (_result *Cre
 //
 // @return CreateDatabaseResponse
 func (client *Client) CreateDatabaseWithOptions(catalogId *string, request *CreateDatabaseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDatabaseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -819,9 +842,11 @@ func (client *Client) CreateDatabase(catalogId *string, request *CreateDatabaseR
 //
 // @return CreateReceiverResponse
 func (client *Client) CreateReceiverWithOptions(request *CreateReceiverRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateReceiverResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Comment) {
@@ -891,9 +916,11 @@ func (client *Client) CreateReceiver(request *CreateReceiverRequest) (_result *C
 //
 // @return CreateRoleResponse
 func (client *Client) CreateRoleWithOptions(request *CreateRoleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateRoleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -963,9 +990,11 @@ func (client *Client) CreateRole(request *CreateRoleRequest) (_result *CreateRol
 //
 // @return CreateShareResponse
 func (client *Client) CreateShareWithOptions(request *CreateShareRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateShareResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Comment) {
@@ -1035,9 +1064,11 @@ func (client *Client) CreateShare(request *CreateShareRequest) (_result *CreateS
 //
 // @return CreateTableResponse
 func (client *Client) CreateTableWithOptions(catalogId *string, database *string, request *CreateTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Identifier) {
@@ -1103,9 +1134,11 @@ func (client *Client) CreateTable(catalogId *string, database *string, request *
 //
 // @return DeleteRoleResponse
 func (client *Client) DeleteRoleWithOptions(request *DeleteRoleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRoleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RolePrincipal) {
@@ -1567,9 +1600,11 @@ func (client *Client) GetCatalogById(id *string) (_result *GetCatalogByIdRespons
 //
 // @return GetCatalogSummaryResponse
 func (client *Client) GetCatalogSummaryWithOptions(catalogId *string, request *GetCatalogSummaryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCatalogSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Date) {
@@ -1631,9 +1666,11 @@ func (client *Client) GetCatalogSummary(catalogId *string, request *GetCatalogSu
 //
 // @return GetCatalogSummaryTrendResponse
 func (client *Client) GetCatalogSummaryTrendWithOptions(catalogId *string, request *GetCatalogSummaryTrendRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCatalogSummaryTrendResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndDate) {
@@ -1799,9 +1836,11 @@ func (client *Client) GetDatabase(catalogId *string, database *string) (_result 
 //
 // @return GetDatabaseSummaryResponse
 func (client *Client) GetDatabaseSummaryWithOptions(catalogId *string, database *string, request *GetDatabaseSummaryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDatabaseSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Date) {
@@ -2063,9 +2102,11 @@ func (client *Client) GetRegionStatus() (_result *GetRegionStatusResponse, _err 
 //
 // @return GetRoleResponse
 func (client *Client) GetRoleWithOptions(request *GetRoleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRoleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RolePrincipal) {
@@ -2277,9 +2318,11 @@ func (client *Client) GetTableSnapshot(catalogId *string, database *string, tabl
 //
 // @return GetTableSummaryResponse
 func (client *Client) GetTableSummaryWithOptions(catalogId *string, database *string, table *string, request *GetTableSummaryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTableSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Date) {
@@ -2341,9 +2384,11 @@ func (client *Client) GetTableSummary(catalogId *string, database *string, table
 //
 // @return GetTableTokenResponse
 func (client *Client) GetTableTokenWithOptions(catalogId *string, database *string, table *string, request *GetTableTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTableTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsInternal) {
@@ -2405,9 +2450,11 @@ func (client *Client) GetTableToken(catalogId *string, database *string, table *
 //
 // @return GetUserResponse
 func (client *Client) GetUserWithOptions(request *GetUserRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.UserPrincipal) {
@@ -2469,9 +2516,11 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 //
 // @return GrantRoleToUsersResponse
 func (client *Client) GrantRoleToUsersWithOptions(request *GrantRoleToUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GrantRoleToUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RolePrincipal) {
@@ -2537,9 +2586,11 @@ func (client *Client) GrantRoleToUsers(request *GrantRoleToUsersRequest) (_resul
 //
 // @return ListCatalogsResponse
 func (client *Client) ListCatalogsWithOptions(request *ListCatalogsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListCatalogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogNamePattern) {
@@ -2609,9 +2660,11 @@ func (client *Client) ListCatalogs(request *ListCatalogsRequest) (_result *ListC
 //
 // @return ListDatabaseDetailsResponse
 func (client *Client) ListDatabaseDetailsWithOptions(catalogId *string, request *ListDatabaseDetailsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDatabaseDetailsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatabaseNamePattern) {
@@ -2681,9 +2734,11 @@ func (client *Client) ListDatabaseDetails(catalogId *string, request *ListDataba
 //
 // @return ListDatabasesResponse
 func (client *Client) ListDatabasesWithOptions(catalogId *string, request *ListDatabasesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDatabasesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatabaseNamePattern) {
@@ -2753,9 +2808,11 @@ func (client *Client) ListDatabases(catalogId *string, request *ListDatabasesReq
 //
 // @return ListIcebergNamespaceDetailsResponse
 func (client *Client) ListIcebergNamespaceDetailsWithOptions(catalogId *string, request *ListIcebergNamespaceDetailsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIcebergNamespaceDetailsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -2825,9 +2882,11 @@ func (client *Client) ListIcebergNamespaceDetails(catalogId *string, request *Li
 //
 // @return ListIcebergSnapshotsResponse
 func (client *Client) ListIcebergSnapshotsWithOptions(catalogId *string, namespace *string, table *string, request *ListIcebergSnapshotsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIcebergSnapshotsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -2893,9 +2952,11 @@ func (client *Client) ListIcebergSnapshots(catalogId *string, namespace *string,
 //
 // @return ListIcebergTableDetailsResponse
 func (client *Client) ListIcebergTableDetailsWithOptions(catalogId *string, namespace *string, request *ListIcebergTableDetailsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIcebergTableDetailsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -2965,9 +3026,11 @@ func (client *Client) ListIcebergTableDetails(catalogId *string, namespace *stri
 //
 // @return ListPartitionSummariesResponse
 func (client *Client) ListPartitionSummariesWithOptions(catalogId *string, database *string, table *string, request *ListPartitionSummariesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPartitionSummariesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -3027,6 +3090,80 @@ func (client *Client) ListPartitionSummaries(catalogId *string, database *string
 
 // Summary:
 //
+// listPartitions
+//
+// @param request - ListPartitionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPartitionsResponse
+func (client *Client) ListPartitionsWithOptions(catalogId *string, database *string, table *string, request *ListPartitionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPartitionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.PageToken) {
+		query["pageToken"] = request.PageToken
+	}
+
+	if !dara.IsNil(request.PartitionNamePattern) {
+		query["partitionNamePattern"] = request.PartitionNamePattern
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPartitions"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/" + dara.PercentEncode(dara.StringValue(catalogId)) + "/databases/" + dara.PercentEncode(dara.StringValue(database)) + "/tables/" + dara.PercentEncode(dara.StringValue(table)) + "/partitions"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPartitionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// listPartitions
+//
+// @param request - ListPartitionsRequest
+//
+// @return ListPartitionsResponse
+func (client *Client) ListPartitions(catalogId *string, database *string, table *string, request *ListPartitionsRequest) (_result *ListPartitionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPartitionsResponse{}
+	_body, _err := client.ListPartitionsWithOptions(catalogId, database, table, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取指定资源或指定Principal的权限信息
 //
 // @param request - ListPermissionsRequest
@@ -3037,9 +3174,11 @@ func (client *Client) ListPartitionSummaries(catalogId *string, database *string
 //
 // @return ListPermissionsResponse
 func (client *Client) ListPermissionsWithOptions(catalogId *string, request *ListPermissionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPermissionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Database) {
@@ -3129,9 +3268,11 @@ func (client *Client) ListPermissions(catalogId *string, request *ListPermission
 //
 // @return ListProvidedSharesResponse
 func (client *Client) ListProvidedSharesWithOptions(request *ListProvidedSharesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListProvidedSharesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -3197,9 +3338,11 @@ func (client *Client) ListProvidedShares(request *ListProvidedSharesRequest) (_r
 //
 // @return ListReceivedSharesResponse
 func (client *Client) ListReceivedSharesWithOptions(request *ListReceivedSharesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListReceivedSharesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -3265,9 +3408,11 @@ func (client *Client) ListReceivedShares(request *ListReceivedSharesRequest) (_r
 //
 // @return ListReceiversResponse
 func (client *Client) ListReceiversWithOptions(request *ListReceiversRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListReceiversResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -3337,9 +3482,11 @@ func (client *Client) ListReceivers(request *ListReceiversRequest) (_result *Lis
 //
 // @return ListRoleUsersResponse
 func (client *Client) ListRoleUsersWithOptions(request *ListRoleUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRoleUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -3409,9 +3556,11 @@ func (client *Client) ListRoleUsers(request *ListRoleUsersRequest) (_result *Lis
 //
 // @return ListRolesResponse
 func (client *Client) ListRolesWithOptions(request *ListRolesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRolesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -3481,9 +3630,11 @@ func (client *Client) ListRoles(request *ListRolesRequest) (_result *ListRolesRe
 //
 // @return ListShareReceiversResponse
 func (client *Client) ListShareReceiversWithOptions(share *string, request *ListShareReceiversRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListShareReceiversResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -3549,9 +3700,11 @@ func (client *Client) ListShareReceivers(share *string, request *ListShareReceiv
 //
 // @return ListShareResourcesResponse
 func (client *Client) ListShareResourcesWithOptions(share *string, request *ListShareResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListShareResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -3617,9 +3770,11 @@ func (client *Client) ListShareResources(share *string, request *ListShareResour
 //
 // @return ListSnapshotsResponse
 func (client *Client) ListSnapshotsWithOptions(catalogId *string, database *string, table *string, request *ListSnapshotsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSnapshotsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -3685,9 +3840,11 @@ func (client *Client) ListSnapshots(catalogId *string, database *string, table *
 //
 // @return ListTableDetailsResponse
 func (client *Client) ListTableDetailsWithOptions(catalogId *string, database *string, request *ListTableDetailsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTableDetailsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -3761,9 +3918,11 @@ func (client *Client) ListTableDetails(catalogId *string, database *string, requ
 //
 // @return ListTablesResponse
 func (client *Client) ListTablesWithOptions(catalogId *string, database *string, request *ListTablesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTablesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -3833,9 +3992,11 @@ func (client *Client) ListTables(catalogId *string, database *string, request *L
 //
 // @return ListUserRolesResponse
 func (client *Client) ListUserRolesWithOptions(request *ListUserRolesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListUserRolesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -3905,9 +4066,11 @@ func (client *Client) ListUserRoles(request *ListUserRolesRequest) (_result *Lis
 //
 // @return ListUsersResponse
 func (client *Client) ListUsersWithOptions(request *ListUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -4031,9 +4194,11 @@ func (client *Client) RefreshUserSync() (_result *RefreshUserSyncResponse, _err 
 //
 // @return RevokeRoleFromUsersResponse
 func (client *Client) RevokeRoleFromUsersWithOptions(request *RevokeRoleFromUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RevokeRoleFromUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RolePrincipal) {
@@ -4099,9 +4264,11 @@ func (client *Client) RevokeRoleFromUsers(request *RevokeRoleFromUsersRequest) (
 //
 // @return RollbackTableResponse
 func (client *Client) RollbackTableWithOptions(catalogId *string, database *string, table *string, request *RollbackTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RollbackTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Instant) {
@@ -4213,9 +4380,11 @@ func (client *Client) Subscribe() (_result *SubscribeResponse, _err error) {
 //
 // @return UpdateRoleResponse
 func (client *Client) UpdateRoleWithOptions(request *UpdateRoleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateRoleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -4285,9 +4454,11 @@ func (client *Client) UpdateRole(request *UpdateRoleRequest) (_result *UpdateRol
 //
 // @return UpdateRoleUsersResponse
 func (client *Client) UpdateRoleUsersWithOptions(request *UpdateRoleUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateRoleUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RolePrincipal) {

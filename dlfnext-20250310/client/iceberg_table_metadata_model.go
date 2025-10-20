@@ -83,5 +83,28 @@ func (s *IcebergTableMetadata) SetProperties(v map[string]*string) *IcebergTable
 }
 
 func (s *IcebergTableMetadata) Validate() error {
-	return dara.Validate(s)
+	if s.CurrentSnapshot != nil {
+		if err := s.CurrentSnapshot.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Fields != nil {
+		for _, item := range s.Fields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PartitionFields != nil {
+		for _, item := range s.PartitionFields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

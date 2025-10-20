@@ -50,5 +50,14 @@ func (s *ListDatabaseDetailsResponseBody) SetNextPageToken(v string) *ListDataba
 }
 
 func (s *ListDatabaseDetailsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DatabaseDetails != nil {
+		for _, item := range s.DatabaseDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

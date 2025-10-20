@@ -59,5 +59,10 @@ func (s *GetShareResponse) SetBody(v *Share) *GetShareResponse {
 }
 
 func (s *GetShareResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

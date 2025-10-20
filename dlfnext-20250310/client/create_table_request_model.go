@@ -47,5 +47,15 @@ func (s *CreateTableRequest) SetSchema(v *Schema) *CreateTableRequest {
 }
 
 func (s *CreateTableRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Identifier != nil {
+		if err := s.Identifier.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Schema != nil {
+		if err := s.Schema.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

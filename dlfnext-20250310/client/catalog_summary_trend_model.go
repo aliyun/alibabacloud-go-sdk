@@ -101,5 +101,59 @@ func (s *CatalogSummaryTrend) SetTotalMetaCount(v []*DateSummary) *CatalogSummar
 }
 
 func (s *CatalogSummaryTrend) Validate() error {
-	return dara.Validate(s)
+	if s.ApiVisitCount != nil {
+		for _, item := range s.ApiVisitCount {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FileAccessCount != nil {
+		for _, item := range s.FileAccessCount {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Throughput != nil {
+		for _, item := range s.Throughput {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TotalFileCount != nil {
+		for _, item := range s.TotalFileCount {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TotalFileSizeInBytes != nil {
+		for _, item := range s.TotalFileSizeInBytes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TotalMetaCount != nil {
+		for _, item := range s.TotalMetaCount {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -175,5 +175,20 @@ func (s *FullSchemaChange) SetValue(v string) *FullSchemaChange {
 }
 
 func (s *FullSchemaChange) Validate() error {
-	return dara.Validate(s)
+	if s.DataType != nil {
+		if err := s.DataType.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Move != nil {
+		if err := s.Move.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NewDataType != nil {
+		if err := s.NewDataType.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

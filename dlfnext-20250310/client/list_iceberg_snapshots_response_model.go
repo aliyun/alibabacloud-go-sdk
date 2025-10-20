@@ -59,5 +59,10 @@ func (s *ListIcebergSnapshotsResponse) SetBody(v *ListIcebergSnapshotsResponseBo
 }
 
 func (s *ListIcebergSnapshotsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

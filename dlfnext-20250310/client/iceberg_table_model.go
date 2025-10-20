@@ -143,5 +143,10 @@ func (s *IcebergTable) SetVersion(v int64) *IcebergTable {
 }
 
 func (s *IcebergTable) Validate() error {
-	return dara.Validate(s)
+	if s.IcebergTableMetadata != nil {
+		if err := s.IcebergTableMetadata.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

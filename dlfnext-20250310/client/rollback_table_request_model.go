@@ -35,5 +35,10 @@ func (s *RollbackTableRequest) SetInstant(v *FullInstant) *RollbackTableRequest 
 }
 
 func (s *RollbackTableRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Instant != nil {
+		if err := s.Instant.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

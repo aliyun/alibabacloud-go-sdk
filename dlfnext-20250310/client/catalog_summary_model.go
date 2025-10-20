@@ -192,5 +192,35 @@ func (s *CatalogSummary) SetTotalMetaSizeInBytes(v *MoMValues) *CatalogSummary {
 }
 
 func (s *CatalogSummary) Validate() error {
-	return dara.Validate(s)
+	if s.DatabaseCount != nil {
+		if err := s.DatabaseCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PartitionCount != nil {
+		if err := s.PartitionCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TableCount != nil {
+		if err := s.TableCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalFileCount != nil {
+		if err := s.TotalFileCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalFileSizeInBytes != nil {
+		if err := s.TotalFileSizeInBytes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TotalMetaSizeInBytes != nil {
+		if err := s.TotalMetaSizeInBytes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

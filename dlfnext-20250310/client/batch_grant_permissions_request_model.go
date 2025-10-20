@@ -35,5 +35,14 @@ func (s *BatchGrantPermissionsRequest) SetPermissions(v []*Permission) *BatchGra
 }
 
 func (s *BatchGrantPermissionsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Permissions != nil {
+		for _, item := range s.Permissions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

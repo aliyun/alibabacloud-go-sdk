@@ -50,5 +50,14 @@ func (s *ListUserRolesResponseBody) SetRoles(v []*Role) *ListUserRolesResponseBo
 }
 
 func (s *ListUserRolesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Roles != nil {
+		for _, item := range s.Roles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

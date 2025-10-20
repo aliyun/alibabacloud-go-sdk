@@ -50,5 +50,14 @@ func (s *ListIcebergTableDetailsResponseBody) SetTableDetails(v []*IcebergTable)
 }
 
 func (s *ListIcebergTableDetailsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TableDetails != nil {
+		for _, item := range s.TableDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

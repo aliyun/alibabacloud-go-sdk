@@ -71,5 +71,10 @@ func (s *DataField) SetType(v *FullDataType) *DataField {
 }
 
 func (s *DataField) Validate() error {
-	return dara.Validate(s)
+	if s.Type != nil {
+		if err := s.Type.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

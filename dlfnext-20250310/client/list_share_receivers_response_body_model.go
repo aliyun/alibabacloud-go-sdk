@@ -50,5 +50,14 @@ func (s *ListShareReceiversResponseBody) SetReceivers(v []*Receiver) *ListShareR
 }
 
 func (s *ListShareReceiversResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Receivers != nil {
+		for _, item := range s.Receivers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

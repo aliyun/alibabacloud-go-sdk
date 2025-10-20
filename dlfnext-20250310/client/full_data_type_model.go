@@ -83,5 +83,29 @@ func (s *FullDataType) SetValue(v *FullDataType) *FullDataType {
 }
 
 func (s *FullDataType) Validate() error {
-	return dara.Validate(s)
+	if s.Element != nil {
+		if err := s.Element.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Fields != nil {
+		for _, item := range s.Fields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Key != nil {
+		if err := s.Key.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Value != nil {
+		if err := s.Value.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

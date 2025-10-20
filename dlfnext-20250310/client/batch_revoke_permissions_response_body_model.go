@@ -62,5 +62,14 @@ func (s *BatchRevokePermissionsResponseBody) SetSuccess(v bool) *BatchRevokePerm
 }
 
 func (s *BatchRevokePermissionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FailurePermissions != nil {
+		for _, item := range s.FailurePermissions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

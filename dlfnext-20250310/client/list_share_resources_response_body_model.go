@@ -65,5 +65,14 @@ func (s *ListShareResourcesResponseBody) SetShareResources(v []*ShareResource) *
 }
 
 func (s *ListShareResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ShareResources != nil {
+		for _, item := range s.ShareResources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

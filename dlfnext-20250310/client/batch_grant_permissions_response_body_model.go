@@ -62,5 +62,14 @@ func (s *BatchGrantPermissionsResponseBody) SetSuccess(v bool) *BatchGrantPermis
 }
 
 func (s *BatchGrantPermissionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FailurePermissions != nil {
+		for _, item := range s.FailurePermissions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

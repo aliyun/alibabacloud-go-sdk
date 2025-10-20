@@ -50,5 +50,14 @@ func (s *ListPermissionsResponseBody) SetPermissions(v []*Permission) *ListPermi
 }
 
 func (s *ListPermissionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Permissions != nil {
+		for _, item := range s.Permissions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

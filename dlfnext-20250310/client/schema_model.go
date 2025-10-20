@@ -83,5 +83,14 @@ func (s *Schema) SetPrimaryKeys(v []*string) *Schema {
 }
 
 func (s *Schema) Validate() error {
-	return dara.Validate(s)
+	if s.Fields != nil {
+		for _, item := range s.Fields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -50,5 +50,14 @@ func (s *ListTableDetailsResponseBody) SetTableDetails(v []*Table) *ListTableDet
 }
 
 func (s *ListTableDetailsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TableDetails != nil {
+		for _, item := range s.TableDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

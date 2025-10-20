@@ -83,5 +83,10 @@ func (s *TableSnapshot) SetSnapshot(v *Snapshot) *TableSnapshot {
 }
 
 func (s *TableSnapshot) Validate() error {
-	return dara.Validate(s)
+	if s.Snapshot != nil {
+		if err := s.Snapshot.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -50,5 +50,14 @@ func (s *ListCatalogsResponseBody) SetNextPageToken(v string) *ListCatalogsRespo
 }
 
 func (s *ListCatalogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Catalogs != nil {
+		for _, item := range s.Catalogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
