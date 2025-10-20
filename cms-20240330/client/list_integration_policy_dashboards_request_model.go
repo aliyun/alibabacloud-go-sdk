@@ -11,6 +11,8 @@ type iListIntegrationPolicyDashboardsRequest interface {
 	GoString() string
 	SetAddonName(v string) *ListIntegrationPolicyDashboardsRequest
 	GetAddonName() *string
+	SetLanguage(v string) *ListIntegrationPolicyDashboardsRequest
+	GetLanguage() *string
 	SetScene(v string) *ListIntegrationPolicyDashboardsRequest
 	GetScene() *string
 }
@@ -20,6 +22,7 @@ type ListIntegrationPolicyDashboardsRequest struct {
 	//
 	// cs-default
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
+	Language  *string `json:"language,omitempty" xml:"language,omitempty"`
 	// example:
 	//
 	// databse
@@ -38,12 +41,21 @@ func (s *ListIntegrationPolicyDashboardsRequest) GetAddonName() *string {
 	return s.AddonName
 }
 
+func (s *ListIntegrationPolicyDashboardsRequest) GetLanguage() *string {
+	return s.Language
+}
+
 func (s *ListIntegrationPolicyDashboardsRequest) GetScene() *string {
 	return s.Scene
 }
 
 func (s *ListIntegrationPolicyDashboardsRequest) SetAddonName(v string) *ListIntegrationPolicyDashboardsRequest {
 	s.AddonName = &v
+	return s
+}
+
+func (s *ListIntegrationPolicyDashboardsRequest) SetLanguage(v string) *ListIntegrationPolicyDashboardsRequest {
+	s.Language = &v
 	return s
 }
 

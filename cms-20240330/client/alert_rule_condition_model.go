@@ -290,6 +290,8 @@ func (s *AlertRuleConditionCaseList) Validate() error {
 
 type AlertRuleConditionCompareList struct {
 	Aggregate      *string                                        `json:"aggregate,omitempty" xml:"aggregate,omitempty"`
+	BaseUnit       *string                                        `json:"baseUnit,omitempty" xml:"baseUnit,omitempty"`
+	DisplayUnit    *string                                        `json:"displayUnit,omitempty" xml:"displayUnit,omitempty"`
 	Oper           *string                                        `json:"oper,omitempty" xml:"oper,omitempty"`
 	Value          *float64                                       `json:"value,omitempty" xml:"value,omitempty"`
 	ValueLevelList []*AlertRuleConditionCompareListValueLevelList `json:"valueLevelList,omitempty" xml:"valueLevelList,omitempty" type:"Repeated"`
@@ -307,6 +309,14 @@ func (s AlertRuleConditionCompareList) GoString() string {
 
 func (s *AlertRuleConditionCompareList) GetAggregate() *string {
 	return s.Aggregate
+}
+
+func (s *AlertRuleConditionCompareList) GetBaseUnit() *string {
+	return s.BaseUnit
+}
+
+func (s *AlertRuleConditionCompareList) GetDisplayUnit() *string {
+	return s.DisplayUnit
 }
 
 func (s *AlertRuleConditionCompareList) GetOper() *string {
@@ -331,6 +341,16 @@ func (s *AlertRuleConditionCompareList) GetYoyTimeValue() *int32 {
 
 func (s *AlertRuleConditionCompareList) SetAggregate(v string) *AlertRuleConditionCompareList {
 	s.Aggregate = &v
+	return s
+}
+
+func (s *AlertRuleConditionCompareList) SetBaseUnit(v string) *AlertRuleConditionCompareList {
+	s.BaseUnit = &v
+	return s
+}
+
+func (s *AlertRuleConditionCompareList) SetDisplayUnit(v string) *AlertRuleConditionCompareList {
+	s.DisplayUnit = &v
 	return s
 }
 

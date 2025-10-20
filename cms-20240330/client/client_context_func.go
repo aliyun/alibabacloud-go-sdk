@@ -1948,6 +1948,10 @@ func (client *Client) ListIntegrationPolicyDashboardsWithContext(ctx context.Con
 		query["addonName"] = request.AddonName
 	}
 
+	if !dara.IsNil(request.Language) {
+		query["language"] = request.Language
+	}
+
 	if !dara.IsNil(request.Scene) {
 		query["scene"] = request.Scene
 	}

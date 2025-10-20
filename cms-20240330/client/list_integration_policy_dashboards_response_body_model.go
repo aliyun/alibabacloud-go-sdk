@@ -80,6 +80,7 @@ func (s *ListIntegrationPolicyDashboardsResponseBody) Validate() error {
 }
 
 type ListIntegrationPolicyDashboardsResponseBodyDashboards struct {
+	Engine    *string   `json:"engine,omitempty" xml:"engine,omitempty"`
 	FolderUid *string   `json:"folderUid,omitempty" xml:"folderUid,omitempty"`
 	Name      *string   `json:"name,omitempty" xml:"name,omitempty"`
 	Region    *string   `json:"region,omitempty" xml:"region,omitempty"`
@@ -95,6 +96,10 @@ func (s ListIntegrationPolicyDashboardsResponseBodyDashboards) String() string {
 
 func (s ListIntegrationPolicyDashboardsResponseBodyDashboards) GoString() string {
 	return s.String()
+}
+
+func (s *ListIntegrationPolicyDashboardsResponseBodyDashboards) GetEngine() *string {
+	return s.Engine
 }
 
 func (s *ListIntegrationPolicyDashboardsResponseBodyDashboards) GetFolderUid() *string {
@@ -123,6 +128,11 @@ func (s *ListIntegrationPolicyDashboardsResponseBodyDashboards) GetUid() *string
 
 func (s *ListIntegrationPolicyDashboardsResponseBodyDashboards) GetUrl() *string {
 	return s.Url
+}
+
+func (s *ListIntegrationPolicyDashboardsResponseBodyDashboards) SetEngine(v string) *ListIntegrationPolicyDashboardsResponseBodyDashboards {
+	s.Engine = &v
+	return s
 }
 
 func (s *ListIntegrationPolicyDashboardsResponseBodyDashboards) SetFolderUid(v string) *ListIntegrationPolicyDashboardsResponseBodyDashboards {

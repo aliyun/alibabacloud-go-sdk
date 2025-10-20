@@ -2668,6 +2668,10 @@ func (client *Client) ListIntegrationPolicyDashboardsWithOptions(policyId *strin
 		query["addonName"] = request.AddonName
 	}
 
+	if !dara.IsNil(request.Language) {
+		query["language"] = request.Language
+	}
+
 	if !dara.IsNil(request.Scene) {
 		query["scene"] = request.Scene
 	}
