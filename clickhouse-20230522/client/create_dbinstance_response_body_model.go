@@ -1,0 +1,122 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iCreateDBInstanceResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetData(v *CreateDBInstanceResponseBodyData) *CreateDBInstanceResponseBody
+	GetData() *CreateDBInstanceResponseBodyData
+	SetRequestId(v string) *CreateDBInstanceResponseBody
+	GetRequestId() *string
+}
+
+type CreateDBInstanceResponseBody struct {
+	// The response parameters.
+	Data *CreateDBInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F5178C10-1407-4987-9133-DE4DC9119F75
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDBInstanceResponseBody) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDBInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBInstanceResponseBody) GetData() *CreateDBInstanceResponseBodyData {
+	return s.Data
+}
+
+func (s *CreateDBInstanceResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *CreateDBInstanceResponseBody) SetData(v *CreateDBInstanceResponseBodyData) *CreateDBInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateDBInstanceResponseBody) SetRequestId(v string) *CreateDBInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDBInstanceResponseBody) Validate() error {
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateDBInstanceResponseBodyData struct {
+	// The endpoint.
+	//
+	// example:
+	//
+	// cc-bp100p4q1g9z3****-clickhouse.clickhouseserver.rds.aliyuncs.com
+	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// The cluster ID.
+	//
+	// example:
+	//
+	// cc-bp100p4q1g9z3****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The order ID.
+	//
+	// example:
+	//
+	// 21154955706****
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+}
+
+func (s CreateDBInstanceResponseBodyData) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDBInstanceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBInstanceResponseBodyData) GetConnectionString() *string {
+	return s.ConnectionString
+}
+
+func (s *CreateDBInstanceResponseBodyData) GetDBInstanceId() *string {
+	return s.DBInstanceId
+}
+
+func (s *CreateDBInstanceResponseBodyData) GetOrderId() *int64 {
+	return s.OrderId
+}
+
+func (s *CreateDBInstanceResponseBodyData) SetConnectionString(v string) *CreateDBInstanceResponseBodyData {
+	s.ConnectionString = &v
+	return s
+}
+
+func (s *CreateDBInstanceResponseBodyData) SetDBInstanceId(v string) *CreateDBInstanceResponseBodyData {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateDBInstanceResponseBodyData) SetOrderId(v int64) *CreateDBInstanceResponseBodyData {
+	s.OrderId = &v
+	return s
+}
+
+func (s *CreateDBInstanceResponseBodyData) Validate() error {
+	return dara.Validate(s)
+}

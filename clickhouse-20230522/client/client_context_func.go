@@ -2,105 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"ap-northeast-2-pop":          dara.String("clickhouse.aliyuncs.com"),
-		"ap-southeast-1":              dara.String("clickhouse.aliyuncs.com"),
-		"cn-beijing":                  dara.String("clickhouse.aliyuncs.com"),
-		"cn-beijing-finance-1":        dara.String("clickhouse.aliyuncs.com"),
-		"cn-beijing-finance-pop":      dara.String("clickhouse.aliyuncs.com"),
-		"cn-beijing-gov-1":            dara.String("clickhouse.aliyuncs.com"),
-		"cn-beijing-nu16-b01":         dara.String("clickhouse.aliyuncs.com"),
-		"cn-edge-1":                   dara.String("clickhouse.aliyuncs.com"),
-		"cn-fujian":                   dara.String("clickhouse.aliyuncs.com"),
-		"cn-haidian-cm12-c01":         dara.String("clickhouse.aliyuncs.com"),
-		"cn-hangzhou":                 dara.String("clickhouse.aliyuncs.com"),
-		"cn-hangzhou-bj-b01":          dara.String("clickhouse.aliyuncs.com"),
-		"cn-hangzhou-finance":         dara.String("clickhouse.aliyuncs.com"),
-		"cn-hangzhou-internal-prod-1": dara.String("clickhouse.aliyuncs.com"),
-		"cn-hangzhou-internal-test-1": dara.String("clickhouse.aliyuncs.com"),
-		"cn-hangzhou-internal-test-2": dara.String("clickhouse.aliyuncs.com"),
-		"cn-hangzhou-internal-test-3": dara.String("clickhouse.aliyuncs.com"),
-		"cn-hangzhou-test-306":        dara.String("clickhouse.aliyuncs.com"),
-		"cn-hongkong":                 dara.String("clickhouse.aliyuncs.com"),
-		"cn-hongkong-finance-pop":     dara.String("clickhouse.aliyuncs.com"),
-		"cn-north-2-gov-1":            dara.String("clickhouse.aliyuncs.com"),
-		"cn-qingdao":                  dara.String("clickhouse.aliyuncs.com"),
-		"cn-qingdao-nebula":           dara.String("clickhouse.aliyuncs.com"),
-		"cn-shanghai":                 dara.String("clickhouse.aliyuncs.com"),
-		"cn-shanghai-et15-b01":        dara.String("clickhouse.aliyuncs.com"),
-		"cn-shanghai-et2-b01":         dara.String("clickhouse.aliyuncs.com"),
-		"cn-shanghai-finance-1":       dara.String("clickhouse.aliyuncs.com"),
-		"cn-shanghai-inner":           dara.String("clickhouse.aliyuncs.com"),
-		"cn-shanghai-internal-test-1": dara.String("clickhouse.aliyuncs.com"),
-		"cn-shenzhen":                 dara.String("clickhouse.aliyuncs.com"),
-		"cn-shenzhen-finance-1":       dara.String("clickhouse.aliyuncs.com"),
-		"cn-shenzhen-inner":           dara.String("clickhouse.aliyuncs.com"),
-		"cn-shenzhen-st4-d01":         dara.String("clickhouse.aliyuncs.com"),
-		"cn-shenzhen-su18-b01":        dara.String("clickhouse.aliyuncs.com"),
-		"cn-wuhan":                    dara.String("clickhouse.aliyuncs.com"),
-		"cn-yushanfang":               dara.String("clickhouse.aliyuncs.com"),
-		"cn-zhangbei-na61-b01":        dara.String("clickhouse.aliyuncs.com"),
-		"cn-zhangjiakou-na62-a01":     dara.String("clickhouse.aliyuncs.com"),
-		"cn-zhengzhou-nebula-1":       dara.String("clickhouse.aliyuncs.com"),
-		"eu-west-1-oxs":               dara.String("clickhouse.aliyuncs.com"),
-		"me-east-1":                   dara.String("clickhouse.aliyuncs.com"),
-		"rus-west-1-pop":              dara.String("clickhouse.aliyuncs.com"),
-		"us-east-1":                   dara.String("clickhouse.aliyuncs.com"),
-		"us-west-1":                   dara.String("clickhouse.aliyuncs.com"),
-	}
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("clickhouse"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -111,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAccountResponse
-func (client *Client) CreateAccountWithOptions(tmpReq *CreateAccountRequest, runtime *dara.RuntimeOptions) (_result *CreateAccountResponse, _err error) {
+func (client *Client) CreateAccountWithContext(ctx context.Context, tmpReq *CreateAccountRequest, runtime *dara.RuntimeOptions) (_result *CreateAccountResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -172,29 +77,11 @@ func (client *Client) CreateAccountWithOptions(tmpReq *CreateAccountRequest, run
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a database account for an ApsaraDB for ClickHouse Enterprise Edition cluster.
-//
-// @param request - CreateAccountRequest
-//
-// @return CreateAccountResponse
-func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *CreateAccountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAccountResponse{}
-	_body, _err := client.CreateAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -207,7 +94,7 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateBackupPolicyResponse
-func (client *Client) CreateBackupPolicyWithOptions(request *CreateBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateBackupPolicyResponse, _err error) {
+func (client *Client) CreateBackupPolicyWithContext(ctx context.Context, request *CreateBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateBackupPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -250,29 +137,11 @@ func (client *Client) CreateBackupPolicyWithOptions(request *CreateBackupPolicyR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateBackupPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a backup policy for a specified ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
-//
-// @param request - CreateBackupPolicyRequest
-//
-// @return CreateBackupPolicyResponse
-func (client *Client) CreateBackupPolicy(request *CreateBackupPolicyRequest) (_result *CreateBackupPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateBackupPolicyResponse{}
-	_body, _err := client.CreateBackupPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -285,7 +154,7 @@ func (client *Client) CreateBackupPolicy(request *CreateBackupPolicyRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDBResponse
-func (client *Client) CreateDBWithOptions(request *CreateDBRequest, runtime *dara.RuntimeOptions) (_result *CreateDBResponse, _err error) {
+func (client *Client) CreateDBWithContext(ctx context.Context, request *CreateDBRequest, runtime *dara.RuntimeOptions) (_result *CreateDBResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -324,29 +193,11 @@ func (client *Client) CreateDBWithOptions(request *CreateDBRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDBResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an ApsaraDB for ClickHouse database.
-//
-// @param request - CreateDBRequest
-//
-// @return CreateDBResponse
-func (client *Client) CreateDB(request *CreateDBRequest) (_result *CreateDBResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateDBResponse{}
-	_body, _err := client.CreateDBWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -359,7 +210,7 @@ func (client *Client) CreateDB(request *CreateDBRequest) (_result *CreateDBRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDBInstanceResponse
-func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateDBInstanceResponse, _err error) {
+func (client *Client) CreateDBInstanceWithContext(ctx context.Context, tmpReq *CreateDBInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateDBInstanceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -468,29 +319,11 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDBInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
-//
-// @param request - CreateDBInstanceRequest
-//
-// @return CreateDBInstanceResponse
-func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_result *CreateDBInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateDBInstanceResponse{}
-	_body, _err := client.CreateDBInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -503,7 +336,7 @@ func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateEndpointResponse
-func (client *Client) CreateEndpointWithOptions(request *CreateEndpointRequest, runtime *dara.RuntimeOptions) (_result *CreateEndpointResponse, _err error) {
+func (client *Client) CreateEndpointWithContext(ctx context.Context, request *CreateEndpointRequest, runtime *dara.RuntimeOptions) (_result *CreateEndpointResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -542,29 +375,11 @@ func (client *Client) CreateEndpointWithOptions(request *CreateEndpointRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Applies for a public endpoint.
-//
-// @param request - CreateEndpointRequest
-//
-// @return CreateEndpointResponse
-func (client *Client) CreateEndpoint(request *CreateEndpointRequest) (_result *CreateEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateEndpointResponse{}
-	_body, _err := client.CreateEndpointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -577,7 +392,7 @@ func (client *Client) CreateEndpoint(request *CreateEndpointRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAccountResponse
-func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, runtime *dara.RuntimeOptions) (_result *DeleteAccountResponse, _err error) {
+func (client *Client) DeleteAccountWithContext(ctx context.Context, request *DeleteAccountRequest, runtime *dara.RuntimeOptions) (_result *DeleteAccountResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -616,29 +431,11 @@ func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a database account from an ApsaraDB for ClickHouse cluster.
-//
-// @param request - DeleteAccountRequest
-//
-// @return DeleteAccountResponse
-func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *DeleteAccountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAccountResponse{}
-	_body, _err := client.DeleteAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -651,7 +448,7 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteBackupPolicyResponse
-func (client *Client) DeleteBackupPolicyWithOptions(request *DeleteBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteBackupPolicyResponse, _err error) {
+func (client *Client) DeleteBackupPolicyWithContext(ctx context.Context, request *DeleteBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteBackupPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -682,29 +479,11 @@ func (client *Client) DeleteBackupPolicyWithOptions(request *DeleteBackupPolicyR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteBackupPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改备份策略
-//
-// @param request - DeleteBackupPolicyRequest
-//
-// @return DeleteBackupPolicyResponse
-func (client *Client) DeleteBackupPolicy(request *DeleteBackupPolicyRequest) (_result *DeleteBackupPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteBackupPolicyResponse{}
-	_body, _err := client.DeleteBackupPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -717,7 +496,7 @@ func (client *Client) DeleteBackupPolicy(request *DeleteBackupPolicyRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDBResponse
-func (client *Client) DeleteDBWithOptions(request *DeleteDBRequest, runtime *dara.RuntimeOptions) (_result *DeleteDBResponse, _err error) {
+func (client *Client) DeleteDBWithContext(ctx context.Context, request *DeleteDBRequest, runtime *dara.RuntimeOptions) (_result *DeleteDBResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -752,29 +531,11 @@ func (client *Client) DeleteDBWithOptions(request *DeleteDBRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDBResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an ApsaraDB for ClickHouse database.
-//
-// @param request - DeleteDBRequest
-//
-// @return DeleteDBResponse
-func (client *Client) DeleteDB(request *DeleteDBRequest) (_result *DeleteDBResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteDBResponse{}
-	_body, _err := client.DeleteDBWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -787,7 +548,7 @@ func (client *Client) DeleteDB(request *DeleteDBRequest) (_result *DeleteDBRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDBInstanceResponse
-func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteDBInstanceResponse, _err error) {
+func (client *Client) DeleteDBInstanceWithContext(ctx context.Context, request *DeleteDBInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteDBInstanceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -818,29 +579,11 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDBInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Releases an ApsaraDB for ClickHouse Enterprise Edition cluster.
-//
-// @param request - DeleteDBInstanceRequest
-//
-// @return DeleteDBInstanceResponse
-func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_result *DeleteDBInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteDBInstanceResponse{}
-	_body, _err := client.DeleteDBInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -853,7 +596,7 @@ func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteEndpointResponse
-func (client *Client) DeleteEndpointWithOptions(request *DeleteEndpointRequest, runtime *dara.RuntimeOptions) (_result *DeleteEndpointResponse, _err error) {
+func (client *Client) DeleteEndpointWithContext(ctx context.Context, request *DeleteEndpointRequest, runtime *dara.RuntimeOptions) (_result *DeleteEndpointResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -892,29 +635,11 @@ func (client *Client) DeleteEndpointWithOptions(request *DeleteEndpointRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Releases a public endpoint.
-//
-// @param request - DeleteEndpointRequest
-//
-// @return DeleteEndpointResponse
-func (client *Client) DeleteEndpoint(request *DeleteEndpointRequest) (_result *DeleteEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteEndpointResponse{}
-	_body, _err := client.DeleteEndpointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -927,7 +652,7 @@ func (client *Client) DeleteEndpoint(request *DeleteEndpointRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAccountAuthorityResponse
-func (client *Client) DescribeAccountAuthorityWithOptions(request *DescribeAccountAuthorityRequest, runtime *dara.RuntimeOptions) (_result *DescribeAccountAuthorityResponse, _err error) {
+func (client *Client) DescribeAccountAuthorityWithContext(ctx context.Context, request *DescribeAccountAuthorityRequest, runtime *dara.RuntimeOptions) (_result *DescribeAccountAuthorityResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -962,29 +687,11 @@ func (client *Client) DescribeAccountAuthorityWithOptions(request *DescribeAccou
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAccountAuthorityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the permissions of a database account.
-//
-// @param request - DescribeAccountAuthorityRequest
-//
-// @return DescribeAccountAuthorityResponse
-func (client *Client) DescribeAccountAuthority(request *DescribeAccountAuthorityRequest) (_result *DescribeAccountAuthorityResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAccountAuthorityResponse{}
-	_body, _err := client.DescribeAccountAuthorityWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -997,7 +704,7 @@ func (client *Client) DescribeAccountAuthority(request *DescribeAccountAuthority
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAccountsResponse
-func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAccountsResponse, _err error) {
+func (client *Client) DescribeAccountsWithContext(ctx context.Context, request *DescribeAccountsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAccountsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1040,29 +747,11 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAccountsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries database accounts for an ApsaraDB for ClickHouse cluster.
-//
-// @param request - DescribeAccountsRequest
-//
-// @return DescribeAccountsResponse
-func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_result *DescribeAccountsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAccountsResponse{}
-	_body, _err := client.DescribeAccountsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1075,7 +764,7 @@ func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeBackupPolicyResponse
-func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupPolicyResponse, _err error) {
+func (client *Client) DescribeBackupPolicyWithContext(ctx context.Context, request *DescribeBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1106,29 +795,11 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeBackupPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建备份策略
-//
-// @param request - DescribeBackupPolicyRequest
-//
-// @return DescribeBackupPolicyResponse
-func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest) (_result *DescribeBackupPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeBackupPolicyResponse{}
-	_body, _err := client.DescribeBackupPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1141,7 +812,7 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeBackupsResponse
-func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupsResponse, _err error) {
+func (client *Client) DescribeBackupsWithContext(ctx context.Context, request *DescribeBackupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1192,29 +863,11 @@ func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeBackupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询备份集
-//
-// @param request - DescribeBackupsRequest
-//
-// @return DescribeBackupsResponse
-func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result *DescribeBackupsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeBackupsResponse{}
-	_body, _err := client.DescribeBackupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1227,7 +880,7 @@ func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDBInstanceAttributeResponse
-func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDBInstanceAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceAttributeResponse, _err error) {
+func (client *Client) DescribeDBInstanceAttributeWithContext(ctx context.Context, request *DescribeDBInstanceAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceAttributeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1258,29 +911,11 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDBInstanceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
-//
-// @param request - DescribeDBInstanceAttributeRequest
-//
-// @return DescribeDBInstanceAttributeResponse
-func (client *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAttributeRequest) (_result *DescribeDBInstanceAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDBInstanceAttributeResponse{}
-	_body, _err := client.DescribeDBInstanceAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1293,7 +928,7 @@ func (client *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAtt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDBInstanceConfigResponse
-func (client *Client) DescribeDBInstanceConfigWithOptions(request *DescribeDBInstanceConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceConfigResponse, _err error) {
+func (client *Client) DescribeDBInstanceConfigWithContext(ctx context.Context, request *DescribeDBInstanceConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceConfigResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1316,29 +951,11 @@ func (client *Client) DescribeDBInstanceConfigWithOptions(request *DescribeDBIns
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDBInstanceConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询实例参数配置
-//
-// @param request - DescribeDBInstanceConfigRequest
-//
-// @return DescribeDBInstanceConfigResponse
-func (client *Client) DescribeDBInstanceConfig(request *DescribeDBInstanceConfigRequest) (_result *DescribeDBInstanceConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDBInstanceConfigResponse{}
-	_body, _err := client.DescribeDBInstanceConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1351,7 +968,7 @@ func (client *Client) DescribeDBInstanceConfig(request *DescribeDBInstanceConfig
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDBInstanceConfigChangeLogResponse
-func (client *Client) DescribeDBInstanceConfigChangeLogWithOptions(request *DescribeDBInstanceConfigChangeLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceConfigChangeLogResponse, _err error) {
+func (client *Client) DescribeDBInstanceConfigChangeLogWithContext(ctx context.Context, request *DescribeDBInstanceConfigChangeLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceConfigChangeLogResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1374,29 +991,11 @@ func (client *Client) DescribeDBInstanceConfigChangeLogWithOptions(request *Desc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDBInstanceConfigChangeLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询实例参数配置记录
-//
-// @param request - DescribeDBInstanceConfigChangeLogRequest
-//
-// @return DescribeDBInstanceConfigChangeLogResponse
-func (client *Client) DescribeDBInstanceConfigChangeLog(request *DescribeDBInstanceConfigChangeLogRequest) (_result *DescribeDBInstanceConfigChangeLogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDBInstanceConfigChangeLogResponse{}
-	_body, _err := client.DescribeDBInstanceConfigChangeLogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1409,7 +1008,7 @@ func (client *Client) DescribeDBInstanceConfigChangeLog(request *DescribeDBInsta
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDBInstanceDataSourcesResponse
-func (client *Client) DescribeDBInstanceDataSourcesWithOptions(request *DescribeDBInstanceDataSourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceDataSourcesResponse, _err error) {
+func (client *Client) DescribeDBInstanceDataSourcesWithContext(ctx context.Context, request *DescribeDBInstanceDataSourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceDataSourcesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1448,29 +1047,11 @@ func (client *Client) DescribeDBInstanceDataSourcesWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDBInstanceDataSourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the schema of a database or a table.
-//
-// @param request - DescribeDBInstanceDataSourcesRequest
-//
-// @return DescribeDBInstanceDataSourcesResponse
-func (client *Client) DescribeDBInstanceDataSources(request *DescribeDBInstanceDataSourcesRequest) (_result *DescribeDBInstanceDataSourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDBInstanceDataSourcesResponse{}
-	_body, _err := client.DescribeDBInstanceDataSourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1483,7 +1064,7 @@ func (client *Client) DescribeDBInstanceDataSources(request *DescribeDBInstanceD
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDBInstancesResponse
-func (client *Client) DescribeDBInstancesWithOptions(request *DescribeDBInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstancesResponse, _err error) {
+func (client *Client) DescribeDBInstancesWithContext(ctx context.Context, request *DescribeDBInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstancesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1534,29 +1115,11 @@ func (client *Client) DescribeDBInstancesWithOptions(request *DescribeDBInstance
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDBInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of ApsaraDB for ClickHouse clusters.
-//
-// @param request - DescribeDBInstancesRequest
-//
-// @return DescribeDBInstancesResponse
-func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (_result *DescribeDBInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDBInstancesResponse{}
-	_body, _err := client.DescribeDBInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1569,7 +1132,7 @@ func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEndpointsResponse
-func (client *Client) DescribeEndpointsWithOptions(request *DescribeEndpointsRequest, runtime *dara.RuntimeOptions) (_result *DescribeEndpointsResponse, _err error) {
+func (client *Client) DescribeEndpointsWithContext(ctx context.Context, request *DescribeEndpointsRequest, runtime *dara.RuntimeOptions) (_result *DescribeEndpointsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1600,29 +1163,11 @@ func (client *Client) DescribeEndpointsWithOptions(request *DescribeEndpointsReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeEndpointsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the endpoint of an ApsaraDB for ClickHouse cluster.
-//
-// @param request - DescribeEndpointsRequest
-//
-// @return DescribeEndpointsResponse
-func (client *Client) DescribeEndpoints(request *DescribeEndpointsRequest) (_result *DescribeEndpointsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeEndpointsResponse{}
-	_body, _err := client.DescribeEndpointsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1635,7 +1180,7 @@ func (client *Client) DescribeEndpoints(request *DescribeEndpointsRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeProcessListResponse
-func (client *Client) DescribeProcessListWithOptions(request *DescribeProcessListRequest, runtime *dara.RuntimeOptions) (_result *DescribeProcessListResponse, _err error) {
+func (client *Client) DescribeProcessListWithContext(ctx context.Context, request *DescribeProcessListRequest, runtime *dara.RuntimeOptions) (_result *DescribeProcessListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1694,29 +1239,11 @@ func (client *Client) DescribeProcessListWithOptions(request *DescribeProcessLis
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeProcessListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Views running queries.
-//
-// @param request - DescribeProcessListRequest
-//
-// @return DescribeProcessListResponse
-func (client *Client) DescribeProcessList(request *DescribeProcessListRequest) (_result *DescribeProcessListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeProcessListResponse{}
-	_body, _err := client.DescribeProcessListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1729,7 +1256,7 @@ func (client *Client) DescribeProcessList(request *DescribeProcessListRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSecurityIPListResponse
-func (client *Client) DescribeSecurityIPListWithOptions(request *DescribeSecurityIPListRequest, runtime *dara.RuntimeOptions) (_result *DescribeSecurityIPListResponse, _err error) {
+func (client *Client) DescribeSecurityIPListWithContext(ctx context.Context, request *DescribeSecurityIPListRequest, runtime *dara.RuntimeOptions) (_result *DescribeSecurityIPListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1760,29 +1287,11 @@ func (client *Client) DescribeSecurityIPListWithOptions(request *DescribeSecurit
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSecurityIPListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the whitelist of an ApsaraDB for ClickHouse cluster.
-//
-// @param request - DescribeSecurityIPListRequest
-//
-// @return DescribeSecurityIPListResponse
-func (client *Client) DescribeSecurityIPList(request *DescribeSecurityIPListRequest) (_result *DescribeSecurityIPListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSecurityIPListResponse{}
-	_body, _err := client.DescribeSecurityIPListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1795,7 +1304,7 @@ func (client *Client) DescribeSecurityIPList(request *DescribeSecurityIPListRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSlowLogRecordsResponse
-func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLogRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSlowLogRecordsResponse, _err error) {
+func (client *Client) DescribeSlowLogRecordsWithContext(ctx context.Context, request *DescribeSlowLogRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSlowLogRecordsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1846,29 +1355,11 @@ func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLog
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSlowLogRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of slow query logs.
-//
-// @param request - DescribeSlowLogRecordsRequest
-//
-// @return DescribeSlowLogRecordsResponse
-func (client *Client) DescribeSlowLogRecords(request *DescribeSlowLogRecordsRequest) (_result *DescribeSlowLogRecordsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSlowLogRecordsResponse{}
-	_body, _err := client.DescribeSlowLogRecordsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1881,7 +1372,7 @@ func (client *Client) DescribeSlowLogRecords(request *DescribeSlowLogRecordsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSlowLogTrendResponse
-func (client *Client) DescribeSlowLogTrendWithOptions(request *DescribeSlowLogTrendRequest, runtime *dara.RuntimeOptions) (_result *DescribeSlowLogTrendResponse, _err error) {
+func (client *Client) DescribeSlowLogTrendWithContext(ctx context.Context, request *DescribeSlowLogTrendRequest, runtime *dara.RuntimeOptions) (_result *DescribeSlowLogTrendResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1928,29 +1419,11 @@ func (client *Client) DescribeSlowLogTrendWithOptions(request *DescribeSlowLogTr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSlowLogTrendResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the trend of slow query logs.
-//
-// @param request - DescribeSlowLogTrendRequest
-//
-// @return DescribeSlowLogTrendResponse
-func (client *Client) DescribeSlowLogTrend(request *DescribeSlowLogTrendRequest) (_result *DescribeSlowLogTrendResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSlowLogTrendResponse{}
-	_body, _err := client.DescribeSlowLogTrendWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1963,7 +1436,7 @@ func (client *Client) DescribeSlowLogTrend(request *DescribeSlowLogTrendRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return KillProcessResponse
-func (client *Client) KillProcessWithOptions(request *KillProcessRequest, runtime *dara.RuntimeOptions) (_result *KillProcessResponse, _err error) {
+func (client *Client) KillProcessWithContext(ctx context.Context, request *KillProcessRequest, runtime *dara.RuntimeOptions) (_result *KillProcessResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1998,29 +1471,11 @@ func (client *Client) KillProcessWithOptions(request *KillProcessRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &KillProcessResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Terminates an ongoing query.
-//
-// @param request - KillProcessRequest
-//
-// @return KillProcessResponse
-func (client *Client) KillProcess(request *KillProcessRequest) (_result *KillProcessResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &KillProcessResponse{}
-	_body, _err := client.KillProcessWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2033,7 +1488,7 @@ func (client *Client) KillProcess(request *KillProcessRequest) (_result *KillPro
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyAccountAuthorityResponse
-func (client *Client) ModifyAccountAuthorityWithOptions(tmpReq *ModifyAccountAuthorityRequest, runtime *dara.RuntimeOptions) (_result *ModifyAccountAuthorityResponse, _err error) {
+func (client *Client) ModifyAccountAuthorityWithContext(ctx context.Context, tmpReq *ModifyAccountAuthorityRequest, runtime *dara.RuntimeOptions) (_result *ModifyAccountAuthorityResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -2078,29 +1533,11 @@ func (client *Client) ModifyAccountAuthorityWithOptions(tmpReq *ModifyAccountAut
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyAccountAuthorityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the permissions of a database account.
-//
-// @param request - ModifyAccountAuthorityRequest
-//
-// @return ModifyAccountAuthorityResponse
-func (client *Client) ModifyAccountAuthority(request *ModifyAccountAuthorityRequest) (_result *ModifyAccountAuthorityResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyAccountAuthorityResponse{}
-	_body, _err := client.ModifyAccountAuthorityWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2113,7 +1550,7 @@ func (client *Client) ModifyAccountAuthority(request *ModifyAccountAuthorityRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyAccountDescriptionResponse
-func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccountDescriptionRequest, runtime *dara.RuntimeOptions) (_result *ModifyAccountDescriptionResponse, _err error) {
+func (client *Client) ModifyAccountDescriptionWithContext(ctx context.Context, request *ModifyAccountDescriptionRequest, runtime *dara.RuntimeOptions) (_result *ModifyAccountDescriptionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2152,29 +1589,11 @@ func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccount
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyAccountDescriptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the description of a database account.
-//
-// @param request - ModifyAccountDescriptionRequest
-//
-// @return ModifyAccountDescriptionResponse
-func (client *Client) ModifyAccountDescription(request *ModifyAccountDescriptionRequest) (_result *ModifyAccountDescriptionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyAccountDescriptionResponse{}
-	_body, _err := client.ModifyAccountDescriptionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2187,7 +1606,7 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyBackupPolicyResponse
-func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyBackupPolicyResponse, _err error) {
+func (client *Client) ModifyBackupPolicyWithContext(ctx context.Context, request *ModifyBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyBackupPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2230,29 +1649,11 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyBackupPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改备份策略
-//
-// @param request - ModifyBackupPolicyRequest
-//
-// @return ModifyBackupPolicyResponse
-func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_result *ModifyBackupPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyBackupPolicyResponse{}
-	_body, _err := client.ModifyBackupPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2265,7 +1666,7 @@ func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDBInstanceAttributeResponse
-func (client *Client) ModifyDBInstanceAttributeWithOptions(request *ModifyDBInstanceAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceAttributeResponse, _err error) {
+func (client *Client) ModifyDBInstanceAttributeWithContext(ctx context.Context, request *ModifyDBInstanceAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceAttributeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2308,29 +1709,11 @@ func (client *Client) ModifyDBInstanceAttributeWithOptions(request *ModifyDBInst
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDBInstanceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configurations of an ApsaraDB for ClickHouse cluster.
-//
-// @param request - ModifyDBInstanceAttributeRequest
-//
-// @return ModifyDBInstanceAttributeResponse
-func (client *Client) ModifyDBInstanceAttribute(request *ModifyDBInstanceAttributeRequest) (_result *ModifyDBInstanceAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyDBInstanceAttributeResponse{}
-	_body, _err := client.ModifyDBInstanceAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2343,7 +1726,7 @@ func (client *Client) ModifyDBInstanceAttribute(request *ModifyDBInstanceAttribu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDBInstanceClassResponse
-func (client *Client) ModifyDBInstanceClassWithOptions(request *ModifyDBInstanceClassRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceClassResponse, _err error) {
+func (client *Client) ModifyDBInstanceClassWithContext(ctx context.Context, request *ModifyDBInstanceClassRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceClassResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2402,29 +1785,11 @@ func (client *Client) ModifyDBInstanceClassWithOptions(request *ModifyDBInstance
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDBInstanceClassResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the elastic scaling settings of an ApsaraDB for ClickHouse cluster.
-//
-// @param request - ModifyDBInstanceClassRequest
-//
-// @return ModifyDBInstanceClassResponse
-func (client *Client) ModifyDBInstanceClass(request *ModifyDBInstanceClassRequest) (_result *ModifyDBInstanceClassResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyDBInstanceClassResponse{}
-	_body, _err := client.ModifyDBInstanceClassWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2437,7 +1802,7 @@ func (client *Client) ModifyDBInstanceClass(request *ModifyDBInstanceClassReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDBInstanceConfigResponse
-func (client *Client) ModifyDBInstanceConfigWithOptions(request *ModifyDBInstanceConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceConfigResponse, _err error) {
+func (client *Client) ModifyDBInstanceConfigWithContext(ctx context.Context, request *ModifyDBInstanceConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceConfigResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2472,29 +1837,11 @@ func (client *Client) ModifyDBInstanceConfigWithOptions(request *ModifyDBInstanc
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDBInstanceConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改实例参数配置
-//
-// @param request - ModifyDBInstanceConfigRequest
-//
-// @return ModifyDBInstanceConfigResponse
-func (client *Client) ModifyDBInstanceConfig(request *ModifyDBInstanceConfigRequest) (_result *ModifyDBInstanceConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyDBInstanceConfigResponse{}
-	_body, _err := client.ModifyDBInstanceConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2507,7 +1854,7 @@ func (client *Client) ModifyDBInstanceConfig(request *ModifyDBInstanceConfigRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDBInstanceConnectionStringResponse
-func (client *Client) ModifyDBInstanceConnectionStringWithOptions(request *ModifyDBInstanceConnectionStringRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceConnectionStringResponse, _err error) {
+func (client *Client) ModifyDBInstanceConnectionStringWithContext(ctx context.Context, request *ModifyDBInstanceConnectionStringRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceConnectionStringResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2554,29 +1901,11 @@ func (client *Client) ModifyDBInstanceConnectionStringWithOptions(request *Modif
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDBInstanceConnectionStringResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the endpoint of an ApsaraDB for ClickHouse cluster.
-//
-// @param request - ModifyDBInstanceConnectionStringRequest
-//
-// @return ModifyDBInstanceConnectionStringResponse
-func (client *Client) ModifyDBInstanceConnectionString(request *ModifyDBInstanceConnectionStringRequest) (_result *ModifyDBInstanceConnectionStringResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyDBInstanceConnectionStringResponse{}
-	_body, _err := client.ModifyDBInstanceConnectionStringWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2589,7 +1918,7 @@ func (client *Client) ModifyDBInstanceConnectionString(request *ModifyDBInstance
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifySecurityIPListResponse
-func (client *Client) ModifySecurityIPListWithOptions(request *ModifySecurityIPListRequest, runtime *dara.RuntimeOptions) (_result *ModifySecurityIPListResponse, _err error) {
+func (client *Client) ModifySecurityIPListWithContext(ctx context.Context, request *ModifySecurityIPListRequest, runtime *dara.RuntimeOptions) (_result *ModifySecurityIPListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2632,29 +1961,11 @@ func (client *Client) ModifySecurityIPListWithOptions(request *ModifySecurityIPL
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifySecurityIPListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the whitelist settings of an ApsaraDB for ClickHouse cluster.
-//
-// @param request - ModifySecurityIPListRequest
-//
-// @return ModifySecurityIPListResponse
-func (client *Client) ModifySecurityIPList(request *ModifySecurityIPListRequest) (_result *ModifySecurityIPListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifySecurityIPListResponse{}
-	_body, _err := client.ModifySecurityIPListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2667,7 +1978,7 @@ func (client *Client) ModifySecurityIPList(request *ModifySecurityIPListRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ResetAccountPasswordResponse
-func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPasswordRequest, runtime *dara.RuntimeOptions) (_result *ResetAccountPasswordResponse, _err error) {
+func (client *Client) ResetAccountPasswordWithContext(ctx context.Context, request *ResetAccountPasswordRequest, runtime *dara.RuntimeOptions) (_result *ResetAccountPasswordResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2710,29 +2021,11 @@ func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPassw
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResetAccountPasswordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Resets the password of a database account for an ApsaraDB for ClickHouse Enterprise Edition cluster.
-//
-// @param request - ResetAccountPasswordRequest
-//
-// @return ResetAccountPasswordResponse
-func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest) (_result *ResetAccountPasswordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ResetAccountPasswordResponse{}
-	_body, _err := client.ResetAccountPasswordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2745,7 +2038,7 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RestartDBInstanceResponse
-func (client *Client) RestartDBInstanceWithOptions(request *RestartDBInstanceRequest, runtime *dara.RuntimeOptions) (_result *RestartDBInstanceResponse, _err error) {
+func (client *Client) RestartDBInstanceWithContext(ctx context.Context, request *RestartDBInstanceRequest, runtime *dara.RuntimeOptions) (_result *RestartDBInstanceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2776,29 +2069,11 @@ func (client *Client) RestartDBInstanceWithOptions(request *RestartDBInstanceReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &RestartDBInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Restarts an ApsaraDB for ClickHouse Enterprise Edition cluster.
-//
-// @param request - RestartDBInstanceRequest
-//
-// @return RestartDBInstanceResponse
-func (client *Client) RestartDBInstance(request *RestartDBInstanceRequest) (_result *RestartDBInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RestartDBInstanceResponse{}
-	_body, _err := client.RestartDBInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2811,7 +2086,7 @@ func (client *Client) RestartDBInstance(request *RestartDBInstanceRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartDBInstanceResponse
-func (client *Client) StartDBInstanceWithOptions(request *StartDBInstanceRequest, runtime *dara.RuntimeOptions) (_result *StartDBInstanceResponse, _err error) {
+func (client *Client) StartDBInstanceWithContext(ctx context.Context, request *StartDBInstanceRequest, runtime *dara.RuntimeOptions) (_result *StartDBInstanceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2842,29 +2117,11 @@ func (client *Client) StartDBInstanceWithOptions(request *StartDBInstanceRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartDBInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Starts an ApsaraDB for ClickHouse Enterprise Edition cluster.
-//
-// @param request - StartDBInstanceRequest
-//
-// @return StartDBInstanceResponse
-func (client *Client) StartDBInstance(request *StartDBInstanceRequest) (_result *StartDBInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartDBInstanceResponse{}
-	_body, _err := client.StartDBInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2877,7 +2134,7 @@ func (client *Client) StartDBInstance(request *StartDBInstanceRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopDBInstanceResponse
-func (client *Client) StopDBInstanceWithOptions(request *StopDBInstanceRequest, runtime *dara.RuntimeOptions) (_result *StopDBInstanceResponse, _err error) {
+func (client *Client) StopDBInstanceWithContext(ctx context.Context, request *StopDBInstanceRequest, runtime *dara.RuntimeOptions) (_result *StopDBInstanceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2908,29 +2165,11 @@ func (client *Client) StopDBInstanceWithOptions(request *StopDBInstanceRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopDBInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops an ApsaraDB for ClickHouse Enterprise Edition cluster.
-//
-// @param request - StopDBInstanceRequest
-//
-// @return StopDBInstanceResponse
-func (client *Client) StopDBInstance(request *StopDBInstanceRequest) (_result *StopDBInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopDBInstanceResponse{}
-	_body, _err := client.StopDBInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2943,7 +2182,7 @@ func (client *Client) StopDBInstance(request *StopDBInstanceRequest) (_result *S
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpgradeMinorVersionResponse
-func (client *Client) UpgradeMinorVersionWithOptions(request *UpgradeMinorVersionRequest, runtime *dara.RuntimeOptions) (_result *UpgradeMinorVersionResponse, _err error) {
+func (client *Client) UpgradeMinorVersionWithContext(ctx context.Context, request *UpgradeMinorVersionRequest, runtime *dara.RuntimeOptions) (_result *UpgradeMinorVersionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2986,28 +2225,10 @@ func (client *Client) UpgradeMinorVersionWithOptions(request *UpgradeMinorVersio
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpgradeMinorVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the minor engine version of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
-//
-// @param request - UpgradeMinorVersionRequest
-//
-// @return UpgradeMinorVersionResponse
-func (client *Client) UpgradeMinorVersion(request *UpgradeMinorVersionRequest) (_result *UpgradeMinorVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpgradeMinorVersionResponse{}
-	_body, _err := client.UpgradeMinorVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
