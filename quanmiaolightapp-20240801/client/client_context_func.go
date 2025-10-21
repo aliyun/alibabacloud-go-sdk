@@ -502,6 +502,86 @@ func (client *Client) GetVideoAnalysisTaskWithContext(ctx context.Context, works
 
 // Summary:
 //
+// 智能拆条-获取配置
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVideoDetectShotConfigResponse
+func (client *Client) GetVideoDetectShotConfigWithContext(ctx context.Context, workspaceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetVideoDetectShotConfigResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetVideoDetectShotConfig"),
+		Version:     dara.String("2024-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/quanmiao/lightapp/videoAnalysis/getVideoDetectShotConfig"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetVideoDetectShotConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 轻应用-获取视频拆条异步任务结果
+//
+// @param request - GetVideoDetectShotTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVideoDetectShotTaskResponse
+func (client *Client) GetVideoDetectShotTaskWithContext(ctx context.Context, workspaceId *string, request *GetVideoDetectShotTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetVideoDetectShotTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		query["taskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetVideoDetectShotTask"),
+		Version:     dara.String("2024-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/quanmiao/lightapp/getVideoDetectShotTask"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetVideoDetectShotTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 热点新闻推荐
 //
 // @param request - HotNewsRecommendRequest
@@ -2075,6 +2155,132 @@ func (client *Client) RunVideoAnalysisWithContext(ctx context.Context, workspace
 
 // Summary:
 //
+// 轻应用-视频拆条
+//
+// @param tmpReq - RunVideoDetectShotRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunVideoDetectShotResponse
+func (client *Client) RunVideoDetectShotWithSSECtx(ctx context.Context, workspaceId *string, tmpReq *RunVideoDetectShotRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *RunVideoDetectShotResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runVideoDetectShotWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, workspaceId, tmpReq, headers, runtime)
+	return
+}
+
+// Summary:
+//
+// 轻应用-视频拆条
+//
+// @param tmpReq - RunVideoDetectShotRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunVideoDetectShotResponse
+func (client *Client) RunVideoDetectShotWithContext(ctx context.Context, workspaceId *string, tmpReq *RunVideoDetectShotRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunVideoDetectShotResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &RunVideoDetectShotShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Options) {
+		request.OptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Options, dara.String("options"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RecognitionOptions) {
+		request.RecognitionOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RecognitionOptions, dara.String("recognitionOptions"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.IntelliSimpPrompt) {
+		body["intelliSimpPrompt"] = request.IntelliSimpPrompt
+	}
+
+	if !dara.IsNil(request.IntelliSimpPromptTemplateId) {
+		body["intelliSimpPromptTemplateId"] = request.IntelliSimpPromptTemplateId
+	}
+
+	if !dara.IsNil(request.Language) {
+		body["language"] = request.Language
+	}
+
+	if !dara.IsNil(request.ModelCustomPromptTemplateId) {
+		body["modelCustomPromptTemplateId"] = request.ModelCustomPromptTemplateId
+	}
+
+	if !dara.IsNil(request.ModelId) {
+		body["modelId"] = request.ModelId
+	}
+
+	if !dara.IsNil(request.ModelVlCustomPromptTemplateId) {
+		body["modelVlCustomPromptTemplateId"] = request.ModelVlCustomPromptTemplateId
+	}
+
+	if !dara.IsNil(request.OptionsShrink) {
+		body["options"] = request.OptionsShrink
+	}
+
+	if !dara.IsNil(request.OriginalSessionId) {
+		body["originalSessionId"] = request.OriginalSessionId
+	}
+
+	if !dara.IsNil(request.PreModelId) {
+		body["preModelId"] = request.PreModelId
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.RecognitionOptionsShrink) {
+		body["recognitionOptions"] = request.RecognitionOptionsShrink
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["taskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.VideoUrl) {
+		body["videoUrl"] = request.VideoUrl
+	}
+
+	if !dara.IsNil(request.VlPrompt) {
+		body["vlPrompt"] = request.VlPrompt
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunVideoDetectShot"),
+		Version:     dara.String("2024-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/quanmiao/lightapp/runVideoDetectShot"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RunVideoDetectShotResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 提交企业VOC异步任务
 //
 // @param tmpReq - SubmitEnterpriseVocAnalysisTaskRequest
@@ -2495,6 +2701,119 @@ func (client *Client) SubmitVideoAnalysisTaskWithContext(ctx context.Context, wo
 
 // Summary:
 //
+// 轻应用-提交视频拆条任务
+//
+// @param tmpReq - SubmitVideoDetectShotTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitVideoDetectShotTaskResponse
+func (client *Client) SubmitVideoDetectShotTaskWithContext(ctx context.Context, workspaceId *string, tmpReq *SubmitVideoDetectShotTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitVideoDetectShotTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SubmitVideoDetectShotTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Options) {
+		request.OptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Options, dara.String("options"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RecognitionOptions) {
+		request.RecognitionOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RecognitionOptions, dara.String("recognitionOptions"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DeduplicationId) {
+		body["deduplicationId"] = request.DeduplicationId
+	}
+
+	if !dara.IsNil(request.IntelliSimpPrompt) {
+		body["intelliSimpPrompt"] = request.IntelliSimpPrompt
+	}
+
+	if !dara.IsNil(request.IntelliSimpPromptTemplateId) {
+		body["intelliSimpPromptTemplateId"] = request.IntelliSimpPromptTemplateId
+	}
+
+	if !dara.IsNil(request.Language) {
+		body["language"] = request.Language
+	}
+
+	if !dara.IsNil(request.ModelCustomPromptTemplateId) {
+		body["modelCustomPromptTemplateId"] = request.ModelCustomPromptTemplateId
+	}
+
+	if !dara.IsNil(request.ModelId) {
+		body["modelId"] = request.ModelId
+	}
+
+	if !dara.IsNil(request.ModelVlCustomPromptTemplateId) {
+		body["modelVlCustomPromptTemplateId"] = request.ModelVlCustomPromptTemplateId
+	}
+
+	if !dara.IsNil(request.OptionsShrink) {
+		body["options"] = request.OptionsShrink
+	}
+
+	if !dara.IsNil(request.OriginalSessionId) {
+		body["originalSessionId"] = request.OriginalSessionId
+	}
+
+	if !dara.IsNil(request.PreModelId) {
+		body["preModelId"] = request.PreModelId
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.RecognitionOptionsShrink) {
+		body["recognitionOptions"] = request.RecognitionOptionsShrink
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["taskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.VideoUrl) {
+		body["videoUrl"] = request.VideoUrl
+	}
+
+	if !dara.IsNil(request.VlPrompt) {
+		body["vlPrompt"] = request.VlPrompt
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitVideoDetectShotTask"),
+		Version:     dara.String("2024-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/quanmiao/lightapp/submitVideoDetectShotTask"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitVideoDetectShotTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 视频理解-更新配置
 //
 // @param request - UpdateVideoAnalysisConfigRequest
@@ -2640,6 +2959,104 @@ func (client *Client) UpdateVideoAnalysisTasksWithContext(ctx context.Context, w
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateVideoAnalysisTasksResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 智能拆条-更新配置
+//
+// @param request - UpdateVideoDetectShotConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVideoDetectShotConfigResponse
+func (client *Client) UpdateVideoDetectShotConfigWithContext(ctx context.Context, workspaceId *string, request *UpdateVideoDetectShotConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateVideoDetectShotConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AsyncConcurrency) {
+		body["asyncConcurrency"] = request.AsyncConcurrency
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateVideoDetectShotConfig"),
+		Version:     dara.String("2024-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/quanmiao/lightapp/videoAnalysis/updateVideoDetectShotConfig"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateVideoDetectShotConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 视频拆条-修改任务状态
+//
+// @param request - UpdateVideoDetectShotTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVideoDetectShotTaskResponse
+func (client *Client) UpdateVideoDetectShotTaskWithContext(ctx context.Context, workspaceId *string, request *UpdateVideoDetectShotTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateVideoDetectShotTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		body["taskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TaskStatus) {
+		body["taskStatus"] = request.TaskStatus
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateVideoDetectShotTask"),
+		Version:     dara.String("2024-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/quanmiao/lightapp/updateVideoDetectShotTask"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateVideoDetectShotTaskResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3776,6 +4193,115 @@ func (client *Client) runVideoAnalysisWithSSECtx_opYieldFunc(_yield chan *RunVid
 		Version:     dara.String("2024-08-01"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/quanmiao/lightapp/runVideoAnalysis"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runVideoDetectShotWithSSECtx_opYieldFunc(_yield chan *RunVideoDetectShotResponse, _yieldErr chan error, ctx context.Context, workspaceId *string, tmpReq *RunVideoDetectShotRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := tmpReq.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	request := &RunVideoDetectShotShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Options) {
+		request.OptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Options, dara.String("options"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RecognitionOptions) {
+		request.RecognitionOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RecognitionOptions, dara.String("recognitionOptions"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.IntelliSimpPrompt) {
+		body["intelliSimpPrompt"] = request.IntelliSimpPrompt
+	}
+
+	if !dara.IsNil(request.IntelliSimpPromptTemplateId) {
+		body["intelliSimpPromptTemplateId"] = request.IntelliSimpPromptTemplateId
+	}
+
+	if !dara.IsNil(request.Language) {
+		body["language"] = request.Language
+	}
+
+	if !dara.IsNil(request.ModelCustomPromptTemplateId) {
+		body["modelCustomPromptTemplateId"] = request.ModelCustomPromptTemplateId
+	}
+
+	if !dara.IsNil(request.ModelId) {
+		body["modelId"] = request.ModelId
+	}
+
+	if !dara.IsNil(request.ModelVlCustomPromptTemplateId) {
+		body["modelVlCustomPromptTemplateId"] = request.ModelVlCustomPromptTemplateId
+	}
+
+	if !dara.IsNil(request.OptionsShrink) {
+		body["options"] = request.OptionsShrink
+	}
+
+	if !dara.IsNil(request.OriginalSessionId) {
+		body["originalSessionId"] = request.OriginalSessionId
+	}
+
+	if !dara.IsNil(request.PreModelId) {
+		body["preModelId"] = request.PreModelId
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.RecognitionOptionsShrink) {
+		body["recognitionOptions"] = request.RecognitionOptionsShrink
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["taskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.VideoUrl) {
+		body["videoUrl"] = request.VideoUrl
+	}
+
+	if !dara.IsNil(request.VlPrompt) {
+		body["vlPrompt"] = request.VlPrompt
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunVideoDetectShot"),
+		Version:     dara.String("2024-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/quanmiao/lightapp/runVideoDetectShot"),
 		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("ROA"),
