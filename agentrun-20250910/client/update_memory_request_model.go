@@ -11,23 +11,28 @@ type iUpdateMemoryRequest interface {
 	GoString() string
 	SetLongTtl(v int32) *UpdateMemoryRequest
 	GetLongTtl() *int32
+	SetPermanent(v bool) *UpdateMemoryRequest
+	GetPermanent() *bool
 	SetShortTtl(v int32) *UpdateMemoryRequest
 	GetShortTtl() *int32
+	SetStrategy(v []*string) *UpdateMemoryRequest
+	GetStrategy() []*string
 }
 
 type UpdateMemoryRequest struct {
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 365
 	LongTtl *int32 `json:"longTtl,omitempty" xml:"longTtl,omitempty"`
-	// This parameter is required.
+	// example:
 	//
+	// true
+	Permanent *bool `json:"permanent,omitempty" xml:"permanent,omitempty"`
 	// example:
 	//
 	// 30
-	ShortTtl *int32 `json:"shortTtl,omitempty" xml:"shortTtl,omitempty"`
+	ShortTtl *int32    `json:"shortTtl,omitempty" xml:"shortTtl,omitempty"`
+	Strategy []*string `json:"strategy,omitempty" xml:"strategy,omitempty" type:"Repeated"`
 }
 
 func (s UpdateMemoryRequest) String() string {
@@ -42,8 +47,16 @@ func (s *UpdateMemoryRequest) GetLongTtl() *int32 {
 	return s.LongTtl
 }
 
+func (s *UpdateMemoryRequest) GetPermanent() *bool {
+	return s.Permanent
+}
+
 func (s *UpdateMemoryRequest) GetShortTtl() *int32 {
 	return s.ShortTtl
+}
+
+func (s *UpdateMemoryRequest) GetStrategy() []*string {
+	return s.Strategy
 }
 
 func (s *UpdateMemoryRequest) SetLongTtl(v int32) *UpdateMemoryRequest {
@@ -51,8 +64,18 @@ func (s *UpdateMemoryRequest) SetLongTtl(v int32) *UpdateMemoryRequest {
 	return s
 }
 
+func (s *UpdateMemoryRequest) SetPermanent(v bool) *UpdateMemoryRequest {
+	s.Permanent = &v
+	return s
+}
+
 func (s *UpdateMemoryRequest) SetShortTtl(v int32) *UpdateMemoryRequest {
 	s.ShortTtl = &v
+	return s
+}
+
+func (s *UpdateMemoryRequest) SetStrategy(v []*string) *UpdateMemoryRequest {
+	s.Strategy = v
 	return s
 }
 

@@ -76,6 +76,13 @@ func (s *GetMemoryResponseBody) Validate() error {
 }
 
 type GetMemoryResponseBodyData struct {
+	// example:
+	//
+	// my-cms-workspace
+	CmsWorkspaceName *string `json:"cmsWorkspaceName,omitempty" xml:"cmsWorkspaceName,omitempty"`
+	// example:
+	//
+	// 1735870116
 	CreateTime *int32 `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// example:
 	//
@@ -87,8 +94,13 @@ type GetMemoryResponseBodyData struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// example:
 	//
+	// false
+	Permanent *bool `json:"permanent,omitempty" xml:"permanent,omitempty"`
+	// example:
+	//
 	// 30
-	ShortTtl *int32 `json:"shortTtl,omitempty" xml:"shortTtl,omitempty"`
+	ShortTtl *int32    `json:"shortTtl,omitempty" xml:"shortTtl,omitempty"`
+	Strategy []*string `json:"strategy,omitempty" xml:"strategy,omitempty" type:"Repeated"`
 }
 
 func (s GetMemoryResponseBodyData) String() string {
@@ -97,6 +109,10 @@ func (s GetMemoryResponseBodyData) String() string {
 
 func (s GetMemoryResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetMemoryResponseBodyData) GetCmsWorkspaceName() *string {
+	return s.CmsWorkspaceName
 }
 
 func (s *GetMemoryResponseBodyData) GetCreateTime() *int32 {
@@ -111,8 +127,21 @@ func (s *GetMemoryResponseBodyData) GetName() *string {
 	return s.Name
 }
 
+func (s *GetMemoryResponseBodyData) GetPermanent() *bool {
+	return s.Permanent
+}
+
 func (s *GetMemoryResponseBodyData) GetShortTtl() *int32 {
 	return s.ShortTtl
+}
+
+func (s *GetMemoryResponseBodyData) GetStrategy() []*string {
+	return s.Strategy
+}
+
+func (s *GetMemoryResponseBodyData) SetCmsWorkspaceName(v string) *GetMemoryResponseBodyData {
+	s.CmsWorkspaceName = &v
+	return s
 }
 
 func (s *GetMemoryResponseBodyData) SetCreateTime(v int32) *GetMemoryResponseBodyData {
@@ -130,8 +159,18 @@ func (s *GetMemoryResponseBodyData) SetName(v string) *GetMemoryResponseBodyData
 	return s
 }
 
+func (s *GetMemoryResponseBodyData) SetPermanent(v bool) *GetMemoryResponseBodyData {
+	s.Permanent = &v
+	return s
+}
+
 func (s *GetMemoryResponseBodyData) SetShortTtl(v int32) *GetMemoryResponseBodyData {
 	s.ShortTtl = &v
+	return s
+}
+
+func (s *GetMemoryResponseBodyData) SetStrategy(v []*string) *GetMemoryResponseBodyData {
+	s.Strategy = v
 	return s
 }
 

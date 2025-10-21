@@ -359,8 +359,16 @@ func (client *Client) CreateMemoryWithOptions(request *CreateMemoryRequest, head
 		body["name"] = request.Name
 	}
 
+	if !dara.IsNil(request.Permanent) {
+		body["permanent"] = request.Permanent
+	}
+
 	if !dara.IsNil(request.ShortTtl) {
 		body["shortTtl"] = request.ShortTtl
+	}
+
+	if !dara.IsNil(request.Strategy) {
+		body["strategy"] = request.Strategy
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2127,18 +2135,26 @@ func (client *Client) UpdateMemoryWithOptions(memoryName *string, request *Updat
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
+	body := map[string]interface{}{}
 	if !dara.IsNil(request.LongTtl) {
-		query["longTtl"] = request.LongTtl
+		body["longTtl"] = request.LongTtl
+	}
+
+	if !dara.IsNil(request.Permanent) {
+		body["permanent"] = request.Permanent
 	}
 
 	if !dara.IsNil(request.ShortTtl) {
-		query["shortTtl"] = request.ShortTtl
+		body["shortTtl"] = request.ShortTtl
+	}
+
+	if !dara.IsNil(request.Strategy) {
+		body["strategy"] = request.Strategy
 	}
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("UpdateMemory"),
