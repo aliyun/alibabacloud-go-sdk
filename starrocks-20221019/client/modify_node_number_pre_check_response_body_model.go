@@ -138,7 +138,12 @@ func (s *ModifyNodeNumberPreCheckResponseBody) SetSuccess(v bool) *ModifyNodeNum
 }
 
 func (s *ModifyNodeNumberPreCheckResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyNodeNumberPreCheckResponseBodyData struct {

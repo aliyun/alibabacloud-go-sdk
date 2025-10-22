@@ -59,5 +59,10 @@ func (s *ModifyDiskNumberResponse) SetBody(v *ModifyDiskNumberResponseBody) *Mod
 }
 
 func (s *ModifyDiskNumberResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

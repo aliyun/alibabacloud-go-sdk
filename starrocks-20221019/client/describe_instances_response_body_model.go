@@ -125,7 +125,16 @@ func (s *DescribeInstancesResponseBody) SetTotal(v int32) *DescribeInstancesResp
 }
 
 func (s *DescribeInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyData struct {
@@ -513,7 +522,25 @@ func (s *DescribeInstancesResponseBodyData) SetVpcId(v string) *DescribeInstance
 }
 
 func (s *DescribeInstancesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VSwitches != nil {
+		for _, item := range s.VSwitches {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyDataTags struct {

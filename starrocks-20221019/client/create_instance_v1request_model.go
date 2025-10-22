@@ -409,7 +409,57 @@ func (s *CreateInstanceV1Request) SetZoneId(v string) *CreateInstanceV1Request {
 }
 
 func (s *CreateInstanceV1Request) Validate() error {
-	return dara.Validate(s)
+	if s.AgentNodeGroup != nil {
+		if err := s.AgentNodeGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BackendNodeGroups != nil {
+		for _, item := range s.BackendNodeGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FrontendNodeGroups != nil {
+		for _, item := range s.FrontendNodeGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ObserverNodeGroups != nil {
+		for _, item := range s.ObserverNodeGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VSwitches != nil {
+		for _, item := range s.VSwitches {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateInstanceV1RequestAgentNodeGroup struct {

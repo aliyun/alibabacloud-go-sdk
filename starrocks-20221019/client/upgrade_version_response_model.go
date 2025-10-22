@@ -59,5 +59,10 @@ func (s *UpgradeVersionResponse) SetBody(v *UpgradeVersionResponseBody) *Upgrade
 }
 
 func (s *UpgradeVersionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

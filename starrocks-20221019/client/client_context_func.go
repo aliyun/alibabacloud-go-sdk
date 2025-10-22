@@ -19,9 +19,11 @@ import (
 //
 // @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, request *ChangeResourceGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -76,9 +78,11 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 //
 // @return CreateInstanceV1Response
 func (client *Client) CreateInstanceV1WithContext(ctx context.Context, request *CreateInstanceV1Request, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateInstanceV1Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AdminPassword) {
@@ -254,9 +258,11 @@ func (client *Client) CreateServiceLinkedRoleWithContext(ctx context.Context, he
 //
 // @return DescribeInstancesResponse
 func (client *Client) DescribeInstancesWithContext(ctx context.Context, tmpReq *DescribeInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeInstancesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -323,6 +329,83 @@ func (client *Client) DescribeInstancesWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
+// 获取节点组信息
+//
+// @param request - DescribeNodeGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNodeGroupsResponse
+func (client *Client) DescribeNodeGroupsWithContext(ctx context.Context, request *DescribeNodeGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeNodeGroupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ComponentType) {
+		body["componentType"] = request.ComponentType
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["instanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NodeGroupIds) {
+		body["nodeGroupIds"] = request.NodeGroupIds
+	}
+
+	if !dara.IsNil(request.NodeGroupName) {
+		body["nodeGroupName"] = request.NodeGroupName
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeNodeGroups"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/nodegroup/describeNodeGroups"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeNodeGroupsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the number of CUs for a warehouse of an E-MapReduce (EMR) Serverless StarRocks instance.
 //
 // Description:
@@ -351,9 +434,11 @@ func (client *Client) DescribeInstancesWithContext(ctx context.Context, tmpReq *
 //
 // @return ModifyCuResponse
 func (client *Client) ModifyCuWithContext(ctx context.Context, request *ModifyCuRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyCuResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FastMode) {
@@ -412,9 +497,11 @@ func (client *Client) ModifyCuWithContext(ctx context.Context, request *ModifyCu
 //
 // @return ModifyCuPreCheckResponse
 func (client *Client) ModifyCuPreCheckWithContext(ctx context.Context, request *ModifyCuPreCheckRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyCuPreCheckResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -481,9 +568,11 @@ func (client *Client) ModifyCuPreCheckWithContext(ctx context.Context, request *
 //
 // @return ModifyDiskNumberResponse
 func (client *Client) ModifyDiskNumberWithContext(ctx context.Context, request *ModifyDiskNumberRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyDiskNumberResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FastMode) {
@@ -564,9 +653,11 @@ func (client *Client) ModifyDiskNumberWithContext(ctx context.Context, request *
 //
 // @return ModifyDiskPerformanceLevelResponse
 func (client *Client) ModifyDiskPerformanceLevelWithContext(ctx context.Context, request *ModifyDiskPerformanceLevelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyDiskPerformanceLevelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -637,9 +728,11 @@ func (client *Client) ModifyDiskPerformanceLevelWithContext(ctx context.Context,
 //
 // @return ModifyDiskSizeResponse
 func (client *Client) ModifyDiskSizeWithContext(ctx context.Context, request *ModifyDiskSizeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyDiskSizeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FastMode) {
@@ -714,9 +807,11 @@ func (client *Client) ModifyDiskSizeWithContext(ctx context.Context, request *Mo
 //
 // @return ModifyNodeNumberResponse
 func (client *Client) ModifyNodeNumberWithContext(ctx context.Context, request *ModifyNodeNumberRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyNodeNumberResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -771,9 +866,11 @@ func (client *Client) ModifyNodeNumberWithContext(ctx context.Context, request *
 //
 // @return ModifyNodeNumberPreCheckResponse
 func (client *Client) ModifyNodeNumberPreCheckWithContext(ctx context.Context, request *ModifyNodeNumberPreCheckRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyNodeNumberPreCheckResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -824,9 +921,11 @@ func (client *Client) ModifyNodeNumberPreCheckWithContext(ctx context.Context, r
 //
 // @return QueryUpgradableVersionsResponse
 func (client *Client) QueryUpgradableVersionsWithContext(ctx context.Context, request *QueryUpgradableVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryUpgradableVersionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -879,9 +978,11 @@ func (client *Client) QueryUpgradableVersionsWithContext(ctx context.Context, re
 //
 // @return ReleaseInstanceResponse
 func (client *Client) ReleaseInstanceWithContext(ctx context.Context, request *ReleaseInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ReleaseInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -928,9 +1029,11 @@ func (client *Client) ReleaseInstanceWithContext(ctx context.Context, request *R
 //
 // @return RestartInstanceResponse
 func (client *Client) RestartInstanceWithContext(ctx context.Context, request *RestartInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RestartInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FastMode) {
@@ -977,9 +1080,11 @@ func (client *Client) RestartInstanceWithContext(ctx context.Context, request *R
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1034,9 +1139,11 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 //
 // @return UnTagResourcesResponse
 func (client *Client) UnTagResourcesWithContext(ctx context.Context, tmpReq *UnTagResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UnTagResourcesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UnTagResourcesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1105,9 +1212,11 @@ func (client *Client) UnTagResourcesWithContext(ctx context.Context, tmpReq *UnT
 //
 // @return UpdateInstanceNameResponse
 func (client *Client) UpdateInstanceNameWithContext(ctx context.Context, request *UpdateInstanceNameRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateInstanceNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterName) {
@@ -1158,9 +1267,11 @@ func (client *Client) UpdateInstanceNameWithContext(ctx context.Context, request
 //
 // @return UpgradeVersionResponse
 func (client *Client) UpgradeVersionWithContext(ctx context.Context, request *UpgradeVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpgradeVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FastMode) {

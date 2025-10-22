@@ -125,7 +125,12 @@ func (s *CreateInstanceV1ResponseBody) SetSuccess(v bool) *CreateInstanceV1Respo
 }
 
 func (s *CreateInstanceV1ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateInstanceV1ResponseBodyData struct {
