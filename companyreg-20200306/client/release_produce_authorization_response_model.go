@@ -59,5 +59,10 @@ func (s *ReleaseProduceAuthorizationResponse) SetBody(v *ReleaseProduceAuthoriza
 }
 
 func (s *ReleaseProduceAuthorizationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -110,7 +110,16 @@ func (s *ListUserIntentionsResponseBody) SetTotalPageNum(v int32) *ListUserInten
 }
 
 func (s *ListUserIntentionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserIntentionsResponseBodyData struct {

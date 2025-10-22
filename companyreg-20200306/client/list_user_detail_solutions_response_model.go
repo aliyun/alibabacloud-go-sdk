@@ -59,5 +59,10 @@ func (s *ListUserDetailSolutionsResponse) SetBody(v *ListUserDetailSolutionsResp
 }
 
 func (s *ListUserDetailSolutionsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

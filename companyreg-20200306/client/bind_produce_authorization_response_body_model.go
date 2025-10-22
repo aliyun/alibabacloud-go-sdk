@@ -77,7 +77,12 @@ func (s *BindProduceAuthorizationResponseBody) SetRequestId(v string) *BindProdu
 }
 
 func (s *BindProduceAuthorizationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BindProduceAuthorizationResponseBodyData struct {
@@ -125,7 +130,16 @@ func (s *BindProduceAuthorizationResponseBodyData) SetSuccess(v bool) *BindProdu
 }
 
 func (s *BindProduceAuthorizationResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorizedUserList != nil {
+		for _, item := range s.AuthorizedUserList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BindProduceAuthorizationResponseBodyDataAuthorizedUserList struct {

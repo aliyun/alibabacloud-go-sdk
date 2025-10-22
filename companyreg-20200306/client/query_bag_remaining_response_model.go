@@ -59,5 +59,10 @@ func (s *QueryBagRemainingResponse) SetBody(v *QueryBagRemainingResponseBody) *Q
 }
 
 func (s *QueryBagRemainingResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

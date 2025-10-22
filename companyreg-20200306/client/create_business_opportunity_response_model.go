@@ -59,5 +59,10 @@ func (s *CreateBusinessOpportunityResponse) SetBody(v *CreateBusinessOpportunity
 }
 
 func (s *CreateBusinessOpportunityResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

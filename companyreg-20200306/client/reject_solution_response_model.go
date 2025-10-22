@@ -59,5 +59,10 @@ func (s *RejectSolutionResponse) SetBody(v *RejectSolutionResponseBody) *RejectS
 }
 
 func (s *RejectSolutionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

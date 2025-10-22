@@ -59,5 +59,10 @@ func (s *QueryUserNeedAuthResponse) SetBody(v *QueryUserNeedAuthResponseBody) *Q
 }
 
 func (s *QueryUserNeedAuthResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

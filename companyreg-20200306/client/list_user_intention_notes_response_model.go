@@ -59,5 +59,10 @@ func (s *ListUserIntentionNotesResponse) SetBody(v *ListUserIntentionNotesRespon
 }
 
 func (s *ListUserIntentionNotesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

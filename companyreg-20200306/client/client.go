@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -119,9 +120,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return BindProduceAuthorizationResponse
 func (client *Client) BindProduceAuthorizationWithOptions(request *BindProduceAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *BindProduceAuthorizationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AuthorizedUserIds) {
@@ -179,9 +182,11 @@ func (client *Client) BindProduceAuthorization(request *BindProduceAuthorization
 //
 // @return CloseIntentionForPartnerResponse
 func (client *Client) CloseIntentionForPartnerWithOptions(request *CloseIntentionForPartnerRequest, runtime *dara.RuntimeOptions) (_result *CloseIntentionForPartnerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -239,9 +244,11 @@ func (client *Client) CloseIntentionForPartner(request *CloseIntentionForPartner
 //
 // @return CloseUserIntentionResponse
 func (client *Client) CloseUserIntentionWithOptions(request *CloseUserIntentionRequest, runtime *dara.RuntimeOptions) (_result *CloseUserIntentionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -303,9 +310,11 @@ func (client *Client) CloseUserIntention(request *CloseUserIntentionRequest) (_r
 //
 // @return CreateBusinessOpportunityResponse
 func (client *Client) CreateBusinessOpportunityWithOptions(request *CreateBusinessOpportunityRequest, runtime *dara.RuntimeOptions) (_result *CreateBusinessOpportunityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -375,9 +384,11 @@ func (client *Client) CreateBusinessOpportunity(request *CreateBusinessOpportuni
 //
 // @return CreateProduceForPartnerResponse
 func (client *Client) CreateProduceForPartnerWithOptions(request *CreateProduceForPartnerRequest, runtime *dara.RuntimeOptions) (_result *CreateProduceForPartnerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -435,9 +446,11 @@ func (client *Client) CreateProduceForPartner(request *CreateProduceForPartnerRe
 //
 // @return DescribePartnerConfigResponse
 func (client *Client) DescribePartnerConfigWithOptions(request *DescribePartnerConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribePartnerConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -495,9 +508,11 @@ func (client *Client) DescribePartnerConfig(request *DescribePartnerConfigReques
 //
 // @return GenerateUploadFilePolicyResponse
 func (client *Client) GenerateUploadFilePolicyWithOptions(request *GenerateUploadFilePolicyRequest, runtime *dara.RuntimeOptions) (_result *GenerateUploadFilePolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -559,9 +574,11 @@ func (client *Client) GenerateUploadFilePolicy(request *GenerateUploadFilePolicy
 //
 // @return GetAlipayUrlResponse
 func (client *Client) GetAlipayUrlWithOptions(request *GetAlipayUrlRequest, runtime *dara.RuntimeOptions) (_result *GetAlipayUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -607,9 +624,11 @@ func (client *Client) GetAlipayUrl(request *GetAlipayUrlRequest) (_result *GetAl
 //
 // @return ListIntentionNoteResponse
 func (client *Client) ListIntentionNoteWithOptions(request *ListIntentionNoteRequest, runtime *dara.RuntimeOptions) (_result *ListIntentionNoteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BeginTime) {
@@ -679,9 +698,11 @@ func (client *Client) ListIntentionNote(request *ListIntentionNoteRequest) (_res
 //
 // @return ListProduceAuthorizationResponse
 func (client *Client) ListProduceAuthorizationWithOptions(request *ListProduceAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *ListProduceAuthorizationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -743,9 +764,11 @@ func (client *Client) ListProduceAuthorization(request *ListProduceAuthorization
 //
 // @return ListUserDetailSolutionsResponse
 func (client *Client) ListUserDetailSolutionsWithOptions(request *ListUserDetailSolutionsRequest, runtime *dara.RuntimeOptions) (_result *ListUserDetailSolutionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -807,9 +830,11 @@ func (client *Client) ListUserDetailSolutions(request *ListUserDetailSolutionsRe
 //
 // @return ListUserIntentionNotesResponse
 func (client *Client) ListUserIntentionNotesWithOptions(request *ListUserIntentionNotesRequest, runtime *dara.RuntimeOptions) (_result *ListUserIntentionNotesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -875,9 +900,11 @@ func (client *Client) ListUserIntentionNotes(request *ListUserIntentionNotesRequ
 //
 // @return ListUserIntentionsResponse
 func (client *Client) ListUserIntentionsWithOptions(request *ListUserIntentionsRequest, runtime *dara.RuntimeOptions) (_result *ListUserIntentionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Area) {
@@ -967,9 +994,11 @@ func (client *Client) ListUserIntentions(request *ListUserIntentionsRequest) (_r
 //
 // @return ListUserProduceOperateLogsResponse
 func (client *Client) ListUserProduceOperateLogsWithOptions(request *ListUserProduceOperateLogsRequest, runtime *dara.RuntimeOptions) (_result *ListUserProduceOperateLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -1031,9 +1060,11 @@ func (client *Client) ListUserProduceOperateLogs(request *ListUserProduceOperate
 //
 // @return ListUserSolutionsResponse
 func (client *Client) ListUserSolutionsWithOptions(tmpReq *ListUserSolutionsRequest, runtime *dara.RuntimeOptions) (_result *ListUserSolutionsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListUserSolutionsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1099,15 +1130,95 @@ func (client *Client) ListUserSolutions(request *ListUserSolutionsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 服务商玄坛呼叫中心操作
+//
+// @param request - OperateCallCenterForPartnerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateCallCenterForPartnerResponse
+func (client *Client) OperateCallCenterForPartnerWithOptions(request *OperateCallCenterForPartnerRequest, runtime *dara.RuntimeOptions) (_result *OperateCallCenterForPartnerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.CallAction) {
+		query["CallAction"] = request.CallAction
+	}
+
+	if !dara.IsNil(request.EmployeeCode) {
+		query["EmployeeCode"] = request.EmployeeCode
+	}
+
+	if !dara.IsNil(request.Request) {
+		query["Request"] = request.Request
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OperateCallCenterForPartner"),
+		Version:     dara.String("2020-03-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OperateCallCenterForPartnerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 服务商玄坛呼叫中心操作
+//
+// @param request - OperateCallCenterForPartnerRequest
+//
+// @return OperateCallCenterForPartnerResponse
+func (client *Client) OperateCallCenterForPartner(request *OperateCallCenterForPartnerRequest) (_result *OperateCallCenterForPartnerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &OperateCallCenterForPartnerResponse{}
+	_body, _err := client.OperateCallCenterForPartnerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - OperateProduceForPartnerRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OperateProduceForPartnerResponse
 func (client *Client) OperateProduceForPartnerWithOptions(request *OperateProduceForPartnerRequest, runtime *dara.RuntimeOptions) (_result *OperateProduceForPartnerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -1169,9 +1280,11 @@ func (client *Client) OperateProduceForPartner(request *OperateProduceForPartner
 //
 // @return PutMeasureDataResponse
 func (client *Client) PutMeasureDataWithOptions(request *PutMeasureDataRequest, runtime *dara.RuntimeOptions) (_result *PutMeasureDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -1237,9 +1350,11 @@ func (client *Client) PutMeasureData(request *PutMeasureDataRequest) (_result *P
 //
 // @return PutMeasureReadyFlagResponse
 func (client *Client) PutMeasureReadyFlagWithOptions(request *PutMeasureReadyFlagRequest, runtime *dara.RuntimeOptions) (_result *PutMeasureReadyFlagResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -1309,9 +1424,11 @@ func (client *Client) PutMeasureReadyFlag(request *PutMeasureReadyFlagRequest) (
 //
 // @return QueryAvailableNumbersResponse
 func (client *Client) QueryAvailableNumbersWithOptions(request *QueryAvailableNumbersRequest, runtime *dara.RuntimeOptions) (_result *QueryAvailableNumbersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -1365,9 +1482,11 @@ func (client *Client) QueryAvailableNumbers(request *QueryAvailableNumbersReques
 //
 // @return QueryBagRemainingResponse
 func (client *Client) QueryBagRemainingWithOptions(request *QueryBagRemainingRequest, runtime *dara.RuntimeOptions) (_result *QueryBagRemainingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1417,9 +1536,11 @@ func (client *Client) QueryBagRemaining(request *QueryBagRemainingRequest) (_res
 //
 // @return QueryCallRecordListResponse
 func (client *Client) QueryCallRecordListWithOptions(request *QueryCallRecordListRequest, runtime *dara.RuntimeOptions) (_result *QueryCallRecordListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -1481,9 +1602,11 @@ func (client *Client) QueryCallRecordList(request *QueryCallRecordListRequest) (
 //
 // @return QueryInstanceResponse
 func (client *Client) QueryInstanceWithOptions(request *QueryInstanceRequest, runtime *dara.RuntimeOptions) (_result *QueryInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -1541,9 +1664,11 @@ func (client *Client) QueryInstance(request *QueryInstanceRequest) (_result *Que
 //
 // @return QueryPartnerIntentionListResponse
 func (client *Client) QueryPartnerIntentionListWithOptions(request *QueryPartnerIntentionListRequest, runtime *dara.RuntimeOptions) (_result *QueryPartnerIntentionListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -1613,9 +1738,11 @@ func (client *Client) QueryPartnerIntentionList(request *QueryPartnerIntentionLi
 //
 // @return QueryPartnerProduceListResponse
 func (client *Client) QueryPartnerProduceListWithOptions(request *QueryPartnerProduceListRequest, runtime *dara.RuntimeOptions) (_result *QueryPartnerProduceListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1700,6 +1827,108 @@ func (client *Client) QueryUserNeedAuth() (_result *QueryUserNeedAuthResponse, _
 
 // Summary:
 //
+// 服务商玄坛外呼呼叫中心事件回传
+//
+// @param request - RecordCallCenterEventForPartnerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecordCallCenterEventForPartnerResponse
+func (client *Client) RecordCallCenterEventForPartnerWithOptions(request *RecordCallCenterEventForPartnerRequest, runtime *dara.RuntimeOptions) (_result *RecordCallCenterEventForPartnerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.CallAction) {
+		query["CallAction"] = request.CallAction
+	}
+
+	if !dara.IsNil(request.Callee) {
+		query["Callee"] = request.Callee
+	}
+
+	if !dara.IsNil(request.Caller) {
+		query["Caller"] = request.Caller
+	}
+
+	if !dara.IsNil(request.ConnId) {
+		query["ConnId"] = request.ConnId
+	}
+
+	if !dara.IsNil(request.ContactId) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.RelatedId) {
+		query["RelatedId"] = request.RelatedId
+	}
+
+	if !dara.IsNil(request.SecretMobile) {
+		query["SecretMobile"] = request.SecretMobile
+	}
+
+	if !dara.IsNil(request.SkillType) {
+		query["SkillType"] = request.SkillType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RecordCallCenterEventForPartner"),
+		Version:     dara.String("2020-03-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RecordCallCenterEventForPartnerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 服务商玄坛外呼呼叫中心事件回传
+//
+// @param request - RecordCallCenterEventForPartnerRequest
+//
+// @return RecordCallCenterEventForPartnerResponse
+func (client *Client) RecordCallCenterEventForPartner(request *RecordCallCenterEventForPartnerRequest) (_result *RecordCallCenterEventForPartnerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RecordCallCenterEventForPartnerResponse{}
+	_body, _err := client.RecordCallCenterEventForPartnerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # RecordPostBack
 //
 // @param request - RecordPostBackRequest
@@ -1708,9 +1937,11 @@ func (client *Client) QueryUserNeedAuth() (_result *QueryUserNeedAuthResponse, _
 //
 // @return RecordPostBackResponse
 func (client *Client) RecordPostBackWithOptions(request *RecordPostBackRequest, runtime *dara.RuntimeOptions) (_result *RecordPostBackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -1780,9 +2011,11 @@ func (client *Client) RecordPostBack(request *RecordPostBackRequest) (_result *R
 //
 // @return RejectSolutionResponse
 func (client *Client) RejectSolutionWithOptions(request *RejectSolutionRequest, runtime *dara.RuntimeOptions) (_result *RejectSolutionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -1840,9 +2073,11 @@ func (client *Client) RejectSolution(request *RejectSolutionRequest) (_result *R
 //
 // @return RejectUserSolutionResponse
 func (client *Client) RejectUserSolutionWithOptions(request *RejectUserSolutionRequest, runtime *dara.RuntimeOptions) (_result *RejectUserSolutionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -1900,9 +2135,11 @@ func (client *Client) RejectUserSolution(request *RejectUserSolutionRequest) (_r
 //
 // @return ReleaseProduceAuthorizationResponse
 func (client *Client) ReleaseProduceAuthorizationWithOptions(request *ReleaseProduceAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *ReleaseProduceAuthorizationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AuthorizedUserId) {
@@ -1964,9 +2201,11 @@ func (client *Client) ReleaseProduceAuthorization(request *ReleaseProduceAuthori
 //
 // @return StartBackToBackCallResponse
 func (client *Client) StartBackToBackCallWithOptions(request *StartBackToBackCallRequest, runtime *dara.RuntimeOptions) (_result *StartBackToBackCallResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -2044,9 +2283,11 @@ func (client *Client) StartBackToBackCall(request *StartBackToBackCallRequest) (
 //
 // @return SubmitIntentionForPartnerResponse
 func (client *Client) SubmitIntentionForPartnerWithOptions(request *SubmitIntentionForPartnerRequest, runtime *dara.RuntimeOptions) (_result *SubmitIntentionForPartnerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Area) {
@@ -2136,9 +2377,11 @@ func (client *Client) SubmitIntentionForPartner(request *SubmitIntentionForPartn
 //
 // @return SubmitIntentionNoteResponse
 func (client *Client) SubmitIntentionNoteWithOptions(request *SubmitIntentionNoteRequest, runtime *dara.RuntimeOptions) (_result *SubmitIntentionNoteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -2196,9 +2439,11 @@ func (client *Client) SubmitIntentionNote(request *SubmitIntentionNoteRequest) (
 //
 // @return SubmitSolutionResponse
 func (client *Client) SubmitSolutionWithOptions(request *SubmitSolutionRequest, runtime *dara.RuntimeOptions) (_result *SubmitSolutionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -2268,9 +2513,11 @@ func (client *Client) SubmitSolution(request *SubmitSolutionRequest) (_result *S
 //
 // @return TransferIntentionOwnerResponse
 func (client *Client) TransferIntentionOwnerWithOptions(request *TransferIntentionOwnerRequest, runtime *dara.RuntimeOptions) (_result *TransferIntentionOwnerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -2340,9 +2587,11 @@ func (client *Client) TransferIntentionOwner(request *TransferIntentionOwnerRequ
 //
 // @return TransferProduceOwnerResponse
 func (client *Client) TransferProduceOwnerWithOptions(request *TransferProduceOwnerRequest, runtime *dara.RuntimeOptions) (_result *TransferProduceOwnerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {

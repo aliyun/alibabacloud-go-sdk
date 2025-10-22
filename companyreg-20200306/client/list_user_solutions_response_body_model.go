@@ -110,7 +110,16 @@ func (s *ListUserSolutionsResponseBody) SetTotalPageNum(v int32) *ListUserSoluti
 }
 
 func (s *ListUserSolutionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserSolutionsResponseBodyData struct {

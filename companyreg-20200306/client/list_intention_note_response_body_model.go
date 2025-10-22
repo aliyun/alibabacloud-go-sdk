@@ -110,7 +110,16 @@ func (s *ListIntentionNoteResponseBody) SetTotalPageNum(v int32) *ListIntentionN
 }
 
 func (s *ListIntentionNoteResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIntentionNoteResponseBodyData struct {
