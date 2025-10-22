@@ -59,5 +59,10 @@ func (s *UpdateAirflowResponse) SetBody(v *UpdateAirflowResponseBody) *UpdateAir
 }
 
 func (s *UpdateAirflowResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

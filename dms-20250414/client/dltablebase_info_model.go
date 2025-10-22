@@ -239,5 +239,14 @@ func (s *DLTablebaseInfo) SetViewOriginalText(v string) *DLTablebaseInfo {
 }
 
 func (s *DLTablebaseInfo) Validate() error {
-	return dara.Validate(s)
+	if s.PartitionKeys != nil {
+		for _, item := range s.PartitionKeys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

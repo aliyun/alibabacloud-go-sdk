@@ -117,5 +117,14 @@ func (s *BatchUpdateDataLakePartitionsRequest) SetWorkspaceId(v int64) *BatchUpd
 }
 
 func (s *BatchUpdateDataLakePartitionsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PartitionInputs != nil {
+		for _, item := range s.PartitionInputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

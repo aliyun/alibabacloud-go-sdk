@@ -117,5 +117,10 @@ func (s *UpdateDataLakePartitionRequest) SetWorkspaceId(v int64) *UpdateDataLake
 }
 
 func (s *UpdateDataLakePartitionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PartitionInput != nil {
+		if err := s.PartitionInput.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

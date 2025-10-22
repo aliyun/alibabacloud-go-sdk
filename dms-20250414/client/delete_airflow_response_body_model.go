@@ -125,7 +125,12 @@ func (s *DeleteAirflowResponseBody) SetSuccess(v bool) *DeleteAirflowResponseBod
 }
 
 func (s *DeleteAirflowResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Root != nil {
+		if err := s.Root.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteAirflowResponseBodyRoot struct {
@@ -150,7 +155,16 @@ func (s *DeleteAirflowResponseBodyRoot) SetResponses(v []*DeleteAirflowResponseB
 }
 
 func (s *DeleteAirflowResponseBodyRoot) Validate() error {
-	return dara.Validate(s)
+	if s.Responses != nil {
+		for _, item := range s.Responses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteAirflowResponseBodyRootResponses struct {

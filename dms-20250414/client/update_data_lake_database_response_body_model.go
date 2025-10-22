@@ -95,5 +95,10 @@ func (s *UpdateDataLakeDatabaseResponseBody) SetSuccess(v bool) *UpdateDataLakeD
 }
 
 func (s *UpdateDataLakeDatabaseResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Database != nil {
+		if err := s.Database.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

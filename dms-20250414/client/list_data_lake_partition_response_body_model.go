@@ -125,5 +125,14 @@ func (s *ListDataLakePartitionResponseBody) SetSuccess(v bool) *ListDataLakePart
 }
 
 func (s *ListDataLakePartitionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PartitionList != nil {
+		for _, item := range s.PartitionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

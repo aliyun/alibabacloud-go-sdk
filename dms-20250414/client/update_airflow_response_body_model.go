@@ -125,7 +125,12 @@ func (s *UpdateAirflowResponseBody) SetSuccess(v bool) *UpdateAirflowResponseBod
 }
 
 func (s *UpdateAirflowResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Root != nil {
+		if err := s.Root.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateAirflowResponseBodyRoot struct {

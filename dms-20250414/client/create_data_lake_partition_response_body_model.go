@@ -95,5 +95,10 @@ func (s *CreateDataLakePartitionResponseBody) SetSuccess(v bool) *CreateDataLake
 }
 
 func (s *CreateDataLakePartitionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Partition != nil {
+		if err := s.Partition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

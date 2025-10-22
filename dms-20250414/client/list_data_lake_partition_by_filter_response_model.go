@@ -59,5 +59,10 @@ func (s *ListDataLakePartitionByFilterResponse) SetBody(v *ListDataLakePartition
 }
 
 func (s *ListDataLakePartitionByFilterResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

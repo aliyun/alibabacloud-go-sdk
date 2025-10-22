@@ -100,5 +100,10 @@ func (s *CreateDataLakeTableRequest) SetWorkspaceId(v int64) *CreateDataLakeTabl
 }
 
 func (s *CreateDataLakeTableRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TableInput != nil {
+		if err := s.TableInput.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

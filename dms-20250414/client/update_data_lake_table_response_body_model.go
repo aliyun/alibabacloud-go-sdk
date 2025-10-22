@@ -95,5 +95,10 @@ func (s *UpdateDataLakeTableResponseBody) SetTable(v *DLTable) *UpdateDataLakeTa
 }
 
 func (s *UpdateDataLakeTableResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Table != nil {
+		if err := s.Table.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

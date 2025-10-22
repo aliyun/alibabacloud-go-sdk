@@ -17,9 +17,11 @@ import (
 //
 // @return BatchCreateDataLakePartitionsResponse
 func (client *Client) BatchCreateDataLakePartitionsWithContext(ctx context.Context, tmpReq *BatchCreateDataLakePartitionsRequest, runtime *dara.RuntimeOptions) (_result *BatchCreateDataLakePartitionsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &BatchCreateDataLakePartitionsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -95,9 +97,11 @@ func (client *Client) BatchCreateDataLakePartitionsWithContext(ctx context.Conte
 //
 // @return BatchDeleteDataLakePartitionsResponse
 func (client *Client) BatchDeleteDataLakePartitionsWithContext(ctx context.Context, request *BatchDeleteDataLakePartitionsRequest, runtime *dara.RuntimeOptions) (_result *BatchDeleteDataLakePartitionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -161,9 +165,11 @@ func (client *Client) BatchDeleteDataLakePartitionsWithContext(ctx context.Conte
 //
 // @return BatchUpdateDataLakePartitionsResponse
 func (client *Client) BatchUpdateDataLakePartitionsWithContext(ctx context.Context, tmpReq *BatchUpdateDataLakePartitionsRequest, runtime *dara.RuntimeOptions) (_result *BatchUpdateDataLakePartitionsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &BatchUpdateDataLakePartitionsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -231,9 +237,11 @@ func (client *Client) BatchUpdateDataLakePartitionsWithContext(ctx context.Conte
 //
 // @return CreateAirflowResponse
 func (client *Client) CreateAirflowWithContext(ctx context.Context, request *CreateAirflowRequest, runtime *dara.RuntimeOptions) (_result *CreateAirflowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AirflowName) {
@@ -333,9 +341,11 @@ func (client *Client) CreateAirflowWithContext(ctx context.Context, request *Cre
 //
 // @return CreateAirflowLoginTokenResponse
 func (client *Client) CreateAirflowLoginTokenWithContext(ctx context.Context, request *CreateAirflowLoginTokenRequest, runtime *dara.RuntimeOptions) (_result *CreateAirflowLoginTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AirflowId) {
@@ -375,9 +385,11 @@ func (client *Client) CreateAirflowLoginTokenWithContext(ctx context.Context, re
 //
 // @return CreateDataLakeDatabaseResponse
 func (client *Client) CreateDataLakeDatabaseWithContext(ctx context.Context, tmpReq *CreateDataLakeDatabaseRequest, runtime *dara.RuntimeOptions) (_result *CreateDataLakeDatabaseResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDataLakeDatabaseShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -447,9 +459,11 @@ func (client *Client) CreateDataLakeDatabaseWithContext(ctx context.Context, tmp
 //
 // @return CreateDataLakeFunctionResponse
 func (client *Client) CreateDataLakeFunctionWithContext(ctx context.Context, tmpReq *CreateDataLakeFunctionRequest, runtime *dara.RuntimeOptions) (_result *CreateDataLakeFunctionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDataLakeFunctionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -513,9 +527,11 @@ func (client *Client) CreateDataLakeFunctionWithContext(ctx context.Context, tmp
 //
 // @return CreateDataLakePartitionResponse
 func (client *Client) CreateDataLakePartitionWithContext(ctx context.Context, tmpReq *CreateDataLakePartitionRequest, runtime *dara.RuntimeOptions) (_result *CreateDataLakePartitionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDataLakePartitionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -591,9 +607,11 @@ func (client *Client) CreateDataLakePartitionWithContext(ctx context.Context, tm
 //
 // @return CreateDataLakeTableResponse
 func (client *Client) CreateDataLakeTableWithContext(ctx context.Context, tmpReq *CreateDataLakeTableRequest, runtime *dara.RuntimeOptions) (_result *CreateDataLakeTableResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDataLakeTableShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -657,9 +675,11 @@ func (client *Client) CreateDataLakeTableWithContext(ctx context.Context, tmpReq
 //
 // @return DeleteAirflowResponse
 func (client *Client) DeleteAirflowWithContext(ctx context.Context, request *DeleteAirflowRequest, runtime *dara.RuntimeOptions) (_result *DeleteAirflowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AirflowId) {
@@ -707,9 +727,11 @@ func (client *Client) DeleteAirflowWithContext(ctx context.Context, request *Del
 //
 // @return DeleteDataLakeDatabaseResponse
 func (client *Client) DeleteDataLakeDatabaseWithContext(ctx context.Context, request *DeleteDataLakeDatabaseRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataLakeDatabaseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -761,9 +783,11 @@ func (client *Client) DeleteDataLakeDatabaseWithContext(ctx context.Context, req
 //
 // @return DeleteDataLakeFunctionResponse
 func (client *Client) DeleteDataLakeFunctionWithContext(ctx context.Context, request *DeleteDataLakeFunctionRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataLakeFunctionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -819,9 +843,11 @@ func (client *Client) DeleteDataLakeFunctionWithContext(ctx context.Context, req
 //
 // @return DeleteDataLakePartitionResponse
 func (client *Client) DeleteDataLakePartitionWithContext(ctx context.Context, tmpReq *DeleteDataLakePartitionRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataLakePartitionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteDataLakePartitionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -891,9 +917,11 @@ func (client *Client) DeleteDataLakePartitionWithContext(ctx context.Context, tm
 //
 // @return DeleteDataLakeTableResponse
 func (client *Client) DeleteDataLakeTableWithContext(ctx context.Context, request *DeleteDataLakeTableRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataLakeTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -949,9 +977,11 @@ func (client *Client) DeleteDataLakeTableWithContext(ctx context.Context, reques
 //
 // @return GetAirflowResponse
 func (client *Client) GetAirflowWithContext(ctx context.Context, request *GetAirflowRequest, runtime *dara.RuntimeOptions) (_result *GetAirflowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AirflowId) {
@@ -995,9 +1025,11 @@ func (client *Client) GetAirflowWithContext(ctx context.Context, request *GetAir
 //
 // @return GetDataLakeCatalogResponse
 func (client *Client) GetDataLakeCatalogWithContext(ctx context.Context, request *GetDataLakeCatalogRequest, runtime *dara.RuntimeOptions) (_result *GetDataLakeCatalogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -1045,9 +1077,11 @@ func (client *Client) GetDataLakeCatalogWithContext(ctx context.Context, request
 //
 // @return GetDataLakeDatabaseResponse
 func (client *Client) GetDataLakeDatabaseWithContext(ctx context.Context, request *GetDataLakeDatabaseRequest, runtime *dara.RuntimeOptions) (_result *GetDataLakeDatabaseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -1099,9 +1133,11 @@ func (client *Client) GetDataLakeDatabaseWithContext(ctx context.Context, reques
 //
 // @return GetDataLakeFunctionResponse
 func (client *Client) GetDataLakeFunctionWithContext(ctx context.Context, request *GetDataLakeFunctionRequest, runtime *dara.RuntimeOptions) (_result *GetDataLakeFunctionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -1157,9 +1193,11 @@ func (client *Client) GetDataLakeFunctionWithContext(ctx context.Context, reques
 //
 // @return GetDataLakePartitionResponse
 func (client *Client) GetDataLakePartitionWithContext(ctx context.Context, tmpReq *GetDataLakePartitionRequest, runtime *dara.RuntimeOptions) (_result *GetDataLakePartitionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetDataLakePartitionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1225,9 +1263,11 @@ func (client *Client) GetDataLakePartitionWithContext(ctx context.Context, tmpRe
 //
 // @return GetDataLakeTableResponse
 func (client *Client) GetDataLakeTableWithContext(ctx context.Context, request *GetDataLakeTableRequest, runtime *dara.RuntimeOptions) (_result *GetDataLakeTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -1275,6 +1315,68 @@ func (client *Client) GetDataLakeTableWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 调度运行Notebook文件
+//
+// @param request - GetNotebookAndSubmitTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNotebookAndSubmitTaskResponse
+func (client *Client) GetNotebookAndSubmitTaskWithContext(ctx context.Context, request *GetNotebookAndSubmitTaskRequest, runtime *dara.RuntimeOptions) (_result *GetNotebookAndSubmitTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Params) {
+		body["Params"] = request.Params
+	}
+
+	if !dara.IsNil(request.Path) {
+		body["Path"] = request.Path
+	}
+
+	if !dara.IsNil(request.Retry) {
+		body["Retry"] = request.Retry
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetNotebookAndSubmitTask"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetNotebookAndSubmitTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 列出资源Airflow
 //
 // @param request - ListAirflowsRequest
@@ -1283,9 +1385,11 @@ func (client *Client) GetDataLakeTableWithContext(ctx context.Context, request *
 //
 // @return ListAirflowsResponse
 func (client *Client) ListAirflowsWithContext(ctx context.Context, request *ListAirflowsRequest, runtime *dara.RuntimeOptions) (_result *ListAirflowsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -1341,9 +1445,11 @@ func (client *Client) ListAirflowsWithContext(ctx context.Context, request *List
 //
 // @return ListDataLakeCatalogResponse
 func (client *Client) ListDataLakeCatalogWithContext(ctx context.Context, request *ListDataLakeCatalogRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeCatalogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SearchKey) {
@@ -1391,9 +1497,11 @@ func (client *Client) ListDataLakeCatalogWithContext(ctx context.Context, reques
 //
 // @return ListDataLakeDatabaseResponse
 func (client *Client) ListDataLakeDatabaseWithContext(ctx context.Context, request *ListDataLakeDatabaseRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeDatabaseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -1453,9 +1561,11 @@ func (client *Client) ListDataLakeDatabaseWithContext(ctx context.Context, reque
 //
 // @return ListDataLakeFunctionResponse
 func (client *Client) ListDataLakeFunctionWithContext(ctx context.Context, request *ListDataLakeFunctionRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeFunctionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -1519,9 +1629,11 @@ func (client *Client) ListDataLakeFunctionWithContext(ctx context.Context, reque
 //
 // @return ListDataLakeFunctionNameResponse
 func (client *Client) ListDataLakeFunctionNameWithContext(ctx context.Context, request *ListDataLakeFunctionNameRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeFunctionNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -1585,9 +1697,11 @@ func (client *Client) ListDataLakeFunctionNameWithContext(ctx context.Context, r
 //
 // @return ListDataLakePartitionResponse
 func (client *Client) ListDataLakePartitionWithContext(ctx context.Context, tmpReq *ListDataLakePartitionRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakePartitionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListDataLakePartitionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1663,9 +1777,11 @@ func (client *Client) ListDataLakePartitionWithContext(ctx context.Context, tmpR
 //
 // @return ListDataLakePartitionByFilterResponse
 func (client *Client) ListDataLakePartitionByFilterWithContext(ctx context.Context, request *ListDataLakePartitionByFilterRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakePartitionByFilterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -1735,9 +1851,11 @@ func (client *Client) ListDataLakePartitionByFilterWithContext(ctx context.Conte
 //
 // @return ListDataLakePartitionNameResponse
 func (client *Client) ListDataLakePartitionNameWithContext(ctx context.Context, request *ListDataLakePartitionNameRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakePartitionNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -1801,9 +1919,11 @@ func (client *Client) ListDataLakePartitionNameWithContext(ctx context.Context, 
 //
 // @return ListDataLakeTableResponse
 func (client *Client) ListDataLakeTableWithContext(ctx context.Context, request *ListDataLakeTableRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -1871,9 +1991,11 @@ func (client *Client) ListDataLakeTableWithContext(ctx context.Context, request 
 //
 // @return ListDataLakeTableNameResponse
 func (client *Client) ListDataLakeTableNameWithContext(ctx context.Context, request *ListDataLakeTableNameRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeTableNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -1941,9 +2063,11 @@ func (client *Client) ListDataLakeTableNameWithContext(ctx context.Context, requ
 //
 // @return ListDataLakeTablebaseInfoResponse
 func (client *Client) ListDataLakeTablebaseInfoWithContext(ctx context.Context, request *ListDataLakeTablebaseInfoRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeTablebaseInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CatalogName) {
@@ -2007,9 +2131,11 @@ func (client *Client) ListDataLakeTablebaseInfoWithContext(ctx context.Context, 
 //
 // @return UpdateAirflowResponse
 func (client *Client) UpdateAirflowWithContext(ctx context.Context, request *UpdateAirflowRequest, runtime *dara.RuntimeOptions) (_result *UpdateAirflowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AirflowId) {
@@ -2089,9 +2215,11 @@ func (client *Client) UpdateAirflowWithContext(ctx context.Context, request *Upd
 //
 // @return UpdateDataLakeDatabaseResponse
 func (client *Client) UpdateDataLakeDatabaseWithContext(ctx context.Context, tmpReq *UpdateDataLakeDatabaseRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataLakeDatabaseResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateDataLakeDatabaseShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2161,9 +2289,11 @@ func (client *Client) UpdateDataLakeDatabaseWithContext(ctx context.Context, tmp
 //
 // @return UpdateDataLakeFunctionResponse
 func (client *Client) UpdateDataLakeFunctionWithContext(ctx context.Context, tmpReq *UpdateDataLakeFunctionRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataLakeFunctionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateDataLakeFunctionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2231,9 +2361,11 @@ func (client *Client) UpdateDataLakeFunctionWithContext(ctx context.Context, tmp
 //
 // @return UpdateDataLakePartitionResponse
 func (client *Client) UpdateDataLakePartitionWithContext(ctx context.Context, tmpReq *UpdateDataLakePartitionRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataLakePartitionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateDataLakePartitionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2301,9 +2433,11 @@ func (client *Client) UpdateDataLakePartitionWithContext(ctx context.Context, tm
 //
 // @return UpdateDataLakeTableResponse
 func (client *Client) UpdateDataLakeTableWithContext(ctx context.Context, tmpReq *UpdateDataLakeTableRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataLakeTableResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateDataLakeTableShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)

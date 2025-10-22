@@ -95,5 +95,14 @@ func (s *BatchDeleteDataLakePartitionsResponseBody) SetSuccess(v string) *BatchD
 }
 
 func (s *BatchDeleteDataLakePartitionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PartitionErrors != nil {
+		for _, item := range s.PartitionErrors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -157,7 +157,12 @@ func (s *ListAirflowsResponseBody) SetSuccess(v bool) *ListAirflowsResponseBody 
 }
 
 func (s *ListAirflowsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Root != nil {
+		if err := s.Root.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAirflowsResponseBodyRoot struct {
@@ -195,7 +200,16 @@ func (s *ListAirflowsResponseBodyRoot) SetTotalCount(v int32) *ListAirflowsRespo
 }
 
 func (s *ListAirflowsResponseBodyRoot) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAirflowsResponseBodyRootList struct {

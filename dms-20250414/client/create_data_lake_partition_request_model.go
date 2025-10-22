@@ -147,5 +147,10 @@ func (s *CreateDataLakePartitionRequest) SetWorkspaceId(v int64) *CreateDataLake
 }
 
 func (s *CreateDataLakePartitionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PartitionInput != nil {
+		if err := s.PartitionInput.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

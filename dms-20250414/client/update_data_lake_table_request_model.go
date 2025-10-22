@@ -115,5 +115,10 @@ func (s *UpdateDataLakeTableRequest) SetWorkspaceId(v int64) *UpdateDataLakeTabl
 }
 
 func (s *UpdateDataLakeTableRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TableInput != nil {
+		if err := s.TableInput.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

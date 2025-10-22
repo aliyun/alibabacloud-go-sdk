@@ -125,5 +125,14 @@ func (s *ListDataLakeTableResponseBody) SetTableList(v []*DLTable) *ListDataLake
 }
 
 func (s *ListDataLakeTableResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TableList != nil {
+		for _, item := range s.TableList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

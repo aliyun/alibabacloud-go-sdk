@@ -95,5 +95,14 @@ func (s *ListDataLakeCatalogResponseBody) SetSuccess(v bool) *ListDataLakeCatalo
 }
 
 func (s *ListDataLakeCatalogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CataLogList != nil {
+		for _, item := range s.CataLogList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

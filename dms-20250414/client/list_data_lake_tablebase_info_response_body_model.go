@@ -110,5 +110,14 @@ func (s *ListDataLakeTablebaseInfoResponseBody) SetTotalCount(v string) *ListDat
 }
 
 func (s *ListDataLakeTablebaseInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TablebaseInfoList != nil {
+		for _, item := range s.TablebaseInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -95,5 +95,10 @@ func (s *GetDataLakeCatalogResponseBody) SetSuccess(v bool) *GetDataLakeCatalogR
 }
 
 func (s *GetDataLakeCatalogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Catalog != nil {
+		if err := s.Catalog.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

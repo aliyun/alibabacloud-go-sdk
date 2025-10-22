@@ -95,5 +95,10 @@ func (s *CreateDataLakeFunctionResponseBody) SetSuccess(v bool) *CreateDataLakeF
 }
 
 func (s *CreateDataLakeFunctionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Function != nil {
+		if err := s.Function.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
