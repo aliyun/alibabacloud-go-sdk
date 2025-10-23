@@ -87,7 +87,12 @@ func (s *QueryInvalidAddressResponseBody) SetData(v *QueryInvalidAddressResponse
 }
 
 func (s *QueryInvalidAddressResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryInvalidAddressResponseBodyData struct {
@@ -112,7 +117,16 @@ func (s *QueryInvalidAddressResponseBodyData) SetMailDetail(v []*QueryInvalidAdd
 }
 
 func (s *QueryInvalidAddressResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.MailDetail != nil {
+		for _, item := range s.MailDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryInvalidAddressResponseBodyDataMailDetail struct {

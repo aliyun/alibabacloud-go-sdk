@@ -104,7 +104,12 @@ func (s *ListUserSuppressionResponseBody) SetTotalCount(v int32) *ListUserSuppre
 }
 
 func (s *ListUserSuppressionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUserSuppressionResponseBodyData struct {
@@ -129,7 +134,16 @@ func (s *ListUserSuppressionResponseBodyData) SetUserSuppressions(v []*ListUserS
 }
 
 func (s *ListUserSuppressionResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.UserSuppressions != nil {
+		for _, item := range s.UserSuppressions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserSuppressionResponseBodyDataUserSuppressions struct {

@@ -59,5 +59,10 @@ func (s *GetTrackListResponse) SetBody(v *GetTrackListResponseBody) *GetTrackLis
 }
 
 func (s *GetTrackListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

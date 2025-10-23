@@ -9,6 +9,8 @@ type iSaveReceiverDetailRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCustomDetail(v string) *SaveReceiverDetailRequest
+	GetCustomDetail() *string
 	SetDetail(v string) *SaveReceiverDetailRequest
 	GetDetail() *string
 	SetOwnerId(v int64) *SaveReceiverDetailRequest
@@ -22,6 +24,10 @@ type iSaveReceiverDetailRequest interface {
 }
 
 type SaveReceiverDetailRequest struct {
+	// example:
+	//
+	// [     {         "Email": "example@alimail.com",         "CustomData": {"name":"Tom","age":"30"}"     } ]
+	CustomDetail *string `json:"CustomDetail,omitempty" xml:"CustomDetail,omitempty"`
 	// Content, supports uploading multiple recipients at once, with a limit of 500 records per upload. Each record is separated by {} and commas, example:
 	//
 	// [{ },{ },{ }...], the format within {} is as follows:
@@ -29,8 +35,6 @@ type SaveReceiverDetailRequest struct {
 	// [{"b":"birthday","e":"xxx@example.net","g":"gender","m":"mobile","n":"nickname","u":"name"}], when passing values, pass it as a string, not a list.
 	//
 	// If a duplicate recipient address is inserted, it will return "ErrorCount": 1
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -57,6 +61,10 @@ func (s SaveReceiverDetailRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SaveReceiverDetailRequest) GetCustomDetail() *string {
+	return s.CustomDetail
+}
+
 func (s *SaveReceiverDetailRequest) GetDetail() *string {
 	return s.Detail
 }
@@ -75,6 +83,11 @@ func (s *SaveReceiverDetailRequest) GetResourceOwnerAccount() *string {
 
 func (s *SaveReceiverDetailRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
+}
+
+func (s *SaveReceiverDetailRequest) SetCustomDetail(v string) *SaveReceiverDetailRequest {
+	s.CustomDetail = &v
+	return s
 }
 
 func (s *SaveReceiverDetailRequest) SetDetail(v string) *SaveReceiverDetailRequest {

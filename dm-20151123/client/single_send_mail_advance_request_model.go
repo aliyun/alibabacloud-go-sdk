@@ -42,6 +42,8 @@ type iSingleSendMailAdvanceRequest interface {
 	GetSubject() *string
 	SetTagName(v string) *SingleSendMailAdvanceRequest
 	GetTagName() *string
+	SetTemplate(v *SingleSendMailAdvanceRequestTemplate) *SingleSendMailAdvanceRequest
+	GetTemplate() *SingleSendMailAdvanceRequestTemplate
 	SetTextBody(v string) *SingleSendMailAdvanceRequest
 	GetTextBody() *string
 	SetToAddress(v string) *SingleSendMailAdvanceRequest
@@ -71,9 +73,10 @@ type SingleSendMailAdvanceRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// This parameter is required.
-	Subject  *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	TagName  *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
-	TextBody *string `json:"TextBody,omitempty" xml:"TextBody,omitempty"`
+	Subject  *string                               `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	TagName  *string                               `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	Template *SingleSendMailAdvanceRequestTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
+	TextBody *string                               `json:"TextBody,omitempty" xml:"TextBody,omitempty"`
 	// This parameter is required.
 	ToAddress              *string `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
 	UnSubscribeFilterLevel *string `json:"UnSubscribeFilterLevel,omitempty" xml:"UnSubscribeFilterLevel,omitempty"`
@@ -150,6 +153,10 @@ func (s *SingleSendMailAdvanceRequest) GetSubject() *string {
 
 func (s *SingleSendMailAdvanceRequest) GetTagName() *string {
 	return s.TagName
+}
+
+func (s *SingleSendMailAdvanceRequest) GetTemplate() *SingleSendMailAdvanceRequestTemplate {
+	return s.Template
 }
 
 func (s *SingleSendMailAdvanceRequest) GetTextBody() *string {
@@ -248,6 +255,11 @@ func (s *SingleSendMailAdvanceRequest) SetTagName(v string) *SingleSendMailAdvan
 	return s
 }
 
+func (s *SingleSendMailAdvanceRequest) SetTemplate(v *SingleSendMailAdvanceRequestTemplate) *SingleSendMailAdvanceRequest {
+	s.Template = v
+	return s
+}
+
 func (s *SingleSendMailAdvanceRequest) SetTextBody(v string) *SingleSendMailAdvanceRequest {
 	s.TextBody = &v
 	return s
@@ -269,7 +281,21 @@ func (s *SingleSendMailAdvanceRequest) SetUnSubscribeLinkType(v string) *SingleS
 }
 
 func (s *SingleSendMailAdvanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Attachments != nil {
+		for _, item := range s.Attachments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Template != nil {
+		if err := s.Template.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SingleSendMailAdvanceRequestAttachments struct {
@@ -304,5 +330,43 @@ func (s *SingleSendMailAdvanceRequestAttachments) SetAttachmentUrlObject(v io.Re
 }
 
 func (s *SingleSendMailAdvanceRequestAttachments) Validate() error {
+	return dara.Validate(s)
+}
+
+type SingleSendMailAdvanceRequestTemplate struct {
+	TemplateData map[string]*string `json:"TemplateData,omitempty" xml:"TemplateData,omitempty"`
+	// example:
+	//
+	// xxx
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s SingleSendMailAdvanceRequestTemplate) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SingleSendMailAdvanceRequestTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *SingleSendMailAdvanceRequestTemplate) GetTemplateData() map[string]*string {
+	return s.TemplateData
+}
+
+func (s *SingleSendMailAdvanceRequestTemplate) GetTemplateId() *string {
+	return s.TemplateId
+}
+
+func (s *SingleSendMailAdvanceRequestTemplate) SetTemplateData(v map[string]*string) *SingleSendMailAdvanceRequestTemplate {
+	s.TemplateData = v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequestTemplate) SetTemplateId(v string) *SingleSendMailAdvanceRequestTemplate {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequestTemplate) Validate() error {
 	return dara.Validate(s)
 }

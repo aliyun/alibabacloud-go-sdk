@@ -104,7 +104,12 @@ func (s *QueryTagByParamResponseBody) SetData(v *QueryTagByParamResponseBodyData
 }
 
 func (s *QueryTagByParamResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryTagByParamResponseBodyData struct {
@@ -129,7 +134,16 @@ func (s *QueryTagByParamResponseBodyData) SetTag(v []*QueryTagByParamResponseBod
 }
 
 func (s *QueryTagByParamResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryTagByParamResponseBodyDataTag struct {

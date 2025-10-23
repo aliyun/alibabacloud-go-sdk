@@ -59,5 +59,10 @@ func (s *SingleSendMailResponse) SetBody(v *SingleSendMailResponseBody) *SingleS
 }
 
 func (s *SingleSendMailResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

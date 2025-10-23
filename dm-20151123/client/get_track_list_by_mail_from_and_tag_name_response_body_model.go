@@ -150,7 +150,12 @@ func (s *GetTrackListByMailFromAndTagNameResponseBody) SetTrackList(v *GetTrackL
 }
 
 func (s *GetTrackListByMailFromAndTagNameResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TrackList != nil {
+		if err := s.TrackList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTrackListByMailFromAndTagNameResponseBodyTrackList struct {
@@ -175,7 +180,16 @@ func (s *GetTrackListByMailFromAndTagNameResponseBodyTrackList) SetStat(v []*Get
 }
 
 func (s *GetTrackListByMailFromAndTagNameResponseBodyTrackList) Validate() error {
-	return dara.Validate(s)
+	if s.Stat != nil {
+		for _, item := range s.Stat {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTrackListByMailFromAndTagNameResponseBodyTrackListStat struct {

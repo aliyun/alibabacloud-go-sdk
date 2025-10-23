@@ -59,5 +59,10 @@ func (s *QueryReceiverByParamResponse) SetBody(v *QueryReceiverByParamResponseBo
 }
 
 func (s *QueryReceiverByParamResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

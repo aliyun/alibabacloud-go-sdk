@@ -104,7 +104,12 @@ func (s *QueryTaskByParamResponseBody) SetData(v *QueryTaskByParamResponseBodyDa
 }
 
 func (s *QueryTaskByParamResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryTaskByParamResponseBodyData struct {
@@ -129,7 +134,16 @@ func (s *QueryTaskByParamResponseBodyData) SetTask(v []*QueryTaskByParamResponse
 }
 
 func (s *QueryTaskByParamResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Task != nil {
+		for _, item := range s.Task {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryTaskByParamResponseBodyDataTask struct {

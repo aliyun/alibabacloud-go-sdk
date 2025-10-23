@@ -59,5 +59,10 @@ func (s *DeleteReceiverResponse) SetBody(v *DeleteReceiverResponseBody) *DeleteR
 }
 
 func (s *DeleteReceiverResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

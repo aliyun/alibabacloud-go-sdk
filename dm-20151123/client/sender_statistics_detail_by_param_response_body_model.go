@@ -70,7 +70,12 @@ func (s *SenderStatisticsDetailByParamResponseBody) SetData(v *SenderStatisticsD
 }
 
 func (s *SenderStatisticsDetailByParamResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SenderStatisticsDetailByParamResponseBodyData struct {
@@ -95,7 +100,16 @@ func (s *SenderStatisticsDetailByParamResponseBodyData) SetMailDetail(v []*Sende
 }
 
 func (s *SenderStatisticsDetailByParamResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.MailDetail != nil {
+		for _, item := range s.MailDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SenderStatisticsDetailByParamResponseBodyDataMailDetail struct {

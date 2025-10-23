@@ -29,6 +29,8 @@ type iSendTestByTemplateRequest interface {
 	GetResourceOwnerId() *int64
 	SetTemplateId(v int32) *SendTestByTemplateRequest
 	GetTemplateId() *int32
+	SetTemplateParams(v string) *SendTestByTemplateRequest
+	GetTemplateParams() *string
 	SetUserName(v string) *SendTestByTemplateRequest
 	GetUserName() *string
 }
@@ -85,6 +87,10 @@ type SendTestByTemplateRequest struct {
 	//
 	// 123
 	TemplateId *int32 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// {"age":"20","nickName":"tom"}
+	TemplateParams *string `json:"TemplateParams,omitempty" xml:"TemplateParams,omitempty"`
 	// UserName, with a maximum length of 30 characters
 	//
 	// example:
@@ -141,6 +147,10 @@ func (s *SendTestByTemplateRequest) GetTemplateId() *int32 {
 	return s.TemplateId
 }
 
+func (s *SendTestByTemplateRequest) GetTemplateParams() *string {
+	return s.TemplateParams
+}
+
 func (s *SendTestByTemplateRequest) GetUserName() *string {
 	return s.UserName
 }
@@ -192,6 +202,11 @@ func (s *SendTestByTemplateRequest) SetResourceOwnerId(v int64) *SendTestByTempl
 
 func (s *SendTestByTemplateRequest) SetTemplateId(v int32) *SendTestByTemplateRequest {
 	s.TemplateId = &v
+	return s
+}
+
+func (s *SendTestByTemplateRequest) SetTemplateParams(v string) *SendTestByTemplateRequest {
+	s.TemplateParams = &v
 	return s
 }
 

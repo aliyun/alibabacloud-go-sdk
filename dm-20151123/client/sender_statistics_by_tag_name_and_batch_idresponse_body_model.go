@@ -70,7 +70,12 @@ func (s *SenderStatisticsByTagNameAndBatchIDResponseBody) SetData(v *SenderStati
 }
 
 func (s *SenderStatisticsByTagNameAndBatchIDResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SenderStatisticsByTagNameAndBatchIDResponseBodyData struct {
@@ -95,7 +100,16 @@ func (s *SenderStatisticsByTagNameAndBatchIDResponseBodyData) SetStat(v []*Sende
 }
 
 func (s *SenderStatisticsByTagNameAndBatchIDResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Stat != nil {
+		for _, item := range s.Stat {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SenderStatisticsByTagNameAndBatchIDResponseBodyDataStat struct {

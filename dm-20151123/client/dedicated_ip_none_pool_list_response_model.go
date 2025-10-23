@@ -59,5 +59,10 @@ func (s *DedicatedIpNonePoolListResponse) SetBody(v *DedicatedIpNonePoolListResp
 }
 
 func (s *DedicatedIpNonePoolListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

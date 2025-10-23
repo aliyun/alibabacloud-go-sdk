@@ -121,7 +121,16 @@ func (s *DedicatedIpListResponseBody) SetTotalCounts(v int32) *DedicatedIpListRe
 }
 
 func (s *DedicatedIpListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Ips != nil {
+		for _, item := range s.Ips {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DedicatedIpListResponseBodyIps struct {
@@ -292,7 +301,12 @@ func (s *DedicatedIpListResponseBodyIps) SetZoneId(v string) *DedicatedIpListRes
 }
 
 func (s *DedicatedIpListResponseBodyIps) Validate() error {
-	return dara.Validate(s)
+	if s.IpExt != nil {
+		if err := s.IpExt.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DedicatedIpListResponseBodyIpsIpExt struct {

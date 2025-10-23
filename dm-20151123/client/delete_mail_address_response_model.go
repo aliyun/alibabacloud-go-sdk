@@ -59,5 +59,10 @@ func (s *DeleteMailAddressResponse) SetBody(v *DeleteMailAddressResponseBody) *D
 }
 
 func (s *DeleteMailAddressResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

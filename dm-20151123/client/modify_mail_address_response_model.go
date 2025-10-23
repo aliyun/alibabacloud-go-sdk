@@ -59,5 +59,10 @@ func (s *ModifyMailAddressResponse) SetBody(v *ModifyMailAddressResponseBody) *M
 }
 
 func (s *ModifyMailAddressResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

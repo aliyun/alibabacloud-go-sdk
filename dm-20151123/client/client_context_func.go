@@ -17,9 +17,11 @@ import (
 //
 // @return AddIpfilterResponse
 func (client *Client) AddIpfilterWithContext(ctx context.Context, request *AddIpfilterRequest, runtime *dara.RuntimeOptions) (_result *AddIpfilterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IpAddress) {
@@ -71,9 +73,11 @@ func (client *Client) AddIpfilterWithContext(ctx context.Context, request *AddIp
 //
 // @return ApproveReplyMailAddressResponse
 func (client *Client) ApproveReplyMailAddressWithContext(ctx context.Context, request *ApproveReplyMailAddressRequest, runtime *dara.RuntimeOptions) (_result *ApproveReplyMailAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -125,9 +129,11 @@ func (client *Client) ApproveReplyMailAddressWithContext(ctx context.Context, re
 //
 // @return BatchSendMailResponse
 func (client *Client) BatchSendMailWithContext(ctx context.Context, request *BatchSendMailRequest, runtime *dara.RuntimeOptions) (_result *BatchSendMailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -223,9 +229,11 @@ func (client *Client) BatchSendMailWithContext(ctx context.Context, request *Bat
 //
 // @return ChangeDomainDkimRecordResponse
 func (client *Client) ChangeDomainDkimRecordWithContext(ctx context.Context, request *ChangeDomainDkimRecordRequest, runtime *dara.RuntimeOptions) (_result *ChangeDomainDkimRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DkimRsaLength) {
@@ -273,6 +281,50 @@ func (client *Client) ChangeDomainDkimRecordWithContext(ctx context.Context, req
 
 // Summary:
 //
+// 检查地址是否为一次性邮箱
+//
+// @param request - CheckDisposableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckDisposableResponse
+func (client *Client) CheckDisposableWithContext(ctx context.Context, request *CheckDisposableRequest, runtime *dara.RuntimeOptions) (_result *CheckDisposableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckDisposable"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckDisposableResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Check Domain Status
 //
 // @param request - CheckDomainRequest
@@ -281,9 +333,11 @@ func (client *Client) ChangeDomainDkimRecordWithContext(ctx context.Context, req
 //
 // @return CheckDomainResponse
 func (client *Client) CheckDomainWithContext(ctx context.Context, request *CheckDomainRequest, runtime *dara.RuntimeOptions) (_result *CheckDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainId) {
@@ -335,9 +389,11 @@ func (client *Client) CheckDomainWithContext(ctx context.Context, request *Check
 //
 // @return CheckReplyToMailAddressResponse
 func (client *Client) CheckReplyToMailAddressWithContext(ctx context.Context, request *CheckReplyToMailAddressRequest, runtime *dara.RuntimeOptions) (_result *CheckReplyToMailAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -389,6 +445,358 @@ func (client *Client) CheckReplyToMailAddressWithContext(ctx context.Context, re
 
 // Summary:
 //
+// 配置集取消关联发信地址
+//
+// @param request - ConfigSetCancelRelationFromAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigSetCancelRelationFromAddressResponse
+func (client *Client) ConfigSetCancelRelationFromAddressWithContext(ctx context.Context, request *ConfigSetCancelRelationFromAddressRequest, runtime *dara.RuntimeOptions) (_result *ConfigSetCancelRelationFromAddressResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FromAddress) {
+		query["FromAddress"] = request.FromAddress
+	}
+
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfigSetCancelRelationFromAddress"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfigSetCancelRelationFromAddressResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置集创建
+//
+// @param request - ConfigSetCreateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigSetCreateResponse
+func (client *Client) ConfigSetCreateWithContext(ctx context.Context, request *ConfigSetCreateRequest, runtime *dara.RuntimeOptions) (_result *ConfigSetCreateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.IpPoolId) {
+		query["IpPoolId"] = request.IpPoolId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfigSetCreate"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfigSetCreateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除配置集
+//
+// @param request - ConfigSetDeleteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigSetDeleteResponse
+func (client *Client) ConfigSetDeleteWithContext(ctx context.Context, request *ConfigSetDeleteRequest, runtime *dara.RuntimeOptions) (_result *ConfigSetDeleteResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Ids) {
+		query["Ids"] = request.Ids
+	}
+
+	if !dara.IsNil(request.IsForce) {
+		query["IsForce"] = request.IsForce
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfigSetDelete"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfigSetDeleteResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置集详情
+//
+// @param request - ConfigSetDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigSetDetailResponse
+func (client *Client) ConfigSetDetailWithContext(ctx context.Context, request *ConfigSetDetailRequest, runtime *dara.RuntimeOptions) (_result *ConfigSetDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfigSetDetail"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfigSetDetailResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置集列表
+//
+// @param request - ConfigSetListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigSetListResponse
+func (client *Client) ConfigSetListWithContext(ctx context.Context, request *ConfigSetListRequest, runtime *dara.RuntimeOptions) (_result *ConfigSetListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.All) {
+		query["All"] = request.All
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfigSetList"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfigSetListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置集关联发信地址
+//
+// @param request - ConfigSetRelationFromAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigSetRelationFromAddressResponse
+func (client *Client) ConfigSetRelationFromAddressWithContext(ctx context.Context, request *ConfigSetRelationFromAddressRequest, runtime *dara.RuntimeOptions) (_result *ConfigSetRelationFromAddressResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FromAddress) {
+		query["FromAddress"] = request.FromAddress
+	}
+
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfigSetRelationFromAddress"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfigSetRelationFromAddressResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置集更新
+//
+// @param request - ConfigSetUpdateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigSetUpdateResponse
+func (client *Client) ConfigSetUpdateWithContext(ctx context.Context, request *ConfigSetUpdateRequest, runtime *dara.RuntimeOptions) (_result *ConfigSetUpdateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.IpPoolId) {
+		query["IpPoolId"] = request.IpPoolId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfigSetUpdate"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfigSetUpdateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Create Domain
 //
 // @param request - CreateDomainRequest
@@ -397,9 +805,11 @@ func (client *Client) CheckReplyToMailAddressWithContext(ctx context.Context, re
 //
 // @return CreateDomainResponse
 func (client *Client) CreateDomainWithContext(ctx context.Context, request *CreateDomainRequest, runtime *dara.RuntimeOptions) (_result *CreateDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -455,9 +865,11 @@ func (client *Client) CreateDomainWithContext(ctx context.Context, request *Crea
 //
 // @return CreateMailAddressResponse
 func (client *Client) CreateMailAddressWithContext(ctx context.Context, request *CreateMailAddressRequest, runtime *dara.RuntimeOptions) (_result *CreateMailAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -517,9 +929,11 @@ func (client *Client) CreateMailAddressWithContext(ctx context.Context, request 
 //
 // @return CreateReceiverResponse
 func (client *Client) CreateReceiverWithContext(ctx context.Context, request *CreateReceiverRequest, runtime *dara.RuntimeOptions) (_result *CreateReceiverResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Desc) {
@@ -579,9 +993,11 @@ func (client *Client) CreateReceiverWithContext(ctx context.Context, request *Cr
 //
 // @return CreateTagResponse
 func (client *Client) CreateTagWithContext(ctx context.Context, request *CreateTagRequest, runtime *dara.RuntimeOptions) (_result *CreateTagResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -637,9 +1053,11 @@ func (client *Client) CreateTagWithContext(ctx context.Context, request *CreateT
 //
 // @return CreateUserSuppressionResponse
 func (client *Client) CreateUserSuppressionWithContext(ctx context.Context, request *CreateUserSuppressionRequest, runtime *dara.RuntimeOptions) (_result *CreateUserSuppressionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Address) {
@@ -691,9 +1109,11 @@ func (client *Client) CreateUserSuppressionWithContext(ctx context.Context, requ
 //
 // @return DedicatedIpAutoRenewalResponse
 func (client *Client) DedicatedIpAutoRenewalWithContext(ctx context.Context, request *DedicatedIpAutoRenewalRequest, runtime *dara.RuntimeOptions) (_result *DedicatedIpAutoRenewalResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoRenewal) {
@@ -737,9 +1157,11 @@ func (client *Client) DedicatedIpAutoRenewalWithContext(ctx context.Context, req
 //
 // @return DedicatedIpChangeWarmupTypeResponse
 func (client *Client) DedicatedIpChangeWarmupTypeWithContext(ctx context.Context, request *DedicatedIpChangeWarmupTypeRequest, runtime *dara.RuntimeOptions) (_result *DedicatedIpChangeWarmupTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -783,9 +1205,11 @@ func (client *Client) DedicatedIpChangeWarmupTypeWithContext(ctx context.Context
 //
 // @return DedicatedIpListResponse
 func (client *Client) DedicatedIpListWithContext(ctx context.Context, request *DedicatedIpListRequest, runtime *dara.RuntimeOptions) (_result *DedicatedIpListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -833,9 +1257,11 @@ func (client *Client) DedicatedIpListWithContext(ctx context.Context, request *D
 //
 // @return DedicatedIpPoolCreateResponse
 func (client *Client) DedicatedIpPoolCreateWithContext(ctx context.Context, request *DedicatedIpPoolCreateRequest, runtime *dara.RuntimeOptions) (_result *DedicatedIpPoolCreateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BuyResourceIds) {
@@ -879,9 +1305,11 @@ func (client *Client) DedicatedIpPoolCreateWithContext(ctx context.Context, requ
 //
 // @return DedicatedIpPoolDeleteResponse
 func (client *Client) DedicatedIpPoolDeleteWithContext(ctx context.Context, request *DedicatedIpPoolDeleteRequest, runtime *dara.RuntimeOptions) (_result *DedicatedIpPoolDeleteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -921,9 +1349,11 @@ func (client *Client) DedicatedIpPoolDeleteWithContext(ctx context.Context, requ
 //
 // @return DedicatedIpPoolListResponse
 func (client *Client) DedicatedIpPoolListWithContext(ctx context.Context, request *DedicatedIpPoolListRequest, runtime *dara.RuntimeOptions) (_result *DedicatedIpPoolListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -975,9 +1405,11 @@ func (client *Client) DedicatedIpPoolListWithContext(ctx context.Context, reques
 //
 // @return DedicatedIpPoolUpdateResponse
 func (client *Client) DedicatedIpPoolUpdateWithContext(ctx context.Context, request *DedicatedIpPoolUpdateRequest, runtime *dara.RuntimeOptions) (_result *DedicatedIpPoolUpdateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BuyResourceIds) {
@@ -1025,9 +1457,11 @@ func (client *Client) DedicatedIpPoolUpdateWithContext(ctx context.Context, requ
 //
 // @return DeleteDomainResponse
 func (client *Client) DeleteDomainWithContext(ctx context.Context, request *DeleteDomainRequest, runtime *dara.RuntimeOptions) (_result *DeleteDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainId) {
@@ -1079,9 +1513,11 @@ func (client *Client) DeleteDomainWithContext(ctx context.Context, request *Dele
 //
 // @return DeleteInvalidAddressResponse
 func (client *Client) DeleteInvalidAddressWithContext(ctx context.Context, request *DeleteInvalidAddressRequest, runtime *dara.RuntimeOptions) (_result *DeleteInvalidAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -1133,9 +1569,11 @@ func (client *Client) DeleteInvalidAddressWithContext(ctx context.Context, reque
 //
 // @return DeleteIpfilterByEdmIdResponse
 func (client *Client) DeleteIpfilterByEdmIdWithContext(ctx context.Context, request *DeleteIpfilterByEdmIdRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpfilterByEdmIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FromType) {
@@ -1191,9 +1629,11 @@ func (client *Client) DeleteIpfilterByEdmIdWithContext(ctx context.Context, requ
 //
 // @return DeleteMailAddressResponse
 func (client *Client) DeleteMailAddressWithContext(ctx context.Context, request *DeleteMailAddressRequest, runtime *dara.RuntimeOptions) (_result *DeleteMailAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MailAddressId) {
@@ -1245,9 +1685,11 @@ func (client *Client) DeleteMailAddressWithContext(ctx context.Context, request 
 //
 // @return DeleteReceiverResponse
 func (client *Client) DeleteReceiverWithContext(ctx context.Context, request *DeleteReceiverRequest, runtime *dara.RuntimeOptions) (_result *DeleteReceiverResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -1299,9 +1741,11 @@ func (client *Client) DeleteReceiverWithContext(ctx context.Context, request *De
 //
 // @return DeleteReceiverDetailResponse
 func (client *Client) DeleteReceiverDetailWithContext(ctx context.Context, request *DeleteReceiverDetailRequest, runtime *dara.RuntimeOptions) (_result *DeleteReceiverDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Email) {
@@ -1357,9 +1801,11 @@ func (client *Client) DeleteReceiverDetailWithContext(ctx context.Context, reque
 //
 // @return DeleteTagResponse
 func (client *Client) DeleteTagWithContext(ctx context.Context, request *DeleteTagRequest, runtime *dara.RuntimeOptions) (_result *DeleteTagResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -1403,6 +1849,50 @@ func (client *Client) DeleteTagWithContext(ctx context.Context, request *DeleteT
 
 // Summary:
 //
+// 删除批量校验任务的结果文件
+//
+// @param request - DeleteValidateFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteValidateFileResponse
+func (client *Client) DeleteValidateFileWithContext(ctx context.Context, request *DeleteValidateFileRequest, runtime *dara.RuntimeOptions) (_result *DeleteValidateFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteValidateFile"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteValidateFileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieve account information.
 //
 // @param request - DescAccountSummaryRequest
@@ -1411,9 +1901,11 @@ func (client *Client) DeleteTagWithContext(ctx context.Context, request *DeleteT
 //
 // @return DescAccountSummaryResponse
 func (client *Client) DescAccountSummaryWithContext(ctx context.Context, request *DescAccountSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescAccountSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -1461,9 +1953,11 @@ func (client *Client) DescAccountSummaryWithContext(ctx context.Context, request
 //
 // @return DescDomainResponse
 func (client *Client) DescDomainWithContext(ctx context.Context, request *DescDomainRequest, runtime *dara.RuntimeOptions) (_result *DescDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainId) {
@@ -1511,6 +2005,66 @@ func (client *Client) DescDomainWithContext(ctx context.Context, request *DescDo
 
 // Summary:
 //
+// 查看模板信息
+//
+// @param request - DescTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescTemplateResponse
+func (client *Client) DescTemplateWithContext(ctx context.Context, request *DescTemplateRequest, runtime *dara.RuntimeOptions) (_result *DescTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FromType) {
+		query["FromType"] = request.FromType
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescTemplate"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取专属ip的预热详情信息
 //
 // @param request - GetDedicatedIpWarmUpDetailRequest
@@ -1519,9 +2073,11 @@ func (client *Client) DescDomainWithContext(ctx context.Context, request *DescDo
 //
 // @return GetDedicatedIpWarmUpDetailResponse
 func (client *Client) GetDedicatedIpWarmUpDetailWithContext(ctx context.Context, request *GetDedicatedIpWarmUpDetailRequest, runtime *dara.RuntimeOptions) (_result *GetDedicatedIpWarmUpDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DedicatedIp) {
@@ -1573,9 +2129,11 @@ func (client *Client) GetDedicatedIpWarmUpDetailWithContext(ctx context.Context,
 //
 // @return GetDedicatedIpWarmUpInfoResponse
 func (client *Client) GetDedicatedIpWarmUpInfoWithContext(ctx context.Context, request *GetDedicatedIpWarmUpInfoRequest, runtime *dara.RuntimeOptions) (_result *GetDedicatedIpWarmUpInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DedicatedIp) {
@@ -1615,9 +2173,11 @@ func (client *Client) GetDedicatedIpWarmUpInfoWithContext(ctx context.Context, r
 //
 // @return GetIpProtectionResponse
 func (client *Client) GetIpProtectionWithContext(ctx context.Context, request *GetIpProtectionRequest, runtime *dara.RuntimeOptions) (_result *GetIpProtectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -1665,9 +2225,11 @@ func (client *Client) GetIpProtectionWithContext(ctx context.Context, request *G
 //
 // @return GetIpfilterListResponse
 func (client *Client) GetIpfilterListWithContext(ctx context.Context, request *GetIpfilterListRequest, runtime *dara.RuntimeOptions) (_result *GetIpfilterListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -1715,9 +2277,11 @@ func (client *Client) GetIpfilterListWithContext(ctx context.Context, request *G
 //
 // @return GetSuppressionListLevelResponse
 func (client *Client) GetSuppressionListLevelWithContext(ctx context.Context, request *GetSuppressionListLevelRequest, runtime *dara.RuntimeOptions) (_result *GetSuppressionListLevelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -1765,9 +2329,11 @@ func (client *Client) GetSuppressionListLevelWithContext(ctx context.Context, re
 //
 // @return GetTrackListResponse
 func (client *Client) GetTrackListWithContext(ctx context.Context, request *GetTrackListRequest, runtime *dara.RuntimeOptions) (_result *GetTrackListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -1871,9 +2437,11 @@ func (client *Client) GetTrackListWithContext(ctx context.Context, request *GetT
 //
 // @return GetTrackListByMailFromAndTagNameResponse
 func (client *Client) GetTrackListByMailFromAndTagNameWithContext(ctx context.Context, request *GetTrackListByMailFromAndTagNameRequest, runtime *dara.RuntimeOptions) (_result *GetTrackListByMailFromAndTagNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -1969,6 +2537,94 @@ func (client *Client) GetTrackListByMailFromAndTagNameWithContext(ctx context.Co
 
 // Summary:
 //
+// 获取批量校验任务的结果文件
+//
+// @param request - GetValidateFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetValidateFileResponse
+func (client *Client) GetValidateFileWithContext(ctx context.Context, request *GetValidateFileRequest, runtime *dara.RuntimeOptions) (_result *GetValidateFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetValidateFile"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetValidateFileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取批量校验任务的状态
+//
+// @param request - GetValidateFileStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetValidateFileStatusResponse
+func (client *Client) GetValidateFileStatusWithContext(ctx context.Context, request *GetValidateFileStatusRequest, runtime *dara.RuntimeOptions) (_result *GetValidateFileStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetValidateFileStatus"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetValidateFileStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取发信的黑名单列表
 //
 // @param request - ListBlockSendingRequest
@@ -1977,9 +2633,11 @@ func (client *Client) GetTrackListByMailFromAndTagNameWithContext(ctx context.Co
 //
 // @return ListBlockSendingResponse
 func (client *Client) ListBlockSendingWithContext(ctx context.Context, request *ListBlockSendingRequest, runtime *dara.RuntimeOptions) (_result *ListBlockSendingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BeginTime) {
@@ -2043,9 +2701,11 @@ func (client *Client) ListBlockSendingWithContext(ctx context.Context, request *
 //
 // @return ListUserSuppressionResponse
 func (client *Client) ListUserSuppressionWithContext(ctx context.Context, request *ListUserSuppressionRequest, runtime *dara.RuntimeOptions) (_result *ListUserSuppressionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Address) {
@@ -2121,9 +2781,11 @@ func (client *Client) ListUserSuppressionWithContext(ctx context.Context, reques
 //
 // @return ModifyMailAddressResponse
 func (client *Client) ModifyMailAddressWithContext(ctx context.Context, request *ModifyMailAddressRequest, runtime *dara.RuntimeOptions) (_result *ModifyMailAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MailAddressId) {
@@ -2183,9 +2845,11 @@ func (client *Client) ModifyMailAddressWithContext(ctx context.Context, request 
 //
 // @return ModifyPWByDomainResponse
 func (client *Client) ModifyPWByDomainWithContext(ctx context.Context, request *ModifyPWByDomainRequest, runtime *dara.RuntimeOptions) (_result *ModifyPWByDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -2241,9 +2905,11 @@ func (client *Client) ModifyPWByDomainWithContext(ctx context.Context, request *
 //
 // @return ModifyTagResponse
 func (client *Client) ModifyTagWithContext(ctx context.Context, request *ModifyTagRequest, runtime *dara.RuntimeOptions) (_result *ModifyTagResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -2303,9 +2969,11 @@ func (client *Client) ModifyTagWithContext(ctx context.Context, request *ModifyT
 //
 // @return QueryDomainByParamResponse
 func (client *Client) QueryDomainByParamWithContext(ctx context.Context, request *QueryDomainByParamRequest, runtime *dara.RuntimeOptions) (_result *QueryDomainByParamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyWord) {
@@ -2373,9 +3041,11 @@ func (client *Client) QueryDomainByParamWithContext(ctx context.Context, request
 //
 // @return QueryInvalidAddressResponse
 func (client *Client) QueryInvalidAddressWithContext(ctx context.Context, request *QueryInvalidAddressRequest, runtime *dara.RuntimeOptions) (_result *QueryInvalidAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -2443,9 +3113,11 @@ func (client *Client) QueryInvalidAddressWithContext(ctx context.Context, reques
 //
 // @return QueryMailAddressByParamResponse
 func (client *Client) QueryMailAddressByParamWithContext(ctx context.Context, request *QueryMailAddressByParamRequest, runtime *dara.RuntimeOptions) (_result *QueryMailAddressByParamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyWord) {
@@ -2509,9 +3181,11 @@ func (client *Client) QueryMailAddressByParamWithContext(ctx context.Context, re
 //
 // @return QueryReceiverByParamResponse
 func (client *Client) QueryReceiverByParamWithContext(ctx context.Context, request *QueryReceiverByParamRequest, runtime *dara.RuntimeOptions) (_result *QueryReceiverByParamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyWord) {
@@ -2575,9 +3249,11 @@ func (client *Client) QueryReceiverByParamWithContext(ctx context.Context, reque
 //
 // @return QueryReceiverDetailResponse
 func (client *Client) QueryReceiverDetailWithContext(ctx context.Context, request *QueryReceiverDetailRequest, runtime *dara.RuntimeOptions) (_result *QueryReceiverDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyWord) {
@@ -2641,9 +3317,11 @@ func (client *Client) QueryReceiverDetailWithContext(ctx context.Context, reques
 //
 // @return QueryTagByParamResponse
 func (client *Client) QueryTagByParamWithContext(ctx context.Context, request *QueryTagByParamRequest, runtime *dara.RuntimeOptions) (_result *QueryTagByParamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyWord) {
@@ -2703,9 +3381,11 @@ func (client *Client) QueryTagByParamWithContext(ctx context.Context, request *Q
 //
 // @return QueryTaskByParamResponse
 func (client *Client) QueryTaskByParamWithContext(ctx context.Context, request *QueryTaskByParamRequest, runtime *dara.RuntimeOptions) (_result *QueryTaskByParamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyWord) {
@@ -2761,6 +3441,78 @@ func (client *Client) QueryTaskByParamWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 查询模板信息
+//
+// @param request - QueryTemplateByParamRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTemplateByParamResponse
+func (client *Client) QueryTemplateByParamWithContext(ctx context.Context, request *QueryTemplateByParamRequest, runtime *dara.RuntimeOptions) (_result *QueryTemplateByParamResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FromType) {
+		query["FromType"] = request.FromType
+	}
+
+	if !dara.IsNil(request.KeyWord) {
+		query["KeyWord"] = request.KeyWord
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryTemplateByParam"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryTemplateByParamResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除用户无效地址
 //
 // @param request - RemoveUserSuppressionRequest
@@ -2769,9 +3521,11 @@ func (client *Client) QueryTaskByParamWithContext(ctx context.Context, request *
 //
 // @return RemoveUserSuppressionResponse
 func (client *Client) RemoveUserSuppressionWithContext(ctx context.Context, request *RemoveUserSuppressionRequest, runtime *dara.RuntimeOptions) (_result *RemoveUserSuppressionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -2823,11 +3577,17 @@ func (client *Client) RemoveUserSuppressionWithContext(ctx context.Context, requ
 //
 // @return SaveReceiverDetailResponse
 func (client *Client) SaveReceiverDetailWithContext(ctx context.Context, request *SaveReceiverDetailRequest, runtime *dara.RuntimeOptions) (_result *SaveReceiverDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomDetail) {
+		query["CustomDetail"] = request.CustomDetail
+	}
+
 	if !dara.IsNil(request.Detail) {
 		query["Detail"] = request.Detail
 	}
@@ -2881,9 +3641,11 @@ func (client *Client) SaveReceiverDetailWithContext(ctx context.Context, request
 //
 // @return SendTestByTemplateResponse
 func (client *Client) SendTestByTemplateWithContext(ctx context.Context, request *SendTestByTemplateRequest, runtime *dara.RuntimeOptions) (_result *SendTestByTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -2926,6 +3688,10 @@ func (client *Client) SendTestByTemplateWithContext(ctx context.Context, request
 		query["TemplateId"] = request.TemplateId
 	}
 
+	if !dara.IsNil(request.TemplateParams) {
+		query["TemplateParams"] = request.TemplateParams
+	}
+
 	if !dara.IsNil(request.UserName) {
 		query["UserName"] = request.UserName
 	}
@@ -2955,6 +3721,66 @@ func (client *Client) SendTestByTemplateWithContext(ctx context.Context, request
 
 // Summary:
 //
+// 提交批量校验任务
+//
+// @param request - SendValidateFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendValidateFileResponse
+func (client *Client) SendValidateFileWithContext(ctx context.Context, request *SendValidateFileRequest, runtime *dara.RuntimeOptions) (_result *SendValidateFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddressColumn) {
+		query["AddressColumn"] = request.AddressColumn
+	}
+
+	if !dara.IsNil(request.FileName) {
+		query["FileName"] = request.FileName
+	}
+
+	if !dara.IsNil(request.FileUrl) {
+		query["FileUrl"] = request.FileUrl
+	}
+
+	if !dara.IsNil(request.HasHeaderRow) {
+		query["HasHeaderRow"] = request.HasHeaderRow
+	}
+
+	if !dara.IsNil(request.RemoveDuplicate) {
+		query["RemoveDuplicate"] = request.RemoveDuplicate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SendValidateFile"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SendValidateFileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Retrieve Sending Data under Specified Conditions
 //
 // @param request - SenderStatisticsByTagNameAndBatchIDRequest
@@ -2963,9 +3789,11 @@ func (client *Client) SendTestByTemplateWithContext(ctx context.Context, request
 //
 // @return SenderStatisticsByTagNameAndBatchIDResponse
 func (client *Client) SenderStatisticsByTagNameAndBatchIDWithContext(ctx context.Context, request *SenderStatisticsByTagNameAndBatchIDRequest, runtime *dara.RuntimeOptions) (_result *SenderStatisticsByTagNameAndBatchIDResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -3041,9 +3869,11 @@ func (client *Client) SenderStatisticsByTagNameAndBatchIDWithContext(ctx context
 //
 // @return SenderStatisticsDetailByParamResponse
 func (client *Client) SenderStatisticsDetailByParamWithContext(ctx context.Context, request *SenderStatisticsDetailByParamRequest, runtime *dara.RuntimeOptions) (_result *SenderStatisticsDetailByParamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -3131,9 +3961,11 @@ func (client *Client) SenderStatisticsDetailByParamWithContext(ctx context.Conte
 //
 // @return SetSuppressionListLevelResponse
 func (client *Client) SetSuppressionListLevelWithContext(ctx context.Context, request *SetSuppressionListLevelRequest, runtime *dara.RuntimeOptions) (_result *SetSuppressionListLevelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -3179,16 +4011,24 @@ func (client *Client) SetSuppressionListLevelWithContext(ctx context.Context, re
 //
 // # API for Sending Emails
 //
-// @param request - SingleSendMailRequest
+// @param tmpReq - SingleSendMailRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SingleSendMailResponse
-func (client *Client) SingleSendMailWithContext(ctx context.Context, request *SingleSendMailRequest, runtime *dara.RuntimeOptions) (_result *SingleSendMailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+func (client *Client) SingleSendMailWithContext(ctx context.Context, tmpReq *SingleSendMailRequest, runtime *dara.RuntimeOptions) (_result *SingleSendMailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
+	request := &SingleSendMailShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Template) {
+		request.TemplateShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Template, dara.String("Template"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
@@ -3255,6 +4095,10 @@ func (client *Client) SingleSendMailWithContext(ctx context.Context, request *Si
 		body["TagName"] = request.TagName
 	}
 
+	if !dara.IsNil(request.TemplateShrink) {
+		body["Template"] = request.TemplateShrink
+	}
+
 	if !dara.IsNil(request.TextBody) {
 		body["TextBody"] = request.TextBody
 	}
@@ -3305,9 +4149,11 @@ func (client *Client) SingleSendMailWithContext(ctx context.Context, request *Si
 //
 // @return UnblockSendingResponse
 func (client *Client) UnblockSendingWithContext(ctx context.Context, request *UnblockSendingRequest, runtime *dara.RuntimeOptions) (_result *UnblockSendingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BlockEmail) {
@@ -3355,9 +4201,11 @@ func (client *Client) UnblockSendingWithContext(ctx context.Context, request *Un
 //
 // @return UpdateIpProtectionResponse
 func (client *Client) UpdateIpProtectionWithContext(ctx context.Context, request *UpdateIpProtectionRequest, runtime *dara.RuntimeOptions) (_result *UpdateIpProtectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IpProtection) {
@@ -3409,9 +4257,11 @@ func (client *Client) UpdateIpProtectionWithContext(ctx context.Context, request
 //
 // @return UpdateUserResponse
 func (client *Client) UpdateUserWithContext(ctx context.Context, tmpReq *UpdateUserRequest, runtime *dara.RuntimeOptions) (_result *UpdateUserResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateUserShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3439,6 +4289,54 @@ func (client *Client) UpdateUserWithContext(ctx context.Context, tmpReq *UpdateU
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateUserResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 校验电子邮件地址
+//
+// @param request - ValidateEmailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ValidateEmailResponse
+func (client *Client) ValidateEmailWithContext(ctx context.Context, request *ValidateEmailRequest, runtime *dara.RuntimeOptions) (_result *ValidateEmailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.Timeout) {
+		query["Timeout"] = request.Timeout
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ValidateEmail"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ValidateEmailResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

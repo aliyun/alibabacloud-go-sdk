@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -91,9 +92,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AddIpfilterResponse
 func (client *Client) AddIpfilterWithOptions(request *AddIpfilterRequest, runtime *dara.RuntimeOptions) (_result *AddIpfilterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IpAddress) {
@@ -163,9 +166,11 @@ func (client *Client) AddIpfilter(request *AddIpfilterRequest) (_result *AddIpfi
 //
 // @return ApproveReplyMailAddressResponse
 func (client *Client) ApproveReplyMailAddressWithOptions(request *ApproveReplyMailAddressRequest, runtime *dara.RuntimeOptions) (_result *ApproveReplyMailAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -235,9 +240,11 @@ func (client *Client) ApproveReplyMailAddress(request *ApproveReplyMailAddressRe
 //
 // @return BatchSendMailResponse
 func (client *Client) BatchSendMailWithOptions(request *BatchSendMailRequest, runtime *dara.RuntimeOptions) (_result *BatchSendMailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -351,9 +358,11 @@ func (client *Client) BatchSendMail(request *BatchSendMailRequest) (_result *Bat
 //
 // @return ChangeDomainDkimRecordResponse
 func (client *Client) ChangeDomainDkimRecordWithOptions(request *ChangeDomainDkimRecordRequest, runtime *dara.RuntimeOptions) (_result *ChangeDomainDkimRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DkimRsaLength) {
@@ -419,6 +428,68 @@ func (client *Client) ChangeDomainDkimRecord(request *ChangeDomainDkimRecordRequ
 
 // Summary:
 //
+// 检查地址是否为一次性邮箱
+//
+// @param request - CheckDisposableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckDisposableResponse
+func (client *Client) CheckDisposableWithOptions(request *CheckDisposableRequest, runtime *dara.RuntimeOptions) (_result *CheckDisposableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckDisposable"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckDisposableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 检查地址是否为一次性邮箱
+//
+// @param request - CheckDisposableRequest
+//
+// @return CheckDisposableResponse
+func (client *Client) CheckDisposable(request *CheckDisposableRequest) (_result *CheckDisposableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CheckDisposableResponse{}
+	_body, _err := client.CheckDisposableWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Check Domain Status
 //
 // @param request - CheckDomainRequest
@@ -427,9 +498,11 @@ func (client *Client) ChangeDomainDkimRecord(request *ChangeDomainDkimRecordRequ
 //
 // @return CheckDomainResponse
 func (client *Client) CheckDomainWithOptions(request *CheckDomainRequest, runtime *dara.RuntimeOptions) (_result *CheckDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainId) {
@@ -499,9 +572,11 @@ func (client *Client) CheckDomain(request *CheckDomainRequest) (_result *CheckDo
 //
 // @return CheckReplyToMailAddressResponse
 func (client *Client) CheckReplyToMailAddressWithOptions(request *CheckReplyToMailAddressRequest, runtime *dara.RuntimeOptions) (_result *CheckReplyToMailAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -571,6 +646,484 @@ func (client *Client) CheckReplyToMailAddress(request *CheckReplyToMailAddressRe
 
 // Summary:
 //
+// 配置集取消关联发信地址
+//
+// @param request - ConfigSetCancelRelationFromAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigSetCancelRelationFromAddressResponse
+func (client *Client) ConfigSetCancelRelationFromAddressWithOptions(request *ConfigSetCancelRelationFromAddressRequest, runtime *dara.RuntimeOptions) (_result *ConfigSetCancelRelationFromAddressResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FromAddress) {
+		query["FromAddress"] = request.FromAddress
+	}
+
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfigSetCancelRelationFromAddress"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfigSetCancelRelationFromAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置集取消关联发信地址
+//
+// @param request - ConfigSetCancelRelationFromAddressRequest
+//
+// @return ConfigSetCancelRelationFromAddressResponse
+func (client *Client) ConfigSetCancelRelationFromAddress(request *ConfigSetCancelRelationFromAddressRequest) (_result *ConfigSetCancelRelationFromAddressResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ConfigSetCancelRelationFromAddressResponse{}
+	_body, _err := client.ConfigSetCancelRelationFromAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置集创建
+//
+// @param request - ConfigSetCreateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigSetCreateResponse
+func (client *Client) ConfigSetCreateWithOptions(request *ConfigSetCreateRequest, runtime *dara.RuntimeOptions) (_result *ConfigSetCreateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.IpPoolId) {
+		query["IpPoolId"] = request.IpPoolId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfigSetCreate"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfigSetCreateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置集创建
+//
+// @param request - ConfigSetCreateRequest
+//
+// @return ConfigSetCreateResponse
+func (client *Client) ConfigSetCreate(request *ConfigSetCreateRequest) (_result *ConfigSetCreateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ConfigSetCreateResponse{}
+	_body, _err := client.ConfigSetCreateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除配置集
+//
+// @param request - ConfigSetDeleteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigSetDeleteResponse
+func (client *Client) ConfigSetDeleteWithOptions(request *ConfigSetDeleteRequest, runtime *dara.RuntimeOptions) (_result *ConfigSetDeleteResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Ids) {
+		query["Ids"] = request.Ids
+	}
+
+	if !dara.IsNil(request.IsForce) {
+		query["IsForce"] = request.IsForce
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfigSetDelete"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfigSetDeleteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除配置集
+//
+// @param request - ConfigSetDeleteRequest
+//
+// @return ConfigSetDeleteResponse
+func (client *Client) ConfigSetDelete(request *ConfigSetDeleteRequest) (_result *ConfigSetDeleteResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ConfigSetDeleteResponse{}
+	_body, _err := client.ConfigSetDeleteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置集详情
+//
+// @param request - ConfigSetDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigSetDetailResponse
+func (client *Client) ConfigSetDetailWithOptions(request *ConfigSetDetailRequest, runtime *dara.RuntimeOptions) (_result *ConfigSetDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfigSetDetail"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfigSetDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置集详情
+//
+// @param request - ConfigSetDetailRequest
+//
+// @return ConfigSetDetailResponse
+func (client *Client) ConfigSetDetail(request *ConfigSetDetailRequest) (_result *ConfigSetDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ConfigSetDetailResponse{}
+	_body, _err := client.ConfigSetDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置集列表
+//
+// @param request - ConfigSetListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigSetListResponse
+func (client *Client) ConfigSetListWithOptions(request *ConfigSetListRequest, runtime *dara.RuntimeOptions) (_result *ConfigSetListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.All) {
+		query["All"] = request.All
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfigSetList"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfigSetListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置集列表
+//
+// @param request - ConfigSetListRequest
+//
+// @return ConfigSetListResponse
+func (client *Client) ConfigSetList(request *ConfigSetListRequest) (_result *ConfigSetListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ConfigSetListResponse{}
+	_body, _err := client.ConfigSetListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置集关联发信地址
+//
+// @param request - ConfigSetRelationFromAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigSetRelationFromAddressResponse
+func (client *Client) ConfigSetRelationFromAddressWithOptions(request *ConfigSetRelationFromAddressRequest, runtime *dara.RuntimeOptions) (_result *ConfigSetRelationFromAddressResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FromAddress) {
+		query["FromAddress"] = request.FromAddress
+	}
+
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfigSetRelationFromAddress"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfigSetRelationFromAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置集关联发信地址
+//
+// @param request - ConfigSetRelationFromAddressRequest
+//
+// @return ConfigSetRelationFromAddressResponse
+func (client *Client) ConfigSetRelationFromAddress(request *ConfigSetRelationFromAddressRequest) (_result *ConfigSetRelationFromAddressResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ConfigSetRelationFromAddressResponse{}
+	_body, _err := client.ConfigSetRelationFromAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置集更新
+//
+// @param request - ConfigSetUpdateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigSetUpdateResponse
+func (client *Client) ConfigSetUpdateWithOptions(request *ConfigSetUpdateRequest, runtime *dara.RuntimeOptions) (_result *ConfigSetUpdateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.IpPoolId) {
+		query["IpPoolId"] = request.IpPoolId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfigSetUpdate"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfigSetUpdateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置集更新
+//
+// @param request - ConfigSetUpdateRequest
+//
+// @return ConfigSetUpdateResponse
+func (client *Client) ConfigSetUpdate(request *ConfigSetUpdateRequest) (_result *ConfigSetUpdateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ConfigSetUpdateResponse{}
+	_body, _err := client.ConfigSetUpdateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Create Domain
 //
 // @param request - CreateDomainRequest
@@ -579,9 +1132,11 @@ func (client *Client) CheckReplyToMailAddress(request *CheckReplyToMailAddressRe
 //
 // @return CreateDomainResponse
 func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, runtime *dara.RuntimeOptions) (_result *CreateDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -655,9 +1210,11 @@ func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *Creat
 //
 // @return CreateMailAddressResponse
 func (client *Client) CreateMailAddressWithOptions(request *CreateMailAddressRequest, runtime *dara.RuntimeOptions) (_result *CreateMailAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -735,9 +1292,11 @@ func (client *Client) CreateMailAddress(request *CreateMailAddressRequest) (_res
 //
 // @return CreateReceiverResponse
 func (client *Client) CreateReceiverWithOptions(request *CreateReceiverRequest, runtime *dara.RuntimeOptions) (_result *CreateReceiverResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Desc) {
@@ -815,9 +1374,11 @@ func (client *Client) CreateReceiver(request *CreateReceiverRequest) (_result *C
 //
 // @return CreateTagResponse
 func (client *Client) CreateTagWithOptions(request *CreateTagRequest, runtime *dara.RuntimeOptions) (_result *CreateTagResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -891,9 +1452,11 @@ func (client *Client) CreateTag(request *CreateTagRequest) (_result *CreateTagRe
 //
 // @return CreateUserSuppressionResponse
 func (client *Client) CreateUserSuppressionWithOptions(request *CreateUserSuppressionRequest, runtime *dara.RuntimeOptions) (_result *CreateUserSuppressionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Address) {
@@ -963,9 +1526,11 @@ func (client *Client) CreateUserSuppression(request *CreateUserSuppressionReques
 //
 // @return DedicatedIpAutoRenewalResponse
 func (client *Client) DedicatedIpAutoRenewalWithOptions(request *DedicatedIpAutoRenewalRequest, runtime *dara.RuntimeOptions) (_result *DedicatedIpAutoRenewalResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoRenewal) {
@@ -1027,9 +1592,11 @@ func (client *Client) DedicatedIpAutoRenewal(request *DedicatedIpAutoRenewalRequ
 //
 // @return DedicatedIpChangeWarmupTypeResponse
 func (client *Client) DedicatedIpChangeWarmupTypeWithOptions(request *DedicatedIpChangeWarmupTypeRequest, runtime *dara.RuntimeOptions) (_result *DedicatedIpChangeWarmupTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -1091,9 +1658,11 @@ func (client *Client) DedicatedIpChangeWarmupType(request *DedicatedIpChangeWarm
 //
 // @return DedicatedIpListResponse
 func (client *Client) DedicatedIpListWithOptions(request *DedicatedIpListRequest, runtime *dara.RuntimeOptions) (_result *DedicatedIpListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -1206,9 +1775,11 @@ func (client *Client) DedicatedIpNonePoolList() (_result *DedicatedIpNonePoolLis
 //
 // @return DedicatedIpPoolCreateResponse
 func (client *Client) DedicatedIpPoolCreateWithOptions(request *DedicatedIpPoolCreateRequest, runtime *dara.RuntimeOptions) (_result *DedicatedIpPoolCreateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BuyResourceIds) {
@@ -1270,9 +1841,11 @@ func (client *Client) DedicatedIpPoolCreate(request *DedicatedIpPoolCreateReques
 //
 // @return DedicatedIpPoolDeleteResponse
 func (client *Client) DedicatedIpPoolDeleteWithOptions(request *DedicatedIpPoolDeleteRequest, runtime *dara.RuntimeOptions) (_result *DedicatedIpPoolDeleteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -1330,9 +1903,11 @@ func (client *Client) DedicatedIpPoolDelete(request *DedicatedIpPoolDeleteReques
 //
 // @return DedicatedIpPoolListResponse
 func (client *Client) DedicatedIpPoolListWithOptions(request *DedicatedIpPoolListRequest, runtime *dara.RuntimeOptions) (_result *DedicatedIpPoolListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -1402,9 +1977,11 @@ func (client *Client) DedicatedIpPoolList(request *DedicatedIpPoolListRequest) (
 //
 // @return DedicatedIpPoolUpdateResponse
 func (client *Client) DedicatedIpPoolUpdateWithOptions(request *DedicatedIpPoolUpdateRequest, runtime *dara.RuntimeOptions) (_result *DedicatedIpPoolUpdateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BuyResourceIds) {
@@ -1470,9 +2047,11 @@ func (client *Client) DedicatedIpPoolUpdate(request *DedicatedIpPoolUpdateReques
 //
 // @return DeleteDomainResponse
 func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runtime *dara.RuntimeOptions) (_result *DeleteDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainId) {
@@ -1542,9 +2121,11 @@ func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *Delet
 //
 // @return DeleteInvalidAddressResponse
 func (client *Client) DeleteInvalidAddressWithOptions(request *DeleteInvalidAddressRequest, runtime *dara.RuntimeOptions) (_result *DeleteInvalidAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -1614,9 +2195,11 @@ func (client *Client) DeleteInvalidAddress(request *DeleteInvalidAddressRequest)
 //
 // @return DeleteIpfilterByEdmIdResponse
 func (client *Client) DeleteIpfilterByEdmIdWithOptions(request *DeleteIpfilterByEdmIdRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpfilterByEdmIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FromType) {
@@ -1690,9 +2273,11 @@ func (client *Client) DeleteIpfilterByEdmId(request *DeleteIpfilterByEdmIdReques
 //
 // @return DeleteMailAddressResponse
 func (client *Client) DeleteMailAddressWithOptions(request *DeleteMailAddressRequest, runtime *dara.RuntimeOptions) (_result *DeleteMailAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MailAddressId) {
@@ -1762,9 +2347,11 @@ func (client *Client) DeleteMailAddress(request *DeleteMailAddressRequest) (_res
 //
 // @return DeleteReceiverResponse
 func (client *Client) DeleteReceiverWithOptions(request *DeleteReceiverRequest, runtime *dara.RuntimeOptions) (_result *DeleteReceiverResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -1834,9 +2421,11 @@ func (client *Client) DeleteReceiver(request *DeleteReceiverRequest) (_result *D
 //
 // @return DeleteReceiverDetailResponse
 func (client *Client) DeleteReceiverDetailWithOptions(request *DeleteReceiverDetailRequest, runtime *dara.RuntimeOptions) (_result *DeleteReceiverDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Email) {
@@ -1910,9 +2499,11 @@ func (client *Client) DeleteReceiverDetail(request *DeleteReceiverDetailRequest)
 //
 // @return DeleteTagResponse
 func (client *Client) DeleteTagWithOptions(request *DeleteTagRequest, runtime *dara.RuntimeOptions) (_result *DeleteTagResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -1974,6 +2565,68 @@ func (client *Client) DeleteTag(request *DeleteTagRequest) (_result *DeleteTagRe
 
 // Summary:
 //
+// 删除批量校验任务的结果文件
+//
+// @param request - DeleteValidateFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteValidateFileResponse
+func (client *Client) DeleteValidateFileWithOptions(request *DeleteValidateFileRequest, runtime *dara.RuntimeOptions) (_result *DeleteValidateFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteValidateFile"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteValidateFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除批量校验任务的结果文件
+//
+// @param request - DeleteValidateFileRequest
+//
+// @return DeleteValidateFileResponse
+func (client *Client) DeleteValidateFile(request *DeleteValidateFileRequest) (_result *DeleteValidateFileResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteValidateFileResponse{}
+	_body, _err := client.DeleteValidateFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieve account information.
 //
 // @param request - DescAccountSummaryRequest
@@ -1982,9 +2635,11 @@ func (client *Client) DeleteTag(request *DeleteTagRequest) (_result *DeleteTagRe
 //
 // @return DescAccountSummaryResponse
 func (client *Client) DescAccountSummaryWithOptions(request *DescAccountSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescAccountSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -2050,9 +2705,11 @@ func (client *Client) DescAccountSummary(request *DescAccountSummaryRequest) (_r
 //
 // @return DescDomainResponse
 func (client *Client) DescDomainWithOptions(request *DescDomainRequest, runtime *dara.RuntimeOptions) (_result *DescDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainId) {
@@ -2118,6 +2775,84 @@ func (client *Client) DescDomain(request *DescDomainRequest) (_result *DescDomai
 
 // Summary:
 //
+// 查看模板信息
+//
+// @param request - DescTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescTemplateResponse
+func (client *Client) DescTemplateWithOptions(request *DescTemplateRequest, runtime *dara.RuntimeOptions) (_result *DescTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FromType) {
+		query["FromType"] = request.FromType
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescTemplate"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看模板信息
+//
+// @param request - DescTemplateRequest
+//
+// @return DescTemplateResponse
+func (client *Client) DescTemplate(request *DescTemplateRequest) (_result *DescTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescTemplateResponse{}
+	_body, _err := client.DescTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取专属ip的预热详情信息
 //
 // @param request - GetDedicatedIpWarmUpDetailRequest
@@ -2126,9 +2861,11 @@ func (client *Client) DescDomain(request *DescDomainRequest) (_result *DescDomai
 //
 // @return GetDedicatedIpWarmUpDetailResponse
 func (client *Client) GetDedicatedIpWarmUpDetailWithOptions(request *GetDedicatedIpWarmUpDetailRequest, runtime *dara.RuntimeOptions) (_result *GetDedicatedIpWarmUpDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DedicatedIp) {
@@ -2198,9 +2935,11 @@ func (client *Client) GetDedicatedIpWarmUpDetail(request *GetDedicatedIpWarmUpDe
 //
 // @return GetDedicatedIpWarmUpInfoResponse
 func (client *Client) GetDedicatedIpWarmUpInfoWithOptions(request *GetDedicatedIpWarmUpInfoRequest, runtime *dara.RuntimeOptions) (_result *GetDedicatedIpWarmUpInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DedicatedIp) {
@@ -2258,9 +2997,11 @@ func (client *Client) GetDedicatedIpWarmUpInfo(request *GetDedicatedIpWarmUpInfo
 //
 // @return GetIpProtectionResponse
 func (client *Client) GetIpProtectionWithOptions(request *GetIpProtectionRequest, runtime *dara.RuntimeOptions) (_result *GetIpProtectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -2326,9 +3067,11 @@ func (client *Client) GetIpProtection(request *GetIpProtectionRequest) (_result 
 //
 // @return GetIpfilterListResponse
 func (client *Client) GetIpfilterListWithOptions(request *GetIpfilterListRequest, runtime *dara.RuntimeOptions) (_result *GetIpfilterListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -2394,9 +3137,11 @@ func (client *Client) GetIpfilterList(request *GetIpfilterListRequest) (_result 
 //
 // @return GetSuppressionListLevelResponse
 func (client *Client) GetSuppressionListLevelWithOptions(request *GetSuppressionListLevelRequest, runtime *dara.RuntimeOptions) (_result *GetSuppressionListLevelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -2462,9 +3207,11 @@ func (client *Client) GetSuppressionListLevel(request *GetSuppressionListLevelRe
 //
 // @return GetTrackListResponse
 func (client *Client) GetTrackListWithOptions(request *GetTrackListRequest, runtime *dara.RuntimeOptions) (_result *GetTrackListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -2586,9 +3333,11 @@ func (client *Client) GetTrackList(request *GetTrackListRequest) (_result *GetTr
 //
 // @return GetTrackListByMailFromAndTagNameResponse
 func (client *Client) GetTrackListByMailFromAndTagNameWithOptions(request *GetTrackListByMailFromAndTagNameRequest, runtime *dara.RuntimeOptions) (_result *GetTrackListByMailFromAndTagNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -2749,6 +3498,177 @@ func (client *Client) GetUser() (_result *GetUserResponse, _err error) {
 
 // Summary:
 //
+// 获取批量校验任务的结果文件
+//
+// @param request - GetValidateFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetValidateFileResponse
+func (client *Client) GetValidateFileWithOptions(request *GetValidateFileRequest, runtime *dara.RuntimeOptions) (_result *GetValidateFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetValidateFile"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetValidateFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取批量校验任务的结果文件
+//
+// @param request - GetValidateFileRequest
+//
+// @return GetValidateFileResponse
+func (client *Client) GetValidateFile(request *GetValidateFileRequest) (_result *GetValidateFileResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetValidateFileResponse{}
+	_body, _err := client.GetValidateFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取批量校验任务的状态
+//
+// @param request - GetValidateFileStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetValidateFileStatusResponse
+func (client *Client) GetValidateFileStatusWithOptions(request *GetValidateFileStatusRequest, runtime *dara.RuntimeOptions) (_result *GetValidateFileStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetValidateFileStatus"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetValidateFileStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取批量校验任务的状态
+//
+// @param request - GetValidateFileStatusRequest
+//
+// @return GetValidateFileStatusResponse
+func (client *Client) GetValidateFileStatus(request *GetValidateFileStatusRequest) (_result *GetValidateFileStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetValidateFileStatusResponse{}
+	_body, _err := client.GetValidateFileStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取电子邮件校验额度
+//
+// @param request - GetValidationQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetValidationQuotaResponse
+func (client *Client) GetValidationQuotaWithOptions(runtime *dara.RuntimeOptions) (_result *GetValidationQuotaResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetValidationQuota"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetValidationQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取电子邮件校验额度
+//
+// @return GetValidationQuotaResponse
+func (client *Client) GetValidationQuota() (_result *GetValidationQuotaResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetValidationQuotaResponse{}
+	_body, _err := client.GetValidationQuotaWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取发信的黑名单列表
 //
 // @param request - ListBlockSendingRequest
@@ -2757,9 +3677,11 @@ func (client *Client) GetUser() (_result *GetUserResponse, _err error) {
 //
 // @return ListBlockSendingResponse
 func (client *Client) ListBlockSendingWithOptions(request *ListBlockSendingRequest, runtime *dara.RuntimeOptions) (_result *ListBlockSendingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BeginTime) {
@@ -2841,9 +3763,11 @@ func (client *Client) ListBlockSending(request *ListBlockSendingRequest) (_resul
 //
 // @return ListUserSuppressionResponse
 func (client *Client) ListUserSuppressionWithOptions(request *ListUserSuppressionRequest, runtime *dara.RuntimeOptions) (_result *ListUserSuppressionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Address) {
@@ -2937,9 +3861,11 @@ func (client *Client) ListUserSuppression(request *ListUserSuppressionRequest) (
 //
 // @return ModifyMailAddressResponse
 func (client *Client) ModifyMailAddressWithOptions(request *ModifyMailAddressRequest, runtime *dara.RuntimeOptions) (_result *ModifyMailAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MailAddressId) {
@@ -3017,9 +3943,11 @@ func (client *Client) ModifyMailAddress(request *ModifyMailAddressRequest) (_res
 //
 // @return ModifyPWByDomainResponse
 func (client *Client) ModifyPWByDomainWithOptions(request *ModifyPWByDomainRequest, runtime *dara.RuntimeOptions) (_result *ModifyPWByDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -3093,9 +4021,11 @@ func (client *Client) ModifyPWByDomain(request *ModifyPWByDomainRequest) (_resul
 //
 // @return ModifyTagResponse
 func (client *Client) ModifyTagWithOptions(request *ModifyTagRequest, runtime *dara.RuntimeOptions) (_result *ModifyTagResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -3173,9 +4103,11 @@ func (client *Client) ModifyTag(request *ModifyTagRequest) (_result *ModifyTagRe
 //
 // @return QueryDomainByParamResponse
 func (client *Client) QueryDomainByParamWithOptions(request *QueryDomainByParamRequest, runtime *dara.RuntimeOptions) (_result *QueryDomainByParamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyWord) {
@@ -3261,9 +4193,11 @@ func (client *Client) QueryDomainByParam(request *QueryDomainByParamRequest) (_r
 //
 // @return QueryInvalidAddressResponse
 func (client *Client) QueryInvalidAddressWithOptions(request *QueryInvalidAddressRequest, runtime *dara.RuntimeOptions) (_result *QueryInvalidAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -3353,9 +4287,11 @@ func (client *Client) QueryInvalidAddress(request *QueryInvalidAddressRequest) (
 //
 // @return QueryMailAddressByParamResponse
 func (client *Client) QueryMailAddressByParamWithOptions(request *QueryMailAddressByParamRequest, runtime *dara.RuntimeOptions) (_result *QueryMailAddressByParamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyWord) {
@@ -3437,9 +4373,11 @@ func (client *Client) QueryMailAddressByParam(request *QueryMailAddressByParamRe
 //
 // @return QueryReceiverByParamResponse
 func (client *Client) QueryReceiverByParamWithOptions(request *QueryReceiverByParamRequest, runtime *dara.RuntimeOptions) (_result *QueryReceiverByParamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyWord) {
@@ -3521,9 +4459,11 @@ func (client *Client) QueryReceiverByParam(request *QueryReceiverByParamRequest)
 //
 // @return QueryReceiverDetailResponse
 func (client *Client) QueryReceiverDetailWithOptions(request *QueryReceiverDetailRequest, runtime *dara.RuntimeOptions) (_result *QueryReceiverDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyWord) {
@@ -3605,9 +4545,11 @@ func (client *Client) QueryReceiverDetail(request *QueryReceiverDetailRequest) (
 //
 // @return QueryTagByParamResponse
 func (client *Client) QueryTagByParamWithOptions(request *QueryTagByParamRequest, runtime *dara.RuntimeOptions) (_result *QueryTagByParamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyWord) {
@@ -3685,9 +4627,11 @@ func (client *Client) QueryTagByParam(request *QueryTagByParamRequest) (_result 
 //
 // @return QueryTaskByParamResponse
 func (client *Client) QueryTaskByParamWithOptions(request *QueryTaskByParamRequest, runtime *dara.RuntimeOptions) (_result *QueryTaskByParamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyWord) {
@@ -3761,6 +4705,96 @@ func (client *Client) QueryTaskByParam(request *QueryTaskByParamRequest) (_resul
 
 // Summary:
 //
+// 查询模板信息
+//
+// @param request - QueryTemplateByParamRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTemplateByParamResponse
+func (client *Client) QueryTemplateByParamWithOptions(request *QueryTemplateByParamRequest, runtime *dara.RuntimeOptions) (_result *QueryTemplateByParamResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FromType) {
+		query["FromType"] = request.FromType
+	}
+
+	if !dara.IsNil(request.KeyWord) {
+		query["KeyWord"] = request.KeyWord
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryTemplateByParam"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryTemplateByParamResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询模板信息
+//
+// @param request - QueryTemplateByParamRequest
+//
+// @return QueryTemplateByParamResponse
+func (client *Client) QueryTemplateByParam(request *QueryTemplateByParamRequest) (_result *QueryTemplateByParamResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryTemplateByParamResponse{}
+	_body, _err := client.QueryTemplateByParamWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除用户无效地址
 //
 // @param request - RemoveUserSuppressionRequest
@@ -3769,9 +4803,11 @@ func (client *Client) QueryTaskByParam(request *QueryTaskByParamRequest) (_resul
 //
 // @return RemoveUserSuppressionResponse
 func (client *Client) RemoveUserSuppressionWithOptions(request *RemoveUserSuppressionRequest, runtime *dara.RuntimeOptions) (_result *RemoveUserSuppressionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -3841,11 +4877,17 @@ func (client *Client) RemoveUserSuppression(request *RemoveUserSuppressionReques
 //
 // @return SaveReceiverDetailResponse
 func (client *Client) SaveReceiverDetailWithOptions(request *SaveReceiverDetailRequest, runtime *dara.RuntimeOptions) (_result *SaveReceiverDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomDetail) {
+		query["CustomDetail"] = request.CustomDetail
+	}
+
 	if !dara.IsNil(request.Detail) {
 		query["Detail"] = request.Detail
 	}
@@ -3917,9 +4959,11 @@ func (client *Client) SaveReceiverDetail(request *SaveReceiverDetailRequest) (_r
 //
 // @return SendTestByTemplateResponse
 func (client *Client) SendTestByTemplateWithOptions(request *SendTestByTemplateRequest, runtime *dara.RuntimeOptions) (_result *SendTestByTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -3960,6 +5004,10 @@ func (client *Client) SendTestByTemplateWithOptions(request *SendTestByTemplateR
 
 	if !dara.IsNil(request.TemplateId) {
 		query["TemplateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.TemplateParams) {
+		query["TemplateParams"] = request.TemplateParams
 	}
 
 	if !dara.IsNil(request.UserName) {
@@ -4009,6 +5057,191 @@ func (client *Client) SendTestByTemplate(request *SendTestByTemplateRequest) (_r
 
 // Summary:
 //
+// 提交批量校验任务
+//
+// @param request - SendValidateFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendValidateFileResponse
+func (client *Client) SendValidateFileWithOptions(request *SendValidateFileRequest, runtime *dara.RuntimeOptions) (_result *SendValidateFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddressColumn) {
+		query["AddressColumn"] = request.AddressColumn
+	}
+
+	if !dara.IsNil(request.FileName) {
+		query["FileName"] = request.FileName
+	}
+
+	if !dara.IsNil(request.FileUrl) {
+		query["FileUrl"] = request.FileUrl
+	}
+
+	if !dara.IsNil(request.HasHeaderRow) {
+		query["HasHeaderRow"] = request.HasHeaderRow
+	}
+
+	if !dara.IsNil(request.RemoveDuplicate) {
+		query["RemoveDuplicate"] = request.RemoveDuplicate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SendValidateFile"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SendValidateFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交批量校验任务
+//
+// @param request - SendValidateFileRequest
+//
+// @return SendValidateFileResponse
+func (client *Client) SendValidateFile(request *SendValidateFileRequest) (_result *SendValidateFileResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SendValidateFileResponse{}
+	_body, _err := client.SendValidateFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendValidateFileAdvance(request *SendValidateFileAdvanceRequest, runtime *dara.RuntimeOptions) (_result *SendValidateFileResponse, _err error) {
+	// Step 0: init client
+	if dara.IsNil(client.Credential) {
+		_err = &openapi.ClientError{
+			Code:    dara.String("InvalidCredentials"),
+			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
+		}
+		return _result, _err
+	}
+
+	credentialModel, _err := client.Credential.GetCredential()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
+	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
+	securityToken := dara.StringValue(credentialModel.SecurityToken)
+	credentialType := dara.StringValue(credentialModel.Type)
+	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
+	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
+		openPlatformEndpoint = "openplatform.aliyuncs.com"
+	}
+
+	if dara.IsNil(dara.String(credentialType)) {
+		credentialType = "access_key"
+	}
+
+	authConfig := &openapiutil.Config{
+		AccessKeyId:     dara.String(accessKeyId),
+		AccessKeySecret: dara.String(accessKeySecret),
+		SecurityToken:   dara.String(securityToken),
+		Type:            dara.String(credentialType),
+		Endpoint:        dara.String(openPlatformEndpoint),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openapi.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := map[string]*string{
+		"Product":  dara.String("Dm"),
+		"RegionId": client.RegionId,
+	}
+	authReq := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
+	}
+	authParams := &openapiutil.Params{
+		Action:      dara.String("AuthorizeFileUpload"),
+		Version:     dara.String("2019-12-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	authResponse := map[string]interface{}{}
+	fileObj := &dara.FileField{}
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := false
+	authResponseBody := make(map[string]*string)
+	sendValidateFileReq := &SendValidateFileRequest{}
+	openapiutil.Convert(request, sendValidateFileReq)
+	if !dara.IsNil(request.FileUrlObject) {
+		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		tmpBody = dara.ToMap(authResponse["body"])
+		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
+		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
+		fileObj = &dara.FileField{
+			Filename:    authResponseBody["ObjectKey"],
+			Content:     request.FileUrlObject,
+			ContentType: dara.String(""),
+		}
+		ossHeader = map[string]interface{}{
+			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             dara.StringValue(authResponseBody["Signature"]),
+			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
+		}
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		if _err != nil {
+			return _result, _err
+		}
+		sendValidateFileReq.FileUrl = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
+	}
+
+	sendValidateFileResp, _err := client.SendValidateFileWithOptions(sendValidateFileReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = sendValidateFileResp
+	return _result, _err
+}
+
+// Summary:
+//
 // # Retrieve Sending Data under Specified Conditions
 //
 // @param request - SenderStatisticsByTagNameAndBatchIDRequest
@@ -4017,9 +5250,11 @@ func (client *Client) SendTestByTemplate(request *SendTestByTemplateRequest) (_r
 //
 // @return SenderStatisticsByTagNameAndBatchIDResponse
 func (client *Client) SenderStatisticsByTagNameAndBatchIDWithOptions(request *SenderStatisticsByTagNameAndBatchIDRequest, runtime *dara.RuntimeOptions) (_result *SenderStatisticsByTagNameAndBatchIDResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -4113,9 +5348,11 @@ func (client *Client) SenderStatisticsByTagNameAndBatchID(request *SenderStatist
 //
 // @return SenderStatisticsDetailByParamResponse
 func (client *Client) SenderStatisticsDetailByParamWithOptions(request *SenderStatisticsDetailByParamRequest, runtime *dara.RuntimeOptions) (_result *SenderStatisticsDetailByParamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -4221,9 +5458,11 @@ func (client *Client) SenderStatisticsDetailByParam(request *SenderStatisticsDet
 //
 // @return SetSuppressionListLevelResponse
 func (client *Client) SetSuppressionListLevelWithOptions(request *SetSuppressionListLevelRequest, runtime *dara.RuntimeOptions) (_result *SetSuppressionListLevelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -4287,16 +5526,24 @@ func (client *Client) SetSuppressionListLevel(request *SetSuppressionListLevelRe
 //
 // # API for Sending Emails
 //
-// @param request - SingleSendMailRequest
+// @param tmpReq - SingleSendMailRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SingleSendMailResponse
-func (client *Client) SingleSendMailWithOptions(request *SingleSendMailRequest, runtime *dara.RuntimeOptions) (_result *SingleSendMailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+func (client *Client) SingleSendMailWithOptions(tmpReq *SingleSendMailRequest, runtime *dara.RuntimeOptions) (_result *SingleSendMailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
+	request := &SingleSendMailShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Template) {
+		request.TemplateShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Template, dara.String("Template"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
@@ -4361,6 +5608,10 @@ func (client *Client) SingleSendMailWithOptions(request *SingleSendMailRequest, 
 
 	if !dara.IsNil(request.TagName) {
 		body["TagName"] = request.TagName
+	}
+
+	if !dara.IsNil(request.TemplateShrink) {
+		body["Template"] = request.TemplateShrink
 	}
 
 	if !dara.IsNil(request.TextBody) {
@@ -4546,9 +5797,11 @@ func (client *Client) SingleSendMailAdvance(request *SingleSendMailAdvanceReques
 //
 // @return UnblockSendingResponse
 func (client *Client) UnblockSendingWithOptions(request *UnblockSendingRequest, runtime *dara.RuntimeOptions) (_result *UnblockSendingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BlockEmail) {
@@ -4614,9 +5867,11 @@ func (client *Client) UnblockSending(request *UnblockSendingRequest) (_result *U
 //
 // @return UpdateIpProtectionResponse
 func (client *Client) UpdateIpProtectionWithOptions(request *UpdateIpProtectionRequest, runtime *dara.RuntimeOptions) (_result *UpdateIpProtectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IpProtection) {
@@ -4686,9 +5941,11 @@ func (client *Client) UpdateIpProtection(request *UpdateIpProtectionRequest) (_r
 //
 // @return UpdateUserResponse
 func (client *Client) UpdateUserWithOptions(tmpReq *UpdateUserRequest, runtime *dara.RuntimeOptions) (_result *UpdateUserResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateUserShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4735,6 +5992,72 @@ func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUse
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateUserResponse{}
 	_body, _err := client.UpdateUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 校验电子邮件地址
+//
+// @param request - ValidateEmailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ValidateEmailResponse
+func (client *Client) ValidateEmailWithOptions(request *ValidateEmailRequest, runtime *dara.RuntimeOptions) (_result *ValidateEmailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.Timeout) {
+		query["Timeout"] = request.Timeout
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ValidateEmail"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ValidateEmailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 校验电子邮件地址
+//
+// @param request - ValidateEmailRequest
+//
+// @return ValidateEmailResponse
+func (client *Client) ValidateEmail(request *ValidateEmailRequest) (_result *ValidateEmailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ValidateEmailResponse{}
+	_body, _err := client.ValidateEmailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

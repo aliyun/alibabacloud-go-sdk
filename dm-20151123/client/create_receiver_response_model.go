@@ -59,5 +59,10 @@ func (s *CreateReceiverResponse) SetBody(v *CreateReceiverResponseBody) *CreateR
 }
 
 func (s *CreateReceiverResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

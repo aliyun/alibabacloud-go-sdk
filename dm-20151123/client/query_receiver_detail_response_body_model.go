@@ -104,7 +104,12 @@ func (s *QueryReceiverDetailResponseBody) SetData(v *QueryReceiverDetailResponse
 }
 
 func (s *QueryReceiverDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryReceiverDetailResponseBodyData struct {
@@ -129,7 +134,16 @@ func (s *QueryReceiverDetailResponseBodyData) SetDetail(v []*QueryReceiverDetail
 }
 
 func (s *QueryReceiverDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		for _, item := range s.Detail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryReceiverDetailResponseBodyDataDetail struct {

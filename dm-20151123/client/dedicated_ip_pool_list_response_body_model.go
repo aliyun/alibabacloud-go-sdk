@@ -121,7 +121,16 @@ func (s *DedicatedIpPoolListResponseBody) SetTotalCounts(v int32) *DedicatedIpPo
 }
 
 func (s *DedicatedIpPoolListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IpPools != nil {
+		for _, item := range s.IpPools {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DedicatedIpPoolListResponseBodyIpPools struct {
@@ -207,7 +216,16 @@ func (s *DedicatedIpPoolListResponseBodyIpPools) SetName(v string) *DedicatedIpP
 }
 
 func (s *DedicatedIpPoolListResponseBodyIpPools) Validate() error {
-	return dara.Validate(s)
+	if s.Ips != nil {
+		for _, item := range s.Ips {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DedicatedIpPoolListResponseBodyIpPoolsIps struct {

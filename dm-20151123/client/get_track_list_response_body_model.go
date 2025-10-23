@@ -150,7 +150,12 @@ func (s *GetTrackListResponseBody) SetData(v *GetTrackListResponseBodyData) *Get
 }
 
 func (s *GetTrackListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTrackListResponseBodyData struct {
@@ -175,7 +180,16 @@ func (s *GetTrackListResponseBodyData) SetStat(v []*GetTrackListResponseBodyData
 }
 
 func (s *GetTrackListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Stat != nil {
+		for _, item := range s.Stat {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTrackListResponseBodyDataStat struct {

@@ -104,7 +104,12 @@ func (s *GetIpfilterListResponseBody) SetData(v *GetIpfilterListResponseBodyData
 }
 
 func (s *GetIpfilterListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetIpfilterListResponseBodyData struct {
@@ -129,7 +134,16 @@ func (s *GetIpfilterListResponseBodyData) SetIpfilters(v []*GetIpfilterListRespo
 }
 
 func (s *GetIpfilterListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Ipfilters != nil {
+		for _, item := range s.Ipfilters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetIpfilterListResponseBodyDataIpfilters struct {

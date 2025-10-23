@@ -104,7 +104,12 @@ func (s *QueryDomainByParamResponseBody) SetData(v *QueryDomainByParamResponseBo
 }
 
 func (s *QueryDomainByParamResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryDomainByParamResponseBodyData struct {
@@ -129,7 +134,16 @@ func (s *QueryDomainByParamResponseBodyData) SetDomain(v []*QueryDomainByParamRe
 }
 
 func (s *QueryDomainByParamResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Domain != nil {
+		for _, item := range s.Domain {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryDomainByParamResponseBodyDataDomain struct {

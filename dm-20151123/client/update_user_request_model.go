@@ -36,7 +36,12 @@ func (s *UpdateUserRequest) SetUser(v *UpdateUserRequestUser) *UpdateUserRequest
 }
 
 func (s *UpdateUserRequest) Validate() error {
-	return dara.Validate(s)
+	if s.User != nil {
+		if err := s.User.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateUserRequestUser struct {

@@ -59,5 +59,10 @@ func (s *QueryTagByParamResponse) SetBody(v *QueryTagByParamResponseBody) *Query
 }
 
 func (s *QueryTagByParamResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

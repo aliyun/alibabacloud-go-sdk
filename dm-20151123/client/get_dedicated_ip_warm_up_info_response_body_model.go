@@ -47,7 +47,16 @@ func (s *GetDedicatedIpWarmUpInfoResponseBody) SetRequestId(v string) *GetDedica
 }
 
 func (s *GetDedicatedIpWarmUpInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Info != nil {
+		for _, item := range s.Info {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDedicatedIpWarmUpInfoResponseBodyInfo struct {

@@ -41,6 +41,8 @@ type iSingleSendMailRequest interface {
 	GetSubject() *string
 	SetTagName(v string) *SingleSendMailRequest
 	GetTagName() *string
+	SetTemplate(v *SingleSendMailRequestTemplate) *SingleSendMailRequest
+	GetTemplate() *SingleSendMailRequestTemplate
 	SetTextBody(v string) *SingleSendMailRequest
 	GetTextBody() *string
 	SetToAddress(v string) *SingleSendMailRequest
@@ -70,9 +72,10 @@ type SingleSendMailRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// This parameter is required.
-	Subject  *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	TagName  *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
-	TextBody *string `json:"TextBody,omitempty" xml:"TextBody,omitempty"`
+	Subject  *string                        `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	TagName  *string                        `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	Template *SingleSendMailRequestTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
+	TextBody *string                        `json:"TextBody,omitempty" xml:"TextBody,omitempty"`
 	// This parameter is required.
 	ToAddress              *string `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
 	UnSubscribeFilterLevel *string `json:"UnSubscribeFilterLevel,omitempty" xml:"UnSubscribeFilterLevel,omitempty"`
@@ -149,6 +152,10 @@ func (s *SingleSendMailRequest) GetSubject() *string {
 
 func (s *SingleSendMailRequest) GetTagName() *string {
 	return s.TagName
+}
+
+func (s *SingleSendMailRequest) GetTemplate() *SingleSendMailRequestTemplate {
+	return s.Template
 }
 
 func (s *SingleSendMailRequest) GetTextBody() *string {
@@ -247,6 +254,11 @@ func (s *SingleSendMailRequest) SetTagName(v string) *SingleSendMailRequest {
 	return s
 }
 
+func (s *SingleSendMailRequest) SetTemplate(v *SingleSendMailRequestTemplate) *SingleSendMailRequest {
+	s.Template = v
+	return s
+}
+
 func (s *SingleSendMailRequest) SetTextBody(v string) *SingleSendMailRequest {
 	s.TextBody = &v
 	return s
@@ -268,7 +280,21 @@ func (s *SingleSendMailRequest) SetUnSubscribeLinkType(v string) *SingleSendMail
 }
 
 func (s *SingleSendMailRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Attachments != nil {
+		for _, item := range s.Attachments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Template != nil {
+		if err := s.Template.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SingleSendMailRequestAttachments struct {
@@ -303,5 +329,43 @@ func (s *SingleSendMailRequestAttachments) SetAttachmentUrl(v string) *SingleSen
 }
 
 func (s *SingleSendMailRequestAttachments) Validate() error {
+	return dara.Validate(s)
+}
+
+type SingleSendMailRequestTemplate struct {
+	TemplateData map[string]*string `json:"TemplateData,omitempty" xml:"TemplateData,omitempty"`
+	// example:
+	//
+	// xxx
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s SingleSendMailRequestTemplate) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SingleSendMailRequestTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *SingleSendMailRequestTemplate) GetTemplateData() map[string]*string {
+	return s.TemplateData
+}
+
+func (s *SingleSendMailRequestTemplate) GetTemplateId() *string {
+	return s.TemplateId
+}
+
+func (s *SingleSendMailRequestTemplate) SetTemplateData(v map[string]*string) *SingleSendMailRequestTemplate {
+	s.TemplateData = v
+	return s
+}
+
+func (s *SingleSendMailRequestTemplate) SetTemplateId(v string) *SingleSendMailRequestTemplate {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *SingleSendMailRequestTemplate) Validate() error {
 	return dara.Validate(s)
 }

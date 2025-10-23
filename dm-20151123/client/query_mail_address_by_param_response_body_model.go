@@ -104,7 +104,12 @@ func (s *QueryMailAddressByParamResponseBody) SetData(v *QueryMailAddressByParam
 }
 
 func (s *QueryMailAddressByParamResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMailAddressByParamResponseBodyData struct {
@@ -129,7 +134,16 @@ func (s *QueryMailAddressByParamResponseBodyData) SetMailAddress(v []*QueryMailA
 }
 
 func (s *QueryMailAddressByParamResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.MailAddress != nil {
+		for _, item := range s.MailAddress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryMailAddressByParamResponseBodyDataMailAddress struct {

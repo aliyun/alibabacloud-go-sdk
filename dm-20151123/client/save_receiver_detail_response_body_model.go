@@ -87,7 +87,12 @@ func (s *SaveReceiverDetailResponseBody) SetSuccessCount(v int32) *SaveReceiverD
 }
 
 func (s *SaveReceiverDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SaveReceiverDetailResponseBodyData struct {
@@ -112,7 +117,16 @@ func (s *SaveReceiverDetailResponseBodyData) SetDetail(v []*SaveReceiverDetailRe
 }
 
 func (s *SaveReceiverDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		for _, item := range s.Detail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SaveReceiverDetailResponseBodyDataDetail struct {
@@ -122,6 +136,10 @@ type SaveReceiverDetailResponseBodyDataDetail struct {
 	//
 	// test@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// XXX
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
 }
 
 func (s SaveReceiverDetailResponseBodyDataDetail) String() string {
@@ -136,8 +154,17 @@ func (s *SaveReceiverDetailResponseBodyDataDetail) GetEmail() *string {
 	return s.Email
 }
 
+func (s *SaveReceiverDetailResponseBodyDataDetail) GetErrMessage() *string {
+	return s.ErrMessage
+}
+
 func (s *SaveReceiverDetailResponseBodyDataDetail) SetEmail(v string) *SaveReceiverDetailResponseBodyDataDetail {
 	s.Email = &v
+	return s
+}
+
+func (s *SaveReceiverDetailResponseBodyDataDetail) SetErrMessage(v string) *SaveReceiverDetailResponseBodyDataDetail {
+	s.ErrMessage = &v
 	return s
 }
 
