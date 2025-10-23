@@ -138,7 +138,12 @@ func (s *GetInstanceDetailResponseBody) SetSuccess(v bool) *GetInstanceDetailRes
 }
 
 func (s *GetInstanceDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceDetailResponseBodyData struct {
@@ -209,6 +214,7 @@ type GetInstanceDetailResponseBodyData struct {
 	// running
 	InstanceStatus *string                                         `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	MeasureConfig  *GetInstanceDetailResponseBodyDataMeasureConfig `json:"MeasureConfig,omitempty" xml:"MeasureConfig,omitempty" type:"Struct"`
+	MultiZoneMode  *string                                         `json:"MultiZoneMode,omitempty" xml:"MultiZoneMode,omitempty"`
 	// example:
 	//
 	// perf
@@ -281,7 +287,8 @@ type GetInstanceDetailResponseBodyData struct {
 	// example:
 	//
 	// dataCoord:\\n  segment:\\n    maxSize: 1024
-	UserConfig *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
+	UserConfig *string                                       `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
+	VSwitches  []*GetInstanceDetailResponseBodyDataVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 	// The kernel version.
 	//
 	// example:
@@ -360,6 +367,10 @@ func (s *GetInstanceDetailResponseBodyData) GetMeasureConfig() *GetInstanceDetai
 	return s.MeasureConfig
 }
 
+func (s *GetInstanceDetailResponseBodyData) GetMultiZoneMode() *string {
+	return s.MultiZoneMode
+}
+
 func (s *GetInstanceDetailResponseBodyData) GetNodeType() *string {
 	return s.NodeType
 }
@@ -406,6 +417,10 @@ func (s *GetInstanceDetailResponseBodyData) GetTemplateVersion() *string {
 
 func (s *GetInstanceDetailResponseBodyData) GetUserConfig() *string {
 	return s.UserConfig
+}
+
+func (s *GetInstanceDetailResponseBodyData) GetVSwitches() []*GetInstanceDetailResponseBodyDataVSwitches {
+	return s.VSwitches
 }
 
 func (s *GetInstanceDetailResponseBodyData) GetVersion() *string {
@@ -479,6 +494,11 @@ func (s *GetInstanceDetailResponseBodyData) SetMeasureConfig(v *GetInstanceDetai
 	return s
 }
 
+func (s *GetInstanceDetailResponseBodyData) SetMultiZoneMode(v string) *GetInstanceDetailResponseBodyData {
+	s.MultiZoneMode = &v
+	return s
+}
+
 func (s *GetInstanceDetailResponseBodyData) SetNodeType(v string) *GetInstanceDetailResponseBodyData {
 	s.NodeType = &v
 	return s
@@ -539,6 +559,11 @@ func (s *GetInstanceDetailResponseBodyData) SetUserConfig(v string) *GetInstance
 	return s
 }
 
+func (s *GetInstanceDetailResponseBodyData) SetVSwitches(v []*GetInstanceDetailResponseBodyDataVSwitches) *GetInstanceDetailResponseBodyData {
+	s.VSwitches = v
+	return s
+}
+
 func (s *GetInstanceDetailResponseBodyData) SetVersion(v string) *GetInstanceDetailResponseBodyData {
 	s.Version = &v
 	return s
@@ -560,7 +585,35 @@ func (s *GetInstanceDetailResponseBodyData) SetZoneId(v string) *GetInstanceDeta
 }
 
 func (s *GetInstanceDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterInfo != nil {
+		if err := s.ClusterInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MeasureConfig != nil {
+		if err := s.MeasureConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VSwitches != nil {
+		for _, item := range s.VSwitches {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstanceDetailResponseBodyDataClusterInfo struct {
@@ -706,7 +759,16 @@ func (s *GetInstanceDetailResponseBodyDataClusterInfo) SetTotalDiskSize(v int32)
 }
 
 func (s *GetInstanceDetailResponseBodyDataClusterInfo) Validate() error {
-	return dara.Validate(s)
+	if s.MilvusResourceInfoList != nil {
+		for _, item := range s.MilvusResourceInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList struct {
@@ -1007,5 +1069,40 @@ func (s *GetInstanceDetailResponseBodyDataTags) SetValue(v string) *GetInstanceD
 }
 
 func (s *GetInstanceDetailResponseBodyDataTags) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetInstanceDetailResponseBodyDataVSwitches struct {
+	VswId  *string `json:"VswId,omitempty" xml:"VswId,omitempty"`
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s GetInstanceDetailResponseBodyDataVSwitches) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetInstanceDetailResponseBodyDataVSwitches) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceDetailResponseBodyDataVSwitches) GetVswId() *string {
+	return s.VswId
+}
+
+func (s *GetInstanceDetailResponseBodyDataVSwitches) GetZoneId() *string {
+	return s.ZoneId
+}
+
+func (s *GetInstanceDetailResponseBodyDataVSwitches) SetVswId(v string) *GetInstanceDetailResponseBodyDataVSwitches {
+	s.VswId = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataVSwitches) SetZoneId(v string) *GetInstanceDetailResponseBodyDataVSwitches {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataVSwitches) Validate() error {
 	return dara.Validate(s)
 }

@@ -155,7 +155,16 @@ func (s *ListInstancesResponseBody) SetTotal(v int32) *ListInstancesResponseBody
 }
 
 func (s *ListInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstancesResponseBodyData struct {
@@ -477,7 +486,21 @@ func (s *ListInstancesResponseBodyData) SetZoneId(v string) *ListInstancesRespon
 }
 
 func (s *ListInstancesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterInfo != nil {
+		if err := s.ClusterInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstancesResponseBodyDataClusterInfo struct {
@@ -593,7 +616,16 @@ func (s *ListInstancesResponseBodyDataClusterInfo) SetTotalDiskSize(v int32) *Li
 }
 
 func (s *ListInstancesResponseBodyDataClusterInfo) Validate() error {
-	return dara.Validate(s)
+	if s.MilvusResourceInfoList != nil {
+		for _, item := range s.MilvusResourceInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstancesResponseBodyDataClusterInfoMilvusResourceInfoList struct {

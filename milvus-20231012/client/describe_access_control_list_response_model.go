@@ -59,5 +59,10 @@ func (s *DescribeAccessControlListResponse) SetBody(v *DescribeAccessControlList
 }
 
 func (s *DescribeAccessControlListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

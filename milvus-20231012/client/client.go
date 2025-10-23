@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -117,9 +118,11 @@ func (client *Client) CreateDefaultRole() (_result *CreateDefaultRoleResponse, _
 //
 // @return DescribeAccessControlListResponse
 func (client *Client) DescribeAccessControlListWithOptions(request *DescribeAccessControlListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeAccessControlListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -181,9 +184,11 @@ func (client *Client) DescribeAccessControlList(request *DescribeAccessControlLi
 //
 // @return DescribeInstanceConfigsResponse
 func (client *Client) DescribeInstanceConfigsWithOptions(request *DescribeInstanceConfigsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeInstanceConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -245,9 +250,11 @@ func (client *Client) DescribeInstanceConfigs(request *DescribeInstanceConfigsRe
 //
 // @return GetInstanceDetailResponse
 func (client *Client) GetInstanceDetailWithOptions(request *GetInstanceDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -309,9 +316,11 @@ func (client *Client) GetInstanceDetail(request *GetInstanceDetailRequest) (_res
 //
 // @return ListInstancesResponse
 func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListInstancesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -403,9 +412,11 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 //
 // @return ModifyInstanceConfigResponse
 func (client *Client) ModifyInstanceConfigWithOptions(request *ModifyInstanceConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyInstanceConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -475,9 +486,11 @@ func (client *Client) ModifyInstanceConfig(request *ModifyInstanceConfigRequest)
 //
 // @return UpdateAccessControlListResponse
 func (client *Client) UpdateAccessControlListWithOptions(request *UpdateAccessControlListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAccessControlListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclId) {
@@ -547,9 +560,11 @@ func (client *Client) UpdateAccessControlList(request *UpdateAccessControlListRe
 //
 // @return UpdateInstanceNameResponse
 func (client *Client) UpdateInstanceNameWithOptions(request *UpdateInstanceNameRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateInstanceNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterName) {
@@ -615,9 +630,11 @@ func (client *Client) UpdateInstanceName(request *UpdateInstanceNameRequest) (_r
 //
 // @return UpdatePublicNetworkStatusResponse
 func (client *Client) UpdatePublicNetworkStatusWithOptions(request *UpdatePublicNetworkStatusRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdatePublicNetworkStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Cidr) {

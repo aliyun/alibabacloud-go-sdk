@@ -52,9 +52,11 @@ func (client *Client) CreateDefaultRoleWithContext(ctx context.Context, headers 
 //
 // @return DescribeAccessControlListResponse
 func (client *Client) DescribeAccessControlListWithContext(ctx context.Context, request *DescribeAccessControlListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeAccessControlListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -97,9 +99,11 @@ func (client *Client) DescribeAccessControlListWithContext(ctx context.Context, 
 //
 // @return DescribeInstanceConfigsResponse
 func (client *Client) DescribeInstanceConfigsWithContext(ctx context.Context, request *DescribeInstanceConfigsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeInstanceConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -142,9 +146,11 @@ func (client *Client) DescribeInstanceConfigsWithContext(ctx context.Context, re
 //
 // @return GetInstanceDetailResponse
 func (client *Client) GetInstanceDetailWithContext(ctx context.Context, request *GetInstanceDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -187,9 +193,11 @@ func (client *Client) GetInstanceDetailWithContext(ctx context.Context, request 
 //
 // @return ListInstancesResponse
 func (client *Client) ListInstancesWithContext(ctx context.Context, tmpReq *ListInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListInstancesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -262,9 +270,11 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, tmpReq *List
 //
 // @return ModifyInstanceConfigResponse
 func (client *Client) ModifyInstanceConfigWithContext(ctx context.Context, request *ModifyInstanceConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyInstanceConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -315,9 +325,11 @@ func (client *Client) ModifyInstanceConfigWithContext(ctx context.Context, reque
 //
 // @return UpdateAccessControlListResponse
 func (client *Client) UpdateAccessControlListWithContext(ctx context.Context, request *UpdateAccessControlListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAccessControlListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclId) {
@@ -368,9 +380,11 @@ func (client *Client) UpdateAccessControlListWithContext(ctx context.Context, re
 //
 // @return UpdateInstanceNameResponse
 func (client *Client) UpdateInstanceNameWithContext(ctx context.Context, request *UpdateInstanceNameRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateInstanceNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterName) {
@@ -417,9 +431,11 @@ func (client *Client) UpdateInstanceNameWithContext(ctx context.Context, request
 //
 // @return UpdatePublicNetworkStatusResponse
 func (client *Client) UpdatePublicNetworkStatusWithContext(ctx context.Context, request *UpdatePublicNetworkStatusRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdatePublicNetworkStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Cidr) {
