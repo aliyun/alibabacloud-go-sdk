@@ -45,6 +45,8 @@ type iGetJobResponseBody interface {
 	GetGmtSuccessedTime() *string
 	SetJobId(v string) *GetJobResponseBody
 	GetJobId() *string
+	SetJobReplicaStatuses(v []*JobReplicaStatus) *GetJobResponseBody
+	GetJobReplicaStatuses() []*JobReplicaStatus
 	SetJobSpecs(v []*JobSpec) *GetJobResponseBody
 	GetJobSpecs() []*JobSpec
 	SetJobType(v string) *GetJobResponseBody
@@ -187,7 +189,8 @@ type GetJobResponseBody struct {
 	// example:
 	//
 	// dlc*******
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId              *string             `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobReplicaStatuses []*JobReplicaStatus `json:"JobReplicaStatuses,omitempty" xml:"JobReplicaStatuses,omitempty" type:"Repeated"`
 	// The node configuration of the job, which is **JobSpecs*	- in the CreateJob operation.
 	JobSpecs []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
 	// The job type. Specified by the JobType parameter of the [CreateJob](https://help.aliyun.com/document_detail/459672.html) operation.
@@ -411,6 +414,10 @@ func (s *GetJobResponseBody) GetJobId() *string {
 	return s.JobId
 }
 
+func (s *GetJobResponseBody) GetJobReplicaStatuses() []*JobReplicaStatus {
+	return s.JobReplicaStatuses
+}
+
 func (s *GetJobResponseBody) GetJobSpecs() []*JobSpec {
 	return s.JobSpecs
 }
@@ -597,6 +604,11 @@ func (s *GetJobResponseBody) SetJobId(v string) *GetJobResponseBody {
 	return s
 }
 
+func (s *GetJobResponseBody) SetJobReplicaStatuses(v []*JobReplicaStatus) *GetJobResponseBody {
+	s.JobReplicaStatuses = v
+	return s
+}
+
 func (s *GetJobResponseBody) SetJobSpecs(v []*JobSpec) *GetJobResponseBody {
 	s.JobSpecs = v
 	return s
@@ -740,6 +752,15 @@ func (s *GetJobResponseBody) Validate() error {
 	if s.ElasticSpec != nil {
 		if err := s.ElasticSpec.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.JobReplicaStatuses != nil {
+		for _, item := range s.JobReplicaStatuses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	if s.JobSpecs != nil {

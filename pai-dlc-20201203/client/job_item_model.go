@@ -53,6 +53,8 @@ type iJobItem interface {
 	GetJobId() *string
 	SetJobMaxRunningTimeMinutes(v int64) *JobItem
 	GetJobMaxRunningTimeMinutes() *int64
+	SetJobReplicaStatuses(v *JobReplicaStatus) *JobItem
+	GetJobReplicaStatuses() *JobReplicaStatus
 	SetJobSpecs(v []*JobSpec) *JobItem
 	GetJobSpecs() []*JobSpec
 	SetJobType(v string) *JobItem
@@ -193,8 +195,9 @@ type JobItem struct {
 	// example:
 	//
 	// 1
-	JobMaxRunningTimeMinutes *int64     `json:"JobMaxRunningTimeMinutes,omitempty" xml:"JobMaxRunningTimeMinutes,omitempty"`
-	JobSpecs                 []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
+	JobMaxRunningTimeMinutes *int64            `json:"JobMaxRunningTimeMinutes,omitempty" xml:"JobMaxRunningTimeMinutes,omitempty"`
+	JobReplicaStatuses       *JobReplicaStatus `json:"JobReplicaStatuses,omitempty" xml:"JobReplicaStatuses,omitempty"`
+	JobSpecs                 []*JobSpec        `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
 	// example:
 	//
 	// TFJob
@@ -402,6 +405,10 @@ func (s *JobItem) GetJobId() *string {
 
 func (s *JobItem) GetJobMaxRunningTimeMinutes() *int64 {
 	return s.JobMaxRunningTimeMinutes
+}
+
+func (s *JobItem) GetJobReplicaStatuses() *JobReplicaStatus {
+	return s.JobReplicaStatuses
 }
 
 func (s *JobItem) GetJobSpecs() []*JobSpec {
@@ -650,6 +657,11 @@ func (s *JobItem) SetJobMaxRunningTimeMinutes(v int64) *JobItem {
 	return s
 }
 
+func (s *JobItem) SetJobReplicaStatuses(v *JobReplicaStatus) *JobItem {
+	s.JobReplicaStatuses = v
+	return s
+}
+
 func (s *JobItem) SetJobSpecs(v []*JobSpec) *JobItem {
 	s.JobSpecs = v
 	return s
@@ -842,6 +854,11 @@ func (s *JobItem) Validate() error {
 	}
 	if s.ElasticSpec != nil {
 		if err := s.ElasticSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.JobReplicaStatuses != nil {
+		if err := s.JobReplicaStatuses.Validate(); err != nil {
 			return err
 		}
 	}
