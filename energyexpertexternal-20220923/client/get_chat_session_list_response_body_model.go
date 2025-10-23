@@ -53,7 +53,12 @@ func (s *GetChatSessionListResponseBody) SetRequestId(v string) *GetChatSessionL
 }
 
 func (s *GetChatSessionListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetChatSessionListResponseBodyData struct {
@@ -139,7 +144,16 @@ func (s *GetChatSessionListResponseBodyData) SetTotalPage(v int64) *GetChatSessi
 }
 
 func (s *GetChatSessionListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.SessionList != nil {
+		for _, item := range s.SessionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetChatSessionListResponseBodyDataSessionList struct {

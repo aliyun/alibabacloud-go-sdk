@@ -59,5 +59,10 @@ func (s *SetRunningPlanResponse) SetBody(v *SetRunningPlanResponseBody) *SetRunn
 }
 
 func (s *SetRunningPlanResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

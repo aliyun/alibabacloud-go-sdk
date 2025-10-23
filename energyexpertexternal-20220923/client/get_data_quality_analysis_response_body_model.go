@@ -53,7 +53,12 @@ func (s *GetDataQualityAnalysisResponseBody) SetRequestId(v string) *GetDataQual
 }
 
 func (s *GetDataQualityAnalysisResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityAnalysisResponseBodyData struct {
@@ -127,7 +132,39 @@ func (s *GetDataQualityAnalysisResponseBodyData) SetUncertaintyValues(v []*GetDa
 }
 
 func (s *GetDataQualityAnalysisResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DataQuality != nil {
+		for _, item := range s.DataQuality {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DataQualityResult != nil {
+		if err := s.DataQualityResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SensitivityList != nil {
+		for _, item := range s.SensitivityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UncertaintyValues != nil {
+		for _, item := range s.UncertaintyValues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataQualityAnalysisResponseBodyDataDataQuality struct {
@@ -168,7 +205,12 @@ func (s *GetDataQualityAnalysisResponseBodyDataDataQuality) SetScore(v *GetDataQ
 }
 
 func (s *GetDataQualityAnalysisResponseBodyDataDataQuality) Validate() error {
-	return dara.Validate(s)
+	if s.Score != nil {
+		if err := s.Score.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityAnalysisResponseBodyDataDataQualityScore struct {

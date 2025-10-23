@@ -70,7 +70,12 @@ func (s *GetElecTrendResponseBody) SetRequestId(v string) *GetElecTrendResponseB
 }
 
 func (s *GetElecTrendResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetElecTrendResponseBodyData struct {
@@ -162,7 +167,70 @@ func (s *GetElecTrendResponseBodyData) SetZero(v []*GetElecTrendResponseBodyData
 }
 
 func (s *GetElecTrendResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Light != nil {
+		for _, item := range s.Light {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Nuclear != nil {
+		for _, item := range s.Nuclear {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Renewing != nil {
+		for _, item := range s.Renewing {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Urban != nil {
+		for _, item := range s.Urban {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Water != nil {
+		for _, item := range s.Water {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Wind != nil {
+		for _, item := range s.Wind {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Zero != nil {
+		for _, item := range s.Zero {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetElecTrendResponseBodyDataLight struct {

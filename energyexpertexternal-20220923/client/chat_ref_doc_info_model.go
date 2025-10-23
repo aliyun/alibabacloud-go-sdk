@@ -47,5 +47,14 @@ func (s *ChatRefDocInfo) SetPages(v int64) *ChatRefDocInfo {
 }
 
 func (s *ChatRefDocInfo) Validate() error {
-	return dara.Validate(s)
+	if s.PageListInfo != nil {
+		for _, item := range s.PageListInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

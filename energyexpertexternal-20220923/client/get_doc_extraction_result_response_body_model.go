@@ -53,7 +53,12 @@ func (s *GetDocExtractionResultResponseBody) SetRequestId(v string) *GetDocExtra
 }
 
 func (s *GetDocExtractionResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDocExtractionResultResponseBodyData struct {
@@ -79,7 +84,16 @@ func (s *GetDocExtractionResultResponseBodyData) SetKvListInfo(v []*GetDocExtrac
 }
 
 func (s *GetDocExtractionResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.KvListInfo != nil {
+		for _, item := range s.KvListInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDocExtractionResultResponseBodyDataKvListInfo struct {
@@ -135,7 +149,12 @@ func (s *GetDocExtractionResultResponseBodyDataKvListInfo) SetKeyValue(v string)
 }
 
 func (s *GetDocExtractionResultResponseBodyDataKvListInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Context != nil {
+		if err := s.Context.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDocExtractionResultResponseBodyDataKvListInfoContext struct {
@@ -183,7 +202,30 @@ func (s *GetDocExtractionResultResponseBodyDataKvListInfoContext) SetValue(v []*
 }
 
 func (s *GetDocExtractionResultResponseBodyDataKvListInfoContext) Validate() error {
-	return dara.Validate(s)
+	if s.Confidence != nil {
+		if err := s.Confidence.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Key != nil {
+		for _, item := range s.Key {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Value != nil {
+		for _, item := range s.Value {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDocExtractionResultResponseBodyDataKvListInfoContextConfidence struct {

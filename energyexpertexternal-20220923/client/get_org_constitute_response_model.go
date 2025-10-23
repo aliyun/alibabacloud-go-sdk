@@ -59,5 +59,10 @@ func (s *GetOrgConstituteResponse) SetBody(v *GetOrgConstituteResponseBody) *Get
 }
 
 func (s *GetOrgConstituteResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

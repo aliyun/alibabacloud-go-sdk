@@ -104,7 +104,16 @@ func (s *GetOrgAndFactoryResponseBody) SetSuccess(v bool) *GetOrgAndFactoryRespo
 }
 
 func (s *GetOrgAndFactoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOrgAndFactoryResponseBodyData struct {
@@ -175,7 +184,16 @@ func (s *GetOrgAndFactoryResponseBodyData) SetOrganizationName(v string) *GetOrg
 }
 
 func (s *GetOrgAndFactoryResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.FactoryList != nil {
+		for _, item := range s.FactoryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOrgAndFactoryResponseBodyDataFactoryList struct {

@@ -59,5 +59,10 @@ func (s *GetElecTrendResponse) SetBody(v *GetElecTrendResponseBody) *GetElecTren
 }
 
 func (s *GetElecTrendResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

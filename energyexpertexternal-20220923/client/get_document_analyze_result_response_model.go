@@ -59,5 +59,10 @@ func (s *GetDocumentAnalyzeResultResponse) SetBody(v *GetDocumentAnalyzeResultRe
 }
 
 func (s *GetDocumentAnalyzeResultResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *PushDeviceDataResponse) SetBody(v *PushDeviceDataResponseBody) *PushDev
 }
 
 func (s *PushDeviceDataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

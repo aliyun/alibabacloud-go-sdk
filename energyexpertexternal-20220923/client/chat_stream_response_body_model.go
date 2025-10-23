@@ -53,5 +53,10 @@ func (s *ChatStreamResponseBody) SetRequestId(v string) *ChatStreamResponseBody 
 }
 
 func (s *ChatStreamResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

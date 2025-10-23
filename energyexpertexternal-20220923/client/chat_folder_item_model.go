@@ -59,5 +59,14 @@ func (s *ChatFolderItem) SetSubFolders(v []*ChatItem) *ChatFolderItem {
 }
 
 func (s *ChatFolderItem) Validate() error {
-	return dara.Validate(s)
+	if s.SubFolders != nil {
+		for _, item := range s.SubFolders {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

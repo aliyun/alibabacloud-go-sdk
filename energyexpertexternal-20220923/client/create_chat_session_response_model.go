@@ -59,5 +59,10 @@ func (s *CreateChatSessionResponse) SetBody(v *CreateChatSessionResponseBody) *C
 }
 
 func (s *CreateChatSessionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

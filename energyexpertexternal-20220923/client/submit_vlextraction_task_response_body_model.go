@@ -53,7 +53,12 @@ func (s *SubmitVLExtractionTaskResponseBody) SetRequestId(v string) *SubmitVLExt
 }
 
 func (s *SubmitVLExtractionTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitVLExtractionTaskResponseBodyData struct {

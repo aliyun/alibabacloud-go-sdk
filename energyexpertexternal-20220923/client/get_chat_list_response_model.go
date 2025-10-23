@@ -59,5 +59,10 @@ func (s *GetChatListResponse) SetBody(v *GetChatListResponseBody) *GetChatListRe
 }
 
 func (s *GetChatListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

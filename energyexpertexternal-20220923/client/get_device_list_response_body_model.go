@@ -104,7 +104,12 @@ func (s *GetDeviceListResponseBody) SetSuccess(v bool) *GetDeviceListResponseBod
 }
 
 func (s *GetDeviceListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDeviceListResponseBodyData struct {
@@ -190,7 +195,16 @@ func (s *GetDeviceListResponseBodyData) SetSuccess(v bool) *GetDeviceListRespons
 }
 
 func (s *GetDeviceListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceList != nil {
+		for _, item := range s.DeviceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDeviceListResponseBodyDataDeviceList struct {
@@ -291,7 +305,12 @@ func (s *GetDeviceListResponseBodyDataDeviceList) SetSecondTypeName(v string) *G
 }
 
 func (s *GetDeviceListResponseBodyDataDeviceList) Validate() error {
-	return dara.Validate(s)
+	if s.Info != nil {
+		if err := s.Info.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDeviceListResponseBodyDataDeviceListInfo struct {

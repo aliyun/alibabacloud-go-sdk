@@ -53,7 +53,12 @@ func (s *GetChatListResponseBody) SetRequestId(v string) *GetChatListResponseBod
 }
 
 func (s *GetChatListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetChatListResponseBodyData struct {
@@ -139,5 +144,14 @@ func (s *GetChatListResponseBodyData) SetTotalPage(v int64) *GetChatListResponse
 }
 
 func (s *GetChatListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ChatList != nil {
+		for _, item := range s.ChatList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

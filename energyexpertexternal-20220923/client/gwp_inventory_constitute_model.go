@@ -107,5 +107,23 @@ func (s *GwpInventoryConstitute) SetUnit(v string) *GwpInventoryConstitute {
 }
 
 func (s *GwpInventoryConstitute) Validate() error {
-	return dara.Validate(s)
+	if s.ByResourceType != nil {
+		for _, item := range s.ByResourceType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

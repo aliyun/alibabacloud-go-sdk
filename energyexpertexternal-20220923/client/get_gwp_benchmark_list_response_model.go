@@ -59,5 +59,10 @@ func (s *GetGwpBenchmarkListResponse) SetBody(v *GetGwpBenchmarkListResponseBody
 }
 
 func (s *GetGwpBenchmarkListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *GetGwpInventoryConstituteResponseBody) SetRequestId(v string) *GetGwpIn
 }
 
 func (s *GetGwpInventoryConstituteResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGwpInventoryConstituteResponseBodyData struct {
@@ -135,5 +140,23 @@ func (s *GetGwpInventoryConstituteResponseBodyData) SetUnit(v string) *GetGwpInv
 }
 
 func (s *GetGwpInventoryConstituteResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ByResourceType != nil {
+		for _, item := range s.ByResourceType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *ChatStreamResponse) SetBody(v *ChatStreamResponseBody) *ChatStreamRespo
 }
 
 func (s *ChatStreamResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

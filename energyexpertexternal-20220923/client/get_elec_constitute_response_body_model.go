@@ -53,7 +53,12 @@ func (s *GetElecConstituteResponseBody) SetRequestId(v string) *GetElecConstitut
 }
 
 func (s *GetElecConstituteResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetElecConstituteResponseBodyData struct {
@@ -145,7 +150,42 @@ func (s *GetElecConstituteResponseBodyData) SetZero(v *GetElecConstituteResponse
 }
 
 func (s *GetElecConstituteResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Light != nil {
+		if err := s.Light.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Nuclear != nil {
+		if err := s.Nuclear.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Renewing != nil {
+		if err := s.Renewing.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Urban != nil {
+		if err := s.Urban.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Water != nil {
+		if err := s.Water.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Wind != nil {
+		if err := s.Wind.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Zero != nil {
+		if err := s.Zero.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetElecConstituteResponseBodyDataLight struct {

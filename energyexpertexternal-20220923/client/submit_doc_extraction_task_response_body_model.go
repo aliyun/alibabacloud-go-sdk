@@ -53,7 +53,12 @@ func (s *SubmitDocExtractionTaskResponseBody) SetRequestId(v string) *SubmitDocE
 }
 
 func (s *SubmitDocExtractionTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitDocExtractionTaskResponseBodyData struct {

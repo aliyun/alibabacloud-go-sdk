@@ -131,7 +131,25 @@ func (s *OrgEmission) SetWeightingRatio(v float64) *OrgEmission {
 }
 
 func (s *OrgEmission) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleEmissionList != nil {
+		for _, item := range s.ModuleEmissionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SubEmissionItems != nil {
+		for _, item := range s.SubEmissionItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type OrgEmissionModuleEmissionList struct {

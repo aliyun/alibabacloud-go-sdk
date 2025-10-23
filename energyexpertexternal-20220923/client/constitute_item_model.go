@@ -155,7 +155,25 @@ func (s *ConstituteItem) SetSubConstituteItems(v []*ConstituteItem) *ConstituteI
 }
 
 func (s *ConstituteItem) Validate() error {
-	return dara.Validate(s)
+	if s.EnvGasEmissions != nil {
+		for _, item := range s.EnvGasEmissions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SubConstituteItems != nil {
+		for _, item := range s.SubConstituteItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ConstituteItemEnvGasEmissions struct {

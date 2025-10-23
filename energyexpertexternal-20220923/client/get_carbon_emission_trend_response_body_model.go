@@ -53,7 +53,12 @@ func (s *GetCarbonEmissionTrendResponseBody) SetRequestId(v string) *GetCarbonEm
 }
 
 func (s *GetCarbonEmissionTrendResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCarbonEmissionTrendResponseBodyData struct {
@@ -90,7 +95,25 @@ func (s *GetCarbonEmissionTrendResponseBodyData) SetTargetEmissionList(v []*GetC
 }
 
 func (s *GetCarbonEmissionTrendResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ActualEmissionList != nil {
+		for _, item := range s.ActualEmissionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TargetEmissionList != nil {
+		for _, item := range s.TargetEmissionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCarbonEmissionTrendResponseBodyDataActualEmissionList struct {
@@ -131,7 +154,16 @@ func (s *GetCarbonEmissionTrendResponseBodyDataActualEmissionList) SetYear(v str
 }
 
 func (s *GetCarbonEmissionTrendResponseBodyDataActualEmissionList) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCarbonEmissionTrendResponseBodyDataActualEmissionListItems struct {
@@ -232,7 +264,16 @@ func (s *GetCarbonEmissionTrendResponseBodyDataTargetEmissionList) SetYear(v str
 }
 
 func (s *GetCarbonEmissionTrendResponseBodyDataTargetEmissionList) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCarbonEmissionTrendResponseBodyDataTargetEmissionListItems struct {

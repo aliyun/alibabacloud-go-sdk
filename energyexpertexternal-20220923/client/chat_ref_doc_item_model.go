@@ -107,5 +107,19 @@ func (s *ChatRefDocItem) SetSourceType(v string) *ChatRefDocItem {
 }
 
 func (s *ChatRefDocItem) Validate() error {
-	return dara.Validate(s)
+	if s.DocInfo != nil {
+		if err := s.DocInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PageNum != nil {
+		for _, item := range s.PageNum {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

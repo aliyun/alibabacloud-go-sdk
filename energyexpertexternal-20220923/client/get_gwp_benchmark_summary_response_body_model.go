@@ -53,7 +53,12 @@ func (s *GetGwpBenchmarkSummaryResponseBody) SetRequestId(v string) *GetGwpBench
 }
 
 func (s *GetGwpBenchmarkSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGwpBenchmarkSummaryResponseBodyData struct {
@@ -109,7 +114,16 @@ func (s *GetGwpBenchmarkSummaryResponseBodyData) SetUnit(v string) *GetGwpBenchm
 }
 
 func (s *GetGwpBenchmarkSummaryResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetGwpBenchmarkSummaryResponseBodyDataItems struct {

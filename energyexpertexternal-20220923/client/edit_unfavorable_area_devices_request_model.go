@@ -70,7 +70,16 @@ func (s *EditUnfavorableAreaDevicesRequest) SetSystemId(v string) *EditUnfavorab
 }
 
 func (s *EditUnfavorableAreaDevicesRequest) Validate() error {
-  return dara.Validate(s)
+  if s.HvacDeviceConfigVOList != nil {
+    for _, item := range s.HvacDeviceConfigVOList {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList struct {

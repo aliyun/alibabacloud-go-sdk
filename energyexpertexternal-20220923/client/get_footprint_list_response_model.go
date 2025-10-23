@@ -59,5 +59,10 @@ func (s *GetFootprintListResponse) SetBody(v *GetFootprintListResponseBody) *Get
 }
 
 func (s *GetFootprintListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

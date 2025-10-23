@@ -77,7 +77,16 @@ func (s *ContentItem) SetType(v string) *ContentItem {
 }
 
 func (s *ContentItem) Validate() error {
-	return dara.Validate(s)
+	if s.ExtInfo != nil {
+		for _, item := range s.ExtInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ContentItemExtInfo struct {
@@ -203,7 +212,16 @@ func (s *ContentItemExtInfo) SetUniqueId(v string) *ContentItemExtInfo {
 }
 
 func (s *ContentItemExtInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Pos != nil {
+		for _, item := range s.Pos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ContentItemExtInfoPos struct {

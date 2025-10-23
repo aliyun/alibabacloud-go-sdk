@@ -53,7 +53,12 @@ func (s *AnalyzeVlRealtimeResponseBody) SetRequestId(v string) *AnalyzeVlRealtim
 }
 
 func (s *AnalyzeVlRealtimeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AnalyzeVlRealtimeResponseBodyData struct {
@@ -79,7 +84,16 @@ func (s *AnalyzeVlRealtimeResponseBodyData) SetKvListInfo(v []*AnalyzeVlRealtime
 }
 
 func (s *AnalyzeVlRealtimeResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.KvListInfo != nil {
+		for _, item := range s.KvListInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AnalyzeVlRealtimeResponseBodyDataKvListInfo struct {
@@ -135,7 +149,12 @@ func (s *AnalyzeVlRealtimeResponseBodyDataKvListInfo) SetKeyValue(v string) *Ana
 }
 
 func (s *AnalyzeVlRealtimeResponseBodyDataKvListInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Context != nil {
+		if err := s.Context.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AnalyzeVlRealtimeResponseBodyDataKvListInfoContext struct {
@@ -183,7 +202,30 @@ func (s *AnalyzeVlRealtimeResponseBodyDataKvListInfoContext) SetValue(v []*Conte
 }
 
 func (s *AnalyzeVlRealtimeResponseBodyDataKvListInfoContext) Validate() error {
-	return dara.Validate(s)
+	if s.Confidence != nil {
+		if err := s.Confidence.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Key != nil {
+		for _, item := range s.Key {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Value != nil {
+		for _, item := range s.Value {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AnalyzeVlRealtimeResponseBodyDataKvListInfoContextConfidence struct {

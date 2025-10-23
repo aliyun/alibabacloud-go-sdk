@@ -76,7 +76,12 @@ func (s *PushItemDataRequest) SetYear(v string) *PushItemDataRequest {
 }
 
 func (s *PushItemDataRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PushItemDataRequestItems struct {

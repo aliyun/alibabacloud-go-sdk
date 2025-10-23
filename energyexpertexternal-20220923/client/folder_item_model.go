@@ -215,5 +215,14 @@ func (s *FolderItem) SetTaskId(v int64) *FolderItem {
 }
 
 func (s *FolderItem) Validate() error {
-	return dara.Validate(s)
+	if s.SubFolderList != nil {
+		for _, item := range s.SubFolderList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

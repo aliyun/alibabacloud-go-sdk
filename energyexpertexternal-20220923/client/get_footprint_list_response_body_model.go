@@ -53,7 +53,12 @@ func (s *GetFootprintListResponseBody) SetRequestId(v string) *GetFootprintListR
 }
 
 func (s *GetFootprintListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetFootprintListResponseBodyData struct {
@@ -139,7 +144,16 @@ func (s *GetFootprintListResponseBodyData) SetTotalPage(v int64) *GetFootprintLi
 }
 
 func (s *GetFootprintListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetFootprintListResponseBodyDataRecords struct {

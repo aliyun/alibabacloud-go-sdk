@@ -95,5 +95,14 @@ func (s *ChatItem) SetRefDocList(v []*ChatRefDocItem) *ChatItem {
 }
 
 func (s *ChatItem) Validate() error {
-	return dara.Validate(s)
+	if s.RefDocList != nil {
+		for _, item := range s.RefDocList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

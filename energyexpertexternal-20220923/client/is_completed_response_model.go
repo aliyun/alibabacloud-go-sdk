@@ -59,5 +59,10 @@ func (s *IsCompletedResponse) SetBody(v *IsCompletedResponseBody) *IsCompletedRe
 }
 
 func (s *IsCompletedResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
