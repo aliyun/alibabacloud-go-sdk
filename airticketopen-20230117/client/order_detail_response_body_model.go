@@ -1637,6 +1637,7 @@ type OrderDetailResponseBodyDataSolution struct {
 	SegmentBaggageMappingList []*OrderDetailResponseBodyDataSolutionSegmentBaggageMappingList `json:"segment_baggage_mapping_list,omitempty" xml:"segment_baggage_mapping_list,omitempty" type:"Repeated"`
 	// change and refund policy
 	SegmentRefundChangeRuleMappingList []*OrderDetailResponseBodyDataSolutionSegmentRefundChangeRuleMappingList `json:"segment_refund_change_rule_mapping_list,omitempty" xml:"segment_refund_change_rule_mapping_list,omitempty" type:"Repeated"`
+	SolutionAttribute                  *OrderDetailResponseBodyDataSolutionSolutionAttribute                    `json:"solution_attribute,omitempty" xml:"solution_attribute,omitempty" type:"Struct"`
 	// solution_id
 	//
 	// example:
@@ -1699,6 +1700,10 @@ func (s *OrderDetailResponseBodyDataSolution) GetSegmentBaggageMappingList() []*
 
 func (s *OrderDetailResponseBodyDataSolution) GetSegmentRefundChangeRuleMappingList() []*OrderDetailResponseBodyDataSolutionSegmentRefundChangeRuleMappingList {
 	return s.SegmentRefundChangeRuleMappingList
+}
+
+func (s *OrderDetailResponseBodyDataSolution) GetSolutionAttribute() *OrderDetailResponseBodyDataSolutionSolutionAttribute {
+	return s.SolutionAttribute
 }
 
 func (s *OrderDetailResponseBodyDataSolution) GetSolutionId() *string {
@@ -1765,6 +1770,11 @@ func (s *OrderDetailResponseBodyDataSolution) SetSegmentRefundChangeRuleMappingL
 	return s
 }
 
+func (s *OrderDetailResponseBodyDataSolution) SetSolutionAttribute(v *OrderDetailResponseBodyDataSolutionSolutionAttribute) *OrderDetailResponseBodyDataSolution {
+	s.SolutionAttribute = v
+	return s
+}
+
 func (s *OrderDetailResponseBodyDataSolution) SetSolutionId(v string) *OrderDetailResponseBodyDataSolution {
 	s.SolutionId = &v
 	return s
@@ -1805,6 +1815,11 @@ func (s *OrderDetailResponseBodyDataSolution) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.SolutionAttribute != nil {
+		if err := s.SolutionAttribute.Validate(); err != nil {
+			return err
 		}
 	}
 	return nil
@@ -2325,5 +2340,80 @@ func (s *OrderDetailResponseBodyDataSolutionSegmentRefundChangeRuleMappingList) 
 }
 
 func (s *OrderDetailResponseBodyDataSolutionSegmentRefundChangeRuleMappingList) Validate() error {
+	return dara.Validate(s)
+}
+
+type OrderDetailResponseBodyDataSolutionSolutionAttribute struct {
+	IssueTimeInfo    *OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo `json:"issue_time_info,omitempty" xml:"issue_time_info,omitempty" type:"Struct"`
+	SupplySourceType *string                                                            `json:"supply_source_type,omitempty" xml:"supply_source_type,omitempty"`
+}
+
+func (s OrderDetailResponseBodyDataSolutionSolutionAttribute) String() string {
+	return dara.Prettify(s)
+}
+
+func (s OrderDetailResponseBodyDataSolutionSolutionAttribute) GoString() string {
+	return s.String()
+}
+
+func (s *OrderDetailResponseBodyDataSolutionSolutionAttribute) GetIssueTimeInfo() *OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo {
+	return s.IssueTimeInfo
+}
+
+func (s *OrderDetailResponseBodyDataSolutionSolutionAttribute) GetSupplySourceType() *string {
+	return s.SupplySourceType
+}
+
+func (s *OrderDetailResponseBodyDataSolutionSolutionAttribute) SetIssueTimeInfo(v *OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo) *OrderDetailResponseBodyDataSolutionSolutionAttribute {
+	s.IssueTimeInfo = v
+	return s
+}
+
+func (s *OrderDetailResponseBodyDataSolutionSolutionAttribute) SetSupplySourceType(v string) *OrderDetailResponseBodyDataSolutionSolutionAttribute {
+	s.SupplySourceType = &v
+	return s
+}
+
+func (s *OrderDetailResponseBodyDataSolutionSolutionAttribute) Validate() error {
+	if s.IssueTimeInfo != nil {
+		if err := s.IssueTimeInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo struct {
+	IssueTicketType *int32 `json:"issue_ticket_type,omitempty" xml:"issue_ticket_type,omitempty"`
+	IssueTimeLimit  *int32 `json:"issue_time_limit,omitempty" xml:"issue_time_limit,omitempty"`
+}
+
+func (s OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo) GoString() string {
+	return s.String()
+}
+
+func (s *OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo) GetIssueTicketType() *int32 {
+	return s.IssueTicketType
+}
+
+func (s *OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo) GetIssueTimeLimit() *int32 {
+	return s.IssueTimeLimit
+}
+
+func (s *OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo) SetIssueTicketType(v int32) *OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo {
+	s.IssueTicketType = &v
+	return s
+}
+
+func (s *OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo) SetIssueTimeLimit(v int32) *OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo {
+	s.IssueTimeLimit = &v
+	return s
+}
+
+func (s *OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo) Validate() error {
 	return dara.Validate(s)
 }

@@ -220,18 +220,6 @@ type SearchResponseBodyDataSolutionList struct {
 	InfantTax *float64 `json:"infant_tax,omitempty" xml:"infant_tax,omitempty"`
 	// segment list
 	JourneyList []*SearchResponseBodyDataSolutionListJourneyList `json:"journey_list,omitempty" xml:"journey_list,omitempty" type:"Repeated"`
-	// product type description
-	//
-	// example:
-	//
-	// ""
-	ProductTypeDescription *string `json:"product_type_description,omitempty" xml:"product_type_description,omitempty"`
-	// refund airline coupon description
-	//
-	// example:
-	//
-	// ""
-	RefundTicketCouponDescription *string `json:"refund_ticket_coupon_description,omitempty" xml:"refund_ticket_coupon_description,omitempty"`
 	// through check-in baggage policy
 	SegmentBaggageCheckInInfoList []*SearchResponseBodyDataSolutionListSegmentBaggageCheckInInfoList `json:"segment_baggage_check_in_info_list,omitempty" xml:"segment_baggage_check_in_info_list,omitempty" type:"Repeated"`
 	// baggage rule
@@ -282,14 +270,6 @@ func (s *SearchResponseBodyDataSolutionList) GetInfantTax() *float64 {
 
 func (s *SearchResponseBodyDataSolutionList) GetJourneyList() []*SearchResponseBodyDataSolutionListJourneyList {
 	return s.JourneyList
-}
-
-func (s *SearchResponseBodyDataSolutionList) GetProductTypeDescription() *string {
-	return s.ProductTypeDescription
-}
-
-func (s *SearchResponseBodyDataSolutionList) GetRefundTicketCouponDescription() *string {
-	return s.RefundTicketCouponDescription
 }
 
 func (s *SearchResponseBodyDataSolutionList) GetSegmentBaggageCheckInInfoList() []*SearchResponseBodyDataSolutionListSegmentBaggageCheckInInfoList {
@@ -344,16 +324,6 @@ func (s *SearchResponseBodyDataSolutionList) SetInfantTax(v float64) *SearchResp
 
 func (s *SearchResponseBodyDataSolutionList) SetJourneyList(v []*SearchResponseBodyDataSolutionListJourneyList) *SearchResponseBodyDataSolutionList {
 	s.JourneyList = v
-	return s
-}
-
-func (s *SearchResponseBodyDataSolutionList) SetProductTypeDescription(v string) *SearchResponseBodyDataSolutionList {
-	s.ProductTypeDescription = &v
-	return s
-}
-
-func (s *SearchResponseBodyDataSolutionList) SetRefundTicketCouponDescription(v string) *SearchResponseBodyDataSolutionList {
-	s.RefundTicketCouponDescription = &v
 	return s
 }
 
@@ -954,6 +924,7 @@ func (s *SearchResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList) V
 }
 
 type SearchResponseBodyDataSolutionListSolutionAttribute struct {
+	IssueTimeInfo *SearchResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo `json:"issue_time_info,omitempty" xml:"issue_time_info,omitempty" type:"Struct"`
 	// supply source: 1;2;3
 	//
 	// example:
@@ -970,8 +941,17 @@ func (s SearchResponseBodyDataSolutionListSolutionAttribute) GoString() string {
 	return s.String()
 }
 
+func (s *SearchResponseBodyDataSolutionListSolutionAttribute) GetIssueTimeInfo() *SearchResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo {
+	return s.IssueTimeInfo
+}
+
 func (s *SearchResponseBodyDataSolutionListSolutionAttribute) GetSupplySourceType() *string {
 	return s.SupplySourceType
+}
+
+func (s *SearchResponseBodyDataSolutionListSolutionAttribute) SetIssueTimeInfo(v *SearchResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo) *SearchResponseBodyDataSolutionListSolutionAttribute {
+	s.IssueTimeInfo = v
+	return s
 }
 
 func (s *SearchResponseBodyDataSolutionListSolutionAttribute) SetSupplySourceType(v string) *SearchResponseBodyDataSolutionListSolutionAttribute {
@@ -980,5 +960,45 @@ func (s *SearchResponseBodyDataSolutionListSolutionAttribute) SetSupplySourceTyp
 }
 
 func (s *SearchResponseBodyDataSolutionListSolutionAttribute) Validate() error {
+	if s.IssueTimeInfo != nil {
+		if err := s.IssueTimeInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type SearchResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo struct {
+	IssueTicketType *int32 `json:"issue_ticket_type,omitempty" xml:"issue_ticket_type,omitempty"`
+	IssueTimeLimit  *int32 `json:"issue_time_limit,omitempty" xml:"issue_time_limit,omitempty"`
+}
+
+func (s SearchResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SearchResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SearchResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo) GetIssueTicketType() *int32 {
+	return s.IssueTicketType
+}
+
+func (s *SearchResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo) GetIssueTimeLimit() *int32 {
+	return s.IssueTimeLimit
+}
+
+func (s *SearchResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo) SetIssueTicketType(v int32) *SearchResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo {
+	s.IssueTicketType = &v
+	return s
+}
+
+func (s *SearchResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo) SetIssueTimeLimit(v int32) *SearchResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo {
+	s.IssueTimeLimit = &v
+	return s
+}
+
+func (s *SearchResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo) Validate() error {
 	return dara.Validate(s)
 }

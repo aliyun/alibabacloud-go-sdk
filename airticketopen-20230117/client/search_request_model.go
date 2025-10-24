@@ -157,8 +157,6 @@ type SearchRequestAirLegs struct {
 	ArrivalAirportList []*string `json:"arrival_airport_list,omitempty" xml:"arrival_airport_list,omitempty" type:"Repeated"`
 	// arrival city code
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// MFM
@@ -170,8 +168,6 @@ type SearchRequestAirLegs struct {
 	// PVG
 	DepartureAirportList []*string `json:"departure_airport_list,omitempty" xml:"departure_airport_list,omitempty" type:"Repeated"`
 	// departure city code
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -246,8 +242,16 @@ func (s *SearchRequestAirLegs) Validate() error {
 
 type SearchRequestSearchControlOptions struct {
 	// excluded airlines list
+	//
+	// example:
+	//
+	// 7C
 	AirlineExcludedList []*string `json:"airline_excluded_list,omitempty" xml:"airline_excluded_list,omitempty" type:"Repeated"`
 	// preferred airlines list
+	//
+	// example:
+	//
+	// FD
 	AirlinePreferList []*string `json:"airline_prefer_list,omitempty" xml:"airline_prefer_list,omitempty" type:"Repeated"`
 	// service quality
 	//

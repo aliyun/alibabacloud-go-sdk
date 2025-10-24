@@ -220,24 +220,13 @@ type EnrichResponseBodyDataSolutionList struct {
   InfantTax *float64 `json:"infant_tax,omitempty" xml:"infant_tax,omitempty"`
   // journey list
   JourneyList []*EnrichResponseBodyDataSolutionListJourneyList `json:"journey_list,omitempty" xml:"journey_list,omitempty" type:"Repeated"`
-  // product type description
-  // 
-  // example:
-  // 
-  // ""
-  ProductTypeDescription *string `json:"product_type_description,omitempty" xml:"product_type_description,omitempty"`
-  // refund airline coupon description
-  // 
-  // example:
-  // 
-  // ""
-  RefundTicketCouponDescription *string `json:"refund_ticket_coupon_description,omitempty" xml:"refund_ticket_coupon_description,omitempty"`
   // through check-in baggage  policy
   SegmentBaggageCheckInInfoList []*EnrichResponseBodyDataSolutionListSegmentBaggageCheckInInfoList `json:"segment_baggage_check_in_info_list,omitempty" xml:"segment_baggage_check_in_info_list,omitempty" type:"Repeated"`
   // baggage rule
   SegmentBaggageMappingList []*EnrichResponseBodyDataSolutionListSegmentBaggageMappingList `json:"segment_baggage_mapping_list,omitempty" xml:"segment_baggage_mapping_list,omitempty" type:"Repeated"`
   // change and refund policy
   SegmentRefundChangeRuleMappingList []*EnrichResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList `json:"segment_refund_change_rule_mapping_list,omitempty" xml:"segment_refund_change_rule_mapping_list,omitempty" type:"Repeated"`
+  // Quotation Attributes
   SolutionAttribute *EnrichResponseBodyDataSolutionListSolutionAttribute `json:"solution_attribute,omitempty" xml:"solution_attribute,omitempty" type:"Struct"`
   // solution ID
   // 
@@ -281,14 +270,6 @@ func (s *EnrichResponseBodyDataSolutionList) GetInfantTax() *float64  {
 
 func (s *EnrichResponseBodyDataSolutionList) GetJourneyList() []*EnrichResponseBodyDataSolutionListJourneyList  {
   return s.JourneyList
-}
-
-func (s *EnrichResponseBodyDataSolutionList) GetProductTypeDescription() *string  {
-  return s.ProductTypeDescription
-}
-
-func (s *EnrichResponseBodyDataSolutionList) GetRefundTicketCouponDescription() *string  {
-  return s.RefundTicketCouponDescription
 }
 
 func (s *EnrichResponseBodyDataSolutionList) GetSegmentBaggageCheckInInfoList() []*EnrichResponseBodyDataSolutionListSegmentBaggageCheckInInfoList  {
@@ -343,16 +324,6 @@ func (s *EnrichResponseBodyDataSolutionList) SetInfantTax(v float64) *EnrichResp
 
 func (s *EnrichResponseBodyDataSolutionList) SetJourneyList(v []*EnrichResponseBodyDataSolutionListJourneyList) *EnrichResponseBodyDataSolutionList {
   s.JourneyList = v
-  return s
-}
-
-func (s *EnrichResponseBodyDataSolutionList) SetProductTypeDescription(v string) *EnrichResponseBodyDataSolutionList {
-  s.ProductTypeDescription = &v
-  return s
-}
-
-func (s *EnrichResponseBodyDataSolutionList) SetRefundTicketCouponDescription(v string) *EnrichResponseBodyDataSolutionList {
-  s.RefundTicketCouponDescription = &v
   return s
 }
 
@@ -477,13 +448,13 @@ func (s *EnrichResponseBodyDataSolutionListJourneyList) Validate() error {
 }
 
 type EnrichResponseBodyDataSolutionListJourneyListSegmentList struct {
-  // arrival airport code (capitalized)
+  // arrival airport code
   // 
   // example:
   // 
   // MFM
   ArrivalAirport *string `json:"arrival_airport,omitempty" xml:"arrival_airport,omitempty"`
-  // arrival city code (capitalized)
+  // arrival city code
   // 
   // example:
   // 
@@ -495,7 +466,7 @@ type EnrichResponseBodyDataSolutionListJourneyListSegmentList struct {
   // 
   // T1
   ArrivalTerminal *string `json:"arrival_terminal,omitempty" xml:"arrival_terminal,omitempty"`
-  // arrival time in string format (yyyy-MM-dd HH:mm:ss)
+  // arrival time (yyyy-MM-dd HH:mm:ss)
   // 
   // example:
   // 
@@ -525,13 +496,13 @@ type EnrichResponseBodyDataSolutionListJourneyListSegmentList struct {
   // 
   // false
   CodeShare *bool `json:"code_share,omitempty" xml:"code_share,omitempty"`
-  // departure airport code (capitalized)
+  // departure airport code
   // 
   // example:
   // 
   // PVG
   DepartureAirport *string `json:"departure_airport,omitempty" xml:"departure_airport,omitempty"`
-  // departure city code (capitalized)
+  // departure city code
   // 
   // example:
   // 
@@ -543,7 +514,7 @@ type EnrichResponseBodyDataSolutionListJourneyListSegmentList struct {
   // 
   // T2
   DepartureTerminal *string `json:"departure_terminal,omitempty" xml:"departure_terminal,omitempty"`
-  // departure time in string format (yyyy-MM-dd HH:mm:ss)
+  // departure time (yyyy-MM-dd HH:mm:ss)
   // 
   // example:
   // 
@@ -591,7 +562,7 @@ type EnrichResponseBodyDataSolutionListJourneyListSegmentList struct {
   // 
   // HO1295
   OperatingFlightNo *string `json:"operating_flight_no,omitempty" xml:"operating_flight_no,omitempty"`
-  // segment ID format: flight no.+departure airport[IATA airport code]+arrival airport[IATA airport code]+departure time(MMdd)
+  // segment ID: flight no+departure airport+arrival airport+departure time(MMdd)
   // 
   // example:
   // 
@@ -949,6 +920,9 @@ func (s *EnrichResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList) V
 }
 
 type EnrichResponseBodyDataSolutionListSolutionAttribute struct {
+  IssueTimeInfo *EnrichResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo `json:"issue_time_info,omitempty" xml:"issue_time_info,omitempty" type:"Struct"`
+  // Supply source type 1:self-operated; 2:agent; 3:flagship store
+  // 
   // example:
   // 
   // 1
@@ -963,8 +937,17 @@ func (s EnrichResponseBodyDataSolutionListSolutionAttribute) GoString() string {
   return s.String()
 }
 
+func (s *EnrichResponseBodyDataSolutionListSolutionAttribute) GetIssueTimeInfo() *EnrichResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo  {
+  return s.IssueTimeInfo
+}
+
 func (s *EnrichResponseBodyDataSolutionListSolutionAttribute) GetSupplySourceType() *string  {
   return s.SupplySourceType
+}
+
+func (s *EnrichResponseBodyDataSolutionListSolutionAttribute) SetIssueTimeInfo(v *EnrichResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo) *EnrichResponseBodyDataSolutionListSolutionAttribute {
+  s.IssueTimeInfo = v
+  return s
 }
 
 func (s *EnrichResponseBodyDataSolutionListSolutionAttribute) SetSupplySourceType(v string) *EnrichResponseBodyDataSolutionListSolutionAttribute {
@@ -973,6 +956,46 @@ func (s *EnrichResponseBodyDataSolutionListSolutionAttribute) SetSupplySourceTyp
 }
 
 func (s *EnrichResponseBodyDataSolutionListSolutionAttribute) Validate() error {
+  if s.IssueTimeInfo != nil {
+    if err := s.IssueTimeInfo.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
+}
+
+type EnrichResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo struct {
+  IssueTicketType *int32 `json:"issue_ticket_type,omitempty" xml:"issue_ticket_type,omitempty"`
+  IssueTimeLimit *int32 `json:"issue_time_limit,omitempty" xml:"issue_time_limit,omitempty"`
+}
+
+func (s EnrichResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo) String() string {
+  return dara.Prettify(s)
+}
+
+func (s EnrichResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo) GoString() string {
+  return s.String()
+}
+
+func (s *EnrichResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo) GetIssueTicketType() *int32  {
+  return s.IssueTicketType
+}
+
+func (s *EnrichResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo) GetIssueTimeLimit() *int32  {
+  return s.IssueTimeLimit
+}
+
+func (s *EnrichResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo) SetIssueTicketType(v int32) *EnrichResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo {
+  s.IssueTicketType = &v
+  return s
+}
+
+func (s *EnrichResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo) SetIssueTimeLimit(v int32) *EnrichResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo {
+  s.IssueTimeLimit = &v
+  return s
+}
+
+func (s *EnrichResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo) Validate() error {
   return dara.Validate(s)
 }
 

@@ -26,6 +26,8 @@ type iRefundDetailResponseBody interface {
 }
 
 type RefundDetailResponseBody struct {
+	// RequestId
+	//
 	// example:
 	//
 	// 51593418-8C73-5E47-8BA8-3F1D4A00CC0B
@@ -648,7 +650,7 @@ type RefundDetailResponseBodyDataPassengerRefundDetailsPassenger struct {
 	//
 	// SAN
 	FirstName *string `json:"first_name,omitempty" xml:"first_name,omitempty"`
-	// first name
+	// last name
 	//
 	// example:
 	//
@@ -816,9 +818,9 @@ func (s *RefundDetailResponseBodyDataPassengerRefundDetailsRefundFee) Validate()
 }
 
 type RefundDetailResponseBodyDataRefundJourneys struct {
-	// segment list
+	// segment list info
 	SegmentList []*RefundDetailResponseBodyDataRefundJourneysSegmentList `json:"segment_list,omitempty" xml:"segment_list,omitempty" type:"Repeated"`
-	// number of transfer
+	// transfer count
 	//
 	// example:
 	//
@@ -866,13 +868,13 @@ func (s *RefundDetailResponseBodyDataRefundJourneys) Validate() error {
 }
 
 type RefundDetailResponseBodyDataRefundJourneysSegmentList struct {
-	// arrival airport code (capitalized)
+	// arrival airport code
 	//
 	// example:
 	//
 	// MFM
 	ArrivalAirport *string `json:"arrival_airport,omitempty" xml:"arrival_airport,omitempty"`
-	// arrival city code (capitalized)
+	// arrival city code
 	//
 	// example:
 	//
@@ -884,7 +886,7 @@ type RefundDetailResponseBodyDataRefundJourneysSegmentList struct {
 	//
 	// T1
 	ArrivalTerminal *string `json:"arrival_terminal,omitempty" xml:"arrival_terminal,omitempty"`
-	// arrival time in string format (yyyy-MM-dd HH:mm:ss)
+	// arrival time (yyyy-MM-dd HH:mm:ss)
 	//
 	// example:
 	//
@@ -896,7 +898,7 @@ type RefundDetailResponseBodyDataRefundJourneysSegmentList struct {
 	//
 	// 7
 	Availability *string `json:"availability,omitempty" xml:"availability,omitempty"`
-	// RBD
+	// carbin
 	//
 	// example:
 	//
@@ -914,13 +916,13 @@ type RefundDetailResponseBodyDataRefundJourneysSegmentList struct {
 	//
 	// false
 	CodeShare *bool `json:"code_share,omitempty" xml:"code_share,omitempty"`
-	// departure airport code (capitalized)
+	// departure airport code
 	//
 	// example:
 	//
 	// PVG
 	DepartureAirport *string `json:"departure_airport,omitempty" xml:"departure_airport,omitempty"`
-	// departure city code (capitalized)
+	// departure city code
 	//
 	// example:
 	//
@@ -932,7 +934,7 @@ type RefundDetailResponseBodyDataRefundJourneysSegmentList struct {
 	//
 	// T2
 	DepartureTerminal *string `json:"departure_terminal,omitempty" xml:"departure_terminal,omitempty"`
-	// departure time in string format (yyyy-MM-dd HH:mm:ss)
+	// departure time (yyyy-MM-dd HH:mm:ss)
 	//
 	// example:
 	//
@@ -980,7 +982,7 @@ type RefundDetailResponseBodyDataRefundJourneysSegmentList struct {
 	//
 	// HO1295
 	OperatingFlightNo *string `json:"operating_flight_no,omitempty" xml:"operating_flight_no,omitempty"`
-	// segment ID format: flight no.+departure airport[IATA airport code]+arrival airport[IATA airport code]+departure time(MMdd)
+	// segment ID: flight no.+departure airport+arrival airport+departure time(MMdd)
 	//
 	// example:
 	//

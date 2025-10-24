@@ -146,7 +146,7 @@ func (s *EnrichRequest) Validate() error {
 }
 
 type EnrichRequestJourneyParamList struct {
-  // arrival city code (capitalized)
+  // arrival city code
   // 
   // This parameter is required.
   // 
@@ -154,7 +154,7 @@ type EnrichRequestJourneyParamList struct {
   // 
   // MFM
   ArrivalCity *string `json:"arrival_city,omitempty" xml:"arrival_city,omitempty"`
-  // departure city code (capitalized)
+  // departure city code
   // 
   // This parameter is required.
   // 
@@ -234,15 +234,13 @@ func (s *EnrichRequestJourneyParamList) Validate() error {
 }
 
 type EnrichRequestJourneyParamListSegmentParamList struct {
-  // arrival airport code (capitalized)
+  // arrival airport code
   // 
   // example:
   // 
   // MFM
   ArrivalAirport *string `json:"arrival_airport,omitempty" xml:"arrival_airport,omitempty"`
-  // arrival city code (capitalized)
-  // 
-  // This parameter is required.
+  // arrival city code
   // 
   // example:
   // 
@@ -260,15 +258,13 @@ type EnrichRequestJourneyParamListSegmentParamList struct {
   // 
   // E
   ChildCabin *string `json:"child_cabin,omitempty" xml:"child_cabin,omitempty"`
-  // departure airport code (capitalized)
+  // departure airport code
   // 
   // example:
   // 
   // PVG
   DepartureAirport *string `json:"departure_airport,omitempty" xml:"departure_airport,omitempty"`
-  // departure city code (capitalized)
-  // 
-  // This parameter is required.
+  // departure city code
   // 
   // example:
   // 

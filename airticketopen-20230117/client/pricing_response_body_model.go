@@ -506,6 +506,7 @@ type PricingResponseBodyDataSolution struct {
 	SegmentBaggageMappingList []*PricingResponseBodyDataSolutionSegmentBaggageMappingList `json:"segment_baggage_mapping_list,omitempty" xml:"segment_baggage_mapping_list,omitempty" type:"Repeated"`
 	// change and refund policy
 	SegmentRefundChangeRuleMappingList []*PricingResponseBodyDataSolutionSegmentRefundChangeRuleMappingList `json:"segment_refund_change_rule_mapping_list,omitempty" xml:"segment_refund_change_rule_mapping_list,omitempty" type:"Repeated"`
+	SolutionAttribute                  *PricingResponseBodyDataSolutionSolutionAttribute                    `json:"solution_attribute,omitempty" xml:"solution_attribute,omitempty" type:"Struct"`
 	// solution_id, equals to solution_id in request
 	//
 	// example:
@@ -568,6 +569,10 @@ func (s *PricingResponseBodyDataSolution) GetSegmentBaggageMappingList() []*Pric
 
 func (s *PricingResponseBodyDataSolution) GetSegmentRefundChangeRuleMappingList() []*PricingResponseBodyDataSolutionSegmentRefundChangeRuleMappingList {
 	return s.SegmentRefundChangeRuleMappingList
+}
+
+func (s *PricingResponseBodyDataSolution) GetSolutionAttribute() *PricingResponseBodyDataSolutionSolutionAttribute {
+	return s.SolutionAttribute
 }
 
 func (s *PricingResponseBodyDataSolution) GetSolutionId() *string {
@@ -634,6 +639,11 @@ func (s *PricingResponseBodyDataSolution) SetSegmentRefundChangeRuleMappingList(
 	return s
 }
 
+func (s *PricingResponseBodyDataSolution) SetSolutionAttribute(v *PricingResponseBodyDataSolutionSolutionAttribute) *PricingResponseBodyDataSolution {
+	s.SolutionAttribute = v
+	return s
+}
+
 func (s *PricingResponseBodyDataSolution) SetSolutionId(v string) *PricingResponseBodyDataSolution {
 	s.SolutionId = &v
 	return s
@@ -674,6 +684,11 @@ func (s *PricingResponseBodyDataSolution) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.SolutionAttribute != nil {
+		if err := s.SolutionAttribute.Validate(); err != nil {
+			return err
 		}
 	}
 	return nil
@@ -1194,5 +1209,80 @@ func (s *PricingResponseBodyDataSolutionSegmentRefundChangeRuleMappingList) SetS
 }
 
 func (s *PricingResponseBodyDataSolutionSegmentRefundChangeRuleMappingList) Validate() error {
+	return dara.Validate(s)
+}
+
+type PricingResponseBodyDataSolutionSolutionAttribute struct {
+	IssueTimeInfo    *PricingResponseBodyDataSolutionSolutionAttributeIssueTimeInfo `json:"issue_time_info,omitempty" xml:"issue_time_info,omitempty" type:"Struct"`
+	SupplySourceType *string                                                        `json:"supply_source_type,omitempty" xml:"supply_source_type,omitempty"`
+}
+
+func (s PricingResponseBodyDataSolutionSolutionAttribute) String() string {
+	return dara.Prettify(s)
+}
+
+func (s PricingResponseBodyDataSolutionSolutionAttribute) GoString() string {
+	return s.String()
+}
+
+func (s *PricingResponseBodyDataSolutionSolutionAttribute) GetIssueTimeInfo() *PricingResponseBodyDataSolutionSolutionAttributeIssueTimeInfo {
+	return s.IssueTimeInfo
+}
+
+func (s *PricingResponseBodyDataSolutionSolutionAttribute) GetSupplySourceType() *string {
+	return s.SupplySourceType
+}
+
+func (s *PricingResponseBodyDataSolutionSolutionAttribute) SetIssueTimeInfo(v *PricingResponseBodyDataSolutionSolutionAttributeIssueTimeInfo) *PricingResponseBodyDataSolutionSolutionAttribute {
+	s.IssueTimeInfo = v
+	return s
+}
+
+func (s *PricingResponseBodyDataSolutionSolutionAttribute) SetSupplySourceType(v string) *PricingResponseBodyDataSolutionSolutionAttribute {
+	s.SupplySourceType = &v
+	return s
+}
+
+func (s *PricingResponseBodyDataSolutionSolutionAttribute) Validate() error {
+	if s.IssueTimeInfo != nil {
+		if err := s.IssueTimeInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type PricingResponseBodyDataSolutionSolutionAttributeIssueTimeInfo struct {
+	IssueTicketType *int32 `json:"issue_ticket_type,omitempty" xml:"issue_ticket_type,omitempty"`
+	IssueTimeLimit  *int32 `json:"issue_time_limit,omitempty" xml:"issue_time_limit,omitempty"`
+}
+
+func (s PricingResponseBodyDataSolutionSolutionAttributeIssueTimeInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s PricingResponseBodyDataSolutionSolutionAttributeIssueTimeInfo) GoString() string {
+	return s.String()
+}
+
+func (s *PricingResponseBodyDataSolutionSolutionAttributeIssueTimeInfo) GetIssueTicketType() *int32 {
+	return s.IssueTicketType
+}
+
+func (s *PricingResponseBodyDataSolutionSolutionAttributeIssueTimeInfo) GetIssueTimeLimit() *int32 {
+	return s.IssueTimeLimit
+}
+
+func (s *PricingResponseBodyDataSolutionSolutionAttributeIssueTimeInfo) SetIssueTicketType(v int32) *PricingResponseBodyDataSolutionSolutionAttributeIssueTimeInfo {
+	s.IssueTicketType = &v
+	return s
+}
+
+func (s *PricingResponseBodyDataSolutionSolutionAttributeIssueTimeInfo) SetIssueTimeLimit(v int32) *PricingResponseBodyDataSolutionSolutionAttributeIssueTimeInfo {
+	s.IssueTimeLimit = &v
+	return s
+}
+
+func (s *PricingResponseBodyDataSolutionSolutionAttributeIssueTimeInfo) Validate() error {
 	return dara.Validate(s)
 }
