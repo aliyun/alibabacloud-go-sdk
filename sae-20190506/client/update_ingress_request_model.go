@@ -19,6 +19,8 @@ type iUpdateIngressRequest interface {
 	GetDefaultRule() *string
 	SetDescription(v string) *UpdateIngressRequest
 	GetDescription() *string
+	SetEnableGzip(v bool) *UpdateIngressRequest
+	GetEnableGzip() *bool
 	SetEnableXForwardedFor(v bool) *UpdateIngressRequest
 	GetEnableXForwardedFor() *bool
 	SetEnableXForwardedForClientSrcPort(v bool) *UpdateIngressRequest
@@ -87,6 +89,7 @@ type UpdateIngressRequest struct {
 	//
 	// ingress-sae-test
 	Description                      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableGzip                       *bool   `json:"EnableGzip,omitempty" xml:"EnableGzip,omitempty"`
 	EnableXForwardedFor              *bool   `json:"EnableXForwardedFor,omitempty" xml:"EnableXForwardedFor,omitempty"`
 	EnableXForwardedForClientSrcPort *bool   `json:"EnableXForwardedForClientSrcPort,omitempty" xml:"EnableXForwardedForClientSrcPort,omitempty"`
 	EnableXForwardedForProto         *bool   `json:"EnableXForwardedForProto,omitempty" xml:"EnableXForwardedForProto,omitempty"`
@@ -186,6 +189,10 @@ func (s *UpdateIngressRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *UpdateIngressRequest) GetEnableGzip() *bool {
+	return s.EnableGzip
+}
+
 func (s *UpdateIngressRequest) GetEnableXForwardedFor() *bool {
 	return s.EnableXForwardedFor
 }
@@ -260,6 +267,11 @@ func (s *UpdateIngressRequest) SetDefaultRule(v string) *UpdateIngressRequest {
 
 func (s *UpdateIngressRequest) SetDescription(v string) *UpdateIngressRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateIngressRequest) SetEnableGzip(v bool) *UpdateIngressRequest {
+	s.EnableGzip = &v
 	return s
 }
 

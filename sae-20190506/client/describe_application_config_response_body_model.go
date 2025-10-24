@@ -506,7 +506,9 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// example:
 	//
 	// {"exec":{"command":["curl http://localhost:8080"]},"initialDelaySeconds":20,"timeoutSeconds":3}
-	Liveness *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	Liveness              *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	MaxSurgeInstanceRatio *int32  `json:"MaxSurgeInstanceRatio,omitempty" xml:"MaxSurgeInstanceRatio,omitempty"`
+	MaxSurgeInstances     *int32  `json:"MaxSurgeInstances,omitempty" xml:"MaxSurgeInstances,omitempty"`
 	// The size of memory required by each instance. Unit: MB. You cannot set this parameter to 0. The values of this parameter correspond to the values of the Cpu parameter:
 	//
 	// 	- This parameter is set to **1024*	- if the Cpu parameter is set to 500 or 1000.
@@ -1127,6 +1129,14 @@ func (s *DescribeApplicationConfigResponseBodyData) GetLiveness() *string {
 	return s.Liveness
 }
 
+func (s *DescribeApplicationConfigResponseBodyData) GetMaxSurgeInstanceRatio() *int32 {
+	return s.MaxSurgeInstanceRatio
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) GetMaxSurgeInstances() *int32 {
+	return s.MaxSurgeInstances
+}
+
 func (s *DescribeApplicationConfigResponseBodyData) GetMemory() *int32 {
 	return s.Memory
 }
@@ -1543,6 +1553,16 @@ func (s *DescribeApplicationConfigResponseBodyData) SetKafkaConfigs(v string) *D
 
 func (s *DescribeApplicationConfigResponseBodyData) SetLiveness(v string) *DescribeApplicationConfigResponseBodyData {
 	s.Liveness = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetMaxSurgeInstanceRatio(v int32) *DescribeApplicationConfigResponseBodyData {
+	s.MaxSurgeInstanceRatio = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetMaxSurgeInstances(v int32) *DescribeApplicationConfigResponseBodyData {
+	s.MaxSurgeInstances = &v
 	return s
 }
 

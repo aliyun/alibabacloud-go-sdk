@@ -1092,6 +1092,10 @@ func (client *Client) CreateIngressWithContext(ctx context.Context, request *Cre
 		query["Description"] = request.Description
 	}
 
+	if !dara.IsNil(request.EnableGzip) {
+		query["EnableGzip"] = request.EnableGzip
+	}
+
 	if !dara.IsNil(request.EnableXForwardedFor) {
 		query["EnableXForwardedFor"] = request.EnableXForwardedFor
 	}
@@ -2686,6 +2690,14 @@ func (client *Client) DeployApplicationWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(request.Liveness) {
 		query["Liveness"] = request.Liveness
+	}
+
+	if !dara.IsNil(request.MaxSurgeInstanceRatio) {
+		query["MaxSurgeInstanceRatio"] = request.MaxSurgeInstanceRatio
+	}
+
+	if !dara.IsNil(request.MaxSurgeInstances) {
+		query["MaxSurgeInstances"] = request.MaxSurgeInstances
 	}
 
 	if !dara.IsNil(request.Memory) {
@@ -8506,6 +8518,10 @@ func (client *Client) UpdateIngressWithContext(ctx context.Context, request *Upd
 
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EnableGzip) {
+		query["EnableGzip"] = request.EnableGzip
 	}
 
 	if !dara.IsNil(request.EnableXForwardedFor) {

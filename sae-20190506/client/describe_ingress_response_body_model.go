@@ -185,6 +185,7 @@ type DescribeIngressResponseBodyData struct {
 	//
 	// ingress-sae-test
 	Description                      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableGzip                       *bool   `json:"EnableGzip,omitempty" xml:"EnableGzip,omitempty"`
 	EnableXForwardedFor              *bool   `json:"EnableXForwardedFor,omitempty" xml:"EnableXForwardedFor,omitempty"`
 	EnableXForwardedForClientSrcPort *bool   `json:"EnableXForwardedForClientSrcPort,omitempty" xml:"EnableXForwardedForClientSrcPort,omitempty"`
 	EnableXForwardedForProto         *bool   `json:"EnableXForwardedForProto,omitempty" xml:"EnableXForwardedForProto,omitempty"`
@@ -300,6 +301,10 @@ func (s *DescribeIngressResponseBodyData) GetDescription() *string {
 	return s.Description
 }
 
+func (s *DescribeIngressResponseBodyData) GetEnableGzip() *bool {
+	return s.EnableGzip
+}
+
 func (s *DescribeIngressResponseBodyData) GetEnableXForwardedFor() *bool {
 	return s.EnableXForwardedFor
 }
@@ -395,6 +400,11 @@ func (s *DescribeIngressResponseBodyData) SetDefaultRule(v *DescribeIngressRespo
 
 func (s *DescribeIngressResponseBodyData) SetDescription(v string) *DescribeIngressResponseBodyData {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeIngressResponseBodyData) SetEnableGzip(v bool) *DescribeIngressResponseBodyData {
+	s.EnableGzip = &v
 	return s
 }
 

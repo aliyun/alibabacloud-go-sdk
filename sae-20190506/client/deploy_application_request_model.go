@@ -79,6 +79,10 @@ type iDeployApplicationRequest interface {
 	GetKafkaConfigs() *string
 	SetLiveness(v string) *DeployApplicationRequest
 	GetLiveness() *string
+	SetMaxSurgeInstanceRatio(v int32) *DeployApplicationRequest
+	GetMaxSurgeInstanceRatio() *int32
+	SetMaxSurgeInstances(v int32) *DeployApplicationRequest
+	GetMaxSurgeInstances() *int32
 	SetMemory(v int32) *DeployApplicationRequest
 	GetMemory() *int32
 	SetMicroRegistration(v string) *DeployApplicationRequest
@@ -514,7 +518,9 @@ type DeployApplicationRequest struct {
 	// example:
 	//
 	// {"exec":{"command":["sleep","5s"]},"initialDelaySeconds":10,"timeoutSeconds":11}
-	Liveness *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	Liveness              *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	MaxSurgeInstanceRatio *int32  `json:"MaxSurgeInstanceRatio,omitempty" xml:"MaxSurgeInstanceRatio,omitempty"`
+	MaxSurgeInstances     *int32  `json:"MaxSurgeInstances,omitempty" xml:"MaxSurgeInstances,omitempty"`
 	// The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
 	//
 	// 	- This parameter is set to **1024*	- if the Cpu parameter is set to 500 or 1000.
@@ -1153,6 +1159,14 @@ func (s *DeployApplicationRequest) GetLiveness() *string {
 	return s.Liveness
 }
 
+func (s *DeployApplicationRequest) GetMaxSurgeInstanceRatio() *int32 {
+	return s.MaxSurgeInstanceRatio
+}
+
+func (s *DeployApplicationRequest) GetMaxSurgeInstances() *int32 {
+	return s.MaxSurgeInstances
+}
+
 func (s *DeployApplicationRequest) GetMemory() *int32 {
 	return s.Memory
 }
@@ -1497,6 +1511,16 @@ func (s *DeployApplicationRequest) SetKafkaConfigs(v string) *DeployApplicationR
 
 func (s *DeployApplicationRequest) SetLiveness(v string) *DeployApplicationRequest {
 	s.Liveness = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetMaxSurgeInstanceRatio(v int32) *DeployApplicationRequest {
+	s.MaxSurgeInstanceRatio = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetMaxSurgeInstances(v int32) *DeployApplicationRequest {
+	s.MaxSurgeInstances = &v
 	return s
 }
 

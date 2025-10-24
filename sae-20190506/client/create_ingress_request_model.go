@@ -21,6 +21,8 @@ type iCreateIngressRequest interface {
 	GetDefaultRule() *string
 	SetDescription(v string) *CreateIngressRequest
 	GetDescription() *string
+	SetEnableGzip(v bool) *CreateIngressRequest
+	GetEnableGzip() *bool
 	SetEnableXForwardedFor(v bool) *CreateIngressRequest
 	GetEnableXForwardedFor() *bool
 	SetEnableXForwardedForClientSrcPort(v bool) *CreateIngressRequest
@@ -96,6 +98,7 @@ type CreateIngressRequest struct {
 	//
 	// ingress-for-sae-test
 	Description                      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableGzip                       *bool   `json:"EnableGzip,omitempty" xml:"EnableGzip,omitempty"`
 	EnableXForwardedFor              *bool   `json:"EnableXForwardedFor,omitempty" xml:"EnableXForwardedFor,omitempty"`
 	EnableXForwardedForClientSrcPort *bool   `json:"EnableXForwardedForClientSrcPort,omitempty" xml:"EnableXForwardedForClientSrcPort,omitempty"`
 	EnableXForwardedForProto         *bool   `json:"EnableXForwardedForProto,omitempty" xml:"EnableXForwardedForProto,omitempty"`
@@ -221,6 +224,10 @@ func (s *CreateIngressRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *CreateIngressRequest) GetEnableGzip() *bool {
+	return s.EnableGzip
+}
+
 func (s *CreateIngressRequest) GetEnableXForwardedFor() *bool {
 	return s.EnableXForwardedFor
 }
@@ -312,6 +319,11 @@ func (s *CreateIngressRequest) SetDefaultRule(v string) *CreateIngressRequest {
 
 func (s *CreateIngressRequest) SetDescription(v string) *CreateIngressRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateIngressRequest) SetEnableGzip(v bool) *CreateIngressRequest {
+	s.EnableGzip = &v
 	return s
 }
 
