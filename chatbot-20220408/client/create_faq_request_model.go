@@ -21,6 +21,8 @@ type iCreateFaqRequest interface {
 	GetSolutionType() *int32
 	SetStartDate(v string) *CreateFaqRequest
 	GetStartDate() *string
+	SetTagIdList(v []*int64) *CreateFaqRequest
+	GetTagIdList() []*int64
 	SetTitle(v string) *CreateFaqRequest
 	GetTitle() *string
 }
@@ -48,7 +50,8 @@ type CreateFaqRequest struct {
 	// example:
 	//
 	// 2022-05-25T16:28:36Z
-	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StartDate *string  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	TagIdList []*int64 `json:"TagIdList,omitempty" xml:"TagIdList,omitempty" type:"Repeated"`
 	// This parameter is required.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
@@ -85,6 +88,10 @@ func (s *CreateFaqRequest) GetStartDate() *string {
 	return s.StartDate
 }
 
+func (s *CreateFaqRequest) GetTagIdList() []*int64 {
+	return s.TagIdList
+}
+
 func (s *CreateFaqRequest) GetTitle() *string {
 	return s.Title
 }
@@ -116,6 +123,11 @@ func (s *CreateFaqRequest) SetSolutionType(v int32) *CreateFaqRequest {
 
 func (s *CreateFaqRequest) SetStartDate(v string) *CreateFaqRequest {
 	s.StartDate = &v
+	return s
+}
+
+func (s *CreateFaqRequest) SetTagIdList(v []*int64) *CreateFaqRequest {
+	s.TagIdList = v
 	return s
 }
 

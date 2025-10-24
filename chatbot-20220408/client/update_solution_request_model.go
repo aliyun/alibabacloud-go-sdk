@@ -19,6 +19,8 @@ type iUpdateSolutionRequest interface {
 	GetPerspectiveCodes() []*string
 	SetSolutionId(v int64) *UpdateSolutionRequest
 	GetSolutionId() *int64
+	SetTagIdList(v []*int64) *UpdateSolutionRequest
+	GetTagIdList() []*int64
 }
 
 type UpdateSolutionRequest struct {
@@ -39,7 +41,8 @@ type UpdateSolutionRequest struct {
 	// example:
 	//
 	// 100001333260
-	SolutionId *int64 `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+	SolutionId *int64   `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+	TagIdList  []*int64 `json:"TagIdList,omitempty" xml:"TagIdList,omitempty" type:"Repeated"`
 }
 
 func (s UpdateSolutionRequest) String() string {
@@ -70,6 +73,10 @@ func (s *UpdateSolutionRequest) GetSolutionId() *int64 {
 	return s.SolutionId
 }
 
+func (s *UpdateSolutionRequest) GetTagIdList() []*int64 {
+	return s.TagIdList
+}
+
 func (s *UpdateSolutionRequest) SetAgentKey(v string) *UpdateSolutionRequest {
 	s.AgentKey = &v
 	return s
@@ -92,6 +99,11 @@ func (s *UpdateSolutionRequest) SetPerspectiveCodes(v []*string) *UpdateSolution
 
 func (s *UpdateSolutionRequest) SetSolutionId(v int64) *UpdateSolutionRequest {
 	s.SolutionId = &v
+	return s
+}
+
+func (s *UpdateSolutionRequest) SetTagIdList(v []*int64) *UpdateSolutionRequest {
+	s.TagIdList = v
 	return s
 }
 

@@ -759,18 +759,24 @@ func (client *Client) CreateDocWithContext(ctx context.Context, tmpReq *CreateDo
 //
 // 新建FAQ
 //
-// @param request - CreateFaqRequest
+// @param tmpReq - CreateFaqRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateFaqResponse
-func (client *Client) CreateFaqWithContext(ctx context.Context, request *CreateFaqRequest, runtime *dara.RuntimeOptions) (_result *CreateFaqResponse, _err error) {
+func (client *Client) CreateFaqWithContext(ctx context.Context, tmpReq *CreateFaqRequest, runtime *dara.RuntimeOptions) (_result *CreateFaqResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &CreateFaqShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TagIdList) {
+		request.TagIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagIdList, dara.String("TagIdList"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
 		query["AgentKey"] = request.AgentKey
@@ -795,6 +801,10 @@ func (client *Client) CreateFaqWithContext(ctx context.Context, request *CreateF
 
 	if !dara.IsNil(request.StartDate) {
 		body["StartDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.TagIdListShrink) {
+		body["TagIdList"] = request.TagIdListShrink
 	}
 
 	if !dara.IsNil(request.Title) {
@@ -1217,18 +1227,24 @@ func (client *Client) CreateSimQuestionWithContext(ctx context.Context, request 
 //
 // 新建FAQ答案
 //
-// @param request - CreateSolutionRequest
+// @param tmpReq - CreateSolutionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSolutionResponse
-func (client *Client) CreateSolutionWithContext(ctx context.Context, request *CreateSolutionRequest, runtime *dara.RuntimeOptions) (_result *CreateSolutionResponse, _err error) {
+func (client *Client) CreateSolutionWithContext(ctx context.Context, tmpReq *CreateSolutionRequest, runtime *dara.RuntimeOptions) (_result *CreateSolutionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &CreateSolutionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TagIdList) {
+		request.TagIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagIdList, dara.String("TagIdList"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
 		query["AgentKey"] = request.AgentKey
@@ -1250,8 +1266,14 @@ func (client *Client) CreateSolutionWithContext(ctx context.Context, request *Cr
 		query["PerspectiveCodes"] = request.PerspectiveCodes
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TagIdListShrink) {
+		body["TagIdList"] = request.TagIdListShrink
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateSolution"),
@@ -1265,6 +1287,118 @@ func (client *Client) CreateSolutionWithContext(ctx context.Context, request *Cr
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSolutionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 标签创建
+//
+// @param request - CreateTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTagResponse
+func (client *Client) CreateTagWithContext(ctx context.Context, request *CreateTagRequest, runtime *dara.RuntimeOptions) (_result *CreateTagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentKey) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GroupId) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.TagName) {
+		body["TagName"] = request.TagName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTag"),
+		Version:     dara.String("2022-04-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTagResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 标签组创建
+//
+// @param request - CreateTagGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTagGroupResponse
+func (client *Client) CreateTagGroupWithContext(ctx context.Context, request *CreateTagGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateTagGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentKey) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GroupName) {
+		body["GroupName"] = request.GroupName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTagGroup"),
+		Version:     dara.String("2022-04-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTagGroupResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1943,6 +2077,118 @@ func (client *Client) DeleteSolutionWithContext(ctx context.Context, request *De
 
 // Summary:
 //
+// 标签删除
+//
+// @param request - DeleteTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTagResponse
+func (client *Client) DeleteTagWithContext(ctx context.Context, request *DeleteTagRequest, runtime *dara.RuntimeOptions) (_result *DeleteTagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentKey) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GroupId) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteTag"),
+		Version:     dara.String("2022-04-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteTagResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 标签组删除
+//
+// @param request - DeleteTagGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTagGroupResponse
+func (client *Client) DeleteTagGroupWithContext(ctx context.Context, request *DeleteTagGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteTagGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentKey) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteTagGroup"),
+		Version:     dara.String("2022-04-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteTagGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 意图-用户话术-删除
 //
 // @param request - DeleteUserSayRequest
@@ -2343,6 +2589,118 @@ func (client *Client) DescribePerspectiveWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePerspectiveResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 标签详情
+//
+// @param request - DescribeTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTagResponse
+func (client *Client) DescribeTagWithContext(ctx context.Context, request *DescribeTagRequest, runtime *dara.RuntimeOptions) (_result *DescribeTagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentKey) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GroupId) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeTag"),
+		Version:     dara.String("2022-04-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeTagResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 标签组详情
+//
+// @param request - DescribeTagGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTagGroupResponse
+func (client *Client) DescribeTagGroupWithContext(ctx context.Context, request *DescribeTagGroupRequest, runtime *dara.RuntimeOptions) (_result *DescribeTagGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentKey) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeTagGroup"),
+		Version:     dara.String("2022-04-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeTagGroupResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3517,6 +3875,134 @@ func (client *Client) ListSolutionWithContext(ctx context.Context, request *List
 
 // Summary:
 //
+// 标签查询
+//
+// @param request - ListTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResponse
+func (client *Client) ListTagWithContext(ctx context.Context, request *ListTagRequest, runtime *dara.RuntimeOptions) (_result *ListTagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentKey) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GroupId) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.TagName) {
+		body["TagName"] = request.TagName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTag"),
+		Version:     dara.String("2022-04-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTagResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 标签组查询
+//
+// @param request - ListTagGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagGroupResponse
+func (client *Client) ListTagGroupWithContext(ctx context.Context, request *ListTagGroupRequest, runtime *dara.RuntimeOptions) (_result *ListTagGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentKey) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GroupName) {
+		body["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTagGroup"),
+		Version:     dara.String("2022-04-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTagGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Tongyi对话明细查询接口
 //
 // @param request - ListTongyiChatHistorysRequest
@@ -4475,18 +4961,24 @@ func (client *Client) UpdateDocWithContext(ctx context.Context, tmpReq *UpdateDo
 //
 // 更新FAQ
 //
-// @param request - UpdateFaqRequest
+// @param tmpReq - UpdateFaqRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateFaqResponse
-func (client *Client) UpdateFaqWithContext(ctx context.Context, request *UpdateFaqRequest, runtime *dara.RuntimeOptions) (_result *UpdateFaqResponse, _err error) {
+func (client *Client) UpdateFaqWithContext(ctx context.Context, tmpReq *UpdateFaqRequest, runtime *dara.RuntimeOptions) (_result *UpdateFaqResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &UpdateFaqShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TagIdList) {
+		request.TagIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagIdList, dara.String("TagIdList"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
 		query["AgentKey"] = request.AgentKey
@@ -4507,6 +4999,10 @@ func (client *Client) UpdateFaqWithContext(ctx context.Context, request *UpdateF
 
 	if !dara.IsNil(request.StartDate) {
 		body["StartDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.TagIdListShrink) {
+		body["TagIdList"] = request.TagIdListShrink
 	}
 
 	if !dara.IsNil(request.Title) {
@@ -4827,18 +5323,24 @@ func (client *Client) UpdateSimQuestionWithContext(ctx context.Context, request 
 //
 // 更新FAQ答案
 //
-// @param request - UpdateSolutionRequest
+// @param tmpReq - UpdateSolutionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateSolutionResponse
-func (client *Client) UpdateSolutionWithContext(ctx context.Context, request *UpdateSolutionRequest, runtime *dara.RuntimeOptions) (_result *UpdateSolutionResponse, _err error) {
+func (client *Client) UpdateSolutionWithContext(ctx context.Context, tmpReq *UpdateSolutionRequest, runtime *dara.RuntimeOptions) (_result *UpdateSolutionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &UpdateSolutionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TagIdList) {
+		request.TagIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagIdList, dara.String("TagIdList"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
 		query["AgentKey"] = request.AgentKey
@@ -4861,6 +5363,10 @@ func (client *Client) UpdateSolutionWithContext(ctx context.Context, request *Up
 		body["SolutionId"] = request.SolutionId
 	}
 
+	if !dara.IsNil(request.TagIdListShrink) {
+		body["TagIdList"] = request.TagIdListShrink
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 		Body:  openapiutil.ParseToMap(body),
@@ -4877,6 +5383,126 @@ func (client *Client) UpdateSolutionWithContext(ctx context.Context, request *Up
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateSolutionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 标签编辑
+//
+// @param request - UpdateTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTagResponse
+func (client *Client) UpdateTagWithContext(ctx context.Context, request *UpdateTagRequest, runtime *dara.RuntimeOptions) (_result *UpdateTagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentKey) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GroupId) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.TagName) {
+		body["TagName"] = request.TagName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateTag"),
+		Version:     dara.String("2022-04-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateTagResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 标签组编辑
+//
+// @param request - UpdateTagGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTagGroupResponse
+func (client *Client) UpdateTagGroupWithContext(ctx context.Context, request *UpdateTagGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateTagGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentKey) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GroupName) {
+		body["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateTagGroup"),
+		Version:     dara.String("2022-04-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateTagGroupResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

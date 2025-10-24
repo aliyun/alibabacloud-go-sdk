@@ -37,6 +37,8 @@ type iDescribeFaqResponseBody interface {
 	GetStartDate() *string
 	SetStatus(v int32) *DescribeFaqResponseBody
 	GetStatus() *int32
+	SetTagIdList(v []*int64) *DescribeFaqResponseBody
+	GetTagIdList() []*int64
 	SetTitle(v string) *DescribeFaqResponseBody
 	GetTitle() *string
 }
@@ -88,8 +90,9 @@ type DescribeFaqResponseBody struct {
 	// example:
 	//
 	// 3
-	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Status    *int32   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagIdList []*int64 `json:"TagIdList,omitempty" xml:"TagIdList,omitempty" type:"Repeated"`
+	Title     *string  `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s DescribeFaqResponseBody) String() string {
@@ -154,6 +157,10 @@ func (s *DescribeFaqResponseBody) GetStartDate() *string {
 
 func (s *DescribeFaqResponseBody) GetStatus() *int32 {
 	return s.Status
+}
+
+func (s *DescribeFaqResponseBody) GetTagIdList() []*int64 {
+	return s.TagIdList
 }
 
 func (s *DescribeFaqResponseBody) GetTitle() *string {
@@ -227,6 +234,11 @@ func (s *DescribeFaqResponseBody) SetStartDate(v string) *DescribeFaqResponseBod
 
 func (s *DescribeFaqResponseBody) SetStatus(v int32) *DescribeFaqResponseBody {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeFaqResponseBody) SetTagIdList(v []*int64) *DescribeFaqResponseBody {
+	s.TagIdList = v
 	return s
 }
 

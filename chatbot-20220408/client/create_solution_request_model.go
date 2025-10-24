@@ -19,6 +19,8 @@ type iCreateSolutionRequest interface {
 	GetKnowledgeId() *int64
 	SetPerspectiveCodes(v []*string) *CreateSolutionRequest
 	GetPerspectiveCodes() []*string
+	SetTagIdList(v []*int64) *CreateSolutionRequest
+	GetTagIdList() []*int64
 }
 
 type CreateSolutionRequest struct {
@@ -40,6 +42,7 @@ type CreateSolutionRequest struct {
 	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 	// This parameter is required.
 	PerspectiveCodes []*string `json:"PerspectiveCodes,omitempty" xml:"PerspectiveCodes,omitempty" type:"Repeated"`
+	TagIdList        []*int64  `json:"TagIdList,omitempty" xml:"TagIdList,omitempty" type:"Repeated"`
 }
 
 func (s CreateSolutionRequest) String() string {
@@ -70,6 +73,10 @@ func (s *CreateSolutionRequest) GetPerspectiveCodes() []*string {
 	return s.PerspectiveCodes
 }
 
+func (s *CreateSolutionRequest) GetTagIdList() []*int64 {
+	return s.TagIdList
+}
+
 func (s *CreateSolutionRequest) SetAgentKey(v string) *CreateSolutionRequest {
 	s.AgentKey = &v
 	return s
@@ -92,6 +99,11 @@ func (s *CreateSolutionRequest) SetKnowledgeId(v int64) *CreateSolutionRequest {
 
 func (s *CreateSolutionRequest) SetPerspectiveCodes(v []*string) *CreateSolutionRequest {
 	s.PerspectiveCodes = v
+	return s
+}
+
+func (s *CreateSolutionRequest) SetTagIdList(v []*int64) *CreateSolutionRequest {
+	s.TagIdList = v
 	return s
 }
 

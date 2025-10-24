@@ -81,7 +81,8 @@ type ListSolutionResponseBodySolutions struct {
 	// example:
 	//
 	// 496
-	SolutionId *int64 `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+	SolutionId *int64   `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+	TagIdList  []*int64 `json:"TagIdList,omitempty" xml:"TagIdList,omitempty" type:"Repeated"`
 }
 
 func (s ListSolutionResponseBodySolutions) String() string {
@@ -120,6 +121,10 @@ func (s *ListSolutionResponseBodySolutions) GetSolutionId() *int64 {
 	return s.SolutionId
 }
 
+func (s *ListSolutionResponseBodySolutions) GetTagIdList() []*int64 {
+	return s.TagIdList
+}
+
 func (s *ListSolutionResponseBodySolutions) SetContent(v string) *ListSolutionResponseBodySolutions {
 	s.Content = &v
 	return s
@@ -152,6 +157,11 @@ func (s *ListSolutionResponseBodySolutions) SetPlainText(v string) *ListSolution
 
 func (s *ListSolutionResponseBodySolutions) SetSolutionId(v int64) *ListSolutionResponseBodySolutions {
 	s.SolutionId = &v
+	return s
+}
+
+func (s *ListSolutionResponseBodySolutions) SetTagIdList(v []*int64) *ListSolutionResponseBodySolutions {
+	s.TagIdList = v
 	return s
 }
 

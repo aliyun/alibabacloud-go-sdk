@@ -19,6 +19,8 @@ type iUpdateFaqRequest interface {
 	GetKnowledgeId() *int64
 	SetStartDate(v string) *UpdateFaqRequest
 	GetStartDate() *string
+	SetTagIdList(v []*int64) *UpdateFaqRequest
+	GetTagIdList() []*int64
 	SetTitle(v string) *UpdateFaqRequest
 	GetTitle() *string
 }
@@ -47,7 +49,8 @@ type UpdateFaqRequest struct {
 	// example:
 	//
 	// 2022-05-27T05:18:20Z
-	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StartDate *string  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	TagIdList []*int64 `json:"TagIdList,omitempty" xml:"TagIdList,omitempty" type:"Repeated"`
 	// This parameter is required.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
@@ -80,6 +83,10 @@ func (s *UpdateFaqRequest) GetStartDate() *string {
 	return s.StartDate
 }
 
+func (s *UpdateFaqRequest) GetTagIdList() []*int64 {
+	return s.TagIdList
+}
+
 func (s *UpdateFaqRequest) GetTitle() *string {
 	return s.Title
 }
@@ -106,6 +113,11 @@ func (s *UpdateFaqRequest) SetKnowledgeId(v int64) *UpdateFaqRequest {
 
 func (s *UpdateFaqRequest) SetStartDate(v string) *UpdateFaqRequest {
 	s.StartDate = &v
+	return s
+}
+
+func (s *UpdateFaqRequest) SetTagIdList(v []*int64) *UpdateFaqRequest {
+	s.TagIdList = v
 	return s
 }
 
