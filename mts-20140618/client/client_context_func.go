@@ -2,103 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"ap-northeast-2-pop":          dara.String("mts.aliyuncs.com"),
-		"ap-southeast-2":              dara.String("mts.aliyuncs.com"),
-		"ap-southeast-3":              dara.String("mts.aliyuncs.com"),
-		"cn-beijing-finance-1":        dara.String("mts.aliyuncs.com"),
-		"cn-beijing-finance-pop":      dara.String("mts.aliyuncs.com"),
-		"cn-beijing-gov-1":            dara.String("mts.aliyuncs.com"),
-		"cn-beijing-nu16-b01":         dara.String("mts.aliyuncs.com"),
-		"cn-chengdu":                  dara.String("mts.aliyuncs.com"),
-		"cn-edge-1":                   dara.String("mts.aliyuncs.com"),
-		"cn-fujian":                   dara.String("mts.aliyuncs.com"),
-		"cn-haidian-cm12-c01":         dara.String("mts.aliyuncs.com"),
-		"cn-hangzhou-bj-b01":          dara.String("mts.aliyuncs.com"),
-		"cn-hangzhou-finance":         dara.String("mts.aliyuncs.com"),
-		"cn-hangzhou-internal-prod-1": dara.String("mts.aliyuncs.com"),
-		"cn-hangzhou-internal-test-1": dara.String("mts.aliyuncs.com"),
-		"cn-hangzhou-internal-test-2": dara.String("mts.aliyuncs.com"),
-		"cn-hangzhou-internal-test-3": dara.String("mts.aliyuncs.com"),
-		"cn-hangzhou-test-306":        dara.String("mts.aliyuncs.com"),
-		"cn-hongkong-finance-pop":     dara.String("mts.aliyuncs.com"),
-		"cn-huhehaote-nebula-1":       dara.String("mts.aliyuncs.com"),
-		"cn-north-2-gov-1":            dara.String("mts.aliyuncs.com"),
-		"cn-qingdao-nebula":           dara.String("mts.aliyuncs.com"),
-		"cn-shanghai-et15-b01":        dara.String("mts.aliyuncs.com"),
-		"cn-shanghai-et2-b01":         dara.String("mts.aliyuncs.com"),
-		"cn-shanghai-finance-1":       dara.String("mts.aliyuncs.com"),
-		"cn-shanghai-inner":           dara.String("mts.aliyuncs.com"),
-		"cn-shanghai-internal-test-1": dara.String("mts.aliyuncs.com"),
-		"cn-shenzhen-finance-1":       dara.String("mts.aliyuncs.com"),
-		"cn-shenzhen-inner":           dara.String("mts.aliyuncs.com"),
-		"cn-shenzhen-st4-d01":         dara.String("mts.aliyuncs.com"),
-		"cn-shenzhen-su18-b01":        dara.String("mts.aliyuncs.com"),
-		"cn-wuhan":                    dara.String("mts.aliyuncs.com"),
-		"cn-wulanchabu":               dara.String("mts.aliyuncs.com"),
-		"cn-yushanfang":               dara.String("mts.aliyuncs.com"),
-		"cn-zhangbei":                 dara.String("mts.aliyuncs.com"),
-		"cn-zhangbei-na61-b01":        dara.String("mts.aliyuncs.com"),
-		"cn-zhangjiakou-na62-a01":     dara.String("mts.aliyuncs.com"),
-		"cn-zhengzhou-nebula-1":       dara.String("mts.aliyuncs.com"),
-		"eu-west-1-oxs":               dara.String("mts.aliyuncs.com"),
-		"me-east-1":                   dara.String("mts.aliyuncs.com"),
-		"rus-west-1-pop":              dara.String("mts.aliyuncs.com"),
-		"us-east-1":                   dara.String("mts.aliyuncs.com"),
-	}
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("mts"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -117,7 +24,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ActivateMediaWorkflowResponse
-func (client *Client) ActivateMediaWorkflowWithOptions(request *ActivateMediaWorkflowRequest, runtime *dara.RuntimeOptions) (_result *ActivateMediaWorkflowResponse, _err error) {
+func (client *Client) ActivateMediaWorkflowWithContext(ctx context.Context, request *ActivateMediaWorkflowRequest, runtime *dara.RuntimeOptions) (_result *ActivateMediaWorkflowResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -160,37 +67,11 @@ func (client *Client) ActivateMediaWorkflowWithOptions(request *ActivateMediaWor
 		BodyType:    dara.String("json"),
 	}
 	_result = &ActivateMediaWorkflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Activates a media workflow.
-//
-// Description:
-//
-// You can call this operation to activate a media workflow that has been deactivated. After you activate a media workflow, you cannot modify the workflow information, such as the name, topology, or trigger mode. A media workflow is activated by default after it is created.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - ActivateMediaWorkflowRequest
-//
-// @return ActivateMediaWorkflowResponse
-func (client *Client) ActivateMediaWorkflow(request *ActivateMediaWorkflowRequest) (_result *ActivateMediaWorkflowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ActivateMediaWorkflowResponse{}
-	_body, _err := client.ActivateMediaWorkflowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -213,7 +94,7 @@ func (client *Client) ActivateMediaWorkflow(request *ActivateMediaWorkflowReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddMediaResponse
-func (client *Client) AddMediaWithOptions(request *AddMediaRequest, runtime *dara.RuntimeOptions) (_result *AddMediaResponse, _err error) {
+func (client *Client) AddMediaWithContext(ctx context.Context, request *AddMediaRequest, runtime *dara.RuntimeOptions) (_result *AddMediaResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -292,39 +173,11 @@ func (client *Client) AddMediaWithOptions(request *AddMediaRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddMediaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a media file.
-//
-// Description:
-//
-//	  You can call this operation to process videos that are uploaded to Object Storage Service (OSS) but not processed. This way, you do not need to upload the videos to OSS again. If you have configured media workflows, OSS automatically notifies ApsaraVideo Media Processing (MPS) when a media file is uploaded to OSS. MPS automatically finds the corresponding workflow in the Active state based on the specified OSS bucket and object. Therefore, in most cases, you do not need to manually call the AddMedia operation to process the media file.
-//
-//		- Media information is automatically obtained only when the specified media workflow is in the Active state. If no media workflow is specified or the specified media workflow is not in the Active state, media information is not obtained.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - AddMediaRequest
-//
-// @return AddMediaResponse
-func (client *Client) AddMedia(request *AddMediaRequest) (_result *AddMediaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddMediaResponse{}
-	_body, _err := client.AddMediaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -345,7 +198,7 @@ func (client *Client) AddMedia(request *AddMediaRequest) (_result *AddMediaRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddMediaTagResponse
-func (client *Client) AddMediaTagWithOptions(request *AddMediaTagRequest, runtime *dara.RuntimeOptions) (_result *AddMediaTagResponse, _err error) {
+func (client *Client) AddMediaTagWithContext(ctx context.Context, request *AddMediaTagRequest, runtime *dara.RuntimeOptions) (_result *AddMediaTagResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -392,37 +245,11 @@ func (client *Client) AddMediaTagWithOptions(request *AddMediaTagRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddMediaTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a tag to a media file.
-//
-// Description:
-//
-// You can call this operation to add only one tag. To add multiple tags at a time, you can call the [UpdateMedia](https://help.aliyun.com/document_detail/44464.html) operation.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - AddMediaTagRequest
-//
-// @return AddMediaTagResponse
-func (client *Client) AddMediaTag(request *AddMediaTagRequest) (_result *AddMediaTagResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddMediaTagResponse{}
-	_body, _err := client.AddMediaTagWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -445,7 +272,7 @@ func (client *Client) AddMediaTag(request *AddMediaTagRequest) (_result *AddMedi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddMediaWorkflowResponse
-func (client *Client) AddMediaWorkflowWithOptions(request *AddMediaWorkflowRequest, runtime *dara.RuntimeOptions) (_result *AddMediaWorkflowResponse, _err error) {
+func (client *Client) AddMediaWorkflowWithContext(ctx context.Context, request *AddMediaWorkflowRequest, runtime *dara.RuntimeOptions) (_result *AddMediaWorkflowResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -496,39 +323,11 @@ func (client *Client) AddMediaWorkflowWithOptions(request *AddMediaWorkflowReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddMediaWorkflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a media workflow.
-//
-// Description:
-//
-//	  You can call this operation to define the topology, activities, and dependencies of a media workflow. The topology is represented by a directed acyclic graph (DAG) in the console. For more information, see [Workflow activities](https://help.aliyun.com/document_detail/68494.html). You can view and run the workflows that are created by calling this operation in the ApsaraVideo Media Processing (MPS) console.
-//
-//		- MPS media workflows can be automatically triggered only by using the prefix of the file path. Automatic triggering by using the suffix is not supported. For more information about the trigger rules, see [Workflow triggering rules for files](https://help.aliyun.com/document_detail/68574.html).
-//
-// ### [](#qps)QPS limits
-//
-// You can call this API operation up to 100 times per second per account. Requests that exceed this limit are dropped, and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - AddMediaWorkflowRequest
-//
-// @return AddMediaWorkflowResponse
-func (client *Client) AddMediaWorkflow(request *AddMediaWorkflowRequest) (_result *AddMediaWorkflowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddMediaWorkflowResponse{}
-	_body, _err := client.AddMediaWorkflowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -541,7 +340,7 @@ func (client *Client) AddMediaWorkflow(request *AddMediaWorkflowRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddPipelineResponse
-func (client *Client) AddPipelineWithOptions(request *AddPipelineRequest, runtime *dara.RuntimeOptions) (_result *AddPipelineResponse, _err error) {
+func (client *Client) AddPipelineWithContext(ctx context.Context, request *AddPipelineRequest, runtime *dara.RuntimeOptions) (_result *AddPipelineResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -600,29 +399,11 @@ func (client *Client) AddPipelineWithOptions(request *AddPipelineRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddPipelineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds an ApsaraVideo Media Processing (MPS) queue.
-//
-// @param request - AddPipelineRequest
-//
-// @return AddPipelineResponse
-func (client *Client) AddPipeline(request *AddPipelineRequest) (_result *AddPipelineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddPipelineResponse{}
-	_body, _err := client.AddPipelineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -635,7 +416,7 @@ func (client *Client) AddPipeline(request *AddPipelineRequest) (_result *AddPipe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddSmarttagTemplateResponse
-func (client *Client) AddSmarttagTemplateWithOptions(request *AddSmarttagTemplateRequest, runtime *dara.RuntimeOptions) (_result *AddSmarttagTemplateResponse, _err error) {
+func (client *Client) AddSmarttagTemplateWithContext(ctx context.Context, request *AddSmarttagTemplateRequest, runtime *dara.RuntimeOptions) (_result *AddSmarttagTemplateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -738,29 +519,11 @@ func (client *Client) AddSmarttagTemplateWithOptions(request *AddSmarttagTemplat
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddSmarttagTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 添加labelVersion、knowledgeConfig配置
-//
-// @param request - AddSmarttagTemplateRequest
-//
-// @return AddSmarttagTemplateResponse
-func (client *Client) AddSmarttagTemplate(request *AddSmarttagTemplateRequest) (_result *AddSmarttagTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddSmarttagTemplateResponse{}
-	_body, _err := client.AddSmarttagTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -781,7 +544,7 @@ func (client *Client) AddSmarttagTemplate(request *AddSmarttagTemplateRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddTemplateResponse
-func (client *Client) AddTemplateWithOptions(request *AddTemplateRequest, runtime *dara.RuntimeOptions) (_result *AddTemplateResponse, _err error) {
+func (client *Client) AddTemplateWithContext(ctx context.Context, request *AddTemplateRequest, runtime *dara.RuntimeOptions) (_result *AddTemplateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -844,37 +607,11 @@ func (client *Client) AddTemplateWithOptions(request *AddTemplateRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a custom transcoding template. You need to configure the information such as the container format, video stream settings, and audio stream settings.
-//
-// Description:
-//
-// When you call this operation, you need to set transcoding parameters such as those related to the container format, video stream, and audio stream. If you do not specify some parameters, streams that are generated by using the template do not contain the information specified by those parameters.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - AddTemplateRequest
-//
-// @return AddTemplateResponse
-func (client *Client) AddTemplate(request *AddTemplateRequest) (_result *AddTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddTemplateResponse{}
-	_body, _err := client.AddTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -895,7 +632,7 @@ func (client *Client) AddTemplate(request *AddTemplateRequest) (_result *AddTemp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddWaterMarkTemplateResponse
-func (client *Client) AddWaterMarkTemplateWithOptions(request *AddWaterMarkTemplateRequest, runtime *dara.RuntimeOptions) (_result *AddWaterMarkTemplateResponse, _err error) {
+func (client *Client) AddWaterMarkTemplateWithContext(ctx context.Context, request *AddWaterMarkTemplateRequest, runtime *dara.RuntimeOptions) (_result *AddWaterMarkTemplateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -942,37 +679,11 @@ func (client *Client) AddWaterMarkTemplateWithOptions(request *AddWaterMarkTempl
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddWaterMarkTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a watermark template.
-//
-// Description:
-//
-// After you create a watermark template by calling this operation, you can specify the watermark template and watermark asset when you [submit a transcoding job](https://help.aliyun.com/document_detail/29226.html). This allows you to add watermark information to the output video.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - AddWaterMarkTemplateRequest
-//
-// @return AddWaterMarkTemplateResponse
-func (client *Client) AddWaterMarkTemplate(request *AddWaterMarkTemplateRequest) (_result *AddWaterMarkTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddWaterMarkTemplateResponse{}
-	_body, _err := client.AddWaterMarkTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -993,7 +704,7 @@ func (client *Client) AddWaterMarkTemplate(request *AddWaterMarkTemplateRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindInputBucketResponse
-func (client *Client) BindInputBucketWithOptions(request *BindInputBucketRequest, runtime *dara.RuntimeOptions) (_result *BindInputBucketResponse, _err error) {
+func (client *Client) BindInputBucketWithContext(ctx context.Context, request *BindInputBucketRequest, runtime *dara.RuntimeOptions) (_result *BindInputBucketResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1040,37 +751,11 @@ func (client *Client) BindInputBucketWithOptions(request *BindInputBucketRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindInputBucketResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Binds an input media bucket.
-//
-// Description:
-//
-// Before you call this operation to bind an input media bucket, you must create a media bucket. For more information, see [Add media buckets](https://help.aliyun.com/document_detail/42430.html).
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - BindInputBucketRequest
-//
-// @return BindInputBucketResponse
-func (client *Client) BindInputBucket(request *BindInputBucketRequest) (_result *BindInputBucketResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BindInputBucketResponse{}
-	_body, _err := client.BindInputBucketWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1091,7 +776,7 @@ func (client *Client) BindInputBucket(request *BindInputBucketRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindOutputBucketResponse
-func (client *Client) BindOutputBucketWithOptions(request *BindOutputBucketRequest, runtime *dara.RuntimeOptions) (_result *BindOutputBucketResponse, _err error) {
+func (client *Client) BindOutputBucketWithContext(ctx context.Context, request *BindOutputBucketRequest, runtime *dara.RuntimeOptions) (_result *BindOutputBucketResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1134,37 +819,11 @@ func (client *Client) BindOutputBucketWithOptions(request *BindOutputBucketReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindOutputBucketResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Binds an output media bucket to the media library.
-//
-// Description:
-//
-// Before you call this operation to bind an output media bucket to the media library, you must create a media bucket. For more information, see [Add media buckets](https://help.aliyun.com/document_detail/42430.html).
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - BindOutputBucketRequest
-//
-// @return BindOutputBucketResponse
-func (client *Client) BindOutputBucket(request *BindOutputBucketRequest) (_result *BindOutputBucketResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BindOutputBucketResponse{}
-	_body, _err := client.BindOutputBucketWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1187,7 +846,7 @@ func (client *Client) BindOutputBucket(request *BindOutputBucketRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelJobResponse
-func (client *Client) CancelJobWithOptions(request *CancelJobRequest, runtime *dara.RuntimeOptions) (_result *CancelJobResponse, _err error) {
+func (client *Client) CancelJobWithContext(ctx context.Context, request *CancelJobRequest, runtime *dara.RuntimeOptions) (_result *CancelJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1230,39 +889,11 @@ func (client *Client) CancelJobWithOptions(request *CancelJobRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Cancels a transcoding job.
-//
-// Description:
-//
-//	  You can cancel a transcoding job only if the job is in the Submitted state.
-//
-//		- We recommend that you call the **UpdatePipeline*	- operation to set the status of the ApsaraVideo Media Processing (MPS) queue to Paused before you cancel a job. This suspends job scheduling in the MPS queue. After the job is canceled, you must set the status of the MPS queue back to Active so that the other jobs in the MPS queue can be scheduled.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - CancelJobRequest
-//
-// @return CancelJobResponse
-func (client *Client) CancelJob(request *CancelJobRequest) (_result *CancelJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelJobResponse{}
-	_body, _err := client.CancelJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1271,7 +902,7 @@ func (client *Client) CancelJob(request *CancelJobRequest) (_result *CancelJobRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateCustomEntityResponse
-func (client *Client) CreateCustomEntityWithOptions(request *CreateCustomEntityRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomEntityResponse, _err error) {
+func (client *Client) CreateCustomEntityWithContext(ctx context.Context, request *CreateCustomEntityRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomEntityResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1326,25 +957,11 @@ func (client *Client) CreateCustomEntityWithOptions(request *CreateCustomEntityR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateCustomEntityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CreateCustomEntityRequest
-//
-// @return CreateCustomEntityResponse
-func (client *Client) CreateCustomEntity(request *CreateCustomEntityRequest) (_result *CreateCustomEntityResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateCustomEntityResponse{}
-	_body, _err := client.CreateCustomEntityWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1353,7 +970,7 @@ func (client *Client) CreateCustomEntity(request *CreateCustomEntityRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateCustomGroupResponse
-func (client *Client) CreateCustomGroupWithOptions(request *CreateCustomGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomGroupResponse, _err error) {
+func (client *Client) CreateCustomGroupWithContext(ctx context.Context, request *CreateCustomGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1404,25 +1021,11 @@ func (client *Client) CreateCustomGroupWithOptions(request *CreateCustomGroupReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateCustomGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CreateCustomGroupRequest
-//
-// @return CreateCustomGroupResponse
-func (client *Client) CreateCustomGroup(request *CreateCustomGroupRequest) (_result *CreateCustomGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateCustomGroupResponse{}
-	_body, _err := client.CreateCustomGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1447,7 +1050,7 @@ func (client *Client) CreateCustomGroup(request *CreateCustomGroupRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateFpShotDBResponse
-func (client *Client) CreateFpShotDBWithOptions(request *CreateFpShotDBRequest, runtime *dara.RuntimeOptions) (_result *CreateFpShotDBResponse, _err error) {
+func (client *Client) CreateFpShotDBWithContext(ctx context.Context, request *CreateFpShotDBRequest, runtime *dara.RuntimeOptions) (_result *CreateFpShotDBResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1502,41 +1105,11 @@ func (client *Client) CreateFpShotDBWithOptions(request *CreateFpShotDBRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateFpShotDBResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Submits a job of creating a media fingerprint library.
-//
-// Description:
-//
-//	  You can call this operation to submit a job to create a video or text fingerprint library. You can use a text fingerprint library to store fingerprints for text.
-//
-//		- You can submit a job of creating a text fingerprint library only in the China (Shanghai) region.
-//
-//		- By default, you can submit up to 10 jobs of creating a video fingerprint library to an ApsaraVideo Media Processing (MPS) queue at a time. If you submit more than 10 jobs at a time, the call may fail.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - CreateFpShotDBRequest
-//
-// @return CreateFpShotDBResponse
-func (client *Client) CreateFpShotDB(request *CreateFpShotDBRequest) (_result *CreateFpShotDBResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateFpShotDBResponse{}
-	_body, _err := client.CreateFpShotDBWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1553,7 +1126,7 @@ func (client *Client) CreateFpShotDB(request *CreateFpShotDBRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeactivateMediaWorkflowResponse
-func (client *Client) DeactivateMediaWorkflowWithOptions(request *DeactivateMediaWorkflowRequest, runtime *dara.RuntimeOptions) (_result *DeactivateMediaWorkflowResponse, _err error) {
+func (client *Client) DeactivateMediaWorkflowWithContext(ctx context.Context, request *DeactivateMediaWorkflowRequest, runtime *dara.RuntimeOptions) (_result *DeactivateMediaWorkflowResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1596,33 +1169,11 @@ func (client *Client) DeactivateMediaWorkflowWithOptions(request *DeactivateMedi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeactivateMediaWorkflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables a media workflow.
-//
-// Description:
-//
-// The time when the media workflow was created.
-//
-// @param request - DeactivateMediaWorkflowRequest
-//
-// @return DeactivateMediaWorkflowResponse
-func (client *Client) DeactivateMediaWorkflow(request *DeactivateMediaWorkflowRequest) (_result *DeactivateMediaWorkflowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeactivateMediaWorkflowResponse{}
-	_body, _err := client.DeactivateMediaWorkflowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1635,7 +1186,7 @@ func (client *Client) DeactivateMediaWorkflow(request *DeactivateMediaWorkflowRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCustomEntityResponse
-func (client *Client) DeleteCustomEntityWithOptions(request *DeleteCustomEntityRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomEntityResponse, _err error) {
+func (client *Client) DeleteCustomEntityWithContext(ctx context.Context, request *DeleteCustomEntityRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomEntityResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1686,29 +1237,11 @@ func (client *Client) DeleteCustomEntityWithOptions(request *DeleteCustomEntityR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCustomEntityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a custom entity from a custom library.
-//
-// @param request - DeleteCustomEntityRequest
-//
-// @return DeleteCustomEntityResponse
-func (client *Client) DeleteCustomEntity(request *DeleteCustomEntityRequest) (_result *DeleteCustomEntityResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteCustomEntityResponse{}
-	_body, _err := client.DeleteCustomEntityWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1729,7 +1262,7 @@ func (client *Client) DeleteCustomEntity(request *DeleteCustomEntityRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCustomGroupResponse
-func (client *Client) DeleteCustomGroupWithOptions(request *DeleteCustomGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomGroupResponse, _err error) {
+func (client *Client) DeleteCustomGroupWithContext(ctx context.Context, request *DeleteCustomGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1776,37 +1309,11 @@ func (client *Client) DeleteCustomGroupWithOptions(request *DeleteCustomGroupReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCustomGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Delete a custom image library.
-//
-// Description:
-//
-// You can call this operation only in the China (Beijing), China (Shanghai), and China (Hangzhou) regions.
-//
-// ### QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - DeleteCustomGroupRequest
-//
-// @return DeleteCustomGroupResponse
-func (client *Client) DeleteCustomGroup(request *DeleteCustomGroupRequest) (_result *DeleteCustomGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteCustomGroupResponse{}
-	_body, _err := client.DeleteCustomGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1815,7 +1322,7 @@ func (client *Client) DeleteCustomGroup(request *DeleteCustomGroupRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCustomViewResponse
-func (client *Client) DeleteCustomViewWithOptions(request *DeleteCustomViewRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomViewResponse, _err error) {
+func (client *Client) DeleteCustomViewWithContext(ctx context.Context, request *DeleteCustomViewRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomViewResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1870,25 +1377,11 @@ func (client *Client) DeleteCustomViewWithOptions(request *DeleteCustomViewReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCustomViewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteCustomViewRequest
-//
-// @return DeleteCustomViewResponse
-func (client *Client) DeleteCustomView(request *DeleteCustomViewRequest) (_result *DeleteCustomViewResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteCustomViewResponse{}
-	_body, _err := client.DeleteCustomViewWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1909,7 +1402,7 @@ func (client *Client) DeleteCustomView(request *DeleteCustomViewRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteMediaResponse
-func (client *Client) DeleteMediaWithOptions(request *DeleteMediaRequest, runtime *dara.RuntimeOptions) (_result *DeleteMediaResponse, _err error) {
+func (client *Client) DeleteMediaWithContext(ctx context.Context, request *DeleteMediaRequest, runtime *dara.RuntimeOptions) (_result *DeleteMediaResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1952,37 +1445,11 @@ func (client *Client) DeleteMediaWithOptions(request *DeleteMediaRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteMediaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes media files from ApsaraVideo Media Processing (MPS).
-//
-// Description:
-//
-// This operation allows you to logically delete a media file. The media file can no longer be processed, but the corresponding objects in the input and output Object Storage Service (OSS) buckets are retained.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - DeleteMediaRequest
-//
-// @return DeleteMediaResponse
-func (client *Client) DeleteMedia(request *DeleteMediaRequest) (_result *DeleteMediaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteMediaResponse{}
-	_body, _err := client.DeleteMediaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2003,7 +1470,7 @@ func (client *Client) DeleteMedia(request *DeleteMediaRequest) (_result *DeleteM
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteMediaTagResponse
-func (client *Client) DeleteMediaTagWithOptions(request *DeleteMediaTagRequest, runtime *dara.RuntimeOptions) (_result *DeleteMediaTagResponse, _err error) {
+func (client *Client) DeleteMediaTagWithContext(ctx context.Context, request *DeleteMediaTagRequest, runtime *dara.RuntimeOptions) (_result *DeleteMediaTagResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2050,37 +1517,11 @@ func (client *Client) DeleteMediaTagWithOptions(request *DeleteMediaTagRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteMediaTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes a tag for a media file.
-//
-// Description:
-//
-// You can call this operation to remove only one tag at a time.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - DeleteMediaTagRequest
-//
-// @return DeleteMediaTagResponse
-func (client *Client) DeleteMediaTag(request *DeleteMediaTagRequest) (_result *DeleteMediaTagResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteMediaTagResponse{}
-	_body, _err := client.DeleteMediaTagWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2101,7 +1542,7 @@ func (client *Client) DeleteMediaTag(request *DeleteMediaTagRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteMediaWorkflowResponse
-func (client *Client) DeleteMediaWorkflowWithOptions(request *DeleteMediaWorkflowRequest, runtime *dara.RuntimeOptions) (_result *DeleteMediaWorkflowResponse, _err error) {
+func (client *Client) DeleteMediaWorkflowWithContext(ctx context.Context, request *DeleteMediaWorkflowRequest, runtime *dara.RuntimeOptions) (_result *DeleteMediaWorkflowResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2144,37 +1585,11 @@ func (client *Client) DeleteMediaWorkflowWithOptions(request *DeleteMediaWorkflo
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteMediaWorkflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a media workflow. This does not affect workflow instances that are running.
-//
-// Description:
-//
-// After you delete or disable a workflow, the workflow cannot be used. In this case, the workflow is not automatically triggered when you upload a file to the bucket specified by the workflow.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - DeleteMediaWorkflowRequest
-//
-// @return DeleteMediaWorkflowResponse
-func (client *Client) DeleteMediaWorkflow(request *DeleteMediaWorkflowRequest) (_result *DeleteMediaWorkflowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteMediaWorkflowResponse{}
-	_body, _err := client.DeleteMediaWorkflowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2195,7 +1610,7 @@ func (client *Client) DeleteMediaWorkflow(request *DeleteMediaWorkflowRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePipelineResponse
-func (client *Client) DeletePipelineWithOptions(request *DeletePipelineRequest, runtime *dara.RuntimeOptions) (_result *DeletePipelineResponse, _err error) {
+func (client *Client) DeletePipelineWithContext(ctx context.Context, request *DeletePipelineRequest, runtime *dara.RuntimeOptions) (_result *DeletePipelineResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2238,37 +1653,11 @@ func (client *Client) DeletePipelineWithOptions(request *DeletePipelineRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePipelineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an ApsaraVideo Media Processing (MPS) queue.
-//
-// Description:
-//
-// You can call this operation to delete only one MPS queue at a time.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - DeletePipelineRequest
-//
-// @return DeletePipelineResponse
-func (client *Client) DeletePipeline(request *DeletePipelineRequest) (_result *DeletePipelineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePipelineResponse{}
-	_body, _err := client.DeletePipelineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2289,7 +1678,7 @@ func (client *Client) DeletePipeline(request *DeletePipelineRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSmarttagTemplateResponse
-func (client *Client) DeleteSmarttagTemplateWithOptions(request *DeleteSmarttagTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteSmarttagTemplateResponse, _err error) {
+func (client *Client) DeleteSmarttagTemplateWithContext(ctx context.Context, request *DeleteSmarttagTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteSmarttagTemplateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2332,37 +1721,11 @@ func (client *Client) DeleteSmarttagTemplateWithOptions(request *DeleteSmarttagT
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteSmarttagTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a template.
-//
-// Description:
-//
-// You can call this operation to delete only one template at a time.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped, and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - DeleteSmarttagTemplateRequest
-//
-// @return DeleteSmarttagTemplateResponse
-func (client *Client) DeleteSmarttagTemplate(request *DeleteSmarttagTemplateRequest) (_result *DeleteSmarttagTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteSmarttagTemplateResponse{}
-	_body, _err := client.DeleteSmarttagTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2383,7 +1746,7 @@ func (client *Client) DeleteSmarttagTemplate(request *DeleteSmarttagTemplateRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteTemplateResponse
-func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteTemplateResponse, _err error) {
+func (client *Client) DeleteTemplateWithContext(ctx context.Context, request *DeleteTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteTemplateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2426,37 +1789,11 @@ func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a custom transcoding template.
-//
-// Description:
-//
-// A custom transcoding template cannot be deleted if it is being used by a job that has been submitted.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - DeleteTemplateRequest
-//
-// @return DeleteTemplateResponse
-func (client *Client) DeleteTemplate(request *DeleteTemplateRequest) (_result *DeleteTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteTemplateResponse{}
-	_body, _err := client.DeleteTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2477,7 +1814,7 @@ func (client *Client) DeleteTemplate(request *DeleteTemplateRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteWaterMarkTemplateResponse
-func (client *Client) DeleteWaterMarkTemplateWithOptions(request *DeleteWaterMarkTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteWaterMarkTemplateResponse, _err error) {
+func (client *Client) DeleteWaterMarkTemplateWithContext(ctx context.Context, request *DeleteWaterMarkTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteWaterMarkTemplateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2520,37 +1857,11 @@ func (client *Client) DeleteWaterMarkTemplateWithOptions(request *DeleteWaterMar
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteWaterMarkTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a watermark template.
-//
-// Description:
-//
-// A watermark template cannot be deleted if it is being used by a submitted job.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - DeleteWaterMarkTemplateRequest
-//
-// @return DeleteWaterMarkTemplateResponse
-func (client *Client) DeleteWaterMarkTemplate(request *DeleteWaterMarkTemplateRequest) (_result *DeleteWaterMarkTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteWaterMarkTemplateResponse{}
-	_body, _err := client.DeleteWaterMarkTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2573,7 +1884,7 @@ func (client *Client) DeleteWaterMarkTemplate(request *DeleteWaterMarkTemplateRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ImAuditResponse
-func (client *Client) ImAuditWithOptions(request *ImAuditRequest, runtime *dara.RuntimeOptions) (_result *ImAuditResponse, _err error) {
+func (client *Client) ImAuditWithContext(ctx context.Context, request *ImAuditRequest, runtime *dara.RuntimeOptions) (_result *ImAuditResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2624,39 +1935,11 @@ func (client *Client) ImAuditWithOptions(request *ImAuditRequest, runtime *dara.
 		BodyType:    dara.String("json"),
 	}
 	_result = &ImAuditResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Reviews images and text and returns the review results.
-//
-// Description:
-//
-//	  The moderation results are synchronously returned after the moderation is complete.
-//
-//		- You can use the image and text moderation feature only in the China (Beijing), China (Shanghai), and Singapore regions.
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - ImAuditRequest
-//
-// @return ImAuditResponse
-func (client *Client) ImAudit(request *ImAuditRequest) (_result *ImAuditResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ImAuditResponse{}
-	_body, _err := client.ImAuditWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2679,7 +1962,7 @@ func (client *Client) ImAudit(request *ImAuditRequest) (_result *ImAuditResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ImportFpShotJobResponse
-func (client *Client) ImportFpShotJobWithOptions(request *ImportFpShotJobRequest, runtime *dara.RuntimeOptions) (_result *ImportFpShotJobResponse, _err error) {
+func (client *Client) ImportFpShotJobWithContext(ctx context.Context, request *ImportFpShotJobRequest, runtime *dara.RuntimeOptions) (_result *ImportFpShotJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2738,39 +2021,11 @@ func (client *Client) ImportFpShotJobWithOptions(request *ImportFpShotJobRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ImportFpShotJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Submits a job of importing text files to a text fingerprint library.
-//
-// Description:
-//
-//	  You can call this operation to import multiple text files to a text fingerprint library at a time. The system extracts fingerprints from the text files and saves the fingerprints to the text fingerprint library.
-//
-//		- You can call this operation only in the China (Shanghai) region.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - ImportFpShotJobRequest
-//
-// @return ImportFpShotJobResponse
-func (client *Client) ImportFpShotJob(request *ImportFpShotJobRequest) (_result *ImportFpShotJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ImportFpShotJobResponse{}
-	_body, _err := client.ImportFpShotJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2791,7 +2046,7 @@ func (client *Client) ImportFpShotJob(request *ImportFpShotJobRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAllMediaBucketResponse
-func (client *Client) ListAllMediaBucketWithOptions(request *ListAllMediaBucketRequest, runtime *dara.RuntimeOptions) (_result *ListAllMediaBucketResponse, _err error) {
+func (client *Client) ListAllMediaBucketWithContext(ctx context.Context, request *ListAllMediaBucketRequest, runtime *dara.RuntimeOptions) (_result *ListAllMediaBucketResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2838,37 +2093,11 @@ func (client *Client) ListAllMediaBucketWithOptions(request *ListAllMediaBucketR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAllMediaBucketResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all media buckets bound to the media library.
-//
-// Description:
-//
-// A maximum of 100 media buckets can be returned.
-//
-// ### QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - ListAllMediaBucketRequest
-//
-// @return ListAllMediaBucketResponse
-func (client *Client) ListAllMediaBucket(request *ListAllMediaBucketRequest) (_result *ListAllMediaBucketResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListAllMediaBucketResponse{}
-	_body, _err := client.ListAllMediaBucketWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2881,7 +2110,7 @@ func (client *Client) ListAllMediaBucket(request *ListAllMediaBucketRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListCustomEntitiesResponse
-func (client *Client) ListCustomEntitiesWithOptions(request *ListCustomEntitiesRequest, runtime *dara.RuntimeOptions) (_result *ListCustomEntitiesResponse, _err error) {
+func (client *Client) ListCustomEntitiesWithContext(ctx context.Context, request *ListCustomEntitiesRequest, runtime *dara.RuntimeOptions) (_result *ListCustomEntitiesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2936,29 +2165,11 @@ func (client *Client) ListCustomEntitiesWithOptions(request *ListCustomEntitiesR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListCustomEntitiesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of entities in a custom library.
-//
-// @param request - ListCustomEntitiesRequest
-//
-// @return ListCustomEntitiesResponse
-func (client *Client) ListCustomEntities(request *ListCustomEntitiesRequest) (_result *ListCustomEntitiesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListCustomEntitiesResponse{}
-	_body, _err := client.ListCustomEntitiesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2967,7 +2178,7 @@ func (client *Client) ListCustomEntities(request *ListCustomEntitiesRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListCustomGroupsResponse
-func (client *Client) ListCustomGroupsWithOptions(request *ListCustomGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListCustomGroupsResponse, _err error) {
+func (client *Client) ListCustomGroupsWithContext(ctx context.Context, request *ListCustomGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListCustomGroupsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3018,25 +2229,11 @@ func (client *Client) ListCustomGroupsWithOptions(request *ListCustomGroupsReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListCustomGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListCustomGroupsRequest
-//
-// @return ListCustomGroupsResponse
-func (client *Client) ListCustomGroups(request *ListCustomGroupsRequest) (_result *ListCustomGroupsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListCustomGroupsResponse{}
-	_body, _err := client.ListCustomGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3057,7 +2254,7 @@ func (client *Client) ListCustomGroups(request *ListCustomGroupsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListCustomPersonsResponse
-func (client *Client) ListCustomPersonsWithOptions(request *ListCustomPersonsRequest, runtime *dara.RuntimeOptions) (_result *ListCustomPersonsResponse, _err error) {
+func (client *Client) ListCustomPersonsWithContext(ctx context.Context, request *ListCustomPersonsRequest, runtime *dara.RuntimeOptions) (_result *ListCustomPersonsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3104,37 +2301,11 @@ func (client *Client) ListCustomPersonsWithOptions(request *ListCustomPersonsReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListCustomPersonsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about all figures and faces in a specific figure library.
-//
-// Description:
-//
-// You can specify the ID of a figure or a figure library to query the corresponding information. If neither the figure ID nor figure library ID is specified, the operation returns the information about all figures and faces in all figure libraries within the current RAM user.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - ListCustomPersonsRequest
-//
-// @return ListCustomPersonsResponse
-func (client *Client) ListCustomPersons(request *ListCustomPersonsRequest) (_result *ListCustomPersonsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListCustomPersonsResponse{}
-	_body, _err := client.ListCustomPersonsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3143,7 +2314,7 @@ func (client *Client) ListCustomPersons(request *ListCustomPersonsRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListCustomViewsResponse
-func (client *Client) ListCustomViewsWithOptions(request *ListCustomViewsRequest, runtime *dara.RuntimeOptions) (_result *ListCustomViewsResponse, _err error) {
+func (client *Client) ListCustomViewsWithContext(ctx context.Context, request *ListCustomViewsRequest, runtime *dara.RuntimeOptions) (_result *ListCustomViewsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3202,25 +2373,11 @@ func (client *Client) ListCustomViewsWithOptions(request *ListCustomViewsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListCustomViewsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListCustomViewsRequest
-//
-// @return ListCustomViewsResponse
-func (client *Client) ListCustomViews(request *ListCustomViewsRequest) (_result *ListCustomViewsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListCustomViewsResponse{}
-	_body, _err := client.ListCustomViewsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3245,7 +2402,7 @@ func (client *Client) ListCustomViews(request *ListCustomViewsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListFpShotDBResponse
-func (client *Client) ListFpShotDBWithOptions(request *ListFpShotDBRequest, runtime *dara.RuntimeOptions) (_result *ListFpShotDBResponse, _err error) {
+func (client *Client) ListFpShotDBWithContext(ctx context.Context, request *ListFpShotDBRequest, runtime *dara.RuntimeOptions) (_result *ListFpShotDBResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3288,41 +2445,11 @@ func (client *Client) ListFpShotDBWithOptions(request *ListFpShotDBRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListFpShotDBResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries media fingerprint libraries.
-//
-// Description:
-//
-//	  You can call this operation to query the status and information about the media fingerprint libraries based on the specified IDs.
-//
-//		- You can query text fingerprint libraries only in the China (Shanghai) region.
-//
-//		- You can call this operation to query up to 10 media fingerprint libraries.
-//
-// ### QPS limit
-//
-// You can call this operation up to 500 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - ListFpShotDBRequest
-//
-// @return ListFpShotDBResponse
-func (client *Client) ListFpShotDB(request *ListFpShotDBRequest) (_result *ListFpShotDBResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListFpShotDBResponse{}
-	_body, _err := client.ListFpShotDBWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3345,7 +2472,7 @@ func (client *Client) ListFpShotDB(request *ListFpShotDBRequest) (_result *ListF
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListFpShotFilesResponse
-func (client *Client) ListFpShotFilesWithOptions(request *ListFpShotFilesRequest, runtime *dara.RuntimeOptions) (_result *ListFpShotFilesResponse, _err error) {
+func (client *Client) ListFpShotFilesWithContext(ctx context.Context, request *ListFpShotFilesRequest, runtime *dara.RuntimeOptions) (_result *ListFpShotFilesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3404,39 +2531,11 @@ func (client *Client) ListFpShotFilesWithOptions(request *ListFpShotFilesRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListFpShotFilesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries media files in a media fingerprint library.
-//
-// Description:
-//
-//	  You can call this operation to query media files in a specific media fingerprint library based on the library ID. This operation supports paged queries.
-//
-//		- You can call this operation only in the China (Beijing), China (Hangzhou), China (Shanghai), and Singapore regions.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - ListFpShotFilesRequest
-//
-// @return ListFpShotFilesResponse
-func (client *Client) ListFpShotFiles(request *ListFpShotFilesRequest) (_result *ListFpShotFilesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListFpShotFilesResponse{}
-	_body, _err := client.ListFpShotFilesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3457,7 +2556,7 @@ func (client *Client) ListFpShotFiles(request *ListFpShotFilesRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListFpShotImportJobResponse
-func (client *Client) ListFpShotImportJobWithOptions(request *ListFpShotImportJobRequest, runtime *dara.RuntimeOptions) (_result *ListFpShotImportJobResponse, _err error) {
+func (client *Client) ListFpShotImportJobWithContext(ctx context.Context, request *ListFpShotImportJobRequest, runtime *dara.RuntimeOptions) (_result *ListFpShotImportJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3500,37 +2599,11 @@ func (client *Client) ListFpShotImportJobWithOptions(request *ListFpShotImportJo
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListFpShotImportJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries jobs of importing text files to a text fingerprint library.
-//
-// Description:
-//
-// You can call this operation only in the China (Shanghai) region.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - ListFpShotImportJobRequest
-//
-// @return ListFpShotImportJobResponse
-func (client *Client) ListFpShotImportJob(request *ListFpShotImportJobRequest) (_result *ListFpShotImportJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListFpShotImportJobResponse{}
-	_body, _err := client.ListFpShotImportJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3557,7 +2630,7 @@ func (client *Client) ListFpShotImportJob(request *ListFpShotImportJobRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListJobResponse
-func (client *Client) ListJobWithOptions(request *ListJobRequest, runtime *dara.RuntimeOptions) (_result *ListJobResponse, _err error) {
+func (client *Client) ListJobWithContext(ctx context.Context, request *ListJobRequest, runtime *dara.RuntimeOptions) (_result *ListJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3620,43 +2693,11 @@ func (client *Client) ListJobWithOptions(request *ListJobRequest, runtime *dara.
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Traverses transcoding jobs
-//
-// Description:
-//
-//	  By default, the returned transcoding jobs are sorted by CreationTime in descending order.
-//
-//		- You can call this operation to return transcoding jobs of the last 90 days. The jobs are returned based on the specified time range.
-//
-//		- You can filter query results by configuring request parameters such as job status, creation time interval, and ApsaraVideo Media Processing (MPS) queue for transcoding.
-//
-//		- By default, MPS does not allow you to access data across regions within the same account. Before you call this operation, make sure that the region that you specify is the same as the region of the transcoding jobs to be queried. Otherwise, this operation may fail to be called, or invalid information may be returned.
-//
-// ### [](#qps)QPS limits
-//
-// You can call this API operation up to 100 times per second per account. Requests that exceed this limit are dropped, and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - ListJobRequest
-//
-// @return ListJobResponse
-func (client *Client) ListJob(request *ListJobRequest) (_result *ListJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListJobResponse{}
-	_body, _err := client.ListJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3677,7 +2718,7 @@ func (client *Client) ListJob(request *ListJobRequest) (_result *ListJobResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListMediaWorkflowExecutionsResponse
-func (client *Client) ListMediaWorkflowExecutionsWithOptions(request *ListMediaWorkflowExecutionsRequest, runtime *dara.RuntimeOptions) (_result *ListMediaWorkflowExecutionsResponse, _err error) {
+func (client *Client) ListMediaWorkflowExecutionsWithContext(ctx context.Context, request *ListMediaWorkflowExecutionsRequest, runtime *dara.RuntimeOptions) (_result *ListMediaWorkflowExecutionsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3736,37 +2777,11 @@ func (client *Client) ListMediaWorkflowExecutionsWithOptions(request *ListMediaW
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListMediaWorkflowExecutionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the execution instances of a media workflow.
-//
-// Description:
-//
-// This operation returns execution instances only in the recent 90 days.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - ListMediaWorkflowExecutionsRequest
-//
-// @return ListMediaWorkflowExecutionsResponse
-func (client *Client) ListMediaWorkflowExecutions(request *ListMediaWorkflowExecutionsRequest) (_result *ListMediaWorkflowExecutionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListMediaWorkflowExecutionsResponse{}
-	_body, _err := client.ListMediaWorkflowExecutionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3783,7 +2798,7 @@ func (client *Client) ListMediaWorkflowExecutions(request *ListMediaWorkflowExec
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryAnalysisJobListResponse
-func (client *Client) QueryAnalysisJobListWithOptions(request *QueryAnalysisJobListRequest, runtime *dara.RuntimeOptions) (_result *QueryAnalysisJobListResponse, _err error) {
+func (client *Client) QueryAnalysisJobListWithContext(ctx context.Context, request *QueryAnalysisJobListRequest, runtime *dara.RuntimeOptions) (_result *QueryAnalysisJobListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3826,33 +2841,11 @@ func (client *Client) QueryAnalysisJobListWithOptions(request *QueryAnalysisJobL
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryAnalysisJobListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the template analysis job and returns a list of available preset templates when the template analysis job is complete.
-//
-// Description:
-//
-// The time when the job was created.
-//
-// @param request - QueryAnalysisJobListRequest
-//
-// @return QueryAnalysisJobListResponse
-func (client *Client) QueryAnalysisJobList(request *QueryAnalysisJobListRequest) (_result *QueryAnalysisJobListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryAnalysisJobListResponse{}
-	_body, _err := client.QueryAnalysisJobListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3865,7 +2858,7 @@ func (client *Client) QueryAnalysisJobList(request *QueryAnalysisJobListRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryCopyrightExtractJobResponse
-func (client *Client) QueryCopyrightExtractJobWithOptions(request *QueryCopyrightExtractJobRequest, runtime *dara.RuntimeOptions) (_result *QueryCopyrightExtractJobResponse, _err error) {
+func (client *Client) QueryCopyrightExtractJobWithContext(ctx context.Context, request *QueryCopyrightExtractJobRequest, runtime *dara.RuntimeOptions) (_result *QueryCopyrightExtractJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3892,29 +2885,11 @@ func (client *Client) QueryCopyrightExtractJobWithOptions(request *QueryCopyrigh
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryCopyrightExtractJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询版权水印提取任务
-//
-// @param request - QueryCopyrightExtractJobRequest
-//
-// @return QueryCopyrightExtractJobResponse
-func (client *Client) QueryCopyrightExtractJob(request *QueryCopyrightExtractJobRequest) (_result *QueryCopyrightExtractJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryCopyrightExtractJobResponse{}
-	_body, _err := client.QueryCopyrightExtractJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3927,7 +2902,7 @@ func (client *Client) QueryCopyrightExtractJob(request *QueryCopyrightExtractJob
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryCopyrightJobResponse
-func (client *Client) QueryCopyrightJobWithOptions(request *QueryCopyrightJobRequest, runtime *dara.RuntimeOptions) (_result *QueryCopyrightJobResponse, _err error) {
+func (client *Client) QueryCopyrightJobWithContext(ctx context.Context, request *QueryCopyrightJobRequest, runtime *dara.RuntimeOptions) (_result *QueryCopyrightJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3974,29 +2949,11 @@ func (client *Client) QueryCopyrightJobWithOptions(request *QueryCopyrightJobReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryCopyrightJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询视频版权水印任务
-//
-// @param request - QueryCopyrightJobRequest
-//
-// @return QueryCopyrightJobResponse
-func (client *Client) QueryCopyrightJob(request *QueryCopyrightJobRequest) (_result *QueryCopyrightJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryCopyrightJobResponse{}
-	_body, _err := client.QueryCopyrightJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4017,7 +2974,7 @@ func (client *Client) QueryCopyrightJob(request *QueryCopyrightJobRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryFpDBDeleteJobListResponse
-func (client *Client) QueryFpDBDeleteJobListWithOptions(request *QueryFpDBDeleteJobListRequest, runtime *dara.RuntimeOptions) (_result *QueryFpDBDeleteJobListResponse, _err error) {
+func (client *Client) QueryFpDBDeleteJobListWithContext(ctx context.Context, request *QueryFpDBDeleteJobListRequest, runtime *dara.RuntimeOptions) (_result *QueryFpDBDeleteJobListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4060,37 +3017,11 @@ func (client *Client) QueryFpDBDeleteJobListWithOptions(request *QueryFpDBDelete
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryFpDBDeleteJobListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the jobs of clearing or deleting a media fingerprint library.
-//
-// Description:
-//
-// You can call this operation to query the specified jobs of clearing or deleting a media fingerprint library based on the job IDs. If you do not specify job IDs, the system returns the latest 20 jobs that are submitted.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - QueryFpDBDeleteJobListRequest
-//
-// @return QueryFpDBDeleteJobListResponse
-func (client *Client) QueryFpDBDeleteJobList(request *QueryFpDBDeleteJobListRequest) (_result *QueryFpDBDeleteJobListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryFpDBDeleteJobListResponse{}
-	_body, _err := client.QueryFpDBDeleteJobListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4111,7 +3042,7 @@ func (client *Client) QueryFpDBDeleteJobList(request *QueryFpDBDeleteJobListRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryFpFileDeleteJobListResponse
-func (client *Client) QueryFpFileDeleteJobListWithOptions(request *QueryFpFileDeleteJobListRequest, runtime *dara.RuntimeOptions) (_result *QueryFpFileDeleteJobListResponse, _err error) {
+func (client *Client) QueryFpFileDeleteJobListWithContext(ctx context.Context, request *QueryFpFileDeleteJobListRequest, runtime *dara.RuntimeOptions) (_result *QueryFpFileDeleteJobListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4154,37 +3085,11 @@ func (client *Client) QueryFpFileDeleteJobListWithOptions(request *QueryFpFileDe
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryFpFileDeleteJobListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the jobs of deleting media files from a media fingerprint library.
-//
-// Description:
-//
-// You can call this operation to query the specified jobs of deleting media files from a media fingerprint library based on the job IDs. If you do not specify job IDs, the system returns the latest 20 jobs that are submitted.
-//
-// ### QPS limit
-//
-// You can call this operation up to 500 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - QueryFpFileDeleteJobListRequest
-//
-// @return QueryFpFileDeleteJobListResponse
-func (client *Client) QueryFpFileDeleteJobList(request *QueryFpFileDeleteJobListRequest) (_result *QueryFpFileDeleteJobListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryFpFileDeleteJobListResponse{}
-	_body, _err := client.QueryFpFileDeleteJobListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4207,7 +3112,7 @@ func (client *Client) QueryFpFileDeleteJobList(request *QueryFpFileDeleteJobList
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryFpShotJobListResponse
-func (client *Client) QueryFpShotJobListWithOptions(request *QueryFpShotJobListRequest, runtime *dara.RuntimeOptions) (_result *QueryFpShotJobListResponse, _err error) {
+func (client *Client) QueryFpShotJobListWithContext(ctx context.Context, request *QueryFpShotJobListRequest, runtime *dara.RuntimeOptions) (_result *QueryFpShotJobListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4274,39 +3179,11 @@ func (client *Client) QueryFpShotJobListWithOptions(request *QueryFpShotJobListR
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryFpShotJobListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries media fingerprint analysis jobs. You can call this operation to query video fingerprint analysis jobs and text fingerprint analysis jobs.
-//
-// Description:
-//
-//	  After a media fingerprint analysis job is submitted, the media fingerprinting service compares the fingerprints of the job input with those of the media files in the media fingerprint library. You can call this operation to query the job results.
-//
-//		- You can query the results of a text fingerprint analysis job only in the China (Shanghai) region.
-//
-// ### [](#qps)QPS limits
-//
-// You can call this API operation up to 100 times per second per account. Requests that exceed this limit are dropped, and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - QueryFpShotJobListRequest
-//
-// @return QueryFpShotJobListResponse
-func (client *Client) QueryFpShotJobList(request *QueryFpShotJobListRequest) (_result *QueryFpShotJobListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryFpShotJobListResponse{}
-	_body, _err := client.QueryFpShotJobListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4315,7 +3192,7 @@ func (client *Client) QueryFpShotJobList(request *QueryFpShotJobListRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryIProductionJobResponse
-func (client *Client) QueryIProductionJobWithOptions(request *QueryIProductionJobRequest, runtime *dara.RuntimeOptions) (_result *QueryIProductionJobResponse, _err error) {
+func (client *Client) QueryIProductionJobWithContext(ctx context.Context, request *QueryIProductionJobRequest, runtime *dara.RuntimeOptions) (_result *QueryIProductionJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4358,25 +3235,11 @@ func (client *Client) QueryIProductionJobWithOptions(request *QueryIProductionJo
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryIProductionJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryIProductionJobRequest
-//
-// @return QueryIProductionJobResponse
-func (client *Client) QueryIProductionJob(request *QueryIProductionJobRequest) (_result *QueryIProductionJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryIProductionJobResponse{}
-	_body, _err := client.QueryIProductionJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4401,7 +3264,7 @@ func (client *Client) QueryIProductionJob(request *QueryIProductionJobRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryJobListResponse
-func (client *Client) QueryJobListWithOptions(request *QueryJobListRequest, runtime *dara.RuntimeOptions) (_result *QueryJobListResponse, _err error) {
+func (client *Client) QueryJobListWithContext(ctx context.Context, request *QueryJobListRequest, runtime *dara.RuntimeOptions) (_result *QueryJobListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4444,41 +3307,11 @@ func (client *Client) QueryJobListWithOptions(request *QueryJobListRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryJobListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries transcoding jobs at a time by job ID.
-//
-// Description:
-//
-//	  By default, returned jobs are sorted in descending order by CreationTime.
-//
-//		- You can call this operation to query up to 10 transcoding jobs at a time.
-//
-//		- If you do not set the JobIds parameter, the `InvalidParameter` error code is returned.
-//
-// ## QPS limit
-//
-// You can call this API operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://www.alibabacloud.com/help/en/apsaravideo-for-media-processing/latest/qps-limit).
-//
-// @param request - QueryJobListRequest
-//
-// @return QueryJobListResponse
-func (client *Client) QueryJobList(request *QueryJobListRequest) (_result *QueryJobListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryJobListResponse{}
-	_body, _err := client.QueryJobListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4499,7 +3332,7 @@ func (client *Client) QueryJobList(request *QueryJobListRequest) (_result *Query
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryMediaCensorJobDetailResponse
-func (client *Client) QueryMediaCensorJobDetailWithOptions(request *QueryMediaCensorJobDetailRequest, runtime *dara.RuntimeOptions) (_result *QueryMediaCensorJobDetailResponse, _err error) {
+func (client *Client) QueryMediaCensorJobDetailWithContext(ctx context.Context, request *QueryMediaCensorJobDetailRequest, runtime *dara.RuntimeOptions) (_result *QueryMediaCensorJobDetailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4550,37 +3383,11 @@ func (client *Client) QueryMediaCensorJobDetailWithOptions(request *QueryMediaCe
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryMediaCensorJobDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a content moderation job.
-//
-// Description:
-//
-// In the content moderation results, the moderation results of the video are sorted in ascending order by time into a timeline. If the video is long, the content moderation results are paginated, and the first page is returned. You can call this operation again to query the remaining moderation results of the video.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - QueryMediaCensorJobDetailRequest
-//
-// @return QueryMediaCensorJobDetailResponse
-func (client *Client) QueryMediaCensorJobDetail(request *QueryMediaCensorJobDetailRequest) (_result *QueryMediaCensorJobDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryMediaCensorJobDetailResponse{}
-	_body, _err := client.QueryMediaCensorJobDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4601,7 +3408,7 @@ func (client *Client) QueryMediaCensorJobDetail(request *QueryMediaCensorJobDeta
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryMediaCensorJobListResponse
-func (client *Client) QueryMediaCensorJobListWithOptions(request *QueryMediaCensorJobListRequest, runtime *dara.RuntimeOptions) (_result *QueryMediaCensorJobListResponse, _err error) {
+func (client *Client) QueryMediaCensorJobListWithContext(ctx context.Context, request *QueryMediaCensorJobListRequest, runtime *dara.RuntimeOptions) (_result *QueryMediaCensorJobListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4668,37 +3475,11 @@ func (client *Client) QueryMediaCensorJobListWithOptions(request *QueryMediaCens
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryMediaCensorJobListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries content moderation jobs.
-//
-// Description:
-//
-// You can call this operation to query only the content moderation jobs within three months.
-//
-// ### QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - QueryMediaCensorJobListRequest
-//
-// @return QueryMediaCensorJobListResponse
-func (client *Client) QueryMediaCensorJobList(request *QueryMediaCensorJobListRequest) (_result *QueryMediaCensorJobListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryMediaCensorJobListResponse{}
-	_body, _err := client.QueryMediaCensorJobListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4723,7 +3504,7 @@ func (client *Client) QueryMediaCensorJobList(request *QueryMediaCensorJobListRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryMediaInfoJobListResponse
-func (client *Client) QueryMediaInfoJobListWithOptions(request *QueryMediaInfoJobListRequest, runtime *dara.RuntimeOptions) (_result *QueryMediaInfoJobListResponse, _err error) {
+func (client *Client) QueryMediaInfoJobListWithContext(ctx context.Context, request *QueryMediaInfoJobListRequest, runtime *dara.RuntimeOptions) (_result *QueryMediaInfoJobListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4766,41 +3547,11 @@ func (client *Client) QueryMediaInfoJobListWithOptions(request *QueryMediaInfoJo
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryMediaInfoJobListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the results of media information analysis jobs.
-//
-// Description:
-//
-//	  In asynchronous mode, the media information can be retrieved only after the Message Service (MNS) callback of **submitting a media information job*	- is returned. If you have not retrieved the media information for a long period, the job may have failed.
-//
-//		- You can call this operation to query up to 10 media information analysis jobs at a time.
-//
-//		- By default, returned jobs are sorted in descending order by CreationTime.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - QueryMediaInfoJobListRequest
-//
-// @return QueryMediaInfoJobListResponse
-func (client *Client) QueryMediaInfoJobList(request *QueryMediaInfoJobListRequest) (_result *QueryMediaInfoJobListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryMediaInfoJobListResponse{}
-	_body, _err := client.QueryMediaInfoJobListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4821,7 +3572,7 @@ func (client *Client) QueryMediaInfoJobList(request *QueryMediaInfoJobListReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryMediaListResponse
-func (client *Client) QueryMediaListWithOptions(request *QueryMediaListRequest, runtime *dara.RuntimeOptions) (_result *QueryMediaListResponse, _err error) {
+func (client *Client) QueryMediaListWithContext(ctx context.Context, request *QueryMediaListRequest, runtime *dara.RuntimeOptions) (_result *QueryMediaListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4880,37 +3631,11 @@ func (client *Client) QueryMediaListWithOptions(request *QueryMediaListRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryMediaListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries media files based on media file IDs.
-//
-// Description:
-//
-// You can call this operation to query up to 10 media files at a time.
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limits](https://www.alibabacloud.com/help/en/apsaravideo-for-media-processing/latest/qps-limit).
-//
-// @param request - QueryMediaListRequest
-//
-// @return QueryMediaListResponse
-func (client *Client) QueryMediaList(request *QueryMediaListRequest) (_result *QueryMediaListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryMediaListResponse{}
-	_body, _err := client.QueryMediaListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4935,7 +3660,7 @@ func (client *Client) QueryMediaList(request *QueryMediaListRequest) (_result *Q
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryMediaListByURLResponse
-func (client *Client) QueryMediaListByURLWithOptions(request *QueryMediaListByURLRequest, runtime *dara.RuntimeOptions) (_result *QueryMediaListByURLResponse, _err error) {
+func (client *Client) QueryMediaListByURLWithContext(ctx context.Context, request *QueryMediaListByURLRequest, runtime *dara.RuntimeOptions) (_result *QueryMediaListByURLResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4994,41 +3719,11 @@ func (client *Client) QueryMediaListByURLWithOptions(request *QueryMediaListByUR
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryMediaListByURLResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries media files based on their Object Storage Service (OSS) URLs.
-//
-// Description:
-//
-//	  You can call this operation to query up to 10 media files at a time.
-//
-//		- Before you call this operation, you must call the [AddMedia](https://help.aliyun.com/document_detail/44458.html) operation to add media files.
-//
-//		- You can call this operation to query only media files that are processed in a workflow. To obtain comprehensive information about a media file that is newly uploaded to OSS, you can call this operation after the corresponding workflow is complete. To query media files that are not processed in a workflow, you must call the [SubmitMediaInfoJob](https://help.aliyun.com/document_detail/29220.html) operation to submit a media information analysis job. After the job is complete, you can query the information about the media files.
-//
-// ## QPS limit
-//
-// You can call this API operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](https://www.alibabacloud.com/help/en/apsaravideo-for-media-processing/latest/qps-limit).
-//
-// @param request - QueryMediaListByURLRequest
-//
-// @return QueryMediaListByURLResponse
-func (client *Client) QueryMediaListByURL(request *QueryMediaListByURLRequest) (_result *QueryMediaListByURLResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryMediaListByURLResponse{}
-	_body, _err := client.QueryMediaListByURLWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5051,7 +3746,7 @@ func (client *Client) QueryMediaListByURL(request *QueryMediaListByURLRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryMediaWorkflowExecutionListResponse
-func (client *Client) QueryMediaWorkflowExecutionListWithOptions(request *QueryMediaWorkflowExecutionListRequest, runtime *dara.RuntimeOptions) (_result *QueryMediaWorkflowExecutionListResponse, _err error) {
+func (client *Client) QueryMediaWorkflowExecutionListWithContext(ctx context.Context, request *QueryMediaWorkflowExecutionListRequest, runtime *dara.RuntimeOptions) (_result *QueryMediaWorkflowExecutionListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5094,39 +3789,11 @@ func (client *Client) QueryMediaWorkflowExecutionListWithOptions(request *QueryM
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryMediaWorkflowExecutionListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries media workflow execution instances.
-//
-// Description:
-//
-//	  You can call this operation to query a maximum of 10 media workflow execution instances at a time.
-//
-//		- Before you call this operation, make sure that the workflow pipeline is enabled. Otherwise, the workflow may not run as expected. For example, the following exceptions may occur: the workflow node is invalid and jobs created in the workflow cannot be executed.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - QueryMediaWorkflowExecutionListRequest
-//
-// @return QueryMediaWorkflowExecutionListResponse
-func (client *Client) QueryMediaWorkflowExecutionList(request *QueryMediaWorkflowExecutionListRequest) (_result *QueryMediaWorkflowExecutionListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryMediaWorkflowExecutionListResponse{}
-	_body, _err := client.QueryMediaWorkflowExecutionListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5147,7 +3814,7 @@ func (client *Client) QueryMediaWorkflowExecutionList(request *QueryMediaWorkflo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryMediaWorkflowListResponse
-func (client *Client) QueryMediaWorkflowListWithOptions(request *QueryMediaWorkflowListRequest, runtime *dara.RuntimeOptions) (_result *QueryMediaWorkflowListResponse, _err error) {
+func (client *Client) QueryMediaWorkflowListWithContext(ctx context.Context, request *QueryMediaWorkflowListRequest, runtime *dara.RuntimeOptions) (_result *QueryMediaWorkflowListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5190,37 +3857,11 @@ func (client *Client) QueryMediaWorkflowListWithOptions(request *QueryMediaWorkf
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryMediaWorkflowListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries registered media workflows.
-//
-// Description:
-//
-// You can call this operation to query up to 10 media workflows at a time.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - QueryMediaWorkflowListRequest
-//
-// @return QueryMediaWorkflowListResponse
-func (client *Client) QueryMediaWorkflowList(request *QueryMediaWorkflowListRequest) (_result *QueryMediaWorkflowListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryMediaWorkflowListResponse{}
-	_body, _err := client.QueryMediaWorkflowListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5243,7 +3884,7 @@ func (client *Client) QueryMediaWorkflowList(request *QueryMediaWorkflowListRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryPipelineListResponse
-func (client *Client) QueryPipelineListWithOptions(request *QueryPipelineListRequest, runtime *dara.RuntimeOptions) (_result *QueryPipelineListResponse, _err error) {
+func (client *Client) QueryPipelineListWithContext(ctx context.Context, request *QueryPipelineListRequest, runtime *dara.RuntimeOptions) (_result *QueryPipelineListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5286,39 +3927,11 @@ func (client *Client) QueryPipelineListWithOptions(request *QueryPipelineListReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryPipelineListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries an ApsaraVideo Media Processing (MPS) queue by using the ID of the queue.
-//
-// Description:
-//
-//	  You can call this operation to query up to 10 MPS queues at a time.
-//
-//		- If `"Code": "InvalidIdentity.ServiceDisabled","Message": "The request identity was not allowed operated.","Recommend"` is returned after you call this operation, check whether the RAM user that you use is assigned the AliyunMTSDefaultRole role to obtain the permissions on MPS and whether your Alibaba Cloud account has overdue payments.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - QueryPipelineListRequest
-//
-// @return QueryPipelineListResponse
-func (client *Client) QueryPipelineList(request *QueryPipelineListRequest) (_result *QueryPipelineListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryPipelineListResponse{}
-	_body, _err := client.QueryPipelineListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5331,7 +3944,7 @@ func (client *Client) QueryPipelineList(request *QueryPipelineListRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuerySmarttagJobResponse
-func (client *Client) QuerySmarttagJobWithOptions(request *QuerySmarttagJobRequest, runtime *dara.RuntimeOptions) (_result *QuerySmarttagJobResponse, _err error) {
+func (client *Client) QuerySmarttagJobWithContext(ctx context.Context, request *QuerySmarttagJobRequest, runtime *dara.RuntimeOptions) (_result *QuerySmarttagJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5378,29 +3991,11 @@ func (client *Client) QuerySmarttagJobWithOptions(request *QuerySmarttagJobReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuerySmarttagJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询智能标签任务
-//
-// @param request - QuerySmarttagJobRequest
-//
-// @return QuerySmarttagJobResponse
-func (client *Client) QuerySmarttagJob(request *QuerySmarttagJobRequest) (_result *QuerySmarttagJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QuerySmarttagJobResponse{}
-	_body, _err := client.QuerySmarttagJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5421,7 +4016,7 @@ func (client *Client) QuerySmarttagJob(request *QuerySmarttagJobRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuerySmarttagTemplateListResponse
-func (client *Client) QuerySmarttagTemplateListWithOptions(request *QuerySmarttagTemplateListRequest, runtime *dara.RuntimeOptions) (_result *QuerySmarttagTemplateListResponse, _err error) {
+func (client *Client) QuerySmarttagTemplateListWithContext(ctx context.Context, request *QuerySmarttagTemplateListRequest, runtime *dara.RuntimeOptions) (_result *QuerySmarttagTemplateListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5464,37 +4059,11 @@ func (client *Client) QuerySmarttagTemplateListWithOptions(request *QuerySmartta
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuerySmarttagTemplateListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the analysis template of a smart tagging job.
-//
-// Description:
-//
-// If you call this operation to query the information about a smart tagging template, you must specify the template ID. Otherwise, the operation returns the information about all the templates that are created by the current RAM user.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - QuerySmarttagTemplateListRequest
-//
-// @return QuerySmarttagTemplateListResponse
-func (client *Client) QuerySmarttagTemplateList(request *QuerySmarttagTemplateListRequest) (_result *QuerySmarttagTemplateListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QuerySmarttagTemplateListResponse{}
-	_body, _err := client.QuerySmarttagTemplateListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5519,7 +4088,7 @@ func (client *Client) QuerySmarttagTemplateList(request *QuerySmarttagTemplateLi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuerySnapshotJobListResponse
-func (client *Client) QuerySnapshotJobListWithOptions(request *QuerySnapshotJobListRequest, runtime *dara.RuntimeOptions) (_result *QuerySnapshotJobListResponse, _err error) {
+func (client *Client) QuerySnapshotJobListWithContext(ctx context.Context, request *QuerySnapshotJobListRequest, runtime *dara.RuntimeOptions) (_result *QuerySnapshotJobListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5586,41 +4155,11 @@ func (client *Client) QuerySnapshotJobListWithOptions(request *QuerySnapshotJobL
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuerySnapshotJobListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries snapshot jobs.
-//
-// Description:
-//
-// The status of the snapshot jobs that you want to query.
-//
-//   - **Submitted**: The job was submitted.
-//
-//   - **Snapshoting**: The job is being processed.
-//
-//   - **Success**: The job was successfully processed.
-//
-//   - **Fail**: The job failed.
-//
-// @param request - QuerySnapshotJobListRequest
-//
-// @return QuerySnapshotJobListResponse
-func (client *Client) QuerySnapshotJobList(request *QuerySnapshotJobListRequest) (_result *QuerySnapshotJobListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QuerySnapshotJobListResponse{}
-	_body, _err := client.QuerySnapshotJobListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5637,7 +4176,7 @@ func (client *Client) QuerySnapshotJobList(request *QuerySnapshotJobListRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryTemplateListResponse
-func (client *Client) QueryTemplateListWithOptions(request *QueryTemplateListRequest, runtime *dara.RuntimeOptions) (_result *QueryTemplateListResponse, _err error) {
+func (client *Client) QueryTemplateListWithContext(ctx context.Context, request *QueryTemplateListRequest, runtime *dara.RuntimeOptions) (_result *QueryTemplateListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5680,33 +4219,11 @@ func (client *Client) QueryTemplateListWithOptions(request *QueryTemplateListReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryTemplateListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// You can call this operation to query up to 10 transcoding templates at a time.
-//
-// Description:
-//
-// The IDs of the transcoding templates that you want to query. You can query up to 10 transcoding templates at a time. Separate multiple IDs of custom transcoding templates with commas (,).
-//
-// @param request - QueryTemplateListRequest
-//
-// @return QueryTemplateListResponse
-func (client *Client) QueryTemplateList(request *QueryTemplateListRequest) (_result *QueryTemplateListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryTemplateListResponse{}
-	_body, _err := client.QueryTemplateListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5719,7 +4236,7 @@ func (client *Client) QueryTemplateList(request *QueryTemplateListRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryTraceAbJobResponse
-func (client *Client) QueryTraceAbJobWithOptions(request *QueryTraceAbJobRequest, runtime *dara.RuntimeOptions) (_result *QueryTraceAbJobResponse, _err error) {
+func (client *Client) QueryTraceAbJobWithContext(ctx context.Context, request *QueryTraceAbJobRequest, runtime *dara.RuntimeOptions) (_result *QueryTraceAbJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5750,29 +4267,11 @@ func (client *Client) QueryTraceAbJobWithOptions(request *QueryTraceAbJobRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryTraceAbJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询视频溯源水印ab流任务
-//
-// @param request - QueryTraceAbJobRequest
-//
-// @return QueryTraceAbJobResponse
-func (client *Client) QueryTraceAbJob(request *QueryTraceAbJobRequest) (_result *QueryTraceAbJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryTraceAbJobResponse{}
-	_body, _err := client.QueryTraceAbJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5785,7 +4284,7 @@ func (client *Client) QueryTraceAbJob(request *QueryTraceAbJobRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryTraceExtractJobResponse
-func (client *Client) QueryTraceExtractJobWithOptions(request *QueryTraceExtractJobRequest, runtime *dara.RuntimeOptions) (_result *QueryTraceExtractJobResponse, _err error) {
+func (client *Client) QueryTraceExtractJobWithContext(ctx context.Context, request *QueryTraceExtractJobRequest, runtime *dara.RuntimeOptions) (_result *QueryTraceExtractJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5812,29 +4311,11 @@ func (client *Client) QueryTraceExtractJobWithOptions(request *QueryTraceExtract
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryTraceExtractJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询溯源水印提取任务
-//
-// @param request - QueryTraceExtractJobRequest
-//
-// @return QueryTraceExtractJobResponse
-func (client *Client) QueryTraceExtractJob(request *QueryTraceExtractJobRequest) (_result *QueryTraceExtractJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryTraceExtractJobResponse{}
-	_body, _err := client.QueryTraceExtractJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5847,7 +4328,7 @@ func (client *Client) QueryTraceExtractJob(request *QueryTraceExtractJobRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryTraceM3u8JobResponse
-func (client *Client) QueryTraceM3u8JobWithOptions(request *QueryTraceM3u8JobRequest, runtime *dara.RuntimeOptions) (_result *QueryTraceM3u8JobResponse, _err error) {
+func (client *Client) QueryTraceM3u8JobWithContext(ctx context.Context, request *QueryTraceM3u8JobRequest, runtime *dara.RuntimeOptions) (_result *QueryTraceM3u8JobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5890,29 +4371,11 @@ func (client *Client) QueryTraceM3u8JobWithOptions(request *QueryTraceM3u8JobReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryTraceM3u8JobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询视频溯源水印m3u8任务
-//
-// @param request - QueryTraceM3u8JobRequest
-//
-// @return QueryTraceM3u8JobResponse
-func (client *Client) QueryTraceM3u8Job(request *QueryTraceM3u8JobRequest) (_result *QueryTraceM3u8JobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryTraceM3u8JobResponse{}
-	_body, _err := client.QueryTraceM3u8JobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5933,7 +4396,7 @@ func (client *Client) QueryTraceM3u8Job(request *QueryTraceM3u8JobRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryWaterMarkTemplateListResponse
-func (client *Client) QueryWaterMarkTemplateListWithOptions(request *QueryWaterMarkTemplateListRequest, runtime *dara.RuntimeOptions) (_result *QueryWaterMarkTemplateListResponse, _err error) {
+func (client *Client) QueryWaterMarkTemplateListWithContext(ctx context.Context, request *QueryWaterMarkTemplateListRequest, runtime *dara.RuntimeOptions) (_result *QueryWaterMarkTemplateListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5976,37 +4439,11 @@ func (client *Client) QueryWaterMarkTemplateListWithOptions(request *QueryWaterM
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryWaterMarkTemplateListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries watermark templates.
-//
-// Description:
-//
-// You can call this operation to query up to 10 watermark templates at a time.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - QueryWaterMarkTemplateListRequest
-//
-// @return QueryWaterMarkTemplateListResponse
-func (client *Client) QueryWaterMarkTemplateList(request *QueryWaterMarkTemplateListRequest) (_result *QueryWaterMarkTemplateListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryWaterMarkTemplateListResponse{}
-	_body, _err := client.QueryWaterMarkTemplateListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6029,7 +4466,7 @@ func (client *Client) QueryWaterMarkTemplateList(request *QueryWaterMarkTemplate
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RegisterCustomFaceResponse
-func (client *Client) RegisterCustomFaceWithOptions(request *RegisterCustomFaceRequest, runtime *dara.RuntimeOptions) (_result *RegisterCustomFaceResponse, _err error) {
+func (client *Client) RegisterCustomFaceWithContext(ctx context.Context, request *RegisterCustomFaceRequest, runtime *dara.RuntimeOptions) (_result *RegisterCustomFaceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6084,39 +4521,11 @@ func (client *Client) RegisterCustomFaceWithOptions(request *RegisterCustomFaceR
 		BodyType:    dara.String("json"),
 	}
 	_result = &RegisterCustomFaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Registers a custom face.
-//
-// Description:
-//
-//	  You can call this operation to register only one custom face at a time.
-//
-//		- A maximum of 10 images can be registered for a custom face.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - RegisterCustomFaceRequest
-//
-// @return RegisterCustomFaceResponse
-func (client *Client) RegisterCustomFace(request *RegisterCustomFaceRequest) (_result *RegisterCustomFaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RegisterCustomFaceResponse{}
-	_body, _err := client.RegisterCustomFaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6129,7 +4538,7 @@ func (client *Client) RegisterCustomFace(request *RegisterCustomFaceRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RegisterCustomViewResponse
-func (client *Client) RegisterCustomViewWithOptions(request *RegisterCustomViewRequest, runtime *dara.RuntimeOptions) (_result *RegisterCustomViewResponse, _err error) {
+func (client *Client) RegisterCustomViewWithContext(ctx context.Context, request *RegisterCustomViewRequest, runtime *dara.RuntimeOptions) (_result *RegisterCustomViewResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6188,29 +4597,11 @@ func (client *Client) RegisterCustomViewWithOptions(request *RegisterCustomViewR
 		BodyType:    dara.String("json"),
 	}
 	_result = &RegisterCustomViewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 注册自定义实体项
-//
-// @param request - RegisterCustomViewRequest
-//
-// @return RegisterCustomViewResponse
-func (client *Client) RegisterCustomView(request *RegisterCustomViewRequest) (_result *RegisterCustomViewResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RegisterCustomViewResponse{}
-	_body, _err := client.RegisterCustomViewWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6231,7 +4622,7 @@ func (client *Client) RegisterCustomView(request *RegisterCustomViewRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchMediaWorkflowResponse
-func (client *Client) SearchMediaWorkflowWithOptions(request *SearchMediaWorkflowRequest, runtime *dara.RuntimeOptions) (_result *SearchMediaWorkflowResponse, _err error) {
+func (client *Client) SearchMediaWorkflowWithContext(ctx context.Context, request *SearchMediaWorkflowRequest, runtime *dara.RuntimeOptions) (_result *SearchMediaWorkflowResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6282,37 +4673,11 @@ func (client *Client) SearchMediaWorkflowWithOptions(request *SearchMediaWorkflo
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchMediaWorkflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries media workflows in the specified state.
-//
-// Description:
-//
-// You can call this operation to query media workflows in the specified state. If you do not specify the state, all media workflows are queried by default.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - SearchMediaWorkflowRequest
-//
-// @return SearchMediaWorkflowResponse
-func (client *Client) SearchMediaWorkflow(request *SearchMediaWorkflowRequest) (_result *SearchMediaWorkflowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchMediaWorkflowResponse{}
-	_body, _err := client.SearchMediaWorkflowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6333,7 +4698,7 @@ func (client *Client) SearchMediaWorkflow(request *SearchMediaWorkflowRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchPipelineResponse
-func (client *Client) SearchPipelineWithOptions(request *SearchPipelineRequest, runtime *dara.RuntimeOptions) (_result *SearchPipelineResponse, _err error) {
+func (client *Client) SearchPipelineWithContext(ctx context.Context, request *SearchPipelineRequest, runtime *dara.RuntimeOptions) (_result *SearchPipelineResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6384,37 +4749,11 @@ func (client *Client) SearchPipelineWithOptions(request *SearchPipelineRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchPipelineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Searches for ApsaraVideo Media Processing (MPS) queues in the specified state.
-//
-// Description:
-//
-// You can call this operation to query MPS queues in the specified state. If you do not specify the state, all MPS queues are queried by default.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - SearchPipelineRequest
-//
-// @return SearchPipelineResponse
-func (client *Client) SearchPipeline(request *SearchPipelineRequest) (_result *SearchPipelineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchPipelineResponse{}
-	_body, _err := client.SearchPipelineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6431,7 +4770,7 @@ func (client *Client) SearchPipeline(request *SearchPipelineRequest) (_result *S
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchTemplateResponse
-func (client *Client) SearchTemplateWithOptions(request *SearchTemplateRequest, runtime *dara.RuntimeOptions) (_result *SearchTemplateResponse, _err error) {
+func (client *Client) SearchTemplateWithContext(ctx context.Context, request *SearchTemplateRequest, runtime *dara.RuntimeOptions) (_result *SearchTemplateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6486,33 +4825,11 @@ func (client *Client) SearchTemplateWithOptions(request *SearchTemplateRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// You can call this operation to query custom transcoding templates in the specified state.
-//
-// Description:
-//
-// You can call this operation up to 100 times per second. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - SearchTemplateRequest
-//
-// @return SearchTemplateResponse
-func (client *Client) SearchTemplate(request *SearchTemplateRequest) (_result *SearchTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchTemplateResponse{}
-	_body, _err := client.SearchTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6529,7 +4846,7 @@ func (client *Client) SearchTemplate(request *SearchTemplateRequest) (_result *S
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchWaterMarkTemplateResponse
-func (client *Client) SearchWaterMarkTemplateWithOptions(request *SearchWaterMarkTemplateRequest, runtime *dara.RuntimeOptions) (_result *SearchWaterMarkTemplateResponse, _err error) {
+func (client *Client) SearchWaterMarkTemplateWithContext(ctx context.Context, request *SearchWaterMarkTemplateRequest, runtime *dara.RuntimeOptions) (_result *SearchWaterMarkTemplateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6580,33 +4897,11 @@ func (client *Client) SearchWaterMarkTemplateWithOptions(request *SearchWaterMar
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchWaterMarkTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Searches for watermark templates.
-//
-// Description:
-//
-// The total number of returned entries.
-//
-// @param request - SearchWaterMarkTemplateRequest
-//
-// @return SearchWaterMarkTemplateResponse
-func (client *Client) SearchWaterMarkTemplate(request *SearchWaterMarkTemplateRequest) (_result *SearchWaterMarkTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchWaterMarkTemplateResponse{}
-	_body, _err := client.SearchWaterMarkTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6629,7 +4924,7 @@ func (client *Client) SearchWaterMarkTemplate(request *SearchWaterMarkTemplateRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitAnalysisJobResponse
-func (client *Client) SubmitAnalysisJobWithOptions(request *SubmitAnalysisJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitAnalysisJobResponse, _err error) {
+func (client *Client) SubmitAnalysisJobWithContext(ctx context.Context, request *SubmitAnalysisJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitAnalysisJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6688,39 +4983,11 @@ func (client *Client) SubmitAnalysisJobWithOptions(request *SubmitAnalysisJobReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitAnalysisJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Submits a preset template analysis job.
-//
-// Description:
-//
-//	  After you call the SubmitAnalysisJob operation to submit a preset template analysis job, ApsaraVideo Media Processing (MPS) intelligently analyzes the input file of the job and recommends a suitable preset template. You can call the [QueryAnalysisJobList](https://help.aliyun.com/document_detail/29224.html) operation to query the analysis result or enable asynchronous notifications to receive the analysis result.
-//
-//		- The analysis result is retained only for two weeks after it is generated. The analysis result is deleted after two weeks. If you use the recommended preset template in a transcoding job after two weeks, the job fails, and the `AnalysisResultNotFound` error code is returned.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - SubmitAnalysisJobRequest
-//
-// @return SubmitAnalysisJobResponse
-func (client *Client) SubmitAnalysisJob(request *SubmitAnalysisJobRequest) (_result *SubmitAnalysisJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SubmitAnalysisJobResponse{}
-	_body, _err := client.SubmitAnalysisJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6733,7 +5000,7 @@ func (client *Client) SubmitAnalysisJob(request *SubmitAnalysisJobRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitCopyrightExtractJobResponse
-func (client *Client) SubmitCopyrightExtractJobWithOptions(request *SubmitCopyrightExtractJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitCopyrightExtractJobResponse, _err error) {
+func (client *Client) SubmitCopyrightExtractJobWithContext(ctx context.Context, request *SubmitCopyrightExtractJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitCopyrightExtractJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6776,29 +5043,11 @@ func (client *Client) SubmitCopyrightExtractJobWithOptions(request *SubmitCopyri
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitCopyrightExtractJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 提交版权水印提取任务
-//
-// @param request - SubmitCopyrightExtractJobRequest
-//
-// @return SubmitCopyrightExtractJobResponse
-func (client *Client) SubmitCopyrightExtractJob(request *SubmitCopyrightExtractJobRequest) (_result *SubmitCopyrightExtractJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SubmitCopyrightExtractJobResponse{}
-	_body, _err := client.SubmitCopyrightExtractJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6811,7 +5060,7 @@ func (client *Client) SubmitCopyrightExtractJob(request *SubmitCopyrightExtractJ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitCopyrightJobResponse
-func (client *Client) SubmitCopyrightJobWithOptions(request *SubmitCopyrightJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitCopyrightJobResponse, _err error) {
+func (client *Client) SubmitCopyrightJobWithContext(ctx context.Context, request *SubmitCopyrightJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitCopyrightJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6878,29 +5127,11 @@ func (client *Client) SubmitCopyrightJobWithOptions(request *SubmitCopyrightJobR
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitCopyrightJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 提交视频版权水印
-//
-// @param request - SubmitCopyrightJobRequest
-//
-// @return SubmitCopyrightJobResponse
-func (client *Client) SubmitCopyrightJob(request *SubmitCopyrightJobRequest) (_result *SubmitCopyrightJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SubmitCopyrightJobResponse{}
-	_body, _err := client.SubmitCopyrightJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6921,7 +5152,7 @@ func (client *Client) SubmitCopyrightJob(request *SubmitCopyrightJobRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitFpDBDeleteJobResponse
-func (client *Client) SubmitFpDBDeleteJobWithOptions(request *SubmitFpDBDeleteJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitFpDBDeleteJobResponse, _err error) {
+func (client *Client) SubmitFpDBDeleteJobWithContext(ctx context.Context, request *SubmitFpDBDeleteJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitFpDBDeleteJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6976,37 +5207,11 @@ func (client *Client) SubmitFpDBDeleteJobWithOptions(request *SubmitFpDBDeleteJo
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitFpDBDeleteJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Submits a job of clearing or deleting a media fingerprint library.
-//
-// Description:
-//
-// You can call this operation to clear or delete the specified media fingerprint library based on the library ID. If you clear a media fingerprint library, the content in the library is deleted, but the library is not deleted. If you delete a media fingerprint library, both the library and the content in the library are deleted. If you do not specify the operation type, the system clears the media fingerprint library by default.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - SubmitFpDBDeleteJobRequest
-//
-// @return SubmitFpDBDeleteJobResponse
-func (client *Client) SubmitFpDBDeleteJob(request *SubmitFpDBDeleteJobRequest) (_result *SubmitFpDBDeleteJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SubmitFpDBDeleteJobResponse{}
-	_body, _err := client.SubmitFpDBDeleteJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7031,7 +5236,7 @@ func (client *Client) SubmitFpDBDeleteJob(request *SubmitFpDBDeleteJobRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitFpFileDeleteJobResponse
-func (client *Client) SubmitFpFileDeleteJobWithOptions(request *SubmitFpFileDeleteJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitFpFileDeleteJobResponse, _err error) {
+func (client *Client) SubmitFpFileDeleteJobWithContext(ctx context.Context, request *SubmitFpFileDeleteJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitFpFileDeleteJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -7090,41 +5295,11 @@ func (client *Client) SubmitFpFileDeleteJobWithOptions(request *SubmitFpFileDele
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitFpFileDeleteJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Submits a job of deleting media files from a media fingerprint library.
-//
-// Description:
-//
-// ## [](#)Limits
-//
-//   - You can call this operation to delete up to 200 media files from a media fingerprint library at a time.
-//
-//   - This operation is available in the following regions: China (Beijing), China (Hangzhou), China (Shanghai), and Singapore.
-//
-// ## [](#qps-)QPS limits
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - SubmitFpFileDeleteJobRequest
-//
-// @return SubmitFpFileDeleteJobResponse
-func (client *Client) SubmitFpFileDeleteJob(request *SubmitFpFileDeleteJobRequest) (_result *SubmitFpFileDeleteJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SubmitFpFileDeleteJobResponse{}
-	_body, _err := client.SubmitFpFileDeleteJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7157,7 +5332,7 @@ func (client *Client) SubmitFpFileDeleteJob(request *SubmitFpFileDeleteJobReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitFpShotJobResponse
-func (client *Client) SubmitFpShotJobWithOptions(request *SubmitFpShotJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitFpShotJobResponse, _err error) {
+func (client *Client) SubmitFpShotJobWithContext(ctx context.Context, request *SubmitFpShotJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitFpShotJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -7212,49 +5387,11 @@ func (client *Client) SubmitFpShotJobWithOptions(request *SubmitFpShotJobRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitFpShotJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Submits a media fingerprint analysis job to query the media fingerprint repository for a media file with the identical or similar fingerprint as the input file.
-//
-// Description:
-//
-//	  You can call this operation to submit a video, audio, image, or text fingerprint analysis job.
-//
-//		- This operation asynchronously submits a job. The query results may not have been generated when the response is returned. After the results are generated, an asynchronous message is returned.
-//
-//		- You can submit a text fingerprint analysis job only in the China (Shanghai) region.
-//
-//		- The input file of the job must be in one of the following formats:
-//
-//	    	- Image formats: JPEG, PNG, and BMP.
-//
-//	    	- Video formats: MP4, AVI, MKV, MPG, TS, MOV, FLV, MXF.
-//
-//	    	- Video encoding formats: MPEG2, MPEG4, H264, HEVC, and WMV.
-//
-// ### QPS limit
-//
-// You can call this operation up to 150 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - SubmitFpShotJobRequest
-//
-// @return SubmitFpShotJobResponse
-func (client *Client) SubmitFpShotJob(request *SubmitFpShotJobRequest) (_result *SubmitFpShotJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SubmitFpShotJobResponse{}
-	_body, _err := client.SubmitFpShotJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7273,7 +5410,7 @@ func (client *Client) SubmitFpShotJob(request *SubmitFpShotJobRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitIProductionJobResponse
-func (client *Client) SubmitIProductionJobWithOptions(request *SubmitIProductionJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitIProductionJobResponse, _err error) {
+func (client *Client) SubmitIProductionJobWithContext(ctx context.Context, request *SubmitIProductionJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitIProductionJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -7348,35 +5485,11 @@ func (client *Client) SubmitIProductionJobWithOptions(request *SubmitIProduction
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitIProductionJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Description:
-//
-//	  Jobs that are submitted by calling this operation run in an asynchronous manner. After a job is added to the ApsaraVideo Media Processing (MPS) queue, the job is scheduled to run. You can call the [QueryIProductionJob](https://help.aliyun.com/document_detail/170217.html) operation or configure a callback to query the job result.
-//
-//		- Capabilities provided by the intelligent production feature vary based on the region. Before you call this operation to submit an intelligent production job, check whether the job is supported in the region in which your service is activated. For more information, see [Regions and endpoints](https://help.aliyun.com/document_detail/43248.html).
-//
-// ### [](#qps)QPS limit
-//
-// You can call this API operation up to 100 times per second per account. Requests that exceed this limit are dropped, and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - SubmitIProductionJobRequest
-//
-// @return SubmitIProductionJobResponse
-func (client *Client) SubmitIProductionJob(request *SubmitIProductionJobRequest) (_result *SubmitIProductionJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SubmitIProductionJobResponse{}
-	_body, _err := client.SubmitIProductionJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7389,7 +5502,7 @@ func (client *Client) SubmitIProductionJob(request *SubmitIProductionJobRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitImageCopyrightResponse
-func (client *Client) SubmitImageCopyrightWithOptions(request *SubmitImageCopyrightRequest, runtime *dara.RuntimeOptions) (_result *SubmitImageCopyrightResponse, _err error) {
+func (client *Client) SubmitImageCopyrightWithContext(ctx context.Context, request *SubmitImageCopyrightRequest, runtime *dara.RuntimeOptions) (_result *SubmitImageCopyrightResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -7424,29 +5537,11 @@ func (client *Client) SubmitImageCopyrightWithOptions(request *SubmitImageCopyri
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitImageCopyrightResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 提交图片版权水印任务
-//
-// @param request - SubmitImageCopyrightRequest
-//
-// @return SubmitImageCopyrightResponse
-func (client *Client) SubmitImageCopyright(request *SubmitImageCopyrightRequest) (_result *SubmitImageCopyrightResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SubmitImageCopyrightResponse{}
-	_body, _err := client.SubmitImageCopyrightWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7477,7 +5572,7 @@ func (client *Client) SubmitImageCopyright(request *SubmitImageCopyrightRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitJobsResponse
-func (client *Client) SubmitJobsWithOptions(request *SubmitJobsRequest, runtime *dara.RuntimeOptions) (_result *SubmitJobsResponse, _err error) {
+func (client *Client) SubmitJobsWithContext(ctx context.Context, request *SubmitJobsRequest, runtime *dara.RuntimeOptions) (_result *SubmitJobsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -7536,47 +5631,11 @@ func (client *Client) SubmitJobsWithOptions(request *SubmitJobsRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Submits transcoding jobs. If the transcoding jobs and workflows created in the ApsaraVideo Media Processing (MPS) console cannot meet your business requirements, you can call the SubmitJobs operation to submit transcoding jobs. Specify transcoding parameters as required when you call the SubmitJobs operation.
-//
-// Description:
-//
-//	  SubmitJobs is an asynchronous operation. After you submit transcoding jobs, the jobs are added to an MPS queue to be scheduled and run. The transcoding jobs may not have been complete when the response is returned. After you call this operation, you can call the [QueryJobList](https://help.aliyun.com/document_detail/602836.html) operation to query the job results. You can also associate a Message Service (MNS) queue or topic with the MPS queue to receive notifications on the jobs. For more information, see [Receive notifications](https://help.aliyun.com/document_detail/42618.html).
-//
-//		- An input file can be up to 100 GB in size. If the size of the input file exceeds this limit, the job may fail.
-//
-//		- If you use an **intelligent preset template*	- to transcode an input file, you must first call the [SubmitAnalysisJob](https://help.aliyun.com/document_detail/29223.html) operation to submit a preset template analysis job. After the analysis job is complete, you can call the [QueryAnalysisJobList](https://help.aliyun.com/document_detail/29224.html)operation to obtain the available preset templates for the input file. When you submit a transcoding job, set TemplateId to the ID of an available preset template. If you specify a preset template that is not in the available preset templates, the transcoding job fails.
-//
-//		- If you use a **static preset template*	- to transcode an input file, you do not need to submit a preset template analysis job.
-//
-//		- If you want to use multiple accounts in MPS, you can create Resource Access Management (RAM) users by using your Alibaba Cloud account. For more information, see [Create a RAM user and grant permissions to the RAM user](https://help.aliyun.com/document_detail/42841.html). If the Alibaba Cloud account that is used to query transcoding jobs is not the one that is used to submit the transcoding jobs, no data is returned.
-//
-//		- For information about transcoding FAQ, see [FAQ about MPS](https://help.aliyun.com/document_detail/38986.html).
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped, and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - SubmitJobsRequest
-//
-// @return SubmitJobsResponse
-func (client *Client) SubmitJobs(request *SubmitJobsRequest) (_result *SubmitJobsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SubmitJobsResponse{}
-	_body, _err := client.SubmitJobsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7597,7 +5656,7 @@ func (client *Client) SubmitJobs(request *SubmitJobsRequest) (_result *SubmitJob
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitMediaCensorJobResponse
-func (client *Client) SubmitMediaCensorJobWithOptions(request *SubmitMediaCensorJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitMediaCensorJobResponse, _err error) {
+func (client *Client) SubmitMediaCensorJobWithContext(ctx context.Context, request *SubmitMediaCensorJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitMediaCensorJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -7672,37 +5731,11 @@ func (client *Client) SubmitMediaCensorJobWithOptions(request *SubmitMediaCensor
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitMediaCensorJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Submits a content moderation job.
-//
-// Description:
-//
-// The job that you submit by calling this operation is run in asynchronous mode. The job is added to an ApsaraVideo Media Processing (MPS) queue and then scheduled, queued, and run. You can call the [QueryMediaCensorJobDetail](https://help.aliyun.com/document_detail/91779.html) operation or configure an asynchronous notification to obtain the job result.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - SubmitMediaCensorJobRequest
-//
-// @return SubmitMediaCensorJobResponse
-func (client *Client) SubmitMediaCensorJob(request *SubmitMediaCensorJobRequest) (_result *SubmitMediaCensorJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SubmitMediaCensorJobResponse{}
-	_body, _err := client.SubmitMediaCensorJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7727,7 +5760,7 @@ func (client *Client) SubmitMediaCensorJob(request *SubmitMediaCensorJobRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitMediaInfoJobResponse
-func (client *Client) SubmitMediaInfoJobWithOptions(request *SubmitMediaInfoJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitMediaInfoJobResponse, _err error) {
+func (client *Client) SubmitMediaInfoJobWithContext(ctx context.Context, request *SubmitMediaInfoJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitMediaInfoJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -7786,41 +5819,11 @@ func (client *Client) SubmitMediaInfoJobWithOptions(request *SubmitMediaInfoJobR
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitMediaInfoJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Submits a media information analysis job.
-//
-// Description:
-//
-//	  Before you submit a media information analysis job, make sure that the input file is uploaded to an Object Storage Service (OSS) bucket. Otherwise, the job fails. You can configure upload callbacks to be notified of the upload status of files.****
-//
-//		- A media information analysis job can be run in synchronous or asynchronous mode.
-//
-//		- In asynchronous mode, the media information analysis job is submitted to and scheduled in an ApsaraVideo Media Processing (MPS) queue. In this case, the media information analysis job may be queued. The media information analysis job may not be generated when the response to the SubmitMediaInfoJob operation is returned. After the execution is complete, you can call the [QueryMediaInfoJobList](https://help.aliyun.com/document_detail/602828.html) operation to poll the execution results, or associate a Message Service (MNS) queue or topic with the MPS queue to receive the execution results. For more information, see [Receive message notifications](https://www.alibabacloud.com/help/en/mps/receive-message-notifications/?spm=a2c63.p38356.0.0.b48576d2jxNSca).
-//
-// ### QPS limits
-//
-// You can call this operation up to 50 times per second per account. If the number of requests that you send to call this operation within one second reaches the request limit of this operation, new requests fail and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - SubmitMediaInfoJobRequest
-//
-// @return SubmitMediaInfoJobResponse
-func (client *Client) SubmitMediaInfoJob(request *SubmitMediaInfoJobRequest) (_result *SubmitMediaInfoJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SubmitMediaInfoJobResponse{}
-	_body, _err := client.SubmitMediaInfoJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7829,7 +5832,7 @@ func (client *Client) SubmitMediaInfoJob(request *SubmitMediaInfoJobRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitSmarttagJobResponse
-func (client *Client) SubmitSmarttagJobWithOptions(request *SubmitSmarttagJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitSmarttagJobResponse, _err error) {
+func (client *Client) SubmitSmarttagJobWithContext(ctx context.Context, request *SubmitSmarttagJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitSmarttagJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -7912,25 +5915,11 @@ func (client *Client) SubmitSmarttagJobWithOptions(request *SubmitSmarttagJobReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitSmarttagJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SubmitSmarttagJobRequest
-//
-// @return SubmitSmarttagJobResponse
-func (client *Client) SubmitSmarttagJob(request *SubmitSmarttagJobRequest) (_result *SubmitSmarttagJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SubmitSmarttagJobResponse{}
-	_body, _err := client.SubmitSmarttagJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7955,7 +5944,7 @@ func (client *Client) SubmitSmarttagJob(request *SubmitSmarttagJobRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitSnapshotJobResponse
-func (client *Client) SubmitSnapshotJobWithOptions(request *SubmitSnapshotJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitSnapshotJobResponse, _err error) {
+func (client *Client) SubmitSnapshotJobWithContext(ctx context.Context, request *SubmitSnapshotJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitSnapshotJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -8010,41 +5999,11 @@ func (client *Client) SubmitSnapshotJobWithOptions(request *SubmitSnapshotJobReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitSnapshotJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Submits a snapshot job.
-//
-// Description:
-//
-//	  Only JPG images can be generated by calling this operation.
-//
-//		- Asynchronous mode: This operation may return a response before snapshots are captured. Snapshot jobs are queued in the background and asynchronously processed by ApsaraVideo Media Processing (MPS). If the **Interval*	- or **Num*	- parameter is set, the snapshot job is processed in asynchronous mode. For more information about FAQ about capturing snapshots, see [FAQ about taking snapshots](https://help.aliyun.com/document_detail/60805.html).
-//
-//		- Notifications: When you submit a snapshot job, the **PipelineId*	- parameter is required. An asynchronous message is sent only after the notification feature is enabled for the MPS queue.
-//
-// ### QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - SubmitSnapshotJobRequest
-//
-// @return SubmitSnapshotJobResponse
-func (client *Client) SubmitSnapshotJob(request *SubmitSnapshotJobRequest) (_result *SubmitSnapshotJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SubmitSnapshotJobResponse{}
-	_body, _err := client.SubmitSnapshotJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8057,7 +6016,7 @@ func (client *Client) SubmitSnapshotJob(request *SubmitSnapshotJobRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitTraceAbJobResponse
-func (client *Client) SubmitTraceAbJobWithOptions(request *SubmitTraceAbJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitTraceAbJobResponse, _err error) {
+func (client *Client) SubmitTraceAbJobWithContext(ctx context.Context, request *SubmitTraceAbJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitTraceAbJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -8116,29 +6075,11 @@ func (client *Client) SubmitTraceAbJobWithOptions(request *SubmitTraceAbJobReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitTraceAbJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 提交视频溯源水印ab流任务
-//
-// @param request - SubmitTraceAbJobRequest
-//
-// @return SubmitTraceAbJobResponse
-func (client *Client) SubmitTraceAbJob(request *SubmitTraceAbJobRequest) (_result *SubmitTraceAbJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SubmitTraceAbJobResponse{}
-	_body, _err := client.SubmitTraceAbJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8151,7 +6092,7 @@ func (client *Client) SubmitTraceAbJob(request *SubmitTraceAbJobRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitTraceExtractJobResponse
-func (client *Client) SubmitTraceExtractJobWithOptions(request *SubmitTraceExtractJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitTraceExtractJobResponse, _err error) {
+func (client *Client) SubmitTraceExtractJobWithContext(ctx context.Context, request *SubmitTraceExtractJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitTraceExtractJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -8194,29 +6135,11 @@ func (client *Client) SubmitTraceExtractJobWithOptions(request *SubmitTraceExtra
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitTraceExtractJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 提交溯源水印提取任务
-//
-// @param request - SubmitTraceExtractJobRequest
-//
-// @return SubmitTraceExtractJobResponse
-func (client *Client) SubmitTraceExtractJob(request *SubmitTraceExtractJobRequest) (_result *SubmitTraceExtractJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SubmitTraceExtractJobResponse{}
-	_body, _err := client.SubmitTraceExtractJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8229,7 +6152,7 @@ func (client *Client) SubmitTraceExtractJob(request *SubmitTraceExtractJobReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitTraceM3u8JobResponse
-func (client *Client) SubmitTraceM3u8JobWithOptions(request *SubmitTraceM3u8JobRequest, runtime *dara.RuntimeOptions) (_result *SubmitTraceM3u8JobResponse, _err error) {
+func (client *Client) SubmitTraceM3u8JobWithContext(ctx context.Context, request *SubmitTraceM3u8JobRequest, runtime *dara.RuntimeOptions) (_result *SubmitTraceM3u8JobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -8272,29 +6195,11 @@ func (client *Client) SubmitTraceM3u8JobWithOptions(request *SubmitTraceM3u8JobR
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitTraceM3u8JobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 提交视频溯源水印m3u8文件任务
-//
-// @param request - SubmitTraceM3u8JobRequest
-//
-// @return SubmitTraceM3u8JobResponse
-func (client *Client) SubmitTraceM3u8Job(request *SubmitTraceM3u8JobRequest) (_result *SubmitTraceM3u8JobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SubmitTraceM3u8JobResponse{}
-	_body, _err := client.SubmitTraceM3u8JobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8311,7 +6216,7 @@ func (client *Client) SubmitTraceM3u8Job(request *SubmitTraceM3u8JobRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TagCustomPersonResponse
-func (client *Client) TagCustomPersonWithOptions(request *TagCustomPersonRequest, runtime *dara.RuntimeOptions) (_result *TagCustomPersonResponse, _err error) {
+func (client *Client) TagCustomPersonWithContext(ctx context.Context, request *TagCustomPersonRequest, runtime *dara.RuntimeOptions) (_result *TagCustomPersonResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -8374,33 +6279,11 @@ func (client *Client) TagCustomPersonWithOptions(request *TagCustomPersonRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &TagCustomPersonResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// The description of the figure. The description can be up to 512 characters in length.
-//
-// Description:
-//
-// The response parameters.
-//
-// @param request - TagCustomPersonRequest
-//
-// @return TagCustomPersonResponse
-func (client *Client) TagCustomPerson(request *TagCustomPersonRequest) (_result *TagCustomPersonResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TagCustomPersonResponse{}
-	_body, _err := client.TagCustomPersonWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8423,7 +6306,7 @@ func (client *Client) TagCustomPerson(request *TagCustomPersonRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnbindInputBucketResponse
-func (client *Client) UnbindInputBucketWithOptions(request *UnbindInputBucketRequest, runtime *dara.RuntimeOptions) (_result *UnbindInputBucketResponse, _err error) {
+func (client *Client) UnbindInputBucketWithContext(ctx context.Context, request *UnbindInputBucketRequest, runtime *dara.RuntimeOptions) (_result *UnbindInputBucketResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -8470,39 +6353,11 @@ func (client *Client) UnbindInputBucketWithOptions(request *UnbindInputBucketReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnbindInputBucketResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Unbinds an input media bucket from the media library.
-//
-// Description:
-//
-// # Usage notes
-//
-// You can call this operation to unbind an input media bucket from the media library based on the name of the output media bucket.
-//
-// # QPS limits
-//
-// You can call this API operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - UnbindInputBucketRequest
-//
-// @return UnbindInputBucketResponse
-func (client *Client) UnbindInputBucket(request *UnbindInputBucketRequest) (_result *UnbindInputBucketResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnbindInputBucketResponse{}
-	_body, _err := client.UnbindInputBucketWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8523,7 +6378,7 @@ func (client *Client) UnbindInputBucket(request *UnbindInputBucketRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnbindOutputBucketResponse
-func (client *Client) UnbindOutputBucketWithOptions(request *UnbindOutputBucketRequest, runtime *dara.RuntimeOptions) (_result *UnbindOutputBucketResponse, _err error) {
+func (client *Client) UnbindOutputBucketWithContext(ctx context.Context, request *UnbindOutputBucketRequest, runtime *dara.RuntimeOptions) (_result *UnbindOutputBucketResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -8566,37 +6421,11 @@ func (client *Client) UnbindOutputBucketWithOptions(request *UnbindOutputBucketR
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnbindOutputBucketResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// You can call this operation to unbind an output media bucket from the media library based on the name of the output media bucket.
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limits](https://www.alibabacloud.com/help/en/apsaravideo-for-media-processing/latest/qps-limit).
-//
-// Description:
-//
-// The name of the output media bucket to be unbound. To obtain the media bucket name, you can log on to the **ApsaraVideo Media Processing (MPS)*	- console and choose **Workflows*	- > **Media Buckets*	- in the left-side navigation pane. Alternatively, you can log on to the **Object Storage Service (OSS) console*	- and click **My OSS Paths**.
-//
-// @param request - UnbindOutputBucketRequest
-//
-// @return UnbindOutputBucketResponse
-func (client *Client) UnbindOutputBucket(request *UnbindOutputBucketRequest) (_result *UnbindOutputBucketResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnbindOutputBucketResponse{}
-	_body, _err := client.UnbindOutputBucketWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8617,7 +6446,7 @@ func (client *Client) UnbindOutputBucket(request *UnbindOutputBucketRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnregisterCustomFaceResponse
-func (client *Client) UnregisterCustomFaceWithOptions(request *UnregisterCustomFaceRequest, runtime *dara.RuntimeOptions) (_result *UnregisterCustomFaceResponse, _err error) {
+func (client *Client) UnregisterCustomFaceWithContext(ctx context.Context, request *UnregisterCustomFaceRequest, runtime *dara.RuntimeOptions) (_result *UnregisterCustomFaceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -8668,37 +6497,11 @@ func (client *Client) UnregisterCustomFaceWithOptions(request *UnregisterCustomF
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnregisterCustomFaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a custom face, all the custom faces that are registered in a custom figure library, or a custom figure library.
-//
-// Description:
-//
-// You can call this operation to delete a specific custom face, all the custom faces that are registered in a custom figure library, or a custom figure library.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped, and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - UnregisterCustomFaceRequest
-//
-// @return UnregisterCustomFaceResponse
-func (client *Client) UnregisterCustomFace(request *UnregisterCustomFaceRequest) (_result *UnregisterCustomFaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnregisterCustomFaceResponse{}
-	_body, _err := client.UnregisterCustomFaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8719,7 +6522,7 @@ func (client *Client) UnregisterCustomFace(request *UnregisterCustomFaceRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateMediaResponse
-func (client *Client) UpdateMediaWithOptions(request *UpdateMediaRequest, runtime *dara.RuntimeOptions) (_result *UpdateMediaResponse, _err error) {
+func (client *Client) UpdateMediaWithContext(ctx context.Context, request *UpdateMediaRequest, runtime *dara.RuntimeOptions) (_result *UpdateMediaResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -8782,37 +6585,11 @@ func (client *Client) UpdateMediaWithOptions(request *UpdateMediaRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateMediaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the basic information about a media file.
-//
-// Description:
-//
-// The basic information that you can update by calling this operation includes the title, description, and category of a media file. This operation applies to a full update. You must set all the parameters unless you want to replace the value of a specific parameter with a NULL value.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - UpdateMediaRequest
-//
-// @return UpdateMediaResponse
-func (client *Client) UpdateMedia(request *UpdateMediaRequest) (_result *UpdateMediaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateMediaResponse{}
-	_body, _err := client.UpdateMediaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8833,7 +6610,7 @@ func (client *Client) UpdateMedia(request *UpdateMediaRequest) (_result *UpdateM
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateMediaCategoryResponse
-func (client *Client) UpdateMediaCategoryWithOptions(request *UpdateMediaCategoryRequest, runtime *dara.RuntimeOptions) (_result *UpdateMediaCategoryResponse, _err error) {
+func (client *Client) UpdateMediaCategoryWithContext(ctx context.Context, request *UpdateMediaCategoryRequest, runtime *dara.RuntimeOptions) (_result *UpdateMediaCategoryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -8880,37 +6657,11 @@ func (client *Client) UpdateMediaCategoryWithOptions(request *UpdateMediaCategor
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateMediaCategoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the category to which a media file belongs.
-//
-// Description:
-//
-// You can call this operation to update only the category of a media file. For more information about how to update all the information about a media file, see [UpdateMedia](https://help.aliyun.com/document_detail/44464.html).
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - UpdateMediaCategoryRequest
-//
-// @return UpdateMediaCategoryResponse
-func (client *Client) UpdateMediaCategory(request *UpdateMediaCategoryRequest) (_result *UpdateMediaCategoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateMediaCategoryResponse{}
-	_body, _err := client.UpdateMediaCategoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8931,7 +6682,7 @@ func (client *Client) UpdateMediaCategory(request *UpdateMediaCategoryRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateMediaCoverResponse
-func (client *Client) UpdateMediaCoverWithOptions(request *UpdateMediaCoverRequest, runtime *dara.RuntimeOptions) (_result *UpdateMediaCoverResponse, _err error) {
+func (client *Client) UpdateMediaCoverWithContext(ctx context.Context, request *UpdateMediaCoverRequest, runtime *dara.RuntimeOptions) (_result *UpdateMediaCoverResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -8978,37 +6729,11 @@ func (client *Client) UpdateMediaCoverWithOptions(request *UpdateMediaCoverReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateMediaCoverResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the thumbnail of a media file.
-//
-// Description:
-//
-// You can call this operation to update only the thumbnail of a media file. For more information about how to update all the information about a media file, see [UpdateMedia](https://help.aliyun.com/document_detail/44464.html).
-//
-// ## Limits on QPS
-//
-// You can call this operation up to 100 times per second. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limits](https://www.alibabacloud.com/help/en/apsaravideo-for-media-processing/latest/qps-limit).
-//
-// @param request - UpdateMediaCoverRequest
-//
-// @return UpdateMediaCoverResponse
-func (client *Client) UpdateMediaCover(request *UpdateMediaCoverRequest) (_result *UpdateMediaCoverResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateMediaCoverResponse{}
-	_body, _err := client.UpdateMediaCoverWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9029,7 +6754,7 @@ func (client *Client) UpdateMediaCover(request *UpdateMediaCoverRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateMediaPublishStateResponse
-func (client *Client) UpdateMediaPublishStateWithOptions(request *UpdateMediaPublishStateRequest, runtime *dara.RuntimeOptions) (_result *UpdateMediaPublishStateResponse, _err error) {
+func (client *Client) UpdateMediaPublishStateWithContext(ctx context.Context, request *UpdateMediaPublishStateRequest, runtime *dara.RuntimeOptions) (_result *UpdateMediaPublishStateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -9076,37 +6801,11 @@ func (client *Client) UpdateMediaPublishStateWithOptions(request *UpdateMediaPub
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateMediaPublishStateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the publishing status of a media file.
-//
-// Description:
-//
-// The published state indicates that the access control list (ACL) of media playback resources and snapshot files is set to inherit the ACL of the bucket to which they belong. The unpublished state indicates that the ACL of media playback resources and snapshot files is set to private.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - UpdateMediaPublishStateRequest
-//
-// @return UpdateMediaPublishStateResponse
-func (client *Client) UpdateMediaPublishState(request *UpdateMediaPublishStateRequest) (_result *UpdateMediaPublishStateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateMediaPublishStateResponse{}
-	_body, _err := client.UpdateMediaPublishStateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9131,7 +6830,7 @@ func (client *Client) UpdateMediaPublishState(request *UpdateMediaPublishStateRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateMediaWorkflowResponse
-func (client *Client) UpdateMediaWorkflowWithOptions(request *UpdateMediaWorkflowRequest, runtime *dara.RuntimeOptions) (_result *UpdateMediaWorkflowResponse, _err error) {
+func (client *Client) UpdateMediaWorkflowWithContext(ctx context.Context, request *UpdateMediaWorkflowRequest, runtime *dara.RuntimeOptions) (_result *UpdateMediaWorkflowResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -9186,41 +6885,11 @@ func (client *Client) UpdateMediaWorkflowWithOptions(request *UpdateMediaWorkflo
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateMediaWorkflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the topology of a media workflow.
-//
-// Description:
-//
-//	  You can call this operation to update the topology of a media workflow. To update the trigger mode of a media workflow, call the [UpdateMediaWorkflowTriggerMode](https://help.aliyun.com/document_detail/70372.html) operation.
-//
-//		- After you delete or deactivate a media workflow, the workflow cannot be used. In this case, the workflow is not automatically triggered when you upload a file to the bucket specified by the workflow.
-//
-// <warning>Deleting or deactivating a workflow will not affect tasks that have already been submitted. If a workflow is deleted or deactivated after a task has been submitted, tasks that are already in the processing queue will not be canceled and will be executed normally and charged the corresponding fees.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).>
-//
-// @param request - UpdateMediaWorkflowRequest
-//
-// @return UpdateMediaWorkflowResponse
-func (client *Client) UpdateMediaWorkflow(request *UpdateMediaWorkflowRequest) (_result *UpdateMediaWorkflowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateMediaWorkflowResponse{}
-	_body, _err := client.UpdateMediaWorkflowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9241,7 +6910,7 @@ func (client *Client) UpdateMediaWorkflow(request *UpdateMediaWorkflowRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateMediaWorkflowTriggerModeResponse
-func (client *Client) UpdateMediaWorkflowTriggerModeWithOptions(request *UpdateMediaWorkflowTriggerModeRequest, runtime *dara.RuntimeOptions) (_result *UpdateMediaWorkflowTriggerModeResponse, _err error) {
+func (client *Client) UpdateMediaWorkflowTriggerModeWithContext(ctx context.Context, request *UpdateMediaWorkflowTriggerModeRequest, runtime *dara.RuntimeOptions) (_result *UpdateMediaWorkflowTriggerModeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -9288,37 +6957,11 @@ func (client *Client) UpdateMediaWorkflowTriggerModeWithOptions(request *UpdateM
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateMediaWorkflowTriggerModeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the trigger mode of a media workflow.
-//
-// Description:
-//
-// You can call this operation only to modify the trigger mode of a media workflow. To modify other information about the workflow, call the [UpdateMediaWorkflow](https://help.aliyun.com/document_detail/44438.html) operation.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - UpdateMediaWorkflowTriggerModeRequest
-//
-// @return UpdateMediaWorkflowTriggerModeResponse
-func (client *Client) UpdateMediaWorkflowTriggerMode(request *UpdateMediaWorkflowTriggerModeRequest) (_result *UpdateMediaWorkflowTriggerModeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateMediaWorkflowTriggerModeResponse{}
-	_body, _err := client.UpdateMediaWorkflowTriggerModeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9341,7 +6984,7 @@ func (client *Client) UpdateMediaWorkflowTriggerMode(request *UpdateMediaWorkflo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePipelineResponse
-func (client *Client) UpdatePipelineWithOptions(request *UpdatePipelineRequest, runtime *dara.RuntimeOptions) (_result *UpdatePipelineResponse, _err error) {
+func (client *Client) UpdatePipelineWithContext(ctx context.Context, request *UpdatePipelineRequest, runtime *dara.RuntimeOptions) (_result *UpdatePipelineResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -9404,39 +7047,11 @@ func (client *Client) UpdatePipelineWithOptions(request *UpdatePipelineRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePipelineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates an ApsaraVideo Media Processing (MPS) queue.
-//
-// Description:
-//
-//	  You can call this operation to modify the name, status, and notification settings of the specified MPS queue.
-//
-//		- If a paused MPS queue is selected in a workflow or a job, such as a video review or media fingerprint job, the workflow or job fails.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - UpdatePipelineRequest
-//
-// @return UpdatePipelineResponse
-func (client *Client) UpdatePipeline(request *UpdatePipelineRequest) (_result *UpdatePipelineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdatePipelineResponse{}
-	_body, _err := client.UpdatePipelineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9449,7 +7064,7 @@ func (client *Client) UpdatePipeline(request *UpdatePipelineRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateSmarttagTemplateResponse
-func (client *Client) UpdateSmarttagTemplateWithOptions(request *UpdateSmarttagTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateSmarttagTemplateResponse, _err error) {
+func (client *Client) UpdateSmarttagTemplateWithContext(ctx context.Context, request *UpdateSmarttagTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateSmarttagTemplateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -9548,29 +7163,11 @@ func (client *Client) UpdateSmarttagTemplateWithOptions(request *UpdateSmarttagT
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateSmarttagTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新智能标签模板接口支持cpv
-//
-// @param request - UpdateSmarttagTemplateRequest
-//
-// @return UpdateSmarttagTemplateResponse
-func (client *Client) UpdateSmarttagTemplate(request *UpdateSmarttagTemplateRequest) (_result *UpdateSmarttagTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateSmarttagTemplateResponse{}
-	_body, _err := client.UpdateSmarttagTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9587,7 +7184,7 @@ func (client *Client) UpdateSmarttagTemplate(request *UpdateSmarttagTemplateRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateTemplateResponse
-func (client *Client) UpdateTemplateWithOptions(request *UpdateTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateTemplateResponse, _err error) {
+func (client *Client) UpdateTemplateWithContext(ctx context.Context, request *UpdateTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateTemplateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -9654,33 +7251,11 @@ func (client *Client) UpdateTemplateWithOptions(request *UpdateTemplateRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Description:
-//
-// A custom transcoding template cannot be updated if it is being used by a job that has been submitted.The ID of the template. You can obtain the template ID from the response of the [AddTemplate](https://help.aliyun.com/document_detail/213306.html) operation.
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - UpdateTemplateRequest
-//
-// @return UpdateTemplateResponse
-func (client *Client) UpdateTemplate(request *UpdateTemplateRequest) (_result *UpdateTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateTemplateResponse{}
-	_body, _err := client.UpdateTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9703,7 +7278,7 @@ func (client *Client) UpdateTemplate(request *UpdateTemplateRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateWaterMarkTemplateResponse
-func (client *Client) UpdateWaterMarkTemplateWithOptions(request *UpdateWaterMarkTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateWaterMarkTemplateResponse, _err error) {
+func (client *Client) UpdateWaterMarkTemplateWithContext(ctx context.Context, request *UpdateWaterMarkTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateWaterMarkTemplateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -9754,38 +7329,10 @@ func (client *Client) UpdateWaterMarkTemplateWithOptions(request *UpdateWaterMar
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateWaterMarkTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the name and configurations of the specified watermark template.
-//
-// Description:
-//
-//	  You can call this operation to update the information about a watermark template based on the ID of the watermark template. For example, you can update the name and configurations of a watermark template.
-//
-//		- A watermark template cannot be updated if it is being used by a job that has been submitted.
-//
-// ### QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
-//
-// @param request - UpdateWaterMarkTemplateRequest
-//
-// @return UpdateWaterMarkTemplateResponse
-func (client *Client) UpdateWaterMarkTemplate(request *UpdateWaterMarkTemplateRequest) (_result *UpdateWaterMarkTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateWaterMarkTemplateResponse{}
-	_body, _err := client.UpdateWaterMarkTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
