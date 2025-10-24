@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("bailianmodelonchip"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -67,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ActiveInteractionCreateResponse
-func (client *Client) ActiveInteractionCreateWithOptions(request *ActiveInteractionCreateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ActiveInteractionCreateResponse, _err error) {
+func (client *Client) ActiveInteractionCreateWithContext(ctx context.Context, request *ActiveInteractionCreateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ActiveInteractionCreateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -95,30 +46,11 @@ func (client *Client) ActiveInteractionCreateWithOptions(request *ActiveInteract
 		BodyType:    dara.String("json"),
 	}
 	_result = &ActiveInteractionCreateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 主动交互消息传递
-//
-// @param request - ActiveInteractionCreateRequest
-//
-// @return ActiveInteractionCreateResponse
-func (client *Client) ActiveInteractionCreate(request *ActiveInteractionCreateRequest) (_result *ActiveInteractionCreateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ActiveInteractionCreateResponse{}
-	_body, _err := client.ActiveInteractionCreateWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -133,7 +65,7 @@ func (client *Client) ActiveInteractionCreate(request *ActiveInteractionCreateRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeviceRegisterResponse
-func (client *Client) DeviceRegisterWithOptions(request *DeviceRegisterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeviceRegisterResponse, _err error) {
+func (client *Client) DeviceRegisterWithContext(ctx context.Context, request *DeviceRegisterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeviceRegisterResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -173,30 +105,11 @@ func (client *Client) DeviceRegisterWithOptions(request *DeviceRegisterRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeviceRegisterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 设备注册
-//
-// @param request - DeviceRegisterRequest
-//
-// @return DeviceRegisterResponse
-func (client *Client) DeviceRegister(request *DeviceRegisterRequest) (_result *DeviceRegisterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeviceRegisterResponse{}
-	_body, _err := client.DeviceRegisterWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -211,7 +124,7 @@ func (client *Client) DeviceRegister(request *DeviceRegisterRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTokenResponse
-func (client *Client) GetTokenWithOptions(request *GetTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTokenResponse, _err error) {
+func (client *Client) GetTokenWithContext(ctx context.Context, request *GetTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTokenResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -263,29 +176,10 @@ func (client *Client) GetTokenWithOptions(request *GetTokenRequest, headers map[
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取网关校验Token
-//
-// @param request - GetTokenRequest
-//
-// @return GetTokenResponse
-func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTokenResponse{}
-	_body, _err := client.GetTokenWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
