@@ -59,5 +59,10 @@ func (s *DescribeHybridCloudResourcesResponse) SetBody(v *DescribeHybridCloudRes
 }
 
 func (s *DescribeHybridCloudResourcesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

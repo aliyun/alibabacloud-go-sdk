@@ -59,5 +59,10 @@ func (s *DeleteDefenseResourceGroupResponse) SetBody(v *DeleteDefenseResourceGro
 }
 
 func (s *DeleteDefenseResourceGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,16 @@ func (s *DescribeMemberAccountsResponseBody) SetRequestId(v string) *DescribeMem
 }
 
 func (s *DescribeMemberAccountsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AccountInfos != nil {
+		for _, item := range s.AccountInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMemberAccountsResponseBodyAccountInfos struct {

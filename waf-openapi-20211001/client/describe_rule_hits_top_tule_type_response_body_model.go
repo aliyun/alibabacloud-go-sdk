@@ -53,7 +53,16 @@ func (s *DescribeRuleHitsTopTuleTypeResponseBody) SetRuleHitsTopTuleType(v []*De
 }
 
 func (s *DescribeRuleHitsTopTuleTypeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RuleHitsTopTuleType != nil {
+		for _, item := range s.RuleHitsTopTuleType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRuleHitsTopTuleTypeResponseBodyRuleHitsTopTuleType struct {

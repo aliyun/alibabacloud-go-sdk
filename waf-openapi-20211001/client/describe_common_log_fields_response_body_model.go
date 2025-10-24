@@ -65,7 +65,16 @@ func (s *DescribeCommonLogFieldsResponseBody) SetTotalCount(v int64) *DescribeCo
 }
 
 func (s *DescribeCommonLogFieldsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LogFieldList != nil {
+		for _, item := range s.LogFieldList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCommonLogFieldsResponseBodyLogFieldList struct {

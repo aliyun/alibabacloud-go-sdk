@@ -59,5 +59,10 @@ func (s *DescribeSlsLogStoreStatusResponse) SetBody(v *DescribeSlsLogStoreStatus
 }
 
 func (s *DescribeSlsLogStoreStatusResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

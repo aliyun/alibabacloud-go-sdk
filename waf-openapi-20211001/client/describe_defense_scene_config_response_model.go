@@ -59,5 +59,10 @@ func (s *DescribeDefenseSceneConfigResponse) SetBody(v *DescribeDefenseSceneConf
 }
 
 func (s *DescribeDefenseSceneConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

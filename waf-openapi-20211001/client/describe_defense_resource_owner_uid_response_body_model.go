@@ -50,7 +50,16 @@ func (s *DescribeDefenseResourceOwnerUidResponseBody) SetRequestId(v string) *De
 }
 
 func (s *DescribeDefenseResourceOwnerUidResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OwnerInfos != nil {
+		for _, item := range s.OwnerInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDefenseResourceOwnerUidResponseBodyOwnerInfos struct {

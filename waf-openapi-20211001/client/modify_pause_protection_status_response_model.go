@@ -59,5 +59,10 @@ func (s *ModifyPauseProtectionStatusResponse) SetBody(v *ModifyPauseProtectionSt
 }
 
 func (s *ModifyPauseProtectionStatusResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

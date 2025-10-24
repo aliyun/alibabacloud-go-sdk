@@ -59,5 +59,10 @@ func (s *DeleteMemberAccountResponse) SetBody(v *DeleteMemberAccountResponseBody
 }
 
 func (s *DeleteMemberAccountResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

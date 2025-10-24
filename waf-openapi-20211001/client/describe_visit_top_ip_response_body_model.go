@@ -53,7 +53,16 @@ func (s *DescribeVisitTopIpResponseBody) SetTopIp(v []*DescribeVisitTopIpRespons
 }
 
 func (s *DescribeVisitTopIpResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TopIp != nil {
+		for _, item := range s.TopIp {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVisitTopIpResponseBodyTopIp struct {

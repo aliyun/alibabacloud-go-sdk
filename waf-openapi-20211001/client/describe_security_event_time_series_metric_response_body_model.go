@@ -66,7 +66,21 @@ func (s *DescribeSecurityEventTimeSeriesMetricResponseBody) SetTimeSeriesMetaDat
 }
 
 func (s *DescribeSecurityEventTimeSeriesMetricResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityEventTimeSeries != nil {
+		for _, item := range s.SecurityEventTimeSeries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TimeSeriesMetaData != nil {
+		if err := s.TimeSeriesMetaData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityEventTimeSeriesMetricResponseBodySecurityEventTimeSeries struct {
@@ -174,7 +188,12 @@ func (s *DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData) Se
 }
 
 func (s *DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData) Validate() error {
-	return dara.Validate(s)
+	if s.DateRange != nil {
+		if err := s.DateRange.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange struct {

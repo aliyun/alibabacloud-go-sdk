@@ -53,7 +53,12 @@ func (s *DescribeDefenseResourceGroupResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribeDefenseResourceGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Group != nil {
+		if err := s.Group.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDefenseResourceGroupResponseBodyGroup struct {

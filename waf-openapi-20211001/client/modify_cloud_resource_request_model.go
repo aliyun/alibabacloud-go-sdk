@@ -112,7 +112,17 @@ func (s *ModifyCloudResourceRequest) SetResourceManagerResourceGroupId(v string)
 }
 
 func (s *ModifyCloudResourceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Listen != nil {
+		if err := s.Listen.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Redirect != nil {
+		if err := s.Redirect.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyCloudResourceRequestListen struct {
@@ -312,7 +322,16 @@ func (s *ModifyCloudResourceRequestListen) SetTLSVersion(v string) *ModifyCloudR
 }
 
 func (s *ModifyCloudResourceRequestListen) Validate() error {
-	return dara.Validate(s)
+	if s.Certificates != nil {
+		for _, item := range s.Certificates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyCloudResourceRequestListenCertificates struct {
@@ -523,7 +542,16 @@ func (s *ModifyCloudResourceRequestRedirect) SetXffProto(v bool) *ModifyCloudRes
 }
 
 func (s *ModifyCloudResourceRequestRedirect) Validate() error {
-	return dara.Validate(s)
+	if s.RequestHeaders != nil {
+		for _, item := range s.RequestHeaders {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyCloudResourceRequestRedirectRequestHeaders struct {

@@ -53,7 +53,16 @@ func (s *DescribeRuleHitsTopClientIpResponseBody) SetRuleHitsTopClientIp(v []*De
 }
 
 func (s *DescribeRuleHitsTopClientIpResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RuleHitsTopClientIp != nil {
+		for _, item := range s.RuleHitsTopClientIp {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRuleHitsTopClientIpResponseBodyRuleHitsTopClientIp struct {

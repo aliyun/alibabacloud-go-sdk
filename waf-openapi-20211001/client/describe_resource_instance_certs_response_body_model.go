@@ -70,7 +70,16 @@ func (s *DescribeResourceInstanceCertsResponseBody) SetTotalCount(v int64) *Desc
 }
 
 func (s *DescribeResourceInstanceCertsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Certs != nil {
+		for _, item := range s.Certs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeResourceInstanceCertsResponseBodyCerts struct {

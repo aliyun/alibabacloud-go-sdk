@@ -65,7 +65,16 @@ func (s *DescribeHybridCloudClusterServersResponseBody) SetTotalCount(v int32) *
 }
 
 func (s *DescribeHybridCloudClusterServersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterServers != nil {
+		for _, item := range s.ClusterServers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHybridCloudClusterServersResponseBodyClusterServers struct {

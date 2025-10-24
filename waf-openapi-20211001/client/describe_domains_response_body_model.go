@@ -70,7 +70,16 @@ func (s *DescribeDomainsResponseBody) SetTotalCount(v int64) *DescribeDomainsRes
 }
 
 func (s *DescribeDomainsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Domains != nil {
+		for _, item := range s.Domains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainsResponseBodyDomains struct {
@@ -187,7 +196,17 @@ func (s *DescribeDomainsResponseBodyDomains) SetStatus(v int32) *DescribeDomains
 }
 
 func (s *DescribeDomainsResponseBodyDomains) Validate() error {
-	return dara.Validate(s)
+	if s.Backeds != nil {
+		if err := s.Backeds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ListenPorts != nil {
+		if err := s.ListenPorts.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainsResponseBodyDomainsBackeds struct {
@@ -224,7 +243,25 @@ func (s *DescribeDomainsResponseBodyDomainsBackeds) SetHttps(v []*DescribeDomain
 }
 
 func (s *DescribeDomainsResponseBodyDomainsBackeds) Validate() error {
-	return dara.Validate(s)
+	if s.Http != nil {
+		for _, item := range s.Http {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Https != nil {
+		for _, item := range s.Https {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainsResponseBodyDomainsBackedsHttp struct {

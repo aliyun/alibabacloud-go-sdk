@@ -53,7 +53,16 @@ func (s *DescribeFlowTopUrlResponseBody) SetRuleHitsTopUrl(v []*DescribeFlowTopU
 }
 
 func (s *DescribeFlowTopUrlResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RuleHitsTopUrl != nil {
+		for _, item := range s.RuleHitsTopUrl {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFlowTopUrlResponseBodyRuleHitsTopUrl struct {

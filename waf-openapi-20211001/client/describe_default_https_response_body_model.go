@@ -53,7 +53,12 @@ func (s *DescribeDefaultHttpsResponseBody) SetRequestId(v string) *DescribeDefau
 }
 
 func (s *DescribeDefaultHttpsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DefaultHttps != nil {
+		if err := s.DefaultHttps.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDefaultHttpsResponseBodyDefaultHttps struct {

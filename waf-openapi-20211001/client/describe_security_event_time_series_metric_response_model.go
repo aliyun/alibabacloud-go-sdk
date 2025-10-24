@@ -59,5 +59,10 @@ func (s *DescribeSecurityEventTimeSeriesMetricResponse) SetBody(v *DescribeSecur
 }
 
 func (s *DescribeSecurityEventTimeSeriesMetricResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

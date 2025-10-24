@@ -53,7 +53,16 @@ func (s *DescribeRuleHitsTopRuleIdResponseBody) SetRuleHitsTopRuleId(v []*Descri
 }
 
 func (s *DescribeRuleHitsTopRuleIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RuleHitsTopRuleId != nil {
+		for _, item := range s.RuleHitsTopRuleId {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRuleHitsTopRuleIdResponseBodyRuleHitsTopRuleId struct {

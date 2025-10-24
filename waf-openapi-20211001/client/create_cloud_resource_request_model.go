@@ -142,7 +142,26 @@ func (s *CreateCloudResourceRequest) SetTag(v []*CreateCloudResourceRequestTag) 
 }
 
 func (s *CreateCloudResourceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Listen != nil {
+		if err := s.Listen.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Redirect != nil {
+		if err := s.Redirect.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateCloudResourceRequestListen struct {
@@ -342,7 +361,16 @@ func (s *CreateCloudResourceRequestListen) SetTLSVersion(v string) *CreateCloudR
 }
 
 func (s *CreateCloudResourceRequestListen) Validate() error {
-	return dara.Validate(s)
+	if s.Certificates != nil {
+		for _, item := range s.Certificates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateCloudResourceRequestListenCertificates struct {
@@ -557,7 +585,16 @@ func (s *CreateCloudResourceRequestRedirect) SetXffProto(v bool) *CreateCloudRes
 }
 
 func (s *CreateCloudResourceRequestRedirect) Validate() error {
-	return dara.Validate(s)
+	if s.RequestHeaders != nil {
+		for _, item := range s.RequestHeaders {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateCloudResourceRequestRedirectRequestHeaders struct {

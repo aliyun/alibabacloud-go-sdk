@@ -53,7 +53,16 @@ func (s *DescribePeakTrendResponseBody) SetRequestId(v string) *DescribePeakTren
 }
 
 func (s *DescribePeakTrendResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FlowChart != nil {
+		for _, item := range s.FlowChart {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePeakTrendResponseBodyFlowChart struct {

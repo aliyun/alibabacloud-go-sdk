@@ -50,7 +50,16 @@ func (s *DescribeDefenseRuleStatisticsResponseBody) SetStatisticsInfos(v []*Desc
 }
 
 func (s *DescribeDefenseRuleStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StatisticsInfos != nil {
+		for _, item := range s.StatisticsInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDefenseRuleStatisticsResponseBodyStatisticsInfos struct {

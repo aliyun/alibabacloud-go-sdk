@@ -52,7 +52,16 @@ func (s *DescribeAbnormalCloudResourcesResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribeAbnormalCloudResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AbnormalCloudResources != nil {
+		for _, item := range s.AbnormalCloudResources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources struct {
@@ -142,7 +151,16 @@ func (s *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources) SetRe
 }
 
 func (s *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources) Validate() error {
-	return dara.Validate(s)
+	if s.Details != nil {
+		for _, item := range s.Details {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails struct {

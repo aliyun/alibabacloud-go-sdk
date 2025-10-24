@@ -215,7 +215,16 @@ func (s *ModifyDefenseResourceXffRequest) SetXffStatus(v int32) *ModifyDefenseRe
 }
 
 func (s *ModifyDefenseResourceXffRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ResponseHeaders != nil {
+		for _, item := range s.ResponseHeaders {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyDefenseResourceXffRequestResponseHeaders struct {

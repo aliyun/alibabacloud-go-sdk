@@ -53,7 +53,16 @@ func (s *DescribeUserEventTypeResponseBody) SetRequestId(v string) *DescribeUser
 }
 
 func (s *DescribeUserEventTypeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Event != nil {
+		for _, item := range s.Event {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUserEventTypeResponseBodyEvent struct {

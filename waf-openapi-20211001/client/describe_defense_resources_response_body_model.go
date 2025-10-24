@@ -70,7 +70,16 @@ func (s *DescribeDefenseResourcesResponseBody) SetTotalCount(v int64) *DescribeD
 }
 
 func (s *DescribeDefenseResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Resources != nil {
+		for _, item := range s.Resources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDefenseResourcesResponseBodyResources struct {
@@ -340,7 +349,16 @@ func (s *DescribeDefenseResourcesResponseBodyResources) SetXffStatus(v int32) *D
 }
 
 func (s *DescribeDefenseResourcesResponseBodyResources) Validate() error {
-	return dara.Validate(s)
+	if s.ResponseHeaders != nil {
+		for _, item := range s.ResponseHeaders {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDefenseResourcesResponseBodyResourcesResponseHeaders struct {

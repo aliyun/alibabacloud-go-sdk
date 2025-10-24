@@ -65,7 +65,16 @@ func (s *DescribeHybridCloudBasicMonitorResponseBody) SetTotalCount(v int32) *De
 }
 
 func (s *DescribeHybridCloudBasicMonitorResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BasicMonitors != nil {
+		for _, item := range s.BasicMonitors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHybridCloudBasicMonitorResponseBodyBasicMonitors struct {

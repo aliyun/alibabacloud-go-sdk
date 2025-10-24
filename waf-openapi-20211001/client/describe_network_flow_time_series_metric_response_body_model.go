@@ -66,7 +66,21 @@ func (s *DescribeNetworkFlowTimeSeriesMetricResponseBody) SetTimeSeriesMetaData(
 }
 
 func (s *DescribeNetworkFlowTimeSeriesMetricResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkFlowTimeSeries != nil {
+		for _, item := range s.NetworkFlowTimeSeries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TimeSeriesMetaData != nil {
+		if err := s.TimeSeriesMetaData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkFlowTimeSeriesMetricResponseBodyNetworkFlowTimeSeries struct {
@@ -174,7 +188,12 @@ func (s *DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData) SetU
 }
 
 func (s *DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData) Validate() error {
-	return dara.Validate(s)
+	if s.DateRange != nil {
+		if err := s.DateRange.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange struct {

@@ -83,7 +83,12 @@ func (s *DescribeSecurityEventLogsResponseBody) SetSecurityEventMetaData(v *Desc
 }
 
 func (s *DescribeSecurityEventLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityEventMetaData != nil {
+		if err := s.SecurityEventMetaData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityEventLogsResponseBodySecurityEventMetaData struct {
@@ -124,7 +129,12 @@ func (s *DescribeSecurityEventLogsResponseBodySecurityEventMetaData) SetUnits(v 
 }
 
 func (s *DescribeSecurityEventLogsResponseBodySecurityEventMetaData) Validate() error {
-	return dara.Validate(s)
+	if s.DateRange != nil {
+		if err := s.DateRange.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityEventLogsResponseBodySecurityEventMetaDataDateRange struct {

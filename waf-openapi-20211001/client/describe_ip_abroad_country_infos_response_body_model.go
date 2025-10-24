@@ -95,7 +95,16 @@ func (s *DescribeIpAbroadCountryInfosResponseBody) SetTotalCount(v int32) *Descr
 }
 
 func (s *DescribeIpAbroadCountryInfosResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AbroadInfos != nil {
+		for _, item := range s.AbroadInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIpAbroadCountryInfosResponseBodyAbroadInfos struct {
@@ -159,7 +168,16 @@ func (s *DescribeIpAbroadCountryInfosResponseBodyAbroadInfos) SetRegions(v []*De
 }
 
 func (s *DescribeIpAbroadCountryInfosResponseBodyAbroadInfos) Validate() error {
-	return dara.Validate(s)
+	if s.Regions != nil {
+		for _, item := range s.Regions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIpAbroadCountryInfosResponseBodyAbroadInfosRegions struct {

@@ -53,7 +53,16 @@ func (s *DescribeFlowChartResponseBody) SetRequestId(v string) *DescribeFlowChar
 }
 
 func (s *DescribeFlowChartResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FlowChart != nil {
+		for _, item := range s.FlowChart {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFlowChartResponseBodyFlowChart struct {

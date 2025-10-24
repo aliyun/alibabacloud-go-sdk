@@ -59,5 +59,10 @@ func (s *DescribePeakTrendResponse) SetBody(v *DescribePeakTrendResponseBody) *D
 }
 
 func (s *DescribePeakTrendResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

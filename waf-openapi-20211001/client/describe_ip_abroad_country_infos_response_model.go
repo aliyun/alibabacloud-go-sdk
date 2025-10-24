@@ -59,5 +59,10 @@ func (s *DescribeIpAbroadCountryInfosResponse) SetBody(v *DescribeIpAbroadCountr
 }
 
 func (s *DescribeIpAbroadCountryInfosResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

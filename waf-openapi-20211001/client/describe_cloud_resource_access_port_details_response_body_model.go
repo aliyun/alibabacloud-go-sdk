@@ -70,7 +70,16 @@ func (s *DescribeCloudResourceAccessPortDetailsResponseBody) SetTotalCount(v int
 }
 
 func (s *DescribeCloudResourceAccessPortDetailsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AccessPortDetails != nil {
+		for _, item := range s.AccessPortDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails struct {
@@ -428,7 +437,34 @@ func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) Se
 }
 
 func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) Validate() error {
-	return dara.Validate(s)
+	if s.Certificates != nil {
+		for _, item := range s.Certificates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LogHeaders != nil {
+		for _, item := range s.LogHeaders {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SubStatusDetails != nil {
+		for _, item := range s.SubStatusDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsCertificates struct {

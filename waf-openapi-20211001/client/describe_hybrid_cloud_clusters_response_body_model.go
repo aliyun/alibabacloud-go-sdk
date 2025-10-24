@@ -53,7 +53,16 @@ func (s *DescribeHybridCloudClustersResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeHybridCloudClustersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterInfos != nil {
+		for _, item := range s.ClusterInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHybridCloudClustersResponseBodyClusterInfos struct {

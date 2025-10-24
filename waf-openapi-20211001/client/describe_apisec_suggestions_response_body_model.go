@@ -53,7 +53,16 @@ func (s *DescribeApisecSuggestionsResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeApisecSuggestionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApisecSuggestionsResponseBodyData struct {

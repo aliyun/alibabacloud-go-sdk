@@ -53,7 +53,12 @@ func (s *DescribeHybridCloudClusterRuleResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribeHybridCloudClusterRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterRule != nil {
+		if err := s.ClusterRule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHybridCloudClusterRuleResponseBodyClusterRule struct {

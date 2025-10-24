@@ -59,5 +59,10 @@ func (s *ModifyHybridCloudClusterBypassStatusResponse) SetBody(v *ModifyHybridCl
 }
 
 func (s *ModifyHybridCloudClusterBypassStatusResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

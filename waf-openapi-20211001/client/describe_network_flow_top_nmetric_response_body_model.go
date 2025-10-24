@@ -66,7 +66,21 @@ func (s *DescribeNetworkFlowTopNMetricResponseBody) SetTopNMetaData(v *DescribeN
 }
 
 func (s *DescribeNetworkFlowTopNMetricResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkFlowTopNValues != nil {
+		for _, item := range s.NetworkFlowTopNValues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TopNMetaData != nil {
+		if err := s.TopNMetaData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkFlowTopNMetricResponseBodyNetworkFlowTopNValues struct {
@@ -167,7 +181,12 @@ func (s *DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData) SetUnits(v strin
 }
 
 func (s *DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData) Validate() error {
-	return dara.Validate(s)
+	if s.DateRange != nil {
+		if err := s.DateRange.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkFlowTopNMetricResponseBodyTopNMetaDataDateRange struct {

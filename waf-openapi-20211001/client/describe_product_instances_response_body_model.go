@@ -70,7 +70,16 @@ func (s *DescribeProductInstancesResponseBody) SetTotalCount(v int64) *DescribeP
 }
 
 func (s *DescribeProductInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProductInstances != nil {
+		for _, item := range s.ProductInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeProductInstancesResponseBodyProductInstances struct {
@@ -296,7 +305,25 @@ func (s *DescribeProductInstancesResponseBodyProductInstances) SetResourceRegion
 }
 
 func (s *DescribeProductInstancesResponseBodyProductInstances) Validate() error {
-	return dara.Validate(s)
+	if s.AccessPortAndProtocols != nil {
+		for _, item := range s.AccessPortAndProtocols {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResourcePorts != nil {
+		for _, item := range s.ResourcePorts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols struct {
@@ -401,7 +428,16 @@ func (s *DescribeProductInstancesResponseBodyProductInstancesResourcePorts) SetP
 }
 
 func (s *DescribeProductInstancesResponseBodyProductInstancesResourcePorts) Validate() error {
-	return dara.Validate(s)
+	if s.Certificates != nil {
+		for _, item := range s.Certificates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates struct {

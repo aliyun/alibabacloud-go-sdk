@@ -59,5 +59,10 @@ func (s *DescribeApisecProtectionResourcesResponse) SetBody(v *DescribeApisecPro
 }
 
 func (s *DescribeApisecProtectionResourcesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

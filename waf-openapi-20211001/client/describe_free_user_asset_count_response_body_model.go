@@ -53,7 +53,12 @@ func (s *DescribeFreeUserAssetCountResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeFreeUserAssetCountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Asset != nil {
+		if err := s.Asset.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeFreeUserAssetCountResponseBodyAsset struct {

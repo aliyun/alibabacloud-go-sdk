@@ -59,5 +59,10 @@ func (s *DescribeUserEventTrendResponse) SetBody(v *DescribeUserEventTrendRespon
 }
 
 func (s *DescribeUserEventTrendResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

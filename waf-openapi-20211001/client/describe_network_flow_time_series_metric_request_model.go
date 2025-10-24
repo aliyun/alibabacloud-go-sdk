@@ -124,7 +124,12 @@ func (s *DescribeNetworkFlowTimeSeriesMetricRequest) SetResourceManagerResourceG
 }
 
 func (s *DescribeNetworkFlowTimeSeriesMetricRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		if err := s.Filter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkFlowTimeSeriesMetricRequestFilter struct {
@@ -163,7 +168,21 @@ func (s *DescribeNetworkFlowTimeSeriesMetricRequestFilter) SetDateRange(v *Descr
 }
 
 func (s *DescribeNetworkFlowTimeSeriesMetricRequestFilter) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DateRange != nil {
+		if err := s.DateRange.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkFlowTimeSeriesMetricRequestFilterConditions struct {

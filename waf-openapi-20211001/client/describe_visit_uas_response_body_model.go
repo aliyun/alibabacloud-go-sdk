@@ -53,7 +53,16 @@ func (s *DescribeVisitUasResponseBody) SetUas(v []*DescribeVisitUasResponseBodyU
 }
 
 func (s *DescribeVisitUasResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Uas != nil {
+		for _, item := range s.Uas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVisitUasResponseBodyUas struct {

@@ -70,7 +70,16 @@ func (s *DescribeSensitiveRequestsResponseBody) SetTotalCount(v int64) *Describe
 }
 
 func (s *DescribeSensitiveRequestsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSensitiveRequestsResponseBodyData struct {
@@ -216,7 +225,16 @@ func (s *DescribeSensitiveRequestsResponseBodyData) SetSensitiveList(v []*string
 }
 
 func (s *DescribeSensitiveRequestsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.InfoCount != nil {
+		for _, item := range s.InfoCount {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSensitiveRequestsResponseBodyDataInfoCount struct {

@@ -70,7 +70,16 @@ func (s *DescribeSensitiveOutboundStatisticResponseBody) SetTotalCount(v int64) 
 }
 
 func (s *DescribeSensitiveOutboundStatisticResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSensitiveOutboundStatisticResponseBodyData struct {

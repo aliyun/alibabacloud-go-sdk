@@ -70,7 +70,16 @@ func (s *DescribeHybridCloudResourcesResponseBody) SetTotalCount(v int64) *Descr
 }
 
 func (s *DescribeHybridCloudResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Domains != nil {
+		for _, item := range s.Domains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHybridCloudResourcesResponseBodyDomains struct {
@@ -209,7 +218,17 @@ func (s *DescribeHybridCloudResourcesResponseBodyDomains) SetUid(v string) *Desc
 }
 
 func (s *DescribeHybridCloudResourcesResponseBodyDomains) Validate() error {
-	return dara.Validate(s)
+	if s.Listen != nil {
+		if err := s.Listen.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Redirect != nil {
+		if err := s.Redirect.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHybridCloudResourcesResponseBodyDomainsListen struct {
@@ -750,7 +769,16 @@ func (s *DescribeHybridCloudResourcesResponseBodyDomainsRedirect) SetWriteTimeou
 }
 
 func (s *DescribeHybridCloudResourcesResponseBodyDomainsRedirect) Validate() error {
-	return dara.Validate(s)
+	if s.RequestHeaders != nil {
+		for _, item := range s.RequestHeaders {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHybridCloudResourcesResponseBodyDomainsRedirectRequestHeaders struct {

@@ -59,5 +59,10 @@ func (s *DescribeFlowChartResponse) SetBody(v *DescribeFlowChartResponseBody) *D
 }
 
 func (s *DescribeFlowChartResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

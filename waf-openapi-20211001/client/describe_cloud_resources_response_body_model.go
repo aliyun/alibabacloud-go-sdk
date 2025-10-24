@@ -70,7 +70,16 @@ func (s *DescribeCloudResourcesResponseBody) SetTotalCount(v int64) *DescribeClo
 }
 
 func (s *DescribeCloudResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CloudResources != nil {
+		for _, item := range s.CloudResources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudResourcesResponseBodyCloudResources struct {

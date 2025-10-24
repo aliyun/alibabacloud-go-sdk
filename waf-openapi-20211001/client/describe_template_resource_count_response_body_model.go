@@ -53,7 +53,16 @@ func (s *DescribeTemplateResourceCountResponseBody) SetResourceCount(v []*Descri
 }
 
 func (s *DescribeTemplateResourceCountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceCount != nil {
+		for _, item := range s.ResourceCount {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTemplateResourceCountResponseBodyResourceCount struct {

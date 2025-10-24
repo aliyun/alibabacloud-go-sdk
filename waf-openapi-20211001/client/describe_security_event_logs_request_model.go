@@ -135,7 +135,12 @@ func (s *DescribeSecurityEventLogsRequest) SetResourceManagerResourceGroupId(v s
 }
 
 func (s *DescribeSecurityEventLogsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		if err := s.Filter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityEventLogsRequestFilter struct {
@@ -174,7 +179,21 @@ func (s *DescribeSecurityEventLogsRequestFilter) SetDateRange(v *DescribeSecurit
 }
 
 func (s *DescribeSecurityEventLogsRequestFilter) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DateRange != nil {
+		if err := s.DateRange.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityEventLogsRequestFilterConditions struct {

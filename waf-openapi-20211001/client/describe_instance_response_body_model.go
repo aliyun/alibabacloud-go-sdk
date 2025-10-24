@@ -207,7 +207,12 @@ func (s *DescribeInstanceResponseBody) SetStatus(v int32) *DescribeInstanceRespo
 }
 
 func (s *DescribeInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Details != nil {
+		if err := s.Details.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceResponseBodyDetails struct {

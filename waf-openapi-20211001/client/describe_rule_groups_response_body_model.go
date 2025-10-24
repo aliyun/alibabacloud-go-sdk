@@ -70,7 +70,16 @@ func (s *DescribeRuleGroupsResponseBody) SetTotalCount(v int64) *DescribeRuleGro
 }
 
 func (s *DescribeRuleGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RuleGroups != nil {
+		for _, item := range s.RuleGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRuleGroupsResponseBodyRuleGroups struct {

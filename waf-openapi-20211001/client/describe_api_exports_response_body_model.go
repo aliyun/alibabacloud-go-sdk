@@ -76,7 +76,16 @@ func (s *DescribeApiExportsResponseBody) SetTotal(v int64) *DescribeApiExportsRe
 }
 
 func (s *DescribeApiExportsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApiExports != nil {
+		for _, item := range s.ApiExports {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApiExportsResponseBodyApiExports struct {

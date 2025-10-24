@@ -53,7 +53,12 @@ func (s *DescribeCnameCountResponseBody) SetRequestId(v string) *DescribeCnameCo
 }
 
 func (s *DescribeCnameCountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CnameCount != nil {
+		if err := s.CnameCount.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCnameCountResponseBodyCnameCount struct {

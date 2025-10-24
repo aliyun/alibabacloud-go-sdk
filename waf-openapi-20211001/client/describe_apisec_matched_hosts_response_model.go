@@ -59,5 +59,10 @@ func (s *DescribeApisecMatchedHostsResponse) SetBody(v *DescribeApisecMatchedHos
 }
 
 func (s *DescribeApisecMatchedHostsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

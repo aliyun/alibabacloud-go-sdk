@@ -53,7 +53,12 @@ func (s *DescribeFreeUserEventCountResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeFreeUserEventCountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Event != nil {
+		if err := s.Event.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeFreeUserEventCountResponseBodyEvent struct {

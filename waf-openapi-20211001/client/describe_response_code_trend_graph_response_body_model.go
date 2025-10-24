@@ -53,7 +53,16 @@ func (s *DescribeResponseCodeTrendGraphResponseBody) SetResponseCodes(v []*Descr
 }
 
 func (s *DescribeResponseCodeTrendGraphResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResponseCodes != nil {
+		for _, item := range s.ResponseCodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeResponseCodeTrendGraphResponseBodyResponseCodes struct {

@@ -70,7 +70,16 @@ func (s *DescribeSensitiveApiStatisticResponseBody) SetTotalCount(v int64) *Desc
 }
 
 func (s *DescribeSensitiveApiStatisticResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSensitiveApiStatisticResponseBodyData struct {
@@ -141,7 +150,16 @@ func (s *DescribeSensitiveApiStatisticResponseBodyData) SetSensitiveOutboundCoun
 }
 
 func (s *DescribeSensitiveApiStatisticResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSensitiveApiStatisticResponseBodyDataList struct {

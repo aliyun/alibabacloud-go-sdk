@@ -70,10 +70,24 @@ func (s *DescribeDefenseRulesResponseBody) SetTotalCount(v int64) *DescribeDefen
 }
 
 func (s *DescribeDefenseRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDefenseRulesResponseBodyRules struct {
+	// Deprecated
+	//
+	// example:
+	//
+	// {"empty":"test"}
 	ActionExternal *string `json:"ActionExternal,omitempty" xml:"ActionExternal,omitempty"`
 	// The details of the protection rule. The value is a string that contains multiple parameters in the JSON format. For more information, see the "**Rule parameters**" section in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
 	//
@@ -122,12 +136,27 @@ type DescribeDefenseRulesResponseBodyRules struct {
 	// example:
 	//
 	// waf_group
-	DefenseScene  *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
-	DefenseType   *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
+	DefenseType  *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
+	// Deprecated
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Deprecated
+	//
+	// example:
+	//
+	// 123,456
 	DetailRuleIds *string `json:"DetailRuleIds,omitempty" xml:"DetailRuleIds,omitempty"`
-	ExternalInfo  *string `json:"ExternalInfo,omitempty" xml:"ExternalInfo,omitempty"`
-	GmtCreate     *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Deprecated
+	//
+	// example:
+	//
+	// empty
+	ExternalInfo *string `json:"ExternalInfo,omitempty" xml:"ExternalInfo,omitempty"`
+	GmtCreate    *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The most recent time when the protection rule was modified.
 	//
 	// example:
@@ -147,6 +176,11 @@ type DescribeDefenseRulesResponseBodyRules struct {
 	//
 	// rules_41
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Deprecated
+	//
+	// example:
+	//
+	// test
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	// The status of the protection rule. Valid values:
 	//

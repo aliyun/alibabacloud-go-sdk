@@ -53,7 +53,12 @@ func (s *DescribeDefenseRuleResponseBody) SetRule(v *DescribeDefenseRuleResponse
 }
 
 func (s *DescribeDefenseRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Rule != nil {
+		if err := s.Rule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDefenseRuleResponseBodyRule struct {

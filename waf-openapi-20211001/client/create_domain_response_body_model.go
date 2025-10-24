@@ -53,7 +53,12 @@ func (s *CreateDomainResponseBody) SetRequestId(v string) *CreateDomainResponseB
 }
 
 func (s *CreateDomainResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainInfo != nil {
+		if err := s.DomainInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDomainResponseBodyDomainInfo struct {

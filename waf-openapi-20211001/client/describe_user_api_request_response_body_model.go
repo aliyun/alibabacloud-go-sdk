@@ -53,7 +53,16 @@ func (s *DescribeUserApiRequestResponseBody) SetRequests(v []*DescribeUserApiReq
 }
 
 func (s *DescribeUserApiRequestResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Requests != nil {
+		for _, item := range s.Requests {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUserApiRequestResponseBodyRequests struct {

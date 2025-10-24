@@ -53,7 +53,16 @@ func (s *DescribeUserAbnormalTrendResponseBody) SetTrend(v []*DescribeUserAbnorm
 }
 
 func (s *DescribeUserAbnormalTrendResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Trend != nil {
+		for _, item := range s.Trend {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUserAbnormalTrendResponseBodyTrend struct {

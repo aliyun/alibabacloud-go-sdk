@@ -59,5 +59,10 @@ func (s *CreateSM2CertResponse) SetBody(v *CreateSM2CertResponseBody) *CreateSM2
 }
 
 func (s *CreateSM2CertResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

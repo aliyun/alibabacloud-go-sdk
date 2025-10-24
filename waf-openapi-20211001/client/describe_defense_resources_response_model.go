@@ -59,5 +59,10 @@ func (s *DescribeDefenseResourcesResponse) SetBody(v *DescribeDefenseResourcesRe
 }
 
 func (s *DescribeDefenseResourcesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

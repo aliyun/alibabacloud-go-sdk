@@ -59,5 +59,10 @@ func (s *CreateDefenseRuleResponse) SetBody(v *CreateDefenseRuleResponseBody) *C
 }
 
 func (s *CreateDefenseRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

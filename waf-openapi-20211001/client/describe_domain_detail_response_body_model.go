@@ -182,7 +182,27 @@ func (s *DescribeDomainDetailResponseBody) SetStatus(v int32) *DescribeDomainDet
 }
 
 func (s *DescribeDomainDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CertDetail != nil {
+		if err := s.CertDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Listen != nil {
+		if err := s.Listen.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Redirect != nil {
+		if err := s.Redirect.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SM2CertDetail != nil {
+		if err := s.SM2CertDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainDetailResponseBodyCertDetail struct {
@@ -919,7 +939,43 @@ func (s *DescribeDomainDetailResponseBodyRedirect) SetXffProto(v bool) *Describe
 }
 
 func (s *DescribeDomainDetailResponseBodyRedirect) Validate() error {
-	return dara.Validate(s)
+	if s.BackendPorts != nil {
+		for _, item := range s.BackendPorts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Backends != nil {
+		for _, item := range s.Backends {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BackupBackends != nil {
+		for _, item := range s.BackupBackends {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RequestHeaders != nil {
+		for _, item := range s.RequestHeaders {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainDetailResponseBodyRedirectBackendPorts struct {

@@ -70,7 +70,16 @@ func (s *DescribeDefenseTemplatesResponseBody) SetTotalCount(v int64) *DescribeD
 }
 
 func (s *DescribeDefenseTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Templates != nil {
+		for _, item := range s.Templates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDefenseTemplatesResponseBodyTemplates struct {

@@ -53,7 +53,12 @@ func (s *DescribeSensitiveDetectionResultResponseBody) SetRequestId(v string) *D
 }
 
 func (s *DescribeSensitiveDetectionResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSensitiveDetectionResultResponseBodyData struct {
@@ -79,7 +84,16 @@ func (s *DescribeSensitiveDetectionResultResponseBodyData) SetResult(v []*Descri
 }
 
 func (s *DescribeSensitiveDetectionResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSensitiveDetectionResultResponseBodyDataResult struct {
@@ -135,7 +149,21 @@ func (s *DescribeSensitiveDetectionResultResponseBodyDataResult) SetMax(v *Descr
 }
 
 func (s *DescribeSensitiveDetectionResultResponseBodyDataResult) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Max != nil {
+		if err := s.Max.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSensitiveDetectionResultResponseBodyDataResultList struct {

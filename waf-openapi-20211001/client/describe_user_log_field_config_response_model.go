@@ -59,5 +59,10 @@ func (s *DescribeUserLogFieldConfigResponse) SetBody(v *DescribeUserLogFieldConf
 }
 
 func (s *DescribeUserLogFieldConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

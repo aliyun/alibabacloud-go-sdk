@@ -59,5 +59,10 @@ func (s *DescribeHybridCloudClusterRulesResponse) SetBody(v *DescribeHybridCloud
 }
 
 func (s *DescribeHybridCloudClusterRulesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

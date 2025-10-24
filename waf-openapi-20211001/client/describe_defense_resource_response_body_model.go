@@ -53,7 +53,12 @@ func (s *DescribeDefenseResourceResponseBody) SetResource(v *DescribeDefenseReso
 }
 
 func (s *DescribeDefenseResourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		if err := s.Resource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDefenseResourceResponseBodyResource struct {
@@ -343,7 +348,16 @@ func (s *DescribeDefenseResourceResponseBodyResource) SetXffStatus(v int32) *Des
 }
 
 func (s *DescribeDefenseResourceResponseBodyResource) Validate() error {
-	return dara.Validate(s)
+	if s.ResponseHeaders != nil {
+		for _, item := range s.ResponseHeaders {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDefenseResourceResponseBodyResourceResponseHeaders struct {

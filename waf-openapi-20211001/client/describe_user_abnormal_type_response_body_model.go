@@ -53,7 +53,16 @@ func (s *DescribeUserAbnormalTypeResponseBody) SetRequestId(v string) *DescribeU
 }
 
 func (s *DescribeUserAbnormalTypeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Abnormal != nil {
+		for _, item := range s.Abnormal {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUserAbnormalTypeResponseBodyAbnormal struct {

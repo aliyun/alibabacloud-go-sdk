@@ -66,7 +66,21 @@ func (s *DescribeSecurityEventTopNMetricResponseBody) SetTopNMetaData(v *Describ
 }
 
 func (s *DescribeSecurityEventTopNMetricResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityEventTopNValues != nil {
+		for _, item := range s.SecurityEventTopNValues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TopNMetaData != nil {
+		if err := s.TopNMetaData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityEventTopNMetricResponseBodySecurityEventTopNValues struct {
@@ -167,7 +181,12 @@ func (s *DescribeSecurityEventTopNMetricResponseBodyTopNMetaData) SetUnits(v str
 }
 
 func (s *DescribeSecurityEventTopNMetricResponseBodyTopNMetaData) Validate() error {
-	return dara.Validate(s)
+	if s.DateRange != nil {
+		if err := s.DateRange.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityEventTopNMetricResponseBodyTopNMetaDataDateRange struct {

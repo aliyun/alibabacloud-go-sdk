@@ -70,7 +70,16 @@ func (s *DescribeHybridCloudUnassignedMachinesResponseBody) SetUnassignedMachine
 }
 
 func (s *DescribeHybridCloudUnassignedMachinesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UnassignedMachines != nil {
+		for _, item := range s.UnassignedMachines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines struct {

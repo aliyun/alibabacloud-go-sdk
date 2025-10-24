@@ -53,7 +53,12 @@ func (s *DescribeHybridCloudUserResponseBody) SetUserInfo(v *DescribeHybridCloud
 }
 
 func (s *DescribeHybridCloudUserResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHybridCloudUserResponseBodyUserInfo struct {

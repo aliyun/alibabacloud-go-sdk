@@ -53,7 +53,12 @@ func (s *DescribeWafSourceIpSegmentResponseBody) SetWafSourceIp(v *DescribeWafSo
 }
 
 func (s *DescribeWafSourceIpSegmentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WafSourceIp != nil {
+		if err := s.WafSourceIp.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeWafSourceIpSegmentResponseBodyWafSourceIp struct {

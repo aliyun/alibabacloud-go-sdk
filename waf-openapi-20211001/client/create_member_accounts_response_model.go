@@ -59,5 +59,10 @@ func (s *CreateMemberAccountsResponse) SetBody(v *CreateMemberAccountsResponseBo
 }
 
 func (s *CreateMemberAccountsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

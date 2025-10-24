@@ -53,7 +53,16 @@ func (s *DescribeApisecLogDeliveriesResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeApisecLogDeliveriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeliveryConfigs != nil {
+		for _, item := range s.DeliveryConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs struct {

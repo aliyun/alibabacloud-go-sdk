@@ -153,7 +153,12 @@ func (s *DescribeNetworkFlowTopNMetricRequest) SetResourceManagerResourceGroupId
 }
 
 func (s *DescribeNetworkFlowTopNMetricRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		if err := s.Filter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkFlowTopNMetricRequestFilter struct {
@@ -192,7 +197,21 @@ func (s *DescribeNetworkFlowTopNMetricRequestFilter) SetDateRange(v *DescribeNet
 }
 
 func (s *DescribeNetworkFlowTopNMetricRequestFilter) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DateRange != nil {
+		if err := s.DateRange.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkFlowTopNMetricRequestFilterConditions struct {

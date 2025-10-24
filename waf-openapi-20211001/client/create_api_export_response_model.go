@@ -59,5 +59,10 @@ func (s *CreateApiExportResponse) SetBody(v *CreateApiExportResponseBody) *Creat
 }
 
 func (s *CreateApiExportResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
