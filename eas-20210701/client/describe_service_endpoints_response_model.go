@@ -59,5 +59,10 @@ func (s *DescribeServiceEndpointsResponse) SetBody(v *DescribeServiceEndpointsRe
 }
 
 func (s *DescribeServiceEndpointsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

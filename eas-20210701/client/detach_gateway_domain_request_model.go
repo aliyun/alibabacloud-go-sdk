@@ -38,7 +38,12 @@ func (s *DetachGatewayDomainRequest) SetCustomDomain(v *DetachGatewayDomainReque
 }
 
 func (s *DetachGatewayDomainRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CustomDomain != nil {
+		if err := s.CustomDomain.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DetachGatewayDomainRequestCustomDomain struct {

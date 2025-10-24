@@ -70,7 +70,16 @@ func (s *ListGatewayIntranetLinkedVpcResponseBody) SetRequestId(v string) *ListG
 }
 
 func (s *ListGatewayIntranetLinkedVpcResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IntranetLinkedVpcList != nil {
+		for _, item := range s.IntranetLinkedVpcList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList struct {

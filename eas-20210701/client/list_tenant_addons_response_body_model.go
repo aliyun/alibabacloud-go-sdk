@@ -53,7 +53,16 @@ func (s *ListTenantAddonsResponseBody) SetRequestId(v string) *ListTenantAddonsR
 }
 
 func (s *ListTenantAddonsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Addons != nil {
+		for _, item := range s.Addons {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTenantAddonsResponseBodyAddons struct {

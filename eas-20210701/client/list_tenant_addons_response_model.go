@@ -59,5 +59,10 @@ func (s *ListTenantAddonsResponse) SetBody(v *ListTenantAddonsResponseBody) *Lis
 }
 
 func (s *ListTenantAddonsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

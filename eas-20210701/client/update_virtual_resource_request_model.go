@@ -72,7 +72,16 @@ func (s *UpdateVirtualResourceRequest) SetVirtualResourceName(v string) *UpdateV
 }
 
 func (s *UpdateVirtualResourceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Resources != nil {
+		for _, item := range s.Resources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateVirtualResourceRequestResources struct {

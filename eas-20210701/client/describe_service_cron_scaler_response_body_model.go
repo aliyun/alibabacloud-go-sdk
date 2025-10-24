@@ -83,7 +83,16 @@ func (s *DescribeServiceCronScalerResponseBody) SetServiceName(v string) *Descri
 }
 
 func (s *DescribeServiceCronScalerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ScaleJobs != nil {
+		for _, item := range s.ScaleJobs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeServiceCronScalerResponseBodyScaleJobs struct {

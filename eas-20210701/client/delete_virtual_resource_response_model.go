@@ -59,5 +59,10 @@ func (s *DeleteVirtualResourceResponse) SetBody(v *DeleteVirtualResourceResponse
 }
 
 func (s *DeleteVirtualResourceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

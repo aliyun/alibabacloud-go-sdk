@@ -104,7 +104,16 @@ func (s *ListVirtualResourceResponseBody) SetVirtualResources(v []*ListVirtualRe
 }
 
 func (s *ListVirtualResourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VirtualResources != nil {
+		for _, item := range s.VirtualResources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVirtualResourceResponseBodyVirtualResources struct {

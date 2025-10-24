@@ -53,7 +53,16 @@ func (s *DescribeSpotDiscountHistoryResponseBody) SetSpotDiscounts(v []*Describe
 }
 
 func (s *DescribeSpotDiscountHistoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SpotDiscounts != nil {
+		for _, item := range s.SpotDiscounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSpotDiscountHistoryResponseBodySpotDiscounts struct {

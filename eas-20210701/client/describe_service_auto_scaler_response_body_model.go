@@ -146,7 +146,25 @@ func (s *DescribeServiceAutoScalerResponseBody) SetServiceName(v string) *Descri
 }
 
 func (s *DescribeServiceAutoScalerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CurrentMetrics != nil {
+		for _, item := range s.CurrentMetrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ScaleStrategies != nil {
+		for _, item := range s.ScaleStrategies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeServiceAutoScalerResponseBodyCurrentMetrics struct {

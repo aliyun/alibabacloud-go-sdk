@@ -70,7 +70,16 @@ func (s *ListGatewayIntranetLinkedVpcPeerResponseBody) SetRequestId(v string) *L
 }
 
 func (s *ListGatewayIntranetLinkedVpcPeerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PeerVpcList != nil {
+		for _, item := range s.PeerVpcList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList struct {
@@ -111,7 +120,16 @@ func (s *ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList) SetVpcId(v str
 }
 
 func (s *ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList) Validate() error {
-	return dara.Validate(s)
+	if s.PeerVpcs != nil {
+		for _, item := range s.PeerVpcs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs struct {

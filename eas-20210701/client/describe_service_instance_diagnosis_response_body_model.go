@@ -53,7 +53,12 @@ func (s *DescribeServiceInstanceDiagnosisResponseBody) SetRequestId(v string) *D
 }
 
 func (s *DescribeServiceInstanceDiagnosisResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Diagnosis != nil {
+		if err := s.Diagnosis.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeServiceInstanceDiagnosisResponseBodyDiagnosis struct {

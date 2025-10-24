@@ -70,7 +70,16 @@ func (s *ListGatewayDomainsResponseBody) SetRequestId(v string) *ListGatewayDoma
 }
 
 func (s *ListGatewayDomainsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CustomDomains != nil {
+		for _, item := range s.CustomDomains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewayDomainsResponseBodyCustomDomains struct {

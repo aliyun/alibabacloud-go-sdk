@@ -53,7 +53,12 @@ func (s *UpdateResourceRequest) SetSelfManagedResourceOptions(v *UpdateResourceR
 }
 
 func (s *UpdateResourceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SelfManagedResourceOptions != nil {
+		if err := s.SelfManagedResourceOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateResourceRequestSelfManagedResourceOptions struct {
@@ -90,7 +95,16 @@ func (s *UpdateResourceRequestSelfManagedResourceOptions) SetNodeTolerations(v [
 }
 
 func (s *UpdateResourceRequestSelfManagedResourceOptions) Validate() error {
-	return dara.Validate(s)
+	if s.NodeTolerations != nil {
+		for _, item := range s.NodeTolerations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations struct {

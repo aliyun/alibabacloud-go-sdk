@@ -53,7 +53,16 @@ func (s *DeleteGatewayIntranetLinkedVpcPeerRequest) SetVpcId(v string) *DeleteGa
 }
 
 func (s *DeleteGatewayIntranetLinkedVpcPeerRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PeerVpcs != nil {
+		for _, item := range s.PeerVpcs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteGatewayIntranetLinkedVpcPeerRequestPeerVpcs struct {

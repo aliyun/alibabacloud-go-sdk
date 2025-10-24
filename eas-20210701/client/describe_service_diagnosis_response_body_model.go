@@ -53,7 +53,16 @@ func (s *DescribeServiceDiagnosisResponseBody) SetRequestId(v string) *DescribeS
 }
 
 func (s *DescribeServiceDiagnosisResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DiagnosisList != nil {
+		for _, item := range s.DiagnosisList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeServiceDiagnosisResponseBodyDiagnosisList struct {

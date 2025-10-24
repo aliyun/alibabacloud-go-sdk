@@ -59,5 +59,10 @@ func (s *StopServiceResponse) SetBody(v *StopServiceResponseBody) *StopServiceRe
 }
 
 func (s *StopServiceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

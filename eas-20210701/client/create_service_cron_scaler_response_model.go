@@ -59,5 +59,10 @@ func (s *CreateServiceCronScalerResponse) SetBody(v *CreateServiceCronScalerResp
 }
 
 func (s *CreateServiceCronScalerResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

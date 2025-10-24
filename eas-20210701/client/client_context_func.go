@@ -19,9 +19,11 @@ import (
 //
 // @return AttachGatewayDomainResponse
 func (client *Client) AttachGatewayDomainWithContext(ctx context.Context, ClusterId *string, GatewayId *string, tmpReq *AttachGatewayDomainRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AttachGatewayDomainResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AttachGatewayDomainShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -70,9 +72,11 @@ func (client *Client) AttachGatewayDomainWithContext(ctx context.Context, Cluste
 //
 // @return CloneServiceResponse
 func (client *Client) CloneServiceWithContext(ctx context.Context, ClusterId *string, ServiceName *string, tmpReq *CloneServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CloneServiceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CloneServiceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -155,9 +159,11 @@ func (client *Client) CommitServiceWithContext(ctx context.Context, ClusterId *s
 //
 // @return CreateAclPolicyResponse
 func (client *Client) CreateAclPolicyWithContext(ctx context.Context, ClusterId *string, GatewayId *string, tmpReq *CreateAclPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAclPolicyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateAclPolicyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -210,9 +216,11 @@ func (client *Client) CreateAclPolicyWithContext(ctx context.Context, ClusterId 
 //
 // @return CreateAppServiceResponse
 func (client *Client) CreateAppServiceWithContext(ctx context.Context, request *CreateAppServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAppServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.QuotaId) {
@@ -285,9 +293,11 @@ func (client *Client) CreateAppServiceWithContext(ctx context.Context, request *
 //
 // @return CreateBenchmarkTaskResponse
 func (client *Client) CreateBenchmarkTaskWithContext(ctx context.Context, request *CreateBenchmarkTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateBenchmarkTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
@@ -325,9 +335,11 @@ func (client *Client) CreateBenchmarkTaskWithContext(ctx context.Context, reques
 //
 // @return CreateGatewayResponse
 func (client *Client) CreateGatewayWithContext(ctx context.Context, request *CreateGatewayRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGatewayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceName) {
@@ -404,9 +416,11 @@ func (client *Client) CreateGatewayWithContext(ctx context.Context, request *Cre
 //
 // @return CreateGatewayIntranetLinkedVpcResponse
 func (client *Client) CreateGatewayIntranetLinkedVpcWithContext(ctx context.Context, ClusterId *string, GatewayId *string, request *CreateGatewayIntranetLinkedVpcRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGatewayIntranetLinkedVpcResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -461,9 +475,11 @@ func (client *Client) CreateGatewayIntranetLinkedVpcWithContext(ctx context.Cont
 //
 // @return CreateGatewayIntranetLinkedVpcPeerResponse
 func (client *Client) CreateGatewayIntranetLinkedVpcPeerWithContext(ctx context.Context, ClusterId *string, GatewayId *string, tmpReq *CreateGatewayIntranetLinkedVpcPeerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGatewayIntranetLinkedVpcPeerResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateGatewayIntranetLinkedVpcPeerShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -520,9 +536,11 @@ func (client *Client) CreateGatewayIntranetLinkedVpcPeerWithContext(ctx context.
 //
 // @return CreateResourceResponse
 func (client *Client) CreateResourceWithContext(ctx context.Context, request *CreateResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoRenewal) {
@@ -601,9 +619,11 @@ func (client *Client) CreateResourceWithContext(ctx context.Context, request *Cr
 //
 // @return CreateResourceInstancesResponse
 func (client *Client) CreateResourceInstancesWithContext(ctx context.Context, ClusterId *string, ResourceId *string, request *CreateResourceInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateResourceInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoRenewal) {
@@ -674,9 +694,11 @@ func (client *Client) CreateResourceInstancesWithContext(ctx context.Context, Cl
 //
 // @return CreateResourceLogResponse
 func (client *Client) CreateResourceLogWithContext(ctx context.Context, ClusterId *string, ResourceId *string, request *CreateResourceLogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateResourceLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.LogStore) {
@@ -727,9 +749,11 @@ func (client *Client) CreateResourceLogWithContext(ctx context.Context, ClusterI
 //
 // @return CreateServiceResponse
 func (client *Client) CreateServiceWithContext(ctx context.Context, tmpReq *CreateServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateServiceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateServiceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -787,9 +811,11 @@ func (client *Client) CreateServiceWithContext(ctx context.Context, tmpReq *Crea
 //
 // @return CreateServiceAutoScalerResponse
 func (client *Client) CreateServiceAutoScalerWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *CreateServiceAutoScalerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateServiceAutoScalerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Behavior) {
@@ -844,9 +870,11 @@ func (client *Client) CreateServiceAutoScalerWithContext(ctx context.Context, Cl
 //
 // @return CreateServiceCronScalerResponse
 func (client *Client) CreateServiceCronScalerWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *CreateServiceCronScalerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateServiceCronScalerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ExcludeDates) {
@@ -893,9 +921,11 @@ func (client *Client) CreateServiceCronScalerWithContext(ctx context.Context, Cl
 //
 // @return CreateServiceMirrorResponse
 func (client *Client) CreateServiceMirrorWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *CreateServiceMirrorRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateServiceMirrorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Ratio) {
@@ -942,9 +972,11 @@ func (client *Client) CreateServiceMirrorWithContext(ctx context.Context, Cluste
 //
 // @return CreateVirtualResourceResponse
 func (client *Client) CreateVirtualResourceWithContext(ctx context.Context, request *CreateVirtualResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateVirtualResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DisableSpotProtectionPeriod) {
@@ -995,9 +1027,11 @@ func (client *Client) CreateVirtualResourceWithContext(ctx context.Context, requ
 //
 // @return DeleteAclPolicyResponse
 func (client *Client) DeleteAclPolicyWithContext(ctx context.Context, ClusterId *string, GatewayId *string, tmpReq *DeleteAclPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAclPolicyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteAclPolicyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1116,9 +1150,11 @@ func (client *Client) DeleteGatewayWithContext(ctx context.Context, ClusterId *s
 //
 // @return DeleteGatewayIntranetLinkedVpcResponse
 func (client *Client) DeleteGatewayIntranetLinkedVpcWithContext(ctx context.Context, ClusterId *string, GatewayId *string, request *DeleteGatewayIntranetLinkedVpcRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteGatewayIntranetLinkedVpcResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.VSwitchId) {
@@ -1165,9 +1201,11 @@ func (client *Client) DeleteGatewayIntranetLinkedVpcWithContext(ctx context.Cont
 //
 // @return DeleteGatewayIntranetLinkedVpcPeerResponse
 func (client *Client) DeleteGatewayIntranetLinkedVpcPeerWithContext(ctx context.Context, ClusterId *string, GatewayId *string, tmpReq *DeleteGatewayIntranetLinkedVpcPeerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteGatewayIntranetLinkedVpcPeerResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteGatewayIntranetLinkedVpcPeerShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1286,9 +1324,11 @@ func (client *Client) DeleteResourceDLinkWithContext(ctx context.Context, Cluste
 //
 // @return DeleteResourceInstanceLabelResponse
 func (client *Client) DeleteResourceInstanceLabelWithContext(ctx context.Context, ClusterId *string, ResourceId *string, tmpReq *DeleteResourceInstanceLabelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteResourceInstanceLabelResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteResourceInstanceLabelShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1349,9 +1389,11 @@ func (client *Client) DeleteResourceInstanceLabelWithContext(ctx context.Context
 //
 // @return DeleteResourceInstancesResponse
 func (client *Client) DeleteResourceInstancesWithContext(ctx context.Context, ClusterId *string, ResourceId *string, request *DeleteResourceInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteResourceInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllFailed) {
@@ -1530,9 +1572,11 @@ func (client *Client) DeleteServiceCronScalerWithContext(ctx context.Context, Cl
 //
 // @return DeleteServiceInstancesResponse
 func (client *Client) DeleteServiceInstancesWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *DeleteServiceInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteServiceInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Container) {
@@ -1583,9 +1627,11 @@ func (client *Client) DeleteServiceInstancesWithContext(ctx context.Context, Clu
 //
 // @return DeleteServiceLabelResponse
 func (client *Client) DeleteServiceLabelWithContext(ctx context.Context, ClusterId *string, ServiceName *string, tmpReq *DeleteServiceLabelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteServiceLabelResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteServiceLabelShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1733,9 +1779,11 @@ func (client *Client) DescribeBenchmarkTaskWithContext(ctx context.Context, Clus
 //
 // @return DescribeBenchmarkTaskReportResponse
 func (client *Client) DescribeBenchmarkTaskReportWithContext(ctx context.Context, ClusterId *string, TaskName *string, request *DescribeBenchmarkTaskReportRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeBenchmarkTaskReportResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ReportType) {
@@ -1877,9 +1925,11 @@ func (client *Client) DescribeGroupEndpointsWithContext(ctx context.Context, Clu
 //
 // @return DescribeMachineSpecResponse
 func (client *Client) DescribeMachineSpecWithContext(ctx context.Context, tmpReq *DescribeMachineSpecRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeMachineSpecResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeMachineSpecShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2225,9 +2275,11 @@ func (client *Client) DescribeServiceEndpointsWithContext(ctx context.Context, C
 //
 // @return DescribeServiceEventResponse
 func (client *Client) DescribeServiceEventWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *DescribeServiceEventRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeServiceEventResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -2323,9 +2375,11 @@ func (client *Client) DescribeServiceInstanceDiagnosisWithContext(ctx context.Co
 //
 // @return DescribeServiceLogResponse
 func (client *Client) DescribeServiceLogWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *DescribeServiceLogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeServiceLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContainerName) {
@@ -2433,9 +2487,11 @@ func (client *Client) DescribeServiceMirrorWithContext(ctx context.Context, Clus
 //
 // @return DescribeServiceSignedUrlResponse
 func (client *Client) DescribeServiceSignedUrlWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *DescribeServiceSignedUrlRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeServiceSignedUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Expire) {
@@ -2486,9 +2542,11 @@ func (client *Client) DescribeServiceSignedUrlWithContext(ctx context.Context, C
 //
 // @return DescribeSpotDiscountHistoryResponse
 func (client *Client) DescribeSpotDiscountHistoryWithContext(ctx context.Context, request *DescribeSpotDiscountHistoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeSpotDiscountHistoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceType) {
@@ -2568,9 +2626,11 @@ func (client *Client) DescribeVirtualResourceWithContext(ctx context.Context, Cl
 //
 // @return DetachGatewayDomainResponse
 func (client *Client) DetachGatewayDomainWithContext(ctx context.Context, ClusterId *string, GatewayId *string, tmpReq *DetachGatewayDomainRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DetachGatewayDomainResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DetachGatewayDomainShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2619,9 +2679,11 @@ func (client *Client) DetachGatewayDomainWithContext(ctx context.Context, Cluste
 //
 // @return DevelopServiceResponse
 func (client *Client) DevelopServiceWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *DevelopServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DevelopServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Exit) {
@@ -2664,9 +2726,11 @@ func (client *Client) DevelopServiceWithContext(ctx context.Context, ClusterId *
 //
 // @return ListAclPolicyResponse
 func (client *Client) ListAclPolicyWithContext(ctx context.Context, ClusterId *string, GatewayId *string, request *ListAclPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAclPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.VpcId) {
@@ -2709,13 +2773,23 @@ func (client *Client) ListAclPolicyWithContext(ctx context.Context, ClusterId *s
 //
 // @return ListBenchmarkTaskResponse
 func (client *Client) ListBenchmarkTaskWithContext(ctx context.Context, request *ListBenchmarkTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListBenchmarkTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Filter) {
 		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.ModelId) {
+		query["ModelId"] = request.ModelId
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
 	}
 
 	if !dara.IsNil(request.PageNumber) {
@@ -2726,8 +2800,20 @@ func (client *Client) ListBenchmarkTaskWithContext(ctx context.Context, request 
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.RequestMethod) {
+		query["RequestMethod"] = request.RequestMethod
+	}
+
 	if !dara.IsNil(request.ServiceName) {
 		query["ServiceName"] = request.ServiceName
+	}
+
+	if !dara.IsNil(request.Sort) {
+		query["Sort"] = request.Sort
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2766,9 +2852,11 @@ func (client *Client) ListBenchmarkTaskWithContext(ctx context.Context, request 
 //
 // @return ListGatewayResponse
 func (client *Client) ListGatewayWithContext(ctx context.Context, request *ListGatewayRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGatewayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChargeType) {
@@ -2917,9 +3005,11 @@ func (client *Client) ListGatewayIntranetLinkedVpcWithContext(ctx context.Contex
 //
 // @return ListGatewayIntranetLinkedVpcPeerResponse
 func (client *Client) ListGatewayIntranetLinkedVpcPeerWithContext(ctx context.Context, ClusterId *string, GatewayId *string, request *ListGatewayIntranetLinkedVpcPeerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGatewayIntranetLinkedVpcPeerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.VpcId) {
@@ -2995,13 +3085,19 @@ func (client *Client) ListGatewayIntranetSupportedZoneWithContext(ctx context.Co
 //
 // @return ListGroupsResponse
 func (client *Client) ListGroupsWithContext(ctx context.Context, request *ListGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Filter) {
 		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
 	}
 
 	if !dara.IsNil(request.PageNumber) {
@@ -3010,6 +3106,14 @@ func (client *Client) ListGroupsWithContext(ctx context.Context, request *ListGr
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Sort) {
+		query["Sort"] = request.Sort
+	}
+
+	if !dara.IsNil(request.TrafficMode) {
+		query["TrafficMode"] = request.TrafficMode
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -3052,9 +3156,11 @@ func (client *Client) ListGroupsWithContext(ctx context.Context, request *ListGr
 //
 // @return ListResourceInstanceWorkerResponse
 func (client *Client) ListResourceInstanceWorkerWithContext(ctx context.Context, ClusterId *string, ResourceId *string, InstanceName *string, request *ListResourceInstanceWorkerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListResourceInstanceWorkerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Order) {
@@ -3125,9 +3231,11 @@ func (client *Client) ListResourceInstanceWorkerWithContext(ctx context.Context,
 //
 // @return ListResourceInstancesResponse
 func (client *Client) ListResourceInstancesWithContext(ctx context.Context, ClusterId *string, ResourceId *string, tmpReq *ListResourceInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListResourceInstancesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListResourceInstancesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3218,9 +3326,11 @@ func (client *Client) ListResourceInstancesWithContext(ctx context.Context, Clus
 //
 // @return ListResourceServicesResponse
 func (client *Client) ListResourceServicesWithContext(ctx context.Context, ClusterId *string, ResourceId *string, request *ListResourceServicesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListResourceServicesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -3267,9 +3377,11 @@ func (client *Client) ListResourceServicesWithContext(ctx context.Context, Clust
 //
 // @return ListResourcesResponse
 func (client *Client) ListResourcesWithContext(ctx context.Context, request *ListResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Order) {
@@ -3373,9 +3485,11 @@ func (client *Client) ListServiceContainersWithContext(ctx context.Context, Clus
 //
 // @return ListServiceInstancesResponse
 func (client *Client) ListServiceInstancesWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *ListServiceInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListServiceInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Filter) {
@@ -3470,9 +3584,11 @@ func (client *Client) ListServiceInstancesWithContext(ctx context.Context, Clust
 //
 // @return ListServiceVersionsResponse
 func (client *Client) ListServiceVersionsWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *ListServiceVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListServiceVersionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -3519,9 +3635,11 @@ func (client *Client) ListServiceVersionsWithContext(ctx context.Context, Cluste
 //
 // @return ListServicesResponse
 func (client *Client) ListServicesWithContext(ctx context.Context, tmpReq *ListServicesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListServicesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListServicesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3699,9 +3817,11 @@ func (client *Client) ListTenantAddonsWithContext(ctx context.Context, headers m
 //
 // @return ListVirtualResourceResponse
 func (client *Client) ListVirtualResourceWithContext(ctx context.Context, request *ListVirtualResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListVirtualResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Order) {
@@ -3797,9 +3917,11 @@ func (client *Client) ReinstallTenantAddonWithContext(ctx context.Context, Clust
 //
 // @return ReleaseServiceResponse
 func (client *Client) ReleaseServiceWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *ReleaseServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ReleaseServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.TrafficState) {
@@ -4011,9 +4133,11 @@ func (client *Client) StopServiceWithContext(ctx context.Context, ClusterId *str
 //
 // @return UpdateAppServiceResponse
 func (client *Client) UpdateAppServiceWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *UpdateAppServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAppServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.QuotaId) {
@@ -4082,9 +4206,11 @@ func (client *Client) UpdateAppServiceWithContext(ctx context.Context, ClusterId
 //
 // @return UpdateBenchmarkTaskResponse
 func (client *Client) UpdateBenchmarkTaskWithContext(ctx context.Context, ClusterId *string, TaskName *string, request *UpdateBenchmarkTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateBenchmarkTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
@@ -4122,9 +4248,11 @@ func (client *Client) UpdateBenchmarkTaskWithContext(ctx context.Context, Cluste
 //
 // @return UpdateGatewayResponse
 func (client *Client) UpdateGatewayWithContext(ctx context.Context, GatewayId *string, ClusterId *string, request *UpdateGatewayRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateGatewayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EnableInternet) {
@@ -4199,9 +4327,11 @@ func (client *Client) UpdateGatewayWithContext(ctx context.Context, GatewayId *s
 //
 // @return UpdateGroupResponse
 func (client *Client) UpdateGroupWithContext(ctx context.Context, ClusterId *string, GroupName *string, request *UpdateGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.TrafficMode) {
@@ -4244,9 +4374,11 @@ func (client *Client) UpdateGroupWithContext(ctx context.Context, ClusterId *str
 //
 // @return UpdateResourceResponse
 func (client *Client) UpdateResourceWithContext(ctx context.Context, ClusterId *string, ResourceId *string, request *UpdateResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceName) {
@@ -4293,9 +4425,11 @@ func (client *Client) UpdateResourceWithContext(ctx context.Context, ClusterId *
 //
 // @return UpdateResourceDLinkResponse
 func (client *Client) UpdateResourceDLinkWithContext(ctx context.Context, ClusterId *string, ResourceId *string, request *UpdateResourceDLinkRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateResourceDLinkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DestinationCIDRs) {
@@ -4350,9 +4484,11 @@ func (client *Client) UpdateResourceDLinkWithContext(ctx context.Context, Cluste
 //
 // @return UpdateResourceInstanceResponse
 func (client *Client) UpdateResourceInstanceWithContext(ctx context.Context, ClusterId *string, ResourceId *string, InstanceId *string, request *UpdateResourceInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateResourceInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Action) {
@@ -4395,9 +4531,11 @@ func (client *Client) UpdateResourceInstanceWithContext(ctx context.Context, Clu
 //
 // @return UpdateResourceInstanceLabelResponse
 func (client *Client) UpdateResourceInstanceLabelWithContext(ctx context.Context, ClusterId *string, ResourceId *string, tmpReq *UpdateResourceInstanceLabelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateResourceInstanceLabelResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateResourceInstanceLabelShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4456,9 +4594,11 @@ func (client *Client) UpdateResourceInstanceLabelWithContext(ctx context.Context
 //
 // @return UpdateServiceResponse
 func (client *Client) UpdateServiceWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *UpdateServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MemberToUpdate) {
@@ -4506,9 +4646,11 @@ func (client *Client) UpdateServiceWithContext(ctx context.Context, ClusterId *s
 //
 // @return UpdateServiceAutoScalerResponse
 func (client *Client) UpdateServiceAutoScalerWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *UpdateServiceAutoScalerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateServiceAutoScalerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Behavior) {
@@ -4563,9 +4705,11 @@ func (client *Client) UpdateServiceAutoScalerWithContext(ctx context.Context, Cl
 //
 // @return UpdateServiceCronScalerResponse
 func (client *Client) UpdateServiceCronScalerWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *UpdateServiceCronScalerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateServiceCronScalerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ExcludeDates) {
@@ -4612,9 +4756,11 @@ func (client *Client) UpdateServiceCronScalerWithContext(ctx context.Context, Cl
 //
 // @return UpdateServiceInstanceResponse
 func (client *Client) UpdateServiceInstanceWithContext(ctx context.Context, ClusterId *string, ServiceName *string, InstanceName *string, request *UpdateServiceInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateServiceInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Isolate) {
@@ -4657,9 +4803,11 @@ func (client *Client) UpdateServiceInstanceWithContext(ctx context.Context, Clus
 //
 // @return UpdateServiceLabelResponse
 func (client *Client) UpdateServiceLabelWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *UpdateServiceLabelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateServiceLabelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Labels) {
@@ -4702,9 +4850,11 @@ func (client *Client) UpdateServiceLabelWithContext(ctx context.Context, Cluster
 //
 // @return UpdateServiceMirrorResponse
 func (client *Client) UpdateServiceMirrorWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *UpdateServiceMirrorRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateServiceMirrorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Ratio) {
@@ -4751,9 +4901,11 @@ func (client *Client) UpdateServiceMirrorWithContext(ctx context.Context, Cluste
 //
 // @return UpdateServiceSafetyLockResponse
 func (client *Client) UpdateServiceSafetyLockWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *UpdateServiceSafetyLockRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateServiceSafetyLockResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Lock) {
@@ -4796,9 +4948,11 @@ func (client *Client) UpdateServiceSafetyLockWithContext(ctx context.Context, Cl
 //
 // @return UpdateServiceVersionResponse
 func (client *Client) UpdateServiceVersionWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *UpdateServiceVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateServiceVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -4841,9 +4995,11 @@ func (client *Client) UpdateServiceVersionWithContext(ctx context.Context, Clust
 //
 // @return UpdateVirtualResourceResponse
 func (client *Client) UpdateVirtualResourceWithContext(ctx context.Context, ClusterId *string, VirtualResourceId *string, request *UpdateVirtualResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateVirtualResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DisableSpotProtectionPeriod) {

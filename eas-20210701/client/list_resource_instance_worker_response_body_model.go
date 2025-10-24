@@ -104,5 +104,14 @@ func (s *ListResourceInstanceWorkerResponseBody) SetTotalCount(v int32) *ListRes
 }
 
 func (s *ListResourceInstanceWorkerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Pods != nil {
+		for _, item := range s.Pods {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -11,10 +11,16 @@ type iListGroupsRequest interface {
 	GoString() string
 	SetFilter(v string) *ListGroupsRequest
 	GetFilter() *string
+	SetOrder(v string) *ListGroupsRequest
+	GetOrder() *string
 	SetPageNumber(v string) *ListGroupsRequest
 	GetPageNumber() *string
 	SetPageSize(v string) *ListGroupsRequest
 	GetPageSize() *string
+	SetSort(v string) *ListGroupsRequest
+	GetSort() *string
+	SetTrafficMode(v string) *ListGroupsRequest
+	GetTrafficMode() *string
 	SetWorkspaceId(v string) *ListGroupsRequest
 	GetWorkspaceId() *string
 }
@@ -26,6 +32,7 @@ type ListGroupsRequest struct {
 	//
 	// foo
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Order  *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The page number. Default value: 1.
 	//
 	// example:
@@ -37,7 +44,9 @@ type ListGroupsRequest struct {
 	// example:
 	//
 	// 20
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Sort        *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	TrafficMode *string `json:"TrafficMode,omitempty" xml:"TrafficMode,omitempty"`
 	// The workspace ID.
 	//
 	// example:
@@ -58,12 +67,24 @@ func (s *ListGroupsRequest) GetFilter() *string {
 	return s.Filter
 }
 
+func (s *ListGroupsRequest) GetOrder() *string {
+	return s.Order
+}
+
 func (s *ListGroupsRequest) GetPageNumber() *string {
 	return s.PageNumber
 }
 
 func (s *ListGroupsRequest) GetPageSize() *string {
 	return s.PageSize
+}
+
+func (s *ListGroupsRequest) GetSort() *string {
+	return s.Sort
+}
+
+func (s *ListGroupsRequest) GetTrafficMode() *string {
+	return s.TrafficMode
 }
 
 func (s *ListGroupsRequest) GetWorkspaceId() *string {
@@ -75,6 +96,11 @@ func (s *ListGroupsRequest) SetFilter(v string) *ListGroupsRequest {
 	return s
 }
 
+func (s *ListGroupsRequest) SetOrder(v string) *ListGroupsRequest {
+	s.Order = &v
+	return s
+}
+
 func (s *ListGroupsRequest) SetPageNumber(v string) *ListGroupsRequest {
 	s.PageNumber = &v
 	return s
@@ -82,6 +108,16 @@ func (s *ListGroupsRequest) SetPageNumber(v string) *ListGroupsRequest {
 
 func (s *ListGroupsRequest) SetPageSize(v string) *ListGroupsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListGroupsRequest) SetSort(v string) *ListGroupsRequest {
+	s.Sort = &v
+	return s
+}
+
+func (s *ListGroupsRequest) SetTrafficMode(v string) *ListGroupsRequest {
+	s.TrafficMode = &v
 	return s
 }
 

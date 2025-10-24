@@ -83,7 +83,25 @@ func (s *ListAclPolicyResponseBody) SetRequestId(v string) *ListAclPolicyRespons
 }
 
 func (s *ListAclPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InternetAclPolicyList != nil {
+		for _, item := range s.InternetAclPolicyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.IntranetVpcAclPolicyList != nil {
+		for _, item := range s.IntranetVpcAclPolicyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAclPolicyResponseBodyInternetAclPolicyList struct {
@@ -109,7 +127,16 @@ func (s *ListAclPolicyResponseBodyInternetAclPolicyList) SetAclPolicyList(v []*L
 }
 
 func (s *ListAclPolicyResponseBodyInternetAclPolicyList) Validate() error {
-	return dara.Validate(s)
+	if s.AclPolicyList != nil {
+		for _, item := range s.AclPolicyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAclPolicyResponseBodyInternetAclPolicyListAclPolicyList struct {
@@ -195,7 +222,16 @@ func (s *ListAclPolicyResponseBodyIntranetVpcAclPolicyList) SetVpcId(v string) *
 }
 
 func (s *ListAclPolicyResponseBodyIntranetVpcAclPolicyList) Validate() error {
-	return dara.Validate(s)
+	if s.AclPolicyList != nil {
+		for _, item := range s.AclPolicyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAclPolicyResponseBodyIntranetVpcAclPolicyListAclPolicyList struct {

@@ -66,7 +66,25 @@ func (s *DescribeMachineSpecResponseBody) SetTypes(v []*DescribeMachineSpecRespo
 }
 
 func (s *DescribeMachineSpecResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceMetas != nil {
+		for _, item := range s.InstanceMetas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Types != nil {
+		for _, item := range s.Types {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMachineSpecResponseBodyInstanceMetas struct {

@@ -59,5 +59,10 @@ func (s *CreateAppServiceResponse) SetBody(v *CreateAppServiceResponseBody) *Cre
 }
 
 func (s *CreateAppServiceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,16 @@ func (s *CreateGatewayIntranetLinkedVpcPeerRequest) SetVpcId(v string) *CreateGa
 }
 
 func (s *CreateGatewayIntranetLinkedVpcPeerRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PeerVpcs != nil {
+		for _, item := range s.PeerVpcs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs struct {

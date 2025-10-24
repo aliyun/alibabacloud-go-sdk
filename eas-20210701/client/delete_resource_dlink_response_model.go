@@ -59,5 +59,10 @@ func (s *DeleteResourceDLinkResponse) SetBody(v *DeleteResourceDLinkResponseBody
 }
 
 func (s *DeleteResourceDLinkResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

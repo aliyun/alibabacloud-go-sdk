@@ -59,5 +59,10 @@ func (s *DeleteResourceLogResponse) SetBody(v *DeleteResourceLogResponseBody) *D
 }
 
 func (s *DeleteResourceLogResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

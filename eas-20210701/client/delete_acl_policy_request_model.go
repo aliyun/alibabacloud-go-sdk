@@ -53,7 +53,16 @@ func (s *DeleteAclPolicyRequest) SetVpcId(v string) *DeleteAclPolicyRequest {
 }
 
 func (s *DeleteAclPolicyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AclPolicyList != nil {
+		for _, item := range s.AclPolicyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteAclPolicyRequestAclPolicyList struct {

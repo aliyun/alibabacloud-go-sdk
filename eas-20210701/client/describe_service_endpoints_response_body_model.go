@@ -87,7 +87,16 @@ func (s *DescribeServiceEndpointsResponseBody) SetRequestId(v string) *DescribeS
 }
 
 func (s *DescribeServiceEndpointsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Endpoints != nil {
+		for _, item := range s.Endpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeServiceEndpointsResponseBodyEndpoints struct {

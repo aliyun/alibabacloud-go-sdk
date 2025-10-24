@@ -59,5 +59,10 @@ func (s *DeleteAclPolicyResponse) SetBody(v *DeleteAclPolicyResponseBody) *Delet
 }
 
 func (s *DeleteAclPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

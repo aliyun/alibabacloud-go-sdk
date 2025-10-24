@@ -89,7 +89,21 @@ func (s *CreateServiceAutoScalerRequest) SetScaleStrategies(v []*CreateServiceAu
 }
 
 func (s *CreateServiceAutoScalerRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Behavior != nil {
+		if err := s.Behavior.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScaleStrategies != nil {
+		for _, item := range s.ScaleStrategies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateServiceAutoScalerRequestBehavior struct {
@@ -137,7 +151,22 @@ func (s *CreateServiceAutoScalerRequestBehavior) SetScaleUp(v *CreateServiceAuto
 }
 
 func (s *CreateServiceAutoScalerRequestBehavior) Validate() error {
-	return dara.Validate(s)
+	if s.OnZero != nil {
+		if err := s.OnZero.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScaleDown != nil {
+		if err := s.ScaleDown.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScaleUp != nil {
+		if err := s.ScaleUp.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateServiceAutoScalerRequestBehaviorOnZero struct {

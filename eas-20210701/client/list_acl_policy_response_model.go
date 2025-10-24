@@ -59,5 +59,10 @@ func (s *ListAclPolicyResponse) SetBody(v *ListAclPolicyResponseBody) *ListAclPo
 }
 
 func (s *ListAclPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

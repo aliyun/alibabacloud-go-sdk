@@ -104,7 +104,16 @@ func (s *ListGatewayResponseBody) SetTotalCount(v int64) *ListGatewayResponseBod
 }
 
 func (s *ListGatewayResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Gateways != nil {
+		for _, item := range s.Gateways {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewayResponseBodyGateways struct {

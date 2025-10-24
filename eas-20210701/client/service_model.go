@@ -647,7 +647,21 @@ func (s *Service) SetWorkspaceId(v string) *Service {
 }
 
 func (s *Service) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceCountInResource != nil {
+		if err := s.InstanceCountInResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ServiceInstanceCountInResource struct {

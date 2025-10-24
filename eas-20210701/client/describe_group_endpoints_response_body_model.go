@@ -87,7 +87,16 @@ func (s *DescribeGroupEndpointsResponseBody) SetRequestId(v string) *DescribeGro
 }
 
 func (s *DescribeGroupEndpointsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Endpoints != nil {
+		for _, item := range s.Endpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGroupEndpointsResponseBodyEndpoints struct {

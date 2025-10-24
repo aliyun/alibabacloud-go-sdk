@@ -38,7 +38,12 @@ func (s *AttachGatewayDomainRequest) SetCustomDomain(v *AttachGatewayDomainReque
 }
 
 func (s *AttachGatewayDomainRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CustomDomain != nil {
+		if err := s.CustomDomain.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AttachGatewayDomainRequestCustomDomain struct {

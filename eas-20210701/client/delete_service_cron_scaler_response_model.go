@@ -59,5 +59,10 @@ func (s *DeleteServiceCronScalerResponse) SetBody(v *DeleteServiceCronScalerResp
 }
 
 func (s *DeleteServiceCronScalerResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -104,7 +104,16 @@ func (s *DescribeServiceEventResponseBody) SetTotalPageNum(v int64) *DescribeSer
 }
 
 func (s *DescribeServiceEventResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Events != nil {
+		for _, item := range s.Events {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeServiceEventResponseBodyEvents struct {

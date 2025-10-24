@@ -55,7 +55,16 @@ func (s *CreateAclPolicyRequest) SetVpcId(v string) *CreateAclPolicyRequest {
 }
 
 func (s *CreateAclPolicyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AclPolicyList != nil {
+		for _, item := range s.AclPolicyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAclPolicyRequestAclPolicyList struct {

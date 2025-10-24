@@ -59,5 +59,10 @@ func (s *ReleaseServiceResponse) SetBody(v *ReleaseServiceResponseBody) *Release
 }
 
 func (s *ReleaseServiceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

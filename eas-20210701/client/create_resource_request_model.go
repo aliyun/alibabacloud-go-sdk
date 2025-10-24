@@ -203,7 +203,12 @@ func (s *CreateResourceRequest) SetZone(v string) *CreateResourceRequest {
 }
 
 func (s *CreateResourceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SelfManagedResourceOptions != nil {
+		if err := s.SelfManagedResourceOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateResourceRequestSelfManagedResourceOptions struct {
@@ -270,7 +275,16 @@ func (s *CreateResourceRequestSelfManagedResourceOptions) SetRoleName(v string) 
 }
 
 func (s *CreateResourceRequestSelfManagedResourceOptions) Validate() error {
-	return dara.Validate(s)
+	if s.NodeTolerations != nil {
+		for _, item := range s.NodeTolerations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateResourceRequestSelfManagedResourceOptionsNodeTolerations struct {
