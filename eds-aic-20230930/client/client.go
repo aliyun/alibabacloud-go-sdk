@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -71,9 +72,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AttachKeyPairResponse
 func (client *Client) AttachKeyPairWithOptions(request *AttachKeyPairRequest, runtime *dara.RuntimeOptions) (_result *AttachKeyPairResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceIds) {
@@ -147,9 +150,11 @@ func (client *Client) AttachKeyPair(request *AttachKeyPairRequest) (_result *Att
 //
 // @return AuthorizeAndroidInstanceResponse
 func (client *Client) AuthorizeAndroidInstanceWithOptions(request *AuthorizeAndroidInstanceRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeAndroidInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AndroidInstanceIds) {
@@ -225,9 +230,11 @@ func (client *Client) AuthorizeAndroidInstance(request *AuthorizeAndroidInstance
 //
 // @return BackupFileResponse
 func (client *Client) BackupFileWithOptions(request *BackupFileRequest, runtime *dara.RuntimeOptions) (_result *BackupFileResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AndroidInstanceIdList) {
@@ -325,9 +332,11 @@ func (client *Client) BackupFile(request *BackupFileRequest) (_result *BackupFil
 //
 // @return BatchGetAcpConnectionTicketResponse
 func (client *Client) BatchGetAcpConnectionTicketWithOptions(request *BatchGetAcpConnectionTicketRequest, runtime *dara.RuntimeOptions) (_result *BatchGetAcpConnectionTicketResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndUserId) {
@@ -397,9 +406,11 @@ func (client *Client) BatchGetAcpConnectionTicket(request *BatchGetAcpConnection
 //
 // @return ChangeCloudPhoneNodeResponse
 func (client *Client) ChangeCloudPhoneNodeWithOptions(request *ChangeCloudPhoneNodeRequest, runtime *dara.RuntimeOptions) (_result *ChangeCloudPhoneNodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -432,6 +443,14 @@ func (client *Client) ChangeCloudPhoneNodeWithOptions(request *ChangeCloudPhoneN
 
 	if !dara.IsNil(request.PromotionId) {
 		query["PromotionId"] = request.PromotionId
+	}
+
+	if !dara.IsNil(request.ShareDataVolume) {
+		query["ShareDataVolume"] = request.ShareDataVolume
+	}
+
+	if !dara.IsNil(request.SwapSize) {
+		query["SwapSize"] = request.SwapSize
 	}
 
 	if !dara.IsNil(request.UpBandwidthLimit) {
@@ -489,9 +508,11 @@ func (client *Client) ChangeCloudPhoneNode(request *ChangeCloudPhoneNodeRequest)
 //
 // @return CheckResourceStockResponse
 func (client *Client) CheckResourceStockWithOptions(request *CheckResourceStockRequest, runtime *dara.RuntimeOptions) (_result *CheckResourceStockResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcpSpecId) {
@@ -573,9 +594,11 @@ func (client *Client) CheckResourceStock(request *CheckResourceStockRequest) (_r
 //
 // @return CreateAndroidInstanceGroupResponse
 func (client *Client) CreateAndroidInstanceGroupWithOptions(tmpReq *CreateAndroidInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateAndroidInstanceGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateAndroidInstanceGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -767,9 +790,11 @@ func (client *Client) CreateAndroidInstanceGroup(request *CreateAndroidInstanceG
 //
 // @return CreateAppResponse
 func (client *Client) CreateAppWithOptions(tmpReq *CreateAppRequest, runtime *dara.RuntimeOptions) (_result *CreateAppResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateAppShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -893,9 +918,11 @@ func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppRe
 //
 // @return CreateCloudPhoneNodeResponse
 func (client *Client) CreateCloudPhoneNodeWithOptions(tmpReq *CreateCloudPhoneNodeRequest, runtime *dara.RuntimeOptions) (_result *CreateCloudPhoneNodeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateCloudPhoneNodeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1004,6 +1031,10 @@ func (client *Client) CreateCloudPhoneNodeWithOptions(tmpReq *CreateCloudPhoneNo
 		query["StreamMode"] = request.StreamMode
 	}
 
+	if !dara.IsNil(request.SwapSize) {
+		query["SwapSize"] = request.SwapSize
+	}
+
 	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}
@@ -1077,9 +1108,11 @@ func (client *Client) CreateCloudPhoneNode(request *CreateCloudPhoneNodeRequest)
 //
 // @return CreateCustomImageResponse
 func (client *Client) CreateCustomImageWithOptions(request *CreateCustomImageRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1155,9 +1188,11 @@ func (client *Client) CreateCustomImage(request *CreateCustomImageRequest) (_res
 //
 // @return CreateKeyPairResponse
 func (client *Client) CreateKeyPairWithOptions(request *CreateKeyPairRequest, runtime *dara.RuntimeOptions) (_result *CreateKeyPairResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyPairName) {
@@ -1221,9 +1256,11 @@ func (client *Client) CreateKeyPair(request *CreateKeyPairRequest) (_result *Cre
 //
 // @return CreatePolicyGroupResponse
 func (client *Client) CreatePolicyGroupWithOptions(tmpReq *CreatePolicyGroupRequest, runtime *dara.RuntimeOptions) (_result *CreatePolicyGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreatePolicyGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1335,9 +1372,11 @@ func (client *Client) CreatePolicyGroup(request *CreatePolicyGroupRequest) (_res
 //
 // @return CreateScreenshotResponse
 func (client *Client) CreateScreenshotWithOptions(request *CreateScreenshotRequest, runtime *dara.RuntimeOptions) (_result *CreateScreenshotResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AndroidInstanceIdList) {
@@ -1407,9 +1446,11 @@ func (client *Client) CreateScreenshot(request *CreateScreenshotRequest) (_resul
 //
 // @return CreateSystemPropertyTemplateResponse
 func (client *Client) CreateSystemPropertyTemplateWithOptions(tmpReq *CreateSystemPropertyTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateSystemPropertyTemplateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateSystemPropertyTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1491,9 +1532,11 @@ func (client *Client) CreateSystemPropertyTemplate(request *CreateSystemProperty
 //
 // @return DeleteAndroidInstanceGroupResponse
 func (client *Client) DeleteAndroidInstanceGroupWithOptions(request *DeleteAndroidInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteAndroidInstanceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceGroupIds) {
@@ -1557,9 +1600,11 @@ func (client *Client) DeleteAndroidInstanceGroup(request *DeleteAndroidInstanceG
 //
 // @return DeleteAppsResponse
 func (client *Client) DeleteAppsWithOptions(request *DeleteAppsRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppIdList) {
@@ -1617,9 +1662,11 @@ func (client *Client) DeleteApps(request *DeleteAppsRequest) (_result *DeleteApp
 //
 // @return DeleteBackupFileResponse
 func (client *Client) DeleteBackupFileWithOptions(request *DeleteBackupFileRequest, runtime *dara.RuntimeOptions) (_result *DeleteBackupFileResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BackupFileIdList) {
@@ -1681,9 +1728,11 @@ func (client *Client) DeleteBackupFile(request *DeleteBackupFileRequest) (_resul
 //
 // @return DeleteCloudPhoneNodesResponse
 func (client *Client) DeleteCloudPhoneNodesWithOptions(request *DeleteCloudPhoneNodesRequest, runtime *dara.RuntimeOptions) (_result *DeleteCloudPhoneNodesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.NodeIds) {
@@ -1749,9 +1798,11 @@ func (client *Client) DeleteCloudPhoneNodes(request *DeleteCloudPhoneNodesReques
 //
 // @return DeleteImagesResponse
 func (client *Client) DeleteImagesWithOptions(tmpReq *DeleteImagesRequest, runtime *dara.RuntimeOptions) (_result *DeleteImagesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteImagesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1825,9 +1876,11 @@ func (client *Client) DeleteImages(request *DeleteImagesRequest) (_result *Delet
 //
 // @return DeleteKeyPairsResponse
 func (client *Client) DeleteKeyPairsWithOptions(request *DeleteKeyPairsRequest, runtime *dara.RuntimeOptions) (_result *DeleteKeyPairsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyPairIds) {
@@ -1891,9 +1944,11 @@ func (client *Client) DeleteKeyPairs(request *DeleteKeyPairsRequest) (_result *D
 //
 // @return DeletePolicyGroupResponse
 func (client *Client) DeletePolicyGroupWithOptions(request *DeletePolicyGroupRequest, runtime *dara.RuntimeOptions) (_result *DeletePolicyGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PolicyGroupIds) {
@@ -1951,9 +2006,11 @@ func (client *Client) DeletePolicyGroup(request *DeletePolicyGroupRequest) (_res
 //
 // @return DeleteSystemPropertyTemplatesResponse
 func (client *Client) DeleteSystemPropertyTemplatesWithOptions(request *DeleteSystemPropertyTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DeleteSystemPropertyTemplatesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TemplateIds) {
@@ -2011,9 +2068,11 @@ func (client *Client) DeleteSystemPropertyTemplates(request *DeleteSystemPropert
 //
 // @return DescribeAndroidInstanceGroupsResponse
 func (client *Client) DescribeAndroidInstanceGroupsWithOptions(request *DescribeAndroidInstanceGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAndroidInstanceGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizRegionId) {
@@ -2111,9 +2170,11 @@ func (client *Client) DescribeAndroidInstanceGroups(request *DescribeAndroidInst
 //
 // @return DescribeAndroidInstancesResponse
 func (client *Client) DescribeAndroidInstancesWithOptions(request *DescribeAndroidInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeAndroidInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AndroidInstanceIds) {
@@ -2247,9 +2308,11 @@ func (client *Client) DescribeAndroidInstances(request *DescribeAndroidInstances
 //
 // @return DescribeAppsResponse
 func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAppsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppIdList) {
@@ -2343,9 +2406,11 @@ func (client *Client) DescribeApps(request *DescribeAppsRequest) (_result *Descr
 //
 // @return DescribeBackupFilesResponse
 func (client *Client) DescribeBackupFilesWithOptions(request *DescribeBackupFilesRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupFilesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AndroidInstanceId) {
@@ -2447,6 +2512,68 @@ func (client *Client) DescribeBackupFiles(request *DescribeBackupFilesRequest) (
 
 // Summary:
 //
+// 查询bucket信息
+//
+// @param request - DescribeBucketsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBucketsResponse
+func (client *Client) DescribeBucketsWithOptions(request *DescribeBucketsRequest, runtime *dara.RuntimeOptions) (_result *DescribeBucketsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileType) {
+		query["FileType"] = request.FileType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeBuckets"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeBucketsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询bucket信息
+//
+// @param request - DescribeBucketsRequest
+//
+// @return DescribeBucketsResponse
+func (client *Client) DescribeBuckets(request *DescribeBucketsRequest) (_result *DescribeBucketsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeBucketsResponse{}
+	_body, _err := client.DescribeBucketsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a cloud phone matrix.
 //
 // @param request - DescribeCloudPhoneNodesRequest
@@ -2455,9 +2582,11 @@ func (client *Client) DescribeBackupFiles(request *DescribeBackupFilesRequest) (
 //
 // @return DescribeCloudPhoneNodesResponse
 func (client *Client) DescribeCloudPhoneNodesWithOptions(request *DescribeCloudPhoneNodesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudPhoneNodesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BandwidthPackageId) {
@@ -2547,9 +2676,11 @@ func (client *Client) DescribeCloudPhoneNodes(request *DescribeCloudPhoneNodesRe
 //
 // @return DescribeDisplayConfigResponse
 func (client *Client) DescribeDisplayConfigWithOptions(request *DescribeDisplayConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeDisplayConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AndroidInstanceIds) {
@@ -2607,9 +2738,11 @@ func (client *Client) DescribeDisplayConfig(request *DescribeDisplayConfigReques
 //
 // @return DescribeImageListResponse
 func (client *Client) DescribeImageListWithOptions(request *DescribeImageListRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageBizTags) {
@@ -2701,9 +2834,11 @@ func (client *Client) DescribeImageList(request *DescribeImageListRequest) (_res
 //
 // @return DescribeInvocationsResponse
 func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeInvocationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceIds) {
@@ -2765,9 +2900,11 @@ func (client *Client) DescribeInvocations(request *DescribeInvocationsRequest) (
 //
 // @return DescribeKeyPairsResponse
 func (client *Client) DescribeKeyPairsWithOptions(request *DescribeKeyPairsRequest, runtime *dara.RuntimeOptions) (_result *DescribeKeyPairsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyPairIds) {
@@ -2837,10 +2974,17 @@ func (client *Client) DescribeKeyPairs(request *DescribeKeyPairsRequest) (_resul
 //
 // @return DescribeMetricLastResponse
 func (client *Client) DescribeMetricLastWithOptions(request *DescribeMetricLastRequest, runtime *dara.RuntimeOptions) (_result *DescribeMetricLastResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AndroidInstanceIds) {
 		body["AndroidInstanceIds"] = request.AndroidInstanceIds
@@ -2871,7 +3015,8 @@ func (client *Client) DescribeMetricLastWithOptions(request *DescribeMetricLastR
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DescribeMetricLast"),
@@ -2921,9 +3066,11 @@ func (client *Client) DescribeMetricLast(request *DescribeMetricLastRequest) (_r
 //
 // @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -2985,9 +3132,11 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 //
 // @return DescribeSpecResponse
 func (client *Client) DescribeSpecWithOptions(request *DescribeSpecRequest, runtime *dara.RuntimeOptions) (_result *DescribeSpecResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizRegionId) {
@@ -3073,9 +3222,11 @@ func (client *Client) DescribeSpec(request *DescribeSpecRequest) (_result *Descr
 //
 // @return DescribeSystemPropertyTemplatesResponse
 func (client *Client) DescribeSystemPropertyTemplatesWithOptions(request *DescribeSystemPropertyTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DescribeSystemPropertyTemplatesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -3157,9 +3308,11 @@ func (client *Client) DescribeSystemPropertyTemplates(request *DescribeSystemPro
 //
 // @return DescribeTasksResponse
 func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3285,9 +3438,11 @@ func (client *Client) DescribeTasks(request *DescribeTasksRequest) (_result *Des
 //
 // @return DetachKeyPairResponse
 func (client *Client) DetachKeyPairWithOptions(request *DetachKeyPairRequest, runtime *dara.RuntimeOptions) (_result *DetachKeyPairResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceIds) {
@@ -3353,9 +3508,11 @@ func (client *Client) DetachKeyPair(request *DetachKeyPairRequest) (_result *Det
 //
 // @return DisconnectAndroidInstanceResponse
 func (client *Client) DisconnectAndroidInstanceWithOptions(request *DisconnectAndroidInstanceRequest, runtime *dara.RuntimeOptions) (_result *DisconnectAndroidInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndUserId) {
@@ -3421,9 +3578,11 @@ func (client *Client) DisconnectAndroidInstance(request *DisconnectAndroidInstan
 //
 // @return DistributeImageResponse
 func (client *Client) DistributeImageWithOptions(request *DistributeImageRequest, runtime *dara.RuntimeOptions) (_result *DistributeImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DistributeRegionList) {
@@ -3493,9 +3652,11 @@ func (client *Client) DistributeImage(request *DistributeImageRequest) (_result 
 //
 // @return DowngradeAndroidInstanceGroupResponse
 func (client *Client) DowngradeAndroidInstanceGroupWithOptions(request *DowngradeAndroidInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *DowngradeAndroidInstanceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AndroidInstanceIds) {
@@ -3565,9 +3726,11 @@ func (client *Client) DowngradeAndroidInstanceGroup(request *DowngradeAndroidIns
 //
 // @return EndCoordinationResponse
 func (client *Client) EndCoordinationWithOptions(request *EndCoordinationRequest, runtime *dara.RuntimeOptions) (_result *EndCoordinationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CoordinatorUserId) {
@@ -3633,9 +3796,11 @@ func (client *Client) EndCoordination(request *EndCoordinationRequest) (_result 
 //
 // @return ExpandDataVolumeResponse
 func (client *Client) ExpandDataVolumeWithOptions(request *ExpandDataVolumeRequest, runtime *dara.RuntimeOptions) (_result *ExpandDataVolumeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -3713,9 +3878,11 @@ func (client *Client) ExpandDataVolume(request *ExpandDataVolumeRequest) (_resul
 //
 // @return ExpandPhoneDataVolumeResponse
 func (client *Client) ExpandPhoneDataVolumeWithOptions(request *ExpandPhoneDataVolumeRequest, runtime *dara.RuntimeOptions) (_result *ExpandPhoneDataVolumeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -3793,9 +3960,11 @@ func (client *Client) ExpandPhoneDataVolume(request *ExpandPhoneDataVolumeReques
 //
 // @return FetchFileResponse
 func (client *Client) FetchFileWithOptions(request *FetchFileRequest, runtime *dara.RuntimeOptions) (_result *FetchFileResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AndroidInstanceIdList) {
@@ -3877,9 +4046,11 @@ func (client *Client) FetchFile(request *FetchFileRequest) (_result *FetchFileRe
 //
 // @return GenerateCoordinationCodeResponse
 func (client *Client) GenerateCoordinationCodeWithOptions(request *GenerateCoordinationCodeRequest, runtime *dara.RuntimeOptions) (_result *GenerateCoordinationCodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3945,9 +4116,11 @@ func (client *Client) GenerateCoordinationCode(request *GenerateCoordinationCode
 //
 // @return GetInstancePropertiesResponse
 func (client *Client) GetInstancePropertiesWithOptions(request *GetInstancePropertiesRequest, runtime *dara.RuntimeOptions) (_result *GetInstancePropertiesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4009,9 +4182,11 @@ func (client *Client) GetInstanceProperties(request *GetInstancePropertiesReques
 //
 // @return ImportKeyPairResponse
 func (client *Client) ImportKeyPairWithOptions(request *ImportKeyPairRequest, runtime *dara.RuntimeOptions) (_result *ImportKeyPairResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyPairName) {
@@ -4081,9 +4256,11 @@ func (client *Client) ImportKeyPair(request *ImportKeyPairRequest) (_result *Imp
 //
 // @return InstallAppResponse
 func (client *Client) InstallAppWithOptions(request *InstallAppRequest, runtime *dara.RuntimeOptions) (_result *InstallAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppIdList) {
@@ -4153,9 +4330,11 @@ func (client *Client) InstallApp(request *InstallAppRequest) (_result *InstallAp
 //
 // @return InstallMonitorAgentResponse
 func (client *Client) InstallMonitorAgentWithOptions(request *InstallMonitorAgentRequest, runtime *dara.RuntimeOptions) (_result *InstallMonitorAgentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AndroidInstanceIds) {
@@ -4209,6 +4388,76 @@ func (client *Client) InstallMonitorAgent(request *InstallMonitorAgentRequest) (
 
 // Summary:
 //
+// 实例诊断
+//
+// @param request - InstanceHealerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InstanceHealerResponse
+func (client *Client) InstanceHealerWithOptions(request *InstanceHealerRequest, runtime *dara.RuntimeOptions) (_result *InstanceHealerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceIdList) {
+		query["InstanceIdList"] = request.InstanceIdList
+	}
+
+	if !dara.IsNil(request.Strategy) {
+		query["Strategy"] = request.Strategy
+	}
+
+	if !dara.IsNil(request.Timeout) {
+		query["Timeout"] = request.Timeout
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InstanceHealer"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InstanceHealerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 实例诊断
+//
+// @param request - InstanceHealerRequest
+//
+// @return InstanceHealerResponse
+func (client *Client) InstanceHealer(request *InstanceHealerRequest) (_result *InstanceHealerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &InstanceHealerResponse{}
+	_body, _err := client.InstanceHealerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries policies.
 //
 // @param request - ListPolicyGroupsRequest
@@ -4217,9 +4466,11 @@ func (client *Client) InstallMonitorAgent(request *InstallMonitorAgentRequest) (
 //
 // @return ListPolicyGroupsResponse
 func (client *Client) ListPolicyGroupsWithOptions(request *ListPolicyGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListPolicyGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -4293,9 +4544,11 @@ func (client *Client) ListPolicyGroups(request *ListPolicyGroupsRequest) (_resul
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -4373,9 +4626,11 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 //
 // @return ModifyAndroidInstanceResponse
 func (client *Client) ModifyAndroidInstanceWithOptions(request *ModifyAndroidInstanceRequest, runtime *dara.RuntimeOptions) (_result *ModifyAndroidInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AndroidInstanceId) {
@@ -4449,9 +4704,11 @@ func (client *Client) ModifyAndroidInstance(request *ModifyAndroidInstanceReques
 //
 // @return ModifyAndroidInstanceGroupResponse
 func (client *Client) ModifyAndroidInstanceGroupWithOptions(request *ModifyAndroidInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyAndroidInstanceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceGroupId) {
@@ -4517,9 +4774,11 @@ func (client *Client) ModifyAndroidInstanceGroup(request *ModifyAndroidInstanceG
 //
 // @return ModifyAppResponse
 func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *dara.RuntimeOptions) (_result *ModifyAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4589,9 +4848,11 @@ func (client *Client) ModifyApp(request *ModifyAppRequest) (_result *ModifyAppRe
 //
 // @return ModifyCloudPhoneNodeResponse
 func (client *Client) ModifyCloudPhoneNodeWithOptions(request *ModifyCloudPhoneNodeRequest, runtime *dara.RuntimeOptions) (_result *ModifyCloudPhoneNodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NewNodeName) {
@@ -4657,9 +4918,11 @@ func (client *Client) ModifyCloudPhoneNode(request *ModifyCloudPhoneNodeRequest)
 //
 // @return ModifyDisplayConfigResponse
 func (client *Client) ModifyDisplayConfigWithOptions(tmpReq *ModifyDisplayConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyDisplayConfigResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyDisplayConfigShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4727,9 +4990,11 @@ func (client *Client) ModifyDisplayConfig(request *ModifyDisplayConfigRequest) (
 //
 // @return ModifyInstanceChargeTypeResponse
 func (client *Client) ModifyInstanceChargeTypeWithOptions(request *ModifyInstanceChargeTypeRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceChargeTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -4811,9 +5076,11 @@ func (client *Client) ModifyInstanceChargeType(request *ModifyInstanceChargeType
 //
 // @return ModifyKeyPairNameResponse
 func (client *Client) ModifyKeyPairNameWithOptions(request *ModifyKeyPairNameRequest, runtime *dara.RuntimeOptions) (_result *ModifyKeyPairNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyPairId) {
@@ -4875,9 +5142,11 @@ func (client *Client) ModifyKeyPairName(request *ModifyKeyPairNameRequest) (_res
 //
 // @return ModifyPolicyGroupResponse
 func (client *Client) ModifyPolicyGroupWithOptions(tmpReq *ModifyPolicyGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyPolicyGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyPolicyGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4985,9 +5254,11 @@ func (client *Client) ModifyPolicyGroup(request *ModifyPolicyGroupRequest) (_res
 //
 // @return ModifySystemPropertyTemplateResponse
 func (client *Client) ModifySystemPropertyTemplateWithOptions(tmpReq *ModifySystemPropertyTemplateRequest, runtime *dara.RuntimeOptions) (_result *ModifySystemPropertyTemplateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifySystemPropertyTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5071,9 +5342,11 @@ func (client *Client) ModifySystemPropertyTemplate(request *ModifySystemProperty
 //
 // @return OperateAppResponse
 func (client *Client) OperateAppWithOptions(request *OperateAppRequest, runtime *dara.RuntimeOptions) (_result *OperateAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -5147,9 +5420,11 @@ func (client *Client) OperateApp(request *OperateAppRequest) (_result *OperateAp
 //
 // @return RebootAndroidInstancesInGroupResponse
 func (client *Client) RebootAndroidInstancesInGroupWithOptions(request *RebootAndroidInstancesInGroupRequest, runtime *dara.RuntimeOptions) (_result *RebootAndroidInstancesInGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AndroidInstanceIds) {
@@ -5223,9 +5498,11 @@ func (client *Client) RebootAndroidInstancesInGroup(request *RebootAndroidInstan
 //
 // @return RecoveryFileResponse
 func (client *Client) RecoveryFileWithOptions(request *RecoveryFileRequest, runtime *dara.RuntimeOptions) (_result *RecoveryFileResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AndroidInstanceIdList) {
@@ -5307,9 +5584,11 @@ func (client *Client) RecoveryFile(request *RecoveryFileRequest) (_result *Recov
 //
 // @return RenewAndroidInstanceGroupsResponse
 func (client *Client) RenewAndroidInstanceGroupsWithOptions(request *RenewAndroidInstanceGroupsRequest, runtime *dara.RuntimeOptions) (_result *RenewAndroidInstanceGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -5383,9 +5662,11 @@ func (client *Client) RenewAndroidInstanceGroups(request *RenewAndroidInstanceGr
 //
 // @return RenewCloudPhoneNodesResponse
 func (client *Client) RenewCloudPhoneNodesWithOptions(request *RenewCloudPhoneNodesRequest, runtime *dara.RuntimeOptions) (_result *RenewCloudPhoneNodesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -5469,9 +5750,11 @@ func (client *Client) RenewCloudPhoneNodes(request *RenewCloudPhoneNodesRequest)
 //
 // @return ResetAndroidInstancesInGroupResponse
 func (client *Client) ResetAndroidInstancesInGroupWithOptions(request *ResetAndroidInstancesInGroupRequest, runtime *dara.RuntimeOptions) (_result *ResetAndroidInstancesInGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AndroidInstanceIds) {
@@ -5541,9 +5824,11 @@ func (client *Client) ResetAndroidInstancesInGroup(request *ResetAndroidInstance
 //
 // @return RunCommandResponse
 func (client *Client) RunCommandWithOptions(request *RunCommandRequest, runtime *dara.RuntimeOptions) (_result *RunCommandResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentType) {
@@ -5621,9 +5906,11 @@ func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunComman
 //
 // @return SendFileResponse
 func (client *Client) SendFileWithOptions(request *SendFileRequest, runtime *dara.RuntimeOptions) (_result *SendFileResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AndroidInstanceIdList) {
@@ -5709,9 +5996,11 @@ func (client *Client) SendFile(request *SendFileRequest) (_result *SendFileRespo
 //
 // @return SendSystemPropertyTemplateResponse
 func (client *Client) SendSystemPropertyTemplateWithOptions(request *SendSystemPropertyTemplateRequest, runtime *dara.RuntimeOptions) (_result *SendSystemPropertyTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TemplateId) {
@@ -5783,9 +6072,11 @@ func (client *Client) SendSystemPropertyTemplate(request *SendSystemPropertyTemp
 //
 // @return SetAdbSecureResponse
 func (client *Client) SetAdbSecureWithOptions(request *SetAdbSecureRequest, runtime *dara.RuntimeOptions) (_result *SetAdbSecureResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceIds) {
@@ -5855,9 +6146,11 @@ func (client *Client) SetAdbSecure(request *SetAdbSecureRequest) (_result *SetAd
 //
 // @return StartAndroidInstanceResponse
 func (client *Client) StartAndroidInstanceWithOptions(request *StartAndroidInstanceRequest, runtime *dara.RuntimeOptions) (_result *StartAndroidInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AndroidInstanceIds) {
@@ -5927,9 +6220,11 @@ func (client *Client) StartAndroidInstance(request *StartAndroidInstanceRequest)
 //
 // @return StopAndroidInstanceResponse
 func (client *Client) StopAndroidInstanceWithOptions(request *StopAndroidInstanceRequest, runtime *dara.RuntimeOptions) (_result *StopAndroidInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AndroidInstanceIds) {
@@ -5999,9 +6294,11 @@ func (client *Client) StopAndroidInstance(request *StopAndroidInstanceRequest) (
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceId) {
@@ -6071,9 +6368,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 //
 // @return UninstallAppResponse
 func (client *Client) UninstallAppWithOptions(request *UninstallAppRequest, runtime *dara.RuntimeOptions) (_result *UninstallAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppIdList) {
@@ -6143,9 +6442,11 @@ func (client *Client) UninstallApp(request *UninstallAppRequest) (_result *Unins
 //
 // @return UninstallMonitorAgentResponse
 func (client *Client) UninstallMonitorAgentWithOptions(request *UninstallMonitorAgentRequest, runtime *dara.RuntimeOptions) (_result *UninstallMonitorAgentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AndroidInstanceIds) {
@@ -6207,9 +6508,11 @@ func (client *Client) UninstallMonitorAgent(request *UninstallMonitorAgentReques
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -6279,9 +6582,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 //
 // @return UpdateCustomImageNameResponse
 func (client *Client) UpdateCustomImageNameWithOptions(request *UpdateCustomImageNameRequest, runtime *dara.RuntimeOptions) (_result *UpdateCustomImageNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageId) {
@@ -6347,9 +6652,11 @@ func (client *Client) UpdateCustomImageName(request *UpdateCustomImageNameReques
 //
 // @return UpdateInstanceGroupImageResponse
 func (client *Client) UpdateInstanceGroupImageWithOptions(request *UpdateInstanceGroupImageRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceGroupImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageId) {
@@ -6415,9 +6722,11 @@ func (client *Client) UpdateInstanceGroupImage(request *UpdateInstanceGroupImage
 //
 // @return UpdateInstanceImageResponse
 func (client *Client) UpdateInstanceImageWithOptions(request *UpdateInstanceImageRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageId) {
@@ -6487,9 +6796,11 @@ func (client *Client) UpdateInstanceImage(request *UpdateInstanceImageRequest) (
 //
 // @return UpgradeAndroidInstanceGroupResponse
 func (client *Client) UpgradeAndroidInstanceGroupWithOptions(request *UpgradeAndroidInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *UpgradeAndroidInstanceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {

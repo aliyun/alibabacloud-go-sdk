@@ -82,7 +82,21 @@ func (s *CreateCloudPhoneNodeResponseBody) SetRequestId(v string) *CreateCloudPh
 }
 
 func (s *CreateCloudPhoneNodeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkPackageOrderModel != nil {
+		if err := s.NetworkPackageOrderModel.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeInfos != nil {
+		for _, item := range s.NodeInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateCloudPhoneNodeResponseBodyNetworkPackageOrderModel struct {

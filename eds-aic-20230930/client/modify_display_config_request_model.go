@@ -47,7 +47,12 @@ func (s *ModifyDisplayConfigRequest) SetDisplayConfig(v *ModifyDisplayConfigRequ
 }
 
 func (s *ModifyDisplayConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DisplayConfig != nil {
+		if err := s.DisplayConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyDisplayConfigRequestDisplayConfig struct {

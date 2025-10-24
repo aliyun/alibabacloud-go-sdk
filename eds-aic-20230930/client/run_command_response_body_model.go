@@ -69,7 +69,16 @@ func (s *RunCommandResponseBody) SetRunCommandInfos(v []*RunCommandResponseBodyR
 }
 
 func (s *RunCommandResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RunCommandInfos != nil {
+		for _, item := range s.RunCommandInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunCommandResponseBodyRunCommandInfos struct {

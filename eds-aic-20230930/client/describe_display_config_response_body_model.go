@@ -50,7 +50,16 @@ func (s *DescribeDisplayConfigResponseBody) SetRequestId(v string) *DescribeDisp
 }
 
 func (s *DescribeDisplayConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DisplayConfigModel != nil {
+		for _, item := range s.DisplayConfigModel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDisplayConfigResponseBodyDisplayConfigModel struct {

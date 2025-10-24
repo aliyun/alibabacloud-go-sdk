@@ -204,7 +204,12 @@ func (s *CreateAppRequest) SetSignApk(v string) *CreateAppRequest {
 }
 
 func (s *CreateAppRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CustomAppInfo != nil {
+		if err := s.CustomAppInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAppRequestCustomAppInfo struct {

@@ -91,7 +91,16 @@ func (s *RecoveryFileResponseBody) SetTaskId(v string) *RecoveryFileResponseBody
 }
 
 func (s *RecoveryFileResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecoveryFileResponseBodyData struct {

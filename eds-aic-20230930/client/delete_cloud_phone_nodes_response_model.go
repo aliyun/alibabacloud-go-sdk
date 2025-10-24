@@ -59,5 +59,10 @@ func (s *DeleteCloudPhoneNodesResponse) SetBody(v *DeleteCloudPhoneNodesResponse
 }
 
 func (s *DeleteCloudPhoneNodesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

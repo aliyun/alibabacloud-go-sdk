@@ -59,5 +59,10 @@ func (s *ResetAndroidInstancesInGroupResponse) SetBody(v *ResetAndroidInstancesI
 }
 
 func (s *ResetAndroidInstancesInGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,6 +59,8 @@ type iCreateCloudPhoneNodeShrinkRequest interface {
 	GetServerType() *string
 	SetStreamMode(v int32) *CreateCloudPhoneNodeShrinkRequest
 	GetStreamMode() *int32
+	SetSwapSize(v int32) *CreateCloudPhoneNodeShrinkRequest
+	GetSwapSize() *int32
 	SetTag(v []*CreateCloudPhoneNodeShrinkRequestTag) *CreateCloudPhoneNodeShrinkRequest
 	GetTag() []*CreateCloudPhoneNodeShrinkRequestTag
 	SetUpBandwidthLimit(v int32) *CreateCloudPhoneNodeShrinkRequest
@@ -211,6 +213,7 @@ type CreateCloudPhoneNodeShrinkRequest struct {
 	// cpm.gn6.gx1
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
 	StreamMode *int32  `json:"StreamMode,omitempty" xml:"StreamMode,omitempty"`
+	SwapSize   *int32  `json:"SwapSize,omitempty" xml:"SwapSize,omitempty"`
 	// The resource tags.
 	Tag              []*CreateCloudPhoneNodeShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	UpBandwidthLimit *int32                                  `json:"UpBandwidthLimit,omitempty" xml:"UpBandwidthLimit,omitempty"`
@@ -329,6 +332,10 @@ func (s *CreateCloudPhoneNodeShrinkRequest) GetServerType() *string {
 
 func (s *CreateCloudPhoneNodeShrinkRequest) GetStreamMode() *int32 {
 	return s.StreamMode
+}
+
+func (s *CreateCloudPhoneNodeShrinkRequest) GetSwapSize() *int32 {
+	return s.SwapSize
 }
 
 func (s *CreateCloudPhoneNodeShrinkRequest) GetTag() []*CreateCloudPhoneNodeShrinkRequestTag {
@@ -472,6 +479,11 @@ func (s *CreateCloudPhoneNodeShrinkRequest) SetStreamMode(v int32) *CreateCloudP
 	return s
 }
 
+func (s *CreateCloudPhoneNodeShrinkRequest) SetSwapSize(v int32) *CreateCloudPhoneNodeShrinkRequest {
+	s.SwapSize = &v
+	return s
+}
+
 func (s *CreateCloudPhoneNodeShrinkRequest) SetTag(v []*CreateCloudPhoneNodeShrinkRequestTag) *CreateCloudPhoneNodeShrinkRequest {
 	s.Tag = v
 	return s
@@ -493,7 +505,16 @@ func (s *CreateCloudPhoneNodeShrinkRequest) SetVSwitchId(v string) *CreateCloudP
 }
 
 func (s *CreateCloudPhoneNodeShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateCloudPhoneNodeShrinkRequestTag struct {

@@ -53,7 +53,12 @@ func (s *SetAdbSecureResponseBody) SetRequestId(v string) *SetAdbSecureResponseB
 }
 
 func (s *SetAdbSecureResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SetAdbSecureResponseBodyData struct {

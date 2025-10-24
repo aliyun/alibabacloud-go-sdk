@@ -87,7 +87,16 @@ func (s *ListPolicyGroupsResponseBody) SetTotalCount(v int32) *ListPolicyGroupsR
 }
 
 func (s *ListPolicyGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PolicyGroupModel != nil {
+		for _, item := range s.PolicyGroupModel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPolicyGroupsResponseBodyPolicyGroupModel struct {
@@ -321,7 +330,22 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetWatermark(v *ListPolic
 }
 
 func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) Validate() error {
-	return dara.Validate(s)
+	if s.NetRedirectPolicy != nil {
+		if err := s.NetRedirectPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PolicyRelatedResources != nil {
+		if err := s.PolicyRelatedResources.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Watermark != nil {
+		if err := s.Watermark.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy struct {
@@ -468,7 +492,16 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) SetRules
 }
 
 func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules struct {

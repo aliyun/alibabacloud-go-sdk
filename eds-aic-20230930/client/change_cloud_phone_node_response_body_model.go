@@ -62,7 +62,16 @@ func (s *ChangeCloudPhoneNodeResponseBody) SetRequestId(v string) *ChangeCloudPh
 }
 
 func (s *ChangeCloudPhoneNodeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NodeInfos != nil {
+		for _, item := range s.NodeInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ChangeCloudPhoneNodeResponseBodyNodeInfos struct {
@@ -110,7 +119,16 @@ func (s *ChangeCloudPhoneNodeResponseBodyNodeInfos) SetShareDataVolume(v int32) 
 }
 
 func (s *ChangeCloudPhoneNodeResponseBodyNodeInfos) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceInfos != nil {
+		for _, item := range s.InstanceInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos struct {

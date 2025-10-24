@@ -53,7 +53,16 @@ func (s *CheckResourceStockResponseBody) SetResourceStockModels(v []*CheckResour
 }
 
 func (s *CheckResourceStockResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceStockModels != nil {
+		for _, item := range s.ResourceStockModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CheckResourceStockResponseBodyResourceStockModels struct {

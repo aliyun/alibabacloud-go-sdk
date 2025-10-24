@@ -13,6 +13,8 @@ type iDescribeMetricLastRequest interface {
 	GetAndroidInstanceIds() []*string
 	SetEndTime(v string) *DescribeMetricLastRequest
 	GetEndTime() *string
+	SetInstanceIds(v []*string) *DescribeMetricLastRequest
+	GetInstanceIds() []*string
 	SetLength(v string) *DescribeMetricLastRequest
 	GetLength() *string
 	SetMetricNames(v []*string) *DescribeMetricLastRequest
@@ -30,7 +32,8 @@ type DescribeMetricLastRequest struct {
 	// example:
 	//
 	// 2019-01-31 11:00:00
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime     *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1000
@@ -67,6 +70,10 @@ func (s *DescribeMetricLastRequest) GetEndTime() *string {
 	return s.EndTime
 }
 
+func (s *DescribeMetricLastRequest) GetInstanceIds() []*string {
+	return s.InstanceIds
+}
+
 func (s *DescribeMetricLastRequest) GetLength() *string {
 	return s.Length
 }
@@ -94,6 +101,11 @@ func (s *DescribeMetricLastRequest) SetAndroidInstanceIds(v []*string) *Describe
 
 func (s *DescribeMetricLastRequest) SetEndTime(v string) *DescribeMetricLastRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeMetricLastRequest) SetInstanceIds(v []*string) *DescribeMetricLastRequest {
+	s.InstanceIds = v
 	return s
 }
 

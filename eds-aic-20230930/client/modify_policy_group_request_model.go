@@ -239,7 +239,17 @@ func (s *ModifyPolicyGroupRequest) SetWatermark(v *ModifyPolicyGroupRequestWater
 }
 
 func (s *ModifyPolicyGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.NetRedirectPolicy != nil {
+		if err := s.NetRedirectPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Watermark != nil {
+		if err := s.Watermark.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyPolicyGroupRequestNetRedirectPolicy struct {
@@ -385,7 +395,16 @@ func (s *ModifyPolicyGroupRequestNetRedirectPolicy) SetRules(v []*ModifyPolicyGr
 }
 
 func (s *ModifyPolicyGroupRequestNetRedirectPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyPolicyGroupRequestNetRedirectPolicyRules struct {

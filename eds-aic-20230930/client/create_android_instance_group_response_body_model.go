@@ -95,7 +95,21 @@ func (s *CreateAndroidInstanceGroupResponseBody) SetRequestId(v string) *CreateA
 }
 
 func (s *CreateAndroidInstanceGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceGroupInfos != nil {
+		for _, item := range s.InstanceGroupInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NetworkPackageOrderModel != nil {
+		if err := s.NetworkPackageOrderModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos struct {

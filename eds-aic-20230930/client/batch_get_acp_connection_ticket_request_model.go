@@ -83,7 +83,16 @@ func (s *BatchGetAcpConnectionTicketRequest) SetInstanceTasks(v []*BatchGetAcpCo
 }
 
 func (s *BatchGetAcpConnectionTicketRequest) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceTasks != nil {
+		for _, item := range s.InstanceTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchGetAcpConnectionTicketRequestInstanceTasks struct {

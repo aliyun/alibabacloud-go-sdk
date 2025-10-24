@@ -87,7 +87,16 @@ func (s *DescribeAndroidInstancesResponseBody) SetTotalCount(v int32) *DescribeA
 }
 
 func (s *DescribeAndroidInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceModel != nil {
+		for _, item := range s.InstanceModel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAndroidInstancesResponseBodyInstanceModel struct {
@@ -760,7 +769,49 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetZoneId(v string) 
 }
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) Validate() error {
-	return dara.Validate(s)
+	if s.AppManagePolicy != nil {
+		if err := s.AppManagePolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BizTags != nil {
+		for _, item := range s.BizTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Disks != nil {
+		for _, item := range s.Disks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DisplayConfig != nil {
+		if err := s.DisplayConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PhoneDataInfo != nil {
+		if err := s.PhoneDataInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy struct {

@@ -59,5 +59,10 @@ func (s *CreateCustomImageResponse) SetBody(v *CreateCustomImageResponseBody) *C
 }
 
 func (s *CreateCustomImageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -74,7 +74,16 @@ func (s *FetchFileResponseBody) SetTaskId(v string) *FetchFileResponseBody {
 }
 
 func (s *FetchFileResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FetchFileResponseBodyData struct {

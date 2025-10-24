@@ -52,7 +52,12 @@ func (s *GetInstancePropertiesResponseBody) SetRequestId(v string) *GetInstanceP
 }
 
 func (s *GetInstancePropertiesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PropertyTemplateModel != nil {
+		if err := s.PropertyTemplateModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstancePropertiesResponseBodyPropertyTemplateModel struct {

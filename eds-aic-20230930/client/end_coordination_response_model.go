@@ -59,6 +59,11 @@ func (s *EndCoordinationResponse) SetBody(v *EndCoordinationResponseBody) *EndCo
 }
 
 func (s *EndCoordinationResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

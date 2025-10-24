@@ -108,7 +108,16 @@ func (s *DescribeCloudPhoneNodesResponseBody) SetTotalCount(v int32) *DescribeCl
 }
 
 func (s *DescribeCloudPhoneNodesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NodeModel != nil {
+		for _, item := range s.NodeModel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
@@ -215,7 +224,8 @@ type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
 	// example:
 	//
 	// RUNNING
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SwapSize *int32  `json:"SwapSize,omitempty" xml:"SwapSize,omitempty"`
 	// The vSwitch ID.
 	//
 	// example:
@@ -326,6 +336,10 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) GetShareDataVolume() *int
 
 func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) GetStatus() *string {
 	return s.Status
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) GetSwapSize() *int32 {
+	return s.SwapSize
 }
 
 func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) GetVSwitchId() *string {
@@ -452,13 +466,41 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetStatus(v string) *Desc
 	return s
 }
 
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetSwapSize(v int32) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.SwapSize = &v
+	return s
+}
+
 func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetVSwitchId(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
 	s.VSwitchId = &v
 	return s
 }
 
 func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) Validate() error {
-	return dara.Validate(s)
+	if s.BizTags != nil {
+		for _, item := range s.BizTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NetworkInfos != nil {
+		for _, item := range s.NetworkInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PhoneDataInfo != nil {
+		if err := s.PhoneDataInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudPhoneNodesResponseBodyNodeModelBizTags struct {

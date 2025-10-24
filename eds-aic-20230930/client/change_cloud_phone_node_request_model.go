@@ -25,6 +25,10 @@ type iChangeCloudPhoneNodeRequest interface {
 	GetPhoneDataVolume() *int32
 	SetPromotionId(v string) *ChangeCloudPhoneNodeRequest
 	GetPromotionId() *string
+	SetShareDataVolume(v int32) *ChangeCloudPhoneNodeRequest
+	GetShareDataVolume() *int32
+	SetSwapSize(v int32) *ChangeCloudPhoneNodeRequest
+	GetSwapSize() *int32
 	SetUpBandwidthLimit(v int32) *ChangeCloudPhoneNodeRequest
 	GetUpBandwidthLimit() *int32
 }
@@ -47,6 +51,8 @@ type ChangeCloudPhoneNodeRequest struct {
 	PhoneCount       *int32  `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
 	PhoneDataVolume  *int32  `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
 	PromotionId      *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	ShareDataVolume  *int32  `json:"ShareDataVolume,omitempty" xml:"ShareDataVolume,omitempty"`
+	SwapSize         *int32  `json:"SwapSize,omitempty" xml:"SwapSize,omitempty"`
 	UpBandwidthLimit *int32  `json:"UpBandwidthLimit,omitempty" xml:"UpBandwidthLimit,omitempty"`
 }
 
@@ -90,6 +96,14 @@ func (s *ChangeCloudPhoneNodeRequest) GetPromotionId() *string {
 	return s.PromotionId
 }
 
+func (s *ChangeCloudPhoneNodeRequest) GetShareDataVolume() *int32 {
+	return s.ShareDataVolume
+}
+
+func (s *ChangeCloudPhoneNodeRequest) GetSwapSize() *int32 {
+	return s.SwapSize
+}
+
 func (s *ChangeCloudPhoneNodeRequest) GetUpBandwidthLimit() *int32 {
 	return s.UpBandwidthLimit
 }
@@ -131,6 +145,16 @@ func (s *ChangeCloudPhoneNodeRequest) SetPhoneDataVolume(v int32) *ChangeCloudPh
 
 func (s *ChangeCloudPhoneNodeRequest) SetPromotionId(v string) *ChangeCloudPhoneNodeRequest {
 	s.PromotionId = &v
+	return s
+}
+
+func (s *ChangeCloudPhoneNodeRequest) SetShareDataVolume(v int32) *ChangeCloudPhoneNodeRequest {
+	s.ShareDataVolume = &v
+	return s
+}
+
+func (s *ChangeCloudPhoneNodeRequest) SetSwapSize(v int32) *ChangeCloudPhoneNodeRequest {
+	s.SwapSize = &v
 	return s
 }
 

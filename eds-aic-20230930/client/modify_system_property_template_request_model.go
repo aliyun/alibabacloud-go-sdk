@@ -92,7 +92,12 @@ func (s *ModifySystemPropertyTemplateRequest) SetTemplateName(v string) *ModifyS
 }
 
 func (s *ModifySystemPropertyTemplateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SystemPropertyInfo != nil {
+		if err := s.SystemPropertyInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifySystemPropertyTemplateRequestSystemPropertyInfo struct {
@@ -312,7 +317,16 @@ func (s *ModifySystemPropertyTemplateRequestSystemPropertyInfo) SetRwRoSerialNo(
 }
 
 func (s *ModifySystemPropertyTemplateRequestSystemPropertyInfo) Validate() error {
-	return dara.Validate(s)
+	if s.CustomPropertyInfos != nil {
+		for _, item := range s.CustomPropertyInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifySystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos struct {

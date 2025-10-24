@@ -87,7 +87,16 @@ func (s *DescribeImageListResponseBody) SetTotalCount(v int32) *DescribeImageLis
 }
 
 func (s *DescribeImageListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageListResponseBodyData struct {
@@ -350,7 +359,16 @@ func (s *DescribeImageListResponseBodyData) SetSystemType(v string) *DescribeIma
 }
 
 func (s *DescribeImageListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ImageBizTags != nil {
+		for _, item := range s.ImageBizTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageListResponseBodyDataImageBizTags struct {

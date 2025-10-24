@@ -53,7 +53,12 @@ func (s *AttachKeyPairResponseBody) SetRequestId(v string) *AttachKeyPairRespons
 }
 
 func (s *AttachKeyPairResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AttachKeyPairResponseBodyData struct {

@@ -189,7 +189,16 @@ func (s *DescribeImageListRequest) SetStatus(v string) *DescribeImageListRequest
 }
 
 func (s *DescribeImageListRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ImageBizTags != nil {
+		for _, item := range s.ImageBizTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageListRequestImageBizTags struct {

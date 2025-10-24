@@ -59,6 +59,8 @@ type iCreateCloudPhoneNodeRequest interface {
 	GetServerType() *string
 	SetStreamMode(v int32) *CreateCloudPhoneNodeRequest
 	GetStreamMode() *int32
+	SetSwapSize(v int32) *CreateCloudPhoneNodeRequest
+	GetSwapSize() *int32
 	SetTag(v []*CreateCloudPhoneNodeRequestTag) *CreateCloudPhoneNodeRequest
 	GetTag() []*CreateCloudPhoneNodeRequestTag
 	SetUpBandwidthLimit(v int32) *CreateCloudPhoneNodeRequest
@@ -211,6 +213,7 @@ type CreateCloudPhoneNodeRequest struct {
 	// cpm.gn6.gx1
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
 	StreamMode *int32  `json:"StreamMode,omitempty" xml:"StreamMode,omitempty"`
+	SwapSize   *int32  `json:"SwapSize,omitempty" xml:"SwapSize,omitempty"`
 	// The resource tags.
 	Tag              []*CreateCloudPhoneNodeRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	UpBandwidthLimit *int32                            `json:"UpBandwidthLimit,omitempty" xml:"UpBandwidthLimit,omitempty"`
@@ -329,6 +332,10 @@ func (s *CreateCloudPhoneNodeRequest) GetServerType() *string {
 
 func (s *CreateCloudPhoneNodeRequest) GetStreamMode() *int32 {
 	return s.StreamMode
+}
+
+func (s *CreateCloudPhoneNodeRequest) GetSwapSize() *int32 {
+	return s.SwapSize
 }
 
 func (s *CreateCloudPhoneNodeRequest) GetTag() []*CreateCloudPhoneNodeRequestTag {
@@ -472,6 +479,11 @@ func (s *CreateCloudPhoneNodeRequest) SetStreamMode(v int32) *CreateCloudPhoneNo
 	return s
 }
 
+func (s *CreateCloudPhoneNodeRequest) SetSwapSize(v int32) *CreateCloudPhoneNodeRequest {
+	s.SwapSize = &v
+	return s
+}
+
 func (s *CreateCloudPhoneNodeRequest) SetTag(v []*CreateCloudPhoneNodeRequestTag) *CreateCloudPhoneNodeRequest {
 	s.Tag = v
 	return s
@@ -493,7 +505,26 @@ func (s *CreateCloudPhoneNodeRequest) SetVSwitchId(v string) *CreateCloudPhoneNo
 }
 
 func (s *CreateCloudPhoneNodeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DisplayConfig != nil {
+		if err := s.DisplayConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkInfo != nil {
+		if err := s.NetworkInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateCloudPhoneNodeRequestDisplayConfig struct {

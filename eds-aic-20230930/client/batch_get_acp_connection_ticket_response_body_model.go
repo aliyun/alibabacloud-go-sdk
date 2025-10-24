@@ -53,7 +53,16 @@ func (s *BatchGetAcpConnectionTicketResponseBody) SetRequestId(v string) *BatchG
 }
 
 func (s *BatchGetAcpConnectionTicketResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceConnectionModels != nil {
+		for _, item := range s.InstanceConnectionModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels struct {

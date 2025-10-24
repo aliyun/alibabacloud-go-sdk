@@ -80,7 +80,16 @@ func (s *DescribeMetricLastResponseBody) SetRequestId(v string) *DescribeMetricL
 }
 
 func (s *DescribeMetricLastResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MetricTotalModel != nil {
+		for _, item := range s.MetricTotalModel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMetricLastResponseBodyMetricTotalModel struct {
@@ -118,7 +127,16 @@ func (s *DescribeMetricLastResponseBodyMetricTotalModel) SetMetricModelList(v []
 }
 
 func (s *DescribeMetricLastResponseBodyMetricTotalModel) Validate() error {
-	return dara.Validate(s)
+	if s.MetricModelList != nil {
+		for _, item := range s.MetricModelList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMetricLastResponseBodyMetricTotalModelMetricModelList struct {
@@ -166,7 +184,25 @@ func (s *DescribeMetricLastResponseBodyMetricTotalModelMetricModelList) SetProce
 }
 
 func (s *DescribeMetricLastResponseBodyMetricTotalModelMetricModelList) Validate() error {
-	return dara.Validate(s)
+	if s.DataPoints != nil {
+		for _, item := range s.DataPoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ProcessLastInfos != nil {
+		for _, item := range s.ProcessLastInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints struct {

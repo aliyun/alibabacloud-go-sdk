@@ -87,7 +87,16 @@ func (s *DescribeAndroidInstanceGroupsResponseBody) SetTotalCount(v int32) *Desc
 }
 
 func (s *DescribeAndroidInstanceGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceGroupModel != nil {
+		for _, item := range s.InstanceGroupModel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
@@ -614,7 +623,25 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetVSwitch
 }
 
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) Validate() error {
-	return dara.Validate(s)
+	if s.Disks != nil {
+		for _, item := range s.Disks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks struct {

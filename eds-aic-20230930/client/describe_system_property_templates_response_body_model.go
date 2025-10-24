@@ -82,7 +82,16 @@ func (s *DescribeSystemPropertyTemplatesResponseBody) SetTotalCount(v int32) *De
 }
 
 func (s *DescribeSystemPropertyTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SystemPropertyTemplateModel != nil {
+		for _, item := range s.SystemPropertyTemplateModel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModel struct {
@@ -169,7 +178,12 @@ func (s *DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModel)
 }
 
 func (s *DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModel) Validate() error {
-	return dara.Validate(s)
+	if s.SystemPropertyInfo != nil {
+		if err := s.SystemPropertyInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfo struct {
@@ -207,7 +221,16 @@ func (s *DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelS
 }
 
 func (s *DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfo) Validate() error {
-	return dara.Validate(s)
+	if s.CustomPropertyInfos != nil {
+		for _, item := range s.CustomPropertyInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfoCustomPropertyInfos struct {

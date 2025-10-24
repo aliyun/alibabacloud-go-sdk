@@ -87,7 +87,16 @@ func (s *DescribeSpecResponseBody) SetTotalCount(v int32) *DescribeSpecResponseB
 }
 
 func (s *DescribeSpecResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SpecInfoModel != nil {
+		for _, item := range s.SpecInfoModel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSpecResponseBodySpecInfoModel struct {
