@@ -109,6 +109,8 @@ type iDescribeDBClusterAttributeResponseBody interface {
 	GetRowCompression() *string
 	SetSQLSize(v int64) *DescribeDBClusterAttributeResponseBody
 	GetSQLSize() *int64
+	SetSearchClusterStatus(v string) *DescribeDBClusterAttributeResponseBody
+	GetSearchClusterStatus() *string
 	SetSearchCompressStorageUsed(v int64) *DescribeDBClusterAttributeResponseBody
 	GetSearchCompressStorageUsed() *int64
 	SetSearchStorageUsed(v int64) *DescribeDBClusterAttributeResponseBody
@@ -558,9 +560,10 @@ type DescribeDBClusterAttributeResponseBody struct {
 	// example:
 	//
 	// 0
-	SQLSize                   *int64 `json:"SQLSize,omitempty" xml:"SQLSize,omitempty"`
-	SearchCompressStorageUsed *int64 `json:"SearchCompressStorageUsed,omitempty" xml:"SearchCompressStorageUsed,omitempty"`
-	SearchStorageUsed         *int64 `json:"SearchStorageUsed,omitempty" xml:"SearchStorageUsed,omitempty"`
+	SQLSize                   *int64  `json:"SQLSize,omitempty" xml:"SQLSize,omitempty"`
+	SearchClusterStatus       *string `json:"SearchClusterStatus,omitempty" xml:"SearchClusterStatus,omitempty"`
+	SearchCompressStorageUsed *int64  `json:"SearchCompressStorageUsed,omitempty" xml:"SearchCompressStorageUsed,omitempty"`
+	SearchStorageUsed         *int64  `json:"SearchStorageUsed,omitempty" xml:"SearchStorageUsed,omitempty"`
 	// Serverless type. Valid values are as follows:
 	//
 	// - AgileServerless: Agile - SteadyServerless: Stable
@@ -887,6 +890,10 @@ func (s *DescribeDBClusterAttributeResponseBody) GetSQLSize() *int64 {
 	return s.SQLSize
 }
 
+func (s *DescribeDBClusterAttributeResponseBody) GetSearchClusterStatus() *string {
+	return s.SearchClusterStatus
+}
+
 func (s *DescribeDBClusterAttributeResponseBody) GetSearchCompressStorageUsed() *int64 {
 	return s.SearchCompressStorageUsed
 }
@@ -1206,6 +1213,11 @@ func (s *DescribeDBClusterAttributeResponseBody) SetRowCompression(v string) *De
 
 func (s *DescribeDBClusterAttributeResponseBody) SetSQLSize(v int64) *DescribeDBClusterAttributeResponseBody {
 	s.SQLSize = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBody) SetSearchClusterStatus(v string) *DescribeDBClusterAttributeResponseBody {
+	s.SearchClusterStatus = &v
 	return s
 }
 
