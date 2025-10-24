@@ -50,7 +50,12 @@ func (s *ListMmsDbsResponseBody) SetRequestId(v string) *ListMmsDbsResponseBody 
 }
 
 func (s *ListMmsDbsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMmsDbsResponseBodyData struct {
@@ -114,7 +119,16 @@ func (s *ListMmsDbsResponseBodyData) SetTotal(v int32) *ListMmsDbsResponseBodyDa
 }
 
 func (s *ListMmsDbsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ObjectList != nil {
+		for _, item := range s.ObjectList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMmsDbsResponseBodyDataObjectList struct {
@@ -130,6 +144,14 @@ type ListMmsDbsResponseBodyDataObjectList struct {
 	//
 	// for mms test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// default
+	DstName *string `json:"dstName,omitempty" xml:"dstName,omitempty"`
+	// example:
+	//
+	// mms_test
+	DstProjectName *string `json:"dstProjectName,omitempty" xml:"dstProjectName,omitempty"`
 	// example:
 	//
 	// {}
@@ -242,6 +264,14 @@ func (s *ListMmsDbsResponseBodyDataObjectList) GetDescription() *string {
 	return s.Description
 }
 
+func (s *ListMmsDbsResponseBodyDataObjectList) GetDstName() *string {
+	return s.DstName
+}
+
+func (s *ListMmsDbsResponseBodyDataObjectList) GetDstProjectName() *string {
+	return s.DstProjectName
+}
+
 func (s *ListMmsDbsResponseBodyDataObjectList) GetExtra() *string {
 	return s.Extra
 }
@@ -342,6 +372,16 @@ func (s *ListMmsDbsResponseBodyDataObjectList) SetDeleted(v bool) *ListMmsDbsRes
 
 func (s *ListMmsDbsResponseBodyDataObjectList) SetDescription(v string) *ListMmsDbsResponseBodyDataObjectList {
 	s.Description = &v
+	return s
+}
+
+func (s *ListMmsDbsResponseBodyDataObjectList) SetDstName(v string) *ListMmsDbsResponseBodyDataObjectList {
+	s.DstName = &v
+	return s
+}
+
+func (s *ListMmsDbsResponseBodyDataObjectList) SetDstProjectName(v string) *ListMmsDbsResponseBodyDataObjectList {
+	s.DstProjectName = &v
 	return s
 }
 

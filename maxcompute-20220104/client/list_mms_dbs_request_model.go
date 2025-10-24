@@ -95,7 +95,12 @@ func (s *ListMmsDbsRequest) SetStatus(v string) *ListMmsDbsRequest {
 }
 
 func (s *ListMmsDbsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Sorter != nil {
+		if err := s.Sorter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMmsDbsRequestSorter struct {

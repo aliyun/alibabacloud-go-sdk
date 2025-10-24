@@ -59,5 +59,10 @@ func (s *GetMmsTaskResponse) SetBody(v *GetMmsTaskResponseBody) *GetMmsTaskRespo
 }
 
 func (s *GetMmsTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

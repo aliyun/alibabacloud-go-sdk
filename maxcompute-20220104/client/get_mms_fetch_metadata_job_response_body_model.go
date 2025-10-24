@@ -50,7 +50,12 @@ func (s *GetMmsFetchMetadataJobResponseBody) SetRequestId(v string) *GetMmsFetch
 }
 
 func (s *GetMmsFetchMetadataJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMmsFetchMetadataJobResponseBodyData struct {

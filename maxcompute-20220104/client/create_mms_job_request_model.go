@@ -15,6 +15,10 @@ type iCreateMmsJobRequest interface {
 	GetDstDbName() *string
 	SetDstSchemaName(v string) *CreateMmsJobRequest
 	GetDstSchemaName() *string
+	SetEnableDataMigration(v bool) *CreateMmsJobRequest
+	GetEnableDataMigration() *bool
+	SetEnableSchemaMigration(v bool) *CreateMmsJobRequest
+	GetEnableSchemaMigration() *bool
 	SetEnableVerification(v bool) *CreateMmsJobRequest
 	GetEnableVerification() *bool
 	SetEta(v string) *CreateMmsJobRequest
@@ -52,25 +56,27 @@ type iCreateMmsJobRequest interface {
 }
 
 type CreateMmsJobRequest struct {
-	ColumnMapping      map[string]*string     `json:"columnMapping,omitempty" xml:"columnMapping,omitempty"`
-	DstDbName          *string                `json:"dstDbName,omitempty" xml:"dstDbName,omitempty"`
-	DstSchemaName      *string                `json:"dstSchemaName,omitempty" xml:"dstSchemaName,omitempty"`
-	EnableVerification *bool                  `json:"enableVerification,omitempty" xml:"enableVerification,omitempty"`
-	Eta                *string                `json:"eta,omitempty" xml:"eta,omitempty"`
-	Increment          *bool                  `json:"increment,omitempty" xml:"increment,omitempty"`
-	Name               *string                `json:"name,omitempty" xml:"name,omitempty"`
-	Others             map[string]interface{} `json:"others,omitempty" xml:"others,omitempty"`
-	PartitionFilters   map[string]*string     `json:"partitionFilters,omitempty" xml:"partitionFilters,omitempty"`
-	Partitions         []*int64               `json:"partitions,omitempty" xml:"partitions,omitempty" type:"Repeated"`
-	SchemaOnly         *bool                  `json:"schemaOnly,omitempty" xml:"schemaOnly,omitempty"`
-	SourceId           *int64                 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	SourceName         *string                `json:"sourceName,omitempty" xml:"sourceName,omitempty"`
-	SrcDbName          *string                `json:"srcDbName,omitempty" xml:"srcDbName,omitempty"`
-	SrcSchemaName      *string                `json:"srcSchemaName,omitempty" xml:"srcSchemaName,omitempty"`
-	TableBlackList     []*string              `json:"tableBlackList,omitempty" xml:"tableBlackList,omitempty" type:"Repeated"`
-	TableMapping       map[string]*string     `json:"tableMapping,omitempty" xml:"tableMapping,omitempty"`
-	TableWhiteList     []*string              `json:"tableWhiteList,omitempty" xml:"tableWhiteList,omitempty" type:"Repeated"`
-	Tables             []*string              `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
+	ColumnMapping         map[string]*string     `json:"columnMapping,omitempty" xml:"columnMapping,omitempty"`
+	DstDbName             *string                `json:"dstDbName,omitempty" xml:"dstDbName,omitempty"`
+	DstSchemaName         *string                `json:"dstSchemaName,omitempty" xml:"dstSchemaName,omitempty"`
+	EnableDataMigration   *bool                  `json:"enableDataMigration,omitempty" xml:"enableDataMigration,omitempty"`
+	EnableSchemaMigration *bool                  `json:"enableSchemaMigration,omitempty" xml:"enableSchemaMigration,omitempty"`
+	EnableVerification    *bool                  `json:"enableVerification,omitempty" xml:"enableVerification,omitempty"`
+	Eta                   *string                `json:"eta,omitempty" xml:"eta,omitempty"`
+	Increment             *bool                  `json:"increment,omitempty" xml:"increment,omitempty"`
+	Name                  *string                `json:"name,omitempty" xml:"name,omitempty"`
+	Others                map[string]interface{} `json:"others,omitempty" xml:"others,omitempty"`
+	PartitionFilters      map[string]*string     `json:"partitionFilters,omitempty" xml:"partitionFilters,omitempty"`
+	Partitions            []*int64               `json:"partitions,omitempty" xml:"partitions,omitempty" type:"Repeated"`
+	SchemaOnly            *bool                  `json:"schemaOnly,omitempty" xml:"schemaOnly,omitempty"`
+	SourceId              *int64                 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	SourceName            *string                `json:"sourceName,omitempty" xml:"sourceName,omitempty"`
+	SrcDbName             *string                `json:"srcDbName,omitempty" xml:"srcDbName,omitempty"`
+	SrcSchemaName         *string                `json:"srcSchemaName,omitempty" xml:"srcSchemaName,omitempty"`
+	TableBlackList        []*string              `json:"tableBlackList,omitempty" xml:"tableBlackList,omitempty" type:"Repeated"`
+	TableMapping          map[string]*string     `json:"tableMapping,omitempty" xml:"tableMapping,omitempty"`
+	TableWhiteList        []*string              `json:"tableWhiteList,omitempty" xml:"tableWhiteList,omitempty" type:"Repeated"`
+	Tables                []*string              `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
 	// MOCK, HIVE: hive udtf task, HIVE_DATAX: hive datax task, COPY_TASK: odps Copy Task, ODPS_INSERT_OVERWRITE: odps simple insert overwrite task, MC2MC_VERIFY, OSS, HIVE_OSS
 	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
 }
@@ -93,6 +99,14 @@ func (s *CreateMmsJobRequest) GetDstDbName() *string {
 
 func (s *CreateMmsJobRequest) GetDstSchemaName() *string {
 	return s.DstSchemaName
+}
+
+func (s *CreateMmsJobRequest) GetEnableDataMigration() *bool {
+	return s.EnableDataMigration
+}
+
+func (s *CreateMmsJobRequest) GetEnableSchemaMigration() *bool {
+	return s.EnableSchemaMigration
 }
 
 func (s *CreateMmsJobRequest) GetEnableVerification() *bool {
@@ -175,6 +189,16 @@ func (s *CreateMmsJobRequest) SetDstDbName(v string) *CreateMmsJobRequest {
 
 func (s *CreateMmsJobRequest) SetDstSchemaName(v string) *CreateMmsJobRequest {
 	s.DstSchemaName = &v
+	return s
+}
+
+func (s *CreateMmsJobRequest) SetEnableDataMigration(v bool) *CreateMmsJobRequest {
+	s.EnableDataMigration = &v
+	return s
+}
+
+func (s *CreateMmsJobRequest) SetEnableSchemaMigration(v bool) *CreateMmsJobRequest {
+	s.EnableSchemaMigration = &v
 	return s
 }
 

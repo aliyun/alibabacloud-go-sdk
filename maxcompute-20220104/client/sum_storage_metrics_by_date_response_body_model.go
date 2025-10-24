@@ -95,7 +95,16 @@ func (s *SumStorageMetricsByDateResponseBody) SetRequestId(v string) *SumStorage
 }
 
 func (s *SumStorageMetricsByDateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SumStorageMetricsByDateResponseBodyData struct {
@@ -172,7 +181,16 @@ func (s *SumStorageMetricsByDateResponseBodyData) SetUsage(v string) *SumStorage
 }
 
 func (s *SumStorageMetricsByDateResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ItemStorageMetrics != nil {
+		for _, item := range s.ItemStorageMetrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SumStorageMetricsByDateResponseBodyDataItemStorageMetrics struct {

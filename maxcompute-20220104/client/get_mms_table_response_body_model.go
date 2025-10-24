@@ -50,7 +50,12 @@ func (s *GetMmsTableResponseBody) SetRequestId(v string) *GetMmsTableResponseBod
 }
 
 func (s *GetMmsTableResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMmsTableResponseBodyData struct {
@@ -62,6 +67,18 @@ type GetMmsTableResponseBodyData struct {
 	//
 	// mms_test
 	DbName *string `json:"dbName,omitempty" xml:"dbName,omitempty"`
+	// example:
+	//
+	// test
+	DstName *string `json:"dstName,omitempty" xml:"dstName,omitempty"`
+	// example:
+	//
+	// mms_test
+	DstProjectName *string `json:"dstProjectName,omitempty" xml:"dstProjectName,omitempty"`
+	// example:
+	//
+	// default
+	DstSchemaName *string `json:"dstSchemaName,omitempty" xml:"dstSchemaName,omitempty"`
 	// example:
 	//
 	// {"mapkey.delim":":","collection.delim":",","serialization.format":"|","field.delim":"|"}
@@ -175,6 +192,18 @@ func (s *GetMmsTableResponseBodyData) GetDbName() *string {
 	return s.DbName
 }
 
+func (s *GetMmsTableResponseBodyData) GetDstName() *string {
+	return s.DstName
+}
+
+func (s *GetMmsTableResponseBodyData) GetDstProjectName() *string {
+	return s.DstProjectName
+}
+
+func (s *GetMmsTableResponseBodyData) GetDstSchemaName() *string {
+	return s.DstSchemaName
+}
+
 func (s *GetMmsTableResponseBodyData) GetExtra() *string {
 	return s.Extra
 }
@@ -270,6 +299,21 @@ func (s *GetMmsTableResponseBodyData) SetDbId(v int64) *GetMmsTableResponseBodyD
 
 func (s *GetMmsTableResponseBodyData) SetDbName(v string) *GetMmsTableResponseBodyData {
 	s.DbName = &v
+	return s
+}
+
+func (s *GetMmsTableResponseBodyData) SetDstName(v string) *GetMmsTableResponseBodyData {
+	s.DstName = &v
+	return s
+}
+
+func (s *GetMmsTableResponseBodyData) SetDstProjectName(v string) *GetMmsTableResponseBodyData {
+	s.DstProjectName = &v
+	return s
+}
+
+func (s *GetMmsTableResponseBodyData) SetDstSchemaName(v string) *GetMmsTableResponseBodyData {
+	s.DstSchemaName = &v
 	return s
 }
 
@@ -384,7 +428,12 @@ func (s *GetMmsTableResponseBodyData) SetUpdated(v bool) *GetMmsTableResponseBod
 }
 
 func (s *GetMmsTableResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Schema != nil {
+		if err := s.Schema.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMmsTableResponseBodyDataSchema struct {
@@ -445,7 +494,25 @@ func (s *GetMmsTableResponseBodyDataSchema) SetPartitions(v []*GetMmsTableRespon
 }
 
 func (s *GetMmsTableResponseBodyDataSchema) Validate() error {
-	return dara.Validate(s)
+	if s.Columns != nil {
+		for _, item := range s.Columns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Partitions != nil {
+		for _, item := range s.Partitions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMmsTableResponseBodyDataSchemaColumns struct {

@@ -114,7 +114,12 @@ func (s *GetProjectResponseBody) SetRequestId(v string) *GetProjectResponseBody 
 }
 
 func (s *GetProjectResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetProjectResponseBodyData struct {
@@ -361,7 +366,27 @@ func (s *GetProjectResponseBodyData) SetType(v string) *GetProjectResponseBodyDa
 }
 
 func (s *GetProjectResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.IpWhiteList != nil {
+		if err := s.IpWhiteList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Properties != nil {
+		if err := s.Properties.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SaleTag != nil {
+		if err := s.SaleTag.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityProperties != nil {
+		if err := s.SecurityProperties.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetProjectResponseBodyDataIpWhiteList struct {
@@ -706,7 +731,32 @@ func (s *GetProjectResponseBodyDataProperties) SetTypeSystem(v string) *GetProje
 }
 
 func (s *GetProjectResponseBodyDataProperties) Validate() error {
-	return dara.Validate(s)
+	if s.Encryption != nil {
+		if err := s.Encryption.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExternalProjectProperties != nil {
+		if err := s.ExternalProjectProperties.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StorageTierInfo != nil {
+		if err := s.StorageTierInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TableLifecycle != nil {
+		if err := s.TableLifecycle.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TableLifecycleConfig != nil {
+		if err := s.TableLifecycleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetProjectResponseBodyDataPropertiesEncryption struct {
@@ -904,7 +954,12 @@ func (s *GetProjectResponseBodyDataPropertiesStorageTierInfo) SetStorageTierSize
 }
 
 func (s *GetProjectResponseBodyDataPropertiesStorageTierInfo) Validate() error {
-	return dara.Validate(s)
+	if s.StorageTierSize != nil {
+		if err := s.StorageTierSize.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetProjectResponseBodyDataPropertiesStorageTierInfoStorageTierSize struct {
@@ -1052,7 +1107,17 @@ func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfig) SetTierToLowF
 }
 
 func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfig) Validate() error {
-	return dara.Validate(s)
+	if s.TierToLongterm != nil {
+		if err := s.TierToLongterm.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TierToLowFrequency != nil {
+		if err := s.TierToLowFrequency.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongterm struct {
@@ -1345,7 +1410,12 @@ func (s *GetProjectResponseBodyDataSecurityProperties) SetUsingPolicy(v bool) *G
 }
 
 func (s *GetProjectResponseBodyDataSecurityProperties) Validate() error {
-	return dara.Validate(s)
+	if s.ProjectProtection != nil {
+		if err := s.ProjectProtection.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetProjectResponseBodyDataSecurityPropertiesProjectProtection struct {

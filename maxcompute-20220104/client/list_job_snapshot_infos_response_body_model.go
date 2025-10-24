@@ -114,7 +114,12 @@ func (s *ListJobSnapshotInfosResponseBody) SetRequestId(v string) *ListJobSnapsh
 }
 
 func (s *ListJobSnapshotInfosResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListJobSnapshotInfosResponseBodyData struct {
@@ -185,7 +190,16 @@ func (s *ListJobSnapshotInfosResponseBodyData) SetTotalCount(v int64) *ListJobSn
 }
 
 func (s *ListJobSnapshotInfosResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.JobInfoList != nil {
+		for _, item := range s.JobInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListJobSnapshotInfosResponseBodyDataJobInfoList struct {

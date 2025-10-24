@@ -53,7 +53,12 @@ func (s *ListProjectUsersResponseBody) SetRequestId(v string) *ListProjectUsersR
 }
 
 func (s *ListProjectUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListProjectUsersResponseBodyData struct {
@@ -79,7 +84,16 @@ func (s *ListProjectUsersResponseBodyData) SetUsers(v []*ListProjectUsersRespons
 }
 
 func (s *ListProjectUsersResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Users != nil {
+		for _, item := range s.Users {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProjectUsersResponseBodyDataUsers struct {

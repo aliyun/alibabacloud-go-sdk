@@ -114,7 +114,12 @@ func (s *ListJobMetricResponseBody) SetRequestId(v string) *ListJobMetricRespons
 }
 
 func (s *ListJobMetricResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListJobMetricResponseBodyData struct {
@@ -185,7 +190,16 @@ func (s *ListJobMetricResponseBodyData) SetPeriod(v int64) *ListJobMetricRespons
 }
 
 func (s *ListJobMetricResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Metrics != nil {
+		for _, item := range s.Metrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListJobMetricResponseBodyDataMetrics struct {

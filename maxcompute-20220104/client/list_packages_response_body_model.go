@@ -53,7 +53,12 @@ func (s *ListPackagesResponseBody) SetRequestId(v string) *ListPackagesResponseB
 }
 
 func (s *ListPackagesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPackagesResponseBodyData struct {
@@ -90,7 +95,25 @@ func (s *ListPackagesResponseBodyData) SetInstalledPackages(v []*ListPackagesRes
 }
 
 func (s *ListPackagesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CreatedPackages != nil {
+		for _, item := range s.CreatedPackages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InstalledPackages != nil {
+		for _, item := range s.InstalledPackages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPackagesResponseBodyDataCreatedPackages struct {

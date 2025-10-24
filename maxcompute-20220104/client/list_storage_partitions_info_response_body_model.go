@@ -114,7 +114,12 @@ func (s *ListStoragePartitionsInfoResponseBody) SetRequestId(v string) *ListStor
 }
 
 func (s *ListStoragePartitionsInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListStoragePartitionsInfoResponseBodyData struct {
@@ -200,7 +205,16 @@ func (s *ListStoragePartitionsInfoResponseBodyData) SetTotalCount(v int64) *List
 }
 
 func (s *ListStoragePartitionsInfoResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.StoragePartitionInfoList != nil {
+		for _, item := range s.StoragePartitionInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListStoragePartitionsInfoResponseBodyDataStoragePartitionInfoList struct {

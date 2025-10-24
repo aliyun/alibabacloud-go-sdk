@@ -59,5 +59,10 @@ func (s *UpdateProjectDefaultQuotaResponse) SetBody(v *UpdateProjectDefaultQuota
 }
 
 func (s *UpdateProjectDefaultQuotaResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

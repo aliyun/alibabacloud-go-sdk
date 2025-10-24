@@ -55,7 +55,12 @@ func (s *UpdateComputeQuotaPlanRequest) SetQuota(v *UpdateComputeQuotaPlanReques
 }
 
 func (s *UpdateComputeQuotaPlanRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Quota != nil {
+		if err := s.Quota.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateComputeQuotaPlanRequestQuota struct {
@@ -92,7 +97,21 @@ func (s *UpdateComputeQuotaPlanRequestQuota) SetSubQuotaInfoList(v []*UpdateComp
 }
 
 func (s *UpdateComputeQuotaPlanRequestQuota) Validate() error {
-	return dara.Validate(s)
+	if s.Parameter != nil {
+		if err := s.Parameter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubQuotaInfoList != nil {
+		for _, item := range s.SubQuotaInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateComputeQuotaPlanRequestQuotaParameter struct {
@@ -169,7 +188,12 @@ func (s *UpdateComputeQuotaPlanRequestQuotaSubQuotaInfoList) SetParameter(v *Upd
 }
 
 func (s *UpdateComputeQuotaPlanRequestQuotaSubQuotaInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.Parameter != nil {
+		if err := s.Parameter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateComputeQuotaPlanRequestQuotaSubQuotaInfoListParameter struct {

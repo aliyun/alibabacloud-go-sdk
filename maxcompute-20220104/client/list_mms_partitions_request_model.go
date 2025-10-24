@@ -25,6 +25,8 @@ type iListMmsPartitionsRequest interface {
 	GetPageSize() *int32
 	SetStatus(v []*string) *ListMmsPartitionsRequest
 	GetStatus() []*string
+	SetTableId(v int64) *ListMmsPartitionsRequest
+	GetTableId() *int64
 	SetTableName(v string) *ListMmsPartitionsRequest
 	GetTableName() *string
 	SetUpdated(v bool) *ListMmsPartitionsRequest
@@ -60,6 +62,10 @@ type ListMmsPartitionsRequest struct {
 	// 100
 	PageSize *int32    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	Status   []*string `json:"status,omitempty" xml:"status,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20323
+	TableId *int64 `json:"tableId,omitempty" xml:"tableId,omitempty"`
 	// example:
 	//
 	// t1
@@ -114,6 +120,10 @@ func (s *ListMmsPartitionsRequest) GetStatus() []*string {
 	return s.Status
 }
 
+func (s *ListMmsPartitionsRequest) GetTableId() *int64 {
+	return s.TableId
+}
+
 func (s *ListMmsPartitionsRequest) GetTableName() *string {
 	return s.TableName
 }
@@ -166,6 +176,11 @@ func (s *ListMmsPartitionsRequest) SetStatus(v []*string) *ListMmsPartitionsRequ
 	return s
 }
 
+func (s *ListMmsPartitionsRequest) SetTableId(v int64) *ListMmsPartitionsRequest {
+	s.TableId = &v
+	return s
+}
+
 func (s *ListMmsPartitionsRequest) SetTableName(v string) *ListMmsPartitionsRequest {
 	s.TableName = &v
 	return s
@@ -182,7 +197,12 @@ func (s *ListMmsPartitionsRequest) SetValue(v string) *ListMmsPartitionsRequest 
 }
 
 func (s *ListMmsPartitionsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Sorter != nil {
+		if err := s.Sorter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMmsPartitionsRequestSorter struct {

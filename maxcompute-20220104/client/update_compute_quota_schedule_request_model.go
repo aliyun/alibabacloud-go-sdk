@@ -48,7 +48,16 @@ func (s *UpdateComputeQuotaScheduleRequest) SetScheduleTimezone(v string) *Updat
 }
 
 func (s *UpdateComputeQuotaScheduleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		for _, item := range s.Body {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateComputeQuotaScheduleRequestBody struct {
@@ -110,7 +119,12 @@ func (s *UpdateComputeQuotaScheduleRequestBody) SetType(v string) *UpdateCompute
 }
 
 func (s *UpdateComputeQuotaScheduleRequestBody) Validate() error {
-	return dara.Validate(s)
+	if s.Condition != nil {
+		if err := s.Condition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateComputeQuotaScheduleRequestBodyCondition struct {

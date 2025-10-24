@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -191,9 +192,11 @@ func (client *Client) ApplyComputeQuotaPlan(nickname *string, planName *string) 
 //
 // @return CreateComputeQuotaPlanResponse
 func (client *Client) CreateComputeQuotaPlanWithOptions(nickname *string, request *CreateComputeQuotaPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateComputeQuotaPlanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -265,9 +268,11 @@ func (client *Client) CreateComputeQuotaPlan(nickname *string, request *CreateCo
 //
 // @return CreateMmsDataSourceResponse
 func (client *Client) CreateMmsDataSourceWithOptions(request *CreateMmsDataSourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateMmsDataSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -391,9 +396,11 @@ func (client *Client) CreateMmsFetchMetadataJob(sourceId *string) (_result *Crea
 //
 // @return CreateMmsJobResponse
 func (client *Client) CreateMmsJobWithOptions(sourceId *string, request *CreateMmsJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateMmsJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ColumnMapping) {
@@ -406,6 +413,14 @@ func (client *Client) CreateMmsJobWithOptions(sourceId *string, request *CreateM
 
 	if !dara.IsNil(request.DstSchemaName) {
 		body["dstSchemaName"] = request.DstSchemaName
+	}
+
+	if !dara.IsNil(request.EnableDataMigration) {
+		body["enableDataMigration"] = request.EnableDataMigration
+	}
+
+	if !dara.IsNil(request.EnableSchemaMigration) {
+		body["enableSchemaMigration"] = request.EnableSchemaMigration
 	}
 
 	if !dara.IsNil(request.EnableVerification) {
@@ -531,9 +546,11 @@ func (client *Client) CreateMmsJob(sourceId *string, request *CreateMmsJobReques
 //
 // @return CreatePackageResponse
 func (client *Client) CreatePackageWithOptions(projectName *string, request *CreatePackageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePackageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsInstall) {
@@ -596,9 +613,11 @@ func (client *Client) CreatePackage(projectName *string, request *CreatePackageR
 //
 // @return CreateProjectResponse
 func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
@@ -655,9 +674,11 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 //
 // @return CreateQuotaPlanResponse
 func (client *Client) CreateQuotaPlanWithOptions(nickname *string, request *CreateQuotaPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateQuotaPlanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Region) {
@@ -724,9 +745,11 @@ func (client *Client) CreateQuotaPlan(nickname *string, request *CreateQuotaPlan
 //
 // @return CreateRoleResponse
 func (client *Client) CreateRoleWithOptions(projectName *string, request *CreateRoleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateRoleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
@@ -933,9 +956,11 @@ func (client *Client) DeleteMmsJob(sourceId *string, jobId *string) (_result *De
 //
 // @return DeleteQuotaPlanResponse
 func (client *Client) DeleteQuotaPlanWithOptions(nickname *string, planName *string, request *DeleteQuotaPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteQuotaPlanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Region) {
@@ -1101,9 +1126,11 @@ func (client *Client) GetComputeQuotaPlan(nickname *string, planName *string) (_
 //
 // @return GetComputeQuotaScheduleResponse
 func (client *Client) GetComputeQuotaScheduleWithOptions(nickname *string, request *GetComputeQuotaScheduleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetComputeQuotaScheduleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DisplayTimezone) {
@@ -1215,9 +1242,11 @@ func (client *Client) GetJobInfo(instanceId *string) (_result *GetJobInfoRespons
 //
 // @return GetJobResourceUsageResponse
 func (client *Client) GetJobResourceUsageWithOptions(tmpReq *GetJobResourceUsageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetJobResourceUsageResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetJobResourceUsageShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1355,9 +1384,11 @@ func (client *Client) GetMmsAsyncTask(sourceId *string, asyncTaskId *string) (_r
 //
 // @return GetMmsDataSourceResponse
 func (client *Client) GetMmsDataSourceWithOptions(sourceId *string, request *GetMmsDataSourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMmsDataSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -1723,9 +1754,11 @@ func (client *Client) GetMmsTask(sourceId *string, taskId *string) (_result *Get
 //
 // @return GetPackageResponse
 func (client *Client) GetPackageWithOptions(projectName *string, packageName *string, request *GetPackageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPackageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceProject) {
@@ -1787,9 +1820,11 @@ func (client *Client) GetPackage(projectName *string, packageName *string, reque
 //
 // @return GetProjectResponse
 func (client *Client) GetProjectWithOptions(projectName *string, request *GetProjectRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetProjectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Verbose) {
@@ -1851,9 +1886,11 @@ func (client *Client) GetProject(projectName *string, request *GetProjectRequest
 //
 // @return GetQuotaResponse
 func (client *Client) GetQuotaWithOptions(nickname *string, request *GetQuotaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetQuotaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AkProven) {
@@ -1927,9 +1964,11 @@ func (client *Client) GetQuota(nickname *string, request *GetQuotaRequest) (_res
 //
 // @return GetQuotaPlanResponse
 func (client *Client) GetQuotaPlanWithOptions(nickname *string, planName *string, request *GetQuotaPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetQuotaPlanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Region) {
@@ -1995,9 +2034,11 @@ func (client *Client) GetQuotaPlan(nickname *string, planName *string, request *
 //
 // @return GetQuotaScheduleResponse
 func (client *Client) GetQuotaScheduleWithOptions(nickname *string, request *GetQuotaScheduleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetQuotaScheduleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DisplayTimezone) {
@@ -2067,9 +2108,11 @@ func (client *Client) GetQuotaSchedule(nickname *string, request *GetQuotaSchedu
 //
 // @return GetQuotaUsageResponse
 func (client *Client) GetQuotaUsageWithOptions(nickname *string, tmpReq *GetQuotaUsageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetQuotaUsageResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetQuotaUsageShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2223,9 +2266,11 @@ func (client *Client) GetRoleAcl(projectName *string, roleName *string) (_result
 //
 // @return GetRoleAclOnObjectResponse
 func (client *Client) GetRoleAclOnObjectWithOptions(projectName *string, roleName *string, request *GetRoleAclOnObjectRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRoleAclOnObjectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ObjectName) {
@@ -2341,9 +2386,11 @@ func (client *Client) GetRolePolicy(projectName *string, roleName *string) (_res
 //
 // @return GetRunningJobsResponse
 func (client *Client) GetRunningJobsWithOptions(tmpReq *GetRunningJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRunningJobsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetRunningJobsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2431,9 +2478,11 @@ func (client *Client) GetRunningJobs(request *GetRunningJobsRequest) (_result *G
 //
 // @return GetStorageAmountSummaryResponse
 func (client *Client) GetStorageAmountSummaryWithOptions(request *GetStorageAmountSummaryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetStorageAmountSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Date) {
@@ -2495,9 +2544,11 @@ func (client *Client) GetStorageAmountSummary(request *GetStorageAmountSummaryRe
 //
 // @return GetStorageSizeSummaryResponse
 func (client *Client) GetStorageSizeSummaryWithOptions(request *GetStorageSizeSummaryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetStorageSizeSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Date) {
@@ -2559,9 +2610,11 @@ func (client *Client) GetStorageSizeSummary(request *GetStorageSizeSummaryReques
 //
 // @return GetStorageSummaryComparedResponse
 func (client *Client) GetStorageSummaryComparedWithOptions(_type *string, tmpReq *GetStorageSummaryComparedRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetStorageSummaryComparedResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetStorageSummaryComparedShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2641,9 +2694,11 @@ func (client *Client) GetStorageSummaryCompared(_type *string, request *GetStora
 //
 // @return GetTableInfoResponse
 func (client *Client) GetTableInfoWithOptions(projectName *string, tableName *string, request *GetTableInfoRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTableInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SchemaName) {
@@ -2759,9 +2814,11 @@ func (client *Client) GetTrustedProjects(projectName *string) (_result *GetTrust
 //
 // @return KillJobsResponse
 func (client *Client) KillJobsWithOptions(request *KillJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *KillJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Region) {
@@ -2828,9 +2885,11 @@ func (client *Client) KillJobs(request *KillJobsRequest) (_result *KillJobsRespo
 //
 // @return ListComputeMetricsByInstanceResponse
 func (client *Client) ListComputeMetricsByInstanceWithOptions(request *ListComputeMetricsByInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListComputeMetricsByInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EndDate) {
@@ -2982,9 +3041,11 @@ func (client *Client) ListComputeQuotaPlan(nickname *string) (_result *ListCompu
 //
 // @return ListFunctionsResponse
 func (client *Client) ListFunctionsWithOptions(projectName *string, request *ListFunctionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListFunctionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Marker) {
@@ -3058,9 +3119,11 @@ func (client *Client) ListFunctions(projectName *string, request *ListFunctionsR
 //
 // @return ListJobInfosResponse
 func (client *Client) ListJobInfosWithOptions(request *ListJobInfosRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListJobInfosResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AscOrder) {
@@ -3200,9 +3263,11 @@ func (client *Client) ListJobInfos(request *ListJobInfosRequest) (_result *ListJ
 //
 // @return ListJobMetricResponse
 func (client *Client) ListJobMetricWithOptions(request *ListJobMetricRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListJobMetricResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -3294,9 +3359,11 @@ func (client *Client) ListJobMetric(request *ListJobMetricRequest) (_result *Lis
 //
 // @return ListJobSnapshotInfosResponse
 func (client *Client) ListJobSnapshotInfosWithOptions(request *ListJobSnapshotInfosRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListJobSnapshotInfosResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AscOrder) {
@@ -3432,9 +3499,11 @@ func (client *Client) ListJobSnapshotInfos(request *ListJobSnapshotInfosRequest)
 //
 // @return ListMmsDataSourcesResponse
 func (client *Client) ListMmsDataSourcesWithOptions(request *ListMmsDataSourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMmsDataSourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -3512,9 +3581,11 @@ func (client *Client) ListMmsDataSources(request *ListMmsDataSourcesRequest) (_r
 //
 // @return ListMmsDbsResponse
 func (client *Client) ListMmsDbsWithOptions(sourceId *string, tmpReq *ListMmsDbsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMmsDbsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListMmsDbsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3598,9 +3669,11 @@ func (client *Client) ListMmsDbs(sourceId *string, request *ListMmsDbsRequest) (
 //
 // @return ListMmsJobsResponse
 func (client *Client) ListMmsJobsWithOptions(sourceId *string, request *ListMmsJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMmsJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DstDbName) {
@@ -3698,9 +3771,11 @@ func (client *Client) ListMmsJobs(sourceId *string, request *ListMmsJobsRequest)
 //
 // @return ListMmsPartitionsResponse
 func (client *Client) ListMmsPartitionsWithOptions(sourceId *string, tmpReq *ListMmsPartitionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMmsPartitionsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListMmsPartitionsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3735,6 +3810,10 @@ func (client *Client) ListMmsPartitionsWithOptions(sourceId *string, tmpReq *Lis
 
 	if !dara.IsNil(request.StatusShrink) {
 		query["status"] = request.StatusShrink
+	}
+
+	if !dara.IsNil(request.TableId) {
+		query["tableId"] = request.TableId
 	}
 
 	if !dara.IsNil(request.TableName) {
@@ -3808,9 +3887,11 @@ func (client *Client) ListMmsPartitions(sourceId *string, request *ListMmsPartit
 //
 // @return ListMmsTablesResponse
 func (client *Client) ListMmsTablesWithOptions(sourceId *string, tmpReq *ListMmsTablesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMmsTablesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListMmsTablesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3825,6 +3906,18 @@ func (client *Client) ListMmsTablesWithOptions(sourceId *string, tmpReq *ListMms
 
 	if !dara.IsNil(request.DbName) {
 		query["dbName"] = request.DbName
+	}
+
+	if !dara.IsNil(request.DstName) {
+		query["dstName"] = request.DstName
+	}
+
+	if !dara.IsNil(request.DstProjectName) {
+		query["dstProjectName"] = request.DstProjectName
+	}
+
+	if !dara.IsNil(request.DstSchemaName) {
+		query["dstSchemaName"] = request.DstSchemaName
 	}
 
 	if !dara.IsNil(request.HasPartitions) {
@@ -3972,9 +4065,11 @@ func (client *Client) ListMmsTaskLogs(sourceId *string, taskId *string) (_result
 //
 // @return ListMmsTasksResponse
 func (client *Client) ListMmsTasksWithOptions(sourceId *string, request *ListMmsTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMmsTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DstDbName) {
@@ -4176,9 +4271,11 @@ func (client *Client) ListProjectUsers(projectName *string) (_result *ListProjec
 //
 // @return ListProjectsResponse
 func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ListSystemCatalog) {
@@ -4276,9 +4373,11 @@ func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListP
 //
 // @return ListQuotasResponse
 func (client *Client) ListQuotasWithOptions(request *ListQuotasRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListQuotasResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillingType) {
@@ -4364,9 +4463,11 @@ func (client *Client) ListQuotas(request *ListQuotasRequest) (_result *ListQuota
 //
 // @return ListQuotasPlansResponse
 func (client *Client) ListQuotasPlansWithOptions(nickname *string, request *ListQuotasPlansRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListQuotasPlansResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Region) {
@@ -4432,9 +4533,11 @@ func (client *Client) ListQuotasPlans(nickname *string, request *ListQuotasPlans
 //
 // @return ListResourcesResponse
 func (client *Client) ListResourcesWithOptions(projectName *string, request *ListResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Marker) {
@@ -4558,9 +4661,11 @@ func (client *Client) ListRoles(projectName *string) (_result *ListRolesResponse
 //
 // @return ListStoragePartitionsInfoResponse
 func (client *Client) ListStoragePartitionsInfoWithOptions(project *string, table *string, tmpReq *ListStoragePartitionsInfoRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListStoragePartitionsInfoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListStoragePartitionsInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4660,9 +4765,11 @@ func (client *Client) ListStoragePartitionsInfo(project *string, table *string, 
 //
 // @return ListStorageProjectsInfoResponse
 func (client *Client) ListStorageProjectsInfoWithOptions(request *ListStorageProjectsInfoRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListStorageProjectsInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AscOrder) {
@@ -4752,9 +4859,11 @@ func (client *Client) ListStorageProjectsInfo(request *ListStorageProjectsInfoRe
 //
 // @return ListStorageTablesInfoResponse
 func (client *Client) ListStorageTablesInfoWithOptions(project *string, tmpReq *ListStorageTablesInfoRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListStorageTablesInfoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListStorageTablesInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4862,9 +4971,11 @@ func (client *Client) ListStorageTablesInfo(project *string, request *ListStorag
 //
 // @return ListTablesResponse
 func (client *Client) ListTablesWithOptions(projectName *string, request *ListTablesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTablesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Marker) {
@@ -4992,9 +5103,11 @@ func (client *Client) ListTunnelQuotaTimer(nickname *string) (_result *ListTunne
 //
 // @return ListUsersResponse
 func (client *Client) ListUsersWithOptions(request *ListUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -5110,9 +5223,11 @@ func (client *Client) ListUsersByRole(projectName *string, roleName *string) (_r
 //
 // @return QueryQuotaResponse
 func (client *Client) QueryQuotaWithOptions(nickname *string, request *QueryQuotaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryQuotaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AkProven) {
@@ -5176,6 +5291,94 @@ func (client *Client) QueryQuota(nickname *string, request *QueryQuotaRequest) (
 
 // Summary:
 //
+// 查询quota的资源使用信息
+//
+// @param request - QueryQuotaMetricRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryQuotaMetricResponse
+func (client *Client) QueryQuotaMetricWithOptions(metric *string, request *QueryQuotaMetricRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryQuotaMetricResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["startTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Strategy) {
+		query["strategy"] = request.Strategy
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Interval) {
+		body["interval"] = request.Interval
+	}
+
+	if !dara.IsNil(request.Nickname) {
+		body["nickname"] = request.Nickname
+	}
+
+	if !dara.IsNil(request.SubQuotaNickname) {
+		body["subQuotaNickname"] = request.SubQuotaNickname
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryQuotaMetric"),
+		Version:     dara.String("2022-01-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/observations/quota/" + dara.PercentEncode(dara.StringValue(metric))),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryQuotaMetricResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询quota的资源使用信息
+//
+// @param request - QueryQuotaMetricRequest
+//
+// @return QueryQuotaMetricResponse
+func (client *Client) QueryQuotaMetric(metric *string, request *QueryQuotaMetricRequest) (_result *QueryQuotaMetricResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryQuotaMetricResponse{}
+	_body, _err := client.QueryQuotaMetricWithOptions(metric, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查看存储数据的时序指标
 //
 // @param request - QueryStorageMetricRequest
@@ -5186,9 +5389,11 @@ func (client *Client) QueryQuota(nickname *string, request *QueryQuotaRequest) (
 //
 // @return QueryStorageMetricResponse
 func (client *Client) QueryStorageMetricWithOptions(metric *string, request *QueryStorageMetricRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryStorageMetricResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -5264,9 +5469,11 @@ func (client *Client) QueryStorageMetric(metric *string, request *QueryStorageMe
 //
 // @return QueryTunnelMetricResponse
 func (client *Client) QueryTunnelMetricWithOptions(metric *string, request *QueryTunnelMetricRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryTunnelMetricResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -5366,9 +5573,11 @@ func (client *Client) QueryTunnelMetric(metric *string, request *QueryTunnelMetr
 //
 // @return QueryTunnelMetricDetailResponse
 func (client *Client) QueryTunnelMetricDetailWithOptions(metric *string, request *QueryTunnelMetricDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryTunnelMetricDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -5614,9 +5823,11 @@ func (client *Client) StopMmsJob(sourceId *string, jobId *string) (_result *Stop
 //
 // @return SumStorageMetricsByDateResponse
 func (client *Client) SumStorageMetricsByDateWithOptions(request *SumStorageMetricsByDateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SumStorageMetricsByDateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EndDate) {
@@ -5700,9 +5911,11 @@ func (client *Client) SumStorageMetricsByDate(request *SumStorageMetricsByDateRe
 //
 // @return UpdateComputeQuotaPlanResponse
 func (client *Client) UpdateComputeQuotaPlanWithOptions(nickname *string, request *UpdateComputeQuotaPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateComputeQuotaPlanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -5780,9 +5993,11 @@ func (client *Client) UpdateComputeQuotaPlan(nickname *string, request *UpdateCo
 //
 // @return UpdateComputeQuotaScheduleResponse
 func (client *Client) UpdateComputeQuotaScheduleWithOptions(nickname *string, request *UpdateComputeQuotaScheduleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateComputeQuotaScheduleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ScheduleTimezone) {
@@ -5851,9 +6066,11 @@ func (client *Client) UpdateComputeQuotaSchedule(nickname *string, request *Upda
 //
 // @return UpdateComputeSubQuotaResponse
 func (client *Client) UpdateComputeSubQuotaWithOptions(nickname *string, request *UpdateComputeSubQuotaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateComputeSubQuotaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.SubQuotaInfoList) {
@@ -5915,9 +6132,11 @@ func (client *Client) UpdateComputeSubQuota(nickname *string, request *UpdateCom
 //
 // @return UpdateMmsDataSourceResponse
 func (client *Client) UpdateMmsDataSourceWithOptions(sourceId *string, request *UpdateMmsDataSourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMmsDataSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Action) {
@@ -5991,9 +6210,11 @@ func (client *Client) UpdateMmsDataSource(sourceId *string, request *UpdateMmsDa
 //
 // @return UpdatePackageResponse
 func (client *Client) UpdatePackageWithOptions(projectName *string, packageName *string, request *UpdatePackageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdatePackageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
@@ -6050,9 +6271,11 @@ func (client *Client) UpdatePackage(projectName *string, packageName *string, re
 //
 // @return UpdateProjectBasicMetaResponse
 func (client *Client) UpdateProjectBasicMetaWithOptions(projectName *string, request *UpdateProjectBasicMetaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateProjectBasicMetaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Comment) {
@@ -6118,9 +6341,11 @@ func (client *Client) UpdateProjectBasicMeta(projectName *string, request *Updat
 //
 // @return UpdateProjectDefaultQuotaResponse
 func (client *Client) UpdateProjectDefaultQuotaWithOptions(projectName *string, request *UpdateProjectDefaultQuotaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateProjectDefaultQuotaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Quota) {
@@ -6182,9 +6407,11 @@ func (client *Client) UpdateProjectDefaultQuota(projectName *string, request *Up
 //
 // @return UpdateProjectIpWhiteListResponse
 func (client *Client) UpdateProjectIpWhiteListWithOptions(projectName *string, request *UpdateProjectIpWhiteListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateProjectIpWhiteListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
@@ -6241,9 +6468,11 @@ func (client *Client) UpdateProjectIpWhiteList(projectName *string, request *Upd
 //
 // @return UpdateQuotaPlanResponse
 func (client *Client) UpdateQuotaPlanWithOptions(nickname *string, planName *string, request *UpdateQuotaPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateQuotaPlanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Region) {
@@ -6310,9 +6539,11 @@ func (client *Client) UpdateQuotaPlan(nickname *string, planName *string, reques
 //
 // @return UpdateQuotaScheduleResponse
 func (client *Client) UpdateQuotaScheduleWithOptions(nickname *string, request *UpdateQuotaScheduleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateQuotaScheduleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Region) {
@@ -6383,9 +6614,11 @@ func (client *Client) UpdateQuotaSchedule(nickname *string, request *UpdateQuota
 //
 // @return UpdateTunnelQuotaTimerResponse
 func (client *Client) UpdateTunnelQuotaTimerWithOptions(nickname *string, request *UpdateTunnelQuotaTimerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTunnelQuotaTimerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Timezone) {
@@ -6452,9 +6685,11 @@ func (client *Client) UpdateTunnelQuotaTimer(nickname *string, request *UpdateTu
 //
 // @return UpdateUsersToRoleResponse
 func (client *Client) UpdateUsersToRoleWithOptions(projectName *string, roleName *string, request *UpdateUsersToRoleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateUsersToRoleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Add) {

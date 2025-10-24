@@ -15,6 +15,12 @@ type iListMmsTablesShrinkRequest interface {
 	GetDbId() *int64
 	SetDbName(v string) *ListMmsTablesShrinkRequest
 	GetDbName() *string
+	SetDstName(v string) *ListMmsTablesShrinkRequest
+	GetDstName() *string
+	SetDstProjectName(v string) *ListMmsTablesShrinkRequest
+	GetDstProjectName() *string
+	SetDstSchemaName(v string) *ListMmsTablesShrinkRequest
+	GetDstSchemaName() *string
 	SetHasPartitions(v bool) *ListMmsTablesShrinkRequest
 	GetHasPartitions() *bool
 	SetLastDdlTimeEnd(v string) *ListMmsTablesShrinkRequest
@@ -45,6 +51,18 @@ type ListMmsTablesShrinkRequest struct {
 	//
 	// mms_test
 	DbName *string `json:"dbName,omitempty" xml:"dbName,omitempty"`
+	// example:
+	//
+	// test
+	DstName *string `json:"dstName,omitempty" xml:"dstName,omitempty"`
+	// example:
+	//
+	// mms_test
+	DstProjectName *string `json:"dstProjectName,omitempty" xml:"dstProjectName,omitempty"`
+	// example:
+	//
+	// default
+	DstSchemaName *string `json:"dstSchemaName,omitempty" xml:"dstSchemaName,omitempty"`
 	// example:
 	//
 	// true
@@ -100,6 +118,18 @@ func (s *ListMmsTablesShrinkRequest) GetDbName() *string {
 	return s.DbName
 }
 
+func (s *ListMmsTablesShrinkRequest) GetDstName() *string {
+	return s.DstName
+}
+
+func (s *ListMmsTablesShrinkRequest) GetDstProjectName() *string {
+	return s.DstProjectName
+}
+
+func (s *ListMmsTablesShrinkRequest) GetDstSchemaName() *string {
+	return s.DstSchemaName
+}
+
 func (s *ListMmsTablesShrinkRequest) GetHasPartitions() *bool {
 	return s.HasPartitions
 }
@@ -151,6 +181,21 @@ func (s *ListMmsTablesShrinkRequest) SetDbName(v string) *ListMmsTablesShrinkReq
 	return s
 }
 
+func (s *ListMmsTablesShrinkRequest) SetDstName(v string) *ListMmsTablesShrinkRequest {
+	s.DstName = &v
+	return s
+}
+
+func (s *ListMmsTablesShrinkRequest) SetDstProjectName(v string) *ListMmsTablesShrinkRequest {
+	s.DstProjectName = &v
+	return s
+}
+
+func (s *ListMmsTablesShrinkRequest) SetDstSchemaName(v string) *ListMmsTablesShrinkRequest {
+	s.DstSchemaName = &v
+	return s
+}
+
 func (s *ListMmsTablesShrinkRequest) SetHasPartitions(v bool) *ListMmsTablesShrinkRequest {
 	s.HasPartitions = &v
 	return s
@@ -197,7 +242,12 @@ func (s *ListMmsTablesShrinkRequest) SetType(v string) *ListMmsTablesShrinkReque
 }
 
 func (s *ListMmsTablesShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Sorter != nil {
+		if err := s.Sorter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMmsTablesShrinkRequestSorter struct {

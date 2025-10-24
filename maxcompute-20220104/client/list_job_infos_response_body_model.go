@@ -70,7 +70,12 @@ func (s *ListJobInfosResponseBody) SetRequestId(v string) *ListJobInfosResponseB
 }
 
 func (s *ListJobInfosResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListJobInfosResponseBodyData struct {
@@ -141,7 +146,16 @@ func (s *ListJobInfosResponseBodyData) SetTotalCount(v int64) *ListJobInfosRespo
 }
 
 func (s *ListJobInfosResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.JobInfoList != nil {
+		for _, item := range s.JobInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListJobInfosResponseBodyDataJobInfoList struct {
@@ -587,7 +601,16 @@ func (s *ListJobInfosResponseBodyDataJobInfoList) SetWaitingTime(v int64) *ListJ
 }
 
 func (s *ListJobInfosResponseBodyDataJobInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.SceneResults != nil {
+		for _, item := range s.SceneResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListJobInfosResponseBodyDataJobInfoListSceneResults struct {

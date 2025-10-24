@@ -50,7 +50,12 @@ func (s *GetMmsDataSourceResponseBody) SetRequestId(v string) *GetMmsDataSourceR
 }
 
 func (s *GetMmsDataSourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMmsDataSourceResponseBodyData struct {
@@ -67,6 +72,11 @@ type GetMmsDataSourceResponseBodyData struct {
 	//
 	// 3
 	DbNum *int32 `json:"dbNum,omitempty" xml:"dbNum,omitempty"`
+	// example:
+	//
+	// mms_test
+	DstProject  *string   `json:"dstProject,omitempty" xml:"dstProject,omitempty"`
+	DstProjects []*string `json:"dstProjects,omitempty" xml:"dstProjects,omitempty" type:"Repeated"`
 	// example:
 	//
 	// unexpected exception
@@ -165,6 +175,14 @@ func (s *GetMmsDataSourceResponseBodyData) GetDbNum() *int32 {
 	return s.DbNum
 }
 
+func (s *GetMmsDataSourceResponseBodyData) GetDstProject() *string {
+	return s.DstProject
+}
+
+func (s *GetMmsDataSourceResponseBodyData) GetDstProjects() []*string {
+	return s.DstProjects
+}
+
 func (s *GetMmsDataSourceResponseBodyData) GetErrMsg() *string {
 	return s.ErrMsg
 }
@@ -254,6 +272,16 @@ func (s *GetMmsDataSourceResponseBodyData) SetCreateTime(v string) *GetMmsDataSo
 
 func (s *GetMmsDataSourceResponseBodyData) SetDbNum(v int32) *GetMmsDataSourceResponseBodyData {
 	s.DbNum = &v
+	return s
+}
+
+func (s *GetMmsDataSourceResponseBodyData) SetDstProject(v string) *GetMmsDataSourceResponseBodyData {
+	s.DstProject = &v
+	return s
+}
+
+func (s *GetMmsDataSourceResponseBodyData) SetDstProjects(v []*string) *GetMmsDataSourceResponseBodyData {
+	s.DstProjects = v
 	return s
 }
 
@@ -348,7 +376,16 @@ func (s *GetMmsDataSourceResponseBodyData) SetType(v string) *GetMmsDataSourceRe
 }
 
 func (s *GetMmsDataSourceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		for _, item := range s.Config {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMmsDataSourceResponseBodyDataConfig struct {

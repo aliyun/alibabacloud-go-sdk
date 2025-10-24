@@ -114,7 +114,12 @@ func (s *GetQuotaUsageResponseBody) SetRequestId(v string) *GetQuotaUsageRespons
 }
 
 func (s *GetQuotaUsageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetQuotaUsageResponseBodyData struct {
@@ -151,7 +156,16 @@ func (s *GetQuotaUsageResponseBodyData) SetPlot(v []*GetQuotaUsageResponseBodyDa
 }
 
 func (s *GetQuotaUsageResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Plot != nil {
+		for _, item := range s.Plot {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetQuotaUsageResponseBodyDataPlot struct {

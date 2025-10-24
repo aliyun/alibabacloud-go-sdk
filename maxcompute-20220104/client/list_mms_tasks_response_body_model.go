@@ -50,7 +50,12 @@ func (s *ListMmsTasksResponseBody) SetRequestId(v string) *ListMmsTasksResponseB
 }
 
 func (s *ListMmsTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMmsTasksResponseBodyData struct {
@@ -114,7 +119,16 @@ func (s *ListMmsTasksResponseBodyData) SetTotal(v int32) *ListMmsTasksResponseBo
 }
 
 func (s *ListMmsTasksResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ObjectList != nil {
+		for _, item := range s.ObjectList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMmsTasksResponseBodyDataObjectList struct {

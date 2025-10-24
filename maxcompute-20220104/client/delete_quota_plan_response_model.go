@@ -59,5 +59,10 @@ func (s *DeleteQuotaPlanResponse) SetBody(v *DeleteQuotaPlanResponseBody) *Delet
 }
 
 func (s *DeleteQuotaPlanResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

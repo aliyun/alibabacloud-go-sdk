@@ -15,6 +15,12 @@ type iListMmsTablesRequest interface {
 	GetDbId() *int64
 	SetDbName(v string) *ListMmsTablesRequest
 	GetDbName() *string
+	SetDstName(v string) *ListMmsTablesRequest
+	GetDstName() *string
+	SetDstProjectName(v string) *ListMmsTablesRequest
+	GetDstProjectName() *string
+	SetDstSchemaName(v string) *ListMmsTablesRequest
+	GetDstSchemaName() *string
 	SetHasPartitions(v bool) *ListMmsTablesRequest
 	GetHasPartitions() *bool
 	SetLastDdlTimeEnd(v string) *ListMmsTablesRequest
@@ -45,6 +51,18 @@ type ListMmsTablesRequest struct {
 	//
 	// mms_test
 	DbName *string `json:"dbName,omitempty" xml:"dbName,omitempty"`
+	// example:
+	//
+	// test
+	DstName *string `json:"dstName,omitempty" xml:"dstName,omitempty"`
+	// example:
+	//
+	// mms_test
+	DstProjectName *string `json:"dstProjectName,omitempty" xml:"dstProjectName,omitempty"`
+	// example:
+	//
+	// default
+	DstSchemaName *string `json:"dstSchemaName,omitempty" xml:"dstSchemaName,omitempty"`
 	// example:
 	//
 	// true
@@ -100,6 +118,18 @@ func (s *ListMmsTablesRequest) GetDbName() *string {
 	return s.DbName
 }
 
+func (s *ListMmsTablesRequest) GetDstName() *string {
+	return s.DstName
+}
+
+func (s *ListMmsTablesRequest) GetDstProjectName() *string {
+	return s.DstProjectName
+}
+
+func (s *ListMmsTablesRequest) GetDstSchemaName() *string {
+	return s.DstSchemaName
+}
+
 func (s *ListMmsTablesRequest) GetHasPartitions() *bool {
 	return s.HasPartitions
 }
@@ -151,6 +181,21 @@ func (s *ListMmsTablesRequest) SetDbName(v string) *ListMmsTablesRequest {
 	return s
 }
 
+func (s *ListMmsTablesRequest) SetDstName(v string) *ListMmsTablesRequest {
+	s.DstName = &v
+	return s
+}
+
+func (s *ListMmsTablesRequest) SetDstProjectName(v string) *ListMmsTablesRequest {
+	s.DstProjectName = &v
+	return s
+}
+
+func (s *ListMmsTablesRequest) SetDstSchemaName(v string) *ListMmsTablesRequest {
+	s.DstSchemaName = &v
+	return s
+}
+
 func (s *ListMmsTablesRequest) SetHasPartitions(v bool) *ListMmsTablesRequest {
 	s.HasPartitions = &v
 	return s
@@ -197,7 +242,12 @@ func (s *ListMmsTablesRequest) SetType(v string) *ListMmsTablesRequest {
 }
 
 func (s *ListMmsTablesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Sorter != nil {
+		if err := s.Sorter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMmsTablesRequestSorter struct {

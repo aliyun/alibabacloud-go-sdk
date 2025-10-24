@@ -59,5 +59,10 @@ func (s *GetTableInfoResponse) SetBody(v *GetTableInfoResponseBody) *GetTableInf
 }
 
 func (s *GetTableInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

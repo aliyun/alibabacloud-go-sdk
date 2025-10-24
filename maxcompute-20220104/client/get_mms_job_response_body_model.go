@@ -50,7 +50,12 @@ func (s *GetMmsJobResponseBody) SetRequestId(v string) *GetMmsJobResponseBody {
 }
 
 func (s *GetMmsJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMmsJobResponseBodyData struct {
@@ -280,7 +285,12 @@ func (s *GetMmsJobResponseBodyData) SetType(v string) *GetMmsJobResponseBodyData
 }
 
 func (s *GetMmsJobResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMmsJobResponseBodyDataConfig struct {

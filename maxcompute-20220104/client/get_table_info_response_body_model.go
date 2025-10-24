@@ -53,7 +53,12 @@ func (s *GetTableInfoResponseBody) SetRequestId(v string) *GetTableInfoResponseB
 }
 
 func (s *GetTableInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTableInfoResponseBodyData struct {
@@ -559,7 +564,30 @@ func (s *GetTableInfoResponseBodyData) SetViewText(v string) *GetTableInfoRespon
 }
 
 func (s *GetTableInfoResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterInfo != nil {
+		if err := s.ClusterInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NativeColumns != nil {
+		for _, item := range s.NativeColumns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PartitionColumns != nil {
+		for _, item := range s.PartitionColumns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTableInfoResponseBodyDataClusterInfo struct {
@@ -628,7 +656,16 @@ func (s *GetTableInfoResponseBodyDataClusterInfo) SetSortCols(v []*GetTableInfoR
 }
 
 func (s *GetTableInfoResponseBodyDataClusterInfo) Validate() error {
-	return dara.Validate(s)
+	if s.SortCols != nil {
+		for _, item := range s.SortCols {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTableInfoResponseBodyDataClusterInfoSortCols struct {

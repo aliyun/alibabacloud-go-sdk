@@ -114,7 +114,12 @@ func (s *GetJobInfoResponseBody) SetRequestId(v string) *GetJobInfoResponseBody 
 }
 
 func (s *GetJobInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetJobInfoResponseBodyData struct {
@@ -496,7 +501,25 @@ func (s *GetJobInfoResponseBodyData) SetWaitingTime(v int64) *GetJobInfoResponse
 }
 
 func (s *GetJobInfoResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.JobSubStatusList != nil {
+		for _, item := range s.JobSubStatusList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SceneResults != nil {
+		for _, item := range s.SceneResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetJobInfoResponseBodyDataJobSubStatusList struct {

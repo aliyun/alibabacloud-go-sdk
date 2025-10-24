@@ -114,7 +114,12 @@ func (s *GetComputeEffectivePlanResponseBody) SetRequestId(v string) *GetCompute
 }
 
 func (s *GetComputeEffectivePlanResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetComputeEffectivePlanResponseBodyData struct {
@@ -187,7 +192,12 @@ func (s *GetComputeEffectivePlanResponseBodyData) SetQuota(v *GetComputeEffectiv
 }
 
 func (s *GetComputeEffectivePlanResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Quota != nil {
+		if err := s.Quota.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetComputeEffectivePlanResponseBodyDataQuota struct {
@@ -409,7 +419,16 @@ func (s *GetComputeEffectivePlanResponseBodyDataQuota) SetVersion(v string) *Get
 }
 
 func (s *GetComputeEffectivePlanResponseBodyDataQuota) Validate() error {
-	return dara.Validate(s)
+	if s.SubQuotaInfoList != nil {
+		for _, item := range s.SubQuotaInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetComputeEffectivePlanResponseBodyDataQuotaSubQuotaInfoList struct {

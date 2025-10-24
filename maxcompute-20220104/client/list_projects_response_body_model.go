@@ -53,7 +53,12 @@ func (s *ListProjectsResponseBody) SetRequestId(v string) *ListProjectsResponseB
 }
 
 func (s *ListProjectsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListProjectsResponseBodyData struct {
@@ -124,7 +129,16 @@ func (s *ListProjectsResponseBodyData) SetProjects(v []*ListProjectsResponseBody
 }
 
 func (s *ListProjectsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Projects != nil {
+		for _, item := range s.Projects {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProjectsResponseBodyDataProjects struct {
@@ -351,7 +365,27 @@ func (s *ListProjectsResponseBodyDataProjects) SetType(v string) *ListProjectsRe
 }
 
 func (s *ListProjectsResponseBodyDataProjects) Validate() error {
-	return dara.Validate(s)
+	if s.IpWhiteList != nil {
+		if err := s.IpWhiteList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Properties != nil {
+		if err := s.Properties.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SaleTag != nil {
+		if err := s.SaleTag.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityProperties != nil {
+		if err := s.SecurityProperties.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListProjectsResponseBodyDataProjectsIpWhiteList struct {
@@ -584,7 +618,22 @@ func (s *ListProjectsResponseBodyDataProjectsProperties) SetTypeSystem(v string)
 }
 
 func (s *ListProjectsResponseBodyDataProjectsProperties) Validate() error {
-	return dara.Validate(s)
+	if s.Encryption != nil {
+		if err := s.Encryption.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExternalProjectProperties != nil {
+		if err := s.ExternalProjectProperties.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TableLifecycle != nil {
+		if err := s.TableLifecycle.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListProjectsResponseBodyDataProjectsPropertiesEncryption struct {
@@ -888,7 +937,12 @@ func (s *ListProjectsResponseBodyDataProjectsSecurityProperties) SetUsingPolicy(
 }
 
 func (s *ListProjectsResponseBodyDataProjectsSecurityProperties) Validate() error {
-	return dara.Validate(s)
+	if s.ProjectProtection != nil {
+		if err := s.ProjectProtection.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListProjectsResponseBodyDataProjectsSecurityPropertiesProjectProtection struct {

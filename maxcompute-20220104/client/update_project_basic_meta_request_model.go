@@ -53,7 +53,12 @@ func (s *UpdateProjectBasicMetaRequest) SetProperties(v *UpdateProjectBasicMetaR
 }
 
 func (s *UpdateProjectBasicMetaRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Properties != nil {
+		if err := s.Properties.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateProjectBasicMetaRequestProperties struct {
@@ -240,7 +245,17 @@ func (s *UpdateProjectBasicMetaRequestProperties) SetTypeSystem(v string) *Updat
 }
 
 func (s *UpdateProjectBasicMetaRequestProperties) Validate() error {
-	return dara.Validate(s)
+	if s.Encryption != nil {
+		if err := s.Encryption.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TableLifecycle != nil {
+		if err := s.TableLifecycle.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateProjectBasicMetaRequestPropertiesEncryption struct {

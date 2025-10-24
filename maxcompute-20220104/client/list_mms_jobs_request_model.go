@@ -170,7 +170,12 @@ func (s *ListMmsJobsRequest) SetStopped(v int64) *ListMmsJobsRequest {
 }
 
 func (s *ListMmsJobsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Sorter != nil {
+		if err := s.Sorter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMmsJobsRequestSorter struct {

@@ -59,5 +59,10 @@ func (s *CreateQuotaPlanResponse) SetBody(v *CreateQuotaPlanResponseBody) *Creat
 }
 
 func (s *CreateQuotaPlanResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

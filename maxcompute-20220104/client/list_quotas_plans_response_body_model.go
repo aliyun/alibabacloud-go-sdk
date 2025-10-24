@@ -53,7 +53,12 @@ func (s *ListQuotasPlansResponseBody) SetRequestId(v string) *ListQuotasPlansRes
 }
 
 func (s *ListQuotasPlansResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListQuotasPlansResponseBodyData struct {
@@ -79,7 +84,16 @@ func (s *ListQuotasPlansResponseBodyData) SetPlanList(v []*ListQuotasPlansRespon
 }
 
 func (s *ListQuotasPlansResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PlanList != nil {
+		for _, item := range s.PlanList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQuotasPlansResponseBodyDataPlanList struct {
@@ -135,7 +149,12 @@ func (s *ListQuotasPlansResponseBodyDataPlanList) SetQuota(v *ListQuotasPlansRes
 }
 
 func (s *ListQuotasPlansResponseBodyDataPlanList) Validate() error {
-	return dara.Validate(s)
+	if s.Quota != nil {
+		if err := s.Quota.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListQuotasPlansResponseBodyDataPlanListQuota struct {
@@ -389,7 +408,26 @@ func (s *ListQuotasPlansResponseBodyDataPlanListQuota) SetVersion(v string) *Lis
 }
 
 func (s *ListQuotasPlansResponseBodyDataPlanListQuota) Validate() error {
-	return dara.Validate(s)
+	if s.BillingPolicy != nil {
+		if err := s.BillingPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScheduleInfo != nil {
+		if err := s.ScheduleInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubQuotaInfoList != nil {
+		for _, item := range s.SubQuotaInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQuotasPlansResponseBodyDataPlanListQuotaBillingPolicy struct {
@@ -816,7 +854,17 @@ func (s *ListQuotasPlansResponseBodyDataPlanListQuotaSubQuotaInfoList) SetVersio
 }
 
 func (s *ListQuotasPlansResponseBodyDataPlanListQuotaSubQuotaInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.BillingPolicy != nil {
+		if err := s.BillingPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScheduleInfo != nil {
+		if err := s.ScheduleInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListQuotasPlansResponseBodyDataPlanListQuotaSubQuotaInfoListBillingPolicy struct {

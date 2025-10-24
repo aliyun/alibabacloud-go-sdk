@@ -59,5 +59,10 @@ func (s *StopMmsJobResponse) SetBody(v *StopMmsJobResponseBody) *StopMmsJobRespo
 }
 
 func (s *StopMmsJobResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

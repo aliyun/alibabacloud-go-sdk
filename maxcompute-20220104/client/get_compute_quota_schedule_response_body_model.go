@@ -114,7 +114,16 @@ func (s *GetComputeQuotaScheduleResponseBody) SetRequestId(v string) *GetCompute
 }
 
 func (s *GetComputeQuotaScheduleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetComputeQuotaScheduleResponseBodyData struct {
@@ -200,7 +209,12 @@ func (s *GetComputeQuotaScheduleResponseBodyData) SetType(v string) *GetComputeQ
 }
 
 func (s *GetComputeQuotaScheduleResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Condition != nil {
+		if err := s.Condition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetComputeQuotaScheduleResponseBodyDataCondition struct {

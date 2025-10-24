@@ -48,7 +48,16 @@ func (s *UpdateTunnelQuotaTimerRequest) SetTimezone(v string) *UpdateTunnelQuota
 }
 
 func (s *UpdateTunnelQuotaTimerRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		for _, item := range s.Body {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateTunnelQuotaTimerRequestBody struct {
@@ -104,7 +113,12 @@ func (s *UpdateTunnelQuotaTimerRequestBody) SetTunnelQuotaParameter(v *UpdateTun
 }
 
 func (s *UpdateTunnelQuotaTimerRequestBody) Validate() error {
-	return dara.Validate(s)
+	if s.TunnelQuotaParameter != nil {
+		if err := s.TunnelQuotaParameter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateTunnelQuotaTimerRequestBodyTunnelQuotaParameter struct {

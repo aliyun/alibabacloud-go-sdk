@@ -95,7 +95,12 @@ func (s *ListStorageProjectsInfoResponseBody) SetRequestId(v string) *ListStorag
 }
 
 func (s *ListStorageProjectsInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListStorageProjectsInfoResponseBodyData struct {
@@ -172,7 +177,16 @@ func (s *ListStorageProjectsInfoResponseBodyData) SetTotalCount(v int64) *ListSt
 }
 
 func (s *ListStorageProjectsInfoResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.StorageProjectInfoList != nil {
+		for _, item := range s.StorageProjectInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListStorageProjectsInfoResponseBodyDataStorageProjectInfoList struct {

@@ -59,5 +59,10 @@ func (s *ListUsersByRoleResponse) SetBody(v *ListUsersByRoleResponseBody) *ListU
 }
 
 func (s *ListUsersByRoleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -50,7 +50,12 @@ func (s *GetMmsDbResponseBody) SetRequestId(v string) *GetMmsDbResponseBody {
 }
 
 func (s *GetMmsDbResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMmsDbResponseBodyData struct {
@@ -58,6 +63,14 @@ type GetMmsDbResponseBodyData struct {
 	//
 	// for mms_test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// default
+	DstName *string `json:"dstName,omitempty" xml:"dstName,omitempty"`
+	// example:
+	//
+	// mma_test
+	DstProjectName *string `json:"dstProjectName,omitempty" xml:"dstProjectName,omitempty"`
 	// example:
 	//
 	// {}
@@ -158,6 +171,14 @@ func (s *GetMmsDbResponseBodyData) GetDescription() *string {
 	return s.Description
 }
 
+func (s *GetMmsDbResponseBodyData) GetDstName() *string {
+	return s.DstName
+}
+
+func (s *GetMmsDbResponseBodyData) GetDstProjectName() *string {
+	return s.DstProjectName
+}
+
 func (s *GetMmsDbResponseBodyData) GetExtra() *string {
 	return s.Extra
 }
@@ -244,6 +265,16 @@ func (s *GetMmsDbResponseBodyData) GetUpdated() *bool {
 
 func (s *GetMmsDbResponseBodyData) SetDescription(v string) *GetMmsDbResponseBodyData {
 	s.Description = &v
+	return s
+}
+
+func (s *GetMmsDbResponseBodyData) SetDstName(v string) *GetMmsDbResponseBodyData {
+	s.DstName = &v
+	return s
+}
+
+func (s *GetMmsDbResponseBodyData) SetDstProjectName(v string) *GetMmsDbResponseBodyData {
+	s.DstProjectName = &v
 	return s
 }
 

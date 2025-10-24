@@ -351,7 +351,36 @@ func (s *GetQuotaResponseBody) SetVersion(v string) *GetQuotaResponseBody {
 }
 
 func (s *GetQuotaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BillingPolicy != nil {
+		if err := s.BillingPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SaleTag != nil {
+		if err := s.SaleTag.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScheduleInfo != nil {
+		if err := s.ScheduleInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubQuotaInfoList != nil {
+		for _, item := range s.SubQuotaInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetQuotaResponseBodyBillingPolicy struct {
@@ -692,7 +721,31 @@ func (s *GetQuotaResponseBodyData) SetVersion(v string) *GetQuotaResponseBodyDat
 }
 
 func (s *GetQuotaResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.BillingPolicy != nil {
+		if err := s.BillingPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SaleTag != nil {
+		if err := s.SaleTag.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScheduleInfo != nil {
+		if err := s.ScheduleInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubQuotaInfoList != nil {
+		for _, item := range s.SubQuotaInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetQuotaResponseBodyDataBillingPolicy struct {
@@ -1186,7 +1239,27 @@ func (s *GetQuotaResponseBodyDataSubQuotaInfoList) SetVersion(v string) *GetQuot
 }
 
 func (s *GetQuotaResponseBodyDataSubQuotaInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.BillingPolicy != nil {
+		if err := s.BillingPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Parameter != nil {
+		if err := s.Parameter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SaleTag != nil {
+		if err := s.SaleTag.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScheduleInfo != nil {
+		if err := s.ScheduleInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetQuotaResponseBodyDataSubQuotaInfoListBillingPolicy struct {
@@ -1955,7 +2028,27 @@ func (s *GetQuotaResponseBodySubQuotaInfoList) SetVersion(v string) *GetQuotaRes
 }
 
 func (s *GetQuotaResponseBodySubQuotaInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.BillingPolicy != nil {
+		if err := s.BillingPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Parameter != nil {
+		if err := s.Parameter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SaleTag != nil {
+		if err := s.SaleTag.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScheduleInfo != nil {
+		if err := s.ScheduleInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetQuotaResponseBodySubQuotaInfoListBillingPolicy struct {

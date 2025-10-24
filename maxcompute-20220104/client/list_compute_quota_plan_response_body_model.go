@@ -114,7 +114,12 @@ func (s *ListComputeQuotaPlanResponseBody) SetRequestId(v string) *ListComputeQu
 }
 
 func (s *ListComputeQuotaPlanResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListComputeQuotaPlanResponseBodyData struct {
@@ -140,7 +145,16 @@ func (s *ListComputeQuotaPlanResponseBodyData) SetPlanList(v []*ListComputeQuota
 }
 
 func (s *ListComputeQuotaPlanResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PlanList != nil {
+		for _, item := range s.PlanList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListComputeQuotaPlanResponseBodyDataPlanList struct {
@@ -196,7 +210,12 @@ func (s *ListComputeQuotaPlanResponseBodyDataPlanList) SetQuota(v *ListComputeQu
 }
 
 func (s *ListComputeQuotaPlanResponseBodyDataPlanList) Validate() error {
-	return dara.Validate(s)
+	if s.Quota != nil {
+		if err := s.Quota.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListComputeQuotaPlanResponseBodyDataPlanListQuota struct {
@@ -418,7 +437,21 @@ func (s *ListComputeQuotaPlanResponseBodyDataPlanListQuota) SetVersion(v string)
 }
 
 func (s *ListComputeQuotaPlanResponseBodyDataPlanListQuota) Validate() error {
-	return dara.Validate(s)
+	if s.Parameter != nil {
+		if err := s.Parameter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubQuotaInfoList != nil {
+		for _, item := range s.SubQuotaInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListComputeQuotaPlanResponseBodyDataPlanListQuotaParameter struct {
@@ -674,7 +707,12 @@ func (s *ListComputeQuotaPlanResponseBodyDataPlanListQuotaSubQuotaInfoList) SetV
 }
 
 func (s *ListComputeQuotaPlanResponseBodyDataPlanListQuotaSubQuotaInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.Parameter != nil {
+		if err := s.Parameter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListComputeQuotaPlanResponseBodyDataPlanListQuotaSubQuotaInfoListParameter struct {

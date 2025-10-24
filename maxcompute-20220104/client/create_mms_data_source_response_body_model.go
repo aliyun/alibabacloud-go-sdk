@@ -50,7 +50,12 @@ func (s *CreateMmsDataSourceResponseBody) SetRequestId(v string) *CreateMmsDataS
 }
 
 func (s *CreateMmsDataSourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateMmsDataSourceResponseBodyData struct {

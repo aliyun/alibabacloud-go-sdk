@@ -95,7 +95,12 @@ func (s *QueryTunnelMetricDetailResponseBody) SetRequestId(v string) *QueryTunne
 }
 
 func (s *QueryTunnelMetricDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryTunnelMetricDetailResponseBodyData struct {
@@ -133,7 +138,16 @@ func (s *QueryTunnelMetricDetailResponseBodyData) SetName(v string) *QueryTunnel
 }
 
 func (s *QueryTunnelMetricDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Metrics != nil {
+		for _, item := range s.Metrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryTunnelMetricDetailResponseBodyDataMetrics struct {

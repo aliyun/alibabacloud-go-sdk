@@ -114,7 +114,12 @@ func (s *ListComputeMetricsByInstanceResponseBody) SetRequestId(v string) *ListC
 }
 
 func (s *ListComputeMetricsByInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListComputeMetricsByInstanceResponseBodyData struct {
@@ -185,7 +190,16 @@ func (s *ListComputeMetricsByInstanceResponseBodyData) SetTotalCount(v int64) *L
 }
 
 func (s *ListComputeMetricsByInstanceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceComputeMetrics != nil {
+		for _, item := range s.InstanceComputeMetrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListComputeMetricsByInstanceResponseBodyDataInstanceComputeMetrics struct {

@@ -53,7 +53,12 @@ func (s *ListFunctionsResponseBody) SetRequestId(v string) *ListFunctionsRespons
 }
 
 func (s *ListFunctionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListFunctionsResponseBodyData struct {
@@ -109,7 +114,16 @@ func (s *ListFunctionsResponseBodyData) SetMaxItem(v int32) *ListFunctionsRespon
 }
 
 func (s *ListFunctionsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Functions != nil {
+		for _, item := range s.Functions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFunctionsResponseBodyDataFunctions struct {

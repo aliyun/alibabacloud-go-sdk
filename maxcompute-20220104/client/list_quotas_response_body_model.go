@@ -117,7 +117,21 @@ func (s *ListQuotasResponseBody) SetRequestId(v string) *ListQuotasResponseBody 
 }
 
 func (s *ListQuotasResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QuotaInfoList != nil {
+		for _, item := range s.QuotaInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQuotasResponseBodyData struct {
@@ -188,7 +202,16 @@ func (s *ListQuotasResponseBodyData) SetQuotaInfoList(v []*ListQuotasResponseBod
 }
 
 func (s *ListQuotasResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.QuotaInfoList != nil {
+		for _, item := range s.QuotaInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQuotasResponseBodyDataQuotaInfoList struct {
@@ -476,7 +499,40 @@ func (s *ListQuotasResponseBodyDataQuotaInfoList) SetVersion(v string) *ListQuot
 }
 
 func (s *ListQuotasResponseBodyDataQuotaInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BillingPolicy != nil {
+		if err := s.BillingPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SaleTag != nil {
+		if err := s.SaleTag.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScheduleInfo != nil {
+		if err := s.ScheduleInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubQuotaInfoList != nil {
+		for _, item := range s.SubQuotaInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQuotasResponseBodyDataQuotaInfoListTags struct {
@@ -1027,7 +1083,27 @@ func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList) SetVersion(v s
 }
 
 func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.BillingPolicy != nil {
+		if err := s.BillingPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Parameter != nil {
+		if err := s.Parameter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SaleTag != nil {
+		if err := s.SaleTag.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScheduleInfo != nil {
+		if err := s.ScheduleInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListBillingPolicy struct {
@@ -1095,6 +1171,7 @@ func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListBillingPolicy) V
 }
 
 type ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter struct {
+	AdhocSlot         *int64 `json:"adhocSlot,omitempty" xml:"adhocSlot,omitempty"`
 	ElasticReservedCU *int64 `json:"elasticReservedCU,omitempty" xml:"elasticReservedCU,omitempty"`
 	EnablePriority    *bool  `json:"enablePriority,omitempty" xml:"enablePriority,omitempty"`
 	ForceReservedMin  *bool  `json:"forceReservedMin,omitempty" xml:"forceReservedMin,omitempty"`
@@ -1104,6 +1181,7 @@ type ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter struct {
 	MinCU            *int64  `json:"minCU,omitempty" xml:"minCU,omitempty"`
 	SchedulerType    *string `json:"schedulerType,omitempty" xml:"schedulerType,omitempty"`
 	SingleJobCULimit *int64  `json:"singleJobCULimit,omitempty" xml:"singleJobCULimit,omitempty"`
+	SlotNum          *int64  `json:"slotNum,omitempty" xml:"slotNum,omitempty"`
 }
 
 func (s ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) String() string {
@@ -1112,6 +1190,10 @@ func (s ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) String
 
 func (s ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) GoString() string {
 	return s.String()
+}
+
+func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) GetAdhocSlot() *int64 {
+	return s.AdhocSlot
 }
 
 func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) GetElasticReservedCU() *int64 {
@@ -1140,6 +1222,15 @@ func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) GetSc
 
 func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) GetSingleJobCULimit() *int64 {
 	return s.SingleJobCULimit
+}
+
+func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) GetSlotNum() *int64 {
+	return s.SlotNum
+}
+
+func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) SetAdhocSlot(v int64) *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter {
+	s.AdhocSlot = &v
+	return s
 }
 
 func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) SetElasticReservedCU(v int64) *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter {
@@ -1174,6 +1265,11 @@ func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) SetSc
 
 func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) SetSingleJobCULimit(v int64) *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter {
 	s.SingleJobCULimit = &v
+	return s
+}
+
+func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) SetSlotNum(v int64) *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter {
+	s.SlotNum = &v
 	return s
 }
 
@@ -1642,7 +1738,40 @@ func (s *ListQuotasResponseBodyQuotaInfoList) SetVersion(v string) *ListQuotasRe
 }
 
 func (s *ListQuotasResponseBodyQuotaInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BillingPolicy != nil {
+		if err := s.BillingPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SaleTag != nil {
+		if err := s.SaleTag.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScheduleInfo != nil {
+		if err := s.ScheduleInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubQuotaInfoList != nil {
+		for _, item := range s.SubQuotaInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQuotasResponseBodyQuotaInfoListTags struct {
@@ -2193,7 +2322,27 @@ func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoList) SetVersion(v strin
 }
 
 func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.BillingPolicy != nil {
+		if err := s.BillingPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Parameter != nil {
+		if err := s.Parameter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SaleTag != nil {
+		if err := s.SaleTag.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScheduleInfo != nil {
+		if err := s.ScheduleInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListBillingPolicy struct {
@@ -2261,15 +2410,19 @@ func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListBillingPolicy) Valid
 }
 
 type ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter struct {
+	AdhocSlot         *int64 `json:"adhocSlot,omitempty" xml:"adhocSlot,omitempty"`
 	ElasticReservedCU *int64 `json:"elasticReservedCU,omitempty" xml:"elasticReservedCU,omitempty"`
 	EnablePriority    *bool  `json:"enablePriority,omitempty" xml:"enablePriority,omitempty"`
 	ForceReservedMin  *bool  `json:"forceReservedMin,omitempty" xml:"forceReservedMin,omitempty"`
 	// This parameter is required.
 	MaxCU *int64 `json:"maxCU,omitempty" xml:"maxCU,omitempty"`
+	MaxGu *int64 `json:"maxGu,omitempty" xml:"maxGu,omitempty"`
 	// This parameter is required.
 	MinCU            *int64  `json:"minCU,omitempty" xml:"minCU,omitempty"`
+	MinGu            *int64  `json:"minGu,omitempty" xml:"minGu,omitempty"`
 	SchedulerType    *string `json:"schedulerType,omitempty" xml:"schedulerType,omitempty"`
 	SingleJobCULimit *int64  `json:"singleJobCULimit,omitempty" xml:"singleJobCULimit,omitempty"`
+	SlotNum          *int64  `json:"slotNum,omitempty" xml:"slotNum,omitempty"`
 }
 
 func (s ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) String() string {
@@ -2278,6 +2431,10 @@ func (s ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) String() s
 
 func (s ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) GoString() string {
 	return s.String()
+}
+
+func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) GetAdhocSlot() *int64 {
+	return s.AdhocSlot
 }
 
 func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) GetElasticReservedCU() *int64 {
@@ -2296,8 +2453,16 @@ func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) GetMaxCU(
 	return s.MaxCU
 }
 
+func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) GetMaxGu() *int64 {
+	return s.MaxGu
+}
+
 func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) GetMinCU() *int64 {
 	return s.MinCU
+}
+
+func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) GetMinGu() *int64 {
+	return s.MinGu
 }
 
 func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) GetSchedulerType() *string {
@@ -2306,6 +2471,15 @@ func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) GetSchedu
 
 func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) GetSingleJobCULimit() *int64 {
 	return s.SingleJobCULimit
+}
+
+func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) GetSlotNum() *int64 {
+	return s.SlotNum
+}
+
+func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) SetAdhocSlot(v int64) *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter {
+	s.AdhocSlot = &v
+	return s
 }
 
 func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) SetElasticReservedCU(v int64) *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter {
@@ -2328,8 +2502,18 @@ func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) SetMaxCU(
 	return s
 }
 
+func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) SetMaxGu(v int64) *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter {
+	s.MaxGu = &v
+	return s
+}
+
 func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) SetMinCU(v int64) *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter {
 	s.MinCU = &v
+	return s
+}
+
+func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) SetMinGu(v int64) *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter {
+	s.MinGu = &v
 	return s
 }
 
@@ -2340,6 +2524,11 @@ func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) SetSchedu
 
 func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) SetSingleJobCULimit(v int64) *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter {
 	s.SingleJobCULimit = &v
+	return s
+}
+
+func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) SetSlotNum(v int64) *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter {
+	s.SlotNum = &v
 	return s
 }
 

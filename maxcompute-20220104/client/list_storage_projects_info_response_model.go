@@ -59,5 +59,10 @@ func (s *ListStorageProjectsInfoResponse) SetBody(v *ListStorageProjectsInfoResp
 }
 
 func (s *ListStorageProjectsInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

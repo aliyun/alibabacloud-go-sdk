@@ -114,7 +114,16 @@ func (s *ListTunnelQuotaTimerResponseBody) SetRequestId(v string) *ListTunnelQuo
 }
 
 func (s *ListTunnelQuotaTimerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTunnelQuotaTimerResponseBodyData struct {
@@ -185,7 +194,12 @@ func (s *ListTunnelQuotaTimerResponseBodyData) SetTunnelQuotaParameter(v *ListTu
 }
 
 func (s *ListTunnelQuotaTimerResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.TunnelQuotaParameter != nil {
+		if err := s.TunnelQuotaParameter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTunnelQuotaTimerResponseBodyDataTunnelQuotaParameter struct {

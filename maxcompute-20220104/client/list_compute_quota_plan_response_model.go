@@ -59,5 +59,10 @@ func (s *ListComputeQuotaPlanResponse) SetBody(v *ListComputeQuotaPlanResponseBo
 }
 
 func (s *ListComputeQuotaPlanResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

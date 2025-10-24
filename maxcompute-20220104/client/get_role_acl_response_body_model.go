@@ -104,7 +104,12 @@ func (s *GetRoleAclResponseBody) SetRequestId(v string) *GetRoleAclResponseBody 
 }
 
 func (s *GetRoleAclResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRoleAclResponseBodyData struct {
@@ -185,7 +190,61 @@ func (s *GetRoleAclResponseBodyData) SetTable(v []*GetRoleAclResponseBodyDataTab
 }
 
 func (s *GetRoleAclResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Function != nil {
+		for _, item := range s.Function {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Instance != nil {
+		for _, item := range s.Instance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Package != nil {
+		for _, item := range s.Package {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Project != nil {
+		for _, item := range s.Project {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Resource != nil {
+		for _, item := range s.Resource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Table != nil {
+		for _, item := range s.Table {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRoleAclResponseBodyDataFunction struct {

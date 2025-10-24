@@ -59,5 +59,10 @@ func (s *RetryMmsJobResponse) SetBody(v *RetryMmsJobResponseBody) *RetryMmsJobRe
 }
 
 func (s *RetryMmsJobResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

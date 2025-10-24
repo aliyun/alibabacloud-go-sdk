@@ -50,7 +50,12 @@ func (s *ListMmsPartitionsResponseBody) SetRequestId(v string) *ListMmsPartition
 }
 
 func (s *ListMmsPartitionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMmsPartitionsResponseBodyData struct {
@@ -114,18 +119,40 @@ func (s *ListMmsPartitionsResponseBodyData) SetTotal(v int32) *ListMmsPartitions
 }
 
 func (s *ListMmsPartitionsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ObjectList != nil {
+		for _, item := range s.ObjectList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMmsPartitionsResponseBodyDataObjectList struct {
-	// example:
-	//
-	// 2
-	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	DbId *int64 `json:"dbId,omitempty" xml:"dbId,omitempty"`
 	// example:
 	//
 	// d1
 	DbName *string `json:"dbName,omitempty" xml:"dbName,omitempty"`
+	// example:
+	//
+	// mms_test
+	DstProjectName *string `json:"dstProjectName,omitempty" xml:"dstProjectName,omitempty"`
+	// example:
+	//
+	// default
+	DstSchemaName *string `json:"dstSchemaName,omitempty" xml:"dstSchemaName,omitempty"`
+	// example:
+	//
+	// default
+	DstTableName *string `json:"dstTableName,omitempty" xml:"dstTableName,omitempty"`
+	// example:
+	//
+	// p1=1/p2=abc
+	DstValue *string `json:"dstValue,omitempty" xml:"dstValue,omitempty"`
 	// example:
 	//
 	// 2323
@@ -190,6 +217,22 @@ func (s *ListMmsPartitionsResponseBodyDataObjectList) GetDbName() *string {
 	return s.DbName
 }
 
+func (s *ListMmsPartitionsResponseBodyDataObjectList) GetDstProjectName() *string {
+	return s.DstProjectName
+}
+
+func (s *ListMmsPartitionsResponseBodyDataObjectList) GetDstSchemaName() *string {
+	return s.DstSchemaName
+}
+
+func (s *ListMmsPartitionsResponseBodyDataObjectList) GetDstTableName() *string {
+	return s.DstTableName
+}
+
+func (s *ListMmsPartitionsResponseBodyDataObjectList) GetDstValue() *string {
+	return s.DstValue
+}
+
 func (s *ListMmsPartitionsResponseBodyDataObjectList) GetId() *int64 {
 	return s.Id
 }
@@ -241,6 +284,26 @@ func (s *ListMmsPartitionsResponseBodyDataObjectList) SetDbId(v int64) *ListMmsP
 
 func (s *ListMmsPartitionsResponseBodyDataObjectList) SetDbName(v string) *ListMmsPartitionsResponseBodyDataObjectList {
 	s.DbName = &v
+	return s
+}
+
+func (s *ListMmsPartitionsResponseBodyDataObjectList) SetDstProjectName(v string) *ListMmsPartitionsResponseBodyDataObjectList {
+	s.DstProjectName = &v
+	return s
+}
+
+func (s *ListMmsPartitionsResponseBodyDataObjectList) SetDstSchemaName(v string) *ListMmsPartitionsResponseBodyDataObjectList {
+	s.DstSchemaName = &v
+	return s
+}
+
+func (s *ListMmsPartitionsResponseBodyDataObjectList) SetDstTableName(v string) *ListMmsPartitionsResponseBodyDataObjectList {
+	s.DstTableName = &v
+	return s
+}
+
+func (s *ListMmsPartitionsResponseBodyDataObjectList) SetDstValue(v string) *ListMmsPartitionsResponseBodyDataObjectList {
+	s.DstValue = &v
 	return s
 }
 

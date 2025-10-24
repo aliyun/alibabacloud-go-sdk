@@ -53,7 +53,12 @@ func (s *ListRolesResponseBody) SetRequestId(v string) *ListRolesResponseBody {
 }
 
 func (s *ListRolesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRolesResponseBodyData struct {
@@ -79,7 +84,16 @@ func (s *ListRolesResponseBodyData) SetRoles(v []*ListRolesResponseBodyDataRoles
 }
 
 func (s *ListRolesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Roles != nil {
+		for _, item := range s.Roles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRolesResponseBodyDataRoles struct {
@@ -176,7 +190,12 @@ func (s *ListRolesResponseBodyDataRoles) SetType(v string) *ListRolesResponseBod
 }
 
 func (s *ListRolesResponseBodyDataRoles) Validate() error {
-	return dara.Validate(s)
+	if s.Acl != nil {
+		if err := s.Acl.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRolesResponseBodyDataRolesAcl struct {
@@ -257,7 +276,61 @@ func (s *ListRolesResponseBodyDataRolesAcl) SetTable(v []*ListRolesResponseBodyD
 }
 
 func (s *ListRolesResponseBodyDataRolesAcl) Validate() error {
-	return dara.Validate(s)
+	if s.Function != nil {
+		for _, item := range s.Function {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Instance != nil {
+		for _, item := range s.Instance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Package != nil {
+		for _, item := range s.Package {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Project != nil {
+		for _, item := range s.Project {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Resource != nil {
+		for _, item := range s.Resource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Table != nil {
+		for _, item := range s.Table {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRolesResponseBodyDataRolesAclFunction struct {

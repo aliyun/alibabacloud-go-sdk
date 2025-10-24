@@ -185,7 +185,12 @@ func (s *ListMmsTasksRequest) SetStatus(v string) *ListMmsTasksRequest {
 }
 
 func (s *ListMmsTasksRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Sorter != nil {
+		if err := s.Sorter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMmsTasksRequestSorter struct {

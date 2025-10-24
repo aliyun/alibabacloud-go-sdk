@@ -106,7 +106,12 @@ func (s *GetRunningJobsResponseBody) SetRequestId(v string) *GetRunningJobsRespo
 }
 
 func (s *GetRunningJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRunningJobsResponseBodyData struct {
@@ -177,7 +182,16 @@ func (s *GetRunningJobsResponseBodyData) SetTotalCount(v int64) *GetRunningJobsR
 }
 
 func (s *GetRunningJobsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.RunningJobInfoList != nil {
+		for _, item := range s.RunningJobInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRunningJobsResponseBodyDataRunningJobInfoList struct {

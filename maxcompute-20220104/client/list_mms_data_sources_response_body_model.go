@@ -50,7 +50,12 @@ func (s *ListMmsDataSourcesResponseBody) SetRequestId(v string) *ListMmsDataSour
 }
 
 func (s *ListMmsDataSourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMmsDataSourcesResponseBodyData struct {
@@ -114,7 +119,16 @@ func (s *ListMmsDataSourcesResponseBodyData) SetTotal(v int32) *ListMmsDataSourc
 }
 
 func (s *ListMmsDataSourcesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ObjectList != nil {
+		for _, item := range s.ObjectList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMmsDataSourcesResponseBodyDataObjectList struct {
@@ -131,6 +145,11 @@ type ListMmsDataSourcesResponseBodyDataObjectList struct {
 	//
 	// 3
 	DbNum *int32 `json:"dbNum,omitempty" xml:"dbNum,omitempty"`
+	// example:
+	//
+	// mms_test
+	DstProject  *string   `json:"dstProject,omitempty" xml:"dstProject,omitempty"`
+	DstProjects []*string `json:"dstProjects,omitempty" xml:"dstProjects,omitempty" type:"Repeated"`
 	// example:
 	//
 	// unexpected exception
@@ -229,6 +248,14 @@ func (s *ListMmsDataSourcesResponseBodyDataObjectList) GetDbNum() *int32 {
 	return s.DbNum
 }
 
+func (s *ListMmsDataSourcesResponseBodyDataObjectList) GetDstProject() *string {
+	return s.DstProject
+}
+
+func (s *ListMmsDataSourcesResponseBodyDataObjectList) GetDstProjects() []*string {
+	return s.DstProjects
+}
+
 func (s *ListMmsDataSourcesResponseBodyDataObjectList) GetErrMsg() *string {
 	return s.ErrMsg
 }
@@ -318,6 +345,16 @@ func (s *ListMmsDataSourcesResponseBodyDataObjectList) SetCreateTime(v string) *
 
 func (s *ListMmsDataSourcesResponseBodyDataObjectList) SetDbNum(v int32) *ListMmsDataSourcesResponseBodyDataObjectList {
 	s.DbNum = &v
+	return s
+}
+
+func (s *ListMmsDataSourcesResponseBodyDataObjectList) SetDstProject(v string) *ListMmsDataSourcesResponseBodyDataObjectList {
+	s.DstProject = &v
+	return s
+}
+
+func (s *ListMmsDataSourcesResponseBodyDataObjectList) SetDstProjects(v []*string) *ListMmsDataSourcesResponseBodyDataObjectList {
+	s.DstProjects = v
 	return s
 }
 
@@ -412,7 +449,16 @@ func (s *ListMmsDataSourcesResponseBodyDataObjectList) SetType(v string) *ListMm
 }
 
 func (s *ListMmsDataSourcesResponseBodyDataObjectList) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		for _, item := range s.Config {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMmsDataSourcesResponseBodyDataObjectListConfig struct {

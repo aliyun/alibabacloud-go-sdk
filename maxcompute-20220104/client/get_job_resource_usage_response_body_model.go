@@ -104,7 +104,12 @@ func (s *GetJobResourceUsageResponseBody) SetRequestId(v string) *GetJobResource
 }
 
 func (s *GetJobResourceUsageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetJobResourceUsageResponseBodyData struct {
@@ -175,7 +180,16 @@ func (s *GetJobResourceUsageResponseBodyData) SetTotalCount(v int64) *GetJobReso
 }
 
 func (s *GetJobResourceUsageResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.JobResourceUsageList != nil {
+		for _, item := range s.JobResourceUsageList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetJobResourceUsageResponseBodyDataJobResourceUsageList struct {

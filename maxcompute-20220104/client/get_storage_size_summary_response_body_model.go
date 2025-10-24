@@ -95,7 +95,12 @@ func (s *GetStorageSizeSummaryResponseBody) SetRequestId(v string) *GetStorageSi
 }
 
 func (s *GetStorageSizeSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStorageSizeSummaryResponseBodyData struct {

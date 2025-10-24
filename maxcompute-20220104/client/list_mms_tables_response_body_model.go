@@ -50,7 +50,12 @@ func (s *ListMmsTablesResponseBody) SetRequestId(v string) *ListMmsTablesRespons
 }
 
 func (s *ListMmsTablesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMmsTablesResponseBodyData struct {
@@ -114,7 +119,16 @@ func (s *ListMmsTablesResponseBodyData) SetTotal(v int32) *ListMmsTablesResponse
 }
 
 func (s *ListMmsTablesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ObjectList != nil {
+		for _, item := range s.ObjectList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMmsTablesResponseBodyDataObjectList struct {
@@ -126,6 +140,18 @@ type ListMmsTablesResponseBodyDataObjectList struct {
 	//
 	// demo
 	DbName *string `json:"dbName,omitempty" xml:"dbName,omitempty"`
+	// example:
+	//
+	// test
+	DstName *string `json:"dstName,omitempty" xml:"dstName,omitempty"`
+	// example:
+	//
+	// mms_test
+	DstProjectName *string `json:"dstProjectName,omitempty" xml:"dstProjectName,omitempty"`
+	// example:
+	//
+	// default
+	DstSchemaName *string `json:"dstSchemaName,omitempty" xml:"dstSchemaName,omitempty"`
 	// example:
 	//
 	// {"mapkey.delim":":","collection.delim":",","serialization.format":"|","field.delim":"|"}
@@ -239,6 +265,18 @@ func (s *ListMmsTablesResponseBodyDataObjectList) GetDbName() *string {
 	return s.DbName
 }
 
+func (s *ListMmsTablesResponseBodyDataObjectList) GetDstName() *string {
+	return s.DstName
+}
+
+func (s *ListMmsTablesResponseBodyDataObjectList) GetDstProjectName() *string {
+	return s.DstProjectName
+}
+
+func (s *ListMmsTablesResponseBodyDataObjectList) GetDstSchemaName() *string {
+	return s.DstSchemaName
+}
+
 func (s *ListMmsTablesResponseBodyDataObjectList) GetExtra() *string {
 	return s.Extra
 }
@@ -334,6 +372,21 @@ func (s *ListMmsTablesResponseBodyDataObjectList) SetDbId(v int64) *ListMmsTable
 
 func (s *ListMmsTablesResponseBodyDataObjectList) SetDbName(v string) *ListMmsTablesResponseBodyDataObjectList {
 	s.DbName = &v
+	return s
+}
+
+func (s *ListMmsTablesResponseBodyDataObjectList) SetDstName(v string) *ListMmsTablesResponseBodyDataObjectList {
+	s.DstName = &v
+	return s
+}
+
+func (s *ListMmsTablesResponseBodyDataObjectList) SetDstProjectName(v string) *ListMmsTablesResponseBodyDataObjectList {
+	s.DstProjectName = &v
+	return s
+}
+
+func (s *ListMmsTablesResponseBodyDataObjectList) SetDstSchemaName(v string) *ListMmsTablesResponseBodyDataObjectList {
+	s.DstSchemaName = &v
 	return s
 }
 
@@ -448,7 +501,12 @@ func (s *ListMmsTablesResponseBodyDataObjectList) SetUpdated(v bool) *ListMmsTab
 }
 
 func (s *ListMmsTablesResponseBodyDataObjectList) Validate() error {
-	return dara.Validate(s)
+	if s.Schema != nil {
+		if err := s.Schema.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMmsTablesResponseBodyDataObjectListSchema struct {
@@ -509,7 +567,25 @@ func (s *ListMmsTablesResponseBodyDataObjectListSchema) SetPartitions(v []*ListM
 }
 
 func (s *ListMmsTablesResponseBodyDataObjectListSchema) Validate() error {
-	return dara.Validate(s)
+	if s.Columns != nil {
+		for _, item := range s.Columns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Partitions != nil {
+		for _, item := range s.Partitions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMmsTablesResponseBodyDataObjectListSchemaColumns struct {

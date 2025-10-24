@@ -59,5 +59,10 @@ func (s *ListMmsPartitionsResponse) SetBody(v *ListMmsPartitionsResponseBody) *L
 }
 
 func (s *ListMmsPartitionsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

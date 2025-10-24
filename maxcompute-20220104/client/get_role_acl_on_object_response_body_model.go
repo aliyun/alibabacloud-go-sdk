@@ -53,7 +53,12 @@ func (s *GetRoleAclOnObjectResponseBody) SetRequestId(v string) *GetRoleAclOnObj
 }
 
 func (s *GetRoleAclOnObjectResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRoleAclOnObjectResponseBodyData struct {

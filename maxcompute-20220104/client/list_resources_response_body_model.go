@@ -53,7 +53,12 @@ func (s *ListResourcesResponseBody) SetRequestId(v string) *ListResourcesRespons
 }
 
 func (s *ListResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListResourcesResponseBodyData struct {
@@ -109,7 +114,16 @@ func (s *ListResourcesResponseBodyData) SetResources(v []*ListResourcesResponseB
 }
 
 func (s *ListResourcesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Resources != nil {
+		for _, item := range s.Resources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourcesResponseBodyDataResources struct {

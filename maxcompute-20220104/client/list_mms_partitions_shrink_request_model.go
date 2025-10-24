@@ -25,6 +25,8 @@ type iListMmsPartitionsShrinkRequest interface {
 	GetPageSize() *int32
 	SetStatusShrink(v string) *ListMmsPartitionsShrinkRequest
 	GetStatusShrink() *string
+	SetTableId(v int64) *ListMmsPartitionsShrinkRequest
+	GetTableId() *int64
 	SetTableName(v string) *ListMmsPartitionsShrinkRequest
 	GetTableName() *string
 	SetUpdated(v bool) *ListMmsPartitionsShrinkRequest
@@ -60,6 +62,10 @@ type ListMmsPartitionsShrinkRequest struct {
 	// 100
 	PageSize     *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	StatusShrink *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 20323
+	TableId *int64 `json:"tableId,omitempty" xml:"tableId,omitempty"`
 	// example:
 	//
 	// t1
@@ -114,6 +120,10 @@ func (s *ListMmsPartitionsShrinkRequest) GetStatusShrink() *string {
 	return s.StatusShrink
 }
 
+func (s *ListMmsPartitionsShrinkRequest) GetTableId() *int64 {
+	return s.TableId
+}
+
 func (s *ListMmsPartitionsShrinkRequest) GetTableName() *string {
 	return s.TableName
 }
@@ -166,6 +176,11 @@ func (s *ListMmsPartitionsShrinkRequest) SetStatusShrink(v string) *ListMmsParti
 	return s
 }
 
+func (s *ListMmsPartitionsShrinkRequest) SetTableId(v int64) *ListMmsPartitionsShrinkRequest {
+	s.TableId = &v
+	return s
+}
+
 func (s *ListMmsPartitionsShrinkRequest) SetTableName(v string) *ListMmsPartitionsShrinkRequest {
 	s.TableName = &v
 	return s
@@ -182,7 +197,12 @@ func (s *ListMmsPartitionsShrinkRequest) SetValue(v string) *ListMmsPartitionsSh
 }
 
 func (s *ListMmsPartitionsShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Sorter != nil {
+		if err := s.Sorter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMmsPartitionsShrinkRequestSorter struct {

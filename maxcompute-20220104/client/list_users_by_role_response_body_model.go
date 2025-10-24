@@ -53,7 +53,12 @@ func (s *ListUsersByRoleResponseBody) SetRequestId(v string) *ListUsersByRoleRes
 }
 
 func (s *ListUsersByRoleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUsersByRoleResponseBodyData struct {
@@ -79,7 +84,16 @@ func (s *ListUsersByRoleResponseBodyData) SetUsers(v []*ListUsersByRoleResponseB
 }
 
 func (s *ListUsersByRoleResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Users != nil {
+		for _, item := range s.Users {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUsersByRoleResponseBodyDataUsers struct {

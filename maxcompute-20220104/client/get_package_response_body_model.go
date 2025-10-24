@@ -104,7 +104,12 @@ func (s *GetPackageResponseBody) SetRequestId(v string) *GetPackageResponseBody 
 }
 
 func (s *GetPackageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPackageResponseBodyData struct {
@@ -141,7 +146,21 @@ func (s *GetPackageResponseBodyData) SetResourceList(v *GetPackageResponseBodyDa
 }
 
 func (s *GetPackageResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AllowedProjectList != nil {
+		for _, item := range s.AllowedProjectList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResourceList != nil {
+		if err := s.ResourceList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPackageResponseBodyDataAllowedProjectList struct {
@@ -234,7 +253,34 @@ func (s *GetPackageResponseBodyDataResourceList) SetTable(v []*GetPackageRespons
 }
 
 func (s *GetPackageResponseBodyDataResourceList) Validate() error {
-	return dara.Validate(s)
+	if s.Function != nil {
+		for _, item := range s.Function {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Resource != nil {
+		for _, item := range s.Resource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Table != nil {
+		for _, item := range s.Table {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPackageResponseBodyDataResourceListFunction struct {

@@ -53,7 +53,12 @@ func (s *ListTablesResponseBody) SetRequestId(v string) *ListTablesResponseBody 
 }
 
 func (s *ListTablesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTablesResponseBodyData struct {
@@ -109,7 +114,16 @@ func (s *ListTablesResponseBodyData) SetTables(v []*ListTablesResponseBodyDataTa
 }
 
 func (s *ListTablesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Tables != nil {
+		for _, item := range s.Tables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTablesResponseBodyDataTables struct {

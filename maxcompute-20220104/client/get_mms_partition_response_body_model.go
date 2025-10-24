@@ -50,18 +50,36 @@ func (s *GetMmsPartitionResponseBody) SetRequestId(v string) *GetMmsPartitionRes
 }
 
 func (s *GetMmsPartitionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMmsPartitionResponseBodyData struct {
-	// example:
-	//
-	// 2
-	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	DbId *int64 `json:"dbId,omitempty" xml:"dbId,omitempty"`
 	// example:
 	//
 	// d1
 	DbName *string `json:"dbName,omitempty" xml:"dbName,omitempty"`
+	// example:
+	//
+	// mms_test
+	DstProjectName *string `json:"dstProjectName,omitempty" xml:"dstProjectName,omitempty"`
+	// example:
+	//
+	// default
+	DstSchemaName *string `json:"dstSchemaName,omitempty" xml:"dstSchemaName,omitempty"`
+	// example:
+	//
+	// test
+	DstTableName *string `json:"dstTableName,omitempty" xml:"dstTableName,omitempty"`
+	// example:
+	//
+	// p1=1/p2=abc
+	DstValue *string `json:"dstValue,omitempty" xml:"dstValue,omitempty"`
 	// example:
 	//
 	// 2323
@@ -126,6 +144,22 @@ func (s *GetMmsPartitionResponseBodyData) GetDbName() *string {
 	return s.DbName
 }
 
+func (s *GetMmsPartitionResponseBodyData) GetDstProjectName() *string {
+	return s.DstProjectName
+}
+
+func (s *GetMmsPartitionResponseBodyData) GetDstSchemaName() *string {
+	return s.DstSchemaName
+}
+
+func (s *GetMmsPartitionResponseBodyData) GetDstTableName() *string {
+	return s.DstTableName
+}
+
+func (s *GetMmsPartitionResponseBodyData) GetDstValue() *string {
+	return s.DstValue
+}
+
 func (s *GetMmsPartitionResponseBodyData) GetId() *int64 {
 	return s.Id
 }
@@ -177,6 +211,26 @@ func (s *GetMmsPartitionResponseBodyData) SetDbId(v int64) *GetMmsPartitionRespo
 
 func (s *GetMmsPartitionResponseBodyData) SetDbName(v string) *GetMmsPartitionResponseBodyData {
 	s.DbName = &v
+	return s
+}
+
+func (s *GetMmsPartitionResponseBodyData) SetDstProjectName(v string) *GetMmsPartitionResponseBodyData {
+	s.DstProjectName = &v
+	return s
+}
+
+func (s *GetMmsPartitionResponseBodyData) SetDstSchemaName(v string) *GetMmsPartitionResponseBodyData {
+	s.DstSchemaName = &v
+	return s
+}
+
+func (s *GetMmsPartitionResponseBodyData) SetDstTableName(v string) *GetMmsPartitionResponseBodyData {
+	s.DstTableName = &v
+	return s
+}
+
+func (s *GetMmsPartitionResponseBodyData) SetDstValue(v string) *GetMmsPartitionResponseBodyData {
+	s.DstValue = &v
 	return s
 }
 
