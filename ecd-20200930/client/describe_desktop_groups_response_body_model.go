@@ -83,6 +83,7 @@ func (s *DescribeDesktopGroupsResponseBody) Validate() error {
 }
 
 type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// The number of concurrent sessions allowed for each cloud computer within the multi-session many-to-many share.
 	//
 	// example:
@@ -176,7 +177,8 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	// example:
 	//
 	// 1
-	EndUserCount *int32 `json:"EndUserCount,omitempty" xml:"EndUserCount,omitempty"`
+	EndUserCount    *int32  `json:"EndUserCount,omitempty" xml:"EndUserCount,omitempty"`
+	EntraDomainName *string `json:"EntraDomainName,omitempty" xml:"EntraDomainName,omitempty"`
 	// The expiration date of the subscription cloud computer share.
 	//
 	// example:
@@ -493,6 +495,10 @@ func (s DescribeDesktopGroupsResponseBodyDesktopGroups) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) GetAccountType() *string {
+	return s.AccountType
+}
+
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) GetBindAmount() *int64 {
 	return s.BindAmount
 }
@@ -551,6 +557,10 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) GetDesktopType() *strin
 
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) GetEndUserCount() *int32 {
 	return s.EndUserCount
+}
+
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) GetEntraDomainName() *string {
+	return s.EntraDomainName
 }
 
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) GetExpiredTime() *string {
@@ -713,6 +723,11 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) GetVolumeEncryptionKey(
 	return s.VolumeEncryptionKey
 }
 
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetAccountType(v string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
+	s.AccountType = &v
+	return s
+}
+
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetBindAmount(v int64) *DescribeDesktopGroupsResponseBodyDesktopGroups {
 	s.BindAmount = &v
 	return s
@@ -785,6 +800,11 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetDesktopType(v string
 
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetEndUserCount(v int32) *DescribeDesktopGroupsResponseBodyDesktopGroups {
 	s.EndUserCount = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetEntraDomainName(v string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
+	s.EntraDomainName = &v
 	return s
 }
 

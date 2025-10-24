@@ -4828,6 +4828,14 @@ func (client *Client) CreateSimpleOfficeSiteWithContext(ctx context.Context, req
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountType) {
+		query["AccountType"] = request.AccountType
+	}
+
+	if !dara.IsNil(request.AuthorityHost) {
+		query["AuthorityHost"] = request.AuthorityHost
+	}
+
 	if !dara.IsNil(request.Bandwidth) {
 		query["Bandwidth"] = request.Bandwidth
 	}
@@ -4844,12 +4852,24 @@ func (client *Client) CreateSimpleOfficeSiteWithContext(ctx context.Context, req
 		query["CidrBlock"] = request.CidrBlock
 	}
 
+	if !dara.IsNil(request.ClientId) {
+		query["ClientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.ClientSecret) {
+		query["ClientSecret"] = request.ClientSecret
+	}
+
 	if !dara.IsNil(request.CloudBoxOfficeSite) {
 		query["CloudBoxOfficeSite"] = request.CloudBoxOfficeSite
 	}
 
 	if !dara.IsNil(request.DesktopAccessType) {
 		query["DesktopAccessType"] = request.DesktopAccessType
+	}
+
+	if !dara.IsNil(request.DomainName) {
+		query["DomainName"] = request.DomainName
 	}
 
 	if !dara.IsNil(request.EnableAdminAccess) {
@@ -4870,6 +4890,10 @@ func (client *Client) CreateSimpleOfficeSiteWithContext(ctx context.Context, req
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
 	}
 
 	if !dara.IsNil(request.VSwitchId) {
@@ -9034,6 +9058,106 @@ func (client *Client) DescribeFotaTasksWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeFotaTasksResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询全局桌面记录
+//
+// @param request - DescribeGlobalDesktopRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGlobalDesktopRecordsResponse
+func (client *Client) DescribeGlobalDesktopRecordsWithContext(ctx context.Context, request *DescribeGlobalDesktopRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeGlobalDesktopRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DesktopId) {
+		query["DesktopId"] = request.DesktopId
+	}
+
+	if !dara.IsNil(request.DesktopName) {
+		query["DesktopName"] = request.DesktopName
+	}
+
+	if !dara.IsNil(request.DesktopType) {
+		query["DesktopType"] = request.DesktopType
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EndUserId) {
+		query["EndUserId"] = request.EndUserId
+	}
+
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Scope) {
+		query["Scope"] = request.Scope
+	}
+
+	if !dara.IsNil(request.SortType) {
+		query["SortType"] = request.SortType
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.SubPayType) {
+		query["SubPayType"] = request.SubPayType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeGlobalDesktopRecords"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeGlobalDesktopRecordsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -15909,8 +16033,24 @@ func (client *Client) ModifyOfficeSiteAttributeWithContext(ctx context.Context, 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorityHost) {
+		query["AuthorityHost"] = request.AuthorityHost
+	}
+
+	if !dara.IsNil(request.ClientId) {
+		query["ClientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.ClientSecret) {
+		query["ClientSecret"] = request.ClientSecret
+	}
+
 	if !dara.IsNil(request.DesktopAccessType) {
 		query["DesktopAccessType"] = request.DesktopAccessType
+	}
+
+	if !dara.IsNil(request.DomainName) {
+		query["DomainName"] = request.DomainName
 	}
 
 	if !dara.IsNil(request.EnableAdminAccess) {
@@ -15935,6 +16075,10 @@ func (client *Client) ModifyOfficeSiteAttributeWithContext(ctx context.Context, 
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
 	}
 
 	req := &openapiutil.OpenApiRequest{

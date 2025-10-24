@@ -134,6 +134,7 @@ func (s *DescribeDesktopsResponseBody) Validate() error {
 }
 
 type DescribeDesktopsResponseBodyDesktops struct {
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// The number of concurrent sessions of each cloud computer in a multi-session cloud computer pool.
 	//
 	// example:
@@ -279,7 +280,8 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	// 0
 	DowngradedTimes *int64 `json:"DowngradedTimes,omitempty" xml:"DowngradedTimes,omitempty"`
 	// The end user IDs.
-	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	EndUserIds      []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	EntraDomainName *string   `json:"EntraDomainName,omitempty" xml:"EntraDomainName,omitempty"`
 	// The time when a subscription cloud computer expired.
 	//
 	// example:
@@ -571,6 +573,10 @@ func (s DescribeDesktopsResponseBodyDesktops) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDesktopsResponseBodyDesktops) GetAccountType() *string {
+	return s.AccountType
+}
+
 func (s *DescribeDesktopsResponseBodyDesktops) GetBindAmount() *int32 {
 	return s.BindAmount
 }
@@ -657,6 +663,10 @@ func (s *DescribeDesktopsResponseBodyDesktops) GetDowngradedTimes() *int64 {
 
 func (s *DescribeDesktopsResponseBodyDesktops) GetEndUserIds() []*string {
 	return s.EndUserIds
+}
+
+func (s *DescribeDesktopsResponseBodyDesktops) GetEntraDomainName() *string {
+	return s.EntraDomainName
 }
 
 func (s *DescribeDesktopsResponseBodyDesktops) GetExpiredTime() *string {
@@ -835,6 +845,11 @@ func (s *DescribeDesktopsResponseBodyDesktops) GetZoneType() *string {
 	return s.ZoneType
 }
 
+func (s *DescribeDesktopsResponseBodyDesktops) SetAccountType(v string) *DescribeDesktopsResponseBodyDesktops {
+	s.AccountType = &v
+	return s
+}
+
 func (s *DescribeDesktopsResponseBodyDesktops) SetBindAmount(v int32) *DescribeDesktopsResponseBodyDesktops {
 	s.BindAmount = &v
 	return s
@@ -942,6 +957,11 @@ func (s *DescribeDesktopsResponseBodyDesktops) SetDowngradedTimes(v int64) *Desc
 
 func (s *DescribeDesktopsResponseBodyDesktops) SetEndUserIds(v []*string) *DescribeDesktopsResponseBodyDesktops {
 	s.EndUserIds = v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktops) SetEntraDomainName(v string) *DescribeDesktopsResponseBodyDesktops {
+	s.EntraDomainName = &v
 	return s
 }
 

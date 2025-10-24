@@ -108,12 +108,14 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// ga-bp1astu3yrplkzoo2****
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	AccountType   *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// The hostname of the domain controller. The hostname must comply with the hostname naming convention of Windows.
 	//
 	// example:
 	//
 	// beijing-ad01
-	AdHostname *string `json:"AdHostname,omitempty" xml:"AdHostname,omitempty"`
+	AdHostname    *string `json:"AdHostname,omitempty" xml:"AdHostname,omitempty"`
+	AuthorityHost *string `json:"AuthorityHost,omitempty" xml:"AuthorityHost,omitempty"`
 	// The hostname of the secondary domain controller.
 	//
 	// example:
@@ -151,7 +153,9 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	// example:
 	//
 	// 172.16.0.0/16
-	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	CidrBlock    *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
 	// Indicates whether the CloudBox-based office network is created.
 	//
 	// Valid values:
@@ -452,6 +456,7 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// 0
 	SubnetMode *string `json:"SubnetMode,omitempty" xml:"SubnetMode,omitempty"`
+	TenantId   *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The total number of cloud computers.
 	//
 	// example:
@@ -516,8 +521,16 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetAcceleratorId() *string 
 	return s.AcceleratorId
 }
 
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetAccountType() *string {
+	return s.AccountType
+}
+
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetAdHostname() *string {
 	return s.AdHostname
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetAuthorityHost() *string {
+	return s.AuthorityHost
 }
 
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetBackupDCHostname() *string {
@@ -542,6 +555,14 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetCenId() *string {
 
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetCidrBlock() *string {
 	return s.CidrBlock
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetClientId() *string {
+	return s.ClientId
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetClientSecret() *string {
+	return s.ClientSecret
 }
 
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetCloudBoxOfficeSite() *bool {
@@ -712,6 +733,10 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetSubnetMode() *string {
 	return s.SubnetMode
 }
 
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetTenantId() *string {
+	return s.TenantId
+}
+
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetTotalEdsCount() *int64 {
 	return s.TotalEdsCount
 }
@@ -750,8 +775,18 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetAcceleratorId(v string) 
 	return s
 }
 
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetAccountType(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
+	s.AccountType = &v
+	return s
+}
+
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetAdHostname(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
 	s.AdHostname = &v
+	return s
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetAuthorityHost(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
+	s.AuthorityHost = &v
 	return s
 }
 
@@ -782,6 +817,16 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetCenId(v string) *Describ
 
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetCidrBlock(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
 	s.CidrBlock = &v
+	return s
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetClientId(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
+	s.ClientId = &v
+	return s
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetClientSecret(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
+	s.ClientSecret = &v
 	return s
 }
 
@@ -992,6 +1037,11 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetSubDomainName(v string) 
 
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetSubnetMode(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
 	s.SubnetMode = &v
+	return s
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetTenantId(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
+	s.TenantId = &v
 	return s
 }
 

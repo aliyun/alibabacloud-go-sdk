@@ -9,8 +9,16 @@ type iModifyOfficeSiteAttributeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuthorityHost(v string) *ModifyOfficeSiteAttributeRequest
+	GetAuthorityHost() *string
+	SetClientId(v string) *ModifyOfficeSiteAttributeRequest
+	GetClientId() *string
+	SetClientSecret(v string) *ModifyOfficeSiteAttributeRequest
+	GetClientSecret() *string
 	SetDesktopAccessType(v string) *ModifyOfficeSiteAttributeRequest
 	GetDesktopAccessType() *string
+	SetDomainName(v string) *ModifyOfficeSiteAttributeRequest
+	GetDomainName() *string
 	SetEnableAdminAccess(v bool) *ModifyOfficeSiteAttributeRequest
 	GetEnableAdminAccess() *bool
 	SetNeedVerifyLoginRisk(v bool) *ModifyOfficeSiteAttributeRequest
@@ -23,9 +31,14 @@ type iModifyOfficeSiteAttributeRequest interface {
 	GetOfficeSiteName() *string
 	SetRegionId(v string) *ModifyOfficeSiteAttributeRequest
 	GetRegionId() *string
+	SetTenantId(v string) *ModifyOfficeSiteAttributeRequest
+	GetTenantId() *string
 }
 
 type ModifyOfficeSiteAttributeRequest struct {
+	AuthorityHost *string `json:"AuthorityHost,omitempty" xml:"AuthorityHost,omitempty"`
+	ClientId      *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientSecret  *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
 	// The method to connect to cloud computers from Alibaba Cloud Workspace clients.
 	//
 	// >  VPC connection relies on the Alibaba Cloud PrivateLink service. You can use PrivateLink for free. When you set this parameter to `VPC` or `Any`, the system automatically activates PrivateLink.
@@ -42,6 +55,7 @@ type ModifyOfficeSiteAttributeRequest struct {
 	//
 	// INTERNET
 	DesktopAccessType *string `json:"DesktopAccessType,omitempty" xml:"DesktopAccessType,omitempty"`
+	DomainName        *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// Specifies whether to grant the local administrator permissions to users that are authorized to use cloud computers in the office network.
 	//
 	// Valid values:
@@ -90,6 +104,7 @@ type ModifyOfficeSiteAttributeRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s ModifyOfficeSiteAttributeRequest) String() string {
@@ -100,8 +115,24 @@ func (s ModifyOfficeSiteAttributeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyOfficeSiteAttributeRequest) GetAuthorityHost() *string {
+	return s.AuthorityHost
+}
+
+func (s *ModifyOfficeSiteAttributeRequest) GetClientId() *string {
+	return s.ClientId
+}
+
+func (s *ModifyOfficeSiteAttributeRequest) GetClientSecret() *string {
+	return s.ClientSecret
+}
+
 func (s *ModifyOfficeSiteAttributeRequest) GetDesktopAccessType() *string {
 	return s.DesktopAccessType
+}
+
+func (s *ModifyOfficeSiteAttributeRequest) GetDomainName() *string {
+	return s.DomainName
 }
 
 func (s *ModifyOfficeSiteAttributeRequest) GetEnableAdminAccess() *bool {
@@ -128,8 +159,32 @@ func (s *ModifyOfficeSiteAttributeRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *ModifyOfficeSiteAttributeRequest) GetTenantId() *string {
+	return s.TenantId
+}
+
+func (s *ModifyOfficeSiteAttributeRequest) SetAuthorityHost(v string) *ModifyOfficeSiteAttributeRequest {
+	s.AuthorityHost = &v
+	return s
+}
+
+func (s *ModifyOfficeSiteAttributeRequest) SetClientId(v string) *ModifyOfficeSiteAttributeRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *ModifyOfficeSiteAttributeRequest) SetClientSecret(v string) *ModifyOfficeSiteAttributeRequest {
+	s.ClientSecret = &v
+	return s
+}
+
 func (s *ModifyOfficeSiteAttributeRequest) SetDesktopAccessType(v string) *ModifyOfficeSiteAttributeRequest {
 	s.DesktopAccessType = &v
+	return s
+}
+
+func (s *ModifyOfficeSiteAttributeRequest) SetDomainName(v string) *ModifyOfficeSiteAttributeRequest {
+	s.DomainName = &v
 	return s
 }
 
@@ -160,6 +215,11 @@ func (s *ModifyOfficeSiteAttributeRequest) SetOfficeSiteName(v string) *ModifyOf
 
 func (s *ModifyOfficeSiteAttributeRequest) SetRegionId(v string) *ModifyOfficeSiteAttributeRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyOfficeSiteAttributeRequest) SetTenantId(v string) *ModifyOfficeSiteAttributeRequest {
+	s.TenantId = &v
 	return s
 }
 

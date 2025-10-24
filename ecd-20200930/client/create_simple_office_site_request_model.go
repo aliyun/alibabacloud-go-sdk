@@ -9,6 +9,10 @@ type iCreateSimpleOfficeSiteRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccountType(v string) *CreateSimpleOfficeSiteRequest
+	GetAccountType() *string
+	SetAuthorityHost(v string) *CreateSimpleOfficeSiteRequest
+	GetAuthorityHost() *string
 	SetBandwidth(v int32) *CreateSimpleOfficeSiteRequest
 	GetBandwidth() *int32
 	SetCenId(v string) *CreateSimpleOfficeSiteRequest
@@ -17,10 +21,16 @@ type iCreateSimpleOfficeSiteRequest interface {
 	GetCenOwnerId() *int64
 	SetCidrBlock(v string) *CreateSimpleOfficeSiteRequest
 	GetCidrBlock() *string
+	SetClientId(v string) *CreateSimpleOfficeSiteRequest
+	GetClientId() *string
+	SetClientSecret(v string) *CreateSimpleOfficeSiteRequest
+	GetClientSecret() *string
 	SetCloudBoxOfficeSite(v bool) *CreateSimpleOfficeSiteRequest
 	GetCloudBoxOfficeSite() *bool
 	SetDesktopAccessType(v string) *CreateSimpleOfficeSiteRequest
 	GetDesktopAccessType() *string
+	SetDomainName(v string) *CreateSimpleOfficeSiteRequest
+	GetDomainName() *string
 	SetEnableAdminAccess(v bool) *CreateSimpleOfficeSiteRequest
 	GetEnableAdminAccess() *bool
 	SetEnableInternetAccess(v bool) *CreateSimpleOfficeSiteRequest
@@ -31,6 +41,8 @@ type iCreateSimpleOfficeSiteRequest interface {
 	GetOfficeSiteName() *string
 	SetRegionId(v string) *CreateSimpleOfficeSiteRequest
 	GetRegionId() *string
+	SetTenantId(v string) *CreateSimpleOfficeSiteRequest
+	GetTenantId() *string
 	SetVSwitchId(v []*string) *CreateSimpleOfficeSiteRequest
 	GetVSwitchId() []*string
 	SetVerifyCode(v string) *CreateSimpleOfficeSiteRequest
@@ -40,6 +52,8 @@ type iCreateSimpleOfficeSiteRequest interface {
 }
 
 type CreateSimpleOfficeSiteRequest struct {
+	AccountType   *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	AuthorityHost *string `json:"AuthorityHost,omitempty" xml:"AuthorityHost,omitempty"`
 	// The maximum public bandwidth. Value range: 10 to 200. Unit: Mbit/s. This parameter is available if you set `EnableInternetAccess` to `true`.
 	//
 	// example:
@@ -75,7 +89,9 @@ type CreateSimpleOfficeSiteRequest struct {
 	// example:
 	//
 	// 172.16.0.0/12
-	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	CidrBlock    *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
 	// Specifies whether to create a CloudBox-based office network.
 	//
 	// Valid values:
@@ -108,6 +124,7 @@ type CreateSimpleOfficeSiteRequest struct {
 	//
 	// Internet
 	DesktopAccessType *string `json:"DesktopAccessType,omitempty" xml:"DesktopAccessType,omitempty"`
+	DomainName        *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// Specifies whether to grant the local administrator permissions to users that are authorized to use cloud computers in the office network.
 	//
 	// Valid values:
@@ -164,6 +181,7 @@ type CreateSimpleOfficeSiteRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The IDs of the vSwitches that you want to specify in VPCs. This parameter is required only when you create CloudBox-based office networks.
 	VSwitchId []*string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty" type:"Repeated"`
 	// The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the [SendVerifyCode](https://help.aliyun.com/document_detail/335132.html) operation to obtain the verification code.
@@ -194,6 +212,14 @@ func (s CreateSimpleOfficeSiteRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateSimpleOfficeSiteRequest) GetAccountType() *string {
+	return s.AccountType
+}
+
+func (s *CreateSimpleOfficeSiteRequest) GetAuthorityHost() *string {
+	return s.AuthorityHost
+}
+
 func (s *CreateSimpleOfficeSiteRequest) GetBandwidth() *int32 {
 	return s.Bandwidth
 }
@@ -210,12 +236,24 @@ func (s *CreateSimpleOfficeSiteRequest) GetCidrBlock() *string {
 	return s.CidrBlock
 }
 
+func (s *CreateSimpleOfficeSiteRequest) GetClientId() *string {
+	return s.ClientId
+}
+
+func (s *CreateSimpleOfficeSiteRequest) GetClientSecret() *string {
+	return s.ClientSecret
+}
+
 func (s *CreateSimpleOfficeSiteRequest) GetCloudBoxOfficeSite() *bool {
 	return s.CloudBoxOfficeSite
 }
 
 func (s *CreateSimpleOfficeSiteRequest) GetDesktopAccessType() *string {
 	return s.DesktopAccessType
+}
+
+func (s *CreateSimpleOfficeSiteRequest) GetDomainName() *string {
+	return s.DomainName
 }
 
 func (s *CreateSimpleOfficeSiteRequest) GetEnableAdminAccess() *bool {
@@ -238,6 +276,10 @@ func (s *CreateSimpleOfficeSiteRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *CreateSimpleOfficeSiteRequest) GetTenantId() *string {
+	return s.TenantId
+}
+
 func (s *CreateSimpleOfficeSiteRequest) GetVSwitchId() []*string {
 	return s.VSwitchId
 }
@@ -248,6 +290,16 @@ func (s *CreateSimpleOfficeSiteRequest) GetVerifyCode() *string {
 
 func (s *CreateSimpleOfficeSiteRequest) GetVpcType() *string {
 	return s.VpcType
+}
+
+func (s *CreateSimpleOfficeSiteRequest) SetAccountType(v string) *CreateSimpleOfficeSiteRequest {
+	s.AccountType = &v
+	return s
+}
+
+func (s *CreateSimpleOfficeSiteRequest) SetAuthorityHost(v string) *CreateSimpleOfficeSiteRequest {
+	s.AuthorityHost = &v
+	return s
 }
 
 func (s *CreateSimpleOfficeSiteRequest) SetBandwidth(v int32) *CreateSimpleOfficeSiteRequest {
@@ -270,6 +322,16 @@ func (s *CreateSimpleOfficeSiteRequest) SetCidrBlock(v string) *CreateSimpleOffi
 	return s
 }
 
+func (s *CreateSimpleOfficeSiteRequest) SetClientId(v string) *CreateSimpleOfficeSiteRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *CreateSimpleOfficeSiteRequest) SetClientSecret(v string) *CreateSimpleOfficeSiteRequest {
+	s.ClientSecret = &v
+	return s
+}
+
 func (s *CreateSimpleOfficeSiteRequest) SetCloudBoxOfficeSite(v bool) *CreateSimpleOfficeSiteRequest {
 	s.CloudBoxOfficeSite = &v
 	return s
@@ -277,6 +339,11 @@ func (s *CreateSimpleOfficeSiteRequest) SetCloudBoxOfficeSite(v bool) *CreateSim
 
 func (s *CreateSimpleOfficeSiteRequest) SetDesktopAccessType(v string) *CreateSimpleOfficeSiteRequest {
 	s.DesktopAccessType = &v
+	return s
+}
+
+func (s *CreateSimpleOfficeSiteRequest) SetDomainName(v string) *CreateSimpleOfficeSiteRequest {
+	s.DomainName = &v
 	return s
 }
 
@@ -302,6 +369,11 @@ func (s *CreateSimpleOfficeSiteRequest) SetOfficeSiteName(v string) *CreateSimpl
 
 func (s *CreateSimpleOfficeSiteRequest) SetRegionId(v string) *CreateSimpleOfficeSiteRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateSimpleOfficeSiteRequest) SetTenantId(v string) *CreateSimpleOfficeSiteRequest {
+	s.TenantId = &v
 	return s
 }
 
