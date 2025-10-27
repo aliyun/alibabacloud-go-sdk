@@ -151,7 +151,8 @@ type DescribeAuditLogRecordsResponseBodyItems struct {
 	// example:
 	//
 	// 2022-08-12 10:10:00
-	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	ExecuteTime      *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	ExecuteTimestamp *int64  `json:"ExecuteTimestamp,omitempty" xml:"ExecuteTimestamp,omitempty"`
 	// The IP address and port number of the client that is used to execute the SQL statement.
 	//
 	// example:
@@ -220,6 +221,10 @@ func (s *DescribeAuditLogRecordsResponseBodyItems) GetExecuteTime() *string {
 	return s.ExecuteTime
 }
 
+func (s *DescribeAuditLogRecordsResponseBodyItems) GetExecuteTimestamp() *int64 {
+	return s.ExecuteTimestamp
+}
+
 func (s *DescribeAuditLogRecordsResponseBodyItems) GetHostAddress() *string {
 	return s.HostAddress
 }
@@ -260,6 +265,11 @@ func (s *DescribeAuditLogRecordsResponseBodyItems) SetDBName(v string) *Describe
 
 func (s *DescribeAuditLogRecordsResponseBodyItems) SetExecuteTime(v string) *DescribeAuditLogRecordsResponseBodyItems {
 	s.ExecuteTime = &v
+	return s
+}
+
+func (s *DescribeAuditLogRecordsResponseBodyItems) SetExecuteTimestamp(v int64) *DescribeAuditLogRecordsResponseBodyItems {
+	s.ExecuteTimestamp = &v
 	return s
 }
 
