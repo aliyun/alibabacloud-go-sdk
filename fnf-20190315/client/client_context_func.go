@@ -2,66 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.SignatureAlgorithm = dara.String("v2")
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-beijing":  dara.String("cn-beijing.fnf.aliyuncs.com"),
-		"cn-hangzhou": dara.String("cn-hangzhou.fnf.aliyuncs.com"),
-		"cn-shanghai": dara.String("cn-shanghai.fnf.aliyuncs.com"),
-		"cn-shenzhen": dara.String("cn-shenzhen.fnf.aliyuncs.com"),
-	}
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("fnf"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -80,7 +24,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateFlowResponse
-func (client *Client) CreateFlowWithOptions(tmpReq *CreateFlowRequest, runtime *dara.RuntimeOptions) (_result *CreateFlowResponse, _err error) {
+func (client *Client) CreateFlowWithContext(ctx context.Context, tmpReq *CreateFlowRequest, runtime *dara.RuntimeOptions) (_result *CreateFlowResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -141,37 +85,11 @@ func (client *Client) CreateFlowWithOptions(tmpReq *CreateFlowRequest, runtime *
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a flow.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-//   - The number of flows that each user can create is restricted by resources. For more information, see [Limits](https://help.aliyun.com/document_detail/122093.html). If you want to create more flows, submit a ticket.
-//
-//   - At the user level, flows are distinguished by name. The name of a flow within one account must be unique.
-//
-// @param request - CreateFlowRequest
-//
-// @return CreateFlowResponse
-func (client *Client) CreateFlow(request *CreateFlowRequest) (_result *CreateFlowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateFlowResponse{}
-	_body, _err := client.CreateFlowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -184,7 +102,7 @@ func (client *Client) CreateFlow(request *CreateFlowRequest) (_result *CreateFlo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateFlowAliasResponse
-func (client *Client) CreateFlowAliasWithOptions(tmpReq *CreateFlowAliasRequest, runtime *dara.RuntimeOptions) (_result *CreateFlowAliasResponse, _err error) {
+func (client *Client) CreateFlowAliasWithContext(ctx context.Context, tmpReq *CreateFlowAliasRequest, runtime *dara.RuntimeOptions) (_result *CreateFlowAliasResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -229,29 +147,11 @@ func (client *Client) CreateFlowAliasWithOptions(tmpReq *CreateFlowAliasRequest,
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateFlowAliasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建流程版本别名
-//
-// @param request - CreateFlowAliasRequest
-//
-// @return CreateFlowAliasResponse
-func (client *Client) CreateFlowAlias(request *CreateFlowAliasRequest) (_result *CreateFlowAliasResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateFlowAliasResponse{}
-	_body, _err := client.CreateFlowAliasWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -264,7 +164,7 @@ func (client *Client) CreateFlowAlias(request *CreateFlowAliasRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateScheduleResponse
-func (client *Client) CreateScheduleWithOptions(request *CreateScheduleRequest, runtime *dara.RuntimeOptions) (_result *CreateScheduleResponse, _err error) {
+func (client *Client) CreateScheduleWithContext(ctx context.Context, request *CreateScheduleRequest, runtime *dara.RuntimeOptions) (_result *CreateScheduleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -317,29 +217,11 @@ func (client *Client) CreateScheduleWithOptions(request *CreateScheduleRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateScheduleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a time-based schedule.
-//
-// @param request - CreateScheduleRequest
-//
-// @return CreateScheduleResponse
-func (client *Client) CreateSchedule(request *CreateScheduleRequest) (_result *CreateScheduleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateScheduleResponse{}
-	_body, _err := client.CreateScheduleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -358,7 +240,7 @@ func (client *Client) CreateSchedule(request *CreateScheduleRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteFlowResponse
-func (client *Client) DeleteFlowWithOptions(request *DeleteFlowRequest, runtime *dara.RuntimeOptions) (_result *DeleteFlowResponse, _err error) {
+func (client *Client) DeleteFlowWithContext(ctx context.Context, request *DeleteFlowRequest, runtime *dara.RuntimeOptions) (_result *DeleteFlowResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -385,35 +267,11 @@ func (client *Client) DeleteFlowWithOptions(request *DeleteFlowRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an existing flow.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// A delete operation is asynchronous. If this operation is successful, the system returns a successful response. If an existing flow is pending to be deleted, a new flow of the same name will not be affected by the existing one. After you delete a flow, you cannot query its historical executions. All executions in progress will stop after their most recent steps are complete.
-//
-// @param request - DeleteFlowRequest
-//
-// @return DeleteFlowResponse
-func (client *Client) DeleteFlow(request *DeleteFlowRequest) (_result *DeleteFlowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteFlowResponse{}
-	_body, _err := client.DeleteFlowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -426,7 +284,7 @@ func (client *Client) DeleteFlow(request *DeleteFlowRequest) (_result *DeleteFlo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteFlowAliasResponse
-func (client *Client) DeleteFlowAliasWithOptions(request *DeleteFlowAliasRequest, runtime *dara.RuntimeOptions) (_result *DeleteFlowAliasResponse, _err error) {
+func (client *Client) DeleteFlowAliasWithContext(ctx context.Context, request *DeleteFlowAliasRequest, runtime *dara.RuntimeOptions) (_result *DeleteFlowAliasResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -457,29 +315,11 @@ func (client *Client) DeleteFlowAliasWithOptions(request *DeleteFlowAliasRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteFlowAliasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除流程别名
-//
-// @param request - DeleteFlowAliasRequest
-//
-// @return DeleteFlowAliasResponse
-func (client *Client) DeleteFlowAlias(request *DeleteFlowAliasRequest) (_result *DeleteFlowAliasResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteFlowAliasResponse{}
-	_body, _err := client.DeleteFlowAliasWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -492,7 +332,7 @@ func (client *Client) DeleteFlowAlias(request *DeleteFlowAliasRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteFlowVersionResponse
-func (client *Client) DeleteFlowVersionWithOptions(request *DeleteFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *DeleteFlowVersionResponse, _err error) {
+func (client *Client) DeleteFlowVersionWithContext(ctx context.Context, request *DeleteFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *DeleteFlowVersionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -523,29 +363,11 @@ func (client *Client) DeleteFlowVersionWithOptions(request *DeleteFlowVersionReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteFlowVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除流程版本
-//
-// @param request - DeleteFlowVersionRequest
-//
-// @return DeleteFlowVersionResponse
-func (client *Client) DeleteFlowVersion(request *DeleteFlowVersionRequest) (_result *DeleteFlowVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteFlowVersionResponse{}
-	_body, _err := client.DeleteFlowVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -558,7 +380,7 @@ func (client *Client) DeleteFlowVersion(request *DeleteFlowVersionRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteScheduleResponse
-func (client *Client) DeleteScheduleWithOptions(request *DeleteScheduleRequest, runtime *dara.RuntimeOptions) (_result *DeleteScheduleResponse, _err error) {
+func (client *Client) DeleteScheduleWithContext(ctx context.Context, request *DeleteScheduleRequest, runtime *dara.RuntimeOptions) (_result *DeleteScheduleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -589,29 +411,11 @@ func (client *Client) DeleteScheduleWithOptions(request *DeleteScheduleRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteScheduleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a time-based scheduling task.
-//
-// @param request - DeleteScheduleRequest
-//
-// @return DeleteScheduleResponse
-func (client *Client) DeleteSchedule(request *DeleteScheduleRequest) (_result *DeleteScheduleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteScheduleResponse{}
-	_body, _err := client.DeleteScheduleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -624,7 +428,7 @@ func (client *Client) DeleteSchedule(request *DeleteScheduleRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeExecutionResponse
-func (client *Client) DescribeExecutionWithOptions(request *DescribeExecutionRequest, runtime *dara.RuntimeOptions) (_result *DescribeExecutionResponse, _err error) {
+func (client *Client) DescribeExecutionWithContext(ctx context.Context, request *DescribeExecutionRequest, runtime *dara.RuntimeOptions) (_result *DescribeExecutionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -647,29 +451,11 @@ func (client *Client) DescribeExecutionWithOptions(request *DescribeExecutionReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeExecutionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries an execution in a flow. The long polling mode is supported. The maximum waiting period for long polling depends on the value of the WaitTimeSeconds parameter.
-//
-// @param request - DescribeExecutionRequest
-//
-// @return DescribeExecutionResponse
-func (client *Client) DescribeExecution(request *DescribeExecutionRequest) (_result *DescribeExecutionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeExecutionResponse{}
-	_body, _err := client.DescribeExecutionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -682,7 +468,7 @@ func (client *Client) DescribeExecution(request *DescribeExecutionRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeFlowResponse
-func (client *Client) DescribeFlowWithOptions(request *DescribeFlowRequest, runtime *dara.RuntimeOptions) (_result *DescribeFlowResponse, _err error) {
+func (client *Client) DescribeFlowWithContext(ctx context.Context, request *DescribeFlowRequest, runtime *dara.RuntimeOptions) (_result *DescribeFlowResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -705,29 +491,11 @@ func (client *Client) DescribeFlowWithOptions(request *DescribeFlowRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a flow.
-//
-// @param request - DescribeFlowRequest
-//
-// @return DescribeFlowResponse
-func (client *Client) DescribeFlow(request *DescribeFlowRequest) (_result *DescribeFlowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeFlowResponse{}
-	_body, _err := client.DescribeFlowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -740,7 +508,7 @@ func (client *Client) DescribeFlow(request *DescribeFlowRequest) (_result *Descr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeFlowAliasResponse
-func (client *Client) DescribeFlowAliasWithOptions(request *DescribeFlowAliasRequest, runtime *dara.RuntimeOptions) (_result *DescribeFlowAliasResponse, _err error) {
+func (client *Client) DescribeFlowAliasWithContext(ctx context.Context, request *DescribeFlowAliasRequest, runtime *dara.RuntimeOptions) (_result *DescribeFlowAliasResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -763,29 +531,11 @@ func (client *Client) DescribeFlowAliasWithOptions(request *DescribeFlowAliasReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeFlowAliasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询流程版本别名详情
-//
-// @param request - DescribeFlowAliasRequest
-//
-// @return DescribeFlowAliasResponse
-func (client *Client) DescribeFlowAlias(request *DescribeFlowAliasRequest) (_result *DescribeFlowAliasResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeFlowAliasResponse{}
-	_body, _err := client.DescribeFlowAliasWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -798,7 +548,7 @@ func (client *Client) DescribeFlowAlias(request *DescribeFlowAliasRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeMapRunResponse
-func (client *Client) DescribeMapRunWithOptions(request *DescribeMapRunRequest, runtime *dara.RuntimeOptions) (_result *DescribeMapRunResponse, _err error) {
+func (client *Client) DescribeMapRunWithContext(ctx context.Context, request *DescribeMapRunRequest, runtime *dara.RuntimeOptions) (_result *DescribeMapRunResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -821,29 +571,11 @@ func (client *Client) DescribeMapRunWithOptions(request *DescribeMapRunRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeMapRunResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询 MapRun 详情
-//
-// @param request - DescribeMapRunRequest
-//
-// @return DescribeMapRunResponse
-func (client *Client) DescribeMapRun(request *DescribeMapRunRequest) (_result *DescribeMapRunResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeMapRunResponse{}
-	_body, _err := client.DescribeMapRunWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -856,7 +588,7 @@ func (client *Client) DescribeMapRun(request *DescribeMapRunRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRegionsResponse
-func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -883,29 +615,11 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询地域信息列表
-//
-// @param request - DescribeRegionsRequest
-//
-// @return DescribeRegionsResponse
-func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -918,7 +632,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeScheduleResponse
-func (client *Client) DescribeScheduleWithOptions(request *DescribeScheduleRequest, runtime *dara.RuntimeOptions) (_result *DescribeScheduleResponse, _err error) {
+func (client *Client) DescribeScheduleWithContext(ctx context.Context, request *DescribeScheduleRequest, runtime *dara.RuntimeOptions) (_result *DescribeScheduleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -941,29 +655,11 @@ func (client *Client) DescribeScheduleWithOptions(request *DescribeScheduleReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeScheduleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the detailed information about a time-based schedule.
-//
-// @param request - DescribeScheduleRequest
-//
-// @return DescribeScheduleResponse
-func (client *Client) DescribeSchedule(request *DescribeScheduleRequest) (_result *DescribeScheduleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeScheduleResponse{}
-	_body, _err := client.DescribeScheduleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -976,7 +672,7 @@ func (client *Client) DescribeSchedule(request *DescribeScheduleRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetExecutionHistoryResponse
-func (client *Client) GetExecutionHistoryWithOptions(request *GetExecutionHistoryRequest, runtime *dara.RuntimeOptions) (_result *GetExecutionHistoryResponse, _err error) {
+func (client *Client) GetExecutionHistoryWithContext(ctx context.Context, request *GetExecutionHistoryRequest, runtime *dara.RuntimeOptions) (_result *GetExecutionHistoryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -999,29 +695,11 @@ func (client *Client) GetExecutionHistoryWithOptions(request *GetExecutionHistor
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetExecutionHistoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details about each step in an execution process.
-//
-// @param request - GetExecutionHistoryRequest
-//
-// @return GetExecutionHistoryResponse
-func (client *Client) GetExecutionHistory(request *GetExecutionHistoryRequest) (_result *GetExecutionHistoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetExecutionHistoryResponse{}
-	_body, _err := client.GetExecutionHistoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1040,7 +718,7 @@ func (client *Client) GetExecutionHistory(request *GetExecutionHistoryRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListExecutionsResponse
-func (client *Client) ListExecutionsWithOptions(request *ListExecutionsRequest, runtime *dara.RuntimeOptions) (_result *ListExecutionsResponse, _err error) {
+func (client *Client) ListExecutionsWithContext(ctx context.Context, request *ListExecutionsRequest, runtime *dara.RuntimeOptions) (_result *ListExecutionsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1063,35 +741,11 @@ func (client *Client) ListExecutionsWithOptions(request *ListExecutionsRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListExecutionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all historical executions of a flow.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// After you delete a flow, you cannot query its historical executions, even if you create a flow of the same name.
-//
-// @param request - ListExecutionsRequest
-//
-// @return ListExecutionsResponse
-func (client *Client) ListExecutions(request *ListExecutionsRequest) (_result *ListExecutionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListExecutionsResponse{}
-	_body, _err := client.ListExecutionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1104,7 +758,7 @@ func (client *Client) ListExecutions(request *ListExecutionsRequest) (_result *L
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListFlowAliasesResponse
-func (client *Client) ListFlowAliasesWithOptions(request *ListFlowAliasesRequest, runtime *dara.RuntimeOptions) (_result *ListFlowAliasesResponse, _err error) {
+func (client *Client) ListFlowAliasesWithContext(ctx context.Context, request *ListFlowAliasesRequest, runtime *dara.RuntimeOptions) (_result *ListFlowAliasesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1127,29 +781,11 @@ func (client *Client) ListFlowAliasesWithOptions(request *ListFlowAliasesRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListFlowAliasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询流程版本别名列表
-//
-// @param request - ListFlowAliasesRequest
-//
-// @return ListFlowAliasesResponse
-func (client *Client) ListFlowAliases(request *ListFlowAliasesRequest) (_result *ListFlowAliasesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListFlowAliasesResponse{}
-	_body, _err := client.ListFlowAliasesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1162,7 +798,7 @@ func (client *Client) ListFlowAliases(request *ListFlowAliasesRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListFlowVersionsResponse
-func (client *Client) ListFlowVersionsWithOptions(request *ListFlowVersionsRequest, runtime *dara.RuntimeOptions) (_result *ListFlowVersionsResponse, _err error) {
+func (client *Client) ListFlowVersionsWithContext(ctx context.Context, request *ListFlowVersionsRequest, runtime *dara.RuntimeOptions) (_result *ListFlowVersionsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1185,29 +821,11 @@ func (client *Client) ListFlowVersionsWithOptions(request *ListFlowVersionsReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListFlowVersionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询流程版本列表
-//
-// @param request - ListFlowVersionsRequest
-//
-// @return ListFlowVersionsResponse
-func (client *Client) ListFlowVersions(request *ListFlowVersionsRequest) (_result *ListFlowVersionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListFlowVersionsResponse{}
-	_body, _err := client.ListFlowVersionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1220,7 +838,7 @@ func (client *Client) ListFlowVersions(request *ListFlowVersionsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListFlowsResponse
-func (client *Client) ListFlowsWithOptions(request *ListFlowsRequest, runtime *dara.RuntimeOptions) (_result *ListFlowsResponse, _err error) {
+func (client *Client) ListFlowsWithContext(ctx context.Context, request *ListFlowsRequest, runtime *dara.RuntimeOptions) (_result *ListFlowsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1243,29 +861,11 @@ func (client *Client) ListFlowsWithOptions(request *ListFlowsRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListFlowsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of flows.
-//
-// @param request - ListFlowsRequest
-//
-// @return ListFlowsResponse
-func (client *Client) ListFlows(request *ListFlowsRequest) (_result *ListFlowsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListFlowsResponse{}
-	_body, _err := client.ListFlowsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1278,7 +878,7 @@ func (client *Client) ListFlows(request *ListFlowsRequest) (_result *ListFlowsRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSchedulesResponse
-func (client *Client) ListSchedulesWithOptions(request *ListSchedulesRequest, runtime *dara.RuntimeOptions) (_result *ListSchedulesResponse, _err error) {
+func (client *Client) ListSchedulesWithContext(ctx context.Context, request *ListSchedulesRequest, runtime *dara.RuntimeOptions) (_result *ListSchedulesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1301,29 +901,11 @@ func (client *Client) ListSchedulesWithOptions(request *ListSchedulesRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListSchedulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries time-based schedules in a flow.
-//
-// @param request - ListSchedulesRequest
-//
-// @return ListSchedulesResponse
-func (client *Client) ListSchedules(request *ListSchedulesRequest) (_result *ListSchedulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListSchedulesResponse{}
-	_body, _err := client.ListSchedulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1336,7 +918,7 @@ func (client *Client) ListSchedules(request *ListSchedulesRequest) (_result *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PublishFlowVersionResponse
-func (client *Client) PublishFlowVersionWithOptions(request *PublishFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *PublishFlowVersionResponse, _err error) {
+func (client *Client) PublishFlowVersionWithContext(ctx context.Context, request *PublishFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *PublishFlowVersionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1367,29 +949,11 @@ func (client *Client) PublishFlowVersionWithOptions(request *PublishFlowVersionR
 		BodyType:    dara.String("json"),
 	}
 	_result = &PublishFlowVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 发布流程版本
-//
-// @param request - PublishFlowVersionRequest
-//
-// @return PublishFlowVersionResponse
-func (client *Client) PublishFlowVersion(request *PublishFlowVersionRequest) (_result *PublishFlowVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PublishFlowVersionResponse{}
-	_body, _err := client.PublishFlowVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1410,7 +974,7 @@ func (client *Client) PublishFlowVersion(request *PublishFlowVersionRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReportTaskFailedResponse
-func (client *Client) ReportTaskFailedWithOptions(request *ReportTaskFailedRequest, runtime *dara.RuntimeOptions) (_result *ReportTaskFailedResponse, _err error) {
+func (client *Client) ReportTaskFailedWithContext(ctx context.Context, request *ReportTaskFailedRequest, runtime *dara.RuntimeOptions) (_result *ReportTaskFailedResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1447,37 +1011,11 @@ func (client *Client) ReportTaskFailedWithOptions(request *ReportTaskFailedReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReportTaskFailedResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Reports a failed task.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// In the previous service (Serverless Workflow), the task step that ReportTaskFailed is used to call back `pattern: waitForCallback` indicates that the current task fails to be executed.
-//
-// In the new service (CloudFlow), the task step that ReportTaskFailed is used to call back `TaskMode: WaitForCustomCallback` indicates that the current task fails to be executed.
-//
-// @param request - ReportTaskFailedRequest
-//
-// @return ReportTaskFailedResponse
-func (client *Client) ReportTaskFailed(request *ReportTaskFailedRequest) (_result *ReportTaskFailedResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReportTaskFailedResponse{}
-	_body, _err := client.ReportTaskFailedWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1498,7 +1036,7 @@ func (client *Client) ReportTaskFailed(request *ReportTaskFailedRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReportTaskSucceededResponse
-func (client *Client) ReportTaskSucceededWithOptions(request *ReportTaskSucceededRequest, runtime *dara.RuntimeOptions) (_result *ReportTaskSucceededResponse, _err error) {
+func (client *Client) ReportTaskSucceededWithContext(ctx context.Context, request *ReportTaskSucceededRequest, runtime *dara.RuntimeOptions) (_result *ReportTaskSucceededResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1531,37 +1069,11 @@ func (client *Client) ReportTaskSucceededWithOptions(request *ReportTaskSucceede
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReportTaskSucceededResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Reports a successful task.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// In the previous service (Serverless Workflow), the task step that ReportTaskSucceeded is used to call back pattern: waitForCallback indicates that the current task is successfully executed.
-//
-// In the new service (CloudFlow), the task step that ReportTaskSucceeded is used to call back TaskMode: WaitForCustomCallback indicates that the current task is successfully executed.
-//
-// @param request - ReportTaskSucceededRequest
-//
-// @return ReportTaskSucceededResponse
-func (client *Client) ReportTaskSucceeded(request *ReportTaskSucceededRequest) (_result *ReportTaskSucceededResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReportTaskSucceededResponse{}
-	_body, _err := client.ReportTaskSucceededWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1588,7 +1100,7 @@ func (client *Client) ReportTaskSucceeded(request *ReportTaskSucceededRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartExecutionResponse
-func (client *Client) StartExecutionWithOptions(request *StartExecutionRequest, runtime *dara.RuntimeOptions) (_result *StartExecutionResponse, _err error) {
+func (client *Client) StartExecutionWithContext(ctx context.Context, request *StartExecutionRequest, runtime *dara.RuntimeOptions) (_result *StartExecutionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1631,43 +1143,11 @@ func (client *Client) StartExecutionWithOptions(request *StartExecutionRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartExecutionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Starts the execution of a workflow.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-//   - The flow is created. A flow only in standard mode is supported.
-//
-//   - If you do not specify an execution, the system automatically generates an execution and starts the execution.
-//
-//   - If an ongoing execution has the same name as that of the execution to be started, the system directly returns the ongoing execution.
-//
-//   - If the ongoing execution with the same name has ended (succeeded or failed), `ExecutionAlreadyExists` is returned.
-//
-//   - If no execution with the same name exists, the system starts a new execution.
-//
-// @param request - StartExecutionRequest
-//
-// @return StartExecutionResponse
-func (client *Client) StartExecution(request *StartExecutionRequest) (_result *StartExecutionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartExecutionResponse{}
-	_body, _err := client.StartExecutionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1684,7 +1164,7 @@ func (client *Client) StartExecution(request *StartExecutionRequest) (_result *S
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartSyncExecutionResponse
-func (client *Client) StartSyncExecutionWithOptions(request *StartSyncExecutionRequest, runtime *dara.RuntimeOptions) (_result *StartSyncExecutionResponse, _err error) {
+func (client *Client) StartSyncExecutionWithContext(ctx context.Context, request *StartSyncExecutionRequest, runtime *dara.RuntimeOptions) (_result *StartSyncExecutionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1723,33 +1203,11 @@ func (client *Client) StartSyncExecutionWithOptions(request *StartSyncExecutionR
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartSyncExecutionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Synchronously starts an execution in a flow.
-//
-// Description:
-//
-//	Only flows of the express execution mode are supported.
-//
-// @param request - StartSyncExecutionRequest
-//
-// @return StartSyncExecutionResponse
-func (client *Client) StartSyncExecution(request *StartSyncExecutionRequest) (_result *StartSyncExecutionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartSyncExecutionResponse{}
-	_body, _err := client.StartSyncExecutionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1768,7 +1226,7 @@ func (client *Client) StartSyncExecution(request *StartSyncExecutionRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopExecutionResponse
-func (client *Client) StopExecutionWithOptions(request *StopExecutionRequest, runtime *dara.RuntimeOptions) (_result *StopExecutionResponse, _err error) {
+func (client *Client) StopExecutionWithContext(ctx context.Context, request *StopExecutionRequest, runtime *dara.RuntimeOptions) (_result *StopExecutionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1807,35 +1265,11 @@ func (client *Client) StopExecutionWithOptions(request *StopExecutionRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopExecutionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops an execution that is in progress in a flow.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// The flow must be in progress.
-//
-// @param request - StopExecutionRequest
-//
-// @return StopExecutionResponse
-func (client *Client) StopExecution(request *StopExecutionRequest) (_result *StopExecutionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopExecutionResponse{}
-	_body, _err := client.StopExecutionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1848,7 +1282,7 @@ func (client *Client) StopExecution(request *StopExecutionRequest) (_result *Sto
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateFlowResponse
-func (client *Client) UpdateFlowWithOptions(tmpReq *UpdateFlowRequest, runtime *dara.RuntimeOptions) (_result *UpdateFlowResponse, _err error) {
+func (client *Client) UpdateFlowWithContext(ctx context.Context, tmpReq *UpdateFlowRequest, runtime *dara.RuntimeOptions) (_result *UpdateFlowResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1901,29 +1335,11 @@ func (client *Client) UpdateFlowWithOptions(tmpReq *UpdateFlowRequest, runtime *
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a flow.
-//
-// @param request - UpdateFlowRequest
-//
-// @return UpdateFlowResponse
-func (client *Client) UpdateFlow(request *UpdateFlowRequest) (_result *UpdateFlowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateFlowResponse{}
-	_body, _err := client.UpdateFlowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1936,7 +1352,7 @@ func (client *Client) UpdateFlow(request *UpdateFlowRequest) (_result *UpdateFlo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateFlowAliasResponse
-func (client *Client) UpdateFlowAliasWithOptions(tmpReq *UpdateFlowAliasRequest, runtime *dara.RuntimeOptions) (_result *UpdateFlowAliasResponse, _err error) {
+func (client *Client) UpdateFlowAliasWithContext(ctx context.Context, tmpReq *UpdateFlowAliasRequest, runtime *dara.RuntimeOptions) (_result *UpdateFlowAliasResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1981,29 +1397,11 @@ func (client *Client) UpdateFlowAliasWithOptions(tmpReq *UpdateFlowAliasRequest,
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateFlowAliasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新流程版本别名配置
-//
-// @param request - UpdateFlowAliasRequest
-//
-// @return UpdateFlowAliasResponse
-func (client *Client) UpdateFlowAlias(request *UpdateFlowAliasRequest) (_result *UpdateFlowAliasResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateFlowAliasResponse{}
-	_body, _err := client.UpdateFlowAliasWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2016,7 +1414,7 @@ func (client *Client) UpdateFlowAlias(request *UpdateFlowAliasRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateMapRunResponse
-func (client *Client) UpdateMapRunWithOptions(request *UpdateMapRunRequest, runtime *dara.RuntimeOptions) (_result *UpdateMapRunResponse, _err error) {
+func (client *Client) UpdateMapRunWithContext(ctx context.Context, request *UpdateMapRunRequest, runtime *dara.RuntimeOptions) (_result *UpdateMapRunResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2039,29 +1437,11 @@ func (client *Client) UpdateMapRunWithOptions(request *UpdateMapRunRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateMapRunResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新 MapRun 配置
-//
-// @param request - UpdateMapRunRequest
-//
-// @return UpdateMapRunResponse
-func (client *Client) UpdateMapRun(request *UpdateMapRunRequest) (_result *UpdateMapRunResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateMapRunResponse{}
-	_body, _err := client.UpdateMapRunWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2074,7 +1454,7 @@ func (client *Client) UpdateMapRun(request *UpdateMapRunRequest) (_result *Updat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateScheduleResponse
-func (client *Client) UpdateScheduleWithOptions(request *UpdateScheduleRequest, runtime *dara.RuntimeOptions) (_result *UpdateScheduleResponse, _err error) {
+func (client *Client) UpdateScheduleWithContext(ctx context.Context, request *UpdateScheduleRequest, runtime *dara.RuntimeOptions) (_result *UpdateScheduleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2121,28 +1501,10 @@ func (client *Client) UpdateScheduleWithOptions(request *UpdateScheduleRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateScheduleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a time-based schedule.
-//
-// @param request - UpdateScheduleRequest
-//
-// @return UpdateScheduleResponse
-func (client *Client) UpdateSchedule(request *UpdateScheduleRequest) (_result *UpdateScheduleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateScheduleResponse{}
-	_body, _err := client.UpdateScheduleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
