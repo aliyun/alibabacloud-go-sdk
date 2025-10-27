@@ -27,6 +27,8 @@ type iDescribeImageListRequest interface {
 	GetNextToken() *string
 	SetStatus(v string) *DescribeImageListRequest
 	GetStatus() *string
+	SetSystemType(v string) *DescribeImageListRequest
+	GetSystemType() *string
 }
 
 type DescribeImageListRequest struct {
@@ -96,7 +98,8 @@ type DescribeImageListRequest struct {
 	// example:
 	//
 	// AVAILABLE
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SystemType *string `json:"SystemType,omitempty" xml:"SystemType,omitempty"`
 }
 
 func (s DescribeImageListRequest) String() string {
@@ -143,6 +146,10 @@ func (s *DescribeImageListRequest) GetStatus() *string {
 	return s.Status
 }
 
+func (s *DescribeImageListRequest) GetSystemType() *string {
+	return s.SystemType
+}
+
 func (s *DescribeImageListRequest) SetImageBizTags(v []*DescribeImageListRequestImageBizTags) *DescribeImageListRequest {
 	s.ImageBizTags = v
 	return s
@@ -185,6 +192,11 @@ func (s *DescribeImageListRequest) SetNextToken(v string) *DescribeImageListRequ
 
 func (s *DescribeImageListRequest) SetStatus(v string) *DescribeImageListRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeImageListRequest) SetSystemType(v string) *DescribeImageListRequest {
+	s.SystemType = &v
 	return s
 }
 

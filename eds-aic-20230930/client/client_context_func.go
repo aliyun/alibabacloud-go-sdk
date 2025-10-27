@@ -2104,6 +2104,10 @@ func (client *Client) DescribeImageListWithContext(ctx context.Context, request 
 		query["InstanceType"] = request.InstanceType
 	}
 
+	if !dara.IsNil(request.SystemType) {
+		query["SystemType"] = request.SystemType
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageId) {
 		body["ImageId"] = request.ImageId
