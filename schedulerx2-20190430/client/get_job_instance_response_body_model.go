@@ -108,7 +108,12 @@ func (s *GetJobInstanceResponseBody) SetSuccess(v bool) *GetJobInstanceResponseB
 }
 
 func (s *GetJobInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetJobInstanceResponseBodyData struct {
@@ -134,7 +139,12 @@ func (s *GetJobInstanceResponseBodyData) SetJobInstanceDetail(v *GetJobInstanceR
 }
 
 func (s *GetJobInstanceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.JobInstanceDetail != nil {
+		if err := s.JobInstanceDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetJobInstanceResponseBodyDataJobInstanceDetail struct {

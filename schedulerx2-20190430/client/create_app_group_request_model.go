@@ -35,6 +35,8 @@ type iCreateAppGroupRequest interface {
 	GetNamespaceName() *string
 	SetNamespaceSource(v string) *CreateAppGroupRequest
 	GetNamespaceSource() *string
+	SetNotificationPolicyName(v string) *CreateAppGroupRequest
+	GetNotificationPolicyName() *string
 	SetRegionId(v string) *CreateAppGroupRequest
 	GetRegionId() *string
 	SetScheduleBusyWorkers(v bool) *CreateAppGroupRequest
@@ -134,6 +136,10 @@ type CreateAppGroupRequest struct {
 	//
 	// schedulerx
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	// example:
+	//
+	// test-workday-notification
+	NotificationPolicyName *string `json:"NotificationPolicyName,omitempty" xml:"NotificationPolicyName,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -208,6 +214,10 @@ func (s *CreateAppGroupRequest) GetNamespaceSource() *string {
 	return s.NamespaceSource
 }
 
+func (s *CreateAppGroupRequest) GetNotificationPolicyName() *string {
+	return s.NotificationPolicyName
+}
+
 func (s *CreateAppGroupRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -278,6 +288,11 @@ func (s *CreateAppGroupRequest) SetNamespaceName(v string) *CreateAppGroupReques
 
 func (s *CreateAppGroupRequest) SetNamespaceSource(v string) *CreateAppGroupRequest {
 	s.NamespaceSource = &v
+	return s
+}
+
+func (s *CreateAppGroupRequest) SetNotificationPolicyName(v string) *CreateAppGroupRequest {
+	s.NotificationPolicyName = &v
 	return s
 }
 

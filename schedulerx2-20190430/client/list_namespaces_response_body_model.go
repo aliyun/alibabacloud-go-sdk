@@ -108,7 +108,12 @@ func (s *ListNamespacesResponseBody) SetSuccess(v bool) *ListNamespacesResponseB
 }
 
 func (s *ListNamespacesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListNamespacesResponseBodyData struct {
@@ -134,7 +139,16 @@ func (s *ListNamespacesResponseBodyData) SetNamespaces(v []*ListNamespacesRespon
 }
 
 func (s *ListNamespacesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Namespaces != nil {
+		for _, item := range s.Namespaces {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNamespacesResponseBodyDataNamespaces struct {

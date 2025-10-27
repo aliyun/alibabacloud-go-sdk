@@ -108,7 +108,12 @@ func (s *GetWorkflowInstanceResponseBody) SetSuccess(v bool) *GetWorkflowInstanc
 }
 
 func (s *GetWorkflowInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWorkflowInstanceResponseBodyData struct {
@@ -145,7 +150,17 @@ func (s *GetWorkflowInstanceResponseBodyData) SetWfInstanceInfo(v *GetWorkflowIn
 }
 
 func (s *GetWorkflowInstanceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.WfInstanceDag != nil {
+		if err := s.WfInstanceDag.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WfInstanceInfo != nil {
+		if err := s.WfInstanceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWorkflowInstanceResponseBodyDataWfInstanceDag struct {
@@ -182,7 +197,25 @@ func (s *GetWorkflowInstanceResponseBodyDataWfInstanceDag) SetNodes(v []*GetWork
 }
 
 func (s *GetWorkflowInstanceResponseBodyDataWfInstanceDag) Validate() error {
-	return dara.Validate(s)
+	if s.Edges != nil {
+		for _, item := range s.Edges {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetWorkflowInstanceResponseBodyDataWfInstanceDagEdges struct {

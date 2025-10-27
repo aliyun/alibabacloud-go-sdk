@@ -23,6 +23,8 @@ type iUpdateAppGroupRequest interface {
 	GetMonitorContactsJson() *string
 	SetNamespace(v string) *UpdateAppGroupRequest
 	GetNamespace() *string
+	SetNotificationPolicyName(v string) *UpdateAppGroupRequest
+	GetNotificationPolicyName() *string
 	SetRegionId(v string) *UpdateAppGroupRequest
 	GetRegionId() *string
 }
@@ -82,6 +84,10 @@ type UpdateAppGroupRequest struct {
 	//
 	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// test-workday-notification
+	NotificationPolicyName *string `json:"NotificationPolicyName,omitempty" xml:"NotificationPolicyName,omitempty"`
 	// The ID of the region.
 	//
 	// This parameter is required.
@@ -128,6 +134,10 @@ func (s *UpdateAppGroupRequest) GetNamespace() *string {
 	return s.Namespace
 }
 
+func (s *UpdateAppGroupRequest) GetNotificationPolicyName() *string {
+	return s.NotificationPolicyName
+}
+
 func (s *UpdateAppGroupRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -164,6 +174,11 @@ func (s *UpdateAppGroupRequest) SetMonitorContactsJson(v string) *UpdateAppGroup
 
 func (s *UpdateAppGroupRequest) SetNamespace(v string) *UpdateAppGroupRequest {
 	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateAppGroupRequest) SetNotificationPolicyName(v string) *UpdateAppGroupRequest {
+	s.NotificationPolicyName = &v
 	return s
 }
 

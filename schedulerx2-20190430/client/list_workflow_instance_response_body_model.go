@@ -108,7 +108,12 @@ func (s *ListWorkflowInstanceResponseBody) SetSuccess(v bool) *ListWorkflowInsta
 }
 
 func (s *ListWorkflowInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListWorkflowInstanceResponseBodyData struct {
@@ -134,7 +139,16 @@ func (s *ListWorkflowInstanceResponseBodyData) SetWfInstanceInfos(v []*ListWorkf
 }
 
 func (s *ListWorkflowInstanceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.WfInstanceInfos != nil {
+		for _, item := range s.WfInstanceInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWorkflowInstanceResponseBodyDataWfInstanceInfos struct {

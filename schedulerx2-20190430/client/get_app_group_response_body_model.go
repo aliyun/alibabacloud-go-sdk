@@ -108,7 +108,12 @@ func (s *GetAppGroupResponseBody) SetSuccess(v bool) *GetAppGroupResponseBody {
 }
 
 func (s *GetAppGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAppGroupResponseBodyData struct {
@@ -176,6 +181,10 @@ type GetAppGroupResponseBodyData struct {
 	//
 	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// test-workday-notification
+	NotificationPolicyName *string `json:"NotificationPolicyName,omitempty" xml:"NotificationPolicyName,omitempty"`
 }
 
 func (s GetAppGroupResponseBodyData) String() string {
@@ -226,6 +235,10 @@ func (s *GetAppGroupResponseBodyData) GetNamespace() *string {
 	return s.Namespace
 }
 
+func (s *GetAppGroupResponseBodyData) GetNotificationPolicyName() *string {
+	return s.NotificationPolicyName
+}
+
 func (s *GetAppGroupResponseBodyData) SetAppKey(v string) *GetAppGroupResponseBodyData {
 	s.AppKey = &v
 	return s
@@ -273,6 +286,11 @@ func (s *GetAppGroupResponseBodyData) SetMonitorContactsJson(v string) *GetAppGr
 
 func (s *GetAppGroupResponseBodyData) SetNamespace(v string) *GetAppGroupResponseBodyData {
 	s.Namespace = &v
+	return s
+}
+
+func (s *GetAppGroupResponseBodyData) SetNotificationPolicyName(v string) *GetAppGroupResponseBodyData {
+	s.NotificationPolicyName = &v
 	return s
 }
 

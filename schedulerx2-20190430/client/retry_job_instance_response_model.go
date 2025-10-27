@@ -59,5 +59,10 @@ func (s *RetryJobInstanceResponse) SetBody(v *RetryJobInstanceResponseBody) *Ret
 }
 
 func (s *RetryJobInstanceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -108,7 +108,12 @@ func (s *ListJobsResponseBody) SetSuccess(v bool) *ListJobsResponseBody {
 }
 
 func (s *ListJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListJobsResponseBodyData struct {
@@ -134,7 +139,16 @@ func (s *ListJobsResponseBodyData) SetJobs(v []*ListJobsResponseBodyDataJobs) *L
 }
 
 func (s *ListJobsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Jobs != nil {
+		for _, item := range s.Jobs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListJobsResponseBodyDataJobs struct {
@@ -408,7 +422,22 @@ func (s *ListJobsResponseBodyDataJobs) SetXAttrs(v string) *ListJobsResponseBody
 }
 
 func (s *ListJobsResponseBodyDataJobs) Validate() error {
-	return dara.Validate(s)
+	if s.JobMonitorInfo != nil {
+		if err := s.JobMonitorInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MapTaskXAttrs != nil {
+		if err := s.MapTaskXAttrs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TimeConfig != nil {
+		if err := s.TimeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListJobsResponseBodyDataJobsJobMonitorInfo struct {
@@ -445,7 +474,21 @@ func (s *ListJobsResponseBodyDataJobsJobMonitorInfo) SetMonitorConfig(v *ListJob
 }
 
 func (s *ListJobsResponseBodyDataJobsJobMonitorInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ContactInfo != nil {
+		for _, item := range s.ContactInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MonitorConfig != nil {
+		if err := s.MonitorConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListJobsResponseBodyDataJobsJobMonitorInfoContactInfo struct {

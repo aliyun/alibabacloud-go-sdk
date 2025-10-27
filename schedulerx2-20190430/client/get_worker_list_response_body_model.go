@@ -108,7 +108,12 @@ func (s *GetWorkerListResponseBody) SetSuccess(v bool) *GetWorkerListResponseBod
 }
 
 func (s *GetWorkerListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWorkerListResponseBodyData struct {
@@ -134,7 +139,16 @@ func (s *GetWorkerListResponseBodyData) SetWorkerInfos(v []*GetWorkerListRespons
 }
 
 func (s *GetWorkerListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.WorkerInfos != nil {
+		for _, item := range s.WorkerInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetWorkerListResponseBodyDataWorkerInfos struct {

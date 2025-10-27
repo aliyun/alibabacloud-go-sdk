@@ -59,5 +59,10 @@ func (s *GrantPermissionResponse) SetBody(v *GrantPermissionResponseBody) *Grant
 }
 
 func (s *GrantPermissionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

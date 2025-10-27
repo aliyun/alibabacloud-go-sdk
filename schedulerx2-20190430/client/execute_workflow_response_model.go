@@ -59,6 +59,11 @@ func (s *ExecuteWorkflowResponse) SetBody(v *ExecuteWorkflowResponseBody) *Execu
 }
 
 func (s *ExecuteWorkflowResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

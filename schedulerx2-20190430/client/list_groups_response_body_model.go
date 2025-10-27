@@ -108,7 +108,12 @@ func (s *ListGroupsResponseBody) SetSuccess(v bool) *ListGroupsResponseBody {
 }
 
 func (s *ListGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListGroupsResponseBodyData struct {
@@ -134,7 +139,16 @@ func (s *ListGroupsResponseBodyData) SetAppGroups(v []*ListGroupsResponseBodyDat
 }
 
 func (s *ListGroupsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AppGroups != nil {
+		for _, item := range s.AppGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGroupsResponseBodyDataAppGroups struct {

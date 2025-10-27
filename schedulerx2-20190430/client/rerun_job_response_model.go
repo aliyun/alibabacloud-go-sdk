@@ -59,5 +59,10 @@ func (s *RerunJobResponse) SetBody(v *RerunJobResponseBody) *RerunJobResponse {
 }
 
 func (s *RerunJobResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

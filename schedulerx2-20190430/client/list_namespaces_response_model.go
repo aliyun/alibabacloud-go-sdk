@@ -59,5 +59,10 @@ func (s *ListNamespacesResponse) SetBody(v *ListNamespacesResponseBody) *ListNam
 }
 
 func (s *ListNamespacesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

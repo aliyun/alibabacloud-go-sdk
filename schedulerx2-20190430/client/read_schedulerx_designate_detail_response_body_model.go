@@ -108,7 +108,17 @@ func (s *ReadSchedulerxDesignateDetailResponseBody) SetSuccess(v bool) *ReadSche
 }
 
 func (s *ReadSchedulerxDesignateDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AccessDeniedDetail != nil {
+		if err := s.AccessDeniedDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail struct {
@@ -240,7 +250,16 @@ func (s *ReadSchedulerxDesignateDetailResponseBodyData) SetDesignateDetailVos(v 
 }
 
 func (s *ReadSchedulerxDesignateDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DesignateDetailVos != nil {
+		for _, item := range s.DesignateDetailVos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos struct {
@@ -356,7 +375,12 @@ func (s *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos) SetVer
 }
 
 func (s *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos) Validate() error {
-	return dara.Validate(s)
+	if s.Metrics != nil {
+		if err := s.Metrics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics struct {

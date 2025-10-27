@@ -754,7 +754,16 @@ func (s *UpdateJobRequest) SetXAttrs(v string) *UpdateJobRequest {
 }
 
 func (s *UpdateJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ContactInfo != nil {
+		for _, item := range s.ContactInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateJobRequestContactInfo struct {

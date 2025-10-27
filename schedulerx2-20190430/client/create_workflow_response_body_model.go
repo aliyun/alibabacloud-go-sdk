@@ -108,7 +108,12 @@ func (s *CreateWorkflowResponseBody) SetSuccess(v bool) *CreateWorkflowResponseB
 }
 
 func (s *CreateWorkflowResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateWorkflowResponseBodyData struct {

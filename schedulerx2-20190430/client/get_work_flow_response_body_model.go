@@ -104,7 +104,12 @@ func (s *GetWorkFlowResponseBody) SetSuccess(v bool) *GetWorkFlowResponseBody {
 }
 
 func (s *GetWorkFlowResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWorkFlowResponseBodyData struct {
@@ -141,7 +146,17 @@ func (s *GetWorkFlowResponseBodyData) SetWorkFlowNodeInfo(v *GetWorkFlowResponse
 }
 
 func (s *GetWorkFlowResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.WorkFlowInfo != nil {
+		if err := s.WorkFlowInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WorkFlowNodeInfo != nil {
+		if err := s.WorkFlowNodeInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWorkFlowResponseBodyDataWorkFlowInfo struct {
@@ -313,7 +328,25 @@ func (s *GetWorkFlowResponseBodyDataWorkFlowNodeInfo) SetNodes(v []*GetWorkFlowR
 }
 
 func (s *GetWorkFlowResponseBodyDataWorkFlowNodeInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Edges != nil {
+		for _, item := range s.Edges {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetWorkFlowResponseBodyDataWorkFlowNodeInfoEdges struct {

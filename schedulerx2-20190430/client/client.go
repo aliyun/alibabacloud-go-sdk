@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -89,9 +90,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return BatchDeleteJobsResponse
 func (client *Client) BatchDeleteJobsWithOptions(request *BatchDeleteJobsRequest, runtime *dara.RuntimeOptions) (_result *BatchDeleteJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -185,9 +188,11 @@ func (client *Client) BatchDeleteJobs(request *BatchDeleteJobsRequest) (_result 
 //
 // @return BatchDeleteRouteStrategyResponse
 func (client *Client) BatchDeleteRouteStrategyWithOptions(request *BatchDeleteRouteStrategyRequest, runtime *dara.RuntimeOptions) (_result *BatchDeleteRouteStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -277,9 +282,11 @@ func (client *Client) BatchDeleteRouteStrategy(request *BatchDeleteRouteStrategy
 //
 // @return BatchDisableJobsResponse
 func (client *Client) BatchDisableJobsWithOptions(request *BatchDisableJobsRequest, runtime *dara.RuntimeOptions) (_result *BatchDisableJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -391,9 +398,11 @@ func (client *Client) BatchDisableJobs(request *BatchDisableJobsRequest) (_resul
 //
 // @return BatchEnableJobsResponse
 func (client *Client) BatchEnableJobsWithOptions(request *BatchEnableJobsRequest, runtime *dara.RuntimeOptions) (_result *BatchEnableJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -487,9 +496,11 @@ func (client *Client) BatchEnableJobs(request *BatchEnableJobsRequest) (_result 
 //
 // @return CreateAppGroupResponse
 func (client *Client) CreateAppGroupWithOptions(request *CreateAppGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateAppGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -543,9 +554,11 @@ func (client *Client) CreateAppGroup(request *CreateAppGroupRequest) (_result *C
 //
 // @return CreateJobResponse
 func (client *Client) CreateJobWithOptions(request *CreateJobRequest, runtime *dara.RuntimeOptions) (_result *CreateJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Priority) {
@@ -749,9 +762,11 @@ func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobRe
 //
 // @return CreateNamespaceResponse
 func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest, runtime *dara.RuntimeOptions) (_result *CreateNamespaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -821,9 +836,11 @@ func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result 
 //
 // @return CreateRouteStrategyResponse
 func (client *Client) CreateRouteStrategyWithOptions(request *CreateRouteStrategyRequest, runtime *dara.RuntimeOptions) (_result *CreateRouteStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -909,9 +926,11 @@ func (client *Client) CreateRouteStrategy(request *CreateRouteStrategyRequest) (
 //
 // @return CreateWorkflowResponse
 func (client *Client) CreateWorkflowWithOptions(request *CreateWorkflowRequest, runtime *dara.RuntimeOptions) (_result *CreateWorkflowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -1005,9 +1024,11 @@ func (client *Client) CreateWorkflow(request *CreateWorkflowRequest) (_result *C
 //
 // @return DeleteAppGroupResponse
 func (client *Client) DeleteAppGroupWithOptions(request *DeleteAppGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeleteJobs) {
@@ -1077,9 +1098,11 @@ func (client *Client) DeleteAppGroup(request *DeleteAppGroupRequest) (_result *D
 //
 // @return DeleteJobResponse
 func (client *Client) DeleteJobWithOptions(request *DeleteJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1133,9 +1156,11 @@ func (client *Client) DeleteJob(request *DeleteJobRequest) (_result *DeleteJobRe
 //
 // @return DeleteNamespaceResponse
 func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteNamespaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Namespace) {
@@ -1197,9 +1222,11 @@ func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result 
 //
 // @return DeleteRouteStrategyResponse
 func (client *Client) DeleteRouteStrategyWithOptions(request *DeleteRouteStrategyRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouteStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -1269,9 +1296,11 @@ func (client *Client) DeleteRouteStrategy(request *DeleteRouteStrategyRequest) (
 //
 // @return DeleteWorkflowResponse
 func (client *Client) DeleteWorkflowWithOptions(request *DeleteWorkflowRequest, runtime *dara.RuntimeOptions) (_result *DeleteWorkflowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1325,9 +1354,11 @@ func (client *Client) DeleteWorkflow(request *DeleteWorkflowRequest) (_result *D
 //
 // @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1385,9 +1416,11 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 //
 // @return DesignateWorkersResponse
 func (client *Client) DesignateWorkersWithOptions(request *DesignateWorkersRequest, runtime *dara.RuntimeOptions) (_result *DesignateWorkersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1441,9 +1474,11 @@ func (client *Client) DesignateWorkers(request *DesignateWorkersRequest) (_resul
 //
 // @return DisableJobResponse
 func (client *Client) DisableJobWithOptions(request *DisableJobRequest, runtime *dara.RuntimeOptions) (_result *DisableJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1497,9 +1532,11 @@ func (client *Client) DisableJob(request *DisableJobRequest) (_result *DisableJo
 //
 // @return DisableWorkflowResponse
 func (client *Client) DisableWorkflowWithOptions(request *DisableWorkflowRequest, runtime *dara.RuntimeOptions) (_result *DisableWorkflowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1553,9 +1590,11 @@ func (client *Client) DisableWorkflow(request *DisableWorkflowRequest) (_result 
 //
 // @return EnableJobResponse
 func (client *Client) EnableJobWithOptions(request *EnableJobRequest, runtime *dara.RuntimeOptions) (_result *EnableJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1609,9 +1648,11 @@ func (client *Client) EnableJob(request *EnableJobRequest) (_result *EnableJobRe
 //
 // @return EnableWorkflowResponse
 func (client *Client) EnableWorkflowWithOptions(request *EnableWorkflowRequest, runtime *dara.RuntimeOptions) (_result *EnableWorkflowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1669,9 +1710,11 @@ func (client *Client) EnableWorkflow(request *EnableWorkflowRequest) (_result *E
 //
 // @return ExecuteJobResponse
 func (client *Client) ExecuteJobWithOptions(request *ExecuteJobRequest, runtime *dara.RuntimeOptions) (_result *ExecuteJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1729,9 +1772,11 @@ func (client *Client) ExecuteJob(request *ExecuteJobRequest) (_result *ExecuteJo
 //
 // @return ExecuteWorkflowResponse
 func (client *Client) ExecuteWorkflowWithOptions(request *ExecuteWorkflowRequest, runtime *dara.RuntimeOptions) (_result *ExecuteWorkflowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1785,9 +1830,11 @@ func (client *Client) ExecuteWorkflow(request *ExecuteWorkflowRequest) (_result 
 //
 // @return GetAppGroupResponse
 func (client *Client) GetAppGroupWithOptions(request *GetAppGroupRequest, runtime *dara.RuntimeOptions) (_result *GetAppGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -1853,9 +1900,11 @@ func (client *Client) GetAppGroup(request *GetAppGroupRequest) (_result *GetAppG
 //
 // @return GetJobInfoResponse
 func (client *Client) GetJobInfoWithOptions(request *GetJobInfoRequest, runtime *dara.RuntimeOptions) (_result *GetJobInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1909,9 +1958,11 @@ func (client *Client) GetJobInfo(request *GetJobInfoRequest) (_result *GetJobInf
 //
 // @return GetJobInstanceResponse
 func (client *Client) GetJobInstanceWithOptions(request *GetJobInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetJobInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1965,9 +2016,11 @@ func (client *Client) GetJobInstance(request *GetJobInstanceRequest) (_result *G
 //
 // @return GetJobInstanceListResponse
 func (client *Client) GetJobInstanceListWithOptions(request *GetJobInstanceListRequest, runtime *dara.RuntimeOptions) (_result *GetJobInstanceListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2021,9 +2074,11 @@ func (client *Client) GetJobInstanceList(request *GetJobInstanceListRequest) (_r
 //
 // @return GetLogResponse
 func (client *Client) GetLogWithOptions(request *GetLogRequest, runtime *dara.RuntimeOptions) (_result *GetLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2077,9 +2132,11 @@ func (client *Client) GetLog(request *GetLogRequest) (_result *GetLogResponse, _
 //
 // @return GetOverviewResponse
 func (client *Client) GetOverviewWithOptions(request *GetOverviewRequest, runtime *dara.RuntimeOptions) (_result *GetOverviewResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -2165,9 +2222,11 @@ func (client *Client) GetOverview(request *GetOverviewRequest) (_result *GetOver
 //
 // @return GetWorkFlowResponse
 func (client *Client) GetWorkFlowWithOptions(request *GetWorkFlowRequest, runtime *dara.RuntimeOptions) (_result *GetWorkFlowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2221,9 +2280,11 @@ func (client *Client) GetWorkFlow(request *GetWorkFlowRequest) (_result *GetWork
 //
 // @return GetWorkerListResponse
 func (client *Client) GetWorkerListWithOptions(request *GetWorkerListRequest, runtime *dara.RuntimeOptions) (_result *GetWorkerListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2277,9 +2338,11 @@ func (client *Client) GetWorkerList(request *GetWorkerListRequest) (_result *Get
 //
 // @return GetWorkflowInstanceResponse
 func (client *Client) GetWorkflowInstanceWithOptions(request *GetWorkflowInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetWorkflowInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2333,9 +2396,11 @@ func (client *Client) GetWorkflowInstance(request *GetWorkflowInstanceRequest) (
 //
 // @return GrantPermissionResponse
 func (client *Client) GrantPermissionWithOptions(request *GrantPermissionRequest, runtime *dara.RuntimeOptions) (_result *GrantPermissionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GrantOption) {
@@ -2435,9 +2500,11 @@ func (client *Client) GrantPermission(request *GrantPermissionRequest) (_result 
 //
 // @return ListGroupsResponse
 func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppGroupName) {
@@ -2525,9 +2592,11 @@ func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroup
 //
 // @return ListJobScriptHistoryResponse
 func (client *Client) ListJobScriptHistoryWithOptions(request *ListJobScriptHistoryRequest, runtime *dara.RuntimeOptions) (_result *ListJobScriptHistoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -2615,9 +2684,11 @@ func (client *Client) ListJobScriptHistory(request *ListJobScriptHistoryRequest)
 //
 // @return ListJobsResponse
 func (client *Client) ListJobsWithOptions(request *ListJobsRequest, runtime *dara.RuntimeOptions) (_result *ListJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2699,9 +2770,11 @@ func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsRespo
 //
 // @return ListNamespacesResponse
 func (client *Client) ListNamespacesWithOptions(request *ListNamespacesRequest, runtime *dara.RuntimeOptions) (_result *ListNamespacesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Namespace) {
@@ -2781,9 +2854,11 @@ func (client *Client) ListNamespaces(request *ListNamespacesRequest) (_result *L
 //
 // @return ListWorkflowInstanceResponse
 func (client *Client) ListWorkflowInstanceWithOptions(request *ListWorkflowInstanceRequest, runtime *dara.RuntimeOptions) (_result *ListWorkflowInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2837,9 +2912,11 @@ func (client *Client) ListWorkflowInstance(request *ListWorkflowInstanceRequest)
 //
 // @return ManageSchedulerxJobSyncResponse
 func (client *Client) ManageSchedulerxJobSyncWithOptions(tmpReq *ManageSchedulerxJobSyncRequest, runtime *dara.RuntimeOptions) (_result *ManageSchedulerxJobSyncResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ManageSchedulerxJobSyncShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2927,9 +3004,11 @@ func (client *Client) ManageSchedulerxJobSync(request *ManageSchedulerxJobSyncRe
 //
 // @return ReadSchedulerxDesignateDetailResponse
 func (client *Client) ReadSchedulerxDesignateDetailWithOptions(request *ReadSchedulerxDesignateDetailRequest, runtime *dara.RuntimeOptions) (_result *ReadSchedulerxDesignateDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DesignateType) {
@@ -3007,9 +3086,11 @@ func (client *Client) ReadSchedulerxDesignateDetail(request *ReadSchedulerxDesig
 //
 // @return ReadSchedulerxDesignateInfoResponse
 func (client *Client) ReadSchedulerxDesignateInfoWithOptions(request *ReadSchedulerxDesignateInfoRequest, runtime *dara.RuntimeOptions) (_result *ReadSchedulerxDesignateInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -3083,9 +3164,11 @@ func (client *Client) ReadSchedulerxDesignateInfo(request *ReadSchedulerxDesigna
 //
 // @return RerunJobResponse
 func (client *Client) RerunJobWithOptions(request *RerunJobRequest, runtime *dara.RuntimeOptions) (_result *RerunJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DataTime) {
@@ -3171,9 +3254,11 @@ func (client *Client) RerunJob(request *RerunJobRequest) (_result *RerunJobRespo
 //
 // @return RetryJobInstanceResponse
 func (client *Client) RetryJobInstanceWithOptions(request *RetryJobInstanceRequest, runtime *dara.RuntimeOptions) (_result *RetryJobInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -3251,9 +3336,11 @@ func (client *Client) RetryJobInstance(request *RetryJobInstanceRequest) (_resul
 //
 // @return RevokePermissionResponse
 func (client *Client) RevokePermissionWithOptions(request *RevokePermissionRequest, runtime *dara.RuntimeOptions) (_result *RevokePermissionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -3327,9 +3414,11 @@ func (client *Client) RevokePermission(request *RevokePermissionRequest) (_resul
 //
 // @return SetJobInstanceSuccessResponse
 func (client *Client) SetJobInstanceSuccessWithOptions(request *SetJobInstanceSuccessRequest, runtime *dara.RuntimeOptions) (_result *SetJobInstanceSuccessResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -3407,9 +3496,11 @@ func (client *Client) SetJobInstanceSuccess(request *SetJobInstanceSuccessReques
 //
 // @return SetWfInstanceSuccessResponse
 func (client *Client) SetWfInstanceSuccessWithOptions(request *SetWfInstanceSuccessRequest, runtime *dara.RuntimeOptions) (_result *SetWfInstanceSuccessResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -3487,9 +3578,11 @@ func (client *Client) SetWfInstanceSuccess(request *SetWfInstanceSuccessRequest)
 //
 // @return StopInstanceResponse
 func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runtime *dara.RuntimeOptions) (_result *StopInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3543,9 +3636,11 @@ func (client *Client) StopInstance(request *StopInstanceRequest) (_result *StopI
 //
 // @return UpdateAppGroupResponse
 func (client *Client) UpdateAppGroupWithOptions(request *UpdateAppGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateAppGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppVersion) {
@@ -3574,6 +3669,10 @@ func (client *Client) UpdateAppGroupWithOptions(request *UpdateAppGroupRequest, 
 
 	if !dara.IsNil(request.Namespace) {
 		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.NotificationPolicyName) {
+		query["NotificationPolicyName"] = request.NotificationPolicyName
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -3631,9 +3730,11 @@ func (client *Client) UpdateAppGroup(request *UpdateAppGroupRequest) (_result *U
 //
 // @return UpdateJobResponse
 func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, runtime *dara.RuntimeOptions) (_result *UpdateJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Priority) {
@@ -3841,9 +3942,11 @@ func (client *Client) UpdateJob(request *UpdateJobRequest) (_result *UpdateJobRe
 //
 // @return UpdateJobScriptResponse
 func (client *Client) UpdateJobScriptWithOptions(request *UpdateJobScriptRequest, runtime *dara.RuntimeOptions) (_result *UpdateJobScriptResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -3925,9 +4028,11 @@ func (client *Client) UpdateJobScript(request *UpdateJobScriptRequest) (_result 
 //
 // @return UpdateNamespaceResponse
 func (client *Client) UpdateNamespaceWithOptions(request *UpdateNamespaceRequest, runtime *dara.RuntimeOptions) (_result *UpdateNamespaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -3997,9 +4102,11 @@ func (client *Client) UpdateNamespace(request *UpdateNamespaceRequest) (_result 
 //
 // @return UpdateWorkflowResponse
 func (client *Client) UpdateWorkflowWithOptions(request *UpdateWorkflowRequest, runtime *dara.RuntimeOptions) (_result *UpdateWorkflowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -4091,9 +4198,11 @@ func (client *Client) UpdateWorkflow(request *UpdateWorkflowRequest) (_result *U
 //
 // @return UpdateWorkflowDagResponse
 func (client *Client) UpdateWorkflowDagWithOptions(request *UpdateWorkflowDagRequest, runtime *dara.RuntimeOptions) (_result *UpdateWorkflowDagResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {

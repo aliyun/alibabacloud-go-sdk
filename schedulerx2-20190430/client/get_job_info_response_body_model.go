@@ -108,7 +108,12 @@ func (s *GetJobInfoResponseBody) SetSuccess(v bool) *GetJobInfoResponseBody {
 }
 
 func (s *GetJobInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetJobInfoResponseBodyData struct {
@@ -134,7 +139,12 @@ func (s *GetJobInfoResponseBodyData) SetJobConfigInfo(v *GetJobInfoResponseBodyD
 }
 
 func (s *GetJobInfoResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.JobConfigInfo != nil {
+		if err := s.JobConfigInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetJobInfoResponseBodyDataJobConfigInfo struct {
@@ -408,7 +418,22 @@ func (s *GetJobInfoResponseBodyDataJobConfigInfo) SetXAttrs(v string) *GetJobInf
 }
 
 func (s *GetJobInfoResponseBodyDataJobConfigInfo) Validate() error {
-	return dara.Validate(s)
+	if s.JobMonitorInfo != nil {
+		if err := s.JobMonitorInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MapTaskXAttrs != nil {
+		if err := s.MapTaskXAttrs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TimeConfig != nil {
+		if err := s.TimeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfo struct {
@@ -445,7 +470,21 @@ func (s *GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfo) SetMonitorConfig
 }
 
 func (s *GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ContactInfo != nil {
+		for _, item := range s.ContactInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MonitorConfig != nil {
+		if err := s.MonitorConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfoContactInfo struct {
