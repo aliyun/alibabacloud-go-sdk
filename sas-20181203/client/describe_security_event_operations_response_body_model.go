@@ -53,7 +53,16 @@ func (s *DescribeSecurityEventOperationsResponseBody) SetSecurityEventOperations
 }
 
 func (s *DescribeSecurityEventOperationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityEventOperationsResponse != nil {
+		for _, item := range s.SecurityEventOperationsResponse {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponse struct {
@@ -180,7 +189,34 @@ func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsRespo
 }
 
 func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.MappingMarkFields != nil {
+		for _, item := range s.MappingMarkFields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MarkField != nil {
+		for _, item := range s.MarkField {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MarkFieldsSource != nil {
+		for _, item := range s.MarkFieldsSource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMappingMarkFields struct {

@@ -59,5 +59,10 @@ func (s *ModifySoarStrategySubscribeResponse) SetBody(v *ModifySoarStrategySubsc
 }
 
 func (s *ModifySoarStrategySubscribeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

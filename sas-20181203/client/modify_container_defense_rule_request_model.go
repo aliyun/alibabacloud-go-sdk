@@ -165,7 +165,21 @@ func (s *ModifyContainerDefenseRuleRequest) SetWhitelist(v *ModifyContainerDefen
 }
 
 func (s *ModifyContainerDefenseRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Scope != nil {
+		for _, item := range s.Scope {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Whitelist != nil {
+		if err := s.Whitelist.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyContainerDefenseRuleRequestScope struct {

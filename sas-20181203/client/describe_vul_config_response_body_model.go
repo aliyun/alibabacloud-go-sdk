@@ -70,7 +70,16 @@ func (s *DescribeVulConfigResponseBody) SetTotalCount(v int32) *DescribeVulConfi
 }
 
 func (s *DescribeVulConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TargetConfigs != nil {
+		for _, item := range s.TargetConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVulConfigResponseBodyTargetConfigs struct {

@@ -53,7 +53,12 @@ func (s *AddContainerPluginRuleResponseBody) SetRequestId(v string) *AddContaine
 }
 
 func (s *AddContainerPluginRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddContainerPluginRuleResponseBodyData struct {

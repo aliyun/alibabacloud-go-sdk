@@ -53,7 +53,16 @@ func (s *ListPrivateK8sResponseBody) SetRequestId(v string) *ListPrivateK8sRespo
 }
 
 func (s *ListPrivateK8sResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PrivateK8sInfos != nil {
+		for _, item := range s.PrivateK8sInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrivateK8sResponseBodyPrivateK8sInfos struct {

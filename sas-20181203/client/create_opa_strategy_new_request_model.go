@@ -265,7 +265,21 @@ func (s *CreateOpaStrategyNewRequest) SetWhiteList(v []*string) *CreateOpaStrate
 }
 
 func (s *CreateOpaStrategyNewRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AlarmDetail != nil {
+		if err := s.AlarmDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Scopes != nil {
+		for _, item := range s.Scopes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOpaStrategyNewRequestAlarmDetail struct {
@@ -335,7 +349,32 @@ func (s *CreateOpaStrategyNewRequestAlarmDetail) SetVul(v *CreateOpaStrategyNewR
 }
 
 func (s *CreateOpaStrategyNewRequestAlarmDetail) Validate() error {
-	return dara.Validate(s)
+	if s.Baseline != nil {
+		if err := s.Baseline.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BuildRisk != nil {
+		if err := s.BuildRisk.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MaliciousFile != nil {
+		if err := s.MaliciousFile.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SensitiveFile != nil {
+		if err := s.SensitiveFile.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Vul != nil {
+		if err := s.Vul.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateOpaStrategyNewRequestAlarmDetailBaseline struct {
@@ -372,7 +411,16 @@ func (s *CreateOpaStrategyNewRequestAlarmDetailBaseline) SetRiskLevel(v []*strin
 }
 
 func (s *CreateOpaStrategyNewRequestAlarmDetailBaseline) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		for _, item := range s.Item {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOpaStrategyNewRequestAlarmDetailBaselineItem struct {
@@ -458,7 +506,16 @@ func (s *CreateOpaStrategyNewRequestAlarmDetailBuildRisk) SetRiskLevel(v []*stri
 }
 
 func (s *CreateOpaStrategyNewRequestAlarmDetailBuildRisk) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		for _, item := range s.Item {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOpaStrategyNewRequestAlarmDetailBuildRiskItem struct {
@@ -544,7 +601,16 @@ func (s *CreateOpaStrategyNewRequestAlarmDetailMaliciousFile) SetRiskLevel(v []*
 }
 
 func (s *CreateOpaStrategyNewRequestAlarmDetailMaliciousFile) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		for _, item := range s.Item {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOpaStrategyNewRequestAlarmDetailMaliciousFileItem struct {
@@ -630,7 +696,16 @@ func (s *CreateOpaStrategyNewRequestAlarmDetailSensitiveFile) SetRiskLevel(v []*
 }
 
 func (s *CreateOpaStrategyNewRequestAlarmDetailSensitiveFile) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		for _, item := range s.Item {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOpaStrategyNewRequestAlarmDetailSensitiveFileItem struct {
@@ -727,7 +802,25 @@ func (s *CreateOpaStrategyNewRequestAlarmDetailVul) SetRiskLevel(v []*string) *C
 }
 
 func (s *CreateOpaStrategyNewRequestAlarmDetailVul) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		for _, item := range s.Item {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RiskClass != nil {
+		for _, item := range s.RiskClass {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOpaStrategyNewRequestAlarmDetailVulItem struct {

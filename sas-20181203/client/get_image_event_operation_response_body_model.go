@@ -108,7 +108,12 @@ func (s *GetImageEventOperationResponseBody) SetSuccess(v bool) *GetImageEventOp
 }
 
 func (s *GetImageEventOperationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetImageEventOperationResponseBodyData struct {

@@ -142,7 +142,16 @@ func (s *ListCloudVendorRegionsResponseBody) SetSuccess(v bool) *ListCloudVendor
 }
 
 func (s *ListCloudVendorRegionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCloudVendorRegionsResponseBodyData struct {

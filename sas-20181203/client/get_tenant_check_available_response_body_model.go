@@ -53,7 +53,12 @@ func (s *GetTenantCheckAvailableResponseBody) SetRequestId(v string) *GetTenantC
 }
 
 func (s *GetTenantCheckAvailableResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTenantCheckAvailableResponseBodyData struct {

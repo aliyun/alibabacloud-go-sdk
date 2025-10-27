@@ -59,5 +59,10 @@ func (s *ListOssBucketResponse) SetBody(v *ListOssBucketResponseBody) *ListOssBu
 }
 
 func (s *ListOssBucketResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

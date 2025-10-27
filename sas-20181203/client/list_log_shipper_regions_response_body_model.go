@@ -53,7 +53,16 @@ func (s *ListLogShipperRegionsResponseBody) SetRequestId(v string) *ListLogShipp
 }
 
 func (s *ListLogShipperRegionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LogShipperRegionList != nil {
+		for _, item := range s.LogShipperRegionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLogShipperRegionsResponseBodyLogShipperRegionList struct {

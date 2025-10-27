@@ -53,7 +53,16 @@ func (s *OperateAgentClientInstallResponseBody) SetRequestId(v string) *OperateA
 }
 
 func (s *OperateAgentClientInstallResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AegisCelintInstallResposeList != nil {
+		for _, item := range s.AegisCelintInstallResposeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type OperateAgentClientInstallResponseBodyAegisCelintInstallResposeList struct {

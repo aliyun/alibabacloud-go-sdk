@@ -59,5 +59,10 @@ func (s *DescribePropertyPortItemResponse) SetBody(v *DescribePropertyPortItemRe
 }
 
 func (s *DescribePropertyPortItemResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

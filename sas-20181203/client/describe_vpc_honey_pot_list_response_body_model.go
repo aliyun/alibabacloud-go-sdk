@@ -66,7 +66,21 @@ func (s *DescribeVpcHoneyPotListResponseBody) SetVpcHoneyPotDTOList(v []*Describ
 }
 
 func (s *DescribeVpcHoneyPotListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VpcHoneyPotDTOList != nil {
+		for _, item := range s.VpcHoneyPotDTOList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcHoneyPotListResponseBodyPageInfo struct {
@@ -362,7 +376,16 @@ func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) SetVpcSwitchIdLi
 }
 
 func (s *DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList) Validate() error {
-	return dara.Validate(s)
+	if s.VpcSwitchIdList != nil {
+		for _, item := range s.VpcSwitchIdList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOListVpcSwitchIdList struct {

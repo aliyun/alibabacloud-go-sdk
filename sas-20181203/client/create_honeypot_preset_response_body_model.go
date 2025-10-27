@@ -125,7 +125,12 @@ func (s *CreateHoneypotPresetResponseBody) SetSuccess(v bool) *CreateHoneypotPre
 }
 
 func (s *CreateHoneypotPresetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HoneypotPreset != nil {
+		if err := s.HoneypotPreset.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateHoneypotPresetResponseBodyHoneypotPreset struct {

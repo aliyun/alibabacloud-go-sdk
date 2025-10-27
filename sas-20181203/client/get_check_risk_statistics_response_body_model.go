@@ -83,7 +83,21 @@ func (s *GetCheckRiskStatisticsResponseBody) SetSummary(v *GetCheckRiskStatistic
 }
 
 func (s *GetCheckRiskStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Summary != nil {
+		if err := s.Summary.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCheckRiskStatisticsResponseBodyData struct {
@@ -199,7 +213,16 @@ func (s *GetCheckRiskStatisticsResponseBodyData) SetTotalCount(v int32) *GetChec
 }
 
 func (s *GetCheckRiskStatisticsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.SubStatistics != nil {
+		for _, item := range s.SubStatistics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCheckRiskStatisticsResponseBodyDataSubStatistics struct {

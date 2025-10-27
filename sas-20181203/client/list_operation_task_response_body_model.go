@@ -66,7 +66,21 @@ func (s *ListOperationTaskResponseBody) SetRequestId(v string) *ListOperationTas
 }
 
 func (s *ListOperationTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OperationTasks != nil {
+		for _, item := range s.OperationTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListOperationTaskResponseBodyOperationTasks struct {

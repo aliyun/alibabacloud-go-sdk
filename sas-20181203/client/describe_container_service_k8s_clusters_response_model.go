@@ -59,5 +59,10 @@ func (s *DescribeContainerServiceK8sClustersResponse) SetBody(v *DescribeContain
 }
 
 func (s *DescribeContainerServiceK8sClustersResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

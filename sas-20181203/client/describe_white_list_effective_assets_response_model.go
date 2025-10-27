@@ -59,5 +59,10 @@ func (s *DescribeWhiteListEffectiveAssetsResponse) SetBody(v *DescribeWhiteListE
 }
 
 func (s *DescribeWhiteListEffectiveAssetsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

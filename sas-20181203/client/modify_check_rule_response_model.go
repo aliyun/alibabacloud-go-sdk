@@ -59,5 +59,10 @@ func (s *ModifyCheckRuleResponse) SetBody(v *ModifyCheckRuleResponseBody) *Modif
 }
 
 func (s *ModifyCheckRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

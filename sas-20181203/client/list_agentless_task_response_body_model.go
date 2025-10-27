@@ -66,7 +66,21 @@ func (s *ListAgentlessTaskResponseBody) SetRequestId(v string) *ListAgentlessTas
 }
 
 func (s *ListAgentlessTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAgentlessTaskResponseBodyList struct {

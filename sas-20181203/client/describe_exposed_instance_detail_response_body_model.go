@@ -53,7 +53,16 @@ func (s *DescribeExposedInstanceDetailResponseBody) SetRequestId(v string) *Desc
 }
 
 func (s *DescribeExposedInstanceDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ExposedChains != nil {
+		for _, item := range s.ExposedChains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeExposedInstanceDetailResponseBodyExposedChains struct {
@@ -303,7 +312,34 @@ func (s *DescribeExposedInstanceDetailResponseBodyExposedChains) SetUuid(v strin
 }
 
 func (s *DescribeExposedInstanceDetailResponseBodyExposedChains) Validate() error {
-	return dara.Validate(s)
+	if s.AllVulList != nil {
+		for _, item := range s.AllVulList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.CspmRiskList != nil {
+		for _, item := range s.CspmRiskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RealVulList != nil {
+		for _, item := range s.RealVulList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList struct {

@@ -53,7 +53,12 @@ func (s *DescribeClientConfSetupResponseBody) SetRequestId(v string) *DescribeCl
 }
 
 func (s *DescribeClientConfSetupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ClientConf != nil {
+		if err := s.ClientConf.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClientConfSetupResponseBodyClientConf struct {

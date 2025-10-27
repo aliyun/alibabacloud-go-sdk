@@ -53,7 +53,12 @@ func (s *DescribeContainerFieldStatisticsResponseBody) SetRequestId(v string) *D
 }
 
 func (s *DescribeContainerFieldStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ContainerGroupedFields != nil {
+		if err := s.ContainerGroupedFields.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeContainerFieldStatisticsResponseBodyContainerGroupedFields struct {

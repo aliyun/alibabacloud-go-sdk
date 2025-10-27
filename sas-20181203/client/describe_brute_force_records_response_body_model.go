@@ -66,7 +66,21 @@ func (s *DescribeBruteForceRecordsResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeBruteForceRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MachineList != nil {
+		for _, item := range s.MachineList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBruteForceRecordsResponseBodyMachineList struct {

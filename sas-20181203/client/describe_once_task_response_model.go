@@ -59,5 +59,10 @@ func (s *DescribeOnceTaskResponse) SetBody(v *DescribeOnceTaskResponseBody) *Des
 }
 
 func (s *DescribeOnceTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

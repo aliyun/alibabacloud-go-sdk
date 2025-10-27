@@ -142,7 +142,16 @@ func (s *ListContainerDefenseRuleClustersResponseBody) SetSuccess(v bool) *ListC
 }
 
 func (s *ListContainerDefenseRuleClustersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterList != nil {
+		for _, item := range s.ClusterList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListContainerDefenseRuleClustersResponseBodyClusterList struct {

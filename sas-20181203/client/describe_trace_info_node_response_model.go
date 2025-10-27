@@ -59,5 +59,10 @@ func (s *DescribeTraceInfoNodeResponse) SetBody(v *DescribeTraceInfoNodeResponse
 }
 
 func (s *DescribeTraceInfoNodeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

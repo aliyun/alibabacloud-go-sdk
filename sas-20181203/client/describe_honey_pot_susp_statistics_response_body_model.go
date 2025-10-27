@@ -53,7 +53,16 @@ func (s *DescribeHoneyPotSuspStatisticsResponseBody) SetSuspHoneyPotStatisticsRe
 }
 
 func (s *DescribeHoneyPotSuspStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SuspHoneyPotStatisticsResponse != nil {
+		for _, item := range s.SuspHoneyPotStatisticsResponse {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHoneyPotSuspStatisticsResponseBodySuspHoneyPotStatisticsResponse struct {

@@ -53,7 +53,12 @@ func (s *GetImageScanNumInPeriodResponseBody) SetRequestId(v string) *GetImageSc
 }
 
 func (s *GetImageScanNumInPeriodResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ImageScanData != nil {
+		if err := s.ImageScanData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetImageScanNumInPeriodResponseBodyImageScanData struct {

@@ -53,7 +53,12 @@ func (s *GetServiceTrailResponseBody) SetServiceTrail(v *GetServiceTrailResponse
 }
 
 func (s *GetServiceTrailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceTrail != nil {
+		if err := s.ServiceTrail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetServiceTrailResponseBodyServiceTrail struct {

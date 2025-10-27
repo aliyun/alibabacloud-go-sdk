@@ -53,7 +53,12 @@ func (s *GetAssetSelectionConfigResponseBody) SetRequestId(v string) *GetAssetSe
 }
 
 func (s *GetAssetSelectionConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAssetSelectionConfigResponseBodyData struct {

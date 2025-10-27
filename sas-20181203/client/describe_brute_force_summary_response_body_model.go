@@ -53,7 +53,12 @@ func (s *DescribeBruteForceSummaryResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeBruteForceSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BruteForceSummary != nil {
+		if err := s.BruteForceSummary.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBruteForceSummaryResponseBodyBruteForceSummary struct {

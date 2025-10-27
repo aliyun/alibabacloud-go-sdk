@@ -53,7 +53,16 @@ func (s *DescribeIdcAssetCriteriaResponseBody) SetRequestId(v string) *DescribeI
 }
 
 func (s *DescribeIdcAssetCriteriaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CriteriaList != nil {
+		for _, item := range s.CriteriaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIdcAssetCriteriaResponseBodyCriteriaList struct {

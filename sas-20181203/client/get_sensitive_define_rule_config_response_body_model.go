@@ -108,7 +108,12 @@ func (s *GetSensitiveDefineRuleConfigResponseBody) SetSuccess(v bool) *GetSensit
 }
 
 func (s *GetSensitiveDefineRuleConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSensitiveDefineRuleConfigResponseBodyData struct {
@@ -198,7 +203,16 @@ func (s *GetSensitiveDefineRuleConfigResponseBodyData) SetSelectedCount(v int32)
 }
 
 func (s *GetSensitiveDefineRuleConfigResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.RuleTree != nil {
+		for _, item := range s.RuleTree {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSensitiveDefineRuleConfigResponseBodyDataRuleTree struct {
@@ -254,7 +268,16 @@ func (s *GetSensitiveDefineRuleConfigResponseBodyDataRuleTree) SetRuleList(v []*
 }
 
 func (s *GetSensitiveDefineRuleConfigResponseBodyDataRuleTree) Validate() error {
-	return dara.Validate(s)
+	if s.RuleList != nil {
+		for _, item := range s.RuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSensitiveDefineRuleConfigResponseBodyDataRuleTreeRuleList struct {

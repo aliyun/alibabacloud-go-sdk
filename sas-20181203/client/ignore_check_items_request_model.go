@@ -159,7 +159,25 @@ func (s *IgnoreCheckItemsRequest) SetUuidList(v []*string) *IgnoreCheckItemsRequ
 }
 
 func (s *IgnoreCheckItemsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CheckAndRiskTypeList != nil {
+		for _, item := range s.CheckAndRiskTypeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ContainerItems != nil {
+		for _, item := range s.ContainerItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IgnoreCheckItemsRequestCheckAndRiskTypeList struct {

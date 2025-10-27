@@ -53,7 +53,12 @@ func (s *GetAttackPathWhitelistResponseBody) SetRequestId(v string) *GetAttackPa
 }
 
 func (s *GetAttackPathWhitelistResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AttackPathWhitelist != nil {
+		if err := s.AttackPathWhitelist.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAttackPathWhitelistResponseBodyAttackPathWhitelist struct {
@@ -188,7 +193,16 @@ func (s *GetAttackPathWhitelistResponseBodyAttackPathWhitelist) SetWhitelistType
 }
 
 func (s *GetAttackPathWhitelistResponseBodyAttackPathWhitelist) Validate() error {
-	return dara.Validate(s)
+	if s.AttackPathAssetList != nil {
+		for _, item := range s.AttackPathAssetList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAttackPathWhitelistResponseBodyAttackPathWhitelistAttackPathAssetList struct {

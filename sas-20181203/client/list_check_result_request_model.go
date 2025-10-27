@@ -33,6 +33,8 @@ type iListCheckResultRequest interface {
 	GetRegionId() *string
 	SetRequirementIds(v []*int64) *ListCheckResultRequest
 	GetRequirementIds() []*int64
+	SetResourceDirectoryAccountId(v int64) *ListCheckResultRequest
+	GetResourceDirectoryAccountId() *int64
 	SetRiskLevels(v []*string) *ListCheckResultRequest
 	GetRiskLevels() []*string
 	SetSortTypes(v []*string) *ListCheckResultRequest
@@ -158,6 +160,10 @@ type ListCheckResultRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The IDs of the requirements.
 	RequirementIds []*int64 `json:"RequirementIds,omitempty" xml:"RequirementIds,omitempty" type:"Repeated"`
+	// The Alibaba Cloud account ID of the member in the resource directory.
+	//
+	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The risk levels of check items. Separate multiple risk levels with commas (,). Valid values:
 	//
 	// 	- **HIGH**
@@ -258,6 +264,10 @@ func (s *ListCheckResultRequest) GetRequirementIds() []*int64 {
 	return s.RequirementIds
 }
 
+func (s *ListCheckResultRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *ListCheckResultRequest) GetRiskLevels() []*string {
 	return s.RiskLevels
 }
@@ -343,6 +353,11 @@ func (s *ListCheckResultRequest) SetRegionId(v string) *ListCheckResultRequest {
 
 func (s *ListCheckResultRequest) SetRequirementIds(v []*int64) *ListCheckResultRequest {
 	s.RequirementIds = v
+	return s
+}
+
+func (s *ListCheckResultRequest) SetResourceDirectoryAccountId(v int64) *ListCheckResultRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

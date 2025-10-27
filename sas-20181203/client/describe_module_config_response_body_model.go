@@ -108,7 +108,16 @@ func (s *DescribeModuleConfigResponseBody) SetSuccess(v bool) *DescribeModuleCon
 }
 
 func (s *DescribeModuleConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleConfigList != nil {
+		for _, item := range s.ModuleConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeModuleConfigResponseBodyModuleConfigList struct {
@@ -164,7 +173,16 @@ func (s *DescribeModuleConfigResponseBodyModuleConfigList) SetModuleName(v strin
 }
 
 func (s *DescribeModuleConfigResponseBodyModuleConfigList) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeModuleConfigResponseBodyModuleConfigListItems struct {

@@ -53,7 +53,12 @@ func (s *DescribeSuspiciousOverallConfigResponseBody) SetRequestId(v string) *De
 }
 
 func (s *DescribeSuspiciousOverallConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OverallConfig != nil {
+		if err := s.OverallConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSuspiciousOverallConfigResponseBodyOverallConfig struct {

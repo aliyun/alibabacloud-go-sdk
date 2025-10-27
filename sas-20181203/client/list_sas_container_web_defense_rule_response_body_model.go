@@ -66,7 +66,21 @@ func (s *ListSasContainerWebDefenseRuleResponseBody) SetRequestId(v string) *Lis
 }
 
 func (s *ListSasContainerWebDefenseRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ContainerWebDefenseRuleList != nil {
+		for _, item := range s.ContainerWebDefenseRuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSasContainerWebDefenseRuleResponseBodyContainerWebDefenseRuleList struct {
@@ -201,7 +215,16 @@ func (s *ListSasContainerWebDefenseRuleResponseBodyContainerWebDefenseRuleList) 
 }
 
 func (s *ListSasContainerWebDefenseRuleResponseBodyContainerWebDefenseRuleList) Validate() error {
-	return dara.Validate(s)
+	if s.PathConfDTOList != nil {
+		for _, item := range s.PathConfDTOList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSasContainerWebDefenseRuleResponseBodyContainerWebDefenseRuleListPathConfDTOList struct {

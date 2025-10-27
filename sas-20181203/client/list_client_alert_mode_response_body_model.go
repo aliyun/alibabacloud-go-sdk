@@ -53,7 +53,12 @@ func (s *ListClientAlertModeResponseBody) SetRequestId(v string) *ListClientAler
 }
 
 func (s *ListClientAlertModeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListClientAlertModeResponseBodyData struct {

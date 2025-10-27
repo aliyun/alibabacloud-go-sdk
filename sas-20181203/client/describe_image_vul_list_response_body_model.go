@@ -104,7 +104,16 @@ func (s *DescribeImageVulListResponseBody) SetVulRecords(v []*DescribeImageVulLi
 }
 
 func (s *DescribeImageVulListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VulRecords != nil {
+		for _, item := range s.VulRecords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageVulListResponseBodyVulRecords struct {
@@ -651,7 +660,12 @@ func (s *DescribeImageVulListResponseBodyVulRecords) SetUuid(v string) *Describe
 }
 
 func (s *DescribeImageVulListResponseBodyVulRecords) Validate() error {
-	return dara.Validate(s)
+	if s.ExtendContentJson != nil {
+		if err := s.ExtendContentJson.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImageVulListResponseBodyVulRecordsExtendContentJson struct {
@@ -707,7 +721,16 @@ func (s *DescribeImageVulListResponseBodyVulRecordsExtendContentJson) SetRpmEnti
 }
 
 func (s *DescribeImageVulListResponseBodyVulRecordsExtendContentJson) Validate() error {
-	return dara.Validate(s)
+	if s.RpmEntityList != nil {
+		for _, item := range s.RpmEntityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList struct {

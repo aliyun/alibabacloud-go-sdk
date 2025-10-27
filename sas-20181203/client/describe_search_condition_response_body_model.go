@@ -53,7 +53,16 @@ func (s *DescribeSearchConditionResponseBody) SetRequestId(v string) *DescribeSe
 }
 
 func (s *DescribeSearchConditionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ConditionList != nil {
+		for _, item := range s.ConditionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSearchConditionResponseBodyConditionList struct {

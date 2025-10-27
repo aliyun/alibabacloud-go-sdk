@@ -59,5 +59,10 @@ func (s *QueryAttackCountResponse) SetBody(v *QueryAttackCountResponseBody) *Que
 }
 
 func (s *QueryAttackCountResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

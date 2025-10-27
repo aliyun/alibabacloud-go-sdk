@@ -53,7 +53,12 @@ func (s *DescribeContainerServiceK8sClusterKritisStatusResponseBody) SetRequestI
 }
 
 func (s *DescribeContainerServiceK8sClusterKritisStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.KritisStatus != nil {
+		if err := s.KritisStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeContainerServiceK8sClusterKritisStatusResponseBodyKritisStatus struct {

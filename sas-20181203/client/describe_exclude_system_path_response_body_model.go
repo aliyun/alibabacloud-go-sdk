@@ -66,7 +66,21 @@ func (s *DescribeExcludeSystemPathResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeExcludeSystemPathResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ExcludePaths != nil {
+		for _, item := range s.ExcludePaths {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeExcludeSystemPathResponseBodyExcludePaths struct {

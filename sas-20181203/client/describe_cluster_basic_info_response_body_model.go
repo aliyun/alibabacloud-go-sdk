@@ -53,7 +53,12 @@ func (s *DescribeClusterBasicInfoResponseBody) SetRequestId(v string) *DescribeC
 }
 
 func (s *DescribeClusterBasicInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterInfo != nil {
+		if err := s.ClusterInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterBasicInfoResponseBodyClusterInfo struct {

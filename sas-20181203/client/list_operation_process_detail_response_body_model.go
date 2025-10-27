@@ -66,7 +66,21 @@ func (s *ListOperationProcessDetailResponseBody) SetRequestId(v string) *ListOpe
 }
 
 func (s *ListOperationProcessDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProcessDetails != nil {
+		for _, item := range s.ProcessDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListOperationProcessDetailResponseBodyPageInfo struct {
@@ -312,7 +326,16 @@ func (s *ListOperationProcessDetailResponseBodyProcessDetails) SetTaskId(v strin
 }
 
 func (s *ListOperationProcessDetailResponseBodyProcessDetails) Validate() error {
-	return dara.Validate(s)
+	if s.Checks != nil {
+		for _, item := range s.Checks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListOperationProcessDetailResponseBodyProcessDetailsChecks struct {

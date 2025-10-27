@@ -138,7 +138,16 @@ func (s *DescribeUniBackupStatisticsResponseBody) SetUnprotectedDatabaseCount(v 
 }
 
 func (s *DescribeUniBackupStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RegionCountList != nil {
+		for _, item := range s.RegionCountList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUniBackupStatisticsResponseBodyRegionCountList struct {

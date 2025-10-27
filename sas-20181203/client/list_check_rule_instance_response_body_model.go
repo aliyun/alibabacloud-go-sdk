@@ -146,7 +146,16 @@ func (s *ListCheckRuleInstanceResponseBody) SetVendor(v string) *ListCheckRuleIn
 }
 
 func (s *ListCheckRuleInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CheckRuleInstances != nil {
+		for _, item := range s.CheckRuleInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCheckRuleInstanceResponseBodyCheckRuleInstances struct {

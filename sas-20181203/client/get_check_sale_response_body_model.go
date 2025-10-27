@@ -53,7 +53,12 @@ func (s *GetCheckSaleResponseBody) SetRequestId(v string) *GetCheckSaleResponseB
 }
 
 func (s *GetCheckSaleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CheckSale != nil {
+		if err := s.CheckSale.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCheckSaleResponseBodyCheckSale struct {

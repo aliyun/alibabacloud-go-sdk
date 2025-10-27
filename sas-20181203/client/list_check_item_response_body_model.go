@@ -66,7 +66,21 @@ func (s *ListCheckItemResponseBody) SetRequestId(v string) *ListCheckItemRespons
 }
 
 func (s *ListCheckItemResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CheckItems != nil {
+		for _, item := range s.CheckItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCheckItemResponseBodyCheckItems struct {
@@ -330,7 +344,21 @@ func (s *ListCheckItemResponseBodyCheckItems) SetVendor(v string) *ListCheckItem
 }
 
 func (s *ListCheckItemResponseBodyCheckItems) Validate() error {
-	return dara.Validate(s)
+	if s.CustomConfigs != nil {
+		for _, item := range s.CustomConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Description != nil {
+		if err := s.Description.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCheckItemResponseBodyCheckItemsCustomConfigs struct {

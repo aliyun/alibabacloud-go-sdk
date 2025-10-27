@@ -79,7 +79,30 @@ func (s *VerifyCheckCustomConfigResponseBody) SetRequestId(v string) *VerifyChec
 }
 
 func (s *VerifyCheckCustomConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ErrorCheckConfigs != nil {
+		for _, item := range s.ErrorCheckConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ErrorCheckCustomConfig != nil {
+		if err := s.ErrorCheckCustomConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ErrorRepairConfigs != nil {
+		for _, item := range s.ErrorRepairConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type VerifyCheckCustomConfigResponseBodyErrorCheckConfigs struct {
@@ -182,7 +205,16 @@ func (s *VerifyCheckCustomConfigResponseBodyErrorCheckConfigs) SetValue(v string
 }
 
 func (s *VerifyCheckCustomConfigResponseBodyErrorCheckConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.LinkErrorConfigs != nil {
+		for _, item := range s.LinkErrorConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type VerifyCheckCustomConfigResponseBodyErrorCheckConfigsLinkErrorConfigs struct {
@@ -398,7 +430,16 @@ func (s *VerifyCheckCustomConfigResponseBodyErrorRepairConfigs) SetValue(v strin
 }
 
 func (s *VerifyCheckCustomConfigResponseBodyErrorRepairConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.LinkErrorConfigs != nil {
+		for _, item := range s.LinkErrorConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type VerifyCheckCustomConfigResponseBodyErrorRepairConfigsLinkErrorConfigs struct {

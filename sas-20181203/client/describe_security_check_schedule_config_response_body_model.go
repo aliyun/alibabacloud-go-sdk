@@ -53,7 +53,12 @@ func (s *DescribeSecurityCheckScheduleConfigResponseBody) SetRiskCheckJobConfig(
 }
 
 func (s *DescribeSecurityCheckScheduleConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RiskCheckJobConfig != nil {
+		if err := s.RiskCheckJobConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityCheckScheduleConfigResponseBodyRiskCheckJobConfig struct {

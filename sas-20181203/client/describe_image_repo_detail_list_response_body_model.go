@@ -66,7 +66,21 @@ func (s *DescribeImageRepoDetailListResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeImageRepoDetailListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ImageRepoResponses != nil {
+		for _, item := range s.ImageRepoResponses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImageRepoDetailListResponseBodyImageRepoResponses struct {

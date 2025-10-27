@@ -66,7 +66,21 @@ func (s *DescribeImageBaselineItemListResponseBody) SetRequestId(v string) *Desc
 }
 
 func (s *DescribeImageBaselineItemListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BaselineItemInfos != nil {
+		for _, item := range s.BaselineItemInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImageBaselineItemListResponseBodyBaselineItemInfos struct {

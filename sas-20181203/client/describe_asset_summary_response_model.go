@@ -59,5 +59,10 @@ func (s *DescribeAssetSummaryResponse) SetBody(v *DescribeAssetSummaryResponseBo
 }
 
 func (s *DescribeAssetSummaryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -66,7 +66,21 @@ func (s *ListAgentlessAssetResponseBody) SetRequestId(v string) *ListAgentlessAs
 }
 
 func (s *ListAgentlessAssetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AssetList != nil {
+		for _, item := range s.AssetList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAgentlessAssetResponseBodyAssetList struct {

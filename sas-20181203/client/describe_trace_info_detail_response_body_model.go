@@ -74,7 +74,12 @@ func (s *DescribeTraceInfoDetailResponseBody) SetTraceInfoDetail(v *DescribeTrac
 }
 
 func (s *DescribeTraceInfoDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TraceInfoDetail != nil {
+		if err := s.TraceInfoDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTraceInfoDetailResponseBodyTraceInfoDetail struct {
@@ -133,7 +138,43 @@ func (s *DescribeTraceInfoDetailResponseBodyTraceInfoDetail) SetVertexList(v []*
 }
 
 func (s *DescribeTraceInfoDetailResponseBodyTraceInfoDetail) Validate() error {
-	return dara.Validate(s)
+	if s.EdgeList != nil {
+		for _, item := range s.EdgeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EntityTypeList != nil {
+		for _, item := range s.EntityTypeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RelationTypeList != nil {
+		for _, item := range s.RelationTypeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VertexList != nil {
+		for _, item := range s.VertexList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTraceInfoDetailResponseBodyTraceInfoDetailEdgeList struct {
@@ -598,7 +639,16 @@ func (s *DescribeTraceInfoDetailResponseBodyTraceInfoDetailVertexList) SetType(v
 }
 
 func (s *DescribeTraceInfoDetailResponseBodyTraceInfoDetailVertexList) Validate() error {
-	return dara.Validate(s)
+	if s.NeighborList != nil {
+		for _, item := range s.NeighborList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTraceInfoDetailResponseBodyTraceInfoDetailVertexListNeighborList struct {

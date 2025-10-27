@@ -53,7 +53,16 @@ func (s *DescribeSimilarEventScenariosResponseBody) SetScenarios(v []*DescribeSi
 }
 
 func (s *DescribeSimilarEventScenariosResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Scenarios != nil {
+		for _, item := range s.Scenarios {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSimilarEventScenariosResponseBodyScenarios struct {

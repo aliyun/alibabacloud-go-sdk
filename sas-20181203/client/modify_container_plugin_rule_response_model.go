@@ -59,5 +59,10 @@ func (s *ModifyContainerPluginRuleResponse) SetBody(v *ModifyContainerPluginRule
 }
 
 func (s *ModifyContainerPluginRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

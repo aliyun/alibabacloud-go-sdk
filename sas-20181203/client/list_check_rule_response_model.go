@@ -59,5 +59,10 @@ func (s *ListCheckRuleResponse) SetBody(v *ListCheckRuleResponseBody) *ListCheck
 }
 
 func (s *ListCheckRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

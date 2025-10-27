@@ -66,7 +66,21 @@ func (s *ListAttackPathEventResponseBody) SetRequestId(v string) *ListAttackPath
 }
 
 func (s *ListAttackPathEventResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AttackPathEventList != nil {
+		for _, item := range s.AttackPathEventList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAttackPathEventResponseBodyAttackPathEventList struct {
@@ -208,7 +222,17 @@ func (s *ListAttackPathEventResponseBodyAttackPathEventList) SetSrcAsset(v *List
 }
 
 func (s *ListAttackPathEventResponseBodyAttackPathEventList) Validate() error {
-	return dara.Validate(s)
+	if s.DstAsset != nil {
+		if err := s.DstAsset.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SrcAsset != nil {
+		if err := s.SrcAsset.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAttackPathEventResponseBodyAttackPathEventListDstAsset struct {

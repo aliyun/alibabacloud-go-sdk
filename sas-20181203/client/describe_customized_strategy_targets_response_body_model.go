@@ -53,7 +53,16 @@ func (s *DescribeCustomizedStrategyTargetsResponseBody) SetStartegyTargets(v []*
 }
 
 func (s *DescribeCustomizedStrategyTargetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StartegyTargets != nil {
+		for _, item := range s.StartegyTargets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCustomizedStrategyTargetsResponseBodyStartegyTargets struct {

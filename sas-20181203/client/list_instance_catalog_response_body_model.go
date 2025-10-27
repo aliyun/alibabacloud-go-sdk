@@ -53,7 +53,16 @@ func (s *ListInstanceCatalogResponseBody) SetVendors(v []*ListInstanceCatalogRes
 }
 
 func (s *ListInstanceCatalogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Vendors != nil {
+		for _, item := range s.Vendors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstanceCatalogResponseBodyVendors struct {
@@ -119,7 +128,16 @@ func (s *ListInstanceCatalogResponseBodyVendors) SetValue(v int32) *ListInstance
 }
 
 func (s *ListInstanceCatalogResponseBodyVendors) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceTypes != nil {
+		for _, item := range s.InstanceTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstanceCatalogResponseBodyVendorsInstanceTypes struct {
@@ -225,7 +243,16 @@ func (s *ListInstanceCatalogResponseBodyVendorsInstanceTypes) SetValue(v int32) 
 }
 
 func (s *ListInstanceCatalogResponseBodyVendorsInstanceTypes) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceSubTypes != nil {
+		for _, item := range s.InstanceSubTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstanceCatalogResponseBodyVendorsInstanceTypesInstanceSubTypes struct {

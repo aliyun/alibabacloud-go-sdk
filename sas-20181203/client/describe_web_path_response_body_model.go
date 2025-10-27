@@ -121,7 +121,16 @@ func (s *DescribeWebPathResponseBody) SetTotalCount(v int32) *DescribeWebPathRes
 }
 
 func (s *DescribeWebPathResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigList != nil {
+		for _, item := range s.ConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWebPathResponseBodyConfigList struct {
@@ -181,7 +190,16 @@ func (s *DescribeWebPathResponseBodyConfigList) SetWebPathType(v string) *Descri
 }
 
 func (s *DescribeWebPathResponseBodyConfigList) Validate() error {
-	return dara.Validate(s)
+	if s.TargetList != nil {
+		for _, item := range s.TargetList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWebPathResponseBodyConfigListTargetList struct {

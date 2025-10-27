@@ -138,7 +138,17 @@ func (s *FindContainerNetworkConnectRequest) SetStartTime(v int64) *FindContaine
 }
 
 func (s *FindContainerNetworkConnectRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DstNode != nil {
+		if err := s.DstNode.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SrcNode != nil {
+		if err := s.SrcNode.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FindContainerNetworkConnectRequestDstNode struct {

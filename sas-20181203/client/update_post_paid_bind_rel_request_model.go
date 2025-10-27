@@ -96,7 +96,16 @@ func (s *UpdatePostPaidBindRelRequest) SetUpdateIfNecessary(v bool) *UpdatePostP
 }
 
 func (s *UpdatePostPaidBindRelRequest) Validate() error {
-	return dara.Validate(s)
+	if s.BindAction != nil {
+		for _, item := range s.BindAction {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdatePostPaidBindRelRequestBindAction struct {

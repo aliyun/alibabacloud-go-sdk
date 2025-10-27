@@ -53,7 +53,12 @@ func (s *GetInterceptionTargetDetailResponseBody) SetRuleTarget(v *GetIntercepti
 }
 
 func (s *GetInterceptionTargetDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RuleTarget != nil {
+		if err := s.RuleTarget.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInterceptionTargetDetailResponseBodyRuleTarget struct {

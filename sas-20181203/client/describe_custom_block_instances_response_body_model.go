@@ -66,7 +66,21 @@ func (s *DescribeCustomBlockInstancesResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribeCustomBlockInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceList != nil {
+		for _, item := range s.InstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCustomBlockInstancesResponseBodyInstanceList struct {

@@ -66,7 +66,21 @@ func (s *DescribeInstanceAntiBruteForceRulesResponseBody) SetRules(v []*Describe
 }
 
 func (s *DescribeInstanceAntiBruteForceRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceAntiBruteForceRulesResponseBodyPageInfo struct {

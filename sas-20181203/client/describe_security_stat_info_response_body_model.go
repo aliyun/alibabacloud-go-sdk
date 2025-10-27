@@ -113,7 +113,27 @@ func (s *DescribeSecurityStatInfoResponseBody) SetVulnerability(v *DescribeSecur
 }
 
 func (s *DescribeSecurityStatInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AttackEvent != nil {
+		if err := s.AttackEvent.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HealthCheck != nil {
+		if err := s.HealthCheck.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityEvent != nil {
+		if err := s.SecurityEvent.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Vulnerability != nil {
+		if err := s.Vulnerability.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityStatInfoResponseBodyAttackEvent struct {

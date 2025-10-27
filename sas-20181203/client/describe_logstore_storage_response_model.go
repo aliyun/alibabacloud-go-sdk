@@ -59,5 +59,10 @@ func (s *DescribeLogstoreStorageResponse) SetBody(v *DescribeLogstoreStorageResp
 }
 
 func (s *DescribeLogstoreStorageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

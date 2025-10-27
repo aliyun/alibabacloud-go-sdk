@@ -53,7 +53,12 @@ func (s *GetFileProtectDashboardResponseBody) SetRequestId(v string) *GetFilePro
 }
 
 func (s *GetFileProtectDashboardResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetFileProtectDashboardResponseBodyData struct {

@@ -53,7 +53,12 @@ func (s *GetModuleConfigStatusResponseBody) SetRequestId(v string) *GetModuleCon
 }
 
 func (s *GetModuleConfigStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetModuleConfigStatusResponseBodyData struct {
@@ -79,7 +84,16 @@ func (s *GetModuleConfigStatusResponseBodyData) SetModuleConfigResults(v []*GetM
 }
 
 func (s *GetModuleConfigStatusResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleConfigResults != nil {
+		for _, item := range s.ModuleConfigResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetModuleConfigStatusResponseBodyDataModuleConfigResults struct {

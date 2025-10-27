@@ -53,7 +53,16 @@ func (s *DescribeImageLatestScanTaskResponseBody) SetTask(v []*DescribeImageLate
 }
 
 func (s *DescribeImageLatestScanTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Task != nil {
+		for _, item := range s.Task {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageLatestScanTaskResponseBodyTask struct {

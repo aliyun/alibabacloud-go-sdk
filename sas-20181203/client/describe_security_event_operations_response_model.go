@@ -59,5 +59,10 @@ func (s *DescribeSecurityEventOperationsResponse) SetBody(v *DescribeSecurityEve
 }
 
 func (s *DescribeSecurityEventOperationsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

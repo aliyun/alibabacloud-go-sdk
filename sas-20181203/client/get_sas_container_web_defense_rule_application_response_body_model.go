@@ -53,7 +53,16 @@ func (s *GetSasContainerWebDefenseRuleApplicationResponseBody) SetRequestId(v st
 }
 
 func (s *GetSasContainerWebDefenseRuleApplicationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ContainerWebDefenseAppList != nil {
+		for _, item := range s.ContainerWebDefenseAppList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSasContainerWebDefenseRuleApplicationResponseBodyContainerWebDefenseAppList struct {

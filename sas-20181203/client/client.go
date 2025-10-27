@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -106,9 +107,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AddAssetSelectionCriteriaResponse
 func (client *Client) AddAssetSelectionCriteriaWithOptions(request *AddAssetSelectionCriteriaRequest, runtime *dara.RuntimeOptions) (_result *AddAssetSelectionCriteriaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Criteria) {
@@ -178,9 +181,11 @@ func (client *Client) AddAssetSelectionCriteria(request *AddAssetSelectionCriter
 //
 // @return AddBaselineCheckWhiteRecordResponse
 func (client *Client) AddBaselineCheckWhiteRecordWithOptions(request *AddBaselineCheckWhiteRecordRequest, runtime *dara.RuntimeOptions) (_result *AddBaselineCheckWhiteRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckId) {
@@ -254,9 +259,11 @@ func (client *Client) AddBaselineCheckWhiteRecord(request *AddBaselineCheckWhite
 //
 // @return AddCheckInstanceResultWhiteListResponse
 func (client *Client) AddCheckInstanceResultWhiteListWithOptions(request *AddCheckInstanceResultWhiteListRequest, runtime *dara.RuntimeOptions) (_result *AddCheckInstanceResultWhiteListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckGroupId) {
@@ -334,9 +341,11 @@ func (client *Client) AddCheckInstanceResultWhiteList(request *AddCheckInstanceR
 //
 // @return AddCheckResultWhiteListResponse
 func (client *Client) AddCheckResultWhiteListWithOptions(request *AddCheckResultWhiteListRequest, runtime *dara.RuntimeOptions) (_result *AddCheckResultWhiteListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckIds) {
@@ -402,9 +411,11 @@ func (client *Client) AddCheckResultWhiteList(request *AddCheckResultWhiteListRe
 //
 // @return AddClientUserDefineRuleResponse
 func (client *Client) AddClientUserDefineRuleWithOptions(request *AddClientUserDefineRuleRequest, runtime *dara.RuntimeOptions) (_result *AddClientUserDefineRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActionType) {
@@ -526,9 +537,11 @@ func (client *Client) AddClientUserDefineRule(request *AddClientUserDefineRuleRe
 //
 // @return AddCloudVendorAccountAKResponse
 func (client *Client) AddCloudVendorAccountAKWithOptions(request *AddCloudVendorAccountAKRequest, runtime *dara.RuntimeOptions) (_result *AddCloudVendorAccountAKResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AkType) {
@@ -634,9 +647,11 @@ func (client *Client) AddCloudVendorAccountAK(request *AddCloudVendorAccountAKRe
 //
 // @return AddCloudVendorTrialConfigResponse
 func (client *Client) AddCloudVendorTrialConfigWithOptions(request *AddCloudVendorTrialConfigRequest, runtime *dara.RuntimeOptions) (_result *AddCloudVendorTrialConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthId) {
@@ -702,9 +717,11 @@ func (client *Client) AddCloudVendorTrialConfig(request *AddCloudVendorTrialConf
 //
 // @return AddContainerDefenseRuleResponse
 func (client *Client) AddContainerDefenseRuleWithOptions(tmpReq *AddContainerDefenseRuleRequest, runtime *dara.RuntimeOptions) (_result *AddContainerDefenseRuleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddContainerDefenseRuleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -796,9 +813,11 @@ func (client *Client) AddContainerDefenseRule(request *AddContainerDefenseRuleRe
 //
 // @return AddContainerPluginRuleResponse
 func (client *Client) AddContainerPluginRuleWithOptions(request *AddContainerPluginRuleRequest, runtime *dara.RuntimeOptions) (_result *AddContainerPluginRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -884,9 +903,11 @@ func (client *Client) AddContainerPluginRule(request *AddContainerPluginRuleRequ
 //
 // @return AddIdcProbeResponse
 func (client *Client) AddIdcProbeWithOptions(request *AddIdcProbeRequest, runtime *dara.RuntimeOptions) (_result *AddIdcProbeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IdcName) {
@@ -976,9 +997,11 @@ func (client *Client) AddIdcProbe(request *AddIdcProbeRequest) (_result *AddIdcP
 //
 // @return AddImageEventOperationResponse
 func (client *Client) AddImageEventOperationWithOptions(request *AddImageEventOperationRequest, runtime *dara.RuntimeOptions) (_result *AddImageEventOperationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Conditions) {
@@ -1064,9 +1087,11 @@ func (client *Client) AddImageEventOperation(request *AddImageEventOperationRequ
 //
 // @return AddImageVulWhiteListResponse
 func (client *Client) AddImageVulWhiteListWithOptions(request *AddImageVulWhiteListRequest, runtime *dara.RuntimeOptions) (_result *AddImageVulWhiteListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -1144,9 +1169,11 @@ func (client *Client) AddImageVulWhiteList(request *AddImageVulWhiteListRequest)
 //
 // @return AddInstallCodeResponse
 func (client *Client) AddInstallCodeWithOptions(request *AddInstallCodeRequest, runtime *dara.RuntimeOptions) (_result *AddInstallCodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExpiredDate) {
@@ -1228,9 +1255,11 @@ func (client *Client) AddInstallCode(request *AddInstallCodeRequest) (_result *A
 //
 // @return AddPrivateRegistryResponse
 func (client *Client) AddPrivateRegistryWithOptions(request *AddPrivateRegistryRequest, runtime *dara.RuntimeOptions) (_result *AddPrivateRegistryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -1336,9 +1365,11 @@ func (client *Client) AddPrivateRegistry(request *AddPrivateRegistryRequest) (_r
 //
 // @return AddProtectVpcListResponse
 func (client *Client) AddProtectVpcListWithOptions(request *AddProtectVpcListRequest, runtime *dara.RuntimeOptions) (_result *AddProtectVpcListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddVpcInstanceIdList) {
@@ -1400,9 +1431,11 @@ func (client *Client) AddProtectVpcList(request *AddProtectVpcListRequest) (_res
 //
 // @return AddPublishBatchResponse
 func (client *Client) AddPublishBatchWithOptions(request *AddPublishBatchRequest, runtime *dara.RuntimeOptions) (_result *AddPublishBatchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BatchName) {
@@ -1472,9 +1505,11 @@ func (client *Client) AddPublishBatch(request *AddPublishBatchRequest) (_result 
 //
 // @return AddSasContainerWebDefenseRuleResponse
 func (client *Client) AddSasContainerWebDefenseRuleWithOptions(request *AddSasContainerWebDefenseRuleRequest, runtime *dara.RuntimeOptions) (_result *AddSasContainerWebDefenseRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PathConfDTOList) {
@@ -1536,9 +1571,11 @@ func (client *Client) AddSasContainerWebDefenseRule(request *AddSasContainerWebD
 //
 // @return AddSasModuleTrialResponse
 func (client *Client) AddSasModuleTrialWithOptions(request *AddSasModuleTrialRequest, runtime *dara.RuntimeOptions) (_result *AddSasModuleTrialResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -1604,9 +1641,11 @@ func (client *Client) AddSasModuleTrial(request *AddSasModuleTrialRequest) (_res
 //
 // @return AddTagWithUuidResponse
 func (client *Client) AddTagWithUuidWithOptions(request *AddTagWithUuidRequest, runtime *dara.RuntimeOptions) (_result *AddTagWithUuidResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TagName) {
@@ -1672,9 +1711,11 @@ func (client *Client) AddTagWithUuid(request *AddTagWithUuidRequest) (_result *A
 //
 // @return AddUninstallClientsByUuidsResponse
 func (client *Client) AddUninstallClientsByUuidsWithOptions(request *AddUninstallClientsByUuidsRequest, runtime *dara.RuntimeOptions) (_result *AddUninstallClientsByUuidsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CallMethod) {
@@ -1748,9 +1789,11 @@ func (client *Client) AddUninstallClientsByUuids(request *AddUninstallClientsByU
 //
 // @return AddVpcHoneyPotResponse
 func (client *Client) AddVpcHoneyPotWithOptions(request *AddVpcHoneyPotRequest, runtime *dara.RuntimeOptions) (_result *AddVpcHoneyPotResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.VpcId) {
@@ -1808,9 +1851,11 @@ func (client *Client) AddVpcHoneyPot(request *AddVpcHoneyPotRequest) (_result *A
 //
 // @return AdvanceSecurityEventOperationsResponse
 func (client *Client) AdvanceSecurityEventOperationsWithOptions(request *AdvanceSecurityEventOperationsRequest, runtime *dara.RuntimeOptions) (_result *AdvanceSecurityEventOperationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventName) {
@@ -1880,9 +1925,11 @@ func (client *Client) AdvanceSecurityEventOperations(request *AdvanceSecurityEve
 //
 // @return BatchCreateMaliciousNoteResponse
 func (client *Client) BatchCreateMaliciousNoteWithOptions(request *BatchCreateMaliciousNoteRequest, runtime *dara.RuntimeOptions) (_result *BatchCreateMaliciousNoteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageMaliciousFileList) {
@@ -1940,9 +1987,11 @@ func (client *Client) BatchCreateMaliciousNote(request *BatchCreateMaliciousNote
 //
 // @return BatchDeleteMaliciousFileWhitelistConfigResponse
 func (client *Client) BatchDeleteMaliciousFileWhitelistConfigWithOptions(request *BatchDeleteMaliciousFileWhitelistConfigRequest, runtime *dara.RuntimeOptions) (_result *BatchDeleteMaliciousFileWhitelistConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigIdList) {
@@ -2000,9 +2049,11 @@ func (client *Client) BatchDeleteMaliciousFileWhitelistConfig(request *BatchDele
 //
 // @return BatchOperateCommonOverallConfigResponse
 func (client *Client) BatchOperateCommonOverallConfigWithOptions(request *BatchOperateCommonOverallConfigRequest, runtime *dara.RuntimeOptions) (_result *BatchOperateCommonOverallConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -2064,9 +2115,11 @@ func (client *Client) BatchOperateCommonOverallConfig(request *BatchOperateCommo
 //
 // @return BatchUpdateMaliciousFileWhitelistConfigResponse
 func (client *Client) BatchUpdateMaliciousFileWhitelistConfigWithOptions(request *BatchUpdateMaliciousFileWhitelistConfigRequest, runtime *dara.RuntimeOptions) (_result *BatchUpdateMaliciousFileWhitelistConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigList) {
@@ -2124,9 +2177,11 @@ func (client *Client) BatchUpdateMaliciousFileWhitelistConfig(request *BatchUpda
 //
 // @return BindAuthToMachineResponse
 func (client *Client) BindAuthToMachineWithOptions(request *BindAuthToMachineRequest, runtime *dara.RuntimeOptions) (_result *BindAuthToMachineResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthVersion) {
@@ -2220,9 +2275,11 @@ func (client *Client) BindAuthToMachine(request *BindAuthToMachineRequest) (_res
 //
 // @return BindHybridProxyResponse
 func (client *Client) BindHybridProxyWithOptions(request *BindHybridProxyRequest, runtime *dara.RuntimeOptions) (_result *BindHybridProxyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterName) {
@@ -2284,9 +2341,11 @@ func (client *Client) BindHybridProxy(request *BindHybridProxyRequest) (_result 
 //
 // @return CancelOnceTaskResponse
 func (client *Client) CancelOnceTaskWithOptions(request *CancelOnceTaskRequest, runtime *dara.RuntimeOptions) (_result *CancelOnceTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -2344,9 +2403,11 @@ func (client *Client) CancelOnceTask(request *CancelOnceTaskRequest) (_result *C
 //
 // @return ChangeAssetRefreshTaskConfigResponse
 func (client *Client) ChangeAssetRefreshTaskConfigWithOptions(request *ChangeAssetRefreshTaskConfigRequest, runtime *dara.RuntimeOptions) (_result *ChangeAssetRefreshTaskConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AssetRefreshConfigs) {
@@ -2408,9 +2469,11 @@ func (client *Client) ChangeAssetRefreshTaskConfig(request *ChangeAssetRefreshTa
 //
 // @return ChangeCheckConfigResponse
 func (client *Client) ChangeCheckConfigWithOptions(tmpReq *ChangeCheckConfigRequest, runtime *dara.RuntimeOptions) (_result *ChangeCheckConfigResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ChangeCheckConfigShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2530,9 +2593,11 @@ func (client *Client) ChangeCheckConfig(request *ChangeCheckConfigRequest) (_res
 //
 // @return ChangeCheckCustomConfigResponse
 func (client *Client) ChangeCheckCustomConfigWithOptions(request *ChangeCheckCustomConfigRequest, runtime *dara.RuntimeOptions) (_result *ChangeCheckCustomConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckId) {
@@ -2602,9 +2667,11 @@ func (client *Client) ChangeCheckCustomConfig(request *ChangeCheckCustomConfigRe
 //
 // @return ChangeSecurityScoreRuleResponse
 func (client *Client) ChangeSecurityScoreRuleWithOptions(request *ChangeSecurityScoreRuleRequest, runtime *dara.RuntimeOptions) (_result *ChangeSecurityScoreRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CalType) {
@@ -2674,9 +2741,11 @@ func (client *Client) ChangeSecurityScoreRule(request *ChangeSecurityScoreRuleRe
 //
 // @return ChangeUserLangResponse
 func (client *Client) ChangeUserLangWithOptions(request *ChangeUserLangRequest, runtime *dara.RuntimeOptions) (_result *ChangeUserLangResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.UserLang) {
@@ -2734,9 +2803,11 @@ func (client *Client) ChangeUserLang(request *ChangeUserLangRequest) (_result *C
 //
 // @return CheckSecurityEventIdResponse
 func (client *Client) CheckSecurityEventIdWithOptions(request *CheckSecurityEventIdRequest, runtime *dara.RuntimeOptions) (_result *CheckSecurityEventIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SecurityEventIds) {
@@ -2849,9 +2920,11 @@ func (client *Client) CheckStsTokenAuth() (_result *CheckStsTokenAuthResponse, _
 //
 // @return CheckTrialFixCountResponse
 func (client *Client) CheckTrialFixCountWithOptions(request *CheckTrialFixCountRequest, runtime *dara.RuntimeOptions) (_result *CheckTrialFixCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Info) {
@@ -2925,9 +2998,11 @@ func (client *Client) CheckTrialFixCount(request *CheckTrialFixCountRequest) (_r
 //
 // @return CheckUserHasEcsResponse
 func (client *Client) CheckUserHasEcsWithOptions(request *CheckUserHasEcsRequest, runtime *dara.RuntimeOptions) (_result *CheckUserHasEcsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2985,9 +3060,11 @@ func (client *Client) CheckUserHasEcs(request *CheckUserHasEcsRequest) (_result 
 //
 // @return ConfirmVirusEventsResponse
 func (client *Client) ConfirmVirusEventsWithOptions(request *ConfirmVirusEventsRequest, runtime *dara.RuntimeOptions) (_result *ConfirmVirusEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OperationAll) {
@@ -3053,9 +3130,11 @@ func (client *Client) ConfirmVirusEvents(request *ConfirmVirusEventsRequest) (_r
 //
 // @return CopyCustomizeReportConfigResponse
 func (client *Client) CopyCustomizeReportConfigWithOptions(request *CopyCustomizeReportConfigRequest, runtime *dara.RuntimeOptions) (_result *CopyCustomizeReportConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -3121,9 +3200,11 @@ func (client *Client) CopyCustomizeReportConfig(request *CopyCustomizeReportConf
 //
 // @return CreateAgentlessScanTaskResponse
 func (client *Client) CreateAgentlessScanTaskWithOptions(request *CreateAgentlessScanTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateAgentlessScanTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AssetSelectionType) {
@@ -3201,9 +3282,11 @@ func (client *Client) CreateAgentlessScanTask(request *CreateAgentlessScanTaskRe
 //
 // @return CreateAntiBruteForceRuleResponse
 func (client *Client) CreateAntiBruteForceRuleWithOptions(tmpReq *CreateAntiBruteForceRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateAntiBruteForceRuleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateAntiBruteForceRuleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3299,9 +3382,11 @@ func (client *Client) CreateAntiBruteForceRule(request *CreateAntiBruteForceRule
 //
 // @return CreateAssetSelectionConfigResponse
 func (client *Client) CreateAssetSelectionConfigWithOptions(request *CreateAssetSelectionConfigRequest, runtime *dara.RuntimeOptions) (_result *CreateAssetSelectionConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessType) {
@@ -3367,9 +3452,11 @@ func (client *Client) CreateAssetSelectionConfig(request *CreateAssetSelectionCo
 //
 // @return CreateAttackPathSensitiveAssetConfigResponse
 func (client *Client) CreateAttackPathSensitiveAssetConfigWithOptions(request *CreateAttackPathSensitiveAssetConfigRequest, runtime *dara.RuntimeOptions) (_result *CreateAttackPathSensitiveAssetConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AttackPathAssetList) {
@@ -3431,9 +3518,11 @@ func (client *Client) CreateAttackPathSensitiveAssetConfig(request *CreateAttack
 //
 // @return CreateAttackPathWhitelistResponse
 func (client *Client) CreateAttackPathWhitelistWithOptions(request *CreateAttackPathWhitelistRequest, runtime *dara.RuntimeOptions) (_result *CreateAttackPathWhitelistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AttackPathAssetList) {
@@ -3511,9 +3600,11 @@ func (client *Client) CreateAttackPathWhitelist(request *CreateAttackPathWhiteli
 //
 // @return CreateAttestorResponse
 func (client *Client) CreateAttestorWithOptions(request *CreateAttestorRequest, runtime *dara.RuntimeOptions) (_result *CreateAttestorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyId) {
@@ -3595,9 +3686,11 @@ func (client *Client) CreateAttestor(request *CreateAttestorRequest) (_result *C
 //
 // @return CreateBackupPolicyResponse
 func (client *Client) CreateBackupPolicyWithOptions(tmpReq *CreateBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateBackupPolicyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateBackupPolicyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3677,9 +3770,11 @@ func (client *Client) CreateBackupPolicy(request *CreateBackupPolicyRequest) (_r
 //
 // @return CreateBatchUploadUrlResponse
 func (client *Client) CreateBatchUploadUrlWithOptions(request *CreateBatchUploadUrlRequest, runtime *dara.RuntimeOptions) (_result *CreateBatchUploadUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Md5List) {
@@ -3741,9 +3836,11 @@ func (client *Client) CreateBatchUploadUrl(request *CreateBatchUploadUrlRequest)
 //
 // @return CreateBinarySecurityPolicyResponse
 func (client *Client) CreateBinarySecurityPolicyWithOptions(request *CreateBinarySecurityPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateBinarySecurityPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Clusters) {
@@ -3825,9 +3922,11 @@ func (client *Client) CreateBinarySecurityPolicy(request *CreateBinarySecurityPo
 //
 // @return CreateContainerScanTaskResponse
 func (client *Client) CreateContainerScanTaskWithOptions(request *CreateContainerScanTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateContainerScanTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -3893,9 +3992,11 @@ func (client *Client) CreateContainerScanTask(request *CreateContainerScanTaskRe
 //
 // @return CreateContainerScanTaskByAppNameResponse
 func (client *Client) CreateContainerScanTaskByAppNameWithOptions(request *CreateContainerScanTaskByAppNameRequest, runtime *dara.RuntimeOptions) (_result *CreateContainerScanTaskByAppNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppNames) {
@@ -3961,9 +4062,11 @@ func (client *Client) CreateContainerScanTaskByAppName(request *CreateContainerS
 //
 // @return CreateCustomBlockRecordResponse
 func (client *Client) CreateCustomBlockRecordWithOptions(request *CreateCustomBlockRecordRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomBlockRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BlockIp) {
@@ -4037,9 +4140,11 @@ func (client *Client) CreateCustomBlockRecord(request *CreateCustomBlockRecordRe
 //
 // @return CreateCustomizedDictResponse
 func (client *Client) CreateCustomizedDictWithOptions(request *CreateCustomizedDictRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomizedDictResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -4105,9 +4210,11 @@ func (client *Client) CreateCustomizedDict(request *CreateCustomizedDictRequest)
 //
 // @return CreateCycleTaskResponse
 func (client *Client) CreateCycleTaskWithOptions(request *CreateCycleTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateCycleTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Enable) {
@@ -4203,9 +4310,11 @@ func (client *Client) CreateCycleTask(request *CreateCycleTaskRequest) (_result 
 //
 // @return CreateDynamicDictResponse
 func (client *Client) CreateDynamicDictWithOptions(request *CreateDynamicDictRequest, runtime *dara.RuntimeOptions) (_result *CreateDynamicDictResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Override) {
@@ -4276,9 +4385,11 @@ func (client *Client) CreateDynamicDict(request *CreateDynamicDictRequest) (_res
 //
 // @return CreateFileDetectResponse
 func (client *Client) CreateFileDetectWithOptions(request *CreateFileDetectRequest, runtime *dara.RuntimeOptions) (_result *CreateFileDetectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Decompress) {
@@ -4378,9 +4489,11 @@ func (client *Client) CreateFileDetect(request *CreateFileDetectRequest) (_resul
 //
 // @return CreateFileDetectUploadUrlResponse
 func (client *Client) CreateFileDetectUploadUrlWithOptions(request *CreateFileDetectUploadUrlRequest, runtime *dara.RuntimeOptions) (_result *CreateFileDetectUploadUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HashKeyContextList) {
@@ -4454,9 +4567,11 @@ func (client *Client) CreateFileDetectUploadUrl(request *CreateFileDetectUploadU
 //
 // @return CreateFileProtectRuleResponse
 func (client *Client) CreateFileProtectRuleWithOptions(request *CreateFileProtectRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateFileProtectRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlertLevel) {
@@ -4546,9 +4661,11 @@ func (client *Client) CreateFileProtectRule(request *CreateFileProtectRuleReques
 //
 // @return CreateFileUploadLimitResponse
 func (client *Client) CreateFileUploadLimitWithOptions(request *CreateFileUploadLimitRequest, runtime *dara.RuntimeOptions) (_result *CreateFileUploadLimitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Limit) {
@@ -4606,9 +4723,11 @@ func (client *Client) CreateFileUploadLimit(request *CreateFileUploadLimitReques
 //
 // @return CreateHoneypotResponse
 func (client *Client) CreateHoneypotWithOptions(request *CreateHoneypotRequest, runtime *dara.RuntimeOptions) (_result *CreateHoneypotResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HoneypotImageId) {
@@ -4682,9 +4801,11 @@ func (client *Client) CreateHoneypot(request *CreateHoneypotRequest) (_result *C
 //
 // @return CreateHoneypotNodeResponse
 func (client *Client) CreateHoneypotNodeWithOptions(request *CreateHoneypotNodeRequest, runtime *dara.RuntimeOptions) (_result *CreateHoneypotNodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllowHoneypotAccessInternet) {
@@ -4754,9 +4875,11 @@ func (client *Client) CreateHoneypotNode(request *CreateHoneypotNodeRequest) (_r
 //
 // @return CreateHoneypotPresetResponse
 func (client *Client) CreateHoneypotPresetWithOptions(request *CreateHoneypotPresetRequest, runtime *dara.RuntimeOptions) (_result *CreateHoneypotPresetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HoneypotImageName) {
@@ -4830,9 +4953,11 @@ func (client *Client) CreateHoneypotPreset(request *CreateHoneypotPresetRequest)
 //
 // @return CreateHoneypotProbeResponse
 func (client *Client) CreateHoneypotProbeWithOptions(request *CreateHoneypotProbeRequest, runtime *dara.RuntimeOptions) (_result *CreateHoneypotProbeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Arp) {
@@ -4930,9 +5055,11 @@ func (client *Client) CreateHoneypotProbe(request *CreateHoneypotProbeRequest) (
 //
 // @return CreateHoneypotProbeBindResponse
 func (client *Client) CreateHoneypotProbeBindWithOptions(request *CreateHoneypotProbeBindRequest, runtime *dara.RuntimeOptions) (_result *CreateHoneypotProbeBindResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BindPortList) {
@@ -5006,9 +5133,11 @@ func (client *Client) CreateHoneypotProbeBind(request *CreateHoneypotProbeBindRe
 //
 // @return CreateHybridProxyClusterResponse
 func (client *Client) CreateHybridProxyClusterWithOptions(request *CreateHybridProxyClusterRequest, runtime *dara.RuntimeOptions) (_result *CreateHybridProxyClusterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterName) {
@@ -5074,9 +5203,11 @@ func (client *Client) CreateHybridProxyCluster(request *CreateHybridProxyCluster
 //
 // @return CreateInterceptionRuleResponse
 func (client *Client) CreateInterceptionRuleWithOptions(tmpReq *CreateInterceptionRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateInterceptionRuleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateInterceptionRuleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5176,9 +5307,11 @@ func (client *Client) CreateInterceptionRule(request *CreateInterceptionRuleRequ
 //
 // @return CreateInterceptionTargetResponse
 func (client *Client) CreateInterceptionTargetWithOptions(request *CreateInterceptionTargetRequest, runtime *dara.RuntimeOptions) (_result *CreateInterceptionTargetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -5264,9 +5397,11 @@ func (client *Client) CreateInterceptionTarget(request *CreateInterceptionTarget
 //
 // @return CreateJenkinsImageRegistryResponse
 func (client *Client) CreateJenkinsImageRegistryWithOptions(request *CreateJenkinsImageRegistryRequest, runtime *dara.RuntimeOptions) (_result *CreateJenkinsImageRegistryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceIp) {
@@ -5386,9 +5521,11 @@ func (client *Client) CreateJenkinsImageRegistry(request *CreateJenkinsImageRegi
 //
 // @return CreateJenkinsImageScanTaskResponse
 func (client *Client) CreateJenkinsImageScanTaskWithOptions(request *CreateJenkinsImageScanTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateJenkinsImageScanTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JenkinsEnv) {
@@ -5492,9 +5629,11 @@ func (client *Client) CreateJenkinsImageScanTask(request *CreateJenkinsImageScan
 //
 // @return CreateMaliciousFileWhitelistConfigResponse
 func (client *Client) CreateMaliciousFileWhitelistConfigWithOptions(request *CreateMaliciousFileWhitelistConfigRequest, runtime *dara.RuntimeOptions) (_result *CreateMaliciousFileWhitelistConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventName) {
@@ -5576,9 +5715,11 @@ func (client *Client) CreateMaliciousFileWhitelistConfig(request *CreateMaliciou
 //
 // @return CreateMaliciousNoteResponse
 func (client *Client) CreateMaliciousNoteWithOptions(request *CreateMaliciousNoteRequest, runtime *dara.RuntimeOptions) (_result *CreateMaliciousNoteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventId) {
@@ -5644,9 +5785,11 @@ func (client *Client) CreateMaliciousNote(request *CreateMaliciousNoteRequest) (
 //
 // @return CreateMonitorAccountResponse
 func (client *Client) CreateMonitorAccountWithOptions(request *CreateMonitorAccountRequest, runtime *dara.RuntimeOptions) (_result *CreateMonitorAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountIds) {
@@ -5708,9 +5851,11 @@ func (client *Client) CreateMonitorAccount(request *CreateMonitorAccountRequest)
 //
 // @return CreateOpaClusterPluginResponse
 func (client *Client) CreateOpaClusterPluginWithOptions(request *CreateOpaClusterPluginRequest, runtime *dara.RuntimeOptions) (_result *CreateOpaClusterPluginResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterIds) {
@@ -5768,9 +5913,11 @@ func (client *Client) CreateOpaClusterPlugin(request *CreateOpaClusterPluginRequ
 //
 // @return CreateOpaStrategyNewResponse
 func (client *Client) CreateOpaStrategyNewWithOptions(tmpReq *CreateOpaStrategyNewRequest, runtime *dara.RuntimeOptions) (_result *CreateOpaStrategyNewResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateOpaStrategyNewShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5890,9 +6037,11 @@ func (client *Client) CreateOpaStrategyNew(request *CreateOpaStrategyNewRequest)
 //
 // @return CreateOrUpdateAssetGroupResponse
 func (client *Client) CreateOrUpdateAssetGroupWithOptions(request *CreateOrUpdateAssetGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateAssetGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -5962,9 +6111,11 @@ func (client *Client) CreateOrUpdateAssetGroup(request *CreateOrUpdateAssetGroup
 //
 // @return CreateOrUpdateAutoTagRuleResponse
 func (client *Client) CreateOrUpdateAutoTagRuleWithOptions(request *CreateOrUpdateAutoTagRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateAutoTagRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckAll) {
@@ -6046,9 +6197,11 @@ func (client *Client) CreateOrUpdateAutoTagRule(request *CreateOrUpdateAutoTagRu
 //
 // @return CreateOrUpdateDingTalkResponse
 func (client *Client) CreateOrUpdateDingTalkWithOptions(request *CreateOrUpdateDingTalkRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateDingTalkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigList) {
@@ -6130,9 +6283,11 @@ func (client *Client) CreateOrUpdateDingTalk(request *CreateOrUpdateDingTalkRequ
 //
 // @return CreateOssBucketScanTaskResponse
 func (client *Client) CreateOssBucketScanTaskWithOptions(request *CreateOssBucketScanTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateOssBucketScanTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllKeyPrefix) {
@@ -6226,9 +6381,11 @@ func (client *Client) CreateOssBucketScanTask(request *CreateOssBucketScanTaskRe
 //
 // @return CreateOssScanConfigResponse
 func (client *Client) CreateOssScanConfigWithOptions(request *CreateOssScanConfigRequest, runtime *dara.RuntimeOptions) (_result *CreateOssScanConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllKeyPrefix) {
@@ -6342,9 +6499,11 @@ func (client *Client) CreateOssScanConfig(request *CreateOssScanConfigRequest) (
 //
 // @return CreateRdDefaultSyncListResponse
 func (client *Client) CreateRdDefaultSyncListWithOptions(request *CreateRdDefaultSyncListRequest, runtime *dara.RuntimeOptions) (_result *CreateRdDefaultSyncListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FolderIds) {
@@ -6406,9 +6565,11 @@ func (client *Client) CreateRdDefaultSyncList(request *CreateRdDefaultSyncListRe
 //
 // @return CreateRestoreJobResponse
 func (client *Client) CreateRestoreJobWithOptions(request *CreateRestoreJobRequest, runtime *dara.RuntimeOptions) (_result *CreateRestoreJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Includes) {
@@ -6494,9 +6655,11 @@ func (client *Client) CreateRestoreJob(request *CreateRestoreJobRequest) (_resul
 //
 // @return CreateSasTrialResponse
 func (client *Client) CreateSasTrialWithOptions(tmpReq *CreateSasTrialRequest, runtime *dara.RuntimeOptions) (_result *CreateSasTrialResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateSasTrialShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6580,9 +6743,11 @@ func (client *Client) CreateSasTrial(request *CreateSasTrialRequest) (_result *C
 //
 // @return CreateServiceLinkedRoleResponse
 func (client *Client) CreateServiceLinkedRoleWithOptions(request *CreateServiceLinkedRoleRequest, runtime *dara.RuntimeOptions) (_result *CreateServiceLinkedRoleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ServiceLinkedRole) {
@@ -6644,9 +6809,11 @@ func (client *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRe
 //
 // @return CreateServiceTrailResponse
 func (client *Client) CreateServiceTrailWithOptions(request *CreateServiceTrailRequest, runtime *dara.RuntimeOptions) (_result *CreateServiceTrailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -6704,9 +6871,11 @@ func (client *Client) CreateServiceTrail(request *CreateServiceTrailRequest) (_r
 //
 // @return CreateSimilarSecurityEventsQueryTaskResponse
 func (client *Client) CreateSimilarSecurityEventsQueryTaskWithOptions(request *CreateSimilarSecurityEventsQueryTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateSimilarSecurityEventsQueryTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceOwnerId) {
@@ -6780,9 +6949,11 @@ func (client *Client) CreateSimilarSecurityEventsQueryTask(request *CreateSimila
 //
 // @return CreateSoarStrategyTaskResponse
 func (client *Client) CreateSoarStrategyTaskWithOptions(request *CreateSoarStrategyTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateSoarStrategyTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.StrategyId) {
@@ -6860,9 +7031,11 @@ func (client *Client) CreateSoarStrategyTask(request *CreateSoarStrategyTaskRequ
 //
 // @return CreateSuspEventNoteResponse
 func (client *Client) CreateSuspEventNoteWithOptions(request *CreateSuspEventNoteRequest, runtime *dara.RuntimeOptions) (_result *CreateSuspEventNoteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventId) {
@@ -6924,9 +7097,11 @@ func (client *Client) CreateSuspEventNote(request *CreateSuspEventNoteRequest) (
 //
 // @return CreateUniBackupPolicyResponse
 func (client *Client) CreateUniBackupPolicyWithOptions(tmpReq *CreateUniBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateUniBackupPolicyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateUniBackupPolicyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7038,9 +7213,11 @@ func (client *Client) CreateUniBackupPolicy(request *CreateUniBackupPolicyReques
 //
 // @return CreateUniRestorePlanResponse
 func (client *Client) CreateUniRestorePlanWithOptions(request *CreateUniRestorePlanRequest, runtime *dara.RuntimeOptions) (_result *CreateUniRestorePlanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Database) {
@@ -7122,9 +7299,11 @@ func (client *Client) CreateUniRestorePlan(request *CreateUniRestorePlanRequest)
 //
 // @return CreateUserSettingResponse
 func (client *Client) CreateUserSettingWithOptions(request *CreateUserSettingRequest, runtime *dara.RuntimeOptions) (_result *CreateUserSettingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlertLevels) {
@@ -7190,9 +7369,11 @@ func (client *Client) CreateUserSetting(request *CreateUserSettingRequest) (_res
 //
 // @return CreateVirusScanOnceTaskResponse
 func (client *Client) CreateVirusScanOnceTaskWithOptions(request *CreateVirusScanOnceTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateVirusScanOnceTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Param) {
@@ -7262,9 +7443,11 @@ func (client *Client) CreateVirusScanOnceTask(request *CreateVirusScanOnceTaskRe
 //
 // @return CreateVulAutoRepairConfigResponse
 func (client *Client) CreateVulAutoRepairConfigWithOptions(request *CreateVulAutoRepairConfigRequest, runtime *dara.RuntimeOptions) (_result *CreateVulAutoRepairConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Reason) {
@@ -7330,9 +7513,11 @@ func (client *Client) CreateVulAutoRepairConfig(request *CreateVulAutoRepairConf
 //
 // @return DeleteAntiBruteForceRuleResponse
 func (client *Client) DeleteAntiBruteForceRuleWithOptions(request *DeleteAntiBruteForceRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteAntiBruteForceRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Ids) {
@@ -7390,9 +7575,11 @@ func (client *Client) DeleteAntiBruteForceRule(request *DeleteAntiBruteForceRule
 //
 // @return DeleteAttackPathSensitiveAssetConfigResponse
 func (client *Client) DeleteAttackPathSensitiveAssetConfigWithOptions(request *DeleteAttackPathSensitiveAssetConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteAttackPathSensitiveAssetConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AttackPathSensitiveAssetConfigId) {
@@ -7450,9 +7637,11 @@ func (client *Client) DeleteAttackPathSensitiveAssetConfig(request *DeleteAttack
 //
 // @return DeleteAttackPathWhitelistResponse
 func (client *Client) DeleteAttackPathWhitelistWithOptions(request *DeleteAttackPathWhitelistRequest, runtime *dara.RuntimeOptions) (_result *DeleteAttackPathWhitelistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AttackPathWhitelistId) {
@@ -7510,9 +7699,11 @@ func (client *Client) DeleteAttackPathWhitelist(request *DeleteAttackPathWhiteli
 //
 // @return DeleteAttestorResponse
 func (client *Client) DeleteAttestorWithOptions(request *DeleteAttestorRequest, runtime *dara.RuntimeOptions) (_result *DeleteAttestorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -7578,9 +7769,11 @@ func (client *Client) DeleteAttestor(request *DeleteAttestorRequest) (_result *D
 //
 // @return DeleteAutoTagRulesResponse
 func (client *Client) DeleteAutoTagRulesWithOptions(request *DeleteAutoTagRulesRequest, runtime *dara.RuntimeOptions) (_result *DeleteAutoTagRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RuleIdList) {
@@ -7638,9 +7831,11 @@ func (client *Client) DeleteAutoTagRules(request *DeleteAutoTagRulesRequest) (_r
 //
 // @return DeleteBackupPolicyResponse
 func (client *Client) DeleteBackupPolicyWithOptions(request *DeleteBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteBackupPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -7702,9 +7897,11 @@ func (client *Client) DeleteBackupPolicy(request *DeleteBackupPolicyRequest) (_r
 //
 // @return DeleteBackupPolicyMachineResponse
 func (client *Client) DeleteBackupPolicyMachineWithOptions(request *DeleteBackupPolicyMachineRequest, runtime *dara.RuntimeOptions) (_result *DeleteBackupPolicyMachineResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PolicyId) {
@@ -7774,9 +7971,11 @@ func (client *Client) DeleteBackupPolicyMachine(request *DeleteBackupPolicyMachi
 //
 // @return DeleteBackupSnapshotResponse
 func (client *Client) DeleteBackupSnapshotWithOptions(request *DeleteBackupSnapshotRequest, runtime *dara.RuntimeOptions) (_result *DeleteBackupSnapshotResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BackupRegionIdList) {
@@ -7842,9 +8041,11 @@ func (client *Client) DeleteBackupSnapshot(request *DeleteBackupSnapshotRequest)
 //
 // @return DeleteBaselineCheckWhiteRecordResponse
 func (client *Client) DeleteBaselineCheckWhiteRecordWithOptions(request *DeleteBaselineCheckWhiteRecordRequest, runtime *dara.RuntimeOptions) (_result *DeleteBaselineCheckWhiteRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckIds) {
@@ -7914,9 +8115,11 @@ func (client *Client) DeleteBaselineCheckWhiteRecord(request *DeleteBaselineChec
 //
 // @return DeleteBinarySecurityPolicyResponse
 func (client *Client) DeleteBinarySecurityPolicyWithOptions(request *DeleteBinarySecurityPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteBinarySecurityPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -7982,9 +8185,11 @@ func (client *Client) DeleteBinarySecurityPolicy(request *DeleteBinarySecurityPo
 //
 // @return DeleteCheckPolicyResponse
 func (client *Client) DeleteCheckPolicyWithOptions(request *DeleteCheckPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteCheckPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PolicyIds) {
@@ -8046,9 +8251,11 @@ func (client *Client) DeleteCheckPolicy(request *DeleteCheckPolicyRequest) (_res
 //
 // @return DeleteClientUserDefineRuleResponse
 func (client *Client) DeleteClientUserDefineRuleWithOptions(request *DeleteClientUserDefineRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteClientUserDefineRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IdList) {
@@ -8106,9 +8313,11 @@ func (client *Client) DeleteClientUserDefineRule(request *DeleteClientUserDefine
 //
 // @return DeleteCloudVendorAccountAKResponse
 func (client *Client) DeleteCloudVendorAccountAKWithOptions(request *DeleteCloudVendorAccountAKRequest, runtime *dara.RuntimeOptions) (_result *DeleteCloudVendorAccountAKResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthId) {
@@ -8170,9 +8379,11 @@ func (client *Client) DeleteCloudVendorAccountAK(request *DeleteCloudVendorAccou
 //
 // @return DeleteContainerDefenseRuleResponse
 func (client *Client) DeleteContainerDefenseRuleWithOptions(request *DeleteContainerDefenseRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteContainerDefenseRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RuleIds) {
@@ -8230,9 +8441,11 @@ func (client *Client) DeleteContainerDefenseRule(request *DeleteContainerDefense
 //
 // @return DeleteContainerPluginRuleResponse
 func (client *Client) DeleteContainerPluginRuleWithOptions(request *DeleteContainerPluginRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteContainerPluginRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -8294,9 +8507,11 @@ func (client *Client) DeleteContainerPluginRule(request *DeleteContainerPluginRu
 //
 // @return DeleteCustomBlockRecordResponse
 func (client *Client) DeleteCustomBlockRecordWithOptions(request *DeleteCustomBlockRecordRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomBlockRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -8358,9 +8573,11 @@ func (client *Client) DeleteCustomBlockRecord(request *DeleteCustomBlockRecordRe
 //
 // @return DeleteCustomizeReportResponse
 func (client *Client) DeleteCustomizeReportWithOptions(request *DeleteCustomizeReportRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomizeReportResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ReportId) {
@@ -8418,9 +8635,11 @@ func (client *Client) DeleteCustomizeReport(request *DeleteCustomizeReportReques
 //
 // @return DeleteCustomizedDictResponse
 func (client *Client) DeleteCustomizedDictWithOptions(request *DeleteCustomizedDictRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomizedDictResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceIp) {
@@ -8478,9 +8697,11 @@ func (client *Client) DeleteCustomizedDict(request *DeleteCustomizedDictRequest)
 //
 // @return DeleteCycleTaskResponse
 func (client *Client) DeleteCycleTaskWithOptions(request *DeleteCycleTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteCycleTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigId) {
@@ -8538,9 +8759,11 @@ func (client *Client) DeleteCycleTask(request *DeleteCycleTaskRequest) (_result 
 //
 // @return DeleteDingTalkResponse
 func (client *Client) DeleteDingTalkWithOptions(request *DeleteDingTalkRequest, runtime *dara.RuntimeOptions) (_result *DeleteDingTalkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Ids) {
@@ -8598,9 +8821,11 @@ func (client *Client) DeleteDingTalk(request *DeleteDingTalkRequest) (_result *D
 //
 // @return DeleteFileProtectRuleResponse
 func (client *Client) DeleteFileProtectRuleWithOptions(request *DeleteFileProtectRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteFileProtectRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -8662,9 +8887,11 @@ func (client *Client) DeleteFileProtectRule(request *DeleteFileProtectRuleReques
 //
 // @return DeleteGroupResponse
 func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -8730,9 +8957,11 @@ func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteG
 //
 // @return DeleteHoneypotResponse
 func (client *Client) DeleteHoneypotWithOptions(request *DeleteHoneypotRequest, runtime *dara.RuntimeOptions) (_result *DeleteHoneypotResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HoneypotId) {
@@ -8794,9 +9023,11 @@ func (client *Client) DeleteHoneypot(request *DeleteHoneypotRequest) (_result *D
 //
 // @return DeleteHoneypotNodeResponse
 func (client *Client) DeleteHoneypotNodeWithOptions(request *DeleteHoneypotNodeRequest, runtime *dara.RuntimeOptions) (_result *DeleteHoneypotNodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -8858,9 +9089,11 @@ func (client *Client) DeleteHoneypotNode(request *DeleteHoneypotNodeRequest) (_r
 //
 // @return DeleteHoneypotPresetResponse
 func (client *Client) DeleteHoneypotPresetWithOptions(request *DeleteHoneypotPresetRequest, runtime *dara.RuntimeOptions) (_result *DeleteHoneypotPresetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HoneypotPresetId) {
@@ -8922,9 +9155,11 @@ func (client *Client) DeleteHoneypotPreset(request *DeleteHoneypotPresetRequest)
 //
 // @return DeleteHoneypotProbeResponse
 func (client *Client) DeleteHoneypotProbeWithOptions(request *DeleteHoneypotProbeRequest, runtime *dara.RuntimeOptions) (_result *DeleteHoneypotProbeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -8986,9 +9221,11 @@ func (client *Client) DeleteHoneypotProbe(request *DeleteHoneypotProbeRequest) (
 //
 // @return DeleteHoneypotProbeBindResponse
 func (client *Client) DeleteHoneypotProbeBindWithOptions(request *DeleteHoneypotProbeBindRequest, runtime *dara.RuntimeOptions) (_result *DeleteHoneypotProbeBindResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BindId) {
@@ -9054,9 +9291,11 @@ func (client *Client) DeleteHoneypotProbeBind(request *DeleteHoneypotProbeBindRe
 //
 // @return DeleteHybridProxyResponse
 func (client *Client) DeleteHybridProxyWithOptions(request *DeleteHybridProxyRequest, runtime *dara.RuntimeOptions) (_result *DeleteHybridProxyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterName) {
@@ -9118,9 +9357,11 @@ func (client *Client) DeleteHybridProxy(request *DeleteHybridProxyRequest) (_res
 //
 // @return DeleteHybridProxyClusterResponse
 func (client *Client) DeleteHybridProxyClusterWithOptions(request *DeleteHybridProxyClusterRequest, runtime *dara.RuntimeOptions) (_result *DeleteHybridProxyClusterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterName) {
@@ -9178,9 +9419,11 @@ func (client *Client) DeleteHybridProxyCluster(request *DeleteHybridProxyCluster
 //
 // @return DeleteIdcProbeResponse
 func (client *Client) DeleteIdcProbeWithOptions(request *DeleteIdcProbeRequest, runtime *dara.RuntimeOptions) (_result *DeleteIdcProbeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Uuid) {
@@ -9238,9 +9481,11 @@ func (client *Client) DeleteIdcProbe(request *DeleteIdcProbeRequest) (_result *D
 //
 // @return DeleteImageEventOperationResponse
 func (client *Client) DeleteImageEventOperationWithOptions(request *DeleteImageEventOperationRequest, runtime *dara.RuntimeOptions) (_result *DeleteImageEventOperationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -9298,9 +9543,11 @@ func (client *Client) DeleteImageEventOperation(request *DeleteImageEventOperati
 //
 // @return DeleteImageVulWhitelistResponse
 func (client *Client) DeleteImageVulWhitelistWithOptions(request *DeleteImageVulWhitelistRequest, runtime *dara.RuntimeOptions) (_result *DeleteImageVulWhitelistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Ids) {
@@ -9362,9 +9609,11 @@ func (client *Client) DeleteImageVulWhitelist(request *DeleteImageVulWhitelistRe
 //
 // @return DeleteInstallCodeResponse
 func (client *Client) DeleteInstallCodeWithOptions(request *DeleteInstallCodeRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstallCodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CaptchaCode) {
@@ -9422,9 +9671,11 @@ func (client *Client) DeleteInstallCode(request *DeleteInstallCodeRequest) (_res
 //
 // @return DeleteInterceptionRuleResponse
 func (client *Client) DeleteInterceptionRuleWithOptions(request *DeleteInterceptionRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteInterceptionRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -9486,9 +9737,11 @@ func (client *Client) DeleteInterceptionRule(request *DeleteInterceptionRuleRequ
 //
 // @return DeleteInterceptionTargetResponse
 func (client *Client) DeleteInterceptionTargetWithOptions(request *DeleteInterceptionTargetRequest, runtime *dara.RuntimeOptions) (_result *DeleteInterceptionTargetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TargetIds) {
@@ -9546,9 +9799,11 @@ func (client *Client) DeleteInterceptionTarget(request *DeleteInterceptionTarget
 //
 // @return DeleteK8sAccessInfoResponse
 func (client *Client) DeleteK8sAccessInfoWithOptions(request *DeleteK8sAccessInfoRequest, runtime *dara.RuntimeOptions) (_result *DeleteK8sAccessInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunYundunGatewayApiName) {
@@ -9618,9 +9873,11 @@ func (client *Client) DeleteK8sAccessInfo(request *DeleteK8sAccessInfoRequest) (
 //
 // @return DeleteLoginBaseConfigResponse
 func (client *Client) DeleteLoginBaseConfigWithOptions(request *DeleteLoginBaseConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLoginBaseConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -9686,9 +9943,11 @@ func (client *Client) DeleteLoginBaseConfig(request *DeleteLoginBaseConfigReques
 //
 // @return DeleteMaliciousFileWhitelistConfigResponse
 func (client *Client) DeleteMaliciousFileWhitelistConfigWithOptions(request *DeleteMaliciousFileWhitelistConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteMaliciousFileWhitelistConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigId) {
@@ -9746,9 +10005,11 @@ func (client *Client) DeleteMaliciousFileWhitelistConfig(request *DeleteMaliciou
 //
 // @return DeleteMaliciousNoteResponse
 func (client *Client) DeleteMaliciousNoteWithOptions(request *DeleteMaliciousNoteRequest, runtime *dara.RuntimeOptions) (_result *DeleteMaliciousNoteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NoteId) {
@@ -9810,9 +10071,11 @@ func (client *Client) DeleteMaliciousNote(request *DeleteMaliciousNoteRequest) (
 //
 // @return DeleteMonitorAccountResponse
 func (client *Client) DeleteMonitorAccountWithOptions(request *DeleteMonitorAccountRequest, runtime *dara.RuntimeOptions) (_result *DeleteMonitorAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -9874,9 +10137,11 @@ func (client *Client) DeleteMonitorAccount(request *DeleteMonitorAccountRequest)
 //
 // @return DeleteOpaStrategyNewResponse
 func (client *Client) DeleteOpaStrategyNewWithOptions(request *DeleteOpaStrategyNewRequest, runtime *dara.RuntimeOptions) (_result *DeleteOpaStrategyNewResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.StrategyIds) {
@@ -9934,9 +10199,11 @@ func (client *Client) DeleteOpaStrategyNew(request *DeleteOpaStrategyNewRequest)
 //
 // @return DeleteOssScanConfigResponse
 func (client *Client) DeleteOssScanConfigWithOptions(request *DeleteOssScanConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteOssScanConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -9994,9 +10261,11 @@ func (client *Client) DeleteOssScanConfig(request *DeleteOssScanConfigRequest) (
 //
 // @return DeletePrivateRegistryResponse
 func (client *Client) DeletePrivateRegistryWithOptions(request *DeletePrivateRegistryRequest, runtime *dara.RuntimeOptions) (_result *DeletePrivateRegistryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegistryId) {
@@ -10054,9 +10323,11 @@ func (client *Client) DeletePrivateRegistry(request *DeletePrivateRegistryReques
 //
 // @return DeleteSasContainerWebDefenseRuleResponse
 func (client *Client) DeleteSasContainerWebDefenseRuleWithOptions(request *DeleteSasContainerWebDefenseRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteSasContainerWebDefenseRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RuleId) {
@@ -10114,9 +10385,11 @@ func (client *Client) DeleteSasContainerWebDefenseRule(request *DeleteSasContain
 //
 // @return DeleteSearchConditionResponse
 func (client *Client) DeleteSearchConditionWithOptions(request *DeleteSearchConditionRequest, runtime *dara.RuntimeOptions) (_result *DeleteSearchConditionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -10184,9 +10457,11 @@ func (client *Client) DeleteSearchCondition(request *DeleteSearchConditionReques
 //
 // @return DeleteSecurityEventMarkMissListResponse
 func (client *Client) DeleteSecurityEventMarkMissListWithOptions(request *DeleteSecurityEventMarkMissListRequest, runtime *dara.RuntimeOptions) (_result *DeleteSecurityEventMarkMissListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Ids) {
@@ -10251,9 +10526,11 @@ func (client *Client) DeleteSecurityEventMarkMissList(request *DeleteSecurityEve
 //
 // @return DeleteServiceTrailResponse
 func (client *Client) DeleteServiceTrailWithOptions(request *DeleteServiceTrailRequest, runtime *dara.RuntimeOptions) (_result *DeleteServiceTrailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -10315,9 +10592,11 @@ func (client *Client) DeleteServiceTrail(request *DeleteServiceTrailRequest) (_r
 //
 // @return DeleteSoarStrategyTaskResponse
 func (client *Client) DeleteSoarStrategyTaskWithOptions(request *DeleteSoarStrategyTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteSoarStrategyTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.StrategyTaskId) {
@@ -10379,9 +10658,11 @@ func (client *Client) DeleteSoarStrategyTask(request *DeleteSoarStrategyTaskRequ
 //
 // @return DeleteStrategyResponse
 func (client *Client) DeleteStrategyWithOptions(request *DeleteStrategyRequest, runtime *dara.RuntimeOptions) (_result *DeleteStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -10447,9 +10728,11 @@ func (client *Client) DeleteStrategy(request *DeleteStrategyRequest) (_result *D
 //
 // @return DeleteSuspEventNodeResponse
 func (client *Client) DeleteSuspEventNodeWithOptions(request *DeleteSuspEventNodeRequest, runtime *dara.RuntimeOptions) (_result *DeleteSuspEventNodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NoteId) {
@@ -10511,9 +10794,11 @@ func (client *Client) DeleteSuspEventNode(request *DeleteSuspEventNodeRequest) (
 //
 // @return DeleteTagWithUuidResponse
 func (client *Client) DeleteTagWithUuidWithOptions(request *DeleteTagWithUuidRequest, runtime *dara.RuntimeOptions) (_result *DeleteTagWithUuidResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TagName) {
@@ -10579,9 +10864,11 @@ func (client *Client) DeleteTagWithUuid(request *DeleteTagWithUuidRequest) (_res
 //
 // @return DeleteUniBackupPolicyResponse
 func (client *Client) DeleteUniBackupPolicyWithOptions(request *DeleteUniBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteUniBackupPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PolicyId) {
@@ -10643,9 +10930,11 @@ func (client *Client) DeleteUniBackupPolicy(request *DeleteUniBackupPolicyReques
 //
 // @return DeleteVpcHoneyPotResponse
 func (client *Client) DeleteVpcHoneyPotWithOptions(request *DeleteVpcHoneyPotRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpcHoneyPotResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.VpcId) {
@@ -10703,9 +10992,11 @@ func (client *Client) DeleteVpcHoneyPot(request *DeleteVpcHoneyPotRequest) (_res
 //
 // @return DeleteVulAutoRepairConfigResponse
 func (client *Client) DeleteVulAutoRepairConfigWithOptions(request *DeleteVulAutoRepairConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteVulAutoRepairConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliasName) {
@@ -10771,9 +11062,11 @@ func (client *Client) DeleteVulAutoRepairConfig(request *DeleteVulAutoRepairConf
 //
 // @return DeleteVulWhitelistResponse
 func (client *Client) DeleteVulWhitelistWithOptions(request *DeleteVulWhitelistRequest, runtime *dara.RuntimeOptions) (_result *DeleteVulWhitelistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -10882,9 +11175,11 @@ func (client *Client) DescribeAIAssetSummary() (_result *DescribeAIAssetSummaryR
 //
 // @return DescribeAccessKeyLeakDetailResponse
 func (client *Client) DescribeAccessKeyLeakDetailWithOptions(request *DescribeAccessKeyLeakDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeAccessKeyLeakDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -10946,9 +11241,11 @@ func (client *Client) DescribeAccessKeyLeakDetail(request *DescribeAccessKeyLeak
 //
 // @return DescribeAccesskeyLeakListResponse
 func (client *Client) DescribeAccesskeyLeakListWithOptions(request *DescribeAccesskeyLeakListRequest, runtime *dara.RuntimeOptions) (_result *DescribeAccesskeyLeakListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -11026,9 +11323,11 @@ func (client *Client) DescribeAccesskeyLeakList(request *DescribeAccesskeyLeakLi
 //
 // @return DescribeAffectedAssetsResponse
 func (client *Client) DescribeAffectedAssetsWithOptions(request *DescribeAffectedAssetsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAffectedAssetsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Current) {
@@ -11094,9 +11393,11 @@ func (client *Client) DescribeAffectedAssets(request *DescribeAffectedAssetsRequ
 //
 // @return DescribeAffectedMaliciousFileImagesResponse
 func (client *Client) DescribeAffectedMaliciousFileImagesWithOptions(request *DescribeAffectedMaliciousFileImagesRequest, runtime *dara.RuntimeOptions) (_result *DescribeAffectedMaliciousFileImagesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -11234,9 +11535,11 @@ func (client *Client) DescribeAffectedMaliciousFileImages(request *DescribeAffec
 //
 // @return DescribeAgentInstallStatusResponse
 func (client *Client) DescribeAgentInstallStatusWithOptions(request *DescribeAgentInstallStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeAgentInstallStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -11306,9 +11609,11 @@ func (client *Client) DescribeAgentInstallStatus(request *DescribeAgentInstallSt
 //
 // @return DescribeAgentlessSensitiveFileByKeyResponse
 func (client *Client) DescribeAgentlessSensitiveFileByKeyWithOptions(tmpReq *DescribeAgentlessSensitiveFileByKeyRequest, runtime *dara.RuntimeOptions) (_result *DescribeAgentlessSensitiveFileByKeyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeAgentlessSensitiveFileByKeyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11372,9 +11677,11 @@ func (client *Client) DescribeAgentlessSensitiveFileByKey(request *DescribeAgent
 //
 // @return DescribeAlarmEventDetailResponse
 func (client *Client) DescribeAlarmEventDetailWithOptions(request *DescribeAlarmEventDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeAlarmEventDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlarmUniqueInfo) {
@@ -11446,9 +11753,11 @@ func (client *Client) DescribeAlarmEventDetail(request *DescribeAlarmEventDetail
 //
 // @return DescribeAlarmEventStackInfoResponse
 func (client *Client) DescribeAlarmEventStackInfoWithOptions(request *DescribeAlarmEventStackInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeAlarmEventStackInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventName) {
@@ -11576,9 +11885,11 @@ func (client *Client) DescribeAllEntity() (_result *DescribeAllEntityResponse, _
 //
 // @return DescribeAllGroupsResponse
 func (client *Client) DescribeAllGroupsWithOptions(request *DescribeAllGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAllGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -11636,9 +11947,11 @@ func (client *Client) DescribeAllGroups(request *DescribeAllGroupsRequest) (_res
 //
 // @return DescribeAllImageBaselineResponse
 func (client *Client) DescribeAllImageBaselineWithOptions(request *DescribeAllImageBaselineRequest, runtime *dara.RuntimeOptions) (_result *DescribeAllImageBaselineResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -11696,9 +12009,11 @@ func (client *Client) DescribeAllImageBaseline(request *DescribeAllImageBaseline
 //
 // @return DescribeAllRegionsStatisticsResponse
 func (client *Client) DescribeAllRegionsStatisticsWithOptions(request *DescribeAllRegionsStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAllRegionsStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -11768,9 +12083,11 @@ func (client *Client) DescribeAllRegionsStatistics(request *DescribeAllRegionsSt
 //
 // @return DescribeAntiBruteForceRulesResponse
 func (client *Client) DescribeAntiBruteForceRulesWithOptions(request *DescribeAntiBruteForceRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeAntiBruteForceRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -11901,9 +12218,11 @@ func (client *Client) DescribeAppVulScanCycle() (_result *DescribeAppVulScanCycl
 //
 // @return DescribeAssetDetailByUuidResponse
 func (client *Client) DescribeAssetDetailByUuidWithOptions(request *DescribeAssetDetailByUuidRequest, runtime *dara.RuntimeOptions) (_result *DescribeAssetDetailByUuidResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -11976,9 +12295,11 @@ func (client *Client) DescribeAssetDetailByUuid(request *DescribeAssetDetailByUu
 //
 // @return DescribeAssetDetailByUuidsResponse
 func (client *Client) DescribeAssetDetailByUuidsWithOptions(request *DescribeAssetDetailByUuidsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAssetDetailByUuidsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -12091,9 +12412,11 @@ func (client *Client) DescribeAssetSummary() (_result *DescribeAssetSummaryRespo
 //
 // @return DescribeAssetsScaProcessNumResponse
 func (client *Client) DescribeAssetsScaProcessNumWithOptions(request *DescribeAssetsScaProcessNumRequest, runtime *dara.RuntimeOptions) (_result *DescribeAssetsScaProcessNumResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -12155,9 +12478,11 @@ func (client *Client) DescribeAssetsScaProcessNum(request *DescribeAssetsScaProc
 //
 // @return DescribeAssetsSecurityEventSummaryResponse
 func (client *Client) DescribeAssetsSecurityEventSummaryWithOptions(request *DescribeAssetsSecurityEventSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeAssetsSecurityEventSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -12231,9 +12556,11 @@ func (client *Client) DescribeAssetsSecurityEventSummary(request *DescribeAssets
 //
 // @return DescribeAttackAnalysisDataResponse
 func (client *Client) DescribeAttackAnalysisDataWithOptions(request *DescribeAttackAnalysisDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeAttackAnalysisDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Base64) {
@@ -12319,9 +12646,11 @@ func (client *Client) DescribeAttackAnalysisData(request *DescribeAttackAnalysis
 //
 // @return DescribeAttestorsResponse
 func (client *Client) DescribeAttestorsWithOptions(request *DescribeAttestorsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAttestorsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -12442,9 +12771,11 @@ func (client *Client) DescribeAutoDelConfig() (_result *DescribeAutoDelConfigRes
 //
 // @return DescribeBackUpExportInfoResponse
 func (client *Client) DescribeBackUpExportInfoWithOptions(request *DescribeBackUpExportInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackUpExportInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -12518,9 +12849,11 @@ func (client *Client) DescribeBackUpExportInfo(request *DescribeBackUpExportInfo
 //
 // @return DescribeBackupClientsResponse
 func (client *Client) DescribeBackupClientsWithOptions(request *DescribeBackupClientsRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupClientsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SupportRegionId) {
@@ -12582,9 +12915,11 @@ func (client *Client) DescribeBackupClients(request *DescribeBackupClientsReques
 //
 // @return DescribeBackupFilesResponse
 func (client *Client) DescribeBackupFilesWithOptions(request *DescribeBackupFilesRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupFilesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -12658,9 +12993,11 @@ func (client *Client) DescribeBackupFiles(request *DescribeBackupFilesRequest) (
 //
 // @return DescribeBackupMachineStatusResponse
 func (client *Client) DescribeBackupMachineStatusWithOptions(request *DescribeBackupMachineStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupMachineStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PolicyId) {
@@ -12726,9 +13063,11 @@ func (client *Client) DescribeBackupMachineStatus(request *DescribeBackupMachine
 //
 // @return DescribeBackupPoliciesResponse
 func (client *Client) DescribeBackupPoliciesWithOptions(request *DescribeBackupPoliciesRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupPoliciesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -12802,9 +13141,11 @@ func (client *Client) DescribeBackupPolicies(request *DescribeBackupPoliciesRequ
 //
 // @return DescribeBackupPolicyResponse
 func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -12917,9 +13258,11 @@ func (client *Client) DescribeBackupRestoreCount() (_result *DescribeBackupResto
 //
 // @return DescribeBinarySecurityPoliciesResponse
 func (client *Client) DescribeBinarySecurityPoliciesWithOptions(request *DescribeBinarySecurityPoliciesRequest, runtime *dara.RuntimeOptions) (_result *DescribeBinarySecurityPoliciesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -12997,9 +13340,11 @@ func (client *Client) DescribeBinarySecurityPolicies(request *DescribeBinarySecu
 //
 // @return DescribeBruteForceRecordsResponse
 func (client *Client) DescribeBruteForceRecordsWithOptions(request *DescribeBruteForceRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeBruteForceRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BlockIp) {
@@ -13081,9 +13426,11 @@ func (client *Client) DescribeBruteForceRecords(request *DescribeBruteForceRecor
 //
 // @return DescribeBruteForceSummaryResponse
 func (client *Client) DescribeBruteForceSummaryWithOptions(request *DescribeBruteForceSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeBruteForceSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceOwnerId) {
@@ -13192,9 +13539,11 @@ func (client *Client) DescribeCanAccessVpcSale() (_result *DescribeCanAccessVpcS
 //
 // @return DescribeCanFixVulListResponse
 func (client *Client) DescribeCanFixVulListWithOptions(request *DescribeCanFixVulListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCanFixVulListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliasName) {
@@ -13403,9 +13752,11 @@ func (client *Client) DescribeCanTrySas() (_result *DescribeCanTrySasResponse, _
 //
 // @return DescribeChartDataResponse
 func (client *Client) DescribeChartDataWithOptions(request *DescribeChartDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeChartDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CharId) {
@@ -13483,9 +13834,11 @@ func (client *Client) DescribeChartData(request *DescribeChartDataRequest) (_res
 //
 // @return DescribeChartListResponse
 func (client *Client) DescribeChartListWithOptions(request *DescribeChartListRequest, runtime *dara.RuntimeOptions) (_result *DescribeChartListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -13551,9 +13904,11 @@ func (client *Client) DescribeChartList(request *DescribeChartListRequest) (_res
 //
 // @return DescribeCheckEcsWarningsResponse
 func (client *Client) DescribeCheckEcsWarningsWithOptions(request *DescribeCheckEcsWarningsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCheckEcsWarningsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceIp) {
@@ -13611,9 +13966,11 @@ func (client *Client) DescribeCheckEcsWarnings(request *DescribeCheckEcsWarnings
 //
 // @return DescribeCheckFixDetailsResponse
 func (client *Client) DescribeCheckFixDetailsWithOptions(request *DescribeCheckFixDetailsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCheckFixDetailsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckIds) {
@@ -13726,9 +14083,11 @@ func (client *Client) DescribeCheckResult() (_result *DescribeCheckResultRespons
 //
 // @return DescribeCheckWarningCountResponse
 func (client *Client) DescribeCheckWarningCountWithOptions(request *DescribeCheckWarningCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeCheckWarningCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliUid) {
@@ -13798,9 +14157,11 @@ func (client *Client) DescribeCheckWarningCount(request *DescribeCheckWarningCou
 //
 // @return DescribeCheckWarningDetailResponse
 func (client *Client) DescribeCheckWarningDetailWithOptions(request *DescribeCheckWarningDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeCheckWarningDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckId) {
@@ -13878,9 +14239,11 @@ func (client *Client) DescribeCheckWarningDetail(request *DescribeCheckWarningDe
 //
 // @return DescribeCheckWarningMachinesResponse
 func (client *Client) DescribeCheckWarningMachinesWithOptions(request *DescribeCheckWarningMachinesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCheckWarningMachinesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckId) {
@@ -13974,9 +14337,11 @@ func (client *Client) DescribeCheckWarningMachines(request *DescribeCheckWarning
 //
 // @return DescribeCheckWarningSummaryResponse
 func (client *Client) DescribeCheckWarningSummaryWithOptions(request *DescribeCheckWarningSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeCheckWarningSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -14090,9 +14455,11 @@ func (client *Client) DescribeCheckWarningSummary(request *DescribeCheckWarningS
 //
 // @return DescribeCheckWarningsResponse
 func (client *Client) DescribeCheckWarningsWithOptions(request *DescribeCheckWarningsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCheckWarningsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckId) {
@@ -14190,9 +14557,11 @@ func (client *Client) DescribeCheckWarnings(request *DescribeCheckWarningsReques
 //
 // @return DescribeClientConfSetupResponse
 func (client *Client) DescribeClientConfSetupWithOptions(request *DescribeClientConfSetupRequest, runtime *dara.RuntimeOptions) (_result *DescribeClientConfSetupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.StrategyTag) {
@@ -14254,9 +14623,11 @@ func (client *Client) DescribeClientConfSetup(request *DescribeClientConfSetupRe
 //
 // @return DescribeClientConfStrategyResponse
 func (client *Client) DescribeClientConfStrategyWithOptions(request *DescribeClientConfStrategyRequest, runtime *dara.RuntimeOptions) (_result *DescribeClientConfStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Tag) {
@@ -14318,9 +14689,11 @@ func (client *Client) DescribeClientConfStrategy(request *DescribeClientConfStra
 //
 // @return DescribeClientProblemTypeResponse
 func (client *Client) DescribeClientProblemTypeWithOptions(request *DescribeClientProblemTypeRequest, runtime *dara.RuntimeOptions) (_result *DescribeClientProblemTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -14382,9 +14755,11 @@ func (client *Client) DescribeClientProblemType(request *DescribeClientProblemTy
 //
 // @return DescribeCloudCenterInstancesResponse
 func (client *Client) DescribeCloudCenterInstancesWithOptions(request *DescribeCloudCenterInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudCenterInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Criteria) {
@@ -14547,9 +14922,11 @@ func (client *Client) DescribeCloudProductFieldStatistics() (_result *DescribeCl
 //
 // @return DescribeCloudVendorAccountAKListResponse
 func (client *Client) DescribeCloudVendorAccountAKListWithOptions(request *DescribeCloudVendorAccountAKListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudVendorAccountAKListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthIds) {
@@ -14631,9 +15008,11 @@ func (client *Client) DescribeCloudVendorAccountAKList(request *DescribeCloudVen
 //
 // @return DescribeCloudVendorTrialConfigResponse
 func (client *Client) DescribeCloudVendorTrialConfigWithOptions(request *DescribeCloudVendorTrialConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudVendorTrialConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -14687,9 +15066,11 @@ func (client *Client) DescribeCloudVendorTrialConfig(request *DescribeCloudVendo
 //
 // @return DescribeClusterBasicInfoResponse
 func (client *Client) DescribeClusterBasicInfoWithOptions(request *DescribeClusterBasicInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeClusterBasicInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -14755,9 +15136,11 @@ func (client *Client) DescribeClusterBasicInfo(request *DescribeClusterBasicInfo
 //
 // @return DescribeClusterHostSecuritySummaryResponse
 func (client *Client) DescribeClusterHostSecuritySummaryWithOptions(request *DescribeClusterHostSecuritySummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeClusterHostSecuritySummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -14835,9 +15218,11 @@ func (client *Client) DescribeClusterHostSecuritySummary(request *DescribeCluste
 //
 // @return DescribeClusterImageSecuritySummaryResponse
 func (client *Client) DescribeClusterImageSecuritySummaryWithOptions(request *DescribeClusterImageSecuritySummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeClusterImageSecuritySummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -14927,9 +15312,11 @@ func (client *Client) DescribeClusterImageSecuritySummary(request *DescribeClust
 //
 // @return DescribeClusterInfoListResponse
 func (client *Client) DescribeClusterInfoListWithOptions(request *DescribeClusterInfoListRequest, runtime *dara.RuntimeOptions) (_result *DescribeClusterInfoListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Target) {
@@ -14995,9 +15382,11 @@ func (client *Client) DescribeClusterInfoList(request *DescribeClusterInfoListRe
 //
 // @return DescribeClusterNetworkResponse
 func (client *Client) DescribeClusterNetworkWithOptions(request *DescribeClusterNetworkRequest, runtime *dara.RuntimeOptions) (_result *DescribeClusterNetworkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -15059,9 +15448,11 @@ func (client *Client) DescribeClusterNetwork(request *DescribeClusterNetworkRequ
 //
 // @return DescribeClusterVulStatisticsResponse
 func (client *Client) DescribeClusterVulStatisticsWithOptions(request *DescribeClusterVulStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeClusterVulStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -15123,9 +15514,11 @@ func (client *Client) DescribeClusterVulStatistics(request *DescribeClusterVulSt
 //
 // @return DescribeCommonOverallConfigResponse
 func (client *Client) DescribeCommonOverallConfigWithOptions(request *DescribeCommonOverallConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeCommonOverallConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceIp) {
@@ -15187,9 +15580,11 @@ func (client *Client) DescribeCommonOverallConfig(request *DescribeCommonOverall
 //
 // @return DescribeCommonOverallConfigListResponse
 func (client *Client) DescribeCommonOverallConfigListWithOptions(request *DescribeCommonOverallConfigListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCommonOverallConfigListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceIp) {
@@ -15251,9 +15646,11 @@ func (client *Client) DescribeCommonOverallConfigList(request *DescribeCommonOve
 //
 // @return DescribeCommonTargetConfigResponse
 func (client *Client) DescribeCommonTargetConfigWithOptions(request *DescribeCommonTargetConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeCommonTargetConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Type) {
@@ -15311,9 +15708,11 @@ func (client *Client) DescribeCommonTargetConfig(request *DescribeCommonTargetCo
 //
 // @return DescribeCommonTargetResultListResponse
 func (client *Client) DescribeCommonTargetResultListWithOptions(request *DescribeCommonTargetResultListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCommonTargetResultListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceIp) {
@@ -15375,9 +15774,11 @@ func (client *Client) DescribeCommonTargetResultList(request *DescribeCommonTarg
 //
 // @return DescribeConcernNecessityResponse
 func (client *Client) DescribeConcernNecessityWithOptions(request *DescribeConcernNecessityRequest, runtime *dara.RuntimeOptions) (_result *DescribeConcernNecessityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -15435,9 +15836,11 @@ func (client *Client) DescribeConcernNecessity(request *DescribeConcernNecessity
 //
 // @return DescribeContainerAppsResponse
 func (client *Client) DescribeContainerAppsWithOptions(request *DescribeContainerAppsRequest, runtime *dara.RuntimeOptions) (_result *DescribeContainerAppsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -15507,9 +15910,11 @@ func (client *Client) DescribeContainerApps(request *DescribeContainerAppsReques
 //
 // @return DescribeContainerCriteriaResponse
 func (client *Client) DescribeContainerCriteriaWithOptions(request *DescribeContainerCriteriaRequest, runtime *dara.RuntimeOptions) (_result *DescribeContainerCriteriaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupField) {
@@ -15618,9 +16023,11 @@ func (client *Client) DescribeContainerFieldStatistics() (_result *DescribeConta
 //
 // @return DescribeContainerGroupedFieldDetailResponse
 func (client *Client) DescribeContainerGroupedFieldDetailWithOptions(request *DescribeContainerGroupedFieldDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeContainerGroupedFieldDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Criteria) {
@@ -15682,9 +16089,11 @@ func (client *Client) DescribeContainerGroupedFieldDetail(request *DescribeConta
 //
 // @return DescribeContainerInstancesResponse
 func (client *Client) DescribeContainerInstancesWithOptions(request *DescribeContainerInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeContainerInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Criteria) {
@@ -15754,9 +16163,11 @@ func (client *Client) DescribeContainerInstances(request *DescribeContainerInsta
 //
 // @return DescribeContainerScanConfigResponse
 func (client *Client) DescribeContainerScanConfigWithOptions(request *DescribeContainerScanConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeContainerScanConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -15814,9 +16225,11 @@ func (client *Client) DescribeContainerScanConfig(request *DescribeContainerScan
 //
 // @return DescribeContainerServiceK8sClusterKritisStatusResponse
 func (client *Client) DescribeContainerServiceK8sClusterKritisStatusWithOptions(request *DescribeContainerServiceK8sClusterKritisStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeContainerServiceK8sClusterKritisStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -15882,9 +16295,11 @@ func (client *Client) DescribeContainerServiceK8sClusterKritisStatus(request *De
 //
 // @return DescribeContainerServiceK8sClusterNamespacesResponse
 func (client *Client) DescribeContainerServiceK8sClusterNamespacesWithOptions(request *DescribeContainerServiceK8sClusterNamespacesRequest, runtime *dara.RuntimeOptions) (_result *DescribeContainerServiceK8sClusterNamespacesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -15950,9 +16365,11 @@ func (client *Client) DescribeContainerServiceK8sClusterNamespaces(request *Desc
 //
 // @return DescribeContainerServiceK8sClustersResponse
 func (client *Client) DescribeContainerServiceK8sClustersWithOptions(request *DescribeContainerServiceK8sClustersRequest, runtime *dara.RuntimeOptions) (_result *DescribeContainerServiceK8sClustersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceOwnerId) {
@@ -16018,9 +16435,11 @@ func (client *Client) DescribeContainerServiceK8sClusters(request *DescribeConta
 //
 // @return DescribeContainerStatisticsResponse
 func (client *Client) DescribeContainerStatisticsWithOptions(request *DescribeContainerStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeContainerStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -16082,9 +16501,11 @@ func (client *Client) DescribeContainerStatistics(request *DescribeContainerStat
 //
 // @return DescribeContainerTagsResponse
 func (client *Client) DescribeContainerTagsWithOptions(request *DescribeContainerTagsRequest, runtime *dara.RuntimeOptions) (_result *DescribeContainerTagsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -16260,9 +16681,11 @@ func (client *Client) DescribeCountScannedImage() (_result *DescribeCountScanned
 //
 // @return DescribeCriteriaResponse
 func (client *Client) DescribeCriteriaWithOptions(request *DescribeCriteriaRequest, runtime *dara.RuntimeOptions) (_result *DescribeCriteriaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MachineTypes) {
@@ -16328,9 +16751,11 @@ func (client *Client) DescribeCriteria(request *DescribeCriteriaRequest) (_resul
 //
 // @return DescribeCustomBlockInstancesResponse
 func (client *Client) DescribeCustomBlockInstancesWithOptions(request *DescribeCustomBlockInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomBlockInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BlockIp) {
@@ -16408,9 +16833,11 @@ func (client *Client) DescribeCustomBlockInstances(request *DescribeCustomBlockI
 //
 // @return DescribeCustomBlockRecordsResponse
 func (client *Client) DescribeCustomBlockRecordsWithOptions(request *DescribeCustomBlockRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomBlockRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BlockIp) {
@@ -16484,9 +16911,11 @@ func (client *Client) DescribeCustomBlockRecords(request *DescribeCustomBlockRec
 //
 // @return DescribeCustomizeReportConfigDetailResponse
 func (client *Client) DescribeCustomizeReportConfigDetailWithOptions(request *DescribeCustomizeReportConfigDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomizeReportConfigDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -16552,9 +16981,11 @@ func (client *Client) DescribeCustomizeReportConfigDetail(request *DescribeCusto
 //
 // @return DescribeCustomizeReportListResponse
 func (client *Client) DescribeCustomizeReportListWithOptions(request *DescribeCustomizeReportListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomizeReportListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -16632,9 +17063,11 @@ func (client *Client) DescribeCustomizeReportList(request *DescribeCustomizeRepo
 //
 // @return DescribeCustomizedDictUploadInfoResponse
 func (client *Client) DescribeCustomizedDictUploadInfoWithOptions(request *DescribeCustomizedDictUploadInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomizedDictUploadInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceIp) {
@@ -16692,9 +17125,11 @@ func (client *Client) DescribeCustomizedDictUploadInfo(request *DescribeCustomiz
 //
 // @return DescribeCustomizedStrategyTargetsResponse
 func (client *Client) DescribeCustomizedStrategyTargetsWithOptions(request *DescribeCustomizedStrategyTargetsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomizedStrategyTargetsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -16756,9 +17191,11 @@ func (client *Client) DescribeCustomizedStrategyTargets(request *DescribeCustomi
 //
 // @return DescribeCycleTaskListResponse
 func (client *Client) DescribeCycleTaskListWithOptions(request *DescribeCycleTaskListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCycleTaskListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigId) {
@@ -16832,9 +17269,11 @@ func (client *Client) DescribeCycleTaskList(request *DescribeCycleTaskListReques
 //
 // @return DescribeDataSourceResponse
 func (client *Client) DescribeDataSourceWithOptions(request *DescribeDataSourceRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigType) {
@@ -16900,9 +17339,11 @@ func (client *Client) DescribeDataSource(request *DescribeDataSourceRequest) (_r
 //
 // @return DescribeDefaultKeyInfoResponse
 func (client *Client) DescribeDefaultKeyInfoWithOptions(request *DescribeDefaultKeyInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeDefaultKeyInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceIp) {
@@ -17007,9 +17448,11 @@ func (client *Client) DescribeDefaultProxyInstallVersion() (_result *DescribeDef
 //
 // @return DescribeDingTalkResponse
 func (client *Client) DescribeDingTalkWithOptions(request *DescribeDingTalkRequest, runtime *dara.RuntimeOptions) (_result *DescribeDingTalkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -17075,9 +17518,11 @@ func (client *Client) DescribeDingTalk(request *DescribeDingTalkRequest) (_resul
 //
 // @return DescribeDomainCountResponse
 func (client *Client) DescribeDomainCountWithOptions(request *DescribeDomainCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceIp) {
@@ -17135,9 +17580,11 @@ func (client *Client) DescribeDomainCount(request *DescribeDomainCountRequest) (
 //
 // @return DescribeDomainDetailResponse
 func (client *Client) DescribeDomainDetailWithOptions(request *DescribeDomainDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -17199,9 +17646,11 @@ func (client *Client) DescribeDomainDetail(request *DescribeDomainDetailRequest)
 //
 // @return DescribeDomainListResponse
 func (client *Client) DescribeDomainListWithOptions(request *DescribeDomainListRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -17275,9 +17724,11 @@ func (client *Client) DescribeDomainList(request *DescribeDomainListRequest) (_r
 //
 // @return DescribeDomainSecureAlarmListResponse
 func (client *Client) DescribeDomainSecureAlarmListWithOptions(request *DescribeDomainSecureAlarmListRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainSecureAlarmListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -17343,9 +17794,11 @@ func (client *Client) DescribeDomainSecureAlarmList(request *DescribeDomainSecur
 //
 // @return DescribeDomainSecureRiskListResponse
 func (client *Client) DescribeDomainSecureRiskListWithOptions(request *DescribeDomainSecureRiskListRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainSecureRiskListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -17411,9 +17864,11 @@ func (client *Client) DescribeDomainSecureRiskList(request *DescribeDomainSecure
 //
 // @return DescribeDomainSecureScoreResponse
 func (client *Client) DescribeDomainSecureScoreWithOptions(request *DescribeDomainSecureScoreRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainSecureScoreResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -17475,9 +17930,11 @@ func (client *Client) DescribeDomainSecureScore(request *DescribeDomainSecureSco
 //
 // @return DescribeDomainSecureStatisticsResponse
 func (client *Client) DescribeDomainSecureStatisticsWithOptions(request *DescribeDomainSecureStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainSecureStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -17539,9 +17996,11 @@ func (client *Client) DescribeDomainSecureStatistics(request *DescribeDomainSecu
 //
 // @return DescribeDomainSecureSuggestsResponse
 func (client *Client) DescribeDomainSecureSuggestsWithOptions(request *DescribeDomainSecureSuggestsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainSecureSuggestsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -17603,9 +18062,11 @@ func (client *Client) DescribeDomainSecureSuggests(request *DescribeDomainSecure
 //
 // @return DescribeDomainSecureVulListResponse
 func (client *Client) DescribeDomainSecureVulListWithOptions(request *DescribeDomainSecureVulListRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainSecureVulListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -17677,9 +18138,11 @@ func (client *Client) DescribeDomainSecureVulList(request *DescribeDomainSecureV
 //
 // @return DescribeDynamicDictResponse
 func (client *Client) DescribeDynamicDictWithOptions(request *DescribeDynamicDictRequest, runtime *dara.RuntimeOptions) (_result *DescribeDynamicDictResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceIp) {
@@ -17742,9 +18205,11 @@ func (client *Client) DescribeDynamicDict(request *DescribeDynamicDictRequest) (
 //
 // @return DescribeDynamicDictUploadInfoResponse
 func (client *Client) DescribeDynamicDictUploadInfoWithOptions(request *DescribeDynamicDictUploadInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeDynamicDictUploadInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceIp) {
@@ -17852,9 +18317,11 @@ func (client *Client) DescribeEmgUserAgreement() (_result *DescribeEmgUserAgreem
 //
 // @return DescribeEmgVulItemResponse
 func (client *Client) DescribeEmgVulItemWithOptions(request *DescribeEmgVulItemRequest, runtime *dara.RuntimeOptions) (_result *DescribeEmgVulItemResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckType) {
@@ -17936,9 +18403,11 @@ func (client *Client) DescribeEmgVulItem(request *DescribeEmgVulItemRequest) (_r
 //
 // @return DescribeEventLevelCountResponse
 func (client *Client) DescribeEventLevelCountWithOptions(request *DescribeEventLevelCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeEventLevelCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -18020,9 +18489,11 @@ func (client *Client) DescribeEventLevelCount(request *DescribeEventLevelCountRe
 //
 // @return DescribeEventOnStageResponse
 func (client *Client) DescribeEventOnStageWithOptions(request *DescribeEventOnStageRequest, runtime *dara.RuntimeOptions) (_result *DescribeEventOnStageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -18080,9 +18551,11 @@ func (client *Client) DescribeEventOnStage(request *DescribeEventOnStageRequest)
 //
 // @return DescribeExcludeSystemPathResponse
 func (client *Client) DescribeExcludeSystemPathWithOptions(request *DescribeExcludeSystemPathRequest, runtime *dara.RuntimeOptions) (_result *DescribeExcludeSystemPathResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -18144,9 +18617,11 @@ func (client *Client) DescribeExcludeSystemPath(request *DescribeExcludeSystemPa
 //
 // @return DescribeExportInfoResponse
 func (client *Client) DescribeExportInfoWithOptions(request *DescribeExportInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeExportInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExportId) {
@@ -18204,9 +18679,11 @@ func (client *Client) DescribeExportInfo(request *DescribeExportInfoRequest) (_r
 //
 // @return DescribeExposedCheckWarningResponse
 func (client *Client) DescribeExposedCheckWarningWithOptions(request *DescribeExposedCheckWarningRequest, runtime *dara.RuntimeOptions) (_result *DescribeExposedCheckWarningResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -18272,9 +18749,11 @@ func (client *Client) DescribeExposedCheckWarning(request *DescribeExposedCheckW
 //
 // @return DescribeExposedInstanceCriteriaResponse
 func (client *Client) DescribeExposedInstanceCriteriaWithOptions(request *DescribeExposedInstanceCriteriaRequest, runtime *dara.RuntimeOptions) (_result *DescribeExposedInstanceCriteriaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceDirectoryAccountId) {
@@ -18336,9 +18815,11 @@ func (client *Client) DescribeExposedInstanceCriteria(request *DescribeExposedIn
 //
 // @return DescribeExposedInstanceDetailResponse
 func (client *Client) DescribeExposedInstanceDetailWithOptions(request *DescribeExposedInstanceDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeExposedInstanceDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -18404,9 +18885,11 @@ func (client *Client) DescribeExposedInstanceDetail(request *DescribeExposedInst
 //
 // @return DescribeExposedInstanceListResponse
 func (client *Client) DescribeExposedInstanceListWithOptions(request *DescribeExposedInstanceListRequest, runtime *dara.RuntimeOptions) (_result *DescribeExposedInstanceListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AssetType) {
@@ -18563,9 +19046,11 @@ func (client *Client) DescribeExposedStatistics() (_result *DescribeExposedStati
 //
 // @return DescribeExposedStatisticsDetailResponse
 func (client *Client) DescribeExposedStatisticsDetailWithOptions(request *DescribeExposedStatisticsDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeExposedStatisticsDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -18643,9 +19128,11 @@ func (client *Client) DescribeExposedStatisticsDetail(request *DescribeExposedSt
 //
 // @return DescribeFieldStatisticsResponse
 func (client *Client) DescribeFieldStatisticsWithOptions(request *DescribeFieldStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeFieldStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MachineTypes) {
@@ -18758,9 +19245,11 @@ func (client *Client) DescribeFixUsedCount() (_result *DescribeFixUsedCountRespo
 //
 // @return DescribeFrontVulPatchListResponse
 func (client *Client) DescribeFrontVulPatchListWithOptions(request *DescribeFrontVulPatchListRequest, runtime *dara.RuntimeOptions) (_result *DescribeFrontVulPatchListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Info) {
@@ -18830,9 +19319,11 @@ func (client *Client) DescribeFrontVulPatchList(request *DescribeFrontVulPatchLi
 //
 // @return DescribeGraph4InvestigationOnlineResponse
 func (client *Client) DescribeGraph4InvestigationOnlineWithOptions(request *DescribeGraph4InvestigationOnlineRequest, runtime *dara.RuntimeOptions) (_result *DescribeGraph4InvestigationOnlineResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AnomalyId) {
@@ -18906,9 +19397,11 @@ func (client *Client) DescribeGraph4InvestigationOnline(request *DescribeGraph4I
 //
 // @return DescribeGroupStructResponse
 func (client *Client) DescribeGroupStructWithOptions(request *DescribeGroupStructRequest, runtime *dara.RuntimeOptions) (_result *DescribeGroupStructResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -18966,9 +19459,11 @@ func (client *Client) DescribeGroupStruct(request *DescribeGroupStructRequest) (
 //
 // @return DescribeGroupedContainerInstancesResponse
 func (client *Client) DescribeGroupedContainerInstancesWithOptions(request *DescribeGroupedContainerInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeGroupedContainerInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Criteria) {
@@ -19046,9 +19541,11 @@ func (client *Client) DescribeGroupedContainerInstances(request *DescribeGrouped
 //
 // @return DescribeGroupedInstancesResponse
 func (client *Client) DescribeGroupedInstancesWithOptions(request *DescribeGroupedInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeGroupedInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -19142,9 +19639,11 @@ func (client *Client) DescribeGroupedInstances(request *DescribeGroupedInstances
 //
 // @return DescribeGroupedMaliciousFilesResponse
 func (client *Client) DescribeGroupedMaliciousFilesWithOptions(request *DescribeGroupedMaliciousFilesRequest, runtime *dara.RuntimeOptions) (_result *DescribeGroupedMaliciousFilesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -19262,9 +19761,11 @@ func (client *Client) DescribeGroupedMaliciousFiles(request *DescribeGroupedMali
 //
 // @return DescribeGroupedTagsResponse
 func (client *Client) DescribeGroupedTagsWithOptions(request *DescribeGroupedTagsRequest, runtime *dara.RuntimeOptions) (_result *DescribeGroupedTagsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MachineTypes) {
@@ -19322,9 +19823,11 @@ func (client *Client) DescribeGroupedTags(request *DescribeGroupedTagsRequest) (
 //
 // @return DescribeGroupedVulResponse
 func (client *Client) DescribeGroupedVulWithOptions(request *DescribeGroupedVulRequest, runtime *dara.RuntimeOptions) (_result *DescribeGroupedVulResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliasName) {
@@ -19454,9 +19957,11 @@ func (client *Client) DescribeGroupedVul(request *DescribeGroupedVulRequest) (_r
 //
 // @return DescribeHcExportInfoResponse
 func (client *Client) DescribeHcExportInfoWithOptions(request *DescribeHcExportInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeHcExportInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExportId) {
@@ -19514,9 +20019,11 @@ func (client *Client) DescribeHcExportInfo(request *DescribeHcExportInfoRequest)
 //
 // @return DescribeHoneyPotAuthResponse
 func (client *Client) DescribeHoneyPotAuthWithOptions(request *DescribeHoneyPotAuthRequest, runtime *dara.RuntimeOptions) (_result *DescribeHoneyPotAuthResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -19574,9 +20081,11 @@ func (client *Client) DescribeHoneyPotAuth(request *DescribeHoneyPotAuthRequest)
 //
 // @return DescribeHoneyPotSuspStatisticsResponse
 func (client *Client) DescribeHoneyPotSuspStatisticsWithOptions(request *DescribeHoneyPotSuspStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeHoneyPotSuspStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -19646,9 +20155,11 @@ func (client *Client) DescribeHoneyPotSuspStatistics(request *DescribeHoneyPotSu
 //
 // @return DescribeHybridProxyClusterListResponse
 func (client *Client) DescribeHybridProxyClusterListWithOptions(request *DescribeHybridProxyClusterListRequest, runtime *dara.RuntimeOptions) (_result *DescribeHybridProxyClusterListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterName) {
@@ -19714,9 +20225,11 @@ func (client *Client) DescribeHybridProxyClusterList(request *DescribeHybridProx
 //
 // @return DescribeHybridProxyLinkedClientListResponse
 func (client *Client) DescribeHybridProxyLinkedClientListWithOptions(request *DescribeHybridProxyLinkedClientListRequest, runtime *dara.RuntimeOptions) (_result *DescribeHybridProxyLinkedClientListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterName) {
@@ -19794,9 +20307,11 @@ func (client *Client) DescribeHybridProxyLinkedClientList(request *DescribeHybri
 //
 // @return DescribeHybridProxyListResponse
 func (client *Client) DescribeHybridProxyListWithOptions(request *DescribeHybridProxyListRequest, runtime *dara.RuntimeOptions) (_result *DescribeHybridProxyListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterName) {
@@ -19862,9 +20377,11 @@ func (client *Client) DescribeHybridProxyList(request *DescribeHybridProxyListRe
 //
 // @return DescribeHybridProxyPolicyResponse
 func (client *Client) DescribeHybridProxyPolicyWithOptions(request *DescribeHybridProxyPolicyRequest, runtime *dara.RuntimeOptions) (_result *DescribeHybridProxyPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterName) {
@@ -19922,9 +20439,11 @@ func (client *Client) DescribeHybridProxyPolicy(request *DescribeHybridProxyPoli
 //
 // @return DescribeIdcAssetCriteriaResponse
 func (client *Client) DescribeIdcAssetCriteriaWithOptions(request *DescribeIdcAssetCriteriaRequest, runtime *dara.RuntimeOptions) (_result *DescribeIdcAssetCriteriaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Status) {
@@ -19986,9 +20505,11 @@ func (client *Client) DescribeIdcAssetCriteria(request *DescribeIdcAssetCriteria
 //
 // @return DescribeIdcProbeListResponse
 func (client *Client) DescribeIdcProbeListWithOptions(request *DescribeIdcProbeListRequest, runtime *dara.RuntimeOptions) (_result *DescribeIdcProbeListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -20058,9 +20579,11 @@ func (client *Client) DescribeIdcProbeList(request *DescribeIdcProbeListRequest)
 //
 // @return DescribeIdcProbeScanResultListResponse
 func (client *Client) DescribeIdcProbeScanResultListWithOptions(request *DescribeIdcProbeScanResultListRequest, runtime *dara.RuntimeOptions) (_result *DescribeIdcProbeScanResultListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Criteria) {
@@ -20142,9 +20665,11 @@ func (client *Client) DescribeIdcProbeScanResultList(request *DescribeIdcProbeSc
 //
 // @return DescribeImageResponse
 func (client *Client) DescribeImageWithOptions(request *DescribeImageRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageInstanceId) {
@@ -20214,9 +20739,11 @@ func (client *Client) DescribeImage(request *DescribeImageRequest) (_result *Des
 //
 // @return DescribeImageBaselineCheckResultResponse
 func (client *Client) DescribeImageBaselineCheckResultWithOptions(request *DescribeImageBaselineCheckResultRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageBaselineCheckResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Criteria) {
@@ -20302,9 +20829,11 @@ func (client *Client) DescribeImageBaselineCheckResult(request *DescribeImageBas
 //
 // @return DescribeImageBaselineCheckSummaryResponse
 func (client *Client) DescribeImageBaselineCheckSummaryWithOptions(request *DescribeImageBaselineCheckSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageBaselineCheckSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -20390,9 +20919,11 @@ func (client *Client) DescribeImageBaselineCheckSummary(request *DescribeImageBa
 //
 // @return DescribeImageBaselineDetailResponse
 func (client *Client) DescribeImageBaselineDetailWithOptions(request *DescribeImageBaselineDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageBaselineDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaselineItemKey) {
@@ -20458,9 +20989,11 @@ func (client *Client) DescribeImageBaselineDetail(request *DescribeImageBaseline
 //
 // @return DescribeImageBaselineItemListResponse
 func (client *Client) DescribeImageBaselineItemListWithOptions(request *DescribeImageBaselineItemListRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageBaselineItemListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaselineClassKey) {
@@ -20550,9 +21083,11 @@ func (client *Client) DescribeImageBaselineItemList(request *DescribeImageBaseli
 //
 // @return DescribeImageBaselineStrategyResponse
 func (client *Client) DescribeImageBaselineStrategyWithOptions(request *DescribeImageBaselineStrategyRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageBaselineStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -20618,9 +21153,11 @@ func (client *Client) DescribeImageBaselineStrategy(request *DescribeImageBaseli
 //
 // @return DescribeImageBuildRiskByKeyResponse
 func (client *Client) DescribeImageBuildRiskByKeyWithOptions(request *DescribeImageBuildRiskByKeyRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageBuildRiskByKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -20698,9 +21235,11 @@ func (client *Client) DescribeImageBuildRiskByKey(request *DescribeImageBuildRis
 //
 // @return DescribeImageBuildRiskListResponse
 func (client *Client) DescribeImageBuildRiskListWithOptions(request *DescribeImageBuildRiskListRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageBuildRiskListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Criteria) {
@@ -20778,9 +21317,11 @@ func (client *Client) DescribeImageBuildRiskList(request *DescribeImageBuildRisk
 //
 // @return DescribeImageCriteriaResponse
 func (client *Client) DescribeImageCriteriaWithOptions(request *DescribeImageCriteriaRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageCriteriaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Value) {
@@ -20838,9 +21379,11 @@ func (client *Client) DescribeImageCriteria(request *DescribeImageCriteriaReques
 //
 // @return DescribeImageEventOperationConditionResponse
 func (client *Client) DescribeImageEventOperationConditionWithOptions(request *DescribeImageEventOperationConditionRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageEventOperationConditionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventType) {
@@ -20902,9 +21445,11 @@ func (client *Client) DescribeImageEventOperationCondition(request *DescribeImag
 //
 // @return DescribeImageEventOperationPageResponse
 func (client *Client) DescribeImageEventOperationPageWithOptions(request *DescribeImageEventOperationPageRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageEventOperationPageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -21037,9 +21582,11 @@ func (client *Client) DescribeImageFixCycleConfig() (_result *DescribeImageFixCy
 //
 // @return DescribeImageFixTaskResponse
 func (client *Client) DescribeImageFixTaskWithOptions(request *DescribeImageFixTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageFixTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -21113,9 +21660,11 @@ func (client *Client) DescribeImageFixTask(request *DescribeImageFixTaskRequest)
 //
 // @return DescribeImageGroupedVulListResponse
 func (client *Client) DescribeImageGroupedVulListWithOptions(request *DescribeImageGroupedVulListRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageGroupedVulListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliasName) {
@@ -21261,9 +21810,11 @@ func (client *Client) DescribeImageGroupedVulList(request *DescribeImageGroupedV
 //
 // @return DescribeImageInfoListResponse
 func (client *Client) DescribeImageInfoListWithOptions(request *DescribeImageInfoListRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageInfoListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Uuids) {
@@ -21321,9 +21872,11 @@ func (client *Client) DescribeImageInfoList(request *DescribeImageInfoListReques
 //
 // @return DescribeImageInstancesResponse
 func (client *Client) DescribeImageInstancesWithOptions(request *DescribeImageInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Criteria) {
@@ -21397,9 +21950,11 @@ func (client *Client) DescribeImageInstances(request *DescribeImageInstancesRequ
 //
 // @return DescribeImageLatestScanTaskResponse
 func (client *Client) DescribeImageLatestScanTaskWithOptions(request *DescribeImageLatestScanTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageLatestScanTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Digest) {
@@ -21457,9 +22012,11 @@ func (client *Client) DescribeImageLatestScanTask(request *DescribeImageLatestSc
 //
 // @return DescribeImageListByBuildRiskResponse
 func (client *Client) DescribeImageListByBuildRiskWithOptions(request *DescribeImageListByBuildRiskRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageListByBuildRiskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -21537,9 +22094,11 @@ func (client *Client) DescribeImageListByBuildRisk(request *DescribeImageListByB
 //
 // @return DescribeImageListBySensitiveFileResponse
 func (client *Client) DescribeImageListBySensitiveFileWithOptions(tmpReq *DescribeImageListBySensitiveFileRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageListBySensitiveFileResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeImageListBySensitiveFileShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -21643,9 +22202,11 @@ func (client *Client) DescribeImageListBySensitiveFile(request *DescribeImageLis
 //
 // @return DescribeImageListWithBaselineNameResponse
 func (client *Client) DescribeImageListWithBaselineNameWithOptions(request *DescribeImageListWithBaselineNameRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageListWithBaselineNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaselineNameKey) {
@@ -21767,9 +22328,11 @@ func (client *Client) DescribeImageListWithBaselineName(request *DescribeImageLi
 //
 // @return DescribeImageRepoCriteriaResponse
 func (client *Client) DescribeImageRepoCriteriaWithOptions(request *DescribeImageRepoCriteriaRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageRepoCriteriaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Value) {
@@ -21827,9 +22390,11 @@ func (client *Client) DescribeImageRepoCriteria(request *DescribeImageRepoCriter
 //
 // @return DescribeImageRepoDetailListResponse
 func (client *Client) DescribeImageRepoDetailListWithOptions(request *DescribeImageRepoDetailListRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageRepoDetailListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Criteria) {
@@ -21899,9 +22464,11 @@ func (client *Client) DescribeImageRepoDetailList(request *DescribeImageRepoDeta
 //
 // @return DescribeImageRepoListResponse
 func (client *Client) DescribeImageRepoListWithOptions(request *DescribeImageRepoListRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageRepoListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -22085,9 +22652,11 @@ func (client *Client) DescribeImageScanAuthCount() (_result *DescribeImageScanAu
 //
 // @return DescribeImageSecurityScanCountResponse
 func (client *Client) DescribeImageSecurityScanCountWithOptions(request *DescribeImageSecurityScanCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageSecurityScanCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -22181,9 +22750,11 @@ func (client *Client) DescribeImageSecurityScanCount(request *DescribeImageSecur
 //
 // @return DescribeImageSensitiveFileByKeyResponse
 func (client *Client) DescribeImageSensitiveFileByKeyWithOptions(tmpReq *DescribeImageSensitiveFileByKeyRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageSensitiveFileByKeyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeImageSensitiveFileByKeyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -22267,9 +22838,11 @@ func (client *Client) DescribeImageSensitiveFileByKey(request *DescribeImageSens
 //
 // @return DescribeImageSensitiveFileListResponse
 func (client *Client) DescribeImageSensitiveFileListWithOptions(tmpReq *DescribeImageSensitiveFileListRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageSensitiveFileListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeImageSensitiveFileListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -22424,9 +22997,11 @@ func (client *Client) DescribeImageStatistics() (_result *DescribeImageStatistic
 //
 // @return DescribeImageVulListResponse
 func (client *Client) DescribeImageVulListWithOptions(request *DescribeImageVulListRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageVulListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliasName) {
@@ -22600,9 +23175,11 @@ func (client *Client) DescribeImageVulList(request *DescribeImageVulListRequest)
 //
 // @return DescribeImageVulWhiteListResponse
 func (client *Client) DescribeImageVulWhiteListWithOptions(request *DescribeImageVulWhiteListRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageVulWhiteListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliasName) {
@@ -22676,9 +23253,11 @@ func (client *Client) DescribeImageVulWhiteList(request *DescribeImageVulWhiteLi
 //
 // @return DescribeInstallCaptchaResponse
 func (client *Client) DescribeInstallCaptchaWithOptions(request *DescribeInstallCaptchaRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstallCaptchaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Deadline) {
@@ -22854,9 +23433,11 @@ func (client *Client) DescribeInstallCodes() (_result *DescribeInstallCodesRespo
 //
 // @return DescribeInstanceAntiBruteForceRulesResponse
 func (client *Client) DescribeInstanceAntiBruteForceRulesWithOptions(request *DescribeInstanceAntiBruteForceRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceAntiBruteForceRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -22930,9 +23511,11 @@ func (client *Client) DescribeInstanceAntiBruteForceRules(request *DescribeInsta
 //
 // @return DescribeInstanceRebootStatusResponse
 func (client *Client) DescribeInstanceRebootStatusWithOptions(request *DescribeInstanceRebootStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceRebootStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Uuids) {
@@ -22990,9 +23573,11 @@ func (client *Client) DescribeInstanceRebootStatus(request *DescribeInstanceRebo
 //
 // @return DescribeInstanceStatisticsResponse
 func (client *Client) DescribeInstanceStatisticsWithOptions(request *DescribeInstanceStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -23062,9 +23647,11 @@ func (client *Client) DescribeInstanceStatistics(request *DescribeInstanceStatis
 //
 // @return DescribeInstanceVulStatisticsResponse
 func (client *Client) DescribeInstanceVulStatisticsWithOptions(request *DescribeInstanceVulStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceVulStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Types) {
@@ -23173,9 +23760,11 @@ func (client *Client) DescribeLatestScanTask() (_result *DescribeLatestScanTaskR
 //
 // @return DescribeLogMetaResponse
 func (client *Client) DescribeLogMetaWithOptions(request *DescribeLogMetaRequest, runtime *dara.RuntimeOptions) (_result *DescribeLogMetaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -23245,9 +23834,11 @@ func (client *Client) DescribeLogMeta(request *DescribeLogMetaRequest) (_result 
 //
 // @return DescribeLogShipperStatusResponse
 func (client *Client) DescribeLogShipperStatusWithOptions(request *DescribeLogShipperStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeLogShipperStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -23305,9 +23896,11 @@ func (client *Client) DescribeLogShipperStatus(request *DescribeLogShipperStatus
 //
 // @return DescribeLoginBaseConfigsResponse
 func (client *Client) DescribeLoginBaseConfigsWithOptions(request *DescribeLoginBaseConfigsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLoginBaseConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -23424,9 +24017,11 @@ func (client *Client) DescribeLoginSwitchConfigs() (_result *DescribeLoginSwitch
 //
 // @return DescribeLogstoreStorageResponse
 func (client *Client) DescribeLogstoreStorageWithOptions(request *DescribeLogstoreStorageRequest, runtime *dara.RuntimeOptions) (_result *DescribeLogstoreStorageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -23488,9 +24083,11 @@ func (client *Client) DescribeLogstoreStorage(request *DescribeLogstoreStorageRe
 //
 // @return DescribeMachineCanRebootResponse
 func (client *Client) DescribeMachineCanRebootWithOptions(request *DescribeMachineCanRebootRequest, runtime *dara.RuntimeOptions) (_result *DescribeMachineCanRebootResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Type) {
@@ -23552,9 +24149,11 @@ func (client *Client) DescribeMachineCanReboot(request *DescribeMachineCanReboot
 //
 // @return DescribeMatchedMaliciousNamesResponse
 func (client *Client) DescribeMatchedMaliciousNamesWithOptions(request *DescribeMatchedMaliciousNamesRequest, runtime *dara.RuntimeOptions) (_result *DescribeMatchedMaliciousNamesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -23710,9 +24309,11 @@ func (client *Client) DescribeMonitorAccounts() (_result *DescribeMonitorAccount
 //
 // @return DescribeNeedAsyncQueryResponse
 func (client *Client) DescribeNeedAsyncQueryWithOptions(request *DescribeNeedAsyncQueryRequest, runtime *dara.RuntimeOptions) (_result *DescribeNeedAsyncQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Type) {
@@ -23770,9 +24371,11 @@ func (client *Client) DescribeNeedAsyncQuery(request *DescribeNeedAsyncQueryRequ
 //
 // @return DescribeNoticeConfigResponse
 func (client *Client) DescribeNoticeConfigWithOptions(request *DescribeNoticeConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeNoticeConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceIp) {
@@ -23830,9 +24433,11 @@ func (client *Client) DescribeNoticeConfig(request *DescribeNoticeConfigRequest)
 //
 // @return DescribeNsasSuspEventTypeResponse
 func (client *Client) DescribeNsasSuspEventTypeWithOptions(request *DescribeNsasSuspEventTypeRequest, runtime *dara.RuntimeOptions) (_result *DescribeNsasSuspEventTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContainerFieldName) {
@@ -23926,9 +24531,11 @@ func (client *Client) DescribeNsasSuspEventType(request *DescribeNsasSuspEventTy
 //
 // @return DescribeOfflineMachinesResponse
 func (client *Client) DescribeOfflineMachinesWithOptions(request *DescribeOfflineMachinesRequest, runtime *dara.RuntimeOptions) (_result *DescribeOfflineMachinesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -24014,9 +24621,11 @@ func (client *Client) DescribeOfflineMachines(request *DescribeOfflineMachinesRe
 //
 // @return DescribeOnceTaskResponse
 func (client *Client) DescribeOnceTaskWithOptions(request *DescribeOnceTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeOnceTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -24102,9 +24711,11 @@ func (client *Client) DescribeOnceTask(request *DescribeOnceTaskRequest) (_resul
 //
 // @return DescribeOnceTaskLeafRecordPageResponse
 func (client *Client) DescribeOnceTaskLeafRecordPageWithOptions(request *DescribeOnceTaskLeafRecordPageRequest, runtime *dara.RuntimeOptions) (_result *DescribeOnceTaskLeafRecordPageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -24194,9 +24805,11 @@ func (client *Client) DescribeOnceTaskLeafRecordPage(request *DescribeOnceTaskLe
 //
 // @return DescribePluginSummaryResponse
 func (client *Client) DescribePluginSummaryWithOptions(request *DescribePluginSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribePluginSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -24258,9 +24871,11 @@ func (client *Client) DescribePluginSummary(request *DescribePluginSummaryReques
 //
 // @return DescribePropertyCountResponse
 func (client *Client) DescribePropertyCountWithOptions(request *DescribePropertyCountRequest, runtime *dara.RuntimeOptions) (_result *DescribePropertyCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Type) {
@@ -24322,9 +24937,11 @@ func (client *Client) DescribePropertyCount(request *DescribePropertyCountReques
 //
 // @return DescribePropertyCronDetailResponse
 func (client *Client) DescribePropertyCronDetailWithOptions(request *DescribePropertyCronDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribePropertyCronDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -24406,9 +25023,11 @@ func (client *Client) DescribePropertyCronDetail(request *DescribePropertyCronDe
 //
 // @return DescribePropertyCronItemResponse
 func (client *Client) DescribePropertyCronItemWithOptions(request *DescribePropertyCronItemRequest, runtime *dara.RuntimeOptions) (_result *DescribePropertyCronItemResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -24478,9 +25097,11 @@ func (client *Client) DescribePropertyCronItem(request *DescribePropertyCronItem
 //
 // @return DescribePropertyPortDetailResponse
 func (client *Client) DescribePropertyPortDetailWithOptions(request *DescribePropertyPortDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribePropertyPortDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BindIp) {
@@ -24570,9 +25191,11 @@ func (client *Client) DescribePropertyPortDetail(request *DescribePropertyPortDe
 //
 // @return DescribePropertyPortItemResponse
 func (client *Client) DescribePropertyPortItemWithOptions(request *DescribePropertyPortItemRequest, runtime *dara.RuntimeOptions) (_result *DescribePropertyPortItemResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -24642,9 +25265,11 @@ func (client *Client) DescribePropertyPortItem(request *DescribePropertyPortItem
 //
 // @return DescribePropertyProcDetailResponse
 func (client *Client) DescribePropertyProcDetailWithOptions(request *DescribePropertyProcDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribePropertyProcDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Cmdline) {
@@ -24742,9 +25367,11 @@ func (client *Client) DescribePropertyProcDetail(request *DescribePropertyProcDe
 //
 // @return DescribePropertyProcItemResponse
 func (client *Client) DescribePropertyProcItemWithOptions(request *DescribePropertyProcItemRequest, runtime *dara.RuntimeOptions) (_result *DescribePropertyProcItemResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -24814,9 +25441,11 @@ func (client *Client) DescribePropertyProcItem(request *DescribePropertyProcItem
 //
 // @return DescribePropertyScaDetailResponse
 func (client *Client) DescribePropertyScaDetailWithOptions(request *DescribePropertyScaDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribePropertyScaDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Biz) {
@@ -24950,9 +25579,11 @@ func (client *Client) DescribePropertyScaDetail(request *DescribePropertyScaDeta
 //
 // @return DescribePropertyScaItemResponse
 func (client *Client) DescribePropertyScaItemWithOptions(request *DescribePropertyScaItemRequest, runtime *dara.RuntimeOptions) (_result *DescribePropertyScaItemResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Biz) {
@@ -25034,9 +25665,11 @@ func (client *Client) DescribePropertyScaItem(request *DescribePropertyScaItemRe
 //
 // @return DescribePropertyScaProcessDetailResponse
 func (client *Client) DescribePropertyScaProcessDetailWithOptions(request *DescribePropertyScaProcessDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribePropertyScaProcessDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -25118,9 +25751,11 @@ func (client *Client) DescribePropertyScaProcessDetail(request *DescribeProperty
 //
 // @return DescribePropertyScheduleConfigResponse
 func (client *Client) DescribePropertyScheduleConfigWithOptions(request *DescribePropertyScheduleConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribePropertyScheduleConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Type) {
@@ -25178,9 +25813,11 @@ func (client *Client) DescribePropertyScheduleConfig(request *DescribePropertySc
 //
 // @return DescribePropertySoftwareDetailResponse
 func (client *Client) DescribePropertySoftwareDetailWithOptions(request *DescribePropertySoftwareDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribePropertySoftwareDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -25274,9 +25911,11 @@ func (client *Client) DescribePropertySoftwareDetail(request *DescribePropertySo
 //
 // @return DescribePropertySoftwareItemResponse
 func (client *Client) DescribePropertySoftwareItemWithOptions(request *DescribePropertySoftwareItemRequest, runtime *dara.RuntimeOptions) (_result *DescribePropertySoftwareItemResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -25346,9 +25985,11 @@ func (client *Client) DescribePropertySoftwareItem(request *DescribePropertySoft
 //
 // @return DescribePropertyTypeScaItemResponse
 func (client *Client) DescribePropertyTypeScaItemWithOptions(request *DescribePropertyTypeScaItemRequest, runtime *dara.RuntimeOptions) (_result *DescribePropertyTypeScaItemResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -25418,9 +26059,11 @@ func (client *Client) DescribePropertyTypeScaItem(request *DescribePropertyTypeS
 //
 // @return DescribePropertyUsageTopResponse
 func (client *Client) DescribePropertyUsageTopWithOptions(request *DescribePropertyUsageTopRequest, runtime *dara.RuntimeOptions) (_result *DescribePropertyUsageTopResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Type) {
@@ -25482,9 +26125,11 @@ func (client *Client) DescribePropertyUsageTop(request *DescribePropertyUsageTop
 //
 // @return DescribePropertyUserDetailResponse
 func (client *Client) DescribePropertyUserDetailWithOptions(request *DescribePropertyUserDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribePropertyUserDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -25574,9 +26219,11 @@ func (client *Client) DescribePropertyUserDetail(request *DescribePropertyUserDe
 //
 // @return DescribePropertyUserItemResponse
 func (client *Client) DescribePropertyUserItemWithOptions(request *DescribePropertyUserItemRequest, runtime *dara.RuntimeOptions) (_result *DescribePropertyUserItemResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -25646,9 +26293,11 @@ func (client *Client) DescribePropertyUserItem(request *DescribePropertyUserItem
 //
 // @return DescribeQuaraFileDownloadInfoResponse
 func (client *Client) DescribeQuaraFileDownloadInfoWithOptions(request *DescribeQuaraFileDownloadInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeQuaraFileDownloadInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -25710,9 +26359,11 @@ func (client *Client) DescribeQuaraFileDownloadInfo(request *DescribeQuaraFileDo
 //
 // @return DescribeReportExportResponse
 func (client *Client) DescribeReportExportWithOptions(request *DescribeReportExportRequest, runtime *dara.RuntimeOptions) (_result *DescribeReportExportResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExportId) {
@@ -25774,9 +26425,11 @@ func (client *Client) DescribeReportExport(request *DescribeReportExportRequest)
 //
 // @return DescribeReportRecipientStatusResponse
 func (client *Client) DescribeReportRecipientStatusWithOptions(request *DescribeReportRecipientStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeReportRecipientStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -25848,9 +26501,11 @@ func (client *Client) DescribeReportRecipientStatus(request *DescribeReportRecip
 //
 // @return DescribeRestoreJobsResponse
 func (client *Client) DescribeRestoreJobsWithOptions(request *DescribeRestoreJobsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRestoreJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -25926,9 +26581,11 @@ func (client *Client) DescribeRestoreJobs(request *DescribeRestoreJobsRequest) (
 //
 // @return DescribeRestorePlansResponse
 func (client *Client) DescribeRestorePlansWithOptions(request *DescribeRestorePlansRequest, runtime *dara.RuntimeOptions) (_result *DescribeRestorePlansResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -26004,9 +26661,11 @@ func (client *Client) DescribeRestorePlans(request *DescribeRestorePlansRequest)
 //
 // @return DescribeRiskCheckItemResultResponse
 func (client *Client) DescribeRiskCheckItemResultWithOptions(request *DescribeRiskCheckItemResultRequest, runtime *dara.RuntimeOptions) (_result *DescribeRiskCheckItemResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -26097,9 +26756,11 @@ func (client *Client) DescribeRiskCheckItemResult(request *DescribeRiskCheckItem
 //
 // @return DescribeRiskCheckResultResponse
 func (client *Client) DescribeRiskCheckResultWithOptions(request *DescribeRiskCheckResultRequest, runtime *dara.RuntimeOptions) (_result *DescribeRiskCheckResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AssetType) {
@@ -26214,9 +26875,11 @@ func (client *Client) DescribeRiskCheckResult(request *DescribeRiskCheckResultRe
 //
 // @return DescribeRiskCheckSummaryResponse
 func (client *Client) DescribeRiskCheckSummaryWithOptions(request *DescribeRiskCheckSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeRiskCheckSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -26299,9 +26962,11 @@ func (client *Client) DescribeRiskCheckSummary(request *DescribeRiskCheckSummary
 //
 // @return DescribeRiskItemTypeResponse
 func (client *Client) DescribeRiskItemTypeWithOptions(request *DescribeRiskItemTypeRequest, runtime *dara.RuntimeOptions) (_result *DescribeRiskItemTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -26380,9 +27045,11 @@ func (client *Client) DescribeRiskItemType(request *DescribeRiskItemTypeRequest)
 //
 // @return DescribeRiskListCheckResultResponse
 func (client *Client) DescribeRiskListCheckResultWithOptions(request *DescribeRiskListCheckResultRequest, runtime *dara.RuntimeOptions) (_result *DescribeRiskListCheckResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -26467,9 +27134,11 @@ func (client *Client) DescribeRiskListCheckResult(request *DescribeRiskListCheck
 //
 // @return DescribeRiskTypeResponse
 func (client *Client) DescribeRiskTypeWithOptions(request *DescribeRiskTypeRequest, runtime *dara.RuntimeOptions) (_result *DescribeRiskTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -26535,9 +27204,11 @@ func (client *Client) DescribeRiskType(request *DescribeRiskTypeRequest) (_resul
 //
 // @return DescribeRisksResponse
 func (client *Client) DescribeRisksWithOptions(request *DescribeRisksRequest, runtime *dara.RuntimeOptions) (_result *DescribeRisksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -26611,9 +27282,11 @@ func (client *Client) DescribeRisks(request *DescribeRisksRequest) (_result *Des
 //
 // @return DescribeSasPmAgentListResponse
 func (client *Client) DescribeSasPmAgentListWithOptions(request *DescribeSasPmAgentListRequest, runtime *dara.RuntimeOptions) (_result *DescribeSasPmAgentListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -26675,9 +27348,11 @@ func (client *Client) DescribeSasPmAgentList(request *DescribeSasPmAgentListRequ
 //
 // @return DescribeScanTaskProgressResponse
 func (client *Client) DescribeScanTaskProgressWithOptions(request *DescribeScanTaskProgressRequest, runtime *dara.RuntimeOptions) (_result *DescribeScanTaskProgressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -26735,9 +27410,11 @@ func (client *Client) DescribeScanTaskProgress(request *DescribeScanTaskProgress
 //
 // @return DescribeScanTaskStatisticsResponse
 func (client *Client) DescribeScanTaskStatisticsWithOptions(request *DescribeScanTaskStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeScanTaskStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Levels) {
@@ -26795,9 +27472,11 @@ func (client *Client) DescribeScanTaskStatistics(request *DescribeScanTaskStatis
 //
 // @return DescribeScreenScoreThreadResponse
 func (client *Client) DescribeScreenScoreThreadWithOptions(request *DescribeScreenScoreThreadRequest, runtime *dara.RuntimeOptions) (_result *DescribeScreenScoreThreadResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -26863,9 +27542,11 @@ func (client *Client) DescribeScreenScoreThread(request *DescribeScreenScoreThre
 //
 // @return DescribeSearchConditionResponse
 func (client *Client) DescribeSearchConditionWithOptions(request *DescribeSearchConditionRequest, runtime *dara.RuntimeOptions) (_result *DescribeSearchConditionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -26931,9 +27612,11 @@ func (client *Client) DescribeSearchCondition(request *DescribeSearchConditionRe
 //
 // @return DescribeSecureSuggestionResponse
 func (client *Client) DescribeSecureSuggestionWithOptions(request *DescribeSecureSuggestionRequest, runtime *dara.RuntimeOptions) (_result *DescribeSecureSuggestionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CalType) {
@@ -27009,9 +27692,11 @@ func (client *Client) DescribeSecureSuggestion(request *DescribeSecureSuggestion
 //
 // @return DescribeSecurityCheckScheduleConfigResponse
 func (client *Client) DescribeSecurityCheckScheduleConfigWithOptions(request *DescribeSecurityCheckScheduleConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeSecurityCheckScheduleConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -27084,9 +27769,11 @@ func (client *Client) DescribeSecurityCheckScheduleConfig(request *DescribeSecur
 //
 // @return DescribeSecurityEventMarkMissListResponse
 func (client *Client) DescribeSecurityEventMarkMissListWithOptions(request *DescribeSecurityEventMarkMissListRequest, runtime *dara.RuntimeOptions) (_result *DescribeSecurityEventMarkMissListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -27164,9 +27851,11 @@ func (client *Client) DescribeSecurityEventMarkMissList(request *DescribeSecurit
 //
 // @return DescribeSecurityEventOperationStatusResponse
 func (client *Client) DescribeSecurityEventOperationStatusWithOptions(request *DescribeSecurityEventOperationStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeSecurityEventOperationStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceOwnerId) {
@@ -27236,9 +27925,11 @@ func (client *Client) DescribeSecurityEventOperationStatus(request *DescribeSecu
 //
 // @return DescribeSecurityEventOperationsResponse
 func (client *Client) DescribeSecurityEventOperationsWithOptions(request *DescribeSecurityEventOperationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSecurityEventOperationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -27308,9 +27999,11 @@ func (client *Client) DescribeSecurityEventOperations(request *DescribeSecurityE
 //
 // @return DescribeSecurityStatInfoResponse
 func (client *Client) DescribeSecurityStatInfoWithOptions(request *DescribeSecurityStatInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeSecurityStatInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -27376,9 +28069,11 @@ func (client *Client) DescribeSecurityStatInfo(request *DescribeSecurityStatInfo
 //
 // @return DescribeServiceLinkedRoleStatusResponse
 func (client *Client) DescribeServiceLinkedRoleStatusWithOptions(request *DescribeServiceLinkedRoleStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceLinkedRoleStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ServiceLinkedRole) {
@@ -27436,9 +28131,11 @@ func (client *Client) DescribeServiceLinkedRoleStatus(request *DescribeServiceLi
 //
 // @return DescribeSimilarEventScenariosResponse
 func (client *Client) DescribeSimilarEventScenariosWithOptions(request *DescribeSimilarEventScenariosRequest, runtime *dara.RuntimeOptions) (_result *DescribeSimilarEventScenariosResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceOwnerId) {
@@ -27504,9 +28201,11 @@ func (client *Client) DescribeSimilarEventScenarios(request *DescribeSimilarEven
 //
 // @return DescribeSimilarSecurityEventsResponse
 func (client *Client) DescribeSimilarSecurityEventsWithOptions(request *DescribeSimilarSecurityEventsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSimilarSecurityEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -27584,9 +28283,11 @@ func (client *Client) DescribeSimilarSecurityEvents(request *DescribeSimilarSecu
 //
 // @return DescribeSnapshotsResponse
 func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSnapshotsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApiVersion) {
@@ -27680,9 +28381,11 @@ func (client *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (_res
 //
 // @return DescribeSoarPlaybookTaskDetailResponse
 func (client *Client) DescribeSoarPlaybookTaskDetailWithOptions(request *DescribeSoarPlaybookTaskDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeSoarPlaybookTaskDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PlaybookId) {
@@ -27756,9 +28459,11 @@ func (client *Client) DescribeSoarPlaybookTaskDetail(request *DescribeSoarPlaybo
 //
 // @return DescribeSoarStrategiesResponse
 func (client *Client) DescribeSoarStrategiesWithOptions(request *DescribeSoarStrategiesRequest, runtime *dara.RuntimeOptions) (_result *DescribeSoarStrategiesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -27828,9 +28533,11 @@ func (client *Client) DescribeSoarStrategies(request *DescribeSoarStrategiesRequ
 //
 // @return DescribeSoarStrategyParamResponse
 func (client *Client) DescribeSoarStrategyParamWithOptions(request *DescribeSoarStrategyParamRequest, runtime *dara.RuntimeOptions) (_result *DescribeSoarStrategyParamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.StrategyId) {
@@ -27896,9 +28603,11 @@ func (client *Client) DescribeSoarStrategyParam(request *DescribeSoarStrategyPar
 //
 // @return DescribeSoarStrategyTaskDetailResponse
 func (client *Client) DescribeSoarStrategyTaskDetailWithOptions(request *DescribeSoarStrategyTaskDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeSoarStrategyTaskDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -27968,9 +28677,11 @@ func (client *Client) DescribeSoarStrategyTaskDetail(request *DescribeSoarStrate
 //
 // @return DescribeSoarStrategyTaskParamsResponse
 func (client *Client) DescribeSoarStrategyTaskParamsWithOptions(request *DescribeSoarStrategyTaskParamsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSoarStrategyTaskParamsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -28032,9 +28743,11 @@ func (client *Client) DescribeSoarStrategyTaskParams(request *DescribeSoarStrate
 //
 // @return DescribeSoarStrategyTaskResultResponse
 func (client *Client) DescribeSoarStrategyTaskResultWithOptions(request *DescribeSoarStrategyTaskResultRequest, runtime *dara.RuntimeOptions) (_result *DescribeSoarStrategyTaskResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -28096,9 +28809,11 @@ func (client *Client) DescribeSoarStrategyTaskResult(request *DescribeSoarStrate
 //
 // @return DescribeSoarStrategyTasksResponse
 func (client *Client) DescribeSoarStrategyTasksWithOptions(request *DescribeSoarStrategyTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeSoarStrategyTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -28168,9 +28883,11 @@ func (client *Client) DescribeSoarStrategyTasks(request *DescribeSoarStrategyTas
 //
 // @return DescribeSoarSubscribedStrategyResponse
 func (client *Client) DescribeSoarSubscribedStrategyWithOptions(request *DescribeSoarSubscribedStrategyRequest, runtime *dara.RuntimeOptions) (_result *DescribeSoarSubscribedStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -28236,9 +28953,11 @@ func (client *Client) DescribeSoarSubscribedStrategy(request *DescribeSoarSubscr
 //
 // @return DescribeStrategyResponse
 func (client *Client) DescribeStrategyWithOptions(request *DescribeStrategyRequest, runtime *dara.RuntimeOptions) (_result *DescribeStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustomType) {
@@ -28308,9 +29027,11 @@ func (client *Client) DescribeStrategy(request *DescribeStrategyRequest) (_resul
 //
 // @return DescribeStrategyDetailResponse
 func (client *Client) DescribeStrategyDetailWithOptions(request *DescribeStrategyDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeStrategyDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -28376,9 +29097,11 @@ func (client *Client) DescribeStrategyDetail(request *DescribeStrategyDetailRequ
 //
 // @return DescribeStrategyExecDetailResponse
 func (client *Client) DescribeStrategyExecDetailWithOptions(request *DescribeStrategyExecDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeStrategyExecDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -28448,9 +29171,11 @@ func (client *Client) DescribeStrategyExecDetail(request *DescribeStrategyExecDe
 //
 // @return DescribeStrategyTargetResponse
 func (client *Client) DescribeStrategyTargetWithOptions(request *DescribeStrategyTargetRequest, runtime *dara.RuntimeOptions) (_result *DescribeStrategyTargetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -28516,9 +29241,11 @@ func (client *Client) DescribeStrategyTarget(request *DescribeStrategyTargetRequ
 //
 // @return DescribeStrictEventNameResponse
 func (client *Client) DescribeStrictEventNameWithOptions(request *DescribeStrictEventNameRequest, runtime *dara.RuntimeOptions) (_result *DescribeStrictEventNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -28572,9 +29299,11 @@ func (client *Client) DescribeStrictEventName(request *DescribeStrictEventNameRe
 //
 // @return DescribeSummaryInfoResponse
 func (client *Client) DescribeSummaryInfoWithOptions(request *DescribeSummaryInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeSummaryInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -28730,9 +29459,11 @@ func (client *Client) DescribeSupportRegion() (_result *DescribeSupportRegionRes
 //
 // @return DescribeSuspEventDetailResponse
 func (client *Client) DescribeSuspEventDetailWithOptions(request *DescribeSuspEventDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeSuspEventDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -28806,9 +29537,11 @@ func (client *Client) DescribeSuspEventDetail(request *DescribeSuspEventDetailRe
 //
 // @return DescribeSuspEventExportInfoResponse
 func (client *Client) DescribeSuspEventExportInfoWithOptions(request *DescribeSuspEventExportInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeSuspEventExportInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExportId) {
@@ -28866,9 +29599,11 @@ func (client *Client) DescribeSuspEventExportInfo(request *DescribeSuspEventExpo
 //
 // @return DescribeSuspEventQuaraFilesResponse
 func (client *Client) DescribeSuspEventQuaraFilesWithOptions(request *DescribeSuspEventQuaraFilesRequest, runtime *dara.RuntimeOptions) (_result *DescribeSuspEventQuaraFilesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -28954,9 +29689,11 @@ func (client *Client) DescribeSuspEventQuaraFiles(request *DescribeSuspEventQuar
 //
 // @return DescribeSuspEventUserSettingResponse
 func (client *Client) DescribeSuspEventUserSettingWithOptions(request *DescribeSuspEventUserSettingRequest, runtime *dara.RuntimeOptions) (_result *DescribeSuspEventUserSettingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -29022,9 +29759,11 @@ func (client *Client) DescribeSuspEventUserSetting(request *DescribeSuspEventUse
 //
 // @return DescribeSuspEventsResponse
 func (client *Client) DescribeSuspEventsWithOptions(tmpReq *DescribeSuspEventsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSuspEventsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeSuspEventsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -29230,9 +29969,11 @@ func (client *Client) DescribeSuspEvents(request *DescribeSuspEventsRequest) (_r
 //
 // @return DescribeSuspiciousOverallConfigResponse
 func (client *Client) DescribeSuspiciousOverallConfigWithOptions(request *DescribeSuspiciousOverallConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeSuspiciousOverallConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceIp) {
@@ -29294,9 +30035,11 @@ func (client *Client) DescribeSuspiciousOverallConfig(request *DescribeSuspiciou
 //
 // @return DescribeSuspiciousUUIDConfigResponse
 func (client *Client) DescribeSuspiciousUUIDConfigWithOptions(request *DescribeSuspiciousUUIDConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeSuspiciousUUIDConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Type) {
@@ -29354,9 +30097,11 @@ func (client *Client) DescribeSuspiciousUUIDConfig(request *DescribeSuspiciousUU
 //
 // @return DescribeSyncAssetTaskListResponse
 func (client *Client) DescribeSyncAssetTaskListWithOptions(request *DescribeSyncAssetTaskListRequest, runtime *dara.RuntimeOptions) (_result *DescribeSyncAssetTaskListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -29430,9 +30175,11 @@ func (client *Client) DescribeSyncAssetTaskList(request *DescribeSyncAssetTaskLi
 //
 // @return DescribeSyncAssetTaskLogDetailResponse
 func (client *Client) DescribeSyncAssetTaskLogDetailWithOptions(request *DescribeSyncAssetTaskLogDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeSyncAssetTaskLogDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -29510,9 +30257,11 @@ func (client *Client) DescribeSyncAssetTaskLogDetail(request *DescribeSyncAssetT
 //
 // @return DescribeTargetResponse
 func (client *Client) DescribeTargetWithOptions(request *DescribeTargetRequest, runtime *dara.RuntimeOptions) (_result *DescribeTargetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -29574,9 +30323,11 @@ func (client *Client) DescribeTarget(request *DescribeTargetRequest) (_result *D
 //
 // @return DescribeTaskErrorLogResponse
 func (client *Client) DescribeTaskErrorLogWithOptions(request *DescribeTaskErrorLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeTaskErrorLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BuildTaskId) {
@@ -29634,9 +30385,11 @@ func (client *Client) DescribeTaskErrorLog(request *DescribeTaskErrorLogRequest)
 //
 // @return DescribeTotalStatisticsResponse
 func (client *Client) DescribeTotalStatisticsWithOptions(request *DescribeTotalStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeTotalStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -29702,9 +30455,11 @@ func (client *Client) DescribeTotalStatistics(request *DescribeTotalStatisticsRe
 //
 // @return DescribeTraceInfoDetailResponse
 func (client *Client) DescribeTraceInfoDetailWithOptions(request *DescribeTraceInfoDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeTraceInfoDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -29786,9 +30541,11 @@ func (client *Client) DescribeTraceInfoDetail(request *DescribeTraceInfoDetailRe
 //
 // @return DescribeTraceInfoNodeResponse
 func (client *Client) DescribeTraceInfoNodeWithOptions(request *DescribeTraceInfoNodeRequest, runtime *dara.RuntimeOptions) (_result *DescribeTraceInfoNodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventName) {
@@ -29874,9 +30631,11 @@ func (client *Client) DescribeTraceInfoNode(request *DescribeTraceInfoNodeReques
 //
 // @return DescribeUniBackupDatabaseResponse
 func (client *Client) DescribeUniBackupDatabaseWithOptions(request *DescribeUniBackupDatabaseRequest, runtime *dara.RuntimeOptions) (_result *DescribeUniBackupDatabaseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -29954,9 +30713,11 @@ func (client *Client) DescribeUniBackupDatabase(request *DescribeUniBackupDataba
 //
 // @return DescribeUniBackupPoliciesResponse
 func (client *Client) DescribeUniBackupPoliciesWithOptions(request *DescribeUniBackupPoliciesRequest, runtime *dara.RuntimeOptions) (_result *DescribeUniBackupPoliciesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -30022,9 +30783,11 @@ func (client *Client) DescribeUniBackupPolicies(request *DescribeUniBackupPolici
 //
 // @return DescribeUniBackupPolicyDetailResponse
 func (client *Client) DescribeUniBackupPolicyDetailWithOptions(request *DescribeUniBackupPolicyDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeUniBackupPolicyDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PolicyId) {
@@ -30129,9 +30892,11 @@ func (client *Client) DescribeUniBackupStatistics() (_result *DescribeUniBackupS
 //
 // @return DescribeUniRecoverableListResponse
 func (client *Client) DescribeUniRecoverableListWithOptions(request *DescribeUniRecoverableListRequest, runtime *dara.RuntimeOptions) (_result *DescribeUniRecoverableListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -30295,9 +31060,11 @@ func (client *Client) DescribeUserBackupMachines() (_result *DescribeUserBackupM
 //
 // @return DescribeUserBaselineAuthorizationResponse
 func (client *Client) DescribeUserBaselineAuthorizationWithOptions(request *DescribeUserBaselineAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserBaselineAuthorizationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -30363,9 +31130,11 @@ func (client *Client) DescribeUserBaselineAuthorization(request *DescribeUserBas
 //
 // @return DescribeUserSettingResponse
 func (client *Client) DescribeUserSettingWithOptions(request *DescribeUserSettingRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserSettingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceIp) {
@@ -30423,9 +31192,11 @@ func (client *Client) DescribeUserSetting(request *DescribeUserSettingRequest) (
 //
 // @return DescribeUuidsByVulNamesResponse
 func (client *Client) DescribeUuidsByVulNamesWithOptions(request *DescribeUuidsByVulNamesRequest, runtime *dara.RuntimeOptions) (_result *DescribeUuidsByVulNamesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Dealed) {
@@ -30586,9 +31357,11 @@ func (client *Client) DescribeVendorList() (_result *DescribeVendorListResponse,
 //
 // @return DescribeVersionConfigResponse
 func (client *Client) DescribeVersionConfigWithOptions(request *DescribeVersionConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeVersionConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceDirectoryAccountId) {
@@ -30650,9 +31423,11 @@ func (client *Client) DescribeVersionConfig(request *DescribeVersionConfigReques
 //
 // @return DescribeVolDingdingMessageResponse
 func (client *Client) DescribeVolDingdingMessageWithOptions(request *DescribeVolDingdingMessageRequest, runtime *dara.RuntimeOptions) (_result *DescribeVolDingdingMessageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -30714,9 +31489,11 @@ func (client *Client) DescribeVolDingdingMessage(request *DescribeVolDingdingMes
 //
 // @return DescribeVpcHoneyPotCriteriaResponse
 func (client *Client) DescribeVpcHoneyPotCriteriaWithOptions(request *DescribeVpcHoneyPotCriteriaRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcHoneyPotCriteriaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -30778,9 +31555,11 @@ func (client *Client) DescribeVpcHoneyPotCriteria(request *DescribeVpcHoneyPotCr
 //
 // @return DescribeVpcHoneyPotListResponse
 func (client *Client) DescribeVpcHoneyPotListWithOptions(request *DescribeVpcHoneyPotListRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcHoneyPotListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -30909,9 +31688,11 @@ func (client *Client) DescribeVpcList() (_result *DescribeVpcListResponse, _err 
 //
 // @return DescribeVulCheckTaskStatusDetailResponse
 func (client *Client) DescribeVulCheckTaskStatusDetailWithOptions(request *DescribeVulCheckTaskStatusDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeVulCheckTaskStatusDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskIds) {
@@ -30977,9 +31758,11 @@ func (client *Client) DescribeVulCheckTaskStatusDetail(request *DescribeVulCheck
 //
 // @return DescribeVulConfigResponse
 func (client *Client) DescribeVulConfigWithOptions(request *DescribeVulConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeVulConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceIp) {
@@ -31041,9 +31824,11 @@ func (client *Client) DescribeVulConfig(request *DescribeVulConfigRequest) (_res
 //
 // @return DescribeVulDefendCountStatisticsResponse
 func (client *Client) DescribeVulDefendCountStatisticsWithOptions(request *DescribeVulDefendCountStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVulDefendCountStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.VulType) {
@@ -31101,9 +31886,11 @@ func (client *Client) DescribeVulDefendCountStatistics(request *DescribeVulDefen
 //
 // @return DescribeVulDetailsResponse
 func (client *Client) DescribeVulDetailsWithOptions(request *DescribeVulDetailsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVulDetailsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliasName) {
@@ -31181,9 +31968,11 @@ func (client *Client) DescribeVulDetails(request *DescribeVulDetailsRequest) (_r
 //
 // @return DescribeVulExportInfoResponse
 func (client *Client) DescribeVulExportInfoWithOptions(request *DescribeVulExportInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeVulExportInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExportId) {
@@ -31292,9 +32081,11 @@ func (client *Client) DescribeVulFixStatistics() (_result *DescribeVulFixStatist
 //
 // @return DescribeVulListResponse
 func (client *Client) DescribeVulListWithOptions(request *DescribeVulListRequest, runtime *dara.RuntimeOptions) (_result *DescribeVulListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliasName) {
@@ -31432,9 +32223,11 @@ func (client *Client) DescribeVulList(request *DescribeVulListRequest) (_result 
 //
 // @return DescribeVulListPageResponse
 func (client *Client) DescribeVulListPageWithOptions(request *DescribeVulListPageRequest, runtime *dara.RuntimeOptions) (_result *DescribeVulListPageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -31559,13 +32352,19 @@ func (client *Client) DescribeVulMetaCountStatistics() (_result *DescribeVulMeta
 //
 // @return DescribeVulNumStatisticsResponse
 func (client *Client) DescribeVulNumStatisticsWithOptions(request *DescribeVulNumStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVulNumStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
 		query["From"] = request.From
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -31619,9 +32418,11 @@ func (client *Client) DescribeVulNumStatistics(request *DescribeVulNumStatistics
 //
 // @return DescribeVulTargetConfigResponse
 func (client *Client) DescribeVulTargetConfigWithOptions(request *DescribeVulTargetConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeVulTargetConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Type) {
@@ -31683,9 +32484,11 @@ func (client *Client) DescribeVulTargetConfig(request *DescribeVulTargetConfigRe
 //
 // @return DescribeVulTargetStatisticsResponse
 func (client *Client) DescribeVulTargetStatisticsWithOptions(request *DescribeVulTargetStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVulTargetStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Type) {
@@ -31743,9 +32546,11 @@ func (client *Client) DescribeVulTargetStatistics(request *DescribeVulTargetStat
 //
 // @return DescribeVulWhitelistResponse
 func (client *Client) DescribeVulWhitelistWithOptions(request *DescribeVulWhitelistRequest, runtime *dara.RuntimeOptions) (_result *DescribeVulWhitelistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -31811,9 +32616,11 @@ func (client *Client) DescribeVulWhitelist(request *DescribeVulWhitelistRequest)
 //
 // @return DescribeWarningExportInfoResponse
 func (client *Client) DescribeWarningExportInfoWithOptions(request *DescribeWarningExportInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeWarningExportInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExportId) {
@@ -31871,9 +32678,11 @@ func (client *Client) DescribeWarningExportInfo(request *DescribeWarningExportIn
 //
 // @return DescribeWarningMachinesResponse
 func (client *Client) DescribeWarningMachinesWithOptions(request *DescribeWarningMachinesRequest, runtime *dara.RuntimeOptions) (_result *DescribeWarningMachinesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -31983,9 +32792,11 @@ func (client *Client) DescribeWarningMachines(request *DescribeWarningMachinesRe
 //
 // @return DescribeWebLockBindListResponse
 func (client *Client) DescribeWebLockBindListWithOptions(request *DescribeWebLockBindListRequest, runtime *dara.RuntimeOptions) (_result *DescribeWebLockBindListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -32067,9 +32878,11 @@ func (client *Client) DescribeWebLockBindList(request *DescribeWebLockBindListRe
 //
 // @return DescribeWebLockConfigListResponse
 func (client *Client) DescribeWebLockConfigListWithOptions(request *DescribeWebLockConfigListRequest, runtime *dara.RuntimeOptions) (_result *DescribeWebLockConfigListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -32186,9 +32999,11 @@ func (client *Client) DescribeWebLockExclusiveFileType() (_result *DescribeWebLo
 //
 // @return DescribeWebLockFileChangeStatisticsResponse
 func (client *Client) DescribeWebLockFileChangeStatisticsWithOptions(request *DescribeWebLockFileChangeStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeWebLockFileChangeStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -32250,9 +33065,11 @@ func (client *Client) DescribeWebLockFileChangeStatistics(request *DescribeWebLo
 //
 // @return DescribeWebLockFileEventsResponse
 func (client *Client) DescribeWebLockFileEventsWithOptions(request *DescribeWebLockFileEventsRequest, runtime *dara.RuntimeOptions) (_result *DescribeWebLockFileEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -32428,9 +33245,11 @@ func (client *Client) DescribeWebLockInclusiveFileType() (_result *DescribeWebLo
 //
 // @return DescribeWebLockProcessBlockStatisticsResponse
 func (client *Client) DescribeWebLockProcessBlockStatisticsWithOptions(request *DescribeWebLockProcessBlockStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeWebLockProcessBlockStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -32492,9 +33311,11 @@ func (client *Client) DescribeWebLockProcessBlockStatistics(request *DescribeWeb
 //
 // @return DescribeWebLockProcessListResponse
 func (client *Client) DescribeWebLockProcessListWithOptions(request *DescribeWebLockProcessListRequest, runtime *dara.RuntimeOptions) (_result *DescribeWebLockProcessListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -32564,9 +33385,11 @@ func (client *Client) DescribeWebLockProcessList(request *DescribeWebLockProcess
 //
 // @return DescribeWebLockStatusResponse
 func (client *Client) DescribeWebLockStatusWithOptions(request *DescribeWebLockStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeWebLockStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -32679,9 +33502,11 @@ func (client *Client) DescribeWebLockTotalFileChangeCount() (_result *DescribeWe
 //
 // @return DescribeWebPathResponse
 func (client *Client) DescribeWebPathWithOptions(request *DescribeWebPathRequest, runtime *dara.RuntimeOptions) (_result *DescribeWebPathResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -32751,9 +33576,11 @@ func (client *Client) DescribeWebPath(request *DescribeWebPathRequest) (_result 
 //
 // @return DescribeWhiteListAssetResponse
 func (client *Client) DescribeWhiteListAssetWithOptions(request *DescribeWhiteListAssetRequest, runtime *dara.RuntimeOptions) (_result *DescribeWhiteListAssetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -32839,9 +33666,11 @@ func (client *Client) DescribeWhiteListAsset(request *DescribeWhiteListAssetRequ
 //
 // @return DescribeWhiteListAuthorizeResponse
 func (client *Client) DescribeWhiteListAuthorizeWithOptions(request *DescribeWhiteListAuthorizeRequest, runtime *dara.RuntimeOptions) (_result *DescribeWhiteListAuthorizeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -32911,9 +33740,11 @@ func (client *Client) DescribeWhiteListAuthorize(request *DescribeWhiteListAutho
 //
 // @return DescribeWhiteListEffectiveAssetsResponse
 func (client *Client) DescribeWhiteListEffectiveAssetsWithOptions(request *DescribeWhiteListEffectiveAssetsRequest, runtime *dara.RuntimeOptions) (_result *DescribeWhiteListEffectiveAssetsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -33003,9 +33834,11 @@ func (client *Client) DescribeWhiteListEffectiveAssets(request *DescribeWhiteLis
 //
 // @return DescribeWhiteListProcessResponse
 func (client *Client) DescribeWhiteListProcessWithOptions(request *DescribeWhiteListProcessRequest, runtime *dara.RuntimeOptions) (_result *DescribeWhiteListProcessResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -33103,9 +33936,11 @@ func (client *Client) DescribeWhiteListProcess(request *DescribeWhiteListProcess
 //
 // @return DescribeWhiteListStrategyListResponse
 func (client *Client) DescribeWhiteListStrategyListWithOptions(request *DescribeWhiteListStrategyListRequest, runtime *dara.RuntimeOptions) (_result *DescribeWhiteListStrategyListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -33179,9 +34014,11 @@ func (client *Client) DescribeWhiteListStrategyList(request *DescribeWhiteListSt
 //
 // @return DescribeWhiteListStrategyStatisticsResponse
 func (client *Client) DescribeWhiteListStrategyStatisticsWithOptions(request *DescribeWhiteListStrategyStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeWhiteListStrategyStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -33263,9 +34100,11 @@ func (client *Client) DescribeWhiteListStrategyStatistics(request *DescribeWhite
 //
 // @return DescribeWhiteListStrategyUuidCountResponse
 func (client *Client) DescribeWhiteListStrategyUuidCountWithOptions(request *DescribeWhiteListStrategyUuidCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeWhiteListStrategyUuidCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -33339,9 +34178,11 @@ func (client *Client) DescribeWhiteListStrategyUuidCount(request *DescribeWhiteL
 //
 // @return DingTalkOnlineTestResponse
 func (client *Client) DingTalkOnlineTestWithOptions(request *DingTalkOnlineTestRequest, runtime *dara.RuntimeOptions) (_result *DingTalkOnlineTestResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -33399,9 +34240,11 @@ func (client *Client) DingTalkOnlineTest(request *DingTalkOnlineTestRequest) (_r
 //
 // @return DisableBruteForceRecordResponse
 func (client *Client) DisableBruteForceRecordWithOptions(request *DisableBruteForceRecordRequest, runtime *dara.RuntimeOptions) (_result *DisableBruteForceRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BlockIp) {
@@ -33479,9 +34322,11 @@ func (client *Client) DisableBruteForceRecord(request *DisableBruteForceRecordRe
 //
 // @return DisableCustomBlockRecordResponse
 func (client *Client) DisableCustomBlockRecordWithOptions(request *DisableCustomBlockRecordRequest, runtime *dara.RuntimeOptions) (_result *DisableCustomBlockRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BlockIp) {
@@ -33547,9 +34392,11 @@ func (client *Client) DisableCustomBlockRecord(request *DisableCustomBlockRecord
 //
 // @return EnableBruteForceRecordResponse
 func (client *Client) EnableBruteForceRecordWithOptions(request *EnableBruteForceRecordRequest, runtime *dara.RuntimeOptions) (_result *EnableBruteForceRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BlockIp) {
@@ -33627,9 +34474,11 @@ func (client *Client) EnableBruteForceRecord(request *EnableBruteForceRecordRequ
 //
 // @return EnableCustomBlockRecordResponse
 func (client *Client) EnableCustomBlockRecordWithOptions(request *EnableCustomBlockRecordRequest, runtime *dara.RuntimeOptions) (_result *EnableCustomBlockRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BlockIp) {
@@ -33695,9 +34544,11 @@ func (client *Client) EnableCustomBlockRecord(request *EnableCustomBlockRecordRe
 //
 // @return EnableCustomInstanceBlockRecordResponse
 func (client *Client) EnableCustomInstanceBlockRecordWithOptions(request *EnableCustomInstanceBlockRecordRequest, runtime *dara.RuntimeOptions) (_result *EnableCustomInstanceBlockRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BlockIp) {
@@ -33822,9 +34673,11 @@ func (client *Client) EnableServiceAccessResourceDirectory() (_result *EnableSer
 //
 // @return ExecStrategyResponse
 func (client *Client) ExecStrategyWithOptions(request *ExecStrategyRequest, runtime *dara.RuntimeOptions) (_result *ExecStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExecAction) {
@@ -33890,9 +34743,11 @@ func (client *Client) ExecStrategy(request *ExecStrategyRequest) (_result *ExecS
 //
 // @return ExportCustomizeReportResponse
 func (client *Client) ExportCustomizeReportWithOptions(request *ExportCustomizeReportRequest, runtime *dara.RuntimeOptions) (_result *ExportCustomizeReportResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExportType) {
@@ -33966,9 +34821,11 @@ func (client *Client) ExportCustomizeReport(request *ExportCustomizeReportReques
 //
 // @return ExportRecordResponse
 func (client *Client) ExportRecordWithOptions(request *ExportRecordRequest, runtime *dara.RuntimeOptions) (_result *ExportRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExportFileType) {
@@ -34050,9 +34907,11 @@ func (client *Client) ExportRecord(request *ExportRecordRequest) (_result *Expor
 //
 // @return ExportSuspEventsResponse
 func (client *Client) ExportSuspEventsWithOptions(request *ExportSuspEventsRequest, runtime *dara.RuntimeOptions) (_result *ExportSuspEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AssetsTypeList) {
@@ -34208,9 +35067,11 @@ func (client *Client) ExportSuspEvents(request *ExportSuspEventsRequest) (_resul
 //
 // @return ExportVulResponse
 func (client *Client) ExportVulWithOptions(request *ExportVulRequest, runtime *dara.RuntimeOptions) (_result *ExportVulResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliasName) {
@@ -34344,9 +35205,11 @@ func (client *Client) ExportVul(request *ExportVulRequest) (_result *ExportVulRe
 //
 // @return ExportWarningResponse
 func (client *Client) ExportWarningWithOptions(request *ExportWarningRequest, runtime *dara.RuntimeOptions) (_result *ExportWarningResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Dealed) {
@@ -34467,9 +35330,11 @@ func (client *Client) ExportWarning(request *ExportWarningRequest) (_result *Exp
 //
 // @return FindContainerNetworkConnectResponse
 func (client *Client) FindContainerNetworkConnectWithOptions(tmpReq *FindContainerNetworkConnectRequest, runtime *dara.RuntimeOptions) (_result *FindContainerNetworkConnectResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FindContainerNetworkConnectShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -34561,9 +35426,11 @@ func (client *Client) FindContainerNetworkConnect(request *FindContainerNetworkC
 //
 // @return FinishGuidTaskResponse
 func (client *Client) FinishGuidTaskWithOptions(request *FinishGuidTaskRequest, runtime *dara.RuntimeOptions) (_result *FinishGuidTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskTypeName) {
@@ -34621,9 +35488,11 @@ func (client *Client) FinishGuidTask(request *FinishGuidTaskRequest) (_result *F
 //
 // @return FixCheckWarningsResponse
 func (client *Client) FixCheckWarningsWithOptions(request *FixCheckWarningsRequest, runtime *dara.RuntimeOptions) (_result *FixCheckWarningsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckParams) {
@@ -34705,9 +35574,11 @@ func (client *Client) FixCheckWarnings(request *FixCheckWarningsRequest) (_resul
 //
 // @return GenerateDynamicDictResponse
 func (client *Client) GenerateDynamicDictWithOptions(request *GenerateDynamicDictRequest, runtime *dara.RuntimeOptions) (_result *GenerateDynamicDictResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ArgKeywords) {
@@ -34777,9 +35648,11 @@ func (client *Client) GenerateDynamicDict(request *GenerateDynamicDictRequest) (
 //
 // @return GenerateK8sAccessInfoResponse
 func (client *Client) GenerateK8sAccessInfoWithOptions(request *GenerateK8sAccessInfoRequest, runtime *dara.RuntimeOptions) (_result *GenerateK8sAccessInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunYundunGatewayApiName) {
@@ -34877,9 +35750,11 @@ func (client *Client) GenerateK8sAccessInfo(request *GenerateK8sAccessInfoReques
 //
 // @return GenerateOnceTaskResponse
 func (client *Client) GenerateOnceTaskWithOptions(request *GenerateOnceTaskRequest, runtime *dara.RuntimeOptions) (_result *GenerateOnceTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Param) {
@@ -34949,9 +35824,11 @@ func (client *Client) GenerateOnceTask(request *GenerateOnceTaskRequest) (_resul
 //
 // @return GetAccountLabelResponse
 func (client *Client) GetAccountLabelWithOptions(request *GetAccountLabelRequest, runtime *dara.RuntimeOptions) (_result *GetAccountLabelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LabelList) {
@@ -35017,9 +35894,11 @@ func (client *Client) GetAccountLabel(request *GetAccountLabelRequest) (_result 
 //
 // @return GetAegisContainerPluginRuleResponse
 func (client *Client) GetAegisContainerPluginRuleWithOptions(request *GetAegisContainerPluginRuleRequest, runtime *dara.RuntimeOptions) (_result *GetAegisContainerPluginRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -35089,9 +35968,11 @@ func (client *Client) GetAegisContainerPluginRule(request *GetAegisContainerPlug
 //
 // @return GetAegisContainerPluginRuleCriteriaResponse
 func (client *Client) GetAegisContainerPluginRuleCriteriaWithOptions(request *GetAegisContainerPluginRuleCriteriaRequest, runtime *dara.RuntimeOptions) (_result *GetAegisContainerPluginRuleCriteriaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -35153,9 +36034,11 @@ func (client *Client) GetAegisContainerPluginRuleCriteria(request *GetAegisConta
 //
 // @return GetAgentlessTaskCountResponse
 func (client *Client) GetAgentlessTaskCountWithOptions(request *GetAgentlessTaskCountRequest, runtime *dara.RuntimeOptions) (_result *GetAgentlessTaskCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Target) {
@@ -35217,9 +36100,11 @@ func (client *Client) GetAgentlessTaskCount(request *GetAgentlessTaskCountReques
 //
 // @return GetAlarmMachineCountResponse
 func (client *Client) GetAlarmMachineCountWithOptions(request *GetAlarmMachineCountRequest, runtime *dara.RuntimeOptions) (_result *GetAlarmMachineCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -35277,9 +36162,11 @@ func (client *Client) GetAlarmMachineCount(request *GetAlarmMachineCountRequest)
 //
 // @return GetAppNetworkResponse
 func (client *Client) GetAppNetworkWithOptions(request *GetAppNetworkRequest, runtime *dara.RuntimeOptions) (_result *GetAppNetworkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -35333,9 +36220,11 @@ func (client *Client) GetAppNetwork(request *GetAppNetworkRequest) (_result *Get
 //
 // @return GetAssetDetailByUuidResponse
 func (client *Client) GetAssetDetailByUuidWithOptions(request *GetAssetDetailByUuidRequest, runtime *dara.RuntimeOptions) (_result *GetAssetDetailByUuidResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -35401,9 +36290,11 @@ func (client *Client) GetAssetDetailByUuid(request *GetAssetDetailByUuidRequest)
 //
 // @return GetAssetSelectionConfigResponse
 func (client *Client) GetAssetSelectionConfigWithOptions(request *GetAssetSelectionConfigRequest, runtime *dara.RuntimeOptions) (_result *GetAssetSelectionConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessType) {
@@ -35461,9 +36352,11 @@ func (client *Client) GetAssetSelectionConfig(request *GetAssetSelectionConfigRe
 //
 // @return GetAssetsPropertyDetailResponse
 func (client *Client) GetAssetsPropertyDetailWithOptions(request *GetAssetsPropertyDetailRequest, runtime *dara.RuntimeOptions) (_result *GetAssetsPropertyDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Biz) {
@@ -35549,9 +36442,11 @@ func (client *Client) GetAssetsPropertyDetail(request *GetAssetsPropertyDetailRe
 //
 // @return GetAssetsPropertyItemResponse
 func (client *Client) GetAssetsPropertyItemWithOptions(request *GetAssetsPropertyItemRequest, runtime *dara.RuntimeOptions) (_result *GetAssetsPropertyItemResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Biz) {
@@ -35633,9 +36528,11 @@ func (client *Client) GetAssetsPropertyItem(request *GetAssetsPropertyItemReques
 //
 // @return GetAttackPathEventDetailResponse
 func (client *Client) GetAttackPathEventDetailWithOptions(request *GetAttackPathEventDetailRequest, runtime *dara.RuntimeOptions) (_result *GetAttackPathEventDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventId) {
@@ -35744,9 +36641,11 @@ func (client *Client) GetAttackPathEventStatistics() (_result *GetAttackPathEven
 //
 // @return GetAttackPathSensitiveAssetConfigResponse
 func (client *Client) GetAttackPathSensitiveAssetConfigWithOptions(request *GetAttackPathSensitiveAssetConfigRequest, runtime *dara.RuntimeOptions) (_result *GetAttackPathSensitiveAssetConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AttackPathSensitiveAssetConfigId) {
@@ -35808,9 +36707,11 @@ func (client *Client) GetAttackPathSensitiveAssetConfig(request *GetAttackPathSe
 //
 // @return GetAttackPathWhitelistResponse
 func (client *Client) GetAttackPathWhitelistWithOptions(request *GetAttackPathWhitelistRequest, runtime *dara.RuntimeOptions) (_result *GetAttackPathWhitelistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AttackPathWhitelistId) {
@@ -36103,9 +37004,11 @@ func (client *Client) GetBackupStorageCount() (_result *GetBackupStorageCountRes
 //
 // @return GetBuildRiskDefineRuleConfigResponse
 func (client *Client) GetBuildRiskDefineRuleConfigWithOptions(request *GetBuildRiskDefineRuleConfigRequest, runtime *dara.RuntimeOptions) (_result *GetBuildRiskDefineRuleConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -36163,9 +37066,11 @@ func (client *Client) GetBuildRiskDefineRuleConfig(request *GetBuildRiskDefineRu
 //
 // @return GetCanTrySasResponse
 func (client *Client) GetCanTrySasWithOptions(request *GetCanTrySasRequest, runtime *dara.RuntimeOptions) (_result *GetCanTrySasResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FromEcs) {
@@ -36274,9 +37179,11 @@ func (client *Client) GetCheckConfig() (_result *GetCheckConfigResponse, _err er
 //
 // @return GetCheckCountStatisticResponse
 func (client *Client) GetCheckCountStatisticWithOptions(request *GetCheckCountStatisticRequest, runtime *dara.RuntimeOptions) (_result *GetCheckCountStatisticResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.StatisticType) {
@@ -36342,9 +37249,11 @@ func (client *Client) GetCheckCountStatistic(request *GetCheckCountStatisticRequ
 //
 // @return GetCheckDetailResponse
 func (client *Client) GetCheckDetailWithOptions(request *GetCheckDetailRequest, runtime *dara.RuntimeOptions) (_result *GetCheckDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckId) {
@@ -36410,9 +37319,11 @@ func (client *Client) GetCheckDetail(request *GetCheckDetailRequest) (_result *G
 //
 // @return GetCheckProcessResponse
 func (client *Client) GetCheckProcessWithOptions(request *GetCheckProcessRequest, runtime *dara.RuntimeOptions) (_result *GetCheckProcessResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -36470,9 +37381,11 @@ func (client *Client) GetCheckProcess(request *GetCheckProcessRequest) (_result 
 //
 // @return GetCheckRiskStatisticsResponse
 func (client *Client) GetCheckRiskStatisticsWithOptions(request *GetCheckRiskStatisticsRequest, runtime *dara.RuntimeOptions) (_result *GetCheckRiskStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -36538,9 +37451,11 @@ func (client *Client) GetCheckRiskStatistics(request *GetCheckRiskStatisticsRequ
 //
 // @return GetCheckSaleResponse
 func (client *Client) GetCheckSaleWithOptions(request *GetCheckSaleRequest, runtime *dara.RuntimeOptions) (_result *GetCheckSaleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -36602,9 +37517,11 @@ func (client *Client) GetCheckSale(request *GetCheckSaleRequest) (_result *GetCh
 //
 // @return GetCheckStructureResponse
 func (client *Client) GetCheckStructureWithOptions(request *GetCheckStructureRequest, runtime *dara.RuntimeOptions) (_result *GetCheckStructureResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -36682,9 +37599,11 @@ func (client *Client) GetCheckStructure(request *GetCheckStructureRequest) (_res
 //
 // @return GetCheckSummaryResponse
 func (client *Client) GetCheckSummaryWithOptions(request *GetCheckSummaryRequest, runtime *dara.RuntimeOptions) (_result *GetCheckSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsItemStatistic) {
@@ -36758,9 +37677,11 @@ func (client *Client) GetCheckSummary(request *GetCheckSummaryRequest) (_result 
 //
 // @return GetCheckTimeDimensionStatisticResponse
 func (client *Client) GetCheckTimeDimensionStatisticWithOptions(request *GetCheckTimeDimensionStatisticRequest, runtime *dara.RuntimeOptions) (_result *GetCheckTimeDimensionStatisticResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTimeStamp) {
@@ -36830,9 +37751,11 @@ func (client *Client) GetCheckTimeDimensionStatistic(request *GetCheckTimeDimens
 //
 // @return GetClientRatioStatisticResponse
 func (client *Client) GetClientRatioStatisticWithOptions(request *GetClientRatioStatisticRequest, runtime *dara.RuntimeOptions) (_result *GetClientRatioStatisticResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceDirectoryAccountId) {
@@ -36902,9 +37825,11 @@ func (client *Client) GetClientRatioStatistic(request *GetClientRatioStatisticRe
 //
 // @return GetClientUserDefineRuleResponse
 func (client *Client) GetClientUserDefineRuleWithOptions(request *GetClientUserDefineRuleRequest, runtime *dara.RuntimeOptions) (_result *GetClientUserDefineRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -36962,9 +37887,11 @@ func (client *Client) GetClientUserDefineRule(request *GetClientUserDefineRuleRe
 //
 // @return GetCloudAssetCriteriaResponse
 func (client *Client) GetCloudAssetCriteriaWithOptions(request *GetCloudAssetCriteriaRequest, runtime *dara.RuntimeOptions) (_result *GetCloudAssetCriteriaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CloudAssetTypes) {
@@ -37026,9 +37953,11 @@ func (client *Client) GetCloudAssetCriteria(request *GetCloudAssetCriteriaReques
 //
 // @return GetCloudAssetDetailResponse
 func (client *Client) GetCloudAssetDetailWithOptions(request *GetCloudAssetDetailRequest, runtime *dara.RuntimeOptions) (_result *GetCloudAssetDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AssetSubType) {
@@ -37098,9 +38027,11 @@ func (client *Client) GetCloudAssetDetail(request *GetCloudAssetDetailRequest) (
 //
 // @return GetCloudAssetSummaryResponse
 func (client *Client) GetCloudAssetSummaryWithOptions(request *GetCloudAssetSummaryRequest, runtime *dara.RuntimeOptions) (_result *GetCloudAssetSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CloudAssetTypes) {
@@ -37162,9 +38093,11 @@ func (client *Client) GetCloudAssetSummary(request *GetCloudAssetSummaryRequest)
 //
 // @return GetClusterCheckItemWarningStatisticsResponse
 func (client *Client) GetClusterCheckItemWarningStatisticsWithOptions(request *GetClusterCheckItemWarningStatisticsRequest, runtime *dara.RuntimeOptions) (_result *GetClusterCheckItemWarningStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -37226,9 +38159,11 @@ func (client *Client) GetClusterCheckItemWarningStatistics(request *GetClusterCh
 //
 // @return GetClusterRuleSummaryResponse
 func (client *Client) GetClusterRuleSummaryWithOptions(request *GetClusterRuleSummaryRequest, runtime *dara.RuntimeOptions) (_result *GetClusterRuleSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -37333,9 +38268,11 @@ func (client *Client) GetClusterStrategyCount() (_result *GetClusterStrategyCoun
 //
 // @return GetClusterSuspEventStatisticsResponse
 func (client *Client) GetClusterSuspEventStatisticsWithOptions(request *GetClusterSuspEventStatisticsRequest, runtime *dara.RuntimeOptions) (_result *GetClusterSuspEventStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -37397,9 +38334,11 @@ func (client *Client) GetClusterSuspEventStatistics(request *GetClusterSuspEvent
 //
 // @return GetCommonSwitchConfigResponse
 func (client *Client) GetCommonSwitchConfigWithOptions(request *GetCommonSwitchConfigRequest, runtime *dara.RuntimeOptions) (_result *GetCommonSwitchConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Type) {
@@ -37457,9 +38396,11 @@ func (client *Client) GetCommonSwitchConfig(request *GetCommonSwitchConfigReques
 //
 // @return GetConsoleFuncGrayStatusResponse
 func (client *Client) GetConsoleFuncGrayStatusWithOptions(request *GetConsoleFuncGrayStatusRequest, runtime *dara.RuntimeOptions) (_result *GetConsoleFuncGrayStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Condition) {
@@ -37521,9 +38462,11 @@ func (client *Client) GetConsoleFuncGrayStatus(request *GetConsoleFuncGrayStatus
 //
 // @return GetContainerDefenseRuleDetailResponse
 func (client *Client) GetContainerDefenseRuleDetailWithOptions(request *GetContainerDefenseRuleDetailRequest, runtime *dara.RuntimeOptions) (_result *GetContainerDefenseRuleDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -37632,9 +38575,11 @@ func (client *Client) GetCurrentVersionPublish() (_result *GetCurrentVersionPubl
 //
 // @return GetDataTrendResponse
 func (client *Client) GetDataTrendWithOptions(request *GetDataTrendRequest, runtime *dara.RuntimeOptions) (_result *GetDataTrendResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizTypes) {
@@ -37751,9 +38696,11 @@ func (client *Client) GetDefenceCount() (_result *GetDefenceCountResponse, _err 
 //
 // @return GetDockerhubImageRiskRankInfoResponse
 func (client *Client) GetDockerhubImageRiskRankInfoWithOptions(request *GetDockerhubImageRiskRankInfoRequest, runtime *dara.RuntimeOptions) (_result *GetDockerhubImageRiskRankInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Types) {
@@ -37811,9 +38758,11 @@ func (client *Client) GetDockerhubImageRiskRankInfo(request *GetDockerhubImageRi
 //
 // @return GetDockerhubImageRiskStatisticResponse
 func (client *Client) GetDockerhubImageRiskStatisticWithOptions(request *GetDockerhubImageRiskStatisticRequest, runtime *dara.RuntimeOptions) (_result *GetDockerhubImageRiskStatisticResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Types) {
@@ -37918,9 +38867,11 @@ func (client *Client) GetFileDetectApiInvokeInfo() (_result *GetFileDetectApiInv
 //
 // @return GetFileDetectReportResponse
 func (client *Client) GetFileDetectReportWithOptions(request *GetFileDetectReportRequest, runtime *dara.RuntimeOptions) (_result *GetFileDetectReportResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventId) {
@@ -37998,9 +38949,11 @@ func (client *Client) GetFileDetectReport(request *GetFileDetectReportRequest) (
 //
 // @return GetFileDetectResultResponse
 func (client *Client) GetFileDetectResultWithOptions(request *GetFileDetectResultRequest, runtime *dara.RuntimeOptions) (_result *GetFileDetectResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HashKeyList) {
@@ -38117,9 +39070,11 @@ func (client *Client) GetFileProtectDashboard() (_result *GetFileProtectDashboar
 //
 // @return GetFileProtectEventResponse
 func (client *Client) GetFileProtectEventWithOptions(request *GetFileProtectEventRequest, runtime *dara.RuntimeOptions) (_result *GetFileProtectEventResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -38177,9 +39132,11 @@ func (client *Client) GetFileProtectEvent(request *GetFileProtectEventRequest) (
 //
 // @return GetFileProtectEventCountResponse
 func (client *Client) GetFileProtectEventCountWithOptions(request *GetFileProtectEventCountRequest, runtime *dara.RuntimeOptions) (_result *GetFileProtectEventCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Status) {
@@ -38237,9 +39194,11 @@ func (client *Client) GetFileProtectEventCount(request *GetFileProtectEventCount
 //
 // @return GetFileProtectRuleResponse
 func (client *Client) GetFileProtectRuleWithOptions(request *GetFileProtectRuleRequest, runtime *dara.RuntimeOptions) (_result *GetFileProtectRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -38344,9 +39303,11 @@ func (client *Client) GetFileUploadLimit() (_result *GetFileUploadLimitResponse,
 //
 // @return GetFunctionTrialStatusResponse
 func (client *Client) GetFunctionTrialStatusWithOptions(request *GetFunctionTrialStatusRequest, runtime *dara.RuntimeOptions) (_result *GetFunctionTrialStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FunctionName) {
@@ -38404,9 +39365,11 @@ func (client *Client) GetFunctionTrialStatus(request *GetFunctionTrialStatusRequ
 //
 // @return GetHoneyPotUploadPolicyInfoResponse
 func (client *Client) GetHoneyPotUploadPolicyInfoWithOptions(request *GetHoneyPotUploadPolicyInfoRequest, runtime *dara.RuntimeOptions) (_result *GetHoneyPotUploadPolicyInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -38464,9 +39427,11 @@ func (client *Client) GetHoneyPotUploadPolicyInfo(request *GetHoneyPotUploadPoli
 //
 // @return GetHoneypotAttackStatisticsResponse
 func (client *Client) GetHoneypotAttackStatisticsWithOptions(request *GetHoneypotAttackStatisticsRequest, runtime *dara.RuntimeOptions) (_result *GetHoneypotAttackStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -38552,9 +39517,11 @@ func (client *Client) GetHoneypotAttackStatistics(request *GetHoneypotAttackStat
 //
 // @return GetHoneypotEventTrendResponse
 func (client *Client) GetHoneypotEventTrendWithOptions(request *GetHoneypotEventTrendRequest, runtime *dara.RuntimeOptions) (_result *GetHoneypotEventTrendResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTimeStamp) {
@@ -38628,9 +39595,11 @@ func (client *Client) GetHoneypotEventTrend(request *GetHoneypotEventTrendReques
 //
 // @return GetHoneypotNodeResponse
 func (client *Client) GetHoneypotNodeWithOptions(request *GetHoneypotNodeRequest, runtime *dara.RuntimeOptions) (_result *GetHoneypotNodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -38692,9 +39661,11 @@ func (client *Client) GetHoneypotNode(request *GetHoneypotNodeRequest) (_result 
 //
 // @return GetHoneypotNodeMetricListResponse
 func (client *Client) GetHoneypotNodeMetricListWithOptions(request *GetHoneypotNodeMetricListRequest, runtime *dara.RuntimeOptions) (_result *GetHoneypotNodeMetricListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -38780,9 +39751,11 @@ func (client *Client) GetHoneypotNodeMetricList(request *GetHoneypotNodeMetricLi
 //
 // @return GetHoneypotPresetResponse
 func (client *Client) GetHoneypotPresetWithOptions(request *GetHoneypotPresetRequest, runtime *dara.RuntimeOptions) (_result *GetHoneypotPresetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HoneypotPresetId) {
@@ -38844,9 +39817,11 @@ func (client *Client) GetHoneypotPreset(request *GetHoneypotPresetRequest) (_res
 //
 // @return GetHoneypotProbeResponse
 func (client *Client) GetHoneypotProbeWithOptions(request *GetHoneypotProbeRequest, runtime *dara.RuntimeOptions) (_result *GetHoneypotProbeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -38908,9 +39883,11 @@ func (client *Client) GetHoneypotProbe(request *GetHoneypotProbeRequest) (_resul
 //
 // @return GetHoneypotStatisticsResponse
 func (client *Client) GetHoneypotStatisticsWithOptions(request *GetHoneypotStatisticsRequest, runtime *dara.RuntimeOptions) (_result *GetHoneypotStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -38968,9 +39945,11 @@ func (client *Client) GetHoneypotStatistics(request *GetHoneypotStatisticsReques
 //
 // @return GetImageEventOperationResponse
 func (client *Client) GetImageEventOperationWithOptions(request *GetImageEventOperationRequest, runtime *dara.RuntimeOptions) (_result *GetImageEventOperationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -39032,9 +40011,11 @@ func (client *Client) GetImageEventOperation(request *GetImageEventOperationRequ
 //
 // @return GetImageScanNumInPeriodResponse
 func (client *Client) GetImageScanNumInPeriodWithOptions(request *GetImageScanNumInPeriodRequest, runtime *dara.RuntimeOptions) (_result *GetImageScanNumInPeriodResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PastDay) {
@@ -39092,9 +40073,11 @@ func (client *Client) GetImageScanNumInPeriod(request *GetImageScanNumInPeriodRe
 //
 // @return GetInstallCodeForUuidResponse
 func (client *Client) GetInstallCodeForUuidWithOptions(request *GetInstallCodeForUuidRequest, runtime *dara.RuntimeOptions) (_result *GetInstallCodeForUuidResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Uuid) {
@@ -39152,9 +40135,11 @@ func (client *Client) GetInstallCodeForUuid(request *GetInstallCodeForUuidReques
 //
 // @return GetInstanceAlarmStatisticsResponse
 func (client *Client) GetInstanceAlarmStatisticsWithOptions(request *GetInstanceAlarmStatisticsRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceAlarmStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -39216,9 +40201,11 @@ func (client *Client) GetInstanceAlarmStatistics(request *GetInstanceAlarmStatis
 //
 // @return GetInterceptionRuleDetailResponse
 func (client *Client) GetInterceptionRuleDetailWithOptions(request *GetInterceptionRuleDetailRequest, runtime *dara.RuntimeOptions) (_result *GetInterceptionRuleDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -39280,9 +40267,11 @@ func (client *Client) GetInterceptionRuleDetail(request *GetInterceptionRuleDeta
 //
 // @return GetInterceptionSummaryResponse
 func (client *Client) GetInterceptionSummaryWithOptions(request *GetInterceptionSummaryRequest, runtime *dara.RuntimeOptions) (_result *GetInterceptionSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -39340,9 +40329,11 @@ func (client *Client) GetInterceptionSummary(request *GetInterceptionSummaryRequ
 //
 // @return GetInterceptionTargetDetailResponse
 func (client *Client) GetInterceptionTargetDetailWithOptions(request *GetInterceptionTargetDetailRequest, runtime *dara.RuntimeOptions) (_result *GetInterceptionTargetDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TargetId) {
@@ -39400,9 +40391,11 @@ func (client *Client) GetInterceptionTargetDetail(request *GetInterceptionTarget
 //
 // @return GetLastOnceTaskInfoResponse
 func (client *Client) GetLastOnceTaskInfoWithOptions(request *GetLastOnceTaskInfoRequest, runtime *dara.RuntimeOptions) (_result *GetLastOnceTaskInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Source) {
@@ -39468,9 +40461,11 @@ func (client *Client) GetLastOnceTaskInfo(request *GetLastOnceTaskInfoRequest) (
 //
 // @return GetLocalDefaultRegionResponse
 func (client *Client) GetLocalDefaultRegionWithOptions(request *GetLocalDefaultRegionRequest, runtime *dara.RuntimeOptions) (_result *GetLocalDefaultRegionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Vendor) {
@@ -39528,9 +40523,11 @@ func (client *Client) GetLocalDefaultRegion(request *GetLocalDefaultRegionReques
 //
 // @return GetLogMetaResponse
 func (client *Client) GetLogMetaWithOptions(request *GetLogMetaRequest, runtime *dara.RuntimeOptions) (_result *GetLogMetaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LogStore) {
@@ -39592,9 +40589,11 @@ func (client *Client) GetLogMeta(request *GetLogMetaRequest) (_result *GetLogMet
 //
 // @return GetMaliciousFileWhitelistConfigResponse
 func (client *Client) GetMaliciousFileWhitelistConfigWithOptions(request *GetMaliciousFileWhitelistConfigRequest, runtime *dara.RuntimeOptions) (_result *GetMaliciousFileWhitelistConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigId) {
@@ -39652,9 +40651,11 @@ func (client *Client) GetMaliciousFileWhitelistConfig(request *GetMaliciousFileW
 //
 // @return GetModuleConfigResponse
 func (client *Client) GetModuleConfigWithOptions(request *GetModuleConfigRequest, runtime *dara.RuntimeOptions) (_result *GetModuleConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -39716,9 +40717,11 @@ func (client *Client) GetModuleConfig(request *GetModuleConfigRequest) (_result 
 //
 // @return GetModuleConfigStatusResponse
 func (client *Client) GetModuleConfigStatusWithOptions(tmpReq *GetModuleConfigStatusRequest, runtime *dara.RuntimeOptions) (_result *GetModuleConfigStatusResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetModuleConfigStatusShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -39782,9 +40785,11 @@ func (client *Client) GetModuleConfigStatus(request *GetModuleConfigStatusReques
 //
 // @return GetModuleTrialAuthInfoResponse
 func (client *Client) GetModuleTrialAuthInfoWithOptions(request *GetModuleTrialAuthInfoRequest, runtime *dara.RuntimeOptions) (_result *GetModuleTrialAuthInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -39846,9 +40851,11 @@ func (client *Client) GetModuleTrialAuthInfo(request *GetModuleTrialAuthInfoRequ
 //
 // @return GetObjectScanEventResponse
 func (client *Client) GetObjectScanEventWithOptions(request *GetObjectScanEventRequest, runtime *dara.RuntimeOptions) (_result *GetObjectScanEventResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventId) {
@@ -39910,9 +40917,11 @@ func (client *Client) GetObjectScanEvent(request *GetObjectScanEventRequest) (_r
 //
 // @return GetOnceTaskResultInfoResponse
 func (client *Client) GetOnceTaskResultInfoWithOptions(request *GetOnceTaskResultInfoRequest, runtime *dara.RuntimeOptions) (_result *GetOnceTaskResultInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -40025,9 +41034,11 @@ func (client *Client) GetOpaClusterBaseLineList() (_result *GetOpaClusterBaseLin
 //
 // @return GetOpaClusterImageListResponse
 func (client *Client) GetOpaClusterImageListWithOptions(request *GetOpaClusterImageListRequest, runtime *dara.RuntimeOptions) (_result *GetOpaClusterImageListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -40097,9 +41108,11 @@ func (client *Client) GetOpaClusterImageList(request *GetOpaClusterImageListRequ
 //
 // @return GetOpaClusterLabelListResponse
 func (client *Client) GetOpaClusterLabelListWithOptions(request *GetOpaClusterLabelListRequest, runtime *dara.RuntimeOptions) (_result *GetOpaClusterLabelListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -40169,9 +41182,11 @@ func (client *Client) GetOpaClusterLabelList(request *GetOpaClusterLabelListRequ
 //
 // @return GetOpaClusterNamespaceListResponse
 func (client *Client) GetOpaClusterNamespaceListWithOptions(request *GetOpaClusterNamespaceListRequest, runtime *dara.RuntimeOptions) (_result *GetOpaClusterNamespaceListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -40241,9 +41256,11 @@ func (client *Client) GetOpaClusterNamespaceList(request *GetOpaClusterNamespace
 //
 // @return GetOpaPluginStatusResponse
 func (client *Client) GetOpaPluginStatusWithOptions(request *GetOpaPluginStatusRequest, runtime *dara.RuntimeOptions) (_result *GetOpaPluginStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterIds) {
@@ -40301,9 +41318,11 @@ func (client *Client) GetOpaPluginStatus(request *GetOpaPluginStatusRequest) (_r
 //
 // @return GetOpaStrategyDetailNewResponse
 func (client *Client) GetOpaStrategyDetailNewWithOptions(request *GetOpaStrategyDetailNewRequest, runtime *dara.RuntimeOptions) (_result *GetOpaStrategyDetailNewResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.StrategyId) {
@@ -40408,9 +41427,11 @@ func (client *Client) GetOpaStrategyTemplateSummary() (_result *GetOpaStrategyTe
 //
 // @return GetOssBucketScanStatisticResponse
 func (client *Client) GetOssBucketScanStatisticWithOptions(request *GetOssBucketScanStatisticRequest, runtime *dara.RuntimeOptions) (_result *GetOssBucketScanStatisticResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BucketNameList) {
@@ -40472,9 +41493,11 @@ func (client *Client) GetOssBucketScanStatistic(request *GetOssBucketScanStatist
 //
 // @return GetOssScanConfigResponse
 func (client *Client) GetOssScanConfigWithOptions(request *GetOssScanConfigRequest, runtime *dara.RuntimeOptions) (_result *GetOssScanConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BucketName) {
@@ -40536,9 +41559,11 @@ func (client *Client) GetOssScanConfig(request *GetOssScanConfigRequest) (_resul
 //
 // @return GetPropertyScheduleConfigResponse
 func (client *Client) GetPropertyScheduleConfigWithOptions(request *GetPropertyScheduleConfigRequest, runtime *dara.RuntimeOptions) (_result *GetPropertyScheduleConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Type) {
@@ -40796,9 +41821,11 @@ func (client *Client) GetRulesCount() (_result *GetRulesCountResponse, _err erro
 //
 // @return GetSasContainerWebDefenseRuleResponse
 func (client *Client) GetSasContainerWebDefenseRuleWithOptions(request *GetSasContainerWebDefenseRuleRequest, runtime *dara.RuntimeOptions) (_result *GetSasContainerWebDefenseRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RuleId) {
@@ -40856,9 +41883,11 @@ func (client *Client) GetSasContainerWebDefenseRule(request *GetSasContainerWebD
 //
 // @return GetSasContainerWebDefenseRuleApplicationResponse
 func (client *Client) GetSasContainerWebDefenseRuleApplicationWithOptions(request *GetSasContainerWebDefenseRuleApplicationRequest, runtime *dara.RuntimeOptions) (_result *GetSasContainerWebDefenseRuleApplicationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RuleId) {
@@ -40916,9 +41945,11 @@ func (client *Client) GetSasContainerWebDefenseRuleApplication(request *GetSasCo
 //
 // @return GetSasContainerWebDefenseRuleCriteriaResponse
 func (client *Client) GetSasContainerWebDefenseRuleCriteriaWithOptions(request *GetSasContainerWebDefenseRuleCriteriaRequest, runtime *dara.RuntimeOptions) (_result *GetSasContainerWebDefenseRuleCriteriaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Value) {
@@ -40976,9 +42007,11 @@ func (client *Client) GetSasContainerWebDefenseRuleCriteria(request *GetSasConta
 //
 // @return GetSecurityScoreRuleResponse
 func (client *Client) GetSecurityScoreRuleWithOptions(request *GetSecurityScoreRuleRequest, runtime *dara.RuntimeOptions) (_result *GetSecurityScoreRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CalType) {
@@ -41040,9 +42073,11 @@ func (client *Client) GetSecurityScoreRule(request *GetSecurityScoreRuleRequest)
 //
 // @return GetSensitiveDefineRuleConfigResponse
 func (client *Client) GetSensitiveDefineRuleConfigWithOptions(request *GetSensitiveDefineRuleConfigRequest, runtime *dara.RuntimeOptions) (_result *GetSensitiveDefineRuleConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -41104,9 +42139,11 @@ func (client *Client) GetSensitiveDefineRuleConfig(request *GetSensitiveDefineRu
 //
 // @return GetServerlessAppAuthDetailResponse
 func (client *Client) GetServerlessAppAuthDetailWithOptions(request *GetServerlessAppAuthDetailRequest, runtime *dara.RuntimeOptions) (_result *GetServerlessAppAuthDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -41176,9 +42213,11 @@ func (client *Client) GetServerlessAppAuthDetail(request *GetServerlessAppAuthDe
 //
 // @return GetServerlessAuthSummaryResponse
 func (client *Client) GetServerlessAuthSummaryWithOptions(request *GetServerlessAuthSummaryRequest, runtime *dara.RuntimeOptions) (_result *GetServerlessAuthSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppRegionId) {
@@ -41244,9 +42283,11 @@ func (client *Client) GetServerlessAuthSummary(request *GetServerlessAuthSummary
 //
 // @return GetServiceTrailResponse
 func (client *Client) GetServiceTrailWithOptions(request *GetServiceTrailRequest, runtime *dara.RuntimeOptions) (_result *GetServiceTrailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -41304,9 +42345,11 @@ func (client *Client) GetServiceTrail(request *GetServiceTrailRequest) (_result 
 //
 // @return GetStrategyTemplateDetailResponse
 func (client *Client) GetStrategyTemplateDetailWithOptions(request *GetStrategyTemplateDetailRequest, runtime *dara.RuntimeOptions) (_result *GetStrategyTemplateDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.StrategyId) {
@@ -41364,9 +42407,11 @@ func (client *Client) GetStrategyTemplateDetail(request *GetStrategyTemplateDeta
 //
 // @return GetSupportedModulesResponse
 func (client *Client) GetSupportedModulesWithOptions(request *GetSupportedModulesRequest, runtime *dara.RuntimeOptions) (_result *GetSupportedModulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -41424,9 +42469,11 @@ func (client *Client) GetSupportedModules(request *GetSupportedModulesRequest) (
 //
 // @return GetSuspiciousStatisticsResponse
 func (client *Client) GetSuspiciousStatisticsWithOptions(request *GetSuspiciousStatisticsRequest, runtime *dara.RuntimeOptions) (_result *GetSuspiciousStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupIdList) {
@@ -41488,9 +42535,11 @@ func (client *Client) GetSuspiciousStatistics(request *GetSuspiciousStatisticsRe
 //
 // @return GetSwitchRegionDetailResponse
 func (client *Client) GetSwitchRegionDetailWithOptions(request *GetSwitchRegionDetailRequest, runtime *dara.RuntimeOptions) (_result *GetSwitchRegionDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -41646,9 +42695,11 @@ func (client *Client) GetUserLang() (_result *GetUserLangResponse, _err error) {
 //
 // @return GetVirusScanConfigResponse
 func (client *Client) GetVirusScanConfigWithOptions(request *GetVirusScanConfigRequest, runtime *dara.RuntimeOptions) (_result *GetVirusScanConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskType) {
@@ -41753,13 +42804,19 @@ func (client *Client) GetVirusScanLatestTaskStatistic() (_result *GetVirusScanLa
 //
 // @return GetVulStatisticsResponse
 func (client *Client) GetVulStatisticsWithOptions(request *GetVulStatisticsRequest, runtime *dara.RuntimeOptions) (_result *GetVulStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupIdList) {
 		query["GroupIdList"] = request.GroupIdList
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !dara.IsNil(request.SourceIp) {
@@ -41821,9 +42878,11 @@ func (client *Client) GetVulStatistics(request *GetVulStatisticsRequest) (_resul
 //
 // @return GetVulWhitelistResponse
 func (client *Client) GetVulWhitelistWithOptions(request *GetVulWhitelistRequest, runtime *dara.RuntimeOptions) (_result *GetVulWhitelistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.VulWhitelistId) {
@@ -41881,9 +42940,11 @@ func (client *Client) GetVulWhitelist(request *GetVulWhitelistRequest) (_result 
 //
 // @return GrantSwitchAgreementResponse
 func (client *Client) GrantSwitchAgreementWithOptions(request *GrantSwitchAgreementRequest, runtime *dara.RuntimeOptions) (_result *GrantSwitchAgreementResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsAgree) {
@@ -41953,9 +43014,11 @@ func (client *Client) GrantSwitchAgreement(request *GrantSwitchAgreementRequest)
 //
 // @return HandleMaliciousFilesResponse
 func (client *Client) HandleMaliciousFilesWithOptions(request *HandleMaliciousFilesRequest, runtime *dara.RuntimeOptions) (_result *HandleMaliciousFilesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileIdList) {
@@ -42017,9 +43080,11 @@ func (client *Client) HandleMaliciousFiles(request *HandleMaliciousFilesRequest)
 //
 // @return HandleSecurityEventsResponse
 func (client *Client) HandleSecurityEventsWithOptions(request *HandleSecurityEventsRequest, runtime *dara.RuntimeOptions) (_result *HandleSecurityEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MarkBatch) {
@@ -42105,9 +43170,11 @@ func (client *Client) HandleSecurityEvents(request *HandleSecurityEventsRequest)
 //
 // @return HandleSimilarSecurityEventsResponse
 func (client *Client) HandleSimilarSecurityEventsWithOptions(request *HandleSimilarSecurityEventsRequest, runtime *dara.RuntimeOptions) (_result *HandleSimilarSecurityEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MarkMissParam) {
@@ -42189,9 +43256,11 @@ func (client *Client) HandleSimilarSecurityEvents(request *HandleSimilarSecurity
 //
 // @return IgnoreCheckItemsResponse
 func (client *Client) IgnoreCheckItemsWithOptions(request *IgnoreCheckItemsRequest, runtime *dara.RuntimeOptions) (_result *IgnoreCheckItemsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckAndRiskTypeList) {
@@ -42279,9 +43348,11 @@ func (client *Client) IgnoreCheckItems(request *IgnoreCheckItemsRequest) (_resul
 //
 // @return IgnoreHcCheckWarningsResponse
 func (client *Client) IgnoreHcCheckWarningsWithOptions(request *IgnoreHcCheckWarningsRequest, runtime *dara.RuntimeOptions) (_result *IgnoreHcCheckWarningsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckIds) {
@@ -42366,9 +43437,11 @@ func (client *Client) IgnoreHcCheckWarnings(request *IgnoreHcCheckWarningsReques
 //
 // @return IgnoreIdcProbeScanResultResponse
 func (client *Client) IgnoreIdcProbeScanResultWithOptions(request *IgnoreIdcProbeScanResultRequest, runtime *dara.RuntimeOptions) (_result *IgnoreIdcProbeScanResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IgnoreAction) {
@@ -42430,9 +43503,11 @@ func (client *Client) IgnoreIdcProbeScanResult(request *IgnoreIdcProbeScanResult
 //
 // @return InstallAegisForLingjunResponse
 func (client *Client) InstallAegisForLingjunWithOptions(tmpReq *InstallAegisForLingjunRequest, runtime *dara.RuntimeOptions) (_result *InstallAegisForLingjunResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &InstallAegisForLingjunShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -42496,9 +43571,11 @@ func (client *Client) InstallAegisForLingjun(request *InstallAegisForLingjunRequ
 //
 // @return InstallBackupClientResponse
 func (client *Client) InstallBackupClientWithOptions(request *InstallBackupClientRequest, runtime *dara.RuntimeOptions) (_result *InstallBackupClientResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PolicyVersion) {
@@ -42568,9 +43645,11 @@ func (client *Client) InstallBackupClient(request *InstallBackupClientRequest) (
 //
 // @return InstallCloudMonitorResponse
 func (client *Client) InstallCloudMonitorWithOptions(request *InstallCloudMonitorRequest, runtime *dara.RuntimeOptions) (_result *InstallCloudMonitorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentAccessKey) {
@@ -42648,9 +43727,11 @@ func (client *Client) InstallCloudMonitor(request *InstallCloudMonitorRequest) (
 //
 // @return InstallHybridProxyResponse
 func (client *Client) InstallHybridProxyWithOptions(request *InstallHybridProxyRequest, runtime *dara.RuntimeOptions) (_result *InstallHybridProxyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterName) {
@@ -42716,9 +43797,11 @@ func (client *Client) InstallHybridProxy(request *InstallHybridProxyRequest) (_r
 //
 // @return InstallPmAgentResponse
 func (client *Client) InstallPmAgentWithOptions(request *InstallPmAgentRequest, runtime *dara.RuntimeOptions) (_result *InstallPmAgentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -42788,9 +43871,11 @@ func (client *Client) InstallPmAgent(request *InstallPmAgentRequest) (_result *I
 //
 // @return InstallUniBackupAgentResponse
 func (client *Client) InstallUniBackupAgentWithOptions(request *InstallUniBackupAgentRequest, runtime *dara.RuntimeOptions) (_result *InstallUniBackupAgentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PolicyId) {
@@ -42848,9 +43933,11 @@ func (client *Client) InstallUniBackupAgent(request *InstallUniBackupAgentReques
 //
 // @return JoinWebLockProcessWhiteListResponse
 func (client *Client) JoinWebLockProcessWhiteListWithOptions(request *JoinWebLockProcessWhiteListRequest, runtime *dara.RuntimeOptions) (_result *JoinWebLockProcessWhiteListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProcessPaths) {
@@ -42967,9 +44054,11 @@ func (client *Client) ListAccountsInResourceDirectory() (_result *ListAccountsIn
 //
 // @return ListAegisContainerPluginRuleResponse
 func (client *Client) ListAegisContainerPluginRuleWithOptions(request *ListAegisContainerPluginRuleRequest, runtime *dara.RuntimeOptions) (_result *ListAegisContainerPluginRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Criteria) {
@@ -43043,9 +44132,11 @@ func (client *Client) ListAegisContainerPluginRule(request *ListAegisContainerPl
 //
 // @return ListAegisForLingjunStatusResponse
 func (client *Client) ListAegisForLingjunStatusWithOptions(tmpReq *ListAegisForLingjunStatusRequest, runtime *dara.RuntimeOptions) (_result *ListAegisForLingjunStatusResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListAegisForLingjunStatusShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -43109,9 +44200,11 @@ func (client *Client) ListAegisForLingjunStatus(request *ListAegisForLingjunStat
 //
 // @return ListAgentlessAssetResponse
 func (client *Client) ListAgentlessAssetWithOptions(request *ListAgentlessAssetRequest, runtime *dara.RuntimeOptions) (_result *ListAgentlessAssetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -43197,9 +44290,11 @@ func (client *Client) ListAgentlessAsset(request *ListAgentlessAssetRequest) (_r
 //
 // @return ListAgentlessMaliciousFilesResponse
 func (client *Client) ListAgentlessMaliciousFilesWithOptions(request *ListAgentlessMaliciousFilesRequest, runtime *dara.RuntimeOptions) (_result *ListAgentlessMaliciousFilesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -43348,9 +44443,11 @@ func (client *Client) ListAgentlessRegion() (_result *ListAgentlessRegionRespons
 //
 // @return ListAgentlessRelateMaliciousResponse
 func (client *Client) ListAgentlessRelateMaliciousWithOptions(request *ListAgentlessRelateMaliciousRequest, runtime *dara.RuntimeOptions) (_result *ListAgentlessRelateMaliciousResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -43424,9 +44521,11 @@ func (client *Client) ListAgentlessRelateMalicious(request *ListAgentlessRelateM
 //
 // @return ListAgentlessRiskUuidResponse
 func (client *Client) ListAgentlessRiskUuidWithOptions(request *ListAgentlessRiskUuidRequest, runtime *dara.RuntimeOptions) (_result *ListAgentlessRiskUuidResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -43520,9 +44619,11 @@ func (client *Client) ListAgentlessRiskUuid(request *ListAgentlessRiskUuidReques
 //
 // @return ListAgentlessTaskResponse
 func (client *Client) ListAgentlessTaskWithOptions(request *ListAgentlessTaskRequest, runtime *dara.RuntimeOptions) (_result *ListAgentlessTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -43683,9 +44784,11 @@ func (client *Client) ListAssetCleanConfig() (_result *ListAssetCleanConfigRespo
 //
 // @return ListAssetInfoPublishResponse
 func (client *Client) ListAssetInfoPublishWithOptions(request *ListAssetInfoPublishRequest, runtime *dara.RuntimeOptions) (_result *ListAssetInfoPublishResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -43747,9 +44850,11 @@ func (client *Client) ListAssetInfoPublish(request *ListAssetInfoPublishRequest)
 //
 // @return ListAssetRefreshTaskConfigResponse
 func (client *Client) ListAssetRefreshTaskConfigWithOptions(request *ListAssetRefreshTaskConfigRequest, runtime *dara.RuntimeOptions) (_result *ListAssetRefreshTaskConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RefreshConfigType) {
@@ -43815,9 +44920,11 @@ func (client *Client) ListAssetRefreshTaskConfig(request *ListAssetRefreshTaskCo
 //
 // @return ListAssetSelectionSelectedTargetResponse
 func (client *Client) ListAssetSelectionSelectedTargetWithOptions(request *ListAssetSelectionSelectedTargetRequest, runtime *dara.RuntimeOptions) (_result *ListAssetSelectionSelectedTargetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SelectionKey) {
@@ -43879,9 +44986,11 @@ func (client *Client) ListAssetSelectionSelectedTarget(request *ListAssetSelecti
 //
 // @return ListAssetSelectionTargetResponse
 func (client *Client) ListAssetSelectionTargetWithOptions(request *ListAssetSelectionTargetRequest, runtime *dara.RuntimeOptions) (_result *ListAssetSelectionTargetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -43947,9 +45056,11 @@ func (client *Client) ListAssetSelectionTarget(request *ListAssetSelectionTarget
 //
 // @return ListAttackPathEventResponse
 func (client *Client) ListAttackPathEventWithOptions(request *ListAttackPathEventRequest, runtime *dara.RuntimeOptions) (_result *ListAttackPathEventResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AttackPathAssetList) {
@@ -44039,9 +45150,11 @@ func (client *Client) ListAttackPathEvent(request *ListAttackPathEventRequest) (
 //
 // @return ListAttackPathWhitelistResponse
 func (client *Client) ListAttackPathWhitelistWithOptions(request *ListAttackPathWhitelistRequest, runtime *dara.RuntimeOptions) (_result *ListAttackPathWhitelistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -44119,9 +45232,11 @@ func (client *Client) ListAttackPathWhitelist(request *ListAttackPathWhitelistRe
 //
 // @return ListAutoTagRulesResponse
 func (client *Client) ListAutoTagRulesWithOptions(request *ListAutoTagRulesRequest, runtime *dara.RuntimeOptions) (_result *ListAutoTagRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -44187,9 +45302,11 @@ func (client *Client) ListAutoTagRules(request *ListAutoTagRulesRequest) (_resul
 //
 // @return ListAvailableAttackPathResponse
 func (client *Client) ListAvailableAttackPathWithOptions(request *ListAvailableAttackPathRequest, runtime *dara.RuntimeOptions) (_result *ListAvailableAttackPathResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -44247,9 +45364,11 @@ func (client *Client) ListAvailableAttackPath(request *ListAvailableAttackPathRe
 //
 // @return ListAvailableHoneypotResponse
 func (client *Client) ListAvailableHoneypotWithOptions(request *ListAvailableHoneypotRequest, runtime *dara.RuntimeOptions) (_result *ListAvailableHoneypotResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NodeId) {
@@ -44307,9 +45426,11 @@ func (client *Client) ListAvailableHoneypot(request *ListAvailableHoneypotReques
 //
 // @return ListBackupRecordResponse
 func (client *Client) ListBackupRecordWithOptions(request *ListBackupRecordRequest, runtime *dara.RuntimeOptions) (_result *ListBackupRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BackupEndTime) {
@@ -44387,9 +45508,11 @@ func (client *Client) ListBackupRecord(request *ListBackupRecordRequest) (_resul
 //
 // @return ListBaselineCheckWhiteRecordResponse
 func (client *Client) ListBaselineCheckWhiteRecordWithOptions(tmpReq *ListBaselineCheckWhiteRecordRequest, runtime *dara.RuntimeOptions) (_result *ListBaselineCheckWhiteRecordResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListBaselineCheckWhiteRecordShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -44481,9 +45604,11 @@ func (client *Client) ListBaselineCheckWhiteRecord(request *ListBaselineCheckWhi
 //
 // @return ListCheckInstanceResultResponse
 func (client *Client) ListCheckInstanceResultWithOptions(request *ListCheckInstanceResultRequest, runtime *dara.RuntimeOptions) (_result *ListCheckInstanceResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckId) {
@@ -44577,9 +45702,11 @@ func (client *Client) ListCheckInstanceResult(request *ListCheckInstanceResultRe
 //
 // @return ListCheckItemResponse
 func (client *Client) ListCheckItemWithOptions(request *ListCheckItemRequest, runtime *dara.RuntimeOptions) (_result *ListCheckItemResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -44649,9 +45776,11 @@ func (client *Client) ListCheckItem(request *ListCheckItemRequest) (_result *Lis
 //
 // @return ListCheckItemWarningMachineResponse
 func (client *Client) ListCheckItemWarningMachineWithOptions(request *ListCheckItemWarningMachineRequest, runtime *dara.RuntimeOptions) (_result *ListCheckItemWarningMachineResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckId) {
@@ -44753,9 +45882,11 @@ func (client *Client) ListCheckItemWarningMachine(request *ListCheckItemWarningM
 //
 // @return ListCheckItemWarningSummaryResponse
 func (client *Client) ListCheckItemWarningSummaryWithOptions(request *ListCheckItemWarningSummaryRequest, runtime *dara.RuntimeOptions) (_result *ListCheckItemWarningSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckItemFuzzy) {
@@ -44869,9 +46000,11 @@ func (client *Client) ListCheckItemWarningSummary(request *ListCheckItemWarningS
 //
 // @return ListCheckResultResponse
 func (client *Client) ListCheckResultWithOptions(request *ListCheckResultRequest, runtime *dara.RuntimeOptions) (_result *ListCheckResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckIds) {
@@ -44920,6 +46053,10 @@ func (client *Client) ListCheckResultWithOptions(request *ListCheckResultRequest
 
 	if !dara.IsNil(request.RequirementIds) {
 		query["RequirementIds"] = request.RequirementIds
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !dara.IsNil(request.RiskLevels) {
@@ -45001,9 +46138,11 @@ func (client *Client) ListCheckResult(request *ListCheckResultRequest) (_result 
 //
 // @return ListCheckRuleResponse
 func (client *Client) ListCheckRuleWithOptions(request *ListCheckRuleRequest, runtime *dara.RuntimeOptions) (_result *ListCheckRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -45057,9 +46196,11 @@ func (client *Client) ListCheckRule(request *ListCheckRuleRequest) (_result *Lis
 //
 // @return ListCheckRuleInstanceResponse
 func (client *Client) ListCheckRuleInstanceWithOptions(request *ListCheckRuleInstanceRequest, runtime *dara.RuntimeOptions) (_result *ListCheckRuleInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -45113,9 +46254,11 @@ func (client *Client) ListCheckRuleInstance(request *ListCheckRuleInstanceReques
 //
 // @return ListCheckStandardResponse
 func (client *Client) ListCheckStandardWithOptions(request *ListCheckStandardRequest, runtime *dara.RuntimeOptions) (_result *ListCheckStandardResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceIds) {
@@ -45193,9 +46336,11 @@ func (client *Client) ListCheckStandard(request *ListCheckStandardRequest) (_res
 //
 // @return ListCheckTypesResponse
 func (client *Client) ListCheckTypesWithOptions(request *ListCheckTypesRequest, runtime *dara.RuntimeOptions) (_result *ListCheckTypesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -45277,9 +46422,11 @@ func (client *Client) ListCheckTypes(request *ListCheckTypesRequest) (_result *L
 //
 // @return ListClientAlertModeResponse
 func (client *Client) ListClientAlertModeWithOptions(request *ListClientAlertModeRequest, runtime *dara.RuntimeOptions) (_result *ListClientAlertModeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -45380,9 +46527,11 @@ func (client *Client) ListClientUserDefineRuleTypes() (_result *ListClientUserDe
 //
 // @return ListClientUserDefineRulesResponse
 func (client *Client) ListClientUserDefineRulesWithOptions(request *ListClientUserDefineRulesRequest, runtime *dara.RuntimeOptions) (_result *ListClientUserDefineRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -45452,9 +46601,11 @@ func (client *Client) ListClientUserDefineRules(request *ListClientUserDefineRul
 //
 // @return ListCloudAssetInstancesResponse
 func (client *Client) ListCloudAssetInstancesWithOptions(request *ListCloudAssetInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListCloudAssetInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CloudAssetTypes) {
@@ -45532,9 +46683,11 @@ func (client *Client) ListCloudAssetInstances(request *ListCloudAssetInstancesRe
 //
 // @return ListCloudVendorRegionsResponse
 func (client *Client) ListCloudVendorRegionsWithOptions(request *ListCloudVendorRegionsRequest, runtime *dara.RuntimeOptions) (_result *ListCloudVendorRegionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -45596,9 +46749,11 @@ func (client *Client) ListCloudVendorRegions(request *ListCloudVendorRegionsRequ
 //
 // @return ListClusterCnnfStatusDetailResponse
 func (client *Client) ListClusterCnnfStatusDetailWithOptions(request *ListClusterCnnfStatusDetailRequest, runtime *dara.RuntimeOptions) (_result *ListClusterCnnfStatusDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterIds) {
@@ -45656,9 +46811,11 @@ func (client *Client) ListClusterCnnfStatusDetail(request *ListClusterCnnfStatus
 //
 // @return ListClusterInterceptionConfigResponse
 func (client *Client) ListClusterInterceptionConfigWithOptions(request *ListClusterInterceptionConfigRequest, runtime *dara.RuntimeOptions) (_result *ListClusterInterceptionConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterCNNFStatus) {
@@ -45732,9 +46889,11 @@ func (client *Client) ListClusterInterceptionConfig(request *ListClusterIntercep
 //
 // @return ListClusterPluginInfoResponse
 func (client *Client) ListClusterPluginInfoWithOptions(request *ListClusterPluginInfoRequest, runtime *dara.RuntimeOptions) (_result *ListClusterPluginInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterIds) {
@@ -45812,9 +46971,11 @@ func (client *Client) ListClusterPluginInfo(request *ListClusterPluginInfoReques
 //
 // @return ListCompressFileDetectResultResponse
 func (client *Client) ListCompressFileDetectResultWithOptions(request *ListCompressFileDetectResultRequest, runtime *dara.RuntimeOptions) (_result *ListCompressFileDetectResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -45896,9 +47057,11 @@ func (client *Client) ListCompressFileDetectResult(request *ListCompressFileDete
 //
 // @return ListContainerDefenseRuleResponse
 func (client *Client) ListContainerDefenseRuleWithOptions(request *ListContainerDefenseRuleRequest, runtime *dara.RuntimeOptions) (_result *ListContainerDefenseRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Conditions) {
@@ -46023,9 +47186,11 @@ func (client *Client) ListContainerDefenseRuleClusters() (_result *ListContainer
 //
 // @return ListCriteriaStrategyResponse
 func (client *Client) ListCriteriaStrategyWithOptions(request *ListCriteriaStrategyRequest, runtime *dara.RuntimeOptions) (_result *ListCriteriaStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -46099,9 +47264,11 @@ func (client *Client) ListCriteriaStrategy(request *ListCriteriaStrategyRequest)
 //
 // @return ListDockerhubImageResponse
 func (client *Client) ListDockerhubImageWithOptions(request *ListDockerhubImageRequest, runtime *dara.RuntimeOptions) (_result *ListDockerhubImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Query) {
@@ -46159,9 +47326,11 @@ func (client *Client) ListDockerhubImage(request *ListDockerhubImageRequest) (_r
 //
 // @return ListFileProtectEventResponse
 func (client *Client) ListFileProtectEventWithOptions(request *ListFileProtectEventRequest, runtime *dara.RuntimeOptions) (_result *ListFileProtectEventResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlertLevels) {
@@ -46267,9 +47436,11 @@ func (client *Client) ListFileProtectEvent(request *ListFileProtectEventRequest)
 //
 // @return ListFileProtectPluginStatusResponse
 func (client *Client) ListFileProtectPluginStatusWithOptions(request *ListFileProtectPluginStatusRequest, runtime *dara.RuntimeOptions) (_result *ListFileProtectPluginStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -46335,9 +47506,11 @@ func (client *Client) ListFileProtectPluginStatus(request *ListFileProtectPlugin
 //
 // @return ListFileProtectRuleResponse
 func (client *Client) ListFileProtectRuleWithOptions(request *ListFileProtectRuleRequest, runtime *dara.RuntimeOptions) (_result *ListFileProtectRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlertLevel) {
@@ -46415,9 +47588,11 @@ func (client *Client) ListFileProtectRule(request *ListFileProtectRuleRequest) (
 //
 // @return ListGroupsResponse
 func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -46491,9 +47666,11 @@ func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroup
 //
 // @return ListHoneypotResponse
 func (client *Client) ListHoneypotWithOptions(request *ListHoneypotRequest, runtime *dara.RuntimeOptions) (_result *ListHoneypotResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -46571,9 +47748,11 @@ func (client *Client) ListHoneypot(request *ListHoneypotRequest) (_result *ListH
 //
 // @return ListHoneypotAlarmEventsResponse
 func (client *Client) ListHoneypotAlarmEventsWithOptions(request *ListHoneypotAlarmEventsRequest, runtime *dara.RuntimeOptions) (_result *ListHoneypotAlarmEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -46627,9 +47806,11 @@ func (client *Client) ListHoneypotAlarmEvents(request *ListHoneypotAlarmEventsRe
 //
 // @return ListHoneypotAttackerPortraitResponse
 func (client *Client) ListHoneypotAttackerPortraitWithOptions(request *ListHoneypotAttackerPortraitRequest, runtime *dara.RuntimeOptions) (_result *ListHoneypotAttackerPortraitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -46707,9 +47888,11 @@ func (client *Client) ListHoneypotAttackerPortrait(request *ListHoneypotAttacker
 //
 // @return ListHoneypotAttackerSourceResponse
 func (client *Client) ListHoneypotAttackerSourceWithOptions(request *ListHoneypotAttackerSourceRequest, runtime *dara.RuntimeOptions) (_result *ListHoneypotAttackerSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -46791,9 +47974,11 @@ func (client *Client) ListHoneypotAttackerSource(request *ListHoneypotAttackerSo
 //
 // @return ListHoneypotEventFlowsResponse
 func (client *Client) ListHoneypotEventFlowsWithOptions(request *ListHoneypotEventFlowsRequest, runtime *dara.RuntimeOptions) (_result *ListHoneypotEventFlowsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -46871,9 +48056,11 @@ func (client *Client) ListHoneypotEventFlows(request *ListHoneypotEventFlowsRequ
 //
 // @return ListHoneypotEventsResponse
 func (client *Client) ListHoneypotEventsWithOptions(request *ListHoneypotEventsRequest, runtime *dara.RuntimeOptions) (_result *ListHoneypotEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -46927,9 +48114,11 @@ func (client *Client) ListHoneypotEvents(request *ListHoneypotEventsRequest) (_r
 //
 // @return ListHoneypotNodeResponse
 func (client *Client) ListHoneypotNodeWithOptions(request *ListHoneypotNodeRequest, runtime *dara.RuntimeOptions) (_result *ListHoneypotNodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -46999,9 +48188,11 @@ func (client *Client) ListHoneypotNode(request *ListHoneypotNodeRequest) (_resul
 //
 // @return ListHoneypotPresetResponse
 func (client *Client) ListHoneypotPresetWithOptions(request *ListHoneypotPresetRequest, runtime *dara.RuntimeOptions) (_result *ListHoneypotPresetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -47083,9 +48274,11 @@ func (client *Client) ListHoneypotPreset(request *ListHoneypotPresetRequest) (_r
 //
 // @return ListHoneypotProbeResponse
 func (client *Client) ListHoneypotProbeWithOptions(request *ListHoneypotProbeRequest, runtime *dara.RuntimeOptions) (_result *ListHoneypotProbeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -47163,9 +48356,11 @@ func (client *Client) ListHoneypotProbe(request *ListHoneypotProbeRequest) (_res
 //
 // @return ListHoneypotProbeUuidResponse
 func (client *Client) ListHoneypotProbeUuidWithOptions(request *ListHoneypotProbeUuidRequest, runtime *dara.RuntimeOptions) (_result *ListHoneypotProbeUuidResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ControlNodeId) {
@@ -47231,9 +48426,11 @@ func (client *Client) ListHoneypotProbeUuid(request *ListHoneypotProbeUuidReques
 //
 // @return ListImageBuildRiskItemResponse
 func (client *Client) ListImageBuildRiskItemWithOptions(request *ListImageBuildRiskItemRequest, runtime *dara.RuntimeOptions) (_result *ListImageBuildRiskItemResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -47291,9 +48488,11 @@ func (client *Client) ListImageBuildRiskItem(request *ListImageBuildRiskItemRequ
 //
 // @return ListImageRegistryExtraResponse
 func (client *Client) ListImageRegistryExtraWithOptions(request *ListImageRegistryExtraRequest, runtime *dara.RuntimeOptions) (_result *ListImageRegistryExtraResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegistryId) {
@@ -47351,9 +48550,11 @@ func (client *Client) ListImageRegistryExtra(request *ListImageRegistryExtraRequ
 //
 // @return ListImageRegistryRegionResponse
 func (client *Client) ListImageRegistryRegionWithOptions(request *ListImageRegistryRegionRequest, runtime *dara.RuntimeOptions) (_result *ListImageRegistryRegionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -47411,9 +48612,11 @@ func (client *Client) ListImageRegistryRegion(request *ListImageRegistryRegionRe
 //
 // @return ListImageRiskResponse
 func (client *Client) ListImageRiskWithOptions(request *ListImageRiskRequest, runtime *dara.RuntimeOptions) (_result *ListImageRiskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -47491,9 +48694,11 @@ func (client *Client) ListImageRisk(request *ListImageRiskRequest) (_result *Lis
 //
 // @return ListInstanceCatalogResponse
 func (client *Client) ListInstanceCatalogWithOptions(request *ListInstanceCatalogRequest, runtime *dara.RuntimeOptions) (_result *ListInstanceCatalogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -47575,9 +48780,11 @@ func (client *Client) ListInstanceCatalog(request *ListInstanceCatalogRequest) (
 //
 // @return ListInstanceRiskLevelsResponse
 func (client *Client) ListInstanceRiskLevelsWithOptions(request *ListInstanceRiskLevelsRequest, runtime *dara.RuntimeOptions) (_result *ListInstanceRiskLevelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceList) {
@@ -47635,9 +48842,11 @@ func (client *Client) ListInstanceRiskLevels(request *ListInstanceRiskLevelsRequ
 //
 // @return ListInstanceRiskNumResponse
 func (client *Client) ListInstanceRiskNumWithOptions(request *ListInstanceRiskNumRequest, runtime *dara.RuntimeOptions) (_result *ListInstanceRiskNumResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceList) {
@@ -47695,9 +48904,11 @@ func (client *Client) ListInstanceRiskNum(request *ListInstanceRiskNumRequest) (
 //
 // @return ListInterceptionHistoryResponse
 func (client *Client) ListInterceptionHistoryWithOptions(request *ListInterceptionHistoryRequest, runtime *dara.RuntimeOptions) (_result *ListInterceptionHistoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -47783,9 +48994,11 @@ func (client *Client) ListInterceptionHistory(request *ListInterceptionHistoryRe
 //
 // @return ListInterceptionRulePageResponse
 func (client *Client) ListInterceptionRulePageWithOptions(request *ListInterceptionRulePageRequest, runtime *dara.RuntimeOptions) (_result *ListInterceptionRulePageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -47859,9 +49072,11 @@ func (client *Client) ListInterceptionRulePage(request *ListInterceptionRulePage
 //
 // @return ListInterceptionTargetPageResponse
 func (client *Client) ListInterceptionTargetPageWithOptions(request *ListInterceptionTargetPageRequest, runtime *dara.RuntimeOptions) (_result *ListInterceptionTargetPageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -47951,9 +49166,11 @@ func (client *Client) ListInterceptionTargetPage(request *ListInterceptionTarget
 //
 // @return ListK8sAccessInfoResponse
 func (client *Client) ListK8sAccessInfoWithOptions(request *ListK8sAccessInfoRequest, runtime *dara.RuntimeOptions) (_result *ListK8sAccessInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunYundunGatewayApiName) {
@@ -48074,9 +49291,11 @@ func (client *Client) ListLogShipperRegions() (_result *ListLogShipperRegionsRes
 //
 // @return ListMachineAppsResponse
 func (client *Client) ListMachineAppsWithOptions(request *ListMachineAppsRequest, runtime *dara.RuntimeOptions) (_result *ListMachineAppsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -48162,9 +49381,11 @@ func (client *Client) ListMachineApps(request *ListMachineAppsRequest) (_result 
 //
 // @return ListMaliciousFileWhitelistConfigsResponse
 func (client *Client) ListMaliciousFileWhitelistConfigsWithOptions(request *ListMaliciousFileWhitelistConfigsRequest, runtime *dara.RuntimeOptions) (_result *ListMaliciousFileWhitelistConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -48238,9 +49459,11 @@ func (client *Client) ListMaliciousFileWhitelistConfigs(request *ListMaliciousFi
 //
 // @return ListObjectScanEventResponse
 func (client *Client) ListObjectScanEventWithOptions(request *ListObjectScanEventRequest, runtime *dara.RuntimeOptions) (_result *ListObjectScanEventResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BucketName) {
@@ -48342,9 +49565,11 @@ func (client *Client) ListObjectScanEvent(request *ListObjectScanEventRequest) (
 //
 // @return ListOpaClusterStrategyNewResponse
 func (client *Client) ListOpaClusterStrategyNewWithOptions(request *ListOpaClusterStrategyNewRequest, runtime *dara.RuntimeOptions) (_result *ListOpaClusterStrategyNewResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -48422,9 +49647,11 @@ func (client *Client) ListOpaClusterStrategyNew(request *ListOpaClusterStrategyN
 //
 // @return ListOperationCheckResponse
 func (client *Client) ListOperationCheckWithOptions(request *ListOperationCheckRequest, runtime *dara.RuntimeOptions) (_result *ListOperationCheckResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -48486,9 +49713,11 @@ func (client *Client) ListOperationCheck(request *ListOperationCheckRequest) (_r
 //
 // @return ListOperationProcessResponse
 func (client *Client) ListOperationProcessWithOptions(request *ListOperationProcessRequest, runtime *dara.RuntimeOptions) (_result *ListOperationProcessResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -48582,9 +49811,11 @@ func (client *Client) ListOperationProcess(request *ListOperationProcessRequest)
 //
 // @return ListOperationProcessDetailResponse
 func (client *Client) ListOperationProcessDetailWithOptions(request *ListOperationProcessDetailRequest, runtime *dara.RuntimeOptions) (_result *ListOperationProcessDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -48670,9 +49901,11 @@ func (client *Client) ListOperationProcessDetail(request *ListOperationProcessDe
 //
 // @return ListOperationTaskResponse
 func (client *Client) ListOperationTaskWithOptions(request *ListOperationTaskRequest, runtime *dara.RuntimeOptions) (_result *ListOperationTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -48726,9 +49959,11 @@ func (client *Client) ListOperationTask(request *ListOperationTaskRequest) (_res
 //
 // @return ListOssBucketResponse
 func (client *Client) ListOssBucketWithOptions(request *ListOssBucketRequest, runtime *dara.RuntimeOptions) (_result *ListOssBucketResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BucketName) {
@@ -48790,9 +50025,11 @@ func (client *Client) ListOssBucket(request *ListOssBucketRequest) (_result *Lis
 //
 // @return ListOssBucketScanInfoResponse
 func (client *Client) ListOssBucketScanInfoWithOptions(request *ListOssBucketScanInfoRequest, runtime *dara.RuntimeOptions) (_result *ListOssBucketScanInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BucketName) {
@@ -48874,9 +50111,11 @@ func (client *Client) ListOssBucketScanInfo(request *ListOssBucketScanInfoReques
 //
 // @return ListOssScanConfigResponse
 func (client *Client) ListOssScanConfigWithOptions(request *ListOssScanConfigRequest, runtime *dara.RuntimeOptions) (_result *ListOssScanConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -48930,9 +50169,11 @@ func (client *Client) ListOssScanConfig(request *ListOssScanConfigRequest) (_res
 //
 // @return ListPluginForUuidResponse
 func (client *Client) ListPluginForUuidWithOptions(tmpReq *ListPluginForUuidRequest, runtime *dara.RuntimeOptions) (_result *ListPluginForUuidResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListPluginForUuidShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -49000,9 +50241,11 @@ func (client *Client) ListPluginForUuid(request *ListPluginForUuidRequest) (_res
 //
 // @return ListPodRiskResponse
 func (client *Client) ListPodRiskWithOptions(request *ListPodRiskRequest, runtime *dara.RuntimeOptions) (_result *ListPodRiskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -49127,9 +50370,11 @@ func (client *Client) ListPrivateK8s() (_result *ListPrivateK8sResponse, _err er
 //
 // @return ListPrivateRegistryListResponse
 func (client *Client) ListPrivateRegistryListWithOptions(request *ListPrivateRegistryListRequest, runtime *dara.RuntimeOptions) (_result *ListPrivateRegistryListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegistryType) {
@@ -49187,9 +50432,11 @@ func (client *Client) ListPrivateRegistryList(request *ListPrivateRegistryListRe
 //
 // @return ListPrivateRegistryTypeResponse
 func (client *Client) ListPrivateRegistryTypeWithOptions(request *ListPrivateRegistryTypeRequest, runtime *dara.RuntimeOptions) (_result *ListPrivateRegistryTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -49247,9 +50494,11 @@ func (client *Client) ListPrivateRegistryType(request *ListPrivateRegistryTypeRe
 //
 // @return ListPublishBatchResponse
 func (client *Client) ListPublishBatchWithOptions(request *ListPublishBatchRequest, runtime *dara.RuntimeOptions) (_result *ListPublishBatchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BatchName) {
@@ -49374,9 +50623,11 @@ func (client *Client) ListRdDefaultSyncList() (_result *ListRdDefaultSyncListRes
 //
 // @return ListRuleTargetAllResponse
 func (client *Client) ListRuleTargetAllWithOptions(request *ListRuleTargetAllRequest, runtime *dara.RuntimeOptions) (_result *ListRuleTargetAllResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -49434,9 +50685,11 @@ func (client *Client) ListRuleTargetAll(request *ListRuleTargetAllRequest) (_res
 //
 // @return ListSasContainerWebDefenseRuleResponse
 func (client *Client) ListSasContainerWebDefenseRuleWithOptions(request *ListSasContainerWebDefenseRuleRequest, runtime *dara.RuntimeOptions) (_result *ListSasContainerWebDefenseRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Criteria) {
@@ -49506,9 +50759,11 @@ func (client *Client) ListSasContainerWebDefenseRule(request *ListSasContainerWe
 //
 // @return ListSupportAttackPathAssetResponse
 func (client *Client) ListSupportAttackPathAssetWithOptions(request *ListSupportAttackPathAssetRequest, runtime *dara.RuntimeOptions) (_result *ListSupportAttackPathAssetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NodeType) {
@@ -49625,9 +50880,11 @@ func (client *Client) ListSupportObjectSuffix() (_result *ListSupportObjectSuffi
 //
 // @return ListSystemAggregationRulesResponse
 func (client *Client) ListSystemAggregationRulesWithOptions(request *ListSystemAggregationRulesRequest, runtime *dara.RuntimeOptions) (_result *ListSystemAggregationRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -49728,9 +50985,11 @@ func (client *Client) ListSystemClientRuleTypes() (_result *ListSystemClientRule
 //
 // @return ListSystemClientRulesResponse
 func (client *Client) ListSystemClientRulesWithOptions(request *ListSystemClientRulesRequest, runtime *dara.RuntimeOptions) (_result *ListSystemClientRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AggregationIds) {
@@ -49816,9 +51075,11 @@ func (client *Client) ListSystemClientRules(request *ListSystemClientRulesReques
 //
 // @return ListSystemRuleAggregationTypesResponse
 func (client *Client) ListSystemRuleAggregationTypesWithOptions(request *ListSystemRuleAggregationTypesRequest, runtime *dara.RuntimeOptions) (_result *ListSystemRuleAggregationTypesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -49872,9 +51133,11 @@ func (client *Client) ListSystemRuleAggregationTypes(request *ListSystemRuleAggr
 //
 // @return ListTargetByBatchResponse
 func (client *Client) ListTargetByBatchWithOptions(request *ListTargetByBatchRequest, runtime *dara.RuntimeOptions) (_result *ListTargetByBatchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BatchId) {
@@ -49944,9 +51207,11 @@ func (client *Client) ListTargetByBatch(request *ListTargetByBatchRequest) (_res
 //
 // @return ListUnfinishedOnceTaskResponse
 func (client *Client) ListUnfinishedOnceTaskWithOptions(request *ListUnfinishedOnceTaskRequest, runtime *dara.RuntimeOptions) (_result *ListUnfinishedOnceTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Target) {
@@ -50008,9 +51273,11 @@ func (client *Client) ListUnfinishedOnceTask(request *ListUnfinishedOnceTaskRequ
 //
 // @return ListUninstallAegisMachinesResponse
 func (client *Client) ListUninstallAegisMachinesWithOptions(request *ListUninstallAegisMachinesRequest, runtime *dara.RuntimeOptions) (_result *ListUninstallAegisMachinesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -50096,9 +51363,11 @@ func (client *Client) ListUninstallAegisMachines(request *ListUninstallAegisMach
 //
 // @return ListUserVpcResponse
 func (client *Client) ListUserVpcWithOptions(request *ListUserVpcRequest, runtime *dara.RuntimeOptions) (_result *ListUserVpcResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.K8sRegionId) {
@@ -50156,9 +51425,11 @@ func (client *Client) ListUserVpc(request *ListUserVpcRequest) (_result *ListUse
 //
 // @return ListUuidsByAppIdResponse
 func (client *Client) ListUuidsByAppIdWithOptions(request *ListUuidsByAppIdRequest, runtime *dara.RuntimeOptions) (_result *ListUuidsByAppIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -50236,9 +51507,11 @@ func (client *Client) ListUuidsByAppId(request *ListUuidsByAppIdRequest) (_resul
 //
 // @return ListUuidsByWebPathResponse
 func (client *Client) ListUuidsByWebPathWithOptions(request *ListUuidsByWebPathRequest, runtime *dara.RuntimeOptions) (_result *ListUuidsByWebPathResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -50308,9 +51581,11 @@ func (client *Client) ListUuidsByWebPath(request *ListUuidsByWebPathRequest) (_r
 //
 // @return ListVirusScanMachineResponse
 func (client *Client) ListVirusScanMachineWithOptions(request *ListVirusScanMachineRequest, runtime *dara.RuntimeOptions) (_result *ListVirusScanMachineResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -50380,9 +51655,11 @@ func (client *Client) ListVirusScanMachine(request *ListVirusScanMachineRequest)
 //
 // @return ListVirusScanMachineEventResponse
 func (client *Client) ListVirusScanMachineEventWithOptions(request *ListVirusScanMachineEventRequest, runtime *dara.RuntimeOptions) (_result *ListVirusScanMachineEventResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -50456,9 +51733,11 @@ func (client *Client) ListVirusScanMachineEvent(request *ListVirusScanMachineEve
 //
 // @return ListVirusScanTaskResponse
 func (client *Client) ListVirusScanTaskWithOptions(request *ListVirusScanTaskRequest, runtime *dara.RuntimeOptions) (_result *ListVirusScanTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -50568,9 +51847,11 @@ func (client *Client) ListVirusScanTask(request *ListVirusScanTaskRequest) (_res
 //
 // @return ListVulAutoRepairConfigResponse
 func (client *Client) ListVulAutoRepairConfigWithOptions(request *ListVulAutoRepairConfigRequest, runtime *dara.RuntimeOptions) (_result *ListVulAutoRepairConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliasName) {
@@ -50644,9 +51925,11 @@ func (client *Client) ListVulAutoRepairConfig(request *ListVulAutoRepairConfigRe
 //
 // @return ListVulGlobalConfigResponse
 func (client *Client) ListVulGlobalConfigWithOptions(request *ListVulGlobalConfigRequest, runtime *dara.RuntimeOptions) (_result *ListVulGlobalConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigKey) {
@@ -50704,9 +51987,11 @@ func (client *Client) ListVulGlobalConfig(request *ListVulGlobalConfigRequest) (
 //
 // @return MarkMonitorAccountsResponse
 func (client *Client) MarkMonitorAccountsWithOptions(request *MarkMonitorAccountsRequest, runtime *dara.RuntimeOptions) (_result *MarkMonitorAccountsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountIds) {
@@ -50764,9 +52049,11 @@ func (client *Client) MarkMonitorAccounts(request *MarkMonitorAccountsRequest) (
 //
 // @return ModifyAccessKeyLeakDealResponse
 func (client *Client) ModifyAccessKeyLeakDealWithOptions(request *ModifyAccessKeyLeakDealRequest, runtime *dara.RuntimeOptions) (_result *ModifyAccessKeyLeakDealResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -50836,9 +52123,11 @@ func (client *Client) ModifyAccessKeyLeakDeal(request *ModifyAccessKeyLeakDealRe
 //
 // @return ModifyAntiBruteForceRuleResponse
 func (client *Client) ModifyAntiBruteForceRuleWithOptions(tmpReq *ModifyAntiBruteForceRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifyAntiBruteForceRuleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyAntiBruteForceRuleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -50938,9 +52227,11 @@ func (client *Client) ModifyAntiBruteForceRule(request *ModifyAntiBruteForceRule
 //
 // @return ModifyAppVulScanCycleResponse
 func (client *Client) ModifyAppVulScanCycleWithOptions(request *ModifyAppVulScanCycleRequest, runtime *dara.RuntimeOptions) (_result *ModifyAppVulScanCycleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Cycle) {
@@ -50998,9 +52289,11 @@ func (client *Client) ModifyAppVulScanCycle(request *ModifyAppVulScanCycleReques
 //
 // @return ModifyAssetCleanConfigResponse
 func (client *Client) ModifyAssetCleanConfigWithOptions(request *ModifyAssetCleanConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyAssetCleanConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AssetCleanConfigs) {
@@ -51066,9 +52359,11 @@ func (client *Client) ModifyAssetCleanConfig(request *ModifyAssetCleanConfigRequ
 //
 // @return ModifyAssetGroupResponse
 func (client *Client) ModifyAssetGroupWithOptions(request *ModifyAssetGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyAssetGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -51142,9 +52437,11 @@ func (client *Client) ModifyAssetGroup(request *ModifyAssetGroupRequest) (_resul
 //
 // @return ModifyAssetImportantResponse
 func (client *Client) ModifyAssetImportantWithOptions(request *ModifyAssetImportantRequest, runtime *dara.RuntimeOptions) (_result *ModifyAssetImportantResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImportantCode) {
@@ -51206,9 +52503,11 @@ func (client *Client) ModifyAssetImportant(request *ModifyAssetImportantRequest)
 //
 // @return ModifyAttestorResponse
 func (client *Client) ModifyAttestorWithOptions(request *ModifyAttestorRequest, runtime *dara.RuntimeOptions) (_result *ModifyAttestorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyId) {
@@ -51290,9 +52589,11 @@ func (client *Client) ModifyAttestor(request *ModifyAttestorRequest) (_result *M
 //
 // @return ModifyAutoDelConfigResponse
 func (client *Client) ModifyAutoDelConfigWithOptions(request *ModifyAutoDelConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyAutoDelConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Days) {
@@ -51350,9 +52651,11 @@ func (client *Client) ModifyAutoDelConfig(request *ModifyAutoDelConfigRequest) (
 //
 // @return ModifyBackupPolicyResponse
 func (client *Client) ModifyBackupPolicyWithOptions(tmpReq *ModifyBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyBackupPolicyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyBackupPolicyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -51436,9 +52739,11 @@ func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_r
 //
 // @return ModifyBackupPolicyStatusResponse
 func (client *Client) ModifyBackupPolicyStatusWithOptions(request *ModifyBackupPolicyStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyBackupPolicyStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -51504,9 +52809,11 @@ func (client *Client) ModifyBackupPolicyStatus(request *ModifyBackupPolicyStatus
 //
 // @return ModifyBinarySecurityPolicyResponse
 func (client *Client) ModifyBinarySecurityPolicyWithOptions(request *ModifyBinarySecurityPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyBinarySecurityPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Clusters) {
@@ -51588,9 +52895,11 @@ func (client *Client) ModifyBinarySecurityPolicy(request *ModifyBinarySecurityPo
 //
 // @return ModifyCheckRuleResponse
 func (client *Client) ModifyCheckRuleWithOptions(request *ModifyCheckRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifyCheckRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddInstanceList) {
@@ -51672,9 +52981,11 @@ func (client *Client) ModifyCheckRule(request *ModifyCheckRuleRequest) (_result 
 //
 // @return ModifyClearLogstoreStorageResponse
 func (client *Client) ModifyClearLogstoreStorageWithOptions(request *ModifyClearLogstoreStorageRequest, runtime *dara.RuntimeOptions) (_result *ModifyClearLogstoreStorageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -51748,9 +53059,11 @@ func (client *Client) ModifyClearLogstoreStorage(request *ModifyClearLogstoreSto
 //
 // @return ModifyClientConfSetupResponse
 func (client *Client) ModifyClientConfSetupWithOptions(request *ModifyClientConfSetupRequest, runtime *dara.RuntimeOptions) (_result *ModifyClientConfSetupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.StrategyConfig) {
@@ -51816,9 +53129,11 @@ func (client *Client) ModifyClientConfSetup(request *ModifyClientConfSetupReques
 //
 // @return ModifyClientConfStrategyResponse
 func (client *Client) ModifyClientConfStrategyWithOptions(request *ModifyClientConfStrategyRequest, runtime *dara.RuntimeOptions) (_result *ModifyClientConfStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Tag) {
@@ -51892,9 +53207,11 @@ func (client *Client) ModifyClientConfStrategy(request *ModifyClientConfStrategy
 //
 // @return ModifyClientUserDefineRuleResponse
 func (client *Client) ModifyClientUserDefineRuleWithOptions(request *ModifyClientUserDefineRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifyClientUserDefineRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActionType) {
@@ -52020,9 +53337,11 @@ func (client *Client) ModifyClientUserDefineRule(request *ModifyClientUserDefine
 //
 // @return ModifyCloudVendorAccountAKResponse
 func (client *Client) ModifyCloudVendorAccountAKWithOptions(request *ModifyCloudVendorAccountAKRequest, runtime *dara.RuntimeOptions) (_result *ModifyCloudVendorAccountAKResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthIds) {
@@ -52128,9 +53447,11 @@ func (client *Client) ModifyCloudVendorAccountAK(request *ModifyCloudVendorAccou
 //
 // @return ModifyCloudVendorTrialConfigResponse
 func (client *Client) ModifyCloudVendorTrialConfigWithOptions(request *ModifyCloudVendorTrialConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyCloudVendorTrialConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthId) {
@@ -52200,9 +53521,11 @@ func (client *Client) ModifyCloudVendorTrialConfig(request *ModifyCloudVendorTri
 //
 // @return ModifyClusterCnnfStatusUserConfirmResponse
 func (client *Client) ModifyClusterCnnfStatusUserConfirmWithOptions(request *ModifyClusterCnnfStatusUserConfirmRequest, runtime *dara.RuntimeOptions) (_result *ModifyClusterCnnfStatusUserConfirmResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterIds) {
@@ -52264,9 +53587,11 @@ func (client *Client) ModifyClusterCnnfStatusUserConfirm(request *ModifyClusterC
 //
 // @return ModifyConcernNecessityResponse
 func (client *Client) ModifyConcernNecessityWithOptions(request *ModifyConcernNecessityRequest, runtime *dara.RuntimeOptions) (_result *ModifyConcernNecessityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConcernNecessity) {
@@ -52324,9 +53649,11 @@ func (client *Client) ModifyConcernNecessity(request *ModifyConcernNecessityRequ
 //
 // @return ModifyContainerDefenseRuleResponse
 func (client *Client) ModifyContainerDefenseRuleWithOptions(tmpReq *ModifyContainerDefenseRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifyContainerDefenseRuleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyContainerDefenseRuleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -52418,9 +53745,11 @@ func (client *Client) ModifyContainerDefenseRule(request *ModifyContainerDefense
 //
 // @return ModifyContainerDefenseRuleSwitchResponse
 func (client *Client) ModifyContainerDefenseRuleSwitchWithOptions(request *ModifyContainerDefenseRuleSwitchRequest, runtime *dara.RuntimeOptions) (_result *ModifyContainerDefenseRuleSwitchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RuleIds) {
@@ -52482,9 +53811,11 @@ func (client *Client) ModifyContainerDefenseRuleSwitch(request *ModifyContainerD
 //
 // @return ModifyContainerPluginRuleResponse
 func (client *Client) ModifyContainerPluginRuleWithOptions(request *ModifyContainerPluginRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifyContainerPluginRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -52566,9 +53897,11 @@ func (client *Client) ModifyContainerPluginRule(request *ModifyContainerPluginRu
 //
 // @return ModifyContainerScanConfigResponse
 func (client *Client) ModifyContainerScanConfigWithOptions(request *ModifyContainerScanConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyContainerScanConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppNames) {
@@ -52634,9 +53967,11 @@ func (client *Client) ModifyContainerScanConfig(request *ModifyContainerScanConf
 //
 // @return ModifyCreateVulWhitelistResponse
 func (client *Client) ModifyCreateVulWhitelistWithOptions(request *ModifyCreateVulWhitelistRequest, runtime *dara.RuntimeOptions) (_result *ModifyCreateVulWhitelistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Reason) {
@@ -52702,9 +54037,11 @@ func (client *Client) ModifyCreateVulWhitelist(request *ModifyCreateVulWhitelist
 //
 // @return ModifyCustomBlockRecordResponse
 func (client *Client) ModifyCustomBlockRecordWithOptions(request *ModifyCustomBlockRecordRequest, runtime *dara.RuntimeOptions) (_result *ModifyCustomBlockRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BlockIp) {
@@ -52778,9 +54115,11 @@ func (client *Client) ModifyCustomBlockRecord(request *ModifyCustomBlockRecordRe
 //
 // @return ModifyCycleTaskResponse
 func (client *Client) ModifyCycleTaskWithOptions(request *ModifyCycleTaskRequest, runtime *dara.RuntimeOptions) (_result *ModifyCycleTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigId) {
@@ -52878,9 +54217,11 @@ func (client *Client) ModifyCycleTask(request *ModifyCycleTaskRequest) (_result 
 //
 // @return ModifyDingTalkStatusResponse
 func (client *Client) ModifyDingTalkStatusWithOptions(request *ModifyDingTalkStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyDingTalkStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Ids) {
@@ -52946,9 +54287,11 @@ func (client *Client) ModifyDingTalkStatus(request *ModifyDingTalkStatusRequest)
 //
 // @return ModifyEmgVulSubmitResponse
 func (client *Client) ModifyEmgVulSubmitWithOptions(request *ModifyEmgVulSubmitRequest, runtime *dara.RuntimeOptions) (_result *ModifyEmgVulSubmitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -53014,9 +54357,11 @@ func (client *Client) ModifyEmgVulSubmit(request *ModifyEmgVulSubmitRequest) (_r
 //
 // @return ModifyGroupPropertyResponse
 func (client *Client) ModifyGroupPropertyWithOptions(request *ModifyGroupPropertyRequest, runtime *dara.RuntimeOptions) (_result *ModifyGroupPropertyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Data) {
@@ -53074,9 +54419,11 @@ func (client *Client) ModifyGroupProperty(request *ModifyGroupPropertyRequest) (
 //
 // @return ModifyHybridProxyClusterResponse
 func (client *Client) ModifyHybridProxyClusterWithOptions(request *ModifyHybridProxyClusterRequest, runtime *dara.RuntimeOptions) (_result *ModifyHybridProxyClusterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterName) {
@@ -53138,9 +54485,11 @@ func (client *Client) ModifyHybridProxyCluster(request *ModifyHybridProxyCluster
 //
 // @return ModifyHybridProxyPolicyResponse
 func (client *Client) ModifyHybridProxyPolicyWithOptions(request *ModifyHybridProxyPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyHybridProxyPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterName) {
@@ -53202,9 +54551,11 @@ func (client *Client) ModifyHybridProxyPolicy(request *ModifyHybridProxyPolicyRe
 //
 // @return ModifyIdcProbeResponse
 func (client *Client) ModifyIdcProbeWithOptions(request *ModifyIdcProbeRequest, runtime *dara.RuntimeOptions) (_result *ModifyIdcProbeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IdcName) {
@@ -53294,9 +54645,11 @@ func (client *Client) ModifyIdcProbe(request *ModifyIdcProbeRequest) (_result *M
 //
 // @return ModifyImageFixCycleConfigResponse
 func (client *Client) ModifyImageFixCycleConfigWithOptions(request *ModifyImageFixCycleConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyImageFixCycleConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ImageFixCycle) {
@@ -53366,9 +54719,11 @@ func (client *Client) ModifyImageFixCycleConfig(request *ModifyImageFixCycleConf
 //
 // @return ModifyImageRegistryResponse
 func (client *Client) ModifyImageRegistryWithOptions(request *ModifyImageRegistryRequest, runtime *dara.RuntimeOptions) (_result *ModifyImageRegistryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -53438,9 +54793,11 @@ func (client *Client) ModifyImageRegistry(request *ModifyImageRegistryRequest) (
 //
 // @return ModifyInstanceAntiBruteForceRuleResponse
 func (client *Client) ModifyInstanceAntiBruteForceRuleWithOptions(request *ModifyInstanceAntiBruteForceRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceAntiBruteForceRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NewRuleId) {
@@ -53510,9 +54867,11 @@ func (client *Client) ModifyInstanceAntiBruteForceRule(request *ModifyInstanceAn
 //
 // @return ModifyInterceptionRuleResponse
 func (client *Client) ModifyInterceptionRuleWithOptions(tmpReq *ModifyInterceptionRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifyInterceptionRuleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyInterceptionRuleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -53608,9 +54967,11 @@ func (client *Client) ModifyInterceptionRule(request *ModifyInterceptionRuleRequ
 //
 // @return ModifyInterceptionRuleSwitchResponse
 func (client *Client) ModifyInterceptionRuleSwitchWithOptions(request *ModifyInterceptionRuleSwitchRequest, runtime *dara.RuntimeOptions) (_result *ModifyInterceptionRuleSwitchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -53676,9 +55037,11 @@ func (client *Client) ModifyInterceptionRuleSwitch(request *ModifyInterceptionRu
 //
 // @return ModifyInterceptionTargetResponse
 func (client *Client) ModifyInterceptionTargetWithOptions(request *ModifyInterceptionTargetRequest, runtime *dara.RuntimeOptions) (_result *ModifyInterceptionTargetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -53760,9 +55123,11 @@ func (client *Client) ModifyInterceptionTarget(request *ModifyInterceptionTarget
 //
 // @return ModifyLogMetaStatusResponse
 func (client *Client) ModifyLogMetaStatusWithOptions(request *ModifyLogMetaStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyLogMetaStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -53836,9 +55201,11 @@ func (client *Client) ModifyLogMetaStatus(request *ModifyLogMetaStatusRequest) (
 //
 // @return ModifyLoginBaseConfigResponse
 func (client *Client) ModifyLoginBaseConfigWithOptions(request *ModifyLoginBaseConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyLoginBaseConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -53904,9 +55271,11 @@ func (client *Client) ModifyLoginBaseConfig(request *ModifyLoginBaseConfigReques
 //
 // @return ModifyLoginSwitchConfigResponse
 func (client *Client) ModifyLoginSwitchConfigWithOptions(request *ModifyLoginSwitchConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyLoginSwitchConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Item) {
@@ -53968,9 +55337,11 @@ func (client *Client) ModifyLoginSwitchConfig(request *ModifyLoginSwitchConfigRe
 //
 // @return ModifyNoticeConfigResponse
 func (client *Client) ModifyNoticeConfigWithOptions(request *ModifyNoticeConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyNoticeConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Project) {
@@ -54044,9 +55415,11 @@ func (client *Client) ModifyNoticeConfig(request *ModifyNoticeConfigRequest) (_r
 //
 // @return ModifyOpenLogShipperResponse
 func (client *Client) ModifyOpenLogShipperWithOptions(request *ModifyOpenLogShipperRequest, runtime *dara.RuntimeOptions) (_result *ModifyOpenLogShipperResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -54112,9 +55485,11 @@ func (client *Client) ModifyOpenLogShipper(request *ModifyOpenLogShipperRequest)
 //
 // @return ModifyOperateVulResponse
 func (client *Client) ModifyOperateVulWithOptions(request *ModifyOperateVulRequest, runtime *dara.RuntimeOptions) (_result *ModifyOperateVulResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -54188,9 +55563,11 @@ func (client *Client) ModifyOperateVul(request *ModifyOperateVulRequest) (_resul
 //
 // @return ModifyPostPayModuleSwitchResponse
 func (client *Client) ModifyPostPayModuleSwitchWithOptions(request *ModifyPostPayModuleSwitchRequest, runtime *dara.RuntimeOptions) (_result *ModifyPostPayModuleSwitchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PostPayInstanceId) {
@@ -54256,9 +55633,11 @@ func (client *Client) ModifyPostPayModuleSwitch(request *ModifyPostPayModuleSwit
 //
 // @return ModifyProcessWhiteListResponse
 func (client *Client) ModifyProcessWhiteListWithOptions(request *ModifyProcessWhiteListRequest, runtime *dara.RuntimeOptions) (_result *ModifyProcessWhiteListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -54336,9 +55715,11 @@ func (client *Client) ModifyProcessWhiteList(request *ModifyProcessWhiteListRequ
 //
 // @return ModifyPropertyScheduleConfigResponse
 func (client *Client) ModifyPropertyScheduleConfigWithOptions(request *ModifyPropertyScheduleConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyPropertyScheduleConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ScheduleTime) {
@@ -54400,9 +55781,11 @@ func (client *Client) ModifyPropertyScheduleConfig(request *ModifyPropertySchedu
 //
 // @return ModifyPushAllTaskResponse
 func (client *Client) ModifyPushAllTaskWithOptions(request *ModifyPushAllTaskRequest, runtime *dara.RuntimeOptions) (_result *ModifyPushAllTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceIp) {
@@ -54468,9 +55851,11 @@ func (client *Client) ModifyPushAllTask(request *ModifyPushAllTaskRequest) (_res
 //
 // @return ModifyRefreshProcessInfoResponse
 func (client *Client) ModifyRefreshProcessInfoWithOptions(request *ModifyRefreshProcessInfoRequest, runtime *dara.RuntimeOptions) (_result *ModifyRefreshProcessInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Uuid) {
@@ -54528,9 +55913,11 @@ func (client *Client) ModifyRefreshProcessInfo(request *ModifyRefreshProcessInfo
 //
 // @return ModifySasContainerWebDefenseRuleResponse
 func (client *Client) ModifySasContainerWebDefenseRuleWithOptions(request *ModifySasContainerWebDefenseRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifySasContainerWebDefenseRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PathConfDTOList) {
@@ -54596,9 +55983,11 @@ func (client *Client) ModifySasContainerWebDefenseRule(request *ModifySasContain
 //
 // @return ModifySearchConditionResponse
 func (client *Client) ModifySearchConditionWithOptions(request *ModifySearchConditionRequest, runtime *dara.RuntimeOptions) (_result *ModifySearchConditionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FilterConditions) {
@@ -54674,9 +56063,11 @@ func (client *Client) ModifySearchCondition(request *ModifySearchConditionReques
 //
 // @return ModifySecurityCheckScheduleConfigResponse
 func (client *Client) ModifySecurityCheckScheduleConfigWithOptions(request *ModifySecurityCheckScheduleConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifySecurityCheckScheduleConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DaysOfWeek) {
@@ -54761,9 +56152,11 @@ func (client *Client) ModifySecurityCheckScheduleConfig(request *ModifySecurityC
 //
 // @return ModifySecurityEventMarkMissIndividuallyResponse
 func (client *Client) ModifySecurityEventMarkMissIndividuallyWithOptions(request *ModifySecurityEventMarkMissIndividuallyRequest, runtime *dara.RuntimeOptions) (_result *ModifySecurityEventMarkMissIndividuallyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceIp) {
@@ -54839,9 +56232,11 @@ func (client *Client) ModifySecurityEventMarkMissIndividually(request *ModifySec
 //
 // @return ModifyServerlessAuthToMachineResponse
 func (client *Client) ModifyServerlessAuthToMachineWithOptions(request *ModifyServerlessAuthToMachineRequest, runtime *dara.RuntimeOptions) (_result *ModifyServerlessAuthToMachineResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppCriteria) {
@@ -54959,9 +56354,11 @@ func (client *Client) ModifyServerlessAuthToMachine(request *ModifyServerlessAut
 //
 // @return ModifySoarStrategySubscribeResponse
 func (client *Client) ModifySoarStrategySubscribeWithOptions(request *ModifySoarStrategySubscribeRequest, runtime *dara.RuntimeOptions) (_result *ModifySoarStrategySubscribeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.StrategyId) {
@@ -55027,9 +56424,11 @@ func (client *Client) ModifySoarStrategySubscribe(request *ModifySoarStrategySub
 //
 // @return ModifyStartVulScanResponse
 func (client *Client) ModifyStartVulScanWithOptions(request *ModifyStartVulScanRequest, runtime *dara.RuntimeOptions) (_result *ModifyStartVulScanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Types) {
@@ -55091,9 +56490,11 @@ func (client *Client) ModifyStartVulScan(request *ModifyStartVulScanRequest) (_r
 //
 // @return ModifyStrategyResponse
 func (client *Client) ModifyStrategyWithOptions(request *ModifyStrategyRequest, runtime *dara.RuntimeOptions) (_result *ModifyStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustomType) {
@@ -55191,9 +56592,11 @@ func (client *Client) ModifyStrategy(request *ModifyStrategyRequest) (_result *M
 //
 // @return ModifyStrategyTargetResponse
 func (client *Client) ModifyStrategyTargetWithOptions(request *ModifyStrategyTargetRequest, runtime *dara.RuntimeOptions) (_result *ModifyStrategyTargetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -55263,9 +56666,11 @@ func (client *Client) ModifyStrategyTarget(request *ModifyStrategyTargetRequest)
 //
 // @return ModifyTagWithUuidResponse
 func (client *Client) ModifyTagWithUuidWithOptions(request *ModifyTagWithUuidRequest, runtime *dara.RuntimeOptions) (_result *ModifyTagWithUuidResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MachineTypes) {
@@ -55339,9 +56744,11 @@ func (client *Client) ModifyTagWithUuid(request *ModifyTagWithUuidRequest) (_res
 //
 // @return ModifyUniBackupPolicyResponse
 func (client *Client) ModifyUniBackupPolicyWithOptions(tmpReq *ModifyUniBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyUniBackupPolicyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyUniBackupPolicyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -55443,9 +56850,11 @@ func (client *Client) ModifyUniBackupPolicy(request *ModifyUniBackupPolicyReques
 //
 // @return ModifyVpcHoneyPotResponse
 func (client *Client) ModifyVpcHoneyPotWithOptions(request *ModifyVpcHoneyPotRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpcHoneyPotResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HoneyPotAction) {
@@ -55510,9 +56919,11 @@ func (client *Client) ModifyVpcHoneyPot(request *ModifyVpcHoneyPotRequest) (_res
 //
 // @return ModifyVulConfigResponse
 func (client *Client) ModifyVulConfigWithOptions(request *ModifyVulConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyVulConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -55574,9 +56985,11 @@ func (client *Client) ModifyVulConfig(request *ModifyVulConfigRequest) (_result 
 //
 // @return ModifyVulTargetResponse
 func (client *Client) ModifyVulTargetWithOptions(request *ModifyVulTargetRequest, runtime *dara.RuntimeOptions) (_result *ModifyVulTargetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -55638,9 +57051,11 @@ func (client *Client) ModifyVulTarget(request *ModifyVulTargetRequest) (_result 
 //
 // @return ModifyVulTargetConfigResponse
 func (client *Client) ModifyVulTargetConfigWithOptions(request *ModifyVulTargetConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyVulTargetConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -55710,9 +57125,11 @@ func (client *Client) ModifyVulTargetConfig(request *ModifyVulTargetConfigReques
 //
 // @return ModifyVulWhitelistTargetResponse
 func (client *Client) ModifyVulWhitelistTargetWithOptions(request *ModifyVulWhitelistTargetRequest, runtime *dara.RuntimeOptions) (_result *ModifyVulWhitelistTargetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -55782,9 +57199,11 @@ func (client *Client) ModifyVulWhitelistTarget(request *ModifyVulWhitelistTarget
 //
 // @return ModifyWebLockCreateConfigResponse
 func (client *Client) ModifyWebLockCreateConfigWithOptions(request *ModifyWebLockCreateConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyWebLockCreateConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DefenceMode) {
@@ -55890,9 +57309,11 @@ func (client *Client) ModifyWebLockCreateConfig(request *ModifyWebLockCreateConf
 //
 // @return ModifyWebLockDeleteConfigResponse
 func (client *Client) ModifyWebLockDeleteConfigWithOptions(request *ModifyWebLockDeleteConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyWebLockDeleteConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -55966,9 +57387,11 @@ func (client *Client) ModifyWebLockDeleteConfig(request *ModifyWebLockDeleteConf
 //
 // @return ModifyWebLockProcessStatusResponse
 func (client *Client) ModifyWebLockProcessStatusWithOptions(request *ModifyWebLockProcessStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyWebLockProcessStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DealAll) {
@@ -56046,9 +57469,11 @@ func (client *Client) ModifyWebLockProcessStatus(request *ModifyWebLockProcessSt
 //
 // @return ModifyWebLockRefreshResponse
 func (client *Client) ModifyWebLockRefreshWithOptions(request *ModifyWebLockRefreshRequest, runtime *dara.RuntimeOptions) (_result *ModifyWebLockRefreshResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Uuid) {
@@ -56110,9 +57535,11 @@ func (client *Client) ModifyWebLockRefresh(request *ModifyWebLockRefreshRequest)
 //
 // @return ModifyWebLockStartResponse
 func (client *Client) ModifyWebLockStartWithOptions(request *ModifyWebLockStartRequest, runtime *dara.RuntimeOptions) (_result *ModifyWebLockStartResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DefenceMode) {
@@ -56202,9 +57629,11 @@ func (client *Client) ModifyWebLockStart(request *ModifyWebLockStartRequest) (_r
 //
 // @return ModifyWebLockStatusResponse
 func (client *Client) ModifyWebLockStatusWithOptions(request *ModifyWebLockStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyWebLockStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -56274,9 +57703,11 @@ func (client *Client) ModifyWebLockStatus(request *ModifyWebLockStatusRequest) (
 //
 // @return ModifyWebLockUnbindResponse
 func (client *Client) ModifyWebLockUnbindWithOptions(request *ModifyWebLockUnbindRequest, runtime *dara.RuntimeOptions) (_result *ModifyWebLockUnbindResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Uuid) {
@@ -56334,9 +57765,11 @@ func (client *Client) ModifyWebLockUnbind(request *ModifyWebLockUnbindRequest) (
 //
 // @return ModifyWebLockUpdateConfigResponse
 func (client *Client) ModifyWebLockUpdateConfigWithOptions(request *ModifyWebLockUpdateConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyWebLockUpdateConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DefenceMode) {
@@ -56442,9 +57875,11 @@ func (client *Client) ModifyWebLockUpdateConfig(request *ModifyWebLockUpdateConf
 //
 // @return ModifyWebPathResponse
 func (client *Client) ModifyWebPathWithOptions(request *ModifyWebPathRequest, runtime *dara.RuntimeOptions) (_result *ModifyWebPathResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -56510,9 +57945,11 @@ func (client *Client) ModifyWebPath(request *ModifyWebPathRequest) (_result *Mod
 //
 // @return OpenBackupAutoConfigResponse
 func (client *Client) OpenBackupAutoConfigWithOptions(request *OpenBackupAutoConfigRequest, runtime *dara.RuntimeOptions) (_result *OpenBackupAutoConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxBatchSize) {
@@ -56570,9 +58007,11 @@ func (client *Client) OpenBackupAutoConfig(request *OpenBackupAutoConfigRequest)
 //
 // @return OpenPartialBuyResponse
 func (client *Client) OpenPartialBuyWithOptions(request *OpenPartialBuyRequest, runtime *dara.RuntimeOptions) (_result *OpenPartialBuyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -56630,9 +58069,11 @@ func (client *Client) OpenPartialBuy(request *OpenPartialBuyRequest) (_result *O
 //
 // @return OpenSensitiveFileScanResponse
 func (client *Client) OpenSensitiveFileScanWithOptions(request *OpenSensitiveFileScanRequest, runtime *dara.RuntimeOptions) (_result *OpenSensitiveFileScanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SwitchOn) {
@@ -56690,9 +58131,11 @@ func (client *Client) OpenSensitiveFileScan(request *OpenSensitiveFileScanReques
 //
 // @return OperateAgentClientInstallResponse
 func (client *Client) OperateAgentClientInstallWithOptions(request *OperateAgentClientInstallRequest, runtime *dara.RuntimeOptions) (_result *OperateAgentClientInstallResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceIds) {
@@ -56766,9 +58209,11 @@ func (client *Client) OperateAgentClientInstall(request *OperateAgentClientInsta
 //
 // @return OperateApplicationResponse
 func (client *Client) OperateApplicationWithOptions(request *OperateApplicationRequest, runtime *dara.RuntimeOptions) (_result *OperateApplicationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContainerWebDefenseApplicationDTOS) {
@@ -56830,9 +58275,11 @@ func (client *Client) OperateApplication(request *OperateApplicationRequest) (_r
 //
 // @return OperateBucketScanTaskResponse
 func (client *Client) OperateBucketScanTaskWithOptions(request *OperateBucketScanTaskRequest, runtime *dara.RuntimeOptions) (_result *OperateBucketScanTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BucketName) {
@@ -56894,9 +58341,11 @@ func (client *Client) OperateBucketScanTask(request *OperateBucketScanTaskReques
 //
 // @return OperateCommonOverallConfigResponse
 func (client *Client) OperateCommonOverallConfigWithOptions(request *OperateCommonOverallConfigRequest, runtime *dara.RuntimeOptions) (_result *OperateCommonOverallConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -56966,9 +58415,11 @@ func (client *Client) OperateCommonOverallConfig(request *OperateCommonOverallCo
 //
 // @return OperateCommonTargetConfigResponse
 func (client *Client) OperateCommonTargetConfigWithOptions(request *OperateCommonTargetConfigRequest, runtime *dara.RuntimeOptions) (_result *OperateCommonTargetConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FieldName) {
@@ -57046,9 +58497,11 @@ func (client *Client) OperateCommonTargetConfig(request *OperateCommonTargetConf
 //
 // @return OperateImageBaselineWhitelistResponse
 func (client *Client) OperateImageBaselineWhitelistWithOptions(request *OperateImageBaselineWhitelistRequest, runtime *dara.RuntimeOptions) (_result *OperateImageBaselineWhitelistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaselineItemKeyList) {
@@ -57122,9 +58575,11 @@ func (client *Client) OperateImageBaselineWhitelist(request *OperateImageBaselin
 //
 // @return OperateImageVulResponse
 func (client *Client) OperateImageVulWithOptions(request *OperateImageVulRequest, runtime *dara.RuntimeOptions) (_result *OperateImageVulResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Info) {
@@ -57190,9 +58645,11 @@ func (client *Client) OperateImageVul(request *OperateImageVulRequest) (_result 
 //
 // @return OperateSuspiciousOverallConfigResponse
 func (client *Client) OperateSuspiciousOverallConfigWithOptions(request *OperateSuspiciousOverallConfigRequest, runtime *dara.RuntimeOptions) (_result *OperateSuspiciousOverallConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -57266,9 +58723,11 @@ func (client *Client) OperateSuspiciousOverallConfig(request *OperateSuspiciousO
 //
 // @return OperateSuspiciousTargetConfigResponse
 func (client *Client) OperateSuspiciousTargetConfigWithOptions(request *OperateSuspiciousTargetConfigRequest, runtime *dara.RuntimeOptions) (_result *OperateSuspiciousTargetConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -57342,9 +58801,11 @@ func (client *Client) OperateSuspiciousTargetConfig(request *OperateSuspiciousTa
 //
 // @return OperateSwitchStatusResponse
 func (client *Client) OperateSwitchStatusWithOptions(request *OperateSwitchStatusRequest, runtime *dara.RuntimeOptions) (_result *OperateSwitchStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RuleId) {
@@ -57406,9 +58867,11 @@ func (client *Client) OperateSwitchStatus(request *OperateSwitchStatusRequest) (
 //
 // @return OperateVirusEventsResponse
 func (client *Client) OperateVirusEventsWithOptions(request *OperateVirusEventsRequest, runtime *dara.RuntimeOptions) (_result *OperateVirusEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OperationAll) {
@@ -57474,9 +58937,11 @@ func (client *Client) OperateVirusEvents(request *OperateVirusEventsRequest) (_r
 //
 // @return OperateVulsResponse
 func (client *Client) OperateVulsWithOptions(request *OperateVulsRequest, runtime *dara.RuntimeOptions) (_result *OperateVulsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OperateType) {
@@ -57546,9 +59011,11 @@ func (client *Client) OperateVuls(request *OperateVulsRequest) (_result *Operate
 //
 // @return OperateWebLockFileEventsResponse
 func (client *Client) OperateWebLockFileEventsWithOptions(request *OperateWebLockFileEventsRequest, runtime *dara.RuntimeOptions) (_result *OperateWebLockFileEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DealAll) {
@@ -57614,9 +59081,11 @@ func (client *Client) OperateWebLockFileEvents(request *OperateWebLockFileEvents
 //
 // @return OperationCancelIgnoreSuspEventResponse
 func (client *Client) OperationCancelIgnoreSuspEventWithOptions(request *OperationCancelIgnoreSuspEventRequest, runtime *dara.RuntimeOptions) (_result *OperationCancelIgnoreSuspEventResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Remark) {
@@ -57678,9 +59147,11 @@ func (client *Client) OperationCancelIgnoreSuspEvent(request *OperationCancelIgn
 //
 // @return OperationCustomizeReportChartResponse
 func (client *Client) OperationCustomizeReportChartWithOptions(request *OperationCustomizeReportChartRequest, runtime *dara.RuntimeOptions) (_result *OperationCustomizeReportChartResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChartIds) {
@@ -57742,9 +59213,11 @@ func (client *Client) OperationCustomizeReportChart(request *OperationCustomizeR
 //
 // @return OperationSuspEventsResponse
 func (client *Client) OperationSuspEventsWithOptions(request *OperationSuspEventsRequest, runtime *dara.RuntimeOptions) (_result *OperationSuspEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -57822,9 +59295,11 @@ func (client *Client) OperationSuspEvents(request *OperationSuspEventsRequest) (
 //
 // @return PageImageRegistryResponse
 func (client *Client) PageImageRegistryWithOptions(request *PageImageRegistryRequest, runtime *dara.RuntimeOptions) (_result *PageImageRegistryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceIp) {
@@ -57904,9 +59379,11 @@ func (client *Client) PageImageRegistry(request *PageImageRegistryRequest) (_res
 //
 // @return PauseClientResponse
 func (client *Client) PauseClientWithOptions(request *PauseClientRequest, runtime *dara.RuntimeOptions) (_result *PauseClientResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Uuids) {
@@ -57972,9 +59449,11 @@ func (client *Client) PauseClient(request *PauseClientRequest) (_result *PauseCl
 //
 // @return ProcessSoarStrategyTaskResponse
 func (client *Client) ProcessSoarStrategyTaskWithOptions(request *ProcessSoarStrategyTaskRequest, runtime *dara.RuntimeOptions) (_result *ProcessSoarStrategyTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.StrategyTaskId) {
@@ -58044,9 +59523,11 @@ func (client *Client) ProcessSoarStrategyTask(request *ProcessSoarStrategyTaskRe
 //
 // @return PublicCreateImageScanTaskResponse
 func (client *Client) PublicCreateImageScanTaskWithOptions(request *PublicCreateImageScanTaskRequest, runtime *dara.RuntimeOptions) (_result *PublicCreateImageScanTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Digests) {
@@ -58146,9 +59627,11 @@ func (client *Client) PublicCreateImageScanTask(request *PublicCreateImageScanTa
 //
 // @return PublicPreCheckImageScanTaskResponse
 func (client *Client) PublicPreCheckImageScanTaskWithOptions(request *PublicPreCheckImageScanTaskRequest, runtime *dara.RuntimeOptions) (_result *PublicPreCheckImageScanTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Digests) {
@@ -58244,9 +59727,11 @@ func (client *Client) PublicPreCheckImageScanTask(request *PublicPreCheckImageSc
 //
 // @return PublicSyncAndCreateImageScanTaskResponse
 func (client *Client) PublicSyncAndCreateImageScanTaskWithOptions(request *PublicSyncAndCreateImageScanTaskRequest, runtime *dara.RuntimeOptions) (_result *PublicSyncAndCreateImageScanTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Images) {
@@ -58308,9 +59793,11 @@ func (client *Client) PublicSyncAndCreateImageScanTask(request *PublicSyncAndCre
 //
 // @return QueryAttackCountResponse
 func (client *Client) QueryAttackCountWithOptions(request *QueryAttackCountRequest, runtime *dara.RuntimeOptions) (_result *QueryAttackCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceIp) {
@@ -58382,9 +59869,11 @@ func (client *Client) QueryAttackCount(request *QueryAttackCountRequest) (_resul
 //
 // @return QueryDiscoverDatabaseResponse
 func (client *Client) QueryDiscoverDatabaseWithOptions(request *QueryDiscoverDatabaseRequest, runtime *dara.RuntimeOptions) (_result *QueryDiscoverDatabaseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreateMark) {
@@ -58450,9 +59939,11 @@ func (client *Client) QueryDiscoverDatabase(request *QueryDiscoverDatabaseReques
 //
 // @return QueryGroupIdByGroupNameResponse
 func (client *Client) QueryGroupIdByGroupNameWithOptions(request *QueryGroupIdByGroupNameRequest, runtime *dara.RuntimeOptions) (_result *QueryGroupIdByGroupNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupName) {
@@ -58522,9 +60013,11 @@ func (client *Client) QueryGroupIdByGroupName(request *QueryGroupIdByGroupNameRe
 //
 // @return QueryGroupedSecurityEventMarkMissListResponse
 func (client *Client) QueryGroupedSecurityEventMarkMissListWithOptions(request *QueryGroupedSecurityEventMarkMissListRequest, runtime *dara.RuntimeOptions) (_result *QueryGroupedSecurityEventMarkMissListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DisposalWay) {
@@ -58659,9 +60152,11 @@ func (client *Client) QueryGuidTaskList() (_result *QueryGuidTaskListResponse, _
 //
 // @return QueryJenkinsImageRegistryPersistenceDayResponse
 func (client *Client) QueryJenkinsImageRegistryPersistenceDayWithOptions(request *QueryJenkinsImageRegistryPersistenceDayRequest, runtime *dara.RuntimeOptions) (_result *QueryJenkinsImageRegistryPersistenceDayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceIp) {
@@ -58719,9 +60214,11 @@ func (client *Client) QueryJenkinsImageRegistryPersistenceDay(request *QueryJenk
 //
 // @return QueryPreCheckDatabaseResponse
 func (client *Client) QueryPreCheckDatabaseWithOptions(request *QueryPreCheckDatabaseRequest, runtime *dara.RuntimeOptions) (_result *QueryPreCheckDatabaseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceUuid) {
@@ -58787,9 +60284,11 @@ func (client *Client) QueryPreCheckDatabase(request *QueryPreCheckDatabaseReques
 //
 // @return RebootMachineResponse
 func (client *Client) RebootMachineWithOptions(request *RebootMachineRequest, runtime *dara.RuntimeOptions) (_result *RebootMachineResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Uuid) {
@@ -58847,9 +60346,11 @@ func (client *Client) RebootMachine(request *RebootMachineRequest) (_result *Reb
 //
 // @return ReceiveFunctionTrialRewardByAliUidResponse
 func (client *Client) ReceiveFunctionTrialRewardByAliUidWithOptions(request *ReceiveFunctionTrialRewardByAliUidRequest, runtime *dara.RuntimeOptions) (_result *ReceiveFunctionTrialRewardByAliUidResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FunctionName) {
@@ -58911,9 +60412,11 @@ func (client *Client) ReceiveFunctionTrialRewardByAliUid(request *ReceiveFunctio
 //
 // @return RefreshAssetsResponse
 func (client *Client) RefreshAssetsWithOptions(request *RefreshAssetsRequest, runtime *dara.RuntimeOptions) (_result *RefreshAssetsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AssetType) {
@@ -58983,9 +60486,11 @@ func (client *Client) RefreshAssets(request *RefreshAssetsRequest) (_result *Ref
 //
 // @return RefreshContainerAssetsResponse
 func (client *Client) RefreshContainerAssetsWithOptions(request *RefreshContainerAssetsRequest, runtime *dara.RuntimeOptions) (_result *RefreshContainerAssetsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AssetType) {
@@ -59090,9 +60595,11 @@ func (client *Client) RefreshOssBucketScanInfo() (_result *RefreshOssBucketScanI
 //
 // @return RefreshRegistryTokenResponse
 func (client *Client) RefreshRegistryTokenWithOptions(request *RefreshRegistryTokenRequest, runtime *dara.RuntimeOptions) (_result *RefreshRegistryTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegistryId) {
@@ -59150,9 +60657,11 @@ func (client *Client) RefreshRegistryToken(request *RefreshRegistryTokenRequest)
 //
 // @return ReleaseSasInstanceResponse
 func (client *Client) ReleaseSasInstanceWithOptions(request *ReleaseSasInstanceRequest, runtime *dara.RuntimeOptions) (_result *ReleaseSasInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ChargeType) {
@@ -59214,9 +60723,11 @@ func (client *Client) ReleaseSasInstance(request *ReleaseSasInstanceRequest) (_r
 //
 // @return RemoveCheckInstanceResultWhiteListResponse
 func (client *Client) RemoveCheckInstanceResultWhiteListWithOptions(request *RemoveCheckInstanceResultWhiteListRequest, runtime *dara.RuntimeOptions) (_result *RemoveCheckInstanceResultWhiteListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckId) {
@@ -59278,9 +60789,11 @@ func (client *Client) RemoveCheckInstanceResultWhiteList(request *RemoveCheckIns
 //
 // @return RemoveCheckResultWhiteListResponse
 func (client *Client) RemoveCheckResultWhiteListWithOptions(request *RemoveCheckResultWhiteListRequest, runtime *dara.RuntimeOptions) (_result *RemoveCheckResultWhiteListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckGroupId) {
@@ -59350,9 +60863,11 @@ func (client *Client) RemoveCheckResultWhiteList(request *RemoveCheckResultWhite
 //
 // @return ResetHoneypotResponse
 func (client *Client) ResetHoneypotWithOptions(request *ResetHoneypotRequest, runtime *dara.RuntimeOptions) (_result *ResetHoneypotResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HoneypotId) {
@@ -59414,9 +60929,11 @@ func (client *Client) ResetHoneypot(request *ResetHoneypotRequest) (_result *Res
 //
 // @return ResetLogShipperResponse
 func (client *Client) ResetLogShipperWithOptions(request *ResetLogShipperRequest, runtime *dara.RuntimeOptions) (_result *ResetLogShipperResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HotTtl) {
@@ -59482,9 +60999,11 @@ func (client *Client) ResetLogShipper(request *ResetLogShipperRequest) (_result 
 //
 // @return RetryAgentlessTaskResponse
 func (client *Client) RetryAgentlessTaskWithOptions(request *RetryAgentlessTaskRequest, runtime *dara.RuntimeOptions) (_result *RetryAgentlessTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -59542,9 +61061,11 @@ func (client *Client) RetryAgentlessTask(request *RetryAgentlessTaskRequest) (_r
 //
 // @return RetryInstallProbeResponse
 func (client *Client) RetryInstallProbeWithOptions(request *RetryInstallProbeRequest, runtime *dara.RuntimeOptions) (_result *RetryInstallProbeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProbeId) {
@@ -59602,9 +61123,11 @@ func (client *Client) RetryInstallProbe(request *RetryInstallProbeRequest) (_res
 //
 // @return RollbackSuspEventQuaraFileResponse
 func (client *Client) RollbackSuspEventQuaraFileWithOptions(request *RollbackSuspEventQuaraFileRequest, runtime *dara.RuntimeOptions) (_result *RollbackSuspEventQuaraFileResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -59670,9 +61193,11 @@ func (client *Client) RollbackSuspEventQuaraFile(request *RollbackSuspEventQuara
 //
 // @return SasInstallCodeResponse
 func (client *Client) SasInstallCodeWithOptions(request *SasInstallCodeRequest, runtime *dara.RuntimeOptions) (_result *SasInstallCodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceIp) {
@@ -59730,9 +61255,11 @@ func (client *Client) SasInstallCode(request *SasInstallCodeRequest) (_result *S
 //
 // @return SaveCustomizeReportConfigResponse
 func (client *Client) SaveCustomizeReportConfigWithOptions(request *SaveCustomizeReportConfigRequest, runtime *dara.RuntimeOptions) (_result *SaveCustomizeReportConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupType) {
@@ -59866,9 +61393,11 @@ func (client *Client) SaveCustomizeReportConfig(request *SaveCustomizeReportConf
 //
 // @return SaveImageBaselineStrategyResponse
 func (client *Client) SaveImageBaselineStrategyWithOptions(request *SaveImageBaselineStrategyRequest, runtime *dara.RuntimeOptions) (_result *SaveImageBaselineStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaselineItemList) {
@@ -59942,9 +61471,11 @@ func (client *Client) SaveImageBaselineStrategy(request *SaveImageBaselineStrate
 //
 // @return SaveSuspEventUserSettingResponse
 func (client *Client) SaveSuspEventUserSettingWithOptions(request *SaveSuspEventUserSettingRequest, runtime *dara.RuntimeOptions) (_result *SaveSuspEventUserSettingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -60010,9 +61541,11 @@ func (client *Client) SaveSuspEventUserSetting(request *SaveSuspEventUserSetting
 //
 // @return SaveWhiteListStrategyResponse
 func (client *Client) SaveWhiteListStrategyWithOptions(request *SaveWhiteListStrategyRequest, runtime *dara.RuntimeOptions) (_result *SaveWhiteListStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -60090,9 +61623,11 @@ func (client *Client) SaveWhiteListStrategy(request *SaveWhiteListStrategyReques
 //
 // @return SaveWhiteListStrategyAssetsResponse
 func (client *Client) SaveWhiteListStrategyAssetsWithOptions(request *SaveWhiteListStrategyAssetsRequest, runtime *dara.RuntimeOptions) (_result *SaveWhiteListStrategyAssetsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -60166,9 +61701,11 @@ func (client *Client) SaveWhiteListStrategyAssets(request *SaveWhiteListStrategy
 //
 // @return SendCustomizeReportResponse
 func (client *Client) SendCustomizeReportWithOptions(request *SendCustomizeReportRequest, runtime *dara.RuntimeOptions) (_result *SendCustomizeReportResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ReportId) {
@@ -60226,9 +61763,11 @@ func (client *Client) SendCustomizeReport(request *SendCustomizeReportRequest) (
 //
 // @return SetBuildRiskDefineRuleConfigResponse
 func (client *Client) SetBuildRiskDefineRuleConfigWithOptions(request *SetBuildRiskDefineRuleConfigRequest, runtime *dara.RuntimeOptions) (_result *SetBuildRiskDefineRuleConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -60286,9 +61825,11 @@ func (client *Client) SetBuildRiskDefineRuleConfig(request *SetBuildRiskDefineRu
 //
 // @return SetClusterInterceptionConfigResponse
 func (client *Client) SetClusterInterceptionConfigWithOptions(request *SetClusterInterceptionConfigRequest, runtime *dara.RuntimeOptions) (_result *SetClusterInterceptionConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterIds) {
@@ -60354,9 +61895,11 @@ func (client *Client) SetClusterInterceptionConfig(request *SetClusterIntercepti
 //
 // @return SetImageBuildRiskStatusResponse
 func (client *Client) SetImageBuildRiskStatusWithOptions(request *SetImageBuildRiskStatusRequest, runtime *dara.RuntimeOptions) (_result *SetImageBuildRiskStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageUuids) {
@@ -60422,9 +61965,11 @@ func (client *Client) SetImageBuildRiskStatus(request *SetImageBuildRiskStatusRe
 //
 // @return SetImageSensitiveFileStatusResponse
 func (client *Client) SetImageSensitiveFileStatusWithOptions(tmpReq *SetImageSensitiveFileStatusRequest, runtime *dara.RuntimeOptions) (_result *SetImageSensitiveFileStatusResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SetImageSensitiveFileStatusShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -60504,9 +62049,11 @@ func (client *Client) SetImageSensitiveFileStatus(request *SetImageSensitiveFile
 //
 // @return SetRegistryScanDayNumResponse
 func (client *Client) SetRegistryScanDayNumWithOptions(request *SetRegistryScanDayNumRequest, runtime *dara.RuntimeOptions) (_result *SetRegistryScanDayNumResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ScanDayNum) {
@@ -60564,9 +62111,11 @@ func (client *Client) SetRegistryScanDayNum(request *SetRegistryScanDayNumReques
 //
 // @return SetSensitiveDefineRuleConfigResponse
 func (client *Client) SetSensitiveDefineRuleConfigWithOptions(request *SetSensitiveDefineRuleConfigRequest, runtime *dara.RuntimeOptions) (_result *SetSensitiveDefineRuleConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -60632,9 +62181,11 @@ func (client *Client) SetSensitiveDefineRuleConfig(request *SetSensitiveDefineRu
 //
 // @return SetSyncRefreshRegionResponse
 func (client *Client) SetSyncRefreshRegionWithOptions(request *SetSyncRefreshRegionRequest, runtime *dara.RuntimeOptions) (_result *SetSyncRefreshRegionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DefaultRegion) {
@@ -60702,9 +62253,11 @@ func (client *Client) SetSyncRefreshRegion(request *SetSyncRefreshRegionRequest)
 //
 // @return StartBaselineSecurityCheckResponse
 func (client *Client) StartBaselineSecurityCheckWithOptions(request *StartBaselineSecurityCheckRequest, runtime *dara.RuntimeOptions) (_result *StartBaselineSecurityCheckResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ItemIds) {
@@ -60828,9 +62381,11 @@ func (client *Client) StartDiscoverDatabaseTask() (_result *StartDiscoverDatabas
 //
 // @return StartHoneypotResponse
 func (client *Client) StartHoneypotWithOptions(request *StartHoneypotRequest, runtime *dara.RuntimeOptions) (_result *StartHoneypotResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HoneypotId) {
@@ -60939,9 +62494,11 @@ func (client *Client) StartIdcProbeScan() (_result *StartIdcProbeScanResponse, _
 //
 // @return StartPreCheckDatabaseResponse
 func (client *Client) StartPreCheckDatabaseWithOptions(request *StartPreCheckDatabaseRequest, runtime *dara.RuntimeOptions) (_result *StartPreCheckDatabaseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatabaseType) {
@@ -61007,9 +62564,11 @@ func (client *Client) StartPreCheckDatabase(request *StartPreCheckDatabaseReques
 //
 // @return StartVirusScanTaskResponse
 func (client *Client) StartVirusScanTaskWithOptions(request *StartVirusScanTaskRequest, runtime *dara.RuntimeOptions) (_result *StartVirusScanTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TargetInfo) {
@@ -61067,9 +62626,11 @@ func (client *Client) StartVirusScanTask(request *StartVirusScanTaskRequest) (_r
 //
 // @return StopHoneypotResponse
 func (client *Client) StopHoneypotWithOptions(request *StopHoneypotRequest, runtime *dara.RuntimeOptions) (_result *StopHoneypotResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HoneypotId) {
@@ -61131,9 +62692,11 @@ func (client *Client) StopHoneypot(request *StopHoneypotRequest) (_result *StopH
 //
 // @return SubmitCheckResponse
 func (client *Client) SubmitCheckWithOptions(request *SubmitCheckRequest, runtime *dara.RuntimeOptions) (_result *SubmitCheckResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ScanRange) {
@@ -61195,9 +62758,11 @@ func (client *Client) SubmitCheck(request *SubmitCheckRequest) (_result *SubmitC
 //
 // @return SubmitOperationTaskResponse
 func (client *Client) SubmitOperationTaskWithOptions(request *SubmitOperationTaskRequest, runtime *dara.RuntimeOptions) (_result *SubmitOperationTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckId) {
@@ -61369,9 +62934,11 @@ func (client *Client) TriggerCheck() (_result *TriggerCheckResponse, _err error)
 //
 // @return UnBindHybridProxyResponse
 func (client *Client) UnBindHybridProxyWithOptions(request *UnBindHybridProxyRequest, runtime *dara.RuntimeOptions) (_result *UnBindHybridProxyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterName) {
@@ -61433,9 +63000,11 @@ func (client *Client) UnBindHybridProxy(request *UnBindHybridProxyRequest) (_res
 //
 // @return UnMarkMonitorAccountsResponse
 func (client *Client) UnMarkMonitorAccountsWithOptions(request *UnMarkMonitorAccountsRequest, runtime *dara.RuntimeOptions) (_result *UnMarkMonitorAccountsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountIds) {
@@ -61505,9 +63074,11 @@ func (client *Client) UnMarkMonitorAccounts(request *UnMarkMonitorAccountsReques
 //
 // @return UnbindAegisResponse
 func (client *Client) UnbindAegisWithOptions(request *UnbindAegisRequest, runtime *dara.RuntimeOptions) (_result *UnbindAegisResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Uuids) {
@@ -61577,9 +63148,11 @@ func (client *Client) UnbindAegis(request *UnbindAegisRequest) (_result *UnbindA
 //
 // @return UninstallBackupClientResponse
 func (client *Client) UninstallBackupClientWithOptions(request *UninstallBackupClientRequest, runtime *dara.RuntimeOptions) (_result *UninstallBackupClientResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PolicyVersion) {
@@ -61645,9 +63218,11 @@ func (client *Client) UninstallBackupClient(request *UninstallBackupClientReques
 //
 // @return UninstallUniBackupAgentResponse
 func (client *Client) UninstallUniBackupAgentWithOptions(request *UninstallUniBackupAgentRequest, runtime *dara.RuntimeOptions) (_result *UninstallUniBackupAgentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PolicyId) {
@@ -61705,9 +63280,11 @@ func (client *Client) UninstallUniBackupAgent(request *UninstallUniBackupAgentRe
 //
 // @return UpdateAlarmEventResponse
 func (client *Client) UpdateAlarmEventWithOptions(request *UpdateAlarmEventRequest, runtime *dara.RuntimeOptions) (_result *UpdateAlarmEventResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AlarmEventIdList) {
@@ -61773,9 +63350,11 @@ func (client *Client) UpdateAlarmEvent(request *UpdateAlarmEventRequest) (_resul
 //
 // @return UpdateAttackPathSensitiveAssetConfigResponse
 func (client *Client) UpdateAttackPathSensitiveAssetConfigWithOptions(request *UpdateAttackPathSensitiveAssetConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateAttackPathSensitiveAssetConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AttackPathAssetList) {
@@ -61837,9 +63416,11 @@ func (client *Client) UpdateAttackPathSensitiveAssetConfig(request *UpdateAttack
 //
 // @return UpdateAttackPathWhitelistResponse
 func (client *Client) UpdateAttackPathWhitelistWithOptions(request *UpdateAttackPathWhitelistRequest, runtime *dara.RuntimeOptions) (_result *UpdateAttackPathWhitelistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AttackPathAssetList) {
@@ -61921,9 +63502,11 @@ func (client *Client) UpdateAttackPathWhitelist(request *UpdateAttackPathWhiteli
 //
 // @return UpdateBaselineCheckWhiteRecordResponse
 func (client *Client) UpdateBaselineCheckWhiteRecordWithOptions(request *UpdateBaselineCheckWhiteRecordRequest, runtime *dara.RuntimeOptions) (_result *UpdateBaselineCheckWhiteRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckId) {
@@ -62005,9 +63588,11 @@ func (client *Client) UpdateBaselineCheckWhiteRecord(request *UpdateBaselineChec
 //
 // @return UpdateClientAlertModeResponse
 func (client *Client) UpdateClientAlertModeWithOptions(request *UpdateClientAlertModeRequest, runtime *dara.RuntimeOptions) (_result *UpdateClientAlertModeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Mode) {
@@ -62069,9 +63654,11 @@ func (client *Client) UpdateClientAlertMode(request *UpdateClientAlertModeReques
 //
 // @return UpdateCommonSwitchConfigResponse
 func (client *Client) UpdateCommonSwitchConfigWithOptions(request *UpdateCommonSwitchConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateCommonSwitchConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TargetDefault) {
@@ -62133,9 +63720,11 @@ func (client *Client) UpdateCommonSwitchConfig(request *UpdateCommonSwitchConfig
 //
 // @return UpdateCustomizeReportStatusResponse
 func (client *Client) UpdateCustomizeReportStatusWithOptions(request *UpdateCustomizeReportStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateCustomizeReportStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PinnedTime) {
@@ -62201,9 +63790,11 @@ func (client *Client) UpdateCustomizeReportStatus(request *UpdateCustomizeReport
 //
 // @return UpdateFileProtectEventStatusResponse
 func (client *Client) UpdateFileProtectEventStatusWithOptions(request *UpdateFileProtectEventStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateFileProtectEventStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -62265,9 +63856,11 @@ func (client *Client) UpdateFileProtectEventStatus(request *UpdateFileProtectEve
 //
 // @return UpdateFileProtectRemarkResponse
 func (client *Client) UpdateFileProtectRemarkWithOptions(request *UpdateFileProtectRemarkRequest, runtime *dara.RuntimeOptions) (_result *UpdateFileProtectRemarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -62329,9 +63922,11 @@ func (client *Client) UpdateFileProtectRemark(request *UpdateFileProtectRemarkRe
 //
 // @return UpdateFileProtectRuleResponse
 func (client *Client) UpdateFileProtectRuleWithOptions(request *UpdateFileProtectRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateFileProtectRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlertLevel) {
@@ -62417,9 +64012,11 @@ func (client *Client) UpdateFileProtectRule(request *UpdateFileProtectRuleReques
 //
 // @return UpdateFileUploadLimitResponse
 func (client *Client) UpdateFileUploadLimitWithOptions(request *UpdateFileUploadLimitRequest, runtime *dara.RuntimeOptions) (_result *UpdateFileUploadLimitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Limit) {
@@ -62477,9 +64074,11 @@ func (client *Client) UpdateFileUploadLimit(request *UpdateFileUploadLimitReques
 //
 // @return UpdateHoneypotResponse
 func (client *Client) UpdateHoneypotWithOptions(request *UpdateHoneypotRequest, runtime *dara.RuntimeOptions) (_result *UpdateHoneypotResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HoneypotId) {
@@ -62549,9 +64148,11 @@ func (client *Client) UpdateHoneypot(request *UpdateHoneypotRequest) (_result *U
 //
 // @return UpdateHoneypotNodeResponse
 func (client *Client) UpdateHoneypotNodeWithOptions(request *UpdateHoneypotNodeRequest, runtime *dara.RuntimeOptions) (_result *UpdateHoneypotNodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AvailableProbeNum) {
@@ -62621,9 +64222,11 @@ func (client *Client) UpdateHoneypotNode(request *UpdateHoneypotNodeRequest) (_r
 //
 // @return UpdateHoneypotPresetResponse
 func (client *Client) UpdateHoneypotPresetWithOptions(request *UpdateHoneypotPresetRequest, runtime *dara.RuntimeOptions) (_result *UpdateHoneypotPresetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HoneypotImageName) {
@@ -62697,9 +64300,11 @@ func (client *Client) UpdateHoneypotPreset(request *UpdateHoneypotPresetRequest)
 //
 // @return UpdateHoneypotProbeResponse
 func (client *Client) UpdateHoneypotProbeWithOptions(request *UpdateHoneypotProbeRequest, runtime *dara.RuntimeOptions) (_result *UpdateHoneypotProbeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Arp) {
@@ -62777,9 +64382,11 @@ func (client *Client) UpdateHoneypotProbe(request *UpdateHoneypotProbeRequest) (
 //
 // @return UpdateHoneypotProbeBindResponse
 func (client *Client) UpdateHoneypotProbeBindWithOptions(request *UpdateHoneypotProbeBindRequest, runtime *dara.RuntimeOptions) (_result *UpdateHoneypotProbeBindResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BindId) {
@@ -62881,9 +64488,11 @@ func (client *Client) UpdateHoneypotProbeBind(request *UpdateHoneypotProbeBindRe
 //
 // @return UpdateHybridProxyResponse
 func (client *Client) UpdateHybridProxyWithOptions(request *UpdateHybridProxyRequest, runtime *dara.RuntimeOptions) (_result *UpdateHybridProxyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProxyUuid) {
@@ -62941,9 +64550,11 @@ func (client *Client) UpdateHybridProxy(request *UpdateHybridProxyRequest) (_res
 //
 // @return UpdateImageEventOperationResponse
 func (client *Client) UpdateImageEventOperationWithOptions(request *UpdateImageEventOperationRequest, runtime *dara.RuntimeOptions) (_result *UpdateImageEventOperationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Conditions) {
@@ -63017,9 +64628,11 @@ func (client *Client) UpdateImageEventOperation(request *UpdateImageEventOperati
 //
 // @return UpdateImageVulWhitelistTargetResponse
 func (client *Client) UpdateImageVulWhitelistTargetWithOptions(request *UpdateImageVulWhitelistTargetRequest, runtime *dara.RuntimeOptions) (_result *UpdateImageVulWhitelistTargetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -63093,9 +64706,11 @@ func (client *Client) UpdateImageVulWhitelistTarget(request *UpdateImageVulWhite
 //
 // @return UpdateJenkinsImageRegistryNameResponse
 func (client *Client) UpdateJenkinsImageRegistryNameWithOptions(request *UpdateJenkinsImageRegistryNameRequest, runtime *dara.RuntimeOptions) (_result *UpdateJenkinsImageRegistryNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceIp) {
@@ -63163,9 +64778,11 @@ func (client *Client) UpdateJenkinsImageRegistryName(request *UpdateJenkinsImage
 //
 // @return UpdateJenkinsImageRegistryPersistenceDayResponse
 func (client *Client) UpdateJenkinsImageRegistryPersistenceDayWithOptions(request *UpdateJenkinsImageRegistryPersistenceDayRequest, runtime *dara.RuntimeOptions) (_result *UpdateJenkinsImageRegistryPersistenceDayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceIp) {
@@ -63233,9 +64850,11 @@ func (client *Client) UpdateJenkinsImageRegistryPersistenceDay(request *UpdateJe
 //
 // @return UpdateMaliciousFileWhitelistConfigResponse
 func (client *Client) UpdateMaliciousFileWhitelistConfigWithOptions(request *UpdateMaliciousFileWhitelistConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateMaliciousFileWhitelistConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigId) {
@@ -63321,9 +64940,11 @@ func (client *Client) UpdateMaliciousFileWhitelistConfig(request *UpdateMaliciou
 //
 // @return UpdateOpaStrategyNewResponse
 func (client *Client) UpdateOpaStrategyNewWithOptions(tmpReq *UpdateOpaStrategyNewRequest, runtime *dara.RuntimeOptions) (_result *UpdateOpaStrategyNewResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateOpaStrategyNewShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -63439,9 +65060,11 @@ func (client *Client) UpdateOpaStrategyNew(request *UpdateOpaStrategyNewRequest)
 //
 // @return UpdateOssScanConfigResponse
 func (client *Client) UpdateOssScanConfigWithOptions(request *UpdateOssScanConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateOssScanConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllKeyPrefix) {
@@ -63555,9 +65178,11 @@ func (client *Client) UpdateOssScanConfig(request *UpdateOssScanConfigRequest) (
 //
 // @return UpdatePostPaidBindRelResponse
 func (client *Client) UpdatePostPaidBindRelWithOptions(request *UpdatePostPaidBindRelRequest, runtime *dara.RuntimeOptions) (_result *UpdatePostPaidBindRelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoBind) {
@@ -63627,9 +65252,11 @@ func (client *Client) UpdatePostPaidBindRel(request *UpdatePostPaidBindRelReques
 //
 // @return UpdatePublishAutoUpgradeResponse
 func (client *Client) UpdatePublishAutoUpgradeWithOptions(request *UpdatePublishAutoUpgradeRequest, runtime *dara.RuntimeOptions) (_result *UpdatePublishAutoUpgradeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoUpgrade) {
@@ -63687,9 +65314,11 @@ func (client *Client) UpdatePublishAutoUpgrade(request *UpdatePublishAutoUpgrade
 //
 // @return UpdatePublishBatchResponse
 func (client *Client) UpdatePublishBatchWithOptions(request *UpdatePublishBatchRequest, runtime *dara.RuntimeOptions) (_result *UpdatePublishBatchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BatchId) {
@@ -63759,9 +65388,11 @@ func (client *Client) UpdatePublishBatch(request *UpdatePublishBatchRequest) (_r
 //
 // @return UpdatePublishCronResponse
 func (client *Client) UpdatePublishCronWithOptions(request *UpdatePublishCronRequest, runtime *dara.RuntimeOptions) (_result *UpdatePublishCronResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Cron) {
@@ -63835,9 +65466,11 @@ func (client *Client) UpdatePublishCron(request *UpdatePublishCronRequest) (_res
 //
 // @return UpdatePublishGraySwitchResponse
 func (client *Client) UpdatePublishGraySwitchWithOptions(request *UpdatePublishGraySwitchRequest, runtime *dara.RuntimeOptions) (_result *UpdatePublishGraySwitchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GraySwitchStatus) {
@@ -63895,9 +65528,11 @@ func (client *Client) UpdatePublishGraySwitch(request *UpdatePublishGraySwitchRe
 //
 // @return UpdateSelectionKeyByTypeResponse
 func (client *Client) UpdateSelectionKeyByTypeWithOptions(request *UpdateSelectionKeyByTypeRequest, runtime *dara.RuntimeOptions) (_result *UpdateSelectionKeyByTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessType) {
@@ -63959,9 +65594,11 @@ func (client *Client) UpdateSelectionKeyByType(request *UpdateSelectionKeyByType
 //
 // @return UpdateStrictEventNameResponse
 func (client *Client) UpdateStrictEventNameWithOptions(request *UpdateStrictEventNameRequest, runtime *dara.RuntimeOptions) (_result *UpdateStrictEventNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventNameList) {
@@ -64027,9 +65664,11 @@ func (client *Client) UpdateStrictEventName(request *UpdateStrictEventNameReques
 //
 // @return UpdateTargetListByBatchResponse
 func (client *Client) UpdateTargetListByBatchWithOptions(request *UpdateTargetListByBatchRequest, runtime *dara.RuntimeOptions) (_result *UpdateTargetListByBatchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BatchId) {
@@ -64091,9 +65730,11 @@ func (client *Client) UpdateTargetListByBatch(request *UpdateTargetListByBatchRe
 //
 // @return UpdateWhiteListResponse
 func (client *Client) UpdateWhiteListWithOptions(request *UpdateWhiteListRequest, runtime *dara.RuntimeOptions) (_result *UpdateWhiteListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegistryId) {
@@ -64159,9 +65800,11 @@ func (client *Client) UpdateWhiteList(request *UpdateWhiteListRequest) (_result 
 //
 // @return UpdateWhiteListStrategyStatusResponse
 func (client *Client) UpdateWhiteListStrategyStatusWithOptions(request *UpdateWhiteListStrategyStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateWhiteListStrategyStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -64235,9 +65878,11 @@ func (client *Client) UpdateWhiteListStrategyStatus(request *UpdateWhiteListStra
 //
 // @return UpgradeBackupPolicyVersionResponse
 func (client *Client) UpgradeBackupPolicyVersionWithOptions(request *UpgradeBackupPolicyVersionRequest, runtime *dara.RuntimeOptions) (_result *UpgradeBackupPolicyVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -64295,9 +65940,11 @@ func (client *Client) UpgradeBackupPolicyVersion(request *UpgradeBackupPolicyVer
 //
 // @return UpgradeHoneypotNodeResponse
 func (client *Client) UpgradeHoneypotNodeWithOptions(request *UpgradeHoneypotNodeRequest, runtime *dara.RuntimeOptions) (_result *UpgradeHoneypotNodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllowHoneypotAccessInternet) {
@@ -64363,9 +66010,11 @@ func (client *Client) UpgradeHoneypotNode(request *UpgradeHoneypotNodeRequest) (
 //
 // @return UpgradeVersionByUuidsResponse
 func (client *Client) UpgradeVersionByUuidsWithOptions(request *UpgradeVersionByUuidsRequest, runtime *dara.RuntimeOptions) (_result *UpgradeVersionByUuidsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.UpgradeVersion) {
@@ -64427,9 +66076,11 @@ func (client *Client) UpgradeVersionByUuids(request *UpgradeVersionByUuidsReques
 //
 // @return UploadedHoneyPotFileResponse
 func (client *Client) UploadedHoneyPotFileWithOptions(request *UploadedHoneyPotFileRequest, runtime *dara.RuntimeOptions) (_result *UploadedHoneyPotFileResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileKey) {
@@ -64511,9 +66162,11 @@ func (client *Client) UploadedHoneyPotFile(request *UploadedHoneyPotFileRequest)
 //
 // @return ValidateHcWarningsResponse
 func (client *Client) ValidateHcWarningsWithOptions(request *ValidateHcWarningsRequest, runtime *dara.RuntimeOptions) (_result *ValidateHcWarningsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckIds) {
@@ -64583,9 +66236,11 @@ func (client *Client) ValidateHcWarnings(request *ValidateHcWarningsRequest) (_r
 //
 // @return VerifyCheckCustomConfigResponse
 func (client *Client) VerifyCheckCustomConfigWithOptions(tmpReq *VerifyCheckCustomConfigRequest, runtime *dara.RuntimeOptions) (_result *VerifyCheckCustomConfigResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &VerifyCheckCustomConfigShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -64665,9 +66320,11 @@ func (client *Client) VerifyCheckCustomConfig(request *VerifyCheckCustomConfigRe
 //
 // @return VerifyCheckInstanceResultResponse
 func (client *Client) VerifyCheckInstanceResultWithOptions(request *VerifyCheckInstanceResultRequest, runtime *dara.RuntimeOptions) (_result *VerifyCheckInstanceResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckId) {
@@ -64733,9 +66390,11 @@ func (client *Client) VerifyCheckInstanceResult(request *VerifyCheckInstanceResu
 //
 // @return VerifyCheckResultResponse
 func (client *Client) VerifyCheckResultWithOptions(request *VerifyCheckResultRequest, runtime *dara.RuntimeOptions) (_result *VerifyCheckResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckIds) {

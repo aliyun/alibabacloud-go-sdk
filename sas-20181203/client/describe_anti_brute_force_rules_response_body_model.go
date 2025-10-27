@@ -66,7 +66,21 @@ func (s *DescribeAntiBruteForceRulesResponseBody) SetRules(v []*DescribeAntiBrut
 }
 
 func (s *DescribeAntiBruteForceRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAntiBruteForceRulesResponseBodyPageInfo struct {
@@ -319,7 +333,12 @@ func (s *DescribeAntiBruteForceRulesResponseBodyRules) SetUuidList(v []*string) 
 }
 
 func (s *DescribeAntiBruteForceRulesResponseBodyRules) Validate() error {
-	return dara.Validate(s)
+	if s.ProtocolType != nil {
+		if err := s.ProtocolType.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAntiBruteForceRulesResponseBodyRulesProtocolType struct {

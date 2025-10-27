@@ -104,7 +104,16 @@ func (s *DescribeImageGroupedVulListResponseBody) SetTotalCount(v int32) *Descri
 }
 
 func (s *DescribeImageGroupedVulListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GroupedVulItems != nil {
+		for _, item := range s.GroupedVulItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageGroupedVulListResponseBodyGroupedVulItems struct {

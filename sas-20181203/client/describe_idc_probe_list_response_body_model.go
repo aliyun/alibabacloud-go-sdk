@@ -66,7 +66,21 @@ func (s *DescribeIdcProbeListResponseBody) SetRequestId(v string) *DescribeIdcPr
 }
 
 func (s *DescribeIdcProbeListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IdcProbes != nil {
+		for _, item := range s.IdcProbes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeIdcProbeListResponseBodyIdcProbes struct {

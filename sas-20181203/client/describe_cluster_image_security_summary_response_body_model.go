@@ -53,7 +53,12 @@ func (s *DescribeClusterImageSecuritySummaryResponseBody) SetRequestId(v string)
 }
 
 func (s *DescribeClusterImageSecuritySummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterImageEvent != nil {
+		if err := s.ClusterImageEvent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterImageSecuritySummaryResponseBodyClusterImageEvent struct {
@@ -112,7 +117,43 @@ func (s *DescribeClusterImageSecuritySummaryResponseBodyClusterImageEvent) SetIm
 }
 
 func (s *DescribeClusterImageSecuritySummaryResponseBodyClusterImageEvent) Validate() error {
-	return dara.Validate(s)
+	if s.ImageBaseline != nil {
+		for _, item := range s.ImageBaseline {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ImageCveVul != nil {
+		for _, item := range s.ImageCveVul {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ImageMaliciousFile != nil {
+		for _, item := range s.ImageMaliciousFile {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ImageScaVul != nil {
+		for _, item := range s.ImageScaVul {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageBaseline struct {

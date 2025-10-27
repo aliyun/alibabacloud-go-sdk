@@ -53,7 +53,12 @@ func (s *GetAppNetworkResponseBody) SetRequestId(v string) *GetAppNetworkRespons
 }
 
 func (s *GetAppNetworkResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AppNetwork != nil {
+		if err := s.AppNetwork.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAppNetworkResponseBodyAppNetwork struct {
@@ -101,7 +106,34 @@ func (s *GetAppNetworkResponseBodyAppNetwork) SetNode(v []*GetAppNetworkResponse
 }
 
 func (s *GetAppNetworkResponseBodyAppNetwork) Validate() error {
-	return dara.Validate(s)
+	if s.Edge != nil {
+		for _, item := range s.Edge {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Namespace != nil {
+		for _, item := range s.Namespace {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Node != nil {
+		for _, item := range s.Node {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAppNetworkResponseBodyAppNetworkEdge struct {

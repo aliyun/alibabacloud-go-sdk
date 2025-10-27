@@ -66,7 +66,21 @@ func (s *ListBaselineCheckWhiteRecordResponseBody) SetRequestId(v string) *ListB
 }
 
 func (s *ListBaselineCheckWhiteRecordResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListBaselineCheckWhiteRecordResponseBodyList struct {
@@ -254,7 +268,16 @@ func (s *ListBaselineCheckWhiteRecordResponseBodyList) SetTargetType(v string) *
 }
 
 func (s *ListBaselineCheckWhiteRecordResponseBodyList) Validate() error {
-	return dara.Validate(s)
+	if s.ContainerItems != nil {
+		for _, item := range s.ContainerItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListBaselineCheckWhiteRecordResponseBodyListContainerItems struct {

@@ -108,7 +108,12 @@ func (s *GetStrategyTemplateDetailResponseBody) SetSuccess(v bool) *GetStrategyT
 }
 
 func (s *GetStrategyTemplateDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStrategyTemplateDetailResponseBodyData struct {
@@ -327,7 +332,12 @@ func (s *GetStrategyTemplateDetailResponseBodyData) SetWhiteList(v []*string) *G
 }
 
 func (s *GetStrategyTemplateDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AlarmDetail != nil {
+		if err := s.AlarmDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStrategyTemplateDetailResponseBodyDataAlarmDetail struct {
@@ -375,7 +385,22 @@ func (s *GetStrategyTemplateDetailResponseBodyDataAlarmDetail) SetVul(v *GetStra
 }
 
 func (s *GetStrategyTemplateDetailResponseBodyDataAlarmDetail) Validate() error {
-	return dara.Validate(s)
+	if s.Baseline != nil {
+		if err := s.Baseline.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MaliciousFile != nil {
+		if err := s.MaliciousFile.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Vul != nil {
+		if err := s.Vul.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStrategyTemplateDetailResponseBodyDataAlarmDetailBaseline struct {
@@ -418,7 +443,16 @@ func (s *GetStrategyTemplateDetailResponseBodyDataAlarmDetailBaseline) SetRiskLe
 }
 
 func (s *GetStrategyTemplateDetailResponseBodyDataAlarmDetailBaseline) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		for _, item := range s.Item {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetStrategyTemplateDetailResponseBodyDataAlarmDetailBaselineItem struct {
@@ -500,7 +534,16 @@ func (s *GetStrategyTemplateDetailResponseBodyDataAlarmDetailMaliciousFile) SetR
 }
 
 func (s *GetStrategyTemplateDetailResponseBodyDataAlarmDetailMaliciousFile) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		for _, item := range s.Item {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetStrategyTemplateDetailResponseBodyDataAlarmDetailMaliciousFileItem struct {
@@ -582,7 +625,16 @@ func (s *GetStrategyTemplateDetailResponseBodyDataAlarmDetailVul) SetRiskLevel(v
 }
 
 func (s *GetStrategyTemplateDetailResponseBodyDataAlarmDetailVul) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		for _, item := range s.Item {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetStrategyTemplateDetailResponseBodyDataAlarmDetailVulItem struct {

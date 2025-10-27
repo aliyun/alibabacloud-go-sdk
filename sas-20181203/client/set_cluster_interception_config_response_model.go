@@ -59,5 +59,10 @@ func (s *SetClusterInterceptionConfigResponse) SetBody(v *SetClusterInterception
 }
 
 func (s *SetClusterInterceptionConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

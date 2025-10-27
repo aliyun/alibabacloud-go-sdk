@@ -53,7 +53,16 @@ func (s *ListUserVpcResponseBody) SetUserVpcInfos(v []*ListUserVpcResponseBodyUs
 }
 
 func (s *ListUserVpcResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserVpcInfos != nil {
+		for _, item := range s.UserVpcInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserVpcResponseBodyUserVpcInfos struct {

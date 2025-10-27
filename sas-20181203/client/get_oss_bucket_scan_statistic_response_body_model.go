@@ -53,7 +53,12 @@ func (s *GetOssBucketScanStatisticResponseBody) SetRequestId(v string) *GetOssBu
 }
 
 func (s *GetOssBucketScanStatisticResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOssBucketScanStatisticResponseBodyData struct {

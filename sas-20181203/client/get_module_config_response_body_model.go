@@ -100,7 +100,21 @@ func (s *GetModuleConfigResponseBody) SetSuccess(v bool) *GetModuleConfigRespons
 }
 
 func (s *GetModuleConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleConfigList != nil {
+		for _, item := range s.ModuleConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetModuleConfigResponseBodyModuleConfigList struct {
@@ -156,7 +170,16 @@ func (s *GetModuleConfigResponseBodyModuleConfigList) SetModuleName(v string) *G
 }
 
 func (s *GetModuleConfigResponseBodyModuleConfigList) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetModuleConfigResponseBodyModuleConfigListItems struct {

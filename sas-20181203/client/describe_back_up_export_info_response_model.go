@@ -59,5 +59,10 @@ func (s *DescribeBackUpExportInfoResponse) SetBody(v *DescribeBackUpExportInfoRe
 }
 
 func (s *DescribeBackUpExportInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

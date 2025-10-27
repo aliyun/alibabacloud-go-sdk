@@ -53,7 +53,16 @@ func (s *DescribeWhiteListAssetResponseBody) SetRequestId(v string) *DescribeWhi
 }
 
 func (s *DescribeWhiteListAssetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Assets != nil {
+		for _, item := range s.Assets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWhiteListAssetResponseBodyAssets struct {

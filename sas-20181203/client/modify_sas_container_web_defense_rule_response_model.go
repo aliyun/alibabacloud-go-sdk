@@ -59,5 +59,10 @@ func (s *ModifySasContainerWebDefenseRuleResponse) SetBody(v *ModifySasContainer
 }
 
 func (s *ModifySasContainerWebDefenseRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

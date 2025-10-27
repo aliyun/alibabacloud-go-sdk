@@ -53,7 +53,16 @@ func (s *ListOperationCheckResponseBody) SetRequestId(v string) *ListOperationCh
 }
 
 func (s *ListOperationCheckResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OperationTaskInstanceDetails != nil {
+		for _, item := range s.OperationTaskInstanceDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListOperationCheckResponseBodyOperationTaskInstanceDetails struct {
@@ -143,7 +152,16 @@ func (s *ListOperationCheckResponseBodyOperationTaskInstanceDetails) SetType(v s
 }
 
 func (s *ListOperationCheckResponseBodyOperationTaskInstanceDetails) Validate() error {
-	return dara.Validate(s)
+	if s.Repair != nil {
+		for _, item := range s.Repair {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListOperationCheckResponseBodyOperationTaskInstanceDetailsRepair struct {
@@ -229,7 +247,16 @@ func (s *ListOperationCheckResponseBodyOperationTaskInstanceDetailsRepair) SetTa
 }
 
 func (s *ListOperationCheckResponseBodyOperationTaskInstanceDetailsRepair) Validate() error {
-	return dara.Validate(s)
+	if s.RepairConfigs != nil {
+		for _, item := range s.RepairConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListOperationCheckResponseBodyOperationTaskInstanceDetailsRepairRepairConfigs struct {

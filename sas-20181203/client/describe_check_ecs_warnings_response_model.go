@@ -59,5 +59,10 @@ func (s *DescribeCheckEcsWarningsResponse) SetBody(v *DescribeCheckEcsWarningsRe
 }
 
 func (s *DescribeCheckEcsWarningsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

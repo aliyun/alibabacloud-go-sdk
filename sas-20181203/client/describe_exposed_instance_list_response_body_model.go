@@ -66,7 +66,21 @@ func (s *DescribeExposedInstanceListResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeExposedInstanceListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ExposedInstances != nil {
+		for _, item := range s.ExposedInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeExposedInstanceListResponseBodyExposedInstances struct {
@@ -455,7 +469,16 @@ func (s *DescribeExposedInstanceListResponseBodyExposedInstances) SetUuid(v stri
 }
 
 func (s *DescribeExposedInstanceListResponseBodyExposedInstances) Validate() error {
-	return dara.Validate(s)
+	if s.ExposureComponentList != nil {
+		for _, item := range s.ExposureComponentList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeExposedInstanceListResponseBodyExposedInstancesExposureComponentList struct {

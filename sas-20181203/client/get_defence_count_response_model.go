@@ -59,5 +59,10 @@ func (s *GetDefenceCountResponse) SetBody(v *GetDefenceCountResponseBody) *GetDe
 }
 
 func (s *GetDefenceCountResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

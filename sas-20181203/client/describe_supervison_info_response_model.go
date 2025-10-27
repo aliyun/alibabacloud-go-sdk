@@ -59,5 +59,10 @@ func (s *DescribeSupervisonInfoResponse) SetBody(v *DescribeSupervisonInfoRespon
 }
 
 func (s *DescribeSupervisonInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

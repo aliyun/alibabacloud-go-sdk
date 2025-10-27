@@ -59,5 +59,10 @@ func (s *QueryGroupIdByGroupNameResponse) SetBody(v *QueryGroupIdByGroupNameResp
 }
 
 func (s *QueryGroupIdByGroupNameResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -138,7 +138,21 @@ func (s *ListHoneypotEventFlowsResponseBody) SetSuccess(v bool) *ListHoneypotEve
 }
 
 func (s *ListHoneypotEventFlowsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HoneypotEventFlows != nil {
+		for _, item := range s.HoneypotEventFlows {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListHoneypotEventFlowsResponseBodyHoneypotEventFlows struct {

@@ -59,5 +59,10 @@ func (s *ModifySearchConditionResponse) SetBody(v *ModifySearchConditionResponse
 }
 
 func (s *ModifySearchConditionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

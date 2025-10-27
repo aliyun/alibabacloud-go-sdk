@@ -53,7 +53,16 @@ func (s *DescribeRiskTypeResponseBody) SetRiskTypes(v []*DescribeRiskTypeRespons
 }
 
 func (s *DescribeRiskTypeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RiskTypes != nil {
+		for _, item := range s.RiskTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRiskTypeResponseBodyRiskTypes struct {
@@ -128,7 +137,16 @@ func (s *DescribeRiskTypeResponseBodyRiskTypes) SetTypeName(v string) *DescribeR
 }
 
 func (s *DescribeRiskTypeResponseBodyRiskTypes) Validate() error {
-	return dara.Validate(s)
+	if s.SubTypes != nil {
+		for _, item := range s.SubTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRiskTypeResponseBodyRiskTypesSubTypes struct {
@@ -222,7 +240,16 @@ func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypes) SetTypeName(v string) *D
 }
 
 func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypes) Validate() error {
-	return dara.Validate(s)
+	if s.CheckDetails != nil {
+		for _, item := range s.CheckDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetails struct {
@@ -293,7 +320,16 @@ func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetails) SetRules(v [
 }
 
 func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetails) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRules struct {
@@ -368,7 +404,16 @@ func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRules) SetRule
 }
 
 func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRules) Validate() error {
-	return dara.Validate(s)
+	if s.ParamList != nil {
+		for _, item := range s.ParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRulesParamList struct {

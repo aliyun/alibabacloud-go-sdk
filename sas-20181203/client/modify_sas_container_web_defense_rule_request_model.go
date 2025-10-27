@@ -72,7 +72,16 @@ func (s *ModifySasContainerWebDefenseRuleRequest) SetRuleName(v string) *ModifyS
 }
 
 func (s *ModifySasContainerWebDefenseRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PathConfDTOList != nil {
+		for _, item := range s.PathConfDTOList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifySasContainerWebDefenseRuleRequestPathConfDTOList struct {

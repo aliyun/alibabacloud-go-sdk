@@ -53,7 +53,16 @@ func (s *ListAvailableAttackPathResponseBody) SetRequestId(v string) *ListAvaila
 }
 
 func (s *ListAvailableAttackPathResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AttackPathList != nil {
+		for _, item := range s.AttackPathList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAvailableAttackPathResponseBodyAttackPathList struct {

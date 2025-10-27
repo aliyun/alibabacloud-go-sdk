@@ -265,7 +265,25 @@ func (s *ChangeCheckConfigShrinkRequest) SetVendors(v []*string) *ChangeCheckCon
 }
 
 func (s *ChangeCheckConfigShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AddedCheck != nil {
+		for _, item := range s.AddedCheck {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RemovedCheck != nil {
+		for _, item := range s.RemovedCheck {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ChangeCheckConfigShrinkRequestAddedCheck struct {

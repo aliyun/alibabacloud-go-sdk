@@ -53,7 +53,12 @@ func (s *CreateAttackPathSensitiveAssetConfigResponseBody) SetRequestId(v string
 }
 
 func (s *CreateAttackPathSensitiveAssetConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AttackPathSensitiveAssetConfig != nil {
+		if err := s.AttackPathSensitiveAssetConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAttackPathSensitiveAssetConfigResponseBodyAttackPathSensitiveAssetConfig struct {

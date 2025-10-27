@@ -53,7 +53,12 @@ func (s *DescribeFieldStatisticsResponseBody) SetRequestId(v string) *DescribeFi
 }
 
 func (s *DescribeFieldStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GroupedFields != nil {
+		if err := s.GroupedFields.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeFieldStatisticsResponseBodyGroupedFields struct {

@@ -57,7 +57,16 @@ func (s *OperateApplicationRequest) SetRuleId(v int64) *OperateApplicationReques
 }
 
 func (s *OperateApplicationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ContainerWebDefenseApplicationDTOS != nil {
+		for _, item := range s.ContainerWebDefenseApplicationDTOS {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type OperateApplicationRequestContainerWebDefenseApplicationDTOS struct {

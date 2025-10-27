@@ -59,5 +59,10 @@ func (s *GenerateK8sAccessInfoResponse) SetBody(v *GenerateK8sAccessInfoResponse
 }
 
 func (s *GenerateK8sAccessInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *ListAssetSelectionSelectedTargetResponse) SetBody(v *ListAssetSelection
 }
 
 func (s *ListAssetSelectionSelectedTargetResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

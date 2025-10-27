@@ -53,7 +53,16 @@ func (s *GetCloudAssetCriteriaRequest) SetValue(v string) *GetCloudAssetCriteria
 }
 
 func (s *GetCloudAssetCriteriaRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CloudAssetTypes != nil {
+		for _, item := range s.CloudAssetTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCloudAssetCriteriaRequestCloudAssetTypes struct {

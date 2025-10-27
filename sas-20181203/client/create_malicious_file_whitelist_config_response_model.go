@@ -59,5 +59,10 @@ func (s *CreateMaliciousFileWhitelistConfigResponse) SetBody(v *CreateMaliciousF
 }
 
 func (s *CreateMaliciousFileWhitelistConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

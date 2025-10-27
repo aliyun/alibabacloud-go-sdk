@@ -53,7 +53,12 @@ func (s *DescribeClusterHostSecuritySummaryResponseBody) SetRequestId(v string) 
 }
 
 func (s *DescribeClusterHostSecuritySummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterHostEvent != nil {
+		if err := s.ClusterHostEvent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterHostSecuritySummaryResponseBodyClusterHostEvent struct {
@@ -101,7 +106,34 @@ func (s *DescribeClusterHostSecuritySummaryResponseBodyClusterHostEvent) SetVulE
 }
 
 func (s *DescribeClusterHostSecuritySummaryResponseBodyClusterHostEvent) Validate() error {
-	return dara.Validate(s)
+	if s.AlarmEvent != nil {
+		for _, item := range s.AlarmEvent {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BaselineEvent != nil {
+		for _, item := range s.BaselineEvent {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VulEvent != nil {
+		for _, item := range s.VulEvent {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClusterHostSecuritySummaryResponseBodyClusterHostEventAlarmEvent struct {

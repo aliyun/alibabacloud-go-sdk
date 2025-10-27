@@ -59,5 +59,10 @@ func (s *UploadedHoneyPotFileResponse) SetBody(v *UploadedHoneyPotFileResponseBo
 }
 
 func (s *UploadedHoneyPotFileResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

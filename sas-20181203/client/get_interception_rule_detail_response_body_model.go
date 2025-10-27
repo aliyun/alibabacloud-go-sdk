@@ -53,7 +53,12 @@ func (s *GetInterceptionRuleDetailResponseBody) SetRequestId(v string) *GetInter
 }
 
 func (s *GetInterceptionRuleDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InterceptionRuleDetail != nil {
+		if err := s.InterceptionRuleDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInterceptionRuleDetailResponseBodyInterceptionRuleDetail struct {
@@ -196,7 +201,17 @@ func (s *GetInterceptionRuleDetailResponseBodyInterceptionRuleDetail) SetSrcTarg
 }
 
 func (s *GetInterceptionRuleDetailResponseBodyInterceptionRuleDetail) Validate() error {
-	return dara.Validate(s)
+	if s.DstTarget != nil {
+		if err := s.DstTarget.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SrcTarget != nil {
+		if err := s.SrcTarget.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInterceptionRuleDetailResponseBodyInterceptionRuleDetailDstTarget struct {

@@ -66,7 +66,21 @@ func (s *ListSystemClientRulesResponseBody) SetRuleList(v []*ListSystemClientRul
 }
 
 func (s *ListSystemClientRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuleList != nil {
+		for _, item := range s.RuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSystemClientRulesResponseBodyPageInfo struct {
@@ -305,7 +319,16 @@ func (s *ListSystemClientRulesResponseBodyRuleList) SetSwitchId(v string) *ListS
 }
 
 func (s *ListSystemClientRulesResponseBodyRuleList) Validate() error {
-	return dara.Validate(s)
+	if s.Policies != nil {
+		for _, item := range s.Policies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSystemClientRulesResponseBodyRuleListPolicies struct {

@@ -133,7 +133,25 @@ func (s *SubmitOperationTaskRequest) SetType(v string) *SubmitOperationTaskReque
 }
 
 func (s *SubmitOperationTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.OperationTaskInstances != nil {
+		for _, item := range s.OperationTaskInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RepairTempParam != nil {
+		for _, item := range s.RepairTempParam {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SubmitOperationTaskRequestOperationTaskInstances struct {

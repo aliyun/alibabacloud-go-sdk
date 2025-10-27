@@ -66,7 +66,21 @@ func (s *ListPodRiskResponseBody) SetRequestId(v string) *ListPodRiskResponseBod
 }
 
 func (s *ListPodRiskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PodRiskList != nil {
+		for _, item := range s.PodRiskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPodRiskResponseBodyPageInfo struct {

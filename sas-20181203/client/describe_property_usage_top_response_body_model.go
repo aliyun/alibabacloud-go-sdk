@@ -97,7 +97,16 @@ func (s *DescribePropertyUsageTopResponseBody) SetType(v string) *DescribeProper
 }
 
 func (s *DescribePropertyUsageTopResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TopStatisticItems != nil {
+		for _, item := range s.TopStatisticItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePropertyUsageTopResponseBodyTopStatisticItems struct {

@@ -59,5 +59,10 @@ func (s *DeleteHoneypotPresetResponse) SetBody(v *DeleteHoneypotPresetResponseBo
 }
 
 func (s *DeleteHoneypotPresetResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

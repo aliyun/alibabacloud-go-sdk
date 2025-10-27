@@ -53,7 +53,12 @@ func (s *CreateBackupPolicyResponseBody) SetRequestId(v string) *CreateBackupPol
 }
 
 func (s *CreateBackupPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BackupPolicy != nil {
+		if err := s.BackupPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateBackupPolicyResponseBodyBackupPolicy struct {

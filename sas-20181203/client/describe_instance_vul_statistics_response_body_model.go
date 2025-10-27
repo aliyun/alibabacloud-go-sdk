@@ -53,7 +53,12 @@ func (s *DescribeInstanceVulStatisticsResponseBody) SetVulStat(v *DescribeInstan
 }
 
 func (s *DescribeInstanceVulStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VulStat != nil {
+		if err := s.VulStat.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceVulStatisticsResponseBodyVulStat struct {

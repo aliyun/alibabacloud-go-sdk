@@ -53,7 +53,12 @@ func (s *GenerateK8sAccessInfoResponseBody) SetRequestId(v string) *GenerateK8sA
 }
 
 func (s *GenerateK8sAccessInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GenerateK8sAccessInfoResponseBodyData struct {

@@ -50,7 +50,16 @@ func (s *DeleteCheckPolicyResponseBody) SetRequestId(v string) *DeleteCheckPolic
 }
 
 func (s *DeleteCheckPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Policys != nil {
+		for _, item := range s.Policys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteCheckPolicyResponseBodyPolicys struct {

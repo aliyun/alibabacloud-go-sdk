@@ -53,7 +53,16 @@ func (s *ListClusterPluginInfoResponseBody) SetRequestId(v string) *ListClusterP
 }
 
 func (s *ListClusterPluginInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListClusterPluginInfoResponseBodyData struct {
@@ -130,7 +139,16 @@ func (s *ListClusterPluginInfoResponseBodyData) SetNodePluginInfoList(v []*ListC
 }
 
 func (s *ListClusterPluginInfoResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.NodePluginInfoList != nil {
+		for _, item := range s.NodePluginInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListClusterPluginInfoResponseBodyDataNodePluginInfoList struct {

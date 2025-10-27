@@ -87,7 +87,21 @@ func (s *ListCloudAssetInstancesResponseBody) SetSuccess(v bool) *ListCloudAsset
 }
 
 func (s *ListCloudAssetInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCloudAssetInstancesResponseBodyInstances struct {

@@ -121,7 +121,16 @@ func (s *DescribeVulWhitelistResponseBody) SetVulWhitelists(v []*DescribeVulWhit
 }
 
 func (s *DescribeVulWhitelistResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VulWhitelists != nil {
+		for _, item := range s.VulWhitelists {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVulWhitelistResponseBodyVulWhitelists struct {

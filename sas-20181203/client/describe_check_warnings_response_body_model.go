@@ -121,7 +121,16 @@ func (s *DescribeCheckWarningsResponseBody) SetTotalCount(v int32) *DescribeChec
 }
 
 func (s *DescribeCheckWarningsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CheckWarnings != nil {
+		for _, item := range s.CheckWarnings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCheckWarningsResponseBodyCheckWarnings struct {

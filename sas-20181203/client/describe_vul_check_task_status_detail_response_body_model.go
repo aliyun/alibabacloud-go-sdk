@@ -70,7 +70,16 @@ func (s *DescribeVulCheckTaskStatusDetailResponseBody) SetTotalCount(v int32) *D
 }
 
 func (s *DescribeVulCheckTaskStatusDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TaskStatuses != nil {
+		for _, item := range s.TaskStatuses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVulCheckTaskStatusDetailResponseBodyTaskStatuses struct {
@@ -111,7 +120,16 @@ func (s *DescribeVulCheckTaskStatusDetailResponseBodyTaskStatuses) SetTaskStatus
 }
 
 func (s *DescribeVulCheckTaskStatusDetailResponseBodyTaskStatuses) Validate() error {
-	return dara.Validate(s)
+	if s.TaskStatusList != nil {
+		for _, item := range s.TaskStatusList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVulCheckTaskStatusDetailResponseBodyTaskStatusesTaskStatusList struct {

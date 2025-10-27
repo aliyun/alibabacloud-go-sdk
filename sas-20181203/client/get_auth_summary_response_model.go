@@ -59,5 +59,10 @@ func (s *GetAuthSummaryResponse) SetBody(v *GetAuthSummaryResponseBody) *GetAuth
 }
 
 func (s *GetAuthSummaryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

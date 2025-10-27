@@ -53,7 +53,12 @@ func (s *CreateAttackPathWhitelistResponseBody) SetRequestId(v string) *CreateAt
 }
 
 func (s *CreateAttackPathWhitelistResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AttackPathWhitelist != nil {
+		if err := s.AttackPathWhitelist.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAttackPathWhitelistResponseBodyAttackPathWhitelist struct {

@@ -59,5 +59,10 @@ func (s *ListK8sAccessInfoResponse) SetBody(v *ListK8sAccessInfoResponseBody) *L
 }
 
 func (s *ListK8sAccessInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

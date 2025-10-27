@@ -66,7 +66,21 @@ func (s *DescribeOnceTaskResponseBody) SetTaskManageResponseList(v []*DescribeOn
 }
 
 func (s *DescribeOnceTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TaskManageResponseList != nil {
+		for _, item := range s.TaskManageResponseList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOnceTaskResponseBodyPageInfo struct {

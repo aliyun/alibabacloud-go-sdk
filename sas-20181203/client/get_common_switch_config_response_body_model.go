@@ -53,7 +53,12 @@ func (s *GetCommonSwitchConfigResponseBody) SetRequestId(v string) *GetCommonSwi
 }
 
 func (s *GetCommonSwitchConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCommonSwitchConfigResponseBodyData struct {

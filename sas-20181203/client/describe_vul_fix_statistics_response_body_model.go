@@ -66,7 +66,21 @@ func (s *DescribeVulFixStatisticsResponseBody) SetRequestId(v string) *DescribeV
 }
 
 func (s *DescribeVulFixStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FixStat != nil {
+		for _, item := range s.FixStat {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FixTotal != nil {
+		if err := s.FixTotal.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVulFixStatisticsResponseBodyFixStat struct {

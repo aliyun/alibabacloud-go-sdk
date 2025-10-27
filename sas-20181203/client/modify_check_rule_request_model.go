@@ -127,7 +127,25 @@ func (s *ModifyCheckRuleRequest) SetScopeType(v string) *ModifyCheckRuleRequest 
 }
 
 func (s *ModifyCheckRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AddInstanceList != nil {
+		for _, item := range s.AddInstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DeleteInstanceList != nil {
+		for _, item := range s.DeleteInstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyCheckRuleRequestAddInstanceList struct {

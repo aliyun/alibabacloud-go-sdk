@@ -53,7 +53,16 @@ func (s *DescribeStrategyTargetResponseBody) SetStrategyTargets(v []*DescribeStr
 }
 
 func (s *DescribeStrategyTargetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StrategyTargets != nil {
+		for _, item := range s.StrategyTargets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeStrategyTargetResponseBodyStrategyTargets struct {

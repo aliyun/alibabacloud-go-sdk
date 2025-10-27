@@ -53,7 +53,12 @@ func (s *GetSwitchRegionDetailResponseBody) SetRequestId(v string) *GetSwitchReg
 }
 
 func (s *GetSwitchRegionDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSwitchRegionDetailResponseBodyData struct {
@@ -149,7 +154,16 @@ func (s *GetSwitchRegionDetailResponseBodyData) SetRegionStatus(v []*GetSwitchRe
 }
 
 func (s *GetSwitchRegionDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.RegionStatus != nil {
+		for _, item := range s.RegionStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSwitchRegionDetailResponseBodyDataRegionStatus struct {

@@ -70,7 +70,16 @@ func (s *AddIdcProbeResponseBody) SetRequestId(v string) *AddIdcProbeResponseBod
 }
 
 func (s *AddIdcProbeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AddIdcProbeFailedList != nil {
+		for _, item := range s.AddIdcProbeFailedList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddIdcProbeResponseBodyAddIdcProbeFailedList struct {

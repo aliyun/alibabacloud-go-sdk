@@ -53,7 +53,16 @@ func (s *ListDockerhubImageResponseBody) SetRequestId(v string) *ListDockerhubIm
 }
 
 func (s *ListDockerhubImageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ImageList != nil {
+		for _, item := range s.ImageList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDockerhubImageResponseBodyImageList struct {

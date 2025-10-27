@@ -53,7 +53,16 @@ func (s *GetAccountLabelResponseBody) SetRequestId(v string) *GetAccountLabelRes
 }
 
 func (s *GetAccountLabelResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AccountLabelList != nil {
+		for _, item := range s.AccountLabelList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAccountLabelResponseBodyAccountLabelList struct {

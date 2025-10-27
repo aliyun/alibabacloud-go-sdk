@@ -53,7 +53,12 @@ func (s *DescribeBackupRestoreCountResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeBackupRestoreCountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BackupRestoreCount != nil {
+		if err := s.BackupRestoreCount.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBackupRestoreCountResponseBodyBackupRestoreCount struct {

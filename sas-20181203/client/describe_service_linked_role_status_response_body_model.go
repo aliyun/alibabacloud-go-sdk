@@ -53,7 +53,12 @@ func (s *DescribeServiceLinkedRoleStatusResponseBody) SetRoleStatus(v *DescribeS
 }
 
 func (s *DescribeServiceLinkedRoleStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RoleStatus != nil {
+		if err := s.RoleStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeServiceLinkedRoleStatusResponseBodyRoleStatus struct {

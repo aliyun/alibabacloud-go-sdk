@@ -163,7 +163,16 @@ func (s *AddContainerDefenseRuleShrinkRequest) SetWhitelistShrink(v string) *Add
 }
 
 func (s *AddContainerDefenseRuleShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Scope != nil {
+		for _, item := range s.Scope {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddContainerDefenseRuleShrinkRequestScope struct {

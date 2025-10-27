@@ -59,5 +59,10 @@ func (s *CreateInterceptionRuleResponse) SetBody(v *CreateInterceptionRuleRespon
 }
 
 func (s *CreateInterceptionRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

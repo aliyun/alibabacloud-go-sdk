@@ -59,5 +59,10 @@ func (s *GetFileUploadLimitResponse) SetBody(v *GetFileUploadLimitResponseBody) 
 }
 
 func (s *GetFileUploadLimitResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

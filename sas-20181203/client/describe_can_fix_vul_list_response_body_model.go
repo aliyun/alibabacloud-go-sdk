@@ -53,7 +53,16 @@ func (s *DescribeCanFixVulListResponseBody) SetVulRecords(v []*DescribeCanFixVul
 }
 
 func (s *DescribeCanFixVulListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VulRecords != nil {
+		for _, item := range s.VulRecords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCanFixVulListResponseBodyVulRecords struct {
@@ -595,7 +604,12 @@ func (s *DescribeCanFixVulListResponseBodyVulRecords) SetUuid(v string) *Describ
 }
 
 func (s *DescribeCanFixVulListResponseBodyVulRecords) Validate() error {
-	return dara.Validate(s)
+	if s.ExtendContentJson != nil {
+		if err := s.ExtendContentJson.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCanFixVulListResponseBodyVulRecordsExtendContentJson struct {
@@ -651,7 +665,16 @@ func (s *DescribeCanFixVulListResponseBodyVulRecordsExtendContentJson) SetRpmEnt
 }
 
 func (s *DescribeCanFixVulListResponseBodyVulRecordsExtendContentJson) Validate() error {
-	return dara.Validate(s)
+	if s.RpmEntityList != nil {
+		for _, item := range s.RpmEntityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCanFixVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList struct {

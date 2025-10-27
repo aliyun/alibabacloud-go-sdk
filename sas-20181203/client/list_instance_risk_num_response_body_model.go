@@ -53,7 +53,16 @@ func (s *ListInstanceRiskNumResponseBody) SetRequestId(v string) *ListInstanceRi
 }
 
 func (s *ListInstanceRiskNumResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceRiskNum != nil {
+		for _, item := range s.InstanceRiskNum {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstanceRiskNumResponseBodyInstanceRiskNum struct {
@@ -90,7 +99,17 @@ func (s *ListInstanceRiskNumResponseBodyInstanceRiskNum) SetRiskNumEntity(v *Lis
 }
 
 func (s *ListInstanceRiskNumResponseBodyInstanceRiskNum) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceItem != nil {
+		if err := s.InstanceItem.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RiskNumEntity != nil {
+		if err := s.RiskNumEntity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListInstanceRiskNumResponseBodyInstanceRiskNumInstanceItem struct {

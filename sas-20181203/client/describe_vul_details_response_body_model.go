@@ -53,7 +53,16 @@ func (s *DescribeVulDetailsResponseBody) SetRequestId(v string) *DescribeVulDeta
 }
 
 func (s *DescribeVulDetailsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Cves != nil {
+		for _, item := range s.Cves {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVulDetailsResponseBodyCves struct {
@@ -502,7 +511,16 @@ func (s *DescribeVulDetailsResponseBodyCves) SetVulLevel(v string) *DescribeVulD
 }
 
 func (s *DescribeVulDetailsResponseBodyCves) Validate() error {
-	return dara.Validate(s)
+	if s.Classifys != nil {
+		for _, item := range s.Classifys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVulDetailsResponseBodyCvesClassifys struct {

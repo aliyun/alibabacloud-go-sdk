@@ -53,7 +53,16 @@ func (s *ModifyCreateVulWhitelistResponseBody) SetVulWhitelistList(v []*ModifyCr
 }
 
 func (s *ModifyCreateVulWhitelistResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VulWhitelistList != nil {
+		for _, item := range s.VulWhitelistList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyCreateVulWhitelistResponseBodyVulWhitelistList struct {

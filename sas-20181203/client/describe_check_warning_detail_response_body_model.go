@@ -201,7 +201,16 @@ func (s *DescribeCheckWarningDetailResponseBody) SetType(v string) *DescribeChec
 }
 
 func (s *DescribeCheckWarningDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CheckDetailColumns != nil {
+		for _, item := range s.CheckDetailColumns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCheckWarningDetailResponseBodyCheckDetailColumns struct {
@@ -276,7 +285,16 @@ func (s *DescribeCheckWarningDetailResponseBodyCheckDetailColumns) SetType(v str
 }
 
 func (s *DescribeCheckWarningDetailResponseBodyCheckDetailColumns) Validate() error {
-	return dara.Validate(s)
+	if s.Grids != nil {
+		for _, item := range s.Grids {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCheckWarningDetailResponseBodyCheckDetailColumnsGrids struct {

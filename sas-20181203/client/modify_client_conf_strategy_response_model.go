@@ -59,5 +59,10 @@ func (s *ModifyClientConfStrategyResponse) SetBody(v *ModifyClientConfStrategyRe
 }
 
 func (s *ModifyClientConfStrategyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

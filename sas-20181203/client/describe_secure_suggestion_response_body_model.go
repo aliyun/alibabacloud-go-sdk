@@ -87,7 +87,16 @@ func (s *DescribeSecureSuggestionResponseBody) SetTotalCount(v int32) *DescribeS
 }
 
 func (s *DescribeSecureSuggestionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Suggestions != nil {
+		for _, item := range s.Suggestions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSecureSuggestionResponseBodySuggestions struct {
@@ -157,7 +166,16 @@ func (s *DescribeSecureSuggestionResponseBodySuggestions) SetSuggestType(v strin
 }
 
 func (s *DescribeSecureSuggestionResponseBodySuggestions) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		for _, item := range s.Detail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSecureSuggestionResponseBodySuggestionsDetail struct {

@@ -265,7 +265,16 @@ func (s *CreateOpaStrategyNewShrinkRequest) SetWhiteList(v []*string) *CreateOpa
 }
 
 func (s *CreateOpaStrategyNewShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Scopes != nil {
+		for _, item := range s.Scopes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOpaStrategyNewShrinkRequestScopes struct {

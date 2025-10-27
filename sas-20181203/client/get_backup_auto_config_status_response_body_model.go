@@ -53,7 +53,12 @@ func (s *GetBackupAutoConfigStatusResponseBody) SetRequestId(v string) *GetBacku
 }
 
 func (s *GetBackupAutoConfigStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBackupAutoConfigStatusResponseBodyData struct {

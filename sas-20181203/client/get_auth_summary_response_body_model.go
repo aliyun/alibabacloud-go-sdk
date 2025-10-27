@@ -332,7 +332,30 @@ func (s *GetAuthSummaryResponseBody) SetVersionSummary(v []*GetAuthSummaryRespon
 }
 
 func (s *GetAuthSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Machine != nil {
+		if err := s.Machine.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PostPaidVersionSummary != nil {
+		for _, item := range s.PostPaidVersionSummary {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VersionSummary != nil {
+		for _, item := range s.VersionSummary {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAuthSummaryResponseBodyMachine struct {

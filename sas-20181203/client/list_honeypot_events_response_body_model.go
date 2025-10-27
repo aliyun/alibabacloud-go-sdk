@@ -66,7 +66,21 @@ func (s *ListHoneypotEventsResponseBody) SetRequestId(v string) *ListHoneypotEve
 }
 
 func (s *ListHoneypotEventsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HoneypotEvents != nil {
+		for _, item := range s.HoneypotEvents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListHoneypotEventsResponseBodyHoneypotEvents struct {
@@ -282,7 +296,16 @@ func (s *ListHoneypotEventsResponseBodyHoneypotEvents) SetSrcIp(v string) *ListH
 }
 
 func (s *ListHoneypotEventsResponseBodyHoneypotEvents) Validate() error {
-	return dara.Validate(s)
+	if s.MergeFieldList != nil {
+		for _, item := range s.MergeFieldList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListHoneypotEventsResponseBodyHoneypotEventsMergeFieldList struct {

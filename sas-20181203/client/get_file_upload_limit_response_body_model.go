@@ -53,7 +53,12 @@ func (s *GetFileUploadLimitResponseBody) SetRequestId(v string) *GetFileUploadLi
 }
 
 func (s *GetFileUploadLimitResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetFileUploadLimitResponseBodyData struct {

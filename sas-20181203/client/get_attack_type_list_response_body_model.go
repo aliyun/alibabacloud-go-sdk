@@ -53,7 +53,16 @@ func (s *GetAttackTypeListResponseBody) SetRequestId(v string) *GetAttackTypeLis
 }
 
 func (s *GetAttackTypeListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AttackTypeList != nil {
+		for _, item := range s.AttackTypeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAttackTypeListResponseBodyAttackTypeList struct {

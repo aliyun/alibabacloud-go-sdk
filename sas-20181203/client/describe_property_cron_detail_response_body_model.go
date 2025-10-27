@@ -66,7 +66,21 @@ func (s *DescribePropertyCronDetailResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribePropertyCronDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Propertys != nil {
+		for _, item := range s.Propertys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePropertyCronDetailResponseBodyPageInfo struct {

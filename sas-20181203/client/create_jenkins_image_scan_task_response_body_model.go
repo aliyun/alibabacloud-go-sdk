@@ -53,7 +53,12 @@ func (s *CreateJenkinsImageScanTaskResponseBody) SetRequestId(v string) *CreateJ
 }
 
 func (s *CreateJenkinsImageScanTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateJenkinsImageScanTaskResponseBodyData struct {

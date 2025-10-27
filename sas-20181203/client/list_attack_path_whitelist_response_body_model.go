@@ -66,7 +66,21 @@ func (s *ListAttackPathWhitelistResponseBody) SetRequestId(v string) *ListAttack
 }
 
 func (s *ListAttackPathWhitelistResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AttackPathWhitelistList != nil {
+		for _, item := range s.AttackPathWhitelistList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAttackPathWhitelistResponseBodyAttackPathWhitelistList struct {

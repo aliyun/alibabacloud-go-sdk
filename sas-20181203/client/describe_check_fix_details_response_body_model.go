@@ -70,7 +70,16 @@ func (s *DescribeCheckFixDetailsResponseBody) SetRequestId(v string) *DescribeCh
 }
 
 func (s *DescribeCheckFixDetailsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CheckFixDetails != nil {
+		for _, item := range s.CheckFixDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCheckFixDetailsResponseBodyCheckFixDetails struct {
@@ -141,7 +150,16 @@ func (s *DescribeCheckFixDetailsResponseBodyCheckFixDetails) SetRules(v []*Descr
 }
 
 func (s *DescribeCheckFixDetailsResponseBodyCheckFixDetails) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCheckFixDetailsResponseBodyCheckFixDetailsRules struct {
@@ -276,7 +294,16 @@ func (s *DescribeCheckFixDetailsResponseBodyCheckFixDetailsRules) SetVarName(v s
 }
 
 func (s *DescribeCheckFixDetailsResponseBodyCheckFixDetailsRules) Validate() error {
-	return dara.Validate(s)
+	if s.ParamList != nil {
+		for _, item := range s.ParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCheckFixDetailsResponseBodyCheckFixDetailsRulesParamList struct {

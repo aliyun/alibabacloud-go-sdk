@@ -53,7 +53,12 @@ func (s *CreateAssetSelectionConfigResponseBody) SetRequestId(v string) *CreateA
 }
 
 func (s *CreateAssetSelectionConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAssetSelectionConfigResponseBodyData struct {

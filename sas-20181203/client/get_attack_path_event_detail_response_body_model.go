@@ -53,7 +53,12 @@ func (s *GetAttackPathEventDetailResponseBody) SetRequestId(v string) *GetAttack
 }
 
 func (s *GetAttackPathEventDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AttackPathEvent != nil {
+		if err := s.AttackPathEvent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAttackPathEventDetailResponseBodyAttackPathEvent struct {
@@ -232,7 +237,35 @@ func (s *GetAttackPathEventDetailResponseBodyAttackPathEvent) SetSrcAsset(v *Get
 }
 
 func (s *GetAttackPathEventDetailResponseBodyAttackPathEvent) Validate() error {
-	return dara.Validate(s)
+	if s.DstAsset != nil {
+		if err := s.DstAsset.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PathEventEdgeList != nil {
+		for _, item := range s.PathEventEdgeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PathEventNodeList != nil {
+		for _, item := range s.PathEventNodeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SrcAsset != nil {
+		if err := s.SrcAsset.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAttackPathEventDetailResponseBodyAttackPathEventDstAsset struct {

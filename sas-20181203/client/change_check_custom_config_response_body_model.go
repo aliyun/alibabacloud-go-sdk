@@ -66,7 +66,25 @@ func (s *ChangeCheckCustomConfigResponseBody) SetRequestId(v string) *ChangeChec
 }
 
 func (s *ChangeCheckCustomConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IllegalCustomConfigs != nil {
+		for _, item := range s.IllegalCustomConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.IllegalRepairConfigs != nil {
+		for _, item := range s.IllegalRepairConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ChangeCheckCustomConfigResponseBodyIllegalCustomConfigs struct {

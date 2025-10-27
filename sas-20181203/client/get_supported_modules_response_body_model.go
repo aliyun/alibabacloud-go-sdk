@@ -53,7 +53,16 @@ func (s *GetSupportedModulesResponseBody) SetSupportedModuleResponse(v []*GetSup
 }
 
 func (s *GetSupportedModulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedModuleResponse != nil {
+		for _, item := range s.SupportedModuleResponse {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSupportedModulesResponseBodySupportedModuleResponse struct {
@@ -102,7 +111,16 @@ func (s *GetSupportedModulesResponseBodySupportedModuleResponse) SetVendor(v str
 }
 
 func (s *GetSupportedModulesResponseBodySupportedModuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedModules != nil {
+		for _, item := range s.SupportedModules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSupportedModulesResponseBodySupportedModuleResponseSupportedModules struct {

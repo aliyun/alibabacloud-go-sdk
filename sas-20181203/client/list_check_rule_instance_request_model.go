@@ -91,7 +91,16 @@ func (s *ListCheckRuleInstanceRequest) SetRuleId(v int64) *ListCheckRuleInstance
 }
 
 func (s *ListCheckRuleInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceList != nil {
+		for _, item := range s.InstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCheckRuleInstanceRequestInstanceList struct {

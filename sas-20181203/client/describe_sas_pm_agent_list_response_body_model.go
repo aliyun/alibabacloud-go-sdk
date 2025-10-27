@@ -53,7 +53,16 @@ func (s *DescribeSasPmAgentListResponseBody) SetSasPmAgentList(v []*DescribeSasP
 }
 
 func (s *DescribeSasPmAgentListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SasPmAgentList != nil {
+		for _, item := range s.SasPmAgentList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSasPmAgentListResponseBodySasPmAgentList struct {

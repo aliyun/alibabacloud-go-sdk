@@ -104,7 +104,16 @@ func (s *DescribeSoarStrategyTasksResponseBody) SetTotalCount(v int32) *Describe
 }
 
 func (s *DescribeSoarStrategyTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SoarStrategyTasks != nil {
+		for _, item := range s.SoarStrategyTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSoarStrategyTasksResponseBodySoarStrategyTasks struct {

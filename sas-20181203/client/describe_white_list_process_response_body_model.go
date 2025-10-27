@@ -121,7 +121,16 @@ func (s *DescribeWhiteListProcessResponseBody) SetTotalCount(v int32) *DescribeW
 }
 
 func (s *DescribeWhiteListProcessResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Processes != nil {
+		for _, item := range s.Processes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWhiteListProcessResponseBodyProcesses struct {

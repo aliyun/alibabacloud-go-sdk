@@ -53,7 +53,16 @@ func (s *DescribeInstallCodesResponseBody) SetRequestId(v string) *DescribeInsta
 }
 
 func (s *DescribeInstallCodesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstallCodes != nil {
+		for _, item := range s.InstallCodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstallCodesResponseBodyInstallCodes struct {

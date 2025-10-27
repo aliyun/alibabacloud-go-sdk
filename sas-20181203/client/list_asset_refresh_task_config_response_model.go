@@ -59,5 +59,10 @@ func (s *ListAssetRefreshTaskConfigResponse) SetBody(v *ListAssetRefreshTaskConf
 }
 
 func (s *ListAssetRefreshTaskConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

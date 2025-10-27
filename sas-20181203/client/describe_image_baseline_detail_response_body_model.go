@@ -53,7 +53,12 @@ func (s *DescribeImageBaselineDetailResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeImageBaselineDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BaselineDetail != nil {
+		if err := s.BaselineDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImageBaselineDetailResponseBodyBaselineDetail struct {

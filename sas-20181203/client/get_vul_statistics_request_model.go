@@ -11,6 +11,8 @@ type iGetVulStatisticsRequest interface {
 	GoString() string
 	SetGroupIdList(v string) *GetVulStatisticsRequest
 	GetGroupIdList() *string
+	SetResourceDirectoryAccountId(v int64) *GetVulStatisticsRequest
+	GetResourceDirectoryAccountId() *int64
 	SetSourceIp(v string) *GetVulStatisticsRequest
 	GetSourceIp() *string
 	SetTypeList(v string) *GetVulStatisticsRequest
@@ -28,6 +30,14 @@ type GetVulStatisticsRequest struct {
 	//
 	// 9997897
 	GroupIdList *string `json:"GroupIdList,omitempty" xml:"GroupIdList,omitempty"`
+	// The Alibaba Cloud account ID of the member in the resource directory.
+	//
+	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+	//
+	// example:
+	//
+	// 1232428423234****
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The source IP address of the request.
 	//
 	// example:
@@ -68,6 +78,10 @@ func (s *GetVulStatisticsRequest) GetGroupIdList() *string {
 	return s.GroupIdList
 }
 
+func (s *GetVulStatisticsRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *GetVulStatisticsRequest) GetSourceIp() *string {
 	return s.SourceIp
 }
@@ -78,6 +92,11 @@ func (s *GetVulStatisticsRequest) GetTypeList() *string {
 
 func (s *GetVulStatisticsRequest) SetGroupIdList(v string) *GetVulStatisticsRequest {
 	s.GroupIdList = &v
+	return s
+}
+
+func (s *GetVulStatisticsRequest) SetResourceDirectoryAccountId(v int64) *GetVulStatisticsRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

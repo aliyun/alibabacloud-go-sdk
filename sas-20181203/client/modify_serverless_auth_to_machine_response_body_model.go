@@ -53,7 +53,12 @@ func (s *ModifyServerlessAuthToMachineResponseBody) SetRequestId(v string) *Modi
 }
 
 func (s *ModifyServerlessAuthToMachineResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyServerlessAuthToMachineResponseBodyData struct {

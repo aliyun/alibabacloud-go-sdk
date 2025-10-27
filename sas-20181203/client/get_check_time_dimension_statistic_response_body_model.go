@@ -53,7 +53,12 @@ func (s *GetCheckTimeDimensionStatisticResponseBody) SetTimeDimensionStatisticDT
 }
 
 func (s *GetCheckTimeDimensionStatisticResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TimeDimensionStatisticDTO != nil {
+		if err := s.TimeDimensionStatisticDTO.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCheckTimeDimensionStatisticResponseBodyTimeDimensionStatisticDTO struct {
@@ -109,7 +114,16 @@ func (s *GetCheckTimeDimensionStatisticResponseBodyTimeDimensionStatisticDTO) Se
 }
 
 func (s *GetCheckTimeDimensionStatisticResponseBodyTimeDimensionStatisticDTO) Validate() error {
-	return dara.Validate(s)
+	if s.TimeDimensionStatisticItems != nil {
+		for _, item := range s.TimeDimensionStatisticItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCheckTimeDimensionStatisticResponseBodyTimeDimensionStatisticDTOTimeDimensionStatisticItems struct {
@@ -150,7 +164,16 @@ func (s *GetCheckTimeDimensionStatisticResponseBodyTimeDimensionStatisticDTOTime
 }
 
 func (s *GetCheckTimeDimensionStatisticResponseBodyTimeDimensionStatisticDTOTimeDimensionStatisticItems) Validate() error {
-	return dara.Validate(s)
+	if s.StatisticDatas != nil {
+		for _, item := range s.StatisticDatas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCheckTimeDimensionStatisticResponseBodyTimeDimensionStatisticDTOTimeDimensionStatisticItemsStatisticDatas struct {

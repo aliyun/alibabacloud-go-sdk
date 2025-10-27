@@ -104,7 +104,16 @@ func (s *DescribeWebLockFileChangeStatisticsResponseBody) SetTotalCount(v int32)
 }
 
 func (s *DescribeWebLockFileChangeStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWebLockFileChangeStatisticsResponseBodyList struct {

@@ -100,7 +100,25 @@ func (s *VerifyCheckCustomConfigShrinkRequest) SetType(v string) *VerifyCheckCus
 }
 
 func (s *VerifyCheckCustomConfigShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CustomConfigs != nil {
+		for _, item := range s.CustomConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RepairConfigs != nil {
+		for _, item := range s.RepairConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type VerifyCheckCustomConfigShrinkRequestCustomConfigs struct {

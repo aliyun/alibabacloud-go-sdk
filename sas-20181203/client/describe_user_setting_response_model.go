@@ -59,5 +59,10 @@ func (s *DescribeUserSettingResponse) SetBody(v *DescribeUserSettingResponseBody
 }
 
 func (s *DescribeUserSettingResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

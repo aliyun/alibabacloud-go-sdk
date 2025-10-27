@@ -59,5 +59,10 @@ func (s *GetOpaClusterLabelListResponse) SetBody(v *GetOpaClusterLabelListRespon
 }
 
 func (s *GetOpaClusterLabelListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *ReceiveFunctionTrialRewardByAliUidResponse) SetBody(v *ReceiveFunctionT
 }
 
 func (s *ReceiveFunctionTrialRewardByAliUidResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

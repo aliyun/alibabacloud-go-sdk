@@ -138,7 +138,21 @@ func (s *ListVulAutoRepairConfigResponseBody) SetVulAutoRepairConfigList(v []*Li
 }
 
 func (s *ListVulAutoRepairConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VulAutoRepairConfigList != nil {
+		for _, item := range s.VulAutoRepairConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVulAutoRepairConfigResponseBodyPageInfo struct {

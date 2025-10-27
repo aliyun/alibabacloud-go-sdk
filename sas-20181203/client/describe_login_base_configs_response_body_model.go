@@ -104,7 +104,16 @@ func (s *DescribeLoginBaseConfigsResponseBody) SetTotalCount(v int32) *DescribeL
 }
 
 func (s *DescribeLoginBaseConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BaseConfigs != nil {
+		for _, item := range s.BaseConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLoginBaseConfigsResponseBodyBaseConfigs struct {
@@ -250,7 +259,16 @@ func (s *DescribeLoginBaseConfigsResponseBodyBaseConfigs) SetUuidCount(v int32) 
 }
 
 func (s *DescribeLoginBaseConfigsResponseBodyBaseConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.TargetList != nil {
+		for _, item := range s.TargetList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLoginBaseConfigsResponseBodyBaseConfigsTargetList struct {

@@ -53,7 +53,16 @@ func (s *DescribeWhiteListStrategyListResponseBody) SetStrategies(v []*DescribeW
 }
 
 func (s *DescribeWhiteListStrategyListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Strategies != nil {
+		for _, item := range s.Strategies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWhiteListStrategyListResponseBodyStrategies struct {

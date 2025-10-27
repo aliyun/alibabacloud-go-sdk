@@ -53,7 +53,12 @@ func (s *DescribePluginSummaryResponseBody) SetRequestId(v string) *DescribePlug
 }
 
 func (s *DescribePluginSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePluginSummaryResponseBodyData struct {
@@ -154,7 +159,16 @@ func (s *DescribePluginSummaryResponseBodyData) SetTotalCnt(v int32) *DescribePl
 }
 
 func (s *DescribePluginSummaryResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.FailedReasons != nil {
+		for _, item := range s.FailedReasons {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePluginSummaryResponseBodyDataFailedReasons struct {

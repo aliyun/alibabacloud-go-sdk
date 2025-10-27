@@ -59,5 +59,10 @@ func (s *ListUuidsByAppIdResponse) SetBody(v *ListUuidsByAppIdResponseBody) *Lis
 }
 
 func (s *ListUuidsByAppIdResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

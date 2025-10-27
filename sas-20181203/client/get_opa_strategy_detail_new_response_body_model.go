@@ -125,7 +125,12 @@ func (s *GetOpaStrategyDetailNewResponseBody) SetSuccess(v bool) *GetOpaStrategy
 }
 
 func (s *GetOpaStrategyDetailNewResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOpaStrategyDetailNewResponseBodyData struct {
@@ -393,7 +398,21 @@ func (s *GetOpaStrategyDetailNewResponseBodyData) SetWhiteList(v []*string) *Get
 }
 
 func (s *GetOpaStrategyDetailNewResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AlarmDetail != nil {
+		if err := s.AlarmDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Scopes != nil {
+		for _, item := range s.Scopes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOpaStrategyDetailNewResponseBodyDataAlarmDetail struct {
@@ -463,7 +482,32 @@ func (s *GetOpaStrategyDetailNewResponseBodyDataAlarmDetail) SetVul(v *GetOpaStr
 }
 
 func (s *GetOpaStrategyDetailNewResponseBodyDataAlarmDetail) Validate() error {
-	return dara.Validate(s)
+	if s.Baseline != nil {
+		if err := s.Baseline.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BuildRisk != nil {
+		if err := s.BuildRisk.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MaliciousFile != nil {
+		if err := s.MaliciousFile.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SensitiveFile != nil {
+		if err := s.SensitiveFile.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Vul != nil {
+		if err := s.Vul.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOpaStrategyDetailNewResponseBodyDataAlarmDetailBaseline struct {
@@ -500,7 +544,16 @@ func (s *GetOpaStrategyDetailNewResponseBodyDataAlarmDetailBaseline) SetRiskLeve
 }
 
 func (s *GetOpaStrategyDetailNewResponseBodyDataAlarmDetailBaseline) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		for _, item := range s.Item {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOpaStrategyDetailNewResponseBodyDataAlarmDetailBaselineItem struct {
@@ -582,7 +635,16 @@ func (s *GetOpaStrategyDetailNewResponseBodyDataAlarmDetailBuildRisk) SetRiskLev
 }
 
 func (s *GetOpaStrategyDetailNewResponseBodyDataAlarmDetailBuildRisk) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		for _, item := range s.Item {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOpaStrategyDetailNewResponseBodyDataAlarmDetailBuildRiskItem struct {
@@ -668,7 +730,16 @@ func (s *GetOpaStrategyDetailNewResponseBodyDataAlarmDetailMaliciousFile) SetRis
 }
 
 func (s *GetOpaStrategyDetailNewResponseBodyDataAlarmDetailMaliciousFile) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		for _, item := range s.Item {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOpaStrategyDetailNewResponseBodyDataAlarmDetailMaliciousFileItem struct {
@@ -750,7 +821,16 @@ func (s *GetOpaStrategyDetailNewResponseBodyDataAlarmDetailSensitiveFile) SetRis
 }
 
 func (s *GetOpaStrategyDetailNewResponseBodyDataAlarmDetailSensitiveFile) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		for _, item := range s.Item {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOpaStrategyDetailNewResponseBodyDataAlarmDetailSensitiveFileItem struct {
@@ -847,7 +927,25 @@ func (s *GetOpaStrategyDetailNewResponseBodyDataAlarmDetailVul) SetRiskLevel(v [
 }
 
 func (s *GetOpaStrategyDetailNewResponseBodyDataAlarmDetailVul) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		for _, item := range s.Item {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RiskClass != nil {
+		for _, item := range s.RiskClass {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOpaStrategyDetailNewResponseBodyDataAlarmDetailVulItem struct {

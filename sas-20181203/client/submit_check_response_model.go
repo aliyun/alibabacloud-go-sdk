@@ -59,5 +59,10 @@ func (s *SubmitCheckResponse) SetBody(v *SubmitCheckResponseBody) *SubmitCheckRe
 }
 
 func (s *SubmitCheckResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

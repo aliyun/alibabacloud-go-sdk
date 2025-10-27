@@ -53,7 +53,16 @@ func (s *ListCheckStandardResponseBody) SetStandards(v []*ListCheckStandardRespo
 }
 
 func (s *ListCheckStandardResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Standards != nil {
+		for _, item := range s.Standards {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCheckStandardResponseBodyStandards struct {
@@ -164,7 +173,16 @@ func (s *ListCheckStandardResponseBodyStandards) SetType(v string) *ListCheckSta
 }
 
 func (s *ListCheckStandardResponseBodyStandards) Validate() error {
-	return dara.Validate(s)
+	if s.Requirements != nil {
+		for _, item := range s.Requirements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCheckStandardResponseBodyStandardsRequirements struct {

@@ -147,7 +147,16 @@ func (s *GetCloudAssetDetailRequest) SetVendor(v int32) *GetCloudAssetDetailRequ
 }
 
 func (s *GetCloudAssetDetailRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CloudAssetInstances != nil {
+		for _, item := range s.CloudAssetInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCloudAssetDetailRequestCloudAssetInstances struct {

@@ -66,7 +66,21 @@ func (s *ListPublishBatchResponseBody) SetRequestId(v string) *ListPublishBatchR
 }
 
 func (s *ListPublishBatchResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BatchList != nil {
+		for _, item := range s.BatchList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPublishBatchResponseBodyBatchList struct {

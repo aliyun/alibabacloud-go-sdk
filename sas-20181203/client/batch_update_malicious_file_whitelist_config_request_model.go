@@ -36,7 +36,16 @@ func (s *BatchUpdateMaliciousFileWhitelistConfigRequest) SetConfigList(v []*Batc
 }
 
 func (s *BatchUpdateMaliciousFileWhitelistConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigList != nil {
+		for _, item := range s.ConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchUpdateMaliciousFileWhitelistConfigRequestConfigList struct {

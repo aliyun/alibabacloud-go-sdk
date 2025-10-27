@@ -121,7 +121,12 @@ func (s *GetInstallCodeForUuidResponseBody) SetSuccess(v bool) *GetInstallCodeFo
 }
 
 func (s *GetInstallCodeForUuidResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstallCode != nil {
+		if err := s.InstallCode.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstallCodeForUuidResponseBodyInstallCode struct {

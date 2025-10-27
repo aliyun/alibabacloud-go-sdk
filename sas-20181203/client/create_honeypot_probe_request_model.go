@@ -230,7 +230,16 @@ func (s *CreateHoneypotProbeRequest) SetVpcId(v string) *CreateHoneypotProbeRequ
 }
 
 func (s *CreateHoneypotProbeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.HoneypotBindList != nil {
+		for _, item := range s.HoneypotBindList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateHoneypotProbeRequestHoneypotBindList struct {
@@ -273,7 +282,16 @@ func (s *CreateHoneypotProbeRequestHoneypotBindList) SetHoneypotId(v string) *Cr
 }
 
 func (s *CreateHoneypotProbeRequestHoneypotBindList) Validate() error {
-	return dara.Validate(s)
+	if s.BindPortList != nil {
+		for _, item := range s.BindPortList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateHoneypotProbeRequestHoneypotBindListBindPortList struct {

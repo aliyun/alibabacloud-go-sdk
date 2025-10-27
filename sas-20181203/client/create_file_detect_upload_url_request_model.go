@@ -86,7 +86,16 @@ func (s *CreateFileDetectUploadUrlRequest) SetType(v int32) *CreateFileDetectUpl
 }
 
 func (s *CreateFileDetectUploadUrlRequest) Validate() error {
-	return dara.Validate(s)
+	if s.HashKeyContextList != nil {
+		for _, item := range s.HashKeyContextList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateFileDetectUploadUrlRequestHashKeyContextList struct {

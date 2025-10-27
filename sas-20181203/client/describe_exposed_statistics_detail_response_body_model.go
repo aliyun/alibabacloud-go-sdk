@@ -66,7 +66,21 @@ func (s *DescribeExposedStatisticsDetailResponseBody) SetStatisticsDetails(v []*
 }
 
 func (s *DescribeExposedStatisticsDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StatisticsDetails != nil {
+		for _, item := range s.StatisticsDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeExposedStatisticsDetailResponseBodyPageInfo struct {

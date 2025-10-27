@@ -53,7 +53,12 @@ func (s *GetRegistryScanDayNumResponseBody) SetScanDayNumConfig(v *GetRegistrySc
 }
 
 func (s *GetRegistryScanDayNumResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ScanDayNumConfig != nil {
+		if err := s.ScanDayNumConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRegistryScanDayNumResponseBodyScanDayNumConfig struct {

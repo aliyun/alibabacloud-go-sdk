@@ -53,7 +53,12 @@ func (s *DescribeSoarStrategyTaskParamsResponseBody) SetTaskDetail(v *DescribeSo
 }
 
 func (s *DescribeSoarStrategyTaskParamsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TaskDetail != nil {
+		if err := s.TaskDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSoarStrategyTaskParamsResponseBodyTaskDetail struct {

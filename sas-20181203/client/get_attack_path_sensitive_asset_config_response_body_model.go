@@ -53,7 +53,12 @@ func (s *GetAttackPathSensitiveAssetConfigResponseBody) SetRequestId(v string) *
 }
 
 func (s *GetAttackPathSensitiveAssetConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AttackPathSensitiveAssetConfig != nil {
+		if err := s.AttackPathSensitiveAssetConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAttackPathSensitiveAssetConfigResponseBodyAttackPathSensitiveAssetConfig struct {
@@ -109,7 +114,16 @@ func (s *GetAttackPathSensitiveAssetConfigResponseBodyAttackPathSensitiveAssetCo
 }
 
 func (s *GetAttackPathSensitiveAssetConfigResponseBodyAttackPathSensitiveAssetConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AttackPathAssetList != nil {
+		for _, item := range s.AttackPathAssetList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAttackPathSensitiveAssetConfigResponseBodyAttackPathSensitiveAssetConfigAttackPathAssetList struct {

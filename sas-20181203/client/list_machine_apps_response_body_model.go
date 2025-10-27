@@ -66,7 +66,21 @@ func (s *ListMachineAppsResponseBody) SetRequestId(v string) *ListMachineAppsRes
 }
 
 func (s *ListMachineAppsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AppList != nil {
+		for _, item := range s.AppList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMachineAppsResponseBodyAppList struct {

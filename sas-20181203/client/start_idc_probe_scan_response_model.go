@@ -59,5 +59,10 @@ func (s *StartIdcProbeScanResponse) SetBody(v *StartIdcProbeScanResponseBody) *S
 }
 
 func (s *StartIdcProbeScanResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

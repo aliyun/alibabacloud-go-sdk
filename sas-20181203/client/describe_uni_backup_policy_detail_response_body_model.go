@@ -53,7 +53,12 @@ func (s *DescribeUniBackupPolicyDetailResponseBody) SetUniBackupPolicyDTO(v *Des
 }
 
 func (s *DescribeUniBackupPolicyDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UniBackupPolicyDTO != nil {
+		if err := s.UniBackupPolicyDTO.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO struct {
@@ -262,7 +267,17 @@ func (s *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO) SetSpeedLi
 }
 
 func (s *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO) Validate() error {
-	return dara.Validate(s)
+	if s.FullPlan != nil {
+		if err := s.FullPlan.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IncPlan != nil {
+		if err := s.IncPlan.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOFullPlan struct {

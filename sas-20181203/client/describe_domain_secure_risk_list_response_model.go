@@ -59,5 +59,10 @@ func (s *DescribeDomainSecureRiskListResponse) SetBody(v *DescribeDomainSecureRi
 }
 
 func (s *DescribeDomainSecureRiskListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

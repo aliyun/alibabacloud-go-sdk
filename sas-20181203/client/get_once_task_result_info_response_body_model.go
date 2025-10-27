@@ -121,7 +121,12 @@ func (s *GetOnceTaskResultInfoResponseBody) SetTotalCount(v int32) *GetOnceTaskR
 }
 
 func (s *GetOnceTaskResultInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TaskInfo != nil {
+		if err := s.TaskInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOnceTaskResultInfoResponseBodyTaskInfo struct {

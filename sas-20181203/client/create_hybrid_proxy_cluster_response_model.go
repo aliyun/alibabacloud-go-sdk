@@ -59,5 +59,10 @@ func (s *CreateHybridProxyClusterResponse) SetBody(v *CreateHybridProxyClusterRe
 }
 
 func (s *CreateHybridProxyClusterResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

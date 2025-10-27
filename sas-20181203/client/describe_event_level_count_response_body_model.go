@@ -108,7 +108,12 @@ func (s *DescribeEventLevelCountResponseBody) SetSuccess(v bool) *DescribeEventL
 }
 
 func (s *DescribeEventLevelCountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EventLevels != nil {
+		if err := s.EventLevels.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventLevelCountResponseBodyEventLevels struct {

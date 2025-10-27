@@ -59,5 +59,10 @@ func (s *InstallBackupClientResponse) SetBody(v *InstallBackupClientResponseBody
 }
 
 func (s *InstallBackupClientResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

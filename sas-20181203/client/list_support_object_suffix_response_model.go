@@ -59,5 +59,10 @@ func (s *ListSupportObjectSuffixResponse) SetBody(v *ListSupportObjectSuffixResp
 }
 
 func (s *ListSupportObjectSuffixResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

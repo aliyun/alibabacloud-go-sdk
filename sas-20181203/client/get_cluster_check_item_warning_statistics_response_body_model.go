@@ -53,7 +53,12 @@ func (s *GetClusterCheckItemWarningStatisticsResponseBody) SetRequestId(v string
 }
 
 func (s *GetClusterCheckItemWarningStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetClusterCheckItemWarningStatisticsResponseBodyData struct {

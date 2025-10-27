@@ -126,7 +126,12 @@ func (s *CreateSasTrialRequest) SetTryVersion(v int32) *CreateSasTrialRequest {
 }
 
 func (s *CreateSasTrialRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RequestForm != nil {
+		if err := s.RequestForm.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateSasTrialRequestRequestForm struct {

@@ -74,7 +74,16 @@ func (s *InstallAegisForLingjunResponseBody) SetSuccess(v bool) *InstallAegisFor
 }
 
 func (s *InstallAegisForLingjunResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InvokeTasks != nil {
+		for _, item := range s.InvokeTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InstallAegisForLingjunResponseBodyInvokeTasks struct {

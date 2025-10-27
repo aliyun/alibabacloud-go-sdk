@@ -53,7 +53,16 @@ func (s *ListSupportAttackPathAssetResponseBody) SetRequestId(v string) *ListSup
 }
 
 func (s *ListSupportAttackPathAssetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AttackPathAssetTypeList != nil {
+		for _, item := range s.AttackPathAssetTypeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSupportAttackPathAssetResponseBodyAttackPathAssetTypeList struct {

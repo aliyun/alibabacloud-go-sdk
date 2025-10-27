@@ -70,7 +70,16 @@ func (s *DescribeLoginSwitchConfigsResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeLoginSwitchConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigList != nil {
+		for _, item := range s.ConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLoginSwitchConfigsResponseBodyConfigList struct {

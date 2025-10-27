@@ -121,7 +121,16 @@ func (s *DescribeCheckWarningSummaryResponseBody) SetWarningSummarys(v []*Descri
 }
 
 func (s *DescribeCheckWarningSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WarningSummarys != nil {
+		for _, item := range s.WarningSummarys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCheckWarningSummaryResponseBodyWarningSummarys struct {

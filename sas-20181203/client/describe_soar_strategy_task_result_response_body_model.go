@@ -66,7 +66,12 @@ func (s *DescribeSoarStrategyTaskResultResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribeSoarStrategyTaskResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSoarStrategyTaskResultResponseBodyPageInfo struct {

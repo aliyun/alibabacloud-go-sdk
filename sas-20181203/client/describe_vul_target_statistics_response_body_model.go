@@ -104,7 +104,16 @@ func (s *DescribeVulTargetStatisticsResponseBody) SetTotalCount(v int32) *Descri
 }
 
 func (s *DescribeVulTargetStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TargetStats != nil {
+		for _, item := range s.TargetStats {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVulTargetStatisticsResponseBodyTargetStats struct {
@@ -183,7 +192,16 @@ func (s *DescribeVulTargetStatisticsResponseBodyTargetStats) SetVulType(v string
 }
 
 func (s *DescribeVulTargetStatisticsResponseBodyTargetStats) Validate() error {
-	return dara.Validate(s)
+	if s.Targets != nil {
+		for _, item := range s.Targets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVulTargetStatisticsResponseBodyTargetStatsTargets struct {

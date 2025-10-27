@@ -59,6 +59,11 @@ func (s *ExecStrategyResponse) SetBody(v *ExecStrategyResponseBody) *ExecStrateg
 }
 
 func (s *ExecStrategyResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

@@ -53,7 +53,16 @@ func (s *ChangeAssetRefreshTaskConfigRequest) SetRegionId(v string) *ChangeAsset
 }
 
 func (s *ChangeAssetRefreshTaskConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AssetRefreshConfigs != nil {
+		for _, item := range s.AssetRefreshConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ChangeAssetRefreshTaskConfigRequestAssetRefreshConfigs struct {

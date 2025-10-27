@@ -108,7 +108,12 @@ func (s *GetBuildRiskDefineRuleConfigResponseBody) SetSuccess(v bool) *GetBuildR
 }
 
 func (s *GetBuildRiskDefineRuleConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBuildRiskDefineRuleConfigResponseBodyData struct {
@@ -179,7 +184,16 @@ func (s *GetBuildRiskDefineRuleConfigResponseBodyData) SetSelectedCount(v int32)
 }
 
 func (s *GetBuildRiskDefineRuleConfigResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.RuleTree != nil {
+		for _, item := range s.RuleTree {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetBuildRiskDefineRuleConfigResponseBodyDataRuleTree struct {
@@ -235,7 +249,16 @@ func (s *GetBuildRiskDefineRuleConfigResponseBodyDataRuleTree) SetRuleList(v []*
 }
 
 func (s *GetBuildRiskDefineRuleConfigResponseBodyDataRuleTree) Validate() error {
-	return dara.Validate(s)
+	if s.RuleList != nil {
+		for _, item := range s.RuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetBuildRiskDefineRuleConfigResponseBodyDataRuleTreeRuleList struct {

@@ -59,5 +59,10 @@ func (s *GetHoneypotNodeResponse) SetBody(v *GetHoneypotNodeResponseBody) *GetHo
 }
 
 func (s *GetHoneypotNodeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *CreateSimilarSecurityEventsQueryTaskResponseBody) SetRequestId(v string
 }
 
 func (s *CreateSimilarSecurityEventsQueryTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CreateSimilarSecurityEventsQueryTaskResponse != nil {
+		if err := s.CreateSimilarSecurityEventsQueryTaskResponse.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateSimilarSecurityEventsQueryTaskResponseBodyCreateSimilarSecurityEventsQueryTaskResponse struct {

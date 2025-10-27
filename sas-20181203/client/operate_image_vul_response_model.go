@@ -59,5 +59,10 @@ func (s *OperateImageVulResponse) SetBody(v *OperateImageVulResponseBody) *Opera
 }
 
 func (s *OperateImageVulResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

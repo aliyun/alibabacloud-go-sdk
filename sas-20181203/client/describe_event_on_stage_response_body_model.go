@@ -53,7 +53,12 @@ func (s *DescribeEventOnStageResponseBody) SetSecurityEventStageResponse(v *Desc
 }
 
 func (s *DescribeEventOnStageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityEventStageResponse != nil {
+		if err := s.SecurityEventStageResponse.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventOnStageResponseBodySecurityEventStageResponse struct {

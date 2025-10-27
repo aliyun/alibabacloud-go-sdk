@@ -66,7 +66,21 @@ func (s *ListAgentlessMaliciousFilesResponseBody) SetRequestId(v string) *ListAg
 }
 
 func (s *ListAgentlessMaliciousFilesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAgentlessMaliciousFilesResponseBodyList struct {
@@ -411,7 +425,25 @@ func (s *ListAgentlessMaliciousFilesResponseBodyList) SetUuid(v string) *ListAge
 }
 
 func (s *ListAgentlessMaliciousFilesResponseBodyList) Validate() error {
-	return dara.Validate(s)
+	if s.Details != nil {
+		for _, item := range s.Details {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Notes != nil {
+		for _, item := range s.Notes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAgentlessMaliciousFilesResponseBodyListDetails struct {

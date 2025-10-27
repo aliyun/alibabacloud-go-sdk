@@ -59,5 +59,10 @@ func (s *DescribeModuleConfigResponse) SetBody(v *DescribeModuleConfigResponseBo
 }
 
 func (s *DescribeModuleConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

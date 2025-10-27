@@ -53,7 +53,16 @@ func (s *ListOssBucketResponseBody) SetRequestId(v string) *ListOssBucketRespons
 }
 
 func (s *ListOssBucketResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListOssBucketResponseBodyData struct {

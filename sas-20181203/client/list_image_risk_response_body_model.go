@@ -66,7 +66,21 @@ func (s *ListImageRiskResponseBody) SetRequestId(v string) *ListImageRiskRespons
 }
 
 func (s *ListImageRiskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ImageRiskList != nil {
+		for _, item := range s.ImageRiskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListImageRiskResponseBodyImageRiskList struct {
@@ -375,7 +389,16 @@ func (s *ListImageRiskResponseBodyImageRiskList) SetVpcURLs(v string) *ListImage
 }
 
 func (s *ListImageRiskResponseBodyImageRiskList) Validate() error {
-	return dara.Validate(s)
+	if s.EndPointList != nil {
+		for _, item := range s.EndPointList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListImageRiskResponseBodyImageRiskListEndPointList struct {

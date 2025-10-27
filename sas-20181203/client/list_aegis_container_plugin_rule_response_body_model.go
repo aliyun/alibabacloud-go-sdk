@@ -66,7 +66,21 @@ func (s *ListAegisContainerPluginRuleResponseBody) SetRuleList(v []*ListAegisCon
 }
 
 func (s *ListAegisContainerPluginRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuleList != nil {
+		for _, item := range s.RuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAegisContainerPluginRuleResponseBodyPageInfo struct {
@@ -313,7 +327,16 @@ func (s *ListAegisContainerPluginRuleResponseBodyRuleList) SetWhiteImages(v []*s
 }
 
 func (s *ListAegisContainerPluginRuleResponseBodyRuleList) Validate() error {
-	return dara.Validate(s)
+	if s.Policies != nil {
+		for _, item := range s.Policies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAegisContainerPluginRuleResponseBodyRuleListPolicies struct {

@@ -108,7 +108,12 @@ func (s *UpdateImageEventOperationResponseBody) SetSuccess(v bool) *UpdateImageE
 }
 
 func (s *UpdateImageEventOperationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateImageEventOperationResponseBodyData struct {

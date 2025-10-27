@@ -59,5 +59,10 @@ func (s *CreateSasTrialResponse) SetBody(v *CreateSasTrialResponseBody) *CreateS
 }
 
 func (s *CreateSasTrialResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -74,7 +74,16 @@ func (s *ResetLogShipperRequest) SetTtl(v int32) *ResetLogShipperRequest {
 }
 
 func (s *ResetLogShipperRequest) Validate() error {
-	return dara.Validate(s)
+	if s.LogMetaList != nil {
+		for _, item := range s.LogMetaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ResetLogShipperRequestLogMetaList struct {

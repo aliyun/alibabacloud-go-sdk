@@ -53,7 +53,16 @@ func (s *DescribeNsasSuspEventTypeResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeNsasSuspEventTypeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EventTypes != nil {
+		for _, item := range s.EventTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNsasSuspEventTypeResponseBodyEventTypes struct {

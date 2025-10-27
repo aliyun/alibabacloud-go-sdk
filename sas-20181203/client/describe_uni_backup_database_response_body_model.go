@@ -66,7 +66,21 @@ func (s *DescribeUniBackupDatabaseResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeUniBackupDatabaseResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DatabaseList != nil {
+		for _, item := range s.DatabaseList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeUniBackupDatabaseResponseBodyDatabaseList struct {

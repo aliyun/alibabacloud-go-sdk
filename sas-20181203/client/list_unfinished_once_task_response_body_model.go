@@ -53,7 +53,16 @@ func (s *ListUnfinishedOnceTaskResponseBody) SetRequestId(v string) *ListUnfinis
 }
 
 func (s *ListUnfinishedOnceTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OnceTasks != nil {
+		for _, item := range s.OnceTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUnfinishedOnceTaskResponseBodyOnceTasks struct {
@@ -320,7 +329,12 @@ func (s *ListUnfinishedOnceTaskResponseBodyOnceTasks) SetTotalCount(v int32) *Li
 }
 
 func (s *ListUnfinishedOnceTaskResponseBodyOnceTasks) Validate() error {
-	return dara.Validate(s)
+	if s.TaskImageInfo != nil {
+		if err := s.TaskImageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUnfinishedOnceTaskResponseBodyOnceTasksTaskImageInfo struct {

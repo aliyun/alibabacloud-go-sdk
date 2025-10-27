@@ -70,7 +70,16 @@ func (s *DescribeDomainSecureVulListResponseBody) SetVulList(v []*DescribeDomain
 }
 
 func (s *DescribeDomainSecureVulListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VulList != nil {
+		for _, item := range s.VulList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainSecureVulListResponseBodyVulList struct {

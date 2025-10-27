@@ -59,5 +59,10 @@ func (s *DescribePropertyCronDetailResponse) SetBody(v *DescribePropertyCronDeta
 }
 
 func (s *DescribePropertyCronDetailResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

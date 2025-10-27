@@ -91,7 +91,12 @@ func (s *ModifyStrategyResponseBody) SetSuccess(v bool) *ModifyStrategyResponseB
 }
 
 func (s *ModifyStrategyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyStrategyResponseBodyResult struct {

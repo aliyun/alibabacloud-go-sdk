@@ -53,7 +53,12 @@ func (s *AddSasModuleTrialResponseBody) SetRequestId(v string) *AddSasModuleTria
 }
 
 func (s *AddSasModuleTrialResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddSasModuleTrialResponseBodyData struct {
@@ -79,7 +84,16 @@ func (s *AddSasModuleTrialResponseBodyData) SetTrialRecordList(v []*AddSasModule
 }
 
 func (s *AddSasModuleTrialResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.TrialRecordList != nil {
+		for _, item := range s.TrialRecordList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddSasModuleTrialResponseBodyDataTrialRecordList struct {

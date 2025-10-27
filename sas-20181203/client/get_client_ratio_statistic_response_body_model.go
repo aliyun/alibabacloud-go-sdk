@@ -79,7 +79,17 @@ func (s *GetClientRatioStatisticResponseBody) SetRequestId(v string) *GetClientR
 }
 
 func (s *GetClientRatioStatisticResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ClientInstallRatio != nil {
+		if err := s.ClientInstallRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ClientOnlineRatio != nil {
+		if err := s.ClientOnlineRatio.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetClientRatioStatisticResponseBodyClientInstallRatio struct {
@@ -116,7 +126,25 @@ func (s *GetClientRatioStatisticResponseBodyClientInstallRatio) SetHistoryItems(
 }
 
 func (s *GetClientRatioStatisticResponseBodyClientInstallRatio) Validate() error {
-	return dara.Validate(s)
+	if s.CurrentItems != nil {
+		for _, item := range s.CurrentItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HistoryItems != nil {
+		for _, item := range s.HistoryItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetClientRatioStatisticResponseBodyClientInstallRatioCurrentItems struct {
@@ -167,7 +195,16 @@ func (s *GetClientRatioStatisticResponseBodyClientInstallRatioCurrentItems) SetV
 }
 
 func (s *GetClientRatioStatisticResponseBodyClientInstallRatioCurrentItems) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetClientRatioStatisticResponseBodyClientInstallRatioCurrentItemsItems struct {
@@ -293,7 +330,16 @@ func (s *GetClientRatioStatisticResponseBodyClientInstallRatioHistoryItems) SetV
 }
 
 func (s *GetClientRatioStatisticResponseBodyClientInstallRatioHistoryItems) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetClientRatioStatisticResponseBodyClientInstallRatioHistoryItemsItems struct {
@@ -405,7 +451,25 @@ func (s *GetClientRatioStatisticResponseBodyClientOnlineRatio) SetHistoryItems(v
 }
 
 func (s *GetClientRatioStatisticResponseBodyClientOnlineRatio) Validate() error {
-	return dara.Validate(s)
+	if s.CurrentItems != nil {
+		for _, item := range s.CurrentItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HistoryItems != nil {
+		for _, item := range s.HistoryItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetClientRatioStatisticResponseBodyClientOnlineRatioCurrentItems struct {
@@ -456,7 +520,16 @@ func (s *GetClientRatioStatisticResponseBodyClientOnlineRatioCurrentItems) SetVe
 }
 
 func (s *GetClientRatioStatisticResponseBodyClientOnlineRatioCurrentItems) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetClientRatioStatisticResponseBodyClientOnlineRatioCurrentItemsItems struct {
@@ -582,7 +655,16 @@ func (s *GetClientRatioStatisticResponseBodyClientOnlineRatioHistoryItems) SetVe
 }
 
 func (s *GetClientRatioStatisticResponseBodyClientOnlineRatioHistoryItems) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetClientRatioStatisticResponseBodyClientOnlineRatioHistoryItemsItems struct {

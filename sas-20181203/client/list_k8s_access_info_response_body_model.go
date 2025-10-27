@@ -53,7 +53,16 @@ func (s *ListK8sAccessInfoResponseBody) SetRequestId(v string) *ListK8sAccessInf
 }
 
 func (s *ListK8sAccessInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.K8sAccessInfos != nil {
+		for _, item := range s.K8sAccessInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListK8sAccessInfoResponseBodyK8sAccessInfos struct {

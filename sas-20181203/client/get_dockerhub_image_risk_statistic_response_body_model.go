@@ -53,7 +53,12 @@ func (s *GetDockerhubImageRiskStatisticResponseBody) SetRiskRankInfo(v *GetDocke
 }
 
 func (s *GetDockerhubImageRiskStatisticResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RiskRankInfo != nil {
+		if err := s.RiskRankInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDockerhubImageRiskStatisticResponseBodyRiskRankInfo struct {

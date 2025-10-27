@@ -59,5 +59,10 @@ func (s *GetSuspiciousStatisticsResponse) SetBody(v *GetSuspiciousStatisticsResp
 }
 
 func (s *GetSuspiciousStatisticsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

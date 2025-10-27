@@ -66,7 +66,21 @@ func (s *ListCompressFileDetectResultResponseBody) SetResultList(v []*ListCompre
 }
 
 func (s *ListCompressFileDetectResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResultList != nil {
+		for _, item := range s.ResultList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCompressFileDetectResultResponseBodyPageInfo struct {

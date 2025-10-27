@@ -53,7 +53,12 @@ func (s *DescribeScreenScoreThreadResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeScreenScoreThreadResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeScreenScoreThreadResponseBodyData struct {

@@ -66,7 +66,21 @@ func (s *DescribeBinarySecurityPoliciesResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribeBinarySecurityPoliciesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BinarySecurityPolicies != nil {
+		for _, item := range s.BinarySecurityPolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBinarySecurityPoliciesResponseBodyBinarySecurityPolicies struct {
@@ -160,7 +174,16 @@ func (s *DescribeBinarySecurityPoliciesResponseBodyBinarySecurityPolicies) SetSt
 }
 
 func (s *DescribeBinarySecurityPoliciesResponseBodyBinarySecurityPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.Clusters != nil {
+		for _, item := range s.Clusters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBinarySecurityPoliciesResponseBodyBinarySecurityPoliciesClusters struct {

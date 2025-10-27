@@ -53,7 +53,12 @@ func (s *GetCheckCountStatisticResponseBody) SetRequestId(v string) *GetCheckCou
 }
 
 func (s *GetCheckCountStatisticResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CheckCountStatisticDTO != nil {
+		if err := s.CheckCountStatisticDTO.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCheckCountStatisticResponseBodyCheckCountStatisticDTO struct {
@@ -100,7 +105,16 @@ func (s *GetCheckCountStatisticResponseBodyCheckCountStatisticDTO) SetStatisticT
 }
 
 func (s *GetCheckCountStatisticResponseBodyCheckCountStatisticDTO) Validate() error {
-	return dara.Validate(s)
+	if s.CheckCountStatisticItems != nil {
+		for _, item := range s.CheckCountStatisticItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisticItems struct {

@@ -53,7 +53,12 @@ func (s *DescribeCommonOverallConfigResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeCommonOverallConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OverallConfig != nil {
+		if err := s.OverallConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCommonOverallConfigResponseBodyOverallConfig struct {

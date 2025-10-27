@@ -59,5 +59,10 @@ func (s *ListPrivateK8sResponse) SetBody(v *ListPrivateK8sResponseBody) *ListPri
 }
 
 func (s *ListPrivateK8sResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

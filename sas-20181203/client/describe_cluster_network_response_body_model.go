@@ -53,7 +53,12 @@ func (s *DescribeClusterNetworkResponseBody) SetRequestId(v string) *DescribeClu
 }
 
 func (s *DescribeClusterNetworkResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterNetwork != nil {
+		if err := s.ClusterNetwork.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterNetworkResponseBodyClusterNetwork struct {
@@ -90,7 +95,25 @@ func (s *DescribeClusterNetworkResponseBodyClusterNetwork) SetNode(v []*Describe
 }
 
 func (s *DescribeClusterNetworkResponseBodyClusterNetwork) Validate() error {
-	return dara.Validate(s)
+	if s.Edge != nil {
+		for _, item := range s.Edge {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Node != nil {
+		for _, item := range s.Node {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClusterNetworkResponseBodyClusterNetworkEdge struct {

@@ -53,7 +53,12 @@ func (s *GetLogMetaResponseBody) SetRequestId(v string) *GetLogMetaResponseBody 
 }
 
 func (s *GetLogMetaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LogMeta != nil {
+		if err := s.LogMeta.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLogMetaResponseBodyLogMeta struct {

@@ -53,7 +53,16 @@ func (s *ListSystemRuleAggregationTypesResponseBody) SetRequestId(v string) *Lis
 }
 
 func (s *ListSystemRuleAggregationTypesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AggregationTypeList != nil {
+		for _, item := range s.AggregationTypeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSystemRuleAggregationTypesResponseBodyAggregationTypeList struct {

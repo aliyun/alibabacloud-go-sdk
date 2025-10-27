@@ -53,7 +53,12 @@ func (s *ModifyCloudVendorAccountAKResponseBody) SetRequestId(v string) *ModifyC
 }
 
 func (s *ModifyCloudVendorAccountAKResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyCloudVendorAccountAKResponseBodyData struct {
@@ -237,7 +242,16 @@ func (s *ModifyCloudVendorAccountAKResponseBodyData) SetVendorAuthAlias(v string
 }
 
 func (s *ModifyCloudVendorAccountAKResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AuthModules != nil {
+		for _, item := range s.AuthModules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyCloudVendorAccountAKResponseBodyDataAuthModules struct {

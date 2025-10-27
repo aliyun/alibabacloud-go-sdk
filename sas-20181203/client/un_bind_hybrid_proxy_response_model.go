@@ -59,5 +59,10 @@ func (s *UnBindHybridProxyResponse) SetBody(v *UnBindHybridProxyResponseBody) *U
 }
 
 func (s *UnBindHybridProxyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

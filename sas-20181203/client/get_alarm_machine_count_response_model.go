@@ -59,5 +59,10 @@ func (s *GetAlarmMachineCountResponse) SetBody(v *GetAlarmMachineCountResponseBo
 }
 
 func (s *GetAlarmMachineCountResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -89,7 +89,25 @@ func (s *ChangeCheckCustomConfigRequest) SetRepairConfigs(v []*ChangeCheckCustom
 }
 
 func (s *ChangeCheckCustomConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CustomConfigs != nil {
+		for _, item := range s.CustomConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RepairConfigs != nil {
+		for _, item := range s.RepairConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ChangeCheckCustomConfigRequestCustomConfigs struct {

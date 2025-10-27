@@ -108,7 +108,12 @@ func (s *DescribeImageEventOperationConditionResponseBody) SetSuccess(v bool) *D
 }
 
 func (s *DescribeImageEventOperationConditionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImageEventOperationConditionResponseBodyData struct {
@@ -162,7 +167,16 @@ func (s *DescribeImageEventOperationConditionResponseBodyData) SetScenarios(v []
 }
 
 func (s *DescribeImageEventOperationConditionResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Operations != nil {
+		for _, item := range s.Operations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageEventOperationConditionResponseBodyDataOperations struct {
@@ -220,7 +234,16 @@ func (s *DescribeImageEventOperationConditionResponseBodyDataOperations) SetOper
 }
 
 func (s *DescribeImageEventOperationConditionResponseBodyDataOperations) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageEventOperationConditionResponseBodyDataOperationsConditions struct {

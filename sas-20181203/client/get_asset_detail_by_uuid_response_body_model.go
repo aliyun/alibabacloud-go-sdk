@@ -53,7 +53,12 @@ func (s *GetAssetDetailByUuidResponseBody) SetRequestId(v string) *GetAssetDetai
 }
 
 func (s *GetAssetDetailByUuidResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AssetDetail != nil {
+		if err := s.AssetDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAssetDetailByUuidResponseBodyAssetDetail struct {
@@ -633,7 +638,16 @@ func (s *GetAssetDetailByUuidResponseBodyAssetDetail) SetVpcInstanceId(v string)
 }
 
 func (s *GetAssetDetailByUuidResponseBodyAssetDetail) Validate() error {
-	return dara.Validate(s)
+	if s.DiskInfoList != nil {
+		for _, item := range s.DiskInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAssetDetailByUuidResponseBodyAssetDetailDiskInfoList struct {

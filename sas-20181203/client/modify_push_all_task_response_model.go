@@ -59,5 +59,10 @@ func (s *ModifyPushAllTaskResponse) SetBody(v *ModifyPushAllTaskResponseBody) *M
 }
 
 func (s *ModifyPushAllTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

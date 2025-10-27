@@ -53,7 +53,16 @@ func (s *DescribeDataSourceResponseBody) SetRequestId(v string) *DescribeDataSou
 }
 
 func (s *DescribeDataSourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MetaDatas != nil {
+		for _, item := range s.MetaDatas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataSourceResponseBodyMetaDatas struct {
@@ -124,7 +133,16 @@ func (s *DescribeDataSourceResponseBodyMetaDatas) SetMetaDataFields(v []*Describ
 }
 
 func (s *DescribeDataSourceResponseBodyMetaDatas) Validate() error {
-	return dara.Validate(s)
+	if s.MetaDataFields != nil {
+		for _, item := range s.MetaDataFields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataSourceResponseBodyMetaDatasMetaDataFields struct {
@@ -210,7 +228,16 @@ func (s *DescribeDataSourceResponseBodyMetaDatasMetaDataFields) SetValueType(v s
 }
 
 func (s *DescribeDataSourceResponseBodyMetaDatasMetaDataFields) Validate() error {
-	return dara.Validate(s)
+	if s.OperatorList != nil {
+		for _, item := range s.OperatorList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataSourceResponseBodyMetaDatasMetaDataFieldsOperatorList struct {

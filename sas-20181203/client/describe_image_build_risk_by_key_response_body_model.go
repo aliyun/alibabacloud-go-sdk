@@ -108,7 +108,12 @@ func (s *DescribeImageBuildRiskByKeyResponseBody) SetSuccess(v bool) *DescribeIm
 }
 
 func (s *DescribeImageBuildRiskByKeyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImageBuildRiskByKeyResponseBodyData struct {
@@ -145,7 +150,21 @@ func (s *DescribeImageBuildRiskByKeyResponseBodyData) SetPageInfo(v *DescribeIma
 }
 
 func (s *DescribeImageBuildRiskByKeyResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImageBuildRiskByKeyResponseBodyDataList struct {

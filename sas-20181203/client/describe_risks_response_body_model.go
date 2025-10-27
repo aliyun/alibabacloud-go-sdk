@@ -70,7 +70,16 @@ func (s *DescribeRisksResponseBody) SetTotalCount(v int32) *DescribeRisksRespons
 }
 
 func (s *DescribeRisksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Risks != nil {
+		for _, item := range s.Risks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRisksResponseBodyRisks struct {

@@ -104,7 +104,16 @@ func (s *ListUninstallAegisMachinesResponseBody) SetTotalCount(v int32) *ListUni
 }
 
 func (s *ListUninstallAegisMachinesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MachineList != nil {
+		for _, item := range s.MachineList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUninstallAegisMachinesResponseBodyMachineList struct {

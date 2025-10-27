@@ -59,5 +59,10 @@ func (s *RebootMachineResponse) SetBody(v *RebootMachineResponseBody) *RebootMac
 }
 
 func (s *RebootMachineResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -66,7 +66,21 @@ func (s *FindContainerNetworkConnectResponseBody) SetRequestId(v string) *FindCo
 }
 
 func (s *FindContainerNetworkConnectResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Connects != nil {
+		for _, item := range s.Connects {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FindContainerNetworkConnectResponseBodyConnects struct {
@@ -212,7 +226,17 @@ func (s *FindContainerNetworkConnectResponseBodyConnects) SetSrcPort(v string) *
 }
 
 func (s *FindContainerNetworkConnectResponseBodyConnects) Validate() error {
-	return dara.Validate(s)
+	if s.DstContainer != nil {
+		if err := s.DstContainer.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SrcContainer != nil {
+		if err := s.SrcContainer.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FindContainerNetworkConnectResponseBodyConnectsDstContainer struct {

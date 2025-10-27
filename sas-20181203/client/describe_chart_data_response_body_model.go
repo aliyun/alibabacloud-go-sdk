@@ -218,7 +218,35 @@ func (s *DescribeChartDataResponseBody) SetSingleData(v *DescribeChartDataRespon
 }
 
 func (s *DescribeChartDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AllChartSubTypeList != nil {
+		for _, item := range s.AllChartSubTypeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.CoordinateData != nil {
+		if err := s.CoordinateData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MultipleData != nil {
+		for _, item := range s.MultipleData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SingleData != nil {
+		if err := s.SingleData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeChartDataResponseBodyAllChartSubTypeList struct {
@@ -300,7 +328,16 @@ func (s *DescribeChartDataResponseBodyCoordinateData) SetYAxisList(v []*Describe
 }
 
 func (s *DescribeChartDataResponseBodyCoordinateData) Validate() error {
-	return dara.Validate(s)
+	if s.YAxisList != nil {
+		for _, item := range s.YAxisList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeChartDataResponseBodyCoordinateDataYAxisList struct {

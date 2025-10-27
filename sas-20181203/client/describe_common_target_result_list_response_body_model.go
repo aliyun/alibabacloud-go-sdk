@@ -53,7 +53,12 @@ func (s *DescribeCommonTargetResultListResponseBody) SetTargetConfig(v *Describe
 }
 
 func (s *DescribeCommonTargetResultListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TargetConfig != nil {
+		if err := s.TargetConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCommonTargetResultListResponseBodyTargetConfig struct {

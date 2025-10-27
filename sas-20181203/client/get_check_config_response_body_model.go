@@ -163,7 +163,25 @@ func (s *GetCheckConfigResponseBody) SetStartTime(v int32) *GetCheckConfigRespon
 }
 
 func (s *GetCheckConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SelectedChecks != nil {
+		for _, item := range s.SelectedChecks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Standards != nil {
+		for _, item := range s.Standards {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCheckConfigResponseBodySelectedChecks struct {

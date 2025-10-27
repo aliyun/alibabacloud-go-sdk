@@ -66,7 +66,21 @@ func (s *ListFileProtectEventResponseBody) SetRequestId(v string) *ListFileProte
 }
 
 func (s *ListFileProtectEventResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EventList != nil {
+		for _, item := range s.EventList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListFileProtectEventResponseBodyEventList struct {

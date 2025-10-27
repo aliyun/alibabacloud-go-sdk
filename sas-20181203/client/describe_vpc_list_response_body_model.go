@@ -70,7 +70,16 @@ func (s *DescribeVpcListResponseBody) SetVpcList(v []*DescribeVpcListResponseBod
 }
 
 func (s *DescribeVpcListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VpcList != nil {
+		for _, item := range s.VpcList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcListResponseBodyVpcList struct {

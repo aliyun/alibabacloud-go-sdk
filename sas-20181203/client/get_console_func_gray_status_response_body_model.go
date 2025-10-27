@@ -53,7 +53,12 @@ func (s *GetConsoleFuncGrayStatusResponseBody) SetRequestId(v string) *GetConsol
 }
 
 func (s *GetConsoleFuncGrayStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetConsoleFuncGrayStatusResponseBodyData struct {
@@ -94,7 +99,16 @@ func (s *GetConsoleFuncGrayStatusResponseBodyData) SetHit(v bool) *GetConsoleFun
 }
 
 func (s *GetConsoleFuncGrayStatusResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ExcludeApiList != nil {
+		for _, item := range s.ExcludeApiList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetConsoleFuncGrayStatusResponseBodyDataExcludeApiList struct {

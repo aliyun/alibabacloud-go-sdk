@@ -59,5 +59,10 @@ func (s *InstallAegisForLingjunResponse) SetBody(v *InstallAegisForLingjunRespon
 }
 
 func (s *InstallAegisForLingjunResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

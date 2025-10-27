@@ -66,7 +66,21 @@ func (s *DescribeHybridProxyListResponseBody) SetRequestId(v string) *DescribeHy
 }
 
 func (s *DescribeHybridProxyListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProxyList != nil {
+		for _, item := range s.ProxyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHybridProxyListResponseBodyPageInfo struct {

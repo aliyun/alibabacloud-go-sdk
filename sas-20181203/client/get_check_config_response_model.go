@@ -59,5 +59,10 @@ func (s *GetCheckConfigResponse) SetBody(v *GetCheckConfigResponseBody) *GetChec
 }
 
 func (s *GetCheckConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -79,7 +79,26 @@ func (s *GetCheckSummaryResponseBody) SetSummarys(v []*GetCheckSummaryResponseBo
 }
 
 func (s *GetCheckSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OverallItemStatistic != nil {
+		if err := s.OverallItemStatistic.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OverallStatistic != nil {
+		if err := s.OverallStatistic.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Summarys != nil {
+		for _, item := range s.Summarys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCheckSummaryResponseBodyOverallItemStatistic struct {
@@ -407,7 +426,21 @@ func (s *GetCheckSummaryResponseBodySummarys) SetTypeStatistic(v *GetCheckSummar
 }
 
 func (s *GetCheckSummaryResponseBodySummarys) Validate() error {
-	return dara.Validate(s)
+	if s.Standards != nil {
+		for _, item := range s.Standards {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TypeStatistic != nil {
+		if err := s.TypeStatistic.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCheckSummaryResponseBodySummarysStandards struct {
@@ -538,7 +571,12 @@ func (s *GetCheckSummaryResponseBodySummarysStandards) SetStandardStatistic(v *G
 }
 
 func (s *GetCheckSummaryResponseBodySummarysStandards) Validate() error {
-	return dara.Validate(s)
+	if s.StandardStatistic != nil {
+		if err := s.StandardStatistic.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCheckSummaryResponseBodySummarysStandardsStandardStatistic struct {

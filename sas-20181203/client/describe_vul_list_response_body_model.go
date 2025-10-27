@@ -121,7 +121,16 @@ func (s *DescribeVulListResponseBody) SetVulRecords(v []*DescribeVulListResponse
 }
 
 func (s *DescribeVulListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VulRecords != nil {
+		for _, item := range s.VulRecords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVulListResponseBodyVulRecords struct {
@@ -813,7 +822,12 @@ func (s *DescribeVulListResponseBodyVulRecords) SetUuid(v string) *DescribeVulLi
 }
 
 func (s *DescribeVulListResponseBodyVulRecords) Validate() error {
-	return dara.Validate(s)
+	if s.ExtendContentJson != nil {
+		if err := s.ExtendContentJson.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVulListResponseBodyVulRecordsExtendContentJson struct {
@@ -1067,7 +1081,21 @@ func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetCveList(v []
 }
 
 func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) Validate() error {
-	return dara.Validate(s)
+	if s.Necessity != nil {
+		if err := s.Necessity.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RpmEntityList != nil {
+		for _, item := range s.RpmEntityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVulListResponseBodyVulRecordsExtendContentJsonNecessity struct {

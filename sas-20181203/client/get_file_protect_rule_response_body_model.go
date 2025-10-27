@@ -53,7 +53,12 @@ func (s *GetFileProtectRuleResponseBody) SetRequestId(v string) *GetFileProtectR
 }
 
 func (s *GetFileProtectRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetFileProtectRuleResponseBodyData struct {

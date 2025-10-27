@@ -53,7 +53,12 @@ func (s *DescribeClusterVulStatisticsResponseBody) SetVulStat(v *DescribeCluster
 }
 
 func (s *DescribeClusterVulStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VulStat != nil {
+		if err := s.VulStat.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterVulStatisticsResponseBodyVulStat struct {

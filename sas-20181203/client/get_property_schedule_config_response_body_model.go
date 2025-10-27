@@ -53,7 +53,12 @@ func (s *GetPropertyScheduleConfigResponseBody) SetRequestId(v string) *GetPrope
 }
 
 func (s *GetPropertyScheduleConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PropertyScheduleConfig != nil {
+		if err := s.PropertyScheduleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPropertyScheduleConfigResponseBodyPropertyScheduleConfig struct {

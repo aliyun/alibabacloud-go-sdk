@@ -138,7 +138,21 @@ func (s *ListHoneypotProbeResponseBody) SetSuccess(v bool) *ListHoneypotProbeRes
 }
 
 func (s *ListHoneypotProbeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListHoneypotProbeResponseBodyList struct {
@@ -342,7 +356,12 @@ func (s *ListHoneypotProbeResponseBodyList) SetVpcId(v string) *ListHoneypotProb
 }
 
 func (s *ListHoneypotProbeResponseBodyList) Validate() error {
-	return dara.Validate(s)
+	if s.ControlNode != nil {
+		if err := s.ControlNode.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListHoneypotProbeResponseBodyListControlNode struct {

@@ -59,5 +59,10 @@ func (s *DeleteInterceptionTargetResponse) SetBody(v *DeleteInterceptionTargetRe
 }
 
 func (s *DeleteInterceptionTargetResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

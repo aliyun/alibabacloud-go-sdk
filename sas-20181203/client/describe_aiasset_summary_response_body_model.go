@@ -53,7 +53,12 @@ func (s *DescribeAIAssetSummaryResponseBody) SetRequestId(v string) *DescribeAIA
 }
 
 func (s *DescribeAIAssetSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAIAssetSummaryResponseBodyData struct {
@@ -259,7 +264,12 @@ func (s *DescribeAIAssetSummaryResponseBodyData) SetVulRiskAssetCnt(v int32) *De
 }
 
 func (s *DescribeAIAssetSummaryResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.SensitiveSummary != nil {
+		if err := s.SensitiveSummary.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAIAssetSummaryResponseBodyDataSensitiveSummary struct {

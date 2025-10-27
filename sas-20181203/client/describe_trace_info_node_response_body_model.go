@@ -53,7 +53,12 @@ func (s *DescribeTraceInfoNodeResponseBody) SetRequestId(v string) *DescribeTrac
 }
 
 func (s *DescribeTraceInfoNodeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Node != nil {
+		if err := s.Node.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTraceInfoNodeResponseBodyNode struct {
@@ -109,7 +114,16 @@ func (s *DescribeTraceInfoNodeResponseBodyNode) SetType(v string) *DescribeTrace
 }
 
 func (s *DescribeTraceInfoNodeResponseBodyNode) Validate() error {
-	return dara.Validate(s)
+	if s.PropertyList != nil {
+		for _, item := range s.PropertyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTraceInfoNodeResponseBodyNodePropertyList struct {

@@ -104,7 +104,16 @@ func (s *DescribeWebLockBindListResponseBody) SetTotalCount(v int32) *DescribeWe
 }
 
 func (s *DescribeWebLockBindListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BindList != nil {
+		for _, item := range s.BindList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWebLockBindListResponseBodyBindList struct {

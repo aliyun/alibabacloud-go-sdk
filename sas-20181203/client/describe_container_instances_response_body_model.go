@@ -66,7 +66,21 @@ func (s *DescribeContainerInstancesResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeContainerInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ContainerInstanceList != nil {
+		for _, item := range s.ContainerInstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeContainerInstancesResponseBodyContainerInstanceList struct {

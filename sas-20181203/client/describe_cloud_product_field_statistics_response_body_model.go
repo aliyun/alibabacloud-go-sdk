@@ -53,7 +53,12 @@ func (s *DescribeCloudProductFieldStatisticsResponseBody) SetRequestId(v string)
 }
 
 func (s *DescribeCloudProductFieldStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GroupedFields != nil {
+		if err := s.GroupedFields.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudProductFieldStatisticsResponseBodyGroupedFields struct {

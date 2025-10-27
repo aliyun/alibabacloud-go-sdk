@@ -53,7 +53,12 @@ func (s *GetSasContainerWebDefenseRuleResponseBody) SetRequestId(v string) *GetS
 }
 
 func (s *GetSasContainerWebDefenseRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ContainerWebDefenseRule != nil {
+		if err := s.ContainerWebDefenseRule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSasContainerWebDefenseRuleResponseBodyContainerWebDefenseRule struct {
@@ -188,7 +193,16 @@ func (s *GetSasContainerWebDefenseRuleResponseBodyContainerWebDefenseRule) SetRu
 }
 
 func (s *GetSasContainerWebDefenseRuleResponseBodyContainerWebDefenseRule) Validate() error {
-	return dara.Validate(s)
+	if s.PathConfDTOList != nil {
+		for _, item := range s.PathConfDTOList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSasContainerWebDefenseRuleResponseBodyContainerWebDefenseRulePathConfDTOList struct {

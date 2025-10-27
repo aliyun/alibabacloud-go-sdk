@@ -70,7 +70,16 @@ func (s *DescribeUuidsByVulNamesResponseBody) SetVulCount(v int32) *DescribeUuid
 }
 
 func (s *DescribeUuidsByVulNamesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MachineInfoStatistics != nil {
+		for _, item := range s.MachineInfoStatistics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics struct {

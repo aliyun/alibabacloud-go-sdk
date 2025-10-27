@@ -53,7 +53,16 @@ func (s *DescribeAssetDetailByUuidsResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeAssetDetailByUuidsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AssetList != nil {
+		for _, item := range s.AssetList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAssetDetailByUuidsResponseBodyAssetList struct {

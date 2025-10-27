@@ -53,7 +53,12 @@ func (s *DescribeImageBaselineStrategyResponseBody) SetStrategy(v *DescribeImage
 }
 
 func (s *DescribeImageBaselineStrategyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Strategy != nil {
+		if err := s.Strategy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImageBaselineStrategyResponseBodyStrategy struct {
@@ -175,7 +180,16 @@ func (s *DescribeImageBaselineStrategyResponseBodyStrategy) SetType(v string) *D
 }
 
 func (s *DescribeImageBaselineStrategyResponseBodyStrategy) Validate() error {
-	return dara.Validate(s)
+	if s.BaselineItemList != nil {
+		for _, item := range s.BaselineItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageBaselineStrategyResponseBodyStrategyBaselineItemList struct {

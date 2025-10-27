@@ -53,7 +53,16 @@ func (s *ListAssetRefreshTaskConfigResponseBody) SetRequestId(v string) *ListAss
 }
 
 func (s *ListAssetRefreshTaskConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AssetRefreshConfig != nil {
+		for _, item := range s.AssetRefreshConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAssetRefreshTaskConfigResponseBodyAssetRefreshConfig struct {

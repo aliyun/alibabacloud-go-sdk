@@ -53,7 +53,16 @@ func (s *ListImageRegistryExtraResponseBody) SetRequestId(v string) *ListImageRe
 }
 
 func (s *ListImageRegistryExtraResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ImageRegistryExtraInfos != nil {
+		for _, item := range s.ImageRegistryExtraInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListImageRegistryExtraResponseBodyImageRegistryExtraInfos struct {

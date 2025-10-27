@@ -59,5 +59,10 @@ func (s *QueryJenkinsImageRegistryPersistenceDayResponse) SetBody(v *QueryJenkin
 }
 
 func (s *QueryJenkinsImageRegistryPersistenceDayResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *GetSupportedModulesResponse) SetBody(v *GetSupportedModulesResponseBody
 }
 
 func (s *GetSupportedModulesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

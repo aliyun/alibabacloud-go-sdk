@@ -53,7 +53,16 @@ func (s *ListInstanceRiskLevelsResponseBody) SetRequestId(v string) *ListInstanc
 }
 
 func (s *ListInstanceRiskLevelsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceRiskLevels != nil {
+		for _, item := range s.InstanceRiskLevels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstanceRiskLevelsResponseBodyInstanceRiskLevels struct {

@@ -70,7 +70,12 @@ func (s *SubmitCheckResponseBody) SetTaskId(v string) *SubmitCheckResponseBody {
 }
 
 func (s *SubmitCheckResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitCheckResponseBodyData struct {

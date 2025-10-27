@@ -53,7 +53,16 @@ func (s *DescribeChartListResponseBody) SetRequestId(v string) *DescribeChartLis
 }
 
 func (s *DescribeChartListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ChartList != nil {
+		for _, item := range s.ChartList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeChartListResponseBodyChartList struct {

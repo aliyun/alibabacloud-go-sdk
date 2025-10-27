@@ -87,7 +87,25 @@ func (s *GetSecurityScoreRuleResponseBody) SetSecurityScoreRuleList(v []*GetSecu
 }
 
 func (s *GetSecurityScoreRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityScoreCategoryList != nil {
+		for _, item := range s.SecurityScoreCategoryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SecurityScoreRuleList != nil {
+		for _, item := range s.SecurityScoreRuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSecurityScoreRuleResponseBodySecurityScoreCategoryList struct {
@@ -162,7 +180,16 @@ func (s *GetSecurityScoreRuleResponseBodySecurityScoreCategoryList) SetTitle(v s
 }
 
 func (s *GetSecurityScoreRuleResponseBodySecurityScoreCategoryList) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityRuleList != nil {
+		for _, item := range s.SecurityRuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSecurityScoreRuleResponseBodySecurityScoreCategoryListSecurityRuleList struct {
@@ -233,7 +260,16 @@ func (s *GetSecurityScoreRuleResponseBodySecurityScoreCategoryListSecurityRuleLi
 }
 
 func (s *GetSecurityScoreRuleResponseBodySecurityScoreCategoryListSecurityRuleList) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityScoreItemList != nil {
+		for _, item := range s.SecurityScoreItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSecurityScoreRuleResponseBodySecurityScoreCategoryListSecurityRuleListSecurityScoreItemList struct {
@@ -421,7 +457,16 @@ func (s *GetSecurityScoreRuleResponseBodySecurityScoreRuleList) SetTitle(v strin
 }
 
 func (s *GetSecurityScoreRuleResponseBodySecurityScoreRuleList) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityScoreItemList != nil {
+		for _, item := range s.SecurityScoreItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSecurityScoreRuleResponseBodySecurityScoreRuleListSecurityScoreItemList struct {

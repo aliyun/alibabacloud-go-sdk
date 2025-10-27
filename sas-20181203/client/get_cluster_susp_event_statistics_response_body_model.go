@@ -53,7 +53,12 @@ func (s *GetClusterSuspEventStatisticsResponseBody) SetSuspStatistics(v *GetClus
 }
 
 func (s *GetClusterSuspEventStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SuspStatistics != nil {
+		if err := s.SuspStatistics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetClusterSuspEventStatisticsResponseBodySuspStatistics struct {

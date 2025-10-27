@@ -53,7 +53,12 @@ func (s *GetVulWhitelistResponseBody) SetVulWhitelist(v *GetVulWhitelistResponse
 }
 
 func (s *GetVulWhitelistResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VulWhitelist != nil {
+		if err := s.VulWhitelist.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetVulWhitelistResponseBodyVulWhitelist struct {

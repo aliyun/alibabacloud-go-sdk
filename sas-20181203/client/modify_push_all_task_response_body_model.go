@@ -53,7 +53,12 @@ func (s *ModifyPushAllTaskResponseBody) SetRequestId(v string) *ModifyPushAllTas
 }
 
 func (s *ModifyPushAllTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PushTaskRsp != nil {
+		if err := s.PushTaskRsp.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyPushAllTaskResponseBodyPushTaskRsp struct {
@@ -79,7 +84,16 @@ func (s *ModifyPushAllTaskResponseBodyPushTaskRsp) SetPushTaskResultList(v []*Mo
 }
 
 func (s *ModifyPushAllTaskResponseBodyPushTaskRsp) Validate() error {
-	return dara.Validate(s)
+	if s.PushTaskResultList != nil {
+		for _, item := range s.PushTaskResultList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyPushAllTaskResponseBodyPushTaskRspPushTaskResultList struct {

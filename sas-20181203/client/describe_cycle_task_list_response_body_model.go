@@ -66,7 +66,21 @@ func (s *DescribeCycleTaskListResponseBody) SetRequestId(v string) *DescribeCycl
 }
 
 func (s *DescribeCycleTaskListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CycleScheduleResponseList != nil {
+		for _, item := range s.CycleScheduleResponseList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCycleTaskListResponseBodyCycleScheduleResponseList struct {

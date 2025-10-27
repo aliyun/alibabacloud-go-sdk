@@ -11,6 +11,8 @@ type iDescribeVulNumStatisticsRequest interface {
 	GoString() string
 	SetFrom(v string) *DescribeVulNumStatisticsRequest
 	GetFrom() *string
+	SetResourceDirectoryAccountId(v int64) *DescribeVulNumStatisticsRequest
+	GetResourceDirectoryAccountId() *int64
 }
 
 type DescribeVulNumStatisticsRequest struct {
@@ -24,6 +26,14 @@ type DescribeVulNumStatisticsRequest struct {
 	//
 	// sas
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// The Alibaba Cloud account ID of the member in the resource directory.
+	//
+	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+	//
+	// example:
+	//
+	// 127608589417****
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 
 func (s DescribeVulNumStatisticsRequest) String() string {
@@ -38,8 +48,17 @@ func (s *DescribeVulNumStatisticsRequest) GetFrom() *string {
 	return s.From
 }
 
+func (s *DescribeVulNumStatisticsRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribeVulNumStatisticsRequest) SetFrom(v string) *DescribeVulNumStatisticsRequest {
 	s.From = &v
+	return s
+}
+
+func (s *DescribeVulNumStatisticsRequest) SetResourceDirectoryAccountId(v int64) *DescribeVulNumStatisticsRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

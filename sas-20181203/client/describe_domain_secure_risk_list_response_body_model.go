@@ -87,7 +87,16 @@ func (s *DescribeDomainSecureRiskListResponseBody) SetRiskList(v []*DescribeDoma
 }
 
 func (s *DescribeDomainSecureRiskListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RiskList != nil {
+		for _, item := range s.RiskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainSecureRiskListResponseBodyRiskList struct {

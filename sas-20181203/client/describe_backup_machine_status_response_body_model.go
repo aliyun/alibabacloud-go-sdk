@@ -53,7 +53,12 @@ func (s *DescribeBackupMachineStatusResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeBackupMachineStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BackupMachineStatus != nil {
+		if err := s.BackupMachineStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBackupMachineStatusResponseBodyBackupMachineStatus struct {
@@ -268,7 +273,16 @@ func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetVaultId(
 }
 
 func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) Validate() error {
-	return dara.Validate(s)
+	if s.ErrorList != nil {
+		for _, item := range s.ErrorList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList struct {

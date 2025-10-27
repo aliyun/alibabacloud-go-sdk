@@ -142,7 +142,16 @@ func (s *ListCheckTypesResponseBody) SetSuccess(v bool) *ListCheckTypesResponseB
 }
 
 func (s *ListCheckTypesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCheckTypesResponseBodyData struct {
@@ -198,7 +207,16 @@ func (s *ListCheckTypesResponseBodyData) SetCheckTypeDisName(v string) *ListChec
 }
 
 func (s *ListCheckTypesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CheckDetails != nil {
+		for _, item := range s.CheckDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCheckTypesResponseBodyDataCheckDetails struct {

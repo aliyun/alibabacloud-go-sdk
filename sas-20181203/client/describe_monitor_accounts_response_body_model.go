@@ -65,19 +65,24 @@ func (s *DescribeMonitorAccountsResponseBody) SetRequestId(v string) *DescribeMo
 }
 
 func (s *DescribeMonitorAccountsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AccountIdInfos != nil {
+		for _, item := range s.AccountIdInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorAccountsResponseBodyAccountIdInfos struct {
-	AccountId          *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AddTime            *int64  `json:"AddTime,omitempty" xml:"AddTime,omitempty"`
-	IsCloudSiemAccount *string `json:"IsCloudSiemAccount,omitempty" xml:"IsCloudSiemAccount,omitempty"`
-	IsSasAccount       *string `json:"IsSasAccount,omitempty" xml:"IsSasAccount,omitempty"`
-	OperatorUid        *string `json:"OperatorUid,omitempty" xml:"OperatorUid,omitempty"`
-	PostBasicService   *int32  `json:"PostBasicService,omitempty" xml:"PostBasicService,omitempty"`
-	SasVersion         *string `json:"SasVersion,omitempty" xml:"SasVersion,omitempty"`
-	AliUid             *string `json:"aliUid,omitempty" xml:"aliUid,omitempty"`
-	IsMarked           *string `json:"isMarked,omitempty" xml:"isMarked,omitempty"`
+	AccountId        *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AddTime          *int64  `json:"AddTime,omitempty" xml:"AddTime,omitempty"`
+	OperatorUid      *string `json:"OperatorUid,omitempty" xml:"OperatorUid,omitempty"`
+	PostBasicService *int32  `json:"PostBasicService,omitempty" xml:"PostBasicService,omitempty"`
+	SasVersion       *string `json:"SasVersion,omitempty" xml:"SasVersion,omitempty"`
 }
 
 func (s DescribeMonitorAccountsResponseBodyAccountIdInfos) String() string {
@@ -96,14 +101,6 @@ func (s *DescribeMonitorAccountsResponseBodyAccountIdInfos) GetAddTime() *int64 
 	return s.AddTime
 }
 
-func (s *DescribeMonitorAccountsResponseBodyAccountIdInfos) GetIsCloudSiemAccount() *string {
-	return s.IsCloudSiemAccount
-}
-
-func (s *DescribeMonitorAccountsResponseBodyAccountIdInfos) GetIsSasAccount() *string {
-	return s.IsSasAccount
-}
-
 func (s *DescribeMonitorAccountsResponseBodyAccountIdInfos) GetOperatorUid() *string {
 	return s.OperatorUid
 }
@@ -116,14 +113,6 @@ func (s *DescribeMonitorAccountsResponseBodyAccountIdInfos) GetSasVersion() *str
 	return s.SasVersion
 }
 
-func (s *DescribeMonitorAccountsResponseBodyAccountIdInfos) GetAliUid() *string {
-	return s.AliUid
-}
-
-func (s *DescribeMonitorAccountsResponseBodyAccountIdInfos) GetIsMarked() *string {
-	return s.IsMarked
-}
-
 func (s *DescribeMonitorAccountsResponseBodyAccountIdInfos) SetAccountId(v string) *DescribeMonitorAccountsResponseBodyAccountIdInfos {
 	s.AccountId = &v
 	return s
@@ -131,16 +120,6 @@ func (s *DescribeMonitorAccountsResponseBodyAccountIdInfos) SetAccountId(v strin
 
 func (s *DescribeMonitorAccountsResponseBodyAccountIdInfos) SetAddTime(v int64) *DescribeMonitorAccountsResponseBodyAccountIdInfos {
 	s.AddTime = &v
-	return s
-}
-
-func (s *DescribeMonitorAccountsResponseBodyAccountIdInfos) SetIsCloudSiemAccount(v string) *DescribeMonitorAccountsResponseBodyAccountIdInfos {
-	s.IsCloudSiemAccount = &v
-	return s
-}
-
-func (s *DescribeMonitorAccountsResponseBodyAccountIdInfos) SetIsSasAccount(v string) *DescribeMonitorAccountsResponseBodyAccountIdInfos {
-	s.IsSasAccount = &v
 	return s
 }
 
@@ -156,16 +135,6 @@ func (s *DescribeMonitorAccountsResponseBodyAccountIdInfos) SetPostBasicService(
 
 func (s *DescribeMonitorAccountsResponseBodyAccountIdInfos) SetSasVersion(v string) *DescribeMonitorAccountsResponseBodyAccountIdInfos {
 	s.SasVersion = &v
-	return s
-}
-
-func (s *DescribeMonitorAccountsResponseBodyAccountIdInfos) SetAliUid(v string) *DescribeMonitorAccountsResponseBodyAccountIdInfos {
-	s.AliUid = &v
-	return s
-}
-
-func (s *DescribeMonitorAccountsResponseBodyAccountIdInfos) SetIsMarked(v string) *DescribeMonitorAccountsResponseBodyAccountIdInfos {
-	s.IsMarked = &v
 	return s
 }
 

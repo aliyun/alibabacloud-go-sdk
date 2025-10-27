@@ -53,7 +53,16 @@ func (s *DescribeAllEntityResponseBody) SetRequestId(v string) *DescribeAllEntit
 }
 
 func (s *DescribeAllEntityResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EntityList != nil {
+		for _, item := range s.EntityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAllEntityResponseBodyEntityList struct {

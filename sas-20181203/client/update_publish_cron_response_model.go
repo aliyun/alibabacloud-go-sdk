@@ -59,5 +59,10 @@ func (s *UpdatePublishCronResponse) SetBody(v *UpdatePublishCronResponseBody) *U
 }
 
 func (s *UpdatePublishCronResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *DescribeWebLockStatusResponse) SetBody(v *DescribeWebLockStatusResponse
 }
 
 func (s *DescribeWebLockStatusResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

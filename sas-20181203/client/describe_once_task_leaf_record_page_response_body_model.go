@@ -66,7 +66,21 @@ func (s *DescribeOnceTaskLeafRecordPageResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribeOnceTaskLeafRecordPageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OnceTasks != nil {
+		for _, item := range s.OnceTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeOnceTaskLeafRecordPageResponseBodyOnceTasks struct {
@@ -333,7 +347,12 @@ func (s *DescribeOnceTaskLeafRecordPageResponseBodyOnceTasks) SetTotalCount(v st
 }
 
 func (s *DescribeOnceTaskLeafRecordPageResponseBodyOnceTasks) Validate() error {
-	return dara.Validate(s)
+	if s.TaskImageInfo != nil {
+		if err := s.TaskImageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeOnceTaskLeafRecordPageResponseBodyOnceTasksTaskImageInfo struct {

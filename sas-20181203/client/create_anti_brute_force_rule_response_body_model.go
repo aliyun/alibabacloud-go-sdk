@@ -53,7 +53,12 @@ func (s *CreateAntiBruteForceRuleResponseBody) SetRequestId(v string) *CreateAnt
 }
 
 func (s *CreateAntiBruteForceRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CreateAntiBruteForceRule != nil {
+		if err := s.CreateAntiBruteForceRule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAntiBruteForceRuleResponseBodyCreateAntiBruteForceRule struct {

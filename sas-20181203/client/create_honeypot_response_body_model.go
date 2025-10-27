@@ -125,7 +125,12 @@ func (s *CreateHoneypotResponseBody) SetSuccess(v bool) *CreateHoneypotResponseB
 }
 
 func (s *CreateHoneypotResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateHoneypotResponseBodyData struct {

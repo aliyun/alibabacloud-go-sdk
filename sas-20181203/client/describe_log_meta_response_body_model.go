@@ -70,7 +70,16 @@ func (s *DescribeLogMetaResponseBody) SetTotalCount(v int32) *DescribeLogMetaRes
 }
 
 func (s *DescribeLogMetaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LogMetaList != nil {
+		for _, item := range s.LogMetaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLogMetaResponseBodyLogMetaList struct {

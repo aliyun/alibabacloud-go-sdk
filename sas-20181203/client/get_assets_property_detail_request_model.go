@@ -173,7 +173,16 @@ func (s *GetAssetsPropertyDetailRequest) SetUuid(v string) *GetAssetsPropertyDet
 }
 
 func (s *GetAssetsPropertyDetailRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SearchCriteriaList != nil {
+		for _, item := range s.SearchCriteriaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAssetsPropertyDetailRequestSearchCriteriaList struct {

@@ -138,7 +138,21 @@ func (s *DescribeImageSensitiveFileByKeyResponseBody) SetSuccess(v bool) *Descri
 }
 
 func (s *DescribeImageSensitiveFileByKeyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SensitiveFileList != nil {
+		for _, item := range s.SensitiveFileList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageSensitiveFileByKeyResponseBodyPageInfo struct {

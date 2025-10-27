@@ -53,7 +53,12 @@ func (s *DescribeAssetSummaryResponseBody) SetRequestId(v string) *DescribeAsset
 }
 
 func (s *DescribeAssetSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AssetsSummary != nil {
+		if err := s.AssetsSummary.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAssetSummaryResponseBodyAssetsSummary struct {

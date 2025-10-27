@@ -59,5 +59,10 @@ func (s *HandleMaliciousFilesResponse) SetBody(v *HandleMaliciousFilesResponseBo
 }
 
 func (s *HandleMaliciousFilesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

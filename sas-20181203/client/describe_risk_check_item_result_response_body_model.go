@@ -53,7 +53,12 @@ func (s *DescribeRiskCheckItemResultResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeRiskCheckItemResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageContentResource != nil {
+		if err := s.PageContentResource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRiskCheckItemResultResponseBodyPageContentResource struct {

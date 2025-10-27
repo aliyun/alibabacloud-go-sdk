@@ -59,5 +59,10 @@ func (s *DescribeWhiteListStrategyStatisticsResponse) SetBody(v *DescribeWhiteLi
 }
 
 func (s *DescribeWhiteListStrategyStatisticsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

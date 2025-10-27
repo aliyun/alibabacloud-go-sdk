@@ -53,7 +53,12 @@ func (s *GetOssScanConfigResponseBody) SetRequestId(v string) *GetOssScanConfigR
 }
 
 func (s *GetOssScanConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOssScanConfigResponseBodyData struct {

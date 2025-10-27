@@ -59,5 +59,10 @@ func (s *AddProtectVpcListResponse) SetBody(v *AddProtectVpcListResponseBody) *A
 }
 
 func (s *AddProtectVpcListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

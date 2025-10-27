@@ -53,7 +53,16 @@ func (s *DescribeStrategyResponseBody) SetStrategies(v []*DescribeStrategyRespon
 }
 
 func (s *DescribeStrategyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Strategies != nil {
+		for _, item := range s.Strategies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeStrategyResponseBodyStrategies struct {
@@ -342,7 +351,16 @@ func (s *DescribeStrategyResponseBodyStrategies) SetUserModifyTime(v int64) *Des
 }
 
 func (s *DescribeStrategyResponseBodyStrategies) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigTargets != nil {
+		for _, item := range s.ConfigTargets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeStrategyResponseBodyStrategiesConfigTargets struct {

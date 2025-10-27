@@ -66,7 +66,21 @@ func (s *DescribeSecurityEventMarkMissListResponseBody) SetRequestId(v string) *
 }
 
 func (s *DescribeSecurityEventMarkMissListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityEventMarkMissListResponseBodyList struct {

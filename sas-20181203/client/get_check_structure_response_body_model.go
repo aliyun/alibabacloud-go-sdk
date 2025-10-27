@@ -53,7 +53,16 @@ func (s *GetCheckStructureResponseBody) SetRequestId(v string) *GetCheckStructur
 }
 
 func (s *GetCheckStructureResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CheckStructureResponse != nil {
+		for _, item := range s.CheckStructureResponse {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCheckStructureResponseBodyCheckStructureResponse struct {
@@ -100,7 +109,16 @@ func (s *GetCheckStructureResponseBodyCheckStructureResponse) SetStandards(v []*
 }
 
 func (s *GetCheckStructureResponseBodyCheckStructureResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Standards != nil {
+		for _, item := range s.Standards {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCheckStructureResponseBodyCheckStructureResponseStandards struct {
@@ -177,7 +195,16 @@ func (s *GetCheckStructureResponseBodyCheckStructureResponseStandards) SetType(v
 }
 
 func (s *GetCheckStructureResponseBodyCheckStructureResponseStandards) Validate() error {
-	return dara.Validate(s)
+	if s.Requirements != nil {
+		for _, item := range s.Requirements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCheckStructureResponseBodyCheckStructureResponseStandardsRequirements struct {
@@ -248,7 +275,16 @@ func (s *GetCheckStructureResponseBodyCheckStructureResponseStandardsRequirement
 }
 
 func (s *GetCheckStructureResponseBodyCheckStructureResponseStandardsRequirements) Validate() error {
-	return dara.Validate(s)
+	if s.Sections != nil {
+		for _, item := range s.Sections {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCheckStructureResponseBodyCheckStructureResponseStandardsRequirementsSections struct {

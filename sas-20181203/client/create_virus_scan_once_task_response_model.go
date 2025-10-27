@@ -59,5 +59,10 @@ func (s *CreateVirusScanOnceTaskResponse) SetBody(v *CreateVirusScanOnceTaskResp
 }
 
 func (s *CreateVirusScanOnceTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

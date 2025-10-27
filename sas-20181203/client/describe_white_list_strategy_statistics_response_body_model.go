@@ -121,7 +121,16 @@ func (s *DescribeWhiteListStrategyStatisticsResponseBody) SetTotalCount(v int32)
 }
 
 func (s *DescribeWhiteListStrategyStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Strategies != nil {
+		for _, item := range s.Strategies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeWhiteListStrategyStatisticsResponseBodyStrategies struct {

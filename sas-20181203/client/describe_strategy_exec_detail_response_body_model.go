@@ -176,7 +176,16 @@ func (s *DescribeStrategyExecDetailResponseBody) SetSuccessCount(v int32) *Descr
 }
 
 func (s *DescribeStrategyExecDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FailedEcsList != nil {
+		for _, item := range s.FailedEcsList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeStrategyExecDetailResponseBodyFailedEcsList struct {

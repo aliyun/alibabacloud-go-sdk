@@ -100,7 +100,30 @@ func (s *VerifyCheckCustomConfigRequest) SetType(v string) *VerifyCheckCustomCon
 }
 
 func (s *VerifyCheckCustomConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CustomCheckConfig != nil {
+		if err := s.CustomCheckConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomConfigs != nil {
+		for _, item := range s.CustomConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RepairConfigs != nil {
+		for _, item := range s.RepairConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type VerifyCheckCustomConfigRequestCustomCheckConfig struct {
@@ -240,7 +263,12 @@ func (s *VerifyCheckCustomConfigRequestCustomCheckConfig) SetVendor(v string) *V
 }
 
 func (s *VerifyCheckCustomConfigRequestCustomCheckConfig) Validate() error {
-	return dara.Validate(s)
+	if s.CloudAssetInstance != nil {
+		if err := s.CloudAssetInstance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type VerifyCheckCustomConfigRequestCustomCheckConfigCloudAssetInstance struct {

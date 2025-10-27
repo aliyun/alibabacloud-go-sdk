@@ -53,7 +53,12 @@ func (s *GetCloudAssetSummaryResponseBody) SetRequestId(v string) *GetCloudAsset
 }
 
 func (s *GetCloudAssetSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GroupedFields != nil {
+		if err := s.GroupedFields.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCloudAssetSummaryResponseBodyGroupedFields struct {
@@ -109,7 +114,16 @@ func (s *GetCloudAssetSummaryResponseBodyGroupedFields) SetInstanceRiskCountTota
 }
 
 func (s *GetCloudAssetSummaryResponseBodyGroupedFields) Validate() error {
-	return dara.Validate(s)
+	if s.CloudAssetSummaryMetas != nil {
+		for _, item := range s.CloudAssetSummaryMetas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCloudAssetSummaryResponseBodyGroupedFieldsCloudAssetSummaryMetas struct {

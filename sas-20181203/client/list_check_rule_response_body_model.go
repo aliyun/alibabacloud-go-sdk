@@ -66,7 +66,21 @@ func (s *ListCheckRuleResponseBody) SetRequestId(v string) *ListCheckRuleRespons
 }
 
 func (s *ListCheckRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CheckRules != nil {
+		for _, item := range s.CheckRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCheckRuleResponseBodyCheckRules struct {
@@ -305,7 +319,16 @@ func (s *ListCheckRuleResponseBodyCheckRules) SetVendorName(v string) *ListCheck
 }
 
 func (s *ListCheckRuleResponseBodyCheckRules) Validate() error {
-	return dara.Validate(s)
+	if s.CheckPolicies != nil {
+		for _, item := range s.CheckPolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCheckRuleResponseBodyCheckRulesCheckPolicies struct {

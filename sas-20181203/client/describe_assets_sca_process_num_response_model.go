@@ -59,5 +59,10 @@ func (s *DescribeAssetsScaProcessNumResponse) SetBody(v *DescribeAssetsScaProces
 }
 
 func (s *DescribeAssetsScaProcessNumResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,16 @@ func (s *GetOpaPluginStatusResponseBody) SetRequestId(v string) *GetOpaPluginSta
 }
 
 func (s *GetOpaPluginStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstallStatus != nil {
+		for _, item := range s.InstallStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOpaPluginStatusResponseBodyInstallStatus struct {

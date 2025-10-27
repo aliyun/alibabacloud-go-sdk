@@ -59,5 +59,10 @@ func (s *DeleteSecurityEventMarkMissListResponse) SetBody(v *DeleteSecurityEvent
 }
 
 func (s *DeleteSecurityEventMarkMissListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

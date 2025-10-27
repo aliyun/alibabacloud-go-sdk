@@ -53,7 +53,12 @@ func (s *GetDataTrendResponseBody) SetRequestId(v string) *GetDataTrendResponseB
 }
 
 func (s *GetDataTrendResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataTrendResponseBodyData struct {
@@ -101,7 +106,16 @@ func (s *GetDataTrendResponseBodyData) SetItemList(v []*GetDataTrendResponseBody
 }
 
 func (s *GetDataTrendResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ItemList != nil {
+		for _, item := range s.ItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataTrendResponseBodyDataItemList struct {

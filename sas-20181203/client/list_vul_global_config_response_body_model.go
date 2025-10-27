@@ -53,7 +53,16 @@ func (s *ListVulGlobalConfigResponseBody) SetVulGlobalConfigList(v []*ListVulGlo
 }
 
 func (s *ListVulGlobalConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VulGlobalConfigList != nil {
+		for _, item := range s.VulGlobalConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVulGlobalConfigResponseBodyVulGlobalConfigList struct {

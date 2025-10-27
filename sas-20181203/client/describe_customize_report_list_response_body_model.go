@@ -53,7 +53,16 @@ func (s *DescribeCustomizeReportListResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeCustomizeReportListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ReportList != nil {
+		for _, item := range s.ReportList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCustomizeReportListResponseBodyReportList struct {

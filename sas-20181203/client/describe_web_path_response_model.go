@@ -59,5 +59,10 @@ func (s *DescribeWebPathResponse) SetBody(v *DescribeWebPathResponseBody) *Descr
 }
 
 func (s *DescribeWebPathResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

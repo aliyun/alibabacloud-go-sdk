@@ -87,7 +87,12 @@ func (s *CreateJenkinsImageRegistryResponseBody) SetTimeCost(v int64) *CreateJen
 }
 
 func (s *CreateJenkinsImageRegistryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateJenkinsImageRegistryResponseBodyData struct {

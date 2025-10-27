@@ -138,7 +138,16 @@ func (s *DescribeRiskCheckResultResponseBody) SetTotalCount(v int32) *DescribeRi
 }
 
 func (s *DescribeRiskCheckResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRiskCheckResultResponseBodyList struct {
@@ -397,7 +406,16 @@ func (s *DescribeRiskCheckResultResponseBodyList) SetType(v string) *DescribeRis
 }
 
 func (s *DescribeRiskCheckResultResponseBodyList) Validate() error {
-	return dara.Validate(s)
+	if s.RiskItemResources != nil {
+		for _, item := range s.RiskItemResources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRiskCheckResultResponseBodyListRiskItemResources struct {

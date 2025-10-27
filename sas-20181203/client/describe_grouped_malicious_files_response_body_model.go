@@ -66,7 +66,21 @@ func (s *DescribeGroupedMaliciousFilesResponseBody) SetRequestId(v string) *Desc
 }
 
 func (s *DescribeGroupedMaliciousFilesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GroupedMaliciousFileResponse != nil {
+		for _, item := range s.GroupedMaliciousFileResponse {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGroupedMaliciousFilesResponseBodyGroupedMaliciousFileResponse struct {

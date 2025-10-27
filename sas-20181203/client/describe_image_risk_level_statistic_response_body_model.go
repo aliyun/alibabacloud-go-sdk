@@ -53,7 +53,16 @@ func (s *DescribeImageRiskLevelStatisticResponseBody) SetRequestId(v string) *De
 }
 
 func (s *DescribeImageRiskLevelStatisticResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ImageRiskLevelList != nil {
+		for _, item := range s.ImageRiskLevelList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageRiskLevelStatisticResponseBodyImageRiskLevelList struct {

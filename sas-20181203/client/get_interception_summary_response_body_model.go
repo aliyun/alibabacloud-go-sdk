@@ -53,7 +53,12 @@ func (s *GetInterceptionSummaryResponseBody) SetRequestId(v string) *GetIntercep
 }
 
 func (s *GetInterceptionSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InterceptionSummary != nil {
+		if err := s.InterceptionSummary.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInterceptionSummaryResponseBodyInterceptionSummary struct {

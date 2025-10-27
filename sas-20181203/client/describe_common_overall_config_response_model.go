@@ -59,5 +59,10 @@ func (s *DescribeCommonOverallConfigResponse) SetBody(v *DescribeCommonOverallCo
 }
 
 func (s *DescribeCommonOverallConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

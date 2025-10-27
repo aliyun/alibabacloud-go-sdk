@@ -121,7 +121,12 @@ func (s *GetLastOnceTaskInfoResponseBody) SetTotalCount(v int32) *GetLastOnceTas
 }
 
 func (s *GetLastOnceTaskInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TaskInfo != nil {
+		if err := s.TaskInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLastOnceTaskInfoResponseBodyTaskInfo struct {

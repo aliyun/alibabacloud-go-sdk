@@ -36,7 +36,16 @@ func (s *BatchCreateMaliciousNoteRequest) SetImageMaliciousFileList(v []*BatchCr
 }
 
 func (s *BatchCreateMaliciousNoteRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ImageMaliciousFileList != nil {
+		for _, item := range s.ImageMaliciousFileList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchCreateMaliciousNoteRequestImageMaliciousFileList struct {

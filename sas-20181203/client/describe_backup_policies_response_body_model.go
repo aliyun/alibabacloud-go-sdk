@@ -66,7 +66,21 @@ func (s *DescribeBackupPoliciesResponseBody) SetRequestId(v string) *DescribeBac
 }
 
 func (s *DescribeBackupPoliciesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Policies != nil {
+		for _, item := range s.Policies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBackupPoliciesResponseBodyPageInfo struct {

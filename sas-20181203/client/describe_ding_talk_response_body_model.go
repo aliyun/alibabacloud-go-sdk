@@ -66,7 +66,21 @@ func (s *DescribeDingTalkResponseBody) SetRequestId(v string) *DescribeDingTalkR
 }
 
 func (s *DescribeDingTalkResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ActionList != nil {
+		for _, item := range s.ActionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDingTalkResponseBodyActionList struct {

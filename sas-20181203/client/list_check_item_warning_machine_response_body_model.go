@@ -66,7 +66,21 @@ func (s *ListCheckItemWarningMachineResponseBody) SetRequestId(v string) *ListCh
 }
 
 func (s *ListCheckItemWarningMachineResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCheckItemWarningMachineResponseBodyList struct {
@@ -182,15 +196,17 @@ type ListCheckItemWarningMachineResponseBodyList struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The status of the check item. Valid values:
 	//
-	// 	- 1: failed
+	// 	- **1**: failed
 	//
-	// 	- 2: verifying
+	// 	- **2**: verifying
 	//
-	// 	- 3: passed
+	// 	- **3**: passed
 	//
-	// 	- 6: ignored
+	// 	- **6**: ignored
 	//
-	// 	- 7: fixing
+	// 	- **7**: fixing
+	//
+	// 	- **8**: fixed
 	//
 	// example:
 	//
@@ -428,7 +444,25 @@ func (s *ListCheckItemWarningMachineResponseBodyList) SetWarningRiskList(v []*Li
 }
 
 func (s *ListCheckItemWarningMachineResponseBodyList) Validate() error {
-	return dara.Validate(s)
+	if s.FixList != nil {
+		for _, item := range s.FixList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.WarningRiskList != nil {
+		for _, item := range s.WarningRiskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCheckItemWarningMachineResponseBodyListFixList struct {

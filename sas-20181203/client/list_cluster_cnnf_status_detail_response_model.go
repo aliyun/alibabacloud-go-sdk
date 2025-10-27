@@ -59,5 +59,10 @@ func (s *ListClusterCnnfStatusDetailResponse) SetBody(v *ListClusterCnnfStatusDe
 }
 
 func (s *ListClusterCnnfStatusDetailResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

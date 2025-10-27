@@ -59,5 +59,10 @@ func (s *DeleteUniBackupPolicyResponse) SetBody(v *DeleteUniBackupPolicyResponse
 }
 
 func (s *DeleteUniBackupPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

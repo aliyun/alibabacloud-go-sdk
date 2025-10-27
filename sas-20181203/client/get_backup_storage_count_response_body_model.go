@@ -53,7 +53,12 @@ func (s *GetBackupStorageCountResponseBody) SetRequestId(v string) *GetBackupSto
 }
 
 func (s *GetBackupStorageCountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BackupStorageCount != nil {
+		if err := s.BackupStorageCount.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBackupStorageCountResponseBodyBackupStorageCount struct {

@@ -53,7 +53,12 @@ func (s *PublicSyncAndCreateImageScanTaskResponseBody) SetRequestId(v string) *P
 }
 
 func (s *PublicSyncAndCreateImageScanTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PublicSyncAndCreateImageScanTaskResponseBodyData struct {

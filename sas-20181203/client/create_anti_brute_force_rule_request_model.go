@@ -209,7 +209,12 @@ func (s *CreateAntiBruteForceRuleRequest) SetUuidList(v []*string) *CreateAntiBr
 }
 
 func (s *CreateAntiBruteForceRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ProtocolType != nil {
+		if err := s.ProtocolType.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAntiBruteForceRuleRequestProtocolType struct {

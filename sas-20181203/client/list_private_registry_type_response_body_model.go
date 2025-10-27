@@ -53,7 +53,16 @@ func (s *ListPrivateRegistryTypeResponseBody) SetRequestId(v string) *ListPrivat
 }
 
 func (s *ListPrivateRegistryTypeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RegistryTypeInfos != nil {
+		for _, item := range s.RegistryTypeInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrivateRegistryTypeResponseBodyRegistryTypeInfos struct {

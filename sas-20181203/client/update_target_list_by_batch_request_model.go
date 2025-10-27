@@ -57,7 +57,16 @@ func (s *UpdateTargetListByBatchRequest) SetOperationList(v []*UpdateTargetListB
 }
 
 func (s *UpdateTargetListByBatchRequest) Validate() error {
-	return dara.Validate(s)
+	if s.OperationList != nil {
+		for _, item := range s.OperationList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateTargetListByBatchRequestOperationList struct {

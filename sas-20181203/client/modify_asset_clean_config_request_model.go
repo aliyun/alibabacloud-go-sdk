@@ -36,7 +36,16 @@ func (s *ModifyAssetCleanConfigRequest) SetAssetCleanConfigs(v []*ModifyAssetCle
 }
 
 func (s *ModifyAssetCleanConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AssetCleanConfigs != nil {
+		for _, item := range s.AssetCleanConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyAssetCleanConfigRequestAssetCleanConfigs struct {

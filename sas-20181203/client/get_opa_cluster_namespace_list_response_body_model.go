@@ -125,7 +125,16 @@ func (s *GetOpaClusterNamespaceListResponseBody) SetSuccess(v bool) *GetOpaClust
 }
 
 func (s *GetOpaClusterNamespaceListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOpaClusterNamespaceListResponseBodyData struct {

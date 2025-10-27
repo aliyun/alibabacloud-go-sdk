@@ -59,5 +59,10 @@ func (s *GetModuleTrialAuthInfoResponse) SetBody(v *GetModuleTrialAuthInfoRespon
 }
 
 func (s *GetModuleTrialAuthInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

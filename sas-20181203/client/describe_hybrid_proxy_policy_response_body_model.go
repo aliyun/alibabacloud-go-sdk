@@ -70,7 +70,16 @@ func (s *DescribeHybridProxyPolicyResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeHybridProxyPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PolicyList != nil {
+		for _, item := range s.PolicyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHybridProxyPolicyResponseBodyPolicyList struct {
@@ -115,7 +124,16 @@ func (s *DescribeHybridProxyPolicyResponseBodyPolicyList) SetPolicyType(v string
 }
 
 func (s *DescribeHybridProxyPolicyResponseBodyPolicyList) Validate() error {
-	return dara.Validate(s)
+	if s.Info != nil {
+		for _, item := range s.Info {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHybridProxyPolicyResponseBodyPolicyListInfo struct {

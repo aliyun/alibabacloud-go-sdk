@@ -53,7 +53,12 @@ func (s *DescribeImageScanAuthCountResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeImageScanAuthCountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ImageScan != nil {
+		if err := s.ImageScan.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImageScanAuthCountResponseBodyImageScan struct {

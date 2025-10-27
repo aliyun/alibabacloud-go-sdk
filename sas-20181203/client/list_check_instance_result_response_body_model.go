@@ -112,7 +112,30 @@ func (s *ListCheckInstanceResultResponseBody) SetRequestId(v string) *ListCheckI
 }
 
 func (s *ListCheckInstanceResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BasicData != nil {
+		for _, item := range s.BasicData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Columns != nil {
+		for _, item := range s.Columns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCheckInstanceResultResponseBodyBasicData struct {
@@ -248,7 +271,12 @@ func (s *ListCheckInstanceResultResponseBodyBasicData) SetVendorUserName(v strin
 }
 
 func (s *ListCheckInstanceResultResponseBodyBasicData) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceInfo != nil {
+		if err := s.InstanceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCheckInstanceResultResponseBodyBasicDataInstanceInfo struct {
@@ -304,7 +332,16 @@ func (s *ListCheckInstanceResultResponseBodyBasicDataInstanceInfo) SetLastUpdate
 }
 
 func (s *ListCheckInstanceResultResponseBodyBasicDataInstanceInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		for _, item := range s.Config {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCheckInstanceResultResponseBodyBasicDataInstanceInfoConfig struct {
@@ -473,7 +510,16 @@ func (s *ListCheckInstanceResultResponseBodyColumns) SetType(v string) *ListChec
 }
 
 func (s *ListCheckInstanceResultResponseBodyColumns) Validate() error {
-	return dara.Validate(s)
+	if s.Grids != nil {
+		for _, item := range s.Grids {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCheckInstanceResultResponseBodyColumnsGrids struct {

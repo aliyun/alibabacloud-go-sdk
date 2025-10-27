@@ -66,7 +66,21 @@ func (s *ListAutoTagRulesResponseBody) SetRequestId(v string) *ListAutoTagRulesR
 }
 
 func (s *ListAutoTagRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AutoTagRuleList != nil {
+		for _, item := range s.AutoTagRuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAutoTagRulesResponseBodyAutoTagRuleList struct {

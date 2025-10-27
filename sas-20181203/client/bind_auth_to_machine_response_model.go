@@ -59,5 +59,10 @@ func (s *BindAuthToMachineResponse) SetBody(v *BindAuthToMachineResponseBody) *B
 }
 
 func (s *BindAuthToMachineResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

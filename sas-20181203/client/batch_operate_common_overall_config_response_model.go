@@ -59,5 +59,10 @@ func (s *BatchOperateCommonOverallConfigResponse) SetBody(v *BatchOperateCommonO
 }
 
 func (s *BatchOperateCommonOverallConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

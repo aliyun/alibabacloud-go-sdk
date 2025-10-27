@@ -53,7 +53,16 @@ func (s *DescribeBackupClientsResponseBody) SetRequestId(v string) *DescribeBack
 }
 
 func (s *DescribeBackupClientsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Clients != nil {
+		for _, item := range s.Clients {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBackupClientsResponseBodyClients struct {

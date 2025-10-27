@@ -121,7 +121,16 @@ func (s *DescribeSuspEventQuaraFilesResponseBody) SetTotalCount(v int32) *Descri
 }
 
 func (s *DescribeSuspEventQuaraFilesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.QuaraFiles != nil {
+		for _, item := range s.QuaraFiles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSuspEventQuaraFilesResponseBodyQuaraFiles struct {

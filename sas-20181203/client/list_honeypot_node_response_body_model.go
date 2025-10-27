@@ -138,7 +138,21 @@ func (s *ListHoneypotNodeResponseBody) SetSuccess(v bool) *ListHoneypotNodeRespo
 }
 
 func (s *ListHoneypotNodeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HoneypotNodeList != nil {
+		for _, item := range s.HoneypotNodeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListHoneypotNodeResponseBodyHoneypotNodeList struct {

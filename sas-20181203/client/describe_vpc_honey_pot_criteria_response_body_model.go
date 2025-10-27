@@ -53,7 +53,16 @@ func (s *DescribeVpcHoneyPotCriteriaResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeVpcHoneyPotCriteriaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CriteriaList != nil {
+		for _, item := range s.CriteriaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcHoneyPotCriteriaResponseBodyCriteriaList struct {

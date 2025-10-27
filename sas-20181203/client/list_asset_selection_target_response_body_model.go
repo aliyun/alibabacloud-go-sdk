@@ -66,7 +66,21 @@ func (s *ListAssetSelectionTargetResponseBody) SetRequestId(v string) *ListAsset
 }
 
 func (s *ListAssetSelectionTargetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAssetSelectionTargetResponseBodyData struct {

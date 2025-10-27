@@ -108,7 +108,12 @@ func (s *DescribeGraph4InvestigationOnlineResponseBody) SetSuccess(v bool) *Desc
 }
 
 func (s *DescribeGraph4InvestigationOnlineResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGraph4InvestigationOnlineResponseBodyData struct {
@@ -167,7 +172,43 @@ func (s *DescribeGraph4InvestigationOnlineResponseBodyData) SetVertexList(v []*D
 }
 
 func (s *DescribeGraph4InvestigationOnlineResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.EdgeList != nil {
+		for _, item := range s.EdgeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EntityTypeList != nil {
+		for _, item := range s.EntityTypeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RelationTypeList != nil {
+		for _, item := range s.RelationTypeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VertexList != nil {
+		for _, item := range s.VertexList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList struct {
@@ -577,7 +618,16 @@ func (s *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList) SetUuid(v 
 }
 
 func (s *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList) Validate() error {
-	return dara.Validate(s)
+	if s.NeighborList != nil {
+		for _, item := range s.NeighborList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGraph4InvestigationOnlineResponseBodyDataVertexListNeighborList struct {

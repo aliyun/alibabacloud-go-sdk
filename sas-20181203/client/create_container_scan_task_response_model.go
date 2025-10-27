@@ -59,5 +59,10 @@ func (s *CreateContainerScanTaskResponse) SetBody(v *CreateContainerScanTaskResp
 }
 
 func (s *CreateContainerScanTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

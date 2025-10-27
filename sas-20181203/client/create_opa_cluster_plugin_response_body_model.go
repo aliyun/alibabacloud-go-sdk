@@ -53,7 +53,16 @@ func (s *CreateOpaClusterPluginResponseBody) SetRequestId(v string) *CreateOpaCl
 }
 
 func (s *CreateOpaClusterPluginResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstallStatus != nil {
+		for _, item := range s.InstallStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOpaClusterPluginResponseBodyInstallStatus struct {

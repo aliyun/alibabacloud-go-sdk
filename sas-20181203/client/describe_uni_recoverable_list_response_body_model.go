@@ -138,7 +138,16 @@ func (s *DescribeUniRecoverableListResponseBody) SetTotalCount(v int32) *Describ
 }
 
 func (s *DescribeUniRecoverableListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RecoverableInfoList != nil {
+		for _, item := range s.RecoverableInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUniRecoverableListResponseBodyRecoverableInfoList struct {

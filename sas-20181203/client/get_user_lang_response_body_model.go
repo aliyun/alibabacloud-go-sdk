@@ -53,7 +53,12 @@ func (s *GetUserLangResponseBody) SetSasUserLang(v *GetUserLangResponseBodySasUs
 }
 
 func (s *GetUserLangResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SasUserLang != nil {
+		if err := s.SasUserLang.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserLangResponseBodySasUserLang struct {

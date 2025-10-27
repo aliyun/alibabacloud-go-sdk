@@ -53,7 +53,12 @@ func (s *DescribeAllImageBaselineResponseBody) SetRequestId(v string) *DescribeA
 }
 
 func (s *DescribeAllImageBaselineResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ImageBaselines != nil {
+		if err := s.ImageBaselines.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAllImageBaselineResponseBodyImageBaselines struct {
@@ -79,7 +84,16 @@ func (s *DescribeAllImageBaselineResponseBodyImageBaselines) SetBaselineClassLis
 }
 
 func (s *DescribeAllImageBaselineResponseBodyImageBaselines) Validate() error {
-	return dara.Validate(s)
+	if s.BaselineClassList != nil {
+		for _, item := range s.BaselineClassList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassList struct {
@@ -135,7 +149,16 @@ func (s *DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassList) Se
 }
 
 func (s *DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassList) Validate() error {
-	return dara.Validate(s)
+	if s.BaselineNameList != nil {
+		for _, item := range s.BaselineNameList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassListBaselineNameList struct {
@@ -206,7 +229,16 @@ func (s *DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassListBase
 }
 
 func (s *DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassListBaselineNameList) Validate() error {
-	return dara.Validate(s)
+	if s.BaselineItemList != nil {
+		for _, item := range s.BaselineItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassListBaselineNameListBaselineItemList struct {

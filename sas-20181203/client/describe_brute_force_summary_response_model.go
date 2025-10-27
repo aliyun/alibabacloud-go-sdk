@@ -59,5 +59,10 @@ func (s *DescribeBruteForceSummaryResponse) SetBody(v *DescribeBruteForceSummary
 }
 
 func (s *DescribeBruteForceSummaryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

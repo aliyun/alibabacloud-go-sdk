@@ -53,7 +53,16 @@ func (s *ListAccountsInResourceDirectoryResponseBody) SetRequestId(v string) *Li
 }
 
 func (s *ListAccountsInResourceDirectoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Accounts != nil {
+		for _, item := range s.Accounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAccountsInResourceDirectoryResponseBodyAccounts struct {

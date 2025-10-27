@@ -53,7 +53,16 @@ func (s *GetAegisContainerPluginRuleCriteriaResponseBody) SetRequestId(v string)
 }
 
 func (s *GetAegisContainerPluginRuleCriteriaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CriteriaList != nil {
+		for _, item := range s.CriteriaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAegisContainerPluginRuleCriteriaResponseBodyCriteriaList struct {

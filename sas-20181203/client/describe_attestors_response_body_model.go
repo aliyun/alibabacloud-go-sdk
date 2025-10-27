@@ -66,7 +66,21 @@ func (s *DescribeAttestorsResponseBody) SetRequestId(v string) *DescribeAttestor
 }
 
 func (s *DescribeAttestorsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Attestors != nil {
+		for _, item := range s.Attestors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAttestorsResponseBodyAttestors struct {

@@ -59,5 +59,10 @@ func (s *ListAgentlessRelateMaliciousResponse) SetBody(v *ListAgentlessRelateMal
 }
 
 func (s *ListAgentlessRelateMaliciousResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

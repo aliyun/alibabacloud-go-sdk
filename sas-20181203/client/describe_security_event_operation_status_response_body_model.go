@@ -53,7 +53,12 @@ func (s *DescribeSecurityEventOperationStatusResponseBody) SetSecurityEventOpera
 }
 
 func (s *DescribeSecurityEventOperationStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityEventOperationStatusResponse != nil {
+		if err := s.SecurityEventOperationStatusResponse.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityEventOperationStatusResponseBodySecurityEventOperationStatusResponse struct {
@@ -102,7 +107,16 @@ func (s *DescribeSecurityEventOperationStatusResponseBodySecurityEventOperationS
 }
 
 func (s *DescribeSecurityEventOperationStatusResponseBodySecurityEventOperationStatusResponse) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityEventOperationStatuses != nil {
+		for _, item := range s.SecurityEventOperationStatuses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityEventOperationStatusResponseBodySecurityEventOperationStatusResponseSecurityEventOperationStatuses struct {

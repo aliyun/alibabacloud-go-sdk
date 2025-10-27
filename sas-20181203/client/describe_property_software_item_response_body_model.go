@@ -66,7 +66,21 @@ func (s *DescribePropertySoftwareItemResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribePropertySoftwareItemResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PropertyItems != nil {
+		for _, item := range s.PropertyItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePropertySoftwareItemResponseBodyPageInfo struct {

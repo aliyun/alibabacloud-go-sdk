@@ -108,7 +108,12 @@ func (s *DescribeImageEventOperationPageResponseBody) SetSuccess(v bool) *Descri
 }
 
 func (s *DescribeImageEventOperationPageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImageEventOperationPageResponseBodyData struct {
@@ -145,7 +150,21 @@ func (s *DescribeImageEventOperationPageResponseBodyData) SetPageInfo(v *Describ
 }
 
 func (s *DescribeImageEventOperationPageResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImageEventOperationPageResponseBodyDataList struct {

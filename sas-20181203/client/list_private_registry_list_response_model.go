@@ -59,5 +59,10 @@ func (s *ListPrivateRegistryListResponse) SetBody(v *ListPrivateRegistryListResp
 }
 
 func (s *ListPrivateRegistryListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

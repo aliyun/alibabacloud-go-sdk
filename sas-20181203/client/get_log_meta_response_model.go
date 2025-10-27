@@ -59,5 +59,10 @@ func (s *GetLogMetaResponse) SetBody(v *GetLogMetaResponseBody) *GetLogMetaRespo
 }
 
 func (s *GetLogMetaResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *DescribeImageBaselineItemListResponse) SetBody(v *DescribeImageBaseline
 }
 
 func (s *DescribeImageBaselineItemListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,16 @@ func (s *DescribeCheckResultResponseBody) SetRequestId(v string) *DescribeCheckR
 }
 
 func (s *DescribeCheckResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CheckResultList != nil {
+		for _, item := range s.CheckResultList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCheckResultResponseBodyCheckResultList struct {

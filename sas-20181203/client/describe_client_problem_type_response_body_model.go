@@ -121,7 +121,16 @@ func (s *DescribeClientProblemTypeResponseBody) SetTotalCount(v int32) *Describe
 }
 
 func (s *DescribeClientProblemTypeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProblemTypes != nil {
+		for _, item := range s.ProblemTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClientProblemTypeResponseBodyProblemTypes struct {

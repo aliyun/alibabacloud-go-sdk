@@ -53,7 +53,12 @@ func (s *GetDockerhubImageRiskRankInfoResponseBody) SetRiskRankInfo(v *GetDocker
 }
 
 func (s *GetDockerhubImageRiskRankInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RiskRankInfo != nil {
+		if err := s.RiskRankInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDockerhubImageRiskRankInfoResponseBodyRiskRankInfo struct {
@@ -90,7 +95,25 @@ func (s *GetDockerhubImageRiskRankInfoResponseBodyRiskRankInfo) SetVulAsap(v []*
 }
 
 func (s *GetDockerhubImageRiskRankInfoResponseBodyRiskRankInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Baseline != nil {
+		for _, item := range s.Baseline {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VulAsap != nil {
+		for _, item := range s.VulAsap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDockerhubImageRiskRankInfoResponseBodyRiskRankInfoBaseline struct {

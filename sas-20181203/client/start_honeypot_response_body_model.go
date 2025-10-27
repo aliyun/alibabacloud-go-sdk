@@ -53,7 +53,12 @@ func (s *StartHoneypotResponseBody) SetRequestId(v string) *StartHoneypotRespons
 }
 
 func (s *StartHoneypotResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartHoneypotResponseBodyData struct {

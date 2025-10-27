@@ -59,6 +59,11 @@ func (s *ExportSuspEventsResponse) SetBody(v *ExportSuspEventsResponseBody) *Exp
 }
 
 func (s *ExportSuspEventsResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

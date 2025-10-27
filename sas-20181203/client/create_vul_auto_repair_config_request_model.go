@@ -74,7 +74,16 @@ func (s *CreateVulAutoRepairConfigRequest) SetVulAutoRepairConfigList(v []*Creat
 }
 
 func (s *CreateVulAutoRepairConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.VulAutoRepairConfigList != nil {
+		for _, item := range s.VulAutoRepairConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateVulAutoRepairConfigRequestVulAutoRepairConfigList struct {

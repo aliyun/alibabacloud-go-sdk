@@ -125,7 +125,12 @@ func (s *CreateHoneypotNodeResponseBody) SetSuccess(v bool) *CreateHoneypotNodeR
 }
 
 func (s *CreateHoneypotNodeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HoneypotNode != nil {
+		if err := s.HoneypotNode.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateHoneypotNodeResponseBodyHoneypotNode struct {

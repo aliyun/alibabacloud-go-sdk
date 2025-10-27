@@ -87,7 +87,25 @@ func (s *ChangeSecurityScoreRuleRequest) SetSecurityScoreRuleList(v []*ChangeSec
 }
 
 func (s *ChangeSecurityScoreRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityScoreCategoryList != nil {
+		for _, item := range s.SecurityScoreCategoryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SecurityScoreRuleList != nil {
+		for _, item := range s.SecurityScoreRuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ChangeSecurityScoreRuleRequestSecurityScoreCategoryList struct {
@@ -149,7 +167,16 @@ func (s *ChangeSecurityScoreRuleRequestSecurityScoreCategoryList) SetSecurityRul
 }
 
 func (s *ChangeSecurityScoreRuleRequestSecurityScoreCategoryList) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityRuleList != nil {
+		for _, item := range s.SecurityRuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ChangeSecurityScoreRuleRequestSecurityScoreCategoryListSecurityRuleList struct {
@@ -235,7 +262,16 @@ func (s *ChangeSecurityScoreRuleRequestSecurityScoreCategoryListSecurityRuleList
 }
 
 func (s *ChangeSecurityScoreRuleRequestSecurityScoreCategoryListSecurityRuleList) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityScoreItemList != nil {
+		for _, item := range s.SecurityScoreItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ChangeSecurityScoreRuleRequestSecurityScoreCategoryListSecurityRuleListSecurityScoreItemList struct {
@@ -367,7 +403,16 @@ func (s *ChangeSecurityScoreRuleRequestSecurityScoreRuleList) SetSecurityScoreIt
 }
 
 func (s *ChangeSecurityScoreRuleRequestSecurityScoreRuleList) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityScoreItemList != nil {
+		for _, item := range s.SecurityScoreItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ChangeSecurityScoreRuleRequestSecurityScoreRuleListSecurityScoreItemList struct {

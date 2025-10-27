@@ -53,7 +53,12 @@ func (s *AddClientUserDefineRuleResponseBody) SetUserDefineRuleAddResult(v *AddC
 }
 
 func (s *AddClientUserDefineRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserDefineRuleAddResult != nil {
+		if err := s.UserDefineRuleAddResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddClientUserDefineRuleResponseBodyUserDefineRuleAddResult struct {

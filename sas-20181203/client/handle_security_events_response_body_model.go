@@ -53,7 +53,12 @@ func (s *HandleSecurityEventsResponseBody) SetRequestId(v string) *HandleSecurit
 }
 
 func (s *HandleSecurityEventsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HandleSecurityEventsResponse != nil {
+		if err := s.HandleSecurityEventsResponse.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HandleSecurityEventsResponseBodyHandleSecurityEventsResponse struct {

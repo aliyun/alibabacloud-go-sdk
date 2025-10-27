@@ -125,7 +125,12 @@ func (s *GetHoneypotAttackStatisticsResponseBody) SetSuccess(v bool) *GetHoneypo
 }
 
 func (s *GetHoneypotAttackStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHoneypotAttackStatisticsResponseBodyData struct {
@@ -189,7 +194,16 @@ func (s *GetHoneypotAttackStatisticsResponseBodyData) SetStatisticsType(v string
 }
 
 func (s *GetHoneypotAttackStatisticsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.HoneypotAttackStatistics != nil {
+		for _, item := range s.HoneypotAttackStatistics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetHoneypotAttackStatisticsResponseBodyDataHoneypotAttackStatistics struct {

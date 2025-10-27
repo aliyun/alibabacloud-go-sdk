@@ -70,7 +70,16 @@ func (s *DescribeExposedCheckWarningResponseBody) SetWarningList(v []*DescribeEx
 }
 
 func (s *DescribeExposedCheckWarningResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WarningList != nil {
+		for _, item := range s.WarningList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeExposedCheckWarningResponseBodyWarningList struct {

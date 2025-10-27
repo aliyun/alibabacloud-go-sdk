@@ -59,5 +59,10 @@ func (s *ModifyAntiBruteForceRuleResponse) SetBody(v *ModifyAntiBruteForceRuleRe
 }
 
 func (s *ModifyAntiBruteForceRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

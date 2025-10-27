@@ -53,7 +53,12 @@ func (s *DescribeStrategyDetailResponseBody) SetStrategy(v *DescribeStrategyDeta
 }
 
 func (s *DescribeStrategyDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Strategy != nil {
+		if err := s.Strategy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeStrategyDetailResponseBodyStrategy struct {
@@ -251,7 +256,16 @@ func (s *DescribeStrategyDetailResponseBodyStrategy) SetType(v int32) *DescribeS
 }
 
 func (s *DescribeStrategyDetailResponseBodyStrategy) Validate() error {
-	return dara.Validate(s)
+	if s.RiskTypeWhiteListQueryResultList != nil {
+		for _, item := range s.RiskTypeWhiteListQueryResultList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList struct {
@@ -326,7 +340,16 @@ func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultL
 }
 
 func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList) Validate() error {
-	return dara.Validate(s)
+	if s.SubTypes != nil {
+		for _, item := range s.SubTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypes struct {
@@ -420,7 +443,16 @@ func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultL
 }
 
 func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypes) Validate() error {
-	return dara.Validate(s)
+	if s.CheckDetails != nil {
+		for _, item := range s.CheckDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetails struct {
@@ -491,7 +523,16 @@ func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultL
 }
 
 func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetails) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRules struct {
@@ -581,7 +622,16 @@ func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultL
 }
 
 func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRules) Validate() error {
-	return dara.Validate(s)
+	if s.ParamList != nil {
+		for _, item := range s.ParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList struct {

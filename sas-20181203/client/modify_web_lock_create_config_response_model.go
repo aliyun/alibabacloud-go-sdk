@@ -59,5 +59,10 @@ func (s *ModifyWebLockCreateConfigResponse) SetBody(v *ModifyWebLockCreateConfig
 }
 
 func (s *ModifyWebLockCreateConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

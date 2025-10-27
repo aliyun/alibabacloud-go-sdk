@@ -36,7 +36,16 @@ func (s *ListInstanceRiskNumRequest) SetInstanceList(v []*ListInstanceRiskNumReq
 }
 
 func (s *ListInstanceRiskNumRequest) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceList != nil {
+		for _, item := range s.InstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstanceRiskNumRequestInstanceList struct {

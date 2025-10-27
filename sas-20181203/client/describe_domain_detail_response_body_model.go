@@ -121,7 +121,16 @@ func (s *DescribeDomainDetailResponseBody) SetVulCount(v int32) *DescribeDomainD
 }
 
 func (s *DescribeDomainDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainDetailItems != nil {
+		for _, item := range s.DomainDetailItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainDetailResponseBodyDomainDetailItems struct {

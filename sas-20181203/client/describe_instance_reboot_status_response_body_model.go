@@ -70,7 +70,16 @@ func (s *DescribeInstanceRebootStatusResponseBody) SetTotalCount(v int32) *Descr
 }
 
 func (s *DescribeInstanceRebootStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RebootStatuses != nil {
+		for _, item := range s.RebootStatuses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceRebootStatusResponseBodyRebootStatuses struct {

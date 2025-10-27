@@ -59,5 +59,10 @@ func (s *DescribeHybridProxyListResponse) SetBody(v *DescribeHybridProxyListResp
 }
 
 func (s *DescribeHybridProxyListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -74,6 +74,8 @@ type ListCheckItemWarningSummaryRequest struct {
 	//
 	// 	- **6**: whitelisted
 	//
+	// 	- **8**: fixed
+	//
 	// example:
 	//
 	// 3

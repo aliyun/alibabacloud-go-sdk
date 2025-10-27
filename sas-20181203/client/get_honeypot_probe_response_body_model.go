@@ -125,7 +125,12 @@ func (s *GetHoneypotProbeResponseBody) SetSuccess(v bool) *GetHoneypotProbeRespo
 }
 
 func (s *GetHoneypotProbeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHoneypotProbeResponseBodyData struct {
@@ -459,7 +464,26 @@ func (s *GetHoneypotProbeResponseBodyData) SetVpcId(v string) *GetHoneypotProbeR
 }
 
 func (s *GetHoneypotProbeResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ControlNode != nil {
+		if err := s.ControlNode.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HoneyPotProbeScanPort != nil {
+		if err := s.HoneyPotProbeScanPort.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HoneypotProbeBindList != nil {
+		for _, item := range s.HoneypotProbeBindList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetHoneypotProbeResponseBodyDataControlNode struct {
@@ -701,7 +725,16 @@ func (s *GetHoneypotProbeResponseBodyDataHoneypotProbeBindList) SetStatus(v int3
 }
 
 func (s *GetHoneypotProbeResponseBodyDataHoneypotProbeBindList) Validate() error {
-	return dara.Validate(s)
+	if s.BindPortList != nil {
+		for _, item := range s.BindPortList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetHoneypotProbeResponseBodyDataHoneypotProbeBindListBindPortList struct {

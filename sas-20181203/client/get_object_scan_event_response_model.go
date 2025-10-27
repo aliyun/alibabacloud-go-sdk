@@ -59,5 +59,10 @@ func (s *GetObjectScanEventResponse) SetBody(v *GetObjectScanEventResponseBody) 
 }
 
 func (s *GetObjectScanEventResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

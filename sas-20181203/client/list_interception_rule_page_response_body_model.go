@@ -66,7 +66,21 @@ func (s *ListInterceptionRulePageResponseBody) SetRequestId(v string) *ListInter
 }
 
 func (s *ListInterceptionRulePageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InterceptionRuleList != nil {
+		for _, item := range s.InterceptionRuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListInterceptionRulePageResponseBodyInterceptionRuleList struct {
@@ -205,7 +219,17 @@ func (s *ListInterceptionRulePageResponseBodyInterceptionRuleList) SetSrcTarget(
 }
 
 func (s *ListInterceptionRulePageResponseBodyInterceptionRuleList) Validate() error {
-	return dara.Validate(s)
+	if s.DstTarget != nil {
+		if err := s.DstTarget.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SrcTarget != nil {
+		if err := s.SrcTarget.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListInterceptionRulePageResponseBodyInterceptionRuleListDstTarget struct {

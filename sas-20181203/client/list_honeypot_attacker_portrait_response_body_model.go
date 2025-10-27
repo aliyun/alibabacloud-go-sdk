@@ -138,7 +138,21 @@ func (s *ListHoneypotAttackerPortraitResponseBody) SetSuccess(v bool) *ListHoney
 }
 
 func (s *ListHoneypotAttackerPortraitResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListHoneypotAttackerPortraitResponseBodyList struct {
@@ -242,7 +256,12 @@ func (s *ListHoneypotAttackerPortraitResponseBodyList) SetSocial(v []*string) *L
 }
 
 func (s *ListHoneypotAttackerPortraitResponseBodyList) Validate() error {
-	return dara.Validate(s)
+	if s.Network != nil {
+		if err := s.Network.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListHoneypotAttackerPortraitResponseBodyListNetwork struct {

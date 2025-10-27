@@ -59,5 +59,10 @@ func (s *ListRuleTargetAllResponse) SetBody(v *ListRuleTargetAllResponseBody) *L
 }
 
 func (s *ListRuleTargetAllResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

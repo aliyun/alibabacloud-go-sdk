@@ -265,7 +265,35 @@ func (s *ChangeCheckConfigRequest) SetVendors(v []*string) *ChangeCheckConfigReq
 }
 
 func (s *ChangeCheckConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AddedCheck != nil {
+		for _, item := range s.AddedCheck {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ConfigRequirementIds != nil {
+		if err := s.ConfigRequirementIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ConfigStandardIds != nil {
+		if err := s.ConfigStandardIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RemovedCheck != nil {
+		for _, item := range s.RemovedCheck {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ChangeCheckConfigRequestAddedCheck struct {

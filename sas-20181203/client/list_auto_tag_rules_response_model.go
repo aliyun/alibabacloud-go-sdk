@@ -59,5 +59,10 @@ func (s *ListAutoTagRulesResponse) SetBody(v *ListAutoTagRulesResponseBody) *Lis
 }
 
 func (s *ListAutoTagRulesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

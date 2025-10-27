@@ -53,7 +53,16 @@ func (s *ListRuleTargetAllResponseBody) SetRuleTargetList(v []*ListRuleTargetAll
 }
 
 func (s *ListRuleTargetAllResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RuleTargetList != nil {
+		for _, item := range s.RuleTargetList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRuleTargetAllResponseBodyRuleTargetList struct {

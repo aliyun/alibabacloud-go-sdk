@@ -53,7 +53,12 @@ func (s *DescribeAlarmEventDetailResponseBody) SetRequestId(v string) *DescribeA
 }
 
 func (s *DescribeAlarmEventDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAlarmEventDetailResponseBodyData struct {
@@ -531,7 +536,16 @@ func (s *DescribeAlarmEventDetailResponseBodyData) SetUuid(v string) *DescribeAl
 }
 
 func (s *DescribeAlarmEventDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CauseDetails != nil {
+		for _, item := range s.CauseDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAlarmEventDetailResponseBodyDataCauseDetails struct {
@@ -572,7 +586,16 @@ func (s *DescribeAlarmEventDetailResponseBodyDataCauseDetails) SetValue(v []*Des
 }
 
 func (s *DescribeAlarmEventDetailResponseBodyDataCauseDetails) Validate() error {
-	return dara.Validate(s)
+	if s.Value != nil {
+		for _, item := range s.Value {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAlarmEventDetailResponseBodyDataCauseDetailsValue struct {

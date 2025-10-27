@@ -112,15 +112,17 @@ type ListCheckItemWarningMachineRequest struct {
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The status of the check item. Valid values:
 	//
-	// 	- 1: failed
+	// 	- **1**: failed
 	//
-	// 	- 2: verifying
+	// 	- **2**: verifying
 	//
-	// 	- 3: passed
+	// 	- **3**: passed
 	//
-	// 	- 6: ignored
+	// 	- **6**: ignored
 	//
-	// 	- 7: fixing
+	// 	- **7**: fixing
+	//
+	// 	- **8**: fixed
 	//
 	// example:
 	//

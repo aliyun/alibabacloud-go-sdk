@@ -53,7 +53,12 @@ func (s *GetClusterRuleSummaryResponseBody) SetRequestId(v string) *GetClusterRu
 }
 
 func (s *GetClusterRuleSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterRuleSummary != nil {
+		if err := s.ClusterRuleSummary.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetClusterRuleSummaryResponseBodyClusterRuleSummary struct {

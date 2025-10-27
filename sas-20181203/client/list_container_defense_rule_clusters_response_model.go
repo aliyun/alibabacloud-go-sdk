@@ -59,5 +59,10 @@ func (s *ListContainerDefenseRuleClustersResponse) SetBody(v *ListContainerDefen
 }
 
 func (s *ListContainerDefenseRuleClustersResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

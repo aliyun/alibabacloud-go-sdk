@@ -59,5 +59,10 @@ func (s *DescribeImageSecurityScanCountResponse) SetBody(v *DescribeImageSecurit
 }
 
 func (s *DescribeImageSecurityScanCountResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

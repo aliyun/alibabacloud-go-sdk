@@ -53,7 +53,16 @@ func (s *CreateFileDetectUploadUrlResponseBody) SetUploadUrlList(v []*CreateFile
 }
 
 func (s *CreateFileDetectUploadUrlResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UploadUrlList != nil {
+		for _, item := range s.UploadUrlList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateFileDetectUploadUrlResponseBodyUploadUrlList struct {
@@ -188,7 +197,12 @@ func (s *CreateFileDetectUploadUrlResponseBodyUploadUrlList) SetPublicUrl(v stri
 }
 
 func (s *CreateFileDetectUploadUrlResponseBodyUploadUrlList) Validate() error {
-	return dara.Validate(s)
+	if s.Context != nil {
+		if err := s.Context.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateFileDetectUploadUrlResponseBodyUploadUrlListContext struct {

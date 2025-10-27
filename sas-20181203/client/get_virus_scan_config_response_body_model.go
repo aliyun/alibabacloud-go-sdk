@@ -53,7 +53,12 @@ func (s *GetVirusScanConfigResponseBody) SetRequestId(v string) *GetVirusScanCon
 }
 
 func (s *GetVirusScanConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetVirusScanConfigResponseBodyData struct {

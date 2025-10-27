@@ -108,7 +108,16 @@ func (s *DescribeGroupedTagsResponseBody) SetSuccess(v bool) *DescribeGroupedTag
 }
 
 func (s *DescribeGroupedTagsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GroupedFileds != nil {
+		for _, item := range s.GroupedFileds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGroupedTagsResponseBodyGroupedFileds struct {

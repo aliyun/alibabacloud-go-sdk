@@ -233,7 +233,16 @@ func (s *UpdateHoneypotProbeBindRequest) SetSetStatus(v int32) *UpdateHoneypotPr
 }
 
 func (s *UpdateHoneypotProbeBindRequest) Validate() error {
-	return dara.Validate(s)
+	if s.BindPortList != nil {
+		for _, item := range s.BindPortList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateHoneypotProbeBindRequestBindPortList struct {

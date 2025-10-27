@@ -53,7 +53,12 @@ func (s *DescribeRiskCheckSummaryResponseBody) SetRiskCheckSummary(v *DescribeRi
 }
 
 func (s *DescribeRiskCheckSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RiskCheckSummary != nil {
+		if err := s.RiskCheckSummary.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRiskCheckSummaryResponseBodyRiskCheckSummary struct {
@@ -210,7 +215,25 @@ func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummary) SetRiskRate(v flo
 }
 
 func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummary) Validate() error {
-	return dara.Validate(s)
+	if s.Groups != nil {
+		for _, item := range s.Groups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RiskLevelCount != nil {
+		for _, item := range s.RiskLevelCount {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups struct {
@@ -319,7 +342,16 @@ func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups) SetTitle(v 
 }
 
 func (s *DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups) Validate() error {
-	return dara.Validate(s)
+	if s.CountByStatus != nil {
+		for _, item := range s.CountByStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroupsCountByStatus struct {

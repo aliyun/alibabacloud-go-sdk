@@ -53,7 +53,16 @@ func (s *DescribeFrontVulPatchListResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeFrontVulPatchListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FrontPatchList != nil {
+		for _, item := range s.FrontPatchList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFrontVulPatchListResponseBodyFrontPatchList struct {
@@ -94,7 +103,16 @@ func (s *DescribeFrontVulPatchListResponseBodyFrontPatchList) SetUuid(v string) 
 }
 
 func (s *DescribeFrontVulPatchListResponseBodyFrontPatchList) Validate() error {
-	return dara.Validate(s)
+	if s.PatchList != nil {
+		for _, item := range s.PatchList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList struct {

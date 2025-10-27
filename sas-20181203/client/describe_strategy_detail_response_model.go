@@ -59,5 +59,10 @@ func (s *DescribeStrategyDetailResponse) SetBody(v *DescribeStrategyDetailRespon
 }
 
 func (s *DescribeStrategyDetailResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *AddTagWithUuidResponse) SetBody(v *AddTagWithUuidResponseBody) *AddTagW
 }
 
 func (s *AddTagWithUuidResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

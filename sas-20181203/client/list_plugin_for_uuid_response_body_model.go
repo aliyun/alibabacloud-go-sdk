@@ -87,7 +87,16 @@ func (s *ListPluginForUuidResponseBody) SetRequestId(v string) *ListPluginForUui
 }
 
 func (s *ListPluginForUuidResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AegisUuidTargetPluginConfigList != nil {
+		for _, item := range s.AegisUuidTargetPluginConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPluginForUuidResponseBodyAegisUuidTargetPluginConfigList struct {
@@ -202,7 +211,16 @@ func (s *ListPluginForUuidResponseBodyAegisUuidTargetPluginConfigList) SetPlugin
 }
 
 func (s *ListPluginForUuidResponseBodyAegisUuidTargetPluginConfigList) Validate() error {
-	return dara.Validate(s)
+	if s.AegisSuspiciousConfigList != nil {
+		for _, item := range s.AegisSuspiciousConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPluginForUuidResponseBodyAegisUuidTargetPluginConfigListAegisSuspiciousConfigList struct {

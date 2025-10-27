@@ -59,5 +59,10 @@ func (s *OpenPartialBuyResponse) SetBody(v *OpenPartialBuyResponseBody) *OpenPar
 }
 
 func (s *OpenPartialBuyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

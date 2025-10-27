@@ -53,7 +53,16 @@ func (s *DescribeNoticeConfigResponseBody) SetRequestId(v string) *DescribeNotic
 }
 
 func (s *DescribeNoticeConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NoticeConfigList != nil {
+		for _, item := range s.NoticeConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNoticeConfigResponseBodyNoticeConfigList struct {

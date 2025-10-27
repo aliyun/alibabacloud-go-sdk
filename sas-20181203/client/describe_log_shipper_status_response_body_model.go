@@ -53,7 +53,12 @@ func (s *DescribeLogShipperStatusResponseBody) SetRequestId(v string) *DescribeL
 }
 
 func (s *DescribeLogShipperStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LogShipperStatus != nil {
+		if err := s.LogShipperStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLogShipperStatusResponseBodyLogShipperStatus struct {

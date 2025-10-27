@@ -59,5 +59,10 @@ func (s *OperateVulsResponse) SetBody(v *OperateVulsResponseBody) *OperateVulsRe
 }
 
 func (s *OperateVulsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

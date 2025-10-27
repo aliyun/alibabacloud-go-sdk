@@ -59,5 +59,10 @@ func (s *DescribeDomainListResponse) SetBody(v *DescribeDomainListResponseBody) 
 }
 
 func (s *DescribeDomainListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

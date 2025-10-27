@@ -59,5 +59,10 @@ func (s *GetAppNetworkResponse) SetBody(v *GetAppNetworkResponseBody) *GetAppNet
 }
 
 func (s *GetAppNetworkResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

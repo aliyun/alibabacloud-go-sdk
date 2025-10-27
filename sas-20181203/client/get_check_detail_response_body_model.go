@@ -143,7 +143,36 @@ func (s *GetCheckDetailResponseBody) SetSolution(v *GetCheckDetailResponseBodySo
 }
 
 func (s *GetCheckDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AssistInfo != nil {
+		if err := s.AssistInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomConfigs != nil {
+		for _, item := range s.CustomConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Description != nil {
+		if err := s.Description.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RepairSetting != nil {
+		if err := s.RepairSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Solution != nil {
+		if err := s.Solution.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCheckDetailResponseBodyAssistInfo struct {
@@ -453,7 +482,25 @@ func (s *GetCheckDetailResponseBodyRepairSetting) SetRepairSupportType(v int32) 
 }
 
 func (s *GetCheckDetailResponseBodyRepairSetting) Validate() error {
-	return dara.Validate(s)
+	if s.FlowStep != nil {
+		for _, item := range s.FlowStep {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RepairConfigs != nil {
+		for _, item := range s.RepairConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCheckDetailResponseBodyRepairSettingFlowStep struct {

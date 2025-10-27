@@ -53,7 +53,12 @@ func (s *UpdateBaselineCheckWhiteRecordResponseBody) SetRequestId(v string) *Upd
 }
 
 func (s *UpdateBaselineCheckWhiteRecordResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateBaselineCheckWhiteRecordResponseBodyData struct {

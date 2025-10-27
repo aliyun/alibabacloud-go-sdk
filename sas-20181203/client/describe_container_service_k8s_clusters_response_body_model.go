@@ -53,7 +53,16 @@ func (s *DescribeContainerServiceK8sClustersResponseBody) SetRequestId(v string)
 }
 
 func (s *DescribeContainerServiceK8sClustersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.K8sClusters != nil {
+		for _, item := range s.K8sClusters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeContainerServiceK8sClustersResponseBodyK8sClusters struct {

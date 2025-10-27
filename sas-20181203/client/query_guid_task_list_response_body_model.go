@@ -53,7 +53,16 @@ func (s *QueryGuidTaskListResponseBody) SetRequestId(v string) *QueryGuidTaskLis
 }
 
 func (s *QueryGuidTaskListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GuideTaskConfigList != nil {
+		for _, item := range s.GuideTaskConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryGuidTaskListResponseBodyGuideTaskConfigList struct {
@@ -171,7 +180,12 @@ func (s *QueryGuidTaskListResponseBodyGuideTaskConfigList) SetTaskTypeName(v str
 }
 
 func (s *QueryGuidTaskListResponseBodyGuideTaskConfigList) Validate() error {
-	return dara.Validate(s)
+	if s.RewardData != nil {
+		if err := s.RewardData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryGuidTaskListResponseBodyGuideTaskConfigListRewardData struct {

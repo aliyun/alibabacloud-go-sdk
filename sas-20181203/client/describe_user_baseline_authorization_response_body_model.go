@@ -53,7 +53,12 @@ func (s *DescribeUserBaselineAuthorizationResponseBody) SetUserBaselineAuthoriza
 }
 
 func (s *DescribeUserBaselineAuthorizationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserBaselineAuthorization != nil {
+		if err := s.UserBaselineAuthorization.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeUserBaselineAuthorizationResponseBodyUserBaselineAuthorization struct {

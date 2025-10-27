@@ -59,5 +59,10 @@ func (s *CreateCycleTaskResponse) SetBody(v *CreateCycleTaskResponseBody) *Creat
 }
 
 func (s *CreateCycleTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

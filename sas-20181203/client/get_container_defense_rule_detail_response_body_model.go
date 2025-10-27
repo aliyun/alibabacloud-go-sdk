@@ -125,7 +125,12 @@ func (s *GetContainerDefenseRuleDetailResponseBody) SetSuccess(v bool) *GetConta
 }
 
 func (s *GetContainerDefenseRuleDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetContainerDefenseRuleDetailResponseBodyData struct {
@@ -313,7 +318,21 @@ func (s *GetContainerDefenseRuleDetailResponseBodyData) SetWhitelist(v *GetConta
 }
 
 func (s *GetContainerDefenseRuleDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Scope != nil {
+		for _, item := range s.Scope {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Whitelist != nil {
+		if err := s.Whitelist.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetContainerDefenseRuleDetailResponseBodyDataScope struct {

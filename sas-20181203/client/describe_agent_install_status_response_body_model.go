@@ -53,7 +53,16 @@ func (s *DescribeAgentInstallStatusResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeAgentInstallStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AegisClientInvokeStatusResponseList != nil {
+		for _, item := range s.AegisClientInvokeStatusResponseList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAgentInstallStatusResponseBodyAegisClientInvokeStatusResponseList struct {

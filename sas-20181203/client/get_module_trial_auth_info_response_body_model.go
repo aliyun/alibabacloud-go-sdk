@@ -53,7 +53,12 @@ func (s *GetModuleTrialAuthInfoResponseBody) SetRequestId(v string) *GetModuleTr
 }
 
 func (s *GetModuleTrialAuthInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetModuleTrialAuthInfoResponseBodyData struct {
@@ -117,7 +122,16 @@ func (s *GetModuleTrialAuthInfoResponseBodyData) SetTrialRecordList(v []*GetModu
 }
 
 func (s *GetModuleTrialAuthInfoResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.TrialRecordList != nil {
+		for _, item := range s.TrialRecordList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetModuleTrialAuthInfoResponseBodyDataTrialRecordList struct {

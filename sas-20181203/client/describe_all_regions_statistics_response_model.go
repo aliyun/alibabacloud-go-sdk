@@ -59,5 +59,10 @@ func (s *DescribeAllRegionsStatisticsResponse) SetBody(v *DescribeAllRegionsStat
 }
 
 func (s *DescribeAllRegionsStatisticsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

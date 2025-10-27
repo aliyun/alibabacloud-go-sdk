@@ -59,5 +59,10 @@ func (s *IgnoreCheckItemsResponse) SetBody(v *IgnoreCheckItemsResponseBody) *Ign
 }
 
 func (s *IgnoreCheckItemsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

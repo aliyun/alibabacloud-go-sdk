@@ -66,7 +66,12 @@ func (s *ListTargetByBatchResponseBody) SetTargetList(v []*string) *ListTargetBy
 }
 
 func (s *ListTargetByBatchResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTargetByBatchResponseBodyPageInfo struct {

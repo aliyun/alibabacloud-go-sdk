@@ -66,7 +66,21 @@ func (s *DescribeSyncAssetTaskListResponseBody) SetTaskRecords(v []*DescribeSync
 }
 
 func (s *DescribeSyncAssetTaskListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TaskRecords != nil {
+		for _, item := range s.TaskRecords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSyncAssetTaskListResponseBodyPageInfo struct {

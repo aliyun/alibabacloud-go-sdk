@@ -66,7 +66,21 @@ func (s *ListInterceptionTargetPageResponseBody) SetRuleTargetList(v []*ListInte
 }
 
 func (s *ListInterceptionTargetPageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuleTargetList != nil {
+		for _, item := range s.RuleTargetList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInterceptionTargetPageResponseBodyPageInfo struct {

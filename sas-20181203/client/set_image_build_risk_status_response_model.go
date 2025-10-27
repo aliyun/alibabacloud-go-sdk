@@ -59,5 +59,10 @@ func (s *SetImageBuildRiskStatusResponse) SetBody(v *SetImageBuildRiskStatusResp
 }
 
 func (s *SetImageBuildRiskStatusResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

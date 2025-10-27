@@ -59,5 +59,10 @@ func (s *DeleteVpcHoneyPotResponse) SetBody(v *DeleteVpcHoneyPotResponseBody) *D
 }
 
 func (s *DeleteVpcHoneyPotResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

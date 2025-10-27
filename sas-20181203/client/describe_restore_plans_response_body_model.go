@@ -66,7 +66,21 @@ func (s *DescribeRestorePlansResponseBody) SetRestorePlans(v []*DescribeRestoreP
 }
 
 func (s *DescribeRestorePlansResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RestorePlans != nil {
+		for _, item := range s.RestorePlans {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRestorePlansResponseBodyPageInfo struct {

@@ -59,5 +59,10 @@ func (s *ModifyClusterCnnfStatusUserConfirmResponse) SetBody(v *ModifyClusterCnn
 }
 
 func (s *ModifyClusterCnnfStatusUserConfirmResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

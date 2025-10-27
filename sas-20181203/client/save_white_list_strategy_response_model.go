@@ -59,5 +59,10 @@ func (s *SaveWhiteListStrategyResponse) SetBody(v *SaveWhiteListStrategyResponse
 }
 
 func (s *SaveWhiteListStrategyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -104,7 +104,16 @@ func (s *DescribeOfflineMachinesResponseBody) SetTotalCount(v int32) *DescribeOf
 }
 
 func (s *DescribeOfflineMachinesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MachineList != nil {
+		for _, item := range s.MachineList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOfflineMachinesResponseBodyMachineList struct {

@@ -59,5 +59,10 @@ func (s *RetryInstallProbeResponse) SetBody(v *RetryInstallProbeResponseBody) *R
 }
 
 func (s *RetryInstallProbeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

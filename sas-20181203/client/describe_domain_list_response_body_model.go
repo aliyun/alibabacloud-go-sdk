@@ -66,7 +66,21 @@ func (s *DescribeDomainListResponseBody) SetRequestId(v string) *DescribeDomainL
 }
 
 func (s *DescribeDomainListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainListResponseList != nil {
+		for _, item := range s.DomainListResponseList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainListResponseBodyDomainListResponseList struct {

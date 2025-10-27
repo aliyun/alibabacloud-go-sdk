@@ -53,7 +53,16 @@ func (s *GetFileDetectResultResponseBody) SetResultList(v []*GetFileDetectResult
 }
 
 func (s *GetFileDetectResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultList != nil {
+		for _, item := range s.ResultList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetFileDetectResultResponseBodyResultList struct {

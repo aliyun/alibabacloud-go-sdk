@@ -59,5 +59,10 @@ func (s *DescribePropertyScaProcessDetailResponse) SetBody(v *DescribePropertySc
 }
 
 func (s *DescribePropertyScaProcessDetailResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

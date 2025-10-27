@@ -66,7 +66,21 @@ func (s *DescribeCloudVendorAccountAKListResponseBody) SetRequestId(v string) *D
 }
 
 func (s *DescribeCloudVendorAccountAKListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CloudVendorAccountAKs != nil {
+		for _, item := range s.CloudVendorAccountAKs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudVendorAccountAKListResponseBodyCloudVendorAccountAKs struct {
@@ -276,7 +290,16 @@ func (s *DescribeCloudVendorAccountAKListResponseBodyCloudVendorAccountAKs) SetV
 }
 
 func (s *DescribeCloudVendorAccountAKListResponseBodyCloudVendorAccountAKs) Validate() error {
-	return dara.Validate(s)
+	if s.AuthModules != nil {
+		for _, item := range s.AuthModules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudVendorAccountAKListResponseBodyCloudVendorAccountAKsAuthModules struct {

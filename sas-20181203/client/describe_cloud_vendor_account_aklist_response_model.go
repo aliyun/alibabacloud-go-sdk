@@ -59,5 +59,10 @@ func (s *DescribeCloudVendorAccountAKListResponse) SetBody(v *DescribeCloudVendo
 }
 
 func (s *DescribeCloudVendorAccountAKListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

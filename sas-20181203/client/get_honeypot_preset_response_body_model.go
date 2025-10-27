@@ -125,7 +125,12 @@ func (s *GetHoneypotPresetResponseBody) SetSuccess(v bool) *GetHoneypotPresetRes
 }
 
 func (s *GetHoneypotPresetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHoneypotPresetResponseBodyData struct {
@@ -277,7 +282,16 @@ func (s *GetHoneypotPresetResponseBodyData) SetPresetType(v string) *GetHoneypot
 }
 
 func (s *GetHoneypotPresetResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.FileInfoList != nil {
+		for _, item := range s.FileInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetHoneypotPresetResponseBodyDataFileInfoList struct {

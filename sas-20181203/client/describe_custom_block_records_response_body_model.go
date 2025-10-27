@@ -66,7 +66,21 @@ func (s *DescribeCustomBlockRecordsResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeCustomBlockRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RecordList != nil {
+		for _, item := range s.RecordList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCustomBlockRecordsResponseBodyPageInfo struct {
@@ -297,7 +311,16 @@ func (s *DescribeCustomBlockRecordsResponseBodyRecordList) SetTargetList(v []*De
 }
 
 func (s *DescribeCustomBlockRecordsResponseBodyRecordList) Validate() error {
-	return dara.Validate(s)
+	if s.TargetList != nil {
+		for _, item := range s.TargetList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCustomBlockRecordsResponseBodyRecordListTargetList struct {

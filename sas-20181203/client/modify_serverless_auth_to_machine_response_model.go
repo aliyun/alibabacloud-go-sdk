@@ -59,5 +59,10 @@ func (s *ModifyServerlessAuthToMachineResponse) SetBody(v *ModifyServerlessAuthT
 }
 
 func (s *ModifyServerlessAuthToMachineResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
