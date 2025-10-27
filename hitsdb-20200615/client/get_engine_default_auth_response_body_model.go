@@ -71,7 +71,16 @@ func (s *GetEngineDefaultAuthResponseBody) SetRequestId(v string) *GetEngineDefa
 }
 
 func (s *GetEngineDefaultAuthResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AuthInfos != nil {
+		for _, item := range s.AuthInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetEngineDefaultAuthResponseBodyAuthInfos struct {

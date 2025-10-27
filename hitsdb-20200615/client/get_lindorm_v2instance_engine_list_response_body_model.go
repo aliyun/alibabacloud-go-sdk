@@ -71,7 +71,16 @@ func (s *GetLindormV2InstanceEngineListResponseBody) SetRequestId(v string) *Get
 }
 
 func (s *GetLindormV2InstanceEngineListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EngineList != nil {
+		for _, item := range s.EngineList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLindormV2InstanceEngineListResponseBodyEngineList struct {
@@ -106,7 +115,16 @@ func (s *GetLindormV2InstanceEngineListResponseBodyEngineList) SetNetInfoList(v 
 }
 
 func (s *GetLindormV2InstanceEngineListResponseBodyEngineList) Validate() error {
-	return dara.Validate(s)
+	if s.NetInfoList != nil {
+		for _, item := range s.NetInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLindormV2InstanceEngineListResponseBodyEngineListNetInfoList struct {

@@ -59,5 +59,10 @@ func (s *ModifyLindormV2WhiteIpListResponse) SetBody(v *ModifyLindormV2WhiteIpLi
 }
 
 func (s *ModifyLindormV2WhiteIpListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

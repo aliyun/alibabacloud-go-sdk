@@ -72,7 +72,16 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 }
 
 func (s *ListTagResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TagResources != nil {
+		for _, item := range s.TagResources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTagResourcesResponseBodyTagResources struct {

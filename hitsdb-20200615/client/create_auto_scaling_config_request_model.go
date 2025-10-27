@@ -220,7 +220,16 @@ func (s *CreateAutoScalingConfigRequest) SetSpecId(v string) *CreateAutoScalingC
 }
 
 func (s *CreateAutoScalingConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ScaleRuleList != nil {
+		for _, item := range s.ScaleRuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAutoScalingConfigRequestScaleRuleList struct {

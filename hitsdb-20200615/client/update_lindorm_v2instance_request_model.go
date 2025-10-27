@@ -190,7 +190,16 @@ func (s *UpdateLindormV2InstanceRequest) SetSecurityToken(v string) *UpdateLindo
 }
 
 func (s *UpdateLindormV2InstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EngineList != nil {
+		for _, item := range s.EngineList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateLindormV2InstanceRequestEngineList struct {
@@ -230,7 +239,16 @@ func (s *UpdateLindormV2InstanceRequestEngineList) SetNodeGroupList(v []*UpdateL
 }
 
 func (s *UpdateLindormV2InstanceRequestEngineList) Validate() error {
-	return dara.Validate(s)
+	if s.NodeGroupList != nil {
+		for _, item := range s.NodeGroupList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateLindormV2InstanceRequestEngineListNodeGroupList struct {

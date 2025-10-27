@@ -359,7 +359,16 @@ func (s *GetLindormFsUsedDetailResponseBody) SetValid(v string) *GetLindormFsUse
 }
 
 func (s *GetLindormFsUsedDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LStorageUsageList != nil {
+		for _, item := range s.LStorageUsageList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLindormFsUsedDetailResponseBodyLStorageUsageList struct {

@@ -59,7 +59,16 @@ func (s *GetLindormEngineConfigResponseBody) SetRequestId(v string) *GetLindormE
 }
 
 func (s *GetLindormEngineConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EngineConfigs != nil {
+		for _, item := range s.EngineConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLindormEngineConfigResponseBodyEngineConfigs struct {
@@ -94,7 +103,16 @@ func (s *GetLindormEngineConfigResponseBodyEngineConfigs) SetEngine(v string) *G
 }
 
 func (s *GetLindormEngineConfigResponseBodyEngineConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigFiles != nil {
+		for _, item := range s.ConfigFiles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLindormEngineConfigResponseBodyEngineConfigsConfigFiles struct {
@@ -129,7 +147,16 @@ func (s *GetLindormEngineConfigResponseBodyEngineConfigsConfigFiles) SetFileName
 }
 
 func (s *GetLindormEngineConfigResponseBodyEngineConfigsConfigFiles) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigItems != nil {
+		for _, item := range s.ConfigItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLindormEngineConfigResponseBodyEngineConfigsConfigFilesConfigItems struct {

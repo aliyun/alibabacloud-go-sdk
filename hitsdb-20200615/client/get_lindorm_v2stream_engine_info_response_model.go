@@ -59,5 +59,10 @@ func (s *GetLindormV2StreamEngineInfoResponse) SetBody(v *GetLindormV2StreamEngi
 }
 
 func (s *GetLindormV2StreamEngineInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -47,7 +47,16 @@ func (s *GetLdpsNamespacedQuotaResponseBody) SetRequestId(v string) *GetLdpsName
 }
 
 func (s *GetLdpsNamespacedQuotaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NamespacedQuotas != nil {
+		for _, item := range s.NamespacedQuotas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLdpsNamespacedQuotaResponseBodyNamespacedQuotas struct {

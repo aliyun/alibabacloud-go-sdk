@@ -59,5 +59,10 @@ func (s *SwitchLSQLV3MySQLServiceResponse) SetBody(v *SwitchLSQLV3MySQLServiceRe
 }
 
 func (s *SwitchLSQLV3MySQLServiceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

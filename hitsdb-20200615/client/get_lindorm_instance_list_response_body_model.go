@@ -104,7 +104,16 @@ func (s *GetLindormInstanceListResponseBody) SetTotal(v int32) *GetLindormInstan
 }
 
 func (s *GetLindormInstanceListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceList != nil {
+		for _, item := range s.InstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLindormInstanceListResponseBodyInstanceList struct {
@@ -584,7 +593,16 @@ func (s *GetLindormInstanceListResponseBodyInstanceList) SetZoneId(v string) *Ge
 }
 
 func (s *GetLindormInstanceListResponseBodyInstanceList) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLindormInstanceListResponseBodyInstanceListTags struct {

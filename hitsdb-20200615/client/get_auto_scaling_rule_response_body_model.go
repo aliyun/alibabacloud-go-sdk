@@ -131,7 +131,12 @@ func (s *GetAutoScalingRuleResponseBody) SetSuccess(v bool) *GetAutoScalingRuleR
 }
 
 func (s *GetAutoScalingRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAutoScalingRuleResponseBodyData struct {

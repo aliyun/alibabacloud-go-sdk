@@ -131,7 +131,12 @@ func (s *GetAutoScalingConfigResponseBody) SetSuccess(v bool) *GetAutoScalingCon
 }
 
 func (s *GetAutoScalingConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAutoScalingConfigResponseBodyData struct {
@@ -266,7 +271,16 @@ func (s *GetAutoScalingConfigResponseBodyData) SetSpecId(v string) *GetAutoScali
 }
 
 func (s *GetAutoScalingConfigResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ScaleRuleList != nil {
+		for _, item := range s.ScaleRuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAutoScalingConfigResponseBodyDataScaleRuleList struct {

@@ -59,7 +59,16 @@ func (s *GetLindormV2StreamEngineInfoResponseBody) SetResourceGroupList(v []*Get
 }
 
 func (s *GetLindormV2StreamEngineInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceGroupList != nil {
+		for _, item := range s.ResourceGroupList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLindormV2StreamEngineInfoResponseBodyResourceGroupList struct {

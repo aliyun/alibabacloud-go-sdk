@@ -59,5 +59,10 @@ func (s *CreateAutoScalingRuleResponse) SetBody(v *CreateAutoScalingRuleResponse
 }
 
 func (s *CreateAutoScalingRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

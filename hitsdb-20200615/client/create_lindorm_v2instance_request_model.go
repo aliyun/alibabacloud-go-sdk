@@ -460,7 +460,16 @@ func (s *CreateLindormV2InstanceRequest) SetZoneId(v string) *CreateLindormV2Ins
 }
 
 func (s *CreateLindormV2InstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EngineList != nil {
+		for _, item := range s.EngineList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateLindormV2InstanceRequestEngineList struct {
@@ -500,7 +509,16 @@ func (s *CreateLindormV2InstanceRequestEngineList) SetNodeGroupList(v []*CreateL
 }
 
 func (s *CreateLindormV2InstanceRequestEngineList) Validate() error {
-	return dara.Validate(s)
+	if s.NodeGroupList != nil {
+		for _, item := range s.NodeGroupList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateLindormV2InstanceRequestEngineListNodeGroupList struct {

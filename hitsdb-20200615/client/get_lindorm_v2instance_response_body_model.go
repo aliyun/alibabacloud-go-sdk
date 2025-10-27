@@ -467,7 +467,30 @@ func (s *GetLindormV2InstanceResponseBody) SetZoneId(v string) *GetLindormV2Inst
 }
 
 func (s *GetLindormV2InstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EngineList != nil {
+		for _, item := range s.EngineList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.StorageUsage != nil {
+		if err := s.StorageUsage.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WhiteIpList != nil {
+		for _, item := range s.WhiteIpList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLindormV2InstanceResponseBodyEngineList struct {
@@ -562,7 +585,25 @@ func (s *GetLindormV2InstanceResponseBodyEngineList) SetVersion(v string) *GetLi
 }
 
 func (s *GetLindormV2InstanceResponseBodyEngineList) Validate() error {
-	return dara.Validate(s)
+	if s.ConnectAddressList != nil {
+		for _, item := range s.ConnectAddressList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NodeGroup != nil {
+		for _, item := range s.NodeGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLindormV2InstanceResponseBodyEngineListConnectAddressList struct {

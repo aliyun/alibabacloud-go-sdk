@@ -467,7 +467,30 @@ func (s *GetLindormV2InstanceForTerraformResponseBody) SetZoneId(v string) *GetL
 }
 
 func (s *GetLindormV2InstanceForTerraformResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EngineList != nil {
+		for _, item := range s.EngineList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.StorageUsage != nil {
+		if err := s.StorageUsage.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WhiteIpList != nil {
+		for _, item := range s.WhiteIpList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLindormV2InstanceForTerraformResponseBodyEngineList struct {
@@ -542,7 +565,25 @@ func (s *GetLindormV2InstanceForTerraformResponseBodyEngineList) SetVersion(v st
 }
 
 func (s *GetLindormV2InstanceForTerraformResponseBodyEngineList) Validate() error {
-	return dara.Validate(s)
+	if s.ConnectAddressList != nil {
+		for _, item := range s.ConnectAddressList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NodeGroup != nil {
+		for _, item := range s.NodeGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLindormV2InstanceForTerraformResponseBodyEngineListConnectAddressList struct {

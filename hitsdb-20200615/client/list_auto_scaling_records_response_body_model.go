@@ -131,7 +131,12 @@ func (s *ListAutoScalingRecordsResponseBody) SetSuccess(v bool) *ListAutoScaling
 }
 
 func (s *ListAutoScalingRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAutoScalingRecordsResponseBodyData struct {
@@ -196,7 +201,16 @@ func (s *ListAutoScalingRecordsResponseBodyData) SetTotalPage(v int32) *ListAuto
 }
 
 func (s *ListAutoScalingRecordsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ScaleRecords != nil {
+		for _, item := range s.ScaleRecords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAutoScalingRecordsResponseBodyDataScaleRecords struct {

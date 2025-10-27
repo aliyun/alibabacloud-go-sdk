@@ -100,7 +100,16 @@ func (s *GetInstanceIpWhiteListResponseBody) SetRequestId(v string) *GetInstance
 }
 
 func (s *GetInstanceIpWhiteListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GroupList != nil {
+		for _, item := range s.GroupList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstanceIpWhiteListResponseBodyGroupList struct {

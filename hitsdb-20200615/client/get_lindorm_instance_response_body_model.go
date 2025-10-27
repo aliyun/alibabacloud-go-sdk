@@ -1160,7 +1160,16 @@ func (s *GetLindormInstanceResponseBody) SetZoneId(v string) *GetLindormInstance
 }
 
 func (s *GetLindormInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EngineList != nil {
+		for _, item := range s.EngineList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLindormInstanceResponseBodyEngineList struct {

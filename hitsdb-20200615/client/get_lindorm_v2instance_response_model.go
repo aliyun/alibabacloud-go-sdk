@@ -59,5 +59,10 @@ func (s *GetLindormV2InstanceResponse) SetBody(v *GetLindormV2InstanceResponseBo
 }
 
 func (s *GetLindormV2InstanceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

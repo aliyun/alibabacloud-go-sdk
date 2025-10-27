@@ -131,7 +131,12 @@ func (s *ListAutoScalingRulesResponseBody) SetSuccess(v bool) *ListAutoScalingRu
 }
 
 func (s *ListAutoScalingRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAutoScalingRulesResponseBodyData struct {
@@ -156,7 +161,16 @@ func (s *ListAutoScalingRulesResponseBodyData) SetScaleRules(v []*ListAutoScalin
 }
 
 func (s *ListAutoScalingRulesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ScaleRules != nil {
+		for _, item := range s.ScaleRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAutoScalingRulesResponseBodyDataScaleRules struct {

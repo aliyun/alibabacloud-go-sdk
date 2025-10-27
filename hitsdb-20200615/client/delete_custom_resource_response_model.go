@@ -59,5 +59,10 @@ func (s *DeleteCustomResourceResponse) SetBody(v *DeleteCustomResourceResponseBo
 }
 
 func (s *DeleteCustomResourceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

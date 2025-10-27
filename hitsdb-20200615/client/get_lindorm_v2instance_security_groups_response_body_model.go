@@ -71,7 +71,16 @@ func (s *GetLindormV2InstanceSecurityGroupsResponseBody) SetSgList(v []*GetLindo
 }
 
 func (s *GetLindormV2InstanceSecurityGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SgList != nil {
+		for _, item := range s.SgList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLindormV2InstanceSecurityGroupsResponseBodySgList struct {
