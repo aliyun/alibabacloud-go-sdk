@@ -39,6 +39,8 @@ type iCreateWuyingServerRequest interface {
 	GetPeriodUnit() *string
 	SetPromotionId(v string) *CreateWuyingServerRequest
 	GetPromotionId() *string
+	SetSavingPlanId(v string) *CreateWuyingServerRequest
+	GetSavingPlanId() *string
 	SetServerInstanceType(v string) *CreateWuyingServerRequest
 	GetServerInstanceType() *string
 	SetServerPortRange(v string) *CreateWuyingServerRequest
@@ -108,7 +110,8 @@ type CreateWuyingServerRequest struct {
 	// example:
 	//
 	// 17440009****
-	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	PromotionId  *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	SavingPlanId *string `json:"SavingPlanId,omitempty" xml:"SavingPlanId,omitempty"`
 	// example:
 	//
 	// eds.proworkstation_flagship_elite_ne.96c384g.192g4x
@@ -200,6 +203,10 @@ func (s *CreateWuyingServerRequest) GetPeriodUnit() *string {
 
 func (s *CreateWuyingServerRequest) GetPromotionId() *string {
 	return s.PromotionId
+}
+
+func (s *CreateWuyingServerRequest) GetSavingPlanId() *string {
+	return s.SavingPlanId
 }
 
 func (s *CreateWuyingServerRequest) GetServerInstanceType() *string {
@@ -306,6 +313,11 @@ func (s *CreateWuyingServerRequest) SetPeriodUnit(v string) *CreateWuyingServerR
 
 func (s *CreateWuyingServerRequest) SetPromotionId(v string) *CreateWuyingServerRequest {
 	s.PromotionId = &v
+	return s
+}
+
+func (s *CreateWuyingServerRequest) SetSavingPlanId(v string) *CreateWuyingServerRequest {
+	s.SavingPlanId = &v
 	return s
 }
 

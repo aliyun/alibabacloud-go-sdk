@@ -619,6 +619,11 @@ func (client *Client) CreateWuyingServerWithOptions(request *CreateWuyingServerR
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SavingPlanId) {
+		query["SavingPlanId"] = request.SavingPlanId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Amount) {
 		body["Amount"] = request.Amount
@@ -716,7 +721,8 @@ func (client *Client) CreateWuyingServerWithOptions(request *CreateWuyingServerR
 	body = dara.ToMap(body,
 		openapiutil.Query(bodyFlat))
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateWuyingServer"),
@@ -2995,6 +3001,108 @@ func (client *Client) ModifyAppPolicy(request *ModifyAppPolicyRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyAppPolicyResponse{}
 	_body, _err := client.ModifyAppPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改浏览器交付组
+//
+// @param tmpReq - ModifyBrowserInstanceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyBrowserInstanceGroupResponse
+func (client *Client) ModifyBrowserInstanceGroupWithOptions(tmpReq *ModifyBrowserInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyBrowserInstanceGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModifyBrowserInstanceGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BrowserConfig) {
+		request.BrowserConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BrowserConfig, dara.String("BrowserConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Network) {
+		request.NetworkShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Network, dara.String("Network"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Policy) {
+		request.PolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Policy, dara.String("Policy"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Timers) {
+		request.TimersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Timers, dara.String("Timers"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BrowserConfigShrink) {
+		query["BrowserConfig"] = request.BrowserConfigShrink
+	}
+
+	if !dara.IsNil(request.BrowserInstanceGroupId) {
+		query["BrowserInstanceGroupId"] = request.BrowserInstanceGroupId
+	}
+
+	if !dara.IsNil(request.PolicyShrink) {
+		query["Policy"] = request.PolicyShrink
+	}
+
+	if !dara.IsNil(request.TimersShrink) {
+		query["Timers"] = request.TimersShrink
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CloudBrowserName) {
+		body["CloudBrowserName"] = request.CloudBrowserName
+	}
+
+	if !dara.IsNil(request.NetworkShrink) {
+		body["Network"] = request.NetworkShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyBrowserInstanceGroup"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyBrowserInstanceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改浏览器交付组
+//
+// @param request - ModifyBrowserInstanceGroupRequest
+//
+// @return ModifyBrowserInstanceGroupResponse
+func (client *Client) ModifyBrowserInstanceGroup(request *ModifyBrowserInstanceGroupRequest) (_result *ModifyBrowserInstanceGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyBrowserInstanceGroupResponse{}
+	_body, _err := client.ModifyBrowserInstanceGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
