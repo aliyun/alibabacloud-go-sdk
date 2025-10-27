@@ -59,5 +59,10 @@ func (s *QueryPushStatByMsgResponse) SetBody(v *QueryPushStatByMsgResponseBody) 
 }
 
 func (s *QueryPushStatByMsgResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *PushMessageToiOSResponse) SetBody(v *PushMessageToiOSResponseBody) *Pus
 }
 
 func (s *PushMessageToiOSResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

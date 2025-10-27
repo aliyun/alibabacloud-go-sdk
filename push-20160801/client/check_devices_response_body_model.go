@@ -50,7 +50,12 @@ func (s *CheckDevicesResponseBody) SetRequestId(v string) *CheckDevicesResponseB
 }
 
 func (s *CheckDevicesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceCheckInfos != nil {
+		if err := s.DeviceCheckInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CheckDevicesResponseBodyDeviceCheckInfos struct {
@@ -75,7 +80,16 @@ func (s *CheckDevicesResponseBodyDeviceCheckInfos) SetDeviceCheckInfo(v []*Check
 }
 
 func (s *CheckDevicesResponseBodyDeviceCheckInfos) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceCheckInfo != nil {
+		for _, item := range s.DeviceCheckInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CheckDevicesResponseBodyDeviceCheckInfosDeviceCheckInfo struct {

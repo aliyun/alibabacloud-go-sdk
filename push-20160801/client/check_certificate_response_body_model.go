@@ -92,7 +92,17 @@ func (s *CheckCertificateResponseBody) SetRequestId(v string) *CheckCertificateR
 }
 
 func (s *CheckCertificateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DevelopmentCertInfo != nil {
+		if err := s.DevelopmentCertInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProductionCertInfo != nil {
+		if err := s.ProductionCertInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CheckCertificateResponseBodyDevelopmentCertInfo struct {

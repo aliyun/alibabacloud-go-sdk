@@ -59,5 +59,10 @@ func (s *UnbindAliasResponse) SetBody(v *UnbindAliasResponseBody) *UnbindAliasRe
 }
 
 func (s *UnbindAliasResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

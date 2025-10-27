@@ -50,7 +50,12 @@ func (s *QueryAliasesResponseBody) SetRequestId(v string) *QueryAliasesResponseB
 }
 
 func (s *QueryAliasesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AliasInfos != nil {
+		if err := s.AliasInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryAliasesResponseBodyAliasInfos struct {
@@ -75,7 +80,16 @@ func (s *QueryAliasesResponseBodyAliasInfos) SetAliasInfo(v []*QueryAliasesRespo
 }
 
 func (s *QueryAliasesResponseBodyAliasInfos) Validate() error {
-	return dara.Validate(s)
+	if s.AliasInfo != nil {
+		for _, item := range s.AliasInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryAliasesResponseBodyAliasInfosAliasInfo struct {

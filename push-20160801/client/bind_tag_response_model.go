@@ -59,5 +59,10 @@ func (s *BindTagResponse) SetBody(v *BindTagResponseBody) *BindTagResponse {
 }
 
 func (s *BindTagResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

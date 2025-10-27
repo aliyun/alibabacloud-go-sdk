@@ -50,7 +50,12 @@ func (s *QueryDeviceInfoResponseBody) SetRequestId(v string) *QueryDeviceInfoRes
 }
 
 func (s *QueryDeviceInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfo != nil {
+		if err := s.DeviceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryDeviceInfoResponseBodyDeviceInfo struct {

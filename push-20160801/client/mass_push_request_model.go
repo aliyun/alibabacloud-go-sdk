@@ -65,7 +65,16 @@ func (s *MassPushRequest) SetPushTask(v []*MassPushRequestPushTask) *MassPushReq
 }
 
 func (s *MassPushRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PushTask != nil {
+		for _, item := range s.PushTask {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MassPushRequestPushTask struct {

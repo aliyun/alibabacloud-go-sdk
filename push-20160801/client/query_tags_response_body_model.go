@@ -50,7 +50,12 @@ func (s *QueryTagsResponseBody) SetTagInfos(v *QueryTagsResponseBodyTagInfos) *Q
 }
 
 func (s *QueryTagsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TagInfos != nil {
+		if err := s.TagInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryTagsResponseBodyTagInfos struct {
@@ -75,7 +80,16 @@ func (s *QueryTagsResponseBodyTagInfos) SetTagInfo(v []*QueryTagsResponseBodyTag
 }
 
 func (s *QueryTagsResponseBodyTagInfos) Validate() error {
-	return dara.Validate(s)
+	if s.TagInfo != nil {
+		for _, item := range s.TagInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryTagsResponseBodyTagInfosTagInfo struct {

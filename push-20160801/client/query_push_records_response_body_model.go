@@ -110,7 +110,12 @@ func (s *QueryPushRecordsResponseBody) SetTotal(v int32) *QueryPushRecordsRespon
 }
 
 func (s *QueryPushRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PushInfos != nil {
+		if err := s.PushInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryPushRecordsResponseBodyPushInfos struct {
@@ -135,7 +140,16 @@ func (s *QueryPushRecordsResponseBodyPushInfos) SetPushInfo(v []*QueryPushRecord
 }
 
 func (s *QueryPushRecordsResponseBodyPushInfos) Validate() error {
-	return dara.Validate(s)
+	if s.PushInfo != nil {
+		for _, item := range s.PushInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryPushRecordsResponseBodyPushInfosPushInfo struct {

@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -121,9 +122,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return BindAliasResponse
 func (client *Client) BindAliasWithOptions(request *BindAliasRequest, runtime *dara.RuntimeOptions) (_result *BindAliasResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliasName) {
@@ -189,9 +192,11 @@ func (client *Client) BindAlias(request *BindAliasRequest) (_result *BindAliasRe
 //
 // @return BindPhoneResponse
 func (client *Client) BindPhoneWithOptions(request *BindPhoneRequest, runtime *dara.RuntimeOptions) (_result *BindPhoneResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -257,9 +262,11 @@ func (client *Client) BindPhone(request *BindPhoneRequest) (_result *BindPhoneRe
 //
 // @return BindTagResponse
 func (client *Client) BindTagWithOptions(request *BindTagRequest, runtime *dara.RuntimeOptions) (_result *BindTagResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -329,9 +336,11 @@ func (client *Client) BindTag(request *BindTagRequest) (_result *BindTagResponse
 //
 // @return CancelPushResponse
 func (client *Client) CancelPushWithOptions(request *CancelPushRequest, runtime *dara.RuntimeOptions) (_result *CancelPushResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -389,9 +398,11 @@ func (client *Client) CancelPush(request *CancelPushRequest) (_result *CancelPus
 //
 // @return CheckCertificateResponse
 func (client *Client) CheckCertificateWithOptions(request *CheckCertificateRequest, runtime *dara.RuntimeOptions) (_result *CheckCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -447,9 +458,11 @@ func (client *Client) CheckCertificate(request *CheckCertificateRequest) (_resul
 //
 // @return CheckDeviceResponse
 func (client *Client) CheckDeviceWithOptions(request *CheckDeviceRequest, runtime *dara.RuntimeOptions) (_result *CheckDeviceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -514,9 +527,11 @@ func (client *Client) CheckDevice(request *CheckDeviceRequest) (_result *CheckDe
 //
 // @return CheckDevicesResponse
 func (client *Client) CheckDevicesWithOptions(request *CheckDevicesRequest, runtime *dara.RuntimeOptions) (_result *CheckDevicesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -578,9 +593,11 @@ func (client *Client) CheckDevices(request *CheckDevicesRequest) (_result *Check
 //
 // @return CompleteContinuouslyPushResponse
 func (client *Client) CompleteContinuouslyPushWithOptions(request *CompleteContinuouslyPushRequest, runtime *dara.RuntimeOptions) (_result *CompleteContinuouslyPushResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -642,9 +659,11 @@ func (client *Client) CompleteContinuouslyPush(request *CompleteContinuouslyPush
 //
 // @return ContinuouslyPushResponse
 func (client *Client) ContinuouslyPushWithOptions(request *ContinuouslyPushRequest, runtime *dara.RuntimeOptions) (_result *ContinuouslyPushResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -767,9 +786,11 @@ func (client *Client) ListSummaryApps() (_result *ListSummaryAppsResponse, _err 
 //
 // @return ListTagsResponse
 func (client *Client) ListTagsWithOptions(request *ListTagsRequest, runtime *dara.RuntimeOptions) (_result *ListTagsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -827,9 +848,11 @@ func (client *Client) ListTags(request *ListTagsRequest) (_result *ListTagsRespo
 //
 // @return MassPushResponse
 func (client *Client) MassPushWithOptions(request *MassPushRequest, runtime *dara.RuntimeOptions) (_result *MassPushResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -889,6 +912,82 @@ func (client *Client) MassPush(request *MassPushRequest) (_result *MassPushRespo
 
 // Summary:
 //
+// 新版高级推送接口
+//
+// @param tmpReq - MassPushV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MassPushV2Response
+func (client *Client) MassPushV2WithOptions(tmpReq *MassPushV2Request, runtime *dara.RuntimeOptions) (_result *MassPushV2Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &MassPushV2ShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.PushTasks) {
+		request.PushTasksShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PushTasks, dara.String("PushTasks"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppKey) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !dara.IsNil(request.IdempotentToken) {
+		query["IdempotentToken"] = request.IdempotentToken
+	}
+
+	if !dara.IsNil(request.PushTasksShrink) {
+		query["PushTasks"] = request.PushTasksShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MassPushV2"),
+		Version:     dara.String("2016-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MassPushV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新版高级推送接口
+//
+// @param request - MassPushV2Request
+//
+// @return MassPushV2Response
+func (client *Client) MassPushV2(request *MassPushV2Request) (_result *MassPushV2Response, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &MassPushV2Response{}
+	_body, _err := client.MassPushV2WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 高级推送接口
 //
 // @param tmpReq - PushRequest
@@ -897,9 +996,11 @@ func (client *Client) MassPush(request *MassPushRequest) (_result *MassPushRespo
 //
 // @return PushResponse
 func (client *Client) PushWithOptions(tmpReq *PushRequest, runtime *dara.RuntimeOptions) (_result *PushResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &PushShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1411,9 +1512,11 @@ func (client *Client) Push(request *PushRequest) (_result *PushResponse, _err er
 //
 // @return PushMessageToAndroidResponse
 func (client *Client) PushMessageToAndroidWithOptions(request *PushMessageToAndroidRequest, runtime *dara.RuntimeOptions) (_result *PushMessageToAndroidResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -1495,9 +1598,11 @@ func (client *Client) PushMessageToAndroid(request *PushMessageToAndroidRequest)
 //
 // @return PushMessageToiOSResponse
 func (client *Client) PushMessageToiOSWithOptions(request *PushMessageToiOSRequest, runtime *dara.RuntimeOptions) (_result *PushMessageToiOSResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -1579,9 +1684,11 @@ func (client *Client) PushMessageToiOS(request *PushMessageToiOSRequest) (_resul
 //
 // @return PushNoticeToAndroidResponse
 func (client *Client) PushNoticeToAndroidWithOptions(request *PushNoticeToAndroidRequest, runtime *dara.RuntimeOptions) (_result *PushNoticeToAndroidResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -1667,9 +1774,11 @@ func (client *Client) PushNoticeToAndroid(request *PushNoticeToAndroidRequest) (
 //
 // @return PushNoticeToiOSResponse
 func (client *Client) PushNoticeToiOSWithOptions(request *PushNoticeToiOSRequest, runtime *dara.RuntimeOptions) (_result *PushNoticeToiOSResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApnsEnv) {
@@ -1747,6 +1856,82 @@ func (client *Client) PushNoticeToiOS(request *PushNoticeToiOSRequest) (_result 
 
 // Summary:
 //
+// 新版高级推送接口
+//
+// @param tmpReq - PushV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushV2Response
+func (client *Client) PushV2WithOptions(tmpReq *PushV2Request, runtime *dara.RuntimeOptions) (_result *PushV2Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &PushV2ShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.PushTask) {
+		request.PushTaskShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PushTask, dara.String("PushTask"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppKey) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !dara.IsNil(request.IdempotentToken) {
+		query["IdempotentToken"] = request.IdempotentToken
+	}
+
+	if !dara.IsNil(request.PushTaskShrink) {
+		query["PushTask"] = request.PushTaskShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PushV2"),
+		Version:     dara.String("2016-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PushV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新版高级推送接口
+//
+// @param request - PushV2Request
+//
+// @return PushV2Response
+func (client *Client) PushV2(request *PushV2Request) (_result *PushV2Response, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &PushV2Response{}
+	_body, _err := client.PushV2WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询别名
 //
 // @param request - QueryAliasesRequest
@@ -1755,9 +1940,11 @@ func (client *Client) PushNoticeToiOS(request *PushNoticeToiOSRequest) (_result 
 //
 // @return QueryAliasesResponse
 func (client *Client) QueryAliasesWithOptions(request *QueryAliasesRequest, runtime *dara.RuntimeOptions) (_result *QueryAliasesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -1819,9 +2006,11 @@ func (client *Client) QueryAliases(request *QueryAliasesRequest) (_result *Query
 //
 // @return QueryDeviceInfoResponse
 func (client *Client) QueryDeviceInfoWithOptions(request *QueryDeviceInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryDeviceInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -1883,9 +2072,11 @@ func (client *Client) QueryDeviceInfo(request *QueryDeviceInfoRequest) (_result 
 //
 // @return QueryDeviceStatResponse
 func (client *Client) QueryDeviceStatWithOptions(request *QueryDeviceStatRequest, runtime *dara.RuntimeOptions) (_result *QueryDeviceStatResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -1959,9 +2150,11 @@ func (client *Client) QueryDeviceStat(request *QueryDeviceStatRequest) (_result 
 //
 // @return QueryDevicesByAccountResponse
 func (client *Client) QueryDevicesByAccountWithOptions(request *QueryDevicesByAccountRequest, runtime *dara.RuntimeOptions) (_result *QueryDevicesByAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Account) {
@@ -2023,9 +2216,11 @@ func (client *Client) QueryDevicesByAccount(request *QueryDevicesByAccountReques
 //
 // @return QueryDevicesByAliasResponse
 func (client *Client) QueryDevicesByAliasWithOptions(request *QueryDevicesByAliasRequest, runtime *dara.RuntimeOptions) (_result *QueryDevicesByAliasResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Alias) {
@@ -2083,9 +2278,11 @@ func (client *Client) QueryDevicesByAlias(request *QueryDevicesByAliasRequest) (
 //
 // @return QueryPushRecordsResponse
 func (client *Client) QueryPushRecordsWithOptions(request *QueryPushRecordsRequest, runtime *dara.RuntimeOptions) (_result *QueryPushRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -2175,9 +2372,11 @@ func (client *Client) QueryPushRecords(request *QueryPushRecordsRequest) (_resul
 //
 // @return QueryPushStatByAppResponse
 func (client *Client) QueryPushStatByAppWithOptions(request *QueryPushStatByAppRequest, runtime *dara.RuntimeOptions) (_result *QueryPushStatByAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -2247,9 +2446,11 @@ func (client *Client) QueryPushStatByApp(request *QueryPushStatByAppRequest) (_r
 //
 // @return QueryPushStatByMsgResponse
 func (client *Client) QueryPushStatByMsgWithOptions(request *QueryPushStatByMsgRequest, runtime *dara.RuntimeOptions) (_result *QueryPushStatByMsgResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -2311,9 +2512,11 @@ func (client *Client) QueryPushStatByMsg(request *QueryPushStatByMsgRequest) (_r
 //
 // @return QueryTagsResponse
 func (client *Client) QueryTagsWithOptions(request *QueryTagsRequest, runtime *dara.RuntimeOptions) (_result *QueryTagsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -2379,9 +2582,11 @@ func (client *Client) QueryTags(request *QueryTagsRequest) (_result *QueryTagsRe
 //
 // @return QueryUniqueDeviceStatResponse
 func (client *Client) QueryUniqueDeviceStatWithOptions(request *QueryUniqueDeviceStatRequest, runtime *dara.RuntimeOptions) (_result *QueryUniqueDeviceStatResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -2451,9 +2656,11 @@ func (client *Client) QueryUniqueDeviceStat(request *QueryUniqueDeviceStatReques
 //
 // @return RemoveTagResponse
 func (client *Client) RemoveTagWithOptions(request *RemoveTagRequest, runtime *dara.RuntimeOptions) (_result *RemoveTagResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -2515,9 +2722,11 @@ func (client *Client) RemoveTag(request *RemoveTagRequest) (_result *RemoveTagRe
 //
 // @return UnbindAliasResponse
 func (client *Client) UnbindAliasWithOptions(request *UnbindAliasRequest, runtime *dara.RuntimeOptions) (_result *UnbindAliasResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliasName) {
@@ -2587,9 +2796,11 @@ func (client *Client) UnbindAlias(request *UnbindAliasRequest) (_result *UnbindA
 //
 // @return UnbindPhoneResponse
 func (client *Client) UnbindPhoneWithOptions(request *UnbindPhoneRequest, runtime *dara.RuntimeOptions) (_result *UnbindPhoneResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -2651,9 +2862,11 @@ func (client *Client) UnbindPhone(request *UnbindPhoneRequest) (_result *UnbindP
 //
 // @return UnbindTagResponse
 func (client *Client) UnbindTagWithOptions(request *UnbindTagRequest, runtime *dara.RuntimeOptions) (_result *UnbindTagResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {

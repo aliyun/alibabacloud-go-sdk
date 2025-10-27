@@ -50,7 +50,12 @@ func (s *ListTagsResponseBody) SetTagInfos(v *ListTagsResponseBodyTagInfos) *Lis
 }
 
 func (s *ListTagsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TagInfos != nil {
+		if err := s.TagInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTagsResponseBodyTagInfos struct {
@@ -75,7 +80,16 @@ func (s *ListTagsResponseBodyTagInfos) SetTagInfo(v []*ListTagsResponseBodyTagIn
 }
 
 func (s *ListTagsResponseBodyTagInfos) Validate() error {
-	return dara.Validate(s)
+	if s.TagInfo != nil {
+		for _, item := range s.TagInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTagsResponseBodyTagInfosTagInfo struct {

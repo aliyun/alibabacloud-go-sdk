@@ -50,7 +50,12 @@ func (s *QueryPushStatByMsgResponseBody) SetRequestId(v string) *QueryPushStatBy
 }
 
 func (s *QueryPushStatByMsgResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PushStats != nil {
+		if err := s.PushStats.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryPushStatByMsgResponseBodyPushStats struct {
@@ -75,7 +80,16 @@ func (s *QueryPushStatByMsgResponseBodyPushStats) SetPushStat(v []*QueryPushStat
 }
 
 func (s *QueryPushStatByMsgResponseBodyPushStats) Validate() error {
-	return dara.Validate(s)
+	if s.PushStat != nil {
+		for _, item := range s.PushStat {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryPushStatByMsgResponseBodyPushStatsPushStat struct {

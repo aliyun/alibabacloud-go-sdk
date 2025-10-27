@@ -50,7 +50,12 @@ func (s *QueryDevicesByAliasResponseBody) SetRequestId(v string) *QueryDevicesBy
 }
 
 func (s *QueryDevicesByAliasResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceIds != nil {
+		if err := s.DeviceIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryDevicesByAliasResponseBodyDeviceIds struct {

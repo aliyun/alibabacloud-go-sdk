@@ -50,7 +50,12 @@ func (s *QueryUniqueDeviceStatResponseBody) SetRequestId(v string) *QueryUniqueD
 }
 
 func (s *QueryUniqueDeviceStatResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AppDeviceStats != nil {
+		if err := s.AppDeviceStats.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryUniqueDeviceStatResponseBodyAppDeviceStats struct {
@@ -75,7 +80,16 @@ func (s *QueryUniqueDeviceStatResponseBodyAppDeviceStats) SetAppDeviceStat(v []*
 }
 
 func (s *QueryUniqueDeviceStatResponseBodyAppDeviceStats) Validate() error {
-	return dara.Validate(s)
+	if s.AppDeviceStat != nil {
+		for _, item := range s.AppDeviceStat {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryUniqueDeviceStatResponseBodyAppDeviceStatsAppDeviceStat struct {

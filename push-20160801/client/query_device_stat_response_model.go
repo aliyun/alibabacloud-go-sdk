@@ -59,5 +59,10 @@ func (s *QueryDeviceStatResponse) SetBody(v *QueryDeviceStatResponseBody) *Query
 }
 
 func (s *QueryDeviceStatResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

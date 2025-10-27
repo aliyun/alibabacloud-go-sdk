@@ -50,7 +50,12 @@ func (s *MassPushResponseBody) SetRequestId(v string) *MassPushResponseBody {
 }
 
 func (s *MassPushResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MessageIds != nil {
+		if err := s.MessageIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MassPushResponseBodyMessageIds struct {

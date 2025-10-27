@@ -83,7 +83,27 @@ func (s *PushTask) SetTarget(v *PushTaskTarget) *PushTask {
 }
 
 func (s *PushTask) Validate() error {
-	return dara.Validate(s)
+	if s.Message != nil {
+		if err := s.Message.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Options != nil {
+		if err := s.Options.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Target != nil {
+		if err := s.Target.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PushTaskMessage struct {
@@ -183,7 +203,22 @@ func (s *PushTaskNotification) SetTitle(v string) *PushTaskNotification {
 }
 
 func (s *PushTaskNotification) Validate() error {
-	return dara.Validate(s)
+	if s.Android != nil {
+		if err := s.Android.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Hmos != nil {
+		if err := s.Hmos.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Ios != nil {
+		if err := s.Ios.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PushTaskNotificationAndroid struct {
@@ -348,13 +383,19 @@ func (s *PushTaskNotificationAndroid) SetVendorChannelActivity(v string) *PushTa
 }
 
 func (s *PushTaskNotificationAndroid) Validate() error {
-	return dara.Validate(s)
+	if s.Options != nil {
+		if err := s.Options.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PushTaskNotificationAndroidOptions struct {
 	Accs   *PushTaskNotificationAndroidOptionsAccs   `json:"Accs,omitempty" xml:"Accs,omitempty" type:"Struct"`
 	Honor  *PushTaskNotificationAndroidOptionsHonor  `json:"Honor,omitempty" xml:"Honor,omitempty" type:"Struct"`
 	Huawei *PushTaskNotificationAndroidOptionsHuawei `json:"Huawei,omitempty" xml:"Huawei,omitempty" type:"Struct"`
+	Meizu  *PushTaskNotificationAndroidOptionsMeizu  `json:"Meizu,omitempty" xml:"Meizu,omitempty" type:"Struct"`
 	Oppo   *PushTaskNotificationAndroidOptionsOppo   `json:"Oppo,omitempty" xml:"Oppo,omitempty" type:"Struct"`
 	Vivo   *PushTaskNotificationAndroidOptionsVivo   `json:"Vivo,omitempty" xml:"Vivo,omitempty" type:"Struct"`
 	Xiaomi *PushTaskNotificationAndroidOptionsXiaomi `json:"Xiaomi,omitempty" xml:"Xiaomi,omitempty" type:"Struct"`
@@ -378,6 +419,10 @@ func (s *PushTaskNotificationAndroidOptions) GetHonor() *PushTaskNotificationAnd
 
 func (s *PushTaskNotificationAndroidOptions) GetHuawei() *PushTaskNotificationAndroidOptionsHuawei {
 	return s.Huawei
+}
+
+func (s *PushTaskNotificationAndroidOptions) GetMeizu() *PushTaskNotificationAndroidOptionsMeizu {
+	return s.Meizu
 }
 
 func (s *PushTaskNotificationAndroidOptions) GetOppo() *PushTaskNotificationAndroidOptionsOppo {
@@ -407,6 +452,11 @@ func (s *PushTaskNotificationAndroidOptions) SetHuawei(v *PushTaskNotificationAn
 	return s
 }
 
+func (s *PushTaskNotificationAndroidOptions) SetMeizu(v *PushTaskNotificationAndroidOptionsMeizu) *PushTaskNotificationAndroidOptions {
+	s.Meizu = v
+	return s
+}
+
 func (s *PushTaskNotificationAndroidOptions) SetOppo(v *PushTaskNotificationAndroidOptionsOppo) *PushTaskNotificationAndroidOptions {
 	s.Oppo = v
 	return s
@@ -423,7 +473,42 @@ func (s *PushTaskNotificationAndroidOptions) SetXiaomi(v *PushTaskNotificationAn
 }
 
 func (s *PushTaskNotificationAndroidOptions) Validate() error {
-	return dara.Validate(s)
+	if s.Accs != nil {
+		if err := s.Accs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Honor != nil {
+		if err := s.Honor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Huawei != nil {
+		if err := s.Huawei.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Meizu != nil {
+		if err := s.Meizu.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Oppo != nil {
+		if err := s.Oppo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Vivo != nil {
+		if err := s.Vivo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Xiaomi != nil {
+		if err := s.Xiaomi.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PushTaskNotificationAndroidOptionsAccs struct {
@@ -537,10 +622,11 @@ func (s *PushTaskNotificationAndroidOptionsHonor) Validate() error {
 }
 
 type PushTaskNotificationAndroidOptionsHuawei struct {
-	Category   *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Importance *int32  `json:"Importance,omitempty" xml:"Importance,omitempty"`
-	ReceiptId  *string `json:"ReceiptId,omitempty" xml:"ReceiptId,omitempty"`
-	Urgency    *string `json:"Urgency,omitempty" xml:"Urgency,omitempty"`
+	Category                *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Importance              *int32  `json:"Importance,omitempty" xml:"Importance,omitempty"`
+	LiveNotificationPayload *string `json:"LiveNotificationPayload,omitempty" xml:"LiveNotificationPayload,omitempty"`
+	ReceiptId               *string `json:"ReceiptId,omitempty" xml:"ReceiptId,omitempty"`
+	Urgency                 *string `json:"Urgency,omitempty" xml:"Urgency,omitempty"`
 }
 
 func (s PushTaskNotificationAndroidOptionsHuawei) String() string {
@@ -557,6 +643,10 @@ func (s *PushTaskNotificationAndroidOptionsHuawei) GetCategory() *string {
 
 func (s *PushTaskNotificationAndroidOptionsHuawei) GetImportance() *int32 {
 	return s.Importance
+}
+
+func (s *PushTaskNotificationAndroidOptionsHuawei) GetLiveNotificationPayload() *string {
+	return s.LiveNotificationPayload
 }
 
 func (s *PushTaskNotificationAndroidOptionsHuawei) GetReceiptId() *string {
@@ -577,6 +667,11 @@ func (s *PushTaskNotificationAndroidOptionsHuawei) SetImportance(v int32) *PushT
 	return s
 }
 
+func (s *PushTaskNotificationAndroidOptionsHuawei) SetLiveNotificationPayload(v string) *PushTaskNotificationAndroidOptionsHuawei {
+	s.LiveNotificationPayload = &v
+	return s
+}
+
 func (s *PushTaskNotificationAndroidOptionsHuawei) SetReceiptId(v string) *PushTaskNotificationAndroidOptionsHuawei {
 	s.ReceiptId = &v
 	return s
@@ -591,9 +686,37 @@ func (s *PushTaskNotificationAndroidOptionsHuawei) Validate() error {
 	return dara.Validate(s)
 }
 
+type PushTaskNotificationAndroidOptionsMeizu struct {
+	NoticeMsgType *int32 `json:"NoticeMsgType,omitempty" xml:"NoticeMsgType,omitempty"`
+}
+
+func (s PushTaskNotificationAndroidOptionsMeizu) String() string {
+	return dara.Prettify(s)
+}
+
+func (s PushTaskNotificationAndroidOptionsMeizu) GoString() string {
+	return s.String()
+}
+
+func (s *PushTaskNotificationAndroidOptionsMeizu) GetNoticeMsgType() *int32 {
+	return s.NoticeMsgType
+}
+
+func (s *PushTaskNotificationAndroidOptionsMeizu) SetNoticeMsgType(v int32) *PushTaskNotificationAndroidOptionsMeizu {
+	s.NoticeMsgType = &v
+	return s
+}
+
+func (s *PushTaskNotificationAndroidOptionsMeizu) Validate() error {
+	return dara.Validate(s)
+}
+
 type PushTaskNotificationAndroidOptionsOppo struct {
-	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	NotifyLevel *int64  `json:"NotifyLevel,omitempty" xml:"NotifyLevel,omitempty"`
+	Category                 *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	NotifyLevel              *int64  `json:"NotifyLevel,omitempty" xml:"NotifyLevel,omitempty"`
+	PrivateContentParameters *string `json:"PrivateContentParameters,omitempty" xml:"PrivateContentParameters,omitempty"`
+	PrivateMsgTemplateId     *string `json:"PrivateMsgTemplateId,omitempty" xml:"PrivateMsgTemplateId,omitempty"`
+	PrivateTitleParameters   *string `json:"PrivateTitleParameters,omitempty" xml:"PrivateTitleParameters,omitempty"`
 }
 
 func (s PushTaskNotificationAndroidOptionsOppo) String() string {
@@ -612,6 +735,18 @@ func (s *PushTaskNotificationAndroidOptionsOppo) GetNotifyLevel() *int64 {
 	return s.NotifyLevel
 }
 
+func (s *PushTaskNotificationAndroidOptionsOppo) GetPrivateContentParameters() *string {
+	return s.PrivateContentParameters
+}
+
+func (s *PushTaskNotificationAndroidOptionsOppo) GetPrivateMsgTemplateId() *string {
+	return s.PrivateMsgTemplateId
+}
+
+func (s *PushTaskNotificationAndroidOptionsOppo) GetPrivateTitleParameters() *string {
+	return s.PrivateTitleParameters
+}
+
 func (s *PushTaskNotificationAndroidOptionsOppo) SetCategory(v string) *PushTaskNotificationAndroidOptionsOppo {
 	s.Category = &v
 	return s
@@ -619,6 +754,21 @@ func (s *PushTaskNotificationAndroidOptionsOppo) SetCategory(v string) *PushTask
 
 func (s *PushTaskNotificationAndroidOptionsOppo) SetNotifyLevel(v int64) *PushTaskNotificationAndroidOptionsOppo {
 	s.NotifyLevel = &v
+	return s
+}
+
+func (s *PushTaskNotificationAndroidOptionsOppo) SetPrivateContentParameters(v string) *PushTaskNotificationAndroidOptionsOppo {
+	s.PrivateContentParameters = &v
+	return s
+}
+
+func (s *PushTaskNotificationAndroidOptionsOppo) SetPrivateMsgTemplateId(v string) *PushTaskNotificationAndroidOptionsOppo {
+	s.PrivateMsgTemplateId = &v
+	return s
+}
+
+func (s *PushTaskNotificationAndroidOptionsOppo) SetPrivateTitleParameters(v string) *PushTaskNotificationAndroidOptionsOppo {
+	s.PrivateTitleParameters = &v
 	return s
 }
 
@@ -706,6 +856,7 @@ type PushTaskNotificationHmos struct {
 	ExtensionPush      *bool     `json:"ExtensionPush,omitempty" xml:"ExtensionPush,omitempty"`
 	ImageUrl           *string   `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	InboxContent       []*string `json:"InboxContent,omitempty" xml:"InboxContent,omitempty" type:"Repeated"`
+	LiveViewPayload    *string   `json:"LiveViewPayload,omitempty" xml:"LiveViewPayload,omitempty"`
 	NotifyId           *int32    `json:"NotifyId,omitempty" xml:"NotifyId,omitempty"`
 	ReceiptId          *string   `json:"ReceiptId,omitempty" xml:"ReceiptId,omitempty"`
 	RenderStyle        *string   `json:"RenderStyle,omitempty" xml:"RenderStyle,omitempty"`
@@ -756,6 +907,10 @@ func (s *PushTaskNotificationHmos) GetImageUrl() *string {
 
 func (s *PushTaskNotificationHmos) GetInboxContent() []*string {
 	return s.InboxContent
+}
+
+func (s *PushTaskNotificationHmos) GetLiveViewPayload() *string {
+	return s.LiveViewPayload
 }
 
 func (s *PushTaskNotificationHmos) GetNotifyId() *int32 {
@@ -824,6 +979,11 @@ func (s *PushTaskNotificationHmos) SetImageUrl(v string) *PushTaskNotificationHm
 
 func (s *PushTaskNotificationHmos) SetInboxContent(v []*string) *PushTaskNotificationHmos {
 	s.InboxContent = v
+	return s
+}
+
+func (s *PushTaskNotificationHmos) SetLiveViewPayload(v string) *PushTaskNotificationHmos {
+	s.LiveViewPayload = &v
 	return s
 }
 
@@ -1013,7 +1173,12 @@ func (s *PushTaskNotificationIos) SetThreadId(v string) *PushTaskNotificationIos
 }
 
 func (s *PushTaskNotificationIos) Validate() error {
-	return dara.Validate(s)
+	if s.LiveActivity != nil {
+		if err := s.LiveActivity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PushTaskNotificationIosLiveActivity struct {
@@ -1183,7 +1348,12 @@ func (s *PushTaskOptions) SetUseChannels(v string) *PushTaskOptions {
 }
 
 func (s *PushTaskOptions) Validate() error {
-	return dara.Validate(s)
+	if s.Sms != nil {
+		if err := s.Sms.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PushTaskOptionsSms struct {

@@ -50,7 +50,12 @@ func (s *ListSummaryAppsResponseBody) SetSummaryAppInfos(v *ListSummaryAppsRespo
 }
 
 func (s *ListSummaryAppsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SummaryAppInfos != nil {
+		if err := s.SummaryAppInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSummaryAppsResponseBodySummaryAppInfos struct {
@@ -75,7 +80,16 @@ func (s *ListSummaryAppsResponseBodySummaryAppInfos) SetSummaryAppInfo(v []*List
 }
 
 func (s *ListSummaryAppsResponseBodySummaryAppInfos) Validate() error {
-	return dara.Validate(s)
+	if s.SummaryAppInfo != nil {
+		for _, item := range s.SummaryAppInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSummaryAppsResponseBodySummaryAppInfosSummaryAppInfo struct {
