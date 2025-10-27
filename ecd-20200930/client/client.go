@@ -3259,6 +3259,10 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 		query["EndUserGroupCoordinate"] = request.EndUserGroupCoordinate
 	}
 
+	if !dara.IsNil(request.ExternalDrive) {
+		query["ExternalDrive"] = request.ExternalDrive
+	}
+
 	if !dara.IsNil(request.FileMigrate) {
 		query["FileMigrate"] = request.FileMigrate
 	}
@@ -17932,6 +17936,10 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 
 	if !dara.IsNil(request.EndUserGroupCoordinate) {
 		query["EndUserGroupCoordinate"] = request.EndUserGroupCoordinate
+	}
+
+	if !dara.IsNil(request.ExternalDrive) {
+		query["ExternalDrive"] = request.ExternalDrive
 	}
 
 	if !dara.IsNil(request.FileMigrate) {

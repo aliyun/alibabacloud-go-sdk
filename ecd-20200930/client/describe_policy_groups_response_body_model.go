@@ -318,6 +318,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// on
 	EndUserGroupCoordinate *string `json:"EndUserGroupCoordinate,omitempty" xml:"EndUserGroupCoordinate,omitempty"`
+	ExternalDrive          *string `json:"ExternalDrive,omitempty" xml:"ExternalDrive,omitempty"`
 	FileMigrate            *string `json:"FileMigrate,omitempty" xml:"FileMigrate,omitempty"`
 	// Transfers files.
 	//
@@ -1150,6 +1151,10 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetEndUserGroupCo
 	return s.EndUserGroupCoordinate
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetExternalDrive() *string {
+	return s.ExternalDrive
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetFileMigrate() *string {
 	return s.FileMigrate
 }
@@ -1648,6 +1653,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetEndUserApplyAd
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetEndUserGroupCoordinate(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.EndUserGroupCoordinate = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetExternalDrive(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.ExternalDrive = &v
 	return s
 }
 

@@ -71,6 +71,8 @@ type iModifyCenterPolicyRequest interface {
 	GetEndUserApplyAdminCoordinate() *string
 	SetEndUserGroupCoordinate(v string) *ModifyCenterPolicyRequest
 	GetEndUserGroupCoordinate() *string
+	SetExternalDrive(v string) *ModifyCenterPolicyRequest
+	GetExternalDrive() *string
 	SetFileMigrate(v string) *ModifyCenterPolicyRequest
 	GetFileMigrate() *string
 	SetFileTransferAddress(v string) *ModifyCenterPolicyRequest
@@ -488,6 +490,7 @@ type ModifyCenterPolicyRequest struct {
 	//
 	// off
 	EndUserGroupCoordinate *string `json:"EndUserGroupCoordinate,omitempty" xml:"EndUserGroupCoordinate,omitempty"`
+	ExternalDrive          *string `json:"ExternalDrive,omitempty" xml:"ExternalDrive,omitempty"`
 	// Specifies whether to enable file transfer.
 	//
 	// Valid values:
@@ -1335,6 +1338,10 @@ func (s *ModifyCenterPolicyRequest) GetEndUserGroupCoordinate() *string {
 	return s.EndUserGroupCoordinate
 }
 
+func (s *ModifyCenterPolicyRequest) GetExternalDrive() *string {
+	return s.ExternalDrive
+}
+
 func (s *ModifyCenterPolicyRequest) GetFileMigrate() *string {
 	return s.FileMigrate
 }
@@ -1839,6 +1846,11 @@ func (s *ModifyCenterPolicyRequest) SetEndUserApplyAdminCoordinate(v string) *Mo
 
 func (s *ModifyCenterPolicyRequest) SetEndUserGroupCoordinate(v string) *ModifyCenterPolicyRequest {
 	s.EndUserGroupCoordinate = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetExternalDrive(v string) *ModifyCenterPolicyRequest {
+	s.ExternalDrive = &v
 	return s
 }
 

@@ -71,6 +71,8 @@ type iCreateCenterPolicyRequest interface {
 	GetEndUserApplyAdminCoordinate() *string
 	SetEndUserGroupCoordinate(v string) *CreateCenterPolicyRequest
 	GetEndUserGroupCoordinate() *string
+	SetExternalDrive(v string) *CreateCenterPolicyRequest
+	GetExternalDrive() *string
 	SetFileMigrate(v string) *CreateCenterPolicyRequest
 	GetFileMigrate() *string
 	SetFileTransferAddress(v string) *CreateCenterPolicyRequest
@@ -479,6 +481,7 @@ type CreateCenterPolicyRequest struct {
 	//
 	// off
 	EndUserGroupCoordinate *string `json:"EndUserGroupCoordinate,omitempty" xml:"EndUserGroupCoordinate,omitempty"`
+	ExternalDrive          *string `json:"ExternalDrive,omitempty" xml:"ExternalDrive,omitempty"`
 	// Specifies whether to enable file transfer.
 	//
 	// example:
@@ -1298,6 +1301,10 @@ func (s *CreateCenterPolicyRequest) GetEndUserGroupCoordinate() *string {
 	return s.EndUserGroupCoordinate
 }
 
+func (s *CreateCenterPolicyRequest) GetExternalDrive() *string {
+	return s.ExternalDrive
+}
+
 func (s *CreateCenterPolicyRequest) GetFileMigrate() *string {
 	return s.FileMigrate
 }
@@ -1790,6 +1797,11 @@ func (s *CreateCenterPolicyRequest) SetEndUserApplyAdminCoordinate(v string) *Cr
 
 func (s *CreateCenterPolicyRequest) SetEndUserGroupCoordinate(v string) *CreateCenterPolicyRequest {
 	s.EndUserGroupCoordinate = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetExternalDrive(v string) *CreateCenterPolicyRequest {
+	s.ExternalDrive = &v
 	return s
 }
 
