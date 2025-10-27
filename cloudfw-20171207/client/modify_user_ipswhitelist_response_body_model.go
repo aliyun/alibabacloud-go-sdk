@@ -14,6 +14,9 @@ type iModifyUserIPSWhitelistResponseBody interface {
 }
 
 type ModifyUserIPSWhitelistResponseBody struct {
+	// example:
+	//
+	// 36E89955-1E5D-5810-970C-74646F378085
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

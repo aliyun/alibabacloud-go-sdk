@@ -78,6 +78,7 @@ func (s *DescribeNetworkInstanceRelationListResponseBody) Validate() error {
 }
 
 type DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceList struct {
+	AssociatedCen []*DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen `json:"AssociatedCen,omitempty" xml:"AssociatedCen,omitempty" type:"Repeated"`
 	// example:
 	//
 	// cen
@@ -109,6 +110,10 @@ func (s DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceList) GoSt
 	return s.String()
 }
 
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceList) GetAssociatedCen() []*DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen {
+	return s.AssociatedCen
+}
+
 func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceList) GetConnectType() *string {
 	return s.ConnectType
 }
@@ -131,6 +136,11 @@ func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceList) Get
 
 func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceList) GetRegionNo() *string {
 	return s.RegionNo
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceList) SetAssociatedCen(v []*DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen) *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceList {
+	s.AssociatedCen = v
+	return s
 }
 
 func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceList) SetConnectType(v string) *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceList {
@@ -164,6 +174,15 @@ func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceList) Set
 }
 
 func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceList) Validate() error {
+	if s.AssociatedCen != nil {
+		for _, item := range s.AssociatedCen {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.PeerNetworkInstanceList != nil {
 		for _, item := range s.PeerNetworkInstanceList {
 			if item != nil {
@@ -176,7 +195,73 @@ func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceList) Val
 	return nil
 }
 
+type DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen struct {
+	AttachmentId      *string `json:"AttachmentId,omitempty" xml:"AttachmentId,omitempty"`
+	AttachmentName    *string `json:"AttachmentName,omitempty" xml:"AttachmentName,omitempty"`
+	CenId             *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CenName           *string `json:"CenName,omitempty" xml:"CenName,omitempty"`
+	TransitRouterType *string `json:"TransitRouterType,omitempty" xml:"TransitRouterType,omitempty"`
+}
+
+func (s DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen) GetAttachmentId() *string {
+	return s.AttachmentId
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen) GetAttachmentName() *string {
+	return s.AttachmentName
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen) GetCenId() *string {
+	return s.CenId
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen) GetCenName() *string {
+	return s.CenName
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen) GetTransitRouterType() *string {
+	return s.TransitRouterType
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen) SetAttachmentId(v string) *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen {
+	s.AttachmentId = &v
+	return s
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen) SetAttachmentName(v string) *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen {
+	s.AttachmentName = &v
+	return s
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen) SetCenId(v string) *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen {
+	s.CenId = &v
+	return s
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen) SetCenName(v string) *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen {
+	s.CenName = &v
+	return s
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen) SetTransitRouterType(v string) *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen {
+	s.TransitRouterType = &v
+	return s
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociatedCen) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceList struct {
+	AssociatedCen []*DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen `json:"AssociatedCen,omitempty" xml:"AssociatedCen,omitempty" type:"Repeated"`
 	// example:
 	//
 	// vpc-dsf232d****
@@ -203,6 +288,10 @@ func (s DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNe
 	return s.String()
 }
 
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceList) GetAssociatedCen() []*DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen {
+	return s.AssociatedCen
+}
+
 func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceList) GetNetworkInstanceId() *string {
 	return s.NetworkInstanceId
 }
@@ -217,6 +306,11 @@ func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerN
 
 func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceList) GetRegionNo() *string {
 	return s.RegionNo
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceList) SetAssociatedCen(v []*DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen) *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceList {
+	s.AssociatedCen = v
+	return s
 }
 
 func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceList) SetNetworkInstanceId(v string) *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceList {
@@ -240,5 +334,79 @@ func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerN
 }
 
 func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceList) Validate() error {
+	if s.AssociatedCen != nil {
+		for _, item := range s.AssociatedCen {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen struct {
+	AttachmentId      *string `json:"AttachmentId,omitempty" xml:"AttachmentId,omitempty"`
+	AttachmentName    *string `json:"AttachmentName,omitempty" xml:"AttachmentName,omitempty"`
+	CenId             *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CenName           *string `json:"CenName,omitempty" xml:"CenName,omitempty"`
+	TransitRouterType *string `json:"TransitRouterType,omitempty" xml:"TransitRouterType,omitempty"`
+}
+
+func (s DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen) GetAttachmentId() *string {
+	return s.AttachmentId
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen) GetAttachmentName() *string {
+	return s.AttachmentName
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen) GetCenId() *string {
+	return s.CenId
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen) GetCenName() *string {
+	return s.CenName
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen) GetTransitRouterType() *string {
+	return s.TransitRouterType
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen) SetAttachmentId(v string) *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen {
+	s.AttachmentId = &v
+	return s
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen) SetAttachmentName(v string) *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen {
+	s.AttachmentName = &v
+	return s
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen) SetCenId(v string) *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen {
+	s.CenId = &v
+	return s
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen) SetCenName(v string) *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen {
+	s.CenName = &v
+	return s
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen) SetTransitRouterType(v string) *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen {
+	s.TransitRouterType = &v
+	return s
+}
+
+func (s *DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceListAssociatedCen) Validate() error {
 	return dara.Validate(s)
 }

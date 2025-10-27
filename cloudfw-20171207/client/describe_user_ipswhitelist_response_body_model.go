@@ -19,8 +19,11 @@ type iDescribeUserIPSWhitelistResponseBody interface {
 
 type DescribeUserIPSWhitelistResponseBody struct {
 	Ipv6Whitelists []*DescribeUserIPSWhitelistResponseBodyIpv6Whitelists `json:"Ipv6Whitelists,omitempty" xml:"Ipv6Whitelists,omitempty" type:"Repeated"`
-	RequestId      *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Whitelists     []*DescribeUserIPSWhitelistResponseBodyWhitelists     `json:"Whitelists,omitempty" xml:"Whitelists,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 04F788A5-6A47-5EA9-AC30-CA4DB98AD520
+	RequestId  *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Whitelists []*DescribeUserIPSWhitelistResponseBodyWhitelists `json:"Whitelists,omitempty" xml:"Whitelists,omitempty" type:"Repeated"`
 }
 
 func (s DescribeUserIPSWhitelistResponseBody) String() string {
@@ -81,11 +84,23 @@ func (s *DescribeUserIPSWhitelistResponseBody) Validate() error {
 }
 
 type DescribeUserIPSWhitelistResponseBodyIpv6Whitelists struct {
-	Direction      *int64    `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	ListType       *int64    `json:"ListType,omitempty" xml:"ListType,omitempty"`
+	// example:
+	//
+	// 1
+	Direction *int64 `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// example:
+	//
+	// 0
+	ListType *int64 `json:"ListType,omitempty" xml:"ListType,omitempty"`
+	// example:
+	//
+	// 2408:400a:81a:7900:a77d:ea36:fcbf:de40/128
 	ListValue      *string   `json:"ListValue,omitempty" xml:"ListValue,omitempty"`
 	WhiteListValue []*string `json:"WhiteListValue,omitempty" xml:"WhiteListValue,omitempty" type:"Repeated"`
-	WhiteType      *int64    `json:"WhiteType,omitempty" xml:"WhiteType,omitempty"`
+	// example:
+	//
+	// 2
+	WhiteType *int64 `json:"WhiteType,omitempty" xml:"WhiteType,omitempty"`
 }
 
 func (s DescribeUserIPSWhitelistResponseBodyIpv6Whitelists) String() string {
@@ -146,11 +161,23 @@ func (s *DescribeUserIPSWhitelistResponseBodyIpv6Whitelists) Validate() error {
 }
 
 type DescribeUserIPSWhitelistResponseBodyWhitelists struct {
-	Direction      *int64    `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	ListType       *int64    `json:"ListType,omitempty" xml:"ListType,omitempty"`
+	// example:
+	//
+	// 1
+	Direction *int64 `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// example:
+	//
+	// 1
+	ListType *int64 `json:"ListType,omitempty" xml:"ListType,omitempty"`
+	// example:
+	//
+	// 10.10.200.4/32,10.10.200.25/32
 	ListValue      *string   `json:"ListValue,omitempty" xml:"ListValue,omitempty"`
 	WhiteListValue []*string `json:"WhiteListValue,omitempty" xml:"WhiteListValue,omitempty" type:"Repeated"`
-	WhiteType      *int64    `json:"WhiteType,omitempty" xml:"WhiteType,omitempty"`
+	// example:
+	//
+	// 1
+	WhiteType *int64 `json:"WhiteType,omitempty" xml:"WhiteType,omitempty"`
 }
 
 func (s DescribeUserIPSWhitelistResponseBodyWhitelists) String() string {

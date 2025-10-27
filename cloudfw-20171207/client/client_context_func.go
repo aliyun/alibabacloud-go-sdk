@@ -945,6 +945,102 @@ func (client *Client) CreateNatFirewallPreCheckWithContext(ctx context.Context, 
 
 // Summary:
 //
+// 创建私网DNS终端节点
+//
+// @param request - CreatePrivateDnsEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePrivateDnsEndpointResponse
+func (client *Client) CreatePrivateDnsEndpointWithContext(ctx context.Context, request *CreatePrivateDnsEndpointRequest, runtime *dara.RuntimeOptions) (_result *CreatePrivateDnsEndpointResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccessInstanceName) {
+		query["AccessInstanceName"] = request.AccessInstanceName
+	}
+
+	if !dara.IsNil(request.FirewallType) {
+		query["FirewallType"] = request.FirewallType
+	}
+
+	if !dara.IsNil(request.IpProtocol) {
+		query["IpProtocol"] = request.IpProtocol
+	}
+
+	if !dara.IsNil(request.MemberUid) {
+		query["MemberUid"] = request.MemberUid
+	}
+
+	if !dara.IsNil(request.Port) {
+		query["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.PrimaryDns) {
+		query["PrimaryDns"] = request.PrimaryDns
+	}
+
+	if !dara.IsNil(request.PrimaryVSwitchId) {
+		query["PrimaryVSwitchId"] = request.PrimaryVSwitchId
+	}
+
+	if !dara.IsNil(request.PrimaryVSwitchIp) {
+		query["PrimaryVSwitchIp"] = request.PrimaryVSwitchIp
+	}
+
+	if !dara.IsNil(request.PrivateDnsType) {
+		query["PrivateDnsType"] = request.PrivateDnsType
+	}
+
+	if !dara.IsNil(request.RegionNo) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	if !dara.IsNil(request.StandbyDns) {
+		query["StandbyDns"] = request.StandbyDns
+	}
+
+	if !dara.IsNil(request.StandbyVSwitchId) {
+		query["StandbyVSwitchId"] = request.StandbyVSwitchId
+	}
+
+	if !dara.IsNil(request.StandbyVSwitchIp) {
+		query["StandbyVSwitchIp"] = request.StandbyVSwitchIp
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePrivateDnsEndpoint"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePrivateDnsEndpointResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a NAT firewall.
 //
 // @param request - CreateSecurityProxyRequest
@@ -5124,6 +5220,10 @@ func (client *Client) DescribeInvadeEventListWithContext(ctx context.Context, re
 		query["Lang"] = request.Lang
 	}
 
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
 	if !dara.IsNil(request.MemberUid) {
 		query["MemberUid"] = request.MemberUid
 	}
@@ -5782,6 +5882,14 @@ func (client *Client) DescribeNetworkInstanceRelationListWithContext(ctx context
 
 	if !dara.IsNil(request.Lang) {
 		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.NetworkInstanceId) {
+		query["NetworkInstanceId"] = request.NetworkInstanceId
+	}
+
+	if !dara.IsNil(request.PeerNetworkInstanceId) {
+		query["PeerNetworkInstanceId"] = request.PeerNetworkInstanceId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -6913,6 +7021,46 @@ func (client *Client) DescribePostpayUserNatStatusWithContext(ctx context.Contex
 
 // Summary:
 //
+// Queries the status of the virtual private cloud (VPC) Firewall feature in Cloud Firewall that uses the pay-as-you-go billing method.
+//
+// @param request - DescribePostpayUserVpcStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePostpayUserVpcStatusResponse
+func (client *Client) DescribePostpayUserVpcStatusWithContext(ctx context.Context, request *DescribePostpayUserVpcStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribePostpayUserVpcStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePostpayUserVpcStatus"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePostpayUserVpcStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries prefix lists.
 //
 // @param request - DescribePrefixListsRequest
@@ -7583,6 +7731,90 @@ func (client *Client) DescribeSecurityModeWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSecurityModeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取正向代理
+//
+// @param request - DescribeSecurityProxyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSecurityProxyResponse
+func (client *Client) DescribeSecurityProxyWithContext(ctx context.Context, request *DescribeSecurityProxyRequest, runtime *dara.RuntimeOptions) (_result *DescribeSecurityProxyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MemberUid) {
+		query["MemberUid"] = request.MemberUid
+	}
+
+	if !dara.IsNil(request.NatGatewayId) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProxyId) {
+		query["ProxyId"] = request.ProxyId
+	}
+
+	if !dara.IsNil(request.ProxyName) {
+		query["ProxyName"] = request.ProxyName
+	}
+
+	if !dara.IsNil(request.RegionNo) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSecurityProxy"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSecurityProxyResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -9367,6 +9599,102 @@ func (client *Client) EnableSdlProtectedAssetWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableSdlProtectedAssetResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 下载TLS证书
+//
+// @param request - GetTlsInspectCertificateDownloadUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTlsInspectCertificateDownloadUrlResponse
+func (client *Client) GetTlsInspectCertificateDownloadUrlWithContext(ctx context.Context, request *GetTlsInspectCertificateDownloadUrlRequest, runtime *dara.RuntimeOptions) (_result *GetTlsInspectCertificateDownloadUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CaCertId) {
+		query["CaCertId"] = request.CaCertId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTlsInspectCertificateDownloadUrl"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTlsInspectCertificateDownloadUrlResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询TLS检查证书
+//
+// @param request - ListTlsInspectCACertificatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTlsInspectCACertificatesResponse
+func (client *Client) ListTlsInspectCACertificatesWithContext(ctx context.Context, request *ListTlsInspectCACertificatesRequest, runtime *dara.RuntimeOptions) (_result *ListTlsInspectCACertificatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CaCertId) {
+		query["CaCertId"] = request.CaCertId
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTlsInspectCACertificates"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTlsInspectCACertificatesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -12273,6 +12601,110 @@ func (client *Client) UpdatePostpayUserInternetStatusWithContext(ctx context.Con
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePostpayUserInternetStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the status of the NAT Firewall feature for Cloud Firewall that uses the pay-as-you-go billing method.
+//
+// @param request - UpdatePostpayUserNatStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePostpayUserNatStatusResponse
+func (client *Client) UpdatePostpayUserNatStatusWithContext(ctx context.Context, request *UpdatePostpayUserNatStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdatePostpayUserNatStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Operate) {
+		query["Operate"] = request.Operate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdatePostpayUserNatStatus"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdatePostpayUserNatStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the status of the virtual private cloud (VPC) Firewall feature for Cloud Firewall that uses the pay-as-you-go billing method.
+//
+// @param request - UpdatePostpayUserVpcStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePostpayUserVpcStatusResponse
+func (client *Client) UpdatePostpayUserVpcStatusWithContext(ctx context.Context, request *UpdatePostpayUserVpcStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdatePostpayUserVpcStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Operate) {
+		query["Operate"] = request.Operate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdatePostpayUserVpcStatus"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdatePostpayUserVpcStatusResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

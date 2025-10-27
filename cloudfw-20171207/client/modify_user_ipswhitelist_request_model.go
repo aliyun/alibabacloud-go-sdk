@@ -26,13 +26,34 @@ type iModifyUserIPSWhitelistRequest interface {
 }
 
 type ModifyUserIPSWhitelistRequest struct {
-	Direction *int64  `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// example:
+	//
+	// 1
+	Direction *int64 `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// example:
+	//
+	// ipv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	ListType  *int64  `json:"ListType,omitempty" xml:"ListType,omitempty"`
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 2
+	ListType *int64 `json:"ListType,omitempty" xml:"ListType,omitempty"`
+	// example:
+	//
+	// 115.236.36.114/32
 	ListValue *string `json:"ListValue,omitempty" xml:"ListValue,omitempty"`
-	SourceIp  *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	WhiteType *int64  `json:"WhiteType,omitempty" xml:"WhiteType,omitempty"`
+	// example:
+	//
+	// 47.100.XX.XX
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 2
+	WhiteType *int64 `json:"WhiteType,omitempty" xml:"WhiteType,omitempty"`
 }
 
 func (s ModifyUserIPSWhitelistRequest) String() string {

@@ -16,7 +16,13 @@ type iDescribeUserIPSWhitelistRequest interface {
 }
 
 type DescribeUserIPSWhitelistRequest struct {
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 47.100.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 

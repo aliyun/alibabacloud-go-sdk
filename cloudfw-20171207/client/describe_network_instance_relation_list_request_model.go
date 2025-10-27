@@ -15,6 +15,10 @@ type iDescribeNetworkInstanceRelationListRequest interface {
 	GetFirewallConfigureStatus() *string
 	SetLang(v string) *DescribeNetworkInstanceRelationListRequest
 	GetLang() *string
+	SetNetworkInstanceId(v string) *DescribeNetworkInstanceRelationListRequest
+	GetNetworkInstanceId() *string
+	SetPeerNetworkInstanceId(v string) *DescribeNetworkInstanceRelationListRequest
+	GetPeerNetworkInstanceId() *string
 }
 
 type DescribeNetworkInstanceRelationListRequest struct {
@@ -29,7 +33,9 @@ type DescribeNetworkInstanceRelationListRequest struct {
 	// example:
 	//
 	// zh
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang                  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	NetworkInstanceId     *string `json:"NetworkInstanceId,omitempty" xml:"NetworkInstanceId,omitempty"`
+	PeerNetworkInstanceId *string `json:"PeerNetworkInstanceId,omitempty" xml:"PeerNetworkInstanceId,omitempty"`
 }
 
 func (s DescribeNetworkInstanceRelationListRequest) String() string {
@@ -52,6 +58,14 @@ func (s *DescribeNetworkInstanceRelationListRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *DescribeNetworkInstanceRelationListRequest) GetNetworkInstanceId() *string {
+	return s.NetworkInstanceId
+}
+
+func (s *DescribeNetworkInstanceRelationListRequest) GetPeerNetworkInstanceId() *string {
+	return s.PeerNetworkInstanceId
+}
+
 func (s *DescribeNetworkInstanceRelationListRequest) SetConnectType(v string) *DescribeNetworkInstanceRelationListRequest {
 	s.ConnectType = &v
 	return s
@@ -64,6 +78,16 @@ func (s *DescribeNetworkInstanceRelationListRequest) SetFirewallConfigureStatus(
 
 func (s *DescribeNetworkInstanceRelationListRequest) SetLang(v string) *DescribeNetworkInstanceRelationListRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DescribeNetworkInstanceRelationListRequest) SetNetworkInstanceId(v string) *DescribeNetworkInstanceRelationListRequest {
+	s.NetworkInstanceId = &v
+	return s
+}
+
+func (s *DescribeNetworkInstanceRelationListRequest) SetPeerNetworkInstanceId(v string) *DescribeNetworkInstanceRelationListRequest {
+	s.PeerNetworkInstanceId = &v
 	return s
 }
 
