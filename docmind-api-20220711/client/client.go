@@ -228,19 +228,29 @@ func (client *Client) AyncTradeDocumentPackageExtractSmartApp(request *AyncTrade
 //
 // 文档结构化流式接口
 //
-// @param request - GetDocParserResultRequest
+// @param tmpReq - GetDocParserResultRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDocParserResultResponse
-func (client *Client) GetDocParserResultWithOptions(request *GetDocParserResultRequest, runtime *dara.RuntimeOptions) (_result *GetDocParserResultResponse, _err error) {
+func (client *Client) GetDocParserResultWithOptions(tmpReq *GetDocParserResultRequest, runtime *dara.RuntimeOptions) (_result *GetDocParserResultResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &GetDocParserResultShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ExcludeFields) {
+		request.ExcludeFieldsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExcludeFields, dara.String("ExcludeFields"), dara.String("simple"))
+	}
+
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExcludeFieldsShrink) {
+		query["ExcludeFields"] = request.ExcludeFieldsShrink
+	}
+
 	if !dara.IsNil(request.Id) {
 		query["Id"] = request.Id
 	}

@@ -9,6 +9,8 @@ type iGetDocParserResultRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetExcludeFields(v []*string) *GetDocParserResultRequest
+	GetExcludeFields() []*string
 	SetId(v string) *GetDocParserResultRequest
 	GetId() *string
 	SetLayoutNum(v int32) *GetDocParserResultRequest
@@ -18,6 +20,7 @@ type iGetDocParserResultRequest interface {
 }
 
 type GetDocParserResultRequest struct {
+	ExcludeFields []*string `json:"ExcludeFields,omitempty" xml:"ExcludeFields,omitempty" type:"Repeated"`
 	// example:
 	//
 	// docmind-20220816-1e89d65c
@@ -34,6 +37,10 @@ func (s GetDocParserResultRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetDocParserResultRequest) GetExcludeFields() []*string {
+	return s.ExcludeFields
+}
+
 func (s *GetDocParserResultRequest) GetId() *string {
 	return s.Id
 }
@@ -44,6 +51,11 @@ func (s *GetDocParserResultRequest) GetLayoutNum() *int32 {
 
 func (s *GetDocParserResultRequest) GetLayoutStepSize() *int32 {
 	return s.LayoutStepSize
+}
+
+func (s *GetDocParserResultRequest) SetExcludeFields(v []*string) *GetDocParserResultRequest {
+	s.ExcludeFields = v
+	return s
 }
 
 func (s *GetDocParserResultRequest) SetId(v string) *GetDocParserResultRequest {
