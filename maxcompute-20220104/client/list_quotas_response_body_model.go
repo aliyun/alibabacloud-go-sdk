@@ -1172,13 +1172,16 @@ func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListBillingPolicy) V
 
 type ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter struct {
 	AdhocSlot         *int64 `json:"adhocSlot,omitempty" xml:"adhocSlot,omitempty"`
+	AutoScaleCPULimit *int64 `json:"autoScaleCPULimit,omitempty" xml:"autoScaleCPULimit,omitempty"`
 	ElasticReservedCU *int64 `json:"elasticReservedCU,omitempty" xml:"elasticReservedCU,omitempty"`
 	EnablePriority    *bool  `json:"enablePriority,omitempty" xml:"enablePriority,omitempty"`
 	ForceReservedMin  *bool  `json:"forceReservedMin,omitempty" xml:"forceReservedMin,omitempty"`
 	// This parameter is required.
 	MaxCU *int64 `json:"maxCU,omitempty" xml:"maxCU,omitempty"`
+	MaxGu *int64 `json:"maxGu,omitempty" xml:"maxGu,omitempty"`
 	// This parameter is required.
 	MinCU            *int64  `json:"minCU,omitempty" xml:"minCU,omitempty"`
+	MinGu            *int64  `json:"minGu,omitempty" xml:"minGu,omitempty"`
 	SchedulerType    *string `json:"schedulerType,omitempty" xml:"schedulerType,omitempty"`
 	SingleJobCULimit *int64  `json:"singleJobCULimit,omitempty" xml:"singleJobCULimit,omitempty"`
 	SlotNum          *int64  `json:"slotNum,omitempty" xml:"slotNum,omitempty"`
@@ -1194,6 +1197,10 @@ func (s ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) GoStri
 
 func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) GetAdhocSlot() *int64 {
 	return s.AdhocSlot
+}
+
+func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) GetAutoScaleCPULimit() *int64 {
+	return s.AutoScaleCPULimit
 }
 
 func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) GetElasticReservedCU() *int64 {
@@ -1212,8 +1219,16 @@ func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) GetMa
 	return s.MaxCU
 }
 
+func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) GetMaxGu() *int64 {
+	return s.MaxGu
+}
+
 func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) GetMinCU() *int64 {
 	return s.MinCU
+}
+
+func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) GetMinGu() *int64 {
+	return s.MinGu
 }
 
 func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) GetSchedulerType() *string {
@@ -1230,6 +1245,11 @@ func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) GetSl
 
 func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) SetAdhocSlot(v int64) *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter {
 	s.AdhocSlot = &v
+	return s
+}
+
+func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) SetAutoScaleCPULimit(v int64) *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter {
+	s.AutoScaleCPULimit = &v
 	return s
 }
 
@@ -1253,8 +1273,18 @@ func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) SetMa
 	return s
 }
 
+func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) SetMaxGu(v int64) *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter {
+	s.MaxGu = &v
+	return s
+}
+
 func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) SetMinCU(v int64) *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter {
 	s.MinCU = &v
+	return s
+}
+
+func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) SetMinGu(v int64) *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter {
+	s.MinGu = &v
 	return s
 }
 
@@ -2411,6 +2441,7 @@ func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListBillingPolicy) Valid
 
 type ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter struct {
 	AdhocSlot         *int64 `json:"adhocSlot,omitempty" xml:"adhocSlot,omitempty"`
+	AutoScaleCPULimit *int64 `json:"autoScaleCPULimit,omitempty" xml:"autoScaleCPULimit,omitempty"`
 	ElasticReservedCU *int64 `json:"elasticReservedCU,omitempty" xml:"elasticReservedCU,omitempty"`
 	EnablePriority    *bool  `json:"enablePriority,omitempty" xml:"enablePriority,omitempty"`
 	ForceReservedMin  *bool  `json:"forceReservedMin,omitempty" xml:"forceReservedMin,omitempty"`
@@ -2435,6 +2466,10 @@ func (s ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) GoString()
 
 func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) GetAdhocSlot() *int64 {
 	return s.AdhocSlot
+}
+
+func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) GetAutoScaleCPULimit() *int64 {
+	return s.AutoScaleCPULimit
 }
 
 func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) GetElasticReservedCU() *int64 {
@@ -2479,6 +2514,11 @@ func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) GetSlotNu
 
 func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) SetAdhocSlot(v int64) *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter {
 	s.AdhocSlot = &v
+	return s
+}
+
+func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) SetAutoScaleCPULimit(v int64) *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter {
+	s.AutoScaleCPULimit = &v
 	return s
 }
 
