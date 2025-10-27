@@ -104,6 +104,80 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 资源转组
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeResourceGroupResponse
+func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceRegionId) {
+		query["ResourceRegionId"] = request.ResourceRegionId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ChangeResourceGroup"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 资源转组
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @return ChangeResourceGroupResponse
+func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a database account for an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param tmpReq - CreateAccountRequest
@@ -511,6 +585,10 @@ func (client *Client) CreateEndpointWithOptions(request *CreateEndpointRequest, 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ComputingGroupId) {
+		query["ComputingGroupId"] = request.ComputingGroupId
+	}
+
 	if !dara.IsNil(request.ConnectionPrefix) {
 		query["ConnectionPrefix"] = request.ConnectionPrefix
 	}
@@ -861,6 +939,10 @@ func (client *Client) DeleteEndpointWithOptions(request *DeleteEndpointRequest, 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ComputingGroupId) {
+		query["ComputingGroupId"] = request.ComputingGroupId
+	}
+
 	if !dara.IsNil(request.ConnectionString) {
 		query["ConnectionString"] = request.ConnectionString
 	}
@@ -1643,6 +1725,10 @@ func (client *Client) DescribeProcessListWithOptions(request *DescribeProcessLis
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ComputingGroupId) {
+		query["ComputingGroupId"] = request.ComputingGroupId
+	}
+
 	if !dara.IsNil(request.DBInstanceId) {
 		query["DBInstanceId"] = request.DBInstanceId
 	}
@@ -1803,6 +1889,10 @@ func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLog
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ComputingGroupId) {
+		query["ComputingGroupId"] = request.ComputingGroupId
+	}
+
 	if !dara.IsNil(request.DBInstanceId) {
 		query["DBInstanceId"] = request.DBInstanceId
 	}
@@ -1889,6 +1979,10 @@ func (client *Client) DescribeSlowLogTrendWithOptions(request *DescribeSlowLogTr
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ComputingGroupId) {
+		query["ComputingGroupId"] = request.ComputingGroupId
+	}
+
 	if !dara.IsNil(request.DBInstanceId) {
 		query["DBInstanceId"] = request.DBInstanceId
 	}
@@ -1971,6 +2065,10 @@ func (client *Client) KillProcessWithOptions(request *KillProcessRequest, runtim
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ComputingGroupId) {
+		query["ComputingGroupId"] = request.ComputingGroupId
+	}
+
 	if !dara.IsNil(request.DBInstanceId) {
 		query["DBInstanceId"] = request.DBInstanceId
 	}
@@ -2351,6 +2449,10 @@ func (client *Client) ModifyDBInstanceClassWithOptions(request *ModifyDBInstance
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ComputingGroupId) {
+		query["ComputingGroupId"] = request.ComputingGroupId
+	}
+
 	if !dara.IsNil(request.DBInstanceId) {
 		query["DBInstanceId"] = request.DBInstanceId
 	}
@@ -2515,6 +2617,10 @@ func (client *Client) ModifyDBInstanceConnectionStringWithOptions(request *Modif
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ComputingGroupId) {
+		query["ComputingGroupId"] = request.ComputingGroupId
+	}
+
 	if !dara.IsNil(request.ConnectionString) {
 		query["ConnectionString"] = request.ConnectionString
 	}

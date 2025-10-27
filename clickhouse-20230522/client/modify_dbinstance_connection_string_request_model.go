@@ -9,6 +9,8 @@ type iModifyDBInstanceConnectionStringRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetComputingGroupId(v string) *ModifyDBInstanceConnectionStringRequest
+	GetComputingGroupId() *string
 	SetConnectionString(v string) *ModifyDBInstanceConnectionStringRequest
 	GetConnectionString() *string
 	SetConnectionStringPrefix(v string) *ModifyDBInstanceConnectionStringRequest
@@ -24,6 +26,7 @@ type iModifyDBInstanceConnectionStringRequest interface {
 }
 
 type ModifyDBInstanceConnectionStringRequest struct {
+	ComputingGroupId *string `json:"ComputingGroupId,omitempty" xml:"ComputingGroupId,omitempty"`
 	// The endpoint of the cluster.
 	//
 	// example:
@@ -73,6 +76,10 @@ func (s ModifyDBInstanceConnectionStringRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyDBInstanceConnectionStringRequest) GetComputingGroupId() *string {
+	return s.ComputingGroupId
+}
+
 func (s *ModifyDBInstanceConnectionStringRequest) GetConnectionString() *string {
 	return s.ConnectionString
 }
@@ -95,6 +102,11 @@ func (s *ModifyDBInstanceConnectionStringRequest) GetDisablePorts() *string {
 
 func (s *ModifyDBInstanceConnectionStringRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *ModifyDBInstanceConnectionStringRequest) SetComputingGroupId(v string) *ModifyDBInstanceConnectionStringRequest {
+	s.ComputingGroupId = &v
+	return s
 }
 
 func (s *ModifyDBInstanceConnectionStringRequest) SetConnectionString(v string) *ModifyDBInstanceConnectionStringRequest {

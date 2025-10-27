@@ -9,6 +9,8 @@ type iCreateEndpointRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetComputingGroupId(v string) *CreateEndpointRequest
+	GetComputingGroupId() *string
 	SetConnectionPrefix(v string) *CreateEndpointRequest
 	GetConnectionPrefix() *string
 	SetDBInstanceId(v string) *CreateEndpointRequest
@@ -20,6 +22,7 @@ type iCreateEndpointRequest interface {
 }
 
 type CreateEndpointRequest struct {
+	ComputingGroupId *string `json:"ComputingGroupId,omitempty" xml:"ComputingGroupId,omitempty"`
 	// The prefix of the new endpoint. The prefix of the ConnectionString parameter.
 	//
 	// example:
@@ -62,6 +65,10 @@ func (s CreateEndpointRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateEndpointRequest) GetComputingGroupId() *string {
+	return s.ComputingGroupId
+}
+
 func (s *CreateEndpointRequest) GetConnectionPrefix() *string {
 	return s.ConnectionPrefix
 }
@@ -76,6 +83,11 @@ func (s *CreateEndpointRequest) GetDBInstanceNetType() *string {
 
 func (s *CreateEndpointRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *CreateEndpointRequest) SetComputingGroupId(v string) *CreateEndpointRequest {
+	s.ComputingGroupId = &v
+	return s
 }
 
 func (s *CreateEndpointRequest) SetConnectionPrefix(v string) *CreateEndpointRequest {

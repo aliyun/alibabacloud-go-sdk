@@ -62,6 +62,7 @@ func (s *ModifyDBInstanceClassResponseBody) Validate() error {
 }
 
 type ModifyDBInstanceClassResponseBodyData struct {
+	ComputingGroupId *string `json:"ComputingGroupId,omitempty" xml:"ComputingGroupId,omitempty"`
 	// The cluster ID.
 	//
 	// example:
@@ -102,6 +103,10 @@ func (s ModifyDBInstanceClassResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyDBInstanceClassResponseBodyData) GetComputingGroupId() *string {
+	return s.ComputingGroupId
+}
+
 func (s *ModifyDBInstanceClassResponseBodyData) GetDBInstanceID() *int64 {
 	return s.DBInstanceID
 }
@@ -120,6 +125,11 @@ func (s *ModifyDBInstanceClassResponseBodyData) GetScaleMin() *int64 {
 
 func (s *ModifyDBInstanceClassResponseBodyData) GetTaskId() *int64 {
 	return s.TaskId
+}
+
+func (s *ModifyDBInstanceClassResponseBodyData) SetComputingGroupId(v string) *ModifyDBInstanceClassResponseBodyData {
+	s.ComputingGroupId = &v
+	return s
 }
 
 func (s *ModifyDBInstanceClassResponseBodyData) SetDBInstanceID(v int64) *ModifyDBInstanceClassResponseBodyData {

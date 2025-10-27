@@ -9,6 +9,8 @@ type iDeleteEndpointRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetComputingGroupId(v string) *DeleteEndpointRequest
+	GetComputingGroupId() *string
 	SetConnectionString(v string) *DeleteEndpointRequest
 	GetConnectionString() *string
 	SetDBInstanceId(v string) *DeleteEndpointRequest
@@ -20,6 +22,7 @@ type iDeleteEndpointRequest interface {
 }
 
 type DeleteEndpointRequest struct {
+	ComputingGroupId *string `json:"ComputingGroupId,omitempty" xml:"ComputingGroupId,omitempty"`
 	// The prefix of the endpoint, which indicates the prefix of the value of the ConnectionString parameter.
 	//
 	// example:
@@ -51,6 +54,10 @@ func (s DeleteEndpointRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteEndpointRequest) GetComputingGroupId() *string {
+	return s.ComputingGroupId
+}
+
 func (s *DeleteEndpointRequest) GetConnectionString() *string {
 	return s.ConnectionString
 }
@@ -65,6 +72,11 @@ func (s *DeleteEndpointRequest) GetDBInstanceNetType() *string {
 
 func (s *DeleteEndpointRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *DeleteEndpointRequest) SetComputingGroupId(v string) *DeleteEndpointRequest {
+	s.ComputingGroupId = &v
+	return s
 }
 
 func (s *DeleteEndpointRequest) SetConnectionString(v string) *DeleteEndpointRequest {

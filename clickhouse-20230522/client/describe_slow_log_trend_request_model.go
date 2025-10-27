@@ -9,6 +9,8 @@ type iDescribeSlowLogTrendRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetComputingGroupId(v string) *DescribeSlowLogTrendRequest
+	GetComputingGroupId() *string
 	SetDBInstanceId(v string) *DescribeSlowLogTrendRequest
 	GetDBInstanceId() *string
 	SetEndTime(v string) *DescribeSlowLogTrendRequest
@@ -24,6 +26,7 @@ type iDescribeSlowLogTrendRequest interface {
 }
 
 type DescribeSlowLogTrendRequest struct {
+	ComputingGroupId *string `json:"ComputingGroupId,omitempty" xml:"ComputingGroupId,omitempty"`
 	// The cluster ID.
 	//
 	// This parameter is required.
@@ -72,6 +75,10 @@ func (s DescribeSlowLogTrendRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeSlowLogTrendRequest) GetComputingGroupId() *string {
+	return s.ComputingGroupId
+}
+
 func (s *DescribeSlowLogTrendRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
 }
@@ -94,6 +101,11 @@ func (s *DescribeSlowLogTrendRequest) GetRegionId() *string {
 
 func (s *DescribeSlowLogTrendRequest) GetStartTime() *string {
 	return s.StartTime
+}
+
+func (s *DescribeSlowLogTrendRequest) SetComputingGroupId(v string) *DescribeSlowLogTrendRequest {
+	s.ComputingGroupId = &v
+	return s
 }
 
 func (s *DescribeSlowLogTrendRequest) SetDBInstanceId(v string) *DescribeSlowLogTrendRequest {

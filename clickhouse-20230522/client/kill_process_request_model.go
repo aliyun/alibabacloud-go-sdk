@@ -9,6 +9,8 @@ type iKillProcessRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetComputingGroupId(v string) *KillProcessRequest
+	GetComputingGroupId() *string
 	SetDBInstanceId(v string) *KillProcessRequest
 	GetDBInstanceId() *string
 	SetInitialQueryId(v string) *KillProcessRequest
@@ -18,6 +20,7 @@ type iKillProcessRequest interface {
 }
 
 type KillProcessRequest struct {
+	ComputingGroupId *string `json:"ComputingGroupId,omitempty" xml:"ComputingGroupId,omitempty"`
 	// The cluster ID.
 	//
 	// This parameter is required.
@@ -48,6 +51,10 @@ func (s KillProcessRequest) GoString() string {
 	return s.String()
 }
 
+func (s *KillProcessRequest) GetComputingGroupId() *string {
+	return s.ComputingGroupId
+}
+
 func (s *KillProcessRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
 }
@@ -58,6 +65,11 @@ func (s *KillProcessRequest) GetInitialQueryId() *string {
 
 func (s *KillProcessRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *KillProcessRequest) SetComputingGroupId(v string) *KillProcessRequest {
+	s.ComputingGroupId = &v
+	return s
 }
 
 func (s *KillProcessRequest) SetDBInstanceId(v string) *KillProcessRequest {

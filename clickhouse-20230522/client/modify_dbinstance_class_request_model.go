@@ -9,6 +9,8 @@ type iModifyDBInstanceClassRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetComputingGroupId(v string) *ModifyDBInstanceClassRequest
+	GetComputingGroupId() *string
 	SetDBInstanceId(v string) *ModifyDBInstanceClassRequest
 	GetDBInstanceId() *string
 	SetNodeCount(v int32) *ModifyDBInstanceClassRequest
@@ -30,6 +32,7 @@ type iModifyDBInstanceClassRequest interface {
 }
 
 type ModifyDBInstanceClassRequest struct {
+	ComputingGroupId *string `json:"ComputingGroupId,omitempty" xml:"ComputingGroupId,omitempty"`
 	// The cluster ID.
 	//
 	// This parameter is required.
@@ -86,6 +89,10 @@ func (s ModifyDBInstanceClassRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyDBInstanceClassRequest) GetComputingGroupId() *string {
+	return s.ComputingGroupId
+}
+
 func (s *ModifyDBInstanceClassRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
 }
@@ -120,6 +127,11 @@ func (s *ModifyDBInstanceClassRequest) GetStorageQuota() *int64 {
 
 func (s *ModifyDBInstanceClassRequest) GetStorageType() *string {
 	return s.StorageType
+}
+
+func (s *ModifyDBInstanceClassRequest) SetComputingGroupId(v string) *ModifyDBInstanceClassRequest {
+	s.ComputingGroupId = &v
+	return s
 }
 
 func (s *ModifyDBInstanceClassRequest) SetDBInstanceId(v string) *ModifyDBInstanceClassRequest {

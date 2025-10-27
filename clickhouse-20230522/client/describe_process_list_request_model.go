@@ -9,6 +9,8 @@ type iDescribeProcessListRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetComputingGroupId(v string) *DescribeProcessListRequest
+	GetComputingGroupId() *string
 	SetDBInstanceId(v string) *DescribeProcessListRequest
 	GetDBInstanceId() *string
 	SetInitialQueryId(v string) *DescribeProcessListRequest
@@ -30,6 +32,7 @@ type iDescribeProcessListRequest interface {
 }
 
 type DescribeProcessListRequest struct {
+	ComputingGroupId *string `json:"ComputingGroupId,omitempty" xml:"ComputingGroupId,omitempty"`
 	// The cluster ID.
 	//
 	// This parameter is required.
@@ -102,6 +105,10 @@ func (s DescribeProcessListRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeProcessListRequest) GetComputingGroupId() *string {
+	return s.ComputingGroupId
+}
+
 func (s *DescribeProcessListRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
 }
@@ -136,6 +143,11 @@ func (s *DescribeProcessListRequest) GetQueryOrder() *int64 {
 
 func (s *DescribeProcessListRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *DescribeProcessListRequest) SetComputingGroupId(v string) *DescribeProcessListRequest {
+	s.ComputingGroupId = &v
+	return s
 }
 
 func (s *DescribeProcessListRequest) SetDBInstanceId(v string) *DescribeProcessListRequest {
