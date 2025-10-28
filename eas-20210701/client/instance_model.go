@@ -27,6 +27,8 @@ type iInstance interface {
 	GetInstancePort() *int32
 	SetInstanceType(v string) *Instance
 	GetInstanceType() *string
+	SetIsLatest(v bool) *Instance
+	GetIsLatest() *bool
 	SetIsSpot(v bool) *Instance
 	GetIsSpot() *bool
 	SetIsolated(v bool) *Instance
@@ -85,6 +87,7 @@ type Instance struct {
 	//
 	// ecs.c7.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	IsLatest     *bool   `json:"IsLatest,omitempty" xml:"IsLatest,omitempty"`
 	// example:
 	//
 	// false
@@ -171,6 +174,10 @@ func (s *Instance) GetInstancePort() *int32 {
 
 func (s *Instance) GetInstanceType() *string {
 	return s.InstanceType
+}
+
+func (s *Instance) GetIsLatest() *bool {
+	return s.IsLatest
 }
 
 func (s *Instance) GetIsSpot() *bool {
@@ -283,6 +290,11 @@ func (s *Instance) SetInstancePort(v int32) *Instance {
 
 func (s *Instance) SetInstanceType(v string) *Instance {
 	s.InstanceType = &v
+	return s
+}
+
+func (s *Instance) SetIsLatest(v bool) *Instance {
+	s.IsLatest = &v
 	return s
 }
 
