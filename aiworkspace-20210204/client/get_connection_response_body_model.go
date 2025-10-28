@@ -259,7 +259,21 @@ func (s *GetConnectionResponseBody) SetWorkspaceId(v string) *GetConnectionRespo
 }
 
 func (s *GetConnectionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Models != nil {
+		for _, item := range s.Models {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResourceMeta != nil {
+		if err := s.ResourceMeta.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetConnectionResponseBodyModels struct {

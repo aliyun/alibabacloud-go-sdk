@@ -38,7 +38,16 @@ func (s *CreateMemberRequest) SetMembers(v []*CreateMemberRequestMembers) *Creat
 }
 
 func (s *CreateMemberRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Members != nil {
+		for _, item := range s.Members {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateMemberRequestMembers struct {

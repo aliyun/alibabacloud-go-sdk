@@ -70,7 +70,16 @@ func (s *ListWorkspaceUsersResponseBody) SetUsers(v []*ListWorkspaceUsersRespons
 }
 
 func (s *ListWorkspaceUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Users != nil {
+		for _, item := range s.Users {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWorkspaceUsersResponseBodyUsers struct {

@@ -229,7 +229,12 @@ func (s *ListExperimentRequest) SetWorkspaceId(v string) *ListExperimentRequest 
 }
 
 func (s *ListExperimentRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Options != nil {
+		if err := s.Options.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListExperimentRequestOptions struct {

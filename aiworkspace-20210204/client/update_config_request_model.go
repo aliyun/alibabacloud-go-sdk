@@ -109,7 +109,16 @@ func (s *UpdateConfigRequest) SetLabels(v []*UpdateConfigRequestLabels) *UpdateC
 }
 
 func (s *UpdateConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateConfigRequestLabels struct {

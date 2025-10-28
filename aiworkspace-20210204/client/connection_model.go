@@ -179,7 +179,21 @@ func (s *Connection) SetWorkspaceId(v string) *Connection {
 }
 
 func (s *Connection) Validate() error {
-	return dara.Validate(s)
+	if s.Models != nil {
+		for _, item := range s.Models {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResourceMeta != nil {
+		if err := s.ResourceMeta.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ConnectionModels struct {

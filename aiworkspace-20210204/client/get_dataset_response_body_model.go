@@ -637,7 +637,31 @@ func (s *GetDatasetResponseBody) SetWorkspaceId(v string) *GetDatasetResponseBod
 }
 
 func (s *GetDatasetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LatestVersion != nil {
+		if err := s.LatestVersion.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SharedFrom != nil {
+		if err := s.SharedFrom.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SharingConfig != nil {
+		if err := s.SharingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDatasetResponseBodySharingConfig struct {
@@ -662,5 +686,14 @@ func (s *GetDatasetResponseBodySharingConfig) SetSharedTo(v []*DatasetShareRelat
 }
 
 func (s *GetDatasetResponseBodySharingConfig) Validate() error {
-	return dara.Validate(s)
+	if s.SharedTo != nil {
+		for _, item := range s.SharedTo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

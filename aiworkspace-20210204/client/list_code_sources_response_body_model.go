@@ -70,5 +70,14 @@ func (s *ListCodeSourcesResponseBody) SetTotalCount(v int64) *ListCodeSourcesRes
 }
 
 func (s *ListCodeSourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CodeSources != nil {
+		for _, item := range s.CodeSources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

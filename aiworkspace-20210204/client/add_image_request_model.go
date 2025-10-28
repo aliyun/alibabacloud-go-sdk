@@ -225,7 +225,16 @@ func (s *AddImageRequest) SetWorkspaceId(v string) *AddImageRequest {
 }
 
 func (s *AddImageRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddImageRequestLabels struct {

@@ -167,7 +167,16 @@ func (s *GetConfigResponseBody) SetWorkspaceId(v string) *GetConfigResponseBody 
 }
 
 func (s *GetConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetConfigResponseBodyLabels struct {

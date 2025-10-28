@@ -104,5 +104,14 @@ func (s *ListDatasetVersionsResponseBody) SetTotalCount(v int32) *ListDatasetVer
 }
 
 func (s *ListDatasetVersionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DatasetVersions != nil {
+		for _, item := range s.DatasetVersions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

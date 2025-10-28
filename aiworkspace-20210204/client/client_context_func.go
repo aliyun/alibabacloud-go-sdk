@@ -23,9 +23,11 @@ import (
 //
 // @return AcceptDataworksEventResponse
 func (client *Client) AcceptDataworksEventWithContext(ctx context.Context, request *AcceptDataworksEventRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AcceptDataworksEventResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Data) {
@@ -72,9 +74,11 @@ func (client *Client) AcceptDataworksEventWithContext(ctx context.Context, reque
 //
 // @return AddImageResponse
 func (client *Client) AddImageWithContext(ctx context.Context, request *AddImageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {
@@ -153,9 +157,11 @@ func (client *Client) AddImageWithContext(ctx context.Context, request *AddImage
 //
 // @return AddImageLabelsResponse
 func (client *Client) AddImageLabelsWithContext(ctx context.Context, ImageId *string, request *AddImageLabelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddImageLabelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Labels) {
@@ -231,9 +237,11 @@ func (client *Client) AddMemberRoleWithContext(ctx context.Context, WorkspaceId 
 //
 // @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, request *ChangeResourceGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.NewResourceGroupId) {
@@ -284,9 +292,11 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 //
 // @return CreateCodeSourceResponse
 func (client *Client) CreateCodeSourceWithContext(ctx context.Context, request *CreateCodeSourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateCodeSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {
@@ -365,9 +375,11 @@ func (client *Client) CreateCodeSourceWithContext(ctx context.Context, request *
 //
 // @return CreateConnectionResponse
 func (client *Client) CreateConnectionWithContext(ctx context.Context, request *CreateConnectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {
@@ -442,9 +454,11 @@ func (client *Client) CreateConnectionWithContext(ctx context.Context, request *
 //
 // @return CreateDatasetResponse
 func (client *Client) CreateDatasetWithContext(ctx context.Context, request *CreateDatasetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDatasetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {
@@ -579,9 +593,11 @@ func (client *Client) CreateDatasetWithContext(ctx context.Context, request *Cre
 //
 // @return CreateDatasetFileMetasResponse
 func (client *Client) CreateDatasetFileMetasWithContext(ctx context.Context, DatasetId *string, request *CreateDatasetFileMetasRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDatasetFileMetasResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetFileMetas) {
@@ -632,9 +648,11 @@ func (client *Client) CreateDatasetFileMetasWithContext(ctx context.Context, Dat
 //
 // @return CreateDatasetJobResponse
 func (client *Client) CreateDatasetJobWithContext(ctx context.Context, DatasetId *string, request *CreateDatasetJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDatasetJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetVersion) {
@@ -697,9 +715,11 @@ func (client *Client) CreateDatasetJobWithContext(ctx context.Context, DatasetId
 //
 // @return CreateDatasetJobConfigResponse
 func (client *Client) CreateDatasetJobConfigWithContext(ctx context.Context, DatasetId *string, request *CreateDatasetJobConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDatasetJobConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -762,9 +782,11 @@ func (client *Client) CreateDatasetJobConfigWithContext(ctx context.Context, Dat
 //
 // @return CreateDatasetLabelsResponse
 func (client *Client) CreateDatasetLabelsWithContext(ctx context.Context, DatasetId *string, request *CreateDatasetLabelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDatasetLabelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Labels) {
@@ -807,9 +829,11 @@ func (client *Client) CreateDatasetLabelsWithContext(ctx context.Context, Datase
 //
 // @return CreateDatasetVersionResponse
 func (client *Client) CreateDatasetVersionWithContext(ctx context.Context, DatasetId *string, request *CreateDatasetVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDatasetVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DataCount) {
@@ -892,9 +916,11 @@ func (client *Client) CreateDatasetVersionWithContext(ctx context.Context, Datas
 //
 // @return CreateDatasetVersionLabelsResponse
 func (client *Client) CreateDatasetVersionLabelsWithContext(ctx context.Context, DatasetId *string, VersionName *string, request *CreateDatasetVersionLabelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDatasetVersionLabelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Labels) {
@@ -937,9 +963,11 @@ func (client *Client) CreateDatasetVersionLabelsWithContext(ctx context.Context,
 //
 // @return CreateExperimentResponse
 func (client *Client) CreateExperimentWithContext(ctx context.Context, request *CreateExperimentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateExperimentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {
@@ -998,9 +1026,11 @@ func (client *Client) CreateExperimentWithContext(ctx context.Context, request *
 //
 // @return CreateMemberResponse
 func (client *Client) CreateMemberWithContext(ctx context.Context, WorkspaceId *string, request *CreateMemberRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateMemberResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Members) {
@@ -1043,9 +1073,11 @@ func (client *Client) CreateMemberWithContext(ctx context.Context, WorkspaceId *
 //
 // @return CreateModelResponse
 func (client *Client) CreateModelWithContext(ctx context.Context, request *CreateModelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateModelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {
@@ -1140,9 +1172,11 @@ func (client *Client) CreateModelWithContext(ctx context.Context, request *Creat
 //
 // @return CreateModelLabelsResponse
 func (client *Client) CreateModelLabelsWithContext(ctx context.Context, ModelId *string, request *CreateModelLabelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateModelLabelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Labels) {
@@ -1185,9 +1219,11 @@ func (client *Client) CreateModelLabelsWithContext(ctx context.Context, ModelId 
 //
 // @return CreateModelVersionResponse
 func (client *Client) CreateModelVersionWithContext(ctx context.Context, ModelId *string, request *CreateModelVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateModelVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ApprovalStatus) {
@@ -1294,9 +1330,11 @@ func (client *Client) CreateModelVersionWithContext(ctx context.Context, ModelId
 //
 // @return CreateModelVersionLabelsResponse
 func (client *Client) CreateModelVersionLabelsWithContext(ctx context.Context, ModelId *string, VersionName *string, request *CreateModelVersionLabelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateModelVersionLabelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Labels) {
@@ -1339,9 +1377,11 @@ func (client *Client) CreateModelVersionLabelsWithContext(ctx context.Context, M
 //
 // @return CreateProductOrdersResponse
 func (client *Client) CreateProductOrdersWithContext(ctx context.Context, request *CreateProductOrdersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateProductOrdersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -1388,9 +1428,11 @@ func (client *Client) CreateProductOrdersWithContext(ctx context.Context, reques
 //
 // @return CreateRunResponse
 func (client *Client) CreateRunWithContext(ctx context.Context, request *CreateRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateRunResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ExperimentId) {
@@ -1453,9 +1495,11 @@ func (client *Client) CreateRunWithContext(ctx context.Context, request *CreateR
 //
 // @return CreateWorkspaceResponse
 func (client *Client) CreateWorkspaceWithContext(ctx context.Context, request *CreateWorkspaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateWorkspaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -1514,9 +1558,11 @@ func (client *Client) CreateWorkspaceWithContext(ctx context.Context, request *C
 //
 // @return CreateWorkspaceResourceResponse
 func (client *Client) CreateWorkspaceResourceWithContext(ctx context.Context, WorkspaceId *string, request *CreateWorkspaceResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateWorkspaceResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Option) {
@@ -1596,9 +1642,11 @@ func (client *Client) DeleteCodeSourceWithContext(ctx context.Context, CodeSourc
 //
 // @return DeleteConfigResponse
 func (client *Client) DeleteConfigWithContext(ctx context.Context, WorkspaceId *string, ConfigKey *string, request *DeleteConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryName) {
@@ -1711,9 +1759,11 @@ func (client *Client) DeleteDatasetWithContext(ctx context.Context, DatasetId *s
 //
 // @return DeleteDatasetFileMetasResponse
 func (client *Client) DeleteDatasetFileMetasWithContext(ctx context.Context, DatasetId *string, request *DeleteDatasetFileMetasRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDatasetFileMetasResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetFileMetaIds) {
@@ -1797,9 +1847,11 @@ func (client *Client) DeleteDatasetJobWithContext(ctx context.Context, DatasetId
 //
 // @return DeleteDatasetJobConfigResponse
 func (client *Client) DeleteDatasetJobConfigWithContext(ctx context.Context, DatasetId *string, DatasetJobConfigId *string, request *DeleteDatasetJobConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDatasetJobConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.WorkspaceId) {
@@ -1842,9 +1894,11 @@ func (client *Client) DeleteDatasetJobConfigWithContext(ctx context.Context, Dat
 //
 // @return DeleteDatasetLabelsResponse
 func (client *Client) DeleteDatasetLabelsWithContext(ctx context.Context, DatasetId *string, request *DeleteDatasetLabelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDatasetLabelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LabelKeys) {
@@ -1920,9 +1974,11 @@ func (client *Client) DeleteDatasetVersionWithContext(ctx context.Context, Datas
 //
 // @return DeleteDatasetVersionLabelsResponse
 func (client *Client) DeleteDatasetVersionLabelsWithContext(ctx context.Context, DatasetId *string, VersionName *string, request *DeleteDatasetVersionLabelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDatasetVersionLabelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keys) {
@@ -2031,9 +2087,11 @@ func (client *Client) DeleteExperimentLabelWithContext(ctx context.Context, Expe
 //
 // @return DeleteMembersResponse
 func (client *Client) DeleteMembersWithContext(ctx context.Context, WorkspaceId *string, request *DeleteMembersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMembersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MemberIds) {
@@ -2109,9 +2167,11 @@ func (client *Client) DeleteModelWithContext(ctx context.Context, ModelId *strin
 //
 // @return DeleteModelLabelsResponse
 func (client *Client) DeleteModelLabelsWithContext(ctx context.Context, ModelId *string, request *DeleteModelLabelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteModelLabelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LabelKeys) {
@@ -2187,9 +2247,11 @@ func (client *Client) DeleteModelVersionWithContext(ctx context.Context, ModelId
 //
 // @return DeleteModelVersionLabelsResponse
 func (client *Client) DeleteModelVersionLabelsWithContext(ctx context.Context, ModelId *string, VersionName *string, request *DeleteModelVersionLabelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteModelVersionLabelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LabelKeys) {
@@ -2298,9 +2360,11 @@ func (client *Client) DeleteRunLabelWithContext(ctx context.Context, RunId *stri
 //
 // @return DeleteUserConfigResponse
 func (client *Client) DeleteUserConfigWithContext(ctx context.Context, CategoryName *string, request *DeleteUserConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteUserConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigKey) {
@@ -2380,9 +2444,11 @@ func (client *Client) DeleteWorkspaceWithContext(ctx context.Context, WorkspaceI
 //
 // @return DeleteWorkspaceResourceResponse
 func (client *Client) DeleteWorkspaceResourceWithContext(ctx context.Context, WorkspaceId *string, request *DeleteWorkspaceResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteWorkspaceResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupName) {
@@ -2478,9 +2544,11 @@ func (client *Client) GetCodeSourceWithContext(ctx context.Context, CodeSourceId
 //
 // @return GetConfigResponse
 func (client *Client) GetConfigWithContext(ctx context.Context, WorkspaceId *string, request *GetConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryName) {
@@ -2531,9 +2599,11 @@ func (client *Client) GetConfigWithContext(ctx context.Context, WorkspaceId *str
 //
 // @return GetConnectionResponse
 func (client *Client) GetConnectionWithContext(ctx context.Context, ConnectionId *string, request *GetConnectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EncryptOption) {
@@ -2609,9 +2679,11 @@ func (client *Client) GetDatasetWithContext(ctx context.Context, DatasetId *stri
 //
 // @return GetDatasetFileMetaResponse
 func (client *Client) GetDatasetFileMetaWithContext(ctx context.Context, DatasetId *string, DatasetFileMetaId *string, request *GetDatasetFileMetaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDatasetFileMetaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetVersion) {
@@ -2658,9 +2730,11 @@ func (client *Client) GetDatasetFileMetaWithContext(ctx context.Context, Dataset
 //
 // @return GetDatasetFileMetasStatisticsResponse
 func (client *Client) GetDatasetFileMetasStatisticsWithContext(ctx context.Context, DatasetId *string, request *GetDatasetFileMetasStatisticsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDatasetFileMetasStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AggregateBy) {
@@ -2715,9 +2789,11 @@ func (client *Client) GetDatasetFileMetasStatisticsWithContext(ctx context.Conte
 //
 // @return GetDatasetJobResponse
 func (client *Client) GetDatasetJobWithContext(ctx context.Context, DatasetId *string, DatasetJobId *string, request *GetDatasetJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDatasetJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetVersion) {
@@ -2764,9 +2840,11 @@ func (client *Client) GetDatasetJobWithContext(ctx context.Context, DatasetId *s
 //
 // @return GetDatasetJobConfigResponse
 func (client *Client) GetDatasetJobConfigWithContext(ctx context.Context, DatasetId *string, DatasetJobConfigId *string, request *GetDatasetJobConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDatasetJobConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.WorkspaceId) {
@@ -2842,9 +2920,11 @@ func (client *Client) GetDatasetVersionWithContext(ctx context.Context, DatasetI
 //
 // @return GetDefaultWorkspaceResponse
 func (client *Client) GetDefaultWorkspaceWithContext(ctx context.Context, request *GetDefaultWorkspaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDefaultWorkspaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Verbose) {
@@ -2887,9 +2967,11 @@ func (client *Client) GetDefaultWorkspaceWithContext(ctx context.Context, reques
 //
 // @return GetExperimentResponse
 func (client *Client) GetExperimentWithContext(ctx context.Context, ExperimentId *string, request *GetExperimentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExperimentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Verbose) {
@@ -2932,9 +3014,11 @@ func (client *Client) GetExperimentWithContext(ctx context.Context, ExperimentId
 //
 // @return GetImageResponse
 func (client *Client) GetImageWithContext(ctx context.Context, ImageId *string, request *GetImageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Verbose) {
@@ -2977,9 +3061,11 @@ func (client *Client) GetImageWithContext(ctx context.Context, ImageId *string, 
 //
 // @return GetMemberResponse
 func (client *Client) GetMemberWithContext(ctx context.Context, WorkspaceId *string, request *GetMemberRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemberResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MemberId) {
@@ -3092,9 +3178,11 @@ func (client *Client) GetModelVersionWithContext(ctx context.Context, ModelId *s
 //
 // @return GetPermissionResponse
 func (client *Client) GetPermissionWithContext(ctx context.Context, WorkspaceId *string, PermissionCode *string, tmpReq *GetPermissionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPermissionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetPermissionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3159,9 +3247,11 @@ func (client *Client) GetPermissionWithContext(ctx context.Context, WorkspaceId 
 //
 // @return GetRunResponse
 func (client *Client) GetRunWithContext(ctx context.Context, RunId *string, request *GetRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRunResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Verbose) {
@@ -3204,9 +3294,11 @@ func (client *Client) GetRunWithContext(ctx context.Context, RunId *string, requ
 //
 // @return GetWorkspaceResponse
 func (client *Client) GetWorkspaceWithContext(ctx context.Context, WorkspaceId *string, request *GetWorkspaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetWorkspaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Verbose) {
@@ -3249,9 +3341,11 @@ func (client *Client) GetWorkspaceWithContext(ctx context.Context, WorkspaceId *
 //
 // @return ListCodeSourcesResponse
 func (client *Client) ListCodeSourcesWithContext(ctx context.Context, request *ListCodeSourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListCodeSourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DisplayName) {
@@ -3314,9 +3408,11 @@ func (client *Client) ListCodeSourcesWithContext(ctx context.Context, request *L
 //
 // @return ListConfigsResponse
 func (client *Client) ListConfigsWithContext(ctx context.Context, WorkspaceId *string, request *ListConfigsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryName) {
@@ -3371,9 +3467,11 @@ func (client *Client) ListConfigsWithContext(ctx context.Context, WorkspaceId *s
 //
 // @return ListConnectionsResponse
 func (client *Client) ListConnectionsWithContext(ctx context.Context, tmpReq *ListConnectionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListConnectionsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListConnectionsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3478,9 +3576,11 @@ func (client *Client) ListConnectionsWithContext(ctx context.Context, tmpReq *Li
 //
 // @return ListDatasetFileMetasResponse
 func (client *Client) ListDatasetFileMetasWithContext(ctx context.Context, DatasetId *string, tmpReq *ListDatasetFileMetasRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDatasetFileMetasResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListDatasetFileMetasShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3641,9 +3741,11 @@ func (client *Client) ListDatasetFileMetasWithContext(ctx context.Context, Datas
 //
 // @return ListDatasetJobConfigsResponse
 func (client *Client) ListDatasetJobConfigsWithContext(ctx context.Context, DatasetId *string, request *ListDatasetJobConfigsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDatasetJobConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigType) {
@@ -3702,9 +3804,11 @@ func (client *Client) ListDatasetJobConfigsWithContext(ctx context.Context, Data
 //
 // @return ListDatasetJobsResponse
 func (client *Client) ListDatasetJobsWithContext(ctx context.Context, DatasetId *string, request *ListDatasetJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDatasetJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetVersion) {
@@ -3775,9 +3879,11 @@ func (client *Client) ListDatasetJobsWithContext(ctx context.Context, DatasetId 
 //
 // @return ListDatasetVersionsResponse
 func (client *Client) ListDatasetVersionsWithContext(ctx context.Context, DatasetId *string, request *ListDatasetVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDatasetVersionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LabelKeys) {
@@ -3852,9 +3958,11 @@ func (client *Client) ListDatasetVersionsWithContext(ctx context.Context, Datase
 //
 // @return ListDatasetsResponse
 func (client *Client) ListDatasetsWithContext(ctx context.Context, request *ListDatasetsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDatasetsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {
@@ -3961,9 +4069,11 @@ func (client *Client) ListDatasetsWithContext(ctx context.Context, request *List
 //
 // @return ListExperimentResponse
 func (client *Client) ListExperimentWithContext(ctx context.Context, tmpReq *ListExperimentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListExperimentResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListExperimentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4056,9 +4166,11 @@ func (client *Client) ListExperimentWithContext(ctx context.Context, tmpReq *Lis
 //
 // @return ListFeaturesResponse
 func (client *Client) ListFeaturesWithContext(ctx context.Context, request *ListFeaturesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListFeaturesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Names) {
@@ -4101,9 +4213,11 @@ func (client *Client) ListFeaturesWithContext(ctx context.Context, request *List
 //
 // @return ListImageLabelsResponse
 func (client *Client) ListImageLabelsWithContext(ctx context.Context, request *ListImageLabelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListImageLabelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImageId) {
@@ -4162,9 +4276,11 @@ func (client *Client) ListImageLabelsWithContext(ctx context.Context, request *L
 //
 // @return ListImagesResponse
 func (client *Client) ListImagesWithContext(ctx context.Context, request *ListImagesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListImagesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {
@@ -4247,9 +4363,11 @@ func (client *Client) ListImagesWithContext(ctx context.Context, request *ListIm
 //
 // @return ListMembersResponse
 func (client *Client) ListMembersWithContext(ctx context.Context, WorkspaceId *string, request *ListMembersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMembersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MemberName) {
@@ -4304,9 +4422,11 @@ func (client *Client) ListMembersWithContext(ctx context.Context, WorkspaceId *s
 //
 // @return ListModelVersionsResponse
 func (client *Client) ListModelVersionsWithContext(ctx context.Context, ModelId *string, request *ListModelVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListModelVersionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApprovalStatus) {
@@ -4389,9 +4509,11 @@ func (client *Client) ListModelVersionsWithContext(ctx context.Context, ModelId 
 //
 // @return ListModelsResponse
 func (client *Client) ListModelsWithContext(ctx context.Context, tmpReq *ListModelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListModelsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListModelsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4537,9 +4659,11 @@ func (client *Client) ListPermissionsWithContext(ctx context.Context, WorkspaceI
 //
 // @return ListProductsResponse
 func (client *Client) ListProductsWithContext(ctx context.Context, request *ListProductsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListProductsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProductCodes) {
@@ -4590,9 +4714,11 @@ func (client *Client) ListProductsWithContext(ctx context.Context, request *List
 //
 // @return ListQuotasResponse
 func (client *Client) ListQuotasWithContext(ctx context.Context, request *ListQuotasRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListQuotasResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -4635,9 +4761,11 @@ func (client *Client) ListQuotasWithContext(ctx context.Context, request *ListQu
 //
 // @return ListResourcesResponse
 func (client *Client) ListResourcesWithContext(ctx context.Context, request *ListResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupName) {
@@ -4724,9 +4852,11 @@ func (client *Client) ListResourcesWithContext(ctx context.Context, request *Lis
 //
 // @return ListRunMetricsResponse
 func (client *Client) ListRunMetricsWithContext(ctx context.Context, RunId *string, request *ListRunMetricsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRunMetricsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Key) {
@@ -4777,9 +4907,11 @@ func (client *Client) ListRunMetricsWithContext(ctx context.Context, RunId *stri
 //
 // @return ListRunsResponse
 func (client *Client) ListRunsWithContext(ctx context.Context, request *ListRunsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRunsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExperimentId) {
@@ -4878,9 +5010,11 @@ func (client *Client) ListRunsWithContext(ctx context.Context, request *ListRuns
 //
 // @return ListUserConfigsResponse
 func (client *Client) ListUserConfigsWithContext(ctx context.Context, request *ListUserConfigsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListUserConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryNames) {
@@ -4927,9 +5061,11 @@ func (client *Client) ListUserConfigsWithContext(ctx context.Context, request *L
 //
 // @return ListWorkspaceUsersResponse
 func (client *Client) ListWorkspaceUsersWithContext(ctx context.Context, WorkspaceId *string, request *ListWorkspaceUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWorkspaceUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.UserId) {
@@ -4980,9 +5116,11 @@ func (client *Client) ListWorkspaceUsersWithContext(ctx context.Context, Workspa
 //
 // @return ListWorkspacesResponse
 func (client *Client) ListWorkspacesWithContext(ctx context.Context, request *ListWorkspacesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWorkspacesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Fields) {
@@ -5019,6 +5157,10 @@ func (client *Client) ListWorkspacesWithContext(ctx context.Context, request *Li
 
 	if !dara.IsNil(request.Status) {
 		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
 	}
 
 	if !dara.IsNil(request.Verbose) {
@@ -5069,9 +5211,11 @@ func (client *Client) ListWorkspacesWithContext(ctx context.Context, request *Li
 //
 // @return LogRunMetricsResponse
 func (client *Client) LogRunMetricsWithContext(ctx context.Context, RunId *string, request *LogRunMetricsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *LogRunMetricsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Metrics) {
@@ -5312,9 +5456,11 @@ func (client *Client) RemoveMemberRoleWithContext(ctx context.Context, Workspace
 //
 // @return SetExperimentLabelsResponse
 func (client *Client) SetExperimentLabelsWithContext(ctx context.Context, ExperimentId *string, request *SetExperimentLabelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SetExperimentLabelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Labels) {
@@ -5357,9 +5503,11 @@ func (client *Client) SetExperimentLabelsWithContext(ctx context.Context, Experi
 //
 // @return SetUserConfigsResponse
 func (client *Client) SetUserConfigsWithContext(ctx context.Context, request *SetUserConfigsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SetUserConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Configs) {
@@ -5402,9 +5550,11 @@ func (client *Client) SetUserConfigsWithContext(ctx context.Context, request *Se
 //
 // @return StopDatasetJobResponse
 func (client *Client) StopDatasetJobWithContext(ctx context.Context, DatasetId *string, DatasetJobId *string, request *StopDatasetJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopDatasetJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetVersion) {
@@ -5451,9 +5601,11 @@ func (client *Client) StopDatasetJobWithContext(ctx context.Context, DatasetId *
 //
 // @return UpdateCodeSourceResponse
 func (client *Client) UpdateCodeSourceWithContext(ctx context.Context, CodeSourceId *string, request *UpdateCodeSourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateCodeSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CodeBranch) {
@@ -5524,9 +5676,11 @@ func (client *Client) UpdateCodeSourceWithContext(ctx context.Context, CodeSourc
 //
 // @return UpdateConfigResponse
 func (client *Client) UpdateConfigWithContext(ctx context.Context, WorkspaceId *string, request *UpdateConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryName) {
@@ -5581,9 +5735,11 @@ func (client *Client) UpdateConfigWithContext(ctx context.Context, WorkspaceId *
 //
 // @return UpdateConfigsResponse
 func (client *Client) UpdateConfigsWithContext(ctx context.Context, WorkspaceId *string, request *UpdateConfigsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Configs) {
@@ -5626,9 +5782,11 @@ func (client *Client) UpdateConfigsWithContext(ctx context.Context, WorkspaceId 
 //
 // @return UpdateConnectionResponse
 func (client *Client) UpdateConnectionWithContext(ctx context.Context, ConnectionId *string, request *UpdateConnectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Configs) {
@@ -5683,9 +5841,11 @@ func (client *Client) UpdateConnectionWithContext(ctx context.Context, Connectio
 //
 // @return UpdateDatasetResponse
 func (client *Client) UpdateDatasetWithContext(ctx context.Context, DatasetId *string, request *UpdateDatasetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDatasetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -5748,9 +5908,11 @@ func (client *Client) UpdateDatasetWithContext(ctx context.Context, DatasetId *s
 //
 // @return UpdateDatasetFileMetasResponse
 func (client *Client) UpdateDatasetFileMetasWithContext(ctx context.Context, DatasetId *string, request *UpdateDatasetFileMetasRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDatasetFileMetasResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetFileMetas) {
@@ -5805,9 +5967,11 @@ func (client *Client) UpdateDatasetFileMetasWithContext(ctx context.Context, Dat
 //
 // @return UpdateDatasetJobResponse
 func (client *Client) UpdateDatasetJobWithContext(ctx context.Context, DatasetId *string, DatasetJobId *string, request *UpdateDatasetJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDatasetJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetVersion) {
@@ -5858,9 +6022,11 @@ func (client *Client) UpdateDatasetJobWithContext(ctx context.Context, DatasetId
 //
 // @return UpdateDatasetJobConfigResponse
 func (client *Client) UpdateDatasetJobConfigWithContext(ctx context.Context, DatasetId *string, DatasetJobConfigId *string, request *UpdateDatasetJobConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDatasetJobConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -5911,9 +6077,11 @@ func (client *Client) UpdateDatasetJobConfigWithContext(ctx context.Context, Dat
 //
 // @return UpdateDatasetVersionResponse
 func (client *Client) UpdateDatasetVersionWithContext(ctx context.Context, DatasetId *string, VersionName *string, request *UpdateDatasetVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDatasetVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DataCount) {
@@ -5968,9 +6136,11 @@ func (client *Client) UpdateDatasetVersionWithContext(ctx context.Context, Datas
 //
 // @return UpdateDefaultWorkspaceResponse
 func (client *Client) UpdateDefaultWorkspaceWithContext(ctx context.Context, request *UpdateDefaultWorkspaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDefaultWorkspaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.WorkspaceId) {
@@ -6013,9 +6183,11 @@ func (client *Client) UpdateDefaultWorkspaceWithContext(ctx context.Context, req
 //
 // @return UpdateExperimentResponse
 func (client *Client) UpdateExperimentWithContext(ctx context.Context, ExperimentId *string, request *UpdateExperimentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateExperimentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {
@@ -6062,9 +6234,11 @@ func (client *Client) UpdateExperimentWithContext(ctx context.Context, Experimen
 //
 // @return UpdateModelResponse
 func (client *Client) UpdateModelWithContext(ctx context.Context, ModelId *string, request *UpdateModelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateModelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {
@@ -6147,9 +6321,11 @@ func (client *Client) UpdateModelWithContext(ctx context.Context, ModelId *strin
 //
 // @return UpdateModelVersionResponse
 func (client *Client) UpdateModelVersionWithContext(ctx context.Context, ModelId *string, VersionName *string, request *UpdateModelVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateModelVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ApprovalStatus) {
@@ -6236,9 +6412,11 @@ func (client *Client) UpdateModelVersionWithContext(ctx context.Context, ModelId
 //
 // @return UpdateRunResponse
 func (client *Client) UpdateRunWithContext(ctx context.Context, RunId *string, request *UpdateRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateRunResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Labels) {
@@ -6289,9 +6467,11 @@ func (client *Client) UpdateRunWithContext(ctx context.Context, RunId *string, r
 //
 // @return UpdateWorkspaceResponse
 func (client *Client) UpdateWorkspaceWithContext(ctx context.Context, WorkspaceId *string, request *UpdateWorkspaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateWorkspaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -6338,9 +6518,11 @@ func (client *Client) UpdateWorkspaceWithContext(ctx context.Context, WorkspaceI
 //
 // @return UpdateWorkspaceResourceResponse
 func (client *Client) UpdateWorkspaceResourceWithContext(ctx context.Context, WorkspaceId *string, request *UpdateWorkspaceResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateWorkspaceResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.GroupName) {

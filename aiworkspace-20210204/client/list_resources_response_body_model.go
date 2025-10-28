@@ -70,7 +70,16 @@ func (s *ListResourcesResponseBody) SetTotalCount(v int64) *ListResourcesRespons
 }
 
 func (s *ListResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Resources != nil {
+		for _, item := range s.Resources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourcesResponseBodyResources struct {
@@ -293,7 +302,35 @@ func (s *ListResourcesResponseBodyResources) SetWorkspaceId(v string) *ListResou
 }
 
 func (s *ListResourcesResponseBodyResources) Validate() error {
-	return dara.Validate(s)
+	if s.Encryption != nil {
+		if err := s.Encryption.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Executor != nil {
+		if err := s.Executor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Quotas != nil {
+		for _, item := range s.Quotas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourcesResponseBodyResourcesEncryption struct {
@@ -587,7 +624,16 @@ func (s *ListResourcesResponseBodyResourcesQuotas) SetSpecs(v []*ListResourcesRe
 }
 
 func (s *ListResourcesResponseBodyResourcesQuotas) Validate() error {
-	return dara.Validate(s)
+	if s.Specs != nil {
+		for _, item := range s.Specs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourcesResponseBodyResourcesQuotasSpecs struct {

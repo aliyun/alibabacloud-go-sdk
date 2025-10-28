@@ -70,7 +70,16 @@ func (s *GetPermissionResponseBody) SetRequestId(v string) *GetPermissionRespons
 }
 
 func (s *GetPermissionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PermissionRules != nil {
+		for _, item := range s.PermissionRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPermissionResponseBodyPermissionRules struct {

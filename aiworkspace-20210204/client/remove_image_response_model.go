@@ -59,5 +59,10 @@ func (s *RemoveImageResponse) SetBody(v *RemoveImageResponseBody) *RemoveImageRe
 }
 
 func (s *RemoveImageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

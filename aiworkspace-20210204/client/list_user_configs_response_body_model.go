@@ -70,7 +70,16 @@ func (s *ListUserConfigsResponseBody) SetTotalCount(v int64) *ListUserConfigsRes
 }
 
 func (s *ListUserConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Configs != nil {
+		for _, item := range s.Configs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserConfigsResponseBodyConfigs struct {

@@ -59,5 +59,10 @@ func (s *ListDatasetFileMetasResponse) SetBody(v *ListDatasetFileMetasResponseBo
 }
 
 func (s *ListDatasetFileMetasResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

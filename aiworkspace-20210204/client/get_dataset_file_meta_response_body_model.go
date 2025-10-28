@@ -104,5 +104,10 @@ func (s *GetDatasetFileMetaResponseBody) SetWorkspaceId(v string) *GetDatasetFil
 }
 
 func (s *GetDatasetFileMetaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DatasetFileMeta != nil {
+		if err := s.DatasetFileMeta.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

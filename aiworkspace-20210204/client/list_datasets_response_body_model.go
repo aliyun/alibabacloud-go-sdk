@@ -70,5 +70,14 @@ func (s *ListDatasetsResponseBody) SetTotalCount(v int64) *ListDatasetsResponseB
 }
 
 func (s *ListDatasetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Datasets != nil {
+		for _, item := range s.Datasets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

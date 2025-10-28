@@ -57,7 +57,16 @@ func (s *CreateProductOrdersRequest) SetProducts(v []*CreateProductOrdersRequest
 }
 
 func (s *CreateProductOrdersRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Products != nil {
+		for _, item := range s.Products {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateProductOrdersRequestProducts struct {
@@ -199,7 +208,16 @@ func (s *CreateProductOrdersRequestProducts) SetProductCode(v string) *CreatePro
 }
 
 func (s *CreateProductOrdersRequestProducts) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceProperties != nil {
+		for _, item := range s.InstanceProperties {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateProductOrdersRequestProductsInstanceProperties struct {

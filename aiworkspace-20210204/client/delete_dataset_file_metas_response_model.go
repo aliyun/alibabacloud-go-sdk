@@ -59,5 +59,10 @@ func (s *DeleteDatasetFileMetasResponse) SetBody(v *DeleteDatasetFileMetasRespon
 }
 
 func (s *DeleteDatasetFileMetasResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

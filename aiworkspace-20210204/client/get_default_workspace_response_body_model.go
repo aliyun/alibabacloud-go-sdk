@@ -231,7 +231,21 @@ func (s *GetDefaultWorkspaceResponseBody) SetWorkspaceName(v string) *GetDefault
 }
 
 func (s *GetDefaultWorkspaceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Owner != nil {
+		if err := s.Owner.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDefaultWorkspaceResponseBodyConditions struct {

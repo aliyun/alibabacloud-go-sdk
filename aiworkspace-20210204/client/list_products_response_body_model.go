@@ -62,7 +62,25 @@ func (s *ListProductsResponseBody) SetServices(v []*ListProductsResponseBodyServ
 }
 
 func (s *ListProductsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Products != nil {
+		for _, item := range s.Products {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Services != nil {
+		for _, item := range s.Services {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProductsResponseBodyProducts struct {

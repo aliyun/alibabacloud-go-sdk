@@ -27,6 +27,8 @@ type iListWorkspacesRequest interface {
 	GetSortBy() *string
 	SetStatus(v string) *ListWorkspacesRequest
 	GetStatus() *string
+	SetUserId(v string) *ListWorkspacesRequest
+	GetUserId() *string
 	SetVerbose(v bool) *ListWorkspacesRequest
 	GetVerbose() *bool
 	SetWorkspaceIds(v string) *ListWorkspacesRequest
@@ -114,6 +116,7 @@ type ListWorkspacesRequest struct {
 	//
 	// ENABLED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// Specifies whether to display workspace details. Valid values:
 	//
 	// 	- false (default)
@@ -182,6 +185,10 @@ func (s *ListWorkspacesRequest) GetStatus() *string {
 	return s.Status
 }
 
+func (s *ListWorkspacesRequest) GetUserId() *string {
+	return s.UserId
+}
+
 func (s *ListWorkspacesRequest) GetVerbose() *bool {
 	return s.Verbose
 }
@@ -236,6 +243,11 @@ func (s *ListWorkspacesRequest) SetSortBy(v string) *ListWorkspacesRequest {
 
 func (s *ListWorkspacesRequest) SetStatus(v string) *ListWorkspacesRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListWorkspacesRequest) SetUserId(v string) *ListWorkspacesRequest {
+	s.UserId = &v
 	return s
 }
 

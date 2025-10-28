@@ -70,7 +70,16 @@ func (s *ListQuotasResponseBody) SetTotalCount(v int64) *ListQuotasResponseBody 
 }
 
 func (s *ListQuotasResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Quotas != nil {
+		for _, item := range s.Quotas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQuotasResponseBodyQuotas struct {
@@ -196,7 +205,16 @@ func (s *ListQuotasResponseBodyQuotas) SetSpecs(v []*ListQuotasResponseBodyQuota
 }
 
 func (s *ListQuotasResponseBodyQuotas) Validate() error {
-	return dara.Validate(s)
+	if s.Specs != nil {
+		for _, item := range s.Specs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQuotasResponseBodyQuotasSpecs struct {

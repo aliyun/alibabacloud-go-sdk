@@ -89,5 +89,14 @@ func (s *UpdateDatasetFileMetasRequest) SetWorkspaceId(v string) *UpdateDatasetF
 }
 
 func (s *UpdateDatasetFileMetasRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DatasetFileMetas != nil {
+		for _, item := range s.DatasetFileMetas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

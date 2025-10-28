@@ -87,5 +87,14 @@ func (s *ListExperimentResponseBody) SetRequestId(v string) *ListExperimentRespo
 }
 
 func (s *ListExperimentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Experiments != nil {
+		for _, item := range s.Experiments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

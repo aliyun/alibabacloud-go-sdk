@@ -59,5 +59,10 @@ func (s *CreateModelLabelsResponse) SetBody(v *CreateModelLabelsResponseBody) *C
 }
 
 func (s *CreateModelLabelsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

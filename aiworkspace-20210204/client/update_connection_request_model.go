@@ -75,7 +75,16 @@ func (s *UpdateConnectionRequest) SetSecrets(v map[string]*string) *UpdateConnec
 }
 
 func (s *UpdateConnectionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Models != nil {
+		for _, item := range s.Models {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateConnectionRequestModels struct {

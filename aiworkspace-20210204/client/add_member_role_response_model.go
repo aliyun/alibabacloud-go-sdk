@@ -59,5 +59,10 @@ func (s *AddMemberRoleResponse) SetBody(v *AddMemberRoleResponseBody) *AddMember
 }
 
 func (s *AddMemberRoleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

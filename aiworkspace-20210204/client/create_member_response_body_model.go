@@ -53,7 +53,16 @@ func (s *CreateMemberResponseBody) SetRequestId(v string) *CreateMemberResponseB
 }
 
 func (s *CreateMemberResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Members != nil {
+		for _, item := range s.Members {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateMemberResponseBodyMembers struct {

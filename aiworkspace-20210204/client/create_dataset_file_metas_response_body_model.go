@@ -89,5 +89,23 @@ func (s *CreateDatasetFileMetasResponseBody) SetSucceedDetails(v []*DatasetFileM
 }
 
 func (s *CreateDatasetFileMetasResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FailedDetails != nil {
+		for _, item := range s.FailedDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SucceedDetails != nil {
+		for _, item := range s.SucceedDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

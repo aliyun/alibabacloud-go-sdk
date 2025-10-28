@@ -70,7 +70,16 @@ func (s *ListPermissionsResponseBody) SetTotalCount(v int64) *ListPermissionsRes
 }
 
 func (s *ListPermissionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Permissions != nil {
+		for _, item := range s.Permissions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPermissionsResponseBodyPermissions struct {
@@ -111,7 +120,16 @@ func (s *ListPermissionsResponseBodyPermissions) SetPermissionRules(v []*ListPer
 }
 
 func (s *ListPermissionsResponseBodyPermissions) Validate() error {
-	return dara.Validate(s)
+	if s.PermissionRules != nil {
+		for _, item := range s.PermissionRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPermissionsResponseBodyPermissionsPermissionRules struct {

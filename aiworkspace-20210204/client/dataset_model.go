@@ -437,7 +437,31 @@ func (s *Dataset) SetWorkspaceId(v string) *Dataset {
 }
 
 func (s *Dataset) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LatestVersion != nil {
+		if err := s.LatestVersion.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SharedFrom != nil {
+		if err := s.SharedFrom.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SharingConfig != nil {
+		if err := s.SharingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DatasetSharingConfig struct {
@@ -462,5 +486,14 @@ func (s *DatasetSharingConfig) SetSharedTo(v []*DatasetShareRelationship) *Datas
 }
 
 func (s *DatasetSharingConfig) Validate() error {
-	return dara.Validate(s)
+	if s.SharedTo != nil {
+		for _, item := range s.SharedTo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

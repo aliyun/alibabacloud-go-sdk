@@ -119,7 +119,12 @@ func (s *UpdateDatasetRequest) SetSharingConfig(v *UpdateDatasetRequestSharingCo
 }
 
 func (s *UpdateDatasetRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SharingConfig != nil {
+		if err := s.SharingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateDatasetRequestSharingConfig struct {
@@ -144,5 +149,14 @@ func (s *UpdateDatasetRequestSharingConfig) SetSharedTo(v []*DatasetShareRelatio
 }
 
 func (s *UpdateDatasetRequestSharingConfig) Validate() error {
-	return dara.Validate(s)
+	if s.SharedTo != nil {
+		for _, item := range s.SharedTo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

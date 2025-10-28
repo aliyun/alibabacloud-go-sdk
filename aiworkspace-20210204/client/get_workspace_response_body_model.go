@@ -286,7 +286,12 @@ func (s *GetWorkspaceResponseBody) SetWorkspaceName(v string) *GetWorkspaceRespo
 }
 
 func (s *GetWorkspaceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Owner != nil {
+		if err := s.Owner.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWorkspaceResponseBodyOwner struct {

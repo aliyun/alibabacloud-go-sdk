@@ -72,5 +72,23 @@ func (s *UpdateRunRequest) SetParams(v []*RunParam) *UpdateRunRequest {
 }
 
 func (s *UpdateRunRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Params != nil {
+		for _, item := range s.Params {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

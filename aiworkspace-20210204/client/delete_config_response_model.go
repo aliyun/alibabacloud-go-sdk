@@ -59,5 +59,10 @@ func (s *DeleteConfigResponse) SetBody(v *DeleteConfigResponseBody) *DeleteConfi
 }
 
 func (s *DeleteConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

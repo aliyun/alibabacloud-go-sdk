@@ -59,5 +59,10 @@ func (s *CreateDatasetJobConfigResponse) SetBody(v *CreateDatasetJobConfigRespon
 }
 
 func (s *CreateDatasetJobConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

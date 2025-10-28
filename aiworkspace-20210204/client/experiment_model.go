@@ -179,6 +179,20 @@ func (s *Experiment) SetWorkspaceId(v string) *Experiment {
 }
 
 func (s *Experiment) Validate() error {
-  return dara.Validate(s)
+  if s.Labels != nil {
+    for _, item := range s.Labels {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  if s.LatestRun != nil {
+    if err := s.LatestRun.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

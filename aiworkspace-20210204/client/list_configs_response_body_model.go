@@ -70,7 +70,16 @@ func (s *ListConfigsResponseBody) SetTotalCount(v int64) *ListConfigsResponseBod
 }
 
 func (s *ListConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Configs != nil {
+		for _, item := range s.Configs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListConfigsResponseBodyConfigs struct {
@@ -156,7 +165,16 @@ func (s *ListConfigsResponseBodyConfigs) SetLabels(v []*ListConfigsResponseBodyC
 }
 
 func (s *ListConfigsResponseBodyConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListConfigsResponseBodyConfigsLabels struct {

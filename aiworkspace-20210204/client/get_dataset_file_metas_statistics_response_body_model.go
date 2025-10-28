@@ -70,5 +70,14 @@ func (s *GetDatasetFileMetasStatisticsResponseBody) SetRequestId(v string) *GetD
 }
 
 func (s *GetDatasetFileMetasStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DatasetFileMetasStats != nil {
+		for _, item := range s.DatasetFileMetasStats {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -70,7 +70,16 @@ func (s *ListImageLabelsResponseBody) SetTotalCount(v int64) *ListImageLabelsRes
 }
 
 func (s *ListImageLabelsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListImageLabelsResponseBodyLabels struct {

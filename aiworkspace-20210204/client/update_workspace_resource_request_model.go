@@ -150,7 +150,16 @@ func (s *UpdateWorkspaceResourceRequest) SetSpec(v map[string]interface{}) *Upda
 }
 
 func (s *UpdateWorkspaceResourceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateWorkspaceResourceRequestLabels struct {

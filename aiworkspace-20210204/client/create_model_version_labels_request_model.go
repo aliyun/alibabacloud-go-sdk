@@ -36,5 +36,14 @@ func (s *CreateModelVersionLabelsRequest) SetLabels(v []*Label) *CreateModelVers
 }
 
 func (s *CreateModelVersionLabelsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
