@@ -856,6 +856,10 @@ func (client *Client) UnbindWithContext(ctx context.Context, request *UnbindRequ
 		body["AppInstanceId"] = request.AppInstanceId
 	}
 
+	if !dara.IsNil(request.AppInstancePersistentId) {
+		body["AppInstancePersistentId"] = request.AppInstancePersistentId
+	}
+
 	if !dara.IsNil(request.ClientId) {
 		body["ClientId"] = request.ClientId
 	}

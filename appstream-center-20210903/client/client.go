@@ -1049,6 +1049,10 @@ func (client *Client) UnbindWithOptions(request *UnbindRequest, runtime *dara.Ru
 		body["AppInstanceId"] = request.AppInstanceId
 	}
 
+	if !dara.IsNil(request.AppInstancePersistentId) {
+		body["AppInstancePersistentId"] = request.AppInstancePersistentId
+	}
+
 	if !dara.IsNil(request.ClientId) {
 		body["ClientId"] = request.ClientId
 	}

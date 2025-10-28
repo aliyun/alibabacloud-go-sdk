@@ -15,6 +15,8 @@ type iUnbindRequest interface {
 	GetAppInstanceGroupId() *string
 	SetAppInstanceId(v string) *UnbindRequest
 	GetAppInstanceId() *string
+	SetAppInstancePersistentId(v string) *UnbindRequest
+	GetAppInstancePersistentId() *string
 	SetClientId(v string) *UnbindRequest
 	GetClientId() *string
 	SetClientIp(v string) *UnbindRequest
@@ -49,6 +51,10 @@ type UnbindRequest struct {
 	// aig-e1l4kqqykxt4uzdx9
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
 	AppInstanceId      *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	// example:
+	//
+	// p-xxxxx
+	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
 	// example:
 	//
 	// eac19bef-1e45-4190-a03a-4ea74b699ca7
@@ -117,6 +123,10 @@ func (s *UnbindRequest) GetAppInstanceId() *string {
 	return s.AppInstanceId
 }
 
+func (s *UnbindRequest) GetAppInstancePersistentId() *string {
+	return s.AppInstancePersistentId
+}
+
 func (s *UnbindRequest) GetClientId() *string {
 	return s.ClientId
 }
@@ -169,6 +179,11 @@ func (s *UnbindRequest) SetAppInstanceGroupId(v string) *UnbindRequest {
 
 func (s *UnbindRequest) SetAppInstanceId(v string) *UnbindRequest {
 	s.AppInstanceId = &v
+	return s
+}
+
+func (s *UnbindRequest) SetAppInstancePersistentId(v string) *UnbindRequest {
+	s.AppInstancePersistentId = &v
 	return s
 }
 
