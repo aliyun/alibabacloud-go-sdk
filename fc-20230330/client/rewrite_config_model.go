@@ -59,5 +59,32 @@ func (s *RewriteConfig) SetWildcardRules(v []*WildcardRule) *RewriteConfig {
 }
 
 func (s *RewriteConfig) Validate() error {
-	return dara.Validate(s)
+	if s.EqualRules != nil {
+		for _, item := range s.EqualRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RegexRules != nil {
+		for _, item := range s.RegexRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.WildcardRules != nil {
+		for _, item := range s.WildcardRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

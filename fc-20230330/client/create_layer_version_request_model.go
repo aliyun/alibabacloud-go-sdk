@@ -38,5 +38,10 @@ func (s *CreateLayerVersionRequest) SetBody(v *CreateLayerVersionInput) *CreateL
 }
 
 func (s *CreateLayerVersionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

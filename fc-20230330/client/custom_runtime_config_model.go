@@ -74,5 +74,10 @@ func (s *CustomRuntimeConfig) SetPort(v int32) *CustomRuntimeConfig {
 }
 
 func (s *CustomRuntimeConfig) Validate() error {
-	return dara.Validate(s)
+	if s.HealthCheckConfig != nil {
+		if err := s.HealthCheckConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

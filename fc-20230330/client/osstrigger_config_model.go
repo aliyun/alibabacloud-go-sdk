@@ -47,5 +47,10 @@ func (s *OSSTriggerConfig) SetFilter(v *Filter) *OSSTriggerConfig {
 }
 
 func (s *OSSTriggerConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		if err := s.Filter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

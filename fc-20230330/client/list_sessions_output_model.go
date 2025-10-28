@@ -50,5 +50,14 @@ func (s *ListSessionsOutput) SetSessions(v []*Session) *ListSessionsOutput {
 }
 
 func (s *ListSessionsOutput) Validate() error {
-	return dara.Validate(s)
+	if s.Sessions != nil {
+		for _, item := range s.Sessions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

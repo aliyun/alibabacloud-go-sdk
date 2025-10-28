@@ -59,5 +59,10 @@ func (s *GetConcurrencyConfigResponse) SetBody(v *ConcurrencyConfig) *GetConcurr
 }
 
 func (s *GetConcurrencyConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

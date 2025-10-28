@@ -113,5 +113,23 @@ func (s *PutProvisionConfigInput) SetTargetTrackingPolicies(v []*TargetTrackingP
 }
 
 func (s *PutProvisionConfigInput) Validate() error {
-	return dara.Validate(s)
+	if s.ScheduledActions != nil {
+		for _, item := range s.ScheduledActions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TargetTrackingPolicies != nil {
+		for _, item := range s.TargetTrackingPolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

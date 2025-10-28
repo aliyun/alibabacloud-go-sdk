@@ -59,5 +59,10 @@ func (s *GetFunctionCodeResponse) SetBody(v *OutputFuncCode) *GetFunctionCodeRes
 }
 
 func (s *GetFunctionCodeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

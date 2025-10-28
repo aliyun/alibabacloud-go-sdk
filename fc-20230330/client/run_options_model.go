@@ -89,5 +89,20 @@ func (s *RunOptions) SetRetryStrategy(v *RetryStrategy) *RunOptions {
 }
 
 func (s *RunOptions) Validate() error {
-	return dara.Validate(s)
+	if s.BatchWindow != nil {
+		if err := s.BatchWindow.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeadLetterQueue != nil {
+		if err := s.DeadLetterQueue.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RetryStrategy != nil {
+		if err := s.RetryStrategy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

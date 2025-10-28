@@ -101,6 +101,21 @@ func (s *EventBridgeTriggerConfig) SetTriggerEnable(v bool) *EventBridgeTriggerC
 }
 
 func (s *EventBridgeTriggerConfig) Validate() error {
-  return dara.Validate(s)
+  if s.EventSinkConfig != nil {
+    if err := s.EventSinkConfig.Validate(); err != nil {
+      return err
+    }
+  }
+  if s.EventSourceConfig != nil {
+    if err := s.EventSourceConfig.Validate(); err != nil {
+      return err
+    }
+  }
+  if s.RunOptions != nil {
+    if err := s.RunOptions.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

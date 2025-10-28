@@ -38,5 +38,10 @@ func (s *CreateVpcBindingRequest) SetBody(v *CreateVpcBindingInput) *CreateVpcBi
 }
 
 func (s *CreateVpcBindingRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

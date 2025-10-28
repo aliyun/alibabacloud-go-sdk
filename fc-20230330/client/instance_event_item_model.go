@@ -83,5 +83,14 @@ func (s *InstanceEventItem) SetType(v string) *InstanceEventItem {
 }
 
 func (s *InstanceEventItem) Validate() error {
-	return dara.Validate(s)
+	if s.Children != nil {
+		for _, item := range s.Children {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

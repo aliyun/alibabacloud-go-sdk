@@ -86,5 +86,20 @@ func (s *SLSTriggerConfig) SetSourceConfig(v *SourceConfig) *SLSTriggerConfig {
 }
 
 func (s *SLSTriggerConfig) Validate() error {
-	return dara.Validate(s)
+	if s.JobConfig != nil {
+		if err := s.JobConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LogConfig != nil {
+		if err := s.LogConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceConfig != nil {
+		if err := s.SourceConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

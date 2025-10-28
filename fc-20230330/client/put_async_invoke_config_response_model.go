@@ -59,5 +59,10 @@ func (s *PutAsyncInvokeConfigResponse) SetBody(v *AsyncConfig) *PutAsyncInvokeCo
 }
 
 func (s *PutAsyncInvokeConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

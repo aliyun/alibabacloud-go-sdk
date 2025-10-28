@@ -50,5 +50,10 @@ func (s *UpdateSessionRequest) SetQualifier(v string) *UpdateSessionRequest {
 }
 
 func (s *UpdateSessionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *ListScalingConfigsResponse) SetBody(v *ListScalingConfigsOutput) *ListS
 }
 
 func (s *ListScalingConfigsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

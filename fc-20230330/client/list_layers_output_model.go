@@ -50,5 +50,14 @@ func (s *ListLayersOutput) SetNextToken(v string) *ListLayersOutput {
 }
 
 func (s *ListLayersOutput) Validate() error {
-	return dara.Validate(s)
+	if s.Layers != nil {
+		for _, item := range s.Layers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

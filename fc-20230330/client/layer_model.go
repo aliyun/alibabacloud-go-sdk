@@ -184,5 +184,10 @@ func (s *Layer) SetVersion(v int32) *Layer {
 }
 
 func (s *Layer) Validate() error {
-	return dara.Validate(s)
+	if s.Code != nil {
+		if err := s.Code.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

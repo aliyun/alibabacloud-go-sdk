@@ -59,5 +59,14 @@ func (s *PolarFsConfig) SetUserId(v int32) *PolarFsConfig {
 }
 
 func (s *PolarFsConfig) Validate() error {
-	return dara.Validate(s)
+	if s.MountPoints != nil {
+		for _, item := range s.MountPoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

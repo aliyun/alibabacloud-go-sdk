@@ -65,5 +65,10 @@ func (s *CreateSessionInput) SetSessionTTLInSeconds(v int64) *CreateSessionInput
 }
 
 func (s *CreateSessionInput) Validate() error {
-	return dara.Validate(s)
+	if s.NasConfig != nil {
+		if err := s.NasConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

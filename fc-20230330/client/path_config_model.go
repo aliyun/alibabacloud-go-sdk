@@ -96,5 +96,10 @@ func (s *PathConfig) SetRewriteConfig(v *RewriteConfig) *PathConfig {
 }
 
 func (s *PathConfig) Validate() error {
-	return dara.Validate(s)
+	if s.RewriteConfig != nil {
+		if err := s.RewriteConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

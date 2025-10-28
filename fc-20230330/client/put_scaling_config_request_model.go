@@ -50,5 +50,10 @@ func (s *PutScalingConfigRequest) SetQualifier(v string) *PutScalingConfigReques
 }
 
 func (s *PutScalingConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

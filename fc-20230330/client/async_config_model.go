@@ -125,5 +125,10 @@ func (s *AsyncConfig) SetMaxAsyncRetryAttempts(v int64) *AsyncConfig {
 }
 
 func (s *AsyncConfig) Validate() error {
-	return dara.Validate(s)
+	if s.DestinationConfig != nil {
+		if err := s.DestinationConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

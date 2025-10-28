@@ -245,5 +245,14 @@ func (s *AsyncTask) SetTaskPayload(v string) *AsyncTask {
 }
 
 func (s *AsyncTask) Validate() error {
-	return dara.Validate(s)
+	if s.Events != nil {
+		for _, item := range s.Events {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -50,5 +50,14 @@ func (s *ListLayerVersionOutput) SetNextVersion(v int32) *ListLayerVersionOutput
 }
 
 func (s *ListLayerVersionOutput) Validate() error {
-	return dara.Validate(s)
+	if s.Layers != nil {
+		for _, item := range s.Layers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

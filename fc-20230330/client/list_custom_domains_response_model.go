@@ -59,5 +59,10 @@ func (s *ListCustomDomainsResponse) SetBody(v *ListCustomDomainOutput) *ListCust
 }
 
 func (s *ListCustomDomainsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

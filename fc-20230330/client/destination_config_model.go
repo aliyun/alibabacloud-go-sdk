@@ -47,5 +47,15 @@ func (s *DestinationConfig) SetOnSuccess(v *Destination) *DestinationConfig {
 }
 
 func (s *DestinationConfig) Validate() error {
-	return dara.Validate(s)
+	if s.OnFailure != nil {
+		if err := s.OnFailure.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OnSuccess != nil {
+		if err := s.OnSuccess.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -35,5 +35,14 @@ func (s *RouteConfig) SetRoutes(v []*PathConfig) *RouteConfig {
 }
 
 func (s *RouteConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Routes != nil {
+		for _, item := range s.Routes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

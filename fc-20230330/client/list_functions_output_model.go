@@ -50,5 +50,14 @@ func (s *ListFunctionsOutput) SetNextToken(v string) *ListFunctionsOutput {
 }
 
 func (s *ListFunctionsOutput) Validate() error {
-	return dara.Validate(s)
+	if s.Functions != nil {
+		for _, item := range s.Functions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

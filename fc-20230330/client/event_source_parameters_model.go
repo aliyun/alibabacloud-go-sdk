@@ -95,6 +95,36 @@ func (s *EventSourceParameters) SetSourceRocketMQParameters(v *SourceRocketMQPar
 }
 
 func (s *EventSourceParameters) Validate() error {
-  return dara.Validate(s)
+  if s.SourceDTSParameters != nil {
+    if err := s.SourceDTSParameters.Validate(); err != nil {
+      return err
+    }
+  }
+  if s.SourceKafkaParameters != nil {
+    if err := s.SourceKafkaParameters.Validate(); err != nil {
+      return err
+    }
+  }
+  if s.SourceMNSParameters != nil {
+    if err := s.SourceMNSParameters.Validate(); err != nil {
+      return err
+    }
+  }
+  if s.SourceMQTTParameters != nil {
+    if err := s.SourceMQTTParameters.Validate(); err != nil {
+      return err
+    }
+  }
+  if s.SourceRabbitMQParameters != nil {
+    if err := s.SourceRabbitMQParameters.Validate(); err != nil {
+      return err
+    }
+  }
+  if s.SourceRocketMQParameters != nil {
+    if err := s.SourceRocketMQParameters.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

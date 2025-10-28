@@ -50,5 +50,14 @@ func (s *ListTaggedResourcesOutput) SetResources(v []*Resource) *ListTaggedResou
 }
 
 func (s *ListTaggedResourcesOutput) Validate() error {
-	return dara.Validate(s)
+	if s.Resources != nil {
+		for _, item := range s.Resources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

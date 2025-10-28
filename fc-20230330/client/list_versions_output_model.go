@@ -65,5 +65,14 @@ func (s *ListVersionsOutput) SetVersions(v []*Version) *ListVersionsOutput {
 }
 
 func (s *ListVersionsOutput) Validate() error {
-	return dara.Validate(s)
+	if s.Versions != nil {
+		for _, item := range s.Versions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

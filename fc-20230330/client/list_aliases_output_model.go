@@ -50,5 +50,14 @@ func (s *ListAliasesOutput) SetNextToken(v string) *ListAliasesOutput {
 }
 
 func (s *ListAliasesOutput) Validate() error {
-	return dara.Validate(s)
+	if s.Aliases != nil {
+		for _, item := range s.Aliases {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

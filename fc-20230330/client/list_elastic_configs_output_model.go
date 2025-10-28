@@ -47,5 +47,14 @@ func (s *ListElasticConfigsOutput) SetNextToken(v string) *ListElasticConfigsOut
 }
 
 func (s *ListElasticConfigsOutput) Validate() error {
-	return dara.Validate(s)
+	if s.ElasticConfigs != nil {
+		for _, item := range s.ElasticConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

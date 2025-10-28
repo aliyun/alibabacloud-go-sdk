@@ -185,5 +185,30 @@ func (s *CustomDomain) SetWafConfig(v *WAFConfig) *CustomDomain {
 }
 
 func (s *CustomDomain) Validate() error {
-	return dara.Validate(s)
+	if s.AuthConfig != nil {
+		if err := s.AuthConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CertConfig != nil {
+		if err := s.CertConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RouteConfig != nil {
+		if err := s.RouteConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TlsConfig != nil {
+		if err := s.TlsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WafConfig != nil {
+		if err := s.WafConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

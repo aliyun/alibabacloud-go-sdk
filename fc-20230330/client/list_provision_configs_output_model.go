@@ -50,5 +50,14 @@ func (s *ListProvisionConfigsOutput) SetProvisionConfigs(v []*ProvisionConfig) *
 }
 
 func (s *ListProvisionConfigsOutput) Validate() error {
-	return dara.Validate(s)
+	if s.ProvisionConfigs != nil {
+		for _, item := range s.ProvisionConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

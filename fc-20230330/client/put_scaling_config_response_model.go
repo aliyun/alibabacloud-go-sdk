@@ -59,5 +59,10 @@ func (s *PutScalingConfigResponse) SetBody(v *ScalingConfigStatus) *PutScalingCo
 }
 
 func (s *PutScalingConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *UpdateCustomDomainResponse) SetBody(v *CustomDomain) *UpdateCustomDomai
 }
 
 func (s *UpdateCustomDomainResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -35,6 +35,11 @@ func (s *EventSinkConfig) SetDeliveryOption(v *DeliveryOption) *EventSinkConfig 
 }
 
 func (s *EventSinkConfig) Validate() error {
-  return dara.Validate(s)
+  if s.DeliveryOption != nil {
+    if err := s.DeliveryOption.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

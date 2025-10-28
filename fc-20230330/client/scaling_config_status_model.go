@@ -119,5 +119,23 @@ func (s *ScalingConfigStatus) SetTargetInstances(v int64) *ScalingConfigStatus {
 }
 
 func (s *ScalingConfigStatus) Validate() error {
-	return dara.Validate(s)
+	if s.HorizontalScalingPolicies != nil {
+		for _, item := range s.HorizontalScalingPolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ScheduledPolicies != nil {
+		for _, item := range s.ScheduledPolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

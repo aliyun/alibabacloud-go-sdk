@@ -127,5 +127,20 @@ func (s *ResidentResourcePool) SetResourcePoolConfig(v *ResidentResourceCapacity
 }
 
 func (s *ResidentResourcePool) Validate() error {
-	return dara.Validate(s)
+	if s.AllocationStatus != nil {
+		if err := s.AllocationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourcePoolCapacity != nil {
+		if err := s.ResourcePoolCapacity.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourcePoolConfig != nil {
+		if err := s.ResourcePoolConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

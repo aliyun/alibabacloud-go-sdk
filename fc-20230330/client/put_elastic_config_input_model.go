@@ -71,5 +71,23 @@ func (s *PutElasticConfigInput) SetScheduledPolicies(v []*ScheduledPolicy) *PutE
 }
 
 func (s *PutElasticConfigInput) Validate() error {
-	return dara.Validate(s)
+	if s.ScalingPolicies != nil {
+		for _, item := range s.ScalingPolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ScheduledPolicies != nil {
+		for _, item := range s.ScheduledPolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

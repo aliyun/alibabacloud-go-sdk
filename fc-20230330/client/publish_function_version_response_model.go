@@ -59,5 +59,10 @@ func (s *PublishFunctionVersionResponse) SetBody(v *Version) *PublishFunctionVer
 }
 
 func (s *PublishFunctionVersionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

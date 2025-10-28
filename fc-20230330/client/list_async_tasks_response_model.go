@@ -59,5 +59,10 @@ func (s *ListAsyncTasksResponse) SetBody(v *ListAsyncTaskOutput) *ListAsyncTasks
 }
 
 func (s *ListAsyncTasksResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

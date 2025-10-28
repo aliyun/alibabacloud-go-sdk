@@ -35,5 +35,10 @@ func (s *Filter) SetKey(v *Key) *Filter {
 }
 
 func (s *Filter) Validate() error {
-	return dara.Validate(s)
+	if s.Key != nil {
+		if err := s.Key.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -38,5 +38,10 @@ func (s *TagResourcesRequest) SetBody(v *TagResourcesInput) *TagResourcesRequest
 }
 
 func (s *TagResourcesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

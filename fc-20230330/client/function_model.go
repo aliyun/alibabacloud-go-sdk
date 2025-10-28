@@ -652,5 +652,83 @@ func (s *Function) SetVpcConfig(v *VPCConfig) *Function {
 }
 
 func (s *Function) Validate() error {
-	return dara.Validate(s)
+	if s.CustomContainerConfig != nil {
+		if err := s.CustomContainerConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomDNS != nil {
+		if err := s.CustomDNS.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomRuntimeConfig != nil {
+		if err := s.CustomRuntimeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.GpuConfig != nil {
+		if err := s.GpuConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceLifecycleConfig != nil {
+		if err := s.InstanceLifecycleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InvocationRestriction != nil {
+		if err := s.InvocationRestriction.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Layers != nil {
+		for _, item := range s.Layers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LogConfig != nil {
+		if err := s.LogConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NasConfig != nil {
+		if err := s.NasConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OssMountConfig != nil {
+		if err := s.OssMountConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PolarFsConfig != nil {
+		if err := s.PolarFsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TracingConfig != nil {
+		if err := s.TracingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VpcConfig != nil {
+		if err := s.VpcConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

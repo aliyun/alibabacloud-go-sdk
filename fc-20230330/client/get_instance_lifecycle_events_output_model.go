@@ -47,5 +47,14 @@ func (s *GetInstanceLifecycleEventsOutput) SetRequestId(v string) *GetInstanceLi
 }
 
 func (s *GetInstanceLifecycleEventsOutput) Validate() error {
-	return dara.Validate(s)
+	if s.Events != nil {
+		for _, item := range s.Events {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

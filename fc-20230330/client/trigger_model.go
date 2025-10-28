@@ -179,5 +179,10 @@ func (s *Trigger) SetTriggerType(v string) *Trigger {
 }
 
 func (s *Trigger) Validate() error {
-	return dara.Validate(s)
+	if s.HttpTrigger != nil {
+		if err := s.HttpTrigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

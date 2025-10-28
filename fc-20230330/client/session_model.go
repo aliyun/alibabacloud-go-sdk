@@ -185,5 +185,10 @@ func (s *Session) SetSessionTTLInSeconds(v int64) *Session {
 }
 
 func (s *Session) Validate() error {
-	return dara.Validate(s)
+	if s.NasConfig != nil {
+		if err := s.NasConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

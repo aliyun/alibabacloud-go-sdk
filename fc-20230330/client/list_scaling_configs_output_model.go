@@ -47,5 +47,14 @@ func (s *ListScalingConfigsOutput) SetScalingConfigs(v []*ScalingConfigStatus) *
 }
 
 func (s *ListScalingConfigsOutput) Validate() error {
-	return dara.Validate(s)
+	if s.ScalingConfigs != nil {
+		for _, item := range s.ScalingConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -50,6 +50,11 @@ func (s *EventSourceConfig) SetEventSourceType(v string) *EventSourceConfig {
 }
 
 func (s *EventSourceConfig) Validate() error {
-  return dara.Validate(s)
+  if s.EventSourceParameters != nil {
+    if err := s.EventSourceParameters.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

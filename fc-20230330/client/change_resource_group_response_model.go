@@ -59,5 +59,10 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupOutput) *Cha
 }
 
 func (s *ChangeResourceGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

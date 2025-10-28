@@ -158,5 +158,20 @@ func (s *CustomContainerConfig) SetResolvedImageUri(v string) *CustomContainerCo
 }
 
 func (s *CustomContainerConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AccelerationInfo != nil {
+		if err := s.AccelerationInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HealthCheckConfig != nil {
+		if err := s.HealthCheckConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RegistryConfig != nil {
+		if err := s.RegistryConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
