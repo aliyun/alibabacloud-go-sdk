@@ -233,7 +233,16 @@ func (s *DescribeExpressConnectRouterAssociationResponseBody) SetTotalCount(v in
 }
 
 func (s *DescribeExpressConnectRouterAssociationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AssociationList != nil {
+		for _, item := range s.AssociationList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeExpressConnectRouterAssociationResponseBodyAssociationList struct {

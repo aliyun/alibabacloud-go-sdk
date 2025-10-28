@@ -178,7 +178,16 @@ func (s *DescribeExpressConnectRouterInterRegionTransitModeResponseBody) SetSucc
 }
 
 func (s *DescribeExpressConnectRouterInterRegionTransitModeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InterRegionTransitModeList != nil {
+		for _, item := range s.InterRegionTransitModeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeExpressConnectRouterInterRegionTransitModeResponseBodyInterRegionTransitModeList struct {

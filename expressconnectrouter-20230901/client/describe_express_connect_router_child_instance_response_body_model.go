@@ -233,7 +233,16 @@ func (s *DescribeExpressConnectRouterChildInstanceResponseBody) SetTotalCount(v 
 }
 
 func (s *DescribeExpressConnectRouterChildInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ChildInstanceList != nil {
+		for _, item := range s.ChildInstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList struct {

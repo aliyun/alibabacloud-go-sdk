@@ -233,7 +233,16 @@ func (s *DescribeExpressConnectRouterResponseBody) SetTotalCount(v int32) *Descr
 }
 
 func (s *DescribeExpressConnectRouterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EcrList != nil {
+		for _, item := range s.EcrList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeExpressConnectRouterResponseBodyEcrList struct {
@@ -429,7 +438,16 @@ func (s *DescribeExpressConnectRouterResponseBodyEcrList) SetTags(v []*DescribeE
 }
 
 func (s *DescribeExpressConnectRouterResponseBodyEcrList) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeExpressConnectRouterResponseBodyEcrListTags struct {

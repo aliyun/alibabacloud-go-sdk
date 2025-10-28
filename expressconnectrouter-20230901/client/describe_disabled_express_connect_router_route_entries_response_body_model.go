@@ -233,7 +233,16 @@ func (s *DescribeDisabledExpressConnectRouterRouteEntriesResponseBody) SetTotalC
 }
 
 func (s *DescribeDisabledExpressConnectRouterRouteEntriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DisabledRouteEntryList != nil {
+		for _, item := range s.DisabledRouteEntryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDisabledExpressConnectRouterRouteEntriesResponseBodyDisabledRouteEntryList struct {

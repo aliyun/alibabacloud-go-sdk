@@ -233,7 +233,16 @@ func (s *DescribeInstanceGrantedToExpressConnectRouterResponseBody) SetTotalCoun
 }
 
 func (s *DescribeInstanceGrantedToExpressConnectRouterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EcrGrantedInstanceList != nil {
+		for _, item := range s.EcrGrantedInstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceGrantedToExpressConnectRouterResponseBodyEcrGrantedInstanceList struct {

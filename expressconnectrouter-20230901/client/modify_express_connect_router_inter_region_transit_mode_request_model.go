@@ -109,7 +109,16 @@ func (s *ModifyExpressConnectRouterInterRegionTransitModeRequest) SetVersion(v s
 }
 
 func (s *ModifyExpressConnectRouterInterRegionTransitModeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TransitModeList != nil {
+		for _, item := range s.TransitModeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyExpressConnectRouterInterRegionTransitModeRequestTransitModeList struct {

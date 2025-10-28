@@ -257,7 +257,16 @@ func (s *DescribeInstanceGrantedToExpressConnectRouterRequest) SetVersion(v stri
 }
 
 func (s *DescribeInstanceGrantedToExpressConnectRouterRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TagModels != nil {
+		for _, item := range s.TagModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceGrantedToExpressConnectRouterRequestTagModels struct {

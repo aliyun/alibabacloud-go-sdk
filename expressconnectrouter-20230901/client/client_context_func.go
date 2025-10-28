@@ -17,9 +17,11 @@ import (
 //
 // @return ActivateFlowLogResponse
 func (client *Client) ActivateFlowLogWithContext(ctx context.Context, request *ActivateFlowLogRequest, runtime *dara.RuntimeOptions) (_result *ActivateFlowLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -81,9 +83,11 @@ func (client *Client) ActivateFlowLogWithContext(ctx context.Context, request *A
 //
 // @return AttachExpressConnectRouterChildInstanceResponse
 func (client *Client) AttachExpressConnectRouterChildInstanceWithContext(ctx context.Context, request *AttachExpressConnectRouterChildInstanceRequest, runtime *dara.RuntimeOptions) (_result *AttachExpressConnectRouterChildInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -157,9 +161,11 @@ func (client *Client) AttachExpressConnectRouterChildInstanceWithContext(ctx con
 //
 // @return CheckAddRegionToExpressConnectRouterResponse
 func (client *Client) CheckAddRegionToExpressConnectRouterWithContext(ctx context.Context, request *CheckAddRegionToExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *CheckAddRegionToExpressConnectRouterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -221,9 +227,11 @@ func (client *Client) CheckAddRegionToExpressConnectRouterWithContext(ctx contex
 //
 // @return CreateExpressConnectRouterResponse
 func (client *Client) CreateExpressConnectRouterWithContext(ctx context.Context, request *CreateExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *CreateExpressConnectRouterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -293,9 +301,11 @@ func (client *Client) CreateExpressConnectRouterWithContext(ctx context.Context,
 //
 // @return CreateExpressConnectRouterAssociationResponse
 func (client *Client) CreateExpressConnectRouterAssociationWithContext(ctx context.Context, request *CreateExpressConnectRouterAssociationRequest, runtime *dara.RuntimeOptions) (_result *CreateExpressConnectRouterAssociationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -389,9 +399,11 @@ func (client *Client) CreateExpressConnectRouterAssociationWithContext(ctx conte
 //
 // @return CreateFlowLogResponse
 func (client *Client) CreateFlowLogWithContext(ctx context.Context, request *CreateFlowLogRequest, runtime *dara.RuntimeOptions) (_result *CreateFlowLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -424,6 +436,10 @@ func (client *Client) CreateFlowLogWithContext(ctx context.Context, request *Cre
 
 	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
+	}
+
+	if !dara.IsNil(request.TargetSlsRegionId) {
+		query["TargetSlsRegionId"] = request.TargetSlsRegionId
 	}
 
 	if !dara.IsNil(request.Version) {
@@ -485,9 +501,11 @@ func (client *Client) CreateFlowLogWithContext(ctx context.Context, request *Cre
 //
 // @return DeactivateFlowLogResponse
 func (client *Client) DeactivateFlowLogWithContext(ctx context.Context, request *DeactivateFlowLogRequest, runtime *dara.RuntimeOptions) (_result *DeactivateFlowLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -553,9 +571,11 @@ func (client *Client) DeactivateFlowLogWithContext(ctx context.Context, request 
 //
 // @return DeleteExpressConnectRouterResponse
 func (client *Client) DeleteExpressConnectRouterWithContext(ctx context.Context, request *DeleteExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *DeleteExpressConnectRouterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -609,9 +629,11 @@ func (client *Client) DeleteExpressConnectRouterWithContext(ctx context.Context,
 //
 // @return DeleteExpressConnectRouterAssociationResponse
 func (client *Client) DeleteExpressConnectRouterAssociationWithContext(ctx context.Context, request *DeleteExpressConnectRouterAssociationRequest, runtime *dara.RuntimeOptions) (_result *DeleteExpressConnectRouterAssociationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -673,9 +695,11 @@ func (client *Client) DeleteExpressConnectRouterAssociationWithContext(ctx conte
 //
 // @return DeleteFlowlogResponse
 func (client *Client) DeleteFlowlogWithContext(ctx context.Context, request *DeleteFlowlogRequest, runtime *dara.RuntimeOptions) (_result *DeleteFlowlogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FlowLogId) {
@@ -733,9 +757,11 @@ func (client *Client) DeleteFlowlogWithContext(ctx context.Context, request *Del
 //
 // @return DescribeDisabledExpressConnectRouterRouteEntriesResponse
 func (client *Client) DescribeDisabledExpressConnectRouterRouteEntriesWithContext(ctx context.Context, request *DescribeDisabledExpressConnectRouterRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDisabledExpressConnectRouterRouteEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -797,9 +823,11 @@ func (client *Client) DescribeDisabledExpressConnectRouterRouteEntriesWithContex
 //
 // @return DescribeExpressConnectRouterResponse
 func (client *Client) DescribeExpressConnectRouterWithContext(ctx context.Context, request *DescribeExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectRouterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -873,9 +901,11 @@ func (client *Client) DescribeExpressConnectRouterWithContext(ctx context.Contex
 //
 // @return DescribeExpressConnectRouterAllowedPrefixHistoryResponse
 func (client *Client) DescribeExpressConnectRouterAllowedPrefixHistoryWithContext(ctx context.Context, request *DescribeExpressConnectRouterAllowedPrefixHistoryRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectRouterAllowedPrefixHistoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -941,9 +971,11 @@ func (client *Client) DescribeExpressConnectRouterAllowedPrefixHistoryWithContex
 //
 // @return DescribeExpressConnectRouterAssociationResponse
 func (client *Client) DescribeExpressConnectRouterAssociationWithContext(ctx context.Context, request *DescribeExpressConnectRouterAssociationRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectRouterAssociationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -1029,9 +1061,11 @@ func (client *Client) DescribeExpressConnectRouterAssociationWithContext(ctx con
 //
 // @return DescribeExpressConnectRouterChildInstanceResponse
 func (client *Client) DescribeExpressConnectRouterChildInstanceWithContext(ctx context.Context, request *DescribeExpressConnectRouterChildInstanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectRouterChildInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -1109,9 +1143,11 @@ func (client *Client) DescribeExpressConnectRouterChildInstanceWithContext(ctx c
 //
 // @return DescribeExpressConnectRouterInterRegionTransitModeResponse
 func (client *Client) DescribeExpressConnectRouterInterRegionTransitModeWithContext(ctx context.Context, request *DescribeExpressConnectRouterInterRegionTransitModeRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectRouterInterRegionTransitModeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -1165,9 +1201,11 @@ func (client *Client) DescribeExpressConnectRouterInterRegionTransitModeWithCont
 //
 // @return DescribeExpressConnectRouterRegionResponse
 func (client *Client) DescribeExpressConnectRouterRegionWithContext(ctx context.Context, request *DescribeExpressConnectRouterRegionRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectRouterRegionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -1221,9 +1259,11 @@ func (client *Client) DescribeExpressConnectRouterRegionWithContext(ctx context.
 //
 // @return DescribeExpressConnectRouterRouteEntriesResponse
 func (client *Client) DescribeExpressConnectRouterRouteEntriesWithContext(ctx context.Context, request *DescribeExpressConnectRouterRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectRouterRouteEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -1305,9 +1345,11 @@ func (client *Client) DescribeExpressConnectRouterRouteEntriesWithContext(ctx co
 //
 // @return DescribeFlowLogsResponse
 func (client *Client) DescribeFlowLogsWithContext(ctx context.Context, request *DescribeFlowLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeFlowLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FlowLogId) {
@@ -1397,9 +1439,11 @@ func (client *Client) DescribeFlowLogsWithContext(ctx context.Context, request *
 //
 // @return DescribeInstanceGrantedToExpressConnectRouterResponse
 func (client *Client) DescribeInstanceGrantedToExpressConnectRouterWithContext(ctx context.Context, request *DescribeInstanceGrantedToExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceGrantedToExpressConnectRouterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -1493,9 +1537,11 @@ func (client *Client) DescribeInstanceGrantedToExpressConnectRouterWithContext(c
 //
 // @return DetachExpressConnectRouterChildInstanceResponse
 func (client *Client) DetachExpressConnectRouterChildInstanceWithContext(ctx context.Context, request *DetachExpressConnectRouterChildInstanceRequest, runtime *dara.RuntimeOptions) (_result *DetachExpressConnectRouterChildInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -1557,9 +1603,11 @@ func (client *Client) DetachExpressConnectRouterChildInstanceWithContext(ctx con
 //
 // @return DisableExpressConnectRouterRouteEntriesResponse
 func (client *Client) DisableExpressConnectRouterRouteEntriesWithContext(ctx context.Context, request *DisableExpressConnectRouterRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DisableExpressConnectRouterRouteEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -1621,9 +1669,11 @@ func (client *Client) DisableExpressConnectRouterRouteEntriesWithContext(ctx con
 //
 // @return EnableExpressConnectRouterRouteEntriesResponse
 func (client *Client) EnableExpressConnectRouterRouteEntriesWithContext(ctx context.Context, request *EnableExpressConnectRouterRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *EnableExpressConnectRouterRouteEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -1691,9 +1741,11 @@ func (client *Client) EnableExpressConnectRouterRouteEntriesWithContext(ctx cont
 //
 // @return ForceDeleteExpressConnectRouterResponse
 func (client *Client) ForceDeleteExpressConnectRouterWithContext(ctx context.Context, request *ForceDeleteExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *ForceDeleteExpressConnectRouterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -1751,9 +1803,11 @@ func (client *Client) ForceDeleteExpressConnectRouterWithContext(ctx context.Con
 //
 // @return GrantInstanceToExpressConnectRouterResponse
 func (client *Client) GrantInstanceToExpressConnectRouterWithContext(ctx context.Context, request *GrantInstanceToExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *GrantInstanceToExpressConnectRouterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -1823,9 +1877,11 @@ func (client *Client) GrantInstanceToExpressConnectRouterWithContext(ctx context
 //
 // @return ListExpressConnectRouterSupportedRegionResponse
 func (client *Client) ListExpressConnectRouterSupportedRegionWithContext(ctx context.Context, request *ListExpressConnectRouterSupportedRegionRequest, runtime *dara.RuntimeOptions) (_result *ListExpressConnectRouterSupportedRegionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -1875,9 +1931,11 @@ func (client *Client) ListExpressConnectRouterSupportedRegionWithContext(ctx con
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -1943,9 +2001,11 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 //
 // @return ModifyExpressConnectRouterResponse
 func (client *Client) ModifyExpressConnectRouterWithContext(ctx context.Context, request *ModifyExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectRouterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -2007,9 +2067,11 @@ func (client *Client) ModifyExpressConnectRouterWithContext(ctx context.Context,
 //
 // @return ModifyExpressConnectRouterAssociationResponse
 func (client *Client) ModifyExpressConnectRouterAssociationWithContext(ctx context.Context, request *ModifyExpressConnectRouterAssociationRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectRouterAssociationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -2071,9 +2133,11 @@ func (client *Client) ModifyExpressConnectRouterAssociationWithContext(ctx conte
 //
 // @return ModifyExpressConnectRouterAssociationAllowedPrefixResponse
 func (client *Client) ModifyExpressConnectRouterAssociationAllowedPrefixWithContext(ctx context.Context, request *ModifyExpressConnectRouterAssociationAllowedPrefixRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectRouterAssociationAllowedPrefixResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -2143,9 +2207,11 @@ func (client *Client) ModifyExpressConnectRouterAssociationAllowedPrefixWithCont
 //
 // @return ModifyExpressConnectRouterChildInstanceResponse
 func (client *Client) ModifyExpressConnectRouterChildInstanceWithContext(ctx context.Context, request *ModifyExpressConnectRouterChildInstanceRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectRouterChildInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -2211,9 +2277,11 @@ func (client *Client) ModifyExpressConnectRouterChildInstanceWithContext(ctx con
 //
 // @return ModifyExpressConnectRouterInterRegionTransitModeResponse
 func (client *Client) ModifyExpressConnectRouterInterRegionTransitModeWithContext(ctx context.Context, request *ModifyExpressConnectRouterInterRegionTransitModeRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectRouterInterRegionTransitModeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -2271,9 +2339,11 @@ func (client *Client) ModifyExpressConnectRouterInterRegionTransitModeWithContex
 //
 // @return ModifyFlowLogAttributeResponse
 func (client *Client) ModifyFlowLogAttributeWithContext(ctx context.Context, request *ModifyFlowLogAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyFlowLogAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -2347,9 +2417,11 @@ func (client *Client) ModifyFlowLogAttributeWithContext(ctx context.Context, req
 //
 // @return MoveResourceGroupResponse
 func (client *Client) MoveResourceGroupWithContext(ctx context.Context, request *MoveResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -2411,9 +2483,11 @@ func (client *Client) MoveResourceGroupWithContext(ctx context.Context, request 
 //
 // @return RevokeInstanceFromExpressConnectRouterResponse
 func (client *Client) RevokeInstanceFromExpressConnectRouterWithContext(ctx context.Context, request *RevokeInstanceFromExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *RevokeInstanceFromExpressConnectRouterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -2487,9 +2561,11 @@ func (client *Client) RevokeInstanceFromExpressConnectRouterWithContext(ctx cont
 //
 // @return SynchronizeExpressConnectRouterInterRegionBandwidthResponse
 func (client *Client) SynchronizeExpressConnectRouterInterRegionBandwidthWithContext(ctx context.Context, request *SynchronizeExpressConnectRouterInterRegionBandwidthRequest, runtime *dara.RuntimeOptions) (_result *SynchronizeExpressConnectRouterInterRegionBandwidthResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -2543,9 +2619,11 @@ func (client *Client) SynchronizeExpressConnectRouterInterRegionBandwidthWithCon
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {
@@ -2607,9 +2685,11 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {

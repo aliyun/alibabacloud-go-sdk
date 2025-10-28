@@ -35,6 +35,8 @@ type iCreateFlowLogRequest interface {
 	GetSamplingRate() *string
 	SetTag(v []*CreateFlowLogRequestTag) *CreateFlowLogRequest
 	GetTag() []*CreateFlowLogRequestTag
+	SetTargetSlsRegionId(v string) *CreateFlowLogRequest
+	GetTargetSlsRegionId() *string
 	SetVersion(v string) *CreateFlowLogRequest
 	GetVersion() *string
 }
@@ -172,9 +174,10 @@ type CreateFlowLogRequest struct {
 	// example:
 	//
 	// 1:4096
-	SamplingRate *string                    `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
-	Tag          []*CreateFlowLogRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	Version      *string                    `json:"Version,omitempty" xml:"Version,omitempty"`
+	SamplingRate      *string                    `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
+	Tag               []*CreateFlowLogRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TargetSlsRegionId *string                    `json:"TargetSlsRegionId,omitempty" xml:"TargetSlsRegionId,omitempty"`
+	Version           *string                    `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s CreateFlowLogRequest) String() string {
@@ -235,6 +238,10 @@ func (s *CreateFlowLogRequest) GetSamplingRate() *string {
 
 func (s *CreateFlowLogRequest) GetTag() []*CreateFlowLogRequestTag {
 	return s.Tag
+}
+
+func (s *CreateFlowLogRequest) GetTargetSlsRegionId() *string {
+	return s.TargetSlsRegionId
 }
 
 func (s *CreateFlowLogRequest) GetVersion() *string {
@@ -306,13 +313,27 @@ func (s *CreateFlowLogRequest) SetTag(v []*CreateFlowLogRequestTag) *CreateFlowL
 	return s
 }
 
+func (s *CreateFlowLogRequest) SetTargetSlsRegionId(v string) *CreateFlowLogRequest {
+	s.TargetSlsRegionId = &v
+	return s
+}
+
 func (s *CreateFlowLogRequest) SetVersion(v string) *CreateFlowLogRequest {
 	s.Version = &v
 	return s
 }
 
 func (s *CreateFlowLogRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateFlowLogRequestTag struct {

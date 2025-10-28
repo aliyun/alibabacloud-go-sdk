@@ -233,7 +233,16 @@ func (s *DescribeFlowLogsResponseBody) SetTotalCount(v int32) *DescribeFlowLogsR
 }
 
 func (s *DescribeFlowLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FlowLogs != nil {
+		for _, item := range s.FlowLogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFlowLogsResponseBodyFlowLogs struct {
@@ -504,7 +513,16 @@ func (s *DescribeFlowLogsResponseBodyFlowLogs) SetTags(v []*DescribeFlowLogsResp
 }
 
 func (s *DescribeFlowLogsResponseBodyFlowLogs) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFlowLogsResponseBodyFlowLogsTags struct {
