@@ -8177,7 +8177,7 @@ func (client *Client) DeleteBinarySecurityPolicy(request *DeleteBinarySecurityPo
 
 // Summary:
 //
-// 删除自定义策略
+// Delete custom scope directories in Cloud Security Posture Management (CSPM) custom checks. You can remove assigned standards, requirements, or sections.
 //
 // @param request - DeleteCheckPolicyRequest
 //
@@ -8225,7 +8225,7 @@ func (client *Client) DeleteCheckPolicyWithOptions(request *DeleteCheckPolicyReq
 
 // Summary:
 //
-// 删除自定义策略
+// Delete custom scope directories in Cloud Security Posture Management (CSPM) custom checks. You can remove assigned standards, requirements, or sections.
 //
 // @param request - DeleteCheckPolicyRequest
 //
@@ -14170,6 +14170,10 @@ func (client *Client) DescribeCheckWarningDetailWithOptions(request *DescribeChe
 
 	if !dara.IsNil(request.CheckWarningId) {
 		query["CheckWarningId"] = request.CheckWarningId
+	}
+
+	if !dara.IsNil(request.ContainerName) {
+		query["ContainerName"] = request.ContainerName
 	}
 
 	if !dara.IsNil(request.Lang) {

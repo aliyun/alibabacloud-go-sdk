@@ -16,7 +16,10 @@ type iDeleteCheckPolicyResponseBody interface {
 }
 
 type DeleteCheckPolicyResponseBody struct {
+	// List of deleted policy details.
 	Policys []*DeleteCheckPolicyResponseBodyPolicys `json:"Policys,omitempty" xml:"Policys,omitempty" type:"Repeated"`
+	// The unique ID of the request, which is used to locate and troubleshoot issues.
+	//
 	// example:
 	//
 	// F8B6F758-BCD4-597A-8A2C-DA5A552C****
@@ -63,14 +66,26 @@ func (s *DeleteCheckPolicyResponseBody) Validate() error {
 }
 
 type DeleteCheckPolicyResponseBodyPolicys struct {
+	// Deleted policy ID.
+	//
 	// example:
 	//
 	// 1000000000001
 	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The name of the custom policy.
+	//
 	// example:
 	//
 	// testPolicyName
 	PolicyShowName *string `json:"PolicyShowName,omitempty" xml:"PolicyShowName,omitempty"`
+	// Policy type for custom check rule:
+	//
+	// 	- **STANDARD**: Standard-level policy
+	//
+	// 	- **REQUIREMENT**: Requirement-level policy
+	//
+	// 	- **SECTION**: Section-level policy
+	//
 	// example:
 	//
 	// STANDARD

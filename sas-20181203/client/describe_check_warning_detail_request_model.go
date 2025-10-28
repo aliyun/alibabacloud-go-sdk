@@ -13,6 +13,8 @@ type iDescribeCheckWarningDetailRequest interface {
 	GetCheckId() *string
 	SetCheckWarningId(v int64) *DescribeCheckWarningDetailRequest
 	GetCheckWarningId() *int64
+	SetContainerName(v string) *DescribeCheckWarningDetailRequest
+	GetContainerName() *string
 	SetLang(v string) *DescribeCheckWarningDetailRequest
 	GetLang() *string
 	SetResourceDirectoryAccountId(v int64) *DescribeCheckWarningDetailRequest
@@ -39,7 +41,8 @@ type DescribeCheckWarningDetailRequest struct {
 	// example:
 	//
 	// 98675301
-	CheckWarningId *int64 `json:"CheckWarningId,omitempty" xml:"CheckWarningId,omitempty"`
+	CheckWarningId *int64  `json:"CheckWarningId,omitempty" xml:"CheckWarningId,omitempty"`
+	ContainerName  *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
 	// 	- **zh**: Chinese
@@ -90,6 +93,10 @@ func (s *DescribeCheckWarningDetailRequest) GetCheckWarningId() *int64 {
 	return s.CheckWarningId
 }
 
+func (s *DescribeCheckWarningDetailRequest) GetContainerName() *string {
+	return s.ContainerName
+}
+
 func (s *DescribeCheckWarningDetailRequest) GetLang() *string {
 	return s.Lang
 }
@@ -113,6 +120,11 @@ func (s *DescribeCheckWarningDetailRequest) SetCheckId(v string) *DescribeCheckW
 
 func (s *DescribeCheckWarningDetailRequest) SetCheckWarningId(v int64) *DescribeCheckWarningDetailRequest {
 	s.CheckWarningId = &v
+	return s
+}
+
+func (s *DescribeCheckWarningDetailRequest) SetContainerName(v string) *DescribeCheckWarningDetailRequest {
+	s.ContainerName = &v
 	return s
 }
 
