@@ -87,7 +87,12 @@ func (s *TextModerationPlusResponseBody) SetRequestId(v string) *TextModerationP
 }
 
 func (s *TextModerationPlusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TextModerationPlusResponseBodyData struct {
@@ -251,7 +256,43 @@ func (s *TextModerationPlusResponseBodyData) SetTranslatedContent(v string) *Tex
 }
 
 func (s *TextModerationPlusResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Advice != nil {
+		for _, item := range s.Advice {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AttackResult != nil {
+		for _, item := range s.AttackResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SensitiveResult != nil {
+		for _, item := range s.SensitiveResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TextModerationPlusResponseBodyDataAdvice struct {
@@ -472,7 +513,16 @@ func (s *TextModerationPlusResponseBodyDataResult) SetRiskWords(v string) *TextM
 }
 
 func (s *TextModerationPlusResponseBodyDataResult) Validate() error {
-	return dara.Validate(s)
+	if s.CustomizedHit != nil {
+		for _, item := range s.CustomizedHit {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TextModerationPlusResponseBodyDataResultCustomizedHit struct {

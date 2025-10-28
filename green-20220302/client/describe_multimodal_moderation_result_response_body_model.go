@@ -71,7 +71,12 @@ func (s *DescribeMultimodalModerationResultResponseBody) SetRequestId(v string) 
 }
 
 func (s *DescribeMultimodalModerationResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMultimodalModerationResultResponseBodyData struct {
@@ -136,7 +141,21 @@ func (s *DescribeMultimodalModerationResultResponseBodyData) SetRiskLevel(v stri
 }
 
 func (s *DescribeMultimodalModerationResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CommentDatas != nil {
+		for _, item := range s.CommentDatas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MainData != nil {
+		if err := s.MainData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMultimodalModerationResultResponseBodyDataCommentDatas struct {
@@ -171,7 +190,25 @@ func (s *DescribeMultimodalModerationResultResponseBodyDataCommentDatas) SetResu
 }
 
 func (s *DescribeMultimodalModerationResultResponseBodyDataCommentDatas) Validate() error {
-	return dara.Validate(s)
+	if s.CommentDatas != nil {
+		for _, item := range s.CommentDatas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDatas struct {
@@ -196,7 +233,16 @@ func (s *DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDa
 }
 
 func (s *DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDatas) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDatasResults struct {
@@ -291,7 +337,16 @@ func (s *DescribeMultimodalModerationResultResponseBodyDataMainData) SetResults(
 }
 
 func (s *DescribeMultimodalModerationResultResponseBodyDataMainData) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMultimodalModerationResultResponseBodyDataMainDataResults struct {

@@ -87,7 +87,12 @@ func (s *ImageModerationResponseBody) SetRequestId(v string) *ImageModerationRes
 }
 
 func (s *ImageModerationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ImageModerationResponseBodyData struct {
@@ -166,10 +171,25 @@ func (s *ImageModerationResponseBodyData) SetRiskLevel(v string) *ImageModeratio
 }
 
 func (s *ImageModerationResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Ext != nil {
+		if err := s.Ext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ImageModerationResponseBodyDataExt struct {
+	AigcData *ImageModerationResponseBodyDataExtAigcData `json:"AigcData,omitempty" xml:"AigcData,omitempty" type:"Struct"`
 	// If a custom image library is hit, information about the hit custom image library is returned.
 	CustomImage []*ImageModerationResponseBodyDataExtCustomImage `json:"CustomImage,omitempty" xml:"CustomImage,omitempty" type:"Repeated"`
 	// The returned face attribute information
@@ -194,6 +214,10 @@ func (s ImageModerationResponseBodyDataExt) String() string {
 
 func (s ImageModerationResponseBodyDataExt) GoString() string {
 	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExt) GetAigcData() *ImageModerationResponseBodyDataExtAigcData {
+	return s.AigcData
 }
 
 func (s *ImageModerationResponseBodyDataExt) GetCustomImage() []*ImageModerationResponseBodyDataExtCustomImage {
@@ -226,6 +250,11 @@ func (s *ImageModerationResponseBodyDataExt) GetTextInImage() *ImageModerationRe
 
 func (s *ImageModerationResponseBodyDataExt) GetVlContent() *ImageModerationResponseBodyDataExtVlContent {
 	return s.VlContent
+}
+
+func (s *ImageModerationResponseBodyDataExt) SetAigcData(v *ImageModerationResponseBodyDataExtAigcData) *ImageModerationResponseBodyDataExt {
+	s.AigcData = v
+	return s
 }
 
 func (s *ImageModerationResponseBodyDataExt) SetCustomImage(v []*ImageModerationResponseBodyDataExtCustomImage) *ImageModerationResponseBodyDataExt {
@@ -269,6 +298,190 @@ func (s *ImageModerationResponseBodyDataExt) SetVlContent(v *ImageModerationResp
 }
 
 func (s *ImageModerationResponseBodyDataExt) Validate() error {
+	if s.AigcData != nil {
+		if err := s.AigcData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomImage != nil {
+		for _, item := range s.CustomImage {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FaceData != nil {
+		for _, item := range s.FaceData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LogoData != nil {
+		for _, item := range s.LogoData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OcrResult != nil {
+		for _, item := range s.OcrResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PublicFigure != nil {
+		for _, item := range s.PublicFigure {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Recognition != nil {
+		for _, item := range s.Recognition {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TextInImage != nil {
+		if err := s.TextInImage.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VlContent != nil {
+		if err := s.VlContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ImageModerationResponseBodyDataExtAigcData struct {
+	AIGC *ImageModerationResponseBodyDataExtAigcDataAIGC `json:"AIGC,omitempty" xml:"AIGC,omitempty" type:"Struct"`
+}
+
+func (s ImageModerationResponseBodyDataExtAigcData) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtAigcData) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtAigcData) GetAIGC() *ImageModerationResponseBodyDataExtAigcDataAIGC {
+	return s.AIGC
+}
+
+func (s *ImageModerationResponseBodyDataExtAigcData) SetAIGC(v *ImageModerationResponseBodyDataExtAigcDataAIGC) *ImageModerationResponseBodyDataExtAigcData {
+	s.AIGC = v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtAigcData) Validate() error {
+	if s.AIGC != nil {
+		if err := s.AIGC.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ImageModerationResponseBodyDataExtAigcDataAIGC struct {
+	ContentProducer   *string `json:"ContentProducer,omitempty" xml:"ContentProducer,omitempty"`
+	ContentPropagator *string `json:"ContentPropagator,omitempty" xml:"ContentPropagator,omitempty"`
+	Label             *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	ProduceID         *string `json:"ProduceID,omitempty" xml:"ProduceID,omitempty"`
+	PropagateID       *string `json:"PropagateID,omitempty" xml:"PropagateID,omitempty"`
+	ReservedCode1     *string `json:"ReservedCode1,omitempty" xml:"ReservedCode1,omitempty"`
+	ReservedCode2     *string `json:"ReservedCode2,omitempty" xml:"ReservedCode2,omitempty"`
+}
+
+func (s ImageModerationResponseBodyDataExtAigcDataAIGC) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtAigcDataAIGC) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtAigcDataAIGC) GetContentProducer() *string {
+	return s.ContentProducer
+}
+
+func (s *ImageModerationResponseBodyDataExtAigcDataAIGC) GetContentPropagator() *string {
+	return s.ContentPropagator
+}
+
+func (s *ImageModerationResponseBodyDataExtAigcDataAIGC) GetLabel() *string {
+	return s.Label
+}
+
+func (s *ImageModerationResponseBodyDataExtAigcDataAIGC) GetProduceID() *string {
+	return s.ProduceID
+}
+
+func (s *ImageModerationResponseBodyDataExtAigcDataAIGC) GetPropagateID() *string {
+	return s.PropagateID
+}
+
+func (s *ImageModerationResponseBodyDataExtAigcDataAIGC) GetReservedCode1() *string {
+	return s.ReservedCode1
+}
+
+func (s *ImageModerationResponseBodyDataExtAigcDataAIGC) GetReservedCode2() *string {
+	return s.ReservedCode2
+}
+
+func (s *ImageModerationResponseBodyDataExtAigcDataAIGC) SetContentProducer(v string) *ImageModerationResponseBodyDataExtAigcDataAIGC {
+	s.ContentProducer = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtAigcDataAIGC) SetContentPropagator(v string) *ImageModerationResponseBodyDataExtAigcDataAIGC {
+	s.ContentPropagator = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtAigcDataAIGC) SetLabel(v string) *ImageModerationResponseBodyDataExtAigcDataAIGC {
+	s.Label = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtAigcDataAIGC) SetProduceID(v string) *ImageModerationResponseBodyDataExtAigcDataAIGC {
+	s.ProduceID = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtAigcDataAIGC) SetPropagateID(v string) *ImageModerationResponseBodyDataExtAigcDataAIGC {
+	s.PropagateID = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtAigcDataAIGC) SetReservedCode1(v string) *ImageModerationResponseBodyDataExtAigcDataAIGC {
+	s.ReservedCode1 = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtAigcDataAIGC) SetReservedCode2(v string) *ImageModerationResponseBodyDataExtAigcDataAIGC {
+	s.ReservedCode2 = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtAigcDataAIGC) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -483,7 +696,47 @@ func (s *ImageModerationResponseBodyDataExtFaceData) SetSmile(v float32) *ImageM
 }
 
 func (s *ImageModerationResponseBodyDataExtFaceData) Validate() error {
-	return dara.Validate(s)
+	if s.Bang != nil {
+		if err := s.Bang.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Gender != nil {
+		if err := s.Gender.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Hairstyle != nil {
+		if err := s.Hairstyle.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Hat != nil {
+		if err := s.Hat.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Location != nil {
+		if err := s.Location.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Mask != nil {
+		if err := s.Mask.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Mustache != nil {
+		if err := s.Mustache.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Quality != nil {
+		if err := s.Quality.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ImageModerationResponseBodyDataExtFaceDataBang struct {
@@ -985,7 +1238,21 @@ func (s *ImageModerationResponseBodyDataExtLogoData) SetLogo(v []*ImageModeratio
 }
 
 func (s *ImageModerationResponseBodyDataExtLogoData) Validate() error {
-	return dara.Validate(s)
+	if s.Location != nil {
+		if err := s.Location.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Logo != nil {
+		for _, item := range s.Logo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ImageModerationResponseBodyDataExtLogoDataLocation struct {
@@ -1161,7 +1428,12 @@ func (s *ImageModerationResponseBodyDataExtOcrResult) SetText(v string) *ImageMo
 }
 
 func (s *ImageModerationResponseBodyDataExtOcrResult) Validate() error {
-	return dara.Validate(s)
+	if s.Location != nil {
+		if err := s.Location.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ImageModerationResponseBodyDataExtOcrResultLocation struct {
@@ -1292,7 +1564,16 @@ func (s *ImageModerationResponseBodyDataExtPublicFigure) SetLocation(v []*ImageM
 }
 
 func (s *ImageModerationResponseBodyDataExtPublicFigure) Validate() error {
-	return dara.Validate(s)
+	if s.Location != nil {
+		for _, item := range s.Location {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ImageModerationResponseBodyDataExtPublicFigureLocation struct {
@@ -1460,7 +1741,25 @@ func (s *ImageModerationResponseBodyDataExtTextInImage) SetRiskWord(v []*string)
 }
 
 func (s *ImageModerationResponseBodyDataExtTextInImage) Validate() error {
-	return dara.Validate(s)
+	if s.CustomText != nil {
+		for _, item := range s.CustomText {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OcrResult != nil {
+		for _, item := range s.OcrResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ImageModerationResponseBodyDataExtTextInImageCustomText struct {
@@ -1561,7 +1860,12 @@ func (s *ImageModerationResponseBodyDataExtTextInImageOcrResult) SetText(v strin
 }
 
 func (s *ImageModerationResponseBodyDataExtTextInImageOcrResult) Validate() error {
-	return dara.Validate(s)
+	if s.Location != nil {
+		if err := s.Location.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ImageModerationResponseBodyDataExtTextInImageOcrResultLocation struct {

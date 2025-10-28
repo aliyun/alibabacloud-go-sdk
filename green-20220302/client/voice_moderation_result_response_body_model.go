@@ -87,7 +87,12 @@ func (s *VoiceModerationResultResponseBody) SetRequestId(v string) *VoiceModerat
 }
 
 func (s *VoiceModerationResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type VoiceModerationResultResponseBodyData struct {
@@ -198,7 +203,16 @@ func (s *VoiceModerationResultResponseBodyData) SetUrl(v string) *VoiceModeratio
 }
 
 func (s *VoiceModerationResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.SliceDetails != nil {
+		for _, item := range s.SliceDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type VoiceModerationResultResponseBodyDataSliceDetails struct {

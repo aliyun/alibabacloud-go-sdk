@@ -87,7 +87,12 @@ func (s *VideoModerationResponseBody) SetRequestId(v string) *VideoModerationRes
 }
 
 func (s *VideoModerationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type VideoModerationResponseBodyData struct {

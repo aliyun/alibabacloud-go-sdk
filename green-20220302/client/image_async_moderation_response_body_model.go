@@ -87,7 +87,12 @@ func (s *ImageAsyncModerationResponseBody) SetRequestId(v string) *ImageAsyncMod
 }
 
 func (s *ImageAsyncModerationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ImageAsyncModerationResponseBodyData struct {

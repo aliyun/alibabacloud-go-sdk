@@ -87,7 +87,12 @@ func (s *DescribeImageResultExtResponseBody) SetRequestId(v string) *DescribeIma
 }
 
 func (s *DescribeImageResultExtResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImageResultExtResponseBodyData struct {
@@ -135,7 +140,30 @@ func (s *DescribeImageResultExtResponseBodyData) SetTextInImage(v *DescribeImage
 }
 
 func (s *DescribeImageResultExtResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CustomImage != nil {
+		for _, item := range s.CustomImage {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PublicFigure != nil {
+		for _, item := range s.PublicFigure {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TextInImage != nil {
+		if err := s.TextInImage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImageResultExtResponseBodyDataCustomImage struct {
@@ -273,7 +301,16 @@ func (s *DescribeImageResultExtResponseBodyDataTextInImage) SetRiskWords(v []*st
 }
 
 func (s *DescribeImageResultExtResponseBodyDataTextInImage) Validate() error {
-	return dara.Validate(s)
+	if s.CustomTexts != nil {
+		for _, item := range s.CustomTexts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageResultExtResponseBodyDataTextInImageCustomTexts struct {

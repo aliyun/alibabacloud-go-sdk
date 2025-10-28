@@ -87,7 +87,12 @@ func (s *VoiceModerationResponseBody) SetRequestId(v string) *VoiceModerationRes
 }
 
 func (s *VoiceModerationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type VoiceModerationResponseBodyData struct {

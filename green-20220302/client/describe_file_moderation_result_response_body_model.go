@@ -87,7 +87,12 @@ func (s *DescribeFileModerationResultResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribeFileModerationResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeFileModerationResultResponseBodyData struct {
@@ -184,7 +189,21 @@ func (s *DescribeFileModerationResultResponseBodyData) SetUrl(v string) *Describ
 }
 
 func (s *DescribeFileModerationResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PageResult != nil {
+		for _, item := range s.PageResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageSummary != nil {
+		if err := s.PageSummary.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeFileModerationResultResponseBodyDataPageResult struct {
@@ -266,7 +285,25 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResult) SetTextUrl(v st
 }
 
 func (s *DescribeFileModerationResultResponseBodyDataPageResult) Validate() error {
-	return dara.Validate(s)
+	if s.ImageResult != nil {
+		for _, item := range s.ImageResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TextResult != nil {
+		for _, item := range s.TextResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFileModerationResultResponseBodyDataPageResultImageResult struct {
@@ -348,7 +385,21 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResult) SetS
 }
 
 func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResult) Validate() error {
-	return dara.Validate(s)
+	if s.LabelResult != nil {
+		for _, item := range s.LabelResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Location != nil {
+		if err := s.Location.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult struct {
@@ -685,7 +736,17 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummary) SetTextSummary
 }
 
 func (s *DescribeFileModerationResultResponseBodyDataPageSummary) Validate() error {
-	return dara.Validate(s)
+	if s.ImageSummary != nil {
+		if err := s.ImageSummary.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TextSummary != nil {
+		if err := s.TextSummary.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary struct {
@@ -726,7 +787,16 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary) Se
 }
 
 func (s *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary) Validate() error {
-	return dara.Validate(s)
+	if s.ImageLabels != nil {
+		for _, item := range s.ImageLabels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLabels struct {
@@ -827,7 +897,16 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary) Set
 }
 
 func (s *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary) Validate() error {
-	return dara.Validate(s)
+	if s.TextLabels != nil {
+		for _, item := range s.TextLabels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels struct {

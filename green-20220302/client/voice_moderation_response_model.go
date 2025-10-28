@@ -59,5 +59,10 @@ func (s *VoiceModerationResponse) SetBody(v *VoiceModerationResponseBody) *Voice
 }
 
 func (s *VoiceModerationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

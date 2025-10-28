@@ -87,7 +87,12 @@ func (s *VideoModerationResultResponseBody) SetRequestId(v string) *VideoModerat
 }
 
 func (s *VideoModerationResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type VideoModerationResultResponseBodyData struct {
@@ -194,7 +199,17 @@ func (s *VideoModerationResultResponseBodyData) SetTaskId(v string) *VideoModera
 }
 
 func (s *VideoModerationResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AudioResult != nil {
+		if err := s.AudioResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FrameResult != nil {
+		if err := s.FrameResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type VideoModerationResultResponseBodyDataAudioResult struct {
@@ -246,7 +261,25 @@ func (s *VideoModerationResultResponseBodyDataAudioResult) SetSliceDetails(v []*
 }
 
 func (s *VideoModerationResultResponseBodyDataAudioResult) Validate() error {
-	return dara.Validate(s)
+	if s.AudioSummarys != nil {
+		for _, item := range s.AudioSummarys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SliceDetails != nil {
+		for _, item := range s.SliceDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type VideoModerationResultResponseBodyDataAudioResultAudioSummarys struct {
@@ -583,7 +616,25 @@ func (s *VideoModerationResultResponseBodyDataFrameResult) SetRiskLevel(v string
 }
 
 func (s *VideoModerationResultResponseBodyDataFrameResult) Validate() error {
-	return dara.Validate(s)
+	if s.FrameSummarys != nil {
+		for _, item := range s.FrameSummarys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Frames != nil {
+		for _, item := range s.Frames {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFrameSummarys struct {
@@ -729,7 +780,16 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFrames) SetTimestamp(v 
 }
 
 func (s *VideoModerationResultResponseBodyDataFrameResultFrames) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResults struct {
@@ -814,7 +874,43 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) SetTextI
 }
 
 func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) Validate() error {
-	return dara.Validate(s)
+	if s.CustomImage != nil {
+		for _, item := range s.CustomImage {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LogoData != nil {
+		for _, item := range s.LogoData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PublicFigure != nil {
+		for _, item := range s.PublicFigure {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage struct {
@@ -896,7 +992,21 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData) 
 }
 
 func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData) Validate() error {
-	return dara.Validate(s)
+	if s.Location != nil {
+		if err := s.Location.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Logo != nil {
+		for _, item := range s.Logo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation struct {
@@ -1081,7 +1191,16 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigu
 }
 
 func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure) Validate() error {
-	return dara.Validate(s)
+	if s.Location != nil {
+		for _, item := range s.Location {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigureLocation struct {

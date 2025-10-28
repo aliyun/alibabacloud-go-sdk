@@ -80,7 +80,12 @@ func (s *ImageQueueModerationResponseBody) SetRequestId(v string) *ImageQueueMod
 }
 
 func (s *ImageQueueModerationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ImageQueueModerationResponseBodyData struct {
@@ -157,7 +162,16 @@ func (s *ImageQueueModerationResponseBodyData) SetRiskLevel(v string) *ImageQueu
 }
 
 func (s *ImageQueueModerationResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ImageQueueModerationResponseBodyDataResult struct {

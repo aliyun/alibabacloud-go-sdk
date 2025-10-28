@@ -80,7 +80,12 @@ func (s *MultiModalGuardResponseBody) SetRequestId(v string) *MultiModalGuardRes
 }
 
 func (s *MultiModalGuardResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MultiModalGuardResponseBodyData struct {
@@ -131,7 +136,16 @@ func (s *MultiModalGuardResponseBodyData) SetSuggestion(v string) *MultiModalGua
 }
 
 func (s *MultiModalGuardResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		for _, item := range s.Detail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MultiModalGuardResponseBodyDataDetail struct {
@@ -195,7 +209,16 @@ func (s *MultiModalGuardResponseBodyDataDetail) SetType(v string) *MultiModalGua
 }
 
 func (s *MultiModalGuardResponseBodyDataDetail) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MultiModalGuardResponseBodyDataDetailResult struct {

@@ -71,7 +71,12 @@ func (s *MultimodalAsyncModerationResponseBody) SetRequestId(v string) *Multimod
 }
 
 func (s *MultimodalAsyncModerationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MultimodalAsyncModerationResponseBodyData struct {

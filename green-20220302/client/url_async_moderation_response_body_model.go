@@ -87,7 +87,12 @@ func (s *UrlAsyncModerationResponseBody) SetRequestId(v string) *UrlAsyncModerat
 }
 
 func (s *UrlAsyncModerationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UrlAsyncModerationResponseBodyData struct {

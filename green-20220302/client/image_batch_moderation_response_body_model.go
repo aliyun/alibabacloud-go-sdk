@@ -87,7 +87,12 @@ func (s *ImageBatchModerationResponseBody) SetRequestId(v string) *ImageBatchMod
 }
 
 func (s *ImageBatchModerationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ImageBatchModerationResponseBodyData struct {
@@ -164,7 +169,25 @@ func (s *ImageBatchModerationResponseBodyData) SetRiskLevel(v string) *ImageBatc
 }
 
 func (s *ImageBatchModerationResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ImageBatchModerationResponseBodyDataResult struct {
@@ -291,7 +314,21 @@ func (s *ImageBatchModerationResponseBodyDataResults) SetService(v string) *Imag
 }
 
 func (s *ImageBatchModerationResponseBodyDataResults) Validate() error {
-	return dara.Validate(s)
+	if s.Ext != nil {
+		if err := s.Ext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ImageBatchModerationResponseBodyDataResultsExt struct {
@@ -350,7 +387,35 @@ func (s *ImageBatchModerationResponseBodyDataResultsExt) SetTextInImage(v *Image
 }
 
 func (s *ImageBatchModerationResponseBodyDataResultsExt) Validate() error {
-	return dara.Validate(s)
+	if s.CustomImage != nil {
+		for _, item := range s.CustomImage {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LogoData != nil {
+		if err := s.LogoData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PublicFigure != nil {
+		for _, item := range s.PublicFigure {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TextInImage != nil {
+		if err := s.TextInImage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ImageBatchModerationResponseBodyDataResultsExtCustomImage struct {
@@ -447,7 +512,21 @@ func (s *ImageBatchModerationResponseBodyDataResultsExtLogoData) SetLogo(v []*Im
 }
 
 func (s *ImageBatchModerationResponseBodyDataResultsExtLogoData) Validate() error {
-	return dara.Validate(s)
+	if s.Location != nil {
+		if err := s.Location.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Logo != nil {
+		for _, item := range s.Logo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ImageBatchModerationResponseBodyDataResultsExtLogoDataLocation struct {
@@ -638,7 +717,16 @@ func (s *ImageBatchModerationResponseBodyDataResultsExtPublicFigure) SetLocation
 }
 
 func (s *ImageBatchModerationResponseBodyDataResultsExtPublicFigure) Validate() error {
-	return dara.Validate(s)
+	if s.Location != nil {
+		for _, item := range s.Location {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ImageBatchModerationResponseBodyDataResultsExtPublicFigureLocation struct {
@@ -761,7 +849,25 @@ func (s *ImageBatchModerationResponseBodyDataResultsExtTextInImage) SetRiskWord(
 }
 
 func (s *ImageBatchModerationResponseBodyDataResultsExtTextInImage) Validate() error {
-	return dara.Validate(s)
+	if s.CustomText != nil {
+		for _, item := range s.CustomText {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OcrResult != nil {
+		for _, item := range s.OcrResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ImageBatchModerationResponseBodyDataResultsExtTextInImageCustomText struct {
@@ -862,7 +968,12 @@ func (s *ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResult) Set
 }
 
 func (s *ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResult) Validate() error {
-	return dara.Validate(s)
+	if s.Location != nil {
+		if err := s.Location.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResultLocation struct {

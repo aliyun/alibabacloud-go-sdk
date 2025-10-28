@@ -59,5 +59,10 @@ func (s *FileModerationResponse) SetBody(v *FileModerationResponseBody) *FileMod
 }
 
 func (s *FileModerationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

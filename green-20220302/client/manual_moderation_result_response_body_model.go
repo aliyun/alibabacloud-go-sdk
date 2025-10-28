@@ -87,7 +87,12 @@ func (s *ManualModerationResultResponseBody) SetRequestId(v string) *ManualModer
 }
 
 func (s *ManualModerationResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ManualModerationResultResponseBodyData struct {
@@ -166,7 +171,16 @@ func (s *ManualModerationResultResponseBodyData) SetTaskId(v string) *ManualMode
 }
 
 func (s *ManualModerationResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ManualModerationResultResponseBodyDataResult struct {

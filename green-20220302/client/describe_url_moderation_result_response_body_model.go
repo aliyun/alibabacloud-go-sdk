@@ -87,7 +87,12 @@ func (s *DescribeUrlModerationResultResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeUrlModerationResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeUrlModerationResultResponseBodyData struct {
@@ -154,7 +159,21 @@ func (s *DescribeUrlModerationResultResponseBodyData) SetResult(v []*DescribeUrl
 }
 
 func (s *DescribeUrlModerationResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ExtraInfo != nil {
+		if err := s.ExtraInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUrlModerationResultResponseBodyDataExtraInfo struct {

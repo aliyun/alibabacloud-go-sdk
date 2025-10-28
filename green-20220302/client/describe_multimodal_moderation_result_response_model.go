@@ -59,5 +59,10 @@ func (s *DescribeMultimodalModerationResultResponse) SetBody(v *DescribeMultimod
 }
 
 func (s *DescribeMultimodalModerationResultResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

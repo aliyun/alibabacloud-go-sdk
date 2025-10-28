@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -85,9 +86,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return DescribeFileModerationResultResponse
 func (client *Client) DescribeFileModerationResultWithOptions(request *DescribeFileModerationResultRequest, runtime *dara.RuntimeOptions) (_result *DescribeFileModerationResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Service) {
@@ -155,9 +158,11 @@ func (client *Client) DescribeFileModerationResult(request *DescribeFileModerati
 //
 // @return DescribeImageModerationResultResponse
 func (client *Client) DescribeImageModerationResultWithOptions(request *DescribeImageModerationResultRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageModerationResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ReqId) {
@@ -221,9 +226,11 @@ func (client *Client) DescribeImageModerationResult(request *DescribeImageModera
 //
 // @return DescribeImageResultExtResponse
 func (client *Client) DescribeImageResultExtWithOptions(request *DescribeImageResultExtRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageResultExtResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InfoType) {
@@ -285,9 +292,11 @@ func (client *Client) DescribeImageResultExt(request *DescribeImageResultExtRequ
 //
 // @return DescribeMultimodalModerationResultResponse
 func (client *Client) DescribeMultimodalModerationResultWithOptions(request *DescribeMultimodalModerationResultRequest, runtime *dara.RuntimeOptions) (_result *DescribeMultimodalModerationResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ReqId) {
@@ -400,9 +409,11 @@ func (client *Client) DescribeUploadToken() (_result *DescribeUploadTokenRespons
 //
 // @return DescribeUrlModerationResultResponse
 func (client *Client) DescribeUrlModerationResultWithOptions(request *DescribeUrlModerationResultRequest, runtime *dara.RuntimeOptions) (_result *DescribeUrlModerationResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ReqId) {
@@ -468,9 +479,11 @@ func (client *Client) DescribeUrlModerationResult(request *DescribeUrlModeration
 //
 // @return FileModerationResponse
 func (client *Client) FileModerationWithOptions(request *FileModerationRequest, runtime *dara.RuntimeOptions) (_result *FileModerationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Service) {
@@ -532,9 +545,11 @@ func (client *Client) FileModeration(request *FileModerationRequest) (_result *F
 //
 // @return ImageAsyncModerationResponse
 func (client *Client) ImageAsyncModerationWithOptions(request *ImageAsyncModerationRequest, runtime *dara.RuntimeOptions) (_result *ImageAsyncModerationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Service) {
@@ -596,9 +611,11 @@ func (client *Client) ImageAsyncModeration(request *ImageAsyncModerationRequest)
 //
 // @return ImageBatchModerationResponse
 func (client *Client) ImageBatchModerationWithOptions(request *ImageBatchModerationRequest, runtime *dara.RuntimeOptions) (_result *ImageBatchModerationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Service) {
@@ -664,9 +681,11 @@ func (client *Client) ImageBatchModeration(request *ImageBatchModerationRequest)
 //
 // @return ImageModerationResponse
 func (client *Client) ImageModerationWithOptions(request *ImageModerationRequest, runtime *dara.RuntimeOptions) (_result *ImageModerationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Service) {
@@ -732,9 +751,11 @@ func (client *Client) ImageModeration(request *ImageModerationRequest) (_result 
 //
 // @return ImageQueueModerationResponse
 func (client *Client) ImageQueueModerationWithOptions(request *ImageQueueModerationRequest, runtime *dara.RuntimeOptions) (_result *ImageQueueModerationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Service) {
@@ -796,9 +817,11 @@ func (client *Client) ImageQueueModeration(request *ImageQueueModerationRequest)
 //
 // @return ManualCallbackResponse
 func (client *Client) ManualCallbackWithOptions(request *ManualCallbackRequest, runtime *dara.RuntimeOptions) (_result *ManualCallbackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Channel) {
@@ -876,9 +899,11 @@ func (client *Client) ManualCallback(request *ManualCallbackRequest) (_result *M
 //
 // @return ManualModerationResponse
 func (client *Client) ManualModerationWithOptions(request *ManualModerationRequest, runtime *dara.RuntimeOptions) (_result *ManualModerationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Service) {
@@ -940,9 +965,11 @@ func (client *Client) ManualModeration(request *ManualModerationRequest) (_resul
 //
 // @return ManualModerationResultResponse
 func (client *Client) ManualModerationResultWithOptions(request *ManualModerationResultRequest, runtime *dara.RuntimeOptions) (_result *ManualModerationResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ServiceParameters) {
@@ -1000,9 +1027,11 @@ func (client *Client) ManualModerationResult(request *ManualModerationResultRequ
 //
 // @return MultiModalGuardResponse
 func (client *Client) MultiModalGuardWithOptions(request *MultiModalGuardRequest, runtime *dara.RuntimeOptions) (_result *MultiModalGuardResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Service) {
@@ -1064,9 +1093,11 @@ func (client *Client) MultiModalGuard(request *MultiModalGuardRequest) (_result 
 //
 // @return MultimodalAsyncModerationResponse
 func (client *Client) MultimodalAsyncModerationWithOptions(request *MultimodalAsyncModerationRequest, runtime *dara.RuntimeOptions) (_result *MultimodalAsyncModerationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Service) {
@@ -1132,9 +1163,11 @@ func (client *Client) MultimodalAsyncModeration(request *MultimodalAsyncModerati
 //
 // @return TextModerationResponse
 func (client *Client) TextModerationWithOptions(request *TextModerationRequest, runtime *dara.RuntimeOptions) (_result *TextModerationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Service) {
@@ -1204,9 +1237,11 @@ func (client *Client) TextModeration(request *TextModerationRequest) (_result *T
 //
 // @return TextModerationPlusResponse
 func (client *Client) TextModerationPlusWithOptions(request *TextModerationPlusRequest, runtime *dara.RuntimeOptions) (_result *TextModerationPlusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Service) {
@@ -1272,9 +1307,11 @@ func (client *Client) TextModerationPlus(request *TextModerationPlusRequest) (_r
 //
 // @return UrlAsyncModerationResponse
 func (client *Client) UrlAsyncModerationWithOptions(request *UrlAsyncModerationRequest, runtime *dara.RuntimeOptions) (_result *UrlAsyncModerationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Service) {
@@ -1336,9 +1373,11 @@ func (client *Client) UrlAsyncModeration(request *UrlAsyncModerationRequest) (_r
 //
 // @return VideoModerationResponse
 func (client *Client) VideoModerationWithOptions(request *VideoModerationRequest, runtime *dara.RuntimeOptions) (_result *VideoModerationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Service) {
@@ -1400,9 +1439,11 @@ func (client *Client) VideoModeration(request *VideoModerationRequest) (_result 
 //
 // @return VideoModerationCancelResponse
 func (client *Client) VideoModerationCancelWithOptions(request *VideoModerationCancelRequest, runtime *dara.RuntimeOptions) (_result *VideoModerationCancelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Service) {
@@ -1468,9 +1509,11 @@ func (client *Client) VideoModerationCancel(request *VideoModerationCancelReques
 //
 // @return VideoModerationResultResponse
 func (client *Client) VideoModerationResultWithOptions(request *VideoModerationResultRequest, runtime *dara.RuntimeOptions) (_result *VideoModerationResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Service) {
@@ -1536,9 +1579,11 @@ func (client *Client) VideoModerationResult(request *VideoModerationResultReques
 //
 // @return VoiceModerationResponse
 func (client *Client) VoiceModerationWithOptions(request *VoiceModerationRequest, runtime *dara.RuntimeOptions) (_result *VoiceModerationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Service) {
@@ -1600,9 +1645,11 @@ func (client *Client) VoiceModeration(request *VoiceModerationRequest) (_result 
 //
 // @return VoiceModerationCancelResponse
 func (client *Client) VoiceModerationCancelWithOptions(request *VoiceModerationCancelRequest, runtime *dara.RuntimeOptions) (_result *VoiceModerationCancelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Service) {
@@ -1664,9 +1711,11 @@ func (client *Client) VoiceModerationCancel(request *VoiceModerationCancelReques
 //
 // @return VoiceModerationResultResponse
 func (client *Client) VoiceModerationResultWithOptions(request *VoiceModerationResultRequest, runtime *dara.RuntimeOptions) (_result *VoiceModerationResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Service) {
