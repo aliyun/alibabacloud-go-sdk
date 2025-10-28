@@ -267,6 +267,7 @@ type DescribeNamespaceResourcesResponseBodyData struct {
 	//
 	// sg-wz969ngg2e49q5i4****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SlsConfigs      *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
 	// The ID of the tenant in the SAE namespace.
 	//
 	// example:
@@ -365,6 +366,10 @@ func (s *DescribeNamespaceResourcesResponseBodyData) GetSecurityGroupId() *strin
 	return s.SecurityGroupId
 }
 
+func (s *DescribeNamespaceResourcesResponseBodyData) GetSlsConfigs() *string {
+	return s.SlsConfigs
+}
+
 func (s *DescribeNamespaceResourcesResponseBodyData) GetTenantId() *string {
 	return s.TenantId
 }
@@ -451,6 +456,11 @@ func (s *DescribeNamespaceResourcesResponseBodyData) SetNotificationExpired(v bo
 
 func (s *DescribeNamespaceResourcesResponseBodyData) SetSecurityGroupId(v string) *DescribeNamespaceResourcesResponseBodyData {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *DescribeNamespaceResourcesResponseBodyData) SetSlsConfigs(v string) *DescribeNamespaceResourcesResponseBodyData {
+	s.SlsConfigs = &v
 	return s
 }
 
