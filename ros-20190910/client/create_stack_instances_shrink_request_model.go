@@ -294,7 +294,16 @@ func (s *CreateStackInstancesShrinkRequest) SetTimeoutInMinutes(v int64) *Create
 }
 
 func (s *CreateStackInstancesShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ParameterOverrides != nil {
+		for _, item := range s.ParameterOverrides {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateStackInstancesShrinkRequestParameterOverrides struct {

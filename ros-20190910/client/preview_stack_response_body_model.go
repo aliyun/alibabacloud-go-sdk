@@ -53,7 +53,12 @@ func (s *PreviewStackResponseBody) SetStack(v *PreviewStackResponseBodyStack) *P
 }
 
 func (s *PreviewStackResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Stack != nil {
+		if err := s.Stack.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PreviewStackResponseBodyStack struct {
@@ -208,7 +213,30 @@ func (s *PreviewStackResponseBodyStack) SetTimeoutInMinutes(v int32) *PreviewSta
 }
 
 func (s *PreviewStackResponseBodyStack) Validate() error {
-	return dara.Validate(s)
+	if s.Log != nil {
+		if err := s.Log.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Parameters != nil {
+		for _, item := range s.Parameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Resources != nil {
+		for _, item := range s.Resources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PreviewStackResponseBodyStackLog struct {
@@ -236,7 +264,16 @@ func (s *PreviewStackResponseBodyStackLog) SetTerraformLogs(v []*PreviewStackRes
 }
 
 func (s *PreviewStackResponseBodyStackLog) Validate() error {
-	return dara.Validate(s)
+	if s.TerraformLogs != nil {
+		for _, item := range s.TerraformLogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PreviewStackResponseBodyStackLogTerraformLogs struct {

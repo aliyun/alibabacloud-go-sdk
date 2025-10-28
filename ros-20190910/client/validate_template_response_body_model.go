@@ -126,7 +126,35 @@ func (s *ValidateTemplateResponseBody) SetUpdateInfo(v *ValidateTemplateResponse
 }
 
 func (s *ValidateTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Outputs != nil {
+		for _, item := range s.Outputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResourceTypes != nil {
+		if err := s.ResourceTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Resources != nil {
+		for _, item := range s.Resources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UpdateInfo != nil {
+		if err := s.UpdateInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ValidateTemplateResponseBodyOutputs struct {

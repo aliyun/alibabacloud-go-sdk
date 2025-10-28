@@ -132,7 +132,16 @@ func (s *GetTemplateSummaryResponseBody) SetVersion(v string) *GetTemplateSummar
 }
 
 func (s *GetTemplateSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceIdentifierSummaries != nil {
+		for _, item := range s.ResourceIdentifierSummaries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTemplateSummaryResponseBodyResourceIdentifierSummaries struct {

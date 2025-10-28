@@ -343,7 +343,30 @@ func (s *GetChangeSetResponseBody) SetTimeoutInMinutes(v int32) *GetChangeSetRes
 }
 
 func (s *GetChangeSetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Log != nil {
+		if err := s.Log.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Parameters != nil {
+		for _, item := range s.Parameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetChangeSetResponseBodyLog struct {
@@ -371,7 +394,16 @@ func (s *GetChangeSetResponseBodyLog) SetTerraformLogs(v []*GetChangeSetResponse
 }
 
 func (s *GetChangeSetResponseBodyLog) Validate() error {
-	return dara.Validate(s)
+	if s.TerraformLogs != nil {
+		for _, item := range s.TerraformLogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetChangeSetResponseBodyLogTerraformLogs struct {

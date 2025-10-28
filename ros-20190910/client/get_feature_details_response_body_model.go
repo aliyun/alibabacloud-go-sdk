@@ -118,7 +118,37 @@ func (s *GetFeatureDetailsResponseBody) SetTerraform(v *GetFeatureDetailsRespons
 }
 
 func (s *GetFeatureDetailsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DriftDetection != nil {
+		if err := s.DriftDetection.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceCleaner != nil {
+		if err := s.ResourceCleaner.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceImport != nil {
+		if err := s.ResourceImport.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TemplateParameterConstraints != nil {
+		if err := s.TemplateParameterConstraints.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TemplateScratch != nil {
+		if err := s.TemplateScratch.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Terraform != nil {
+		if err := s.Terraform.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetFeatureDetailsResponseBodyDriftDetection struct {
@@ -170,7 +200,16 @@ func (s *GetFeatureDetailsResponseBodyResourceCleaner) SetSupportedResourceTypes
 }
 
 func (s *GetFeatureDetailsResponseBodyResourceCleaner) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedResourceTypes != nil {
+		for _, item := range s.SupportedResourceTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes struct {
@@ -248,7 +287,16 @@ func (s *GetFeatureDetailsResponseBodyResourceImport) SetSupportedResourceTypes(
 }
 
 func (s *GetFeatureDetailsResponseBodyResourceImport) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedResourceTypes != nil {
+		for _, item := range s.SupportedResourceTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetFeatureDetailsResponseBodyResourceImportSupportedResourceTypes struct {
@@ -315,7 +363,16 @@ func (s *GetFeatureDetailsResponseBodyTemplateParameterConstraints) SetSupported
 }
 
 func (s *GetFeatureDetailsResponseBodyTemplateParameterConstraints) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedResourceTypes != nil {
+		for _, item := range s.SupportedResourceTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetFeatureDetailsResponseBodyTemplateParameterConstraintsSupportedResourceTypes struct {
@@ -382,7 +439,16 @@ func (s *GetFeatureDetailsResponseBodyTemplateScratch) SetSupportedResourceTypes
 }
 
 func (s *GetFeatureDetailsResponseBodyTemplateScratch) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedResourceTypes != nil {
+		for _, item := range s.SupportedResourceTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes struct {
@@ -536,7 +602,21 @@ func (s *GetFeatureDetailsResponseBodyTerraform) SetSupportedVersions(v []*GetFe
 }
 
 func (s *GetFeatureDetailsResponseBodyTerraform) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedResourceTypes != nil {
+		if err := s.SupportedResourceTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SupportedVersions != nil {
+		for _, item := range s.SupportedVersions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes struct {
@@ -606,7 +686,12 @@ func (s *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes) SetSystem
 }
 
 func (s *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes) Validate() error {
-	return dara.Validate(s)
+	if s.StackOperationRisk != nil {
+		if err := s.StackOperationRisk.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetFeatureDetailsResponseBodyTerraformSupportedResourceTypesStackOperationRisk struct {
@@ -699,7 +784,16 @@ func (s *GetFeatureDetailsResponseBodyTerraformSupportedVersions) SetUpdateAllow
 }
 
 func (s *GetFeatureDetailsResponseBodyTerraformSupportedVersions) Validate() error {
-	return dara.Validate(s)
+	if s.ProviderVersions != nil {
+		for _, item := range s.ProviderVersions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetFeatureDetailsResponseBodyTerraformSupportedVersionsProviderVersions struct {

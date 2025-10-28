@@ -125,7 +125,16 @@ func (s *ListDiagnosticsResponseBody) SetSuccess(v string) *ListDiagnosticsRespo
 }
 
 func (s *ListDiagnosticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Diagnostics != nil {
+		for _, item := range s.Diagnostics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDiagnosticsResponseBodyDiagnostics struct {

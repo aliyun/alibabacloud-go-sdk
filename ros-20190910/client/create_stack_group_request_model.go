@@ -324,7 +324,30 @@ func (s *CreateStackGroupRequest) SetTemplateVersion(v string) *CreateStackGroup
 }
 
 func (s *CreateStackGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AutoDeployment != nil {
+		if err := s.AutoDeployment.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Parameters != nil {
+		for _, item := range s.Parameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateStackGroupRequestAutoDeployment struct {

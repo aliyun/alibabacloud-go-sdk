@@ -267,7 +267,12 @@ func (s *GetDiagnosticResponseBody) SetSuccess(v string) *GetDiagnosticResponseB
 }
 
 func (s *GetDiagnosticResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DiagnosticResult != nil {
+		if err := s.DiagnosticResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDiagnosticResponseBodyDiagnosticResult struct {

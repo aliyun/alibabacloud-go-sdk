@@ -486,7 +486,25 @@ func (s *CreateStackRequest) SetTimeoutInMinutes(v int64) *CreateStackRequest {
 }
 
 func (s *CreateStackRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Parameters != nil {
+		for _, item := range s.Parameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateStackRequestParameters struct {

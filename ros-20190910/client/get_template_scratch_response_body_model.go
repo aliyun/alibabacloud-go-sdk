@@ -53,7 +53,12 @@ func (s *GetTemplateScratchResponseBody) SetTemplateScratch(v *GetTemplateScratc
 }
 
 func (s *GetTemplateScratchResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TemplateScratch != nil {
+		if err := s.TemplateScratch.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTemplateScratchResponseBodyTemplateScratch struct {
@@ -319,7 +324,49 @@ func (s *GetTemplateScratchResponseBodyTemplateScratch) SetUpdateTime(v string) 
 }
 
 func (s *GetTemplateScratchResponseBodyTemplateScratch) Validate() error {
-	return dara.Validate(s)
+	if s.PreferenceParameters != nil {
+		for _, item := range s.PreferenceParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SourceResourceGroup != nil {
+		if err := s.SourceResourceGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceResources != nil {
+		for _, item := range s.SourceResources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SourceTag != nil {
+		if err := s.SourceTag.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StackProvision != nil {
+		if err := s.StackProvision.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Stacks != nil {
+		for _, item := range s.Stacks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTemplateScratchResponseBodyTemplateScratchPreferenceParameters struct {

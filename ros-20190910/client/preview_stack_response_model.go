@@ -59,5 +59,10 @@ func (s *PreviewStackResponse) SetBody(v *PreviewStackResponseBody) *PreviewStac
 }
 
 func (s *PreviewStackResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

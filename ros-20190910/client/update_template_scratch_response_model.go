@@ -59,5 +59,10 @@ func (s *UpdateTemplateScratchResponse) SetBody(v *UpdateTemplateScratchResponse
 }
 
 func (s *UpdateTemplateScratchResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

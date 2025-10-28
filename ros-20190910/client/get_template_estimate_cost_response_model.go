@@ -59,5 +59,10 @@ func (s *GetTemplateEstimateCostResponse) SetBody(v *GetTemplateEstimateCostResp
 }
 
 func (s *GetTemplateEstimateCostResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

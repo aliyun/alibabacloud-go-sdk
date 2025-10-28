@@ -53,7 +53,12 @@ func (s *GetStackInstanceResponseBody) SetStackInstance(v *GetStackInstanceRespo
 }
 
 func (s *GetStackInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StackInstance != nil {
+		if err := s.StackInstance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStackInstanceResponseBodyStackInstance struct {
@@ -272,7 +277,16 @@ func (s *GetStackInstanceResponseBodyStackInstance) SetStatusReason(v string) *G
 }
 
 func (s *GetStackInstanceResponseBodyStackInstance) Validate() error {
-	return dara.Validate(s)
+	if s.ParameterOverrides != nil {
+		for _, item := range s.ParameterOverrides {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetStackInstanceResponseBodyStackInstanceParameterOverrides struct {

@@ -316,7 +316,16 @@ func (s *ContinueCreateStackRequest) SetTemplateVersion(v string) *ContinueCreat
 }
 
 func (s *ContinueCreateStackRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Parameters != nil {
+		for _, item := range s.Parameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ContinueCreateStackRequestParameters struct {

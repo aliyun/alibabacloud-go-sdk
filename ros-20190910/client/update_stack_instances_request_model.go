@@ -255,7 +255,21 @@ func (s *UpdateStackInstancesRequest) SetTimeoutInMinutes(v int64) *UpdateStackI
 }
 
 func (s *UpdateStackInstancesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeploymentTargets != nil {
+		if err := s.DeploymentTargets.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ParameterOverrides != nil {
+		for _, item := range s.ParameterOverrides {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateStackInstancesRequestDeploymentTargets struct {

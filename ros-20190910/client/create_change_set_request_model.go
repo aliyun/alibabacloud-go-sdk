@@ -631,7 +631,34 @@ func (s *CreateChangeSetRequest) SetUsePreviousParameters(v bool) *CreateChangeS
 }
 
 func (s *CreateChangeSetRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Parameters != nil {
+		for _, item := range s.Parameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResourcesToImport != nil {
+		for _, item := range s.ResourcesToImport {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateChangeSetRequestParameters struct {

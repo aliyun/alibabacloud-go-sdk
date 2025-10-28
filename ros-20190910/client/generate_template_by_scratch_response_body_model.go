@@ -72,7 +72,16 @@ func (s *GenerateTemplateByScratchResponseBody) SetTemplateBody(v string) *Gener
 }
 
 func (s *GenerateTemplateByScratchResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourcesToImport != nil {
+		for _, item := range s.ResourcesToImport {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GenerateTemplateByScratchResponseBodyResourcesToImport struct {

@@ -294,7 +294,21 @@ func (s *CreateStackInstancesRequest) SetTimeoutInMinutes(v int64) *CreateStackI
 }
 
 func (s *CreateStackInstancesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeploymentTargets != nil {
+		if err := s.DeploymentTargets.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ParameterOverrides != nil {
+		for _, item := range s.ParameterOverrides {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateStackInstancesRequestDeploymentTargets struct {

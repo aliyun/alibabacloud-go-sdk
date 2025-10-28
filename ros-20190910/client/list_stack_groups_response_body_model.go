@@ -104,7 +104,16 @@ func (s *ListStackGroupsResponseBody) SetTotalCount(v int32) *ListStackGroupsRes
 }
 
 func (s *ListStackGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StackGroups != nil {
+		for _, item := range s.StackGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListStackGroupsResponseBodyStackGroups struct {
@@ -303,7 +312,21 @@ func (s *ListStackGroupsResponseBodyStackGroups) SetUpdateTime(v string) *ListSt
 }
 
 func (s *ListStackGroupsResponseBodyStackGroups) Validate() error {
-	return dara.Validate(s)
+	if s.AutoDeployment != nil {
+		if err := s.AutoDeployment.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListStackGroupsResponseBodyStackGroupsAutoDeployment struct {

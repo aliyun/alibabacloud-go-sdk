@@ -104,7 +104,16 @@ func (s *ListChangeSetsResponseBody) SetTotalCount(v int32) *ListChangeSetsRespo
 }
 
 func (s *ListChangeSetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ChangeSets != nil {
+		for _, item := range s.ChangeSets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListChangeSetsResponseBodyChangeSets struct {
@@ -304,7 +313,16 @@ func (s *ListChangeSetsResponseBodyChangeSets) SetTags(v []*ListChangeSetsRespon
 }
 
 func (s *ListChangeSetsResponseBodyChangeSets) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListChangeSetsResponseBodyChangeSetsTags struct {

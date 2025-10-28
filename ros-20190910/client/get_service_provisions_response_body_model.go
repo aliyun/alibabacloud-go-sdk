@@ -53,7 +53,16 @@ func (s *GetServiceProvisionsResponseBody) SetServiceProvisions(v []*GetServiceP
 }
 
 func (s *GetServiceProvisionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceProvisions != nil {
+		for _, item := range s.ServiceProvisions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetServiceProvisionsResponseBodyServiceProvisions struct {
@@ -189,7 +198,21 @@ func (s *GetServiceProvisionsResponseBodyServiceProvisions) SetStatusReason(v st
 }
 
 func (s *GetServiceProvisionsResponseBodyServiceProvisions) Validate() error {
-	return dara.Validate(s)
+	if s.CommodityProvisions != nil {
+		for _, item := range s.CommodityProvisions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RoleProvision != nil {
+		if err := s.RoleProvision.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions struct {
@@ -277,7 +300,16 @@ func (s *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision) SetRole
 }
 
 func (s *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision) Validate() error {
-	return dara.Validate(s)
+	if s.Roles != nil {
+		for _, item := range s.Roles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles struct {
@@ -352,7 +384,12 @@ func (s *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles) Se
 }
 
 func (s *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles) Validate() error {
-	return dara.Validate(s)
+	if s.ApiForCreation != nil {
+		if err := s.ApiForCreation.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRolesApiForCreation struct {

@@ -104,7 +104,16 @@ func (s *ListStackInstancesResponseBody) SetTotalCount(v int32) *ListStackInstan
 }
 
 func (s *ListStackInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StackInstances != nil {
+		for _, item := range s.StackInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListStackInstancesResponseBodyStackInstances struct {

@@ -53,7 +53,16 @@ func (s *ListResourceTypeVersionsResponseBody) SetResourceTypeVersions(v []*List
 }
 
 func (s *ListResourceTypeVersionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceTypeVersions != nil {
+		for _, item := range s.ResourceTypeVersions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourceTypeVersionsResponseBodyResourceTypeVersions struct {

@@ -108,7 +108,16 @@ func (s *ListStacksResponseBody) SetTotalCount(v int32) *ListStacksResponseBody 
 }
 
 func (s *ListStacksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Stacks != nil {
+		for _, item := range s.Stacks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListStacksResponseBodyStacks struct {
@@ -426,7 +435,21 @@ func (s *ListStacksResponseBodyStacks) SetUpdateTime(v string) *ListStacksRespon
 }
 
 func (s *ListStacksResponseBodyStacks) Validate() error {
-	return dara.Validate(s)
+	if s.OperationInfo != nil {
+		if err := s.OperationInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListStacksResponseBodyStacksOperationInfo struct {

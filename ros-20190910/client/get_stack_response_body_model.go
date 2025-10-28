@@ -741,7 +741,40 @@ func (s *GetStackResponseBody) SetUpdateTime(v string) *GetStackResponseBody {
 }
 
 func (s *GetStackResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Log != nil {
+		if err := s.Log.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OperationInfo != nil {
+		if err := s.OperationInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Parameters != nil {
+		for _, item := range s.Parameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResourceProgress != nil {
+		if err := s.ResourceProgress.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetStackResponseBodyLog struct {
@@ -782,7 +815,25 @@ func (s *GetStackResponseBodyLog) SetTerraformLogs(v []*GetStackResponseBodyLogT
 }
 
 func (s *GetStackResponseBodyLog) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceLogs != nil {
+		for _, item := range s.ResourceLogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TerraformLogs != nil {
+		for _, item := range s.TerraformLogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetStackResponseBodyLogResourceLogs struct {
@@ -823,7 +874,16 @@ func (s *GetStackResponseBodyLogResourceLogs) SetResourceName(v string) *GetStac
 }
 
 func (s *GetStackResponseBodyLogResourceLogs) Validate() error {
-	return dara.Validate(s)
+	if s.Logs != nil {
+		for _, item := range s.Logs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetStackResponseBodyLogResourceLogsLogs struct {
@@ -1239,7 +1299,16 @@ func (s *GetStackResponseBodyResourceProgress) SetTotalResourceCount(v int32) *G
 }
 
 func (s *GetStackResponseBodyResourceProgress) Validate() error {
-	return dara.Validate(s)
+	if s.InProgressResourceDetails != nil {
+		for _, item := range s.InProgressResourceDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetStackResponseBodyResourceProgressInProgressResourceDetails struct {

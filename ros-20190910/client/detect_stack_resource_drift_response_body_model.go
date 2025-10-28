@@ -197,7 +197,16 @@ func (s *DetectStackResourceDriftResponseBody) SetStackId(v string) *DetectStack
 }
 
 func (s *DetectStackResourceDriftResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PropertyDifferences != nil {
+		for _, item := range s.PropertyDifferences {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DetectStackResourceDriftResponseBodyPropertyDifferences struct {

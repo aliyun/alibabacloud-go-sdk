@@ -59,5 +59,10 @@ func (s *ListStackEventsResponse) SetBody(v *ListStackEventsResponseBody) *ListS
 }
 
 func (s *ListStackEventsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

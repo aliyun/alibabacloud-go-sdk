@@ -17,9 +17,11 @@ import (
 //
 // @return CancelStackOperationResponse
 func (client *Client) CancelStackOperationWithContext(ctx context.Context, request *CancelStackOperationRequest, runtime *dara.RuntimeOptions) (_result *CancelStackOperationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllowedStackOperations) {
@@ -71,9 +73,11 @@ func (client *Client) CancelStackOperationWithContext(ctx context.Context, reque
 //
 // @return CancelUpdateStackResponse
 func (client *Client) CancelUpdateStackWithContext(ctx context.Context, request *CancelUpdateStackRequest, runtime *dara.RuntimeOptions) (_result *CancelUpdateStackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CancelType) {
@@ -125,9 +129,11 @@ func (client *Client) CancelUpdateStackWithContext(ctx context.Context, request 
 //
 // @return ContinueCreateStackResponse
 func (client *Client) ContinueCreateStackWithContext(ctx context.Context, request *ContinueCreateStackRequest, runtime *dara.RuntimeOptions) (_result *ContinueCreateStackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DryRun) {
@@ -219,9 +225,11 @@ func (client *Client) ContinueCreateStackWithContext(ctx context.Context, reques
 //
 // @return CreateAITaskResponse
 func (client *Client) CreateAITaskWithContext(ctx context.Context, request *CreateAITaskRequest, runtime *dara.RuntimeOptions) (_result *CreateAITaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Prompt) {
@@ -307,9 +315,11 @@ func (client *Client) CreateAITaskWithContext(ctx context.Context, request *Crea
 //
 // @return CreateChangeSetResponse
 func (client *Client) CreateChangeSetWithContext(ctx context.Context, request *CreateChangeSetRequest, runtime *dara.RuntimeOptions) (_result *CreateChangeSetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChangeSetName) {
@@ -459,9 +469,11 @@ func (client *Client) CreateChangeSetWithContext(ctx context.Context, request *C
 //
 // @return CreateDiagnosticResponse
 func (client *Client) CreateDiagnosticWithContext(ctx context.Context, request *CreateDiagnosticRequest, runtime *dara.RuntimeOptions) (_result *CreateDiagnosticResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DiagnosticKey) {
@@ -525,9 +537,11 @@ func (client *Client) CreateDiagnosticWithContext(ctx context.Context, request *
 //
 // @return CreateStackResponse
 func (client *Client) CreateStackWithContext(ctx context.Context, request *CreateStackRequest, runtime *dara.RuntimeOptions) (_result *CreateStackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -667,9 +681,11 @@ func (client *Client) CreateStackWithContext(ctx context.Context, request *Creat
 //
 // @return CreateStackGroupResponse
 func (client *Client) CreateStackGroupWithContext(ctx context.Context, tmpReq *CreateStackGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateStackGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateStackGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -787,9 +803,11 @@ func (client *Client) CreateStackGroupWithContext(ctx context.Context, tmpReq *C
 //
 // @return CreateStackInstancesResponse
 func (client *Client) CreateStackInstancesWithContext(ctx context.Context, tmpReq *CreateStackInstancesRequest, runtime *dara.RuntimeOptions) (_result *CreateStackInstancesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateStackInstancesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -895,9 +913,11 @@ func (client *Client) CreateStackInstancesWithContext(ctx context.Context, tmpRe
 //
 // @return CreateTemplateResponse
 func (client *Client) CreateTemplateWithContext(ctx context.Context, request *CreateTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -991,9 +1011,11 @@ func (client *Client) CreateTemplateWithContext(ctx context.Context, request *Cr
 //
 // @return CreateTemplateScratchResponse
 func (client *Client) CreateTemplateScratchWithContext(ctx context.Context, tmpReq *CreateTemplateScratchRequest, runtime *dara.RuntimeOptions) (_result *CreateTemplateScratchResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateTemplateScratchShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1111,9 +1133,11 @@ func (client *Client) CreateTemplateScratchWithContext(ctx context.Context, tmpR
 //
 // @return DeleteChangeSetResponse
 func (client *Client) DeleteChangeSetWithContext(ctx context.Context, request *DeleteChangeSetRequest, runtime *dara.RuntimeOptions) (_result *DeleteChangeSetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChangeSetId) {
@@ -1157,9 +1181,11 @@ func (client *Client) DeleteChangeSetWithContext(ctx context.Context, request *D
 //
 // @return DeleteDiagnosticResponse
 func (client *Client) DeleteDiagnosticWithContext(ctx context.Context, request *DeleteDiagnosticRequest, runtime *dara.RuntimeOptions) (_result *DeleteDiagnosticResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ReportId) {
@@ -1199,9 +1225,11 @@ func (client *Client) DeleteDiagnosticWithContext(ctx context.Context, request *
 //
 // @return DeleteStackResponse
 func (client *Client) DeleteStackWithContext(ctx context.Context, request *DeleteStackRequest, runtime *dara.RuntimeOptions) (_result *DeleteStackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeleteOptions) {
@@ -1271,9 +1299,11 @@ func (client *Client) DeleteStackWithContext(ctx context.Context, request *Delet
 //
 // @return DeleteStackGroupResponse
 func (client *Client) DeleteStackGroupWithContext(ctx context.Context, request *DeleteStackGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteStackGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1321,9 +1351,11 @@ func (client *Client) DeleteStackGroupWithContext(ctx context.Context, request *
 //
 // @return DeleteStackInstancesResponse
 func (client *Client) DeleteStackInstancesWithContext(ctx context.Context, tmpReq *DeleteStackInstancesRequest, runtime *dara.RuntimeOptions) (_result *DeleteStackInstancesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteStackInstancesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1417,9 +1449,11 @@ func (client *Client) DeleteStackInstancesWithContext(ctx context.Context, tmpRe
 //
 // @return DeleteTemplateResponse
 func (client *Client) DeleteTemplateWithContext(ctx context.Context, request *DeleteTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TemplateId) {
@@ -1463,9 +1497,11 @@ func (client *Client) DeleteTemplateWithContext(ctx context.Context, request *De
 //
 // @return DeleteTemplateScratchResponse
 func (client *Client) DeleteTemplateScratchWithContext(ctx context.Context, request *DeleteTemplateScratchRequest, runtime *dara.RuntimeOptions) (_result *DeleteTemplateScratchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1521,9 +1557,11 @@ func (client *Client) DeleteTemplateScratchWithContext(ctx context.Context, requ
 //
 // @return DeregisterResourceTypeResponse
 func (client *Client) DeregisterResourceTypeWithContext(ctx context.Context, request *DeregisterResourceTypeRequest, runtime *dara.RuntimeOptions) (_result *DeregisterResourceTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceType) {
@@ -1567,9 +1605,11 @@ func (client *Client) DeregisterResourceTypeWithContext(ctx context.Context, req
 //
 // @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -1609,9 +1649,11 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 //
 // @return DetectStackDriftResponse
 func (client *Client) DetectStackDriftWithContext(ctx context.Context, request *DetectStackDriftRequest, runtime *dara.RuntimeOptions) (_result *DetectStackDriftResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1663,9 +1705,11 @@ func (client *Client) DetectStackDriftWithContext(ctx context.Context, request *
 //
 // @return DetectStackGroupDriftResponse
 func (client *Client) DetectStackGroupDriftWithContext(ctx context.Context, tmpReq *DetectStackGroupDriftRequest, runtime *dara.RuntimeOptions) (_result *DetectStackGroupDriftResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DetectStackGroupDriftShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1723,9 +1767,11 @@ func (client *Client) DetectStackGroupDriftWithContext(ctx context.Context, tmpR
 //
 // @return DetectStackResourceDriftResponse
 func (client *Client) DetectStackResourceDriftWithContext(ctx context.Context, request *DetectStackResourceDriftRequest, runtime *dara.RuntimeOptions) (_result *DetectStackResourceDriftResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1769,6 +1815,60 @@ func (client *Client) DetectStackResourceDriftWithContext(ctx context.Context, r
 
 // Summary:
 //
+// 批量开通
+//
+// @param tmpReq - EnableServicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableServicesResponse
+func (client *Client) EnableServicesWithContext(ctx context.Context, tmpReq *EnableServicesRequest, runtime *dara.RuntimeOptions) (_result *EnableServicesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &EnableServicesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ServiceNames) {
+		request.ServiceNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ServiceNames, dara.String("ServiceNames"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ServiceNamesShrink) {
+		query["ServiceNames"] = request.ServiceNamesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableServices"),
+		Version:     dara.String("2019-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableServicesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Executes change sets.
 //
 // Description:
@@ -1781,9 +1881,11 @@ func (client *Client) DetectStackResourceDriftWithContext(ctx context.Context, r
 //
 // @return ExecuteChangeSetResponse
 func (client *Client) ExecuteChangeSetWithContext(ctx context.Context, request *ExecuteChangeSetRequest, runtime *dara.RuntimeOptions) (_result *ExecuteChangeSetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChangeSetId) {
@@ -1837,9 +1939,11 @@ func (client *Client) ExecuteChangeSetWithContext(ctx context.Context, request *
 //
 // @return GenerateTemplateByScratchResponse
 func (client *Client) GenerateTemplateByScratchWithContext(ctx context.Context, request *GenerateTemplateByScratchRequest, runtime *dara.RuntimeOptions) (_result *GenerateTemplateByScratchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProvisionRegionId) {
@@ -1897,9 +2001,11 @@ func (client *Client) GenerateTemplateByScratchWithContext(ctx context.Context, 
 //
 // @return GenerateTemplatePolicyResponse
 func (client *Client) GenerateTemplatePolicyWithContext(ctx context.Context, request *GenerateTemplatePolicyRequest, runtime *dara.RuntimeOptions) (_result *GenerateTemplatePolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OperationTypes) {
@@ -1955,9 +2061,11 @@ func (client *Client) GenerateTemplatePolicyWithContext(ctx context.Context, req
 //
 // @return GetAITaskResponse
 func (client *Client) GetAITaskWithContext(ctx context.Context, request *GetAITaskRequest, runtime *dara.RuntimeOptions) (_result *GetAITaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OutputOption) {
@@ -2005,9 +2113,11 @@ func (client *Client) GetAITaskWithContext(ctx context.Context, request *GetAITa
 //
 // @return GetChangeSetResponse
 func (client *Client) GetChangeSetWithContext(ctx context.Context, request *GetChangeSetRequest, runtime *dara.RuntimeOptions) (_result *GetChangeSetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChangeSetId) {
@@ -2055,9 +2165,11 @@ func (client *Client) GetChangeSetWithContext(ctx context.Context, request *GetC
 //
 // @return GetDiagnosticResponse
 func (client *Client) GetDiagnosticWithContext(ctx context.Context, request *GetDiagnosticRequest, runtime *dara.RuntimeOptions) (_result *GetDiagnosticResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ReportId) {
@@ -2105,9 +2217,11 @@ func (client *Client) GetDiagnosticWithContext(ctx context.Context, request *Get
 //
 // @return GetFeatureDetailsResponse
 func (client *Client) GetFeatureDetailsWithContext(ctx context.Context, request *GetFeatureDetailsRequest, runtime *dara.RuntimeOptions) (_result *GetFeatureDetailsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Feature) {
@@ -2155,9 +2269,11 @@ func (client *Client) GetFeatureDetailsWithContext(ctx context.Context, request 
 //
 // @return GetResourceTypeResponse
 func (client *Client) GetResourceTypeWithContext(ctx context.Context, request *GetResourceTypeRequest, runtime *dara.RuntimeOptions) (_result *GetResourceTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceType) {
@@ -2201,9 +2317,11 @@ func (client *Client) GetResourceTypeWithContext(ctx context.Context, request *G
 //
 // @return GetResourceTypeTemplateResponse
 func (client *Client) GetResourceTypeTemplateWithContext(ctx context.Context, request *GetResourceTypeTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetResourceTypeTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceType) {
@@ -2255,9 +2373,11 @@ func (client *Client) GetResourceTypeTemplateWithContext(ctx context.Context, re
 //
 // @return GetServiceProvisionsResponse
 func (client *Client) GetServiceProvisionsWithContext(ctx context.Context, request *GetServiceProvisionsRequest, runtime *dara.RuntimeOptions) (_result *GetServiceProvisionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Parameters) {
@@ -2327,9 +2447,11 @@ func (client *Client) GetServiceProvisionsWithContext(ctx context.Context, reque
 //
 // @return GetStackResponse
 func (client *Client) GetStackWithContext(ctx context.Context, request *GetStackRequest, runtime *dara.RuntimeOptions) (_result *GetStackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -2393,9 +2515,11 @@ func (client *Client) GetStackWithContext(ctx context.Context, request *GetStack
 //
 // @return GetStackDriftDetectionStatusResponse
 func (client *Client) GetStackDriftDetectionStatusWithContext(ctx context.Context, request *GetStackDriftDetectionStatusRequest, runtime *dara.RuntimeOptions) (_result *GetStackDriftDetectionStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DriftDetectionId) {
@@ -2443,9 +2567,11 @@ func (client *Client) GetStackDriftDetectionStatusWithContext(ctx context.Contex
 //
 // @return GetStackGroupResponse
 func (client *Client) GetStackGroupWithContext(ctx context.Context, request *GetStackGroupRequest, runtime *dara.RuntimeOptions) (_result *GetStackGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2497,9 +2623,11 @@ func (client *Client) GetStackGroupWithContext(ctx context.Context, request *Get
 //
 // @return GetStackGroupOperationResponse
 func (client *Client) GetStackGroupOperationWithContext(ctx context.Context, request *GetStackGroupOperationRequest, runtime *dara.RuntimeOptions) (_result *GetStackGroupOperationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OperationId) {
@@ -2547,9 +2675,11 @@ func (client *Client) GetStackGroupOperationWithContext(ctx context.Context, req
 //
 // @return GetStackInstanceResponse
 func (client *Client) GetStackInstanceWithContext(ctx context.Context, request *GetStackInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetStackInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OutputOption) {
@@ -2609,9 +2739,11 @@ func (client *Client) GetStackInstanceWithContext(ctx context.Context, request *
 //
 // @return GetStackPolicyResponse
 func (client *Client) GetStackPolicyWithContext(ctx context.Context, request *GetStackPolicyRequest, runtime *dara.RuntimeOptions) (_result *GetStackPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2665,9 +2797,11 @@ func (client *Client) GetStackPolicyWithContext(ctx context.Context, request *Ge
 //
 // @return GetStackResourceResponse
 func (client *Client) GetStackResourceWithContext(ctx context.Context, request *GetStackResourceRequest, runtime *dara.RuntimeOptions) (_result *GetStackResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -2731,9 +2865,11 @@ func (client *Client) GetStackResourceWithContext(ctx context.Context, request *
 //
 // @return GetTemplateResponse
 func (client *Client) GetTemplateWithContext(ctx context.Context, request *GetTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChangeSetId) {
@@ -2907,9 +3043,11 @@ func (client *Client) GetTemplateWithContext(ctx context.Context, request *GetTe
 //
 // @return GetTemplateEstimateCostResponse
 func (client *Client) GetTemplateEstimateCostWithContext(ctx context.Context, request *GetTemplateEstimateCostRequest, runtime *dara.RuntimeOptions) (_result *GetTemplateEstimateCostResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -2993,9 +3131,11 @@ func (client *Client) GetTemplateEstimateCostWithContext(ctx context.Context, re
 //
 // @return GetTemplateParameterConstraintsResponse
 func (client *Client) GetTemplateParameterConstraintsWithContext(ctx context.Context, tmpReq *GetTemplateParameterConstraintsRequest, runtime *dara.RuntimeOptions) (_result *GetTemplateParameterConstraintsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetTemplateParameterConstraintsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3083,9 +3223,11 @@ func (client *Client) GetTemplateParameterConstraintsWithContext(ctx context.Con
 //
 // @return GetTemplateRecommendParametersResponse
 func (client *Client) GetTemplateRecommendParametersWithContext(ctx context.Context, request *GetTemplateRecommendParametersRequest, runtime *dara.RuntimeOptions) (_result *GetTemplateRecommendParametersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -3153,9 +3295,11 @@ func (client *Client) GetTemplateRecommendParametersWithContext(ctx context.Cont
 //
 // @return GetTemplateScratchResponse
 func (client *Client) GetTemplateScratchWithContext(ctx context.Context, request *GetTemplateScratchRequest, runtime *dara.RuntimeOptions) (_result *GetTemplateScratchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3203,9 +3347,11 @@ func (client *Client) GetTemplateScratchWithContext(ctx context.Context, request
 //
 // @return GetTemplateSummaryResponse
 func (client *Client) GetTemplateSummaryWithContext(ctx context.Context, request *GetTemplateSummaryRequest, runtime *dara.RuntimeOptions) (_result *GetTemplateSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChangeSetId) {
@@ -3281,9 +3427,11 @@ func (client *Client) GetTemplateSummaryWithContext(ctx context.Context, request
 //
 // @return ImportStacksToStackGroupResponse
 func (client *Client) ImportStacksToStackGroupWithContext(ctx context.Context, tmpReq *ImportStacksToStackGroupRequest, runtime *dara.RuntimeOptions) (_result *ImportStacksToStackGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ImportStacksToStackGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3361,9 +3509,11 @@ func (client *Client) ImportStacksToStackGroupWithContext(ctx context.Context, t
 //
 // @return ListAITaskEventsResponse
 func (client *Client) ListAITaskEventsWithContext(ctx context.Context, request *ListAITaskEventsRequest, runtime *dara.RuntimeOptions) (_result *ListAITaskEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -3411,9 +3561,11 @@ func (client *Client) ListAITaskEventsWithContext(ctx context.Context, request *
 //
 // @return ListAITasksResponse
 func (client *Client) ListAITasksWithContext(ctx context.Context, request *ListAITasksRequest, runtime *dara.RuntimeOptions) (_result *ListAITasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -3465,9 +3617,11 @@ func (client *Client) ListAITasksWithContext(ctx context.Context, request *ListA
 //
 // @return ListChangeSetsResponse
 func (client *Client) ListChangeSetsWithContext(ctx context.Context, request *ListChangeSetsRequest, runtime *dara.RuntimeOptions) (_result *ListChangeSetsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChangeSetId) {
@@ -3535,9 +3689,11 @@ func (client *Client) ListChangeSetsWithContext(ctx context.Context, request *Li
 //
 // @return ListDiagnosticsResponse
 func (client *Client) ListDiagnosticsWithContext(ctx context.Context, request *ListDiagnosticsRequest, runtime *dara.RuntimeOptions) (_result *ListDiagnosticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DiagnosticKey) {
@@ -3593,9 +3749,11 @@ func (client *Client) ListDiagnosticsWithContext(ctx context.Context, request *L
 //
 // @return ListResourceTypeRegistrationsResponse
 func (client *Client) ListResourceTypeRegistrationsWithContext(ctx context.Context, request *ListResourceTypeRegistrationsRequest, runtime *dara.RuntimeOptions) (_result *ListResourceTypeRegistrationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EntityType) {
@@ -3655,9 +3813,11 @@ func (client *Client) ListResourceTypeRegistrationsWithContext(ctx context.Conte
 //
 // @return ListResourceTypeVersionsResponse
 func (client *Client) ListResourceTypeVersionsWithContext(ctx context.Context, request *ListResourceTypeVersionsRequest, runtime *dara.RuntimeOptions) (_result *ListResourceTypeVersionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceType) {
@@ -3701,9 +3861,11 @@ func (client *Client) ListResourceTypeVersionsWithContext(ctx context.Context, r
 //
 // @return ListResourceTypesResponse
 func (client *Client) ListResourceTypesWithContext(ctx context.Context, request *ListResourceTypesRequest, runtime *dara.RuntimeOptions) (_result *ListResourceTypesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EntityType) {
@@ -3751,9 +3913,11 @@ func (client *Client) ListResourceTypesWithContext(ctx context.Context, request 
 //
 // @return ListStackEventsResponse
 func (client *Client) ListStackEventsWithContext(ctx context.Context, request *ListStackEventsRequest, runtime *dara.RuntimeOptions) (_result *ListStackEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LogicalResourceId) {
@@ -3821,9 +3985,11 @@ func (client *Client) ListStackEventsWithContext(ctx context.Context, request *L
 //
 // @return ListStackGroupOperationResultsResponse
 func (client *Client) ListStackGroupOperationResultsWithContext(ctx context.Context, request *ListStackGroupOperationResultsRequest, runtime *dara.RuntimeOptions) (_result *ListStackGroupOperationResultsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OperationId) {
@@ -3875,9 +4041,11 @@ func (client *Client) ListStackGroupOperationResultsWithContext(ctx context.Cont
 //
 // @return ListStackGroupOperationsResponse
 func (client *Client) ListStackGroupOperationsWithContext(ctx context.Context, request *ListStackGroupOperationsRequest, runtime *dara.RuntimeOptions) (_result *ListStackGroupOperationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -3933,9 +4101,11 @@ func (client *Client) ListStackGroupOperationsWithContext(ctx context.Context, r
 //
 // @return ListStackGroupsResponse
 func (client *Client) ListStackGroupsWithContext(ctx context.Context, request *ListStackGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListStackGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -3999,9 +4169,11 @@ func (client *Client) ListStackGroupsWithContext(ctx context.Context, request *L
 //
 // @return ListStackInstancesResponse
 func (client *Client) ListStackInstancesWithContext(ctx context.Context, request *ListStackInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListStackInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -4069,9 +4241,11 @@ func (client *Client) ListStackInstancesWithContext(ctx context.Context, request
 //
 // @return ListStackOperationRisksResponse
 func (client *Client) ListStackOperationRisksWithContext(ctx context.Context, request *ListStackOperationRisksRequest, runtime *dara.RuntimeOptions) (_result *ListStackOperationRisksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -4153,9 +4327,11 @@ func (client *Client) ListStackOperationRisksWithContext(ctx context.Context, re
 //
 // @return ListStackResourceDriftsResponse
 func (client *Client) ListStackResourceDriftsWithContext(ctx context.Context, request *ListStackResourceDriftsRequest, runtime *dara.RuntimeOptions) (_result *ListStackResourceDriftsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -4215,9 +4391,11 @@ func (client *Client) ListStackResourceDriftsWithContext(ctx context.Context, re
 //
 // @return ListStackResourcesResponse
 func (client *Client) ListStackResourcesWithContext(ctx context.Context, request *ListStackResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListStackResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -4267,9 +4445,11 @@ func (client *Client) ListStackResourcesWithContext(ctx context.Context, request
 //
 // @return ListStacksResponse
 func (client *Client) ListStacksWithContext(ctx context.Context, request *ListStacksRequest, runtime *dara.RuntimeOptions) (_result *ListStacksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -4349,6 +4529,50 @@ func (client *Client) ListStacksWithContext(ctx context.Context, request *ListSt
 
 // Summary:
 //
+// 查询总览
+//
+// @param request - ListSummariesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSummariesResponse
+func (client *Client) ListSummariesWithContext(ctx context.Context, request *ListSummariesRequest, runtime *dara.RuntimeOptions) (_result *ListSummariesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Option) {
+		query["Option"] = request.Option
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSummaries"),
+		Version:     dara.String("2019-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSummariesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the tag keys that are added to resources in a template or stack in an Alibaba Cloud region.
 //
 // Description:
@@ -4361,9 +4585,11 @@ func (client *Client) ListStacksWithContext(ctx context.Context, request *ListSt
 //
 // @return ListTagKeysResponse
 func (client *Client) ListTagKeysWithContext(ctx context.Context, request *ListTagKeysRequest, runtime *dara.RuntimeOptions) (_result *ListTagKeysResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NextToken) {
@@ -4421,9 +4647,11 @@ func (client *Client) ListTagKeysWithContext(ctx context.Context, request *ListT
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NextToken) {
@@ -4483,9 +4711,11 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 //
 // @return ListTagValuesResponse
 func (client *Client) ListTagValuesWithContext(ctx context.Context, request *ListTagValuesRequest, runtime *dara.RuntimeOptions) (_result *ListTagValuesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Key) {
@@ -4541,9 +4771,11 @@ func (client *Client) ListTagValuesWithContext(ctx context.Context, request *Lis
 //
 // @return ListTemplateScratchesResponse
 func (client *Client) ListTemplateScratchesWithContext(ctx context.Context, request *ListTemplateScratchesRequest, runtime *dara.RuntimeOptions) (_result *ListTemplateScratchesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -4611,9 +4843,11 @@ func (client *Client) ListTemplateScratchesWithContext(ctx context.Context, requ
 //
 // @return ListTemplateVersionsResponse
 func (client *Client) ListTemplateVersionsWithContext(ctx context.Context, request *ListTemplateVersionsRequest, runtime *dara.RuntimeOptions) (_result *ListTemplateVersionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -4661,9 +4895,11 @@ func (client *Client) ListTemplateVersionsWithContext(ctx context.Context, reque
 //
 // @return ListTemplatesResponse
 func (client *Client) ListTemplatesWithContext(ctx context.Context, request *ListTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListTemplatesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Filters) {
@@ -4735,9 +4971,11 @@ func (client *Client) ListTemplatesWithContext(ctx context.Context, request *Lis
 //
 // @return MoveResourceGroupResponse
 func (client *Client) MoveResourceGroupWithContext(ctx context.Context, request *MoveResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NewResourceGroupId) {
@@ -4793,9 +5031,11 @@ func (client *Client) MoveResourceGroupWithContext(ctx context.Context, request 
 //
 // @return PreviewStackResponse
 func (client *Client) PreviewStackWithContext(ctx context.Context, request *PreviewStackRequest, runtime *dara.RuntimeOptions) (_result *PreviewStackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -4915,9 +5155,11 @@ func (client *Client) PreviewStackWithContext(ctx context.Context, request *Prev
 //
 // @return RegisterResourceTypeResponse
 func (client *Client) RegisterResourceTypeWithContext(ctx context.Context, request *RegisterResourceTypeRequest, runtime *dara.RuntimeOptions) (_result *RegisterResourceTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -4979,9 +5221,11 @@ func (client *Client) RegisterResourceTypeWithContext(ctx context.Context, reque
 //
 // @return SetDeletionProtectionResponse
 func (client *Client) SetDeletionProtectionWithContext(ctx context.Context, request *SetDeletionProtectionRequest, runtime *dara.RuntimeOptions) (_result *SetDeletionProtectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeletionProtection) {
@@ -5029,9 +5273,11 @@ func (client *Client) SetDeletionProtectionWithContext(ctx context.Context, requ
 //
 // @return SetResourceTypeResponse
 func (client *Client) SetResourceTypeWithContext(ctx context.Context, request *SetResourceTypeRequest, runtime *dara.RuntimeOptions) (_result *SetResourceTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DefaultVersionId) {
@@ -5087,9 +5333,11 @@ func (client *Client) SetResourceTypeWithContext(ctx context.Context, request *S
 //
 // @return SetStackPolicyResponse
 func (client *Client) SetStackPolicyWithContext(ctx context.Context, request *SetStackPolicyRequest, runtime *dara.RuntimeOptions) (_result *SetStackPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -5147,9 +5395,11 @@ func (client *Client) SetStackPolicyWithContext(ctx context.Context, request *Se
 //
 // @return SetTemplatePermissionResponse
 func (client *Client) SetTemplatePermissionWithContext(ctx context.Context, request *SetTemplatePermissionRequest, runtime *dara.RuntimeOptions) (_result *SetTemplatePermissionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountIds) {
@@ -5205,9 +5455,11 @@ func (client *Client) SetTemplatePermissionWithContext(ctx context.Context, requ
 //
 // @return SignalResourceResponse
 func (client *Client) SignalResourceWithContext(ctx context.Context, request *SignalResourceRequest, runtime *dara.RuntimeOptions) (_result *SignalResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -5271,9 +5523,11 @@ func (client *Client) SignalResourceWithContext(ctx context.Context, request *Si
 //
 // @return StopStackGroupOperationResponse
 func (client *Client) StopStackGroupOperationWithContext(ctx context.Context, request *StopStackGroupOperationRequest, runtime *dara.RuntimeOptions) (_result *StopStackGroupOperationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OperationId) {
@@ -5321,9 +5575,11 @@ func (client *Client) StopStackGroupOperationWithContext(ctx context.Context, re
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -5379,9 +5635,11 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -5447,9 +5705,11 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 //
 // @return UpdateStackResponse
 func (client *Client) UpdateStackWithContext(ctx context.Context, request *UpdateStackRequest, runtime *dara.RuntimeOptions) (_result *UpdateStackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -5585,9 +5845,11 @@ func (client *Client) UpdateStackWithContext(ctx context.Context, request *Updat
 //
 // @return UpdateStackGroupResponse
 func (client *Client) UpdateStackGroupWithContext(ctx context.Context, tmpReq *UpdateStackGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateStackGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateStackGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5731,9 +5993,11 @@ func (client *Client) UpdateStackGroupWithContext(ctx context.Context, tmpReq *U
 //
 // @return UpdateStackInstancesResponse
 func (client *Client) UpdateStackInstancesWithContext(ctx context.Context, tmpReq *UpdateStackInstancesRequest, runtime *dara.RuntimeOptions) (_result *UpdateStackInstancesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateStackInstancesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5833,9 +6097,11 @@ func (client *Client) UpdateStackInstancesWithContext(ctx context.Context, tmpRe
 //
 // @return UpdateStackTemplateByResourcesResponse
 func (client *Client) UpdateStackTemplateByResourcesWithContext(ctx context.Context, request *UpdateStackTemplateByResourcesRequest, runtime *dara.RuntimeOptions) (_result *UpdateStackTemplateByResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -5905,9 +6171,11 @@ func (client *Client) UpdateStackTemplateByResourcesWithContext(ctx context.Cont
 //
 // @return UpdateTemplateResponse
 func (client *Client) UpdateTemplateWithContext(ctx context.Context, request *UpdateTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -6003,9 +6271,11 @@ func (client *Client) UpdateTemplateWithContext(ctx context.Context, request *Up
 //
 // @return UpdateTemplateScratchResponse
 func (client *Client) UpdateTemplateScratchWithContext(ctx context.Context, tmpReq *UpdateTemplateScratchRequest, runtime *dara.RuntimeOptions) (_result *UpdateTemplateScratchResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateTemplateScratchShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6107,9 +6377,11 @@ func (client *Client) UpdateTemplateScratchWithContext(ctx context.Context, tmpR
 //
 // @return ValidateTemplateResponse
 func (client *Client) ValidateTemplateWithContext(ctx context.Context, request *ValidateTemplateRequest, runtime *dara.RuntimeOptions) (_result *ValidateTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {

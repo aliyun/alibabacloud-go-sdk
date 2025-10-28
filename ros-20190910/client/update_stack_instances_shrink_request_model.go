@@ -255,7 +255,16 @@ func (s *UpdateStackInstancesShrinkRequest) SetTimeoutInMinutes(v int64) *Update
 }
 
 func (s *UpdateStackInstancesShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ParameterOverrides != nil {
+		for _, item := range s.ParameterOverrides {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateStackInstancesShrinkRequestParameterOverrides struct {

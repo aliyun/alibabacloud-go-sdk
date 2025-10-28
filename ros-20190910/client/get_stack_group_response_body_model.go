@@ -53,7 +53,12 @@ func (s *GetStackGroupResponseBody) SetStackGroup(v *GetStackGroupResponseBodySt
 }
 
 func (s *GetStackGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StackGroup != nil {
+		if err := s.StackGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStackGroupResponseBodyStackGroup struct {
@@ -312,7 +317,26 @@ func (s *GetStackGroupResponseBodyStackGroup) SetUpdateTime(v string) *GetStackG
 }
 
 func (s *GetStackGroupResponseBodyStackGroup) Validate() error {
-	return dara.Validate(s)
+	if s.AutoDeployment != nil {
+		if err := s.AutoDeployment.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Parameters != nil {
+		for _, item := range s.Parameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.StackGroupDriftDetectionDetail != nil {
+		if err := s.StackGroupDriftDetectionDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStackGroupResponseBodyStackGroupAutoDeployment struct {

@@ -59,5 +59,10 @@ func (s *ListStackGroupOperationResultsResponse) SetBody(v *ListStackGroupOperat
 }
 
 func (s *ListStackGroupOperationResultsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

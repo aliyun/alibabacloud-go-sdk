@@ -53,7 +53,16 @@ func (s *GetTemplateParameterConstraintsResponseBody) SetRequestId(v string) *Ge
 }
 
 func (s *GetTemplateParameterConstraintsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ParameterConstraints != nil {
+		for _, item := range s.ParameterConstraints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTemplateParameterConstraintsResponseBodyParameterConstraints struct {
@@ -228,7 +237,43 @@ func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraints) SetTyp
 }
 
 func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraints) Validate() error {
-	return dara.Validate(s)
+	if s.NotSupportResources != nil {
+		for _, item := range s.NotSupportResources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OriginalConstraints != nil {
+		for _, item := range s.OriginalConstraints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.QueryErrors != nil {
+		for _, item := range s.QueryErrors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.QueryTimeoutDetails != nil {
+		for _, item := range s.QueryTimeoutDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportResources struct {

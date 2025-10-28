@@ -47,7 +47,16 @@ func (s *GetTemplateRecommendParametersResponseBody) SetRequestId(v string) *Get
 }
 
 func (s *GetTemplateRecommendParametersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RecommendParameterValues != nil {
+		for _, item := range s.RecommendParameterValues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTemplateRecommendParametersResponseBodyRecommendParameterValues struct {

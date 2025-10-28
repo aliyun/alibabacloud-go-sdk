@@ -59,6 +59,11 @@ func (s *ExecuteChangeSetResponse) SetBody(v *ExecuteChangeSetResponseBody) *Exe
 }
 
 func (s *ExecuteChangeSetResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

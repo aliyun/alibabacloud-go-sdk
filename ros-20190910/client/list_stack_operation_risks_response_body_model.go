@@ -66,7 +66,16 @@ func (s *ListStackOperationRisksResponseBody) SetRiskResources(v []*ListStackOpe
 }
 
 func (s *ListStackOperationRisksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RiskResources != nil {
+		for _, item := range s.RiskResources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListStackOperationRisksResponseBodyRiskResources struct {

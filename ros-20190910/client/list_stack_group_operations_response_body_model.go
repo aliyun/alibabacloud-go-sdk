@@ -104,7 +104,16 @@ func (s *ListStackGroupOperationsResponseBody) SetTotalCount(v int32) *ListStack
 }
 
 func (s *ListStackGroupOperationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StackGroupOperations != nil {
+		for _, item := range s.StackGroupOperations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListStackGroupOperationsResponseBodyStackGroupOperations struct {

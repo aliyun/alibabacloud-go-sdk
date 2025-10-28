@@ -383,7 +383,25 @@ func (s *GetTemplateResponseBody) SetUpdateTime(v string) *GetTemplateResponseBo
 }
 
 func (s *GetTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Permissions != nil {
+		for _, item := range s.Permissions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTemplateResponseBodyPermissions struct {

@@ -53,7 +53,16 @@ func (s *ListStackResourcesResponseBody) SetResources(v []*ListStackResourcesRes
 }
 
 func (s *ListStackResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Resources != nil {
+		for _, item := range s.Resources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListStackResourcesResponseBodyResources struct {
@@ -286,7 +295,12 @@ func (s *ListStackResourcesResponseBodyResources) SetUpdateTime(v string) *ListS
 }
 
 func (s *ListStackResourcesResponseBodyResources) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleInfo != nil {
+		if err := s.ModuleInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListStackResourcesResponseBodyResourcesModuleInfo struct {

@@ -242,7 +242,12 @@ func (s *DeleteStackInstancesRequest) SetStackGroupName(v string) *DeleteStackIn
 }
 
 func (s *DeleteStackInstancesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeploymentTargets != nil {
+		if err := s.DeploymentTargets.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteStackInstancesRequestDeploymentTargets struct {

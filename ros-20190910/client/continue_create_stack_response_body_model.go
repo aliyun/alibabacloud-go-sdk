@@ -70,7 +70,12 @@ func (s *ContinueCreateStackResponseBody) SetStackId(v string) *ContinueCreateSt
 }
 
 func (s *ContinueCreateStackResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DryRunResult != nil {
+		if err := s.DryRunResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ContinueCreateStackResponseBodyDryRunResult struct {

@@ -66,7 +66,16 @@ func (s *ListResourceTypesResponseBody) SetResourceTypes(v []*string) *ListResou
 }
 
 func (s *ListResourceTypesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceTypeSummaries != nil {
+		for _, item := range s.ResourceTypeSummaries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourceTypesResponseBodyResourceTypeSummaries struct {

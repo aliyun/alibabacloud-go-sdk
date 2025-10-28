@@ -87,7 +87,16 @@ func (s *ListResourceTypeRegistrationsResponseBody) SetTotalCount(v int32) *List
 }
 
 func (s *ListResourceTypeRegistrationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Registrations != nil {
+		for _, item := range s.Registrations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourceTypeRegistrationsResponseBodyRegistrations struct {

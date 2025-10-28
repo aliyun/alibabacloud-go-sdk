@@ -53,7 +53,12 @@ func (s *GenerateTemplatePolicyResponseBody) SetRequestId(v string) *GenerateTem
 }
 
 func (s *GenerateTemplatePolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Policy != nil {
+		if err := s.Policy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GenerateTemplatePolicyResponseBodyPolicy struct {
@@ -94,7 +99,16 @@ func (s *GenerateTemplatePolicyResponseBodyPolicy) SetVersion(v string) *Generat
 }
 
 func (s *GenerateTemplatePolicyResponseBodyPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.Statement != nil {
+		for _, item := range s.Statement {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GenerateTemplatePolicyResponseBodyPolicyStatement struct {

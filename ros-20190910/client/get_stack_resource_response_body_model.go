@@ -301,7 +301,12 @@ func (s *GetStackResourceResponseBody) SetUpdateTime(v string) *GetStackResource
 }
 
 func (s *GetStackResourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleInfo != nil {
+		if err := s.ModuleInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStackResourceResponseBodyModuleInfo struct {

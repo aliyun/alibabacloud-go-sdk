@@ -53,7 +53,12 @@ func (s *GetStackGroupOperationResponseBody) SetStackGroupOperation(v *GetStackG
 }
 
 func (s *GetStackGroupOperationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StackGroupOperation != nil {
+		if err := s.StackGroupOperation.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStackGroupOperationResponseBodyStackGroupOperation struct {
@@ -300,7 +305,22 @@ func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetStatus(v stri
 }
 
 func (s *GetStackGroupOperationResponseBodyStackGroupOperation) Validate() error {
-	return dara.Validate(s)
+	if s.DeploymentTargets != nil {
+		if err := s.DeploymentTargets.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OperationPreferences != nil {
+		if err := s.OperationPreferences.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StackGroupDriftDetectionDetail != nil {
+		if err := s.StackGroupDriftDetectionDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets struct {

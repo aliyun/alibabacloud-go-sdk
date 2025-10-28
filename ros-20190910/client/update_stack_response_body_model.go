@@ -70,7 +70,12 @@ func (s *UpdateStackResponseBody) SetStackId(v string) *UpdateStackResponseBody 
 }
 
 func (s *UpdateStackResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DryRunResult != nil {
+		if err := s.DryRunResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateStackResponseBodyDryRunResult struct {

@@ -226,7 +226,35 @@ func (s *UpdateTemplateScratchRequest) SetTemplateScratchId(v string) *UpdateTem
 }
 
 func (s *UpdateTemplateScratchRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PreferenceParameters != nil {
+		for _, item := range s.PreferenceParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SourceResourceGroup != nil {
+		if err := s.SourceResourceGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceResources != nil {
+		for _, item := range s.SourceResources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SourceTag != nil {
+		if err := s.SourceTag.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateTemplateScratchRequestPreferenceParameters struct {

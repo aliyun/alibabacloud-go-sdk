@@ -112,7 +112,16 @@ func (s *ListStackEventsResponseBody) SetTotalCount(v int32) *ListStackEventsRes
 }
 
 func (s *ListStackEventsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Events != nil {
+		for _, item := range s.Events {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListStackEventsResponseBodyEvents struct {

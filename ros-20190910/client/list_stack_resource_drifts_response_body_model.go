@@ -70,7 +70,16 @@ func (s *ListStackResourceDriftsResponseBody) SetResourceDrifts(v []*ListStackRe
 }
 
 func (s *ListStackResourceDriftsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceDrifts != nil {
+		for _, item := range s.ResourceDrifts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListStackResourceDriftsResponseBodyResourceDrifts struct {
@@ -235,7 +244,21 @@ func (s *ListStackResourceDriftsResponseBodyResourceDrifts) SetStackId(v string)
 }
 
 func (s *ListStackResourceDriftsResponseBodyResourceDrifts) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleInfo != nil {
+		if err := s.ModuleInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PropertyDifferences != nil {
+		for _, item := range s.PropertyDifferences {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListStackResourceDriftsResponseBodyResourceDriftsModuleInfo struct {
