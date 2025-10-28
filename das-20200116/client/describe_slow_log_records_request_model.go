@@ -161,7 +161,16 @@ func (s *DescribeSlowLogRecordsRequest) SetStartTime(v int64) *DescribeSlowLogRe
 }
 
 func (s *DescribeSlowLogRecordsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filters != nil {
+		for _, item := range s.Filters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSlowLogRecordsRequestFilters struct {

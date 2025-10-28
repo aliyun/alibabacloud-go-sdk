@@ -108,7 +108,12 @@ func (s *DescribeHotBigKeysResponseBody) SetSuccess(v string) *DescribeHotBigKey
 }
 
 func (s *DescribeHotBigKeysResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHotBigKeysResponseBodyData struct {
@@ -195,7 +200,22 @@ func (s *DescribeHotBigKeysResponseBodyData) SetHotKeys(v *DescribeHotBigKeysRes
 }
 
 func (s *DescribeHotBigKeysResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.BigKeys != nil {
+		if err := s.BigKeys.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HighTrafficKeys != nil {
+		if err := s.HighTrafficKeys.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HotKeys != nil {
+		if err := s.HotKeys.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHotBigKeysResponseBodyDataBigKeys struct {
@@ -220,7 +240,16 @@ func (s *DescribeHotBigKeysResponseBodyDataBigKeys) SetBigKey(v []*DescribeHotBi
 }
 
 func (s *DescribeHotBigKeysResponseBodyDataBigKeys) Validate() error {
-	return dara.Validate(s)
+	if s.BigKey != nil {
+		for _, item := range s.BigKey {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHotBigKeysResponseBodyDataBigKeysBigKey struct {
@@ -335,7 +364,16 @@ func (s *DescribeHotBigKeysResponseBodyDataHighTrafficKeys) SetHighTrafficKey(v 
 }
 
 func (s *DescribeHotBigKeysResponseBodyDataHighTrafficKeys) Validate() error {
-	return dara.Validate(s)
+	if s.HighTrafficKey != nil {
+		for _, item := range s.HighTrafficKey {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey struct {
@@ -455,7 +493,16 @@ func (s *DescribeHotBigKeysResponseBodyDataHotKeys) SetHotKey(v []*DescribeHotBi
 }
 
 func (s *DescribeHotBigKeysResponseBodyDataHotKeys) Validate() error {
-	return dara.Validate(s)
+	if s.HotKey != nil {
+		for _, item := range s.HotKey {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHotBigKeysResponseBodyDataHotKeysHotKey struct {

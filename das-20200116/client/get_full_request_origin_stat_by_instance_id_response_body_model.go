@@ -110,7 +110,12 @@ func (s *GetFullRequestOriginStatByInstanceIdResponseBody) SetSuccess(v bool) *G
 }
 
 func (s *GetFullRequestOriginStatByInstanceIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetFullRequestOriginStatByInstanceIdResponseBodyData struct {
@@ -151,7 +156,16 @@ func (s *GetFullRequestOriginStatByInstanceIdResponseBodyData) SetTotal(v int64)
 }
 
 func (s *GetFullRequestOriginStatByInstanceIdResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetFullRequestOriginStatByInstanceIdResponseBodyDataList struct {

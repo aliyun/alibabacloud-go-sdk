@@ -110,7 +110,12 @@ func (s *DisableAutoThrottleRulesResponseBody) SetSuccess(v bool) *DisableAutoTh
 }
 
 func (s *DisableAutoThrottleRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DisableAutoThrottleRulesResponseBodyData struct {
@@ -192,7 +197,25 @@ func (s *DisableAutoThrottleRulesResponseBodyData) SetTotalInstanceCount(v int64
 }
 
 func (s *DisableAutoThrottleRulesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigFailInstanceList != nil {
+		for _, item := range s.ConfigFailInstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ConfigSuccessInstanceList != nil {
+		for _, item := range s.ConfigSuccessInstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DisableAutoThrottleRulesResponseBodyDataConfigFailInstanceList struct {

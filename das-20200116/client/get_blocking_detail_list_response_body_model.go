@@ -110,7 +110,12 @@ func (s *GetBlockingDetailListResponseBody) SetSuccess(v string) *GetBlockingDet
 }
 
 func (s *GetBlockingDetailListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBlockingDetailListResponseBodyData struct {
@@ -181,7 +186,16 @@ func (s *GetBlockingDetailListResponseBodyData) SetTotal(v int64) *GetBlockingDe
 }
 
 func (s *GetBlockingDetailListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetBlockingDetailListResponseBodyDataList struct {

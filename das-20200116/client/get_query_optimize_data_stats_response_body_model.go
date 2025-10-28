@@ -108,7 +108,12 @@ func (s *GetQueryOptimizeDataStatsResponseBody) SetSuccess(v string) *GetQueryOp
 }
 
 func (s *GetQueryOptimizeDataStatsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetQueryOptimizeDataStatsResponseBodyData struct {
@@ -194,7 +199,16 @@ func (s *GetQueryOptimizeDataStatsResponseBodyData) SetTotal(v int64) *GetQueryO
 }
 
 func (s *GetQueryOptimizeDataStatsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetQueryOptimizeDataStatsResponseBodyDataList struct {
@@ -494,7 +508,16 @@ func (s *GetQueryOptimizeDataStatsResponseBodyDataList) SetUser(v string) *GetQu
 }
 
 func (s *GetQueryOptimizeDataStatsResponseBodyDataList) Validate() error {
-	return dara.Validate(s)
+	if s.RuleList != nil {
+		for _, item := range s.RuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetQueryOptimizeDataStatsResponseBodyDataListRuleList struct {

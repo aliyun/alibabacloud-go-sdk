@@ -110,7 +110,12 @@ func (s *RunCloudBenchTaskResponseBody) SetSuccess(v string) *RunCloudBenchTaskR
 }
 
 func (s *RunCloudBenchTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunCloudBenchTaskResponseBodyData struct {
@@ -135,7 +140,16 @@ func (s *RunCloudBenchTaskResponseBodyData) SetPreCheckItem(v []*RunCloudBenchTa
 }
 
 func (s *RunCloudBenchTaskResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PreCheckItem != nil {
+		for _, item := range s.PreCheckItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunCloudBenchTaskResponseBodyDataPreCheckItem struct {

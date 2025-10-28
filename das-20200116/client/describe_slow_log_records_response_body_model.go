@@ -96,7 +96,12 @@ func (s *DescribeSlowLogRecordsResponseBody) SetSuccess(v string) *DescribeSlowL
 }
 
 func (s *DescribeSlowLogRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSlowLogRecordsResponseBodyData struct {
@@ -238,7 +243,16 @@ func (s *DescribeSlowLogRecordsResponseBodyData) SetTotalRecords(v int64) *Descr
 }
 
 func (s *DescribeSlowLogRecordsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Logs != nil {
+		for _, item := range s.Logs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSlowLogRecordsResponseBodyDataLogs struct {
@@ -876,7 +890,12 @@ func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetTraceId(v string) *Descr
 }
 
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) Validate() error {
-	return dara.Validate(s)
+	if s.SqlTag != nil {
+		if err := s.SqlTag.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSlowLogRecordsResponseBodyDataLogsSqlTag struct {

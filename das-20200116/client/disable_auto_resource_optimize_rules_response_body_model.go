@@ -110,7 +110,12 @@ func (s *DisableAutoResourceOptimizeRulesResponseBody) SetSuccess(v bool) *Disab
 }
 
 func (s *DisableAutoResourceOptimizeRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DisableAutoResourceOptimizeRulesResponseBodyData struct {
@@ -192,7 +197,25 @@ func (s *DisableAutoResourceOptimizeRulesResponseBodyData) SetTotalInstanceCount
 }
 
 func (s *DisableAutoResourceOptimizeRulesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigFailInstanceList != nil {
+		for _, item := range s.ConfigFailInstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ConfigSuccessInstanceList != nil {
+		for _, item := range s.ConfigSuccessInstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DisableAutoResourceOptimizeRulesResponseBodyDataConfigFailInstanceList struct {

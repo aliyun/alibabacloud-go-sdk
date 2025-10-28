@@ -95,7 +95,12 @@ func (s *DescribeErrorLogRecordsResponseBody) SetSuccess(v bool) *DescribeErrorL
 }
 
 func (s *DescribeErrorLogRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeErrorLogRecordsResponseBodyData struct {
@@ -198,7 +203,16 @@ func (s *DescribeErrorLogRecordsResponseBodyData) SetTotalRecords(v int64) *Desc
 }
 
 func (s *DescribeErrorLogRecordsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Logs != nil {
+		for _, item := range s.Logs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeErrorLogRecordsResponseBodyDataLogs struct {

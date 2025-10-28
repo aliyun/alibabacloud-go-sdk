@@ -108,7 +108,12 @@ func (s *DescribeTopHotKeysResponseBody) SetSuccess(v string) *DescribeTopHotKey
 }
 
 func (s *DescribeTopHotKeysResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTopHotKeysResponseBodyData struct {
@@ -133,7 +138,16 @@ func (s *DescribeTopHotKeysResponseBodyData) SetHotKey(v []*DescribeTopHotKeysRe
 }
 
 func (s *DescribeTopHotKeysResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.HotKey != nil {
+		for _, item := range s.HotKey {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTopHotKeysResponseBodyDataHotKey struct {

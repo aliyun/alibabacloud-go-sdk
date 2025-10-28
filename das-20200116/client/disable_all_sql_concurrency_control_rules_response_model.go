@@ -59,5 +59,10 @@ func (s *DisableAllSqlConcurrencyControlRulesResponse) SetBody(v *DisableAllSqlC
 }
 
 func (s *DisableAllSqlConcurrencyControlRulesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

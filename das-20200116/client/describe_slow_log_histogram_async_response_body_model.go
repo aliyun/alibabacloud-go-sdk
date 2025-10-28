@@ -96,7 +96,12 @@ func (s *DescribeSlowLogHistogramAsyncResponseBody) SetSuccess(v string) *Descri
 }
 
 func (s *DescribeSlowLogHistogramAsyncResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSlowLogHistogramAsyncResponseBodyData struct {
@@ -209,7 +214,12 @@ func (s *DescribeSlowLogHistogramAsyncResponseBodyData) SetTimestamp(v int64) *D
 }
 
 func (s *DescribeSlowLogHistogramAsyncResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSlowLogHistogramAsyncResponseBodyDataData struct {
@@ -266,9 +276,10 @@ type DescribeSlowLogHistogramAsyncResponseBodyDataData struct {
 	// example:
 	//
 	// 1
-	Total *int64   `json:"Total,omitempty" xml:"Total,omitempty"`
-	Ts    []*int64 `json:"Ts,omitempty" xml:"Ts,omitempty" type:"Repeated"`
-	TsEnd []*int64 `json:"TsEnd,omitempty" xml:"TsEnd,omitempty" type:"Repeated"`
+	Total      *int64   `json:"Total,omitempty" xml:"Total,omitempty"`
+	TotalCount *int64   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Ts         []*int64 `json:"Ts,omitempty" xml:"Ts,omitempty" type:"Repeated"`
+	TsEnd      []*int64 `json:"TsEnd,omitempty" xml:"TsEnd,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSlowLogHistogramAsyncResponseBodyDataData) String() string {
@@ -481,6 +492,10 @@ func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) GetScnt() []*int64 {
 
 func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) GetTotal() *int64 {
 	return s.Total
+}
+
+func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) GetTotalCount() *int64 {
+	return s.TotalCount
 }
 
 func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) GetTs() []*int64 {
@@ -746,6 +761,11 @@ func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetTotal(v int64) *D
 	return s
 }
 
+func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetTotalCount(v int64) *DescribeSlowLogHistogramAsyncResponseBodyDataData {
+	s.TotalCount = &v
+	return s
+}
+
 func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetTs(v []*int64) *DescribeSlowLogHistogramAsyncResponseBodyDataData {
 	s.Ts = v
 	return s
@@ -757,16 +777,27 @@ func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) SetTsEnd(v []*int64)
 }
 
 func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		for _, item := range s.Item {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSlowLogHistogramAsyncResponseBodyDataDataItem struct {
 	Count    []*int64                                                         `json:"Count,omitempty" xml:"Count,omitempty" type:"Repeated"`
 	InsItems []*DescribeSlowLogHistogramAsyncResponseBodyDataDataItemInsItems `json:"InsItems,omitempty" xml:"InsItems,omitempty" type:"Repeated"`
+	InsRole  *string                                                          `json:"InsRole,omitempty" xml:"InsRole,omitempty"`
 	// example:
 	//
 	// r-bp1hi0wg57s3n0i3n8-db-0
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeSlowLogHistogramAsyncResponseBodyDataDataItem) String() string {
@@ -785,8 +816,16 @@ func (s *DescribeSlowLogHistogramAsyncResponseBodyDataDataItem) GetInsItems() []
 	return s.InsItems
 }
 
+func (s *DescribeSlowLogHistogramAsyncResponseBodyDataDataItem) GetInsRole() *string {
+	return s.InsRole
+}
+
 func (s *DescribeSlowLogHistogramAsyncResponseBodyDataDataItem) GetNodeId() *string {
 	return s.NodeId
+}
+
+func (s *DescribeSlowLogHistogramAsyncResponseBodyDataDataItem) GetTotalCount() *int64 {
+	return s.TotalCount
 }
 
 func (s *DescribeSlowLogHistogramAsyncResponseBodyDataDataItem) SetCount(v []*int64) *DescribeSlowLogHistogramAsyncResponseBodyDataDataItem {
@@ -799,13 +838,32 @@ func (s *DescribeSlowLogHistogramAsyncResponseBodyDataDataItem) SetInsItems(v []
 	return s
 }
 
+func (s *DescribeSlowLogHistogramAsyncResponseBodyDataDataItem) SetInsRole(v string) *DescribeSlowLogHistogramAsyncResponseBodyDataDataItem {
+	s.InsRole = &v
+	return s
+}
+
 func (s *DescribeSlowLogHistogramAsyncResponseBodyDataDataItem) SetNodeId(v string) *DescribeSlowLogHistogramAsyncResponseBodyDataDataItem {
 	s.NodeId = &v
 	return s
 }
 
+func (s *DescribeSlowLogHistogramAsyncResponseBodyDataDataItem) SetTotalCount(v int64) *DescribeSlowLogHistogramAsyncResponseBodyDataDataItem {
+	s.TotalCount = &v
+	return s
+}
+
 func (s *DescribeSlowLogHistogramAsyncResponseBodyDataDataItem) Validate() error {
-	return dara.Validate(s)
+	if s.InsItems != nil {
+		for _, item := range s.InsItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSlowLogHistogramAsyncResponseBodyDataDataItemInsItems struct {
@@ -817,7 +875,8 @@ type DescribeSlowLogHistogramAsyncResponseBodyDataDataItemInsItems struct {
 	// example:
 	//
 	// userAdmin
-	InsRole *string `json:"InsRole,omitempty" xml:"InsRole,omitempty"`
+	InsRole    *string `json:"InsRole,omitempty" xml:"InsRole,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeSlowLogHistogramAsyncResponseBodyDataDataItemInsItems) String() string {
@@ -840,6 +899,10 @@ func (s *DescribeSlowLogHistogramAsyncResponseBodyDataDataItemInsItems) GetInsRo
 	return s.InsRole
 }
 
+func (s *DescribeSlowLogHistogramAsyncResponseBodyDataDataItemInsItems) GetTotalCount() *int64 {
+	return s.TotalCount
+}
+
 func (s *DescribeSlowLogHistogramAsyncResponseBodyDataDataItemInsItems) SetCount(v []*int64) *DescribeSlowLogHistogramAsyncResponseBodyDataDataItemInsItems {
 	s.Count = v
 	return s
@@ -852,6 +915,11 @@ func (s *DescribeSlowLogHistogramAsyncResponseBodyDataDataItemInsItems) SetInsId
 
 func (s *DescribeSlowLogHistogramAsyncResponseBodyDataDataItemInsItems) SetInsRole(v string) *DescribeSlowLogHistogramAsyncResponseBodyDataDataItemInsItems {
 	s.InsRole = &v
+	return s
+}
+
+func (s *DescribeSlowLogHistogramAsyncResponseBodyDataDataItemInsItems) SetTotalCount(v int64) *DescribeSlowLogHistogramAsyncResponseBodyDataDataItemInsItems {
+	s.TotalCount = &v
 	return s
 }
 

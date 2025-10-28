@@ -110,7 +110,12 @@ func (s *GetStorageAnalysisResultResponseBody) SetSuccess(v bool) *GetStorageAna
 }
 
 func (s *GetStorageAnalysisResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStorageAnalysisResultResponseBodyData struct {
@@ -257,7 +262,12 @@ func (s *GetStorageAnalysisResultResponseBodyData) SetTotalDbCount(v int64) *Get
 }
 
 func (s *GetStorageAnalysisResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.StorageAnalysisResult != nil {
+		if err := s.StorageAnalysisResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult struct {
@@ -409,7 +419,25 @@ func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult) SetTotal
 }
 
 func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult) Validate() error {
-	return dara.Validate(s)
+	if s.NeedOptimizeItemList != nil {
+		for _, item := range s.NeedOptimizeItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TableStats != nil {
+		for _, item := range s.TableStats {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList struct {

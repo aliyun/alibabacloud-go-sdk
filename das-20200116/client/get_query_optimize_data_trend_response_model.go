@@ -59,5 +59,10 @@ func (s *GetQueryOptimizeDataTrendResponse) SetBody(v *GetQueryOptimizeDataTrend
 }
 
 func (s *GetQueryOptimizeDataTrendResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -110,7 +110,12 @@ func (s *CreateStorageAnalysisTaskResponseBody) SetSuccess(v bool) *CreateStorag
 }
 
 func (s *CreateStorageAnalysisTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateStorageAnalysisTaskResponseBodyData struct {

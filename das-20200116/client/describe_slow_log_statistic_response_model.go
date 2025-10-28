@@ -59,5 +59,10 @@ func (s *DescribeSlowLogStatisticResponse) SetBody(v *DescribeSlowLogStatisticRe
 }
 
 func (s *DescribeSlowLogStatisticResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

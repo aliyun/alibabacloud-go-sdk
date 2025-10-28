@@ -110,7 +110,12 @@ func (s *GetRedisAllSessionResponseBody) SetSuccess(v bool) *GetRedisAllSessionR
 }
 
 func (s *GetRedisAllSessionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRedisAllSessionResponseBodyData struct {
@@ -177,7 +182,25 @@ func (s *GetRedisAllSessionResponseBodyData) SetTotal(v int64) *GetRedisAllSessi
 }
 
 func (s *GetRedisAllSessionResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Sessions != nil {
+		for _, item := range s.Sessions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SourceStats != nil {
+		for _, item := range s.SourceStats {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRedisAllSessionResponseBodyDataSessions struct {

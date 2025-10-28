@@ -110,7 +110,12 @@ func (s *DescribeAutoScalingHistoryResponseBody) SetSuccess(v string) *DescribeA
 }
 
 func (s *DescribeAutoScalingHistoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAutoScalingHistoryResponseBodyData struct {
@@ -195,7 +200,16 @@ func (s *DescribeAutoScalingHistoryResponseBodyData) SetStorage(v []map[string]i
 }
 
 func (s *DescribeAutoScalingHistoryResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.SpecHistory != nil {
+		for _, item := range s.SpecHistory {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAutoScalingHistoryResponseBodyDataSpecHistory struct {

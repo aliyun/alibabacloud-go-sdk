@@ -110,7 +110,12 @@ func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBody) SetSuccess(v bool) *U
 }
 
 func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateAutoResourceOptimizeRulesAsyncResponseBodyData struct {
@@ -246,7 +251,12 @@ func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyData) SetTimestamp(v in
 }
 
 func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigResponse != nil {
+		if err := s.ConfigResponse.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse struct {
@@ -328,7 +338,25 @@ func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse) Set
 }
 
 func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigFailInstanceList != nil {
+		for _, item := range s.ConfigFailInstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ConfigSuccessInstanceList != nil {
+		for _, item := range s.ConfigSuccessInstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList struct {

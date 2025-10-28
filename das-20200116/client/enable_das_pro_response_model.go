@@ -59,6 +59,11 @@ func (s *EnableDasProResponse) SetBody(v *EnableDasProResponseBody) *EnableDasPr
 }
 
 func (s *EnableDasProResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

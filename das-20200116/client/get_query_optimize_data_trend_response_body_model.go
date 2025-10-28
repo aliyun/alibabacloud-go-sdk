@@ -108,7 +108,12 @@ func (s *GetQueryOptimizeDataTrendResponseBody) SetSuccess(v string) *GetQueryOp
 }
 
 func (s *GetQueryOptimizeDataTrendResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetQueryOptimizeDataTrendResponseBodyData struct {
@@ -194,7 +199,16 @@ func (s *GetQueryOptimizeDataTrendResponseBodyData) SetTotal(v int64) *GetQueryO
 }
 
 func (s *GetQueryOptimizeDataTrendResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetQueryOptimizeDataTrendResponseBodyDataList struct {

@@ -110,7 +110,12 @@ func (s *GetMySQLAllSessionAsyncResponseBody) SetSuccess(v bool) *GetMySQLAllSes
 }
 
 func (s *GetMySQLAllSessionAsyncResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMySQLAllSessionAsyncResponseBodyData struct {
@@ -244,7 +249,12 @@ func (s *GetMySQLAllSessionAsyncResponseBodyData) SetTimestamp(v int64) *GetMySQ
 }
 
 func (s *GetMySQLAllSessionAsyncResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.SessionData != nil {
+		if err := s.SessionData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMySQLAllSessionAsyncResponseBodyDataSessionData struct {
@@ -363,7 +373,43 @@ func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionData) SetUserStats(v []*G
 }
 
 func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionData) Validate() error {
-	return dara.Validate(s)
+	if s.ClientStats != nil {
+		for _, item := range s.ClientStats {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DbStats != nil {
+		for _, item := range s.DbStats {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SessionList != nil {
+		for _, item := range s.SessionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserStats != nil {
+		for _, item := range s.UserStats {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats struct {

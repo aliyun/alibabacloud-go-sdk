@@ -110,7 +110,12 @@ func (s *GetAutoResourceOptimizeRulesResponseBody) SetSuccess(v bool) *GetAutoRe
 }
 
 func (s *GetAutoResourceOptimizeRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAutoResourceOptimizeRulesResponseBodyData struct {
@@ -248,7 +253,34 @@ func (s *GetAutoResourceOptimizeRulesResponseBodyData) SetTurnOffAutoResourceOpt
 }
 
 func (s *GetAutoResourceOptimizeRulesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.EnableAutoResourceOptimizeList != nil {
+		for _, item := range s.EnableAutoResourceOptimizeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HasEnableRuleButNotDasProList != nil {
+		for _, item := range s.HasEnableRuleButNotDasProList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TurnOffAutoResourceOptimizeList != nil {
+		for _, item := range s.TurnOffAutoResourceOptimizeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList struct {

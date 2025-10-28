@@ -59,5 +59,10 @@ func (s *GetFullRequestOriginStatByInstanceIdResponse) SetBody(v *GetFullRequest
 }
 
 func (s *GetFullRequestOriginStatByInstanceIdResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

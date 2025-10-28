@@ -96,7 +96,12 @@ func (s *DescribeSlowLogStatisticResponseBody) SetSuccess(v string) *DescribeSlo
 }
 
 func (s *DescribeSlowLogStatisticResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSlowLogStatisticResponseBodyData struct {
@@ -212,7 +217,12 @@ func (s *DescribeSlowLogStatisticResponseBodyData) SetTimestamp(v int64) *Descri
 }
 
 func (s *DescribeSlowLogStatisticResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSlowLogStatisticResponseBodyDataData struct {
@@ -354,7 +364,16 @@ func (s *DescribeSlowLogStatisticResponseBodyDataData) SetTotalRecords(v int64) 
 }
 
 func (s *DescribeSlowLogStatisticResponseBodyDataData) Validate() error {
-	return dara.Validate(s)
+	if s.Logs != nil {
+		for _, item := range s.Logs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
@@ -1603,7 +1622,26 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetUser(v string) *De
 }
 
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) Validate() error {
-	return dara.Validate(s)
+	if s.Histogram != nil {
+		if err := s.Histogram.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SqlTag != nil {
+		if err := s.SqlTag.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Trend != nil {
+		for _, item := range s.Trend {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSlowLogStatisticResponseBodyDataDataLogsHistogram struct {
@@ -1791,7 +1829,16 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogsHistogram) SetTsEnd(v [
 }
 
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogsHistogram) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		for _, item := range s.Item {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSlowLogStatisticResponseBodyDataDataLogsHistogramItem struct {

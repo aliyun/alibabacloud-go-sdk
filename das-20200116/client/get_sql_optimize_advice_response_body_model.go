@@ -110,7 +110,12 @@ func (s *GetSqlOptimizeAdviceResponseBody) SetSuccess(v string) *GetSqlOptimizeA
 }
 
 func (s *GetSqlOptimizeAdviceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSqlOptimizeAdviceResponseBodyData struct {

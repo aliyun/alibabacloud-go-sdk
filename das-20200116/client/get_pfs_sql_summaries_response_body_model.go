@@ -110,7 +110,12 @@ func (s *GetPfsSqlSummariesResponseBody) SetSuccess(v bool) *GetPfsSqlSummariesR
 }
 
 func (s *GetPfsSqlSummariesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPfsSqlSummariesResponseBodyData struct {
@@ -196,7 +201,16 @@ func (s *GetPfsSqlSummariesResponseBodyData) SetTotal(v int64) *GetPfsSqlSummari
 }
 
 func (s *GetPfsSqlSummariesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPfsSqlSummariesResponseBodyDataList struct {

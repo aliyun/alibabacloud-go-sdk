@@ -95,7 +95,12 @@ func (s *GetHDMLastAliyunResourceSyncResultResponseBody) SetSynchro(v string) *G
 }
 
 func (s *GetHDMLastAliyunResourceSyncResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHDMLastAliyunResourceSyncResultResponseBodyData struct {
@@ -150,7 +155,12 @@ func (s *GetHDMLastAliyunResourceSyncResultResponseBodyData) SetSyncStatus(v str
 }
 
 func (s *GetHDMLastAliyunResourceSyncResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.SubResults != nil {
+		if err := s.SubResults.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHDMLastAliyunResourceSyncResultResponseBodyDataSubResults struct {
@@ -175,7 +185,16 @@ func (s *GetHDMLastAliyunResourceSyncResultResponseBodyDataSubResults) SetResour
 }
 
 func (s *GetHDMLastAliyunResourceSyncResultResponseBodyDataSubResults) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceSyncSubResult != nil {
+		for _, item := range s.ResourceSyncSubResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetHDMLastAliyunResourceSyncResultResponseBodyDataSubResultsResourceSyncSubResult struct {

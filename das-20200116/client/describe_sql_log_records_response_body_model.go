@@ -110,7 +110,12 @@ func (s *DescribeSqlLogRecordsResponseBody) SetSuccess(v string) *DescribeSqlLog
 }
 
 func (s *DescribeSqlLogRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSqlLogRecordsResponseBodyData struct {
@@ -217,7 +222,12 @@ func (s *DescribeSqlLogRecordsResponseBodyData) SetTotalRecords(v int64) *Descri
 }
 
 func (s *DescribeSqlLogRecordsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSqlLogRecordsResponseBodyDataItems struct {
@@ -243,7 +253,16 @@ func (s *DescribeSqlLogRecordsResponseBodyDataItems) SetSQLLogRecord(v []*Descri
 }
 
 func (s *DescribeSqlLogRecordsResponseBodyDataItems) Validate() error {
-	return dara.Validate(s)
+	if s.SQLLogRecord != nil {
+		for _, item := range s.SQLLogRecord {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {

@@ -108,7 +108,12 @@ func (s *GetQueryOptimizeExecErrorStatsResponseBody) SetSuccess(v string) *GetQu
 }
 
 func (s *GetQueryOptimizeExecErrorStatsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetQueryOptimizeExecErrorStatsResponseBodyData struct {
@@ -194,7 +199,16 @@ func (s *GetQueryOptimizeExecErrorStatsResponseBodyData) SetTotal(v int64) *GetQ
 }
 
 func (s *GetQueryOptimizeExecErrorStatsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetQueryOptimizeExecErrorStatsResponseBodyDataList struct {

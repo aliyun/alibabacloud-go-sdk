@@ -59,5 +59,10 @@ func (s *GetRedisAllSessionResponse) SetBody(v *GetRedisAllSessionResponseBody) 
 }
 
 func (s *GetRedisAllSessionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

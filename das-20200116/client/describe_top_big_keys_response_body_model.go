@@ -110,7 +110,12 @@ func (s *DescribeTopBigKeysResponseBody) SetSuccess(v string) *DescribeTopBigKey
 }
 
 func (s *DescribeTopBigKeysResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTopBigKeysResponseBodyData struct {
@@ -135,7 +140,16 @@ func (s *DescribeTopBigKeysResponseBodyData) SetBigKey(v []*DescribeTopBigKeysRe
 }
 
 func (s *DescribeTopBigKeysResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.BigKey != nil {
+		for _, item := range s.BigKey {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTopBigKeysResponseBodyDataBigKey struct {

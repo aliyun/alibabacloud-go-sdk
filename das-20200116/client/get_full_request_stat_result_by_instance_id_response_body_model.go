@@ -110,7 +110,12 @@ func (s *GetFullRequestStatResultByInstanceIdResponseBody) SetSuccess(v bool) *G
 }
 
 func (s *GetFullRequestStatResultByInstanceIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetFullRequestStatResultByInstanceIdResponseBodyData struct {
@@ -225,7 +230,12 @@ func (s *GetFullRequestStatResultByInstanceIdResponseBodyData) SetTimestamp(v in
 }
 
 func (s *GetFullRequestStatResultByInstanceIdResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetFullRequestStatResultByInstanceIdResponseBodyDataResult struct {
@@ -266,7 +276,16 @@ func (s *GetFullRequestStatResultByInstanceIdResponseBodyDataResult) SetTotal(v 
 }
 
 func (s *GetFullRequestStatResultByInstanceIdResponseBodyDataResult) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetFullRequestStatResultByInstanceIdResponseBodyDataResultList struct {

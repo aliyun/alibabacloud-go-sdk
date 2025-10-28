@@ -159,7 +159,16 @@ func (s *ModifySqlLogConfigRequest) SetRetention(v int32) *ModifySqlLogConfigReq
 }
 
 func (s *ModifySqlLogConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filters != nil {
+		for _, item := range s.Filters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifySqlLogConfigRequestFilters struct {

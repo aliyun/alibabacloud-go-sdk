@@ -110,7 +110,12 @@ func (s *GetMongoDBCurrentOpResponseBody) SetSuccess(v bool) *GetMongoDBCurrentO
 }
 
 func (s *GetMongoDBCurrentOpResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMongoDBCurrentOpResponseBodyData struct {
@@ -162,7 +167,21 @@ func (s *GetMongoDBCurrentOpResponseBodyData) SetTimestamp(v int64) *GetMongoDBC
 }
 
 func (s *GetMongoDBCurrentOpResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.SessionList != nil {
+		for _, item := range s.SessionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SessionStat != nil {
+		if err := s.SessionStat.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMongoDBCurrentOpResponseBodyDataSessionList struct {

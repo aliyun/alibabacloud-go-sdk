@@ -110,7 +110,12 @@ func (s *GetKillInstanceSessionTaskResultResponseBody) SetSuccess(v bool) *GetKi
 }
 
 func (s *GetKillInstanceSessionTaskResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetKillInstanceSessionTaskResultResponseBodyData struct {
@@ -279,7 +284,16 @@ func (s *GetKillInstanceSessionTaskResultResponseBodyData) SetUserId(v string) *
 }
 
 func (s *GetKillInstanceSessionTaskResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetKillInstanceSessionTaskResultResponseBodyDataResult struct {

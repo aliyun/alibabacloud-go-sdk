@@ -110,7 +110,12 @@ func (s *ModifySqlLogConfigResponseBody) SetSuccess(v string) *ModifySqlLogConfi
 }
 
 func (s *ModifySqlLogConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifySqlLogConfigResponseBodyData struct {

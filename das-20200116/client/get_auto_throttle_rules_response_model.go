@@ -59,5 +59,10 @@ func (s *GetAutoThrottleRulesResponse) SetBody(v *GetAutoThrottleRulesResponseBo
 }
 
 func (s *GetAutoThrottleRulesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

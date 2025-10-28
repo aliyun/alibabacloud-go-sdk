@@ -110,7 +110,12 @@ func (s *GetInstanceInspectionsResponseBody) SetSuccess(v string) *GetInstanceIn
 }
 
 func (s *GetInstanceInspectionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceInspectionsResponseBodyData struct {
@@ -181,7 +186,16 @@ func (s *GetInstanceInspectionsResponseBodyData) SetTotal(v int64) *GetInstanceI
 }
 
 func (s *GetInstanceInspectionsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstanceInspectionsResponseBodyDataList struct {
@@ -367,7 +381,17 @@ func (s *GetInstanceInspectionsResponseBodyDataList) SetTaskType(v int32) *GetIn
 }
 
 func (s *GetInstanceInspectionsResponseBodyDataList) Validate() error {
-	return dara.Validate(s)
+	if s.AutoFunction != nil {
+		if err := s.AutoFunction.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Instance != nil {
+		if err := s.Instance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceInspectionsResponseBodyDataListAutoFunction struct {

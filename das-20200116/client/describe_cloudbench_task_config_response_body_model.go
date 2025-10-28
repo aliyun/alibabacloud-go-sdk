@@ -110,7 +110,12 @@ func (s *DescribeCloudbenchTaskConfigResponseBody) SetSuccess(v string) *Describ
 }
 
 func (s *DescribeCloudbenchTaskConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudbenchTaskConfigResponseBodyData struct {

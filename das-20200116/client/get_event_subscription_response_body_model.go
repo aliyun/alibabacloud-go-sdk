@@ -110,7 +110,12 @@ func (s *GetEventSubscriptionResponseBody) SetSuccess(v string) *GetEventSubscri
 }
 
 func (s *GetEventSubscriptionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEventSubscriptionResponseBodyData struct {
@@ -373,7 +378,25 @@ func (s *GetEventSubscriptionResponseBodyData) SetUserId(v string) *GetEventSubs
 }
 
 func (s *GetEventSubscriptionResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ContactGroups != nil {
+		for _, item := range s.ContactGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Contacts != nil {
+		for _, item := range s.Contacts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetEventSubscriptionResponseBodyDataContactGroups struct {

@@ -110,7 +110,12 @@ func (s *GetDasSQLLogHotDataResponseBody) SetSuccess(v string) *GetDasSQLLogHotD
 }
 
 func (s *GetDasSQLLogHotDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDasSQLLogHotDataResponseBodyData struct {
@@ -196,7 +201,16 @@ func (s *GetDasSQLLogHotDataResponseBodyData) SetTotal(v int64) *GetDasSQLLogHot
 }
 
 func (s *GetDasSQLLogHotDataResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDasSQLLogHotDataResponseBodyDataList struct {

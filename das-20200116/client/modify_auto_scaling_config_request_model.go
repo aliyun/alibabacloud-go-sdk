@@ -107,7 +107,32 @@ func (s *ModifyAutoScalingConfigRequest) SetStorage(v *ModifyAutoScalingConfigRe
 }
 
 func (s *ModifyAutoScalingConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Bandwidth != nil {
+		if err := s.Bandwidth.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Resource != nil {
+		if err := s.Resource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Shard != nil {
+		if err := s.Shard.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Spec != nil {
+		if err := s.Spec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Storage != nil {
+		if err := s.Storage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyAutoScalingConfigRequestBandwidth struct {

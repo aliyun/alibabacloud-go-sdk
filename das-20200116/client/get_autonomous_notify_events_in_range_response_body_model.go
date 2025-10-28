@@ -110,7 +110,12 @@ func (s *GetAutonomousNotifyEventsInRangeResponseBody) SetSuccess(v string) *Get
 }
 
 func (s *GetAutonomousNotifyEventsInRangeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAutonomousNotifyEventsInRangeResponseBodyData struct {
@@ -196,7 +201,12 @@ func (s *GetAutonomousNotifyEventsInRangeResponseBodyData) SetTotal(v int64) *Ge
 }
 
 func (s *GetAutonomousNotifyEventsInRangeResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		if err := s.List.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAutonomousNotifyEventsInRangeResponseBodyDataList struct {

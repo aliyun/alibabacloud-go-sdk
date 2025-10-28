@@ -110,7 +110,12 @@ func (s *DescribeSqlLogTasksResponseBody) SetSuccess(v string) *DescribeSqlLogTa
 }
 
 func (s *DescribeSqlLogTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSqlLogTasksResponseBodyData struct {
@@ -181,7 +186,16 @@ func (s *DescribeSqlLogTasksResponseBodyData) SetTotal(v int64) *DescribeSqlLogT
 }
 
 func (s *DescribeSqlLogTasksResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSqlLogTasksResponseBodyDataList struct {
@@ -464,7 +478,16 @@ func (s *DescribeSqlLogTasksResponseBodyDataList) SetTaskType(v string) *Describ
 }
 
 func (s *DescribeSqlLogTasksResponseBodyDataList) Validate() error {
-	return dara.Validate(s)
+	if s.Filters != nil {
+		for _, item := range s.Filters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSqlLogTasksResponseBodyDataListFilters struct {

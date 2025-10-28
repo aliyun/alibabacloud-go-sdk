@@ -110,7 +110,12 @@ func (s *CreateCacheAnalysisJobResponseBody) SetSuccess(v string) *CreateCacheAn
 }
 
 func (s *CreateCacheAnalysisJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateCacheAnalysisJobResponseBodyData struct {
@@ -223,7 +228,12 @@ func (s *CreateCacheAnalysisJobResponseBodyData) SetTaskState(v string) *CreateC
 }
 
 func (s *CreateCacheAnalysisJobResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.BigKeys != nil {
+		if err := s.BigKeys.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateCacheAnalysisJobResponseBodyDataBigKeys struct {
@@ -248,7 +258,16 @@ func (s *CreateCacheAnalysisJobResponseBodyDataBigKeys) SetKeyInfo(v []*CreateCa
 }
 
 func (s *CreateCacheAnalysisJobResponseBodyDataBigKeys) Validate() error {
-	return dara.Validate(s)
+	if s.KeyInfo != nil {
+		for _, item := range s.KeyInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateCacheAnalysisJobResponseBodyDataBigKeysKeyInfo struct {

@@ -110,7 +110,12 @@ func (s *GetInstanceSqlOptimizeStatisticResponseBody) SetSuccess(v string) *GetI
 }
 
 func (s *GetInstanceSqlOptimizeStatisticResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceSqlOptimizeStatisticResponseBodyData struct {

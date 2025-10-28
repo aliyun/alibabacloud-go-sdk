@@ -59,5 +59,10 @@ func (s *DisableDasProResponse) SetBody(v *DisableDasProResponseBody) *DisableDa
 }
 
 func (s *DisableDasProResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

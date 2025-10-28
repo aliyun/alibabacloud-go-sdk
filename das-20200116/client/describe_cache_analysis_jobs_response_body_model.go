@@ -110,7 +110,12 @@ func (s *DescribeCacheAnalysisJobsResponseBody) SetSuccess(v string) *DescribeCa
 }
 
 func (s *DescribeCacheAnalysisJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCacheAnalysisJobsResponseBodyData struct {
@@ -196,7 +201,12 @@ func (s *DescribeCacheAnalysisJobsResponseBodyData) SetTotal(v int64) *DescribeC
 }
 
 func (s *DescribeCacheAnalysisJobsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		if err := s.List.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCacheAnalysisJobsResponseBodyDataList struct {
@@ -221,7 +231,16 @@ func (s *DescribeCacheAnalysisJobsResponseBodyDataList) SetCacheAnalysisJob(v []
 }
 
 func (s *DescribeCacheAnalysisJobsResponseBodyDataList) Validate() error {
-	return dara.Validate(s)
+	if s.CacheAnalysisJob != nil {
+		for _, item := range s.CacheAnalysisJob {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJob struct {
@@ -334,7 +353,12 @@ func (s *DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJob) SetTaskS
 }
 
 func (s *DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJob) Validate() error {
-	return dara.Validate(s)
+	if s.BigKeys != nil {
+		if err := s.BigKeys.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJobBigKeys struct {
@@ -359,7 +383,16 @@ func (s *DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJobBigKeys) S
 }
 
 func (s *DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJobBigKeys) Validate() error {
-	return dara.Validate(s)
+	if s.KeyInfo != nil {
+		for _, item := range s.KeyInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJobBigKeysKeyInfo struct {

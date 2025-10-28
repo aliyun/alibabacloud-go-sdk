@@ -110,7 +110,12 @@ func (s *GetAutoThrottleRulesResponseBody) SetSuccess(v bool) *GetAutoThrottleRu
 }
 
 func (s *GetAutoThrottleRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAutoThrottleRulesResponseBodyData struct {
@@ -222,7 +227,25 @@ func (s *GetAutoThrottleRulesResponseBodyData) SetTurnOffAutoThrottleList(v []*G
 }
 
 func (s *GetAutoThrottleRulesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.EnableAutoThrottleList != nil {
+		for _, item := range s.EnableAutoThrottleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TurnOffAutoThrottleList != nil {
+		for _, item := range s.TurnOffAutoThrottleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList struct {

@@ -59,5 +59,10 @@ func (s *CreateKillInstanceSessionTaskResponse) SetBody(v *CreateKillInstanceSes
 }
 
 func (s *CreateKillInstanceSessionTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

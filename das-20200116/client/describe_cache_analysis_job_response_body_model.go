@@ -110,7 +110,12 @@ func (s *DescribeCacheAnalysisJobResponseBody) SetSuccess(v string) *DescribeCac
 }
 
 func (s *DescribeCacheAnalysisJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCacheAnalysisJobResponseBodyData struct {
@@ -276,7 +281,37 @@ func (s *DescribeCacheAnalysisJobResponseBodyData) SetUnexBigKeysOfNum(v *Descri
 }
 
 func (s *DescribeCacheAnalysisJobResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.BigKeys != nil {
+		if err := s.BigKeys.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BigKeysOfNum != nil {
+		if err := s.BigKeysOfNum.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExpiryKeysLevelCount != nil {
+		if err := s.ExpiryKeysLevelCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.KeyPrefixes != nil {
+		if err := s.KeyPrefixes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UnexBigKeysOfBytes != nil {
+		if err := s.UnexBigKeysOfBytes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UnexBigKeysOfNum != nil {
+		if err := s.UnexBigKeysOfNum.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCacheAnalysisJobResponseBodyDataBigKeys struct {
@@ -301,7 +336,16 @@ func (s *DescribeCacheAnalysisJobResponseBodyDataBigKeys) SetKeyInfo(v []*Descri
 }
 
 func (s *DescribeCacheAnalysisJobResponseBodyDataBigKeys) Validate() error {
-	return dara.Validate(s)
+	if s.KeyInfo != nil {
+		for _, item := range s.KeyInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCacheAnalysisJobResponseBodyDataBigKeysKeyInfo struct {
@@ -461,7 +505,16 @@ func (s *DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNum) SetKeyInfo(v []*D
 }
 
 func (s *DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNum) Validate() error {
-	return dara.Validate(s)
+	if s.KeyInfo != nil {
+		for _, item := range s.KeyInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNumKeyInfo struct {
@@ -621,7 +674,16 @@ func (s *DescribeCacheAnalysisJobResponseBodyDataExpiryKeysLevelCount) SetExpiry
 }
 
 func (s *DescribeCacheAnalysisJobResponseBodyDataExpiryKeysLevelCount) Validate() error {
-	return dara.Validate(s)
+	if s.ExpiryLevel != nil {
+		for _, item := range s.ExpiryLevel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCacheAnalysisJobResponseBodyDataExpiryKeysLevelCountExpiryLevel struct {
@@ -739,7 +801,16 @@ func (s *DescribeCacheAnalysisJobResponseBodyDataKeyPrefixes) SetPrefix(v []*Des
 }
 
 func (s *DescribeCacheAnalysisJobResponseBodyDataKeyPrefixes) Validate() error {
-	return dara.Validate(s)
+	if s.Prefix != nil {
+		for _, item := range s.Prefix {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCacheAnalysisJobResponseBodyDataKeyPrefixesPrefix struct {
@@ -854,7 +925,16 @@ func (s *DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfBytes) SetKeyInfo(
 }
 
 func (s *DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfBytes) Validate() error {
-	return dara.Validate(s)
+	if s.KeyInfo != nil {
+		for _, item := range s.KeyInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfBytesKeyInfo struct {
@@ -1014,7 +1094,16 @@ func (s *DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNum) SetKeyInfo(v 
 }
 
 func (s *DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNum) Validate() error {
-	return dara.Validate(s)
+	if s.KeyInfo != nil {
+		for _, item := range s.KeyInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNumKeyInfo struct {

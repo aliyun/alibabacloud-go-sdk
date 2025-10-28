@@ -59,5 +59,10 @@ func (s *GetDeadlockHistogramResponse) SetBody(v *GetDeadlockHistogramResponseBo
 }
 
 func (s *GetDeadlockHistogramResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

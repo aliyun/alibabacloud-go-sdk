@@ -110,7 +110,12 @@ func (s *DescribeCloudBenchTasksResponseBody) SetSuccess(v string) *DescribeClou
 }
 
 func (s *DescribeCloudBenchTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudBenchTasksResponseBodyData struct {
@@ -196,7 +201,12 @@ func (s *DescribeCloudBenchTasksResponseBodyData) SetTotal(v int64) *DescribeClo
 }
 
 func (s *DescribeCloudBenchTasksResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		if err := s.List.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudBenchTasksResponseBodyDataList struct {
@@ -221,7 +231,16 @@ func (s *DescribeCloudBenchTasksResponseBodyDataList) SetCloudbenchTasks(v []*De
 }
 
 func (s *DescribeCloudBenchTasksResponseBodyDataList) Validate() error {
-	return dara.Validate(s)
+	if s.CloudbenchTasks != nil {
+		for _, item := range s.CloudbenchTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudBenchTasksResponseBodyDataListCloudbenchTasks struct {

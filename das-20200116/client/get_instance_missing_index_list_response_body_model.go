@@ -108,7 +108,12 @@ func (s *GetInstanceMissingIndexListResponseBody) SetSuccess(v string) *GetInsta
 }
 
 func (s *GetInstanceMissingIndexListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceMissingIndexListResponseBodyData struct {
@@ -179,7 +184,16 @@ func (s *GetInstanceMissingIndexListResponseBodyData) SetTotal(v int64) *GetInst
 }
 
 func (s *GetInstanceMissingIndexListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstanceMissingIndexListResponseBodyDataList struct {

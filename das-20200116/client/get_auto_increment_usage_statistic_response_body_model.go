@@ -110,7 +110,12 @@ func (s *GetAutoIncrementUsageStatisticResponseBody) SetSuccess(v bool) *GetAuto
 }
 
 func (s *GetAutoIncrementUsageStatisticResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAutoIncrementUsageStatisticResponseBodyData struct {
@@ -208,7 +213,16 @@ func (s *GetAutoIncrementUsageStatisticResponseBodyData) SetTimestamp(v int64) *
 }
 
 func (s *GetAutoIncrementUsageStatisticResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AutoIncrementUsageList != nil {
+		for _, item := range s.AutoIncrementUsageList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList struct {

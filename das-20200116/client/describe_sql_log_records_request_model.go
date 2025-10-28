@@ -165,7 +165,16 @@ func (s *DescribeSqlLogRecordsRequest) SetStartTime(v int64) *DescribeSqlLogReco
 }
 
 func (s *DescribeSqlLogRecordsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filters != nil {
+		for _, item := range s.Filters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSqlLogRecordsRequestFilters struct {

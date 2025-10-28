@@ -110,7 +110,12 @@ func (s *GetSqlConcurrencyControlRulesHistoryResponseBody) SetSuccess(v string) 
 }
 
 func (s *GetSqlConcurrencyControlRulesHistoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSqlConcurrencyControlRulesHistoryResponseBodyData struct {
@@ -151,7 +156,12 @@ func (s *GetSqlConcurrencyControlRulesHistoryResponseBodyData) SetTotal(v int64)
 }
 
 func (s *GetSqlConcurrencyControlRulesHistoryResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		if err := s.List.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSqlConcurrencyControlRulesHistoryResponseBodyDataList struct {
@@ -176,7 +186,16 @@ func (s *GetSqlConcurrencyControlRulesHistoryResponseBodyDataList) SetRules(v []
 }
 
 func (s *GetSqlConcurrencyControlRulesHistoryResponseBodyDataList) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSqlConcurrencyControlRulesHistoryResponseBodyDataListRules struct {
