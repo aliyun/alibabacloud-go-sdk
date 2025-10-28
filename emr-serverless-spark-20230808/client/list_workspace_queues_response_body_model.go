@@ -155,6 +155,7 @@ type ListWorkspaceQueuesResponseBodyQueues struct {
 	//
 	// PayAsYouGo
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	Preheat     *bool   `json:"preheat,omitempty" xml:"preheat,omitempty"`
 	// The queue label.
 	//
 	// example:
@@ -245,6 +246,10 @@ func (s *ListWorkspaceQueuesResponseBodyQueues) GetPaymentType() *string {
 	return s.PaymentType
 }
 
+func (s *ListWorkspaceQueuesResponseBodyQueues) GetPreheat() *bool {
+	return s.Preheat
+}
+
 func (s *ListWorkspaceQueuesResponseBodyQueues) GetProperties() *string {
 	return s.Properties
 }
@@ -309,6 +314,11 @@ func (s *ListWorkspaceQueuesResponseBodyQueues) SetMinResource(v string) *ListWo
 
 func (s *ListWorkspaceQueuesResponseBodyQueues) SetPaymentType(v string) *ListWorkspaceQueuesResponseBodyQueues {
 	s.PaymentType = &v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueues) SetPreheat(v bool) *ListWorkspaceQueuesResponseBodyQueues {
+	s.Preheat = &v
 	return s
 }
 

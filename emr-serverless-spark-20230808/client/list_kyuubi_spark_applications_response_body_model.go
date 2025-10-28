@@ -140,8 +140,18 @@ type ListKyuubiSparkApplicationsResponseBodyApplications struct {
 	// example:
 	//
 	// 2025-02-12 20:02:02
-	EndTime                  *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	ExitReason               *string `json:"exitReason,omitempty" xml:"exitReason,omitempty"`
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// Exit Code: 137, Exit Reason: OOMKilled
+	ExitReason *string `json:"exitReason,omitempty" xml:"exitReason,omitempty"`
+	// example:
+	//
+	// kb-2b93ec*******c9440c
+	KyuubiServiceId *string `json:"kyuubiServiceId,omitempty" xml:"kyuubiServiceId,omitempty"`
+	// example:
+	//
+	// SUCCESS
 	LatestSqlStatementStatus *string `json:"latestSqlStatementStatus,omitempty" xml:"latestSqlStatementStatus,omitempty"`
 	// The total amount of memory allocated to the job multiplied by the running duration (seconds).
 	//
@@ -155,6 +165,7 @@ type ListKyuubiSparkApplicationsResponseBodyApplications struct {
 	//
 	// dev_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
+	RunLog          *RunLog `json:"runLog,omitempty" xml:"runLog,omitempty"`
 	// The time when the task started.
 	//
 	// example:
@@ -211,6 +222,10 @@ func (s *ListKyuubiSparkApplicationsResponseBodyApplications) GetExitReason() *s
 	return s.ExitReason
 }
 
+func (s *ListKyuubiSparkApplicationsResponseBodyApplications) GetKyuubiServiceId() *string {
+	return s.KyuubiServiceId
+}
+
 func (s *ListKyuubiSparkApplicationsResponseBodyApplications) GetLatestSqlStatementStatus() *string {
 	return s.LatestSqlStatementStatus
 }
@@ -221,6 +236,10 @@ func (s *ListKyuubiSparkApplicationsResponseBodyApplications) GetMbSeconds() *in
 
 func (s *ListKyuubiSparkApplicationsResponseBodyApplications) GetResourceQueueId() *string {
 	return s.ResourceQueueId
+}
+
+func (s *ListKyuubiSparkApplicationsResponseBodyApplications) GetRunLog() *RunLog {
+	return s.RunLog
 }
 
 func (s *ListKyuubiSparkApplicationsResponseBodyApplications) GetStartTime() *string {
@@ -264,6 +283,11 @@ func (s *ListKyuubiSparkApplicationsResponseBodyApplications) SetExitReason(v st
 	return s
 }
 
+func (s *ListKyuubiSparkApplicationsResponseBodyApplications) SetKyuubiServiceId(v string) *ListKyuubiSparkApplicationsResponseBodyApplications {
+	s.KyuubiServiceId = &v
+	return s
+}
+
 func (s *ListKyuubiSparkApplicationsResponseBodyApplications) SetLatestSqlStatementStatus(v string) *ListKyuubiSparkApplicationsResponseBodyApplications {
 	s.LatestSqlStatementStatus = &v
 	return s
@@ -276,6 +300,11 @@ func (s *ListKyuubiSparkApplicationsResponseBodyApplications) SetMbSeconds(v int
 
 func (s *ListKyuubiSparkApplicationsResponseBodyApplications) SetResourceQueueId(v string) *ListKyuubiSparkApplicationsResponseBodyApplications {
 	s.ResourceQueueId = &v
+	return s
+}
+
+func (s *ListKyuubiSparkApplicationsResponseBodyApplications) SetRunLog(v *RunLog) *ListKyuubiSparkApplicationsResponseBodyApplications {
+	s.RunLog = v
 	return s
 }
 
@@ -300,5 +329,10 @@ func (s *ListKyuubiSparkApplicationsResponseBodyApplications) SetWebUI(v string)
 }
 
 func (s *ListKyuubiSparkApplicationsResponseBodyApplications) Validate() error {
-	return dara.Validate(s)
+	if s.RunLog != nil {
+		if err := s.RunLog.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

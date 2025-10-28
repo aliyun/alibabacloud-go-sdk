@@ -195,6 +195,10 @@ type ListJobRunsResponseBodyJobRuns struct {
 	//
 	// esr-native-3.4.0
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
+	// example:
+	//
+	// dev_queue
+	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
 	// The job state.
 	//
 	// example:
@@ -295,6 +299,10 @@ func (s *ListJobRunsResponseBodyJobRuns) GetReleaseVersion() *string {
 	return s.ReleaseVersion
 }
 
+func (s *ListJobRunsResponseBodyJobRuns) GetResourceQueueId() *string {
+	return s.ResourceQueueId
+}
+
 func (s *ListJobRunsResponseBodyJobRuns) GetState() *string {
 	return s.State
 }
@@ -390,6 +398,11 @@ func (s *ListJobRunsResponseBodyJobRuns) SetName(v string) *ListJobRunsResponseB
 
 func (s *ListJobRunsResponseBodyJobRuns) SetReleaseVersion(v string) *ListJobRunsResponseBodyJobRuns {
 	s.ReleaseVersion = &v
+	return s
+}
+
+func (s *ListJobRunsResponseBodyJobRuns) SetResourceQueueId(v string) *ListJobRunsResponseBodyJobRuns {
+	s.ResourceQueueId = &v
 	return s
 }
 

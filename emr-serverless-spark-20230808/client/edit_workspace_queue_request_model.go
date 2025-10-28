@@ -105,6 +105,10 @@ type EditWorkspaceQueueRequestResourceSpec struct {
   // 
   // 1000
   Cu *int64 `json:"cu,omitempty" xml:"cu,omitempty"`
+  // example:
+  // 
+  // 0.5
+  MaxCu *int64 `json:"maxCu,omitempty" xml:"maxCu,omitempty"`
 }
 
 func (s EditWorkspaceQueueRequestResourceSpec) String() string {
@@ -119,8 +123,17 @@ func (s *EditWorkspaceQueueRequestResourceSpec) GetCu() *int64  {
   return s.Cu
 }
 
+func (s *EditWorkspaceQueueRequestResourceSpec) GetMaxCu() *int64  {
+  return s.MaxCu
+}
+
 func (s *EditWorkspaceQueueRequestResourceSpec) SetCu(v int64) *EditWorkspaceQueueRequestResourceSpec {
   s.Cu = &v
+  return s
+}
+
+func (s *EditWorkspaceQueueRequestResourceSpec) SetMaxCu(v int64) *EditWorkspaceQueueRequestResourceSpec {
+  s.MaxCu = &v
   return s
 }
 

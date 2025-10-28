@@ -122,6 +122,10 @@ type GetJobRunResponseBodyJobRun struct {
 	//
 	// jobName
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// http://workflow-ide-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/spark-notebook-output/w-xxxxxxxxx/xxxxxxx
+	NotebookAccessUrl *string `json:"notebookAccessUrl,omitempty" xml:"notebookAccessUrl,omitempty"`
 	// The version of the Spark engine on which the job runs.
 	//
 	// example:
@@ -222,6 +226,10 @@ func (s *GetJobRunResponseBodyJobRun) GetName() *string {
 	return s.Name
 }
 
+func (s *GetJobRunResponseBodyJobRun) GetNotebookAccessUrl() *string {
+	return s.NotebookAccessUrl
+}
+
 func (s *GetJobRunResponseBodyJobRun) GetReleaseVersion() *string {
 	return s.ReleaseVersion
 }
@@ -310,6 +318,11 @@ func (s *GetJobRunResponseBodyJobRun) SetLog(v *RunLog) *GetJobRunResponseBodyJo
 
 func (s *GetJobRunResponseBodyJobRun) SetName(v string) *GetJobRunResponseBodyJobRun {
 	s.Name = &v
+	return s
+}
+
+func (s *GetJobRunResponseBodyJobRun) SetNotebookAccessUrl(v string) *GetJobRunResponseBodyJobRun {
+	s.NotebookAccessUrl = &v
 	return s
 }
 
