@@ -110,7 +110,12 @@ func (s *CreateChatSessionResponseBody) SetSuccess(v bool) *CreateChatSessionRes
 }
 
 func (s *CreateChatSessionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateChatSessionResponseBodyData struct {
@@ -158,7 +163,17 @@ func (s *CreateChatSessionResponseBodyData) SetSessionId(v string) *CreateChatSe
 }
 
 func (s *CreateChatSessionResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AvatarAssets != nil {
+		if err := s.AvatarAssets.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RtcParams != nil {
+		if err := s.RtcParams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateChatSessionResponseBodyDataAvatarAssets struct {
