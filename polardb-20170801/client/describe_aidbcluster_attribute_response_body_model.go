@@ -469,6 +469,10 @@ type DescribeAIDBClusterAttributeResponseBodyDBNodes struct {
 	MemorySize *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
 	// example:
 	//
+	// 101.101.101.101
+	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+	// example:
+	//
 	// vn-***************
 	VNodeId *string `json:"VNodeId,omitempty" xml:"VNodeId,omitempty"`
 	// example:
@@ -529,6 +533,10 @@ func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetMemorySize() *strin
 	return s.MemorySize
 }
 
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetPublicIp() *string {
+	return s.PublicIp
+}
+
 func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetVNodeId() *string {
 	return s.VNodeId
 }
@@ -587,6 +595,11 @@ func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetLinkIP(v string) *D
 
 func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetMemorySize(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodes {
 	s.MemorySize = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetPublicIp(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodes {
+	s.PublicIp = &v
 	return s
 }
 
