@@ -53,7 +53,12 @@ func (s *UpdateCollectorResponseBody) SetResult(v *UpdateCollectorResponseBodyRe
 }
 
 func (s *UpdateCollectorResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateCollectorResponseBodyResult struct {
@@ -258,7 +263,25 @@ func (s *UpdateCollectorResponseBodyResult) SetVpcId(v string) *UpdateCollectorR
 }
 
 func (s *UpdateCollectorResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Configs != nil {
+		for _, item := range s.Configs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ExtendConfigs != nil {
+		for _, item := range s.ExtendConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateCollectorResponseBodyResultConfigs struct {
@@ -531,7 +554,16 @@ func (s *UpdateCollectorResponseBodyResultExtendConfigs) SetUserName(v string) *
 }
 
 func (s *UpdateCollectorResponseBodyResultExtendConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.Machines != nil {
+		for _, item := range s.Machines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateCollectorResponseBodyResultExtendConfigsMachines struct {

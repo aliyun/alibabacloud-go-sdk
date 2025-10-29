@@ -70,7 +70,21 @@ func (s *ListEcsInstancesResponseBody) SetResult(v []*ListEcsInstancesResponseBo
 }
 
 func (s *ListEcsInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Headers != nil {
+		if err := s.Headers.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEcsInstancesResponseBodyHeaders struct {
@@ -243,7 +257,25 @@ func (s *ListEcsInstancesResponseBodyResult) SetTags(v string) *ListEcsInstances
 }
 
 func (s *ListEcsInstancesResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Collectors != nil {
+		for _, item := range s.Collectors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.IpAddress != nil {
+		for _, item := range s.IpAddress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEcsInstancesResponseBodyResultCollectors struct {
@@ -452,7 +484,25 @@ func (s *ListEcsInstancesResponseBodyResultCollectors) SetVpcId(v string) *ListE
 }
 
 func (s *ListEcsInstancesResponseBodyResultCollectors) Validate() error {
-	return dara.Validate(s)
+	if s.Configs != nil {
+		for _, item := range s.Configs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ExtendConfigs != nil {
+		for _, item := range s.ExtendConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEcsInstancesResponseBodyResultCollectorsConfigs struct {
@@ -672,7 +722,16 @@ func (s *ListEcsInstancesResponseBodyResultCollectorsExtendConfigs) SetUserName(
 }
 
 func (s *ListEcsInstancesResponseBodyResultCollectorsExtendConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.Machines != nil {
+		for _, item := range s.Machines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEcsInstancesResponseBodyResultCollectorsExtendConfigsMachines struct {

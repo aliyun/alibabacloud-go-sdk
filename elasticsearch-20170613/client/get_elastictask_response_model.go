@@ -59,5 +59,10 @@ func (s *GetElastictaskResponse) SetBody(v *GetElastictaskResponseBody) *GetElas
 }
 
 func (s *GetElastictaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -63,7 +63,16 @@ func (s *UpgradeEngineVersionResponseBody) SetResult(v []*UpgradeEngineVersionRe
 }
 
 func (s *UpgradeEngineVersionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpgradeEngineVersionResponseBodyResult struct {
@@ -117,7 +126,16 @@ func (s *UpgradeEngineVersionResponseBodyResult) SetValidateType(v string) *Upgr
 }
 
 func (s *UpgradeEngineVersionResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.ValidateResult != nil {
+		for _, item := range s.ValidateResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpgradeEngineVersionResponseBodyResultValidateResult struct {

@@ -50,7 +50,16 @@ func (s *ListIndexTemplatesResponseBody) SetResult(v []*ListIndexTemplatesRespon
 }
 
 func (s *ListIndexTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIndexTemplatesResponseBodyResult struct {
@@ -137,7 +146,12 @@ func (s *ListIndexTemplatesResponseBodyResult) SetTemplate(v *ListIndexTemplates
 }
 
 func (s *ListIndexTemplatesResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Template != nil {
+		if err := s.Template.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListIndexTemplatesResponseBodyResultTemplate struct {

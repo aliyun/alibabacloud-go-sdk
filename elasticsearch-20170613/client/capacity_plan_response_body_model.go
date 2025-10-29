@@ -53,7 +53,12 @@ func (s *CapacityPlanResponseBody) SetResult(v *CapacityPlanResponseBodyResult) 
 }
 
 func (s *CapacityPlanResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CapacityPlanResponseBodyResult struct {
@@ -130,7 +135,25 @@ func (s *CapacityPlanResponseBodyResult) SetOversizedCluster(v bool) *CapacityPl
 }
 
 func (s *CapacityPlanResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.ExtendConfigs != nil {
+		for _, item := range s.ExtendConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NodeConfigurations != nil {
+		for _, item := range s.NodeConfigurations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CapacityPlanResponseBodyResultExtendConfigs struct {

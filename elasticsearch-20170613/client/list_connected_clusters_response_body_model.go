@@ -53,7 +53,12 @@ func (s *ListConnectedClustersResponseBody) SetResult(v *ListConnectedClustersRe
 }
 
 func (s *ListConnectedClustersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListConnectedClustersResponseBodyResult struct {
@@ -78,7 +83,16 @@ func (s *ListConnectedClustersResponseBodyResult) SetResult(v []*ListConnectedCl
 }
 
 func (s *ListConnectedClustersResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListConnectedClustersResponseBodyResultResult struct {

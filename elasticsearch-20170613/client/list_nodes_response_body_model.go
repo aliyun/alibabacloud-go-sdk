@@ -66,7 +66,21 @@ func (s *ListNodesResponseBody) SetResult(v []*ListNodesResponseBodyResult) *Lis
 }
 
 func (s *ListNodesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Headers != nil {
+		if err := s.Headers.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNodesResponseBodyHeaders struct {
@@ -247,7 +261,25 @@ func (s *ListNodesResponseBodyResult) SetTags(v []*ListNodesResponseBodyResultTa
 }
 
 func (s *ListNodesResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.IpAddress != nil {
+		for _, item := range s.IpAddress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNodesResponseBodyResultIpAddress struct {

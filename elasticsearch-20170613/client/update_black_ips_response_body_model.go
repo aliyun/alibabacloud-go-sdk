@@ -47,7 +47,12 @@ func (s *UpdateBlackIpsResponseBody) SetResult(v *UpdateBlackIpsResponseBodyResu
 }
 
 func (s *UpdateBlackIpsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateBlackIpsResponseBodyResult struct {

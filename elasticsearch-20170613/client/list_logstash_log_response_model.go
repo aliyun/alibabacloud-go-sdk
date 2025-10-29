@@ -59,5 +59,10 @@ func (s *ListLogstashLogResponse) SetBody(v *ListLogstashLogResponseBody) *ListL
 }
 
 func (s *ListLogstashLogResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

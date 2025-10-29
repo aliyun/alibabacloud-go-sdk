@@ -155,7 +155,26 @@ func (s *MigrationJob) SetUpdateTime(v int64) *MigrationJob {
 }
 
 func (s *MigrationJob) Validate() error {
-	return dara.Validate(s)
+	if s.SourceCluster != nil {
+		if err := s.SourceCluster.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StatusResult != nil {
+		for _, item := range s.StatusResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TargetCluster != nil {
+		if err := s.TargetCluster.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MigrationJobSourceCluster struct {

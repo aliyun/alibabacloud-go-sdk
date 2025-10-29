@@ -91,7 +91,12 @@ func (s *UpdateKibanaWhiteIpsRequest) SetModifyMode(v string) *UpdateKibanaWhite
 }
 
 func (s *UpdateKibanaWhiteIpsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.WhiteIpGroup != nil {
+		if err := s.WhiteIpGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateKibanaWhiteIpsRequestWhiteIpGroup struct {

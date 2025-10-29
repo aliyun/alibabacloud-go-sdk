@@ -59,5 +59,10 @@ func (s *ListDictInformationResponse) SetBody(v *ListDictInformationResponseBody
 }
 
 func (s *ListDictInformationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

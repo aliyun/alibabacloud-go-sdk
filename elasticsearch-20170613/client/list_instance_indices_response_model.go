@@ -59,5 +59,10 @@ func (s *ListInstanceIndicesResponse) SetBody(v *ListInstanceIndicesResponseBody
 }
 
 func (s *ListInstanceIndicesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

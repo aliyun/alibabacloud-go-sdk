@@ -59,5 +59,10 @@ func (s *InitializeOperationRoleResponse) SetBody(v *InitializeOperationRoleResp
 }
 
 func (s *InitializeOperationRoleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -174,5 +174,35 @@ func (s *UpdateInstanceRequest) SetOrderActionType(v string) *UpdateInstanceRequ
 }
 
 func (s *UpdateInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ClientNodeConfiguration != nil {
+		if err := s.ClientNodeConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ElasticDataNodeConfiguration != nil {
+		if err := s.ElasticDataNodeConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.KibanaConfiguration != nil {
+		if err := s.KibanaConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MasterConfiguration != nil {
+		if err := s.MasterConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeSpec != nil {
+		if err := s.NodeSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WarmNodeConfiguration != nil {
+		if err := s.WarmNodeConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

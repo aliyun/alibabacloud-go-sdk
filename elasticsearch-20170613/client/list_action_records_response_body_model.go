@@ -47,7 +47,16 @@ func (s *ListActionRecordsResponseBody) SetResult(v []*ListActionRecordsResponse
 }
 
 func (s *ListActionRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListActionRecordsResponseBodyResult struct {
@@ -242,7 +251,16 @@ func (s *ListActionRecordsResponseBodyResult) SetUserType(v string) *ListActionR
 }
 
 func (s *ListActionRecordsResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.StatusInfo != nil {
+		for _, item := range s.StatusInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListActionRecordsResponseBodyResultStatusInfo struct {
@@ -357,7 +375,16 @@ func (s *ListActionRecordsResponseBodyResultStatusInfo) SetSubStatusInfo(v []*Li
 }
 
 func (s *ListActionRecordsResponseBodyResultStatusInfo) Validate() error {
-	return dara.Validate(s)
+	if s.SubStatusInfo != nil {
+		for _, item := range s.SubStatusInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListActionRecordsResponseBodyResultStatusInfoSubStatusInfo struct {

@@ -53,7 +53,12 @@ func (s *RestartInstanceResponseBody) SetResult(v *RestartInstanceResponseBodyRe
 }
 
 func (s *RestartInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RestartInstanceResponseBodyResult struct {
@@ -333,7 +338,45 @@ func (s *RestartInstanceResponseBodyResult) SetUpdatedAt(v string) *RestartInsta
 }
 
 func (s *RestartInstanceResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.DictList != nil {
+		for _, item := range s.DictList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.KibanaConfiguration != nil {
+		if err := s.KibanaConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MasterConfiguration != nil {
+		if err := s.MasterConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkConfig != nil {
+		if err := s.NetworkConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeSpec != nil {
+		if err := s.NodeSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SynonymsDicts != nil {
+		for _, item := range s.SynonymsDicts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RestartInstanceResponseBodyResultDictList struct {

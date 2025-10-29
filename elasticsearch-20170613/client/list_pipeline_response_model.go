@@ -59,5 +59,10 @@ func (s *ListPipelineResponse) SetBody(v *ListPipelineResponseBody) *ListPipelin
 }
 
 func (s *ListPipelineResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

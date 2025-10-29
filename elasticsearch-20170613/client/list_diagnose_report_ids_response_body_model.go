@@ -65,7 +65,12 @@ func (s *ListDiagnoseReportIdsResponseBody) SetResult(v []*string) *ListDiagnose
 }
 
 func (s *ListDiagnoseReportIdsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Headers != nil {
+		if err := s.Headers.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDiagnoseReportIdsResponseBodyHeaders struct {

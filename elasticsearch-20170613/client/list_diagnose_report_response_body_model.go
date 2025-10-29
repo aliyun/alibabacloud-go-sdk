@@ -72,7 +72,21 @@ func (s *ListDiagnoseReportResponseBody) SetResult(v []*ListDiagnoseReportRespon
 }
 
 func (s *ListDiagnoseReportResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Headers != nil {
+		if err := s.Headers.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDiagnoseReportResponseBodyHeaders struct {
@@ -218,7 +232,16 @@ func (s *ListDiagnoseReportResponseBodyResult) SetTrigger(v string) *ListDiagnos
 }
 
 func (s *ListDiagnoseReportResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.DiagnoseItems != nil {
+		for _, item := range s.DiagnoseItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDiagnoseReportResponseBodyResultDiagnoseItems struct {
@@ -280,7 +303,12 @@ func (s *ListDiagnoseReportResponseBodyResultDiagnoseItems) SetItem(v string) *L
 }
 
 func (s *ListDiagnoseReportResponseBodyResultDiagnoseItems) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		if err := s.Detail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDiagnoseReportResponseBodyResultDiagnoseItemsDetail struct {

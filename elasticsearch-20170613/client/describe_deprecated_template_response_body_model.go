@@ -50,7 +50,12 @@ func (s *DescribeDeprecatedTemplateResponseBody) SetResult(v *DescribeDeprecated
 }
 
 func (s *DescribeDeprecatedTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDeprecatedTemplateResponseBodyResult struct {
@@ -137,7 +142,12 @@ func (s *DescribeDeprecatedTemplateResponseBodyResult) SetVersion(v string) *Des
 }
 
 func (s *DescribeDeprecatedTemplateResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Template != nil {
+		if err := s.Template.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDeprecatedTemplateResponseBodyResultTemplate struct {

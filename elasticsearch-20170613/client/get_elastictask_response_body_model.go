@@ -50,7 +50,12 @@ func (s *GetElastictaskResponseBody) SetResult(v *GetElastictaskResponseBodyResu
 }
 
 func (s *GetElastictaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetElastictaskResponseBodyResult struct {
@@ -85,7 +90,17 @@ func (s *GetElastictaskResponseBodyResult) SetElasticShrinkTask(v *GetElastictas
 }
 
 func (s *GetElastictaskResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.ElasticExpansionTask != nil {
+		if err := s.ElasticExpansionTask.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ElasticShrinkTask != nil {
+		if err := s.ElasticShrinkTask.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetElastictaskResponseBodyResultElasticExpansionTask struct {

@@ -59,5 +59,10 @@ func (s *GetEmonGrafanaAlertsResponse) SetBody(v *GetEmonGrafanaAlertsResponseBo
 }
 
 func (s *GetEmonGrafanaAlertsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

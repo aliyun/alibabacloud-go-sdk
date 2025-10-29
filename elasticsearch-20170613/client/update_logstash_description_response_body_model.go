@@ -53,7 +53,12 @@ func (s *UpdateLogstashDescriptionResponseBody) SetResult(v *UpdateLogstashDescr
 }
 
 func (s *UpdateLogstashDescriptionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateLogstashDescriptionResponseBodyResult struct {

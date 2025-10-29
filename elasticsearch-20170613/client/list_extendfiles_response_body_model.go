@@ -53,7 +53,16 @@ func (s *ListExtendfilesResponseBody) SetResult(v []*ListExtendfilesResponseBody
 }
 
 func (s *ListExtendfilesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListExtendfilesResponseBodyResult struct {

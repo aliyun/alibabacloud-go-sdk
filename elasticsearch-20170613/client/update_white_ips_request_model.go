@@ -85,7 +85,12 @@ func (s *UpdateWhiteIpsRequest) SetModifyMode(v string) *UpdateWhiteIpsRequest {
 }
 
 func (s *UpdateWhiteIpsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.WhiteIpGroup != nil {
+		if err := s.WhiteIpGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateWhiteIpsRequestWhiteIpGroup struct {

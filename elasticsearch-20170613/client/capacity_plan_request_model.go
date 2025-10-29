@@ -97,7 +97,25 @@ func (s *CapacityPlanRequest) SetUsageScenario(v string) *CapacityPlanRequest {
 }
 
 func (s *CapacityPlanRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DataInfo != nil {
+		for _, item := range s.DataInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Metric != nil {
+		for _, item := range s.Metric {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CapacityPlanRequestDataInfo struct {

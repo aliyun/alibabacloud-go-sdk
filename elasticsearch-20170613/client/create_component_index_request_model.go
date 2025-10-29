@@ -50,7 +50,12 @@ func (s *CreateComponentIndexRequest) SetTemplate(v *CreateComponentIndexRequest
 }
 
 func (s *CreateComponentIndexRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Template != nil {
+		if err := s.Template.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateComponentIndexRequestTemplate struct {

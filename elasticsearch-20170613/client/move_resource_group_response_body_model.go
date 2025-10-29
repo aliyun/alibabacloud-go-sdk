@@ -53,7 +53,12 @@ func (s *MoveResourceGroupResponseBody) SetResult(v *MoveResourceGroupResponseBo
 }
 
 func (s *MoveResourceGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MoveResourceGroupResponseBodyResult struct {
@@ -341,7 +346,45 @@ func (s *MoveResourceGroupResponseBodyResult) SetUpdatedAt(v string) *MoveResour
 }
 
 func (s *MoveResourceGroupResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.DictList != nil {
+		for _, item := range s.DictList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.KibanaConfiguration != nil {
+		if err := s.KibanaConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MasterConfiguration != nil {
+		if err := s.MasterConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkConfig != nil {
+		if err := s.NetworkConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeSpec != nil {
+		if err := s.NodeSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SynonymsDicts != nil {
+		for _, item := range s.SynonymsDicts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MoveResourceGroupResponseBodyResultDictList struct {

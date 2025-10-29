@@ -59,5 +59,10 @@ func (s *UpdateExtendConfigResponse) SetBody(v *UpdateExtendConfigResponseBody) 
 }
 
 func (s *UpdateExtendConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,16 @@ func (s *ListDefaultCollectorConfigurationsResponseBody) SetResult(v []*ListDefa
 }
 
 func (s *ListDefaultCollectorConfigurationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDefaultCollectorConfigurationsResponseBodyResult struct {

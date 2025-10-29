@@ -53,7 +53,12 @@ func (s *GetClusterDataInformationResponseBody) SetResult(v *GetClusterDataInfor
 }
 
 func (s *GetClusterDataInformationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetClusterDataInformationResponseBodyResult struct {
@@ -94,7 +99,12 @@ func (s *GetClusterDataInformationResponseBodyResult) SetMetaInfo(v *GetClusterD
 }
 
 func (s *GetClusterDataInformationResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.MetaInfo != nil {
+		if err := s.MetaInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetClusterDataInformationResponseBodyResultMetaInfo struct {

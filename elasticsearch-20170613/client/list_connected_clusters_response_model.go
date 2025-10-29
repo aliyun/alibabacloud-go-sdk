@@ -59,5 +59,10 @@ func (s *ListConnectedClustersResponse) SetBody(v *ListConnectedClustersResponse
 }
 
 func (s *ListConnectedClustersResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

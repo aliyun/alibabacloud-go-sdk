@@ -59,5 +59,10 @@ func (s *UpdateLogstashChargeTypeResponse) SetBody(v *UpdateLogstashChargeTypeRe
 }
 
 func (s *UpdateLogstashChargeTypeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

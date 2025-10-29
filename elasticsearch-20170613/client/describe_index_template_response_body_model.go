@@ -50,7 +50,12 @@ func (s *DescribeIndexTemplateResponseBody) SetResult(v *DescribeIndexTemplateRe
 }
 
 func (s *DescribeIndexTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeIndexTemplateResponseBodyResult struct {
@@ -137,7 +142,12 @@ func (s *DescribeIndexTemplateResponseBodyResult) SetTemplate(v *DescribeIndexTe
 }
 
 func (s *DescribeIndexTemplateResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Template != nil {
+		if err := s.Template.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeIndexTemplateResponseBodyResultTemplate struct {

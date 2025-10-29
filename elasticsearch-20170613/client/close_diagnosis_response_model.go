@@ -59,5 +59,10 @@ func (s *CloseDiagnosisResponse) SetBody(v *CloseDiagnosisResponseBody) *CloseDi
 }
 
 func (s *CloseDiagnosisResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

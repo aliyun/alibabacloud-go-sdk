@@ -59,5 +59,10 @@ func (s *ListSearchLogResponse) SetBody(v *ListSearchLogResponseBody) *ListSearc
 }
 
 func (s *ListSearchLogResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

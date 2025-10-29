@@ -50,7 +50,12 @@ func (s *ListDictInformationResponseBody) SetResult(v *ListDictInformationRespon
 }
 
 func (s *ListDictInformationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDictInformationResponseBodyResult struct {
@@ -101,7 +106,12 @@ func (s *ListDictInformationResponseBodyResult) SetType(v string) *ListDictInfor
 }
 
 func (s *ListDictInformationResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.OssObject != nil {
+		if err := s.OssObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDictInformationResponseBodyResultOssObject struct {

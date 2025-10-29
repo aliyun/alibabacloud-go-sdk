@@ -62,7 +62,21 @@ func (s *ListDataStreamsResponseBody) SetResult(v []*ListDataStreamsResponseBody
 }
 
 func (s *ListDataStreamsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Headers != nil {
+		if err := s.Headers.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataStreamsResponseBodyHeaders struct {
@@ -206,7 +220,16 @@ func (s *ListDataStreamsResponseBodyResult) SetTotalStorageSize(v int64) *ListDa
 }
 
 func (s *ListDataStreamsResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Indices != nil {
+		for _, item := range s.Indices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataStreamsResponseBodyResultIndices struct {

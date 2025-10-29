@@ -129,7 +129,16 @@ func (s *CollectorDeployMachine) SetType(v string) *CollectorDeployMachine {
 }
 
 func (s *CollectorDeployMachine) Validate() error {
-	return dara.Validate(s)
+	if s.Machines != nil {
+		for _, item := range s.Machines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CollectorDeployMachineMachines struct {

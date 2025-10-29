@@ -53,7 +53,12 @@ func (s *DescribeLogstashResponseBody) SetResult(v *DescribeLogstashResponseBody
 }
 
 func (s *DescribeLogstashResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLogstashResponseBodyResult struct {
@@ -315,7 +320,44 @@ func (s *DescribeLogstashResponseBodyResult) SetVpcInstanceId(v string) *Describ
 }
 
 func (s *DescribeLogstashResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ZoneInfos != nil {
+		for _, item := range s.ZoneInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EndpointList != nil {
+		for _, item := range s.EndpointList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NetworkConfig != nil {
+		if err := s.NetworkConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeSpec != nil {
+		if err := s.NodeSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLogstashResponseBodyResultTags struct {

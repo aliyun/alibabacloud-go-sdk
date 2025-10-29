@@ -59,5 +59,10 @@ func (s *ListKibanaPvlNetworkResponse) SetBody(v *ListKibanaPvlNetworkResponseBo
 }
 
 func (s *ListKibanaPvlNetworkResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

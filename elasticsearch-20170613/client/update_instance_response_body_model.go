@@ -85,7 +85,12 @@ func (s *UpdateInstanceResponseBody) SetResult(v *UpdateInstanceResponseBodyResu
 }
 
 func (s *UpdateInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateInstanceResponseBodyResult struct {
@@ -261,7 +266,22 @@ func (s *UpdateInstanceResponseBodyResult) SetStatus(v string) *UpdateInstanceRe
 }
 
 func (s *UpdateInstanceResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.KibanaConfiguration != nil {
+		if err := s.KibanaConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MasterConfiguration != nil {
+		if err := s.MasterConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeSpec != nil {
+		if err := s.NodeSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateInstanceResponseBodyResultKibanaConfiguration struct {

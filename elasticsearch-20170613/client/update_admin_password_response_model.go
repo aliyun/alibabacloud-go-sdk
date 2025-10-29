@@ -59,5 +59,10 @@ func (s *UpdateAdminPasswordResponse) SetBody(v *UpdateAdminPasswordResponseBody
 }
 
 func (s *UpdateAdminPasswordResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

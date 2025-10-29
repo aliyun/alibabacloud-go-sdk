@@ -50,7 +50,12 @@ func (s *CreateDataStreamResponseBody) SetResult(v *CreateDataStreamResponseBody
 }
 
 func (s *CreateDataStreamResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataStreamResponseBodyResult struct {

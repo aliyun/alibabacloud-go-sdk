@@ -83,7 +83,12 @@ func (s *GetEmonAlarmRecordStatisticsDistributeResponseBody) SetSuccess(v bool) 
 }
 
 func (s *GetEmonAlarmRecordStatisticsDistributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEmonAlarmRecordStatisticsDistributeResponseBodyResult struct {
@@ -168,7 +173,52 @@ func (s *GetEmonAlarmRecordStatisticsDistributeResponseBodyResult) SetStatistics
 }
 
 func (s *GetEmonAlarmRecordStatisticsDistributeResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.AlarmGroupTotal != nil {
+		for _, item := range s.AlarmGroupTotal {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ChannelTotal != nil {
+		for _, item := range s.ChannelTotal {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LevelTotal != nil {
+		for _, item := range s.LevelTotal {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ReceiverTotal != nil {
+		for _, item := range s.ReceiverTotal {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Statistics != nil {
+		for _, item := range s.Statistics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetEmonAlarmRecordStatisticsDistributeResponseBodyResultAlarmGroupTotal struct {

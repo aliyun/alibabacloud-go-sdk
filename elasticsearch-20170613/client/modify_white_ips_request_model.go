@@ -125,7 +125,12 @@ func (s *ModifyWhiteIpsRequest) SetClientToken(v string) *ModifyWhiteIpsRequest 
 }
 
 func (s *ModifyWhiteIpsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.WhiteIpGroup != nil {
+		if err := s.WhiteIpGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyWhiteIpsRequestWhiteIpGroup struct {

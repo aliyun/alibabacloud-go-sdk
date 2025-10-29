@@ -53,7 +53,12 @@ func (s *DiagnoseInstanceResponseBody) SetResult(v *DiagnoseInstanceResponseBody
 }
 
 func (s *DiagnoseInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DiagnoseInstanceResponseBodyResult struct {

@@ -50,7 +50,12 @@ func (s *CreateCollectorResponseBody) SetResult(v *CreateCollectorResponseBodyRe
 }
 
 func (s *CreateCollectorResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateCollectorResponseBodyResult struct {

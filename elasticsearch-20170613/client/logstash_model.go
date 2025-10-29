@@ -251,7 +251,44 @@ func (s *Logstash) SetZoneInfos(v []*LogstashZoneInfos) *Logstash {
 }
 
 func (s *Logstash) Validate() error {
-	return dara.Validate(s)
+	if s.EndpointList != nil {
+		for _, item := range s.EndpointList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NetworkConfig != nil {
+		if err := s.NetworkConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeSpec != nil {
+		if err := s.NodeSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ZoneInfos != nil {
+		for _, item := range s.ZoneInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type LogstashEndpointList struct {

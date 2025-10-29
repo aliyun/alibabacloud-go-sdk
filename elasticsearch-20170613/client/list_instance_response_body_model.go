@@ -74,7 +74,21 @@ func (s *ListInstanceResponseBody) SetResult(v []*ListInstanceResponseBodyResult
 }
 
 func (s *ListInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Headers != nil {
+		if err := s.Headers.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstanceResponseBodyHeaders struct {
@@ -534,7 +548,46 @@ func (s *ListInstanceResponseBodyResult) SetVpcInstanceId(v string) *ListInstanc
 }
 
 func (s *ListInstanceResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.ClientNodeConfiguration != nil {
+		if err := s.ClientNodeConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ElasticDataNodeConfiguration != nil {
+		if err := s.ElasticDataNodeConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.KibanaConfiguration != nil {
+		if err := s.KibanaConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MasterConfiguration != nil {
+		if err := s.MasterConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkConfig != nil {
+		if err := s.NetworkConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeSpec != nil {
+		if err := s.NodeSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstanceResponseBodyResultClientNodeConfiguration struct {
@@ -992,7 +1045,16 @@ func (s *ListInstanceResponseBodyResultNetworkConfig) SetWhiteIpGroupList(v []*L
 }
 
 func (s *ListInstanceResponseBodyResultNetworkConfig) Validate() error {
-	return dara.Validate(s)
+	if s.WhiteIpGroupList != nil {
+		for _, item := range s.WhiteIpGroupList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstanceResponseBodyResultNetworkConfigWhiteIpGroupList struct {

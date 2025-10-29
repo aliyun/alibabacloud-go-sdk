@@ -50,7 +50,12 @@ func (s *UpdatePrivateNetworkWhiteIpsResponseBody) SetResult(v *UpdatePrivateNet
 }
 
 func (s *UpdatePrivateNetworkWhiteIpsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdatePrivateNetworkWhiteIpsResponseBodyResult struct {

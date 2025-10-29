@@ -66,7 +66,21 @@ func (s *ListCollectorsResponseBody) SetResult(v []*ListCollectorsResponseBodyRe
 }
 
 func (s *ListCollectorsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Headers != nil {
+		if err := s.Headers.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCollectorsResponseBodyHeaders struct {
@@ -301,7 +315,25 @@ func (s *ListCollectorsResponseBodyResult) SetVpcId(v string) *ListCollectorsRes
 }
 
 func (s *ListCollectorsResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Configs != nil {
+		for _, item := range s.Configs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ExtendConfigs != nil {
+		for _, item := range s.ExtendConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCollectorsResponseBodyResultConfigs struct {
@@ -576,7 +608,16 @@ func (s *ListCollectorsResponseBodyResultExtendConfigs) SetUserName(v string) *L
 }
 
 func (s *ListCollectorsResponseBodyResultExtendConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.Machines != nil {
+		for _, item := range s.Machines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCollectorsResponseBodyResultExtendConfigsMachines struct {

@@ -119,7 +119,16 @@ func (s *UpgradeEngineVersionRequest) SetUpdateStrategy(v string) *UpgradeEngine
 }
 
 func (s *UpgradeEngineVersionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Plugins != nil {
+		for _, item := range s.Plugins {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpgradeEngineVersionRequestPlugins struct {

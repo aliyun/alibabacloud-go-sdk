@@ -59,5 +59,10 @@ func (s *UpdateCollectorResponse) SetBody(v *UpdateCollectorResponseBody) *Updat
 }
 
 func (s *UpdateCollectorResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

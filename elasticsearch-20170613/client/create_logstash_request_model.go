@@ -152,7 +152,22 @@ func (s *CreateLogstashRequest) SetClientToken(v string) *CreateLogstashRequest 
 }
 
 func (s *CreateLogstashRequest) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkConfig != nil {
+		if err := s.NetworkConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeSpec != nil {
+		if err := s.NodeSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PaymentInfo != nil {
+		if err := s.PaymentInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateLogstashRequestNetworkConfig struct {

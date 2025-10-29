@@ -47,7 +47,12 @@ func (s *GetRegionalInstanceConfigResponseBody) SetResult(v *GetRegionalInstance
 }
 
 func (s *GetRegionalInstanceConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRegionalInstanceConfigResponseBodyResult struct {
@@ -212,7 +217,58 @@ func (s *GetRegionalInstanceConfigResponseBodyResult) SetWarmNodeSpecs(v []*stri
 }
 
 func (s *GetRegionalInstanceConfigResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.ClientNodeAmountRange != nil {
+		if err := s.ClientNodeAmountRange.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ClientNodeDiskList != nil {
+		for _, item := range s.ClientNodeDiskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DataNodeAmountRange != nil {
+		if err := s.DataNodeAmountRange.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataNodeDiskList != nil {
+		for _, item := range s.DataNodeDiskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MasterDiskList != nil {
+		for _, item := range s.MasterDiskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.WarmNodeAmountRange != nil {
+		if err := s.WarmNodeAmountRange.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WarmNodeDiskList != nil {
+		for _, item := range s.WarmNodeDiskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRegionalInstanceConfigResponseBodyResultClientNodeAmountRange struct {
@@ -412,7 +468,16 @@ func (s *GetRegionalInstanceConfigResponseBodyResultDataNodeDiskList) SetValueLi
 }
 
 func (s *GetRegionalInstanceConfigResponseBodyResultDataNodeDiskList) Validate() error {
-	return dara.Validate(s)
+	if s.SubClassificationConfines != nil {
+		for _, item := range s.SubClassificationConfines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRegionalInstanceConfigResponseBodyResultDataNodeDiskListSubClassificationConfines struct {
@@ -522,7 +587,16 @@ func (s *GetRegionalInstanceConfigResponseBodyResultMasterDiskList) SetSubClassi
 }
 
 func (s *GetRegionalInstanceConfigResponseBodyResultMasterDiskList) Validate() error {
-	return dara.Validate(s)
+	if s.SubClassificationConfines != nil {
+		for _, item := range s.SubClassificationConfines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRegionalInstanceConfigResponseBodyResultMasterDiskListSubClassificationConfines struct {
@@ -677,7 +751,16 @@ func (s *GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskList) SetValueLi
 }
 
 func (s *GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskList) Validate() error {
-	return dara.Validate(s)
+	if s.SubClassificationConfines != nil {
+		for _, item := range s.SubClassificationConfines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskListSubClassificationConfines struct {

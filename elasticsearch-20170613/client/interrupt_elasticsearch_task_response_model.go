@@ -59,5 +59,10 @@ func (s *InterruptElasticsearchTaskResponse) SetBody(v *InterruptElasticsearchTa
 }
 
 func (s *InterruptElasticsearchTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *DescribeAckOperatorResponse) SetBody(v *DescribeAckOperatorResponseBody
 }
 
 func (s *DescribeAckOperatorResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

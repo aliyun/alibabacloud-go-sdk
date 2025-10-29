@@ -53,7 +53,12 @@ func (s *UpdateSnapshotSettingResponseBody) SetResult(v *UpdateSnapshotSettingRe
 }
 
 func (s *UpdateSnapshotSettingResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateSnapshotSettingResponseBodyResult struct {

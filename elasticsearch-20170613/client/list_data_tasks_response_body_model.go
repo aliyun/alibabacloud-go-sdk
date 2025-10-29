@@ -53,7 +53,16 @@ func (s *ListDataTasksResponseBody) SetResult(v []*ListDataTasksResponseBodyResu
 }
 
 func (s *ListDataTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataTasksResponseBodyResult struct {
@@ -135,7 +144,17 @@ func (s *ListDataTasksResponseBodyResult) SetTaskId(v string) *ListDataTasksResp
 }
 
 func (s *ListDataTasksResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.SinkCluster != nil {
+		if err := s.SinkCluster.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceCluster != nil {
+		if err := s.SourceCluster.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataTasksResponseBodyResultSinkCluster struct {

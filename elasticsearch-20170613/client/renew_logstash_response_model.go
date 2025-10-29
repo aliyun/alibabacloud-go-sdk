@@ -59,5 +59,10 @@ func (s *RenewLogstashResponse) SetBody(v *RenewLogstashResponseBody) *RenewLogs
 }
 
 func (s *RenewLogstashResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

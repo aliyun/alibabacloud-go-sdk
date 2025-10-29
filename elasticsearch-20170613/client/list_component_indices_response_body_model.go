@@ -62,7 +62,21 @@ func (s *ListComponentIndicesResponseBody) SetResult(v []*ListComponentIndicesRe
 }
 
 func (s *ListComponentIndicesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Headers != nil {
+		if err := s.Headers.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListComponentIndicesResponseBodyHeaders struct {
@@ -138,7 +152,12 @@ func (s *ListComponentIndicesResponseBodyResult) SetName(v string) *ListComponen
 }
 
 func (s *ListComponentIndicesResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListComponentIndicesResponseBodyResultContent struct {
@@ -189,7 +208,12 @@ func (s *ListComponentIndicesResponseBodyResultContent) SetVersion(v int64) *Lis
 }
 
 func (s *ListComponentIndicesResponseBodyResultContent) Validate() error {
-	return dara.Validate(s)
+	if s.Template != nil {
+		if err := s.Template.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListComponentIndicesResponseBodyResultContentTemplate struct {
@@ -214,7 +238,12 @@ func (s *ListComponentIndicesResponseBodyResultContentTemplate) SetSettings(v *L
 }
 
 func (s *ListComponentIndicesResponseBodyResultContentTemplate) Validate() error {
-	return dara.Validate(s)
+	if s.Settings != nil {
+		if err := s.Settings.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListComponentIndicesResponseBodyResultContentTemplateSettings struct {
@@ -239,7 +268,12 @@ func (s *ListComponentIndicesResponseBodyResultContentTemplateSettings) SetIndex
 }
 
 func (s *ListComponentIndicesResponseBodyResultContentTemplateSettings) Validate() error {
-	return dara.Validate(s)
+	if s.Index != nil {
+		if err := s.Index.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListComponentIndicesResponseBodyResultContentTemplateSettingsIndex struct {
@@ -277,7 +311,12 @@ func (s *ListComponentIndicesResponseBodyResultContentTemplateSettingsIndex) Set
 }
 
 func (s *ListComponentIndicesResponseBodyResultContentTemplateSettingsIndex) Validate() error {
-	return dara.Validate(s)
+	if s.Lifecycle != nil {
+		if err := s.Lifecycle.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListComponentIndicesResponseBodyResultContentTemplateSettingsIndexLifecycle struct {

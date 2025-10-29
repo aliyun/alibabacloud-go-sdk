@@ -53,7 +53,12 @@ func (s *UpdateKibanaWhiteIpsResponseBody) SetResult(v *UpdateKibanaWhiteIpsResp
 }
 
 func (s *UpdateKibanaWhiteIpsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateKibanaWhiteIpsResponseBodyResult struct {
@@ -101,7 +106,12 @@ func (s *UpdateKibanaWhiteIpsResponseBodyResult) SetNetworkConfig(v *UpdateKiban
 }
 
 func (s *UpdateKibanaWhiteIpsResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkConfig != nil {
+		if err := s.NetworkConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig struct {
@@ -187,7 +197,16 @@ func (s *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig) SetWhiteIpGroupLis
 }
 
 func (s *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig) Validate() error {
-	return dara.Validate(s)
+	if s.WhiteIpGroupList != nil {
+		for _, item := range s.WhiteIpGroupList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateKibanaWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList struct {

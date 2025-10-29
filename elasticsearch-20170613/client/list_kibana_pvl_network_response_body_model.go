@@ -52,7 +52,16 @@ func (s *ListKibanaPvlNetworkResponseBody) SetResult(v []*ListKibanaPvlNetworkRe
 }
 
 func (s *ListKibanaPvlNetworkResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListKibanaPvlNetworkResponseBodyResult struct {
@@ -165,7 +174,16 @@ func (s *ListKibanaPvlNetworkResponseBodyResult) SetVpcId(v string) *ListKibanaP
 }
 
 func (s *ListKibanaPvlNetworkResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.VSwitchIdsZone != nil {
+		for _, item := range s.VSwitchIdsZone {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListKibanaPvlNetworkResponseBodyResultVSwitchIdsZone struct {

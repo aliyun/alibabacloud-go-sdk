@@ -50,7 +50,12 @@ func (s *GetRegionConfigurationResponseBody) SetResult(v *GetRegionConfiguration
 }
 
 func (s *GetRegionConfigurationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRegionConfigurationResponseBodyResult struct {
@@ -284,7 +289,91 @@ func (s *GetRegionConfigurationResponseBodyResult) SetZones(v []*string) *GetReg
 }
 
 func (s *GetRegionConfigurationResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.ClientNodeAmountRange != nil {
+		if err := s.ClientNodeAmountRange.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ClientNodeDiskList != nil {
+		for _, item := range s.ClientNodeDiskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DataDiskList != nil {
+		for _, item := range s.DataDiskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ElasticNodeProperties != nil {
+		if err := s.ElasticNodeProperties.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EsVersionsLatestList != nil {
+		for _, item := range s.EsVersionsLatestList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.JvmConfine != nil {
+		if err := s.JvmConfine.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.KibanaNodeProperties != nil {
+		if err := s.KibanaNodeProperties.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MasterDiskList != nil {
+		for _, item := range s.MasterDiskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Node != nil {
+		if err := s.Node.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeSpecList != nil {
+		for _, item := range s.NodeSpecList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SupportVersions != nil {
+		for _, item := range s.SupportVersions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.WarmNodeProperties != nil {
+		if err := s.WarmNodeProperties.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRegionConfigurationResponseBodyResultClientNodeAmountRange struct {
@@ -514,7 +603,21 @@ func (s *GetRegionConfigurationResponseBodyResultElasticNodeProperties) SetSpec(
 }
 
 func (s *GetRegionConfigurationResponseBodyResultElasticNodeProperties) Validate() error {
-	return dara.Validate(s)
+	if s.AmountRange != nil {
+		if err := s.AmountRange.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DiskList != nil {
+		for _, item := range s.DiskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRegionConfigurationResponseBodyResultElasticNodePropertiesAmountRange struct {
@@ -769,7 +872,12 @@ func (s *GetRegionConfigurationResponseBodyResultKibanaNodeProperties) SetSpec(v
 }
 
 func (s *GetRegionConfigurationResponseBodyResultKibanaNodeProperties) Validate() error {
-	return dara.Validate(s)
+	if s.AmountRange != nil {
+		if err := s.AmountRange.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRegionConfigurationResponseBodyResultKibanaNodePropertiesAmountRange struct {
@@ -1062,7 +1170,16 @@ func (s *GetRegionConfigurationResponseBodyResultSupportVersions) SetSupportVers
 }
 
 func (s *GetRegionConfigurationResponseBodyResultSupportVersions) Validate() error {
-	return dara.Validate(s)
+	if s.SupportVersionList != nil {
+		for _, item := range s.SupportVersionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRegionConfigurationResponseBodyResultSupportVersionsSupportVersionList struct {
@@ -1148,7 +1265,21 @@ func (s *GetRegionConfigurationResponseBodyResultWarmNodeProperties) SetSpec(v [
 }
 
 func (s *GetRegionConfigurationResponseBodyResultWarmNodeProperties) Validate() error {
-	return dara.Validate(s)
+	if s.AmountRange != nil {
+		if err := s.AmountRange.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DiskList != nil {
+		for _, item := range s.DiskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRegionConfigurationResponseBodyResultWarmNodePropertiesAmountRange struct {

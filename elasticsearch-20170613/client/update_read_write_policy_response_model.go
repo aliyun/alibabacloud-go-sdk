@@ -59,5 +59,10 @@ func (s *UpdateReadWritePolicyResponse) SetBody(v *UpdateReadWritePolicyResponse
 }
 
 func (s *UpdateReadWritePolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

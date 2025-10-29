@@ -59,5 +59,10 @@ func (s *UpdateILMPolicyResponse) SetBody(v *UpdateILMPolicyResponseBody) *Updat
 }
 
 func (s *UpdateILMPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -83,7 +83,16 @@ func (s *EnableKibanaPvlNetworkRequest) SetVpcId(v string) *EnableKibanaPvlNetwo
 }
 
 func (s *EnableKibanaPvlNetworkRequest) Validate() error {
-  return dara.Validate(s)
+  if s.VSwitchIdsZone != nil {
+    for _, item := range s.VSwitchIdsZone {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type EnableKibanaPvlNetworkRequestVSwitchIdsZone struct {

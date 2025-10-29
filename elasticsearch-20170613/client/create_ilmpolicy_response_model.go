@@ -59,5 +59,10 @@ func (s *CreateILMPolicyResponse) SetBody(v *CreateILMPolicyResponseBody) *Creat
 }
 
 func (s *CreateILMPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

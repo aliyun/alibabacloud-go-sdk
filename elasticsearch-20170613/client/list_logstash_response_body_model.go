@@ -66,7 +66,21 @@ func (s *ListLogstashResponseBody) SetResult(v []*ListLogstashResponseBodyResult
 }
 
 func (s *ListLogstashResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Headers != nil {
+		if err := s.Headers.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLogstashResponseBodyHeaders struct {
@@ -278,7 +292,26 @@ func (s *ListLogstashResponseBodyResult) SetVersion(v string) *ListLogstashRespo
 }
 
 func (s *ListLogstashResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NetworkConfig != nil {
+		if err := s.NetworkConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeSpec != nil {
+		if err := s.NodeSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLogstashResponseBodyResultTags struct {

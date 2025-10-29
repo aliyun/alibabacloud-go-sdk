@@ -65,7 +65,12 @@ func (s *UpdateLogstashRequest) SetClientToken(v string) *UpdateLogstashRequest 
 }
 
 func (s *UpdateLogstashRequest) Validate() error {
-	return dara.Validate(s)
+	if s.NodeSpec != nil {
+		if err := s.NodeSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateLogstashRequestNodeSpec struct {
