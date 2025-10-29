@@ -13,6 +13,8 @@ type iListModulesShrinkRequest interface {
 	GetGroupId() *string
 	SetKeyword(v string) *ListModulesShrinkRequest
 	GetKeyword() *string
+	SetModuleName(v string) *ListModulesShrinkRequest
+	GetModuleName() *string
 	SetPageNumber(v int32) *ListModulesShrinkRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListModulesShrinkRequest
@@ -28,7 +30,8 @@ type ListModulesShrinkRequest struct {
 	// example:
 	//
 	// key
-	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	Keyword    *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
 	// example:
 	//
 	// 1
@@ -57,6 +60,10 @@ func (s *ListModulesShrinkRequest) GetKeyword() *string {
 	return s.Keyword
 }
 
+func (s *ListModulesShrinkRequest) GetModuleName() *string {
+	return s.ModuleName
+}
+
 func (s *ListModulesShrinkRequest) GetPageNumber() *int32 {
 	return s.PageNumber
 }
@@ -80,6 +87,11 @@ func (s *ListModulesShrinkRequest) SetGroupId(v string) *ListModulesShrinkReques
 
 func (s *ListModulesShrinkRequest) SetKeyword(v string) *ListModulesShrinkRequest {
 	s.Keyword = &v
+	return s
+}
+
+func (s *ListModulesShrinkRequest) SetModuleName(v string) *ListModulesShrinkRequest {
+	s.ModuleName = &v
 	return s
 }
 

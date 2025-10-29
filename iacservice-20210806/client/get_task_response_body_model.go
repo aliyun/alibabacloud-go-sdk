@@ -52,7 +52,12 @@ func (s *GetTaskResponseBody) SetTask(v *GetTaskResponseBodyTask) *GetTaskRespon
 }
 
 func (s *GetTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Task != nil {
+		if err := s.Task.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTaskResponseBodyTask struct {
@@ -346,7 +351,26 @@ func (s *GetTaskResponseBodyTask) SetTriggerStrategy(v string) *GetTaskResponseB
 }
 
 func (s *GetTaskResponseBodyTask) Validate() error {
-	return dara.Validate(s)
+	if s.GroupInfo != nil {
+		if err := s.GroupInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TaskBackend != nil {
+		if err := s.TaskBackend.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTaskResponseBodyTaskGroupInfo struct {

@@ -95,7 +95,16 @@ func (s *ListTasksResponseBody) SetTotalCount(v int32) *ListTasksResponseBody {
 }
 
 func (s *ListTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Tasks != nil {
+		for _, item := range s.Tasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTasksResponseBodyTasks struct {
@@ -274,7 +283,21 @@ func (s *ListTasksResponseBodyTasks) SetTaskId(v string) *ListTasksResponseBodyT
 }
 
 func (s *ListTasksResponseBodyTasks) Validate() error {
-	return dara.Validate(s)
+	if s.GroupInfo != nil {
+		if err := s.GroupInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTasksResponseBodyTasksGroupInfo struct {

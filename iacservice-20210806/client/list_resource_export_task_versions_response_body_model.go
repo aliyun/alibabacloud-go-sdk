@@ -95,7 +95,16 @@ func (s *ListResourceExportTaskVersionsResponseBody) SetTotalCount(v int32) *Lis
 }
 
 func (s *ListResourceExportTaskVersionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ExportTasks != nil {
+		for _, item := range s.ExportTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourceExportTaskVersionsResponseBodyExportTasks struct {
@@ -254,7 +263,39 @@ func (s *ListResourceExportTaskVersionsResponseBodyExportTasks) SetVariables(v [
 }
 
 func (s *ListResourceExportTaskVersionsResponseBodyExportTasks) Validate() error {
-	return dara.Validate(s)
+	if s.ExportToModule != nil {
+		if err := s.ExportToModule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IncludeRules != nil {
+		for _, item := range s.IncludeRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Modules != nil {
+		for _, item := range s.Modules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Variables != nil {
+		for _, item := range s.Variables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourceExportTaskVersionsResponseBodyExportTasksExportToModule struct {

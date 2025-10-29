@@ -95,7 +95,16 @@ func (s *ListRegistryModuleVersionsResponseBody) SetRequestId(v string) *ListReg
 }
 
 func (s *ListRegistryModuleVersionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleVersions != nil {
+		for _, item := range s.ModuleVersions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRegistryModuleVersionsResponseBodyModuleVersions struct {

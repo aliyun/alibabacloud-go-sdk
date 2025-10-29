@@ -50,7 +50,12 @@ func (s *GetJobResponseBody) SetRequestId(v string) *GetJobResponseBody {
 }
 
 func (s *GetJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Job != nil {
+		if err := s.Job.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetJobResponseBodyJob struct {
@@ -74,12 +79,14 @@ type GetJobResponseBodyJob struct {
 	// example:
 	//
 	// job-518855d9a058cfff0dc933e6b5767
-	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	JobId   *string                `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	LogFile map[string]interface{} `json:"logFile,omitempty" xml:"logFile,omitempty"`
 	// example:
 	//
 	// /
-	Output     *string            `json:"output,omitempty" xml:"output,omitempty"`
-	Parameters map[string]*string `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	Output         *string            `json:"output,omitempty" xml:"output,omitempty"`
+	OutputJsonPlan interface{}        `json:"outputJsonPlan,omitempty" xml:"outputJsonPlan,omitempty"`
+	Parameters     map[string]*string `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// example:
 	//
 	// Errored
@@ -137,8 +144,16 @@ func (s *GetJobResponseBodyJob) GetJobId() *string {
 	return s.JobId
 }
 
+func (s *GetJobResponseBodyJob) GetLogFile() map[string]interface{} {
+	return s.LogFile
+}
+
 func (s *GetJobResponseBodyJob) GetOutput() *string {
 	return s.Output
+}
+
+func (s *GetJobResponseBodyJob) GetOutputJsonPlan() interface{} {
+	return s.OutputJsonPlan
 }
 
 func (s *GetJobResponseBodyJob) GetParameters() map[string]*string {
@@ -210,8 +225,18 @@ func (s *GetJobResponseBodyJob) SetJobId(v string) *GetJobResponseBodyJob {
 	return s
 }
 
+func (s *GetJobResponseBodyJob) SetLogFile(v map[string]interface{}) *GetJobResponseBodyJob {
+	s.LogFile = v
+	return s
+}
+
 func (s *GetJobResponseBodyJob) SetOutput(v string) *GetJobResponseBodyJob {
 	s.Output = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJob) SetOutputJsonPlan(v interface{}) *GetJobResponseBodyJob {
+	s.OutputJsonPlan = v
 	return s
 }
 
@@ -246,7 +271,21 @@ func (s *GetJobResponseBodyJob) SetTerraformProviderVersion(v string) *GetJobRes
 }
 
 func (s *GetJobResponseBodyJob) Validate() error {
-	return dara.Validate(s)
+	if s.AssertCheckDetail != nil {
+		for _, item := range s.AssertCheckDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetJobResponseBodyJobAssertCheckDetail struct {

@@ -13,6 +13,8 @@ type iListModulesRequest interface {
 	GetGroupId() *string
 	SetKeyword(v string) *ListModulesRequest
 	GetKeyword() *string
+	SetModuleName(v string) *ListModulesRequest
+	GetModuleName() *string
 	SetPageNumber(v int32) *ListModulesRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListModulesRequest
@@ -28,7 +30,8 @@ type ListModulesRequest struct {
 	// example:
 	//
 	// key
-	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	Keyword    *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
 	// example:
 	//
 	// 1
@@ -57,6 +60,10 @@ func (s *ListModulesRequest) GetKeyword() *string {
 	return s.Keyword
 }
 
+func (s *ListModulesRequest) GetModuleName() *string {
+	return s.ModuleName
+}
+
 func (s *ListModulesRequest) GetPageNumber() *int32 {
 	return s.PageNumber
 }
@@ -83,6 +90,11 @@ func (s *ListModulesRequest) SetKeyword(v string) *ListModulesRequest {
 	return s
 }
 
+func (s *ListModulesRequest) SetModuleName(v string) *ListModulesRequest {
+	s.ModuleName = &v
+	return s
+}
+
 func (s *ListModulesRequest) SetPageNumber(v int32) *ListModulesRequest {
 	s.PageNumber = &v
 	return s
@@ -104,7 +116,16 @@ func (s *ListModulesRequest) SetTag(v []*ListModulesRequestTag) *ListModulesRequ
 }
 
 func (s *ListModulesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListModulesRequestTag struct {

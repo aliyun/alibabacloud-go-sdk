@@ -59,5 +59,10 @@ func (s *GetRegistryModuleResponse) SetBody(v *GetRegistryModuleResponseBody) *G
 }
 
 func (s *GetRegistryModuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

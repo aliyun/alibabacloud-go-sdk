@@ -50,7 +50,12 @@ func (s *GetModuleVersionResponseBody) SetVersion(v *GetModuleVersionResponseBod
 }
 
 func (s *GetModuleVersionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Version != nil {
+		if err := s.Version.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetModuleVersionResponseBodyVersion struct {

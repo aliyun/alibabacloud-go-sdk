@@ -59,5 +59,10 @@ func (s *CreateRegistryNamespaceResponse) SetBody(v *CreateRegistryNamespaceResp
 }
 
 func (s *CreateRegistryNamespaceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

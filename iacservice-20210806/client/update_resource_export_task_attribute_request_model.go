@@ -166,7 +166,30 @@ func (s *UpdateResourceExportTaskAttributeRequest) SetVariables(v []*UpdateResou
 }
 
 func (s *UpdateResourceExportTaskAttributeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ExportToModule != nil {
+		if err := s.ExportToModule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IncludeRules != nil {
+		for _, item := range s.IncludeRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Variables != nil {
+		for _, item := range s.Variables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateResourceExportTaskAttributeRequestExportToModule struct {

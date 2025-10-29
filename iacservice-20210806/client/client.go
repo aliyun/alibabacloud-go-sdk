@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -67,9 +68,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AddSharedAccountsResponse
 func (client *Client) AddSharedAccountsWithOptions(request *AddSharedAccountsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddSharedAccountsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AccountIds) {
@@ -139,9 +142,11 @@ func (client *Client) AddSharedAccounts(request *AddSharedAccountsRequest) (_res
 //
 // @return AssociateGroupResponse
 func (client *Client) AssociateGroupWithOptions(groupId *string, request *AssociateGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AssociateGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -215,9 +220,11 @@ func (client *Client) AssociateGroup(groupId *string, request *AssociateGroupReq
 //
 // @return CancelResourceExportTaskResponse
 func (client *Client) CancelResourceExportTaskWithOptions(exportTaskId *string, request *CancelResourceExportTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CancelResourceExportTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -279,9 +286,11 @@ func (client *Client) CancelResourceExportTask(exportTaskId *string, request *Ca
 //
 // @return CreateGroupResponse
 func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoDestroy) {
@@ -399,9 +408,11 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 //
 // @return CreateJobResponse
 func (client *Client) CreateJobWithOptions(taskId *string, request *CreateJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -475,9 +486,11 @@ func (client *Client) CreateJob(taskId *string, request *CreateJobRequest) (_res
 //
 // @return CreateModuleResponse
 func (client *Client) CreateModuleWithOptions(request *CreateModuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateModuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -571,9 +584,11 @@ func (client *Client) CreateModule(request *CreateModuleRequest) (_result *Creat
 //
 // @return CreateModuleVersionResponse
 func (client *Client) CreateModuleVersionWithOptions(moduleId *string, request *CreateModuleVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateModuleVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -643,9 +658,11 @@ func (client *Client) CreateModuleVersion(moduleId *string, request *CreateModul
 //
 // @return CreateProjectResponse
 func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -715,9 +732,11 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 //
 // @return CreateRegistryModuleResponse
 func (client *Client) CreateRegistryModuleWithOptions(request *CreateRegistryModuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateRegistryModuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Acl) {
@@ -803,9 +822,11 @@ func (client *Client) CreateRegistryModule(request *CreateRegistryModuleRequest)
 //
 // @return CreateRegistryNamespaceResponse
 func (client *Client) CreateRegistryNamespaceWithOptions(request *CreateRegistryNamespaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateRegistryNamespaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Acl) {
@@ -883,9 +904,11 @@ func (client *Client) CreateRegistryNamespace(request *CreateRegistryNamespaceRe
 //
 // @return CreateResourceExportTaskResponse
 func (client *Client) CreateResourceExportTaskWithOptions(request *CreateResourceExportTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateResourceExportTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -983,9 +1006,11 @@ func (client *Client) CreateResourceExportTask(request *CreateResourceExportTask
 //
 // @return CreateTaskResponse
 func (client *Client) CreateTaskWithOptions(request *CreateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoApply) {
@@ -1507,9 +1532,11 @@ func (client *Client) DeleteTask(taskId *string) (_result *DeleteTaskResponse, _
 //
 // @return DissociateGroupResponse
 func (client *Client) DissociateGroupWithOptions(projectId *string, groupId *string, request *DissociateGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DissociateGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1579,9 +1606,11 @@ func (client *Client) DissociateGroup(projectId *string, groupId *string, reques
 //
 // @return ExecuteRegistryModuleResponse
 func (client *Client) ExecuteRegistryModuleWithOptions(namespaceName *string, moduleName *string, request *ExecuteRegistryModuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecuteRegistryModuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1647,9 +1676,11 @@ func (client *Client) ExecuteRegistryModule(namespaceName *string, moduleName *s
 //
 // @return ExecuteResourceExportTaskResponse
 func (client *Client) ExecuteResourceExportTaskWithOptions(exportTaskId *string, request *ExecuteResourceExportTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecuteResourceExportTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1711,9 +1742,11 @@ func (client *Client) ExecuteResourceExportTask(exportTaskId *string, request *E
 //
 // @return ExecuteTerraformApplyResponse
 func (client *Client) ExecuteTerraformApplyWithOptions(request *ExecuteTerraformApplyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecuteTerraformApplyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1783,9 +1816,11 @@ func (client *Client) ExecuteTerraformApply(request *ExecuteTerraformApplyReques
 //
 // @return ExecuteTerraformDestroyResponse
 func (client *Client) ExecuteTerraformDestroyWithOptions(request *ExecuteTerraformDestroyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecuteTerraformDestroyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1851,9 +1886,11 @@ func (client *Client) ExecuteTerraformDestroy(request *ExecuteTerraformDestroyRe
 //
 // @return ExecuteTerraformPlanResponse
 func (client *Client) ExecuteTerraformPlanWithOptions(request *ExecuteTerraformPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecuteTerraformPlanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -2023,9 +2060,11 @@ func (client *Client) GetGroup(groupId *string) (_result *GetGroupResponse, _err
 //
 // @return GetJobResponse
 func (client *Client) GetJobWithOptions(taskId *string, jobId *string, request *GetJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskType) {
@@ -2387,9 +2426,11 @@ func (client *Client) GetRegistryNamespace(namespaceName *string) (_result *GetR
 //
 // @return GetResourceExportTaskResponse
 func (client *Client) GetResourceExportTaskWithOptions(exportTaskId *string, request *GetResourceExportTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetResourceExportTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExportVersion) {
@@ -2451,9 +2492,11 @@ func (client *Client) GetResourceExportTask(exportTaskId *string, request *GetRe
 //
 // @return GetResourceTypeResponse
 func (client *Client) GetResourceTypeWithOptions(resourceType *string, request *GetResourceTypeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetResourceTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -2573,9 +2616,11 @@ func (client *Client) GetTask(taskId *string) (_result *GetTaskResponse, _err er
 //
 // @return ListExplorerRegistryModuleExamplesResponse
 func (client *Client) ListExplorerRegistryModuleExamplesWithOptions(request *ListExplorerRegistryModuleExamplesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListExplorerRegistryModuleExamplesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExampleName) {
@@ -2661,9 +2706,11 @@ func (client *Client) ListExplorerRegistryModuleExamples(request *ListExplorerRe
 //
 // @return ListExplorerRegistryModuleVersionsResponse
 func (client *Client) ListExplorerRegistryModuleVersionsWithOptions(request *ListExplorerRegistryModuleVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListExplorerRegistryModuleVersionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -2745,9 +2792,11 @@ func (client *Client) ListExplorerRegistryModuleVersions(request *ListExplorerRe
 //
 // @return ListExplorerRegistryModulesResponse
 func (client *Client) ListExplorerRegistryModulesWithOptions(request *ListExplorerRegistryModulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListExplorerRegistryModulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -2825,9 +2874,11 @@ func (client *Client) ListExplorerRegistryModules(request *ListExplorerRegistryM
 //
 // @return ListGroupResponse
 func (client *Client) ListGroupWithOptions(tmpReq *ListGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2911,9 +2962,11 @@ func (client *Client) ListGroup(request *ListGroupRequest) (_result *ListGroupRe
 //
 // @return ListJobsResponse
 func (client *Client) ListJobsWithOptions(taskId *string, request *ListJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -2987,9 +3040,11 @@ func (client *Client) ListJobs(taskId *string, request *ListJobsRequest) (_resul
 //
 // @return ListModuleVersionResponse
 func (client *Client) ListModuleVersionWithOptions(moduleId *string, request *ListModuleVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListModuleVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -3059,9 +3114,11 @@ func (client *Client) ListModuleVersion(moduleId *string, request *ListModuleVer
 //
 // @return ListModulesResponse
 func (client *Client) ListModulesWithOptions(tmpReq *ListModulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListModulesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListModulesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3076,6 +3133,10 @@ func (client *Client) ListModulesWithOptions(tmpReq *ListModulesRequest, headers
 
 	if !dara.IsNil(request.Keyword) {
 		query["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.ModuleName) {
+		query["moduleName"] = request.ModuleName
 	}
 
 	if !dara.IsNil(request.PageNumber) {
@@ -3149,9 +3210,11 @@ func (client *Client) ListModules(request *ListModulesRequest) (_result *ListMod
 //
 // @return ListProductsResponse
 func (client *Client) ListProductsWithOptions(request *ListProductsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListProductsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -3237,9 +3300,11 @@ func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListP
 //
 // @return ListProjectResponse
 func (client *Client) ListProjectWithOptions(tmpReq *ListProjectRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListProjectResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListProjectShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3319,9 +3384,11 @@ func (client *Client) ListProject(request *ListProjectRequest) (_result *ListPro
 //
 // @return ListRegistryModuleVersionsResponse
 func (client *Client) ListRegistryModuleVersionsWithOptions(request *ListRegistryModuleVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRegistryModuleVersionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -3395,9 +3462,11 @@ func (client *Client) ListRegistryModuleVersions(request *ListRegistryModuleVers
 //
 // @return ListRegistryModulesResponse
 func (client *Client) ListRegistryModulesWithOptions(request *ListRegistryModulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRegistryModulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -3475,9 +3544,11 @@ func (client *Client) ListRegistryModules(request *ListRegistryModulesRequest) (
 //
 // @return ListRegistryNamespacesResponse
 func (client *Client) ListRegistryNamespacesWithOptions(request *ListRegistryNamespacesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRegistryNamespacesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -3551,9 +3622,11 @@ func (client *Client) ListRegistryNamespaces(request *ListRegistryNamespacesRequ
 //
 // @return ListResourceExportTaskVersionsResponse
 func (client *Client) ListResourceExportTaskVersionsWithOptions(exportTaskId *string, request *ListResourceExportTaskVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListResourceExportTaskVersionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExportVersion) {
@@ -3631,9 +3704,11 @@ func (client *Client) ListResourceExportTaskVersions(exportTaskId *string, reque
 //
 // @return ListResourceExportTasksResponse
 func (client *Client) ListResourceExportTasksWithOptions(request *ListResourceExportTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListResourceExportTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExportTaskId) {
@@ -3707,9 +3782,11 @@ func (client *Client) ListResourceExportTasks(request *ListResourceExportTasksRe
 //
 // @return ListResourceTypesResponse
 func (client *Client) ListResourceTypesWithOptions(tmpReq *ListResourceTypesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListResourceTypesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListResourceTypesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3817,9 +3894,11 @@ func (client *Client) ListResourceTypes(request *ListResourceTypesRequest) (_res
 //
 // @return ListTasksResponse
 func (client *Client) ListTasksWithOptions(tmpReq *ListTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTasksResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListTasksShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3919,9 +3998,11 @@ func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksRe
 //
 // @return ListTerraformProviderVersionsResponse
 func (client *Client) ListTerraformProviderVersionsWithOptions(request *ListTerraformProviderVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTerraformProviderVersionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -3995,9 +4076,11 @@ func (client *Client) ListTerraformProviderVersions(request *ListTerraformProvid
 //
 // @return OperateJobResponse
 func (client *Client) OperateJobWithOptions(taskId *string, jobId *string, operationType *string, request *OperateJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *OperateJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Comment) {
@@ -4063,9 +4146,11 @@ func (client *Client) OperateJob(taskId *string, jobId *string, operationType *s
 //
 // @return PublishRegistryModuleVersionResponse
 func (client *Client) PublishRegistryModuleVersionWithOptions(request *PublishRegistryModuleVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PublishRegistryModuleVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -4139,9 +4224,11 @@ func (client *Client) PublishRegistryModuleVersion(request *PublishRegistryModul
 //
 // @return RemoveSharedAccountsResponse
 func (client *Client) RemoveSharedAccountsWithOptions(tmpReq *RemoveSharedAccountsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RemoveSharedAccountsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RemoveSharedAccountsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4217,9 +4304,11 @@ func (client *Client) RemoveSharedAccounts(request *RemoveSharedAccountsRequest)
 //
 // @return UpdateExplorerModuleAttributeResponse
 func (client *Client) UpdateExplorerModuleAttributeWithOptions(explorerModuleId *string, request *UpdateExplorerModuleAttributeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateExplorerModuleAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -4289,9 +4378,11 @@ func (client *Client) UpdateExplorerModuleAttribute(explorerModuleId *string, re
 //
 // @return UpdateGroupResponse
 func (client *Client) UpdateGroupWithOptions(groupId *string, request *UpdateGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoDestroy) {
@@ -4405,9 +4496,11 @@ func (client *Client) UpdateGroup(groupId *string, request *UpdateGroupRequest) 
 //
 // @return UpdateModuleAttributeResponse
 func (client *Client) UpdateModuleAttributeWithOptions(moduleId *string, request *UpdateModuleAttributeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateModuleAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -4497,9 +4590,11 @@ func (client *Client) UpdateModuleAttribute(moduleId *string, request *UpdateMod
 //
 // @return UpdateProjectResponse
 func (client *Client) UpdateProjectWithOptions(projectId *string, request *UpdateProjectRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateProjectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -4569,9 +4664,11 @@ func (client *Client) UpdateProject(projectId *string, request *UpdateProjectReq
 //
 // @return UpdateRegistryModuleAttributeResponse
 func (client *Client) UpdateRegistryModuleAttributeWithOptions(namespaceName *string, moduleName *string, request *UpdateRegistryModuleAttributeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateRegistryModuleAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Acl) {
@@ -4641,9 +4738,11 @@ func (client *Client) UpdateRegistryModuleAttribute(namespaceName *string, modul
 //
 // @return UpdateRegistryNamespaceAttributeResponse
 func (client *Client) UpdateRegistryNamespaceAttributeWithOptions(namespaceName *string, request *UpdateRegistryNamespaceAttributeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateRegistryNamespaceAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Acl) {
@@ -4713,9 +4812,11 @@ func (client *Client) UpdateRegistryNamespaceAttribute(namespaceName *string, re
 //
 // @return UpdateResourceExportTaskAttributeResponse
 func (client *Client) UpdateResourceExportTaskAttributeWithOptions(exportTaskId *string, request *UpdateResourceExportTaskAttributeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateResourceExportTaskAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -4813,9 +4914,11 @@ func (client *Client) UpdateResourceExportTaskAttribute(exportTaskId *string, re
 //
 // @return UpdateTaskAttributeResponse
 func (client *Client) UpdateTaskAttributeWithOptions(taskId *string, request *UpdateTaskAttributeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTaskAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoApply) {
@@ -4946,9 +5049,11 @@ func (client *Client) ValidateModuleWithSSE(request *ValidateModuleRequest, head
 //
 // @return ValidateModuleResponse
 func (client *Client) ValidateModuleWithOptions(request *ValidateModuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ValidateModuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -5015,10 +5120,12 @@ func (client *Client) ValidateModule(request *ValidateModuleRequest) (_result *V
 }
 
 func (client *Client) validateModuleWithSSE_opYieldFunc(_yield chan *ValidateModuleResponse, _yieldErr chan error, request *ValidateModuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {

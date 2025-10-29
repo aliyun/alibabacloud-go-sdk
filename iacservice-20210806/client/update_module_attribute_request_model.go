@@ -141,7 +141,21 @@ func (s *UpdateModuleAttributeRequest) SetVersionStrategy(v string) *UpdateModul
 }
 
 func (s *UpdateModuleAttributeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.GroupInfo != nil {
+		if err := s.GroupInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateModuleAttributeRequestGroupInfo struct {

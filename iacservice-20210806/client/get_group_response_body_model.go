@@ -50,7 +50,12 @@ func (s *GetGroupResponseBody) SetRequestId(v string) *GetGroupResponseBody {
 }
 
 func (s *GetGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Group != nil {
+		if err := s.Group.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGroupResponseBodyGroup struct {
@@ -271,7 +276,25 @@ func (s *GetGroupResponseBodyGroup) SetTriggerResourceType(v []*string) *GetGrou
 }
 
 func (s *GetGroupResponseBodyGroup) Validate() error {
-	return dara.Validate(s)
+	if s.NotifyConfig != nil {
+		for _, item := range s.NotifyConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TriggerConfig != nil {
+		for _, item := range s.TriggerConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetGroupResponseBodyGroupNotifyConfig struct {

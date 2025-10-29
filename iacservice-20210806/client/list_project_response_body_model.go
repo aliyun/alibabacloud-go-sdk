@@ -95,7 +95,16 @@ func (s *ListProjectResponseBody) SetRequestId(v string) *ListProjectResponseBod
 }
 
 func (s *ListProjectResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Projects != nil {
+		for _, item := range s.Projects {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProjectResponseBodyProjects struct {
@@ -185,7 +194,16 @@ func (s *ListProjectResponseBodyProjects) SetTaskCnt(v int64) *ListProjectRespon
 }
 
 func (s *ListProjectResponseBodyProjects) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProjectResponseBodyProjectsTags struct {

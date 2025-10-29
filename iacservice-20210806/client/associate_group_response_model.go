@@ -59,5 +59,10 @@ func (s *AssociateGroupResponse) SetBody(v *AssociateGroupResponseBody) *Associa
 }
 
 func (s *AssociateGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

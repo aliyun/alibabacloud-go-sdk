@@ -95,7 +95,16 @@ func (s *ListResourceTypesResponseBody) SetTotalCount(v int32) *ListResourceType
 }
 
 func (s *ListResourceTypesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceTypes != nil {
+		for _, item := range s.ResourceTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourceTypesResponseBodyResourceTypes struct {

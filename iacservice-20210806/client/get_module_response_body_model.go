@@ -52,7 +52,12 @@ func (s *GetModuleResponseBody) SetRequestId(v string) *GetModuleResponseBody {
 }
 
 func (s *GetModuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetModuleResponseBodyModule struct {
@@ -236,7 +241,21 @@ func (s *GetModuleResponseBodyModule) SetVersionStrategy(v string) *GetModuleRes
 }
 
 func (s *GetModuleResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.GroupInfo != nil {
+		if err := s.GroupInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetModuleResponseBodyModuleGroupInfo struct {

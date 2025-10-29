@@ -253,7 +253,26 @@ func (s *CreateTaskRequest) SetTriggerStrategy(v string) *CreateTaskRequest {
 }
 
 func (s *CreateTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.GroupInfo != nil {
+		if err := s.GroupInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TaskBackend != nil {
+		if err := s.TaskBackend.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateTaskRequestGroupInfo struct {

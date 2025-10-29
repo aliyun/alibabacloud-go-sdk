@@ -95,7 +95,16 @@ func (s *ListExplorerRegistryModuleVersionsResponseBody) SetTotalCount(v int64) 
 }
 
 func (s *ListExplorerRegistryModuleVersionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ExplorerRegistryModuleVersions != nil {
+		for _, item := range s.ExplorerRegistryModuleVersions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListExplorerRegistryModuleVersionsResponseBodyExplorerRegistryModuleVersions struct {

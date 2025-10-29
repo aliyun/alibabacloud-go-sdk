@@ -59,5 +59,10 @@ func (s *ListExplorerRegistryModulesResponse) SetBody(v *ListExplorerRegistryMod
 }
 
 func (s *ListExplorerRegistryModulesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

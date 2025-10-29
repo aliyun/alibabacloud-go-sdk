@@ -220,7 +220,25 @@ func (s *UpdateGroupRequest) SetTriggerResourceType(v []*string) *UpdateGroupReq
 }
 
 func (s *UpdateGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.NotifyConfig != nil {
+		for _, item := range s.NotifyConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TriggerConfig != nil {
+		for _, item := range s.TriggerConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateGroupRequestNotifyConfig struct {

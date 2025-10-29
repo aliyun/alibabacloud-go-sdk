@@ -59,5 +59,10 @@ func (s *ListRegistryModuleVersionsResponse) SetBody(v *ListRegistryModuleVersio
 }
 
 func (s *ListRegistryModuleVersionsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

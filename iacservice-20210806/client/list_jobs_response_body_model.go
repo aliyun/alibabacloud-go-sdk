@@ -95,7 +95,16 @@ func (s *ListJobsResponseBody) SetTotalCount(v int32) *ListJobsResponseBody {
 }
 
 func (s *ListJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Jobs != nil {
+		for _, item := range s.Jobs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListJobsResponseBodyJobs struct {
@@ -238,7 +247,12 @@ func (s *ListJobsResponseBodyJobs) SetTerraformProviderVersion(v string) *ListJo
 }
 
 func (s *ListJobsResponseBodyJobs) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListJobsResponseBodyJobsConfig struct {

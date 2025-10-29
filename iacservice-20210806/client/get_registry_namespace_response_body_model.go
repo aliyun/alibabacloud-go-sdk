@@ -50,7 +50,12 @@ func (s *GetRegistryNamespaceResponseBody) SetRequestId(v string) *GetRegistryNa
 }
 
 func (s *GetRegistryNamespaceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Namespace != nil {
+		if err := s.Namespace.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRegistryNamespaceResponseBodyNamespace struct {

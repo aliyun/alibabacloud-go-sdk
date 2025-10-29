@@ -50,7 +50,12 @@ func (s *GetRegistryModuleVersionResponseBody) SetRequestId(v string) *GetRegist
 }
 
 func (s *GetRegistryModuleVersionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleVersion != nil {
+		if err := s.ModuleVersion.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRegistryModuleVersionResponseBodyModuleVersion struct {

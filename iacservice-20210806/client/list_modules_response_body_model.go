@@ -95,7 +95,16 @@ func (s *ListModulesResponseBody) SetTotalCount(v int32) *ListModulesResponseBod
 }
 
 func (s *ListModulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Modules != nil {
+		for _, item := range s.Modules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListModulesResponseBodyModules struct {
@@ -231,7 +240,21 @@ func (s *ListModulesResponseBodyModules) SetTags(v []*ListModulesResponseBodyMod
 }
 
 func (s *ListModulesResponseBodyModules) Validate() error {
-	return dara.Validate(s)
+	if s.GroupInfo != nil {
+		if err := s.GroupInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListModulesResponseBodyModulesGroupInfo struct {
