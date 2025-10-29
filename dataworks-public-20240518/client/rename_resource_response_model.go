@@ -59,5 +59,10 @@ func (s *RenameResourceResponse) SetBody(v *RenameResourceResponseBody) *RenameR
 }
 
 func (s *RenameResourceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

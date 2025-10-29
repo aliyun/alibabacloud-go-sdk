@@ -53,7 +53,12 @@ func (s *GetTaskResponseBody) SetTask(v *GetTaskResponseBodyTask) *GetTaskRespon
 }
 
 func (s *GetTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Task != nil {
+		if err := s.Task.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTaskResponseBodyTask struct {
@@ -490,7 +495,60 @@ func (s *GetTaskResponseBodyTask) SetWorkflowId(v int64) *GetTaskResponseBodyTas
 }
 
 func (s *GetTaskResponseBodyTask) Validate() error {
-	return dara.Validate(s)
+	if s.DataSource != nil {
+		if err := s.DataSource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Dependencies != nil {
+		for _, item := range s.Dependencies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Inputs != nil {
+		if err := s.Inputs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Outputs != nil {
+		if err := s.Outputs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuntimeResource != nil {
+		if err := s.RuntimeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Script != nil {
+		if err := s.Script.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubTasks != nil {
+		if err := s.SubTasks.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Trigger != nil {
+		if err := s.Trigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTaskResponseBodyTaskDataSource struct {
@@ -614,7 +672,16 @@ func (s *GetTaskResponseBodyTaskInputs) SetVariables(v []*GetTaskResponseBodyTas
 }
 
 func (s *GetTaskResponseBodyTaskInputs) Validate() error {
-	return dara.Validate(s)
+	if s.Variables != nil {
+		for _, item := range s.Variables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTaskResponseBodyTaskInputsVariables struct {
@@ -719,7 +786,25 @@ func (s *GetTaskResponseBodyTaskOutputs) SetVariables(v []*GetTaskResponseBodyTa
 }
 
 func (s *GetTaskResponseBodyTaskOutputs) Validate() error {
-	return dara.Validate(s)
+	if s.TaskOutputs != nil {
+		for _, item := range s.TaskOutputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Variables != nil {
+		for _, item := range s.Variables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTaskResponseBodyTaskOutputsTaskOutputs struct {
@@ -969,7 +1054,16 @@ func (s *GetTaskResponseBodyTaskSubTasks) SetType(v string) *GetTaskResponseBody
 }
 
 func (s *GetTaskResponseBodyTaskSubTasks) Validate() error {
-	return dara.Validate(s)
+	if s.SubTasks != nil {
+		for _, item := range s.SubTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTaskResponseBodyTaskSubTasksSubTasks struct {
@@ -1318,7 +1412,22 @@ func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetWorkflowId(v int64) *GetTas
 }
 
 func (s *GetTaskResponseBodyTaskSubTasksSubTasks) Validate() error {
-	return dara.Validate(s)
+	if s.DataSource != nil {
+		if err := s.DataSource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuntimeResource != nil {
+		if err := s.RuntimeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Trigger != nil {
+		if err := s.Trigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTaskResponseBodyTaskSubTasksSubTasksDataSource struct {

@@ -53,7 +53,12 @@ func (s *ListDataQualityScansResponseBody) SetRequestId(v string) *ListDataQuali
 }
 
 func (s *ListDataQualityScansResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataQualityScansResponseBodyPageInfo struct {
@@ -124,7 +129,16 @@ func (s *ListDataQualityScansResponseBodyPageInfo) SetTotalCount(v int32) *ListD
 }
 
 func (s *ListDataQualityScansResponseBodyPageInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DataQualityScans != nil {
+		for _, item := range s.DataQualityScans {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataQualityScansResponseBodyPageInfoDataQualityScans struct {
@@ -329,7 +343,40 @@ func (s *ListDataQualityScansResponseBodyPageInfoDataQualityScans) SetTrigger(v 
 }
 
 func (s *ListDataQualityScansResponseBodyPageInfoDataQualityScans) Validate() error {
-	return dara.Validate(s)
+	if s.ComputeResource != nil {
+		if err := s.ComputeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Hooks != nil {
+		for _, item := range s.Hooks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Parameters != nil {
+		for _, item := range s.Parameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RuntimeResource != nil {
+		if err := s.RuntimeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Trigger != nil {
+		if err := s.Trigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataQualityScansResponseBodyPageInfoDataQualityScansComputeResource struct {
@@ -389,7 +436,12 @@ func (s *ListDataQualityScansResponseBodyPageInfoDataQualityScansComputeResource
 }
 
 func (s *ListDataQualityScansResponseBodyPageInfoDataQualityScansComputeResource) Validate() error {
-	return dara.Validate(s)
+	if s.Runtime != nil {
+		if err := s.Runtime.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataQualityScansResponseBodyPageInfoDataQualityScansComputeResourceRuntime struct {

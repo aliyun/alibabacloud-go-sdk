@@ -53,7 +53,12 @@ func (s *TestDataSourceConnectivityResponseBody) SetRequestId(v string) *TestDat
 }
 
 func (s *TestDataSourceConnectivityResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Connectivity != nil {
+		if err := s.Connectivity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TestDataSourceConnectivityResponseBodyConnectivity struct {
@@ -105,7 +110,16 @@ func (s *TestDataSourceConnectivityResponseBodyConnectivity) SetDetailLogs(v []*
 }
 
 func (s *TestDataSourceConnectivityResponseBodyConnectivity) Validate() error {
-	return dara.Validate(s)
+	if s.DetailLogs != nil {
+		for _, item := range s.DetailLogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TestDataSourceConnectivityResponseBodyConnectivityDetailLogs struct {

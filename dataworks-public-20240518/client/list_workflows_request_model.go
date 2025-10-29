@@ -88,7 +88,7 @@ type ListWorkflowsRequest struct {
 	//
 	// Id Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The trigger type. Valid values:
+	// The trigger type.
 	//
 	// 	- Scheduler
 	//

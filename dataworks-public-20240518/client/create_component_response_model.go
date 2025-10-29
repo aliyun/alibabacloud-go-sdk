@@ -59,5 +59,10 @@ func (s *CreateComponentResponse) SetBody(v *CreateComponentResponseBody) *Creat
 }
 
 func (s *CreateComponentResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

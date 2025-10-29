@@ -53,7 +53,12 @@ func (s *ListFunctionsResponseBody) SetRequestId(v string) *ListFunctionsRespons
 }
 
 func (s *ListFunctionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListFunctionsResponseBodyPagingInfo struct {
@@ -124,7 +129,16 @@ func (s *ListFunctionsResponseBodyPagingInfo) SetTotalCount(v int32) *ListFuncti
 }
 
 func (s *ListFunctionsResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Functions != nil {
+		for _, item := range s.Functions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFunctionsResponseBodyPagingInfoFunctions struct {
@@ -493,7 +507,22 @@ func (s *ListFunctionsResponseBodyPagingInfoFunctions) SetType(v string) *ListFu
 }
 
 func (s *ListFunctionsResponseBodyPagingInfoFunctions) Validate() error {
-	return dara.Validate(s)
+	if s.DataSource != nil {
+		if err := s.DataSource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuntimeResource != nil {
+		if err := s.RuntimeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Script != nil {
+		if err := s.Script.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListFunctionsResponseBodyPagingInfoFunctionsDataSource struct {
@@ -624,7 +653,12 @@ func (s *ListFunctionsResponseBodyPagingInfoFunctionsScript) SetRuntime(v *ListF
 }
 
 func (s *ListFunctionsResponseBodyPagingInfoFunctionsScript) Validate() error {
-	return dara.Validate(s)
+	if s.Runtime != nil {
+		if err := s.Runtime.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListFunctionsResponseBodyPagingInfoFunctionsScriptRuntime struct {

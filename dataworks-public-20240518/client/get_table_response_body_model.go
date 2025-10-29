@@ -18,15 +18,20 @@ type iGetTableResponseBody interface {
 }
 
 type GetTableResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 7B3435F4-2D91-XXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
-	Success *bool  `json:"Success,omitempty" xml:"Success,omitempty"`
-	Table   *Table `json:"Table,omitempty" xml:"Table,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Detailed information about the table.
+	Table *Table `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
 func (s GetTableResponseBody) String() string {
@@ -65,5 +70,10 @@ func (s *GetTableResponseBody) SetTable(v *Table) *GetTableResponseBody {
 }
 
 func (s *GetTableResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Table != nil {
+		if err := s.Table.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

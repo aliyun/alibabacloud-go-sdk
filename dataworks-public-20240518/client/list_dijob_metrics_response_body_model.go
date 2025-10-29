@@ -53,7 +53,12 @@ func (s *ListDIJobMetricsResponseBody) SetRequestId(v string) *ListDIJobMetricsR
 }
 
 func (s *ListDIJobMetricsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDIJobMetricsResponseBodyPagingInfo struct {
@@ -79,7 +84,16 @@ func (s *ListDIJobMetricsResponseBodyPagingInfo) SetJobMetrics(v []*ListDIJobMet
 }
 
 func (s *ListDIJobMetricsResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.JobMetrics != nil {
+		for _, item := range s.JobMetrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDIJobMetricsResponseBodyPagingInfoJobMetrics struct {
@@ -120,7 +134,16 @@ func (s *ListDIJobMetricsResponseBodyPagingInfoJobMetrics) SetSeriesList(v []*Li
 }
 
 func (s *ListDIJobMetricsResponseBodyPagingInfoJobMetrics) Validate() error {
-	return dara.Validate(s)
+	if s.SeriesList != nil {
+		for _, item := range s.SeriesList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDIJobMetricsResponseBodyPagingInfoJobMetricsSeriesList struct {

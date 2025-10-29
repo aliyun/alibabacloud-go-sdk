@@ -53,7 +53,12 @@ func (s *GetTaskInstanceResponseBody) SetTaskInstance(v *GetTaskInstanceResponse
 }
 
 func (s *GetTaskInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TaskInstance != nil {
+		if err := s.TaskInstance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTaskInstanceResponseBodyTaskInstance struct {
@@ -656,7 +661,46 @@ func (s *GetTaskInstanceResponseBodyTaskInstance) SetWorkflowName(v string) *Get
 }
 
 func (s *GetTaskInstanceResponseBodyTaskInstance) Validate() error {
-	return dara.Validate(s)
+	if s.DataSource != nil {
+		if err := s.DataSource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Inputs != nil {
+		if err := s.Inputs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Outputs != nil {
+		if err := s.Outputs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Runtime != nil {
+		if err := s.Runtime.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuntimeResource != nil {
+		if err := s.RuntimeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Script != nil {
+		if err := s.Script.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTaskInstanceResponseBodyTaskInstanceDataSource struct {
@@ -712,7 +756,16 @@ func (s *GetTaskInstanceResponseBodyTaskInstanceInputs) SetVariables(v []*GetTas
 }
 
 func (s *GetTaskInstanceResponseBodyTaskInstanceInputs) Validate() error {
-	return dara.Validate(s)
+	if s.Variables != nil {
+		for _, item := range s.Variables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTaskInstanceResponseBodyTaskInstanceInputsVariables struct {
@@ -817,7 +870,25 @@ func (s *GetTaskInstanceResponseBodyTaskInstanceOutputs) SetVariables(v []*GetTa
 }
 
 func (s *GetTaskInstanceResponseBodyTaskInstanceOutputs) Validate() error {
-	return dara.Validate(s)
+	if s.TaskOutputs != nil {
+		for _, item := range s.TaskOutputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Variables != nil {
+		for _, item := range s.Variables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTaskInstanceResponseBodyTaskInstanceOutputsTaskOutputs struct {

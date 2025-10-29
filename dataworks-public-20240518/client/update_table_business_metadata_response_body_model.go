@@ -16,10 +16,14 @@ type iUpdateTableBusinessMetadataResponseBody interface {
 }
 
 type UpdateTableBusinessMetadataResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 7C352CB7-CD88-XXXXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

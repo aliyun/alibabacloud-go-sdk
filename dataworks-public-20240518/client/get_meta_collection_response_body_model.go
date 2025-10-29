@@ -16,9 +16,9 @@ type iGetMetaCollectionResponseBody interface {
 }
 
 type GetMetaCollectionResponseBody struct {
-	// The information about the collection.
+	// The collection details.
 	MetaCollection *GetMetaCollectionResponseBodyMetaCollection `json:"MetaCollection,omitempty" xml:"MetaCollection,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -53,19 +53,34 @@ func (s *GetMetaCollectionResponseBody) SetRequestId(v string) *GetMetaCollectio
 }
 
 func (s *GetMetaCollectionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MetaCollection != nil {
+		if err := s.MetaCollection.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMetaCollectionResponseBodyMetaCollection struct {
+	// The list of administrator IDs. Valid only for the album type. The IDs must belong to users in the same tenant. Multiple IDs can be specified.
 	Administrators []*int64 `json:"Administrators,omitempty" xml:"Administrators,omitempty" type:"Repeated"`
+	// The creation time in milliseconds.
+	//
 	// example:
 	//
 	// 1668568601000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the creator.
+	//
 	// example:
 	//
 	// 456789
-	CreateUser  *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The collection description.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The collection ID.
 	//
@@ -73,20 +88,32 @@ type GetMetaCollectionResponseBodyMetaCollection struct {
 	//
 	// category.123
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The last modified time in milliseconds.
+	//
 	// example:
 	//
 	// 1668568601000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The collection name.
+	//
 	// example:
 	//
 	// test_category
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the collection of the ancestor node. This parameter can be left empty.
+	// The parent collection ID. This parameter can be empty.
 	//
 	// example:
 	//
 	// category.12
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The collection type. Valid values:
+	//
+	// 	- Category
+	//
+	// 	- Album
+	//
+	// 	- AlbumCategory: Album subcategory.
+	//
 	// example:
 	//
 	// Category

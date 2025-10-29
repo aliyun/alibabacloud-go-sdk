@@ -53,7 +53,12 @@ func (s *ListTaskInstanceOperationLogsResponseBody) SetRequestId(v string) *List
 }
 
 func (s *ListTaskInstanceOperationLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTaskInstanceOperationLogsResponseBodyPagingInfo struct {
@@ -124,7 +129,16 @@ func (s *ListTaskInstanceOperationLogsResponseBodyPagingInfo) SetTotalCount(v in
 }
 
 func (s *ListTaskInstanceOperationLogsResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.OperationLogs != nil {
+		for _, item := range s.OperationLogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs struct {

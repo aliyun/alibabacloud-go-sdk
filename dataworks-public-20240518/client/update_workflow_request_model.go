@@ -231,7 +231,44 @@ func (s *UpdateWorkflowRequest) SetTrigger(v *UpdateWorkflowRequestTrigger) *Upd
 }
 
 func (s *UpdateWorkflowRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Dependencies != nil {
+		for _, item := range s.Dependencies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Outputs != nil {
+		if err := s.Outputs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tasks != nil {
+		for _, item := range s.Tasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Trigger != nil {
+		if err := s.Trigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateWorkflowRequestDependencies struct {
@@ -327,7 +364,16 @@ func (s *UpdateWorkflowRequestOutputs) SetTaskOutputs(v []*UpdateWorkflowRequest
 }
 
 func (s *UpdateWorkflowRequestOutputs) Validate() error {
-	return dara.Validate(s)
+	if s.TaskOutputs != nil {
+		for _, item := range s.TaskOutputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateWorkflowRequestOutputsTaskOutputs struct {
@@ -709,7 +755,55 @@ func (s *UpdateWorkflowRequestTasks) SetType(v string) *UpdateWorkflowRequestTas
 }
 
 func (s *UpdateWorkflowRequestTasks) Validate() error {
-	return dara.Validate(s)
+	if s.DataSource != nil {
+		if err := s.DataSource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Dependencies != nil {
+		for _, item := range s.Dependencies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Inputs != nil {
+		if err := s.Inputs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Outputs != nil {
+		if err := s.Outputs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuntimeResource != nil {
+		if err := s.RuntimeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Script != nil {
+		if err := s.Script.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Trigger != nil {
+		if err := s.Trigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateWorkflowRequestTasksDataSource struct {
@@ -835,7 +929,16 @@ func (s *UpdateWorkflowRequestTasksInputs) SetVariables(v []*UpdateWorkflowReque
 }
 
 func (s *UpdateWorkflowRequestTasksInputs) Validate() error {
-	return dara.Validate(s)
+	if s.Variables != nil {
+		for _, item := range s.Variables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateWorkflowRequestTasksInputsVariables struct {
@@ -942,7 +1045,25 @@ func (s *UpdateWorkflowRequestTasksOutputs) SetVariables(v []*UpdateWorkflowRequ
 }
 
 func (s *UpdateWorkflowRequestTasksOutputs) Validate() error {
-	return dara.Validate(s)
+	if s.TaskOutputs != nil {
+		for _, item := range s.TaskOutputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Variables != nil {
+		for _, item := range s.Variables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateWorkflowRequestTasksOutputsTaskOutputs struct {

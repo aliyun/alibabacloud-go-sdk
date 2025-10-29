@@ -164,7 +164,17 @@ func (s *Table) SetTechnicalMetadata(v *TableTechnicalMetadata) *Table {
 }
 
 func (s *Table) Validate() error {
-	return dara.Validate(s)
+	if s.BusinessMetadata != nil {
+		if err := s.BusinessMetadata.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TechnicalMetadata != nil {
+		if err := s.TechnicalMetadata.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TableBusinessMetadata struct {
@@ -232,7 +242,30 @@ func (s *TableBusinessMetadata) SetUpstreamTasks(v []*TableBusinessMetadataUpstr
 }
 
 func (s *TableBusinessMetadata) Validate() error {
-	return dara.Validate(s)
+	if s.Extension != nil {
+		if err := s.Extension.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UpstreamTasks != nil {
+		for _, item := range s.UpstreamTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TableBusinessMetadataCategories struct {

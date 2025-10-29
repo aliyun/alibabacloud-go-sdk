@@ -59,5 +59,10 @@ func (s *ListCrawlerTypesResponse) SetBody(v *ListCrawlerTypesResponseBody) *Lis
 }
 
 func (s *ListCrawlerTypesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

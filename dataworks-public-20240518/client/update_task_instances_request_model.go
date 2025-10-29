@@ -53,7 +53,16 @@ func (s *UpdateTaskInstancesRequest) SetTaskInstances(v []*UpdateTaskInstancesRe
 }
 
 func (s *UpdateTaskInstancesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TaskInstances != nil {
+		for _, item := range s.TaskInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateTaskInstancesRequestTaskInstances struct {
@@ -128,7 +137,12 @@ func (s *UpdateTaskInstancesRequestTaskInstances) SetRuntimeResource(v string) *
 }
 
 func (s *UpdateTaskInstancesRequestTaskInstances) Validate() error {
-	return dara.Validate(s)
+	if s.DataSource != nil {
+		if err := s.DataSource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateTaskInstancesRequestTaskInstancesDataSource struct {

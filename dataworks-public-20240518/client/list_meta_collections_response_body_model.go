@@ -16,9 +16,9 @@ type iListMetaCollectionsResponseBody interface {
 }
 
 type ListMetaCollectionsResponseBody struct {
-	// The data.
+	// Pagination information.
 	Data *ListMetaCollectionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -53,20 +53,31 @@ func (s *ListMetaCollectionsResponseBody) SetRequestId(v string) *ListMetaCollec
 }
 
 func (s *ListMetaCollectionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMetaCollectionsResponseBodyData struct {
-	// The collections.
+	// The list of collections.
 	MetaCollections []*ListMetaCollectionsResponseBodyDataMetaCollections `json:"MetaCollections,omitempty" xml:"MetaCollections,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 10
@@ -118,44 +129,67 @@ func (s *ListMetaCollectionsResponseBodyData) SetTotalCount(v int32) *ListMetaCo
 }
 
 func (s *ListMetaCollectionsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.MetaCollections != nil {
+		for _, item := range s.MetaCollections {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMetaCollectionsResponseBodyDataMetaCollections struct {
+	// The list of administrator IDs. Supported only for album types. Administrators must be users within the same tenant. Multiple administrators can be specified.
 	Administrators []*string `json:"Administrators,omitempty" xml:"Administrators,omitempty" type:"Repeated"`
-	// The time when the collection was created. The value is a UNIX timestamp. Unit: milliseconds.
+	// The creation time in milliseconds (timestamp).
 	//
 	// example:
 	//
 	// 1668568601000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator user ID.
+	//
 	// example:
 	//
 	// 456789
-	CreateUser  *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The collection description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the collection.
+	// The collection name.
 	//
 	// example:
 	//
 	// category.123
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time when the collection was modified. The value is a UNIX timestamp. Unit: milliseconds.
+	// The modification time in milliseconds (timestamp).
 	//
 	// example:
 	//
 	// 1668568601000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The collection name.
+	//
 	// example:
 	//
 	// test_category
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the collection of the ancestor node. This parameter can be left empty.
+	// The ID of the parent collection. Can be empty.
 	//
 	// example:
 	//
 	// category.1
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The collection type. Valid values:
+	//
+	// 	- Category
+	//
+	// 	- Album
+	//
+	// 	- AlbumCategory: Album subcategory
+	//
 	// example:
 	//
 	// Category

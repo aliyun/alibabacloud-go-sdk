@@ -53,7 +53,12 @@ func (s *GetPipelineRunResponseBody) SetRequestId(v string) *GetPipelineRunRespo
 }
 
 func (s *GetPipelineRunResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Pipeline != nil {
+		if err := s.Pipeline.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPipelineRunResponseBodyPipeline struct {
@@ -198,7 +203,16 @@ func (s *GetPipelineRunResponseBodyPipeline) SetStatus(v string) *GetPipelineRun
 }
 
 func (s *GetPipelineRunResponseBodyPipeline) Validate() error {
-	return dara.Validate(s)
+	if s.Stages != nil {
+		for _, item := range s.Stages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPipelineRunResponseBodyPipelineStages struct {

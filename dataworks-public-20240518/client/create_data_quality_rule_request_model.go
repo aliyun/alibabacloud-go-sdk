@@ -185,7 +185,31 @@ func (s *CreateDataQualityRuleRequest) SetTemplateCode(v string) *CreateDataQual
 }
 
 func (s *CreateDataQualityRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CheckingConfig != nil {
+		if err := s.CheckingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ErrorHandlers != nil {
+		for _, item := range s.ErrorHandlers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SamplingConfig != nil {
+		if err := s.SamplingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Target != nil {
+		if err := s.Target.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataQualityRuleRequestCheckingConfig struct {
@@ -253,7 +277,12 @@ func (s *CreateDataQualityRuleRequestCheckingConfig) SetType(v string) *CreateDa
 }
 
 func (s *CreateDataQualityRuleRequestCheckingConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Thresholds != nil {
+		if err := s.Thresholds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataQualityRuleRequestCheckingConfigThresholds struct {
@@ -301,7 +330,22 @@ func (s *CreateDataQualityRuleRequestCheckingConfigThresholds) SetWarned(v *Crea
 }
 
 func (s *CreateDataQualityRuleRequestCheckingConfigThresholds) Validate() error {
-	return dara.Validate(s)
+	if s.Critical != nil {
+		if err := s.Critical.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Expected != nil {
+		if err := s.Expected.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Warned != nil {
+		if err := s.Warned.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataQualityRuleRequestCheckingConfigThresholdsCritical struct {

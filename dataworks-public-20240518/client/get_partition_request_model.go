@@ -16,13 +16,15 @@ type iGetPartitionRequest interface {
 }
 
 type GetPartitionRequest struct {
+	// The partition name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ds=20250101
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The table ID. For more details, refer to the response of the ListTables operation and [description of concepts related to metadata entities.](https://help.aliyun.com/document_detail/2880092.html)
+	// The table ID. You can refer to the result returned by the ListTables operation and [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
 	//
 	// This parameter is required.
 	//

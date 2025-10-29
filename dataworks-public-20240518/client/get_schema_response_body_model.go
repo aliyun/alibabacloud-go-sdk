@@ -18,11 +18,16 @@ type iGetSchemaResponseBody interface {
 }
 
 type GetSchemaResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// A89B5D9D-74EA-XXXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Schema    *Schema `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// The schema information.
+	Schema *Schema `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -65,5 +70,10 @@ func (s *GetSchemaResponseBody) SetSuccess(v bool) *GetSchemaResponseBody {
 }
 
 func (s *GetSchemaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Schema != nil {
+		if err := s.Schema.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *GetWorkflowInstanceResponseBody) SetWorkflowInstance(v *GetWorkflowInst
 }
 
 func (s *GetWorkflowInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WorkflowInstance != nil {
+		if err := s.WorkflowInstance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWorkflowInstanceResponseBodyWorkflowInstance struct {
@@ -114,7 +119,8 @@ type GetWorkflowInstanceResponseBodyWorkflowInstance struct {
 	// example:
 	//
 	// WorkInstance1
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The workspace ID.
 	//
 	// example:
@@ -148,8 +154,9 @@ type GetWorkflowInstanceResponseBodyWorkflowInstance struct {
 	// example:
 	//
 	// Success
-	Status *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*GetWorkflowInstanceResponseBodyWorkflowInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task tag.
+	Tags []*GetWorkflowInstanceResponseBodyWorkflowInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The type of the workflow instance. Valid values:
 	//
 	// 	- Normal
@@ -171,8 +178,10 @@ type GetWorkflowInstanceResponseBodyWorkflowInstance struct {
 	// example:
 	//
 	// 1234
-	WorkflowId         *int64  `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
-	WorkflowParameters *string `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty"`
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// The workflow parameters.
+	WorkflowParameters     *string `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty"`
+	WorkflowTaskInstanceId *int64  `json:"WorkflowTaskInstanceId,omitempty" xml:"WorkflowTaskInstanceId,omitempty"`
 }
 
 func (s GetWorkflowInstanceResponseBodyWorkflowInstance) String() string {
@@ -219,6 +228,10 @@ func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) GetName() *string {
 	return s.Name
 }
 
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) GetOwner() *string {
+	return s.Owner
+}
+
 func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -245,6 +258,10 @@ func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) GetWorkflowId() *int64
 
 func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) GetWorkflowParameters() *string {
 	return s.WorkflowParameters
+}
+
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) GetWorkflowTaskInstanceId() *int64 {
+	return s.WorkflowTaskInstanceId
 }
 
 func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetBizDate(v int64) *GetWorkflowInstanceResponseBodyWorkflowInstance {
@@ -292,6 +309,11 @@ func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetName(v string) *Get
 	return s
 }
 
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetOwner(v string) *GetWorkflowInstanceResponseBodyWorkflowInstance {
+	s.Owner = &v
+	return s
+}
+
 func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetProjectId(v int64) *GetWorkflowInstanceResponseBodyWorkflowInstance {
 	s.ProjectId = &v
 	return s
@@ -327,12 +349,32 @@ func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetWorkflowParameters(
 	return s
 }
 
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetWorkflowTaskInstanceId(v int64) *GetWorkflowInstanceResponseBodyWorkflowInstance {
+	s.WorkflowTaskInstanceId = &v
+	return s
+}
+
 func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetWorkflowInstanceResponseBodyWorkflowInstanceTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

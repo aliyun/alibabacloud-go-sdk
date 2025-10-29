@@ -16,10 +16,18 @@ type iDeleteLineageRelationshipResponseBody interface {
 }
 
 type DeleteLineageRelationshipResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 952795279527ab****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true: success.
+	//
+	// 	- false: failure.
+	//
 	// example:
 	//
 	// true

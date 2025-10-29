@@ -53,7 +53,12 @@ func (s *ListDIAlarmRulesResponseBody) SetRequestId(v string) *ListDIAlarmRulesR
 }
 
 func (s *ListDIAlarmRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDIAlarmRulesResponseBodyPagingInfo struct {
@@ -124,7 +129,16 @@ func (s *ListDIAlarmRulesResponseBodyPagingInfo) SetTotalCount(v int64) *ListDIA
 }
 
 func (s *ListDIAlarmRulesResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DIJobAlarmRules != nil {
+		for _, item := range s.DIJobAlarmRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRules struct {
@@ -278,7 +292,21 @@ func (s *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRules) SetTriggerCondit
 }
 
 func (s *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRules) Validate() error {
-	return dara.Validate(s)
+	if s.NotificationSettings != nil {
+		if err := s.NotificationSettings.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TriggerConditions != nil {
+		for _, item := range s.TriggerConditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettings struct {
@@ -347,7 +375,25 @@ func (s *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettin
 }
 
 func (s *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettings) Validate() error {
-	return dara.Validate(s)
+	if s.NotificationChannels != nil {
+		for _, item := range s.NotificationChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NotificationReceivers != nil {
+		for _, item := range s.NotificationReceivers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationChannels struct {

@@ -53,7 +53,12 @@ func (s *ListCertificatesResponseBody) SetRequestId(v string) *ListCertificatesR
 }
 
 func (s *ListCertificatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCertificatesResponseBodyPagingInfo struct {
@@ -124,7 +129,16 @@ func (s *ListCertificatesResponseBodyPagingInfo) SetTotalCount(v int32) *ListCer
 }
 
 func (s *ListCertificatesResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Certificates != nil {
+		for _, item := range s.Certificates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCertificatesResponseBodyPagingInfoCertificates struct {

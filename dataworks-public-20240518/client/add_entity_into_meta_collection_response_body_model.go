@@ -14,7 +14,7 @@ type iAddEntityIntoMetaCollectionResponseBody interface {
 }
 
 type AddEntityIntoMetaCollectionResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

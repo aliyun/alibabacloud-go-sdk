@@ -53,7 +53,12 @@ func (s *GetDataQualityEvaluationTaskResponseBody) SetRequestId(v string) *GetDa
 }
 
 func (s *GetDataQualityEvaluationTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataQualityEvaluationTask != nil {
+		if err := s.DataQualityEvaluationTask.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask struct {
@@ -212,7 +217,31 @@ func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask) SetT
 }
 
 func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask) Validate() error {
-	return dara.Validate(s)
+	if s.Hooks != nil {
+		for _, item := range s.Hooks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Notifications != nil {
+		if err := s.Notifications.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Target != nil {
+		if err := s.Target.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Trigger != nil {
+		if err := s.Trigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskHooks struct {
@@ -308,7 +337,16 @@ func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotifi
 }
 
 func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotifications) Validate() error {
-	return dara.Validate(s)
+	if s.Notifications != nil {
+		for _, item := range s.Notifications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotifications struct {
@@ -345,7 +383,25 @@ func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotifi
 }
 
 func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotifications) Validate() error {
-	return dara.Validate(s)
+	if s.NotificationChannels != nil {
+		for _, item := range s.NotificationChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NotificationReceivers != nil {
+		for _, item := range s.NotificationReceivers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationChannels struct {

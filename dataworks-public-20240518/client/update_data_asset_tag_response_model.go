@@ -59,5 +59,10 @@ func (s *UpdateDataAssetTagResponse) SetBody(v *UpdateDataAssetTagResponseBody) 
 }
 
 func (s *UpdateDataAssetTagResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

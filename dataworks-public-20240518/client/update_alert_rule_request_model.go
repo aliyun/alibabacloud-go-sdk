@@ -117,7 +117,17 @@ func (s *UpdateAlertRuleRequest) SetTriggerCondition(v *UpdateAlertRuleRequestTr
 }
 
 func (s *UpdateAlertRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TriggerCondition != nil {
+		if err := s.TriggerCondition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateAlertRuleRequestNotification struct {
@@ -214,7 +224,16 @@ func (s *UpdateAlertRuleRequestNotification) SetSilenceStartTime(v string) *Upda
 }
 
 func (s *UpdateAlertRuleRequestNotification) Validate() error {
-	return dara.Validate(s)
+	if s.Receivers != nil {
+		for _, item := range s.Receivers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateAlertRuleRequestNotificationReceivers struct {
@@ -364,7 +383,17 @@ func (s *UpdateAlertRuleRequestTriggerCondition) SetType(v string) *UpdateAlertR
 }
 
 func (s *UpdateAlertRuleRequestTriggerCondition) Validate() error {
-	return dara.Validate(s)
+	if s.Extension != nil {
+		if err := s.Extension.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Target != nil {
+		if err := s.Target.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateAlertRuleRequestTriggerConditionExtension struct {
@@ -456,7 +485,42 @@ func (s *UpdateAlertRuleRequestTriggerConditionExtension) SetUnFinished(v *Updat
 }
 
 func (s *UpdateAlertRuleRequestTriggerConditionExtension) Validate() error {
-	return dara.Validate(s)
+	if s.CycleUnfinished != nil {
+		if err := s.CycleUnfinished.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Error != nil {
+		if err := s.Error.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceErrorCount != nil {
+		if err := s.InstanceErrorCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceErrorPercentage != nil {
+		if err := s.InstanceErrorPercentage.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceTransferFluctuate != nil {
+		if err := s.InstanceTransferFluctuate.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Timeout != nil {
+		if err := s.Timeout.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UnFinished != nil {
+		if err := s.UnFinished.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinished struct {
@@ -482,7 +546,16 @@ func (s *UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinished) SetCycl
 }
 
 func (s *UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinished) Validate() error {
-	return dara.Validate(s)
+	if s.CycleAndTime != nil {
+		for _, item := range s.CycleAndTime {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime struct {

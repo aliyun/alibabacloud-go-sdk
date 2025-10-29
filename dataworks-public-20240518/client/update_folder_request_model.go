@@ -20,22 +20,30 @@ type iUpdateFolderRequest interface {
 }
 
 type UpdateFolderRequest struct {
+	// The folder ID. You can call the [ListFolders](https://help.aliyun.com/document_detail/173955.html) operation to obtain the folder ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2735c2c19d58
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// The folder name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MySecondFolder
 	FolderName *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
+	// The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID. You must specify either this parameter or the ProjectIdentifier parameter to identify the DataWorks workspace when you call this operation.
+	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The name of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace page to query the workspace name. You must specify either this parameter or the ProjectId parameter to identify the DataWorks workspace when you call this operation.
+	//
 	// example:
 	//
 	// dw_project

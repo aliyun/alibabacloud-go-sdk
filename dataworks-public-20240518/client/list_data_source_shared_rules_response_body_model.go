@@ -53,7 +53,16 @@ func (s *ListDataSourceSharedRulesResponseBody) SetRequestId(v string) *ListData
 }
 
 func (s *ListDataSourceSharedRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataSourceSharedRules != nil {
+		for _, item := range s.DataSourceSharedRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataSourceSharedRulesResponseBodyDataSourceSharedRules struct {

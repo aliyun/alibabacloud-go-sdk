@@ -52,7 +52,7 @@ type CreateWorkflowInstancesRequest struct {
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The runtime configuration.
 	DefaultRunProperties *CreateWorkflowInstancesRequestDefaultRunProperties `json:"DefaultRunProperties,omitempty" xml:"DefaultRunProperties,omitempty" type:"Struct"`
-	// The project environment.
+	// The project environment. Valid values:
 	//
 	// 	- Prod
 	//
@@ -108,11 +108,13 @@ type CreateWorkflowInstancesRequest struct {
 	//
 	// 	- SupplementData: Data backfill. The usage of RootTaskIds and IncludeTaskIds varies based on the backfill mode. See the description of the DefaultRunProperties.Mode parameter.
 	//
-	// 	- ManualWorkflow: Manual workflow. WorkflowId is required for a manual workflow. RootTaskIds is optional. If not specified, the system uses the default root task list of the manual workflow.
+	// 	- ManualWorkflow: Manually triggered workflow. WorkflowId is required for a manual workflow. RootTaskIds is optional. If not specified, the system uses the default root task list of the manual workflow.
 	//
 	// 	- Manual: Manual task. You only need to specify RootTaskIds. This is the list of manual tasks to run.
 	//
 	// 	- SmokeTest: Smoke test. You only need to specify RootTaskIds. This is the list of test tasks to run.
+	//
+	// 	- TriggerWorkflow: Triggered Workflow You must specify the WorkflowId of the triggered workflow. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the entire workflow runs.
 	//
 	// This parameter is required.
 	//
@@ -128,7 +130,7 @@ type CreateWorkflowInstancesRequest struct {
 	//
 	// 1
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
-	// The workflow parameters. This parameter takes effect only when you set the `WorkflowId` parameter to a value other than 1. If your workflow is an auto triggered workflow, configure this parameter in the key=value format. The parameters that you configure in this parameter have a lower priority than task parameters. If your workflow is a manually triggered workflow, configure this parameter in the JSON format. The parameters that you configure in this parameter have a higher priority than task parameters.
+	// The workflow parameters. This parameter takes effect when a specific workflow is specified (`WorkflowId != 1`). For scheduled workflows and triggered workflows, the format is key=value, and these parameters have lower priority than task parameters. For manual workflows, the format is JSON, and these parameters have higher priority than task parameters.
 	//
 	// example:
 	//
@@ -268,13 +270,32 @@ func (s *CreateWorkflowInstancesRequest) SetWorkflowParameters(v string) *Create
 }
 
 func (s *CreateWorkflowInstancesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DefaultRunProperties != nil {
+		if err := s.DefaultRunProperties.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Periods != nil {
+		if err := s.Periods.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateWorkflowInstancesRequestDefaultRunProperties struct {
 	// The alert settings.
 	Alert *CreateWorkflowInstancesRequestDefaultRunPropertiesAlert `json:"Alert,omitempty" xml:"Alert,omitempty" type:"Struct"`
-	// The analysis configuration. Required when Type is set to SupplementData.
+	// The analysis configuration. Required when Type = SupplementData.
 	Analysis *CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
 	// The IDs of the projects not to run.
 	ExcludeProjectIds []*int64 `json:"ExcludeProjectIds,omitempty" xml:"ExcludeProjectIds,omitempty" type:"Repeated"`
@@ -342,7 +363,7 @@ type CreateWorkflowInstancesRequestDefaultRunProperties struct {
 	RootTaskIds []*int64 `json:"RootTaskIds,omitempty" xml:"RootTaskIds,omitempty" type:"Repeated"`
 	// The run policy. If the parameter is left empty, the task configuration is used.
 	RunPolicy *CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy `json:"RunPolicy,omitempty" xml:"RunPolicy,omitempty" type:"Struct"`
-	// Custom scheduling resource group ID. If left empty, the task configuration is used.
+	// The custom scheduling resource group ID. If left empty, the task configuration is used.
 	//
 	// example:
 	//
@@ -485,7 +506,22 @@ func (s *CreateWorkflowInstancesRequestDefaultRunProperties) SetRuntimeResource(
 }
 
 func (s *CreateWorkflowInstancesRequestDefaultRunProperties) Validate() error {
-	return dara.Validate(s)
+	if s.Alert != nil {
+		if err := s.Alert.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Analysis != nil {
+		if err := s.Analysis.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RunPolicy != nil {
+		if err := s.RunPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateWorkflowInstancesRequestDefaultRunPropertiesAlert struct {
@@ -493,7 +529,7 @@ type CreateWorkflowInstancesRequestDefaultRunPropertiesAlert struct {
 	//
 	// 	- Sms: SMS only.
 	//
-	// 	- Mail: mail only.
+	// 	- Mail: Mail only.
 	//
 	// 	- SmsMail: SMS and mail.
 	//
@@ -546,13 +582,13 @@ func (s *CreateWorkflowInstancesRequestDefaultRunPropertiesAlert) Validate() err
 }
 
 type CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis struct {
-	// Specifies whether to block execution if the analysis fails. Required when Type is set to SupplementData.
+	// Specifies whether to block execution if the analysis fails. Required when Type = SupplementData.
 	//
 	// example:
 	//
 	// true
 	Blocked *bool `json:"Blocked,omitempty" xml:"Blocked,omitempty"`
-	// Specifies whether to enable the analysis feature. Required when Type is set to SupplementData.
+	// Specifies whether to enable the analysis feature. Required when Type = SupplementData.
 	//
 	// example:
 	//
@@ -591,7 +627,7 @@ func (s *CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis) Validate() 
 }
 
 type CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy struct {
-	// The end time of running. Configure this parameter in the `hh:mm:ss` format (24-hour clock). This parameter is required if you configure the RunPolicy parameter.
+	// The end time of running. Configure this parameter in the `hh:mm:ss` format (24-hour clock). This parameter is required if you configure the RunPolicy parameter. Valid values:
 	//
 	// example:
 	//
@@ -728,7 +764,16 @@ func (s *CreateWorkflowInstancesRequestPeriods) SetStartTime(v string) *CreateWo
 }
 
 func (s *CreateWorkflowInstancesRequestPeriods) Validate() error {
-	return dara.Validate(s)
+	if s.BizDates != nil {
+		for _, item := range s.BizDates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateWorkflowInstancesRequestPeriodsBizDates struct {

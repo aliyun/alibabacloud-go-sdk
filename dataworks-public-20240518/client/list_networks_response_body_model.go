@@ -70,7 +70,12 @@ func (s *ListNetworksResponseBody) SetSuccess(v bool) *ListNetworksResponseBody 
 }
 
 func (s *ListNetworksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListNetworksResponseBodyPagingInfo struct {
@@ -141,7 +146,16 @@ func (s *ListNetworksResponseBodyPagingInfo) SetTotalCount(v int32) *ListNetwork
 }
 
 func (s *ListNetworksResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkList != nil {
+		for _, item := range s.NetworkList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNetworksResponseBodyPagingInfoNetworkList struct {

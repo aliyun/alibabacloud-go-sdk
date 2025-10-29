@@ -53,7 +53,12 @@ func (s *GetDataQualityRuleTemplateResponseBody) SetRequestId(v string) *GetData
 }
 
 func (s *GetDataQualityRuleTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataQualityRuleTemplate != nil {
+		if err := s.DataQualityRuleTemplate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate struct {
@@ -169,7 +174,17 @@ func (s *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate) SetVisib
 }
 
 func (s *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate) Validate() error {
-	return dara.Validate(s)
+	if s.CheckingConfig != nil {
+		if err := s.CheckingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SamplingConfig != nil {
+		if err := s.SamplingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateCheckingConfig struct {

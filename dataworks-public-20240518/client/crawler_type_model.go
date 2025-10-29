@@ -65,7 +65,16 @@ func (s *CrawlerType) SetType(v string) *CrawlerType {
 }
 
 func (s *CrawlerType) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedEntityTypes != nil {
+		for _, item := range s.SupportedEntityTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CrawlerTypeSupportedEntityTypes struct {

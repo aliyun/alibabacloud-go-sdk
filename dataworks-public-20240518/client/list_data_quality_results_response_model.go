@@ -59,5 +59,10 @@ func (s *ListDataQualityResultsResponse) SetBody(v *ListDataQualityResultsRespon
 }
 
 func (s *ListDataQualityResultsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

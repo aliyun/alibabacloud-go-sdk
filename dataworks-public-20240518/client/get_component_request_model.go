@@ -16,12 +16,16 @@ type iGetComponentRequest interface {
 }
 
 type GetComponentRequest struct {
+	// The component ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1112312312312
 	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
+	// The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID. You must configure either this parameter or the ProjectIdentifier parameter to determine the DataWorks workspace to which the operation is applied.
+	//
 	// example:
 	//
 	// 10000

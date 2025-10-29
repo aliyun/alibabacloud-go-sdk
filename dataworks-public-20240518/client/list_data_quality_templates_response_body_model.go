@@ -53,7 +53,12 @@ func (s *ListDataQualityTemplatesResponseBody) SetRequestId(v string) *ListDataQ
 }
 
 func (s *ListDataQualityTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataQualityTemplatesResponseBodyPageInfo struct {
@@ -124,7 +129,16 @@ func (s *ListDataQualityTemplatesResponseBodyPageInfo) SetTotalCount(v int32) *L
 }
 
 func (s *ListDataQualityTemplatesResponseBodyPageInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DataQualityTemplates != nil {
+		for _, item := range s.DataQualityTemplates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataQualityTemplatesResponseBodyPageInfoDataQualityTemplates struct {

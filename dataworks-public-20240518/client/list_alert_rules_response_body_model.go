@@ -53,7 +53,12 @@ func (s *ListAlertRulesResponseBody) SetRequestId(v string) *ListAlertRulesRespo
 }
 
 func (s *ListAlertRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAlertRulesResponseBodyPagingInfo struct {
@@ -124,7 +129,16 @@ func (s *ListAlertRulesResponseBodyPagingInfo) SetTotalCount(v int32) *ListAlert
 }
 
 func (s *ListAlertRulesResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.AlertRules != nil {
+		for _, item := range s.AlertRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAlertRulesResponseBodyPagingInfoAlertRules struct {
@@ -210,7 +224,12 @@ func (s *ListAlertRulesResponseBodyPagingInfoAlertRules) SetTriggerCondition(v *
 }
 
 func (s *ListAlertRulesResponseBodyPagingInfoAlertRules) Validate() error {
-	return dara.Validate(s)
+	if s.TriggerCondition != nil {
+		if err := s.TriggerCondition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerCondition struct {
@@ -288,7 +307,17 @@ func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerCondition) SetType
 }
 
 func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerCondition) Validate() error {
-	return dara.Validate(s)
+	if s.Extension != nil {
+		if err := s.Extension.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Target != nil {
+		if err := s.Target.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension struct {
@@ -380,7 +409,42 @@ func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension
 }
 
 func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension) Validate() error {
-	return dara.Validate(s)
+	if s.CycleUnfinished != nil {
+		if err := s.CycleUnfinished.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Error != nil {
+		if err := s.Error.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceErrorCount != nil {
+		if err := s.InstanceErrorCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceErrorPercentage != nil {
+		if err := s.InstanceErrorPercentage.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceTransferFluctuate != nil {
+		if err := s.InstanceTransferFluctuate.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Timeout != nil {
+		if err := s.Timeout.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UnFinished != nil {
+		if err := s.UnFinished.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinished struct {
@@ -406,7 +470,16 @@ func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension
 }
 
 func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinished) Validate() error {
-	return dara.Validate(s)
+	if s.CycleAndTime != nil {
+		for _, item := range s.CycleAndTime {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinishedCycleAndTime struct {

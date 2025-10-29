@@ -18,11 +18,16 @@ type iListCatalogsResponseBody interface {
 }
 
 type ListCatalogsResponseBody struct {
+	// The pagination result.
 	PagingInfo *ListCatalogsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 317CD7D0-AB36-XXXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -65,19 +70,31 @@ func (s *ListCatalogsResponseBody) SetSuccess(v bool) *ListCatalogsResponseBody 
 }
 
 func (s *ListCatalogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCatalogsResponseBodyPagingInfo struct {
+	// The catalog.
 	Catalogs []*Catalog `json:"Catalogs,omitempty" xml:"Catalogs,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -129,5 +146,14 @@ func (s *ListCatalogsResponseBodyPagingInfo) SetTotalCount(v int64) *ListCatalog
 }
 
 func (s *ListCatalogsResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Catalogs != nil {
+		for _, item := range s.Catalogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

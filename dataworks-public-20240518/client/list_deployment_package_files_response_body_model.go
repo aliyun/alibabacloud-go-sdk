@@ -53,7 +53,12 @@ func (s *ListDeploymentPackageFilesResponseBody) SetRequestId(v string) *ListDep
 }
 
 func (s *ListDeploymentPackageFilesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDeploymentPackageFilesResponseBodyPagingInfo struct {
@@ -124,7 +129,16 @@ func (s *ListDeploymentPackageFilesResponseBodyPagingInfo) SetTotalCount(v int32
 }
 
 func (s *ListDeploymentPackageFilesResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DeploymentPackageFiles != nil {
+		for _, item := range s.DeploymentPackageFiles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles struct {

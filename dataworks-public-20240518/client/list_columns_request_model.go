@@ -26,31 +26,51 @@ type iListColumnsRequest interface {
 }
 
 type ListColumnsRequest struct {
+	// The comment. Fuzzy match is supported.
+	//
 	// example:
 	//
 	// test comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The name. Fuzzy match is supported.
+	//
 	// example:
 	//
 	// test_table
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The sort order. Default value: Asc. Valid values:
+	//
+	// 	- Asc
+	//
+	// 	- Desc
+	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sort field. Default value: Position. Valid values:
+	//
+	// 	- Name
+	//
+	// 	- Position
+	//
 	// example:
 	//
 	// Position
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The ID of the table to which the columns belong. You can call the ListTables operation to query the ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+	// The table ID. You can refer to the return result of the ListTables operation. and the [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
 	//
 	// This parameter is required.
 	//

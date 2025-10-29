@@ -176,7 +176,35 @@ func (s *DataQualityEvaluationTask) SetTrigger(v *DataQualityEvaluationTaskTrigg
 }
 
 func (s *DataQualityEvaluationTask) Validate() error {
-	return dara.Validate(s)
+	if s.Hooks != nil {
+		for _, item := range s.Hooks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Notifications != nil {
+		for _, item := range s.Notifications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Target != nil {
+		if err := s.Target.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Trigger != nil {
+		if err := s.Trigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DataQualityEvaluationTaskHooks struct {
@@ -255,7 +283,16 @@ func (s *DataQualityEvaluationTaskNotifications) SetNotifications(v []*DataQuali
 }
 
 func (s *DataQualityEvaluationTaskNotifications) Validate() error {
-	return dara.Validate(s)
+	if s.Notifications != nil {
+		for _, item := range s.Notifications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DataQualityEvaluationTaskNotificationsNotifications struct {
@@ -290,7 +327,25 @@ func (s *DataQualityEvaluationTaskNotificationsNotifications) SetNotificationRec
 }
 
 func (s *DataQualityEvaluationTaskNotificationsNotifications) Validate() error {
-	return dara.Validate(s)
+	if s.NotificationChannels != nil {
+		for _, item := range s.NotificationChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NotificationReceivers != nil {
+		for _, item := range s.NotificationReceivers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DataQualityEvaluationTaskNotificationsNotificationsNotificationChannels struct {

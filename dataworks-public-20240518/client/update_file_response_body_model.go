@@ -22,22 +22,36 @@ type iUpdateFileResponseBody interface {
 }
 
 type UpdateFileResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// Invalid.Tenant.ConnectionNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The connection does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID. Use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// 0000-ABCD-EFGH-IJKLMNOPQ
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call succeeded. Valid values:
+	//
+	// 	- true: The call succeeded.
+	//
+	// 	- false: The call failed.
+	//
 	// example:
 	//
 	// true

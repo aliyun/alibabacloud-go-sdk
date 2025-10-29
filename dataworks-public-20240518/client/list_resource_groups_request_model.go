@@ -203,7 +203,16 @@ func (s *ListResourceGroupsRequest) SetStatuses(v []*string) *ListResourceGroups
 }
 
 func (s *ListResourceGroupsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AliyunResourceTags != nil {
+		for _, item := range s.AliyunResourceTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourceGroupsRequestAliyunResourceTags struct {

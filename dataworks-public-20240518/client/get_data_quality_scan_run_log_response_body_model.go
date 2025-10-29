@@ -53,7 +53,12 @@ func (s *GetDataQualityScanRunLogResponseBody) SetRequestId(v string) *GetDataQu
 }
 
 func (s *GetDataQualityScanRunLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LogSegment != nil {
+		if err := s.LogSegment.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityScanRunLogResponseBodyLogSegment struct {

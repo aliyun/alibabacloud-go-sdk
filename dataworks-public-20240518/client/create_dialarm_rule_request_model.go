@@ -171,7 +171,21 @@ func (s *CreateDIAlarmRuleRequest) SetTriggerConditions(v []*CreateDIAlarmRuleRe
 }
 
 func (s *CreateDIAlarmRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.NotificationSettings != nil {
+		if err := s.NotificationSettings.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TriggerConditions != nil {
+		for _, item := range s.TriggerConditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDIAlarmRuleRequestNotificationSettings struct {
@@ -240,7 +254,25 @@ func (s *CreateDIAlarmRuleRequestNotificationSettings) SetNotificationReceivers(
 }
 
 func (s *CreateDIAlarmRuleRequestNotificationSettings) Validate() error {
-	return dara.Validate(s)
+	if s.NotificationChannels != nil {
+		for _, item := range s.NotificationChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NotificationReceivers != nil {
+		for _, item := range s.NotificationReceivers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels struct {

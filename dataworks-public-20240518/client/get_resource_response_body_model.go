@@ -53,7 +53,12 @@ func (s *GetResourceResponseBody) SetResource(v *GetResourceResponseBodyResource
 }
 
 func (s *GetResourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		if err := s.Resource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResourceResponseBodyResource struct {

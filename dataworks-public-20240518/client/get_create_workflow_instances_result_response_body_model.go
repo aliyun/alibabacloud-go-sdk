@@ -53,7 +53,12 @@ func (s *GetCreateWorkflowInstancesResultResponseBody) SetResult(v *GetCreateWor
 }
 
 func (s *GetCreateWorkflowInstancesResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCreateWorkflowInstancesResultResponseBodyResult struct {
@@ -76,7 +81,8 @@ type GetCreateWorkflowInstancesResultResponseBodyResult struct {
 	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The workflow instance IDs. This parameter is returned only if the creation is successful.
-	WorkflowInstanceIds []*int64 `json:"WorkflowInstanceIds,omitempty" xml:"WorkflowInstanceIds,omitempty" type:"Repeated"`
+	WorkflowInstanceIds     []*int64 `json:"WorkflowInstanceIds,omitempty" xml:"WorkflowInstanceIds,omitempty" type:"Repeated"`
+	WorkflowTaskInstanceIds []*int64 `json:"WorkflowTaskInstanceIds,omitempty" xml:"WorkflowTaskInstanceIds,omitempty" type:"Repeated"`
 }
 
 func (s GetCreateWorkflowInstancesResultResponseBodyResult) String() string {
@@ -99,6 +105,10 @@ func (s *GetCreateWorkflowInstancesResultResponseBodyResult) GetWorkflowInstance
 	return s.WorkflowInstanceIds
 }
 
+func (s *GetCreateWorkflowInstancesResultResponseBodyResult) GetWorkflowTaskInstanceIds() []*int64 {
+	return s.WorkflowTaskInstanceIds
+}
+
 func (s *GetCreateWorkflowInstancesResultResponseBodyResult) SetFailureMessage(v string) *GetCreateWorkflowInstancesResultResponseBodyResult {
 	s.FailureMessage = &v
 	return s
@@ -111,6 +121,11 @@ func (s *GetCreateWorkflowInstancesResultResponseBodyResult) SetStatus(v string)
 
 func (s *GetCreateWorkflowInstancesResultResponseBodyResult) SetWorkflowInstanceIds(v []*int64) *GetCreateWorkflowInstancesResultResponseBodyResult {
 	s.WorkflowInstanceIds = v
+	return s
+}
+
+func (s *GetCreateWorkflowInstancesResultResponseBodyResult) SetWorkflowTaskInstanceIds(v []*int64) *GetCreateWorkflowInstancesResultResponseBodyResult {
+	s.WorkflowTaskInstanceIds = v
 	return s
 }
 

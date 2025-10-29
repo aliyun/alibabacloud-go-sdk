@@ -53,7 +53,12 @@ func (s *ListDIJobsResponseBody) SetRequestId(v string) *ListDIJobsResponseBody 
 }
 
 func (s *ListDIJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDIJobsResponseBodyPagingInfo struct {
@@ -124,7 +129,16 @@ func (s *ListDIJobsResponseBodyPagingInfo) SetTotalCount(v int64) *ListDIJobsRes
 }
 
 func (s *ListDIJobsResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DIJobs != nil {
+		for _, item := range s.DIJobs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDIJobsResponseBodyPagingInfoDIJobs struct {

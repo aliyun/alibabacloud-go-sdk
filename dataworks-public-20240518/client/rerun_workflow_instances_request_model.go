@@ -218,7 +218,12 @@ func (s *RerunWorkflowInstancesRequest) SetWorkflowId(v int64) *RerunWorkflowIns
 }
 
 func (s *RerunWorkflowInstancesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		if err := s.Filter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RerunWorkflowInstancesRequestFilter struct {

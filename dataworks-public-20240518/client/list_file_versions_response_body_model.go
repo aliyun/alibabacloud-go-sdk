@@ -24,23 +24,38 @@ type iListFileVersionsResponseBody interface {
 }
 
 type ListFileVersionsResponseBody struct {
+	// The list of file versions.
 	Data *ListFileVersionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// Invalid.Tenant.ConnectionNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The connection does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call succeeded. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -110,19 +125,31 @@ func (s *ListFileVersionsResponseBody) SetSuccess(v bool) *ListFileVersionsRespo
 }
 
 func (s *ListFileVersionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListFileVersionsResponseBodyData struct {
+	// The list of file version details.
 	FileVersions []*ListFileVersionsResponseBodyDataFileVersions `json:"FileVersions,omitempty" xml:"FileVersions,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries on the current page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 13
@@ -174,58 +201,97 @@ func (s *ListFileVersionsResponseBodyData) SetTotalCount(v int32) *ListFileVersi
 }
 
 func (s *ListFileVersionsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.FileVersions != nil {
+		for _, item := range s.FileVersions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFileVersionsResponseBodyDataFileVersions struct {
+	// The change type for this file version. Valid values: CREATE, UPDATE, and DELETE.
+	//
 	// example:
 	//
 	// UPDATE
 	ChangeType *string `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
+	// The description of this file version.
+	//
 	// example:
 	//
 	// Second version submission
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The timestamp (in milliseconds) when the file version was created.
+	//
 	// example:
 	//
 	// 1593881265000
 	CommitTime *int64 `json:"CommitTime,omitempty" xml:"CommitTime,omitempty"`
+	// The Alibaba Cloud account ID of the user who created this file version.
+	//
 	// example:
 	//
 	// 73842342****
 	CommitUser *string `json:"CommitUser,omitempty" xml:"CommitUser,omitempty"`
+	// The file code for this version.
+	//
 	// example:
 	//
 	// SHOW TABLES;
 	FileContent *string `json:"FileContent,omitempty" xml:"FileContent,omitempty"`
+	// The file name for this file version.
+	//
 	// example:
 	//
 	// ods_user_info_d
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The text information for this file version.
+	//
 	// example:
 	//
 	// {"fileName":"ods_user_info_d","fileType":10}
 	FilePropertyContent *string `json:"FilePropertyContent,omitempty" xml:"FilePropertyContent,omitempty"`
+	// The file version.
+	//
 	// example:
 	//
 	// 2
 	FileVersion *int32 `json:"FileVersion,omitempty" xml:"FileVersion,omitempty"`
+	// Indicates whether this file version is the latest version in the production environment.
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// false
 	IsCurrentProd *bool `json:"IsCurrentProd,omitempty" xml:"IsCurrentProd,omitempty"`
+	// The scheduling configuration for this file version.
+	//
 	// example:
 	//
 	// {"cycleType":0,"cronExpress":"00 05 00 	- 	- ?"}
 	NodeContent *string `json:"NodeContent,omitempty" xml:"NodeContent,omitempty"`
+	// The scheduling task ID associated with this file version.
+	//
 	// example:
 	//
 	// 1234
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The current status of the file version. Valid values: COMMITTING (committing), COMMITTED or CHECK_OK (committed), PACKAGED (ready for deployment), DEPLOYING (deploying), DEPLOYED (deployed), and CANCELLED (deployment canceled).
+	//
 	// example:
 	//
 	// COMMITTED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The functional module to which the file belongs. Valid values: NORMAL (Data Studio), MANUAL (manual task), MANUAL_BIZ (manual workflow), SKIP (dry-run scheduling in Data Studio), ADHOCQUERY (ad hoc query), and COMPONENT (component management).
+	//
 	// example:
 	//
 	// NORMAL

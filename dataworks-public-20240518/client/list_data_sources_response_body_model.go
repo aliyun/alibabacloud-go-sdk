@@ -53,7 +53,12 @@ func (s *ListDataSourcesResponseBody) SetRequestId(v string) *ListDataSourcesRes
 }
 
 func (s *ListDataSourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataSourcesResponseBodyPagingInfo struct {
@@ -124,7 +129,16 @@ func (s *ListDataSourcesResponseBodyPagingInfo) SetTotalCount(v int64) *ListData
 }
 
 func (s *ListDataSourcesResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DataSources != nil {
+		for _, item := range s.DataSources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataSourcesResponseBodyPagingInfoDataSources struct {
@@ -180,7 +194,16 @@ func (s *ListDataSourcesResponseBodyPagingInfoDataSources) SetType(v string) *Li
 }
 
 func (s *ListDataSourcesResponseBodyPagingInfoDataSources) Validate() error {
-	return dara.Validate(s)
+	if s.DataSource != nil {
+		for _, item := range s.DataSource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource struct {

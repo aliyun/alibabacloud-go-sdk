@@ -18,7 +18,9 @@ type iCreateLineageRelationshipRequest interface {
 }
 
 type CreateLineageRelationshipRequest struct {
+	// The destination entity.
 	DstEntity *LineageEntity `json:"DstEntity,omitempty" xml:"DstEntity,omitempty"`
+	// The source entity.
 	SrcEntity *LineageEntity `json:"SrcEntity,omitempty" xml:"SrcEntity,omitempty"`
 	// The task information.
 	Task *LineageTask `json:"Task,omitempty" xml:"Task,omitempty"`
@@ -60,5 +62,20 @@ func (s *CreateLineageRelationshipRequest) SetTask(v *LineageTask) *CreateLineag
 }
 
 func (s *CreateLineageRelationshipRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DstEntity != nil {
+		if err := s.DstEntity.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SrcEntity != nil {
+		if err := s.SrcEntity.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Task != nil {
+		if err := s.Task.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

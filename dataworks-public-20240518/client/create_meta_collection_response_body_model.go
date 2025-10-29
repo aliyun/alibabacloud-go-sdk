@@ -16,13 +16,13 @@ type iCreateMetaCollectionResponseBody interface {
 }
 
 type CreateMetaCollectionResponseBody struct {
-	// The ID of the created collection.
+	// The collection ID returned after a successful creation.
 	//
 	// example:
 	//
 	// category.123
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

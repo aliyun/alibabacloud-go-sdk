@@ -53,7 +53,12 @@ func (s *ListDataQualityRuleTemplatesResponseBody) SetRequestId(v string) *ListD
 }
 
 func (s *ListDataQualityRuleTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataQualityRuleTemplatesResponseBodyPagingInfo struct {
@@ -124,7 +129,16 @@ func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfo) SetTotalCount(v int
 }
 
 func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DataQualityRuleTemplates != nil {
+		for _, item := range s.DataQualityRuleTemplates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates struct {
@@ -240,7 +254,17 @@ func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTempla
 }
 
 func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates) Validate() error {
-	return dara.Validate(s)
+	if s.CheckingConfig != nil {
+		if err := s.CheckingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SamplingConfig != nil {
+		if err := s.SamplingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig struct {

@@ -55,7 +55,12 @@ func (s *GetIDEEventDetailResponseBody) SetRequestId(v string) *GetIDEEventDetai
 }
 
 func (s *GetIDEEventDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EventDetail != nil {
+		if err := s.EventDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetIDEEventDetailResponseBodyEventDetail struct {
@@ -116,7 +121,27 @@ func (s *GetIDEEventDetailResponseBodyEventDetail) SetTableModel(v *GetIDEEventD
 }
 
 func (s *GetIDEEventDetailResponseBodyEventDetail) Validate() error {
-	return dara.Validate(s)
+	if s.CommittedFile != nil {
+		if err := s.CommittedFile.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeletedFile != nil {
+		if err := s.DeletedFile.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FileExecutionCommand != nil {
+		if err := s.FileExecutionCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TableModel != nil {
+		if err := s.TableModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetIDEEventDetailResponseBodyEventDetailCommittedFile struct {
@@ -300,7 +325,17 @@ func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFile) SetUseType(v str
 }
 
 func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFile) Validate() error {
-	return dara.Validate(s)
+	if s.FilePropertyContent != nil {
+		if err := s.FilePropertyContent.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeConfiguration != nil {
+		if err := s.NodeConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent struct {
@@ -622,7 +657,25 @@ func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration)
 }
 
 func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration) Validate() error {
-	return dara.Validate(s)
+	if s.InputList != nil {
+		for _, item := range s.InputList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OutputList != nil {
+		for _, item := range s.OutputList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationInputList struct {
@@ -1124,7 +1177,16 @@ func (s *GetIDEEventDetailResponseBodyEventDetailTableModel) SetTableName(v stri
 }
 
 func (s *GetIDEEventDetailResponseBodyEventDetailTableModel) Validate() error {
-	return dara.Validate(s)
+	if s.Columns != nil {
+		for _, item := range s.Columns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetIDEEventDetailResponseBodyEventDetailTableModelColumns struct {

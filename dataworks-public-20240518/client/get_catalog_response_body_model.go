@@ -18,11 +18,16 @@ type iGetCatalogResponseBody interface {
 }
 
 type GetCatalogResponseBody struct {
+	// Catalog information.
 	Catalog *Catalog `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1AFAE64E-D1BE-432B-A9****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -65,5 +70,10 @@ func (s *GetCatalogResponseBody) SetSuccess(v bool) *GetCatalogResponseBody {
 }
 
 func (s *GetCatalogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Catalog != nil {
+		if err := s.Catalog.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

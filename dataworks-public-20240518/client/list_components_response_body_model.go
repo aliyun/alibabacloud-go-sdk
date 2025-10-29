@@ -16,7 +16,10 @@ type iListComponentsResponseBody interface {
 }
 
 type ListComponentsResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListComponentsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID. Use this ID for troubleshooting.
+	//
 	// example:
 	//
 	// 952795279527ab****
@@ -50,19 +53,31 @@ func (s *ListComponentsResponseBody) SetRequestId(v string) *ListComponentsRespo
 }
 
 func (s *ListComponentsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListComponentsResponseBodyPagingInfo struct {
+	// The UID of the user who created the dataset acceleration component. In Alibaba Cloud, this is the RAM user ID (or the Alibaba Cloud account ID if created by the account itself).
 	Components []*ListComponentsResponseBodyPagingInfoComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -114,53 +129,70 @@ func (s *ListComponentsResponseBodyPagingInfo) SetTotalCount(v int32) *ListCompo
 }
 
 func (s *ListComponentsResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Components != nil {
+		for _, item := range s.Components {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListComponentsResponseBodyPagingInfoComponents struct {
+	// The component ID. This parameter can be used in requests to query, modify, or delete director components.
+	//
 	// example:
 	//
 	// 12312313123
 	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
+	// The creation time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
 	//
 	// 2023-03-13 16:35:59
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 对组件的描述
+	// The description.
 	//
 	// example:
 	//
 	// vpc peering management_staging
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 组件的输入参数列表
+	// The input parameters.
 	Inputs []*ListComponentsResponseBodyPagingInfoComponentsInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	// The timestamp when the publishing process was modified.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
 	//
 	// 2023-11-30T13:30:58Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// 代表资源名称的资源属性字段
+	// The resource name.
 	//
 	// example:
 	//
 	// auto_updateAlertRule_test_lJd81f
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 组件的输出参数列表
+	// The output parameters.
 	Outputs []*ListComponentsResponseBodyPagingInfoComponentsOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
-	// 组件责任人
+	// The owner.
 	//
 	// example:
 	//
 	// 252675537980665607
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The DataWorks workspace ID. To obtain the workspace ID, log on to the DataWorks console and navigate to the workspace configuration page. You must specify either this parameter or ProjectIdentifier to identify the target DataWorks workspace for this API call.
+	//
 	// example:
 	//
 	// 199925
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 工作流的脚本信息
+	// The script information.
 	Script *ListComponentsResponseBodyPagingInfoComponentsScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
 }
 
@@ -263,29 +295,52 @@ func (s *ListComponentsResponseBodyPagingInfoComponents) SetScript(v *ListCompon
 }
 
 func (s *ListComponentsResponseBodyPagingInfoComponents) Validate() error {
-	return dara.Validate(s)
+	if s.Inputs != nil {
+		for _, item := range s.Inputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Outputs != nil {
+		for _, item := range s.Outputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Script != nil {
+		if err := s.Script.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListComponentsResponseBodyPagingInfoComponentsInputs struct {
-	// 输入参数的默认值
+	// The default value of the variable.
 	//
 	// example:
 	//
 	// mdb.shard.2x.2xlarge.d
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// 输入参数的描述信息
+	// The parameter description.
 	//
 	// example:
 	//
 	// None
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 输入参数的名称
+	// The parameter name.
 	//
 	// example:
 	//
 	// auto_updateAlertRule_test_bULIRo
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 输入参数的数据类型
+	// The parameter type.
 	//
 	// example:
 	//
@@ -342,25 +397,25 @@ func (s *ListComponentsResponseBodyPagingInfoComponentsInputs) Validate() error 
 }
 
 type ListComponentsResponseBodyPagingInfoComponentsOutputs struct {
-	// 输出参数的默认值
+	// The default value.
 	//
 	// example:
 	//
 	// 32000
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// 输出参数的描述信息
+	// The parameter description.
 	//
 	// example:
 	//
 	// zdy
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 输出参数的名称
+	// The parameter name.
 	//
 	// example:
 	//
 	// auto_updateAlertRule_test_bULIRo
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 输出参数的数据类型
+	// The parameter type.
 	//
 	// example:
 	//
@@ -423,13 +478,13 @@ type ListComponentsResponseBodyPagingInfoComponentsScript struct {
 	//
 	// 348100
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 脚本路径
+	// The script path.
 	//
 	// example:
 	//
 	// /
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// 脚本的运行时信息
+	// The runtime.
 	Runtime *ListComponentsResponseBodyPagingInfoComponentsScriptRuntime `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
 }
 
@@ -469,11 +524,16 @@ func (s *ListComponentsResponseBodyPagingInfoComponentsScript) SetRuntime(v *Lis
 }
 
 func (s *ListComponentsResponseBodyPagingInfoComponentsScript) Validate() error {
-	return dara.Validate(s)
+	if s.Runtime != nil {
+		if err := s.Runtime.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListComponentsResponseBodyPagingInfoComponentsScriptRuntime struct {
-	// 脚本所属类型
+	// The command.
 	//
 	// example:
 	//

@@ -53,7 +53,12 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBody) SetRequestId(v string
 }
 
 func (s *GetDataQualityEvaluationTaskInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataQualityEvaluationTaskInstance != nil {
+		if err := s.DataQualityEvaluationTaskInstance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance struct {
@@ -210,7 +215,21 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Task != nil {
+		if err := s.Task.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults struct {
@@ -295,7 +314,21 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults) Validate() error {
-	return dara.Validate(s)
+	if s.Details != nil {
+		for _, item := range s.Details {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Rule != nil {
+		if err := s.Rule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsDetails struct {
@@ -465,7 +498,31 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule) Validate() error {
-	return dara.Validate(s)
+	if s.CheckingConfig != nil {
+		if err := s.CheckingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ErrorHandlers != nil {
+		for _, item := range s.ErrorHandlers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SamplingConfig != nil {
+		if err := s.SamplingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Target != nil {
+		if err := s.Target.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfig struct {
@@ -510,7 +567,12 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Thresholds != nil {
+		if err := s.Thresholds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholds struct {
@@ -555,7 +617,22 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholds) Validate() error {
-	return dara.Validate(s)
+	if s.Critical != nil {
+		if err := s.Critical.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Expected != nil {
+		if err := s.Expected.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Warned != nil {
+		if err := s.Warned.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsCritical struct {
@@ -967,7 +1044,31 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask) Validate() error {
-	return dara.Validate(s)
+	if s.Hooks != nil {
+		for _, item := range s.Hooks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Notifications != nil {
+		if err := s.Notifications.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Target != nil {
+		if err := s.Target.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Trigger != nil {
+		if err := s.Trigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskHooks struct {
@@ -1063,7 +1164,16 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotifications) Validate() error {
-	return dara.Validate(s)
+	if s.Notifications != nil {
+		for _, item := range s.Notifications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotifications struct {
@@ -1100,7 +1210,25 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotifications) Validate() error {
-	return dara.Validate(s)
+	if s.NotificationChannels != nil {
+		for _, item := range s.NotificationChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NotificationReceivers != nil {
+		for _, item := range s.NotificationReceivers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationChannels struct {

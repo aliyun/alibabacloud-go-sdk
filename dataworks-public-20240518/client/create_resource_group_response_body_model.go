@@ -70,7 +70,12 @@ func (s *CreateResourceGroupResponseBody) SetSuccess(v bool) *CreateResourceGrou
 }
 
 func (s *CreateResourceGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceGroupOrder != nil {
+		if err := s.ResourceGroupOrder.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateResourceGroupResponseBodyResourceGroupOrder struct {

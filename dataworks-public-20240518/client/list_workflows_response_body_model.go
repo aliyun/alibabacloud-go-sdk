@@ -53,7 +53,12 @@ func (s *ListWorkflowsResponseBody) SetRequestId(v string) *ListWorkflowsRespons
 }
 
 func (s *ListWorkflowsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListWorkflowsResponseBodyPagingInfo struct {
@@ -124,7 +129,16 @@ func (s *ListWorkflowsResponseBodyPagingInfo) SetWorkflows(v []*ListWorkflowsRes
 }
 
 func (s *ListWorkflowsResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Workflows != nil {
+		for _, item := range s.Workflows {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWorkflowsResponseBodyPagingInfoWorkflows struct {
@@ -203,8 +217,9 @@ type ListWorkflowsResponseBodyPagingInfoWorkflows struct {
 	// example:
 	//
 	// 100
-	ProjectId *int64                                              `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Tags      []*ListWorkflowsResponseBodyPagingInfoWorkflowsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The task tag.
+	Tags []*ListWorkflowsResponseBodyPagingInfoWorkflowsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The trigger method.
 	Trigger *ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
@@ -344,11 +359,31 @@ func (s *ListWorkflowsResponseBodyPagingInfoWorkflows) SetTrigger(v *ListWorkflo
 }
 
 func (s *ListWorkflowsResponseBodyPagingInfoWorkflows) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Trigger != nil {
+		if err := s.Trigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListWorkflowsResponseBodyPagingInfoWorkflowsTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

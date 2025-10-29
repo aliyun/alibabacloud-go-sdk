@@ -53,7 +53,12 @@ func (s *GetJobStatusResponseBody) SetRequestId(v string) *GetJobStatusResponseB
 }
 
 func (s *GetJobStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.JobStatus != nil {
+		if err := s.JobStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetJobStatusResponseBodyJobStatus struct {

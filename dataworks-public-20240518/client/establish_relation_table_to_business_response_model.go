@@ -59,6 +59,11 @@ func (s *EstablishRelationTableToBusinessResponse) SetBody(v *EstablishRelationT
 }
 
 func (s *EstablishRelationTableToBusinessResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

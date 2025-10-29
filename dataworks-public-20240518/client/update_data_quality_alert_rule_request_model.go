@@ -100,7 +100,17 @@ func (s *UpdateDataQualityAlertRuleRequest) SetTarget(v *UpdateDataQualityAlertR
 }
 
 func (s *UpdateDataQualityAlertRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Target != nil {
+		if err := s.Target.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateDataQualityAlertRuleRequestNotification struct {
@@ -139,7 +149,16 @@ func (s *UpdateDataQualityAlertRuleRequestNotification) SetReceivers(v []*Update
 }
 
 func (s *UpdateDataQualityAlertRuleRequestNotification) Validate() error {
-	return dara.Validate(s)
+	if s.Receivers != nil {
+		for _, item := range s.Receivers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateDataQualityAlertRuleRequestNotificationReceivers struct {

@@ -53,7 +53,12 @@ func (s *ListPipelineRunsResponseBody) SetRequestId(v string) *ListPipelineRunsR
 }
 
 func (s *ListPipelineRunsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPipelineRunsResponseBodyPagingInfo struct {
@@ -124,7 +129,16 @@ func (s *ListPipelineRunsResponseBodyPagingInfo) SetTotalCount(v int32) *ListPip
 }
 
 func (s *ListPipelineRunsResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.PipelineRuns != nil {
+		for _, item := range s.PipelineRuns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPipelineRunsResponseBodyPagingInfoPipelineRuns struct {
@@ -269,7 +283,16 @@ func (s *ListPipelineRunsResponseBodyPagingInfoPipelineRuns) SetStatus(v string)
 }
 
 func (s *ListPipelineRunsResponseBodyPagingInfoPipelineRuns) Validate() error {
-	return dara.Validate(s)
+	if s.Stages != nil {
+		for _, item := range s.Stages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPipelineRunsResponseBodyPagingInfoPipelineRunsStages struct {

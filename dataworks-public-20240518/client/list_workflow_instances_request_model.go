@@ -94,15 +94,15 @@ type ListWorkflowInstancesRequest struct {
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The type of the workflow instance. Valid values:
 	//
-	// 	- Normal
+	// 	- Normal: Scheduled execution
 	//
-	// 	- Manual
+	// 	- Manual: Manually triggered node
 	//
-	// 	- SmokeTest
+	// 	- SmokeTest: Smoke test
 	//
-	// 	- SupplementData
+	// 	- SupplementData: Data backfill
 	//
-	// 	- ManualWorkflow
+	// 	- ManualWorkflow: Manually triggered workflow
 	//
 	// example:
 	//

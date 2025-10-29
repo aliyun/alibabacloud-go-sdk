@@ -32,48 +32,77 @@ type iListMetaCollectionsRequest interface {
 }
 
 type ListMetaCollectionsRequest struct {
+	// The administrator ID. Valid only for album types. Default: The current user ID.
+	//
 	// example:
 	//
 	// 12345
 	Administrator *string `json:"Administrator,omitempty" xml:"Administrator,omitempty"`
+	// The creator user ID. Valid only for album types. Default: The current user ID.
+	//
 	// example:
 	//
 	// 123456
-	CreateUser  *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The collection description. Supports fuzzy matching.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The collection name. Supports fuzzy matching.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The sort order. Valid values:
+	//
+	// 	- Asc (default): Ascending order
+	//
+	// 	- Desc
+	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Default: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default: 10. Maximum: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the collection of an ancestor node.
+	// The ID of the parent collection.
 	//
 	// example:
 	//
 	// category.123
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The sort field. Valid values:
+	//
+	// 	- Id (default)
+	//
+	// 	- Name
+	//
+	// 	- CreateUser: Creator ID
+	//
+	// 	- CreateTime: Creation time
+	//
+	// 	- ModifyTime: Modification time
+	//
 	// example:
 	//
 	// Name
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The type of the collection. Valid values:
+	// The collection type. Valid values:
 	//
 	// 	- Category
 	//
 	// 	- Album
 	//
-	// 	- AlbumCategory
+	// 	- AlbumCategory: Album subcategory
 	//
 	// This parameter is required.
 	//

@@ -16,7 +16,10 @@ type iListDeploymentPackagesResponseBody interface {
 }
 
 type ListDeploymentPackagesResponseBody struct {
+	// The list of deployment packages that meet the query conditions.
 	Data *ListDeploymentPackagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 952795279527ab****
@@ -50,19 +53,31 @@ func (s *ListDeploymentPackagesResponseBody) SetRequestId(v string) *ListDeploym
 }
 
 func (s *ListDeploymentPackagesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDeploymentPackagesResponseBodyData struct {
+	// The returned list of deployment packages.
 	Deployments []*ListDeploymentPackagesResponseBodyDataDeployments `json:"Deployments,omitempty" xml:"Deployments,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of records that meet the conditions.
+	//
 	// example:
 	//
 	// 20
@@ -114,38 +129,71 @@ func (s *ListDeploymentPackagesResponseBodyData) SetTotalCount(v int64) *ListDep
 }
 
 func (s *ListDeploymentPackagesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Deployments != nil {
+		for _, item := range s.Deployments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDeploymentPackagesResponseBodyDataDeployments struct {
+	// The timestamp when the deployment package was created.
+	//
 	// example:
 	//
 	// 1593877765000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The Alibaba Cloud account ID of the deployment package creator.
+	//
 	// example:
 	//
 	// 2003****
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// When the deployment package fails to execute, this parameter is used to record the error message.
+	//
 	// example:
 	//
 	// OK
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The timestamp when the deployment package was executed.
+	//
 	// example:
 	//
 	// 1593877765000
 	ExecuteTime *int64 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	// The Alibaba Cloud account ID of the deployment package executor.
+	//
 	// example:
 	//
 	// 2003****
 	Executor *string `json:"Executor,omitempty" xml:"Executor,omitempty"`
+	// The ID of the deployment package. You can use this ID to call the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) operation to get the deployment package details.
+	//
 	// example:
 	//
 	// 11111
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the deployment package.
+	//
 	// example:
 	//
 	// auto_created
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The status of the deployment package. Valid values:
+	//
+	// 	- 0: It is ready.
+	//
+	// 	- 1: It was successfully deployed.
+	//
+	// 	- 2: It failed to be deployed.
+	//
+	// 	- 6: It was rejected.
+	//
 	// example:
 	//
 	// 1

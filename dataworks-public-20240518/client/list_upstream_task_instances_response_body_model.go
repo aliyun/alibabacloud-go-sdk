@@ -53,7 +53,12 @@ func (s *ListUpstreamTaskInstancesResponseBody) SetRequestId(v string) *ListUpst
 }
 
 func (s *ListUpstreamTaskInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUpstreamTaskInstancesResponseBodyPagingInfo struct {
@@ -135,7 +140,25 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfo) SetUpstreamTaskInstanc
 }
 
 func (s *ListUpstreamTaskInstancesResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.TaskInstances != nil {
+		for _, item := range s.TaskInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UpstreamTaskInstances != nil {
+		for _, item := range s.UpstreamTaskInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
@@ -706,7 +729,22 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetWorkfl
 }
 
 func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) Validate() error {
-	return dara.Validate(s)
+	if s.DataSource != nil {
+		if err := s.DataSource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Runtime != nil {
+		if err := s.Runtime.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuntimeResource != nil {
+		if err := s.RuntimeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource struct {
@@ -886,7 +924,12 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstances) S
 }
 
 func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstances) Validate() error {
-	return dara.Validate(s)
+	if s.TaskInstance != nil {
+		if err := s.TaskInstance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance struct {
@@ -1413,7 +1456,22 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTas
 }
 
 func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance) Validate() error {
-	return dara.Validate(s)
+	if s.DataSource != nil {
+		if err := s.DataSource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Runtime != nil {
+		if err := s.Runtime.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuntimeResource != nil {
+		if err := s.RuntimeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceDataSource struct {

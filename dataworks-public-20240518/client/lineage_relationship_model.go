@@ -89,5 +89,20 @@ func (s *LineageRelationship) SetTask(v *LineageTask) *LineageRelationship {
 }
 
 func (s *LineageRelationship) Validate() error {
-	return dara.Validate(s)
+	if s.DstEntity != nil {
+		if err := s.DstEntity.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SrcEntity != nil {
+		if err := s.SrcEntity.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Task != nil {
+		if err := s.Task.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

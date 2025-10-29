@@ -59,5 +59,10 @@ func (s *UpdateTableBusinessMetadataResponse) SetBody(v *UpdateTableBusinessMeta
 }
 
 func (s *UpdateTableBusinessMetadataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

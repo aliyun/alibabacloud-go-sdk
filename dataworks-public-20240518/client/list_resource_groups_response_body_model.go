@@ -70,7 +70,12 @@ func (s *ListResourceGroupsResponseBody) SetSuccess(v bool) *ListResourceGroupsR
 }
 
 func (s *ListResourceGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListResourceGroupsResponseBodyPagingInfo struct {
@@ -141,7 +146,16 @@ func (s *ListResourceGroupsResponseBodyPagingInfo) SetTotalCount(v int32) *ListR
 }
 
 func (s *ListResourceGroupsResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceGroupList != nil {
+		for _, item := range s.ResourceGroupList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourceGroupsResponseBodyPagingInfoResourceGroupList struct {
@@ -390,7 +404,21 @@ func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupList) SetStatus(v 
 }
 
 func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupList) Validate() error {
-	return dara.Validate(s)
+	if s.AliyunResourceTags != nil {
+		for _, item := range s.AliyunResourceTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Spec != nil {
+		if err := s.Spec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListResourceGroupsResponseBodyPagingInfoResourceGroupListAliyunResourceTags struct {

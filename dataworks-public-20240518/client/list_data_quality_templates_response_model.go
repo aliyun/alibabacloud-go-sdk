@@ -59,5 +59,10 @@ func (s *ListDataQualityTemplatesResponse) SetBody(v *ListDataQualityTemplatesRe
 }
 
 func (s *ListDataQualityTemplatesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

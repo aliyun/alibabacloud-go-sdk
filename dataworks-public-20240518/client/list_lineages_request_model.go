@@ -30,7 +30,7 @@ type iListLineagesRequest interface {
 }
 
 type ListLineagesRequest struct {
-	// The destination entity ID. For more information, see the table ID or field ID in the response returned by the ListTables or ListColumns operation. You can also specify a custom entity ID.
+	// The destination entity ID. You can refer to the table or column ID returned by the ListTables or ListColumns operation, or use a custom entity ID.
 	//
 	// example:
 	//
@@ -46,31 +46,47 @@ type ListLineagesRequest struct {
 	//
 	// custom-table:table456
 	DstEntityId *string `json:"DstEntityId,omitempty" xml:"DstEntityId,omitempty"`
+	// The destination entity name. Supports fuzzy matching.
+	//
 	// example:
 	//
 	// dstName1
 	DstEntityName *string `json:"DstEntityName,omitempty" xml:"DstEntityName,omitempty"`
+	// Specifies whether to return lineage information.
+	//
 	// example:
 	//
 	// false
 	NeedAttachRelationship *bool `json:"NeedAttachRelationship,omitempty" xml:"NeedAttachRelationship,omitempty"`
+	// The sort order. Default value: Asc. Valid values:
+	//
+	// 	- Asc
+	//
+	// 	- Desc
+	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sort field. Default value: Name.
+	//
 	// example:
 	//
 	// Name
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The source entity ID. For more information, see the table ID or field ID in the response returned by the ListTables or ListColumns operation. You can also specify a custom entity ID.
+	// The source entity ID. You can refer to the table or column ID returned by the ListTables or ListColumns operation, or use a custom entity ID.
 	//
 	// example:
 	//
@@ -86,6 +102,8 @@ type ListLineagesRequest struct {
 	//
 	// custom-table:table456
 	SrcEntityId *string `json:"SrcEntityId,omitempty" xml:"SrcEntityId,omitempty"`
+	// The source entity name. Supports fuzzy matching.
+	//
 	// example:
 	//
 	// srcName1

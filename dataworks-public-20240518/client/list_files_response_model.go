@@ -59,5 +59,10 @@ func (s *ListFilesResponse) SetBody(v *ListFilesResponseBody) *ListFilesResponse
 }
 
 func (s *ListFilesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

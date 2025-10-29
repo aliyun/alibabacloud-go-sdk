@@ -70,7 +70,12 @@ func (s *ListRoutesResponseBody) SetSuccess(v bool) *ListRoutesResponseBody {
 }
 
 func (s *ListRoutesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRoutesResponseBodyPagingInfo struct {
@@ -141,7 +146,16 @@ func (s *ListRoutesResponseBodyPagingInfo) SetTotalCount(v int32) *ListRoutesRes
 }
 
 func (s *ListRoutesResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.RouteList != nil {
+		for _, item := range s.RouteList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRoutesResponseBodyPagingInfoRouteList struct {

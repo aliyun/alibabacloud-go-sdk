@@ -59,5 +59,10 @@ func (s *GetRouteResponse) SetBody(v *GetRouteResponseBody) *GetRouteResponse {
 }
 
 func (s *GetRouteResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *StopTaskInstancesResponse) SetBody(v *StopTaskInstancesResponseBody) *S
 }
 
 func (s *StopTaskInstancesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

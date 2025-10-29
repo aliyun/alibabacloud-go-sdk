@@ -53,7 +53,12 @@ func (s *ListDataQualityEvaluationTaskInstancesResponseBody) SetRequestId(v stri
 }
 
 func (s *ListDataQualityEvaluationTaskInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfo struct {
@@ -124,7 +129,16 @@ func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfo) SetTotalC
 }
 
 func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DataQualityEvaluationTaskInstances != nil {
+		for _, item := range s.DataQualityEvaluationTaskInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances struct {
@@ -277,7 +291,12 @@ func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQuality
 }
 
 func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances) Validate() error {
-	return dara.Validate(s)
+	if s.Task != nil {
+		if err := s.Task.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask struct {
@@ -413,7 +432,31 @@ func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQuality
 }
 
 func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask) Validate() error {
-	return dara.Validate(s)
+	if s.Hooks != nil {
+		for _, item := range s.Hooks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Notifications != nil {
+		if err := s.Notifications.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Target != nil {
+		if err := s.Target.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Trigger != nil {
+		if err := s.Trigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskHooks struct {
@@ -501,7 +544,16 @@ func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQuality
 }
 
 func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotifications) Validate() error {
-	return dara.Validate(s)
+	if s.Notifications != nil {
+		for _, item := range s.Notifications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotifications struct {
@@ -538,7 +590,25 @@ func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQuality
 }
 
 func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotifications) Validate() error {
-	return dara.Validate(s)
+	if s.NofiticationReceivers != nil {
+		for _, item := range s.NofiticationReceivers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NotificationChannels != nil {
+		for _, item := range s.NotificationChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNofiticationReceivers struct {

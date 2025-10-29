@@ -170,7 +170,12 @@ func (s *Column) SetType(v string) *Column {
 }
 
 func (s *Column) Validate() error {
-	return dara.Validate(s)
+	if s.BusinessMetadata != nil {
+		if err := s.BusinessMetadata.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ColumnBusinessMetadata struct {

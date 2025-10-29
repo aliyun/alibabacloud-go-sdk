@@ -24,10 +24,14 @@ type CreateLineageRelationshipResponseBody struct {
 	//
 	// 110xxxx:custom-table.xxxxx:maxcompute-table.project.test_big_lineage_080901:custom-sqlxx.00001
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID. The unique identifier of a request.
+	//
 	// example:
 	//
 	// C99E2BE6-9DEA-5C2E-8F51-1DDCFEADE490
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

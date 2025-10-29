@@ -53,7 +53,12 @@ func (s *ListResourcesResponseBody) SetRequestId(v string) *ListResourcesRespons
 }
 
 func (s *ListResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListResourcesResponseBodyPagingInfo struct {
@@ -124,7 +129,16 @@ func (s *ListResourcesResponseBodyPagingInfo) SetTotalCount(v int32) *ListResour
 }
 
 func (s *ListResourcesResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Resources != nil {
+		for _, item := range s.Resources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourcesResponseBodyPagingInfoResources struct {
@@ -350,7 +364,17 @@ func (s *ListResourcesResponseBodyPagingInfoResources) SetType(v string) *ListRe
 }
 
 func (s *ListResourcesResponseBodyPagingInfoResources) Validate() error {
-	return dara.Validate(s)
+	if s.DataSource != nil {
+		if err := s.DataSource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Script != nil {
+		if err := s.Script.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListResourcesResponseBodyPagingInfoResourcesDataSource struct {
@@ -451,7 +475,12 @@ func (s *ListResourcesResponseBodyPagingInfoResourcesScript) SetRuntime(v *ListR
 }
 
 func (s *ListResourcesResponseBodyPagingInfoResourcesScript) Validate() error {
-	return dara.Validate(s)
+	if s.Runtime != nil {
+		if err := s.Runtime.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListResourcesResponseBodyPagingInfoResourcesScriptRuntime struct {

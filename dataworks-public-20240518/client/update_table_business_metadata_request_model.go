@@ -16,7 +16,7 @@ type iUpdateTableBusinessMetadataRequest interface {
 }
 
 type UpdateTableBusinessMetadataRequest struct {
-	// The data table ID. You can call the ListTables operation to query the ID.
+	// The table ID. You can refer to the format of the table ID returned by the ListTables operation.
 	//
 	// This parameter is required.
 	//
@@ -30,6 +30,8 @@ type UpdateTableBusinessMetadataRequest struct {
 	//
 	// holo-table:h-abc123xxx::test_db:test_schema:test_tbl
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The usage notes. The rich text format is supported.
+	//
 	// example:
 	//
 	// ## introduction

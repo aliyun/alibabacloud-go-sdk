@@ -91,7 +91,17 @@ func (s *CreateDataQualityAlertRuleRequest) SetTarget(v *CreateDataQualityAlertR
 }
 
 func (s *CreateDataQualityAlertRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Target != nil {
+		if err := s.Target.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataQualityAlertRuleRequestNotification struct {
@@ -132,7 +142,16 @@ func (s *CreateDataQualityAlertRuleRequestNotification) SetReceivers(v []*Create
 }
 
 func (s *CreateDataQualityAlertRuleRequestNotification) Validate() error {
-	return dara.Validate(s)
+	if s.Receivers != nil {
+		for _, item := range s.Receivers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDataQualityAlertRuleRequestNotificationReceivers struct {

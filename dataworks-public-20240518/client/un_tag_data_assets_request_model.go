@@ -114,7 +114,16 @@ func (s *UnTagDataAssetsRequest) SetTags(v []*UnTagDataAssetsRequestTags) *UnTag
 }
 
 func (s *UnTagDataAssetsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UnTagDataAssetsRequestTags struct {

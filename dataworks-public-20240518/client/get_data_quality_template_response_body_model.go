@@ -53,7 +53,12 @@ func (s *GetDataQualityTemplateResponseBody) SetRequestId(v string) *GetDataQual
 }
 
 func (s *GetDataQualityTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataQualityTemplate != nil {
+		if err := s.DataQualityTemplate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityTemplateResponseBodyDataQualityTemplate struct {

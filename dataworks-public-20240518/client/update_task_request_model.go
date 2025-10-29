@@ -86,7 +86,7 @@ type UpdateTaskRequest struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The input information.
 	Inputs *UpdateTaskRequestInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
-	// The instance generation mode. Valid values:
+	// The instance generation mode.
 	//
 	// 	- T+1: the next day
 	//
@@ -110,7 +110,7 @@ type UpdateTaskRequest struct {
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The rerun interval. Unit: seconds.
+	// The rerun interval. Unit: milliseconds. Must not exceed 1800000.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type UpdateTaskRequest struct {
 	Script *UpdateTaskRequestScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
 	// The tags.
 	Tags []*UpdateTaskRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The timeout period of task running. Unit: seconds.
+	// Task execution timeout in seconds. Must be greater than 3600.
 	//
 	// example:
 	//
@@ -330,7 +330,55 @@ func (s *UpdateTaskRequest) SetTrigger(v *UpdateTaskRequestTrigger) *UpdateTaskR
 }
 
 func (s *UpdateTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DataSource != nil {
+		if err := s.DataSource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Dependencies != nil {
+		for _, item := range s.Dependencies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Inputs != nil {
+		if err := s.Inputs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Outputs != nil {
+		if err := s.Outputs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuntimeResource != nil {
+		if err := s.RuntimeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Script != nil {
+		if err := s.Script.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Trigger != nil {
+		if err := s.Trigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateTaskRequestDataSource struct {
@@ -456,7 +504,16 @@ func (s *UpdateTaskRequestInputs) SetVariables(v []*UpdateTaskRequestInputsVaria
 }
 
 func (s *UpdateTaskRequestInputs) Validate() error {
-	return dara.Validate(s)
+	if s.Variables != nil {
+		for _, item := range s.Variables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateTaskRequestInputsVariables struct {
@@ -468,7 +525,7 @@ type UpdateTaskRequestInputsVariables struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type. Valid values:
 	//
-	// 	- Constant: constant.
+	// 	- Constant: constant value.
 	//
 	// 	- PassThrough: node output.
 	//
@@ -563,7 +620,25 @@ func (s *UpdateTaskRequestOutputs) SetVariables(v []*UpdateTaskRequestOutputsVar
 }
 
 func (s *UpdateTaskRequestOutputs) Validate() error {
-	return dara.Validate(s)
+	if s.TaskOutputs != nil {
+		for _, item := range s.TaskOutputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Variables != nil {
+		for _, item := range s.Variables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateTaskRequestOutputsTaskOutputs struct {
@@ -605,7 +680,7 @@ type UpdateTaskRequestOutputsVariables struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type. Valid values:
 	//
-	// 	- Constant: constant.
+	// 	- Constant: constant value.
 	//
 	// 	- PassThrough: node output.
 	//
@@ -826,7 +901,16 @@ type UpdateTaskRequestTrigger struct {
 	// example:
 	//
 	// 00 00 00 	- 	- ?
-	Cron      *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	// Cycle type. This parameter takes effect only when Type is set to Scheduler and the cron expression specifies hourly scheduling. Default value: Daily
+	//
+	// 	- Daily: Schedules jobs on a daily basis.
+	//
+	// 	- NotDaily: Schedules jobs on an hourly basis.
+	//
+	// example:
+	//
+	// Daily
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
 	// The expiration time of periodic triggering. Takes effect only when type is set to Scheduler. The value of this parameter is in the`yyyy-mm-dd hh:mm:ss` format.
 	//

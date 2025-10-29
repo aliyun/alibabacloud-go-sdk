@@ -14,7 +14,7 @@ type iDeleteLineageRelationshipRequest interface {
 }
 
 type DeleteLineageRelationshipRequest struct {
-	// The lineage ID. For more information, see the response returned by the ListLineageRelationships operation.
+	// The lineage ID. You can refer to the ListLineageRelationships operation.
 	//
 	// This parameter is required.
 	//

@@ -70,7 +70,12 @@ func (s *ListLineageRelationshipsResponseBody) SetSuccess(v bool) *ListLineageRe
 }
 
 func (s *ListLineageRelationshipsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLineageRelationshipsResponseBodyPagingInfo struct {
@@ -141,5 +146,14 @@ func (s *ListLineageRelationshipsResponseBodyPagingInfo) SetTotalCount(v int64) 
 }
 
 func (s *ListLineageRelationshipsResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.LineageRelationships != nil {
+		for _, item := range s.LineageRelationships {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *GetDataQualityAlertRuleResponseBody) SetRequestId(v string) *GetDataQua
 }
 
 func (s *GetDataQualityAlertRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataQualityAlertRule != nil {
+		if err := s.DataQualityAlertRule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityAlertRuleResponseBodyDataQualityAlertRule struct {
@@ -135,7 +140,17 @@ func (s *GetDataQualityAlertRuleResponseBodyDataQualityAlertRule) SetTarget(v *G
 }
 
 func (s *GetDataQualityAlertRuleResponseBodyDataQualityAlertRule) Validate() error {
-	return dara.Validate(s)
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Target != nil {
+		if err := s.Target.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityAlertRuleResponseBodyDataQualityAlertRuleNotification struct {
@@ -172,7 +187,16 @@ func (s *GetDataQualityAlertRuleResponseBodyDataQualityAlertRuleNotification) Se
 }
 
 func (s *GetDataQualityAlertRuleResponseBodyDataQualityAlertRuleNotification) Validate() error {
-	return dara.Validate(s)
+	if s.Receivers != nil {
+		for _, item := range s.Receivers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataQualityAlertRuleResponseBodyDataQualityAlertRuleNotificationReceivers struct {

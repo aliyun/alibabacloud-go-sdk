@@ -70,7 +70,12 @@ func (s *GetRouteResponseBody) SetSuccess(v bool) *GetRouteResponseBody {
 }
 
 func (s *GetRouteResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Route != nil {
+		if err := s.Route.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRouteResponseBodyRoute struct {

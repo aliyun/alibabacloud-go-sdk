@@ -125,7 +125,17 @@ func (s *DataQualityRuleTemplate) SetVisibleScope(v string) *DataQualityRuleTemp
 }
 
 func (s *DataQualityRuleTemplate) Validate() error {
-	return dara.Validate(s)
+	if s.CheckingConfig != nil {
+		if err := s.CheckingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SamplingConfig != nil {
+		if err := s.SamplingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DataQualityRuleTemplateCheckingConfig struct {

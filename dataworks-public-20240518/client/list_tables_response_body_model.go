@@ -18,11 +18,16 @@ type iListTablesResponseBody interface {
 }
 
 type ListTablesResponseBody struct {
+	// The pagination result.
 	PagingInfo *ListTablesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E25887B7-579C-54A5-9C4F-83A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -65,19 +70,31 @@ func (s *ListTablesResponseBody) SetSuccess(v bool) *ListTablesResponseBody {
 }
 
 func (s *ListTablesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTablesResponseBodyPagingInfo struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Tables   []*Table `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of data tables.
+	Tables []*Table `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	// The total number of records returned.
+	//
 	// example:
 	//
 	// 100
@@ -129,5 +146,14 @@ func (s *ListTablesResponseBodyPagingInfo) SetTotalCount(v int64) *ListTablesRes
 }
 
 func (s *ListTablesResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Tables != nil {
+		for _, item := range s.Tables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

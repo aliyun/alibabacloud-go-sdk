@@ -16,6 +16,7 @@ type iGetComponentResponseBody interface {
 }
 
 type GetComponentResponseBody struct {
+	// JSON serialization of the component module.
 	Component *GetComponentResponseBodyComponent `json:"Component,omitempty" xml:"Component,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -52,46 +53,69 @@ func (s *GetComponentResponseBody) SetRequestId(v string) *GetComponentResponseB
 }
 
 func (s *GetComponentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Component != nil {
+		if err := s.Component.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetComponentResponseBodyComponent struct {
+	// The ID of the dataset acceleration component. For information on how to obtain the component ID, see [ListComponents](https://help.aliyun.com/document_detail/2979566.html).
+	//
 	// example:
 	//
 	// 43cd873b-235c-44f8-be07-e4d4cf7e73b0
 	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
+	// The creation time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
 	//
 	// 2017-04-27T05:37:05Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// None
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The modification time (millisecond-level timestamp).
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
 	//
 	// 2024-01-26T07:44:21Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// Parameter
+	//
 	// example:
 	//
 	// dim_whse_epet_warehouse_jz_storage_stock_lot_relation_id
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the task owner.
+	//
 	// example:
 	//
 	// 207316543660665792
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The DataWorks workspace ID.
+	//
 	// example:
 	//
 	// 64623
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID, such as ap-southeast-1. The region ID is automatically parsed from your endpoint.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The FlowSpec information for this workflow. For more information, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow/).
+	//
 	// example:
 	//
 	// {

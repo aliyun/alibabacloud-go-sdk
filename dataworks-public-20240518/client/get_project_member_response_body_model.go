@@ -53,7 +53,12 @@ func (s *GetProjectMemberResponseBody) SetRequestId(v string) *GetProjectMemberR
 }
 
 func (s *GetProjectMemberResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProjectMember != nil {
+		if err := s.ProjectMember.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetProjectMemberResponseBodyProjectMember struct {
@@ -138,7 +143,16 @@ func (s *GetProjectMemberResponseBodyProjectMember) SetUserName(v string) *GetPr
 }
 
 func (s *GetProjectMemberResponseBodyProjectMember) Validate() error {
-	return dara.Validate(s)
+	if s.Roles != nil {
+		for _, item := range s.Roles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetProjectMemberResponseBodyProjectMemberRoles struct {

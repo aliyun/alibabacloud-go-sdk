@@ -53,7 +53,12 @@ func (s *GetAlertRuleResponseBody) SetRequestId(v string) *GetAlertRuleResponseB
 }
 
 func (s *GetAlertRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AlertRule != nil {
+		if err := s.AlertRule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAlertRuleResponseBodyAlertRule struct {
@@ -150,7 +155,17 @@ func (s *GetAlertRuleResponseBodyAlertRule) SetTriggerCondition(v *GetAlertRuleR
 }
 
 func (s *GetAlertRuleResponseBodyAlertRule) Validate() error {
-	return dara.Validate(s)
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TriggerCondition != nil {
+		if err := s.TriggerCondition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAlertRuleResponseBodyAlertRuleNotification struct {
@@ -247,7 +262,16 @@ func (s *GetAlertRuleResponseBodyAlertRuleNotification) SetSilenceStartTime(v st
 }
 
 func (s *GetAlertRuleResponseBodyAlertRuleNotification) Validate() error {
-	return dara.Validate(s)
+	if s.Receivers != nil {
+		for _, item := range s.Receivers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAlertRuleResponseBodyAlertRuleNotificationReceivers struct {
@@ -397,7 +421,17 @@ func (s *GetAlertRuleResponseBodyAlertRuleTriggerCondition) SetType(v string) *G
 }
 
 func (s *GetAlertRuleResponseBodyAlertRuleTriggerCondition) Validate() error {
-	return dara.Validate(s)
+	if s.Extension != nil {
+		if err := s.Extension.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Target != nil {
+		if err := s.Target.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension struct {
@@ -489,7 +523,42 @@ func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension) SetUnFinish
 }
 
 func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension) Validate() error {
-	return dara.Validate(s)
+	if s.CycleUnfinished != nil {
+		if err := s.CycleUnfinished.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Error != nil {
+		if err := s.Error.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceErrorCount != nil {
+		if err := s.InstanceErrorCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceErrorPercentage != nil {
+		if err := s.InstanceErrorPercentage.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceTransferFluctuate != nil {
+		if err := s.InstanceTransferFluctuate.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Timeout != nil {
+		if err := s.Timeout.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UnFinished != nil {
+		if err := s.UnFinished.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinished struct {
@@ -515,7 +584,16 @@ func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinish
 }
 
 func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinished) Validate() error {
-	return dara.Validate(s)
+	if s.CycleAndTime != nil {
+		for _, item := range s.CycleAndTime {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinishedCycleAndTime struct {

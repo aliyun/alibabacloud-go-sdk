@@ -191,7 +191,40 @@ func (s *CreateDataQualityEvaluationTaskRequest) SetTrigger(v *CreateDataQuality
 }
 
 func (s *CreateDataQualityEvaluationTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DataQualityRules != nil {
+		for _, item := range s.DataQualityRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Hooks != nil {
+		for _, item := range s.Hooks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Notifications != nil {
+		if err := s.Notifications.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Target != nil {
+		if err := s.Target.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Trigger != nil {
+		if err := s.Trigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataQualityEvaluationTaskRequestDataQualityRules struct {
@@ -333,7 +366,26 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRules) SetTemplateCode
 }
 
 func (s *CreateDataQualityEvaluationTaskRequestDataQualityRules) Validate() error {
-	return dara.Validate(s)
+	if s.CheckingConfig != nil {
+		if err := s.CheckingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ErrorHandlers != nil {
+		for _, item := range s.ErrorHandlers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SamplingConfig != nil {
+		if err := s.SamplingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig struct {
@@ -399,7 +451,12 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig) S
 }
 
 func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Thresholds != nil {
+		if err := s.Thresholds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds struct {
@@ -447,7 +504,22 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 }
 
 func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds) Validate() error {
-	return dara.Validate(s)
+	if s.Critical != nil {
+		if err := s.Critical.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Expected != nil {
+		if err := s.Expected.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Warned != nil {
+		if err := s.Warned.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical struct {
@@ -939,7 +1011,16 @@ func (s *CreateDataQualityEvaluationTaskRequestNotifications) SetNotifications(v
 }
 
 func (s *CreateDataQualityEvaluationTaskRequestNotifications) Validate() error {
-	return dara.Validate(s)
+	if s.Notifications != nil {
+		for _, item := range s.Notifications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDataQualityEvaluationTaskRequestNotificationsNotifications struct {
@@ -976,7 +1057,25 @@ func (s *CreateDataQualityEvaluationTaskRequestNotificationsNotifications) SetNo
 }
 
 func (s *CreateDataQualityEvaluationTaskRequestNotificationsNotifications) Validate() error {
-	return dara.Validate(s)
+	if s.NotificationChannels != nil {
+		for _, item := range s.NotificationChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NotificationReceivers != nil {
+		for _, item := range s.NotificationReceivers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationChannels struct {

@@ -53,7 +53,12 @@ func (s *GetNodeResponseBody) SetRequestId(v string) *GetNodeResponseBody {
 }
 
 func (s *GetNodeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Node != nil {
+		if err := s.Node.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNodeResponseBodyNode struct {

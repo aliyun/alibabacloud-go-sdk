@@ -20,22 +20,30 @@ type iImportCertificateRequest interface {
 }
 
 type ImportCertificateRequest struct {
+	// The certificate file to upload. Upload method: Upload the file by creating an InputStream.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// -
 	CertificateFile *string `json:"CertificateFile,omitempty" xml:"CertificateFile,omitempty"`
+	// The description of the task.
+	//
 	// example:
 	//
 	// This is a file
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The certificate file name. In a project workspace, certificate file names must be unique.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ca1.crt
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the workspace to which the certificate file belongs.
+	//
 	// This parameter is required.
 	//
 	// example:

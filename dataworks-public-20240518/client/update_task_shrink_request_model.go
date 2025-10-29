@@ -86,7 +86,7 @@ type UpdateTaskShrinkRequest struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The input information.
 	InputsShrink *string `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
-	// The instance generation mode. Valid values:
+	// The instance generation mode.
 	//
 	// 	- T+1: the next day
 	//
@@ -110,7 +110,7 @@ type UpdateTaskShrinkRequest struct {
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The rerun interval. Unit: seconds.
+	// The rerun interval. Unit: milliseconds. Must not exceed 1800000.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type UpdateTaskShrinkRequest struct {
 	ScriptShrink *string `json:"Script,omitempty" xml:"Script,omitempty"`
 	// The tags.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The timeout period of task running. Unit: seconds.
+	// Task execution timeout in seconds. Must be greater than 3600.
 	//
 	// example:
 	//

@@ -70,7 +70,12 @@ func (s *ListSchemasResponseBody) SetSuccess(v bool) *ListSchemasResponseBody {
 }
 
 func (s *ListSchemasResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSchemasResponseBodyPagingInfo struct {
@@ -137,5 +142,14 @@ func (s *ListSchemasResponseBodyPagingInfo) SetTotalCount(v int64) *ListSchemasR
 }
 
 func (s *ListSchemasResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Schemas != nil {
+		for _, item := range s.Schemas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

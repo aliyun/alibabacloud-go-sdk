@@ -125,7 +125,12 @@ func (s *GetFileResponseBody) SetSuccess(v bool) *GetFileResponseBody {
 }
 
 func (s *GetFileResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetFileResponseBodyData struct {
@@ -173,7 +178,22 @@ func (s *GetFileResponseBodyData) SetResourceDownloadLink(v *GetFileResponseBody
 }
 
 func (s *GetFileResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.File != nil {
+		if err := s.File.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeConfiguration != nil {
+		if err := s.NodeConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceDownloadLink != nil {
+		if err := s.ResourceDownloadLink.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetFileResponseBodyDataFile struct {
@@ -936,7 +956,43 @@ func (s *GetFileResponseBodyDataNodeConfiguration) SetTimeout(v int32) *GetFileR
 }
 
 func (s *GetFileResponseBodyDataNodeConfiguration) Validate() error {
-	return dara.Validate(s)
+	if s.InputList != nil {
+		for _, item := range s.InputList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InputParameters != nil {
+		for _, item := range s.InputParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OutputList != nil {
+		for _, item := range s.OutputList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OutputParameters != nil {
+		for _, item := range s.OutputParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetFileResponseBodyDataNodeConfigurationInputList struct {

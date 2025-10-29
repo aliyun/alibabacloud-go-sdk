@@ -59,5 +59,10 @@ func (s *CreateDataQualityEvaluationTaskInstanceResponse) SetBody(v *CreateDataQ
 }
 
 func (s *CreateDataQualityEvaluationTaskInstanceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

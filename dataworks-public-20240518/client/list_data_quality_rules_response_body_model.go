@@ -53,7 +53,12 @@ func (s *ListDataQualityRulesResponseBody) SetRequestId(v string) *ListDataQuali
 }
 
 func (s *ListDataQualityRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataQualityRulesResponseBodyPagingInfo struct {
@@ -124,7 +129,16 @@ func (s *ListDataQualityRulesResponseBodyPagingInfo) SetTotalCount(v int32) *Lis
 }
 
 func (s *ListDataQualityRulesResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DataQualityRules != nil {
+		for _, item := range s.DataQualityRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRules struct {
@@ -292,7 +306,31 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules) SetTemplate
 }
 
 func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules) Validate() error {
-	return dara.Validate(s)
+	if s.CheckingConfig != nil {
+		if err := s.CheckingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ErrorHandlers != nil {
+		for _, item := range s.ErrorHandlers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SamplingConfig != nil {
+		if err := s.SamplingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Target != nil {
+		if err := s.Target.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig struct {
@@ -360,7 +398,12 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfi
 }
 
 func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Thresholds != nil {
+		if err := s.Thresholds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholds struct {
@@ -408,7 +451,22 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfi
 }
 
 func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholds) Validate() error {
-	return dara.Validate(s)
+	if s.Critical != nil {
+		if err := s.Critical.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Expected != nil {
+		if err := s.Expected.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Warned != nil {
+		if err := s.Warned.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsCritical struct {

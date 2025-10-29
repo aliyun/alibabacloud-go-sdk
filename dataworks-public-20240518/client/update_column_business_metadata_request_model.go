@@ -16,11 +16,13 @@ type iUpdateColumnBusinessMetadataRequest interface {
 }
 
 type UpdateColumnBusinessMetadataRequest struct {
+	// The field business description.
+	//
 	// example:
 	//
 	// test description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The column ID. You can call the ListColumns operation to query the ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+	// The field ID. You can refer to the response from the ListColumns operation. You can also refer to the [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
 	//
 	// This parameter is required.
 	//

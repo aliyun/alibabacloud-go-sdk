@@ -53,7 +53,12 @@ func (s *ListProjectMembersResponseBody) SetRequestId(v string) *ListProjectMemb
 }
 
 func (s *ListProjectMembersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListProjectMembersResponseBodyPagingInfo struct {
@@ -124,7 +129,16 @@ func (s *ListProjectMembersResponseBodyPagingInfo) SetTotalCount(v int32) *ListP
 }
 
 func (s *ListProjectMembersResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ProjectMembers != nil {
+		for _, item := range s.ProjectMembers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProjectMembersResponseBodyPagingInfoProjectMembers struct {
@@ -209,7 +223,16 @@ func (s *ListProjectMembersResponseBodyPagingInfoProjectMembers) SetUserName(v s
 }
 
 func (s *ListProjectMembersResponseBodyPagingInfoProjectMembers) Validate() error {
-	return dara.Validate(s)
+	if s.Roles != nil {
+		for _, item := range s.Roles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProjectMembersResponseBodyPagingInfoProjectMembersRoles struct {

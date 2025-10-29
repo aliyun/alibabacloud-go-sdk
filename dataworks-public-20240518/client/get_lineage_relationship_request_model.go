@@ -14,7 +14,7 @@ type iGetLineageRelationshipRequest interface {
 }
 
 type GetLineageRelationshipRequest struct {
-	// The lineage ID. For more information, see the response returned by the ListLineageRelationships operation.
+	// The lineage ID. You can refer to the return result of the ListLineageRelationships operation.
 	//
 	// This parameter is required.
 	//

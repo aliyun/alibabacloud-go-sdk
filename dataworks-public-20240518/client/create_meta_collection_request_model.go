@@ -20,22 +20,34 @@ type iCreateMetaCollectionRequest interface {
 }
 
 type CreateMetaCollectionRequest struct {
+	// The collection description.
+	//
 	// example:
 	//
 	// test comment
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the collection.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_album
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the collection of an ancestor node.
+	// The parent collection ID.
 	//
 	// example:
 	//
 	// category.123
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The collection name.
+	//
+	// 	- Category
+	//
+	// 	- Album
+	//
+	// 	- AlbumCategory: Album subcategory.
+	//
 	// This parameter is required.
 	//
 	// example:

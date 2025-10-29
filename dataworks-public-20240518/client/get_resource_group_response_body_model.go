@@ -70,7 +70,12 @@ func (s *GetResourceGroupResponseBody) SetSuccess(v bool) *GetResourceGroupRespo
 }
 
 func (s *GetResourceGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceGroup != nil {
+		if err := s.ResourceGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResourceGroupResponseBodyResourceGroup struct {
@@ -319,7 +324,21 @@ func (s *GetResourceGroupResponseBodyResourceGroup) SetStatus(v string) *GetReso
 }
 
 func (s *GetResourceGroupResponseBodyResourceGroup) Validate() error {
-	return dara.Validate(s)
+	if s.AliyunResourceTags != nil {
+		for _, item := range s.AliyunResourceTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Spec != nil {
+		if err := s.Spec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResourceGroupResponseBodyResourceGroupAliyunResourceTags struct {

@@ -115,7 +115,17 @@ func (s *UpdateDataQualityRuleTemplateRequest) SetSamplingConfig(v *UpdateDataQu
 }
 
 func (s *UpdateDataQualityRuleTemplateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CheckingConfig != nil {
+		if err := s.CheckingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SamplingConfig != nil {
+		if err := s.SamplingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateDataQualityRuleTemplateRequestCheckingConfig struct {

@@ -53,7 +53,12 @@ func (s *GetCertificateResponseBody) SetRequestId(v string) *GetCertificateRespo
 }
 
 func (s *GetCertificateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Certificate != nil {
+		if err := s.Certificate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCertificateResponseBodyCertificate struct {

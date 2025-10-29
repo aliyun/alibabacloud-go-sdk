@@ -18,11 +18,16 @@ type iListDatabasesResponseBody interface {
 }
 
 type ListDatabasesResponseBody struct {
+	// The pagination result.
 	PagingInfo *ListDatabasesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9DD08926-38B9-XXXXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -65,19 +70,31 @@ func (s *ListDatabasesResponseBody) SetSuccess(v bool) *ListDatabasesResponseBod
 }
 
 func (s *ListDatabasesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDatabasesResponseBodyPagingInfo struct {
+	// The database list.
 	Databases []*Database `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of records returned.
+	//
 	// example:
 	//
 	// 1
@@ -129,5 +146,14 @@ func (s *ListDatabasesResponseBodyPagingInfo) SetTotalCount(v int64) *ListDataba
 }
 
 func (s *ListDatabasesResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Databases != nil {
+		for _, item := range s.Databases {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

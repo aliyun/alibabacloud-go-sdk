@@ -70,7 +70,12 @@ func (s *GetNetworkResponseBody) SetSuccess(v bool) *GetNetworkResponseBody {
 }
 
 func (s *GetNetworkResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Network != nil {
+		if err := s.Network.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNetworkResponseBodyNetwork struct {

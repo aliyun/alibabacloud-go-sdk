@@ -18,7 +18,9 @@ type iCreateLineageRelationshipShrinkRequest interface {
 }
 
 type CreateLineageRelationshipShrinkRequest struct {
+	// The destination entity.
 	DstEntityShrink *string `json:"DstEntity,omitempty" xml:"DstEntity,omitempty"`
+	// The source entity.
 	SrcEntityShrink *string `json:"SrcEntity,omitempty" xml:"SrcEntity,omitempty"`
 	// The task information.
 	TaskShrink *string `json:"Task,omitempty" xml:"Task,omitempty"`

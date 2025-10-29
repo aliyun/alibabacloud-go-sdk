@@ -53,7 +53,12 @@ func (s *ListWorkflowInstancesResponseBody) SetRequestId(v string) *ListWorkflow
 }
 
 func (s *ListWorkflowInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListWorkflowInstancesResponseBodyPagingInfo struct {
@@ -124,7 +129,16 @@ func (s *ListWorkflowInstancesResponseBodyPagingInfo) SetWorkflowInstances(v []*
 }
 
 func (s *ListWorkflowInstancesResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.WorkflowInstances != nil {
+		for _, item := range s.WorkflowInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
@@ -183,7 +197,8 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	// example:
 	//
 	// WorkflowInstance1
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The workspace ID.
 	//
 	// example:
@@ -217,8 +232,9 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	// example:
 	//
 	// Success
-	Status *string                                                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task tag.
+	Tags []*ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// Normal
@@ -228,8 +244,10 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	// example:
 	//
 	// 1234
-	WorkflowId         *int64  `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
-	WorkflowParameters *string `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty"`
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// The workflow parameters.
+	WorkflowParameters     *string `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty"`
+	WorkflowTaskInstanceId *int64  `json:"WorkflowTaskInstanceId,omitempty" xml:"WorkflowTaskInstanceId,omitempty"`
 }
 
 func (s ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) String() string {
@@ -276,6 +294,10 @@ func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) GetName()
 	return s.Name
 }
 
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) GetOwner() *string {
+	return s.Owner
+}
+
 func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -302,6 +324,10 @@ func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) GetWorkfl
 
 func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) GetWorkflowParameters() *string {
 	return s.WorkflowParameters
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) GetWorkflowTaskInstanceId() *int64 {
+	return s.WorkflowTaskInstanceId
 }
 
 func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetBizDate(v int64) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
@@ -349,6 +375,11 @@ func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetName(v
 	return s
 }
 
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetOwner(v string) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
+	s.Owner = &v
+	return s
+}
+
 func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetProjectId(v int64) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
 	s.ProjectId = &v
 	return s
@@ -384,12 +415,32 @@ func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetWorkfl
 	return s
 }
 
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetWorkflowTaskInstanceId(v int64) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
+	s.WorkflowTaskInstanceId = &v
+	return s
+}
+
 func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

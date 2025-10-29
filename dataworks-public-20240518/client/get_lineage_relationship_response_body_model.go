@@ -16,7 +16,10 @@ type iGetLineageRelationshipResponseBody interface {
 }
 
 type GetLineageRelationshipResponseBody struct {
+	// The lineage structure.
 	LineageRelationship *LineageRelationship `json:"LineageRelationship,omitempty" xml:"LineageRelationship,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 58D5334A-B013-430E
@@ -50,5 +53,10 @@ func (s *GetLineageRelationshipResponseBody) SetRequestId(v string) *GetLineageR
 }
 
 func (s *GetLineageRelationshipResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LineageRelationship != nil {
+		if err := s.LineageRelationship.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

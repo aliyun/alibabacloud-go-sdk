@@ -24,23 +24,38 @@ type iGetBusinessResponseBody interface {
 }
 
 type GetBusinessResponseBody struct {
+	// Details of the workflow.
 	Data *GetBusinessResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// Invalid.Tenant.ConnectionNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The connection does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID. Used for troubleshooting when an error occurs.
+	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// 	- true: success.
+	//
+	// 	- false: failure.
+	//
 	// example:
 	//
 	// true
@@ -110,30 +125,47 @@ func (s *GetBusinessResponseBody) SetSuccess(v bool) *GetBusinessResponseBody {
 }
 
 func (s *GetBusinessResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBusinessResponseBodyData struct {
+	// The workflow ID.
+	//
 	// example:
 	//
 	// 1000001
 	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// The name of the workflow. Workflow names must be unique within the same workspace.
+	//
 	// example:
 	//
 	// The first business process
 	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
+	// The description of the workflow.
+	//
 	// example:
 	//
 	// This is my first business process.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The Alibaba Cloud account ID of the workflow owner.
+	//
 	// example:
 	//
 	// 20000****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The ID of the workspace where the workflow resides.
+	//
 	// example:
 	//
 	// 10000
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The functional module to which the workflow belongs. Valid values: NORMAL (Data Studio) and MANUAL_BIZ (Manually Triggered Workflow)
+	//
 	// example:
 	//
 	// NORMAL

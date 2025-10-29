@@ -53,7 +53,12 @@ func (s *GetProjectRoleResponseBody) SetRequestId(v string) *GetProjectRoleRespo
 }
 
 func (s *GetProjectRoleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProjectRole != nil {
+		if err := s.ProjectRole.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetProjectRoleResponseBodyProjectRole struct {

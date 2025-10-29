@@ -53,7 +53,12 @@ func (s *ListDataQualityAlertRulesResponseBody) SetRequestId(v string) *ListData
 }
 
 func (s *ListDataQualityAlertRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataQualityAlertRulesResponseBodyPageInfo struct {
@@ -124,7 +129,16 @@ func (s *ListDataQualityAlertRulesResponseBodyPageInfo) SetTotalCount(v int32) *
 }
 
 func (s *ListDataQualityAlertRulesResponseBodyPageInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DataQualityAlertRules != nil {
+		for _, item := range s.DataQualityAlertRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataQualityAlertRulesResponseBodyPageInfoDataQualityAlertRules struct {
@@ -206,7 +220,17 @@ func (s *ListDataQualityAlertRulesResponseBodyPageInfoDataQualityAlertRules) Set
 }
 
 func (s *ListDataQualityAlertRulesResponseBodyPageInfoDataQualityAlertRules) Validate() error {
-	return dara.Validate(s)
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Target != nil {
+		if err := s.Target.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataQualityAlertRulesResponseBodyPageInfoDataQualityAlertRulesNotification struct {
@@ -243,7 +267,16 @@ func (s *ListDataQualityAlertRulesResponseBodyPageInfoDataQualityAlertRulesNotif
 }
 
 func (s *ListDataQualityAlertRulesResponseBodyPageInfoDataQualityAlertRulesNotification) Validate() error {
-	return dara.Validate(s)
+	if s.Receivers != nil {
+		for _, item := range s.Receivers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataQualityAlertRulesResponseBodyPageInfoDataQualityAlertRulesNotificationReceivers struct {

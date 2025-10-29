@@ -18,16 +18,22 @@ type iCreateFolderRequest interface {
 }
 
 type CreateFolderRequest struct {
+	// The path of the folder.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Business_process/System_Data/MaxCompute/import_layer
 	FolderPath *string `json:"FolderPath,omitempty" xml:"FolderPath,omitempty"`
+	// The ID of the DataWorks workspace. You can obtain the workspace ID from the workspace configuration page in the DataWorks console. Either this parameter or **ProjectIdentifier*	- must be specified to determine which DataWorks workspace this API call operates on.
+	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The name of the DataWorks workspace. You can obtain the workspace name from the workspace configuration page in the DataWorks console. Either this parameter or **ProjectId*	- must be specified to determine which DataWorks workspace this API call operates on.
+	//
 	// example:
 	//
 	// dw_project

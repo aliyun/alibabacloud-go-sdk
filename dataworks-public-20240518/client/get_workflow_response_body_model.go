@@ -53,7 +53,12 @@ func (s *GetWorkflowResponseBody) SetWorkflow(v *GetWorkflowResponseBodyWorkflow
 }
 
 func (s *GetWorkflowResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Workflow != nil {
+		if err := s.Workflow.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWorkflowResponseBodyWorkflow struct {
@@ -307,7 +312,44 @@ func (s *GetWorkflowResponseBodyWorkflow) SetTrigger(v *GetWorkflowResponseBodyW
 }
 
 func (s *GetWorkflowResponseBodyWorkflow) Validate() error {
-	return dara.Validate(s)
+	if s.Dependencies != nil {
+		for _, item := range s.Dependencies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Outputs != nil {
+		if err := s.Outputs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tasks != nil {
+		for _, item := range s.Tasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Trigger != nil {
+		if err := s.Trigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWorkflowResponseBodyWorkflowDependencies struct {
@@ -401,7 +443,16 @@ func (s *GetWorkflowResponseBodyWorkflowOutputs) SetTaskOutputs(v []*GetWorkflow
 }
 
 func (s *GetWorkflowResponseBodyWorkflowOutputs) Validate() error {
-	return dara.Validate(s)
+	if s.TaskOutputs != nil {
+		for _, item := range s.TaskOutputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetWorkflowResponseBodyWorkflowOutputsTaskOutputs struct {
@@ -829,7 +880,17 @@ func (s *GetWorkflowResponseBodyWorkflowTasks) SetWorkflowId(v int64) *GetWorkfl
 }
 
 func (s *GetWorkflowResponseBodyWorkflowTasks) Validate() error {
-	return dara.Validate(s)
+	if s.DataSource != nil {
+		if err := s.DataSource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuntimeResource != nil {
+		if err := s.RuntimeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWorkflowResponseBodyWorkflowTasksDataSource struct {

@@ -18,11 +18,16 @@ type iGetDatabaseResponseBody interface {
 }
 
 type GetDatabaseResponseBody struct {
+	// The database details.
 	Database *Database `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1AFAE64E-D1BE-432B-A9****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -65,5 +70,10 @@ func (s *GetDatabaseResponseBody) SetSuccess(v bool) *GetDatabaseResponseBody {
 }
 
 func (s *GetDatabaseResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Database != nil {
+		if err := s.Database.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

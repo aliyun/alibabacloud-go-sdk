@@ -83,7 +83,21 @@ func (s *CreateDataQualityScanRunRequest) SetRuntimeResource(v *CreateDataQualit
 }
 
 func (s *CreateDataQualityScanRunRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Parameters != nil {
+		for _, item := range s.Parameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RuntimeResource != nil {
+		if err := s.RuntimeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataQualityScanRunRequestParameters struct {

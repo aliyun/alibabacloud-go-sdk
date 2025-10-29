@@ -59,5 +59,10 @@ func (s *CreatePipelineRunResponse) SetBody(v *CreatePipelineRunResponseBody) *C
 }
 
 func (s *CreatePipelineRunResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

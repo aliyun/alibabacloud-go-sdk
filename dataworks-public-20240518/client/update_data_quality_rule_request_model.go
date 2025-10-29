@@ -183,7 +183,26 @@ func (s *UpdateDataQualityRuleRequest) SetTemplateCode(v string) *UpdateDataQual
 }
 
 func (s *UpdateDataQualityRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CheckingConfig != nil {
+		if err := s.CheckingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ErrorHandlers != nil {
+		for _, item := range s.ErrorHandlers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SamplingConfig != nil {
+		if err := s.SamplingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateDataQualityRuleRequestCheckingConfig struct {
@@ -251,7 +270,12 @@ func (s *UpdateDataQualityRuleRequestCheckingConfig) SetType(v string) *UpdateDa
 }
 
 func (s *UpdateDataQualityRuleRequestCheckingConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Thresholds != nil {
+		if err := s.Thresholds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateDataQualityRuleRequestCheckingConfigThresholds struct {
@@ -299,7 +323,22 @@ func (s *UpdateDataQualityRuleRequestCheckingConfigThresholds) SetWarned(v *Upda
 }
 
 func (s *UpdateDataQualityRuleRequestCheckingConfigThresholds) Validate() error {
-	return dara.Validate(s)
+	if s.Critical != nil {
+		if err := s.Critical.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Expected != nil {
+		if err := s.Expected.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Warned != nil {
+		if err := s.Warned.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateDataQualityRuleRequestCheckingConfigThresholdsCritical struct {

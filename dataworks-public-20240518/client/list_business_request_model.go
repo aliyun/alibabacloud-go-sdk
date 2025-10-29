@@ -22,26 +22,36 @@ type iListBusinessRequest interface {
 }
 
 type ListBusinessRequest struct {
+	// The keyword, used for fuzzy match of workflow names.
+	//
 	// example:
 	//
 	// my
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The requested page number, used for pagination.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records per page. Default: 10. Maximum: 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID. You must specify either this parameter or the ProjectIdentifier parameter to identify the DataWorks workspace when you call this operation.
+	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The name of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace page to query the workspace name. You must specify either this parameter or the ProjectId parameter to identify the DataWorks workspace when you call this operation.
+	//
 	// example:
 	//
 	// dw_project

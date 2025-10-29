@@ -22,7 +22,7 @@ type BatchUpdateTasksShrinkRequest struct {
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The tasks.
+	// The list of tasks.
 	TasksShrink *string `json:"Tasks,omitempty" xml:"Tasks,omitempty"`
 }
 

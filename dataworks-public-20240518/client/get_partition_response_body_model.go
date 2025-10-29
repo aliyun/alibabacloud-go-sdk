@@ -18,11 +18,16 @@ type iGetPartitionResponseBody interface {
 }
 
 type GetPartitionResponseBody struct {
+	// Partition details.
 	Partition *Partition `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D1E2E5BC-xxxx-xxxx-xxxx-xxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -65,5 +70,10 @@ func (s *GetPartitionResponseBody) SetSuccess(v bool) *GetPartitionResponseBody 
 }
 
 func (s *GetPartitionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Partition != nil {
+		if err := s.Partition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

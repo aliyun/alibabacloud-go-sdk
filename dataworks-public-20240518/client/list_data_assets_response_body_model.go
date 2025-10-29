@@ -53,7 +53,12 @@ func (s *ListDataAssetsResponseBody) SetRequestId(v string) *ListDataAssetsRespo
 }
 
 func (s *ListDataAssetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataAssetsResponseBodyPagingInfo struct {
@@ -124,7 +129,16 @@ func (s *ListDataAssetsResponseBodyPagingInfo) SetTotalCount(v int32) *ListDataA
 }
 
 func (s *ListDataAssetsResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DataAssets != nil {
+		for _, item := range s.DataAssets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataAssetsResponseBodyPagingInfoDataAssets struct {
@@ -233,7 +247,16 @@ func (s *ListDataAssetsResponseBodyPagingInfoDataAssets) SetType(v string) *List
 }
 
 func (s *ListDataAssetsResponseBodyPagingInfoDataAssets) Validate() error {
-	return dara.Validate(s)
+	if s.DataAssetTagMappings != nil {
+		for _, item := range s.DataAssetTagMappings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings struct {

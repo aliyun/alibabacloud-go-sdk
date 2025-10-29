@@ -53,7 +53,12 @@ func (s *ListUpstreamTasksResponseBody) SetRequestId(v string) *ListUpstreamTask
 }
 
 func (s *ListUpstreamTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUpstreamTasksResponseBodyPagingInfo struct {
@@ -135,7 +140,25 @@ func (s *ListUpstreamTasksResponseBodyPagingInfo) SetUpstreamTasks(v []*ListUpst
 }
 
 func (s *ListUpstreamTasksResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Tasks != nil {
+		for _, item := range s.Tasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UpstreamTasks != nil {
+		for _, item := range s.UpstreamTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUpstreamTasksResponseBodyPagingInfoTasks struct {
@@ -526,7 +549,22 @@ func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetWorkflowId(v int64) *L
 }
 
 func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) Validate() error {
-	return dara.Validate(s)
+	if s.DataSource != nil {
+		if err := s.DataSource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuntimeResource != nil {
+		if err := s.RuntimeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Trigger != nil {
+		if err := s.Trigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUpstreamTasksResponseBodyPagingInfoTasksDataSource struct {
@@ -780,7 +818,12 @@ func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasks) SetTask(v *ListUp
 }
 
 func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasks) Validate() error {
-	return dara.Validate(s)
+	if s.Task != nil {
+		if err := s.Task.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask struct {
@@ -1127,7 +1170,22 @@ func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) SetWorkflowId
 }
 
 func (s *ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask) Validate() error {
-	return dara.Validate(s)
+	if s.DataSource != nil {
+		if err := s.DataSource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuntimeResource != nil {
+		if err := s.RuntimeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Trigger != nil {
+		if err := s.Trigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskDataSource struct {

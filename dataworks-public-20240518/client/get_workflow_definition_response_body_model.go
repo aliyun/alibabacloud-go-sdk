@@ -53,7 +53,12 @@ func (s *GetWorkflowDefinitionResponseBody) SetWorkflowDefinition(v *GetWorkflow
 }
 
 func (s *GetWorkflowDefinitionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WorkflowDefinition != nil {
+		if err := s.WorkflowDefinition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWorkflowDefinitionResponseBodyWorkflowDefinition struct {

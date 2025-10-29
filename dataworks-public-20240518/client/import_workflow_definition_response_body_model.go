@@ -53,7 +53,12 @@ func (s *ImportWorkflowDefinitionResponseBody) SetRequestId(v string) *ImportWor
 }
 
 func (s *ImportWorkflowDefinitionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AsyncJob != nil {
+		if err := s.AsyncJob.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ImportWorkflowDefinitionResponseBodyAsyncJob struct {

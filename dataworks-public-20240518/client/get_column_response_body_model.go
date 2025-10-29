@@ -18,11 +18,16 @@ type iGetColumnResponseBody interface {
 }
 
 type GetColumnResponseBody struct {
+	// The columns in the table.
 	Column *Column `json:"Column,omitempty" xml:"Column,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D1E2E5BC-xxxx-xxxx-xxxx-xxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -65,5 +70,10 @@ func (s *GetColumnResponseBody) SetSuccess(v bool) *GetColumnResponseBody {
 }
 
 func (s *GetColumnResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Column != nil {
+		if err := s.Column.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

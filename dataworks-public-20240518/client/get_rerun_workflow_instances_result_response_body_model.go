@@ -53,7 +53,12 @@ func (s *GetRerunWorkflowInstancesResultResponseBody) SetResult(v *GetRerunWorkf
 }
 
 func (s *GetRerunWorkflowInstancesResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRerunWorkflowInstancesResultResponseBodyResult struct {

@@ -53,7 +53,12 @@ func (s *ListDownstreamTaskInstancesResponseBody) SetRequestId(v string) *ListDo
 }
 
 func (s *ListDownstreamTaskInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDownstreamTaskInstancesResponseBodyPagingInfo struct {
@@ -135,7 +140,25 @@ func (s *ListDownstreamTaskInstancesResponseBodyPagingInfo) SetTotalCount(v int3
 }
 
 func (s *ListDownstreamTaskInstancesResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DownstreamTaskInstances != nil {
+		for _, item := range s.DownstreamTaskInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TaskInstances != nil {
+		for _, item := range s.TaskInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstances struct {
@@ -180,7 +203,12 @@ func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstance
 }
 
 func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstances) Validate() error {
-	return dara.Validate(s)
+	if s.TaskInstance != nil {
+		if err := s.TaskInstance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance struct {
@@ -707,7 +735,22 @@ func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstance
 }
 
 func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance) Validate() error {
-	return dara.Validate(s)
+	if s.DataSource != nil {
+		if err := s.DataSource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Runtime != nil {
+		if err := s.Runtime.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuntimeResource != nil {
+		if err := s.RuntimeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceDataSource struct {
@@ -1421,7 +1464,22 @@ func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetWork
 }
 
 func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) Validate() error {
-	return dara.Validate(s)
+	if s.DataSource != nil {
+		if err := s.DataSource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Runtime != nil {
+		if err := s.Runtime.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuntimeResource != nil {
+		if err := s.RuntimeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource struct {

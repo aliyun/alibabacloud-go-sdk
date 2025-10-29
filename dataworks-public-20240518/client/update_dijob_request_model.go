@@ -136,7 +136,35 @@ func (s *UpdateDIJobRequest) SetTransformationRules(v []*UpdateDIJobRequestTrans
 }
 
 func (s *UpdateDIJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.JobSettings != nil {
+		if err := s.JobSettings.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceSettings != nil {
+		if err := s.ResourceSettings.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TableMappings != nil {
+		for _, item := range s.TableMappings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TransformationRules != nil {
+		for _, item := range s.TransformationRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateDIJobRequestJobSettings struct {
@@ -201,7 +229,39 @@ func (s *UpdateDIJobRequestJobSettings) SetRuntimeSettings(v []*UpdateDIJobReque
 }
 
 func (s *UpdateDIJobRequestJobSettings) Validate() error {
-	return dara.Validate(s)
+	if s.ColumnDataTypeSettings != nil {
+		for _, item := range s.ColumnDataTypeSettings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.CycleScheduleSettings != nil {
+		if err := s.CycleScheduleSettings.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DdlHandlingSettings != nil {
+		for _, item := range s.DdlHandlingSettings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RuntimeSettings != nil {
+		for _, item := range s.RuntimeSettings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateDIJobRequestJobSettingsColumnDataTypeSettings struct {
@@ -376,7 +436,22 @@ func (s *UpdateDIJobRequestResourceSettings) SetScheduleResourceSettings(v *Upda
 }
 
 func (s *UpdateDIJobRequestResourceSettings) Validate() error {
-	return dara.Validate(s)
+	if s.OfflineResourceSettings != nil {
+		if err := s.OfflineResourceSettings.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RealtimeResourceSettings != nil {
+		if err := s.RealtimeResourceSettings.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScheduleResourceSettings != nil {
+		if err := s.ScheduleResourceSettings.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateDIJobRequestResourceSettingsOfflineResourceSettings struct {
@@ -516,7 +591,25 @@ func (s *UpdateDIJobRequestTableMappings) SetTransformationRules(v []*UpdateDIJo
 }
 
 func (s *UpdateDIJobRequestTableMappings) Validate() error {
-	return dara.Validate(s)
+	if s.SourceObjectSelectionRules != nil {
+		for _, item := range s.SourceObjectSelectionRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TransformationRules != nil {
+		for _, item := range s.TransformationRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateDIJobRequestTableMappingsSourceObjectSelectionRules struct {

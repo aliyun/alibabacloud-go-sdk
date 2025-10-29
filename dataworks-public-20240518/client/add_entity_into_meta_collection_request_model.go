@@ -18,7 +18,7 @@ type iAddEntityIntoMetaCollectionRequest interface {
 }
 
 type AddEntityIntoMetaCollectionRequest struct {
-	// The entity ID. Currently, entities can only be tables. You can call the ListTables operation to query the ID.
+	// The entity ID. Currently, only table entities are supported. You can call the ListTables operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type AddEntityIntoMetaCollectionRequest struct {
 	//
 	// maxcompute-table
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The collection ID. You can call the ListMetaCollections operation to query the ID.
+	// The collection ID. You can refer to the return result of the ListMetaCollections operation.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,12 @@ type AddEntityIntoMetaCollectionRequest struct {
 	//
 	// category.123
 	MetaCollectionId *string `json:"MetaCollectionId,omitempty" xml:"MetaCollectionId,omitempty"`
-	Remark           *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Remarks added when adding the entity to a collection. This parameter is currently valid only for album collections.
+	//
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s AddEntityIntoMetaCollectionRequest) String() string {

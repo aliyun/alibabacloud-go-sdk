@@ -53,7 +53,12 @@ func (s *ListDataQualityScanRunsResponseBody) SetRequestId(v string) *ListDataQu
 }
 
 func (s *ListDataQualityScanRunsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataQualityScanRunsResponseBodyPageInfo struct {
@@ -124,7 +129,16 @@ func (s *ListDataQualityScanRunsResponseBodyPageInfo) SetTotalCount(v int32) *Li
 }
 
 func (s *ListDataQualityScanRunsResponseBodyPageInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DataQualityScanRuns != nil {
+		for _, item := range s.DataQualityScanRuns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRuns struct {
@@ -220,7 +234,16 @@ func (s *ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRuns) SetStat
 }
 
 func (s *ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRuns) Validate() error {
-	return dara.Validate(s)
+	if s.Parameters != nil {
+		for _, item := range s.Parameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRunsParameters struct {

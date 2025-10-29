@@ -20,20 +20,28 @@ type iListPipelineRunItemsRequest interface {
 }
 
 type ListPipelineRunItemsRequest struct {
+	// The page number, for pagination.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. The number of entries per page. Default: 10. Maximum: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The workflow task ID. To obtain the ID, see [ListPipelineRuns](https://help.aliyun.com/document_detail/438042.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 097c73fe-ed6e-4fb1-b109-a5d59e46cd58
 	PipelineRunId *string `json:"PipelineRunId,omitempty" xml:"PipelineRunId,omitempty"`
+	// The ID of the DataWorks workspace. You can obtain the workspace ID from the workspace configuration page in the DataWorks console.
+	//
 	// This parameter is required.
 	//
 	// example:

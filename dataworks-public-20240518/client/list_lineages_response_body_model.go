@@ -18,11 +18,16 @@ type iListLineagesResponseBody interface {
 }
 
 type ListLineagesResponseBody struct {
+	// The pagination result.
 	PagingInfo *ListLineagesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -65,19 +70,31 @@ func (s *ListLineagesResponseBody) SetSuccess(v bool) *ListLineagesResponseBody 
 }
 
 func (s *ListLineagesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLineagesResponseBodyPagingInfo struct {
+	// The lineage information list.
 	Lineages []*ListLineagesResponseBodyPagingInfoLineages `json:"Lineages,omitempty" xml:"Lineages,omitempty" type:"Repeated"`
+	// The requested page number for pagination.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total record count.
+	//
 	// example:
 	//
 	// 12
@@ -129,13 +146,25 @@ func (s *ListLineagesResponseBodyPagingInfo) SetTotalCount(v int64) *ListLineage
 }
 
 func (s *ListLineagesResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Lineages != nil {
+		for _, item := range s.Lineages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLineagesResponseBodyPagingInfoLineages struct {
-	DstEntity     *LineageEntity         `json:"DstEntity,omitempty" xml:"DstEntity,omitempty"`
+	// The destination entity.
+	DstEntity *LineageEntity `json:"DstEntity,omitempty" xml:"DstEntity,omitempty"`
+	// The lineage details.
 	Relationships []*LineageRelationship `json:"Relationships,omitempty" xml:"Relationships,omitempty" type:"Repeated"`
-	SrcEntity     *LineageEntity         `json:"SrcEntity,omitempty" xml:"SrcEntity,omitempty"`
+	// The source entity.
+	SrcEntity *LineageEntity `json:"SrcEntity,omitempty" xml:"SrcEntity,omitempty"`
 }
 
 func (s ListLineagesResponseBodyPagingInfoLineages) String() string {
@@ -174,5 +203,24 @@ func (s *ListLineagesResponseBodyPagingInfoLineages) SetSrcEntity(v *LineageEnti
 }
 
 func (s *ListLineagesResponseBodyPagingInfoLineages) Validate() error {
-	return dara.Validate(s)
+	if s.DstEntity != nil {
+		if err := s.DstEntity.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Relationships != nil {
+		for _, item := range s.Relationships {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SrcEntity != nil {
+		if err := s.SrcEntity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

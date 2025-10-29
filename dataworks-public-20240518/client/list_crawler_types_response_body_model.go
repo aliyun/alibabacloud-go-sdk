@@ -18,11 +18,16 @@ type iListCrawlerTypesResponseBody interface {
 }
 
 type ListCrawlerTypesResponseBody struct {
+	// The list of metadata crawler types.
 	CrawlerTypes []*CrawlerType `json:"CrawlerTypes,omitempty" xml:"CrawlerTypes,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -65,5 +70,14 @@ func (s *ListCrawlerTypesResponseBody) SetSuccess(v bool) *ListCrawlerTypesRespo
 }
 
 func (s *ListCrawlerTypesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CrawlerTypes != nil {
+		for _, item := range s.CrawlerTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

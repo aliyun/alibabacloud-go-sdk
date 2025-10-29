@@ -53,7 +53,12 @@ func (s *ListNodeDependenciesResponseBody) SetRequestId(v string) *ListNodeDepen
 }
 
 func (s *ListNodeDependenciesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListNodeDependenciesResponseBodyPagingInfo struct {
@@ -124,7 +129,16 @@ func (s *ListNodeDependenciesResponseBodyPagingInfo) SetTotalCount(v string) *Li
 }
 
 func (s *ListNodeDependenciesResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodes struct {
@@ -370,7 +384,51 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodes) SetTrigger(v *ListNode
 }
 
 func (s *ListNodeDependenciesResponseBodyPagingInfoNodes) Validate() error {
-	return dara.Validate(s)
+	if s.DataSource != nil {
+		if err := s.DataSource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Inputs != nil {
+		if err := s.Inputs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Outputs != nil {
+		if err := s.Outputs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuntimeResource != nil {
+		if err := s.RuntimeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Script != nil {
+		if err := s.Script.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Strategy != nil {
+		if err := s.Strategy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Trigger != nil {
+		if err := s.Trigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesDataSource struct {
@@ -463,7 +521,34 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputs) SetVariables(v [
 }
 
 func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputs) Validate() error {
-	return dara.Validate(s)
+	if s.NodeOutputs != nil {
+		for _, item := range s.NodeOutputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tables != nil {
+		for _, item := range s.Tables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Variables != nil {
+		for _, item := range s.Variables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesInputsNodeOutputs struct {
@@ -657,7 +742,12 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables) SetValu
 }
 
 func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables) Validate() error {
-	return dara.Validate(s)
+	if s.Node != nil {
+		if err := s.Node.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariablesNode struct {
@@ -735,7 +825,34 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesOutputs) SetVariables(v 
 }
 
 func (s *ListNodeDependenciesResponseBodyPagingInfoNodesOutputs) Validate() error {
-	return dara.Validate(s)
+	if s.NodeOutputs != nil {
+		for _, item := range s.NodeOutputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tables != nil {
+		for _, item := range s.Tables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Variables != nil {
+		for _, item := range s.Variables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesOutputsNodeOutputs struct {
@@ -929,7 +1046,12 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables) SetVal
 }
 
 func (s *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables) Validate() error {
-	return dara.Validate(s)
+	if s.Node != nil {
+		if err := s.Node.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariablesNode struct {
@@ -1045,7 +1167,12 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesScript) SetRuntime(v *Li
 }
 
 func (s *ListNodeDependenciesResponseBodyPagingInfoNodesScript) Validate() error {
-	return dara.Validate(s)
+	if s.Runtime != nil {
+		if err := s.Runtime.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesScriptRuntime struct {

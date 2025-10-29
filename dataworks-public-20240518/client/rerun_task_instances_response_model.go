@@ -59,5 +59,10 @@ func (s *RerunTaskInstancesResponse) SetBody(v *RerunTaskInstancesResponseBody) 
 }
 
 func (s *RerunTaskInstancesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

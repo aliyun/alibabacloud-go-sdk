@@ -28,11 +28,20 @@ type iListEntitiesInMetaCollectionRequest interface {
 }
 
 type ListEntitiesInMetaCollectionRequest struct {
+	// The description specified when the entity was added to the collection. Supports fuzzy matching. Valid only for the album type.
+	//
+	// example:
+	//
+	// test
 	EntityDescription *string `json:"EntityDescription,omitempty" xml:"EntityDescription,omitempty"`
+	// The entity name. Supports fuzzy matching.
+	//
 	// example:
 	//
 	// test1
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	// The entity type.
+	//
 	// example:
 	//
 	// dlf-table
@@ -45,18 +54,34 @@ type ListEntitiesInMetaCollectionRequest struct {
 	//
 	// category.123
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The sort order. Valid values:
+	//
+	// 	- Asc (default): ascending order.
+	//
+	// 	- Desc
+	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sort field. Valid values:
+	//
+	// 	- Name (default)
+	//
+	// 	- CreateTime
+	//
 	// example:
 	//
 	// Name

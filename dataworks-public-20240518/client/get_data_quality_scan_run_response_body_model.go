@@ -53,7 +53,12 @@ func (s *GetDataQualityScanRunResponseBody) SetRequestId(v string) *GetDataQuali
 }
 
 func (s *GetDataQualityScanRunResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataQualityScanRun != nil {
+		if err := s.DataQualityScanRun.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityScanRunResponseBodyDataQualityScanRun struct {
@@ -171,7 +176,30 @@ func (s *GetDataQualityScanRunResponseBodyDataQualityScanRun) SetStatus(v string
 }
 
 func (s *GetDataQualityScanRunResponseBodyDataQualityScanRun) Validate() error {
-	return dara.Validate(s)
+	if s.Parameters != nil {
+		for _, item := range s.Parameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Scan != nil {
+		if err := s.Scan.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityScanRunResponseBodyDataQualityScanRunParameters struct {
@@ -328,7 +356,16 @@ func (s *GetDataQualityScanRunResponseBodyDataQualityScanRunResults) SetStatus(v
 }
 
 func (s *GetDataQualityScanRunResponseBodyDataQualityScanRunResults) Validate() error {
-	return dara.Validate(s)
+	if s.Details != nil {
+		for _, item := range s.Details {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataQualityScanRunResponseBodyDataQualityScanRunResultsDetails struct {
@@ -666,7 +703,40 @@ func (s *GetDataQualityScanRunResponseBodyDataQualityScanRunScan) SetTrigger(v *
 }
 
 func (s *GetDataQualityScanRunResponseBodyDataQualityScanRunScan) Validate() error {
-	return dara.Validate(s)
+	if s.ComputeResource != nil {
+		if err := s.ComputeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Hooks != nil {
+		for _, item := range s.Hooks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Parameters != nil {
+		for _, item := range s.Parameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RuntimeResource != nil {
+		if err := s.RuntimeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Trigger != nil {
+		if err := s.Trigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResource struct {
@@ -726,7 +796,12 @@ func (s *GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResource)
 }
 
 func (s *GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResource) Validate() error {
-	return dara.Validate(s)
+	if s.Runtime != nil {
+		if err := s.Runtime.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResourceRuntime struct {

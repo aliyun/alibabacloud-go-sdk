@@ -16,17 +16,17 @@ type iGetTableRequest interface {
 }
 
 type GetTableRequest struct {
-	// The table ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+	// The ID. You can refer to the response of the ListTables operation and the [concepts related to metadata entities.](https://help.aliyun.com/document_detail/2880092.html)
 	//
-	// The common format of this parameter is `${Entity type}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}:${Schema name}:${Table name}`. If a level does not exist, specify an empty string as a placeholder.
+	// The format: `${EntityType}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}:${Table name}`. Use empty strings as placeholders for levels that do not exist.
 	//
-	// >  For MaxCompute and DLF data sources, specify an empty string at the Instance ID level.
+	// >  For the MaxCompute and DLF types, use an empty string as the placeholder for the instance ID.
 	//
-	// >  For StarRocks data sources, specify a catalog name at the Catalog identifier level. For DLF data sources, specify a catalog ID at the Catalog identifier level. Other types of data sources do not support the Catalog identifier level. You can specify an empty string as a placeholder.
+	// >  The catalog identifier of the StarRocks is the catalog name, and the catalog identifier of the DLF type is the catalog ID. Other types do not support the catalog level. Use an empty string as a placeholder.
 	//
-	// >  For MaxCompute data sources, specify a MaxCompute project name at the Database name level. If the three-layer model is enabled for your MaxCompute project, you must specify a schema name at the Schema name level. Otherwise, you can specify an empty string as a placeholder.
+	// >  For MaxCompute, the database name refers to the MaxCompute project name. If the project has schema enabled, you must specify the schema name. Otherwise, use an empty string as the placeholder for the schema name.
 	//
-	// You can configure this parameter in one of the following formats based on your data source type:
+	// Examples of common ID formats
 	//
 	// `maxcompute-table:::project_name:[schema_name]:table_name`
 	//
@@ -40,19 +40,19 @@ type GetTableRequest struct {
 	//
 	// > \\
 	//
-	// `instance_id`: the ID of an instance. If the related data source is added to DataWorks in Alibaba Cloud instance mode, you must configure this parameter.\\
+	// `instance_id`: The instance ID, required when the data source is registered in instance mode.\\
 	//
-	// `encoded_jdbc_url`: the JDBC connection string that is URL-encoded. If the related data source is added to DataWorks in connection string mode, you must configure this parameter.\\
+	// `encoded_jdbc_url`: The URL-encoded JDBC connection string, which is required when the data source is registered via a connection string.\\
 	//
-	// `catalog_id`: the ID of a DLF catalog.\\
+	// `catalog_id`: The DLF catalog ID.\\
 	//
-	// `project_name`: the name of a MaxCompute project.\\
+	// `project_name`: The MaxCompute project name.\\
 	//
-	// `database_name`: the name of a database.\\
+	// `database_name`: The database name.\\
 	//
-	// `schema_name`: the name of a schema. For a MaxCompute table, if the three-layer model is enabled for the MaxCompute project to which the table belongs, you must configure this parameter. Otherwise, you can specify an empty string for schema_name as a placeholder.\\
+	// `schema_name`: The schema name. For the MaxCompute type, this is required only if the project has enabled schema. Otherwise, use an empty string as a placeholder.\\
 	//
-	// `table_name`: the name of a table.
+	// `table_name`: The table name.
 	//
 	// This parameter is required.
 	//
@@ -66,6 +66,8 @@ type GetTableRequest struct {
 	//
 	// holo-table:h-abc123xxx::test_db:test_schema:test_tbl
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Specifies whether to include metadata. Default: false.
+	//
 	// example:
 	//
 	// true

@@ -97,7 +97,12 @@ func (s *CreateDataQualityEvaluationTaskInstanceRequest) SetRuntimeResource(v *C
 }
 
 func (s *CreateDataQualityEvaluationTaskInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RuntimeResource != nil {
+		if err := s.RuntimeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataQualityEvaluationTaskInstanceRequestRuntimeResource struct {

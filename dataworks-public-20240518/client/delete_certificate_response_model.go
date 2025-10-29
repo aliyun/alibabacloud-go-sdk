@@ -59,5 +59,10 @@ func (s *DeleteCertificateResponse) SetBody(v *DeleteCertificateResponseBody) *D
 }
 
 func (s *DeleteCertificateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

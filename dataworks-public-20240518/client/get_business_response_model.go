@@ -59,5 +59,10 @@ func (s *GetBusinessResponse) SetBody(v *GetBusinessResponseBody) *GetBusinessRe
 }
 
 func (s *GetBusinessResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

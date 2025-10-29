@@ -22,24 +22,36 @@ type iEstablishRelationTableToBusinessRequest interface {
 }
 
 type EstablishRelationTableToBusinessRequest struct {
+  // The workflow ID. You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to obtain the workflow ID.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 1000001
   BusinessId *string `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+  // The ID of the folder. You can call the [GetFolder](https://help.aliyun.com/document_detail/173952.html) or [ListFolders](https://help.aliyun.com/document_detail/173955.html) operation to obtain the folder ID.
+  // 
   // example:
   // 
   // 2eb6f9****
   FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+  // The ID of the DataWorks workspace. You can click the wrench icon in the top-right corner to access the workspace management page and view the ID.
+  // 
   // example:
   // 
   // 10000
   ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+  // The unique identifier of the DataWorks workspace. This is the identifier shown in the workspace switcher at the top of the Data Studio page.
+  // 
+  // Either this parameter or ProjectId must be specified to determine which DataWorks workspace this API call operates on.
+  // 
   // example:
   // 
   // dw
   ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+  // The UUID of the table. You can call the [SearchMetaTables](https://help.aliyun.com/document_detail/173919.html) operation to obtain the table UUID.
+  // 
   // This parameter is required.
   // 
   // example:

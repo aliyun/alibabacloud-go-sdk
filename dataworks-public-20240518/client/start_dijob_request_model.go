@@ -99,7 +99,12 @@ func (s *StartDIJobRequest) SetRealtimeStartSettings(v *StartDIJobRequestRealtim
 }
 
 func (s *StartDIJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RealtimeStartSettings != nil {
+		if err := s.RealtimeStartSettings.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartDIJobRequestRealtimeStartSettings struct {
@@ -142,7 +147,12 @@ func (s *StartDIJobRequestRealtimeStartSettings) SetStartTime(v int64) *StartDIJ
 }
 
 func (s *StartDIJobRequestRealtimeStartSettings) Validate() error {
-	return dara.Validate(s)
+	if s.FailoverSettings != nil {
+		if err := s.FailoverSettings.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartDIJobRequestRealtimeStartSettingsFailoverSettings struct {

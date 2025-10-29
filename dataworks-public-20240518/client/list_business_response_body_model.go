@@ -24,23 +24,34 @@ type iListBusinessResponseBody interface {
 }
 
 type ListBusinessResponseBody struct {
+	// Details of workflows.
 	Data *ListBusinessResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// Invalid.Tenant.ConnectionNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The connection does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID. Used for troubleshooting when an error occurs.
+	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -110,19 +121,31 @@ func (s *ListBusinessResponseBody) SetSuccess(v bool) *ListBusinessResponseBody 
 }
 
 func (s *ListBusinessResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListBusinessResponseBodyData struct {
+	// Information about the workflow list.
 	Business []*ListBusinessResponseBodyDataBusiness `json:"Business,omitempty" xml:"Business,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records on the current page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of records that meet the query conditions.
+	//
 	// example:
 	//
 	// 13
@@ -174,24 +197,51 @@ func (s *ListBusinessResponseBodyData) SetTotalCount(v int32) *ListBusinessRespo
 }
 
 func (s *ListBusinessResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Business != nil {
+		for _, item := range s.Business {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListBusinessResponseBodyDataBusiness struct {
+	// The workflow ID.
+	//
 	// example:
 	//
 	// 3000001
-	BusinessId   *int64  `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// The name of the workflow.
+	//
+	// example:
+	//
+	// test
 	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the workflow.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The owner of the workflow.
+	//
 	// example:
 	//
 	// 34824327****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The ID of the workspace to which the workflow belongs.
+	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The module to which the workflow belongs. Valid values: NORMAL (Data Studio) and MANUAL_BIZ (Manually Triggered Workflow).
+	//
 	// example:
 	//
 	// NORMAL

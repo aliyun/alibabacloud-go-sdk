@@ -53,7 +53,12 @@ func (s *ListTaskInstancesResponseBody) SetRequestId(v string) *ListTaskInstance
 }
 
 func (s *ListTaskInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTaskInstancesResponseBodyPagingInfo struct {
@@ -124,7 +129,16 @@ func (s *ListTaskInstancesResponseBodyPagingInfo) SetTotalCount(v int32) *ListTa
 }
 
 func (s *ListTaskInstancesResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.TaskInstances != nil {
+		for _, item := range s.TaskInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
@@ -708,7 +722,22 @@ func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetWorkflowName(v
 }
 
 func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) Validate() error {
-	return dara.Validate(s)
+	if s.DataSource != nil {
+		if err := s.DataSource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Runtime != nil {
+		if err := s.Runtime.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuntimeResource != nil {
+		if err := s.RuntimeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource struct {

@@ -53,7 +53,12 @@ func (s *GetDataQualityScanResponseBody) SetRequestId(v string) *GetDataQualityS
 }
 
 func (s *GetDataQualityScanResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataQualityScan != nil {
+		if err := s.DataQualityScan.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityScanResponseBodyDataQualityScan struct {
@@ -323,7 +328,40 @@ func (s *GetDataQualityScanResponseBodyDataQualityScan) SetTrigger(v *GetDataQua
 }
 
 func (s *GetDataQualityScanResponseBodyDataQualityScan) Validate() error {
-	return dara.Validate(s)
+	if s.ComputeResource != nil {
+		if err := s.ComputeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Hooks != nil {
+		for _, item := range s.Hooks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Parameters != nil {
+		for _, item := range s.Parameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RuntimeResource != nil {
+		if err := s.RuntimeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Trigger != nil {
+		if err := s.Trigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityScanResponseBodyDataQualityScanComputeResource struct {
@@ -385,7 +423,12 @@ func (s *GetDataQualityScanResponseBodyDataQualityScanComputeResource) SetRuntim
 }
 
 func (s *GetDataQualityScanResponseBodyDataQualityScanComputeResource) Validate() error {
-	return dara.Validate(s)
+	if s.Runtime != nil {
+		if err := s.Runtime.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityScanResponseBodyDataQualityScanComputeResourceRuntime struct {

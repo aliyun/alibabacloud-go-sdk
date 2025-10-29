@@ -53,7 +53,12 @@ func (s *ListWorkflowDefinitionsResponseBody) SetRequestId(v string) *ListWorkfl
 }
 
 func (s *ListWorkflowDefinitionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListWorkflowDefinitionsResponseBodyPagingInfo struct {
@@ -124,7 +129,16 @@ func (s *ListWorkflowDefinitionsResponseBodyPagingInfo) SetWorkflowDefinitions(v
 }
 
 func (s *ListWorkflowDefinitionsResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.WorkflowDefinitions != nil {
+		for _, item := range s.WorkflowDefinitions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions struct {
@@ -278,7 +292,12 @@ func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions) SetTy
 }
 
 func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions) Validate() error {
-	return dara.Validate(s)
+	if s.Script != nil {
+		if err := s.Script.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript struct {
@@ -334,7 +353,12 @@ func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript)
 }
 
 func (s *ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript) Validate() error {
-	return dara.Validate(s)
+	if s.Runtime != nil {
+		if err := s.Runtime.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScriptRuntime struct {

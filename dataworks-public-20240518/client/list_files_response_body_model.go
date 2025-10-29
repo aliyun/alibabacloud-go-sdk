@@ -24,23 +24,38 @@ type iListFilesResponseBody interface {
 }
 
 type ListFilesResponseBody struct {
+	// The response details.
 	Data *ListFilesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// Invalid.Tenant.ConnectionNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The connection does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID. Use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// 0000-ABCD-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call succeeded. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -110,19 +125,31 @@ func (s *ListFilesResponseBody) SetSuccess(v bool) *ListFilesResponseBody {
 }
 
 func (s *ListFilesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListFilesResponseBodyData struct {
+	// The file details.
 	Files []*ListFilesResponseBodyDataFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 13
@@ -174,94 +201,167 @@ func (s *ListFilesResponseBodyData) SetTotalCount(v int32) *ListFilesResponseBod
 }
 
 func (s *ListFilesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Files != nil {
+		for _, item := range s.Files {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFilesResponseBodyDataFiles struct {
+	// The path to the folder where the file is located.
+	//
 	// example:
 	//
 	// Business_process/my_first_business_process/MaxCompute/ods_layer
 	AbsoluteFolderPath *string `json:"AbsoluteFolderPath,omitempty" xml:"AbsoluteFolderPath,omitempty"`
+	// Specifies whether automatic parsing is enabled for the file. Valid values:
+	//
+	// 	- true: The file automatically parses code.
+	//
+	// 	- false: The file does not automatically parse code.
+	//
+	// This parameter corresponds to Analyze Code when you set Dependencies to Same Cycle in the scheduling configuration of a Data Studio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
 	// example:
 	//
 	// true
 	AutoParsing *bool `json:"AutoParsing,omitempty" xml:"AutoParsing,omitempty"`
+	// The ID of the workflow to which the file belongs. This parameter is deprecated. Use the BusinessId parameter instead.
+	//
 	// example:
 	//
 	// 300000
 	BizId *int64 `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The ID of the workflow to which the file belongs.
+	//
 	// example:
 	//
 	// 300000
 	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// The current commit status of the file. Valid values: 0 (the latest code is not committed) and 1 (the latest code is committed).
+	//
 	// example:
 	//
 	// 1
 	CommitStatus *int32 `json:"CommitStatus,omitempty" xml:"CommitStatus,omitempty"`
+	// The data source name used by the task.
+	//
 	// example:
 	//
 	// odps_source
 	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
+	// This parameter is deprecated. You can call the [GetFile](https://help.aliyun.com/document_detail/173954.html) operation to query this information.
+	//
 	// example:
 	//
 	// SHOW TABLES;
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The timestamp (in milliseconds) when the file was created.
+	//
 	// example:
 	//
 	// 1593950832000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The Alibaba Cloud account ID of the file creator.
+	//
 	// example:
 	//
 	// 382762****
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The latest version of the file.
+	//
 	// example:
 	//
 	// 2
 	CurrentVersion *int32 `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
+	// The description of the file.
+	//
 	// example:
 	//
 	// my test datastudio file
 	FileDescription *string `json:"FileDescription,omitempty" xml:"FileDescription,omitempty"`
+	// The ID of the folder where the file is located.
+	//
 	// example:
 	//
 	// 2735c2****
 	FileFolderId *string `json:"FileFolderId,omitempty" xml:"FileFolderId,omitempty"`
+	// The file ID.
+	//
 	// example:
 	//
 	// 10000001
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// ods_user_info_d
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file type. Different file types have different code. For more information, see [DataWorks node types](https://help.aliyun.com/document_detail/600169.html).
+	//
 	// example:
 	//
 	// 10
 	FileType *int32 `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// If the current file is a MaxCompute resource file, this parameter specifies whether the resource file needs to be uploaded to MaxCompute.
+	//
+	// You only need to configure this parameter when the file is a MaxCompute resource file.
+	//
 	// example:
 	//
 	// false
 	IsMaxCompute *bool `json:"IsMaxCompute,omitempty" xml:"IsMaxCompute,omitempty"`
+	// The timestamp (in milliseconds) when the file was last modified.
+	//
 	// example:
 	//
 	// 1593950832000
 	LastEditTime *int64 `json:"LastEditTime,omitempty" xml:"LastEditTime,omitempty"`
+	// The Alibaba Cloud account ID of the user who last updated the file.
+	//
 	// example:
 	//
 	// 382762****
 	LastEditUser *string `json:"LastEditUser,omitempty" xml:"LastEditUser,omitempty"`
+	// The ID of the scheduling task generated in the scheduling system after the file is committed.
+	//
 	// example:
 	//
 	// 300001
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The Alibaba Cloud account ID of the file owner.
+	//
 	// example:
 	//
 	// 3872572****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// If the current file is an internal file of a combined node, this parameter specifies the ID of the corresponding combined node file.
+	//
 	// example:
 	//
 	// -1
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The functional module to which the file belongs. Valid values:
+	//
+	// 	- NORMAL: Data Studio
+	//
+	// 	- MANUAL: Manually triggered node
+	//
+	// 	- MANUAL_BIZ: Manually triggered workflow
+	//
+	// 	- SKIP: Dry-run scheduling in Data Studio
+	//
+	// 	- ADHOCQUERY: Ad hoc query
+	//
+	// 	- COMPONENT: Component management
+	//
 	// example:
 	//
 	// NORMAL

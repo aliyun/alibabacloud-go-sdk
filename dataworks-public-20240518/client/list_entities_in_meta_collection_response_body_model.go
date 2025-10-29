@@ -16,9 +16,9 @@ type iListEntitiesInMetaCollectionResponseBody interface {
 }
 
 type ListEntitiesInMetaCollectionResponseBody struct {
-	// The pagination information.
+	// The pagination result.
 	PagingInfo *ListEntitiesInMetaCollectionResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -53,20 +53,31 @@ func (s *ListEntitiesInMetaCollectionResponseBody) SetRequestId(v string) *ListE
 }
 
 func (s *ListEntitiesInMetaCollectionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEntitiesInMetaCollectionResponseBodyPagingInfo struct {
-	// The entities in the collection.
+	// The list of entities in the collection.
 	Entities []*ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -118,31 +129,56 @@ func (s *ListEntitiesInMetaCollectionResponseBodyPagingInfo) SetTotalCount(v int
 }
 
 func (s *ListEntitiesInMetaCollectionResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Entities != nil {
+		for _, item := range s.Entities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities struct {
+	// The entity comment.
+	//
+	// example:
+	//
+	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The creation time in milliseconds.
+	//
 	// example:
 	//
 	// 1737078994080
-	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description specified when the entity was added to the collection. Valid only for albums.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The entity ID. Entities can only be tables. This parameter is left empty if the entity is deleted.
+	// The ID of the entity. Currently, only the Table type is supported. If the entity is deleted, this field is empty.
 	//
 	// example:
 	//
 	// dlf-table:123456789:test_catalog:test_database::test_table
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The last modified time in milliseconds.
+	//
 	// example:
 	//
 	// 1737078994080
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The entity name.
+	//
 	// example:
 	//
 	// test_table
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the entity.
+	// The entity type.
 	//
 	// example:
 	//

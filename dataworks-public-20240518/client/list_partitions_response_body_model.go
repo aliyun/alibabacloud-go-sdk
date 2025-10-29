@@ -18,11 +18,16 @@ type iListPartitionsResponseBody interface {
 }
 
 type ListPartitionsResponseBody struct {
+	// Pagination information.
 	PagingInfo *ListPartitionsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D1E2E5BC-xxxx-xxxx-xxxx-xxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -65,19 +70,31 @@ func (s *ListPartitionsResponseBody) SetSuccess(v bool) *ListPartitionsResponseB
 }
 
 func (s *ListPartitionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPartitionsResponseBodyPagingInfo struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize      *int32       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of table partitions.
 	PartitionList []*Partition `json:"PartitionList,omitempty" xml:"PartitionList,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
@@ -129,5 +146,14 @@ func (s *ListPartitionsResponseBodyPagingInfo) SetTotalCount(v int64) *ListParti
 }
 
 func (s *ListPartitionsResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.PartitionList != nil {
+		for _, item := range s.PartitionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

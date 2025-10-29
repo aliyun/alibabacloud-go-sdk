@@ -24,25 +24,44 @@ type iCreateBusinessRequest interface {
 }
 
 type CreateBusinessRequest struct {
+	// The name of the workflow. Workflow names must be unique within the same workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// My business process
 	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the workflow.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The Alibaba Cloud account ID of the person responsible for the workflow. You can view the account ID by hovering over the user avatar in the top-right corner of the [DataWorks console](https://workbench.data.aliyun.com/console). If this parameter is not specified, the account ID of the API caller is used by default.
+	//
 	// example:
 	//
 	// 1000000000001
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The ID of the DataWorks workspace. You can view the workspace ID on the workspace management page in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The unique identifier of the DataWorks workspace, This is the identifier shown in the workspace switch at the top of the Data Studio page. Either this parameter or ProjectId must be specified to determine which DataWorks project this API call operates on.
+	//
 	// example:
 	//
 	// dw_project
 	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+	// The module to which the workflow belongs. Valid values:
+	//
+	// 	- NORMAL: Data Studio
+	//
+	// 	- MANUAL_BIZ: Manually triggered workflow
+	//
 	// example:
 	//
 	// NORMAL

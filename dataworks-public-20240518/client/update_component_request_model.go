@@ -18,6 +18,8 @@ type iUpdateComponentRequest interface {
 }
 
 type UpdateComponentRequest struct {
+	// The component ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -53,7 +53,12 @@ func (s *GetDataQualityRuleResponseBody) SetRequestId(v string) *GetDataQualityR
 }
 
 func (s *GetDataQualityRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataQualityRule != nil {
+		if err := s.DataQualityRule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityRuleResponseBodyDataQualityRule struct {
@@ -221,7 +226,31 @@ func (s *GetDataQualityRuleResponseBodyDataQualityRule) SetTemplateCode(v string
 }
 
 func (s *GetDataQualityRuleResponseBodyDataQualityRule) Validate() error {
-	return dara.Validate(s)
+	if s.CheckingConfig != nil {
+		if err := s.CheckingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ErrorHandlers != nil {
+		for _, item := range s.ErrorHandlers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SamplingConfig != nil {
+		if err := s.SamplingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Target != nil {
+		if err := s.Target.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfig struct {
@@ -289,7 +318,12 @@ func (s *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfig) SetType(v 
 }
 
 func (s *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Thresholds != nil {
+		if err := s.Thresholds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholds struct {
@@ -337,7 +371,22 @@ func (s *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholds) 
 }
 
 func (s *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholds) Validate() error {
-	return dara.Validate(s)
+	if s.Critical != nil {
+		if err := s.Critical.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Expected != nil {
+		if err := s.Expected.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Warned != nil {
+		if err := s.Warned.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsCritical struct {

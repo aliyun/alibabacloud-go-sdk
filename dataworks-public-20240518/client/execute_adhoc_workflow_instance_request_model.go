@@ -133,7 +133,16 @@ func (s *ExecuteAdhocWorkflowInstanceRequest) SetTasks(v []*ExecuteAdhocWorkflow
 }
 
 func (s *ExecuteAdhocWorkflowInstanceRequest) Validate() error {
-  return dara.Validate(s)
+  if s.Tasks != nil {
+    for _, item := range s.Tasks {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type ExecuteAdhocWorkflowInstanceRequestTasks struct {
@@ -299,7 +308,41 @@ func (s *ExecuteAdhocWorkflowInstanceRequestTasks) SetType(v string) *ExecuteAdh
 }
 
 func (s *ExecuteAdhocWorkflowInstanceRequestTasks) Validate() error {
-  return dara.Validate(s)
+  if s.DataSource != nil {
+    if err := s.DataSource.Validate(); err != nil {
+      return err
+    }
+  }
+  if s.Dependencies != nil {
+    for _, item := range s.Dependencies {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  if s.Inputs != nil {
+    if err := s.Inputs.Validate(); err != nil {
+      return err
+    }
+  }
+  if s.Outputs != nil {
+    if err := s.Outputs.Validate(); err != nil {
+      return err
+    }
+  }
+  if s.RuntimeResource != nil {
+    if err := s.RuntimeResource.Validate(); err != nil {
+      return err
+    }
+  }
+  if s.Script != nil {
+    if err := s.Script.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type ExecuteAdhocWorkflowInstanceRequestTasksDataSource struct {
@@ -385,7 +428,16 @@ func (s *ExecuteAdhocWorkflowInstanceRequestTasksInputs) SetVariables(v []*Execu
 }
 
 func (s *ExecuteAdhocWorkflowInstanceRequestTasksInputs) Validate() error {
-  return dara.Validate(s)
+  if s.Variables != nil {
+    for _, item := range s.Variables {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables struct {
@@ -467,7 +519,25 @@ func (s *ExecuteAdhocWorkflowInstanceRequestTasksOutputs) SetVariables(v []*Exec
 }
 
 func (s *ExecuteAdhocWorkflowInstanceRequestTasksOutputs) Validate() error {
-  return dara.Validate(s)
+  if s.TaskOutputs != nil {
+    for _, item := range s.TaskOutputs {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  if s.Variables != nil {
+    for _, item := range s.Variables {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type ExecuteAdhocWorkflowInstanceRequestTasksOutputsTaskOutputs struct {

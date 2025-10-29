@@ -59,5 +59,10 @@ func (s *GetDeploymentPackageResponse) SetBody(v *GetDeploymentPackageResponseBo
 }
 
 func (s *GetDeploymentPackageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

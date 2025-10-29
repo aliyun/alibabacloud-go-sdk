@@ -59,5 +59,10 @@ func (s *UpdateFolderResponse) SetBody(v *UpdateFolderResponseBody) *UpdateFolde
 }
 
 func (s *UpdateFolderResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -18,11 +18,16 @@ type iListColumnsResponseBody interface {
 }
 
 type ListColumnsResponseBody struct {
+	// The pagination result.
 	PagingInfo *ListColumnsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D1E2E5BC-xxxx-xxxx-xxxx-xxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -65,19 +70,31 @@ func (s *ListColumnsResponseBody) SetSuccess(v bool) *ListColumnsResponseBody {
 }
 
 func (s *ListColumnsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListColumnsResponseBodyPagingInfo struct {
+	// The columns in the table.
 	Columns []*Column `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of records returned.
+	//
 	// example:
 	//
 	// 1
@@ -129,5 +146,14 @@ func (s *ListColumnsResponseBodyPagingInfo) SetTotalCount(v int64) *ListColumnsR
 }
 
 func (s *ListColumnsResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Columns != nil {
+		for _, item := range s.Columns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *ListDownstreamTasksResponseBody) SetRequestId(v string) *ListDownstream
 }
 
 func (s *ListDownstreamTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDownstreamTasksResponseBodyPagingInfo struct {
@@ -135,7 +140,25 @@ func (s *ListDownstreamTasksResponseBodyPagingInfo) SetTotalCount(v int32) *List
 }
 
 func (s *ListDownstreamTasksResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DownstreamTasks != nil {
+		for _, item := range s.DownstreamTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tasks != nil {
+		for _, item := range s.Tasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasks struct {
@@ -180,7 +203,12 @@ func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasks) SetTask(v *Li
 }
 
 func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasks) Validate() error {
-	return dara.Validate(s)
+	if s.Task != nil {
+		if err := s.Task.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask struct {
@@ -527,7 +555,22 @@ func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) SetWorkfl
 }
 
 func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask) Validate() error {
-	return dara.Validate(s)
+	if s.DataSource != nil {
+		if err := s.DataSource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuntimeResource != nil {
+		if err := s.RuntimeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Trigger != nil {
+		if err := s.Trigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskDataSource struct {
@@ -1123,7 +1166,22 @@ func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetWorkflowId(v int64) 
 }
 
 func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) Validate() error {
-	return dara.Validate(s)
+	if s.DataSource != nil {
+		if err := s.DataSource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuntimeResource != nil {
+		if err := s.RuntimeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Trigger != nil {
+		if err := s.Trigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDownstreamTasksResponseBodyPagingInfoTasksDataSource struct {

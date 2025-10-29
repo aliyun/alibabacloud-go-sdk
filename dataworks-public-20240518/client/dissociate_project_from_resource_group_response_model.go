@@ -59,5 +59,10 @@ func (s *DissociateProjectFromResourceGroupResponse) SetBody(v *DissociateProjec
 }
 
 func (s *DissociateProjectFromResourceGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
