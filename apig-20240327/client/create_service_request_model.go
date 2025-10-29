@@ -113,7 +113,16 @@ func (s *CreateServiceRequest) SetSourceType(v string) *CreateServiceRequest {
 }
 
 func (s *CreateServiceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceConfigs != nil {
+		for _, item := range s.ServiceConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateServiceRequestServiceConfigs struct {
@@ -235,5 +244,15 @@ func (s *CreateServiceRequestServiceConfigs) SetQualifier(v string) *CreateServi
 }
 
 func (s *CreateServiceRequestServiceConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.AgentServiceConfig != nil {
+		if err := s.AgentServiceConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AiServiceConfig != nil {
+		if err := s.AiServiceConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

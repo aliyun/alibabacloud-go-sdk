@@ -59,5 +59,10 @@ func (s *ListZonesResponse) SetBody(v *ListZonesResponseBody) *ListZonesResponse
 }
 
 func (s *ListZonesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

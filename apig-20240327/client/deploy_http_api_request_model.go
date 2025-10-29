@@ -65,7 +65,17 @@ func (s *DeployHttpApiRequest) SetRouteId(v string) *DeployHttpApiRequest {
 }
 
 func (s *DeployHttpApiRequest) Validate() error {
-	return dara.Validate(s)
+	if s.HttpApiConfig != nil {
+		if err := s.HttpApiConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RestApiConfig != nil {
+		if err := s.RestApiConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeployHttpApiRequestHttpApiConfig struct {
@@ -176,7 +186,12 @@ func (s *DeployHttpApiRequestRestApiConfig) SetRevisionId(v string) *DeployHttpA
 }
 
 func (s *DeployHttpApiRequestRestApiConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Environment != nil {
+		if err := s.Environment.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeployHttpApiRequestRestApiConfigEnvironment struct {
@@ -243,7 +258,16 @@ func (s *DeployHttpApiRequestRestApiConfigEnvironment) SetServiceConfigs(v []*De
 }
 
 func (s *DeployHttpApiRequestRestApiConfigEnvironment) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceConfigs != nil {
+		for _, item := range s.ServiceConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs struct {
@@ -348,5 +372,10 @@ func (s *DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs) SetWeight(v
 }
 
 func (s *DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.Match != nil {
+		if err := s.Match.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

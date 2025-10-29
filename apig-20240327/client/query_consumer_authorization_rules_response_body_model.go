@@ -87,7 +87,12 @@ func (s *QueryConsumerAuthorizationRulesResponseBody) SetRequestId(v string) *Qu
 }
 
 func (s *QueryConsumerAuthorizationRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryConsumerAuthorizationRulesResponseBodyData struct {
@@ -158,7 +163,16 @@ func (s *QueryConsumerAuthorizationRulesResponseBodyData) SetTotalSize(v string)
 }
 
 func (s *QueryConsumerAuthorizationRulesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryConsumerAuthorizationRulesResponseBodyDataItems struct {
@@ -378,7 +392,32 @@ func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) SetUpdateTimestam
 }
 
 func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) Validate() error {
-	return dara.Validate(s)
+	if s.ApiInfo != nil {
+		if err := s.ApiInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ConsumerInfo != nil {
+		if err := s.ConsumerInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EnvironmentInfo != nil {
+		if err := s.EnvironmentInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.GatewayInfo != nil {
+		if err := s.GatewayInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceInfo != nil {
+		if err := s.ResourceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo struct {
@@ -415,5 +454,15 @@ func (s *QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo) SetRo
 }
 
 func (s *QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo) Validate() error {
-	return dara.Validate(s)
+	if s.OperationInfo != nil {
+		if err := s.OperationInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Route != nil {
+		if err := s.Route.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

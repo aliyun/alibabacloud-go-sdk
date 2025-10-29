@@ -87,7 +87,12 @@ func (s *ListGatewaysResponseBody) SetRequestId(v string) *ListGatewaysResponseB
 }
 
 func (s *ListGatewaysResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListGatewaysResponseBodyData struct {
@@ -158,7 +163,16 @@ func (s *ListGatewaysResponseBodyData) SetTotalSize(v int64) *ListGatewaysRespon
 }
 
 func (s *ListGatewaysResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewaysResponseBodyDataItems struct {
@@ -504,7 +518,58 @@ func (s *ListGatewaysResponseBodyDataItems) SetZones(v []*ListGatewaysResponseBo
 }
 
 func (s *ListGatewaysResponseBodyDataItems) Validate() error {
-	return dara.Validate(s)
+	if s.LoadBalancers != nil {
+		for _, item := range s.LoadBalancers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SecurityGroup != nil {
+		if err := s.SecurityGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubDomainInfos != nil {
+		for _, item := range s.SubDomainInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VSwitch != nil {
+		if err := s.VSwitch.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Vpc != nil {
+		if err := s.Vpc.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Zones != nil {
+		for _, item := range s.Zones {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewaysResponseBodyDataItemsLoadBalancers struct {
@@ -668,7 +733,16 @@ func (s *ListGatewaysResponseBodyDataItemsLoadBalancers) SetType(v string) *List
 }
 
 func (s *ListGatewaysResponseBodyDataItemsLoadBalancers) Validate() error {
-	return dara.Validate(s)
+	if s.Ports != nil {
+		for _, item := range s.Ports {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewaysResponseBodyDataItemsLoadBalancersPorts struct {
@@ -893,7 +967,12 @@ func (s *ListGatewaysResponseBodyDataItemsZones) SetZoneId(v string) *ListGatewa
 }
 
 func (s *ListGatewaysResponseBodyDataItemsZones) Validate() error {
-	return dara.Validate(s)
+	if s.VSwitch != nil {
+		if err := s.VSwitch.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListGatewaysResponseBodyDataItemsZonesVSwitch struct {

@@ -82,7 +82,12 @@ func (s *ListPluginAttachmentsResponseBody) SetRequestId(v string) *ListPluginAt
 }
 
 func (s *ListPluginAttachmentsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPluginAttachmentsResponseBodyData struct {
@@ -146,7 +151,16 @@ func (s *ListPluginAttachmentsResponseBodyData) SetTotalSize(v int32) *ListPlugi
 }
 
 func (s *ListPluginAttachmentsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPluginAttachmentsResponseBodyDataItems struct {
@@ -266,5 +280,29 @@ func (s *ListPluginAttachmentsResponseBodyDataItems) SetResourceInfos(v []*Resou
 }
 
 func (s *ListPluginAttachmentsResponseBodyDataItems) Validate() error {
-	return dara.Validate(s)
+	if s.EnvironmentInfo != nil {
+		if err := s.EnvironmentInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ParentResourceInfo != nil {
+		if err := s.ParentResourceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PluginClassInfo != nil {
+		if err := s.PluginClassInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceInfos != nil {
+		for _, item := range s.ResourceInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

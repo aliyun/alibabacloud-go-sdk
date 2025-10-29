@@ -113,7 +113,17 @@ func (s *AiServiceConfig) SetProvider(v string) *AiServiceConfig {
 }
 
 func (s *AiServiceConfig) Validate() error {
-	return dara.Validate(s)
+	if s.BedrockServiceConfig != nil {
+		if err := s.BedrockServiceConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PaiEASServiceConfig != nil {
+		if err := s.PaiEASServiceConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AiServiceConfigBedrockServiceConfig struct {

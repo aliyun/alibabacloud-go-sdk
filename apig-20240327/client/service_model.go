@@ -293,7 +293,40 @@ func (s *Service) SetUpdateTimestamp(v int64) *Service {
 }
 
 func (s *Service) Validate() error {
-	return dara.Validate(s)
+	if s.AgentServiceConfig != nil {
+		if err := s.AgentServiceConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AiServiceConfig != nil {
+		if err := s.AiServiceConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HealthCheck != nil {
+		if err := s.HealthCheck.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LabelDetails != nil {
+		for _, item := range s.LabelDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Ports != nil {
+		for _, item := range s.Ports {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ServicePorts struct {

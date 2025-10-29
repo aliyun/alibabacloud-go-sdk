@@ -176,7 +176,31 @@ func (s *CreateGatewayRequest) SetZoneConfig(v *CreateGatewayRequestZoneConfig) 
 }
 
 func (s *CreateGatewayRequest) Validate() error {
-	return dara.Validate(s)
+	if s.LogConfig != nil {
+		if err := s.LogConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkAccessConfig != nil {
+		if err := s.NetworkAccessConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ZoneConfig != nil {
+		if err := s.ZoneConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateGatewayRequestLogConfig struct {
@@ -201,7 +225,12 @@ func (s *CreateGatewayRequestLogConfig) SetSls(v *CreateGatewayRequestLogConfigS
 }
 
 func (s *CreateGatewayRequestLogConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Sls != nil {
+		if err := s.Sls.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateGatewayRequestLogConfigSls struct {
@@ -349,7 +378,16 @@ func (s *CreateGatewayRequestZoneConfig) SetZones(v []*CreateGatewayRequestZoneC
 }
 
 func (s *CreateGatewayRequestZoneConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Zones != nil {
+		for _, item := range s.Zones {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateGatewayRequestZoneConfigZones struct {

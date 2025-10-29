@@ -71,7 +71,39 @@ func (s *HttpApiRequestContract) SetQueryParameters(v []*HttpApiParameter) *Http
 }
 
 func (s *HttpApiRequestContract) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HeaderParameters != nil {
+		for _, item := range s.HeaderParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PathParameters != nil {
+		for _, item := range s.PathParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.QueryParameters != nil {
+		for _, item := range s.QueryParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HttpApiRequestContractBody struct {

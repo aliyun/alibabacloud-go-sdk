@@ -87,7 +87,12 @@ func (s *ListHttpApiOperationsResponseBody) SetRequestId(v string) *ListHttpApiO
 }
 
 func (s *ListHttpApiOperationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListHttpApiOperationsResponseBodyData struct {
@@ -158,5 +163,14 @@ func (s *ListHttpApiOperationsResponseBodyData) SetTotalSize(v int32) *ListHttpA
 }
 
 func (s *ListHttpApiOperationsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -119,5 +119,24 @@ func (s *CreateConsumerRequest) SetName(v string) *CreateConsumerRequest {
 }
 
 func (s *CreateConsumerRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AkSkIdentityConfigs != nil {
+		for _, item := range s.AkSkIdentityConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ApikeyIdentityConfig != nil {
+		if err := s.ApikeyIdentityConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.JwtIdentityConfig != nil {
+		if err := s.JwtIdentityConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

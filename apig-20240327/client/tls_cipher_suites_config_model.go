@@ -47,7 +47,16 @@ func (s *TlsCipherSuitesConfig) SetTlsCipherSuite(v []*TlsCipherSuitesConfigTlsC
 }
 
 func (s *TlsCipherSuitesConfig) Validate() error {
-	return dara.Validate(s)
+	if s.TlsCipherSuite != nil {
+		for _, item := range s.TlsCipherSuite {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TlsCipherSuitesConfigTlsCipherSuite struct {

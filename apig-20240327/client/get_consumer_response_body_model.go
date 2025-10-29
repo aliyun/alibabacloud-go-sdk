@@ -82,7 +82,12 @@ func (s *GetConsumerResponseBody) SetRequestId(v string) *GetConsumerResponseBod
 }
 
 func (s *GetConsumerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetConsumerResponseBodyData struct {
@@ -215,5 +220,20 @@ func (s *GetConsumerResponseBodyData) SetUpdateTimestamp(v int64) *GetConsumerRe
 }
 
 func (s *GetConsumerResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AkSkIdentityConfigs != nil {
+		if err := s.AkSkIdentityConfigs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ApiKeyIdentityConfig != nil {
+		if err := s.ApiKeyIdentityConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.JwtIdentityConfig != nil {
+		if err := s.JwtIdentityConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

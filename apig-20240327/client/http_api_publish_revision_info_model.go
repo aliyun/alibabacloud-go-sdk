@@ -200,7 +200,71 @@ func (s *HttpApiPublishRevisionInfo) SetVipConfigs(v []*HttpApiPublishRevisionIn
 }
 
 func (s *HttpApiPublishRevisionInfo) Validate() error {
-	return dara.Validate(s)
+	if s.CloudProductConfig != nil {
+		if err := s.CloudProductConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomDomains != nil {
+		for _, item := range s.CustomDomains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DnsConfigs != nil {
+		for _, item := range s.DnsConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EnvironmentInfo != nil {
+		if err := s.EnvironmentInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Operations != nil {
+		for _, item := range s.Operations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ServiceConfigs != nil {
+		for _, item := range s.ServiceConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SubDomains != nil {
+		for _, item := range s.SubDomains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VipConfigs != nil {
+		for _, item := range s.VipConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HttpApiPublishRevisionInfoCloudProductConfig struct {
@@ -258,7 +322,34 @@ func (s *HttpApiPublishRevisionInfoCloudProductConfig) SetMseNacosConfigs(v []*H
 }
 
 func (s *HttpApiPublishRevisionInfoCloudProductConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ContainerServiceConfigs != nil {
+		for _, item := range s.ContainerServiceConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FunctionConfigs != nil {
+		for _, item := range s.FunctionConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MseNacosConfigs != nil {
+		for _, item := range s.MseNacosConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HttpApiPublishRevisionInfoCloudProductConfigContainerServiceConfigs struct {
@@ -361,7 +452,12 @@ func (s *HttpApiPublishRevisionInfoCloudProductConfigContainerServiceConfigs) Se
 }
 
 func (s *HttpApiPublishRevisionInfoCloudProductConfigContainerServiceConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.Match != nil {
+		if err := s.Match.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HttpApiPublishRevisionInfoCloudProductConfigFunctionConfigs struct {
@@ -438,7 +534,12 @@ func (s *HttpApiPublishRevisionInfoCloudProductConfigFunctionConfigs) SetWeight(
 }
 
 func (s *HttpApiPublishRevisionInfoCloudProductConfigFunctionConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.Match != nil {
+		if err := s.Match.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HttpApiPublishRevisionInfoCloudProductConfigMseNacosConfigs struct {
@@ -528,7 +629,12 @@ func (s *HttpApiPublishRevisionInfoCloudProductConfigMseNacosConfigs) SetWeight(
 }
 
 func (s *HttpApiPublishRevisionInfoCloudProductConfigMseNacosConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.Match != nil {
+		if err := s.Match.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HttpApiPublishRevisionInfoDnsConfigs struct {
@@ -576,7 +682,12 @@ func (s *HttpApiPublishRevisionInfoDnsConfigs) SetWeight(v int32) *HttpApiPublis
 }
 
 func (s *HttpApiPublishRevisionInfoDnsConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.Match != nil {
+		if err := s.Match.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HttpApiPublishRevisionInfoEnvironmentInfo struct {
@@ -640,7 +751,12 @@ func (s *HttpApiPublishRevisionInfoEnvironmentInfo) SetName(v string) *HttpApiPu
 }
 
 func (s *HttpApiPublishRevisionInfoEnvironmentInfo) Validate() error {
-	return dara.Validate(s)
+	if s.GatewayInfo != nil {
+		if err := s.GatewayInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HttpApiPublishRevisionInfoEnvironmentInfoGatewayInfo struct {
@@ -771,7 +887,12 @@ func (s *HttpApiPublishRevisionInfoServiceConfigs) SetWeight(v int32) *HttpApiPu
 }
 
 func (s *HttpApiPublishRevisionInfoServiceConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.Match != nil {
+		if err := s.Match.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HttpApiPublishRevisionInfoVipConfigs struct {
@@ -819,5 +940,10 @@ func (s *HttpApiPublishRevisionInfoVipConfigs) SetWeight(v int32) *HttpApiPublis
 }
 
 func (s *HttpApiPublishRevisionInfoVipConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.Match != nil {
+		if err := s.Match.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

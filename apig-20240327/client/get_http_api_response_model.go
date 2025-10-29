@@ -59,5 +59,10 @@ func (s *GetHttpApiResponse) SetBody(v *GetHttpApiResponseBody) *GetHttpApiRespo
 }
 
 func (s *GetHttpApiResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

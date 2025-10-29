@@ -59,5 +59,10 @@ func (s *DeleteGatewayResponse) SetBody(v *DeleteGatewayResponseBody) *DeleteGat
 }
 
 func (s *DeleteGatewayResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

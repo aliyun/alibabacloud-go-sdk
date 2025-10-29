@@ -80,7 +80,12 @@ func (s *CreateAndAttachPolicyResponseBody) SetRequestId(v string) *CreateAndAtt
 }
 
 func (s *CreateAndAttachPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAndAttachPolicyResponseBodyData struct {
@@ -118,5 +123,10 @@ func (s *CreateAndAttachPolicyResponseBodyData) SetPolicyId(v string) *CreateAnd
 }
 
 func (s *CreateAndAttachPolicyResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Attachment != nil {
+		if err := s.Attachment.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

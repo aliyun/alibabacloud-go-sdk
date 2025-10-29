@@ -87,7 +87,12 @@ func (s *GetDomainResponseBody) SetRequestId(v string) *GetDomainResponseBody {
 }
 
 func (s *GetDomainResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDomainResponseBodyData struct {
@@ -492,7 +497,17 @@ func (s *GetDomainResponseBodyData) SetUpdatetimestamp(v int64) *GetDomainRespon
 }
 
 func (s *GetDomainResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.StatisticsInfo != nil {
+		if err := s.StatisticsInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TlsCipherSuitesConfig != nil {
+		if err := s.TlsCipherSuitesConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDomainResponseBodyDataStatisticsInfo struct {
@@ -533,5 +548,14 @@ func (s *GetDomainResponseBodyDataStatisticsInfo) SetTotalCount(v string) *GetDo
 }
 
 func (s *GetDomainResponseBodyDataStatisticsInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceStatistics != nil {
+		for _, item := range s.ResourceStatistics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

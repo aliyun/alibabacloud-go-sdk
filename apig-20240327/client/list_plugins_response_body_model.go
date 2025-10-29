@@ -80,7 +80,12 @@ func (s *ListPluginsResponseBody) SetRequestId(v string) *ListPluginsResponseBod
 }
 
 func (s *ListPluginsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPluginsResponseBodyData struct {
@@ -144,7 +149,16 @@ func (s *ListPluginsResponseBodyData) SetTotalSize(v int32) *ListPluginsResponse
 }
 
 func (s *ListPluginsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPluginsResponseBodyDataItems struct {
@@ -202,7 +216,22 @@ func (s *ListPluginsResponseBodyDataItems) SetPluginId(v string) *ListPluginsRes
 }
 
 func (s *ListPluginsResponseBodyDataItems) Validate() error {
-	return dara.Validate(s)
+	if s.AttachmentInfo != nil {
+		if err := s.AttachmentInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.GatewayInfo != nil {
+		if err := s.GatewayInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PluginClassInfo != nil {
+		if err := s.PluginClassInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPluginsResponseBodyDataItemsAttachmentInfo struct {

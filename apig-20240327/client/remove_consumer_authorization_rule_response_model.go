@@ -59,5 +59,10 @@ func (s *RemoveConsumerAuthorizationRuleResponse) SetBody(v *RemoveConsumerAutho
 }
 
 func (s *RemoveConsumerAuthorizationRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

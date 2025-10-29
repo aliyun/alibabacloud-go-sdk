@@ -87,7 +87,12 @@ func (s *CreatePolicyAttachmentResponseBody) SetRequestId(v string) *CreatePolic
 }
 
 func (s *CreatePolicyAttachmentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreatePolicyAttachmentResponseBodyData struct {

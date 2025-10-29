@@ -35,7 +35,12 @@ func (s *GatewayLogConfig) SetSlsConfig(v *GatewayLogConfigSlsConfig) *GatewayLo
 }
 
 func (s *GatewayLogConfig) Validate() error {
-	return dara.Validate(s)
+	if s.SlsConfig != nil {
+		if err := s.SlsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GatewayLogConfigSlsConfig struct {

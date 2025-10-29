@@ -47,5 +47,10 @@ func (s *ParentResourceInfo) SetResourceType(v string) *ParentResourceInfo {
 }
 
 func (s *ParentResourceInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ApiInfo != nil {
+		if err := s.ApiInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

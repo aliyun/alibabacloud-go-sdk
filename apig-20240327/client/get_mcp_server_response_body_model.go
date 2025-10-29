@@ -82,7 +82,12 @@ func (s *GetMcpServerResponseBody) SetRequestId(v string) *GetMcpServerResponseB
 }
 
 func (s *GetMcpServerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMcpServerResponseBodyData struct {
@@ -351,7 +356,40 @@ func (s *GetMcpServerResponseBodyData) SetType(v string) *GetMcpServerResponseBo
 }
 
 func (s *GetMcpServerResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AssembledSources != nil {
+		for _, item := range s.AssembledSources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Backend != nil {
+		if err := s.Backend.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DomainInfos != nil {
+		for _, item := range s.DomainInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Match != nil {
+		if err := s.Match.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NacosMcpSyncInfo != nil {
+		if err := s.NacosMcpSyncInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMcpServerResponseBodyDataAssembledSources struct {

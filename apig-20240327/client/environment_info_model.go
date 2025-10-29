@@ -146,6 +146,20 @@ func (s *EnvironmentInfo) SetUpdateTimestamp(v int64) *EnvironmentInfo {
 }
 
 func (s *EnvironmentInfo) Validate() error {
-  return dara.Validate(s)
+  if s.GatewayInfo != nil {
+    if err := s.GatewayInfo.Validate(); err != nil {
+      return err
+    }
+  }
+  if s.SubDomainInfos != nil {
+    for _, item := range s.SubDomainInfos {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 

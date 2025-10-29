@@ -59,5 +59,10 @@ func (s *GetMcpServerResponse) SetBody(v *GetMcpServerResponseBody) *GetMcpServe
 }
 
 func (s *GetMcpServerResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

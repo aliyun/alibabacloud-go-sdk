@@ -95,5 +95,14 @@ func (s *HttpApiInfoByName) SetVersionedHttpApis(v []*HttpApiApiInfo) *HttpApiIn
 }
 
 func (s *HttpApiInfoByName) Validate() error {
-	return dara.Validate(s)
+	if s.VersionedHttpApis != nil {
+		for _, item := range s.VersionedHttpApis {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

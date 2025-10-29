@@ -71,7 +71,16 @@ func (s *HttpDubboTranscoder) SetMothedMapList(v []*HttpDubboTranscoderMothedMap
 }
 
 func (s *HttpDubboTranscoder) Validate() error {
-	return dara.Validate(s)
+	if s.MothedMapList != nil {
+		for _, item := range s.MothedMapList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HttpDubboTranscoderMothedMapList struct {
@@ -155,7 +164,16 @@ func (s *HttpDubboTranscoderMothedMapList) SetPassThroughList(v []*string) *Http
 }
 
 func (s *HttpDubboTranscoderMothedMapList) Validate() error {
-	return dara.Validate(s)
+	if s.ParamMapsList != nil {
+		for _, item := range s.ParamMapsList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HttpDubboTranscoderMothedMapListParamMapsList struct {

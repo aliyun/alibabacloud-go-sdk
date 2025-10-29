@@ -194,7 +194,58 @@ func (s *HttpApiDeployConfig) SetSubDomains(v []*HttpApiDeployConfigSubDomains) 
 }
 
 func (s *HttpApiDeployConfig) Validate() error {
-	return dara.Validate(s)
+	if s.CustomDomainInfos != nil {
+		for _, item := range s.CustomDomainInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.GatewayInfo != nil {
+		if err := s.GatewayInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Mock != nil {
+		if err := s.Mock.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PolicyConfigs != nil {
+		for _, item := range s.PolicyConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RouteBackend != nil {
+		if err := s.RouteBackend.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceConfigs != nil {
+		for _, item := range s.ServiceConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SubDomains != nil {
+		for _, item := range s.SubDomains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HttpApiDeployConfigCustomDomainInfos struct {
@@ -290,7 +341,12 @@ func (s *HttpApiDeployConfigPolicyConfigs) SetType(v string) *HttpApiDeployConfi
 }
 
 func (s *HttpApiDeployConfigPolicyConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.AiFallbackConfig != nil {
+		if err := s.AiFallbackConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HttpApiDeployConfigPolicyConfigsAiFallbackConfig struct {
@@ -315,7 +371,16 @@ func (s *HttpApiDeployConfigPolicyConfigsAiFallbackConfig) SetServiceConfigs(v [
 }
 
 func (s *HttpApiDeployConfigPolicyConfigsAiFallbackConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceConfigs != nil {
+		for _, item := range s.ServiceConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HttpApiDeployConfigPolicyConfigsAiFallbackConfigServiceConfigs struct {

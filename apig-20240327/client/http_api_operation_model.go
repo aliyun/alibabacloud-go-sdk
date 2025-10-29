@@ -161,5 +161,34 @@ func (s *HttpApiOperation) SetResponse(v *HttpApiResponseContract) *HttpApiOpera
 }
 
 func (s *HttpApiOperation) Validate() error {
-	return dara.Validate(s)
+	if s.AuthConfig != nil {
+		if err := s.AuthConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeployConfigs != nil {
+		for _, item := range s.DeployConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Mock != nil {
+		if err := s.Mock.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Request != nil {
+		if err := s.Request.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Response != nil {
+		if err := s.Response.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

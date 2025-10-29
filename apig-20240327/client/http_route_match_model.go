@@ -86,7 +86,30 @@ func (s *HttpRouteMatch) SetQueryParams(v []*HttpRouteMatchQueryParams) *HttpRou
 }
 
 func (s *HttpRouteMatch) Validate() error {
-	return dara.Validate(s)
+	if s.Headers != nil {
+		for _, item := range s.Headers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Path != nil {
+		if err := s.Path.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QueryParams != nil {
+		for _, item := range s.QueryParams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HttpRouteMatchHeaders struct {

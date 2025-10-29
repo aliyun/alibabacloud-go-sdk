@@ -163,7 +163,12 @@ func (s *GetDashboardRequest) SetUpstreamCluster(v string) *GetDashboardRequest 
 }
 
 func (s *GetDashboardRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		if err := s.Filter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDashboardRequestFilter struct {

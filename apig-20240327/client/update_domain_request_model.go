@@ -207,5 +207,10 @@ func (s *UpdateDomainRequest) SetTlsMin(v string) *UpdateDomainRequest {
 }
 
 func (s *UpdateDomainRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TlsCipherSuitesConfig != nil {
+		if err := s.TlsCipherSuitesConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -87,7 +87,12 @@ func (s *GetResourceOverviewResponseBody) SetRequestId(v string) *GetResourceOve
 }
 
 func (s *GetResourceOverviewResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResourceOverviewResponseBodyData struct {
@@ -124,7 +129,17 @@ func (s *GetResourceOverviewResponseBodyData) SetGateway(v *GetResourceOverviewR
 }
 
 func (s *GetResourceOverviewResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Api != nil {
+		if err := s.Api.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Gateway != nil {
+		if err := s.Gateway.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResourceOverviewResponseBodyDataApi struct {

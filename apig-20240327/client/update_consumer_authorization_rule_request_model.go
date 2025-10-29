@@ -65,5 +65,14 @@ func (s *UpdateConsumerAuthorizationRuleRequest) SetExpireTimestamp(v int64) *Up
 }
 
 func (s *UpdateConsumerAuthorizationRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorizationResourceInfos != nil {
+		for _, item := range s.AuthorizationResourceInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

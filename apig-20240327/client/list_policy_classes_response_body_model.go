@@ -87,7 +87,12 @@ func (s *ListPolicyClassesResponseBody) SetRequestId(v string) *ListPolicyClasse
 }
 
 func (s *ListPolicyClassesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPolicyClassesResponseBodyData struct {
@@ -158,5 +163,14 @@ func (s *ListPolicyClassesResponseBodyData) SetTotalSize(v int32) *ListPolicyCla
 }
 
 func (s *ListPolicyClassesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

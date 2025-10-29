@@ -36,5 +36,10 @@ func (s *UpdateHttpApiOperationRequest) SetOperation(v *HttpApiOperation) *Updat
 }
 
 func (s *UpdateHttpApiOperationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Operation != nil {
+		if err := s.Operation.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

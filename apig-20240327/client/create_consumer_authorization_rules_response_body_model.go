@@ -87,7 +87,12 @@ func (s *CreateConsumerAuthorizationRulesResponseBody) SetRequestId(v string) *C
 }
 
 func (s *CreateConsumerAuthorizationRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateConsumerAuthorizationRulesResponseBodyData struct {

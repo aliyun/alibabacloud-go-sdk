@@ -47,7 +47,21 @@ func (s *ApiRouteConflictInfo) SetDomainInfo(v *ApiRouteConflictInfoDomainInfo) 
 }
 
 func (s *ApiRouteConflictInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Conflicts != nil {
+		for _, item := range s.Conflicts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DomainInfo != nil {
+		if err := s.DomainInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ApiRouteConflictInfoConflicts struct {
@@ -122,7 +136,26 @@ func (s *ApiRouteConflictInfoConflicts) SetRouteInfo(v *ApiRouteConflictInfoConf
 }
 
 func (s *ApiRouteConflictInfoConflicts) Validate() error {
-	return dara.Validate(s)
+	if s.Details != nil {
+		for _, item := range s.Details {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EnvironmentInfo != nil {
+		if err := s.EnvironmentInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RouteInfo != nil {
+		if err := s.RouteInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ApiRouteConflictInfoConflictsDetails struct {
@@ -167,7 +200,17 @@ func (s *ApiRouteConflictInfoConflictsDetails) SetLevel(v string) *ApiRouteConfl
 }
 
 func (s *ApiRouteConflictInfoConflictsDetails) Validate() error {
-	return dara.Validate(s)
+	if s.ConflictingMatch != nil {
+		if err := s.ConflictingMatch.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DetectedMatch != nil {
+		if err := s.DetectedMatch.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ApiRouteConflictInfoConflictsDetailsConflictingMatch struct {
@@ -202,7 +245,17 @@ func (s *ApiRouteConflictInfoConflictsDetailsConflictingMatch) SetOperationInfo(
 }
 
 func (s *ApiRouteConflictInfoConflictsDetailsConflictingMatch) Validate() error {
-	return dara.Validate(s)
+	if s.Match != nil {
+		if err := s.Match.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OperationInfo != nil {
+		if err := s.OperationInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ApiRouteConflictInfoConflictsDetailsConflictingMatchOperationInfo struct {
@@ -272,7 +325,17 @@ func (s *ApiRouteConflictInfoConflictsDetailsDetectedMatch) SetOperationInfo(v *
 }
 
 func (s *ApiRouteConflictInfoConflictsDetailsDetectedMatch) Validate() error {
-	return dara.Validate(s)
+	if s.Match != nil {
+		if err := s.Match.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OperationInfo != nil {
+		if err := s.OperationInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ApiRouteConflictInfoConflictsDetailsDetectedMatchOperationInfo struct {

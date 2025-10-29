@@ -87,7 +87,12 @@ func (s *GetGatewayResponseBody) SetRequestId(v string) *GetGatewayResponseBody 
 }
 
 func (s *GetGatewayResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGatewayResponseBodyData struct {
@@ -452,7 +457,63 @@ func (s *GetGatewayResponseBodyData) SetZones(v []*GetGatewayResponseBodyDataZon
 }
 
 func (s *GetGatewayResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Environments != nil {
+		for _, item := range s.Environments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LoadBalancers != nil {
+		for _, item := range s.LoadBalancers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MaintenancePeriod != nil {
+		if err := s.MaintenancePeriod.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityGroup != nil {
+		if err := s.SecurityGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VSwitch != nil {
+		if err := s.VSwitch.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Vpc != nil {
+		if err := s.Vpc.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Zones != nil {
+		for _, item := range s.Zones {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetGatewayResponseBodyDataEnvironments struct {
@@ -547,7 +608,9 @@ type GetGatewayResponseBodyDataLoadBalancers struct {
 	// example:
 	//
 	// true
-	GatewayDefault *bool `json:"gatewayDefault,omitempty" xml:"gatewayDefault,omitempty"`
+	GatewayDefault *bool     `json:"gatewayDefault,omitempty" xml:"gatewayDefault,omitempty"`
+	Ipv4Addresses  []*string `json:"ipv4Addresses,omitempty" xml:"ipv4Addresses,omitempty" type:"Repeated"`
+	Ipv6Addresses  []*string `json:"ipv6Addresses,omitempty" xml:"ipv6Addresses,omitempty" type:"Repeated"`
 	// The load balancer ID.
 	//
 	// example:
@@ -610,6 +673,14 @@ func (s *GetGatewayResponseBodyDataLoadBalancers) GetGatewayDefault() *bool {
 	return s.GatewayDefault
 }
 
+func (s *GetGatewayResponseBodyDataLoadBalancers) GetIpv4Addresses() []*string {
+	return s.Ipv4Addresses
+}
+
+func (s *GetGatewayResponseBodyDataLoadBalancers) GetIpv6Addresses() []*string {
+	return s.Ipv6Addresses
+}
+
 func (s *GetGatewayResponseBodyDataLoadBalancers) GetLoadBalancerId() *string {
 	return s.LoadBalancerId
 }
@@ -650,6 +721,16 @@ func (s *GetGatewayResponseBodyDataLoadBalancers) SetGatewayDefault(v bool) *Get
 	return s
 }
 
+func (s *GetGatewayResponseBodyDataLoadBalancers) SetIpv4Addresses(v []*string) *GetGatewayResponseBodyDataLoadBalancers {
+	s.Ipv4Addresses = v
+	return s
+}
+
+func (s *GetGatewayResponseBodyDataLoadBalancers) SetIpv6Addresses(v []*string) *GetGatewayResponseBodyDataLoadBalancers {
+	s.Ipv6Addresses = v
+	return s
+}
+
 func (s *GetGatewayResponseBodyDataLoadBalancers) SetLoadBalancerId(v string) *GetGatewayResponseBodyDataLoadBalancers {
 	s.LoadBalancerId = &v
 	return s
@@ -676,7 +757,16 @@ func (s *GetGatewayResponseBodyDataLoadBalancers) SetType(v string) *GetGatewayR
 }
 
 func (s *GetGatewayResponseBodyDataLoadBalancers) Validate() error {
-	return dara.Validate(s)
+	if s.Ports != nil {
+		for _, item := range s.Ports {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetGatewayResponseBodyDataLoadBalancersPorts struct {
@@ -1002,7 +1092,12 @@ func (s *GetGatewayResponseBodyDataZones) SetZoneId(v string) *GetGatewayRespons
 }
 
 func (s *GetGatewayResponseBodyDataZones) Validate() error {
-	return dara.Validate(s)
+	if s.VSwitch != nil {
+		if err := s.VSwitch.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGatewayResponseBodyDataZonesVSwitch struct {

@@ -71,7 +71,12 @@ func (s *GatewayInfo) SetVpcInfo(v *GatewayInfoVpcInfo) *GatewayInfo {
 }
 
 func (s *GatewayInfo) Validate() error {
-	return dara.Validate(s)
+	if s.VpcInfo != nil {
+		if err := s.VpcInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GatewayInfoVpcInfo struct {

@@ -101,7 +101,17 @@ func (s *AgentServiceConfig) SetProvider(v string) *AgentServiceConfig {
 }
 
 func (s *AgentServiceConfig) Validate() error {
-	return dara.Validate(s)
+	if s.DashScopeConfig != nil {
+		if err := s.DashScopeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DifyConfig != nil {
+		if err := s.DifyConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AgentServiceConfigDashScopeConfig struct {
@@ -126,7 +136,16 @@ func (s *AgentServiceConfigDashScopeConfig) SetAppCredentials(v []*AgentServiceC
 }
 
 func (s *AgentServiceConfigDashScopeConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AppCredentials != nil {
+		for _, item := range s.AppCredentials {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AgentServiceConfigDashScopeConfigAppCredentials struct {

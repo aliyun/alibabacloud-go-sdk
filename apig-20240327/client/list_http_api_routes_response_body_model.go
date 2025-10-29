@@ -87,7 +87,12 @@ func (s *ListHttpApiRoutesResponseBody) SetRequestId(v string) *ListHttpApiRoute
 }
 
 func (s *ListHttpApiRoutesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListHttpApiRoutesResponseBodyData struct {
@@ -158,5 +163,14 @@ func (s *ListHttpApiRoutesResponseBodyData) SetTotalSize(v int32) *ListHttpApiRo
 }
 
 func (s *ListHttpApiRoutesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

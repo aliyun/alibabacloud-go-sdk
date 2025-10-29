@@ -87,7 +87,12 @@ func (s *ExportHttpApiResponseBody) SetRequestId(v string) *ExportHttpApiRespons
 }
 
 func (s *ExportHttpApiResponseBody) Validate() error {
-  return dara.Validate(s)
+  if s.Data != nil {
+    if err := s.Data.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type ExportHttpApiResponseBodyData struct {

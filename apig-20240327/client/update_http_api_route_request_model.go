@@ -132,7 +132,31 @@ func (s *UpdateHttpApiRouteRequest) SetName(v string) *UpdateHttpApiRouteRequest
 }
 
 func (s *UpdateHttpApiRouteRequest) Validate() error {
-	return dara.Validate(s)
+	if s.BackendConfig != nil {
+		if err := s.BackendConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeployConfigs != nil {
+		for _, item := range s.DeployConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Match != nil {
+		if err := s.Match.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.McpRouteConfig != nil {
+		if err := s.McpRouteConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateHttpApiRouteRequestBackendConfig struct {
@@ -183,7 +207,16 @@ func (s *UpdateHttpApiRouteRequestBackendConfig) SetServices(v []*UpdateHttpApiR
 }
 
 func (s *UpdateHttpApiRouteRequestBackendConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Services != nil {
+		for _, item := range s.Services {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateHttpApiRouteRequestBackendConfigServices struct {

@@ -82,7 +82,12 @@ func (s *ListMcpServersResponseBody) SetRequestId(v string) *ListMcpServersRespo
 }
 
 func (s *ListMcpServersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMcpServersResponseBodyData struct {
@@ -146,10 +151,20 @@ func (s *ListMcpServersResponseBodyData) SetTotalSize(v int32) *ListMcpServersRe
 }
 
 func (s *ListMcpServersResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMcpServersResponseBodyDataItems struct {
+	ApiId            *string                                                `json:"apiId,omitempty" xml:"apiId,omitempty"`
 	AssembledSources []*ListMcpServersResponseBodyDataItemsAssembledSources `json:"assembledSources,omitempty" xml:"assembledSources,omitempty" type:"Repeated"`
 	Backend          *Backend                                               `json:"backend,omitempty" xml:"backend,omitempty"`
 	// example:
@@ -213,6 +228,10 @@ func (s ListMcpServersResponseBodyDataItems) String() string {
 
 func (s ListMcpServersResponseBodyDataItems) GoString() string {
 	return s.String()
+}
+
+func (s *ListMcpServersResponseBodyDataItems) GetApiId() *string {
+	return s.ApiId
 }
 
 func (s *ListMcpServersResponseBodyDataItems) GetAssembledSources() []*ListMcpServersResponseBodyDataItemsAssembledSources {
@@ -293,6 +312,11 @@ func (s *ListMcpServersResponseBodyDataItems) GetRouteId() *string {
 
 func (s *ListMcpServersResponseBodyDataItems) GetType() *string {
 	return s.Type
+}
+
+func (s *ListMcpServersResponseBodyDataItems) SetApiId(v string) *ListMcpServersResponseBodyDataItems {
+	s.ApiId = &v
+	return s
 }
 
 func (s *ListMcpServersResponseBodyDataItems) SetAssembledSources(v []*ListMcpServersResponseBodyDataItemsAssembledSources) *ListMcpServersResponseBodyDataItems {
@@ -396,7 +420,40 @@ func (s *ListMcpServersResponseBodyDataItems) SetType(v string) *ListMcpServersR
 }
 
 func (s *ListMcpServersResponseBodyDataItems) Validate() error {
-	return dara.Validate(s)
+	if s.AssembledSources != nil {
+		for _, item := range s.AssembledSources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Backend != nil {
+		if err := s.Backend.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DomainInfos != nil {
+		for _, item := range s.DomainInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Match != nil {
+		if err := s.Match.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NacosMcpSyncInfo != nil {
+		if err := s.NacosMcpSyncInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMcpServersResponseBodyDataItemsAssembledSources struct {

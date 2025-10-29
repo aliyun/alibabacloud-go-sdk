@@ -82,7 +82,12 @@ func (s *InstallPluginResponseBody) SetRequestId(v string) *InstallPluginRespons
 }
 
 func (s *InstallPluginResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InstallPluginResponseBodyData struct {
@@ -107,7 +112,16 @@ func (s *InstallPluginResponseBodyData) SetInstallPluginResults(v []*InstallPlug
 }
 
 func (s *InstallPluginResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.InstallPluginResults != nil {
+		for _, item := range s.InstallPluginResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InstallPluginResponseBodyDataInstallPluginResults struct {

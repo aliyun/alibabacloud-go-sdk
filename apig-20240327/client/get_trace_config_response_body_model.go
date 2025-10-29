@@ -108,7 +108,12 @@ func (s *GetTraceConfigResponseBody) SetSuccess(v bool) *GetTraceConfigResponseB
 }
 
 func (s *GetTraceConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTraceConfigResponseBodyData struct {

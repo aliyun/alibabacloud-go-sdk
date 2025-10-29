@@ -230,7 +230,40 @@ func (s *HttpApiApiInfo) SetVersionInfo(v *HttpApiVersionInfo) *HttpApiApiInfo {
 }
 
 func (s *HttpApiApiInfo) Validate() error {
-	return dara.Validate(s)
+	if s.AuthConfig != nil {
+		if err := s.AuthConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeployConfigs != nil {
+		for _, item := range s.DeployConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Environments != nil {
+		for _, item := range s.Environments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.IngressInfo != nil {
+		if err := s.IngressInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VersionInfo != nil {
+		if err := s.VersionInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HttpApiApiInfoEnvironments struct {
@@ -363,7 +396,39 @@ func (s *HttpApiApiInfoEnvironments) SetSubDomains(v []*HttpApiApiInfoEnvironmen
 }
 
 func (s *HttpApiApiInfoEnvironments) Validate() error {
-	return dara.Validate(s)
+	if s.CustomDomains != nil {
+		for _, item := range s.CustomDomains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.GatewayInfo != nil {
+		if err := s.GatewayInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceConfigs != nil {
+		for _, item := range s.ServiceConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SubDomains != nil {
+		for _, item := range s.SubDomains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HttpApiApiInfoEnvironmentsGatewayInfo struct {
@@ -520,7 +585,12 @@ func (s *HttpApiApiInfoEnvironmentsServiceConfigs) SetWeight(v int32) *HttpApiAp
 }
 
 func (s *HttpApiApiInfoEnvironmentsServiceConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.Match != nil {
+		if err := s.Match.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HttpApiApiInfoEnvironmentsSubDomains struct {
@@ -662,7 +732,17 @@ func (s *HttpApiApiInfoIngressInfo) SetWatchNamespace(v string) *HttpApiApiInfoI
 }
 
 func (s *HttpApiApiInfoIngressInfo) Validate() error {
-	return dara.Validate(s)
+	if s.EnvironmentInfo != nil {
+		if err := s.EnvironmentInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.K8sClusterInfo != nil {
+		if err := s.K8sClusterInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HttpApiApiInfoIngressInfoEnvironmentInfo struct {

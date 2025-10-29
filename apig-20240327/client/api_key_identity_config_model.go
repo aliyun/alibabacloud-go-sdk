@@ -59,7 +59,21 @@ func (s *ApiKeyIdentityConfig) SetType(v string) *ApiKeyIdentityConfig {
 }
 
 func (s *ApiKeyIdentityConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ApikeySource != nil {
+		if err := s.ApikeySource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Credentials != nil {
+		for _, item := range s.Credentials {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ApiKeyIdentityConfigApikeySource struct {

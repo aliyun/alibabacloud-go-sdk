@@ -36,7 +36,16 @@ func (s *CreateConsumerAuthorizationRulesRequest) SetAuthorizationRules(v []*Cre
 }
 
 func (s *CreateConsumerAuthorizationRulesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorizationRules != nil {
+		for _, item := range s.AuthorizationRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateConsumerAuthorizationRulesRequestAuthorizationRules struct {
@@ -122,7 +131,12 @@ func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) SetResourceT
 }
 
 func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceIdentifier != nil {
+		if err := s.ResourceIdentifier.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier struct {

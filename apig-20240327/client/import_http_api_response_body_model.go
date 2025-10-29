@@ -87,7 +87,12 @@ func (s *ImportHttpApiResponseBody) SetRequestId(v string) *ImportHttpApiRespons
 }
 
 func (s *ImportHttpApiResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ImportHttpApiResponseBodyData struct {
@@ -143,7 +148,12 @@ func (s *ImportHttpApiResponseBodyData) SetName(v string) *ImportHttpApiResponse
 }
 
 func (s *ImportHttpApiResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DryRunInfo != nil {
+		if err := s.DryRunInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ImportHttpApiResponseBodyDataDryRunInfo struct {
@@ -235,7 +245,48 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfo) SetWarningMessages(v []*string
 }
 
 func (s *ImportHttpApiResponseBodyDataDryRunInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ExistHttpApiInfo != nil {
+		if err := s.ExistHttpApiInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FailureComponents != nil {
+		for _, item := range s.FailureComponents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FailureOperations != nil {
+		for _, item := range s.FailureOperations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SuccessComponents != nil {
+		for _, item := range s.SuccessComponents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SuccessOperations != nil {
+		for _, item := range s.SuccessOperations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ImportHttpApiResponseBodyDataDryRunInfoFailureComponents struct {

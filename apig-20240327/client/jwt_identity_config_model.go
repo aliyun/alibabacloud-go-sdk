@@ -83,7 +83,17 @@ func (s *JwtIdentityConfig) SetType(v string) *JwtIdentityConfig {
 }
 
 func (s *JwtIdentityConfig) Validate() error {
-	return dara.Validate(s)
+	if s.JwtPayloadConfig != nil {
+		if err := s.JwtPayloadConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.JwtTokenConfig != nil {
+		if err := s.JwtTokenConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type JwtIdentityConfigJwtPayloadConfig struct {

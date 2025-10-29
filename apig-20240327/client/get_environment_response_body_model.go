@@ -87,7 +87,12 @@ func (s *GetEnvironmentResponseBody) SetRequestId(v string) *GetEnvironmentRespo
 }
 
 func (s *GetEnvironmentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEnvironmentResponseBodyData struct {
@@ -255,7 +260,26 @@ func (s *GetEnvironmentResponseBodyData) SetUpdateTimestamp(v int64) *GetEnviron
 }
 
 func (s *GetEnvironmentResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.GatewayInfo != nil {
+		if err := s.GatewayInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StatisticsInfo != nil {
+		if err := s.StatisticsInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubDomainInfos != nil {
+		for _, item := range s.SubDomainInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetEnvironmentResponseBodyDataStatisticsInfo struct {
@@ -296,5 +320,14 @@ func (s *GetEnvironmentResponseBodyDataStatisticsInfo) SetTotalCount(v int32) *G
 }
 
 func (s *GetEnvironmentResponseBodyDataStatisticsInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceStatistics != nil {
+		for _, item := range s.ResourceStatistics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -198,7 +198,31 @@ func (s *UpdateHttpApiRequest) SetVersionConfig(v *HttpApiVersionConfig) *Update
 }
 
 func (s *UpdateHttpApiRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AuthConfig != nil {
+		if err := s.AuthConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeployConfigs != nil {
+		for _, item := range s.DeployConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.IngressConfig != nil {
+		if err := s.IngressConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VersionConfig != nil {
+		if err := s.VersionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateHttpApiRequestIngressConfig struct {

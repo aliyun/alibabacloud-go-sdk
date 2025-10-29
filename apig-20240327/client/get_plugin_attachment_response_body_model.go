@@ -82,7 +82,12 @@ func (s *GetPluginAttachmentResponseBody) SetRequestId(v string) *GetPluginAttac
 }
 
 func (s *GetPluginAttachmentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPluginAttachmentResponseBodyData struct {
@@ -199,5 +204,34 @@ func (s *GetPluginAttachmentResponseBodyData) SetResourceInfos(v []*ResourceInfo
 }
 
 func (s *GetPluginAttachmentResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.EnvironmentInfo != nil {
+		if err := s.EnvironmentInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.GatewayInfo != nil {
+		if err := s.GatewayInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ParentResourceInfo != nil {
+		if err := s.ParentResourceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PluginClassInfo != nil {
+		if err := s.PluginClassInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceInfos != nil {
+		for _, item := range s.ResourceInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

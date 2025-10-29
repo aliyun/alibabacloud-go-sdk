@@ -229,7 +229,26 @@ func (s *ImportHttpApiRequest) SetVersionConfig(v *HttpApiVersionConfig) *Import
 }
 
 func (s *ImportHttpApiRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeployConfigs != nil {
+		for _, item := range s.DeployConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SpecOssConfig != nil {
+		if err := s.SpecOssConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VersionConfig != nil {
+		if err := s.VersionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ImportHttpApiRequestSpecOssConfig struct {

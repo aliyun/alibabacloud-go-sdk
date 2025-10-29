@@ -82,7 +82,12 @@ func (s *CreateGatewayResponseBody) SetRequestId(v string) *CreateGatewayRespons
 }
 
 func (s *CreateGatewayResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateGatewayResponseBodyData struct {

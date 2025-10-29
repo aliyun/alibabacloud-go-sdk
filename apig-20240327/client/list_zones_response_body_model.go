@@ -87,7 +87,12 @@ func (s *ListZonesResponseBody) SetRequestId(v string) *ListZonesResponseBody {
 }
 
 func (s *ListZonesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListZonesResponseBodyData struct {
@@ -113,7 +118,16 @@ func (s *ListZonesResponseBodyData) SetItems(v []*ListZonesResponseBodyDataItems
 }
 
 func (s *ListZonesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListZonesResponseBodyDataItems struct {

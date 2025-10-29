@@ -211,5 +211,20 @@ func (s *GetConsumerAuthorizationRuleResponseBody) SetUpdateTimestamp(v int64) *
 }
 
 func (s *GetConsumerAuthorizationRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApiInfo != nil {
+		if err := s.ApiInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EnvironmentInfo != nil {
+		if err := s.EnvironmentInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.GatewayInfo != nil {
+		if err := s.GatewayInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

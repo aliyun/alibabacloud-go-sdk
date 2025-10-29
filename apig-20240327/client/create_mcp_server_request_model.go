@@ -182,7 +182,26 @@ func (s *CreateMcpServerRequest) SetType(v string) *CreateMcpServerRequest {
 }
 
 func (s *CreateMcpServerRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AssembledSources != nil {
+		for _, item := range s.AssembledSources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BackendConfig != nil {
+		if err := s.BackendConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Match != nil {
+		if err := s.Match.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateMcpServerRequestAssembledSources struct {
@@ -273,7 +292,16 @@ func (s *CreateMcpServerRequestBackendConfig) SetServices(v []*CreateMcpServerRe
 }
 
 func (s *CreateMcpServerRequestBackendConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Services != nil {
+		for _, item := range s.Services {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateMcpServerRequestBackendConfigServices struct {

@@ -87,7 +87,12 @@ func (s *CreateHttpApiOperationResponseBody) SetRequestId(v string) *CreateHttpA
 }
 
 func (s *CreateHttpApiOperationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateHttpApiOperationResponseBodyData struct {
@@ -113,7 +118,16 @@ func (s *CreateHttpApiOperationResponseBodyData) SetOperations(v []*CreateHttpAp
 }
 
 func (s *CreateHttpApiOperationResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Operations != nil {
+		for _, item := range s.Operations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateHttpApiOperationResponseBodyDataOperations struct {

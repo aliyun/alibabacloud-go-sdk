@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -67,9 +68,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AddGatewaySecurityGroupRuleResponse
 func (client *Client) AddGatewaySecurityGroupRuleWithOptions(gatewayId *string, request *AddGatewaySecurityGroupRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddGatewaySecurityGroupRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -139,9 +142,11 @@ func (client *Client) AddGatewaySecurityGroupRule(gatewayId *string, request *Ad
 //
 // @return BatchDeleteConsumerAuthorizationRuleResponse
 func (client *Client) BatchDeleteConsumerAuthorizationRuleWithOptions(request *BatchDeleteConsumerAuthorizationRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchDeleteConsumerAuthorizationRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConsumerAuthorizationRuleIds) {
@@ -203,9 +208,11 @@ func (client *Client) BatchDeleteConsumerAuthorizationRule(request *BatchDeleteC
 //
 // @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceGroupId) {
@@ -279,9 +286,11 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 //
 // @return CreateAndAttachPolicyResponse
 func (client *Client) CreateAndAttachPolicyWithOptions(request *CreateAndAttachPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAndAttachPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AttachResourceIds) {
@@ -371,9 +380,11 @@ func (client *Client) CreateAndAttachPolicy(request *CreateAndAttachPolicyReques
 //
 // @return CreateConsumerResponse
 func (client *Client) CreateConsumerWithOptions(request *CreateConsumerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateConsumerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AkSkIdentityConfigs) {
@@ -459,9 +470,11 @@ func (client *Client) CreateConsumer(request *CreateConsumerRequest) (_result *C
 //
 // @return CreateConsumerAuthorizationRuleResponse
 func (client *Client) CreateConsumerAuthorizationRuleWithOptions(consumerId *string, request *CreateConsumerAuthorizationRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateConsumerAuthorizationRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AuthorizationResourceInfos) {
@@ -539,9 +552,11 @@ func (client *Client) CreateConsumerAuthorizationRule(consumerId *string, reques
 //
 // @return CreateConsumerAuthorizationRulesResponse
 func (client *Client) CreateConsumerAuthorizationRulesWithOptions(request *CreateConsumerAuthorizationRulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateConsumerAuthorizationRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AuthorizationRules) {
@@ -607,9 +622,11 @@ func (client *Client) CreateConsumerAuthorizationRules(request *CreateConsumerAu
 //
 // @return CreateDomainResponse
 func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CaCertIdentifier) {
@@ -729,9 +746,11 @@ func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *Creat
 //
 // @return CreateEnvironmentResponse
 func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateEnvironmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Alias) {
@@ -816,9 +835,11 @@ func (client *Client) CreateEnvironment(request *CreateEnvironmentRequest) (_res
 //
 // @return CreateGatewayResponse
 func (client *Client) CreateGatewayWithOptions(request *CreateGatewayRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGatewayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ChargeType) {
@@ -920,9 +941,11 @@ func (client *Client) CreateGateway(request *CreateGatewayRequest) (_result *Cre
 //
 // @return CreateHttpApiResponse
 func (client *Client) CreateHttpApiWithOptions(request *CreateHttpApiRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateHttpApiResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AgentProtocols) {
@@ -1044,9 +1067,11 @@ func (client *Client) CreateHttpApi(request *CreateHttpApiRequest) (_result *Cre
 //
 // @return CreateHttpApiOperationResponse
 func (client *Client) CreateHttpApiOperationWithOptions(httpApiId *string, request *CreateHttpApiOperationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateHttpApiOperationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Operations) {
@@ -1108,9 +1133,11 @@ func (client *Client) CreateHttpApiOperation(httpApiId *string, request *CreateH
 //
 // @return CreateHttpApiRouteResponse
 func (client *Client) CreateHttpApiRouteWithOptions(httpApiId *string, request *CreateHttpApiRouteRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateHttpApiRouteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BackendConfig) {
@@ -1200,9 +1227,11 @@ func (client *Client) CreateHttpApiRoute(httpApiId *string, request *CreateHttpA
 //
 // @return CreateMcpServerResponse
 func (client *Client) CreateMcpServerWithOptions(request *CreateMcpServerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateMcpServerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssembledSources) {
@@ -1304,9 +1333,11 @@ func (client *Client) CreateMcpServer(request *CreateMcpServerRequest) (_result 
 //
 // @return CreatePluginAttachmentResponse
 func (client *Client) CreatePluginAttachmentWithOptions(request *CreatePluginAttachmentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePluginAttachmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AttachResourceIds) {
@@ -1392,9 +1423,11 @@ func (client *Client) CreatePluginAttachment(request *CreatePluginAttachmentRequ
 //
 // @return CreatePolicyResponse
 func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClassName) {
@@ -1468,9 +1501,11 @@ func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *Creat
 //
 // @return CreatePolicyAttachmentResponse
 func (client *Client) CreatePolicyAttachmentWithOptions(request *CreatePolicyAttachmentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePolicyAttachmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AttachResourceId) {
@@ -1552,9 +1587,11 @@ func (client *Client) CreatePolicyAttachment(request *CreatePolicyAttachmentRequ
 //
 // @return CreateServiceResponse
 func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.GatewayId) {
@@ -1887,9 +1924,11 @@ func (client *Client) DeleteGateway(gatewayId *string) (_result *DeleteGatewayRe
 //
 // @return DeleteGatewaySecurityGroupRuleResponse
 func (client *Client) DeleteGatewaySecurityGroupRuleWithOptions(gatewayId *string, securityGroupRuleId *string, request *DeleteGatewaySecurityGroupRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteGatewaySecurityGroupRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CascadingDelete) {
@@ -2351,9 +2390,11 @@ func (client *Client) DeleteService(serviceId *string) (_result *DeleteServiceRe
 //
 // @return DeployHttpApiResponse
 func (client *Client) DeployHttpApiWithOptions(httpApiId *string, request *DeployHttpApiRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeployHttpApiResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.HttpApiConfig) {
@@ -2623,9 +2664,11 @@ func (client *Client) GetConsumerAuthorizationRule(consumerAuthorizationRuleId *
 //
 // @return GetDashboardResponse
 func (client *Client) GetDashboardWithOptions(gatewayId *string, tmpReq *GetDashboardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDashboardResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetDashboardShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2725,9 +2768,11 @@ func (client *Client) GetDashboard(gatewayId *string, request *GetDashboardReque
 //
 // @return GetDomainResponse
 func (client *Client) GetDomainWithOptions(domainId *string, request *GetDomainRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.WithStatistics) {
@@ -2791,9 +2836,11 @@ func (client *Client) GetDomain(domainId *string, request *GetDomainRequest) (_r
 //
 // @return GetEnvironmentResponse
 func (client *Client) GetEnvironmentWithOptions(environmentId *string, request *GetEnvironmentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetEnvironmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.WithStatistics) {
@@ -3262,9 +3309,11 @@ func (client *Client) GetPolicyAttachment(policyAttachmentId *string) (_result *
 //
 // @return GetResourceOverviewResponse
 func (client *Client) GetResourceOverviewWithOptions(request *GetResourceOverviewRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetResourceOverviewResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GatewayType) {
@@ -3376,9 +3425,11 @@ func (client *Client) GetService(serviceId *string) (_result *GetServiceResponse
 //
 // @return GetTraceConfigResponse
 func (client *Client) GetTraceConfigWithOptions(gatewayId *string, request *GetTraceConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTraceConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -3440,9 +3491,11 @@ func (client *Client) GetTraceConfig(gatewayId *string, request *GetTraceConfigR
 //
 // @return ImportHttpApiResponse
 func (client *Client) ImportHttpApiWithOptions(request *ImportHttpApiRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ImportHttpApiResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DeployConfigs) {
@@ -3552,9 +3605,11 @@ func (client *Client) ImportHttpApi(request *ImportHttpApiRequest) (_result *Imp
 //
 // @return InstallPluginResponse
 func (client *Client) InstallPluginWithOptions(request *InstallPluginRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *InstallPluginResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.GatewayIds) {
@@ -3620,9 +3675,11 @@ func (client *Client) InstallPlugin(request *InstallPluginRequest) (_result *Ins
 //
 // @return ListConsumersResponse
 func (client *Client) ListConsumersWithOptions(request *ListConsumersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListConsumersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GatewayType) {
@@ -3696,9 +3753,11 @@ func (client *Client) ListConsumers(request *ListConsumersRequest) (_result *Lis
 //
 // @return ListDomainsResponse
 func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDomainsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GatewayId) {
@@ -3782,9 +3841,11 @@ func (client *Client) ListDomains(request *ListDomainsRequest) (_result *ListDom
 //
 // @return ListEnvironmentsResponse
 func (client *Client) ListEnvironmentsWithOptions(request *ListEnvironmentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListEnvironmentsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliasLike) {
@@ -3877,9 +3938,11 @@ func (client *Client) ListEnvironments(request *ListEnvironmentsRequest) (_resul
 //
 // @return ListGatewaysResponse
 func (client *Client) ListGatewaysWithOptions(tmpReq *ListGatewaysRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGatewaysResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListGatewaysShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3975,9 +4038,11 @@ func (client *Client) ListGateways(request *ListGatewaysRequest) (_result *ListG
 //
 // @return ListHttpApiOperationsResponse
 func (client *Client) ListHttpApiOperationsWithOptions(httpApiId *string, request *ListHttpApiOperationsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListHttpApiOperationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConsumerAuthorizationRuleId) {
@@ -4087,9 +4152,11 @@ func (client *Client) ListHttpApiOperations(httpApiId *string, request *ListHttp
 //
 // @return ListHttpApiRoutesResponse
 func (client *Client) ListHttpApiRoutesWithOptions(httpApiId *string, request *ListHttpApiRoutesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListHttpApiRoutesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConsumerAuthorizationRuleId) {
@@ -4203,9 +4270,11 @@ func (client *Client) ListHttpApiRoutes(httpApiId *string, request *ListHttpApiR
 //
 // @return ListHttpApisResponse
 func (client *Client) ListHttpApisWithOptions(request *ListHttpApisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListHttpApisResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GatewayId) {
@@ -4331,9 +4400,11 @@ func (client *Client) ListHttpApis(request *ListHttpApisRequest) (_result *ListH
 //
 // @return ListMcpServersResponse
 func (client *Client) ListMcpServersWithOptions(request *ListMcpServersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMcpServersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreateFromTypes) {
@@ -4419,9 +4490,11 @@ func (client *Client) ListMcpServers(request *ListMcpServersRequest) (_result *L
 //
 // @return ListPluginAttachmentsResponse
 func (client *Client) ListPluginAttachmentsWithOptions(request *ListPluginAttachmentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPluginAttachmentsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AttachResourceId) {
@@ -4515,9 +4588,11 @@ func (client *Client) ListPluginAttachments(request *ListPluginAttachmentsReques
 //
 // @return ListPluginsResponse
 func (client *Client) ListPluginsWithOptions(request *ListPluginsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPluginsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AttachResourceId) {
@@ -4615,9 +4690,11 @@ func (client *Client) ListPlugins(request *ListPluginsRequest) (_result *ListPlu
 //
 // @return ListPoliciesResponse
 func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPoliciesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AttachResourceId) {
@@ -4699,9 +4776,11 @@ func (client *Client) ListPolicies(request *ListPoliciesRequest) (_result *ListP
 //
 // @return ListPolicyClassesResponse
 func (client *Client) ListPolicyClassesWithOptions(request *ListPolicyClassesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPolicyClassesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AttachResourceId) {
@@ -4787,9 +4866,11 @@ func (client *Client) ListPolicyClasses(request *ListPolicyClassesRequest) (_res
 //
 // @return ListServicesResponse
 func (client *Client) ListServicesWithOptions(request *ListServicesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListServicesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GatewayId) {
@@ -4875,9 +4956,11 @@ func (client *Client) ListServices(request *ListServicesRequest) (_result *ListS
 //
 // @return ListSslCertsResponse
 func (client *Client) ListSslCertsWithOptions(request *ListSslCertsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSslCertsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertNameLike) {
@@ -5001,9 +5084,11 @@ func (client *Client) ListZones() (_result *ListZonesResponse, _err error) {
 //
 // @return QueryConsumerAuthorizationRulesResponse
 func (client *Client) QueryConsumerAuthorizationRulesWithOptions(request *QueryConsumerAuthorizationRulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryConsumerAuthorizationRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApiNameLike) {
@@ -5255,9 +5340,11 @@ func (client *Client) UnDeployMcpServer(mcpServerId *string) (_result *UnDeployM
 //
 // @return UndeployHttpApiResponse
 func (client *Client) UndeployHttpApiWithOptions(httpApiId *string, request *UndeployHttpApiRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UndeployHttpApiResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EnvironmentId) {
@@ -5381,9 +5468,11 @@ func (client *Client) UninstallPlugin(pluginId *string) (_result *UninstallPlugi
 //
 // @return UpdateAndAttachPolicyResponse
 func (client *Client) UpdateAndAttachPolicyWithOptions(policyId *string, request *UpdateAndAttachPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAndAttachPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AttachResourceIds) {
@@ -5469,9 +5558,11 @@ func (client *Client) UpdateAndAttachPolicy(policyId *string, request *UpdateAnd
 //
 // @return UpdateConsumerResponse
 func (client *Client) UpdateConsumerWithOptions(consumerId *string, request *UpdateConsumerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateConsumerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AkSkIdentityConfigs) {
@@ -5549,9 +5640,11 @@ func (client *Client) UpdateConsumer(consumerId *string, request *UpdateConsumer
 //
 // @return UpdateConsumerAuthorizationRuleResponse
 func (client *Client) UpdateConsumerAuthorizationRuleWithOptions(consumerId *string, consumerAuthorizationRuleId *string, request *UpdateConsumerAuthorizationRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateConsumerAuthorizationRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AuthorizationResourceInfos) {
@@ -5621,9 +5714,11 @@ func (client *Client) UpdateConsumerAuthorizationRule(consumerId *string, consum
 //
 // @return UpdateDomainResponse
 func (client *Client) UpdateDomainWithOptions(domainId *string, request *UpdateDomainRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CaCertIdentifier) {
@@ -5723,9 +5818,11 @@ func (client *Client) UpdateDomain(domainId *string, request *UpdateDomainReques
 //
 // @return UpdateEnvironmentResponse
 func (client *Client) UpdateEnvironmentWithOptions(environmentId *string, request *UpdateEnvironmentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateEnvironmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Alias) {
@@ -5794,9 +5891,11 @@ func (client *Client) UpdateEnvironment(environmentId *string, request *UpdateEn
 //
 // @return UpdateGatewayFeatureResponse
 func (client *Client) UpdateGatewayFeatureWithOptions(gatewayId *string, name *string, request *UpdateGatewayFeatureRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateGatewayFeatureResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Value) {
@@ -5858,9 +5957,11 @@ func (client *Client) UpdateGatewayFeature(gatewayId *string, name *string, requ
 //
 // @return UpdateGatewayNameResponse
 func (client *Client) UpdateGatewayNameWithOptions(gatewayId *string, request *UpdateGatewayNameRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateGatewayNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -5922,9 +6023,11 @@ func (client *Client) UpdateGatewayName(gatewayId *string, request *UpdateGatewa
 //
 // @return UpdateHttpApiResponse
 func (client *Client) UpdateHttpApiWithOptions(httpApiId *string, request *UpdateHttpApiRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateHttpApiResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AgentProtocols) {
@@ -6034,9 +6137,11 @@ func (client *Client) UpdateHttpApi(httpApiId *string, request *UpdateHttpApiReq
 //
 // @return UpdateHttpApiOperationResponse
 func (client *Client) UpdateHttpApiOperationWithOptions(httpApiId *string, operationId *string, request *UpdateHttpApiOperationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateHttpApiOperationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Operation) {
@@ -6098,9 +6203,11 @@ func (client *Client) UpdateHttpApiOperation(httpApiId *string, operationId *str
 //
 // @return UpdateHttpApiRouteResponse
 func (client *Client) UpdateHttpApiRouteWithOptions(httpApiId *string, routeId *string, request *UpdateHttpApiRouteRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateHttpApiRouteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BackendConfig) {
@@ -6190,9 +6297,11 @@ func (client *Client) UpdateHttpApiRoute(httpApiId *string, routeId *string, req
 //
 // @return UpdateMcpServerResponse
 func (client *Client) UpdateMcpServerWithOptions(mcpServerId *string, request *UpdateMcpServerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMcpServerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssembledSources) {
@@ -6286,9 +6395,11 @@ func (client *Client) UpdateMcpServer(mcpServerId *string, request *UpdateMcpSer
 //
 // @return UpdatePluginAttachmentResponse
 func (client *Client) UpdatePluginAttachmentWithOptions(pluginAttachmentId *string, request *UpdatePluginAttachmentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdatePluginAttachmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AttachResourceIds) {
@@ -6358,9 +6469,11 @@ func (client *Client) UpdatePluginAttachment(pluginAttachmentId *string, request
 //
 // @return UpdatePolicyResponse
 func (client *Client) UpdatePolicyWithOptions(policyId *string, request *UpdatePolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdatePolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -6430,9 +6543,11 @@ func (client *Client) UpdatePolicy(policyId *string, request *UpdatePolicyReques
 //
 // @return UpgradeGatewayResponse
 func (client *Client) UpgradeGatewayWithOptions(gatewayId *string, request *UpgradeGatewayRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpgradeGatewayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Version) {

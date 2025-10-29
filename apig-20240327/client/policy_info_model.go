@@ -143,5 +143,14 @@ func (s *PolicyInfo) SetType(v string) *PolicyInfo {
 }
 
 func (s *PolicyInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Attachments != nil {
+		for _, item := range s.Attachments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

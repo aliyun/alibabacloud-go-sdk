@@ -167,7 +167,36 @@ func (s *HttpRoute) SetUpdateTimestamp(v int64) *HttpRoute {
 }
 
 func (s *HttpRoute) Validate() error {
-	return dara.Validate(s)
+	if s.Backend != nil {
+		if err := s.Backend.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DomainInfos != nil {
+		for _, item := range s.DomainInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EnvironmentInfo != nil {
+		if err := s.EnvironmentInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Match != nil {
+		if err := s.Match.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.McpServerInfo != nil {
+		if err := s.McpServerInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HttpRouteDomainInfos struct {
@@ -277,7 +306,21 @@ func (s *HttpRouteEnvironmentInfo) SetSubDomains(v []*HttpRouteEnvironmentInfoSu
 }
 
 func (s *HttpRouteEnvironmentInfo) Validate() error {
-	return dara.Validate(s)
+	if s.GatewayInfo != nil {
+		if err := s.GatewayInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubDomains != nil {
+		for _, item := range s.SubDomains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HttpRouteEnvironmentInfoGatewayInfo struct {
@@ -445,7 +488,12 @@ func (s *HttpRouteMcpServerInfo) SetMcpServerConfig(v string) *HttpRouteMcpServe
 }
 
 func (s *HttpRouteMcpServerInfo) Validate() error {
-	return dara.Validate(s)
+	if s.McpRouteConfig != nil {
+		if err := s.McpRouteConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HttpRouteMcpServerInfoMcpRouteConfig struct {
