@@ -358,6 +358,76 @@ func (client *Client) AddFirewallRules(request *AddFirewallRulesRequest) (_resul
 
 // Summary:
 //
+// 新增PolarFs Quota规则
+//
+// @param request - AddPolarFsQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddPolarFsQuotaResponse
+func (client *Client) AddPolarFsQuotaWithOptions(request *AddPolarFsQuotaRequest, runtime *dara.RuntimeOptions) (_result *AddPolarFsQuotaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	if !dara.IsNil(request.Quotas) {
+		query["Quotas"] = request.Quotas
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddPolarFsQuota"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddPolarFsQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增PolarFs Quota规则
+//
+// @param request - AddPolarFsQuotaRequest
+//
+// @return AddPolarFsQuotaResponse
+func (client *Client) AddPolarFsQuota(request *AddPolarFsQuotaRequest) (_result *AddPolarFsQuotaResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddPolarFsQuotaResponse{}
+	_body, _err := client.AddPolarFsQuotaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 添加SQL限流规则
 //
 // @param request - AddSQLRateLimitingRulesRequest
@@ -681,6 +751,76 @@ func (client *Client) CancelCronJobPolicyServerless(request *CancelCronJobPolicy
 	runtime := &dara.RuntimeOptions{}
 	_result = &CancelCronJobPolicyServerlessResponse{}
 	_body, _err := client.CancelCronJobPolicyServerlessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消目录的配额
+//
+// @param request - CancelPolarFsFileQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelPolarFsFileQuotaResponse
+func (client *Client) CancelPolarFsFileQuotaWithOptions(request *CancelPolarFsFileQuotaRequest, runtime *dara.RuntimeOptions) (_result *CancelPolarFsFileQuotaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.FilePathIds) {
+		query["FilePathIds"] = request.FilePathIds
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelPolarFsFileQuota"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelPolarFsFileQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消目录的配额
+//
+// @param request - CancelPolarFsFileQuotaRequest
+//
+// @return CancelPolarFsFileQuotaResponse
+func (client *Client) CancelPolarFsFileQuota(request *CancelPolarFsFileQuotaRequest) (_result *CancelPolarFsFileQuotaResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CancelPolarFsFileQuotaResponse{}
+	_body, _err := client.CancelPolarFsFileQuotaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6445,6 +6585,76 @@ func (client *Client) DeleteParameterGroup(request *DeleteParameterGroupRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteParameterGroupResponse{}
 	_body, _err := client.DeleteParameterGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除PolarFs Quota规则
+//
+// @param request - DeletePolarFsQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePolarFsQuotaResponse
+func (client *Client) DeletePolarFsQuotaWithOptions(request *DeletePolarFsQuotaRequest, runtime *dara.RuntimeOptions) (_result *DeletePolarFsQuotaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	if !dara.IsNil(request.Quotas) {
+		query["Quotas"] = request.Quotas
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePolarFsQuota"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePolarFsQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除PolarFs Quota规则
+//
+// @param request - DeletePolarFsQuotaRequest
+//
+// @return DeletePolarFsQuotaResponse
+func (client *Client) DeletePolarFsQuota(request *DeletePolarFsQuotaRequest) (_result *DeletePolarFsQuotaResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeletePolarFsQuotaResponse{}
+	_body, _err := client.DeletePolarFsQuotaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14441,6 +14651,146 @@ func (client *Client) DescribePendingMaintenanceActions(request *DescribePending
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribePendingMaintenanceActionsResponse{}
 	_body, _err := client.DescribePendingMaintenanceActionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取PolarFS实例详情
+//
+// @param request - DescribePolarFsAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolarFsAttributeResponse
+func (client *Client) DescribePolarFsAttributeWithOptions(request *DescribePolarFsAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribePolarFsAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	if !dara.IsNil(request.QueryFuseMountInfo) {
+		query["QueryFuseMountInfo"] = request.QueryFuseMountInfo
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePolarFsAttribute"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePolarFsAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取PolarFS实例详情
+//
+// @param request - DescribePolarFsAttributeRequest
+//
+// @return DescribePolarFsAttributeResponse
+func (client *Client) DescribePolarFsAttribute(request *DescribePolarFsAttributeRequest) (_result *DescribePolarFsAttributeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribePolarFsAttributeResponse{}
+	_body, _err := client.DescribePolarFsAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询配额规则
+//
+// @param request - DescribePolarFsQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolarFsQuotaResponse
+func (client *Client) DescribePolarFsQuotaWithOptions(request *DescribePolarFsQuotaRequest, runtime *dara.RuntimeOptions) (_result *DescribePolarFsQuotaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePolarFsQuota"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePolarFsQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询配额规则
+//
+// @param request - DescribePolarFsQuotaRequest
+//
+// @return DescribePolarFsQuotaResponse
+func (client *Client) DescribePolarFsQuota(request *DescribePolarFsQuotaRequest) (_result *DescribePolarFsQuotaResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribePolarFsQuotaResponse{}
+	_body, _err := client.DescribePolarFsQuotaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24534,6 +24884,76 @@ func (client *Client) RevokeAccountPrivilegeZonal(request *RevokeAccountPrivileg
 	runtime := &dara.RuntimeOptions{}
 	_result = &RevokeAccountPrivilegeZonalResponse{}
 	_body, _err := client.RevokeAccountPrivilegeZonalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 为目录应用配额规则
+//
+// @param request - SetPolarFsFileQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetPolarFsFileQuotaResponse
+func (client *Client) SetPolarFsFileQuotaWithOptions(request *SetPolarFsFileQuotaRequest, runtime *dara.RuntimeOptions) (_result *SetPolarFsFileQuotaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.FilePathQuotas) {
+		query["FilePathQuotas"] = request.FilePathQuotas
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetPolarFsFileQuota"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetPolarFsFileQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 为目录应用配额规则
+//
+// @param request - SetPolarFsFileQuotaRequest
+//
+// @return SetPolarFsFileQuotaResponse
+func (client *Client) SetPolarFsFileQuota(request *SetPolarFsFileQuotaRequest) (_result *SetPolarFsFileQuotaResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SetPolarFsFileQuotaResponse{}
+	_body, _err := client.SetPolarFsFileQuotaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
