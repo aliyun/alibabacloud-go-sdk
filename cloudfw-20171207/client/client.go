@@ -12775,6 +12775,10 @@ func (client *Client) DescribeVulnerabilityProtectedListWithOptions(request *Des
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.RuleTag) {
+		query["RuleTag"] = request.RuleTag
+	}
+
 	if !dara.IsNil(request.SortKey) {
 		query["SortKey"] = request.SortKey
 	}
