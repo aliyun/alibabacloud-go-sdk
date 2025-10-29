@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -84,9 +85,11 @@ func (client *Client) AiSearchWithSSE(request *AiSearchRequest, headers map[stri
 //
 // @return AiSearchResponse
 func (client *Client) AiSearchWithOptions(request *AiSearchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AiSearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Industry) {
@@ -164,9 +167,11 @@ func (client *Client) AiSearch(request *AiSearchRequest) (_result *AiSearchRespo
 //
 // @return GenericAdvancedSearchResponse
 func (client *Client) GenericAdvancedSearchWithOptions(request *GenericAdvancedSearchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GenericAdvancedSearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Industry) {
@@ -232,19 +237,31 @@ func (client *Client) GenericAdvancedSearch(request *GenericAdvancedSearchReques
 //
 // 通用搜索
 //
-// @param request - GenericSearchRequest
+// @param tmpReq - GenericSearchRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GenericSearchResponse
-func (client *Client) GenericSearchWithOptions(request *GenericSearchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GenericSearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+func (client *Client) GenericSearchWithOptions(tmpReq *GenericSearchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GenericSearchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
+	request := &GenericSearchShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AdvancedParams) {
+		request.AdvancedParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AdvancedParams, dara.String("advancedParams"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdvancedParamsShrink) {
+		query["advancedParams"] = request.AdvancedParamsShrink
+	}
+
 	if !dara.IsNil(request.EnableRerank) {
 		query["enableRerank"] = request.EnableRerank
 	}
@@ -340,9 +357,11 @@ func (client *Client) GenericSearch(request *GenericSearchRequest) (_result *Gen
 //
 // @return GetIqsUsageResponse
 func (client *Client) GetIqsUsageWithOptions(request *GetIqsUsageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetIqsUsageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndDate) {
@@ -408,9 +427,11 @@ func (client *Client) GetIqsUsage(request *GetIqsUsageRequest) (_result *GetIqsU
 //
 // @return GlobalSearchResponse
 func (client *Client) GlobalSearchWithOptions(request *GlobalSearchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GlobalSearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Page) {
@@ -484,9 +505,11 @@ func (client *Client) GlobalSearch(request *GlobalSearchRequest) (_result *Globa
 //
 // @return ReadPageBasicResponse
 func (client *Client) ReadPageBasicWithOptions(request *ReadPageBasicRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ReadPageBasicResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
@@ -533,6 +556,67 @@ func (client *Client) ReadPageBasic(request *ReadPageBasicRequest) (_result *Rea
 
 // Summary:
 //
+// 动态页面解析
+//
+// @param request - ReadPageScrapeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReadPageScrapeResponse
+func (client *Client) ReadPageScrapeWithOptions(request *ReadPageScrapeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ReadPageScrapeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReadPageScrape"),
+		Version:     dara.String("2024-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/linked-retrieval/linked-retrieval-entry/v1/iqs/readpage/scrape"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ReadPageScrapeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 动态页面解析
+//
+// @param request - ReadPageScrapeRequest
+//
+// @return ReadPageScrapeResponse
+func (client *Client) ReadPageScrape(request *ReadPageScrapeRequest) (_result *ReadPageScrapeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ReadPageScrapeResponse{}
+	_body, _err := client.ReadPageScrapeWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 通晓统一搜索API
 //
 // @param request - UnifiedSearchRequest
@@ -543,9 +627,11 @@ func (client *Client) ReadPageBasic(request *ReadPageBasicRequest) (_result *Rea
 //
 // @return UnifiedSearchResponse
 func (client *Client) UnifiedSearchWithOptions(request *UnifiedSearchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UnifiedSearchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
@@ -591,10 +677,12 @@ func (client *Client) UnifiedSearch(request *UnifiedSearchRequest) (_result *Uni
 }
 
 func (client *Client) aiSearchWithSSE_opYieldFunc(_yield chan *AiSearchResponse, _yieldErr chan error, request *AiSearchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Industry) {

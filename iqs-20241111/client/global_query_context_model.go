@@ -35,7 +35,12 @@ func (s *GlobalQueryContext) SetOriginalQuery(v *GlobalQueryContextOriginalQuery
 }
 
 func (s *GlobalQueryContext) Validate() error {
-	return dara.Validate(s)
+	if s.OriginalQuery != nil {
+		if err := s.OriginalQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GlobalQueryContextOriginalQuery struct {

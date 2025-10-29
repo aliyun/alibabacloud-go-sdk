@@ -59,5 +59,10 @@ func (s *GenericSearchResponse) SetBody(v *GenericSearchResult) *GenericSearchRe
 }
 
 func (s *GenericSearchResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

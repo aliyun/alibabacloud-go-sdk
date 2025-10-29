@@ -86,5 +86,33 @@ func (s *GlobalSearchResult) SetSearchInformation(v *GlobalSearchInformation) *G
 }
 
 func (s *GlobalSearchResult) Validate() error {
-	return dara.Validate(s)
+	if s.PageItems != nil {
+		for _, item := range s.PageItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.QueryContext != nil {
+		if err := s.QueryContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SceneItems != nil {
+		for _, item := range s.SceneItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SearchInformation != nil {
+		if err := s.SearchInformation.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

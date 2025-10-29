@@ -59,5 +59,15 @@ func (s *UnifiedQueryContext) SetRewrite(v *UnifiedRewrite) *UnifiedQueryContext
 }
 
 func (s *UnifiedQueryContext) Validate() error {
-	return dara.Validate(s)
+	if s.OriginalQuery != nil {
+		if err := s.OriginalQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rewrite != nil {
+		if err := s.Rewrite.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

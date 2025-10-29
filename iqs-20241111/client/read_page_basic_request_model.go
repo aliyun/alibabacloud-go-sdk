@@ -36,5 +36,10 @@ func (s *ReadPageBasicRequest) SetBody(v *ReadPageBody) *ReadPageBasicRequest {
 }
 
 func (s *ReadPageBasicRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

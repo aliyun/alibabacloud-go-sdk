@@ -107,5 +107,10 @@ func (s *UnifiedSearchInput) SetTimeRange(v string) *UnifiedSearchInput {
 }
 
 func (s *UnifiedSearchInput) Validate() error {
-	return dara.Validate(s)
+	if s.Contents != nil {
+		if err := s.Contents.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

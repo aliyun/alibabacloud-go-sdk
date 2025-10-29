@@ -9,6 +9,8 @@ type iGenericSearchRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAdvancedParams(v map[string]interface{}) *GenericSearchRequest
+	GetAdvancedParams() map[string]interface{}
 	SetEnableRerank(v bool) *GenericSearchRequest
 	GetEnableRerank() *bool
 	SetIndustry(v string) *GenericSearchRequest
@@ -32,8 +34,9 @@ type iGenericSearchRequest interface {
 }
 
 type GenericSearchRequest struct {
-	EnableRerank *bool   `json:"enableRerank,omitempty" xml:"enableRerank,omitempty"`
-	Industry     *string `json:"industry,omitempty" xml:"industry,omitempty"`
+	AdvancedParams map[string]interface{} `json:"advancedParams,omitempty" xml:"advancedParams,omitempty"`
+	EnableRerank   *bool                  `json:"enableRerank,omitempty" xml:"enableRerank,omitempty"`
+	Industry       *string                `json:"industry,omitempty" xml:"industry,omitempty"`
 	// example:
 	//
 	// 1
@@ -57,6 +60,10 @@ func (s GenericSearchRequest) String() string {
 
 func (s GenericSearchRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GenericSearchRequest) GetAdvancedParams() map[string]interface{} {
+	return s.AdvancedParams
 }
 
 func (s *GenericSearchRequest) GetEnableRerank() *bool {
@@ -97,6 +104,11 @@ func (s *GenericSearchRequest) GetSessionId() *string {
 
 func (s *GenericSearchRequest) GetTimeRange() *string {
 	return s.TimeRange
+}
+
+func (s *GenericSearchRequest) SetAdvancedParams(v map[string]interface{}) *GenericSearchRequest {
+	s.AdvancedParams = v
+	return s
 }
 
 func (s *GenericSearchRequest) SetEnableRerank(v bool) *GenericSearchRequest {

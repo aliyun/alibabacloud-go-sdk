@@ -108,7 +108,12 @@ func (s *ReadPageBody) SetUrl(v string) *ReadPageBody {
 }
 
 func (s *ReadPageBody) Validate() error {
-	return dara.Validate(s)
+	if s.Readability != nil {
+		if err := s.Readability.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ReadPageBodyReadability struct {

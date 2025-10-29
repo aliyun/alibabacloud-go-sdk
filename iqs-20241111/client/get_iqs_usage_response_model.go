@@ -59,5 +59,10 @@ func (s *GetIqsUsageResponse) SetBody(v *GetIqsUsageResult) *GetIqsUsageResponse
 }
 
 func (s *GetIqsUsageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

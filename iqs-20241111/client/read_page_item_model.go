@@ -17,6 +17,8 @@ type iReadPageItem interface {
 	GetMarkdown() *string
 	SetRawHtml(v string) *ReadPageItem
 	GetRawHtml() *string
+	SetScreenshot(v string) *ReadPageItem
+	GetScreenshot() *string
 	SetStatusCode(v int32) *ReadPageItem
 	GetStatusCode() *int32
 	SetText(v string) *ReadPageItem
@@ -28,6 +30,7 @@ type ReadPageItem struct {
 	Html         *string `json:"html,omitempty" xml:"html,omitempty"`
 	Markdown     *string `json:"markdown,omitempty" xml:"markdown,omitempty"`
 	RawHtml      *string `json:"rawHtml,omitempty" xml:"rawHtml,omitempty"`
+	Screenshot   *string `json:"screenshot,omitempty" xml:"screenshot,omitempty"`
 	StatusCode   *int32  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 	Text         *string `json:"text,omitempty" xml:"text,omitempty"`
 }
@@ -56,6 +59,10 @@ func (s *ReadPageItem) GetRawHtml() *string {
 	return s.RawHtml
 }
 
+func (s *ReadPageItem) GetScreenshot() *string {
+	return s.Screenshot
+}
+
 func (s *ReadPageItem) GetStatusCode() *int32 {
 	return s.StatusCode
 }
@@ -81,6 +88,11 @@ func (s *ReadPageItem) SetMarkdown(v string) *ReadPageItem {
 
 func (s *ReadPageItem) SetRawHtml(v string) *ReadPageItem {
 	s.RawHtml = &v
+	return s
+}
+
+func (s *ReadPageItem) SetScreenshot(v string) *ReadPageItem {
+	s.Screenshot = &v
 	return s
 }
 

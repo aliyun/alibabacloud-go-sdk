@@ -35,5 +35,10 @@ func (s *UnifiedSearchRequest) SetBody(v *UnifiedSearchInput) *UnifiedSearchRequ
 }
 
 func (s *UnifiedSearchRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

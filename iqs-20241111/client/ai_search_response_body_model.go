@@ -67,7 +67,12 @@ func (s *AiSearchResponseBody) SetRequestId(v string) *AiSearchResponseBody {
 }
 
 func (s *AiSearchResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Header != nil {
+		if err := s.Header.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AiSearchResponseBodyHeader struct {
@@ -131,7 +136,12 @@ func (s *AiSearchResponseBodyHeader) SetResponseTime(v int64) *AiSearchResponseB
 }
 
 func (s *AiSearchResponseBodyHeader) Validate() error {
-	return dara.Validate(s)
+	if s.QueryContext != nil {
+		if err := s.QueryContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AiSearchResponseBodyHeaderQueryContext struct {
@@ -166,7 +176,17 @@ func (s *AiSearchResponseBodyHeaderQueryContext) SetRewrite(v *AiSearchResponseB
 }
 
 func (s *AiSearchResponseBodyHeaderQueryContext) Validate() error {
-	return dara.Validate(s)
+	if s.OriginalQuery != nil {
+		if err := s.OriginalQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rewrite != nil {
+		if err := s.Rewrite.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AiSearchResponseBodyHeaderQueryContextOriginalQuery struct {

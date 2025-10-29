@@ -59,5 +59,10 @@ func (s *AiSearchResponse) SetBody(v *AiSearchResponseBody) *AiSearchResponse {
 }
 
 func (s *AiSearchResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

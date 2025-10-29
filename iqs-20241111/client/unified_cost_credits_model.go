@@ -47,5 +47,15 @@ func (s *UnifiedCostCredits) SetValueAdded(v *ValueAddedCredits) *UnifiedCostCre
 }
 
 func (s *UnifiedCostCredits) Validate() error {
-	return dara.Validate(s)
+	if s.Search != nil {
+		if err := s.Search.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ValueAdded != nil {
+		if err := s.ValueAdded.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
