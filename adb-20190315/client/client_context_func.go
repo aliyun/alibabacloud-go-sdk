@@ -2994,6 +2994,10 @@ func (client *Client) DescribeConnectionCountRecordsWithContext(ctx context.Cont
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !dara.IsNil(request.ResourceOwnerAccount) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}

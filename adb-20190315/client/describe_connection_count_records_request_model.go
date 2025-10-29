@@ -15,6 +15,8 @@ type iDescribeConnectionCountRecordsRequest interface {
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *DescribeConnectionCountRecordsRequest
 	GetOwnerId() *int64
+	SetRegionId(v string) *DescribeConnectionCountRecordsRequest
+	GetRegionId() *string
 	SetResourceOwnerAccount(v string) *DescribeConnectionCountRecordsRequest
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *DescribeConnectionCountRecordsRequest
@@ -34,6 +36,7 @@ type DescribeConnectionCountRecordsRequest struct {
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -58,6 +61,10 @@ func (s *DescribeConnectionCountRecordsRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
 
+func (s *DescribeConnectionCountRecordsRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
 func (s *DescribeConnectionCountRecordsRequest) GetResourceOwnerAccount() *string {
 	return s.ResourceOwnerAccount
 }
@@ -78,6 +85,11 @@ func (s *DescribeConnectionCountRecordsRequest) SetOwnerAccount(v string) *Descr
 
 func (s *DescribeConnectionCountRecordsRequest) SetOwnerId(v int64) *DescribeConnectionCountRecordsRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeConnectionCountRecordsRequest) SetRegionId(v string) *DescribeConnectionCountRecordsRequest {
+	s.RegionId = &v
 	return s
 }
 
