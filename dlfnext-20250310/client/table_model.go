@@ -13,6 +13,8 @@ type iTable interface {
 	GetCreatedAt() *int64
 	SetCreatedBy(v string) *Table
 	GetCreatedBy() *string
+	SetIcebergTableMetadata(v *IcebergTableMetadata) *Table
+	GetIcebergTableMetadata() *IcebergTableMetadata
 	SetId(v string) *Table
 	GetId() *string
 	SetIsExternal(v bool) *Table
@@ -33,6 +35,8 @@ type iTable interface {
 	GetStorageActionTimestamp() *int64
 	SetStorageClass(v string) *Table
 	GetStorageClass() *string
+	SetType(v string) *Table
+	GetType() *string
 	SetUpdatedAt(v int64) *Table
 	GetUpdatedAt() *int64
 	SetUpdatedBy(v string) *Table
@@ -40,20 +44,22 @@ type iTable interface {
 }
 
 type Table struct {
-	CreatedAt              *int64  `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatedBy              *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	Id                     *string `json:"id,omitempty" xml:"id,omitempty"`
-	IsExternal             *bool   `json:"isExternal,omitempty" xml:"isExternal,omitempty"`
-	Name                   *string `json:"name,omitempty" xml:"name,omitempty"`
-	Owner                  *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	Path                   *string `json:"path,omitempty" xml:"path,omitempty"`
-	Schema                 *Schema `json:"schema,omitempty" xml:"schema,omitempty"`
-	SchemaId               *int64  `json:"schemaId,omitempty" xml:"schemaId,omitempty"`
-	StorageAction          *string `json:"storageAction,omitempty" xml:"storageAction,omitempty"`
-	StorageActionTimestamp *int64  `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
-	StorageClass           *string `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
-	UpdatedAt              *int64  `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	UpdatedBy              *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	CreatedAt              *int64                `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	CreatedBy              *string               `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	IcebergTableMetadata   *IcebergTableMetadata `json:"icebergTableMetadata,omitempty" xml:"icebergTableMetadata,omitempty"`
+	Id                     *string               `json:"id,omitempty" xml:"id,omitempty"`
+	IsExternal             *bool                 `json:"isExternal,omitempty" xml:"isExternal,omitempty"`
+	Name                   *string               `json:"name,omitempty" xml:"name,omitempty"`
+	Owner                  *string               `json:"owner,omitempty" xml:"owner,omitempty"`
+	Path                   *string               `json:"path,omitempty" xml:"path,omitempty"`
+	Schema                 *Schema               `json:"schema,omitempty" xml:"schema,omitempty"`
+	SchemaId               *int64                `json:"schemaId,omitempty" xml:"schemaId,omitempty"`
+	StorageAction          *string               `json:"storageAction,omitempty" xml:"storageAction,omitempty"`
+	StorageActionTimestamp *int64                `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
+	StorageClass           *string               `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
+	Type                   *string               `json:"type,omitempty" xml:"type,omitempty"`
+	UpdatedAt              *int64                `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	UpdatedBy              *string               `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
 }
 
 func (s Table) String() string {
@@ -70,6 +76,10 @@ func (s *Table) GetCreatedAt() *int64 {
 
 func (s *Table) GetCreatedBy() *string {
 	return s.CreatedBy
+}
+
+func (s *Table) GetIcebergTableMetadata() *IcebergTableMetadata {
+	return s.IcebergTableMetadata
 }
 
 func (s *Table) GetId() *string {
@@ -112,6 +122,10 @@ func (s *Table) GetStorageClass() *string {
 	return s.StorageClass
 }
 
+func (s *Table) GetType() *string {
+	return s.Type
+}
+
 func (s *Table) GetUpdatedAt() *int64 {
 	return s.UpdatedAt
 }
@@ -127,6 +141,11 @@ func (s *Table) SetCreatedAt(v int64) *Table {
 
 func (s *Table) SetCreatedBy(v string) *Table {
 	s.CreatedBy = &v
+	return s
+}
+
+func (s *Table) SetIcebergTableMetadata(v *IcebergTableMetadata) *Table {
+	s.IcebergTableMetadata = v
 	return s
 }
 
@@ -180,6 +199,11 @@ func (s *Table) SetStorageClass(v string) *Table {
 	return s
 }
 
+func (s *Table) SetType(v string) *Table {
+	s.Type = &v
+	return s
+}
+
 func (s *Table) SetUpdatedAt(v int64) *Table {
 	s.UpdatedAt = &v
 	return s
@@ -191,6 +215,11 @@ func (s *Table) SetUpdatedBy(v string) *Table {
 }
 
 func (s *Table) Validate() error {
+	if s.IcebergTableMetadata != nil {
+		if err := s.IcebergTableMetadata.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Schema != nil {
 		if err := s.Schema.Validate(); err != nil {
 			return err

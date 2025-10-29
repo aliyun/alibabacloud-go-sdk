@@ -13,10 +13,14 @@ type iIcebergSnapshot interface {
 	GetAddedRows() *int64
 	SetId(v int64) *IcebergSnapshot
 	GetId() *int64
+	SetIdString(v string) *IcebergSnapshot
+	GetIdString() *string
 	SetOperation(v string) *IcebergSnapshot
 	GetOperation() *string
 	SetParentId(v int64) *IcebergSnapshot
 	GetParentId() *int64
+	SetParentIdString(v string) *IcebergSnapshot
+	GetParentIdString() *string
 	SetSchemaId(v int64) *IcebergSnapshot
 	GetSchemaId() *int64
 	SetSequenceNumber(v int64) *IcebergSnapshot
@@ -30,8 +34,10 @@ type iIcebergSnapshot interface {
 type IcebergSnapshot struct {
 	AddedRows       *int64             `json:"addedRows,omitempty" xml:"addedRows,omitempty"`
 	Id              *int64             `json:"id,omitempty" xml:"id,omitempty"`
+	IdString        *string            `json:"idString,omitempty" xml:"idString,omitempty"`
 	Operation       *string            `json:"operation,omitempty" xml:"operation,omitempty"`
 	ParentId        *int64             `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	ParentIdString  *string            `json:"parentIdString,omitempty" xml:"parentIdString,omitempty"`
 	SchemaId        *int64             `json:"schemaId,omitempty" xml:"schemaId,omitempty"`
 	SequenceNumber  *int64             `json:"sequenceNumber,omitempty" xml:"sequenceNumber,omitempty"`
 	Summary         map[string]*string `json:"summary,omitempty" xml:"summary,omitempty"`
@@ -54,12 +60,20 @@ func (s *IcebergSnapshot) GetId() *int64 {
 	return s.Id
 }
 
+func (s *IcebergSnapshot) GetIdString() *string {
+	return s.IdString
+}
+
 func (s *IcebergSnapshot) GetOperation() *string {
 	return s.Operation
 }
 
 func (s *IcebergSnapshot) GetParentId() *int64 {
 	return s.ParentId
+}
+
+func (s *IcebergSnapshot) GetParentIdString() *string {
+	return s.ParentIdString
 }
 
 func (s *IcebergSnapshot) GetSchemaId() *int64 {
@@ -88,6 +102,11 @@ func (s *IcebergSnapshot) SetId(v int64) *IcebergSnapshot {
 	return s
 }
 
+func (s *IcebergSnapshot) SetIdString(v string) *IcebergSnapshot {
+	s.IdString = &v
+	return s
+}
+
 func (s *IcebergSnapshot) SetOperation(v string) *IcebergSnapshot {
 	s.Operation = &v
 	return s
@@ -95,6 +114,11 @@ func (s *IcebergSnapshot) SetOperation(v string) *IcebergSnapshot {
 
 func (s *IcebergSnapshot) SetParentId(v int64) *IcebergSnapshot {
 	s.ParentId = &v
+	return s
+}
+
+func (s *IcebergSnapshot) SetParentIdString(v string) *IcebergSnapshot {
+	s.ParentIdString = &v
 	return s
 }
 
