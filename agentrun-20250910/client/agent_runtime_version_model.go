@@ -25,16 +25,40 @@ type iAgentRuntimeVersion interface {
 
 type AgentRuntimeVersion struct {
 	// 智能体运行时的ARN
+	//
+	// example:
+	//
+	// acs:agentrun:cn-hangzhou:1760720386195983:runtimes/7a1b6d39-9f8f-4ce2-b9c9-6db1b0b9e169
 	AgentRuntimeArn *string `json:"agentRuntimeArn,omitempty" xml:"agentRuntimeArn,omitempty"`
 	// 智能体运行时的ID
+	//
+	// example:
+	//
+	// ar-1234567890abcdef
 	AgentRuntimeId *string `json:"agentRuntimeId,omitempty" xml:"agentRuntimeId,omitempty"`
 	// 智能体运行时的名称
+	//
+	// example:
+	//
+	// my-agent-runtime
 	AgentRuntimeName *string `json:"agentRuntimeName,omitempty" xml:"agentRuntimeName,omitempty"`
 	// 已发布版本的版本号
+	//
+	// example:
+	//
+	// LATEST
 	AgentRuntimeVersion *string `json:"agentRuntimeVersion,omitempty" xml:"agentRuntimeVersion,omitempty"`
 	// 此版本的描述
+	//
+	// example:
+	//
+	// Initial release with basic functionality
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// 最后更新的时间戳
+	//
+	// example:
+	//
+	// 2025-01-10T10:30:00Z
 	LastUpdatedAt *string `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
 }
 

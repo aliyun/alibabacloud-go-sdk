@@ -20,10 +20,22 @@ type iBrowserSessionListOut interface {
 }
 
 type BrowserSessionListOut struct {
-	Items      []*BrowserSessionOut `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	PageNumber *int32               `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int32               `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Total      *int64               `json:"total,omitempty" xml:"total,omitempty"`
+	// example:
+	//
+	// []
+	Items []*BrowserSessionOut `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 100
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s BrowserSessionListOut) String() string {

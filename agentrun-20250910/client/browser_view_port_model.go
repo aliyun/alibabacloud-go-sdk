@@ -16,8 +16,14 @@ type iBrowserViewPort interface {
 }
 
 type BrowserViewPort struct {
+	// example:
+	//
+	// 1080
 	Height *float64 `json:"height,omitempty" xml:"height,omitempty"`
-	Width  *float64 `json:"width,omitempty" xml:"width,omitempty"`
+	// example:
+	//
+	// 1920
+	Width *float64 `json:"width,omitempty" xml:"width,omitempty"`
 }
 
 func (s BrowserViewPort) String() string {

@@ -26,15 +26,38 @@ type iBrowserSessionOut interface {
 }
 
 type BrowserSessionOut struct {
-	BrowserId     *string `json:"browserId,omitempty" xml:"browserId,omitempty"`
-	BrowserName   *string `json:"browserName,omitempty" xml:"browserName,omitempty"`
-	CreatedAt     *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// browser-1234567890abcdef
+	BrowserId *string `json:"browserId,omitempty" xml:"browserId,omitempty"`
+	// example:
+	//
+	// my-browser-session
+	BrowserName *string `json:"browserName,omitempty" xml:"browserName,omitempty"`
+	// example:
+	//
+	// 2025-01-10T10:30:00Z
+	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// 2025-01-10T11:45:00Z
 	LastUpdatedAt *string `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// bs-1234567890abcdef
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
 	// 会话空闲超时时间，单位为秒
-	SessionIdleTimeoutSeconds *int32  `json:"sessionIdleTimeoutSeconds,omitempty" xml:"sessionIdleTimeoutSeconds,omitempty"`
-	Status                    *string `json:"status,omitempty" xml:"status,omitempty"`
+	//
+	// example:
+	//
+	// 3600
+	SessionIdleTimeoutSeconds *int32 `json:"sessionIdleTimeoutSeconds,omitempty" xml:"sessionIdleTimeoutSeconds,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s BrowserSessionOut) String() string {

@@ -22,6 +22,11 @@ type iUpdateCredentialInput interface {
 }
 
 type UpdateCredentialInput struct {
+	// 凭证的配置参数，以键值对形式存储
+	//
+	// example:
+	//
+	// api_endpoint=https://api.example.com,timeout=30
 	Config      map[string]*string `json:"config,omitempty" xml:"config,omitempty"`
 	Description *string            `json:"description,omitempty" xml:"description,omitempty"`
 	Name        *string            `json:"name,omitempty" xml:"name,omitempty"`

@@ -21,12 +21,28 @@ type iListAgentRuntimesInput interface {
 
 type ListAgentRuntimesInput struct {
 	// 按名称过滤
+	//
+	// example:
+	//
+	// my-agent-runtime
 	AgentRuntimeName *string `json:"agentRuntimeName,omitempty" xml:"agentRuntimeName,omitempty"`
 	// 页码
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// 每页记录数
+	//
+	// example:
+	//
+	// 20
 	PageSize *int `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// 按状态过滤
+	//
+	// example:
+	//
+	// READY,CREATING
 	Statuses []*string `json:"statuses,omitempty" xml:"statuses,omitempty" type:"Repeated"`
 }
 

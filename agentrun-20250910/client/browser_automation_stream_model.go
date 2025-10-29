@@ -16,8 +16,14 @@ type iBrowserAutomationStream interface {
 }
 
 type BrowserAutomationStream struct {
+	// example:
+	//
+	// wss://browser-automation.cn-hangzhou.agentrun.aliyuncs.com/stream/bs-1234567890abcdef
 	StreamEndpoint *string `json:"streamEndpoint,omitempty" xml:"streamEndpoint,omitempty"`
-	StreamStatus   *string `json:"streamStatus,omitempty" xml:"streamStatus,omitempty"`
+	// example:
+	//
+	// ACTIVE
+	StreamStatus *string `json:"streamStatus,omitempty" xml:"streamStatus,omitempty"`
 }
 
 func (s BrowserAutomationStream) String() string {

@@ -32,18 +32,46 @@ type iAgentRuntimeEndpoint interface {
 }
 
 type AgentRuntimeEndpoint struct {
-	AgentRuntimeEndpointArn  *string `json:"agentRuntimeEndpointArn,omitempty" xml:"agentRuntimeEndpointArn,omitempty"`
-	AgentRuntimeEndpointId   *string `json:"agentRuntimeEndpointId,omitempty" xml:"agentRuntimeEndpointId,omitempty"`
+	// example:
+	//
+	// acs:agentrun:cn-hangzhou:1760720386195983:runtime-endpoints/e56d483c-db80-4116-9ec4-25f16f5facfd
+	AgentRuntimeEndpointArn *string `json:"agentRuntimeEndpointArn,omitempty" xml:"agentRuntimeEndpointArn,omitempty"`
+	// example:
+	//
+	// are-1234567890abcdef
+	AgentRuntimeEndpointId *string `json:"agentRuntimeEndpointId,omitempty" xml:"agentRuntimeEndpointId,omitempty"`
+	// example:
+	//
+	// production-endpoint
 	AgentRuntimeEndpointName *string `json:"agentRuntimeEndpointName,omitempty" xml:"agentRuntimeEndpointName,omitempty"`
-	AgentRuntimeId           *string `json:"agentRuntimeId,omitempty" xml:"agentRuntimeId,omitempty"`
-	Description              *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// ar-1234567890abcdef
+	AgentRuntimeId *string `json:"agentRuntimeId,omitempty" xml:"agentRuntimeId,omitempty"`
+	// example:
+	//
+	// Production endpoint for customer service agent
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// 智能体运行时端点的公网访问地址
+	//
+	// example:
+	//
+	// https://ar-1234567890abcdef.cn-hangzhou.agentrun.aliyuncs.com
 	EndpointPublicUrl *string `json:"endpointPublicUrl,omitempty" xml:"endpointPublicUrl,omitempty"`
 	// 智能体运行时端点的路由配置，支持多版本权重分配
 	RoutingConfiguration *RoutingConfiguration `json:"routingConfiguration,omitempty" xml:"routingConfiguration,omitempty"`
-	Status               *string               `json:"status,omitempty" xml:"status,omitempty"`
-	StatusReason         *string               `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
-	TargetVersion        *string               `json:"targetVersion,omitempty" xml:"targetVersion,omitempty"`
+	// example:
+	//
+	// ACTIVE
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// Endpoint is active and ready
+	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
+	// example:
+	//
+	// LATEST
+	TargetVersion *string `json:"targetVersion,omitempty" xml:"targetVersion,omitempty"`
 }
 
 func (s AgentRuntimeEndpoint) String() string {

@@ -20,10 +20,22 @@ type iNetworkConfiguration interface {
 }
 
 type NetworkConfiguration struct {
-	NetworkMode     *string   `json:"networkMode,omitempty" xml:"networkMode,omitempty"`
-	SecurityGroupId *string   `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	VpcId           *string   `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	VswitchIds      []*string `json:"vswitchIds,omitempty" xml:"vswitchIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// PRIVATE
+	NetworkMode *string `json:"networkMode,omitempty" xml:"networkMode,omitempty"`
+	// example:
+	//
+	// sg-1234567890abcdef0
+	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	// example:
+	//
+	// vpc-1234567890abcdef0
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// example:
+	//
+	// vsw-1234567890abcdef0,vsw-abcdef1234567890
+	VswitchIds []*string `json:"vswitchIds,omitempty" xml:"vswitchIds,omitempty" type:"Repeated"`
 }
 
 func (s NetworkConfiguration) String() string {

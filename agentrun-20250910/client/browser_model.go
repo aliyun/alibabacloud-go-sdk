@@ -40,22 +40,60 @@ type iBrowser interface {
 }
 
 type Browser struct {
-	BrowserId        *string  `json:"browserId,omitempty" xml:"browserId,omitempty"`
-	BrowserName      *string  `json:"browserName,omitempty" xml:"browserName,omitempty"`
-	Cpu              *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	CreatedAt        *string  `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CredentialId     *string  `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	Description      *string  `json:"description,omitempty" xml:"description,omitempty"`
-	ExecutionRoleArn *string  `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
-	LastUpdatedAt    *string  `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
+	// example:
+	//
+	// browser-1234567890abcdef
+	BrowserId *string `json:"browserId,omitempty" xml:"browserId,omitempty"`
+	// example:
+	//
+	// my-browser
+	BrowserName *string `json:"browserName,omitempty" xml:"browserName,omitempty"`
+	// example:
+	//
+	// 2.0
+	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// example:
+	//
+	// 2025-01-10T10:30:00Z
+	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// cred-1234567890abcdef
+	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
+	// example:
+	//
+	// Web automation browser for testing
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// acs:ram::1760720386195983:role/BrowserExecutionRole
+	ExecutionRoleArn *string `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
+	// example:
+	//
+	// 2025-01-10T11:45:00Z
+	LastUpdatedAt *string `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
 	// 内存资源配置（单位：MB）
+	//
+	// example:
+	//
+	// 2048
 	Memory               *int32                         `json:"memory,omitempty" xml:"memory,omitempty"`
 	NetworkConfiguration *NetworkConfiguration          `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
 	Recording            *BrowserRecordingConfiguration `json:"recording,omitempty" xml:"recording,omitempty"`
-	Status               *string                        `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// READY
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// 当前状态的原因说明（如适用）
+	//
+	// example:
+	//
+	// Browser is ready for use
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
-	TenantId     *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	// example:
+	//
+	// tenant-1234567890abcdef
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
 func (s Browser) String() string {

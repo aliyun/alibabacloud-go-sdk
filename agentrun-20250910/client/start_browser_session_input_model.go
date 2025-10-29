@@ -16,6 +16,10 @@ type iStartBrowserSessionInput interface {
 type StartBrowserSessionInput struct {
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// my-browser-session
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

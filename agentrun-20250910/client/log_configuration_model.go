@@ -17,8 +17,16 @@ type iLogConfiguration interface {
 
 type LogConfiguration struct {
 	// SLS日志库名称
+	//
+	// example:
+	//
+	// agent-runtime-logs
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
 	// SLS项目名称
+	//
+	// example:
+	//
+	// agent-runtime-logs
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
 }
 

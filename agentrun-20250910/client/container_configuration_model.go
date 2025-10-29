@@ -17,8 +17,15 @@ type iContainerConfiguration interface {
 
 type ContainerConfiguration struct {
 	// 在容器中运行的命令（例如：[\"python3\", \"app.py\"]）
+	//
+	// example:
+	//
+	// python3,app.py
 	Command []*string `json:"command,omitempty" xml:"command,omitempty" type:"Repeated"`
-	Image   *string   `json:"image,omitempty" xml:"image,omitempty"`
+	// example:
+	//
+	// registry.cn-hangzhou.aliyuncs.com/my-namespace/agent-runtime:latest
+	Image *string `json:"image,omitempty" xml:"image,omitempty"`
 }
 
 func (s ContainerConfiguration) String() string {

@@ -29,21 +29,46 @@ type iCreateBrowserInput interface {
 
 type CreateBrowserInput struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// my-browser
 	BrowserName *string `json:"browserName,omitempty" xml:"browserName,omitempty"`
 	// CPU资源配置（单位：核）
 	//
 	// This parameter is required.
-	Cpu              *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	CredentialId     *string  `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	Description      *string  `json:"description,omitempty" xml:"description,omitempty"`
-	ExecutionRoleArn *string  `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
+	//
+	// example:
+	//
+	// 2.0
+	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// example:
+	//
+	// cred-1234567890abcdef
+	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
+	// example:
+	//
+	// Web automation browser for testing
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// acs:ram::1760720386195983:role/BrowserExecutionRole
+	ExecutionRoleArn *string `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
 	// 内存资源配置（单位：MB）
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2048
 	Memory *int32 `json:"memory,omitempty" xml:"memory,omitempty"`
 	// This parameter is required.
 	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
 	// 会话的空闲超时时间，单位为秒。实例没有会话请求后处于空闲状态，空闲态为闲置计费模式，超过此超时时间后会话自动过期，不可继续使用
+	//
+	// example:
+	//
+	// 3600
 	SessionIdleTimeoutSeconds *int32 `json:"sessionIdleTimeoutSeconds,omitempty" xml:"sessionIdleTimeoutSeconds,omitempty"`
 }
 

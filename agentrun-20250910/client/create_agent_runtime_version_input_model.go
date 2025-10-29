@@ -15,6 +15,10 @@ type iCreateAgentRuntimeVersionInput interface {
 
 type CreateAgentRuntimeVersionInput struct {
 	// 版本描述
+	//
+	// example:
+	//
+	// Version 1.0.0 release with new features
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 }
 

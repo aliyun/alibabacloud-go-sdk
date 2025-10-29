@@ -31,25 +31,56 @@ type CreateCodeInterpreterInput struct {
 	// 代码解释器的名称，用于标识和区分不同的代码解释器实例
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// my-code-interpreter
 	CodeInterpreterName *string `json:"codeInterpreterName,omitempty" xml:"codeInterpreterName,omitempty"`
 	// CPU资源配置（单位：核数）
 	//
 	// This parameter is required.
-	Cpu          *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	CredentialId *string  `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
+	//
+	// example:
+	//
+	// 2.0
+	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// example:
+	//
+	// cred-1234567890abcdef
+	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
 	// 代码解释器的描述信息，说明该解释器的用途和功能
+	//
+	// example:
+	//
+	// Python code interpreter for data analysis
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// 此代码解释器的执行角色
+	//
+	// example:
+	//
+	// acs:ram::1760720386195983:role/CodeInterpreterExecutionRole
 	ExecutionRoleArn *string `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
 	// 内存资源配置（单位：MB）
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1024
 	Memory *int32 `json:"memory,omitempty" xml:"memory,omitempty"`
 	// 代码解释器的网络配置，包括VPC、安全组等网络访问设置
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {}
 	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
 	// 会话的空闲超时时间，单位为秒。实例没有会话请求后处于空闲状态，空闲态为闲置计费模式，超过此超时时间后会话自动过期，不可继续使用
+	//
+	// example:
+	//
+	// 3600
 	SessionIdleTimeoutSeconds *int32 `json:"sessionIdleTimeoutSeconds,omitempty" xml:"sessionIdleTimeoutSeconds,omitempty"`
 }
 

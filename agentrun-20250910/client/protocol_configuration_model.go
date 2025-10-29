@@ -14,6 +14,9 @@ type iProtocolConfiguration interface {
 }
 
 type ProtocolConfiguration struct {
+	// example:
+	//
+	// HTTP
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 

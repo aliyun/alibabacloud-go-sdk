@@ -20,11 +20,25 @@ type iCreateAgentRuntimeEndpointInput interface {
 }
 
 type CreateAgentRuntimeEndpointInput struct {
+	// example:
+	//
+	// production-endpoint
 	AgentRuntimeEndpointName *string `json:"agentRuntimeEndpointName,omitempty" xml:"agentRuntimeEndpointName,omitempty"`
-	Description              *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// Production endpoint for customer service agent
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// 智能体运行时端点的路由配置，支持多版本权重分配
+	//
+	// example:
+	//
+	// {}
 	RoutingConfiguration *RoutingConfiguration `json:"routingConfiguration,omitempty" xml:"routingConfiguration,omitempty"`
 	// 智能体运行时的目标版本
+	//
+	// example:
+	//
+	// LATEST
 	TargetVersion *string `json:"targetVersion,omitempty" xml:"targetVersion,omitempty"`
 }
 

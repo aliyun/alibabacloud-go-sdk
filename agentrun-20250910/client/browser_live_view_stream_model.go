@@ -14,6 +14,9 @@ type iBrowserLiveViewStream interface {
 }
 
 type BrowserLiveViewStream struct {
+	// example:
+	//
+	// wss://browser-liveview.cn-hangzhou.agentrun.aliyuncs.com/stream/bs-1234567890abcdef
 	StreamEndpoint *string `json:"streamEndpoint,omitempty" xml:"streamEndpoint,omitempty"`
 }
 

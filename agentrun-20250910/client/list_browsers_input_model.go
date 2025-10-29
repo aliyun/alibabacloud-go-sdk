@@ -19,9 +19,19 @@ type iListBrowsersInput interface {
 
 type ListBrowsersInput struct {
 	// 按浏览器名称过滤
+	//
+	// example:
+	//
+	// my-browser
 	BrowserName *string `json:"browserName,omitempty" xml:"browserName,omitempty"`
-	PageNumber  *int    `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize    *int    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListBrowsersInput) String() string {

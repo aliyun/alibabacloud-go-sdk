@@ -16,8 +16,14 @@ type iBrowserStreams interface {
 }
 
 type BrowserStreams struct {
+	// example:
+	//
+	// {}
 	AutomationStream *BrowserAutomationStream `json:"automationStream,omitempty" xml:"automationStream,omitempty"`
-	LiveViewStream   *BrowserLiveViewStream   `json:"liveViewStream,omitempty" xml:"liveViewStream,omitempty"`
+	// example:
+	//
+	// {}
+	LiveViewStream *BrowserLiveViewStream `json:"liveViewStream,omitempty" xml:"liveViewStream,omitempty"`
 }
 
 func (s BrowserStreams) String() string {

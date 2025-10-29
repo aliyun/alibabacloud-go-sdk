@@ -44,27 +44,91 @@ type iUpdateAgentRuntimeInput interface {
 }
 
 type UpdateAgentRuntimeInput struct {
-	AgentRuntimeName       *string                 `json:"agentRuntimeName,omitempty" xml:"agentRuntimeName,omitempty"`
-	ArtifactType           *string                 `json:"artifactType,omitempty" xml:"artifactType,omitempty"`
-	CodeConfiguration      *CodeConfiguration      `json:"codeConfiguration,omitempty" xml:"codeConfiguration,omitempty"`
+	// example:
+	//
+	// my-agent-runtime
+	AgentRuntimeName *string `json:"agentRuntimeName,omitempty" xml:"agentRuntimeName,omitempty"`
+	// example:
+	//
+	// Code
+	ArtifactType *string `json:"artifactType,omitempty" xml:"artifactType,omitempty"`
+	// 当artifactType为Code时的代码配置信息，包括代码源、入口文件等
+	//
+	// example:
+	//
+	// {}
+	CodeConfiguration *CodeConfiguration `json:"codeConfiguration,omitempty" xml:"codeConfiguration,omitempty"`
+	// 当artifactType为Container时的容器配置信息，包括镜像地址、启动命令等
+	//
+	// example:
+	//
+	// {}
 	ContainerConfiguration *ContainerConfiguration `json:"containerConfiguration,omitempty" xml:"containerConfiguration,omitempty"`
 	// This parameter is required.
-	Cpu                  *float32           `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	Description          *string            `json:"description,omitempty" xml:"description,omitempty"`
+	//
+	// example:
+	//
+	// 1.0
+	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// example:
+	//
+	// 更新后的智能体运行时描述
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 智能体运行时的环境变量配置，用于在运行时传递配置参数
+	//
+	// example:
+	//
+	// ENV_VAR1=value1,ENV_VAR2=value2
 	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
 	// 为智能体运行时提供访问云服务权限的执行角色ARN
+	//
+	// example:
+	//
+	// acs:ram::1760720386195983:role/AgentRunExecutionRole
 	ExecutionRoleArn *string `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
 	// 智能体运行时的健康检查配置，用于监控运行时实例的健康状态
+	//
+	// example:
+	//
+	// {}
 	HealthCheckConfiguration *HealthCheckConfiguration `json:"healthCheckConfiguration,omitempty" xml:"healthCheckConfiguration,omitempty"`
 	// SLS（简单日志服务）配置
-	LogConfiguration      *LogConfiguration      `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
-	Memory                *int32                 `json:"memory,omitempty" xml:"memory,omitempty"`
-	NetworkConfiguration  *NetworkConfiguration  `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
-	Port                  *int32                 `json:"port,omitempty" xml:"port,omitempty"`
+	//
+	// example:
+	//
+	// {}
+	LogConfiguration *LogConfiguration `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
+	// example:
+	//
+	// 1024
+	Memory *int32 `json:"memory,omitempty" xml:"memory,omitempty"`
+	// 智能体运行时的网络配置，包括VPC、安全组等网络访问设置
+	//
+	// example:
+	//
+	// {}
+	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
+	// example:
+	//
+	// 8080
+	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// 智能体运行时的通信协议配置，定义运行时如何与外部系统交互
+	//
+	// example:
+	//
+	// {}
 	ProtocolConfiguration *ProtocolConfiguration `json:"protocolConfiguration,omitempty" xml:"protocolConfiguration,omitempty"`
 	// 每个运行时实例允许的最大并发会话数
+	//
+	// example:
+	//
+	// 100
 	SessionConcurrencyLimitPerInstance *int32 `json:"sessionConcurrencyLimitPerInstance,omitempty" xml:"sessionConcurrencyLimitPerInstance,omitempty"`
 	// 会话的空闲超时时间，单位为秒。实例没有会话请求后处于空闲状态，空闲态为闲置计费模式，超过此超时时间后会话自动过期，不可继续使用
+	//
+	// example:
+	//
+	// 3600
 	SessionIdleTimeoutSeconds *int32 `json:"sessionIdleTimeoutSeconds,omitempty" xml:"sessionIdleTimeoutSeconds,omitempty"`
 }
 
