@@ -14,6 +14,8 @@ type iDeleteHaVipsRequest interface {
 }
 
 type DeleteHaVipsRequest struct {
+	// The IDs of high-availability virtual IP addresses (HAVIPs).
+	//
 	// This parameter is required.
 	HaVipIds []*string `json:"HaVipIds,omitempty" xml:"HaVipIds,omitempty" type:"Repeated"`
 }

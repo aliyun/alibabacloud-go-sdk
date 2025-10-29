@@ -16,7 +16,10 @@ type iCreateHaVipResponseBody interface {
 }
 
 type CreateHaVipResponseBody struct {
+	// The IDs of the HAVIPs.
 	HaVipIds []*string `json:"HaVipIds,omitempty" xml:"HaVipIds,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// AAE90880-4970-4D81-A534-A6C0F3631F74

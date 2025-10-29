@@ -18,16 +18,24 @@ type iModifyEnsRouteEntryRequest interface {
 }
 
 type ModifyEnsRouteEntryRequest struct {
+	// The description of the route entry. The description must be 1 to 256 characters in length and cannot start with http:// or https://.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the custom route.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rte-5****
 	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
+	// The name of the route.
+	//
+	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	//
 	// example:
 	//
 	// test

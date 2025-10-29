@@ -16,13 +16,14 @@ type iBatchEventRebootInstanceResponseBody interface {
 }
 
 type BatchEventRebootInstanceResponseBody struct {
-	// Id of the request。
+	// The ID of the request.
 	//
 	// example:
 	//
 	// C0003E8B-B930-4F59-ADC0-0E209A9012A8
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   []*BatchEventRebootInstanceResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result.
+	Results []*BatchEventRebootInstanceResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
 func (s BatchEventRebootInstanceResponseBody) String() string {
@@ -65,18 +66,26 @@ func (s *BatchEventRebootInstanceResponseBody) Validate() error {
 }
 
 type BatchEventRebootInstanceResponseBodyResults struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the system event.
+	//
 	// example:
 	//
 	// e-d71ff150945b9c02eb6ebc0016328468
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The message of the operation. If the value of the Code parameter is 200, the value of this parameter is successful.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The resource IDs.
+	//
 	// example:
 	//
 	// i-55qi8m11rr53c4i964md8a00l

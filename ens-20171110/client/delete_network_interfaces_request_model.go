@@ -14,6 +14,8 @@ type iDeleteNetworkInterfacesRequest interface {
 }
 
 type DeleteNetworkInterfacesRequest struct {
+	// The IDs of the elastic network interfaces (ENIs).
+	//
 	// This parameter is required.
 	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
 }

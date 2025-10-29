@@ -16,11 +16,14 @@ type iBatchEventMigrateInstanceResponseBody interface {
 }
 
 type BatchEventMigrateInstanceResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// FF53E96D-3F1A-42F0-8373-1C2B39D72D44
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   []*BatchEventMigrateInstanceResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The results.
+	Results []*BatchEventMigrateInstanceResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
 func (s BatchEventMigrateInstanceResponseBody) String() string {
@@ -63,18 +66,26 @@ func (s *BatchEventMigrateInstanceResponseBody) Validate() error {
 }
 
 type BatchEventMigrateInstanceResponseBodyResults struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the event.
+	//
 	// example:
 	//
 	// e-d71ff150945b9c02eb6ebc0016328468
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// When Code!=200, it indicates the specific error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The resource IDs.
+	//
 	// example:
 	//
 	// i-55qi8m11rr53c4i964md8a00l

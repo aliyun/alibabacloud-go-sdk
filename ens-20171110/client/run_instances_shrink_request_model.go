@@ -49,6 +49,12 @@ type iRunInstancesShrinkRequest interface {
 	GetIpv6AddressCount() *int64
 	SetKeyPairName(v string) *RunInstancesShrinkRequest
 	GetKeyPairName() *string
+	SetLaunchTemplateId(v string) *RunInstancesShrinkRequest
+	GetLaunchTemplateId() *string
+	SetLaunchTemplateName(v string) *RunInstancesShrinkRequest
+	GetLaunchTemplateName() *string
+	SetLaunchTemplateVersion(v int32) *RunInstancesShrinkRequest
+	GetLaunchTemplateVersion() *int32
 	SetNetDistrictCode(v string) *RunInstancesShrinkRequest
 	GetNetDistrictCode() *string
 	SetNetWorkId(v string) *RunInstancesShrinkRequest
@@ -91,8 +97,6 @@ type iRunInstancesShrinkRequest interface {
 
 type RunInstancesShrinkRequest struct {
 	// The number of instances that you want to create. Valid values: 1 to 100.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -189,8 +193,6 @@ type RunInstancesShrinkRequest struct {
 	//
 	// 	- **PostPaid:*	- pay-as-you-go.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// PostPaid
@@ -204,8 +206,6 @@ type RunInstancesShrinkRequest struct {
 	// TestName
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The instance type.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -224,8 +224,6 @@ type RunInstancesShrinkRequest struct {
 	// BandwidthByDay
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	// The maximum public bandwidth. If the value of this parameter is greater than 0, a public IP address is assigned to the instance.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -254,6 +252,18 @@ type RunInstancesShrinkRequest struct {
 	//
 	// wx2-jumpserver
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// example:
+	//
+	// lt-test
+	LaunchTemplateId *string `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
+	// example:
+	//
+	// lt-test
+	LaunchTemplateName *string `json:"LaunchTemplateName,omitempty" xml:"LaunchTemplateName,omitempty"`
+	// example:
+	//
+	// 2
+	LaunchTemplateVersion *int32 `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
 	// The code of the region.
 	//
 	// >  This parameter is not available if ScheduleAreaLevel is set to Region and is required if ScheduleAreaLevel is set to other values.
@@ -333,8 +343,6 @@ type RunInstancesShrinkRequest struct {
 	// 	- **Small**: city
 	//
 	// 	- **Region**: node
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -504,6 +512,18 @@ func (s *RunInstancesShrinkRequest) GetIpv6AddressCount() *int64 {
 
 func (s *RunInstancesShrinkRequest) GetKeyPairName() *string {
 	return s.KeyPairName
+}
+
+func (s *RunInstancesShrinkRequest) GetLaunchTemplateId() *string {
+	return s.LaunchTemplateId
+}
+
+func (s *RunInstancesShrinkRequest) GetLaunchTemplateName() *string {
+	return s.LaunchTemplateName
+}
+
+func (s *RunInstancesShrinkRequest) GetLaunchTemplateVersion() *int32 {
+	return s.LaunchTemplateVersion
 }
 
 func (s *RunInstancesShrinkRequest) GetNetDistrictCode() *string {
@@ -679,6 +699,21 @@ func (s *RunInstancesShrinkRequest) SetIpv6AddressCount(v int64) *RunInstancesSh
 
 func (s *RunInstancesShrinkRequest) SetKeyPairName(v string) *RunInstancesShrinkRequest {
 	s.KeyPairName = &v
+	return s
+}
+
+func (s *RunInstancesShrinkRequest) SetLaunchTemplateId(v string) *RunInstancesShrinkRequest {
+	s.LaunchTemplateId = &v
+	return s
+}
+
+func (s *RunInstancesShrinkRequest) SetLaunchTemplateName(v string) *RunInstancesShrinkRequest {
+	s.LaunchTemplateName = &v
+	return s
+}
+
+func (s *RunInstancesShrinkRequest) SetLaunchTemplateVersion(v int32) *RunInstancesShrinkRequest {
+	s.LaunchTemplateVersion = &v
 	return s
 }
 

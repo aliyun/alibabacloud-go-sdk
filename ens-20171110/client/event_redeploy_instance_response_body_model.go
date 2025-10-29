@@ -14,7 +14,7 @@ type iEventRedeployInstanceResponseBody interface {
 }
 
 type EventRedeployInstanceResponseBody struct {
-  // RequestId。
+  // The ID of the request.
   // 
   // example:
   // 

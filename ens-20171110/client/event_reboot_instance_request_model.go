@@ -20,22 +20,34 @@ type iEventRebootInstanceRequest interface {
 }
 
 type EventRebootInstanceRequest struct {
+  // The ID of the system event.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // e-9d992570200d86b9126d78aa8c37b54b
   EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+  // The type of the O\\&M task. Valid values:
+  // 
+  // 	- immediate
+  // 
+  // 	- scheduled
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // immediate
   OpsType *string `json:"OpsType,omitempty" xml:"OpsType,omitempty"`
+  // The execution time of the reservation. The timestamp is measured in milliseconds. If the OpsType parameter is set to scheduled, this parameter is required.
+  // 
   // example:
   // 
   // 1742452232000
   PlanTime *int64 `json:"PlanTime,omitempty" xml:"PlanTime,omitempty"`
+  // The ID of the resource.
+  // 
   // This parameter is required.
   // 
   // example:

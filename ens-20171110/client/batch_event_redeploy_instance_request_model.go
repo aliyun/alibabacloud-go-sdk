@@ -14,6 +14,7 @@ type iBatchEventRedeployInstanceRequest interface {
 }
 
 type BatchEventRedeployInstanceRequest struct {
+	// List of events.
 	EventInfos []*BatchEventRedeployInstanceRequestEventInfos `json:"EventInfos,omitempty" xml:"EventInfos,omitempty" type:"Repeated"`
 }
 
@@ -48,18 +49,30 @@ func (s *BatchEventRedeployInstanceRequest) Validate() error {
 }
 
 type BatchEventRedeployInstanceRequestEventInfos struct {
+	// System event ID.
+	//
 	// example:
 	//
 	// e-d71ff150945b9c02eb6ebc0016328468
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// Operation type, value range:
+	//
+	// - immediate: Execute immediately.
+	//
+	// - scheduled: Scheduled execution.
+	//
 	// example:
 	//
 	// 1742452232000
 	OpsType *string `json:"OpsType,omitempty" xml:"OpsType,omitempty"`
+	// Scheduled execution time, in timestamp, unit is milliseconds. This field is required when OpsType=scheduled.
+	//
 	// example:
 	//
 	// immediate
 	PlanTime *int64 `json:"PlanTime,omitempty" xml:"PlanTime,omitempty"`
+	// Resource ID.
+	//
 	// example:
 	//
 	// i-55qi8m11rr53c4i964md8a00l

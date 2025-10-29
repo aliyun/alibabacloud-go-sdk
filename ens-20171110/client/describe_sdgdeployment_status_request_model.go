@@ -11,6 +11,8 @@ type iDescribeSDGDeploymentStatusRequest interface {
 	GoString() string
 	SetDeploymentType(v string) *DescribeSDGDeploymentStatusRequest
 	GetDeploymentType() *string
+	SetDiskIds(v []*string) *DescribeSDGDeploymentStatusRequest
+	GetDiskIds() []*string
 	SetInstanceIds(v []*string) *DescribeSDGDeploymentStatusRequest
 	GetInstanceIds() []*string
 	SetPageNumber(v int32) *DescribeSDGDeploymentStatusRequest
@@ -31,7 +33,8 @@ type DescribeSDGDeploymentStatusRequest struct {
 	// example:
 	//
 	// shared
-	DeploymentType *string `json:"DeploymentType,omitempty" xml:"DeploymentType,omitempty"`
+	DeploymentType *string   `json:"DeploymentType,omitempty" xml:"DeploymentType,omitempty"`
+	DiskIds        []*string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty" type:"Repeated"`
 	// IDs of Android in Container (AIC) instances.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The number of the page to return. Pages start from page **1**. Default value: **1**.
@@ -76,6 +79,10 @@ func (s *DescribeSDGDeploymentStatusRequest) GetDeploymentType() *string {
 	return s.DeploymentType
 }
 
+func (s *DescribeSDGDeploymentStatusRequest) GetDiskIds() []*string {
+	return s.DiskIds
+}
+
 func (s *DescribeSDGDeploymentStatusRequest) GetInstanceIds() []*string {
 	return s.InstanceIds
 }
@@ -102,6 +109,11 @@ func (s *DescribeSDGDeploymentStatusRequest) GetStatus() *string {
 
 func (s *DescribeSDGDeploymentStatusRequest) SetDeploymentType(v string) *DescribeSDGDeploymentStatusRequest {
 	s.DeploymentType = &v
+	return s
+}
+
+func (s *DescribeSDGDeploymentStatusRequest) SetDiskIds(v []*string) *DescribeSDGDeploymentStatusRequest {
+	s.DiskIds = v
 	return s
 }
 

@@ -14,6 +14,8 @@ type iDescribeVSwitchAttributesRequest interface {
 }
 
 type DescribeVSwitchAttributesRequest struct {
+	// The ID of the VSwitch.
+	//
 	// This parameter is required.
 	//
 	// example:

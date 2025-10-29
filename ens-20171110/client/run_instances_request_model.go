@@ -49,6 +49,12 @@ type iRunInstancesRequest interface {
 	GetIpv6AddressCount() *int64
 	SetKeyPairName(v string) *RunInstancesRequest
 	GetKeyPairName() *string
+	SetLaunchTemplateId(v string) *RunInstancesRequest
+	GetLaunchTemplateId() *string
+	SetLaunchTemplateName(v string) *RunInstancesRequest
+	GetLaunchTemplateName() *string
+	SetLaunchTemplateVersion(v int32) *RunInstancesRequest
+	GetLaunchTemplateVersion() *int32
 	SetNetDistrictCode(v string) *RunInstancesRequest
 	GetNetDistrictCode() *string
 	SetNetWorkId(v string) *RunInstancesRequest
@@ -91,8 +97,6 @@ type iRunInstancesRequest interface {
 
 type RunInstancesRequest struct {
 	// The number of instances that you want to create. Valid values: 1 to 100.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -189,8 +193,6 @@ type RunInstancesRequest struct {
 	//
 	// 	- **PostPaid:*	- pay-as-you-go.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// PostPaid
@@ -204,8 +206,6 @@ type RunInstancesRequest struct {
 	// TestName
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The instance type.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -224,8 +224,6 @@ type RunInstancesRequest struct {
 	// BandwidthByDay
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	// The maximum public bandwidth. If the value of this parameter is greater than 0, a public IP address is assigned to the instance.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -254,6 +252,18 @@ type RunInstancesRequest struct {
 	//
 	// wx2-jumpserver
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// example:
+	//
+	// lt-test
+	LaunchTemplateId *string `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
+	// example:
+	//
+	// lt-test
+	LaunchTemplateName *string `json:"LaunchTemplateName,omitempty" xml:"LaunchTemplateName,omitempty"`
+	// example:
+	//
+	// 2
+	LaunchTemplateVersion *int32 `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
 	// The code of the region.
 	//
 	// >  This parameter is not available if ScheduleAreaLevel is set to Region and is required if ScheduleAreaLevel is set to other values.
@@ -333,8 +343,6 @@ type RunInstancesRequest struct {
 	// 	- **Small**: city
 	//
 	// 	- **Region**: node
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -504,6 +512,18 @@ func (s *RunInstancesRequest) GetIpv6AddressCount() *int64 {
 
 func (s *RunInstancesRequest) GetKeyPairName() *string {
 	return s.KeyPairName
+}
+
+func (s *RunInstancesRequest) GetLaunchTemplateId() *string {
+	return s.LaunchTemplateId
+}
+
+func (s *RunInstancesRequest) GetLaunchTemplateName() *string {
+	return s.LaunchTemplateName
+}
+
+func (s *RunInstancesRequest) GetLaunchTemplateVersion() *int32 {
+	return s.LaunchTemplateVersion
 }
 
 func (s *RunInstancesRequest) GetNetDistrictCode() *string {
@@ -679,6 +699,21 @@ func (s *RunInstancesRequest) SetIpv6AddressCount(v int64) *RunInstancesRequest 
 
 func (s *RunInstancesRequest) SetKeyPairName(v string) *RunInstancesRequest {
 	s.KeyPairName = &v
+	return s
+}
+
+func (s *RunInstancesRequest) SetLaunchTemplateId(v string) *RunInstancesRequest {
+	s.LaunchTemplateId = &v
+	return s
+}
+
+func (s *RunInstancesRequest) SetLaunchTemplateName(v string) *RunInstancesRequest {
+	s.LaunchTemplateName = &v
+	return s
+}
+
+func (s *RunInstancesRequest) SetLaunchTemplateVersion(v int32) *RunInstancesRequest {
+	s.LaunchTemplateVersion = &v
 	return s
 }
 

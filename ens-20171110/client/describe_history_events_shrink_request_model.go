@@ -43,7 +43,8 @@ type DescribeHistoryEventsShrinkRequest struct {
 	// example:
 	//
 	// 10
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The IDs of resources.
 	ResourceIdsShrink *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
 }
 

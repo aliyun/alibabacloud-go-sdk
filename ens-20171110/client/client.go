@@ -1128,7 +1128,13 @@ func (client *Client) AuthorizeSecurityGroupEgress(request *AuthorizeSecurityGro
 
 // Summary:
 //
-// 因底层升级批量迁移
+// Migrates multiple instances in a specified event at a time. You can execute the task immediately or schedule the task execution.
+//
+// Description:
+//
+// ## [](#)Request description
+//
+//   - This O\\&M operation is supported only by the Instance:SystemUpgrade.Migrate event.
 //
 // @param tmpReq - BatchEventMigrateInstanceRequest
 //
@@ -1178,7 +1184,13 @@ func (client *Client) BatchEventMigrateInstanceWithOptions(tmpReq *BatchEventMig
 
 // Summary:
 //
-// 因底层升级批量迁移
+// Migrates multiple instances in a specified event at a time. You can execute the task immediately or schedule the task execution.
+//
+// Description:
+//
+// ## [](#)Request description
+//
+//   - This O\\&M operation is supported only by the Instance:SystemUpgrade.Migrate event.
 //
 // @param request - BatchEventMigrateInstanceRequest
 //
@@ -1196,23 +1208,11 @@ func (client *Client) BatchEventMigrateInstance(request *BatchEventMigrateInstan
 
 // Summary:
 //
-// 批量因系统维护实例重启
+// # The event that is used to immediately redeploy specified resources in batches or by appointment
 //
 // Description:
 //
-// ## 请求说明
-//
-// - `Action` 参数固定为 `BatchEventRebootInstance`。
-//
-// - `Version` 参数固定为 `2017-11-10`。
-//
-// - `EventInfos` 是一个数组，每个元素包含需要重启实例的信息，包括事件ID、资源ID、操作类型（立即执行或预约执行）以及可选的计划时间戳（毫秒）。
-//
-// - 如果选择预约执行，则必须提供 `PlanTime` 字段的时间戳。
-//
-// - 返回结果中，`Results` 数组包含了每个请求的结果信息，包括消息、资源ID、事件ID和状态码。
-//
-// - 错误情况下，返回相应的错误代码和消息。
+//	This O\\&M operation supports only the following event types: Instance:SystemMaintenance.Reboot (instance reboot due to system problems)
 //
 // @param tmpReq - BatchEventRebootInstanceRequest
 //
@@ -1262,23 +1262,11 @@ func (client *Client) BatchEventRebootInstanceWithOptions(tmpReq *BatchEventRebo
 
 // Summary:
 //
-// 批量因系统维护实例重启
+// # The event that is used to immediately redeploy specified resources in batches or by appointment
 //
 // Description:
 //
-// ## 请求说明
-//
-// - `Action` 参数固定为 `BatchEventRebootInstance`。
-//
-// - `Version` 参数固定为 `2017-11-10`。
-//
-// - `EventInfos` 是一个数组，每个元素包含需要重启实例的信息，包括事件ID、资源ID、操作类型（立即执行或预约执行）以及可选的计划时间戳（毫秒）。
-//
-// - 如果选择预约执行，则必须提供 `PlanTime` 字段的时间戳。
-//
-// - 返回结果中，`Results` 数组包含了每个请求的结果信息，包括消息、资源ID、事件ID和状态码。
-//
-// - 错误情况下，返回相应的错误代码和消息。
+//	This O\\&M operation supports only the following event types: Instance:SystemMaintenance.Reboot (instance reboot due to system problems)
 //
 // @param request - BatchEventRebootInstanceRequest
 //
@@ -1296,7 +1284,11 @@ func (client *Client) BatchEventRebootInstance(request *BatchEventRebootInstance
 
 // Summary:
 //
-// 批量操作重新部署
+// # Batch redeployment
+//
+// Description:
+//
+// - This operation currently only supports event types: Instance:SystemFailure.Redeploy (redeploy instance due to system issues), Instance:SystemMaintenance.Redeploy (redeploy instance due to system maintenance)
 //
 // @param tmpReq - BatchEventRedeployInstanceRequest
 //
@@ -1346,7 +1338,11 @@ func (client *Client) BatchEventRedeployInstanceWithOptions(tmpReq *BatchEventRe
 
 // Summary:
 //
-// 批量操作重新部署
+// # Batch redeployment
+//
+// Description:
+//
+// - This operation currently only supports event types: Instance:SystemFailure.Redeploy (redeploy instance due to system issues), Instance:SystemMaintenance.Redeploy (redeploy instance due to system maintenance)
 //
 // @param request - BatchEventRedeployInstanceRequest
 //
@@ -2610,7 +2606,7 @@ func (client *Client) CreateForwardEntry(request *CreateForwardEntryRequest) (_r
 
 // Summary:
 //
-// 创建高可用VIP
+// Creates a high-availability virtual IP address (HAVIP).
 //
 // @param request - CreateHaVipRequest
 //
@@ -2670,7 +2666,7 @@ func (client *Client) CreateHaVipWithOptions(request *CreateHaVipRequest, runtim
 
 // Summary:
 //
-// 创建高可用VIP
+// Creates a high-availability virtual IP address (HAVIP).
 //
 // @param request - CreateHaVipRequest
 //
@@ -4844,6 +4840,68 @@ func (client *Client) CreateVSwitch(request *CreateVSwitchRequest) (_result *Cre
 
 // Summary:
 //
+// 删除托管公钥
+//
+// @param request - DeleteAICPublicKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAICPublicKeyResponse
+func (client *Client) DeleteAICPublicKeyWithOptions(request *DeleteAICPublicKeyRequest, runtime *dara.RuntimeOptions) (_result *DeleteAICPublicKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KeyName) {
+		query["KeyName"] = request.KeyName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAICPublicKey"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAICPublicKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除托管公钥
+//
+// @param request - DeleteAICPublicKeyRequest
+//
+// @return DeleteAICPublicKeyResponse
+func (client *Client) DeleteAICPublicKey(request *DeleteAICPublicKeyRequest) (_result *DeleteAICPublicKeyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAICPublicKeyResponse{}
+	_body, _err := client.DeleteAICPublicKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Releases all containers and resource instances related to a specific application in an asynchronous manner.
 //
 // @param request - DeleteApplicationRequest
@@ -5594,7 +5652,7 @@ func (client *Client) DeleteForwardEntry(request *DeleteForwardEntryRequest) (_r
 
 // Summary:
 //
-// 删除高可用VIP实例
+// Deletes a high-availability VIP (HAVIP).
 //
 // @param tmpReq - DeleteHaVipsRequest
 //
@@ -5644,7 +5702,7 @@ func (client *Client) DeleteHaVipsWithOptions(tmpReq *DeleteHaVipsRequest, runti
 
 // Summary:
 //
-// 删除高可用VIP实例
+// Deletes a high-availability VIP (HAVIP).
 //
 // @param request - DeleteHaVipsRequest
 //
@@ -6214,7 +6272,7 @@ func (client *Client) DeleteNetworkAclEntry(request *DeleteNetworkAclEntryReques
 
 // Summary:
 //
-// 删除弹性网卡
+// Deletes an elastic network interface (ENI).
 //
 // @param tmpReq - DeleteNetworkInterfacesRequest
 //
@@ -6264,7 +6322,7 @@ func (client *Client) DeleteNetworkInterfacesWithOptions(tmpReq *DeleteNetworkIn
 
 // Summary:
 //
-// 删除弹性网卡
+// Deletes an elastic network interface (ENI).
 //
 // @param request - DeleteNetworkInterfacesRequest
 //
@@ -10176,6 +10234,10 @@ func (client *Client) DescribeHaVips(request *DescribeHaVipsRequest) (_result *D
 //
 // Queries instance system events.
 //
+// Description:
+//
+//	You must specify an event type to query. You can query multiple event types at the same time.
+//
 // @param tmpReq - DescribeHistoryEventsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10257,6 +10319,10 @@ func (client *Client) DescribeHistoryEventsWithOptions(tmpReq *DescribeHistoryEv
 // Summary:
 //
 // Queries instance system events.
+//
+// Description:
+//
+//	You must specify an event type to query. You can query multiple event types at the same time.
 //
 // @param request - DescribeHistoryEventsRequest
 //
@@ -10562,7 +10628,15 @@ func (client *Client) DescribeInstanceAutoRenewAttribute(request *DescribeInstan
 
 // Summary:
 //
-// 查询实例5分钟粒度带宽明细
+// Queries the detailed bandwidth data of an instance, which is collected every 5 minutes.
+//
+// Description:
+//
+//	  You can call this operation up to 800 times per second per account.
+//
+//		- You can call this operation up to 100 times per second per user.
+//
+//		- You can specify multiple request parameters to filter query results. Specified request parameters have logical AND relations. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, this parameter is regarded as a valid filter condition and an empty result is returned.
 //
 // @param request - DescribeInstanceBandwidthDetailRequest
 //
@@ -10602,7 +10676,15 @@ func (client *Client) DescribeInstanceBandwidthDetailWithOptions(request *Descri
 
 // Summary:
 //
-// 查询实例5分钟粒度带宽明细
+// Queries the detailed bandwidth data of an instance, which is collected every 5 minutes.
+//
+// Description:
+//
+//	  You can call this operation up to 800 times per second per account.
+//
+//		- You can call this operation up to 100 times per second per user.
+//
+//		- You can specify multiple request parameters to filter query results. Specified request parameters have logical AND relations. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, this parameter is regarded as a valid filter condition and an empty result is returned.
 //
 // @param request - DescribeInstanceBandwidthDetailRequest
 //
@@ -13058,6 +13140,10 @@ func (client *Client) DescribeSDGDeploymentStatusWithOptions(tmpReq *DescribeSDG
 	}
 	request := &DescribeSDGDeploymentStatusShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DiskIds) {
+		request.DiskIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DiskIds, dara.String("DiskIds"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.InstanceIds) {
 		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, dara.String("InstanceIds"), dara.String("json"))
 	}
@@ -13069,6 +13155,10 @@ func (client *Client) DescribeSDGDeploymentStatusWithOptions(tmpReq *DescribeSDG
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeploymentType) {
 		query["DeploymentType"] = request.DeploymentType
+	}
+
+	if !dara.IsNil(request.DiskIdsShrink) {
+		query["DiskIds"] = request.DiskIdsShrink
 	}
 
 	if !dara.IsNil(request.InstanceIdsShrink) {
@@ -13129,6 +13219,84 @@ func (client *Client) DescribeSDGDeploymentStatus(request *DescribeSDGDeployment
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeSDGDeploymentStatusResponse{}
 	_body, _err := client.DescribeSDGDeploymentStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询SDG下的共享盘
+//
+// @param request - DescribeSDGSharedDisksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSDGSharedDisksResponse
+func (client *Client) DescribeSDGSharedDisksWithOptions(request *DescribeSDGSharedDisksRequest, runtime *dara.RuntimeOptions) (_result *DescribeSDGSharedDisksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SdgId) {
+		query["SdgId"] = request.SdgId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSDGSharedDisks"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSDGSharedDisksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询SDG下的共享盘
+//
+// @param request - DescribeSDGSharedDisksRequest
+//
+// @return DescribeSDGSharedDisksResponse
+func (client *Client) DescribeSDGSharedDisks(request *DescribeSDGSharedDisksRequest) (_result *DescribeSDGSharedDisksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSDGSharedDisksResponse{}
+	_body, _err := client.DescribeSDGSharedDisksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14184,7 +14352,7 @@ func (client *Client) DescribeUserBandWidthData(request *DescribeUserBandWidthDa
 
 // Summary:
 //
-// 调用DescribeVSwitchAttributes接口查询指定交换机的配置信息。
+// Call the DescribeVSwitchAttributes interface to query the configuration of a specified VSwitch.
 //
 // @param request - DescribeVSwitchAttributesRequest
 //
@@ -14228,7 +14396,7 @@ func (client *Client) DescribeVSwitchAttributesWithOptions(request *DescribeVSwi
 
 // Summary:
 //
-// 调用DescribeVSwitchAttributes接口查询指定交换机的配置信息。
+// Call the DescribeVSwitchAttributes interface to query the configuration of a specified VSwitch.
 //
 // @param request - DescribeVSwitchAttributesRequest
 //
@@ -14630,7 +14798,11 @@ func (client *Client) DistApplicationData(request *DistApplicationDataRequest) (
 
 // Summary:
 //
-// 因底层升级需要迁移
+// Migrates the instance across nodes after an O\\\\\\&M event occurs on an instance.
+//
+// Description:
+//
+//	This O\\&M operation is supported only by the Instance:SystemUpgrade.Migrate event.
 //
 // @param request - EventMigrateInstanceRequest
 //
@@ -14694,7 +14866,11 @@ func (client *Client) EventMigrateInstanceWithOptions(request *EventMigrateInsta
 
 // Summary:
 //
-// 因底层升级需要迁移
+// Migrates the instance across nodes after an O\\\\\\&M event occurs on an instance.
+//
+// Description:
+//
+//	This O\\&M operation is supported only by the Instance:SystemUpgrade.Migrate event.
 //
 // @param request - EventMigrateInstanceRequest
 //
@@ -14712,19 +14888,11 @@ func (client *Client) EventMigrateInstance(request *EventMigrateInstanceRequest)
 
 // Summary:
 //
-// 因系统维护实例重启
+// Restart the instance across nodes after an O\\\\\\&M event occurs on an instance.
 //
 // Description:
 //
-// ## 请求说明
-//
-// - 该API用于触发一个实例的重启事件。
-//
-// - `OpsType`参数可选，若不提供，默认为`scheduled`（预约执行）。
-//
-// - 当选择`scheduled`时，必须提供`PlanTime`参数，格式为时间戳（毫秒）。
-//
-// - 如果需要立即执行重启，请设置`OpsType`为`immediate`。
+//	This O\\&M operation supports only the Instance:SystemMaintenance.Reboot event
 //
 // @param request - EventRebootInstanceRequest
 //
@@ -14780,19 +14948,11 @@ func (client *Client) EventRebootInstanceWithOptions(request *EventRebootInstanc
 
 // Summary:
 //
-// 因系统维护实例重启
+// Restart the instance across nodes after an O\\\\\\&M event occurs on an instance.
 //
 // Description:
 //
-// ## 请求说明
-//
-// - 该API用于触发一个实例的重启事件。
-//
-// - `OpsType`参数可选，若不提供，默认为`scheduled`（预约执行）。
-//
-// - 当选择`scheduled`时，必须提供`PlanTime`参数，格式为时间戳（毫秒）。
-//
-// - 如果需要立即执行重启，请设置`OpsType`为`immediate`。
+//	This O\\&M operation supports only the Instance:SystemMaintenance.Reboot event
 //
 // @param request - EventRebootInstanceRequest
 //
@@ -14810,7 +14970,11 @@ func (client *Client) EventRebootInstance(request *EventRebootInstanceRequest) (
 
 // Summary:
 //
-// 节点内迁移
+// # The event that is used to immediately redeploy a specified resource or by appointment
+//
+// Description:
+//
+//	This O\\&M operation supports only the following event types: Instance:SystemFailure.Redeploy (instance redeployment due to system problems) and Instance:SystemMaintenance.Redeploy (instance redeployment due to system maintenance).
 //
 // @param request - EventRedeployInstanceRequest
 //
@@ -14866,7 +15030,11 @@ func (client *Client) EventRedeployInstanceWithOptions(request *EventRedeployIns
 
 // Summary:
 //
-// 节点内迁移
+// # The event that is used to immediately redeploy a specified resource or by appointment
+//
+// Description:
+//
+//	This O\\&M operation supports only the following event types: Instance:SystemFailure.Redeploy (instance redeployment due to system problems) and Instance:SystemMaintenance.Redeploy (instance redeployment due to system maintenance).
 //
 // @param request - EventRedeployInstanceRequest
 //
@@ -15408,7 +15576,7 @@ func (client *Client) GetOssUsageData(request *GetOssUsageDataRequest) (_result 
 
 // Summary:
 //
-// 调用ImportImage导入一份您的镜像文件到云服务器。
+// Call ImportImage to import your image file to the cloud server.
 //
 // @param tmpReq - ImportImageRequest
 //
@@ -15506,7 +15674,7 @@ func (client *Client) ImportImageWithOptions(tmpReq *ImportImageRequest, runtime
 
 // Summary:
 //
-// 调用ImportImage导入一份您的镜像文件到云服务器。
+// Call ImportImage to import your image file to the cloud server.
 //
 // @param request - ImportImageRequest
 //
@@ -15898,6 +16066,166 @@ func (client *Client) LeaveSecurityGroup(request *LeaveSecurityGroupRequest) (_r
 
 // Summary:
 //
+// 查询公钥下发信息
+//
+// @param request - ListAICPublicKeyDeliveriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAICPublicKeyDeliveriesResponse
+func (client *Client) ListAICPublicKeyDeliveriesWithOptions(request *ListAICPublicKeyDeliveriesRequest, runtime *dara.RuntimeOptions) (_result *ListAICPublicKeyDeliveriesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.KeyGroup) {
+		query["KeyGroup"] = request.KeyGroup
+	}
+
+	if !dara.IsNil(request.KeyName) {
+		query["KeyName"] = request.KeyName
+	}
+
+	if !dara.IsNil(request.KeyType) {
+		query["KeyType"] = request.KeyType
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAICPublicKeyDeliveries"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAICPublicKeyDeliveriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询公钥下发信息
+//
+// @param request - ListAICPublicKeyDeliveriesRequest
+//
+// @return ListAICPublicKeyDeliveriesResponse
+func (client *Client) ListAICPublicKeyDeliveries(request *ListAICPublicKeyDeliveriesRequest) (_result *ListAICPublicKeyDeliveriesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAICPublicKeyDeliveriesResponse{}
+	_body, _err := client.ListAICPublicKeyDeliveriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询所有托管的公钥
+//
+// @param request - ListAICPublicKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAICPublicKeysResponse
+func (client *Client) ListAICPublicKeysWithOptions(request *ListAICPublicKeysRequest, runtime *dara.RuntimeOptions) (_result *ListAICPublicKeysResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KeyGroup) {
+		query["KeyGroup"] = request.KeyGroup
+	}
+
+	if !dara.IsNil(request.KeyName) {
+		query["KeyName"] = request.KeyName
+	}
+
+	if !dara.IsNil(request.KeyType) {
+		query["KeyType"] = request.KeyType
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAICPublicKeys"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAICPublicKeysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询所有托管的公钥
+//
+// @param request - ListAICPublicKeysRequest
+//
+// @return ListAICPublicKeysResponse
+func (client *Client) ListAICPublicKeys(request *ListAICPublicKeysRequest) (_result *ListAICPublicKeysResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAICPublicKeysResponse{}
+	_body, _err := client.ListAICPublicKeysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the created applications.
 //
 // @param request - ListApplicationsRequest
@@ -16265,6 +16593,80 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
+// # AIC公钥登入管理
+//
+// @param request - ManageAICLoginRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ManageAICLoginResponse
+func (client *Client) ManageAICLoginWithOptions(request *ManageAICLoginRequest, runtime *dara.RuntimeOptions) (_result *ManageAICLoginResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActionName) {
+		query["ActionName"] = request.ActionName
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.KeyGroup) {
+		query["KeyGroup"] = request.KeyGroup
+	}
+
+	if !dara.IsNil(request.KeyName) {
+		query["KeyName"] = request.KeyName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ManageAICLogin"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ManageAICLoginResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # AIC公钥登入管理
+//
+// @param request - ManageAICLoginRequest
+//
+// @return ManageAICLoginResponse
+func (client *Client) ManageAICLogin(request *ManageAICLoginRequest) (_result *ManageAICLoginResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ManageAICLoginResponse{}
+	_body, _err := client.ManageAICLoginWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the name, description, and peak bandwidth of a specified elastic IP address (EIP).
 //
 // @param request - ModifyEnsEipAddressAttributeRequest
@@ -16339,7 +16741,7 @@ func (client *Client) ModifyEnsEipAddressAttribute(request *ModifyEnsEipAddressA
 
 // Summary:
 //
-// 调用ModifyEnsRouteEntry接口修改自定义路由条目名称、描述。
+// Modifies the name and description of a custom route.
 //
 // @param request - ModifyEnsRouteEntryRequest
 //
@@ -16391,7 +16793,7 @@ func (client *Client) ModifyEnsRouteEntryWithOptions(request *ModifyEnsRouteEntr
 
 // Summary:
 //
-// 调用ModifyEnsRouteEntry接口修改自定义路由条目名称、描述。
+// Modifies the name and description of a custom route.
 //
 // @param request - ModifyEnsRouteEntryRequest
 //
@@ -17021,7 +17423,15 @@ func (client *Client) ModifyInstanceAutoRenewAttribute(request *ModifyInstanceAu
 
 // Summary:
 //
-// 修改启动配置，只支持异构实例(PCFarm裸金属)。
+// Modifies the boot configuration of a heterogeneous PC Farm bare metal instance.
+//
+// Description:
+//
+//	  If an instance is in the Starting state, you cannot reset the password of the instance.
+//
+//		- If the instance is in the Running state, you cannot change the password of the instance.
+//
+//		- After resetting the password, you must restart the instance in the ENS console or call the RebootInstance operation to apply the change. The restart operation within the instance does not apply the change.
 //
 // @param request - ModifyInstanceBootConfigurationRequest
 //
@@ -17061,7 +17471,15 @@ func (client *Client) ModifyInstanceBootConfigurationWithOptions(request *Modify
 
 // Summary:
 //
-// 修改启动配置，只支持异构实例(PCFarm裸金属)。
+// Modifies the boot configuration of a heterogeneous PC Farm bare metal instance.
+//
+// Description:
+//
+//	  If an instance is in the Starting state, you cannot reset the password of the instance.
+//
+//		- If the instance is in the Running state, you cannot change the password of the instance.
+//
+//		- After resetting the password, you must restart the instance in the ENS console or call the RebootInstance operation to apply the change. The restart operation within the instance does not apply the change.
 //
 // @param request - ModifyInstanceBootConfigurationRequest
 //
@@ -20528,6 +20946,18 @@ func (client *Client) RunInstancesWithOptions(tmpReq *RunInstancesRequest, runti
 		query["KeyPairName"] = request.KeyPairName
 	}
 
+	if !dara.IsNil(request.LaunchTemplateId) {
+		query["LaunchTemplateId"] = request.LaunchTemplateId
+	}
+
+	if !dara.IsNil(request.LaunchTemplateName) {
+		query["LaunchTemplateName"] = request.LaunchTemplateName
+	}
+
+	if !dara.IsNil(request.LaunchTemplateVersion) {
+		query["LaunchTemplateVersion"] = request.LaunchTemplateVersion
+	}
+
 	if !dara.IsNil(request.NetDistrictCode) {
 		query["NetDistrictCode"] = request.NetDistrictCode
 	}
@@ -21484,6 +21914,78 @@ func (client *Client) SetLoadBalancerUDPListenerAttribute(request *SetLoadBalanc
 	runtime := &dara.RuntimeOptions{}
 	_result = &SetLoadBalancerUDPListenerAttributeResponse{}
 	_body, _err := client.SetLoadBalancerUDPListenerAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 共享AIC镜像
+//
+// @param tmpReq - ShareAICImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ShareAICImageResponse
+func (client *Client) ShareAICImageWithOptions(tmpReq *ShareAICImageRequest, runtime *dara.RuntimeOptions) (_result *ShareAICImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ShareAICImageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Users) {
+		request.UsersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Users, dara.String("Users"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImageId) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.UsersShrink) {
+		query["Users"] = request.UsersShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ShareAICImage"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ShareAICImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 共享AIC镜像
+//
+// @param request - ShareAICImageRequest
+//
+// @return ShareAICImageResponse
+func (client *Client) ShareAICImage(request *ShareAICImageRequest) (_result *ShareAICImageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ShareAICImageResponse{}
+	_body, _err := client.ShareAICImageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22982,6 +23484,84 @@ func (client *Client) UpgradeApplication(request *UpgradeApplicationRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpgradeApplicationResponse{}
 	_body, _err := client.UpgradeApplicationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传公钥
+//
+// @param request - UploadAICPublicKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadAICPublicKeyResponse
+func (client *Client) UploadAICPublicKeyWithOptions(request *UploadAICPublicKeyRequest, runtime *dara.RuntimeOptions) (_result *UploadAICPublicKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Content) {
+		query["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.KeyGroup) {
+		query["KeyGroup"] = request.KeyGroup
+	}
+
+	if !dara.IsNil(request.KeyName) {
+		query["KeyName"] = request.KeyName
+	}
+
+	if !dara.IsNil(request.KeyType) {
+		query["KeyType"] = request.KeyType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UploadAICPublicKey"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UploadAICPublicKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传公钥
+//
+// @param request - UploadAICPublicKeyRequest
+//
+// @return UploadAICPublicKeyResponse
+func (client *Client) UploadAICPublicKey(request *UploadAICPublicKeyRequest) (_result *UploadAICPublicKeyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UploadAICPublicKeyResponse{}
+	_body, _err := client.UploadAICPublicKeyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

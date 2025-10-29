@@ -16,11 +16,14 @@ type iBatchEventRedeployInstanceResponseBody interface {
 }
 
 type BatchEventRedeployInstanceResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 125B04C7-3D0D-4245-AF96-14E3758E3F06
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   []*BatchEventRedeployInstanceResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of results.
+	Results []*BatchEventRedeployInstanceResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
 func (s BatchEventRedeployInstanceResponseBody) String() string {
@@ -63,18 +66,26 @@ func (s *BatchEventRedeployInstanceResponseBody) Validate() error {
 }
 
 type BatchEventRedeployInstanceResponseBodyResults struct {
+	// Status code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// System event ID.
+	//
 	// example:
 	//
 	// e-d71ff150945b9c02eb6ebc0016328468
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// Operational message, when code=200, the message is \\"successful\\".
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Resource ID.
+	//
 	// example:
 	//
 	// i-55qi8m11rr53c4i964md8a00l

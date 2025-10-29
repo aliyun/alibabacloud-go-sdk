@@ -14,6 +14,8 @@ type iDeleteHaVipsShrinkRequest interface {
 }
 
 type DeleteHaVipsShrinkRequest struct {
+	// The IDs of high-availability virtual IP addresses (HAVIPs).
+	//
 	// This parameter is required.
 	HaVipIdsShrink *string `json:"HaVipIds,omitempty" xml:"HaVipIds,omitempty"`
 }

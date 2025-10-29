@@ -11,6 +11,8 @@ type iDescribeSDGDeploymentStatusShrinkRequest interface {
 	GoString() string
 	SetDeploymentType(v string) *DescribeSDGDeploymentStatusShrinkRequest
 	GetDeploymentType() *string
+	SetDiskIdsShrink(v string) *DescribeSDGDeploymentStatusShrinkRequest
+	GetDiskIdsShrink() *string
 	SetInstanceIdsShrink(v string) *DescribeSDGDeploymentStatusShrinkRequest
 	GetInstanceIdsShrink() *string
 	SetPageNumber(v int32) *DescribeSDGDeploymentStatusShrinkRequest
@@ -32,6 +34,7 @@ type DescribeSDGDeploymentStatusShrinkRequest struct {
 	//
 	// shared
 	DeploymentType *string `json:"DeploymentType,omitempty" xml:"DeploymentType,omitempty"`
+	DiskIdsShrink  *string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty"`
 	// IDs of Android in Container (AIC) instances.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// The number of the page to return. Pages start from page **1**. Default value: **1**.
@@ -76,6 +79,10 @@ func (s *DescribeSDGDeploymentStatusShrinkRequest) GetDeploymentType() *string {
 	return s.DeploymentType
 }
 
+func (s *DescribeSDGDeploymentStatusShrinkRequest) GetDiskIdsShrink() *string {
+	return s.DiskIdsShrink
+}
+
 func (s *DescribeSDGDeploymentStatusShrinkRequest) GetInstanceIdsShrink() *string {
 	return s.InstanceIdsShrink
 }
@@ -102,6 +109,11 @@ func (s *DescribeSDGDeploymentStatusShrinkRequest) GetStatus() *string {
 
 func (s *DescribeSDGDeploymentStatusShrinkRequest) SetDeploymentType(v string) *DescribeSDGDeploymentStatusShrinkRequest {
 	s.DeploymentType = &v
+	return s
+}
+
+func (s *DescribeSDGDeploymentStatusShrinkRequest) SetDiskIdsShrink(v string) *DescribeSDGDeploymentStatusShrinkRequest {
+	s.DiskIdsShrink = &v
 	return s
 }
 

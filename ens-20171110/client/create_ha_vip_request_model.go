@@ -30,18 +30,26 @@ type CreateHaVipRequest struct {
 	//
 	// 6
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The description of the HAVIP.
+	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The IP address of the HAVIP.
+	//
 	// example:
 	//
 	// 120.24.243.91
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	// The name of the HAVIP.
+	//
 	// example:
 	//
 	// yourName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The vSwitch ID of the HAVIP.
+	//
 	// example:
 	//
 	// vsw-5****

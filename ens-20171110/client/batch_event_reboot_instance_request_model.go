@@ -14,6 +14,7 @@ type iBatchEventRebootInstanceRequest interface {
 }
 
 type BatchEventRebootInstanceRequest struct {
+	// The details of events.
 	EventInfos []*BatchEventRebootInstanceRequestEventInfos `json:"EventInfos,omitempty" xml:"EventInfos,omitempty" type:"Repeated"`
 }
 
@@ -48,18 +49,30 @@ func (s *BatchEventRebootInstanceRequest) Validate() error {
 }
 
 type BatchEventRebootInstanceRequestEventInfos struct {
+	// The ID of the system event.
+	//
 	// example:
 	//
 	// e-4452cec5a8f8eb9b2879a054207687d6
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The type of the O\\&M task.
+	//
+	// 	- immediate
+	//
+	// 	- scheduled
+	//
 	// example:
 	//
 	// immediate
 	OpsType *string `json:"OpsType,omitempty" xml:"OpsType,omitempty"`
+	// The execution time of the reservation. The timestamp is measured in milliseconds. If the OpsType parameter is set to scheduled, this parameter is required.
+	//
 	// example:
 	//
 	// 1742452232000
 	PlanTime *int64 `json:"PlanTime,omitempty" xml:"PlanTime,omitempty"`
+	// A client ID.
+	//
 	// example:
 	//
 	// n-54hi3ffi63zrjt4wzx9mepeyh

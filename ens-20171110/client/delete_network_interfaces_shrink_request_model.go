@@ -14,6 +14,8 @@ type iDeleteNetworkInterfacesShrinkRequest interface {
 }
 
 type DeleteNetworkInterfacesShrinkRequest struct {
+	// The IDs of the elastic network interfaces (ENIs).
+	//
 	// This parameter is required.
 	NetworkInterfaceIdsShrink *string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty"`
 }

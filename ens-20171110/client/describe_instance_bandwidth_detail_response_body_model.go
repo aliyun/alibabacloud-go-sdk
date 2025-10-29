@@ -22,11 +22,16 @@ type iDescribeInstanceBandwidthDetailResponseBody interface {
 }
 
 type DescribeInstanceBandwidthDetailResponseBody struct {
+	// Details about the maximum public bandwidth.
 	Bandwidths []*DescribeInstanceBandwidthDetailResponseBodyBandwidths `json:"Bandwidths,omitempty" xml:"Bandwidths,omitempty" type:"Repeated"`
+	// The page number of the current page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 10
@@ -37,6 +42,8 @@ type DescribeInstanceBandwidthDetailResponseBody struct {
 	//
 	// C0003E8B-B930-4F59-ADC0-0E209A9012A8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
@@ -110,46 +117,68 @@ func (s *DescribeInstanceBandwidthDetailResponseBody) Validate() error {
 }
 
 type DescribeInstanceBandwidthDetailResponseBodyBandwidths struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 1972653484384661
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The bandwidth service time. The data granularity is 5 minutes.
+	//
 	// example:
 	//
 	// 2024-01-11 00:00:00
 	BizTime *string `json:"BizTime,omitempty" xml:"BizTime,omitempty"`
+	// The node ID.
+	//
 	// example:
 	//
 	// cn-yichang-2
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The type of the bandwidth. Valid values: 1, which indicates public network bandwidth. 2, which indicates internal network bandwidth.
+	//
 	// example:
 	//
 	// 1
 	FlowType *int32 `json:"FlowType,omitempty" xml:"FlowType,omitempty"`
+	// The plan ID.
+	//
 	// example:
 	//
 	// i-6ecpqvkicnchxccozrpxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of the instance, such as vm, eip, single_tenant, and nc.
+	//
 	// example:
 	//
 	// vm
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// null
+	//
 	// example:
 	//
 	// 203.107.***
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The Internet service provider to which the IP address belongs.
+	//
 	// example:
 	//
 	// cmcc
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// null
+	//
 	// example:
 	//
 	// 43795230
 	RxBw *int64 `json:"RxBw,omitempty" xml:"RxBw,omitempty"`
+	// The type of the service, such as vm, eip, esk, and meta.
+	//
 	// example:
 	//
 	// vm
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// null
+	//
 	// example:
 	//
 	// 25415638

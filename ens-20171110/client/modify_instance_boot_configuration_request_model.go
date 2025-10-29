@@ -20,20 +20,28 @@ type iModifyInstanceBootConfigurationRequest interface {
 }
 
 type ModifyInstanceBootConfigurationRequest struct {
+	// The startup method.
+	//
 	// example:
 	//
 	// legacy
 	BootSet *string `json:"BootSet,omitempty" xml:"BootSet,omitempty"`
+	// The startup type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxe
 	BootType *string `json:"BootType,omitempty" xml:"BootType,omitempty"`
+	// Specifies whether the startup depends on the disk.
+	//
 	// example:
 	//
 	// on
 	DiskSet *string `json:"DiskSet,omitempty" xml:"DiskSet,omitempty"`
+	// The ID of the instance for which you want to modify the configuration. You can specify only one ID.
+	//
 	// This parameter is required.
 	//
 	// example:

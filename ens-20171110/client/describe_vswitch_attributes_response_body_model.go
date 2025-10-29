@@ -42,47 +42,78 @@ type iDescribeVSwitchAttributesResponseBody interface {
 }
 
 type DescribeVSwitchAttributesResponseBody struct {
+	// The number of available IP addresses in the VSwitch.
+	//
 	// example:
 	//
 	// 253
 	AvailableIpAddressCount *int64 `json:"AvailableIpAddressCount,omitempty" xml:"AvailableIpAddressCount,omitempty"`
+	// The IPv4 CIDR block of the network.
+	//
 	// example:
 	//
 	// 10.0.0.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The creation time, in UTC format (yyyy-MM-ddTHH:mm:ssZ).
+	//
 	// example:
 	//
 	// 2019-06-01T00:00:00Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The description of the VSwitch.
+	//
 	// example:
 	//
 	// This is my vswitch.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ENS node ID.
+	//
 	// example:
 	//
 	// cn-xian-unicom
-	EnsRegionId     *string                                               `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	HaVipIds        *DescribeVSwitchAttributesResponseBodyHaVipIds        `json:"HaVipIds,omitempty" xml:"HaVipIds,omitempty" type:"Struct"`
-	InstanceIds     *DescribeVSwitchAttributesResponseBodyInstanceIds     `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// A list of high-availability VIP instance IDs.
+	HaVipIds *DescribeVSwitchAttributesResponseBodyHaVipIds `json:"HaVipIds,omitempty" xml:"HaVipIds,omitempty" type:"Struct"`
+	// A list of instance IDs.
+	InstanceIds *DescribeVSwitchAttributesResponseBodyInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
+	// A list of load balancer instance IDs.
 	LoadBalancerIds *DescribeVSwitchAttributesResponseBodyLoadBalancerIds `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Struct"`
-	NatGatewayIds   *DescribeVSwitchAttributesResponseBodyNatGatewayIds   `json:"NatGatewayIds,omitempty" xml:"NatGatewayIds,omitempty" type:"Struct"`
+	// A list of NAT gateway IDs.
+	NatGatewayIds *DescribeVSwitchAttributesResponseBodyNatGatewayIds `json:"NatGatewayIds,omitempty" xml:"NatGatewayIds,omitempty" type:"Struct"`
+	// The network ID.
+	//
 	// example:
 	//
 	// n-257gqcdfvx6n****
-	NetworkId           *string                                                   `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// A list of elastic network interface IDs.
 	NetworkInterfaceIds *DescribeVSwitchAttributesResponseBodyNetworkInterfaceIds `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C0003****2A8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the VSwitch, as follows:
+	//
+	// - Pending
+	//
+	// - Available
+	//
+	// - Releasing
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the VSwitch.
+	//
 	// example:
 	//
 	// vsw-5****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The name of the VSwitch.
+	//
 	// example:
 	//
 	// Test-switch

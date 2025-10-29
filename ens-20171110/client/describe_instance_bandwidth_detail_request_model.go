@@ -28,20 +28,28 @@ type iDescribeInstanceBandwidthDetailRequest interface {
 }
 
 type DescribeInstanceBandwidthDetailRequest struct {
+	// The end of the time range to query. The maximum interval between the beginning time and the end time is 86400 seconds. The interval is left-closed and right-open. Specify the time in the yyyy-MM-dd HH:mm:ss format.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2024-01-11 30:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the ENS node.
+	//
 	// example:
 	//
 	// cn-beijing-cmcc
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The plan ID.
+	//
 	// example:
 	//
 	// i-6ecpqvkicnchxccozrpxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of the instance, such as vm, eip, single_tenant, and nc. You can leave this parameter empty. The type of the instance, such as vm, eip, single_tenant, and nc.
+	//
 	// example:
 	//
 	// vm
@@ -58,10 +66,14 @@ type DescribeInstanceBandwidthDetailRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the service, such as vm, eip, esk, and meta.
+	//
 	// example:
 	//
 	// vm
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
+	//
 	// This parameter is required.
 	//
 	// example:

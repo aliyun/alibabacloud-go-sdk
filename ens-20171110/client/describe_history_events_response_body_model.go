@@ -22,19 +22,28 @@ type iDescribeHistoryEventsResponseBody interface {
 }
 
 type DescribeHistoryEventsResponseBody struct {
+	// The queried events.
 	Events []*DescribeHistoryEventsResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 5359599C-F656-57BD-8A0D-329A2FD511A6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 30
@@ -108,35 +117,90 @@ func (s *DescribeHistoryEventsResponseBody) Validate() error {
 }
 
 type DescribeHistoryEventsResponseBodyEvents struct {
+	// The ID of the event.
+	//
 	// example:
 	//
 	// e-d71ff150945b9c02eb6ebc0016328468
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The level of the specific event. Valid values:
+	//
+	// 	- CRITICAL
+	//
+	// 	- WARN
+	//
+	// 	- INFO
+	//
 	// example:
 	//
 	// WARN
 	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
+	// The status of the event. Valid values:
+	//
+	// 	- Inquiring
+	//
+	// 	- Scheduled
+	//
+	// 	- Executing
+	//
+	// 	- Executed
+	//
+	// 	- Failed
+	//
+	// 	- Canceled
+	//
+	// 	- Avoided
+	//
 	// example:
 	//
 	// Inquiring
 	EventStatus *string `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
+	// The type of the event. Description:
+	//
+	// 	- Instance:SystemFailure.Redeploy: The instance is redeployed due to system issues.
+	//
+	// 	- Instance:SystemFailure.Reboot: The instance is restarted due to a system error.
+	//
+	// 	- Instance:RegionNetworkDown: The node network is interrupted.
+	//
+	// 	- Disk:Stalled: The disk performance is impaired.
+	//
+	// 	- EnsRegion:NetworkMigration: The instance is migrated due to a system error.
+	//
+	// 	- IP:SafeRisk: IP alerts.
+	//
+	// 	- IP:SafeBan: IP blocking.
+	//
+	// 	- Instance:SystemUpgrade.Migrate: The instance needs to be migrated due to underlying upgrades.
+	//
+	// 	- Instance:SystemMaintenance.Redeploy: The instance is redeployed due to system maintenance.
+	//
 	// example:
 	//
 	// Instance:SystemFailure.Reboot
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The extended attributes.
+	//
 	// example:
 	//
 	// {}
 	ExtendedAttribute *string `json:"ExtendedAttribute,omitempty" xml:"ExtendedAttribute,omitempty"`
+	// The scheduled execution time of the event in milliseconds.
+	//
 	// example:
 	//
 	// 1715578245000
 	NotBefore *int64 `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The release time in milliseconds.
+	//
 	// example:
 	//
 	// 1715578245000
-	PublishTime *int64  `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
-	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	PublishTime *int64 `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	// The event cause.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The ID of the associated resources.
+	//
 	// example:
 	//
 	// i-55qi8m11rr53c4i964md8a00l

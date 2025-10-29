@@ -38,54 +38,103 @@ type iImportImageShrinkRequest interface {
 }
 
 type ImportImageShrinkRequest struct {
+	// System architecture. Allowed values:</br>
+	//
+	// - x86_64.</br>
+	//
+	// Currently, only x86_64 is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// x86_64
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	// `Image Type`
+	//
+	// ens_vm: ens virtual machine image (default)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ens_vm
-	ComputeType             *string `json:"ComputeType,omitempty" xml:"ComputeType,omitempty"`
+	ComputeType *string `json:"ComputeType,omitempty" xml:"ComputeType,omitempty"`
+	// List of custom image information being created.
 	DiskDeviceMappingShrink *string `json:"DiskDeviceMapping,omitempty" xml:"DiskDeviceMapping,omitempty"`
+	// Image format. Allowed values:</br>
+	//
+	// qcow2.</br>
+	//
+	// Currently, only qcow2 is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// qcow2
 	ImageFormat *string `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
+	// Image name. The length should be [2, 128] English or Chinese characters. It must start with a letter (uppercase or lowercase) or a Chinese character, and cannot start with http:// or https://. It can contain numbers, colons (:), underscores (_), or hyphens (-).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 镜像名称
 	ImageName   *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	LicenseType *string `json:"LicenseType,omitempty" xml:"LicenseType,omitempty"`
+	// The OSS Bucket where the image file is located.
+	//
 	// example:
 	//
 	// tmp-hybrid
 	OSSBucket *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
+	// The name of the image file.
+	//
 	// example:
 	//
 	// image-test
 	OSSObject *string `json:"OSSObject,omitempty" xml:"OSSObject,omitempty"`
+	// The Region where the image is located. Currently, only cn-beijing is supported.
+	//
 	// example:
 	//
 	// cn-beijing
 	OSSRegion *string `json:"OSSRegion,omitempty" xml:"OSSRegion,omitempty"`
+	// Operating system platform type. Allowed values:
+	//
+	// - windows.
+	//
+	// - linux.
+	//
+	// Currently, only linux is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// linux
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
+	// Operating system distribution version
+	//
 	// example:
 	//
 	// 6.8
 	OSVersion *string `json:"OSVersion,omitempty" xml:"OSVersion,omitempty"`
+	// Operating system distribution. Allowed values:
+	//
+	// 	- centos
+	//
+	// 	- ubuntu
+	//
 	// example:
 	//
 	// centos
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The target OSS region where the image will be stored.</br>
+	//
+	// > Currently, only cn-beijing and ap-southeast-1 are supported.
+	//
 	// example:
 	//
 	// cn-beijing
