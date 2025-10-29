@@ -31000,6 +31000,10 @@ func (client *Client) ReleaseDedicatedHostWithContext(ctx context.Context, reque
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !dara.IsNil(request.TerminateSubscription) {
+		query["TerminateSubscription"] = request.TerminateSubscription
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}

@@ -40040,6 +40040,10 @@ func (client *Client) ReleaseDedicatedHostWithOptions(request *ReleaseDedicatedH
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !dara.IsNil(request.TerminateSubscription) {
+		query["TerminateSubscription"] = request.TerminateSubscription
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}

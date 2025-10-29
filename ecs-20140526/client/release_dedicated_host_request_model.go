@@ -21,6 +21,8 @@ type iReleaseDedicatedHostRequest interface {
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *ReleaseDedicatedHostRequest
 	GetResourceOwnerId() *int64
+	SetTerminateSubscription(v bool) *ReleaseDedicatedHostRequest
+	GetTerminateSubscription() *bool
 }
 
 type ReleaseDedicatedHostRequest struct {
@@ -41,9 +43,10 @@ type ReleaseDedicatedHostRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TerminateSubscription *bool   `json:"TerminateSubscription,omitempty" xml:"TerminateSubscription,omitempty"`
 }
 
 func (s ReleaseDedicatedHostRequest) String() string {
@@ -78,6 +81,10 @@ func (s *ReleaseDedicatedHostRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
 }
 
+func (s *ReleaseDedicatedHostRequest) GetTerminateSubscription() *bool {
+	return s.TerminateSubscription
+}
+
 func (s *ReleaseDedicatedHostRequest) SetDedicatedHostId(v string) *ReleaseDedicatedHostRequest {
 	s.DedicatedHostId = &v
 	return s
@@ -105,6 +112,11 @@ func (s *ReleaseDedicatedHostRequest) SetResourceOwnerAccount(v string) *Release
 
 func (s *ReleaseDedicatedHostRequest) SetResourceOwnerId(v int64) *ReleaseDedicatedHostRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ReleaseDedicatedHostRequest) SetTerminateSubscription(v bool) *ReleaseDedicatedHostRequest {
+	s.TerminateSubscription = &v
 	return s
 }
 
