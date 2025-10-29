@@ -1870,6 +1870,10 @@ func (client *Client) RecordCallCenterEventForPartnerWithOptions(request *Record
 		query["ContactId"] = request.ContactId
 	}
 
+	if !dara.IsNil(request.EmployeeCode) {
+		query["EmployeeCode"] = request.EmployeeCode
+	}
+
 	if !dara.IsNil(request.JobId) {
 		query["JobId"] = request.JobId
 	}
@@ -1884,6 +1888,10 @@ func (client *Client) RecordCallCenterEventForPartnerWithOptions(request *Record
 
 	if !dara.IsNil(request.SkillType) {
 		query["SkillType"] = request.SkillType
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
 	}
 
 	req := &openapiutil.OpenApiRequest{

@@ -23,6 +23,8 @@ type iRecordCallCenterEventForPartnerRequest interface {
 	GetConnId() *string
 	SetContactId(v string) *RecordCallCenterEventForPartnerRequest
 	GetContactId() *string
+	SetEmployeeCode(v string) *RecordCallCenterEventForPartnerRequest
+	GetEmployeeCode() *string
 	SetJobId(v string) *RecordCallCenterEventForPartnerRequest
 	GetJobId() *string
 	SetRelatedId(v int64) *RecordCallCenterEventForPartnerRequest
@@ -31,6 +33,8 @@ type iRecordCallCenterEventForPartnerRequest interface {
 	GetSecretMobile() *string
 	SetSkillType(v int32) *RecordCallCenterEventForPartnerRequest
 	GetSkillType() *int32
+	SetTenantId(v string) *RecordCallCenterEventForPartnerRequest
+	GetTenantId() *string
 }
 
 type RecordCallCenterEventForPartnerRequest struct {
@@ -61,7 +65,8 @@ type RecordCallCenterEventForPartnerRequest struct {
 	// example:
 	//
 	// 897265
-	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	ContactId    *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	EmployeeCode *string `json:"EmployeeCode,omitempty" xml:"EmployeeCode,omitempty"`
 	// example:
 	//
 	// ufbo502ma94m480
@@ -79,7 +84,8 @@ type RecordCallCenterEventForPartnerRequest struct {
 	// example:
 	//
 	// 1
-	SkillType *int32 `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
+	SkillType *int32  `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
+	TenantId  *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s RecordCallCenterEventForPartnerRequest) String() string {
@@ -118,6 +124,10 @@ func (s *RecordCallCenterEventForPartnerRequest) GetContactId() *string {
 	return s.ContactId
 }
 
+func (s *RecordCallCenterEventForPartnerRequest) GetEmployeeCode() *string {
+	return s.EmployeeCode
+}
+
 func (s *RecordCallCenterEventForPartnerRequest) GetJobId() *string {
 	return s.JobId
 }
@@ -132,6 +142,10 @@ func (s *RecordCallCenterEventForPartnerRequest) GetSecretMobile() *string {
 
 func (s *RecordCallCenterEventForPartnerRequest) GetSkillType() *int32 {
 	return s.SkillType
+}
+
+func (s *RecordCallCenterEventForPartnerRequest) GetTenantId() *string {
+	return s.TenantId
 }
 
 func (s *RecordCallCenterEventForPartnerRequest) SetBizId(v string) *RecordCallCenterEventForPartnerRequest {
@@ -169,6 +183,11 @@ func (s *RecordCallCenterEventForPartnerRequest) SetContactId(v string) *RecordC
 	return s
 }
 
+func (s *RecordCallCenterEventForPartnerRequest) SetEmployeeCode(v string) *RecordCallCenterEventForPartnerRequest {
+	s.EmployeeCode = &v
+	return s
+}
+
 func (s *RecordCallCenterEventForPartnerRequest) SetJobId(v string) *RecordCallCenterEventForPartnerRequest {
 	s.JobId = &v
 	return s
@@ -186,6 +205,11 @@ func (s *RecordCallCenterEventForPartnerRequest) SetSecretMobile(v string) *Reco
 
 func (s *RecordCallCenterEventForPartnerRequest) SetSkillType(v int32) *RecordCallCenterEventForPartnerRequest {
 	s.SkillType = &v
+	return s
+}
+
+func (s *RecordCallCenterEventForPartnerRequest) SetTenantId(v string) *RecordCallCenterEventForPartnerRequest {
+	s.TenantId = &v
 	return s
 }
 
