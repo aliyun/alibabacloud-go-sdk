@@ -53,7 +53,12 @@ func (s *ListMessageAppResponseBody) SetResult(v *ListMessageAppResponseBodyResu
 }
 
 func (s *ListMessageAppResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMessageAppResponseBodyResult struct {
@@ -113,7 +118,16 @@ func (s *ListMessageAppResponseBodyResult) SetTotal(v int32) *ListMessageAppResp
 }
 
 func (s *ListMessageAppResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.AppList != nil {
+		for _, item := range s.AppList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMessageAppResponseBodyResultAppList struct {

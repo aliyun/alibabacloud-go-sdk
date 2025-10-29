@@ -53,7 +53,12 @@ func (s *DescribeLivePrivateLineAvailGAResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribeLivePrivateLineAvailGAResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LivePrivateLineAvailGAs != nil {
+		if err := s.LivePrivateLineAvailGAs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLivePrivateLineAvailGAResponseBodyLivePrivateLineAvailGAs struct {
@@ -78,7 +83,16 @@ func (s *DescribeLivePrivateLineAvailGAResponseBodyLivePrivateLineAvailGAs) SetL
 }
 
 func (s *DescribeLivePrivateLineAvailGAResponseBodyLivePrivateLineAvailGAs) Validate() error {
-	return dara.Validate(s)
+	if s.LivePrivateLineAvailGA != nil {
+		for _, item := range s.LivePrivateLineAvailGA {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLivePrivateLineAvailGAResponseBodyLivePrivateLineAvailGAsLivePrivateLineAvailGA struct {

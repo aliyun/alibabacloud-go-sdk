@@ -59,5 +59,10 @@ func (s *DescribeLiveDomainByCertificateResponse) SetBody(v *DescribeLiveDomainB
 }
 
 func (s *DescribeLiveDomainByCertificateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

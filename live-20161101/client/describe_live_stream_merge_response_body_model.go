@@ -53,7 +53,12 @@ func (s *DescribeLiveStreamMergeResponseBody) SetRequestId(v string) *DescribeLi
 }
 
 func (s *DescribeLiveStreamMergeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LiveStreamMergeList != nil {
+		if err := s.LiveStreamMergeList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamMergeResponseBodyLiveStreamMergeList struct {
@@ -78,7 +83,16 @@ func (s *DescribeLiveStreamMergeResponseBodyLiveStreamMergeList) SetLiveStreamMe
 }
 
 func (s *DescribeLiveStreamMergeResponseBodyLiveStreamMergeList) Validate() error {
-	return dara.Validate(s)
+	if s.LiveStreamMerge != nil {
+		for _, item := range s.LiveStreamMerge {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge struct {

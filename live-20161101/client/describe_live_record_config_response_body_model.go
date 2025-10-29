@@ -138,7 +138,12 @@ func (s *DescribeLiveRecordConfigResponseBody) SetTotalPage(v int32) *DescribeLi
 }
 
 func (s *DescribeLiveRecordConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LiveAppRecordList != nil {
+		if err := s.LiveAppRecordList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveRecordConfigResponseBodyLiveAppRecordList struct {
@@ -163,7 +168,16 @@ func (s *DescribeLiveRecordConfigResponseBodyLiveAppRecordList) SetLiveAppRecord
 }
 
 func (s *DescribeLiveRecordConfigResponseBodyLiveAppRecordList) Validate() error {
-	return dara.Validate(s)
+	if s.LiveAppRecord != nil {
+		for _, item := range s.LiveAppRecord {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecord struct {
@@ -371,7 +385,22 @@ func (s *DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecord) Set
 }
 
 func (s *DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecord) Validate() error {
-	return dara.Validate(s)
+	if s.RecordFormatList != nil {
+		if err := s.RecordFormatList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TranscodeRecordFormatList != nil {
+		if err := s.TranscodeRecordFormatList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TranscodeTemplates != nil {
+		if err := s.TranscodeTemplates.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecordRecordFormatList struct {
@@ -396,7 +425,16 @@ func (s *DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecordRecor
 }
 
 func (s *DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecordRecordFormatList) Validate() error {
-	return dara.Validate(s)
+	if s.RecordFormat != nil {
+		for _, item := range s.RecordFormat {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecordRecordFormatListRecordFormat struct {
@@ -511,7 +549,16 @@ func (s *DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecordTrans
 }
 
 func (s *DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecordTranscodeRecordFormatList) Validate() error {
-	return dara.Validate(s)
+	if s.RecordFormat != nil {
+		for _, item := range s.RecordFormat {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecordTranscodeRecordFormatListRecordFormat struct {

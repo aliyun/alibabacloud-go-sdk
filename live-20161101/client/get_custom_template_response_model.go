@@ -59,5 +59,10 @@ func (s *GetCustomTemplateResponse) SetBody(v *GetCustomTemplateResponseBody) *G
 }
 
 func (s *GetCustomTemplateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

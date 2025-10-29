@@ -59,5 +59,10 @@ func (s *UpdateLiveAppSnapshotConfigResponse) SetBody(v *UpdateLiveAppSnapshotCo
 }
 
 func (s *UpdateLiveAppSnapshotConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

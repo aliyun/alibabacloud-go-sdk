@@ -53,7 +53,12 @@ func (s *DescribeLiveStreamsControlHistoryResponseBody) SetRequestId(v string) *
 }
 
 func (s *DescribeLiveStreamsControlHistoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ControlInfo != nil {
+		if err := s.ControlInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamsControlHistoryResponseBodyControlInfo struct {
@@ -78,7 +83,16 @@ func (s *DescribeLiveStreamsControlHistoryResponseBodyControlInfo) SetLiveStream
 }
 
 func (s *DescribeLiveStreamsControlHistoryResponseBodyControlInfo) Validate() error {
-	return dara.Validate(s)
+	if s.LiveStreamControlInfo != nil {
+		for _, item := range s.LiveStreamControlInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamsControlHistoryResponseBodyControlInfoLiveStreamControlInfo struct {

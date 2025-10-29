@@ -186,7 +186,16 @@ func (s *AddCasterEpisodeGroupRequest) SetStartTime(v string) *AddCasterEpisodeG
 }
 
 func (s *AddCasterEpisodeGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		for _, item := range s.Item {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddCasterEpisodeGroupRequestItem struct {

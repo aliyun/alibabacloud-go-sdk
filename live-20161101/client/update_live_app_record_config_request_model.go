@@ -244,7 +244,25 @@ func (s *UpdateLiveAppRecordConfigRequest) SetTranscodeTemplates(v []*string) *U
 }
 
 func (s *UpdateLiveAppRecordConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RecordFormat != nil {
+		for _, item := range s.RecordFormat {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TranscodeRecordFormat != nil {
+		for _, item := range s.TranscodeRecordFormat {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateLiveAppRecordConfigRequestRecordFormat struct {

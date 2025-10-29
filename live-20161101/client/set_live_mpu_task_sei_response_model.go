@@ -59,5 +59,10 @@ func (s *SetLiveMpuTaskSeiResponse) SetBody(v *SetLiveMpuTaskSeiResponseBody) *S
 }
 
 func (s *SetLiveMpuTaskSeiResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

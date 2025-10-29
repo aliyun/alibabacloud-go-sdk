@@ -138,7 +138,12 @@ func (s *DescribeLiveSnapshotConfigResponseBody) SetTotalPage(v int32) *Describe
 }
 
 func (s *DescribeLiveSnapshotConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LiveStreamSnapshotConfigList != nil {
+		if err := s.LiveStreamSnapshotConfigList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveSnapshotConfigResponseBodyLiveStreamSnapshotConfigList struct {
@@ -163,7 +168,16 @@ func (s *DescribeLiveSnapshotConfigResponseBodyLiveStreamSnapshotConfigList) Set
 }
 
 func (s *DescribeLiveSnapshotConfigResponseBodyLiveStreamSnapshotConfigList) Validate() error {
-	return dara.Validate(s)
+	if s.LiveStreamSnapshotConfig != nil {
+		for _, item := range s.LiveStreamSnapshotConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveSnapshotConfigResponseBodyLiveStreamSnapshotConfigListLiveStreamSnapshotConfig struct {

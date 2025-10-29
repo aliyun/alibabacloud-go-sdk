@@ -71,7 +71,16 @@ func (s *LiveUpstreamQosDataResponseBody) SetStartTime(v string) *LiveUpstreamQo
 }
 
 func (s *LiveUpstreamQosDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type LiveUpstreamQosDataResponseBodyData struct {
@@ -166,7 +175,16 @@ func (s *LiveUpstreamQosDataResponseBodyData) SetUpstreamDomain(v string) *LiveU
 }
 
 func (s *LiveUpstreamQosDataResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DetailData != nil {
+		for _, item := range s.DetailData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type LiveUpstreamQosDataResponseBodyDataDetailData struct {

@@ -53,7 +53,16 @@ func (s *CheckLiveMessageUsersOnlineResponseBody) SetUserList(v []*CheckLiveMess
 }
 
 func (s *CheckLiveMessageUsersOnlineResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserList != nil {
+		for _, item := range s.UserList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CheckLiveMessageUsersOnlineResponseBodyUserList struct {

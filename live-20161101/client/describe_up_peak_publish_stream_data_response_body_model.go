@@ -53,7 +53,12 @@ func (s *DescribeUpPeakPublishStreamDataResponseBody) SetRequestId(v string) *De
 }
 
 func (s *DescribeUpPeakPublishStreamDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DescribeUpPeakPublishStreamDatas != nil {
+		if err := s.DescribeUpPeakPublishStreamDatas.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatas struct {
@@ -78,7 +83,16 @@ func (s *DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamD
 }
 
 func (s *DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatas) Validate() error {
-	return dara.Validate(s)
+	if s.DescribeUpPeakPublishStreamData != nil {
+		for _, item := range s.DescribeUpPeakPublishStreamData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUpPeakPublishStreamDataResponseBodyDescribeUpPeakPublishStreamDatasDescribeUpPeakPublishStreamData struct {

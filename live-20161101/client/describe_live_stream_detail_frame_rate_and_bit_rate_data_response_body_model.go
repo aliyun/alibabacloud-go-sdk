@@ -53,7 +53,16 @@ func (s *DescribeLiveStreamDetailFrameRateAndBitRateDataResponseBody) SetRequest
 }
 
 func (s *DescribeLiveStreamDetailFrameRateAndBitRateDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FrameRateAndBitRateInfos != nil {
+		for _, item := range s.FrameRateAndBitRateInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamDetailFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfos struct {

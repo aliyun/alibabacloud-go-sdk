@@ -53,7 +53,16 @@ func (s *QueryMessageAppResponseBody) SetResult(v []*QueryMessageAppResponseBody
 }
 
 func (s *QueryMessageAppResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryMessageAppResponseBodyResult struct {
@@ -113,7 +122,16 @@ func (s *QueryMessageAppResponseBodyResult) SetTotalCount(v int32) *QueryMessage
 }
 
 func (s *QueryMessageAppResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.AppList != nil {
+		for _, item := range s.AppList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryMessageAppResponseBodyResultAppList struct {

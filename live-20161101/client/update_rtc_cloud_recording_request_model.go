@@ -65,7 +65,17 @@ func (s *UpdateRtcCloudRecordingRequest) SetTaskId(v string) *UpdateRtcCloudReco
 }
 
 func (s *UpdateRtcCloudRecordingRequest) Validate() error {
-	return dara.Validate(s)
+	if s.MixLayoutParams != nil {
+		if err := s.MixLayoutParams.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubscribeParams != nil {
+		if err := s.SubscribeParams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateRtcCloudRecordingRequestMixLayoutParams struct {
@@ -100,7 +110,21 @@ func (s *UpdateRtcCloudRecordingRequestMixLayoutParams) SetUserPanes(v []*Update
 }
 
 func (s *UpdateRtcCloudRecordingRequestMixLayoutParams) Validate() error {
-	return dara.Validate(s)
+	if s.MixBackground != nil {
+		if err := s.MixBackground.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserPanes != nil {
+		for _, item := range s.UserPanes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateRtcCloudRecordingRequestMixLayoutParamsMixBackground struct {
@@ -257,7 +281,12 @@ func (s *UpdateRtcCloudRecordingRequestMixLayoutParamsUserPanes) SetZOrder(v int
 }
 
 func (s *UpdateRtcCloudRecordingRequestMixLayoutParamsUserPanes) Validate() error {
-	return dara.Validate(s)
+	if s.SubBackground != nil {
+		if err := s.SubBackground.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateRtcCloudRecordingRequestMixLayoutParamsUserPanesSubBackground struct {
@@ -324,7 +353,16 @@ func (s *UpdateRtcCloudRecordingRequestSubscribeParams) SetSubscribeUserIdList(v
 }
 
 func (s *UpdateRtcCloudRecordingRequestSubscribeParams) Validate() error {
-	return dara.Validate(s)
+	if s.SubscribeUserIdList != nil {
+		for _, item := range s.SubscribeUserIdList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateRtcCloudRecordingRequestSubscribeParamsSubscribeUserIdList struct {

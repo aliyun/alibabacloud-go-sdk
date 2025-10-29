@@ -87,7 +87,12 @@ func (s *DescribeCasterStreamUrlResponseBody) SetTotal(v int32) *DescribeCasterS
 }
 
 func (s *DescribeCasterStreamUrlResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CasterStreams != nil {
+		if err := s.CasterStreams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCasterStreamUrlResponseBodyCasterStreams struct {
@@ -112,7 +117,16 @@ func (s *DescribeCasterStreamUrlResponseBodyCasterStreams) SetCasterStream(v []*
 }
 
 func (s *DescribeCasterStreamUrlResponseBodyCasterStreams) Validate() error {
-	return dara.Validate(s)
+	if s.CasterStream != nil {
+		for _, item := range s.CasterStream {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCasterStreamUrlResponseBodyCasterStreamsCasterStream struct {
@@ -202,7 +216,12 @@ func (s *DescribeCasterStreamUrlResponseBodyCasterStreamsCasterStream) SetStream
 }
 
 func (s *DescribeCasterStreamUrlResponseBodyCasterStreamsCasterStream) Validate() error {
-	return dara.Validate(s)
+	if s.StreamInfos != nil {
+		if err := s.StreamInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCasterStreamUrlResponseBodyCasterStreamsCasterStreamStreamInfos struct {
@@ -227,7 +246,16 @@ func (s *DescribeCasterStreamUrlResponseBodyCasterStreamsCasterStreamStreamInfos
 }
 
 func (s *DescribeCasterStreamUrlResponseBodyCasterStreamsCasterStreamStreamInfos) Validate() error {
-	return dara.Validate(s)
+	if s.StreamInfo != nil {
+		for _, item := range s.StreamInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCasterStreamUrlResponseBodyCasterStreamsCasterStreamStreamInfosStreamInfo struct {

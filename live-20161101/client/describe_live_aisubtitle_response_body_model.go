@@ -53,7 +53,12 @@ func (s *DescribeLiveAISubtitleResponseBody) SetSubtitleConfigs(v *DescribeLiveA
 }
 
 func (s *DescribeLiveAISubtitleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SubtitleConfigs != nil {
+		if err := s.SubtitleConfigs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveAISubtitleResponseBodySubtitleConfigs struct {
@@ -78,7 +83,16 @@ func (s *DescribeLiveAISubtitleResponseBodySubtitleConfigs) SetSubtitleConfig(v 
 }
 
 func (s *DescribeLiveAISubtitleResponseBodySubtitleConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.SubtitleConfig != nil {
+		for _, item := range s.SubtitleConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveAISubtitleResponseBodySubtitleConfigsSubtitleConfig struct {
@@ -355,7 +369,17 @@ func (s *DescribeLiveAISubtitleResponseBodySubtitleConfigsSubtitleConfig) SetWor
 }
 
 func (s *DescribeLiveAISubtitleResponseBodySubtitleConfigsSubtitleConfig) Validate() error {
-	return dara.Validate(s)
+	if s.PositionNormalized != nil {
+		if err := s.PositionNormalized.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RulesRefer != nil {
+		if err := s.RulesRefer.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveAISubtitleResponseBodySubtitleConfigsSubtitleConfigPositionNormalized struct {

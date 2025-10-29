@@ -53,7 +53,12 @@ func (s *DescribeLiveStreamsNotifyUrlConfigResponseBody) SetRequestId(v string) 
 }
 
 func (s *DescribeLiveStreamsNotifyUrlConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LiveStreamsNotifyConfig != nil {
+		if err := s.LiveStreamsNotifyConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamsNotifyUrlConfigResponseBodyLiveStreamsNotifyConfig struct {

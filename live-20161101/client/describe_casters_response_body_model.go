@@ -70,7 +70,12 @@ func (s *DescribeCastersResponseBody) SetTotal(v int32) *DescribeCastersResponse
 }
 
 func (s *DescribeCastersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CasterList != nil {
+		if err := s.CasterList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCastersResponseBodyCasterList struct {
@@ -95,7 +100,16 @@ func (s *DescribeCastersResponseBodyCasterList) SetCaster(v []*DescribeCastersRe
 }
 
 func (s *DescribeCastersResponseBodyCasterList) Validate() error {
-	return dara.Validate(s)
+	if s.Caster != nil {
+		for _, item := range s.Caster {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCastersResponseBodyCasterListCaster struct {
@@ -378,7 +392,12 @@ func (s *DescribeCastersResponseBodyCasterListCaster) SetTags(v *DescribeCasters
 }
 
 func (s *DescribeCastersResponseBodyCasterListCaster) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCastersResponseBodyCasterListCasterTags struct {
@@ -403,7 +422,16 @@ func (s *DescribeCastersResponseBodyCasterListCasterTags) SetTag(v []*DescribeCa
 }
 
 func (s *DescribeCastersResponseBodyCasterListCasterTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCastersResponseBodyCasterListCasterTagsTag struct {

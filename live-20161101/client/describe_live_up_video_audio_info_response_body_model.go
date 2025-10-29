@@ -53,7 +53,12 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBody) SetUpItems(v *DescribeLiveUpV
 }
 
 func (s *DescribeLiveUpVideoAudioInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UpItems != nil {
+		if err := s.UpItems.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItems struct {
@@ -78,7 +83,16 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItems) SetPublishItem(v []*De
 }
 
 func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItems) Validate() error {
-	return dara.Validate(s)
+	if s.PublishItem != nil {
+		for _, item := range s.PublishItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItem struct {
@@ -375,7 +389,67 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItem) SetVideoSta
 }
 
 func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItem) Validate() error {
-	return dara.Validate(s)
+	if s.AacHeaders != nil {
+		if err := s.AacHeaders.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AudioBitRate != nil {
+		if err := s.AudioBitRate.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AudioFrames != nil {
+		if err := s.AudioFrames.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AudioInterval != nil {
+		if err := s.AudioInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AudioStamps != nil {
+		if err := s.AudioStamps.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AvcHeaders != nil {
+		if err := s.AvcHeaders.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ErrorFlags != nil {
+		if err := s.ErrorFlags.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoAndAudioStamp != nil {
+		if err := s.VideoAndAudioStamp.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoBitRate != nil {
+		if err := s.VideoBitRate.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoFrames != nil {
+		if err := s.VideoFrames.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoInterval != nil {
+		if err := s.VideoInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoStamps != nil {
+		if err := s.VideoStamps.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAacHeaders struct {
@@ -400,7 +474,16 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAacHeaders) S
 }
 
 func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAacHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AacHeaders != nil {
+		for _, item := range s.AacHeaders {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAacHeadersAacHeaders struct {
@@ -470,7 +553,16 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioBitRate)
 }
 
 func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioBitRate) Validate() error {
-	return dara.Validate(s)
+	if s.AudioBitRate != nil {
+		for _, item := range s.AudioBitRate {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioBitRateAudioBitRate struct {
@@ -540,7 +632,16 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioFrames) 
 }
 
 func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioFrames) Validate() error {
-	return dara.Validate(s)
+	if s.AudioFrames != nil {
+		for _, item := range s.AudioFrames {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioFramesAudioFrames struct {
@@ -610,7 +711,16 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioInterval
 }
 
 func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioInterval) Validate() error {
-	return dara.Validate(s)
+	if s.AudioInterval != nil {
+		for _, item := range s.AudioInterval {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioIntervalAudioInterval struct {
@@ -680,7 +790,16 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioStamps) 
 }
 
 func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioStamps) Validate() error {
-	return dara.Validate(s)
+	if s.AudioStamps != nil {
+		for _, item := range s.AudioStamps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioStampsAudioStamps struct {
@@ -750,7 +869,16 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAvcHeaders) S
 }
 
 func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAvcHeaders) Validate() error {
-	return dara.Validate(s)
+	if s.AvcHeaders != nil {
+		for _, item := range s.AvcHeaders {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAvcHeadersAvcHeaders struct {
@@ -820,7 +948,16 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemErrorFlags) S
 }
 
 func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemErrorFlags) Validate() error {
-	return dara.Validate(s)
+	if s.ErrorFlags != nil {
+		for _, item := range s.ErrorFlags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemErrorFlagsErrorFlags struct {
@@ -890,7 +1027,16 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoAndAudio
 }
 
 func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoAndAudioStamp) Validate() error {
-	return dara.Validate(s)
+	if s.VAStamp != nil {
+		for _, item := range s.VAStamp {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoAndAudioStampVAStamp struct {
@@ -960,7 +1106,16 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoBitRate)
 }
 
 func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoBitRate) Validate() error {
-	return dara.Validate(s)
+	if s.VideoBitRate != nil {
+		for _, item := range s.VideoBitRate {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoBitRateVideoBitRate struct {
@@ -1030,7 +1185,16 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoFrames) 
 }
 
 func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoFrames) Validate() error {
-	return dara.Validate(s)
+	if s.VideoFrames != nil {
+		for _, item := range s.VideoFrames {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoFramesVideoFrames struct {
@@ -1100,7 +1264,16 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoInterval
 }
 
 func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoInterval) Validate() error {
-	return dara.Validate(s)
+	if s.VideoInterval != nil {
+		for _, item := range s.VideoInterval {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoIntervalVideoInterval struct {
@@ -1170,7 +1343,16 @@ func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoStamps) 
 }
 
 func (s *DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoStamps) Validate() error {
-	return dara.Validate(s)
+	if s.VideoStamps != nil {
+		for _, item := range s.VideoStamps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoStampsVideoStamps struct {

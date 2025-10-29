@@ -121,7 +121,12 @@ func (s *DescribeLiveTopDomainsByFlowResponseBody) SetTopDomains(v *DescribeLive
 }
 
 func (s *DescribeLiveTopDomainsByFlowResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TopDomains != nil {
+		if err := s.TopDomains.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveTopDomainsByFlowResponseBodyTopDomains struct {
@@ -146,7 +151,16 @@ func (s *DescribeLiveTopDomainsByFlowResponseBodyTopDomains) SetTopDomain(v []*D
 }
 
 func (s *DescribeLiveTopDomainsByFlowResponseBodyTopDomains) Validate() error {
-	return dara.Validate(s)
+	if s.TopDomain != nil {
+		for _, item := range s.TopDomain {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain struct {

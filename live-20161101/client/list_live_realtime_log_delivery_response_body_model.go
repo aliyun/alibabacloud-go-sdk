@@ -53,7 +53,12 @@ func (s *ListLiveRealtimeLogDeliveryResponseBody) SetRequestId(v string) *ListLi
 }
 
 func (s *ListLiveRealtimeLogDeliveryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLiveRealtimeLogDeliveryResponseBodyContent struct {
@@ -78,7 +83,16 @@ func (s *ListLiveRealtimeLogDeliveryResponseBodyContent) SetRealtimeLogDeliveryI
 }
 
 func (s *ListLiveRealtimeLogDeliveryResponseBodyContent) Validate() error {
-	return dara.Validate(s)
+	if s.RealtimeLogDeliveryInfo != nil {
+		for _, item := range s.RealtimeLogDeliveryInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo struct {

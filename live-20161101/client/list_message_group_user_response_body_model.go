@@ -53,7 +53,12 @@ func (s *ListMessageGroupUserResponseBody) SetResult(v *ListMessageGroupUserResp
 }
 
 func (s *ListMessageGroupUserResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMessageGroupUserResponseBodyResult struct {
@@ -113,7 +118,16 @@ func (s *ListMessageGroupUserResponseBodyResult) SetUserList(v []*ListMessageGro
 }
 
 func (s *ListMessageGroupUserResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.UserList != nil {
+		for _, item := range s.UserList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMessageGroupUserResponseBodyResultUserList struct {

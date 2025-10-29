@@ -53,7 +53,12 @@ func (s *DescribeLiveDomainLimitResponseBody) SetRequestId(v string) *DescribeLi
 }
 
 func (s *DescribeLiveDomainLimitResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LiveDomainLimitList != nil {
+		if err := s.LiveDomainLimitList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainLimitResponseBodyLiveDomainLimitList struct {
@@ -78,7 +83,16 @@ func (s *DescribeLiveDomainLimitResponseBodyLiveDomainLimitList) SetLiveDomainLi
 }
 
 func (s *DescribeLiveDomainLimitResponseBodyLiveDomainLimitList) Validate() error {
-	return dara.Validate(s)
+	if s.LiveDomainLimit != nil {
+		for _, item := range s.LiveDomainLimit {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainLimitResponseBodyLiveDomainLimitListLiveDomainLimit struct {

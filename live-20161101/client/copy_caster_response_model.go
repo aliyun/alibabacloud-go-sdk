@@ -59,5 +59,10 @@ func (s *CopyCasterResponse) SetBody(v *CopyCasterResponseBody) *CopyCasterRespo
 }
 
 func (s *CopyCasterResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

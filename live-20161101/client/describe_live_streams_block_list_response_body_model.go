@@ -138,7 +138,12 @@ func (s *DescribeLiveStreamsBlockListResponseBody) SetTotalPage(v int32) *Descri
 }
 
 func (s *DescribeLiveStreamsBlockListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StreamUrls != nil {
+		if err := s.StreamUrls.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamsBlockListResponseBodyStreamUrls struct {

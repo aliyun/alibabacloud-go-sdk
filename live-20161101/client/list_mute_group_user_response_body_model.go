@@ -53,7 +53,12 @@ func (s *ListMuteGroupUserResponseBody) SetResult(v *ListMuteGroupUserResponseBo
 }
 
 func (s *ListMuteGroupUserResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMuteGroupUserResponseBodyResult struct {
@@ -113,7 +118,16 @@ func (s *ListMuteGroupUserResponseBodyResult) SetUserList(v []*ListMuteGroupUser
 }
 
 func (s *ListMuteGroupUserResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.UserList != nil {
+		for _, item := range s.UserList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMuteGroupUserResponseBodyResultUserList struct {

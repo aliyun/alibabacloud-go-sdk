@@ -138,7 +138,12 @@ func (s *DescribeLiveDomainMonitoringUsageDataResponseBody) SetStartTime(v strin
 }
 
 func (s *DescribeLiveDomainMonitoringUsageDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MonitoringData != nil {
+		if err := s.MonitoringData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainMonitoringUsageDataResponseBodyMonitoringData struct {
@@ -163,7 +168,16 @@ func (s *DescribeLiveDomainMonitoringUsageDataResponseBodyMonitoringData) SetMon
 }
 
 func (s *DescribeLiveDomainMonitoringUsageDataResponseBodyMonitoringData) Validate() error {
-	return dara.Validate(s)
+	if s.MonitoringDataItem != nil {
+		for _, item := range s.MonitoringDataItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainMonitoringUsageDataResponseBodyMonitoringDataMonitoringDataItem struct {

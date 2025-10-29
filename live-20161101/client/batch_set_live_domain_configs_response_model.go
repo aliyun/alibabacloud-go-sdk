@@ -59,5 +59,10 @@ func (s *BatchSetLiveDomainConfigsResponse) SetBody(v *BatchSetLiveDomainConfigs
 }
 
 func (s *BatchSetLiveDomainConfigsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *DescribeLiveDomainDetailResponseBody) SetRequestId(v string) *DescribeL
 }
 
 func (s *DescribeLiveDomainDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainDetail != nil {
+		if err := s.DomainDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainDetailResponseBodyDomainDetail struct {

@@ -256,7 +256,16 @@ func (s *AddShowIntoShowListRequest) SetShowList(v []*AddShowIntoShowListRequest
 }
 
 func (s *AddShowIntoShowListRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ShowList != nil {
+		for _, item := range s.ShowList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddShowIntoShowListRequestShowList struct {

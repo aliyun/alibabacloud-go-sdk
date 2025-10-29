@@ -59,7 +59,12 @@ func (s *DescribeLiveDomainEdgeLogResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeLiveDomainEdgeLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainLogDetails != nil {
+		if err := s.DomainLogDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainEdgeLogResponseBodyDomainLogDetails struct {
@@ -84,7 +89,16 @@ func (s *DescribeLiveDomainEdgeLogResponseBodyDomainLogDetails) SetDomainLogDeta
 }
 
 func (s *DescribeLiveDomainEdgeLogResponseBodyDomainLogDetails) Validate() error {
-	return dara.Validate(s)
+	if s.DomainLogDetail != nil {
+		for _, item := range s.DomainLogDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainEdgeLogResponseBodyDomainLogDetailsDomainLogDetail struct {
@@ -129,7 +143,17 @@ func (s *DescribeLiveDomainEdgeLogResponseBodyDomainLogDetailsDomainLogDetail) S
 }
 
 func (s *DescribeLiveDomainEdgeLogResponseBodyDomainLogDetailsDomainLogDetail) Validate() error {
-	return dara.Validate(s)
+	if s.LogInfos != nil {
+		if err := s.LogInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PageInfos != nil {
+		if err := s.PageInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainEdgeLogResponseBodyDomainLogDetailsDomainLogDetailLogInfos struct {
@@ -154,7 +178,16 @@ func (s *DescribeLiveDomainEdgeLogResponseBodyDomainLogDetailsDomainLogDetailLog
 }
 
 func (s *DescribeLiveDomainEdgeLogResponseBodyDomainLogDetailsDomainLogDetailLogInfos) Validate() error {
-	return dara.Validate(s)
+	if s.LogInfoDetail != nil {
+		for _, item := range s.LogInfoDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainEdgeLogResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail struct {

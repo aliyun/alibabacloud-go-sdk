@@ -53,7 +53,12 @@ func (s *MuteGroupUserResponseBody) SetResult(v *MuteGroupUserResponseBodyResult
 }
 
 func (s *MuteGroupUserResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MuteGroupUserResponseBodyResult struct {

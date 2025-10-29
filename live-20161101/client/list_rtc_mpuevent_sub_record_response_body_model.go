@@ -87,7 +87,16 @@ func (s *ListRtcMPUEventSubRecordResponseBody) SetRequestId(v string) *ListRtcMP
 }
 
 func (s *ListRtcMPUEventSubRecordResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Logs != nil {
+		for _, item := range s.Logs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRtcMPUEventSubRecordResponseBodyLogs struct {

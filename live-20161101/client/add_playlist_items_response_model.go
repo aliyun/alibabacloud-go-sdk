@@ -59,5 +59,10 @@ func (s *AddPlaylistItemsResponse) SetBody(v *AddPlaylistItemsResponseBody) *Add
 }
 
 func (s *AddPlaylistItemsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

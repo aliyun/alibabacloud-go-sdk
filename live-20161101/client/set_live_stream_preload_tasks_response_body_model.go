@@ -127,7 +127,12 @@ func (s *SetLiveStreamPreloadTasksResponseBody) SetTotalURL(v int32) *SetLiveStr
 }
 
 func (s *SetLiveStreamPreloadTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PreloadTasksMessages != nil {
+		if err := s.PreloadTasksMessages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SetLiveStreamPreloadTasksResponseBodyPreloadTasksMessages struct {
@@ -152,7 +157,16 @@ func (s *SetLiveStreamPreloadTasksResponseBodyPreloadTasksMessages) SetPreloadTa
 }
 
 func (s *SetLiveStreamPreloadTasksResponseBodyPreloadTasksMessages) Validate() error {
-	return dara.Validate(s)
+	if s.PreloadTasksMessage != nil {
+		for _, item := range s.PreloadTasksMessage {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SetLiveStreamPreloadTasksResponseBodyPreloadTasksMessagesPreloadTasksMessage struct {

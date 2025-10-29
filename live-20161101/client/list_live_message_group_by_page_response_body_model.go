@@ -104,7 +104,16 @@ func (s *ListLiveMessageGroupByPageResponseBody) SetTotalCount(v int32) *ListLiv
 }
 
 func (s *ListLiveMessageGroupByPageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GroupList != nil {
+		for _, item := range s.GroupList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLiveMessageGroupByPageResponseBodyGroupList struct {

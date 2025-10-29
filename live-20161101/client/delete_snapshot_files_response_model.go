@@ -59,5 +59,10 @@ func (s *DeleteSnapshotFilesResponse) SetBody(v *DeleteSnapshotFilesResponseBody
 }
 
 func (s *DeleteSnapshotFilesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

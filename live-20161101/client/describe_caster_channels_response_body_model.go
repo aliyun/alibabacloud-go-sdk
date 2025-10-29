@@ -70,7 +70,12 @@ func (s *DescribeCasterChannelsResponseBody) SetTotal(v int32) *DescribeCasterCh
 }
 
 func (s *DescribeCasterChannelsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Channels != nil {
+		if err := s.Channels.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCasterChannelsResponseBodyChannels struct {
@@ -95,7 +100,16 @@ func (s *DescribeCasterChannelsResponseBodyChannels) SetChannel(v []*DescribeCas
 }
 
 func (s *DescribeCasterChannelsResponseBodyChannels) Validate() error {
-	return dara.Validate(s)
+	if s.Channel != nil {
+		for _, item := range s.Channel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCasterChannelsResponseBodyChannelsChannel struct {

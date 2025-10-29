@@ -59,5 +59,10 @@ func (s *ListMessageAppResponse) SetBody(v *ListMessageAppResponseBody) *ListMes
 }
 
 func (s *ListMessageAppResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

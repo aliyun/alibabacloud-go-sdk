@@ -53,7 +53,12 @@ func (s *DescribeUpBpsPeakOfLineResponseBody) SetRequestId(v string) *DescribeUp
 }
 
 func (s *DescribeUpBpsPeakOfLineResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DescribeUpBpsPeakOfLines != nil {
+		if err := s.DescribeUpBpsPeakOfLines.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLines struct {
@@ -78,7 +83,16 @@ func (s *DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLines) SetDescrib
 }
 
 func (s *DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLines) Validate() error {
-	return dara.Validate(s)
+	if s.DescribeUpBpsPeakOfLine != nil {
+		for _, item := range s.DescribeUpBpsPeakOfLine {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUpBpsPeakOfLineResponseBodyDescribeUpBpsPeakOfLinesDescribeUpBpsPeakOfLine struct {

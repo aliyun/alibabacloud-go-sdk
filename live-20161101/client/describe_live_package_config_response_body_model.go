@@ -142,7 +142,12 @@ func (s *DescribeLivePackageConfigResponseBody) SetTotalPage(v int32) *DescribeL
 }
 
 func (s *DescribeLivePackageConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LivePackageConfigList != nil {
+		if err := s.LivePackageConfigList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLivePackageConfigResponseBodyLivePackageConfigList struct {
@@ -167,7 +172,16 @@ func (s *DescribeLivePackageConfigResponseBodyLivePackageConfigList) SetLivePack
 }
 
 func (s *DescribeLivePackageConfigResponseBodyLivePackageConfigList) Validate() error {
-	return dara.Validate(s)
+	if s.LivePackageConfig != nil {
+		for _, item := range s.LivePackageConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLivePackageConfigResponseBodyLivePackageConfigListLivePackageConfig struct {

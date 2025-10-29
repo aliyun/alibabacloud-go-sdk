@@ -59,5 +59,10 @@ func (s *CreateMessageAppResponse) SetBody(v *CreateMessageAppResponseBody) *Cre
 }
 
 func (s *CreateMessageAppResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

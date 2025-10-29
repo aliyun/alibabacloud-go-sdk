@@ -59,5 +59,10 @@ func (s *DeleteRtcMPUEventSubResponse) SetBody(v *DeleteRtcMPUEventSubResponseBo
 }
 
 func (s *DeleteRtcMPUEventSubResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -70,7 +70,16 @@ func (s *DescribeMixStreamListResponseBody) SetTotal(v int32) *DescribeMixStream
 }
 
 func (s *DescribeMixStreamListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MixStreamList != nil {
+		for _, item := range s.MixStreamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMixStreamListResponseBodyMixStreamList struct {

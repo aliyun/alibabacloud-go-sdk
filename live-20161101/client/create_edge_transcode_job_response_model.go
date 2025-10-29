@@ -59,5 +59,10 @@ func (s *CreateEdgeTranscodeJobResponse) SetBody(v *CreateEdgeTranscodeJobRespon
 }
 
 func (s *CreateEdgeTranscodeJobResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

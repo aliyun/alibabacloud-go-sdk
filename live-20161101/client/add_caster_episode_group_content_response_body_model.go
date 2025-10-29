@@ -70,7 +70,12 @@ func (s *AddCasterEpisodeGroupContentResponseBody) SetRequestId(v string) *AddCa
 }
 
 func (s *AddCasterEpisodeGroupContentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ItemIds != nil {
+		if err := s.ItemIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddCasterEpisodeGroupContentResponseBodyItemIds struct {

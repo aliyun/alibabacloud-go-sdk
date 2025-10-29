@@ -72,7 +72,12 @@ func (s *DescribeLiveStreamSnapshotInfoResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribeLiveStreamSnapshotInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LiveStreamSnapshotInfoList != nil {
+		if err := s.LiveStreamSnapshotInfoList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamSnapshotInfoResponseBodyLiveStreamSnapshotInfoList struct {
@@ -97,7 +102,16 @@ func (s *DescribeLiveStreamSnapshotInfoResponseBodyLiveStreamSnapshotInfoList) S
 }
 
 func (s *DescribeLiveStreamSnapshotInfoResponseBodyLiveStreamSnapshotInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.LiveStreamSnapshotInfo != nil {
+		for _, item := range s.LiveStreamSnapshotInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamSnapshotInfoResponseBodyLiveStreamSnapshotInfoListLiveStreamSnapshotInfo struct {

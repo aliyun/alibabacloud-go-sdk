@@ -224,7 +224,31 @@ func (s *StartLiveMPUTaskRequest) SetTranscodeParams(v *StartLiveMPUTaskRequestT
 }
 
 func (s *StartLiveMPUTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.MultiStreamURL != nil {
+		for _, item := range s.MultiStreamURL {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SeiParams != nil {
+		if err := s.SeiParams.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SingleSubParams != nil {
+		if err := s.SingleSubParams.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TranscodeParams != nil {
+		if err := s.TranscodeParams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartLiveMPUTaskRequestMultiStreamURL struct {
@@ -327,7 +351,17 @@ func (s *StartLiveMPUTaskRequestSeiParams) SetPayloadType(v string) *StartLiveMP
 }
 
 func (s *StartLiveMPUTaskRequestSeiParams) Validate() error {
-	return dara.Validate(s)
+	if s.LayoutVolume != nil {
+		if err := s.LayoutVolume.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PassThrough != nil {
+		if err := s.PassThrough.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartLiveMPUTaskRequestSeiParamsLayoutVolume struct {
@@ -588,7 +622,31 @@ func (s *StartLiveMPUTaskRequestTranscodeParams) SetUserInfos(v []*StartLiveMPUT
 }
 
 func (s *StartLiveMPUTaskRequestTranscodeParams) Validate() error {
-	return dara.Validate(s)
+	if s.Background != nil {
+		if err := s.Background.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EncodeParams != nil {
+		if err := s.EncodeParams.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Layout != nil {
+		if err := s.Layout.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserInfos != nil {
+		for _, item := range s.UserInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartLiveMPUTaskRequestTranscodeParamsBackground struct {
@@ -857,7 +915,16 @@ func (s *StartLiveMPUTaskRequestTranscodeParamsLayout) SetUserPanes(v []*StartLi
 }
 
 func (s *StartLiveMPUTaskRequestTranscodeParamsLayout) Validate() error {
-	return dara.Validate(s)
+	if s.UserPanes != nil {
+		for _, item := range s.UserPanes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartLiveMPUTaskRequestTranscodeParamsLayoutUserPanes struct {
@@ -998,7 +1065,12 @@ func (s *StartLiveMPUTaskRequestTranscodeParamsLayoutUserPanes) SetZOrder(v stri
 }
 
 func (s *StartLiveMPUTaskRequestTranscodeParamsLayoutUserPanes) Validate() error {
-	return dara.Validate(s)
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartLiveMPUTaskRequestTranscodeParamsLayoutUserPanesUserInfo struct {

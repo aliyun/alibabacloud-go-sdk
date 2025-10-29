@@ -53,7 +53,12 @@ func (s *GetMessageGroupResponseBody) SetResult(v *GetMessageGroupResponseBodyRe
 }
 
 func (s *GetMessageGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMessageGroupResponseBodyResult struct {

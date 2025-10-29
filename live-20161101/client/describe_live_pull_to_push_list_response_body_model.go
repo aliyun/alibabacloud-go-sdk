@@ -104,7 +104,16 @@ func (s *DescribeLivePullToPushListResponseBody) SetTotal(v int32) *DescribeLive
 }
 
 func (s *DescribeLivePullToPushListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TaskList != nil {
+		for _, item := range s.TaskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLivePullToPushListResponseBodyTaskList struct {
@@ -261,7 +270,12 @@ func (s *DescribeLivePullToPushListResponseBodyTaskList) SetTaskStatus(v int32) 
 }
 
 func (s *DescribeLivePullToPushListResponseBodyTaskList) Validate() error {
-	return dara.Validate(s)
+	if s.TaskInfo != nil {
+		if err := s.TaskInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLivePullToPushListResponseBodyTaskListTaskInfo struct {

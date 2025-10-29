@@ -53,7 +53,12 @@ func (s *DescribeLiveCertificateListResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeLiveCertificateListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CertificateListModel != nil {
+		if err := s.CertificateListModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveCertificateListResponseBodyCertificateListModel struct {
@@ -94,7 +99,12 @@ func (s *DescribeLiveCertificateListResponseBodyCertificateListModel) SetCount(v
 }
 
 func (s *DescribeLiveCertificateListResponseBodyCertificateListModel) Validate() error {
-	return dara.Validate(s)
+	if s.CertList != nil {
+		if err := s.CertList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveCertificateListResponseBodyCertificateListModelCertList struct {
@@ -119,7 +129,16 @@ func (s *DescribeLiveCertificateListResponseBodyCertificateListModelCertList) Se
 }
 
 func (s *DescribeLiveCertificateListResponseBodyCertificateListModelCertList) Validate() error {
-	return dara.Validate(s)
+	if s.Cert != nil {
+		for _, item := range s.Cert {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveCertificateListResponseBodyCertificateListModelCertListCert struct {

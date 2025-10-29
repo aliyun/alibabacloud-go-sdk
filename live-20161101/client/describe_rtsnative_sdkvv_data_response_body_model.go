@@ -104,7 +104,16 @@ func (s *DescribeRTSNativeSDKVvDataResponseBody) SetVvData(v []*DescribeRTSNativ
 }
 
 func (s *DescribeRTSNativeSDKVvDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VvData != nil {
+		for _, item := range s.VvData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRTSNativeSDKVvDataResponseBodyVvData struct {

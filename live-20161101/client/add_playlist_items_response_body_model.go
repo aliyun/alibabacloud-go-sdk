@@ -70,7 +70,12 @@ func (s *AddPlaylistItemsResponseBody) SetRequestId(v string) *AddPlaylistItemsR
 }
 
 func (s *AddPlaylistItemsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddPlaylistItemsResponseBodyItems struct {
@@ -107,7 +112,25 @@ func (s *AddPlaylistItemsResponseBodyItems) SetSuccessItems(v []*AddPlaylistItem
 }
 
 func (s *AddPlaylistItemsResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.FailedItems != nil {
+		for _, item := range s.FailedItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SuccessItems != nil {
+		for _, item := range s.SuccessItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddPlaylistItemsResponseBodyItemsFailedItems struct {

@@ -59,5 +59,10 @@ func (s *DeleteLiveAISubtitleResponse) SetBody(v *DeleteLiveAISubtitleResponseBo
 }
 
 func (s *DeleteLiveAISubtitleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -87,7 +87,16 @@ func (s *ListLiveMessageGroupsResponseBody) SetRequestId(v string) *ListLiveMess
 }
 
 func (s *ListLiveMessageGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GroupList != nil {
+		for _, item := range s.GroupList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLiveMessageGroupsResponseBodyGroupList struct {

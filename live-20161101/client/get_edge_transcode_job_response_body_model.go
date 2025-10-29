@@ -53,7 +53,12 @@ func (s *GetEdgeTranscodeJobResponseBody) SetRequestId(v string) *GetEdgeTransco
 }
 
 func (s *GetEdgeTranscodeJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Job != nil {
+		if err := s.Job.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEdgeTranscodeJobResponseBodyJob struct {

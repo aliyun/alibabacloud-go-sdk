@@ -53,7 +53,12 @@ func (s *DescribeLiveDomainMappingResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeLiveDomainMappingResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LiveDomainModels != nil {
+		if err := s.LiveDomainModels.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainMappingResponseBodyLiveDomainModels struct {
@@ -78,7 +83,16 @@ func (s *DescribeLiveDomainMappingResponseBodyLiveDomainModels) SetLiveDomainMod
 }
 
 func (s *DescribeLiveDomainMappingResponseBodyLiveDomainModels) Validate() error {
-	return dara.Validate(s)
+	if s.LiveDomainModel != nil {
+		for _, item := range s.LiveDomainModel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainMappingResponseBodyLiveDomainModelsLiveDomainModel struct {

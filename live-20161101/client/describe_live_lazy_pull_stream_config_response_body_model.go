@@ -53,7 +53,12 @@ func (s *DescribeLiveLazyPullStreamConfigResponseBody) SetRequestId(v string) *D
 }
 
 func (s *DescribeLiveLazyPullStreamConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LiveLazyPullConfigList != nil {
+		if err := s.LiveLazyPullConfigList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigList struct {
@@ -78,7 +83,16 @@ func (s *DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigList) Set
 }
 
 func (s *DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigList) Validate() error {
-	return dara.Validate(s)
+	if s.LiveLazyPullConfig != nil {
+		for _, item := range s.LiveLazyPullConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveLazyPullConfig struct {

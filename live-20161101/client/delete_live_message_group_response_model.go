@@ -59,5 +59,10 @@ func (s *DeleteLiveMessageGroupResponse) SetBody(v *DeleteLiveMessageGroupRespon
 }
 
 func (s *DeleteLiveMessageGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

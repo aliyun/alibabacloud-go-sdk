@@ -142,7 +142,16 @@ func (s *DescribeLiveUserStreamMetricDataResponseBody) SetTotalCount(v int64) *D
 }
 
 func (s *DescribeLiveUserStreamMetricDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StreamDetailData != nil {
+		for _, item := range s.StreamDetailData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveUserStreamMetricDataResponseBodyStreamDetailData struct {

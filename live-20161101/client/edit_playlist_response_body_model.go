@@ -87,7 +87,12 @@ func (s *EditPlaylistResponseBody) SetRequestId(v string) *EditPlaylistResponseB
 }
 
 func (s *EditPlaylistResponseBody) Validate() error {
-  return dara.Validate(s)
+  if s.Items != nil {
+    if err := s.Items.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type EditPlaylistResponseBodyItems struct {
@@ -124,7 +129,25 @@ func (s *EditPlaylistResponseBodyItems) SetSuccessItems(v []*EditPlaylistRespons
 }
 
 func (s *EditPlaylistResponseBodyItems) Validate() error {
-  return dara.Validate(s)
+  if s.FailedItems != nil {
+    for _, item := range s.FailedItems {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  if s.SuccessItems != nil {
+    for _, item := range s.SuccessItems {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type EditPlaylistResponseBodyItemsFailedItems struct {

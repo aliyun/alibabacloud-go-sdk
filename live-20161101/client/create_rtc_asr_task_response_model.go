@@ -59,5 +59,10 @@ func (s *CreateRtcAsrTaskResponse) SetBody(v *CreateRtcAsrTaskResponseBody) *Cre
 }
 
 func (s *CreateRtcAsrTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

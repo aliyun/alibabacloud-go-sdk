@@ -59,5 +59,10 @@ func (s *CreateCasterResponse) SetBody(v *CreateCasterResponseBody) *CreateCaste
 }
 
 func (s *CreateCasterResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

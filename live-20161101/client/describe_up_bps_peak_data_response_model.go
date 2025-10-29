@@ -59,5 +59,10 @@ func (s *DescribeUpBpsPeakDataResponse) SetBody(v *DescribeUpBpsPeakDataResponse
 }
 
 func (s *DescribeUpBpsPeakDataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

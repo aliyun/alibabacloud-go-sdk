@@ -53,7 +53,12 @@ func (s *DescribeLiveShiftConfigsResponseBody) SetRequestId(v string) *DescribeL
 }
 
 func (s *DescribeLiveShiftConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveShiftConfigsResponseBodyContent struct {
@@ -78,7 +83,16 @@ func (s *DescribeLiveShiftConfigsResponseBodyContent) SetConfig(v []*DescribeLiv
 }
 
 func (s *DescribeLiveShiftConfigsResponseBodyContent) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		for _, item := range s.Config {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveShiftConfigsResponseBodyContentConfig struct {

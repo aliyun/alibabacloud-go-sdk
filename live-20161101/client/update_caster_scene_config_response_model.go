@@ -59,5 +59,10 @@ func (s *UpdateCasterSceneConfigResponse) SetBody(v *UpdateCasterSceneConfigResp
 }
 
 func (s *UpdateCasterSceneConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

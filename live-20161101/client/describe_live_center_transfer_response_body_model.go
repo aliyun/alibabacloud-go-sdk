@@ -53,7 +53,12 @@ func (s *DescribeLiveCenterTransferResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeLiveCenterTransferResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LiveCenterTransferInfoList != nil {
+		if err := s.LiveCenterTransferInfoList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveCenterTransferResponseBodyLiveCenterTransferInfoList struct {
@@ -78,7 +83,16 @@ func (s *DescribeLiveCenterTransferResponseBodyLiveCenterTransferInfoList) SetLi
 }
 
 func (s *DescribeLiveCenterTransferResponseBodyLiveCenterTransferInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.LiveCenterTransferInfo != nil {
+		for _, item := range s.LiveCenterTransferInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveCenterTransferResponseBodyLiveCenterTransferInfoListLiveCenterTransferInfo struct {

@@ -59,5 +59,10 @@ func (s *CancelMuteAllGroupUserResponse) SetBody(v *CancelMuteAllGroupUserRespon
 }
 
 func (s *CancelMuteAllGroupUserResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

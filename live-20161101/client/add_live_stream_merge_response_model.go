@@ -59,5 +59,10 @@ func (s *AddLiveStreamMergeResponse) SetBody(v *AddLiveStreamMergeResponseBody) 
 }
 
 func (s *AddLiveStreamMergeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

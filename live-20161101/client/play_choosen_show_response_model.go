@@ -59,5 +59,10 @@ func (s *PlayChoosenShowResponse) SetBody(v *PlayChoosenShowResponseBody) *PlayC
 }
 
 func (s *PlayChoosenShowResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

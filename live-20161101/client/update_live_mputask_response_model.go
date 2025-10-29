@@ -59,5 +59,10 @@ func (s *UpdateLiveMPUTaskResponse) SetBody(v *UpdateLiveMPUTaskResponseBody) *U
 }
 
 func (s *UpdateLiveMPUTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

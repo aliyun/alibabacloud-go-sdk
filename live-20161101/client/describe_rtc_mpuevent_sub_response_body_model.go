@@ -53,7 +53,12 @@ func (s *DescribeRtcMPUEventSubResponseBody) SetSubInfo(v *DescribeRtcMPUEventSu
 }
 
 func (s *DescribeRtcMPUEventSubResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SubInfo != nil {
+		if err := s.SubInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRtcMPUEventSubResponseBodySubInfo struct {

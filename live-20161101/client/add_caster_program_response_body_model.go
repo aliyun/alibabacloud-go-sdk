@@ -53,7 +53,12 @@ func (s *AddCasterProgramResponseBody) SetRequestId(v string) *AddCasterProgramR
 }
 
 func (s *AddCasterProgramResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EpisodeIds != nil {
+		if err := s.EpisodeIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddCasterProgramResponseBodyEpisodeIds struct {
@@ -78,7 +83,16 @@ func (s *AddCasterProgramResponseBodyEpisodeIds) SetEpisodeId(v []*AddCasterProg
 }
 
 func (s *AddCasterProgramResponseBodyEpisodeIds) Validate() error {
-	return dara.Validate(s)
+	if s.EpisodeId != nil {
+		for _, item := range s.EpisodeId {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddCasterProgramResponseBodyEpisodeIdsEpisodeId struct {

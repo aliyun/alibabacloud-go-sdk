@@ -104,7 +104,16 @@ func (s *DescribeRTSNativeSDKFirstFrameCostResponseBody) SetStartTime(v string) 
 }
 
 func (s *DescribeRTSNativeSDKFirstFrameCostResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FirstFrameCostData != nil {
+		for _, item := range s.FirstFrameCostData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRTSNativeSDKFirstFrameCostResponseBodyFirstFrameCostData struct {

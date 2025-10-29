@@ -59,5 +59,10 @@ func (s *CreateLiveAIStudioResponse) SetBody(v *CreateLiveAIStudioResponseBody) 
 }
 
 func (s *CreateLiveAIStudioResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

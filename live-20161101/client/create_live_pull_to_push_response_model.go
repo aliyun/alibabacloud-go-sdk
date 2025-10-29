@@ -59,5 +59,10 @@ func (s *CreateLivePullToPushResponse) SetBody(v *CreateLivePullToPushResponseBo
 }
 
 func (s *CreateLivePullToPushResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

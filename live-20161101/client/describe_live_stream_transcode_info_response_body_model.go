@@ -53,7 +53,12 @@ func (s *DescribeLiveStreamTranscodeInfoResponseBody) SetRequestId(v string) *De
 }
 
 func (s *DescribeLiveStreamTranscodeInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainTranscodeList != nil {
+		if err := s.DomainTranscodeList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeList struct {
@@ -78,7 +83,16 @@ func (s *DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeList) SetDoma
 }
 
 func (s *DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeList) Validate() error {
-	return dara.Validate(s)
+	if s.DomainTranscodeInfo != nil {
+		for _, item := range s.DomainTranscodeInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeListDomainTranscodeInfo struct {
@@ -199,7 +213,17 @@ func (s *DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeListDomainTra
 }
 
 func (s *DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeListDomainTranscodeInfo) Validate() error {
-	return dara.Validate(s)
+	if s.CustomTranscodeParameters != nil {
+		if err := s.CustomTranscodeParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EncryptParameters != nil {
+		if err := s.EncryptParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeListDomainTranscodeInfoCustomTranscodeParameters struct {
@@ -259,6 +283,7 @@ type DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeListDomainTransco
 	//
 	// {\\"UpLimit\\":2500,\\"LowerLimit\\":800,\\"Factor\\":1}
 	BitrateWithSource map[string]interface{} `json:"BitrateWithSource,omitempty" xml:"BitrateWithSource,omitempty"`
+	DeInterlaced      *bool                  `json:"DeInterlaced,omitempty" xml:"DeInterlaced,omitempty"`
 	// Other source-based settings.
 	//
 	// example:
@@ -381,6 +406,10 @@ func (s *DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeListDomainTra
 	return s.BitrateWithSource
 }
 
+func (s *DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeListDomainTranscodeInfoCustomTranscodeParameters) GetDeInterlaced() *bool {
+	return s.DeInterlaced
+}
+
 func (s *DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeListDomainTranscodeInfoCustomTranscodeParameters) GetExtWithSource() map[string]interface{} {
 	return s.ExtWithSource
 }
@@ -457,6 +486,11 @@ func (s *DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeListDomainTra
 
 func (s *DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeListDomainTranscodeInfoCustomTranscodeParameters) SetBitrateWithSource(v map[string]interface{}) *DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeListDomainTranscodeInfoCustomTranscodeParameters {
 	s.BitrateWithSource = v
+	return s
+}
+
+func (s *DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeListDomainTranscodeInfoCustomTranscodeParameters) SetDeInterlaced(v bool) *DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeListDomainTranscodeInfoCustomTranscodeParameters {
+	s.DeInterlaced = &v
 	return s
 }
 

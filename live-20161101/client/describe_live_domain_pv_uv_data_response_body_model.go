@@ -121,7 +121,12 @@ func (s *DescribeLiveDomainPvUvDataResponseBody) SetStartTime(v string) *Describ
 }
 
 func (s *DescribeLiveDomainPvUvDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PvUvDataInfos != nil {
+		if err := s.PvUvDataInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainPvUvDataResponseBodyPvUvDataInfos struct {
@@ -146,7 +151,16 @@ func (s *DescribeLiveDomainPvUvDataResponseBodyPvUvDataInfos) SetPvUvDataInfo(v 
 }
 
 func (s *DescribeLiveDomainPvUvDataResponseBodyPvUvDataInfos) Validate() error {
-	return dara.Validate(s)
+	if s.PvUvDataInfo != nil {
+		for _, item := range s.PvUvDataInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainPvUvDataResponseBodyPvUvDataInfosPvUvDataInfo struct {

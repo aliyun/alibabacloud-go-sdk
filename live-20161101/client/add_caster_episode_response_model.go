@@ -59,5 +59,10 @@ func (s *AddCasterEpisodeResponse) SetBody(v *AddCasterEpisodeResponseBody) *Add
 }
 
 func (s *AddCasterEpisodeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

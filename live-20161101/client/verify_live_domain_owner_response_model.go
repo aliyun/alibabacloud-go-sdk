@@ -59,5 +59,10 @@ func (s *VerifyLiveDomainOwnerResponse) SetBody(v *VerifyLiveDomainOwnerResponse
 }
 
 func (s *VerifyLiveDomainOwnerResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

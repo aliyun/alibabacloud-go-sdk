@@ -59,5 +59,10 @@ func (s *SetCasterConfigResponse) SetBody(v *SetCasterConfigResponseBody) *SetCa
 }
 
 func (s *SetCasterConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

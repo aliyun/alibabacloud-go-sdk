@@ -87,7 +87,12 @@ func (s *DescribeLiveProducerUsageDataResponseBody) SetStartTime(v string) *Desc
 }
 
 func (s *DescribeLiveProducerUsageDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BillProducerData != nil {
+		if err := s.BillProducerData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveProducerUsageDataResponseBodyBillProducerData struct {
@@ -112,7 +117,16 @@ func (s *DescribeLiveProducerUsageDataResponseBodyBillProducerData) SetBillProdu
 }
 
 func (s *DescribeLiveProducerUsageDataResponseBodyBillProducerData) Validate() error {
-	return dara.Validate(s)
+	if s.BillProducerDataItem != nil {
+		for _, item := range s.BillProducerDataItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveProducerUsageDataResponseBodyBillProducerDataBillProducerDataItem struct {

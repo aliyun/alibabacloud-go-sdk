@@ -138,7 +138,12 @@ func (s *DescribeLiveSnapshotDetectPornConfigResponseBody) SetTotalPage(v int32)
 }
 
 func (s *DescribeLiveSnapshotDetectPornConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LiveSnapshotDetectPornConfigList != nil {
+		if err := s.LiveSnapshotDetectPornConfigList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveSnapshotDetectPornConfigResponseBodyLiveSnapshotDetectPornConfigList struct {
@@ -163,7 +168,16 @@ func (s *DescribeLiveSnapshotDetectPornConfigResponseBodyLiveSnapshotDetectPornC
 }
 
 func (s *DescribeLiveSnapshotDetectPornConfigResponseBodyLiveSnapshotDetectPornConfigList) Validate() error {
-	return dara.Validate(s)
+	if s.LiveSnapshotDetectPornConfig != nil {
+		for _, item := range s.LiveSnapshotDetectPornConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveSnapshotDetectPornConfigResponseBodyLiveSnapshotDetectPornConfigListLiveSnapshotDetectPornConfig struct {
@@ -279,7 +293,12 @@ func (s *DescribeLiveSnapshotDetectPornConfigResponseBodyLiveSnapshotDetectPornC
 }
 
 func (s *DescribeLiveSnapshotDetectPornConfigResponseBodyLiveSnapshotDetectPornConfigListLiveSnapshotDetectPornConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Scenes != nil {
+		if err := s.Scenes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveSnapshotDetectPornConfigResponseBodyLiveSnapshotDetectPornConfigListLiveSnapshotDetectPornConfigScenes struct {

@@ -53,7 +53,12 @@ func (s *DescribeLiveStreamHistoryUserNumResponseBody) SetRequestId(v string) *D
 }
 
 func (s *DescribeLiveStreamHistoryUserNumResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LiveStreamUserNumInfos != nil {
+		if err := s.LiveStreamUserNumInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamHistoryUserNumResponseBodyLiveStreamUserNumInfos struct {
@@ -78,7 +83,16 @@ func (s *DescribeLiveStreamHistoryUserNumResponseBodyLiveStreamUserNumInfos) Set
 }
 
 func (s *DescribeLiveStreamHistoryUserNumResponseBodyLiveStreamUserNumInfos) Validate() error {
-	return dara.Validate(s)
+	if s.LiveStreamUserNumInfo != nil {
+		for _, item := range s.LiveStreamUserNumInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamHistoryUserNumResponseBodyLiveStreamUserNumInfosLiveStreamUserNumInfo struct {

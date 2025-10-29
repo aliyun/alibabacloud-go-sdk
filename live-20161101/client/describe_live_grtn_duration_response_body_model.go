@@ -53,7 +53,12 @@ func (s *DescribeLiveGrtnDurationResponseBody) SetStreamDetailData(v *DescribeLi
 }
 
 func (s *DescribeLiveGrtnDurationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StreamDetailData != nil {
+		if err := s.StreamDetailData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveGrtnDurationResponseBodyStreamDetailData struct {
@@ -78,7 +83,16 @@ func (s *DescribeLiveGrtnDurationResponseBodyStreamDetailData) SetStreamData(v [
 }
 
 func (s *DescribeLiveGrtnDurationResponseBodyStreamDetailData) Validate() error {
-	return dara.Validate(s)
+	if s.StreamData != nil {
+		for _, item := range s.StreamData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveGrtnDurationResponseBodyStreamDetailDataStreamData struct {

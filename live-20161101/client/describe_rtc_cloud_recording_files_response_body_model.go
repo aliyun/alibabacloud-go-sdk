@@ -50,7 +50,12 @@ func (s *DescribeRtcCloudRecordingFilesResponseBody) SetTaskInfo(v *DescribeRtcC
 }
 
 func (s *DescribeRtcCloudRecordingFilesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TaskInfo != nil {
+		if err := s.TaskInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRtcCloudRecordingFilesResponseBodyTaskInfo struct {
@@ -101,7 +106,12 @@ func (s *DescribeRtcCloudRecordingFilesResponseBodyTaskInfo) SetTaskId(v string)
 }
 
 func (s *DescribeRtcCloudRecordingFilesResponseBodyTaskInfo) Validate() error {
-	return dara.Validate(s)
+	if s.RecordFileList != nil {
+		if err := s.RecordFileList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileList struct {
@@ -156,7 +166,16 @@ func (s *DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileList) SetVo
 }
 
 func (s *DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileList) Validate() error {
-	return dara.Validate(s)
+	if s.VodMediaList != nil {
+		for _, item := range s.VodMediaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList struct {

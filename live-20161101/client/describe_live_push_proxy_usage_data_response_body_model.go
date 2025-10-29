@@ -87,7 +87,12 @@ func (s *DescribeLivePushProxyUsageDataResponseBody) SetStartTime(v string) *Des
 }
 
 func (s *DescribeLivePushProxyUsageDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PushProxyData != nil {
+		if err := s.PushProxyData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLivePushProxyUsageDataResponseBodyPushProxyData struct {
@@ -112,7 +117,16 @@ func (s *DescribeLivePushProxyUsageDataResponseBodyPushProxyData) SetPushProxyDa
 }
 
 func (s *DescribeLivePushProxyUsageDataResponseBodyPushProxyData) Validate() error {
-	return dara.Validate(s)
+	if s.PushProxyDataItem != nil {
+		for _, item := range s.PushProxyDataItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLivePushProxyUsageDataResponseBodyPushProxyDataPushProxyDataItem struct {

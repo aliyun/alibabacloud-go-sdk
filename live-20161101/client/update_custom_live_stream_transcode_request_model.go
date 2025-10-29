@@ -23,6 +23,8 @@ type iUpdateCustomLiveStreamTranscodeRequest interface {
 	GetAudioRate() *int32
 	SetBitrateWithSource(v string) *UpdateCustomLiveStreamTranscodeRequest
 	GetBitrateWithSource() *string
+	SetDeInterlaced(v bool) *UpdateCustomLiveStreamTranscodeRequest
+	GetDeInterlaced() *bool
 	SetDomain(v string) *UpdateCustomLiveStreamTranscodeRequest
 	GetDomain() *string
 	SetEncryptParameters(v string) *UpdateCustomLiveStreamTranscodeRequest
@@ -126,6 +128,7 @@ type UpdateCustomLiveStreamTranscodeRequest struct {
 	//
 	// {\\"UpLimit\\":2500,\\"LowerLimit\\":800,\\"Factor\\":1}
 	BitrateWithSource *string `json:"BitrateWithSource,omitempty" xml:"BitrateWithSource,omitempty"`
+	DeInterlaced      *bool   `json:"DeInterlaced,omitempty" xml:"DeInterlaced,omitempty"`
 	// Streamer domain name, unmodifiable.
 	//
 	// This parameter is required.
@@ -316,6 +319,10 @@ func (s *UpdateCustomLiveStreamTranscodeRequest) GetBitrateWithSource() *string 
 	return s.BitrateWithSource
 }
 
+func (s *UpdateCustomLiveStreamTranscodeRequest) GetDeInterlaced() *bool {
+	return s.DeInterlaced
+}
+
 func (s *UpdateCustomLiveStreamTranscodeRequest) GetDomain() *string {
 	return s.Domain
 }
@@ -412,6 +419,11 @@ func (s *UpdateCustomLiveStreamTranscodeRequest) SetAudioRate(v int32) *UpdateCu
 
 func (s *UpdateCustomLiveStreamTranscodeRequest) SetBitrateWithSource(v string) *UpdateCustomLiveStreamTranscodeRequest {
 	s.BitrateWithSource = &v
+	return s
+}
+
+func (s *UpdateCustomLiveStreamTranscodeRequest) SetDeInterlaced(v bool) *UpdateCustomLiveStreamTranscodeRequest {
+	s.DeInterlaced = &v
 	return s
 }
 

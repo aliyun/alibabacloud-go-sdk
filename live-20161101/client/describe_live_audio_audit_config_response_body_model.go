@@ -53,7 +53,12 @@ func (s *DescribeLiveAudioAuditConfigResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribeLiveAudioAuditConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LiveAudioAuditConfigList != nil {
+		if err := s.LiveAudioAuditConfigList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveAudioAuditConfigResponseBodyLiveAudioAuditConfigList struct {
@@ -78,7 +83,16 @@ func (s *DescribeLiveAudioAuditConfigResponseBodyLiveAudioAuditConfigList) SetLi
 }
 
 func (s *DescribeLiveAudioAuditConfigResponseBodyLiveAudioAuditConfigList) Validate() error {
-	return dara.Validate(s)
+	if s.LiveAudioAuditConfig != nil {
+		for _, item := range s.LiveAudioAuditConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveAudioAuditConfigResponseBodyLiveAudioAuditConfigListLiveAudioAuditConfig struct {
@@ -164,7 +178,12 @@ func (s *DescribeLiveAudioAuditConfigResponseBodyLiveAudioAuditConfigListLiveAud
 }
 
 func (s *DescribeLiveAudioAuditConfigResponseBodyLiveAudioAuditConfigListLiveAudioAuditConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Scenes != nil {
+		if err := s.Scenes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveAudioAuditConfigResponseBodyLiveAudioAuditConfigListLiveAudioAuditConfigScenes struct {

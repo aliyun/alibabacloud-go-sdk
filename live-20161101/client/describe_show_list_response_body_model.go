@@ -72,7 +72,12 @@ func (s *DescribeShowListResponseBody) SetShowListInfo(v *DescribeShowListRespon
 }
 
 func (s *DescribeShowListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ShowListInfo != nil {
+		if err := s.ShowListInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeShowListResponseBodyShowListInfo struct {
@@ -192,7 +197,12 @@ func (s *DescribeShowListResponseBodyShowListInfo) SetTotalShowListRepeatTimes(v
 }
 
 func (s *DescribeShowListResponseBodyShowListInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ShowList != nil {
+		if err := s.ShowList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeShowListResponseBodyShowListInfoShowList struct {
@@ -217,7 +227,16 @@ func (s *DescribeShowListResponseBodyShowListInfoShowList) SetShow(v []*Describe
 }
 
 func (s *DescribeShowListResponseBodyShowListInfoShowList) Validate() error {
-	return dara.Validate(s)
+	if s.Show != nil {
+		for _, item := range s.Show {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeShowListResponseBodyShowListInfoShowListShow struct {
@@ -305,7 +324,12 @@ func (s *DescribeShowListResponseBodyShowListInfoShowListShow) SetShowName(v str
 }
 
 func (s *DescribeShowListResponseBodyShowListInfoShowListShow) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceInfo != nil {
+		if err := s.ResourceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeShowListResponseBodyShowListInfoShowListShowResourceInfo struct {

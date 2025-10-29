@@ -87,7 +87,12 @@ func (s *DescribeLiveDomainRecordUsageDataResponseBody) SetStartTime(v string) *
 }
 
 func (s *DescribeLiveDomainRecordUsageDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RecordUsageData != nil {
+		if err := s.RecordUsageData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainRecordUsageDataResponseBodyRecordUsageData struct {
@@ -112,7 +117,16 @@ func (s *DescribeLiveDomainRecordUsageDataResponseBodyRecordUsageData) SetDataMo
 }
 
 func (s *DescribeLiveDomainRecordUsageDataResponseBodyRecordUsageData) Validate() error {
-	return dara.Validate(s)
+	if s.DataModule != nil {
+		for _, item := range s.DataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainRecordUsageDataResponseBodyRecordUsageDataDataModule struct {

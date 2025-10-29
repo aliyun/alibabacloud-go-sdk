@@ -59,5 +59,10 @@ func (s *ListLiveRealtimeLogDeliveryDomainsResponse) SetBody(v *ListLiveRealtime
 }
 
 func (s *ListLiveRealtimeLogDeliveryDomainsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

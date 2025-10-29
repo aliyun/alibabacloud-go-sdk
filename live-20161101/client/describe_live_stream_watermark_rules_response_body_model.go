@@ -70,7 +70,12 @@ func (s *DescribeLiveStreamWatermarkRulesResponseBody) SetTotal(v int32) *Descri
 }
 
 func (s *DescribeLiveStreamWatermarkRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RuleInfoList != nil {
+		if err := s.RuleInfoList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamWatermarkRulesResponseBodyRuleInfoList struct {
@@ -95,7 +100,16 @@ func (s *DescribeLiveStreamWatermarkRulesResponseBodyRuleInfoList) SetRuleInfo(v
 }
 
 func (s *DescribeLiveStreamWatermarkRulesResponseBodyRuleInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.RuleInfo != nil {
+		for _, item := range s.RuleInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamWatermarkRulesResponseBodyRuleInfoListRuleInfo struct {

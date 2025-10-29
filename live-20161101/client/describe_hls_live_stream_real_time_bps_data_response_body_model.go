@@ -70,7 +70,16 @@ func (s *DescribeHlsLiveStreamRealTimeBpsDataResponseBody) SetUsageData(v []*Des
 }
 
 func (s *DescribeHlsLiveStreamRealTimeBpsDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UsageData != nil {
+		for _, item := range s.UsageData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageData struct {
@@ -111,7 +120,16 @@ func (s *DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageData) SetStreamInf
 }
 
 func (s *DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageData) Validate() error {
-	return dara.Validate(s)
+	if s.StreamInfos != nil {
+		for _, item := range s.StreamInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageDataStreamInfos struct {
@@ -152,7 +170,16 @@ func (s *DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageDataStreamInfos) S
 }
 
 func (s *DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageDataStreamInfos) Validate() error {
-	return dara.Validate(s)
+	if s.Infos != nil {
+		for _, item := range s.Infos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageDataStreamInfosInfos struct {

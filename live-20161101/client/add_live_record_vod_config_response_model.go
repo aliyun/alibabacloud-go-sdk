@@ -59,5 +59,10 @@ func (s *AddLiveRecordVodConfigResponse) SetBody(v *AddLiveRecordVodConfigRespon
 }
 
 func (s *AddLiveRecordVodConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -142,7 +142,16 @@ func (s *UpdateCasterSceneAudioRequest) SetSceneId(v string) *UpdateCasterSceneA
 }
 
 func (s *UpdateCasterSceneAudioRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AudioLayer != nil {
+		for _, item := range s.AudioLayer {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateCasterSceneAudioRequestAudioLayer struct {

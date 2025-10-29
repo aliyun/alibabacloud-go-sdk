@@ -125,7 +125,12 @@ func (s *DescribeCasterProgramResponseBody) SetTotal(v int32) *DescribeCasterPro
 }
 
 func (s *DescribeCasterProgramResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Episodes != nil {
+		if err := s.Episodes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCasterProgramResponseBodyEpisodes struct {
@@ -150,7 +155,16 @@ func (s *DescribeCasterProgramResponseBodyEpisodes) SetEpisode(v []*DescribeCast
 }
 
 func (s *DescribeCasterProgramResponseBodyEpisodes) Validate() error {
-	return dara.Validate(s)
+	if s.Episode != nil {
+		for _, item := range s.Episode {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCasterProgramResponseBodyEpisodesEpisode struct {
@@ -304,7 +318,12 @@ func (s *DescribeCasterProgramResponseBodyEpisodesEpisode) SetSwitchType(v strin
 }
 
 func (s *DescribeCasterProgramResponseBodyEpisodesEpisode) Validate() error {
-	return dara.Validate(s)
+	if s.ComponentIds != nil {
+		if err := s.ComponentIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCasterProgramResponseBodyEpisodesEpisodeComponentIds struct {

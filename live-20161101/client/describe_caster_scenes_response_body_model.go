@@ -70,7 +70,12 @@ func (s *DescribeCasterScenesResponseBody) SetTotal(v int32) *DescribeCasterScen
 }
 
 func (s *DescribeCasterScenesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SceneList != nil {
+		if err := s.SceneList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCasterScenesResponseBodySceneList struct {
@@ -95,7 +100,16 @@ func (s *DescribeCasterScenesResponseBodySceneList) SetScene(v []*DescribeCaster
 }
 
 func (s *DescribeCasterScenesResponseBodySceneList) Validate() error {
-	return dara.Validate(s)
+	if s.Scene != nil {
+		for _, item := range s.Scene {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCasterScenesResponseBodySceneListScene struct {
@@ -230,7 +244,17 @@ func (s *DescribeCasterScenesResponseBodySceneListScene) SetStreamUrl(v string) 
 }
 
 func (s *DescribeCasterScenesResponseBodySceneListScene) Validate() error {
-	return dara.Validate(s)
+	if s.ComponentIds != nil {
+		if err := s.ComponentIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StreamInfos != nil {
+		if err := s.StreamInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCasterScenesResponseBodySceneListSceneComponentIds struct {
@@ -280,7 +304,16 @@ func (s *DescribeCasterScenesResponseBodySceneListSceneStreamInfos) SetStreamInf
 }
 
 func (s *DescribeCasterScenesResponseBodySceneListSceneStreamInfos) Validate() error {
-	return dara.Validate(s)
+	if s.StreamInfo != nil {
+		for _, item := range s.StreamInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCasterScenesResponseBodySceneListSceneStreamInfosStreamInfo struct {

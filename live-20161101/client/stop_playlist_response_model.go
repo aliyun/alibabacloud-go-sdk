@@ -59,5 +59,10 @@ func (s *StopPlaylistResponse) SetBody(v *StopPlaylistResponseBody) *StopPlaylis
 }
 
 func (s *StopPlaylistResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

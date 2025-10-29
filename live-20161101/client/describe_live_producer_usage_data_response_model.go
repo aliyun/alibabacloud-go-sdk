@@ -59,5 +59,10 @@ func (s *DescribeLiveProducerUsageDataResponse) SetBody(v *DescribeLiveProducerU
 }
 
 func (s *DescribeLiveProducerUsageDataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

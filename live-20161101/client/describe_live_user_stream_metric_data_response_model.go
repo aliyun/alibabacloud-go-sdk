@@ -59,5 +59,10 @@ func (s *DescribeLiveUserStreamMetricDataResponse) SetBody(v *DescribeLiveUserSt
 }
 
 func (s *DescribeLiveUserStreamMetricDataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

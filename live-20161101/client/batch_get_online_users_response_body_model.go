@@ -53,7 +53,12 @@ func (s *BatchGetOnlineUsersResponseBody) SetResult(v *BatchGetOnlineUsersRespon
 }
 
 func (s *BatchGetOnlineUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BatchGetOnlineUsersResponseBodyResult struct {
@@ -79,7 +84,16 @@ func (s *BatchGetOnlineUsersResponseBodyResult) SetOnlineUsers(v []*BatchGetOnli
 }
 
 func (s *BatchGetOnlineUsersResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.OnlineUsers != nil {
+		for _, item := range s.OnlineUsers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchGetOnlineUsersResponseBodyResultOnlineUsers struct {

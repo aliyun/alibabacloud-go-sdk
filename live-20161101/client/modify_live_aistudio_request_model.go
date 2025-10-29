@@ -302,7 +302,17 @@ func (s *ModifyLiveAIStudioRequest) SetWidth(v int32) *ModifyLiveAIStudioRequest
 }
 
 func (s *ModifyLiveAIStudioRequest) Validate() error {
-	return dara.Validate(s)
+	if s.MattingLayout != nil {
+		if err := s.MattingLayout.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MediaLayout != nil {
+		if err := s.MediaLayout.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyLiveAIStudioRequestMattingLayout struct {

@@ -59,5 +59,10 @@ func (s *DescribeRtcCloudRecordingFilesResponse) SetBody(v *DescribeRtcCloudReco
 }
 
 func (s *DescribeRtcCloudRecordingFilesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

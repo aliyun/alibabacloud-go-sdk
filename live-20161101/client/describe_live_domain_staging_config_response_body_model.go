@@ -53,7 +53,16 @@ func (s *DescribeLiveDomainStagingConfigResponseBody) SetRequestId(v string) *De
 }
 
 func (s *DescribeLiveDomainStagingConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainConfigs != nil {
+		for _, item := range s.DomainConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainStagingConfigResponseBodyDomainConfigs struct {
@@ -132,7 +141,16 @@ func (s *DescribeLiveDomainStagingConfigResponseBodyDomainConfigs) SetStatus(v s
 }
 
 func (s *DescribeLiveDomainStagingConfigResponseBodyDomainConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.FunctionArgs != nil {
+		for _, item := range s.FunctionArgs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainStagingConfigResponseBodyDomainConfigsFunctionArgs struct {

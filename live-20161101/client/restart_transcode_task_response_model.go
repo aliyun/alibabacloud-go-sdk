@@ -59,5 +59,10 @@ func (s *RestartTranscodeTaskResponse) SetBody(v *RestartTranscodeTaskResponseBo
 }
 
 func (s *RestartTranscodeTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

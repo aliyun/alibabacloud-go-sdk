@@ -53,7 +53,12 @@ func (s *DescribeLiveDomainSnapshotDataResponseBody) SetSnapshotDataInfos(v *Des
 }
 
 func (s *DescribeLiveDomainSnapshotDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SnapshotDataInfos != nil {
+		if err := s.SnapshotDataInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainSnapshotDataResponseBodySnapshotDataInfos struct {
@@ -78,7 +83,16 @@ func (s *DescribeLiveDomainSnapshotDataResponseBodySnapshotDataInfos) SetSnapsho
 }
 
 func (s *DescribeLiveDomainSnapshotDataResponseBodySnapshotDataInfos) Validate() error {
-	return dara.Validate(s)
+	if s.SnapshotDataInfo != nil {
+		for _, item := range s.SnapshotDataInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainSnapshotDataResponseBodySnapshotDataInfosSnapshotDataInfo struct {

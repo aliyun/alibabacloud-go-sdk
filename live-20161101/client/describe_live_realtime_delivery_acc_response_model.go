@@ -59,5 +59,10 @@ func (s *DescribeLiveRealtimeDeliveryAccResponse) SetBody(v *DescribeLiveRealtim
 }
 
 func (s *DescribeLiveRealtimeDeliveryAccResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

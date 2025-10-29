@@ -59,5 +59,10 @@ func (s *DescribeLiveUpVideoAudioInfoResponse) SetBody(v *DescribeLiveUpVideoAud
 }
 
 func (s *DescribeLiveUpVideoAudioInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

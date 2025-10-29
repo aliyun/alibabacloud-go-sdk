@@ -53,7 +53,12 @@ func (s *DescribeLiveDomainTimeShiftDataResponseBody) SetTimeShiftData(v *Descri
 }
 
 func (s *DescribeLiveDomainTimeShiftDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TimeShiftData != nil {
+		if err := s.TimeShiftData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftData struct {
@@ -78,7 +83,16 @@ func (s *DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftData) SetDataModule
 }
 
 func (s *DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftData) Validate() error {
-	return dara.Validate(s)
+	if s.DataModule != nil {
+		for _, item := range s.DataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftDataDataModule struct {

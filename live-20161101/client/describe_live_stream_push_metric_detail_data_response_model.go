@@ -59,5 +59,10 @@ func (s *DescribeLiveStreamPushMetricDetailDataResponse) SetBody(v *DescribeLive
 }
 
 func (s *DescribeLiveStreamPushMetricDetailDataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

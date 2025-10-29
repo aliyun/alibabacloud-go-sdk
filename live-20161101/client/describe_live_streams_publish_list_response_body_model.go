@@ -121,7 +121,12 @@ func (s *DescribeLiveStreamsPublishListResponseBody) SetTotalPage(v int32) *Desc
 }
 
 func (s *DescribeLiveStreamsPublishListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PublishInfo != nil {
+		if err := s.PublishInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamsPublishListResponseBodyPublishInfo struct {
@@ -146,7 +151,16 @@ func (s *DescribeLiveStreamsPublishListResponseBodyPublishInfo) SetLiveStreamPub
 }
 
 func (s *DescribeLiveStreamsPublishListResponseBodyPublishInfo) Validate() error {
-	return dara.Validate(s)
+	if s.LiveStreamPublishInfo != nil {
+		for _, item := range s.LiveStreamPublishInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInfo struct {

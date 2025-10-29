@@ -53,7 +53,12 @@ func (s *CreateLiveStreamRecordIndexFilesResponseBody) SetRequestId(v string) *C
 }
 
 func (s *CreateLiveStreamRecordIndexFilesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RecordInfo != nil {
+		if err := s.RecordInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateLiveStreamRecordIndexFilesResponseBodyRecordInfo struct {

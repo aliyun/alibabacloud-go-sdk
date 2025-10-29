@@ -87,7 +87,12 @@ func (s *DeleteLiveStreamRecordIndexFilesResponseBody) SetRequestId(v string) *D
 }
 
 func (s *DeleteLiveStreamRecordIndexFilesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RecordDeleteInfoList != nil {
+		if err := s.RecordDeleteInfoList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteLiveStreamRecordIndexFilesResponseBodyRecordDeleteInfoList struct {
@@ -112,7 +117,16 @@ func (s *DeleteLiveStreamRecordIndexFilesResponseBodyRecordDeleteInfoList) SetRe
 }
 
 func (s *DeleteLiveStreamRecordIndexFilesResponseBodyRecordDeleteInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.RecordDeleteInfo != nil {
+		for _, item := range s.RecordDeleteInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteLiveStreamRecordIndexFilesResponseBodyRecordDeleteInfoListRecordDeleteInfo struct {

@@ -104,7 +104,16 @@ func (s *ListLiveMessageGroupMessagesResponseBody) SetRequestId(v string) *ListL
 }
 
 func (s *ListLiveMessageGroupMessagesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MessageList != nil {
+		for _, item := range s.MessageList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLiveMessageGroupMessagesResponseBodyMessageList struct {
@@ -220,7 +229,12 @@ func (s *ListLiveMessageGroupMessagesResponseBodyMessageList) SetTotalMessages(v
 }
 
 func (s *ListLiveMessageGroupMessagesResponseBodyMessageList) Validate() error {
-	return dara.Validate(s)
+	if s.Sender != nil {
+		if err := s.Sender.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLiveMessageGroupMessagesResponseBodyMessageListSender struct {

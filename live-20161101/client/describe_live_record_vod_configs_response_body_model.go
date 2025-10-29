@@ -104,7 +104,12 @@ func (s *DescribeLiveRecordVodConfigsResponseBody) SetTotal(v string) *DescribeL
 }
 
 func (s *DescribeLiveRecordVodConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LiveRecordVodConfigs != nil {
+		if err := s.LiveRecordVodConfigs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigs struct {
@@ -129,7 +134,16 @@ func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigs) SetLiveRe
 }
 
 func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.LiveRecordVodConfig != nil {
+		for _, item := range s.LiveRecordVodConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig struct {

@@ -53,7 +53,12 @@ func (s *DescribeLiveStreamRecordContentResponseBody) SetRequestId(v string) *De
 }
 
 func (s *DescribeLiveStreamRecordContentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RecordContentInfoList != nil {
+		if err := s.RecordContentInfoList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamRecordContentResponseBodyRecordContentInfoList struct {
@@ -78,7 +83,16 @@ func (s *DescribeLiveStreamRecordContentResponseBodyRecordContentInfoList) SetRe
 }
 
 func (s *DescribeLiveStreamRecordContentResponseBodyRecordContentInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.RecordContentInfo != nil {
+		for _, item := range s.RecordContentInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamRecordContentResponseBodyRecordContentInfoListRecordContentInfo struct {

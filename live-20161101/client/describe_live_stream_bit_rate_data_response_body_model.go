@@ -53,7 +53,12 @@ func (s *DescribeLiveStreamBitRateDataResponseBody) SetRequestId(v string) *Desc
 }
 
 func (s *DescribeLiveStreamBitRateDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FrameRateAndBitRateInfos != nil {
+		if err := s.FrameRateAndBitRateInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamBitRateDataResponseBodyFrameRateAndBitRateInfos struct {
@@ -78,7 +83,16 @@ func (s *DescribeLiveStreamBitRateDataResponseBodyFrameRateAndBitRateInfos) SetF
 }
 
 func (s *DescribeLiveStreamBitRateDataResponseBodyFrameRateAndBitRateInfos) Validate() error {
-	return dara.Validate(s)
+	if s.FrameRateAndBitRateInfo != nil {
+		for _, item := range s.FrameRateAndBitRateInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamBitRateDataResponseBodyFrameRateAndBitRateInfosFrameRateAndBitRateInfo struct {

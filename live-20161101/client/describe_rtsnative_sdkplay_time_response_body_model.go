@@ -104,7 +104,16 @@ func (s *DescribeRTSNativeSDKPlayTimeResponseBody) SetStartTime(v string) *Descr
 }
 
 func (s *DescribeRTSNativeSDKPlayTimeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PlayTimeData != nil {
+		for _, item := range s.PlayTimeData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRTSNativeSDKPlayTimeResponseBodyPlayTimeData struct {

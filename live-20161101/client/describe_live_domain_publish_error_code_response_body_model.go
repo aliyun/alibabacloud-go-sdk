@@ -121,7 +121,16 @@ func (s *DescribeLiveDomainPublishErrorCodeResponseBody) SetStartTime(v string) 
 }
 
 func (s *DescribeLiveDomainPublishErrorCodeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RealTimeCodeData != nil {
+		for _, item := range s.RealTimeCodeData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainPublishErrorCodeResponseBodyRealTimeCodeData struct {
@@ -162,7 +171,16 @@ func (s *DescribeLiveDomainPublishErrorCodeResponseBodyRealTimeCodeData) SetTime
 }
 
 func (s *DescribeLiveDomainPublishErrorCodeResponseBodyRealTimeCodeData) Validate() error {
-	return dara.Validate(s)
+	if s.CodeData != nil {
+		for _, item := range s.CodeData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainPublishErrorCodeResponseBodyRealTimeCodeDataCodeData struct {

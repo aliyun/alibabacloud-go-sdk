@@ -70,7 +70,16 @@ func (s *ListPlaylistResponseBody) SetTotal(v int32) *ListPlaylistResponseBody {
 }
 
 func (s *ListPlaylistResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProgramList != nil {
+		for _, item := range s.ProgramList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPlaylistResponseBodyProgramList struct {

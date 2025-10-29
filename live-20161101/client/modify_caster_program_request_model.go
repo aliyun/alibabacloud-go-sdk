@@ -87,7 +87,16 @@ func (s *ModifyCasterProgramRequest) SetRegionId(v string) *ModifyCasterProgramR
 }
 
 func (s *ModifyCasterProgramRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Episode != nil {
+		for _, item := range s.Episode {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyCasterProgramRequestEpisode struct {

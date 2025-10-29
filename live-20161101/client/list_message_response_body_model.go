@@ -53,7 +53,12 @@ func (s *ListMessageResponseBody) SetResult(v *ListMessageResponseBodyResult) *L
 }
 
 func (s *ListMessageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMessageResponseBodyResult struct {
@@ -98,7 +103,16 @@ func (s *ListMessageResponseBodyResult) SetMessageList(v []*ListMessageResponseB
 }
 
 func (s *ListMessageResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.MessageList != nil {
+		for _, item := range s.MessageList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMessageResponseBodyResultMessageList struct {

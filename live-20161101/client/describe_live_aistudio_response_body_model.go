@@ -104,7 +104,12 @@ func (s *DescribeLiveAIStudioResponseBody) SetTotal(v int32) *DescribeLiveAIStud
 }
 
 func (s *DescribeLiveAIStudioResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StudioConfigs != nil {
+		if err := s.StudioConfigs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveAIStudioResponseBodyStudioConfigs struct {
@@ -129,7 +134,16 @@ func (s *DescribeLiveAIStudioResponseBodyStudioConfigs) SetSubtitleConfig(v []*D
 }
 
 func (s *DescribeLiveAIStudioResponseBodyStudioConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.SubtitleConfig != nil {
+		for _, item := range s.SubtitleConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveAIStudioResponseBodyStudioConfigsSubtitleConfig struct {
@@ -401,7 +415,12 @@ func (s *DescribeLiveAIStudioResponseBodyStudioConfigsSubtitleConfig) SetWidth(v
 }
 
 func (s *DescribeLiveAIStudioResponseBodyStudioConfigsSubtitleConfig) Validate() error {
-	return dara.Validate(s)
+	if s.RuleIds != nil {
+		if err := s.RuleIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveAIStudioResponseBodyStudioConfigsSubtitleConfigRuleIds struct {

@@ -121,7 +121,12 @@ func (s *DescribeStreamLocationBlockResponseBody) SetTotalPage(v int32) *Describ
 }
 
 func (s *DescribeStreamLocationBlockResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StreamBlockList != nil {
+		if err := s.StreamBlockList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeStreamLocationBlockResponseBodyStreamBlockList struct {
@@ -146,7 +151,16 @@ func (s *DescribeStreamLocationBlockResponseBodyStreamBlockList) SetStreamBlock(
 }
 
 func (s *DescribeStreamLocationBlockResponseBodyStreamBlockList) Validate() error {
-	return dara.Validate(s)
+	if s.StreamBlock != nil {
+		for _, item := range s.StreamBlock {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeStreamLocationBlockResponseBodyStreamBlockListStreamBlock struct {

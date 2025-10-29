@@ -70,7 +70,12 @@ func (s *ListEdgeTranscodeTemplateResponseBody) SetTotalCount(v int32) *ListEdge
 }
 
 func (s *ListEdgeTranscodeTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TemplateList != nil {
+		if err := s.TemplateList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEdgeTranscodeTemplateResponseBodyTemplateList struct {
@@ -95,7 +100,16 @@ func (s *ListEdgeTranscodeTemplateResponseBodyTemplateList) SetTemplate(v []*Lis
 }
 
 func (s *ListEdgeTranscodeTemplateResponseBodyTemplateList) Validate() error {
-	return dara.Validate(s)
+	if s.Template != nil {
+		for _, item := range s.Template {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEdgeTranscodeTemplateResponseBodyTemplateListTemplate struct {

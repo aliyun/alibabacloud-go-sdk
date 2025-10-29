@@ -59,5 +59,10 @@ func (s *UpdateMixStreamResponse) SetBody(v *UpdateMixStreamResponseBody) *Updat
 }
 
 func (s *UpdateMixStreamResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -104,7 +104,16 @@ func (s *QueryLiveDomainMultiStreamListResponseBody) SetTotalCount(v int32) *Que
 }
 
 func (s *QueryLiveDomainMultiStreamListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OnlineStreams != nil {
+		for _, item := range s.OnlineStreams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryLiveDomainMultiStreamListResponseBodyOnlineStreams struct {
@@ -205,7 +214,25 @@ func (s *QueryLiveDomainMultiStreamListResponseBodyOnlineStreams) SetUpstreamLis
 }
 
 func (s *QueryLiveDomainMultiStreamListResponseBodyOnlineStreams) Validate() error {
-	return dara.Validate(s)
+	if s.ChangeLogs != nil {
+		for _, item := range s.ChangeLogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UpstreamList != nil {
+		for _, item := range s.UpstreamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryLiveDomainMultiStreamListResponseBodyOnlineStreamsChangeLogs struct {

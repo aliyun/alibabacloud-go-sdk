@@ -70,7 +70,12 @@ func (s *StartPlaylistResponseBody) SetStreamInfo(v *StartPlaylistResponseBodySt
 }
 
 func (s *StartPlaylistResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StreamInfo != nil {
+		if err := s.StreamInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartPlaylistResponseBodyStreamInfo struct {
@@ -141,7 +146,12 @@ func (s *StartPlaylistResponseBodyStreamInfo) SetStreams(v *StartPlaylistRespons
 }
 
 func (s *StartPlaylistResponseBodyStreamInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Streams != nil {
+		if err := s.Streams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartPlaylistResponseBodyStreamInfoStreams struct {
@@ -166,7 +176,16 @@ func (s *StartPlaylistResponseBodyStreamInfoStreams) SetStream(v []*StartPlaylis
 }
 
 func (s *StartPlaylistResponseBodyStreamInfoStreams) Validate() error {
-	return dara.Validate(s)
+	if s.Stream != nil {
+		for _, item := range s.Stream {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartPlaylistResponseBodyStreamInfoStreamsStream struct {

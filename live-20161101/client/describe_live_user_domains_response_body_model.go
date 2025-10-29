@@ -104,7 +104,12 @@ func (s *DescribeLiveUserDomainsResponseBody) SetTotalCount(v int64) *DescribeLi
 }
 
 func (s *DescribeLiveUserDomainsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Domains != nil {
+		if err := s.Domains.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveUserDomainsResponseBodyDomains struct {
@@ -129,7 +134,16 @@ func (s *DescribeLiveUserDomainsResponseBodyDomains) SetPageData(v []*DescribeLi
 }
 
 func (s *DescribeLiveUserDomainsResponseBodyDomains) Validate() error {
-	return dara.Validate(s)
+	if s.PageData != nil {
+		for _, item := range s.PageData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveUserDomainsResponseBodyDomainsPageData struct {

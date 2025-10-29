@@ -53,7 +53,12 @@ func (s *DescribeLiveDetectPornDataResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeLiveDetectPornDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DetectPornData != nil {
+		if err := s.DetectPornData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDetectPornDataResponseBodyDetectPornData struct {
@@ -78,7 +83,16 @@ func (s *DescribeLiveDetectPornDataResponseBodyDetectPornData) SetDataModule(v [
 }
 
 func (s *DescribeLiveDetectPornDataResponseBodyDetectPornData) Validate() error {
-	return dara.Validate(s)
+	if s.DataModule != nil {
+		for _, item := range s.DataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule struct {

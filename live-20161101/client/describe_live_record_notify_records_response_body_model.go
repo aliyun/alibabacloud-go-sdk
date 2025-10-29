@@ -155,7 +155,16 @@ func (s *DescribeLiveRecordNotifyRecordsResponseBody) SetTotalPage(v int32) *Des
 }
 
 func (s *DescribeLiveRecordNotifyRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CallbackList != nil {
+		for _, item := range s.CallbackList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveRecordNotifyRecordsResponseBodyCallbackList struct {

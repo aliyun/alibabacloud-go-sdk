@@ -104,7 +104,16 @@ func (s *DescribeRTSNativeSDKPlayFailStatusResponseBody) SetStartTime(v string) 
 }
 
 func (s *DescribeRTSNativeSDKPlayFailStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PlayFailStatus != nil {
+		for _, item := range s.PlayFailStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRTSNativeSDKPlayFailStatusResponseBodyPlayFailStatus struct {

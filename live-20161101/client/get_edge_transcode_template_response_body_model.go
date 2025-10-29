@@ -53,7 +53,12 @@ func (s *GetEdgeTranscodeTemplateResponseBody) SetTemplate(v *GetEdgeTranscodeTe
 }
 
 func (s *GetEdgeTranscodeTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Template != nil {
+		if err := s.Template.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEdgeTranscodeTemplateResponseBodyTemplate struct {

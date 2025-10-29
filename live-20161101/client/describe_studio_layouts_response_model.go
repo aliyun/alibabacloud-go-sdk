@@ -59,5 +59,10 @@ func (s *DescribeStudioLayoutsResponse) SetBody(v *DescribeStudioLayoutsResponse
 }
 
 func (s *DescribeStudioLayoutsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

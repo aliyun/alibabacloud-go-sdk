@@ -59,5 +59,10 @@ func (s *ListEdgeTranscodeTemplateResponse) SetBody(v *ListEdgeTranscodeTemplate
 }
 
 func (s *ListEdgeTranscodeTemplateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

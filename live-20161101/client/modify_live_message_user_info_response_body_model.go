@@ -66,7 +66,25 @@ func (s *ModifyLiveMessageUserInfoResponseBody) SetSuccessList(v []*ModifyLiveMe
 }
 
 func (s *ModifyLiveMessageUserInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FailList != nil {
+		for _, item := range s.FailList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SuccessList != nil {
+		for _, item := range s.SuccessList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyLiveMessageUserInfoResponseBodyFailList struct {

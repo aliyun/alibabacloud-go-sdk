@@ -53,7 +53,16 @@ func (s *DescribeLiveCenterStreamRateDataResponseBody) SetRequestId(v string) *D
 }
 
 func (s *DescribeLiveCenterStreamRateDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RateDatas != nil {
+		for _, item := range s.RateDatas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveCenterStreamRateDataResponseBodyRateDatas struct {

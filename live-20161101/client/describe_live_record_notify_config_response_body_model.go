@@ -53,7 +53,12 @@ func (s *DescribeLiveRecordNotifyConfigResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribeLiveRecordNotifyConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LiveRecordNotifyConfig != nil {
+		if err := s.LiveRecordNotifyConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveRecordNotifyConfigResponseBodyLiveRecordNotifyConfig struct {

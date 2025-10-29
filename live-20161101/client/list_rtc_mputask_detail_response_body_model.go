@@ -53,7 +53,16 @@ func (s *ListRtcMPUTaskDetailResponseBody) SetRequestId(v string) *ListRtcMPUTas
 }
 
 func (s *ListRtcMPUTaskDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MPUTasks != nil {
+		for _, item := range s.MPUTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRtcMPUTaskDetailResponseBodyMPUTasks struct {
@@ -229,7 +238,31 @@ func (s *ListRtcMPUTaskDetailResponseBodyMPUTasks) SetTranscodeParams(v *ListRtc
 }
 
 func (s *ListRtcMPUTaskDetailResponseBodyMPUTasks) Validate() error {
-	return dara.Validate(s)
+	if s.MultiStreamURL != nil {
+		for _, item := range s.MultiStreamURL {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SeiParams != nil {
+		if err := s.SeiParams.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SingleSubParams != nil {
+		if err := s.SingleSubParams.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TranscodeParams != nil {
+		if err := s.TranscodeParams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRtcMPUTaskDetailResponseBodyMPUTasksMultiStreamURL struct {
@@ -330,7 +363,17 @@ func (s *ListRtcMPUTaskDetailResponseBodyMPUTasksSeiParams) SetPayloadType(v str
 }
 
 func (s *ListRtcMPUTaskDetailResponseBodyMPUTasksSeiParams) Validate() error {
-	return dara.Validate(s)
+	if s.LayoutVolume != nil {
+		if err := s.LayoutVolume.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PassThrough != nil {
+		if err := s.PassThrough.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRtcMPUTaskDetailResponseBodyMPUTasksSeiParamsLayoutVolume struct {
@@ -589,7 +632,31 @@ func (s *ListRtcMPUTaskDetailResponseBodyMPUTasksTranscodeParams) SetUserInfos(v
 }
 
 func (s *ListRtcMPUTaskDetailResponseBodyMPUTasksTranscodeParams) Validate() error {
-	return dara.Validate(s)
+	if s.Background != nil {
+		if err := s.Background.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EncodeParams != nil {
+		if err := s.EncodeParams.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Layout != nil {
+		if err := s.Layout.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserInfos != nil {
+		for _, item := range s.UserInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRtcMPUTaskDetailResponseBodyMPUTasksTranscodeParamsBackground struct {
@@ -852,7 +919,16 @@ func (s *ListRtcMPUTaskDetailResponseBodyMPUTasksTranscodeParamsLayout) SetUserP
 }
 
 func (s *ListRtcMPUTaskDetailResponseBodyMPUTasksTranscodeParamsLayout) Validate() error {
-	return dara.Validate(s)
+	if s.UserPanes != nil {
+		for _, item := range s.UserPanes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRtcMPUTaskDetailResponseBodyMPUTasksTranscodeParamsLayoutUserPanes struct {
@@ -987,7 +1063,12 @@ func (s *ListRtcMPUTaskDetailResponseBodyMPUTasksTranscodeParamsLayoutUserPanes)
 }
 
 func (s *ListRtcMPUTaskDetailResponseBodyMPUTasksTranscodeParamsLayoutUserPanes) Validate() error {
-	return dara.Validate(s)
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRtcMPUTaskDetailResponseBodyMPUTasksTranscodeParamsLayoutUserPanesUserInfo struct {

@@ -59,5 +59,10 @@ func (s *DeleteMixStreamResponse) SetBody(v *DeleteMixStreamResponseBody) *Delet
 }
 
 func (s *DeleteMixStreamResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

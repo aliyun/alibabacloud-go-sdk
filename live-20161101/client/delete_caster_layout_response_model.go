@@ -59,5 +59,10 @@ func (s *DeleteCasterLayoutResponse) SetBody(v *DeleteCasterLayoutResponseBody) 
 }
 
 func (s *DeleteCasterLayoutResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

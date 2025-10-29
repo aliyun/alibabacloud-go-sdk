@@ -103,7 +103,17 @@ func (s *DescribeCasterSceneAudioResponseBody) SetRequestId(v string) *DescribeC
 }
 
 func (s *DescribeCasterSceneAudioResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AudioLayers != nil {
+		if err := s.AudioLayers.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MixList != nil {
+		if err := s.MixList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCasterSceneAudioResponseBodyAudioLayers struct {
@@ -128,7 +138,16 @@ func (s *DescribeCasterSceneAudioResponseBodyAudioLayers) SetAudioLayer(v []*Des
 }
 
 func (s *DescribeCasterSceneAudioResponseBodyAudioLayers) Validate() error {
-	return dara.Validate(s)
+	if s.AudioLayer != nil {
+		for _, item := range s.AudioLayer {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCasterSceneAudioResponseBodyAudioLayersAudioLayer struct {

@@ -53,7 +53,16 @@ func (s *ListEventSubResponseBody) SetSubscribers(v []*ListEventSubResponseBodyS
 }
 
 func (s *ListEventSubResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Subscribers != nil {
+		for _, item := range s.Subscribers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEventSubResponseBodySubscribers struct {

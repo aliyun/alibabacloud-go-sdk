@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -132,9 +133,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AddCasterComponentResponse
 func (client *Client) AddCasterComponentWithOptions(request *AddCasterComponentRequest, runtime *dara.RuntimeOptions) (_result *AddCasterComponentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CaptionLayerContent) {
@@ -262,9 +265,11 @@ func (client *Client) AddCasterComponent(request *AddCasterComponentRequest) (_r
 //
 // @return AddCasterEpisodeResponse
 func (client *Client) AddCasterEpisodeWithOptions(request *AddCasterEpisodeRequest, runtime *dara.RuntimeOptions) (_result *AddCasterEpisodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -380,9 +385,11 @@ func (client *Client) AddCasterEpisode(request *AddCasterEpisodeRequest) (_resul
 //
 // @return AddCasterEpisodeGroupResponse
 func (client *Client) AddCasterEpisodeGroupWithOptions(request *AddCasterEpisodeGroupRequest, runtime *dara.RuntimeOptions) (_result *AddCasterEpisodeGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CallbackUrl) {
@@ -488,9 +495,11 @@ func (client *Client) AddCasterEpisodeGroup(request *AddCasterEpisodeGroupReques
 //
 // @return AddCasterEpisodeGroupContentResponse
 func (client *Client) AddCasterEpisodeGroupContentWithOptions(request *AddCasterEpisodeGroupContentRequest, runtime *dara.RuntimeOptions) (_result *AddCasterEpisodeGroupContentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -576,9 +585,11 @@ func (client *Client) AddCasterEpisodeGroupContent(request *AddCasterEpisodeGrou
 //
 // @return AddCasterLayoutResponse
 func (client *Client) AddCasterLayoutWithOptions(request *AddCasterLayoutRequest, runtime *dara.RuntimeOptions) (_result *AddCasterLayoutResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AudioLayer) {
@@ -676,9 +687,11 @@ func (client *Client) AddCasterLayout(request *AddCasterLayoutRequest) (_result 
 //
 // @return AddCasterProgramResponse
 func (client *Client) AddCasterProgramWithOptions(request *AddCasterProgramRequest, runtime *dara.RuntimeOptions) (_result *AddCasterProgramResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -766,9 +779,11 @@ func (client *Client) AddCasterProgram(request *AddCasterProgramRequest) (_resul
 //
 // @return AddCasterVideoResourceResponse
 func (client *Client) AddCasterVideoResourceWithOptions(request *AddCasterVideoResourceRequest, runtime *dara.RuntimeOptions) (_result *AddCasterVideoResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BeginOffset) {
@@ -910,9 +925,11 @@ func (client *Client) AddCasterVideoResource(request *AddCasterVideoResourceRequ
 //
 // @return AddCustomLiveStreamTranscodeResponse
 func (client *Client) AddCustomLiveStreamTranscodeWithOptions(request *AddCustomLiveStreamTranscodeRequest, runtime *dara.RuntimeOptions) (_result *AddCustomLiveStreamTranscodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -941,6 +958,10 @@ func (client *Client) AddCustomLiveStreamTranscodeWithOptions(request *AddCustom
 
 	if !dara.IsNil(request.BitrateWithSource) {
 		query["BitrateWithSource"] = request.BitrateWithSource
+	}
+
+	if !dara.IsNil(request.DeInterlaced) {
+		query["DeInterlaced"] = request.DeInterlaced
 	}
 
 	if !dara.IsNil(request.Domain) {
@@ -1106,9 +1127,11 @@ func (client *Client) AddCustomLiveStreamTranscode(request *AddCustomLiveStreamT
 //
 // @return AddLiveAIProduceRulesResponse
 func (client *Client) AddLiveAIProduceRulesWithOptions(request *AddLiveAIProduceRulesRequest, runtime *dara.RuntimeOptions) (_result *AddLiveAIProduceRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -1236,9 +1259,11 @@ func (client *Client) AddLiveAIProduceRules(request *AddLiveAIProduceRulesReques
 //
 // @return AddLiveAISubtitleResponse
 func (client *Client) AddLiveAISubtitleWithOptions(tmpReq *AddLiveAISubtitleRequest, runtime *dara.RuntimeOptions) (_result *AddLiveAISubtitleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddLiveAISubtitleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1400,9 +1425,11 @@ func (client *Client) AddLiveAISubtitle(request *AddLiveAISubtitleRequest) (_res
 //
 // @return AddLiveAppRecordConfigResponse
 func (client *Client) AddLiveAppRecordConfigWithOptions(request *AddLiveAppRecordConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveAppRecordConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -1536,9 +1563,11 @@ func (client *Client) AddLiveAppRecordConfig(request *AddLiveAppRecordConfigRequ
 //
 // @return AddLiveAppSnapshotConfigResponse
 func (client *Client) AddLiveAppSnapshotConfigWithOptions(request *AddLiveAppSnapshotConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveAppSnapshotConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -1656,9 +1685,11 @@ func (client *Client) AddLiveAppSnapshotConfig(request *AddLiveAppSnapshotConfig
 //
 // @return AddLiveAudioAuditConfigResponse
 func (client *Client) AddLiveAudioAuditConfigWithOptions(request *AddLiveAudioAuditConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveAudioAuditConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -1768,9 +1799,11 @@ func (client *Client) AddLiveAudioAuditConfig(request *AddLiveAudioAuditConfigRe
 //
 // @return AddLiveAudioAuditNotifyConfigResponse
 func (client *Client) AddLiveAudioAuditNotifyConfigWithOptions(request *AddLiveAudioAuditNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveAudioAuditNotifyConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Callback) {
@@ -1858,9 +1891,11 @@ func (client *Client) AddLiveAudioAuditNotifyConfig(request *AddLiveAudioAuditNo
 //
 // @return AddLiveCenterTransferResponse
 func (client *Client) AddLiveCenterTransferWithOptions(request *AddLiveCenterTransferRequest, runtime *dara.RuntimeOptions) (_result *AddLiveCenterTransferResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -1964,9 +1999,11 @@ func (client *Client) AddLiveCenterTransfer(request *AddLiveCenterTransferReques
 //
 // @return AddLiveDetectNotifyConfigResponse
 func (client *Client) AddLiveDetectNotifyConfigWithOptions(request *AddLiveDetectNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveDetectNotifyConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -2064,9 +2101,11 @@ func (client *Client) AddLiveDetectNotifyConfig(request *AddLiveDetectNotifyConf
 //
 // @return AddLiveDomainResponse
 func (client *Client) AddLiveDomainWithOptions(request *AddLiveDomainRequest, runtime *dara.RuntimeOptions) (_result *AddLiveDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckUrl) {
@@ -2190,9 +2229,11 @@ func (client *Client) AddLiveDomain(request *AddLiveDomainRequest) (_result *Add
 //
 // @return AddLiveDomainMappingResponse
 func (client *Client) AddLiveDomainMappingWithOptions(request *AddLiveDomainMappingRequest, runtime *dara.RuntimeOptions) (_result *AddLiveDomainMappingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -2278,9 +2319,11 @@ func (client *Client) AddLiveDomainMapping(request *AddLiveDomainMappingRequest)
 //
 // @return AddLiveDomainPlayMappingResponse
 func (client *Client) AddLiveDomainPlayMappingWithOptions(request *AddLiveDomainPlayMappingRequest, runtime *dara.RuntimeOptions) (_result *AddLiveDomainPlayMappingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -2366,9 +2409,11 @@ func (client *Client) AddLiveDomainPlayMapping(request *AddLiveDomainPlayMapping
 //
 // @return AddLiveMessageGroupBandResponse
 func (client *Client) AddLiveMessageGroupBandWithOptions(tmpReq *AddLiveMessageGroupBandRequest, runtime *dara.RuntimeOptions) (_result *AddLiveMessageGroupBandResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddLiveMessageGroupBandShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2464,9 +2509,11 @@ func (client *Client) AddLiveMessageGroupBand(request *AddLiveMessageGroupBandRe
 //
 // @return AddLivePackageConfigResponse
 func (client *Client) AddLivePackageConfigWithOptions(request *AddLivePackageConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLivePackageConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -2590,9 +2637,11 @@ func (client *Client) AddLivePackageConfig(request *AddLivePackageConfigRequest)
 //
 // @return AddLivePullStreamInfoConfigResponse
 func (client *Client) AddLivePullStreamInfoConfigWithOptions(request *AddLivePullStreamInfoConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLivePullStreamInfoConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -2704,9 +2753,11 @@ func (client *Client) AddLivePullStreamInfoConfig(request *AddLivePullStreamInfo
 //
 // @return AddLiveRecordNotifyConfigResponse
 func (client *Client) AddLiveRecordNotifyConfigWithOptions(request *AddLiveRecordNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveRecordNotifyConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -2802,9 +2853,11 @@ func (client *Client) AddLiveRecordNotifyConfig(request *AddLiveRecordNotifyConf
 //
 // @return AddLiveRecordVodConfigResponse
 func (client *Client) AddLiveRecordVodConfigWithOptions(request *AddLiveRecordVodConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveRecordVodConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -2922,9 +2975,11 @@ func (client *Client) AddLiveRecordVodConfig(request *AddLiveRecordVodConfigRequ
 //
 // @return AddLiveSnapshotDetectPornConfigResponse
 func (client *Client) AddLiveSnapshotDetectPornConfigWithOptions(request *AddLiveSnapshotDetectPornConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveSnapshotDetectPornConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -3030,9 +3085,11 @@ func (client *Client) AddLiveSnapshotDetectPornConfig(request *AddLiveSnapshotDe
 //
 // @return AddLiveSnapshotNotifyConfigResponse
 func (client *Client) AddLiveSnapshotNotifyConfigWithOptions(request *AddLiveSnapshotNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveSnapshotNotifyConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -3120,9 +3177,11 @@ func (client *Client) AddLiveSnapshotNotifyConfig(request *AddLiveSnapshotNotify
 //
 // @return AddLiveStreamMergeResponse
 func (client *Client) AddLiveStreamMergeWithOptions(request *AddLiveStreamMergeRequest, runtime *dara.RuntimeOptions) (_result *AddLiveStreamMergeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -3244,9 +3303,11 @@ func (client *Client) AddLiveStreamMerge(request *AddLiveStreamMergeRequest) (_r
 //
 // @return AddLiveStreamTranscodeResponse
 func (client *Client) AddLiveStreamTranscodeWithOptions(request *AddLiveStreamTranscodeRequest, runtime *dara.RuntimeOptions) (_result *AddLiveStreamTranscodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -3346,9 +3407,11 @@ func (client *Client) AddLiveStreamTranscode(request *AddLiveStreamTranscodeRequ
 //
 // @return AddLiveStreamWatermarkResponse
 func (client *Client) AddLiveStreamWatermarkWithOptions(request *AddLiveStreamWatermarkRequest, runtime *dara.RuntimeOptions) (_result *AddLiveStreamWatermarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -3476,9 +3539,11 @@ func (client *Client) AddLiveStreamWatermark(request *AddLiveStreamWatermarkRequ
 //
 // @return AddLiveStreamWatermarkRuleResponse
 func (client *Client) AddLiveStreamWatermarkRuleWithOptions(request *AddLiveStreamWatermarkRuleRequest, runtime *dara.RuntimeOptions) (_result *AddLiveStreamWatermarkRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -3580,9 +3645,11 @@ func (client *Client) AddLiveStreamWatermarkRule(request *AddLiveStreamWatermark
 //
 // @return AddPlaylistItemsResponse
 func (client *Client) AddPlaylistItemsWithOptions(request *AddPlaylistItemsRequest, runtime *dara.RuntimeOptions) (_result *AddPlaylistItemsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -3676,9 +3743,11 @@ func (client *Client) AddPlaylistItems(request *AddPlaylistItemsRequest) (_resul
 //
 // @return AddRtsLiveStreamTranscodeResponse
 func (client *Client) AddRtsLiveStreamTranscodeWithOptions(request *AddRtsLiveStreamTranscodeRequest, runtime *dara.RuntimeOptions) (_result *AddRtsLiveStreamTranscodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -3836,9 +3905,11 @@ func (client *Client) AddRtsLiveStreamTranscode(request *AddRtsLiveStreamTransco
 //
 // @return AddShowIntoShowListResponse
 func (client *Client) AddShowIntoShowListWithOptions(request *AddShowIntoShowListRequest, runtime *dara.RuntimeOptions) (_result *AddShowIntoShowListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -3968,9 +4039,11 @@ func (client *Client) AddShowIntoShowList(request *AddShowIntoShowListRequest) (
 //
 // @return AddStudioLayoutResponse
 func (client *Client) AddStudioLayoutWithOptions(request *AddStudioLayoutRequest, runtime *dara.RuntimeOptions) (_result *AddStudioLayoutResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BgImageConfig) {
@@ -4080,9 +4153,11 @@ func (client *Client) AddStudioLayout(request *AddStudioLayoutRequest) (_result 
 //
 // @return AddTrancodeSEIResponse
 func (client *Client) AddTrancodeSEIWithOptions(request *AddTrancodeSEIRequest, runtime *dara.RuntimeOptions) (_result *AddTrancodeSEIResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -4188,9 +4263,11 @@ func (client *Client) AddTrancodeSEI(request *AddTrancodeSEIRequest) (_result *A
 //
 // @return BanLiveMessageGroupResponse
 func (client *Client) BanLiveMessageGroupWithOptions(tmpReq *BanLiveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *BanLiveMessageGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &BanLiveMessageGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4282,9 +4359,11 @@ func (client *Client) BanLiveMessageGroup(request *BanLiveMessageGroupRequest) (
 //
 // @return BatchDeleteLiveDomainConfigsResponse
 func (client *Client) BatchDeleteLiveDomainConfigsWithOptions(request *BatchDeleteLiveDomainConfigsRequest, runtime *dara.RuntimeOptions) (_result *BatchDeleteLiveDomainConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainNames) {
@@ -4376,9 +4455,11 @@ func (client *Client) BatchDeleteLiveDomainConfigs(request *BatchDeleteLiveDomai
 //
 // @return BatchGetOnlineUsersResponse
 func (client *Client) BatchGetOnlineUsersWithOptions(request *BatchGetOnlineUsersRequest, runtime *dara.RuntimeOptions) (_result *BatchGetOnlineUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4462,9 +4543,11 @@ func (client *Client) BatchGetOnlineUsers(request *BatchGetOnlineUsersRequest) (
 //
 // @return BatchSetLiveDomainConfigsResponse
 func (client *Client) BatchSetLiveDomainConfigsWithOptions(request *BatchSetLiveDomainConfigsRequest, runtime *dara.RuntimeOptions) (_result *BatchSetLiveDomainConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainNames) {
@@ -4552,9 +4635,11 @@ func (client *Client) BatchSetLiveDomainConfigs(request *BatchSetLiveDomainConfi
 //
 // @return CancelMuteAllGroupUserResponse
 func (client *Client) CancelMuteAllGroupUserWithOptions(request *CancelMuteAllGroupUserRequest, runtime *dara.RuntimeOptions) (_result *CancelMuteAllGroupUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4636,9 +4721,11 @@ func (client *Client) CancelMuteAllGroupUser(request *CancelMuteAllGroupUserRequ
 //
 // @return CancelMuteGroupUserResponse
 func (client *Client) CancelMuteGroupUserWithOptions(tmpReq *CancelMuteGroupUserRequest, runtime *dara.RuntimeOptions) (_result *CancelMuteGroupUserResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CancelMuteGroupUserShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4728,9 +4815,11 @@ func (client *Client) CancelMuteGroupUser(request *CancelMuteGroupUserRequest) (
 //
 // @return ChangeLiveDomainResourceGroupResponse
 func (client *Client) ChangeLiveDomainResourceGroupWithOptions(request *ChangeLiveDomainResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeLiveDomainResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -4812,9 +4901,11 @@ func (client *Client) ChangeLiveDomainResourceGroup(request *ChangeLiveDomainRes
 //
 // @return CheckLiveMessageUsersInGroupResponse
 func (client *Client) CheckLiveMessageUsersInGroupWithOptions(tmpReq *CheckLiveMessageUsersInGroupRequest, runtime *dara.RuntimeOptions) (_result *CheckLiveMessageUsersInGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CheckLiveMessageUsersInGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4902,9 +4993,11 @@ func (client *Client) CheckLiveMessageUsersInGroup(request *CheckLiveMessageUser
 //
 // @return CheckLiveMessageUsersOnlineResponse
 func (client *Client) CheckLiveMessageUsersOnlineWithOptions(tmpReq *CheckLiveMessageUsersOnlineRequest, runtime *dara.RuntimeOptions) (_result *CheckLiveMessageUsersOnlineResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CheckLiveMessageUsersOnlineShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4988,9 +5081,11 @@ func (client *Client) CheckLiveMessageUsersOnline(request *CheckLiveMessageUsers
 //
 // @return CloseLiveShiftResponse
 func (client *Client) CloseLiveShiftWithOptions(request *CloseLiveShiftRequest, runtime *dara.RuntimeOptions) (_result *CloseLiveShiftResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -5080,9 +5175,11 @@ func (client *Client) CloseLiveShift(request *CloseLiveShiftRequest) (_result *C
 //
 // @return CopyCasterResponse
 func (client *Client) CopyCasterWithOptions(request *CopyCasterRequest, runtime *dara.RuntimeOptions) (_result *CopyCasterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterName) {
@@ -5176,9 +5273,11 @@ func (client *Client) CopyCaster(request *CopyCasterRequest) (_result *CopyCaste
 //
 // @return CopyCasterSceneConfigResponse
 func (client *Client) CopyCasterSceneConfigWithOptions(request *CopyCasterSceneConfigRequest, runtime *dara.RuntimeOptions) (_result *CopyCasterSceneConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -5274,9 +5373,11 @@ func (client *Client) CopyCasterSceneConfig(request *CopyCasterSceneConfigReques
 //
 // @return CreateCasterResponse
 func (client *Client) CreateCasterWithOptions(request *CreateCasterRequest, runtime *dara.RuntimeOptions) (_result *CreateCasterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterName) {
@@ -5392,9 +5493,11 @@ func (client *Client) CreateCaster(request *CreateCasterRequest) (_result *Creat
 //
 // @return CreateCustomTemplateResponse
 func (client *Client) CreateCustomTemplateWithOptions(request *CreateCustomTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustomTemplate) {
@@ -5482,9 +5585,11 @@ func (client *Client) CreateCustomTemplate(request *CreateCustomTemplateRequest)
 //
 // @return CreateEdgeTranscodeJobResponse
 func (client *Client) CreateEdgeTranscodeJobWithOptions(request *CreateEdgeTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *CreateEdgeTranscodeJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -5584,9 +5689,11 @@ func (client *Client) CreateEdgeTranscodeJob(request *CreateEdgeTranscodeJobRequ
 //
 // @return CreateEventSubResponse
 func (client *Client) CreateEventSubWithOptions(request *CreateEventSubRequest, runtime *dara.RuntimeOptions) (_result *CreateEventSubResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -5672,9 +5779,11 @@ func (client *Client) CreateEventSub(request *CreateEventSubRequest) (_result *C
 //
 // @return CreateLiveAIStudioResponse
 func (client *Client) CreateLiveAIStudioWithOptions(tmpReq *CreateLiveAIStudioRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveAIStudioResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateLiveAIStudioShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5810,9 +5919,11 @@ func (client *Client) CreateLiveAIStudio(request *CreateLiveAIStudioRequest) (_r
 //
 // @return CreateLiveDelayConfigResponse
 func (client *Client) CreateLiveDelayConfigWithOptions(request *CreateLiveDelayConfigRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveDelayConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -5912,9 +6023,11 @@ func (client *Client) CreateLiveDelayConfig(request *CreateLiveDelayConfigReques
 //
 // @return CreateLiveMessageAppResponse
 func (client *Client) CreateLiveMessageAppWithOptions(request *CreateLiveMessageAppRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveMessageAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -6012,9 +6125,11 @@ func (client *Client) CreateLiveMessageApp(request *CreateLiveMessageAppRequest)
 //
 // @return CreateLiveMessageGroupResponse
 func (client *Client) CreateLiveMessageGroupWithOptions(tmpReq *CreateLiveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveMessageGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateLiveMessageGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6122,9 +6237,11 @@ func (client *Client) CreateLiveMessageGroup(request *CreateLiveMessageGroupRequ
 //
 // @return CreateLivePrivateLineResponse
 func (client *Client) CreateLivePrivateLineWithOptions(request *CreateLivePrivateLineRequest, runtime *dara.RuntimeOptions) (_result *CreateLivePrivateLineResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccelerationArea) {
@@ -6250,9 +6367,11 @@ func (client *Client) CreateLivePrivateLine(request *CreateLivePrivateLineReques
 //
 // @return CreateLivePullToPushResponse
 func (client *Client) CreateLivePullToPushWithOptions(tmpReq *CreateLivePullToPushRequest, runtime *dara.RuntimeOptions) (_result *CreateLivePullToPushResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateLivePullToPushShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6406,9 +6525,11 @@ func (client *Client) CreateLivePullToPush(request *CreateLivePullToPushRequest)
 //
 // @return CreateLiveRealTimeLogDeliveryResponse
 func (client *Client) CreateLiveRealTimeLogDeliveryWithOptions(request *CreateLiveRealTimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveRealTimeLogDeliveryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -6482,9 +6603,11 @@ func (client *Client) CreateLiveRealTimeLogDelivery(request *CreateLiveRealTimeL
 //
 // @return CreateLiveStreamMonitorResponse
 func (client *Client) CreateLiveStreamMonitorWithOptions(request *CreateLiveStreamMonitorRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveStreamMonitorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -6612,9 +6735,11 @@ func (client *Client) CreateLiveStreamMonitor(request *CreateLiveStreamMonitorRe
 //
 // @return CreateLiveStreamRecordIndexFilesResponse
 func (client *Client) CreateLiveStreamRecordIndexFilesWithOptions(request *CreateLiveStreamRecordIndexFilesRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveStreamRecordIndexFilesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -6740,9 +6865,11 @@ func (client *Client) CreateLiveStreamRecordIndexFiles(request *CreateLiveStream
 //
 // @return CreateMessageAppResponse
 func (client *Client) CreateMessageAppWithOptions(tmpReq *CreateMessageAppRequest, runtime *dara.RuntimeOptions) (_result *CreateMessageAppResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateMessageAppShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6830,9 +6957,11 @@ func (client *Client) CreateMessageApp(request *CreateMessageAppRequest) (_resul
 //
 // @return CreateMessageGroupResponse
 func (client *Client) CreateMessageGroupWithOptions(tmpReq *CreateMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateMessageGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateMessageGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6920,9 +7049,11 @@ func (client *Client) CreateMessageGroup(request *CreateMessageGroupRequest) (_r
 //
 // @return CreateMixStreamResponse
 func (client *Client) CreateMixStreamWithOptions(request *CreateMixStreamRequest, runtime *dara.RuntimeOptions) (_result *CreateMixStreamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CallbackConfig) {
@@ -7014,9 +7145,11 @@ func (client *Client) CreateMixStream(request *CreateMixStreamRequest) (_result 
 //
 // @return CreateRTCWhipStreamAddressResponse
 func (client *Client) CreateRTCWhipStreamAddressWithOptions(request *CreateRTCWhipStreamAddressRequest, runtime *dara.RuntimeOptions) (_result *CreateRTCWhipStreamAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -7118,9 +7251,11 @@ func (client *Client) CreateRTCWhipStreamAddress(request *CreateRTCWhipStreamAdd
 //
 // @return CreateRoomRealTimeStreamAddressResponse
 func (client *Client) CreateRoomRealTimeStreamAddressWithOptions(request *CreateRoomRealTimeStreamAddressRequest, runtime *dara.RuntimeOptions) (_result *CreateRoomRealTimeStreamAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -7206,9 +7341,11 @@ func (client *Client) CreateRoomRealTimeStreamAddress(request *CreateRoomRealTim
 //
 // @return CreateRtcAsrTaskResponse
 func (client *Client) CreateRtcAsrTaskWithOptions(request *CreateRtcAsrTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateRtcAsrTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthKey) {
@@ -7338,9 +7475,11 @@ func (client *Client) CreateRtcAsrTask(request *CreateRtcAsrTaskRequest) (_resul
 //
 // @return CreateRtcMPUEventSubResponse
 func (client *Client) CreateRtcMPUEventSubWithOptions(request *CreateRtcMPUEventSubRequest, runtime *dara.RuntimeOptions) (_result *CreateRtcMPUEventSubResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -7426,9 +7565,11 @@ func (client *Client) CreateRtcMPUEventSub(request *CreateRtcMPUEventSubRequest)
 //
 // @return DeleteCasterResponse
 func (client *Client) DeleteCasterWithOptions(request *DeleteCasterRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -7514,9 +7655,11 @@ func (client *Client) DeleteCaster(request *DeleteCasterRequest) (_result *Delet
 //
 // @return DeleteCasterComponentResponse
 func (client *Client) DeleteCasterComponentWithOptions(request *DeleteCasterComponentRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterComponentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -7602,9 +7745,11 @@ func (client *Client) DeleteCasterComponent(request *DeleteCasterComponentReques
 //
 // @return DeleteCasterEpisodeResponse
 func (client *Client) DeleteCasterEpisodeWithOptions(request *DeleteCasterEpisodeRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterEpisodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -7690,9 +7835,11 @@ func (client *Client) DeleteCasterEpisode(request *DeleteCasterEpisodeRequest) (
 //
 // @return DeleteCasterEpisodeGroupResponse
 func (client *Client) DeleteCasterEpisodeGroupWithOptions(request *DeleteCasterEpisodeGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterEpisodeGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -7774,9 +7921,11 @@ func (client *Client) DeleteCasterEpisodeGroup(request *DeleteCasterEpisodeGroup
 //
 // @return DeleteCasterLayoutResponse
 func (client *Client) DeleteCasterLayoutWithOptions(request *DeleteCasterLayoutRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterLayoutResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -7862,9 +8011,11 @@ func (client *Client) DeleteCasterLayout(request *DeleteCasterLayoutRequest) (_r
 //
 // @return DeleteCasterProgramResponse
 func (client *Client) DeleteCasterProgramWithOptions(request *DeleteCasterProgramRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterProgramResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -7946,9 +8097,11 @@ func (client *Client) DeleteCasterProgram(request *DeleteCasterProgramRequest) (
 //
 // @return DeleteCasterSceneConfigResponse
 func (client *Client) DeleteCasterSceneConfigWithOptions(request *DeleteCasterSceneConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterSceneConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -8038,9 +8191,11 @@ func (client *Client) DeleteCasterSceneConfig(request *DeleteCasterSceneConfigRe
 //
 // @return DeleteCasterVideoResourceResponse
 func (client *Client) DeleteCasterVideoResourceWithOptions(request *DeleteCasterVideoResourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterVideoResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -8124,9 +8279,11 @@ func (client *Client) DeleteCasterVideoResource(request *DeleteCasterVideoResour
 //
 // @return DeleteChannelResponse
 func (client *Client) DeleteChannelWithOptions(request *DeleteChannelRequest, runtime *dara.RuntimeOptions) (_result *DeleteChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -8202,9 +8359,11 @@ func (client *Client) DeleteChannel(request *DeleteChannelRequest) (_result *Del
 //
 // @return DeleteCustomTemplateResponse
 func (client *Client) DeleteCustomTemplateWithOptions(request *DeleteCustomTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -8288,9 +8447,11 @@ func (client *Client) DeleteCustomTemplate(request *DeleteCustomTemplateRequest)
 //
 // @return DeleteEdgeTranscodeJobResponse
 func (client *Client) DeleteEdgeTranscodeJobWithOptions(request *DeleteEdgeTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteEdgeTranscodeJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -8378,9 +8539,11 @@ func (client *Client) DeleteEdgeTranscodeJob(request *DeleteEdgeTranscodeJobRequ
 //
 // @return DeleteEventSubResponse
 func (client *Client) DeleteEventSubWithOptions(request *DeleteEventSubRequest, runtime *dara.RuntimeOptions) (_result *DeleteEventSubResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -8460,9 +8623,11 @@ func (client *Client) DeleteEventSub(request *DeleteEventSubRequest) (_result *D
 //
 // @return DeleteLiveAIProduceRulesResponse
 func (client *Client) DeleteLiveAIProduceRulesWithOptions(request *DeleteLiveAIProduceRulesRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveAIProduceRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -8556,9 +8721,11 @@ func (client *Client) DeleteLiveAIProduceRules(request *DeleteLiveAIProduceRules
 //
 // @return DeleteLiveAIStudioResponse
 func (client *Client) DeleteLiveAIStudioWithOptions(request *DeleteLiveAIStudioRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveAIStudioResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -8640,9 +8807,11 @@ func (client *Client) DeleteLiveAIStudio(request *DeleteLiveAIStudioRequest) (_r
 //
 // @return DeleteLiveAISubtitleResponse
 func (client *Client) DeleteLiveAISubtitleWithOptions(request *DeleteLiveAISubtitleRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveAISubtitleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -8730,9 +8899,11 @@ func (client *Client) DeleteLiveAISubtitle(request *DeleteLiveAISubtitleRequest)
 //
 // @return DeleteLiveAppRecordConfigResponse
 func (client *Client) DeleteLiveAppRecordConfigWithOptions(request *DeleteLiveAppRecordConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveAppRecordConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -8822,9 +8993,11 @@ func (client *Client) DeleteLiveAppRecordConfig(request *DeleteLiveAppRecordConf
 //
 // @return DeleteLiveAppSnapshotConfigResponse
 func (client *Client) DeleteLiveAppSnapshotConfigWithOptions(request *DeleteLiveAppSnapshotConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveAppSnapshotConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -8912,9 +9085,11 @@ func (client *Client) DeleteLiveAppSnapshotConfig(request *DeleteLiveAppSnapshot
 //
 // @return DeleteLiveAudioAuditConfigResponse
 func (client *Client) DeleteLiveAudioAuditConfigWithOptions(request *DeleteLiveAudioAuditConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveAudioAuditConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -9008,9 +9183,11 @@ func (client *Client) DeleteLiveAudioAuditConfig(request *DeleteLiveAudioAuditCo
 //
 // @return DeleteLiveAudioAuditNotifyConfigResponse
 func (client *Client) DeleteLiveAudioAuditNotifyConfigWithOptions(request *DeleteLiveAudioAuditNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveAudioAuditNotifyConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -9090,9 +9267,11 @@ func (client *Client) DeleteLiveAudioAuditNotifyConfig(request *DeleteLiveAudioA
 //
 // @return DeleteLiveCenterTransferResponse
 func (client *Client) DeleteLiveCenterTransferWithOptions(request *DeleteLiveCenterTransferRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveCenterTransferResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -9178,9 +9357,11 @@ func (client *Client) DeleteLiveCenterTransfer(request *DeleteLiveCenterTransfer
 //
 // @return DeleteLiveDelayConfigResponse
 func (client *Client) DeleteLiveDelayConfigWithOptions(request *DeleteLiveDelayConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveDelayConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -9270,9 +9451,11 @@ func (client *Client) DeleteLiveDelayConfig(request *DeleteLiveDelayConfigReques
 //
 // @return DeleteLiveDetectNotifyConfigResponse
 func (client *Client) DeleteLiveDetectNotifyConfigWithOptions(request *DeleteLiveDetectNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveDetectNotifyConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -9362,9 +9545,11 @@ func (client *Client) DeleteLiveDetectNotifyConfig(request *DeleteLiveDetectNoti
 //
 // @return DeleteLiveDomainResponse
 func (client *Client) DeleteLiveDomainWithOptions(request *DeleteLiveDomainRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -9454,9 +9639,11 @@ func (client *Client) DeleteLiveDomain(request *DeleteLiveDomainRequest) (_resul
 //
 // @return DeleteLiveDomainMappingResponse
 func (client *Client) DeleteLiveDomainMappingWithOptions(request *DeleteLiveDomainMappingRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveDomainMappingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -9542,9 +9729,11 @@ func (client *Client) DeleteLiveDomainMapping(request *DeleteLiveDomainMappingRe
 //
 // @return DeleteLiveDomainPlayMappingResponse
 func (client *Client) DeleteLiveDomainPlayMappingWithOptions(request *DeleteLiveDomainPlayMappingRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveDomainPlayMappingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -9640,9 +9829,11 @@ func (client *Client) DeleteLiveDomainPlayMapping(request *DeleteLiveDomainPlayM
 //
 // @return DeleteLiveEdgeTransferResponse
 func (client *Client) DeleteLiveEdgeTransferWithOptions(request *DeleteLiveEdgeTransferRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveEdgeTransferResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -9734,9 +9925,11 @@ func (client *Client) DeleteLiveEdgeTransfer(request *DeleteLiveEdgeTransferRequ
 //
 // @return DeleteLiveLazyPullStreamInfoConfigResponse
 func (client *Client) DeleteLiveLazyPullStreamInfoConfigWithOptions(request *DeleteLiveLazyPullStreamInfoConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveLazyPullStreamInfoConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -9826,9 +10019,11 @@ func (client *Client) DeleteLiveLazyPullStreamInfoConfig(request *DeleteLiveLazy
 //
 // @return DeleteLiveMessageGroupResponse
 func (client *Client) DeleteLiveMessageGroupWithOptions(request *DeleteLiveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveMessageGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -9914,9 +10109,11 @@ func (client *Client) DeleteLiveMessageGroup(request *DeleteLiveMessageGroupRequ
 //
 // @return DeleteLiveMessageGroupMessageResponse
 func (client *Client) DeleteLiveMessageGroupMessageWithOptions(request *DeleteLiveMessageGroupMessageRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveMessageGroupMessageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -10004,9 +10201,11 @@ func (client *Client) DeleteLiveMessageGroupMessage(request *DeleteLiveMessageGr
 //
 // @return DeleteLiveMessageUserMessageResponse
 func (client *Client) DeleteLiveMessageUserMessageWithOptions(request *DeleteLiveMessageUserMessageRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveMessageUserMessageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -10094,9 +10293,11 @@ func (client *Client) DeleteLiveMessageUserMessage(request *DeleteLiveMessageUse
 //
 // @return DeleteLivePackageConfigResponse
 func (client *Client) DeleteLivePackageConfigWithOptions(request *DeleteLivePackageConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLivePackageConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -10182,9 +10383,11 @@ func (client *Client) DeleteLivePackageConfig(request *DeleteLivePackageConfigRe
 //
 // @return DeleteLivePrivateLineResponse
 func (client *Client) DeleteLivePrivateLineWithOptions(request *DeleteLivePrivateLineRequest, runtime *dara.RuntimeOptions) (_result *DeleteLivePrivateLineResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccelerationType) {
@@ -10278,9 +10481,11 @@ func (client *Client) DeleteLivePrivateLine(request *DeleteLivePrivateLineReques
 //
 // @return DeleteLivePullStreamInfoConfigResponse
 func (client *Client) DeleteLivePullStreamInfoConfigWithOptions(request *DeleteLivePullStreamInfoConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLivePullStreamInfoConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -10372,9 +10577,11 @@ func (client *Client) DeleteLivePullStreamInfoConfig(request *DeleteLivePullStre
 //
 // @return DeleteLivePullToPushResponse
 func (client *Client) DeleteLivePullToPushWithOptions(request *DeleteLivePullToPushRequest, runtime *dara.RuntimeOptions) (_result *DeleteLivePullToPushResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -10448,9 +10655,11 @@ func (client *Client) DeleteLivePullToPush(request *DeleteLivePullToPushRequest)
 //
 // @return DeleteLiveRealTimeLogLogstoreResponse
 func (client *Client) DeleteLiveRealTimeLogLogstoreWithOptions(request *DeleteLiveRealTimeLogLogstoreRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveRealTimeLogLogstoreResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -10524,9 +10733,11 @@ func (client *Client) DeleteLiveRealTimeLogLogstore(request *DeleteLiveRealTimeL
 //
 // @return DeleteLiveRealtimeLogDeliveryResponse
 func (client *Client) DeleteLiveRealtimeLogDeliveryWithOptions(request *DeleteLiveRealtimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveRealtimeLogDeliveryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -10598,9 +10809,11 @@ func (client *Client) DeleteLiveRealtimeLogDelivery(request *DeleteLiveRealtimeL
 //
 // @return DeleteLiveRecordNotifyConfigResponse
 func (client *Client) DeleteLiveRecordNotifyConfigWithOptions(request *DeleteLiveRecordNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveRecordNotifyConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -10682,9 +10895,11 @@ func (client *Client) DeleteLiveRecordNotifyConfig(request *DeleteLiveRecordNoti
 //
 // @return DeleteLiveRecordVodConfigResponse
 func (client *Client) DeleteLiveRecordVodConfigWithOptions(request *DeleteLiveRecordVodConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveRecordVodConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -10776,9 +10991,11 @@ func (client *Client) DeleteLiveRecordVodConfig(request *DeleteLiveRecordVodConf
 //
 // @return DeleteLiveSnapshotDetectPornConfigResponse
 func (client *Client) DeleteLiveSnapshotDetectPornConfigWithOptions(request *DeleteLiveSnapshotDetectPornConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveSnapshotDetectPornConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -10862,9 +11079,11 @@ func (client *Client) DeleteLiveSnapshotDetectPornConfig(request *DeleteLiveSnap
 //
 // @return DeleteLiveSnapshotNotifyConfigResponse
 func (client *Client) DeleteLiveSnapshotNotifyConfigWithOptions(request *DeleteLiveSnapshotNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveSnapshotNotifyConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -10944,9 +11163,11 @@ func (client *Client) DeleteLiveSnapshotNotifyConfig(request *DeleteLiveSnapshot
 //
 // @return DeleteLiveSpecificStagingConfigResponse
 func (client *Client) DeleteLiveSpecificStagingConfigWithOptions(request *DeleteLiveSpecificStagingConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveSpecificStagingConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigId) {
@@ -11034,9 +11255,11 @@ func (client *Client) DeleteLiveSpecificStagingConfig(request *DeleteLiveSpecifi
 //
 // @return DeleteLiveStreamBlockResponse
 func (client *Client) DeleteLiveStreamBlockWithOptions(request *DeleteLiveStreamBlockRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamBlockResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -11122,9 +11345,11 @@ func (client *Client) DeleteLiveStreamBlock(request *DeleteLiveStreamBlockReques
 //
 // @return DeleteLiveStreamMergeResponse
 func (client *Client) DeleteLiveStreamMergeWithOptions(request *DeleteLiveStreamMergeRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamMergeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -11212,9 +11437,11 @@ func (client *Client) DeleteLiveStreamMerge(request *DeleteLiveStreamMergeReques
 //
 // @return DeleteLiveStreamMonitorResponse
 func (client *Client) DeleteLiveStreamMonitorWithOptions(request *DeleteLiveStreamMonitorRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamMonitorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MonitorId) {
@@ -11294,9 +11521,11 @@ func (client *Client) DeleteLiveStreamMonitor(request *DeleteLiveStreamMonitorRe
 //
 // @return DeleteLiveStreamRecordIndexFilesResponse
 func (client *Client) DeleteLiveStreamRecordIndexFilesWithOptions(request *DeleteLiveStreamRecordIndexFilesRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamRecordIndexFilesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -11390,9 +11619,11 @@ func (client *Client) DeleteLiveStreamRecordIndexFiles(request *DeleteLiveStream
 //
 // @return DeleteLiveStreamTranscodeResponse
 func (client *Client) DeleteLiveStreamTranscodeWithOptions(request *DeleteLiveStreamTranscodeRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamTranscodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -11482,9 +11713,11 @@ func (client *Client) DeleteLiveStreamTranscode(request *DeleteLiveStreamTransco
 //
 // @return DeleteLiveStreamWatermarkResponse
 func (client *Client) DeleteLiveStreamWatermarkWithOptions(request *DeleteLiveStreamWatermarkRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamWatermarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -11566,9 +11799,11 @@ func (client *Client) DeleteLiveStreamWatermark(request *DeleteLiveStreamWaterma
 //
 // @return DeleteLiveStreamWatermarkRuleResponse
 func (client *Client) DeleteLiveStreamWatermarkRuleWithOptions(request *DeleteLiveStreamWatermarkRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamWatermarkRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -11662,9 +11897,11 @@ func (client *Client) DeleteLiveStreamWatermarkRule(request *DeleteLiveStreamWat
 //
 // @return DeleteLiveStreamsNotifyUrlConfigResponse
 func (client *Client) DeleteLiveStreamsNotifyUrlConfigWithOptions(request *DeleteLiveStreamsNotifyUrlConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamsNotifyUrlConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -11744,9 +11981,11 @@ func (client *Client) DeleteLiveStreamsNotifyUrlConfig(request *DeleteLiveStream
 //
 // @return DeleteMessageAppResponse
 func (client *Client) DeleteMessageAppWithOptions(request *DeleteMessageAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteMessageAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -11818,9 +12057,11 @@ func (client *Client) DeleteMessageApp(request *DeleteMessageAppRequest) (_resul
 //
 // @return DeleteMixStreamResponse
 func (client *Client) DeleteMixStreamWithOptions(request *DeleteMixStreamRequest, runtime *dara.RuntimeOptions) (_result *DeleteMixStreamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -11914,9 +12155,11 @@ func (client *Client) DeleteMixStream(request *DeleteMixStreamRequest) (_result 
 //
 // @return DeletePlaylistResponse
 func (client *Client) DeletePlaylistWithOptions(request *DeletePlaylistRequest, runtime *dara.RuntimeOptions) (_result *DeletePlaylistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -11998,9 +12241,11 @@ func (client *Client) DeletePlaylist(request *DeletePlaylistRequest) (_result *D
 //
 // @return DeletePlaylistItemsResponse
 func (client *Client) DeletePlaylistItemsWithOptions(request *DeletePlaylistItemsRequest, runtime *dara.RuntimeOptions) (_result *DeletePlaylistItemsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -12082,9 +12327,11 @@ func (client *Client) DeletePlaylistItems(request *DeletePlaylistItemsRequest) (
 //
 // @return DeleteRtcAsrTaskResponse
 func (client *Client) DeleteRtcAsrTaskWithOptions(request *DeleteRtcAsrTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteRtcAsrTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -12164,9 +12411,11 @@ func (client *Client) DeleteRtcAsrTask(request *DeleteRtcAsrTaskRequest) (_resul
 //
 // @return DeleteRtcMPUEventSubResponse
 func (client *Client) DeleteRtcMPUEventSubWithOptions(request *DeleteRtcMPUEventSubRequest, runtime *dara.RuntimeOptions) (_result *DeleteRtcMPUEventSubResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -12242,9 +12491,11 @@ func (client *Client) DeleteRtcMPUEventSub(request *DeleteRtcMPUEventSubRequest)
 //
 // @return DeleteSnapshotCallbackAuthResponse
 func (client *Client) DeleteSnapshotCallbackAuthWithOptions(request *DeleteSnapshotCallbackAuthRequest, runtime *dara.RuntimeOptions) (_result *DeleteSnapshotCallbackAuthResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -12326,9 +12577,11 @@ func (client *Client) DeleteSnapshotCallbackAuth(request *DeleteSnapshotCallback
 //
 // @return DeleteSnapshotFilesResponse
 func (client *Client) DeleteSnapshotFilesWithOptions(request *DeleteSnapshotFilesRequest, runtime *dara.RuntimeOptions) (_result *DeleteSnapshotFilesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -12426,9 +12679,11 @@ func (client *Client) DeleteSnapshotFiles(request *DeleteSnapshotFilesRequest) (
 //
 // @return DeleteStudioLayoutResponse
 func (client *Client) DeleteStudioLayoutWithOptions(request *DeleteStudioLayoutRequest, runtime *dara.RuntimeOptions) (_result *DeleteStudioLayoutResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -12514,9 +12769,11 @@ func (client *Client) DeleteStudioLayout(request *DeleteStudioLayoutRequest) (_r
 //
 // @return DescribeAutoShowListTasksResponse
 func (client *Client) DescribeAutoShowListTasksWithOptions(request *DescribeAutoShowListTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeAutoShowListTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -12598,9 +12855,11 @@ func (client *Client) DescribeAutoShowListTasks(request *DescribeAutoShowListTas
 //
 // @return DescribeCasterChannelsResponse
 func (client *Client) DescribeCasterChannelsWithOptions(request *DescribeCasterChannelsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterChannelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -12682,9 +12941,11 @@ func (client *Client) DescribeCasterChannels(request *DescribeCasterChannelsRequ
 //
 // @return DescribeCasterComponentsResponse
 func (client *Client) DescribeCasterComponentsWithOptions(request *DescribeCasterComponentsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterComponentsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -12770,9 +13031,11 @@ func (client *Client) DescribeCasterComponents(request *DescribeCasterComponents
 //
 // @return DescribeCasterConfigResponse
 func (client *Client) DescribeCasterConfigWithOptions(request *DescribeCasterConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -12854,9 +13117,11 @@ func (client *Client) DescribeCasterConfig(request *DescribeCasterConfigRequest)
 //
 // @return DescribeCasterLayoutsResponse
 func (client *Client) DescribeCasterLayoutsWithOptions(request *DescribeCasterLayoutsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterLayoutsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -12942,9 +13207,11 @@ func (client *Client) DescribeCasterLayouts(request *DescribeCasterLayoutsReques
 //
 // @return DescribeCasterProgramResponse
 func (client *Client) DescribeCasterProgramWithOptions(request *DescribeCasterProgramRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterProgramResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -13056,9 +13323,11 @@ func (client *Client) DescribeCasterProgram(request *DescribeCasterProgramReques
 //
 // @return DescribeCasterSceneAudioResponse
 func (client *Client) DescribeCasterSceneAudioWithOptions(request *DescribeCasterSceneAudioRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterSceneAudioResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -13146,9 +13415,11 @@ func (client *Client) DescribeCasterSceneAudio(request *DescribeCasterSceneAudio
 //
 // @return DescribeCasterScenesResponse
 func (client *Client) DescribeCasterScenesWithOptions(request *DescribeCasterScenesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterScenesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -13234,9 +13505,11 @@ func (client *Client) DescribeCasterScenes(request *DescribeCasterScenesRequest)
 //
 // @return DescribeCasterStreamUrlResponse
 func (client *Client) DescribeCasterStreamUrlWithOptions(request *DescribeCasterStreamUrlRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterStreamUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -13318,9 +13591,11 @@ func (client *Client) DescribeCasterStreamUrl(request *DescribeCasterStreamUrlRe
 //
 // @return DescribeCasterVideoResourcesResponse
 func (client *Client) DescribeCasterVideoResourcesWithOptions(request *DescribeCasterVideoResourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterVideoResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -13402,9 +13677,11 @@ func (client *Client) DescribeCasterVideoResources(request *DescribeCasterVideoR
 //
 // @return DescribeCastersResponse
 func (client *Client) DescribeCastersWithOptions(request *DescribeCastersRequest, runtime *dara.RuntimeOptions) (_result *DescribeCastersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -13530,9 +13807,11 @@ func (client *Client) DescribeCasters(request *DescribeCastersRequest) (_result 
 //
 // @return DescribeChannelParticipantsResponse
 func (client *Client) DescribeChannelParticipantsWithOptions(request *DescribeChannelParticipantsRequest, runtime *dara.RuntimeOptions) (_result *DescribeChannelParticipantsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -13622,9 +13901,11 @@ func (client *Client) DescribeChannelParticipants(request *DescribeChannelPartic
 //
 // @return DescribeChannelUsersResponse
 func (client *Client) DescribeChannelUsersWithOptions(request *DescribeChannelUsersRequest, runtime *dara.RuntimeOptions) (_result *DescribeChannelUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -13718,9 +13999,11 @@ func (client *Client) DescribeChannelUsers(request *DescribeChannelUsersRequest)
 //
 // @return DescribeDomainUsageDataResponse
 func (client *Client) DescribeDomainUsageDataWithOptions(request *DescribeDomainUsageDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainUsageDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Area) {
@@ -13846,9 +14129,11 @@ func (client *Client) DescribeDomainUsageData(request *DescribeDomainUsageDataRe
 //
 // @return DescribeDomainWithIntegrityResponse
 func (client *Client) DescribeDomainWithIntegrityWithOptions(request *DescribeDomainWithIntegrityRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainWithIntegrityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -13918,9 +14203,11 @@ func (client *Client) DescribeDomainWithIntegrity(request *DescribeDomainWithInt
 //
 // @return DescribeHlsLiveStreamRealTimeBpsDataResponse
 func (client *Client) DescribeHlsLiveStreamRealTimeBpsDataWithOptions(request *DescribeHlsLiveStreamRealTimeBpsDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeHlsLiveStreamRealTimeBpsDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -13992,9 +14279,11 @@ func (client *Client) DescribeHlsLiveStreamRealTimeBpsData(request *DescribeHlsL
 //
 // @return DescribeLiveAIProduceRulesResponse
 func (client *Client) DescribeLiveAIProduceRulesWithOptions(request *DescribeLiveAIProduceRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveAIProduceRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -14090,9 +14379,11 @@ func (client *Client) DescribeLiveAIProduceRules(request *DescribeLiveAIProduceR
 //
 // @return DescribeLiveAIStudioResponse
 func (client *Client) DescribeLiveAIStudioWithOptions(request *DescribeLiveAIStudioRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveAIStudioResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -14180,9 +14471,11 @@ func (client *Client) DescribeLiveAIStudio(request *DescribeLiveAIStudioRequest)
 //
 // @return DescribeLiveAISubtitleResponse
 func (client *Client) DescribeLiveAISubtitleWithOptions(request *DescribeLiveAISubtitleRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveAISubtitleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsDefault) {
@@ -14284,9 +14577,11 @@ func (client *Client) DescribeLiveAISubtitle(request *DescribeLiveAISubtitleRequ
 //
 // @return DescribeLiveAudioAuditConfigResponse
 func (client *Client) DescribeLiveAudioAuditConfigWithOptions(request *DescribeLiveAudioAuditConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveAudioAuditConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -14380,9 +14675,11 @@ func (client *Client) DescribeLiveAudioAuditConfig(request *DescribeLiveAudioAud
 //
 // @return DescribeLiveAudioAuditNotifyConfigResponse
 func (client *Client) DescribeLiveAudioAuditNotifyConfigWithOptions(request *DescribeLiveAudioAuditNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveAudioAuditNotifyConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -14454,9 +14751,11 @@ func (client *Client) DescribeLiveAudioAuditNotifyConfig(request *DescribeLiveAu
 //
 // @return DescribeLiveCdnDiagnoseInfoResponse
 func (client *Client) DescribeLiveCdnDiagnoseInfoWithOptions(request *DescribeLiveCdnDiagnoseInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveCdnDiagnoseInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SecurityToken) {
@@ -14554,9 +14853,11 @@ func (client *Client) DescribeLiveCdnDiagnoseInfo(request *DescribeLiveCdnDiagno
 //
 // @return DescribeLiveCenterStreamRateDataResponse
 func (client *Client) DescribeLiveCenterStreamRateDataWithOptions(request *DescribeLiveCenterStreamRateDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveCenterStreamRateDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -14642,9 +14943,11 @@ func (client *Client) DescribeLiveCenterStreamRateData(request *DescribeLiveCent
 //
 // @return DescribeLiveCenterTransferResponse
 func (client *Client) DescribeLiveCenterTransferWithOptions(request *DescribeLiveCenterTransferRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveCenterTransferResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -14734,9 +15037,11 @@ func (client *Client) DescribeLiveCenterTransfer(request *DescribeLiveCenterTran
 //
 // @return DescribeLiveCertificateDetailResponse
 func (client *Client) DescribeLiveCertificateDetailWithOptions(request *DescribeLiveCertificateDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveCertificateDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertName) {
@@ -14818,9 +15123,11 @@ func (client *Client) DescribeLiveCertificateDetail(request *DescribeLiveCertifi
 //
 // @return DescribeLiveCertificateListResponse
 func (client *Client) DescribeLiveCertificateListWithOptions(request *DescribeLiveCertificateListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveCertificateListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -14900,9 +15207,11 @@ func (client *Client) DescribeLiveCertificateList(request *DescribeLiveCertifica
 //
 // @return DescribeLiveDelayConfigResponse
 func (client *Client) DescribeLiveDelayConfigWithOptions(request *DescribeLiveDelayConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDelayConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -14996,9 +15305,11 @@ func (client *Client) DescribeLiveDelayConfig(request *DescribeLiveDelayConfigRe
 //
 // @return DescribeLiveDelayedStreamingUsageResponse
 func (client *Client) DescribeLiveDelayedStreamingUsageWithOptions(request *DescribeLiveDelayedStreamingUsageRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDelayedStreamingUsageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -15112,9 +15423,11 @@ func (client *Client) DescribeLiveDelayedStreamingUsage(request *DescribeLiveDel
 //
 // @return DescribeLiveDetectNotifyConfigResponse
 func (client *Client) DescribeLiveDetectNotifyConfigWithOptions(request *DescribeLiveDetectNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDetectNotifyConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -15202,9 +15515,11 @@ func (client *Client) DescribeLiveDetectNotifyConfig(request *DescribeLiveDetect
 //
 // @return DescribeLiveDetectPornDataResponse
 func (client *Client) DescribeLiveDetectPornDataWithOptions(request *DescribeLiveDetectPornDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDetectPornDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -15330,9 +15645,11 @@ func (client *Client) DescribeLiveDetectPornData(request *DescribeLiveDetectPorn
 //
 // @return DescribeLiveDomainBpsDataResponse
 func (client *Client) DescribeLiveDomainBpsDataWithOptions(request *DescribeLiveDomainBpsDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainBpsDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -15450,9 +15767,11 @@ func (client *Client) DescribeLiveDomainBpsData(request *DescribeLiveDomainBpsDa
 //
 // @return DescribeLiveDomainBpsDataByLayerResponse
 func (client *Client) DescribeLiveDomainBpsDataByLayerWithOptions(request *DescribeLiveDomainBpsDataByLayerRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainBpsDataByLayerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -15566,9 +15885,11 @@ func (client *Client) DescribeLiveDomainBpsDataByLayer(request *DescribeLiveDoma
 //
 // @return DescribeLiveDomainByCertificateResponse
 func (client *Client) DescribeLiveDomainByCertificateWithOptions(request *DescribeLiveDomainByCertificateRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainByCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -15654,9 +15975,11 @@ func (client *Client) DescribeLiveDomainByCertificate(request *DescribeLiveDomai
 //
 // @return DescribeLiveDomainCertificateInfoResponse
 func (client *Client) DescribeLiveDomainCertificateInfoWithOptions(request *DescribeLiveDomainCertificateInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainCertificateInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -15738,9 +16061,11 @@ func (client *Client) DescribeLiveDomainCertificateInfo(request *DescribeLiveDom
 //
 // @return DescribeLiveDomainConfigsResponse
 func (client *Client) DescribeLiveDomainConfigsWithOptions(request *DescribeLiveDomainConfigsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -15828,9 +16153,11 @@ func (client *Client) DescribeLiveDomainConfigs(request *DescribeLiveDomainConfi
 //
 // @return DescribeLiveDomainDetailResponse
 func (client *Client) DescribeLiveDomainDetailWithOptions(request *DescribeLiveDomainDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -15906,9 +16233,11 @@ func (client *Client) DescribeLiveDomainDetail(request *DescribeLiveDomainDetail
 //
 // @return DescribeLiveDomainEdgeLogResponse
 func (client *Client) DescribeLiveDomainEdgeLogWithOptions(request *DescribeLiveDomainEdgeLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainEdgeLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -16000,9 +16329,11 @@ func (client *Client) DescribeLiveDomainEdgeLog(request *DescribeLiveDomainEdgeL
 //
 // @return DescribeLiveDomainFrameRateAndBitRateDataResponse
 func (client *Client) DescribeLiveDomainFrameRateAndBitRateDataWithOptions(request *DescribeLiveDomainFrameRateAndBitRateDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainFrameRateAndBitRateDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -16090,9 +16421,11 @@ func (client *Client) DescribeLiveDomainFrameRateAndBitRateData(request *Describ
 //
 // @return DescribeLiveDomainLimitResponse
 func (client *Client) DescribeLiveDomainLimitWithOptions(request *DescribeLiveDomainLimitRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainLimitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -16178,9 +16511,11 @@ func (client *Client) DescribeLiveDomainLimit(request *DescribeLiveDomainLimitRe
 //
 // @return DescribeLiveDomainLogResponse
 func (client *Client) DescribeLiveDomainLogWithOptions(request *DescribeLiveDomainLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -16274,9 +16609,11 @@ func (client *Client) DescribeLiveDomainLog(request *DescribeLiveDomainLogReques
 //
 // @return DescribeLiveDomainLogExTtlResponse
 func (client *Client) DescribeLiveDomainLogExTtlWithOptions(request *DescribeLiveDomainLogExTtlRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainLogExTtlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -16366,9 +16703,11 @@ func (client *Client) DescribeLiveDomainLogExTtl(request *DescribeLiveDomainLogE
 //
 // @return DescribeLiveDomainMappingResponse
 func (client *Client) DescribeLiveDomainMappingWithOptions(request *DescribeLiveDomainMappingRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainMappingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -16444,9 +16783,11 @@ func (client *Client) DescribeLiveDomainMapping(request *DescribeLiveDomainMappi
 //
 // @return DescribeLiveDomainMonitoringUsageDataResponse
 func (client *Client) DescribeLiveDomainMonitoringUsageDataWithOptions(request *DescribeLiveDomainMonitoringUsageDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainMonitoringUsageDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -16550,9 +16891,11 @@ func (client *Client) DescribeLiveDomainMonitoringUsageData(request *DescribeLiv
 //
 // @return DescribeLiveDomainMultiStreamConfigResponse
 func (client *Client) DescribeLiveDomainMultiStreamConfigWithOptions(request *DescribeLiveDomainMultiStreamConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainMultiStreamConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -16616,9 +16959,11 @@ func (client *Client) DescribeLiveDomainMultiStreamConfig(request *DescribeLiveD
 //
 // @return DescribeLiveDomainOnlineUserNumResponse
 func (client *Client) DescribeLiveDomainOnlineUserNumWithOptions(request *DescribeLiveDomainOnlineUserNumRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainOnlineUserNumResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -16710,9 +17055,11 @@ func (client *Client) DescribeLiveDomainOnlineUserNum(request *DescribeLiveDomai
 //
 // @return DescribeLiveDomainPublishErrorCodeResponse
 func (client *Client) DescribeLiveDomainPublishErrorCodeWithOptions(request *DescribeLiveDomainPublishErrorCodeRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainPublishErrorCodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -16816,9 +17163,11 @@ func (client *Client) DescribeLiveDomainPublishErrorCode(request *DescribeLiveDo
 //
 // @return DescribeLiveDomainPushBpsDataResponse
 func (client *Client) DescribeLiveDomainPushBpsDataWithOptions(request *DescribeLiveDomainPushBpsDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainPushBpsDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -16932,9 +17281,11 @@ func (client *Client) DescribeLiveDomainPushBpsData(request *DescribeLiveDomainP
 //
 // @return DescribeLiveDomainPushTrafficDataResponse
 func (client *Client) DescribeLiveDomainPushTrafficDataWithOptions(request *DescribeLiveDomainPushTrafficDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainPushTrafficDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -17048,9 +17399,11 @@ func (client *Client) DescribeLiveDomainPushTrafficData(request *DescribeLiveDom
 //
 // @return DescribeLiveDomainPvUvDataResponse
 func (client *Client) DescribeLiveDomainPvUvDataWithOptions(request *DescribeLiveDomainPvUvDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainPvUvDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -17152,9 +17505,11 @@ func (client *Client) DescribeLiveDomainPvUvData(request *DescribeLiveDomainPvUv
 //
 // @return DescribeLiveDomainRealTimeBpsDataResponse
 func (client *Client) DescribeLiveDomainRealTimeBpsDataWithOptions(request *DescribeLiveDomainRealTimeBpsDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainRealTimeBpsDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -17242,9 +17597,11 @@ func (client *Client) DescribeLiveDomainRealTimeBpsData(request *DescribeLiveDom
 //
 // @return DescribeLiveDomainRealTimeHttpCodeDataResponse
 func (client *Client) DescribeLiveDomainRealTimeHttpCodeDataWithOptions(request *DescribeLiveDomainRealTimeHttpCodeDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainRealTimeHttpCodeDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -17360,9 +17717,11 @@ func (client *Client) DescribeLiveDomainRealTimeHttpCodeData(request *DescribeLi
 //
 // @return DescribeLiveDomainRealTimeTrafficDataResponse
 func (client *Client) DescribeLiveDomainRealTimeTrafficDataWithOptions(request *DescribeLiveDomainRealTimeTrafficDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainRealTimeTrafficDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -17466,9 +17825,11 @@ func (client *Client) DescribeLiveDomainRealTimeTrafficData(request *DescribeLiv
 //
 // @return DescribeLiveDomainRealtimeLogDeliveryResponse
 func (client *Client) DescribeLiveDomainRealtimeLogDeliveryWithOptions(request *DescribeLiveDomainRealtimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainRealtimeLogDeliveryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -17548,9 +17909,11 @@ func (client *Client) DescribeLiveDomainRealtimeLogDelivery(request *DescribeLiv
 //
 // @return DescribeLiveDomainRecordUsageDataResponse
 func (client *Client) DescribeLiveDomainRecordUsageDataWithOptions(request *DescribeLiveDomainRecordUsageDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainRecordUsageDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -17664,9 +18027,11 @@ func (client *Client) DescribeLiveDomainRecordUsageData(request *DescribeLiveDom
 //
 // @return DescribeLiveDomainSnapshotDataResponse
 func (client *Client) DescribeLiveDomainSnapshotDataWithOptions(request *DescribeLiveDomainSnapshotDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainSnapshotDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -17760,9 +18125,11 @@ func (client *Client) DescribeLiveDomainSnapshotData(request *DescribeLiveDomain
 //
 // @return DescribeLiveDomainStagingConfigResponse
 func (client *Client) DescribeLiveDomainStagingConfigWithOptions(request *DescribeLiveDomainStagingConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainStagingConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -17858,9 +18225,11 @@ func (client *Client) DescribeLiveDomainStagingConfig(request *DescribeLiveDomai
 //
 // @return DescribeLiveDomainStreamTranscodeDataResponse
 func (client *Client) DescribeLiveDomainStreamTranscodeDataWithOptions(request *DescribeLiveDomainStreamTranscodeDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainStreamTranscodeDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -17976,9 +18345,11 @@ func (client *Client) DescribeLiveDomainStreamTranscodeData(request *DescribeLiv
 //
 // @return DescribeLiveDomainTimeShiftDataResponse
 func (client *Client) DescribeLiveDomainTimeShiftDataWithOptions(request *DescribeLiveDomainTimeShiftDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainTimeShiftDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -18080,9 +18451,11 @@ func (client *Client) DescribeLiveDomainTimeShiftData(request *DescribeLiveDomai
 //
 // @return DescribeLiveDomainTrafficDataResponse
 func (client *Client) DescribeLiveDomainTrafficDataWithOptions(request *DescribeLiveDomainTrafficDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainTrafficDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -18174,9 +18547,11 @@ func (client *Client) DescribeLiveDomainTrafficData(request *DescribeLiveDomainT
 //
 // @return DescribeLiveDomainTranscodeParamsResponse
 func (client *Client) DescribeLiveDomainTranscodeParamsWithOptions(request *DescribeLiveDomainTranscodeParamsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainTranscodeParamsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SecurityToken) {
@@ -18250,9 +18625,11 @@ func (client *Client) DescribeLiveDomainTranscodeParams(request *DescribeLiveDom
 //
 // @return DescribeLiveDrmUsageDataResponse
 func (client *Client) DescribeLiveDrmUsageDataWithOptions(request *DescribeLiveDrmUsageDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDrmUsageDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -18350,9 +18727,11 @@ func (client *Client) DescribeLiveDrmUsageData(request *DescribeLiveDrmUsageData
 //
 // @return DescribeLiveEdgeTransferResponse
 func (client *Client) DescribeLiveEdgeTransferWithOptions(request *DescribeLiveEdgeTransferRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveEdgeTransferResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -18438,9 +18817,11 @@ func (client *Client) DescribeLiveEdgeTransfer(request *DescribeLiveEdgeTransfer
 //
 // @return DescribeLiveGrtnDurationResponse
 func (client *Client) DescribeLiveGrtnDurationWithOptions(request *DescribeLiveGrtnDurationRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveGrtnDurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -18542,9 +18923,11 @@ func (client *Client) DescribeLiveGrtnDuration(request *DescribeLiveGrtnDuration
 //
 // @return DescribeLiveHttpsDomainListResponse
 func (client *Client) DescribeLiveHttpsDomainListWithOptions(request *DescribeLiveHttpsDomainListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveHttpsDomainListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -18636,9 +19019,11 @@ func (client *Client) DescribeLiveHttpsDomainList(request *DescribeLiveHttpsDoma
 //
 // @return DescribeLiveInteractionMetricDataResponse
 func (client *Client) DescribeLiveInteractionMetricDataWithOptions(request *DescribeLiveInteractionMetricDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveInteractionMetricDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -18732,9 +19117,11 @@ func (client *Client) DescribeLiveInteractionMetricData(request *DescribeLiveInt
 //
 // @return DescribeLiveIpInfoResponse
 func (client *Client) DescribeLiveIpInfoWithOptions(request *DescribeLiveIpInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveIpInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IP) {
@@ -18816,9 +19203,11 @@ func (client *Client) DescribeLiveIpInfo(request *DescribeLiveIpInfoRequest) (_r
 //
 // @return DescribeLiveLazyPullStreamConfigResponse
 func (client *Client) DescribeLiveLazyPullStreamConfigWithOptions(request *DescribeLiveLazyPullStreamConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveLazyPullStreamConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -18902,9 +19291,11 @@ func (client *Client) DescribeLiveLazyPullStreamConfig(request *DescribeLiveLazy
 //
 // @return DescribeLiveMessageAppResponse
 func (client *Client) DescribeLiveMessageAppWithOptions(request *DescribeLiveMessageAppRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveMessageAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -18978,9 +19369,11 @@ func (client *Client) DescribeLiveMessageApp(request *DescribeLiveMessageAppRequ
 //
 // @return DescribeLiveMessageGroupResponse
 func (client *Client) DescribeLiveMessageGroupWithOptions(request *DescribeLiveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveMessageGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -19062,9 +19455,11 @@ func (client *Client) DescribeLiveMessageGroup(request *DescribeLiveMessageGroup
 //
 // @return DescribeLiveMessageGroupBandResponse
 func (client *Client) DescribeLiveMessageGroupBandWithOptions(request *DescribeLiveMessageGroupBandRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveMessageGroupBandResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -19142,9 +19537,11 @@ func (client *Client) DescribeLiveMessageGroupBand(request *DescribeLiveMessageG
 //
 // @return DescribeLivePackageConfigResponse
 func (client *Client) DescribeLivePackageConfigWithOptions(request *DescribeLivePackageConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePackageConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -19242,9 +19639,11 @@ func (client *Client) DescribeLivePackageConfig(request *DescribeLivePackageConf
 //
 // @return DescribeLivePrivateLineAreasResponse
 func (client *Client) DescribeLivePrivateLineAreasWithOptions(request *DescribeLivePrivateLineAreasRequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePrivateLineAreasResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -19326,9 +19725,11 @@ func (client *Client) DescribeLivePrivateLineAreas(request *DescribeLivePrivateL
 //
 // @return DescribeLivePrivateLineAvailGAResponse
 func (client *Client) DescribeLivePrivateLineAvailGAWithOptions(request *DescribeLivePrivateLineAvailGARequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePrivateLineAvailGAResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccelerationArea) {
@@ -19430,9 +19831,11 @@ func (client *Client) DescribeLivePrivateLineAvailGA(request *DescribeLivePrivat
 //
 // @return DescribeLiveProducerUsageDataResponse
 func (client *Client) DescribeLiveProducerUsageDataWithOptions(request *DescribeLiveProducerUsageDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveProducerUsageDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -19548,9 +19951,11 @@ func (client *Client) DescribeLiveProducerUsageData(request *DescribeLiveProduce
 //
 // @return DescribeLivePullStreamConfigResponse
 func (client *Client) DescribeLivePullStreamConfigWithOptions(request *DescribeLivePullStreamConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePullStreamConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -19636,9 +20041,11 @@ func (client *Client) DescribeLivePullStreamConfig(request *DescribeLivePullStre
 //
 // @return DescribeLivePullToPushResponse
 func (client *Client) DescribeLivePullToPushWithOptions(request *DescribeLivePullToPushRequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePullToPushResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -19712,9 +20119,11 @@ func (client *Client) DescribeLivePullToPush(request *DescribeLivePullToPushRequ
 //
 // @return DescribeLivePullToPushListResponse
 func (client *Client) DescribeLivePullToPushListWithOptions(request *DescribeLivePullToPushListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePullToPushListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -19790,9 +20199,11 @@ func (client *Client) DescribeLivePullToPushList(request *DescribeLivePullToPush
 //
 // @return DescribeLivePushProxyLogResponse
 func (client *Client) DescribeLivePushProxyLogWithOptions(request *DescribeLivePushProxyLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePushProxyLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -19900,9 +20311,11 @@ func (client *Client) DescribeLivePushProxyLog(request *DescribeLivePushProxyLog
 //
 // @return DescribeLivePushProxyUsageDataResponse
 func (client *Client) DescribeLivePushProxyUsageDataWithOptions(request *DescribeLivePushProxyUsageDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePushProxyUsageDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -20010,9 +20423,11 @@ func (client *Client) DescribeLivePushProxyUsageData(request *DescribeLivePushPr
 //
 // @return DescribeLiveRealtimeDeliveryAccResponse
 func (client *Client) DescribeLiveRealtimeDeliveryAccWithOptions(request *DescribeLiveRealtimeDeliveryAccRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveRealtimeDeliveryAccResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -20118,9 +20533,11 @@ func (client *Client) DescribeLiveRealtimeDeliveryAcc(request *DescribeLiveRealt
 //
 // @return DescribeLiveRealtimeLogAuthorizedResponse
 func (client *Client) DescribeLiveRealtimeLogAuthorizedWithOptions(request *DescribeLiveRealtimeLogAuthorizedRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveRealtimeLogAuthorizedResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -20190,9 +20607,11 @@ func (client *Client) DescribeLiveRealtimeLogAuthorized(request *DescribeLiveRea
 //
 // @return DescribeLiveRecordConfigResponse
 func (client *Client) DescribeLiveRecordConfigWithOptions(request *DescribeLiveRecordConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveRecordConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -20294,9 +20713,11 @@ func (client *Client) DescribeLiveRecordConfig(request *DescribeLiveRecordConfig
 //
 // @return DescribeLiveRecordNotifyConfigResponse
 func (client *Client) DescribeLiveRecordNotifyConfigWithOptions(request *DescribeLiveRecordNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveRecordNotifyConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -20374,9 +20795,11 @@ func (client *Client) DescribeLiveRecordNotifyConfig(request *DescribeLiveRecord
 //
 // @return DescribeLiveRecordNotifyRecordsResponse
 func (client *Client) DescribeLiveRecordNotifyRecordsWithOptions(request *DescribeLiveRecordNotifyRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveRecordNotifyRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -20484,9 +20907,11 @@ func (client *Client) DescribeLiveRecordNotifyRecords(request *DescribeLiveRecor
 //
 // @return DescribeLiveRecordVodConfigsResponse
 func (client *Client) DescribeLiveRecordVodConfigsWithOptions(request *DescribeLiveRecordVodConfigsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveRecordVodConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -20586,9 +21011,11 @@ func (client *Client) DescribeLiveRecordVodConfigs(request *DescribeLiveRecordVo
 //
 // @return DescribeLiveShiftConfigsResponse
 func (client *Client) DescribeLiveShiftConfigsWithOptions(request *DescribeLiveShiftConfigsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveShiftConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -20670,9 +21097,11 @@ func (client *Client) DescribeLiveShiftConfigs(request *DescribeLiveShiftConfigs
 //
 // @return DescribeLiveSnapshotConfigResponse
 func (client *Client) DescribeLiveSnapshotConfigWithOptions(request *DescribeLiveSnapshotConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveSnapshotConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -20772,9 +21201,11 @@ func (client *Client) DescribeLiveSnapshotConfig(request *DescribeLiveSnapshotCo
 //
 // @return DescribeLiveSnapshotDetectPornConfigResponse
 func (client *Client) DescribeLiveSnapshotDetectPornConfigWithOptions(request *DescribeLiveSnapshotDetectPornConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveSnapshotDetectPornConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -20870,9 +21301,11 @@ func (client *Client) DescribeLiveSnapshotDetectPornConfig(request *DescribeLive
 //
 // @return DescribeLiveSnapshotNotifyConfigResponse
 func (client *Client) DescribeLiveSnapshotNotifyConfigWithOptions(request *DescribeLiveSnapshotNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveSnapshotNotifyConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -20946,9 +21379,11 @@ func (client *Client) DescribeLiveSnapshotNotifyConfig(request *DescribeLiveSnap
 //
 // @return DescribeLiveStreamAuthCheckingResponse
 func (client *Client) DescribeLiveStreamAuthCheckingWithOptions(request *DescribeLiveStreamAuthCheckingRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamAuthCheckingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -21030,9 +21465,11 @@ func (client *Client) DescribeLiveStreamAuthChecking(request *DescribeLiveStream
 //
 // @return DescribeLiveStreamBitRateDataResponse
 func (client *Client) DescribeLiveStreamBitRateDataWithOptions(request *DescribeLiveStreamBitRateDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamBitRateDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -21130,9 +21567,11 @@ func (client *Client) DescribeLiveStreamBitRateData(request *DescribeLiveStreamB
 //
 // @return DescribeLiveStreamCountResponse
 func (client *Client) DescribeLiveStreamCountWithOptions(request *DescribeLiveStreamCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -21202,9 +21641,11 @@ func (client *Client) DescribeLiveStreamCount(request *DescribeLiveStreamCountRe
 //
 // @return DescribeLiveStreamDelayConfigResponse
 func (client *Client) DescribeLiveStreamDelayConfigWithOptions(request *DescribeLiveStreamDelayConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamDelayConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -21290,9 +21731,11 @@ func (client *Client) DescribeLiveStreamDelayConfig(request *DescribeLiveStreamD
 //
 // @return DescribeLiveStreamDetailFrameRateAndBitRateDataResponse
 func (client *Client) DescribeLiveStreamDetailFrameRateAndBitRateDataWithOptions(request *DescribeLiveStreamDetailFrameRateAndBitRateDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamDetailFrameRateAndBitRateDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -21398,9 +21841,11 @@ func (client *Client) DescribeLiveStreamDetailFrameRateAndBitRateData(request *D
 //
 // @return DescribeLiveStreamHistoryUserNumResponse
 func (client *Client) DescribeLiveStreamHistoryUserNumWithOptions(request *DescribeLiveStreamHistoryUserNumRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamHistoryUserNumResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -21498,9 +21943,11 @@ func (client *Client) DescribeLiveStreamHistoryUserNum(request *DescribeLiveStre
 //
 // @return DescribeLiveStreamMergeResponse
 func (client *Client) DescribeLiveStreamMergeWithOptions(request *DescribeLiveStreamMergeRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamMergeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -21612,9 +22059,11 @@ func (client *Client) DescribeLiveStreamMerge(request *DescribeLiveStreamMergeRe
 //
 // @return DescribeLiveStreamMetricDetailDataResponse
 func (client *Client) DescribeLiveStreamMetricDetailDataWithOptions(request *DescribeLiveStreamMetricDetailDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamMetricDetailDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -21742,9 +22191,11 @@ func (client *Client) DescribeLiveStreamMetricDetailData(request *DescribeLiveSt
 //
 // @return DescribeLiveStreamMonitorListResponse
 func (client *Client) DescribeLiveStreamMonitorListWithOptions(request *DescribeLiveStreamMonitorListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamMonitorListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MonitorId) {
@@ -21842,9 +22293,11 @@ func (client *Client) DescribeLiveStreamMonitorList(request *DescribeLiveStreamM
 //
 // @return DescribeLiveStreamPreloadTasksResponse
 func (client *Client) DescribeLiveStreamPreloadTasksWithOptions(request *DescribeLiveStreamPreloadTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamPreloadTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -21962,9 +22415,11 @@ func (client *Client) DescribeLiveStreamPreloadTasks(request *DescribeLiveStream
 //
 // @return DescribeLiveStreamPushMetricDetailDataResponse
 func (client *Client) DescribeLiveStreamPushMetricDetailDataWithOptions(request *DescribeLiveStreamPushMetricDetailDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamPushMetricDetailDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -22074,9 +22529,11 @@ func (client *Client) DescribeLiveStreamPushMetricDetailData(request *DescribeLi
 //
 // @return DescribeLiveStreamRecordContentResponse
 func (client *Client) DescribeLiveStreamRecordContentWithOptions(request *DescribeLiveStreamRecordContentRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamRecordContentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -22174,9 +22631,11 @@ func (client *Client) DescribeLiveStreamRecordContent(request *DescribeLiveStrea
 //
 // @return DescribeLiveStreamRecordIndexFileResponse
 func (client *Client) DescribeLiveStreamRecordIndexFileWithOptions(request *DescribeLiveStreamRecordIndexFileRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamRecordIndexFileResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -22272,9 +22731,11 @@ func (client *Client) DescribeLiveStreamRecordIndexFile(request *DescribeLiveStr
 //
 // @return DescribeLiveStreamRecordIndexFilesResponse
 func (client *Client) DescribeLiveStreamRecordIndexFilesWithOptions(request *DescribeLiveStreamRecordIndexFilesRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamRecordIndexFilesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -22386,9 +22847,11 @@ func (client *Client) DescribeLiveStreamRecordIndexFiles(request *DescribeLiveSt
 //
 // @return DescribeLiveStreamSnapshotInfoResponse
 func (client *Client) DescribeLiveStreamSnapshotInfoWithOptions(request *DescribeLiveStreamSnapshotInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamSnapshotInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -22494,9 +22957,11 @@ func (client *Client) DescribeLiveStreamSnapshotInfo(request *DescribeLiveStream
 //
 // @return DescribeLiveStreamStateResponse
 func (client *Client) DescribeLiveStreamStateWithOptions(request *DescribeLiveStreamStateRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamStateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -22586,9 +23051,11 @@ func (client *Client) DescribeLiveStreamState(request *DescribeLiveStreamStateRe
 //
 // @return DescribeLiveStreamTranscodeInfoResponse
 func (client *Client) DescribeLiveStreamTranscodeInfoWithOptions(request *DescribeLiveStreamTranscodeInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamTranscodeInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -22678,9 +23145,11 @@ func (client *Client) DescribeLiveStreamTranscodeInfo(request *DescribeLiveStrea
 //
 // @return DescribeLiveStreamTranscodeMetricDataResponse
 func (client *Client) DescribeLiveStreamTranscodeMetricDataWithOptions(request *DescribeLiveStreamTranscodeMetricDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamTranscodeMetricDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -22782,9 +23251,11 @@ func (client *Client) DescribeLiveStreamTranscodeMetricData(request *DescribeLiv
 //
 // @return DescribeLiveStreamTranscodeStreamNumResponse
 func (client *Client) DescribeLiveStreamTranscodeStreamNumWithOptions(request *DescribeLiveStreamTranscodeStreamNumRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamTranscodeStreamNumResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -22866,9 +23337,11 @@ func (client *Client) DescribeLiveStreamTranscodeStreamNum(request *DescribeLive
 //
 // @return DescribeLiveStreamWatermarkRulesResponse
 func (client *Client) DescribeLiveStreamWatermarkRulesWithOptions(request *DescribeLiveStreamWatermarkRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamWatermarkRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -22958,9 +23431,11 @@ func (client *Client) DescribeLiveStreamWatermarkRules(request *DescribeLiveStre
 //
 // @return DescribeLiveStreamWatermarksResponse
 func (client *Client) DescribeLiveStreamWatermarksWithOptions(request *DescribeLiveStreamWatermarksRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamWatermarksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -23054,9 +23529,11 @@ func (client *Client) DescribeLiveStreamWatermarks(request *DescribeLiveStreamWa
 //
 // @return DescribeLiveStreamsBlockListResponse
 func (client *Client) DescribeLiveStreamsBlockListWithOptions(request *DescribeLiveStreamsBlockListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamsBlockListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -23146,9 +23623,11 @@ func (client *Client) DescribeLiveStreamsBlockList(request *DescribeLiveStreamsB
 //
 // @return DescribeLiveStreamsControlHistoryResponse
 func (client *Client) DescribeLiveStreamsControlHistoryWithOptions(request *DescribeLiveStreamsControlHistoryRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamsControlHistoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -23238,9 +23717,11 @@ func (client *Client) DescribeLiveStreamsControlHistory(request *DescribeLiveStr
 //
 // @return DescribeLiveStreamsNotifyRecordsResponse
 func (client *Client) DescribeLiveStreamsNotifyRecordsWithOptions(request *DescribeLiveStreamsNotifyRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamsNotifyRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -23338,9 +23819,11 @@ func (client *Client) DescribeLiveStreamsNotifyRecords(request *DescribeLiveStre
 //
 // @return DescribeLiveStreamsNotifyUrlConfigResponse
 func (client *Client) DescribeLiveStreamsNotifyUrlConfigWithOptions(request *DescribeLiveStreamsNotifyUrlConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamsNotifyUrlConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -23420,9 +23903,11 @@ func (client *Client) DescribeLiveStreamsNotifyUrlConfig(request *DescribeLiveSt
 //
 // @return DescribeLiveStreamsOnlineListResponse
 func (client *Client) DescribeLiveStreamsOnlineListWithOptions(request *DescribeLiveStreamsOnlineListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamsOnlineListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -23548,9 +24033,11 @@ func (client *Client) DescribeLiveStreamsOnlineList(request *DescribeLiveStreams
 //
 // @return DescribeLiveStreamsPublishListResponse
 func (client *Client) DescribeLiveStreamsPublishListWithOptions(request *DescribeLiveStreamsPublishListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamsPublishListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -23680,9 +24167,11 @@ func (client *Client) DescribeLiveStreamsPublishList(request *DescribeLiveStream
 //
 // @return DescribeLiveStreamsTotalCountResponse
 func (client *Client) DescribeLiveStreamsTotalCountWithOptions(request *DescribeLiveStreamsTotalCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamsTotalCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -23780,9 +24269,11 @@ func (client *Client) DescribeLiveStreamsTotalCount(request *DescribeLiveStreams
 //
 // @return DescribeLiveTopDomainsByFlowResponse
 func (client *Client) DescribeLiveTopDomainsByFlowWithOptions(request *DescribeLiveTopDomainsByFlowRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveTopDomainsByFlowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -23866,9 +24357,11 @@ func (client *Client) DescribeLiveTopDomainsByFlow(request *DescribeLiveTopDomai
 //
 // @return DescribeLiveTrafficDomainLogResponse
 func (client *Client) DescribeLiveTrafficDomainLogWithOptions(request *DescribeLiveTrafficDomainLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveTrafficDomainLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -23964,9 +24457,11 @@ func (client *Client) DescribeLiveTrafficDomainLog(request *DescribeLiveTrafficD
 //
 // @return DescribeLiveUpVideoAudioInfoResponse
 func (client *Client) DescribeLiveUpVideoAudioInfoWithOptions(request *DescribeLiveUpVideoAudioInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveUpVideoAudioInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -24072,9 +24567,11 @@ func (client *Client) DescribeLiveUpVideoAudioInfo(request *DescribeLiveUpVideoA
 //
 // @return DescribeLiveUserBillPredictionResponse
 func (client *Client) DescribeLiveUserBillPredictionWithOptions(request *DescribeLiveUserBillPredictionRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveUserBillPredictionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -24172,9 +24669,11 @@ func (client *Client) DescribeLiveUserBillPrediction(request *DescribeLiveUserBi
 //
 // @return DescribeLiveUserDomainsResponse
 func (client *Client) DescribeLiveUserDomainsWithOptions(request *DescribeLiveUserDomainsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveUserDomainsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -24282,9 +24781,11 @@ func (client *Client) DescribeLiveUserDomains(request *DescribeLiveUserDomainsRe
 //
 // @return DescribeLiveUserStreamMetricDataResponse
 func (client *Client) DescribeLiveUserStreamMetricDataWithOptions(request *DescribeLiveUserStreamMetricDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveUserStreamMetricDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -24366,9 +24867,11 @@ func (client *Client) DescribeLiveUserStreamMetricData(request *DescribeLiveUser
 //
 // @return DescribeLiveUserTagsResponse
 func (client *Client) DescribeLiveUserTagsWithOptions(request *DescribeLiveUserTagsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveUserTagsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -24426,9 +24929,11 @@ func (client *Client) DescribeLiveUserTags(request *DescribeLiveUserTagsRequest)
 //
 // @return DescribeLiveUserTrafficLogResponse
 func (client *Client) DescribeLiveUserTrafficLogWithOptions(request *DescribeLiveUserTrafficLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveUserTrafficLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -24522,9 +25027,11 @@ func (client *Client) DescribeLiveUserTrafficLog(request *DescribeLiveUserTraffi
 //
 // @return DescribeLiveVerifyContentResponse
 func (client *Client) DescribeLiveVerifyContentWithOptions(request *DescribeLiveVerifyContentRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveVerifyContentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -24616,9 +25123,11 @@ func (client *Client) DescribeLiveVerifyContent(request *DescribeLiveVerifyConte
 //
 // @return DescribeMeterLiveBypassDurationResponse
 func (client *Client) DescribeMeterLiveBypassDurationWithOptions(request *DescribeMeterLiveBypassDurationRequest, runtime *dara.RuntimeOptions) (_result *DescribeMeterLiveBypassDurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -24710,9 +25219,11 @@ func (client *Client) DescribeMeterLiveBypassDuration(request *DescribeMeterLive
 //
 // @return DescribeMixStreamListResponse
 func (client *Client) DescribeMixStreamListWithOptions(request *DescribeMixStreamListRequest, runtime *dara.RuntimeOptions) (_result *DescribeMixStreamListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -24818,9 +25329,11 @@ func (client *Client) DescribeMixStreamList(request *DescribeMixStreamListReques
 //
 // @return DescribeRTSNativeSDKFirstFrameCostResponse
 func (client *Client) DescribeRTSNativeSDKFirstFrameCostWithOptions(tmpReq *DescribeRTSNativeSDKFirstFrameCostRequest, runtime *dara.RuntimeOptions) (_result *DescribeRTSNativeSDKFirstFrameCostResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeRTSNativeSDKFirstFrameCostShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -24904,9 +25417,11 @@ func (client *Client) DescribeRTSNativeSDKFirstFrameCost(request *DescribeRTSNat
 //
 // @return DescribeRTSNativeSDKFirstFrameDelayResponse
 func (client *Client) DescribeRTSNativeSDKFirstFrameDelayWithOptions(tmpReq *DescribeRTSNativeSDKFirstFrameDelayRequest, runtime *dara.RuntimeOptions) (_result *DescribeRTSNativeSDKFirstFrameDelayResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeRTSNativeSDKFirstFrameDelayShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -24990,9 +25505,11 @@ func (client *Client) DescribeRTSNativeSDKFirstFrameDelay(request *DescribeRTSNa
 //
 // @return DescribeRTSNativeSDKPlayFailStatusResponse
 func (client *Client) DescribeRTSNativeSDKPlayFailStatusWithOptions(tmpReq *DescribeRTSNativeSDKPlayFailStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeRTSNativeSDKPlayFailStatusResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeRTSNativeSDKPlayFailStatusShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -25076,9 +25593,11 @@ func (client *Client) DescribeRTSNativeSDKPlayFailStatus(request *DescribeRTSNat
 //
 // @return DescribeRTSNativeSDKPlayTimeResponse
 func (client *Client) DescribeRTSNativeSDKPlayTimeWithOptions(tmpReq *DescribeRTSNativeSDKPlayTimeRequest, runtime *dara.RuntimeOptions) (_result *DescribeRTSNativeSDKPlayTimeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeRTSNativeSDKPlayTimeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -25162,9 +25681,11 @@ func (client *Client) DescribeRTSNativeSDKPlayTime(request *DescribeRTSNativeSDK
 //
 // @return DescribeRTSNativeSDKVvDataResponse
 func (client *Client) DescribeRTSNativeSDKVvDataWithOptions(tmpReq *DescribeRTSNativeSDKVvDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeRTSNativeSDKVvDataResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeRTSNativeSDKVvDataShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -25244,9 +25765,11 @@ func (client *Client) DescribeRTSNativeSDKVvData(request *DescribeRTSNativeSDKVv
 //
 // @return DescribeRtcCloudRecordingFilesResponse
 func (client *Client) DescribeRtcCloudRecordingFilesWithOptions(request *DescribeRtcCloudRecordingFilesRequest, runtime *dara.RuntimeOptions) (_result *DescribeRtcCloudRecordingFilesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -25316,9 +25839,11 @@ func (client *Client) DescribeRtcCloudRecordingFiles(request *DescribeRtcCloudRe
 //
 // @return DescribeRtcMPUEventSubResponse
 func (client *Client) DescribeRtcMPUEventSubWithOptions(request *DescribeRtcMPUEventSubRequest, runtime *dara.RuntimeOptions) (_result *DescribeRtcMPUEventSubResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -25396,9 +25921,11 @@ func (client *Client) DescribeRtcMPUEventSub(request *DescribeRtcMPUEventSubRequ
 //
 // @return DescribeShowListResponse
 func (client *Client) DescribeShowListWithOptions(request *DescribeShowListRequest, runtime *dara.RuntimeOptions) (_result *DescribeShowListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -25480,9 +26007,11 @@ func (client *Client) DescribeShowList(request *DescribeShowListRequest) (_resul
 //
 // @return DescribeStreamLocationBlockResponse
 func (client *Client) DescribeStreamLocationBlockWithOptions(request *DescribeStreamLocationBlockRequest, runtime *dara.RuntimeOptions) (_result *DescribeStreamLocationBlockResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -25584,9 +26113,11 @@ func (client *Client) DescribeStreamLocationBlock(request *DescribeStreamLocatio
 //
 // @return DescribeStudioLayoutsResponse
 func (client *Client) DescribeStudioLayoutsWithOptions(request *DescribeStudioLayoutsRequest, runtime *dara.RuntimeOptions) (_result *DescribeStudioLayoutsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -25672,9 +26203,11 @@ func (client *Client) DescribeStudioLayouts(request *DescribeStudioLayoutsReques
 //
 // @return DescribeToutiaoLivePlayResponse
 func (client *Client) DescribeToutiaoLivePlayWithOptions(request *DescribeToutiaoLivePlayRequest, runtime *dara.RuntimeOptions) (_result *DescribeToutiaoLivePlayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -25772,9 +26305,11 @@ func (client *Client) DescribeToutiaoLivePlay(request *DescribeToutiaoLivePlayRe
 //
 // @return DescribeToutiaoLivePublishResponse
 func (client *Client) DescribeToutiaoLivePublishWithOptions(request *DescribeToutiaoLivePublishRequest, runtime *dara.RuntimeOptions) (_result *DescribeToutiaoLivePublishResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -25864,9 +26399,11 @@ func (client *Client) DescribeToutiaoLivePublish(request *DescribeToutiaoLivePub
 //
 // @return DescribeUidOnlineStreamsResponse
 func (client *Client) DescribeUidOnlineStreamsWithOptions(request *DescribeUidOnlineStreamsRequest, runtime *dara.RuntimeOptions) (_result *DescribeUidOnlineStreamsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -25928,9 +26465,11 @@ func (client *Client) DescribeUidOnlineStreams(request *DescribeUidOnlineStreams
 //
 // @return DescribeUpBpsPeakDataResponse
 func (client *Client) DescribeUpBpsPeakDataWithOptions(request *DescribeUpBpsPeakDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeUpBpsPeakDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -26024,9 +26563,11 @@ func (client *Client) DescribeUpBpsPeakData(request *DescribeUpBpsPeakDataReques
 //
 // @return DescribeUpBpsPeakOfLineResponse
 func (client *Client) DescribeUpBpsPeakOfLineWithOptions(request *DescribeUpBpsPeakOfLineRequest, runtime *dara.RuntimeOptions) (_result *DescribeUpBpsPeakOfLineResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -26124,9 +26665,11 @@ func (client *Client) DescribeUpBpsPeakOfLine(request *DescribeUpBpsPeakOfLineRe
 //
 // @return DescribeUpPeakPublishStreamDataResponse
 func (client *Client) DescribeUpPeakPublishStreamDataWithOptions(request *DescribeUpPeakPublishStreamDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeUpPeakPublishStreamDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -26222,9 +26765,11 @@ func (client *Client) DescribeUpPeakPublishStreamData(request *DescribeUpPeakPub
 //
 // @return DisableLiveRealtimeLogDeliveryResponse
 func (client *Client) DisableLiveRealtimeLogDeliveryWithOptions(request *DisableLiveRealtimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *DisableLiveRealtimeLogDeliveryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -26296,9 +26841,11 @@ func (client *Client) DisableLiveRealtimeLogDelivery(request *DisableLiveRealtim
 //
 // @return DynamicUpdateWaterMarkStreamRuleResponse
 func (client *Client) DynamicUpdateWaterMarkStreamRuleWithOptions(request *DynamicUpdateWaterMarkStreamRuleRequest, runtime *dara.RuntimeOptions) (_result *DynamicUpdateWaterMarkStreamRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -26392,9 +26939,11 @@ func (client *Client) DynamicUpdateWaterMarkStreamRule(request *DynamicUpdateWat
 //
 // @return EditPlaylistResponse
 func (client *Client) EditPlaylistWithOptions(request *EditPlaylistRequest, runtime *dara.RuntimeOptions) (_result *EditPlaylistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -26484,9 +27033,11 @@ func (client *Client) EditPlaylist(request *EditPlaylistRequest) (_result *EditP
 //
 // @return EditShowAndReplaceResponse
 func (client *Client) EditShowAndReplaceWithOptions(request *EditShowAndReplaceRequest, runtime *dara.RuntimeOptions) (_result *EditShowAndReplaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -26588,9 +27139,11 @@ func (client *Client) EditShowAndReplace(request *EditShowAndReplaceRequest) (_r
 //
 // @return EffectCasterUrgentResponse
 func (client *Client) EffectCasterUrgentWithOptions(request *EffectCasterUrgentRequest, runtime *dara.RuntimeOptions) (_result *EffectCasterUrgentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -26676,9 +27229,11 @@ func (client *Client) EffectCasterUrgent(request *EffectCasterUrgentRequest) (_r
 //
 // @return EffectCasterVideoResourceResponse
 func (client *Client) EffectCasterVideoResourceWithOptions(request *EffectCasterVideoResourceRequest, runtime *dara.RuntimeOptions) (_result *EffectCasterVideoResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -26770,9 +27325,11 @@ func (client *Client) EffectCasterVideoResource(request *EffectCasterVideoResour
 //
 // @return EnableLiveRealtimeLogDeliveryResponse
 func (client *Client) EnableLiveRealtimeLogDeliveryWithOptions(request *EnableLiveRealtimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *EnableLiveRealtimeLogDeliveryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -26850,9 +27407,11 @@ func (client *Client) EnableLiveRealtimeLogDelivery(request *EnableLiveRealtimeL
 //
 // @return ForbidLiveStreamResponse
 func (client *Client) ForbidLiveStreamWithOptions(request *ForbidLiveStreamRequest, runtime *dara.RuntimeOptions) (_result *ForbidLiveStreamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -26960,9 +27519,11 @@ func (client *Client) ForbidLiveStream(request *ForbidLiveStreamRequest) (_resul
 //
 // @return GetAllCustomTemplatesResponse
 func (client *Client) GetAllCustomTemplatesWithOptions(request *GetAllCustomTemplatesRequest, runtime *dara.RuntimeOptions) (_result *GetAllCustomTemplatesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -27044,9 +27605,11 @@ func (client *Client) GetAllCustomTemplates(request *GetAllCustomTemplatesReques
 //
 // @return GetCustomTemplateResponse
 func (client *Client) GetCustomTemplateWithOptions(request *GetCustomTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetCustomTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -27128,9 +27691,11 @@ func (client *Client) GetCustomTemplate(request *GetCustomTemplateRequest) (_res
 //
 // @return GetEdgeTranscodeJobResponse
 func (client *Client) GetEdgeTranscodeJobWithOptions(request *GetEdgeTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *GetEdgeTranscodeJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -27218,9 +27783,11 @@ func (client *Client) GetEdgeTranscodeJob(request *GetEdgeTranscodeJobRequest) (
 //
 // @return GetEdgeTranscodeTemplateResponse
 func (client *Client) GetEdgeTranscodeTemplateWithOptions(request *GetEdgeTranscodeTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetEdgeTranscodeTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -27312,9 +27879,11 @@ func (client *Client) GetEdgeTranscodeTemplate(request *GetEdgeTranscodeTemplate
 //
 // @return GetEditingJobInfoResponse
 func (client *Client) GetEditingJobInfoWithOptions(request *GetEditingJobInfoRequest, runtime *dara.RuntimeOptions) (_result *GetEditingJobInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -27402,9 +27971,11 @@ func (client *Client) GetEditingJobInfo(request *GetEditingJobInfoRequest) (_res
 //
 // @return GetMessageAppResponse
 func (client *Client) GetMessageAppWithOptions(request *GetMessageAppRequest, runtime *dara.RuntimeOptions) (_result *GetMessageAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -27472,9 +28043,11 @@ func (client *Client) GetMessageApp(request *GetMessageAppRequest) (_result *Get
 //
 // @return GetMessageGroupResponse
 func (client *Client) GetMessageGroupWithOptions(request *GetMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *GetMessageGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -27550,9 +28123,11 @@ func (client *Client) GetMessageGroup(request *GetMessageGroupRequest) (_result 
 //
 // @return GetMessageTokenResponse
 func (client *Client) GetMessageTokenWithOptions(request *GetMessageTokenRequest, runtime *dara.RuntimeOptions) (_result *GetMessageTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -27628,9 +28203,11 @@ func (client *Client) GetMessageToken(request *GetMessageTokenRequest) (_result 
 //
 // @return GetTranscodeTaskStatusResponse
 func (client *Client) GetTranscodeTaskStatusWithOptions(request *GetTranscodeTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *GetTranscodeTaskStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -27706,9 +28283,11 @@ func (client *Client) GetTranscodeTaskStatus(request *GetTranscodeTaskStatusRequ
 //
 // @return HotLiveRtcStreamResponse
 func (client *Client) HotLiveRtcStreamWithOptions(request *HotLiveRtcStreamRequest, runtime *dara.RuntimeOptions) (_result *HotLiveRtcStreamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -27816,9 +28395,11 @@ func (client *Client) HotLiveRtcStream(request *HotLiveRtcStreamRequest) (_resul
 //
 // @return InitializeAutoShowListTaskResponse
 func (client *Client) InitializeAutoShowListTaskWithOptions(request *InitializeAutoShowListTaskRequest, runtime *dara.RuntimeOptions) (_result *InitializeAutoShowListTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CallBackUrl) {
@@ -27916,9 +28497,11 @@ func (client *Client) InitializeAutoShowListTask(request *InitializeAutoShowList
 //
 // @return JoinMessageGroupResponse
 func (client *Client) JoinMessageGroupWithOptions(request *JoinMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *JoinMessageGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -28004,9 +28587,11 @@ func (client *Client) JoinMessageGroup(request *JoinMessageGroupRequest) (_resul
 //
 // @return KickLiveMessageGroupUserResponse
 func (client *Client) KickLiveMessageGroupUserWithOptions(request *KickLiveMessageGroupUserRequest, runtime *dara.RuntimeOptions) (_result *KickLiveMessageGroupUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -28090,9 +28675,11 @@ func (client *Client) KickLiveMessageGroupUser(request *KickLiveMessageGroupUser
 //
 // @return LeaveMessageGroupResponse
 func (client *Client) LeaveMessageGroupWithOptions(request *LeaveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *LeaveMessageGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -28184,9 +28771,11 @@ func (client *Client) LeaveMessageGroup(request *LeaveMessageGroupRequest) (_res
 //
 // @return ListEdgeTranscodeJobResponse
 func (client *Client) ListEdgeTranscodeJobWithOptions(request *ListEdgeTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *ListEdgeTranscodeJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -28298,9 +28887,11 @@ func (client *Client) ListEdgeTranscodeJob(request *ListEdgeTranscodeJobRequest)
 //
 // @return ListEdgeTranscodeTemplateResponse
 func (client *Client) ListEdgeTranscodeTemplateWithOptions(request *ListEdgeTranscodeTemplateRequest, runtime *dara.RuntimeOptions) (_result *ListEdgeTranscodeTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -28404,9 +28995,11 @@ func (client *Client) ListEdgeTranscodeTemplate(request *ListEdgeTranscodeTempla
 //
 // @return ListEventSubResponse
 func (client *Client) ListEventSubWithOptions(request *ListEventSubRequest, runtime *dara.RuntimeOptions) (_result *ListEventSubResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -28476,9 +29069,11 @@ func (client *Client) ListEventSub(request *ListEventSubRequest) (_result *ListE
 //
 // @return ListEventSubEventResponse
 func (client *Client) ListEventSubEventWithOptions(request *ListEventSubEventRequest, runtime *dara.RuntimeOptions) (_result *ListEventSubEventResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -28548,9 +29143,11 @@ func (client *Client) ListEventSubEvent(request *ListEventSubEventRequest) (_res
 //
 // @return ListLiveDelayConfigResponse
 func (client *Client) ListLiveDelayConfigWithOptions(request *ListLiveDelayConfigRequest, runtime *dara.RuntimeOptions) (_result *ListLiveDelayConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -28632,9 +29229,11 @@ func (client *Client) ListLiveDelayConfig(request *ListLiveDelayConfigRequest) (
 //
 // @return ListLiveMessageAppsResponse
 func (client *Client) ListLiveMessageAppsWithOptions(request *ListLiveMessageAppsRequest, runtime *dara.RuntimeOptions) (_result *ListLiveMessageAppsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DataCenter) {
@@ -28712,9 +29311,11 @@ func (client *Client) ListLiveMessageApps(request *ListLiveMessageAppsRequest) (
 //
 // @return ListLiveMessageGroupByPageResponse
 func (client *Client) ListLiveMessageGroupByPageWithOptions(request *ListLiveMessageGroupByPageRequest, runtime *dara.RuntimeOptions) (_result *ListLiveMessageGroupByPageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -28784,9 +29385,11 @@ func (client *Client) ListLiveMessageGroupByPage(request *ListLiveMessageGroupBy
 //
 // @return ListLiveMessageGroupMessagesResponse
 func (client *Client) ListLiveMessageGroupMessagesWithOptions(request *ListLiveMessageGroupMessagesRequest, runtime *dara.RuntimeOptions) (_result *ListLiveMessageGroupMessagesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -28894,9 +29497,11 @@ func (client *Client) ListLiveMessageGroupMessages(request *ListLiveMessageGroup
 //
 // @return ListLiveMessageGroupUsersResponse
 func (client *Client) ListLiveMessageGroupUsersWithOptions(request *ListLiveMessageGroupUsersRequest, runtime *dara.RuntimeOptions) (_result *ListLiveMessageGroupUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -28992,9 +29597,11 @@ func (client *Client) ListLiveMessageGroupUsers(request *ListLiveMessageGroupUse
 //
 // @return ListLiveMessageGroupsResponse
 func (client *Client) ListLiveMessageGroupsWithOptions(request *ListLiveMessageGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListLiveMessageGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -29084,9 +29691,11 @@ func (client *Client) ListLiveMessageGroups(request *ListLiveMessageGroupsReques
 //
 // @return ListLiveRealtimeLogDeliveryResponse
 func (client *Client) ListLiveRealtimeLogDeliveryWithOptions(request *ListLiveRealtimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *ListLiveRealtimeLogDeliveryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -29158,9 +29767,11 @@ func (client *Client) ListLiveRealtimeLogDelivery(request *ListLiveRealtimeLogDe
 //
 // @return ListLiveRealtimeLogDeliveryDomainsResponse
 func (client *Client) ListLiveRealtimeLogDeliveryDomainsWithOptions(request *ListLiveRealtimeLogDeliveryDomainsRequest, runtime *dara.RuntimeOptions) (_result *ListLiveRealtimeLogDeliveryDomainsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -29232,9 +29843,11 @@ func (client *Client) ListLiveRealtimeLogDeliveryDomains(request *ListLiveRealti
 //
 // @return ListLiveRealtimeLogDeliveryInfosResponse
 func (client *Client) ListLiveRealtimeLogDeliveryInfosWithOptions(request *ListLiveRealtimeLogDeliveryInfosRequest, runtime *dara.RuntimeOptions) (_result *ListLiveRealtimeLogDeliveryInfosResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -29302,9 +29915,11 @@ func (client *Client) ListLiveRealtimeLogDeliveryInfos(request *ListLiveRealtime
 //
 // @return ListMessageResponse
 func (client *Client) ListMessageWithOptions(request *ListMessageRequest, runtime *dara.RuntimeOptions) (_result *ListMessageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -29394,9 +30009,11 @@ func (client *Client) ListMessage(request *ListMessageRequest) (_result *ListMes
 //
 // @return ListMessageAppResponse
 func (client *Client) ListMessageAppWithOptions(request *ListMessageAppRequest, runtime *dara.RuntimeOptions) (_result *ListMessageAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.PageNum) {
@@ -29474,9 +30091,11 @@ func (client *Client) ListMessageApp(request *ListMessageAppRequest) (_result *L
 //
 // @return ListMessageGroupResponse
 func (client *Client) ListMessageGroupWithOptions(request *ListMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *ListMessageGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -29562,9 +30181,11 @@ func (client *Client) ListMessageGroup(request *ListMessageGroupRequest) (_resul
 //
 // @return ListMessageGroupUserResponse
 func (client *Client) ListMessageGroupUserWithOptions(request *ListMessageGroupUserRequest, runtime *dara.RuntimeOptions) (_result *ListMessageGroupUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -29650,9 +30271,11 @@ func (client *Client) ListMessageGroupUser(request *ListMessageGroupUserRequest)
 //
 // @return ListMessageGroupUserByIdResponse
 func (client *Client) ListMessageGroupUserByIdWithOptions(tmpReq *ListMessageGroupUserByIdRequest, runtime *dara.RuntimeOptions) (_result *ListMessageGroupUserByIdResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListMessageGroupUserByIdShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -29736,9 +30359,11 @@ func (client *Client) ListMessageGroupUserById(request *ListMessageGroupUserById
 //
 // @return ListMuteGroupUserResponse
 func (client *Client) ListMuteGroupUserWithOptions(request *ListMuteGroupUserRequest, runtime *dara.RuntimeOptions) (_result *ListMuteGroupUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -29826,9 +30451,11 @@ func (client *Client) ListMuteGroupUser(request *ListMuteGroupUserRequest) (_res
 //
 // @return ListPlaylistResponse
 func (client *Client) ListPlaylistWithOptions(request *ListPlaylistRequest, runtime *dara.RuntimeOptions) (_result *ListPlaylistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -29918,9 +30545,11 @@ func (client *Client) ListPlaylist(request *ListPlaylistRequest) (_result *ListP
 //
 // @return ListPlaylistItemsResponse
 func (client *Client) ListPlaylistItemsWithOptions(request *ListPlaylistItemsRequest, runtime *dara.RuntimeOptions) (_result *ListPlaylistItemsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -29998,9 +30627,11 @@ func (client *Client) ListPlaylistItems(request *ListPlaylistItemsRequest) (_res
 //
 // @return ListRTCLiveRoomsResponse
 func (client *Client) ListRTCLiveRoomsWithOptions(request *ListRTCLiveRoomsRequest, runtime *dara.RuntimeOptions) (_result *ListRTCLiveRoomsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -30074,9 +30705,11 @@ func (client *Client) ListRTCLiveRooms(request *ListRTCLiveRoomsRequest) (_resul
 //
 // @return ListRtcMPUEventSubRecordResponse
 func (client *Client) ListRtcMPUEventSubRecordWithOptions(request *ListRtcMPUEventSubRecordRequest, runtime *dara.RuntimeOptions) (_result *ListRtcMPUEventSubRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -30172,9 +30805,11 @@ func (client *Client) ListRtcMPUEventSubRecord(request *ListRtcMPUEventSubRecord
 //
 // @return ListRtcMPUTaskDetailResponse
 func (client *Client) ListRtcMPUTaskDetailWithOptions(request *ListRtcMPUTaskDetailRequest, runtime *dara.RuntimeOptions) (_result *ListRtcMPUTaskDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -30254,9 +30889,11 @@ func (client *Client) ListRtcMPUTaskDetail(request *ListRtcMPUTaskDetailRequest)
 //
 // @return LiveUpstreamQosDataResponse
 func (client *Client) LiveUpstreamQosDataWithOptions(tmpReq *LiveUpstreamQosDataRequest, runtime *dara.RuntimeOptions) (_result *LiveUpstreamQosDataResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &LiveUpstreamQosDataShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -30380,9 +31017,11 @@ func (client *Client) LiveUpstreamQosData(request *LiveUpstreamQosDataRequest) (
 //
 // @return MiguLivePullToPushStartResponse
 func (client *Client) MiguLivePullToPushStartWithOptions(request *MiguLivePullToPushStartRequest, runtime *dara.RuntimeOptions) (_result *MiguLivePullToPushStartResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -30452,9 +31091,11 @@ func (client *Client) MiguLivePullToPushStart(request *MiguLivePullToPushStartRe
 //
 // @return MiguLivePullToPushStatusResponse
 func (client *Client) MiguLivePullToPushStatusWithOptions(request *MiguLivePullToPushStatusRequest, runtime *dara.RuntimeOptions) (_result *MiguLivePullToPushStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -30532,9 +31173,11 @@ func (client *Client) MiguLivePullToPushStatus(request *MiguLivePullToPushStatus
 //
 // @return ModifyCasterComponentResponse
 func (client *Client) ModifyCasterComponentWithOptions(request *ModifyCasterComponentRequest, runtime *dara.RuntimeOptions) (_result *ModifyCasterComponentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CaptionLayerContent) {
@@ -30648,9 +31291,11 @@ func (client *Client) ModifyCasterComponent(request *ModifyCasterComponentReques
 //
 // @return ModifyCasterEpisodeResponse
 func (client *Client) ModifyCasterEpisodeWithOptions(request *ModifyCasterEpisodeRequest, runtime *dara.RuntimeOptions) (_result *ModifyCasterEpisodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -30760,9 +31405,11 @@ func (client *Client) ModifyCasterEpisode(request *ModifyCasterEpisodeRequest) (
 //
 // @return ModifyCasterLayoutResponse
 func (client *Client) ModifyCasterLayoutWithOptions(request *ModifyCasterLayoutRequest, runtime *dara.RuntimeOptions) (_result *ModifyCasterLayoutResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AudioLayer) {
@@ -30864,9 +31511,11 @@ func (client *Client) ModifyCasterLayout(request *ModifyCasterLayoutRequest) (_r
 //
 // @return ModifyCasterProgramResponse
 func (client *Client) ModifyCasterProgramWithOptions(request *ModifyCasterProgramRequest, runtime *dara.RuntimeOptions) (_result *ModifyCasterProgramResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -30954,9 +31603,11 @@ func (client *Client) ModifyCasterProgram(request *ModifyCasterProgramRequest) (
 //
 // @return ModifyCasterVideoResourceResponse
 func (client *Client) ModifyCasterVideoResourceWithOptions(request *ModifyCasterVideoResourceRequest, runtime *dara.RuntimeOptions) (_result *ModifyCasterVideoResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BeginOffset) {
@@ -31076,9 +31727,11 @@ func (client *Client) ModifyCasterVideoResource(request *ModifyCasterVideoResour
 //
 // @return ModifyLiveAIStudioResponse
 func (client *Client) ModifyLiveAIStudioWithOptions(tmpReq *ModifyLiveAIStudioRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveAIStudioResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyLiveAIStudioShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -31208,9 +31861,11 @@ func (client *Client) ModifyLiveAIStudio(request *ModifyLiveAIStudioRequest) (_r
 //
 // @return ModifyLiveDomainSchdmByPropertyResponse
 func (client *Client) ModifyLiveDomainSchdmByPropertyWithOptions(request *ModifyLiveDomainSchdmByPropertyRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveDomainSchdmByPropertyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -31290,9 +31945,11 @@ func (client *Client) ModifyLiveDomainSchdmByProperty(request *ModifyLiveDomainS
 //
 // @return ModifyLiveMessageAppAuditResponse
 func (client *Client) ModifyLiveMessageAppAuditWithOptions(request *ModifyLiveMessageAppAuditRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveMessageAppAuditResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -31370,9 +32027,11 @@ func (client *Client) ModifyLiveMessageAppAudit(request *ModifyLiveMessageAppAud
 //
 // @return ModifyLiveMessageAppCallbackResponse
 func (client *Client) ModifyLiveMessageAppCallbackWithOptions(request *ModifyLiveMessageAppCallbackRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveMessageAppCallbackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -31446,9 +32105,11 @@ func (client *Client) ModifyLiveMessageAppCallback(request *ModifyLiveMessageApp
 //
 // @return ModifyLiveMessageAppDisableResponse
 func (client *Client) ModifyLiveMessageAppDisableWithOptions(request *ModifyLiveMessageAppDisableRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveMessageAppDisableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -31526,9 +32187,11 @@ func (client *Client) ModifyLiveMessageAppDisable(request *ModifyLiveMessageAppD
 //
 // @return ModifyLiveMessageGroupResponse
 func (client *Client) ModifyLiveMessageGroupWithOptions(tmpReq *ModifyLiveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveMessageGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyLiveMessageGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -31632,9 +32295,11 @@ func (client *Client) ModifyLiveMessageGroup(request *ModifyLiveMessageGroupRequ
 //
 // @return ModifyLiveMessageGroupBandResponse
 func (client *Client) ModifyLiveMessageGroupBandWithOptions(tmpReq *ModifyLiveMessageGroupBandRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveMessageGroupBandResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyLiveMessageGroupBandShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -31730,9 +32395,11 @@ func (client *Client) ModifyLiveMessageGroupBand(request *ModifyLiveMessageGroup
 //
 // @return ModifyLiveMessageUserInfoResponse
 func (client *Client) ModifyLiveMessageUserInfoWithOptions(request *ModifyLiveMessageUserInfoRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveMessageUserInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -31814,9 +32481,11 @@ func (client *Client) ModifyLiveMessageUserInfo(request *ModifyLiveMessageUserIn
 //
 // @return ModifyLiveRealtimeLogDeliveryResponse
 func (client *Client) ModifyLiveRealtimeLogDeliveryWithOptions(request *ModifyLiveRealtimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveRealtimeLogDeliveryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -31890,9 +32559,11 @@ func (client *Client) ModifyLiveRealtimeLogDelivery(request *ModifyLiveRealtimeL
 //
 // @return ModifyShowListResponse
 func (client *Client) ModifyShowListWithOptions(request *ModifyShowListRequest, runtime *dara.RuntimeOptions) (_result *ModifyShowListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -31994,9 +32665,11 @@ func (client *Client) ModifyShowList(request *ModifyShowListRequest) (_result *M
 //
 // @return ModifyStudioLayoutResponse
 func (client *Client) ModifyStudioLayoutWithOptions(request *ModifyStudioLayoutRequest, runtime *dara.RuntimeOptions) (_result *ModifyStudioLayoutResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BgImageConfig) {
@@ -32104,9 +32777,11 @@ func (client *Client) ModifyStudioLayout(request *ModifyStudioLayoutRequest) (_r
 //
 // @return MuteAllGroupUserResponse
 func (client *Client) MuteAllGroupUserWithOptions(request *MuteAllGroupUserRequest, runtime *dara.RuntimeOptions) (_result *MuteAllGroupUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -32188,9 +32863,11 @@ func (client *Client) MuteAllGroupUser(request *MuteAllGroupUserRequest) (_resul
 //
 // @return MuteGroupUserResponse
 func (client *Client) MuteGroupUserWithOptions(tmpReq *MuteGroupUserRequest, runtime *dara.RuntimeOptions) (_result *MuteGroupUserResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &MuteGroupUserShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -32288,9 +32965,11 @@ func (client *Client) MuteGroupUser(request *MuteGroupUserRequest) (_result *Mut
 //
 // @return OpenLiveShiftResponse
 func (client *Client) OpenLiveShiftWithOptions(request *OpenLiveShiftRequest, runtime *dara.RuntimeOptions) (_result *OpenLiveShiftResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -32392,9 +33071,11 @@ func (client *Client) OpenLiveShift(request *OpenLiveShiftRequest) (_result *Ope
 //
 // @return PlayChoosenShowResponse
 func (client *Client) PlayChoosenShowWithOptions(request *PlayChoosenShowRequest, runtime *dara.RuntimeOptions) (_result *PlayChoosenShowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -32480,9 +33161,11 @@ func (client *Client) PlayChoosenShow(request *PlayChoosenShowRequest) (_result 
 //
 // @return PublishLiveStagingConfigToProductionResponse
 func (client *Client) PublishLiveStagingConfigToProductionWithOptions(request *PublishLiveStagingConfigToProductionRequest, runtime *dara.RuntimeOptions) (_result *PublishLiveStagingConfigToProductionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -32552,6 +33235,110 @@ func (client *Client) PublishLiveStagingConfigToProduction(request *PublishLiveS
 
 // Summary:
 //
+// 用于修改指定直播流的录制文件存储时长。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该接口允许用户为一个或多个指定的直播流设置新的录制文件存储期限。
+//
+// - `Tag` 字段必须符合格式 `[0-9]+days`，表示直播结束后录制内容将被保存的天数。
+//
+// - 如果对某个流的存储时间修改失败，错误信息会被记录在返回结果中。对于失败的情况，调用方应重试最多3次；如果超过重试次数仍失败，则视为最终失败。
+//
+// - 为了支持未来可能的需求变化（如更长的存储周期），请确保您的系统能够处理不同的时间段值。
+//
+// - 成功执行后，供应商会通过异步回调的方式通知调用方所有操作的结果。若回调失败，将按照1小时、2小时、4小时的时间间隔尝试重新发送，直至成功或达到最大重试次数。
+//
+// @param tmpReq - PutRecordStorageLifeCycleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PutRecordStorageLifeCycleResponse
+func (client *Client) PutRecordStorageLifeCycleWithOptions(tmpReq *PutRecordStorageLifeCycleRequest, runtime *dara.RuntimeOptions) (_result *PutRecordStorageLifeCycleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &PutRecordStorageLifeCycleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.StreamIds) {
+		request.StreamIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StreamIds, dara.String("StreamIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.StreamIdsShrink) {
+		body["StreamIds"] = request.StreamIdsShrink
+	}
+
+	if !dara.IsNil(request.Tag) {
+		body["Tag"] = request.Tag
+	}
+
+	if !dara.IsNil(request.UnixTimestamp) {
+		body["UnixTimestamp"] = request.UnixTimestamp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PutRecordStorageLifeCycle"),
+		Version:     dara.String("2016-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PutRecordStorageLifeCycleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于修改指定直播流的录制文件存储时长。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该接口允许用户为一个或多个指定的直播流设置新的录制文件存储期限。
+//
+// - `Tag` 字段必须符合格式 `[0-9]+days`，表示直播结束后录制内容将被保存的天数。
+//
+// - 如果对某个流的存储时间修改失败，错误信息会被记录在返回结果中。对于失败的情况，调用方应重试最多3次；如果超过重试次数仍失败，则视为最终失败。
+//
+// - 为了支持未来可能的需求变化（如更长的存储周期），请确保您的系统能够处理不同的时间段值。
+//
+// - 成功执行后，供应商会通过异步回调的方式通知调用方所有操作的结果。若回调失败，将按照1小时、2小时、4小时的时间间隔尝试重新发送，直至成功或达到最大重试次数。
+//
+// @param request - PutRecordStorageLifeCycleRequest
+//
+// @return PutRecordStorageLifeCycleResponse
+func (client *Client) PutRecordStorageLifeCycle(request *PutRecordStorageLifeCycleRequest) (_result *PutRecordStorageLifeCycleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &PutRecordStorageLifeCycleResponse{}
+	_body, _err := client.PutRecordStorageLifeCycleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the dual-stream disaster recovery records of online streams.
 //
 // @param request - QueryLiveDomainMultiStreamListRequest
@@ -32560,9 +33347,11 @@ func (client *Client) PublishLiveStagingConfigToProduction(request *PublishLiveS
 //
 // @return QueryLiveDomainMultiStreamListResponse
 func (client *Client) QueryLiveDomainMultiStreamListWithOptions(request *QueryLiveDomainMultiStreamListRequest, runtime *dara.RuntimeOptions) (_result *QueryLiveDomainMultiStreamListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -32622,9 +33411,11 @@ func (client *Client) QueryLiveDomainMultiStreamList(request *QueryLiveDomainMul
 //
 // @return QueryMessageAppResponse
 func (client *Client) QueryMessageAppWithOptions(request *QueryMessageAppRequest, runtime *dara.RuntimeOptions) (_result *QueryMessageAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -32708,9 +33499,11 @@ func (client *Client) QueryMessageApp(request *QueryMessageAppRequest) (_result 
 //
 // @return QueryRtcAsrTasksResponse
 func (client *Client) QueryRtcAsrTasksWithOptions(request *QueryRtcAsrTasksRequest, runtime *dara.RuntimeOptions) (_result *QueryRtcAsrTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -32788,9 +33581,11 @@ func (client *Client) QueryRtcAsrTasks(request *QueryRtcAsrTasksRequest) (_resul
 //
 // @return QuerySnapshotCallbackAuthResponse
 func (client *Client) QuerySnapshotCallbackAuthWithOptions(request *QuerySnapshotCallbackAuthRequest, runtime *dara.RuntimeOptions) (_result *QuerySnapshotCallbackAuthResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -32880,9 +33675,11 @@ func (client *Client) QuerySnapshotCallbackAuth(request *QuerySnapshotCallbackAu
 //
 // @return RealTimeRecordCommandResponse
 func (client *Client) RealTimeRecordCommandWithOptions(request *RealTimeRecordCommandRequest, runtime *dara.RuntimeOptions) (_result *RealTimeRecordCommandResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -32986,9 +33783,11 @@ func (client *Client) RealTimeRecordCommand(request *RealTimeRecordCommandReques
 //
 // @return RecoverLiveMessageDeletedGroupResponse
 func (client *Client) RecoverLiveMessageDeletedGroupWithOptions(request *RecoverLiveMessageDeletedGroupRequest, runtime *dara.RuntimeOptions) (_result *RecoverLiveMessageDeletedGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -33072,9 +33871,11 @@ func (client *Client) RecoverLiveMessageDeletedGroup(request *RecoverLiveMessage
 //
 // @return RemoveLiveMessageGroupBandResponse
 func (client *Client) RemoveLiveMessageGroupBandWithOptions(tmpReq *RemoveLiveMessageGroupBandRequest, runtime *dara.RuntimeOptions) (_result *RemoveLiveMessageGroupBandResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RemoveLiveMessageGroupBandShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -33168,9 +33969,11 @@ func (client *Client) RemoveLiveMessageGroupBand(request *RemoveLiveMessageGroup
 //
 // @return RemoveShowFromShowListResponse
 func (client *Client) RemoveShowFromShowListWithOptions(request *RemoveShowFromShowListRequest, runtime *dara.RuntimeOptions) (_result *RemoveShowFromShowListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -33266,9 +34069,11 @@ func (client *Client) RemoveShowFromShowList(request *RemoveShowFromShowListRequ
 //
 // @return RemoveTerminalsResponse
 func (client *Client) RemoveTerminalsWithOptions(request *RemoveTerminalsRequest, runtime *dara.RuntimeOptions) (_result *RemoveTerminalsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -33352,9 +34157,11 @@ func (client *Client) RemoveTerminals(request *RemoveTerminalsRequest) (_result 
 //
 // @return RestartCasterResponse
 func (client *Client) RestartCasterWithOptions(request *RestartCasterRequest, runtime *dara.RuntimeOptions) (_result *RestartCasterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -33446,9 +34253,11 @@ func (client *Client) RestartCaster(request *RestartCasterRequest) (_result *Res
 //
 // @return RestartLivePullToPushResponse
 func (client *Client) RestartLivePullToPushWithOptions(request *RestartLivePullToPushRequest, runtime *dara.RuntimeOptions) (_result *RestartLivePullToPushResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -33514,9 +34323,11 @@ func (client *Client) RestartLivePullToPush(request *RestartLivePullToPushReques
 //
 // @return RestartTranscodeTaskResponse
 func (client *Client) RestartTranscodeTaskWithOptions(request *RestartTranscodeTaskRequest, runtime *dara.RuntimeOptions) (_result *RestartTranscodeTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -33594,9 +34405,11 @@ func (client *Client) RestartTranscodeTask(request *RestartTranscodeTaskRequest)
 //
 // @return ResumeLiveStreamResponse
 func (client *Client) ResumeLiveStreamWithOptions(request *ResumeLiveStreamRequest, runtime *dara.RuntimeOptions) (_result *ResumeLiveStreamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -33690,9 +34503,11 @@ func (client *Client) ResumeLiveStream(request *ResumeLiveStreamRequest) (_resul
 //
 // @return RollbackLiveStagingConfigResponse
 func (client *Client) RollbackLiveStagingConfigWithOptions(request *RollbackLiveStagingConfigRequest, runtime *dara.RuntimeOptions) (_result *RollbackLiveStagingConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -33776,9 +34591,11 @@ func (client *Client) RollbackLiveStagingConfig(request *RollbackLiveStagingConf
 //
 // @return SendLikeResponse
 func (client *Client) SendLikeWithOptions(request *SendLikeRequest, runtime *dara.RuntimeOptions) (_result *SendLikeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -33866,9 +34683,11 @@ func (client *Client) SendLike(request *SendLikeRequest) (_result *SendLikeRespo
 //
 // @return SendLiveMessageGroupResponse
 func (client *Client) SendLiveMessageGroupWithOptions(request *SendLiveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *SendLiveMessageGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -33982,9 +34801,11 @@ func (client *Client) SendLiveMessageGroup(request *SendLiveMessageGroupRequest)
 //
 // @return SendLiveMessageUserResponse
 func (client *Client) SendLiveMessageUserWithOptions(request *SendLiveMessageUserRequest, runtime *dara.RuntimeOptions) (_result *SendLiveMessageUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -34088,9 +34909,11 @@ func (client *Client) SendLiveMessageUser(request *SendLiveMessageUserRequest) (
 //
 // @return SendMessageToGroupResponse
 func (client *Client) SendMessageToGroupWithOptions(request *SendMessageToGroupRequest, runtime *dara.RuntimeOptions) (_result *SendMessageToGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SkipAudit) {
@@ -34182,9 +35005,11 @@ func (client *Client) SendMessageToGroup(request *SendMessageToGroupRequest) (_r
 //
 // @return SendMessageToGroupUsersResponse
 func (client *Client) SendMessageToGroupUsersWithOptions(tmpReq *SendMessageToGroupUsersRequest, runtime *dara.RuntimeOptions) (_result *SendMessageToGroupUsersResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SendMessageToGroupUsersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -34288,9 +35113,11 @@ func (client *Client) SendMessageToGroupUsers(request *SendMessageToGroupUsersRe
 //
 // @return SetCasterChannelResponse
 func (client *Client) SetCasterChannelWithOptions(request *SetCasterChannelRequest, runtime *dara.RuntimeOptions) (_result *SetCasterChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -34392,9 +35219,11 @@ func (client *Client) SetCasterChannel(request *SetCasterChannelRequest) (_resul
 //
 // @return SetCasterConfigResponse
 func (client *Client) SetCasterConfigWithOptions(request *SetCasterConfigRequest, runtime *dara.RuntimeOptions) (_result *SetCasterConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoSwitchUrgentConfig) {
@@ -34550,9 +35379,11 @@ func (client *Client) SetCasterConfig(request *SetCasterConfigRequest) (_result 
 //
 // @return SetCasterSceneConfigResponse
 func (client *Client) SetCasterSceneConfigWithOptions(request *SetCasterSceneConfigRequest, runtime *dara.RuntimeOptions) (_result *SetCasterSceneConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -34648,9 +35479,11 @@ func (client *Client) SetCasterSceneConfig(request *SetCasterSceneConfigRequest)
 //
 // @return SetLiveDomainCertificateResponse
 func (client *Client) SetLiveDomainCertificateWithOptions(request *SetLiveDomainCertificateRequest, runtime *dara.RuntimeOptions) (_result *SetLiveDomainCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertName) {
@@ -34756,9 +35589,11 @@ func (client *Client) SetLiveDomainCertificate(request *SetLiveDomainCertificate
 //
 // @return SetLiveDomainMultiStreamConfigResponse
 func (client *Client) SetLiveDomainMultiStreamConfigWithOptions(request *SetLiveDomainMultiStreamConfigRequest, runtime *dara.RuntimeOptions) (_result *SetLiveDomainMultiStreamConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -34820,9 +35655,11 @@ func (client *Client) SetLiveDomainMultiStreamConfig(request *SetLiveDomainMulti
 //
 // @return SetLiveDomainMultiStreamMasterResponse
 func (client *Client) SetLiveDomainMultiStreamMasterWithOptions(request *SetLiveDomainMultiStreamMasterRequest, runtime *dara.RuntimeOptions) (_result *SetLiveDomainMultiStreamMasterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -34876,9 +35713,11 @@ func (client *Client) SetLiveDomainMultiStreamMaster(request *SetLiveDomainMulti
 //
 // @return SetLiveDomainMultiStreamOptimalModeResponse
 func (client *Client) SetLiveDomainMultiStreamOptimalModeWithOptions(request *SetLiveDomainMultiStreamOptimalModeRequest, runtime *dara.RuntimeOptions) (_result *SetLiveDomainMultiStreamOptimalModeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -34942,9 +35781,11 @@ func (client *Client) SetLiveDomainMultiStreamOptimalMode(request *SetLiveDomain
 //
 // @return SetLiveDomainStagingConfigResponse
 func (client *Client) SetLiveDomainStagingConfigWithOptions(request *SetLiveDomainStagingConfigRequest, runtime *dara.RuntimeOptions) (_result *SetLiveDomainStagingConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -35042,9 +35883,11 @@ func (client *Client) SetLiveDomainStagingConfig(request *SetLiveDomainStagingCo
 //
 // @return SetLiveEdgeTransferResponse
 func (client *Client) SetLiveEdgeTransferWithOptions(request *SetLiveEdgeTransferRequest, runtime *dara.RuntimeOptions) (_result *SetLiveEdgeTransferResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -35158,9 +36001,11 @@ func (client *Client) SetLiveEdgeTransfer(request *SetLiveEdgeTransferRequest) (
 //
 // @return SetLiveLazyPullStreamInfoConfigResponse
 func (client *Client) SetLiveLazyPullStreamInfoConfigWithOptions(request *SetLiveLazyPullStreamInfoConfigRequest, runtime *dara.RuntimeOptions) (_result *SetLiveLazyPullStreamInfoConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -35266,9 +36111,11 @@ func (client *Client) SetLiveLazyPullStreamInfoConfig(request *SetLiveLazyPullSt
 //
 // @return SetLiveMpuTaskSeiResponse
 func (client *Client) SetLiveMpuTaskSeiWithOptions(request *SetLiveMpuTaskSeiRequest, runtime *dara.RuntimeOptions) (_result *SetLiveMpuTaskSeiResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -35352,9 +36199,11 @@ func (client *Client) SetLiveMpuTaskSei(request *SetLiveMpuTaskSeiRequest) (_res
 //
 // @return SetLiveStreamBlockResponse
 func (client *Client) SetLiveStreamBlockWithOptions(request *SetLiveStreamBlockRequest, runtime *dara.RuntimeOptions) (_result *SetLiveStreamBlockResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -35468,9 +36317,11 @@ func (client *Client) SetLiveStreamBlock(request *SetLiveStreamBlockRequest) (_r
 //
 // @return SetLiveStreamDelayConfigResponse
 func (client *Client) SetLiveStreamDelayConfigWithOptions(request *SetLiveStreamDelayConfigRequest, runtime *dara.RuntimeOptions) (_result *SetLiveStreamDelayConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -35590,9 +36441,11 @@ func (client *Client) SetLiveStreamDelayConfig(request *SetLiveStreamDelayConfig
 //
 // @return SetLiveStreamPreloadTasksResponse
 func (client *Client) SetLiveStreamPreloadTasksWithOptions(request *SetLiveStreamPreloadTasksRequest, runtime *dara.RuntimeOptions) (_result *SetLiveStreamPreloadTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Area) {
@@ -35694,9 +36547,11 @@ func (client *Client) SetLiveStreamPreloadTasks(request *SetLiveStreamPreloadTas
 //
 // @return SetLiveStreamsNotifyUrlConfigResponse
 func (client *Client) SetLiveStreamsNotifyUrlConfigWithOptions(request *SetLiveStreamsNotifyUrlConfigRequest, runtime *dara.RuntimeOptions) (_result *SetLiveStreamsNotifyUrlConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -35804,9 +36659,11 @@ func (client *Client) SetLiveStreamsNotifyUrlConfig(request *SetLiveStreamsNotif
 //
 // @return SetShowListBackgroundResponse
 func (client *Client) SetShowListBackgroundWithOptions(request *SetShowListBackgroundRequest, runtime *dara.RuntimeOptions) (_result *SetShowListBackgroundResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -35912,9 +36769,11 @@ func (client *Client) SetShowListBackground(request *SetShowListBackgroundReques
 //
 // @return SetSnapshotCallbackAuthResponse
 func (client *Client) SetSnapshotCallbackAuthWithOptions(request *SetSnapshotCallbackAuthRequest, runtime *dara.RuntimeOptions) (_result *SetSnapshotCallbackAuthResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CallbackAuthKey) {
@@ -36008,9 +36867,11 @@ func (client *Client) SetSnapshotCallbackAuth(request *SetSnapshotCallbackAuthRe
 //
 // @return StartCasterResponse
 func (client *Client) StartCasterWithOptions(request *StartCasterRequest, runtime *dara.RuntimeOptions) (_result *StartCasterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -36092,9 +36953,11 @@ func (client *Client) StartCaster(request *StartCasterRequest) (_result *StartCa
 //
 // @return StartCasterSceneResponse
 func (client *Client) StartCasterSceneWithOptions(request *StartCasterSceneRequest, runtime *dara.RuntimeOptions) (_result *StartCasterSceneResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -36182,9 +37045,11 @@ func (client *Client) StartCasterScene(request *StartCasterSceneRequest) (_resul
 //
 // @return StartEdgeTranscodeJobResponse
 func (client *Client) StartEdgeTranscodeJobWithOptions(request *StartEdgeTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *StartEdgeTranscodeJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -36272,9 +37137,11 @@ func (client *Client) StartEdgeTranscodeJob(request *StartEdgeTranscodeJobReques
 //
 // @return StartLiveDomainResponse
 func (client *Client) StartLiveDomainWithOptions(request *StartLiveDomainRequest, runtime *dara.RuntimeOptions) (_result *StartLiveDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -36388,9 +37255,11 @@ func (client *Client) StartLiveDomain(request *StartLiveDomainRequest) (_result 
 //
 // @return StartLiveMPUTaskResponse
 func (client *Client) StartLiveMPUTaskWithOptions(tmpReq *StartLiveMPUTaskRequest, runtime *dara.RuntimeOptions) (_result *StartLiveMPUTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &StartLiveMPUTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -36554,9 +37423,11 @@ func (client *Client) StartLiveMPUTask(request *StartLiveMPUTaskRequest) (_resul
 //
 // @return StartLiveStreamMonitorResponse
 func (client *Client) StartLiveStreamMonitorWithOptions(request *StartLiveStreamMonitorRequest, runtime *dara.RuntimeOptions) (_result *StartLiveStreamMonitorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MonitorId) {
@@ -36638,9 +37509,11 @@ func (client *Client) StartLiveStreamMonitor(request *StartLiveStreamMonitorRequ
 //
 // @return StartPlaylistResponse
 func (client *Client) StartPlaylistWithOptions(request *StartPlaylistRequest, runtime *dara.RuntimeOptions) (_result *StartPlaylistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Offset) {
@@ -36726,9 +37599,11 @@ func (client *Client) StartPlaylist(request *StartPlaylistRequest) (_result *Sta
 //
 // @return StartRtcCloudRecordingResponse
 func (client *Client) StartRtcCloudRecordingWithOptions(tmpReq *StartRtcCloudRecordingRequest, runtime *dara.RuntimeOptions) (_result *StartRtcCloudRecordingResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &StartRtcCloudRecordingShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -36852,9 +37727,11 @@ func (client *Client) StartRtcCloudRecording(request *StartRtcCloudRecordingRequ
 //
 // @return StopCasterResponse
 func (client *Client) StopCasterWithOptions(request *StopCasterRequest, runtime *dara.RuntimeOptions) (_result *StopCasterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -36934,9 +37811,11 @@ func (client *Client) StopCaster(request *StopCasterRequest) (_result *StopCaste
 //
 // @return StopCasterSceneResponse
 func (client *Client) StopCasterSceneWithOptions(request *StopCasterSceneRequest, runtime *dara.RuntimeOptions) (_result *StopCasterSceneResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -37022,9 +37901,11 @@ func (client *Client) StopCasterScene(request *StopCasterSceneRequest) (_result 
 //
 // @return StopEdgeTranscodeJobResponse
 func (client *Client) StopEdgeTranscodeJobWithOptions(request *StopEdgeTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *StopEdgeTranscodeJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -37112,9 +37993,11 @@ func (client *Client) StopEdgeTranscodeJob(request *StopEdgeTranscodeJobRequest)
 //
 // @return StopLiveDomainResponse
 func (client *Client) StopLiveDomainWithOptions(request *StopLiveDomainRequest, runtime *dara.RuntimeOptions) (_result *StopLiveDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -37198,9 +38081,11 @@ func (client *Client) StopLiveDomain(request *StopLiveDomainRequest) (_result *S
 //
 // @return StopLiveMPUTaskResponse
 func (client *Client) StopLiveMPUTaskWithOptions(request *StopLiveMPUTaskRequest, runtime *dara.RuntimeOptions) (_result *StopLiveMPUTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -37282,9 +38167,11 @@ func (client *Client) StopLiveMPUTask(request *StopLiveMPUTaskRequest) (_result 
 //
 // @return StopLivePullToPushResponse
 func (client *Client) StopLivePullToPushWithOptions(request *StopLivePullToPushRequest, runtime *dara.RuntimeOptions) (_result *StopLivePullToPushResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -37356,9 +38243,11 @@ func (client *Client) StopLivePullToPush(request *StopLivePullToPushRequest) (_r
 //
 // @return StopLiveStreamMonitorResponse
 func (client *Client) StopLiveStreamMonitorWithOptions(request *StopLiveStreamMonitorRequest, runtime *dara.RuntimeOptions) (_result *StopLiveStreamMonitorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MonitorId) {
@@ -37440,9 +38329,11 @@ func (client *Client) StopLiveStreamMonitor(request *StopLiveStreamMonitorReques
 //
 // @return StopPlaylistResponse
 func (client *Client) StopPlaylistWithOptions(request *StopPlaylistRequest, runtime *dara.RuntimeOptions) (_result *StopPlaylistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -37520,9 +38411,11 @@ func (client *Client) StopPlaylist(request *StopPlaylistRequest) (_result *StopP
 //
 // @return StopRtcAsrTaskResponse
 func (client *Client) StopRtcAsrTaskWithOptions(request *StopRtcAsrTaskRequest, runtime *dara.RuntimeOptions) (_result *StopRtcAsrTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -37592,9 +38485,11 @@ func (client *Client) StopRtcAsrTask(request *StopRtcAsrTaskRequest) (_result *S
 //
 // @return StopRtcCloudRecordingResponse
 func (client *Client) StopRtcCloudRecordingWithOptions(request *StopRtcCloudRecordingRequest, runtime *dara.RuntimeOptions) (_result *StopRtcCloudRecordingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -37656,9 +38551,11 @@ func (client *Client) StopRtcCloudRecording(request *StopRtcCloudRecordingReques
 //
 // @return TagLiveResourcesResponse
 func (client *Client) TagLiveResourcesWithOptions(request *TagLiveResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagLiveResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -37726,15 +38623,21 @@ func (client *Client) TagLiveResources(request *TagLiveResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 解绑标签
+//
 // @param request - UnTagLiveResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnTagLiveResourcesResponse
 func (client *Client) UnTagLiveResourcesWithOptions(request *UnTagLiveResourcesRequest, runtime *dara.RuntimeOptions) (_result *UnTagLiveResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -37784,6 +38687,10 @@ func (client *Client) UnTagLiveResourcesWithOptions(request *UnTagLiveResourcesR
 	return _result, _err
 }
 
+// Summary:
+//
+// 解绑标签
+//
 // @param request - UnTagLiveResourcesRequest
 //
 // @return UnTagLiveResourcesResponse
@@ -37818,9 +38725,11 @@ func (client *Client) UnTagLiveResources(request *UnTagLiveResourcesRequest) (_r
 //
 // @return UnbanLiveMessageGroupResponse
 func (client *Client) UnbanLiveMessageGroupWithOptions(request *UnbanLiveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *UnbanLiveMessageGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -37906,9 +38815,11 @@ func (client *Client) UnbanLiveMessageGroup(request *UnbanLiveMessageGroupReques
 //
 // @return UpdateCasterResourceGroupResponse
 func (client *Client) UpdateCasterResourceGroupWithOptions(request *UpdateCasterResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateCasterResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -37996,9 +38907,11 @@ func (client *Client) UpdateCasterResourceGroup(request *UpdateCasterResourceGro
 //
 // @return UpdateCasterSceneAudioResponse
 func (client *Client) UpdateCasterSceneAudioWithOptions(request *UpdateCasterSceneAudioRequest, runtime *dara.RuntimeOptions) (_result *UpdateCasterSceneAudioResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AudioLayer) {
@@ -38096,9 +39009,11 @@ func (client *Client) UpdateCasterSceneAudio(request *UpdateCasterSceneAudioRequ
 //
 // @return UpdateCasterSceneConfigResponse
 func (client *Client) UpdateCasterSceneConfigWithOptions(request *UpdateCasterSceneConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateCasterSceneConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CasterId) {
@@ -38202,9 +39117,11 @@ func (client *Client) UpdateCasterSceneConfig(request *UpdateCasterSceneConfigRe
 //
 // @return UpdateCustomLiveStreamTranscodeResponse
 func (client *Client) UpdateCustomLiveStreamTranscodeWithOptions(request *UpdateCustomLiveStreamTranscodeRequest, runtime *dara.RuntimeOptions) (_result *UpdateCustomLiveStreamTranscodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -38233,6 +39150,10 @@ func (client *Client) UpdateCustomLiveStreamTranscodeWithOptions(request *Update
 
 	if !dara.IsNil(request.BitrateWithSource) {
 		query["BitrateWithSource"] = request.BitrateWithSource
+	}
+
+	if !dara.IsNil(request.DeInterlaced) {
+		query["DeInterlaced"] = request.DeInterlaced
 	}
 
 	if !dara.IsNil(request.Domain) {
@@ -38378,9 +39299,11 @@ func (client *Client) UpdateCustomLiveStreamTranscode(request *UpdateCustomLiveS
 //
 // @return UpdateEdgeTranscodeJobResponse
 func (client *Client) UpdateEdgeTranscodeJobWithOptions(request *UpdateEdgeTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *UpdateEdgeTranscodeJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -38488,9 +39411,11 @@ func (client *Client) UpdateEdgeTranscodeJob(request *UpdateEdgeTranscodeJobRequ
 //
 // @return UpdateEventSubResponse
 func (client *Client) UpdateEventSubWithOptions(request *UpdateEventSubRequest, runtime *dara.RuntimeOptions) (_result *UpdateEventSubResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -38590,9 +39515,11 @@ func (client *Client) UpdateEventSub(request *UpdateEventSubRequest) (_result *U
 //
 // @return UpdateLiveAIProduceRulesResponse
 func (client *Client) UpdateLiveAIProduceRulesWithOptions(request *UpdateLiveAIProduceRulesRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveAIProduceRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -38704,9 +39631,11 @@ func (client *Client) UpdateLiveAIProduceRules(request *UpdateLiveAIProduceRules
 //
 // @return UpdateLiveAISubtitleResponse
 func (client *Client) UpdateLiveAISubtitleWithOptions(tmpReq *UpdateLiveAISubtitleRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveAISubtitleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateLiveAISubtitleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -38850,9 +39779,11 @@ func (client *Client) UpdateLiveAISubtitle(request *UpdateLiveAISubtitleRequest)
 //
 // @return UpdateLiveAppRecordConfigResponse
 func (client *Client) UpdateLiveAppRecordConfigWithOptions(request *UpdateLiveAppRecordConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveAppRecordConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -38974,9 +39905,11 @@ func (client *Client) UpdateLiveAppRecordConfig(request *UpdateLiveAppRecordConf
 //
 // @return UpdateLiveAppSnapshotConfigResponse
 func (client *Client) UpdateLiveAppSnapshotConfigWithOptions(request *UpdateLiveAppSnapshotConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveAppSnapshotConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -39088,9 +40021,11 @@ func (client *Client) UpdateLiveAppSnapshotConfig(request *UpdateLiveAppSnapshot
 //
 // @return UpdateLiveAudioAuditConfigResponse
 func (client *Client) UpdateLiveAudioAuditConfigWithOptions(request *UpdateLiveAudioAuditConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveAudioAuditConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -39190,9 +40125,11 @@ func (client *Client) UpdateLiveAudioAuditConfig(request *UpdateLiveAudioAuditCo
 //
 // @return UpdateLiveAudioAuditNotifyConfigResponse
 func (client *Client) UpdateLiveAudioAuditNotifyConfigWithOptions(request *UpdateLiveAudioAuditNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveAudioAuditNotifyConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Callback) {
@@ -39274,9 +40211,11 @@ func (client *Client) UpdateLiveAudioAuditNotifyConfig(request *UpdateLiveAudioA
 //
 // @return UpdateLiveCenterTransferResponse
 func (client *Client) UpdateLiveCenterTransferWithOptions(request *UpdateLiveCenterTransferRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveCenterTransferResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -39380,9 +40319,11 @@ func (client *Client) UpdateLiveCenterTransfer(request *UpdateLiveCenterTransfer
 //
 // @return UpdateLiveDelayConfigResponse
 func (client *Client) UpdateLiveDelayConfigWithOptions(request *UpdateLiveDelayConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveDelayConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -39480,9 +40421,11 @@ func (client *Client) UpdateLiveDelayConfig(request *UpdateLiveDelayConfigReques
 //
 // @return UpdateLiveDetectNotifyConfigResponse
 func (client *Client) UpdateLiveDetectNotifyConfigWithOptions(request *UpdateLiveDetectNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveDetectNotifyConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -39570,9 +40513,11 @@ func (client *Client) UpdateLiveDetectNotifyConfig(request *UpdateLiveDetectNoti
 //
 // @return UpdateLiveMPUTaskResponse
 func (client *Client) UpdateLiveMPUTaskWithOptions(tmpReq *UpdateLiveMPUTaskRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveMPUTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateLiveMPUTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -39696,9 +40641,11 @@ func (client *Client) UpdateLiveMPUTask(request *UpdateLiveMPUTaskRequest) (_res
 //
 // @return UpdateLivePackageConfigResponse
 func (client *Client) UpdateLivePackageConfigWithOptions(request *UpdateLivePackageConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLivePackageConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -39810,9 +40757,11 @@ func (client *Client) UpdateLivePackageConfig(request *UpdateLivePackageConfigRe
 //
 // @return UpdateLivePullStreamInfoConfigResponse
 func (client *Client) UpdateLivePullStreamInfoConfigWithOptions(request *UpdateLivePullStreamInfoConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLivePullStreamInfoConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -39890,9 +40839,11 @@ func (client *Client) UpdateLivePullStreamInfoConfig(request *UpdateLivePullStre
 //
 // @return UpdateLivePullToPushResponse
 func (client *Client) UpdateLivePullToPushWithOptions(tmpReq *UpdateLivePullToPushRequest, runtime *dara.RuntimeOptions) (_result *UpdateLivePullToPushResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateLivePullToPushShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -39980,9 +40931,11 @@ func (client *Client) UpdateLivePullToPush(request *UpdateLivePullToPushRequest)
 //
 // @return UpdateLiveRecordNotifyConfigResponse
 func (client *Client) UpdateLiveRecordNotifyConfigWithOptions(request *UpdateLiveRecordNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveRecordNotifyConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -40078,9 +41031,11 @@ func (client *Client) UpdateLiveRecordNotifyConfig(request *UpdateLiveRecordNoti
 //
 // @return UpdateLiveRecordVodConfigResponse
 func (client *Client) UpdateLiveRecordVodConfigWithOptions(request *UpdateLiveRecordVodConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveRecordVodConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -40188,9 +41143,11 @@ func (client *Client) UpdateLiveRecordVodConfig(request *UpdateLiveRecordVodConf
 //
 // @return UpdateLiveSnapshotDetectPornConfigResponse
 func (client *Client) UpdateLiveSnapshotDetectPornConfigWithOptions(request *UpdateLiveSnapshotDetectPornConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveSnapshotDetectPornConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -40294,9 +41251,11 @@ func (client *Client) UpdateLiveSnapshotDetectPornConfig(request *UpdateLiveSnap
 //
 // @return UpdateLiveSnapshotNotifyConfigResponse
 func (client *Client) UpdateLiveSnapshotNotifyConfigWithOptions(request *UpdateLiveSnapshotNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveSnapshotNotifyConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -40386,9 +41345,11 @@ func (client *Client) UpdateLiveSnapshotNotifyConfig(request *UpdateLiveSnapshot
 //
 // @return UpdateLiveStreamMonitorResponse
 func (client *Client) UpdateLiveStreamMonitorWithOptions(request *UpdateLiveStreamMonitorRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveStreamMonitorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -40506,9 +41467,11 @@ func (client *Client) UpdateLiveStreamMonitor(request *UpdateLiveStreamMonitorRe
 //
 // @return UpdateLiveStreamTranscodeResponse
 func (client *Client) UpdateLiveStreamTranscodeWithOptions(request *UpdateLiveStreamTranscodeRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveStreamTranscodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -40606,9 +41569,11 @@ func (client *Client) UpdateLiveStreamTranscode(request *UpdateLiveStreamTransco
 //
 // @return UpdateLiveStreamWatermarkResponse
 func (client *Client) UpdateLiveStreamWatermarkWithOptions(request *UpdateLiveStreamWatermarkRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveStreamWatermarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -40730,9 +41695,11 @@ func (client *Client) UpdateLiveStreamWatermark(request *UpdateLiveStreamWaterma
 //
 // @return UpdateLiveStreamWatermarkRuleResponse
 func (client *Client) UpdateLiveStreamWatermarkRuleWithOptions(request *UpdateLiveStreamWatermarkRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveStreamWatermarkRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -40824,9 +41791,11 @@ func (client *Client) UpdateLiveStreamWatermarkRule(request *UpdateLiveStreamWat
 //
 // @return UpdateMessageAppResponse
 func (client *Client) UpdateMessageAppWithOptions(tmpReq *UpdateMessageAppRequest, runtime *dara.RuntimeOptions) (_result *UpdateMessageAppResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateMessageAppShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -40918,9 +41887,11 @@ func (client *Client) UpdateMessageApp(request *UpdateMessageAppRequest) (_resul
 //
 // @return UpdateMessageGroupResponse
 func (client *Client) UpdateMessageGroupWithOptions(tmpReq *UpdateMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateMessageGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateMessageGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -41006,9 +41977,11 @@ func (client *Client) UpdateMessageGroup(request *UpdateMessageGroupRequest) (_r
 //
 // @return UpdateMixStreamResponse
 func (client *Client) UpdateMixStreamWithOptions(request *UpdateMixStreamRequest, runtime *dara.RuntimeOptions) (_result *UpdateMixStreamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -41094,9 +42067,11 @@ func (client *Client) UpdateMixStream(request *UpdateMixStreamRequest) (_result 
 //
 // @return UpdateRtcCloudRecordingResponse
 func (client *Client) UpdateRtcCloudRecordingWithOptions(tmpReq *UpdateRtcCloudRecordingRequest, runtime *dara.RuntimeOptions) (_result *UpdateRtcCloudRecordingResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateRtcCloudRecordingShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -41182,9 +42157,11 @@ func (client *Client) UpdateRtcCloudRecording(request *UpdateRtcCloudRecordingRe
 //
 // @return UpdateRtcMPUEventSubResponse
 func (client *Client) UpdateRtcMPUEventSubWithOptions(request *UpdateRtcMPUEventSubRequest, runtime *dara.RuntimeOptions) (_result *UpdateRtcMPUEventSubResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -41268,9 +42245,11 @@ func (client *Client) UpdateRtcMPUEventSub(request *UpdateRtcMPUEventSubRequest)
 //
 // @return UpdateRtsLiveStreamTranscodeResponse
 func (client *Client) UpdateRtsLiveStreamTranscodeWithOptions(request *UpdateRtsLiveStreamTranscodeRequest, runtime *dara.RuntimeOptions) (_result *UpdateRtsLiveStreamTranscodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.App) {
@@ -41418,9 +42397,11 @@ func (client *Client) UpdateRtsLiveStreamTranscode(request *UpdateRtsLiveStreamT
 //
 // @return VerifyLiveDomainOwnerResponse
 func (client *Client) VerifyLiveDomainOwnerWithOptions(request *VerifyLiveDomainOwnerRequest, runtime *dara.RuntimeOptions) (_result *VerifyLiveDomainOwnerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {

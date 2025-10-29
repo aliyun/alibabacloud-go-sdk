@@ -59,5 +59,10 @@ func (s *UpdateLiveAppRecordConfigResponse) SetBody(v *UpdateLiveAppRecordConfig
 }
 
 func (s *UpdateLiveAppRecordConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *DescribeLiveDrmUsageDataResponseBody) SetRequestId(v string) *DescribeL
 }
 
 func (s *DescribeLiveDrmUsageDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DrmUsageData != nil {
+		if err := s.DrmUsageData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDrmUsageDataResponseBodyDrmUsageData struct {
@@ -78,7 +83,16 @@ func (s *DescribeLiveDrmUsageDataResponseBodyDrmUsageData) SetDataModule(v []*De
 }
 
 func (s *DescribeLiveDrmUsageDataResponseBodyDrmUsageData) Validate() error {
-	return dara.Validate(s)
+	if s.DataModule != nil {
+		for _, item := range s.DataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDrmUsageDataResponseBodyDrmUsageDataDataModule struct {

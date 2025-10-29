@@ -53,7 +53,12 @@ func (s *DescribeLiveDomainStreamTranscodeDataResponseBody) SetTranscodeDataList
 }
 
 func (s *DescribeLiveDomainStreamTranscodeDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TranscodeDataList != nil {
+		if err := s.TranscodeDataList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataList struct {
@@ -78,7 +83,16 @@ func (s *DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataList) Set
 }
 
 func (s *DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataList) Validate() error {
-	return dara.Validate(s)
+	if s.TranscodeData != nil {
+		for _, item := range s.TranscodeData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataListTranscodeData struct {

@@ -87,7 +87,12 @@ func (s *DescribeLiveDelayedStreamingUsageResponseBody) SetStartTime(v string) *
 }
 
 func (s *DescribeLiveDelayedStreamingUsageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DelayData != nil {
+		if err := s.DelayData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDelayedStreamingUsageResponseBodyDelayData struct {
@@ -112,7 +117,16 @@ func (s *DescribeLiveDelayedStreamingUsageResponseBodyDelayData) SetDelayDataIte
 }
 
 func (s *DescribeLiveDelayedStreamingUsageResponseBodyDelayData) Validate() error {
-	return dara.Validate(s)
+	if s.DelayDataItem != nil {
+		for _, item := range s.DelayDataItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDelayedStreamingUsageResponseBodyDelayDataDelayDataItem struct {

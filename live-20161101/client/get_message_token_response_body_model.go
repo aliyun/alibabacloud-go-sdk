@@ -53,7 +53,12 @@ func (s *GetMessageTokenResponseBody) SetResult(v *GetMessageTokenResponseBodyRe
 }
 
 func (s *GetMessageTokenResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMessageTokenResponseBodyResult struct {

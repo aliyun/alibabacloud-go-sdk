@@ -70,7 +70,12 @@ func (s *ListLiveDelayConfigResponseBody) SetTotal(v int32) *ListLiveDelayConfig
 }
 
 func (s *ListLiveDelayConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DelayConfigList != nil {
+		if err := s.DelayConfigList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLiveDelayConfigResponseBodyDelayConfigList struct {
@@ -95,7 +100,16 @@ func (s *ListLiveDelayConfigResponseBodyDelayConfigList) SetDelayConfig(v []*Lis
 }
 
 func (s *ListLiveDelayConfigResponseBodyDelayConfigList) Validate() error {
-	return dara.Validate(s)
+	if s.DelayConfig != nil {
+		for _, item := range s.DelayConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLiveDelayConfigResponseBodyDelayConfigListDelayConfig struct {

@@ -159,7 +159,32 @@ func (s *StartRtcCloudRecordingRequest) SetSubscribeParams(v *StartRtcCloudRecor
 }
 
 func (s *StartRtcCloudRecordingRequest) Validate() error {
-	return dara.Validate(s)
+	if s.MixLayoutParams != nil {
+		if err := s.MixLayoutParams.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MixTranscodeParams != nil {
+		if err := s.MixTranscodeParams.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RecordParams != nil {
+		if err := s.RecordParams.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StorageParams != nil {
+		if err := s.StorageParams.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubscribeParams != nil {
+		if err := s.SubscribeParams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartRtcCloudRecordingRequestMixLayoutParams struct {
@@ -194,7 +219,21 @@ func (s *StartRtcCloudRecordingRequestMixLayoutParams) SetUserPanes(v []*StartRt
 }
 
 func (s *StartRtcCloudRecordingRequestMixLayoutParams) Validate() error {
-	return dara.Validate(s)
+	if s.MixBackground != nil {
+		if err := s.MixBackground.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserPanes != nil {
+		for _, item := range s.UserPanes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartRtcCloudRecordingRequestMixLayoutParamsMixBackground struct {
@@ -351,7 +390,12 @@ func (s *StartRtcCloudRecordingRequestMixLayoutParamsUserPanes) SetZOrder(v int3
 }
 
 func (s *StartRtcCloudRecordingRequestMixLayoutParamsUserPanes) Validate() error {
-	return dara.Validate(s)
+	if s.SubBackground != nil {
+		if err := s.SubBackground.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartRtcCloudRecordingRequestMixLayoutParamsUserPanesSubBackground struct {
@@ -659,7 +703,26 @@ func (s *StartRtcCloudRecordingRequestStorageParams) SetVodParams(v *StartRtcClo
 }
 
 func (s *StartRtcCloudRecordingRequestStorageParams) Validate() error {
-	return dara.Validate(s)
+	if s.FileInfo != nil {
+		for _, item := range s.FileInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OSSParams != nil {
+		if err := s.OSSParams.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VodParams != nil {
+		if err := s.VodParams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartRtcCloudRecordingRequestStorageParamsFileInfo struct {
@@ -851,7 +914,16 @@ func (s *StartRtcCloudRecordingRequestSubscribeParams) SetSubscribeUserIdList(v 
 }
 
 func (s *StartRtcCloudRecordingRequestSubscribeParams) Validate() error {
-	return dara.Validate(s)
+	if s.SubscribeUserIdList != nil {
+		for _, item := range s.SubscribeUserIdList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartRtcCloudRecordingRequestSubscribeParamsSubscribeUserIdList struct {

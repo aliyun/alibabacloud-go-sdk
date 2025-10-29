@@ -121,7 +121,16 @@ func (s *DescribeLiveStreamTranscodeStreamNumResponseBody) SetUntranscodeNumber(
 }
 
 func (s *DescribeLiveStreamTranscodeStreamNumResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TranscodeStreamCountDetails != nil {
+		for _, item := range s.TranscodeStreamCountDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamTranscodeStreamNumResponseBodyTranscodeStreamCountDetails struct {

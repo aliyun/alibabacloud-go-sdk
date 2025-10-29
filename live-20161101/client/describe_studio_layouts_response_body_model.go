@@ -70,7 +70,16 @@ func (s *DescribeStudioLayoutsResponseBody) SetTotal(v int32) *DescribeStudioLay
 }
 
 func (s *DescribeStudioLayoutsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StudioLayouts != nil {
+		for _, item := range s.StudioLayouts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeStudioLayoutsResponseBodyStudioLayouts struct {
@@ -189,7 +198,44 @@ func (s *DescribeStudioLayoutsResponseBodyStudioLayouts) SetScreenInputConfigLis
 }
 
 func (s *DescribeStudioLayoutsResponseBodyStudioLayouts) Validate() error {
-	return dara.Validate(s)
+	if s.BgImageConfig != nil {
+		if err := s.BgImageConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CommonConfig != nil {
+		if err := s.CommonConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LayerOrderConfigList != nil {
+		for _, item := range s.LayerOrderConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MediaInputConfigList != nil {
+		for _, item := range s.MediaInputConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ScreenInputConfigList != nil {
+		for _, item := range s.ScreenInputConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeStudioLayoutsResponseBodyStudioLayoutsBgImageConfig struct {
@@ -707,7 +753,12 @@ func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList) Se
 }
 
 func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList) Validate() error {
-	return dara.Validate(s)
+	if s.AudioConfig != nil {
+		if err := s.AudioConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigListAudioConfig struct {

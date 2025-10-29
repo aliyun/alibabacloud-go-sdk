@@ -140,7 +140,12 @@ func (s *DescribeLiveStreamPushMetricDetailDataResponseBody) SetStreamDetailData
 }
 
 func (s *DescribeLiveStreamPushMetricDetailDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StreamDetailData != nil {
+		if err := s.StreamDetailData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamPushMetricDetailDataResponseBodyStreamDetailData struct {
@@ -165,7 +170,16 @@ func (s *DescribeLiveStreamPushMetricDetailDataResponseBodyStreamDetailData) Set
 }
 
 func (s *DescribeLiveStreamPushMetricDetailDataResponseBodyStreamDetailData) Validate() error {
-	return dara.Validate(s)
+	if s.StreamData != nil {
+		for _, item := range s.StreamData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamPushMetricDetailDataResponseBodyStreamDetailDataStreamData struct {

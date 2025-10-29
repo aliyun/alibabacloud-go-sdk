@@ -53,7 +53,12 @@ func (s *DescribeLivePrivateLineAreasResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribeLivePrivateLineAreasResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LiveAreasList != nil {
+		if err := s.LiveAreasList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLivePrivateLineAreasResponseBodyLiveAreasList struct {
@@ -78,7 +83,16 @@ func (s *DescribeLivePrivateLineAreasResponseBodyLiveAreasList) SetLiveArea(v []
 }
 
 func (s *DescribeLivePrivateLineAreasResponseBodyLiveAreasList) Validate() error {
-	return dara.Validate(s)
+	if s.LiveArea != nil {
+		for _, item := range s.LiveArea {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLivePrivateLineAreasResponseBodyLiveAreasListLiveArea struct {
@@ -123,7 +137,12 @@ func (s *DescribeLivePrivateLineAreasResponseBodyLiveAreasListLiveArea) SetRegio
 }
 
 func (s *DescribeLivePrivateLineAreasResponseBodyLiveAreasListLiveArea) Validate() error {
-	return dara.Validate(s)
+	if s.Regions != nil {
+		if err := s.Regions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLivePrivateLineAreasResponseBodyLiveAreasListLiveAreaRegions struct {
@@ -148,7 +167,16 @@ func (s *DescribeLivePrivateLineAreasResponseBodyLiveAreasListLiveAreaRegions) S
 }
 
 func (s *DescribeLivePrivateLineAreasResponseBodyLiveAreasListLiveAreaRegions) Validate() error {
-	return dara.Validate(s)
+	if s.Region != nil {
+		for _, item := range s.Region {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLivePrivateLineAreasResponseBodyLiveAreasListLiveAreaRegionsRegion struct {

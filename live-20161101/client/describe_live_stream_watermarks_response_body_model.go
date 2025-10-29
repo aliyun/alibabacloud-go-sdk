@@ -70,7 +70,12 @@ func (s *DescribeLiveStreamWatermarksResponseBody) SetWatermarkList(v *DescribeL
 }
 
 func (s *DescribeLiveStreamWatermarksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WatermarkList != nil {
+		if err := s.WatermarkList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamWatermarksResponseBodyWatermarkList struct {
@@ -95,7 +100,16 @@ func (s *DescribeLiveStreamWatermarksResponseBodyWatermarkList) SetWatermark(v [
 }
 
 func (s *DescribeLiveStreamWatermarksResponseBodyWatermarkList) Validate() error {
-	return dara.Validate(s)
+	if s.Watermark != nil {
+		for _, item := range s.Watermark {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamWatermarksResponseBodyWatermarkListWatermark struct {

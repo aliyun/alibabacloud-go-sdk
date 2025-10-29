@@ -59,5 +59,10 @@ func (s *DescribeRTSNativeSDKFirstFrameCostResponse) SetBody(v *DescribeRTSNativ
 }
 
 func (s *DescribeRTSNativeSDKFirstFrameCostResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

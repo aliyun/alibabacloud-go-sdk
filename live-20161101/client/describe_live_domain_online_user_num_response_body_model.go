@@ -87,7 +87,12 @@ func (s *DescribeLiveDomainOnlineUserNumResponseBody) SetUserCount(v int32) *Des
 }
 
 func (s *DescribeLiveDomainOnlineUserNumResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OnlineUserInfo != nil {
+		if err := s.OnlineUserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainOnlineUserNumResponseBodyOnlineUserInfo struct {
@@ -112,7 +117,16 @@ func (s *DescribeLiveDomainOnlineUserNumResponseBodyOnlineUserInfo) SetLiveStrea
 }
 
 func (s *DescribeLiveDomainOnlineUserNumResponseBodyOnlineUserInfo) Validate() error {
-	return dara.Validate(s)
+	if s.LiveStreamOnlineUserNumInfo != nil {
+		for _, item := range s.LiveStreamOnlineUserNumInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineUserNumInfo struct {
@@ -153,7 +167,12 @@ func (s *DescribeLiveDomainOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnli
 }
 
 func (s *DescribeLiveDomainOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineUserNumInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Infos != nil {
+		if err := s.Infos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineUserNumInfoInfos struct {
@@ -178,7 +197,16 @@ func (s *DescribeLiveDomainOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnli
 }
 
 func (s *DescribeLiveDomainOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineUserNumInfoInfos) Validate() error {
-	return dara.Validate(s)
+	if s.Info != nil {
+		for _, item := range s.Info {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveDomainOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineUserNumInfoInfosInfo struct {

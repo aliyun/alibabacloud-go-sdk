@@ -74,7 +74,12 @@ func (s *DescribeCasterLayoutsResponseBody) SetTotal(v int32) *DescribeCasterLay
 }
 
 func (s *DescribeCasterLayoutsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Layouts != nil {
+		if err := s.Layouts.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCasterLayoutsResponseBodyLayouts struct {
@@ -99,7 +104,16 @@ func (s *DescribeCasterLayoutsResponseBodyLayouts) SetLayout(v []*DescribeCaster
 }
 
 func (s *DescribeCasterLayoutsResponseBodyLayouts) Validate() error {
-	return dara.Validate(s)
+	if s.Layout != nil {
+		for _, item := range s.Layout {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCasterLayoutsResponseBodyLayoutsLayout struct {
@@ -173,7 +187,27 @@ func (s *DescribeCasterLayoutsResponseBodyLayoutsLayout) SetVideoLayers(v *Descr
 }
 
 func (s *DescribeCasterLayoutsResponseBodyLayoutsLayout) Validate() error {
-	return dara.Validate(s)
+	if s.AudioLayers != nil {
+		if err := s.AudioLayers.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BlendList != nil {
+		if err := s.BlendList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MixList != nil {
+		if err := s.MixList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoLayers != nil {
+		if err := s.VideoLayers.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCasterLayoutsResponseBodyLayoutsLayoutAudioLayers struct {
@@ -198,7 +232,16 @@ func (s *DescribeCasterLayoutsResponseBodyLayoutsLayoutAudioLayers) SetAudioLaye
 }
 
 func (s *DescribeCasterLayoutsResponseBodyLayoutsLayoutAudioLayers) Validate() error {
-	return dara.Validate(s)
+	if s.AudioLayer != nil {
+		for _, item := range s.AudioLayer {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCasterLayoutsResponseBodyLayoutsLayoutAudioLayersAudioLayer struct {
@@ -343,7 +386,16 @@ func (s *DescribeCasterLayoutsResponseBodyLayoutsLayoutVideoLayers) SetVideoLaye
 }
 
 func (s *DescribeCasterLayoutsResponseBodyLayoutsLayoutVideoLayers) Validate() error {
-	return dara.Validate(s)
+	if s.VideoLayer != nil {
+		for _, item := range s.VideoLayer {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCasterLayoutsResponseBodyLayoutsLayoutVideoLayersVideoLayer struct {
@@ -478,7 +530,12 @@ func (s *DescribeCasterLayoutsResponseBodyLayoutsLayoutVideoLayersVideoLayer) Se
 }
 
 func (s *DescribeCasterLayoutsResponseBodyLayoutsLayoutVideoLayersVideoLayer) Validate() error {
-	return dara.Validate(s)
+	if s.PositionNormalizeds != nil {
+		if err := s.PositionNormalizeds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCasterLayoutsResponseBodyLayoutsLayoutVideoLayersVideoLayerPositionNormalizeds struct {

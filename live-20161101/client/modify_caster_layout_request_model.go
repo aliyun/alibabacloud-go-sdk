@@ -163,7 +163,25 @@ func (s *ModifyCasterLayoutRequest) SetVideoLayer(v []*ModifyCasterLayoutRequest
 }
 
 func (s *ModifyCasterLayoutRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AudioLayer != nil {
+		for _, item := range s.AudioLayer {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VideoLayer != nil {
+		for _, item := range s.VideoLayer {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyCasterLayoutRequestAudioLayer struct {

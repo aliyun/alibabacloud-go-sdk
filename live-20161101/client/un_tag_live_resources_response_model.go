@@ -59,5 +59,10 @@ func (s *UnTagLiveResourcesResponse) SetBody(v *UnTagLiveResourcesResponseBody) 
 }
 
 func (s *UnTagLiveResourcesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

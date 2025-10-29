@@ -59,5 +59,10 @@ func (s *DescribeLiveGrtnDurationResponse) SetBody(v *DescribeLiveGrtnDurationRe
 }
 
 func (s *DescribeLiveGrtnDurationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

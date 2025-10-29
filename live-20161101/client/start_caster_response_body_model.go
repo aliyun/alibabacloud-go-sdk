@@ -66,7 +66,17 @@ func (s *StartCasterResponseBody) SetRequestId(v string) *StartCasterResponseBod
 }
 
 func (s *StartCasterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PgmSceneInfos != nil {
+		if err := s.PgmSceneInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PvwSceneInfos != nil {
+		if err := s.PvwSceneInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartCasterResponseBodyPgmSceneInfos struct {
@@ -91,7 +101,16 @@ func (s *StartCasterResponseBodyPgmSceneInfos) SetSceneInfo(v []*StartCasterResp
 }
 
 func (s *StartCasterResponseBodyPgmSceneInfos) Validate() error {
-	return dara.Validate(s)
+	if s.SceneInfo != nil {
+		for _, item := range s.SceneInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartCasterResponseBodyPgmSceneInfosSceneInfo struct {
@@ -147,7 +166,12 @@ func (s *StartCasterResponseBodyPgmSceneInfosSceneInfo) SetStreamUrl(v string) *
 }
 
 func (s *StartCasterResponseBodyPgmSceneInfosSceneInfo) Validate() error {
-	return dara.Validate(s)
+	if s.StreamInfos != nil {
+		if err := s.StreamInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartCasterResponseBodyPgmSceneInfosSceneInfoStreamInfos struct {
@@ -172,7 +196,16 @@ func (s *StartCasterResponseBodyPgmSceneInfosSceneInfoStreamInfos) SetStreamInfo
 }
 
 func (s *StartCasterResponseBodyPgmSceneInfosSceneInfoStreamInfos) Validate() error {
-	return dara.Validate(s)
+	if s.StreamInfo != nil {
+		for _, item := range s.StreamInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartCasterResponseBodyPgmSceneInfosSceneInfoStreamInfosStreamInfo struct {
@@ -271,7 +304,16 @@ func (s *StartCasterResponseBodyPvwSceneInfos) SetSceneInfo(v []*StartCasterResp
 }
 
 func (s *StartCasterResponseBodyPvwSceneInfos) Validate() error {
-	return dara.Validate(s)
+	if s.SceneInfo != nil {
+		for _, item := range s.SceneInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartCasterResponseBodyPvwSceneInfosSceneInfo struct {

@@ -138,7 +138,12 @@ func (s *DescribeLiveStreamRecordIndexFilesResponseBody) SetTotalPage(v int32) *
 }
 
 func (s *DescribeLiveStreamRecordIndexFilesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RecordIndexInfoList != nil {
+		if err := s.RecordIndexInfoList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamRecordIndexFilesResponseBodyRecordIndexInfoList struct {
@@ -163,7 +168,16 @@ func (s *DescribeLiveStreamRecordIndexFilesResponseBodyRecordIndexInfoList) SetR
 }
 
 func (s *DescribeLiveStreamRecordIndexFilesResponseBodyRecordIndexInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.RecordIndexInfo != nil {
+		for _, item := range s.RecordIndexInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamRecordIndexFilesResponseBodyRecordIndexInfoListRecordIndexInfo struct {

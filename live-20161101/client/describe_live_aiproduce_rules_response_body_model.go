@@ -53,7 +53,12 @@ func (s *DescribeLiveAIProduceRulesResponseBody) SetRuleInfoList(v *DescribeLive
 }
 
 func (s *DescribeLiveAIProduceRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RuleInfoList != nil {
+		if err := s.RuleInfoList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveAIProduceRulesResponseBodyRuleInfoList struct {
@@ -78,7 +83,16 @@ func (s *DescribeLiveAIProduceRulesResponseBodyRuleInfoList) SetRuleInfo(v []*De
 }
 
 func (s *DescribeLiveAIProduceRulesResponseBodyRuleInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.RuleInfo != nil {
+		for _, item := range s.RuleInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveAIProduceRulesResponseBodyRuleInfoListRuleInfo struct {

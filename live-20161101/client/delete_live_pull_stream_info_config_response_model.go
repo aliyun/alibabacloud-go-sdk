@@ -59,5 +59,10 @@ func (s *DeleteLivePullStreamInfoConfigResponse) SetBody(v *DeleteLivePullStream
 }
 
 func (s *DeleteLivePullStreamInfoConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

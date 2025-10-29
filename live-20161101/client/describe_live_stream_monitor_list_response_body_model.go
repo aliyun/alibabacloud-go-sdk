@@ -70,7 +70,16 @@ func (s *DescribeLiveStreamMonitorListResponseBody) SetTotal(v int32) *DescribeL
 }
 
 func (s *DescribeLiveStreamMonitorListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LiveStreamMonitorList != nil {
+		for _, item := range s.LiveStreamMonitorList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorList struct {
@@ -311,7 +320,21 @@ func (s *DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorList) SetStop
 }
 
 func (s *DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorList) Validate() error {
-	return dara.Validate(s)
+	if s.InputList != nil {
+		for _, item := range s.InputList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OutputUrls != nil {
+		if err := s.OutputUrls.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorListInputList struct {
@@ -408,7 +431,17 @@ func (s *DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorListInputList
 }
 
 func (s *DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorListInputList) Validate() error {
-	return dara.Validate(s)
+	if s.LayoutConfig != nil {
+		if err := s.LayoutConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PlayConfig != nil {
+		if err := s.PlayConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorListInputListLayoutConfig struct {

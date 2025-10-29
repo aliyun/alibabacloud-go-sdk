@@ -70,7 +70,12 @@ func (s *DescribeCasterVideoResourcesResponseBody) SetVideoResources(v *Describe
 }
 
 func (s *DescribeCasterVideoResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VideoResources != nil {
+		if err := s.VideoResources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCasterVideoResourcesResponseBodyVideoResources struct {
@@ -95,7 +100,16 @@ func (s *DescribeCasterVideoResourcesResponseBodyVideoResources) SetVideoResourc
 }
 
 func (s *DescribeCasterVideoResourcesResponseBodyVideoResources) Validate() error {
-	return dara.Validate(s)
+	if s.VideoResource != nil {
+		for _, item := range s.VideoResource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCasterVideoResourcesResponseBodyVideoResourcesVideoResource struct {

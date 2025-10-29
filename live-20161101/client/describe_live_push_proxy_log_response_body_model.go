@@ -70,7 +70,12 @@ func (s *DescribeLivePushProxyLogResponseBody) SetRequestId(v string) *DescribeL
 }
 
 func (s *DescribeLivePushProxyLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainLogDetails != nil {
+		if err := s.DomainLogDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLivePushProxyLogResponseBodyDomainLogDetails struct {
@@ -95,7 +100,16 @@ func (s *DescribeLivePushProxyLogResponseBodyDomainLogDetails) SetDomainLogDetai
 }
 
 func (s *DescribeLivePushProxyLogResponseBodyDomainLogDetails) Validate() error {
-	return dara.Validate(s)
+	if s.DomainLogDetail != nil {
+		for _, item := range s.DomainLogDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLivePushProxyLogResponseBodyDomainLogDetailsDomainLogDetail struct {
@@ -147,7 +161,17 @@ func (s *DescribeLivePushProxyLogResponseBodyDomainLogDetailsDomainLogDetail) Se
 }
 
 func (s *DescribeLivePushProxyLogResponseBodyDomainLogDetailsDomainLogDetail) Validate() error {
-	return dara.Validate(s)
+	if s.LogInfos != nil {
+		if err := s.LogInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PageInfos != nil {
+		if err := s.PageInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLivePushProxyLogResponseBodyDomainLogDetailsDomainLogDetailLogInfos struct {
@@ -172,7 +196,16 @@ func (s *DescribeLivePushProxyLogResponseBodyDomainLogDetailsDomainLogDetailLogI
 }
 
 func (s *DescribeLivePushProxyLogResponseBodyDomainLogDetailsDomainLogDetailLogInfos) Validate() error {
-	return dara.Validate(s)
+	if s.LogInfoDetail != nil {
+		for _, item := range s.LogInfoDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLivePushProxyLogResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail struct {

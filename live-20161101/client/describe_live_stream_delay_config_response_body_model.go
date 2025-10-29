@@ -79,7 +79,22 @@ func (s *DescribeLiveStreamDelayConfigResponseBody) SetRequestId(v string) *Desc
 }
 
 func (s *DescribeLiveStreamDelayConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LiveStreamFlvDelayConfig != nil {
+		if err := s.LiveStreamFlvDelayConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LiveStreamHlsDelayConfig != nil {
+		if err := s.LiveStreamHlsDelayConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LiveStreamRtmpDelayConfig != nil {
+		if err := s.LiveStreamRtmpDelayConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamDelayConfigResponseBodyLiveStreamFlvDelayConfig struct {

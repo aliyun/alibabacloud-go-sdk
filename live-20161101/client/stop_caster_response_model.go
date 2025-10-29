@@ -59,5 +59,10 @@ func (s *StopCasterResponse) SetBody(v *StopCasterResponseBody) *StopCasterRespo
 }
 
 func (s *StopCasterResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

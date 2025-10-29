@@ -367,7 +367,22 @@ func (s *DescribeCasterConfigResponseBody) SetUrgentMaterialId(v string) *Descri
 }
 
 func (s *DescribeCasterConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RecordConfig != nil {
+		if err := s.RecordConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SyncGroupsConfig != nil {
+		if err := s.SyncGroupsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TranscodeConfig != nil {
+		if err := s.TranscodeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCasterConfigResponseBodyRecordConfig struct {
@@ -446,7 +461,12 @@ func (s *DescribeCasterConfigResponseBodyRecordConfig) SetRecordFormat(v *Descri
 }
 
 func (s *DescribeCasterConfigResponseBodyRecordConfig) Validate() error {
-	return dara.Validate(s)
+	if s.RecordFormat != nil {
+		if err := s.RecordFormat.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCasterConfigResponseBodyRecordConfigRecordFormat struct {
@@ -471,7 +491,16 @@ func (s *DescribeCasterConfigResponseBodyRecordConfigRecordFormat) SetRecordForm
 }
 
 func (s *DescribeCasterConfigResponseBodyRecordConfigRecordFormat) Validate() error {
-	return dara.Validate(s)
+	if s.RecordFormat != nil {
+		for _, item := range s.RecordFormat {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCasterConfigResponseBodyRecordConfigRecordFormatRecordFormat struct {
@@ -571,7 +600,16 @@ func (s *DescribeCasterConfigResponseBodySyncGroupsConfig) SetSyncGroup(v []*Des
 }
 
 func (s *DescribeCasterConfigResponseBodySyncGroupsConfig) Validate() error {
-	return dara.Validate(s)
+	if s.SyncGroup != nil {
+		for _, item := range s.SyncGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCasterConfigResponseBodySyncGroupsConfigSyncGroup struct {
@@ -633,7 +671,12 @@ func (s *DescribeCasterConfigResponseBodySyncGroupsConfigSyncGroup) SetResourceI
 }
 
 func (s *DescribeCasterConfigResponseBodySyncGroupsConfigSyncGroup) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceIds != nil {
+		if err := s.ResourceIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCasterConfigResponseBodySyncGroupsConfigSyncGroupResourceIds struct {
@@ -726,7 +769,17 @@ func (s *DescribeCasterConfigResponseBodyTranscodeConfig) SetLiveTemplateIds(v *
 }
 
 func (s *DescribeCasterConfigResponseBodyTranscodeConfig) Validate() error {
-	return dara.Validate(s)
+	if s.CustomParams != nil {
+		if err := s.CustomParams.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LiveTemplateIds != nil {
+		if err := s.LiveTemplateIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCasterConfigResponseBodyTranscodeConfigCustomParams struct {
@@ -752,7 +805,12 @@ func (s *DescribeCasterConfigResponseBodyTranscodeConfigCustomParams) SetVideo(v
 }
 
 func (s *DescribeCasterConfigResponseBodyTranscodeConfigCustomParams) Validate() error {
-	return dara.Validate(s)
+	if s.Video != nil {
+		if err := s.Video.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCasterConfigResponseBodyTranscodeConfigCustomParamsVideo struct {

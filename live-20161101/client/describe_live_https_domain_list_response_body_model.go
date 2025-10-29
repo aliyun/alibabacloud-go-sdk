@@ -70,7 +70,12 @@ func (s *DescribeLiveHttpsDomainListResponseBody) SetTotalCount(v int32) *Descri
 }
 
 func (s *DescribeLiveHttpsDomainListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CertInfos != nil {
+		if err := s.CertInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveHttpsDomainListResponseBodyCertInfos struct {
@@ -95,7 +100,16 @@ func (s *DescribeLiveHttpsDomainListResponseBodyCertInfos) SetCertInfo(v []*Desc
 }
 
 func (s *DescribeLiveHttpsDomainListResponseBodyCertInfos) Validate() error {
-	return dara.Validate(s)
+	if s.CertInfo != nil {
+		for _, item := range s.CertInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveHttpsDomainListResponseBodyCertInfosCertInfo struct {

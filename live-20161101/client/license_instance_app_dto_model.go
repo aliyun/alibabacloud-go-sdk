@@ -155,7 +155,16 @@ func (s *LicenseInstanceAppDTO) SetUserId(v int64) *LicenseInstanceAppDTO {
 }
 
 func (s *LicenseInstanceAppDTO) Validate() error {
-	return dara.Validate(s)
+	if s.LicenseConfigs != nil {
+		for _, item := range s.LicenseConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type LicenseInstanceAppDTOLicenseConfigs struct {

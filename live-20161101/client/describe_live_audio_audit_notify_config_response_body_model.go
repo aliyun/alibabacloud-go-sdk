@@ -53,7 +53,12 @@ func (s *DescribeLiveAudioAuditNotifyConfigResponseBody) SetRequestId(v string) 
 }
 
 func (s *DescribeLiveAudioAuditNotifyConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LiveAudioAuditNotifyConfigList != nil {
+		if err := s.LiveAudioAuditNotifyConfigList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveAudioAuditNotifyConfigResponseBodyLiveAudioAuditNotifyConfigList struct {
@@ -78,7 +83,16 @@ func (s *DescribeLiveAudioAuditNotifyConfigResponseBodyLiveAudioAuditNotifyConfi
 }
 
 func (s *DescribeLiveAudioAuditNotifyConfigResponseBodyLiveAudioAuditNotifyConfigList) Validate() error {
-	return dara.Validate(s)
+	if s.LiveAudioAuditNotifyConfig != nil {
+		for _, item := range s.LiveAudioAuditNotifyConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveAudioAuditNotifyConfigResponseBodyLiveAudioAuditNotifyConfigListLiveAudioAuditNotifyConfig struct {

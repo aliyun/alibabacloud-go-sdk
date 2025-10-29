@@ -53,7 +53,12 @@ func (s *DescribeLiveStreamCountResponseBody) SetStreamCountInfos(v *DescribeLiv
 }
 
 func (s *DescribeLiveStreamCountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StreamCountInfos != nil {
+		if err := s.StreamCountInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamCountResponseBodyStreamCountInfos struct {
@@ -78,7 +83,16 @@ func (s *DescribeLiveStreamCountResponseBodyStreamCountInfos) SetStreamCountInfo
 }
 
 func (s *DescribeLiveStreamCountResponseBodyStreamCountInfos) Validate() error {
-	return dara.Validate(s)
+	if s.StreamCountInfo != nil {
+		for _, item := range s.StreamCountInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamCountResponseBodyStreamCountInfosStreamCountInfo struct {
@@ -153,7 +167,12 @@ func (s *DescribeLiveStreamCountResponseBodyStreamCountInfosStreamCountInfo) Set
 }
 
 func (s *DescribeLiveStreamCountResponseBodyStreamCountInfosStreamCountInfo) Validate() error {
-	return dara.Validate(s)
+	if s.StreamCountDetails != nil {
+		if err := s.StreamCountDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamCountResponseBodyStreamCountInfosStreamCountInfoStreamCountDetails struct {
@@ -178,7 +197,16 @@ func (s *DescribeLiveStreamCountResponseBodyStreamCountInfosStreamCountInfoStrea
 }
 
 func (s *DescribeLiveStreamCountResponseBodyStreamCountInfosStreamCountInfoStreamCountDetails) Validate() error {
-	return dara.Validate(s)
+	if s.StreamCountDetail != nil {
+		for _, item := range s.StreamCountDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamCountResponseBodyStreamCountInfosStreamCountInfoStreamCountDetailsStreamCountDetail struct {

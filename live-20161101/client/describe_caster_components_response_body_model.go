@@ -70,7 +70,12 @@ func (s *DescribeCasterComponentsResponseBody) SetTotal(v int32) *DescribeCaster
 }
 
 func (s *DescribeCasterComponentsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Components != nil {
+		if err := s.Components.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCasterComponentsResponseBodyComponents struct {
@@ -95,7 +100,16 @@ func (s *DescribeCasterComponentsResponseBodyComponents) SetComponent(v []*Descr
 }
 
 func (s *DescribeCasterComponentsResponseBodyComponents) Validate() error {
-	return dara.Validate(s)
+	if s.Component != nil {
+		for _, item := range s.Component {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCasterComponentsResponseBodyComponentsComponent struct {
@@ -243,7 +257,27 @@ func (s *DescribeCasterComponentsResponseBodyComponentsComponent) SetTextLayerCo
 }
 
 func (s *DescribeCasterComponentsResponseBodyComponentsComponent) Validate() error {
-	return dara.Validate(s)
+	if s.CaptionLayerContent != nil {
+		if err := s.CaptionLayerContent.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ComponentLayer != nil {
+		if err := s.ComponentLayer.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageLayerContent != nil {
+		if err := s.ImageLayerContent.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TextLayerContent != nil {
+		if err := s.TextLayerContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCasterComponentsResponseBodyComponentsComponentCaptionLayerContent struct {
@@ -616,7 +650,12 @@ func (s *DescribeCasterComponentsResponseBodyComponentsComponentComponentLayer) 
 }
 
 func (s *DescribeCasterComponentsResponseBodyComponentsComponentComponentLayer) Validate() error {
-	return dara.Validate(s)
+	if s.PositionNormalizeds != nil {
+		if err := s.PositionNormalizeds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCasterComponentsResponseBodyComponentsComponentComponentLayerPositionNormalizeds struct {

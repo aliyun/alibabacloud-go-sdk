@@ -53,7 +53,12 @@ func (s *SendMessageToGroupResponseBody) SetResult(v *SendMessageToGroupResponse
 }
 
 func (s *SendMessageToGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SendMessageToGroupResponseBodyResult struct {

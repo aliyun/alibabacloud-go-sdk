@@ -87,7 +87,12 @@ func (s *DeleteSnapshotFilesResponseBody) SetSuccessCount(v int32) *DeleteSnapsh
 }
 
 func (s *DeleteSnapshotFilesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SnapshotDeleteInfoList != nil {
+		if err := s.SnapshotDeleteInfoList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteSnapshotFilesResponseBodySnapshotDeleteInfoList struct {
@@ -112,7 +117,16 @@ func (s *DeleteSnapshotFilesResponseBodySnapshotDeleteInfoList) SetSnapshotDelet
 }
 
 func (s *DeleteSnapshotFilesResponseBodySnapshotDeleteInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.SnapshotDeleteInfo != nil {
+		for _, item := range s.SnapshotDeleteInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteSnapshotFilesResponseBodySnapshotDeleteInfoListSnapshotDeleteInfo struct {

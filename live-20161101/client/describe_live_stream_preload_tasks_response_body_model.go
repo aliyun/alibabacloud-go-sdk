@@ -121,7 +121,12 @@ func (s *DescribeLiveStreamPreloadTasksResponseBody) SetTotalPage(v int32) *Desc
 }
 
 func (s *DescribeLiveStreamPreloadTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PreloadTasks != nil {
+		if err := s.PreloadTasks.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamPreloadTasksResponseBodyPreloadTasks struct {
@@ -146,7 +151,16 @@ func (s *DescribeLiveStreamPreloadTasksResponseBodyPreloadTasks) SetPreloadTask(
 }
 
 func (s *DescribeLiveStreamPreloadTasksResponseBodyPreloadTasks) Validate() error {
-	return dara.Validate(s)
+	if s.PreloadTask != nil {
+		for _, item := range s.PreloadTask {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLiveStreamPreloadTasksResponseBodyPreloadTasksPreloadTask struct {

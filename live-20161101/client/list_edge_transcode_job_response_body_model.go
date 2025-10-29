@@ -70,7 +70,12 @@ func (s *ListEdgeTranscodeJobResponseBody) SetTotalCount(v int32) *ListEdgeTrans
 }
 
 func (s *ListEdgeTranscodeJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.JobList != nil {
+		if err := s.JobList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEdgeTranscodeJobResponseBodyJobList struct {
@@ -95,7 +100,16 @@ func (s *ListEdgeTranscodeJobResponseBodyJobList) SetJob(v []*ListEdgeTranscodeJ
 }
 
 func (s *ListEdgeTranscodeJobResponseBodyJobList) Validate() error {
-	return dara.Validate(s)
+	if s.Job != nil {
+		for _, item := range s.Job {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEdgeTranscodeJobResponseBodyJobListJob struct {
