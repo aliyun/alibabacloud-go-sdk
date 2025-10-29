@@ -86,6 +86,7 @@ type GetSwitchRegionDetailResponseBodyData struct {
 	//
 	// YES
 	IsNoticed  *string `json:"IsNoticed,omitempty" xml:"IsNoticed,omitempty"`
+	NeedNotice *bool   `json:"NeedNotice,omitempty" xml:"NeedNotice,omitempty"`
 	NeedSwitch *bool   `json:"NeedSwitch,omitempty" xml:"NeedSwitch,omitempty"`
 	// The status of the switching to the region.
 	RegionStatus []*GetSwitchRegionDetailResponseBodyDataRegionStatus `json:"RegionStatus,omitempty" xml:"RegionStatus,omitempty" type:"Repeated"`
@@ -115,6 +116,10 @@ func (s *GetSwitchRegionDetailResponseBodyData) GetIsNoticed() *string {
 	return s.IsNoticed
 }
 
+func (s *GetSwitchRegionDetailResponseBodyData) GetNeedNotice() *bool {
+	return s.NeedNotice
+}
+
 func (s *GetSwitchRegionDetailResponseBodyData) GetNeedSwitch() *bool {
 	return s.NeedSwitch
 }
@@ -140,6 +145,11 @@ func (s *GetSwitchRegionDetailResponseBodyData) SetIsAgree(v string) *GetSwitchR
 
 func (s *GetSwitchRegionDetailResponseBodyData) SetIsNoticed(v string) *GetSwitchRegionDetailResponseBodyData {
 	s.IsNoticed = &v
+	return s
+}
+
+func (s *GetSwitchRegionDetailResponseBodyData) SetNeedNotice(v bool) *GetSwitchRegionDetailResponseBodyData {
+	s.NeedNotice = &v
 	return s
 }
 

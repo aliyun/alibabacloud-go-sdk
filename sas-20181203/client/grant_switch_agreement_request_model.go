@@ -11,6 +11,8 @@ type iGrantSwitchAgreementRequest interface {
 	GoString() string
 	SetIsAgree(v bool) *GrantSwitchAgreementRequest
 	GetIsAgree() *bool
+	SetIsConfirmed(v bool) *GrantSwitchAgreementRequest
+	GetIsConfirmed() *bool
 	SetIsImmediate(v bool) *GrantSwitchAgreementRequest
 	GetIsImmediate() *bool
 	SetLang(v string) *GrantSwitchAgreementRequest
@@ -26,6 +28,7 @@ type GrantSwitchAgreementRequest struct {
 	//
 	// true
 	IsAgree     *bool `json:"IsAgree,omitempty" xml:"IsAgree,omitempty"`
+	IsConfirmed *bool `json:"IsConfirmed,omitempty" xml:"IsConfirmed,omitempty"`
 	IsImmediate *bool `json:"IsImmediate,omitempty" xml:"IsImmediate,omitempty"`
 	// The language type for requests and responses. The default value is **zh**. Possible values:
 	//
@@ -59,6 +62,10 @@ func (s *GrantSwitchAgreementRequest) GetIsAgree() *bool {
 	return s.IsAgree
 }
 
+func (s *GrantSwitchAgreementRequest) GetIsConfirmed() *bool {
+	return s.IsConfirmed
+}
+
 func (s *GrantSwitchAgreementRequest) GetIsImmediate() *bool {
 	return s.IsImmediate
 }
@@ -73,6 +80,11 @@ func (s *GrantSwitchAgreementRequest) GetType() *string {
 
 func (s *GrantSwitchAgreementRequest) SetIsAgree(v bool) *GrantSwitchAgreementRequest {
 	s.IsAgree = &v
+	return s
+}
+
+func (s *GrantSwitchAgreementRequest) SetIsConfirmed(v bool) *GrantSwitchAgreementRequest {
+	s.IsConfirmed = &v
 	return s
 }
 

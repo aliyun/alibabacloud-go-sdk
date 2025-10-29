@@ -42955,6 +42955,10 @@ func (client *Client) GrantSwitchAgreementWithOptions(request *GrantSwitchAgreem
 		query["IsAgree"] = request.IsAgree
 	}
 
+	if !dara.IsNil(request.IsConfirmed) {
+		query["IsConfirmed"] = request.IsConfirmed
+	}
+
 	if !dara.IsNil(request.IsImmediate) {
 		query["IsImmediate"] = request.IsImmediate
 	}

@@ -30088,6 +30088,10 @@ func (client *Client) GrantSwitchAgreementWithContext(ctx context.Context, reque
 		query["IsAgree"] = request.IsAgree
 	}
 
+	if !dara.IsNil(request.IsConfirmed) {
+		query["IsConfirmed"] = request.IsConfirmed
+	}
+
 	if !dara.IsNil(request.IsImmediate) {
 		query["IsImmediate"] = request.IsImmediate
 	}
