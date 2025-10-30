@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("central")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("dyplsapi"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -71,7 +22,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddAxnTrackNoResponse
-func (client *Client) AddAxnTrackNoWithOptions(request *AddAxnTrackNoRequest, runtime *dara.RuntimeOptions) (_result *AddAxnTrackNoResponse, _err error) {
+func (client *Client) AddAxnTrackNoWithContext(ctx context.Context, request *AddAxnTrackNoRequest, runtime *dara.RuntimeOptions) (_result *AddAxnTrackNoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -122,35 +73,11 @@ func (client *Client) AddAxnTrackNoWithOptions(request *AddAxnTrackNoRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddAxnTrackNoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a tracking number for a private number in the AXN binding.
-//
-// Description:
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - AddAxnTrackNoRequest
-//
-// @return AddAxnTrackNoResponse
-func (client *Client) AddAxnTrackNo(request *AddAxnTrackNoRequest) (_result *AddAxnTrackNoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddAxnTrackNoResponse{}
-	_body, _err := client.AddAxnTrackNoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -169,7 +96,7 @@ func (client *Client) AddAxnTrackNo(request *AddAxnTrackNoRequest) (_result *Add
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddSecretBlacklistResponse
-func (client *Client) AddSecretBlacklistWithOptions(request *AddSecretBlacklistRequest, runtime *dara.RuntimeOptions) (_result *AddSecretBlacklistResponse, _err error) {
+func (client *Client) AddSecretBlacklistWithContext(ctx context.Context, request *AddSecretBlacklistRequest, runtime *dara.RuntimeOptions) (_result *AddSecretBlacklistResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -212,35 +139,11 @@ func (client *Client) AddSecretBlacklistWithOptions(request *AddSecretBlacklistR
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddSecretBlacklistResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a blacklist.
-//
-// Description:
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - AddSecretBlacklistRequest
-//
-// @return AddSecretBlacklistResponse
-func (client *Client) AddSecretBlacklist(request *AddSecretBlacklistRequest) (_result *AddSecretBlacklistResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddSecretBlacklistResponse{}
-	_body, _err := client.AddSecretBlacklistWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -253,7 +156,7 @@ func (client *Client) AddSecretBlacklist(request *AddSecretBlacklistRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindAXBCallResponse
-func (client *Client) BindAXBCallWithOptions(request *BindAXBCallRequest, runtime *dara.RuntimeOptions) (_result *BindAXBCallResponse, _err error) {
+func (client *Client) BindAXBCallWithContext(ctx context.Context, request *BindAXBCallRequest, runtime *dara.RuntimeOptions) (_result *BindAXBCallResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -316,29 +219,11 @@ func (client *Client) BindAXBCallWithOptions(request *BindAXBCallRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindAXBCallResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 调用本接口向工作号平台请求为员工B的工作号X建立呼叫绑定（B，X，A），允许B通过X呼叫客户A
-//
-// @param request - BindAXBCallRequest
-//
-// @return BindAXBCallResponse
-func (client *Client) BindAXBCall(request *BindAXBCallRequest) (_result *BindAXBCallResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BindAXBCallResponse{}
-	_body, _err := client.BindAXBCallWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -359,7 +244,7 @@ func (client *Client) BindAXBCall(request *BindAXBCallRequest) (_result *BindAXB
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindAxbResponse
-func (client *Client) BindAxbWithOptions(request *BindAxbRequest, runtime *dara.RuntimeOptions) (_result *BindAxbResponse, _err error) {
+func (client *Client) BindAxbWithContext(ctx context.Context, request *BindAxbRequest, runtime *dara.RuntimeOptions) (_result *BindAxbResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -458,37 +343,11 @@ func (client *Client) BindAxbWithOptions(request *BindAxbRequest, runtime *dara.
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindAxbResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds an AXB binding.
-//
-// Description:
-//
-// Before you add an AXB binding, we recommend that you specify role A and role B in the AXB device certificate (ProductKey, DeviceName, and DeviceSecret) in your business scenario. For example, in a taxi-hailing scenario, role A is the passenger and role B is the driver.
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - BindAxbRequest
-//
-// @return BindAxbResponse
-func (client *Client) BindAxb(request *BindAxbRequest) (_result *BindAxbResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BindAxbResponse{}
-	_body, _err := client.BindAxbWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -501,7 +360,7 @@ func (client *Client) BindAxb(request *BindAxbRequest) (_result *BindAxbResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindAxb700Response
-func (client *Client) BindAxb700WithOptions(request *BindAxb700Request, runtime *dara.RuntimeOptions) (_result *BindAxb700Response, _err error) {
+func (client *Client) BindAxb700WithContext(ctx context.Context, request *BindAxb700Request, runtime *dara.RuntimeOptions) (_result *BindAxb700Response, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -604,29 +463,11 @@ func (client *Client) BindAxb700WithOptions(request *BindAxb700Request, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindAxb700Response{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建700绑定关系
-//
-// @param request - BindAxb700Request
-//
-// @return BindAxb700Response
-func (client *Client) BindAxb700(request *BindAxb700Request) (_result *BindAxb700Response, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BindAxb700Response{}
-	_body, _err := client.BindAxb700WithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -639,7 +480,7 @@ func (client *Client) BindAxb700(request *BindAxb700Request) (_result *BindAxb70
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindAxbFixedLineResponse
-func (client *Client) BindAxbFixedLineWithOptions(tmpReq *BindAxbFixedLineRequest, runtime *dara.RuntimeOptions) (_result *BindAxbFixedLineResponse, _err error) {
+func (client *Client) BindAxbFixedLineWithContext(ctx context.Context, tmpReq *BindAxbFixedLineRequest, runtime *dara.RuntimeOptions) (_result *BindAxbFixedLineResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -740,29 +581,11 @@ func (client *Client) BindAxbFixedLineWithOptions(tmpReq *BindAxbFixedLineReques
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindAxbFixedLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 固话AxB绑定
-//
-// @param request - BindAxbFixedLineRequest
-//
-// @return BindAxbFixedLineResponse
-func (client *Client) BindAxbFixedLine(request *BindAxbFixedLineRequest) (_result *BindAxbFixedLineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BindAxbFixedLineResponse{}
-	_body, _err := client.BindAxbFixedLineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -783,7 +606,7 @@ func (client *Client) BindAxbFixedLine(request *BindAxbFixedLineRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindAxgResponse
-func (client *Client) BindAxgWithOptions(request *BindAxgRequest, runtime *dara.RuntimeOptions) (_result *BindAxgResponse, _err error) {
+func (client *Client) BindAxgWithContext(ctx context.Context, request *BindAxgRequest, runtime *dara.RuntimeOptions) (_result *BindAxgResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -878,37 +701,11 @@ func (client *Client) BindAxgWithOptions(request *BindAxgRequest, runtime *dara.
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindAxgResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds an AXG binding.
-//
-// Description:
-//
-// An AXG protection solution can be configured to meet the requirements for grading users, limiting the scope of calls, and restricting order snatching. The letter G represents a phone number group to which you can add phone numbers as needed.
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - BindAxgRequest
-//
-// @return BindAxgResponse
-func (client *Client) BindAxg(request *BindAxgRequest) (_result *BindAxgResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BindAxgResponse{}
-	_body, _err := client.BindAxgWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -925,7 +722,7 @@ func (client *Client) BindAxg(request *BindAxgRequest) (_result *BindAxgResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindAxnResponse
-func (client *Client) BindAxnWithOptions(request *BindAxnRequest, runtime *dara.RuntimeOptions) (_result *BindAxnResponse, _err error) {
+func (client *Client) BindAxnWithContext(ctx context.Context, request *BindAxnRequest, runtime *dara.RuntimeOptions) (_result *BindAxnResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1028,33 +825,11 @@ func (client *Client) BindAxnWithOptions(request *BindAxnRequest, runtime *dara.
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindAxnResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds an AXN binding.
-//
-// Description:
-//
-// >  An AXN private number is a dedicated private number assigned to phone number A. When an N-side number is used to call phone number X, the call is forwarded to phone number A.
-//
-// @param request - BindAxnRequest
-//
-// @return BindAxnResponse
-func (client *Client) BindAxn(request *BindAxnRequest) (_result *BindAxnResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BindAxnResponse{}
-	_body, _err := client.BindAxnWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1075,7 +850,7 @@ func (client *Client) BindAxn(request *BindAxnRequest) (_result *BindAxnResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindAxnExtensionResponse
-func (client *Client) BindAxnExtensionWithOptions(request *BindAxnExtensionRequest, runtime *dara.RuntimeOptions) (_result *BindAxnExtensionResponse, _err error) {
+func (client *Client) BindAxnExtensionWithContext(ctx context.Context, request *BindAxnExtensionRequest, runtime *dara.RuntimeOptions) (_result *BindAxnExtensionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1174,37 +949,11 @@ func (client *Client) BindAxnExtensionWithOptions(request *BindAxnExtensionReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindAxnExtensionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds an AXN extension binding.
-//
-// Description:
-//
-// Before you add an AXN extension binding, confirm phone number A and phone number N in the business scenario. Phone number A belongs to a customer, and phone number X is the private number assigned to the customer. When any other phone number is used to call phone number X and the extension, the call is transferred to phone number A. When phone number A is used to call phone number X, the call is transferred to the default phone number B that is specified during the phone number binding.
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - BindAxnExtensionRequest
-//
-// @return BindAxnExtensionResponse
-func (client *Client) BindAxnExtension(request *BindAxnExtensionRequest) (_result *BindAxnExtensionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BindAxnExtensionResponse{}
-	_body, _err := client.BindAxnExtensionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1217,7 +966,7 @@ func (client *Client) BindAxnExtension(request *BindAxnExtensionRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindAxnExtensionFixedLineResponse
-func (client *Client) BindAxnExtensionFixedLineWithOptions(tmpReq *BindAxnExtensionFixedLineRequest, runtime *dara.RuntimeOptions) (_result *BindAxnExtensionFixedLineResponse, _err error) {
+func (client *Client) BindAxnExtensionFixedLineWithContext(ctx context.Context, tmpReq *BindAxnExtensionFixedLineRequest, runtime *dara.RuntimeOptions) (_result *BindAxnExtensionFixedLineResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1318,29 +1067,11 @@ func (client *Client) BindAxnExtensionFixedLineWithOptions(tmpReq *BindAxnExtens
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindAxnExtensionFixedLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # AXN分机号-号码绑定
-//
-// @param request - BindAxnExtensionFixedLineRequest
-//
-// @return BindAxnExtensionFixedLineResponse
-func (client *Client) BindAxnExtensionFixedLine(request *BindAxnExtensionFixedLineRequest) (_result *BindAxnExtensionFixedLineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BindAxnExtensionFixedLineResponse{}
-	_body, _err := client.BindAxnExtensionFixedLineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1353,7 +1084,7 @@ func (client *Client) BindAxnExtensionFixedLine(request *BindAxnExtensionFixedLi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindAxnFixedLineResponse
-func (client *Client) BindAxnFixedLineWithOptions(tmpReq *BindAxnFixedLineRequest, runtime *dara.RuntimeOptions) (_result *BindAxnFixedLineResponse, _err error) {
+func (client *Client) BindAxnFixedLineWithContext(ctx context.Context, tmpReq *BindAxnFixedLineRequest, runtime *dara.RuntimeOptions) (_result *BindAxnFixedLineResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1454,29 +1185,11 @@ func (client *Client) BindAxnFixedLineWithOptions(tmpReq *BindAxnFixedLineReques
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindAxnFixedLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # AXN模式绑定，分配X号码
-//
-// @param request - BindAxnFixedLineRequest
-//
-// @return BindAxnFixedLineResponse
-func (client *Client) BindAxnFixedLine(request *BindAxnFixedLineRequest) (_result *BindAxnFixedLineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BindAxnFixedLineResponse{}
-	_body, _err := client.BindAxnFixedLineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1485,7 +1198,7 @@ func (client *Client) BindAxnFixedLine(request *BindAxnFixedLineRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindBatchAxgResponse
-func (client *Client) BindBatchAxgWithOptions(tmpReq *BindBatchAxgRequest, runtime *dara.RuntimeOptions) (_result *BindBatchAxgResponse, _err error) {
+func (client *Client) BindBatchAxgWithContext(ctx context.Context, tmpReq *BindBatchAxgRequest, runtime *dara.RuntimeOptions) (_result *BindBatchAxgResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1534,25 +1247,11 @@ func (client *Client) BindBatchAxgWithOptions(tmpReq *BindBatchAxgRequest, runti
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindBatchAxgResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - BindBatchAxgRequest
-//
-// @return BindBatchAxgResponse
-func (client *Client) BindBatchAxg(request *BindBatchAxgRequest) (_result *BindBatchAxgResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BindBatchAxgResponse{}
-	_body, _err := client.BindBatchAxgWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1565,7 +1264,7 @@ func (client *Client) BindBatchAxg(request *BindBatchAxgRequest) (_result *BindB
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindGxb700Response
-func (client *Client) BindGxb700WithOptions(request *BindGxb700Request, runtime *dara.RuntimeOptions) (_result *BindGxb700Response, _err error) {
+func (client *Client) BindGxb700WithContext(ctx context.Context, request *BindGxb700Request, runtime *dara.RuntimeOptions) (_result *BindGxb700Response, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1672,29 +1371,11 @@ func (client *Client) BindGxb700WithOptions(request *BindGxb700Request, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindGxb700Response{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建700Gxb绑定关系
-//
-// @param request - BindGxb700Request
-//
-// @return BindGxb700Response
-func (client *Client) BindGxb700(request *BindGxb700Request) (_result *BindGxb700Response, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BindGxb700Response{}
-	_body, _err := client.BindGxb700WithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1707,7 +1388,7 @@ func (client *Client) BindGxb700(request *BindGxb700Request) (_result *BindGxb70
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindXBResponse
-func (client *Client) BindXBWithOptions(request *BindXBRequest, runtime *dara.RuntimeOptions) (_result *BindXBResponse, _err error) {
+func (client *Client) BindXBWithContext(ctx context.Context, request *BindXBRequest, runtime *dara.RuntimeOptions) (_result *BindXBResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1766,29 +1447,11 @@ func (client *Client) BindXBWithOptions(request *BindXBRequest, runtime *dara.Ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindXBResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 平台指定工作号X 和员工号B建立关联，完成X 实名认证，绑定生效后，所有X 的呼叫都会转接到B
-//
-// @param request - BindXBRequest
-//
-// @return BindXBResponse
-func (client *Client) BindXB(request *BindXBRequest) (_result *BindXBResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BindXBResponse{}
-	_body, _err := client.BindXBWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1811,7 +1474,7 @@ func (client *Client) BindXB(request *BindXBRequest) (_result *BindXBResponse, _
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BuySecretNoResponse
-func (client *Client) BuySecretNoWithOptions(request *BuySecretNoRequest, runtime *dara.RuntimeOptions) (_result *BuySecretNoResponse, _err error) {
+func (client *Client) BuySecretNoWithContext(ctx context.Context, request *BuySecretNoRequest, runtime *dara.RuntimeOptions) (_result *BuySecretNoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1866,39 +1529,11 @@ func (client *Client) BuySecretNoWithOptions(request *BuySecretNoRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &BuySecretNoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Purchases a phone number.
-//
-// Description:
-//
-//	  After you create a phone number pool in the Phone Number Protection console, the phone number pool is empty by default. You must purchase phone numbers and add them to the phone number pool.
-//
-//		- Before you call this operation, make sure that you are familiar with the [pricing](https://help.aliyun.com/document_detail/59825.html) of Phone Number Protection.
-//
-//		- When purchasing a phone number, specify the home location. If no sufficient phone numbers are available for purchase in the home location, the purchase of the phone number fails. Before you call this operation to purchase a phone number, check the quantity of phone numbers available for purchase by using the [QuerySecretNoRemain](https://help.aliyun.com/document_detail/111699.html) operation.
-//
-//		- The account used to purchase a phone number must be an enterprise account that has passed real-name verification. For more information about how to perform real-name verification, see [Enterprise verification FAQs](https://help.aliyun.com/document_detail/37172.html).
-//
-// @param request - BuySecretNoRequest
-//
-// @return BuySecretNoResponse
-func (client *Client) BuySecretNo(request *BuySecretNoRequest) (_result *BuySecretNoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BuySecretNoResponse{}
-	_body, _err := client.BuySecretNoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1917,7 +1552,7 @@ func (client *Client) BuySecretNo(request *BuySecretNoRequest) (_result *BuySecr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelPickUpWaybillResponse
-func (client *Client) CancelPickUpWaybillWithOptions(request *CancelPickUpWaybillRequest, runtime *dara.RuntimeOptions) (_result *CancelPickUpWaybillResponse, _err error) {
+func (client *Client) CancelPickUpWaybillWithContext(ctx context.Context, request *CancelPickUpWaybillRequest, runtime *dara.RuntimeOptions) (_result *CancelPickUpWaybillResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1960,35 +1595,11 @@ func (client *Client) CancelPickUpWaybillWithOptions(request *CancelPickUpWaybil
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelPickUpWaybillResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Cancels a door-to-door delivery order.
-//
-// Description:
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - CancelPickUpWaybillRequest
-//
-// @return CancelPickUpWaybillResponse
-func (client *Client) CancelPickUpWaybill(request *CancelPickUpWaybillRequest) (_result *CancelPickUpWaybillResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelPickUpWaybillResponse{}
-	_body, _err := client.CancelPickUpWaybillWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2001,7 +1612,7 @@ func (client *Client) CancelPickUpWaybill(request *CancelPickUpWaybillRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConfigXResponse
-func (client *Client) ConfigXWithOptions(tmpReq *ConfigXRequest, runtime *dara.RuntimeOptions) (_result *ConfigXResponse, _err error) {
+func (client *Client) ConfigXWithContext(ctx context.Context, tmpReq *ConfigXRequest, runtime *dara.RuntimeOptions) (_result *ConfigXResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -2082,29 +1693,11 @@ func (client *Client) ConfigXWithOptions(tmpReq *ConfigXRequest, runtime *dara.R
 		BodyType:    dara.String("json"),
 	}
 	_result = &ConfigXResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 配置X号码，单独对工作号的话音呼叫、企业名片等通信功能进行配置操作
-//
-// @param request - ConfigXRequest
-//
-// @return ConfigXResponse
-func (client *Client) ConfigX(request *ConfigXRequest) (_result *ConfigXResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ConfigXResponse{}
-	_body, _err := client.ConfigXWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2123,7 +1716,7 @@ func (client *Client) ConfigX(request *ConfigXRequest) (_result *ConfigXResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAxgGroupResponse
-func (client *Client) CreateAxgGroupWithOptions(request *CreateAxgGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateAxgGroupResponse, _err error) {
+func (client *Client) CreateAxgGroupWithContext(ctx context.Context, request *CreateAxgGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateAxgGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2174,35 +1767,11 @@ func (client *Client) CreateAxgGroupWithOptions(request *CreateAxgGroupRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAxgGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates number group G.
-//
-// Description:
-//
-// Before you add an AXG binding, you must purchase phone number X, create number group G, and then add phone numbers to number group G. If you do not add phone numbers to number group G after you create number group G, you can call the [OperateAxgGroup](https://help.aliyun.com/document_detail/110252.htm) operation to add phone numbers to number group G.
-//
-// >  Up to 2,000 number groups G can be added for a single phone number pool.
-//
-// @param request - CreateAxgGroupRequest
-//
-// @return CreateAxgGroupResponse
-func (client *Client) CreateAxgGroup(request *CreateAxgGroupRequest) (_result *CreateAxgGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAxgGroupResponse{}
-	_body, _err := client.CreateAxgGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2215,7 +1784,7 @@ func (client *Client) CreateAxgGroup(request *CreateAxgGroupRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateFixedNoAReportResponse
-func (client *Client) CreateFixedNoAReportWithOptions(request *CreateFixedNoAReportRequest, runtime *dara.RuntimeOptions) (_result *CreateFixedNoAReportResponse, _err error) {
+func (client *Client) CreateFixedNoAReportWithContext(ctx context.Context, request *CreateFixedNoAReportRequest, runtime *dara.RuntimeOptions) (_result *CreateFixedNoAReportResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2298,29 +1867,11 @@ func (client *Client) CreateFixedNoAReportWithOptions(request *CreateFixedNoARep
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateFixedNoAReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 通过API收集小号a号码固话
-//
-// @param request - CreateFixedNoAReportRequest
-//
-// @return CreateFixedNoAReportResponse
-func (client *Client) CreateFixedNoAReport(request *CreateFixedNoAReportRequest) (_result *CreateFixedNoAReportResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateFixedNoAReportResponse{}
-	_body, _err := client.CreateFixedNoAReportWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2333,7 +1884,7 @@ func (client *Client) CreateFixedNoAReport(request *CreateFixedNoAReportRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePhoneNoAReportResponse
-func (client *Client) CreatePhoneNoAReportWithOptions(request *CreatePhoneNoAReportRequest, runtime *dara.RuntimeOptions) (_result *CreatePhoneNoAReportResponse, _err error) {
+func (client *Client) CreatePhoneNoAReportWithContext(ctx context.Context, request *CreatePhoneNoAReportRequest, runtime *dara.RuntimeOptions) (_result *CreatePhoneNoAReportResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2404,29 +1955,11 @@ func (client *Client) CreatePhoneNoAReportWithOptions(request *CreatePhoneNoARep
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePhoneNoAReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 通过API收集小号a号码手机号
-//
-// @param request - CreatePhoneNoAReportRequest
-//
-// @return CreatePhoneNoAReportResponse
-func (client *Client) CreatePhoneNoAReport(request *CreatePhoneNoAReportRequest) (_result *CreatePhoneNoAReportResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePhoneNoAReportResponse{}
-	_body, _err := client.CreatePhoneNoAReportWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2445,7 +1978,7 @@ func (client *Client) CreatePhoneNoAReport(request *CreatePhoneNoAReportRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePickUpWaybillResponse
-func (client *Client) CreatePickUpWaybillWithOptions(tmpReq *CreatePickUpWaybillRequest, runtime *dara.RuntimeOptions) (_result *CreatePickUpWaybillResponse, _err error) {
+func (client *Client) CreatePickUpWaybillWithContext(ctx context.Context, tmpReq *CreatePickUpWaybillRequest, runtime *dara.RuntimeOptions) (_result *CreatePickUpWaybillResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -2546,35 +2079,11 @@ func (client *Client) CreatePickUpWaybillWithOptions(tmpReq *CreatePickUpWaybill
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePickUpWaybillResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a door-to-door delivery order.
-//
-// Description:
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - CreatePickUpWaybillRequest
-//
-// @return CreatePickUpWaybillResponse
-func (client *Client) CreatePickUpWaybill(request *CreatePickUpWaybillRequest) (_result *CreatePickUpWaybillResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePickUpWaybillResponse{}
-	_body, _err := client.CreatePickUpWaybillWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2593,7 +2102,7 @@ func (client *Client) CreatePickUpWaybill(request *CreatePickUpWaybillRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePickUpWaybillPreQueryResponse
-func (client *Client) CreatePickUpWaybillPreQueryWithOptions(tmpReq *CreatePickUpWaybillPreQueryRequest, runtime *dara.RuntimeOptions) (_result *CreatePickUpWaybillPreQueryResponse, _err error) {
+func (client *Client) CreatePickUpWaybillPreQueryWithContext(ctx context.Context, tmpReq *CreatePickUpWaybillPreQueryRequest, runtime *dara.RuntimeOptions) (_result *CreatePickUpWaybillPreQueryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -2650,35 +2159,11 @@ func (client *Client) CreatePickUpWaybillPreQueryWithOptions(tmpReq *CreatePickU
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePickUpWaybillPreQueryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a pickup order.
-//
-// Description:
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - CreatePickUpWaybillPreQueryRequest
-//
-// @return CreatePickUpWaybillPreQueryResponse
-func (client *Client) CreatePickUpWaybillPreQuery(request *CreatePickUpWaybillPreQueryRequest) (_result *CreatePickUpWaybillPreQueryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePickUpWaybillPreQueryResponse{}
-	_body, _err := client.CreatePickUpWaybillPreQueryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2691,7 +2176,7 @@ func (client *Client) CreatePickUpWaybillPreQuery(request *CreatePickUpWaybillPr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSmsSignResponse
-func (client *Client) CreateSmsSignWithOptions(request *CreateSmsSignRequest, runtime *dara.RuntimeOptions) (_result *CreateSmsSignResponse, _err error) {
+func (client *Client) CreateSmsSignWithContext(ctx context.Context, request *CreateSmsSignRequest, runtime *dara.RuntimeOptions) (_result *CreateSmsSignResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2746,29 +2231,11 @@ func (client *Client) CreateSmsSignWithOptions(request *CreateSmsSignRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSmsSignResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// B向A 发短信，客户端获取“短信标签”，尾部添加“标签”。通过“标签”解析被叫A，发短信到A。
-//
-// @param request - CreateSmsSignRequest
-//
-// @return CreateSmsSignResponse
-func (client *Client) CreateSmsSign(request *CreateSmsSignRequest) (_result *CreateSmsSignResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateSmsSignResponse{}
-	_body, _err := client.CreateSmsSignWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2781,7 +2248,7 @@ func (client *Client) CreateSmsSign(request *CreateSmsSignRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAxbBindFixedLineResponse
-func (client *Client) DeleteAxbBindFixedLineWithOptions(request *DeleteAxbBindFixedLineRequest, runtime *dara.RuntimeOptions) (_result *DeleteAxbBindFixedLineResponse, _err error) {
+func (client *Client) DeleteAxbBindFixedLineWithContext(ctx context.Context, request *DeleteAxbBindFixedLineRequest, runtime *dara.RuntimeOptions) (_result *DeleteAxbBindFixedLineResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2832,29 +2299,11 @@ func (client *Client) DeleteAxbBindFixedLineWithOptions(request *DeleteAxbBindFi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAxbBindFixedLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 固话AxB解绑
-//
-// @param request - DeleteAxbBindFixedLineRequest
-//
-// @return DeleteAxbBindFixedLineResponse
-func (client *Client) DeleteAxbBindFixedLine(request *DeleteAxbBindFixedLineRequest) (_result *DeleteAxbBindFixedLineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAxbBindFixedLineResponse{}
-	_body, _err := client.DeleteAxbBindFixedLineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2863,7 +2312,7 @@ func (client *Client) DeleteAxbBindFixedLine(request *DeleteAxbBindFixedLineRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAxgGroupResponse
-func (client *Client) DeleteAxgGroupWithOptions(request *DeleteAxgGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteAxgGroupResponse, _err error) {
+func (client *Client) DeleteAxgGroupWithContext(ctx context.Context, request *DeleteAxgGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteAxgGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2906,25 +2355,11 @@ func (client *Client) DeleteAxgGroupWithOptions(request *DeleteAxgGroupRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAxgGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteAxgGroupRequest
-//
-// @return DeleteAxgGroupResponse
-func (client *Client) DeleteAxgGroup(request *DeleteAxgGroupRequest) (_result *DeleteAxgGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAxgGroupResponse{}
-	_body, _err := client.DeleteAxgGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2937,7 +2372,7 @@ func (client *Client) DeleteAxgGroup(request *DeleteAxgGroupRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAxnBindFixedLineResponse
-func (client *Client) DeleteAxnBindFixedLineWithOptions(request *DeleteAxnBindFixedLineRequest, runtime *dara.RuntimeOptions) (_result *DeleteAxnBindFixedLineResponse, _err error) {
+func (client *Client) DeleteAxnBindFixedLineWithContext(ctx context.Context, request *DeleteAxnBindFixedLineRequest, runtime *dara.RuntimeOptions) (_result *DeleteAxnBindFixedLineResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2988,29 +2423,11 @@ func (client *Client) DeleteAxnBindFixedLineWithOptions(request *DeleteAxnBindFi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAxnBindFixedLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 解绑已有Axn绑定
-//
-// @param request - DeleteAxnBindFixedLineRequest
-//
-// @return DeleteAxnBindFixedLineResponse
-func (client *Client) DeleteAxnBindFixedLine(request *DeleteAxnBindFixedLineRequest) (_result *DeleteAxnBindFixedLineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAxnBindFixedLineResponse{}
-	_body, _err := client.DeleteAxnBindFixedLineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3023,7 +2440,7 @@ func (client *Client) DeleteAxnBindFixedLine(request *DeleteAxnBindFixedLineRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAxnExtensionBindFixedLineResponse
-func (client *Client) DeleteAxnExtensionBindFixedLineWithOptions(request *DeleteAxnExtensionBindFixedLineRequest, runtime *dara.RuntimeOptions) (_result *DeleteAxnExtensionBindFixedLineResponse, _err error) {
+func (client *Client) DeleteAxnExtensionBindFixedLineWithContext(ctx context.Context, request *DeleteAxnExtensionBindFixedLineRequest, runtime *dara.RuntimeOptions) (_result *DeleteAxnExtensionBindFixedLineResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3074,29 +2491,11 @@ func (client *Client) DeleteAxnExtensionBindFixedLineWithOptions(request *Delete
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAxnExtensionBindFixedLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 解绑已有AXN分机号绑定
-//
-// @param request - DeleteAxnExtensionBindFixedLineRequest
-//
-// @return DeleteAxnExtensionBindFixedLineResponse
-func (client *Client) DeleteAxnExtensionBindFixedLine(request *DeleteAxnExtensionBindFixedLineRequest) (_result *DeleteAxnExtensionBindFixedLineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAxnExtensionBindFixedLineResponse{}
-	_body, _err := client.DeleteAxnExtensionBindFixedLineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3109,7 +2508,7 @@ func (client *Client) DeleteAxnExtensionBindFixedLine(request *DeleteAxnExtensio
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSecretAPhoneNoToCustResponse
-func (client *Client) DeleteSecretAPhoneNoToCustWithOptions(request *DeleteSecretAPhoneNoToCustRequest, runtime *dara.RuntimeOptions) (_result *DeleteSecretAPhoneNoToCustResponse, _err error) {
+func (client *Client) DeleteSecretAPhoneNoToCustWithContext(ctx context.Context, request *DeleteSecretAPhoneNoToCustRequest, runtime *dara.RuntimeOptions) (_result *DeleteSecretAPhoneNoToCustResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3152,29 +2551,11 @@ func (client *Client) DeleteSecretAPhoneNoToCustWithOptions(request *DeleteSecre
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteSecretAPhoneNoToCustResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # A号码报备数据删除
-//
-// @param request - DeleteSecretAPhoneNoToCustRequest
-//
-// @return DeleteSecretAPhoneNoToCustResponse
-func (client *Client) DeleteSecretAPhoneNoToCust(request *DeleteSecretAPhoneNoToCustRequest) (_result *DeleteSecretAPhoneNoToCustResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteSecretAPhoneNoToCustResponse{}
-	_body, _err := client.DeleteSecretAPhoneNoToCustWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3193,7 +2574,7 @@ func (client *Client) DeleteSecretAPhoneNoToCust(request *DeleteSecretAPhoneNoTo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSecretBlacklistResponse
-func (client *Client) DeleteSecretBlacklistWithOptions(request *DeleteSecretBlacklistRequest, runtime *dara.RuntimeOptions) (_result *DeleteSecretBlacklistResponse, _err error) {
+func (client *Client) DeleteSecretBlacklistWithContext(ctx context.Context, request *DeleteSecretBlacklistRequest, runtime *dara.RuntimeOptions) (_result *DeleteSecretBlacklistResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3236,35 +2617,11 @@ func (client *Client) DeleteSecretBlacklistWithOptions(request *DeleteSecretBlac
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteSecretBlacklistResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a blacklist.
-//
-// Description:
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DeleteSecretBlacklistRequest
-//
-// @return DeleteSecretBlacklistResponse
-func (client *Client) DeleteSecretBlacklist(request *DeleteSecretBlacklistRequest) (_result *DeleteSecretBlacklistResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteSecretBlacklistResponse{}
-	_body, _err := client.DeleteSecretBlacklistWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3277,7 +2634,7 @@ func (client *Client) DeleteSecretBlacklist(request *DeleteSecretBlacklistReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDyplsOSSInfoForUploadFileResponse
-func (client *Client) GetDyplsOSSInfoForUploadFileWithOptions(request *GetDyplsOSSInfoForUploadFileRequest, runtime *dara.RuntimeOptions) (_result *GetDyplsOSSInfoForUploadFileResponse, _err error) {
+func (client *Client) GetDyplsOSSInfoForUploadFileWithContext(ctx context.Context, request *GetDyplsOSSInfoForUploadFileRequest, runtime *dara.RuntimeOptions) (_result *GetDyplsOSSInfoForUploadFileResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3316,29 +2673,11 @@ func (client *Client) GetDyplsOSSInfoForUploadFileWithOptions(request *GetDyplsO
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDyplsOSSInfoForUploadFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 隐私号上传文件，获取 OSS 信息
-//
-// @param request - GetDyplsOSSInfoForUploadFileRequest
-//
-// @return GetDyplsOSSInfoForUploadFileResponse
-func (client *Client) GetDyplsOSSInfoForUploadFile(request *GetDyplsOSSInfoForUploadFileRequest) (_result *GetDyplsOSSInfoForUploadFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetDyplsOSSInfoForUploadFileResponse{}
-	_body, _err := client.GetDyplsOSSInfoForUploadFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3359,7 +2698,7 @@ func (client *Client) GetDyplsOSSInfoForUploadFile(request *GetDyplsOSSInfoForUp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSecretAsrDetailResponse
-func (client *Client) GetSecretAsrDetailWithOptions(request *GetSecretAsrDetailRequest, runtime *dara.RuntimeOptions) (_result *GetSecretAsrDetailResponse, _err error) {
+func (client *Client) GetSecretAsrDetailWithContext(ctx context.Context, request *GetSecretAsrDetailRequest, runtime *dara.RuntimeOptions) (_result *GetSecretAsrDetailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3394,37 +2733,11 @@ func (client *Client) GetSecretAsrDetailWithOptions(request *GetSecretAsrDetailR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSecretAsrDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the details of the automatic speech recognition (ASR) result.
-//
-// Description:
-//
-// Before you call the GetSecretAsrDetail operation, set the ASRStatus parameter to true in the [BindAxn operation](https://help.aliyun.com/document_detail/400483.html). This ensures that you can obtain the ASR result properly.
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - GetSecretAsrDetailRequest
-//
-// @return GetSecretAsrDetailResponse
-func (client *Client) GetSecretAsrDetail(request *GetSecretAsrDetailRequest) (_result *GetSecretAsrDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSecretAsrDetailResponse{}
-	_body, _err := client.GetSecretAsrDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3443,7 +2756,7 @@ func (client *Client) GetSecretAsrDetail(request *GetSecretAsrDetailRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTotalPublicUrlResponse
-func (client *Client) GetTotalPublicUrlWithOptions(request *GetTotalPublicUrlRequest, runtime *dara.RuntimeOptions) (_result *GetTotalPublicUrlResponse, _err error) {
+func (client *Client) GetTotalPublicUrlWithContext(ctx context.Context, request *GetTotalPublicUrlRequest, runtime *dara.RuntimeOptions) (_result *GetTotalPublicUrlResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3494,35 +2807,11 @@ func (client *Client) GetTotalPublicUrlWithOptions(request *GetTotalPublicUrlReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTotalPublicUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the download URL of a recorded ringing tone.
-//
-// Description:
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - GetTotalPublicUrlRequest
-//
-// @return GetTotalPublicUrlResponse
-func (client *Client) GetTotalPublicUrl(request *GetTotalPublicUrlRequest) (_result *GetTotalPublicUrlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetTotalPublicUrlResponse{}
-	_body, _err := client.GetTotalPublicUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3535,7 +2824,7 @@ func (client *Client) GetTotalPublicUrl(request *GetTotalPublicUrlRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetXConfigResponse
-func (client *Client) GetXConfigWithOptions(request *GetXConfigRequest, runtime *dara.RuntimeOptions) (_result *GetXConfigResponse, _err error) {
+func (client *Client) GetXConfigWithContext(ctx context.Context, request *GetXConfigRequest, runtime *dara.RuntimeOptions) (_result *GetXConfigResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3586,29 +2875,11 @@ func (client *Client) GetXConfigWithOptions(request *GetXConfigRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetXConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取X号码配置信息
-//
-// @param request - GetXConfigRequest
-//
-// @return GetXConfigResponse
-func (client *Client) GetXConfig(request *GetXConfigRequest) (_result *GetXConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetXConfigResponse{}
-	_body, _err := client.GetXConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3621,7 +2892,7 @@ func (client *Client) GetXConfig(request *GetXConfigRequest) (_result *GetXConfi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetXDefaultConfigResponse
-func (client *Client) GetXDefaultConfigWithOptions(request *GetXDefaultConfigRequest, runtime *dara.RuntimeOptions) (_result *GetXDefaultConfigResponse, _err error) {
+func (client *Client) GetXDefaultConfigWithContext(ctx context.Context, request *GetXDefaultConfigRequest, runtime *dara.RuntimeOptions) (_result *GetXDefaultConfigResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3672,29 +2943,11 @@ func (client *Client) GetXDefaultConfigWithOptions(request *GetXDefaultConfigReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetXDefaultConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取X号码默认配置信息
-//
-// @param request - GetXDefaultConfigRequest
-//
-// @return GetXDefaultConfigResponse
-func (client *Client) GetXDefaultConfig(request *GetXDefaultConfigRequest) (_result *GetXDefaultConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetXDefaultConfigResponse{}
-	_body, _err := client.GetXDefaultConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3707,7 +2960,7 @@ func (client *Client) GetXDefaultConfig(request *GetXDefaultConfigRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListXTelephonesResponse
-func (client *Client) ListXTelephonesWithOptions(request *ListXTelephonesRequest, runtime *dara.RuntimeOptions) (_result *ListXTelephonesResponse, _err error) {
+func (client *Client) ListXTelephonesWithContext(ctx context.Context, request *ListXTelephonesRequest, runtime *dara.RuntimeOptions) (_result *ListXTelephonesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3762,29 +3015,11 @@ func (client *Client) ListXTelephonesWithOptions(request *ListXTelephonesRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListXTelephonesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询客户名下X号码列表
-//
-// @param request - ListXTelephonesRequest
-//
-// @return ListXTelephonesResponse
-func (client *Client) ListXTelephones(request *ListXTelephonesRequest) (_result *ListXTelephonesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListXTelephonesResponse{}
-	_body, _err := client.ListXTelephonesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3805,7 +3040,7 @@ func (client *Client) ListXTelephones(request *ListXTelephonesRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return LockSecretNoResponse
-func (client *Client) LockSecretNoWithOptions(request *LockSecretNoRequest, runtime *dara.RuntimeOptions) (_result *LockSecretNoResponse, _err error) {
+func (client *Client) LockSecretNoWithContext(ctx context.Context, request *LockSecretNoRequest, runtime *dara.RuntimeOptions) (_result *LockSecretNoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3848,37 +3083,11 @@ func (client *Client) LockSecretNoWithOptions(request *LockSecretNoRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &LockSecretNoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Locks a phone number.
-//
-// Description:
-//
-// After a phone number is locked, the locked phone number cannot be selected when you call an operation to create a binding.
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - LockSecretNoRequest
-//
-// @return LockSecretNoResponse
-func (client *Client) LockSecretNo(request *LockSecretNoRequest) (_result *LockSecretNoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &LockSecretNoResponse{}
-	_body, _err := client.LockSecretNoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3899,7 +3108,7 @@ func (client *Client) LockSecretNo(request *LockSecretNoRequest) (_result *LockS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OperateAxgGroupResponse
-func (client *Client) OperateAxgGroupWithOptions(request *OperateAxgGroupRequest, runtime *dara.RuntimeOptions) (_result *OperateAxgGroupResponse, _err error) {
+func (client *Client) OperateAxgGroupWithContext(ctx context.Context, request *OperateAxgGroupRequest, runtime *dara.RuntimeOptions) (_result *OperateAxgGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3950,37 +3159,11 @@ func (client *Client) OperateAxgGroupWithOptions(request *OperateAxgGroupRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &OperateAxgGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies number group G.
-//
-// Description:
-//
-// After you create number group G, you can call the OperateAxgGroup operation to modify number group G. For example, you can add phone numbers to number group G, delete phone numbers from number group G, and replace all phone numbers in number group G.
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - OperateAxgGroupRequest
-//
-// @return OperateAxgGroupResponse
-func (client *Client) OperateAxgGroup(request *OperateAxgGroupRequest) (_result *OperateAxgGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OperateAxgGroupResponse{}
-	_body, _err := client.OperateAxgGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4001,7 +3184,7 @@ func (client *Client) OperateAxgGroup(request *OperateAxgGroupRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OperateBlackNoResponse
-func (client *Client) OperateBlackNoWithOptions(request *OperateBlackNoRequest, runtime *dara.RuntimeOptions) (_result *OperateBlackNoResponse, _err error) {
+func (client *Client) OperateBlackNoWithContext(ctx context.Context, request *OperateBlackNoRequest, runtime *dara.RuntimeOptions) (_result *OperateBlackNoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4052,37 +3235,11 @@ func (client *Client) OperateBlackNoWithOptions(request *OperateBlackNoRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &OperateBlackNoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a phone number to a blacklist or deletes a phone number from a blacklist.
-//
-// Description:
-//
-// The OperateBlackNo operation supports the following number pool types: AXN, AXN extension, and 95AXN.
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - OperateBlackNoRequest
-//
-// @return OperateBlackNoResponse
-func (client *Client) OperateBlackNo(request *OperateBlackNoRequest) (_result *OperateBlackNoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OperateBlackNoResponse{}
-	_body, _err := client.OperateBlackNoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4095,7 +3252,7 @@ func (client *Client) OperateBlackNo(request *OperateBlackNoRequest) (_result *O
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryAxbBindFixedLineResponse
-func (client *Client) QueryAxbBindFixedLineWithOptions(request *QueryAxbBindFixedLineRequest, runtime *dara.RuntimeOptions) (_result *QueryAxbBindFixedLineResponse, _err error) {
+func (client *Client) QueryAxbBindFixedLineWithContext(ctx context.Context, request *QueryAxbBindFixedLineRequest, runtime *dara.RuntimeOptions) (_result *QueryAxbBindFixedLineResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4158,29 +3315,11 @@ func (client *Client) QueryAxbBindFixedLineWithOptions(request *QueryAxbBindFixe
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryAxbBindFixedLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 固话AxB查询
-//
-// @param request - QueryAxbBindFixedLineRequest
-//
-// @return QueryAxbBindFixedLineResponse
-func (client *Client) QueryAxbBindFixedLine(request *QueryAxbBindFixedLineRequest) (_result *QueryAxbBindFixedLineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryAxbBindFixedLineResponse{}
-	_body, _err := client.QueryAxbBindFixedLineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4193,7 +3332,7 @@ func (client *Client) QueryAxbBindFixedLine(request *QueryAxbBindFixedLineReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryAxnBindFixedLineResponse
-func (client *Client) QueryAxnBindFixedLineWithOptions(request *QueryAxnBindFixedLineRequest, runtime *dara.RuntimeOptions) (_result *QueryAxnBindFixedLineResponse, _err error) {
+func (client *Client) QueryAxnBindFixedLineWithContext(ctx context.Context, request *QueryAxnBindFixedLineRequest, runtime *dara.RuntimeOptions) (_result *QueryAxnBindFixedLineResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4256,29 +3395,11 @@ func (client *Client) QueryAxnBindFixedLineWithOptions(request *QueryAxnBindFixe
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryAxnBindFixedLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询Axn绑定关系
-//
-// @param request - QueryAxnBindFixedLineRequest
-//
-// @return QueryAxnBindFixedLineResponse
-func (client *Client) QueryAxnBindFixedLine(request *QueryAxnBindFixedLineRequest) (_result *QueryAxnBindFixedLineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryAxnBindFixedLineResponse{}
-	_body, _err := client.QueryAxnBindFixedLineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4291,7 +3412,7 @@ func (client *Client) QueryAxnBindFixedLine(request *QueryAxnBindFixedLineReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryAxnExtensionBindFixedLineResponse
-func (client *Client) QueryAxnExtensionBindFixedLineWithOptions(request *QueryAxnExtensionBindFixedLineRequest, runtime *dara.RuntimeOptions) (_result *QueryAxnExtensionBindFixedLineResponse, _err error) {
+func (client *Client) QueryAxnExtensionBindFixedLineWithContext(ctx context.Context, request *QueryAxnExtensionBindFixedLineRequest, runtime *dara.RuntimeOptions) (_result *QueryAxnExtensionBindFixedLineResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4350,29 +3471,11 @@ func (client *Client) QueryAxnExtensionBindFixedLineWithOptions(request *QueryAx
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryAxnExtensionBindFixedLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询AXN分机号绑定关系
-//
-// @param request - QueryAxnExtensionBindFixedLineRequest
-//
-// @return QueryAxnExtensionBindFixedLineResponse
-func (client *Client) QueryAxnExtensionBindFixedLine(request *QueryAxnExtensionBindFixedLineRequest) (_result *QueryAxnExtensionBindFixedLineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryAxnExtensionBindFixedLineResponse{}
-	_body, _err := client.QueryAxnExtensionBindFixedLineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4391,7 +3494,7 @@ func (client *Client) QueryAxnExtensionBindFixedLine(request *QueryAxnExtensionB
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryPhoneNoAByTrackNoResponse
-func (client *Client) QueryPhoneNoAByTrackNoWithOptions(request *QueryPhoneNoAByTrackNoRequest, runtime *dara.RuntimeOptions) (_result *QueryPhoneNoAByTrackNoResponse, _err error) {
+func (client *Client) QueryPhoneNoAByTrackNoWithContext(ctx context.Context, request *QueryPhoneNoAByTrackNoRequest, runtime *dara.RuntimeOptions) (_result *QueryPhoneNoAByTrackNoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4438,35 +3541,11 @@ func (client *Client) QueryPhoneNoAByTrackNoWithOptions(request *QueryPhoneNoABy
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryPhoneNoAByTrackNoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details about a tracking number.
-//
-// Description:
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - QueryPhoneNoAByTrackNoRequest
-//
-// @return QueryPhoneNoAByTrackNoResponse
-func (client *Client) QueryPhoneNoAByTrackNo(request *QueryPhoneNoAByTrackNoRequest) (_result *QueryPhoneNoAByTrackNoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryPhoneNoAByTrackNoResponse{}
-	_body, _err := client.QueryPhoneNoAByTrackNoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4499,7 +3578,7 @@ func (client *Client) QueryPhoneNoAByTrackNo(request *QueryPhoneNoAByTrackNoRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryRecordFileDownloadUrlResponse
-func (client *Client) QueryRecordFileDownloadUrlWithOptions(request *QueryRecordFileDownloadUrlRequest, runtime *dara.RuntimeOptions) (_result *QueryRecordFileDownloadUrlResponse, _err error) {
+func (client *Client) QueryRecordFileDownloadUrlWithContext(ctx context.Context, request *QueryRecordFileDownloadUrlRequest, runtime *dara.RuntimeOptions) (_result *QueryRecordFileDownloadUrlResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4550,49 +3629,11 @@ func (client *Client) QueryRecordFileDownloadUrlWithOptions(request *QueryRecord
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryRecordFileDownloadUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the download URL of a recording file.
-//
-// Description:
-//
-// If the recording feature is enabled for a binding, all calls made by the bound phone numbers are recorded. You can obtain the download URL of a recording file by calling the QueryRecordFileDownloadUrl operation and download the recording file.
-//
-// >  We recommend that you subscribe to [the recording status report SecretRecording](https://help.aliyun.com/document_detail/109198.html). The values of the response parameters in SecretRecording can be used as the values of the request parameters for downloading a recording file.
-//
-// ### [](#)Procedure for obtaining a recording file
-//
-// 1.  Specify the request parameter in an update or binding operation to enable the recording feature.
-//
-// 2.  Subscribe to recording message receipts in the Phone Number Protection console.
-//
-// 3.  After a recording message receipt is returned, call the QueryRecordFileDownloadUrl operation to obtain the download URL of the recording file, and download the recording file.
-//
-// >
-//
-//   - A download URL is valid for 2 hours. Download the recording file as soon as possible after obtaining a download URL.
-//
-//   - The storage period of recording files is 30 days. You can download only the recording files of calls recorded in the last 30 days.
-//
-// @param request - QueryRecordFileDownloadUrlRequest
-//
-// @return QueryRecordFileDownloadUrlResponse
-func (client *Client) QueryRecordFileDownloadUrl(request *QueryRecordFileDownloadUrlRequest) (_result *QueryRecordFileDownloadUrlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryRecordFileDownloadUrlResponse{}
-	_body, _err := client.QueryRecordFileDownloadUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4605,7 +3646,7 @@ func (client *Client) QueryRecordFileDownloadUrl(request *QueryRecordFileDownloa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuerySecretAPhoneNoToCustResponse
-func (client *Client) QuerySecretAPhoneNoToCustWithOptions(request *QuerySecretAPhoneNoToCustRequest, runtime *dara.RuntimeOptions) (_result *QuerySecretAPhoneNoToCustResponse, _err error) {
+func (client *Client) QuerySecretAPhoneNoToCustWithContext(ctx context.Context, request *QuerySecretAPhoneNoToCustRequest, runtime *dara.RuntimeOptions) (_result *QuerySecretAPhoneNoToCustResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4648,29 +3689,11 @@ func (client *Client) QuerySecretAPhoneNoToCustWithOptions(request *QuerySecretA
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuerySecretAPhoneNoToCustResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # A号码报备状态查询
-//
-// @param request - QuerySecretAPhoneNoToCustRequest
-//
-// @return QuerySecretAPhoneNoToCustResponse
-func (client *Client) QuerySecretAPhoneNoToCust(request *QuerySecretAPhoneNoToCustRequest) (_result *QuerySecretAPhoneNoToCustResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QuerySecretAPhoneNoToCustResponse{}
-	_body, _err := client.QuerySecretAPhoneNoToCustWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4689,7 +3712,7 @@ func (client *Client) QuerySecretAPhoneNoToCust(request *QuerySecretAPhoneNoToCu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuerySecretNoDetailResponse
-func (client *Client) QuerySecretNoDetailWithOptions(request *QuerySecretNoDetailRequest, runtime *dara.RuntimeOptions) (_result *QuerySecretNoDetailResponse, _err error) {
+func (client *Client) QuerySecretNoDetailWithContext(ctx context.Context, request *QuerySecretNoDetailRequest, runtime *dara.RuntimeOptions) (_result *QuerySecretNoDetailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4732,35 +3755,11 @@ func (client *Client) QuerySecretNoDetailWithOptions(request *QuerySecretNoDetai
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuerySecretNoDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the attributes of a private number.
-//
-// Description:
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - QuerySecretNoDetailRequest
-//
-// @return QuerySecretNoDetailResponse
-func (client *Client) QuerySecretNoDetail(request *QuerySecretNoDetailRequest) (_result *QuerySecretNoDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QuerySecretNoDetailResponse{}
-	_body, _err := client.QuerySecretNoDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4777,7 +3776,7 @@ func (client *Client) QuerySecretNoDetail(request *QuerySecretNoDetailRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuerySecretNoRemainResponse
-func (client *Client) QuerySecretNoRemainWithOptions(request *QuerySecretNoRemainRequest, runtime *dara.RuntimeOptions) (_result *QuerySecretNoRemainResponse, _err error) {
+func (client *Client) QuerySecretNoRemainWithContext(ctx context.Context, request *QuerySecretNoRemainRequest, runtime *dara.RuntimeOptions) (_result *QuerySecretNoRemainResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4824,33 +3823,11 @@ func (client *Client) QuerySecretNoRemainWithOptions(request *QuerySecretNoRemai
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuerySecretNoRemainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the quantity of remaining phone numbers available for online purchase.
-//
-// Description:
-//
-// When purchasing a phone number, specify the home location. If no sufficient phone numbers are available for purchase in the home location, the purchase of the phone number fails. Before calling the [BuySecretNo](~~BuySecretNo~~) operation to purchase a phone number, call the [QuerySecretNoRemain](~~QuerySecretNoRemain~~) operation to query the quantity of remaining phone numbers available for online purchase.
-//
-// @param request - QuerySecretNoRemainRequest
-//
-// @return QuerySecretNoRemainResponse
-func (client *Client) QuerySecretNoRemain(request *QuerySecretNoRemainRequest) (_result *QuerySecretNoRemainResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QuerySecretNoRemainResponse{}
-	_body, _err := client.QuerySecretNoRemainWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4863,7 +3840,7 @@ func (client *Client) QuerySecretNoRemain(request *QuerySecretNoRemainRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuerySoundRecordResponse
-func (client *Client) QuerySoundRecordWithOptions(request *QuerySoundRecordRequest, runtime *dara.RuntimeOptions) (_result *QuerySoundRecordResponse, _err error) {
+func (client *Client) QuerySoundRecordWithContext(ctx context.Context, request *QuerySoundRecordRequest, runtime *dara.RuntimeOptions) (_result *QuerySoundRecordResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4914,29 +3891,11 @@ func (client *Client) QuerySoundRecordWithOptions(request *QuerySoundRecordReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuerySoundRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询通话录音链接
-//
-// @param request - QuerySoundRecordRequest
-//
-// @return QuerySoundRecordResponse
-func (client *Client) QuerySoundRecord(request *QuerySoundRecordRequest) (_result *QuerySoundRecordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QuerySoundRecordResponse{}
-	_body, _err := client.QuerySoundRecordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4953,7 +3912,7 @@ func (client *Client) QuerySoundRecord(request *QuerySoundRecordRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuerySubsIdResponse
-func (client *Client) QuerySubsIdWithOptions(request *QuerySubsIdRequest, runtime *dara.RuntimeOptions) (_result *QuerySubsIdResponse, _err error) {
+func (client *Client) QuerySubsIdWithContext(ctx context.Context, request *QuerySubsIdRequest, runtime *dara.RuntimeOptions) (_result *QuerySubsIdResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4996,33 +3955,11 @@ func (client *Client) QuerySubsIdWithOptions(request *QuerySubsIdRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuerySubsIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries binding IDs.
-//
-// Description:
-//
-// You can query binding IDs by phone number X. In the AXB product, multiple bindings may exist for the same phone number X. In this case, multiple binding IDs may be obtained for the same phone number X.
-//
-// @param request - QuerySubsIdRequest
-//
-// @return QuerySubsIdResponse
-func (client *Client) QuerySubsId(request *QuerySubsIdRequest) (_result *QuerySubsIdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QuerySubsIdResponse{}
-	_body, _err := client.QuerySubsIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5045,7 +3982,7 @@ func (client *Client) QuerySubsId(request *QuerySubsIdRequest) (_result *QuerySu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuerySubscriptionDetailResponse
-func (client *Client) QuerySubscriptionDetailWithOptions(request *QuerySubscriptionDetailRequest, runtime *dara.RuntimeOptions) (_result *QuerySubscriptionDetailResponse, _err error) {
+func (client *Client) QuerySubscriptionDetailWithContext(ctx context.Context, request *QuerySubscriptionDetailRequest, runtime *dara.RuntimeOptions) (_result *QuerySubscriptionDetailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5096,39 +4033,11 @@ func (client *Client) QuerySubscriptionDetailWithOptions(request *QuerySubscript
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuerySubscriptionDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details about a phone number binding.
-//
-// Description:
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// ### [](#poolkeyproducttype)Limits on PoolKey and ProductType
-//
-// You must specify either PoolKey or ProductType. If both parameters are not specified, an error is reported when you call the QuerySubscriptionDetail operation. We recommend that you specify the ProductType parameter for the original key accounts of Alibaba Cloud and the PoolKey parameter for Alibaba Cloud users.
-//
-// @param request - QuerySubscriptionDetailRequest
-//
-// @return QuerySubscriptionDetailResponse
-func (client *Client) QuerySubscriptionDetail(request *QuerySubscriptionDetailRequest) (_result *QuerySubscriptionDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QuerySubscriptionDetailResponse{}
-	_body, _err := client.QuerySubscriptionDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5147,7 +4056,7 @@ func (client *Client) QuerySubscriptionDetail(request *QuerySubscriptionDetailRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReleaseSecretNoResponse
-func (client *Client) ReleaseSecretNoWithOptions(request *ReleaseSecretNoRequest, runtime *dara.RuntimeOptions) (_result *ReleaseSecretNoResponse, _err error) {
+func (client *Client) ReleaseSecretNoWithContext(ctx context.Context, request *ReleaseSecretNoRequest, runtime *dara.RuntimeOptions) (_result *ReleaseSecretNoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5190,35 +4099,11 @@ func (client *Client) ReleaseSecretNoWithOptions(request *ReleaseSecretNoRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReleaseSecretNoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Releases a phone number.
-//
-// Description:
-//
-//	  After a phone number is released, it will no longer be charged from the following month.
-//
-//		- Before you release a phone number, log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) to check whether the phone number is bound to other phone numbers. The phone number can be released only if it is not bound to other phone numbers.
-//
-// @param request - ReleaseSecretNoRequest
-//
-// @return ReleaseSecretNoResponse
-func (client *Client) ReleaseSecretNo(request *ReleaseSecretNoRequest) (_result *ReleaseSecretNoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReleaseSecretNoResponse{}
-	_body, _err := client.ReleaseSecretNoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5231,7 +4116,7 @@ func (client *Client) ReleaseSecretNo(request *ReleaseSecretNoRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnBindAXBResponse
-func (client *Client) UnBindAXBWithOptions(request *UnBindAXBRequest, runtime *dara.RuntimeOptions) (_result *UnBindAXBResponse, _err error) {
+func (client *Client) UnBindAXBWithContext(ctx context.Context, request *UnBindAXBRequest, runtime *dara.RuntimeOptions) (_result *UnBindAXBResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5282,29 +4167,11 @@ func (client *Client) UnBindAXBWithOptions(request *UnBindAXBRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnBindAXBResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 解除指定的呼叫绑定关系（A，X，B），解决呼叫绑定关系后，员工B不能通过工作号X呼叫到客户A。
-//
-// @param request - UnBindAXBRequest
-//
-// @return UnBindAXBResponse
-func (client *Client) UnBindAXB(request *UnBindAXBRequest) (_result *UnBindAXBResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnBindAXBResponse{}
-	_body, _err := client.UnBindAXBWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5317,7 +4184,7 @@ func (client *Client) UnBindAXB(request *UnBindAXBRequest) (_result *UnBindAXBRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnBindXBResponse
-func (client *Client) UnBindXBWithOptions(request *UnBindXBRequest, runtime *dara.RuntimeOptions) (_result *UnBindXBResponse, _err error) {
+func (client *Client) UnBindXBWithContext(ctx context.Context, request *UnBindXBRequest, runtime *dara.RuntimeOptions) (_result *UnBindXBResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5372,29 +4239,11 @@ func (client *Client) UnBindXBWithOptions(request *UnBindXBRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnBindXBResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 调用本接口可取消工作号X与员工号码B的绑定。绑定解除后，对X的呼叫都不会转接给B。
-//
-// @param request - UnBindXBRequest
-//
-// @return UnBindXBResponse
-func (client *Client) UnBindXB(request *UnBindXBRequest) (_result *UnBindXBResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnBindXBResponse{}
-	_body, _err := client.UnBindXBWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5407,7 +4256,7 @@ func (client *Client) UnBindXB(request *UnBindXBRequest) (_result *UnBindXBRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnbindSubs700Response
-func (client *Client) UnbindSubs700WithOptions(request *UnbindSubs700Request, runtime *dara.RuntimeOptions) (_result *UnbindSubs700Response, _err error) {
+func (client *Client) UnbindSubs700WithContext(ctx context.Context, request *UnbindSubs700Request, runtime *dara.RuntimeOptions) (_result *UnbindSubs700Response, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5454,29 +4303,11 @@ func (client *Client) UnbindSubs700WithOptions(request *UnbindSubs700Request, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnbindSubs700Response{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 解除700绑定关系
-//
-// @param request - UnbindSubs700Request
-//
-// @return UnbindSubs700Response
-func (client *Client) UnbindSubs700(request *UnbindSubs700Request) (_result *UnbindSubs700Response, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnbindSubs700Response{}
-	_body, _err := client.UnbindSubs700WithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5493,7 +4324,7 @@ func (client *Client) UnbindSubs700(request *UnbindSubs700Request) (_result *Unb
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnbindSubscriptionResponse
-func (client *Client) UnbindSubscriptionWithOptions(request *UnbindSubscriptionRequest, runtime *dara.RuntimeOptions) (_result *UnbindSubscriptionResponse, _err error) {
+func (client *Client) UnbindSubscriptionWithContext(ctx context.Context, request *UnbindSubscriptionRequest, runtime *dara.RuntimeOptions) (_result *UnbindSubscriptionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5544,33 +4375,11 @@ func (client *Client) UnbindSubscriptionWithOptions(request *UnbindSubscriptionR
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnbindSubscriptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Unbinds a phone number.
-//
-// Description:
-//
-// Before releasing a phone number, you must call the UnbindSubscription operation to unbind the phone number.
-//
-// @param request - UnbindSubscriptionRequest
-//
-// @return UnbindSubscriptionResponse
-func (client *Client) UnbindSubscription(request *UnbindSubscriptionRequest) (_result *UnbindSubscriptionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnbindSubscriptionResponse{}
-	_body, _err := client.UnbindSubscriptionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5591,7 +4400,7 @@ func (client *Client) UnbindSubscription(request *UnbindSubscriptionRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnlockSecretNoResponse
-func (client *Client) UnlockSecretNoWithOptions(request *UnlockSecretNoRequest, runtime *dara.RuntimeOptions) (_result *UnlockSecretNoResponse, _err error) {
+func (client *Client) UnlockSecretNoWithContext(ctx context.Context, request *UnlockSecretNoRequest, runtime *dara.RuntimeOptions) (_result *UnlockSecretNoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5634,37 +4443,11 @@ func (client *Client) UnlockSecretNoWithOptions(request *UnlockSecretNoRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnlockSecretNoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Unlocks a phone number.
-//
-// Description:
-//
-// After a phone number is unlocked, you can reselect the unlocked phone number when you call an operation to create a binding.
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - UnlockSecretNoRequest
-//
-// @return UnlockSecretNoResponse
-func (client *Client) UnlockSecretNo(request *UnlockSecretNoRequest) (_result *UnlockSecretNoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnlockSecretNoResponse{}
-	_body, _err := client.UnlockSecretNoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5677,7 +4460,7 @@ func (client *Client) UnlockSecretNo(request *UnlockSecretNoRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAxbBindFixedLineResponse
-func (client *Client) UpdateAxbBindFixedLineWithOptions(tmpReq *UpdateAxbBindFixedLineRequest, runtime *dara.RuntimeOptions) (_result *UpdateAxbBindFixedLineResponse, _err error) {
+func (client *Client) UpdateAxbBindFixedLineWithContext(ctx context.Context, tmpReq *UpdateAxbBindFixedLineRequest, runtime *dara.RuntimeOptions) (_result *UpdateAxbBindFixedLineResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -5770,29 +4553,11 @@ func (client *Client) UpdateAxbBindFixedLineWithOptions(tmpReq *UpdateAxbBindFix
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAxbBindFixedLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 固话AxB绑定更新
-//
-// @param request - UpdateAxbBindFixedLineRequest
-//
-// @return UpdateAxbBindFixedLineResponse
-func (client *Client) UpdateAxbBindFixedLine(request *UpdateAxbBindFixedLineRequest) (_result *UpdateAxbBindFixedLineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateAxbBindFixedLineResponse{}
-	_body, _err := client.UpdateAxbBindFixedLineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5805,7 +4570,7 @@ func (client *Client) UpdateAxbBindFixedLine(request *UpdateAxbBindFixedLineRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAxnBindFixedLineResponse
-func (client *Client) UpdateAxnBindFixedLineWithOptions(tmpReq *UpdateAxnBindFixedLineRequest, runtime *dara.RuntimeOptions) (_result *UpdateAxnBindFixedLineResponse, _err error) {
+func (client *Client) UpdateAxnBindFixedLineWithContext(ctx context.Context, tmpReq *UpdateAxnBindFixedLineRequest, runtime *dara.RuntimeOptions) (_result *UpdateAxnBindFixedLineResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -5898,29 +4663,11 @@ func (client *Client) UpdateAxnBindFixedLineWithOptions(tmpReq *UpdateAxnBindFix
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAxnBindFixedLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新Axn绑定关系
-//
-// @param request - UpdateAxnBindFixedLineRequest
-//
-// @return UpdateAxnBindFixedLineResponse
-func (client *Client) UpdateAxnBindFixedLine(request *UpdateAxnBindFixedLineRequest) (_result *UpdateAxnBindFixedLineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateAxnBindFixedLineResponse{}
-	_body, _err := client.UpdateAxnBindFixedLineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5933,7 +4680,7 @@ func (client *Client) UpdateAxnBindFixedLine(request *UpdateAxnBindFixedLineRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAxnExtensionBindFixedLineResponse
-func (client *Client) UpdateAxnExtensionBindFixedLineWithOptions(tmpReq *UpdateAxnExtensionBindFixedLineRequest, runtime *dara.RuntimeOptions) (_result *UpdateAxnExtensionBindFixedLineResponse, _err error) {
+func (client *Client) UpdateAxnExtensionBindFixedLineWithContext(ctx context.Context, tmpReq *UpdateAxnExtensionBindFixedLineRequest, runtime *dara.RuntimeOptions) (_result *UpdateAxnExtensionBindFixedLineResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -6022,29 +4769,11 @@ func (client *Client) UpdateAxnExtensionBindFixedLineWithOptions(tmpReq *UpdateA
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAxnExtensionBindFixedLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新AXN分机号绑定关系
-//
-// @param request - UpdateAxnExtensionBindFixedLineRequest
-//
-// @return UpdateAxnExtensionBindFixedLineResponse
-func (client *Client) UpdateAxnExtensionBindFixedLine(request *UpdateAxnExtensionBindFixedLineRequest) (_result *UpdateAxnExtensionBindFixedLineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateAxnExtensionBindFixedLineResponse{}
-	_body, _err := client.UpdateAxnExtensionBindFixedLineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6057,7 +4786,7 @@ func (client *Client) UpdateAxnExtensionBindFixedLine(request *UpdateAxnExtensio
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateSubs700Response
-func (client *Client) UpdateSubs700WithOptions(request *UpdateSubs700Request, runtime *dara.RuntimeOptions) (_result *UpdateSubs700Response, _err error) {
+func (client *Client) UpdateSubs700WithContext(ctx context.Context, request *UpdateSubs700Request, runtime *dara.RuntimeOptions) (_result *UpdateSubs700Response, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6160,29 +4889,11 @@ func (client *Client) UpdateSubs700WithOptions(request *UpdateSubs700Request, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateSubs700Response{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新700绑定关系
-//
-// @param request - UpdateSubs700Request
-//
-// @return UpdateSubs700Response
-func (client *Client) UpdateSubs700(request *UpdateSubs700Request) (_result *UpdateSubs700Response, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateSubs700Response{}
-	_body, _err := client.UpdateSubs700WithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6201,7 +4912,7 @@ func (client *Client) UpdateSubs700(request *UpdateSubs700Request) (_result *Upd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateSubscriptionResponse
-func (client *Client) UpdateSubscriptionWithOptions(request *UpdateSubscriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateSubscriptionResponse, _err error) {
+func (client *Client) UpdateSubscriptionWithContext(ctx context.Context, request *UpdateSubscriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateSubscriptionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6300,34 +5011,10 @@ func (client *Client) UpdateSubscriptionWithOptions(request *UpdateSubscriptionR
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateSubscriptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a phone number binding.
-//
-// Description:
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 10,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - UpdateSubscriptionRequest
-//
-// @return UpdateSubscriptionResponse
-func (client *Client) UpdateSubscription(request *UpdateSubscriptionRequest) (_result *UpdateSubscriptionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateSubscriptionResponse{}
-	_body, _err := client.UpdateSubscriptionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
