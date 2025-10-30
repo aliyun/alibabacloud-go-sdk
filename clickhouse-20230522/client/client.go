@@ -459,6 +459,10 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 		query["DBInstanceDescription"] = request.DBInstanceDescription
 	}
 
+	if !dara.IsNil(request.DBTimeZone) {
+		query["DBTimeZone"] = request.DBTimeZone
+	}
+
 	if !dara.IsNil(request.DeploySchema) {
 		query["DeploySchema"] = request.DeploySchema
 	}

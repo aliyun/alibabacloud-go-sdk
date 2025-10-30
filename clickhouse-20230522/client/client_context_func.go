@@ -292,6 +292,10 @@ func (client *Client) CreateDBInstanceWithContext(ctx context.Context, tmpReq *C
 		query["DBInstanceDescription"] = request.DBInstanceDescription
 	}
 
+	if !dara.IsNil(request.DBTimeZone) {
+		query["DBTimeZone"] = request.DBTimeZone
+	}
+
 	if !dara.IsNil(request.DeploySchema) {
 		query["DeploySchema"] = request.DeploySchema
 	}

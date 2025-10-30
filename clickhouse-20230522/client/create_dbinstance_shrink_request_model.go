@@ -15,6 +15,8 @@ type iCreateDBInstanceShrinkRequest interface {
 	GetClientToken() *string
 	SetDBInstanceDescription(v string) *CreateDBInstanceShrinkRequest
 	GetDBInstanceDescription() *string
+	SetDBTimeZone(v string) *CreateDBInstanceShrinkRequest
+	GetDBTimeZone() *string
 	SetDeploySchema(v string) *CreateDBInstanceShrinkRequest
 	GetDeploySchema() *string
 	SetEngine(v string) *CreateDBInstanceShrinkRequest
@@ -70,6 +72,7 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// Used for test
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	DBTimeZone            *string `json:"DBTimeZone,omitempty" xml:"DBTimeZone,omitempty"`
 	// The deployment status of the cluster.
 	//
 	// example:
@@ -180,6 +183,10 @@ func (s *CreateDBInstanceShrinkRequest) GetDBInstanceDescription() *string {
 	return s.DBInstanceDescription
 }
 
+func (s *CreateDBInstanceShrinkRequest) GetDBTimeZone() *string {
+	return s.DBTimeZone
+}
+
 func (s *CreateDBInstanceShrinkRequest) GetDeploySchema() *string {
 	return s.DeploySchema
 }
@@ -260,6 +267,11 @@ func (s *CreateDBInstanceShrinkRequest) SetClientToken(v string) *CreateDBInstan
 
 func (s *CreateDBInstanceShrinkRequest) SetDBInstanceDescription(v string) *CreateDBInstanceShrinkRequest {
 	s.DBInstanceDescription = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetDBTimeZone(v string) *CreateDBInstanceShrinkRequest {
+	s.DBTimeZone = &v
 	return s
 }
 
