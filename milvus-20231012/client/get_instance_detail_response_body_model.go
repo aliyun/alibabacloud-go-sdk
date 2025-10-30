@@ -182,7 +182,8 @@ type GetInstanceDetailResponseBodyData struct {
 	// example:
 	//
 	// true
-	EnableHa *bool `json:"EnableHa,omitempty" xml:"EnableHa,omitempty"`
+	EnableHa  *bool   `json:"EnableHa,omitempty" xml:"EnableHa,omitempty"`
+	Encrypted *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
 	// The expiration time.
 	//
 	// example:
@@ -213,6 +214,7 @@ type GetInstanceDetailResponseBodyData struct {
 	//
 	// running
 	InstanceStatus *string                                         `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	KmsKeyId       *string                                         `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
 	MeasureConfig  *GetInstanceDetailResponseBodyDataMeasureConfig `json:"MeasureConfig,omitempty" xml:"MeasureConfig,omitempty" type:"Struct"`
 	MultiZoneMode  *string                                         `json:"MultiZoneMode,omitempty" xml:"MultiZoneMode,omitempty"`
 	// example:
@@ -351,6 +353,10 @@ func (s *GetInstanceDetailResponseBodyData) GetEnableHa() *bool {
 	return s.EnableHa
 }
 
+func (s *GetInstanceDetailResponseBodyData) GetEncrypted() *string {
+	return s.Encrypted
+}
+
 func (s *GetInstanceDetailResponseBodyData) GetExpireTime() *int64 {
 	return s.ExpireTime
 }
@@ -361,6 +367,10 @@ func (s *GetInstanceDetailResponseBodyData) GetInstanceId() *string {
 
 func (s *GetInstanceDetailResponseBodyData) GetInstanceStatus() *string {
 	return s.InstanceStatus
+}
+
+func (s *GetInstanceDetailResponseBodyData) GetKmsKeyId() *string {
+	return s.KmsKeyId
 }
 
 func (s *GetInstanceDetailResponseBodyData) GetMeasureConfig() *GetInstanceDetailResponseBodyDataMeasureConfig {
@@ -474,6 +484,11 @@ func (s *GetInstanceDetailResponseBodyData) SetEnableHa(v bool) *GetInstanceDeta
 	return s
 }
 
+func (s *GetInstanceDetailResponseBodyData) SetEncrypted(v string) *GetInstanceDetailResponseBodyData {
+	s.Encrypted = &v
+	return s
+}
+
 func (s *GetInstanceDetailResponseBodyData) SetExpireTime(v int64) *GetInstanceDetailResponseBodyData {
 	s.ExpireTime = &v
 	return s
@@ -486,6 +501,11 @@ func (s *GetInstanceDetailResponseBodyData) SetInstanceId(v string) *GetInstance
 
 func (s *GetInstanceDetailResponseBodyData) SetInstanceStatus(v string) *GetInstanceDetailResponseBodyData {
 	s.InstanceStatus = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyData) SetKmsKeyId(v string) *GetInstanceDetailResponseBodyData {
+	s.KmsKeyId = &v
 	return s
 }
 
