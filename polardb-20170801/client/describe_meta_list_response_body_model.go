@@ -156,7 +156,8 @@ type DescribeMetaListResponseBodyItems struct {
 	// example:
 	//
 	// test_db
-	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	Database *string  `json:"Database,omitempty" xml:"Database,omitempty"`
+	Size     []*int64 `json:"Size,omitempty" xml:"Size,omitempty" type:"Repeated"`
 	// The name of the table that can be restored.
 	Tables []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
 }
@@ -173,12 +174,21 @@ func (s *DescribeMetaListResponseBodyItems) GetDatabase() *string {
 	return s.Database
 }
 
+func (s *DescribeMetaListResponseBodyItems) GetSize() []*int64 {
+	return s.Size
+}
+
 func (s *DescribeMetaListResponseBodyItems) GetTables() []*string {
 	return s.Tables
 }
 
 func (s *DescribeMetaListResponseBodyItems) SetDatabase(v string) *DescribeMetaListResponseBodyItems {
 	s.Database = &v
+	return s
+}
+
+func (s *DescribeMetaListResponseBodyItems) SetSize(v []*int64) *DescribeMetaListResponseBodyItems {
+	s.Size = v
 	return s
 }
 

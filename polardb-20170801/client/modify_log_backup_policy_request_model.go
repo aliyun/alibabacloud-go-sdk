@@ -9,6 +9,8 @@ type iModifyLogBackupPolicyRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAdvancedLogPolicies(v []*ModifyLogBackupPolicyRequestAdvancedLogPolicies) *ModifyLogBackupPolicyRequest
+	GetAdvancedLogPolicies() []*ModifyLogBackupPolicyRequestAdvancedLogPolicies
 	SetDBClusterId(v string) *ModifyLogBackupPolicyRequest
 	GetDBClusterId() *string
 	SetLogBackupAnotherRegionRegion(v string) *ModifyLogBackupPolicyRequest
@@ -28,6 +30,7 @@ type iModifyLogBackupPolicyRequest interface {
 }
 
 type ModifyLogBackupPolicyRequest struct {
+	AdvancedLogPolicies []*ModifyLogBackupPolicyRequestAdvancedLogPolicies `json:"AdvancedLogPolicies,omitempty" xml:"AdvancedLogPolicies,omitempty" type:"Repeated"`
 	// The cluster ID.
 	//
 	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information of all clusters that are deployed in a specific region, such as the cluster IDs.
@@ -82,6 +85,10 @@ func (s ModifyLogBackupPolicyRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyLogBackupPolicyRequest) GetAdvancedLogPolicies() []*ModifyLogBackupPolicyRequestAdvancedLogPolicies {
+	return s.AdvancedLogPolicies
+}
+
 func (s *ModifyLogBackupPolicyRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
@@ -112,6 +119,11 @@ func (s *ModifyLogBackupPolicyRequest) GetResourceOwnerAccount() *string {
 
 func (s *ModifyLogBackupPolicyRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
+}
+
+func (s *ModifyLogBackupPolicyRequest) SetAdvancedLogPolicies(v []*ModifyLogBackupPolicyRequestAdvancedLogPolicies) *ModifyLogBackupPolicyRequest {
+	s.AdvancedLogPolicies = v
+	return s
 }
 
 func (s *ModifyLogBackupPolicyRequest) SetDBClusterId(v string) *ModifyLogBackupPolicyRequest {
@@ -155,5 +167,119 @@ func (s *ModifyLogBackupPolicyRequest) SetResourceOwnerId(v int64) *ModifyLogBac
 }
 
 func (s *ModifyLogBackupPolicyRequest) Validate() error {
+	if s.AdvancedLogPolicies != nil {
+		for _, item := range s.AdvancedLogPolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ModifyLogBackupPolicyRequestAdvancedLogPolicies struct {
+	ActionType        *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	DestRegion        *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
+	DestType          *string `json:"DestType,omitempty" xml:"DestType,omitempty"`
+	EnableLogBackup   *int32  `json:"EnableLogBackup,omitempty" xml:"EnableLogBackup,omitempty"`
+	LogRetentionType  *string `json:"LogRetentionType,omitempty" xml:"LogRetentionType,omitempty"`
+	LogRetentionValue *string `json:"LogRetentionValue,omitempty" xml:"LogRetentionValue,omitempty"`
+	PolicyId          *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	SrcRegion         *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
+	SrcType           *string `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
+}
+
+func (s ModifyLogBackupPolicyRequestAdvancedLogPolicies) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyLogBackupPolicyRequestAdvancedLogPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyLogBackupPolicyRequestAdvancedLogPolicies) GetActionType() *string {
+	return s.ActionType
+}
+
+func (s *ModifyLogBackupPolicyRequestAdvancedLogPolicies) GetDestRegion() *string {
+	return s.DestRegion
+}
+
+func (s *ModifyLogBackupPolicyRequestAdvancedLogPolicies) GetDestType() *string {
+	return s.DestType
+}
+
+func (s *ModifyLogBackupPolicyRequestAdvancedLogPolicies) GetEnableLogBackup() *int32 {
+	return s.EnableLogBackup
+}
+
+func (s *ModifyLogBackupPolicyRequestAdvancedLogPolicies) GetLogRetentionType() *string {
+	return s.LogRetentionType
+}
+
+func (s *ModifyLogBackupPolicyRequestAdvancedLogPolicies) GetLogRetentionValue() *string {
+	return s.LogRetentionValue
+}
+
+func (s *ModifyLogBackupPolicyRequestAdvancedLogPolicies) GetPolicyId() *string {
+	return s.PolicyId
+}
+
+func (s *ModifyLogBackupPolicyRequestAdvancedLogPolicies) GetSrcRegion() *string {
+	return s.SrcRegion
+}
+
+func (s *ModifyLogBackupPolicyRequestAdvancedLogPolicies) GetSrcType() *string {
+	return s.SrcType
+}
+
+func (s *ModifyLogBackupPolicyRequestAdvancedLogPolicies) SetActionType(v string) *ModifyLogBackupPolicyRequestAdvancedLogPolicies {
+	s.ActionType = &v
+	return s
+}
+
+func (s *ModifyLogBackupPolicyRequestAdvancedLogPolicies) SetDestRegion(v string) *ModifyLogBackupPolicyRequestAdvancedLogPolicies {
+	s.DestRegion = &v
+	return s
+}
+
+func (s *ModifyLogBackupPolicyRequestAdvancedLogPolicies) SetDestType(v string) *ModifyLogBackupPolicyRequestAdvancedLogPolicies {
+	s.DestType = &v
+	return s
+}
+
+func (s *ModifyLogBackupPolicyRequestAdvancedLogPolicies) SetEnableLogBackup(v int32) *ModifyLogBackupPolicyRequestAdvancedLogPolicies {
+	s.EnableLogBackup = &v
+	return s
+}
+
+func (s *ModifyLogBackupPolicyRequestAdvancedLogPolicies) SetLogRetentionType(v string) *ModifyLogBackupPolicyRequestAdvancedLogPolicies {
+	s.LogRetentionType = &v
+	return s
+}
+
+func (s *ModifyLogBackupPolicyRequestAdvancedLogPolicies) SetLogRetentionValue(v string) *ModifyLogBackupPolicyRequestAdvancedLogPolicies {
+	s.LogRetentionValue = &v
+	return s
+}
+
+func (s *ModifyLogBackupPolicyRequestAdvancedLogPolicies) SetPolicyId(v string) *ModifyLogBackupPolicyRequestAdvancedLogPolicies {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ModifyLogBackupPolicyRequestAdvancedLogPolicies) SetSrcRegion(v string) *ModifyLogBackupPolicyRequestAdvancedLogPolicies {
+	s.SrcRegion = &v
+	return s
+}
+
+func (s *ModifyLogBackupPolicyRequestAdvancedLogPolicies) SetSrcType(v string) *ModifyLogBackupPolicyRequestAdvancedLogPolicies {
+	s.SrcType = &v
+	return s
+}
+
+func (s *ModifyLogBackupPolicyRequestAdvancedLogPolicies) Validate() error {
 	return dara.Validate(s)
 }

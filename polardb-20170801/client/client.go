@@ -23147,19 +23147,29 @@ func (client *Client) ModifyGlobalSecurityIPGroupRelation(request *ModifyGlobalS
 //
 // Modifies the retention policy of the log backups in a PolarDB cluster.
 //
-// @param request - ModifyLogBackupPolicyRequest
+// @param tmpReq - ModifyLogBackupPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyLogBackupPolicyResponse
-func (client *Client) ModifyLogBackupPolicyWithOptions(request *ModifyLogBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyLogBackupPolicyResponse, _err error) {
+func (client *Client) ModifyLogBackupPolicyWithOptions(tmpReq *ModifyLogBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyLogBackupPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ModifyLogBackupPolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AdvancedLogPolicies) {
+		request.AdvancedLogPoliciesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AdvancedLogPolicies, dara.String("AdvancedLogPolicies"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdvancedLogPoliciesShrink) {
+		query["AdvancedLogPolicies"] = request.AdvancedLogPoliciesShrink
+	}
+
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
 	}
