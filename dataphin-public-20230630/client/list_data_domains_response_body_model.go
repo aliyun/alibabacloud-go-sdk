@@ -107,7 +107,12 @@ func (s *ListDataDomainsResponseBody) SetSuccess(v bool) *ListDataDomainsRespons
 }
 
 func (s *ListDataDomainsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataDomainsResponseBodyData struct {
@@ -132,7 +137,16 @@ func (s *ListDataDomainsResponseBodyData) SetDataDomainList(v []*ListDataDomains
 }
 
 func (s *ListDataDomainsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DataDomainList != nil {
+		for _, item := range s.DataDomainList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataDomainsResponseBodyDataDataDomainList struct {

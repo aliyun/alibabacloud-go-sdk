@@ -59,5 +59,10 @@ func (s *ListAddableUsersResponse) SetBody(v *ListAddableUsersResponseBody) *Lis
 }
 
 func (s *ListAddableUsersResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

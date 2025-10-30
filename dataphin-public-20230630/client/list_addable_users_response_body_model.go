@@ -107,7 +107,12 @@ func (s *ListAddableUsersResponseBody) SetSuccess(v bool) *ListAddableUsersRespo
 }
 
 func (s *ListAddableUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageResult != nil {
+		if err := s.PageResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAddableUsersResponseBodyPageResult struct {
@@ -145,7 +150,16 @@ func (s *ListAddableUsersResponseBodyPageResult) SetUserList(v []*ListAddableUse
 }
 
 func (s *ListAddableUsersResponseBodyPageResult) Validate() error {
-	return dara.Validate(s)
+	if s.UserList != nil {
+		for _, item := range s.UserList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAddableUsersResponseBodyPageResultUserList struct {

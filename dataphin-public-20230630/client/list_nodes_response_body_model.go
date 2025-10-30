@@ -110,7 +110,12 @@ func (s *ListNodesResponseBody) SetSuccess(v bool) *ListNodesResponseBody {
 }
 
 func (s *ListNodesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageResult != nil {
+		if err := s.PageResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListNodesResponseBodyPageResult struct {
@@ -148,7 +153,16 @@ func (s *ListNodesResponseBodyPageResult) SetTotalCount(v int32) *ListNodesRespo
 }
 
 func (s *ListNodesResponseBodyPageResult) Validate() error {
-	return dara.Validate(s)
+	if s.NodeList != nil {
+		for _, item := range s.NodeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNodesResponseBodyPageResultNodeList struct {
@@ -399,7 +413,31 @@ func (s *ListNodesResponseBodyPageResultNodeList) SetType(v string) *ListNodesRe
 }
 
 func (s *ListNodesResponseBodyPageResultNodeList) Validate() error {
-	return dara.Validate(s)
+	if s.Creator != nil {
+		if err := s.Creator.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Modifier != nil {
+		if err := s.Modifier.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OwnerList != nil {
+		for _, item := range s.OwnerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ProjectInfo != nil {
+		if err := s.ProjectInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListNodesResponseBodyPageResultNodeListCreator struct {

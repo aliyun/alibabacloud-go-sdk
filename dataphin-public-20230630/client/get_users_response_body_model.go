@@ -110,7 +110,16 @@ func (s *GetUsersResponseBody) SetUserList(v []*GetUsersResponseBodyUserList) *G
 }
 
 func (s *GetUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserList != nil {
+		for _, item := range s.UserList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetUsersResponseBodyUserList struct {

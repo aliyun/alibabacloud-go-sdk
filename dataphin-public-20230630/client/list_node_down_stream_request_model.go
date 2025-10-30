@@ -68,7 +68,12 @@ func (s *ListNodeDownStreamRequest) SetOpTenantId(v int64) *ListNodeDownStreamRe
 }
 
 func (s *ListNodeDownStreamRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ListQuery != nil {
+		if err := s.ListQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListNodeDownStreamRequestListQuery struct {
@@ -130,7 +135,25 @@ func (s *ListNodeDownStreamRequestListQuery) SetProjectId(v int64) *ListNodeDown
 }
 
 func (s *ListNodeDownStreamRequestListQuery) Validate() error {
-	return dara.Validate(s)
+	if s.FilterList != nil {
+		for _, item := range s.FilterList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NodeIdList != nil {
+		for _, item := range s.NodeIdList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNodeDownStreamRequestListQueryFilterList struct {

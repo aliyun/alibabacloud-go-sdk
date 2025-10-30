@@ -59,5 +59,10 @@ func (s *GetProjectResponse) SetBody(v *GetProjectResponseBody) *GetProjectRespo
 }
 
 func (s *GetProjectResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

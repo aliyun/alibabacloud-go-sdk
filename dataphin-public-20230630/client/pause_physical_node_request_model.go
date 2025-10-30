@@ -68,7 +68,12 @@ func (s *PausePhysicalNodeRequest) SetPauseCommand(v *PausePhysicalNodeRequestPa
 }
 
 func (s *PausePhysicalNodeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PauseCommand != nil {
+		if err := s.PauseCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PausePhysicalNodeRequestPauseCommand struct {

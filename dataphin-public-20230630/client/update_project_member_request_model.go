@@ -70,7 +70,12 @@ func (s *UpdateProjectMemberRequest) SetUpdateCommand(v *UpdateProjectMemberRequ
 }
 
 func (s *UpdateProjectMemberRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UpdateCommand != nil {
+		if err := s.UpdateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateProjectMemberRequestUpdateCommand struct {
@@ -111,7 +116,16 @@ func (s *UpdateProjectMemberRequestUpdateCommand) SetUserList(v []*UpdateProject
 }
 
 func (s *UpdateProjectMemberRequestUpdateCommand) Validate() error {
-	return dara.Validate(s)
+	if s.UserList != nil {
+		for _, item := range s.UserList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateProjectMemberRequestUpdateCommandUserList struct {

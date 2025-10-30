@@ -53,7 +53,12 @@ func (s *UpdateBatchTaskUdfLineagesRequest) SetUpdateCommand(v *UpdateBatchTaskU
 }
 
 func (s *UpdateBatchTaskUdfLineagesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UpdateCommand != nil {
+		if err := s.UpdateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateBatchTaskUdfLineagesRequestUpdateCommand struct {
@@ -109,7 +114,16 @@ func (s *UpdateBatchTaskUdfLineagesRequestUpdateCommand) SetProjectId(v int64) *
 }
 
 func (s *UpdateBatchTaskUdfLineagesRequestUpdateCommand) Validate() error {
-	return dara.Validate(s)
+	if s.LineageGroupList != nil {
+		for _, item := range s.LineageGroupList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupList struct {
@@ -146,7 +160,25 @@ func (s *UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupList) SetOutp
 }
 
 func (s *UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupList) Validate() error {
-	return dara.Validate(s)
+	if s.InputLineageList != nil {
+		for _, item := range s.InputLineageList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OutputLineageList != nil {
+		for _, item := range s.OutputLineageList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupListInputLineageList struct {

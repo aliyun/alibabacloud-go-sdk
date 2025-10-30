@@ -53,7 +53,12 @@ func (s *UpdateDataSourceConfigRequest) SetUpdateCommand(v *UpdateDataSourceConf
 }
 
 func (s *UpdateDataSourceConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UpdateCommand != nil {
+		if err := s.UpdateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateDataSourceConfigRequestUpdateCommand struct {
@@ -94,7 +99,16 @@ func (s *UpdateDataSourceConfigRequestUpdateCommand) SetId(v int64) *UpdateDataS
 }
 
 func (s *UpdateDataSourceConfigRequestUpdateCommand) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigItemList != nil {
+		for _, item := range s.ConfigItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateDataSourceConfigRequestUpdateCommandConfigItemList struct {

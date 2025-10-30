@@ -110,7 +110,12 @@ func (s *GetPhysicalNodeResponseBody) SetSuccess(v bool) *GetPhysicalNodeRespons
 }
 
 func (s *GetPhysicalNodeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NodeInfo != nil {
+		if err := s.NodeInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPhysicalNodeResponseBodyNodeInfo struct {
@@ -351,7 +356,27 @@ func (s *GetPhysicalNodeResponseBodyNodeInfo) SetTriggerConfig(v string) *GetPhy
 }
 
 func (s *GetPhysicalNodeResponseBodyNodeInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Creator != nil {
+		if err := s.Creator.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Modifier != nil {
+		if err := s.Modifier.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Owner != nil {
+		if err := s.Owner.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProjectInfo != nil {
+		if err := s.ProjectInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPhysicalNodeResponseBodyNodeInfoCreator struct {

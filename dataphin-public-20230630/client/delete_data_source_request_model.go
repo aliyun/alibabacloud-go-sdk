@@ -53,7 +53,12 @@ func (s *DeleteDataSourceRequest) SetOpTenantId(v int64) *DeleteDataSourceReques
 }
 
 func (s *DeleteDataSourceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeleteCommand != nil {
+		if err := s.DeleteCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteDataSourceRequestDeleteCommand struct {

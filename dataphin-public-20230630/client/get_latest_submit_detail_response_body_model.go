@@ -107,7 +107,12 @@ func (s *GetLatestSubmitDetailResponseBody) SetSuccess(v bool) *GetLatestSubmitD
 }
 
 func (s *GetLatestSubmitDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SubmitDetailResult != nil {
+		if err := s.SubmitDetailResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLatestSubmitDetailResponseBodySubmitDetailResult struct {
@@ -184,7 +189,12 @@ func (s *GetLatestSubmitDetailResponseBodySubmitDetailResult) SetTag(v string) *
 }
 
 func (s *GetLatestSubmitDetailResponseBodySubmitDetailResult) Validate() error {
-	return dara.Validate(s)
+	if s.ReleaseObject != nil {
+		if err := s.ReleaseObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLatestSubmitDetailResponseBodySubmitDetailResultReleaseObject struct {
@@ -274,7 +284,12 @@ func (s *GetLatestSubmitDetailResponseBodySubmitDetailResultReleaseObject) SetSu
 }
 
 func (s *GetLatestSubmitDetailResponseBodySubmitDetailResultReleaseObject) Validate() error {
-	return dara.Validate(s)
+	if s.SubmitObject != nil {
+		if err := s.SubmitObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLatestSubmitDetailResponseBodySubmitDetailResultReleaseObjectSubmitObject struct {

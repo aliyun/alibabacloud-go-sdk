@@ -59,5 +59,10 @@ func (s *GetLatestSubmitDetailResponse) SetBody(v *GetLatestSubmitDetailResponse
 }
 
 func (s *GetLatestSubmitDetailResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

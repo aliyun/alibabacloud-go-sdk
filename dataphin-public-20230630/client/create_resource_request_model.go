@@ -53,7 +53,12 @@ func (s *CreateResourceRequest) SetOpTenantId(v int64) *CreateResourceRequest {
 }
 
 func (s *CreateResourceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CreateCommand != nil {
+		if err := s.CreateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateResourceRequestCreateCommand struct {

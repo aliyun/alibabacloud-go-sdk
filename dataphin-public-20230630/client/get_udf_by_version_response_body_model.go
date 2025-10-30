@@ -109,7 +109,12 @@ func (s *GetUdfByVersionResponseBody) SetUdfInfo(v *GetUdfByVersionResponseBodyU
 }
 
 func (s *GetUdfByVersionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UdfInfo != nil {
+		if err := s.UdfInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUdfByVersionResponseBodyUdfInfo struct {

@@ -109,7 +109,12 @@ func (s *GetDataServiceApiErrorImpactResponseBody) SetSuccess(v bool) *GetDataSe
 }
 
 func (s *GetDataServiceApiErrorImpactResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataServiceApiErrorImpactResponseBodyData struct {
@@ -144,7 +149,25 @@ func (s *GetDataServiceApiErrorImpactResponseBodyData) SetErrorAppList(v []*GetD
 }
 
 func (s *GetDataServiceApiErrorImpactResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ErrorApiList != nil {
+		for _, item := range s.ErrorApiList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ErrorAppList != nil {
+		for _, item := range s.ErrorAppList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataServiceApiErrorImpactResponseBodyDataErrorApiList struct {

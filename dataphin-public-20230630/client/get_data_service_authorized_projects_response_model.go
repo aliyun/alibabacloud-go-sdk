@@ -59,5 +59,10 @@ func (s *GetDataServiceAuthorizedProjectsResponse) SetBody(v *GetDataServiceAuth
 }
 
 func (s *GetDataServiceAuthorizedProjectsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

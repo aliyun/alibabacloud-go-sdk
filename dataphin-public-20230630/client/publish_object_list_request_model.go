@@ -53,7 +53,12 @@ func (s *PublishObjectListRequest) SetPublishCommand(v *PublishObjectListRequest
 }
 
 func (s *PublishObjectListRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PublishCommand != nil {
+		if err := s.PublishCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PublishObjectListRequestPublishCommand struct {

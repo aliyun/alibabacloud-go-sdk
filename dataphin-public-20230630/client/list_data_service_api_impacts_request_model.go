@@ -70,7 +70,12 @@ func (s *ListDataServiceApiImpactsRequest) SetProjectId(v int32) *ListDataServic
 }
 
 func (s *ListDataServiceApiImpactsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ListQuery != nil {
+		if err := s.ListQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataServiceApiImpactsRequestListQuery struct {

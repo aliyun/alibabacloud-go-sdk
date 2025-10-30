@@ -53,7 +53,12 @@ func (s *UpdateTenantMemberRequest) SetUpdateCommand(v *UpdateTenantMemberReques
 }
 
 func (s *UpdateTenantMemberRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UpdateCommand != nil {
+		if err := s.UpdateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateTenantMemberRequestUpdateCommand struct {
@@ -79,7 +84,16 @@ func (s *UpdateTenantMemberRequestUpdateCommand) SetMemberList(v []*UpdateTenant
 }
 
 func (s *UpdateTenantMemberRequestUpdateCommand) Validate() error {
-	return dara.Validate(s)
+	if s.MemberList != nil {
+		for _, item := range s.MemberList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateTenantMemberRequestUpdateCommandMemberList struct {

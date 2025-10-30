@@ -53,7 +53,12 @@ func (s *CheckResourcePermissionRequest) SetOpTenantId(v int64) *CheckResourcePe
 }
 
 func (s *CheckResourcePermissionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CheckCommand != nil {
+		if err := s.CheckCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CheckResourcePermissionRequestCheckCommand struct {
@@ -124,7 +129,16 @@ func (s *CheckResourcePermissionRequestCheckCommand) SetUserId(v string) *CheckR
 }
 
 func (s *CheckResourcePermissionRequestCheckCommand) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceList != nil {
+		for _, item := range s.ResourceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CheckResourcePermissionRequestCheckCommandResourceList struct {

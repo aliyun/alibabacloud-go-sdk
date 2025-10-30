@@ -59,5 +59,10 @@ func (s *GetBatchTaskInfoByVersionResponse) SetBody(v *GetBatchTaskInfoByVersion
 }
 
 func (s *GetBatchTaskInfoByVersionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

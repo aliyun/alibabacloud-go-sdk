@@ -107,7 +107,12 @@ func (s *GetBizEntityInfoResponseBody) SetSuccess(v bool) *GetBizEntityInfoRespo
 }
 
 func (s *GetBizEntityInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BizEntityInfo != nil {
+		if err := s.BizEntityInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBizEntityInfoResponseBodyBizEntityInfo struct {
@@ -181,7 +186,17 @@ func (s *GetBizEntityInfoResponseBodyBizEntityInfo) SetType(v string) *GetBizEnt
 }
 
 func (s *GetBizEntityInfoResponseBodyBizEntityInfo) Validate() error {
-	return dara.Validate(s)
+	if s.BizObject != nil {
+		if err := s.BizObject.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BizProcess != nil {
+		if err := s.BizProcess.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBizEntityInfoResponseBodyBizEntityInfoBizObject struct {

@@ -59,5 +59,10 @@ func (s *GetTableColumnLineageByTaskIdResponse) SetBody(v *GetTableColumnLineage
 }
 
 func (s *GetTableColumnLineageByTaskIdResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

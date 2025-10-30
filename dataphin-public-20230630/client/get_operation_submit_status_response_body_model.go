@@ -110,7 +110,12 @@ func (s *GetOperationSubmitStatusResponseBody) SetSuccess(v bool) *GetOperationS
 }
 
 func (s *GetOperationSubmitStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OperationSubmitJob != nil {
+		if err := s.OperationSubmitJob.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOperationSubmitStatusResponseBodyOperationSubmitJob struct {

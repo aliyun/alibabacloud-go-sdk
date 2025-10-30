@@ -107,7 +107,12 @@ func (s *GetAdHocFileResponseBody) SetSuccess(v bool) *GetAdHocFileResponseBody 
 }
 
 func (s *GetAdHocFileResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FileInfo != nil {
+		if err := s.FileInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAdHocFileResponseBodyFileInfo struct {

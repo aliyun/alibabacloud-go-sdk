@@ -107,7 +107,12 @@ func (s *GetBizEntityInfoByVersionResponseBody) SetSuccess(v bool) *GetBizEntity
 }
 
 func (s *GetBizEntityInfoByVersionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BizEntityInfo != nil {
+		if err := s.BizEntityInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBizEntityInfoByVersionResponseBodyBizEntityInfo struct {
@@ -181,7 +186,17 @@ func (s *GetBizEntityInfoByVersionResponseBodyBizEntityInfo) SetType(v string) *
 }
 
 func (s *GetBizEntityInfoByVersionResponseBodyBizEntityInfo) Validate() error {
-	return dara.Validate(s)
+	if s.BizObject != nil {
+		if err := s.BizObject.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BizProcess != nil {
+		if err := s.BizProcess.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBizEntityInfoByVersionResponseBodyBizEntityInfoBizObject struct {

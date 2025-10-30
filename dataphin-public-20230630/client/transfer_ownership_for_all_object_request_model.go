@@ -52,7 +52,12 @@ func (s *TransferOwnershipForAllObjectRequest) SetPrivilegeTransferRecord(v *Tra
 }
 
 func (s *TransferOwnershipForAllObjectRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PrivilegeTransferRecord != nil {
+		if err := s.PrivilegeTransferRecord.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TransferOwnershipForAllObjectRequestPrivilegeTransferRecord struct {

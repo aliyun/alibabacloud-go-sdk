@@ -107,7 +107,12 @@ func (s *CreateDataDomainResponseBody) SetSuccess(v bool) *CreateDataDomainRespo
 }
 
 func (s *CreateDataDomainResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CreateResult != nil {
+		if err := s.CreateResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataDomainResponseBodyCreateResult struct {

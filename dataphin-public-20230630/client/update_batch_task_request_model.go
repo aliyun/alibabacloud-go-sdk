@@ -53,7 +53,12 @@ func (s *UpdateBatchTaskRequest) SetUpdateCommand(v *UpdateBatchTaskRequestUpdat
 }
 
 func (s *UpdateBatchTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UpdateCommand != nil {
+		if err := s.UpdateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateBatchTaskRequestUpdateCommand struct {
@@ -320,7 +325,35 @@ func (s *UpdateBatchTaskRequestUpdateCommand) SetUpStreamList(v []*UpdateBatchTa
 }
 
 func (s *UpdateBatchTaskRequestUpdateCommand) Validate() error {
-	return dara.Validate(s)
+	if s.CustomScheduleConfig != nil {
+		if err := s.CustomScheduleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ParamList != nil {
+		for _, item := range s.ParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SparkClientInfo != nil {
+		if err := s.SparkClientInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UpStreamList != nil {
+		for _, item := range s.UpStreamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig struct {
@@ -612,7 +645,12 @@ func (s *UpdateBatchTaskRequestUpdateCommandUpStreamList) SetSourceTableName(v s
 }
 
 func (s *UpdateBatchTaskRequestUpdateCommandUpStreamList) Validate() error {
-	return dara.Validate(s)
+	if s.DependPeriod != nil {
+		if err := s.DependPeriod.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateBatchTaskRequestUpdateCommandUpStreamListDependPeriod struct {

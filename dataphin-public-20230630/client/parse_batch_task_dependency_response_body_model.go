@@ -107,7 +107,12 @@ func (s *ParseBatchTaskDependencyResponseBody) SetSuccess(v bool) *ParseBatchTas
 }
 
 func (s *ParseBatchTaskDependencyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ParseResult != nil {
+		if err := s.ParseResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ParseBatchTaskDependencyResponseBodyParseResult struct {
@@ -132,7 +137,16 @@ func (s *ParseBatchTaskDependencyResponseBodyParseResult) SetDependNodeList(v []
 }
 
 func (s *ParseBatchTaskDependencyResponseBodyParseResult) Validate() error {
-	return dara.Validate(s)
+	if s.DependNodeList != nil {
+		for _, item := range s.DependNodeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ParseBatchTaskDependencyResponseBodyParseResultDependNodeList struct {
@@ -170,7 +184,16 @@ func (s *ParseBatchTaskDependencyResponseBodyParseResultDependNodeList) SetSched
 }
 
 func (s *ParseBatchTaskDependencyResponseBodyParseResultDependNodeList) Validate() error {
-	return dara.Validate(s)
+	if s.ScheduleNodeInfoList != nil {
+		for _, item := range s.ScheduleNodeInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ParseBatchTaskDependencyResponseBodyParseResultDependNodeListScheduleNodeInfoList struct {

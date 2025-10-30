@@ -53,7 +53,12 @@ func (s *ListFilesRequest) SetOpTenantId(v int64) *ListFilesRequest {
 }
 
 func (s *ListFilesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ListQuery != nil {
+		if err := s.ListQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListFilesRequestListQuery struct {

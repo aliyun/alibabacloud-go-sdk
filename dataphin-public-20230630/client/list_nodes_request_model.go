@@ -68,7 +68,12 @@ func (s *ListNodesRequest) SetOpTenantId(v int64) *ListNodesRequest {
 }
 
 func (s *ListNodesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ListQuery != nil {
+		if err := s.ListQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListNodesRequestListQuery struct {

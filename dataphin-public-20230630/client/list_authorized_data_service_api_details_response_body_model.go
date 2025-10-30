@@ -107,7 +107,12 @@ func (s *ListAuthorizedDataServiceApiDetailsResponseBody) SetSuccess(v bool) *Li
 }
 
 func (s *ListAuthorizedDataServiceApiDetailsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAuthorizedDataServiceApiDetailsResponseBodyResult struct {
@@ -145,7 +150,16 @@ func (s *ListAuthorizedDataServiceApiDetailsResponseBodyResult) SetTotalCount(v 
 }
 
 func (s *ListAuthorizedDataServiceApiDetailsResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAuthorizedDataServiceApiDetailsResponseBodyResultData struct {
@@ -286,7 +300,25 @@ func (s *ListAuthorizedDataServiceApiDetailsResponseBodyResultData) SetProjectId
 }
 
 func (s *ListAuthorizedDataServiceApiDetailsResponseBodyResultData) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorizedDevReturnParameters != nil {
+		for _, item := range s.AuthorizedDevReturnParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AuthorizedProdReturnParameters != nil {
+		for _, item := range s.AuthorizedProdReturnParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAuthorizedDataServiceApiDetailsResponseBodyResultDataAuthorizedDevReturnParameters struct {

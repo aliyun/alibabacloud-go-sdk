@@ -68,7 +68,12 @@ func (s *ExecuteManualNodeRequest) SetOpTenantId(v int64) *ExecuteManualNodeRequ
 }
 
 func (s *ExecuteManualNodeRequest) Validate() error {
-  return dara.Validate(s)
+  if s.ExecuteCommand != nil {
+    if err := s.ExecuteCommand.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type ExecuteManualNodeRequestExecuteCommand struct {
@@ -166,7 +171,16 @@ func (s *ExecuteManualNodeRequestExecuteCommand) SetStartBizDate(v string) *Exec
 }
 
 func (s *ExecuteManualNodeRequestExecuteCommand) Validate() error {
-  return dara.Validate(s)
+  if s.ParamList != nil {
+    for _, item := range s.ParamList {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type ExecuteManualNodeRequestExecuteCommandParamList struct {

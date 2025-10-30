@@ -112,7 +112,12 @@ func (s *ListApiByAppResponseBody) SetSuccess(v bool) *ListApiByAppResponseBody 
 }
 
 func (s *ListApiByAppResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ListResult != nil {
+		if err := s.ListResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListApiByAppResponseBodyListResult struct {
@@ -150,7 +155,16 @@ func (s *ListApiByAppResponseBodyListResult) SetTotalCount(v int32) *ListApiByAp
 }
 
 func (s *ListApiByAppResponseBodyListResult) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApiByAppResponseBodyListResultData struct {
@@ -699,7 +713,39 @@ func (s *ListApiByAppResponseBodyListResultData) SetVersion(v string) *ListApiBy
 }
 
 func (s *ListApiByAppResponseBodyListResultData) Validate() error {
-	return dara.Validate(s)
+	if s.PublicParamList != nil {
+		for _, item := range s.PublicParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RegisterApi != nil {
+		if err := s.RegisterApi.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RequestParamList != nil {
+		for _, item := range s.RequestParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResponseParamList != nil {
+		for _, item := range s.ResponseParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApiByAppResponseBodyListResultDataPublicParamList struct {
@@ -920,7 +966,16 @@ func (s *ListApiByAppResponseBodyListResultDataPublicParamList) SetTableAndDsLis
 }
 
 func (s *ListApiByAppResponseBodyListResultDataPublicParamList) Validate() error {
-	return dara.Validate(s)
+	if s.TableAndDsList != nil {
+		for _, item := range s.TableAndDsList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApiByAppResponseBodyListResultDataPublicParamListTableAndDsList struct {
@@ -1392,7 +1447,16 @@ func (s *ListApiByAppResponseBodyListResultDataRequestParamList) SetTableAndDsLi
 }
 
 func (s *ListApiByAppResponseBodyListResultDataRequestParamList) Validate() error {
-	return dara.Validate(s)
+	if s.TableAndDsList != nil {
+		for _, item := range s.TableAndDsList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApiByAppResponseBodyListResultDataRequestParamListTableAndDsList struct {
@@ -1693,7 +1757,16 @@ func (s *ListApiByAppResponseBodyListResultDataResponseParamList) SetTableAndDsL
 }
 
 func (s *ListApiByAppResponseBodyListResultDataResponseParamList) Validate() error {
-	return dara.Validate(s)
+	if s.TableAndDsList != nil {
+		for _, item := range s.TableAndDsList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApiByAppResponseBodyListResultDataResponseParamListTableAndDsList struct {

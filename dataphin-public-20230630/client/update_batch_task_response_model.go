@@ -59,5 +59,10 @@ func (s *UpdateBatchTaskResponse) SetBody(v *UpdateBatchTaskResponseBody) *Updat
 }
 
 func (s *UpdateBatchTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

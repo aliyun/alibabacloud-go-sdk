@@ -70,7 +70,12 @@ func (s *RevokeDataServiceApiRequest) SetRevokeCommand(v *RevokeDataServiceApiRe
 }
 
 func (s *RevokeDataServiceApiRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RevokeCommand != nil {
+		if err := s.RevokeCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RevokeDataServiceApiRequestRevokeCommand struct {

@@ -113,7 +113,12 @@ func (s *GetNodeUpDownStreamRequest) SetUpStreamDepth(v int32) *GetNodeUpDownStr
 }
 
 func (s *GetNodeUpDownStreamRequest) Validate() error {
-	return dara.Validate(s)
+	if s.NodeId != nil {
+		if err := s.NodeId.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNodeUpDownStreamRequestNodeId struct {

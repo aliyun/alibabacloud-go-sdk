@@ -53,7 +53,12 @@ func (s *ListApiByAppRequest) SetPageQuery(v *ListApiByAppRequestPageQuery) *Lis
 }
 
 func (s *ListApiByAppRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PageQuery != nil {
+		if err := s.PageQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListApiByAppRequestPageQuery struct {

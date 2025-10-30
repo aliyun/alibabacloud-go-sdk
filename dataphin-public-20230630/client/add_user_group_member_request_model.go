@@ -52,7 +52,12 @@ func (s *AddUserGroupMemberRequest) SetOpTenantId(v int64) *AddUserGroupMemberRe
 }
 
 func (s *AddUserGroupMemberRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AddCommand != nil {
+		if err := s.AddCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddUserGroupMemberRequestAddCommand struct {

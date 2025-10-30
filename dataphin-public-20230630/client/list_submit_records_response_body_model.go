@@ -107,7 +107,12 @@ func (s *ListSubmitRecordsResponseBody) SetSuccess(v bool) *ListSubmitRecordsRes
 }
 
 func (s *ListSubmitRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ListResult != nil {
+		if err := s.ListResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSubmitRecordsResponseBodyListResult struct {
@@ -145,7 +150,16 @@ func (s *ListSubmitRecordsResponseBodyListResult) SetTotalCount(v int32) *ListSu
 }
 
 func (s *ListSubmitRecordsResponseBodyListResult) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSubmitRecordsResponseBodyListResultData struct {

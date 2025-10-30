@@ -53,7 +53,12 @@ func (s *ListComputeSourcesRequest) SetOpTenantId(v int64) *ListComputeSourcesRe
 }
 
 func (s *ListComputeSourcesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ListQuery != nil {
+		if err := s.ListQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListComputeSourcesRequestListQuery struct {

@@ -109,7 +109,12 @@ func (s *GetDataServiceApiDocumentResponseBody) SetSuccess(v bool) *GetDataServi
 }
 
 func (s *GetDataServiceApiDocumentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataServiceApiDocumentResponseBodyData struct {
@@ -568,7 +573,39 @@ func (s *GetDataServiceApiDocumentResponseBodyData) SetVersion(v string) *GetDat
 }
 
 func (s *GetDataServiceApiDocumentResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ApiRegisterInfo != nil {
+		if err := s.ApiRegisterInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PublicParamList != nil {
+		for _, item := range s.PublicParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RequestParamList != nil {
+		for _, item := range s.RequestParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResponseParamList != nil {
+		for _, item := range s.ResponseParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataServiceApiDocumentResponseBodyDataApiRegisterInfo struct {

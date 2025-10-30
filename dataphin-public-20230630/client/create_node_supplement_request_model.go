@@ -68,7 +68,12 @@ func (s *CreateNodeSupplementRequest) SetOpTenantId(v int64) *CreateNodeSuppleme
 }
 
 func (s *CreateNodeSupplementRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CreateCommand != nil {
+		if err := s.CreateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateNodeSupplementRequestCreateCommand struct {
@@ -232,7 +237,52 @@ func (s *CreateNodeSupplementRequestCreateCommand) SetStartBizDate(v string) *Cr
 }
 
 func (s *CreateNodeSupplementRequestCreateCommand) Validate() error {
-	return dara.Validate(s)
+	if s.DownStreamNodeIdList != nil {
+		for _, item := range s.DownStreamNodeIdList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FilterList != nil {
+		for _, item := range s.FilterList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.GlobalParamList != nil {
+		for _, item := range s.GlobalParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NodeIdList != nil {
+		for _, item := range s.NodeIdList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NodeParamsList != nil {
+		for _, item := range s.NodeParamsList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateNodeSupplementRequestCreateCommandDownStreamNodeIdList struct {
@@ -418,7 +468,16 @@ func (s *CreateNodeSupplementRequestCreateCommandNodeParamsList) SetParamList(v 
 }
 
 func (s *CreateNodeSupplementRequestCreateCommandNodeParamsList) Validate() error {
-	return dara.Validate(s)
+	if s.ParamList != nil {
+		for _, item := range s.ParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateNodeSupplementRequestCreateCommandNodeParamsListParamList struct {

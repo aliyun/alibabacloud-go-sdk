@@ -59,5 +59,10 @@ func (s *AddTenantMembersBySourceUserResponse) SetBody(v *AddTenantMembersBySour
 }
 
 func (s *AddTenantMembersBySourceUserResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

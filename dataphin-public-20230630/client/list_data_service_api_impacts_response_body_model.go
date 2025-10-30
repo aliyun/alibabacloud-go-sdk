@@ -109,7 +109,12 @@ func (s *ListDataServiceApiImpactsResponseBody) SetSuccess(v bool) *ListDataServ
 }
 
 func (s *ListDataServiceApiImpactsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageResult != nil {
+		if err := s.PageResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataServiceApiImpactsResponseBodyPageResult struct {
@@ -147,7 +152,16 @@ func (s *ListDataServiceApiImpactsResponseBodyPageResult) SetTotalCount(v int32)
 }
 
 func (s *ListDataServiceApiImpactsResponseBodyPageResult) Validate() error {
-	return dara.Validate(s)
+	if s.ImpactList != nil {
+		for _, item := range s.ImpactList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataServiceApiImpactsResponseBodyPageResultImpactList struct {

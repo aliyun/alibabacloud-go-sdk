@@ -59,5 +59,10 @@ func (s *GetUserBySourceIdResponse) SetBody(v *GetUserBySourceIdResponseBody) *G
 }
 
 func (s *GetUserBySourceIdResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

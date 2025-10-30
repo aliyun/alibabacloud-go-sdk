@@ -70,7 +70,12 @@ func (s *GrantDataServiceApiRequest) SetProjectId(v int32) *GrantDataServiceApiR
 }
 
 func (s *GrantDataServiceApiRequest) Validate() error {
-	return dara.Validate(s)
+	if s.GrantCommand != nil {
+		if err := s.GrantCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GrantDataServiceApiRequestGrantCommand struct {
@@ -88,6 +93,8 @@ type GrantDataServiceApiRequestGrantCommand struct {
 	//
 	// 1201
 	AppId        *int32                                                `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ApplyDev     *bool                                                 `json:"ApplyDev,omitempty" xml:"ApplyDev,omitempty"`
+	ApplyProd    *bool                                                 `json:"ApplyProd,omitempty" xml:"ApplyProd,omitempty"`
 	DevFieldList []*GrantDataServiceApiRequestGrantCommandDevFieldList `json:"DevFieldList,omitempty" xml:"DevFieldList,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
@@ -120,6 +127,14 @@ func (s *GrantDataServiceApiRequestGrantCommand) GetAppId() *int32 {
 	return s.AppId
 }
 
+func (s *GrantDataServiceApiRequestGrantCommand) GetApplyDev() *bool {
+	return s.ApplyDev
+}
+
+func (s *GrantDataServiceApiRequestGrantCommand) GetApplyProd() *bool {
+	return s.ApplyProd
+}
+
 func (s *GrantDataServiceApiRequestGrantCommand) GetDevFieldList() []*GrantDataServiceApiRequestGrantCommandDevFieldList {
 	return s.DevFieldList
 }
@@ -146,6 +161,16 @@ func (s *GrantDataServiceApiRequestGrantCommand) SetAppId(v int32) *GrantDataSer
 	return s
 }
 
+func (s *GrantDataServiceApiRequestGrantCommand) SetApplyDev(v bool) *GrantDataServiceApiRequestGrantCommand {
+	s.ApplyDev = &v
+	return s
+}
+
+func (s *GrantDataServiceApiRequestGrantCommand) SetApplyProd(v bool) *GrantDataServiceApiRequestGrantCommand {
+	s.ApplyProd = &v
+	return s
+}
+
 func (s *GrantDataServiceApiRequestGrantCommand) SetDevFieldList(v []*GrantDataServiceApiRequestGrantCommandDevFieldList) *GrantDataServiceApiRequestGrantCommand {
 	s.DevFieldList = v
 	return s
@@ -167,7 +192,25 @@ func (s *GrantDataServiceApiRequestGrantCommand) SetReason(v string) *GrantDataS
 }
 
 func (s *GrantDataServiceApiRequestGrantCommand) Validate() error {
-	return dara.Validate(s)
+	if s.DevFieldList != nil {
+		for _, item := range s.DevFieldList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ProdFieldList != nil {
+		for _, item := range s.ProdFieldList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GrantDataServiceApiRequestGrantCommandDevFieldList struct {

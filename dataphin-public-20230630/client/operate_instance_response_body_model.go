@@ -110,7 +110,16 @@ func (s *OperateInstanceResponseBody) SetSuccess(v bool) *OperateInstanceRespons
 }
 
 func (s *OperateInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceStatusList != nil {
+		for _, item := range s.InstanceStatusList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type OperateInstanceResponseBodyInstanceStatusList struct {

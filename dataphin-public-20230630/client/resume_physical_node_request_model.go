@@ -68,7 +68,12 @@ func (s *ResumePhysicalNodeRequest) SetResumeCommand(v *ResumePhysicalNodeReques
 }
 
 func (s *ResumePhysicalNodeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ResumeCommand != nil {
+		if err := s.ResumeCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ResumePhysicalNodeRequestResumeCommand struct {

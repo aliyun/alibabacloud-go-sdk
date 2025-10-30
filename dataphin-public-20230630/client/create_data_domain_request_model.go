@@ -53,7 +53,12 @@ func (s *CreateDataDomainRequest) SetOpTenantId(v int64) *CreateDataDomainReques
 }
 
 func (s *CreateDataDomainRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CreateCommand != nil {
+		if err := s.CreateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataDomainRequestCreateCommand struct {

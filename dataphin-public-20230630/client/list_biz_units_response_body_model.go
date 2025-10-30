@@ -107,7 +107,12 @@ func (s *ListBizUnitsResponseBody) SetSuccess(v bool) *ListBizUnitsResponseBody 
 }
 
 func (s *ListBizUnitsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListBizUnitsResponseBodyData struct {
@@ -132,7 +137,16 @@ func (s *ListBizUnitsResponseBodyData) SetBizUnitList(v []*ListBizUnitsResponseB
 }
 
 func (s *ListBizUnitsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.BizUnitList != nil {
+		for _, item := range s.BizUnitList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListBizUnitsResponseBodyDataBizUnitList struct {
@@ -326,7 +340,16 @@ func (s *ListBizUnitsResponseBodyDataBizUnitList) SetOwnerUserId(v string) *List
 }
 
 func (s *ListBizUnitsResponseBodyDataBizUnitList) Validate() error {
-	return dara.Validate(s)
+	if s.AccountList != nil {
+		for _, item := range s.AccountList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListBizUnitsResponseBodyDataBizUnitListAccountList struct {

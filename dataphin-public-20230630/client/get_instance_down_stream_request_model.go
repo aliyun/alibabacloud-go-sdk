@@ -100,7 +100,12 @@ func (s *GetInstanceDownStreamRequest) SetRunStatus(v string) *GetInstanceDownSt
 }
 
 func (s *GetInstanceDownStreamRequest) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceGet != nil {
+		if err := s.InstanceGet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceDownStreamRequestInstanceGet struct {

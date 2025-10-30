@@ -109,7 +109,16 @@ func (s *GetProjectWhiteListsResponseBody) SetWhiteLists(v []*GetProjectWhiteLis
 }
 
 func (s *GetProjectWhiteListsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WhiteLists != nil {
+		for _, item := range s.WhiteLists {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetProjectWhiteListsResponseBodyWhiteLists struct {

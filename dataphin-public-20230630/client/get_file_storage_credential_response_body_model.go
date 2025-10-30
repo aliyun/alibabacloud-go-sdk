@@ -109,7 +109,12 @@ func (s *GetFileStorageCredentialResponseBody) SetSuccess(v bool) *GetFileStorag
 }
 
 func (s *GetFileStorageCredentialResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StorageCredential != nil {
+		if err := s.StorageCredential.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetFileStorageCredentialResponseBodyStorageCredential struct {

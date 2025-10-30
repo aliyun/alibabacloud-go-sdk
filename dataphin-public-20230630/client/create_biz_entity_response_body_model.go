@@ -107,7 +107,12 @@ func (s *CreateBizEntityResponseBody) SetSuccess(v bool) *CreateBizEntityRespons
 }
 
 func (s *CreateBizEntityResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CreateResult != nil {
+		if err := s.CreateResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateBizEntityResponseBodyCreateResult struct {

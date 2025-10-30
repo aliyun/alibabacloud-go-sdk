@@ -107,7 +107,12 @@ func (s *OfflineBatchTaskResponseBody) SetSuccess(v bool) *OfflineBatchTaskRespo
 }
 
 func (s *OfflineBatchTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OfflineResult != nil {
+		if err := s.OfflineResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type OfflineBatchTaskResponseBodyOfflineResult struct {

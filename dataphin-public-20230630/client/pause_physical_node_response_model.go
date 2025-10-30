@@ -59,5 +59,10 @@ func (s *PausePhysicalNodeResponse) SetBody(v *PausePhysicalNodeResponseBody) *P
 }
 
 func (s *PausePhysicalNodeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

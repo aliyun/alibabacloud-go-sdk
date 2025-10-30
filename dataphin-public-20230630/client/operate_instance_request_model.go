@@ -68,7 +68,12 @@ func (s *OperateInstanceRequest) SetOperateCommand(v *OperateInstanceRequestOper
 }
 
 func (s *OperateInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.OperateCommand != nil {
+		if err := s.OperateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type OperateInstanceRequestOperateCommand struct {
@@ -124,7 +129,16 @@ func (s *OperateInstanceRequestOperateCommand) SetProjectId(v int64) *OperateIns
 }
 
 func (s *OperateInstanceRequestOperateCommand) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceIdList != nil {
+		for _, item := range s.InstanceIdList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type OperateInstanceRequestOperateCommandInstanceIdList struct {

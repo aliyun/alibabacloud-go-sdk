@@ -53,7 +53,12 @@ func (s *RemoveTenantMemberRequest) SetRemoveCommand(v *RemoveTenantMemberReques
 }
 
 func (s *RemoveTenantMemberRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RemoveCommand != nil {
+		if err := s.RemoveCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RemoveTenantMemberRequestRemoveCommand struct {

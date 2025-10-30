@@ -53,7 +53,12 @@ func (s *UpdateTenantComputeEngineRequest) SetUpdateCommand(v *UpdateTenantCompu
 }
 
 func (s *UpdateTenantComputeEngineRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UpdateCommand != nil {
+		if err := s.UpdateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateTenantComputeEngineRequestUpdateCommand struct {

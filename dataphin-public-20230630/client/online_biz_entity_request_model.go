@@ -53,7 +53,12 @@ func (s *OnlineBizEntityRequest) SetOpTenantId(v int64) *OnlineBizEntityRequest 
 }
 
 func (s *OnlineBizEntityRequest) Validate() error {
-	return dara.Validate(s)
+	if s.OnlineCommand != nil {
+		if err := s.OnlineCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type OnlineBizEntityRequestOnlineCommand struct {

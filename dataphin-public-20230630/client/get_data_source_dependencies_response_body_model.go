@@ -109,7 +109,16 @@ func (s *GetDataSourceDependenciesResponseBody) SetSuccess(v bool) *GetDataSourc
 }
 
 func (s *GetDataSourceDependenciesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DependencyList != nil {
+		for _, item := range s.DependencyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataSourceDependenciesResponseBodyDependencyList struct {

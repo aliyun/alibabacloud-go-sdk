@@ -53,7 +53,12 @@ func (s *RemoveUserGroupMemberRequest) SetRemoveCommand(v *RemoveUserGroupMember
 }
 
 func (s *RemoveUserGroupMemberRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RemoveCommand != nil {
+		if err := s.RemoveCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RemoveUserGroupMemberRequestRemoveCommand struct {

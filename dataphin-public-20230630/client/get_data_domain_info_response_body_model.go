@@ -107,7 +107,12 @@ func (s *GetDataDomainInfoResponseBody) SetSuccess(v bool) *GetDataDomainInfoRes
 }
 
 func (s *GetDataDomainInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataDomainInfo != nil {
+		if err := s.DataDomainInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataDomainInfoResponseBodyDataDomainInfo struct {

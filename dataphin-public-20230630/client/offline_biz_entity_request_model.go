@@ -53,7 +53,12 @@ func (s *OfflineBizEntityRequest) SetOpTenantId(v int64) *OfflineBizEntityReques
 }
 
 func (s *OfflineBizEntityRequest) Validate() error {
-	return dara.Validate(s)
+	if s.OfflineCommand != nil {
+		if err := s.OfflineCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type OfflineBizEntityRequestOfflineCommand struct {

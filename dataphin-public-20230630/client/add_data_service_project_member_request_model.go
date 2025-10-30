@@ -70,7 +70,12 @@ func (s *AddDataServiceProjectMemberRequest) SetProjectId(v int32) *AddDataServi
 }
 
 func (s *AddDataServiceProjectMemberRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AddCommand != nil {
+		if err := s.AddCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddDataServiceProjectMemberRequestAddCommand struct {
@@ -96,7 +101,16 @@ func (s *AddDataServiceProjectMemberRequestAddCommand) SetProjectMemberList(v []
 }
 
 func (s *AddDataServiceProjectMemberRequestAddCommand) Validate() error {
-	return dara.Validate(s)
+	if s.ProjectMemberList != nil {
+		for _, item := range s.ProjectMemberList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddDataServiceProjectMemberRequestAddCommandProjectMemberList struct {

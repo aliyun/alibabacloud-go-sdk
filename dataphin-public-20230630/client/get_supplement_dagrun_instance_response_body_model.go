@@ -110,7 +110,16 @@ func (s *GetSupplementDagrunInstanceResponseBody) SetSuccess(v bool) *GetSupplem
 }
 
 func (s *GetSupplementDagrunInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceList != nil {
+		for _, item := range s.InstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSupplementDagrunInstanceResponseBodyInstanceList struct {
@@ -262,7 +271,12 @@ func (s *GetSupplementDagrunInstanceResponseBodyInstanceList) SetType(v string) 
 }
 
 func (s *GetSupplementDagrunInstanceResponseBodyInstanceList) Validate() error {
-	return dara.Validate(s)
+	if s.NodeInfo != nil {
+		if err := s.NodeInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfo struct {
@@ -506,7 +520,26 @@ func (s *GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfo) SetType(v 
 }
 
 func (s *GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Creator != nil {
+		if err := s.Creator.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Modifier != nil {
+		if err := s.Modifier.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OwnerList != nil {
+		for _, item := range s.OwnerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfoCreator struct {

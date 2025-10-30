@@ -107,7 +107,12 @@ func (s *CreateBatchTaskResponseBody) SetSuccess(v bool) *CreateBatchTaskRespons
 }
 
 func (s *CreateBatchTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CreateResult != nil {
+		if err := s.CreateResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateBatchTaskResponseBodyCreateResult struct {

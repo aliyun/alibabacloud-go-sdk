@@ -59,5 +59,10 @@ func (s *DeleteBizEntityResponse) SetBody(v *DeleteBizEntityResponseBody) *Delet
 }
 
 func (s *DeleteBizEntityResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

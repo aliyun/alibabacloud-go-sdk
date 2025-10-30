@@ -53,7 +53,12 @@ func (s *UpdateComputeSourceRequest) SetUpdateCommand(v *UpdateComputeSourceRequ
 }
 
 func (s *UpdateComputeSourceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UpdateCommand != nil {
+		if err := s.UpdateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateComputeSourceRequestUpdateCommand struct {
@@ -139,7 +144,16 @@ func (s *UpdateComputeSourceRequestUpdateCommand) SetType(v string) *UpdateCompu
 }
 
 func (s *UpdateComputeSourceRequestUpdateCommand) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigList != nil {
+		for _, item := range s.ConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateComputeSourceRequestUpdateCommandConfigList struct {

@@ -53,7 +53,12 @@ func (s *CheckDataSourceConnectivityRequest) SetOpTenantId(v int64) *CheckDataSo
 }
 
 func (s *CheckDataSourceConnectivityRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CheckCommand != nil {
+		if err := s.CheckCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CheckDataSourceConnectivityRequestCheckCommand struct {
@@ -94,7 +99,16 @@ func (s *CheckDataSourceConnectivityRequestCheckCommand) SetType(v string) *Chec
 }
 
 func (s *CheckDataSourceConnectivityRequestCheckCommand) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigItemList != nil {
+		for _, item := range s.ConfigItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CheckDataSourceConnectivityRequestCheckCommandConfigItemList struct {

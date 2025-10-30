@@ -70,7 +70,12 @@ func (s *AddProjectMemberRequest) SetOpTenantId(v int64) *AddProjectMemberReques
 }
 
 func (s *AddProjectMemberRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AddCommand != nil {
+		if err := s.AddCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddProjectMemberRequestAddCommand struct {
@@ -111,7 +116,16 @@ func (s *AddProjectMemberRequestAddCommand) SetUserList(v []*AddProjectMemberReq
 }
 
 func (s *AddProjectMemberRequestAddCommand) Validate() error {
-	return dara.Validate(s)
+	if s.UserList != nil {
+		for _, item := range s.UserList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddProjectMemberRequestAddCommandUserList struct {

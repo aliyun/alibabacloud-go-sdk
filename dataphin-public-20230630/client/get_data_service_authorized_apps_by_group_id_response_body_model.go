@@ -109,7 +109,16 @@ func (s *GetDataServiceAuthorizedAppsByGroupIdResponseBody) SetSuccess(v bool) *
 }
 
 func (s *GetDataServiceAuthorizedAppsByGroupIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AppInfoList != nil {
+		for _, item := range s.AppInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataServiceAuthorizedAppsByGroupIdResponseBodyAppInfoList struct {

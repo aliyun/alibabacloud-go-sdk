@@ -109,7 +109,12 @@ func (s *GetDataServiceApiCallTrendResponseBody) SetSuccess(v bool) *GetDataServ
 }
 
 func (s *GetDataServiceApiCallTrendResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataServiceApiCallTrendResponseBodyData struct {
@@ -144,7 +149,25 @@ func (s *GetDataServiceApiCallTrendResponseBodyData) SetCallErrorTrendList(v []*
 }
 
 func (s *GetDataServiceApiCallTrendResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CallErrorImpactTrendList != nil {
+		for _, item := range s.CallErrorImpactTrendList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.CallErrorTrendList != nil {
+		for _, item := range s.CallErrorTrendList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataServiceApiCallTrendResponseBodyDataCallErrorImpactTrendList struct {

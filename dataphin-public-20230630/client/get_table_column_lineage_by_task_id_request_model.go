@@ -53,7 +53,12 @@ func (s *GetTableColumnLineageByTaskIdRequest) SetTableColumnLineageByTaskIdQuer
 }
 
 func (s *GetTableColumnLineageByTaskIdRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TableColumnLineageByTaskIdQuery != nil {
+		if err := s.TableColumnLineageByTaskIdQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery struct {

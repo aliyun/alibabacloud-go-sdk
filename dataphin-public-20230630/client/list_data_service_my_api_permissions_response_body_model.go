@@ -109,7 +109,12 @@ func (s *ListDataServiceMyApiPermissionsResponseBody) SetSuccess(v bool) *ListDa
 }
 
 func (s *ListDataServiceMyApiPermissionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageResult != nil {
+		if err := s.PageResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataServiceMyApiPermissionsResponseBodyPageResult struct {
@@ -147,7 +152,16 @@ func (s *ListDataServiceMyApiPermissionsResponseBodyPageResult) SetTotalCount(v 
 }
 
 func (s *ListDataServiceMyApiPermissionsResponseBodyPageResult) Validate() error {
-	return dara.Validate(s)
+	if s.PermissionList != nil {
+		for _, item := range s.PermissionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataServiceMyApiPermissionsResponseBodyPageResultPermissionList struct {

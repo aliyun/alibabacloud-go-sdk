@@ -107,7 +107,12 @@ func (s *ListRowPermissionResponseBody) SetSuccess(v bool) *ListRowPermissionRes
 }
 
 func (s *ListRowPermissionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageResult != nil {
+		if err := s.PageResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRowPermissionResponseBodyPageResult struct {
@@ -145,7 +150,16 @@ func (s *ListRowPermissionResponseBodyPageResult) SetTotalCount(v int32) *ListRo
 }
 
 func (s *ListRowPermissionResponseBodyPageResult) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRowPermissionResponseBodyPageResultData struct {
@@ -288,7 +302,34 @@ func (s *ListRowPermissionResponseBodyPageResultData) SetTenantId(v int64) *List
 }
 
 func (s *ListRowPermissionResponseBodyPageResultData) Validate() error {
-	return dara.Validate(s)
+	if s.MappingColumns != nil {
+		for _, item := range s.MappingColumns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tables != nil {
+		for _, item := range s.Tables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRowPermissionResponseBodyPageResultDataMappingColumns struct {
@@ -420,7 +461,25 @@ func (s *ListRowPermissionResponseBodyPageResultDataRules) SetUserMappingList(v 
 }
 
 func (s *ListRowPermissionResponseBodyPageResultDataRules) Validate() error {
-	return dara.Validate(s)
+	if s.Expressions != nil {
+		for _, item := range s.Expressions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserMappingList != nil {
+		for _, item := range s.UserMappingList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRowPermissionResponseBodyPageResultDataRulesExpressions struct {
@@ -532,7 +591,16 @@ func (s *ListRowPermissionResponseBodyPageResultDataRulesUserMappingList) SetAcc
 }
 
 func (s *ListRowPermissionResponseBodyPageResultDataRulesUserMappingList) Validate() error {
-	return dara.Validate(s)
+	if s.Accounts != nil {
+		for _, item := range s.Accounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRowPermissionResponseBodyPageResultDataRulesUserMappingListAccounts struct {

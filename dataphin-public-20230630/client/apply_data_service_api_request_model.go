@@ -70,7 +70,12 @@ func (s *ApplyDataServiceApiRequest) SetProjectId(v int32) *ApplyDataServiceApiR
 }
 
 func (s *ApplyDataServiceApiRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ApplyCommand != nil {
+		if err := s.ApplyCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ApplyDataServiceApiRequestApplyCommand struct {
@@ -167,7 +172,25 @@ func (s *ApplyDataServiceApiRequestApplyCommand) SetReason(v string) *ApplyDataS
 }
 
 func (s *ApplyDataServiceApiRequestApplyCommand) Validate() error {
-	return dara.Validate(s)
+	if s.DevFieldList != nil {
+		for _, item := range s.DevFieldList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ProdFieldList != nil {
+		for _, item := range s.ProdFieldList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ApplyDataServiceApiRequestApplyCommandDevFieldList struct {

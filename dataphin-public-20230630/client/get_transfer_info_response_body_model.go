@@ -107,7 +107,12 @@ func (s *GetTransferInfoResponseBody) SetSuccess(v bool) *GetTransferInfoRespons
 }
 
 func (s *GetTransferInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTransferInfoResponseBodyData struct {
@@ -276,7 +281,36 @@ func (s *GetTransferInfoResponseBodyData) SetTransferStatus(v string) *GetTransf
 }
 
 func (s *GetTransferInfoResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Creator != nil {
+		if err := s.Creator.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LastModifier != nil {
+		if err := s.LastModifier.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NewOwner != nil {
+		if err := s.NewOwner.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OldOwner != nil {
+		if err := s.OldOwner.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrivilegeTransferResultEntries != nil {
+		for _, item := range s.PrivilegeTransferResultEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTransferInfoResponseBodyDataCreator struct {

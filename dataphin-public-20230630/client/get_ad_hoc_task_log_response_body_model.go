@@ -107,7 +107,12 @@ func (s *GetAdHocTaskLogResponseBody) SetSuccess(v bool) *GetAdHocTaskLogRespons
 }
 
 func (s *GetAdHocTaskLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LogInfo != nil {
+		if err := s.LogInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAdHocTaskLogResponseBodyLogInfo struct {

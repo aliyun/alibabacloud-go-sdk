@@ -53,7 +53,12 @@ func (s *RevokeResourcePermissionRequest) SetRevokeCommand(v *RevokeResourcePerm
 }
 
 func (s *RevokeResourcePermissionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RevokeCommand != nil {
+		if err := s.RevokeCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RevokeResourcePermissionRequestRevokeCommand struct {
@@ -132,7 +137,16 @@ func (s *RevokeResourcePermissionRequestRevokeCommand) SetUserId(v string) *Revo
 }
 
 func (s *RevokeResourcePermissionRequestRevokeCommand) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceList != nil {
+		for _, item := range s.ResourceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RevokeResourcePermissionRequestRevokeCommandResourceList struct {

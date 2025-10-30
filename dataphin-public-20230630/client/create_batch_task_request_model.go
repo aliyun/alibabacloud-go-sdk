@@ -53,7 +53,12 @@ func (s *CreateBatchTaskRequest) SetOpTenantId(v int64) *CreateBatchTaskRequest 
 }
 
 func (s *CreateBatchTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CreateCommand != nil {
+		if err := s.CreateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateBatchTaskRequestCreateCommand struct {

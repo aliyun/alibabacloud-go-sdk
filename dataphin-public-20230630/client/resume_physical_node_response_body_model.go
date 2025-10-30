@@ -110,7 +110,16 @@ func (s *ResumePhysicalNodeResponseBody) SetSuccess(v bool) *ResumePhysicalNodeR
 }
 
 func (s *ResumePhysicalNodeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NodeOperateResultList != nil {
+		for _, item := range s.NodeOperateResultList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ResumePhysicalNodeResponseBodyNodeOperateResultList struct {

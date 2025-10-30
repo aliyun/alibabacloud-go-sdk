@@ -53,7 +53,12 @@ func (s *CreateUdfRequest) SetOpTenantId(v int64) *CreateUdfRequest {
 }
 
 func (s *CreateUdfRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CreateCommand != nil {
+		if err := s.CreateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateUdfRequestCreateCommand struct {

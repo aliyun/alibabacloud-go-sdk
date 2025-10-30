@@ -110,7 +110,16 @@ func (s *ListNodeDownStreamResponseBody) SetSuccess(v bool) *ListNodeDownStreamR
 }
 
 func (s *ListNodeDownStreamResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NodeInfoList != nil {
+		for _, item := range s.NodeInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNodeDownStreamResponseBodyNodeInfoList struct {

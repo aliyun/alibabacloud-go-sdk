@@ -107,7 +107,12 @@ func (s *UpdateBatchTaskResponseBody) SetUpdateResult(v *UpdateBatchTaskResponse
 }
 
 func (s *UpdateBatchTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UpdateResult != nil {
+		if err := s.UpdateResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateBatchTaskResponseBodyUpdateResult struct {

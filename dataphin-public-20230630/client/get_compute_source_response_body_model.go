@@ -110,7 +110,12 @@ func (s *GetComputeSourceResponseBody) SetSuccess(v bool) *GetComputeSourceRespo
 }
 
 func (s *GetComputeSourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ComputeSourceInfo != nil {
+		if err := s.ComputeSourceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetComputeSourceResponseBodyComputeSourceInfo struct {

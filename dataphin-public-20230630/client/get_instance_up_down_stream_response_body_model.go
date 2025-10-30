@@ -110,7 +110,12 @@ func (s *GetInstanceUpDownStreamResponseBody) SetSuccess(v bool) *GetInstanceUpD
 }
 
 func (s *GetInstanceUpDownStreamResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceDagInfo != nil {
+		if err := s.InstanceDagInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceUpDownStreamResponseBodyInstanceDagInfo struct {
@@ -155,7 +160,34 @@ func (s *GetInstanceUpDownStreamResponseBodyInstanceDagInfo) SetUpInstanceList(v
 }
 
 func (s *GetInstanceUpDownStreamResponseBodyInstanceDagInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DownInstanceList != nil {
+		for _, item := range s.DownInstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.StartInstanceList != nil {
+		for _, item := range s.StartInstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UpInstanceList != nil {
+		for _, item := range s.UpInstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstanceUpDownStreamResponseBodyInstanceDagInfoDownInstanceList struct {

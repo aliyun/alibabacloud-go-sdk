@@ -107,7 +107,12 @@ func (s *GetBatchTaskUdfLineagesResponseBody) SetSuccess(v bool) *GetBatchTaskUd
 }
 
 func (s *GetBatchTaskUdfLineagesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBatchTaskUdfLineagesResponseBodyData struct {
@@ -132,7 +137,16 @@ func (s *GetBatchTaskUdfLineagesResponseBodyData) SetLineageGroupList(v []*GetBa
 }
 
 func (s *GetBatchTaskUdfLineagesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.LineageGroupList != nil {
+		for _, item := range s.LineageGroupList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetBatchTaskUdfLineagesResponseBodyDataLineageGroupList struct {
@@ -167,7 +181,25 @@ func (s *GetBatchTaskUdfLineagesResponseBodyDataLineageGroupList) SetOutputLinea
 }
 
 func (s *GetBatchTaskUdfLineagesResponseBodyDataLineageGroupList) Validate() error {
-	return dara.Validate(s)
+	if s.InputLineageList != nil {
+		for _, item := range s.InputLineageList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OutputLineageList != nil {
+		for _, item := range s.OutputLineageList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListInputLineageList struct {
@@ -358,7 +390,16 @@ func (s *GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListInputLineageList
 }
 
 func (s *GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListInputLineageList) Validate() error {
-	return dara.Validate(s)
+	if s.ColumnList != nil {
+		for _, item := range s.ColumnList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListInputLineageListColumnList struct {
@@ -636,7 +677,16 @@ func (s *GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListOutputLineageLis
 }
 
 func (s *GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListOutputLineageList) Validate() error {
-	return dara.Validate(s)
+	if s.ColumnList != nil {
+		for _, item := range s.ColumnList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListOutputLineageListColumnList struct {

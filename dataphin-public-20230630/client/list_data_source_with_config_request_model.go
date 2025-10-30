@@ -53,7 +53,12 @@ func (s *ListDataSourceWithConfigRequest) SetOpTenantId(v int64) *ListDataSource
 }
 
 func (s *ListDataSourceWithConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ListQuery != nil {
+		if err := s.ListQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataSourceWithConfigRequestListQuery struct {

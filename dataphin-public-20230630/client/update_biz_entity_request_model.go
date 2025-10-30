@@ -53,7 +53,12 @@ func (s *UpdateBizEntityRequest) SetUpdateCommand(v *UpdateBizEntityRequestUpdat
 }
 
 func (s *UpdateBizEntityRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UpdateCommand != nil {
+		if err := s.UpdateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateBizEntityRequestUpdateCommand struct {
@@ -148,7 +153,17 @@ func (s *UpdateBizEntityRequestUpdateCommand) SetType(v string) *UpdateBizEntity
 }
 
 func (s *UpdateBizEntityRequestUpdateCommand) Validate() error {
-	return dara.Validate(s)
+	if s.BizObject != nil {
+		if err := s.BizObject.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BizProcess != nil {
+		if err := s.BizProcess.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateBizEntityRequestUpdateCommandBizObject struct {

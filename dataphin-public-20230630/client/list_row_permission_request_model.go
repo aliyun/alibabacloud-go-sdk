@@ -53,7 +53,12 @@ func (s *ListRowPermissionRequest) SetPageRowPermissionQuery(v *ListRowPermissio
 }
 
 func (s *ListRowPermissionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PageRowPermissionQuery != nil {
+		if err := s.PageRowPermissionQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRowPermissionRequestPageRowPermissionQuery struct {

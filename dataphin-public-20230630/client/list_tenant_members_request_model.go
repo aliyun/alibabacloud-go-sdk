@@ -53,7 +53,12 @@ func (s *ListTenantMembersRequest) SetOpTenantId(v int64) *ListTenantMembersRequ
 }
 
 func (s *ListTenantMembersRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ListQuery != nil {
+		if err := s.ListQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTenantMembersRequestListQuery struct {

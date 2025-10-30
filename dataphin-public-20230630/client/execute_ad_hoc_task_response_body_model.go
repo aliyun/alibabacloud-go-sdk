@@ -107,7 +107,12 @@ func (s *ExecuteAdHocTaskResponseBody) SetSuccess(v bool) *ExecuteAdHocTaskRespo
 }
 
 func (s *ExecuteAdHocTaskResponseBody) Validate() error {
-  return dara.Validate(s)
+  if s.ExecuteResult != nil {
+    if err := s.ExecuteResult.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type ExecuteAdHocTaskResponseBodyExecuteResult struct {

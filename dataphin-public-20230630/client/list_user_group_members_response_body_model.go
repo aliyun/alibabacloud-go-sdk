@@ -110,7 +110,12 @@ func (s *ListUserGroupMembersResponseBody) SetSuccess(v bool) *ListUserGroupMemb
 }
 
 func (s *ListUserGroupMembersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageResult != nil {
+		if err := s.PageResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUserGroupMembersResponseBodyPageResult struct {
@@ -148,7 +153,16 @@ func (s *ListUserGroupMembersResponseBodyPageResult) SetTotalCount(v int32) *Lis
 }
 
 func (s *ListUserGroupMembersResponseBodyPageResult) Validate() error {
-	return dara.Validate(s)
+	if s.MemberList != nil {
+		for _, item := range s.MemberList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserGroupMembersResponseBodyPageResultMemberList struct {
@@ -235,7 +249,17 @@ func (s *ListUserGroupMembersResponseBodyPageResultMemberList) SetUserRole(v str
 }
 
 func (s *ListUserGroupMembersResponseBodyPageResultMemberList) Validate() error {
-	return dara.Validate(s)
+	if s.Creator != nil {
+		if err := s.Creator.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUserGroupMembersResponseBodyPageResultMemberListCreator struct {

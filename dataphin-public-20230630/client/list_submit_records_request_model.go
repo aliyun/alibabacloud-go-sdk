@@ -53,7 +53,12 @@ func (s *ListSubmitRecordsRequest) SetOpTenantId(v int64) *ListSubmitRecordsRequ
 }
 
 func (s *ListSubmitRecordsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ListQuery != nil {
+		if err := s.ListQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSubmitRecordsRequestListQuery struct {
@@ -92,7 +97,12 @@ func (s *ListSubmitRecordsRequestListQuery) SetSearchFilter(v *ListSubmitRecords
 }
 
 func (s *ListSubmitRecordsRequestListQuery) Validate() error {
-	return dara.Validate(s)
+	if s.SearchFilter != nil {
+		if err := s.SearchFilter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSubmitRecordsRequestListQuerySearchFilter struct {

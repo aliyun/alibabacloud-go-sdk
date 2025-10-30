@@ -109,7 +109,12 @@ func (s *ListDataServicePublishedApisResponseBody) SetSuccess(v bool) *ListDataS
 }
 
 func (s *ListDataServicePublishedApisResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageResult != nil {
+		if err := s.PageResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataServicePublishedApisResponseBodyPageResult struct {
@@ -147,7 +152,16 @@ func (s *ListDataServicePublishedApisResponseBodyPageResult) SetTotalCount(v int
 }
 
 func (s *ListDataServicePublishedApisResponseBodyPageResult) Validate() error {
-	return dara.Validate(s)
+	if s.ApiList != nil {
+		for _, item := range s.ApiList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataServicePublishedApisResponseBodyPageResultApiList struct {
@@ -445,7 +459,16 @@ func (s *ListDataServicePublishedApisResponseBodyPageResultApiList) SetVersion(v
 }
 
 func (s *ListDataServicePublishedApisResponseBodyPageResultApiList) Validate() error {
-	return dara.Validate(s)
+	if s.AppInfoList != nil {
+		for _, item := range s.AppInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataServicePublishedApisResponseBodyPageResultApiListAppInfoList struct {

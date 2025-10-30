@@ -53,7 +53,12 @@ func (s *SubmitBatchTaskRequest) SetSubmitCommand(v *SubmitBatchTaskRequestSubmi
 }
 
 func (s *SubmitBatchTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SubmitCommand != nil {
+		if err := s.SubmitCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitBatchTaskRequestSubmitCommand struct {
@@ -281,7 +286,35 @@ func (s *SubmitBatchTaskRequestSubmitCommand) SetUpStreamList(v []*SubmitBatchTa
 }
 
 func (s *SubmitBatchTaskRequestSubmitCommand) Validate() error {
-	return dara.Validate(s)
+	if s.CustomScheduleConfig != nil {
+		if err := s.CustomScheduleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ParamList != nil {
+		for _, item := range s.ParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SparkClientInfo != nil {
+		if err := s.SparkClientInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UpStreamList != nil {
+		for _, item := range s.UpStreamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig struct {
@@ -573,7 +606,12 @@ func (s *SubmitBatchTaskRequestSubmitCommandUpStreamList) SetSourceTableName(v s
 }
 
 func (s *SubmitBatchTaskRequestSubmitCommandUpStreamList) Validate() error {
-	return dara.Validate(s)
+	if s.DependPeriod != nil {
+		if err := s.DependPeriod.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitBatchTaskRequestSubmitCommandUpStreamListDependPeriod struct {

@@ -110,7 +110,12 @@ func (s *GetNodeUpDownStreamResponseBody) SetSuccess(v bool) *GetNodeUpDownStrea
 }
 
 func (s *GetNodeUpDownStreamResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NodeDagInfo != nil {
+		if err := s.NodeDagInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNodeUpDownStreamResponseBodyNodeDagInfo struct {
@@ -155,7 +160,34 @@ func (s *GetNodeUpDownStreamResponseBodyNodeDagInfo) SetUpStreamNodeList(v []*Ge
 }
 
 func (s *GetNodeUpDownStreamResponseBodyNodeDagInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DownStreamNodeList != nil {
+		for _, item := range s.DownStreamNodeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.StartNodeList != nil {
+		for _, item := range s.StartNodeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UpStreamNodeList != nil {
+		for _, item := range s.UpStreamNodeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetNodeUpDownStreamResponseBodyNodeDagInfoDownStreamNodeList struct {

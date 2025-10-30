@@ -109,7 +109,12 @@ func (s *ListDataServiceApiCallsResponseBody) SetSuccess(v bool) *ListDataServic
 }
 
 func (s *ListDataServiceApiCallsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageResult != nil {
+		if err := s.PageResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataServiceApiCallsResponseBodyPageResult struct {
@@ -147,7 +152,16 @@ func (s *ListDataServiceApiCallsResponseBodyPageResult) SetTotalCount(v int64) *
 }
 
 func (s *ListDataServiceApiCallsResponseBodyPageResult) Validate() error {
-	return dara.Validate(s)
+	if s.CallLogList != nil {
+		for _, item := range s.CallLogList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataServiceApiCallsResponseBodyPageResultCallLogList struct {

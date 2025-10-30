@@ -110,7 +110,16 @@ func (s *GetInstanceDownStreamResponseBody) SetSuccess(v bool) *GetInstanceDownS
 }
 
 func (s *GetInstanceDownStreamResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceRelationList != nil {
+		for _, item := range s.InstanceRelationList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstanceDownStreamResponseBodyInstanceRelationList struct {
@@ -210,7 +219,21 @@ func (s *GetInstanceDownStreamResponseBodyInstanceRelationList) SetSelectStatusC
 }
 
 func (s *GetInstanceDownStreamResponseBodyInstanceRelationList) Validate() error {
-	return dara.Validate(s)
+	if s.FieldInstanceList != nil {
+		for _, item := range s.FieldInstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InstanceInfo != nil {
+		if err := s.InstanceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceDownStreamResponseBodyInstanceRelationListFieldInstanceList struct {

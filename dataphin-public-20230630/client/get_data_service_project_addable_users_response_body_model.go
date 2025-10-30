@@ -109,7 +109,16 @@ func (s *GetDataServiceProjectAddableUsersResponseBody) SetUserList(v []*GetData
 }
 
 func (s *GetDataServiceProjectAddableUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserList != nil {
+		for _, item := range s.UserList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataServiceProjectAddableUsersResponseBodyUserList struct {

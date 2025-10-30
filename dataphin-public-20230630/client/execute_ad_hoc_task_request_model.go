@@ -53,7 +53,12 @@ func (s *ExecuteAdHocTaskRequest) SetOpTenantId(v int64) *ExecuteAdHocTaskReques
 }
 
 func (s *ExecuteAdHocTaskRequest) Validate() error {
-  return dara.Validate(s)
+  if s.ExecuteCommand != nil {
+    if err := s.ExecuteCommand.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type ExecuteAdHocTaskRequestExecuteCommand struct {
@@ -162,7 +167,16 @@ func (s *ExecuteAdHocTaskRequestExecuteCommand) SetProjectId(v int64) *ExecuteAd
 }
 
 func (s *ExecuteAdHocTaskRequestExecuteCommand) Validate() error {
-  return dara.Validate(s)
+  if s.ParamList != nil {
+    for _, item := range s.ParamList {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type ExecuteAdHocTaskRequestExecuteCommandParamList struct {

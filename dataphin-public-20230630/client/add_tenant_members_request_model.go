@@ -53,7 +53,12 @@ func (s *AddTenantMembersRequest) SetOpTenantId(v int64) *AddTenantMembersReques
 }
 
 func (s *AddTenantMembersRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AddCommand != nil {
+		if err := s.AddCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddTenantMembersRequestAddCommand struct {
@@ -79,7 +84,16 @@ func (s *AddTenantMembersRequestAddCommand) SetUserList(v []*AddTenantMembersReq
 }
 
 func (s *AddTenantMembersRequestAddCommand) Validate() error {
-	return dara.Validate(s)
+	if s.UserList != nil {
+		for _, item := range s.UserList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddTenantMembersRequestAddCommandUserList struct {

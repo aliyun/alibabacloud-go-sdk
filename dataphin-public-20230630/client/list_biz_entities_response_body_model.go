@@ -107,7 +107,12 @@ func (s *ListBizEntitiesResponseBody) SetSuccess(v bool) *ListBizEntitiesRespons
 }
 
 func (s *ListBizEntitiesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageResult != nil {
+		if err := s.PageResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListBizEntitiesResponseBodyPageResult struct {
@@ -145,7 +150,16 @@ func (s *ListBizEntitiesResponseBodyPageResult) SetTotalCount(v int32) *ListBizE
 }
 
 func (s *ListBizEntitiesResponseBodyPageResult) Validate() error {
-	return dara.Validate(s)
+	if s.BizEntityList != nil {
+		for _, item := range s.BizEntityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListBizEntitiesResponseBodyPageResultBizEntityList struct {

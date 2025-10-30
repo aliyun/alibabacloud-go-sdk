@@ -53,7 +53,12 @@ func (s *GetLatestSubmitDetailRequest) SetSubmitDetailQuery(v *GetLatestSubmitDe
 }
 
 func (s *GetLatestSubmitDetailRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SubmitDetailQuery != nil {
+		if err := s.SubmitDetailQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLatestSubmitDetailRequestSubmitDetailQuery struct {

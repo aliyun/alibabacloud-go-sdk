@@ -53,7 +53,12 @@ func (s *ListDataDomainsRequest) SetOpTenantId(v int64) *ListDataDomainsRequest 
 }
 
 func (s *ListDataDomainsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ListQuery != nil {
+		if err := s.ListQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataDomainsRequestListQuery struct {

@@ -109,7 +109,12 @@ func (s *GetResourceResponseBody) SetSuccess(v bool) *GetResourceResponseBody {
 }
 
 func (s *GetResourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceInfo != nil {
+		if err := s.ResourceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResourceResponseBodyResourceInfo struct {

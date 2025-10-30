@@ -59,5 +59,10 @@ func (s *GetUdfByVersionResponse) SetBody(v *GetUdfByVersionResponseBody) *GetUd
 }
 
 func (s *GetUdfByVersionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

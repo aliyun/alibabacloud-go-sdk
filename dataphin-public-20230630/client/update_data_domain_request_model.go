@@ -53,7 +53,12 @@ func (s *UpdateDataDomainRequest) SetUpdateCommand(v *UpdateDataDomainRequestUpd
 }
 
 func (s *UpdateDataDomainRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UpdateCommand != nil {
+		if err := s.UpdateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateDataDomainRequestUpdateCommand struct {

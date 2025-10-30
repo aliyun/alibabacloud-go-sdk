@@ -109,7 +109,12 @@ func (s *ListDataServiceAuthorizedAppsResponseBody) SetSuccess(v bool) *ListData
 }
 
 func (s *ListDataServiceAuthorizedAppsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageResult != nil {
+		if err := s.PageResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataServiceAuthorizedAppsResponseBodyPageResult struct {
@@ -147,7 +152,16 @@ func (s *ListDataServiceAuthorizedAppsResponseBodyPageResult) SetTotalCount(v in
 }
 
 func (s *ListDataServiceAuthorizedAppsResponseBodyPageResult) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorizedAppList != nil {
+		for _, item := range s.AuthorizedAppList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList struct {
@@ -378,7 +392,16 @@ func (s *ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList) S
 }
 
 func (s *ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList) Validate() error {
-	return dara.Validate(s)
+	if s.RemarkForDebugList != nil {
+		for _, item := range s.RemarkForDebugList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppListRemarkForDebugList struct {

@@ -53,7 +53,12 @@ func (s *UpdateResourceRequest) SetUpdateCommand(v *UpdateResourceRequestUpdateC
 }
 
 func (s *UpdateResourceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UpdateCommand != nil {
+		if err := s.UpdateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateResourceRequestUpdateCommand struct {

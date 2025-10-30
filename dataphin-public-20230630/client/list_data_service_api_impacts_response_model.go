@@ -59,5 +59,10 @@ func (s *ListDataServiceApiImpactsResponse) SetBody(v *ListDataServiceApiImpacts
 }
 
 func (s *ListDataServiceApiImpactsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

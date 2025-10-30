@@ -115,7 +115,12 @@ func (s *GetInstanceUpDownStreamRequest) SetUpStreamDepth(v int32) *GetInstanceU
 }
 
 func (s *GetInstanceUpDownStreamRequest) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceId != nil {
+		if err := s.InstanceId.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceUpDownStreamRequestInstanceId struct {

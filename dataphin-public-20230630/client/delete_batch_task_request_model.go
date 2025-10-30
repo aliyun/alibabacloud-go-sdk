@@ -53,7 +53,12 @@ func (s *DeleteBatchTaskRequest) SetOpTenantId(v int64) *DeleteBatchTaskRequest 
 }
 
 func (s *DeleteBatchTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeleteCommand != nil {
+		if err := s.DeleteCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteBatchTaskRequestDeleteCommand struct {

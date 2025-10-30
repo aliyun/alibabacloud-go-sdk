@@ -110,7 +110,16 @@ func (s *GetDevObjectDependencyResponseBody) SetSuccess(v bool) *GetDevObjectDep
 }
 
 func (s *GetDevObjectDependencyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DevObjectDependencyList != nil {
+		for _, item := range s.DevObjectDependencyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDevObjectDependencyResponseBodyDevObjectDependencyList struct {
@@ -449,7 +458,30 @@ func (s *GetDevObjectDependencyResponseBodyDevObjectDependencyList) SetValid(v b
 }
 
 func (s *GetDevObjectDependencyResponseBodyDevObjectDependencyList) Validate() error {
-	return dara.Validate(s)
+	if s.DependencyPeriod != nil {
+		if err := s.DependencyPeriod.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OutputContextParamList != nil {
+		for _, item := range s.OutputContextParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OwnerList != nil {
+		for _, item := range s.OwnerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDevObjectDependencyResponseBodyDevObjectDependencyListDependencyPeriod struct {

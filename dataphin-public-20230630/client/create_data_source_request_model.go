@@ -52,7 +52,12 @@ func (s *CreateDataSourceRequest) SetOpTenantId(v int64) *CreateDataSourceReques
 }
 
 func (s *CreateDataSourceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CreateCommand != nil {
+		if err := s.CreateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataSourceRequestCreateCommand struct {
@@ -88,7 +93,17 @@ func (s *CreateDataSourceRequestCreateCommand) SetProdDataSourceCreate(v *Create
 }
 
 func (s *CreateDataSourceRequestCreateCommand) Validate() error {
-	return dara.Validate(s)
+	if s.DevDataSourceCreate != nil {
+		if err := s.DevDataSourceCreate.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProdDataSourceCreate != nil {
+		if err := s.ProdDataSourceCreate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataSourceRequestCreateCommandDevDataSourceCreate struct {
@@ -127,7 +142,12 @@ func (s *CreateDataSourceRequestCreateCommandDevDataSourceCreate) SetProdDataSou
 }
 
 func (s *CreateDataSourceRequestCreateCommandDevDataSourceCreate) Validate() error {
-	return dara.Validate(s)
+	if s.DataSourceCreate != nil {
+		if err := s.DataSourceCreate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataSourceRequestCreateCommandDevDataSourceCreateDataSourceCreate struct {
@@ -209,7 +229,16 @@ func (s *CreateDataSourceRequestCreateCommandDevDataSourceCreateDataSourceCreate
 }
 
 func (s *CreateDataSourceRequestCreateCommandDevDataSourceCreateDataSourceCreate) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigItemList != nil {
+		for _, item := range s.ConfigItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDataSourceRequestCreateCommandDevDataSourceCreateDataSourceCreateConfigItemList struct {
@@ -336,7 +365,16 @@ func (s *CreateDataSourceRequestCreateCommandProdDataSourceCreate) SetType(v str
 }
 
 func (s *CreateDataSourceRequestCreateCommandProdDataSourceCreate) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigItemList != nil {
+		for _, item := range s.ConfigItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDataSourceRequestCreateCommandProdDataSourceCreateConfigItemList struct {

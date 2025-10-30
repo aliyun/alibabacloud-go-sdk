@@ -53,7 +53,12 @@ func (s *UpdateUdfRequest) SetUpdateCommand(v *UpdateUdfRequestUpdateCommand) *U
 }
 
 func (s *UpdateUdfRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UpdateCommand != nil {
+		if err := s.UpdateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateUdfRequestUpdateCommand struct {

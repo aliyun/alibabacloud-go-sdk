@@ -53,7 +53,12 @@ func (s *CreateDirectoryRequest) SetOpTenantId(v int64) *CreateDirectoryRequest 
 }
 
 func (s *CreateDirectoryRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CreateCommand != nil {
+		if err := s.CreateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDirectoryRequestCreateCommand struct {

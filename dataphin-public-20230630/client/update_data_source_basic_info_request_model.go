@@ -53,7 +53,12 @@ func (s *UpdateDataSourceBasicInfoRequest) SetUpdateCommand(v *UpdateDataSourceB
 }
 
 func (s *UpdateDataSourceBasicInfoRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UpdateCommand != nil {
+		if err := s.UpdateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateDataSourceBasicInfoRequestUpdateCommand struct {

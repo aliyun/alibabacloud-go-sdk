@@ -109,7 +109,12 @@ func (s *ListComputeSourcesResponseBody) SetSuccess(v bool) *ListComputeSourcesR
 }
 
 func (s *ListComputeSourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageResult != nil {
+		if err := s.PageResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListComputeSourcesResponseBodyPageResult struct {
@@ -147,7 +152,16 @@ func (s *ListComputeSourcesResponseBodyPageResult) SetTotalCount(v int32) *ListC
 }
 
 func (s *ListComputeSourcesResponseBodyPageResult) Validate() error {
-	return dara.Validate(s)
+	if s.ComputeSourceList != nil {
+		for _, item := range s.ComputeSourceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListComputeSourcesResponseBodyPageResultComputeSourceList struct {

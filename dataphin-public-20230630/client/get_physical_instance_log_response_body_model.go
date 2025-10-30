@@ -110,7 +110,16 @@ func (s *GetPhysicalInstanceLogResponseBody) SetTaskrunLogList(v []*GetPhysicalI
 }
 
 func (s *GetPhysicalInstanceLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TaskrunLogList != nil {
+		for _, item := range s.TaskrunLogList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPhysicalInstanceLogResponseBodyTaskrunLogList struct {

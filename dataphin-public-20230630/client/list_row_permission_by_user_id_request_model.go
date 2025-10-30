@@ -53,7 +53,12 @@ func (s *ListRowPermissionByUserIdRequest) SetOpTenantId(v int64) *ListRowPermis
 }
 
 func (s *ListRowPermissionByUserIdRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ListRowPermissionByUserIdQuery != nil {
+		if err := s.ListRowPermissionByUserIdQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRowPermissionByUserIdRequestListRowPermissionByUserIdQuery struct {

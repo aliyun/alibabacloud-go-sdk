@@ -107,7 +107,12 @@ func (s *GetBatchTaskInfoResponseBody) SetTaskInfo(v *GetBatchTaskInfoResponseBo
 }
 
 func (s *GetBatchTaskInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TaskInfo != nil {
+		if err := s.TaskInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBatchTaskInfoResponseBodyTaskInfo struct {
@@ -573,7 +578,35 @@ func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetUpStreamList(v []*GetBatchTask
 }
 
 func (s *GetBatchTaskInfoResponseBodyTaskInfo) Validate() error {
-	return dara.Validate(s)
+	if s.CustomScheduleConfig != nil {
+		if err := s.CustomScheduleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ParamList != nil {
+		for _, item := range s.ParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SparkClientInfo != nil {
+		if err := s.SparkClientInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UpStreamList != nil {
+		for _, item := range s.UpStreamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetBatchTaskInfoResponseBodyTaskInfoCustomScheduleConfig struct {
@@ -871,7 +904,12 @@ func (s *GetBatchTaskInfoResponseBodyTaskInfoUpStreamList) SetSourceTableName(v 
 }
 
 func (s *GetBatchTaskInfoResponseBodyTaskInfoUpStreamList) Validate() error {
-	return dara.Validate(s)
+	if s.DependPeriod != nil {
+		if err := s.DependPeriod.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBatchTaskInfoResponseBodyTaskInfoUpStreamListDependPeriod struct {

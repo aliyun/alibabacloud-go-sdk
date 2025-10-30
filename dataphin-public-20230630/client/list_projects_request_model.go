@@ -53,7 +53,12 @@ func (s *ListProjectsRequest) SetOpTenantId(v int64) *ListProjectsRequest {
 }
 
 func (s *ListProjectsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ListQuery != nil {
+		if err := s.ListQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListProjectsRequestListQuery struct {

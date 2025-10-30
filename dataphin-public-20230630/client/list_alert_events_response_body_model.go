@@ -110,7 +110,12 @@ func (s *ListAlertEventsResponseBody) SetSuccess(v bool) *ListAlertEventsRespons
 }
 
 func (s *ListAlertEventsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ListResult != nil {
+		if err := s.ListResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAlertEventsResponseBodyListResult struct {
@@ -148,7 +153,16 @@ func (s *ListAlertEventsResponseBodyListResult) SetTotalCount(v int32) *ListAler
 }
 
 func (s *ListAlertEventsResponseBodyListResult) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAlertEventsResponseBodyListResultData struct {
@@ -304,7 +318,36 @@ func (s *ListAlertEventsResponseBodyListResultData) SetUrlConfig(v *ListAlertEve
 }
 
 func (s *ListAlertEventsResponseBodyListResultData) Validate() error {
-	return dara.Validate(s)
+	if s.AlertObject != nil {
+		if err := s.AlertObject.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AlertReason != nil {
+		if err := s.AlertReason.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AlertReceiverList != nil {
+		for _, item := range s.AlertReceiverList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BelongProject != nil {
+		if err := s.BelongProject.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UrlConfig != nil {
+		if err := s.UrlConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAlertEventsResponseBodyListResultDataAlertObject struct {
@@ -422,7 +465,16 @@ func (s *ListAlertEventsResponseBodyListResultDataAlertReason) SetUniqueKey(v st
 }
 
 func (s *ListAlertEventsResponseBodyListResultDataAlertReason) Validate() error {
-	return dara.Validate(s)
+	if s.AlertReasonParamList != nil {
+		for _, item := range s.AlertReasonParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAlertEventsResponseBodyListResultDataAlertReasonAlertReasonParamList struct {
@@ -534,7 +586,16 @@ func (s *ListAlertEventsResponseBodyListResultDataAlertReceiverList) SetUserList
 }
 
 func (s *ListAlertEventsResponseBodyListResultDataAlertReceiverList) Validate() error {
-	return dara.Validate(s)
+	if s.UserList != nil {
+		for _, item := range s.UserList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAlertEventsResponseBodyListResultDataAlertReceiverListUserList struct {

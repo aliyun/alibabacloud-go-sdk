@@ -110,7 +110,12 @@ func (s *ListTenantMembersResponseBody) SetSuccess(v bool) *ListTenantMembersRes
 }
 
 func (s *ListTenantMembersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageResult != nil {
+		if err := s.PageResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTenantMembersResponseBodyPageResult struct {
@@ -148,7 +153,16 @@ func (s *ListTenantMembersResponseBodyPageResult) SetUserList(v []*ListTenantMem
 }
 
 func (s *ListTenantMembersResponseBodyPageResult) Validate() error {
-	return dara.Validate(s)
+	if s.UserList != nil {
+		for _, item := range s.UserList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTenantMembersResponseBodyPageResultUserList struct {
@@ -388,7 +402,16 @@ func (s *ListTenantMembersResponseBodyPageResultUserList) SetWhiteIp(v string) *
 }
 
 func (s *ListTenantMembersResponseBodyPageResultUserList) Validate() error {
-	return dara.Validate(s)
+	if s.UserGroupList != nil {
+		for _, item := range s.UserGroupList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTenantMembersResponseBodyPageResultUserListUserGroupList struct {

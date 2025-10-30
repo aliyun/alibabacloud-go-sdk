@@ -109,7 +109,16 @@ func (s *GetDataServiceAuthorizedProjectsResponseBody) SetSuccess(v bool) *GetDa
 }
 
 func (s *GetDataServiceAuthorizedProjectsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProjectList != nil {
+		for _, item := range s.ProjectList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataServiceAuthorizedProjectsResponseBodyProjectList struct {

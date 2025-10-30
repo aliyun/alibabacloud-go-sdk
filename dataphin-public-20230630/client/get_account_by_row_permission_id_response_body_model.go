@@ -107,7 +107,16 @@ func (s *GetAccountByRowPermissionIdResponseBody) SetSuccess(v bool) *GetAccount
 }
 
 func (s *GetAccountByRowPermissionIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAccountByRowPermissionIdResponseBodyData struct {
@@ -145,7 +154,16 @@ func (s *GetAccountByRowPermissionIdResponseBodyData) SetUserMappingList(v []*Ge
 }
 
 func (s *GetAccountByRowPermissionIdResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.UserMappingList != nil {
+		for _, item := range s.UserMappingList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAccountByRowPermissionIdResponseBodyDataUserMappingList struct {
@@ -183,7 +201,16 @@ func (s *GetAccountByRowPermissionIdResponseBodyDataUserMappingList) SetAccounts
 }
 
 func (s *GetAccountByRowPermissionIdResponseBodyDataUserMappingList) Validate() error {
-	return dara.Validate(s)
+	if s.Accounts != nil {
+		for _, item := range s.Accounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAccountByRowPermissionIdResponseBodyDataUserMappingListAccounts struct {

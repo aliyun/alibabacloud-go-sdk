@@ -69,7 +69,12 @@ func (s *ListDataServiceAuthorizedAppsRequest) SetProjectId(v int32) *ListDataSe
 }
 
 func (s *ListDataServiceAuthorizedAppsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ListQuery != nil {
+		if err := s.ListQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataServiceAuthorizedAppsRequestListQuery struct {

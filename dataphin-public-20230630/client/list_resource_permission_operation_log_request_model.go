@@ -53,7 +53,12 @@ func (s *ListResourcePermissionOperationLogRequest) SetOpTenantId(v int64) *List
 }
 
 func (s *ListResourcePermissionOperationLogRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ListQuery != nil {
+		if err := s.ListQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListResourcePermissionOperationLogRequestListQuery struct {

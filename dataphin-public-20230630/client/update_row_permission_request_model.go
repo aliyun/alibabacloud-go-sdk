@@ -53,7 +53,12 @@ func (s *UpdateRowPermissionRequest) SetUpdateRowPermissionCommand(v *UpdateRowP
 }
 
 func (s *UpdateRowPermissionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UpdateRowPermissionCommand != nil {
+		if err := s.UpdateRowPermissionCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateRowPermissionRequestUpdateRowPermissionCommand struct {
@@ -135,7 +140,34 @@ func (s *UpdateRowPermissionRequestUpdateRowPermissionCommand) SetTables(v []*Up
 }
 
 func (s *UpdateRowPermissionRequestUpdateRowPermissionCommand) Validate() error {
-	return dara.Validate(s)
+	if s.MappingColumns != nil {
+		for _, item := range s.MappingColumns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tables != nil {
+		for _, item := range s.Tables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateRowPermissionRequestUpdateRowPermissionCommandMappingColumns struct {
@@ -280,7 +312,25 @@ func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandRules) SetUserMappi
 }
 
 func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandRules) Validate() error {
-	return dara.Validate(s)
+	if s.Expressions != nil {
+		for _, item := range s.Expressions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserMappingList != nil {
+		for _, item := range s.UserMappingList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions struct {
@@ -403,7 +453,16 @@ func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingLis
 }
 
 func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingList) Validate() error {
-	return dara.Validate(s)
+	if s.Accounts != nil {
+		for _, item := range s.Accounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingListAccounts struct {

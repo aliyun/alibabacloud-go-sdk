@@ -53,7 +53,12 @@ func (s *CreateStreamBatchJobMappingRequest) SetStreamBatchJobMappingCreateComma
 }
 
 func (s *CreateStreamBatchJobMappingRequest) Validate() error {
-	return dara.Validate(s)
+	if s.StreamBatchJobMappingCreateCommand != nil {
+		if err := s.StreamBatchJobMappingCreateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateStreamBatchJobMappingRequestStreamBatchJobMappingCreateCommand struct {

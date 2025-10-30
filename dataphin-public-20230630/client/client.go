@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -65,9 +66,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AddDataServiceProjectMemberResponse
 func (client *Client) AddDataServiceProjectMemberWithOptions(tmpReq *AddDataServiceProjectMemberRequest, runtime *dara.RuntimeOptions) (_result *AddDataServiceProjectMemberResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddDataServiceProjectMemberShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -141,9 +144,11 @@ func (client *Client) AddDataServiceProjectMember(request *AddDataServiceProject
 //
 // @return AddProjectMemberResponse
 func (client *Client) AddProjectMemberWithOptions(tmpReq *AddProjectMemberRequest, runtime *dara.RuntimeOptions) (_result *AddProjectMemberResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddProjectMemberShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -209,6 +214,80 @@ func (client *Client) AddProjectMember(request *AddProjectMemberRequest) (_resul
 
 // Summary:
 //
+// 新增注册血缘。
+//
+// @param tmpReq - AddRegisterLineageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddRegisterLineageResponse
+func (client *Client) AddRegisterLineageWithOptions(tmpReq *AddRegisterLineageRequest, runtime *dara.RuntimeOptions) (_result *AddRegisterLineageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AddRegisterLineageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AddRegisterLineageCommand) {
+		request.AddRegisterLineageCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AddRegisterLineageCommand, dara.String("AddRegisterLineageCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AddRegisterLineageCommandShrink) {
+		body["AddRegisterLineageCommand"] = request.AddRegisterLineageCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddRegisterLineage"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddRegisterLineageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增注册血缘。
+//
+// @param request - AddRegisterLineageRequest
+//
+// @return AddRegisterLineageResponse
+func (client *Client) AddRegisterLineage(request *AddRegisterLineageRequest) (_result *AddRegisterLineageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddRegisterLineageResponse{}
+	_body, _err := client.AddRegisterLineageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 新增租户成员
 //
 // @param tmpReq - AddTenantMembersRequest
@@ -217,9 +296,11 @@ func (client *Client) AddProjectMember(request *AddProjectMemberRequest) (_resul
 //
 // @return AddTenantMembersResponse
 func (client *Client) AddTenantMembersWithOptions(tmpReq *AddTenantMembersRequest, runtime *dara.RuntimeOptions) (_result *AddTenantMembersResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddTenantMembersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -289,9 +370,11 @@ func (client *Client) AddTenantMembers(request *AddTenantMembersRequest) (_resul
 //
 // @return AddTenantMembersBySourceUserResponse
 func (client *Client) AddTenantMembersBySourceUserWithOptions(tmpReq *AddTenantMembersBySourceUserRequest, runtime *dara.RuntimeOptions) (_result *AddTenantMembersBySourceUserResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddTenantMembersBySourceUserShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -361,9 +444,11 @@ func (client *Client) AddTenantMembersBySourceUser(request *AddTenantMembersBySo
 //
 // @return AddUserGroupMemberResponse
 func (client *Client) AddUserGroupMemberWithOptions(tmpReq *AddUserGroupMemberRequest, runtime *dara.RuntimeOptions) (_result *AddUserGroupMemberResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddUserGroupMemberShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -433,9 +518,11 @@ func (client *Client) AddUserGroupMember(request *AddUserGroupMemberRequest) (_r
 //
 // @return ApplyDataServiceApiResponse
 func (client *Client) ApplyDataServiceApiWithOptions(tmpReq *ApplyDataServiceApiRequest, runtime *dara.RuntimeOptions) (_result *ApplyDataServiceApiResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ApplyDataServiceApiShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -509,9 +596,11 @@ func (client *Client) ApplyDataServiceApi(request *ApplyDataServiceApiRequest) (
 //
 // @return ApplyDataServiceAppResponse
 func (client *Client) ApplyDataServiceAppWithOptions(tmpReq *ApplyDataServiceAppRequest, runtime *dara.RuntimeOptions) (_result *ApplyDataServiceAppResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ApplyDataServiceAppShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -585,9 +674,11 @@ func (client *Client) ApplyDataServiceApp(request *ApplyDataServiceAppRequest) (
 //
 // @return CheckComputeSourceConnectivityResponse
 func (client *Client) CheckComputeSourceConnectivityWithOptions(tmpReq *CheckComputeSourceConnectivityRequest, runtime *dara.RuntimeOptions) (_result *CheckComputeSourceConnectivityResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CheckComputeSourceConnectivityShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -657,9 +748,11 @@ func (client *Client) CheckComputeSourceConnectivity(request *CheckComputeSource
 //
 // @return CheckComputeSourceConnectivityByIdResponse
 func (client *Client) CheckComputeSourceConnectivityByIdWithOptions(request *CheckComputeSourceConnectivityByIdRequest, runtime *dara.RuntimeOptions) (_result *CheckComputeSourceConnectivityByIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -721,9 +814,11 @@ func (client *Client) CheckComputeSourceConnectivityById(request *CheckComputeSo
 //
 // @return CheckDataSourceConnectivityResponse
 func (client *Client) CheckDataSourceConnectivityWithOptions(tmpReq *CheckDataSourceConnectivityRequest, runtime *dara.RuntimeOptions) (_result *CheckDataSourceConnectivityResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CheckDataSourceConnectivityShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -793,9 +888,11 @@ func (client *Client) CheckDataSourceConnectivity(request *CheckDataSourceConnec
 //
 // @return CheckDataSourceConnectivityByIdResponse
 func (client *Client) CheckDataSourceConnectivityByIdWithOptions(request *CheckDataSourceConnectivityByIdRequest, runtime *dara.RuntimeOptions) (_result *CheckDataSourceConnectivityByIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -857,9 +954,11 @@ func (client *Client) CheckDataSourceConnectivityById(request *CheckDataSourceCo
 //
 // @return CheckProjectHasDependencyResponse
 func (client *Client) CheckProjectHasDependencyWithOptions(request *CheckProjectHasDependencyRequest, runtime *dara.RuntimeOptions) (_result *CheckProjectHasDependencyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -921,9 +1020,11 @@ func (client *Client) CheckProjectHasDependency(request *CheckProjectHasDependen
 //
 // @return CheckResourcePermissionResponse
 func (client *Client) CheckResourcePermissionWithOptions(tmpReq *CheckResourcePermissionRequest, runtime *dara.RuntimeOptions) (_result *CheckResourcePermissionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CheckResourcePermissionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -993,9 +1094,11 @@ func (client *Client) CheckResourcePermission(request *CheckResourcePermissionRe
 //
 // @return CreateAdHocFileResponse
 func (client *Client) CreateAdHocFileWithOptions(tmpReq *CreateAdHocFileRequest, runtime *dara.RuntimeOptions) (_result *CreateAdHocFileResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateAdHocFileShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1065,9 +1168,11 @@ func (client *Client) CreateAdHocFile(request *CreateAdHocFileRequest) (_result 
 //
 // @return CreateBatchTaskResponse
 func (client *Client) CreateBatchTaskWithOptions(tmpReq *CreateBatchTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateBatchTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateBatchTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1137,9 +1242,11 @@ func (client *Client) CreateBatchTask(request *CreateBatchTaskRequest) (_result 
 //
 // @return CreateBizEntityResponse
 func (client *Client) CreateBizEntityWithOptions(tmpReq *CreateBizEntityRequest, runtime *dara.RuntimeOptions) (_result *CreateBizEntityResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateBizEntityShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1209,9 +1316,11 @@ func (client *Client) CreateBizEntity(request *CreateBizEntityRequest) (_result 
 //
 // @return CreateBizUnitResponse
 func (client *Client) CreateBizUnitWithOptions(tmpReq *CreateBizUnitRequest, runtime *dara.RuntimeOptions) (_result *CreateBizUnitResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateBizUnitShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1281,9 +1390,11 @@ func (client *Client) CreateBizUnit(request *CreateBizUnitRequest) (_result *Cre
 //
 // @return CreateComputeSourceResponse
 func (client *Client) CreateComputeSourceWithOptions(tmpReq *CreateComputeSourceRequest, runtime *dara.RuntimeOptions) (_result *CreateComputeSourceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateComputeSourceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1353,9 +1464,11 @@ func (client *Client) CreateComputeSource(request *CreateComputeSourceRequest) (
 //
 // @return CreateDataDomainResponse
 func (client *Client) CreateDataDomainWithOptions(tmpReq *CreateDataDomainRequest, runtime *dara.RuntimeOptions) (_result *CreateDataDomainResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDataDomainShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1425,9 +1538,11 @@ func (client *Client) CreateDataDomain(request *CreateDataDomainRequest) (_resul
 //
 // @return CreateDataServiceApiResponse
 func (client *Client) CreateDataServiceApiWithOptions(tmpReq *CreateDataServiceApiRequest, runtime *dara.RuntimeOptions) (_result *CreateDataServiceApiResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDataServiceApiShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1497,9 +1612,11 @@ func (client *Client) CreateDataServiceApi(request *CreateDataServiceApiRequest)
 //
 // @return CreateDataSourceResponse
 func (client *Client) CreateDataSourceWithOptions(tmpReq *CreateDataSourceRequest, runtime *dara.RuntimeOptions) (_result *CreateDataSourceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDataSourceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1569,9 +1686,11 @@ func (client *Client) CreateDataSource(request *CreateDataSourceRequest) (_resul
 //
 // @return CreateDirectoryResponse
 func (client *Client) CreateDirectoryWithOptions(tmpReq *CreateDirectoryRequest, runtime *dara.RuntimeOptions) (_result *CreateDirectoryResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDirectoryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1641,9 +1760,11 @@ func (client *Client) CreateDirectory(request *CreateDirectoryRequest) (_result 
 //
 // @return CreateNodeSupplementResponse
 func (client *Client) CreateNodeSupplementWithOptions(tmpReq *CreateNodeSupplementRequest, runtime *dara.RuntimeOptions) (_result *CreateNodeSupplementResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateNodeSupplementShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1709,6 +1830,170 @@ func (client *Client) CreateNodeSupplement(request *CreateNodeSupplementRequest)
 
 // Summary:
 //
+// 创建集成管道任务。
+//
+// @param tmpReq - CreatePipelineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePipelineResponse
+func (client *Client) CreatePipelineWithOptions(tmpReq *CreatePipelineRequest, runtime *dara.RuntimeOptions) (_result *CreatePipelineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreatePipelineShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Context) {
+		request.ContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Context, dara.String("Context"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContextShrink) {
+		body["Context"] = request.ContextShrink
+	}
+
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePipeline"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建集成管道任务。
+//
+// @param request - CreatePipelineRequest
+//
+// @return CreatePipelineResponse
+func (client *Client) CreatePipeline(request *CreatePipelineRequest) (_result *CreatePipelineResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreatePipelineResponse{}
+	_body, _err := client.CreatePipelineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 异步创建集成管道任务。
+//
+// @param tmpReq - CreatePipelineByAsyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePipelineByAsyncResponse
+func (client *Client) CreatePipelineByAsyncWithOptions(tmpReq *CreatePipelineByAsyncRequest, runtime *dara.RuntimeOptions) (_result *CreatePipelineByAsyncResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreatePipelineByAsyncShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Context) {
+		request.ContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Context, dara.String("Context"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContextShrink) {
+		body["Context"] = request.ContextShrink
+	}
+
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePipelineByAsync"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePipelineByAsyncResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 异步创建集成管道任务。
+//
+// @param request - CreatePipelineByAsyncRequest
+//
+// @return CreatePipelineByAsyncResponse
+func (client *Client) CreatePipelineByAsync(request *CreatePipelineByAsyncRequest) (_result *CreatePipelineByAsyncResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreatePipelineByAsyncResponse{}
+	_body, _err := client.CreatePipelineByAsyncWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建数据集成任务。
 //
 // @param tmpReq - CreatePipelineNodeRequest
@@ -1717,9 +2002,11 @@ func (client *Client) CreateNodeSupplement(request *CreateNodeSupplementRequest)
 //
 // @return CreatePipelineNodeResponse
 func (client *Client) CreatePipelineNodeWithOptions(tmpReq *CreatePipelineNodeRequest, runtime *dara.RuntimeOptions) (_result *CreatePipelineNodeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreatePipelineNodeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1789,9 +2076,11 @@ func (client *Client) CreatePipelineNode(request *CreatePipelineNodeRequest) (_r
 //
 // @return CreateResourceResponse
 func (client *Client) CreateResourceWithOptions(tmpReq *CreateResourceRequest, runtime *dara.RuntimeOptions) (_result *CreateResourceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateResourceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1861,9 +2150,11 @@ func (client *Client) CreateResource(request *CreateResourceRequest) (_result *C
 //
 // @return CreateRowPermissionResponse
 func (client *Client) CreateRowPermissionWithOptions(tmpReq *CreateRowPermissionRequest, runtime *dara.RuntimeOptions) (_result *CreateRowPermissionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateRowPermissionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1933,9 +2224,11 @@ func (client *Client) CreateRowPermission(request *CreateRowPermissionRequest) (
 //
 // @return CreateStreamBatchJobMappingResponse
 func (client *Client) CreateStreamBatchJobMappingWithOptions(tmpReq *CreateStreamBatchJobMappingRequest, runtime *dara.RuntimeOptions) (_result *CreateStreamBatchJobMappingResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateStreamBatchJobMappingShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2005,9 +2298,11 @@ func (client *Client) CreateStreamBatchJobMapping(request *CreateStreamBatchJobM
 //
 // @return CreateUdfResponse
 func (client *Client) CreateUdfWithOptions(tmpReq *CreateUdfRequest, runtime *dara.RuntimeOptions) (_result *CreateUdfResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateUdfShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2077,9 +2372,11 @@ func (client *Client) CreateUdf(request *CreateUdfRequest) (_result *CreateUdfRe
 //
 // @return CreateUserGroupResponse
 func (client *Client) CreateUserGroupWithOptions(tmpReq *CreateUserGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateUserGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateUserGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2149,9 +2446,11 @@ func (client *Client) CreateUserGroup(request *CreateUserGroupRequest) (_result 
 //
 // @return DeleteAdHocFileResponse
 func (client *Client) DeleteAdHocFileWithOptions(request *DeleteAdHocFileRequest, runtime *dara.RuntimeOptions) (_result *DeleteAdHocFileResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileId) {
@@ -2217,9 +2516,11 @@ func (client *Client) DeleteAdHocFile(request *DeleteAdHocFileRequest) (_result 
 //
 // @return DeleteBatchTaskResponse
 func (client *Client) DeleteBatchTaskWithOptions(tmpReq *DeleteBatchTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteBatchTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteBatchTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2289,9 +2590,11 @@ func (client *Client) DeleteBatchTask(request *DeleteBatchTaskRequest) (_result 
 //
 // @return DeleteBizEntityResponse
 func (client *Client) DeleteBizEntityWithOptions(request *DeleteBizEntityRequest, runtime *dara.RuntimeOptions) (_result *DeleteBizEntityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizUnitId) {
@@ -2361,9 +2664,11 @@ func (client *Client) DeleteBizEntity(request *DeleteBizEntityRequest) (_result 
 //
 // @return DeleteBizUnitResponse
 func (client *Client) DeleteBizUnitWithOptions(request *DeleteBizUnitRequest, runtime *dara.RuntimeOptions) (_result *DeleteBizUnitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -2425,9 +2730,11 @@ func (client *Client) DeleteBizUnit(request *DeleteBizUnitRequest) (_result *Del
 //
 // @return DeleteComputeSourceResponse
 func (client *Client) DeleteComputeSourceWithOptions(request *DeleteComputeSourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteComputeSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -2489,9 +2796,11 @@ func (client *Client) DeleteComputeSource(request *DeleteComputeSourceRequest) (
 //
 // @return DeleteDataDomainResponse
 func (client *Client) DeleteDataDomainWithOptions(request *DeleteDataDomainRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizUnitId) {
@@ -2557,9 +2866,11 @@ func (client *Client) DeleteDataDomain(request *DeleteDataDomainRequest) (_resul
 //
 // @return DeleteDataSourceResponse
 func (client *Client) DeleteDataSourceWithOptions(tmpReq *DeleteDataSourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataSourceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteDataSourceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2629,9 +2940,11 @@ func (client *Client) DeleteDataSource(request *DeleteDataSourceRequest) (_resul
 //
 // @return DeleteDirectoryResponse
 func (client *Client) DeleteDirectoryWithOptions(request *DeleteDirectoryRequest, runtime *dara.RuntimeOptions) (_result *DeleteDirectoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileId) {
@@ -2689,6 +3002,80 @@ func (client *Client) DeleteDirectory(request *DeleteDirectoryRequest) (_result 
 
 // Summary:
 //
+// 删除注册血缘。
+//
+// @param tmpReq - DeleteRegisterLineageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRegisterLineageResponse
+func (client *Client) DeleteRegisterLineageWithOptions(tmpReq *DeleteRegisterLineageRequest, runtime *dara.RuntimeOptions) (_result *DeleteRegisterLineageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteRegisterLineageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DeleteRegisterLineageCommand) {
+		request.DeleteRegisterLineageCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeleteRegisterLineageCommand, dara.String("DeleteRegisterLineageCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DeleteRegisterLineageCommandShrink) {
+		body["DeleteRegisterLineageCommand"] = request.DeleteRegisterLineageCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteRegisterLineage"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteRegisterLineageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除注册血缘。
+//
+// @param request - DeleteRegisterLineageRequest
+//
+// @return DeleteRegisterLineageResponse
+func (client *Client) DeleteRegisterLineage(request *DeleteRegisterLineageRequest) (_result *DeleteRegisterLineageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteRegisterLineageResponse{}
+	_body, _err := client.DeleteRegisterLineageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除资源文件。
 //
 // @param request - DeleteResourceRequest
@@ -2697,9 +3084,11 @@ func (client *Client) DeleteDirectory(request *DeleteDirectoryRequest) (_result 
 //
 // @return DeleteResourceResponse
 func (client *Client) DeleteResourceWithOptions(request *DeleteResourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Comment) {
@@ -2769,9 +3158,11 @@ func (client *Client) DeleteResource(request *DeleteResourceRequest) (_result *D
 //
 // @return DeleteRowPermissionResponse
 func (client *Client) DeleteRowPermissionWithOptions(tmpReq *DeleteRowPermissionRequest, runtime *dara.RuntimeOptions) (_result *DeleteRowPermissionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteRowPermissionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2841,9 +3232,11 @@ func (client *Client) DeleteRowPermission(request *DeleteRowPermissionRequest) (
 //
 // @return DeleteUdfResponse
 func (client *Client) DeleteUdfWithOptions(request *DeleteUdfRequest, runtime *dara.RuntimeOptions) (_result *DeleteUdfResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Comment) {
@@ -2913,9 +3306,11 @@ func (client *Client) DeleteUdf(request *DeleteUdfRequest) (_result *DeleteUdfRe
 //
 // @return DeleteUserGroupResponse
 func (client *Client) DeleteUserGroupWithOptions(request *DeleteUserGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteUserGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
@@ -2977,9 +3372,11 @@ func (client *Client) DeleteUserGroup(request *DeleteUserGroupRequest) (_result 
 //
 // @return ExecuteAdHocTaskResponse
 func (client *Client) ExecuteAdHocTaskWithOptions(tmpReq *ExecuteAdHocTaskRequest, runtime *dara.RuntimeOptions) (_result *ExecuteAdHocTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ExecuteAdHocTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3049,9 +3446,11 @@ func (client *Client) ExecuteAdHocTask(request *ExecuteAdHocTaskRequest) (_resul
 //
 // @return ExecuteManualNodeResponse
 func (client *Client) ExecuteManualNodeWithOptions(tmpReq *ExecuteManualNodeRequest, runtime *dara.RuntimeOptions) (_result *ExecuteManualNodeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ExecuteManualNodeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3125,9 +3524,11 @@ func (client *Client) ExecuteManualNode(request *ExecuteManualNodeRequest) (_res
 //
 // @return FixDataResponse
 func (client *Client) FixDataWithOptions(tmpReq *FixDataRequest, runtime *dara.RuntimeOptions) (_result *FixDataResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FixDataShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3201,9 +3602,11 @@ func (client *Client) FixData(request *FixDataRequest) (_result *FixDataResponse
 //
 // @return GetAccountByRowPermissionIdResponse
 func (client *Client) GetAccountByRowPermissionIdWithOptions(tmpReq *GetAccountByRowPermissionIdRequest, runtime *dara.RuntimeOptions) (_result *GetAccountByRowPermissionIdResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetAccountByRowPermissionIdShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3273,9 +3676,11 @@ func (client *Client) GetAccountByRowPermissionId(request *GetAccountByRowPermis
 //
 // @return GetAdHocFileResponse
 func (client *Client) GetAdHocFileWithOptions(request *GetAdHocFileRequest, runtime *dara.RuntimeOptions) (_result *GetAdHocFileResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileId) {
@@ -3341,9 +3746,11 @@ func (client *Client) GetAdHocFile(request *GetAdHocFileRequest) (_result *GetAd
 //
 // @return GetAdHocTaskLogResponse
 func (client *Client) GetAdHocTaskLogWithOptions(request *GetAdHocTaskLogRequest, runtime *dara.RuntimeOptions) (_result *GetAdHocTaskLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Offset) {
@@ -3417,9 +3824,11 @@ func (client *Client) GetAdHocTaskLog(request *GetAdHocTaskLogRequest) (_result 
 //
 // @return GetAdHocTaskResultResponse
 func (client *Client) GetAdHocTaskResultWithOptions(request *GetAdHocTaskResultRequest, runtime *dara.RuntimeOptions) (_result *GetAdHocTaskResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
@@ -3489,9 +3898,11 @@ func (client *Client) GetAdHocTaskResult(request *GetAdHocTaskResultRequest) (_r
 //
 // @return GetAlertEventResponse
 func (client *Client) GetAlertEventWithOptions(request *GetAlertEventRequest, runtime *dara.RuntimeOptions) (_result *GetAlertEventResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -3553,9 +3964,11 @@ func (client *Client) GetAlertEvent(request *GetAlertEventRequest) (_result *Get
 //
 // @return GetBatchTaskInfoResponse
 func (client *Client) GetBatchTaskInfoWithOptions(request *GetBatchTaskInfoRequest, runtime *dara.RuntimeOptions) (_result *GetBatchTaskInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Env) {
@@ -3629,9 +4042,11 @@ func (client *Client) GetBatchTaskInfo(request *GetBatchTaskInfoRequest) (_resul
 //
 // @return GetBatchTaskInfoByVersionResponse
 func (client *Client) GetBatchTaskInfoByVersionWithOptions(request *GetBatchTaskInfoByVersionRequest, runtime *dara.RuntimeOptions) (_result *GetBatchTaskInfoByVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileId) {
@@ -3701,9 +4116,11 @@ func (client *Client) GetBatchTaskInfoByVersion(request *GetBatchTaskInfoByVersi
 //
 // @return GetBatchTaskUdfLineagesResponse
 func (client *Client) GetBatchTaskUdfLineagesWithOptions(request *GetBatchTaskUdfLineagesRequest, runtime *dara.RuntimeOptions) (_result *GetBatchTaskUdfLineagesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileId) {
@@ -3769,9 +4186,11 @@ func (client *Client) GetBatchTaskUdfLineages(request *GetBatchTaskUdfLineagesRe
 //
 // @return GetBatchTaskVersionsResponse
 func (client *Client) GetBatchTaskVersionsWithOptions(request *GetBatchTaskVersionsRequest, runtime *dara.RuntimeOptions) (_result *GetBatchTaskVersionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileId) {
@@ -3837,9 +4256,11 @@ func (client *Client) GetBatchTaskVersions(request *GetBatchTaskVersionsRequest)
 //
 // @return GetBizEntityInfoResponse
 func (client *Client) GetBizEntityInfoWithOptions(request *GetBizEntityInfoRequest, runtime *dara.RuntimeOptions) (_result *GetBizEntityInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -3905,9 +4326,11 @@ func (client *Client) GetBizEntityInfo(request *GetBizEntityInfoRequest) (_resul
 //
 // @return GetBizEntityInfoByVersionResponse
 func (client *Client) GetBizEntityInfoByVersionWithOptions(request *GetBizEntityInfoByVersionRequest, runtime *dara.RuntimeOptions) (_result *GetBizEntityInfoByVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -3977,9 +4400,11 @@ func (client *Client) GetBizEntityInfoByVersion(request *GetBizEntityInfoByVersi
 //
 // @return GetBizUnitInfoResponse
 func (client *Client) GetBizUnitInfoWithOptions(request *GetBizUnitInfoRequest, runtime *dara.RuntimeOptions) (_result *GetBizUnitInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -4041,9 +4466,11 @@ func (client *Client) GetBizUnitInfo(request *GetBizUnitInfoRequest) (_result *G
 //
 // @return GetClusterQueueInfoByEnvResponse
 func (client *Client) GetClusterQueueInfoByEnvWithOptions(request *GetClusterQueueInfoByEnvRequest, runtime *dara.RuntimeOptions) (_result *GetClusterQueueInfoByEnvResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Env) {
@@ -4113,9 +4540,11 @@ func (client *Client) GetClusterQueueInfoByEnv(request *GetClusterQueueInfoByEnv
 //
 // @return GetComputeSourceResponse
 func (client *Client) GetComputeSourceWithOptions(request *GetComputeSourceRequest, runtime *dara.RuntimeOptions) (_result *GetComputeSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -4177,9 +4606,11 @@ func (client *Client) GetComputeSource(request *GetComputeSourceRequest) (_resul
 //
 // @return GetDataDomainInfoResponse
 func (client *Client) GetDataDomainInfoWithOptions(request *GetDataDomainInfoRequest, runtime *dara.RuntimeOptions) (_result *GetDataDomainInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -4241,9 +4672,11 @@ func (client *Client) GetDataDomainInfo(request *GetDataDomainInfoRequest) (_res
 //
 // @return GetDataServiceApiCallSummaryResponse
 func (client *Client) GetDataServiceApiCallSummaryWithOptions(request *GetDataServiceApiCallSummaryRequest, runtime *dara.RuntimeOptions) (_result *GetDataServiceApiCallSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -4313,9 +4746,11 @@ func (client *Client) GetDataServiceApiCallSummary(request *GetDataServiceApiCal
 //
 // @return GetDataServiceApiCallTrendResponse
 func (client *Client) GetDataServiceApiCallTrendWithOptions(request *GetDataServiceApiCallTrendRequest, runtime *dara.RuntimeOptions) (_result *GetDataServiceApiCallTrendResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -4385,9 +4820,11 @@ func (client *Client) GetDataServiceApiCallTrend(request *GetDataServiceApiCallT
 //
 // @return GetDataServiceApiDocumentResponse
 func (client *Client) GetDataServiceApiDocumentWithOptions(request *GetDataServiceApiDocumentRequest, runtime *dara.RuntimeOptions) (_result *GetDataServiceApiDocumentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -4453,9 +4890,11 @@ func (client *Client) GetDataServiceApiDocument(request *GetDataServiceApiDocume
 //
 // @return GetDataServiceApiErrorImpactResponse
 func (client *Client) GetDataServiceApiErrorImpactWithOptions(request *GetDataServiceApiErrorImpactRequest, runtime *dara.RuntimeOptions) (_result *GetDataServiceApiErrorImpactResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -4525,9 +4964,11 @@ func (client *Client) GetDataServiceApiErrorImpact(request *GetDataServiceApiErr
 //
 // @return GetDataServiceApiGroupsResponse
 func (client *Client) GetDataServiceApiGroupsWithOptions(request *GetDataServiceApiGroupsRequest, runtime *dara.RuntimeOptions) (_result *GetDataServiceApiGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
@@ -4589,9 +5030,11 @@ func (client *Client) GetDataServiceApiGroups(request *GetDataServiceApiGroupsRe
 //
 // @return GetDataServiceAppAuthorizedUsersResponse
 func (client *Client) GetDataServiceAppAuthorizedUsersWithOptions(request *GetDataServiceAppAuthorizedUsersRequest, runtime *dara.RuntimeOptions) (_result *GetDataServiceAppAuthorizedUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4657,9 +5100,11 @@ func (client *Client) GetDataServiceAppAuthorizedUsers(request *GetDataServiceAp
 //
 // @return GetDataServiceAppGroupsResponse
 func (client *Client) GetDataServiceAppGroupsWithOptions(request *GetDataServiceAppGroupsRequest, runtime *dara.RuntimeOptions) (_result *GetDataServiceAppGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
@@ -4721,9 +5166,11 @@ func (client *Client) GetDataServiceAppGroups(request *GetDataServiceAppGroupsRe
 //
 // @return GetDataServiceAppsByGroupIdResponse
 func (client *Client) GetDataServiceAppsByGroupIdWithOptions(request *GetDataServiceAppsByGroupIdRequest, runtime *dara.RuntimeOptions) (_result *GetDataServiceAppsByGroupIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -4789,9 +5236,11 @@ func (client *Client) GetDataServiceAppsByGroupId(request *GetDataServiceAppsByG
 //
 // @return GetDataServiceAuthorizedAppsByGroupIdResponse
 func (client *Client) GetDataServiceAuthorizedAppsByGroupIdWithOptions(request *GetDataServiceAuthorizedAppsByGroupIdRequest, runtime *dara.RuntimeOptions) (_result *GetDataServiceAuthorizedAppsByGroupIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -4857,9 +5306,11 @@ func (client *Client) GetDataServiceAuthorizedAppsByGroupId(request *GetDataServ
 //
 // @return GetDataServiceAuthorizedProjectsResponse
 func (client *Client) GetDataServiceAuthorizedProjectsWithOptions(request *GetDataServiceAuthorizedProjectsRequest, runtime *dara.RuntimeOptions) (_result *GetDataServiceAuthorizedProjectsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
@@ -4917,9 +5368,11 @@ func (client *Client) GetDataServiceAuthorizedProjects(request *GetDataServiceAu
 //
 // @return GetDataServiceMyProjectsResponse
 func (client *Client) GetDataServiceMyProjectsWithOptions(request *GetDataServiceMyProjectsRequest, runtime *dara.RuntimeOptions) (_result *GetDataServiceMyProjectsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
@@ -4977,9 +5430,11 @@ func (client *Client) GetDataServiceMyProjects(request *GetDataServiceMyProjects
 //
 // @return GetDataServiceProjectAddableUsersResponse
 func (client *Client) GetDataServiceProjectAddableUsersWithOptions(request *GetDataServiceProjectAddableUsersRequest, runtime *dara.RuntimeOptions) (_result *GetDataServiceProjectAddableUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
@@ -5041,9 +5496,11 @@ func (client *Client) GetDataServiceProjectAddableUsers(request *GetDataServiceP
 //
 // @return GetDataSourceDependenciesResponse
 func (client *Client) GetDataSourceDependenciesWithOptions(request *GetDataSourceDependenciesRequest, runtime *dara.RuntimeOptions) (_result *GetDataSourceDependenciesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -5105,9 +5562,11 @@ func (client *Client) GetDataSourceDependencies(request *GetDataSourceDependenci
 //
 // @return GetDevObjectDependencyResponse
 func (client *Client) GetDevObjectDependencyWithOptions(request *GetDevObjectDependencyRequest, runtime *dara.RuntimeOptions) (_result *GetDevObjectDependencyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ObjectFrom) {
@@ -5181,9 +5640,11 @@ func (client *Client) GetDevObjectDependency(request *GetDevObjectDependencyRequ
 //
 // @return GetDirectoryTreeResponse
 func (client *Client) GetDirectoryTreeWithOptions(request *GetDirectoryTreeRequest, runtime *dara.RuntimeOptions) (_result *GetDirectoryTreeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Category) {
@@ -5249,9 +5710,11 @@ func (client *Client) GetDirectoryTree(request *GetDirectoryTreeRequest) (_resul
 //
 // @return GetFileStorageCredentialResponse
 func (client *Client) GetFileStorageCredentialWithOptions(request *GetFileStorageCredentialRequest, runtime *dara.RuntimeOptions) (_result *GetFileStorageCredentialResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
@@ -5321,9 +5784,11 @@ func (client *Client) GetFileStorageCredential(request *GetFileStorageCredential
 //
 // @return GetInstanceDownStreamResponse
 func (client *Client) GetInstanceDownStreamWithOptions(tmpReq *GetInstanceDownStreamRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceDownStreamResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetInstanceDownStreamShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5405,9 +5870,11 @@ func (client *Client) GetInstanceDownStream(request *GetInstanceDownStreamReques
 //
 // @return GetInstanceUpDownStreamResponse
 func (client *Client) GetInstanceUpDownStreamWithOptions(tmpReq *GetInstanceUpDownStreamRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceUpDownStreamResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetInstanceUpDownStreamShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5493,9 +5960,11 @@ func (client *Client) GetInstanceUpDownStream(request *GetInstanceUpDownStreamRe
 //
 // @return GetLatestSubmitDetailResponse
 func (client *Client) GetLatestSubmitDetailWithOptions(tmpReq *GetLatestSubmitDetailRequest, runtime *dara.RuntimeOptions) (_result *GetLatestSubmitDetailResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetLatestSubmitDetailShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5565,9 +6034,11 @@ func (client *Client) GetLatestSubmitDetail(request *GetLatestSubmitDetailReques
 //
 // @return GetMyRolesResponse
 func (client *Client) GetMyRolesWithOptions(request *GetMyRolesRequest, runtime *dara.RuntimeOptions) (_result *GetMyRolesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
@@ -5625,9 +6096,11 @@ func (client *Client) GetMyRoles(request *GetMyRolesRequest) (_result *GetMyRole
 //
 // @return GetMyTenantsResponse
 func (client *Client) GetMyTenantsWithOptions(tmpReq *GetMyTenantsRequest, runtime *dara.RuntimeOptions) (_result *GetMyTenantsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetMyTenantsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5697,9 +6170,11 @@ func (client *Client) GetMyTenants(request *GetMyTenantsRequest) (_result *GetMy
 //
 // @return GetNodeUpDownStreamResponse
 func (client *Client) GetNodeUpDownStreamWithOptions(tmpReq *GetNodeUpDownStreamRequest, runtime *dara.RuntimeOptions) (_result *GetNodeUpDownStreamResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetNodeUpDownStreamShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5785,9 +6260,11 @@ func (client *Client) GetNodeUpDownStream(request *GetNodeUpDownStreamRequest) (
 //
 // @return GetOperationSubmitStatusResponse
 func (client *Client) GetOperationSubmitStatusWithOptions(request *GetOperationSubmitStatusRequest, runtime *dara.RuntimeOptions) (_result *GetOperationSubmitStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Env) {
@@ -5853,9 +6330,11 @@ func (client *Client) GetOperationSubmitStatus(request *GetOperationSubmitStatus
 //
 // @return GetPhysicalInstanceResponse
 func (client *Client) GetPhysicalInstanceWithOptions(request *GetPhysicalInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetPhysicalInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Env) {
@@ -5925,9 +6404,11 @@ func (client *Client) GetPhysicalInstance(request *GetPhysicalInstanceRequest) (
 //
 // @return GetPhysicalInstanceLogResponse
 func (client *Client) GetPhysicalInstanceLogWithOptions(request *GetPhysicalInstanceLogRequest, runtime *dara.RuntimeOptions) (_result *GetPhysicalInstanceLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Env) {
@@ -5997,9 +6478,11 @@ func (client *Client) GetPhysicalInstanceLog(request *GetPhysicalInstanceLogRequ
 //
 // @return GetPhysicalNodeResponse
 func (client *Client) GetPhysicalNodeWithOptions(request *GetPhysicalNodeRequest, runtime *dara.RuntimeOptions) (_result *GetPhysicalNodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Env) {
@@ -6065,9 +6548,11 @@ func (client *Client) GetPhysicalNode(request *GetPhysicalNodeRequest) (_result 
 //
 // @return GetPhysicalNodeByOutputNameResponse
 func (client *Client) GetPhysicalNodeByOutputNameWithOptions(request *GetPhysicalNodeByOutputNameRequest, runtime *dara.RuntimeOptions) (_result *GetPhysicalNodeByOutputNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Env) {
@@ -6133,9 +6618,11 @@ func (client *Client) GetPhysicalNodeByOutputName(request *GetPhysicalNodeByOutp
 //
 // @return GetPhysicalNodeContentResponse
 func (client *Client) GetPhysicalNodeContentWithOptions(request *GetPhysicalNodeContentRequest, runtime *dara.RuntimeOptions) (_result *GetPhysicalNodeContentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Env) {
@@ -6201,9 +6688,11 @@ func (client *Client) GetPhysicalNodeContent(request *GetPhysicalNodeContentRequ
 //
 // @return GetPhysicalNodeOperationLogResponse
 func (client *Client) GetPhysicalNodeOperationLogWithOptions(request *GetPhysicalNodeOperationLogRequest, runtime *dara.RuntimeOptions) (_result *GetPhysicalNodeOperationLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Env) {
@@ -6261,6 +6750,166 @@ func (client *Client) GetPhysicalNodeOperationLog(request *GetPhysicalNodeOperat
 
 // Summary:
 //
+// 查询异步操作管道任务的执行结果。
+//
+// @param tmpReq - GetPipelineAsyncResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPipelineAsyncResultResponse
+func (client *Client) GetPipelineAsyncResultWithOptions(tmpReq *GetPipelineAsyncResultRequest, runtime *dara.RuntimeOptions) (_result *GetPipelineAsyncResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetPipelineAsyncResultShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Context) {
+		request.ContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Context, dara.String("Context"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AsyncId) {
+		query["AsyncId"] = request.AsyncId
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContextShrink) {
+		body["Context"] = request.ContextShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPipelineAsyncResult"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPipelineAsyncResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询异步操作管道任务的执行结果。
+//
+// @param request - GetPipelineAsyncResultRequest
+//
+// @return GetPipelineAsyncResultResponse
+func (client *Client) GetPipelineAsyncResult(request *GetPipelineAsyncResultRequest) (_result *GetPipelineAsyncResultResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetPipelineAsyncResultResponse{}
+	_body, _err := client.GetPipelineAsyncResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据管道任务id查询管道任务。
+//
+// @param tmpReq - GetPipelineByIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPipelineByIdResponse
+func (client *Client) GetPipelineByIdWithOptions(tmpReq *GetPipelineByIdRequest, runtime *dara.RuntimeOptions) (_result *GetPipelineByIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetPipelineByIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Context) {
+		request.ContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Context, dara.String("Context"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.QueryId) {
+		request.QueryIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryId, dara.String("QueryId"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContextShrink) {
+		body["Context"] = request.ContextShrink
+	}
+
+	if !dara.IsNil(request.QueryIdShrink) {
+		body["QueryId"] = request.QueryIdShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPipelineById"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPipelineByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据管道任务id查询管道任务。
+//
+// @param request - GetPipelineByIdRequest
+//
+// @return GetPipelineByIdResponse
+func (client *Client) GetPipelineById(request *GetPipelineByIdRequest) (_result *GetPipelineByIdResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetPipelineByIdResponse{}
+	_body, _err := client.GetPipelineByIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取项目详情。
 //
 // @param request - GetProjectRequest
@@ -6269,9 +6918,11 @@ func (client *Client) GetPhysicalNodeOperationLog(request *GetPhysicalNodeOperat
 //
 // @return GetProjectResponse
 func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime *dara.RuntimeOptions) (_result *GetProjectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Env) {
@@ -6337,9 +6988,11 @@ func (client *Client) GetProject(request *GetProjectRequest) (_result *GetProjec
 //
 // @return GetProjectByNameResponse
 func (client *Client) GetProjectByNameWithOptions(request *GetProjectByNameRequest, runtime *dara.RuntimeOptions) (_result *GetProjectByNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -6401,9 +7054,11 @@ func (client *Client) GetProjectByName(request *GetProjectByNameRequest) (_resul
 //
 // @return GetProjectProduceUserResponse
 func (client *Client) GetProjectProduceUserWithOptions(request *GetProjectProduceUserRequest, runtime *dara.RuntimeOptions) (_result *GetProjectProduceUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
@@ -6465,9 +7120,11 @@ func (client *Client) GetProjectProduceUser(request *GetProjectProduceUserReques
 //
 // @return GetProjectWhiteListsResponse
 func (client *Client) GetProjectWhiteListsWithOptions(request *GetProjectWhiteListsRequest, runtime *dara.RuntimeOptions) (_result *GetProjectWhiteListsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -6529,9 +7186,11 @@ func (client *Client) GetProjectWhiteLists(request *GetProjectWhiteListsRequest)
 //
 // @return GetQueueEngineVersionByEnvResponse
 func (client *Client) GetQueueEngineVersionByEnvWithOptions(request *GetQueueEngineVersionByEnvRequest, runtime *dara.RuntimeOptions) (_result *GetQueueEngineVersionByEnvResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
@@ -6609,9 +7268,11 @@ func (client *Client) GetQueueEngineVersionByEnv(request *GetQueueEngineVersionB
 //
 // @return GetResourceResponse
 func (client *Client) GetResourceWithOptions(request *GetResourceRequest, runtime *dara.RuntimeOptions) (_result *GetResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -6677,9 +7338,11 @@ func (client *Client) GetResource(request *GetResourceRequest) (_result *GetReso
 //
 // @return GetResourceByVersionResponse
 func (client *Client) GetResourceByVersionWithOptions(request *GetResourceByVersionRequest, runtime *dara.RuntimeOptions) (_result *GetResourceByVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -6749,9 +7412,11 @@ func (client *Client) GetResourceByVersion(request *GetResourceByVersionRequest)
 //
 // @return GetSparkLocalClientInfoResponse
 func (client *Client) GetSparkLocalClientInfoWithOptions(request *GetSparkLocalClientInfoRequest, runtime *dara.RuntimeOptions) (_result *GetSparkLocalClientInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EnvEnum) {
@@ -6817,9 +7482,11 @@ func (client *Client) GetSparkLocalClientInfo(request *GetSparkLocalClientInfoRe
 //
 // @return GetStreamJobsResponse
 func (client *Client) GetStreamJobsWithOptions(request *GetStreamJobsRequest, runtime *dara.RuntimeOptions) (_result *GetStreamJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Env) {
@@ -6885,9 +7552,11 @@ func (client *Client) GetStreamJobs(request *GetStreamJobsRequest) (_result *Get
 //
 // @return GetSupplementDagrunResponse
 func (client *Client) GetSupplementDagrunWithOptions(request *GetSupplementDagrunRequest, runtime *dara.RuntimeOptions) (_result *GetSupplementDagrunResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Env) {
@@ -6953,9 +7622,11 @@ func (client *Client) GetSupplementDagrun(request *GetSupplementDagrunRequest) (
 //
 // @return GetSupplementDagrunInstanceResponse
 func (client *Client) GetSupplementDagrunInstanceWithOptions(request *GetSupplementDagrunInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetSupplementDagrunInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DagrunId) {
@@ -7021,9 +7692,11 @@ func (client *Client) GetSupplementDagrunInstance(request *GetSupplementDagrunIn
 //
 // @return GetTableColumnLineageByTaskIdResponse
 func (client *Client) GetTableColumnLineageByTaskIdWithOptions(tmpReq *GetTableColumnLineageByTaskIdRequest, runtime *dara.RuntimeOptions) (_result *GetTableColumnLineageByTaskIdResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetTableColumnLineageByTaskIdShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7093,9 +7766,11 @@ func (client *Client) GetTableColumnLineageByTaskId(request *GetTableColumnLinea
 //
 // @return GetTableLineageByTaskIdResponse
 func (client *Client) GetTableLineageByTaskIdWithOptions(tmpReq *GetTableLineageByTaskIdRequest, runtime *dara.RuntimeOptions) (_result *GetTableLineageByTaskIdResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetTableLineageByTaskIdShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7165,9 +7840,11 @@ func (client *Client) GetTableLineageByTaskId(request *GetTableLineageByTaskIdRe
 //
 // @return GetTransferInfoResponse
 func (client *Client) GetTransferInfoWithOptions(request *GetTransferInfoRequest, runtime *dara.RuntimeOptions) (_result *GetTransferInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
@@ -7229,9 +7906,11 @@ func (client *Client) GetTransferInfo(request *GetTransferInfoRequest) (_result 
 //
 // @return GetUdfResponse
 func (client *Client) GetUdfWithOptions(request *GetUdfRequest, runtime *dara.RuntimeOptions) (_result *GetUdfResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -7297,9 +7976,11 @@ func (client *Client) GetUdf(request *GetUdfRequest) (_result *GetUdfResponse, _
 //
 // @return GetUdfByVersionResponse
 func (client *Client) GetUdfByVersionWithOptions(request *GetUdfByVersionRequest, runtime *dara.RuntimeOptions) (_result *GetUdfByVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -7369,9 +8050,11 @@ func (client *Client) GetUdfByVersion(request *GetUdfByVersionRequest) (_result 
 //
 // @return GetUserBySourceIdResponse
 func (client *Client) GetUserBySourceIdWithOptions(request *GetUserBySourceIdRequest, runtime *dara.RuntimeOptions) (_result *GetUserBySourceIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
@@ -7433,9 +8116,11 @@ func (client *Client) GetUserBySourceId(request *GetUserBySourceIdRequest) (_res
 //
 // @return GetUserGroupResponse
 func (client *Client) GetUserGroupWithOptions(request *GetUserGroupRequest, runtime *dara.RuntimeOptions) (_result *GetUserGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
@@ -7497,9 +8182,11 @@ func (client *Client) GetUserGroup(request *GetUserGroupRequest) (_result *GetUs
 //
 // @return GetUsersResponse
 func (client *Client) GetUsersWithOptions(tmpReq *GetUsersRequest, runtime *dara.RuntimeOptions) (_result *GetUsersResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetUsersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7569,9 +8256,11 @@ func (client *Client) GetUsers(request *GetUsersRequest) (_result *GetUsersRespo
 //
 // @return GrantDataServiceApiResponse
 func (client *Client) GrantDataServiceApiWithOptions(tmpReq *GrantDataServiceApiRequest, runtime *dara.RuntimeOptions) (_result *GrantDataServiceApiResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GrantDataServiceApiShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7645,9 +8334,11 @@ func (client *Client) GrantDataServiceApi(request *GrantDataServiceApiRequest) (
 //
 // @return GrantResourcePermissionResponse
 func (client *Client) GrantResourcePermissionWithOptions(tmpReq *GrantResourcePermissionRequest, runtime *dara.RuntimeOptions) (_result *GrantResourcePermissionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GrantResourcePermissionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7717,9 +8408,11 @@ func (client *Client) GrantResourcePermission(request *GrantResourcePermissionRe
 //
 // @return ListAddableRolesResponse
 func (client *Client) ListAddableRolesWithOptions(request *ListAddableRolesRequest, runtime *dara.RuntimeOptions) (_result *ListAddableRolesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
@@ -7777,9 +8470,11 @@ func (client *Client) ListAddableRoles(request *ListAddableRolesRequest) (_resul
 //
 // @return ListAddableUsersResponse
 func (client *Client) ListAddableUsersWithOptions(tmpReq *ListAddableUsersRequest, runtime *dara.RuntimeOptions) (_result *ListAddableUsersResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListAddableUsersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7849,9 +8544,11 @@ func (client *Client) ListAddableUsers(request *ListAddableUsersRequest) (_resul
 //
 // @return ListAlertEventsResponse
 func (client *Client) ListAlertEventsWithOptions(tmpReq *ListAlertEventsRequest, runtime *dara.RuntimeOptions) (_result *ListAlertEventsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListAlertEventsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7921,9 +8618,11 @@ func (client *Client) ListAlertEvents(request *ListAlertEventsRequest) (_result 
 //
 // @return ListAlertNotificationsResponse
 func (client *Client) ListAlertNotificationsWithOptions(tmpReq *ListAlertNotificationsRequest, runtime *dara.RuntimeOptions) (_result *ListAlertNotificationsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListAlertNotificationsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7993,9 +8692,11 @@ func (client *Client) ListAlertNotifications(request *ListAlertNotificationsRequ
 //
 // @return ListApiByAppResponse
 func (client *Client) ListApiByAppWithOptions(tmpReq *ListApiByAppRequest, runtime *dara.RuntimeOptions) (_result *ListApiByAppResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListApiByAppShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8065,9 +8766,11 @@ func (client *Client) ListApiByApp(request *ListApiByAppRequest) (_result *ListA
 //
 // @return ListAuthorizedDataServiceApiDetailsResponse
 func (client *Client) ListAuthorizedDataServiceApiDetailsWithOptions(tmpReq *ListAuthorizedDataServiceApiDetailsRequest, runtime *dara.RuntimeOptions) (_result *ListAuthorizedDataServiceApiDetailsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListAuthorizedDataServiceApiDetailsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8137,9 +8840,11 @@ func (client *Client) ListAuthorizedDataServiceApiDetails(request *ListAuthorize
 //
 // @return ListBizEntitiesResponse
 func (client *Client) ListBizEntitiesWithOptions(tmpReq *ListBizEntitiesRequest, runtime *dara.RuntimeOptions) (_result *ListBizEntitiesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListBizEntitiesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8209,9 +8914,11 @@ func (client *Client) ListBizEntities(request *ListBizEntitiesRequest) (_result 
 //
 // @return ListBizUnitsResponse
 func (client *Client) ListBizUnitsWithOptions(request *ListBizUnitsRequest, runtime *dara.RuntimeOptions) (_result *ListBizUnitsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
@@ -8269,9 +8976,11 @@ func (client *Client) ListBizUnits(request *ListBizUnitsRequest) (_result *ListB
 //
 // @return ListComputeSourcesResponse
 func (client *Client) ListComputeSourcesWithOptions(tmpReq *ListComputeSourcesRequest, runtime *dara.RuntimeOptions) (_result *ListComputeSourcesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListComputeSourcesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8341,9 +9050,11 @@ func (client *Client) ListComputeSources(request *ListComputeSourcesRequest) (_r
 //
 // @return ListDataDomainsResponse
 func (client *Client) ListDataDomainsWithOptions(tmpReq *ListDataDomainsRequest, runtime *dara.RuntimeOptions) (_result *ListDataDomainsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListDataDomainsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8413,9 +9124,11 @@ func (client *Client) ListDataDomains(request *ListDataDomainsRequest) (_result 
 //
 // @return ListDataServiceApiCallStatisticsResponse
 func (client *Client) ListDataServiceApiCallStatisticsWithOptions(tmpReq *ListDataServiceApiCallStatisticsRequest, runtime *dara.RuntimeOptions) (_result *ListDataServiceApiCallStatisticsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListDataServiceApiCallStatisticsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8489,9 +9202,11 @@ func (client *Client) ListDataServiceApiCallStatistics(request *ListDataServiceA
 //
 // @return ListDataServiceApiCallsResponse
 func (client *Client) ListDataServiceApiCallsWithOptions(tmpReq *ListDataServiceApiCallsRequest, runtime *dara.RuntimeOptions) (_result *ListDataServiceApiCallsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListDataServiceApiCallsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8565,9 +9280,11 @@ func (client *Client) ListDataServiceApiCalls(request *ListDataServiceApiCallsRe
 //
 // @return ListDataServiceApiImpactsResponse
 func (client *Client) ListDataServiceApiImpactsWithOptions(tmpReq *ListDataServiceApiImpactsRequest, runtime *dara.RuntimeOptions) (_result *ListDataServiceApiImpactsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListDataServiceApiImpactsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8641,9 +9358,11 @@ func (client *Client) ListDataServiceApiImpacts(request *ListDataServiceApiImpac
 //
 // @return ListDataServiceAuthorizedAppsResponse
 func (client *Client) ListDataServiceAuthorizedAppsWithOptions(tmpReq *ListDataServiceAuthorizedAppsRequest, runtime *dara.RuntimeOptions) (_result *ListDataServiceAuthorizedAppsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListDataServiceAuthorizedAppsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8717,9 +9436,11 @@ func (client *Client) ListDataServiceAuthorizedApps(request *ListDataServiceAuth
 //
 // @return ListDataServiceMyApiPermissionsResponse
 func (client *Client) ListDataServiceMyApiPermissionsWithOptions(tmpReq *ListDataServiceMyApiPermissionsRequest, runtime *dara.RuntimeOptions) (_result *ListDataServiceMyApiPermissionsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListDataServiceMyApiPermissionsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8793,9 +9514,11 @@ func (client *Client) ListDataServiceMyApiPermissions(request *ListDataServiceMy
 //
 // @return ListDataServiceMyAppPermissionsResponse
 func (client *Client) ListDataServiceMyAppPermissionsWithOptions(tmpReq *ListDataServiceMyAppPermissionsRequest, runtime *dara.RuntimeOptions) (_result *ListDataServiceMyAppPermissionsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListDataServiceMyAppPermissionsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8869,9 +9592,11 @@ func (client *Client) ListDataServiceMyAppPermissions(request *ListDataServiceMy
 //
 // @return ListDataServicePublishedApisResponse
 func (client *Client) ListDataServicePublishedApisWithOptions(tmpReq *ListDataServicePublishedApisRequest, runtime *dara.RuntimeOptions) (_result *ListDataServicePublishedApisResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListDataServicePublishedApisShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8945,9 +9670,11 @@ func (client *Client) ListDataServicePublishedApis(request *ListDataServicePubli
 //
 // @return ListDataSourceWithConfigResponse
 func (client *Client) ListDataSourceWithConfigWithOptions(tmpReq *ListDataSourceWithConfigRequest, runtime *dara.RuntimeOptions) (_result *ListDataSourceWithConfigResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListDataSourceWithConfigShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9017,9 +9744,11 @@ func (client *Client) ListDataSourceWithConfig(request *ListDataSourceWithConfig
 //
 // @return ListFilesResponse
 func (client *Client) ListFilesWithOptions(tmpReq *ListFilesRequest, runtime *dara.RuntimeOptions) (_result *ListFilesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListFilesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9089,9 +9818,11 @@ func (client *Client) ListFiles(request *ListFilesRequest) (_result *ListFilesRe
 //
 // @return ListInstancesResponse
 func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListInstancesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9165,9 +9896,11 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 //
 // @return ListNodeDownStreamResponse
 func (client *Client) ListNodeDownStreamWithOptions(tmpReq *ListNodeDownStreamRequest, runtime *dara.RuntimeOptions) (_result *ListNodeDownStreamResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListNodeDownStreamShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9241,9 +9974,11 @@ func (client *Client) ListNodeDownStream(request *ListNodeDownStreamRequest) (_r
 //
 // @return ListNodesResponse
 func (client *Client) ListNodesWithOptions(tmpReq *ListNodesRequest, runtime *dara.RuntimeOptions) (_result *ListNodesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListNodesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9317,9 +10052,11 @@ func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesRe
 //
 // @return ListProjectMembersResponse
 func (client *Client) ListProjectMembersWithOptions(tmpReq *ListProjectMembersRequest, runtime *dara.RuntimeOptions) (_result *ListProjectMembersResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListProjectMembersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9393,9 +10130,11 @@ func (client *Client) ListProjectMembers(request *ListProjectMembersRequest) (_r
 //
 // @return ListProjectsResponse
 func (client *Client) ListProjectsWithOptions(tmpReq *ListProjectsRequest, runtime *dara.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListProjectsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9465,9 +10204,11 @@ func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListP
 //
 // @return ListPublishRecordsResponse
 func (client *Client) ListPublishRecordsWithOptions(tmpReq *ListPublishRecordsRequest, runtime *dara.RuntimeOptions) (_result *ListPublishRecordsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListPublishRecordsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9537,9 +10278,11 @@ func (client *Client) ListPublishRecords(request *ListPublishRecordsRequest) (_r
 //
 // @return ListResourcePermissionOperationLogResponse
 func (client *Client) ListResourcePermissionOperationLogWithOptions(tmpReq *ListResourcePermissionOperationLogRequest, runtime *dara.RuntimeOptions) (_result *ListResourcePermissionOperationLogResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListResourcePermissionOperationLogShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9609,9 +10352,11 @@ func (client *Client) ListResourcePermissionOperationLog(request *ListResourcePe
 //
 // @return ListResourcePermissionsResponse
 func (client *Client) ListResourcePermissionsWithOptions(tmpReq *ListResourcePermissionsRequest, runtime *dara.RuntimeOptions) (_result *ListResourcePermissionsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListResourcePermissionsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9681,9 +10426,11 @@ func (client *Client) ListResourcePermissions(request *ListResourcePermissionsRe
 //
 // @return ListRowPermissionResponse
 func (client *Client) ListRowPermissionWithOptions(tmpReq *ListRowPermissionRequest, runtime *dara.RuntimeOptions) (_result *ListRowPermissionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListRowPermissionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9753,9 +10500,11 @@ func (client *Client) ListRowPermission(request *ListRowPermissionRequest) (_res
 //
 // @return ListRowPermissionByUserIdResponse
 func (client *Client) ListRowPermissionByUserIdWithOptions(tmpReq *ListRowPermissionByUserIdRequest, runtime *dara.RuntimeOptions) (_result *ListRowPermissionByUserIdResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListRowPermissionByUserIdShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9825,9 +10574,11 @@ func (client *Client) ListRowPermissionByUserId(request *ListRowPermissionByUser
 //
 // @return ListSubmitRecordsResponse
 func (client *Client) ListSubmitRecordsWithOptions(tmpReq *ListSubmitRecordsRequest, runtime *dara.RuntimeOptions) (_result *ListSubmitRecordsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListSubmitRecordsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9897,9 +10648,11 @@ func (client *Client) ListSubmitRecords(request *ListSubmitRecordsRequest) (_res
 //
 // @return ListTenantMembersResponse
 func (client *Client) ListTenantMembersWithOptions(tmpReq *ListTenantMembersRequest, runtime *dara.RuntimeOptions) (_result *ListTenantMembersResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListTenantMembersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -9969,9 +10722,11 @@ func (client *Client) ListTenantMembers(request *ListTenantMembersRequest) (_res
 //
 // @return ListUserGroupMembersResponse
 func (client *Client) ListUserGroupMembersWithOptions(tmpReq *ListUserGroupMembersRequest, runtime *dara.RuntimeOptions) (_result *ListUserGroupMembersResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListUserGroupMembersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10041,9 +10796,11 @@ func (client *Client) ListUserGroupMembers(request *ListUserGroupMembersRequest)
 //
 // @return ListUserGroupsResponse
 func (client *Client) ListUserGroupsWithOptions(tmpReq *ListUserGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListUserGroupsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListUserGroupsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10113,9 +10870,11 @@ func (client *Client) ListUserGroups(request *ListUserGroupsRequest) (_result *L
 //
 // @return OfflineBatchTaskResponse
 func (client *Client) OfflineBatchTaskWithOptions(request *OfflineBatchTaskRequest, runtime *dara.RuntimeOptions) (_result *OfflineBatchTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Comment) {
@@ -10185,9 +10944,11 @@ func (client *Client) OfflineBatchTask(request *OfflineBatchTaskRequest) (_resul
 //
 // @return OfflineBizEntityResponse
 func (client *Client) OfflineBizEntityWithOptions(tmpReq *OfflineBizEntityRequest, runtime *dara.RuntimeOptions) (_result *OfflineBizEntityResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &OfflineBizEntityShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10249,6 +11010,170 @@ func (client *Client) OfflineBizEntity(request *OfflineBizEntityRequest) (_resul
 
 // Summary:
 //
+// 下线集成管道任务。
+//
+// @param tmpReq - OfflinePipelineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OfflinePipelineResponse
+func (client *Client) OfflinePipelineWithOptions(tmpReq *OfflinePipelineRequest, runtime *dara.RuntimeOptions) (_result *OfflinePipelineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &OfflinePipelineShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Context) {
+		request.ContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Context, dara.String("Context"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.OfflineCommand) {
+		request.OfflineCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OfflineCommand, dara.String("OfflineCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContextShrink) {
+		body["Context"] = request.ContextShrink
+	}
+
+	if !dara.IsNil(request.OfflineCommandShrink) {
+		body["OfflineCommand"] = request.OfflineCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OfflinePipeline"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OfflinePipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 下线集成管道任务。
+//
+// @param request - OfflinePipelineRequest
+//
+// @return OfflinePipelineResponse
+func (client *Client) OfflinePipeline(request *OfflinePipelineRequest) (_result *OfflinePipelineResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &OfflinePipelineResponse{}
+	_body, _err := client.OfflinePipelineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 异步下线集成管道任务。
+//
+// @param tmpReq - OfflinePipelineByAsyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OfflinePipelineByAsyncResponse
+func (client *Client) OfflinePipelineByAsyncWithOptions(tmpReq *OfflinePipelineByAsyncRequest, runtime *dara.RuntimeOptions) (_result *OfflinePipelineByAsyncResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &OfflinePipelineByAsyncShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Context) {
+		request.ContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Context, dara.String("Context"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.OfflineCommand) {
+		request.OfflineCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OfflineCommand, dara.String("OfflineCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContextShrink) {
+		body["Context"] = request.ContextShrink
+	}
+
+	if !dara.IsNil(request.OfflineCommandShrink) {
+		body["OfflineCommand"] = request.OfflineCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OfflinePipelineByAsync"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OfflinePipelineByAsyncResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 异步下线集成管道任务。
+//
+// @param request - OfflinePipelineByAsyncRequest
+//
+// @return OfflinePipelineByAsyncResponse
+func (client *Client) OfflinePipelineByAsync(request *OfflinePipelineByAsyncRequest) (_result *OfflinePipelineByAsyncResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &OfflinePipelineByAsyncResponse{}
+	_body, _err := client.OfflinePipelineByAsyncWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 上线业务实体。
 //
 // @param tmpReq - OnlineBizEntityRequest
@@ -10257,9 +11182,11 @@ func (client *Client) OfflineBizEntity(request *OfflineBizEntityRequest) (_resul
 //
 // @return OnlineBizEntityResponse
 func (client *Client) OnlineBizEntityWithOptions(tmpReq *OnlineBizEntityRequest, runtime *dara.RuntimeOptions) (_result *OnlineBizEntityResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &OnlineBizEntityShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10329,9 +11256,11 @@ func (client *Client) OnlineBizEntity(request *OnlineBizEntityRequest) (_result 
 //
 // @return OperateInstanceResponse
 func (client *Client) OperateInstanceWithOptions(tmpReq *OperateInstanceRequest, runtime *dara.RuntimeOptions) (_result *OperateInstanceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &OperateInstanceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10405,9 +11334,11 @@ func (client *Client) OperateInstance(request *OperateInstanceRequest) (_result 
 //
 // @return ParseBatchTaskDependencyResponse
 func (client *Client) ParseBatchTaskDependencyWithOptions(tmpReq *ParseBatchTaskDependencyRequest, runtime *dara.RuntimeOptions) (_result *ParseBatchTaskDependencyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ParseBatchTaskDependencyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10477,9 +11408,11 @@ func (client *Client) ParseBatchTaskDependency(request *ParseBatchTaskDependency
 //
 // @return PausePhysicalNodeResponse
 func (client *Client) PausePhysicalNodeWithOptions(tmpReq *PausePhysicalNodeRequest, runtime *dara.RuntimeOptions) (_result *PausePhysicalNodeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &PausePhysicalNodeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10553,9 +11486,11 @@ func (client *Client) PausePhysicalNode(request *PausePhysicalNodeRequest) (_res
 //
 // @return PublishDataServiceApiResponse
 func (client *Client) PublishDataServiceApiWithOptions(request *PublishDataServiceApiRequest, runtime *dara.RuntimeOptions) (_result *PublishDataServiceApiResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApiId) {
@@ -10625,9 +11560,11 @@ func (client *Client) PublishDataServiceApi(request *PublishDataServiceApiReques
 //
 // @return PublishObjectListResponse
 func (client *Client) PublishObjectListWithOptions(tmpReq *PublishObjectListRequest, runtime *dara.RuntimeOptions) (_result *PublishObjectListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &PublishObjectListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10697,9 +11634,11 @@ func (client *Client) PublishObjectList(request *PublishObjectListRequest) (_res
 //
 // @return RemoveProjectMemberResponse
 func (client *Client) RemoveProjectMemberWithOptions(tmpReq *RemoveProjectMemberRequest, runtime *dara.RuntimeOptions) (_result *RemoveProjectMemberResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RemoveProjectMemberShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10773,9 +11712,11 @@ func (client *Client) RemoveProjectMember(request *RemoveProjectMemberRequest) (
 //
 // @return RemoveTenantMemberResponse
 func (client *Client) RemoveTenantMemberWithOptions(tmpReq *RemoveTenantMemberRequest, runtime *dara.RuntimeOptions) (_result *RemoveTenantMemberResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RemoveTenantMemberShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10845,9 +11786,11 @@ func (client *Client) RemoveTenantMember(request *RemoveTenantMemberRequest) (_r
 //
 // @return RemoveUserGroupMemberResponse
 func (client *Client) RemoveUserGroupMemberWithOptions(tmpReq *RemoveUserGroupMemberRequest, runtime *dara.RuntimeOptions) (_result *RemoveUserGroupMemberResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RemoveUserGroupMemberShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10917,9 +11860,11 @@ func (client *Client) RemoveUserGroupMember(request *RemoveUserGroupMemberReques
 //
 // @return ReplaceProjectWhiteListsResponse
 func (client *Client) ReplaceProjectWhiteListsWithOptions(tmpReq *ReplaceProjectWhiteListsRequest, runtime *dara.RuntimeOptions) (_result *ReplaceProjectWhiteListsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ReplaceProjectWhiteListsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -10993,9 +11938,11 @@ func (client *Client) ReplaceProjectWhiteLists(request *ReplaceProjectWhiteLists
 //
 // @return ResumePhysicalNodeResponse
 func (client *Client) ResumePhysicalNodeWithOptions(tmpReq *ResumePhysicalNodeRequest, runtime *dara.RuntimeOptions) (_result *ResumePhysicalNodeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ResumePhysicalNodeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11069,9 +12016,11 @@ func (client *Client) ResumePhysicalNode(request *ResumePhysicalNodeRequest) (_r
 //
 // @return RetryTransferOwnershipResponse
 func (client *Client) RetryTransferOwnershipWithOptions(tmpReq *RetryTransferOwnershipRequest, runtime *dara.RuntimeOptions) (_result *RetryTransferOwnershipResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RetryTransferOwnershipShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11141,9 +12090,11 @@ func (client *Client) RetryTransferOwnership(request *RetryTransferOwnershipRequ
 //
 // @return RevokeDataServiceApiResponse
 func (client *Client) RevokeDataServiceApiWithOptions(tmpReq *RevokeDataServiceApiRequest, runtime *dara.RuntimeOptions) (_result *RevokeDataServiceApiResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RevokeDataServiceApiShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11217,9 +12168,11 @@ func (client *Client) RevokeDataServiceApi(request *RevokeDataServiceApiRequest)
 //
 // @return RevokeResourcePermissionResponse
 func (client *Client) RevokeResourcePermissionWithOptions(tmpReq *RevokeResourcePermissionRequest, runtime *dara.RuntimeOptions) (_result *RevokeResourcePermissionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RevokeResourcePermissionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11289,9 +12242,11 @@ func (client *Client) RevokeResourcePermission(request *RevokeResourcePermission
 //
 // @return StopAdHocTaskResponse
 func (client *Client) StopAdHocTaskWithOptions(request *StopAdHocTaskRequest, runtime *dara.RuntimeOptions) (_result *StopAdHocTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
@@ -11357,9 +12312,11 @@ func (client *Client) StopAdHocTask(request *StopAdHocTaskRequest) (_result *Sto
 //
 // @return SubmitBatchTaskResponse
 func (client *Client) SubmitBatchTaskWithOptions(tmpReq *SubmitBatchTaskRequest, runtime *dara.RuntimeOptions) (_result *SubmitBatchTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitBatchTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11429,9 +12386,11 @@ func (client *Client) SubmitBatchTask(request *SubmitBatchTaskRequest) (_result 
 //
 // @return TransferOwnershipForAllObjectResponse
 func (client *Client) TransferOwnershipForAllObjectWithOptions(tmpReq *TransferOwnershipForAllObjectRequest, runtime *dara.RuntimeOptions) (_result *TransferOwnershipForAllObjectResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TransferOwnershipForAllObjectShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11501,9 +12460,11 @@ func (client *Client) TransferOwnershipForAllObject(request *TransferOwnershipFo
 //
 // @return UpdateAdHocFileResponse
 func (client *Client) UpdateAdHocFileWithOptions(tmpReq *UpdateAdHocFileRequest, runtime *dara.RuntimeOptions) (_result *UpdateAdHocFileResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateAdHocFileShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11573,9 +12534,11 @@ func (client *Client) UpdateAdHocFile(request *UpdateAdHocFileRequest) (_result 
 //
 // @return UpdateBatchTaskResponse
 func (client *Client) UpdateBatchTaskWithOptions(tmpReq *UpdateBatchTaskRequest, runtime *dara.RuntimeOptions) (_result *UpdateBatchTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateBatchTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11645,9 +12608,11 @@ func (client *Client) UpdateBatchTask(request *UpdateBatchTaskRequest) (_result 
 //
 // @return UpdateBatchTaskUdfLineagesResponse
 func (client *Client) UpdateBatchTaskUdfLineagesWithOptions(tmpReq *UpdateBatchTaskUdfLineagesRequest, runtime *dara.RuntimeOptions) (_result *UpdateBatchTaskUdfLineagesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateBatchTaskUdfLineagesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11717,9 +12682,11 @@ func (client *Client) UpdateBatchTaskUdfLineages(request *UpdateBatchTaskUdfLine
 //
 // @return UpdateBizEntityResponse
 func (client *Client) UpdateBizEntityWithOptions(tmpReq *UpdateBizEntityRequest, runtime *dara.RuntimeOptions) (_result *UpdateBizEntityResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateBizEntityShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11789,9 +12756,11 @@ func (client *Client) UpdateBizEntity(request *UpdateBizEntityRequest) (_result 
 //
 // @return UpdateBizUnitResponse
 func (client *Client) UpdateBizUnitWithOptions(tmpReq *UpdateBizUnitRequest, runtime *dara.RuntimeOptions) (_result *UpdateBizUnitResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateBizUnitShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11861,9 +12830,11 @@ func (client *Client) UpdateBizUnit(request *UpdateBizUnitRequest) (_result *Upd
 //
 // @return UpdateComputeSourceResponse
 func (client *Client) UpdateComputeSourceWithOptions(tmpReq *UpdateComputeSourceRequest, runtime *dara.RuntimeOptions) (_result *UpdateComputeSourceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateComputeSourceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11933,9 +12904,11 @@ func (client *Client) UpdateComputeSource(request *UpdateComputeSourceRequest) (
 //
 // @return UpdateDataDomainResponse
 func (client *Client) UpdateDataDomainWithOptions(tmpReq *UpdateDataDomainRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataDomainResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateDataDomainShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12005,9 +12978,11 @@ func (client *Client) UpdateDataDomain(request *UpdateDataDomainRequest) (_resul
 //
 // @return UpdateDataSourceBasicInfoResponse
 func (client *Client) UpdateDataSourceBasicInfoWithOptions(tmpReq *UpdateDataSourceBasicInfoRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataSourceBasicInfoResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateDataSourceBasicInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12077,9 +13052,11 @@ func (client *Client) UpdateDataSourceBasicInfo(request *UpdateDataSourceBasicIn
 //
 // @return UpdateDataSourceConfigResponse
 func (client *Client) UpdateDataSourceConfigWithOptions(tmpReq *UpdateDataSourceConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataSourceConfigResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateDataSourceConfigShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12149,9 +13126,11 @@ func (client *Client) UpdateDataSourceConfig(request *UpdateDataSourceConfigRequ
 //
 // @return UpdateFileDirectoryResponse
 func (client *Client) UpdateFileDirectoryWithOptions(request *UpdateFileDirectoryRequest, runtime *dara.RuntimeOptions) (_result *UpdateFileDirectoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Directory) {
@@ -12221,9 +13200,11 @@ func (client *Client) UpdateFileDirectory(request *UpdateFileDirectoryRequest) (
 //
 // @return UpdateFileNameResponse
 func (client *Client) UpdateFileNameWithOptions(request *UpdateFileNameRequest, runtime *dara.RuntimeOptions) (_result *UpdateFileNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileId) {
@@ -12285,6 +13266,170 @@ func (client *Client) UpdateFileName(request *UpdateFileNameRequest) (_result *U
 
 // Summary:
 //
+// 更新集成管道任务。
+//
+// @param tmpReq - UpdatePipelineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePipelineResponse
+func (client *Client) UpdatePipelineWithOptions(tmpReq *UpdatePipelineRequest, runtime *dara.RuntimeOptions) (_result *UpdatePipelineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdatePipelineShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Context) {
+		request.ContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Context, dara.String("Context"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContextShrink) {
+		body["Context"] = request.ContextShrink
+	}
+
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdatePipeline"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdatePipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新集成管道任务。
+//
+// @param request - UpdatePipelineRequest
+//
+// @return UpdatePipelineResponse
+func (client *Client) UpdatePipeline(request *UpdatePipelineRequest) (_result *UpdatePipelineResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdatePipelineResponse{}
+	_body, _err := client.UpdatePipelineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 异步更新集成管道任务。
+//
+// @param tmpReq - UpdatePipelineByAsyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePipelineByAsyncResponse
+func (client *Client) UpdatePipelineByAsyncWithOptions(tmpReq *UpdatePipelineByAsyncRequest, runtime *dara.RuntimeOptions) (_result *UpdatePipelineByAsyncResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdatePipelineByAsyncShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Context) {
+		request.ContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Context, dara.String("Context"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContextShrink) {
+		body["Context"] = request.ContextShrink
+	}
+
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdatePipelineByAsync"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdatePipelineByAsyncResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 异步更新集成管道任务。
+//
+// @param request - UpdatePipelineByAsyncRequest
+//
+// @return UpdatePipelineByAsyncResponse
+func (client *Client) UpdatePipelineByAsync(request *UpdatePipelineByAsyncRequest) (_result *UpdatePipelineByAsyncResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdatePipelineByAsyncResponse{}
+	_body, _err := client.UpdatePipelineByAsyncWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 增加项目成员。
 //
 // @param tmpReq - UpdateProjectMemberRequest
@@ -12293,9 +13438,11 @@ func (client *Client) UpdateFileName(request *UpdateFileNameRequest) (_result *U
 //
 // @return UpdateProjectMemberResponse
 func (client *Client) UpdateProjectMemberWithOptions(tmpReq *UpdateProjectMemberRequest, runtime *dara.RuntimeOptions) (_result *UpdateProjectMemberResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateProjectMemberShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12369,9 +13516,11 @@ func (client *Client) UpdateProjectMember(request *UpdateProjectMemberRequest) (
 //
 // @return UpdateResourceResponse
 func (client *Client) UpdateResourceWithOptions(tmpReq *UpdateResourceRequest, runtime *dara.RuntimeOptions) (_result *UpdateResourceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateResourceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12441,9 +13590,11 @@ func (client *Client) UpdateResource(request *UpdateResourceRequest) (_result *U
 //
 // @return UpdateRowPermissionResponse
 func (client *Client) UpdateRowPermissionWithOptions(tmpReq *UpdateRowPermissionRequest, runtime *dara.RuntimeOptions) (_result *UpdateRowPermissionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateRowPermissionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12513,9 +13664,11 @@ func (client *Client) UpdateRowPermission(request *UpdateRowPermissionRequest) (
 //
 // @return UpdateTenantComputeEngineResponse
 func (client *Client) UpdateTenantComputeEngineWithOptions(tmpReq *UpdateTenantComputeEngineRequest, runtime *dara.RuntimeOptions) (_result *UpdateTenantComputeEngineResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateTenantComputeEngineShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12585,9 +13738,11 @@ func (client *Client) UpdateTenantComputeEngine(request *UpdateTenantComputeEngi
 //
 // @return UpdateTenantMemberResponse
 func (client *Client) UpdateTenantMemberWithOptions(tmpReq *UpdateTenantMemberRequest, runtime *dara.RuntimeOptions) (_result *UpdateTenantMemberResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateTenantMemberShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12657,9 +13812,11 @@ func (client *Client) UpdateTenantMember(request *UpdateTenantMemberRequest) (_r
 //
 // @return UpdateUdfResponse
 func (client *Client) UpdateUdfWithOptions(tmpReq *UpdateUdfRequest, runtime *dara.RuntimeOptions) (_result *UpdateUdfResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateUdfShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12729,9 +13886,11 @@ func (client *Client) UpdateUdf(request *UpdateUdfRequest) (_result *UpdateUdfRe
 //
 // @return UpdateUserGroupResponse
 func (client *Client) UpdateUserGroupWithOptions(tmpReq *UpdateUserGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateUserGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateUserGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12801,9 +13960,11 @@ func (client *Client) UpdateUserGroup(request *UpdateUserGroupRequest) (_result 
 //
 // @return UpdateUserGroupSwitchResponse
 func (client *Client) UpdateUserGroupSwitchWithOptions(request *UpdateUserGroupSwitchRequest, runtime *dara.RuntimeOptions) (_result *UpdateUserGroupSwitchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Active) {

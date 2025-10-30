@@ -53,7 +53,12 @@ func (s *GrantResourcePermissionRequest) SetOpTenantId(v int64) *GrantResourcePe
 }
 
 func (s *GrantResourcePermissionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.GrantCommand != nil {
+		if err := s.GrantCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GrantResourcePermissionRequestGrantCommand struct {
@@ -144,7 +149,16 @@ func (s *GrantResourcePermissionRequestGrantCommand) SetUserIdList(v []*string) 
 }
 
 func (s *GrantResourcePermissionRequestGrantCommand) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceList != nil {
+		for _, item := range s.ResourceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GrantResourcePermissionRequestGrantCommandResourceList struct {

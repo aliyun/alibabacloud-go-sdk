@@ -53,7 +53,12 @@ func (s *ListUserGroupMembersRequest) SetOpTenantId(v int64) *ListUserGroupMembe
 }
 
 func (s *ListUserGroupMembersRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ListQuery != nil {
+		if err := s.ListQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUserGroupMembersRequestListQuery struct {

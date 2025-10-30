@@ -107,7 +107,12 @@ func (s *GetBizUnitInfoResponseBody) SetSuccess(v bool) *GetBizUnitInfoResponseB
 }
 
 func (s *GetBizUnitInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BizUnitInfo != nil {
+		if err := s.BizUnitInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBizUnitInfoResponseBodyBizUnitInfo struct {
@@ -357,7 +362,43 @@ func (s *GetBizUnitInfoResponseBodyBizUnitInfo) SetOwnerUserId(v string) *GetBiz
 }
 
 func (s *GetBizUnitInfoResponseBodyBizUnitInfo) Validate() error {
-	return dara.Validate(s)
+	if s.AccountList != nil {
+		for _, item := range s.AccountList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BusinessLeaderList != nil {
+		for _, item := range s.BusinessLeaderList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DataLeaderList != nil {
+		for _, item := range s.DataLeaderList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EnvList != nil {
+		for _, item := range s.EnvList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetBizUnitInfoResponseBodyBizUnitInfoAccountList struct {

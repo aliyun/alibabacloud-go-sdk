@@ -107,7 +107,12 @@ func (s *GetBatchTaskVersionsResponseBody) SetSuccess(v bool) *GetBatchTaskVersi
 }
 
 func (s *GetBatchTaskVersionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBatchTaskVersionsResponseBodyData struct {
@@ -132,7 +137,16 @@ func (s *GetBatchTaskVersionsResponseBodyData) SetBatchTaskVersionList(v []*GetB
 }
 
 func (s *GetBatchTaskVersionsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.BatchTaskVersionList != nil {
+		for _, item := range s.BatchTaskVersionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetBatchTaskVersionsResponseBodyDataBatchTaskVersionList struct {

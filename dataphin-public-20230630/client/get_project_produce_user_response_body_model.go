@@ -110,7 +110,12 @@ func (s *GetProjectProduceUserResponseBody) SetUser(v *GetProjectProduceUserResp
 }
 
 func (s *GetProjectProduceUserResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.User != nil {
+		if err := s.User.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetProjectProduceUserResponseBodyUser struct {

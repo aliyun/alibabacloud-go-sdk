@@ -110,7 +110,12 @@ func (s *ListDataSourceWithConfigResponseBody) SetSuccess(v bool) *ListDataSourc
 }
 
 func (s *ListDataSourceWithConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageResult != nil {
+		if err := s.PageResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataSourceWithConfigResponseBodyPageResult struct {
@@ -148,7 +153,16 @@ func (s *ListDataSourceWithConfigResponseBodyPageResult) SetTotalCount(v int64) 
 }
 
 func (s *ListDataSourceWithConfigResponseBodyPageResult) Validate() error {
-	return dara.Validate(s)
+	if s.DataSourceList != nil {
+		for _, item := range s.DataSourceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataSourceWithConfigResponseBodyPageResultDataSourceList struct {
@@ -185,7 +199,17 @@ func (s *ListDataSourceWithConfigResponseBodyPageResultDataSourceList) SetProdDa
 }
 
 func (s *ListDataSourceWithConfigResponseBodyPageResultDataSourceList) Validate() error {
-	return dara.Validate(s)
+	if s.DevDataSourceInfo != nil {
+		if err := s.DevDataSourceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProdDataSourceInfo != nil {
+		if err := s.ProdDataSourceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataSourceWithConfigResponseBodyPageResultDataSourceListDevDataSourceInfo struct {
@@ -354,7 +378,16 @@ func (s *ListDataSourceWithConfigResponseBodyPageResultDataSourceListDevDataSour
 }
 
 func (s *ListDataSourceWithConfigResponseBodyPageResultDataSourceListDevDataSourceInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigItemList != nil {
+		for _, item := range s.ConfigItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataSourceWithConfigResponseBodyPageResultDataSourceListDevDataSourceInfoConfigItemList struct {
@@ -564,7 +597,16 @@ func (s *ListDataSourceWithConfigResponseBodyPageResultDataSourceListProdDataSou
 }
 
 func (s *ListDataSourceWithConfigResponseBodyPageResultDataSourceListProdDataSourceInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigItemList != nil {
+		for _, item := range s.ConfigItemList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataSourceWithConfigResponseBodyPageResultDataSourceListProdDataSourceInfoConfigItemList struct {

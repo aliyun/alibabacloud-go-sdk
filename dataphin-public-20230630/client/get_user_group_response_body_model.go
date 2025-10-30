@@ -110,7 +110,12 @@ func (s *GetUserGroupResponseBody) SetUserGroupInfo(v *GetUserGroupResponseBodyU
 }
 
 func (s *GetUserGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserGroupInfo != nil {
+		if err := s.UserGroupInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserGroupResponseBodyUserGroupInfo struct {
@@ -197,7 +202,16 @@ func (s *GetUserGroupResponseBodyUserGroupInfo) SetName(v string) *GetUserGroupR
 }
 
 func (s *GetUserGroupResponseBodyUserGroupInfo) Validate() error {
-	return dara.Validate(s)
+	if s.AdminList != nil {
+		for _, item := range s.AdminList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetUserGroupResponseBodyUserGroupInfoAdminList struct {

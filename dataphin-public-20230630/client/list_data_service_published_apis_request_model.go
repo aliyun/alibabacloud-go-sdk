@@ -69,7 +69,12 @@ func (s *ListDataServicePublishedApisRequest) SetProjectId(v int32) *ListDataSer
 }
 
 func (s *ListDataServicePublishedApisRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ListQuery != nil {
+		if err := s.ListQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataServicePublishedApisRequestListQuery struct {

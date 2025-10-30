@@ -70,7 +70,12 @@ func (s *ReplaceProjectWhiteListsRequest) SetReplaceCommand(v *ReplaceProjectWhi
 }
 
 func (s *ReplaceProjectWhiteListsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ReplaceCommand != nil {
+		if err := s.ReplaceCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ReplaceProjectWhiteListsRequestReplaceCommand struct {
@@ -96,7 +101,16 @@ func (s *ReplaceProjectWhiteListsRequestReplaceCommand) SetWhiteLists(v []*Repla
 }
 
 func (s *ReplaceProjectWhiteListsRequestReplaceCommand) Validate() error {
-	return dara.Validate(s)
+	if s.WhiteLists != nil {
+		for _, item := range s.WhiteLists {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ReplaceProjectWhiteListsRequestReplaceCommandWhiteLists struct {

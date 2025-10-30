@@ -70,7 +70,12 @@ func (s *ApplyDataServiceAppRequest) SetProjectId(v int32) *ApplyDataServiceAppR
 }
 
 func (s *ApplyDataServiceAppRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ApplyCommand != nil {
+		if err := s.ApplyCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ApplyDataServiceAppRequestApplyCommand struct {

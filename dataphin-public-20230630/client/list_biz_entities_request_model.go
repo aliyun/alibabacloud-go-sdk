@@ -53,7 +53,12 @@ func (s *ListBizEntitiesRequest) SetOpTenantId(v int64) *ListBizEntitiesRequest 
 }
 
 func (s *ListBizEntitiesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ListQuery != nil {
+		if err := s.ListQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListBizEntitiesRequestListQuery struct {
@@ -117,7 +122,12 @@ func (s *ListBizEntitiesRequestListQuery) SetPageSize(v int32) *ListBizEntitiesR
 }
 
 func (s *ListBizEntitiesRequestListQuery) Validate() error {
-	return dara.Validate(s)
+	if s.FilterCriteria != nil {
+		if err := s.FilterCriteria.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListBizEntitiesRequestListQueryFilterCriteria struct {

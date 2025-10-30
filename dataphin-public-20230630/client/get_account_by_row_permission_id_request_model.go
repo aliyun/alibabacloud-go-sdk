@@ -53,7 +53,12 @@ func (s *GetAccountByRowPermissionIdRequest) SetOpTenantId(v int64) *GetAccountB
 }
 
 func (s *GetAccountByRowPermissionIdRequest) Validate() error {
-	return dara.Validate(s)
+	if s.GetAccountByRowPermissionIdQuery != nil {
+		if err := s.GetAccountByRowPermissionIdQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAccountByRowPermissionIdRequestGetAccountByRowPermissionIdQuery struct {

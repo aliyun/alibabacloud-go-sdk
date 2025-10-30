@@ -53,7 +53,12 @@ func (s *UpdateBizUnitRequest) SetUpdateCommand(v *UpdateBizUnitRequestUpdateCom
 }
 
 func (s *UpdateBizUnitRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UpdateCommand != nil {
+		if err := s.UpdateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateBizUnitRequestUpdateCommand struct {
@@ -152,7 +157,16 @@ func (s *UpdateBizUnitRequestUpdateCommand) SetName(v string) *UpdateBizUnitRequ
 }
 
 func (s *UpdateBizUnitRequestUpdateCommand) Validate() error {
-	return dara.Validate(s)
+	if s.BizUnitAccountList != nil {
+		for _, item := range s.BizUnitAccountList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateBizUnitRequestUpdateCommandBizUnitAccountList struct {

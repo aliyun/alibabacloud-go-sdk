@@ -110,7 +110,12 @@ func (s *ListResourcePermissionsResponseBody) SetSuccess(v bool) *ListResourcePe
 }
 
 func (s *ListResourcePermissionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageResult != nil {
+		if err := s.PageResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListResourcePermissionsResponseBodyPageResult struct {
@@ -148,7 +153,16 @@ func (s *ListResourcePermissionsResponseBodyPageResult) SetTotalCount(v int64) *
 }
 
 func (s *ListResourcePermissionsResponseBodyPageResult) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourcePermissionsResponseBodyPageResultData struct {
@@ -229,7 +243,31 @@ func (s *ListResourcePermissionsResponseBodyPageResultData) SetTargetAccount(v *
 }
 
 func (s *ListResourcePermissionsResponseBodyPageResultData) Validate() error {
-	return dara.Validate(s)
+	if s.Period != nil {
+		if err := s.Period.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PermissionPeriodList != nil {
+		for _, item := range s.PermissionPeriodList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResourceInfo != nil {
+		if err := s.ResourceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TargetAccount != nil {
+		if err := s.TargetAccount.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListResourcePermissionsResponseBodyPageResultDataPeriod struct {
@@ -308,7 +346,12 @@ func (s *ListResourcePermissionsResponseBodyPageResultDataPermissionPeriodList) 
 }
 
 func (s *ListResourcePermissionsResponseBodyPageResultDataPermissionPeriodList) Validate() error {
-	return dara.Validate(s)
+	if s.Period != nil {
+		if err := s.Period.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListResourcePermissionsResponseBodyPageResultDataPermissionPeriodListPeriod struct {
@@ -449,7 +492,17 @@ func (s *ListResourcePermissionsResponseBodyPageResultDataResourceInfo) SetType(
 }
 
 func (s *ListResourcePermissionsResponseBodyPageResultDataResourceInfo) Validate() error {
-	return dara.Validate(s)
+	if s.BizUnitInfo != nil {
+		if err := s.BizUnitInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProjectInfo != nil {
+		if err := s.ProjectInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListResourcePermissionsResponseBodyPageResultDataResourceInfoBizUnitInfo struct {

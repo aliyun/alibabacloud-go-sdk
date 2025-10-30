@@ -110,7 +110,16 @@ func (s *GetMyTenantsResponseBody) SetTenantList(v []*GetMyTenantsResponseBodyTe
 }
 
 func (s *GetMyTenantsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TenantList != nil {
+		for _, item := range s.TenantList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMyTenantsResponseBodyTenantList struct {

@@ -110,7 +110,16 @@ func (s *GetPhysicalNodeOperationLogResponseBody) SetSuccess(v bool) *GetPhysica
 }
 
 func (s *GetPhysicalNodeOperationLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OperationLogList != nil {
+		for _, item := range s.OperationLogList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPhysicalNodeOperationLogResponseBodyOperationLogList struct {

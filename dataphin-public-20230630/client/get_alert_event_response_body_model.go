@@ -110,7 +110,12 @@ func (s *GetAlertEventResponseBody) SetSuccess(v bool) *GetAlertEventResponseBod
 }
 
 func (s *GetAlertEventResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AlertEventInfo != nil {
+		if err := s.AlertEventInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAlertEventResponseBodyAlertEventInfo struct {
@@ -266,7 +271,36 @@ func (s *GetAlertEventResponseBodyAlertEventInfo) SetUrlConfig(v *GetAlertEventR
 }
 
 func (s *GetAlertEventResponseBodyAlertEventInfo) Validate() error {
-	return dara.Validate(s)
+	if s.AlertObject != nil {
+		if err := s.AlertObject.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AlertReason != nil {
+		if err := s.AlertReason.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AlertReceiverList != nil {
+		for _, item := range s.AlertReceiverList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BelongProject != nil {
+		if err := s.BelongProject.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UrlConfig != nil {
+		if err := s.UrlConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAlertEventResponseBodyAlertEventInfoAlertObject struct {
@@ -384,7 +418,16 @@ func (s *GetAlertEventResponseBodyAlertEventInfoAlertReason) SetUniqueKey(v stri
 }
 
 func (s *GetAlertEventResponseBodyAlertEventInfoAlertReason) Validate() error {
-	return dara.Validate(s)
+	if s.AlertReasonParamList != nil {
+		for _, item := range s.AlertReasonParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAlertEventResponseBodyAlertEventInfoAlertReasonAlertReasonParamList struct {
@@ -496,7 +539,16 @@ func (s *GetAlertEventResponseBodyAlertEventInfoAlertReceiverList) SetUserList(v
 }
 
 func (s *GetAlertEventResponseBodyAlertEventInfoAlertReceiverList) Validate() error {
-	return dara.Validate(s)
+	if s.UserList != nil {
+		for _, item := range s.UserList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAlertEventResponseBodyAlertEventInfoAlertReceiverListUserList struct {

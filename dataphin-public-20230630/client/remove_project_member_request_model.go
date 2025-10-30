@@ -70,7 +70,12 @@ func (s *RemoveProjectMemberRequest) SetRemoveCommand(v *RemoveProjectMemberRequ
 }
 
 func (s *RemoveProjectMemberRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RemoveCommand != nil {
+		if err := s.RemoveCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RemoveProjectMemberRequestRemoveCommand struct {

@@ -53,7 +53,12 @@ func (s *ParseBatchTaskDependencyRequest) SetParseCommand(v *ParseBatchTaskDepen
 }
 
 func (s *ParseBatchTaskDependencyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ParseCommand != nil {
+		if err := s.ParseCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ParseBatchTaskDependencyRequestParseCommand struct {

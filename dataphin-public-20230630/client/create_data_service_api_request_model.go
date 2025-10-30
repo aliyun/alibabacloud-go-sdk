@@ -53,7 +53,12 @@ func (s *CreateDataServiceApiRequest) SetOpTenantId(v int64) *CreateDataServiceA
 }
 
 func (s *CreateDataServiceApiRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CreateCommand != nil {
+		if err := s.CreateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataServiceApiRequestCreateCommand struct {
@@ -298,7 +303,12 @@ func (s *CreateDataServiceApiRequestCreateCommand) SetVersion(v string) *CreateD
 }
 
 func (s *CreateDataServiceApiRequestCreateCommand) Validate() error {
-	return dara.Validate(s)
+	if s.ScriptDetails != nil {
+		if err := s.ScriptDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDataServiceApiRequestCreateCommandScriptDetails struct {
@@ -419,7 +429,25 @@ func (s *CreateDataServiceApiRequestCreateCommandScriptDetails) SetSqlMode(v int
 }
 
 func (s *CreateDataServiceApiRequestCreateCommandScriptDetails) Validate() error {
-	return dara.Validate(s)
+	if s.ScriptRequestParameters != nil {
+		for _, item := range s.ScriptRequestParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ScriptResponseParameters != nil {
+		for _, item := range s.ScriptResponseParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters struct {

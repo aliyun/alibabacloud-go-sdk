@@ -53,7 +53,12 @@ func (s *CreateBizUnitRequest) SetOpTenantId(v int64) *CreateBizUnitRequest {
 }
 
 func (s *CreateBizUnitRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CreateCommand != nil {
+		if err := s.CreateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateBizUnitRequestCreateCommand struct {
@@ -150,7 +155,16 @@ func (s *CreateBizUnitRequestCreateCommand) SetName(v string) *CreateBizUnitRequ
 }
 
 func (s *CreateBizUnitRequestCreateCommand) Validate() error {
-	return dara.Validate(s)
+	if s.BizUnitAccountList != nil {
+		for _, item := range s.BizUnitAccountList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateBizUnitRequestCreateCommandBizUnitAccountList struct {

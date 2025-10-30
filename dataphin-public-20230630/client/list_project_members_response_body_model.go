@@ -110,7 +110,12 @@ func (s *ListProjectMembersResponseBody) SetSuccess(v bool) *ListProjectMembersR
 }
 
 func (s *ListProjectMembersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageResult != nil {
+		if err := s.PageResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListProjectMembersResponseBodyPageResult struct {
@@ -148,7 +153,16 @@ func (s *ListProjectMembersResponseBodyPageResult) SetTotalCount(v int32) *ListP
 }
 
 func (s *ListProjectMembersResponseBodyPageResult) Validate() error {
-	return dara.Validate(s)
+	if s.ProjectMemberList != nil {
+		for _, item := range s.ProjectMemberList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProjectMembersResponseBodyPageResultProjectMemberList struct {

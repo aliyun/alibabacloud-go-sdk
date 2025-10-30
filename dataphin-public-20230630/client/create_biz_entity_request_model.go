@@ -53,7 +53,12 @@ func (s *CreateBizEntityRequest) SetOpTenantId(v int64) *CreateBizEntityRequest 
 }
 
 func (s *CreateBizEntityRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CreateCommand != nil {
+		if err := s.CreateCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateBizEntityRequestCreateCommand struct {
@@ -133,7 +138,17 @@ func (s *CreateBizEntityRequestCreateCommand) SetType(v string) *CreateBizEntity
 }
 
 func (s *CreateBizEntityRequestCreateCommand) Validate() error {
-	return dara.Validate(s)
+	if s.BizObject != nil {
+		if err := s.BizObject.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BizProcess != nil {
+		if err := s.BizProcess.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateBizEntityRequestCreateCommandBizObject struct {

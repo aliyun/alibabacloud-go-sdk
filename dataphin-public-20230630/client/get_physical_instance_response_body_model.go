@@ -110,7 +110,12 @@ func (s *GetPhysicalInstanceResponseBody) SetSuccess(v bool) *GetPhysicalInstanc
 }
 
 func (s *GetPhysicalInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instance != nil {
+		if err := s.Instance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPhysicalInstanceResponseBodyInstance struct {
@@ -249,7 +254,12 @@ func (s *GetPhysicalInstanceResponseBodyInstance) SetStatusList(v []*string) *Ge
 }
 
 func (s *GetPhysicalInstanceResponseBodyInstance) Validate() error {
-	return dara.Validate(s)
+	if s.NodeInfo != nil {
+		if err := s.NodeInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPhysicalInstanceResponseBodyInstanceNodeInfo struct {
@@ -487,7 +497,26 @@ func (s *GetPhysicalInstanceResponseBodyInstanceNodeInfo) SetType(v string) *Get
 }
 
 func (s *GetPhysicalInstanceResponseBodyInstanceNodeInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Creator != nil {
+		if err := s.Creator.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Modifier != nil {
+		if err := s.Modifier.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OwnerList != nil {
+		for _, item := range s.OwnerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPhysicalInstanceResponseBodyInstanceNodeInfoCreator struct {

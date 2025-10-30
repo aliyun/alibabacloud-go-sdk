@@ -107,7 +107,12 @@ func (s *PublishObjectListResponseBody) SetSuccess(v bool) *PublishObjectListRes
 }
 
 func (s *PublishObjectListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PublishResult != nil {
+		if err := s.PublishResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PublishObjectListResponseBodyPublishResult struct {

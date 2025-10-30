@@ -110,7 +110,16 @@ func (s *GetSupplementDagrunResponseBody) SetSuccess(v bool) *GetSupplementDagru
 }
 
 func (s *GetSupplementDagrunResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DagrunList != nil {
+		for _, item := range s.DagrunList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSupplementDagrunResponseBodyDagrunList struct {

@@ -53,7 +53,12 @@ func (s *DeleteRowPermissionRequest) SetOpTenantId(v int64) *DeleteRowPermission
 }
 
 func (s *DeleteRowPermissionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeleteRowPermissionCommand != nil {
+		if err := s.DeleteRowPermissionCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteRowPermissionRequestDeleteRowPermissionCommand struct {

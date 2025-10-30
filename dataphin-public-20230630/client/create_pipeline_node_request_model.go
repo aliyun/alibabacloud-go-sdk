@@ -53,7 +53,12 @@ func (s *CreatePipelineNodeRequest) SetOpTenantId(v int64) *CreatePipelineNodeRe
 }
 
 func (s *CreatePipelineNodeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CreatePipelineNodeCommand != nil {
+		if err := s.CreatePipelineNodeCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreatePipelineNodeRequestCreatePipelineNodeCommand struct {
@@ -139,7 +144,12 @@ func (s *CreatePipelineNodeRequestCreatePipelineNodeCommand) SetProjectId(v int6
 }
 
 func (s *CreatePipelineNodeRequestCreatePipelineNodeCommand) Validate() error {
-	return dara.Validate(s)
+	if s.FileInfo != nil {
+		if err := s.FileInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreatePipelineNodeRequestCreatePipelineNodeCommandFileInfo struct {

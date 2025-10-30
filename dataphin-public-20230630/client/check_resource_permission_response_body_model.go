@@ -110,7 +110,16 @@ func (s *CheckResourcePermissionResponseBody) SetSuccess(v bool) *CheckResourceP
 }
 
 func (s *CheckResourcePermissionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourcePermissionList != nil {
+		for _, item := range s.ResourcePermissionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CheckResourcePermissionResponseBodyResourcePermissionList struct {

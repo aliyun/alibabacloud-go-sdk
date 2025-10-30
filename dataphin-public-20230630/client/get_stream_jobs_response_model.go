@@ -59,5 +59,10 @@ func (s *GetStreamJobsResponse) SetBody(v *GetStreamJobsResponseBody) *GetStream
 }
 
 func (s *GetStreamJobsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

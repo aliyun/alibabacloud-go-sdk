@@ -107,7 +107,16 @@ func (s *GetDirectoryTreeResponseBody) SetSuccess(v bool) *GetDirectoryTreeRespo
 }
 
 func (s *GetDirectoryTreeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDirectoryTreeResponseBodyData struct {
@@ -142,7 +151,17 @@ func (s *GetDirectoryTreeResponseBodyData) SetParent(v *GetDirectoryTreeResponse
 }
 
 func (s *GetDirectoryTreeResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Children != nil {
+		if err := s.Children.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Parent != nil {
+		if err := s.Parent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDirectoryTreeResponseBodyDataChildren struct {

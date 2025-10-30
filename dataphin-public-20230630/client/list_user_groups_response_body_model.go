@@ -110,7 +110,12 @@ func (s *ListUserGroupsResponseBody) SetSuccess(v bool) *ListUserGroupsResponseB
 }
 
 func (s *ListUserGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageResult != nil {
+		if err := s.PageResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUserGroupsResponseBodyPageResult struct {
@@ -148,7 +153,16 @@ func (s *ListUserGroupsResponseBodyPageResult) SetUserGroupList(v []*ListUserGro
 }
 
 func (s *ListUserGroupsResponseBodyPageResult) Validate() error {
-	return dara.Validate(s)
+	if s.UserGroupList != nil {
+		for _, item := range s.UserGroupList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserGroupsResponseBodyPageResultUserGroupList struct {
@@ -232,7 +246,16 @@ func (s *ListUserGroupsResponseBodyPageResultUserGroupList) SetName(v string) *L
 }
 
 func (s *ListUserGroupsResponseBodyPageResultUserGroupList) Validate() error {
-	return dara.Validate(s)
+	if s.AdminList != nil {
+		for _, item := range s.AdminList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserGroupsResponseBodyPageResultUserGroupListAdminList struct {

@@ -110,7 +110,12 @@ func (s *GetUserBySourceIdResponseBody) SetUser(v *GetUserBySourceIdResponseBody
 }
 
 func (s *GetUserBySourceIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.User != nil {
+		if err := s.User.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserBySourceIdResponseBodyUser struct {

@@ -109,7 +109,12 @@ func (s *GetUdfResponseBody) SetUdfInfo(v *GetUdfResponseBodyUdfInfo) *GetUdfRes
 }
 
 func (s *GetUdfResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UdfInfo != nil {
+		if err := s.UdfInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUdfResponseBodyUdfInfo struct {

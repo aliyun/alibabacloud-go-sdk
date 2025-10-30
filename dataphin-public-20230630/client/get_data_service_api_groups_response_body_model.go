@@ -109,7 +109,16 @@ func (s *GetDataServiceApiGroupsResponseBody) SetSuccess(v bool) *GetDataService
 }
 
 func (s *GetDataServiceApiGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApiGroupList != nil {
+		for _, item := range s.ApiGroupList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataServiceApiGroupsResponseBodyApiGroupList struct {

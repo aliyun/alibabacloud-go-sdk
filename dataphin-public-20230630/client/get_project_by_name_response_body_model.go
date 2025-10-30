@@ -109,7 +109,12 @@ func (s *GetProjectByNameResponseBody) SetSuccess(v bool) *GetProjectByNameRespo
 }
 
 func (s *GetProjectByNameResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProjectInfo != nil {
+		if err := s.ProjectInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetProjectByNameResponseBodyProjectInfo struct {
@@ -368,7 +373,16 @@ func (s *GetProjectByNameResponseBodyProjectInfo) SetWhiteLists(v []*GetProjectB
 }
 
 func (s *GetProjectByNameResponseBodyProjectInfo) Validate() error {
-	return dara.Validate(s)
+	if s.WhiteLists != nil {
+		for _, item := range s.WhiteLists {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetProjectByNameResponseBodyProjectInfoWhiteLists struct {

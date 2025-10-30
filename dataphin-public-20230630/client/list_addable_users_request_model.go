@@ -53,7 +53,12 @@ func (s *ListAddableUsersRequest) SetOpTenantId(v int64) *ListAddableUsersReques
 }
 
 func (s *ListAddableUsersRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ListQuery != nil {
+		if err := s.ListQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAddableUsersRequestListQuery struct {

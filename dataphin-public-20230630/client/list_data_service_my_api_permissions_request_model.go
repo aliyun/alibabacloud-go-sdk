@@ -69,7 +69,12 @@ func (s *ListDataServiceMyApiPermissionsRequest) SetProjectId(v int32) *ListData
 }
 
 func (s *ListDataServiceMyApiPermissionsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ListQuery != nil {
+		if err := s.ListQuery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataServiceMyApiPermissionsRequestListQuery struct {

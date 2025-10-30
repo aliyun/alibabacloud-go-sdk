@@ -68,7 +68,12 @@ func (s *FixDataRequest) SetOpTenantId(v int64) *FixDataRequest {
 }
 
 func (s *FixDataRequest) Validate() error {
-	return dara.Validate(s)
+	if s.FixDataCommand != nil {
+		if err := s.FixDataCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FixDataRequestFixDataCommand struct {
@@ -158,7 +163,21 @@ func (s *FixDataRequestFixDataCommand) SetRootInstanceId(v *FixDataRequestFixDat
 }
 
 func (s *FixDataRequestFixDataCommand) Validate() error {
-	return dara.Validate(s)
+	if s.DownStreamInstanceIdList != nil {
+		for _, item := range s.DownStreamInstanceIdList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RootInstanceId != nil {
+		if err := s.RootInstanceId.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FixDataRequestFixDataCommandDownStreamInstanceIdList struct {

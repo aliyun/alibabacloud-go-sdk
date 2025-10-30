@@ -110,7 +110,16 @@ func (s *GetMyRolesResponseBody) SetSuccess(v bool) *GetMyRolesResponseBody {
 }
 
 func (s *GetMyRolesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RoleList != nil {
+		for _, item := range s.RoleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMyRolesResponseBodyRoleList struct {

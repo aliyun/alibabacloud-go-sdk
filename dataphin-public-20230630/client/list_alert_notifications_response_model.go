@@ -59,5 +59,10 @@ func (s *ListAlertNotificationsResponse) SetBody(v *ListAlertNotificationsRespon
 }
 
 func (s *ListAlertNotificationsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
