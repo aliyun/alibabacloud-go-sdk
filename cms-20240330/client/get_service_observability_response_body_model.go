@@ -30,26 +30,47 @@ type iGetServiceObservabilityResponseBody interface {
 }
 
 type GetServiceObservabilityResponseBody struct {
+	// Endpoint and Authentication Information
 	EntryPointInfo *GetServiceObservabilityResponseBodyEntryPointInfo `json:"entryPointInfo,omitempty" xml:"entryPointInfo,omitempty" type:"Struct"`
-	FeeType        *string                                            `json:"feeType,omitempty" xml:"feeType,omitempty"`
-	Quotas         map[string]*string                                 `json:"quotas,omitempty" xml:"quotas,omitempty"`
+	// Billing Type
+	//
+	// example:
+	//
+	// arms=serverless;xtrace=serverless
+	FeeType *string `json:"feeType,omitempty" xml:"feeType,omitempty"`
+	// Quota Configuration
+	Quotas map[string]*string `json:"quotas,omitempty" xml:"quotas,omitempty"`
+	// Region
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 4852B9B5-345C-5CBC-A15F-786D83ECCBBA
-	RequestId *string            `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Settings  map[string]*string `json:"settings,omitempty" xml:"settings,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// System Configuration
+	Settings map[string]*string `json:"settings,omitempty" xml:"settings,omitempty"`
+	// Resource Initialization Status
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Application Observability Type
+	//
 	// example:
 	//
 	// apm
-	Type      *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Workspace Name
+	//
+	// example:
+	//
+	// default-cms-1654218***343050-cn-hangzhou
 	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
@@ -152,14 +173,29 @@ func (s *GetServiceObservabilityResponseBody) Validate() error {
 }
 
 type GetServiceObservabilityResponseBodyEntryPointInfo struct {
-	AuthToken     *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	// Authentication Token for Data Reporting
+	//
+	// example:
+	//
+	// gaddp****@de20f2***1ce***
+	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	// Private Network Access Address
+	//
+	// example:
+	//
+	// project-xtrace-xxxx-cn-hangzhou.cn-hangzhou-intranet.log.aliyuncs.com
 	PrivateDomain *string `json:"privateDomain,omitempty" xml:"privateDomain,omitempty"`
 	// SLS Project
 	//
 	// example:
 	//
 	// proj-xtrace-xxxxx
-	Project      *string `json:"project,omitempty" xml:"project,omitempty"`
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// Public Network Access Address
+	//
+	// example:
+	//
+	// project-xtrace-xxxx-cn-hangzhou.cn-hangzhou.log.aliyuncs.com
 	PublicDomain *string `json:"publicDomain,omitempty" xml:"publicDomain,omitempty"`
 }
 

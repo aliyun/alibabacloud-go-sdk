@@ -26,27 +26,58 @@ type iUpdatePrometheusViewRequest interface {
 }
 
 type UpdatePrometheusViewRequest struct {
+	// Password-free read policy (supports IP segments and VpcId).
+	//
 	// example:
 	//
-	// 0.0.0.0/0
+	// {
+	//
+	//   "SourceIp": [
+	//
+	//     "192.168.1.0/24",
+	//
+	//     "172.168.2.22"
+	//
+	//   ],
+	//
+	//   "SourceVpc": [
+	//
+	//     "vpc-xx1",
+	//
+	//     "vpc-xx2"
+	//
+	//   ]
+	//
+	// }
 	AuthFreeReadPolicy *string `json:"authFreeReadPolicy,omitempty" xml:"authFreeReadPolicy,omitempty"`
+	// Whether to support password-free read.
+	//
 	// example:
 	//
 	// true
 	EnableAuthFreeRead *bool `json:"enableAuthFreeRead,omitempty" xml:"enableAuthFreeRead,omitempty"`
+	// Whether to support authToken.
+	//
 	// example:
 	//
 	// false
-	EnableAuthToken     *bool                                             `json:"enableAuthToken,omitempty" xml:"enableAuthToken,omitempty"`
+	EnableAuthToken *bool `json:"enableAuthToken,omitempty" xml:"enableAuthToken,omitempty"`
+	// List of Prometheus instances.
 	PrometheusInstances []*UpdatePrometheusViewRequestPrometheusInstances `json:"prometheusInstances,omitempty" xml:"prometheusInstances,omitempty" type:"Repeated"`
+	// Prometheus view name.
+	//
 	// example:
 	//
 	// test-prom-view-name
 	PrometheusViewName *string `json:"prometheusViewName,omitempty" xml:"prometheusViewName,omitempty"`
+	// Running status.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Belonging workspace.
+	//
 	// example:
 	//
 	// default-cms-108490012345-cn-heyuan
@@ -138,14 +169,20 @@ func (s *UpdatePrometheusViewRequest) Validate() error {
 }
 
 type UpdatePrometheusViewRequestPrometheusInstances struct {
+	// Instance ID.
+	//
 	// example:
 	//
 	// c7ba84651c71e442c8d0653085d862164
 	PrometheusInstanceId *string `json:"prometheusInstanceId,omitempty" xml:"prometheusInstanceId,omitempty"`
+	// Region.
+	//
 	// example:
 	//
 	// cn-north-2-gov-1
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// User ID.
+	//
 	// example:
 	//
 	// 16727123456789

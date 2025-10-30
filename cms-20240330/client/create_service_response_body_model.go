@@ -18,14 +18,20 @@ type iCreateServiceResponseBody interface {
 }
 
 type CreateServiceResponseBody struct {
+	// Historical compatible ARMS application ID
+	//
 	// example:
 	//
 	// cwzxvuc6uo@d60088ad4797d26
 	Pid *string `json:"pid,omitempty" xml:"pid,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 3A2FA9E9-9CF1-5CB1-A808-52828F14310D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Service ID
+	//
 	// example:
 	//
 	// cwzxvuc6uo@4bc6b15ad81f166174ffb

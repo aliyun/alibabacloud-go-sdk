@@ -18,14 +18,20 @@ type iListServicesRequest interface {
 }
 
 type ListServicesRequest struct {
+	// The maximum number of records to return in this request.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Token for the next query, an empty value indicates the last page.
+	//
 	// example:
 	//
 	// 7-b81a-4bc9-bbfa-a50cc6988667
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Service type
+	//
 	// example:
 	//
 	// apm

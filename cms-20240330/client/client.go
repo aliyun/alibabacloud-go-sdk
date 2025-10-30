@@ -58,7 +58,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 安装接入组件，代表进行一次接入
+// # Install the access component, representing a single access attempt
+//
+// Description:
+//
+// # Used to create a site monitoring task
 //
 // @param request - CreateAddonReleaseRequest
 //
@@ -141,7 +145,11 @@ func (client *Client) CreateAddonReleaseWithOptions(policyId *string, request *C
 
 // Summary:
 //
-// 安装接入组件，代表进行一次接入
+// # Install the access component, representing a single access attempt
+//
+// Description:
+//
+// # Used to create a site monitoring task
 //
 // @param request - CreateAddonReleaseRequest
 //
@@ -160,7 +168,7 @@ func (client *Client) CreateAddonRelease(policyId *string, request *CreateAddonR
 
 // Summary:
 //
-// 创建聚合任务组
+// # Create Aggregation Task Group
 //
 // @param request - CreateAggTaskGroupRequest
 //
@@ -273,7 +281,7 @@ func (client *Client) CreateAggTaskGroupWithOptions(instanceId *string, request 
 
 // Summary:
 //
-// 创建聚合任务组
+// # Create Aggregation Task Group
 //
 // @param request - CreateAggTaskGroupRequest
 //
@@ -292,7 +300,7 @@ func (client *Client) CreateAggTaskGroup(instanceId *string, request *CreateAggT
 
 // Summary:
 //
-// 创建EntityStore相关存储
+// # Create storage related to EntityStore
 //
 // @param headers - map
 //
@@ -325,7 +333,7 @@ func (client *Client) CreateEntityStoreWithOptions(workspaceName *string, header
 
 // Summary:
 //
-// 创建EntityStore相关存储
+// # Create storage related to EntityStore
 //
 // @return CreateEntityStoreResponse
 func (client *Client) CreateEntityStore(workspaceName *string) (_result *CreateEntityStoreResponse, _err error) {
@@ -342,7 +350,11 @@ func (client *Client) CreateEntityStore(workspaceName *string) (_result *CreateE
 
 // Summary:
 //
-// 创建接入中心策略
+// # Create Access Center Policy
+//
+// Description:
+//
+// This interface is used to support users in creating event integration.
 //
 // @param request - CreateIntegrationPolicyRequest
 //
@@ -409,7 +421,11 @@ func (client *Client) CreateIntegrationPolicyWithOptions(request *CreateIntegrat
 
 // Summary:
 //
-// 创建接入中心策略
+// # Create Access Center Policy
+//
+// Description:
+//
+// This interface is used to support users in creating event integration.
 //
 // @param request - CreateIntegrationPolicyRequest
 //
@@ -428,7 +444,7 @@ func (client *Client) CreateIntegrationPolicy(request *CreateIntegrationPolicyRe
 
 // Summary:
 //
-// 创建Prometheus监控实例
+// # Create a Prometheus monitoring instance
 //
 // @param request - CreatePrometheusInstanceRequest
 //
@@ -519,7 +535,7 @@ func (client *Client) CreatePrometheusInstanceWithOptions(request *CreatePrometh
 
 // Summary:
 //
-// 创建Prometheus监控实例
+// # Create a Prometheus monitoring instance
 //
 // @param request - CreatePrometheusInstanceRequest
 //
@@ -538,7 +554,11 @@ func (client *Client) CreatePrometheusInstance(request *CreatePrometheusInstance
 
 // Summary:
 //
-// 创建prometheus视图
+// # Create Prometheus View
+//
+// Description:
+//
+// # Used to create a site monitoring task
 //
 // @param request - CreatePrometheusViewRequest
 //
@@ -621,7 +641,11 @@ func (client *Client) CreatePrometheusViewWithOptions(request *CreatePrometheusV
 
 // Summary:
 //
-// 创建prometheus视图
+// # Create Prometheus View
+//
+// Description:
+//
+// # Used to create a site monitoring task
 //
 // @param request - CreatePrometheusViewRequest
 //
@@ -640,7 +664,11 @@ func (client *Client) CreatePrometheusView(request *CreatePrometheusViewRequest)
 
 // Summary:
 //
-// 创建Prometheus监控实例
+// # Create Prometheus Monitoring Instance
+//
+// Description:
+//
+// Create a Prometheus monitoring virtual instance.
 //
 // @param request - CreatePrometheusVirtualInstanceRequest
 //
@@ -687,7 +715,11 @@ func (client *Client) CreatePrometheusVirtualInstanceWithOptions(request *Create
 
 // Summary:
 //
-// 创建Prometheus监控实例
+// # Create Prometheus Monitoring Instance
+//
+// Description:
+//
+// Create a Prometheus monitoring virtual instance.
 //
 // @param request - CreatePrometheusVirtualInstanceRequest
 //
@@ -706,7 +738,7 @@ func (client *Client) CreatePrometheusVirtualInstance(request *CreatePrometheusV
 
 // Summary:
 //
-// 创建Service
+// # Create Service
 //
 // @param request - CreateServiceRequest
 //
@@ -777,7 +809,7 @@ func (client *Client) CreateServiceWithOptions(workspace *string, request *Creat
 
 // Summary:
 //
-// 创建Service
+// # Create Service
 //
 // @param request - CreateServiceRequest
 //
@@ -796,7 +828,7 @@ func (client *Client) CreateService(workspace *string, request *CreateServiceReq
 
 // Summary:
 //
-// 创建票据
+// # Create Ticket
 //
 // @param request - CreateTicketRequest
 //
@@ -847,7 +879,7 @@ func (client *Client) CreateTicketWithOptions(request *CreateTicketRequest, head
 
 // Summary:
 //
-// 创建票据
+// # Create Ticket
 //
 // @param request - CreateTicketRequest
 //
@@ -866,7 +898,11 @@ func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *Creat
 
 // Summary:
 //
-// 创建Umodel配置
+// # Create Umodel configuration
+//
+// Description:
+//
+// # Create Umodel configuration in the specified workspace
 //
 // @param request - CreateUmodelRequest
 //
@@ -913,7 +949,11 @@ func (client *Client) CreateUmodelWithOptions(workspace *string, request *Create
 
 // Summary:
 //
-// 创建Umodel配置
+// # Create Umodel configuration
+//
+// Description:
+//
+// # Create Umodel configuration in the specified workspace
 //
 // @param request - CreateUmodelRequest
 //
@@ -932,7 +972,7 @@ func (client *Client) CreateUmodel(workspace *string, request *CreateUmodelReque
 
 // Summary:
 //
-// 删除addon release信息
+// # Delete addon release information
 //
 // @param request - DeleteAddonReleaseRequest
 //
@@ -987,7 +1027,7 @@ func (client *Client) DeleteAddonReleaseWithOptions(policyId *string, request *D
 
 // Summary:
 //
-// 删除addon release信息
+// # Delete addon release information
 //
 // @param request - DeleteAddonReleaseRequest
 //
@@ -1006,7 +1046,7 @@ func (client *Client) DeleteAddonRelease(policyId *string, request *DeleteAddonR
 
 // Summary:
 //
-// 删除聚合任务组
+// # Delete Aggregation Task Group
 //
 // @param headers - map
 //
@@ -1039,7 +1079,7 @@ func (client *Client) DeleteAggTaskGroupWithOptions(instanceId *string, groupId 
 
 // Summary:
 //
-// 删除聚合任务组
+// # Delete Aggregation Task Group
 //
 // @return DeleteAggTaskGroupResponse
 func (client *Client) DeleteAggTaskGroup(instanceId *string, groupId *string) (_result *DeleteAggTaskGroupResponse, _err error) {
@@ -1056,7 +1096,7 @@ func (client *Client) DeleteAggTaskGroup(instanceId *string, groupId *string) (_
 
 // Summary:
 //
-// 删除EntityStore相关存储
+// # Delete EntityStore related storage
 //
 // @param headers - map
 //
@@ -1089,7 +1129,7 @@ func (client *Client) DeleteEntityStoreWithOptions(workspaceName *string, header
 
 // Summary:
 //
-// 删除EntityStore相关存储
+// # Delete EntityStore related storage
 //
 // @return DeleteEntityStoreResponse
 func (client *Client) DeleteEntityStore(workspaceName *string) (_result *DeleteEntityStoreResponse, _err error) {
@@ -1106,7 +1146,7 @@ func (client *Client) DeleteEntityStore(workspaceName *string) (_result *DeleteE
 
 // Summary:
 //
-// 删除接入中心策略
+// # Delete Access Center Policy
 //
 // @param request - DeleteIntegrationPolicyRequest
 //
@@ -1153,7 +1193,7 @@ func (client *Client) DeleteIntegrationPolicyWithOptions(policyId *string, reque
 
 // Summary:
 //
-// 删除接入中心策略
+// # Delete Access Center Policy
 //
 // @param request - DeleteIntegrationPolicyRequest
 //
@@ -1172,7 +1212,11 @@ func (client *Client) DeleteIntegrationPolicy(policyId *string, request *DeleteI
 
 // Summary:
 //
-// 删除prom实例
+// # Delete prom instance
+//
+// Description:
+//
+// Delete a Prometheus instance.
 //
 // @param headers - map
 //
@@ -1205,7 +1249,11 @@ func (client *Client) DeletePrometheusInstanceWithOptions(prometheusInstanceId *
 
 // Summary:
 //
-// 删除prom实例
+// # Delete prom instance
+//
+// Description:
+//
+// Delete a Prometheus instance.
 //
 // @return DeletePrometheusInstanceResponse
 func (client *Client) DeletePrometheusInstance(prometheusInstanceId *string) (_result *DeletePrometheusInstanceResponse, _err error) {
@@ -1222,7 +1270,11 @@ func (client *Client) DeletePrometheusInstance(prometheusInstanceId *string) (_r
 
 // Summary:
 //
-// 删除prometheus视图实例
+// # Delete prometheus view instance
+//
+// Description:
+//
+// Delete prometheus view instance.
 //
 // @param headers - map
 //
@@ -1255,7 +1307,11 @@ func (client *Client) DeletePrometheusViewWithOptions(prometheusViewId *string, 
 
 // Summary:
 //
-// 删除prometheus视图实例
+// # Delete prometheus view instance
+//
+// Description:
+//
+// Delete prometheus view instance.
 //
 // @return DeletePrometheusViewResponse
 func (client *Client) DeletePrometheusView(prometheusViewId *string) (_result *DeletePrometheusViewResponse, _err error) {
@@ -1272,7 +1328,7 @@ func (client *Client) DeletePrometheusView(prometheusViewId *string) (_result *D
 
 // Summary:
 //
-// 删除Service
+// # Delete Service
 //
 // @param headers - map
 //
@@ -1305,7 +1361,7 @@ func (client *Client) DeleteServiceWithOptions(workspace *string, serviceId *str
 
 // Summary:
 //
-// 删除Service
+// # Delete Service
 //
 // @return DeleteServiceResponse
 func (client *Client) DeleteService(workspace *string, serviceId *string) (_result *DeleteServiceResponse, _err error) {
@@ -1322,7 +1378,11 @@ func (client *Client) DeleteService(workspace *string, serviceId *string) (_resu
 
 // Summary:
 //
-// 删除Umodel配置信息
+// # Delete Umodel configuration information
+//
+// Description:
+//
+// # Delete the Umodel under the specified workspace
 //
 // @param headers - map
 //
@@ -1355,7 +1415,11 @@ func (client *Client) DeleteUmodelWithOptions(workspace *string, headers map[str
 
 // Summary:
 //
-// 删除Umodel配置信息
+// # Delete Umodel configuration information
+//
+// Description:
+//
+// # Delete the Umodel under the specified workspace
 //
 // @return DeleteUmodelResponse
 func (client *Client) DeleteUmodel(workspace *string) (_result *DeleteUmodelResponse, _err error) {
@@ -1372,7 +1436,11 @@ func (client *Client) DeleteUmodel(workspace *string) (_result *DeleteUmodelResp
 
 // Summary:
 //
-// 删除 Umodel Elements
+// # Delete Umodel Elements
+//
+// Description:
+//
+// # Delete the Umodel Data under a specified workspace
 //
 // @param request - DeleteUmodelDataRequest
 //
@@ -1427,7 +1495,11 @@ func (client *Client) DeleteUmodelDataWithOptions(workspace *string, request *De
 
 // Summary:
 //
-// 删除 Umodel Elements
+// # Delete Umodel Elements
+//
+// Description:
+//
+// # Delete the Umodel Data under a specified workspace
 //
 // @param request - DeleteUmodelDataRequest
 //
@@ -1446,7 +1518,7 @@ func (client *Client) DeleteUmodelData(workspace *string, request *DeleteUmodelD
 
 // Summary:
 //
-// 删除工作空间
+// # Delete Workspace
 //
 // @param headers - map
 //
@@ -1479,7 +1551,7 @@ func (client *Client) DeleteWorkspaceWithOptions(workspaceName *string, headers 
 
 // Summary:
 //
-// 删除工作空间
+// # Delete Workspace
 //
 // @return DeleteWorkspaceResponse
 func (client *Client) DeleteWorkspace(workspaceName *string) (_result *DeleteWorkspaceResponse, _err error) {
@@ -1496,7 +1568,7 @@ func (client *Client) DeleteWorkspace(workspaceName *string) (_result *DeleteWor
 
 // Summary:
 //
-// 查看addon release(查看接入状态)
+// Check addon release (view connection status)
 //
 // @param headers - map
 //
@@ -1529,7 +1601,7 @@ func (client *Client) GetAddonReleaseWithOptions(releaseName *string, policyId *
 
 // Summary:
 //
-// 查看addon release(查看接入状态)
+// Check addon release (view connection status)
 //
 // @return GetAddonReleaseResponse
 func (client *Client) GetAddonRelease(releaseName *string, policyId *string) (_result *GetAddonReleaseResponse, _err error) {
@@ -1546,7 +1618,7 @@ func (client *Client) GetAddonRelease(releaseName *string, policyId *string) (_r
 
 // Summary:
 //
-// 描述聚合任务组
+// # Describes the aggregation task group
 //
 // @param headers - map
 //
@@ -1579,7 +1651,7 @@ func (client *Client) GetAggTaskGroupWithOptions(instanceId *string, groupId *st
 
 // Summary:
 //
-// 描述聚合任务组
+// # Describes the aggregation task group
 //
 // @return GetAggTaskGroupResponse
 func (client *Client) GetAggTaskGroup(instanceId *string, groupId *string) (_result *GetAggTaskGroupResponse, _err error) {
@@ -1596,7 +1668,7 @@ func (client *Client) GetAggTaskGroup(instanceId *string, groupId *string) (_res
 
 // Summary:
 //
-// 获取EntityStore相关存储信息
+// # Get EntityStore related storage information
 //
 // @param headers - map
 //
@@ -1629,7 +1701,7 @@ func (client *Client) GetEntityStoreWithOptions(workspaceName *string, headers m
 
 // Summary:
 //
-// 获取EntityStore相关存储信息
+// # Get EntityStore related storage information
 //
 // @return GetEntityStoreResponse
 func (client *Client) GetEntityStore(workspaceName *string) (_result *GetEntityStoreResponse, _err error) {
@@ -1646,7 +1718,7 @@ func (client *Client) GetEntityStore(workspaceName *string) (_result *GetEntityS
 
 // Summary:
 //
-// 查询指定Workspace下的实体和关系数据，返回结果显示某时间区间中的实体数据（返回结果压缩后传输）。
+// Query the entity and relationship data under a specified Workspace, returning the entity data within a certain time range (the returned result is transmitted after compression).
 //
 // @param request - GetEntityStoreDataRequest
 //
@@ -1710,7 +1782,7 @@ func (client *Client) GetEntityStoreDataWithOptions(workspace *string, request *
 
 // Summary:
 //
-// 查询指定Workspace下的实体和关系数据，返回结果显示某时间区间中的实体数据（返回结果压缩后传输）。
+// Query the entity and relationship data under a specified Workspace, returning the entity data within a certain time range (the returned result is transmitted after compression).
 //
 // @param request - GetEntityStoreDataRequest
 //
@@ -1729,7 +1801,7 @@ func (client *Client) GetEntityStoreData(workspace *string, request *GetEntitySt
 
 // Summary:
 //
-// 查询接入中心策略列表信息
+// # Query the list of access center policies
 //
 // @param headers - map
 //
@@ -1762,7 +1834,7 @@ func (client *Client) GetIntegrationPolicyWithOptions(policyId *string, headers 
 
 // Summary:
 //
-// 查询接入中心策略列表信息
+// # Query the list of access center policies
 //
 // @return GetIntegrationPolicyResponse
 func (client *Client) GetIntegrationPolicy(policyId *string) (_result *GetIntegrationPolicyResponse, _err error) {
@@ -1779,7 +1851,11 @@ func (client *Client) GetIntegrationPolicy(policyId *string) (_result *GetIntegr
 
 // Summary:
 //
-// 查询指定环境实例
+// # Query the instance in a specified environment
+//
+// Description:
+//
+// Retrieve details of a Prometheus instance.
 //
 // @param request - GetPrometheusInstanceRequest
 //
@@ -1830,7 +1906,11 @@ func (client *Client) GetPrometheusInstanceWithOptions(prometheusInstanceId *str
 
 // Summary:
 //
-// 查询指定环境实例
+// # Query the instance in a specified environment
+//
+// Description:
+//
+// Retrieve details of a Prometheus instance.
 //
 // @param request - GetPrometheusInstanceRequest
 //
@@ -1849,7 +1929,11 @@ func (client *Client) GetPrometheusInstance(prometheusInstanceId *string, reques
 
 // Summary:
 //
-// 查询指定Prometheus视图实例
+// # Query a specified Prometheus view instance
+//
+// Description:
+//
+// Query a specified Prometheus view instance.
 //
 // @param request - GetPrometheusViewRequest
 //
@@ -1900,7 +1984,11 @@ func (client *Client) GetPrometheusViewWithOptions(prometheusViewId *string, req
 
 // Summary:
 //
-// 查询指定Prometheus视图实例
+// # Query a specified Prometheus view instance
+//
+// Description:
+//
+// Query a specified Prometheus view instance.
 //
 // @param request - GetPrometheusViewRequest
 //
@@ -1919,7 +2007,7 @@ func (client *Client) GetPrometheusView(prometheusViewId *string, request *GetPr
 
 // Summary:
 //
-// 查询 Service
+// # Query Service
 //
 // @param headers - map
 //
@@ -1952,7 +2040,7 @@ func (client *Client) GetServiceWithOptions(workspace *string, serviceId *string
 
 // Summary:
 //
-// 查询 Service
+// # Query Service
 //
 // @return GetServiceResponse
 func (client *Client) GetService(workspace *string, serviceId *string) (_result *GetServiceResponse, _err error) {
@@ -1969,7 +2057,7 @@ func (client *Client) GetService(workspace *string, serviceId *string) (_result 
 
 // Summary:
 //
-// 获取应用可观测实例
+// # Get Application Observability Instance
 //
 // @param headers - map
 //
@@ -2002,7 +2090,7 @@ func (client *Client) GetServiceObservabilityWithOptions(workspace *string, _typ
 
 // Summary:
 //
-// 获取应用可观测实例
+// # Get Application Observability Instance
 //
 // @return GetServiceObservabilityResponse
 func (client *Client) GetServiceObservability(workspace *string, _type *string) (_result *GetServiceObservabilityResponse, _err error) {
@@ -2019,7 +2107,11 @@ func (client *Client) GetServiceObservability(workspace *string, _type *string) 
 
 // Summary:
 //
-// 获取Umodel配置信息
+// # Get Umodel configuration information
+//
+// Description:
+//
+// # Get Umodel configuration information
 //
 // @param headers - map
 //
@@ -2052,7 +2144,11 @@ func (client *Client) GetUmodelWithOptions(workspace *string, headers map[string
 
 // Summary:
 //
-// 获取Umodel配置信息
+// # Get Umodel configuration information
+//
+// Description:
+//
+// # Get Umodel configuration information
 //
 // @return GetUmodelResponse
 func (client *Client) GetUmodel(workspace *string) (_result *GetUmodelResponse, _err error) {
@@ -2069,7 +2165,11 @@ func (client *Client) GetUmodel(workspace *string) (_result *GetUmodelResponse, 
 
 // Summary:
 //
-// 获取相关联的 Umodel 图数据
+// # Retrieve associated Umodel graph data
+//
+// Description:
+//
+// # Find Umodel
 //
 // @param request - GetUmodelDataRequest
 //
@@ -2122,7 +2222,11 @@ func (client *Client) GetUmodelDataWithOptions(workspace *string, request *GetUm
 
 // Summary:
 //
-// 获取相关联的 Umodel 图数据
+// # Retrieve associated Umodel graph data
+//
+// Description:
+//
+// # Find Umodel
 //
 // @param request - GetUmodelDataRequest
 //
@@ -2141,7 +2245,7 @@ func (client *Client) GetUmodelData(workspace *string, request *GetUmodelDataReq
 
 // Summary:
 //
-// 获取工作空间
+// # Get Workspace
 //
 // @param headers - map
 //
@@ -2174,7 +2278,7 @@ func (client *Client) GetWorkspaceWithOptions(workspaceName *string, headers map
 
 // Summary:
 //
-// 获取工作空间
+// # Get Workspace
 //
 // @return GetWorkspaceResponse
 func (client *Client) GetWorkspace(workspaceName *string) (_result *GetWorkspaceResponse, _err error) {
@@ -2191,7 +2295,11 @@ func (client *Client) GetWorkspace(workspaceName *string) (_result *GetWorkspace
 
 // Summary:
 //
-// addon的release列表
+// # List of addon releases
+//
+// Description:
+//
+// # Query the list of access configurations
 //
 // @param request - ListAddonReleasesRequest
 //
@@ -2242,7 +2350,11 @@ func (client *Client) ListAddonReleasesWithOptions(policyId *string, request *Li
 
 // Summary:
 //
-// addon的release列表
+// # List of addon releases
+//
+// Description:
+//
+// # Query the list of access configurations
 //
 // @param request - ListAddonReleasesRequest
 //
@@ -2261,7 +2373,7 @@ func (client *Client) ListAddonReleases(policyId *string, request *ListAddonRele
 
 // Summary:
 //
-// 列举聚合任务组
+// # List Aggregation Task Groups
 //
 // @param tmpReq - ListAggTaskGroupsRequest
 //
@@ -2342,7 +2454,7 @@ func (client *Client) ListAggTaskGroupsWithOptions(instanceId *string, tmpReq *L
 
 // Summary:
 //
-// 列举聚合任务组
+// # List Aggregation Task Groups
 //
 // @param request - ListAggTaskGroupsRequest
 //
@@ -2361,7 +2473,7 @@ func (client *Client) ListAggTaskGroups(instanceId *string, request *ListAggTask
 
 // Summary:
 //
-// 查询告警动作
+// # Query Alert Actions
 //
 // @param tmpReq - ListAlertActionsRequest
 //
@@ -2430,7 +2542,7 @@ func (client *Client) ListAlertActionsWithOptions(tmpReq *ListAlertActionsReques
 
 // Summary:
 //
-// 查询告警动作
+// # Query Alert Actions
 //
 // @param request - ListAlertActionsRequest
 //
@@ -2449,7 +2561,11 @@ func (client *Client) ListAlertActions(request *ListAlertActionsRequest) (_resul
 
 // Summary:
 //
-// 查询接入中心策略列表信息
+// # Query Access Center Policy List Information
+//
+// Description:
+//
+// # Query Integration List
 //
 // @param tmpReq - ListIntegrationPoliciesRequest
 //
@@ -2554,7 +2670,11 @@ func (client *Client) ListIntegrationPoliciesWithOptions(tmpReq *ListIntegration
 
 // Summary:
 //
-// 查询接入中心策略列表信息
+// # Query Access Center Policy List Information
+//
+// Description:
+//
+// # Query Integration List
 //
 // @param request - ListIntegrationPoliciesRequest
 //
@@ -2573,7 +2693,7 @@ func (client *Client) ListIntegrationPolicies(request *ListIntegrationPoliciesRe
 
 // Summary:
 //
-// 获取接入中心策略的存储要求信息
+// # Get storage requirement information for the access center policy
 //
 // @param request - ListIntegrationPolicyCustomScrapeJobRulesRequest
 //
@@ -2628,7 +2748,7 @@ func (client *Client) ListIntegrationPolicyCustomScrapeJobRulesWithOptions(polic
 
 // Summary:
 //
-// 获取接入中心策略的存储要求信息
+// # Get storage requirement information for the access center policy
 //
 // @param request - ListIntegrationPolicyCustomScrapeJobRulesRequest
 //
@@ -2647,7 +2767,11 @@ func (client *Client) ListIntegrationPolicyCustomScrapeJobRules(policyId *string
 
 // Summary:
 //
-// 策略大盘列表
+// # Policy Dashboard List
+//
+// Description:
+//
+// This article provides an example of querying the alarm template list. The result shows that there are 2 alarm templates in the list, which are `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - ListIntegrationPolicyDashboardsRequest
 //
@@ -2702,7 +2826,11 @@ func (client *Client) ListIntegrationPolicyDashboardsWithOptions(policyId *strin
 
 // Summary:
 //
-// 策略大盘列表
+// # Policy Dashboard List
+//
+// Description:
+//
+// This article provides an example of querying the alarm template list. The result shows that there are 2 alarm templates in the list, which are `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - ListIntegrationPolicyDashboardsRequest
 //
@@ -2721,7 +2849,11 @@ func (client *Client) ListIntegrationPolicyDashboards(policyId *string, request 
 
 // Summary:
 //
-// 获取接入中心策略的PodMonitor资源
+// # Get PodMonitor Resources of Access Center Policy
+//
+// Description:
+//
+// This article provides an example to query the alarm template list. The result shows that there are 2 alarm templates in the alarm template list, which are `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - ListIntegrationPolicyPodMonitorsRequest
 //
@@ -2776,7 +2908,11 @@ func (client *Client) ListIntegrationPolicyPodMonitorsWithOptions(policyId *stri
 
 // Summary:
 //
-// 获取接入中心策略的PodMonitor资源
+// # Get PodMonitor Resources of Access Center Policy
+//
+// Description:
+//
+// This article provides an example to query the alarm template list. The result shows that there are 2 alarm templates in the alarm template list, which are `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - ListIntegrationPolicyPodMonitorsRequest
 //
@@ -2795,7 +2931,13 @@ func (client *Client) ListIntegrationPolicyPodMonitors(policyId *string, request
 
 // Summary:
 //
-// 获取接入中心策略的存储要求信息
+// # Get Storage Requirements Information for Access Center Policy
+//
+// Description:
+//
+// During the effective period of the policy, all alarms within the application group will no longer send notifications.
+//
+// This article provides an example of creating a pause alarm notification policy `PauseNotify` for the application group `7301****`. This application group will pause alarms from `1622949300000` to `1623208500000` (Beijing Time `2021-06-06 11:15:00` to `2021-06-09 11:15:00`).
 //
 // @param request - ListIntegrationPolicyStorageRequirementsRequest
 //
@@ -2850,7 +2992,13 @@ func (client *Client) ListIntegrationPolicyStorageRequirementsWithOptions(policy
 
 // Summary:
 //
-// 获取接入中心策略的存储要求信息
+// # Get Storage Requirements Information for Access Center Policy
+//
+// Description:
+//
+// During the effective period of the policy, all alarms within the application group will no longer send notifications.
+//
+// This article provides an example of creating a pause alarm notification policy `PauseNotify` for the application group `7301****`. This application group will pause alarms from `1622949300000` to `1623208500000` (Beijing Time `2021-06-06 11:15:00` to `2021-06-09 11:15:00`).
 //
 // @param request - ListIntegrationPolicyStorageRequirementsRequest
 //
@@ -2869,7 +3017,11 @@ func (client *Client) ListIntegrationPolicyStorageRequirements(policyId *string,
 
 // Summary:
 //
-// 获取Prometheus实例大盘列表
+// # Get Prometheus Instance Dashboard List
+//
+// Description:
+//
+// Get the list of Prometheus instance dashboards.
 //
 // @param request - ListPrometheusDashboardsRequest
 //
@@ -2920,7 +3072,11 @@ func (client *Client) ListPrometheusDashboardsWithOptions(prometheusInstanceId *
 
 // Summary:
 //
-// 获取Prometheus实例大盘列表
+// # Get Prometheus Instance Dashboard List
+//
+// Description:
+//
+// Get the list of Prometheus instance dashboards.
 //
 // @param request - ListPrometheusDashboardsRequest
 //
@@ -2939,7 +3095,11 @@ func (client *Client) ListPrometheusDashboards(prometheusInstanceId *string, req
 
 // Summary:
 //
-// 获取Prometheus实例信息列表
+// # Get the list of Prometheus instance information
+//
+// Description:
+//
+// Get the list of Prometheus instances.
 //
 // @param tmpReq - ListPrometheusInstancesRequest
 //
@@ -3024,7 +3184,11 @@ func (client *Client) ListPrometheusInstancesWithOptions(tmpReq *ListPrometheusI
 
 // Summary:
 //
-// 获取Prometheus实例信息列表
+// # Get the list of Prometheus instance information
+//
+// Description:
+//
+// Get the list of Prometheus instances.
 //
 // @param request - ListPrometheusInstancesRequest
 //
@@ -3043,7 +3207,11 @@ func (client *Client) ListPrometheusInstances(request *ListPrometheusInstancesRe
 
 // Summary:
 //
-// 获取Prometheus视图实例信息列表
+// # Retrieve a list of Prometheus view instance information
+//
+// Description:
+//
+// Retrieve a list of Prometheus view instance information.
 //
 // @param tmpReq - ListPrometheusViewsRequest
 //
@@ -3132,7 +3300,11 @@ func (client *Client) ListPrometheusViewsWithOptions(tmpReq *ListPrometheusViews
 
 // Summary:
 //
-// 获取Prometheus视图实例信息列表
+// # Retrieve a list of Prometheus view instance information
+//
+// Description:
+//
+// Retrieve a list of Prometheus view instance information.
 //
 // @param request - ListPrometheusViewsRequest
 //
@@ -3151,7 +3323,11 @@ func (client *Client) ListPrometheusViews(request *ListPrometheusViewsRequest) (
 
 // Summary:
 //
-// 获取Prometheus虚拟实例
+// # Get Prometheus Virtual Instance
+//
+// Description:
+//
+// # Used for creating a site monitoring task
 //
 // @param request - ListPrometheusVirtualInstancesRequest
 //
@@ -3198,7 +3374,11 @@ func (client *Client) ListPrometheusVirtualInstancesWithOptions(request *ListPro
 
 // Summary:
 //
-// 获取Prometheus虚拟实例
+// # Get Prometheus Virtual Instance
+//
+// Description:
+//
+// # Used for creating a site monitoring task
 //
 // @param request - ListPrometheusVirtualInstancesRequest
 //
@@ -3217,7 +3397,7 @@ func (client *Client) ListPrometheusVirtualInstances(request *ListPrometheusVirt
 
 // Summary:
 //
-// 列出资源Service
+// # List Resource Services
 //
 // @param request - ListServicesRequest
 //
@@ -3272,7 +3452,7 @@ func (client *Client) ListServicesWithOptions(workspace *string, request *ListSe
 
 // Summary:
 //
-// 列出资源Service
+// # List Resource Services
 //
 // @param request - ListServicesRequest
 //
@@ -3291,7 +3471,7 @@ func (client *Client) ListServices(workspace *string, request *ListServicesReque
 
 // Summary:
 //
-// 获取工作空间列表
+// # Get Workspace List
 //
 // @param tmpReq - ListWorkspacesRequest
 //
@@ -3360,7 +3540,7 @@ func (client *Client) ListWorkspacesWithOptions(tmpReq *ListWorkspacesRequest, h
 
 // Summary:
 //
-// 获取工作空间列表
+// # Get Workspace List
 //
 // @param request - ListWorkspacesRequest
 //
@@ -3379,7 +3559,7 @@ func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *L
 
 // Summary:
 //
-// 创建工作空间
+// # Create Workspace
 //
 // @param request - PutWorkspaceRequest
 //
@@ -3434,7 +3614,7 @@ func (client *Client) PutWorkspaceWithOptions(workspaceName *string, request *Pu
 
 // Summary:
 //
-// 创建工作空间
+// # Create Workspace
 //
 // @param request - PutWorkspaceRequest
 //
@@ -3453,7 +3633,7 @@ func (client *Client) PutWorkspace(workspaceName *string, request *PutWorkspaceR
 
 // Summary:
 //
-// 升级接入组件
+// # Upgrade Access Component
 //
 // @param request - UpdateAddonReleaseRequest
 //
@@ -3512,7 +3692,7 @@ func (client *Client) UpdateAddonReleaseWithOptions(releaseName *string, policyI
 
 // Summary:
 //
-// 升级接入组件
+// # Upgrade Access Component
 //
 // @param request - UpdateAddonReleaseRequest
 //
@@ -3531,7 +3711,7 @@ func (client *Client) UpdateAddonRelease(releaseName *string, policyId *string, 
 
 // Summary:
 //
-// 应用聚合任务组
+// # Apply Aggregation Task Group
 //
 // @param request - UpdateAggTaskGroupRequest
 //
@@ -3638,7 +3818,7 @@ func (client *Client) UpdateAggTaskGroupWithOptions(instanceId *string, groupId 
 
 // Summary:
 //
-// 应用聚合任务组
+// # Apply Aggregation Task Group
 //
 // @param request - UpdateAggTaskGroupRequest
 //
@@ -3657,7 +3837,7 @@ func (client *Client) UpdateAggTaskGroup(instanceId *string, groupId *string, re
 
 // Summary:
 //
-// 更新聚合任务组状态
+// # Update Aggregation Task Group Status
 //
 // @param request - UpdateAggTaskGroupStatusRequest
 //
@@ -3704,7 +3884,7 @@ func (client *Client) UpdateAggTaskGroupStatusWithOptions(instanceId *string, gr
 
 // Summary:
 //
-// 更新聚合任务组状态
+// # Update Aggregation Task Group Status
 //
 // @param request - UpdateAggTaskGroupStatusRequest
 //
@@ -3723,7 +3903,7 @@ func (client *Client) UpdateAggTaskGroupStatus(instanceId *string, groupId *stri
 
 // Summary:
 //
-// 更新指定策略
+// # Update the specified policy
 //
 // @param request - UpdateIntegrationPolicyRequest
 //
@@ -3782,7 +3962,7 @@ func (client *Client) UpdateIntegrationPolicyWithOptions(integrationPolicyId *st
 
 // Summary:
 //
-// 更新指定策略
+// # Update the specified policy
 //
 // @param request - UpdateIntegrationPolicyRequest
 //
@@ -3801,7 +3981,11 @@ func (client *Client) UpdateIntegrationPolicy(integrationPolicyId *string, reque
 
 // Summary:
 //
-// 更新Prom实例信息
+// # Update Prometheus instance information
+//
+// Description:
+//
+// Update Prometheus instance information.
 //
 // @param request - UpdatePrometheusInstanceRequest
 //
@@ -3888,7 +4072,11 @@ func (client *Client) UpdatePrometheusInstanceWithOptions(prometheusInstanceId *
 
 // Summary:
 //
-// 更新Prom实例信息
+// # Update Prometheus instance information
+//
+// Description:
+//
+// Update Prometheus instance information.
 //
 // @param request - UpdatePrometheusInstanceRequest
 //
@@ -3907,7 +4095,11 @@ func (client *Client) UpdatePrometheusInstance(prometheusInstanceId *string, req
 
 // Summary:
 //
-// 更新Prom视图实例信息
+// # Update Prometheus view instance information
+//
+// Description:
+//
+// Update Prometheus view instance information.
 //
 // @param request - UpdatePrometheusViewRequest
 //
@@ -3978,7 +4170,11 @@ func (client *Client) UpdatePrometheusViewWithOptions(prometheusViewId *string, 
 
 // Summary:
 //
-// 更新Prom视图实例信息
+// # Update Prometheus view instance information
+//
+// Description:
+//
+// Update Prometheus view instance information.
 //
 // @param request - UpdatePrometheusViewRequest
 //
@@ -3997,7 +4193,7 @@ func (client *Client) UpdatePrometheusView(prometheusViewId *string, request *Up
 
 // Summary:
 //
-// 更新UpdateService
+// # Update Service
 //
 // @param request - UpdateServiceRequest
 //
@@ -4056,7 +4252,7 @@ func (client *Client) UpdateServiceWithOptions(workspace *string, serviceId *str
 
 // Summary:
 //
-// 更新UpdateService
+// # Update Service
 //
 // @param request - UpdateServiceRequest
 //
@@ -4075,7 +4271,11 @@ func (client *Client) UpdateService(workspace *string, serviceId *string, reques
 
 // Summary:
 //
-// 更新Umodel配置信息
+// # Update Umodel configuration information
+//
+// Description:
+//
+// # Update Umodel configuration information
 //
 // @param request - UpdateUmodelRequest
 //
@@ -4122,7 +4322,11 @@ func (client *Client) UpdateUmodelWithOptions(workspace *string, request *Update
 
 // Summary:
 //
-// 更新Umodel配置信息
+// # Update Umodel configuration information
+//
+// Description:
+//
+// # Update Umodel configuration information
 //
 // @param request - UpdateUmodelRequest
 //
@@ -4141,7 +4345,7 @@ func (client *Client) UpdateUmodel(workspace *string, request *UpdateUmodelReque
 
 // Summary:
 //
-// 写入 Umodel Elements
+// # Write Umodel Elements
 //
 // @param request - UpsertUmodelDataRequest
 //
@@ -4194,7 +4398,7 @@ func (client *Client) UpsertUmodelDataWithOptions(workspace *string, request *Up
 
 // Summary:
 //
-// 写入 Umodel Elements
+// # Write Umodel Elements
 //
 // @param request - UpsertUmodelDataRequest
 //

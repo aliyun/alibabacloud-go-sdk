@@ -17,6 +17,8 @@ type iGetEntityStoreDataHeaders interface {
 
 type GetEntityStoreDataHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// Content encoding type for the compression algorithm
+	//
 	// example:
 	//
 	// gzip

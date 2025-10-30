@@ -14,6 +14,8 @@ type iUpdateUmodelRequest interface {
 }
 
 type UpdateUmodelRequest struct {
+	// Description.
+	//
 	// example:
 	//
 	// workspace test

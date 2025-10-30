@@ -16,10 +16,14 @@ type iGetPrometheusInstanceRequest interface {
 }
 
 type GetPrometheusInstanceRequest struct {
+	// Language setting, default is Chinese zh | en
+	//
 	// example:
 	//
 	// zh
 	AliyunLang *string `json:"aliyunLang,omitempty" xml:"aliyunLang,omitempty"`
+	// Resource group ID.
+	//
 	// example:
 	//
 	// rg-aek2bhocin5e2na

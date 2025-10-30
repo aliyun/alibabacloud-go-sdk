@@ -16,6 +16,7 @@ type iGetPrometheusViewResponseBody interface {
 }
 
 type GetPrometheusViewResponseBody struct {
+	// View instance.
 	PrometheusView *GetPrometheusViewResponseBodyPrometheusView `json:"prometheusView,omitempty" xml:"prometheusView,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,101 +62,170 @@ func (s *GetPrometheusViewResponseBody) Validate() error {
 }
 
 type GetPrometheusViewResponseBodyPrometheusView struct {
+	// Password-free read policy (supports IP segments and VpcId).
+	//
 	// example:
 	//
-	// 0.0.0.0/0
+	// {
+	//
+	//   "SourceIp": [
+	//
+	//     "192.168.1.0/24",
+	//
+	//     "172.168.2.22"
+	//
+	//   ],
+	//
+	//   "SourceVpc": [
+	//
+	//     "vpc-xx1",
+	//
+	//     "vpc-xx2"
+	//
+	//   ]
+	//
+	// }
 	AuthFreeReadPolicy *string `json:"authFreeReadPolicy,omitempty" xml:"authFreeReadPolicy,omitempty"`
+	// authToken string.
+	//
 	// example:
 	//
 	// eJxxxxxx
 	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	// Instance creation time, using UTC+0 time, format is yyyy-MM-ddTHH:mmZ.
+	//
 	// example:
 	//
 	// 2025-08-10T02:07:53Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Whether to enable password-free read.
+	//
 	// example:
 	//
 	// true
 	EnableAuthFreeRead *bool `json:"enableAuthFreeRead,omitempty" xml:"enableAuthFreeRead,omitempty"`
+	// Whether to enable authToken.
+	//
 	// example:
 	//
 	// true
 	EnableAuthToken *bool `json:"enableAuthToken,omitempty" xml:"enableAuthToken,omitempty"`
+	// Observability dashboard URL.
+	//
 	// example:
 	//
 	// https://xxxx
 	FolderUrl *string `json:"folderUrl,omitempty" xml:"folderUrl,omitempty"`
+	// Bound managed Grafana instance ID.
+	//
 	// example:
 	//
 	// g-xxx
 	GrafanaInstanceId *string `json:"grafanaInstanceId,omitempty" xml:"grafanaInstanceId,omitempty"`
+	// Bound managed Grafana instance name.
+	//
 	// example:
 	//
 	// gxxx
 	GrafanaInstanceName *string `json:"grafanaInstanceName,omitempty" xml:"grafanaInstanceName,omitempty"`
+	// Public HTTP address.
+	//
 	// example:
 	//
 	// http://xxxxxxxx
 	HttpApiInterUrl *string `json:"httpApiInterUrl,omitempty" xml:"httpApiInterUrl,omitempty"`
+	// Private HTTP address.
+	//
 	// example:
 	//
 	// http://xxxxxxxx
 	HttpApiIntraUrl *string `json:"httpApiIntraUrl,omitempty" xml:"httpApiIntraUrl,omitempty"`
+	// Instance type, fixed value prom-view.
+	//
 	// example:
 	//
 	// prom-view
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// Payment type. Currently, the fixed value is FREE (free).
+	//
 	// example:
 	//
 	// FREE
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// Product that the prom instance belongs to.
+	//
 	// example:
 	//
 	// cms
-	Product             *string                                                           `json:"product,omitempty" xml:"product,omitempty"`
+	Product *string `json:"product,omitempty" xml:"product,omitempty"`
+	// Prometheus instance list.
 	PrometheusInstances []*GetPrometheusViewResponseBodyPrometheusViewPrometheusInstances `json:"prometheusInstances,omitempty" xml:"prometheusInstances,omitempty" type:"Repeated"`
+	// Prometheus view ID.
+	//
 	// example:
 	//
 	// view-xxx
 	PrometheusViewId *string `json:"prometheusViewId,omitempty" xml:"prometheusViewId,omitempty"`
+	// Prometheus view name.
+	//
 	// example:
 	//
 	// view1
 	PrometheusViewName *string `json:"prometheusViewName,omitempty" xml:"prometheusViewName,omitempty"`
+	// Region ID
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// Remote read public URL.
+	//
 	// example:
 	//
 	// http://workspace-default-cms-xxx-cn-hangzhou.cn-hangzhou.log.aliyuncs.com/prometheus/workspace-default-cms-xxx-cn-hangzhou/xxx/api/v1/read
 	RemoteReadInterUrl *string `json:"remoteReadInterUrl,omitempty" xml:"remoteReadInterUrl,omitempty"`
+	// Remote read intranet URL.
+	//
 	// example:
 	//
 	// http://workspace-default-cms-xxx-cn-hangzhou.cn-hangzhou-intranet.log.aliyuncs.com/prometheus/workspace-default-cms-xxx-cn-hangzhou/xxx/api/v1/read
 	RemoteReadIntraUrl *string `json:"remoteReadIntraUrl,omitempty" xml:"remoteReadIntraUrl,omitempty"`
+	// Resource group ID.
+	//
 	// example:
 	//
 	// rg-acfm3gn5i6bigbi
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// Fixed value: PrometheusView
+	//
 	// example:
 	//
 	// RegistryModule
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// Backend data storage status
+	//
 	// example:
 	//
 	// Pending2Running
-	Status           *string                                            `json:"status,omitempty" xml:"status,omitempty"`
-	SupportAuthTypes []*string                                          `json:"supportAuthTypes,omitempty" xml:"supportAuthTypes,omitempty" type:"Repeated"`
-	Tags             []*GetPrometheusViewResponseBodyPrometheusViewTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Supported authentication types.
+	SupportAuthTypes []*string `json:"supportAuthTypes,omitempty" xml:"supportAuthTypes,omitempty" type:"Repeated"`
+	// Instance tag keys.
+	Tags []*GetPrometheusViewResponseBodyPrometheusViewTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// User ID.
+	//
 	// example:
 	//
 	// 11222
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// Version.
+	//
 	// example:
 	//
 	// V1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// Workspace to which the environment belongs
+	//
 	// example:
 	//
 	// cms-monitor-test-aysls-pub-cn-fuzhou-monitor
@@ -436,14 +506,20 @@ func (s *GetPrometheusViewResponseBodyPrometheusView) Validate() error {
 }
 
 type GetPrometheusViewResponseBodyPrometheusViewPrometheusInstances struct {
+	// Instance ID.
+	//
 	// example:
 	//
 	// rw-63549e054ff596a4149927961dff
 	PrometheusInstanceId *string `json:"prometheusInstanceId,omitempty" xml:"prometheusInstanceId,omitempty"`
+	// Region ID
+	//
 	// example:
 	//
 	// cn-north-2-gov-1
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// User ID.
+	//
 	// example:
 	//
 	// 122xxxxx
@@ -490,10 +566,14 @@ func (s *GetPrometheusViewResponseBodyPrometheusViewPrometheusInstances) Validat
 }
 
 type GetPrometheusViewResponseBodyPrometheusViewTags struct {
+	// PagerDuty integration key.
+	//
 	// example:
 	//
 	// global_score_series
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// Tag value.
+	//
 	// example:
 	//
 	// 371293199010092839

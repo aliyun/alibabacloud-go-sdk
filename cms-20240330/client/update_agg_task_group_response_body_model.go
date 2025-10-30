@@ -24,26 +24,38 @@ type iUpdateAggTaskGroupResponseBody interface {
 }
 
 type UpdateAggTaskGroupResponseBody struct {
+	// Summary of the aggregation task group configuration.
+	//
 	// example:
 	//
 	// a54136014dc386a92c83a6ef1e97ff22
 	AggTaskGroupConfigHash *string `json:"aggTaskGroupConfigHash,omitempty" xml:"aggTaskGroupConfigHash,omitempty"`
+	// Aggregation task group ID
+	//
 	// example:
 	//
 	// aggTaskGroup-5fb2c3ade63a4709bcb059d13493b7b8
 	AggTaskGroupId *string `json:"aggTaskGroupId,omitempty" xml:"aggTaskGroupId,omitempty"`
+	// Aggregation task group name
+	//
 	// example:
 	//
 	// pipeline-aggtask-group
 	AggTaskGroupName *string `json:"aggTaskGroupName,omitempty" xml:"aggTaskGroupName,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Source Prometheus instance ID of the aggregation task group
+	//
 	// example:
 	//
 	// rw-083e17834e279f8c627fe91a2d72
 	SourcePrometheusId *string `json:"sourcePrometheusId,omitempty" xml:"sourcePrometheusId,omitempty"`
+	// Current status of the aggregation task group
+	//
 	// example:
 	//
 	// Running

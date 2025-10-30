@@ -20,12 +20,17 @@ type iGetEntityStoreDataResponseBody interface {
 }
 
 type GetEntityStoreDataResponseBody struct {
-	Data   [][]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	Header []*string   `json:"header,omitempty" xml:"header,omitempty" type:"Repeated"`
+	// Total list of returned data
+	Data [][]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// List of request headers
+	Header []*string `json:"header,omitempty" xml:"header,omitempty" type:"Repeated"`
+	// Request ID
+	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
-	RequestId      *string                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Result status
 	ResponseStatus *GetEntityStoreDataResponseBodyResponseStatus `json:"responseStatus,omitempty" xml:"responseStatus,omitempty" type:"Struct"`
 }
 
@@ -83,11 +88,32 @@ func (s *GetEntityStoreDataResponseBody) Validate() error {
 }
 
 type GetEntityStoreDataResponseBodyResponseStatus struct {
-	ExecutionStates *string                                                   `json:"executionStates,omitempty" xml:"executionStates,omitempty"`
-	Level           *string                                                   `json:"level,omitempty" xml:"level,omitempty"`
-	Result          *string                                                   `json:"result,omitempty" xml:"result,omitempty"`
-	RetryPolicy     *string                                                   `json:"retryPolicy,omitempty" xml:"retryPolicy,omitempty"`
-	StatusItem      []*GetEntityStoreDataResponseBodyResponseStatusStatusItem `json:"statusItem,omitempty" xml:"statusItem,omitempty" type:"Repeated"`
+	// Information during the execution process
+	//
+	// example:
+	//
+	// {}
+	ExecutionStates *string `json:"executionStates,omitempty" xml:"executionStates,omitempty"`
+	// Status level
+	//
+	// example:
+	//
+	// Info,Warn,Error
+	Level *string `json:"level,omitempty" xml:"level,omitempty"`
+	// Execution result
+	//
+	// example:
+	//
+	// Success,PartialSuccess,Error
+	Result *string `json:"result,omitempty" xml:"result,omitempty"`
+	// Retry policy
+	//
+	// example:
+	//
+	// None,Once,Continuous
+	RetryPolicy *string `json:"retryPolicy,omitempty" xml:"retryPolicy,omitempty"`
+	// Detailed status information list
+	StatusItem []*GetEntityStoreDataResponseBodyResponseStatusStatusItem `json:"statusItem,omitempty" xml:"statusItem,omitempty" type:"Repeated"`
 }
 
 func (s GetEntityStoreDataResponseBodyResponseStatus) String() string {
@@ -157,9 +183,29 @@ func (s *GetEntityStoreDataResponseBodyResponseStatus) Validate() error {
 }
 
 type GetEntityStoreDataResponseBodyResponseStatusStatusItem struct {
-	Code       *string `json:"code,omitempty" xml:"code,omitempty"`
-	Level      *string `json:"level,omitempty" xml:"level,omitempty"`
-	Message    *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Status code
+	//
+	// example:
+	//
+	// Success,ExecuteTimeout,UModelNotExist
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Status level
+	//
+	// example:
+	//
+	// Info,Warn,Error
+	Level *string `json:"level,omitempty" xml:"level,omitempty"`
+	// Calculation execution information
+	//
+	// example:
+	//
+	// Query execution timeout after 30 seconds
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Suggestions when an error occurs during execution
+	//
+	// example:
+	//
+	// Try to reduce the query scope or increase timeout limit, then retry
 	Suggestion *string `json:"suggestion,omitempty" xml:"suggestion,omitempty"`
 }
 

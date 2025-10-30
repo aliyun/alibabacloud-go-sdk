@@ -18,17 +18,19 @@ type iPutWorkspaceRequest interface {
 }
 
 type PutWorkspaceRequest struct {
-	// 工作空间描述
+	// Description of the workspace
 	//
 	// example:
 	//
 	// workspace test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Display name of the workspace
+	//
 	// example:
 	//
 	// workspace-test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// 工作空间绑定的日志服务项目名称
+	// Name of the Log Service project
 	//
 	// This parameter is required.
 	//

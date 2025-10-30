@@ -9,7 +9,11 @@ import (
 
 // Summary:
 //
-// 安装接入组件，代表进行一次接入
+// # Install the access component, representing a single access attempt
+//
+// Description:
+//
+// # Used to create a site monitoring task
 //
 // @param request - CreateAddonReleaseRequest
 //
@@ -92,7 +96,7 @@ func (client *Client) CreateAddonReleaseWithContext(ctx context.Context, policyI
 
 // Summary:
 //
-// 创建聚合任务组
+// # Create Aggregation Task Group
 //
 // @param request - CreateAggTaskGroupRequest
 //
@@ -205,7 +209,7 @@ func (client *Client) CreateAggTaskGroupWithContext(ctx context.Context, instanc
 
 // Summary:
 //
-// 创建EntityStore相关存储
+// # Create storage related to EntityStore
 //
 // @param headers - map
 //
@@ -238,7 +242,11 @@ func (client *Client) CreateEntityStoreWithContext(ctx context.Context, workspac
 
 // Summary:
 //
-// 创建接入中心策略
+// # Create Access Center Policy
+//
+// Description:
+//
+// This interface is used to support users in creating event integration.
 //
 // @param request - CreateIntegrationPolicyRequest
 //
@@ -305,7 +313,7 @@ func (client *Client) CreateIntegrationPolicyWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 创建Prometheus监控实例
+// # Create a Prometheus monitoring instance
 //
 // @param request - CreatePrometheusInstanceRequest
 //
@@ -396,7 +404,11 @@ func (client *Client) CreatePrometheusInstanceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 创建prometheus视图
+// # Create Prometheus View
+//
+// Description:
+//
+// # Used to create a site monitoring task
 //
 // @param request - CreatePrometheusViewRequest
 //
@@ -479,7 +491,11 @@ func (client *Client) CreatePrometheusViewWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 创建Prometheus监控实例
+// # Create Prometheus Monitoring Instance
+//
+// Description:
+//
+// Create a Prometheus monitoring virtual instance.
 //
 // @param request - CreatePrometheusVirtualInstanceRequest
 //
@@ -526,7 +542,7 @@ func (client *Client) CreatePrometheusVirtualInstanceWithContext(ctx context.Con
 
 // Summary:
 //
-// 创建Service
+// # Create Service
 //
 // @param request - CreateServiceRequest
 //
@@ -597,7 +613,7 @@ func (client *Client) CreateServiceWithContext(ctx context.Context, workspace *s
 
 // Summary:
 //
-// 创建票据
+// # Create Ticket
 //
 // @param request - CreateTicketRequest
 //
@@ -648,7 +664,11 @@ func (client *Client) CreateTicketWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// 创建Umodel配置
+// # Create Umodel configuration
+//
+// Description:
+//
+// # Create Umodel configuration in the specified workspace
 //
 // @param request - CreateUmodelRequest
 //
@@ -695,7 +715,7 @@ func (client *Client) CreateUmodelWithContext(ctx context.Context, workspace *st
 
 // Summary:
 //
-// 删除addon release信息
+// # Delete addon release information
 //
 // @param request - DeleteAddonReleaseRequest
 //
@@ -750,7 +770,7 @@ func (client *Client) DeleteAddonReleaseWithContext(ctx context.Context, policyI
 
 // Summary:
 //
-// 删除聚合任务组
+// # Delete Aggregation Task Group
 //
 // @param headers - map
 //
@@ -783,7 +803,7 @@ func (client *Client) DeleteAggTaskGroupWithContext(ctx context.Context, instanc
 
 // Summary:
 //
-// 删除EntityStore相关存储
+// # Delete EntityStore related storage
 //
 // @param headers - map
 //
@@ -816,7 +836,7 @@ func (client *Client) DeleteEntityStoreWithContext(ctx context.Context, workspac
 
 // Summary:
 //
-// 删除接入中心策略
+// # Delete Access Center Policy
 //
 // @param request - DeleteIntegrationPolicyRequest
 //
@@ -863,7 +883,11 @@ func (client *Client) DeleteIntegrationPolicyWithContext(ctx context.Context, po
 
 // Summary:
 //
-// 删除prom实例
+// # Delete prom instance
+//
+// Description:
+//
+// Delete a Prometheus instance.
 //
 // @param headers - map
 //
@@ -896,7 +920,11 @@ func (client *Client) DeletePrometheusInstanceWithContext(ctx context.Context, p
 
 // Summary:
 //
-// 删除prometheus视图实例
+// # Delete prometheus view instance
+//
+// Description:
+//
+// Delete prometheus view instance.
 //
 // @param headers - map
 //
@@ -929,7 +957,7 @@ func (client *Client) DeletePrometheusViewWithContext(ctx context.Context, prome
 
 // Summary:
 //
-// 删除Service
+// # Delete Service
 //
 // @param headers - map
 //
@@ -962,7 +990,11 @@ func (client *Client) DeleteServiceWithContext(ctx context.Context, workspace *s
 
 // Summary:
 //
-// 删除Umodel配置信息
+// # Delete Umodel configuration information
+//
+// Description:
+//
+// # Delete the Umodel under the specified workspace
 //
 // @param headers - map
 //
@@ -995,7 +1027,11 @@ func (client *Client) DeleteUmodelWithContext(ctx context.Context, workspace *st
 
 // Summary:
 //
-// 删除 Umodel Elements
+// # Delete Umodel Elements
+//
+// Description:
+//
+// # Delete the Umodel Data under a specified workspace
 //
 // @param request - DeleteUmodelDataRequest
 //
@@ -1050,7 +1086,7 @@ func (client *Client) DeleteUmodelDataWithContext(ctx context.Context, workspace
 
 // Summary:
 //
-// 删除工作空间
+// # Delete Workspace
 //
 // @param headers - map
 //
@@ -1083,7 +1119,7 @@ func (client *Client) DeleteWorkspaceWithContext(ctx context.Context, workspaceN
 
 // Summary:
 //
-// 查看addon release(查看接入状态)
+// Check addon release (view connection status)
 //
 // @param headers - map
 //
@@ -1116,7 +1152,7 @@ func (client *Client) GetAddonReleaseWithContext(ctx context.Context, releaseNam
 
 // Summary:
 //
-// 描述聚合任务组
+// # Describes the aggregation task group
 //
 // @param headers - map
 //
@@ -1149,7 +1185,7 @@ func (client *Client) GetAggTaskGroupWithContext(ctx context.Context, instanceId
 
 // Summary:
 //
-// 获取EntityStore相关存储信息
+// # Get EntityStore related storage information
 //
 // @param headers - map
 //
@@ -1182,7 +1218,7 @@ func (client *Client) GetEntityStoreWithContext(ctx context.Context, workspaceNa
 
 // Summary:
 //
-// 查询指定Workspace下的实体和关系数据，返回结果显示某时间区间中的实体数据（返回结果压缩后传输）。
+// Query the entity and relationship data under a specified Workspace, returning the entity data within a certain time range (the returned result is transmitted after compression).
 //
 // @param request - GetEntityStoreDataRequest
 //
@@ -1246,7 +1282,7 @@ func (client *Client) GetEntityStoreDataWithContext(ctx context.Context, workspa
 
 // Summary:
 //
-// 查询接入中心策略列表信息
+// # Query the list of access center policies
 //
 // @param headers - map
 //
@@ -1279,7 +1315,11 @@ func (client *Client) GetIntegrationPolicyWithContext(ctx context.Context, polic
 
 // Summary:
 //
-// 查询指定环境实例
+// # Query the instance in a specified environment
+//
+// Description:
+//
+// Retrieve details of a Prometheus instance.
 //
 // @param request - GetPrometheusInstanceRequest
 //
@@ -1330,7 +1370,11 @@ func (client *Client) GetPrometheusInstanceWithContext(ctx context.Context, prom
 
 // Summary:
 //
-// 查询指定Prometheus视图实例
+// # Query a specified Prometheus view instance
+//
+// Description:
+//
+// Query a specified Prometheus view instance.
 //
 // @param request - GetPrometheusViewRequest
 //
@@ -1381,7 +1425,7 @@ func (client *Client) GetPrometheusViewWithContext(ctx context.Context, promethe
 
 // Summary:
 //
-// 查询 Service
+// # Query Service
 //
 // @param headers - map
 //
@@ -1414,7 +1458,7 @@ func (client *Client) GetServiceWithContext(ctx context.Context, workspace *stri
 
 // Summary:
 //
-// 获取应用可观测实例
+// # Get Application Observability Instance
 //
 // @param headers - map
 //
@@ -1447,7 +1491,11 @@ func (client *Client) GetServiceObservabilityWithContext(ctx context.Context, wo
 
 // Summary:
 //
-// 获取Umodel配置信息
+// # Get Umodel configuration information
+//
+// Description:
+//
+// # Get Umodel configuration information
 //
 // @param headers - map
 //
@@ -1480,7 +1528,11 @@ func (client *Client) GetUmodelWithContext(ctx context.Context, workspace *strin
 
 // Summary:
 //
-// 获取相关联的 Umodel 图数据
+// # Retrieve associated Umodel graph data
+//
+// Description:
+//
+// # Find Umodel
 //
 // @param request - GetUmodelDataRequest
 //
@@ -1533,7 +1585,7 @@ func (client *Client) GetUmodelDataWithContext(ctx context.Context, workspace *s
 
 // Summary:
 //
-// 获取工作空间
+// # Get Workspace
 //
 // @param headers - map
 //
@@ -1566,7 +1618,11 @@ func (client *Client) GetWorkspaceWithContext(ctx context.Context, workspaceName
 
 // Summary:
 //
-// addon的release列表
+// # List of addon releases
+//
+// Description:
+//
+// # Query the list of access configurations
 //
 // @param request - ListAddonReleasesRequest
 //
@@ -1617,7 +1673,7 @@ func (client *Client) ListAddonReleasesWithContext(ctx context.Context, policyId
 
 // Summary:
 //
-// 列举聚合任务组
+// # List Aggregation Task Groups
 //
 // @param tmpReq - ListAggTaskGroupsRequest
 //
@@ -1698,7 +1754,7 @@ func (client *Client) ListAggTaskGroupsWithContext(ctx context.Context, instance
 
 // Summary:
 //
-// 查询告警动作
+// # Query Alert Actions
 //
 // @param tmpReq - ListAlertActionsRequest
 //
@@ -1767,7 +1823,11 @@ func (client *Client) ListAlertActionsWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
-// 查询接入中心策略列表信息
+// # Query Access Center Policy List Information
+//
+// Description:
+//
+// # Query Integration List
 //
 // @param tmpReq - ListIntegrationPoliciesRequest
 //
@@ -1872,7 +1932,7 @@ func (client *Client) ListIntegrationPoliciesWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 获取接入中心策略的存储要求信息
+// # Get storage requirement information for the access center policy
 //
 // @param request - ListIntegrationPolicyCustomScrapeJobRulesRequest
 //
@@ -1927,7 +1987,11 @@ func (client *Client) ListIntegrationPolicyCustomScrapeJobRulesWithContext(ctx c
 
 // Summary:
 //
-// 策略大盘列表
+// # Policy Dashboard List
+//
+// Description:
+//
+// This article provides an example of querying the alarm template list. The result shows that there are 2 alarm templates in the list, which are `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - ListIntegrationPolicyDashboardsRequest
 //
@@ -1982,7 +2046,11 @@ func (client *Client) ListIntegrationPolicyDashboardsWithContext(ctx context.Con
 
 // Summary:
 //
-// 获取接入中心策略的PodMonitor资源
+// # Get PodMonitor Resources of Access Center Policy
+//
+// Description:
+//
+// This article provides an example to query the alarm template list. The result shows that there are 2 alarm templates in the alarm template list, which are `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - ListIntegrationPolicyPodMonitorsRequest
 //
@@ -2037,7 +2105,13 @@ func (client *Client) ListIntegrationPolicyPodMonitorsWithContext(ctx context.Co
 
 // Summary:
 //
-// 获取接入中心策略的存储要求信息
+// # Get Storage Requirements Information for Access Center Policy
+//
+// Description:
+//
+// During the effective period of the policy, all alarms within the application group will no longer send notifications.
+//
+// This article provides an example of creating a pause alarm notification policy `PauseNotify` for the application group `7301****`. This application group will pause alarms from `1622949300000` to `1623208500000` (Beijing Time `2021-06-06 11:15:00` to `2021-06-09 11:15:00`).
 //
 // @param request - ListIntegrationPolicyStorageRequirementsRequest
 //
@@ -2092,7 +2166,11 @@ func (client *Client) ListIntegrationPolicyStorageRequirementsWithContext(ctx co
 
 // Summary:
 //
-// 获取Prometheus实例大盘列表
+// # Get Prometheus Instance Dashboard List
+//
+// Description:
+//
+// Get the list of Prometheus instance dashboards.
 //
 // @param request - ListPrometheusDashboardsRequest
 //
@@ -2143,7 +2221,11 @@ func (client *Client) ListPrometheusDashboardsWithContext(ctx context.Context, p
 
 // Summary:
 //
-// 获取Prometheus实例信息列表
+// # Get the list of Prometheus instance information
+//
+// Description:
+//
+// Get the list of Prometheus instances.
 //
 // @param tmpReq - ListPrometheusInstancesRequest
 //
@@ -2228,7 +2310,11 @@ func (client *Client) ListPrometheusInstancesWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 获取Prometheus视图实例信息列表
+// # Retrieve a list of Prometheus view instance information
+//
+// Description:
+//
+// Retrieve a list of Prometheus view instance information.
 //
 // @param tmpReq - ListPrometheusViewsRequest
 //
@@ -2317,7 +2403,11 @@ func (client *Client) ListPrometheusViewsWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 获取Prometheus虚拟实例
+// # Get Prometheus Virtual Instance
+//
+// Description:
+//
+// # Used for creating a site monitoring task
 //
 // @param request - ListPrometheusVirtualInstancesRequest
 //
@@ -2364,7 +2454,7 @@ func (client *Client) ListPrometheusVirtualInstancesWithContext(ctx context.Cont
 
 // Summary:
 //
-// 列出资源Service
+// # List Resource Services
 //
 // @param request - ListServicesRequest
 //
@@ -2419,7 +2509,7 @@ func (client *Client) ListServicesWithContext(ctx context.Context, workspace *st
 
 // Summary:
 //
-// 获取工作空间列表
+// # Get Workspace List
 //
 // @param tmpReq - ListWorkspacesRequest
 //
@@ -2488,7 +2578,7 @@ func (client *Client) ListWorkspacesWithContext(ctx context.Context, tmpReq *Lis
 
 // Summary:
 //
-// 创建工作空间
+// # Create Workspace
 //
 // @param request - PutWorkspaceRequest
 //
@@ -2543,7 +2633,7 @@ func (client *Client) PutWorkspaceWithContext(ctx context.Context, workspaceName
 
 // Summary:
 //
-// 升级接入组件
+// # Upgrade Access Component
 //
 // @param request - UpdateAddonReleaseRequest
 //
@@ -2602,7 +2692,7 @@ func (client *Client) UpdateAddonReleaseWithContext(ctx context.Context, release
 
 // Summary:
 //
-// 应用聚合任务组
+// # Apply Aggregation Task Group
 //
 // @param request - UpdateAggTaskGroupRequest
 //
@@ -2709,7 +2799,7 @@ func (client *Client) UpdateAggTaskGroupWithContext(ctx context.Context, instanc
 
 // Summary:
 //
-// 更新聚合任务组状态
+// # Update Aggregation Task Group Status
 //
 // @param request - UpdateAggTaskGroupStatusRequest
 //
@@ -2756,7 +2846,7 @@ func (client *Client) UpdateAggTaskGroupStatusWithContext(ctx context.Context, i
 
 // Summary:
 //
-// 更新指定策略
+// # Update the specified policy
 //
 // @param request - UpdateIntegrationPolicyRequest
 //
@@ -2815,7 +2905,11 @@ func (client *Client) UpdateIntegrationPolicyWithContext(ctx context.Context, in
 
 // Summary:
 //
-// 更新Prom实例信息
+// # Update Prometheus instance information
+//
+// Description:
+//
+// Update Prometheus instance information.
 //
 // @param request - UpdatePrometheusInstanceRequest
 //
@@ -2902,7 +2996,11 @@ func (client *Client) UpdatePrometheusInstanceWithContext(ctx context.Context, p
 
 // Summary:
 //
-// 更新Prom视图实例信息
+// # Update Prometheus view instance information
+//
+// Description:
+//
+// Update Prometheus view instance information.
 //
 // @param request - UpdatePrometheusViewRequest
 //
@@ -2973,7 +3071,7 @@ func (client *Client) UpdatePrometheusViewWithContext(ctx context.Context, prome
 
 // Summary:
 //
-// 更新UpdateService
+// # Update Service
 //
 // @param request - UpdateServiceRequest
 //
@@ -3032,7 +3130,11 @@ func (client *Client) UpdateServiceWithContext(ctx context.Context, workspace *s
 
 // Summary:
 //
-// 更新Umodel配置信息
+// # Update Umodel configuration information
+//
+// Description:
+//
+// # Update Umodel configuration information
 //
 // @param request - UpdateUmodelRequest
 //
@@ -3079,7 +3181,7 @@ func (client *Client) UpdateUmodelWithContext(ctx context.Context, workspace *st
 
 // Summary:
 //
-// 写入 Umodel Elements
+// # Write Umodel Elements
 //
 // @param request - UpsertUmodelDataRequest
 //

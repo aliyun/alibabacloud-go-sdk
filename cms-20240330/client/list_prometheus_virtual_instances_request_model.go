@@ -14,6 +14,8 @@ type iListPrometheusVirtualInstancesRequest interface {
 }
 
 type ListPrometheusVirtualInstancesRequest struct {
+	// Optional cloud product
+	//
 	// example:
 	//
 	// ack-csi-fuse

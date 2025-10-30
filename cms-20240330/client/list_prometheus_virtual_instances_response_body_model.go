@@ -16,8 +16,9 @@ type iListPrometheusVirtualInstancesResponseBody interface {
 }
 
 type ListPrometheusVirtualInstancesResponseBody struct {
+	// Instance information.
 	Instances []*ListPrometheusVirtualInstancesResponseBodyInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -65,26 +66,42 @@ func (s *ListPrometheusVirtualInstancesResponseBody) Validate() error {
 }
 
 type ListPrometheusVirtualInstancesResponseBodyInstances struct {
+	// Creation time
+	//
 	// example:
 	//
 	// 1750315319946
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// HTTP API URL.
+	//
 	// example:
 	//
 	// http://xxxxxxxx
 	HttpApiUrl *string `json:"httpApiUrl,omitempty" xml:"httpApiUrl,omitempty"`
+	// Applicable data source type: PROMETHEUS_DS
+	//
+	// Prometheus instance ID
+	//
 	// example:
 	//
 	// rw-b8cfbbe94194ac37fe83f3d2d16a
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// Applicable query type: CMS_BASIC_QUERY.
+	//
+	// Namespace of the metric
+	//
 	// example:
 	//
 	// arms-prom
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai-cloudspe
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// User ID.
+	//
 	// example:
 	//
 	// 17073812345

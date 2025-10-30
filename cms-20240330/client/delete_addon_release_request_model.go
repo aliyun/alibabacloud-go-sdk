@@ -18,14 +18,20 @@ type iDeleteAddonReleaseRequest interface {
 }
 
 type DeleteAddonReleaseRequest struct {
+	// Addon name. When AddonName is provided, it will ignore the ReleaseName parameter and batch uninstall all AddonReleases belonging to the same Addon.
+	//
 	// example:
 	//
 	// cs-gpu
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
+	// Whether to force deletion, default is false.
+	//
 	// example:
 	//
 	// false
 	Force *bool `json:"force,omitempty" xml:"force,omitempty"`
+	// The name of the AddonRelease.
+	//
 	// example:
 	//
 	// test-gpu-integration-name

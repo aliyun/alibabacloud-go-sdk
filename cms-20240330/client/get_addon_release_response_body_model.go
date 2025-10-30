@@ -18,11 +18,16 @@ type iGetAddonReleaseResponseBody interface {
 }
 
 type GetAddonReleaseResponseBody struct {
+	// Component configuration.
+	//
 	// example:
 	//
 	// {"install":{"mode":"auto-install","listenPort":"9400"},"discoverMode":"instances","discover":{"instances":"worker-k8s-for-cs-c126d87c76218487e83ab322017f11b44"},"scrapeInterval":"15","enableSecuritecs-nodeyGroupInjection":"true","metricTags":""}
-	Config  *string                             `json:"config,omitempty" xml:"config,omitempty"`
+	Config *string `json:"config,omitempty" xml:"config,omitempty"`
+	// Detailed information.
 	Release *GetAddonReleaseResponseBodyRelease `json:"release,omitempty" xml:"release,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 0B9377D9-C56B-5C2E-A8A4-A01D6CC3F4B8
@@ -74,98 +79,144 @@ func (s *GetAddonReleaseResponseBody) Validate() error {
 }
 
 type GetAddonReleaseResponseBodyRelease struct {
+	// Addon component name.
+	//
 	// example:
 	//
 	// cs-gpu
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
+	// Number of alert rules.
+	//
 	// example:
 	//
 	// 6
-	AlertRuleCount *int64                                          `json:"alertRuleCount,omitempty" xml:"alertRuleCount,omitempty"`
-	Conditions     []*GetAddonReleaseResponseBodyReleaseConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	AlertRuleCount *int64 `json:"alertRuleCount,omitempty" xml:"alertRuleCount,omitempty"`
+	// Installation phase information.
+	Conditions []*GetAddonReleaseResponseBodyReleaseConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	// Component configuration information.
+	//
 	// example:
 	//
 	// {"install":{"mode":"auto-install","listenPort":"9400"},"discoverMode":"instances","discover":{"instances":"worker-k8s-for-cs-c126d87c76218487e83ab322017f11b44"},"scrapeInterval":"15","enableSecuritecs-nodeyGroupInjection":"true","metricTags":""}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
+	// Connection time.
+	//
 	// example:
 	//
 	// 2024-11-04T16:10:12+08:00
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Number of dashboards.
+	//
 	// example:
 	//
 	// 3
-	DashboardCount *int64           `json:"dashboardCount,omitempty" xml:"dashboardCount,omitempty"`
-	EntityRules    *EntityGroupBase `json:"entityRules,omitempty" xml:"entityRules,omitempty"`
+	DashboardCount *int64 `json:"dashboardCount,omitempty" xml:"dashboardCount,omitempty"`
+	// Entity details.
+	EntityRules *EntityGroupBase `json:"entityRules,omitempty" xml:"entityRules,omitempty"`
+	// Environment type.
+	//
 	// example:
 	//
 	// CS
 	EnvType *string `json:"envType,omitempty" xml:"envType,omitempty"`
+	// Environment ID.
+	//
 	// example:
 	//
 	// policy-xxxxxxxxxxx
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// Number of plugins.
+	//
 	// example:
 	//
 	// 2
 	ExporterCount *int64 `json:"exporterCount,omitempty" xml:"exporterCount,omitempty"`
+	// Whether there is a configuration.
+	//
 	// example:
 	//
 	// true
 	HaveConfig *bool `json:"haveConfig,omitempty" xml:"haveConfig,omitempty"`
+	// User ID for connection.
+	//
 	// example:
 	//
 	// 1707xxxxxxxxxxxx
 	InstallUserId *string `json:"installUserId,omitempty" xml:"installUserId,omitempty"`
+	// Language.
+	//
 	// example:
 	//
 	// zh
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
+	// Whether it is a managed component.
+	//
 	// example:
 	//
 	// true
 	Managed *bool `json:"managed,omitempty" xml:"managed,omitempty"`
+	// Parent AddonRelease ID.
+	//
 	// example:
 	//
 	// policy-xxxxxxxxxxxxx
 	ParentAddonReleaseId *string `json:"parentAddonReleaseId,omitempty" xml:"parentAddonReleaseId,omitempty"`
+	// Policy ID.
+	//
 	// example:
 	//
 	// policy-xxxxxxxxxxxxx
 	PolicyId *string `json:"policyId,omitempty" xml:"policyId,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Release ID。
+	// Release ID.
 	//
 	// example:
 	//
 	// 7339d808-66f9-4d40-83fa-xxxxxxxxxxx
 	ReleaseId *string `json:"releaseId,omitempty" xml:"releaseId,omitempty"`
+	// The name of the Release.
+	//
 	// example:
 	//
 	// test-gpu-integration-name
 	ReleaseName *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
+	// Component scenario.
+	//
 	// example:
 	//
 	// container
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// Component status.
+	//
 	// example:
 	//
 	// running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Update time.
+	//
 	// example:
 	//
 	// 2024-11-04T16:10:12+08:00
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// Owner user ID.
+	//
 	// example:
 	//
 	// 1707xxxxxxxxxxxx
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// Component version.
+	//
 	// example:
 	//
 	// 0.0.2
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// Workspace.
+	//
 	// example:
 	//
 	// default
@@ -424,22 +475,32 @@ func (s *GetAddonReleaseResponseBodyRelease) Validate() error {
 }
 
 type GetAddonReleaseResponseBodyReleaseConditions struct {
+	// First transition time.
+	//
 	// example:
 	//
 	// 2024-11-04T16:10:22+08:00
 	FirstTransitionTime *string `json:"firstTransitionTime,omitempty" xml:"firstTransitionTime,omitempty"`
+	// Last transition time.
+	//
 	// example:
 	//
 	// 2024-11-04T16:10:22+08:00
 	LastTransitionTime *string `json:"lastTransitionTime,omitempty" xml:"lastTransitionTime,omitempty"`
+	// Details.
+	//
 	// example:
 	//
 	// The addon loaded successfully
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Phase status.
+	//
 	// example:
 	//
 	// True
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Phase type.
+	//
 	// example:
 	//
 	// Loaded

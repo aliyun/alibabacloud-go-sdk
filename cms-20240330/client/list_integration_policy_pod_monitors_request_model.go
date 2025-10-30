@@ -18,14 +18,20 @@ type iListIntegrationPolicyPodMonitorsRequest interface {
 }
 
 type ListIntegrationPolicyPodMonitorsRequest struct {
+	// Addon Release name.
+	//
 	// example:
 	//
 	// release-123456789
 	AddonReleaseName *string `json:"addonReleaseName,omitempty" xml:"addonReleaseName,omitempty"`
+	// Whether to encrypt Yaml.
+	//
 	// example:
 	//
 	// true
 	EncryptYaml *bool `json:"encryptYaml,omitempty" xml:"encryptYaml,omitempty"`
+	// Namespace.
+	//
 	// example:
 	//
 	// default

@@ -14,7 +14,7 @@ type iDeletePrometheusInstanceResponseBody interface {
 }
 
 type DeletePrometheusInstanceResponseBody struct {
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//

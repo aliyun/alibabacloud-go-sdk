@@ -14,6 +14,10 @@ type iDeleteIntegrationPolicyRequest interface {
 }
 
 type DeleteIntegrationPolicyRequest struct {
+	// Whether to forcibly delete the cloud-native all-in-one machine,
+	//
+	// default value: `false`.
+	//
 	// example:
 	//
 	// false

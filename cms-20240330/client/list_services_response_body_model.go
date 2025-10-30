@@ -22,19 +22,28 @@ type iListServicesResponseBody interface {
 }
 
 type ListServicesResponseBody struct {
+	// Maximum number of results to return, with a maximum value of 200
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Pagination token
+	//
 	// example:
 	//
 	// 2-ba4d-4b9f-aa24-dcb067a30f1c
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 0CEC5375-C554-562B-A65F-9A629907C1F0
-	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Services  []*ListServicesResponseBodyServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// List of service information.
+	Services []*ListServicesResponseBodyServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
+	// Total count
+	//
 	// example:
 	//
 	// 66
@@ -108,42 +117,62 @@ func (s *ListServicesResponseBody) Validate() error {
 }
 
 type ListServicesResponseBodyServices struct {
+	// Extended information.
+	//
 	// example:
 	//
 	// {"language":"java"}
 	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// Creation time
+	//
 	// example:
 	//
 	// 2025-07-01T02:23:59Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Service description, valid only when serviceType=RUM.
+	//
 	// example:
 	//
 	// workspace api monitor test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Display name, valid only when serviceType=RUM.
+	//
 	// example:
 	//
 	// test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// Historical compatible ARMS application ID
+	//
 	// example:
 	//
 	// kgcsf@192197e828d51aa
 	Pid *string `json:"pid,omitempty" xml:"pid,omitempty"`
+	// Service ID
+	//
 	// example:
 	//
 	// jm2pl0yoqf@d4905cb11a4f218dfb0a8
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// Service name
+	//
 	// example:
 	//
 	// demo-app
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	// Service status, valid only when serviceType=RUM.
+	//
 	// example:
 	//
 	// Running
 	ServiceStatus *string `json:"serviceStatus,omitempty" xml:"serviceStatus,omitempty"`
+	// Service type
+	//
 	// example:
 	//
 	// TRACE
 	ServiceType *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
+	// Workspace.
+	//
 	// example:
 	//
 	// default-cms-1192928460540589-cn-hangzhou

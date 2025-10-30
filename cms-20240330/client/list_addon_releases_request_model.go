@@ -16,10 +16,14 @@ type iListAddonReleasesRequest interface {
 }
 
 type ListAddonReleasesRequest struct {
+	// Addon component name.
+	//
 	// example:
 	//
 	// cs-gpu
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
+	// Parent AddonReleaseId.
+	//
 	// example:
 	//
 	// policy-xxxxxxxxxxxxx

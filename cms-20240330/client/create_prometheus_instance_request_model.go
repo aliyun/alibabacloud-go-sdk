@@ -36,6 +36,12 @@ type iCreatePrometheusInstanceRequest interface {
 }
 
 type CreatePrometheusInstanceRequest struct {
+	// The number of days to automatically archive and save after the storage expires, 0 means no archiving. The range of archiving days is as follows:
+	//
+	// 	- V1: 60~365 days.
+	//
+	// 	- V2: 60~3650 days (3650 indicates permanent storage).
+	//
 	// if can be null:
 	// true
 	//
@@ -43,45 +49,112 @@ type CreatePrometheusInstanceRequest struct {
 	//
 	// 60
 	ArchiveDuration *int32 `json:"archiveDuration,omitempty" xml:"archiveDuration,omitempty"`
+	// Password-free read policy (supports IP segments and VpcId).
+	//
 	// example:
 	//
-	// 0.0.0.0/0
+	// {
+	//
+	//   "SourceIp": [
+	//
+	//     "192.168.1.0/24",
+	//
+	//     "172.168.2.22"
+	//
+	//   ],
+	//
+	//   "SourceVpc": [
+	//
+	//     "vpc-xx1",
+	//
+	//     "vpc-xx2"
+	//
+	//   ]
+	//
+	// }
 	AuthFreeReadPolicy *string `json:"authFreeReadPolicy,omitempty" xml:"authFreeReadPolicy,omitempty"`
+	// Password-free write policy.
+	//
 	// example:
 	//
-	// 0.0.0.0/0
+	// {
+	//
+	//   "SourceIp": [
+	//
+	//     "192.168.1.0/24",
+	//
+	//     "172.168.2.22"
+	//
+	//   ],
+	//
+	//   "SourceVpc": [
+	//
+	//     "vpc-xx1",
+	//
+	//     "vpc-xx2"
+	//
+	//   ]
+	//
+	// }
 	AuthFreeWritePolicy *string `json:"authFreeWritePolicy,omitempty" xml:"authFreeWritePolicy,omitempty"`
+	// Whether to enable password-free read (only supported in V2 version).
+	//
 	// example:
 	//
 	// true
 	EnableAuthFreeRead *bool `json:"enableAuthFreeRead,omitempty" xml:"enableAuthFreeRead,omitempty"`
+	// Whether to enable password-free write (only supported in V2 version).
+	//
 	// example:
 	//
 	// true
 	EnableAuthFreeWrite *bool `json:"enableAuthFreeWrite,omitempty" xml:"enableAuthFreeWrite,omitempty"`
+	// Whether to enable authorization Token (only supported in V1 version).
+	//
 	// example:
 	//
 	// true
 	EnableAuthToken *bool `json:"enableAuthToken,omitempty" xml:"enableAuthToken,omitempty"`
+	// Billing method:
+	//
+	// 	- POSTPAY: Postpaid by metric reporting volume.
+	//
+	// 	- POSTPAY_GB: Postpaid by metric write volume.
+	//
+	// Note, if left blank, the user\\"s default billing method configuration will be used. If the user has not configured a default, the system defaults to billing by metric reporting volume.
+	//
 	// example:
 	//
 	// POSTPAY
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// Instance name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// name1
 	PrometheusInstanceName *string `json:"prometheusInstanceName,omitempty" xml:"prometheusInstanceName,omitempty"`
+	// Instance status.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Storage duration (days):
+	//
+	// 	- By write volume: 90, 180.
+	//
+	// 	- By metric reporting volume: 15, 30, 60, 90, 180.
+	//
 	// example:
 	//
 	// 90
-	StorageDuration *int32                                 `json:"storageDuration,omitempty" xml:"storageDuration,omitempty"`
-	Tags            []*CreatePrometheusInstanceRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	StorageDuration *int32 `json:"storageDuration,omitempty" xml:"storageDuration,omitempty"`
+	// Tag values.
+	Tags []*CreatePrometheusInstanceRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// Belonging workspace, default value: default-cms-{userId}-{regionId}.
+	//
 	// example:
 	//
 	// wokspace1
@@ -218,10 +291,14 @@ func (s *CreatePrometheusInstanceRequest) Validate() error {
 }
 
 type CreatePrometheusInstanceRequestTags struct {
+	// Tag key.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// Tag value.
+	//
 	// example:
 	//
 	// 110109200001214284

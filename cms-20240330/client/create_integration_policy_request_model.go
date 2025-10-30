@@ -24,22 +24,32 @@ type iCreateIntegrationPolicyRequest interface {
 }
 
 type CreateIntegrationPolicyRequest struct {
+	// Entity group for creating the policy. Policies can be quickly created using the entity group, and `clusterId` and `vpcId` are independent of each other.
 	EntityGroup *CreateIntegrationPolicyRequestEntityGroup `json:"entityGroup,omitempty" xml:"entityGroup,omitempty" type:"Struct"`
+	// Policy name
+	//
 	// example:
 	//
 	// prod-database
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
+	// Policy type: CS/ECS/Cloud
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CS
 	PolicyType *string `json:"policyType,omitempty" xml:"policyType,omitempty"`
+	// Resource group ID.
+	//
 	// example:
 	//
 	// rg-aekz2km4kmhtbii
-	ResourceGroupId *string                               `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	Tags            []*CreateIntegrationPolicyRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// Resource tags.
+	Tags []*CreateIntegrationPolicyRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// Workspace.
+	//
 	// example:
 	//
 	// prometheus
@@ -127,19 +137,33 @@ func (s *CreateIntegrationPolicyRequest) Validate() error {
 }
 
 type CreateIntegrationPolicyRequestEntityGroup struct {
+	// Cluster entity type, such as acs.ack.cluster/acs.one.cluster/acs.asi.cluster or others.
+	//
 	// example:
 	//
 	// acs.ack.cluster
 	ClusterEntityType *string `json:"clusterEntityType,omitempty" xml:"clusterEntityType,omitempty"`
+	// Cluster ID.
+	//
 	// example:
 	//
 	// na61prod3-na61cloudhdfsssd
-	ClusterId          *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	DisablePolicyShare *bool   `json:"disablePolicyShare,omitempty" xml:"disablePolicyShare,omitempty"`
+	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// Whether to disable unique binding of the Policy. If enabled, multiple Policies can be created for a single container cluster.
+	//
+	// example:
+	//
+	// ture
+	DisablePolicyShare *bool `json:"disablePolicyShare,omitempty" xml:"disablePolicyShare,omitempty"`
+	// Entity group ID.
+	//
 	// example:
 	//
 	// eg-b79f65d11fb94e779867cf937c3a3002
 	EntityGroupId *string `json:"entityGroupId,omitempty" xml:"entityGroupId,omitempty"`
+	EntityUserId  *string `json:"entityUserId,omitempty" xml:"entityUserId,omitempty"`
+	// VPC (Virtual Private Cloud) ID.
+	//
 	// example:
 	//
 	// vpc-bp18fgg3ffxa9czna40xt
@@ -170,6 +194,10 @@ func (s *CreateIntegrationPolicyRequestEntityGroup) GetEntityGroupId() *string {
 	return s.EntityGroupId
 }
 
+func (s *CreateIntegrationPolicyRequestEntityGroup) GetEntityUserId() *string {
+	return s.EntityUserId
+}
+
 func (s *CreateIntegrationPolicyRequestEntityGroup) GetVpcId() *string {
 	return s.VpcId
 }
@@ -194,6 +222,11 @@ func (s *CreateIntegrationPolicyRequestEntityGroup) SetEntityGroupId(v string) *
 	return s
 }
 
+func (s *CreateIntegrationPolicyRequestEntityGroup) SetEntityUserId(v string) *CreateIntegrationPolicyRequestEntityGroup {
+	s.EntityUserId = &v
+	return s
+}
+
 func (s *CreateIntegrationPolicyRequestEntityGroup) SetVpcId(v string) *CreateIntegrationPolicyRequestEntityGroup {
 	s.VpcId = &v
 	return s
@@ -204,10 +237,14 @@ func (s *CreateIntegrationPolicyRequestEntityGroup) Validate() error {
 }
 
 type CreateIntegrationPolicyRequestTags struct {
+	// Tag `key` value.
+	//
 	// example:
 	//
 	// use
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// Tag `value` value.
+	//
 	// example:
 	//
 	// database

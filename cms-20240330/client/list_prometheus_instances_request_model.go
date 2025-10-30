@@ -30,6 +30,8 @@ type iListPrometheusInstancesRequest interface {
 }
 
 type ListPrometheusInstancesRequest struct {
+	// Specified list of regionIds to filter (comma-separated).
+	//
 	// if can be null:
 	// true
 	//
@@ -37,6 +39,8 @@ type ListPrometheusInstancesRequest struct {
 	//
 	// cn-shenzhen
 	FilterRegionIds *string `json:"filterRegionIds,omitempty" xml:"filterRegionIds,omitempty"`
+	// Maximum number of records to return.
+	//
 	// if can be null:
 	// true
 	//
@@ -44,6 +48,8 @@ type ListPrometheusInstancesRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Query token.
+	//
 	// if can be null:
 	// true
 	//
@@ -51,6 +57,8 @@ type ListPrometheusInstancesRequest struct {
 	//
 	// xxxxxxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// List of instance IDs (comma-separated)
+	//
 	// if can be null:
 	// true
 	//
@@ -58,6 +66,8 @@ type ListPrometheusInstancesRequest struct {
 	//
 	// rw-00001,rw-00002,rw-00003
 	PrometheusInstanceIds *string `json:"prometheusInstanceIds,omitempty" xml:"prometheusInstanceIds,omitempty"`
+	// Instance name (partial match supported)
+	//
 	// if can be null:
 	// true
 	//
@@ -65,18 +75,25 @@ type ListPrometheusInstancesRequest struct {
 	//
 	// test
 	PrometheusInstanceName *string `json:"prometheusInstanceName,omitempty" xml:"prometheusInstanceName,omitempty"`
+	// Resource group ID.
+	//
 	// example:
 	//
 	// rg-aek2bhocin5e2na
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// Resource type of the instance.
+	//
 	// if can be null:
 	// true
 	//
 	// example:
 	//
 	// Prometheus
-	ResourceType *string                              `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	Tag          []*ListPrometheusInstancesRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// List of tags.
+	Tag []*ListPrometheusInstancesRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
+	// Instance version: V1 or V2
+	//
 	// if can be null:
 	// true
 	//
@@ -189,10 +206,14 @@ func (s *ListPrometheusInstancesRequest) Validate() error {
 }
 
 type ListPrometheusInstancesRequestTag struct {
+	// Tag key
+	//
 	// example:
 	//
 	// testKey
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// Tag value.
+	//
 	// example:
 	//
 	// testValue

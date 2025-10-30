@@ -22,19 +22,28 @@ type iListAggTaskGroupsResponseBody interface {
 }
 
 type ListAggTaskGroupsResponseBody struct {
+	// List of aggregation task groups.
 	AggTaskGroups []*ListAggTaskGroupsResponseBodyAggTaskGroups `json:"aggTaskGroups,omitempty" xml:"aggTaskGroups,omitempty" type:"Repeated"`
+	// The maximum number of records returned.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Token for the next query.
+	//
 	// example:
 	//
 	// aa9d0e569b880xxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 7BF1F4D6-B9A8-5F0B-8C1D-4347FFCB798E
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Total number of instances.
+	//
 	// example:
 	//
 	// 5
@@ -108,75 +117,112 @@ func (s *ListAggTaskGroupsResponseBody) Validate() error {
 }
 
 type ListAggTaskGroupsResponseBodyAggTaskGroups struct {
+	// Hash of the aggregation task group configuration.
+	//
 	// example:
 	//
 	// a54136014xxx
 	AggTaskGroupConfigHash *string `json:"aggTaskGroupConfigHash,omitempty" xml:"aggTaskGroupConfigHash,omitempty"`
+	// ID of the aggregation task group.
+	//
 	// example:
 	//
 	// aggTaskGroup-xxxx
 	AggTaskGroupId *string `json:"aggTaskGroupId,omitempty" xml:"aggTaskGroupId,omitempty"`
+	// Name of the aggregation task group.
+	//
 	// example:
 	//
 	// pipeline-aggtask-group
 	AggTaskGroupName *string `json:"aggTaskGroupName,omitempty" xml:"aggTaskGroupName,omitempty"`
+	// Cron expression for the aggregation task group when the scheduling mode is set to \\"Cron\\".
+	//
 	// example:
 	//
 	// 0 10 8 1 	- ? *
 	CronExpr *string `json:"cronExpr,omitempty" xml:"cronExpr,omitempty"`
+	// Fixed delay time (in seconds) for scheduling.
+	//
 	// example:
 	//
 	// 30
 	Delay *int32 `json:"delay,omitempty" xml:"delay,omitempty"`
+	// Description of the aggregation task group.
+	//
 	// example:
 	//
 	// workspace api monitor update test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Start time of the schedule in seconds since epoch.
+	//
 	// example:
 	//
 	// 1757409499000
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+	// Scheduling interval.
+	//
 	// example:
 	//
 	// 2025-04-24 00:00:00,2025-04-24 00:00:00
 	Interval *string `json:"interval,omitempty" xml:"interval,omitempty"`
+	// Maximum number of retries for the aggregation task.
+	//
 	// example:
 	//
 	// 2
 	MaxRetries *int32 `json:"maxRetries,omitempty" xml:"maxRetries,omitempty"`
+	// Maximum retry time (in seconds) for the aggregation task.
+	//
 	// example:
 	//
 	// 200
 	MaxRunTimeInSeconds *int32 `json:"maxRunTimeInSeconds,omitempty" xml:"maxRunTimeInSeconds,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// Scheduling mode.
+	//
 	// example:
 	//
 	// FixedRate
 	ScheduleMode *string `json:"scheduleMode,omitempty" xml:"scheduleMode,omitempty"`
+	// Scheduling time expression.
+	//
 	// example:
 	//
 	// @m
 	ScheduleTimeExpr *string `json:"scheduleTimeExpr,omitempty" xml:"scheduleTimeExpr,omitempty"`
+	// The source Prometheus instance ID of the aggregation task group.
+	//
 	// example:
 	//
 	// rw-xxx
 	SourcePrometheusId *string `json:"sourcePrometheusId,omitempty" xml:"sourcePrometheusId,omitempty"`
+	// Status of the aggregation task group.
+	//
 	// example:
 	//
 	// Running
-	Status *string                                           `json:"status,omitempty" xml:"status,omitempty"`
-	Tags   []*ListAggTaskGroupsResponseBodyAggTaskGroupsTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Resource group tags
+	Tags []*ListAggTaskGroupsResponseBodyAggTaskGroupsTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The target Prometheus instance ID of the aggregation task group.
+	//
 	// example:
 	//
 	// rw-xxx
 	TargetPrometheusId *string `json:"targetPrometheusId,omitempty" xml:"targetPrometheusId,omitempty"`
+	// The second-level timestamp corresponding to the end time of scheduling.
+	//
 	// example:
 	//
 	// 0
 	ToTime *int64 `json:"toTime,omitempty" xml:"toTime,omitempty"`
+	// Update time of the aggregation task group.
+	//
 	// example:
 	//
 	// 1757409499000
@@ -376,10 +422,14 @@ func (s *ListAggTaskGroupsResponseBodyAggTaskGroups) Validate() error {
 }
 
 type ListAggTaskGroupsResponseBodyAggTaskGroupsTags struct {
+	// Key of the resource group tag.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// Value of the resource group tag.
+	//
 	// example:
 	//
 	// value1

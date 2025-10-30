@@ -20,15 +20,22 @@ type iUpdateAddonReleaseRequest interface {
 }
 
 type UpdateAddonReleaseRequest struct {
+	// Addon version information.
+	//
 	// example:
 	//
 	// 0.0.2
 	AddonVersion *string `json:"addonVersion,omitempty" xml:"addonVersion,omitempty"`
+	// Whether to pre-check this request.
+	//
 	// example:
 	//
 	// true
-	DryRun      *bool               `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// Entity discovery rules.
 	EntityRules *EntityDiscoverRule `json:"entityRules,omitempty" xml:"entityRules,omitempty"`
+	// Metadata information.
+	//
 	// example:
 	//
 	// {"install":{"mode":"auto-install","listenPort":"9400"},"discoverMode":"instances","discover":{"instances":"worker-k8s-for-cs-c126d87c76218487e83ab322017f11b44"},"scrapeInterval":"15","enableSecuritecs-nodeyGroupInjection":"true","metricTags":""}

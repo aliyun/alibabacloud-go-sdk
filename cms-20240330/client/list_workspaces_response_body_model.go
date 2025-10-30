@@ -22,22 +22,39 @@ type iListWorkspacesResponseBody interface {
 }
 
 type ListWorkspacesResponseBody struct {
+	// Page size
+	//
+	// Default value:
+	//
+	// 	50
+	//
+	// Maximum value:
+	//
+	// 	50
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Pagination Token
+	//
 	// example:
 	//
 	// xxxxxxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Total count
+	//
 	// example:
 	//
 	// 1
-	Total      *int32                                  `json:"total,omitempty" xml:"total,omitempty"`
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+	// List of workspaces
 	Workspaces []*ListWorkspacesResponseBodyWorkspaces `json:"workspaces,omitempty" xml:"workspaces,omitempty" type:"Repeated"`
 }
 
@@ -108,41 +125,47 @@ func (s *ListWorkspacesResponseBody) Validate() error {
 }
 
 type ListWorkspacesResponseBodyWorkspaces struct {
+	// Creation time
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2025-03-11T08:21:58Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 工作空间描述
+	// Workspace description
 	//
 	// example:
 	//
 	// workspace test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Workspace display name
+	//
 	// example:
 	//
 	// workspace-test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// Last modified time
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2025-03-11T08:21:58Z
 	LastModifyTime *string `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	// 地域ID
+	// Region ID
 	//
 	// example:
 	//
 	// cn-heyuan
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// 工作空间绑定的日志服务项目名称
+	// Log Service project name
 	//
 	// example:
 	//
 	// sls-project-test-001
 	SlsProject *string `json:"slsProject,omitempty" xml:"slsProject,omitempty"`
-	// 工作空间名称
+	// Workspace name
 	//
 	// This parameter is required.
 	//

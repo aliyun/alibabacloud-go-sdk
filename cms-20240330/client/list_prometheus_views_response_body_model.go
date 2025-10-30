@@ -22,6 +22,8 @@ type iListPrometheusViewsResponseBody interface {
 }
 
 type ListPrometheusViewsResponseBody struct {
+	// Maximum number of records to return.
+	//
 	// if can be null:
 	// true
 	//
@@ -29,17 +31,22 @@ type ListPrometheusViewsResponseBody struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Token for the next query.
+	//
 	// example:
 	//
 	// 2-ba4d-4b9f-aa24-dcb067a30f1c
-	NextToken       *string                                           `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// List of Prometheus view instances.
 	PrometheusViews []*ListPrometheusViewsResponseBodyPrometheusViews `json:"prometheusViews,omitempty" xml:"prometheusViews,omitempty" type:"Repeated"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 0CEC5375-C554-562B-A65F-9A629907C1F0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Total number of instances
+	//
 	// example:
 	//
 	// 66
@@ -113,59 +120,92 @@ func (s *ListPrometheusViewsResponseBody) Validate() error {
 }
 
 type ListPrometheusViewsResponseBodyPrometheusViews struct {
+	// Instance creation time, using UTC+0 time, formatted as yyyy-MM-ddTHH:mmZ
+	//
 	// example:
 	//
 	// 2025-07-12T02:18:36Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Instance type:
+	//
+	// prom-view: new version aggregated view
+	//
+	// global-view: old version aggregated view
+	//
 	// example:
 	//
 	// prom-view
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// Payment type. Currently, the fixed value is FREE (free).
+	//
 	// example:
 	//
 	// FREE
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// Product that the prom instance belongs to (arms or cms).
+	//
 	// example:
 	//
 	// cms
 	Product *string `json:"product,omitempty" xml:"product,omitempty"`
+	// Number of Prometheus instances in the view.
+	//
 	// example:
 	//
 	// 2
 	PrometheusInstanceCount *int32 `json:"prometheusInstanceCount,omitempty" xml:"prometheusInstanceCount,omitempty"`
+	// Prometheus view ID.
+	//
 	// example:
 	//
 	// view-xxx
 	PrometheusViewId *string `json:"prometheusViewId,omitempty" xml:"prometheusViewId,omitempty"`
+	// Prometheus view name.
+	//
 	// example:
 	//
 	// view1
 	PrometheusViewName *string `json:"prometheusViewName,omitempty" xml:"prometheusViewName,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-zhangjiakou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// Resource group ID.
+	//
 	// example:
 	//
 	// rg-acfm3gn5i6bigbi
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// Fixed value: PrometheusView.
+	//
 	// example:
 	//
 	// PrometheusView
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// Backend data storage status.
+	//
 	// example:
 	//
 	// Running
-	Status *string                                               `json:"status,omitempty" xml:"status,omitempty"`
-	Tags   []*ListPrometheusViewsResponseBodyPrometheusViewsTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Tag values.
+	Tags []*ListPrometheusViewsResponseBodyPrometheusViewsTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// User ID.
+	//
 	// example:
 	//
 	// 123xxx
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// Version.
+	//
 	// example:
 	//
 	// V2
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// Workspace that the prom instance belongs to.
+	//
 	// example:
 	//
 	// default-cms-1490404746278495-cn-hangzhou
@@ -329,10 +369,14 @@ func (s *ListPrometheusViewsResponseBodyPrometheusViews) Validate() error {
 }
 
 type ListPrometheusViewsResponseBodyPrometheusViewsTags struct {
+	// Tag key
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// Match value.
+	//
 	// example:
 	//
 	// value1

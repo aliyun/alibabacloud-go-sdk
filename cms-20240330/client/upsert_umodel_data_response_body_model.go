@@ -14,6 +14,8 @@ type iUpsertUmodelDataResponseBody interface {
 }
 
 type UpsertUmodelDataResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 0CEC5375-C554-562B-A65F-9A629907C1F0

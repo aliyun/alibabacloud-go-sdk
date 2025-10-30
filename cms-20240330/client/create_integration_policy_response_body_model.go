@@ -18,11 +18,16 @@ type iCreateIntegrationPolicyResponseBody interface {
 }
 
 type CreateIntegrationPolicyResponseBody struct {
+	// Whether it was created.
+	//
 	// example:
 	//
 	// true
-	Created *bool                                      `json:"created,omitempty" xml:"created,omitempty"`
-	Policy  *CreateIntegrationPolicyResponseBodyPolicy `json:"policy,omitempty" xml:"policy,omitempty" type:"Struct"`
+	Created *bool `json:"created,omitempty" xml:"created,omitempty"`
+	// Uploaded policy.
+	Policy *CreateIntegrationPolicyResponseBodyPolicy `json:"policy,omitempty" xml:"policy,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// CD8BA7D6-995D-578D-9941-78B0FECD14B5
@@ -74,30 +79,47 @@ func (s *CreateIntegrationPolicyResponseBody) Validate() error {
 }
 
 type CreateIntegrationPolicyResponseBodyPolicy struct {
+	// Entity group ID.
+	//
 	// example:
 	//
 	// eg-b79f65d11fb94e779867cf937c3a3002
 	EntityGroupId *string `json:"entityGroupId,omitempty" xml:"entityGroupId,omitempty"`
+	// Policy ID.
+	//
 	// example:
 	//
 	// policy-14c8e9a29b0a46da843f8781471062ff
 	PolicyId *string `json:"policyId,omitempty" xml:"policyId,omitempty"`
+	// Policy name.
+	//
 	// example:
 	//
 	// metrics-inner-manage
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
+	// Policy type.
+	//
 	// example:
 	//
 	// CS
 	PolicyType *string `json:"policyType,omitempty" xml:"policyType,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-heyuan
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// User ID.
+	//
 	// example:
 	//
 	// u1234567
-	UserId    *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The workspace where the Policy resides.
+	//
+	// example:
+	//
+	// prometheus
 	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 

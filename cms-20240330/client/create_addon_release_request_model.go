@@ -32,43 +32,62 @@ type iCreateAddonReleaseRequest interface {
 }
 
 type CreateAddonReleaseRequest struct {
+	// The Addon name of the component that needs to be monitored.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cs-gpu
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
+	// The language type of the component.
+	//
 	// example:
 	//
 	// zh
 	AliyunLang *string `json:"aliyunLang,omitempty" xml:"aliyunLang,omitempty"`
+	// Whether it is a dry run, default is false.
+	//
 	// example:
 	//
 	// false
-	DryRun      *bool               `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// Field rules
 	EntityRules *EntityDiscoverRule `json:"entityRules,omitempty" xml:"entityRules,omitempty"`
+	// Environment type. If the Policy type is CS and ECS, use accordingly; otherwise, it is unified as Cloud.
+	//
 	// example:
 	//
 	// CS
 	EnvType *string `json:"envType,omitempty" xml:"envType,omitempty"`
+	// Parent AddonReleaseId.
+	//
 	// example:
 	//
 	// policy-xxxxxxxxxxx
 	ParentAddonReleaseId *string `json:"parentAddonReleaseId,omitempty" xml:"parentAddonReleaseId,omitempty"`
+	// The plugin name after access. If not specified, a default rule name will be generated.
+	//
 	// example:
 	//
 	// test-gpu-integration-name
 	ReleaseName *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
+	// Input metadata.
+	//
 	// example:
 	//
 	// {"install":{"mode":"auto-install","listenPort":"9400"},"discoverMode":"instances","discover":{"instances":"worker-k8s-for-cs-c126d87c76218487e83ab322017f11b44"},"scrapeInterval":"15","enableSecuritecs-nodeyGroupInjection":"true","metricTags":""}
 	Values *string `json:"values,omitempty" xml:"values,omitempty"`
+	// The version of the Addon component that needs to be monitored.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.0.2
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The workspace name for installing the component resources.
+	//
 	// example:
 	//
 	// default

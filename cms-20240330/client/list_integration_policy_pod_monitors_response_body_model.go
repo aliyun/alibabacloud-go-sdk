@@ -20,13 +20,21 @@ type iListIntegrationPolicyPodMonitorsResponseBody interface {
 }
 
 type ListIntegrationPolicyPodMonitorsResponseBody struct {
-	ClusterId   *string                                                    `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// Cluster ID.
+	//
+	// example:
+	//
+	// et15prod-et15storage
+	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// PodMonitor list
 	PodMonitors []*ListIntegrationPolicyPodMonitorsResponseBodyPodMonitors `json:"podMonitors,omitempty" xml:"podMonitors,omitempty" type:"Repeated"`
+	// Policy ID.
+	//
 	// example:
 	//
 	// policy-c9efed2b99c348d49e589c5f780fc074
 	PolicyId *string `json:"policyId,omitempty" xml:"policyId,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -92,39 +100,58 @@ func (s *ListIntegrationPolicyPodMonitorsResponseBody) Validate() error {
 }
 
 type ListIntegrationPolicyPodMonitorsResponseBodyPodMonitors struct {
+	// Addon name.
+	//
 	// example:
 	//
 	// cloud-ecs
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
+	// Addon Release name.
+	//
 	// example:
 	//
 	// release-2345678
 	AddonReleaseName *string `json:"addonReleaseName,omitempty" xml:"addonReleaseName,omitempty"`
+	// Addon version.
+	//
 	// example:
 	//
 	// 0.0.1
 	AddonVersion *string `json:"addonVersion,omitempty" xml:"addonVersion,omitempty"`
+	// Configuration yaml.
+	//
 	// example:
 	//
 	// apiVersion: xxxxx
 	ConfigYaml *string `json:"configYaml,omitempty" xml:"configYaml,omitempty"`
+	// Enable status.
+	//
 	// example:
 	//
 	// run
 	EnableStatus *string `json:"enableStatus,omitempty" xml:"enableStatus,omitempty"`
+	// Encrypt yaml.
+	//
 	// example:
 	//
 	// YXBpVmVyc2lvbjogeHh4eHgK
-	EncryptYaml *bool                                                               `json:"encryptYaml,omitempty" xml:"encryptYaml,omitempty"`
-	Endpoints   []*ListIntegrationPolicyPodMonitorsResponseBodyPodMonitorsEndpoints `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
+	EncryptYaml *bool `json:"encryptYaml,omitempty" xml:"encryptYaml,omitempty"`
+	// Instance endpoints.
+	Endpoints []*ListIntegrationPolicyPodMonitorsResponseBodyPodMonitorsEndpoints `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
+	// Number of matched pods
+	//
 	// example:
 	//
 	// 3
 	MatchedPodCount *int64 `json:"matchedPodCount,omitempty" xml:"matchedPodCount,omitempty"`
+	// Collection name.
+	//
 	// example:
 	//
 	// znzmo_entity_test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Namespace
+	//
 	// example:
 	//
 	// sla-ns-d5aeb2b4f91b47
@@ -243,22 +270,32 @@ func (s *ListIntegrationPolicyPodMonitorsResponseBodyPodMonitors) Validate() err
 }
 
 type ListIntegrationPolicyPodMonitorsResponseBodyPodMonitorsEndpoints struct {
+	// Collection interval
+	//
 	// example:
 	//
 	// 30s
 	Interval *string `json:"interval,omitempty" xml:"interval,omitempty"`
+	// Number of matched targets
+	//
 	// example:
 	//
 	// 1
 	MatchedTargetCount *int64 `json:"matchedTargetCount,omitempty" xml:"matchedTargetCount,omitempty"`
+	// Metric collection path
+	//
 	// example:
 	//
 	// /metrics
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// Port number
+	//
 	// example:
 	//
 	// 9100
 	Port *string `json:"port,omitempty" xml:"port,omitempty"`
+	// Target port
+	//
 	// example:
 	//
 	// https

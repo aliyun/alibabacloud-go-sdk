@@ -18,15 +18,24 @@ type iListIntegrationPolicyCustomScrapeJobRulesRequest interface {
 }
 
 type ListIntegrationPolicyCustomScrapeJobRulesRequest struct {
+	// Addon Release name.
+	//
 	// example:
 	//
 	// release12345678
 	AddonReleaseName *string `json:"addonReleaseName,omitempty" xml:"addonReleaseName,omitempty"`
+	// Whether to encrypt Yaml.
+	//
 	// example:
 	//
 	// true
-	EncryptYaml *bool   `json:"encryptYaml,omitempty" xml:"encryptYaml,omitempty"`
-	Namespace   *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	EncryptYaml *bool `json:"encryptYaml,omitempty" xml:"encryptYaml,omitempty"`
+	// Namespace.
+	//
+	// example:
+	//
+	// arms-prom
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
 }
 
 func (s ListIntegrationPolicyCustomScrapeJobRulesRequest) String() string {

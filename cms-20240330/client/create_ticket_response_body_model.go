@@ -14,6 +14,8 @@ type iCreateTicketResponseBody interface {
 }
 
 type CreateTicketResponseBody struct {
+	// 免登录票据。
+	//
 	// example:
 	//
 	// eyJ***************.eyJ******************.KUT****************

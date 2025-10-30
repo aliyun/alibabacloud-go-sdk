@@ -32,10 +32,14 @@ type iListPrometheusViewsShrinkRequest interface {
 }
 
 type ListPrometheusViewsShrinkRequest struct {
+	// Filter by RegionID.
+	//
 	// example:
 	//
 	// cn-zhangjiakou,cn-beijing
 	FilterRegionIds *string `json:"filterRegionIds,omitempty" xml:"filterRegionIds,omitempty"`
+	// Maximum number of records to return.
+	//
 	// if can be null:
 	// true
 	//
@@ -43,6 +47,8 @@ type ListPrometheusViewsShrinkRequest struct {
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Query token.
+	//
 	// if can be null:
 	// true
 	//
@@ -50,27 +56,40 @@ type ListPrometheusViewsShrinkRequest struct {
 	//
 	// 44ANBjKZmQeKnaB1fXRq06w7sFYK3MUcCALMD9qQbmEiE
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// List of Prometheus view instance IDs.
+	//
 	// example:
 	//
 	// view-xxx
 	PrometheusViewIds *string `json:"prometheusViewIds,omitempty" xml:"prometheusViewIds,omitempty"`
+	// Prometheus view name.
+	//
 	// example:
 	//
 	// view1
 	PrometheusViewName *string `json:"prometheusViewName,omitempty" xml:"prometheusViewName,omitempty"`
+	// Resource group ID.
+	//
 	// example:
 	//
 	// rg-acfm3gn5i6bigbi
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// Resource type.
+	//
 	// example:
 	//
 	// PROMETHEUSVIEW
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	TagShrink    *string `json:"tag,omitempty" xml:"tag,omitempty"`
+	// List of tags.
+	TagShrink *string `json:"tag,omitempty" xml:"tag,omitempty"`
+	// Instance version: V1 or V2
+	//
 	// example:
 	//
 	// V2
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// Workspace name
+	//
 	// example:
 	//
 	// workspace-test

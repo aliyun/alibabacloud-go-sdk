@@ -22,6 +22,8 @@ type iListPrometheusInstancesResponseBody interface {
 }
 
 type ListPrometheusInstancesResponseBody struct {
+	// Maximum number of records to return.
+	//
 	// if can be null:
 	// true
 	//
@@ -29,17 +31,22 @@ type ListPrometheusInstancesResponseBody struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Token for the next query.
+	//
 	// example:
 	//
 	// xxxxxxxxxx
-	NextToken           *string                                                   `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// List of Prometheus instances.
 	PrometheusInstances []*ListPrometheusInstancesResponseBodyPrometheusInstances `json:"prometheusInstances,omitempty" xml:"prometheusInstances,omitempty" type:"Repeated"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Total number of instances
+	//
 	// example:
 	//
 	// 66
@@ -113,60 +120,98 @@ func (s *ListPrometheusInstancesResponseBody) Validate() error {
 }
 
 type ListPrometheusInstancesResponseBodyPrometheusInstances struct {
+	// Access type:
+	//
+	// readWrite, readOnly, httpReadOnly
+	//
 	// example:
 	//
 	// readWrite
 	AccessType *string `json:"accessType,omitempty" xml:"accessType,omitempty"`
+	// Instance creation time, using UTC+0 time, formatted as yyyy-MM-ddTHH:mmZ
+	//
 	// example:
 	//
 	// 2025-08-10T02:07:53Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Instance type.
+	//
 	// example:
 	//
 	// remote-write
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// POSTPAY: Postpaid by metric.
+	//
+	// POSTPAY_GB: Postpaid by write volume.
+	//
+	// PREPAY: Prepaid.
+	//
+	// FREE: Free.
+	//
 	// example:
 	//
 	// POSTPAY_GB
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// Product to which the prom instance belongs
+	//
 	// example:
 	//
 	// arms
 	Product *string `json:"product,omitempty" xml:"product,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// rw-63549e054ff596a4149927961dff
 	PrometheusInstanceId *string `json:"prometheusInstanceId,omitempty" xml:"prometheusInstanceId,omitempty"`
+	// Instance name.
+	//
 	// example:
 	//
 	// test-prom-name
 	PrometheusInstanceName *string `json:"prometheusInstanceName,omitempty" xml:"prometheusInstanceName,omitempty"`
+	// Region ID
+	//
 	// example:
 	//
 	// cn-nanjing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// Resource group ID.
+	//
 	// example:
 	//
 	// rg-aek2bhocin5e2na
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// Resource type.
+	//
 	// example:
 	//
 	// Prometheus
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// Backend data storage status
+	//
 	// example:
 	//
 	// Pending2Running
-	Status           *string                                                       `json:"status,omitempty" xml:"status,omitempty"`
-	SupportAuthTypes []*string                                                     `json:"supportAuthTypes,omitempty" xml:"supportAuthTypes,omitempty" type:"Repeated"`
-	Tags             []*ListPrometheusInstancesResponseBodyPrometheusInstancesTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Supported authentication types.
+	SupportAuthTypes []*string `json:"supportAuthTypes,omitempty" xml:"supportAuthTypes,omitempty" type:"Repeated"`
+	// Tags key.
+	Tags []*ListPrometheusInstancesResponseBodyPrometheusInstancesTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// User ID.
+	//
 	// example:
 	//
 	// 17073812345
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// Version
+	//
 	// example:
 	//
 	// *
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// Workspace to which the Prometheus instance belongs
+	//
 	// example:
 	//
 	// default-cms-115214006-cn-hangzhou
@@ -339,10 +384,14 @@ func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) Validate() erro
 }
 
 type ListPrometheusInstancesResponseBodyPrometheusInstancesTags struct {
+	// Tag key
+	//
 	// example:
 	//
 	// testKey
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// Tag value.
+	//
 	// example:
 	//
 	// testValue

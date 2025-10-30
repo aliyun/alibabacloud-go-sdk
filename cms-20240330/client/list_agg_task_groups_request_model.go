@@ -28,31 +28,46 @@ type iListAggTaskGroupsRequest interface {
 }
 
 type ListAggTaskGroupsRequest struct {
+	// List of IDs for the aggregation task groups, which must be JSON parseable.
+	//
 	// example:
 	//
 	// ["aggTaskGroup-xxx"]
 	FilterAggTaskGroupIds *string `json:"filterAggTaskGroupIds,omitempty" xml:"filterAggTaskGroupIds,omitempty"`
+	// List of names for the aggregation task groups, which must be JSON parseable.
+	//
 	// example:
 	//
 	// ["apiserver_request_total"]
 	FilterAggTaskGroupNames *string `json:"filterAggTaskGroupNames,omitempty" xml:"filterAggTaskGroupNames,omitempty"`
+	// Maximum number of records to return.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Query token.
+	//
 	// example:
 	//
 	// 28036394xxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Name search, supports fuzzy matching.
+	//
 	// example:
 	//
 	// test
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// Status of the aggregation task group, either \\"Running\\" or \\"Stopped\\". Default is Running.
+	//
 	// example:
 	//
 	// Running
-	Status *string                         `json:"status,omitempty" xml:"status,omitempty"`
-	Tags   []*ListAggTaskGroupsRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Resource group tags.
+	Tags []*ListAggTaskGroupsRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The target Prometheus instance ID for the aggregation task group.
+	//
 	// example:
 	//
 	// rw-pq4apob9jm
@@ -153,10 +168,14 @@ func (s *ListAggTaskGroupsRequest) Validate() error {
 }
 
 type ListAggTaskGroupsRequestTags struct {
+	// Key of the resource group tag.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// Value of the resource group tag.
+	//
 	// example:
 	//
 	// value1

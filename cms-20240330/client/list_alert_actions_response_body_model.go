@@ -22,19 +22,28 @@ type iListAlertActionsResponseBody interface {
 }
 
 type ListAlertActionsResponseBody struct {
+	// List of alert action configurations.
 	AlertActions []*ListAlertActionsResponseBodyAlertActions `json:"alertActions,omitempty" xml:"alertActions,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Total number of items.
+	//
 	// example:
 	//
 	// 9
@@ -108,25 +117,39 @@ func (s *ListAlertActionsResponseBody) Validate() error {
 }
 
 type ListAlertActionsResponseBodyAlertActions struct {
+	// Unique identifier for the action integration.
+	//
 	// example:
 	//
 	// test
 	AlertActionId *string `json:"alertActionId,omitempty" xml:"alertActionId,omitempty"`
+	// Alert action name.
+	//
 	// example:
 	//
 	// testName
-	AlertActionName *string                                                 `json:"alertActionName,omitempty" xml:"alertActionName,omitempty"`
-	EbParam         *ListAlertActionsResponseBodyAlertActionsEbParam        `json:"ebParam,omitempty" xml:"ebParam,omitempty" type:"Struct"`
-	EssParam        *ListAlertActionsResponseBodyAlertActionsEssParam       `json:"essParam,omitempty" xml:"essParam,omitempty" type:"Struct"`
-	Fc3Param        *ListAlertActionsResponseBodyAlertActionsFc3Param       `json:"fc3Param,omitempty" xml:"fc3Param,omitempty" type:"Struct"`
-	FcParam         *ListAlertActionsResponseBodyAlertActionsFcParam        `json:"fcParam,omitempty" xml:"fcParam,omitempty" type:"Struct"`
-	MnsParam        *ListAlertActionsResponseBodyAlertActionsMnsParam       `json:"mnsParam,omitempty" xml:"mnsParam,omitempty" type:"Struct"`
-	PagerDutyParam  *ListAlertActionsResponseBodyAlertActionsPagerDutyParam `json:"pagerDutyParam,omitempty" xml:"pagerDutyParam,omitempty" type:"Struct"`
-	SlsParam        *ListAlertActionsResponseBodyAlertActionsSlsParam       `json:"slsParam,omitempty" xml:"slsParam,omitempty" type:"Struct"`
+	AlertActionName *string `json:"alertActionName,omitempty" xml:"alertActionName,omitempty"`
+	// Event Bridge parameters.
+	EbParam *ListAlertActionsResponseBodyAlertActionsEbParam `json:"ebParam,omitempty" xml:"ebParam,omitempty" type:"Struct"`
+	// Elastic scaling parameters.
+	EssParam *ListAlertActionsResponseBodyAlertActionsEssParam `json:"essParam,omitempty" xml:"essParam,omitempty" type:"Struct"`
+	// Function Compute 3.0 parameters.
+	Fc3Param *ListAlertActionsResponseBodyAlertActionsFc3Param `json:"fc3Param,omitempty" xml:"fc3Param,omitempty" type:"Struct"`
+	// Function Compute parameters.
+	FcParam *ListAlertActionsResponseBodyAlertActionsFcParam `json:"fcParam,omitempty" xml:"fcParam,omitempty" type:"Struct"`
+	// Lightweight Message Queue (formerly MNS) parameters.
+	MnsParam *ListAlertActionsResponseBodyAlertActionsMnsParam `json:"mnsParam,omitempty" xml:"mnsParam,omitempty" type:"Struct"`
+	// PagerDuty parameters
+	PagerDutyParam *ListAlertActionsResponseBodyAlertActionsPagerDutyParam `json:"pagerDutyParam,omitempty" xml:"pagerDutyParam,omitempty" type:"Struct"`
+	// Log Service parameters.
+	SlsParam *ListAlertActionsResponseBodyAlertActionsSlsParam `json:"slsParam,omitempty" xml:"slsParam,omitempty" type:"Struct"`
+	// Action integration type.
+	//
 	// example:
 	//
 	// FC
-	Type         *string                                               `json:"type,omitempty" xml:"type,omitempty"`
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Webhook parameters
 	WebhookParam *ListAlertActionsResponseBodyAlertActionsWebhookParam `json:"webhookParam,omitempty" xml:"webhookParam,omitempty" type:"Struct"`
 }
 
@@ -282,18 +305,26 @@ func (s *ListAlertActionsResponseBodyAlertActions) Validate() error {
 }
 
 type ListAlertActionsResponseBodyAlertActionsEbParam struct {
+	// Event source.
+	//
 	// example:
 	//
 	// test
 	EbSource *string `json:"ebSource,omitempty" xml:"ebSource,omitempty"`
+	// Event bus name.
+	//
 	// example:
 	//
 	// test
 	EventBusName *string `json:"eventBusName,omitempty" xml:"eventBusName,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-heyuan
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// Subject.
+	//
 	// example:
 	//
 	// test
@@ -349,14 +380,20 @@ func (s *ListAlertActionsResponseBodyAlertActionsEbParam) Validate() error {
 }
 
 type ListAlertActionsResponseBodyAlertActionsEssParam struct {
+	// Elastic scaling group ID.
+	//
 	// example:
 	//
 	// testId
 	EssGroupId *string `json:"essGroupId,omitempty" xml:"essGroupId,omitempty"`
+	// Elastic scaling rule ID.
+	//
 	// example:
 	//
 	// testId
 	EssRuleId *string `json:"essRuleId,omitempty" xml:"essRuleId,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-beijing
@@ -403,14 +440,20 @@ func (s *ListAlertActionsResponseBodyAlertActionsEssParam) Validate() error {
 }
 
 type ListAlertActionsResponseBodyAlertActionsFc3Param struct {
+	// Function name of the Function Compute service.
+	//
 	// example:
 	//
 	// test
 	Function *string `json:"function,omitempty" xml:"function,omitempty"`
+	// Version or alias of the function.
+	//
 	// example:
 	//
 	// test
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-qingdao
@@ -457,14 +500,20 @@ func (s *ListAlertActionsResponseBodyAlertActionsFc3Param) Validate() error {
 }
 
 type ListAlertActionsResponseBodyAlertActionsFcParam struct {
+	// Function name in the Function Compute service.
+	//
 	// example:
 	//
 	// test
 	Function *string `json:"function,omitempty" xml:"function,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// Function Compute service name.
+	//
 	// example:
 	//
 	// test
@@ -511,14 +560,24 @@ func (s *ListAlertActionsResponseBodyAlertActionsFcParam) Validate() error {
 }
 
 type ListAlertActionsResponseBodyAlertActionsMnsParam struct {
+	// Resource type of the Lightweight Message Queue (formerly MNS).
+	//
 	// example:
 	//
 	// queue
 	MnsType *string `json:"mnsType,omitempty" xml:"mnsType,omitempty"`
+	// Resource name.
+	//
+	// - If the resource type is queue, the resource name is the queue name.
+	//
+	// - If the resource type is topic, the resource name is the topic name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -565,10 +624,14 @@ func (s *ListAlertActionsResponseBodyAlertActionsMnsParam) Validate() error {
 }
 
 type ListAlertActionsResponseBodyAlertActionsPagerDutyParam struct {
+	// Integration key for PagerDuty.
+	//
 	// example:
 	//
 	// fsfer4543t5t65g4t4
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// Integration webhook for PagerDuty. Supports V1 and V2 versions.
+	//
 	// example:
 	//
 	// https://events.pagerduty.com/v2/enqueue
@@ -606,14 +669,20 @@ func (s *ListAlertActionsResponseBodyAlertActionsPagerDutyParam) Validate() erro
 }
 
 type ListAlertActionsResponseBodyAlertActionsSlsParam struct {
+	// Logstore name of the Log Service.
+	//
 	// example:
 	//
 	// test
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// Log Service project name.
+	//
 	// example:
 	//
 	// test
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -660,15 +729,22 @@ func (s *ListAlertActionsResponseBodyAlertActionsSlsParam) Validate() error {
 }
 
 type ListAlertActionsResponseBodyAlertActionsWebhookParam struct {
+	// Data format, effective when the request method is POST.
+	//
 	// example:
 	//
 	// JSON
-	ContentType *string            `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	Headers     map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// Request headers.
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// Webhook request method.
+	//
 	// example:
 	//
 	// GET
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
+	// The URL address for the alarm callback.
+	//
 	// example:
 	//
 	// http://www.test.com

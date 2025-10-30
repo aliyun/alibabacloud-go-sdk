@@ -20,19 +20,26 @@ type iUpdateIntegrationPolicyRequest interface {
 }
 
 type UpdateIntegrationPolicyRequest struct {
+	// Fee package type, CS_Pro/CS_Basic/empty.
+	//
 	// example:
 	//
 	// CS_Pro
 	FeePackage *string `json:"feePackage,omitempty" xml:"feePackage,omitempty"`
+	// Rule name, minimum 3 characters, maximum 63 characters, must start with a letter.
+	//
 	// example:
 	//
 	// metrics-inner-manage
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
+	// Resource group ID of the instance.
+	//
 	// example:
 	//
 	// rg-aekzoiafjtr7zyq
-	ResourceGroupId *string                               `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	Tags            []*UpdateIntegrationPolicyRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// Resource tags.
+	Tags []*UpdateIntegrationPolicyRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s UpdateIntegrationPolicyRequest) String() string {
@@ -93,10 +100,14 @@ func (s *UpdateIntegrationPolicyRequest) Validate() error {
 }
 
 type UpdateIntegrationPolicyRequestTags struct {
+	// Tag `key` value.
+	//
 	// example:
 	//
 	// algo_bhv_expose_in_airec_exposure
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// Tag `value` value.
+	//
 	// example:
 	//
 	// [{\\"Id\\": \\"kgqie6hm\\", \\"Name\\": \\"Sheet1\\"}]

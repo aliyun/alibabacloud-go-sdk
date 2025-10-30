@@ -16,8 +16,9 @@ type iGetIntegrationPolicyResponseBody interface {
 }
 
 type GetIntegrationPolicyResponseBody struct {
+	// Access policy.
 	Policy *GetIntegrationPolicyResponseBodyPolicy `json:"policy,omitempty" xml:"policy,omitempty" type:"Struct"`
-	// Id of the request
+	// ID of the request.
 	//
 	// example:
 	//
@@ -61,34 +62,54 @@ func (s *GetIntegrationPolicyResponseBody) Validate() error {
 }
 
 type GetIntegrationPolicyResponseBodyPolicy struct {
+	// Bound resource information.
 	BindResource *GetIntegrationPolicyResponseBodyPolicyBindResource `json:"bindResource,omitempty" xml:"bindResource,omitempty" type:"Struct"`
-	EntityGroup  *GetIntegrationPolicyResponseBodyPolicyEntityGroup  `json:"entityGroup,omitempty" xml:"entityGroup,omitempty" type:"Struct"`
-	ManagedInfo  *GetIntegrationPolicyResponseBodyPolicyManagedInfo  `json:"managedInfo,omitempty" xml:"managedInfo,omitempty" type:"Struct"`
+	// Cs umodel status
+	CsUmodelStatus *bool `json:"csUmodelStatus,omitempty" xml:"csUmodelStatus,omitempty"`
+	// Entity group.
+	EntityGroup *GetIntegrationPolicyResponseBodyPolicyEntityGroup `json:"entityGroup,omitempty" xml:"entityGroup,omitempty" type:"Struct"`
+	// Policy management information.
+	ManagedInfo *GetIntegrationPolicyResponseBodyPolicyManagedInfo `json:"managedInfo,omitempty" xml:"managedInfo,omitempty" type:"Struct"`
+	// Policy ID.
+	//
 	// example:
 	//
 	// policy-c9efed2b99c348d49e589c5f780fc074
 	PolicyId *string `json:"policyId,omitempty" xml:"policyId,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// ControlPolicy4DetailVportInfo
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
+	// Access policy type.
+	//
 	// example:
 	//
 	// CS
 	PolicyType *string `json:"policyType,omitempty" xml:"policyType,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-heyuan
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// Resource group ID.
+	//
 	// example:
 	//
 	// rg-xxxxx
-	ResourceGroupId *string                                       `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	Tags            []*GetIntegrationPolicyResponseBodyPolicyTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// Tag keys.
+	Tags []*GetIntegrationPolicyResponseBodyPolicyTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// User ID.
+	//
 	// example:
 	//
 	// u123456
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// Workspace.
+	//
 	// example:
 	//
 	// prometheus
@@ -105,6 +126,10 @@ func (s GetIntegrationPolicyResponseBodyPolicy) GoString() string {
 
 func (s *GetIntegrationPolicyResponseBodyPolicy) GetBindResource() *GetIntegrationPolicyResponseBodyPolicyBindResource {
 	return s.BindResource
+}
+
+func (s *GetIntegrationPolicyResponseBodyPolicy) GetCsUmodelStatus() *bool {
+	return s.CsUmodelStatus
 }
 
 func (s *GetIntegrationPolicyResponseBodyPolicy) GetEntityGroup() *GetIntegrationPolicyResponseBodyPolicyEntityGroup {
@@ -149,6 +174,11 @@ func (s *GetIntegrationPolicyResponseBodyPolicy) GetWorkspace() *string {
 
 func (s *GetIntegrationPolicyResponseBodyPolicy) SetBindResource(v *GetIntegrationPolicyResponseBodyPolicyBindResource) *GetIntegrationPolicyResponseBodyPolicy {
 	s.BindResource = v
+	return s
+}
+
+func (s *GetIntegrationPolicyResponseBodyPolicy) SetCsUmodelStatus(v bool) *GetIntegrationPolicyResponseBodyPolicy {
+	s.CsUmodelStatus = &v
 	return s
 }
 
@@ -231,18 +261,26 @@ func (s *GetIntegrationPolicyResponseBodyPolicy) Validate() error {
 }
 
 type GetIntegrationPolicyResponseBodyPolicyBindResource struct {
+	// Cluster ID.
+	//
 	// example:
 	//
 	// 00b1630f02814f95a9bce717d8d56bb2
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// Cluster type.
+	//
 	// example:
 	//
 	// ManagedKubernetes
 	ClusterType *string `json:"clusterType,omitempty" xml:"clusterType,omitempty"`
+	// VPC CIDR.
+	//
 	// example:
 	//
 	// 10.12.0.1/16
 	VpcCidr *string `json:"vpcCidr,omitempty" xml:"vpcCidr,omitempty"`
+	// VPC ID.
+	//
 	// example:
 	//
 	// vpc-2zegqpeyxplhtmdg70xnr
@@ -298,31 +336,46 @@ func (s *GetIntegrationPolicyResponseBodyPolicyBindResource) Validate() error {
 }
 
 type GetIntegrationPolicyResponseBodyPolicyEntityGroup struct {
+	// Description.
+	//
 	// example:
 	//
 	// xxxxxx
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Entity group ID.
+	//
 	// example:
 	//
 	// eg-b79f65d11fb94e779867cf937c3a3002
 	EntityGroupId *string `json:"entityGroupId,omitempty" xml:"entityGroupId,omitempty"`
+	// Entity group name.
+	//
 	// example:
 	//
 	// prod-database
-	EntityGroupName *string                                                       `json:"entityGroupName,omitempty" xml:"entityGroupName,omitempty"`
-	EntityRules     *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules `json:"entityRules,omitempty" xml:"entityRules,omitempty" type:"Struct"`
+	EntityGroupName *string `json:"entityGroupName,omitempty" xml:"entityGroupName,omitempty"`
+	// Entity rules.
+	EntityRules *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules `json:"entityRules,omitempty" xml:"entityRules,omitempty" type:"Struct"`
+	// For querying
+	//
 	// example:
 	//
 	// status: 200 AND totalTime > 0.5
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-heyuan
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// User ID.
+	//
 	// example:
 	//
 	// u123456
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// Workspace.
+	//
 	// example:
 	//
 	// test-api
@@ -419,18 +472,28 @@ func (s *GetIntegrationPolicyResponseBodyPolicyEntityGroup) Validate() error {
 }
 
 type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules struct {
+	// Annotations.
 	Annotations []*GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesAnnotations `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Repeated"`
-	EntityTypes []*string                                                                  `json:"entityTypes,omitempty" xml:"entityTypes,omitempty" type:"Repeated"`
-	FieldRules  []*GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesFieldRules  `json:"fieldRules,omitempty" xml:"fieldRules,omitempty" type:"Repeated"`
-	InstanceIds []*string                                                                  `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
-	IpMatchRule *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesIpMatchRule   `json:"ipMatchRule,omitempty" xml:"ipMatchRule,omitempty" type:"Struct"`
-	Labels      []*GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesLabels      `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
-	RegionIds   []*string                                                                  `json:"regionIds,omitempty" xml:"regionIds,omitempty" type:"Repeated"`
+	// List of entity types.
+	EntityTypes []*string `json:"entityTypes,omitempty" xml:"entityTypes,omitempty" type:"Repeated"`
+	// List of field rules.
+	FieldRules []*GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesFieldRules `json:"fieldRules,omitempty" xml:"fieldRules,omitempty" type:"Repeated"`
+	// Instance ID.
+	InstanceIds []*string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
+	// IP matching rule.
+	IpMatchRule *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesIpMatchRule `json:"ipMatchRule,omitempty" xml:"ipMatchRule,omitempty" type:"Struct"`
+	// Labels.
+	Labels []*GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	// List of region IDs.
+	RegionIds []*string `json:"regionIds,omitempty" xml:"regionIds,omitempty" type:"Repeated"`
+	// Resource group ID.
+	//
 	// example:
 	//
 	// rg-aek3aqsuvlv3yyq
-	ResourceGroupId *string                                                             `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	Tags            []*GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// Tag values.
+	Tags []*GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules) String() string {
@@ -568,14 +631,19 @@ func (s *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules) Validate(
 }
 
 type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesAnnotations struct {
+	// Operation to be performed.
+	//
 	// example:
 	//
 	// add
 	Op *string `json:"op,omitempty" xml:"op,omitempty"`
+	// Tag key.
+	//
 	// example:
 	//
 	// use
-	TagKey    *string   `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// Tag values.
 	TagValues []*string `json:"tagValues,omitempty" xml:"tagValues,omitempty" type:"Repeated"`
 }
 
@@ -619,11 +687,16 @@ func (s *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesAnnotations
 }
 
 type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesFieldRules struct {
+	// Unique identifier for the field.
+	//
 	// example:
 	//
 	// test
-	FieldKey    *string   `json:"fieldKey,omitempty" xml:"fieldKey,omitempty"`
+	FieldKey *string `json:"fieldKey,omitempty" xml:"fieldKey,omitempty"`
+	// Field content.
 	FieldValues []*string `json:"fieldValues,omitempty" xml:"fieldValues,omitempty" type:"Repeated"`
+	// Operation to be performed.
+	//
 	// example:
 	//
 	// add
@@ -670,10 +743,14 @@ func (s *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesFieldRules)
 }
 
 type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesIpMatchRule struct {
+	// IP segment.
+	//
 	// example:
 	//
 	// 10.10.0.1/16
 	IpCidr *string `json:"ipCidr,omitempty" xml:"ipCidr,omitempty"`
+	// Key for the IP field.
+	//
 	// example:
 	//
 	// test-key
@@ -711,14 +788,19 @@ func (s *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesIpMatchRule
 }
 
 type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesLabels struct {
+	// The operation to be performed.
+	//
 	// example:
 	//
 	// add
 	Op *string `json:"op,omitempty" xml:"op,omitempty"`
+	// The tag key of the instance.
+	//
 	// example:
 	//
 	// key1
-	TagKey    *string   `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// List of tag values.
 	TagValues []*string `json:"tagValues,omitempty" xml:"tagValues,omitempty" type:"Repeated"`
 }
 
@@ -762,14 +844,19 @@ func (s *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesLabels) Val
 }
 
 type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesTags struct {
+	// The operation to be performed.
+	//
 	// example:
 	//
 	// add
 	Op *string `json:"op,omitempty" xml:"op,omitempty"`
+	// The tag key of the instance.
+	//
 	// example:
 	//
 	// key2
-	TagKey    *string   `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// List of tag values.
 	TagValues []*string `json:"tagValues,omitempty" xml:"tagValues,omitempty" type:"Repeated"`
 }
 
@@ -813,10 +900,14 @@ func (s *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesTags) Valid
 }
 
 type GetIntegrationPolicyResponseBodyPolicyManagedInfo struct {
+	// Security group ID.
+	//
 	// example:
 	//
 	// sg-xxxxxx
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	// VSwitch ID.
+	//
 	// example:
 	//
 	// vsw-xxxxxxxxx
@@ -854,10 +945,14 @@ func (s *GetIntegrationPolicyResponseBodyPolicyManagedInfo) Validate() error {
 }
 
 type GetIntegrationPolicyResponseBodyPolicyTags struct {
+	// Tag key.
+	//
 	// example:
 	//
 	// use
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// Tag value.
+	//
 	// example:
 	//
 	// db

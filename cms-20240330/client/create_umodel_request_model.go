@@ -14,6 +14,8 @@ type iCreateUmodelRequest interface {
 }
 
 type CreateUmodelRequest struct {
+	// Umodel description
+	//
 	// example:
 	//
 	// workspace test

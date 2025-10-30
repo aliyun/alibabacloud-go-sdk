@@ -18,13 +18,16 @@ type iListPrometheusDashboardsResponseBody interface {
 }
 
 type ListPrometheusDashboardsResponseBody struct {
+	// List of Prometheus instance dashboards.
 	PrometheusDashboards []*ListPrometheusDashboardsResponseBodyPrometheusDashboards `json:"prometheusDashboards,omitempty" xml:"prometheusDashboards,omitempty" type:"Repeated"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Total number of instances
+	//
 	// example:
 	//
 	// 66
@@ -80,23 +83,34 @@ func (s *ListPrometheusDashboardsResponseBody) Validate() error {
 }
 
 type ListPrometheusDashboardsResponseBodyPrometheusDashboards struct {
+	// Dashboard ID.
+	//
 	// example:
 	//
 	// 1
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// Dashboard name.
+	//
 	// example:
 	//
 	// pod
-	Name *string   `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Tags.
 	Tags []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// Dashboard title.
+	//
 	// example:
 	//
 	// ceshi
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// Dashboard UID.
+	//
 	// example:
 	//
 	// 1987395500251724
 	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	// Dashboard URL address.
+	//
 	// example:
 	//
 	// https://gnew.console.aliyun.com/d/xxx-17460385-807-7-6/cs-cost-application

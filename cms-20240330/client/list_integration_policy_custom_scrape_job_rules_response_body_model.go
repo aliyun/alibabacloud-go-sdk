@@ -20,16 +20,21 @@ type iListIntegrationPolicyCustomScrapeJobRulesResponseBody interface {
 }
 
 type ListIntegrationPolicyCustomScrapeJobRulesResponseBody struct {
+	// Cluster ID.
+	//
 	// example:
 	//
 	// et15prod-et15storage
-	ClusterId            *string                                                                      `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// Custom scraping job rules
 	CustomScrapeJobRules []*ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRules `json:"customScrapeJobRules,omitempty" xml:"customScrapeJobRules,omitempty" type:"Repeated"`
+	// Policy ID.
+	//
 	// example:
 	//
 	// policy-15abcc24c06f4797832b5954198e1ed1
 	PolicyId *string `json:"policyId,omitempty" xml:"policyId,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -95,48 +100,69 @@ func (s *ListIntegrationPolicyCustomScrapeJobRulesResponseBody) Validate() error
 }
 
 type ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRules struct {
+	// Addon name.
+	//
 	// example:
 	//
 	// cloud-ecs
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
+	// Addon Release name
+	//
 	// example:
 	//
 	// release-12345678
 	AddonReleaseName *string `json:"addonReleaseName,omitempty" xml:"addonReleaseName,omitempty"`
+	// Addon version
+	//
 	// example:
 	//
 	// 0.0.1
 	AddonVersion *string `json:"addonVersion,omitempty" xml:"addonVersion,omitempty"`
+	// Configuration yaml
+	//
 	// example:
 	//
 	// scrape_cofnigs:
 	//
 	// - jobxxxxxx
 	ConfigYaml *string `json:"configYaml,omitempty" xml:"configYaml,omitempty"`
+	// Enable status
+	//
 	// example:
 	//
 	// mini
 	EnableStatus *string `json:"enableStatus,omitempty" xml:"enableStatus,omitempty"`
+	// Encrypt yaml
+	//
 	// example:
 	//
 	// true
 	EncryptYaml *bool `json:"encryptYaml,omitempty" xml:"encryptYaml,omitempty"`
+	// Matched pod count
+	//
 	// example:
 	//
 	// 1
 	MatchedPodCount *int64 `json:"matchedPodCount,omitempty" xml:"matchedPodCount,omitempty"`
+	// Detailed information.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Service name.
+	//
 	// example:
 	//
 	// dlab1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Namespace
+	//
 	// example:
 	//
 	// prod-data
-	Namespace     *string                                                                                   `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// Custom configurations
 	ScrapeConfigs []*ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRulesScrapeConfigs `json:"scrapeConfigs,omitempty" xml:"scrapeConfigs,omitempty" type:"Repeated"`
 }
 
@@ -261,30 +287,43 @@ func (s *ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRul
 }
 
 type ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRulesScrapeConfigs struct {
+	// Scraping job name
+	//
 	// example:
 	//
 	// mysql-exporter
 	JobName *string `json:"jobName,omitempty" xml:"jobName,omitempty"`
+	// Detailed information.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Metrics path
+	//
 	// example:
 	//
 	// /metrics
 	MetricsPath *string `json:"metricsPath,omitempty" xml:"metricsPath,omitempty"`
+	// Call method.
+	//
 	// example:
 	//
 	// http
 	Scheme *string `json:"scheme,omitempty" xml:"scheme,omitempty"`
+	// Scrape interval
+	//
 	// example:
 	//
 	// 30s
 	ScrapeInterval *string `json:"scrapeInterval,omitempty" xml:"scrapeInterval,omitempty"`
+	// Scrape timeout
+	//
 	// example:
 	//
 	// 60s
-	ScrapeTimeout           *string   `json:"scrapeTimeout,omitempty" xml:"scrapeTimeout,omitempty"`
+	ScrapeTimeout *string `json:"scrapeTimeout,omitempty" xml:"scrapeTimeout,omitempty"`
+	// Service discovery configuration
 	ServiceDiscoveryConfigs []*string `json:"serviceDiscoveryConfigs,omitempty" xml:"serviceDiscoveryConfigs,omitempty" type:"Repeated"`
 }
 

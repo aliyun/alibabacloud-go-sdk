@@ -34,6 +34,12 @@ type iUpdatePrometheusInstanceRequest interface {
 }
 
 type UpdatePrometheusInstanceRequest struct {
+	// The number of days to automatically archive and save after the storage expires, 0 means no archiving. The range of archiving days:
+	//
+	// V1: 1~365 days. Only supported for metric write volume.
+	//
+	// V2: 1~3650 days (3650 indicates permanent storage).
+	//
 	// if can be null:
 	// true
 	//
@@ -41,42 +47,106 @@ type UpdatePrometheusInstanceRequest struct {
 	//
 	// 365
 	ArchiveDuration *int `json:"archiveDuration,omitempty" xml:"archiveDuration,omitempty"`
+	// Password-free read policy (supports IP segments and VpcId).
+	//
 	// example:
 	//
-	// 0.0.0.0/0
+	// {
+	//
+	//   "SourceIp": [
+	//
+	//     "192.168.1.0/24",
+	//
+	//     "172.168.2.22"
+	//
+	//   ],
+	//
+	//   "SourceVpc": [
+	//
+	//     "vpc-xx1",
+	//
+	//     "vpc-xx2"
+	//
+	//   ]
+	//
+	// }
 	AuthFreeReadPolicy *string `json:"authFreeReadPolicy,omitempty" xml:"authFreeReadPolicy,omitempty"`
+	// Password-free write policy (supports IP segments and VpcId).
+	//
 	// example:
 	//
-	// true
+	// {
+	//
+	//   "SourceIp": [
+	//
+	//     "192.168.1.0/24",
+	//
+	//     "172.168.2.22"
+	//
+	//   ],
+	//
+	//   "SourceVpc": [
+	//
+	//     "vpc-xx1",
+	//
+	//     "vpc-xx2"
+	//
+	//   ]
+	//
+	// }
 	AuthFreeWritePolicy *string `json:"authFreeWritePolicy,omitempty" xml:"authFreeWritePolicy,omitempty"`
+	// Whether to enable password-free read.
+	//
 	// example:
 	//
 	// true
 	EnableAuthFreeRead *bool `json:"enableAuthFreeRead,omitempty" xml:"enableAuthFreeRead,omitempty"`
+	// Whether to enable password-free write.
+	//
 	// example:
 	//
 	// true
 	EnableAuthFreeWrite *bool `json:"enableAuthFreeWrite,omitempty" xml:"enableAuthFreeWrite,omitempty"`
+	// Whether to enable access token authentication.
+	//
 	// example:
 	//
 	// true
 	EnableAuthToken *bool `json:"enableAuthToken,omitempty" xml:"enableAuthToken,omitempty"`
+	// Billing method (can only be modified once during the instance\\"s lifecycle):
+	//
+	// POSTPAY: Postpaid by metric reporting volume.
+	//
+	// POSTPAY_GB: Postpaid by metric write volume.
+	//
 	// example:
 	//
 	// POSTPAY_GB
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// Instance name.
+	//
 	// example:
 	//
 	// test-prom-name
 	PrometheusInstanceName *string `json:"prometheusInstanceName,omitempty" xml:"prometheusInstanceName,omitempty"`
+	// Instance storage DB status (only supports RUNNING). If empty, the storage DB status will not be changed.
+	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Storage duration (days):
+	//
+	// By write volume: 90, 180.
+	//
+	// By metric reporting volume: 15, 30, 60, 90, 180.
+	//
 	// example:
 	//
 	// 90
 	StorageDuration *int `json:"storageDuration,omitempty" xml:"storageDuration,omitempty"`
+	// Belonging workspace.
+	//
 	// example:
 	//
 	// default-cms-1500199863951574-cn-shanghai

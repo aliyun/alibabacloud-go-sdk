@@ -16,11 +16,14 @@ type iGetServiceResponseBody interface {
 }
 
 type GetServiceResponseBody struct {
+	// Request ID
+	//
 	// example:
 	//
 	// 264C3E89-BE6E-5F82-A484-CE9C2196C7DC
-	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Service   *GetServiceResponseBodyService `json:"service,omitempty" xml:"service,omitempty" type:"Struct"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Service object.
+	Service *GetServiceResponseBodyService `json:"service,omitempty" xml:"service,omitempty" type:"Struct"`
 }
 
 func (s GetServiceResponseBody) String() string {
@@ -59,43 +62,68 @@ func (s *GetServiceResponseBody) Validate() error {
 }
 
 type GetServiceResponseBodyService struct {
+	// Extended information.
+	//
 	// example:
 	//
 	// {"language":"java"}
 	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// Creation time
+	//
 	// example:
 	//
 	// 2025-05-13T03:32:55Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Description, only valid when serviceType=RUM.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Display name, only valid when serviceType=RUM.
+	//
+	// example:
+	//
+	// demo应用
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// Legacy ARMS application ID
+	//
 	// example:
 	//
 	// by6rjzro2j@0fe8dfa799e5906
 	Pid *string `json:"pid,omitempty" xml:"pid,omitempty"`
+	// Region ID
+	//
 	// example:
 	//
 	// cn-heyuan
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// Service ID.
+	//
 	// example:
 	//
 	// cwzxvuc6uo@4bc6b15ad81f166174ffb
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// Service name
+	//
 	// example:
 	//
 	// demo-app
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	// Service status, only valid when serviceType=RUM.
+	//
 	// example:
 	//
 	// Running
 	ServiceStatus *string `json:"serviceStatus,omitempty" xml:"serviceStatus,omitempty"`
+	// Service type.
+	//
 	// example:
 	//
 	// TRACE
 	ServiceType *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
+	// Workspace name
+	//
 	// example:
 	//
 	// default-cms-1106439496876715-cn-hangzhou

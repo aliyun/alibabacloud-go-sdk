@@ -46,6 +46,10 @@ type iCreateAggTaskGroupRequest interface {
 }
 
 type CreateAggTaskGroupRequest struct {
+	// Aggregation task group configuration.
+	//
+	// Currently, only the “RecordingRuleYaml” format is supported, which must comply with the format requirements of open-source Prometheus RecordingRules.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -64,67 +68,98 @@ type CreateAggTaskGroupRequest struct {
 	//
 	//       }, \\"pod\\", \\"$1\\", \\"pod\\", \\"(.*)\\")) by (node, namespace, pod, cluster)"
 	AggTaskGroupConfig *string `json:"aggTaskGroupConfig,omitempty" xml:"aggTaskGroupConfig,omitempty"`
+	// Aggregation task group configuration type, default is “RecordingRuleYaml” (open-source Prometheus RecordingRule format).
+	//
 	// example:
 	//
 	// RecordingRuleYaml
 	AggTaskGroupConfigType *string `json:"aggTaskGroupConfigType,omitempty" xml:"aggTaskGroupConfigType,omitempty"`
+	// Aggregation task group name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-group
 	AggTaskGroupName *string `json:"aggTaskGroupName,omitempty" xml:"aggTaskGroupName,omitempty"`
+	// When the scheduling mode is selected as “Cron”, this is the specific scheduling expression. For example, “0/1 	- 	- 	- *” means starting from 0 minutes and scheduling every 1 minute.
+	//
 	// example:
 	//
 	// 0/1 	- 	- 	- *
 	CronExpr *string `json:"cronExpr,omitempty" xml:"cronExpr,omitempty"`
+	// Fixed delay time for scheduling, in seconds, default is 30.
+	//
 	// example:
 	//
 	// 30
 	Delay *int32 `json:"delay,omitempty" xml:"delay,omitempty"`
+	// Description of the aggregation task group.
+	//
 	// example:
 	//
 	// desc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The second-level timestamp corresponding to the start time of the schedule.
+	//
 	// example:
 	//
 	// 1724996015
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+	// Maximum number of retries for executing the aggregation task, default is 20.
+	//
 	// example:
 	//
 	// 20
 	MaxRetries *int32 `json:"maxRetries,omitempty" xml:"maxRetries,omitempty"`
+	// Maximum retry time for executing the aggregation task, in seconds, default is 600.
+	//
 	// example:
 	//
 	// 600
 	MaxRunTimeInSeconds *int32 `json:"maxRunTimeInSeconds,omitempty" xml:"maxRunTimeInSeconds,omitempty"`
+	// Pre-check configuration, no configuration by default. The input string needs to be correctly parsed as JSON.
+	//
 	// example:
 	//
 	// {"policy":"skip","prometheusId":"xxx","query":"scalar(sum(count_over_time(up{job=\\"_arms/kubelet/cadvisor\\"}[15s])) / 21)","threshold":0.5,"timeout":15,"type":"promql"}
 	PrecheckString *string `json:"precheckString,omitempty" xml:"precheckString,omitempty"`
+	// Scheduling mode, either “Cron” or “FixedRate”, default is “FixedRate”.
+	//
 	// example:
 	//
 	// FixedRate
 	ScheduleMode *string `json:"scheduleMode,omitempty" xml:"scheduleMode,omitempty"`
+	// Scheduling time expression, recommended “@s” or “@m”, indicating the alignment granularity of the scheduling time window, default is “@m”.
+	//
 	// example:
 	//
 	// @m
 	ScheduleTimeExpr *string `json:"scheduleTimeExpr,omitempty" xml:"scheduleTimeExpr,omitempty"`
+	// Status of the aggregation task group, either “Running” or “Stopped”. Default is Running.
+	//
 	// example:
 	//
 	// Running
-	Status *string                          `json:"status,omitempty" xml:"status,omitempty"`
-	Tags   []*CreateAggTaskGroupRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Resource group tags.
+	Tags []*CreateAggTaskGroupRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The target Prometheus instance ID of the aggregation task group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rw-pq4apob9jm
 	TargetPrometheusId *string `json:"targetPrometheusId,omitempty" xml:"targetPrometheusId,omitempty"`
+	// The second-level timestamp corresponding to the end time of the schedule, 0 indicates that the scheduling does not stop.
+	//
 	// example:
 	//
 	// 0
 	ToTime *int64 `json:"toTime,omitempty" xml:"toTime,omitempty"`
+	// Whether to overwrite and update if a resource with the same name exists when creating an aggregation task group.
+	//
 	// example:
 	//
 	// true
@@ -306,10 +341,14 @@ func (s *CreateAggTaskGroupRequest) Validate() error {
 }
 
 type CreateAggTaskGroupRequestTags struct {
+	// Key of the resource group tag.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// Value of the resource group tag.
+	//
 	// example:
 	//
 	// value1
