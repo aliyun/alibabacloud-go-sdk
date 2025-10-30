@@ -416,6 +416,10 @@ type DescribeInstanceResponseBodyDetails struct {
 	//
 	// 50
 	DlpTemplateMaxCount *int64 `json:"DlpTemplateMaxCount,omitempty" xml:"DlpTemplateMaxCount,omitempty"`
+	// example:
+	//
+	// 2000
+	ElasticQps *int32 `json:"ElasticQps,omitempty" xml:"ElasticQps,omitempty"`
 	// Indicates whether exclusive IP addresses are supported. Valid values:
 	//
 	// 	- **true:*	- Exclusive IP addresses are supported.
@@ -426,6 +430,14 @@ type DescribeInstanceResponseBodyDetails struct {
 	//
 	// true
 	ExclusiveIp *bool `json:"ExclusiveIp,omitempty" xml:"ExclusiveIp,omitempty"`
+	// example:
+	//
+	// 10000
+	ExtendQps *int32 `json:"ExtendQps,omitempty" xml:"ExtendQps,omitempty"`
+	// example:
+	//
+	// 1000
+	FreeQps *int32 `json:"FreeQps,omitempty" xml:"FreeQps,omitempty"`
 	// Indicates whether global server load balancing (GSLB) is supported. Valid values:
 	//
 	// 	- **true:*	- GSLB is supported.
@@ -512,6 +524,10 @@ type DescribeInstanceResponseBodyDetails struct {
 	//
 	// 20
 	MajorProtectionTemplateMaxCount *int64 `json:"MajorProtectionTemplateMaxCount,omitempty" xml:"MajorProtectionTemplateMaxCount,omitempty"`
+	// example:
+	//
+	// 2000
+	QpsBillingCap *int32 `json:"QpsBillingCap,omitempty" xml:"QpsBillingCap,omitempty"`
 	// Indicates whether the website tamper-proofing module is supported. Valid values:
 	//
 	// 	- **true:*	- The website tamper-proofing module is supported.
@@ -708,8 +724,20 @@ func (s *DescribeInstanceResponseBodyDetails) GetDlpTemplateMaxCount() *int64 {
 	return s.DlpTemplateMaxCount
 }
 
+func (s *DescribeInstanceResponseBodyDetails) GetElasticQps() *int32 {
+	return s.ElasticQps
+}
+
 func (s *DescribeInstanceResponseBodyDetails) GetExclusiveIp() *bool {
 	return s.ExclusiveIp
+}
+
+func (s *DescribeInstanceResponseBodyDetails) GetExtendQps() *int32 {
+	return s.ExtendQps
+}
+
+func (s *DescribeInstanceResponseBodyDetails) GetFreeQps() *int32 {
+	return s.FreeQps
 }
 
 func (s *DescribeInstanceResponseBodyDetails) GetGslb() *bool {
@@ -754,6 +782,10 @@ func (s *DescribeInstanceResponseBodyDetails) GetMajorProtection() *bool {
 
 func (s *DescribeInstanceResponseBodyDetails) GetMajorProtectionTemplateMaxCount() *int64 {
 	return s.MajorProtectionTemplateMaxCount
+}
+
+func (s *DescribeInstanceResponseBodyDetails) GetQpsBillingCap() *int32 {
+	return s.QpsBillingCap
 }
 
 func (s *DescribeInstanceResponseBodyDetails) GetTamperproof() *bool {
@@ -940,8 +972,23 @@ func (s *DescribeInstanceResponseBodyDetails) SetDlpTemplateMaxCount(v int64) *D
 	return s
 }
 
+func (s *DescribeInstanceResponseBodyDetails) SetElasticQps(v int32) *DescribeInstanceResponseBodyDetails {
+	s.ElasticQps = &v
+	return s
+}
+
 func (s *DescribeInstanceResponseBodyDetails) SetExclusiveIp(v bool) *DescribeInstanceResponseBodyDetails {
 	s.ExclusiveIp = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyDetails) SetExtendQps(v int32) *DescribeInstanceResponseBodyDetails {
+	s.ExtendQps = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyDetails) SetFreeQps(v int32) *DescribeInstanceResponseBodyDetails {
+	s.FreeQps = &v
 	return s
 }
 
@@ -997,6 +1044,11 @@ func (s *DescribeInstanceResponseBodyDetails) SetMajorProtection(v bool) *Descri
 
 func (s *DescribeInstanceResponseBodyDetails) SetMajorProtectionTemplateMaxCount(v int64) *DescribeInstanceResponseBodyDetails {
 	s.MajorProtectionTemplateMaxCount = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyDetails) SetQpsBillingCap(v int32) *DescribeInstanceResponseBodyDetails {
+	s.QpsBillingCap = &v
 	return s
 }
 
