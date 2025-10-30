@@ -59,5 +59,10 @@ func (s *SaveAnalysisColumnResponse) SetBody(v *SaveAnalysisColumnResponseBody) 
 }
 
 func (s *SaveAnalysisColumnResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

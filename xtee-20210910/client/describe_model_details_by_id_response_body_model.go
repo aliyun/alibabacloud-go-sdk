@@ -53,7 +53,16 @@ func (s *DescribeModelDetailsByIdResponseBody) SetResultObject(v []*DescribeMode
 }
 
 func (s *DescribeModelDetailsByIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		for _, item := range s.ResultObject {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeModelDetailsByIdResponseBodyResultObject struct {

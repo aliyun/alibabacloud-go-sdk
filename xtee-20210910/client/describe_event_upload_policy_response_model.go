@@ -59,5 +59,10 @@ func (s *DescribeEventUploadPolicyResponse) SetBody(v *DescribeEventUploadPolicy
 }
 
 func (s *DescribeEventUploadPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

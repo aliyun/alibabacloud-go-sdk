@@ -53,7 +53,12 @@ func (s *DescribeAnalysisExportTaskDownloadUrlResponseBody) SetResultObject(v *D
 }
 
 func (s *DescribeAnalysisExportTaskDownloadUrlResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAnalysisExportTaskDownloadUrlResponseBodyResultObject struct {

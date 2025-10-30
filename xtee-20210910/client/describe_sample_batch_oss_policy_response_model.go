@@ -59,5 +59,10 @@ func (s *DescribeSampleBatchOssPolicyResponse) SetBody(v *DescribeSampleBatchOss
 }
 
 func (s *DescribeSampleBatchOssPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

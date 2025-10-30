@@ -53,7 +53,12 @@ func (s *CompareCopyRuleVariableResponseBody) SetResultObject(v *CompareCopyRule
 }
 
 func (s *CompareCopyRuleVariableResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CompareCopyRuleVariableResponseBodyResultObject struct {
@@ -134,7 +139,61 @@ func (s *CompareCopyRuleVariableResponseBodyResultObject) SetSystemVariableList(
 }
 
 func (s *CompareCopyRuleVariableResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.CustVariableList != nil {
+		for _, item := range s.CustVariableList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EventVariableList != nil {
+		for _, item := range s.EventVariableList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ExpressionVariableList != nil {
+		for _, item := range s.ExpressionVariableList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NameListVariableList != nil {
+		for _, item := range s.NameListVariableList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.QueryExpressionVariableList != nil {
+		for _, item := range s.QueryExpressionVariableList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SystemVariableList != nil {
+		for _, item := range s.SystemVariableList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CompareCopyRuleVariableResponseBodyResultObjectCustVariableList struct {

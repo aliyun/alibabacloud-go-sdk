@@ -121,7 +121,12 @@ func (s *DescribeTagsBarChartResponseBody) SetSuccess(v bool) *DescribeTagsBarCh
 }
 
 func (s *DescribeTagsBarChartResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTagsBarChartResponseBodyResultObject struct {
@@ -158,7 +163,21 @@ func (s *DescribeTagsBarChartResponseBodyResultObject) SetXaxis(v *DescribeTagsB
 }
 
 func (s *DescribeTagsBarChartResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.Series != nil {
+		for _, item := range s.Series {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Xaxis != nil {
+		if err := s.Xaxis.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTagsBarChartResponseBodyResultObjectSeries struct {
@@ -214,7 +233,16 @@ func (s *DescribeTagsBarChartResponseBodyResultObjectSeries) SetStack(v string) 
 }
 
 func (s *DescribeTagsBarChartResponseBodyResultObjectSeries) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTagsBarChartResponseBodyResultObjectSeriesData struct {

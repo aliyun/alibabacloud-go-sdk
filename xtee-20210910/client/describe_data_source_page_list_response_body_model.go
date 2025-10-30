@@ -121,7 +121,16 @@ func (s *DescribeDataSourcePageListResponseBody) SetTotalPage(v int32) *Describe
 }
 
 func (s *DescribeDataSourcePageListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		for _, item := range s.ResultObject {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataSourcePageListResponseBodyResultObject struct {

@@ -121,7 +121,16 @@ func (s *DescribeRuleVersionListResponseBody) SetTotalPage(v int32) *DescribeRul
 }
 
 func (s *DescribeRuleVersionListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		for _, item := range s.ResultObject {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRuleVersionListResponseBodyResultObject struct {
@@ -357,7 +366,12 @@ func (s *DescribeRuleVersionListResponseBodyResultObject) SetVersion(v int64) *D
 }
 
 func (s *DescribeRuleVersionListResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.ConsoleAudit != nil {
+		if err := s.ConsoleAudit.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRuleVersionListResponseBodyResultObjectConsoleAudit struct {

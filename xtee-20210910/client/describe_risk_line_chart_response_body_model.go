@@ -121,7 +121,12 @@ func (s *DescribeRiskLineChartResponseBody) SetSuccess(v bool) *DescribeRiskLine
 }
 
 func (s *DescribeRiskLineChartResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRiskLineChartResponseBodyResultObject struct {
@@ -158,7 +163,21 @@ func (s *DescribeRiskLineChartResponseBodyResultObject) SetXaxis(v *DescribeRisk
 }
 
 func (s *DescribeRiskLineChartResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.Series != nil {
+		for _, item := range s.Series {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Xaxis != nil {
+		if err := s.Xaxis.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRiskLineChartResponseBodyResultObjectSeries struct {

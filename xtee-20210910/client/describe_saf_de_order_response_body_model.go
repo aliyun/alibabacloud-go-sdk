@@ -53,7 +53,12 @@ func (s *DescribeSafDeOrderResponseBody) SetResultObject(v *DescribeSafDeOrderRe
 }
 
 func (s *DescribeSafDeOrderResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSafDeOrderResponseBodyResultObject struct {
@@ -74,7 +79,8 @@ type DescribeSafDeOrderResponseBodyResultObject struct {
 	// example:
 	//
 	// 2
-	OpenUserType *int32 `json:"openUserType,omitempty" xml:"openUserType,omitempty"`
+	OpenUserType *int32                                               `json:"openUserType,omitempty" xml:"openUserType,omitempty"`
+	Regions      []*DescribeSafDeOrderResponseBodyResultObjectRegions `json:"regions,omitempty" xml:"regions,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSafDeOrderResponseBodyResultObject) String() string {
@@ -93,6 +99,10 @@ func (s *DescribeSafDeOrderResponseBodyResultObject) GetOpenUserType() *int32 {
 	return s.OpenUserType
 }
 
+func (s *DescribeSafDeOrderResponseBodyResultObject) GetRegions() []*DescribeSafDeOrderResponseBodyResultObjectRegions {
+	return s.Regions
+}
+
 func (s *DescribeSafDeOrderResponseBodyResultObject) SetExpirationDate(v int64) *DescribeSafDeOrderResponseBodyResultObject {
 	s.ExpirationDate = &v
 	return s
@@ -103,6 +113,65 @@ func (s *DescribeSafDeOrderResponseBodyResultObject) SetOpenUserType(v int32) *D
 	return s
 }
 
+func (s *DescribeSafDeOrderResponseBodyResultObject) SetRegions(v []*DescribeSafDeOrderResponseBodyResultObjectRegions) *DescribeSafDeOrderResponseBodyResultObject {
+	s.Regions = v
+	return s
+}
+
 func (s *DescribeSafDeOrderResponseBodyResultObject) Validate() error {
+	if s.Regions != nil {
+		for _, item := range s.Regions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeSafDeOrderResponseBodyResultObjectRegions struct {
+	ExpirationDate *int64  `json:"expirationDate,omitempty" xml:"expirationDate,omitempty"`
+	Region         *string `json:"region,omitempty" xml:"region,omitempty"`
+	Specification  *int32  `json:"specification,omitempty" xml:"specification,omitempty"`
+}
+
+func (s DescribeSafDeOrderResponseBodyResultObjectRegions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeSafDeOrderResponseBodyResultObjectRegions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSafDeOrderResponseBodyResultObjectRegions) GetExpirationDate() *int64 {
+	return s.ExpirationDate
+}
+
+func (s *DescribeSafDeOrderResponseBodyResultObjectRegions) GetRegion() *string {
+	return s.Region
+}
+
+func (s *DescribeSafDeOrderResponseBodyResultObjectRegions) GetSpecification() *int32 {
+	return s.Specification
+}
+
+func (s *DescribeSafDeOrderResponseBodyResultObjectRegions) SetExpirationDate(v int64) *DescribeSafDeOrderResponseBodyResultObjectRegions {
+	s.ExpirationDate = &v
+	return s
+}
+
+func (s *DescribeSafDeOrderResponseBodyResultObjectRegions) SetRegion(v string) *DescribeSafDeOrderResponseBodyResultObjectRegions {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeSafDeOrderResponseBodyResultObjectRegions) SetSpecification(v int32) *DescribeSafDeOrderResponseBodyResultObjectRegions {
+	s.Specification = &v
+	return s
+}
+
+func (s *DescribeSafDeOrderResponseBodyResultObjectRegions) Validate() error {
 	return dara.Validate(s)
 }

@@ -121,7 +121,16 @@ func (s *DescribeSamplebatchPageResponseBody) SetTotalPage(v int32) *DescribeSam
 }
 
 func (s *DescribeSamplebatchPageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		for _, item := range s.ResultObject {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSamplebatchPageResponseBodyResultObject struct {

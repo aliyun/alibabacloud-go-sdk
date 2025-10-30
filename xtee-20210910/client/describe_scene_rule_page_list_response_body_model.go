@@ -121,7 +121,16 @@ func (s *DescribeSceneRulePageListResponseBody) SetTotalPage(v int32) *DescribeS
 }
 
 func (s *DescribeSceneRulePageListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		for _, item := range s.ResultObject {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSceneRulePageListResponseBodyResultObject struct {
@@ -432,7 +441,12 @@ func (s *DescribeSceneRulePageListResponseBodyResultObject) SetVersion(v int32) 
 }
 
 func (s *DescribeSceneRulePageListResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.ConsoleAudit != nil {
+		if err := s.ConsoleAudit.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSceneRulePageListResponseBodyResultObjectConsoleAudit struct {

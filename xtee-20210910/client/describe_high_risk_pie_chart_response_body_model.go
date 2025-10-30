@@ -121,7 +121,12 @@ func (s *DescribeHighRiskPieChartResponseBody) SetSuccess(v bool) *DescribeHighR
 }
 
 func (s *DescribeHighRiskPieChartResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObject struct {
@@ -180,7 +185,27 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObject) SetHighRiskMobileProv
 }
 
 func (s *DescribeHighRiskPieChartResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.HighRiskIPCity != nil {
+		if err := s.HighRiskIPCity.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HighRiskIPProvince != nil {
+		if err := s.HighRiskIPProvince.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HighRiskMobileCity != nil {
+		if err := s.HighRiskMobileCity.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HighRiskMobileProvince != nil {
+		if err := s.HighRiskMobileProvince.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCity struct {
@@ -232,7 +257,21 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCity) SetSeri
 }
 
 func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCity) Validate() error {
-	return dara.Validate(s)
+	if s.Grid != nil {
+		if err := s.Grid.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Series != nil {
+		for _, item := range s.Series {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCityGrid struct {
@@ -318,7 +357,16 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCitySeries) S
 }
 
 func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCitySeries) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCitySeriesData struct {
@@ -415,7 +463,21 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvince) Set
 }
 
 func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvince) Validate() error {
-	return dara.Validate(s)
+	if s.Grid != nil {
+		if err := s.Grid.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Series != nil {
+		for _, item := range s.Series {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvinceGrid struct {
@@ -501,7 +563,16 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvinceSerie
 }
 
 func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvinceSeries) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvinceSeriesData struct {
@@ -598,7 +669,21 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCity) Set
 }
 
 func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCity) Validate() error {
-	return dara.Validate(s)
+	if s.Grid != nil {
+		if err := s.Grid.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Series != nil {
+		for _, item := range s.Series {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCityGrid struct {
@@ -684,7 +769,16 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCitySerie
 }
 
 func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCitySeries) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCitySeriesData struct {
@@ -781,7 +875,21 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvince)
 }
 
 func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvince) Validate() error {
-	return dara.Validate(s)
+	if s.Grid != nil {
+		if err := s.Grid.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Series != nil {
+		for _, item := range s.Series {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvinceGrid struct {
@@ -867,7 +975,16 @@ func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvinceS
 }
 
 func (s *DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvinceSeries) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvinceSeriesData struct {

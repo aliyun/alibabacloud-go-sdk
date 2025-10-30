@@ -59,5 +59,10 @@ func (s *OpenConsoleSlsResponse) SetBody(v *OpenConsoleSlsResponseBody) *OpenCon
 }
 
 func (s *OpenConsoleSlsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

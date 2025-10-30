@@ -53,7 +53,12 @@ func (s *DescribeEventVariableTemplateBindResponseBody) SetResultObject(v *Descr
 }
 
 func (s *DescribeEventVariableTemplateBindResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventVariableTemplateBindResponseBodyResultObject struct {
@@ -120,7 +125,25 @@ func (s *DescribeEventVariableTemplateBindResponseBodyResultObject) SetTotalCoun
 }
 
 func (s *DescribeEventVariableTemplateBindResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.ChargeVariables != nil {
+		for _, item := range s.ChargeVariables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FreeVariables != nil {
+		for _, item := range s.FreeVariables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEventVariableTemplateBindResponseBodyResultObjectChargeVariables struct {

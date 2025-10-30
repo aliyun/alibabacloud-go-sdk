@@ -53,7 +53,12 @@ func (s *DescribeRequestHitResponseBody) SetResultObject(v *DescribeRequestHitRe
 }
 
 func (s *DescribeRequestHitResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRequestHitResponseBodyResultObject struct {
@@ -184,7 +189,16 @@ func (s *DescribeRequestHitResponseBodyResultObject) SetTotalCost(v int64) *Desc
 }
 
 func (s *DescribeRequestHitResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.RuleHitRecords != nil {
+		for _, item := range s.RuleHitRecords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRequestHitResponseBodyResultObjectRuleHitRecords struct {

@@ -59,5 +59,10 @@ func (s *DescribeCustVariableDetailResponse) SetBody(v *DescribeCustVariableDeta
 }
 
 func (s *DescribeCustVariableDetailResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

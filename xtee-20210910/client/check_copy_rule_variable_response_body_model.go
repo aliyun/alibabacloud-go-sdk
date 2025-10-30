@@ -53,7 +53,12 @@ func (s *CheckCopyRuleVariableResponseBody) SetResultObject(v *CheckCopyRuleVari
 }
 
 func (s *CheckCopyRuleVariableResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CheckCopyRuleVariableResponseBodyResultObject struct {
@@ -79,7 +84,16 @@ func (s *CheckCopyRuleVariableResponseBodyResultObject) SetMessage(v []*CheckCop
 }
 
 func (s *CheckCopyRuleVariableResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.Message != nil {
+		for _, item := range s.Message {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CheckCopyRuleVariableResponseBodyResultObjectMessage struct {

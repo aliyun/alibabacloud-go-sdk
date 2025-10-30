@@ -121,7 +121,16 @@ func (s *DescribeAllEventNameAndCodeResponseBody) SetSuccess(v bool) *DescribeAl
 }
 
 func (s *DescribeAllEventNameAndCodeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		for _, item := range s.ResultObject {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAllEventNameAndCodeResponseBodyResultObject struct {
@@ -207,7 +216,16 @@ func (s *DescribeAllEventNameAndCodeResponseBodyResultObject) SetEventType(v str
 }
 
 func (s *DescribeAllEventNameAndCodeResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.Children != nil {
+		for _, item := range s.Children {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAllEventNameAndCodeResponseBodyResultObjectChildren struct {

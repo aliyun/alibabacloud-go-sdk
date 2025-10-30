@@ -121,7 +121,12 @@ func (s *DescribeEventResultBarChartResponseBody) SetSuccess(v bool) *DescribeEv
 }
 
 func (s *DescribeEventResultBarChartResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventResultBarChartResponseBodyResultObject struct {
@@ -158,7 +163,21 @@ func (s *DescribeEventResultBarChartResponseBodyResultObject) SetXaxis(v *Descri
 }
 
 func (s *DescribeEventResultBarChartResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.Series != nil {
+		for _, item := range s.Series {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Xaxis != nil {
+		if err := s.Xaxis.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventResultBarChartResponseBodyResultObjectSeries struct {
@@ -214,7 +233,16 @@ func (s *DescribeEventResultBarChartResponseBodyResultObjectSeries) SetStack(v s
 }
 
 func (s *DescribeEventResultBarChartResponseBodyResultObjectSeries) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEventResultBarChartResponseBodyResultObjectSeriesData struct {

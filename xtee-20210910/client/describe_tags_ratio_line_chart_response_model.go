@@ -59,5 +59,10 @@ func (s *DescribeTagsRatioLineChartResponse) SetBody(v *DescribeTagsRatioLineCha
 }
 
 func (s *DescribeTagsRatioLineChartResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

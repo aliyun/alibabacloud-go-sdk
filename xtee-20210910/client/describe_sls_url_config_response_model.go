@@ -59,5 +59,10 @@ func (s *DescribeSlsUrlConfigResponse) SetBody(v *DescribeSlsUrlConfigResponseBo
 }
 
 func (s *DescribeSlsUrlConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

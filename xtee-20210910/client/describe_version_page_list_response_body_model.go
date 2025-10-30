@@ -155,7 +155,16 @@ func (s *DescribeVersionPageListResponseBody) SetTotalPage(v int32) *DescribeVer
 }
 
 func (s *DescribeVersionPageListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		for _, item := range s.ResultObject {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVersionPageListResponseBodyResultObject struct {

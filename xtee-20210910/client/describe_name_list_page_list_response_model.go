@@ -59,5 +59,10 @@ func (s *DescribeNameListPageListResponse) SetBody(v *DescribeNameListPageListRe
 }
 
 func (s *DescribeNameListPageListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

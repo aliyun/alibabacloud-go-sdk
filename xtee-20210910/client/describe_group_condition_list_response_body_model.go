@@ -53,7 +53,16 @@ func (s *DescribeGroupConditionListResponseBody) SetResultObject(v []*DescribeGr
 }
 
 func (s *DescribeGroupConditionListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		for _, item := range s.ResultObject {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGroupConditionListResponseBodyResultObject struct {

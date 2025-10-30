@@ -121,7 +121,12 @@ func (s *DescribeTagsTrendResponseBody) SetSuccess(v bool) *DescribeTagsTrendRes
 }
 
 func (s *DescribeTagsTrendResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTagsTrendResponseBodyResultObject struct {
@@ -158,7 +163,21 @@ func (s *DescribeTagsTrendResponseBodyResultObject) SetXaxis(v *DescribeTagsTren
 }
 
 func (s *DescribeTagsTrendResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.Series != nil {
+		for _, item := range s.Series {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Xaxis != nil {
+		if err := s.Xaxis.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTagsTrendResponseBodyResultObjectSeries struct {
@@ -199,7 +218,16 @@ func (s *DescribeTagsTrendResponseBodyResultObjectSeries) SetName(v string) *Des
 }
 
 func (s *DescribeTagsTrendResponseBodyResultObjectSeries) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTagsTrendResponseBodyResultObjectSeriesData struct {

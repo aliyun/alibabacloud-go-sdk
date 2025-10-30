@@ -121,7 +121,12 @@ func (s *DescribeEventCountResponseBody) SetSuccess(v bool) *DescribeEventCountR
 }
 
 func (s *DescribeEventCountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventCountResponseBodyResultObject struct {

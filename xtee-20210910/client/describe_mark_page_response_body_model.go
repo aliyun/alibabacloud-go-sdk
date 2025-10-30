@@ -121,7 +121,16 @@ func (s *DescribeMarkPageResponseBody) SetTotalPage(v int32) *DescribeMarkPageRe
 }
 
 func (s *DescribeMarkPageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		for _, item := range s.ResultObject {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMarkPageResponseBodyResultObject struct {

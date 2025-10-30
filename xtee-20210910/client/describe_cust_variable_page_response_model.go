@@ -59,5 +59,10 @@ func (s *DescribeCustVariablePageResponse) SetBody(v *DescribeCustVariablePageRe
 }
 
 func (s *DescribeCustVariablePageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

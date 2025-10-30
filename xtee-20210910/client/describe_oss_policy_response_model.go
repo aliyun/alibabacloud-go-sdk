@@ -59,5 +59,10 @@ func (s *DescribeOssPolicyResponse) SetBody(v *DescribeOssPolicyResponseBody) *D
 }
 
 func (s *DescribeOssPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *DescribeTagsFluctuationResponse) SetBody(v *DescribeTagsFluctuationResp
 }
 
 func (s *DescribeTagsFluctuationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

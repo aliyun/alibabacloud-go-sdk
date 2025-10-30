@@ -59,5 +59,10 @@ func (s *DescribeSceneAllEventNameCodeListResponse) SetBody(v *DescribeSceneAllE
 }
 
 func (s *DescribeSceneAllEventNameCodeListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

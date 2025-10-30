@@ -53,7 +53,16 @@ func (s *DescribeCustVariableConfigListResponseBody) SetResultObject(v []*Descri
 }
 
 func (s *DescribeCustVariableConfigListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		for _, item := range s.ResultObject {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCustVariableConfigListResponseBodyResultObject struct {

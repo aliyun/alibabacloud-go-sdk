@@ -121,7 +121,16 @@ func (s *DescribeOperationLogPageListResponseBody) SetTotalPage(v int32) *Descri
 }
 
 func (s *DescribeOperationLogPageListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		for _, item := range s.ResultObject {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOperationLogPageListResponseBodyResultObject struct {

@@ -53,7 +53,16 @@ func (s *DescribeOperatorListResponseBody) SetResultObject(v []*DescribeOperator
 }
 
 func (s *DescribeOperatorListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		for _, item := range s.ResultObject {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOperatorListResponseBodyResultObject struct {
@@ -94,7 +103,16 @@ func (s *DescribeOperatorListResponseBodyResultObject) SetOperators(v []*Describ
 }
 
 func (s *DescribeOperatorListResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.Operators != nil {
+		for _, item := range s.Operators {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOperatorListResponseBodyResultObjectOperators struct {
@@ -180,7 +198,16 @@ func (s *DescribeOperatorListResponseBodyResultObjectOperators) SetRightVariable
 }
 
 func (s *DescribeOperatorListResponseBodyResultObjectOperators) Validate() error {
-	return dara.Validate(s)
+	if s.RightVariables != nil {
+		for _, item := range s.RightVariables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOperatorListResponseBodyResultObjectOperatorsRightVariables struct {

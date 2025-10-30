@@ -53,7 +53,16 @@ func (s *DescribeAllRootVariableResponseBody) SetResultObject(v []*DescribeAllRo
 }
 
 func (s *DescribeAllRootVariableResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		for _, item := range s.ResultObject {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAllRootVariableResponseBodyResultObject struct {
@@ -274,7 +283,12 @@ func (s *DescribeAllRootVariableResponseBodyResultObject) SetType(v string) *Des
 }
 
 func (s *DescribeAllRootVariableResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.OutputThreshold != nil {
+		if err := s.OutputThreshold.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAllRootVariableResponseBodyResultObjectOutputThreshold struct {

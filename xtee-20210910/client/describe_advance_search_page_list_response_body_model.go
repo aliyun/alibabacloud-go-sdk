@@ -53,7 +53,12 @@ func (s *DescribeAdvanceSearchPageListResponseBody) SetResultObject(v *DescribeA
 }
 
 func (s *DescribeAdvanceSearchPageListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAdvanceSearchPageListResponseBodyResultObject struct {
@@ -150,7 +155,16 @@ func (s *DescribeAdvanceSearchPageListResponseBodyResultObject) SetTotalPage(v i
 }
 
 func (s *DescribeAdvanceSearchPageListResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.Header != nil {
+		for _, item := range s.Header {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAdvanceSearchPageListResponseBodyResultObjectHeader struct {

@@ -59,5 +59,10 @@ func (s *CheckFieldLimitResponse) SetBody(v *CheckFieldLimitResponseBody) *Check
 }
 
 func (s *CheckFieldLimitResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

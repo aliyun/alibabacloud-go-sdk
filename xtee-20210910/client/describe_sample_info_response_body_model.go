@@ -53,7 +53,12 @@ func (s *DescribeSampleInfoResponseBody) SetResultObject(v *DescribeSampleInfoRe
 }
 
 func (s *DescribeSampleInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSampleInfoResponseBodyResultObject struct {

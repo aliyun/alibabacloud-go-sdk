@@ -53,7 +53,12 @@ func (s *DescribeTemplateCountResponseBody) SetResultObject(v *DescribeTemplateC
 }
 
 func (s *DescribeTemplateCountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTemplateCountResponseBodyResultObject struct {

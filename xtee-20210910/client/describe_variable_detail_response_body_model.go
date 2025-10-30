@@ -53,7 +53,12 @@ func (s *DescribeVariableDetailResponseBody) SetResultObject(v *DescribeVariable
 }
 
 func (s *DescribeVariableDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVariableDetailResponseBodyResultObject struct {
@@ -79,7 +84,12 @@ func (s *DescribeVariableDetailResponseBodyResultObject) SetBaseInfo(v *Describe
 }
 
 func (s *DescribeVariableDetailResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.BaseInfo != nil {
+		if err := s.BaseInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVariableDetailResponseBodyResultObjectBaseInfo struct {

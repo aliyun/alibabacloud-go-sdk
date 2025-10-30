@@ -59,5 +59,10 @@ func (s *DescribeOssTokenResponse) SetBody(v *DescribeOssTokenResponseBody) *Des
 }
 
 func (s *DescribeOssTokenResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

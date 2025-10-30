@@ -59,5 +59,10 @@ func (s *ImportNameListResponse) SetBody(v *ImportNameListResponseBody) *ImportN
 }
 
 func (s *ImportNameListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *QueryAuthRuleDetailByRuleIdResponseBody) SetResultObject(v *QueryAuthRu
 }
 
 func (s *QueryAuthRuleDetailByRuleIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryAuthRuleDetailByRuleIdResponseBodyResultObject struct {

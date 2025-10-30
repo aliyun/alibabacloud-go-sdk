@@ -53,7 +53,12 @@ func (s *DescribeMonitorTaskLimitResponseBody) SetResultObject(v *DescribeMonito
 }
 
 func (s *DescribeMonitorTaskLimitResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorTaskLimitResponseBodyResultObject struct {

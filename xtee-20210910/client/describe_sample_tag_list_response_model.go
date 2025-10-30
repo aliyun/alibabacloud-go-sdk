@@ -59,5 +59,10 @@ func (s *DescribeSampleTagListResponse) SetBody(v *DescribeSampleTagListResponse
 }
 
 func (s *DescribeSampleTagListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

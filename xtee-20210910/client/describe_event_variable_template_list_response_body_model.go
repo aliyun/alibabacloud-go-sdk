@@ -53,7 +53,16 @@ func (s *DescribeEventVariableTemplateListResponseBody) SetResultObject(v []*Des
 }
 
 func (s *DescribeEventVariableTemplateListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		for _, item := range s.ResultObject {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEventVariableTemplateListResponseBodyResultObject struct {
@@ -109,7 +118,16 @@ func (s *DescribeEventVariableTemplateListResponseBodyResultObject) SetVariables
 }
 
 func (s *DescribeEventVariableTemplateListResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.Variables != nil {
+		for _, item := range s.Variables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEventVariableTemplateListResponseBodyResultObjectVariables struct {

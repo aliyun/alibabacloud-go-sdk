@@ -53,7 +53,12 @@ func (s *DescribeScoreSectionRatioLineChartResponseBody) SetResultObject(v *Desc
 }
 
 func (s *DescribeScoreSectionRatioLineChartResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeScoreSectionRatioLineChartResponseBodyResultObject struct {
@@ -90,7 +95,21 @@ func (s *DescribeScoreSectionRatioLineChartResponseBodyResultObject) SetXaxis(v 
 }
 
 func (s *DescribeScoreSectionRatioLineChartResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.Series != nil {
+		for _, item := range s.Series {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Xaxis != nil {
+		if err := s.Xaxis.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeScoreSectionRatioLineChartResponseBodyResultObjectSeries struct {

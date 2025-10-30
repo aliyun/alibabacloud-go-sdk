@@ -53,7 +53,12 @@ func (s *DescribeScoreSectionPieChartResponseBody) SetResultObject(v *DescribeSc
 }
 
 func (s *DescribeScoreSectionPieChartResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeScoreSectionPieChartResponseBodyResultObject struct {
@@ -105,7 +110,21 @@ func (s *DescribeScoreSectionPieChartResponseBodyResultObject) SetSeries(v []*De
 }
 
 func (s *DescribeScoreSectionPieChartResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.Grid != nil {
+		if err := s.Grid.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Series != nil {
+		for _, item := range s.Series {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeScoreSectionPieChartResponseBodyResultObjectGrid struct {
@@ -191,7 +210,16 @@ func (s *DescribeScoreSectionPieChartResponseBodyResultObjectSeries) SetRoseType
 }
 
 func (s *DescribeScoreSectionPieChartResponseBodyResultObjectSeries) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeScoreSectionPieChartResponseBodyResultObjectSeriesData struct {

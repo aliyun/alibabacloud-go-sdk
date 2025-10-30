@@ -189,7 +189,16 @@ func (s *DescribeEventResultListResponseBody) SetTotalPage(v int64) *DescribeEve
 }
 
 func (s *DescribeEventResultListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		for _, item := range s.ResultObject {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEventResultListResponseBodyResultObject struct {

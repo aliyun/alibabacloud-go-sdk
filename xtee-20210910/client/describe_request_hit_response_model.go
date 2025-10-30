@@ -59,5 +59,10 @@ func (s *DescribeRequestHitResponse) SetBody(v *DescribeRequestHitResponseBody) 
 }
 
 func (s *DescribeRequestHitResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

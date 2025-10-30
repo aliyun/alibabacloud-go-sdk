@@ -59,5 +59,10 @@ func (s *DescribeVariableSceneListResponse) SetBody(v *DescribeVariableSceneList
 }
 
 func (s *DescribeVariableSceneListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

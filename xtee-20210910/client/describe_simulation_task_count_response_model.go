@@ -59,5 +59,10 @@ func (s *DescribeSimulationTaskCountResponse) SetBody(v *DescribeSimulationTaskC
 }
 
 func (s *DescribeSimulationTaskCountResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

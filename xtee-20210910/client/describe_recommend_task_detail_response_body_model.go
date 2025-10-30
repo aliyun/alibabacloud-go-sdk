@@ -53,7 +53,12 @@ func (s *DescribeRecommendTaskDetailResponseBody) SetResultObject(v *DescribeRec
 }
 
 func (s *DescribeRecommendTaskDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRecommendTaskDetailResponseBodyResultObject struct {
@@ -266,7 +271,25 @@ func (s *DescribeRecommendTaskDetailResponseBodyResultObject) SetTaskStatus(v st
 }
 
 func (s *DescribeRecommendTaskDetailResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.RecommendRuleDTOs != nil {
+		for _, item := range s.RecommendRuleDTOs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RecommendVariableDTOs != nil {
+		for _, item := range s.RecommendVariableDTOs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRecommendTaskDetailResponseBodyResultObjectRecommendRuleDTOs struct {
@@ -412,7 +435,16 @@ func (s *DescribeRecommendTaskDetailResponseBodyResultObjectRecommendRuleDTOs) S
 }
 
 func (s *DescribeRecommendTaskDetailResponseBodyResultObjectRecommendRuleDTOs) Validate() error {
-	return dara.Validate(s)
+	if s.RecommendRules != nil {
+		for _, item := range s.RecommendRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRecommendTaskDetailResponseBodyResultObjectRecommendRuleDTOsRecommendRules struct {

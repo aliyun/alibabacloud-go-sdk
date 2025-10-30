@@ -53,7 +53,12 @@ func (s *DescribeNameListLimitResponseBody) SetResultObject(v *DescribeNameListL
 }
 
 func (s *DescribeNameListLimitResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNameListLimitResponseBodyResultObject struct {

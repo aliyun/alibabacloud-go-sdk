@@ -59,5 +59,10 @@ func (s *DescribeNameListTypeListResponse) SetBody(v *DescribeNameListTypeListRe
 }
 
 func (s *DescribeNameListTypeListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

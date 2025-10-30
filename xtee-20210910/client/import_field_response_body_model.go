@@ -121,7 +121,12 @@ func (s *ImportFieldResponseBody) SetSuccess(v bool) *ImportFieldResponseBody {
 }
 
 func (s *ImportFieldResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ImportFieldResponseBodyResultObject struct {

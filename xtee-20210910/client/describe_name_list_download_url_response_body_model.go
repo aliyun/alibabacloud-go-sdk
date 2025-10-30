@@ -53,7 +53,12 @@ func (s *DescribeNameListDownloadUrlResponseBody) SetResultObject(v *DescribeNam
 }
 
 func (s *DescribeNameListDownloadUrlResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNameListDownloadUrlResponseBodyResultObject struct {

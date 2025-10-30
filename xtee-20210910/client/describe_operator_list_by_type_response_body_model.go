@@ -53,7 +53,16 @@ func (s *DescribeOperatorListByTypeResponseBody) SetResultObject(v []*DescribeOp
 }
 
 func (s *DescribeOperatorListByTypeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		for _, item := range s.ResultObject {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOperatorListByTypeResponseBodyResultObject struct {
@@ -94,7 +103,16 @@ func (s *DescribeOperatorListByTypeResponseBodyResultObject) SetOperators(v []*D
 }
 
 func (s *DescribeOperatorListByTypeResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.Operators != nil {
+		for _, item := range s.Operators {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOperatorListByTypeResponseBodyResultObjectOperators struct {

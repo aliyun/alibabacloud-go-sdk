@@ -53,7 +53,12 @@ func (s *DescribeEventBaseInfoByEventCodeResponseBody) SetResultObject(v *Descri
 }
 
 func (s *DescribeEventBaseInfoByEventCodeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventBaseInfoByEventCodeResponseBodyResultObject struct {
@@ -210,7 +215,25 @@ func (s *DescribeEventBaseInfoByEventCodeResponseBodyResultObject) SetTemplateTy
 }
 
 func (s *DescribeEventBaseInfoByEventCodeResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.InputFields != nil {
+		for _, item := range s.InputFields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RuleDetails != nil {
+		for _, item := range s.RuleDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEventBaseInfoByEventCodeResponseBodyResultObjectInputFields struct {

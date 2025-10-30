@@ -53,7 +53,12 @@ func (s *DescribeRuleSnapshotResponseBody) SetResultObject(v *DescribeRuleSnapsh
 }
 
 func (s *DescribeRuleSnapshotResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRuleSnapshotResponseBodyResultObject struct {

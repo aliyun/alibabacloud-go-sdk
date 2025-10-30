@@ -121,7 +121,16 @@ func (s *DescribeFieldListResponseBody) SetTotalPage(v int32) *DescribeFieldList
 }
 
 func (s *DescribeFieldListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		for _, item := range s.ResultObject {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFieldListResponseBodyResultObject struct {

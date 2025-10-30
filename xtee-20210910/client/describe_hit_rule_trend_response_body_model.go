@@ -121,7 +121,12 @@ func (s *DescribeHitRuleTrendResponseBody) SetSuccess(v bool) *DescribeHitRuleTr
 }
 
 func (s *DescribeHitRuleTrendResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHitRuleTrendResponseBodyResultObject struct {
@@ -158,7 +163,21 @@ func (s *DescribeHitRuleTrendResponseBodyResultObject) SetXaxis(v *DescribeHitRu
 }
 
 func (s *DescribeHitRuleTrendResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.Series != nil {
+		for _, item := range s.Series {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Xaxis != nil {
+		if err := s.Xaxis.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHitRuleTrendResponseBodyResultObjectSeries struct {
@@ -199,7 +218,16 @@ func (s *DescribeHitRuleTrendResponseBodyResultObjectSeries) SetName(v string) *
 }
 
 func (s *DescribeHitRuleTrendResponseBodyResultObjectSeries) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHitRuleTrendResponseBodyResultObjectSeriesData struct {

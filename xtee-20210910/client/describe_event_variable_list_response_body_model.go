@@ -53,7 +53,12 @@ func (s *DescribeEventVariableListResponseBody) SetResultObject(v *DescribeEvent
 }
 
 func (s *DescribeEventVariableListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventVariableListResponseBodyResultObject struct {
@@ -226,7 +231,124 @@ func (s *DescribeEventVariableListResponseBodyResultObject) SetVelocityVariables
 }
 
 func (s *DescribeEventVariableListResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.Actions != nil {
+		for _, item := range s.Actions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DeviceVariables != nil {
+		for _, item := range s.DeviceVariables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ExpressionVariables != nil {
+		for _, item := range s.ExpressionVariables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FavoriteVariables != nil {
+		for _, item := range s.FavoriteVariables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MiddleVariables != nil {
+		for _, item := range s.MiddleVariables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ModelVariables != nil {
+		for _, item := range s.ModelVariables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NameList != nil {
+		for _, item := range s.NameList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NativeVariableFunctions != nil {
+		for _, item := range s.NativeVariableFunctions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NativeVariables != nil {
+		for _, item := range s.NativeVariables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.QueryVariables != nil {
+		for _, item := range s.QueryVariables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SelfVariables != nil {
+		for _, item := range s.SelfVariables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SysVariables != nil {
+		for _, item := range s.SysVariables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VelocityVariables != nil {
+		for _, item := range s.VelocityVariables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEventVariableListResponseBodyResultObjectActions struct {
@@ -608,7 +730,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectActions) SetYLabel(v s
 }
 
 func (s *DescribeEventVariableListResponseBodyResultObjectActions) Validate() error {
-	return dara.Validate(s)
+	if s.OutputThreshold != nil {
+		if err := s.OutputThreshold.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VariableVelocity != nil {
+		if err := s.VariableVelocity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventVariableListResponseBodyResultObjectActionsOutputThreshold struct {
@@ -1065,7 +1197,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectDeviceVariables) SetYL
 }
 
 func (s *DescribeEventVariableListResponseBodyResultObjectDeviceVariables) Validate() error {
-	return dara.Validate(s)
+	if s.OutputThreshold != nil {
+		if err := s.OutputThreshold.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VariableVelocity != nil {
+		if err := s.VariableVelocity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventVariableListResponseBodyResultObjectDeviceVariablesOutputThreshold struct {
@@ -1522,7 +1664,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectExpressionVariables) S
 }
 
 func (s *DescribeEventVariableListResponseBodyResultObjectExpressionVariables) Validate() error {
-	return dara.Validate(s)
+	if s.OutputThreshold != nil {
+		if err := s.OutputThreshold.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VariableVelocity != nil {
+		if err := s.VariableVelocity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventVariableListResponseBodyResultObjectExpressionVariablesOutputThreshold struct {
@@ -1979,7 +2131,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectFavoriteVariables) Set
 }
 
 func (s *DescribeEventVariableListResponseBodyResultObjectFavoriteVariables) Validate() error {
-	return dara.Validate(s)
+	if s.OutputThreshold != nil {
+		if err := s.OutputThreshold.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VariableVelocity != nil {
+		if err := s.VariableVelocity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventVariableListResponseBodyResultObjectFavoriteVariablesOutputThreshold struct {
@@ -2436,7 +2598,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectMiddleVariables) SetYL
 }
 
 func (s *DescribeEventVariableListResponseBodyResultObjectMiddleVariables) Validate() error {
-	return dara.Validate(s)
+	if s.OutputThreshold != nil {
+		if err := s.OutputThreshold.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VariableVelocity != nil {
+		if err := s.VariableVelocity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventVariableListResponseBodyResultObjectMiddleVariablesOutputThreshold struct {
@@ -2893,7 +3065,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectModelVariables) SetYLa
 }
 
 func (s *DescribeEventVariableListResponseBodyResultObjectModelVariables) Validate() error {
-	return dara.Validate(s)
+	if s.OutputThreshold != nil {
+		if err := s.OutputThreshold.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VariableVelocity != nil {
+		if err := s.VariableVelocity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventVariableListResponseBodyResultObjectModelVariablesOutputThreshold struct {
@@ -3350,7 +3532,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectNameList) SetYLabel(v 
 }
 
 func (s *DescribeEventVariableListResponseBodyResultObjectNameList) Validate() error {
-	return dara.Validate(s)
+	if s.OutputThreshold != nil {
+		if err := s.OutputThreshold.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VariableVelocity != nil {
+		if err := s.VariableVelocity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventVariableListResponseBodyResultObjectNameListOutputThreshold struct {
@@ -3807,7 +3999,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectNativeVariableFunction
 }
 
 func (s *DescribeEventVariableListResponseBodyResultObjectNativeVariableFunctions) Validate() error {
-	return dara.Validate(s)
+	if s.OutputThreshold != nil {
+		if err := s.OutputThreshold.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VariableVelocity != nil {
+		if err := s.VariableVelocity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventVariableListResponseBodyResultObjectNativeVariableFunctionsOutputThreshold struct {
@@ -4264,7 +4466,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectNativeVariables) SetYL
 }
 
 func (s *DescribeEventVariableListResponseBodyResultObjectNativeVariables) Validate() error {
-	return dara.Validate(s)
+	if s.OutputThreshold != nil {
+		if err := s.OutputThreshold.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VariableVelocity != nil {
+		if err := s.VariableVelocity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventVariableListResponseBodyResultObjectNativeVariablesOutputThreshold struct {
@@ -4721,7 +4933,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectQueryVariables) SetYLa
 }
 
 func (s *DescribeEventVariableListResponseBodyResultObjectQueryVariables) Validate() error {
-	return dara.Validate(s)
+	if s.OutputThreshold != nil {
+		if err := s.OutputThreshold.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VariableVelocity != nil {
+		if err := s.VariableVelocity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventVariableListResponseBodyResultObjectQueryVariablesOutputThreshold struct {
@@ -5178,7 +5400,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectSelfVariables) SetYLab
 }
 
 func (s *DescribeEventVariableListResponseBodyResultObjectSelfVariables) Validate() error {
-	return dara.Validate(s)
+	if s.OutputThreshold != nil {
+		if err := s.OutputThreshold.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VariableVelocity != nil {
+		if err := s.VariableVelocity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventVariableListResponseBodyResultObjectSelfVariablesOutputThreshold struct {
@@ -5635,7 +5867,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectSysVariables) SetYLabe
 }
 
 func (s *DescribeEventVariableListResponseBodyResultObjectSysVariables) Validate() error {
-	return dara.Validate(s)
+	if s.OutputThreshold != nil {
+		if err := s.OutputThreshold.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VariableVelocity != nil {
+		if err := s.VariableVelocity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventVariableListResponseBodyResultObjectSysVariablesOutputThreshold struct {
@@ -6092,7 +6334,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectVelocityVariables) Set
 }
 
 func (s *DescribeEventVariableListResponseBodyResultObjectVelocityVariables) Validate() error {
-	return dara.Validate(s)
+	if s.OutputThreshold != nil {
+		if err := s.OutputThreshold.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VariableVelocity != nil {
+		if err := s.VariableVelocity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventVariableListResponseBodyResultObjectVelocityVariablesOutputThreshold struct {

@@ -53,7 +53,12 @@ func (s *DescribeSelectItemResponseBody) SetResultObject(v *DescribeSelectItemRe
 }
 
 func (s *DescribeSelectItemResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSelectItemResponseBodyResultObject struct {

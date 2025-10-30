@@ -59,5 +59,10 @@ func (s *ModelIsUsingResponse) SetBody(v *ModelIsUsingResponseBody) *ModelIsUsin
 }
 
 func (s *ModelIsUsingResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

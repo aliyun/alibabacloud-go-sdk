@@ -59,5 +59,10 @@ func (s *DescribeEventBaseInfoByEventCodeResponse) SetBody(v *DescribeEventBaseI
 }
 
 func (s *DescribeEventBaseInfoByEventCodeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

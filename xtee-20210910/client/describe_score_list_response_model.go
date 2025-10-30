@@ -59,5 +59,10 @@ func (s *DescribeScoreListResponse) SetBody(v *DescribeScoreListResponseBody) *D
 }
 
 func (s *DescribeScoreListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

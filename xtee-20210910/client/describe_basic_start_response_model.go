@@ -59,5 +59,10 @@ func (s *DescribeBasicStartResponse) SetBody(v *DescribeBasicStartResponseBody) 
 }
 
 func (s *DescribeBasicStartResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

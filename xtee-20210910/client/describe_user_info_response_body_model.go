@@ -104,7 +104,12 @@ func (s *DescribeUserInfoResponseBody) SetSuccess(v bool) *DescribeUserInfoRespo
 }
 
 func (s *DescribeUserInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeUserInfoResponseBodyResultObject struct {

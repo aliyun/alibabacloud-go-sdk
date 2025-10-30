@@ -59,5 +59,10 @@ func (s *RecallRuleAuditResponse) SetBody(v *RecallRuleAuditResponseBody) *Recal
 }
 
 func (s *RecallRuleAuditResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

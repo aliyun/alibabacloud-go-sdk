@@ -59,5 +59,10 @@ func (s *SwitchVariableResponse) SetBody(v *SwitchVariableResponseBody) *SwitchV
 }
 
 func (s *SwitchVariableResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

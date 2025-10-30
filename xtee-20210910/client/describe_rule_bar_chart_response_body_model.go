@@ -121,7 +121,12 @@ func (s *DescribeRuleBarChartResponseBody) SetSuccess(v bool) *DescribeRuleBarCh
 }
 
 func (s *DescribeRuleBarChartResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRuleBarChartResponseBodyResultObject struct {
@@ -158,7 +163,21 @@ func (s *DescribeRuleBarChartResponseBodyResultObject) SetYaxis(v *DescribeRuleB
 }
 
 func (s *DescribeRuleBarChartResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.Series != nil {
+		for _, item := range s.Series {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Yaxis != nil {
+		if err := s.Yaxis.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRuleBarChartResponseBodyResultObjectSeries struct {
@@ -199,7 +218,16 @@ func (s *DescribeRuleBarChartResponseBodyResultObjectSeries) SetType(v string) *
 }
 
 func (s *DescribeRuleBarChartResponseBodyResultObjectSeries) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRuleBarChartResponseBodyResultObjectSeriesData struct {

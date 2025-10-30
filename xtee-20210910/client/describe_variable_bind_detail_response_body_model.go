@@ -53,7 +53,12 @@ func (s *DescribeVariableBindDetailResponseBody) SetResultObject(v *DescribeVari
 }
 
 func (s *DescribeVariableBindDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVariableBindDetailResponseBodyResultObject struct {
@@ -195,7 +200,25 @@ func (s *DescribeVariableBindDetailResponseBodyResultObject) SetTitle(v string) 
 }
 
 func (s *DescribeVariableBindDetailResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.Params != nil {
+		for _, item := range s.Params {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RelationRules != nil {
+		for _, item := range s.RelationRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVariableBindDetailResponseBodyResultObjectParams struct {

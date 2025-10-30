@@ -53,7 +53,12 @@ func (s *DescribeTagsNumLineChartResponseBody) SetResultObject(v *DescribeTagsNu
 }
 
 func (s *DescribeTagsNumLineChartResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTagsNumLineChartResponseBodyResultObject struct {
@@ -90,7 +95,21 @@ func (s *DescribeTagsNumLineChartResponseBodyResultObject) SetXaxis(v *DescribeT
 }
 
 func (s *DescribeTagsNumLineChartResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.Series != nil {
+		for _, item := range s.Series {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Xaxis != nil {
+		if err := s.Xaxis.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTagsNumLineChartResponseBodyResultObjectSeries struct {

@@ -59,5 +59,10 @@ func (s *DescribeSelectItemResponse) SetBody(v *DescribeSelectItemResponseBody) 
 }
 
 func (s *DescribeSelectItemResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

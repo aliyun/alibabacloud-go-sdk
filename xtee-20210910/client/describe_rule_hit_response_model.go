@@ -59,5 +59,10 @@ func (s *DescribeRuleHitResponse) SetBody(v *DescribeRuleHitResponseBody) *Descr
 }
 
 func (s *DescribeRuleHitResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
