@@ -251,7 +251,32 @@ func (s *CreateWmEmbedTaskRequest) SetWmType(v string) *CreateWmEmbedTaskRequest
 }
 
 func (s *CreateWmEmbedTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AudioControl != nil {
+		if err := s.AudioControl.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CsvControl != nil {
+		if err := s.CsvControl.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DocumentControl != nil {
+		if err := s.DocumentControl.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageControl != nil {
+		if err := s.ImageControl.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoControl != nil {
+		if err := s.VideoControl.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateWmEmbedTaskRequestAudioControl struct {
@@ -276,7 +301,12 @@ func (s *CreateWmEmbedTaskRequestAudioControl) SetMetadataControl(v *CreateWmEmb
 }
 
 func (s *CreateWmEmbedTaskRequestAudioControl) Validate() error {
-	return dara.Validate(s)
+	if s.MetadataControl != nil {
+		if err := s.MetadataControl.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateWmEmbedTaskRequestAudioControlMetadataControl struct {
@@ -447,7 +477,12 @@ func (s *CreateWmEmbedTaskRequestDocumentControl) SetInvisibleAntiTextCopy(v boo
 }
 
 func (s *CreateWmEmbedTaskRequestDocumentControl) Validate() error {
-	return dara.Validate(s)
+	if s.BackgroundControl != nil {
+		if err := s.BackgroundControl.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateWmEmbedTaskRequestDocumentControlBackgroundControl struct {
@@ -508,7 +543,17 @@ func (s *CreateWmEmbedTaskRequestDocumentControlBackgroundControl) SetBgVisibleC
 }
 
 func (s *CreateWmEmbedTaskRequestDocumentControlBackgroundControl) Validate() error {
-	return dara.Validate(s)
+	if s.BgInvisibleControl != nil {
+		if err := s.BgInvisibleControl.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BgVisibleControl != nil {
+		if err := s.BgVisibleControl.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgInvisibleControl struct {
@@ -726,7 +771,22 @@ func (s *CreateWmEmbedTaskRequestImageControl) SetTextVisibleControl(v *CreateWm
 }
 
 func (s *CreateWmEmbedTaskRequestImageControl) Validate() error {
-	return dara.Validate(s)
+	if s.LogoVisibleControl != nil {
+		if err := s.LogoVisibleControl.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MetadataControl != nil {
+		if err := s.MetadataControl.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TextVisibleControl != nil {
+		if err := s.TextVisibleControl.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateWmEmbedTaskRequestImageControlLogoVisibleControl struct {
@@ -871,7 +931,12 @@ func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) SetVisible(v bo
 }
 
 func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) Validate() error {
-	return dara.Validate(s)
+	if s.Margin != nil {
+		if err := s.Margin.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin struct {
@@ -1116,7 +1181,12 @@ func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) SetVisibleText(
 }
 
 func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) Validate() error {
-	return dara.Validate(s)
+	if s.Margin != nil {
+		if err := s.Margin.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin struct {
@@ -1206,7 +1276,17 @@ func (s *CreateWmEmbedTaskRequestVideoControl) SetTextVisibleControl(v *CreateWm
 }
 
 func (s *CreateWmEmbedTaskRequestVideoControl) Validate() error {
-	return dara.Validate(s)
+	if s.MetadataControl != nil {
+		if err := s.MetadataControl.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TextVisibleControl != nil {
+		if err := s.TextVisibleControl.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateWmEmbedTaskRequestVideoControlMetadataControl struct {
@@ -1346,7 +1426,12 @@ func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControl) SetVisibleText(
 }
 
 func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControl) Validate() error {
-	return dara.Validate(s)
+	if s.Margin != nil {
+		if err := s.Margin.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateWmEmbedTaskRequestVideoControlTextVisibleControlMargin struct {

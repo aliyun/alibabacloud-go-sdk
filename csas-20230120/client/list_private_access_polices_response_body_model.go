@@ -70,7 +70,16 @@ func (s *ListPrivateAccessPolicesResponseBody) SetTotalNum(v int32) *ListPrivate
 }
 
 func (s *ListPrivateAccessPolicesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Polices != nil {
+		for _, item := range s.Polices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrivateAccessPolicesResponseBodyPolices struct {
@@ -370,7 +379,16 @@ func (s *ListPrivateAccessPolicesResponseBodyPolices) SetUserGroupMode(v string)
 }
 
 func (s *ListPrivateAccessPolicesResponseBodyPolices) Validate() error {
-	return dara.Validate(s)
+	if s.CustomUserAttributes != nil {
+		for _, item := range s.CustomUserAttributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrivateAccessPolicesResponseBodyPolicesCustomUserAttributes struct {

@@ -65,7 +65,16 @@ func (s *ListUserGroupsResponseBody) SetUserGroups(v []*ListUserGroupsResponseBo
 }
 
 func (s *ListUserGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserGroups != nil {
+		for _, item := range s.UserGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserGroupsResponseBodyUserGroups struct {
@@ -139,7 +148,16 @@ func (s *ListUserGroupsResponseBodyUserGroups) SetUserGroupId(v string) *ListUse
 }
 
 func (s *ListUserGroupsResponseBodyUserGroups) Validate() error {
-	return dara.Validate(s)
+	if s.Attributes != nil {
+		for _, item := range s.Attributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserGroupsResponseBodyUserGroupsAttributes struct {

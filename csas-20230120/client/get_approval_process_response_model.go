@@ -59,5 +59,10 @@ func (s *GetApprovalProcessResponse) SetBody(v *GetApprovalProcessResponseBody) 
 }
 
 func (s *GetApprovalProcessResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

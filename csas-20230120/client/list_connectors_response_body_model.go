@@ -70,7 +70,16 @@ func (s *ListConnectorsResponseBody) SetTotalNum(v int32) *ListConnectorsRespons
 }
 
 func (s *ListConnectorsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Connectors != nil {
+		for _, item := range s.Connectors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListConnectorsResponseBodyConnectors struct {
@@ -246,7 +255,30 @@ func (s *ListConnectorsResponseBodyConnectors) SetUpgradeTime(v *ListConnectorsR
 }
 
 func (s *ListConnectorsResponseBodyConnectors) Validate() error {
-	return dara.Validate(s)
+	if s.Applications != nil {
+		for _, item := range s.Applications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ConnectorClients != nil {
+		for _, item := range s.ConnectorClients {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UpgradeTime != nil {
+		if err := s.UpgradeTime.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListConnectorsResponseBodyConnectorsApplications struct {

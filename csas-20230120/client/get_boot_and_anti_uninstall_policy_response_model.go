@@ -59,5 +59,10 @@ func (s *GetBootAndAntiUninstallPolicyResponse) SetBody(v *GetBootAndAntiUninsta
 }
 
 func (s *GetBootAndAntiUninstallPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

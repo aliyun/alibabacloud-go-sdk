@@ -104,7 +104,12 @@ func (s *UpdateBootAndAntiUninstallPolicyRequest) SetWhitelistUsers(v []*string)
 }
 
 func (s *UpdateBootAndAntiUninstallPolicyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.BlockContent != nil {
+		if err := s.BlockContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateBootAndAntiUninstallPolicyRequestBlockContent struct {
@@ -139,7 +144,17 @@ func (s *UpdateBootAndAntiUninstallPolicyRequestBlockContent) SetBlockTextZh(v *
 }
 
 func (s *UpdateBootAndAntiUninstallPolicyRequestBlockContent) Validate() error {
-	return dara.Validate(s)
+	if s.BlockTextEn != nil {
+		if err := s.BlockTextEn.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BlockTextZh != nil {
+		if err := s.BlockTextZh.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextEn struct {

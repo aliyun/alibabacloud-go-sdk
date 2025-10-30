@@ -53,7 +53,12 @@ func (s *GetPrivateAccessPolicyResponseBody) SetRequestId(v string) *GetPrivateA
 }
 
 func (s *GetPrivateAccessPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Policy != nil {
+		if err := s.Policy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPrivateAccessPolicyResponseBodyPolicy struct {
@@ -353,7 +358,16 @@ func (s *GetPrivateAccessPolicyResponseBodyPolicy) SetUserGroupMode(v string) *G
 }
 
 func (s *GetPrivateAccessPolicyResponseBodyPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.CustomUserAttributes != nil {
+		for _, item := range s.CustomUserAttributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPrivateAccessPolicyResponseBodyPolicyCustomUserAttributes struct {

@@ -50,7 +50,12 @@ func (s *ListIdpDepartmentsResponseBody) SetRequestId(v string) *ListIdpDepartme
 }
 
 func (s *ListIdpDepartmentsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListIdpDepartmentsResponseBodyData struct {
@@ -88,7 +93,16 @@ func (s *ListIdpDepartmentsResponseBodyData) SetTotalNum(v int64) *ListIdpDepart
 }
 
 func (s *ListIdpDepartmentsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DataList != nil {
+		for _, item := range s.DataList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIdpDepartmentsResponseBodyDataDataList struct {

@@ -59,5 +59,10 @@ func (s *AttachPolicy2ApprovalProcessResponse) SetBody(v *AttachPolicy2ApprovalP
 }
 
 func (s *AttachPolicy2ApprovalProcessResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

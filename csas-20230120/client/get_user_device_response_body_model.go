@@ -50,7 +50,12 @@ func (s *GetUserDeviceResponseBody) SetRequestId(v string) *GetUserDeviceRespons
 }
 
 func (s *GetUserDeviceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Device != nil {
+		if err := s.Device.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserDeviceResponseBodyDevice struct {
@@ -494,7 +499,25 @@ func (s *GetUserDeviceResponseBodyDevice) SetWorkshop(v string) *GetUserDeviceRe
 }
 
 func (s *GetUserDeviceResponseBodyDevice) Validate() error {
-	return dara.Validate(s)
+	if s.HistoryUsers != nil {
+		for _, item := range s.HistoryUsers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NetInterfaceInfo != nil {
+		for _, item := range s.NetInterfaceInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetUserDeviceResponseBodyDeviceHistoryUsers struct {

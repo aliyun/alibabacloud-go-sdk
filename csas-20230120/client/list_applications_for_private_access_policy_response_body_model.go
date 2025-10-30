@@ -50,7 +50,16 @@ func (s *ListApplicationsForPrivateAccessPolicyResponseBody) SetRequestId(v stri
 }
 
 func (s *ListApplicationsForPrivateAccessPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Polices != nil {
+		for _, item := range s.Polices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApplicationsForPrivateAccessPolicyResponseBodyPolices struct {
@@ -88,7 +97,16 @@ func (s *ListApplicationsForPrivateAccessPolicyResponseBodyPolices) SetPolicyId(
 }
 
 func (s *ListApplicationsForPrivateAccessPolicyResponseBodyPolices) Validate() error {
-	return dara.Validate(s)
+	if s.Applications != nil {
+		for _, item := range s.Applications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApplicationsForPrivateAccessPolicyResponseBodyPolicesApplications struct {
@@ -198,7 +216,16 @@ func (s *ListApplicationsForPrivateAccessPolicyResponseBodyPolicesApplications) 
 }
 
 func (s *ListApplicationsForPrivateAccessPolicyResponseBodyPolicesApplications) Validate() error {
-	return dara.Validate(s)
+	if s.PortRanges != nil {
+		for _, item := range s.PortRanges {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApplicationsForPrivateAccessPolicyResponseBodyPolicesApplicationsPortRanges struct {

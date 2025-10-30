@@ -65,7 +65,16 @@ func (s *ListApprovalProcessesResponseBody) SetTotalNum(v string) *ListApprovalP
 }
 
 func (s *ListApprovalProcessesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Processes != nil {
+		for _, item := range s.Processes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApprovalProcessesResponseBodyProcesses struct {
@@ -236,7 +245,52 @@ func (s *ListApprovalProcessesResponseBodyProcesses) SetSoftwareHardeningPolicie
 }
 
 func (s *ListApprovalProcessesResponseBodyProcesses) Validate() error {
-	return dara.Validate(s)
+	if s.AppUninstallPolicies != nil {
+		if err := s.AppUninstallPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeviceRegistrationPolicies != nil {
+		if err := s.DeviceRegistrationPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DlpSendPolicies != nil {
+		if err := s.DlpSendPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DomainBlacklistPolicies != nil {
+		if err := s.DomainBlacklistPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DomainWhitelistPolicies != nil {
+		if err := s.DomainWhitelistPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EndpointHardeningPolicies != nil {
+		if err := s.EndpointHardeningPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PeripheralBlockPolicies != nil {
+		if err := s.PeripheralBlockPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SoftwareBlockPolicies != nil {
+		if err := s.SoftwareBlockPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SoftwareHardeningPolicies != nil {
+		if err := s.SoftwareHardeningPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListApprovalProcessesResponseBodyProcessesAppUninstallPolicies struct {

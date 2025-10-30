@@ -35,7 +35,12 @@ func (s *CommonConfig) SetIdp(v *CommonConfigIdp) *CommonConfig {
 }
 
 func (s *CommonConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Idp != nil {
+		if err := s.Idp.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CommonConfigIdp struct {
@@ -100,7 +105,27 @@ func (s *CommonConfigIdp) SetSaml(v *CommonConfigIdpSaml) *CommonConfigIdp {
 }
 
 func (s *CommonConfigIdp) Validate() error {
-	return dara.Validate(s)
+	if s.Dingtalk != nil {
+		if err := s.Dingtalk.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Feishu != nil {
+		if err := s.Feishu.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Idaas2 != nil {
+		if err := s.Idaas2.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Saml != nil {
+		if err := s.Saml.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CommonConfigIdpDingtalk struct {

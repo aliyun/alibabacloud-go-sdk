@@ -59,5 +59,10 @@ func (s *CreateWmEmbedTaskResponse) SetBody(v *CreateWmEmbedTaskResponseBody) *C
 }
 
 func (s *CreateWmEmbedTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -65,7 +65,16 @@ func (s *ListUserDevicesResponseBody) SetTotalNum(v int64) *ListUserDevicesRespo
 }
 
 func (s *ListUserDevicesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Devices != nil {
+		for _, item := range s.Devices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserDevicesResponseBodyDevices struct {
@@ -499,7 +508,16 @@ func (s *ListUserDevicesResponseBodyDevices) SetWorkshop(v string) *ListUserDevi
 }
 
 func (s *ListUserDevicesResponseBodyDevices) Validate() error {
-	return dara.Validate(s)
+	if s.NetInterfaceInfo != nil {
+		for _, item := range s.NetInterfaceInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserDevicesResponseBodyDevicesNetInterfaceInfo struct {

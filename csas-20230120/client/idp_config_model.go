@@ -227,5 +227,55 @@ func (s *IdpConfig) SetWuyingConfig(v *OpenStructIdpWuyingSubConfig) *IdpConfig 
 }
 
 func (s *IdpConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AttrMapConfig != nil {
+		if err := s.AttrMapConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ConnectConfig != nil {
+		if err := s.ConnectConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DingtalkConfig != nil {
+		if err := s.DingtalkConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FeishuConfig != nil {
+		if err := s.FeishuConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IdaasConfig != nil {
+		if err := s.IdaasConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LdapConfig != nil {
+		if err := s.LdapConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LoginConfig != nil {
+		if err := s.LoginConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SyncConfig != nil {
+		if err := s.SyncConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WeixinConfig != nil {
+		if err := s.WeixinConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WuyingConfig != nil {
+		if err := s.WuyingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

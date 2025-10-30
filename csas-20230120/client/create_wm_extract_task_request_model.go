@@ -221,7 +221,17 @@ func (s *CreateWmExtractTaskRequest) SetWmType(v string) *CreateWmExtractTaskReq
 }
 
 func (s *CreateWmExtractTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CsvControl != nil {
+		if err := s.CsvControl.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageExtractParamsOpenApi != nil {
+		if err := s.ImageExtractParamsOpenApi.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateWmExtractTaskRequestCsvControl struct {

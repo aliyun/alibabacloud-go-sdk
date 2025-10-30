@@ -67,7 +67,16 @@ func (s *ListUserApplicationsResponseBody) SetTotalNum(v int32) *ListUserApplica
 }
 
 func (s *ListUserApplicationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Applications != nil {
+		for _, item := range s.Applications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserApplicationsResponseBodyApplications struct {
@@ -154,7 +163,16 @@ func (s *ListUserApplicationsResponseBodyApplications) SetProtocol(v string) *Li
 }
 
 func (s *ListUserApplicationsResponseBodyApplications) Validate() error {
-	return dara.Validate(s)
+	if s.PortRanges != nil {
+		for _, item := range s.PortRanges {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserApplicationsResponseBodyApplicationsPortRanges struct {

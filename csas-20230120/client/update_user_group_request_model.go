@@ -81,7 +81,16 @@ func (s *UpdateUserGroupRequest) SetUserGroupId(v string) *UpdateUserGroupReques
 }
 
 func (s *UpdateUserGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Attributes != nil {
+		for _, item := range s.Attributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateUserGroupRequestAttributes struct {

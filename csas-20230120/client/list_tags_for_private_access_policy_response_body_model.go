@@ -50,7 +50,16 @@ func (s *ListTagsForPrivateAccessPolicyResponseBody) SetRequestId(v string) *Lis
 }
 
 func (s *ListTagsForPrivateAccessPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Polices != nil {
+		for _, item := range s.Polices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTagsForPrivateAccessPolicyResponseBodyPolices struct {
@@ -88,7 +97,16 @@ func (s *ListTagsForPrivateAccessPolicyResponseBodyPolices) SetTags(v []*ListTag
 }
 
 func (s *ListTagsForPrivateAccessPolicyResponseBodyPolices) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTagsForPrivateAccessPolicyResponseBodyPolicesTags struct {

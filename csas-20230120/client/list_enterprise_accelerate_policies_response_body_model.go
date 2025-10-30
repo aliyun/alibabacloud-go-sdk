@@ -65,7 +65,16 @@ func (s *ListEnterpriseAcceleratePoliciesResponseBody) SetTotal(v int32) *ListEn
 }
 
 func (s *ListEnterpriseAcceleratePoliciesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Policies != nil {
+		for _, item := range s.Policies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEnterpriseAcceleratePoliciesResponseBodyPolicies struct {

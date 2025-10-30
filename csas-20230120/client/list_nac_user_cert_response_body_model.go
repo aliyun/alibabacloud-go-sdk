@@ -95,7 +95,16 @@ func (s *ListNacUserCertResponseBody) SetTotalNum(v int64) *ListNacUserCertRespo
 }
 
 func (s *ListNacUserCertResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataList != nil {
+		for _, item := range s.DataList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNacUserCertResponseBodyDataList struct {

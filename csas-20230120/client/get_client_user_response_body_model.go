@@ -50,7 +50,12 @@ func (s *GetClientUserResponseBody) SetRequestId(v string) *GetClientUserRespons
 }
 
 func (s *GetClientUserResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetClientUserResponseBodyData struct {
@@ -186,7 +191,12 @@ func (s *GetClientUserResponseBodyData) SetUsername(v string) *GetClientUserResp
 }
 
 func (s *GetClientUserResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Department != nil {
+		if err := s.Department.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetClientUserResponseBodyDataDepartment struct {

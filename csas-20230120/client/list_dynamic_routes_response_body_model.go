@@ -65,7 +65,16 @@ func (s *ListDynamicRoutesResponseBody) SetTotalNum(v int32) *ListDynamicRoutesR
 }
 
 func (s *ListDynamicRoutesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DynamicRoutes != nil {
+		for _, item := range s.DynamicRoutes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDynamicRoutesResponseBodyDynamicRoutes struct {

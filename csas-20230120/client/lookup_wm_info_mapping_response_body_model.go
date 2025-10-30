@@ -50,7 +50,12 @@ func (s *LookupWmInfoMappingResponseBody) SetRequestId(v string) *LookupWmInfoMa
 }
 
 func (s *LookupWmInfoMappingResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type LookupWmInfoMappingResponseBodyData struct {

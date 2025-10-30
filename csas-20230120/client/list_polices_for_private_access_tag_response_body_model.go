@@ -50,7 +50,16 @@ func (s *ListPolicesForPrivateAccessTagResponseBody) SetTags(v []*ListPolicesFor
 }
 
 func (s *ListPolicesForPrivateAccessTagResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPolicesForPrivateAccessTagResponseBodyTags struct {
@@ -88,7 +97,16 @@ func (s *ListPolicesForPrivateAccessTagResponseBodyTags) SetTagId(v string) *Lis
 }
 
 func (s *ListPolicesForPrivateAccessTagResponseBodyTags) Validate() error {
-	return dara.Validate(s)
+	if s.Polices != nil {
+		for _, item := range s.Polices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPolicesForPrivateAccessTagResponseBodyTagsPolices struct {
@@ -230,7 +248,16 @@ func (s *ListPolicesForPrivateAccessTagResponseBodyTagsPolices) SetUserGroupType
 }
 
 func (s *ListPolicesForPrivateAccessTagResponseBodyTagsPolices) Validate() error {
-	return dara.Validate(s)
+	if s.CustomUserAttributes != nil {
+		for _, item := range s.CustomUserAttributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPolicesForPrivateAccessTagResponseBodyTagsPolicesCustomUserAttributes struct {

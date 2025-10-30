@@ -50,7 +50,12 @@ func (s *UpdateRegistrationPolicyResponseBody) SetRequestId(v string) *UpdateReg
 }
 
 func (s *UpdateRegistrationPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Policy != nil {
+		if err := s.Policy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateRegistrationPolicyResponseBodyPolicy struct {
@@ -180,7 +185,16 @@ func (s *UpdateRegistrationPolicyResponseBodyPolicy) SetWhitelist(v []*string) *
 }
 
 func (s *UpdateRegistrationPolicyResponseBodyPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.LimitDetail != nil {
+		for _, item := range s.LimitDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateRegistrationPolicyResponseBodyPolicyLimitDetail struct {
@@ -231,7 +245,12 @@ func (s *UpdateRegistrationPolicyResponseBodyPolicyLimitDetail) SetLimitType(v s
 }
 
 func (s *UpdateRegistrationPolicyResponseBodyPolicyLimitDetail) Validate() error {
-	return dara.Validate(s)
+	if s.LimitCount != nil {
+		if err := s.LimitCount.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateRegistrationPolicyResponseBodyPolicyLimitDetailLimitCount struct {

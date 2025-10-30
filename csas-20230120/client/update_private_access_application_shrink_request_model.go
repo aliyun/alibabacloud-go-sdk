@@ -235,7 +235,16 @@ func (s *UpdatePrivateAccessApplicationShrinkRequest) SetTagIds(v []*string) *Up
 }
 
 func (s *UpdatePrivateAccessApplicationShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PortRanges != nil {
+		for _, item := range s.PortRanges {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdatePrivateAccessApplicationShrinkRequestPortRanges struct {

@@ -215,5 +215,23 @@ func (s *OpenStructSaseUser) SetWorkStatus(v string) *OpenStructSaseUser {
 }
 
 func (s *OpenStructSaseUser) Validate() error {
-	return dara.Validate(s)
+	if s.CustomFields != nil {
+		for _, item := range s.CustomFields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Departments != nil {
+		for _, item := range s.Departments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

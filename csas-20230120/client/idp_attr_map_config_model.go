@@ -35,5 +35,14 @@ func (s *IdpAttrMapConfig) SetMapItems(v []*IdpAttrMapConfigItem) *IdpAttrMapCon
 }
 
 func (s *IdpAttrMapConfig) Validate() error {
-	return dara.Validate(s)
+	if s.MapItems != nil {
+		for _, item := range s.MapItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

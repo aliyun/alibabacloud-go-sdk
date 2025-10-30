@@ -176,7 +176,16 @@ func (s *GetRegistrationPolicyResponseBody) SetWhitelist(v []*string) *GetRegist
 }
 
 func (s *GetRegistrationPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LimitDetail != nil {
+		for _, item := range s.LimitDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRegistrationPolicyResponseBodyLimitDetail struct {
@@ -227,7 +236,12 @@ func (s *GetRegistrationPolicyResponseBodyLimitDetail) SetLimitType(v string) *G
 }
 
 func (s *GetRegistrationPolicyResponseBodyLimitDetail) Validate() error {
-	return dara.Validate(s)
+	if s.LimitCount != nil {
+		if err := s.LimitCount.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRegistrationPolicyResponseBodyLimitDetailLimitCount struct {

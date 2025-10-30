@@ -136,7 +136,17 @@ func (s *UpdateApprovalProcessRequest) SetProcessNodes(v [][]*string) *UpdateApp
 }
 
 func (s *UpdateApprovalProcessRequest) Validate() error {
-	return dara.Validate(s)
+	if s.MatchSchemaConfigs != nil {
+		if err := s.MatchSchemaConfigs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MatchSchemas != nil {
+		if err := s.MatchSchemas.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigs struct {
@@ -241,7 +251,52 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigs) SetSoftwareHardeningSch
 }
 
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.AppUninstallSchemaConfig != nil {
+		if err := s.AppUninstallSchemaConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeviceRegistrationSchemaConfig != nil {
+		if err := s.DeviceRegistrationSchemaConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DlpSendSchemaConfig != nil {
+		if err := s.DlpSendSchemaConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DomainBlacklistSchemaConfig != nil {
+		if err := s.DomainBlacklistSchemaConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DomainWhitelistSchemaConfig != nil {
+		if err := s.DomainWhitelistSchemaConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EndpointHardeningSchemaConfig != nil {
+		if err := s.EndpointHardeningSchemaConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PeripheralBlockSchemaConfig != nil {
+		if err := s.PeripheralBlockSchemaConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SoftwareBlockSchemaConfig != nil {
+		if err := s.SoftwareBlockSchemaConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SoftwareHardeningSchemaConfig != nil {
+		if err := s.SoftwareHardeningSchemaConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfig struct {
@@ -286,7 +341,16 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfig)
 }
 
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfig) Validate() error {
-	return dara.Validate(s)
+	if s.FieldMap != nil {
+		for _, item := range s.FieldMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfigFieldMap struct {
@@ -376,7 +440,16 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaC
 }
 
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfig) Validate() error {
-	return dara.Validate(s)
+	if s.FieldMap != nil {
+		for _, item := range s.FieldMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfigFieldMap struct {
@@ -466,7 +539,16 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfig) SetS
 }
 
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfig) Validate() error {
-	return dara.Validate(s)
+	if s.FieldMap != nil {
+		for _, item := range s.FieldMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfigFieldMap struct {
@@ -556,7 +638,16 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConf
 }
 
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfig) Validate() error {
-	return dara.Validate(s)
+	if s.FieldMap != nil {
+		for _, item := range s.FieldMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfigFieldMap struct {
@@ -646,7 +737,16 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConf
 }
 
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfig) Validate() error {
-	return dara.Validate(s)
+	if s.FieldMap != nil {
+		for _, item := range s.FieldMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfigFieldMap struct {
@@ -736,7 +836,16 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaCo
 }
 
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfig) Validate() error {
-	return dara.Validate(s)
+	if s.FieldMap != nil {
+		for _, item := range s.FieldMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfigFieldMap struct {
@@ -826,7 +935,16 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConf
 }
 
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfig) Validate() error {
-	return dara.Validate(s)
+	if s.FieldMap != nil {
+		for _, item := range s.FieldMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfigFieldMap struct {
@@ -916,7 +1034,16 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfig
 }
 
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfig) Validate() error {
-	return dara.Validate(s)
+	if s.FieldMap != nil {
+		for _, item := range s.FieldMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFieldMap struct {
@@ -1006,7 +1133,16 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaCo
 }
 
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfig) Validate() error {
-	return dara.Validate(s)
+	if s.FieldMap != nil {
+		for _, item := range s.FieldMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfigFieldMap struct {

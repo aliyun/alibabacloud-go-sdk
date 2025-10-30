@@ -50,7 +50,12 @@ func (s *UpdateApprovalProcessResponseBody) SetRequestId(v string) *UpdateApprov
 }
 
 func (s *UpdateApprovalProcessResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Process != nil {
+		if err := s.Process.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateApprovalProcessResponseBodyProcess struct {
@@ -241,7 +246,52 @@ func (s *UpdateApprovalProcessResponseBodyProcess) SetSoftwareHardeningPolicies(
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcess) Validate() error {
-	return dara.Validate(s)
+	if s.AppUninstallPolicies != nil {
+		if err := s.AppUninstallPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeviceRegistrationPolicies != nil {
+		if err := s.DeviceRegistrationPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DlpSendPolicies != nil {
+		if err := s.DlpSendPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DomainBlacklistPolicies != nil {
+		if err := s.DomainBlacklistPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DomainWhitelistPolicies != nil {
+		if err := s.DomainWhitelistPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EndpointHardeningPolicies != nil {
+		if err := s.EndpointHardeningPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PeripheraBlockPolicies != nil {
+		if err := s.PeripheraBlockPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SoftwareBlockPolicies != nil {
+		if err := s.SoftwareBlockPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SoftwareHardeningPolicies != nil {
+		if err := s.SoftwareHardeningPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies struct {
@@ -299,7 +349,16 @@ func (s *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies) SetSchema
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.FieldMap != nil {
+		for _, item := range s.FieldMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap struct {
@@ -402,7 +461,16 @@ func (s *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) Set
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.FieldMap != nil {
+		for _, item := range s.FieldMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap struct {
@@ -505,7 +573,16 @@ func (s *UpdateApprovalProcessResponseBodyProcessDlpSendPolicies) SetSchemaId(v 
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessDlpSendPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.FieldMap != nil {
+		for _, item := range s.FieldMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap struct {
@@ -608,7 +685,16 @@ func (s *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies) SetSch
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.FieldMap != nil {
+		for _, item := range s.FieldMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap struct {
@@ -711,7 +797,16 @@ func (s *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) SetSch
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.FieldMap != nil {
+		for _, item := range s.FieldMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap struct {
@@ -811,7 +906,16 @@ func (s *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) SetS
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.FieldMap != nil {
+		for _, item := range s.FieldMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap struct {
@@ -914,7 +1018,16 @@ func (s *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies) SetSche
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.FieldMap != nil {
+		for _, item := range s.FieldMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap struct {
@@ -1055,7 +1168,16 @@ func (s *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) SetSchem
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.FieldMap != nil {
+		for _, item := range s.FieldMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap struct {
@@ -1155,7 +1277,16 @@ func (s *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) SetS
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.FieldMap != nil {
+		for _, item := range s.FieldMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap struct {

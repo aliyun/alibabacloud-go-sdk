@@ -48,5 +48,10 @@ func (s *RecoveryContent) SetRecoveryActions(v []*string) *RecoveryContent {
 }
 
 func (s *RecoveryContent) Validate() error {
-	return dara.Validate(s)
+	if s.AuthReportInterval != nil {
+		if err := s.AuthReportInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

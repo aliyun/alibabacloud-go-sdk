@@ -50,7 +50,12 @@ func (s *CreateApprovalProcessResponseBody) SetRequestId(v string) *CreateApprov
 }
 
 func (s *CreateApprovalProcessResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Process != nil {
+		if err := s.Process.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateApprovalProcessResponseBodyProcess struct {
@@ -211,7 +216,52 @@ func (s *CreateApprovalProcessResponseBodyProcess) SetSoftwareHardeningPolicies(
 }
 
 func (s *CreateApprovalProcessResponseBodyProcess) Validate() error {
-	return dara.Validate(s)
+	if s.AppUninstallPolicies != nil {
+		if err := s.AppUninstallPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeviceRegistrationPolicies != nil {
+		if err := s.DeviceRegistrationPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DlpSendPolicies != nil {
+		if err := s.DlpSendPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DomainBlacklistPolicies != nil {
+		if err := s.DomainBlacklistPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DomainWhitelistPolicies != nil {
+		if err := s.DomainWhitelistPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EndpointHardeningPolicies != nil {
+		if err := s.EndpointHardeningPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PeripheralBlockPolicies != nil {
+		if err := s.PeripheralBlockPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SoftwareBlockPolicies != nil {
+		if err := s.SoftwareBlockPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SoftwareHardeningPolicies != nil {
+		if err := s.SoftwareHardeningPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateApprovalProcessResponseBodyProcessAppUninstallPolicies struct {

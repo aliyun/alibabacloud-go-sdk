@@ -65,7 +65,16 @@ func (s *ListPrivateAccessApplicationsResponseBody) SetTotalNum(v int32) *ListPr
 }
 
 func (s *ListPrivateAccessApplicationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Applications != nil {
+		for _, item := range s.Applications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrivateAccessApplicationsResponseBodyApplications struct {
@@ -245,7 +254,16 @@ func (s *ListPrivateAccessApplicationsResponseBodyApplications) SetTagIds(v []*s
 }
 
 func (s *ListPrivateAccessApplicationsResponseBodyApplications) Validate() error {
-	return dara.Validate(s)
+	if s.PortRanges != nil {
+		for _, item := range s.PortRanges {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrivateAccessApplicationsResponseBodyApplicationsPortRanges struct {

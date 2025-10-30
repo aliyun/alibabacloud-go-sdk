@@ -50,7 +50,16 @@ func (s *UpdateUserDevicesSharingStatusResponseBody) SetRequestId(v string) *Upd
 }
 
 func (s *UpdateUserDevicesSharingStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Devices != nil {
+		for _, item := range s.Devices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateUserDevicesSharingStatusResponseBodyDevices struct {
@@ -394,7 +403,16 @@ func (s *UpdateUserDevicesSharingStatusResponseBodyDevices) SetUsername(v string
 }
 
 func (s *UpdateUserDevicesSharingStatusResponseBodyDevices) Validate() error {
-	return dara.Validate(s)
+	if s.NetInterfaceInfo != nil {
+		for _, item := range s.NetInterfaceInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateUserDevicesSharingStatusResponseBodyDevicesNetInterfaceInfo struct {

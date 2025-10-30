@@ -50,7 +50,12 @@ func (s *GetWmExtractTaskResponseBody) SetRequestId(v string) *GetWmExtractTaskR
 }
 
 func (s *GetWmExtractTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWmExtractTaskResponseBodyData struct {

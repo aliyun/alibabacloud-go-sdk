@@ -50,7 +50,16 @@ func (s *ListApprovalSchemasForApprovalProcessesResponseBody) SetRequestId(v str
 }
 
 func (s *ListApprovalSchemasForApprovalProcessesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Processes != nil {
+		for _, item := range s.Processes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApprovalSchemasForApprovalProcessesResponseBodyProcesses struct {
@@ -88,7 +97,16 @@ func (s *ListApprovalSchemasForApprovalProcessesResponseBodyProcesses) SetSchema
 }
 
 func (s *ListApprovalSchemasForApprovalProcessesResponseBodyProcesses) Validate() error {
-	return dara.Validate(s)
+	if s.Schemas != nil {
+		for _, item := range s.Schemas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas struct {

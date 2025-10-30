@@ -50,7 +50,16 @@ func (s *GetApprovalResponseBody) SetRequestId(v string) *GetApprovalResponseBod
 }
 
 func (s *GetApprovalResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Approval != nil {
+		for _, item := range s.Approval {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetApprovalResponseBodyApproval struct {
@@ -265,7 +274,16 @@ func (s *GetApprovalResponseBodyApproval) SetStatus(v string) *GetApprovalRespon
 }
 
 func (s *GetApprovalResponseBodyApproval) Validate() error {
-	return dara.Validate(s)
+	if s.ApprovalProgresses != nil {
+		for _, item := range s.ApprovalProgresses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetApprovalResponseBodyApprovalApprovalProgresses struct {
@@ -352,7 +370,16 @@ func (s *GetApprovalResponseBodyApprovalApprovalProgresses) SetTimestamp(v int64
 }
 
 func (s *GetApprovalResponseBodyApprovalApprovalProgresses) Validate() error {
-	return dara.Validate(s)
+	if s.Operators != nil {
+		for _, item := range s.Operators {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetApprovalResponseBodyApprovalApprovalProgressesOperators struct {

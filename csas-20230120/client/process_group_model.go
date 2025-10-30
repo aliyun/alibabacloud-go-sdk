@@ -97,5 +97,14 @@ func (s *ProcessGroup) SetProcesses(v []*ProcessItem) *ProcessGroup {
 }
 
 func (s *ProcessGroup) Validate() error {
-	return dara.Validate(s)
+	if s.Processes != nil {
+		for _, item := range s.Processes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

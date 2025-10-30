@@ -50,7 +50,16 @@ func (s *ListUserGroupsForPrivateAccessPolicyResponseBody) SetRequestId(v string
 }
 
 func (s *ListUserGroupsForPrivateAccessPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Polices != nil {
+		for _, item := range s.Polices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserGroupsForPrivateAccessPolicyResponseBodyPolices struct {
@@ -88,7 +97,16 @@ func (s *ListUserGroupsForPrivateAccessPolicyResponseBodyPolices) SetUserGroups(
 }
 
 func (s *ListUserGroupsForPrivateAccessPolicyResponseBodyPolices) Validate() error {
-	return dara.Validate(s)
+	if s.UserGroups != nil {
+		for _, item := range s.UserGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserGroupsForPrivateAccessPolicyResponseBodyPolicesUserGroups struct {
@@ -164,7 +182,16 @@ func (s *ListUserGroupsForPrivateAccessPolicyResponseBodyPolicesUserGroups) SetU
 }
 
 func (s *ListUserGroupsForPrivateAccessPolicyResponseBodyPolicesUserGroups) Validate() error {
-	return dara.Validate(s)
+	if s.Attributes != nil {
+		for _, item := range s.Attributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserGroupsForPrivateAccessPolicyResponseBodyPolicesUserGroupsAttributes struct {

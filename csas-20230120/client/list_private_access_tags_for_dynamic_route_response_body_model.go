@@ -50,7 +50,16 @@ func (s *ListPrivateAccessTagsForDynamicRouteResponseBody) SetRequestId(v string
 }
 
 func (s *ListPrivateAccessTagsForDynamicRouteResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DynamicRoutes != nil {
+		for _, item := range s.DynamicRoutes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes struct {
@@ -88,7 +97,16 @@ func (s *ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes) SetTags(
 }
 
 func (s *ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags struct {

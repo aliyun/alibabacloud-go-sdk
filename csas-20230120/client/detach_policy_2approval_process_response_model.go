@@ -59,5 +59,10 @@ func (s *DetachPolicy2ApprovalProcessResponse) SetBody(v *DetachPolicy2ApprovalP
 }
 
 func (s *DetachPolicy2ApprovalProcessResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

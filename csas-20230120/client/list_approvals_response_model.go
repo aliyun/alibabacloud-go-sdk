@@ -59,5 +59,10 @@ func (s *ListApprovalsResponse) SetBody(v *ListApprovalsResponseBody) *ListAppro
 }
 
 func (s *ListApprovalsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

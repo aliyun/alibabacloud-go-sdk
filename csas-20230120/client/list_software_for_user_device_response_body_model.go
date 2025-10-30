@@ -65,7 +65,16 @@ func (s *ListSoftwareForUserDeviceResponseBody) SetTotalNum(v int64) *ListSoftwa
 }
 
 func (s *ListSoftwareForUserDeviceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Software != nil {
+		for _, item := range s.Software {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSoftwareForUserDeviceResponseBodySoftware struct {

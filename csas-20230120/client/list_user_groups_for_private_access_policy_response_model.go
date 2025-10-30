@@ -59,5 +59,10 @@ func (s *ListUserGroupsForPrivateAccessPolicyResponse) SetBody(v *ListUserGroups
 }
 
 func (s *ListUserGroupsForPrivateAccessPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

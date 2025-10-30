@@ -50,7 +50,16 @@ func (s *ListRegistrationPoliciesForUserGroupResponseBody) SetUserGroups(v []*Li
 }
 
 func (s *ListRegistrationPoliciesForUserGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserGroups != nil {
+		for _, item := range s.UserGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRegistrationPoliciesForUserGroupResponseBodyUserGroups struct {
@@ -88,7 +97,16 @@ func (s *ListRegistrationPoliciesForUserGroupResponseBodyUserGroups) SetUserGrou
 }
 
 func (s *ListRegistrationPoliciesForUserGroupResponseBodyUserGroups) Validate() error {
-	return dara.Validate(s)
+	if s.Policies != nil {
+		for _, item := range s.Policies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPolicies struct {
@@ -211,7 +229,16 @@ func (s *ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPolicies) Set
 }
 
 func (s *ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.LimitDetail != nil {
+		for _, item := range s.LimitDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPoliciesLimitDetail struct {
@@ -262,7 +289,12 @@ func (s *ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPoliciesLimit
 }
 
 func (s *ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPoliciesLimitDetail) Validate() error {
-	return dara.Validate(s)
+	if s.LimitCount != nil {
+		if err := s.LimitCount.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPoliciesLimitDetailLimitCount struct {

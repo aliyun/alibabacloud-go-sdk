@@ -324,7 +324,16 @@ func (s *CreatePrivateAccessPolicyRequest) SetUserGroupMode(v string) *CreatePri
 }
 
 func (s *CreatePrivateAccessPolicyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CustomUserAttributes != nil {
+		for _, item := range s.CustomUserAttributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreatePrivateAccessPolicyRequestCustomUserAttributes struct {

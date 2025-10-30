@@ -50,7 +50,16 @@ func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBody) SetRequestId(
 }
 
 func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DynamicRoutes != nil {
+		for _, item := range s.DynamicRoutes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes struct {
@@ -88,7 +97,16 @@ func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes) 
 }
 
 func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes) Validate() error {
-	return dara.Validate(s)
+	if s.Applications != nil {
+		for _, item := range s.Applications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications struct {
@@ -198,7 +216,16 @@ func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesAp
 }
 
 func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications) Validate() error {
-	return dara.Validate(s)
+	if s.PortRanges != nil {
+		for _, item := range s.PortRanges {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplicationsPortRanges struct {

@@ -50,7 +50,16 @@ func (s *ListApplicationsForPrivateAccessTagResponseBody) SetTags(v []*ListAppli
 }
 
 func (s *ListApplicationsForPrivateAccessTagResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApplicationsForPrivateAccessTagResponseBodyTags struct {
@@ -88,7 +97,16 @@ func (s *ListApplicationsForPrivateAccessTagResponseBodyTags) SetTagId(v string)
 }
 
 func (s *ListApplicationsForPrivateAccessTagResponseBodyTags) Validate() error {
-	return dara.Validate(s)
+	if s.Applications != nil {
+		for _, item := range s.Applications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApplicationsForPrivateAccessTagResponseBodyTagsApplications struct {
@@ -200,7 +218,16 @@ func (s *ListApplicationsForPrivateAccessTagResponseBodyTagsApplications) SetSta
 }
 
 func (s *ListApplicationsForPrivateAccessTagResponseBodyTagsApplications) Validate() error {
-	return dara.Validate(s)
+	if s.PortRanges != nil {
+		for _, item := range s.PortRanges {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApplicationsForPrivateAccessTagResponseBodyTagsApplicationsPortRanges struct {

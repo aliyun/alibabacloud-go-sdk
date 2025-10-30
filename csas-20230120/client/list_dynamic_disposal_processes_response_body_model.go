@@ -70,7 +70,16 @@ func (s *ListDynamicDisposalProcessesResponseBody) SetTotalNum(v int32) *ListDyn
 }
 
 func (s *ListDynamicDisposalProcessesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DisposalProcesses != nil {
+		for _, item := range s.DisposalProcesses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDynamicDisposalProcessesResponseBodyDisposalProcesses struct {
@@ -338,7 +347,17 @@ func (s *ListDynamicDisposalProcessesResponseBodyDisposalProcesses) SetUserName(
 }
 
 func (s *ListDynamicDisposalProcessesResponseBodyDisposalProcesses) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceBasicInfo != nil {
+		if err := s.DeviceBasicInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeviceStatusInfo != nil {
+		if err := s.DeviceStatusInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDynamicDisposalProcessesResponseBodyDisposalProcessesDeviceBasicInfo struct {

@@ -50,7 +50,12 @@ func (s *UpdateBootAndAntiUninstallPolicyResponseBody) SetStrategy(v *UpdateBoot
 }
 
 func (s *UpdateBootAndAntiUninstallPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Strategy != nil {
+		if err := s.Strategy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateBootAndAntiUninstallPolicyResponseBodyStrategy struct {
@@ -186,7 +191,12 @@ func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy) SetWhitelistUsers
 }
 
 func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategy) Validate() error {
-	return dara.Validate(s)
+	if s.BlockContent != nil {
+		if err := s.BlockContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent struct {
@@ -221,7 +231,17 @@ func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent) SetBl
 }
 
 func (s *UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent) Validate() error {
-	return dara.Validate(s)
+	if s.BlockTextEn != nil {
+		if err := s.BlockTextEn.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BlockTextZh != nil {
+		if err := s.BlockTextZh.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn struct {

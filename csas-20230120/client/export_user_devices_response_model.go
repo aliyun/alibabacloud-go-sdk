@@ -59,6 +59,11 @@ func (s *ExportUserDevicesResponse) SetBody(v *ExportUserDevicesResponseBody) *E
 }
 
 func (s *ExportUserDevicesResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

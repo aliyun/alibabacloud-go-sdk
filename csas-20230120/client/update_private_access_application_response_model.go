@@ -59,5 +59,10 @@ func (s *UpdatePrivateAccessApplicationResponse) SetBody(v *UpdatePrivateAccessA
 }
 
 func (s *UpdatePrivateAccessApplicationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

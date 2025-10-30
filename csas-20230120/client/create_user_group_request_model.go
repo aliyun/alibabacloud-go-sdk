@@ -65,7 +65,16 @@ func (s *CreateUserGroupRequest) SetName(v string) *CreateUserGroupRequest {
 }
 
 func (s *CreateUserGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Attributes != nil {
+		for _, item := range s.Attributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateUserGroupRequestAttributes struct {

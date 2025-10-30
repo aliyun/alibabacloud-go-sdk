@@ -59,5 +59,10 @@ func (s *DeletePrivateAccessPolicyResponse) SetBody(v *DeletePrivateAccessPolicy
 }
 
 func (s *DeletePrivateAccessPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

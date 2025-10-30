@@ -59,5 +59,10 @@ func (s *DeleteClientUserResponse) SetBody(v *DeleteClientUserResponseBody) *Del
 }
 
 func (s *DeleteClientUserResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

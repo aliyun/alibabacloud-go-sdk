@@ -95,7 +95,16 @@ func (s *OpenStructSaseUserSimple) SetUsername(v string) *OpenStructSaseUserSimp
 }
 
 func (s *OpenStructSaseUserSimple) Validate() error {
-	return dara.Validate(s)
+	if s.Departments != nil {
+		for _, item := range s.Departments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type OpenStructSaseUserSimpleDepartments struct {

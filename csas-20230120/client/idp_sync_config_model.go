@@ -71,7 +71,16 @@ func (s *IdpSyncConfig) SetUserSyncEnabled(v bool) *IdpSyncConfig {
 }
 
 func (s *IdpSyncConfig) Validate() error {
-	return dara.Validate(s)
+	if s.IdpDepartmentInfos != nil {
+		for _, item := range s.IdpDepartmentInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type IdpSyncConfigIdpDepartmentInfos struct {

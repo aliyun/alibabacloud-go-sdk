@@ -134,7 +134,42 @@ func (s *PAL7Config) SetResponseRewriteConfig(v *PAL7ConfigResponseRewriteConfig
 }
 
 func (s *PAL7Config) Validate() error {
-	return dara.Validate(s)
+	if s.BypassConfig != nil {
+		if err := s.BypassConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DnsConfig != nil {
+		if err := s.DnsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.JsHookConfig != nil {
+		if err := s.JsHookConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RequestHeaderRewriteConfig != nil {
+		if err := s.RequestHeaderRewriteConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RequestQueryRewriteConfig != nil {
+		if err := s.RequestQueryRewriteConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResponseHeaderRewriteConfig != nil {
+		if err := s.ResponseHeaderRewriteConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResponseRewriteConfig != nil {
+		if err := s.ResponseRewriteConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PAL7ConfigBypassConfig struct {
@@ -179,7 +214,16 @@ func (s *PAL7ConfigBypassConfig) SetUrlBypassRules(v []*PAL7ConfigBypassConfigUr
 }
 
 func (s *PAL7ConfigBypassConfig) Validate() error {
-	return dara.Validate(s)
+	if s.UrlBypassRules != nil {
+		for _, item := range s.UrlBypassRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PAL7ConfigBypassConfigUrlBypassRules struct {
@@ -274,7 +318,16 @@ func (s *PAL7ConfigJsHookConfig) SetReplaceRules(v []*PAL7ConfigReplaceRule) *PA
 }
 
 func (s *PAL7ConfigJsHookConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ReplaceRules != nil {
+		for _, item := range s.ReplaceRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PAL7ConfigRequestHeaderRewriteConfig struct {
@@ -299,7 +352,16 @@ func (s *PAL7ConfigRequestHeaderRewriteConfig) SetOps(v []*PAL7ConfigRewriteOp) 
 }
 
 func (s *PAL7ConfigRequestHeaderRewriteConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Ops != nil {
+		for _, item := range s.Ops {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PAL7ConfigRequestQueryRewriteConfig struct {
@@ -324,7 +386,16 @@ func (s *PAL7ConfigRequestQueryRewriteConfig) SetOps(v []*PAL7ConfigRewriteOp) *
 }
 
 func (s *PAL7ConfigRequestQueryRewriteConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Ops != nil {
+		for _, item := range s.Ops {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PAL7ConfigResponseHeaderRewriteConfig struct {
@@ -349,7 +420,16 @@ func (s *PAL7ConfigResponseHeaderRewriteConfig) SetOps(v []*PAL7ConfigRewriteOp)
 }
 
 func (s *PAL7ConfigResponseHeaderRewriteConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Ops != nil {
+		for _, item := range s.Ops {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PAL7ConfigResponseRewriteConfig struct {
@@ -384,5 +464,14 @@ func (s *PAL7ConfigResponseRewriteConfig) SetReplaceRules(v []*PAL7ConfigReplace
 }
 
 func (s *PAL7ConfigResponseRewriteConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ReplaceRules != nil {
+		for _, item := range s.ReplaceRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

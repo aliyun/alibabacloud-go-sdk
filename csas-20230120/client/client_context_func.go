@@ -17,9 +17,11 @@ import (
 //
 // @return AttachApplication2ConnectorResponse
 func (client *Client) AttachApplication2ConnectorWithContext(ctx context.Context, tmpReq *AttachApplication2ConnectorRequest, runtime *dara.RuntimeOptions) (_result *AttachApplication2ConnectorResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AttachApplication2ConnectorShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -69,9 +71,11 @@ func (client *Client) AttachApplication2ConnectorWithContext(ctx context.Context
 //
 // @return AttachPolicy2ApprovalProcessResponse
 func (client *Client) AttachPolicy2ApprovalProcessWithContext(ctx context.Context, request *AttachPolicy2ApprovalProcessRequest, runtime *dara.RuntimeOptions) (_result *AttachPolicy2ApprovalProcessResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.PolicyId) {
@@ -119,9 +123,11 @@ func (client *Client) AttachPolicy2ApprovalProcessWithContext(ctx context.Contex
 //
 // @return CreateApprovalProcessResponse
 func (client *Client) CreateApprovalProcessWithContext(ctx context.Context, tmpReq *CreateApprovalProcessRequest, runtime *dara.RuntimeOptions) (_result *CreateApprovalProcessResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateApprovalProcessShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -182,9 +188,11 @@ func (client *Client) CreateApprovalProcessWithContext(ctx context.Context, tmpR
 //
 // @return CreateClientUserResponse
 func (client *Client) CreateClientUserWithContext(ctx context.Context, request *CreateClientUserRequest, runtime *dara.RuntimeOptions) (_result *CreateClientUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DepartmentId) {
@@ -248,9 +256,11 @@ func (client *Client) CreateClientUserWithContext(ctx context.Context, request *
 //
 // @return CreateDynamicRouteResponse
 func (client *Client) CreateDynamicRouteWithContext(ctx context.Context, request *CreateDynamicRouteRequest, runtime *dara.RuntimeOptions) (_result *CreateDynamicRouteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
@@ -329,9 +339,11 @@ func (client *Client) CreateDynamicRouteWithContext(ctx context.Context, request
 //
 // @return CreateEnterpriseAcceleratePolicyResponse
 func (client *Client) CreateEnterpriseAcceleratePolicyWithContext(ctx context.Context, request *CreateEnterpriseAcceleratePolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateEnterpriseAcceleratePolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AccelerationType) {
@@ -403,9 +415,11 @@ func (client *Client) CreateEnterpriseAcceleratePolicyWithContext(ctx context.Co
 //
 // @return CreateEnterpriseAccelerateTargetResponse
 func (client *Client) CreateEnterpriseAccelerateTargetWithContext(ctx context.Context, request *CreateEnterpriseAccelerateTargetRequest, runtime *dara.RuntimeOptions) (_result *CreateEnterpriseAccelerateTargetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EapId) {
@@ -452,9 +466,11 @@ func (client *Client) CreateEnterpriseAccelerateTargetWithContext(ctx context.Co
 //
 // @return CreateIdpDepartmentResponse
 func (client *Client) CreateIdpDepartmentWithContext(ctx context.Context, request *CreateIdpDepartmentRequest, runtime *dara.RuntimeOptions) (_result *CreateIdpDepartmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DepartmentName) {
@@ -502,9 +518,11 @@ func (client *Client) CreateIdpDepartmentWithContext(ctx context.Context, reques
 //
 // @return CreatePrivateAccessApplicationResponse
 func (client *Client) CreatePrivateAccessApplicationWithContext(ctx context.Context, tmpReq *CreatePrivateAccessApplicationRequest, runtime *dara.RuntimeOptions) (_result *CreatePrivateAccessApplicationResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreatePrivateAccessApplicationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -597,9 +615,11 @@ func (client *Client) CreatePrivateAccessApplicationWithContext(ctx context.Cont
 //
 // @return CreatePrivateAccessPolicyResponse
 func (client *Client) CreatePrivateAccessPolicyWithContext(ctx context.Context, request *CreatePrivateAccessPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreatePrivateAccessPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
@@ -706,9 +726,11 @@ func (client *Client) CreatePrivateAccessPolicyWithContext(ctx context.Context, 
 //
 // @return CreatePrivateAccessTagResponse
 func (client *Client) CreatePrivateAccessTagWithContext(ctx context.Context, request *CreatePrivateAccessTagRequest, runtime *dara.RuntimeOptions) (_result *CreatePrivateAccessTagResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -752,9 +774,11 @@ func (client *Client) CreatePrivateAccessTagWithContext(ctx context.Context, req
 //
 // @return CreateRegistrationPolicyResponse
 func (client *Client) CreateRegistrationPolicyWithContext(ctx context.Context, tmpReq *CreateRegistrationPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateRegistrationPolicyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateRegistrationPolicyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -847,9 +871,11 @@ func (client *Client) CreateRegistrationPolicyWithContext(ctx context.Context, t
 //
 // @return CreateUserGroupResponse
 func (client *Client) CreateUserGroupWithContext(ctx context.Context, request *CreateUserGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateUserGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
@@ -900,9 +926,11 @@ func (client *Client) CreateUserGroupWithContext(ctx context.Context, request *C
 //
 // @return CreateWmBaseImageResponse
 func (client *Client) CreateWmBaseImageWithContext(ctx context.Context, tmpReq *CreateWmBaseImageRequest, runtime *dara.RuntimeOptions) (_result *CreateWmBaseImageResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateWmBaseImageShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -986,9 +1014,11 @@ func (client *Client) CreateWmBaseImageWithContext(ctx context.Context, tmpReq *
 //
 // @return CreateWmEmbedTaskResponse
 func (client *Client) CreateWmEmbedTaskWithContext(ctx context.Context, tmpReq *CreateWmEmbedTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateWmEmbedTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateWmEmbedTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1110,9 +1140,11 @@ func (client *Client) CreateWmEmbedTaskWithContext(ctx context.Context, tmpReq *
 //
 // @return CreateWmExtractTaskResponse
 func (client *Client) CreateWmExtractTaskWithContext(ctx context.Context, tmpReq *CreateWmExtractTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateWmExtractTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateWmExtractTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1200,9 +1232,11 @@ func (client *Client) CreateWmExtractTaskWithContext(ctx context.Context, tmpReq
 //
 // @return CreateWmInfoMappingResponse
 func (client *Client) CreateWmInfoMappingWithContext(ctx context.Context, request *CreateWmInfoMappingRequest, runtime *dara.RuntimeOptions) (_result *CreateWmInfoMappingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.WmInfoBytesB64) {
@@ -1250,9 +1284,11 @@ func (client *Client) CreateWmInfoMappingWithContext(ctx context.Context, reques
 //
 // @return DeleteApprovalProcessesResponse
 func (client *Client) DeleteApprovalProcessesWithContext(ctx context.Context, request *DeleteApprovalProcessesRequest, runtime *dara.RuntimeOptions) (_result *DeleteApprovalProcessesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
@@ -1295,9 +1331,11 @@ func (client *Client) DeleteApprovalProcessesWithContext(ctx context.Context, re
 //
 // @return DeleteClientUserResponse
 func (client *Client) DeleteClientUserWithContext(ctx context.Context, request *DeleteClientUserRequest, runtime *dara.RuntimeOptions) (_result *DeleteClientUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -1337,9 +1375,11 @@ func (client *Client) DeleteClientUserWithContext(ctx context.Context, request *
 //
 // @return DeleteDynamicRouteResponse
 func (client *Client) DeleteDynamicRouteWithContext(ctx context.Context, request *DeleteDynamicRouteRequest, runtime *dara.RuntimeOptions) (_result *DeleteDynamicRouteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DynamicRouteId) {
@@ -1379,9 +1419,11 @@ func (client *Client) DeleteDynamicRouteWithContext(ctx context.Context, request
 //
 // @return DeleteEnterpriseAcceleratePolicyResponse
 func (client *Client) DeleteEnterpriseAcceleratePolicyWithContext(ctx context.Context, request *DeleteEnterpriseAcceleratePolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteEnterpriseAcceleratePolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EapId) {
@@ -1421,9 +1463,11 @@ func (client *Client) DeleteEnterpriseAcceleratePolicyWithContext(ctx context.Co
 //
 // @return DeleteEnterpriseAccelerateTargetResponse
 func (client *Client) DeleteEnterpriseAccelerateTargetWithContext(ctx context.Context, request *DeleteEnterpriseAccelerateTargetRequest, runtime *dara.RuntimeOptions) (_result *DeleteEnterpriseAccelerateTargetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EapId) {
@@ -1470,9 +1514,11 @@ func (client *Client) DeleteEnterpriseAccelerateTargetWithContext(ctx context.Co
 //
 // @return DeleteIdpDepartmentResponse
 func (client *Client) DeleteIdpDepartmentWithContext(ctx context.Context, request *DeleteIdpDepartmentRequest, runtime *dara.RuntimeOptions) (_result *DeleteIdpDepartmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DepartmentId) {
@@ -1516,9 +1562,11 @@ func (client *Client) DeleteIdpDepartmentWithContext(ctx context.Context, reques
 //
 // @return DeleteOtpConfigResponse
 func (client *Client) DeleteOtpConfigWithContext(ctx context.Context, request *DeleteOtpConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteOtpConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Username) {
@@ -1558,9 +1606,11 @@ func (client *Client) DeleteOtpConfigWithContext(ctx context.Context, request *D
 //
 // @return DeletePrivateAccessApplicationResponse
 func (client *Client) DeletePrivateAccessApplicationWithContext(ctx context.Context, request *DeletePrivateAccessApplicationRequest, runtime *dara.RuntimeOptions) (_result *DeletePrivateAccessApplicationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -1600,9 +1650,11 @@ func (client *Client) DeletePrivateAccessApplicationWithContext(ctx context.Cont
 //
 // @return DeletePrivateAccessPolicyResponse
 func (client *Client) DeletePrivateAccessPolicyWithContext(ctx context.Context, request *DeletePrivateAccessPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeletePrivateAccessPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.PolicyId) {
@@ -1642,9 +1694,11 @@ func (client *Client) DeletePrivateAccessPolicyWithContext(ctx context.Context, 
 //
 // @return DeletePrivateAccessTagResponse
 func (client *Client) DeletePrivateAccessTagWithContext(ctx context.Context, request *DeletePrivateAccessTagRequest, runtime *dara.RuntimeOptions) (_result *DeletePrivateAccessTagResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.TagId) {
@@ -1684,9 +1738,11 @@ func (client *Client) DeletePrivateAccessTagWithContext(ctx context.Context, req
 //
 // @return DeleteRegistrationPoliciesResponse
 func (client *Client) DeleteRegistrationPoliciesWithContext(ctx context.Context, request *DeleteRegistrationPoliciesRequest, runtime *dara.RuntimeOptions) (_result *DeleteRegistrationPoliciesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
@@ -1729,9 +1785,11 @@ func (client *Client) DeleteRegistrationPoliciesWithContext(ctx context.Context,
 //
 // @return DeleteUserDevicesResponse
 func (client *Client) DeleteUserDevicesWithContext(ctx context.Context, request *DeleteUserDevicesRequest, runtime *dara.RuntimeOptions) (_result *DeleteUserDevicesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
@@ -1774,9 +1832,11 @@ func (client *Client) DeleteUserDevicesWithContext(ctx context.Context, request 
 //
 // @return DeleteUserGroupResponse
 func (client *Client) DeleteUserGroupWithContext(ctx context.Context, request *DeleteUserGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteUserGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UserGroupId) {
@@ -1806,6 +1866,8 @@ func (client *Client) DeleteUserGroupWithContext(ctx context.Context, request *D
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DetachApplication2Connector is deprecated, please use csas::2023-01-20::ModifyForwardStrategy instead.
+//
 // Summary:
 //
 // 卸载connector的应用
@@ -1816,9 +1878,11 @@ func (client *Client) DeleteUserGroupWithContext(ctx context.Context, request *D
 //
 // @return DetachApplication2ConnectorResponse
 func (client *Client) DetachApplication2ConnectorWithContext(ctx context.Context, tmpReq *DetachApplication2ConnectorRequest, runtime *dara.RuntimeOptions) (_result *DetachApplication2ConnectorResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DetachApplication2ConnectorShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1868,9 +1932,11 @@ func (client *Client) DetachApplication2ConnectorWithContext(ctx context.Context
 //
 // @return DetachPolicy2ApprovalProcessResponse
 func (client *Client) DetachPolicy2ApprovalProcessWithContext(ctx context.Context, request *DetachPolicy2ApprovalProcessRequest, runtime *dara.RuntimeOptions) (_result *DetachPolicy2ApprovalProcessResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.PolicyId) {
@@ -1918,9 +1984,11 @@ func (client *Client) DetachPolicy2ApprovalProcessWithContext(ctx context.Contex
 //
 // @return DisableEnterpriseAcceleratePolicyResponse
 func (client *Client) DisableEnterpriseAcceleratePolicyWithContext(ctx context.Context, request *DisableEnterpriseAcceleratePolicyRequest, runtime *dara.RuntimeOptions) (_result *DisableEnterpriseAcceleratePolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EapId) {
@@ -1960,9 +2028,11 @@ func (client *Client) DisableEnterpriseAcceleratePolicyWithContext(ctx context.C
 //
 // @return EnableEnterpriseAcceleratePolicyResponse
 func (client *Client) EnableEnterpriseAcceleratePolicyWithContext(ctx context.Context, request *EnableEnterpriseAcceleratePolicyRequest, runtime *dara.RuntimeOptions) (_result *EnableEnterpriseAcceleratePolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EapId) {
@@ -2002,9 +2072,11 @@ func (client *Client) EnableEnterpriseAcceleratePolicyWithContext(ctx context.Co
 //
 // @return ExportUserDevicesResponse
 func (client *Client) ExportUserDevicesWithContext(ctx context.Context, request *ExportUserDevicesRequest, runtime *dara.RuntimeOptions) (_result *ExportUserDevicesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
@@ -2103,9 +2175,11 @@ func (client *Client) ExportUserDevicesWithContext(ctx context.Context, request 
 //
 // @return GetApprovalResponse
 func (client *Client) GetApprovalWithContext(ctx context.Context, request *GetApprovalRequest, runtime *dara.RuntimeOptions) (_result *GetApprovalResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2141,9 +2215,11 @@ func (client *Client) GetApprovalWithContext(ctx context.Context, request *GetAp
 //
 // @return GetApprovalProcessResponse
 func (client *Client) GetApprovalProcessWithContext(ctx context.Context, request *GetApprovalProcessRequest, runtime *dara.RuntimeOptions) (_result *GetApprovalProcessResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2179,9 +2255,11 @@ func (client *Client) GetApprovalProcessWithContext(ctx context.Context, request
 //
 // @return GetApprovalSchemaResponse
 func (client *Client) GetApprovalSchemaWithContext(ctx context.Context, request *GetApprovalSchemaRequest, runtime *dara.RuntimeOptions) (_result *GetApprovalSchemaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2217,9 +2295,11 @@ func (client *Client) GetApprovalSchemaWithContext(ctx context.Context, request 
 //
 // @return GetClientUserResponse
 func (client *Client) GetClientUserWithContext(ctx context.Context, request *GetClientUserRequest, runtime *dara.RuntimeOptions) (_result *GetClientUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2255,9 +2335,11 @@ func (client *Client) GetClientUserWithContext(ctx context.Context, request *Get
 //
 // @return GetDynamicRouteResponse
 func (client *Client) GetDynamicRouteWithContext(ctx context.Context, request *GetDynamicRouteRequest, runtime *dara.RuntimeOptions) (_result *GetDynamicRouteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2293,9 +2375,11 @@ func (client *Client) GetDynamicRouteWithContext(ctx context.Context, request *G
 //
 // @return GetIdpConfigResponse
 func (client *Client) GetIdpConfigWithContext(ctx context.Context, request *GetIdpConfigRequest, runtime *dara.RuntimeOptions) (_result *GetIdpConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2331,9 +2415,11 @@ func (client *Client) GetIdpConfigWithContext(ctx context.Context, request *GetI
 //
 // @return GetPrivateAccessApplicationResponse
 func (client *Client) GetPrivateAccessApplicationWithContext(ctx context.Context, request *GetPrivateAccessApplicationRequest, runtime *dara.RuntimeOptions) (_result *GetPrivateAccessApplicationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2369,9 +2455,11 @@ func (client *Client) GetPrivateAccessApplicationWithContext(ctx context.Context
 //
 // @return GetPrivateAccessPolicyResponse
 func (client *Client) GetPrivateAccessPolicyWithContext(ctx context.Context, request *GetPrivateAccessPolicyRequest, runtime *dara.RuntimeOptions) (_result *GetPrivateAccessPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2407,9 +2495,11 @@ func (client *Client) GetPrivateAccessPolicyWithContext(ctx context.Context, req
 //
 // @return GetRegistrationPolicyResponse
 func (client *Client) GetRegistrationPolicyWithContext(ctx context.Context, request *GetRegistrationPolicyRequest, runtime *dara.RuntimeOptions) (_result *GetRegistrationPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2445,9 +2535,11 @@ func (client *Client) GetRegistrationPolicyWithContext(ctx context.Context, requ
 //
 // @return GetUserDeviceResponse
 func (client *Client) GetUserDeviceWithContext(ctx context.Context, request *GetUserDeviceRequest, runtime *dara.RuntimeOptions) (_result *GetUserDeviceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2483,9 +2575,11 @@ func (client *Client) GetUserDeviceWithContext(ctx context.Context, request *Get
 //
 // @return GetUserGroupResponse
 func (client *Client) GetUserGroupWithContext(ctx context.Context, request *GetUserGroupRequest, runtime *dara.RuntimeOptions) (_result *GetUserGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2521,9 +2615,11 @@ func (client *Client) GetUserGroupWithContext(ctx context.Context, request *GetU
 //
 // @return GetWmEmbedTaskResponse
 func (client *Client) GetWmEmbedTaskWithContext(ctx context.Context, request *GetWmEmbedTaskRequest, runtime *dara.RuntimeOptions) (_result *GetWmEmbedTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2559,9 +2655,11 @@ func (client *Client) GetWmEmbedTaskWithContext(ctx context.Context, request *Ge
 //
 // @return GetWmExtractTaskResponse
 func (client *Client) GetWmExtractTaskWithContext(ctx context.Context, request *GetWmExtractTaskRequest, runtime *dara.RuntimeOptions) (_result *GetWmExtractTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2597,9 +2695,11 @@ func (client *Client) GetWmExtractTaskWithContext(ctx context.Context, request *
 //
 // @return ImportEnterpriseAccelerateTargetsResponse
 func (client *Client) ImportEnterpriseAccelerateTargetsWithContext(ctx context.Context, request *ImportEnterpriseAccelerateTargetsRequest, runtime *dara.RuntimeOptions) (_result *ImportEnterpriseAccelerateTargetsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EapId) {
@@ -2643,9 +2743,11 @@ func (client *Client) ImportEnterpriseAccelerateTargetsWithContext(ctx context.C
 //
 // @return ListApplicationsForPrivateAccessPolicyResponse
 func (client *Client) ListApplicationsForPrivateAccessPolicyWithContext(ctx context.Context, request *ListApplicationsForPrivateAccessPolicyRequest, runtime *dara.RuntimeOptions) (_result *ListApplicationsForPrivateAccessPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2681,9 +2783,11 @@ func (client *Client) ListApplicationsForPrivateAccessPolicyWithContext(ctx cont
 //
 // @return ListApplicationsForPrivateAccessTagResponse
 func (client *Client) ListApplicationsForPrivateAccessTagWithContext(ctx context.Context, request *ListApplicationsForPrivateAccessTagRequest, runtime *dara.RuntimeOptions) (_result *ListApplicationsForPrivateAccessTagResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2719,9 +2823,11 @@ func (client *Client) ListApplicationsForPrivateAccessTagWithContext(ctx context
 //
 // @return ListApprovalProcessesResponse
 func (client *Client) ListApprovalProcessesWithContext(ctx context.Context, request *ListApprovalProcessesRequest, runtime *dara.RuntimeOptions) (_result *ListApprovalProcessesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2757,9 +2863,11 @@ func (client *Client) ListApprovalProcessesWithContext(ctx context.Context, requ
 //
 // @return ListApprovalProcessesForApprovalSchemasResponse
 func (client *Client) ListApprovalProcessesForApprovalSchemasWithContext(ctx context.Context, request *ListApprovalProcessesForApprovalSchemasRequest, runtime *dara.RuntimeOptions) (_result *ListApprovalProcessesForApprovalSchemasResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2795,9 +2903,11 @@ func (client *Client) ListApprovalProcessesForApprovalSchemasWithContext(ctx con
 //
 // @return ListApprovalSchemasResponse
 func (client *Client) ListApprovalSchemasWithContext(ctx context.Context, request *ListApprovalSchemasRequest, runtime *dara.RuntimeOptions) (_result *ListApprovalSchemasResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2833,9 +2943,11 @@ func (client *Client) ListApprovalSchemasWithContext(ctx context.Context, reques
 //
 // @return ListApprovalSchemasForApprovalProcessesResponse
 func (client *Client) ListApprovalSchemasForApprovalProcessesWithContext(ctx context.Context, request *ListApprovalSchemasForApprovalProcessesRequest, runtime *dara.RuntimeOptions) (_result *ListApprovalSchemasForApprovalProcessesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2871,9 +2983,11 @@ func (client *Client) ListApprovalSchemasForApprovalProcessesWithContext(ctx con
 //
 // @return ListApprovalsResponse
 func (client *Client) ListApprovalsWithContext(ctx context.Context, request *ListApprovalsRequest, runtime *dara.RuntimeOptions) (_result *ListApprovalsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2909,9 +3023,11 @@ func (client *Client) ListApprovalsWithContext(ctx context.Context, request *Lis
 //
 // @return ListClientUsersResponse
 func (client *Client) ListClientUsersWithContext(ctx context.Context, request *ListClientUsersRequest, runtime *dara.RuntimeOptions) (_result *ListClientUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2947,9 +3063,11 @@ func (client *Client) ListClientUsersWithContext(ctx context.Context, request *L
 //
 // @return ListConnectorsResponse
 func (client *Client) ListConnectorsWithContext(ctx context.Context, request *ListConnectorsRequest, runtime *dara.RuntimeOptions) (_result *ListConnectorsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2985,9 +3103,11 @@ func (client *Client) ListConnectorsWithContext(ctx context.Context, request *Li
 //
 // @return ListDynamicDisposalProcessesResponse
 func (client *Client) ListDynamicDisposalProcessesWithContext(ctx context.Context, request *ListDynamicDisposalProcessesRequest, runtime *dara.RuntimeOptions) (_result *ListDynamicDisposalProcessesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3023,9 +3143,11 @@ func (client *Client) ListDynamicDisposalProcessesWithContext(ctx context.Contex
 //
 // @return ListDynamicRoutesResponse
 func (client *Client) ListDynamicRoutesWithContext(ctx context.Context, request *ListDynamicRoutesRequest, runtime *dara.RuntimeOptions) (_result *ListDynamicRoutesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3061,9 +3183,11 @@ func (client *Client) ListDynamicRoutesWithContext(ctx context.Context, request 
 //
 // @return ListEnterpriseAccelerateLogsResponse
 func (client *Client) ListEnterpriseAccelerateLogsWithContext(ctx context.Context, request *ListEnterpriseAccelerateLogsRequest, runtime *dara.RuntimeOptions) (_result *ListEnterpriseAccelerateLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3099,9 +3223,11 @@ func (client *Client) ListEnterpriseAccelerateLogsWithContext(ctx context.Contex
 //
 // @return ListEnterpriseAcceleratePoliciesResponse
 func (client *Client) ListEnterpriseAcceleratePoliciesWithContext(ctx context.Context, request *ListEnterpriseAcceleratePoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListEnterpriseAcceleratePoliciesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3137,9 +3263,11 @@ func (client *Client) ListEnterpriseAcceleratePoliciesWithContext(ctx context.Co
 //
 // @return ListEnterpriseAccelerateTargetsResponse
 func (client *Client) ListEnterpriseAccelerateTargetsWithContext(ctx context.Context, request *ListEnterpriseAccelerateTargetsRequest, runtime *dara.RuntimeOptions) (_result *ListEnterpriseAccelerateTargetsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3175,9 +3303,11 @@ func (client *Client) ListEnterpriseAccelerateTargetsWithContext(ctx context.Con
 //
 // @return ListExcessiveDeviceRegistrationApplicationsResponse
 func (client *Client) ListExcessiveDeviceRegistrationApplicationsWithContext(ctx context.Context, request *ListExcessiveDeviceRegistrationApplicationsRequest, runtime *dara.RuntimeOptions) (_result *ListExcessiveDeviceRegistrationApplicationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3213,9 +3343,11 @@ func (client *Client) ListExcessiveDeviceRegistrationApplicationsWithContext(ctx
 //
 // @return ListIdpConfigsResponse
 func (client *Client) ListIdpConfigsWithContext(ctx context.Context, request *ListIdpConfigsRequest, runtime *dara.RuntimeOptions) (_result *ListIdpConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3251,9 +3383,11 @@ func (client *Client) ListIdpConfigsWithContext(ctx context.Context, request *Li
 //
 // @return ListIdpDepartmentsResponse
 func (client *Client) ListIdpDepartmentsWithContext(ctx context.Context, request *ListIdpDepartmentsRequest, runtime *dara.RuntimeOptions) (_result *ListIdpDepartmentsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3289,9 +3423,11 @@ func (client *Client) ListIdpDepartmentsWithContext(ctx context.Context, request
 //
 // @return ListNacUserCertResponse
 func (client *Client) ListNacUserCertWithContext(ctx context.Context, request *ListNacUserCertRequest, runtime *dara.RuntimeOptions) (_result *ListNacUserCertResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -3359,9 +3495,11 @@ func (client *Client) ListNacUserCertWithContext(ctx context.Context, request *L
 //
 // @return ListPolicesForPrivateAccessApplicationResponse
 func (client *Client) ListPolicesForPrivateAccessApplicationWithContext(ctx context.Context, request *ListPolicesForPrivateAccessApplicationRequest, runtime *dara.RuntimeOptions) (_result *ListPolicesForPrivateAccessApplicationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3397,9 +3535,11 @@ func (client *Client) ListPolicesForPrivateAccessApplicationWithContext(ctx cont
 //
 // @return ListPolicesForPrivateAccessTagResponse
 func (client *Client) ListPolicesForPrivateAccessTagWithContext(ctx context.Context, request *ListPolicesForPrivateAccessTagRequest, runtime *dara.RuntimeOptions) (_result *ListPolicesForPrivateAccessTagResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3435,9 +3575,11 @@ func (client *Client) ListPolicesForPrivateAccessTagWithContext(ctx context.Cont
 //
 // @return ListPolicesForUserGroupResponse
 func (client *Client) ListPolicesForUserGroupWithContext(ctx context.Context, request *ListPolicesForUserGroupRequest, runtime *dara.RuntimeOptions) (_result *ListPolicesForUserGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3473,9 +3615,11 @@ func (client *Client) ListPolicesForUserGroupWithContext(ctx context.Context, re
 //
 // @return ListPopTrafficStatisticsResponse
 func (client *Client) ListPopTrafficStatisticsWithContext(ctx context.Context, request *ListPopTrafficStatisticsRequest, runtime *dara.RuntimeOptions) (_result *ListPopTrafficStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3511,9 +3655,11 @@ func (client *Client) ListPopTrafficStatisticsWithContext(ctx context.Context, r
 //
 // @return ListPrivateAccessApplicationsResponse
 func (client *Client) ListPrivateAccessApplicationsWithContext(ctx context.Context, request *ListPrivateAccessApplicationsRequest, runtime *dara.RuntimeOptions) (_result *ListPrivateAccessApplicationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessModes) {
@@ -3589,9 +3735,11 @@ func (client *Client) ListPrivateAccessApplicationsWithContext(ctx context.Conte
 //
 // @return ListPrivateAccessApplicationsForDynamicRouteResponse
 func (client *Client) ListPrivateAccessApplicationsForDynamicRouteWithContext(ctx context.Context, request *ListPrivateAccessApplicationsForDynamicRouteRequest, runtime *dara.RuntimeOptions) (_result *ListPrivateAccessApplicationsForDynamicRouteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3627,9 +3775,11 @@ func (client *Client) ListPrivateAccessApplicationsForDynamicRouteWithContext(ct
 //
 // @return ListPrivateAccessPolicesResponse
 func (client *Client) ListPrivateAccessPolicesWithContext(ctx context.Context, request *ListPrivateAccessPolicesRequest, runtime *dara.RuntimeOptions) (_result *ListPrivateAccessPolicesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3665,9 +3815,11 @@ func (client *Client) ListPrivateAccessPolicesWithContext(ctx context.Context, r
 //
 // @return ListPrivateAccessTagsResponse
 func (client *Client) ListPrivateAccessTagsWithContext(ctx context.Context, request *ListPrivateAccessTagsRequest, runtime *dara.RuntimeOptions) (_result *ListPrivateAccessTagsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3703,9 +3855,11 @@ func (client *Client) ListPrivateAccessTagsWithContext(ctx context.Context, requ
 //
 // @return ListPrivateAccessTagsForDynamicRouteResponse
 func (client *Client) ListPrivateAccessTagsForDynamicRouteWithContext(ctx context.Context, request *ListPrivateAccessTagsForDynamicRouteRequest, runtime *dara.RuntimeOptions) (_result *ListPrivateAccessTagsForDynamicRouteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3741,9 +3895,11 @@ func (client *Client) ListPrivateAccessTagsForDynamicRouteWithContext(ctx contex
 //
 // @return ListRegistrationPoliciesResponse
 func (client *Client) ListRegistrationPoliciesWithContext(ctx context.Context, request *ListRegistrationPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListRegistrationPoliciesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3779,9 +3935,11 @@ func (client *Client) ListRegistrationPoliciesWithContext(ctx context.Context, r
 //
 // @return ListRegistrationPoliciesForUserGroupResponse
 func (client *Client) ListRegistrationPoliciesForUserGroupWithContext(ctx context.Context, request *ListRegistrationPoliciesForUserGroupRequest, runtime *dara.RuntimeOptions) (_result *ListRegistrationPoliciesForUserGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3817,9 +3975,11 @@ func (client *Client) ListRegistrationPoliciesForUserGroupWithContext(ctx contex
 //
 // @return ListSoftwareForUserDeviceResponse
 func (client *Client) ListSoftwareForUserDeviceWithContext(ctx context.Context, request *ListSoftwareForUserDeviceRequest, runtime *dara.RuntimeOptions) (_result *ListSoftwareForUserDeviceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3855,9 +4015,11 @@ func (client *Client) ListSoftwareForUserDeviceWithContext(ctx context.Context, 
 //
 // @return ListTagsForPrivateAccessApplicationResponse
 func (client *Client) ListTagsForPrivateAccessApplicationWithContext(ctx context.Context, request *ListTagsForPrivateAccessApplicationRequest, runtime *dara.RuntimeOptions) (_result *ListTagsForPrivateAccessApplicationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3893,9 +4055,11 @@ func (client *Client) ListTagsForPrivateAccessApplicationWithContext(ctx context
 //
 // @return ListTagsForPrivateAccessPolicyResponse
 func (client *Client) ListTagsForPrivateAccessPolicyWithContext(ctx context.Context, request *ListTagsForPrivateAccessPolicyRequest, runtime *dara.RuntimeOptions) (_result *ListTagsForPrivateAccessPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3931,9 +4095,11 @@ func (client *Client) ListTagsForPrivateAccessPolicyWithContext(ctx context.Cont
 //
 // @return ListUninstallApplicationsResponse
 func (client *Client) ListUninstallApplicationsWithContext(ctx context.Context, request *ListUninstallApplicationsRequest, runtime *dara.RuntimeOptions) (_result *ListUninstallApplicationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3969,9 +4135,11 @@ func (client *Client) ListUninstallApplicationsWithContext(ctx context.Context, 
 //
 // @return ListUserApplicationsResponse
 func (client *Client) ListUserApplicationsWithContext(ctx context.Context, request *ListUserApplicationsRequest, runtime *dara.RuntimeOptions) (_result *ListUserApplicationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -4007,9 +4175,11 @@ func (client *Client) ListUserApplicationsWithContext(ctx context.Context, reque
 //
 // @return ListUserDevicesResponse
 func (client *Client) ListUserDevicesWithContext(ctx context.Context, request *ListUserDevicesRequest, runtime *dara.RuntimeOptions) (_result *ListUserDevicesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -4045,9 +4215,11 @@ func (client *Client) ListUserDevicesWithContext(ctx context.Context, request *L
 //
 // @return ListUserGroupsResponse
 func (client *Client) ListUserGroupsWithContext(ctx context.Context, request *ListUserGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListUserGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -4083,9 +4255,11 @@ func (client *Client) ListUserGroupsWithContext(ctx context.Context, request *Li
 //
 // @return ListUserGroupsForPrivateAccessPolicyResponse
 func (client *Client) ListUserGroupsForPrivateAccessPolicyWithContext(ctx context.Context, request *ListUserGroupsForPrivateAccessPolicyRequest, runtime *dara.RuntimeOptions) (_result *ListUserGroupsForPrivateAccessPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -4121,9 +4295,11 @@ func (client *Client) ListUserGroupsForPrivateAccessPolicyWithContext(ctx contex
 //
 // @return ListUserGroupsForRegistrationPolicyResponse
 func (client *Client) ListUserGroupsForRegistrationPolicyWithContext(ctx context.Context, request *ListUserGroupsForRegistrationPolicyRequest, runtime *dara.RuntimeOptions) (_result *ListUserGroupsForRegistrationPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -4159,9 +4335,11 @@ func (client *Client) ListUserGroupsForRegistrationPolicyWithContext(ctx context
 //
 // @return ListUserPrivateAccessPoliciesResponse
 func (client *Client) ListUserPrivateAccessPoliciesWithContext(ctx context.Context, request *ListUserPrivateAccessPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListUserPrivateAccessPoliciesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -4197,9 +4375,11 @@ func (client *Client) ListUserPrivateAccessPoliciesWithContext(ctx context.Conte
 //
 // @return ListUsersResponse
 func (client *Client) ListUsersWithContext(ctx context.Context, request *ListUsersRequest, runtime *dara.RuntimeOptions) (_result *ListUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -4235,9 +4415,11 @@ func (client *Client) ListUsersWithContext(ctx context.Context, request *ListUse
 //
 // @return LookupWmInfoMappingResponse
 func (client *Client) LookupWmInfoMappingWithContext(ctx context.Context, request *LookupWmInfoMappingRequest, runtime *dara.RuntimeOptions) (_result *LookupWmInfoMappingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -4273,9 +4455,11 @@ func (client *Client) LookupWmInfoMappingWithContext(ctx context.Context, reques
 //
 // @return ModifyEnterpriseAcceleratePolicyResponse
 func (client *Client) ModifyEnterpriseAcceleratePolicyWithContext(ctx context.Context, request *ModifyEnterpriseAcceleratePolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyEnterpriseAcceleratePolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AccelerationType) {
@@ -4357,9 +4541,11 @@ func (client *Client) ModifyEnterpriseAcceleratePolicyWithContext(ctx context.Co
 //
 // @return RevokeUserSessionResponse
 func (client *Client) RevokeUserSessionWithContext(ctx context.Context, request *RevokeUserSessionRequest, runtime *dara.RuntimeOptions) (_result *RevokeUserSessionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExternalIds) {
@@ -4403,9 +4589,11 @@ func (client *Client) RevokeUserSessionWithContext(ctx context.Context, request 
 //
 // @return UpdateApprovalProcessResponse
 func (client *Client) UpdateApprovalProcessWithContext(ctx context.Context, tmpReq *UpdateApprovalProcessRequest, runtime *dara.RuntimeOptions) (_result *UpdateApprovalProcessResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateApprovalProcessShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4492,9 +4680,11 @@ func (client *Client) UpdateApprovalProcessWithContext(ctx context.Context, tmpR
 //
 // @return UpdateApprovalStatusResponse
 func (client *Client) UpdateApprovalStatusWithContext(ctx context.Context, request *UpdateApprovalStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateApprovalStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApprovalId) {
@@ -4538,9 +4728,11 @@ func (client *Client) UpdateApprovalStatusWithContext(ctx context.Context, reque
 //
 // @return UpdateBootAndAntiUninstallPolicyResponse
 func (client *Client) UpdateBootAndAntiUninstallPolicyWithContext(ctx context.Context, tmpReq *UpdateBootAndAntiUninstallPolicyRequest, runtime *dara.RuntimeOptions) (_result *UpdateBootAndAntiUninstallPolicyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateBootAndAntiUninstallPolicyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4609,9 +4801,11 @@ func (client *Client) UpdateBootAndAntiUninstallPolicyWithContext(ctx context.Co
 //
 // @return UpdateClientUserResponse
 func (client *Client) UpdateClientUserWithContext(ctx context.Context, request *UpdateClientUserRequest, runtime *dara.RuntimeOptions) (_result *UpdateClientUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DepartmentId) {
@@ -4667,9 +4861,11 @@ func (client *Client) UpdateClientUserWithContext(ctx context.Context, request *
 //
 // @return UpdateClientUserPasswordResponse
 func (client *Client) UpdateClientUserPasswordWithContext(ctx context.Context, request *UpdateClientUserPasswordRequest, runtime *dara.RuntimeOptions) (_result *UpdateClientUserPasswordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -4717,9 +4913,11 @@ func (client *Client) UpdateClientUserPasswordWithContext(ctx context.Context, r
 //
 // @return UpdateClientUserStatusResponse
 func (client *Client) UpdateClientUserStatusWithContext(ctx context.Context, request *UpdateClientUserStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateClientUserStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -4763,9 +4961,11 @@ func (client *Client) UpdateClientUserStatusWithContext(ctx context.Context, req
 //
 // @return UpdateDynamicRouteResponse
 func (client *Client) UpdateDynamicRouteWithContext(ctx context.Context, request *UpdateDynamicRouteRequest, runtime *dara.RuntimeOptions) (_result *UpdateDynamicRouteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
@@ -4852,9 +5052,11 @@ func (client *Client) UpdateDynamicRouteWithContext(ctx context.Context, request
 //
 // @return UpdateExcessiveDeviceRegistrationApplicationsStatusResponse
 func (client *Client) UpdateExcessiveDeviceRegistrationApplicationsStatusWithContext(ctx context.Context, request *UpdateExcessiveDeviceRegistrationApplicationsStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateExcessiveDeviceRegistrationApplicationsStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
@@ -4901,9 +5103,11 @@ func (client *Client) UpdateExcessiveDeviceRegistrationApplicationsStatusWithCon
 //
 // @return UpdateIdpDepartmentResponse
 func (client *Client) UpdateIdpDepartmentWithContext(ctx context.Context, request *UpdateIdpDepartmentRequest, runtime *dara.RuntimeOptions) (_result *UpdateIdpDepartmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DepartmentId) {
@@ -4951,9 +5155,11 @@ func (client *Client) UpdateIdpDepartmentWithContext(ctx context.Context, reques
 //
 // @return UpdateNacUserCertStatusResponse
 func (client *Client) UpdateNacUserCertStatusWithContext(ctx context.Context, request *UpdateNacUserCertStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateNacUserCertStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
@@ -5000,9 +5206,11 @@ func (client *Client) UpdateNacUserCertStatusWithContext(ctx context.Context, re
 //
 // @return UpdatePrivateAccessApplicationResponse
 func (client *Client) UpdatePrivateAccessApplicationWithContext(ctx context.Context, tmpReq *UpdatePrivateAccessApplicationRequest, runtime *dara.RuntimeOptions) (_result *UpdatePrivateAccessApplicationResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdatePrivateAccessApplicationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5095,9 +5303,11 @@ func (client *Client) UpdatePrivateAccessApplicationWithContext(ctx context.Cont
 //
 // @return UpdatePrivateAccessPolicyResponse
 func (client *Client) UpdatePrivateAccessPolicyWithContext(ctx context.Context, request *UpdatePrivateAccessPolicyRequest, runtime *dara.RuntimeOptions) (_result *UpdatePrivateAccessPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
@@ -5208,9 +5418,11 @@ func (client *Client) UpdatePrivateAccessPolicyWithContext(ctx context.Context, 
 //
 // @return UpdateRegistrationPolicyResponse
 func (client *Client) UpdateRegistrationPolicyWithContext(ctx context.Context, tmpReq *UpdateRegistrationPolicyRequest, runtime *dara.RuntimeOptions) (_result *UpdateRegistrationPolicyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateRegistrationPolicyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5307,9 +5519,11 @@ func (client *Client) UpdateRegistrationPolicyWithContext(ctx context.Context, t
 //
 // @return UpdateUninstallApplicationsStatusResponse
 func (client *Client) UpdateUninstallApplicationsStatusWithContext(ctx context.Context, request *UpdateUninstallApplicationsStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateUninstallApplicationsStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
@@ -5356,9 +5570,11 @@ func (client *Client) UpdateUninstallApplicationsStatusWithContext(ctx context.C
 //
 // @return UpdateUserDevicesSharingStatusResponse
 func (client *Client) UpdateUserDevicesSharingStatusWithContext(ctx context.Context, request *UpdateUserDevicesSharingStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateUserDevicesSharingStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
@@ -5405,9 +5621,11 @@ func (client *Client) UpdateUserDevicesSharingStatusWithContext(ctx context.Cont
 //
 // @return UpdateUserDevicesStatusResponse
 func (client *Client) UpdateUserDevicesStatusWithContext(ctx context.Context, request *UpdateUserDevicesStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateUserDevicesStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DeviceAction) {
@@ -5454,9 +5672,11 @@ func (client *Client) UpdateUserDevicesStatusWithContext(ctx context.Context, re
 //
 // @return UpdateUserGroupResponse
 func (client *Client) UpdateUserGroupWithContext(ctx context.Context, request *UpdateUserGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateUserGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
@@ -5511,9 +5731,11 @@ func (client *Client) UpdateUserGroupWithContext(ctx context.Context, request *U
 //
 // @return UpdateUsersStatusResponse
 func (client *Client) UpdateUsersStatusWithContext(ctx context.Context, request *UpdateUsersStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateUsersStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SaseUserIds) {

@@ -50,7 +50,16 @@ func (s *UpdateNacUserCertStatusRequest) SetStatus(v string) *UpdateNacUserCertS
 }
 
 func (s *UpdateNacUserCertStatusRequest) Validate() error {
-	return dara.Validate(s)
+	if s.IdList != nil {
+		for _, item := range s.IdList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateNacUserCertStatusRequestIdList struct {

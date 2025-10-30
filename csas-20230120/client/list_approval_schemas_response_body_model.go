@@ -65,7 +65,16 @@ func (s *ListApprovalSchemasResponseBody) SetTotalNum(v string) *ListApprovalSch
 }
 
 func (s *ListApprovalSchemasResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Schemas != nil {
+		for _, item := range s.Schemas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApprovalSchemasResponseBodySchemas struct {

@@ -190,7 +190,17 @@ func (s *UpdateRegistrationPolicyRequest) SetWhitelist(v []*string) *UpdateRegis
 }
 
 func (s *UpdateRegistrationPolicyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CompanyLimitCount != nil {
+		if err := s.CompanyLimitCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PersonalLimitCount != nil {
+		if err := s.PersonalLimitCount.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateRegistrationPolicyRequestCompanyLimitCount struct {

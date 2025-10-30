@@ -59,5 +59,10 @@ func (s *DetachApplication2ConnectorResponse) SetBody(v *DetachApplication2Conne
 }
 
 func (s *DetachApplication2ConnectorResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

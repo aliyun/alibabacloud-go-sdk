@@ -50,7 +50,12 @@ func (s *GetDynamicRouteResponseBody) SetRequestId(v string) *GetDynamicRouteRes
 }
 
 func (s *GetDynamicRouteResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DynamicRoute != nil {
+		if err := s.DynamicRoute.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDynamicRouteResponseBodyDynamicRoute struct {

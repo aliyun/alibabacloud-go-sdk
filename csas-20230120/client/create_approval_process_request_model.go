@@ -77,7 +77,12 @@ func (s *CreateApprovalProcessRequest) SetProcessNodes(v [][]*string) *CreateApp
 }
 
 func (s *CreateApprovalProcessRequest) Validate() error {
-	return dara.Validate(s)
+	if s.MatchSchemas != nil {
+		if err := s.MatchSchemas.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateApprovalProcessRequestMatchSchemas struct {

@@ -53,7 +53,12 @@ func (s *GetPrivateAccessApplicationResponseBody) SetRequestId(v string) *GetPri
 }
 
 func (s *GetPrivateAccessApplicationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Application != nil {
+		if err := s.Application.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPrivateAccessApplicationResponseBodyApplication struct {
@@ -289,7 +294,21 @@ func (s *GetPrivateAccessApplicationResponseBodyApplication) SetTagIds(v []*stri
 }
 
 func (s *GetPrivateAccessApplicationResponseBodyApplication) Validate() error {
-	return dara.Validate(s)
+	if s.L7Config != nil {
+		if err := s.L7Config.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PortRanges != nil {
+		for _, item := range s.PortRanges {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPrivateAccessApplicationResponseBodyApplicationPortRanges struct {

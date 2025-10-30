@@ -50,7 +50,16 @@ func (s *ListPolicesForPrivateAccessApplicationResponseBody) SetRequestId(v stri
 }
 
 func (s *ListPolicesForPrivateAccessApplicationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Applications != nil {
+		for _, item := range s.Applications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPolicesForPrivateAccessApplicationResponseBodyApplications struct {
@@ -88,7 +97,16 @@ func (s *ListPolicesForPrivateAccessApplicationResponseBodyApplications) SetPoli
 }
 
 func (s *ListPolicesForPrivateAccessApplicationResponseBodyApplications) Validate() error {
-	return dara.Validate(s)
+	if s.Policies != nil {
+		for _, item := range s.Policies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPolicies struct {
@@ -227,7 +245,16 @@ func (s *ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPolicies)
 }
 
 func (s *ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.CustomUserAttributes != nil {
+		for _, item := range s.CustomUserAttributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPoliciesCustomUserAttributes struct {

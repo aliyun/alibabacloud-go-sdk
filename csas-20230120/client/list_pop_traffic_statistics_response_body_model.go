@@ -52,7 +52,16 @@ func (s *ListPopTrafficStatisticsResponseBody) SetTrafficData(v []*ListPopTraffi
 }
 
 func (s *ListPopTrafficStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficData != nil {
+		for _, item := range s.TrafficData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPopTrafficStatisticsResponseBodyTrafficData struct {
@@ -90,7 +99,16 @@ func (s *ListPopTrafficStatisticsResponseBodyTrafficData) SetMetricName(v string
 }
 
 func (s *ListPopTrafficStatisticsResponseBodyTrafficData) Validate() error {
-	return dara.Validate(s)
+	if s.Datapoints != nil {
+		for _, item := range s.Datapoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPopTrafficStatisticsResponseBodyTrafficDataDatapoints struct {

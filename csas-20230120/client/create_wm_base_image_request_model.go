@@ -177,7 +177,12 @@ func (s *CreateWmBaseImageRequest) SetComment(v string) *CreateWmBaseImageReques
 }
 
 func (s *CreateWmBaseImageRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ImageControl != nil {
+		if err := s.ImageControl.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateWmBaseImageRequestImageControl struct {
@@ -212,7 +217,17 @@ func (s *CreateWmBaseImageRequestImageControl) SetTextVisibleControl(v *CreateWm
 }
 
 func (s *CreateWmBaseImageRequestImageControl) Validate() error {
-	return dara.Validate(s)
+	if s.LogoVisibleControl != nil {
+		if err := s.LogoVisibleControl.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TextVisibleControl != nil {
+		if err := s.TextVisibleControl.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateWmBaseImageRequestImageControlLogoVisibleControl struct {
@@ -357,7 +372,12 @@ func (s *CreateWmBaseImageRequestImageControlLogoVisibleControl) SetVisible(v bo
 }
 
 func (s *CreateWmBaseImageRequestImageControlLogoVisibleControl) Validate() error {
-	return dara.Validate(s)
+	if s.Margin != nil {
+		if err := s.Margin.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateWmBaseImageRequestImageControlLogoVisibleControlMargin struct {
@@ -567,7 +587,12 @@ func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) SetVisibleText(
 }
 
 func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) Validate() error {
-	return dara.Validate(s)
+	if s.Margin != nil {
+		if err := s.Margin.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateWmBaseImageRequestImageControlTextVisibleControlMargin struct {

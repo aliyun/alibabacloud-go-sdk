@@ -214,7 +214,21 @@ func (s *CreatePrivateAccessApplicationRequest) SetTagIds(v []*string) *CreatePr
 }
 
 func (s *CreatePrivateAccessApplicationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.L7Config != nil {
+		if err := s.L7Config.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PortRanges != nil {
+		for _, item := range s.PortRanges {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreatePrivateAccessApplicationRequestPortRanges struct {

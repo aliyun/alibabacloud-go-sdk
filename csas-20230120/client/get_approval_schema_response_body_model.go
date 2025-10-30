@@ -50,7 +50,12 @@ func (s *GetApprovalSchemaResponseBody) SetSchema(v *GetApprovalSchemaResponseBo
 }
 
 func (s *GetApprovalSchemaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Schema != nil {
+		if err := s.Schema.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetApprovalSchemaResponseBodySchema struct {

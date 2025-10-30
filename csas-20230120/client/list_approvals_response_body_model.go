@@ -65,7 +65,16 @@ func (s *ListApprovalsResponseBody) SetTotalNum(v string) *ListApprovalsResponse
 }
 
 func (s *ListApprovalsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Approvals != nil {
+		for _, item := range s.Approvals {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApprovalsResponseBodyApprovals struct {
@@ -290,7 +299,16 @@ func (s *ListApprovalsResponseBodyApprovals) SetStatus(v string) *ListApprovalsR
 }
 
 func (s *ListApprovalsResponseBodyApprovals) Validate() error {
-	return dara.Validate(s)
+	if s.ApprovalProgresses != nil {
+		for _, item := range s.ApprovalProgresses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApprovalsResponseBodyApprovalsApprovalProgresses struct {
@@ -377,7 +395,16 @@ func (s *ListApprovalsResponseBodyApprovalsApprovalProgresses) SetTimestamp(v in
 }
 
 func (s *ListApprovalsResponseBodyApprovalsApprovalProgresses) Validate() error {
-	return dara.Validate(s)
+	if s.Operators != nil {
+		for _, item := range s.Operators {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApprovalsResponseBodyApprovalsApprovalProgressesOperators struct {

@@ -59,5 +59,10 @@ func (s *CreateEnterpriseAcceleratePolicyResponse) SetBody(v *CreateEnterpriseAc
 }
 
 func (s *CreateEnterpriseAcceleratePolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -50,7 +50,12 @@ func (s *ListClientUsersResponseBody) SetRequestId(v string) *ListClientUsersRes
 }
 
 func (s *ListClientUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListClientUsersResponseBodyData struct {
@@ -88,7 +93,16 @@ func (s *ListClientUsersResponseBodyData) SetTotalNum(v int64) *ListClientUsersR
 }
 
 func (s *ListClientUsersResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DataList != nil {
+		for _, item := range s.DataList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListClientUsersResponseBodyDataDataList struct {
@@ -224,7 +238,12 @@ func (s *ListClientUsersResponseBodyDataDataList) SetUsername(v string) *ListCli
 }
 
 func (s *ListClientUsersResponseBodyDataDataList) Validate() error {
-	return dara.Validate(s)
+	if s.Department != nil {
+		if err := s.Department.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListClientUsersResponseBodyDataDataListDepartment struct {
