@@ -140,7 +140,12 @@ func (s *UpgradeClusterNodepoolRequest) SetUseReplace(v bool) *UpgradeClusterNod
 }
 
 func (s *UpgradeClusterNodepoolRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RollingPolicy != nil {
+		if err := s.RollingPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpgradeClusterNodepoolRequestRollingPolicy struct {

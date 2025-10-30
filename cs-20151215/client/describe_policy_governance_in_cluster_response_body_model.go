@@ -9,25 +9,20 @@ type iDescribePolicyGovernanceInClusterResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetViolation(v *DescribePolicyGovernanceInClusterResponseBodyViolation) *DescribePolicyGovernanceInClusterResponseBody
+	GetViolation() *DescribePolicyGovernanceInClusterResponseBodyViolation
 	SetAdmitLog(v *DescribePolicyGovernanceInClusterResponseBodyAdmitLog) *DescribePolicyGovernanceInClusterResponseBody
 	GetAdmitLog() *DescribePolicyGovernanceInClusterResponseBodyAdmitLog
 	SetOnState(v []*DescribePolicyGovernanceInClusterResponseBodyOnState) *DescribePolicyGovernanceInClusterResponseBody
 	GetOnState() []*DescribePolicyGovernanceInClusterResponseBodyOnState
-	SetTotalViolations(v *DescribePolicyGovernanceInClusterResponseBodyTotalViolations) *DescribePolicyGovernanceInClusterResponseBody
-	GetTotalViolations() *DescribePolicyGovernanceInClusterResponseBodyTotalViolations
-	SetViolations(v *DescribePolicyGovernanceInClusterResponseBodyViolations) *DescribePolicyGovernanceInClusterResponseBody
-	GetViolations() *DescribePolicyGovernanceInClusterResponseBodyViolations
 }
 
 type DescribePolicyGovernanceInClusterResponseBody struct {
+	Violation *DescribePolicyGovernanceInClusterResponseBodyViolation `json:"Violation,omitempty" xml:"Violation,omitempty" type:"Struct"`
 	// The audit logs of the policies in the cluster.
 	AdmitLog *DescribePolicyGovernanceInClusterResponseBodyAdmitLog `json:"admit_log,omitempty" xml:"admit_log,omitempty" type:"Struct"`
 	// Details about the policies of different severity levels that are enabled for the cluster.
 	OnState []*DescribePolicyGovernanceInClusterResponseBodyOnState `json:"on_state,omitempty" xml:"on_state,omitempty" type:"Repeated"`
-	// Details about the blocking and alerting events that are triggered by policies of different severity levels.
-	TotalViolations *DescribePolicyGovernanceInClusterResponseBodyTotalViolations `json:"totalViolations,omitempty" xml:"totalViolations,omitempty" type:"Struct"`
-	// Details about the blocking and alerting events that are triggered by different policies.
-	Violations *DescribePolicyGovernanceInClusterResponseBodyViolations `json:"violations,omitempty" xml:"violations,omitempty" type:"Struct"`
 }
 
 func (s DescribePolicyGovernanceInClusterResponseBody) String() string {
@@ -38,6 +33,10 @@ func (s DescribePolicyGovernanceInClusterResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribePolicyGovernanceInClusterResponseBody) GetViolation() *DescribePolicyGovernanceInClusterResponseBodyViolation {
+	return s.Violation
+}
+
 func (s *DescribePolicyGovernanceInClusterResponseBody) GetAdmitLog() *DescribePolicyGovernanceInClusterResponseBodyAdmitLog {
 	return s.AdmitLog
 }
@@ -46,12 +45,9 @@ func (s *DescribePolicyGovernanceInClusterResponseBody) GetOnState() []*Describe
 	return s.OnState
 }
 
-func (s *DescribePolicyGovernanceInClusterResponseBody) GetTotalViolations() *DescribePolicyGovernanceInClusterResponseBodyTotalViolations {
-	return s.TotalViolations
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBody) GetViolations() *DescribePolicyGovernanceInClusterResponseBodyViolations {
-	return s.Violations
+func (s *DescribePolicyGovernanceInClusterResponseBody) SetViolation(v *DescribePolicyGovernanceInClusterResponseBodyViolation) *DescribePolicyGovernanceInClusterResponseBody {
+	s.Violation = v
+	return s
 }
 
 func (s *DescribePolicyGovernanceInClusterResponseBody) SetAdmitLog(v *DescribePolicyGovernanceInClusterResponseBodyAdmitLog) *DescribePolicyGovernanceInClusterResponseBody {
@@ -64,17 +60,357 @@ func (s *DescribePolicyGovernanceInClusterResponseBody) SetOnState(v []*Describe
 	return s
 }
 
-func (s *DescribePolicyGovernanceInClusterResponseBody) SetTotalViolations(v *DescribePolicyGovernanceInClusterResponseBodyTotalViolations) *DescribePolicyGovernanceInClusterResponseBody {
+func (s *DescribePolicyGovernanceInClusterResponseBody) Validate() error {
+	if s.Violation != nil {
+		if err := s.Violation.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AdmitLog != nil {
+		if err := s.AdmitLog.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OnState != nil {
+		for _, item := range s.OnState {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribePolicyGovernanceInClusterResponseBodyViolation struct {
+	TotalViolations *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations `json:"totalViolations,omitempty" xml:"totalViolations,omitempty" type:"Struct"`
+	Violations      *DescribePolicyGovernanceInClusterResponseBodyViolationViolations      `json:"violations,omitempty" xml:"violations,omitempty" type:"Struct"`
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyViolation) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyViolation) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolation) GetTotalViolations() *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations {
+	return s.TotalViolations
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolation) GetViolations() *DescribePolicyGovernanceInClusterResponseBodyViolationViolations {
+	return s.Violations
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolation) SetTotalViolations(v *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations) *DescribePolicyGovernanceInClusterResponseBodyViolation {
 	s.TotalViolations = v
 	return s
 }
 
-func (s *DescribePolicyGovernanceInClusterResponseBody) SetViolations(v *DescribePolicyGovernanceInClusterResponseBodyViolations) *DescribePolicyGovernanceInClusterResponseBody {
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolation) SetViolations(v *DescribePolicyGovernanceInClusterResponseBodyViolationViolations) *DescribePolicyGovernanceInClusterResponseBodyViolation {
 	s.Violations = v
 	return s
 }
 
-func (s *DescribePolicyGovernanceInClusterResponseBody) Validate() error {
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolation) Validate() error {
+	if s.TotalViolations != nil {
+		if err := s.TotalViolations.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Violations != nil {
+		if err := s.Violations.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations struct {
+	Deny []*DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsDeny `json:"deny,omitempty" xml:"deny,omitempty" type:"Repeated"`
+	Warn []*DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWarn `json:"warn,omitempty" xml:"warn,omitempty" type:"Repeated"`
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations) GetDeny() []*DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsDeny {
+	return s.Deny
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations) GetWarn() []*DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWarn {
+	return s.Warn
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations) SetDeny(v []*DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsDeny) *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations {
+	s.Deny = v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations) SetWarn(v []*DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWarn) *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations {
+	s.Warn = v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations) Validate() error {
+	if s.Deny != nil {
+		for _, item := range s.Deny {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Warn != nil {
+		for _, item := range s.Warn {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsDeny struct {
+	Severity   *string `json:"severity,omitempty" xml:"severity,omitempty"`
+	Violations *string `json:"violations,omitempty" xml:"violations,omitempty"`
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsDeny) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsDeny) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsDeny) GetSeverity() *string {
+	return s.Severity
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsDeny) GetViolations() *string {
+	return s.Violations
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsDeny) SetSeverity(v string) *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsDeny {
+	s.Severity = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsDeny) SetViolations(v string) *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsDeny {
+	s.Violations = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsDeny) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWarn struct {
+	Severity   *string `json:"severity,omitempty" xml:"severity,omitempty"`
+	Violations *int64  `json:"violations,omitempty" xml:"violations,omitempty"`
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWarn) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWarn) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWarn) GetSeverity() *string {
+	return s.Severity
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWarn) GetViolations() *int64 {
+	return s.Violations
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWarn) SetSeverity(v string) *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWarn {
+	s.Severity = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWarn) SetViolations(v int64) *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWarn {
+	s.Violations = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWarn) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribePolicyGovernanceInClusterResponseBodyViolationViolations struct {
+	Deny []*DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny `json:"deny,omitempty" xml:"deny,omitempty" type:"Repeated"`
+	Warn []*DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn `json:"warn,omitempty" xml:"warn,omitempty" type:"Repeated"`
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyViolationViolations) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyViolationViolations) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolations) GetDeny() []*DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny {
+	return s.Deny
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolations) GetWarn() []*DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn {
+	return s.Warn
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolations) SetDeny(v []*DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny) *DescribePolicyGovernanceInClusterResponseBodyViolationViolations {
+	s.Deny = v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolations) SetWarn(v []*DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn) *DescribePolicyGovernanceInClusterResponseBodyViolationViolations {
+	s.Warn = v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolations) Validate() error {
+	if s.Deny != nil {
+		for _, item := range s.Deny {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Warn != nil {
+		for _, item := range s.Warn {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny struct {
+	PolicyDescription *string `json:"policyDescription,omitempty" xml:"policyDescription,omitempty"`
+	PolicyName        *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
+	Severity          *string `json:"severity,omitempty" xml:"severity,omitempty"`
+	Violations        *int64  `json:"violations,omitempty" xml:"violations,omitempty"`
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny) GetPolicyDescription() *string {
+	return s.PolicyDescription
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny) GetPolicyName() *string {
+	return s.PolicyName
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny) GetSeverity() *string {
+	return s.Severity
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny) GetViolations() *int64 {
+	return s.Violations
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny) SetPolicyDescription(v string) *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny {
+	s.PolicyDescription = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny) SetPolicyName(v string) *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny) SetSeverity(v string) *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny {
+	s.Severity = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny) SetViolations(v int64) *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny {
+	s.Violations = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn struct {
+	PolicyDescription *string `json:"policyDescription,omitempty" xml:"policyDescription,omitempty"`
+	PolicyName        *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
+	Severity          *string `json:"severity,omitempty" xml:"severity,omitempty"`
+	Violations        *int64  `json:"violations,omitempty" xml:"violations,omitempty"`
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn) GetPolicyDescription() *string {
+	return s.PolicyDescription
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn) GetPolicyName() *string {
+	return s.PolicyName
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn) GetSeverity() *string {
+	return s.Severity
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn) GetViolations() *int64 {
+	return s.Violations
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn) SetPolicyDescription(v string) *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn {
+	s.PolicyDescription = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn) SetPolicyName(v string) *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn) SetSeverity(v string) *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn {
+	s.Severity = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn) SetViolations(v int64) *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn {
+	s.Violations = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -84,9 +420,10 @@ type DescribePolicyGovernanceInClusterResponseBodyAdmitLog struct {
 	// example:
 	//
 	// 100
-	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
-	// The audit log content.
-	Log *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog `json:"log,omitempty" xml:"log,omitempty" type:"Struct"`
+	Count      *int64                                                       `json:"count,omitempty" xml:"count,omitempty"`
+	LogProject *string                                                      `json:"log_project,omitempty" xml:"log_project,omitempty"`
+	LogStore   *string                                                      `json:"log_store,omitempty" xml:"log_store,omitempty"`
+	Logs       []*DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs `json:"logs,omitempty" xml:"logs,omitempty" type:"Repeated"`
 	// The status of the query. Valid values:
 	//
 	// 	- `Complete`: The query succeeded and the complete query result is returned.
@@ -111,8 +448,16 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLog) GetCount() *int6
 	return s.Count
 }
 
-func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLog) GetLog() *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog {
-	return s.Log
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLog) GetLogProject() *string {
+	return s.LogProject
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLog) GetLogStore() *string {
+	return s.LogStore
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLog) GetLogs() []*DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs {
+	return s.Logs
 }
 
 func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLog) GetProgress() *string {
@@ -124,8 +469,18 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLog) SetCount(v int64
 	return s
 }
 
-func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLog) SetLog(v *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog) *DescribePolicyGovernanceInClusterResponseBodyAdmitLog {
-	s.Log = v
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLog) SetLogProject(v string) *DescribePolicyGovernanceInClusterResponseBodyAdmitLog {
+	s.LogProject = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLog) SetLogStore(v string) *DescribePolicyGovernanceInClusterResponseBodyAdmitLog {
+	s.LogStore = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLog) SetLogs(v []*DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) *DescribePolicyGovernanceInClusterResponseBodyAdmitLog {
+	s.Logs = v
 	return s
 }
 
@@ -135,111 +490,180 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLog) SetProgress(v st
 }
 
 func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLog) Validate() error {
-	return dara.Validate(s)
+	if s.Logs != nil {
+		for _, item := range s.Logs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
-type DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog struct {
-	// The cluster ID.
-	//
-	// example:
-	//
-	// c8155823d057948c69a****
-	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The policy type.
-	//
-	// example:
-	//
-	// ACKAllowedRepos
-	ConstraintKind *string `json:"constraint_kind,omitempty" xml:"constraint_kind,omitempty"`
-	// The message that appears when an event is generated by a policy.
-	//
-	// example:
-	//
-	// d4hdhs*****
-	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	// The resource type.
-	//
-	// example:
-	//
-	// Pod
-	ResourceKind *string `json:"resource_kind,omitempty" xml:"resource_kind,omitempty"`
-	// The resource name.
-	//
-	// example:
-	//
-	// nginx-deployment-basic2-84ccb74bfc-df22p
-	ResourceName *string `json:"resource_name,omitempty" xml:"resource_name,omitempty"`
-	// The namespace to which the resource belongs.
-	//
-	// example:
-	//
-	// default
-	ResourceNamespace *string `json:"resource_namespace,omitempty" xml:"resource_namespace,omitempty"`
+type DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs struct {
+	ClusterId            *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	ConstraintAction     *string `json:"constraint_action,omitempty" xml:"constraint_action,omitempty"`
+	ConstraintApiVersion *string `json:"constraint_api_version,omitempty" xml:"constraint_api_version,omitempty"`
+	ConstraintCategory   *string `json:"constraint_category,omitempty" xml:"constraint_category,omitempty"`
+	ConstraintGroup      *string `json:"constraint_group,omitempty" xml:"constraint_group,omitempty"`
+	ConstraintKind       *string `json:"constraint_kind,omitempty" xml:"constraint_kind,omitempty"`
+	ConstraintName       *string `json:"constraint_name,omitempty" xml:"constraint_name,omitempty"`
+	EventMsg             *string `json:"event_msg,omitempty" xml:"event_msg,omitempty"`
+	EventType            *string `json:"event_type,omitempty" xml:"event_type,omitempty"`
+	RequestUid           *string `json:"request_uid,omitempty" xml:"request_uid,omitempty"`
+	RequestUserinfo      *string `json:"request_userinfo,omitempty" xml:"request_userinfo,omitempty"`
+	RequestUsername      *string `json:"request_username,omitempty" xml:"request_username,omitempty"`
+	ResourceKind         *string `json:"resource_kind,omitempty" xml:"resource_kind,omitempty"`
+	ResourceName         *string `json:"resource_name,omitempty" xml:"resource_name,omitempty"`
+	Time                 *string `json:"time,omitempty" xml:"time,omitempty"`
 }
 
-func (s DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog) String() string {
+func (s DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) String() string {
 	return dara.Prettify(s)
 }
 
-func (s DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog) GoString() string {
+func (s DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog) GetClusterId() *string {
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) GetClusterId() *string {
 	return s.ClusterId
 }
 
-func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog) GetConstraintKind() *string {
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) GetConstraintAction() *string {
+	return s.ConstraintAction
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) GetConstraintApiVersion() *string {
+	return s.ConstraintApiVersion
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) GetConstraintCategory() *string {
+	return s.ConstraintCategory
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) GetConstraintGroup() *string {
+	return s.ConstraintGroup
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) GetConstraintKind() *string {
 	return s.ConstraintKind
 }
 
-func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog) GetMsg() *string {
-	return s.Msg
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) GetConstraintName() *string {
+	return s.ConstraintName
 }
 
-func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog) GetResourceKind() *string {
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) GetEventMsg() *string {
+	return s.EventMsg
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) GetEventType() *string {
+	return s.EventType
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) GetRequestUid() *string {
+	return s.RequestUid
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) GetRequestUserinfo() *string {
+	return s.RequestUserinfo
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) GetRequestUsername() *string {
+	return s.RequestUsername
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) GetResourceKind() *string {
 	return s.ResourceKind
 }
 
-func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog) GetResourceName() *string {
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) GetResourceName() *string {
 	return s.ResourceName
 }
 
-func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog) GetResourceNamespace() *string {
-	return s.ResourceNamespace
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) GetTime() *string {
+	return s.Time
 }
 
-func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog) SetClusterId(v string) *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog {
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) SetClusterId(v string) *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs {
 	s.ClusterId = &v
 	return s
 }
 
-func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog) SetConstraintKind(v string) *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog {
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) SetConstraintAction(v string) *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs {
+	s.ConstraintAction = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) SetConstraintApiVersion(v string) *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs {
+	s.ConstraintApiVersion = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) SetConstraintCategory(v string) *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs {
+	s.ConstraintCategory = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) SetConstraintGroup(v string) *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs {
+	s.ConstraintGroup = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) SetConstraintKind(v string) *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs {
 	s.ConstraintKind = &v
 	return s
 }
 
-func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog) SetMsg(v string) *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog {
-	s.Msg = &v
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) SetConstraintName(v string) *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs {
+	s.ConstraintName = &v
 	return s
 }
 
-func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog) SetResourceKind(v string) *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog {
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) SetEventMsg(v string) *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs {
+	s.EventMsg = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) SetEventType(v string) *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs {
+	s.EventType = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) SetRequestUid(v string) *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs {
+	s.RequestUid = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) SetRequestUserinfo(v string) *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs {
+	s.RequestUserinfo = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) SetRequestUsername(v string) *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs {
+	s.RequestUsername = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) SetResourceKind(v string) *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs {
 	s.ResourceKind = &v
 	return s
 }
 
-func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog) SetResourceName(v string) *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog {
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) SetResourceName(v string) *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs {
 	s.ResourceName = &v
 	return s
 }
 
-func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog) SetResourceNamespace(v string) *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog {
-	s.ResourceNamespace = &v
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) SetTime(v string) *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs {
+	s.Time = &v
 	return s
 }
 
-func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLog) Validate() error {
+func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -300,319 +724,5 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyOnState) SetTotal(v int32)
 }
 
 func (s *DescribePolicyGovernanceInClusterResponseBodyOnState) Validate() error {
-	return dara.Validate(s)
-}
-
-type DescribePolicyGovernanceInClusterResponseBodyTotalViolations struct {
-	// Details about the blocking events that are triggered by the policies of each severity level.
-	Deny *DescribePolicyGovernanceInClusterResponseBodyTotalViolationsDeny `json:"deny,omitempty" xml:"deny,omitempty" type:"Struct"`
-	// Details about the alerting events that are triggered by the policies of each severity level.
-	Warn *DescribePolicyGovernanceInClusterResponseBodyTotalViolationsWarn `json:"warn,omitempty" xml:"warn,omitempty" type:"Struct"`
-}
-
-func (s DescribePolicyGovernanceInClusterResponseBodyTotalViolations) String() string {
-	return dara.Prettify(s)
-}
-
-func (s DescribePolicyGovernanceInClusterResponseBodyTotalViolations) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyTotalViolations) GetDeny() *DescribePolicyGovernanceInClusterResponseBodyTotalViolationsDeny {
-	return s.Deny
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyTotalViolations) GetWarn() *DescribePolicyGovernanceInClusterResponseBodyTotalViolationsWarn {
-	return s.Warn
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyTotalViolations) SetDeny(v *DescribePolicyGovernanceInClusterResponseBodyTotalViolationsDeny) *DescribePolicyGovernanceInClusterResponseBodyTotalViolations {
-	s.Deny = v
-	return s
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyTotalViolations) SetWarn(v *DescribePolicyGovernanceInClusterResponseBodyTotalViolationsWarn) *DescribePolicyGovernanceInClusterResponseBodyTotalViolations {
-	s.Warn = v
-	return s
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyTotalViolations) Validate() error {
-	return dara.Validate(s)
-}
-
-type DescribePolicyGovernanceInClusterResponseBodyTotalViolationsDeny struct {
-	// The severity level of the policy.
-	//
-	// example:
-	//
-	// high
-	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
-	// The number of blocking events that are triggered.
-	//
-	// example:
-	//
-	// 0
-	Violations *int64 `json:"violations,omitempty" xml:"violations,omitempty"`
-}
-
-func (s DescribePolicyGovernanceInClusterResponseBodyTotalViolationsDeny) String() string {
-	return dara.Prettify(s)
-}
-
-func (s DescribePolicyGovernanceInClusterResponseBodyTotalViolationsDeny) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyTotalViolationsDeny) GetSeverity() *string {
-	return s.Severity
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyTotalViolationsDeny) GetViolations() *int64 {
-	return s.Violations
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyTotalViolationsDeny) SetSeverity(v string) *DescribePolicyGovernanceInClusterResponseBodyTotalViolationsDeny {
-	s.Severity = &v
-	return s
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyTotalViolationsDeny) SetViolations(v int64) *DescribePolicyGovernanceInClusterResponseBodyTotalViolationsDeny {
-	s.Violations = &v
-	return s
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyTotalViolationsDeny) Validate() error {
-	return dara.Validate(s)
-}
-
-type DescribePolicyGovernanceInClusterResponseBodyTotalViolationsWarn struct {
-	// The severity level of the policy.
-	//
-	// example:
-	//
-	// low
-	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
-	// The number of alerting events that are triggered.
-	//
-	// example:
-	//
-	// 5
-	Violations *int64 `json:"violations,omitempty" xml:"violations,omitempty"`
-}
-
-func (s DescribePolicyGovernanceInClusterResponseBodyTotalViolationsWarn) String() string {
-	return dara.Prettify(s)
-}
-
-func (s DescribePolicyGovernanceInClusterResponseBodyTotalViolationsWarn) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyTotalViolationsWarn) GetSeverity() *string {
-	return s.Severity
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyTotalViolationsWarn) GetViolations() *int64 {
-	return s.Violations
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyTotalViolationsWarn) SetSeverity(v string) *DescribePolicyGovernanceInClusterResponseBodyTotalViolationsWarn {
-	s.Severity = &v
-	return s
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyTotalViolationsWarn) SetViolations(v int64) *DescribePolicyGovernanceInClusterResponseBodyTotalViolationsWarn {
-	s.Violations = &v
-	return s
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyTotalViolationsWarn) Validate() error {
-	return dara.Validate(s)
-}
-
-type DescribePolicyGovernanceInClusterResponseBodyViolations struct {
-	// Details about the blocking events that are triggered by each policy.
-	Deny *DescribePolicyGovernanceInClusterResponseBodyViolationsDeny `json:"deny,omitempty" xml:"deny,omitempty" type:"Struct"`
-	// Details about the alerting events that are triggered by the policies of each severity level.
-	Warn *DescribePolicyGovernanceInClusterResponseBodyViolationsWarn `json:"warn,omitempty" xml:"warn,omitempty" type:"Struct"`
-}
-
-func (s DescribePolicyGovernanceInClusterResponseBodyViolations) String() string {
-	return dara.Prettify(s)
-}
-
-func (s DescribePolicyGovernanceInClusterResponseBodyViolations) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyViolations) GetDeny() *DescribePolicyGovernanceInClusterResponseBodyViolationsDeny {
-	return s.Deny
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyViolations) GetWarn() *DescribePolicyGovernanceInClusterResponseBodyViolationsWarn {
-	return s.Warn
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyViolations) SetDeny(v *DescribePolicyGovernanceInClusterResponseBodyViolationsDeny) *DescribePolicyGovernanceInClusterResponseBodyViolations {
-	s.Deny = v
-	return s
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyViolations) SetWarn(v *DescribePolicyGovernanceInClusterResponseBodyViolationsWarn) *DescribePolicyGovernanceInClusterResponseBodyViolations {
-	s.Warn = v
-	return s
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyViolations) Validate() error {
-	return dara.Validate(s)
-}
-
-type DescribePolicyGovernanceInClusterResponseBodyViolationsDeny struct {
-	// The policy description.
-	//
-	// example:
-	//
-	// Requires container images to begin with a repo string from a specified list.
-	PolicyDescription *string `json:"policyDescription,omitempty" xml:"policyDescription,omitempty"`
-	// The policy name.
-	//
-	// example:
-	//
-	// policy-gatekeeper-ackallowedrepos
-	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
-	// The severity level of the policy.
-	//
-	// example:
-	//
-	// high
-	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
-	// The total number of blocking events that are triggered by the policy.
-	//
-	// example:
-	//
-	// 11
-	Violations *int64 `json:"violations,omitempty" xml:"violations,omitempty"`
-}
-
-func (s DescribePolicyGovernanceInClusterResponseBodyViolationsDeny) String() string {
-	return dara.Prettify(s)
-}
-
-func (s DescribePolicyGovernanceInClusterResponseBodyViolationsDeny) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyViolationsDeny) GetPolicyDescription() *string {
-	return s.PolicyDescription
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyViolationsDeny) GetPolicyName() *string {
-	return s.PolicyName
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyViolationsDeny) GetSeverity() *string {
-	return s.Severity
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyViolationsDeny) GetViolations() *int64 {
-	return s.Violations
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyViolationsDeny) SetPolicyDescription(v string) *DescribePolicyGovernanceInClusterResponseBodyViolationsDeny {
-	s.PolicyDescription = &v
-	return s
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyViolationsDeny) SetPolicyName(v string) *DescribePolicyGovernanceInClusterResponseBodyViolationsDeny {
-	s.PolicyName = &v
-	return s
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyViolationsDeny) SetSeverity(v string) *DescribePolicyGovernanceInClusterResponseBodyViolationsDeny {
-	s.Severity = &v
-	return s
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyViolationsDeny) SetViolations(v int64) *DescribePolicyGovernanceInClusterResponseBodyViolationsDeny {
-	s.Violations = &v
-	return s
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyViolationsDeny) Validate() error {
-	return dara.Validate(s)
-}
-
-type DescribePolicyGovernanceInClusterResponseBodyViolationsWarn struct {
-	// The policy description.
-	//
-	// example:
-	//
-	// Controls Linux capabilities.
-	PolicyDescription *string `json:"policyDescription,omitempty" xml:"policyDescription,omitempty"`
-	// The policy name.
-	//
-	// example:
-	//
-	// policy-gatekeeper-ackpspcapabilities
-	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
-	// The severity level of the policy.
-	//
-	// example:
-	//
-	// high
-	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
-	// The total number of alerting events that are triggered by the policy.
-	//
-	// example:
-	//
-	// 81
-	Violations *int64 `json:"violations,omitempty" xml:"violations,omitempty"`
-}
-
-func (s DescribePolicyGovernanceInClusterResponseBodyViolationsWarn) String() string {
-	return dara.Prettify(s)
-}
-
-func (s DescribePolicyGovernanceInClusterResponseBodyViolationsWarn) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyViolationsWarn) GetPolicyDescription() *string {
-	return s.PolicyDescription
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyViolationsWarn) GetPolicyName() *string {
-	return s.PolicyName
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyViolationsWarn) GetSeverity() *string {
-	return s.Severity
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyViolationsWarn) GetViolations() *int64 {
-	return s.Violations
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyViolationsWarn) SetPolicyDescription(v string) *DescribePolicyGovernanceInClusterResponseBodyViolationsWarn {
-	s.PolicyDescription = &v
-	return s
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyViolationsWarn) SetPolicyName(v string) *DescribePolicyGovernanceInClusterResponseBodyViolationsWarn {
-	s.PolicyName = &v
-	return s
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyViolationsWarn) SetSeverity(v string) *DescribePolicyGovernanceInClusterResponseBodyViolationsWarn {
-	s.Severity = &v
-	return s
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyViolationsWarn) SetViolations(v int64) *DescribePolicyGovernanceInClusterResponseBodyViolationsWarn {
-	s.Violations = &v
-	return s
-}
-
-func (s *DescribePolicyGovernanceInClusterResponseBodyViolationsWarn) Validate() error {
 	return dara.Validate(s)
 }

@@ -260,7 +260,57 @@ func (s *CreateClusterNodePoolRequest) SetTeeConfig(v *CreateClusterNodePoolRequ
 }
 
 func (s *CreateClusterNodePoolRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AutoMode != nil {
+		if err := s.AutoMode.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AutoScaling != nil {
+		if err := s.AutoScaling.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EfloNodeGroup != nil {
+		if err := s.EfloNodeGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InterconnectConfig != nil {
+		if err := s.InterconnectConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.KubernetesConfig != nil {
+		if err := s.KubernetesConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Management != nil {
+		if err := s.Management.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeConfig != nil {
+		if err := s.NodeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodepoolInfo != nil {
+		if err := s.NodepoolInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScalingGroup != nil {
+		if err := s.ScalingGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TeeConfig != nil {
+		if err := s.TeeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateClusterNodePoolRequestAutoMode struct {
@@ -777,7 +827,25 @@ func (s *CreateClusterNodePoolRequestKubernetesConfig) SetUserData(v string) *Cr
 }
 
 func (s *CreateClusterNodePoolRequestKubernetesConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Taints != nil {
+		for _, item := range s.Taints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateClusterNodePoolRequestManagement struct {
@@ -922,7 +990,27 @@ func (s *CreateClusterNodePoolRequestManagement) SetUpgradeConfig(v *CreateClust
 }
 
 func (s *CreateClusterNodePoolRequestManagement) Validate() error {
-	return dara.Validate(s)
+	if s.AutoRepairPolicy != nil {
+		if err := s.AutoRepairPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AutoUpgradePolicy != nil {
+		if err := s.AutoUpgradePolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AutoVulFixPolicy != nil {
+		if err := s.AutoVulFixPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UpgradeConfig != nil {
+		if err := s.UpgradeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateClusterNodePoolRequestManagementAutoRepairPolicy struct {
@@ -1226,7 +1314,12 @@ func (s *CreateClusterNodePoolRequestNodeConfig) SetKubeletConfiguration(v *Kube
 }
 
 func (s *CreateClusterNodePoolRequestNodeConfig) Validate() error {
-	return dara.Validate(s)
+	if s.KubeletConfiguration != nil {
+		if err := s.KubeletConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateClusterNodePoolRequestNodepoolInfo struct {
@@ -2153,7 +2246,58 @@ func (s *CreateClusterNodePoolRequestScalingGroup) SetVswitchIds(v []*string) *C
 }
 
 func (s *CreateClusterNodePoolRequestScalingGroup) Validate() error {
-	return dara.Validate(s)
+	if s.DataDisks != nil {
+		for _, item := range s.DataDisks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InstanceMetadataOptions != nil {
+		if err := s.InstanceMetadataOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstancePatterns != nil {
+		for _, item := range s.InstancePatterns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PrivatePoolOptions != nil {
+		if err := s.PrivatePoolOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourcePoolOptions != nil {
+		if err := s.ResourcePoolOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SpotPriceLimit != nil {
+		for _, item := range s.SpotPriceLimit {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions struct {

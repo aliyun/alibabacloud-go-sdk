@@ -136,7 +136,12 @@ func (s *DescribeUserQuotaResponseBody) SetQuotas(v map[string]*QuotasValue) *De
 }
 
 func (s *DescribeUserQuotaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EdgeImprovedNodepoolQuota != nil {
+		if err := s.EdgeImprovedNodepoolQuota.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeUserQuotaResponseBodyEdgeImprovedNodepoolQuota struct {

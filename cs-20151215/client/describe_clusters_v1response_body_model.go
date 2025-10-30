@@ -49,7 +49,21 @@ func (s *DescribeClustersV1ResponseBody) SetPageInfo(v *DescribeClustersV1Respon
 }
 
 func (s *DescribeClustersV1ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Clusters != nil {
+		for _, item := range s.Clusters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClustersV1ResponseBodyClusters struct {
@@ -671,7 +685,26 @@ func (s *DescribeClustersV1ResponseBodyClusters) SetZoneId(v string) *DescribeCl
 }
 
 func (s *DescribeClustersV1ResponseBodyClusters) Validate() error {
-	return dara.Validate(s)
+	if s.MaintenanceWindow != nil {
+		if err := s.MaintenanceWindow.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OperationPolicy != nil {
+		if err := s.OperationPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClustersV1ResponseBodyClustersOperationPolicy struct {
@@ -697,7 +730,12 @@ func (s *DescribeClustersV1ResponseBodyClustersOperationPolicy) SetClusterAutoUp
 }
 
 func (s *DescribeClustersV1ResponseBodyClustersOperationPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterAutoUpgrade != nil {
+		if err := s.ClusterAutoUpgrade.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClustersV1ResponseBodyClustersOperationPolicyClusterAutoUpgrade struct {

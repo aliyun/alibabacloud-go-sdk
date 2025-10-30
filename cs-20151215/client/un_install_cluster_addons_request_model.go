@@ -36,7 +36,16 @@ func (s *UnInstallClusterAddonsRequest) SetAddons(v []*UnInstallClusterAddonsReq
 }
 
 func (s *UnInstallClusterAddonsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Addons != nil {
+		for _, item := range s.Addons {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UnInstallClusterAddonsRequestAddons struct {

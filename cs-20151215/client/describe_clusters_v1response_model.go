@@ -59,5 +59,10 @@ func (s *DescribeClustersV1Response) SetBody(v *DescribeClustersV1ResponseBody) 
 }
 
 func (s *DescribeClustersV1Response) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

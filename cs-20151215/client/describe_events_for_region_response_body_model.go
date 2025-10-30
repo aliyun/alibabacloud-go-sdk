@@ -49,7 +49,21 @@ func (s *DescribeEventsForRegionResponseBody) SetPageInfo(v *DescribeEventsForRe
 }
 
 func (s *DescribeEventsForRegionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Events != nil {
+		for _, item := range s.Events {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventsForRegionResponseBodyEvents struct {
@@ -161,7 +175,12 @@ func (s *DescribeEventsForRegionResponseBodyEvents) SetType(v string) *DescribeE
 }
 
 func (s *DescribeEventsForRegionResponseBodyEvents) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventsForRegionResponseBodyEventsData struct {

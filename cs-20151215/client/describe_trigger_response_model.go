@@ -59,7 +59,16 @@ func (s *DescribeTriggerResponse) SetBody(v []*DescribeTriggerResponseBody) *Des
 }
 
 func (s *DescribeTriggerResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		for _, item := range s.Body {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTriggerResponseBody struct {

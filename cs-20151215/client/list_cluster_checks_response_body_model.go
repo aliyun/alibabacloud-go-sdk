@@ -36,7 +36,16 @@ func (s *ListClusterChecksResponseBody) SetChecks(v []*ListClusterChecksResponse
 }
 
 func (s *ListClusterChecksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Checks != nil {
+		for _, item := range s.Checks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListClusterChecksResponseBodyChecks struct {

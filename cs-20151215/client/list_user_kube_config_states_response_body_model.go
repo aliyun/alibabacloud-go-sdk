@@ -49,7 +49,21 @@ func (s *ListUserKubeConfigStatesResponseBody) SetStates(v []*ListUserKubeConfig
 }
 
 func (s *ListUserKubeConfigStatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Page != nil {
+		if err := s.Page.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.States != nil {
+		for _, item := range s.States {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserKubeConfigStatesResponseBodyPage struct {

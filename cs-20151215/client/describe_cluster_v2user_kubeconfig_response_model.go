@@ -59,5 +59,10 @@ func (s *DescribeClusterV2UserKubeconfigResponse) SetBody(v *DescribeClusterV2Us
 }
 
 func (s *DescribeClusterV2UserKubeconfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

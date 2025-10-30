@@ -36,5 +36,14 @@ func (s *ModifyClusterTagsRequest) SetBody(v []*Tag) *ModifyClusterTagsRequest {
 }
 
 func (s *ModifyClusterTagsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		for _, item := range s.Body {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

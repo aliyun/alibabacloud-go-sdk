@@ -36,7 +36,16 @@ func (s *CheckServiceRoleResponseBody) SetRoles(v []*CheckServiceRoleResponseBod
 }
 
 func (s *CheckServiceRoleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Roles != nil {
+		for _, item := range s.Roles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CheckServiceRoleResponseBodyRoles struct {

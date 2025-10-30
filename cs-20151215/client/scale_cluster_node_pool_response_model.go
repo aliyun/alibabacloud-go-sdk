@@ -59,5 +59,10 @@ func (s *ScaleClusterNodePoolResponse) SetBody(v *ScaleClusterNodePoolResponseBo
 }
 
 func (s *ScaleClusterNodePoolResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

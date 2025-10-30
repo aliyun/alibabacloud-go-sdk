@@ -122,7 +122,12 @@ func (s *GetUpgradeStatusResponseBody) SetUpgradeTask(v *GetUpgradeStatusRespons
 }
 
 func (s *GetUpgradeStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UpgradeTask != nil {
+		if err := s.UpgradeTask.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUpgradeStatusResponseBodyUpgradeTask struct {

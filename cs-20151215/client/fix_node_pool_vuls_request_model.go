@@ -79,7 +79,12 @@ func (s *FixNodePoolVulsRequest) SetVuls(v []*string) *FixNodePoolVulsRequest {
 }
 
 func (s *FixNodePoolVulsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RolloutPolicy != nil {
+		if err := s.RolloutPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FixNodePoolVulsRequestRolloutPolicy struct {

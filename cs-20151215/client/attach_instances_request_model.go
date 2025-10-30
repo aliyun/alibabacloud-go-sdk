@@ -286,5 +286,19 @@ func (s *AttachInstancesRequest) SetUserData(v string) *AttachInstancesRequest {
 }
 
 func (s *AttachInstancesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Runtime != nil {
+		if err := s.Runtime.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

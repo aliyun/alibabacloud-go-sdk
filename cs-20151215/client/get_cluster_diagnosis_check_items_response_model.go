@@ -59,5 +59,10 @@ func (s *GetClusterDiagnosisCheckItemsResponse) SetBody(v *GetClusterDiagnosisCh
 }
 
 func (s *GetClusterDiagnosisCheckItemsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

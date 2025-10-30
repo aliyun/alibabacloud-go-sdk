@@ -226,7 +226,44 @@ func (s *DescribeTaskInfoResponseBody) SetUpdated(v string) *DescribeTaskInfoRes
 }
 
 func (s *DescribeTaskInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Error != nil {
+		if err := s.Error.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Events != nil {
+		for _, item := range s.Events {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Stages != nil {
+		for _, item := range s.Stages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Target != nil {
+		if err := s.Target.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TaskResult != nil {
+		for _, item := range s.TaskResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTaskInfoResponseBodyError struct {

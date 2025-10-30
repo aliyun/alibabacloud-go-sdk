@@ -59,5 +59,10 @@ func (s *CheckServiceRoleResponse) SetBody(v *CheckServiceRoleResponseBody) *Che
 }
 
 func (s *CheckServiceRoleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

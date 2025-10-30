@@ -72,7 +72,16 @@ func (s *RepairClusterNodePoolRequest) SetOperations(v []*RepairClusterNodePoolR
 }
 
 func (s *RepairClusterNodePoolRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Operations != nil {
+		for _, item := range s.Operations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RepairClusterNodePoolRequestOperations struct {

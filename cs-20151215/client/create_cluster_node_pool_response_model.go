@@ -59,5 +59,10 @@ func (s *CreateClusterNodePoolResponse) SetBody(v *CreateClusterNodePoolResponse
 }
 
 func (s *CreateClusterNodePoolResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

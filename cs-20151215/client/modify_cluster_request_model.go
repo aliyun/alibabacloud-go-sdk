@@ -379,7 +379,32 @@ func (s *ModifyClusterRequest) SetVswitchIds(v []*string) *ModifyClusterRequest 
 }
 
 func (s *ModifyClusterRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ApiServerCustomCertSans != nil {
+		if err := s.ApiServerCustomCertSans.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ControlPlaneConfig != nil {
+		if err := s.ControlPlaneConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MaintenanceWindow != nil {
+		if err := s.MaintenanceWindow.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OperationPolicy != nil {
+		if err := s.OperationPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SystemEventsLogging != nil {
+		if err := s.SystemEventsLogging.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyClusterRequestApiServerCustomCertSans struct {
@@ -891,7 +916,12 @@ func (s *ModifyClusterRequestOperationPolicy) SetClusterAutoUpgrade(v *ModifyClu
 }
 
 func (s *ModifyClusterRequestOperationPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterAutoUpgrade != nil {
+		if err := s.ClusterAutoUpgrade.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyClusterRequestOperationPolicyClusterAutoUpgrade struct {

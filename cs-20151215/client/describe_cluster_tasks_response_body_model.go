@@ -66,7 +66,21 @@ func (s *DescribeClusterTasksResponseBody) SetTasks(v []*DescribeClusterTasksRes
 }
 
 func (s *DescribeClusterTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tasks != nil {
+		for _, item := range s.Tasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClusterTasksResponseBodyPageInfo struct {
@@ -227,7 +241,12 @@ func (s *DescribeClusterTasksResponseBodyTasks) SetUpdated(v string) *DescribeCl
 }
 
 func (s *DescribeClusterTasksResponseBodyTasks) Validate() error {
-	return dara.Validate(s)
+	if s.Error != nil {
+		if err := s.Error.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterTasksResponseBodyTasksError struct {

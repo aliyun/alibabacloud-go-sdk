@@ -59,7 +59,16 @@ func (s *DescribeKubernetesVersionMetadataResponse) SetBody(v []*DescribeKuberne
 }
 
 func (s *DescribeKubernetesVersionMetadataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		for _, item := range s.Body {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeKubernetesVersionMetadataResponseBody struct {
@@ -211,7 +220,25 @@ func (s *DescribeKubernetesVersionMetadataResponseBody) SetUpgradableVersions(v 
 }
 
 func (s *DescribeKubernetesVersionMetadataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Images != nil {
+		for _, item := range s.Images {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Runtimes != nil {
+		for _, item := range s.Runtimes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeKubernetesVersionMetadataResponseBodyImages struct {

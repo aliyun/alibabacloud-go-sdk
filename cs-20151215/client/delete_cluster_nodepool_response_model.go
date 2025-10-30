@@ -59,5 +59,10 @@ func (s *DeleteClusterNodepoolResponse) SetBody(v *DeleteClusterNodepoolResponse
 }
 
 func (s *DeleteClusterNodepoolResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

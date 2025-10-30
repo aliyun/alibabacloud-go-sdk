@@ -49,7 +49,21 @@ func (s *DescribeClustersForRegionResponseBody) SetPageInfo(v *DescribeClustersF
 }
 
 func (s *DescribeClustersForRegionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Clusters != nil {
+		for _, item := range s.Clusters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClustersForRegionResponseBodyClusters struct {
@@ -485,7 +499,16 @@ func (s *DescribeClustersForRegionResponseBodyClusters) SetVswitchIds(v []*strin
 }
 
 func (s *DescribeClustersForRegionResponseBodyClusters) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClustersForRegionResponseBodyPageInfo struct {

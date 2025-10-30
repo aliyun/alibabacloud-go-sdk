@@ -36,7 +36,16 @@ func (s *UpgradeClusterAddonsRequest) SetBody(v []*UpgradeClusterAddonsRequestBo
 }
 
 func (s *UpgradeClusterAddonsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		for _, item := range s.Body {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpgradeClusterAddonsRequestBody struct {

@@ -114,7 +114,12 @@ func (s *UpgradeClusterRequest) SetVersion(v string) *UpgradeClusterRequest {
 }
 
 func (s *UpgradeClusterRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RollingPolicy != nil {
+		if err := s.RollingPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpgradeClusterRequestRollingPolicy struct {

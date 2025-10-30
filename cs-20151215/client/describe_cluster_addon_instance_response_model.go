@@ -59,5 +59,10 @@ func (s *DescribeClusterAddonInstanceResponse) SetBody(v *DescribeClusterAddonIn
 }
 
 func (s *DescribeClusterAddonInstanceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -36,7 +36,16 @@ func (s *DescribeClusterVulsResponseBody) SetVulRecords(v []*DescribeClusterVuls
 }
 
 func (s *DescribeClusterVulsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VulRecords != nil {
+		for _, item := range s.VulRecords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClusterVulsResponseBodyVulRecords struct {

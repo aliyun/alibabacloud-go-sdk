@@ -97,7 +97,16 @@ func (s *DeleteClusterRequest) SetRetainResources(v []*string) *DeleteClusterReq
 }
 
 func (s *DeleteClusterRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeleteOptions != nil {
+		for _, item := range s.DeleteOptions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteClusterRequestDeleteOptions struct {

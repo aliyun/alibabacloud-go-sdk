@@ -49,7 +49,21 @@ func (s *DescribeClusterNodesResponseBody) SetPage(v *DescribeClusterNodesRespon
 }
 
 func (s *DescribeClusterNodesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Page != nil {
+		if err := s.Page.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterNodesResponseBodyNodes struct {

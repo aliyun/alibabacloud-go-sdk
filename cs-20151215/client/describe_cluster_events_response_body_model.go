@@ -49,7 +49,21 @@ func (s *DescribeClusterEventsResponseBody) SetPageInfo(v *DescribeClusterEvents
 }
 
 func (s *DescribeClusterEventsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Events != nil {
+		for _, item := range s.Events {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterEventsResponseBodyEvents struct {
@@ -165,7 +179,12 @@ func (s *DescribeClusterEventsResponseBodyEvents) SetType(v string) *DescribeClu
 }
 
 func (s *DescribeClusterEventsResponseBodyEvents) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterEventsResponseBodyEventsData struct {

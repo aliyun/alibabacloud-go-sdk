@@ -59,7 +59,12 @@ func (s *DeleteAlertContactResponse) SetBody(v *DeleteAlertContactResponseBody) 
 }
 
 func (s *DeleteAlertContactResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteAlertContactResponseBody struct {
@@ -84,7 +89,16 @@ func (s *DeleteAlertContactResponseBody) SetResult(v []*DeleteAlertContactRespon
 }
 
 func (s *DeleteAlertContactResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteAlertContactResponseBodyResult struct {

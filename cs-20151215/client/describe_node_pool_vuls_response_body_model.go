@@ -57,7 +57,16 @@ func (s *DescribeNodePoolVulsResponseBody) SetVulsFixServicePurchased(v bool) *D
 }
 
 func (s *DescribeNodePoolVulsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VulRecords != nil {
+		for _, item := range s.VulRecords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNodePoolVulsResponseBodyVulRecords struct {
@@ -113,7 +122,16 @@ func (s *DescribeNodePoolVulsResponseBodyVulRecords) SetVulList(v []*DescribeNod
 }
 
 func (s *DescribeNodePoolVulsResponseBodyVulRecords) Validate() error {
-	return dara.Validate(s)
+	if s.VulList != nil {
+		for _, item := range s.VulList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNodePoolVulsResponseBodyVulRecordsVulList struct {
@@ -217,7 +235,16 @@ func (s *DescribeNodePoolVulsResponseBodyVulRecordsVulList) SetPackageList(v []*
 }
 
 func (s *DescribeNodePoolVulsResponseBodyVulRecordsVulList) Validate() error {
-	return dara.Validate(s)
+	if s.PackageList != nil {
+		for _, item := range s.PackageList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList struct {

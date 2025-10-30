@@ -234,7 +234,57 @@ func (s *DescribeClusterNodePoolDetailResponseBody) SetTeeConfig(v *DescribeClus
 }
 
 func (s *DescribeClusterNodePoolDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AutoMode != nil {
+		if err := s.AutoMode.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AutoScaling != nil {
+		if err := s.AutoScaling.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InterconnectConfig != nil {
+		if err := s.InterconnectConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.KubernetesConfig != nil {
+		if err := s.KubernetesConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Management != nil {
+		if err := s.Management.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeConfig != nil {
+		if err := s.NodeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodepoolInfo != nil {
+		if err := s.NodepoolInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScalingGroup != nil {
+		if err := s.ScalingGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Status != nil {
+		if err := s.Status.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TeeConfig != nil {
+		if err := s.TeeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterNodePoolDetailResponseBodyAutoMode struct {
@@ -667,7 +717,25 @@ func (s *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig) SetUserData(
 }
 
 func (s *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Taints != nil {
+		for _, item := range s.Taints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClusterNodePoolDetailResponseBodyManagement struct {
@@ -794,7 +862,27 @@ func (s *DescribeClusterNodePoolDetailResponseBodyManagement) SetUpgradeConfig(v
 }
 
 func (s *DescribeClusterNodePoolDetailResponseBodyManagement) Validate() error {
-	return dara.Validate(s)
+	if s.AutoRepairPolicy != nil {
+		if err := s.AutoRepairPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AutoUpgradePolicy != nil {
+		if err := s.AutoUpgradePolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AutoVulFixPolicy != nil {
+		if err := s.AutoVulFixPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UpgradeConfig != nil {
+		if err := s.UpgradeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy struct {
@@ -1036,7 +1124,17 @@ func (s *DescribeClusterNodePoolDetailResponseBodyNodeConfig) SetNodeOsConfig(v 
 }
 
 func (s *DescribeClusterNodePoolDetailResponseBodyNodeConfig) Validate() error {
-	return dara.Validate(s)
+	if s.KubeletConfiguration != nil {
+		if err := s.KubeletConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeOsConfig != nil {
+		if err := s.NodeOsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig struct {
@@ -1061,7 +1159,12 @@ func (s *DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig) SetHug
 }
 
 func (s *DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Hugepage != nil {
+		if err := s.Hugepage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterNodePoolDetailResponseBodyNodepoolInfo struct {
@@ -2021,7 +2124,58 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetVswitchIds(v 
 }
 
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) Validate() error {
-	return dara.Validate(s)
+	if s.DataDisks != nil {
+		for _, item := range s.DataDisks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InstanceMetadataOptions != nil {
+		if err := s.InstanceMetadataOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstancePatterns != nil {
+		for _, item := range s.InstancePatterns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PrivatePoolOptions != nil {
+		if err := s.PrivatePoolOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourcePoolOptions != nil {
+		if err := s.ResourcePoolOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SpotPriceLimit != nil {
+		for _, item := range s.SpotPriceLimit {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClusterNodePoolDetailResponseBodyScalingGroupPrivatePoolOptions struct {

@@ -164,7 +164,16 @@ func (s *DescribeAddonResponseBody) SetVersion(v string) *DescribeAddonResponseB
 }
 
 func (s *DescribeAddonResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NewerVersions != nil {
+		for _, item := range s.NewerVersions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAddonResponseBodyNewerVersions struct {

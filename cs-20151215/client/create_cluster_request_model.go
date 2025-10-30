@@ -2241,7 +2241,87 @@ func (s *CreateClusterRequest) SetZoneIds(v []*string) *CreateClusterRequest {
 }
 
 func (s *CreateClusterRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Addons != nil {
+		for _, item := range s.Addons {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AuditLogConfig != nil {
+		if err := s.AuditLogConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AutoMode != nil {
+		if err := s.AutoMode.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ControlPlaneConfig != nil {
+		if err := s.ControlPlaneConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MaintenanceWindow != nil {
+		if err := s.MaintenanceWindow.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Nodepools != nil {
+		for _, item := range s.Nodepools {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OperationPolicy != nil {
+		if err := s.OperationPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RrsaConfig != nil {
+		if err := s.RrsaConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Runtime != nil {
+		if err := s.Runtime.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Taints != nil {
+		for _, item := range s.Taints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.WorkerDataDisks != nil {
+		for _, item := range s.WorkerDataDisks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateClusterRequestAuditLogConfig struct {
@@ -2682,7 +2762,12 @@ func (s *CreateClusterRequestControlPlaneConfig) SetSystemDiskSnapshotPolicyId(v
 }
 
 func (s *CreateClusterRequestControlPlaneConfig) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceMetadataOptions != nil {
+		if err := s.InstanceMetadataOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateClusterRequestOperationPolicy struct {
@@ -2708,7 +2793,12 @@ func (s *CreateClusterRequestOperationPolicy) SetClusterAutoUpgrade(v *CreateClu
 }
 
 func (s *CreateClusterRequestOperationPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterAutoUpgrade != nil {
+		if err := s.ClusterAutoUpgrade.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateClusterRequestOperationPolicyClusterAutoUpgrade struct {

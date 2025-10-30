@@ -112,7 +112,12 @@ func (s *GetClusterAddonInstanceResponseBody) SetVersion(v string) *GetClusterAd
 }
 
 func (s *GetClusterAddonInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Logging != nil {
+		if err := s.Logging.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetClusterAddonInstanceResponseBodyLogging struct {

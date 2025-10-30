@@ -59,5 +59,10 @@ func (s *UpgradeClusterResponse) SetBody(v *UpgradeClusterResponseBody) *Upgrade
 }
 
 func (s *UpgradeClusterResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

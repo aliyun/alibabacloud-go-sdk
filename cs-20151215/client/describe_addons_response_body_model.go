@@ -49,7 +49,16 @@ func (s *DescribeAddonsResponseBody) SetStandardComponents(v map[string]*Standar
 }
 
 func (s *DescribeAddonsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ComponentGroups != nil {
+		for _, item := range s.ComponentGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAddonsResponseBodyComponentGroups struct {
@@ -90,7 +99,16 @@ func (s *DescribeAddonsResponseBodyComponentGroups) SetItems(v []*DescribeAddons
 }
 
 func (s *DescribeAddonsResponseBodyComponentGroups) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAddonsResponseBodyComponentGroupsItems struct {

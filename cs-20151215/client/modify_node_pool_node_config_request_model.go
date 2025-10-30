@@ -75,7 +75,27 @@ func (s *ModifyNodePoolNodeConfigRequest) SetRollingPolicy(v *ModifyNodePoolNode
 }
 
 func (s *ModifyNodePoolNodeConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ContainerdConfig != nil {
+		if err := s.ContainerdConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.KubeletConfig != nil {
+		if err := s.KubeletConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OsConfig != nil {
+		if err := s.OsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RollingPolicy != nil {
+		if err := s.RollingPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyNodePoolNodeConfigRequestOsConfig struct {
@@ -111,7 +131,12 @@ func (s *ModifyNodePoolNodeConfigRequestOsConfig) SetSysctl(v map[string]interfa
 }
 
 func (s *ModifyNodePoolNodeConfigRequestOsConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Hugepage != nil {
+		if err := s.Hugepage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyNodePoolNodeConfigRequestRollingPolicy struct {

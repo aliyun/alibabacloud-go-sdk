@@ -795,7 +795,41 @@ func (s *DescribeClusterDetailResponseBody) SetZoneId(v string) *DescribeCluster
 }
 
 func (s *DescribeClusterDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AutoMode != nil {
+		if err := s.AutoMode.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ControlPlaneConfig != nil {
+		if err := s.ControlPlaneConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MaintenanceWindow != nil {
+		if err := s.MaintenanceWindow.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OperationPolicy != nil {
+		if err := s.OperationPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RrsaConfig != nil {
+		if err := s.RrsaConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClusterDetailResponseBodyAutoMode struct {
@@ -1186,7 +1220,12 @@ func (s *DescribeClusterDetailResponseBodyControlPlaneConfig) SetSystemDiskSnaps
 }
 
 func (s *DescribeClusterDetailResponseBodyControlPlaneConfig) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceMetadataOptions != nil {
+		if err := s.InstanceMetadataOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterDetailResponseBodyOperationPolicy struct {
@@ -1212,7 +1251,12 @@ func (s *DescribeClusterDetailResponseBodyOperationPolicy) SetClusterAutoUpgrade
 }
 
 func (s *DescribeClusterDetailResponseBodyOperationPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterAutoUpgrade != nil {
+		if err := s.ClusterAutoUpgrade.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade struct {

@@ -36,7 +36,16 @@ func (s *ListOperationPlansResponseBody) SetPlans(v []*ListOperationPlansRespons
 }
 
 func (s *ListOperationPlansResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Plans != nil {
+		for _, item := range s.Plans {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListOperationPlansResponseBodyPlans struct {

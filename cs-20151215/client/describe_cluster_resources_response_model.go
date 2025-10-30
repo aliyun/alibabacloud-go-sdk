@@ -59,7 +59,16 @@ func (s *DescribeClusterResourcesResponse) SetBody(v []*DescribeClusterResources
 }
 
 func (s *DescribeClusterResourcesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		for _, item := range s.Body {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClusterResourcesResponseBody struct {
@@ -268,7 +277,26 @@ func (s *DescribeClusterResourcesResponseBody) SetExtraInfo(v map[string]interfa
 }
 
 func (s *DescribeClusterResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Dependencies != nil {
+		for _, item := range s.Dependencies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AssociatedObject != nil {
+		if err := s.AssociatedObject.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeleteBehavior != nil {
+		if err := s.DeleteBehavior.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterResourcesResponseBodyDependencies struct {

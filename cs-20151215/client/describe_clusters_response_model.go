@@ -59,7 +59,16 @@ func (s *DescribeClustersResponse) SetBody(v []*DescribeClustersResponseBody) *D
 }
 
 func (s *DescribeClustersResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		for _, item := range s.Body {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClustersResponseBody struct {
@@ -364,7 +373,16 @@ func (s *DescribeClustersResponseBody) SetZoneId(v string) *DescribeClustersResp
 }
 
 func (s *DescribeClustersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClustersResponseBodyTags struct {

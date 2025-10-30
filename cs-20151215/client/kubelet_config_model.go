@@ -470,7 +470,21 @@ func (s *KubeletConfig) SetTracing(v *KubeletConfigTracing) *KubeletConfig {
 }
 
 func (s *KubeletConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ReservedMemory != nil {
+		for _, item := range s.ReservedMemory {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tracing != nil {
+		if err := s.Tracing.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type KubeletConfigReservedMemory struct {

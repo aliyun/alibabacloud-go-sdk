@@ -155,7 +155,21 @@ func (s *GetClusterInspectReportDetailResponseBody) SetSummary(v *GetClusterInsp
 }
 
 func (s *GetClusterInspectReportDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CheckItemResults != nil {
+		for _, item := range s.CheckItemResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Summary != nil {
+		if err := s.Summary.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetClusterInspectReportDetailResponseBodyCheckItemResults struct {

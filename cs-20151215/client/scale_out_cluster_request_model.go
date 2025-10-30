@@ -416,7 +416,39 @@ func (s *ScaleOutClusterRequest) SetWorkerSystemDiskSize(v int64) *ScaleOutClust
 }
 
 func (s *ScaleOutClusterRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Runtime != nil {
+		if err := s.Runtime.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Taints != nil {
+		for _, item := range s.Taints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.WorkerDataDisks != nil {
+		for _, item := range s.WorkerDataDisks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ScaleOutClusterRequestWorkerDataDisks struct {

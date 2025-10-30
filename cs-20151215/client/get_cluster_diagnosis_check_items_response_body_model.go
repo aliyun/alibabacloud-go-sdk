@@ -87,7 +87,16 @@ func (s *GetClusterDiagnosisCheckItemsResponseBody) SetRequestId(v string) *GetC
 }
 
 func (s *GetClusterDiagnosisCheckItemsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CheckItems != nil {
+		for _, item := range s.CheckItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetClusterDiagnosisCheckItemsResponseBodyCheckItems struct {

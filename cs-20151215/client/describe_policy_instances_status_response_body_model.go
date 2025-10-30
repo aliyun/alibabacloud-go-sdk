@@ -53,7 +53,16 @@ func (s *DescribePolicyInstancesStatusResponseBody) SetPolicyInstances(v []*Desc
 }
 
 func (s *DescribePolicyInstancesStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PolicyInstances != nil {
+		for _, item := range s.PolicyInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePolicyInstancesStatusResponseBodyPolicyInstances struct {
