@@ -1089,7 +1089,8 @@ type GetInstanceResponseBodyCloudDisks struct {
 	// example:
 	//
 	// /workspace
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Path   *string                                  `json:"Path,omitempty" xml:"Path,omitempty"`
+	Status *GetInstanceResponseBodyCloudDisksStatus `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
 	// The usage mode of the cloud disk. The value rootfs indicates that the cloud disk is used as the root file system.
 	//
 	// example:
@@ -1118,6 +1119,10 @@ func (s *GetInstanceResponseBodyCloudDisks) GetPath() *string {
 	return s.Path
 }
 
+func (s *GetInstanceResponseBodyCloudDisks) GetStatus() *GetInstanceResponseBodyCloudDisksStatus {
+	return s.Status
+}
+
 func (s *GetInstanceResponseBodyCloudDisks) GetSubType() *string {
 	return s.SubType
 }
@@ -1137,12 +1142,67 @@ func (s *GetInstanceResponseBodyCloudDisks) SetPath(v string) *GetInstanceRespon
 	return s
 }
 
+func (s *GetInstanceResponseBodyCloudDisks) SetStatus(v *GetInstanceResponseBodyCloudDisksStatus) *GetInstanceResponseBodyCloudDisks {
+	s.Status = v
+	return s
+}
+
 func (s *GetInstanceResponseBodyCloudDisks) SetSubType(v string) *GetInstanceResponseBodyCloudDisks {
 	s.SubType = &v
 	return s
 }
 
 func (s *GetInstanceResponseBodyCloudDisks) Validate() error {
+	if s.Status != nil {
+		if err := s.Status.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetInstanceResponseBodyCloudDisksStatus struct {
+	Available *int64 `json:"Available,omitempty" xml:"Available,omitempty"`
+	Capacity  *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	Usage     *int64 `json:"Usage,omitempty" xml:"Usage,omitempty"`
+}
+
+func (s GetInstanceResponseBodyCloudDisksStatus) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyCloudDisksStatus) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyCloudDisksStatus) GetAvailable() *int64 {
+	return s.Available
+}
+
+func (s *GetInstanceResponseBodyCloudDisksStatus) GetCapacity() *int64 {
+	return s.Capacity
+}
+
+func (s *GetInstanceResponseBodyCloudDisksStatus) GetUsage() *int64 {
+	return s.Usage
+}
+
+func (s *GetInstanceResponseBodyCloudDisksStatus) SetAvailable(v int64) *GetInstanceResponseBodyCloudDisksStatus {
+	s.Available = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyCloudDisksStatus) SetCapacity(v int64) *GetInstanceResponseBodyCloudDisksStatus {
+	s.Capacity = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyCloudDisksStatus) SetUsage(v int64) *GetInstanceResponseBodyCloudDisksStatus {
+	s.Usage = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyCloudDisksStatus) Validate() error {
 	return dara.Validate(s)
 }
 
