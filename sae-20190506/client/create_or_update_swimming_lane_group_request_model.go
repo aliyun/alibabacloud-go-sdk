@@ -26,27 +26,46 @@ type iCreateOrUpdateSwimmingLaneGroupRequest interface {
 }
 
 type CreateOrUpdateSwimmingLaneGroupRequest struct {
+	// The ID of the baseline application.
 	AppIds []*string `json:"AppIds,omitempty" xml:"AppIds,omitempty" type:"Repeated"`
+	// The unique ID of the corresponding gateway.
+	//
 	// example:
 	//
 	// mse_ingresspost-cn-axc49******
 	EntryAppId *string `json:"EntryAppId,omitempty" xml:"EntryAppId,omitempty"`
+	// The application entry type (gateway type).
+	//
+	// 	- **apig:*	- cloud-native API Gateway
+	//
+	// 	- **mse:*	- Java Services Gateway
+	//
+	// 	- **mse-gw:*	- MSE cloud-native Gateway
+	//
 	// example:
 	//
 	// mse-gw
 	EntryAppType *string `json:"EntryAppType,omitempty" xml:"EntryAppType,omitempty"`
+	// The ID of the lane group. This is required when you update a lane group.
+	//
 	// example:
 	//
 	// 2047
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the lane group.
+	//
 	// example:
 	//
 	// mse-test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of a namespace.
+	//
 	// example:
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The end-to-end grayscale version. Valid values: 0 and 2 (recommended).
+	//
 	// example:
 	//
 	// 2

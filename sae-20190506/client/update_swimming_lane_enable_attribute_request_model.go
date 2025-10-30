@@ -20,18 +20,30 @@ type iUpdateSwimmingLaneEnableAttributeRequest interface {
 }
 
 type UpdateSwimmingLaneEnableAttributeRequest struct {
+	// Lane status:
+	//
+	// 	- true: enabled
+	//
+	// 	- false: disabled
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The ID of the lane group.
+	//
 	// example:
 	//
 	// 2074
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the lane.
+	//
 	// example:
 	//
 	// 9637
 	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+	// The ID of a namespace.
+	//
 	// example:
 	//
 	// cn-beijing:test

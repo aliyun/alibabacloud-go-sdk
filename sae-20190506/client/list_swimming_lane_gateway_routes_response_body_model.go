@@ -26,24 +26,56 @@ type iListSwimmingLaneGatewayRoutesResponseBody interface {
 }
 
 type ListSwimmingLaneGatewayRoutesResponseBody struct {
+	// The HTTP status code. Valid values:
+	//
+	// 	- **2xx**: The request was successful.
+	//
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
+	//
 	// example:
 	//
 	// 200
-	Code      *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*ListSwimmingLaneGatewayRoutesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrorCode *string                                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Responses.
+	Data []*ListSwimmingLaneGatewayRoutesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The status code. Value values:
+	//
+	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	//
+	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- in this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Additional information. Valid values:
+	//
+	// 	- The error message returned because the request is normal and **success*	- is returned.
+	//
+	// 	- If the request is abnormal, the specific exception error code is returned.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: Valid values:
+	//
+	// 	- **true**: The configurations were obtained.
+	//
+	// 	- **false**: The configurations failed to be queried.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the trace. This parameter is used to query the exact call information.
+	//
 	// example:
 	//
 	// ac1a0b2215622246421415014e****
@@ -135,14 +167,19 @@ func (s *ListSwimmingLaneGatewayRoutesResponseBody) Validate() error {
 }
 
 type ListSwimmingLaneGatewayRoutesResponseBodyData struct {
+	// The ID of the route.
+	//
 	// example:
 	//
 	// 16933
 	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	// The name of the route.
+	//
 	// example:
 	//
 	// test-route
-	RouteName      *string                                                      `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	// The routing rule.
 	RoutePredicate *ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicate `json:"RoutePredicate,omitempty" xml:"RoutePredicate,omitempty" type:"Struct"`
 }
 
@@ -191,6 +228,7 @@ func (s *ListSwimmingLaneGatewayRoutesResponseBodyData) Validate() error {
 }
 
 type ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicate struct {
+	// The path matching rule.
 	PathPredicate *ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicatePathPredicate `json:"PathPredicate,omitempty" xml:"PathPredicate,omitempty" type:"Struct"`
 }
 
@@ -221,10 +259,14 @@ func (s *ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicate) Validate()
 }
 
 type ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicatePathPredicate struct {
+	// The route URL.
+	//
 	// example:
 	//
 	// /Path
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The type of the protection rule.
+	//
 	// example:
 	//
 	// Header

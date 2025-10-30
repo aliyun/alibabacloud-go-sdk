@@ -18,16 +18,22 @@ type iListApplicationsForSwimmingLaneRequest interface {
 }
 
 type ListApplicationsForSwimmingLaneRequest struct {
+	// The ID of the application group. You can call the [DescribeApplicationGroups](https://help.aliyun.com/document_detail/126249.html) operation to obtain the ID.
+	//
 	// example:
 	//
 	// b2a8a925-477a-eswa-b823-d5e22500****
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of a namespace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The canary tag
+	//
 	// example:
 	//
 	// {"alicloud.service.tag":"gray"}

@@ -30,32 +30,60 @@ type iCreateOrUpdateSwimmingLaneShrinkRequest interface {
 }
 
 type CreateOrUpdateSwimmingLaneShrinkRequest struct {
+	// The route configuration of the gateway.
+	//
+	// >  This parameter is required if the gateway entry of the lane group is Java.
 	AppEntryRuleShrink *string `json:"AppEntryRule,omitempty" xml:"AppEntryRule,omitempty"`
+	// Full-link Grayscale Mode:
+	//
+	// 	- 0: The request is routed based on the content of the request.
+	//
+	// 	- 1: routing based on percentages
+	//
 	// example:
 	//
 	// 0
 	CanaryModel *int32 `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
+	// Lane Status
+	//
+	// 	- true: enabled
+	//
+	// 	- false: disabled
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The ID of the lane group to which the lane belongs.
+	//
 	// example:
 	//
 	// b2a8a925-477a-eswa-b823-d5e22500****
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the lane.
+	//
 	// example:
 	//
 	// 13857
 	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+	// The name of the lane.
+	//
 	// example:
 	//
 	// test
 	LaneName *string `json:"LaneName,omitempty" xml:"LaneName,omitempty"`
+	// The tag of the lane.
+	//
 	// example:
 	//
 	// {"alicloud.service.tag":"g1"}
-	LaneTag                   *string `json:"LaneTag,omitempty" xml:"LaneTag,omitempty"`
+	LaneTag *string `json:"LaneTag,omitempty" xml:"LaneTag,omitempty"`
+	// The route configuration of the MSE gateway.
+	//
+	// >  If the **EntryAppType*	- is set to **apig*	- or **mse-gw**, it is required.
 	MseGatewayEntryRuleShrink *string `json:"MseGatewayEntryRule,omitempty" xml:"MseGatewayEntryRule,omitempty"`
+	// The namespace ID.
+	//
 	// example:
 	//
 	// cn-beijing:test

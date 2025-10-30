@@ -1866,7 +1866,7 @@ func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result 
 
 // Summary:
 //
-// 创建或者更新泳道
+// Creates or updates a lane.
 //
 // @param tmpReq - CreateOrUpdateSwimmingLaneRequest
 //
@@ -1955,7 +1955,7 @@ func (client *Client) CreateOrUpdateSwimmingLaneWithOptions(tmpReq *CreateOrUpda
 
 // Summary:
 //
-// 创建或者更新泳道
+// Creates or updates a lane.
 //
 // @param request - CreateOrUpdateSwimmingLaneRequest
 //
@@ -1974,7 +1974,7 @@ func (client *Client) CreateOrUpdateSwimmingLane(request *CreateOrUpdateSwimming
 
 // Summary:
 //
-// 创建或者更新泳道组
+// Creates or updates a lane group.
 //
 // @param tmpReq - CreateOrUpdateSwimmingLaneGroupRequest
 //
@@ -2051,7 +2051,7 @@ func (client *Client) CreateOrUpdateSwimmingLaneGroupWithOptions(tmpReq *CreateO
 
 // Summary:
 //
-// 创建或者更新泳道组
+// Creates or updates a lane group.
 //
 // @param request - CreateOrUpdateSwimmingLaneGroupRequest
 //
@@ -2708,7 +2708,7 @@ func (client *Client) DeleteIngress(request *DeleteIngressRequest) (_result *Del
 
 // Summary:
 //
-// 删除实例
+// Deletes an application instance.
 //
 // @param request - DeleteInstancesRequest
 //
@@ -2759,7 +2759,7 @@ func (client *Client) DeleteInstancesWithOptions(request *DeleteInstancesRequest
 
 // Summary:
 //
-// 删除实例
+// Deletes an application instance.
 //
 // @param request - DeleteInstancesRequest
 //
@@ -2984,7 +2984,7 @@ func (client *Client) DeleteSecret(request *DeleteSecretRequest) (_result *Delet
 
 // Summary:
 //
-// 删除泳道组
+// Deletes a lane group.
 //
 // @param request - DeleteSwimmingLaneGroupRequest
 //
@@ -3035,7 +3035,7 @@ func (client *Client) DeleteSwimmingLaneGroupWithOptions(request *DeleteSwimming
 
 // Summary:
 //
-// 删除泳道组
+// Deletes a lane group.
 //
 // @param request - DeleteSwimmingLaneGroupRequest
 //
@@ -4955,6 +4955,10 @@ func (client *Client) DescribeInstanceLogWithOptions(request *DescribeInstanceLo
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.Previous) {
+		query["Previous"] = request.Previous
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -5734,7 +5738,7 @@ func (client *Client) DescribeSecret(request *DescribeSecretRequest) (_result *D
 
 // Summary:
 //
-// 查询泳道详情
+// Queries details about swimlanes.
 //
 // @param request - DescribeSwimmingLaneRequest
 //
@@ -5789,7 +5793,7 @@ func (client *Client) DescribeSwimmingLaneWithOptions(request *DescribeSwimmingL
 
 // Summary:
 //
-// 查询泳道详情
+// Queries details about swimlanes.
 //
 // @param request - DescribeSwimmingLaneRequest
 //
@@ -6400,7 +6404,7 @@ func (client *Client) DisableApplicationScalingRule(request *DisableApplicationS
 
 // Summary:
 //
-// Disables the advanced monitoring feature of Application Real-Time Monitoring Service (ARMS).
+// Disable ARMS Advanced Edition monitoring.
 //
 // @param request - DowngradeApplicationApmServiceRequest
 //
@@ -6447,7 +6451,7 @@ func (client *Client) DowngradeApplicationApmServiceWithOptions(request *Downgra
 
 // Summary:
 //
-// Disables the advanced monitoring feature of Application Real-Time Monitoring Service (ARMS).
+// Disable ARMS Advanced Edition monitoring.
 //
 // @param request - DowngradeApplicationApmServiceRequest
 //
@@ -7204,7 +7208,7 @@ func (client *Client) GetWebshellToken(request *GetWebshellTokenRequest) (_resul
 
 // Summary:
 //
-// 查询所有泳道组
+// Queries all lane groups.
 //
 // @param request - ListAllSwimmingLaneGroupsRequest
 //
@@ -7251,7 +7255,7 @@ func (client *Client) ListAllSwimmingLaneGroupsWithOptions(request *ListAllSwimm
 
 // Summary:
 //
-// 查询所有泳道组
+// Queries all lane groups.
 //
 // @param request - ListAllSwimmingLaneGroupsRequest
 //
@@ -7270,7 +7274,7 @@ func (client *Client) ListAllSwimmingLaneGroups(request *ListAllSwimmingLaneGrou
 
 // Summary:
 //
-// 查询所有泳道
+// Queries all swimlanes.
 //
 // @param request - ListAllSwimmingLanesRequest
 //
@@ -7321,7 +7325,7 @@ func (client *Client) ListAllSwimmingLanesWithOptions(request *ListAllSwimmingLa
 
 // Summary:
 //
-// 查询所有泳道
+// Queries all swimlanes.
 //
 // @param request - ListAllSwimmingLanesRequest
 //
@@ -7782,7 +7786,7 @@ func (client *Client) ListApplications(request *ListApplicationsRequest) (_resul
 
 // Summary:
 //
-// 获取应用列表，供全链路灰度拉取应用列表
+// Obtains the application list for the end-to-end grayscale pull application list.
 //
 // @param request - ListApplicationsForSwimmingLaneRequest
 //
@@ -7837,7 +7841,7 @@ func (client *Client) ListApplicationsForSwimmingLaneWithOptions(request *ListAp
 
 // Summary:
 //
-// 获取应用列表，供全链路灰度拉取应用列表
+// Obtains the application list for the end-to-end grayscale pull application list.
 //
 // @param request - ListApplicationsForSwimmingLaneRequest
 //
@@ -8628,7 +8632,7 @@ func (client *Client) ListSecrets(request *ListSecretsRequest) (_result *ListSec
 
 // Summary:
 //
-// 查询泳道可选的网关路由
+// # Query the gateway routes that are available for a lane
 //
 // @param request - ListSwimmingLaneGatewayRoutesRequest
 //
@@ -8679,7 +8683,7 @@ func (client *Client) ListSwimmingLaneGatewayRoutesWithOptions(request *ListSwim
 
 // Summary:
 //
-// 查询泳道可选的网关路由
+// # Query the gateway routes that are available for a lane
 //
 // @param request - ListSwimmingLaneGatewayRoutesRequest
 //
@@ -8698,7 +8702,7 @@ func (client *Client) ListSwimmingLaneGatewayRoutes(request *ListSwimmingLaneGat
 
 // Summary:
 //
-// 查询所有泳道标签列表
+// Queries all lane tags.
 //
 // @param request - ListSwimmingLaneGroupTagsRequest
 //
@@ -8749,7 +8753,7 @@ func (client *Client) ListSwimmingLaneGroupTagsWithOptions(request *ListSwimming
 
 // Summary:
 //
-// 查询所有泳道标签列表
+// Queries all lane tags.
 //
 // @param request - ListSwimmingLaneGroupTagsRequest
 //
@@ -10627,7 +10631,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// 应用闲置模式更新
+// # Application Idle Mode Update
 //
 // @param request - UpdateAppModeRequest
 //
@@ -10686,7 +10690,7 @@ func (client *Client) UpdateAppModeWithOptions(request *UpdateAppModeRequest, he
 
 // Summary:
 //
-// 应用闲置模式更新
+// # Application Idle Mode Update
 //
 // @param request - UpdateAppModeRequest
 //
@@ -11649,6 +11653,80 @@ func (client *Client) UpdateNamespace(request *UpdateNamespaceRequest) (_result 
 
 // Summary:
 //
+// 更新命名空间级别sls配置
+//
+// @param request - UpdateNamespaceSlsConfigsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNamespaceSlsConfigsResponse
+func (client *Client) UpdateNamespaceSlsConfigsWithOptions(request *UpdateNamespaceSlsConfigsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateNamespaceSlsConfigsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NameSpaceShortId) {
+		query["NameSpaceShortId"] = request.NameSpaceShortId
+	}
+
+	if !dara.IsNil(request.NamespaceId) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !dara.IsNil(request.SlsConfigs) {
+		query["SlsConfigs"] = request.SlsConfigs
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateNamespaceSlsConfigs"),
+		Version:     dara.String("2019-05-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/cas/namespace/updateNamespaceSlsConfigs"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateNamespaceSlsConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新命名空间级别sls配置
+//
+// @param request - UpdateNamespaceSlsConfigsRequest
+//
+// @return UpdateNamespaceSlsConfigsResponse
+func (client *Client) UpdateNamespaceSlsConfigs(request *UpdateNamespaceSlsConfigsRequest) (_result *UpdateNamespaceSlsConfigsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateNamespaceSlsConfigsResponse{}
+	_body, _err := client.UpdateNamespaceSlsConfigsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // cn-beijing:test
 //
 // @param request - UpdateNamespaceVpcRequest
@@ -11819,7 +11897,7 @@ func (client *Client) UpdateSecret(request *UpdateSecretRequest) (_result *Updat
 
 // Summary:
 //
-// 更新泳道的启用属性
+// Update the enabled property of the swimlane.
 //
 // @param request - UpdateSwimmingLaneEnableAttributeRequest
 //
@@ -11878,7 +11956,7 @@ func (client *Client) UpdateSwimmingLaneEnableAttributeWithOptions(request *Upda
 
 // Summary:
 //
-// 更新泳道的启用属性
+// Update the enabled property of the swimlane.
 //
 // @param request - UpdateSwimmingLaneEnableAttributeRequest
 //

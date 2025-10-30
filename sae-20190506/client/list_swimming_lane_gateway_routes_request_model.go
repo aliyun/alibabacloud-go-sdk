@@ -16,10 +16,14 @@ type iListSwimmingLaneGatewayRoutesRequest interface {
 }
 
 type ListSwimmingLaneGatewayRoutesRequest struct {
+	// The unique ID of the gateway.
+	//
 	// example:
 	//
 	// gw-277c0727535f4aae917e48de0f******
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The ID of the namespace.
+	//
 	// example:
 	//
 	// cn-beijing:test

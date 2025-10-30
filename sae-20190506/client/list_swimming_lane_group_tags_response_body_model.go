@@ -26,24 +26,56 @@ type iListSwimmingLaneGroupTagsResponseBody interface {
 }
 
 type ListSwimmingLaneGroupTagsResponseBody struct {
+	// The HTTP status code or the error code. Valid values:
+	//
+	// 	- **2xx**: The request was successful.
+	//
+	// 	- **3xx**: Redirection.
+	//
+	// 	- **4xx**: Request error.
+	//
+	// 	- **5xx**: Server error.
+	//
 	// example:
 	//
 	// 200
-	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*ListSwimmingLaneGroupTagsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrorCode *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Responses.
+	Data []*ListSwimmingLaneGroupTagsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Error code. Valid values:
+	//
+	// 	- If the request is successful, no **ErrorCode*	- fields are returned.
+	//
+	// 	- Request failed: **ErrorCode*	- fields are returned. For more information, see **Error codes**.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Additional information. Valid values:
+	//
+	// 	- The error message returned because the request is normal and **success*	- is returned.
+	//
+	// 	- If the request is abnormal, the specific exception error code is returned.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 30375C38-F4ED-4135-A0AE-5C75DC7F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the data is successful. Valid values:
+	//
+	// 	- **true**: The request is successful.
+	//
+	// 	- **false**: Failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the trace. This parameter is used to query the exact call information.
+	//
 	// example:
 	//
 	// ac1a0b2215622920113732501e****
@@ -135,10 +167,14 @@ func (s *ListSwimmingLaneGroupTagsResponseBody) Validate() error {
 }
 
 type ListSwimmingLaneGroupTagsResponseBodyData struct {
+	// The metadata.
+	//
 	// example:
 	//
 	// {"version":"1.0.0","owner":"team-a"}
 	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The label of the lane.
+	//
 	// example:
 	//
 	// {"alicloud.service.tag":"g1"}

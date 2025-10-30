@@ -26,24 +26,56 @@ type iDescribeSwimmingLaneResponseBody interface {
 }
 
 type DescribeSwimmingLaneResponseBody struct {
+	// The HTTP status code or the error code. Valid values:
+	//
+	// 	- **2xx**: The request was successful.
+	//
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
+	//
 	// example:
 	//
 	// 200
-	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeSwimmingLaneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Responses.
+	Data *DescribeSwimmingLaneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The status code. Value values:
+	//
+	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	//
+	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- in this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The returned message. Valid values:
+	//
+	// 	- The error message returned because the request is normal and **success*	- is returned.
+	//
+	// 	- If the request is abnormal, the specific exception error code is returned.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 30375C38-F4ED-4135-A0AE-5C75DC7F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: Valid values:
+	//
+	// 	- **true**: The information was queried.
+	//
+	// 	- **false**: Query failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the trace. This parameter is used to query the exact call information.
+	//
 	// example:
 	//
 	// 0a98a02315955564772843261e****
@@ -131,32 +163,55 @@ func (s *DescribeSwimmingLaneResponseBody) Validate() error {
 }
 
 type DescribeSwimmingLaneResponseBodyData struct {
+	// Apply ingress rules.
 	AppEntryRule *DescribeSwimmingLaneResponseBodyDataAppEntryRule `json:"AppEntryRule,omitempty" xml:"AppEntryRule,omitempty" type:"Struct"`
-	Apps         []*DescribeSwimmingLaneResponseBodyDataApps       `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
+	// The apps.
+	Apps []*DescribeSwimmingLaneResponseBodyDataApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
+	// The routing mode for end-to-end canary release.
+	//
+	// 	- 0: routing based on request content
+	//
+	// 	- 1: routing based on percentages
+	//
 	// example:
 	//
 	// 0
 	CanaryModel *int32 `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
+	// Lane status:
+	//
+	// 	- true: enabled
+	//
+	// 	- false: disabled
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Whether the traffic rule is enabled.
+	//
 	// example:
 	//
 	// true
 	EnableRules *bool `json:"EnableRules,omitempty" xml:"EnableRules,omitempty"`
+	// The ID of the lane.
+	//
 	// example:
 	//
 	// 9488
 	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+	// The name of the lane group.
+	//
 	// example:
 	//
 	// mse-test
 	LaneName *string `json:"LaneName,omitempty" xml:"LaneName,omitempty"`
+	// The label of the lane.
+	//
 	// example:
 	//
 	// {"alicloud.service.tag":"g1"}
-	LaneTag             *string                                                  `json:"LaneTag,omitempty" xml:"LaneTag,omitempty"`
+	LaneTag *string `json:"LaneTag,omitempty" xml:"LaneTag,omitempty"`
+	// MSE gateway routes.
 	MseGatewayEntryRule *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule `json:"MseGatewayEntryRule,omitempty" xml:"MseGatewayEntryRule,omitempty" type:"Struct"`
 }
 
@@ -273,20 +328,33 @@ func (s *DescribeSwimmingLaneResponseBodyData) Validate() error {
 }
 
 type DescribeSwimmingLaneResponseBodyDataAppEntryRule struct {
+	// Logical connectors between conditions:
+	//
+	// 	- AND: All conditions are met at the same time.
+	//
+	// 	- OR: Any condition is met.
+	//
 	// example:
 	//
 	// AND
-	ConditionJoiner *string                                                       `json:"ConditionJoiner,omitempty" xml:"ConditionJoiner,omitempty"`
-	Conditions      []*DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	ConditionJoiner *string `json:"ConditionJoiner,omitempty" xml:"ConditionJoiner,omitempty"`
+	// The matching condition.
+	Conditions []*DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// Whether to enable proportional grayscale.
+	//
 	// example:
 	//
 	// true
-	IndependentPercentageEnable *bool     `json:"IndependentPercentageEnable,omitempty" xml:"IndependentPercentageEnable,omitempty"`
-	Paths                       []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	IndependentPercentageEnable *bool `json:"IndependentPercentageEnable,omitempty" xml:"IndependentPercentageEnable,omitempty"`
+	// The request path.
+	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	// The traffic ratio. Valid values: 0 to 100.
+	//
 	// example:
 	//
 	// 50
-	Percentage       *int32            `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// Traffic matching.
 	PercentageByPath map[string]*int32 `json:"PercentageByPath,omitempty" xml:"PercentageByPath,omitempty"`
 }
 
@@ -366,22 +434,31 @@ func (s *DescribeSwimmingLaneResponseBodyDataAppEntryRule) Validate() error {
 }
 
 type DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions struct {
+	// The matching rule.
+	//
 	// example:
 	//
 	// ==
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The name of the parameter.
+	//
 	// example:
 	//
 	// t
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Parameter type.
+	//
 	// example:
 	//
 	// Header
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The match value of the condition.
+	//
 	// example:
 	//
 	// g1
-	Value  *string   `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The match value of the condition.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -443,22 +520,32 @@ func (s *DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions) Validate() 
 }
 
 type DescribeSwimmingLaneResponseBodyDataApps struct {
+	// The ID of the application.
+	//
 	// example:
 	//
 	// 6b4c0f64-f679-4580-8105-91eac4******
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	//
 	// example:
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The ID of the MSE instance.
+	//
 	// example:
 	//
 	// mse-cn-53y49******
 	MseAppId *string `json:"MseAppId,omitempty" xml:"MseAppId,omitempty"`
+	// The name of the MSE instance.
+	//
 	// example:
 	//
 	// sae-test
 	MseAppName *string `json:"MseAppName,omitempty" xml:"MseAppName,omitempty"`
+	// The ID of the MSE namespace.
+	//
 	// example:
 	//
 	// 6733e538-d52f-48e6-91a4-192f91******
@@ -523,22 +610,32 @@ func (s *DescribeSwimmingLaneResponseBodyDataApps) Validate() error {
 }
 
 type DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule struct {
+	// The logical connector between conditions.
+	//
 	// example:
 	//
 	// AND
-	ConditionJoiner *string                                                              `json:"ConditionJoiner,omitempty" xml:"ConditionJoiner,omitempty"`
-	Conditions      []*DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	ConditionJoiner *string `json:"ConditionJoiner,omitempty" xml:"ConditionJoiner,omitempty"`
+	// The matching condition.
+	Conditions []*DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// Whether to enable proportional grayscale.
+	//
 	// example:
 	//
 	// true
 	IndependentPercentageEnable *bool `json:"IndependentPercentageEnable,omitempty" xml:"IndependentPercentageEnable,omitempty"`
+	// The proportion of path traffic.
+	//
 	// example:
 	//
 	// 100
-	Percentage        *int32                                                           `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	PercentageByRoute map[string]*int32                                                `json:"PercentageByRoute,omitempty" xml:"PercentageByRoute,omitempty"`
-	RouteIds          []*int64                                                         `json:"RouteIds,omitempty" xml:"RouteIds,omitempty" type:"Repeated"`
-	Routes            []*DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes `json:"Routes,omitempty" xml:"Routes,omitempty" type:"Repeated"`
+	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// The traffic configuration.
+	PercentageByRoute map[string]*int32 `json:"PercentageByRoute,omitempty" xml:"PercentageByRoute,omitempty"`
+	// The list of route IDs.
+	RouteIds []*int64 `json:"RouteIds,omitempty" xml:"RouteIds,omitempty" type:"Repeated"`
+	// The detailed configuration of the routing rule.
+	Routes []*DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes `json:"Routes,omitempty" xml:"Routes,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule) String() string {
@@ -635,18 +732,26 @@ func (s *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule) Validate() err
 }
 
 type DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleConditions struct {
+	// The matching rule.
+	//
 	// example:
 	//
 	// ==
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The parameter name.
+	//
 	// example:
 	//
 	// t
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the parameter.
+	//
 	// example:
 	//
 	// Header
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The match value of the condition.
+	//
 	// example:
 	//
 	// g1
@@ -702,14 +807,19 @@ func (s *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleConditions) Vali
 }
 
 type DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes struct {
+	// The route ID.
+	//
 	// example:
 	//
 	// 9504
 	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	// The name of the route.
+	//
 	// example:
 	//
 	// demo
-	RouteName      *string                                                                      `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	// The routing rule.
 	RoutePredicate *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate `json:"RoutePredicate,omitempty" xml:"RoutePredicate,omitempty" type:"Struct"`
 }
 
@@ -758,6 +868,7 @@ func (s *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes) Validate
 }
 
 type DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate struct {
+	// The path matching rule.
 	PathPredicate *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate `json:"PathPredicate,omitempty" xml:"PathPredicate,omitempty" type:"Struct"`
 }
 
@@ -788,10 +899,14 @@ func (s *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredi
 }
 
 type DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate struct {
+	// The path.
+	//
 	// example:
 	//
 	// /Path
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The matching rule.
+	//
 	// example:
 	//
 	// Header

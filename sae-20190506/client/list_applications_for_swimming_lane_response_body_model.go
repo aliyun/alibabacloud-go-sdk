@@ -24,20 +24,50 @@ type iListApplicationsForSwimmingLaneResponseBody interface {
 }
 
 type ListApplicationsForSwimmingLaneResponseBody struct {
+	// The HTTP status code or the error code. Valid values:
+	//
+	// 	- **2xx**: The request was successful.
+	//
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
+	//
 	// example:
 	//
 	// 200
-	Code      *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*ListApplicationsForSwimmingLaneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrorCode *string                                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of applications.
+	Data []*ListApplicationsForSwimmingLaneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The status code. Value values:
+	//
+	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	//
+	// 	- If the request failed, the **ErrorCode*	- parameter is returned. For more information, see **Error codes*	- section in this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The message returned. The following limits are imposed on the ID:
+	//
+	// 	- If the request was successful, **success*	- is returned.
+	//
+	// 	- An error code is returned when a request failed.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the trace. The ID is used to query the details of a request.
+	//
 	// example:
 	//
 	// 0a98a02315955564772843261e****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the list of application instances was queried. Valid values:
+	//
+	// 	- **true**: The instance groups were obtained.
+	//
+	// 	- **false**: The instance groups failed to be obtained.
+	//
 	// example:
 	//
 	// true
@@ -120,35 +150,50 @@ func (s *ListApplicationsForSwimmingLaneResponseBody) Validate() error {
 }
 
 type ListApplicationsForSwimmingLaneResponseBodyData struct {
+	// The ID of the application.
+	//
 	// example:
 	//
 	// 0099b7be-5f5b-4512-a7fc-56049ef1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	//
 	// example:
 	//
 	// demo-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The ID of the baseline application.
+	//
 	// example:
 	//
 	// 8c573618-8d72-4407-baf4-f7b64b******
 	BaseAppId *string `json:"BaseAppId,omitempty" xml:"BaseAppId,omitempty"`
+	// The name of the baseline application.
+	//
 	// example:
 	//
 	// demo
 	BaseAppName *string `json:"BaseAppName,omitempty" xml:"BaseAppName,omitempty"`
+	// The ID of the MSE instance.
+	//
 	// example:
 	//
 	// mse-cn-hvm47******
 	MseAppId *string `json:"MseAppId,omitempty" xml:"MseAppId,omitempty"`
+	// MSE Instance Name
+	//
 	// example:
 	//
 	// test
 	MseAppName *string `json:"MseAppName,omitempty" xml:"MseAppName,omitempty"`
+	// The ID of the namespace to which the MSE instance belongs.
+	//
 	// example:
 	//
 	// sae-test
-	MseNamespaceId *string            `json:"MseNamespaceId,omitempty" xml:"MseNamespaceId,omitempty"`
-	ServiceTags    map[string]*string `json:"ServiceTags,omitempty" xml:"ServiceTags,omitempty"`
+	MseNamespaceId *string `json:"MseNamespaceId,omitempty" xml:"MseNamespaceId,omitempty"`
+	// The canary tag configured for the application.
+	ServiceTags map[string]*string `json:"ServiceTags,omitempty" xml:"ServiceTags,omitempty"`
 }
 
 func (s ListApplicationsForSwimmingLaneResponseBodyData) String() string {

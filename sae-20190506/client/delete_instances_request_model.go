@@ -16,12 +16,16 @@ type iDeleteInstancesRequest interface {
 }
 
 type DeleteInstancesRequest struct {
+	// The ID of the application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 017f39b8-dfa4-4e16-a84b-1dcee4b1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the instance to be deleted.
+	//
 	// This parameter is required.
 	//
 	// example:

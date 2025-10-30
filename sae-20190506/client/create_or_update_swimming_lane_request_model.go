@@ -30,32 +30,60 @@ type iCreateOrUpdateSwimmingLaneRequest interface {
 }
 
 type CreateOrUpdateSwimmingLaneRequest struct {
+	// The route configuration of the gateway.
+	//
+	// >  This parameter is required if the gateway entry of the lane group is Java.
 	AppEntryRule *CreateOrUpdateSwimmingLaneRequestAppEntryRule `json:"AppEntryRule,omitempty" xml:"AppEntryRule,omitempty" type:"Struct"`
+	// Full-link Grayscale Mode:
+	//
+	// 	- 0: The request is routed based on the content of the request.
+	//
+	// 	- 1: routing based on percentages
+	//
 	// example:
 	//
 	// 0
 	CanaryModel *int32 `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
+	// Lane Status
+	//
+	// 	- true: enabled
+	//
+	// 	- false: disabled
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The ID of the lane group to which the lane belongs.
+	//
 	// example:
 	//
 	// b2a8a925-477a-eswa-b823-d5e22500****
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the lane.
+	//
 	// example:
 	//
 	// 13857
 	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+	// The name of the lane.
+	//
 	// example:
 	//
 	// test
 	LaneName *string `json:"LaneName,omitempty" xml:"LaneName,omitempty"`
+	// The tag of the lane.
+	//
 	// example:
 	//
 	// {"alicloud.service.tag":"g1"}
-	LaneTag             *string                                               `json:"LaneTag,omitempty" xml:"LaneTag,omitempty"`
+	LaneTag *string `json:"LaneTag,omitempty" xml:"LaneTag,omitempty"`
+	// The route configuration of the MSE gateway.
+	//
+	// >  If the **EntryAppType*	- is set to **apig*	- or **mse-gw**, it is required.
 	MseGatewayEntryRule *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule `json:"MseGatewayEntryRule,omitempty" xml:"MseGatewayEntryRule,omitempty" type:"Struct"`
+	// The namespace ID.
+	//
 	// example:
 	//
 	// cn-beijing:test
@@ -166,20 +194,37 @@ func (s *CreateOrUpdateSwimmingLaneRequest) Validate() error {
 }
 
 type CreateOrUpdateSwimmingLaneRequestAppEntryRule struct {
+	// Logical connectors between conditions:
+	//
+	// 	- AND: All conditions are met at the same time.
+	//
+	// 	- OR: Any condition is met.
+	//
 	// example:
 	//
 	// AND
-	ConditionJoiner *string                                                    `json:"ConditionJoiner,omitempty" xml:"ConditionJoiner,omitempty"`
-	Conditions      []*CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	ConditionJoiner *string `json:"ConditionJoiner,omitempty" xml:"ConditionJoiner,omitempty"`
+	// The conditions that trigger circuit breaking.
+	Conditions []*CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// Whether to enable proportional grayscale.
+	//
+	// 	- true: enabled. After you enable this parameter, you must configure the PercentageByPath.
+	//
+	// 	- false: disables the service.
+	//
 	// example:
 	//
 	// true
-	IndependentPercentageEnable *bool     `json:"IndependentPercentageEnable,omitempty" xml:"IndependentPercentageEnable,omitempty"`
-	Paths                       []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	IndependentPercentageEnable *bool `json:"IndependentPercentageEnable,omitempty" xml:"IndependentPercentageEnable,omitempty"`
+	// The matched request path.
+	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	// The traffic ratio. Valid values: 0 to 100.
+	//
 	// example:
 	//
 	// 50
-	Percentage       *int32            `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// The traffic configuration.
 	PercentageByPath map[string]*int32 `json:"PercentageByPath,omitempty" xml:"PercentageByPath,omitempty"`
 }
 
@@ -259,18 +304,42 @@ func (s *CreateOrUpdateSwimmingLaneRequestAppEntryRule) Validate() error {
 }
 
 type CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions struct {
+	// Matching Rule:
+	//
+	// 	- The exact match. The condition is met if the traffic value and the condition value are exactly the same.
+	//
+	// 	- The exact match. The condition is met if the traffic value and the condition value are exactly the same.
+	//
+	// 	- The inclusive match. The condition is met if the traffic value is included in the specified list.
+	//
+	// 	- The percentage match. Principle: The condition is met if \\"hash(get(`key`)) % 100 < value\\".
+	//
+	// 	- Regular match: a regular expression match. The condition is met when the match is based on regular expression rules.
+	//
 	// example:
 	//
 	// ==
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The parameter name.
+	//
 	// example:
 	//
 	// t
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter type. Valid values:
+	//
+	// 	- header
+	//
+	// 	- param
+	//
+	// 	- Cookie: forwards requests based on cookies.
+	//
 	// example:
 	//
 	// Header
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The match value of the condition.
+	//
 	// example:
 	//
 	// g1
@@ -326,21 +395,38 @@ func (s *CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions) Validate() err
 }
 
 type CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule struct {
+	// Logical connectors between conditions:
+	//
+	// 	- AND: All conditions are met at the same time.
+	//
+	// 	- OR: Any condition is met.
+	//
 	// example:
 	//
 	// AND
-	ConditionJoiner *string                                                           `json:"ConditionJoiner,omitempty" xml:"ConditionJoiner,omitempty"`
-	Conditions      []*CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	ConditionJoiner *string `json:"ConditionJoiner,omitempty" xml:"ConditionJoiner,omitempty"`
+	// Routing Condition
+	Conditions []*CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// Whether to enable proportional grayscale.
+	//
+	// 	- true: Enabled. After you enable this parameter, you must configure the PercentageByPath.
+	//
+	// 	- false: Disabled.
+	//
 	// example:
 	//
 	// true
 	IndependentPercentageEnable *bool `json:"IndependentPercentageEnable,omitempty" xml:"IndependentPercentageEnable,omitempty"`
+	// The percentage of traffic replication. Valid values: 0 to 100.
+	//
 	// example:
 	//
 	// 100
-	Percentage        *int32            `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// The traffic configuration.
 	PercentageByRoute map[string]*int32 `json:"PercentageByRoute,omitempty" xml:"PercentageByRoute,omitempty"`
-	RouteIds          []*int64          `json:"RouteIds,omitempty" xml:"RouteIds,omitempty" type:"Repeated"`
+	// The ID of the route.
+	RouteIds []*int64 `json:"RouteIds,omitempty" xml:"RouteIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule) String() string {
@@ -419,18 +505,42 @@ func (s *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule) Validate() error 
 }
 
 type CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions struct {
+	// The matching rule.
+	//
+	// 	- \\==: exact match.
+	//
+	// 	- ! =: exact match.
+	//
+	// 	- in: contains matches.
+	//
+	// 	- Percentage: Percentage matching.
+	//
+	// 	- Regular matching: specifies whether a regular expression is used to search for the original string.
+	//
 	// example:
 	//
 	// ==
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The parameter name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter type. Valid values:
+	//
+	// 	- header
+	//
+	// 	- param
+	//
+	// 	- Cookie: forwards requests based on cookies.
+	//
 	// example:
 	//
 	// header
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The match value of the condition.
+	//
 	// example:
 	//
 	// g1

@@ -20,11 +20,21 @@ type iUpdateAppModeRequest interface {
 }
 
 type UpdateAppModeRequest struct {
+	// The app ID.
+	//
 	// example:
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
 	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AppIds *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	// Enable Idle Mode?
+	//
+	// Enumeration value:
+	//
+	// 	- true: enables.
+	//
+	// 	- false: disables.
+	//
 	// example:
 	//
 	// true

@@ -29,7 +29,8 @@ type GetWebshellTokenResponseBody struct {
 	// example:
 	//
 	// 200
-	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response
 	Data      *GetWebshellTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	ErrorCode *string                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// example:

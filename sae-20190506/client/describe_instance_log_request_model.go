@@ -13,6 +13,8 @@ type iDescribeInstanceLogRequest interface {
 	GetContainerId() *string
 	SetInstanceId(v string) *DescribeInstanceLogRequest
 	GetInstanceId() *string
+	SetPrevious(v string) *DescribeInstanceLogRequest
+	GetPrevious() *string
 }
 
 type DescribeInstanceLogRequest struct {
@@ -30,6 +32,7 @@ type DescribeInstanceLogRequest struct {
 	//
 	// ******-d700e680-aa4d-4ec1-afc2-6566b5ff4d7a-85d44d4bfc-*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Previous   *string `json:"Previous,omitempty" xml:"Previous,omitempty"`
 }
 
 func (s DescribeInstanceLogRequest) String() string {
@@ -48,6 +51,10 @@ func (s *DescribeInstanceLogRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *DescribeInstanceLogRequest) GetPrevious() *string {
+	return s.Previous
+}
+
 func (s *DescribeInstanceLogRequest) SetContainerId(v string) *DescribeInstanceLogRequest {
 	s.ContainerId = &v
 	return s
@@ -55,6 +62,11 @@ func (s *DescribeInstanceLogRequest) SetContainerId(v string) *DescribeInstanceL
 
 func (s *DescribeInstanceLogRequest) SetInstanceId(v string) *DescribeInstanceLogRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceLogRequest) SetPrevious(v string) *DescribeInstanceLogRequest {
+	s.Previous = &v
 	return s
 }
 
