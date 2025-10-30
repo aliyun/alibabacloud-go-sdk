@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("privatelink"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -71,7 +22,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddUserToVpcEndpointServiceResponse
-func (client *Client) AddUserToVpcEndpointServiceWithOptions(request *AddUserToVpcEndpointServiceRequest, runtime *dara.RuntimeOptions) (_result *AddUserToVpcEndpointServiceResponse, _err error) {
+func (client *Client) AddUserToVpcEndpointServiceWithContext(ctx context.Context, request *AddUserToVpcEndpointServiceRequest, runtime *dara.RuntimeOptions) (_result *AddUserToVpcEndpointServiceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -122,35 +73,11 @@ func (client *Client) AddUserToVpcEndpointServiceWithOptions(request *AddUserToV
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddUserToVpcEndpointServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds an account ID to the whitelist of an endpoint service.
-//
-// Description:
-//
-//	  Before you add an account ID to the whitelist of an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
-//
-//		- You cannot repeatedly call the **AddUserToVpcEndpointService*	- operation to add the ID of an Alibaba Cloud account to the whitelist of an endpoint service within a specified period of time.
-//
-// @param request - AddUserToVpcEndpointServiceRequest
-//
-// @return AddUserToVpcEndpointServiceResponse
-func (client *Client) AddUserToVpcEndpointService(request *AddUserToVpcEndpointServiceRequest) (_result *AddUserToVpcEndpointServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddUserToVpcEndpointServiceResponse{}
-	_body, _err := client.AddUserToVpcEndpointServiceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -173,7 +100,7 @@ func (client *Client) AddUserToVpcEndpointService(request *AddUserToVpcEndpointS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddZoneToVpcEndpointResponse
-func (client *Client) AddZoneToVpcEndpointWithOptions(request *AddZoneToVpcEndpointRequest, runtime *dara.RuntimeOptions) (_result *AddZoneToVpcEndpointResponse, _err error) {
+func (client *Client) AddZoneToVpcEndpointWithContext(ctx context.Context, request *AddZoneToVpcEndpointRequest, runtime *dara.RuntimeOptions) (_result *AddZoneToVpcEndpointResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -232,39 +159,11 @@ func (client *Client) AddZoneToVpcEndpointWithOptions(request *AddZoneToVpcEndpo
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddZoneToVpcEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a zone to an endpoint.
-//
-// Description:
-//
-//	  **AddZoneToVpcEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to query the state of the zone.
-//
-//	    	- If the zone is in the **Creating*	- state, the zone is being added.
-//
-//	    	- If the zone is in the Wait state, the zone is added.
-//
-//		- You cannot repeatedly call the **AddZoneToVpcEndpoint*	- operation to add a zone to an endpoint within a specified period of time.
-//
-// @param request - AddZoneToVpcEndpointRequest
-//
-// @return AddZoneToVpcEndpointResponse
-func (client *Client) AddZoneToVpcEndpoint(request *AddZoneToVpcEndpointRequest) (_result *AddZoneToVpcEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddZoneToVpcEndpointResponse{}
-	_body, _err := client.AddZoneToVpcEndpointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -283,7 +182,7 @@ func (client *Client) AddZoneToVpcEndpoint(request *AddZoneToVpcEndpointRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AttachResourceToVpcEndpointServiceResponse
-func (client *Client) AttachResourceToVpcEndpointServiceWithOptions(request *AttachResourceToVpcEndpointServiceRequest, runtime *dara.RuntimeOptions) (_result *AttachResourceToVpcEndpointServiceResponse, _err error) {
+func (client *Client) AttachResourceToVpcEndpointServiceWithContext(ctx context.Context, request *AttachResourceToVpcEndpointServiceRequest, runtime *dara.RuntimeOptions) (_result *AttachResourceToVpcEndpointServiceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -338,35 +237,11 @@ func (client *Client) AttachResourceToVpcEndpointServiceWithOptions(request *Att
 		BodyType:    dara.String("json"),
 	}
 	_result = &AttachResourceToVpcEndpointServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a service resource to an endpoint service.
-//
-// Description:
-//
-//	  Before you add a service resource to an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
-//
-//		- You cannot repeatedly call the **AttachResourceToVpcEndpointService*	- operation to add a service resource to an endpoint service within a specified period of time.
-//
-// @param request - AttachResourceToVpcEndpointServiceRequest
-//
-// @return AttachResourceToVpcEndpointServiceResponse
-func (client *Client) AttachResourceToVpcEndpointService(request *AttachResourceToVpcEndpointServiceRequest) (_result *AttachResourceToVpcEndpointServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AttachResourceToVpcEndpointServiceResponse{}
-	_body, _err := client.AttachResourceToVpcEndpointServiceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -389,7 +264,7 @@ func (client *Client) AttachResourceToVpcEndpointService(request *AttachResource
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AttachSecurityGroupToVpcEndpointResponse
-func (client *Client) AttachSecurityGroupToVpcEndpointWithOptions(request *AttachSecurityGroupToVpcEndpointRequest, runtime *dara.RuntimeOptions) (_result *AttachSecurityGroupToVpcEndpointResponse, _err error) {
+func (client *Client) AttachSecurityGroupToVpcEndpointWithContext(ctx context.Context, request *AttachSecurityGroupToVpcEndpointRequest, runtime *dara.RuntimeOptions) (_result *AttachSecurityGroupToVpcEndpointResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -436,39 +311,11 @@ func (client *Client) AttachSecurityGroupToVpcEndpointWithOptions(request *Attac
 		BodyType:    dara.String("json"),
 	}
 	_result = &AttachSecurityGroupToVpcEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates an endpoint with a security group.
-//
-// Description:
-//
-//	  **AttachSecurityGroupToVpcEndpoint*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](https://help.aliyun.com/document_detail/183558.html) operation to query the state of the endpoint.
-//
-//	    	- If the endpoint is in the **Pending*	- state, the endpoint is being associated with the security group.
-//
-//	    	- If the endpoint is in the **Active*	- state, the endpoint is associated with the security group.
-//
-//		- You cannot repeatedly call the **AttachSecurityGroupToVpcEndpoint*	- operation to associate an endpoint with a security group within a specified period of time.
-//
-// @param request - AttachSecurityGroupToVpcEndpointRequest
-//
-// @return AttachSecurityGroupToVpcEndpointResponse
-func (client *Client) AttachSecurityGroupToVpcEndpoint(request *AttachSecurityGroupToVpcEndpointRequest) (_result *AttachSecurityGroupToVpcEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AttachSecurityGroupToVpcEndpointResponse{}
-	_body, _err := client.AttachSecurityGroupToVpcEndpointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -481,7 +328,7 @@ func (client *Client) AttachSecurityGroupToVpcEndpoint(request *AttachSecurityGr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -516,76 +363,11 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a resource group.
-//
-// @param request - ChangeResourceGroupRequest
-//
-// @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries whether PrivateLink is activated.
-//
-// @param request - CheckProductOpenRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return CheckProductOpenResponse
-func (client *Client) CheckProductOpenWithOptions(runtime *dara.RuntimeOptions) (_result *CheckProductOpenResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("CheckProductOpen"),
-		Version:     dara.String("2020-04-15"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &CheckProductOpenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries whether PrivateLink is activated.
-//
-// @return CheckProductOpenResponse
-func (client *Client) CheckProductOpen() (_result *CheckProductOpenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckProductOpenResponse{}
-	_body, _err := client.CheckProductOpenWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -606,7 +388,7 @@ func (client *Client) CheckProductOpen() (_result *CheckProductOpenResponse, _er
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVpcEndpointResponse
-func (client *Client) CreateVpcEndpointWithOptions(request *CreateVpcEndpointRequest, runtime *dara.RuntimeOptions) (_result *CreateVpcEndpointResponse, _err error) {
+func (client *Client) CreateVpcEndpointWithContext(ctx context.Context, request *CreateVpcEndpointRequest, runtime *dara.RuntimeOptions) (_result *CreateVpcEndpointResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -705,37 +487,11 @@ func (client *Client) CreateVpcEndpointWithOptions(request *CreateVpcEndpointReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVpcEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an endpoint.
-//
-// Description:
-//
-// *CreateVpcEndpoint*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to check whether the endpoint is created.
-//
-//   - If the endpoint is in the **Creating*	- state, the endpoint is being created.
-//
-//   - If the endpoint is in the **Active*	- state, the endpoint is created.
-//
-// @param request - CreateVpcEndpointRequest
-//
-// @return CreateVpcEndpointResponse
-func (client *Client) CreateVpcEndpoint(request *CreateVpcEndpointRequest) (_result *CreateVpcEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVpcEndpointResponse{}
-	_body, _err := client.CreateVpcEndpointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -758,7 +514,7 @@ func (client *Client) CreateVpcEndpoint(request *CreateVpcEndpointRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVpcEndpointServiceResponse
-func (client *Client) CreateVpcEndpointServiceWithOptions(request *CreateVpcEndpointServiceRequest, runtime *dara.RuntimeOptions) (_result *CreateVpcEndpointServiceResponse, _err error) {
+func (client *Client) CreateVpcEndpointServiceWithContext(ctx context.Context, request *CreateVpcEndpointServiceRequest, runtime *dara.RuntimeOptions) (_result *CreateVpcEndpointServiceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -837,39 +593,11 @@ func (client *Client) CreateVpcEndpointServiceWithOptions(request *CreateVpcEndp
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVpcEndpointServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an endpoint service.
-//
-// Description:
-//
-//	  Before you create an endpoint service, make sure that you have created a Server Load Balancer (SLB) instance that supports PrivateLink. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/174064.html).
-//
-//		- **CreateVpcEndpointService*	- is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) operation to query the status of the endpoint service.
-//
-//	    	- If the endpoint service is in the **Creating*	- state, the endpoint service is being created.
-//
-//	    	- If the endpoint service is in the **Active*	- state, the endpoint service is created.
-//
-// @param request - CreateVpcEndpointServiceRequest
-//
-// @return CreateVpcEndpointServiceResponse
-func (client *Client) CreateVpcEndpointService(request *CreateVpcEndpointServiceRequest) (_result *CreateVpcEndpointServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVpcEndpointServiceResponse{}
-	_body, _err := client.CreateVpcEndpointServiceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -892,7 +620,7 @@ func (client *Client) CreateVpcEndpointService(request *CreateVpcEndpointService
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVpcEndpointResponse
-func (client *Client) DeleteVpcEndpointWithOptions(request *DeleteVpcEndpointRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpcEndpointResponse, _err error) {
+func (client *Client) DeleteVpcEndpointWithContext(ctx context.Context, request *DeleteVpcEndpointRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpcEndpointResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -935,39 +663,11 @@ func (client *Client) DeleteVpcEndpointWithOptions(request *DeleteVpcEndpointReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVpcEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an endpoint.
-//
-// Description:
-//
-//	  Before you delete an endpoint, you must delete the zones that are added to the endpoint.
-//
-//		- **DeleteVpcEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to check whether the endpoint is deleted.
-//
-//	    	- If the endpoint is in the **Deleting*	- state, the endpoint is being deleted.
-//
-//	    	- If the endpoint cannot be queried, the endpoint is deleted.
-//
-// @param request - DeleteVpcEndpointRequest
-//
-// @return DeleteVpcEndpointResponse
-func (client *Client) DeleteVpcEndpoint(request *DeleteVpcEndpointRequest) (_result *DeleteVpcEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVpcEndpointResponse{}
-	_body, _err := client.DeleteVpcEndpointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -992,7 +692,7 @@ func (client *Client) DeleteVpcEndpoint(request *DeleteVpcEndpointRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVpcEndpointServiceResponse
-func (client *Client) DeleteVpcEndpointServiceWithOptions(request *DeleteVpcEndpointServiceRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpcEndpointServiceResponse, _err error) {
+func (client *Client) DeleteVpcEndpointServiceWithContext(ctx context.Context, request *DeleteVpcEndpointServiceRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpcEndpointServiceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1035,41 +735,11 @@ func (client *Client) DeleteVpcEndpointServiceWithOptions(request *DeleteVpcEndp
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVpcEndpointServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an endpoint service.
-//
-// Description:
-//
-//	  Before you delete an endpoint service, you must disconnect the endpoint from the endpoint service and remove the service resources.
-//
-//		- **DeleteVpcEndpointService*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) operation to check whether the endpoint service is deleted.
-//
-//	    	- If the endpoint service is in the **Deleting*	- state, the endpoint service is being deleted.
-//
-//	    	- If the endpoint service cannot be queried, the endpoint service is deleted.
-//
-//		- You cannot repeatedly call the **DeleteVpcEndpointService*	- operation to delete an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
-//
-// @param request - DeleteVpcEndpointServiceRequest
-//
-// @return DeleteVpcEndpointServiceResponse
-func (client *Client) DeleteVpcEndpointService(request *DeleteVpcEndpointServiceRequest) (_result *DeleteVpcEndpointServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVpcEndpointServiceResponse{}
-	_body, _err := client.DeleteVpcEndpointServiceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1082,7 +752,7 @@ func (client *Client) DeleteVpcEndpointService(request *DeleteVpcEndpointService
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRegionsResponse
-func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1117,29 +787,11 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries available regions and zones.
-//
-// @param request - DescribeRegionsRequest
-//
-// @return DescribeRegionsResponse
-func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1152,7 +804,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeZonesResponse
-func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, runtime *dara.RuntimeOptions) (_result *DescribeZonesResponse, _err error) {
+func (client *Client) DescribeZonesWithContext(ctx context.Context, request *DescribeZonesRequest, runtime *dara.RuntimeOptions) (_result *DescribeZonesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1187,29 +839,11 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeZonesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of zones in a specified region.
-//
-// @param request - DescribeZonesRequest
-//
-// @return DescribeZonesResponse
-func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *DescribeZonesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeZonesResponse{}
-	_body, _err := client.DescribeZonesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1228,7 +862,7 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DetachResourceFromVpcEndpointServiceResponse
-func (client *Client) DetachResourceFromVpcEndpointServiceWithOptions(request *DetachResourceFromVpcEndpointServiceRequest, runtime *dara.RuntimeOptions) (_result *DetachResourceFromVpcEndpointServiceResponse, _err error) {
+func (client *Client) DetachResourceFromVpcEndpointServiceWithContext(ctx context.Context, request *DetachResourceFromVpcEndpointServiceRequest, runtime *dara.RuntimeOptions) (_result *DetachResourceFromVpcEndpointServiceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1283,35 +917,11 @@ func (client *Client) DetachResourceFromVpcEndpointServiceWithOptions(request *D
 		BodyType:    dara.String("json"),
 	}
 	_result = &DetachResourceFromVpcEndpointServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes a service resource from an endpoint service.
-//
-// Description:
-//
-//	  Before you remove a service resource from an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
-//
-//		- You cannot repeatedly call the **DetachResourceFromVpcEndpointService*	- operation to remove a service resource from an endpoint service within a specified period of time.
-//
-// @param request - DetachResourceFromVpcEndpointServiceRequest
-//
-// @return DetachResourceFromVpcEndpointServiceResponse
-func (client *Client) DetachResourceFromVpcEndpointService(request *DetachResourceFromVpcEndpointServiceRequest) (_result *DetachResourceFromVpcEndpointServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DetachResourceFromVpcEndpointServiceResponse{}
-	_body, _err := client.DetachResourceFromVpcEndpointServiceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1334,7 +944,7 @@ func (client *Client) DetachResourceFromVpcEndpointService(request *DetachResour
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DetachSecurityGroupFromVpcEndpointResponse
-func (client *Client) DetachSecurityGroupFromVpcEndpointWithOptions(request *DetachSecurityGroupFromVpcEndpointRequest, runtime *dara.RuntimeOptions) (_result *DetachSecurityGroupFromVpcEndpointResponse, _err error) {
+func (client *Client) DetachSecurityGroupFromVpcEndpointWithContext(ctx context.Context, request *DetachSecurityGroupFromVpcEndpointRequest, runtime *dara.RuntimeOptions) (_result *DetachSecurityGroupFromVpcEndpointResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1381,39 +991,11 @@ func (client *Client) DetachSecurityGroupFromVpcEndpointWithOptions(request *Det
 		BodyType:    dara.String("json"),
 	}
 	_result = &DetachSecurityGroupFromVpcEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disassociates an endpoint from a security group.
-//
-// Description:
-//
-//	  **DetachSecurityGroupFromVpcEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](https://help.aliyun.com/document_detail/183558.html) to check whether the endpoint is disassociated from the security group.
-//
-//	    	- If the endpoint is in the **Pending*	- state, the endpoint is being disassociated from the security group.
-//
-//	    	- If you cannot query the endpoint in the security group, the endpoint is disassociated from the security group.
-//
-//		- You cannot repeatedly call the **DetachSecurityGroupFromVpcEndpoint*	- operation to disassociate an endpoint from a security group within a specified period of time.
-//
-// @param request - DetachSecurityGroupFromVpcEndpointRequest
-//
-// @return DetachSecurityGroupFromVpcEndpointResponse
-func (client *Client) DetachSecurityGroupFromVpcEndpoint(request *DetachSecurityGroupFromVpcEndpointRequest) (_result *DetachSecurityGroupFromVpcEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DetachSecurityGroupFromVpcEndpointResponse{}
-	_body, _err := client.DetachSecurityGroupFromVpcEndpointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1436,7 +1018,7 @@ func (client *Client) DetachSecurityGroupFromVpcEndpoint(request *DetachSecurity
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisableVpcEndpointConnectionResponse
-func (client *Client) DisableVpcEndpointConnectionWithOptions(request *DisableVpcEndpointConnectionRequest, runtime *dara.RuntimeOptions) (_result *DisableVpcEndpointConnectionResponse, _err error) {
+func (client *Client) DisableVpcEndpointConnectionWithContext(ctx context.Context, request *DisableVpcEndpointConnectionRequest, runtime *dara.RuntimeOptions) (_result *DisableVpcEndpointConnectionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1483,39 +1065,11 @@ func (client *Client) DisableVpcEndpointConnectionWithOptions(request *DisableVp
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableVpcEndpointConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Rejects a connection request from an endpoint.
-//
-// Description:
-//
-//	  **DisableVpcEndpointConnection*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to query the state of the endpoint connection.
-//
-//	    	- If the endpoint connection is in the **Disconnecting*	- state, the endpoint is being disconnected from the endpoint service.
-//
-//	    	- If the endpoint connection is in the **Disconnected*	- state, the endpoint is disconnected from the endpoint service.
-//
-//		- You cannot repeatedly call the **DisableVpcEndpointConnection*	- operation to allow an endpoint service to reject a connection request from an endpoint within a specified period of time.
-//
-// @param request - DisableVpcEndpointConnectionRequest
-//
-// @return DisableVpcEndpointConnectionResponse
-func (client *Client) DisableVpcEndpointConnection(request *DisableVpcEndpointConnectionRequest) (_result *DisableVpcEndpointConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DisableVpcEndpointConnectionResponse{}
-	_body, _err := client.DisableVpcEndpointConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1540,7 +1094,7 @@ func (client *Client) DisableVpcEndpointConnection(request *DisableVpcEndpointCo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisableVpcEndpointZoneConnectionResponse
-func (client *Client) DisableVpcEndpointZoneConnectionWithOptions(request *DisableVpcEndpointZoneConnectionRequest, runtime *dara.RuntimeOptions) (_result *DisableVpcEndpointZoneConnectionResponse, _err error) {
+func (client *Client) DisableVpcEndpointZoneConnectionWithContext(ctx context.Context, request *DisableVpcEndpointZoneConnectionRequest, runtime *dara.RuntimeOptions) (_result *DisableVpcEndpointZoneConnectionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1595,41 +1149,11 @@ func (client *Client) DisableVpcEndpointZoneConnectionWithOptions(request *Disab
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableVpcEndpointZoneConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Closes connections in an endpoint zone.
-//
-// Description:
-//
-//	  You can call this operation only when the state of the endpoint is **Connected*	- and the state of the zone associated with the endpoint is **Connected*	- or **Migrated**.
-//
-//		- **DisableVpcEndpointZoneConnection*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to query the status of the task.
-//
-//	    	- If the zone is in the **Disconnecting*	- state, the task is running.
-//
-//	    	- If the zone is in the **Disconnected*	- state, the task is successful.
-//
-//		- You cannot repeatedly call the **DisableVpcEndpointZoneConnection*	- operation to allow an endpoint service to reject a connection request from the endpoint in the zone within a specified period of time.
-//
-// @param request - DisableVpcEndpointZoneConnectionRequest
-//
-// @return DisableVpcEndpointZoneConnectionResponse
-func (client *Client) DisableVpcEndpointZoneConnection(request *DisableVpcEndpointZoneConnectionRequest) (_result *DisableVpcEndpointZoneConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DisableVpcEndpointZoneConnectionResponse{}
-	_body, _err := client.DisableVpcEndpointZoneConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1652,7 +1176,7 @@ func (client *Client) DisableVpcEndpointZoneConnection(request *DisableVpcEndpoi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableVpcEndpointConnectionResponse
-func (client *Client) EnableVpcEndpointConnectionWithOptions(request *EnableVpcEndpointConnectionRequest, runtime *dara.RuntimeOptions) (_result *EnableVpcEndpointConnectionResponse, _err error) {
+func (client *Client) EnableVpcEndpointConnectionWithContext(ctx context.Context, request *EnableVpcEndpointConnectionRequest, runtime *dara.RuntimeOptions) (_result *EnableVpcEndpointConnectionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1703,39 +1227,11 @@ func (client *Client) EnableVpcEndpointConnectionWithOptions(request *EnableVpcE
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableVpcEndpointConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Accepts connection requests from an endpoint.
-//
-// Description:
-//
-//	  **EnableVpcEndpointConnection*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to query the state of the endpoint connection.
-//
-//	    	- If the state is **Connecting**, the endpoint connection is being established.
-//
-//	    	- If the state is **Connected**, the endpoint connection is established.
-//
-//		- You cannot repeatedly call the **EnableVpcEndpointConnection*	- operation to allow an endpoint service of an Alibaba Cloud account to accept a connection request from an endpoint within a specified period of time.
-//
-// @param request - EnableVpcEndpointConnectionRequest
-//
-// @return EnableVpcEndpointConnectionResponse
-func (client *Client) EnableVpcEndpointConnection(request *EnableVpcEndpointConnectionRequest) (_result *EnableVpcEndpointConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnableVpcEndpointConnectionResponse{}
-	_body, _err := client.EnableVpcEndpointConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1760,7 +1256,7 @@ func (client *Client) EnableVpcEndpointConnection(request *EnableVpcEndpointConn
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableVpcEndpointZoneConnectionResponse
-func (client *Client) EnableVpcEndpointZoneConnectionWithOptions(request *EnableVpcEndpointZoneConnectionRequest, runtime *dara.RuntimeOptions) (_result *EnableVpcEndpointZoneConnectionResponse, _err error) {
+func (client *Client) EnableVpcEndpointZoneConnectionWithContext(ctx context.Context, request *EnableVpcEndpointZoneConnectionRequest, runtime *dara.RuntimeOptions) (_result *EnableVpcEndpointZoneConnectionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1811,41 +1307,11 @@ func (client *Client) EnableVpcEndpointZoneConnectionWithOptions(request *Enable
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableVpcEndpointZoneConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Allows connections to endpoint zones.
-//
-// Description:
-//
-//	  You can call this operation only when the state of the endpoint is **Connected*	- and the state of the associated zone is **Disconnected**.
-//
-//		- **EnableVpcEndpointZoneConnection*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to check whether the endpoint service accepts a connection request from the endpoint in the associated zone.
-//
-//	    	- If the zone is in the **Connecting*	- state, the endpoint service is accepting the connection request from the endpoint.
-//
-//	    	- If the zone is in the **Connected*	- state, the endpoint service has accepted the connection request from the endpoint.
-//
-//		- You cannot repeatedly call the **EnableVpcEndpointZoneConnection*	- operation to allow an endpoint service to accept a connection request from an endpoint in the associated zone within a specified period of time.
-//
-// @param request - EnableVpcEndpointZoneConnectionRequest
-//
-// @return EnableVpcEndpointZoneConnectionResponse
-func (client *Client) EnableVpcEndpointZoneConnection(request *EnableVpcEndpointZoneConnectionRequest) (_result *EnableVpcEndpointZoneConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnableVpcEndpointZoneConnectionResponse{}
-	_body, _err := client.EnableVpcEndpointZoneConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1858,7 +1324,7 @@ func (client *Client) EnableVpcEndpointZoneConnection(request *EnableVpcEndpoint
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetVpcEndpointAttributeResponse
-func (client *Client) GetVpcEndpointAttributeWithOptions(request *GetVpcEndpointAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetVpcEndpointAttributeResponse, _err error) {
+func (client *Client) GetVpcEndpointAttributeWithContext(ctx context.Context, request *GetVpcEndpointAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetVpcEndpointAttributeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1893,29 +1359,11 @@ func (client *Client) GetVpcEndpointAttributeWithOptions(request *GetVpcEndpoint
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVpcEndpointAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the attributes of an endpoint.
-//
-// @param request - GetVpcEndpointAttributeRequest
-//
-// @return GetVpcEndpointAttributeResponse
-func (client *Client) GetVpcEndpointAttribute(request *GetVpcEndpointAttributeRequest) (_result *GetVpcEndpointAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetVpcEndpointAttributeResponse{}
-	_body, _err := client.GetVpcEndpointAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1928,7 +1376,7 @@ func (client *Client) GetVpcEndpointAttribute(request *GetVpcEndpointAttributeRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetVpcEndpointServiceAttributeResponse
-func (client *Client) GetVpcEndpointServiceAttributeWithOptions(request *GetVpcEndpointServiceAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetVpcEndpointServiceAttributeResponse, _err error) {
+func (client *Client) GetVpcEndpointServiceAttributeWithContext(ctx context.Context, request *GetVpcEndpointServiceAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetVpcEndpointServiceAttributeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1963,29 +1411,11 @@ func (client *Client) GetVpcEndpointServiceAttributeWithOptions(request *GetVpcE
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVpcEndpointServiceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the attributes of an endpoint service.
-//
-// @param request - GetVpcEndpointServiceAttributeRequest
-//
-// @return GetVpcEndpointServiceAttributeResponse
-func (client *Client) GetVpcEndpointServiceAttribute(request *GetVpcEndpointServiceAttributeRequest) (_result *GetVpcEndpointServiceAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetVpcEndpointServiceAttributeResponse{}
-	_body, _err := client.GetVpcEndpointServiceAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2008,7 +1438,7 @@ func (client *Client) GetVpcEndpointServiceAttribute(request *GetVpcEndpointServ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagResourcesResponse
-func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2055,39 +1485,11 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the tags that are added to resources.
-//
-// Description:
-//
-//	  You must specify **ResourceId.N*	- or **Tag.N*	- in the request to specify the object that you want to query.
-//
-//		- **Tag.N*	- is a resource tag that consists of a key-value pair (Tag.N.Key and Tag.N.Value). If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
-//
-//		- If you specify **Tag.N*	- and **ResourceId.N*	- to filter tags, **ResourceId.N*	- must match all specified key-value pairs.
-//
-//		- If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
-//
-// @param request - ListTagResourcesRequest
-//
-// @return ListTagResourcesResponse
-func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2100,7 +1502,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVpcEndpointConnectionsResponse
-func (client *Client) ListVpcEndpointConnectionsWithOptions(request *ListVpcEndpointConnectionsRequest, runtime *dara.RuntimeOptions) (_result *ListVpcEndpointConnectionsResponse, _err error) {
+func (client *Client) ListVpcEndpointConnectionsWithContext(ctx context.Context, request *ListVpcEndpointConnectionsRequest, runtime *dara.RuntimeOptions) (_result *ListVpcEndpointConnectionsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2171,29 +1573,11 @@ func (client *Client) ListVpcEndpointConnectionsWithOptions(request *ListVpcEndp
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVpcEndpointConnectionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries endpoint connections.
-//
-// @param request - ListVpcEndpointConnectionsRequest
-//
-// @return ListVpcEndpointConnectionsResponse
-func (client *Client) ListVpcEndpointConnections(request *ListVpcEndpointConnectionsRequest) (_result *ListVpcEndpointConnectionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListVpcEndpointConnectionsResponse{}
-	_body, _err := client.ListVpcEndpointConnectionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2206,7 +1590,7 @@ func (client *Client) ListVpcEndpointConnections(request *ListVpcEndpointConnect
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVpcEndpointSecurityGroupsResponse
-func (client *Client) ListVpcEndpointSecurityGroupsWithOptions(request *ListVpcEndpointSecurityGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListVpcEndpointSecurityGroupsResponse, _err error) {
+func (client *Client) ListVpcEndpointSecurityGroupsWithContext(ctx context.Context, request *ListVpcEndpointSecurityGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListVpcEndpointSecurityGroupsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2249,29 +1633,11 @@ func (client *Client) ListVpcEndpointSecurityGroupsWithOptions(request *ListVpcE
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVpcEndpointSecurityGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the security groups that are associated with an endpoint.
-//
-// @param request - ListVpcEndpointSecurityGroupsRequest
-//
-// @return ListVpcEndpointSecurityGroupsResponse
-func (client *Client) ListVpcEndpointSecurityGroups(request *ListVpcEndpointSecurityGroupsRequest) (_result *ListVpcEndpointSecurityGroupsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListVpcEndpointSecurityGroupsResponse{}
-	_body, _err := client.ListVpcEndpointSecurityGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2284,7 +1650,7 @@ func (client *Client) ListVpcEndpointSecurityGroups(request *ListVpcEndpointSecu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVpcEndpointServiceResourcesResponse
-func (client *Client) ListVpcEndpointServiceResourcesWithOptions(request *ListVpcEndpointServiceResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListVpcEndpointServiceResourcesResponse, _err error) {
+func (client *Client) ListVpcEndpointServiceResourcesWithContext(ctx context.Context, request *ListVpcEndpointServiceResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListVpcEndpointServiceResourcesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2327,29 +1693,11 @@ func (client *Client) ListVpcEndpointServiceResourcesWithOptions(request *ListVp
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVpcEndpointServiceResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the service resources that are added to an endpoint service.
-//
-// @param request - ListVpcEndpointServiceResourcesRequest
-//
-// @return ListVpcEndpointServiceResourcesResponse
-func (client *Client) ListVpcEndpointServiceResources(request *ListVpcEndpointServiceResourcesRequest) (_result *ListVpcEndpointServiceResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListVpcEndpointServiceResourcesResponse{}
-	_body, _err := client.ListVpcEndpointServiceResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2362,7 +1710,7 @@ func (client *Client) ListVpcEndpointServiceResources(request *ListVpcEndpointSe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVpcEndpointServiceUsersResponse
-func (client *Client) ListVpcEndpointServiceUsersWithOptions(request *ListVpcEndpointServiceUsersRequest, runtime *dara.RuntimeOptions) (_result *ListVpcEndpointServiceUsersResponse, _err error) {
+func (client *Client) ListVpcEndpointServiceUsersWithContext(ctx context.Context, request *ListVpcEndpointServiceUsersRequest, runtime *dara.RuntimeOptions) (_result *ListVpcEndpointServiceUsersResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2413,29 +1761,11 @@ func (client *Client) ListVpcEndpointServiceUsersWithOptions(request *ListVpcEnd
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVpcEndpointServiceUsersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the whitelist of an endpoint service.
-//
-// @param request - ListVpcEndpointServiceUsersRequest
-//
-// @return ListVpcEndpointServiceUsersResponse
-func (client *Client) ListVpcEndpointServiceUsers(request *ListVpcEndpointServiceUsersRequest) (_result *ListVpcEndpointServiceUsersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListVpcEndpointServiceUsersResponse{}
-	_body, _err := client.ListVpcEndpointServiceUsersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2448,7 +1778,7 @@ func (client *Client) ListVpcEndpointServiceUsers(request *ListVpcEndpointServic
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVpcEndpointServicesResponse
-func (client *Client) ListVpcEndpointServicesWithOptions(request *ListVpcEndpointServicesRequest, runtime *dara.RuntimeOptions) (_result *ListVpcEndpointServicesResponse, _err error) {
+func (client *Client) ListVpcEndpointServicesWithContext(ctx context.Context, request *ListVpcEndpointServicesRequest, runtime *dara.RuntimeOptions) (_result *ListVpcEndpointServicesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2531,29 +1861,11 @@ func (client *Client) ListVpcEndpointServicesWithOptions(request *ListVpcEndpoin
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVpcEndpointServicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of endpoint services.
-//
-// @param request - ListVpcEndpointServicesRequest
-//
-// @return ListVpcEndpointServicesResponse
-func (client *Client) ListVpcEndpointServices(request *ListVpcEndpointServicesRequest) (_result *ListVpcEndpointServicesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListVpcEndpointServicesResponse{}
-	_body, _err := client.ListVpcEndpointServicesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2566,7 +1878,7 @@ func (client *Client) ListVpcEndpointServices(request *ListVpcEndpointServicesRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVpcEndpointServicesByEndUserResponse
-func (client *Client) ListVpcEndpointServicesByEndUserWithOptions(request *ListVpcEndpointServicesByEndUserRequest, runtime *dara.RuntimeOptions) (_result *ListVpcEndpointServicesByEndUserResponse, _err error) {
+func (client *Client) ListVpcEndpointServicesByEndUserWithContext(ctx context.Context, request *ListVpcEndpointServicesByEndUserRequest, runtime *dara.RuntimeOptions) (_result *ListVpcEndpointServicesByEndUserResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2625,29 +1937,11 @@ func (client *Client) ListVpcEndpointServicesByEndUserWithOptions(request *ListV
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVpcEndpointServicesByEndUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of endpoint services that can be associated with the endpoint created within the current account.
-//
-// @param request - ListVpcEndpointServicesByEndUserRequest
-//
-// @return ListVpcEndpointServicesByEndUserResponse
-func (client *Client) ListVpcEndpointServicesByEndUser(request *ListVpcEndpointServicesByEndUserRequest) (_result *ListVpcEndpointServicesByEndUserResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListVpcEndpointServicesByEndUserResponse{}
-	_body, _err := client.ListVpcEndpointServicesByEndUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2660,7 +1954,7 @@ func (client *Client) ListVpcEndpointServicesByEndUser(request *ListVpcEndpointS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVpcEndpointZonesResponse
-func (client *Client) ListVpcEndpointZonesWithOptions(request *ListVpcEndpointZonesRequest, runtime *dara.RuntimeOptions) (_result *ListVpcEndpointZonesResponse, _err error) {
+func (client *Client) ListVpcEndpointZonesWithContext(ctx context.Context, request *ListVpcEndpointZonesRequest, runtime *dara.RuntimeOptions) (_result *ListVpcEndpointZonesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2703,29 +1997,11 @@ func (client *Client) ListVpcEndpointZonesWithOptions(request *ListVpcEndpointZo
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVpcEndpointZonesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the zones of an endpoint.
-//
-// @param request - ListVpcEndpointZonesRequest
-//
-// @return ListVpcEndpointZonesResponse
-func (client *Client) ListVpcEndpointZones(request *ListVpcEndpointZonesRequest) (_result *ListVpcEndpointZonesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListVpcEndpointZonesResponse{}
-	_body, _err := client.ListVpcEndpointZonesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2738,7 +2014,7 @@ func (client *Client) ListVpcEndpointZones(request *ListVpcEndpointZonesRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVpcEndpointsResponse
-func (client *Client) ListVpcEndpointsWithOptions(request *ListVpcEndpointsRequest, runtime *dara.RuntimeOptions) (_result *ListVpcEndpointsResponse, _err error) {
+func (client *Client) ListVpcEndpointsWithContext(ctx context.Context, request *ListVpcEndpointsRequest, runtime *dara.RuntimeOptions) (_result *ListVpcEndpointsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2817,29 +2093,11 @@ func (client *Client) ListVpcEndpointsWithOptions(request *ListVpcEndpointsReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVpcEndpointsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of endpoints.
-//
-// @param request - ListVpcEndpointsRequest
-//
-// @return ListVpcEndpointsResponse
-func (client *Client) ListVpcEndpoints(request *ListVpcEndpointsRequest) (_result *ListVpcEndpointsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListVpcEndpointsResponse{}
-	_body, _err := client.ListVpcEndpointsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2852,7 +2110,7 @@ func (client *Client) ListVpcEndpoints(request *ListVpcEndpointsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OpenPrivateLinkServiceResponse
-func (client *Client) OpenPrivateLinkServiceWithOptions(request *OpenPrivateLinkServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenPrivateLinkServiceResponse, _err error) {
+func (client *Client) OpenPrivateLinkServiceWithContext(ctx context.Context, request *OpenPrivateLinkServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenPrivateLinkServiceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2879,29 +2137,11 @@ func (client *Client) OpenPrivateLinkServiceWithOptions(request *OpenPrivateLink
 		BodyType:    dara.String("json"),
 	}
 	_result = &OpenPrivateLinkServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Activates PrivateLink.
-//
-// @param request - OpenPrivateLinkServiceRequest
-//
-// @return OpenPrivateLinkServiceResponse
-func (client *Client) OpenPrivateLinkService(request *OpenPrivateLinkServiceRequest) (_result *OpenPrivateLinkServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OpenPrivateLinkServiceResponse{}
-	_body, _err := client.OpenPrivateLinkServiceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2920,7 +2160,7 @@ func (client *Client) OpenPrivateLinkService(request *OpenPrivateLinkServiceRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveUserFromVpcEndpointServiceResponse
-func (client *Client) RemoveUserFromVpcEndpointServiceWithOptions(request *RemoveUserFromVpcEndpointServiceRequest, runtime *dara.RuntimeOptions) (_result *RemoveUserFromVpcEndpointServiceResponse, _err error) {
+func (client *Client) RemoveUserFromVpcEndpointServiceWithContext(ctx context.Context, request *RemoveUserFromVpcEndpointServiceRequest, runtime *dara.RuntimeOptions) (_result *RemoveUserFromVpcEndpointServiceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2971,35 +2211,11 @@ func (client *Client) RemoveUserFromVpcEndpointServiceWithOptions(request *Remov
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveUserFromVpcEndpointServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes an account ID from the whitelist of an endpoint service.
-//
-// Description:
-//
-//	  Before you remove an account ID from the whitelist of an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
-//
-//		- You cannot repeatedly call the **RemoveUserFromVpcEndpointService*	- operation to remove the ID of an Alibaba Cloud account from the whitelist of an endpoint service within a specified period of time.
-//
-// @param request - RemoveUserFromVpcEndpointServiceRequest
-//
-// @return RemoveUserFromVpcEndpointServiceResponse
-func (client *Client) RemoveUserFromVpcEndpointService(request *RemoveUserFromVpcEndpointServiceRequest) (_result *RemoveUserFromVpcEndpointServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RemoveUserFromVpcEndpointServiceResponse{}
-	_body, _err := client.RemoveUserFromVpcEndpointServiceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3022,7 +2238,7 @@ func (client *Client) RemoveUserFromVpcEndpointService(request *RemoveUserFromVp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveZoneFromVpcEndpointResponse
-func (client *Client) RemoveZoneFromVpcEndpointWithOptions(request *RemoveZoneFromVpcEndpointRequest, runtime *dara.RuntimeOptions) (_result *RemoveZoneFromVpcEndpointResponse, _err error) {
+func (client *Client) RemoveZoneFromVpcEndpointWithContext(ctx context.Context, request *RemoveZoneFromVpcEndpointRequest, runtime *dara.RuntimeOptions) (_result *RemoveZoneFromVpcEndpointResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3069,39 +2285,11 @@ func (client *Client) RemoveZoneFromVpcEndpointWithOptions(request *RemoveZoneFr
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveZoneFromVpcEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a zone of an endpoint.
-//
-// Description:
-//
-//	  **RemoveZoneFromVpcEndpoint*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to check whether the zone of the endpoint is deleted.
-//
-//	    	- If the zone of the endpoint is in the **Deleting*	- state, the zone is being deleted.
-//
-//	    	- If the zone cannot be queried, the zone is deleted.
-//
-//		- You cannot repeatedly call the **RemoveZoneFromVpcEndpoint*	- operation to delete a zone of an endpoint within a specified period of time.
-//
-// @param request - RemoveZoneFromVpcEndpointRequest
-//
-// @return RemoveZoneFromVpcEndpointResponse
-func (client *Client) RemoveZoneFromVpcEndpoint(request *RemoveZoneFromVpcEndpointRequest) (_result *RemoveZoneFromVpcEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RemoveZoneFromVpcEndpointResponse{}
-	_body, _err := client.RemoveZoneFromVpcEndpointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3118,7 +2306,7 @@ func (client *Client) RemoveZoneFromVpcEndpoint(request *RemoveZoneFromVpcEndpoi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TagResourcesResponse
-func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3168,33 +2356,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds tags to resources. You can call this API operation to add tags to one or more endpoints or endpoint services.
-//
-// Description:
-//
-// > You can add up to 20 tags to an instance. Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number is reached, an error message is returned.
-//
-// @param request - TagResourcesRequest
-//
-// @return TagResourcesResponse
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3207,7 +2373,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UntagResourcesResponse
-func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3265,29 +2431,11 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes tags from one or more endpoints or endpoint services at a time.
-//
-// @param request - UntagResourcesRequest
-//
-// @return UntagResourcesResponse
-func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.UntagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3304,7 +2452,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateVpcEndpointAttributeResponse
-func (client *Client) UpdateVpcEndpointAttributeWithOptions(request *UpdateVpcEndpointAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateVpcEndpointAttributeResponse, _err error) {
+func (client *Client) UpdateVpcEndpointAttributeWithContext(ctx context.Context, request *UpdateVpcEndpointAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateVpcEndpointAttributeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3367,33 +2515,11 @@ func (client *Client) UpdateVpcEndpointAttributeWithOptions(request *UpdateVpcEn
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateVpcEndpointAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the attributes of an endpoint.
-//
-// Description:
-//
-// You cannot repeatedly call the **UpdateVpcEndpointAttribute*	- operation to modify the attributes of an endpoint that belongs to an Alibaba Cloud account within a specified period of time.
-//
-// @param request - UpdateVpcEndpointAttributeRequest
-//
-// @return UpdateVpcEndpointAttributeResponse
-func (client *Client) UpdateVpcEndpointAttribute(request *UpdateVpcEndpointAttributeRequest) (_result *UpdateVpcEndpointAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateVpcEndpointAttributeResponse{}
-	_body, _err := client.UpdateVpcEndpointAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3410,7 +2536,7 @@ func (client *Client) UpdateVpcEndpointAttribute(request *UpdateVpcEndpointAttri
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateVpcEndpointConnectionAttributeResponse
-func (client *Client) UpdateVpcEndpointConnectionAttributeWithOptions(request *UpdateVpcEndpointConnectionAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateVpcEndpointConnectionAttributeResponse, _err error) {
+func (client *Client) UpdateVpcEndpointConnectionAttributeWithContext(ctx context.Context, request *UpdateVpcEndpointConnectionAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateVpcEndpointConnectionAttributeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3461,33 +2587,11 @@ func (client *Client) UpdateVpcEndpointConnectionAttributeWithOptions(request *U
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateVpcEndpointConnectionAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the attributes of an endpoint connection.
-//
-// Description:
-//
-// You cannot repeatedly call the **UpdateVpcEndpointConnectionAttribute*	- operation to modify the bandwidth of an endpoint connection that belongs to an Alibaba Cloud account within a specified period of time.
-//
-// @param request - UpdateVpcEndpointConnectionAttributeRequest
-//
-// @return UpdateVpcEndpointConnectionAttributeResponse
-func (client *Client) UpdateVpcEndpointConnectionAttribute(request *UpdateVpcEndpointConnectionAttributeRequest) (_result *UpdateVpcEndpointConnectionAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateVpcEndpointConnectionAttributeResponse{}
-	_body, _err := client.UpdateVpcEndpointConnectionAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3504,7 +2608,7 @@ func (client *Client) UpdateVpcEndpointConnectionAttribute(request *UpdateVpcEnd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateVpcEndpointServiceAttributeResponse
-func (client *Client) UpdateVpcEndpointServiceAttributeWithOptions(request *UpdateVpcEndpointServiceAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateVpcEndpointServiceAttributeResponse, _err error) {
+func (client *Client) UpdateVpcEndpointServiceAttributeWithContext(ctx context.Context, request *UpdateVpcEndpointServiceAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateVpcEndpointServiceAttributeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3571,33 +2675,11 @@ func (client *Client) UpdateVpcEndpointServiceAttributeWithOptions(request *Upda
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateVpcEndpointServiceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the attributes of an endpoint service.
-//
-// Description:
-//
-// You cannot repeatedly call the **UpdateVpcEndpointServiceAttribute*	- operation to modify the attributes of an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
-//
-// @param request - UpdateVpcEndpointServiceAttributeRequest
-//
-// @return UpdateVpcEndpointServiceAttributeResponse
-func (client *Client) UpdateVpcEndpointServiceAttribute(request *UpdateVpcEndpointServiceAttributeRequest) (_result *UpdateVpcEndpointServiceAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateVpcEndpointServiceAttributeResponse{}
-	_body, _err := client.UpdateVpcEndpointServiceAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3614,7 +2696,7 @@ func (client *Client) UpdateVpcEndpointServiceAttribute(request *UpdateVpcEndpoi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateVpcEndpointServiceResourceAttributeResponse
-func (client *Client) UpdateVpcEndpointServiceResourceAttributeWithOptions(request *UpdateVpcEndpointServiceResourceAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateVpcEndpointServiceResourceAttributeResponse, _err error) {
+func (client *Client) UpdateVpcEndpointServiceResourceAttributeWithContext(ctx context.Context, request *UpdateVpcEndpointServiceResourceAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateVpcEndpointServiceResourceAttributeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3669,33 +2751,11 @@ func (client *Client) UpdateVpcEndpointServiceResourceAttributeWithOptions(reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateVpcEndpointServiceResourceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the attributes of a service resource that is added to an endpoint service.
-//
-// Description:
-//
-// You cannot repeatedly call the **UpdateVpcEndpointServiceResourceAttribute*	- operation to modify the attributes of a service resource that is added to an endpoint service within a specified period of time.
-//
-// @param request - UpdateVpcEndpointServiceResourceAttributeRequest
-//
-// @return UpdateVpcEndpointServiceResourceAttributeResponse
-func (client *Client) UpdateVpcEndpointServiceResourceAttribute(request *UpdateVpcEndpointServiceResourceAttributeRequest) (_result *UpdateVpcEndpointServiceResourceAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateVpcEndpointServiceResourceAttributeResponse{}
-	_body, _err := client.UpdateVpcEndpointServiceResourceAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3728,7 +2788,7 @@ func (client *Client) UpdateVpcEndpointServiceResourceAttribute(request *UpdateV
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateVpcEndpointZoneConnectionResourceAttributeResponse
-func (client *Client) UpdateVpcEndpointZoneConnectionResourceAttributeWithOptions(request *UpdateVpcEndpointZoneConnectionResourceAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateVpcEndpointZoneConnectionResourceAttributeResponse, _err error) {
+func (client *Client) UpdateVpcEndpointZoneConnectionResourceAttributeWithContext(ctx context.Context, request *UpdateVpcEndpointZoneConnectionResourceAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateVpcEndpointZoneConnectionResourceAttributeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3795,48 +2855,10 @@ func (client *Client) UpdateVpcEndpointZoneConnectionResourceAttributeWithOption
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateVpcEndpointZoneConnectionResourceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a service resource of a zone to which an endpoint connection belongs.
-//
-// Description:
-//
-// ### Prerequisites
-//
-// By default, the feature of modifying a service resource of a zone to which an endpoint connection belongs is unavailable. To use this feature, log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/privatelink/quotas). Click Whitelist Quotas in the left-side navigation pane and click PrivateLink in the Networking section. On the page that appears, search for `privatelink_whitelist/svc_res_mgt_uat` and click Apply in the Actions column.
-//
-// ### Usage notes
-//
-//   - If the endpoint connection is in the **Disconnected*	- state, you can manually allocate the service resource in the zone.
-//
-//   - If the endpoint connection is in the **Connected*	- state, you can manually migrate the service resource in the zone. In this case, the connection might be interrupted.
-//
-//   - **UpdateVpcEndpointZoneConnectionResourceAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to check whether the service resource is modified.
-//
-//   - If the endpoint service is in the **Pending*	- state, the service resource is being modified.
-//
-//   - If the endpoint service is in the **Active*	- state, the service resource is modified.
-//
-//   - You cannot repeatedly call the **UpdateVpcEndpointZoneConnectionResourceAttribute*	- operation to modify a service resource in the zone to which an endpoint connection belongs within a specified period of time.
-//
-// @param request - UpdateVpcEndpointZoneConnectionResourceAttributeRequest
-//
-// @return UpdateVpcEndpointZoneConnectionResourceAttributeResponse
-func (client *Client) UpdateVpcEndpointZoneConnectionResourceAttribute(request *UpdateVpcEndpointZoneConnectionResourceAttributeRequest) (_result *UpdateVpcEndpointZoneConnectionResourceAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateVpcEndpointZoneConnectionResourceAttributeResponse{}
-	_body, _err := client.UpdateVpcEndpointZoneConnectionResourceAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
