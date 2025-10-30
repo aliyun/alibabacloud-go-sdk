@@ -24,29 +24,44 @@ type iListAuthorizedUserGroupsRequest interface {
 }
 
 type ListAuthorizedUserGroupsRequest struct {
+	// The ID of the delivery group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The ID of the user group (exact match).
+	//
 	// example:
 	//
 	// ug-00001
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the user group (fuzzy match).
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The page number. Pages start from page 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The maximum number of entries returned per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The product type.
+	//
+	// Valid values:
+	//
+	// 	- CloudApp: App Streaming
+	//
 	// This parameter is required.
 	//
 	// example:

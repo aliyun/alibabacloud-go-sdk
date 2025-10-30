@@ -382,7 +382,9 @@ type ModifyBrowserInstanceGroupRequestPolicy struct {
 	// example:
 	//
 	// off
-	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
+	Html5FileTransfer         *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
+	NoOperationDisconnect     *string `json:"NoOperationDisconnect,omitempty" xml:"NoOperationDisconnect,omitempty"`
+	NoOperationDisconnectTime *int32  `json:"NoOperationDisconnectTime,omitempty" xml:"NoOperationDisconnectTime,omitempty"`
 	// example:
 	//
 	// pg-12345
@@ -419,6 +421,14 @@ func (s *ModifyBrowserInstanceGroupRequestPolicy) GetHtml5FileTransfer() *string
 	return s.Html5FileTransfer
 }
 
+func (s *ModifyBrowserInstanceGroupRequestPolicy) GetNoOperationDisconnect() *string {
+	return s.NoOperationDisconnect
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicy) GetNoOperationDisconnectTime() *int32 {
+	return s.NoOperationDisconnectTime
+}
+
 func (s *ModifyBrowserInstanceGroupRequestPolicy) GetPolicyId() *string {
 	return s.PolicyId
 }
@@ -452,6 +462,16 @@ func (s *ModifyBrowserInstanceGroupRequestPolicy) SetDisconnectKeepSessionTime(v
 
 func (s *ModifyBrowserInstanceGroupRequestPolicy) SetHtml5FileTransfer(v string) *ModifyBrowserInstanceGroupRequestPolicy {
 	s.Html5FileTransfer = &v
+	return s
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicy) SetNoOperationDisconnect(v string) *ModifyBrowserInstanceGroupRequestPolicy {
+	s.NoOperationDisconnect = &v
+	return s
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicy) SetNoOperationDisconnectTime(v int32) *ModifyBrowserInstanceGroupRequestPolicy {
+	s.NoOperationDisconnectTime = &v
 	return s
 }
 

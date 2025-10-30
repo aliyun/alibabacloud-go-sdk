@@ -16,6 +16,7 @@ type iTagCloudResourcesResponseBody interface {
 }
 
 type TagCloudResourcesResponseBody struct {
+	// The cloud resources on which the operation failed and the corresponding tags.
 	FailedResources []*TagCloudResourcesResponseBodyFailedResources `json:"FailedResources,omitempty" xml:"FailedResources,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -75,6 +76,20 @@ type TagCloudResourcesResponseBodyFailedResources struct {
 	//
 	// aig-001
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the cloud resource.
+	//
+	// Valid values:
+	//
+	// 	- CenterImageId: center image ID.
+	//
+	// 	- AppId: app ID.
+	//
+	// 	- WyId: Alibaba Cloud Workspace user ID.
+	//
+	// 	- AppInstanceGroupId: delivery group ID.
+	//
+	// 	- AliUid: tenant ID.
+	//
 	// example:
 	//
 	// AppInstanceGroupId

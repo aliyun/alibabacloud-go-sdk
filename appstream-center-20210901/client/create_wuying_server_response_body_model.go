@@ -16,7 +16,10 @@ type iCreateWuyingServerResponseBody interface {
 }
 
 type CreateWuyingServerResponseBody struct {
+	// The response data.
 	Data *CreateWuyingServerResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -59,10 +62,13 @@ func (s *CreateWuyingServerResponseBody) Validate() error {
 }
 
 type CreateWuyingServerResponseBodyData struct {
+	// The order ID.
+	//
 	// example:
 	//
 	// 23429322113****
-	OrderId            *string   `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The list of workstation IDs.
 	WuyingServerIdList []*string `json:"WuyingServerIdList,omitempty" xml:"WuyingServerIdList,omitempty" type:"Repeated"`
 }
 

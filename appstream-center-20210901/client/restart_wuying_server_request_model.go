@@ -14,6 +14,7 @@ type iRestartWuyingServerRequest interface {
 }
 
 type RestartWuyingServerRequest struct {
+	// The list of workstation IDs.
 	WuyingServerIdList []*string `json:"WuyingServerIdList,omitempty" xml:"WuyingServerIdList,omitempty" type:"Repeated"`
 }
 

@@ -16,10 +16,19 @@ type iStopWuyingServerRequest interface {
 }
 
 type StopWuyingServerRequest struct {
+	// Force restart.
+	//
+	// Valid values:
+	//
+	// 	- True.
+	//
+	// 	- False
+	//
 	// example:
 	//
 	// True
-	Force              *bool     `json:"Force,omitempty" xml:"Force,omitempty"`
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The list of workstation IDs.
 	WuyingServerIdList []*string `json:"WuyingServerIdList,omitempty" xml:"WuyingServerIdList,omitempty" type:"Repeated"`
 }
 

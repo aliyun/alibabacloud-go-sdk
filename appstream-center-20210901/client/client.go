@@ -441,7 +441,7 @@ func (client *Client) CreateAppInstanceGroup(request *CreateAppInstanceGroupRequ
 
 // Summary:
 //
-// 通过实例创建镜像
+// Create a custom image from a deployed instance. This allows you to quickly create more instances with the same configurations and avoid repeatedly configuring the instance environment each time you create the instance.
 //
 // @param request - CreateImageByInstanceRequest
 //
@@ -517,7 +517,7 @@ func (client *Client) CreateImageByInstanceWithOptions(request *CreateImageByIns
 
 // Summary:
 //
-// 通过实例创建镜像
+// Create a custom image from a deployed instance. This allows you to quickly create more instances with the same configurations and avoid repeatedly configuring the instance environment each time you create the instance.
 //
 // @param request - CreateImageByInstanceRequest
 //
@@ -605,7 +605,21 @@ func (client *Client) CreateImageFromAppInstanceGroup(request *CreateImageFromAp
 
 // Summary:
 //
-// 创建一台或多台研发主机
+// Create one or more workstations.
+//
+// Description:
+//
+// 1.  Project is equivalent to the Resource Configuration module of the Cloud Flow console
+//
+// 2.  If there are multiple versions behind the input parameter ContentId:
+//
+//	**
+//
+//	**Note*	- The default version is used.
+//
+//	Bind simultaneously
+//
+// 3.  You can call the current interface only if the default version of Content is available.
 //
 // @param request - CreateWuyingServerRequest
 //
@@ -746,7 +760,21 @@ func (client *Client) CreateWuyingServerWithOptions(request *CreateWuyingServerR
 
 // Summary:
 //
-// 创建一台或多台研发主机
+// Create one or more workstations.
+//
+// Description:
+//
+// 1.  Project is equivalent to the Resource Configuration module of the Cloud Flow console
+//
+// 2.  If there are multiple versions behind the input parameter ContentId:
+//
+//	**
+//
+//	**Note*	- The default version is used.
+//
+//	Bind simultaneously
+//
+// 3.  You can call the current interface only if the default version of Content is available.
 //
 // @param request - CreateWuyingServerRequest
 //
@@ -914,6 +942,20 @@ func (client *Client) DeleteAppInstances(request *DeleteAppInstancesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// # Delete a custom RDS image
+//
+// Description:
+//
+//	  You can only delete custom images to which a user belongs.
+//
+//		- If the product line is an image of the RDS cloud computer pool, RDS cloud application, and RDS workstation, make sure that no RDS instances use the image before you delete it.
+//
+//		- The RDS CloudDesktop template references an image. When you delete an image, the template is also deleted.
+//
+//		- If the image contains multiple regions, the images in all regions are deleted when the image is deleted.
+//
 // @param request - DeleteImageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -954,6 +996,20 @@ func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// # Delete a custom RDS image
+//
+// Description:
+//
+//	  You can only delete custom images to which a user belongs.
+//
+//		- If the product line is an image of the RDS cloud computer pool, RDS cloud application, and RDS workstation, make sure that no RDS instances use the image before you delete it.
+//
+//		- The RDS CloudDesktop template references an image. When you delete an image, the template is also deleted.
+//
+//		- If the image contains multiple regions, the images in all regions are deleted when the image is deleted.
+//
 // @param request - DeleteImageRequest
 //
 // @return DeleteImageResponse
@@ -971,6 +1027,10 @@ func (client *Client) DeleteImage(request *DeleteImageRequest) (_result *DeleteI
 // Summary:
 //
 // 删除工作站
+//
+// Description:
+//
+// Deletes a workstation.
 //
 // @param request - DeleteWuyingServerRequest
 //
@@ -1016,6 +1076,10 @@ func (client *Client) DeleteWuyingServerWithOptions(request *DeleteWuyingServerR
 //
 // 删除工作站
 //
+// Description:
+//
+// Deletes a workstation.
+//
 // @param request - DeleteWuyingServerRequest
 //
 // @return DeleteWuyingServerResponse
@@ -1032,7 +1096,7 @@ func (client *Client) DeleteWuyingServer(request *DeleteWuyingServerRequest) (_r
 
 // Summary:
 //
-// 查询无影工作站EIP信息
+// Queries the Elastic IP Addresses (EIPs) of workstations.
 //
 // @param request - DescribeWuyingServerEipInfoRequest
 //
@@ -1080,7 +1144,7 @@ func (client *Client) DescribeWuyingServerEipInfoWithOptions(request *DescribeWu
 
 // Summary:
 //
-// 查询无影工作站EIP信息
+// Queries the Elastic IP Addresses (EIPs) of workstations.
 //
 // @param request - DescribeWuyingServerEipInfoRequest
 //
@@ -1778,7 +1842,7 @@ func (client *Client) ListAppInstances(request *ListAppInstancesRequest) (_resul
 
 // Summary:
 //
-// 通过交付组查询展示授权的用户组列表
+// Queries the user groups authorized by a delivery group.
 //
 // @param request - ListAuthorizedUserGroupsRequest
 //
@@ -1842,7 +1906,7 @@ func (client *Client) ListAuthorizedUserGroupsWithOptions(request *ListAuthorize
 
 // Summary:
 //
-// 通过交付组查询展示授权的用户组列表
+// Queries the user groups authorized by a delivery group.
 //
 // @param request - ListAuthorizedUserGroupsRequest
 //
@@ -2629,7 +2693,7 @@ func (client *Client) ListTenantConfig() (_result *ListTenantConfigResponse, _er
 
 // Summary:
 //
-// 查询研发主机列表
+// Queries the list of workstations.
 //
 // @param request - ListWuyingServerRequest
 //
@@ -2720,7 +2784,7 @@ func (client *Client) ListWuyingServerWithOptions(request *ListWuyingServerReque
 
 // Summary:
 //
-// 查询研发主机列表
+// Queries the list of workstations.
 //
 // @param request - ListWuyingServerRequest
 //
@@ -2934,7 +2998,7 @@ func (client *Client) ModifyAppInstanceGroupAttribute(request *ModifyAppInstance
 
 // Summary:
 //
-// 修改策略信息
+// Modify the delivery group display policy, including settings such as frame rate, resolution, and protocol type.
 //
 // @param tmpReq - ModifyAppPolicyRequest
 //
@@ -2992,7 +3056,7 @@ func (client *Client) ModifyAppPolicyWithOptions(tmpReq *ModifyAppPolicyRequest,
 
 // Summary:
 //
-// 修改策略信息
+// Modify the delivery group display policy, including settings such as frame rate, resolution, and protocol type.
 //
 // @param request - ModifyAppPolicyRequest
 //
@@ -3358,7 +3422,7 @@ func (client *Client) ModifyTenantConfig(request *ModifyTenantConfigRequest) (_r
 
 // Summary:
 //
-// 修改研发主机属性
+// Modify workstation properties.
 //
 // @param request - ModifyWuyingServerAttributeRequest
 //
@@ -3410,7 +3474,7 @@ func (client *Client) ModifyWuyingServerAttributeWithOptions(request *ModifyWuyi
 
 // Summary:
 //
-// 修改研发主机属性
+// Modify workstation properties.
 //
 // @param request - ModifyWuyingServerAttributeRequest
 //
@@ -3610,7 +3674,7 @@ func (client *Client) RenewAppInstanceGroup(request *RenewAppInstanceGroupReques
 
 // Summary:
 //
-// 续费研发主机
+// Renew one workstation.
 //
 // @param request - RenewWuyingServerRequest
 //
@@ -3670,7 +3734,7 @@ func (client *Client) RenewWuyingServerWithOptions(request *RenewWuyingServerReq
 
 // Summary:
 //
-// 续费研发主机
+// Renew one workstation.
 //
 // @param request - RenewWuyingServerRequest
 //
@@ -3688,7 +3752,7 @@ func (client *Client) RenewWuyingServer(request *RenewWuyingServerRequest) (_res
 
 // Summary:
 //
-// 重启研发主机
+// Restarts the workstation.
 //
 // @param request - RestartWuyingServerRequest
 //
@@ -3735,7 +3799,7 @@ func (client *Client) RestartWuyingServerWithOptions(request *RestartWuyingServe
 
 // Summary:
 //
-// 重启研发主机
+// Restarts the workstation.
 //
 // @param request - RestartWuyingServerRequest
 //
@@ -3751,6 +3815,10 @@ func (client *Client) RestartWuyingServer(request *RestartWuyingServerRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Initiates a task to replicate an image to another region.
+//
 // @param request - StartTaskForDistributeImageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3811,6 +3879,10 @@ func (client *Client) StartTaskForDistributeImageWithOptions(request *StartTaskF
 	return _result, _err
 }
 
+// Summary:
+//
+// Initiates a task to replicate an image to another region.
+//
 // @param request - StartTaskForDistributeImageRequest
 //
 // @return StartTaskForDistributeImageResponse
@@ -3827,7 +3899,7 @@ func (client *Client) StartTaskForDistributeImage(request *StartTaskForDistribut
 
 // Summary:
 //
-// 启动研发主机
+// Start the workstation.
 //
 // @param request - StartWuyingServerRequest
 //
@@ -3874,7 +3946,7 @@ func (client *Client) StartWuyingServerWithOptions(request *StartWuyingServerReq
 
 // Summary:
 //
-// 启动研发主机
+// Start the workstation.
 //
 // @param request - StartWuyingServerRequest
 //
@@ -3892,7 +3964,7 @@ func (client *Client) StartWuyingServer(request *StartWuyingServerRequest) (_res
 
 // Summary:
 //
-// 停止研发主机
+// Stops the workstation.
 //
 // @param request - StopWuyingServerRequest
 //
@@ -3943,7 +4015,7 @@ func (client *Client) StopWuyingServerWithOptions(request *StopWuyingServerReque
 
 // Summary:
 //
-// 停止研发主机
+// Stops the workstation.
 //
 // @param request - StopWuyingServerRequest
 //

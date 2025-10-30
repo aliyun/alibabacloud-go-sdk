@@ -16,10 +16,14 @@ type iRenewWuyingServerResponseBody interface {
 }
 
 type RenewWuyingServerResponseBody struct {
+	// The order ID.
+	//
 	// example:
 	//
 	// 23977848****97
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****

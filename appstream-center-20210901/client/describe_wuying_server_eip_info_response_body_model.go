@@ -16,6 +16,7 @@ type iDescribeWuyingServerEipInfoResponseBody interface {
 }
 
 type DescribeWuyingServerEipInfoResponseBody struct {
+	// The information about the associated EIP.
 	EipInfoModel *DescribeWuyingServerEipInfoResponseBodyEipInfoModel `json:"EipInfoModel,omitempty" xml:"EipInfoModel,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,14 +62,20 @@ func (s *DescribeWuyingServerEipInfoResponseBody) Validate() error {
 }
 
 type DescribeWuyingServerEipInfoResponseBodyEipInfoModel struct {
+	// The public IP address.
+	//
 	// example:
 	//
 	// 171.xxx.xxx.221
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	// The ID of the elastic network interface (ENI).
+	//
 	// example:
 	//
 	// eni-bp174p2xxxxxbyh02ix
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	// The port range.
+	//
 	// example:
 	//
 	// 6606/6607

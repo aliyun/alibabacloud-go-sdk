@@ -18,14 +18,20 @@ type iModifyWuyingServerAttributeRequest interface {
 }
 
 type ModifyWuyingServerAttributeRequest struct {
+	// Workstation login password.
+	//
 	// example:
 	//
 	// yourPassword
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The ID of the workstation.
+	//
 	// example:
 	//
 	// ws-0bw2f11****dial
 	WuyingServerId *string `json:"WuyingServerId,omitempty" xml:"WuyingServerId,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// exampleServerName

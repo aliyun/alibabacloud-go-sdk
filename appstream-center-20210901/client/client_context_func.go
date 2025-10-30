@@ -338,7 +338,7 @@ func (client *Client) CreateAppInstanceGroupWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 通过实例创建镜像
+// Create a custom image from a deployed instance. This allows you to quickly create more instances with the same configurations and avoid repeatedly configuring the instance environment each time you create the instance.
 //
 // @param request - CreateImageByInstanceRequest
 //
@@ -466,7 +466,21 @@ func (client *Client) CreateImageFromAppInstanceGroupWithContext(ctx context.Con
 
 // Summary:
 //
-// 创建一台或多台研发主机
+// Create one or more workstations.
+//
+// Description:
+//
+// 1.  Project is equivalent to the Resource Configuration module of the Cloud Flow console
+//
+// 2.  If there are multiple versions behind the input parameter ContentId:
+//
+//	**
+//
+//	**Note*	- The default version is used.
+//
+//	Bind simultaneously
+//
+// 3.  You can call the current interface only if the default version of Content is available.
 //
 // @param request - CreateWuyingServerRequest
 //
@@ -713,6 +727,20 @@ func (client *Client) DeleteAppInstancesWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// # Delete a custom RDS image
+//
+// Description:
+//
+//	  You can only delete custom images to which a user belongs.
+//
+//		- If the product line is an image of the RDS cloud computer pool, RDS cloud application, and RDS workstation, make sure that no RDS instances use the image before you delete it.
+//
+//		- The RDS CloudDesktop template references an image. When you delete an image, the template is also deleted.
+//
+//		- If the image contains multiple regions, the images in all regions are deleted when the image is deleted.
+//
 // @param request - DeleteImageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -757,6 +785,10 @@ func (client *Client) DeleteImageWithContext(ctx context.Context, request *Delet
 //
 // 删除工作站
 //
+// Description:
+//
+// Deletes a workstation.
+//
 // @param request - DeleteWuyingServerRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -799,7 +831,7 @@ func (client *Client) DeleteWuyingServerWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询无影工作站EIP信息
+// Queries the Elastic IP Addresses (EIPs) of workstations.
 //
 // @param request - DescribeWuyingServerEipInfoRequest
 //
@@ -1375,7 +1407,7 @@ func (client *Client) ListAppInstancesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 通过交付组查询展示授权的用户组列表
+// Queries the user groups authorized by a delivery group.
 //
 // @param request - ListAuthorizedUserGroupsRequest
 //
@@ -2013,7 +2045,7 @@ func (client *Client) ListTagCloudResourcesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询研发主机列表
+// Queries the list of workstations.
 //
 // @param request - ListWuyingServerRequest
 //
@@ -2260,7 +2292,7 @@ func (client *Client) ModifyAppInstanceGroupAttributeWithContext(ctx context.Con
 
 // Summary:
 //
-// 修改策略信息
+// Modify the delivery group display policy, including settings such as frame rate, resolution, and protocol type.
 //
 // @param tmpReq - ModifyAppPolicyRequest
 //
@@ -2582,7 +2614,7 @@ func (client *Client) ModifyTenantConfigWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 修改研发主机属性
+// Modify workstation properties.
 //
 // @param request - ModifyWuyingServerAttributeRequest
 //
@@ -2776,7 +2808,7 @@ func (client *Client) RenewAppInstanceGroupWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 续费研发主机
+// Renew one workstation.
 //
 // @param request - RenewWuyingServerRequest
 //
@@ -2836,7 +2868,7 @@ func (client *Client) RenewWuyingServerWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 重启研发主机
+// Restarts the workstation.
 //
 // @param request - RestartWuyingServerRequest
 //
@@ -2881,6 +2913,10 @@ func (client *Client) RestartWuyingServerWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Initiates a task to replicate an image to another region.
+//
 // @param request - StartTaskForDistributeImageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2943,7 +2979,7 @@ func (client *Client) StartTaskForDistributeImageWithContext(ctx context.Context
 
 // Summary:
 //
-// 启动研发主机
+// Start the workstation.
 //
 // @param request - StartWuyingServerRequest
 //
@@ -2990,7 +3026,7 @@ func (client *Client) StartWuyingServerWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 停止研发主机
+// Stops the workstation.
 //
 // @param request - StopWuyingServerRequest
 //

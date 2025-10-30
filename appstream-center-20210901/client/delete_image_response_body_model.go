@@ -22,22 +22,42 @@ type iDeleteImageResponseBody interface {
 }
 
 type DeleteImageResponseBody struct {
+	// Status code:
+	//
+	// 	- `200`: Success.
+	//
+	// 	- `400`: An error occurred.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Whether the deletion is successful.
+	//
+	// Enumerated values:
+	//
+	// 	- true:Deleted successfully.
+	//
+	// 	- false:Deletion failure.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

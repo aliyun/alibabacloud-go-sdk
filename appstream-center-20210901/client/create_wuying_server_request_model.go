@@ -60,77 +60,142 @@ type iCreateWuyingServerRequest interface {
 }
 
 type CreateWuyingServerRequest struct {
+	// Quantity.
+	//
 	// example:
 	//
 	// 1
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// Auto payment.
+	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Auto-renewal.
+	//
 	// example:
 	//
 	// false
-	AutoRenew *bool  `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// bandwidth value, the NetworkStrategyType is valid for DirectIp. Unit: Mbps, range 2~100
+	//
+	// example:
+	//
+	// 10
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// Region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The billing method.
+	//
+	// Valid values:
+	//
+	// 	- PrePaid: subscription
+	//
 	// example:
 	//
 	// PrePaid
-	ChargeType *string                              `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	DataDisk   []*CreateWuyingServerRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The list of data disks.
+	DataDisk []*CreateWuyingServerRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	// Idempotence token to ensure operation uniqueness
+	//
 	// example:
 	//
 	// 6a1b8c3d
 	IdempotenceToken *string `json:"IdempotenceToken,omitempty" xml:"IdempotenceToken,omitempty"`
+	// The ID of the image.
+	//
 	// example:
 	//
 	// img-bp13mu****
-	ImageId             *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The type of the network policy (in invitational preview).
+	//
+	// example:
+	//
+	// DirectIp
 	NetworkStrategyType *string `json:"NetworkStrategyType,omitempty" xml:"NetworkStrategyType,omitempty"`
+	// The office network IDs.
+	//
 	// example:
 	//
 	// cn-hangzhou+dir-643067****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// Workstation login password.
+	//
 	// example:
 	//
 	// YourPassword123
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The subscription period.
+	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The time unit.
+	//
+	// Valid values:
+	//
+	// 	- Month
+	//
+	// 	- Year
+	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The ID of the discount.
+	//
+	// >  If PromotionId is set, it will try to apply the corresponding discount.
+	//
 	// example:
 	//
 	// 17440009****
 	PromotionId  *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	SavingPlanId *string `json:"SavingPlanId,omitempty" xml:"SavingPlanId,omitempty"`
+	// Workstation specifications.
+	//
 	// example:
 	//
 	// eds.proworkstation_flagship_elite_ne.96c384g.192g4x
 	ServerInstanceType *string `json:"ServerInstanceType,omitempty" xml:"ServerInstanceType,omitempty"`
 	ServerPortRange    *string `json:"ServerPortRange,omitempty" xml:"ServerPortRange,omitempty"`
+	// The system disk category.
+	//
+	// Valid values:
+	//
+	// 	- cloud_auto.
+	//
 	// example:
 	//
 	// cloud_auto
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	// The performance level (PL) of the system disk.
+	//
 	// example:
 	//
 	// PL0
 	SystemDiskPerformanceLevel *string `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
+	// The size of the system disk. Unit: GB.
+	//
 	// example:
 	//
 	// 100
-	SystemDiskSize    *int32    `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	VSwitchIds        []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	VirtualNodePoolId *string   `json:"VirtualNodePoolId,omitempty" xml:"VirtualNodePoolId,omitempty"`
+	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	// The list of office network vSwitches.
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// vnp-0b************gyw
+	VirtualNodePoolId *string `json:"VirtualNodePoolId,omitempty" xml:"VirtualNodePoolId,omitempty"`
+	// The name of the workstation. The numeric suffix is automatically added when multiple workstations are created.
+	//
 	// example:
 	//
 	// exampleServerName
@@ -375,14 +440,24 @@ func (s *CreateWuyingServerRequest) Validate() error {
 }
 
 type CreateWuyingServerRequestDataDisk struct {
+	// The data disk category.
+	//
+	// Valid values:
+	//
+	// 	- cloud_auto.
+	//
 	// example:
 	//
 	// cloud_auto
 	DataDiskCategory *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
+	// The PL of the data disk.
+	//
 	// example:
 	//
 	// PL0
 	DataDiskPerformanceLevel *string `json:"DataDiskPerformanceLevel,omitempty" xml:"DataDiskPerformanceLevel,omitempty"`
+	// The data disk size.
+	//
 	// example:
 	//
 	// 100

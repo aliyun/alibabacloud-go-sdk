@@ -30,38 +30,74 @@ type iCreateImageByInstanceRequest interface {
 }
 
 type CreateImageByInstanceRequest struct {
+	// This parameter is applicable only to scenarios in which the instance type is Cloud Desktop. Specifies whether to clear private data of users. If this parameter is set to true, the created image clears data in directories other than Administrator and Public in the C:\\Users directory.
+	//
+	// Valid values:
+	//
+	// 	- true: cleanup.
+	//
+	// 	- false: does not clear.
+	//
 	// example:
 	//
 	// false
 	AutoCleanUserdata *bool `json:"AutoCleanUserdata,omitempty" xml:"AutoCleanUserdata,omitempty"`
+	// This parameter is not publicly available.
+	//
 	// example:
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The description of the image.
+	//
 	// example:
 	//
 	// my test image v1.0
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The type of disk data contained in the image. By default, the system disk and data disk of the instance are included.
+	//
+	// Valid values:
+	//
+	// 	- SYSTEM: only system disk.
+	//
+	// 	- ALL: system disk + data disk
+	//
 	// example:
 	//
 	// ALL
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The name of the image.
+	//
 	// example:
 	//
 	// test
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The ID of the RDS instance. The instance can be a CloudDesktop instance, a workstation instance. To ensure data consistency in the image, we recommend that you shut down the instance before you create an image.
+	//
 	// example:
 	//
 	// ws-0buj1s9gm******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance type.
+	//
+	// Valid values:
+	//
+	// 	- CloudDesktop: Cloud Desktop.
+	//
+	// 	- WuyingServer: Workstation
+	//
 	// example:
 	//
 	// WuyingServer
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// This parameter is not publicly available.
+	//
 	// example:
 	//
 	// WuyingServer
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The ID of the child instance. This parameter is not used in cloud computing scenarios. Workstation scenarios, you need to specify a persistent session ID to ensure that a specific instance is located.
+	//
 	// example:
 	//
 	// p-0cc7s3n1l*****

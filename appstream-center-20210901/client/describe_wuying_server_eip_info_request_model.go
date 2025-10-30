@@ -16,10 +16,20 @@ type iDescribeWuyingServerEipInfoRequest interface {
 }
 
 type DescribeWuyingServerEipInfoRequest struct {
+	// The Internet service provider (ISP). Valid values:
+	//
+	// 	- ChinaMobile: China Mobile
+	//
+	// 	- ChinaTelecom: China Telecom
+	//
+	// 	- ChinaUnicom: China Unicom
+	//
 	// example:
 	//
 	// ChinaTelecom
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// The ID of the workstation.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,22 +22,32 @@ type iStartTaskForDistributeImageResponseBody interface {
 }
 
 type StartTaskForDistributeImageResponseBody struct {
+	// The error code if an error occurred.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the image replication task.
+	//
 	// example:
 	//
 	// tid-06xnr5lyp77e7****
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message if an error occurred.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 419F31B9-1FDF-5644-ABA3-D00026FA****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the task is successful.
+	//
 	// example:
 	//
 	// true

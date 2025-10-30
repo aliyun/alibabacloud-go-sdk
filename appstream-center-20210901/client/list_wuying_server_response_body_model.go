@@ -22,22 +22,31 @@ type iListWuyingServerResponseBody interface {
 }
 
 type ListWuyingServerResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 15
-	TotalCount       *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of workstation information.
 	WuyingServerList []*ListWuyingServerResponseBodyWuyingServerList `json:"WuyingServerList,omitempty" xml:"WuyingServerList,omitempty" type:"Repeated"`
 }
 
@@ -109,72 +118,108 @@ func (s *ListWuyingServerResponseBody) Validate() error {
 
 type ListWuyingServerResponseBodyWuyingServerList struct {
 	AddVirtualNodePoolStatus *string `json:"AddVirtualNodePoolStatus,omitempty" xml:"AddVirtualNodePoolStatus,omitempty"`
+	// Region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The billing method.
+	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The time when the storage resource was created.
+	//
 	// example:
 	//
 	// 2025-08-02T16:52:11.000+00:00
-	CreateTime *string                                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DataDisk   []*ListWuyingServerResponseBodyWuyingServerListDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The data disks.
+	DataDisk []*ListWuyingServerResponseBodyWuyingServerListDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	// The time when the subscription instance expires.
+	//
 	// example:
 	//
 	// 2025-09-03T16:00:00.000+00:00
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The ID of the custom image.
+	//
 	// example:
 	//
 	// imgc-06****oagaev
-	ImageId          *string                                                         `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageName        *string                                                         `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image name.
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The list of information about the workstation instance.
 	InstanceInfoList []*ListWuyingServerResponseBodyWuyingServerListInstanceInfoList `json:"InstanceInfoList,omitempty" xml:"InstanceInfoList,omitempty" type:"Repeated"`
+	// The private IP address.
+	//
 	// example:
 	//
 	// 10.80.21.149
 	NetworkInterfaceIp *string `json:"NetworkInterfaceIp,omitempty" xml:"NetworkInterfaceIp,omitempty"`
+	// The ID of the office network.
+	//
 	// example:
 	//
 	// cn-hangzhou+dir-1b****ayv2
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The office network name.
+	//
 	// example:
 	//
 	// exampleOfficeSite
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
+	// The type of the office network.
+	//
 	// example:
 	//
 	// SIMPLE
 	OfficeSiteType *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
+	// The OS type.
+	//
 	// example:
 	//
 	// Linux
-	OsType                 *string                                                             `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	SecurityGroupIds       []*string                                                           `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	OsType           *string   `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	// The specifications.
 	ServerInstanceTypeInfo *ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo `json:"ServerInstanceTypeInfo,omitempty" xml:"ServerInstanceTypeInfo,omitempty" type:"Struct"`
+	// The status of the workstation.
+	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the system disk.
+	//
 	// example:
 	//
 	// cloud_auto
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	// The performance level (PL) of the system disk.
+	//
 	// example:
 	//
 	// PL0
 	SystemDiskPerformanceLevel *string `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
+	// The size of the system disk. Unit: GiB.
+	//
 	// example:
 	//
 	// 100
 	SystemDiskSize    *int32  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 	VirtualNodePoolId *string `json:"VirtualNodePoolId,omitempty" xml:"VirtualNodePoolId,omitempty"`
+	// The ID of the workstation.
+	//
 	// example:
 	//
 	// ws-0byd****8wn2lwi
 	WuyingServerId *string `json:"WuyingServerId,omitempty" xml:"WuyingServerId,omitempty"`
+	// The name of the workstation.
+	//
 	// example:
 	//
 	// exampleServerName
@@ -424,14 +469,20 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) Validate() error {
 }
 
 type ListWuyingServerResponseBodyWuyingServerListDataDisk struct {
+	// The category of data disk.
+	//
 	// example:
 	//
 	// cloud_auto
 	DataDiskCategory *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
+	// The PL of the data disk.
+	//
 	// example:
 	//
 	// PL0
 	DataDiskPerformanceLevel *string `json:"DataDiskPerformanceLevel,omitempty" xml:"DataDiskPerformanceLevel,omitempty"`
+	// The size of the data disk. Unit: GB.
+	//
 	// example:
 	//
 	// 200
@@ -478,10 +529,14 @@ func (s *ListWuyingServerResponseBodyWuyingServerListDataDisk) Validate() error 
 }
 
 type ListWuyingServerResponseBodyWuyingServerListInstanceInfoList struct {
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// p-0ceitx****c5
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the ENI.
+	//
 	// example:
 	//
 	// eni-uf65b****dfnt3wb
@@ -519,22 +574,32 @@ func (s *ListWuyingServerResponseBodyWuyingServerListInstanceInfoList) Validate(
 }
 
 type ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo struct {
+	// The number of vCPUs.
+	//
 	// example:
 	//
 	// 96
 	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The number of GPUs.
+	//
 	// example:
 	//
 	// 4
 	Gpu *string `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	// The memory size. Unit: MB.
+	//
 	// example:
 	//
 	// 196,608
 	GpuMemory *int32 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
+	// The memory size. Unit: MB.
+	//
 	// example:
 	//
 	// 393,216
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// Workstation specifications.
+	//
 	// example:
 	//
 	// eds.proworkstation_flagship_elite_ne.96c384g.192g4x

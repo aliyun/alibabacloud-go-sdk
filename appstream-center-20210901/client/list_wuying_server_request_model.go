@@ -37,40 +37,59 @@ type iListWuyingServerRequest interface {
 
 type ListWuyingServerRequest struct {
 	AddVirtualNodePoolStatusList []*string `json:"AddVirtualNodePoolStatusList,omitempty" xml:"AddVirtualNodePoolStatusList,omitempty" type:"Repeated"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The billing method of the Internet access package.
+	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The image ID.
+	//
 	// example:
 	//
 	// img-bp13mu****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The office network IDs.
+	//
 	// example:
 	//
 	// cn-hangzhou+dir-172301****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Workstation specifications.
+	//
 	// example:
 	//
 	// eds.proworkstation_flagship_elite.32c64g.48g1x
 	ServerInstanceType *string `json:"ServerInstanceType,omitempty" xml:"ServerInstanceType,omitempty"`
+	// The status of the workstation.
+	//
 	// example:
 	//
 	// RUNNING
-	Status             *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	VirtualNodePoolId  *string   `json:"VirtualNodePoolId,omitempty" xml:"VirtualNodePoolId,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VirtualNodePoolId *string `json:"VirtualNodePoolId,omitempty" xml:"VirtualNodePoolId,omitempty"`
+	// The list of workstation IDs.
 	WuyingServerIdList []*string `json:"WuyingServerIdList,omitempty" xml:"WuyingServerIdList,omitempty" type:"Repeated"`
+	// The workstation name or workstation ID.
+	//
 	// example:
 	//
 	// exampleServerName

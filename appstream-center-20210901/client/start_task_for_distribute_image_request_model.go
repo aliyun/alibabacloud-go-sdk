@@ -24,25 +24,44 @@ type iStartTaskForDistributeImageRequest interface {
 }
 
 type StartTaskForDistributeImageRequest struct {
+	// The regions to which you want to replicate the image.
 	DestinationRegionList []*string `json:"DestinationRegionList,omitempty" xml:"DestinationRegionList,omitempty" type:"Repeated"`
+	// The image ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// imgc-07jyldnd9i*****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The product type.
+	//
+	// Valid values:
+	//
+	// 	- CloudDesktop: Elastic Desktop Service
+	//
+	// 	- CloudApp: App Streaming
+	//
+	// 	- WuyingServer: Workstation
+	//
 	// example:
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// This parameter is not publicly available.
+	//
 	// example:
 	//
 	// RETRY
 	RetryType *string `json:"RetryType,omitempty" xml:"RetryType,omitempty"`
+	// The region where the source image is located. If you leave this parameter empty, a random region is selected.
+	//
 	// example:
 	//
 	// cn-shanghai
 	SourceRegion *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
+	// The ID of the image version. If you do not specify this parameter, the latest image version is used by default.
+	//
 	// example:
 	//
 	// iv-07jyldnd9i****

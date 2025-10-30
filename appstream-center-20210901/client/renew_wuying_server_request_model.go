@@ -22,22 +22,38 @@ type iRenewWuyingServerRequest interface {
 }
 
 type RenewWuyingServerRequest struct {
+	// Automatic payment.
+	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The renewal duration.
+	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the renewal time.
+	//
+	// Valid values:
+	//
+	// 	- Month: month.
+	//
+	// 	- Year: year.
+	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The discount ID.
+	//
 	// example:
 	//
 	// 17440009****
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The ID of the workstation.
+	//
 	// example:
 	//
 	// ws-0bw2f11****dial
