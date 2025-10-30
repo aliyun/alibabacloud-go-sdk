@@ -132,6 +132,76 @@ func (client *Client) AddApplicationAccountToUser(request *AddApplicationAccount
 
 // Summary:
 //
+// 添加条款到品牌
+//
+// @param request - AddCustomPrivacyPoliciesToBrandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddCustomPrivacyPoliciesToBrandResponse
+func (client *Client) AddCustomPrivacyPoliciesToBrandWithOptions(request *AddCustomPrivacyPoliciesToBrandRequest, runtime *dara.RuntimeOptions) (_result *AddCustomPrivacyPoliciesToBrandResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BrandId) {
+		query["BrandId"] = request.BrandId
+	}
+
+	if !dara.IsNil(request.CustomPrivacyPolicyIds) {
+		query["CustomPrivacyPolicyIds"] = request.CustomPrivacyPolicyIds
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddCustomPrivacyPoliciesToBrand"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddCustomPrivacyPoliciesToBrandResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加条款到品牌
+//
+// @param request - AddCustomPrivacyPoliciesToBrandRequest
+//
+// @return AddCustomPrivacyPoliciesToBrandResponse
+func (client *Client) AddCustomPrivacyPoliciesToBrand(request *AddCustomPrivacyPoliciesToBrandRequest) (_result *AddCustomPrivacyPoliciesToBrandResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddCustomPrivacyPoliciesToBrandResponse{}
+	_body, _err := client.AddCustomPrivacyPoliciesToBrandWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds an Employee Identity and Access Management (EIAM) account to multiple EIAM organizations of Identity as a Service (IDaaS). If the account already exists in the organizational unit, the system directly returns a success response.
 //
 // @param request - AddUserToOrganizationalUnitsRequest
@@ -973,6 +1043,92 @@ func (client *Client) CreateConditionalAccessPolicy(request *CreateConditionalAc
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateConditionalAccessPolicyResponse{}
 	_body, _err := client.CreateConditionalAccessPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建自定义条款
+//
+// @param request - CreateCustomPrivacyPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCustomPrivacyPolicyResponse
+func (client *Client) CreateCustomPrivacyPolicyWithOptions(request *CreateCustomPrivacyPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomPrivacyPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CustomPrivacyPolicyContents) {
+		query["CustomPrivacyPolicyContents"] = request.CustomPrivacyPolicyContents
+	}
+
+	if !dara.IsNil(request.CustomPrivacyPolicyName) {
+		query["CustomPrivacyPolicyName"] = request.CustomPrivacyPolicyName
+	}
+
+	if !dara.IsNil(request.DefaultLanguageCode) {
+		query["DefaultLanguageCode"] = request.DefaultLanguageCode
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.UserConsentType) {
+		query["UserConsentType"] = request.UserConsentType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCustomPrivacyPolicy"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCustomPrivacyPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建自定义条款
+//
+// @param request - CreateCustomPrivacyPolicyRequest
+//
+// @return CreateCustomPrivacyPolicyResponse
+func (client *Client) CreateCustomPrivacyPolicy(request *CreateCustomPrivacyPolicyRequest) (_result *CreateCustomPrivacyPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateCustomPrivacyPolicyResponse{}
+	_body, _err := client.CreateCustomPrivacyPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2257,6 +2413,72 @@ func (client *Client) DeleteConditionalAccessPolicy(request *DeleteConditionalAc
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteConditionalAccessPolicyResponse{}
 	_body, _err := client.DeleteConditionalAccessPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除自定义条款
+//
+// @param request - DeleteCustomPrivacyPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCustomPrivacyPolicyResponse
+func (client *Client) DeleteCustomPrivacyPolicyWithOptions(request *DeleteCustomPrivacyPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomPrivacyPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomPrivacyPolicyId) {
+		query["CustomPrivacyPolicyId"] = request.CustomPrivacyPolicyId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCustomPrivacyPolicy"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCustomPrivacyPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除自定义条款
+//
+// @param request - DeleteCustomPrivacyPolicyRequest
+//
+// @return DeleteCustomPrivacyPolicyResponse
+func (client *Client) DeleteCustomPrivacyPolicy(request *DeleteCustomPrivacyPolicyRequest) (_result *DeleteCustomPrivacyPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteCustomPrivacyPolicyResponse{}
+	_body, _err := client.DeleteCustomPrivacyPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3622,6 +3844,72 @@ func (client *Client) DisableConditionalAccessPolicy(request *DisableConditional
 
 // Summary:
 //
+// 禁用自定义条款
+//
+// @param request - DisableCustomPrivacyPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableCustomPrivacyPolicyResponse
+func (client *Client) DisableCustomPrivacyPolicyWithOptions(request *DisableCustomPrivacyPolicyRequest, runtime *dara.RuntimeOptions) (_result *DisableCustomPrivacyPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomPrivacyPolicyId) {
+		query["CustomPrivacyPolicyId"] = request.CustomPrivacyPolicyId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableCustomPrivacyPolicy"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableCustomPrivacyPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用自定义条款
+//
+// @param request - DisableCustomPrivacyPolicyRequest
+//
+// @return DisableCustomPrivacyPolicyResponse
+func (client *Client) DisableCustomPrivacyPolicy(request *DisableCustomPrivacyPolicyRequest) (_result *DisableCustomPrivacyPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DisableCustomPrivacyPolicyResponse{}
+	_body, _err := client.DisableCustomPrivacyPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Disables a proxy token for a domain name of an Employee Identity and Access Management (EIAM) instance. After the proxy token is disabled, the domain name may not be used as expected.
 //
 // @param request - DisableDomainProxyTokenRequest
@@ -4632,6 +4920,72 @@ func (client *Client) EnableConditionalAccessPolicy(request *EnableConditionalAc
 
 // Summary:
 //
+// 启用自定义条款
+//
+// @param request - EnableCustomPrivacyPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableCustomPrivacyPolicyResponse
+func (client *Client) EnableCustomPrivacyPolicyWithOptions(request *EnableCustomPrivacyPolicyRequest, runtime *dara.RuntimeOptions) (_result *EnableCustomPrivacyPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomPrivacyPolicyId) {
+		query["CustomPrivacyPolicyId"] = request.CustomPrivacyPolicyId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableCustomPrivacyPolicy"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableCustomPrivacyPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用自定义条款
+//
+// @param request - EnableCustomPrivacyPolicyRequest
+//
+// @return EnableCustomPrivacyPolicyResponse
+func (client *Client) EnableCustomPrivacyPolicy(request *EnableCustomPrivacyPolicyRequest) (_result *EnableCustomPrivacyPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnableCustomPrivacyPolicyResponse{}
+	_body, _err := client.EnableCustomPrivacyPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Enables a proxy token for a domain name of an Employee Identity and Access Management (EIAM) instance. The proxy token is used to verify the security of the domain name.
 //
 // @param request - EnableDomainProxyTokenRequest
@@ -5621,6 +5975,72 @@ func (client *Client) GetConditionalAccessPolicy(request *GetConditionalAccessPo
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetConditionalAccessPolicyResponse{}
 	_body, _err := client.GetConditionalAccessPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取自定义条款
+//
+// @param request - GetCustomPrivacyPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCustomPrivacyPolicyResponse
+func (client *Client) GetCustomPrivacyPolicyWithOptions(request *GetCustomPrivacyPolicyRequest, runtime *dara.RuntimeOptions) (_result *GetCustomPrivacyPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomPrivacyPolicyId) {
+		query["CustomPrivacyPolicyId"] = request.CustomPrivacyPolicyId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCustomPrivacyPolicy"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCustomPrivacyPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取自定义条款
+//
+// @param request - GetCustomPrivacyPolicyRequest
+//
+// @return GetCustomPrivacyPolicyResponse
+func (client *Client) GetCustomPrivacyPolicy(request *GetCustomPrivacyPolicyRequest) (_result *GetCustomPrivacyPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetCustomPrivacyPolicyResponse{}
+	_body, _err := client.GetCustomPrivacyPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8290,6 +8710,162 @@ func (client *Client) ListConditionalAccessPoliciesForUser(request *ListConditio
 
 // Summary:
 //
+// 自定义条款列表查询。
+//
+// @param request - ListCustomPrivacyPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCustomPrivacyPoliciesResponse
+func (client *Client) ListCustomPrivacyPoliciesWithOptions(request *ListCustomPrivacyPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListCustomPrivacyPoliciesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomPrivacyPolicyNameStartsWith) {
+		query["CustomPrivacyPolicyNameStartsWith"] = request.CustomPrivacyPolicyNameStartsWith
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PreviousToken) {
+		query["PreviousToken"] = request.PreviousToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCustomPrivacyPolicies"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCustomPrivacyPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 自定义条款列表查询。
+//
+// @param request - ListCustomPrivacyPoliciesRequest
+//
+// @return ListCustomPrivacyPoliciesResponse
+func (client *Client) ListCustomPrivacyPolicies(request *ListCustomPrivacyPoliciesRequest) (_result *ListCustomPrivacyPoliciesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCustomPrivacyPoliciesResponse{}
+	_body, _err := client.ListCustomPrivacyPoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取品牌关联资源的资源
+//
+// @param request - ListCustomPrivacyPoliciesForBrandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCustomPrivacyPoliciesForBrandResponse
+func (client *Client) ListCustomPrivacyPoliciesForBrandWithOptions(request *ListCustomPrivacyPoliciesForBrandRequest, runtime *dara.RuntimeOptions) (_result *ListCustomPrivacyPoliciesForBrandResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BrandId) {
+		query["BrandId"] = request.BrandId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PreviousToken) {
+		query["PreviousToken"] = request.PreviousToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCustomPrivacyPoliciesForBrand"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCustomPrivacyPoliciesForBrandResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取品牌关联资源的资源
+//
+// @param request - ListCustomPrivacyPoliciesForBrandRequest
+//
+// @return ListCustomPrivacyPoliciesForBrandResponse
+func (client *Client) ListCustomPrivacyPoliciesForBrand(request *ListCustomPrivacyPoliciesForBrandRequest) (_result *ListCustomPrivacyPoliciesForBrandResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCustomPrivacyPoliciesForBrandResponse{}
+	_body, _err := client.ListCustomPrivacyPoliciesForBrandWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the proxy tokens of a domain name of an Employee Identity and Access Management (EIAM) instance.
 //
 // @param request - ListDomainProxyTokensRequest
@@ -10340,6 +10916,76 @@ func (client *Client) RemoveApplicationAccountFromUser(request *RemoveApplicatio
 	runtime := &dara.RuntimeOptions{}
 	_result = &RemoveApplicationAccountFromUserResponse{}
 	_body, _err := client.RemoveApplicationAccountFromUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 移除品牌关联条款
+//
+// @param request - RemoveCustomPrivacyPoliciesFromBrandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveCustomPrivacyPoliciesFromBrandResponse
+func (client *Client) RemoveCustomPrivacyPoliciesFromBrandWithOptions(request *RemoveCustomPrivacyPoliciesFromBrandRequest, runtime *dara.RuntimeOptions) (_result *RemoveCustomPrivacyPoliciesFromBrandResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BrandId) {
+		query["BrandId"] = request.BrandId
+	}
+
+	if !dara.IsNil(request.CustomPrivacyPolicyIds) {
+		query["CustomPrivacyPolicyIds"] = request.CustomPrivacyPolicyIds
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveCustomPrivacyPoliciesFromBrand"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveCustomPrivacyPoliciesFromBrandResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 移除品牌关联条款
+//
+// @param request - RemoveCustomPrivacyPoliciesFromBrandRequest
+//
+// @return RemoveCustomPrivacyPoliciesFromBrandResponse
+func (client *Client) RemoveCustomPrivacyPoliciesFromBrand(request *RemoveCustomPrivacyPoliciesFromBrandRequest) (_result *RemoveCustomPrivacyPoliciesFromBrandResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RemoveCustomPrivacyPoliciesFromBrandResponse{}
+	_body, _err := client.RemoveCustomPrivacyPoliciesFromBrandWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12620,6 +13266,88 @@ func (client *Client) UpdateConditionalAccessPolicyDescription(request *UpdateCo
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateConditionalAccessPolicyDescriptionResponse{}
 	_body, _err := client.UpdateConditionalAccessPolicyDescriptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新自定义条款
+//
+// @param request - UpdateCustomPrivacyPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCustomPrivacyPolicyResponse
+func (client *Client) UpdateCustomPrivacyPolicyWithOptions(request *UpdateCustomPrivacyPolicyRequest, runtime *dara.RuntimeOptions) (_result *UpdateCustomPrivacyPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomPrivacyPolicyContents) {
+		query["CustomPrivacyPolicyContents"] = request.CustomPrivacyPolicyContents
+	}
+
+	if !dara.IsNil(request.CustomPrivacyPolicyId) {
+		query["CustomPrivacyPolicyId"] = request.CustomPrivacyPolicyId
+	}
+
+	if !dara.IsNil(request.CustomPrivacyPolicyName) {
+		query["CustomPrivacyPolicyName"] = request.CustomPrivacyPolicyName
+	}
+
+	if !dara.IsNil(request.DefaultLanguageCode) {
+		query["DefaultLanguageCode"] = request.DefaultLanguageCode
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.UserConsentType) {
+		query["UserConsentType"] = request.UserConsentType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCustomPrivacyPolicy"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCustomPrivacyPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新自定义条款
+//
+// @param request - UpdateCustomPrivacyPolicyRequest
+//
+// @return UpdateCustomPrivacyPolicyResponse
+func (client *Client) UpdateCustomPrivacyPolicy(request *UpdateCustomPrivacyPolicyRequest) (_result *UpdateCustomPrivacyPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateCustomPrivacyPolicyResponse{}
+	_body, _err := client.UpdateCustomPrivacyPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
