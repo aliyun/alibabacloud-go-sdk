@@ -24,7 +24,49 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"ap-northeast-2-pop":          dara.String("aiworkspace.aliyuncs.com"),
+		"ap-southeast-2":              dara.String("aiworkspace.aliyuncs.com"),
+		"ap-southeast-5":              dara.String("aiworkspace-vpc.ap-southeast-5.aliyuncs.com"),
+		"cn-beijing-finance-1":        dara.String("aiworkspace.aliyuncs.com"),
+		"cn-beijing-finance-pop":      dara.String("aiworkspace.aliyuncs.com"),
+		"cn-beijing-gov-1":            dara.String("aiworkspace.aliyuncs.com"),
+		"cn-beijing-nu16-b01":         dara.String("aiworkspace.aliyuncs.com"),
+		"cn-edge-1":                   dara.String("aiworkspace.aliyuncs.com"),
+		"cn-fujian":                   dara.String("aiworkspace.aliyuncs.com"),
+		"cn-haidian-cm12-c01":         dara.String("aiworkspace.aliyuncs.com"),
+		"cn-hangzhou-bj-b01":          dara.String("aiworkspace.aliyuncs.com"),
+		"cn-hangzhou-finance":         dara.String("aiworkspace.aliyuncs.com"),
+		"cn-hangzhou-internal-prod-1": dara.String("aiworkspace.aliyuncs.com"),
+		"cn-hangzhou-internal-test-1": dara.String("aiworkspace.aliyuncs.com"),
+		"cn-hangzhou-internal-test-2": dara.String("aiworkspace.aliyuncs.com"),
+		"cn-hangzhou-internal-test-3": dara.String("aiworkspace.aliyuncs.com"),
+		"cn-hangzhou-test-306":        dara.String("aiworkspace.aliyuncs.com"),
+		"cn-hongkong-finance-pop":     dara.String("aiworkspace.aliyuncs.com"),
+		"cn-huhehaote":                dara.String("aiworkspace.aliyuncs.com"),
+		"cn-huhehaote-nebula-1":       dara.String("aiworkspace.aliyuncs.com"),
+		"cn-qingdao":                  dara.String("aiworkspace.aliyuncs.com"),
+		"cn-qingdao-nebula":           dara.String("aiworkspace.aliyuncs.com"),
+		"cn-shanghai-et15-b01":        dara.String("aiworkspace.aliyuncs.com"),
+		"cn-shanghai-et2-b01":         dara.String("aiworkspace.aliyuncs.com"),
+		"cn-shanghai-inner":           dara.String("aiworkspace.aliyuncs.com"),
+		"cn-shanghai-internal-test-1": dara.String("aiworkspace.aliyuncs.com"),
+		"cn-shenzhen-finance-1":       dara.String("aiworkspace.aliyuncs.com"),
+		"cn-shenzhen-inner":           dara.String("aiworkspace.aliyuncs.com"),
+		"cn-shenzhen-st4-d01":         dara.String("aiworkspace.aliyuncs.com"),
+		"cn-shenzhen-su18-b01":        dara.String("aiworkspace.aliyuncs.com"),
+		"cn-wuhan":                    dara.String("aiworkspace.aliyuncs.com"),
+		"cn-yushanfang":               dara.String("aiworkspace.aliyuncs.com"),
+		"cn-zhangbei":                 dara.String("aiworkspace.aliyuncs.com"),
+		"cn-zhangbei-na61-b01":        dara.String("aiworkspace.aliyuncs.com"),
+		"cn-zhangjiakou-na62-a01":     dara.String("aiworkspace.aliyuncs.com"),
+		"cn-zhengzhou-nebula-1":       dara.String("aiworkspace.aliyuncs.com"),
+		"eu-west-1":                   dara.String("aiworkspace.aliyuncs.com"),
+		"eu-west-1-oxs":               dara.String("aiworkspace.aliyuncs.com"),
+		"me-east-1":                   dara.String("aiworkspace.aliyuncs.com"),
+		"rus-west-1-pop":              dara.String("aiworkspace.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
