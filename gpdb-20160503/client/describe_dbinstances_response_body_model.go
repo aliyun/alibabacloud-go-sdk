@@ -104,7 +104,12 @@ func (s *DescribeDBInstancesResponseBody) SetTotalRecordCount(v int32) *Describe
 }
 
 func (s *DescribeDBInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstancesResponseBodyItems struct {
@@ -129,7 +134,16 @@ func (s *DescribeDBInstancesResponseBodyItems) SetDBInstance(v []*DescribeDBInst
 }
 
 func (s *DescribeDBInstancesResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.DBInstance != nil {
+		for _, item := range s.DBInstance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstancesResponseBodyItemsDBInstance struct {
@@ -628,7 +642,12 @@ func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetZoneId(v string) *De
 }
 
 func (s *DescribeDBInstancesResponseBodyItemsDBInstance) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstancesResponseBodyItemsDBInstanceTags struct {
@@ -653,7 +672,16 @@ func (s *DescribeDBInstancesResponseBodyItemsDBInstanceTags) SetTag(v []*Describ
 }
 
 func (s *DescribeDBInstancesResponseBodyItemsDBInstanceTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstancesResponseBodyItemsDBInstanceTagsTag struct {

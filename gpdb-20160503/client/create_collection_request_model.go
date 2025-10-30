@@ -399,7 +399,12 @@ func (s *CreateCollectionRequest) SetWorkspaceId(v string) *CreateCollectionRequ
 }
 
 func (s *CreateCollectionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SparseVectorIndexConfig != nil {
+		if err := s.SparseVectorIndexConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateCollectionRequestSparseVectorIndexConfig struct {

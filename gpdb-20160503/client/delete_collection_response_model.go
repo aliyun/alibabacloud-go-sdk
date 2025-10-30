@@ -59,5 +59,10 @@ func (s *DeleteCollectionResponse) SetBody(v *DeleteCollectionResponseBody) *Del
 }
 
 func (s *DeleteCollectionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

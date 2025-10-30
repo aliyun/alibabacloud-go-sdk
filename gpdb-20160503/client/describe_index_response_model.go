@@ -59,5 +59,10 @@ func (s *DescribeIndexResponse) SetBody(v *DescribeIndexResponseBody) *DescribeI
 }
 
 func (s *DescribeIndexResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

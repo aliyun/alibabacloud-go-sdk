@@ -108,7 +108,12 @@ func (s *ListSecretsResponseBody) SetStatus(v string) *ListSecretsResponseBody {
 }
 
 func (s *ListSecretsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Secrets != nil {
+		if err := s.Secrets.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSecretsResponseBodySecrets struct {
@@ -133,7 +138,16 @@ func (s *ListSecretsResponseBodySecrets) SetSecrets(v []*ListSecretsResponseBody
 }
 
 func (s *ListSecretsResponseBodySecrets) Validate() error {
-	return dara.Validate(s)
+	if s.Secrets != nil {
+		for _, item := range s.Secrets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSecretsResponseBodySecretsSecrets struct {

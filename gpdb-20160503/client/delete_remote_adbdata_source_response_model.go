@@ -59,5 +59,10 @@ func (s *DeleteRemoteADBDataSourceResponse) SetBody(v *DeleteRemoteADBDataSource
 }
 
 func (s *DeleteRemoteADBDataSourceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

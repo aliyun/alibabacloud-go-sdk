@@ -50,7 +50,12 @@ func (s *ListSupportModelsResponseBody) SetRequestId(v string) *ListSupportModel
 }
 
 func (s *ListSupportModelsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ModelNames != nil {
+		if err := s.ModelNames.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSupportModelsResponseBodyModelNames struct {

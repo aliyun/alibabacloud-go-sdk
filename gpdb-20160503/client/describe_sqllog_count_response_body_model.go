@@ -104,7 +104,16 @@ func (s *DescribeSQLLogCountResponseBody) SetStartTime(v string) *DescribeSQLLog
 }
 
 func (s *DescribeSQLLogCountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSQLLogCountResponseBodyItems struct {
@@ -145,7 +154,16 @@ func (s *DescribeSQLLogCountResponseBodyItems) SetSeries(v []*DescribeSQLLogCoun
 }
 
 func (s *DescribeSQLLogCountResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.Series != nil {
+		for _, item := range s.Series {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSQLLogCountResponseBodyItemsSeries struct {
@@ -171,7 +189,16 @@ func (s *DescribeSQLLogCountResponseBodyItemsSeries) SetValues(v []*DescribeSQLL
 }
 
 func (s *DescribeSQLLogCountResponseBodyItemsSeries) Validate() error {
-	return dara.Validate(s)
+	if s.Values != nil {
+		for _, item := range s.Values {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSQLLogCountResponseBodyItemsSeriesValues struct {

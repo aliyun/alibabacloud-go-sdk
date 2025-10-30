@@ -108,7 +108,12 @@ func (s *ListDatabasesResponseBody) SetStatus(v string) *ListDatabasesResponseBo
 }
 
 func (s *ListDatabasesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Databases != nil {
+		if err := s.Databases.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDatabasesResponseBodyDatabases struct {

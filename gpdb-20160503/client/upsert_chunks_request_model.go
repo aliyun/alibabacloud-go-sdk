@@ -192,7 +192,16 @@ func (s *UpsertChunksRequest) SetTextChunks(v []*UpsertChunksRequestTextChunks) 
 }
 
 func (s *UpsertChunksRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TextChunks != nil {
+		for _, item := range s.TextChunks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpsertChunksRequestTextChunks struct {

@@ -50,7 +50,12 @@ func (s *ListBackupJobsResponseBody) SetRequestId(v string) *ListBackupJobsRespo
 }
 
 func (s *ListBackupJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListBackupJobsResponseBodyItems struct {
@@ -75,7 +80,16 @@ func (s *ListBackupJobsResponseBodyItems) SetBackupJob(v []*ListBackupJobsRespon
 }
 
 func (s *ListBackupJobsResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.BackupJob != nil {
+		for _, item := range s.BackupJob {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListBackupJobsResponseBodyItemsBackupJob struct {

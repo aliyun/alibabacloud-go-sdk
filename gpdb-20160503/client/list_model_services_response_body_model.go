@@ -95,7 +95,16 @@ func (s *ListModelServicesResponseBody) SetTotalRecordCount(v int32) *ListModelS
 }
 
 func (s *ListModelServicesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ModelServices != nil {
+		for _, item := range s.ModelServices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListModelServicesResponseBodyModelServices struct {

@@ -53,7 +53,12 @@ func (s *DescribeDataReDistributeInfoResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribeDataReDistributeInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataReDistributeInfo != nil {
+		if err := s.DataReDistributeInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDataReDistributeInfoResponseBodyDataReDistributeInfo struct {

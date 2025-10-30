@@ -53,7 +53,16 @@ func (s *DescribeUserEncryptionKeyListResponseBody) SetRequestId(v string) *Desc
 }
 
 func (s *DescribeUserEncryptionKeyListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.KmsKeys != nil {
+		for _, item := range s.KmsKeys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUserEncryptionKeyListResponseBodyKmsKeys struct {

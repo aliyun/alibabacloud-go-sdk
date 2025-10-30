@@ -104,7 +104,16 @@ func (s *DescribeDataSharePerformanceResponseBody) SetStartTime(v string) *Descr
 }
 
 func (s *DescribeDataSharePerformanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PerformanceKeys != nil {
+		for _, item := range s.PerformanceKeys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataSharePerformanceResponseBodyPerformanceKeys struct {
@@ -160,7 +169,16 @@ func (s *DescribeDataSharePerformanceResponseBodyPerformanceKeys) SetUnit(v stri
 }
 
 func (s *DescribeDataSharePerformanceResponseBodyPerformanceKeys) Validate() error {
-	return dara.Validate(s)
+	if s.Series != nil {
+		for _, item := range s.Series {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataSharePerformanceResponseBodyPerformanceKeysSeries struct {
@@ -201,7 +219,16 @@ func (s *DescribeDataSharePerformanceResponseBodyPerformanceKeysSeries) SetValue
 }
 
 func (s *DescribeDataSharePerformanceResponseBodyPerformanceKeysSeries) Validate() error {
-	return dara.Validate(s)
+	if s.Values != nil {
+		for _, item := range s.Values {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataSharePerformanceResponseBodyPerformanceKeysSeriesValues struct {

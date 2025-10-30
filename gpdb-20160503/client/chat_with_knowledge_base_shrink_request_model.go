@@ -21,6 +21,8 @@ type iChatWithKnowledgeBaseShrinkRequest interface {
 	GetOwnerId() *int64
 	SetPromptParams(v string) *ChatWithKnowledgeBaseShrinkRequest
 	GetPromptParams() *string
+	SetRegionId(v string) *ChatWithKnowledgeBaseShrinkRequest
+	GetRegionId() *string
 }
 
 type ChatWithKnowledgeBaseShrinkRequest struct {
@@ -39,6 +41,10 @@ type ChatWithKnowledgeBaseShrinkRequest struct {
 	ModelParamsShrink *string `json:"ModelParams,omitempty" xml:"ModelParams,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PromptParams      *string `json:"PromptParams,omitempty" xml:"PromptParams,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ChatWithKnowledgeBaseShrinkRequest) String() string {
@@ -73,6 +79,10 @@ func (s *ChatWithKnowledgeBaseShrinkRequest) GetPromptParams() *string {
 	return s.PromptParams
 }
 
+func (s *ChatWithKnowledgeBaseShrinkRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
 func (s *ChatWithKnowledgeBaseShrinkRequest) SetDBInstanceId(v string) *ChatWithKnowledgeBaseShrinkRequest {
 	s.DBInstanceId = &v
 	return s
@@ -100,6 +110,11 @@ func (s *ChatWithKnowledgeBaseShrinkRequest) SetOwnerId(v int64) *ChatWithKnowle
 
 func (s *ChatWithKnowledgeBaseShrinkRequest) SetPromptParams(v string) *ChatWithKnowledgeBaseShrinkRequest {
 	s.PromptParams = &v
+	return s
+}
+
+func (s *ChatWithKnowledgeBaseShrinkRequest) SetRegionId(v string) *ChatWithKnowledgeBaseShrinkRequest {
+	s.RegionId = &v
 	return s
 }
 

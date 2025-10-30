@@ -125,7 +125,12 @@ func (s *ListDocumentsResponseBody) SetStatus(v string) *ListDocumentsResponseBo
 }
 
 func (s *ListDocumentsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDocumentsResponseBodyItems struct {
@@ -150,7 +155,16 @@ func (s *ListDocumentsResponseBodyItems) SetDocumentList(v []*ListDocumentsRespo
 }
 
 func (s *ListDocumentsResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.DocumentList != nil {
+		for _, item := range s.DocumentList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDocumentsResponseBodyItemsDocumentList struct {

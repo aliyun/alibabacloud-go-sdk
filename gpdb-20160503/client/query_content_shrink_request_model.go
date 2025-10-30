@@ -41,6 +41,10 @@ type iQueryContentShrinkRequest interface {
 	GetNamespace() *string
 	SetNamespacePassword(v string) *QueryContentShrinkRequest
 	GetNamespacePassword() *string
+	SetOffset(v int32) *QueryContentShrinkRequest
+	GetOffset() *int32
+	SetOrderBy(v string) *QueryContentShrinkRequest
+	GetOrderBy() *string
 	SetOwnerId(v int64) *QueryContentShrinkRequest
 	GetOwnerId() *int64
 	SetRecallWindowShrink(v string) *QueryContentShrinkRequest
@@ -205,7 +209,15 @@ type QueryContentShrinkRequest struct {
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 0
+	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// example:
+	//
+	// created_at
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Recall window. When this value is not empty, it adds context to the returned search results. The format is an array of 2 elements: List<A, B>, where -10 <= A <= 0 and 0 <= B <= 10.
 	//
 	// > - Recommended when documents are fragmented and retrieval may lose contextual information.
@@ -317,6 +329,14 @@ func (s *QueryContentShrinkRequest) GetNamespacePassword() *string {
 	return s.NamespacePassword
 }
 
+func (s *QueryContentShrinkRequest) GetOffset() *int32 {
+	return s.Offset
+}
+
+func (s *QueryContentShrinkRequest) GetOrderBy() *string {
+	return s.OrderBy
+}
+
 func (s *QueryContentShrinkRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
@@ -422,6 +442,16 @@ func (s *QueryContentShrinkRequest) SetNamespace(v string) *QueryContentShrinkRe
 
 func (s *QueryContentShrinkRequest) SetNamespacePassword(v string) *QueryContentShrinkRequest {
 	s.NamespacePassword = &v
+	return s
+}
+
+func (s *QueryContentShrinkRequest) SetOffset(v int32) *QueryContentShrinkRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *QueryContentShrinkRequest) SetOrderBy(v string) *QueryContentShrinkRequest {
+	s.OrderBy = &v
 	return s
 }
 

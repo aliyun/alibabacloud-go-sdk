@@ -59,5 +59,10 @@ func (s *DescribeSQLLogsResponse) SetBody(v *DescribeSQLLogsResponseBody) *Descr
 }
 
 func (s *DescribeSQLLogsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -70,7 +70,16 @@ func (s *ListStreamingDataServicesResponseBody) SetTotalRecordCount(v int32) *Li
 }
 
 func (s *ListStreamingDataServicesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceItems != nil {
+		for _, item := range s.ServiceItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListStreamingDataServicesResponseBodyServiceItems struct {

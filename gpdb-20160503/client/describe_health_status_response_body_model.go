@@ -76,7 +76,12 @@ func (s *DescribeHealthStatusResponseBody) SetStatus(v *DescribeHealthStatusResp
 }
 
 func (s *DescribeHealthStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Status != nil {
+		if err := s.Status.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHealthStatusResponseBodyStatus struct {
@@ -266,7 +271,82 @@ func (s *DescribeHealthStatusResponseBodyStatus) SetNodeSegmentDiskStatus(v *Des
 }
 
 func (s *DescribeHealthStatusResponseBodyStatus) Validate() error {
-	return dara.Validate(s)
+	if s.AdbgpSegmentDiskUsagePercentMax != nil {
+		if err := s.AdbgpSegmentDiskUsagePercentMax.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AdbpgConnectionStatus != nil {
+		if err := s.AdbpgConnectionStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AdbpgDiskStatus != nil {
+		if err := s.AdbpgDiskStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AdbpgDiskUsagePercent != nil {
+		if err := s.AdbpgDiskUsagePercent.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AdbpgInstanceColdDataGb != nil {
+		if err := s.AdbpgInstanceColdDataGb.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AdbpgInstanceHotDataGb != nil {
+		if err := s.AdbpgInstanceHotDataGb.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AdbpgInstanceTotalDataGb != nil {
+		if err := s.AdbpgInstanceTotalDataGb.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AdbpgMasterDiskUsagePercentMax != nil {
+		if err := s.AdbpgMasterDiskUsagePercentMax.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AdbpgMasterStatus != nil {
+		if err := s.AdbpgMasterStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AdbpgSegmentStatus != nil {
+		if err := s.AdbpgSegmentStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AdbpgStatus != nil {
+		if err := s.AdbpgStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeMasterConnectionStatus != nil {
+		if err := s.NodeMasterConnectionStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeMasterStatus != nil {
+		if err := s.NodeMasterStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeSegmentConnectionStatus != nil {
+		if err := s.NodeSegmentConnectionStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeSegmentDiskStatus != nil {
+		if err := s.NodeSegmentDiskStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHealthStatusResponseBodyStatusAdbgpSegmentDiskUsagePercentMax struct {

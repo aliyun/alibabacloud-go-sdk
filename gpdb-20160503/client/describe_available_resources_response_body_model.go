@@ -70,7 +70,16 @@ func (s *DescribeAvailableResourcesResponseBody) SetResources(v []*DescribeAvail
 }
 
 func (s *DescribeAvailableResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Resources != nil {
+		for _, item := range s.Resources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourcesResponseBodyResources struct {
@@ -111,7 +120,16 @@ func (s *DescribeAvailableResourcesResponseBodyResources) SetZoneId(v string) *D
 }
 
 func (s *DescribeAvailableResourcesResponseBodyResources) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedEngines != nil {
+		for _, item := range s.SupportedEngines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourcesResponseBodyResourcesSupportedEngines struct {
@@ -171,7 +189,16 @@ func (s *DescribeAvailableResourcesResponseBodyResourcesSupportedEngines) SetSup
 }
 
 func (s *DescribeAvailableResourcesResponseBodyResourcesSupportedEngines) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedInstanceClasses != nil {
+		for _, item := range s.SupportedInstanceClasses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClasses struct {
@@ -293,7 +320,17 @@ func (s *DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupporte
 }
 
 func (s *DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClasses) Validate() error {
-	return dara.Validate(s)
+	if s.NodeCount != nil {
+		if err := s.NodeCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StorageSize != nil {
+		if err := s.StorageSize.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClassesNodeCount struct {

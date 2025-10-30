@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -106,9 +107,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AddAINodeResponse
 func (client *Client) AddAINodeWithOptions(request *AddAINodeRequest, runtime *dara.RuntimeOptions) (_result *AddAINodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AINodePoolId) {
@@ -182,9 +185,11 @@ func (client *Client) AddAINode(request *AddAINodeRequest) (_result *AddAINodeRe
 //
 // @return AllocateInstancePublicConnectionResponse
 func (client *Client) AllocateInstancePublicConnectionWithOptions(request *AllocateInstancePublicConnectionRequest, runtime *dara.RuntimeOptions) (_result *AllocateInstancePublicConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddressType) {
@@ -274,9 +279,11 @@ func (client *Client) AllocateInstancePublicConnection(request *AllocateInstance
 //
 // @return BindDBResourceGroupWithRoleResponse
 func (client *Client) BindDBResourceGroupWithRoleWithOptions(tmpReq *BindDBResourceGroupWithRoleRequest, runtime *dara.RuntimeOptions) (_result *BindDBResourceGroupWithRoleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &BindDBResourceGroupWithRoleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -352,9 +359,11 @@ func (client *Client) BindDBResourceGroupWithRole(request *BindDBResourceGroupWi
 //
 // @return CancelCreateIndexJobResponse
 func (client *Client) CancelCreateIndexJobWithOptions(request *CancelCreateIndexJobRequest, runtime *dara.RuntimeOptions) (_result *CancelCreateIndexJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Collection) {
@@ -446,9 +455,11 @@ func (client *Client) CancelCreateIndexJob(request *CancelCreateIndexJobRequest)
 //
 // @return CancelUploadDocumentJobResponse
 func (client *Client) CancelUploadDocumentJobWithOptions(request *CancelUploadDocumentJobRequest, runtime *dara.RuntimeOptions) (_result *CancelUploadDocumentJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -544,9 +555,11 @@ func (client *Client) CancelUploadDocumentJob(request *CancelUploadDocumentJobRe
 //
 // @return CancelUpsertCollectionDataJobResponse
 func (client *Client) CancelUpsertCollectionDataJobWithOptions(request *CancelUpsertCollectionDataJobRequest, runtime *dara.RuntimeOptions) (_result *CancelUpsertCollectionDataJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -644,9 +657,11 @@ func (client *Client) CancelUpsertCollectionDataJob(request *CancelUpsertCollect
 //
 // @return ChatWithKnowledgeBaseResponse
 func (client *Client) ChatWithKnowledgeBaseWithOptions(tmpReq *ChatWithKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *ChatWithKnowledgeBaseResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ChatWithKnowledgeBaseShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -681,6 +696,10 @@ func (client *Client) ChatWithKnowledgeBaseWithOptions(tmpReq *ChatWithKnowledge
 
 	if !dara.IsNil(request.PromptParams) {
 		query["PromptParams"] = request.PromptParams
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -761,9 +780,11 @@ func (client *Client) ChatWithKnowledgeBaseStreamWithSSE(tmpReq *ChatWithKnowled
 //
 // @return ChatWithKnowledgeBaseStreamResponse
 func (client *Client) ChatWithKnowledgeBaseStreamWithOptions(tmpReq *ChatWithKnowledgeBaseStreamRequest, runtime *dara.RuntimeOptions) (_result *ChatWithKnowledgeBaseStreamResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ChatWithKnowledgeBaseStreamShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -798,6 +819,10 @@ func (client *Client) ChatWithKnowledgeBaseStreamWithOptions(tmpReq *ChatWithKno
 
 	if !dara.IsNil(request.PromptParams) {
 		query["PromptParams"] = request.PromptParams
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -855,9 +880,11 @@ func (client *Client) ChatWithKnowledgeBaseStream(request *ChatWithKnowledgeBase
 //
 // @return CheckHadoopDataSourceResponse
 func (client *Client) CheckHadoopDataSourceWithOptions(request *CheckHadoopDataSourceRequest, runtime *dara.RuntimeOptions) (_result *CheckHadoopDataSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckDir) {
@@ -927,9 +954,11 @@ func (client *Client) CheckHadoopDataSource(request *CheckHadoopDataSourceReques
 //
 // @return CheckHadoopNetConnectionResponse
 func (client *Client) CheckHadoopNetConnectionWithOptions(request *CheckHadoopNetConnectionRequest, runtime *dara.RuntimeOptions) (_result *CheckHadoopNetConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -999,9 +1028,11 @@ func (client *Client) CheckHadoopNetConnection(request *CheckHadoopNetConnection
 //
 // @return CheckJDBCSourceNetConnectionResponse
 func (client *Client) CheckJDBCSourceNetConnectionWithOptions(request *CheckJDBCSourceNetConnectionRequest, runtime *dara.RuntimeOptions) (_result *CheckJDBCSourceNetConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -1071,9 +1102,11 @@ func (client *Client) CheckJDBCSourceNetConnection(request *CheckJDBCSourceNetCo
 //
 // @return CheckServiceLinkedRoleResponse
 func (client *Client) CheckServiceLinkedRoleWithOptions(request *CheckServiceLinkedRoleRequest, runtime *dara.RuntimeOptions) (_result *CheckServiceLinkedRoleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -1131,9 +1164,11 @@ func (client *Client) CheckServiceLinkedRole(request *CheckServiceLinkedRoleRequ
 //
 // @return CloneDBInstanceResponse
 func (client *Client) CloneDBInstanceWithOptions(request *CloneDBInstanceRequest, runtime *dara.RuntimeOptions) (_result *CloneDBInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BackupId) {
@@ -1209,9 +1244,11 @@ func (client *Client) CloneDBInstance(request *CloneDBInstanceRequest) (_result 
 //
 // @return CreateAccountResponse
 func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, runtime *dara.RuntimeOptions) (_result *CreateAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountDescription) {
@@ -1303,9 +1340,11 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 //
 // @return CreateBackupResponse
 func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runtime *dara.RuntimeOptions) (_result *CreateBackupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -1363,9 +1402,11 @@ func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *Creat
 //
 // @return CreateCollectionResponse
 func (client *Client) CreateCollectionWithOptions(tmpReq *CreateCollectionRequest, runtime *dara.RuntimeOptions) (_result *CreateCollectionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateCollectionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1509,9 +1550,11 @@ func (client *Client) CreateCollection(request *CreateCollectionRequest) (_resul
 //
 // @return CreateDBInstanceResponse
 func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateDBInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AINodeSpecInfos) {
@@ -1761,9 +1804,11 @@ func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_resul
 //
 // @return CreateDBInstancePlanResponse
 func (client *Client) CreateDBInstancePlanWithOptions(request *CreateDBInstancePlanRequest, runtime *dara.RuntimeOptions) (_result *CreateDBInstancePlanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -1861,9 +1906,11 @@ func (client *Client) CreateDBInstancePlan(request *CreateDBInstancePlanRequest)
 //
 // @return CreateDBResourceGroupResponse
 func (client *Client) CreateDBResourceGroupWithOptions(request *CreateDBResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateDBResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -1933,9 +1980,11 @@ func (client *Client) CreateDBResourceGroup(request *CreateDBResourceGroupReques
 //
 // @return CreateDocumentCollectionResponse
 func (client *Client) CreateDocumentCollectionWithOptions(tmpReq *CreateDocumentCollectionRequest, runtime *dara.RuntimeOptions) (_result *CreateDocumentCollectionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDocumentCollectionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2091,9 +2140,11 @@ func (client *Client) CreateDocumentCollection(request *CreateDocumentCollection
 //
 // @return CreateExtensionsResponse
 func (client *Client) CreateExtensionsWithOptions(request *CreateExtensionsRequest, runtime *dara.RuntimeOptions) (_result *CreateExtensionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -2163,9 +2214,11 @@ func (client *Client) CreateExtensions(request *CreateExtensionsRequest) (_resul
 //
 // @return CreateExternalDataServiceResponse
 func (client *Client) CreateExternalDataServiceWithOptions(request *CreateExternalDataServiceRequest, runtime *dara.RuntimeOptions) (_result *CreateExternalDataServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -2239,9 +2292,11 @@ func (client *Client) CreateExternalDataService(request *CreateExternalDataServi
 //
 // @return CreateHadoopDataSourceResponse
 func (client *Client) CreateHadoopDataSourceWithOptions(request *CreateHadoopDataSourceRequest, runtime *dara.RuntimeOptions) (_result *CreateHadoopDataSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -2347,9 +2402,11 @@ func (client *Client) CreateHadoopDataSource(request *CreateHadoopDataSourceRequ
 //
 // @return CreateIndexResponse
 func (client *Client) CreateIndexWithOptions(request *CreateIndexRequest, runtime *dara.RuntimeOptions) (_result *CreateIndexResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Collection) {
@@ -2443,9 +2500,11 @@ func (client *Client) CreateIndex(request *CreateIndexRequest) (_result *CreateI
 //
 // @return CreateJDBCDataSourceResponse
 func (client *Client) CreateJDBCDataSourceWithOptions(request *CreateJDBCDataSourceRequest, runtime *dara.RuntimeOptions) (_result *CreateJDBCDataSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -2531,9 +2590,11 @@ func (client *Client) CreateJDBCDataSource(request *CreateJDBCDataSourceRequest)
 //
 // @return CreateModelServiceResponse
 func (client *Client) CreateModelServiceWithOptions(tmpReq *CreateModelServiceRequest, runtime *dara.RuntimeOptions) (_result *CreateModelServiceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateModelServiceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2643,9 +2704,11 @@ func (client *Client) CreateModelService(request *CreateModelServiceRequest) (_r
 //
 // @return CreateNamespaceResponse
 func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest, runtime *dara.RuntimeOptions) (_result *CreateNamespaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -2731,9 +2794,11 @@ func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result 
 //
 // @return CreateRemoteADBDataSourceResponse
 func (client *Client) CreateRemoteADBDataSourceWithOptions(request *CreateRemoteADBDataSourceRequest, runtime *dara.RuntimeOptions) (_result *CreateRemoteADBDataSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DataSourceName) {
@@ -2835,9 +2900,11 @@ func (client *Client) CreateRemoteADBDataSource(request *CreateRemoteADBDataSour
 //
 // @return CreateSampleDataResponse
 func (client *Client) CreateSampleDataWithOptions(request *CreateSampleDataRequest, runtime *dara.RuntimeOptions) (_result *CreateSampleDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -2907,9 +2974,11 @@ func (client *Client) CreateSampleData(request *CreateSampleDataRequest) (_resul
 //
 // @return CreateSecretResponse
 func (client *Client) CreateSecretWithOptions(request *CreateSecretRequest, runtime *dara.RuntimeOptions) (_result *CreateSecretResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -2999,9 +3068,11 @@ func (client *Client) CreateSecret(request *CreateSecretRequest) (_result *Creat
 //
 // @return CreateServiceLinkedRoleResponse
 func (client *Client) CreateServiceLinkedRoleWithOptions(request *CreateServiceLinkedRoleRequest, runtime *dara.RuntimeOptions) (_result *CreateServiceLinkedRoleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -3063,9 +3134,11 @@ func (client *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRe
 //
 // @return CreateStreamingDataServiceResponse
 func (client *Client) CreateStreamingDataServiceWithOptions(request *CreateStreamingDataServiceRequest, runtime *dara.RuntimeOptions) (_result *CreateStreamingDataServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -3139,9 +3212,11 @@ func (client *Client) CreateStreamingDataService(request *CreateStreamingDataSer
 //
 // @return CreateStreamingDataSourceResponse
 func (client *Client) CreateStreamingDataSourceWithOptions(request *CreateStreamingDataSourceRequest, runtime *dara.RuntimeOptions) (_result *CreateStreamingDataSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -3223,9 +3298,11 @@ func (client *Client) CreateStreamingDataSource(request *CreateStreamingDataSour
 //
 // @return CreateStreamingJobResponse
 func (client *Client) CreateStreamingJobWithOptions(tmpReq *CreateStreamingJobRequest, runtime *dara.RuntimeOptions) (_result *CreateStreamingJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateStreamingJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3385,9 +3462,11 @@ func (client *Client) CreateStreamingJob(request *CreateStreamingJobRequest) (_r
 //
 // @return CreateSupabaseProjectResponse
 func (client *Client) CreateSupabaseProjectWithOptions(request *CreateSupabaseProjectRequest, runtime *dara.RuntimeOptions) (_result *CreateSupabaseProjectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountPassword) {
@@ -3485,9 +3564,11 @@ func (client *Client) CreateSupabaseProject(request *CreateSupabaseProjectReques
 //
 // @return CreateVectorIndexResponse
 func (client *Client) CreateVectorIndexWithOptions(request *CreateVectorIndexRequest, runtime *dara.RuntimeOptions) (_result *CreateVectorIndexResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Collection) {
@@ -3597,9 +3678,11 @@ func (client *Client) CreateVectorIndex(request *CreateVectorIndexRequest) (_res
 //
 // @return DeleteAINodeResponse
 func (client *Client) DeleteAINodeWithOptions(request *DeleteAINodeRequest, runtime *dara.RuntimeOptions) (_result *DeleteAINodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AINodeNum) {
@@ -3669,9 +3752,11 @@ func (client *Client) DeleteAINode(request *DeleteAINodeRequest) (_result *Delet
 //
 // @return DeleteAccountResponse
 func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, runtime *dara.RuntimeOptions) (_result *DeleteAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -3733,9 +3818,11 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 //
 // @return DeleteBackupResponse
 func (client *Client) DeleteBackupWithOptions(request *DeleteBackupRequest, runtime *dara.RuntimeOptions) (_result *DeleteBackupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BackupId) {
@@ -3797,9 +3884,11 @@ func (client *Client) DeleteBackup(request *DeleteBackupRequest) (_result *Delet
 //
 // @return DeleteCollectionResponse
 func (client *Client) DeleteCollectionWithOptions(request *DeleteCollectionRequest, runtime *dara.RuntimeOptions) (_result *DeleteCollectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Collection) {
@@ -3881,9 +3970,11 @@ func (client *Client) DeleteCollection(request *DeleteCollectionRequest) (_resul
 //
 // @return DeleteCollectionDataResponse
 func (client *Client) DeleteCollectionDataWithOptions(request *DeleteCollectionDataRequest, runtime *dara.RuntimeOptions) (_result *DeleteCollectionDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Collection) {
@@ -3983,9 +4074,11 @@ func (client *Client) DeleteCollectionData(request *DeleteCollectionDataRequest)
 //
 // @return DeleteDBInstanceResponse
 func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteDBInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -4073,9 +4166,11 @@ func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_resul
 //
 // @return DeleteDBInstancePlanResponse
 func (client *Client) DeleteDBInstancePlanWithOptions(request *DeleteDBInstancePlanRequest, runtime *dara.RuntimeOptions) (_result *DeleteDBInstancePlanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -4149,9 +4244,11 @@ func (client *Client) DeleteDBInstancePlan(request *DeleteDBInstancePlanRequest)
 //
 // @return DeleteDBResourceGroupResponse
 func (client *Client) DeleteDBResourceGroupWithOptions(request *DeleteDBResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteDBResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -4217,9 +4314,11 @@ func (client *Client) DeleteDBResourceGroup(request *DeleteDBResourceGroupReques
 //
 // @return DeleteDocumentResponse
 func (client *Client) DeleteDocumentWithOptions(request *DeleteDocumentRequest, runtime *dara.RuntimeOptions) (_result *DeleteDocumentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Collection) {
@@ -4301,9 +4400,11 @@ func (client *Client) DeleteDocument(request *DeleteDocumentRequest) (_result *D
 //
 // @return DeleteDocumentCollectionResponse
 func (client *Client) DeleteDocumentCollectionWithOptions(request *DeleteDocumentCollectionRequest, runtime *dara.RuntimeOptions) (_result *DeleteDocumentCollectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Collection) {
@@ -4381,9 +4482,11 @@ func (client *Client) DeleteDocumentCollection(request *DeleteDocumentCollection
 //
 // @return DeleteExtensionResponse
 func (client *Client) DeleteExtensionWithOptions(request *DeleteExtensionRequest, runtime *dara.RuntimeOptions) (_result *DeleteExtensionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -4453,9 +4556,11 @@ func (client *Client) DeleteExtension(request *DeleteExtensionRequest) (_result 
 //
 // @return DeleteExternalDataServiceResponse
 func (client *Client) DeleteExternalDataServiceWithOptions(request *DeleteExternalDataServiceRequest, runtime *dara.RuntimeOptions) (_result *DeleteExternalDataServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -4521,9 +4626,11 @@ func (client *Client) DeleteExternalDataService(request *DeleteExternalDataServi
 //
 // @return DeleteHadoopDataSourceResponse
 func (client *Client) DeleteHadoopDataSourceWithOptions(request *DeleteHadoopDataSourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteHadoopDataSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -4589,9 +4696,11 @@ func (client *Client) DeleteHadoopDataSource(request *DeleteHadoopDataSourceRequ
 //
 // @return DeleteIndexResponse
 func (client *Client) DeleteIndexWithOptions(request *DeleteIndexRequest, runtime *dara.RuntimeOptions) (_result *DeleteIndexResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Collection) {
@@ -4677,9 +4786,11 @@ func (client *Client) DeleteIndex(request *DeleteIndexRequest) (_result *DeleteI
 //
 // @return DeleteJDBCDataSourceResponse
 func (client *Client) DeleteJDBCDataSourceWithOptions(request *DeleteJDBCDataSourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteJDBCDataSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -4745,9 +4856,11 @@ func (client *Client) DeleteJDBCDataSource(request *DeleteJDBCDataSourceRequest)
 //
 // @return DeleteModelServiceResponse
 func (client *Client) DeleteModelServiceWithOptions(request *DeleteModelServiceRequest, runtime *dara.RuntimeOptions) (_result *DeleteModelServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -4809,9 +4922,11 @@ func (client *Client) DeleteModelService(request *DeleteModelServiceRequest) (_r
 //
 // @return DeleteNamespaceResponse
 func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteNamespaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -4893,9 +5008,11 @@ func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result 
 //
 // @return DeleteRemoteADBDataSourceResponse
 func (client *Client) DeleteRemoteADBDataSourceWithOptions(request *DeleteRemoteADBDataSourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteRemoteADBDataSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DataSourceId) {
@@ -4961,9 +5078,11 @@ func (client *Client) DeleteRemoteADBDataSource(request *DeleteRemoteADBDataSour
 //
 // @return DeleteSecretResponse
 func (client *Client) DeleteSecretWithOptions(request *DeleteSecretRequest, runtime *dara.RuntimeOptions) (_result *DeleteSecretResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -5041,9 +5160,11 @@ func (client *Client) DeleteSecret(request *DeleteSecretRequest) (_result *Delet
 //
 // @return DeleteStreamingDataServiceResponse
 func (client *Client) DeleteStreamingDataServiceWithOptions(request *DeleteStreamingDataServiceRequest, runtime *dara.RuntimeOptions) (_result *DeleteStreamingDataServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -5109,9 +5230,11 @@ func (client *Client) DeleteStreamingDataService(request *DeleteStreamingDataSer
 //
 // @return DeleteStreamingDataSourceResponse
 func (client *Client) DeleteStreamingDataSourceWithOptions(request *DeleteStreamingDataSourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteStreamingDataSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -5177,9 +5300,11 @@ func (client *Client) DeleteStreamingDataSource(request *DeleteStreamingDataSour
 //
 // @return DeleteStreamingJobResponse
 func (client *Client) DeleteStreamingJobWithOptions(request *DeleteStreamingJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteStreamingJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -5245,9 +5370,11 @@ func (client *Client) DeleteStreamingJob(request *DeleteStreamingJobRequest) (_r
 //
 // @return DeleteSupabaseProjectResponse
 func (client *Client) DeleteSupabaseProjectWithOptions(request *DeleteSupabaseProjectRequest, runtime *dara.RuntimeOptions) (_result *DeleteSupabaseProjectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProjectId) {
@@ -5309,9 +5436,11 @@ func (client *Client) DeleteSupabaseProject(request *DeleteSupabaseProjectReques
 //
 // @return DeleteVectorIndexResponse
 func (client *Client) DeleteVectorIndexWithOptions(request *DeleteVectorIndexRequest, runtime *dara.RuntimeOptions) (_result *DeleteVectorIndexResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Collection) {
@@ -5405,9 +5534,11 @@ func (client *Client) DeleteVectorIndex(request *DeleteVectorIndexRequest) (_res
 //
 // @return DescribeAccountsResponse
 func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAccountsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -5481,9 +5612,11 @@ func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_resul
 //
 // @return DescribeActiveSQLRecordsResponse
 func (client *Client) DescribeActiveSQLRecordsWithOptions(request *DescribeActiveSQLRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeActiveSQLRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -5577,9 +5710,11 @@ func (client *Client) DescribeActiveSQLRecords(request *DescribeActiveSQLRecords
 //
 // @return DescribeAvailableResourcesResponse
 func (client *Client) DescribeAvailableResourcesWithOptions(request *DescribeAvailableResourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeAvailableResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChargeType) {
@@ -5649,9 +5784,11 @@ func (client *Client) DescribeAvailableResources(request *DescribeAvailableResou
 //
 // @return DescribeBackupJobResponse
 func (client *Client) DescribeBackupJobWithOptions(request *DescribeBackupJobRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BackupJobId) {
@@ -5721,9 +5858,11 @@ func (client *Client) DescribeBackupJob(request *DescribeBackupJobRequest) (_res
 //
 // @return DescribeBackupPolicyResponse
 func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -5789,9 +5928,11 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 //
 // @return DescribeCollectionResponse
 func (client *Client) DescribeCollectionWithOptions(request *DescribeCollectionRequest, runtime *dara.RuntimeOptions) (_result *DescribeCollectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Collection) {
@@ -5873,9 +6014,11 @@ func (client *Client) DescribeCollection(request *DescribeCollectionRequest) (_r
 //
 // @return DescribeCreateIndexJobResponse
 func (client *Client) DescribeCreateIndexJobWithOptions(request *DescribeCreateIndexJobRequest, runtime *dara.RuntimeOptions) (_result *DescribeCreateIndexJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Collection) {
@@ -5971,9 +6114,11 @@ func (client *Client) DescribeCreateIndexJob(request *DescribeCreateIndexJobRequ
 //
 // @return DescribeDBClusterNodeResponse
 func (client *Client) DescribeDBClusterNodeWithOptions(request *DescribeDBClusterNodeRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBClusterNodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -6049,9 +6194,11 @@ func (client *Client) DescribeDBClusterNode(request *DescribeDBClusterNodeReques
 //
 // @return DescribeDBClusterPerformanceResponse
 func (client *Client) DescribeDBClusterPerformanceWithOptions(request *DescribeDBClusterPerformanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBClusterPerformanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -6149,9 +6296,11 @@ func (client *Client) DescribeDBClusterPerformance(request *DescribeDBClusterPer
 //
 // @return DescribeDBInstanceAttributeResponse
 func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDBInstanceAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -6237,9 +6386,11 @@ func (client *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAtt
 //
 // @return DescribeDBInstanceDataBloatResponse
 func (client *Client) DescribeDBInstanceDataBloatWithOptions(request *DescribeDBInstanceDataBloatRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceDataBloatResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -6329,9 +6480,11 @@ func (client *Client) DescribeDBInstanceDataBloat(request *DescribeDBInstanceDat
 //
 // @return DescribeDBInstanceDataSkewResponse
 func (client *Client) DescribeDBInstanceDataSkewWithOptions(request *DescribeDBInstanceDataSkewRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceDataSkewResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -6417,9 +6570,11 @@ func (client *Client) DescribeDBInstanceDataSkew(request *DescribeDBInstanceData
 //
 // @return DescribeDBInstanceDiagnosisSummaryResponse
 func (client *Client) DescribeDBInstanceDiagnosisSummaryWithOptions(request *DescribeDBInstanceDiagnosisSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceDiagnosisSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -6509,9 +6664,11 @@ func (client *Client) DescribeDBInstanceDiagnosisSummary(request *DescribeDBInst
 //
 // @return DescribeDBInstanceErrorLogResponse
 func (client *Client) DescribeDBInstanceErrorLogWithOptions(request *DescribeDBInstanceErrorLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceErrorLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -6621,9 +6778,11 @@ func (client *Client) DescribeDBInstanceErrorLog(request *DescribeDBInstanceErro
 //
 // @return DescribeDBInstanceIPArrayListResponse
 func (client *Client) DescribeDBInstanceIPArrayListWithOptions(request *DescribeDBInstanceIPArrayListRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceIPArrayListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceIPArrayName) {
@@ -6703,9 +6862,11 @@ func (client *Client) DescribeDBInstanceIPArrayList(request *DescribeDBInstanceI
 //
 // @return DescribeDBInstanceIndexUsageResponse
 func (client *Client) DescribeDBInstanceIndexUsageWithOptions(request *DescribeDBInstanceIndexUsageRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceIndexUsageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -6785,9 +6946,11 @@ func (client *Client) DescribeDBInstanceIndexUsage(request *DescribeDBInstanceIn
 //
 // @return DescribeDBInstanceNetInfoResponse
 func (client *Client) DescribeDBInstanceNetInfoWithOptions(request *DescribeDBInstanceNetInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceNetInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConnectionString) {
@@ -6849,9 +7012,11 @@ func (client *Client) DescribeDBInstanceNetInfo(request *DescribeDBInstanceNetIn
 //
 // @return DescribeDBInstancePerformanceResponse
 func (client *Client) DescribeDBInstancePerformanceWithOptions(request *DescribeDBInstancePerformanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstancePerformanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -6933,9 +7098,11 @@ func (client *Client) DescribeDBInstancePerformance(request *DescribeDBInstanceP
 //
 // @return DescribeDBInstancePlansResponse
 func (client *Client) DescribeDBInstancePlansWithOptions(request *DescribeDBInstancePlansRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstancePlansResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -7025,9 +7192,11 @@ func (client *Client) DescribeDBInstancePlans(request *DescribeDBInstancePlansRe
 //
 // @return DescribeDBInstanceSSLResponse
 func (client *Client) DescribeDBInstanceSSLWithOptions(request *DescribeDBInstanceSSLRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceSSLResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -7085,9 +7254,11 @@ func (client *Client) DescribeDBInstanceSSL(request *DescribeDBInstanceSSLReques
 //
 // @return DescribeDBInstanceSupportMaxPerformanceResponse
 func (client *Client) DescribeDBInstanceSupportMaxPerformanceWithOptions(request *DescribeDBInstanceSupportMaxPerformanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceSupportMaxPerformanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -7159,9 +7330,11 @@ func (client *Client) DescribeDBInstanceSupportMaxPerformance(request *DescribeD
 //
 // @return DescribeDBInstancesResponse
 func (client *Client) DescribeDBInstancesWithOptions(tmpReq *DescribeDBInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstancesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeDBInstancesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7299,9 +7472,11 @@ func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (
 //
 // @return DescribeDBResourceGroupResponse
 func (client *Client) DescribeDBResourceGroupWithOptions(request *DescribeDBResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -7367,9 +7542,11 @@ func (client *Client) DescribeDBResourceGroup(request *DescribeDBResourceGroupRe
 //
 // @return DescribeDBResourceManagementModeResponse
 func (client *Client) DescribeDBResourceManagementModeWithOptions(request *DescribeDBResourceManagementModeRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBResourceManagementModeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -7431,9 +7608,11 @@ func (client *Client) DescribeDBResourceManagementMode(request *DescribeDBResour
 //
 // @return DescribeDBVersionInfosResponse
 func (client *Client) DescribeDBVersionInfosWithOptions(request *DescribeDBVersionInfosRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBVersionInfosResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceMode) {
@@ -7511,9 +7690,11 @@ func (client *Client) DescribeDBVersionInfos(request *DescribeDBVersionInfosRequ
 //
 // @return DescribeDataBackupsResponse
 func (client *Client) DescribeDataBackupsWithOptions(request *DescribeDataBackupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataBackupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BackupId) {
@@ -7607,9 +7788,11 @@ func (client *Client) DescribeDataBackups(request *DescribeDataBackupsRequest) (
 //
 // @return DescribeDataReDistributeInfoResponse
 func (client *Client) DescribeDataReDistributeInfoWithOptions(request *DescribeDataReDistributeInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataReDistributeInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -7675,9 +7858,11 @@ func (client *Client) DescribeDataReDistributeInfo(request *DescribeDataReDistri
 //
 // @return DescribeDataShareInstancesResponse
 func (client *Client) DescribeDataShareInstancesWithOptions(request *DescribeDataShareInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataShareInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -7767,9 +7952,11 @@ func (client *Client) DescribeDataShareInstances(request *DescribeDataShareInsta
 //
 // @return DescribeDataSharePerformanceResponse
 func (client *Client) DescribeDataSharePerformanceWithOptions(request *DescribeDataSharePerformanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataSharePerformanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -7859,9 +8046,11 @@ func (client *Client) DescribeDataSharePerformance(request *DescribeDataSharePer
 //
 // @return DescribeDiagnosisDimensionsResponse
 func (client *Client) DescribeDiagnosisDimensionsWithOptions(request *DescribeDiagnosisDimensionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDiagnosisDimensionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -7935,9 +8124,11 @@ func (client *Client) DescribeDiagnosisDimensions(request *DescribeDiagnosisDime
 //
 // @return DescribeDiagnosisMonitorPerformanceResponse
 func (client *Client) DescribeDiagnosisMonitorPerformanceWithOptions(request *DescribeDiagnosisMonitorPerformanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeDiagnosisMonitorPerformanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -8031,9 +8222,11 @@ func (client *Client) DescribeDiagnosisMonitorPerformance(request *DescribeDiagn
 //
 // @return DescribeDiagnosisRecordsResponse
 func (client *Client) DescribeDiagnosisRecordsWithOptions(request *DescribeDiagnosisRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDiagnosisRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -8141,9 +8334,11 @@ func (client *Client) DescribeDiagnosisRecords(request *DescribeDiagnosisRecords
 //
 // @return DescribeDiagnosisSQLInfoResponse
 func (client *Client) DescribeDiagnosisSQLInfoWithOptions(request *DescribeDiagnosisSQLInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeDiagnosisSQLInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -8215,9 +8410,11 @@ func (client *Client) DescribeDiagnosisSQLInfo(request *DescribeDiagnosisSQLInfo
 //
 // @return DescribeDocumentResponse
 func (client *Client) DescribeDocumentWithOptions(request *DescribeDocumentRequest, runtime *dara.RuntimeOptions) (_result *DescribeDocumentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Collection) {
@@ -8305,9 +8502,11 @@ func (client *Client) DescribeDocument(request *DescribeDocumentRequest) (_resul
 //
 // @return DescribeDownloadRecordsResponse
 func (client *Client) DescribeDownloadRecordsWithOptions(request *DescribeDownloadRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDownloadRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -8375,9 +8574,11 @@ func (client *Client) DescribeDownloadRecords(request *DescribeDownloadRecordsRe
 //
 // @return DescribeDownloadSQLLogsResponse
 func (client *Client) DescribeDownloadSQLLogsWithOptions(request *DescribeDownloadSQLLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDownloadSQLLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -8435,9 +8636,11 @@ func (client *Client) DescribeDownloadSQLLogs(request *DescribeDownloadSQLLogsRe
 //
 // @return DescribeExternalDataServiceResponse
 func (client *Client) DescribeExternalDataServiceWithOptions(request *DescribeExternalDataServiceRequest, runtime *dara.RuntimeOptions) (_result *DescribeExternalDataServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -8503,9 +8706,11 @@ func (client *Client) DescribeExternalDataService(request *DescribeExternalDataS
 //
 // @return DescribeHadoopClustersInSameNetResponse
 func (client *Client) DescribeHadoopClustersInSameNetWithOptions(request *DescribeHadoopClustersInSameNetRequest, runtime *dara.RuntimeOptions) (_result *DescribeHadoopClustersInSameNetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -8567,9 +8772,11 @@ func (client *Client) DescribeHadoopClustersInSameNet(request *DescribeHadoopClu
 //
 // @return DescribeHadoopConfigsResponse
 func (client *Client) DescribeHadoopConfigsWithOptions(request *DescribeHadoopConfigsRequest, runtime *dara.RuntimeOptions) (_result *DescribeHadoopConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigName) {
@@ -8639,9 +8846,11 @@ func (client *Client) DescribeHadoopConfigs(request *DescribeHadoopConfigsReques
 //
 // @return DescribeHadoopDataSourceResponse
 func (client *Client) DescribeHadoopDataSourceWithOptions(request *DescribeHadoopDataSourceRequest, runtime *dara.RuntimeOptions) (_result *DescribeHadoopDataSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -8715,9 +8924,11 @@ func (client *Client) DescribeHadoopDataSource(request *DescribeHadoopDataSource
 //
 // @return DescribeHealthStatusResponse
 func (client *Client) DescribeHealthStatusWithOptions(request *DescribeHealthStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeHealthStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -8787,9 +8998,11 @@ func (client *Client) DescribeHealthStatus(request *DescribeHealthStatusRequest)
 //
 // @return DescribeIMVInfosResponse
 func (client *Client) DescribeIMVInfosWithOptions(request *DescribeIMVInfosRequest, runtime *dara.RuntimeOptions) (_result *DescribeIMVInfosResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -8855,9 +9068,11 @@ func (client *Client) DescribeIMVInfos(request *DescribeIMVInfosRequest) (_resul
 //
 // @return DescribeIndexResponse
 func (client *Client) DescribeIndexWithOptions(request *DescribeIndexRequest, runtime *dara.RuntimeOptions) (_result *DescribeIndexResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Collection) {
@@ -8943,9 +9158,11 @@ func (client *Client) DescribeIndex(request *DescribeIndexRequest) (_result *Des
 //
 // @return DescribeJDBCDataSourceResponse
 func (client *Client) DescribeJDBCDataSourceWithOptions(request *DescribeJDBCDataSourceRequest, runtime *dara.RuntimeOptions) (_result *DescribeJDBCDataSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -9007,9 +9224,11 @@ func (client *Client) DescribeJDBCDataSource(request *DescribeJDBCDataSourceRequ
 //
 // @return DescribeLogBackupsResponse
 func (client *Client) DescribeLogBackupsWithOptions(request *DescribeLogBackupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLogBackupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -9083,9 +9302,11 @@ func (client *Client) DescribeLogBackups(request *DescribeLogBackupsRequest) (_r
 //
 // @return DescribeModelServiceResponse
 func (client *Client) DescribeModelServiceWithOptions(request *DescribeModelServiceRequest, runtime *dara.RuntimeOptions) (_result *DescribeModelServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -9147,9 +9368,11 @@ func (client *Client) DescribeModelService(request *DescribeModelServiceRequest)
 //
 // @return DescribeModifyParameterLogResponse
 func (client *Client) DescribeModifyParameterLogWithOptions(request *DescribeModifyParameterLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeModifyParameterLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -9215,9 +9438,11 @@ func (client *Client) DescribeModifyParameterLog(request *DescribeModifyParamete
 //
 // @return DescribeNamespaceResponse
 func (client *Client) DescribeNamespaceWithOptions(request *DescribeNamespaceRequest, runtime *dara.RuntimeOptions) (_result *DescribeNamespaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -9307,9 +9532,11 @@ func (client *Client) DescribeNamespace(request *DescribeNamespaceRequest) (_res
 //
 // @return DescribeParametersResponse
 func (client *Client) DescribeParametersWithOptions(request *DescribeParametersRequest, runtime *dara.RuntimeOptions) (_result *DescribeParametersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -9383,9 +9610,11 @@ func (client *Client) DescribeParameters(request *DescribeParametersRequest) (_r
 //
 // @return DescribeRdsVSwitchsResponse
 func (client *Client) DescribeRdsVSwitchsWithOptions(request *DescribeRdsVSwitchsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRdsVSwitchsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -9491,9 +9720,11 @@ func (client *Client) DescribeRdsVSwitchs(request *DescribeRdsVSwitchsRequest) (
 //
 // @return DescribeRdsVpcsResponse
 func (client *Client) DescribeRdsVpcsWithOptions(request *DescribeRdsVpcsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRdsVpcsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -9595,9 +9826,11 @@ func (client *Client) DescribeRdsVpcs(request *DescribeRdsVpcsRequest) (_result 
 //
 // @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Region) {
@@ -9663,9 +9896,11 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 //
 // @return DescribeRolesResponse
 func (client *Client) DescribeRolesWithOptions(request *DescribeRolesRequest, runtime *dara.RuntimeOptions) (_result *DescribeRolesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -9731,9 +9966,11 @@ func (client *Client) DescribeRoles(request *DescribeRolesRequest) (_result *Des
 //
 // @return DescribeSQLLogCountResponse
 func (client *Client) DescribeSQLLogCountWithOptions(request *DescribeSQLLogCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeSQLLogCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -9847,9 +10084,11 @@ func (client *Client) DescribeSQLLogCount(request *DescribeSQLLogCountRequest) (
 //
 // @return DescribeSQLLogsResponse
 func (client *Client) DescribeSQLLogsWithOptions(request *DescribeSQLLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSQLLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -9975,9 +10214,11 @@ func (client *Client) DescribeSQLLogs(request *DescribeSQLLogsRequest) (_result 
 //
 // @return DescribeSQLLogsV2Response
 func (client *Client) DescribeSQLLogsV2WithOptions(request *DescribeSQLLogsV2Request, runtime *dara.RuntimeOptions) (_result *DescribeSQLLogsV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -10111,9 +10352,11 @@ func (client *Client) DescribeSQLLogsV2(request *DescribeSQLLogsV2Request) (_res
 //
 // @return DescribeSampleDataResponse
 func (client *Client) DescribeSampleDataWithOptions(request *DescribeSampleDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeSampleDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -10179,9 +10422,11 @@ func (client *Client) DescribeSampleData(request *DescribeSampleDataRequest) (_r
 //
 // @return DescribeStreamingDataServiceResponse
 func (client *Client) DescribeStreamingDataServiceWithOptions(request *DescribeStreamingDataServiceRequest, runtime *dara.RuntimeOptions) (_result *DescribeStreamingDataServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -10247,9 +10492,11 @@ func (client *Client) DescribeStreamingDataService(request *DescribeStreamingDat
 //
 // @return DescribeStreamingDataSourceResponse
 func (client *Client) DescribeStreamingDataSourceWithOptions(request *DescribeStreamingDataSourceRequest, runtime *dara.RuntimeOptions) (_result *DescribeStreamingDataSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -10315,9 +10562,11 @@ func (client *Client) DescribeStreamingDataSource(request *DescribeStreamingData
 //
 // @return DescribeStreamingJobResponse
 func (client *Client) DescribeStreamingJobWithOptions(request *DescribeStreamingJobRequest, runtime *dara.RuntimeOptions) (_result *DescribeStreamingJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -10383,9 +10632,11 @@ func (client *Client) DescribeStreamingJob(request *DescribeStreamingJobRequest)
 //
 // @return DescribeSupportFeaturesResponse
 func (client *Client) DescribeSupportFeaturesWithOptions(request *DescribeSupportFeaturesRequest, runtime *dara.RuntimeOptions) (_result *DescribeSupportFeaturesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -10447,9 +10698,11 @@ func (client *Client) DescribeSupportFeatures(request *DescribeSupportFeaturesRe
 //
 // @return DescribeTableResponse
 func (client *Client) DescribeTableWithOptions(request *DescribeTableRequest, runtime *dara.RuntimeOptions) (_result *DescribeTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -10535,9 +10788,11 @@ func (client *Client) DescribeTable(request *DescribeTableRequest) (_result *Des
 //
 // @return DescribeTagsResponse
 func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, runtime *dara.RuntimeOptions) (_result *DescribeTagsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -10619,9 +10874,11 @@ func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *Descr
 //
 // @return DescribeUserEncryptionKeyListResponse
 func (client *Client) DescribeUserEncryptionKeyListWithOptions(request *DescribeUserEncryptionKeyListRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserEncryptionKeyListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -10695,9 +10952,11 @@ func (client *Client) DescribeUserEncryptionKeyList(request *DescribeUserEncrypt
 //
 // @return DescribeWaitingSQLInfoResponse
 func (client *Client) DescribeWaitingSQLInfoWithOptions(request *DescribeWaitingSQLInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeWaitingSQLInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -10779,9 +11038,11 @@ func (client *Client) DescribeWaitingSQLInfo(request *DescribeWaitingSQLInfoRequ
 //
 // @return DescribeWaitingSQLRecordsResponse
 func (client *Client) DescribeWaitingSQLRecordsWithOptions(request *DescribeWaitingSQLRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeWaitingSQLRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -10891,9 +11152,11 @@ func (client *Client) DescribeWaitingSQLRecords(request *DescribeWaitingSQLRecor
 //
 // @return DisableDBResourceGroupResponse
 func (client *Client) DisableDBResourceGroupWithOptions(request *DisableDBResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *DisableDBResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -10973,9 +11236,11 @@ func (client *Client) DisableDBResourceGroup(request *DisableDBResourceGroupRequ
 //
 // @return DownloadDiagnosisRecordsResponse
 func (client *Client) DownloadDiagnosisRecordsWithOptions(request *DownloadDiagnosisRecordsRequest, runtime *dara.RuntimeOptions) (_result *DownloadDiagnosisRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -11071,9 +11336,11 @@ func (client *Client) DownloadDiagnosisRecords(request *DownloadDiagnosisRecords
 //
 // @return DownloadSQLLogsRecordsResponse
 func (client *Client) DownloadSQLLogsRecordsWithOptions(request *DownloadSQLLogsRecordsRequest, runtime *dara.RuntimeOptions) (_result *DownloadSQLLogsRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -11191,9 +11458,11 @@ func (client *Client) DownloadSQLLogsRecords(request *DownloadSQLLogsRecordsRequ
 //
 // @return EnableCollectionGraphRAGResponse
 func (client *Client) EnableCollectionGraphRAGWithOptions(tmpReq *EnableCollectionGraphRAGRequest, runtime *dara.RuntimeOptions) (_result *EnableCollectionGraphRAGResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &EnableCollectionGraphRAGShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11313,9 +11582,11 @@ func (client *Client) EnableCollectionGraphRAG(request *EnableCollectionGraphRAG
 //
 // @return EnableDBResourceGroupResponse
 func (client *Client) EnableDBResourceGroupWithOptions(request *EnableDBResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *EnableDBResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -11385,9 +11656,11 @@ func (client *Client) EnableDBResourceGroup(request *EnableDBResourceGroupReques
 //
 // @return ExecuteStatementResponse
 func (client *Client) ExecuteStatementWithOptions(tmpReq *ExecuteStatementRequest, runtime *dara.RuntimeOptions) (_result *ExecuteStatementResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ExecuteStatementShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11505,9 +11778,11 @@ func (client *Client) ExecuteStatement(request *ExecuteStatementRequest) (_resul
 //
 // @return GetAccountResponse
 func (client *Client) GetAccountWithOptions(request *GetAccountRequest, runtime *dara.RuntimeOptions) (_result *GetAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -11569,9 +11844,11 @@ func (client *Client) GetAccount(request *GetAccountRequest) (_result *GetAccoun
 //
 // @return GetGraphRAGJobResponse
 func (client *Client) GetGraphRAGJobWithOptions(request *GetGraphRAGJobRequest, runtime *dara.RuntimeOptions) (_result *GetGraphRAGJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Collection) {
@@ -11653,9 +11930,11 @@ func (client *Client) GetGraphRAGJob(request *GetGraphRAGJobRequest) (_result *G
 //
 // @return GetSecretValueResponse
 func (client *Client) GetSecretValueWithOptions(request *GetSecretValueRequest, runtime *dara.RuntimeOptions) (_result *GetSecretValueResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -11733,9 +12012,11 @@ func (client *Client) GetSecretValue(request *GetSecretValueRequest) (_result *G
 //
 // @return GetStatementResultResponse
 func (client *Client) GetStatementResultWithOptions(request *GetStatementResultRequest, runtime *dara.RuntimeOptions) (_result *GetStatementResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -11813,9 +12094,11 @@ func (client *Client) GetStatementResult(request *GetStatementResultRequest) (_r
 //
 // @return GetSupabaseProjectResponse
 func (client *Client) GetSupabaseProjectWithOptions(request *GetSupabaseProjectRequest, runtime *dara.RuntimeOptions) (_result *GetSupabaseProjectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProjectId) {
@@ -11877,9 +12160,11 @@ func (client *Client) GetSupabaseProject(request *GetSupabaseProjectRequest) (_r
 //
 // @return GetSupabaseProjectApiKeysResponse
 func (client *Client) GetSupabaseProjectApiKeysWithOptions(request *GetSupabaseProjectApiKeysRequest, runtime *dara.RuntimeOptions) (_result *GetSupabaseProjectApiKeysResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProjectId) {
@@ -11941,9 +12226,11 @@ func (client *Client) GetSupabaseProjectApiKeys(request *GetSupabaseProjectApiKe
 //
 // @return GetSupabaseProjectDashboardAccountResponse
 func (client *Client) GetSupabaseProjectDashboardAccountWithOptions(request *GetSupabaseProjectDashboardAccountRequest, runtime *dara.RuntimeOptions) (_result *GetSupabaseProjectDashboardAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProjectId) {
@@ -12013,9 +12300,11 @@ func (client *Client) GetSupabaseProjectDashboardAccount(request *GetSupabasePro
 //
 // @return GetUploadDocumentJobResponse
 func (client *Client) GetUploadDocumentJobWithOptions(request *GetUploadDocumentJobRequest, runtime *dara.RuntimeOptions) (_result *GetUploadDocumentJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -12113,9 +12402,11 @@ func (client *Client) GetUploadDocumentJob(request *GetUploadDocumentJobRequest)
 //
 // @return GetUpsertCollectionDataJobResponse
 func (client *Client) GetUpsertCollectionDataJobWithOptions(request *GetUpsertCollectionDataJobRequest, runtime *dara.RuntimeOptions) (_result *GetUpsertCollectionDataJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -12209,9 +12500,11 @@ func (client *Client) GetUpsertCollectionDataJob(request *GetUpsertCollectionDat
 //
 // @return GrantCollectionResponse
 func (client *Client) GrantCollectionWithOptions(request *GrantCollectionRequest, runtime *dara.RuntimeOptions) (_result *GrantCollectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Collection) {
@@ -12301,9 +12594,11 @@ func (client *Client) GrantCollection(request *GrantCollectionRequest) (_result 
 //
 // @return HandleActiveSQLRecordResponse
 func (client *Client) HandleActiveSQLRecordWithOptions(request *HandleActiveSQLRecordRequest, runtime *dara.RuntimeOptions) (_result *HandleActiveSQLRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -12369,9 +12664,11 @@ func (client *Client) HandleActiveSQLRecord(request *HandleActiveSQLRecordReques
 //
 // @return InitVectorDatabaseResponse
 func (client *Client) InitVectorDatabaseWithOptions(request *InitVectorDatabaseRequest, runtime *dara.RuntimeOptions) (_result *InitVectorDatabaseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -12449,9 +12746,11 @@ func (client *Client) InitVectorDatabase(request *InitVectorDatabaseRequest) (_r
 //
 // @return ListAINodePoolsResponse
 func (client *Client) ListAINodePoolsWithOptions(request *ListAINodePoolsRequest, runtime *dara.RuntimeOptions) (_result *ListAINodePoolsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -12513,9 +12812,11 @@ func (client *Client) ListAINodePools(request *ListAINodePoolsRequest) (_result 
 //
 // @return ListBackupJobsResponse
 func (client *Client) ListBackupJobsWithOptions(request *ListBackupJobsRequest, runtime *dara.RuntimeOptions) (_result *ListBackupJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BackupMode) {
@@ -12577,9 +12878,11 @@ func (client *Client) ListBackupJobs(request *ListBackupJobsRequest) (_result *L
 //
 // @return ListCollectionsResponse
 func (client *Client) ListCollectionsWithOptions(request *ListCollectionsRequest, runtime *dara.RuntimeOptions) (_result *ListCollectionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -12657,9 +12960,11 @@ func (client *Client) ListCollections(request *ListCollectionsRequest) (_result 
 //
 // @return ListDatabasesResponse
 func (client *Client) ListDatabasesWithOptions(request *ListDatabasesRequest, runtime *dara.RuntimeOptions) (_result *ListDatabasesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -12741,9 +13046,11 @@ func (client *Client) ListDatabases(request *ListDatabasesRequest) (_result *Lis
 //
 // @return ListDocumentCollectionsResponse
 func (client *Client) ListDocumentCollectionsWithOptions(request *ListDocumentCollectionsRequest, runtime *dara.RuntimeOptions) (_result *ListDocumentCollectionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -12817,9 +13124,11 @@ func (client *Client) ListDocumentCollections(request *ListDocumentCollectionsRe
 //
 // @return ListDocumentsResponse
 func (client *Client) ListDocumentsWithOptions(request *ListDocumentsRequest, runtime *dara.RuntimeOptions) (_result *ListDocumentsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Collection) {
@@ -12905,9 +13214,11 @@ func (client *Client) ListDocuments(request *ListDocumentsRequest) (_result *Lis
 //
 // @return ListExternalDataServicesResponse
 func (client *Client) ListExternalDataServicesWithOptions(request *ListExternalDataServicesRequest, runtime *dara.RuntimeOptions) (_result *ListExternalDataServicesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -12977,9 +13288,11 @@ func (client *Client) ListExternalDataServices(request *ListExternalDataServices
 //
 // @return ListExternalDataSourcesResponse
 func (client *Client) ListExternalDataSourcesWithOptions(request *ListExternalDataSourcesRequest, runtime *dara.RuntimeOptions) (_result *ListExternalDataSourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -13049,9 +13362,11 @@ func (client *Client) ListExternalDataSources(request *ListExternalDataSourcesRe
 //
 // @return ListIndicesResponse
 func (client *Client) ListIndicesWithOptions(request *ListIndicesRequest, runtime *dara.RuntimeOptions) (_result *ListIndicesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Collection) {
@@ -13133,9 +13448,11 @@ func (client *Client) ListIndices(request *ListIndicesRequest) (_result *ListInd
 //
 // @return ListInstanceExtensionsResponse
 func (client *Client) ListInstanceExtensionsWithOptions(request *ListInstanceExtensionsRequest, runtime *dara.RuntimeOptions) (_result *ListInstanceExtensionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -13213,9 +13530,11 @@ func (client *Client) ListInstanceExtensions(request *ListInstanceExtensionsRequ
 //
 // @return ListModelServicesResponse
 func (client *Client) ListModelServicesWithOptions(request *ListModelServicesRequest, runtime *dara.RuntimeOptions) (_result *ListModelServicesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -13285,9 +13604,11 @@ func (client *Client) ListModelServices(request *ListModelServicesRequest) (_res
 //
 // @return ListNamespacesResponse
 func (client *Client) ListNamespacesWithOptions(request *ListNamespacesRequest, runtime *dara.RuntimeOptions) (_result *ListNamespacesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -13365,9 +13686,11 @@ func (client *Client) ListNamespaces(request *ListNamespacesRequest) (_result *L
 //
 // @return ListRemoteADBDataSourcesResponse
 func (client *Client) ListRemoteADBDataSourcesWithOptions(request *ListRemoteADBDataSourcesRequest, runtime *dara.RuntimeOptions) (_result *ListRemoteADBDataSourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -13433,9 +13756,11 @@ func (client *Client) ListRemoteADBDataSources(request *ListRemoteADBDataSources
 //
 // @return ListSchemasResponse
 func (client *Client) ListSchemasWithOptions(request *ListSchemasRequest, runtime *dara.RuntimeOptions) (_result *ListSchemasResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -13521,9 +13846,11 @@ func (client *Client) ListSchemas(request *ListSchemasRequest) (_result *ListSch
 //
 // @return ListSecretsResponse
 func (client *Client) ListSecretsWithOptions(request *ListSecretsRequest, runtime *dara.RuntimeOptions) (_result *ListSecretsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -13593,9 +13920,11 @@ func (client *Client) ListSecrets(request *ListSecretsRequest) (_result *ListSec
 //
 // @return ListStreamingDataServicesResponse
 func (client *Client) ListStreamingDataServicesWithOptions(request *ListStreamingDataServicesRequest, runtime *dara.RuntimeOptions) (_result *ListStreamingDataServicesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -13665,9 +13994,11 @@ func (client *Client) ListStreamingDataServices(request *ListStreamingDataServic
 //
 // @return ListStreamingDataSourcesResponse
 func (client *Client) ListStreamingDataSourcesWithOptions(request *ListStreamingDataSourcesRequest, runtime *dara.RuntimeOptions) (_result *ListStreamingDataSourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -13737,9 +14068,11 @@ func (client *Client) ListStreamingDataSources(request *ListStreamingDataSources
 //
 // @return ListStreamingJobsResponse
 func (client *Client) ListStreamingJobsWithOptions(request *ListStreamingJobsRequest, runtime *dara.RuntimeOptions) (_result *ListStreamingJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -13809,9 +14142,11 @@ func (client *Client) ListStreamingJobs(request *ListStreamingJobsRequest) (_res
 //
 // @return ListSupabaseProjectsResponse
 func (client *Client) ListSupabaseProjectsWithOptions(request *ListSupabaseProjectsRequest, runtime *dara.RuntimeOptions) (_result *ListSupabaseProjectsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -13877,9 +14212,11 @@ func (client *Client) ListSupabaseProjects(request *ListSupabaseProjectsRequest)
 //
 // @return ListSupportModelsResponse
 func (client *Client) ListSupportModelsWithOptions(request *ListSupportModelsRequest, runtime *dara.RuntimeOptions) (_result *ListSupportModelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -13937,9 +14274,11 @@ func (client *Client) ListSupportModels(request *ListSupportModelsRequest) (_res
 //
 // @return ListTablesResponse
 func (client *Client) ListTablesWithOptions(request *ListTablesRequest, runtime *dara.RuntimeOptions) (_result *ListTablesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -14029,9 +14368,11 @@ func (client *Client) ListTables(request *ListTablesRequest) (_result *ListTable
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NextToken) {
@@ -14121,9 +14462,11 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 //
 // @return ModifyAccountDescriptionResponse
 func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccountDescriptionRequest, runtime *dara.RuntimeOptions) (_result *ModifyAccountDescriptionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountDescription) {
@@ -14193,9 +14536,11 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 //
 // @return ModifyBackupPolicyResponse
 func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyBackupPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BackupRetentionPeriod) {
@@ -14273,9 +14618,11 @@ func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_r
 //
 // @return ModifyCollectionResponse
 func (client *Client) ModifyCollectionWithOptions(request *ModifyCollectionRequest, runtime *dara.RuntimeOptions) (_result *ModifyCollectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Collection) {
@@ -14361,9 +14708,11 @@ func (client *Client) ModifyCollection(request *ModifyCollectionRequest) (_resul
 //
 // @return ModifyDBInstanceConfigResponse
 func (client *Client) ModifyDBInstanceConfigWithOptions(request *ModifyDBInstanceConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceDescription) {
@@ -14437,9 +14786,11 @@ func (client *Client) ModifyDBInstanceConfig(request *ModifyDBInstanceConfigRequ
 //
 // @return ModifyDBInstanceConnectionStringResponse
 func (client *Client) ModifyDBInstanceConnectionStringWithOptions(request *ModifyDBInstanceConnectionStringRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceConnectionStringResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -14513,9 +14864,11 @@ func (client *Client) ModifyDBInstanceConnectionString(request *ModifyDBInstance
 //
 // @return ModifyDBInstanceDeploymentModeResponse
 func (client *Client) ModifyDBInstanceDeploymentModeWithOptions(request *ModifyDBInstanceDeploymentModeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceDeploymentModeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -14593,9 +14946,11 @@ func (client *Client) ModifyDBInstanceDeploymentMode(request *ModifyDBInstanceDe
 //
 // @return ModifyDBInstanceDescriptionResponse
 func (client *Client) ModifyDBInstanceDescriptionWithOptions(request *ModifyDBInstanceDescriptionRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceDescriptionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceDescription) {
@@ -14677,9 +15032,11 @@ func (client *Client) ModifyDBInstanceDescription(request *ModifyDBInstanceDescr
 //
 // @return ModifyDBInstanceMaintainTimeResponse
 func (client *Client) ModifyDBInstanceMaintainTimeWithOptions(request *ModifyDBInstanceMaintainTimeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceMaintainTimeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -14767,9 +15124,11 @@ func (client *Client) ModifyDBInstanceMaintainTime(request *ModifyDBInstanceMain
 //
 // @return ModifyDBInstanceNetworkTypeResponse
 func (client *Client) ModifyDBInstanceNetworkTypeWithOptions(request *ModifyDBInstanceNetworkTypeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceNetworkTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -14853,9 +15212,11 @@ func (client *Client) ModifyDBInstanceNetworkType(request *ModifyDBInstanceNetwo
 //
 // @return ModifyDBInstancePayTypeResponse
 func (client *Client) ModifyDBInstancePayTypeWithOptions(request *ModifyDBInstancePayTypeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstancePayTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -14929,9 +15290,11 @@ func (client *Client) ModifyDBInstancePayType(request *ModifyDBInstancePayTypeRe
 //
 // @return ModifyDBInstanceResourceGroupResponse
 func (client *Client) ModifyDBInstanceResourceGroupWithOptions(request *ModifyDBInstanceResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -15017,9 +15380,11 @@ func (client *Client) ModifyDBInstanceResourceGroup(request *ModifyDBInstanceRes
 //
 // @return ModifyDBInstanceSSLResponse
 func (client *Client) ModifyDBInstanceSSLWithOptions(request *ModifyDBInstanceSSLRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceSSLResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConnectionString) {
@@ -15085,9 +15450,11 @@ func (client *Client) ModifyDBInstanceSSL(request *ModifyDBInstanceSSLRequest) (
 //
 // @return ModifyDBResourceGroupResponse
 func (client *Client) ModifyDBResourceGroupWithOptions(tmpReq *ModifyDBResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBResourceGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyDBResourceGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -15159,9 +15526,11 @@ func (client *Client) ModifyDBResourceGroup(request *ModifyDBResourceGroupReques
 //
 // @return ModifyExternalDataServiceResponse
 func (client *Client) ModifyExternalDataServiceWithOptions(request *ModifyExternalDataServiceRequest, runtime *dara.RuntimeOptions) (_result *ModifyExternalDataServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -15235,9 +15604,11 @@ func (client *Client) ModifyExternalDataService(request *ModifyExternalDataServi
 //
 // @return ModifyHadoopDataSourceResponse
 func (client *Client) ModifyHadoopDataSourceWithOptions(request *ModifyHadoopDataSourceRequest, runtime *dara.RuntimeOptions) (_result *ModifyHadoopDataSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -15343,9 +15714,11 @@ func (client *Client) ModifyHadoopDataSource(request *ModifyHadoopDataSourceRequ
 //
 // @return ModifyJDBCDataSourceResponse
 func (client *Client) ModifyJDBCDataSourceWithOptions(request *ModifyJDBCDataSourceRequest, runtime *dara.RuntimeOptions) (_result *ModifyJDBCDataSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -15437,9 +15810,11 @@ func (client *Client) ModifyJDBCDataSource(request *ModifyJDBCDataSourceRequest)
 //
 // @return ModifyMasterSpecResponse
 func (client *Client) ModifyMasterSpecWithOptions(request *ModifyMasterSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyMasterSpecResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceDescription) {
@@ -15527,9 +15902,11 @@ func (client *Client) ModifyMasterSpec(request *ModifyMasterSpecRequest) (_resul
 //
 // @return ModifyParametersResponse
 func (client *Client) ModifyParametersWithOptions(request *ModifyParametersRequest, runtime *dara.RuntimeOptions) (_result *ModifyParametersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -15603,9 +15980,11 @@ func (client *Client) ModifyParameters(request *ModifyParametersRequest) (_resul
 //
 // @return ModifyRemoteADBDataSourceResponse
 func (client *Client) ModifyRemoteADBDataSourceWithOptions(request *ModifyRemoteADBDataSourceRequest, runtime *dara.RuntimeOptions) (_result *ModifyRemoteADBDataSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DataSourceId) {
@@ -15689,9 +16068,11 @@ func (client *Client) ModifyRemoteADBDataSource(request *ModifyRemoteADBDataSour
 //
 // @return ModifySQLCollectorPolicyResponse
 func (client *Client) ModifySQLCollectorPolicyWithOptions(request *ModifySQLCollectorPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifySQLCollectorPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -15767,9 +16148,11 @@ func (client *Client) ModifySQLCollectorPolicy(request *ModifySQLCollectorPolicy
 //
 // @return ModifySecurityIpsResponse
 func (client *Client) ModifySecurityIpsWithOptions(request *ModifySecurityIpsRequest, runtime *dara.RuntimeOptions) (_result *ModifySecurityIpsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceIPArrayAttribute) {
@@ -15855,9 +16238,11 @@ func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_res
 //
 // @return ModifyStreamingDataServiceResponse
 func (client *Client) ModifyStreamingDataServiceWithOptions(request *ModifyStreamingDataServiceRequest, runtime *dara.RuntimeOptions) (_result *ModifyStreamingDataServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -15931,9 +16316,11 @@ func (client *Client) ModifyStreamingDataService(request *ModifyStreamingDataSer
 //
 // @return ModifyStreamingDataSourceResponse
 func (client *Client) ModifyStreamingDataSourceWithOptions(request *ModifyStreamingDataSourceRequest, runtime *dara.RuntimeOptions) (_result *ModifyStreamingDataSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -16007,9 +16394,11 @@ func (client *Client) ModifyStreamingDataSource(request *ModifyStreamingDataSour
 //
 // @return ModifyStreamingJobResponse
 func (client *Client) ModifyStreamingJobWithOptions(tmpReq *ModifyStreamingJobRequest, runtime *dara.RuntimeOptions) (_result *ModifyStreamingJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyStreamingJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16161,9 +16550,11 @@ func (client *Client) ModifyStreamingJob(request *ModifyStreamingJobRequest) (_r
 //
 // @return ModifySupabaseProjectSecurityIpsResponse
 func (client *Client) ModifySupabaseProjectSecurityIpsWithOptions(request *ModifySupabaseProjectSecurityIpsRequest, runtime *dara.RuntimeOptions) (_result *ModifySupabaseProjectSecurityIpsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProjectId) {
@@ -16229,9 +16620,11 @@ func (client *Client) ModifySupabaseProjectSecurityIps(request *ModifySupabasePr
 //
 // @return ModifyVectorConfigurationResponse
 func (client *Client) ModifyVectorConfigurationWithOptions(request *ModifyVectorConfigurationRequest, runtime *dara.RuntimeOptions) (_result *ModifyVectorConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -16297,9 +16690,11 @@ func (client *Client) ModifyVectorConfiguration(request *ModifyVectorConfigurati
 //
 // @return PauseDataRedistributeResponse
 func (client *Client) PauseDataRedistributeWithOptions(request *PauseDataRedistributeRequest, runtime *dara.RuntimeOptions) (_result *PauseDataRedistributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -16373,9 +16768,11 @@ func (client *Client) PauseDataRedistribute(request *PauseDataRedistributeReques
 //
 // @return PauseInstanceResponse
 func (client *Client) PauseInstanceWithOptions(request *PauseInstanceRequest, runtime *dara.RuntimeOptions) (_result *PauseInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -16449,9 +16846,11 @@ func (client *Client) PauseInstance(request *PauseInstanceRequest) (_result *Pau
 //
 // @return QueryCollectionDataResponse
 func (client *Client) QueryCollectionDataWithOptions(tmpReq *QueryCollectionDataRequest, runtime *dara.RuntimeOptions) (_result *QueryCollectionDataResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryCollectionDataShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16609,9 +17008,11 @@ func (client *Client) QueryCollectionData(request *QueryCollectionDataRequest) (
 //
 // @return QueryContentResponse
 func (client *Client) QueryContentWithOptions(tmpReq *QueryContentRequest, runtime *dara.RuntimeOptions) (_result *QueryContentResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryContentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16686,6 +17087,14 @@ func (client *Client) QueryContentWithOptions(tmpReq *QueryContentRequest, runti
 
 	if !dara.IsNil(request.NamespacePassword) {
 		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !dara.IsNil(request.Offset) {
+		query["Offset"] = request.Offset
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		query["OrderBy"] = request.OrderBy
 	}
 
 	if !dara.IsNil(request.OwnerId) {
@@ -16872,6 +17281,110 @@ func (client *Client) QueryContentAdvance(request *QueryContentAdvanceRequest, r
 
 // Summary:
 //
+// 多知识库查询
+//
+// @param tmpReq - QueryKnowledgeBasesContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryKnowledgeBasesContentResponse
+func (client *Client) QueryKnowledgeBasesContentWithOptions(tmpReq *QueryKnowledgeBasesContentRequest, runtime *dara.RuntimeOptions) (_result *QueryKnowledgeBasesContentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &QueryKnowledgeBasesContentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.MergeMethodArgs) {
+		request.MergeMethodArgsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MergeMethodArgs, dara.String("MergeMethodArgs"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SourceCollection) {
+		request.SourceCollectionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceCollection, dara.String("SourceCollection"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Content) {
+		query["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.MergeMethod) {
+		query["MergeMethod"] = request.MergeMethod
+	}
+
+	if !dara.IsNil(request.MergeMethodArgsShrink) {
+		query["MergeMethodArgs"] = request.MergeMethodArgsShrink
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RerankFactor) {
+		query["RerankFactor"] = request.RerankFactor
+	}
+
+	if !dara.IsNil(request.SourceCollectionShrink) {
+		query["SourceCollection"] = request.SourceCollectionShrink
+	}
+
+	if !dara.IsNil(request.TopK) {
+		query["TopK"] = request.TopK
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryKnowledgeBasesContent"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryKnowledgeBasesContentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 多知识库查询
+//
+// @param request - QueryKnowledgeBasesContentRequest
+//
+// @return QueryKnowledgeBasesContentResponse
+func (client *Client) QueryKnowledgeBasesContent(request *QueryKnowledgeBasesContentRequest) (_result *QueryKnowledgeBasesContentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryKnowledgeBasesContentResponse{}
+	_body, _err := client.QueryKnowledgeBasesContentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Rebalances an AnalyticDB for PostgreSQL instance.
 //
 // @param request - RebalanceDBInstanceRequest
@@ -16880,9 +17393,11 @@ func (client *Client) QueryContentAdvance(request *QueryContentAdvanceRequest, r
 //
 // @return RebalanceDBInstanceResponse
 func (client *Client) RebalanceDBInstanceWithOptions(request *RebalanceDBInstanceRequest, runtime *dara.RuntimeOptions) (_result *RebalanceDBInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -16944,9 +17459,11 @@ func (client *Client) RebalanceDBInstance(request *RebalanceDBInstanceRequest) (
 //
 // @return ReleaseInstancePublicConnectionResponse
 func (client *Client) ReleaseInstancePublicConnectionWithOptions(request *ReleaseInstancePublicConnectionRequest, runtime *dara.RuntimeOptions) (_result *ReleaseInstancePublicConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddressType) {
@@ -17012,9 +17529,11 @@ func (client *Client) ReleaseInstancePublicConnection(request *ReleaseInstancePu
 //
 // @return RerankResponse
 func (client *Client) RerankWithOptions(tmpReq *RerankRequest, runtime *dara.RuntimeOptions) (_result *RerankResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RerankShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17112,9 +17631,11 @@ func (client *Client) Rerank(request *RerankRequest) (_result *RerankResponse, _
 //
 // @return ResetAccountPasswordResponse
 func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPasswordRequest, runtime *dara.RuntimeOptions) (_result *ResetAccountPasswordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -17180,9 +17701,11 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 //
 // @return ResetIMVMonitorDataResponse
 func (client *Client) ResetIMVMonitorDataWithOptions(request *ResetIMVMonitorDataRequest, runtime *dara.RuntimeOptions) (_result *ResetIMVMonitorDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -17244,9 +17767,11 @@ func (client *Client) ResetIMVMonitorData(request *ResetIMVMonitorDataRequest) (
 //
 // @return ResetSupabaseProjectPasswordResponse
 func (client *Client) ResetSupabaseProjectPasswordWithOptions(request *ResetSupabaseProjectPasswordRequest, runtime *dara.RuntimeOptions) (_result *ResetSupabaseProjectPasswordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountPassword) {
@@ -17320,9 +17845,11 @@ func (client *Client) ResetSupabaseProjectPassword(request *ResetSupabaseProject
 //
 // @return RestartDBInstanceResponse
 func (client *Client) RestartDBInstanceWithOptions(request *RestartDBInstanceRequest, runtime *dara.RuntimeOptions) (_result *RestartDBInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -17392,9 +17919,11 @@ func (client *Client) RestartDBInstance(request *RestartDBInstanceRequest) (_res
 //
 // @return ResumeDataRedistributeResponse
 func (client *Client) ResumeDataRedistributeWithOptions(request *ResumeDataRedistributeRequest, runtime *dara.RuntimeOptions) (_result *ResumeDataRedistributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -17468,9 +17997,11 @@ func (client *Client) ResumeDataRedistribute(request *ResumeDataRedistributeRequ
 //
 // @return ResumeInstanceResponse
 func (client *Client) ResumeInstanceWithOptions(request *ResumeInstanceRequest, runtime *dara.RuntimeOptions) (_result *ResumeInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -17552,9 +18083,11 @@ func (client *Client) ResumeInstance(request *ResumeInstanceRequest) (_result *R
 //
 // @return SetDBInstancePlanStatusResponse
 func (client *Client) SetDBInstancePlanStatusWithOptions(request *SetDBInstancePlanStatusRequest, runtime *dara.RuntimeOptions) (_result *SetDBInstancePlanStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -17640,9 +18173,11 @@ func (client *Client) SetDBInstancePlanStatus(request *SetDBInstancePlanStatusRe
 //
 // @return SetDataShareInstanceResponse
 func (client *Client) SetDataShareInstanceWithOptions(tmpReq *SetDataShareInstanceRequest, runtime *dara.RuntimeOptions) (_result *SetDataShareInstanceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SetDataShareInstanceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17730,9 +18265,11 @@ func (client *Client) SetDataShareInstance(request *SetDataShareInstanceRequest)
 //
 // @return SwitchDBInstanceNetTypeResponse
 func (client *Client) SwitchDBInstanceNetTypeWithOptions(request *SwitchDBInstanceNetTypeRequest, runtime *dara.RuntimeOptions) (_result *SwitchDBInstanceNetTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConnectionStringPrefix) {
@@ -17802,9 +18339,11 @@ func (client *Client) SwitchDBInstanceNetType(request *SwitchDBInstanceNetTypeRe
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -17890,9 +18429,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 //
 // @return TextEmbeddingResponse
 func (client *Client) TextEmbeddingWithOptions(tmpReq *TextEmbeddingRequest, runtime *dara.RuntimeOptions) (_result *TextEmbeddingResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TextEmbeddingShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17978,9 +18519,11 @@ func (client *Client) TextEmbedding(request *TextEmbeddingRequest) (_result *Tex
 //
 // @return UnbindDBResourceGroupWithRoleResponse
 func (client *Client) UnbindDBResourceGroupWithRoleWithOptions(tmpReq *UnbindDBResourceGroupWithRoleRequest, runtime *dara.RuntimeOptions) (_result *UnbindDBResourceGroupWithRoleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UnbindDBResourceGroupWithRoleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -18064,9 +18607,11 @@ func (client *Client) UnbindDBResourceGroupWithRole(request *UnbindDBResourceGro
 //
 // @return UnloadSampleDataResponse
 func (client *Client) UnloadSampleDataWithOptions(request *UnloadSampleDataRequest, runtime *dara.RuntimeOptions) (_result *UnloadSampleDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -18136,9 +18681,11 @@ func (client *Client) UnloadSampleData(request *UnloadSampleDataRequest) (_resul
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -18228,9 +18775,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 //
 // @return UpdateCollectionDataMetadataResponse
 func (client *Client) UpdateCollectionDataMetadataWithOptions(tmpReq *UpdateCollectionDataMetadataRequest, runtime *dara.RuntimeOptions) (_result *UpdateCollectionDataMetadataResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateCollectionDataMetadataShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -18342,9 +18891,11 @@ func (client *Client) UpdateCollectionDataMetadata(request *UpdateCollectionData
 //
 // @return UpdateDBInstancePlanResponse
 func (client *Client) UpdateDBInstancePlanWithOptions(request *UpdateDBInstancePlanRequest, runtime *dara.RuntimeOptions) (_result *UpdateDBInstancePlanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -18444,9 +18995,11 @@ func (client *Client) UpdateDBInstancePlan(request *UpdateDBInstancePlanRequest)
 //
 // @return UpgradeDBInstanceResponse
 func (client *Client) UpgradeDBInstanceWithOptions(request *UpgradeDBInstanceRequest, runtime *dara.RuntimeOptions) (_result *UpgradeDBInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CacheStorageSize) {
@@ -18570,9 +19123,11 @@ func (client *Client) UpgradeDBInstance(request *UpgradeDBInstanceRequest) (_res
 //
 // @return UpgradeDBVersionResponse
 func (client *Client) UpgradeDBVersionWithOptions(request *UpgradeDBVersionRequest, runtime *dara.RuntimeOptions) (_result *UpgradeDBVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -18654,9 +19209,11 @@ func (client *Client) UpgradeDBVersion(request *UpgradeDBVersionRequest) (_resul
 //
 // @return UpgradeExtensionsResponse
 func (client *Client) UpgradeExtensionsWithOptions(request *UpgradeExtensionsRequest, runtime *dara.RuntimeOptions) (_result *UpgradeExtensionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -18744,9 +19301,11 @@ func (client *Client) UpgradeExtensions(request *UpgradeExtensionsRequest) (_res
 //
 // @return UploadDocumentAsyncResponse
 func (client *Client) UploadDocumentAsyncWithOptions(tmpReq *UploadDocumentAsyncRequest, runtime *dara.RuntimeOptions) (_result *UploadDocumentAsyncResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UploadDocumentAsyncShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19013,9 +19572,11 @@ func (client *Client) UploadDocumentAsyncAdvance(request *UploadDocumentAsyncAdv
 //
 // @return UpsertChunksResponse
 func (client *Client) UpsertChunksWithOptions(tmpReq *UpsertChunksRequest, runtime *dara.RuntimeOptions) (_result *UpsertChunksResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpsertChunksShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19121,9 +19682,11 @@ func (client *Client) UpsertChunks(request *UpsertChunksRequest) (_result *Upser
 //
 // @return UpsertCollectionDataResponse
 func (client *Client) UpsertCollectionDataWithOptions(tmpReq *UpsertCollectionDataRequest, runtime *dara.RuntimeOptions) (_result *UpsertCollectionDataResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpsertCollectionDataShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19229,9 +19792,11 @@ func (client *Client) UpsertCollectionData(request *UpsertCollectionDataRequest)
 //
 // @return UpsertCollectionDataAsyncResponse
 func (client *Client) UpsertCollectionDataAsyncWithOptions(request *UpsertCollectionDataAsyncRequest, runtime *dara.RuntimeOptions) (_result *UpsertCollectionDataAsyncResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -19458,10 +20023,12 @@ func _postOSSObject_opResponse(response_ *dara.Response) (_result map[string]int
 }
 
 func (client *Client) chatWithKnowledgeBaseStreamWithSSE_opYieldFunc(_yield chan *ChatWithKnowledgeBaseStreamResponse, _yieldErr chan error, tmpReq *ChatWithKnowledgeBaseStreamRequest, runtime *dara.RuntimeOptions) {
-	_err := tmpReq.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := tmpReq.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	request := &ChatWithKnowledgeBaseStreamShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19496,6 +20063,10 @@ func (client *Client) chatWithKnowledgeBaseStreamWithSSE_opYieldFunc(_yield chan
 
 	if !dara.IsNil(request.PromptParams) {
 		query["PromptParams"] = request.PromptParams
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapiutil.OpenApiRequest{

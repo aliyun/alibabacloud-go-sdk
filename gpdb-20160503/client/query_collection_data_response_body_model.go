@@ -108,7 +108,12 @@ func (s *QueryCollectionDataResponseBody) SetTotal(v int32) *QueryCollectionData
 }
 
 func (s *QueryCollectionDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Matches != nil {
+		if err := s.Matches.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryCollectionDataResponseBodyMatches struct {
@@ -133,7 +138,16 @@ func (s *QueryCollectionDataResponseBodyMatches) SetMatch(v []*QueryCollectionDa
 }
 
 func (s *QueryCollectionDataResponseBodyMatches) Validate() error {
-	return dara.Validate(s)
+	if s.Match != nil {
+		for _, item := range s.Match {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryCollectionDataResponseBodyMatchesMatch struct {
@@ -220,7 +234,17 @@ func (s *QueryCollectionDataResponseBodyMatchesMatch) SetValues(v *QueryCollecti
 }
 
 func (s *QueryCollectionDataResponseBodyMatchesMatch) Validate() error {
-	return dara.Validate(s)
+	if s.SparseValues != nil {
+		if err := s.SparseValues.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Values != nil {
+		if err := s.Values.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryCollectionDataResponseBodyMatchesMatchSparseValues struct {
@@ -255,7 +279,17 @@ func (s *QueryCollectionDataResponseBodyMatchesMatchSparseValues) SetValues(v *Q
 }
 
 func (s *QueryCollectionDataResponseBodyMatchesMatchSparseValues) Validate() error {
-	return dara.Validate(s)
+	if s.Indices != nil {
+		if err := s.Indices.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Values != nil {
+		if err := s.Values.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryCollectionDataResponseBodyMatchesMatchSparseValuesIndices struct {

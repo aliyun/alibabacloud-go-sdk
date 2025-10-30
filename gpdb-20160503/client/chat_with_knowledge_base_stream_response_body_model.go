@@ -92,7 +92,17 @@ func (s *ChatWithKnowledgeBaseStreamResponseBody) SetStatus(v string) *ChatWithK
 }
 
 func (s *ChatWithKnowledgeBaseStreamResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ChatCompletion != nil {
+		if err := s.ChatCompletion.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MultiCollectionRecallResult != nil {
+		if err := s.MultiCollectionRecallResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ChatWithKnowledgeBaseStreamResponseBodyChatCompletion struct {
@@ -166,7 +176,21 @@ func (s *ChatWithKnowledgeBaseStreamResponseBodyChatCompletion) SetUsage(v *Chat
 }
 
 func (s *ChatWithKnowledgeBaseStreamResponseBodyChatCompletion) Validate() error {
-	return dara.Validate(s)
+	if s.Choices != nil {
+		for _, item := range s.Choices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoices struct {
@@ -217,11 +241,20 @@ func (s *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoices) SetMessag
 }
 
 func (s *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoices) Validate() error {
-	return dara.Validate(s)
+	if s.Message != nil {
+		if err := s.Message.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessage struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 逻辑推导过程
+	ReasoningContent *string `json:"ReasoningContent,omitempty" xml:"ReasoningContent,omitempty"`
 	// example:
 	//
 	// user
@@ -241,6 +274,10 @@ func (s *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessage) Ge
 	return s.Content
 }
 
+func (s *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessage) GetReasoningContent() *string {
+	return s.ReasoningContent
+}
+
 func (s *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessage) GetRole() *string {
 	return s.Role
 }
@@ -251,6 +288,11 @@ func (s *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessage) Ge
 
 func (s *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessage) SetContent(v string) *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessage {
 	s.Content = &v
+	return s
+}
+
+func (s *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessage) SetReasoningContent(v string) *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessage {
+	s.ReasoningContent = &v
 	return s
 }
 
@@ -265,7 +307,16 @@ func (s *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessage) Se
 }
 
 func (s *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessage) Validate() error {
-	return dara.Validate(s)
+	if s.ToolCalls != nil {
+		for _, item := range s.ToolCalls {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessageToolCalls struct {
@@ -318,7 +369,12 @@ func (s *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessageTool
 }
 
 func (s *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessageToolCalls) Validate() error {
-	return dara.Validate(s)
+	if s.Function != nil {
+		if err := s.Function.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ChatWithKnowledgeBaseStreamResponseBodyChatCompletionChoicesMessageToolCallsFunction struct {
@@ -423,7 +479,12 @@ func (s *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionUsage) SetTotalTok
 }
 
 func (s *ChatWithKnowledgeBaseStreamResponseBodyChatCompletionUsage) Validate() error {
-	return dara.Validate(s)
+	if s.PromptTokensDetails != nil {
+		if err := s.PromptTokensDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ChatWithKnowledgeBaseStreamResponseBodyChatCompletionUsagePromptTokensDetails struct {
@@ -545,7 +606,21 @@ func (s *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResult) Set
 }
 
 func (s *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResult) Validate() error {
-	return dara.Validate(s)
+	if s.Matches != nil {
+		for _, item := range s.Matches {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatches struct {
@@ -681,7 +756,12 @@ func (s *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatch
 }
 
 func (s *ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatches) Validate() error {
-	return dara.Validate(s)
+	if s.Metadata != nil {
+		if err := s.Metadata.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatchesMetadata struct {

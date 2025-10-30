@@ -108,7 +108,12 @@ func (s *ListDocumentCollectionsResponseBody) SetStatus(v string) *ListDocumentC
 }
 
 func (s *ListDocumentCollectionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDocumentCollectionsResponseBodyItems struct {
@@ -133,7 +138,16 @@ func (s *ListDocumentCollectionsResponseBodyItems) SetCollectionList(v []*ListDo
 }
 
 func (s *ListDocumentCollectionsResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.CollectionList != nil {
+		for _, item := range s.CollectionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDocumentCollectionsResponseBodyItemsCollectionList struct {

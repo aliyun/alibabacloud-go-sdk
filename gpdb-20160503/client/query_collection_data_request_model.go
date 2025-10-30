@@ -432,7 +432,17 @@ func (s *QueryCollectionDataRequest) SetWorkspaceId(v string) *QueryCollectionDa
 }
 
 func (s *QueryCollectionDataRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RelationalTableFilter != nil {
+		if err := s.RelationalTableFilter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SparseVector != nil {
+		if err := s.SparseVector.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryCollectionDataRequestRelationalTableFilter struct {

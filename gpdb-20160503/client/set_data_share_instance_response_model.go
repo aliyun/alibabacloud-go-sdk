@@ -59,5 +59,10 @@ func (s *SetDataShareInstanceResponse) SetBody(v *SetDataShareInstanceResponseBo
 }
 
 func (s *SetDataShareInstanceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

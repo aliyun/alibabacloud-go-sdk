@@ -53,7 +53,12 @@ func (s *DescribeRolesResponseBody) SetRoleList(v *DescribeRolesResponseBodyRole
 }
 
 func (s *DescribeRolesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RoleList != nil {
+		if err := s.RoleList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRolesResponseBodyRoleList struct {

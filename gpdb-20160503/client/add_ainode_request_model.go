@@ -68,7 +68,16 @@ func (s *AddAINodeRequest) SetDBInstanceId(v string) *AddAINodeRequest {
 }
 
 func (s *AddAINodeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AINodeSpecInfos != nil {
+		for _, item := range s.AINodeSpecInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddAINodeRequestAINodeSpecInfos struct {

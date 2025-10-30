@@ -142,7 +142,12 @@ func (s *DescribeDBInstancePlansResponseBody) SetTotalRecordCount(v int32) *Desc
 }
 
 func (s *DescribeDBInstancePlansResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstancePlansResponseBodyItems struct {
@@ -167,7 +172,16 @@ func (s *DescribeDBInstancePlansResponseBodyItems) SetPlanList(v []*DescribeDBIn
 }
 
 func (s *DescribeDBInstancePlansResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.PlanList != nil {
+		for _, item := range s.PlanList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstancePlansResponseBodyItemsPlanList struct {

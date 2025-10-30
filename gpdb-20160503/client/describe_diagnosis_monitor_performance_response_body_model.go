@@ -91,7 +91,16 @@ func (s *DescribeDiagnosisMonitorPerformanceResponseBody) SetRequestId(v string)
 }
 
 func (s *DescribeDiagnosisMonitorPerformanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Performances != nil {
+		for _, item := range s.Performances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDiagnosisMonitorPerformanceResponseBodyPerformances struct {

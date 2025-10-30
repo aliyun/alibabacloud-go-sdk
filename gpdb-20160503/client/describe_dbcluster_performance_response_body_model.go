@@ -104,7 +104,16 @@ func (s *DescribeDBClusterPerformanceResponseBody) SetStartTime(v string) *Descr
 }
 
 func (s *DescribeDBClusterPerformanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PerformanceKeys != nil {
+		for _, item := range s.PerformanceKeys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterPerformanceResponseBodyPerformanceKeys struct {
@@ -160,7 +169,16 @@ func (s *DescribeDBClusterPerformanceResponseBodyPerformanceKeys) SetUnit(v stri
 }
 
 func (s *DescribeDBClusterPerformanceResponseBodyPerformanceKeys) Validate() error {
-	return dara.Validate(s)
+	if s.Series != nil {
+		for _, item := range s.Series {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeries struct {
@@ -222,7 +240,16 @@ func (s *DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeries) SetValue
 }
 
 func (s *DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeries) Validate() error {
-	return dara.Validate(s)
+	if s.Values != nil {
+		for _, item := range s.Values {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeriesValues struct {

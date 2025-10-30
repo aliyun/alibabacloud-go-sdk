@@ -41,6 +41,10 @@ type iQueryContentRequest interface {
 	GetNamespace() *string
 	SetNamespacePassword(v string) *QueryContentRequest
 	GetNamespacePassword() *string
+	SetOffset(v int32) *QueryContentRequest
+	GetOffset() *int32
+	SetOrderBy(v string) *QueryContentRequest
+	GetOrderBy() *string
 	SetOwnerId(v int64) *QueryContentRequest
 	GetOwnerId() *int64
 	SetRecallWindow(v []*int32) *QueryContentRequest
@@ -205,7 +209,15 @@ type QueryContentRequest struct {
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 0
+	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// example:
+	//
+	// created_at
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Recall window. When this value is not empty, it adds context to the returned search results. The format is an array of 2 elements: List<A, B>, where -10 <= A <= 0 and 0 <= B <= 10.
 	//
 	// > - Recommended when documents are fragmented and retrieval may lose contextual information.
@@ -317,6 +329,14 @@ func (s *QueryContentRequest) GetNamespacePassword() *string {
 	return s.NamespacePassword
 }
 
+func (s *QueryContentRequest) GetOffset() *int32 {
+	return s.Offset
+}
+
+func (s *QueryContentRequest) GetOrderBy() *string {
+	return s.OrderBy
+}
+
 func (s *QueryContentRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
@@ -425,6 +445,16 @@ func (s *QueryContentRequest) SetNamespacePassword(v string) *QueryContentReques
 	return s
 }
 
+func (s *QueryContentRequest) SetOffset(v int32) *QueryContentRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *QueryContentRequest) SetOrderBy(v string) *QueryContentRequest {
+	s.OrderBy = &v
+	return s
+}
+
 func (s *QueryContentRequest) SetOwnerId(v int64) *QueryContentRequest {
 	s.OwnerId = &v
 	return s
@@ -461,7 +491,12 @@ func (s *QueryContentRequest) SetUseFullTextRetrieval(v bool) *QueryContentReque
 }
 
 func (s *QueryContentRequest) Validate() error {
-	return dara.Validate(s)
+	if s.GraphSearchArgs != nil {
+		if err := s.GraphSearchArgs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryContentRequestGraphSearchArgs struct {

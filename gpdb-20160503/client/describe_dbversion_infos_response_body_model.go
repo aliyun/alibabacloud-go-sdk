@@ -53,7 +53,12 @@ func (s *DescribeDBVersionInfosResponseBody) SetVersionDetails(v *DescribeDBVers
 }
 
 func (s *DescribeDBVersionInfosResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VersionDetails != nil {
+		if err := s.VersionDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBVersionInfosResponseBodyVersionDetails struct {

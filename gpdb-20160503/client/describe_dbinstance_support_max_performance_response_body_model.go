@@ -70,7 +70,12 @@ func (s *DescribeDBInstanceSupportMaxPerformanceResponseBody) SetRequestId(v str
 }
 
 func (s *DescribeDBInstanceSupportMaxPerformanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Performances != nil {
+		if err := s.Performances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformances struct {
@@ -95,7 +100,16 @@ func (s *DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformances) SetPer
 }
 
 func (s *DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformances) Validate() error {
-	return dara.Validate(s)
+	if s.Performance != nil {
+		for _, item := range s.Performance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformancesPerformance struct {

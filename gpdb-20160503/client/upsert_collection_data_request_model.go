@@ -161,7 +161,16 @@ func (s *UpsertCollectionDataRequest) SetWorkspaceId(v string) *UpsertCollection
 }
 
 func (s *UpsertCollectionDataRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Rows != nil {
+		for _, item := range s.Rows {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpsertCollectionDataRequestRows struct {
@@ -217,7 +226,12 @@ func (s *UpsertCollectionDataRequestRows) SetVector(v []*float64) *UpsertCollect
 }
 
 func (s *UpsertCollectionDataRequestRows) Validate() error {
-	return dara.Validate(s)
+	if s.SparseVector != nil {
+		if err := s.SparseVector.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpsertCollectionDataRequestRowsSparseVector struct {

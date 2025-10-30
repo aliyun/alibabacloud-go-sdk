@@ -72,7 +72,16 @@ func (s *DescribeIMVInfosResponseBody) SetRequestId(v string) *DescribeIMVInfosR
 }
 
 func (s *DescribeIMVInfosResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ImvInfos != nil {
+		for _, item := range s.ImvInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIMVInfosResponseBodyImvInfos struct {

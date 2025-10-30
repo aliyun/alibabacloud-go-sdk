@@ -59,5 +59,10 @@ func (s *DescribeDBInstanceDataSkewResponse) SetBody(v *DescribeDBInstanceDataSk
 }
 
 func (s *DescribeDBInstanceDataSkewResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

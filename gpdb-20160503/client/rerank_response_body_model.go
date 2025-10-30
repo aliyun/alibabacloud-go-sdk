@@ -108,7 +108,12 @@ func (s *RerankResponseBody) SetTokens(v int32) *RerankResponseBody {
 }
 
 func (s *RerankResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		if err := s.Results.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RerankResponseBodyResults struct {
@@ -133,7 +138,16 @@ func (s *RerankResponseBodyResults) SetResults(v []*RerankResponseBodyResultsRes
 }
 
 func (s *RerankResponseBodyResults) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RerankResponseBodyResultsResults struct {

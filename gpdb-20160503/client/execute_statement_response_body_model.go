@@ -176,7 +176,12 @@ func (s *ExecuteStatementResponseBody) SetStatus(v string) *ExecuteStatementResp
 }
 
 func (s *ExecuteStatementResponseBody) Validate() error {
-  return dara.Validate(s)
+  if s.Data != nil {
+    if err := s.Data.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type ExecuteStatementResponseBodyData struct {
@@ -228,7 +233,17 @@ func (s *ExecuteStatementResponseBodyData) SetTotalNumRows(v int64) *ExecuteStat
 }
 
 func (s *ExecuteStatementResponseBodyData) Validate() error {
-  return dara.Validate(s)
+  if s.ColumnMetadata != nil {
+    if err := s.ColumnMetadata.Validate(); err != nil {
+      return err
+    }
+  }
+  if s.Records != nil {
+    if err := s.Records.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type ExecuteStatementResponseBodyDataColumnMetadata struct {
@@ -253,7 +268,16 @@ func (s *ExecuteStatementResponseBodyDataColumnMetadata) SetColumnMetadata(v []*
 }
 
 func (s *ExecuteStatementResponseBodyDataColumnMetadata) Validate() error {
-  return dara.Validate(s)
+  if s.ColumnMetadata != nil {
+    for _, item := range s.ColumnMetadata {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type ExecuteStatementResponseBodyDataRecords struct {
@@ -278,7 +302,16 @@ func (s *ExecuteStatementResponseBodyDataRecords) SetRecords(v []*ExecuteStateme
 }
 
 func (s *ExecuteStatementResponseBodyDataRecords) Validate() error {
-  return dara.Validate(s)
+  if s.Records != nil {
+    for _, item := range s.Records {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type ExecuteStatementResponseBodyDataRecordsRecords struct {
@@ -303,6 +336,15 @@ func (s *ExecuteStatementResponseBodyDataRecordsRecords) SetRecord(v []*Field) *
 }
 
 func (s *ExecuteStatementResponseBodyDataRecordsRecords) Validate() error {
-  return dara.Validate(s)
+  if s.Record != nil {
+    for _, item := range s.Record {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 

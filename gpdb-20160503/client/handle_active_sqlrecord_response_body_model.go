@@ -91,7 +91,16 @@ func (s *HandleActiveSQLRecordResponseBody) SetStatus(v string) *HandleActiveSQL
 }
 
 func (s *HandleActiveSQLRecordResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HandleActiveSQLRecordResponseBodyResults struct {

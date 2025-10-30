@@ -59,5 +59,10 @@ func (s *ListRemoteADBDataSourcesResponse) SetBody(v *ListRemoteADBDataSourcesRe
 }
 
 func (s *ListRemoteADBDataSourcesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

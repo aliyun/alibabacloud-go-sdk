@@ -53,7 +53,16 @@ func (s *DescribeModifyParameterLogResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeModifyParameterLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Changelogs != nil {
+		for _, item := range s.Changelogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeModifyParameterLogResponseBodyChangelogs struct {

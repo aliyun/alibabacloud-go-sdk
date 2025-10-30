@@ -59,5 +59,10 @@ func (s *PauseDataRedistributeResponse) SetBody(v *PauseDataRedistributeResponse
 }
 
 func (s *PauseDataRedistributeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

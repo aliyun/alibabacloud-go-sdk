@@ -59,5 +59,10 @@ func (s *DescribeDBResourceManagementModeResponse) SetBody(v *DescribeDBResource
 }
 
 func (s *DescribeDBResourceManagementModeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -80,7 +80,12 @@ func (s *DescribeCreateIndexJobResponseBody) SetStatus(v string) *DescribeCreate
 }
 
 func (s *DescribeCreateIndexJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Job != nil {
+		if err := s.Job.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCreateIndexJobResponseBodyJob struct {

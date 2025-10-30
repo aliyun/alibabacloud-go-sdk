@@ -70,7 +70,12 @@ func (s *ListRemoteADBDataSourcesResponseBody) SetTaskId(v int32) *ListRemoteADB
 }
 
 func (s *ListRemoteADBDataSourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataSourceItems != nil {
+		if err := s.DataSourceItems.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRemoteADBDataSourcesResponseBodyDataSourceItems struct {
@@ -95,7 +100,16 @@ func (s *ListRemoteADBDataSourcesResponseBodyDataSourceItems) SetRemoteDataSourc
 }
 
 func (s *ListRemoteADBDataSourcesResponseBodyDataSourceItems) Validate() error {
-	return dara.Validate(s)
+	if s.RemoteDataSources != nil {
+		for _, item := range s.RemoteDataSources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources struct {

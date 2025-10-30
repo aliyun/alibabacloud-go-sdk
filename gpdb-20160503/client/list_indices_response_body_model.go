@@ -82,7 +82,12 @@ func (s *ListIndicesResponseBody) SetStatus(v string) *ListIndicesResponseBody {
 }
 
 func (s *ListIndicesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Indices != nil {
+		if err := s.Indices.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListIndicesResponseBodyIndices struct {
@@ -107,7 +112,16 @@ func (s *ListIndicesResponseBodyIndices) SetIndices(v []*ListIndicesResponseBody
 }
 
 func (s *ListIndicesResponseBodyIndices) Validate() error {
-	return dara.Validate(s)
+	if s.Indices != nil {
+		for _, item := range s.Indices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIndicesResponseBodyIndicesIndices struct {

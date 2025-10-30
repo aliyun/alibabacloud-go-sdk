@@ -53,7 +53,12 @@ func (s *DescribeDBInstanceIPArrayListResponseBody) SetRequestId(v string) *Desc
 }
 
 func (s *DescribeDBInstanceIPArrayListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceIPArrayListResponseBodyItems struct {
@@ -78,7 +83,16 @@ func (s *DescribeDBInstanceIPArrayListResponseBodyItems) SetDBInstanceIPArray(v 
 }
 
 func (s *DescribeDBInstanceIPArrayListResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.DBInstanceIPArray != nil {
+		for _, item := range s.DBInstanceIPArray {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray struct {

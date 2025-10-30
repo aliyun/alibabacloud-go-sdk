@@ -87,7 +87,16 @@ func (s *ListExternalDataServicesResponseBody) SetTotalRecordCount(v int32) *Lis
 }
 
 func (s *ListExternalDataServicesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceItems != nil {
+		for _, item := range s.ServiceItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListExternalDataServicesResponseBodyServiceItems struct {

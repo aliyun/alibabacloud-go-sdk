@@ -53,7 +53,12 @@ func (s *DescribeDBInstanceAttributeResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeDBInstanceAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceAttributeResponseBodyItems struct {
@@ -78,7 +83,16 @@ func (s *DescribeDBInstanceAttributeResponseBodyItems) SetDBInstanceAttribute(v 
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.DBInstanceAttribute != nil {
+		for _, item := range s.DBInstanceAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
@@ -1238,7 +1252,12 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetZon
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTags struct {
@@ -1263,7 +1282,16 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTags) Se
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTagsTag struct {

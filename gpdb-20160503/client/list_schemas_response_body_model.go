@@ -108,7 +108,12 @@ func (s *ListSchemasResponseBody) SetStatus(v string) *ListSchemasResponseBody {
 }
 
 func (s *ListSchemasResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Schemas != nil {
+		if err := s.Schemas.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSchemasResponseBodySchemas struct {

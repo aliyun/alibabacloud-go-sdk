@@ -59,5 +59,10 @@ func (s *CancelUpsertCollectionDataJobResponse) SetBody(v *CancelUpsertCollectio
 }
 
 func (s *CancelUpsertCollectionDataJobResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

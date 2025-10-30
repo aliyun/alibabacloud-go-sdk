@@ -112,7 +112,12 @@ func (s *DescribeDataShareInstancesResponseBody) SetTotalRecordCount(v int32) *D
 }
 
 func (s *DescribeDataShareInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDataShareInstancesResponseBodyItems struct {
@@ -137,7 +142,16 @@ func (s *DescribeDataShareInstancesResponseBodyItems) SetDBInstance(v []*Describ
 }
 
 func (s *DescribeDataShareInstancesResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.DBInstance != nil {
+		for _, item := range s.DBInstance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataShareInstancesResponseBodyItemsDBInstance struct {

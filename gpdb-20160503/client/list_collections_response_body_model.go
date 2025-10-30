@@ -159,7 +159,12 @@ func (s *ListCollectionsResponseBody) SetStatus(v string) *ListCollectionsRespon
 }
 
 func (s *ListCollectionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Collections != nil {
+		if err := s.Collections.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCollectionsResponseBodyCollections struct {

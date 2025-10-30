@@ -218,7 +218,12 @@ func (s *ExecuteStatementRequest) SetWorkspaceId(v string) *ExecuteStatementRequ
 }
 
 func (s *ExecuteStatementRequest) Validate() error {
-  return dara.Validate(s)
+  if s.RagWorkspaceCollection != nil {
+    if err := s.RagWorkspaceCollection.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type ExecuteStatementRequestRagWorkspaceCollection struct {

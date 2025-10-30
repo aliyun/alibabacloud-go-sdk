@@ -142,7 +142,12 @@ func (s *ListNamespacesResponseBody) SetStatus(v string) *ListNamespacesResponse
 }
 
 func (s *ListNamespacesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Namespaces != nil {
+		if err := s.Namespaces.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListNamespacesResponseBodyNamespaces struct {

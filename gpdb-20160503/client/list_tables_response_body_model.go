@@ -108,7 +108,12 @@ func (s *ListTablesResponseBody) SetTables(v *ListTablesResponseBodyTables) *Lis
 }
 
 func (s *ListTablesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Tables != nil {
+		if err := s.Tables.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTablesResponseBodyTables struct {

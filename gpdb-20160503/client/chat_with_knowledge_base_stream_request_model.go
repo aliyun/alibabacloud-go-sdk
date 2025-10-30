@@ -21,6 +21,8 @@ type iChatWithKnowledgeBaseStreamRequest interface {
 	GetOwnerId() *int64
 	SetPromptParams(v string) *ChatWithKnowledgeBaseStreamRequest
 	GetPromptParams() *string
+	SetRegionId(v string) *ChatWithKnowledgeBaseStreamRequest
+	GetRegionId() *string
 }
 
 type ChatWithKnowledgeBaseStreamRequest struct {
@@ -39,6 +41,10 @@ type ChatWithKnowledgeBaseStreamRequest struct {
 	ModelParams  *ChatWithKnowledgeBaseStreamRequestModelParams `json:"ModelParams,omitempty" xml:"ModelParams,omitempty" type:"Struct"`
 	OwnerId      *int64                                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PromptParams *string                                        `json:"PromptParams,omitempty" xml:"PromptParams,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ChatWithKnowledgeBaseStreamRequest) String() string {
@@ -73,6 +79,10 @@ func (s *ChatWithKnowledgeBaseStreamRequest) GetPromptParams() *string {
 	return s.PromptParams
 }
 
+func (s *ChatWithKnowledgeBaseStreamRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
 func (s *ChatWithKnowledgeBaseStreamRequest) SetDBInstanceId(v string) *ChatWithKnowledgeBaseStreamRequest {
 	s.DBInstanceId = &v
 	return s
@@ -103,8 +113,23 @@ func (s *ChatWithKnowledgeBaseStreamRequest) SetPromptParams(v string) *ChatWith
 	return s
 }
 
+func (s *ChatWithKnowledgeBaseStreamRequest) SetRegionId(v string) *ChatWithKnowledgeBaseStreamRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *ChatWithKnowledgeBaseStreamRequest) Validate() error {
-	return dara.Validate(s)
+	if s.KnowledgeParams != nil {
+		if err := s.KnowledgeParams.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ModelParams != nil {
+		if err := s.ModelParams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ChatWithKnowledgeBaseStreamRequestKnowledgeParams struct {
@@ -179,7 +204,21 @@ func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParams) SetTopK(v int64) *Ch
 }
 
 func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParams) Validate() error {
-	return dara.Validate(s)
+	if s.MergeMethodArgs != nil {
+		if err := s.MergeMethodArgs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceCollection != nil {
+		for _, item := range s.SourceCollection {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ChatWithKnowledgeBaseStreamRequestKnowledgeParamsMergeMethodArgs struct {
@@ -214,7 +253,17 @@ func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsMergeMethodArgs) SetWe
 }
 
 func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsMergeMethodArgs) Validate() error {
-	return dara.Validate(s)
+	if s.Rrf != nil {
+		if err := s.Rrf.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Weight != nil {
+		if err := s.Weight.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ChatWithKnowledgeBaseStreamRequestKnowledgeParamsMergeMethodArgsRrf struct {
@@ -335,7 +384,12 @@ func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollection) SetQ
 }
 
 func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollection) Validate() error {
-	return dara.Validate(s)
+	if s.QueryParams != nil {
+		if err := s.QueryParams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParams struct {
@@ -471,7 +525,12 @@ func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryP
 }
 
 func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParams) Validate() error {
-	return dara.Validate(s)
+	if s.GraphSearchArgs != nil {
+		if err := s.GraphSearchArgs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParamsGraphSearchArgs struct {
@@ -638,7 +697,25 @@ func (s *ChatWithKnowledgeBaseStreamRequestModelParams) SetTopP(v float64) *Chat
 }
 
 func (s *ChatWithKnowledgeBaseStreamRequestModelParams) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		for _, item := range s.Messages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tools != nil {
+		for _, item := range s.Tools {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ChatWithKnowledgeBaseStreamRequestModelParamsMessages struct {
@@ -701,7 +778,12 @@ func (s *ChatWithKnowledgeBaseStreamRequestModelParamsTools) SetFunction(v *Chat
 }
 
 func (s *ChatWithKnowledgeBaseStreamRequestModelParamsTools) Validate() error {
-	return dara.Validate(s)
+	if s.Function != nil {
+		if err := s.Function.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ChatWithKnowledgeBaseStreamRequestModelParamsToolsFunction struct {

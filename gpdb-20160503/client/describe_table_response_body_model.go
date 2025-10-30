@@ -91,7 +91,12 @@ func (s *DescribeTableResponseBody) SetStatus(v string) *DescribeTableResponseBo
 }
 
 func (s *DescribeTableResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ColumnList != nil {
+		if err := s.ColumnList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTableResponseBodyColumnList struct {
@@ -116,5 +121,14 @@ func (s *DescribeTableResponseBodyColumnList) SetColumnList(v []*ColumnMetadata)
 }
 
 func (s *DescribeTableResponseBodyColumnList) Validate() error {
-	return dara.Validate(s)
+	if s.ColumnList != nil {
+		for _, item := range s.ColumnList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

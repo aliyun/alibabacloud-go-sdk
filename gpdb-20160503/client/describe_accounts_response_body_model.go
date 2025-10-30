@@ -53,7 +53,12 @@ func (s *DescribeAccountsResponseBody) SetRequestId(v string) *DescribeAccountsR
 }
 
 func (s *DescribeAccountsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Accounts != nil {
+		if err := s.Accounts.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAccountsResponseBodyAccounts struct {
@@ -78,7 +83,16 @@ func (s *DescribeAccountsResponseBodyAccounts) SetDBInstanceAccount(v []*Describ
 }
 
 func (s *DescribeAccountsResponseBodyAccounts) Validate() error {
-	return dara.Validate(s)
+	if s.DBInstanceAccount != nil {
+		for _, item := range s.DBInstanceAccount {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAccountsResponseBodyAccountsDBInstanceAccount struct {

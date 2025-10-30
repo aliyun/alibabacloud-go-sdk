@@ -50,7 +50,16 @@ func (s *ListAINodePoolsResponseBody) SetRequestId(v string) *ListAINodePoolsRes
 }
 
 func (s *ListAINodePoolsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AINodePoolInfos != nil {
+		for _, item := range s.AINodePoolInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAINodePoolsResponseBodyAINodePoolInfos struct {
@@ -101,7 +110,16 @@ func (s *ListAINodePoolsResponseBodyAINodePoolInfos) SetNodeNum(v string) *ListA
 }
 
 func (s *ListAINodePoolsResponseBodyAINodePoolInfos) Validate() error {
-	return dara.Validate(s)
+	if s.AINodeInfos != nil {
+		for _, item := range s.AINodeInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos struct {

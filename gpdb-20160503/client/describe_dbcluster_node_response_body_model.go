@@ -70,7 +70,16 @@ func (s *DescribeDBClusterNodeResponseBody) SetRequestId(v string) *DescribeDBCl
 }
 
 func (s *DescribeDBClusterNodeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterNodeResponseBodyNodes struct {

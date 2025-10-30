@@ -59,5 +59,10 @@ func (s *DeleteVectorIndexResponse) SetBody(v *DeleteVectorIndexResponseBody) *D
 }
 
 func (s *DeleteVectorIndexResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

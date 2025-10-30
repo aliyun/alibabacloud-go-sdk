@@ -59,5 +59,10 @@ func (s *ResetSupabaseProjectPasswordResponse) SetBody(v *ResetSupabaseProjectPa
 }
 
 func (s *ResetSupabaseProjectPasswordResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

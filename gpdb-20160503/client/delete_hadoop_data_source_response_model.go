@@ -59,5 +59,10 @@ func (s *DeleteHadoopDataSourceResponse) SetBody(v *DeleteHadoopDataSourceRespon
 }
 
 func (s *DeleteHadoopDataSourceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

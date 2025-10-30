@@ -70,7 +70,12 @@ func (s *CreateRemoteADBDataSourceResponseBody) SetTaskId(v int32) *CreateRemote
 }
 
 func (s *CreateRemoteADBDataSourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataSourceItem != nil {
+		if err := s.DataSourceItem.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateRemoteADBDataSourceResponseBodyDataSourceItem struct {

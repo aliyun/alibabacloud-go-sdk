@@ -42,6 +42,10 @@ type iQueryContentAdvanceRequest interface {
 	GetNamespace() *string
 	SetNamespacePassword(v string) *QueryContentAdvanceRequest
 	GetNamespacePassword() *string
+	SetOffset(v int32) *QueryContentAdvanceRequest
+	GetOffset() *int32
+	SetOrderBy(v string) *QueryContentAdvanceRequest
+	GetOrderBy() *string
 	SetOwnerId(v int64) *QueryContentAdvanceRequest
 	GetOwnerId() *int64
 	SetRecallWindow(v []*int32) *QueryContentAdvanceRequest
@@ -206,7 +210,15 @@ type QueryContentAdvanceRequest struct {
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 0
+	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// example:
+	//
+	// created_at
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Recall window. When this value is not empty, it adds context to the returned search results. The format is an array of 2 elements: List<A, B>, where -10 <= A <= 0 and 0 <= B <= 10.
 	//
 	// > - Recommended when documents are fragmented and retrieval may lose contextual information.
@@ -318,6 +330,14 @@ func (s *QueryContentAdvanceRequest) GetNamespacePassword() *string {
 	return s.NamespacePassword
 }
 
+func (s *QueryContentAdvanceRequest) GetOffset() *int32 {
+	return s.Offset
+}
+
+func (s *QueryContentAdvanceRequest) GetOrderBy() *string {
+	return s.OrderBy
+}
+
 func (s *QueryContentAdvanceRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
@@ -426,6 +446,16 @@ func (s *QueryContentAdvanceRequest) SetNamespacePassword(v string) *QueryConten
 	return s
 }
 
+func (s *QueryContentAdvanceRequest) SetOffset(v int32) *QueryContentAdvanceRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *QueryContentAdvanceRequest) SetOrderBy(v string) *QueryContentAdvanceRequest {
+	s.OrderBy = &v
+	return s
+}
+
 func (s *QueryContentAdvanceRequest) SetOwnerId(v int64) *QueryContentAdvanceRequest {
 	s.OwnerId = &v
 	return s
@@ -462,7 +492,12 @@ func (s *QueryContentAdvanceRequest) SetUseFullTextRetrieval(v bool) *QueryConte
 }
 
 func (s *QueryContentAdvanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.GraphSearchArgs != nil {
+		if err := s.GraphSearchArgs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryContentAdvanceRequestGraphSearchArgs struct {

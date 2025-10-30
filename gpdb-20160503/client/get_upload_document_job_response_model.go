@@ -59,5 +59,10 @@ func (s *GetUploadDocumentJobResponse) SetBody(v *GetUploadDocumentJobResponseBo
 }
 
 func (s *GetUploadDocumentJobResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

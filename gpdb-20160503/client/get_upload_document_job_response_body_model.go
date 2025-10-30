@@ -117,7 +117,22 @@ func (s *GetUploadDocumentJobResponseBody) SetUsage(v *GetUploadDocumentJobRespo
 }
 
 func (s *GetUploadDocumentJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ChunkResult != nil {
+		if err := s.ChunkResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Job != nil {
+		if err := s.Job.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUploadDocumentJobResponseBodyChunkResult struct {

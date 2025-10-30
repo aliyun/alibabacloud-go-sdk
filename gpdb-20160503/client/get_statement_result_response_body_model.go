@@ -91,7 +91,12 @@ func (s *GetStatementResultResponseBody) SetStatus(v string) *GetStatementResult
 }
 
 func (s *GetStatementResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStatementResultResponseBodyData struct {
@@ -143,7 +148,17 @@ func (s *GetStatementResultResponseBodyData) SetTotalNumRows(v int64) *GetStatem
 }
 
 func (s *GetStatementResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ColumnMetadata != nil {
+		if err := s.ColumnMetadata.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Records != nil {
+		if err := s.Records.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStatementResultResponseBodyDataColumnMetadata struct {
@@ -168,7 +183,16 @@ func (s *GetStatementResultResponseBodyDataColumnMetadata) SetColumnMetadata(v [
 }
 
 func (s *GetStatementResultResponseBodyDataColumnMetadata) Validate() error {
-	return dara.Validate(s)
+	if s.ColumnMetadata != nil {
+		for _, item := range s.ColumnMetadata {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetStatementResultResponseBodyDataRecords struct {
@@ -193,7 +217,16 @@ func (s *GetStatementResultResponseBodyDataRecords) SetRecords(v []*GetStatement
 }
 
 func (s *GetStatementResultResponseBodyDataRecords) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetStatementResultResponseBodyDataRecordsRecords struct {
@@ -218,5 +251,14 @@ func (s *GetStatementResultResponseBodyDataRecordsRecords) SetRecord(v []*Field)
 }
 
 func (s *GetStatementResultResponseBodyDataRecordsRecords) Validate() error {
-	return dara.Validate(s)
+	if s.Record != nil {
+		for _, item := range s.Record {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

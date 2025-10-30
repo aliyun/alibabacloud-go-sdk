@@ -160,7 +160,32 @@ func (s *QueryContentResponseBody) SetWindowMatches(v *QueryContentResponseBodyW
 }
 
 func (s *QueryContentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Entities != nil {
+		if err := s.Entities.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Matches != nil {
+		if err := s.Matches.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Relations != nil {
+		if err := s.Relations.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WindowMatches != nil {
+		if err := s.WindowMatches.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryContentResponseBodyEntities struct {
@@ -185,7 +210,16 @@ func (s *QueryContentResponseBodyEntities) SetEntities(v []*QueryContentResponse
 }
 
 func (s *QueryContentResponseBodyEntities) Validate() error {
-	return dara.Validate(s)
+	if s.Entities != nil {
+		for _, item := range s.Entities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryContentResponseBodyEntitiesEntities struct {
@@ -275,7 +309,16 @@ func (s *QueryContentResponseBodyMatches) SetMatchList(v []*QueryContentResponse
 }
 
 func (s *QueryContentResponseBodyMatches) Validate() error {
-	return dara.Validate(s)
+	if s.MatchList != nil {
+		for _, item := range s.MatchList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryContentResponseBodyMatchesMatchList struct {
@@ -444,7 +487,12 @@ func (s *QueryContentResponseBodyMatchesMatchList) SetVector(v *QueryContentResp
 }
 
 func (s *QueryContentResponseBodyMatchesMatchList) Validate() error {
-	return dara.Validate(s)
+	if s.Vector != nil {
+		if err := s.Vector.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryContentResponseBodyMatchesMatchListVector struct {
@@ -494,7 +542,16 @@ func (s *QueryContentResponseBodyRelations) SetRelations(v []*QueryContentRespon
 }
 
 func (s *QueryContentResponseBodyRelations) Validate() error {
-	return dara.Validate(s)
+	if s.Relations != nil {
+		for _, item := range s.Relations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryContentResponseBodyRelationsRelations struct {
@@ -633,7 +690,16 @@ func (s *QueryContentResponseBodyWindowMatches) SetWindowMatches(v []*QueryConte
 }
 
 func (s *QueryContentResponseBodyWindowMatches) Validate() error {
-	return dara.Validate(s)
+	if s.WindowMatches != nil {
+		for _, item := range s.WindowMatches {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryContentResponseBodyWindowMatchesWindowMatches struct {
@@ -659,7 +725,12 @@ func (s *QueryContentResponseBodyWindowMatchesWindowMatches) SetWindowMatch(v *Q
 }
 
 func (s *QueryContentResponseBodyWindowMatchesWindowMatches) Validate() error {
-	return dara.Validate(s)
+	if s.WindowMatch != nil {
+		if err := s.WindowMatch.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryContentResponseBodyWindowMatchesWindowMatchesWindowMatch struct {
@@ -684,7 +755,16 @@ func (s *QueryContentResponseBodyWindowMatchesWindowMatchesWindowMatch) SetWindo
 }
 
 func (s *QueryContentResponseBodyWindowMatchesWindowMatchesWindowMatch) Validate() error {
-	return dara.Validate(s)
+	if s.WindowMatch != nil {
+		for _, item := range s.WindowMatch {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryContentResponseBodyWindowMatchesWindowMatchesWindowMatchWindowMatch struct {

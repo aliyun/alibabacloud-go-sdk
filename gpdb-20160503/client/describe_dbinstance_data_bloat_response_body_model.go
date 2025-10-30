@@ -87,7 +87,16 @@ func (s *DescribeDBInstanceDataBloatResponseBody) SetTotalCount(v int32) *Descri
 }
 
 func (s *DescribeDBInstanceDataBloatResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceDataBloatResponseBodyItems struct {

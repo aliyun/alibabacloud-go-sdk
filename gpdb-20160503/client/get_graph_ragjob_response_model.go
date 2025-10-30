@@ -59,5 +59,10 @@ func (s *GetGraphRAGJobResponse) SetBody(v *GetGraphRAGJobResponseBody) *GetGrap
 }
 
 func (s *GetGraphRAGJobResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

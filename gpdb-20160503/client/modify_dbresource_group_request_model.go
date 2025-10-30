@@ -71,7 +71,16 @@ func (s *ModifyDBResourceGroupRequest) SetResourceGroupItems(v []*ModifyDBResour
 }
 
 func (s *ModifyDBResourceGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceGroupItems != nil {
+		for _, item := range s.ResourceGroupItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyDBResourceGroupRequestResourceGroupItems struct {

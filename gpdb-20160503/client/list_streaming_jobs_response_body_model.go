@@ -104,7 +104,16 @@ func (s *ListStreamingJobsResponseBody) SetTotalRecordCount(v int32) *ListStream
 }
 
 func (s *ListStreamingJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.JobItems != nil {
+		for _, item := range s.JobItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListStreamingJobsResponseBodyJobItems struct {

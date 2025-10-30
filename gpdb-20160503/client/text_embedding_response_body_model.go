@@ -95,7 +95,12 @@ func (s *TextEmbeddingResponseBody) SetTextTokens(v int32) *TextEmbeddingRespons
 }
 
 func (s *TextEmbeddingResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		if err := s.Results.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TextEmbeddingResponseBodyResults struct {
@@ -120,7 +125,16 @@ func (s *TextEmbeddingResponseBodyResults) SetResults(v []*TextEmbeddingResponse
 }
 
 func (s *TextEmbeddingResponseBodyResults) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TextEmbeddingResponseBodyResultsResults struct {
@@ -158,7 +172,12 @@ func (s *TextEmbeddingResponseBodyResultsResults) SetIndex(v int32) *TextEmbeddi
 }
 
 func (s *TextEmbeddingResponseBodyResultsResults) Validate() error {
-	return dara.Validate(s)
+	if s.Embedding != nil {
+		if err := s.Embedding.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TextEmbeddingResponseBodyResultsResultsEmbedding struct {

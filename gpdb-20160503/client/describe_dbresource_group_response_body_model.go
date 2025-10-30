@@ -53,7 +53,12 @@ func (s *DescribeDBResourceGroupResponseBody) SetResourceGroupItems(v *DescribeD
 }
 
 func (s *DescribeDBResourceGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceGroupItems != nil {
+		if err := s.ResourceGroupItems.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBResourceGroupResponseBodyResourceGroupItems struct {
@@ -78,7 +83,16 @@ func (s *DescribeDBResourceGroupResponseBodyResourceGroupItems) SetResourceGroup
 }
 
 func (s *DescribeDBResourceGroupResponseBodyResourceGroupItems) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceGroupItem != nil {
+		for _, item := range s.ResourceGroupItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItem struct {
@@ -146,7 +160,12 @@ func (s *DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItem)
 }
 
 func (s *DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItem) Validate() error {
-	return dara.Validate(s)
+	if s.RoleList != nil {
+		if err := s.RoleList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItemRoleList struct {

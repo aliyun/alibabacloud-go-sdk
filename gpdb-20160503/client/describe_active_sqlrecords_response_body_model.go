@@ -70,7 +70,16 @@ func (s *DescribeActiveSQLRecordsResponseBody) SetRequestId(v string) *DescribeA
 }
 
 func (s *DescribeActiveSQLRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Queries != nil {
+		for _, item := range s.Queries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeActiveSQLRecordsResponseBodyQueries struct {
