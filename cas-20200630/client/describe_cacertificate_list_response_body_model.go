@@ -121,7 +121,16 @@ func (s *DescribeCACertificateListResponseBody) SetTotalCount(v int32) *Describe
 }
 
 func (s *DescribeCACertificateListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CertificateList != nil {
+		for _, item := range s.CertificateList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCACertificateListResponseBodyCertificateList struct {
@@ -224,6 +233,7 @@ type DescribeCACertificateListResponseBodyCertificateList struct {
 	//
 	// 1a83bcbb89e562885e40aa0108f5****
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// This parameter is deprecated.
 	//
 	// example:
@@ -363,6 +373,10 @@ func (s *DescribeCACertificateListResponseBodyCertificateList) GetParentIdentifi
 	return s.ParentIdentifier
 }
 
+func (s *DescribeCACertificateListResponseBodyCertificateList) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *DescribeCACertificateListResponseBodyCertificateList) GetSans() *string {
 	return s.Sans
 }
@@ -475,6 +489,11 @@ func (s *DescribeCACertificateListResponseBodyCertificateList) SetOrganizationUn
 
 func (s *DescribeCACertificateListResponseBodyCertificateList) SetParentIdentifier(v string) *DescribeCACertificateListResponseBodyCertificateList {
 	s.ParentIdentifier = &v
+	return s
+}
+
+func (s *DescribeCACertificateListResponseBodyCertificateList) SetResourceGroupId(v string) *DescribeCACertificateListResponseBodyCertificateList {
+	s.ResourceGroupId = &v
 	return s
 }
 

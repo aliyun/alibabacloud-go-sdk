@@ -140,7 +140,16 @@ func (s *ListCertResponseBody) SetTotalCount(v int64) *ListCertResponseBody {
 }
 
 func (s *ListCertResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCertResponseBodyList struct {

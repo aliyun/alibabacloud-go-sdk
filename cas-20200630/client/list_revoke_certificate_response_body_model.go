@@ -121,7 +121,16 @@ func (s *ListRevokeCertificateResponseBody) SetTotalCount(v int64) *ListRevokeCe
 }
 
 func (s *ListRevokeCertificateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CertificateList != nil {
+		for _, item := range s.CertificateList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRevokeCertificateResponseBodyCertificateList struct {

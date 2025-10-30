@@ -70,7 +70,12 @@ func (s *DescribeCACertificateResponseBody) SetYears(v int32) *DescribeCACertifi
 }
 
 func (s *DescribeCACertificateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Certificate != nil {
+		if err := s.Certificate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCACertificateResponseBodyCertificate struct {
@@ -226,6 +231,7 @@ type DescribeCACertificateResponseBodyCertificate struct {
 	//
 	// 1a83bcbb89e562885e40aa0108f5****
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// This parameter is deprecated.
 	//
 	// example:
@@ -283,7 +289,8 @@ type DescribeCACertificateResponseBodyCertificate struct {
 	// example:
 	//
 	// C=CN,O=Alibaba Cloud Computing Co., Ltd.,OU=Security,L=Hangzhou,ST=Zhejiang,CN=Aliyun
-	SubjectDN *string `json:"SubjectDN,omitempty" xml:"SubjectDN,omitempty"`
+	SubjectDN *string                                             `json:"SubjectDN,omitempty" xml:"SubjectDN,omitempty"`
+	Tags      []*DescribeCACertificateResponseBodyCertificateTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The content of the CA certificate.
 	//
 	// example:
@@ -389,6 +396,10 @@ func (s *DescribeCACertificateResponseBodyCertificate) GetParentIdentifier() *st
 	return s.ParentIdentifier
 }
 
+func (s *DescribeCACertificateResponseBodyCertificate) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *DescribeCACertificateResponseBodyCertificate) GetSans() *string {
 	return s.Sans
 }
@@ -415,6 +426,10 @@ func (s *DescribeCACertificateResponseBodyCertificate) GetStatus() *string {
 
 func (s *DescribeCACertificateResponseBodyCertificate) GetSubjectDN() *string {
 	return s.SubjectDN
+}
+
+func (s *DescribeCACertificateResponseBodyCertificate) GetTags() []*DescribeCACertificateResponseBodyCertificateTags {
+	return s.Tags
 }
 
 func (s *DescribeCACertificateResponseBodyCertificate) GetX509Certificate() *string {
@@ -535,6 +550,11 @@ func (s *DescribeCACertificateResponseBodyCertificate) SetParentIdentifier(v str
 	return s
 }
 
+func (s *DescribeCACertificateResponseBodyCertificate) SetResourceGroupId(v string) *DescribeCACertificateResponseBodyCertificate {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeCACertificateResponseBodyCertificate) SetSans(v string) *DescribeCACertificateResponseBodyCertificate {
 	s.Sans = &v
 	return s
@@ -570,6 +590,11 @@ func (s *DescribeCACertificateResponseBodyCertificate) SetSubjectDN(v string) *D
 	return s
 }
 
+func (s *DescribeCACertificateResponseBodyCertificate) SetTags(v []*DescribeCACertificateResponseBodyCertificateTags) *DescribeCACertificateResponseBodyCertificate {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeCACertificateResponseBodyCertificate) SetX509Certificate(v string) *DescribeCACertificateResponseBodyCertificate {
 	s.X509Certificate = &v
 	return s
@@ -581,5 +606,49 @@ func (s *DescribeCACertificateResponseBodyCertificate) SetYears(v int32) *Descri
 }
 
 func (s *DescribeCACertificateResponseBodyCertificate) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeCACertificateResponseBodyCertificateTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeCACertificateResponseBodyCertificateTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeCACertificateResponseBodyCertificateTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCACertificateResponseBodyCertificateTags) GetTagKey() *string {
+	return s.TagKey
+}
+
+func (s *DescribeCACertificateResponseBodyCertificateTags) GetTagValue() *string {
+	return s.TagValue
+}
+
+func (s *DescribeCACertificateResponseBodyCertificateTags) SetTagKey(v string) *DescribeCACertificateResponseBodyCertificateTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeCACertificateResponseBodyCertificateTags) SetTagValue(v string) *DescribeCACertificateResponseBodyCertificateTags {
+	s.TagValue = &v
+	return s
+}
+
+func (s *DescribeCACertificateResponseBodyCertificateTags) Validate() error {
 	return dara.Validate(s)
 }

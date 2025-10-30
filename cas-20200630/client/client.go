@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -126,9 +127,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return CreateClientCertificateResponse
 func (client *Client) CreateClientCertificateWithOptions(request *CreateClientCertificateRequest, runtime *dara.RuntimeOptions) (_result *CreateClientCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AfterTime) {
@@ -183,6 +186,10 @@ func (client *Client) CreateClientCertificateWithOptions(request *CreateClientCe
 		query["ParentIdentifier"] = request.ParentIdentifier
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !dara.IsNil(request.SanType) {
 		query["SanType"] = request.SanType
 	}
@@ -193,6 +200,10 @@ func (client *Client) CreateClientCertificateWithOptions(request *CreateClientCe
 
 	if !dara.IsNil(request.State) {
 		query["State"] = request.State
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
 	}
 
 	if !dara.IsNil(request.Years) {
@@ -266,9 +277,11 @@ func (client *Client) CreateClientCertificate(request *CreateClientCertificateRe
 //
 // @return CreateClientCertificateWithCsrResponse
 func (client *Client) CreateClientCertificateWithCsrWithOptions(request *CreateClientCertificateWithCsrRequest, runtime *dara.RuntimeOptions) (_result *CreateClientCertificateWithCsrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AfterTime) {
@@ -327,6 +340,10 @@ func (client *Client) CreateClientCertificateWithCsrWithOptions(request *CreateC
 		query["ParentIdentifier"] = request.ParentIdentifier
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !dara.IsNil(request.SanType) {
 		query["SanType"] = request.SanType
 	}
@@ -337,6 +354,10 @@ func (client *Client) CreateClientCertificateWithCsrWithOptions(request *CreateC
 
 	if !dara.IsNil(request.State) {
 		query["State"] = request.State
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
 	}
 
 	if !dara.IsNil(request.Years) {
@@ -434,9 +455,11 @@ func (client *Client) CreateClientCertificateWithCsr(request *CreateClientCertif
 //
 // @return CreateCustomCertificateResponse
 func (client *Client) CreateCustomCertificateWithOptions(request *CreateCustomCertificateRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApiPassthrough) {
@@ -457,6 +480,14 @@ func (client *Client) CreateCustomCertificateWithOptions(request *CreateCustomCe
 
 	if !dara.IsNil(request.ParentIdentifier) {
 		query["ParentIdentifier"] = request.ParentIdentifier
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
 	}
 
 	if !dara.IsNil(request.Validity) {
@@ -546,9 +577,11 @@ func (client *Client) CreateCustomCertificate(request *CreateCustomCertificateRe
 //
 // @return CreateExternalCACertificateResponse
 func (client *Client) CreateExternalCACertificateWithOptions(tmpReq *CreateExternalCACertificateRequest, runtime *dara.RuntimeOptions) (_result *CreateExternalCACertificateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateExternalCACertificateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -567,6 +600,14 @@ func (client *Client) CreateExternalCACertificateWithOptions(tmpReq *CreateExter
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
 	}
 
 	if !dara.IsNil(request.Validity) {
@@ -634,9 +675,11 @@ func (client *Client) CreateExternalCACertificate(request *CreateExternalCACerti
 //
 // @return CreateRevokeClientCertificateResponse
 func (client *Client) CreateRevokeClientCertificateWithOptions(request *CreateRevokeClientCertificateRequest, runtime *dara.RuntimeOptions) (_result *CreateRevokeClientCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Identifier) {
@@ -714,9 +757,11 @@ func (client *Client) CreateRevokeClientCertificate(request *CreateRevokeClientC
 //
 // @return CreateRootCACertificateResponse
 func (client *Client) CreateRootCACertificateWithOptions(request *CreateRootCACertificateRequest, runtime *dara.RuntimeOptions) (_result *CreateRootCACertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -747,8 +792,16 @@ func (client *Client) CreateRootCACertificateWithOptions(request *CreateRootCACe
 		query["OrganizationUnit"] = request.OrganizationUnit
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !dara.IsNil(request.State) {
 		query["State"] = request.State
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
 	}
 
 	if !dara.IsNil(request.Years) {
@@ -824,9 +877,11 @@ func (client *Client) CreateRootCACertificate(request *CreateRootCACertificateRe
 //
 // @return CreateServerCertificateResponse
 func (client *Client) CreateServerCertificateWithOptions(request *CreateServerCertificateRequest, runtime *dara.RuntimeOptions) (_result *CreateServerCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AfterTime) {
@@ -885,8 +940,16 @@ func (client *Client) CreateServerCertificateWithOptions(request *CreateServerCe
 		query["ParentIdentifier"] = request.ParentIdentifier
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !dara.IsNil(request.State) {
 		query["State"] = request.State
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
 	}
 
 	if !dara.IsNil(request.Years) {
@@ -958,9 +1021,11 @@ func (client *Client) CreateServerCertificate(request *CreateServerCertificateRe
 //
 // @return CreateServerCertificateWithCsrResponse
 func (client *Client) CreateServerCertificateWithCsrWithOptions(request *CreateServerCertificateWithCsrRequest, runtime *dara.RuntimeOptions) (_result *CreateServerCertificateWithCsrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AfterTime) {
@@ -1023,8 +1088,16 @@ func (client *Client) CreateServerCertificateWithCsrWithOptions(request *CreateS
 		query["ParentIdentifier"] = request.ParentIdentifier
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !dara.IsNil(request.State) {
 		query["State"] = request.State
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
 	}
 
 	if !dara.IsNil(request.Years) {
@@ -1098,9 +1171,11 @@ func (client *Client) CreateServerCertificateWithCsr(request *CreateServerCertif
 //
 // @return CreateSubCACertificateResponse
 func (client *Client) CreateSubCACertificateWithOptions(request *CreateSubCACertificateRequest, runtime *dara.RuntimeOptions) (_result *CreateSubCACertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -1147,16 +1222,30 @@ func (client *Client) CreateSubCACertificateWithOptions(request *CreateSubCACert
 		query["PathLenConstraint"] = request.PathLenConstraint
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !dara.IsNil(request.State) {
 		query["State"] = request.State
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
 	}
 
 	if !dara.IsNil(request.Years) {
 		query["Years"] = request.Years
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateSubCACertificate"),
@@ -1224,9 +1313,11 @@ func (client *Client) CreateSubCACertificate(request *CreateSubCACertificateRequ
 //
 // @return DeleteClientCertificateResponse
 func (client *Client) DeleteClientCertificateWithOptions(request *DeleteClientCertificateRequest, runtime *dara.RuntimeOptions) (_result *DeleteClientCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Identifier) {
@@ -1302,9 +1393,11 @@ func (client *Client) DeleteClientCertificate(request *DeleteClientCertificateRe
 //
 // @return DescribeCACertificateResponse
 func (client *Client) DescribeCACertificateWithOptions(request *DescribeCACertificateRequest, runtime *dara.RuntimeOptions) (_result *DescribeCACertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Identifier) {
@@ -1443,9 +1536,11 @@ func (client *Client) DescribeCACertificateCount() (_result *DescribeCACertifica
 //
 // @return DescribeCACertificateListResponse
 func (client *Client) DescribeCACertificateListWithOptions(request *DescribeCACertificateListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCACertificateListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CaStatus) {
@@ -1466,6 +1561,10 @@ func (client *Client) DescribeCACertificateListWithOptions(request *DescribeCACe
 
 	if !dara.IsNil(request.IssuerType) {
 		query["IssuerType"] = request.IssuerType
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !dara.IsNil(request.ShowSize) {
@@ -1559,9 +1658,11 @@ func (client *Client) DescribeCACertificateList(request *DescribeCACertificateLi
 //
 // @return DescribeCertificatePrivateKeyResponse
 func (client *Client) DescribeCertificatePrivateKeyWithOptions(request *DescribeCertificatePrivateKeyRequest, runtime *dara.RuntimeOptions) (_result *DescribeCertificatePrivateKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EncryptedCode) {
@@ -1669,9 +1770,11 @@ func (client *Client) DescribeCertificatePrivateKey(request *DescribeCertificate
 //
 // @return DescribeClientCertificateResponse
 func (client *Client) DescribeClientCertificateWithOptions(request *DescribeClientCertificateRequest, runtime *dara.RuntimeOptions) (_result *DescribeClientCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Identifier) {
@@ -1759,9 +1862,11 @@ func (client *Client) DescribeClientCertificate(request *DescribeClientCertifica
 //
 // @return DescribeClientCertificateStatusResponse
 func (client *Client) DescribeClientCertificateStatusWithOptions(request *DescribeClientCertificateStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeClientCertificateStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Identifier) {
@@ -1835,9 +1940,11 @@ func (client *Client) DescribeClientCertificateStatus(request *DescribeClientCer
 //
 // @return GetCAInstanceStatusResponse
 func (client *Client) GetCAInstanceStatusWithOptions(request *GetCAInstanceStatusRequest, runtime *dara.RuntimeOptions) (_result *GetCAInstanceStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Identifier) {
@@ -1907,9 +2014,11 @@ func (client *Client) GetCAInstanceStatus(request *GetCAInstanceStatusRequest) (
 //
 // @return ListCertResponse
 func (client *Client) ListCertWithOptions(request *ListCertRequest, runtime *dara.RuntimeOptions) (_result *ListCertResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AfterDate) {
@@ -2007,9 +2116,11 @@ func (client *Client) ListCert(request *ListCertRequest) (_result *ListCertRespo
 //
 // @return ListClientCertificateResponse
 func (client *Client) ListClientCertificateWithOptions(request *ListClientCertificateRequest, runtime *dara.RuntimeOptions) (_result *ListClientCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -2018,6 +2129,10 @@ func (client *Client) ListClientCertificateWithOptions(request *ListClientCertif
 
 	if !dara.IsNil(request.Identifier) {
 		query["Identifier"] = request.Identifier
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !dara.IsNil(request.ShowSize) {
@@ -2083,9 +2198,11 @@ func (client *Client) ListClientCertificate(request *ListClientCertificateReques
 //
 // @return ListPcaCaCertificateResponse
 func (client *Client) ListPcaCaCertificateWithOptions(request *ListPcaCaCertificateRequest, runtime *dara.RuntimeOptions) (_result *ListPcaCaCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -2155,9 +2272,11 @@ func (client *Client) ListPcaCaCertificate(request *ListPcaCaCertificateRequest)
 //
 // @return ListRevokeCertificateResponse
 func (client *Client) ListRevokeCertificateWithOptions(request *ListRevokeCertificateRequest, runtime *dara.RuntimeOptions) (_result *ListRevokeCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -2237,9 +2356,11 @@ func (client *Client) ListRevokeCertificate(request *ListRevokeCertificateReques
 //
 // @return UpdateCACertificateStatusResponse
 func (client *Client) UpdateCACertificateStatusWithOptions(request *UpdateCACertificateStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateCACertificateStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -2315,9 +2436,11 @@ func (client *Client) UpdateCACertificateStatus(request *UpdateCACertificateStat
 //
 // @return UploadPcaCertToCasResponse
 func (client *Client) UploadPcaCertToCasWithOptions(request *UploadPcaCertToCasRequest, runtime *dara.RuntimeOptions) (_result *UploadPcaCertToCasResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Ids) {

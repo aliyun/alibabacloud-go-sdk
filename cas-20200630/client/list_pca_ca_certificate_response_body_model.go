@@ -95,7 +95,16 @@ func (s *ListPcaCaCertificateResponseBody) SetTotalCount(v int64) *ListPcaCaCert
 }
 
 func (s *ListPcaCaCertificateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPcaCaCertificateResponseBodyList struct {

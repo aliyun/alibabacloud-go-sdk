@@ -15,14 +15,16 @@ type iCreateExternalCACertificateShrinkRequest interface {
 	GetCsr() *string
 	SetInstanceId(v string) *CreateExternalCACertificateShrinkRequest
 	GetInstanceId() *string
+	SetResourceGroupId(v string) *CreateExternalCACertificateShrinkRequest
+	GetResourceGroupId() *string
+	SetTags(v []*CreateExternalCACertificateShrinkRequestTags) *CreateExternalCACertificateShrinkRequest
+	GetTags() []*CreateExternalCACertificateShrinkRequestTags
 	SetValidity(v string) *CreateExternalCACertificateShrinkRequest
 	GetValidity() *string
 }
 
 type CreateExternalCACertificateShrinkRequest struct {
 	ApiPassthroughShrink *string `json:"ApiPassthrough,omitempty" xml:"ApiPassthrough,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE REQUEST-----
@@ -35,14 +37,12 @@ type CreateExternalCACertificateShrinkRequest struct {
 	//
 	// -----END CERTIFICATE REQUEST-----
 	Csr *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// cas_deposit-cn-1234abcd
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// This parameter is required.
-	//
+	InstanceId      *string                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ResourceGroupId *string                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags            []*CreateExternalCACertificateShrinkRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 10y
@@ -69,6 +69,14 @@ func (s *CreateExternalCACertificateShrinkRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *CreateExternalCACertificateShrinkRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *CreateExternalCACertificateShrinkRequest) GetTags() []*CreateExternalCACertificateShrinkRequestTags {
+	return s.Tags
+}
+
 func (s *CreateExternalCACertificateShrinkRequest) GetValidity() *string {
 	return s.Validity
 }
@@ -88,11 +96,65 @@ func (s *CreateExternalCACertificateShrinkRequest) SetInstanceId(v string) *Crea
 	return s
 }
 
+func (s *CreateExternalCACertificateShrinkRequest) SetResourceGroupId(v string) *CreateExternalCACertificateShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateExternalCACertificateShrinkRequest) SetTags(v []*CreateExternalCACertificateShrinkRequestTags) *CreateExternalCACertificateShrinkRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *CreateExternalCACertificateShrinkRequest) SetValidity(v string) *CreateExternalCACertificateShrinkRequest {
 	s.Validity = &v
 	return s
 }
 
 func (s *CreateExternalCACertificateShrinkRequest) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateExternalCACertificateShrinkRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateExternalCACertificateShrinkRequestTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateExternalCACertificateShrinkRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateExternalCACertificateShrinkRequestTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateExternalCACertificateShrinkRequestTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateExternalCACertificateShrinkRequestTags) SetKey(v string) *CreateExternalCACertificateShrinkRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateExternalCACertificateShrinkRequestTags) SetValue(v string) *CreateExternalCACertificateShrinkRequestTags {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateExternalCACertificateShrinkRequestTags) Validate() error {
 	return dara.Validate(s)
 }

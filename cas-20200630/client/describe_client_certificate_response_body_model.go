@@ -53,7 +53,12 @@ func (s *DescribeClientCertificateResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeClientCertificateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Certificate != nil {
+		if err := s.Certificate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClientCertificateResponseBodyCertificate struct {
@@ -153,6 +158,7 @@ type DescribeClientCertificateResponseBodyCertificate struct {
 	//
 	// 160ae6bb538d538c70c01f81dcf2****
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The subject alternative name (SAN) extension of the certificate. The value indicates additional information, including the additional domain names or IP addresses that are associated with the certificate.
 	//
 	// The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that corresponds to a SAN extension. A SAN extension struct contains the following parameters:
@@ -224,7 +230,8 @@ type DescribeClientCertificateResponseBodyCertificate struct {
 	// example:
 	//
 	// C=CN,O=Alibaba Cloud Computing Co., Ltd.,OU=Security,L=Hangzhou,ST=Zhejiang,CN=Aliyun
-	SubjectDN *string `json:"SubjectDN,omitempty" xml:"SubjectDN,omitempty"`
+	SubjectDN *string                                                 `json:"SubjectDN,omitempty" xml:"SubjectDN,omitempty"`
+	Tags      []*DescribeClientCertificateResponseBodyCertificateTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The content of the certificate.
 	//
 	// example:
@@ -297,6 +304,10 @@ func (s *DescribeClientCertificateResponseBodyCertificate) GetParentIdentifier()
 	return s.ParentIdentifier
 }
 
+func (s *DescribeClientCertificateResponseBodyCertificate) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *DescribeClientCertificateResponseBodyCertificate) GetSans() *string {
 	return s.Sans
 }
@@ -323,6 +334,10 @@ func (s *DescribeClientCertificateResponseBodyCertificate) GetStatus() *string {
 
 func (s *DescribeClientCertificateResponseBodyCertificate) GetSubjectDN() *string {
 	return s.SubjectDN
+}
+
+func (s *DescribeClientCertificateResponseBodyCertificate) GetTags() []*DescribeClientCertificateResponseBodyCertificateTags {
+	return s.Tags
 }
 
 func (s *DescribeClientCertificateResponseBodyCertificate) GetX509Certificate() *string {
@@ -399,6 +414,11 @@ func (s *DescribeClientCertificateResponseBodyCertificate) SetParentIdentifier(v
 	return s
 }
 
+func (s *DescribeClientCertificateResponseBodyCertificate) SetResourceGroupId(v string) *DescribeClientCertificateResponseBodyCertificate {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeClientCertificateResponseBodyCertificate) SetSans(v string) *DescribeClientCertificateResponseBodyCertificate {
 	s.Sans = &v
 	return s
@@ -434,11 +454,60 @@ func (s *DescribeClientCertificateResponseBodyCertificate) SetSubjectDN(v string
 	return s
 }
 
+func (s *DescribeClientCertificateResponseBodyCertificate) SetTags(v []*DescribeClientCertificateResponseBodyCertificateTags) *DescribeClientCertificateResponseBodyCertificate {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeClientCertificateResponseBodyCertificate) SetX509Certificate(v string) *DescribeClientCertificateResponseBodyCertificate {
 	s.X509Certificate = &v
 	return s
 }
 
 func (s *DescribeClientCertificateResponseBodyCertificate) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeClientCertificateResponseBodyCertificateTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeClientCertificateResponseBodyCertificateTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeClientCertificateResponseBodyCertificateTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClientCertificateResponseBodyCertificateTags) GetTagKey() *string {
+	return s.TagKey
+}
+
+func (s *DescribeClientCertificateResponseBodyCertificateTags) GetTagValue() *string {
+	return s.TagValue
+}
+
+func (s *DescribeClientCertificateResponseBodyCertificateTags) SetTagKey(v string) *DescribeClientCertificateResponseBodyCertificateTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeClientCertificateResponseBodyCertificateTags) SetTagValue(v string) *DescribeClientCertificateResponseBodyCertificateTags {
+	s.TagValue = &v
+	return s
+}
+
+func (s *DescribeClientCertificateResponseBodyCertificateTags) Validate() error {
 	return dara.Validate(s)
 }

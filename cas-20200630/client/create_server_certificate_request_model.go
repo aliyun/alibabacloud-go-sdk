@@ -37,8 +37,12 @@ type iCreateServerCertificateRequest interface {
 	GetOrganizationUnit() *string
 	SetParentIdentifier(v string) *CreateServerCertificateRequest
 	GetParentIdentifier() *string
+	SetResourceGroupId(v string) *CreateServerCertificateRequest
+	GetResourceGroupId() *string
 	SetState(v string) *CreateServerCertificateRequest
 	GetState() *string
+	SetTags(v []*CreateServerCertificateRequestTags) *CreateServerCertificateRequest
+	GetTags() []*CreateServerCertificateRequestTags
 	SetYears(v int32) *CreateServerCertificateRequest
 	GetYears() *int32
 }
@@ -180,12 +184,14 @@ type CreateServerCertificateRequest struct {
 	//
 	// 271ae6bb538d538c70c01f81dg3****
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The province, municipality, or autonomous region in which the organization is located. The value can contain letters. The default value is the name of the province, municipality, or autonomous region in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued.
 	//
 	// example:
 	//
 	// Zhejiang
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	State *string                               `json:"State,omitempty" xml:"State,omitempty"`
+	Tags  []*CreateServerCertificateRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The validity period of the server certificate. Unit: years.
 	//
 	// example:
@@ -258,8 +264,16 @@ func (s *CreateServerCertificateRequest) GetParentIdentifier() *string {
 	return s.ParentIdentifier
 }
 
+func (s *CreateServerCertificateRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *CreateServerCertificateRequest) GetState() *string {
 	return s.State
+}
+
+func (s *CreateServerCertificateRequest) GetTags() []*CreateServerCertificateRequestTags {
+	return s.Tags
 }
 
 func (s *CreateServerCertificateRequest) GetYears() *int32 {
@@ -336,8 +350,18 @@ func (s *CreateServerCertificateRequest) SetParentIdentifier(v string) *CreateSe
 	return s
 }
 
+func (s *CreateServerCertificateRequest) SetResourceGroupId(v string) *CreateServerCertificateRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateServerCertificateRequest) SetState(v string) *CreateServerCertificateRequest {
 	s.State = &v
+	return s
+}
+
+func (s *CreateServerCertificateRequest) SetTags(v []*CreateServerCertificateRequestTags) *CreateServerCertificateRequest {
+	s.Tags = v
 	return s
 }
 
@@ -347,5 +371,49 @@ func (s *CreateServerCertificateRequest) SetYears(v int32) *CreateServerCertific
 }
 
 func (s *CreateServerCertificateRequest) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateServerCertificateRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateServerCertificateRequestTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateServerCertificateRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServerCertificateRequestTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateServerCertificateRequestTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateServerCertificateRequestTags) SetKey(v string) *CreateServerCertificateRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateServerCertificateRequestTags) SetValue(v string) *CreateServerCertificateRequestTags {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateServerCertificateRequestTags) Validate() error {
 	return dara.Validate(s)
 }

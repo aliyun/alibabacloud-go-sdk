@@ -39,8 +39,12 @@ type iCreateServerCertificateWithCsrRequest interface {
 	GetOrganizationUnit() *string
 	SetParentIdentifier(v string) *CreateServerCertificateWithCsrRequest
 	GetParentIdentifier() *string
+	SetResourceGroupId(v string) *CreateServerCertificateWithCsrRequest
+	GetResourceGroupId() *string
 	SetState(v string) *CreateServerCertificateWithCsrRequest
 	GetState() *string
+	SetTags(v []*CreateServerCertificateWithCsrRequestTags) *CreateServerCertificateWithCsrRequest
+	GetTags() []*CreateServerCertificateWithCsrRequestTags
 	SetYears(v int32) *CreateServerCertificateWithCsrRequest
 	GetYears() *int32
 }
@@ -190,12 +194,14 @@ type CreateServerCertificateWithCsrRequest struct {
 	//
 	// 270oe6bb538d538c70c01f81hfd3****
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The province, municipality, or autonomous region in which the organization is located. The value can contain letters. The default value is the name of the province, municipality, or autonomous region in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued.
 	//
 	// example:
 	//
 	// Zhejiang
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	State *string                                      `json:"State,omitempty" xml:"State,omitempty"`
+	Tags  []*CreateServerCertificateWithCsrRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The validity period of the server certificate. Unit: years.
 	//
 	// example:
@@ -272,8 +278,16 @@ func (s *CreateServerCertificateWithCsrRequest) GetParentIdentifier() *string {
 	return s.ParentIdentifier
 }
 
+func (s *CreateServerCertificateWithCsrRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *CreateServerCertificateWithCsrRequest) GetState() *string {
 	return s.State
+}
+
+func (s *CreateServerCertificateWithCsrRequest) GetTags() []*CreateServerCertificateWithCsrRequestTags {
+	return s.Tags
 }
 
 func (s *CreateServerCertificateWithCsrRequest) GetYears() *int32 {
@@ -355,8 +369,18 @@ func (s *CreateServerCertificateWithCsrRequest) SetParentIdentifier(v string) *C
 	return s
 }
 
+func (s *CreateServerCertificateWithCsrRequest) SetResourceGroupId(v string) *CreateServerCertificateWithCsrRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateServerCertificateWithCsrRequest) SetState(v string) *CreateServerCertificateWithCsrRequest {
 	s.State = &v
+	return s
+}
+
+func (s *CreateServerCertificateWithCsrRequest) SetTags(v []*CreateServerCertificateWithCsrRequestTags) *CreateServerCertificateWithCsrRequest {
+	s.Tags = v
 	return s
 }
 
@@ -366,5 +390,49 @@ func (s *CreateServerCertificateWithCsrRequest) SetYears(v int32) *CreateServerC
 }
 
 func (s *CreateServerCertificateWithCsrRequest) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateServerCertificateWithCsrRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateServerCertificateWithCsrRequestTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateServerCertificateWithCsrRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServerCertificateWithCsrRequestTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateServerCertificateWithCsrRequestTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateServerCertificateWithCsrRequestTags) SetKey(v string) *CreateServerCertificateWithCsrRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateServerCertificateWithCsrRequestTags) SetValue(v string) *CreateServerCertificateWithCsrRequestTags {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateServerCertificateWithCsrRequestTags) Validate() error {
 	return dara.Validate(s)
 }

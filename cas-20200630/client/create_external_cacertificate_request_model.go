@@ -15,14 +15,16 @@ type iCreateExternalCACertificateRequest interface {
 	GetCsr() *string
 	SetInstanceId(v string) *CreateExternalCACertificateRequest
 	GetInstanceId() *string
+	SetResourceGroupId(v string) *CreateExternalCACertificateRequest
+	GetResourceGroupId() *string
+	SetTags(v []*CreateExternalCACertificateRequestTags) *CreateExternalCACertificateRequest
+	GetTags() []*CreateExternalCACertificateRequestTags
 	SetValidity(v string) *CreateExternalCACertificateRequest
 	GetValidity() *string
 }
 
 type CreateExternalCACertificateRequest struct {
 	ApiPassthrough *CreateExternalCACertificateRequestApiPassthrough `json:"ApiPassthrough,omitempty" xml:"ApiPassthrough,omitempty" type:"Struct"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE REQUEST-----
@@ -35,14 +37,12 @@ type CreateExternalCACertificateRequest struct {
 	//
 	// -----END CERTIFICATE REQUEST-----
 	Csr *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// cas_deposit-cn-1234abcd
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// This parameter is required.
-	//
+	InstanceId      *string                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ResourceGroupId *string                                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags            []*CreateExternalCACertificateRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 10y
@@ -69,6 +69,14 @@ func (s *CreateExternalCACertificateRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *CreateExternalCACertificateRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *CreateExternalCACertificateRequest) GetTags() []*CreateExternalCACertificateRequestTags {
+	return s.Tags
+}
+
 func (s *CreateExternalCACertificateRequest) GetValidity() *string {
 	return s.Validity
 }
@@ -88,13 +96,37 @@ func (s *CreateExternalCACertificateRequest) SetInstanceId(v string) *CreateExte
 	return s
 }
 
+func (s *CreateExternalCACertificateRequest) SetResourceGroupId(v string) *CreateExternalCACertificateRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateExternalCACertificateRequest) SetTags(v []*CreateExternalCACertificateRequestTags) *CreateExternalCACertificateRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *CreateExternalCACertificateRequest) SetValidity(v string) *CreateExternalCACertificateRequest {
 	s.Validity = &v
 	return s
 }
 
 func (s *CreateExternalCACertificateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ApiPassthrough != nil {
+		if err := s.ApiPassthrough.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateExternalCACertificateRequestApiPassthrough struct {
@@ -129,7 +161,17 @@ func (s *CreateExternalCACertificateRequestApiPassthrough) SetSubject(v *CreateE
 }
 
 func (s *CreateExternalCACertificateRequestApiPassthrough) Validate() error {
-	return dara.Validate(s)
+	if s.Extensions != nil {
+		if err := s.Extensions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Subject != nil {
+		if err := s.Subject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateExternalCACertificateRequestApiPassthroughExtensions struct {
@@ -245,5 +287,40 @@ func (s *CreateExternalCACertificateRequestApiPassthroughSubject) SetState(v str
 }
 
 func (s *CreateExternalCACertificateRequestApiPassthroughSubject) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateExternalCACertificateRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateExternalCACertificateRequestTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateExternalCACertificateRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateExternalCACertificateRequestTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateExternalCACertificateRequestTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateExternalCACertificateRequestTags) SetKey(v string) *CreateExternalCACertificateRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateExternalCACertificateRequestTags) SetValue(v string) *CreateExternalCACertificateRequestTags {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateExternalCACertificateRequestTags) Validate() error {
 	return dara.Validate(s)
 }

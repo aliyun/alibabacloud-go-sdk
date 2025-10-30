@@ -25,9 +25,11 @@ import (
 //
 // @return CreateClientCertificateResponse
 func (client *Client) CreateClientCertificateWithContext(ctx context.Context, request *CreateClientCertificateRequest, runtime *dara.RuntimeOptions) (_result *CreateClientCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AfterTime) {
@@ -82,6 +84,10 @@ func (client *Client) CreateClientCertificateWithContext(ctx context.Context, re
 		query["ParentIdentifier"] = request.ParentIdentifier
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !dara.IsNil(request.SanType) {
 		query["SanType"] = request.SanType
 	}
@@ -92,6 +98,10 @@ func (client *Client) CreateClientCertificateWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.State) {
 		query["State"] = request.State
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
 	}
 
 	if !dara.IsNil(request.Years) {
@@ -139,9 +149,11 @@ func (client *Client) CreateClientCertificateWithContext(ctx context.Context, re
 //
 // @return CreateClientCertificateWithCsrResponse
 func (client *Client) CreateClientCertificateWithCsrWithContext(ctx context.Context, request *CreateClientCertificateWithCsrRequest, runtime *dara.RuntimeOptions) (_result *CreateClientCertificateWithCsrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AfterTime) {
@@ -200,6 +212,10 @@ func (client *Client) CreateClientCertificateWithCsrWithContext(ctx context.Cont
 		query["ParentIdentifier"] = request.ParentIdentifier
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !dara.IsNil(request.SanType) {
 		query["SanType"] = request.SanType
 	}
@@ -210,6 +226,10 @@ func (client *Client) CreateClientCertificateWithCsrWithContext(ctx context.Cont
 
 	if !dara.IsNil(request.State) {
 		query["State"] = request.State
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
 	}
 
 	if !dara.IsNil(request.Years) {
@@ -281,9 +301,11 @@ func (client *Client) CreateClientCertificateWithCsrWithContext(ctx context.Cont
 //
 // @return CreateCustomCertificateResponse
 func (client *Client) CreateCustomCertificateWithContext(ctx context.Context, request *CreateCustomCertificateRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApiPassthrough) {
@@ -304,6 +326,14 @@ func (client *Client) CreateCustomCertificateWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.ParentIdentifier) {
 		query["ParentIdentifier"] = request.ParentIdentifier
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
 	}
 
 	if !dara.IsNil(request.Validity) {
@@ -343,9 +373,11 @@ func (client *Client) CreateCustomCertificateWithContext(ctx context.Context, re
 //
 // @return CreateExternalCACertificateResponse
 func (client *Client) CreateExternalCACertificateWithContext(ctx context.Context, tmpReq *CreateExternalCACertificateRequest, runtime *dara.RuntimeOptions) (_result *CreateExternalCACertificateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateExternalCACertificateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -364,6 +396,14 @@ func (client *Client) CreateExternalCACertificateWithContext(ctx context.Context
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
 	}
 
 	if !dara.IsNil(request.Validity) {
@@ -413,9 +453,11 @@ func (client *Client) CreateExternalCACertificateWithContext(ctx context.Context
 //
 // @return CreateRevokeClientCertificateResponse
 func (client *Client) CreateRevokeClientCertificateWithContext(ctx context.Context, request *CreateRevokeClientCertificateRequest, runtime *dara.RuntimeOptions) (_result *CreateRevokeClientCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Identifier) {
@@ -465,9 +507,11 @@ func (client *Client) CreateRevokeClientCertificateWithContext(ctx context.Conte
 //
 // @return CreateRootCACertificateResponse
 func (client *Client) CreateRootCACertificateWithContext(ctx context.Context, request *CreateRootCACertificateRequest, runtime *dara.RuntimeOptions) (_result *CreateRootCACertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -498,8 +542,16 @@ func (client *Client) CreateRootCACertificateWithContext(ctx context.Context, re
 		query["OrganizationUnit"] = request.OrganizationUnit
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !dara.IsNil(request.State) {
 		query["State"] = request.State
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
 	}
 
 	if !dara.IsNil(request.Years) {
@@ -547,9 +599,11 @@ func (client *Client) CreateRootCACertificateWithContext(ctx context.Context, re
 //
 // @return CreateServerCertificateResponse
 func (client *Client) CreateServerCertificateWithContext(ctx context.Context, request *CreateServerCertificateRequest, runtime *dara.RuntimeOptions) (_result *CreateServerCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AfterTime) {
@@ -608,8 +662,16 @@ func (client *Client) CreateServerCertificateWithContext(ctx context.Context, re
 		query["ParentIdentifier"] = request.ParentIdentifier
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !dara.IsNil(request.State) {
 		query["State"] = request.State
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
 	}
 
 	if !dara.IsNil(request.Years) {
@@ -655,9 +717,11 @@ func (client *Client) CreateServerCertificateWithContext(ctx context.Context, re
 //
 // @return CreateServerCertificateWithCsrResponse
 func (client *Client) CreateServerCertificateWithCsrWithContext(ctx context.Context, request *CreateServerCertificateWithCsrRequest, runtime *dara.RuntimeOptions) (_result *CreateServerCertificateWithCsrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AfterTime) {
@@ -720,8 +784,16 @@ func (client *Client) CreateServerCertificateWithCsrWithContext(ctx context.Cont
 		query["ParentIdentifier"] = request.ParentIdentifier
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !dara.IsNil(request.State) {
 		query["State"] = request.State
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
 	}
 
 	if !dara.IsNil(request.Years) {
@@ -771,9 +843,11 @@ func (client *Client) CreateServerCertificateWithCsrWithContext(ctx context.Cont
 //
 // @return CreateSubCACertificateResponse
 func (client *Client) CreateSubCACertificateWithContext(ctx context.Context, request *CreateSubCACertificateRequest, runtime *dara.RuntimeOptions) (_result *CreateSubCACertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -820,16 +894,30 @@ func (client *Client) CreateSubCACertificateWithContext(ctx context.Context, req
 		query["PathLenConstraint"] = request.PathLenConstraint
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !dara.IsNil(request.State) {
 		query["State"] = request.State
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
 	}
 
 	if !dara.IsNil(request.Years) {
 		query["Years"] = request.Years
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateSubCACertificate"),
@@ -869,9 +957,11 @@ func (client *Client) CreateSubCACertificateWithContext(ctx context.Context, req
 //
 // @return DeleteClientCertificateResponse
 func (client *Client) DeleteClientCertificateWithContext(ctx context.Context, request *DeleteClientCertificateRequest, runtime *dara.RuntimeOptions) (_result *DeleteClientCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Identifier) {
@@ -921,9 +1011,11 @@ func (client *Client) DeleteClientCertificateWithContext(ctx context.Context, re
 //
 // @return DescribeCACertificateResponse
 func (client *Client) DescribeCACertificateWithContext(ctx context.Context, request *DescribeCACertificateRequest, runtime *dara.RuntimeOptions) (_result *DescribeCACertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Identifier) {
@@ -971,9 +1063,11 @@ func (client *Client) DescribeCACertificateWithContext(ctx context.Context, requ
 //
 // @return DescribeCACertificateListResponse
 func (client *Client) DescribeCACertificateListWithContext(ctx context.Context, request *DescribeCACertificateListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCACertificateListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CaStatus) {
@@ -994,6 +1088,10 @@ func (client *Client) DescribeCACertificateListWithContext(ctx context.Context, 
 
 	if !dara.IsNil(request.IssuerType) {
 		query["IssuerType"] = request.IssuerType
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !dara.IsNil(request.ShowSize) {
@@ -1061,9 +1159,11 @@ func (client *Client) DescribeCACertificateListWithContext(ctx context.Context, 
 //
 // @return DescribeCertificatePrivateKeyResponse
 func (client *Client) DescribeCertificatePrivateKeyWithContext(ctx context.Context, request *DescribeCertificatePrivateKeyRequest, runtime *dara.RuntimeOptions) (_result *DescribeCertificatePrivateKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EncryptedCode) {
@@ -1129,9 +1229,11 @@ func (client *Client) DescribeCertificatePrivateKeyWithContext(ctx context.Conte
 //
 // @return DescribeClientCertificateResponse
 func (client *Client) DescribeClientCertificateWithContext(ctx context.Context, request *DescribeClientCertificateRequest, runtime *dara.RuntimeOptions) (_result *DescribeClientCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Identifier) {
@@ -1179,9 +1281,11 @@ func (client *Client) DescribeClientCertificateWithContext(ctx context.Context, 
 //
 // @return DescribeClientCertificateStatusResponse
 func (client *Client) DescribeClientCertificateStatusWithContext(ctx context.Context, request *DescribeClientCertificateStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeClientCertificateStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Identifier) {
@@ -1229,9 +1333,11 @@ func (client *Client) DescribeClientCertificateStatusWithContext(ctx context.Con
 //
 // @return GetCAInstanceStatusResponse
 func (client *Client) GetCAInstanceStatusWithContext(ctx context.Context, request *GetCAInstanceStatusRequest, runtime *dara.RuntimeOptions) (_result *GetCAInstanceStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Identifier) {
@@ -1275,9 +1381,11 @@ func (client *Client) GetCAInstanceStatusWithContext(ctx context.Context, reques
 //
 // @return ListCertResponse
 func (client *Client) ListCertWithContext(ctx context.Context, request *ListCertRequest, runtime *dara.RuntimeOptions) (_result *ListCertResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AfterDate) {
@@ -1357,9 +1465,11 @@ func (client *Client) ListCertWithContext(ctx context.Context, request *ListCert
 //
 // @return ListClientCertificateResponse
 func (client *Client) ListClientCertificateWithContext(ctx context.Context, request *ListClientCertificateRequest, runtime *dara.RuntimeOptions) (_result *ListClientCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -1368,6 +1478,10 @@ func (client *Client) ListClientCertificateWithContext(ctx context.Context, requ
 
 	if !dara.IsNil(request.Identifier) {
 		query["Identifier"] = request.Identifier
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !dara.IsNil(request.ShowSize) {
@@ -1407,9 +1521,11 @@ func (client *Client) ListClientCertificateWithContext(ctx context.Context, requ
 //
 // @return ListPcaCaCertificateResponse
 func (client *Client) ListPcaCaCertificateWithContext(ctx context.Context, request *ListPcaCaCertificateRequest, runtime *dara.RuntimeOptions) (_result *ListPcaCaCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -1461,9 +1577,11 @@ func (client *Client) ListPcaCaCertificateWithContext(ctx context.Context, reque
 //
 // @return ListRevokeCertificateResponse
 func (client *Client) ListRevokeCertificateWithContext(ctx context.Context, request *ListRevokeCertificateRequest, runtime *dara.RuntimeOptions) (_result *ListRevokeCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -1517,9 +1635,11 @@ func (client *Client) ListRevokeCertificateWithContext(ctx context.Context, requ
 //
 // @return UpdateCACertificateStatusResponse
 func (client *Client) UpdateCACertificateStatusWithContext(ctx context.Context, request *UpdateCACertificateStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateCACertificateStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1567,9 +1687,11 @@ func (client *Client) UpdateCACertificateStatusWithContext(ctx context.Context, 
 //
 // @return UploadPcaCertToCasResponse
 func (client *Client) UploadPcaCertToCasWithContext(ctx context.Context, request *UploadPcaCertToCasRequest, runtime *dara.RuntimeOptions) (_result *UploadPcaCertToCasResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Ids) {

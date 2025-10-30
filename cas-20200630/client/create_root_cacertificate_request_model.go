@@ -23,8 +23,12 @@ type iCreateRootCACertificateRequest interface {
 	GetOrganization() *string
 	SetOrganizationUnit(v string) *CreateRootCACertificateRequest
 	GetOrganizationUnit() *string
+	SetResourceGroupId(v string) *CreateRootCACertificateRequest
+	GetResourceGroupId() *string
 	SetState(v string) *CreateRootCACertificateRequest
 	GetState() *string
+	SetTags(v []*CreateRootCACertificateRequestTags) *CreateRootCACertificateRequest
+	GetTags() []*CreateRootCACertificateRequestTags
 	SetYears(v int32) *CreateRootCACertificateRequest
 	GetYears() *int32
 }
@@ -93,6 +97,7 @@ type CreateRootCACertificateRequest struct {
 	//
 	// Security
 	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The name of the province, municipality, or autonomous region in which the organization is located. The value can contain letters.
 	//
 	// This parameter is required.
@@ -100,7 +105,8 @@ type CreateRootCACertificateRequest struct {
 	// example:
 	//
 	// Zhejiang
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	State *string                               `json:"State,omitempty" xml:"State,omitempty"`
+	Tags  []*CreateRootCACertificateRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The validity period of the root CA certificate. Unit: years.
 	//
 	// >  We recommend that you set this parameter to a value from 5 to 10.
@@ -149,8 +155,16 @@ func (s *CreateRootCACertificateRequest) GetOrganizationUnit() *string {
 	return s.OrganizationUnit
 }
 
+func (s *CreateRootCACertificateRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *CreateRootCACertificateRequest) GetState() *string {
 	return s.State
+}
+
+func (s *CreateRootCACertificateRequest) GetTags() []*CreateRootCACertificateRequestTags {
+	return s.Tags
 }
 
 func (s *CreateRootCACertificateRequest) GetYears() *int32 {
@@ -192,8 +206,18 @@ func (s *CreateRootCACertificateRequest) SetOrganizationUnit(v string) *CreateRo
 	return s
 }
 
+func (s *CreateRootCACertificateRequest) SetResourceGroupId(v string) *CreateRootCACertificateRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateRootCACertificateRequest) SetState(v string) *CreateRootCACertificateRequest {
 	s.State = &v
+	return s
+}
+
+func (s *CreateRootCACertificateRequest) SetTags(v []*CreateRootCACertificateRequestTags) *CreateRootCACertificateRequest {
+	s.Tags = v
 	return s
 }
 
@@ -203,5 +227,49 @@ func (s *CreateRootCACertificateRequest) SetYears(v int32) *CreateRootCACertific
 }
 
 func (s *CreateRootCACertificateRequest) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateRootCACertificateRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateRootCACertificateRequestTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateRootCACertificateRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRootCACertificateRequestTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateRootCACertificateRequestTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateRootCACertificateRequestTags) SetKey(v string) *CreateRootCACertificateRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateRootCACertificateRequestTags) SetValue(v string) *CreateRootCACertificateRequestTags {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateRootCACertificateRequestTags) Validate() error {
 	return dara.Validate(s)
 }

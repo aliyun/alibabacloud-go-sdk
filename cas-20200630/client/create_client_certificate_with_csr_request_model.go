@@ -37,12 +37,16 @@ type iCreateClientCertificateWithCsrRequest interface {
 	GetOrganizationUnit() *string
 	SetParentIdentifier(v string) *CreateClientCertificateWithCsrRequest
 	GetParentIdentifier() *string
+	SetResourceGroupId(v string) *CreateClientCertificateWithCsrRequest
+	GetResourceGroupId() *string
 	SetSanType(v int32) *CreateClientCertificateWithCsrRequest
 	GetSanType() *int32
 	SetSanValue(v string) *CreateClientCertificateWithCsrRequest
 	GetSanValue() *string
 	SetState(v string) *CreateClientCertificateWithCsrRequest
 	GetState() *string
+	SetTags(v []*CreateClientCertificateWithCsrRequestTags) *CreateClientCertificateWithCsrRequest
+	GetTags() []*CreateClientCertificateWithCsrRequestTags
 	SetYears(v int32) *CreateClientCertificateWithCsrRequest
 	GetYears() *int32
 }
@@ -178,6 +182,7 @@ type CreateClientCertificateWithCsrRequest struct {
 	//
 	// 270ae6bb538d538c70c01f81fg3****
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The type of the Subject Alternative Name (SAN) extension that is supported by the client certificate. Valid values:
 	//
 	// 	- **1**: an email address
@@ -199,7 +204,8 @@ type CreateClientCertificateWithCsrRequest struct {
 	// example:
 	//
 	// Zhejiang
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	State *string                                      `json:"State,omitempty" xml:"State,omitempty"`
+	Tags  []*CreateClientCertificateWithCsrRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The validity period of the client certificate. Unit: years.
 	//
 	// example:
@@ -272,6 +278,10 @@ func (s *CreateClientCertificateWithCsrRequest) GetParentIdentifier() *string {
 	return s.ParentIdentifier
 }
 
+func (s *CreateClientCertificateWithCsrRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *CreateClientCertificateWithCsrRequest) GetSanType() *int32 {
 	return s.SanType
 }
@@ -282,6 +292,10 @@ func (s *CreateClientCertificateWithCsrRequest) GetSanValue() *string {
 
 func (s *CreateClientCertificateWithCsrRequest) GetState() *string {
 	return s.State
+}
+
+func (s *CreateClientCertificateWithCsrRequest) GetTags() []*CreateClientCertificateWithCsrRequestTags {
+	return s.Tags
 }
 
 func (s *CreateClientCertificateWithCsrRequest) GetYears() *int32 {
@@ -358,6 +372,11 @@ func (s *CreateClientCertificateWithCsrRequest) SetParentIdentifier(v string) *C
 	return s
 }
 
+func (s *CreateClientCertificateWithCsrRequest) SetResourceGroupId(v string) *CreateClientCertificateWithCsrRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateClientCertificateWithCsrRequest) SetSanType(v int32) *CreateClientCertificateWithCsrRequest {
 	s.SanType = &v
 	return s
@@ -373,11 +392,60 @@ func (s *CreateClientCertificateWithCsrRequest) SetState(v string) *CreateClient
 	return s
 }
 
+func (s *CreateClientCertificateWithCsrRequest) SetTags(v []*CreateClientCertificateWithCsrRequestTags) *CreateClientCertificateWithCsrRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *CreateClientCertificateWithCsrRequest) SetYears(v int32) *CreateClientCertificateWithCsrRequest {
 	s.Years = &v
 	return s
 }
 
 func (s *CreateClientCertificateWithCsrRequest) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateClientCertificateWithCsrRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateClientCertificateWithCsrRequestTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateClientCertificateWithCsrRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClientCertificateWithCsrRequestTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateClientCertificateWithCsrRequestTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateClientCertificateWithCsrRequestTags) SetKey(v string) *CreateClientCertificateWithCsrRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateClientCertificateWithCsrRequestTags) SetValue(v string) *CreateClientCertificateWithCsrRequestTags {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateClientCertificateWithCsrRequestTags) Validate() error {
 	return dara.Validate(s)
 }

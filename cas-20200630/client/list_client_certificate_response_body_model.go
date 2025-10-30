@@ -121,7 +121,16 @@ func (s *ListClientCertificateResponseBody) SetTotalCount(v int64) *ListClientCe
 }
 
 func (s *ListClientCertificateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CertificateList != nil {
+		for _, item := range s.CertificateList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListClientCertificateResponseBodyCertificateList struct {
@@ -221,6 +230,7 @@ type ListClientCertificateResponseBodyCertificateList struct {
 	//
 	// 160ae6bb538d538c70c01f81dcf2****
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The subject alternative name (SAN) extension of the certificate. The value indicates additional information, including the additional domain names or IP addresses that are associated with the certificate.
 	//
 	// The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that corresponds to a SAN extension. A SAN extension struct contains the following parameters:
@@ -365,6 +375,10 @@ func (s *ListClientCertificateResponseBodyCertificateList) GetParentIdentifier()
 	return s.ParentIdentifier
 }
 
+func (s *ListClientCertificateResponseBodyCertificateList) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *ListClientCertificateResponseBodyCertificateList) GetSans() *string {
 	return s.Sans
 }
@@ -464,6 +478,11 @@ func (s *ListClientCertificateResponseBodyCertificateList) SetOrganizationUnit(v
 
 func (s *ListClientCertificateResponseBodyCertificateList) SetParentIdentifier(v string) *ListClientCertificateResponseBodyCertificateList {
 	s.ParentIdentifier = &v
+	return s
+}
+
+func (s *ListClientCertificateResponseBodyCertificateList) SetResourceGroupId(v string) *ListClientCertificateResponseBodyCertificateList {
+	s.ResourceGroupId = &v
 	return s
 }
 

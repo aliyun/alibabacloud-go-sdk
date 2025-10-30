@@ -19,6 +19,8 @@ type iDescribeCACertificateListRequest interface {
 	GetIdentifier() *string
 	SetIssuerType(v string) *DescribeCACertificateListRequest
 	GetIssuerType() *string
+	SetResourceGroupId(v string) *DescribeCACertificateListRequest
+	GetResourceGroupId() *string
 	SetShowSize(v int32) *DescribeCACertificateListRequest
 	GetShowSize() *int32
 	SetValidStatus(v string) *DescribeCACertificateListRequest
@@ -75,7 +77,8 @@ type DescribeCACertificateListRequest struct {
 	// example:
 	//
 	// local
-	IssuerType *string `json:"IssuerType,omitempty" xml:"IssuerType,omitempty"`
+	IssuerType      *string `json:"IssuerType,omitempty" xml:"IssuerType,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The number of CA certificates per page. Default value: **20**.
 	//
 	// example:
@@ -122,6 +125,10 @@ func (s *DescribeCACertificateListRequest) GetIssuerType() *string {
 	return s.IssuerType
 }
 
+func (s *DescribeCACertificateListRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *DescribeCACertificateListRequest) GetShowSize() *int32 {
 	return s.ShowSize
 }
@@ -152,6 +159,11 @@ func (s *DescribeCACertificateListRequest) SetIdentifier(v string) *DescribeCACe
 
 func (s *DescribeCACertificateListRequest) SetIssuerType(v string) *DescribeCACertificateListRequest {
 	s.IssuerType = &v
+	return s
+}
+
+func (s *DescribeCACertificateListRequest) SetResourceGroupId(v string) *DescribeCACertificateListRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 

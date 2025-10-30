@@ -19,6 +19,10 @@ type iCreateCustomCertificateRequest interface {
 	GetImmediately() *int32
 	SetParentIdentifier(v string) *CreateCustomCertificateRequest
 	GetParentIdentifier() *string
+	SetResourceGroupId(v string) *CreateCustomCertificateRequest
+	GetResourceGroupId() *string
+	SetTags(v []*CreateCustomCertificateRequestTags) *CreateCustomCertificateRequest
+	GetTags() []*CreateCustomCertificateRequestTags
 	SetValidity(v string) *CreateCustomCertificateRequest
 	GetValidity() *string
 }
@@ -75,7 +79,9 @@ type CreateCustomCertificateRequest struct {
 	// example:
 	//
 	// 1ed4068c-6f1b-6deb-8e32-3f8439a851cb
-	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
+	ParentIdentifier *string                               `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
+	ResourceGroupId  *string                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags             []*CreateCustomCertificateRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The validity period of the certificate. The value cannot exceed the validity period of the certificate instance. Relative time and absolute time are supported.
 	//
 	// Units of relative time: year, month, and day.
@@ -140,6 +146,14 @@ func (s *CreateCustomCertificateRequest) GetParentIdentifier() *string {
 	return s.ParentIdentifier
 }
 
+func (s *CreateCustomCertificateRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *CreateCustomCertificateRequest) GetTags() []*CreateCustomCertificateRequestTags {
+	return s.Tags
+}
+
 func (s *CreateCustomCertificateRequest) GetValidity() *string {
 	return s.Validity
 }
@@ -169,13 +183,37 @@ func (s *CreateCustomCertificateRequest) SetParentIdentifier(v string) *CreateCu
 	return s
 }
 
+func (s *CreateCustomCertificateRequest) SetResourceGroupId(v string) *CreateCustomCertificateRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateCustomCertificateRequest) SetTags(v []*CreateCustomCertificateRequestTags) *CreateCustomCertificateRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *CreateCustomCertificateRequest) SetValidity(v string) *CreateCustomCertificateRequest {
 	s.Validity = &v
 	return s
 }
 
 func (s *CreateCustomCertificateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ApiPassthrough != nil {
+		if err := s.ApiPassthrough.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateCustomCertificateRequestApiPassthrough struct {
@@ -227,7 +265,17 @@ func (s *CreateCustomCertificateRequestApiPassthrough) SetSubject(v *CreateCusto
 }
 
 func (s *CreateCustomCertificateRequestApiPassthrough) Validate() error {
-	return dara.Validate(s)
+	if s.Extensions != nil {
+		if err := s.Extensions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Subject != nil {
+		if err := s.Subject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateCustomCertificateRequestApiPassthroughExtensions struct {
@@ -286,7 +334,21 @@ func (s *CreateCustomCertificateRequestApiPassthroughExtensions) SetSubjectAlter
 }
 
 func (s *CreateCustomCertificateRequestApiPassthroughExtensions) Validate() error {
-	return dara.Validate(s)
+	if s.KeyUsage != nil {
+		if err := s.KeyUsage.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubjectAlternativeNames != nil {
+		for _, item := range s.SubjectAlternativeNames {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage struct {
@@ -606,7 +668,16 @@ func (s *CreateCustomCertificateRequestApiPassthroughSubject) SetState(v string)
 }
 
 func (s *CreateCustomCertificateRequestApiPassthroughSubject) Validate() error {
-	return dara.Validate(s)
+	if s.CustomAttributes != nil {
+		for _, item := range s.CustomAttributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateCustomCertificateRequestApiPassthroughSubjectCustomAttributes struct {
@@ -677,5 +748,40 @@ func (s *CreateCustomCertificateRequestApiPassthroughSubjectCustomAttributes) Se
 }
 
 func (s *CreateCustomCertificateRequestApiPassthroughSubjectCustomAttributes) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateCustomCertificateRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateCustomCertificateRequestTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateCustomCertificateRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomCertificateRequestTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateCustomCertificateRequestTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateCustomCertificateRequestTags) SetKey(v string) *CreateCustomCertificateRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateCustomCertificateRequestTags) SetValue(v string) *CreateCustomCertificateRequestTags {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateCustomCertificateRequestTags) Validate() error {
 	return dara.Validate(s)
 }

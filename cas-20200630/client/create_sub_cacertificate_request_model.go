@@ -11,6 +11,8 @@ type iCreateSubCACertificateRequest interface {
 	GoString() string
 	SetAlgorithm(v string) *CreateSubCACertificateRequest
 	GetAlgorithm() *string
+	SetClientToken(v string) *CreateSubCACertificateRequest
+	GetClientToken() *string
 	SetCommonName(v string) *CreateSubCACertificateRequest
 	GetCommonName() *string
 	SetCountryCode(v string) *CreateSubCACertificateRequest
@@ -31,8 +33,12 @@ type iCreateSubCACertificateRequest interface {
 	GetParentIdentifier() *string
 	SetPathLenConstraint(v int32) *CreateSubCACertificateRequest
 	GetPathLenConstraint() *int32
+	SetResourceGroupId(v string) *CreateSubCACertificateRequest
+	GetResourceGroupId() *string
 	SetState(v string) *CreateSubCACertificateRequest
 	GetState() *string
+	SetTags(v []*CreateSubCACertificateRequestTags) *CreateSubCACertificateRequest
+	GetTags() []*CreateSubCACertificateRequestTags
 	SetYears(v int32) *CreateSubCACertificateRequest
 	GetYears() *int32
 }
@@ -59,7 +65,8 @@ type CreateSubCACertificateRequest struct {
 	// example:
 	//
 	// RSA_2048
-	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	Algorithm   *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The common name or abbreviation of the organization. The value can contain letters.
 	//
 	// This parameter is required.
@@ -122,8 +129,6 @@ type CreateSubCACertificateRequest struct {
 	//
 	// > You can call the [DescribeCACertificateList] operation to query the unique identifiers of all CA certificates.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1a83bcbb89e562885e40aa0108f5****
@@ -133,7 +138,8 @@ type CreateSubCACertificateRequest struct {
 	// example:
 	//
 	// 0
-	PathLenConstraint *int32 `json:"PathLenConstraint,omitempty" xml:"PathLenConstraint,omitempty"`
+	PathLenConstraint *int32  `json:"PathLenConstraint,omitempty" xml:"PathLenConstraint,omitempty"`
+	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The name of the province or state in which the organization is located. The value can contain letters.
 	//
 	// This parameter is required.
@@ -141,7 +147,8 @@ type CreateSubCACertificateRequest struct {
 	// example:
 	//
 	// Zhejiang
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	State *string                              `json:"State,omitempty" xml:"State,omitempty"`
+	Tags  []*CreateSubCACertificateRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The validity period of the intermediate CA certificate. Unit: years.
 	//
 	// We recommend that you set this parameter to 5 to 10.
@@ -166,6 +173,10 @@ func (s CreateSubCACertificateRequest) GoString() string {
 
 func (s *CreateSubCACertificateRequest) GetAlgorithm() *string {
 	return s.Algorithm
+}
+
+func (s *CreateSubCACertificateRequest) GetClientToken() *string {
+	return s.ClientToken
 }
 
 func (s *CreateSubCACertificateRequest) GetCommonName() *string {
@@ -208,8 +219,16 @@ func (s *CreateSubCACertificateRequest) GetPathLenConstraint() *int32 {
 	return s.PathLenConstraint
 }
 
+func (s *CreateSubCACertificateRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *CreateSubCACertificateRequest) GetState() *string {
 	return s.State
+}
+
+func (s *CreateSubCACertificateRequest) GetTags() []*CreateSubCACertificateRequestTags {
+	return s.Tags
 }
 
 func (s *CreateSubCACertificateRequest) GetYears() *int32 {
@@ -218,6 +237,11 @@ func (s *CreateSubCACertificateRequest) GetYears() *int32 {
 
 func (s *CreateSubCACertificateRequest) SetAlgorithm(v string) *CreateSubCACertificateRequest {
 	s.Algorithm = &v
+	return s
+}
+
+func (s *CreateSubCACertificateRequest) SetClientToken(v string) *CreateSubCACertificateRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -271,8 +295,18 @@ func (s *CreateSubCACertificateRequest) SetPathLenConstraint(v int32) *CreateSub
 	return s
 }
 
+func (s *CreateSubCACertificateRequest) SetResourceGroupId(v string) *CreateSubCACertificateRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateSubCACertificateRequest) SetState(v string) *CreateSubCACertificateRequest {
 	s.State = &v
+	return s
+}
+
+func (s *CreateSubCACertificateRequest) SetTags(v []*CreateSubCACertificateRequestTags) *CreateSubCACertificateRequest {
+	s.Tags = v
 	return s
 }
 
@@ -282,5 +316,49 @@ func (s *CreateSubCACertificateRequest) SetYears(v int32) *CreateSubCACertificat
 }
 
 func (s *CreateSubCACertificateRequest) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateSubCACertificateRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateSubCACertificateRequestTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateSubCACertificateRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSubCACertificateRequestTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateSubCACertificateRequestTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateSubCACertificateRequestTags) SetKey(v string) *CreateSubCACertificateRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateSubCACertificateRequestTags) SetValue(v string) *CreateSubCACertificateRequestTags {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateSubCACertificateRequestTags) Validate() error {
 	return dara.Validate(s)
 }

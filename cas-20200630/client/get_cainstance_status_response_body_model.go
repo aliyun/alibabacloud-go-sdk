@@ -53,7 +53,16 @@ func (s *GetCAInstanceStatusResponseBody) SetRequestId(v string) *GetCAInstanceS
 }
 
 func (s *GetCAInstanceStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceStatusList != nil {
+		for _, item := range s.InstanceStatusList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCAInstanceStatusResponseBodyInstanceStatusList struct {

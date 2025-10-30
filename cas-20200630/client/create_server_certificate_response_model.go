@@ -59,5 +59,10 @@ func (s *CreateServerCertificateResponse) SetBody(v *CreateServerCertificateResp
 }
 
 func (s *CreateServerCertificateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

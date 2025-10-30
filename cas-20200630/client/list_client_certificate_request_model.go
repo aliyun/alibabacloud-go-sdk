@@ -13,6 +13,8 @@ type iListClientCertificateRequest interface {
 	GetCurrentPage() *int32
 	SetIdentifier(v string) *ListClientCertificateRequest
 	GetIdentifier() *string
+	SetResourceGroupId(v string) *ListClientCertificateRequest
+	GetResourceGroupId() *string
 	SetShowSize(v int32) *ListClientCertificateRequest
 	GetShowSize() *int32
 }
@@ -31,7 +33,8 @@ type ListClientCertificateRequest struct {
 	// example:
 	//
 	// 190ae6bb538d538c70c01f81dcf2****
-	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	Identifier      *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The number of certificates to return on each page. Default value: **20**.
 	//
 	// example:
@@ -56,6 +59,10 @@ func (s *ListClientCertificateRequest) GetIdentifier() *string {
 	return s.Identifier
 }
 
+func (s *ListClientCertificateRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *ListClientCertificateRequest) GetShowSize() *int32 {
 	return s.ShowSize
 }
@@ -67,6 +74,11 @@ func (s *ListClientCertificateRequest) SetCurrentPage(v int32) *ListClientCertif
 
 func (s *ListClientCertificateRequest) SetIdentifier(v string) *ListClientCertificateRequest {
 	s.Identifier = &v
+	return s
+}
+
+func (s *ListClientCertificateRequest) SetResourceGroupId(v string) *ListClientCertificateRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
