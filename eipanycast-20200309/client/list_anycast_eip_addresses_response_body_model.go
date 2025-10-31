@@ -91,7 +91,16 @@ func (s *ListAnycastEipAddressesResponseBody) SetTotalCount(v int32) *ListAnycas
 }
 
 func (s *ListAnycastEipAddressesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AnycastList != nil {
+		for _, item := range s.AnycastList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAnycastEipAddressesResponseBodyAnycastList struct {
@@ -366,7 +375,25 @@ func (s *ListAnycastEipAddressesResponseBodyAnycastList) SetTags(v []*ListAnycas
 }
 
 func (s *ListAnycastEipAddressesResponseBodyAnycastList) Validate() error {
-	return dara.Validate(s)
+	if s.AnycastEipBindInfoList != nil {
+		for _, item := range s.AnycastEipBindInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAnycastEipAddressesResponseBodyAnycastListAnycastEipBindInfoList struct {

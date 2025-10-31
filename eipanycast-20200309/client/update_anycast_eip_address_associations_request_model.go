@@ -150,7 +150,25 @@ func (s *UpdateAnycastEipAddressAssociationsRequest) SetPopLocationDeleteList(v 
 }
 
 func (s *UpdateAnycastEipAddressAssociationsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PopLocationAddList != nil {
+		for _, item := range s.PopLocationAddList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PopLocationDeleteList != nil {
+		for _, item := range s.PopLocationDeleteList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateAnycastEipAddressAssociationsRequestPopLocationAddList struct {

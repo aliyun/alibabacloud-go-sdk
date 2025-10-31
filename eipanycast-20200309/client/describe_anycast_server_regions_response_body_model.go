@@ -70,7 +70,16 @@ func (s *DescribeAnycastServerRegionsResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribeAnycastServerRegionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AnycastServerRegionList != nil {
+		for _, item := range s.AnycastServerRegionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAnycastServerRegionsResponseBodyAnycastServerRegionList struct {

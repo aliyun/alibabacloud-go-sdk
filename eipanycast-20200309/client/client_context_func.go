@@ -17,9 +17,11 @@ import (
 //
 // @return AllocateAnycastEipAddressResponse
 func (client *Client) AllocateAnycastEipAddressWithContext(ctx context.Context, request *AllocateAnycastEipAddressRequest, runtime *dara.RuntimeOptions) (_result *AllocateAnycastEipAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bandwidth) {
@@ -52,6 +54,10 @@ func (client *Client) AllocateAnycastEipAddressWithContext(ctx context.Context, 
 
 	if !dara.IsNil(request.ServiceLocation) {
 		query["ServiceLocation"] = request.ServiceLocation
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -87,9 +93,11 @@ func (client *Client) AllocateAnycastEipAddressWithContext(ctx context.Context, 
 //
 // @return AssociateAnycastEipAddressResponse
 func (client *Client) AssociateAnycastEipAddressWithContext(ctx context.Context, request *AssociateAnycastEipAddressRequest, runtime *dara.RuntimeOptions) (_result *AssociateAnycastEipAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AnycastId) {
@@ -161,9 +169,11 @@ func (client *Client) AssociateAnycastEipAddressWithContext(ctx context.Context,
 //
 // @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NewResourceGroupId) {
@@ -211,9 +221,11 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 //
 // @return DescribeAnycastEipAddressResponse
 func (client *Client) DescribeAnycastEipAddressWithContext(ctx context.Context, request *DescribeAnycastEipAddressRequest, runtime *dara.RuntimeOptions) (_result *DescribeAnycastEipAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AnycastId) {
@@ -261,9 +273,11 @@ func (client *Client) DescribeAnycastEipAddressWithContext(ctx context.Context, 
 //
 // @return DescribeAnycastPopLocationsResponse
 func (client *Client) DescribeAnycastPopLocationsWithContext(ctx context.Context, request *DescribeAnycastPopLocationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAnycastPopLocationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ServiceLocation) {
@@ -303,9 +317,11 @@ func (client *Client) DescribeAnycastPopLocationsWithContext(ctx context.Context
 //
 // @return DescribeAnycastServerRegionsResponse
 func (client *Client) DescribeAnycastServerRegionsWithContext(ctx context.Context, request *DescribeAnycastServerRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAnycastServerRegionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ServiceLocation) {
@@ -345,9 +361,11 @@ func (client *Client) DescribeAnycastServerRegionsWithContext(ctx context.Contex
 //
 // @return ListAnycastEipAddressesResponse
 func (client *Client) ListAnycastEipAddressesWithContext(ctx context.Context, request *ListAnycastEipAddressesRequest, runtime *dara.RuntimeOptions) (_result *ListAnycastEipAddressesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AnycastEipAddress) {
@@ -439,9 +457,11 @@ func (client *Client) ListAnycastEipAddressesWithContext(ctx context.Context, re
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -497,9 +517,11 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 //
 // @return ModifyAnycastEipAddressAttributeResponse
 func (client *Client) ModifyAnycastEipAddressAttributeWithContext(ctx context.Context, request *ModifyAnycastEipAddressAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyAnycastEipAddressAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AnycastId) {
@@ -547,9 +569,11 @@ func (client *Client) ModifyAnycastEipAddressAttributeWithContext(ctx context.Co
 //
 // @return ModifyAnycastEipAddressSpecResponse
 func (client *Client) ModifyAnycastEipAddressSpecWithContext(ctx context.Context, request *ModifyAnycastEipAddressSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyAnycastEipAddressSpecResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AnycastId) {
@@ -593,9 +617,11 @@ func (client *Client) ModifyAnycastEipAddressSpecWithContext(ctx context.Context
 //
 // @return ReleaseAnycastEipAddressResponse
 func (client *Client) ReleaseAnycastEipAddressWithContext(ctx context.Context, request *ReleaseAnycastEipAddressRequest, runtime *dara.RuntimeOptions) (_result *ReleaseAnycastEipAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AnycastId) {
@@ -639,9 +665,11 @@ func (client *Client) ReleaseAnycastEipAddressWithContext(ctx context.Context, r
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceId) {
@@ -689,9 +717,11 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 //
 // @return UnassociateAnycastEipAddressResponse
 func (client *Client) UnassociateAnycastEipAddressWithContext(ctx context.Context, request *UnassociateAnycastEipAddressRequest, runtime *dara.RuntimeOptions) (_result *UnassociateAnycastEipAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AnycastId) {
@@ -755,9 +785,11 @@ func (client *Client) UnassociateAnycastEipAddressWithContext(ctx context.Contex
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceId) {
@@ -805,9 +837,11 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 //
 // @return UpdateAnycastEipAddressAssociationsResponse
 func (client *Client) UpdateAnycastEipAddressAssociationsWithContext(ctx context.Context, request *UpdateAnycastEipAddressAssociationsRequest, runtime *dara.RuntimeOptions) (_result *UpdateAnycastEipAddressAssociationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AnycastId) {

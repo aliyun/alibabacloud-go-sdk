@@ -353,7 +353,25 @@ func (s *DescribeAnycastEipAddressResponseBody) SetTags(v []*DescribeAnycastEipA
 }
 
 func (s *DescribeAnycastEipAddressResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AnycastEipBindInfoList != nil {
+		for _, item := range s.AnycastEipBindInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAnycastEipAddressResponseBodyAnycastEipBindInfoList struct {
@@ -508,7 +526,16 @@ func (s *DescribeAnycastEipAddressResponseBodyAnycastEipBindInfoList) SetStatus(
 }
 
 func (s *DescribeAnycastEipAddressResponseBodyAnycastEipBindInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.PopLocations != nil {
+		for _, item := range s.PopLocations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAnycastEipAddressResponseBodyAnycastEipBindInfoListPopLocations struct {

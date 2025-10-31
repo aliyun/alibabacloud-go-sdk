@@ -25,6 +25,8 @@ type iAllocateAnycastEipAddressRequest interface {
 	GetResourceGroupId() *string
 	SetServiceLocation(v string) *AllocateAnycastEipAddressRequest
 	GetServiceLocation() *string
+	SetTag(v []*AllocateAnycastEipAddressRequestTag) *AllocateAnycastEipAddressRequest
+	GetTag() []*AllocateAnycastEipAddressRequestTag
 }
 
 type AllocateAnycastEipAddressRequest struct {
@@ -100,7 +102,8 @@ type AllocateAnycastEipAddressRequest struct {
 	// example:
 	//
 	// international
-	ServiceLocation *string `json:"ServiceLocation,omitempty" xml:"ServiceLocation,omitempty"`
+	ServiceLocation *string                                `json:"ServiceLocation,omitempty" xml:"ServiceLocation,omitempty"`
+	Tag             []*AllocateAnycastEipAddressRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s AllocateAnycastEipAddressRequest) String() string {
@@ -143,6 +146,10 @@ func (s *AllocateAnycastEipAddressRequest) GetServiceLocation() *string {
 	return s.ServiceLocation
 }
 
+func (s *AllocateAnycastEipAddressRequest) GetTag() []*AllocateAnycastEipAddressRequestTag {
+	return s.Tag
+}
+
 func (s *AllocateAnycastEipAddressRequest) SetBandwidth(v string) *AllocateAnycastEipAddressRequest {
 	s.Bandwidth = &v
 	return s
@@ -183,6 +190,55 @@ func (s *AllocateAnycastEipAddressRequest) SetServiceLocation(v string) *Allocat
 	return s
 }
 
+func (s *AllocateAnycastEipAddressRequest) SetTag(v []*AllocateAnycastEipAddressRequestTag) *AllocateAnycastEipAddressRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *AllocateAnycastEipAddressRequest) Validate() error {
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type AllocateAnycastEipAddressRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s AllocateAnycastEipAddressRequestTag) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AllocateAnycastEipAddressRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *AllocateAnycastEipAddressRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *AllocateAnycastEipAddressRequestTag) GetValue() *string {
+	return s.Value
+}
+
+func (s *AllocateAnycastEipAddressRequestTag) SetKey(v string) *AllocateAnycastEipAddressRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *AllocateAnycastEipAddressRequestTag) SetValue(v string) *AllocateAnycastEipAddressRequestTag {
+	s.Value = &v
+	return s
+}
+
+func (s *AllocateAnycastEipAddressRequestTag) Validate() error {
 	return dara.Validate(s)
 }

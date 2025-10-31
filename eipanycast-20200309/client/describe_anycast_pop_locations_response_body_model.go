@@ -70,7 +70,16 @@ func (s *DescribeAnycastPopLocationsResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeAnycastPopLocationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AnycastPopLocationList != nil {
+		for _, item := range s.AnycastPopLocationList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAnycastPopLocationsResponseBodyAnycastPopLocationList struct {

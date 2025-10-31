@@ -211,7 +211,16 @@ func (s *AssociateAnycastEipAddressRequest) SetPrivateIpAddress(v string) *Assoc
 }
 
 func (s *AssociateAnycastEipAddressRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PopLocations != nil {
+		for _, item := range s.PopLocations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AssociateAnycastEipAddressRequestPopLocations struct {

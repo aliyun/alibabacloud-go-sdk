@@ -59,5 +59,10 @@ func (s *AllocateAnycastEipAddressResponse) SetBody(v *AllocateAnycastEipAddress
 }
 
 func (s *AllocateAnycastEipAddressResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
