@@ -11,13 +11,16 @@ type iDeleteServiceLabelShrinkRequest interface {
 	GoString() string
 	SetKeysShrink(v string) *DeleteServiceLabelShrinkRequest
 	GetKeysShrink() *string
+	SetLabelKeysShrink(v string) *DeleteServiceLabelShrinkRequest
+	GetLabelKeysShrink() *string
 }
 
 type DeleteServiceLabelShrinkRequest struct {
-	// The service tags that you want to delete.
+	// Deprecated
 	//
-	// This parameter is required.
-	KeysShrink *string `json:"Keys,omitempty" xml:"Keys,omitempty"`
+	// The service tags that you want to delete.
+	KeysShrink      *string `json:"Keys,omitempty" xml:"Keys,omitempty"`
+	LabelKeysShrink *string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty"`
 }
 
 func (s DeleteServiceLabelShrinkRequest) String() string {
@@ -32,8 +35,17 @@ func (s *DeleteServiceLabelShrinkRequest) GetKeysShrink() *string {
 	return s.KeysShrink
 }
 
+func (s *DeleteServiceLabelShrinkRequest) GetLabelKeysShrink() *string {
+	return s.LabelKeysShrink
+}
+
 func (s *DeleteServiceLabelShrinkRequest) SetKeysShrink(v string) *DeleteServiceLabelShrinkRequest {
 	s.KeysShrink = &v
+	return s
+}
+
+func (s *DeleteServiceLabelShrinkRequest) SetLabelKeysShrink(v string) *DeleteServiceLabelShrinkRequest {
+	s.LabelKeysShrink = &v
 	return s
 }
 

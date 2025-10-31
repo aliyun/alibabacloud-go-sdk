@@ -15,6 +15,8 @@ type iDeleteResourceInstanceLabelRequest interface {
 	GetInstanceIds() []*string
 	SetKeys(v []*string) *DeleteResourceInstanceLabelRequest
 	GetKeys() []*string
+	SetLabelKeys(v []*string) *DeleteResourceInstanceLabelRequest
+	GetLabelKeys() []*string
 }
 
 type DeleteResourceInstanceLabelRequest struct {
@@ -22,8 +24,11 @@ type DeleteResourceInstanceLabelRequest struct {
 	AllInstances *bool `json:"AllInstances,omitempty" xml:"AllInstances,omitempty"`
 	// The instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// Deprecated
+	//
 	// The keys of the tags that you want to delete.
-	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	Keys      []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	LabelKeys []*string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty" type:"Repeated"`
 }
 
 func (s DeleteResourceInstanceLabelRequest) String() string {
@@ -46,6 +51,10 @@ func (s *DeleteResourceInstanceLabelRequest) GetKeys() []*string {
 	return s.Keys
 }
 
+func (s *DeleteResourceInstanceLabelRequest) GetLabelKeys() []*string {
+	return s.LabelKeys
+}
+
 func (s *DeleteResourceInstanceLabelRequest) SetAllInstances(v bool) *DeleteResourceInstanceLabelRequest {
 	s.AllInstances = &v
 	return s
@@ -58,6 +67,11 @@ func (s *DeleteResourceInstanceLabelRequest) SetInstanceIds(v []*string) *Delete
 
 func (s *DeleteResourceInstanceLabelRequest) SetKeys(v []*string) *DeleteResourceInstanceLabelRequest {
 	s.Keys = v
+	return s
+}
+
+func (s *DeleteResourceInstanceLabelRequest) SetLabelKeys(v []*string) *DeleteResourceInstanceLabelRequest {
+	s.LabelKeys = v
 	return s
 }
 

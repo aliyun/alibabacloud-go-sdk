@@ -15,6 +15,8 @@ type iDeleteResourceInstanceLabelShrinkRequest interface {
 	GetInstanceIdsShrink() *string
 	SetKeysShrink(v string) *DeleteResourceInstanceLabelShrinkRequest
 	GetKeysShrink() *string
+	SetLabelKeysShrink(v string) *DeleteResourceInstanceLabelShrinkRequest
+	GetLabelKeysShrink() *string
 }
 
 type DeleteResourceInstanceLabelShrinkRequest struct {
@@ -22,8 +24,11 @@ type DeleteResourceInstanceLabelShrinkRequest struct {
 	AllInstances *bool `json:"AllInstances,omitempty" xml:"AllInstances,omitempty"`
 	// The instance IDs.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// Deprecated
+	//
 	// The keys of the tags that you want to delete.
-	KeysShrink *string `json:"Keys,omitempty" xml:"Keys,omitempty"`
+	KeysShrink      *string `json:"Keys,omitempty" xml:"Keys,omitempty"`
+	LabelKeysShrink *string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty"`
 }
 
 func (s DeleteResourceInstanceLabelShrinkRequest) String() string {
@@ -46,6 +51,10 @@ func (s *DeleteResourceInstanceLabelShrinkRequest) GetKeysShrink() *string {
 	return s.KeysShrink
 }
 
+func (s *DeleteResourceInstanceLabelShrinkRequest) GetLabelKeysShrink() *string {
+	return s.LabelKeysShrink
+}
+
 func (s *DeleteResourceInstanceLabelShrinkRequest) SetAllInstances(v bool) *DeleteResourceInstanceLabelShrinkRequest {
 	s.AllInstances = &v
 	return s
@@ -58,6 +67,11 @@ func (s *DeleteResourceInstanceLabelShrinkRequest) SetInstanceIdsShrink(v string
 
 func (s *DeleteResourceInstanceLabelShrinkRequest) SetKeysShrink(v string) *DeleteResourceInstanceLabelShrinkRequest {
 	s.KeysShrink = &v
+	return s
+}
+
+func (s *DeleteResourceInstanceLabelShrinkRequest) SetLabelKeysShrink(v string) *DeleteResourceInstanceLabelShrinkRequest {
+	s.LabelKeysShrink = &v
 	return s
 }
 

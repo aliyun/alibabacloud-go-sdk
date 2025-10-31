@@ -11,13 +11,16 @@ type iDeleteServiceLabelRequest interface {
 	GoString() string
 	SetKeys(v []*string) *DeleteServiceLabelRequest
 	GetKeys() []*string
+	SetLabelKeys(v []*string) *DeleteServiceLabelRequest
+	GetLabelKeys() []*string
 }
 
 type DeleteServiceLabelRequest struct {
-	// The service tags that you want to delete.
+	// Deprecated
 	//
-	// This parameter is required.
-	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	// The service tags that you want to delete.
+	Keys      []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	LabelKeys []*string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty" type:"Repeated"`
 }
 
 func (s DeleteServiceLabelRequest) String() string {
@@ -32,8 +35,17 @@ func (s *DeleteServiceLabelRequest) GetKeys() []*string {
 	return s.Keys
 }
 
+func (s *DeleteServiceLabelRequest) GetLabelKeys() []*string {
+	return s.LabelKeys
+}
+
 func (s *DeleteServiceLabelRequest) SetKeys(v []*string) *DeleteServiceLabelRequest {
 	s.Keys = v
+	return s
+}
+
+func (s *DeleteServiceLabelRequest) SetLabelKeys(v []*string) *DeleteServiceLabelRequest {
+	s.LabelKeys = v
 	return s
 }
 

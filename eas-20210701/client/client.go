@@ -1860,6 +1860,10 @@ func (client *Client) DeleteResourceInstanceLabelWithOptions(ClusterId *string, 
 		request.KeysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Keys, dara.String("Keys"), dara.String("simple"))
 	}
 
+	if !dara.IsNil(tmpReq.LabelKeys) {
+		request.LabelKeysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelKeys, dara.String("LabelKeys"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllInstances) {
 		query["AllInstances"] = request.AllInstances
@@ -1871,6 +1875,10 @@ func (client *Client) DeleteResourceInstanceLabelWithOptions(ClusterId *string, 
 
 	if !dara.IsNil(request.KeysShrink) {
 		query["Keys"] = request.KeysShrink
+	}
+
+	if !dara.IsNil(request.LabelKeysShrink) {
+		query["LabelKeys"] = request.LabelKeysShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2284,9 +2292,17 @@ func (client *Client) DeleteServiceLabelWithOptions(ClusterId *string, ServiceNa
 		request.KeysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Keys, dara.String("Keys"), dara.String("simple"))
 	}
 
+	if !dara.IsNil(tmpReq.LabelKeys) {
+		request.LabelKeysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelKeys, dara.String("LabelKeys"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeysShrink) {
 		query["Keys"] = request.KeysShrink
+	}
+
+	if !dara.IsNil(request.LabelKeysShrink) {
+		query["LabelKeys"] = request.LabelKeysShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
