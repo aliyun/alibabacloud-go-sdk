@@ -59,5 +59,10 @@ func (s *ConfigImageRemarkResponse) SetBody(v *ConfigImageRemarkResponseBody) *C
 }
 
 func (s *ConfigImageRemarkResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

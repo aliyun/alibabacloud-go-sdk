@@ -53,10 +53,20 @@ func (s *GetInstanceResponseBody) SetRequestId(v string) *GetInstanceResponseBod
 }
 
 func (s *GetInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instance != nil {
+		if err := s.Instance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceResponseBodyInstance struct {
+	// example:
+	//
+	// GM/T0028_LEVEL_2
+	Certification    *string `json:"Certification,omitempty" xml:"Certification,omitempty"`
+	CertificationUrl *string `json:"CertificationUrl,omitempty" xml:"CertificationUrl,omitempty"`
 	// The ID of the cluster to which the HSM belongs.
 	//
 	// example:
@@ -213,6 +223,14 @@ func (s GetInstanceResponseBodyInstance) GoString() string {
 	return s.String()
 }
 
+func (s *GetInstanceResponseBodyInstance) GetCertification() *string {
+	return s.Certification
+}
+
+func (s *GetInstanceResponseBodyInstance) GetCertificationUrl() *string {
+	return s.CertificationUrl
+}
+
 func (s *GetInstanceResponseBodyInstance) GetClusterId() *string {
 	return s.ClusterId
 }
@@ -291,6 +309,16 @@ func (s *GetInstanceResponseBodyInstance) GetWhitelist() *string {
 
 func (s *GetInstanceResponseBodyInstance) GetZoneId() *string {
 	return s.ZoneId
+}
+
+func (s *GetInstanceResponseBodyInstance) SetCertification(v string) *GetInstanceResponseBodyInstance {
+	s.Certification = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstance) SetCertificationUrl(v string) *GetInstanceResponseBodyInstance {
+	s.CertificationUrl = &v
+	return s
 }
 
 func (s *GetInstanceResponseBodyInstance) SetClusterId(v string) *GetInstanceResponseBodyInstance {

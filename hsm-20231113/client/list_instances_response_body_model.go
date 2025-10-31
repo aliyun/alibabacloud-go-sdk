@@ -104,7 +104,16 @@ func (s *ListInstancesResponseBody) SetTotal(v int32) *ListInstancesResponseBody
 }
 
 func (s *ListInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstancesResponseBodyInstances struct {

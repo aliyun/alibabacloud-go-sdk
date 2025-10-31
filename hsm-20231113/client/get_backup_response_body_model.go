@@ -53,7 +53,12 @@ func (s *GetBackupResponseBody) SetRequestId(v string) *GetBackupResponseBody {
 }
 
 func (s *GetBackupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Backup != nil {
+		if err := s.Backup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBackupResponseBodyBackup struct {

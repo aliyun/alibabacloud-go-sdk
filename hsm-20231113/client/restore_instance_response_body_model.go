@@ -53,7 +53,12 @@ func (s *RestoreInstanceResponseBody) SetRequestId(v string) *RestoreInstanceRes
 }
 
 func (s *RestoreInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Job != nil {
+		if err := s.Job.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RestoreInstanceResponseBodyJob struct {

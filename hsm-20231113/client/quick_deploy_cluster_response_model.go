@@ -59,5 +59,10 @@ func (s *QuickDeployClusterResponse) SetBody(v *QuickDeployClusterResponseBody) 
 }
 
 func (s *QuickDeployClusterResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

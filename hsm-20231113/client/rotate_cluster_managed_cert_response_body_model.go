@@ -50,7 +50,12 @@ func (s *RotateClusterManagedCertResponseBody) SetRequestId(v string) *RotateClu
 }
 
 func (s *RotateClusterManagedCertResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Job != nil {
+		if err := s.Job.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RotateClusterManagedCertResponseBodyJob struct {

@@ -53,7 +53,12 @@ func (s *JoinClusterResponseBody) SetRequestId(v string) *JoinClusterResponseBod
 }
 
 func (s *JoinClusterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Job != nil {
+		if err := s.Job.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type JoinClusterResponseBodyJob struct {

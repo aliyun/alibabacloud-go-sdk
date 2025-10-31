@@ -53,7 +53,12 @@ func (s *QuickInitInstanceResponseBody) SetRequestId(v string) *QuickInitInstanc
 }
 
 func (s *QuickInitInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Job != nil {
+		if err := s.Job.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QuickInitInstanceResponseBodyJob struct {

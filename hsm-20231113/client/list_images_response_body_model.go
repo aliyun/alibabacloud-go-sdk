@@ -104,7 +104,16 @@ func (s *ListImagesResponseBody) SetTotalCount(v int32) *ListImagesResponseBody 
 }
 
 func (s *ListImagesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Images != nil {
+		for _, item := range s.Images {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListImagesResponseBodyImages struct {

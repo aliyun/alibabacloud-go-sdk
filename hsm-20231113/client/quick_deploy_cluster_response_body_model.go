@@ -50,7 +50,12 @@ func (s *QuickDeployClusterResponseBody) SetRequestId(v string) *QuickDeployClus
 }
 
 func (s *QuickDeployClusterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Job != nil {
+		if err := s.Job.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QuickDeployClusterResponseBodyJob struct {

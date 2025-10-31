@@ -53,7 +53,12 @@ func (s *GetClusterResponseBody) SetRequestId(v string) *GetClusterResponseBody 
 }
 
 func (s *GetClusterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Cluster != nil {
+		if err := s.Cluster.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetClusterResponseBodyCluster struct {
@@ -335,7 +340,25 @@ func (s *GetClusterResponseBodyCluster) SetZones(v []*GetClusterResponseBodyClus
 }
 
 func (s *GetClusterResponseBodyCluster) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Zones != nil {
+		for _, item := range s.Zones {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetClusterResponseBodyClusterInstances struct {

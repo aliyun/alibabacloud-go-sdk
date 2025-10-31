@@ -59,5 +59,10 @@ func (s *JoinClusterResponse) SetBody(v *JoinClusterResponseBody) *JoinClusterRe
 }
 
 func (s *JoinClusterResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *ExportImageResponseBody) SetRequestId(v string) *ExportImageResponseBod
 }
 
 func (s *ExportImageResponseBody) Validate() error {
-  return dara.Validate(s)
+  if s.Job != nil {
+    if err := s.Job.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type ExportImageResponseBodyJob struct {

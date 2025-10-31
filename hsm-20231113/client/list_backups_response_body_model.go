@@ -104,7 +104,16 @@ func (s *ListBackupsResponseBody) SetTotalCount(v int32) *ListBackupsResponseBod
 }
 
 func (s *ListBackupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Backups != nil {
+		for _, item := range s.Backups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListBackupsResponseBodyBackups struct {

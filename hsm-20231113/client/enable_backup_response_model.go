@@ -59,6 +59,11 @@ func (s *EnableBackupResponse) SetBody(v *EnableBackupResponseBody) *EnableBacku
 }
 
 func (s *EnableBackupResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
