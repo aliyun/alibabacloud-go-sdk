@@ -96,8 +96,9 @@ type DescribeInstanceResponseBodyResult struct {
 	// example:
 	//
 	// true
-	EnablePublic *bool  `json:"enablePublic,omitempty" xml:"enablePublic,omitempty"`
-	EndTime      *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	EnablePublic *bool                                          `json:"enablePublic,omitempty" xml:"enablePublic,omitempty"`
+	EndTime      *int64                                         `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	Endpoints    []*DescribeInstanceResponseBodyResultEndpoints `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
 	// example:
 	//
 	// {"http.cors.allow-credentials":"false"}
@@ -276,6 +277,10 @@ func (s *DescribeInstanceResponseBodyResult) GetEnablePublic() *bool {
 
 func (s *DescribeInstanceResponseBodyResult) GetEndTime() *int64 {
 	return s.EndTime
+}
+
+func (s *DescribeInstanceResponseBodyResult) GetEndpoints() []*DescribeInstanceResponseBodyResultEndpoints {
+	return s.Endpoints
 }
 
 func (s *DescribeInstanceResponseBodyResult) GetEsConfig() map[string]interface{} {
@@ -517,6 +522,11 @@ func (s *DescribeInstanceResponseBodyResult) SetEndTime(v int64) *DescribeInstan
 	return s
 }
 
+func (s *DescribeInstanceResponseBodyResult) SetEndpoints(v []*DescribeInstanceResponseBodyResultEndpoints) *DescribeInstanceResponseBodyResult {
+	s.Endpoints = v
+	return s
+}
+
 func (s *DescribeInstanceResponseBodyResult) SetEsConfig(v map[string]interface{}) *DescribeInstanceResponseBodyResult {
 	s.EsConfig = v
 	return s
@@ -754,6 +764,15 @@ func (s *DescribeInstanceResponseBodyResult) Validate() error {
 	if s.ElasticDataNodeConfiguration != nil {
 		if err := s.ElasticDataNodeConfiguration.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.Endpoints != nil {
+		for _, item := range s.Endpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	if s.IkHotDicts != nil {
@@ -1146,6 +1165,60 @@ func (s *DescribeInstanceResponseBodyResultElasticDataNodeConfiguration) SetSpec
 }
 
 func (s *DescribeInstanceResponseBodyResultElasticDataNodeConfiguration) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeInstanceResponseBodyResultEndpoints struct {
+	// example:
+	//
+	// es-cn-xx-cn-hangzhou-h.elasticsearch.aliyuncs.com
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// example:
+	//
+	// vsw-xxx
+	VswitchId *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-i
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+}
+
+func (s DescribeInstanceResponseBodyResultEndpoints) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeInstanceResponseBodyResultEndpoints) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceResponseBodyResultEndpoints) GetEndpoint() *string {
+	return s.Endpoint
+}
+
+func (s *DescribeInstanceResponseBodyResultEndpoints) GetVswitchId() *string {
+	return s.VswitchId
+}
+
+func (s *DescribeInstanceResponseBodyResultEndpoints) GetZoneId() *string {
+	return s.ZoneId
+}
+
+func (s *DescribeInstanceResponseBodyResultEndpoints) SetEndpoint(v string) *DescribeInstanceResponseBodyResultEndpoints {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyResultEndpoints) SetVswitchId(v string) *DescribeInstanceResponseBodyResultEndpoints {
+	s.VswitchId = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyResultEndpoints) SetZoneId(v string) *DescribeInstanceResponseBodyResultEndpoints {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyResultEndpoints) Validate() error {
 	return dara.Validate(s)
 }
 

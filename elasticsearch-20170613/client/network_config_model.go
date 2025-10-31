@@ -11,8 +11,8 @@ type iNetworkConfig interface {
 	GoString() string
 	SetLbReplica(v int32) *NetworkConfig
 	GetLbReplica() *int32
-	SetLoadBalanceConfig(v *NetworkConfigLoadBalanceConfig) *NetworkConfig
-	GetLoadBalanceConfig() *NetworkConfigLoadBalanceConfig
+	SetLoadBalanceConfig(v []*NetworkConfigLoadBalanceConfig) *NetworkConfig
+	GetLoadBalanceConfig() []*NetworkConfigLoadBalanceConfig
 	SetLoadBalanceType(v string) *NetworkConfig
 	GetLoadBalanceType() *string
 	SetType(v string) *NetworkConfig
@@ -28,8 +28,8 @@ type iNetworkConfig interface {
 }
 
 type NetworkConfig struct {
-	LbReplica         *int32                          `json:"lbReplica,omitempty" xml:"lbReplica,omitempty"`
-	LoadBalanceConfig *NetworkConfigLoadBalanceConfig `json:"loadBalanceConfig,omitempty" xml:"loadBalanceConfig,omitempty" type:"Struct"`
+	LbReplica         *int32                            `json:"lbReplica,omitempty" xml:"lbReplica,omitempty"`
+	LoadBalanceConfig []*NetworkConfigLoadBalanceConfig `json:"loadBalanceConfig,omitempty" xml:"loadBalanceConfig,omitempty" type:"Repeated"`
 	// example:
 	//
 	// DEFAULT
@@ -53,7 +53,7 @@ func (s *NetworkConfig) GetLbReplica() *int32 {
 	return s.LbReplica
 }
 
-func (s *NetworkConfig) GetLoadBalanceConfig() *NetworkConfigLoadBalanceConfig {
+func (s *NetworkConfig) GetLoadBalanceConfig() []*NetworkConfigLoadBalanceConfig {
 	return s.LoadBalanceConfig
 }
 
@@ -86,7 +86,7 @@ func (s *NetworkConfig) SetLbReplica(v int32) *NetworkConfig {
 	return s
 }
 
-func (s *NetworkConfig) SetLoadBalanceConfig(v *NetworkConfigLoadBalanceConfig) *NetworkConfig {
+func (s *NetworkConfig) SetLoadBalanceConfig(v []*NetworkConfigLoadBalanceConfig) *NetworkConfig {
 	s.LoadBalanceConfig = v
 	return s
 }
@@ -123,8 +123,12 @@ func (s *NetworkConfig) SetWhiteIpGroupList(v []*WhiteIpGroup) *NetworkConfig {
 
 func (s *NetworkConfig) Validate() error {
 	if s.LoadBalanceConfig != nil {
-		if err := s.LoadBalanceConfig.Validate(); err != nil {
-			return err
+		for _, item := range s.LoadBalanceConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	if s.WhiteIpGroupList != nil {
@@ -140,7 +144,10 @@ func (s *NetworkConfig) Validate() error {
 }
 
 type NetworkConfigLoadBalanceConfig struct {
-	VsArea    *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
+	VsArea *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
+	// example:
+	//
+	// vsw-xxxx
 	VswitchId *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
 }
 
