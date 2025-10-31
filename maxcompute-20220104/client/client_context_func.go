@@ -1231,6 +1231,14 @@ func (client *Client) GetProjectWithContext(ctx context.Context, projectName *st
 		query["verbose"] = request.Verbose
 	}
 
+	if !dara.IsNil(request.WithQuotaProductType) {
+		query["withQuotaProductType"] = request.WithQuotaProductType
+	}
+
+	if !dara.IsNil(request.WithStorageTierInfo) {
+		query["withStorageTierInfo"] = request.WithStorageTierInfo
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -2693,6 +2701,10 @@ func (client *Client) ListMmsJobsWithContext(ctx context.Context, sourceId *stri
 
 	if !dara.IsNil(request.Stopped) {
 		query["stopped"] = request.Stopped
+	}
+
+	if !dara.IsNil(request.TimerId) {
+		query["timerId"] = request.TimerId
 	}
 
 	if !dara.IsNil(request.Sorter) {

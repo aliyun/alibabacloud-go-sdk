@@ -29,6 +29,8 @@ type iListMmsJobsRequest interface {
 	GetStatus() *string
 	SetStopped(v int64) *ListMmsJobsRequest
 	GetStopped() *int64
+	SetTimerId(v int64) *ListMmsJobsRequest
+	GetTimerId() *int64
 }
 
 type ListMmsJobsRequest struct {
@@ -69,6 +71,10 @@ type ListMmsJobsRequest struct {
 	//
 	// false
 	Stopped *int64 `json:"stopped,omitempty" xml:"stopped,omitempty"`
+	// example:
+	//
+	// 1
+	TimerId *int64 `json:"timerId,omitempty" xml:"timerId,omitempty"`
 }
 
 func (s ListMmsJobsRequest) String() string {
@@ -119,6 +125,10 @@ func (s *ListMmsJobsRequest) GetStopped() *int64 {
 	return s.Stopped
 }
 
+func (s *ListMmsJobsRequest) GetTimerId() *int64 {
+	return s.TimerId
+}
+
 func (s *ListMmsJobsRequest) SetSorter(v *ListMmsJobsRequestSorter) *ListMmsJobsRequest {
 	s.Sorter = v
 	return s
@@ -166,6 +176,11 @@ func (s *ListMmsJobsRequest) SetStatus(v string) *ListMmsJobsRequest {
 
 func (s *ListMmsJobsRequest) SetStopped(v int64) *ListMmsJobsRequest {
 	s.Stopped = &v
+	return s
+}
+
+func (s *ListMmsJobsRequest) SetTimerId(v int64) *ListMmsJobsRequest {
+	s.TimerId = &v
 	return s
 }
 
