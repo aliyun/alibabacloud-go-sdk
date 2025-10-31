@@ -561,6 +561,14 @@ func (client *Client) CreateDetectionRuleWithOptions(request *CreateDetectionRul
 		body["DetectionRuleStatus"] = request.DetectionRuleStatus
 	}
 
+	if !dara.IsNil(request.DetectionRuleTemplateId) {
+		body["DetectionRuleTemplateId"] = request.DetectionRuleTemplateId
+	}
+
+	if !dara.IsNil(request.DetectionRuleTemplateVersion) {
+		body["DetectionRuleTemplateVersion"] = request.DetectionRuleTemplateVersion
+	}
+
 	if !dara.IsNil(request.DetectionRuleType) {
 		body["DetectionRuleType"] = request.DetectionRuleType
 	}

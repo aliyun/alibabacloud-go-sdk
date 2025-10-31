@@ -156,6 +156,10 @@ type ListIncidentsResponseBodyIncidents struct {
 	IncidentStatus *int32 `json:"IncidentStatus,omitempty" xml:"IncidentStatus,omitempty"`
 	// example:
 	//
+	// ["sys:data_source:siem","sys:trigger_type:auto"]
+	IncidentTags *string `json:"IncidentTags,omitempty" xml:"IncidentTags,omitempty"`
+	// example:
+	//
 	// dbb1d7211c9285c862aa89385098****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// example:
@@ -200,6 +204,10 @@ func (s *ListIncidentsResponseBodyIncidents) GetIncidentStatus() *int32 {
 	return s.IncidentStatus
 }
 
+func (s *ListIncidentsResponseBodyIncidents) GetIncidentTags() *string {
+	return s.IncidentTags
+}
+
 func (s *ListIncidentsResponseBodyIncidents) GetIncidentUuid() *string {
 	return s.IncidentUuid
 }
@@ -237,6 +245,11 @@ func (s *ListIncidentsResponseBodyIncidents) SetIncidentRemark(v string) *ListIn
 
 func (s *ListIncidentsResponseBodyIncidents) SetIncidentStatus(v int32) *ListIncidentsResponseBodyIncidents {
 	s.IncidentStatus = &v
+	return s
+}
+
+func (s *ListIncidentsResponseBodyIncidents) SetIncidentTags(v string) *ListIncidentsResponseBodyIncidents {
+	s.IncidentTags = &v
 	return s
 }
 

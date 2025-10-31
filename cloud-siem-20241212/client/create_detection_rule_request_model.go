@@ -35,6 +35,10 @@ type iCreateDetectionRuleRequest interface {
 	GetDetectionRuleName() *string
 	SetDetectionRuleStatus(v string) *CreateDetectionRuleRequest
 	GetDetectionRuleStatus() *string
+	SetDetectionRuleTemplateId(v string) *CreateDetectionRuleRequest
+	GetDetectionRuleTemplateId() *string
+	SetDetectionRuleTemplateVersion(v string) *CreateDetectionRuleRequest
+	GetDetectionRuleTemplateVersion() *string
 	SetDetectionRuleType(v string) *CreateDetectionRuleRequest
 	GetDetectionRuleType() *string
 	SetEntityMappings(v string) *CreateDetectionRuleRequest
@@ -158,6 +162,14 @@ type CreateDetectionRuleRequest struct {
 	//
 	// 0
 	DetectionRuleStatus *string `json:"DetectionRuleStatus,omitempty" xml:"DetectionRuleStatus,omitempty"`
+	// example:
+	//
+	// cfw-out-ip_aegis-netstat
+	DetectionRuleTemplateId *string `json:"DetectionRuleTemplateId,omitempty" xml:"DetectionRuleTemplateId,omitempty"`
+	// example:
+	//
+	// v1.0.0
+	DetectionRuleTemplateVersion *string `json:"DetectionRuleTemplateVersion,omitempty" xml:"DetectionRuleTemplateVersion,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -300,6 +312,14 @@ func (s *CreateDetectionRuleRequest) GetDetectionRuleStatus() *string {
 	return s.DetectionRuleStatus
 }
 
+func (s *CreateDetectionRuleRequest) GetDetectionRuleTemplateId() *string {
+	return s.DetectionRuleTemplateId
+}
+
+func (s *CreateDetectionRuleRequest) GetDetectionRuleTemplateVersion() *string {
+	return s.DetectionRuleTemplateVersion
+}
+
 func (s *CreateDetectionRuleRequest) GetDetectionRuleType() *string {
 	return s.DetectionRuleType
 }
@@ -430,6 +450,16 @@ func (s *CreateDetectionRuleRequest) SetDetectionRuleName(v string) *CreateDetec
 
 func (s *CreateDetectionRuleRequest) SetDetectionRuleStatus(v string) *CreateDetectionRuleRequest {
 	s.DetectionRuleStatus = &v
+	return s
+}
+
+func (s *CreateDetectionRuleRequest) SetDetectionRuleTemplateId(v string) *CreateDetectionRuleRequest {
+	s.DetectionRuleTemplateId = &v
+	return s
+}
+
+func (s *CreateDetectionRuleRequest) SetDetectionRuleTemplateVersion(v string) *CreateDetectionRuleRequest {
+	s.DetectionRuleTemplateVersion = &v
 	return s
 }
 
