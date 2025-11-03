@@ -142,7 +142,16 @@ func (s *ListArtifactSubscriptionRuleResponseBody) SetTotalCount(v int32) *ListA
 }
 
 func (s *ListArtifactSubscriptionRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListArtifactSubscriptionRuleResponseBodyRules struct {
@@ -195,7 +204,8 @@ type ListArtifactSubscriptionRuleResponseBodyRules struct {
 	// example:
 	//
 	// crasr-mdbpung4i1rm****
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleId       *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	SourceDomain *string `json:"SourceDomain,omitempty" xml:"SourceDomain,omitempty"`
 	// The source namespace.
 	//
 	// example:
@@ -280,6 +290,10 @@ func (s *ListArtifactSubscriptionRuleResponseBodyRules) GetRuleId() *string {
 	return s.RuleId
 }
 
+func (s *ListArtifactSubscriptionRuleResponseBodyRules) GetSourceDomain() *string {
+	return s.SourceDomain
+}
+
 func (s *ListArtifactSubscriptionRuleResponseBodyRules) GetSourceNamespaceName() *string {
 	return s.SourceNamespaceName
 }
@@ -342,6 +356,11 @@ func (s *ListArtifactSubscriptionRuleResponseBodyRules) SetRepoName(v string) *L
 
 func (s *ListArtifactSubscriptionRuleResponseBodyRules) SetRuleId(v string) *ListArtifactSubscriptionRuleResponseBodyRules {
 	s.RuleId = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleResponseBodyRules) SetSourceDomain(v string) *ListArtifactSubscriptionRuleResponseBodyRules {
+	s.SourceDomain = &v
 	return s
 }
 

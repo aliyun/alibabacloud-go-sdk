@@ -59,5 +59,10 @@ func (s *CancelRepoBuildRecordResponse) SetBody(v *CancelRepoBuildRecordResponse
 }
 
 func (s *CancelRepoBuildRecordResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -33,6 +33,8 @@ type iGetArtifactSubscriptionRuleResponseBody interface {
 	GetRequestId() *string
 	SetRuleId(v string) *GetArtifactSubscriptionRuleResponseBody
 	GetRuleId() *string
+	SetSourceDomain(v string) *GetArtifactSubscriptionRuleResponseBody
+	GetSourceDomain() *string
 	SetSourceNamespaceName(v string) *GetArtifactSubscriptionRuleResponseBody
 	GetSourceNamespaceName() *string
 	SetSourceProvider(v string) *GetArtifactSubscriptionRuleResponseBody
@@ -117,7 +119,8 @@ type GetArtifactSubscriptionRuleResponseBody struct {
 	// example:
 	//
 	// crasr-mdbpung4i1rm****
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleId       *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	SourceDomain *string `json:"SourceDomain,omitempty" xml:"SourceDomain,omitempty"`
 	// The name of the source namespace.
 	//
 	// example:
@@ -214,6 +217,10 @@ func (s *GetArtifactSubscriptionRuleResponseBody) GetRuleId() *string {
 	return s.RuleId
 }
 
+func (s *GetArtifactSubscriptionRuleResponseBody) GetSourceDomain() *string {
+	return s.SourceDomain
+}
+
 func (s *GetArtifactSubscriptionRuleResponseBody) GetSourceNamespaceName() *string {
 	return s.SourceNamespaceName
 }
@@ -291,6 +298,11 @@ func (s *GetArtifactSubscriptionRuleResponseBody) SetRequestId(v string) *GetArt
 
 func (s *GetArtifactSubscriptionRuleResponseBody) SetRuleId(v string) *GetArtifactSubscriptionRuleResponseBody {
 	s.RuleId = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionRuleResponseBody) SetSourceDomain(v string) *GetArtifactSubscriptionRuleResponseBody {
+	s.SourceDomain = &v
 	return s
 }
 

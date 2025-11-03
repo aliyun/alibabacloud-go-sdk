@@ -155,7 +155,12 @@ func (s *GetRepoBuildRecordResponseBody) SetStatus(v string) *GetRepoBuildRecord
 }
 
 func (s *GetRepoBuildRecordResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Image != nil {
+		if err := s.Image.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRepoBuildRecordResponseBodyImage struct {

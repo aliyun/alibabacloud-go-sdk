@@ -142,7 +142,16 @@ func (s *ListArtifactLifecycleRuleResponseBody) SetTotalCount(v int32) *ListArti
 }
 
 func (s *ListArtifactLifecycleRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListArtifactLifecycleRuleResponseBodyRules struct {
@@ -362,7 +371,16 @@ func (s *ListArtifactLifecycleRuleResponseBodyRules) SetTagRegexp(v string) *Lis
 }
 
 func (s *ListArtifactLifecycleRuleResponseBodyRules) Validate() error {
-	return dara.Validate(s)
+	if s.Policies != nil {
+		for _, item := range s.Policies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListArtifactLifecycleRuleResponseBodyRulesPolicies struct {
@@ -407,7 +425,17 @@ func (s *ListArtifactLifecycleRuleResponseBodyRulesPolicies) SetType(v string) *
 }
 
 func (s *ListArtifactLifecycleRuleResponseBodyRulesPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.Condition != nil {
+		if err := s.Condition.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Filter != nil {
+		if err := s.Filter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListArtifactLifecycleRuleResponseBodyRulesPoliciesCondition struct {

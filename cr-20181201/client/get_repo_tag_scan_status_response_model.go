@@ -59,5 +59,10 @@ func (s *GetRepoTagScanStatusResponse) SetBody(v *GetRepoTagScanStatusResponseBo
 }
 
 func (s *GetRepoTagScanStatusResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -241,7 +241,16 @@ func (s *GetInstanceResponseBody) SetTags(v []*GetInstanceResponseBodyTags) *Get
 }
 
 func (s *GetInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstanceResponseBodyTags struct {

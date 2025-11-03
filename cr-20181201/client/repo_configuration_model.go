@@ -61,7 +61,12 @@ func (s *RepoConfiguration) SetTagImmutability(v bool) *RepoConfiguration {
 }
 
 func (s *RepoConfiguration) Validate() error {
-	return dara.Validate(s)
+	if s.ArtifactBuildRuleParameters != nil {
+		if err := s.ArtifactBuildRuleParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RepoConfigurationArtifactBuildRuleParameters struct {

@@ -59,5 +59,10 @@ func (s *CreateChainResponse) SetBody(v *CreateChainResponseBody) *CreateChainRe
 }
 
 func (s *CreateChainResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

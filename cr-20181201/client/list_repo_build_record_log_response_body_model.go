@@ -138,7 +138,16 @@ func (s *ListRepoBuildRecordLogResponseBody) SetTotalCount(v string) *ListRepoBu
 }
 
 func (s *ListRepoBuildRecordLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BuildRecordLogs != nil {
+		for _, item := range s.BuildRecordLogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRepoBuildRecordLogResponseBodyBuildRecordLogs struct {

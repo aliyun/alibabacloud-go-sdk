@@ -209,7 +209,17 @@ func (s *GetArtifactBuildTaskResponseBody) SetTaskStatus(v string) *GetArtifactB
 }
 
 func (s *GetArtifactBuildTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SourceArtifact != nil {
+		if err := s.SourceArtifact.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TargetArtifact != nil {
+		if err := s.TargetArtifact.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetArtifactBuildTaskResponseBodySourceArtifact struct {

@@ -138,7 +138,16 @@ func (s *ListInstanceResponseBody) SetTotalCount(v int32) *ListInstanceResponseB
 }
 
 func (s *ListInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstanceResponseBodyInstances struct {
@@ -299,7 +308,16 @@ func (s *ListInstanceResponseBodyInstances) SetTags(v []*ListInstanceResponseBod
 }
 
 func (s *ListInstanceResponseBodyInstances) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstanceResponseBodyInstancesTags struct {

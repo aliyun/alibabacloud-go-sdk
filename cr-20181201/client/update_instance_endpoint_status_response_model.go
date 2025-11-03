@@ -59,5 +59,10 @@ func (s *UpdateInstanceEndpointStatusResponse) SetBody(v *UpdateInstanceEndpoint
 }
 
 func (s *UpdateInstanceEndpointStatusResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -28,10 +28,16 @@ type iGetArtifactBuildRuleResponseBody interface {
 }
 
 type GetArtifactBuildRuleResponseBody struct {
+	// The type of the artifact. Valid values:
+	//
+	// 	- `ACCELERATED_IMAGE`: accelerated images.
+	//
 	// example:
 	//
 	// ACCELERATED_IMAGE
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	// The ID of the artifact building rule.
+	//
 	// example:
 	//
 	// crabr-o2670wqz2n70****
@@ -40,19 +46,36 @@ type GetArtifactBuildRuleResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the API request is successful. Valid values:
+	//
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
 	// example:
 	//
 	// true
-	IsSuccess  *bool                                       `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// Additional parameters.
 	Parameters *GetArtifactBuildRuleResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7A3E98F6-296C-54AC-A612-B75E7777D4C1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the effective range of the artifact building rule.
+	//
+	// 	- The parameter value is the ID of the image repository.
+	//
 	// example:
 	//
 	// crr-8dz3aedjqlmk****
 	ScopeId *string `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
+	// The effective range of the artifact building rule. Valid values:
+	//
+	// 	- `REPOSITORY`: The artifact building rule is effective in the repository level.
+	//
 	// example:
 	//
 	// REPOSITORY
@@ -140,12 +163,27 @@ func (s *GetArtifactBuildRuleResponseBody) SetScopeType(v string) *GetArtifactBu
 }
 
 func (s *GetArtifactBuildRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Parameters != nil {
+		if err := s.Parameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetArtifactBuildRuleResponseBodyParameters struct {
-	ImageIndexOnly *bool   `json:"ImageIndexOnly,omitempty" xml:"ImageIndexOnly,omitempty"`
-	PriorityFile   *string `json:"PriorityFile,omitempty" xml:"PriorityFile,omitempty"`
+	// Indicates whether the index-only mode is enabled.
+	//
+	// example:
+	//
+	// false
+	ImageIndexOnly *bool `json:"ImageIndexOnly,omitempty" xml:"ImageIndexOnly,omitempty"`
+	// The list of files that you want to prefetch when you use the image acceleration feature. Each entry contains the Base64-encoded absolute path of a file.
+	//
+	// example:
+	//
+	// L2hvbWUvdGVzdC8=
+	PriorityFile *string `json:"PriorityFile,omitempty" xml:"PriorityFile,omitempty"`
 }
 
 func (s GetArtifactBuildRuleResponseBodyParameters) String() string {

@@ -138,7 +138,16 @@ func (s *ListChartRepositoryResponseBody) SetTotalCount(v string) *ListChartRepo
 }
 
 func (s *ListChartRepositoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Repositories != nil {
+		for _, item := range s.Repositories {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListChartRepositoryResponseBodyRepositories struct {

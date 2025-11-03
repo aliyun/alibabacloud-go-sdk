@@ -303,7 +303,26 @@ func (s *GetRepoSyncTaskResponseBody) SetTaskTrigger(v string) *GetRepoSyncTaskR
 }
 
 func (s *GetRepoSyncTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ImageFrom != nil {
+		if err := s.ImageFrom.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageTo != nil {
+		if err := s.ImageTo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LayerTasks != nil {
+		for _, item := range s.LayerTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRepoSyncTaskResponseBodyImageFrom struct {

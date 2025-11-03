@@ -113,5 +113,10 @@ func (s *UpdateNamespaceRequest) SetNamespaceName(v string) *UpdateNamespaceRequ
 }
 
 func (s *UpdateNamespaceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DefaultRepoConfiguration != nil {
+		if err := s.DefaultRepoConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

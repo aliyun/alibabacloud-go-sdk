@@ -138,7 +138,16 @@ func (s *ListRepoSyncRuleResponseBody) SetTotalCount(v int32) *ListRepoSyncRuleR
 }
 
 func (s *ListRepoSyncRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SyncRules != nil {
+		for _, item := range s.SyncRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRepoSyncRuleResponseBodySyncRules struct {

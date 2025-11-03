@@ -142,7 +142,16 @@ func (s *ListNamespaceResponseBody) SetTotalCount(v string) *ListNamespaceRespon
 }
 
 func (s *ListNamespaceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Namespaces != nil {
+		for _, item := range s.Namespaces {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNamespaceResponseBodyNamespaces struct {
@@ -282,5 +291,10 @@ func (s *ListNamespaceResponseBodyNamespaces) SetResourceGroupId(v string) *List
 }
 
 func (s *ListNamespaceResponseBodyNamespaces) Validate() error {
-	return dara.Validate(s)
+	if s.DefaultRepoConfiguration != nil {
+		if err := s.DefaultRepoConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

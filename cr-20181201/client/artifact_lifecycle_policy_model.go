@@ -59,7 +59,17 @@ func (s *ArtifactLifecyclePolicy) SetType(v string) *ArtifactLifecyclePolicy {
 }
 
 func (s *ArtifactLifecyclePolicy) Validate() error {
-	return dara.Validate(s)
+	if s.Condition != nil {
+		if err := s.Condition.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Filter != nil {
+		if err := s.Filter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ArtifactLifecyclePolicyCondition struct {

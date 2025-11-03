@@ -59,5 +59,10 @@ func (s *GetRepoBuildRecordStatusResponse) SetBody(v *GetRepoBuildRecordStatusRe
 }
 
 func (s *GetRepoBuildRecordStatusResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

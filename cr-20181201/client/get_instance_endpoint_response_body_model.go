@@ -151,7 +151,25 @@ func (s *GetInstanceEndpointResponseBody) SetStatus(v string) *GetInstanceEndpoi
 }
 
 func (s *GetInstanceEndpointResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AclEntries != nil {
+		for _, item := range s.AclEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Domains != nil {
+		for _, item := range s.Domains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstanceEndpointResponseBodyAclEntries struct {

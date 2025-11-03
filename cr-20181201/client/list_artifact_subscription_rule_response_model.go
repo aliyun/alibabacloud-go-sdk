@@ -59,5 +59,10 @@ func (s *ListArtifactSubscriptionRuleResponse) SetBody(v *ListArtifactSubscripti
 }
 
 func (s *ListArtifactSubscriptionRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

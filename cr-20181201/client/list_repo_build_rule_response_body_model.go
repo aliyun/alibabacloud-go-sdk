@@ -142,7 +142,16 @@ func (s *ListRepoBuildRuleResponseBody) SetTotalCount(v string) *ListRepoBuildRu
 }
 
 func (s *ListRepoBuildRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BuildRules != nil {
+		for _, item := range s.BuildRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRepoBuildRuleResponseBodyBuildRules struct {

@@ -59,5 +59,10 @@ func (s *DeleteRepositoryResponse) SetBody(v *DeleteRepositoryResponseBody) *Del
 }
 
 func (s *DeleteRepositoryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

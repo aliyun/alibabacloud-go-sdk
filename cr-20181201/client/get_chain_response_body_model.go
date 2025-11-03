@@ -212,7 +212,12 @@ func (s *GetChainResponseBody) SetScopeType(v string) *GetChainResponseBody {
 }
 
 func (s *GetChainResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ChainConfig != nil {
+		if err := s.ChainConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetChainResponseBodyChainConfig struct {
@@ -286,7 +291,25 @@ func (s *GetChainResponseBodyChainConfig) SetVersion(v string) *GetChainResponse
 }
 
 func (s *GetChainResponseBodyChainConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Routers != nil {
+		for _, item := range s.Routers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetChainResponseBodyChainConfigNodes struct {
@@ -337,7 +360,12 @@ func (s *GetChainResponseBodyChainConfigNodes) SetNodeName(v string) *GetChainRe
 }
 
 func (s *GetChainResponseBodyChainConfigNodes) Validate() error {
-	return dara.Validate(s)
+	if s.NodeConfig != nil {
+		if err := s.NodeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetChainResponseBodyChainConfigNodesNodeConfig struct {
@@ -398,7 +426,12 @@ func (s *GetChainResponseBodyChainConfigNodesNodeConfig) SetTimeout(v int64) *Ge
 }
 
 func (s *GetChainResponseBodyChainConfigNodesNodeConfig) Validate() error {
-	return dara.Validate(s)
+	if s.DenyPolicy != nil {
+		if err := s.DenyPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetChainResponseBodyChainConfigNodesNodeConfigDenyPolicy struct {
@@ -539,7 +572,17 @@ func (s *GetChainResponseBodyChainConfigRouters) SetTo(v *GetChainResponseBodyCh
 }
 
 func (s *GetChainResponseBodyChainConfigRouters) Validate() error {
-	return dara.Validate(s)
+	if s.From != nil {
+		if err := s.From.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.To != nil {
+		if err := s.To.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetChainResponseBodyChainConfigRoutersFrom struct {

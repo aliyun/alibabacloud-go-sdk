@@ -59,5 +59,10 @@ func (s *ListInstanceEndpointResponse) SetBody(v *ListInstanceEndpointResponseBo
 }
 
 func (s *ListInstanceEndpointResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

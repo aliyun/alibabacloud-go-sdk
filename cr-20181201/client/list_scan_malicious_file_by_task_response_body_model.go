@@ -142,7 +142,16 @@ func (s *ListScanMaliciousFileByTaskResponseBody) SetTotalCount(v int32) *ListSc
 }
 
 func (s *ListScanMaliciousFileByTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ScanMaliciousFiles != nil {
+		for _, item := range s.ScanMaliciousFiles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles struct {

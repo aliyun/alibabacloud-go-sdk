@@ -138,7 +138,16 @@ func (s *ListChartReleaseResponseBody) SetTotalCount(v string) *ListChartRelease
 }
 
 func (s *ListChartReleaseResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ChartReleases != nil {
+		for _, item := range s.ChartReleases {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListChartReleaseResponseBodyChartReleases struct {

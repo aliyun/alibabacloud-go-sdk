@@ -59,5 +59,10 @@ func (s *GetChartNamespaceResponse) SetBody(v *GetChartNamespaceResponseBody) *G
 }
 
 func (s *GetChartNamespaceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

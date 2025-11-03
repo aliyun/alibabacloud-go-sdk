@@ -138,7 +138,16 @@ func (s *ListRepoSyncTaskResponseBody) SetTotalCount(v string) *ListRepoSyncTask
 }
 
 func (s *ListRepoSyncTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SyncTasks != nil {
+		for _, item := range s.SyncTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRepoSyncTaskResponseBodySyncTasks struct {
@@ -370,7 +379,17 @@ func (s *ListRepoSyncTaskResponseBodySyncTasks) SetTaskTrigger(v string) *ListRe
 }
 
 func (s *ListRepoSyncTaskResponseBodySyncTasks) Validate() error {
-	return dara.Validate(s)
+	if s.ImageFrom != nil {
+		if err := s.ImageFrom.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageTo != nil {
+		if err := s.ImageTo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRepoSyncTaskResponseBodySyncTasksImageFrom struct {

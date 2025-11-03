@@ -87,7 +87,16 @@ func (s *ListInstanceEndpointResponseBody) SetRequestId(v string) *ListInstanceE
 }
 
 func (s *ListInstanceEndpointResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Endpoints != nil {
+		for _, item := range s.Endpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstanceEndpointResponseBodyEndpoints struct {
@@ -195,7 +204,34 @@ func (s *ListInstanceEndpointResponseBodyEndpoints) SetStatus(v string) *ListIns
 }
 
 func (s *ListInstanceEndpointResponseBodyEndpoints) Validate() error {
-	return dara.Validate(s)
+	if s.AclEntries != nil {
+		for _, item := range s.AclEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Domains != nil {
+		for _, item := range s.Domains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LinkedVpcs != nil {
+		for _, item := range s.LinkedVpcs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstanceEndpointResponseBodyEndpointsAclEntries struct {

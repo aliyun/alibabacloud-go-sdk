@@ -138,7 +138,16 @@ func (s *ListChartNamespaceResponseBody) SetTotalCount(v string) *ListChartNames
 }
 
 func (s *ListChartNamespaceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Namespaces != nil {
+		for _, item := range s.Namespaces {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListChartNamespaceResponseBodyNamespaces struct {

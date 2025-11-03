@@ -155,7 +155,16 @@ func (s *ListChainInstanceResponseBody) SetTotalCount(v int32) *ListChainInstanc
 }
 
 func (s *ListChainInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ChainInstances != nil {
+		for _, item := range s.ChainInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListChainInstanceResponseBodyChainInstances struct {
@@ -302,7 +311,12 @@ func (s *ListChainInstanceResponseBodyChainInstances) SetStatus(v string) *ListC
 }
 
 func (s *ListChainInstanceResponseBodyChainInstances) Validate() error {
-	return dara.Validate(s)
+	if s.Chain != nil {
+		if err := s.Chain.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListChainInstanceResponseBodyChainInstancesChain struct {

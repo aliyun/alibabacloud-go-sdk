@@ -59,5 +59,10 @@ func (s *CreateInstanceVpcEndpointLinkedVpcResponse) SetBody(v *CreateInstanceVp
 }
 
 func (s *CreateInstanceVpcEndpointLinkedVpcResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

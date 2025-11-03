@@ -108,7 +108,16 @@ func (s *ListArtifactBuildTaskLogResponseBody) SetTotalCount(v int32) *ListArtif
 }
 
 func (s *ListArtifactBuildTaskLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BuildTaskLogs != nil {
+		for _, item := range s.BuildTaskLogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListArtifactBuildTaskLogResponseBodyBuildTaskLogs struct {

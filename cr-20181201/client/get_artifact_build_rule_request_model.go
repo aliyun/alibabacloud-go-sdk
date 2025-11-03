@@ -22,24 +22,40 @@ type iGetArtifactBuildRuleRequest interface {
 }
 
 type GetArtifactBuildRuleRequest struct {
+	// The type of the artifact.
+	//
+	// 	- `ACCELERATED_IMAGE`: accelerated images.
+	//
 	// example:
 	//
 	// ACCELERATED_IMAGE
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	// The ID of the artifact building rule.
+	//
 	// example:
 	//
 	// crabr-o2670wqz2n70****
 	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
+	// The ID of the Container Registry instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the effective range of the artifact building rule.
+	//
+	// 	- Set the value to the ID of the image repository.
+	//
 	// example:
 	//
 	// crr-8dz3aedjqlmk****
 	ScopeId *string `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
+	// The effective range of the artifact building rule. Valid values:
+	//
+	// 	- `REPOSITORY`: The artifact building rule is effective in the repository level.
+	//
 	// example:
 	//
 	// REPOSITORY

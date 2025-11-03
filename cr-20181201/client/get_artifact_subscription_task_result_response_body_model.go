@@ -142,7 +142,16 @@ func (s *GetArtifactSubscriptionTaskResultResponseBody) SetTotalCount(v int32) *
 }
 
 func (s *GetArtifactSubscriptionTaskResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TaskResults != nil {
+		for _, item := range s.TaskResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetArtifactSubscriptionTaskResultResponseBodyTaskResults struct {

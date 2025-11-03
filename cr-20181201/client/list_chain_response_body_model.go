@@ -138,7 +138,16 @@ func (s *ListChainResponseBody) SetTotalCount(v int32) *ListChainResponseBody {
 }
 
 func (s *ListChainResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Chains != nil {
+		for _, item := range s.Chains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListChainResponseBodyChains struct {

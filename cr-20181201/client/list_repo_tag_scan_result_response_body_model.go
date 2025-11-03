@@ -142,7 +142,16 @@ func (s *ListRepoTagScanResultResponseBody) SetVulnerabilities(v []*ListRepoTagS
 }
 
 func (s *ListRepoTagScanResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Vulnerabilities != nil {
+		for _, item := range s.Vulnerabilities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRepoTagScanResultResponseBodyVulnerabilities struct {

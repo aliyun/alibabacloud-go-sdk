@@ -54,7 +54,7 @@ type GetInstanceVpcEndpointResponseBody struct {
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The VPCs that are added to the access control list.
+	// List of linked VPCs
 	LinkedVpcs []*GetInstanceVpcEndpointResponseBodyLinkedVpcs `json:"LinkedVpcs,omitempty" xml:"LinkedVpcs,omitempty" type:"Repeated"`
 	// The name of the modules that can be accessed. Valid values:
 	//
@@ -146,7 +146,16 @@ func (s *GetInstanceVpcEndpointResponseBody) SetRequestId(v string) *GetInstance
 }
 
 func (s *GetInstanceVpcEndpointResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LinkedVpcs != nil {
+		for _, item := range s.LinkedVpcs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstanceVpcEndpointResponseBodyLinkedVpcs struct {
@@ -162,6 +171,8 @@ type GetInstanceVpcEndpointResponseBodyLinkedVpcs struct {
 	//
 	// 192.168.10.11
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The error message detected in the linked VPC access control.
+	//
 	// example:
 	//
 	// PRIVATE_ZONE_CONFLICT_AT_{private_zone_id}

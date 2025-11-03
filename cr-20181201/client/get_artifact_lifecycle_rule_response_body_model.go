@@ -311,7 +311,16 @@ func (s *GetArtifactLifecycleRuleResponseBody) SetTagRegexp(v string) *GetArtifa
 }
 
 func (s *GetArtifactLifecycleRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Policies != nil {
+		for _, item := range s.Policies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetArtifactLifecycleRuleResponseBodyPolicies struct {
@@ -356,7 +365,17 @@ func (s *GetArtifactLifecycleRuleResponseBodyPolicies) SetType(v string) *GetArt
 }
 
 func (s *GetArtifactLifecycleRuleResponseBodyPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.Condition != nil {
+		if err := s.Condition.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Filter != nil {
+		if err := s.Filter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetArtifactLifecycleRuleResponseBodyPoliciesCondition struct {

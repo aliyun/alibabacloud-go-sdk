@@ -91,7 +91,16 @@ func (s *ListEventCenterRuleNameResponseBody) SetRuleNames(v []*ListEventCenterR
 }
 
 func (s *ListEventCenterRuleNameResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RuleNames != nil {
+		for _, item := range s.RuleNames {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEventCenterRuleNameResponseBodyRuleNames struct {

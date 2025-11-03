@@ -59,5 +59,10 @@ func (s *CreateRepoTagResponse) SetBody(v *CreateRepoTagResponseBody) *CreateRep
 }
 
 func (s *CreateRepoTagResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
