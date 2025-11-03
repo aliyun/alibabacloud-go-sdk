@@ -78,7 +78,7 @@ type UpdateSubs700Request struct {
 	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// 10000*****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// example:
 	//

@@ -9,6 +9,10 @@ type iUnbindSubs700Request interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetIndustrialId(v string) *UnbindSubs700Request
+	GetIndustrialId() *string
+	SetOrderId(v string) *UnbindSubs700Request
+	GetOrderId() *string
 	SetOwnerId(v int64) *UnbindSubs700Request
 	GetOwnerId() *int64
 	SetPoolKey(v string) *UnbindSubs700Request
@@ -24,7 +28,15 @@ type iUnbindSubs700Request interface {
 }
 
 type UnbindSubs700Request struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 700.100.1/12345678
+	IndustrialId *string `json:"IndustrialId,omitempty" xml:"IndustrialId,omitempty"`
+	// example:
+	//
+	// 12345678
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -55,6 +67,14 @@ func (s UnbindSubs700Request) GoString() string {
 	return s.String()
 }
 
+func (s *UnbindSubs700Request) GetIndustrialId() *string {
+	return s.IndustrialId
+}
+
+func (s *UnbindSubs700Request) GetOrderId() *string {
+	return s.OrderId
+}
+
 func (s *UnbindSubs700Request) GetOwnerId() *int64 {
 	return s.OwnerId
 }
@@ -77,6 +97,16 @@ func (s *UnbindSubs700Request) GetSubsId() *int64 {
 
 func (s *UnbindSubs700Request) GetTelX() *string {
 	return s.TelX
+}
+
+func (s *UnbindSubs700Request) SetIndustrialId(v string) *UnbindSubs700Request {
+	s.IndustrialId = &v
+	return s
+}
+
+func (s *UnbindSubs700Request) SetOrderId(v string) *UnbindSubs700Request {
+	s.OrderId = &v
+	return s
 }
 
 func (s *UnbindSubs700Request) SetOwnerId(v int64) *UnbindSubs700Request {

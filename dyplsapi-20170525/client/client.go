@@ -5415,6 +5415,14 @@ func (client *Client) UnbindSubs700WithOptions(request *UnbindSubs700Request, ru
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.IndustrialId) {
+		query["IndustrialId"] = request.IndustrialId
+	}
+
+	if !dara.IsNil(request.OrderId) {
+		query["OrderId"] = request.OrderId
+	}
+
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
 	}
