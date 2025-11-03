@@ -74,7 +74,16 @@ func (s *ListAbnormalyEventsResponseBody) SetTotal(v int32) *ListAbnormalyEvents
 }
 
 func (s *ListAbnormalyEventsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAbnormalyEventsResponseBodyData struct {
@@ -241,7 +250,21 @@ func (s *ListAbnormalyEventsResponseBodyData) SetUuid(v string) *ListAbnormalyEv
 }
 
 func (s *ListAbnormalyEventsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Opts != nil {
+		for _, item := range s.Opts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RawMetrics != nil {
+		if err := s.RawMetrics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAbnormalyEventsResponseBodyDataOpts struct {
@@ -286,7 +309,12 @@ func (s *ListAbnormalyEventsResponseBodyDataOpts) SetType(v string) *ListAbnorma
 }
 
 func (s *ListAbnormalyEventsResponseBodyDataOpts) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAbnormalyEventsResponseBodyDataOptsResult struct {

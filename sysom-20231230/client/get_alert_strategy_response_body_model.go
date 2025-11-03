@@ -82,7 +82,12 @@ func (s *GetAlertStrategyResponseBody) SetRequestId(v string) *GetAlertStrategyR
 }
 
 func (s *GetAlertStrategyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAlertStrategyResponseBodyData struct {
@@ -97,7 +102,8 @@ type GetAlertStrategyResponseBodyData struct {
 	// example:
 	//
 	// 1
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	Id       *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	K8sLabel *bool  `json:"k8sLabel,omitempty" xml:"k8sLabel,omitempty"`
 	// example:
 	//
 	// strategy1
@@ -133,6 +139,10 @@ func (s *GetAlertStrategyResponseBodyData) GetId() *int64 {
 	return s.Id
 }
 
+func (s *GetAlertStrategyResponseBodyData) GetK8sLabel() *bool {
+	return s.K8sLabel
+}
+
 func (s *GetAlertStrategyResponseBodyData) GetName() *string {
 	return s.Name
 }
@@ -164,6 +174,11 @@ func (s *GetAlertStrategyResponseBodyData) SetId(v int64) *GetAlertStrategyRespo
 	return s
 }
 
+func (s *GetAlertStrategyResponseBodyData) SetK8sLabel(v bool) *GetAlertStrategyResponseBodyData {
+	s.K8sLabel = &v
+	return s
+}
+
 func (s *GetAlertStrategyResponseBodyData) SetName(v string) *GetAlertStrategyResponseBodyData {
 	s.Name = &v
 	return s
@@ -185,7 +200,12 @@ func (s *GetAlertStrategyResponseBodyData) SetUpdatedAt(v int64) *GetAlertStrate
 }
 
 func (s *GetAlertStrategyResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Strategy != nil {
+		if err := s.Strategy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAlertStrategyResponseBodyDataStrategy struct {

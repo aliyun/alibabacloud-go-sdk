@@ -77,7 +77,12 @@ func (s *GetAgentResponseBody) SetMessage(v string) *GetAgentResponseBody {
 }
 
 func (s *GetAgentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAgentResponseBodyData struct {
@@ -172,7 +177,16 @@ func (s *GetAgentResponseBodyData) SetVersions(v []*GetAgentResponseBodyDataVers
 }
 
 func (s *GetAgentResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Versions != nil {
+		for _, item := range s.Versions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAgentResponseBodyDataVersions struct {

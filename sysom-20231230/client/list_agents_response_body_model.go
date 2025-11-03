@@ -89,7 +89,16 @@ func (s *ListAgentsResponseBody) SetTotal(v int64) *ListAgentsResponseBody {
 }
 
 func (s *ListAgentsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAgentsResponseBodyData struct {
@@ -193,7 +202,16 @@ func (s *ListAgentsResponseBodyData) SetVersions(v []*ListAgentsResponseBodyData
 }
 
 func (s *ListAgentsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Versions != nil {
+		for _, item := range s.Versions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAgentsResponseBodyDataVersions struct {

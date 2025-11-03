@@ -49,7 +49,17 @@ func (s *StartAIDiffAnalysisRequest) SetTask2(v *StartAIDiffAnalysisRequestTask2
 }
 
 func (s *StartAIDiffAnalysisRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Task1 != nil {
+		if err := s.Task1.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Task2 != nil {
+		if err := s.Task2.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartAIDiffAnalysisRequestTask1 struct {

@@ -80,7 +80,12 @@ func (s *UninstallAgentForClusterResponseBody) SetMessage(v string) *UninstallAg
 }
 
 func (s *UninstallAgentForClusterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UninstallAgentForClusterResponseBodyData struct {

@@ -62,7 +62,16 @@ func (s *UpgradeAgentRequest) SetInstances(v []*UpgradeAgentRequestInstances) *U
 }
 
 func (s *UpgradeAgentRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpgradeAgentRequestInstances struct {

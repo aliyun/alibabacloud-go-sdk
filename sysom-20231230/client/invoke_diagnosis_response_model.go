@@ -59,5 +59,10 @@ func (s *InvokeDiagnosisResponse) SetBody(v *InvokeDiagnosisResponseBody) *Invok
 }
 
 func (s *InvokeDiagnosisResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

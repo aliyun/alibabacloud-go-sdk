@@ -11,6 +11,8 @@ type iCreateAlertStrategyRequest interface {
 	GoString() string
 	SetEnabled(v bool) *CreateAlertStrategyRequest
 	GetEnabled() *bool
+	SetK8sLabel(v bool) *CreateAlertStrategyRequest
+	GetK8sLabel() *bool
 	SetName(v string) *CreateAlertStrategyRequest
 	GetName() *string
 	SetStrategy(v *CreateAlertStrategyRequestStrategy) *CreateAlertStrategyRequest
@@ -23,7 +25,8 @@ type CreateAlertStrategyRequest struct {
 	// example:
 	//
 	// false
-	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Enabled  *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	K8sLabel *bool `json:"k8sLabel,omitempty" xml:"k8sLabel,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -46,6 +49,10 @@ func (s *CreateAlertStrategyRequest) GetEnabled() *bool {
 	return s.Enabled
 }
 
+func (s *CreateAlertStrategyRequest) GetK8sLabel() *bool {
+	return s.K8sLabel
+}
+
 func (s *CreateAlertStrategyRequest) GetName() *string {
 	return s.Name
 }
@@ -56,6 +63,11 @@ func (s *CreateAlertStrategyRequest) GetStrategy() *CreateAlertStrategyRequestSt
 
 func (s *CreateAlertStrategyRequest) SetEnabled(v bool) *CreateAlertStrategyRequest {
 	s.Enabled = &v
+	return s
+}
+
+func (s *CreateAlertStrategyRequest) SetK8sLabel(v bool) *CreateAlertStrategyRequest {
+	s.K8sLabel = &v
 	return s
 }
 
@@ -70,7 +82,12 @@ func (s *CreateAlertStrategyRequest) SetStrategy(v *CreateAlertStrategyRequestSt
 }
 
 func (s *CreateAlertStrategyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Strategy != nil {
+		if err := s.Strategy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAlertStrategyRequestStrategy struct {

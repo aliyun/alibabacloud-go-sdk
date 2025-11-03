@@ -13,6 +13,8 @@ type iUpdateAlertStrategyRequest interface {
 	GetEnabled() *bool
 	SetId(v int64) *UpdateAlertStrategyRequest
 	GetId() *int64
+	SetK8sLabel(v bool) *UpdateAlertStrategyRequest
+	GetK8sLabel() *bool
 	SetName(v string) *UpdateAlertStrategyRequest
 	GetName() *string
 	SetStrategy(v *UpdateAlertStrategyRequestStrategy) *UpdateAlertStrategyRequest
@@ -31,7 +33,8 @@ type UpdateAlertStrategyRequest struct {
 	// example:
 	//
 	// 1
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	Id       *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	K8sLabel *bool  `json:"k8sLabel,omitempty" xml:"k8sLabel,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -58,6 +61,10 @@ func (s *UpdateAlertStrategyRequest) GetId() *int64 {
 	return s.Id
 }
 
+func (s *UpdateAlertStrategyRequest) GetK8sLabel() *bool {
+	return s.K8sLabel
+}
+
 func (s *UpdateAlertStrategyRequest) GetName() *string {
 	return s.Name
 }
@@ -76,6 +83,11 @@ func (s *UpdateAlertStrategyRequest) SetId(v int64) *UpdateAlertStrategyRequest 
 	return s
 }
 
+func (s *UpdateAlertStrategyRequest) SetK8sLabel(v bool) *UpdateAlertStrategyRequest {
+	s.K8sLabel = &v
+	return s
+}
+
 func (s *UpdateAlertStrategyRequest) SetName(v string) *UpdateAlertStrategyRequest {
 	s.Name = &v
 	return s
@@ -87,7 +99,12 @@ func (s *UpdateAlertStrategyRequest) SetStrategy(v *UpdateAlertStrategyRequestSt
 }
 
 func (s *UpdateAlertStrategyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Strategy != nil {
+		if err := s.Strategy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateAlertStrategyRequestStrategy struct {

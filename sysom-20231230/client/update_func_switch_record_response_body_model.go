@@ -82,7 +82,12 @@ func (s *UpdateFuncSwitchRecordResponseBody) SetRequestId(v string) *UpdateFuncS
 }
 
 func (s *UpdateFuncSwitchRecordResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateFuncSwitchRecordResponseBodyData struct {

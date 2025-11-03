@@ -59,5 +59,10 @@ func (s *UninstallAgentForClusterResponse) SetBody(v *UninstallAgentForClusterRe
 }
 
 func (s *UninstallAgentForClusterResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

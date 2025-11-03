@@ -80,7 +80,12 @@ func (s *UpdateEventsAttentionResponseBody) SetMessage(v string) *UpdateEventsAt
 }
 
 func (s *UpdateEventsAttentionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateEventsAttentionResponseBodyData struct {

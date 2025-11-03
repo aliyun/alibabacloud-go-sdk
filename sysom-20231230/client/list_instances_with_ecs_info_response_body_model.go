@@ -95,7 +95,16 @@ func (s *ListInstancesWithEcsInfoResponseBody) SetTotal(v int64) *ListInstancesW
 }
 
 func (s *ListInstancesWithEcsInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstancesWithEcsInfoResponseBodyData struct {
@@ -273,7 +282,16 @@ func (s *ListInstancesWithEcsInfoResponseBodyData) SetStatus(v string) *ListInst
 }
 
 func (s *ListInstancesWithEcsInfoResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceTag != nil {
+		for _, item := range s.InstanceTag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstancesWithEcsInfoResponseBodyDataInstanceTag struct {

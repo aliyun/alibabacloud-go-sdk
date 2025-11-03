@@ -70,7 +70,12 @@ func (s *GetServiceFuncStatusRequest) SetServiceName(v string) *GetServiceFuncSt
 }
 
 func (s *GetServiceFuncStatusRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Params != nil {
+		if err := s.Params.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetServiceFuncStatusRequestParams struct {

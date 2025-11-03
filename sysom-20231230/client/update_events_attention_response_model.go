@@ -59,5 +59,10 @@ func (s *UpdateEventsAttentionResponse) SetBody(v *UpdateEventsAttentionResponse
 }
 
 func (s *UpdateEventsAttentionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

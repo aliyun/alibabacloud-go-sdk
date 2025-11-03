@@ -247,7 +247,12 @@ func (s *ListInstancesWithEcsInfoRequest) SetResourceGroupName(v string) *ListIn
 }
 
 func (s *ListInstancesWithEcsInfoRequest) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceTag != nil {
+		if err := s.InstanceTag.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListInstancesWithEcsInfoRequestInstanceTag struct {

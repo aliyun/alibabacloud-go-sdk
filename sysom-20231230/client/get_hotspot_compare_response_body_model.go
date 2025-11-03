@@ -97,7 +97,12 @@ func (s *GetHotspotCompareResponseBody) SetSuccess(v bool) *GetHotspotCompareRes
 }
 
 func (s *GetHotspotCompareResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHotspotCompareResponseBodyData struct {
@@ -142,7 +147,22 @@ func (s *GetHotspotCompareResponseBodyData) SetSeriesInstance2(v *GetHotspotComp
 }
 
 func (s *GetHotspotCompareResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Flame != nil {
+		if err := s.Flame.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SeriesInstance1 != nil {
+		if err := s.SeriesInstance1.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SeriesInstance2 != nil {
+		if err := s.SeriesInstance2.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHotspotCompareResponseBodyDataFlame struct {

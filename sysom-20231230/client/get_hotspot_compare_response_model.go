@@ -59,5 +59,10 @@ func (s *GetHotspotCompareResponse) SetBody(v *GetHotspotCompareResponseBody) *G
 }
 
 func (s *GetHotspotCompareResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

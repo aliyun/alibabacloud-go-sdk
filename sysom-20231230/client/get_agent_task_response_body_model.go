@@ -77,11 +77,17 @@ func (s *GetAgentTaskResponseBody) SetMessage(v string) *GetAgentTaskResponseBod
 }
 
 func (s *GetAgentTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAgentTaskResponseBodyData struct {
 	Jobs   []*GetAgentTaskResponseBodyDataJobs `json:"jobs,omitempty" xml:"jobs,omitempty" type:"Repeated"`
+	Status *string                             `json:"status,omitempty" xml:"status,omitempty"`
 	TaskId *string                             `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 
@@ -97,6 +103,10 @@ func (s *GetAgentTaskResponseBodyData) GetJobs() []*GetAgentTaskResponseBodyData
 	return s.Jobs
 }
 
+func (s *GetAgentTaskResponseBodyData) GetStatus() *string {
+	return s.Status
+}
+
 func (s *GetAgentTaskResponseBodyData) GetTaskId() *string {
 	return s.TaskId
 }
@@ -106,13 +116,27 @@ func (s *GetAgentTaskResponseBodyData) SetJobs(v []*GetAgentTaskResponseBodyData
 	return s
 }
 
+func (s *GetAgentTaskResponseBodyData) SetStatus(v string) *GetAgentTaskResponseBodyData {
+	s.Status = &v
+	return s
+}
+
 func (s *GetAgentTaskResponseBodyData) SetTaskId(v string) *GetAgentTaskResponseBodyData {
 	s.TaskId = &v
 	return s
 }
 
 func (s *GetAgentTaskResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Jobs != nil {
+		for _, item := range s.Jobs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAgentTaskResponseBodyDataJobs struct {

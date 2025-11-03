@@ -59,5 +59,10 @@ func (s *GetCopilotHistoryResponse) SetBody(v *GetCopilotHistoryResponseBody) *G
 }
 
 func (s *GetCopilotHistoryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

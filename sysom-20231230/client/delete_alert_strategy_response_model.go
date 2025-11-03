@@ -59,5 +59,10 @@ func (s *DeleteAlertStrategyResponse) SetBody(v *DeleteAlertStrategyResponseBody
 }
 
 func (s *DeleteAlertStrategyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

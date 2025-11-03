@@ -77,7 +77,12 @@ func (s *InstallAgentResponseBody) SetMessage(v string) *InstallAgentResponseBod
 }
 
 func (s *InstallAgentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InstallAgentResponseBodyData struct {

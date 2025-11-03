@@ -95,7 +95,16 @@ func (s *ListPluginsInstancesResponseBody) SetTotal(v int64) *ListPluginsInstanc
 }
 
 func (s *ListPluginsInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPluginsInstancesResponseBodyData struct {
@@ -224,7 +233,16 @@ func (s *ListPluginsInstancesResponseBodyData) SetResourceGroupName(v string) *L
 }
 
 func (s *ListPluginsInstancesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceTag != nil {
+		for _, item := range s.InstanceTag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPluginsInstancesResponseBodyDataInstanceTag struct {

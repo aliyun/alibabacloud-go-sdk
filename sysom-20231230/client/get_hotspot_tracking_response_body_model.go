@@ -80,7 +80,12 @@ func (s *GetHotspotTrackingResponseBody) SetRequestId(v string) *GetHotspotTrack
 }
 
 func (s *GetHotspotTrackingResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHotspotTrackingResponseBodyData struct {
@@ -115,7 +120,17 @@ func (s *GetHotspotTrackingResponseBodyData) SetSeries(v *GetHotspotTrackingResp
 }
 
 func (s *GetHotspotTrackingResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Flame != nil {
+		if err := s.Flame.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Series != nil {
+		if err := s.Series.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHotspotTrackingResponseBodyDataFlame struct {

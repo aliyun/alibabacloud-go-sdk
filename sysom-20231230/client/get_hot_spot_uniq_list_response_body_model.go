@@ -95,7 +95,12 @@ func (s *GetHotSpotUniqListResponseBody) SetSuccess(v string) *GetHotSpotUniqLis
 }
 
 func (s *GetHotSpotUniqListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHotSpotUniqListResponseBodyData struct {

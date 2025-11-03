@@ -59,5 +59,10 @@ func (s *InstallAgentForClusterResponse) SetBody(v *InstallAgentForClusterRespon
 }
 
 func (s *InstallAgentForClusterResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

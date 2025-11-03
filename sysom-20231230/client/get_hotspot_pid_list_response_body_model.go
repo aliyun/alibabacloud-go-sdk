@@ -82,7 +82,12 @@ func (s *GetHotspotPidListResponseBody) SetRequestId(v string) *GetHotspotPidLis
 }
 
 func (s *GetHotspotPidListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHotspotPidListResponseBodyData struct {

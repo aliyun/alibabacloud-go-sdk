@@ -79,7 +79,12 @@ func (s *GetServiceFuncStatusResponseBody) SetRequestId(v string) *GetServiceFun
 }
 
 func (s *GetServiceFuncStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetServiceFuncStatusResponseBodyData struct {
@@ -104,7 +109,12 @@ func (s *GetServiceFuncStatusResponseBodyData) SetArgs(v *GetServiceFuncStatusRe
 }
 
 func (s *GetServiceFuncStatusResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Args != nil {
+		if err := s.Args.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetServiceFuncStatusResponseBodyDataArgs struct {

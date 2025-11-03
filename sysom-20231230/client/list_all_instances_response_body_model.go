@@ -127,7 +127,16 @@ func (s *ListAllInstancesResponseBody) SetTotal(v int64) *ListAllInstancesRespon
 }
 
 func (s *ListAllInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAllInstancesResponseBodyData struct {
@@ -419,7 +428,16 @@ func (s *ListAllInstancesResponseBodyData) SetStatus(v string) *ListAllInstances
 }
 
 func (s *ListAllInstancesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Attributes != nil {
+		for _, item := range s.Attributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAllInstancesResponseBodyDataAttributes struct {

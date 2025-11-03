@@ -59,5 +59,10 @@ func (s *ListAgentInstallRecordsResponse) SetBody(v *ListAgentInstallRecordsResp
 }
 
 func (s *ListAgentInstallRecordsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

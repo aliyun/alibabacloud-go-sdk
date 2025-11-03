@@ -59,5 +59,10 @@ func (s *GetRangeScoreResponse) SetBody(v *GetRangeScoreResponseBody) *GetRangeS
 }
 
 func (s *GetRangeScoreResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

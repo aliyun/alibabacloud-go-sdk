@@ -80,7 +80,12 @@ func (s *GetResourcesResponseBody) SetRequestId(v string) *GetResourcesResponseB
 }
 
 func (s *GetResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResourcesResponseBodyData struct {

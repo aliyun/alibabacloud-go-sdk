@@ -127,7 +127,16 @@ func (s *ListAlertStrategiesResponseBody) SetTotal(v int64) *ListAlertStrategies
 }
 
 func (s *ListAlertStrategiesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAlertStrategiesResponseBodyData struct {
@@ -142,7 +151,8 @@ type ListAlertStrategiesResponseBodyData struct {
 	// example:
 	//
 	// 1
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	Id       *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	K8sLabel *bool  `json:"k8sLabel,omitempty" xml:"k8sLabel,omitempty"`
 	// example:
 	//
 	// strategy1
@@ -178,6 +188,10 @@ func (s *ListAlertStrategiesResponseBodyData) GetId() *int64 {
 	return s.Id
 }
 
+func (s *ListAlertStrategiesResponseBodyData) GetK8sLabel() *bool {
+	return s.K8sLabel
+}
+
 func (s *ListAlertStrategiesResponseBodyData) GetName() *string {
 	return s.Name
 }
@@ -209,6 +223,11 @@ func (s *ListAlertStrategiesResponseBodyData) SetId(v int64) *ListAlertStrategie
 	return s
 }
 
+func (s *ListAlertStrategiesResponseBodyData) SetK8sLabel(v bool) *ListAlertStrategiesResponseBodyData {
+	s.K8sLabel = &v
+	return s
+}
+
 func (s *ListAlertStrategiesResponseBodyData) SetName(v string) *ListAlertStrategiesResponseBodyData {
 	s.Name = &v
 	return s
@@ -230,7 +249,12 @@ func (s *ListAlertStrategiesResponseBodyData) SetUpdatedAt(v int64) *ListAlertSt
 }
 
 func (s *ListAlertStrategiesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Strategy != nil {
+		if err := s.Strategy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAlertStrategiesResponseBodyDataStrategy struct {

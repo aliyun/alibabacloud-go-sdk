@@ -82,7 +82,12 @@ func (s *StartAIAnalysisResponseBody) SetRequestId(v string) *StartAIAnalysisRes
 }
 
 func (s *StartAIAnalysisResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartAIAnalysisResponseBodyData struct {

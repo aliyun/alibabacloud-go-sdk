@@ -70,7 +70,12 @@ func (s *UpdateFuncSwitchRecordRequest) SetServiceName(v string) *UpdateFuncSwit
 }
 
 func (s *UpdateFuncSwitchRecordRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Params != nil {
+		if err := s.Params.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateFuncSwitchRecordRequestParams struct {
@@ -159,7 +164,12 @@ func (s *UpdateFuncSwitchRecordRequestParams) SetUid(v string) *UpdateFuncSwitch
 }
 
 func (s *UpdateFuncSwitchRecordRequestParams) Validate() error {
-	return dara.Validate(s)
+	if s.Args != nil {
+		if err := s.Args.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateFuncSwitchRecordRequestParamsArgs struct {

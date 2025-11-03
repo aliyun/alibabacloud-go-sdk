@@ -71,7 +71,12 @@ func (s *InitialSysomResponseBody) SetMessage(v string) *InitialSysomResponseBod
 }
 
 func (s *InitialSysomResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InitialSysomResponseBodyData struct {
