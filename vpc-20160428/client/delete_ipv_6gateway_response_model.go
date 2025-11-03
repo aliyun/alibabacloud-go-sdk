@@ -59,5 +59,10 @@ func (s *DeleteIpv6GatewayResponse) SetBody(v *DeleteIpv6GatewayResponseBody) *D
 }
 
 func (s *DeleteIpv6GatewayResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

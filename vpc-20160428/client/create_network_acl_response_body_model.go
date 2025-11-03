@@ -70,7 +70,12 @@ func (s *CreateNetworkAclResponseBody) SetRequestId(v string) *CreateNetworkAclR
 }
 
 func (s *CreateNetworkAclResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkAclAttribute != nil {
+		if err := s.NetworkAclAttribute.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateNetworkAclResponseBodyNetworkAclAttribute struct {
@@ -227,7 +232,22 @@ func (s *CreateNetworkAclResponseBodyNetworkAclAttribute) SetVpcId(v string) *Cr
 }
 
 func (s *CreateNetworkAclResponseBodyNetworkAclAttribute) Validate() error {
-	return dara.Validate(s)
+	if s.EgressAclEntries != nil {
+		if err := s.EgressAclEntries.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IngressAclEntries != nil {
+		if err := s.IngressAclEntries.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Resources != nil {
+		if err := s.Resources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateNetworkAclResponseBodyNetworkAclAttributeEgressAclEntries struct {
@@ -252,7 +272,16 @@ func (s *CreateNetworkAclResponseBodyNetworkAclAttributeEgressAclEntries) SetEgr
 }
 
 func (s *CreateNetworkAclResponseBodyNetworkAclAttributeEgressAclEntries) Validate() error {
-	return dara.Validate(s)
+	if s.EgressAclEntry != nil {
+		for _, item := range s.EgressAclEntry {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateNetworkAclResponseBodyNetworkAclAttributeEgressAclEntriesEgressAclEntry struct {
@@ -415,7 +444,16 @@ func (s *CreateNetworkAclResponseBodyNetworkAclAttributeIngressAclEntries) SetIn
 }
 
 func (s *CreateNetworkAclResponseBodyNetworkAclAttributeIngressAclEntries) Validate() error {
-	return dara.Validate(s)
+	if s.IngressAclEntry != nil {
+		for _, item := range s.IngressAclEntry {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateNetworkAclResponseBodyNetworkAclAttributeIngressAclEntriesIngressAclEntry struct {
@@ -578,7 +616,16 @@ func (s *CreateNetworkAclResponseBodyNetworkAclAttributeResources) SetResource(v
 }
 
 func (s *CreateNetworkAclResponseBodyNetworkAclAttributeResources) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		for _, item := range s.Resource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateNetworkAclResponseBodyNetworkAclAttributeResourcesResource struct {

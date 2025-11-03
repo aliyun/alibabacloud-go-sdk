@@ -125,7 +125,16 @@ func (s *DescribeFailoverTestJobsResponseBody) SetTotalCount(v int32) *DescribeF
 }
 
 func (s *DescribeFailoverTestJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FailoverTestJobList != nil {
+		for _, item := range s.FailoverTestJobList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFailoverTestJobsResponseBodyFailoverTestJobList struct {

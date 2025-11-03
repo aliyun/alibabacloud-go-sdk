@@ -91,7 +91,16 @@ func (s *ListPublicIpAddressPoolsResponseBody) SetTotalCount(v int32) *ListPubli
 }
 
 func (s *ListPublicIpAddressPoolsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PublicIpAddressPoolList != nil {
+		for _, item := range s.PublicIpAddressPoolList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList struct {
@@ -431,7 +440,16 @@ func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetZones(v
 }
 
 func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListTags struct {

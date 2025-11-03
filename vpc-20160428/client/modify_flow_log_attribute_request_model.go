@@ -62,6 +62,12 @@ type ModifyFlowLogAttributeRequest struct {
 	//
 	// myFlowlog
 	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	// The version of the IP address. Valid values:
+	//
+	// 	- **IPV4**: the IPv4 address.
+	//
+	// 	- **DualStack**: includes IPv4 and IPv6 address
+	//
 	// example:
 	//
 	// IPv4

@@ -59,5 +59,10 @@ func (s *DeleteExpressConnectTrafficQosQueueResponse) SetBody(v *DeleteExpressCo
 }
 
 func (s *DeleteExpressConnectTrafficQosQueueResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

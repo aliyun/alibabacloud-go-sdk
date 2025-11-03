@@ -104,7 +104,12 @@ func (s *DescribeIpv6EgressOnlyRulesResponseBody) SetTotalCount(v int32) *Descri
 }
 
 func (s *DescribeIpv6EgressOnlyRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6EgressOnlyRules != nil {
+		if err := s.Ipv6EgressOnlyRules.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeIpv6EgressOnlyRulesResponseBodyIpv6EgressOnlyRules struct {
@@ -129,7 +134,16 @@ func (s *DescribeIpv6EgressOnlyRulesResponseBodyIpv6EgressOnlyRules) SetIpv6Egre
 }
 
 func (s *DescribeIpv6EgressOnlyRulesResponseBodyIpv6EgressOnlyRules) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6EgressOnlyRule != nil {
+		for _, item := range s.Ipv6EgressOnlyRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIpv6EgressOnlyRulesResponseBodyIpv6EgressOnlyRulesIpv6EgressOnlyRule struct {

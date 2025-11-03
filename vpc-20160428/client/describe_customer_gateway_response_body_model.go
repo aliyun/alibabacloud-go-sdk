@@ -193,7 +193,12 @@ func (s *DescribeCustomerGatewayResponseBody) SetTags(v *DescribeCustomerGateway
 }
 
 func (s *DescribeCustomerGatewayResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCustomerGatewayResponseBodyTags struct {
@@ -218,7 +223,16 @@ func (s *DescribeCustomerGatewayResponseBodyTags) SetTag(v []*DescribeCustomerGa
 }
 
 func (s *DescribeCustomerGatewayResponseBodyTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCustomerGatewayResponseBodyTagsTag struct {

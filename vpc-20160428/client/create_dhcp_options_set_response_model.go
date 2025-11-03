@@ -59,5 +59,10 @@ func (s *CreateDhcpOptionsSetResponse) SetBody(v *CreateDhcpOptionsSetResponseBo
 }
 
 func (s *CreateDhcpOptionsSetResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

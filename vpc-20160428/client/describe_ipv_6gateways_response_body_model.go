@@ -104,7 +104,12 @@ func (s *DescribeIpv6GatewaysResponseBody) SetTotalCount(v int32) *DescribeIpv6G
 }
 
 func (s *DescribeIpv6GatewaysResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6Gateways != nil {
+		if err := s.Ipv6Gateways.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeIpv6GatewaysResponseBodyIpv6Gateways struct {
@@ -129,7 +134,16 @@ func (s *DescribeIpv6GatewaysResponseBodyIpv6Gateways) SetIpv6Gateway(v []*Descr
 }
 
 func (s *DescribeIpv6GatewaysResponseBodyIpv6Gateways) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6Gateway != nil {
+		for _, item := range s.Ipv6Gateway {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway struct {
@@ -342,7 +356,12 @@ func (s *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway) SetVpcId(v str
 }
 
 func (s *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTags struct {
@@ -367,7 +386,16 @@ func (s *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTags) SetTag(v [
 }
 
 func (s *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTagsTag struct {

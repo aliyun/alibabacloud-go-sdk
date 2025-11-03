@@ -104,7 +104,12 @@ func (s *DescribeVirtualBorderRoutersForPhysicalConnectionResponseBody) SetVirtu
 }
 
 func (s *DescribeVirtualBorderRoutersForPhysicalConnectionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VirtualBorderRouterForPhysicalConnectionSet != nil {
+		if err := s.VirtualBorderRouterForPhysicalConnectionSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVirtualBorderRoutersForPhysicalConnectionResponseBodyVirtualBorderRouterForPhysicalConnectionSet struct {
@@ -129,7 +134,16 @@ func (s *DescribeVirtualBorderRoutersForPhysicalConnectionResponseBodyVirtualBor
 }
 
 func (s *DescribeVirtualBorderRoutersForPhysicalConnectionResponseBodyVirtualBorderRouterForPhysicalConnectionSet) Validate() error {
-	return dara.Validate(s)
+	if s.VirtualBorderRouterForPhysicalConnectionType != nil {
+		for _, item := range s.VirtualBorderRouterForPhysicalConnectionType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVirtualBorderRoutersForPhysicalConnectionResponseBodyVirtualBorderRouterForPhysicalConnectionSetVirtualBorderRouterForPhysicalConnectionType struct {

@@ -74,7 +74,16 @@ func (s *ListVpcPublishedRouteEntriesResponseBody) SetRouteEntries(v []*ListVpcP
 }
 
 func (s *ListVpcPublishedRouteEntriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RouteEntries != nil {
+		for _, item := range s.RouteEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVpcPublishedRouteEntriesResponseBodyRouteEntries struct {
@@ -145,7 +154,16 @@ func (s *ListVpcPublishedRouteEntriesResponseBodyRouteEntries) SetRouteTableId(v
 }
 
 func (s *ListVpcPublishedRouteEntriesResponseBodyRouteEntries) Validate() error {
-	return dara.Validate(s)
+	if s.RoutePublishTargets != nil {
+		for _, item := range s.RoutePublishTargets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVpcPublishedRouteEntriesResponseBodyRouteEntriesRoutePublishTargets struct {

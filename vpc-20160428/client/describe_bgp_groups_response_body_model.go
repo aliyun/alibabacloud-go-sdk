@@ -104,7 +104,12 @@ func (s *DescribeBgpGroupsResponseBody) SetTotalCount(v int32) *DescribeBgpGroup
 }
 
 func (s *DescribeBgpGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BgpGroups != nil {
+		if err := s.BgpGroups.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBgpGroupsResponseBodyBgpGroups struct {
@@ -129,7 +134,16 @@ func (s *DescribeBgpGroupsResponseBodyBgpGroups) SetBgpGroup(v []*DescribeBgpGro
 }
 
 func (s *DescribeBgpGroupsResponseBodyBgpGroups) Validate() error {
-	return dara.Validate(s)
+	if s.BgpGroup != nil {
+		for _, item := range s.BgpGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBgpGroupsResponseBodyBgpGroupsBgpGroup struct {

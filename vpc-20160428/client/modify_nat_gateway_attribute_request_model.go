@@ -221,7 +221,12 @@ func (s *ModifyNatGatewayAttributeRequest) SetResourceOwnerId(v int64) *ModifyNa
 }
 
 func (s *ModifyNatGatewayAttributeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.LogDelivery != nil {
+		if err := s.LogDelivery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyNatGatewayAttributeRequestLogDelivery struct {

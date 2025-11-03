@@ -104,7 +104,12 @@ func (s *DescribeNatGatewaysResponseBody) SetTotalCount(v int32) *DescribeNatGat
 }
 
 func (s *DescribeNatGatewaysResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NatGateways != nil {
+		if err := s.NatGateways.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNatGatewaysResponseBodyNatGateways struct {
@@ -129,7 +134,16 @@ func (s *DescribeNatGatewaysResponseBodyNatGateways) SetNatGateway(v []*Describe
 }
 
 func (s *DescribeNatGatewaysResponseBodyNatGateways) Validate() error {
-	return dara.Validate(s)
+	if s.NatGateway != nil {
+		for _, item := range s.NatGateway {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGateway struct {
@@ -645,7 +659,47 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) SetVpcId(v string
 }
 
 func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) Validate() error {
-	return dara.Validate(s)
+	if s.AccessMode != nil {
+		if err := s.AccessMode.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ForwardTableIds != nil {
+		if err := s.ForwardTableIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FullNatTableIds != nil {
+		if err := s.FullNatTableIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IpLists != nil {
+		if err := s.IpLists.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IpPrefixList != nil {
+		if err := s.IpPrefixList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NatGatewayPrivateInfo != nil {
+		if err := s.NatGatewayPrivateInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SnatTableIds != nil {
+		if err := s.SnatTableIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayAccessMode struct {
@@ -755,7 +809,16 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpLists) SetIpList(
 }
 
 func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpLists) Validate() error {
-	return dara.Validate(s)
+	if s.IpList != nil {
+		for _, item := range s.IpList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpListsIpList struct {
@@ -882,7 +945,16 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixList) SetIp
 }
 
 func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixList) Validate() error {
-	return dara.Validate(s)
+	if s.IpPrefixList != nil {
+		for _, item := range s.IpPrefixList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixListIpPrefixList struct {
@@ -1096,7 +1168,16 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags) SetTag(v []*D
 }
 
 func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTagsTag struct {

@@ -160,7 +160,16 @@ func (s *WithdrawVpcPublishedRouteEntriesRequest) SetTargetType(v string) *Withd
 }
 
 func (s *WithdrawVpcPublishedRouteEntriesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RouteEntries != nil {
+		for _, item := range s.RouteEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type WithdrawVpcPublishedRouteEntriesRequestRouteEntries struct {

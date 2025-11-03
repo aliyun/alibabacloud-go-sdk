@@ -59,5 +59,10 @@ func (s *ModifyVcoRouteEntryWeightResponse) SetBody(v *ModifyVcoRouteEntryWeight
 }
 
 func (s *ModifyVcoRouteEntryWeightResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

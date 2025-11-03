@@ -104,7 +104,12 @@ func (s *DescribeNetworkAclsResponseBody) SetTotalCount(v string) *DescribeNetwo
 }
 
 func (s *DescribeNetworkAclsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkAcls != nil {
+		if err := s.NetworkAcls.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkAclsResponseBodyNetworkAcls struct {
@@ -129,7 +134,16 @@ func (s *DescribeNetworkAclsResponseBodyNetworkAcls) SetNetworkAcl(v []*Describe
 }
 
 func (s *DescribeNetworkAclsResponseBodyNetworkAcls) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkAcl != nil {
+		for _, item := range s.NetworkAcl {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkAclsResponseBodyNetworkAclsNetworkAcl struct {
@@ -312,7 +326,27 @@ func (s *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAcl) SetVpcId(v string
 }
 
 func (s *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAcl) Validate() error {
-	return dara.Validate(s)
+	if s.EgressAclEntries != nil {
+		if err := s.EgressAclEntries.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IngressAclEntries != nil {
+		if err := s.IngressAclEntries.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Resources != nil {
+		if err := s.Resources.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclEgressAclEntries struct {
@@ -337,7 +371,16 @@ func (s *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclEgressAclEntries) S
 }
 
 func (s *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclEgressAclEntries) Validate() error {
-	return dara.Validate(s)
+	if s.EgressAclEntry != nil {
+		for _, item := range s.EgressAclEntry {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclEgressAclEntriesEgressAclEntry struct {
@@ -538,7 +581,16 @@ func (s *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclIngressAclEntries) 
 }
 
 func (s *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclIngressAclEntries) Validate() error {
-	return dara.Validate(s)
+	if s.IngressAclEntry != nil {
+		for _, item := range s.IngressAclEntry {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclIngressAclEntriesIngressAclEntry struct {
@@ -739,7 +791,16 @@ func (s *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclResources) SetResou
 }
 
 func (s *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclResources) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		for _, item := range s.Resource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclResourcesResource struct {
@@ -830,7 +891,16 @@ func (s *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTags) SetTag(v []*D
 }
 
 func (s *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTagsTag struct {

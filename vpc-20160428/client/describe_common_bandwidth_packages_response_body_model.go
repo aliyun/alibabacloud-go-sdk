@@ -104,7 +104,12 @@ func (s *DescribeCommonBandwidthPackagesResponseBody) SetTotalCount(v int32) *De
 }
 
 func (s *DescribeCommonBandwidthPackagesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CommonBandwidthPackages != nil {
+		if err := s.CommonBandwidthPackages.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackages struct {
@@ -129,7 +134,16 @@ func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackages) Set
 }
 
 func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackages) Validate() error {
-	return dara.Validate(s)
+	if s.CommonBandwidthPackage != nil {
+		for _, item := range s.CommonBandwidthPackage {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackage struct {
@@ -586,7 +600,22 @@ func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommo
 }
 
 func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackage) Validate() error {
-	return dara.Validate(s)
+	if s.PublicIpAddresses != nil {
+		if err := s.PublicIpAddresses.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityProtectionTypes != nil {
+		if err := s.SecurityProtectionTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackagePublicIpAddresses struct {
@@ -611,7 +640,16 @@ func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommo
 }
 
 func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackagePublicIpAddresses) Validate() error {
-	return dara.Validate(s)
+	if s.PublicIpAddresse != nil {
+		for _, item := range s.PublicIpAddresse {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackagePublicIpAddressesPublicIpAddresse struct {
@@ -725,7 +763,16 @@ func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommo
 }
 
 func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackageTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackageTagsTag struct {

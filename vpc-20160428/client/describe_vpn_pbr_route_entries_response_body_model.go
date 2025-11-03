@@ -104,7 +104,12 @@ func (s *DescribeVpnPbrRouteEntriesResponseBody) SetVpnPbrRouteEntries(v *Descri
 }
 
 func (s *DescribeVpnPbrRouteEntriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VpnPbrRouteEntries != nil {
+		if err := s.VpnPbrRouteEntries.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntries struct {
@@ -129,7 +134,16 @@ func (s *DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntries) SetVpnPbrRout
 }
 
 func (s *DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntries) Validate() error {
-	return dara.Validate(s)
+	if s.VpnPbrRouteEntry != nil {
+		for _, item := range s.VpnPbrRouteEntry {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry struct {

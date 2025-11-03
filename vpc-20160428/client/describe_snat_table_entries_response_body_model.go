@@ -104,7 +104,12 @@ func (s *DescribeSnatTableEntriesResponseBody) SetTotalCount(v int32) *DescribeS
 }
 
 func (s *DescribeSnatTableEntriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SnatTableEntries != nil {
+		if err := s.SnatTableEntries.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSnatTableEntriesResponseBodySnatTableEntries struct {
@@ -129,7 +134,16 @@ func (s *DescribeSnatTableEntriesResponseBodySnatTableEntries) SetSnatTableEntry
 }
 
 func (s *DescribeSnatTableEntriesResponseBodySnatTableEntries) Validate() error {
-	return dara.Validate(s)
+	if s.SnatTableEntry != nil {
+		for _, item := range s.SnatTableEntry {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry struct {

@@ -108,7 +108,16 @@ func (s *ListVpcGatewayEndpointsResponseBody) SetTotalCount(v int64) *ListVpcGat
 }
 
 func (s *ListVpcGatewayEndpointsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Endpoints != nil {
+		for _, item := range s.Endpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVpcGatewayEndpointsResponseBodyEndpoints struct {
@@ -294,7 +303,16 @@ func (s *ListVpcGatewayEndpointsResponseBodyEndpoints) SetVpcId(v string) *ListV
 }
 
 func (s *ListVpcGatewayEndpointsResponseBodyEndpoints) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVpcGatewayEndpointsResponseBodyEndpointsTags struct {

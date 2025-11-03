@@ -91,7 +91,16 @@ func (s *ListIpv4GatewaysResponseBody) SetTotalCount(v string) *ListIpv4Gateways
 }
 
 func (s *ListIpv4GatewaysResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv4GatewayModels != nil {
+		for _, item := range s.Ipv4GatewayModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIpv4GatewaysResponseBodyIpv4GatewayModels struct {
@@ -266,7 +275,16 @@ func (s *ListIpv4GatewaysResponseBodyIpv4GatewayModels) SetVpcId(v string) *List
 }
 
 func (s *ListIpv4GatewaysResponseBodyIpv4GatewayModels) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIpv4GatewaysResponseBodyIpv4GatewayModelsTags struct {

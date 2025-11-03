@@ -87,7 +87,16 @@ func (s *DeleteRouteEntriesResponseBody) SetSuccessCount(v int32) *DeleteRouteEn
 }
 
 func (s *DeleteRouteEntriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FailedRouteEntries != nil {
+		for _, item := range s.FailedRouteEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteRouteEntriesResponseBodyFailedRouteEntries struct {

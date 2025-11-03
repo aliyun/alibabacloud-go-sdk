@@ -59,5 +59,10 @@ func (s *CreateNatIpCidrResponse) SetBody(v *CreateNatIpCidrResponseBody) *Creat
 }
 
 func (s *CreateNatIpCidrResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

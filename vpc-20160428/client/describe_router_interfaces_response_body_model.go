@@ -104,7 +104,12 @@ func (s *DescribeRouterInterfacesResponseBody) SetTotalCount(v int32) *DescribeR
 }
 
 func (s *DescribeRouterInterfacesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RouterInterfaceSet != nil {
+		if err := s.RouterInterfaceSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRouterInterfacesResponseBodyRouterInterfaceSet struct {
@@ -129,7 +134,16 @@ func (s *DescribeRouterInterfacesResponseBodyRouterInterfaceSet) SetRouterInterf
 }
 
 func (s *DescribeRouterInterfacesResponseBodyRouterInterfaceSet) Validate() error {
-	return dara.Validate(s)
+	if s.RouterInterfaceType != nil {
+		for _, item := range s.RouterInterfaceType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceType struct {
@@ -785,7 +799,12 @@ func (s *DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceTy
 }
 
 func (s *DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceType) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceTypeTags struct {
@@ -810,7 +829,16 @@ func (s *DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceTy
 }
 
 func (s *DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceTypeTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceTypeTagsTags struct {

@@ -36,7 +36,12 @@ type iGetDhcpOptionsSetResponseBody interface {
 type GetDhcpOptionsSetResponseBody struct {
 	// The information about the virtual private cloud (VPC) that is associated with the DHCP options set.
 	AssociateVpcs []*GetDhcpOptionsSetResponseBodyAssociateVpcs `json:"AssociateVpcs,omitempty" xml:"AssociateVpcs,omitempty" type:"Repeated"`
-	CreationTime  *string                                       `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// create time
+	//
+	// example:
+	//
+	// 2025-08-21 ***
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The configuration information about the DHCP options set.
 	DhcpOptions *GetDhcpOptionsSetResponseBodyDhcpOptions `json:"DhcpOptions,omitempty" xml:"DhcpOptions,omitempty" type:"Struct"`
 	// The description of the DHCP options set.
@@ -201,11 +206,36 @@ func (s *GetDhcpOptionsSetResponseBody) SetTags(v []*GetDhcpOptionsSetResponseBo
 }
 
 func (s *GetDhcpOptionsSetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AssociateVpcs != nil {
+		for _, item := range s.AssociateVpcs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DhcpOptions != nil {
+		if err := s.DhcpOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDhcpOptionsSetResponseBodyAssociateVpcs struct {
 	// The status of the VPC that is associated with the DHCP options set. Valid values:
+	//
+	//
 	//
 	// 	- **InUse**: in use
 	//
@@ -267,6 +297,8 @@ type GetDhcpOptionsSetResponseBodyDhcpOptions struct {
 	// 192.XX.XX.123
 	DomainNameServers *string `json:"DomainNameServers,omitempty" xml:"DomainNameServers,omitempty"`
 	// The lease time of the IPv6 addresses for the DHCP options set.
+	//
+	//
 	//
 	// 	- If you use hours as the unit, Valid values are **24h to 1176h*	- and **87600h to 175200h**. Default value: **87600h**.
 	//

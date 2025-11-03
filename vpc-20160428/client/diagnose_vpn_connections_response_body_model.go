@@ -104,7 +104,16 @@ func (s *DiagnoseVpnConnectionsResponseBody) SetVpnConnections(v []*DiagnoseVpnC
 }
 
 func (s *DiagnoseVpnConnectionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VpnConnections != nil {
+		for _, item := range s.VpnConnections {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DiagnoseVpnConnectionsResponseBodyVpnConnections struct {

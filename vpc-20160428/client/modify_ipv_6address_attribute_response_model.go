@@ -59,5 +59,10 @@ func (s *ModifyIpv6AddressAttributeResponse) SetBody(v *ModifyIpv6AddressAttribu
 }
 
 func (s *ModifyIpv6AddressAttributeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

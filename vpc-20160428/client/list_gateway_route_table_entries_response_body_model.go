@@ -91,7 +91,16 @@ func (s *ListGatewayRouteTableEntriesResponseBody) SetTotalCount(v string) *List
 }
 
 func (s *ListGatewayRouteTableEntriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GatewayRouteEntryModels != nil {
+		for _, item := range s.GatewayRouteEntryModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModels struct {
@@ -221,7 +230,16 @@ func (s *ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModels) SetSta
 }
 
 func (s *ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModels) Validate() error {
-	return dara.Validate(s)
+	if s.NextHops != nil {
+		for _, item := range s.NextHops {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops struct {

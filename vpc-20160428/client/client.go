@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -109,9 +110,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return ActivateRouterInterfaceResponse
 func (client *Client) ActivateRouterInterfaceWithOptions(request *ActivateRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *ActivateRouterInterfaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -201,9 +204,11 @@ func (client *Client) ActivateRouterInterface(request *ActivateRouterInterfaceRe
 //
 // @return ActiveFlowLogResponse
 func (client *Client) ActiveFlowLogWithOptions(request *ActiveFlowLogRequest, runtime *dara.RuntimeOptions) (_result *ActiveFlowLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FlowLogId) {
@@ -291,9 +296,11 @@ func (client *Client) ActiveFlowLog(request *ActiveFlowLogRequest) (_result *Act
 //
 // @return AddBgpNetworkResponse
 func (client *Client) AddBgpNetworkWithOptions(request *AddBgpNetworkRequest, runtime *dara.RuntimeOptions) (_result *AddBgpNetworkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -401,9 +408,11 @@ func (client *Client) AddBgpNetwork(request *AddBgpNetworkRequest) (_result *Add
 //
 // @return AddCommonBandwidthPackageIpResponse
 func (client *Client) AddCommonBandwidthPackageIpWithOptions(request *AddCommonBandwidthPackageIpRequest, runtime *dara.RuntimeOptions) (_result *AddCommonBandwidthPackageIpResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BandwidthPackageId) {
@@ -527,9 +536,11 @@ func (client *Client) AddCommonBandwidthPackageIp(request *AddCommonBandwidthPac
 //
 // @return AddCommonBandwidthPackageIpsResponse
 func (client *Client) AddCommonBandwidthPackageIpsWithOptions(request *AddCommonBandwidthPackageIpsRequest, runtime *dara.RuntimeOptions) (_result *AddCommonBandwidthPackageIpsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BandwidthPackageId) {
@@ -635,9 +646,11 @@ func (client *Client) AddCommonBandwidthPackageIps(request *AddCommonBandwidthPa
 //
 // @return AddGlobalAccelerationInstanceIpResponse
 func (client *Client) AddGlobalAccelerationInstanceIpWithOptions(request *AddGlobalAccelerationInstanceIpRequest, runtime *dara.RuntimeOptions) (_result *AddGlobalAccelerationInstanceIpResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GlobalAccelerationInstanceId) {
@@ -721,9 +734,11 @@ func (client *Client) AddGlobalAccelerationInstanceIp(request *AddGlobalAccelera
 //
 // @return AddIPv6TranslatorAclListEntryResponse
 func (client *Client) AddIPv6TranslatorAclListEntryWithOptions(request *AddIPv6TranslatorAclListEntryRequest, runtime *dara.RuntimeOptions) (_result *AddIPv6TranslatorAclListEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclEntryComment) {
@@ -828,9 +843,11 @@ func (client *Client) AddIPv6TranslatorAclListEntry(request *AddIPv6TranslatorAc
 //
 // @return AddPublicIpAddressPoolCidrBlockResponse
 func (client *Client) AddPublicIpAddressPoolCidrBlockWithOptions(request *AddPublicIpAddressPoolCidrBlockRequest, runtime *dara.RuntimeOptions) (_result *AddPublicIpAddressPoolCidrBlockResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CidrBlock) {
@@ -950,9 +967,11 @@ func (client *Client) AddPublicIpAddressPoolCidrBlock(request *AddPublicIpAddres
 //
 // @return AddSourcesToTrafficMirrorSessionResponse
 func (client *Client) AddSourcesToTrafficMirrorSessionWithOptions(request *AddSourcesToTrafficMirrorSessionRequest, runtime *dara.RuntimeOptions) (_result *AddSourcesToTrafficMirrorSessionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1058,9 +1077,11 @@ func (client *Client) AddSourcesToTrafficMirrorSession(request *AddSourcesToTraf
 //
 // @return AllocateEipAddressResponse
 func (client *Client) AllocateEipAddressWithOptions(request *AllocateEipAddressRequest, runtime *dara.RuntimeOptions) (_result *AllocateEipAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActivityId) {
@@ -1216,9 +1237,11 @@ func (client *Client) AllocateEipAddress(request *AllocateEipAddressRequest) (_r
 //
 // @return AllocateEipAddressProResponse
 func (client *Client) AllocateEipAddressProWithOptions(request *AllocateEipAddressProRequest, runtime *dara.RuntimeOptions) (_result *AllocateEipAddressProResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -1362,9 +1385,11 @@ func (client *Client) AllocateEipAddressPro(request *AllocateEipAddressProReques
 //
 // @return AllocateEipSegmentAddressResponse
 func (client *Client) AllocateEipSegmentAddressWithOptions(request *AllocateEipSegmentAddressRequest, runtime *dara.RuntimeOptions) (_result *AllocateEipSegmentAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bandwidth) {
@@ -1481,9 +1506,11 @@ func (client *Client) AllocateEipSegmentAddress(request *AllocateEipSegmentAddre
 //
 // @return AllocateIpv6AddressResponse
 func (client *Client) AllocateIpv6AddressWithOptions(request *AllocateIpv6AddressRequest, runtime *dara.RuntimeOptions) (_result *AllocateIpv6AddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddressType) {
@@ -1603,9 +1630,11 @@ func (client *Client) AllocateIpv6Address(request *AllocateIpv6AddressRequest) (
 //
 // @return AllocateIpv6InternetBandwidthResponse
 func (client *Client) AllocateIpv6InternetBandwidthWithOptions(request *AllocateIpv6InternetBandwidthRequest, runtime *dara.RuntimeOptions) (_result *AllocateIpv6InternetBandwidthResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bandwidth) {
@@ -1727,9 +1756,11 @@ func (client *Client) AllocateIpv6InternetBandwidth(request *AllocateIpv6Interne
 //
 // @return AllocateVpcIpv6CidrResponse
 func (client *Client) AllocateVpcIpv6CidrWithOptions(request *AllocateVpcIpv6CidrRequest, runtime *dara.RuntimeOptions) (_result *AllocateVpcIpv6CidrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddressPoolType) {
@@ -1833,9 +1864,11 @@ func (client *Client) AllocateVpcIpv6Cidr(request *AllocateVpcIpv6CidrRequest) (
 //
 // @return ApplyPhysicalConnectionLOAResponse
 func (client *Client) ApplyPhysicalConnectionLOAWithOptions(request *ApplyPhysicalConnectionLOARequest, runtime *dara.RuntimeOptions) (_result *ApplyPhysicalConnectionLOAResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bandwidth) {
@@ -1961,9 +1994,11 @@ func (client *Client) ApplyPhysicalConnectionLOA(request *ApplyPhysicalConnectio
 //
 // @return AssociateEipAddressResponse
 func (client *Client) AssociateEipAddressWithOptions(request *AssociateEipAddressRequest, runtime *dara.RuntimeOptions) (_result *AssociateEipAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllocationId) {
@@ -2093,9 +2128,11 @@ func (client *Client) AssociateEipAddress(request *AssociateEipAddressRequest) (
 //
 // @return AssociateEipAddressBatchResponse
 func (client *Client) AssociateEipAddressBatchWithOptions(request *AssociateEipAddressBatchRequest, runtime *dara.RuntimeOptions) (_result *AssociateEipAddressBatchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BindedInstanceId) {
@@ -2223,9 +2260,11 @@ func (client *Client) AssociateEipAddressBatch(request *AssociateEipAddressBatch
 //
 // @return AssociateHaVipResponse
 func (client *Client) AssociateHaVipWithOptions(request *AssociateHaVipRequest, runtime *dara.RuntimeOptions) (_result *AssociateHaVipResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -2349,9 +2388,11 @@ func (client *Client) AssociateHaVip(request *AssociateHaVipRequest) (_result *A
 //
 // @return AssociateNetworkAclResponse
 func (client *Client) AssociateNetworkAclWithOptions(request *AssociateNetworkAclRequest, runtime *dara.RuntimeOptions) (_result *AssociateNetworkAclResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -2457,9 +2498,11 @@ func (client *Client) AssociateNetworkAcl(request *AssociateNetworkAclRequest) (
 //
 // @return AssociatePhysicalConnectionToVirtualBorderRouterResponse
 func (client *Client) AssociatePhysicalConnectionToVirtualBorderRouterWithOptions(request *AssociatePhysicalConnectionToVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *AssociatePhysicalConnectionToVirtualBorderRouterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CircuitCode) {
@@ -2589,9 +2632,11 @@ func (client *Client) AssociatePhysicalConnectionToVirtualBorderRouter(request *
 //
 // @return AssociateRouteTableResponse
 func (client *Client) AssociateRouteTableWithOptions(request *AssociateRouteTableRequest, runtime *dara.RuntimeOptions) (_result *AssociateRouteTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -2689,9 +2734,11 @@ func (client *Client) AssociateRouteTable(request *AssociateRouteTableRequest) (
 //
 // @return AssociateRouteTableWithGatewayResponse
 func (client *Client) AssociateRouteTableWithGatewayWithOptions(request *AssociateRouteTableWithGatewayRequest, runtime *dara.RuntimeOptions) (_result *AssociateRouteTableWithGatewayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -2813,9 +2860,11 @@ func (client *Client) AssociateRouteTableWithGateway(request *AssociateRouteTabl
 //
 // @return AssociateRouteTablesWithVpcGatewayEndpointResponse
 func (client *Client) AssociateRouteTablesWithVpcGatewayEndpointWithOptions(request *AssociateRouteTablesWithVpcGatewayEndpointRequest, runtime *dara.RuntimeOptions) (_result *AssociateRouteTablesWithVpcGatewayEndpointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -2941,9 +2990,11 @@ func (client *Client) AssociateRouteTablesWithVpcGatewayEndpoint(request *Associ
 //
 // @return AssociateVpcCidrBlockResponse
 func (client *Client) AssociateVpcCidrBlockWithOptions(request *AssociateVpcCidrBlockRequest, runtime *dara.RuntimeOptions) (_result *AssociateVpcCidrBlockResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IPv6CidrBlock) {
@@ -3087,9 +3138,11 @@ func (client *Client) AssociateVpcCidrBlock(request *AssociateVpcCidrBlockReques
 //
 // @return AssociateVpnGatewayWithCertificateResponse
 func (client *Client) AssociateVpnGatewayWithCertificateWithOptions(request *AssociateVpnGatewayWithCertificateRequest, runtime *dara.RuntimeOptions) (_result *AssociateVpnGatewayWithCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertificateId) {
@@ -3179,6 +3232,10 @@ func (client *Client) AssociateVpnGatewayWithCertificate(request *AssociateVpnGa
 	return _result, _err
 }
 
+// Summary:
+//
+// 将DHCP选项集与VPC关联
+//
 // Description:
 //
 //	  The **AttachDhcpOptionsSetToVpc*	- operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpcAttribute](https://help.aliyun.com/document_detail/94565.html) operation to query the status of a DHCP options set:
@@ -3195,9 +3252,11 @@ func (client *Client) AssociateVpnGatewayWithCertificate(request *AssociateVpnGa
 //
 // @return AttachDhcpOptionsSetToVpcResponse
 func (client *Client) AttachDhcpOptionsSetToVpcWithOptions(request *AttachDhcpOptionsSetToVpcRequest, runtime *dara.RuntimeOptions) (_result *AttachDhcpOptionsSetToVpcResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -3259,6 +3318,10 @@ func (client *Client) AttachDhcpOptionsSetToVpcWithOptions(request *AttachDhcpOp
 	return _result, _err
 }
 
+// Summary:
+//
+// 将DHCP选项集与VPC关联
+//
 // Description:
 //
 //	  The **AttachDhcpOptionsSetToVpc*	- operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpcAttribute](https://help.aliyun.com/document_detail/94565.html) operation to query the status of a DHCP options set:
@@ -3293,9 +3356,11 @@ func (client *Client) AttachDhcpOptionsSetToVpc(request *AttachDhcpOptionsSetToV
 //
 // @return AttachVbrToVpconnResponse
 func (client *Client) AttachVbrToVpconnWithOptions(request *AttachVbrToVpconnRequest, runtime *dara.RuntimeOptions) (_result *AttachVbrToVpconnResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DryRun) {
@@ -3377,9 +3442,11 @@ func (client *Client) AttachVbrToVpconn(request *AttachVbrToVpconnRequest) (_res
 //
 // @return CancelCommonBandwidthPackageIpBandwidthResponse
 func (client *Client) CancelCommonBandwidthPackageIpBandwidthWithOptions(request *CancelCommonBandwidthPackageIpBandwidthRequest, runtime *dara.RuntimeOptions) (_result *CancelCommonBandwidthPackageIpBandwidthResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BandwidthPackageId) {
@@ -3473,9 +3540,11 @@ func (client *Client) CancelCommonBandwidthPackageIpBandwidth(request *CancelCom
 //
 // @return CancelPhysicalConnectionResponse
 func (client *Client) CancelPhysicalConnectionWithOptions(request *CancelPhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *CancelPhysicalConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -3567,9 +3636,11 @@ func (client *Client) CancelPhysicalConnection(request *CancelPhysicalConnection
 //
 // @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NewResourceGroupId) {
@@ -3645,9 +3716,11 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 //
 // @return CheckCanAllocateVpcPrivateIpAddressResponse
 func (client *Client) CheckCanAllocateVpcPrivateIpAddressWithOptions(request *CheckCanAllocateVpcPrivateIpAddressRequest, runtime *dara.RuntimeOptions) (_result *CheckCanAllocateVpcPrivateIpAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IpVersion) {
@@ -3733,9 +3806,11 @@ func (client *Client) CheckCanAllocateVpcPrivateIpAddress(request *CheckCanAlloc
 //
 // @return CheckVpnBgpEnabledResponse
 func (client *Client) CheckVpnBgpEnabledWithOptions(request *CheckVpnBgpEnabledRequest, runtime *dara.RuntimeOptions) (_result *CheckVpnBgpEnabledResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -3809,9 +3884,11 @@ func (client *Client) CheckVpnBgpEnabled(request *CheckVpnBgpEnabledRequest) (_r
 //
 // @return CompletePhysicalConnectionLOAResponse
 func (client *Client) CompletePhysicalConnectionLOAWithOptions(request *CompletePhysicalConnectionLOARequest, runtime *dara.RuntimeOptions) (_result *CompletePhysicalConnectionLOAResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -3917,9 +3994,11 @@ func (client *Client) CompletePhysicalConnectionLOA(request *CompletePhysicalCon
 //
 // @return ConfirmPhysicalConnectionResponse
 func (client *Client) ConfirmPhysicalConnectionWithOptions(request *ConfirmPhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *ConfirmPhysicalConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -4013,9 +4092,11 @@ func (client *Client) ConfirmPhysicalConnection(request *ConfirmPhysicalConnecti
 //
 // @return ConnectRouterInterfaceResponse
 func (client *Client) ConnectRouterInterfaceWithOptions(request *ConnectRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *ConnectRouterInterfaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -4113,9 +4194,11 @@ func (client *Client) ConnectRouterInterface(request *ConnectRouterInterfaceRequ
 //
 // @return ConvertBandwidthPackageResponse
 func (client *Client) ConvertBandwidthPackageWithOptions(request *ConvertBandwidthPackageRequest, runtime *dara.RuntimeOptions) (_result *ConvertBandwidthPackageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BandwidthPackageId) {
@@ -4222,9 +4305,11 @@ func (client *Client) ConvertBandwidthPackage(request *ConvertBandwidthPackageRe
 //
 // @return CopyNetworkAclEntriesResponse
 func (client *Client) CopyNetworkAclEntriesWithOptions(request *CopyNetworkAclEntriesRequest, runtime *dara.RuntimeOptions) (_result *CopyNetworkAclEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -4348,9 +4433,11 @@ func (client *Client) CopyNetworkAclEntries(request *CopyNetworkAclEntriesReques
 //
 // @return CreateBgpGroupResponse
 func (client *Client) CreateBgpGroupWithOptions(request *CreateBgpGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateBgpGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthKey) {
@@ -4482,9 +4569,11 @@ func (client *Client) CreateBgpGroup(request *CreateBgpGroupRequest) (_result *C
 //
 // @return CreateBgpPeerResponse
 func (client *Client) CreateBgpPeerWithOptions(request *CreateBgpPeerRequest, runtime *dara.RuntimeOptions) (_result *CreateBgpPeerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BfdMultiHop) {
@@ -4582,9 +4671,11 @@ func (client *Client) CreateBgpPeer(request *CreateBgpPeerRequest) (_result *Cre
 //
 // @return CreateCommonBandwidthPackageResponse
 func (client *Client) CreateCommonBandwidthPackageWithOptions(request *CreateCommonBandwidthPackageRequest, runtime *dara.RuntimeOptions) (_result *CreateCommonBandwidthPackageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bandwidth) {
@@ -4702,9 +4793,11 @@ func (client *Client) CreateCommonBandwidthPackage(request *CreateCommonBandwidt
 //
 // @return CreateCustomerGatewayResponse
 func (client *Client) CreateCustomerGatewayWithOptions(request *CreateCustomerGatewayRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomerGatewayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Asn) {
@@ -4832,9 +4925,11 @@ func (client *Client) CreateCustomerGateway(request *CreateCustomerGatewayReques
 //
 // @return CreateDefaultVSwitchResponse
 func (client *Client) CreateDefaultVSwitchWithOptions(request *CreateDefaultVSwitchRequest, runtime *dara.RuntimeOptions) (_result *CreateDefaultVSwitchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -4966,9 +5061,11 @@ func (client *Client) CreateDefaultVSwitch(request *CreateDefaultVSwitchRequest)
 //
 // @return CreateDefaultVpcResponse
 func (client *Client) CreateDefaultVpcWithOptions(request *CreateDefaultVpcRequest, runtime *dara.RuntimeOptions) (_result *CreateDefaultVpcResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -5090,9 +5187,11 @@ func (client *Client) CreateDefaultVpc(request *CreateDefaultVpcRequest) (_resul
 //
 // @return CreateDhcpOptionsSetResponse
 func (client *Client) CreateDhcpOptionsSetWithOptions(request *CreateDhcpOptionsSetRequest, runtime *dara.RuntimeOptions) (_result *CreateDhcpOptionsSetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -5214,9 +5313,11 @@ func (client *Client) CreateDhcpOptionsSet(request *CreateDhcpOptionsSetRequest)
 //
 // @return CreateExpressCloudConnectionResponse
 func (client *Client) CreateExpressCloudConnectionWithOptions(request *CreateExpressCloudConnectionRequest, runtime *dara.RuntimeOptions) (_result *CreateExpressCloudConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bandwidth) {
@@ -5334,9 +5435,11 @@ func (client *Client) CreateExpressCloudConnection(request *CreateExpressCloudCo
 //
 // @return CreateExpressConnectTrafficQosResponse
 func (client *Client) CreateExpressConnectTrafficQosWithOptions(request *CreateExpressConnectTrafficQosRequest, runtime *dara.RuntimeOptions) (_result *CreateExpressConnectTrafficQosResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -5430,9 +5533,11 @@ func (client *Client) CreateExpressConnectTrafficQos(request *CreateExpressConne
 //
 // @return CreateExpressConnectTrafficQosQueueResponse
 func (client *Client) CreateExpressConnectTrafficQosQueueWithOptions(request *CreateExpressConnectTrafficQosQueueRequest, runtime *dara.RuntimeOptions) (_result *CreateExpressConnectTrafficQosQueueResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BandwidthPercent) {
@@ -5530,9 +5635,11 @@ func (client *Client) CreateExpressConnectTrafficQosQueue(request *CreateExpress
 //
 // @return CreateExpressConnectTrafficQosRuleResponse
 func (client *Client) CreateExpressConnectTrafficQosRuleWithOptions(request *CreateExpressConnectTrafficQosRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateExpressConnectTrafficQosRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -5684,9 +5791,11 @@ func (client *Client) CreateExpressConnectTrafficQosRule(request *CreateExpressC
 //
 // @return CreateFailoverTestJobResponse
 func (client *Client) CreateFailoverTestJobWithOptions(request *CreateFailoverTestJobRequest, runtime *dara.RuntimeOptions) (_result *CreateFailoverTestJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -5818,9 +5927,11 @@ func (client *Client) CreateFailoverTestJob(request *CreateFailoverTestJobReques
 //
 // @return CreateFlowLogResponse
 func (client *Client) CreateFlowLogWithOptions(request *CreateFlowLogRequest, runtime *dara.RuntimeOptions) (_result *CreateFlowLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AggregationInterval) {
@@ -5976,9 +6087,11 @@ func (client *Client) CreateFlowLog(request *CreateFlowLogRequest) (_result *Cre
 //
 // @return CreateForwardEntryResponse
 func (client *Client) CreateForwardEntryWithOptions(request *CreateForwardEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateForwardEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -6128,9 +6241,11 @@ func (client *Client) CreateForwardEntry(request *CreateForwardEntryRequest) (_r
 //
 // @return CreateFullNatEntryResponse
 func (client *Client) CreateFullNatEntryWithOptions(request *CreateFullNatEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateFullNatEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessIp) {
@@ -6266,9 +6381,11 @@ func (client *Client) CreateFullNatEntry(request *CreateFullNatEntryRequest) (_r
 //
 // @return CreateGlobalAccelerationInstanceResponse
 func (client *Client) CreateGlobalAccelerationInstanceWithOptions(request *CreateGlobalAccelerationInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateGlobalAccelerationInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bandwidth) {
@@ -6383,9 +6500,11 @@ func (client *Client) CreateGlobalAccelerationInstance(request *CreateGlobalAcce
 //
 // @return CreateHaVipResponse
 func (client *Client) CreateHaVipWithOptions(request *CreateHaVipRequest, runtime *dara.RuntimeOptions) (_result *CreateHaVipResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -6495,9 +6614,11 @@ func (client *Client) CreateHaVip(request *CreateHaVipRequest) (_result *CreateH
 //
 // @return CreateHighReliablePhysicalConnectionResponse
 func (client *Client) CreateHighReliablePhysicalConnectionWithOptions(request *CreateHighReliablePhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *CreateHighReliablePhysicalConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -6613,9 +6734,11 @@ func (client *Client) CreateHighReliablePhysicalConnection(request *CreateHighRe
 //
 // @return CreateIPv6TranslatorResponse
 func (client *Client) CreateIPv6TranslatorWithOptions(request *CreateIPv6TranslatorRequest, runtime *dara.RuntimeOptions) (_result *CreateIPv6TranslatorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -6726,9 +6849,11 @@ func (client *Client) CreateIPv6Translator(request *CreateIPv6TranslatorRequest)
 //
 // @return CreateIPv6TranslatorAclListResponse
 func (client *Client) CreateIPv6TranslatorAclListWithOptions(request *CreateIPv6TranslatorAclListRequest, runtime *dara.RuntimeOptions) (_result *CreateIPv6TranslatorAclListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclName) {
@@ -6815,9 +6940,11 @@ func (client *Client) CreateIPv6TranslatorAclList(request *CreateIPv6TranslatorA
 //
 // @return CreateIPv6TranslatorEntryResponse
 func (client *Client) CreateIPv6TranslatorEntryWithOptions(request *CreateIPv6TranslatorEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateIPv6TranslatorEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclId) {
@@ -6952,9 +7079,11 @@ func (client *Client) CreateIPv6TranslatorEntry(request *CreateIPv6TranslatorEnt
 //
 // @return CreateIpsecServerResponse
 func (client *Client) CreateIpsecServerWithOptions(request *CreateIpsecServerRequest, runtime *dara.RuntimeOptions) (_result *CreateIpsecServerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientIpPool) {
@@ -7080,9 +7209,11 @@ func (client *Client) CreateIpsecServer(request *CreateIpsecServerRequest) (_res
 //
 // @return CreateIpv4GatewayResponse
 func (client *Client) CreateIpv4GatewayWithOptions(request *CreateIpv4GatewayRequest, runtime *dara.RuntimeOptions) (_result *CreateIpv4GatewayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -7208,9 +7339,11 @@ func (client *Client) CreateIpv4Gateway(request *CreateIpv4GatewayRequest) (_res
 //
 // @return CreateIpv6EgressOnlyRuleResponse
 func (client *Client) CreateIpv6EgressOnlyRuleWithOptions(request *CreateIpv6EgressOnlyRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateIpv6EgressOnlyRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -7332,9 +7465,11 @@ func (client *Client) CreateIpv6EgressOnlyRule(request *CreateIpv6EgressOnlyRule
 //
 // @return CreateIpv6GatewayResponse
 func (client *Client) CreateIpv6GatewayWithOptions(request *CreateIpv6GatewayRequest, runtime *dara.RuntimeOptions) (_result *CreateIpv6GatewayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -7464,9 +7599,11 @@ func (client *Client) CreateIpv6Gateway(request *CreateIpv6GatewayRequest) (_res
 //
 // @return CreateNatGatewayResponse
 func (client *Client) CreateNatGatewayWithOptions(tmpReq *CreateNatGatewayRequest, runtime *dara.RuntimeOptions) (_result *CreateNatGatewayResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateNatGatewayShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7660,9 +7797,11 @@ func (client *Client) CreateNatGateway(request *CreateNatGatewayRequest) (_resul
 //
 // @return CreateNatIpResponse
 func (client *Client) CreateNatIpWithOptions(request *CreateNatIpRequest, runtime *dara.RuntimeOptions) (_result *CreateNatIpResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -7794,9 +7933,11 @@ func (client *Client) CreateNatIp(request *CreateNatIpRequest) (_result *CreateN
 //
 // @return CreateNatIpCidrResponse
 func (client *Client) CreateNatIpCidrWithOptions(request *CreateNatIpCidrRequest, runtime *dara.RuntimeOptions) (_result *CreateNatIpCidrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -7904,9 +8045,11 @@ func (client *Client) CreateNatIpCidr(request *CreateNatIpCidrRequest) (_result 
 //
 // @return CreateNetworkAclResponse
 func (client *Client) CreateNetworkAclWithOptions(request *CreateNetworkAclRequest, runtime *dara.RuntimeOptions) (_result *CreateNetworkAclResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -8014,9 +8157,11 @@ func (client *Client) CreateNetworkAcl(request *CreateNetworkAclRequest) (_resul
 //
 // @return CreatePhysicalConnectionResponse
 func (client *Client) CreatePhysicalConnectionWithOptions(request *CreatePhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *CreatePhysicalConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessPointId) {
@@ -8164,9 +8309,11 @@ func (client *Client) CreatePhysicalConnection(request *CreatePhysicalConnection
 //
 // @return CreatePhysicalConnectionOccupancyOrderResponse
 func (client *Client) CreatePhysicalConnectionOccupancyOrderWithOptions(request *CreatePhysicalConnectionOccupancyOrderRequest, runtime *dara.RuntimeOptions) (_result *CreatePhysicalConnectionOccupancyOrderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -8276,9 +8423,11 @@ func (client *Client) CreatePhysicalConnectionOccupancyOrder(request *CreatePhys
 //
 // @return CreatePhysicalConnectionSetupOrderResponse
 func (client *Client) CreatePhysicalConnectionSetupOrderWithOptions(request *CreatePhysicalConnectionSetupOrderRequest, runtime *dara.RuntimeOptions) (_result *CreatePhysicalConnectionSetupOrderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessPointId) {
@@ -8384,9 +8533,11 @@ func (client *Client) CreatePhysicalConnectionSetupOrder(request *CreatePhysical
 //
 // @return CreatePublicIpAddressPoolResponse
 func (client *Client) CreatePublicIpAddressPoolWithOptions(request *CreatePublicIpAddressPoolRequest, runtime *dara.RuntimeOptions) (_result *CreatePublicIpAddressPoolResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -8532,9 +8683,11 @@ func (client *Client) CreatePublicIpAddressPool(request *CreatePublicIpAddressPo
 //
 // @return CreateRouteEntriesResponse
 func (client *Client) CreateRouteEntriesWithOptions(request *CreateRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *CreateRouteEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DryRun) {
@@ -8702,9 +8855,11 @@ func (client *Client) CreateRouteEntries(request *CreateRouteEntriesRequest) (_r
 //
 // @return CreateRouteEntryResponse
 func (client *Client) CreateRouteEntryWithOptions(request *CreateRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateRouteEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -8878,9 +9033,11 @@ func (client *Client) CreateRouteEntry(request *CreateRouteEntryRequest) (_resul
 //
 // @return CreateRouteTableResponse
 func (client *Client) CreateRouteTableWithOptions(request *CreateRouteTableRequest, runtime *dara.RuntimeOptions) (_result *CreateRouteTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AssociateType) {
@@ -9008,9 +9165,11 @@ func (client *Client) CreateRouteTable(request *CreateRouteTableRequest) (_resul
 //
 // @return CreateRouterInterfaceResponse
 func (client *Client) CreateRouterInterfaceWithOptions(request *CreateRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *CreateRouterInterfaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessPointId) {
@@ -9220,9 +9379,11 @@ func (client *Client) CreateRouterInterface(request *CreateRouterInterfaceReques
 //
 // @return CreateSnatEntryResponse
 func (client *Client) CreateSnatEntryWithOptions(request *CreateSnatEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateSnatEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -9356,9 +9517,11 @@ func (client *Client) CreateSnatEntry(request *CreateSnatEntryRequest) (_result 
 //
 // @return CreateSslVpnClientCertResponse
 func (client *Client) CreateSslVpnClientCertWithOptions(request *CreateSslVpnClientCertRequest, runtime *dara.RuntimeOptions) (_result *CreateSslVpnClientCertResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -9452,9 +9615,9 @@ func (client *Client) CreateSslVpnClientCert(request *CreateSslVpnClientCertRequ
 //
 //		- You cannot repeatedly call the **CreateSslVpnServer*	- operation within the specified period of time.
 //
-// ### [](#)Prerequisite
+// ### [](#prerequisite)[](#)Prerequisite
 //
-//   - A VPN gateway is created, and the SSL-VPN feature is enabled for the VPN gateway. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/2794049.html).
+//   - A VPN gateway is created, and the SSL-VPN feature is enabled for the VPN gateway. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/2794049.html) .
 //
 //   - If you want to enable two-factor authentication for the SSL server, make sure that the VPN gateway supports two-factor authentication. You may need to upgrade the VPN gateway. For more information, see [Two-factor authentication supports IDaaS EIAM 2.0](https://help.aliyun.com/document_detail/2785320.html).
 //
@@ -9464,9 +9627,11 @@ func (client *Client) CreateSslVpnClientCert(request *CreateSslVpnClientCertRequ
 //
 // @return CreateSslVpnServerResponse
 func (client *Client) CreateSslVpnServerWithOptions(request *CreateSslVpnServerRequest, runtime *dara.RuntimeOptions) (_result *CreateSslVpnServerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Cipher) {
@@ -9582,9 +9747,9 @@ func (client *Client) CreateSslVpnServerWithOptions(request *CreateSslVpnServerR
 //
 //		- You cannot repeatedly call the **CreateSslVpnServer*	- operation within the specified period of time.
 //
-// ### [](#)Prerequisite
+// ### [](#prerequisite)[](#)Prerequisite
 //
-//   - A VPN gateway is created, and the SSL-VPN feature is enabled for the VPN gateway. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/2794049.html).
+//   - A VPN gateway is created, and the SSL-VPN feature is enabled for the VPN gateway. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/2794049.html) .
 //
 //   - If you want to enable two-factor authentication for the SSL server, make sure that the VPN gateway supports two-factor authentication. You may need to upgrade the VPN gateway. For more information, see [Two-factor authentication supports IDaaS EIAM 2.0](https://help.aliyun.com/document_detail/2785320.html).
 //
@@ -9620,9 +9785,11 @@ func (client *Client) CreateSslVpnServer(request *CreateSslVpnServerRequest) (_r
 //
 // @return CreateTrafficMirrorFilterResponse
 func (client *Client) CreateTrafficMirrorFilterWithOptions(request *CreateTrafficMirrorFilterRequest, runtime *dara.RuntimeOptions) (_result *CreateTrafficMirrorFilterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -9746,9 +9913,11 @@ func (client *Client) CreateTrafficMirrorFilter(request *CreateTrafficMirrorFilt
 //
 // @return CreateTrafficMirrorFilterRulesResponse
 func (client *Client) CreateTrafficMirrorFilterRulesWithOptions(request *CreateTrafficMirrorFilterRulesRequest, runtime *dara.RuntimeOptions) (_result *CreateTrafficMirrorFilterRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -9860,9 +10029,11 @@ func (client *Client) CreateTrafficMirrorFilterRules(request *CreateTrafficMirro
 //
 // @return CreateTrafficMirrorSessionResponse
 func (client *Client) CreateTrafficMirrorSessionWithOptions(request *CreateTrafficMirrorSessionRequest, runtime *dara.RuntimeOptions) (_result *CreateTrafficMirrorSessionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -10024,9 +10195,11 @@ func (client *Client) CreateTrafficMirrorSession(request *CreateTrafficMirrorSes
 //
 // @return CreateVSwitchResponse
 func (client *Client) CreateVSwitchWithOptions(request *CreateVSwitchRequest, runtime *dara.RuntimeOptions) (_result *CreateVSwitchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CidrBlock) {
@@ -10180,9 +10353,11 @@ func (client *Client) CreateVSwitch(request *CreateVSwitchRequest) (_result *Cre
 //
 // @return CreateVSwitchCidrReservationResponse
 func (client *Client) CreateVSwitchCidrReservationWithOptions(request *CreateVSwitchCidrReservationRequest, runtime *dara.RuntimeOptions) (_result *CreateVSwitchCidrReservationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -10316,9 +10491,11 @@ func (client *Client) CreateVSwitchCidrReservation(request *CreateVSwitchCidrRes
 //
 // @return CreateVbrHaResponse
 func (client *Client) CreateVbrHaWithOptions(request *CreateVbrHaRequest, runtime *dara.RuntimeOptions) (_result *CreateVbrHaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -10432,9 +10609,11 @@ func (client *Client) CreateVbrHa(request *CreateVbrHaRequest) (_result *CreateV
 //
 // @return CreateVcoRouteEntryResponse
 func (client *Client) CreateVcoRouteEntryWithOptions(request *CreateVcoRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateVcoRouteEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -10556,9 +10735,11 @@ func (client *Client) CreateVcoRouteEntry(request *CreateVcoRouteEntryRequest) (
 //
 // @return CreateVirtualBorderRouterResponse
 func (client *Client) CreateVirtualBorderRouterWithOptions(request *CreateVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *CreateVirtualBorderRouterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bandwidth) {
@@ -10710,9 +10891,11 @@ func (client *Client) CreateVirtualBorderRouter(request *CreateVirtualBorderRout
 //
 // @return CreateVirtualPhysicalConnectionResponse
 func (client *Client) CreateVirtualPhysicalConnectionWithOptions(request *CreateVirtualPhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *CreateVirtualPhysicalConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -10842,9 +11025,11 @@ func (client *Client) CreateVirtualPhysicalConnection(request *CreateVirtualPhys
 //
 // @return CreateVpcResponse
 func (client *Client) CreateVpcWithOptions(request *CreateVpcRequest, runtime *dara.RuntimeOptions) (_result *CreateVpcResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CidrBlock) {
@@ -11014,9 +11199,11 @@ func (client *Client) CreateVpc(request *CreateVpcRequest) (_result *CreateVpcRe
 //
 // @return CreateVpcGatewayEndpointResponse
 func (client *Client) CreateVpcGatewayEndpointWithOptions(request *CreateVpcGatewayEndpointRequest, runtime *dara.RuntimeOptions) (_result *CreateVpcGatewayEndpointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -11140,9 +11327,11 @@ func (client *Client) CreateVpcGatewayEndpoint(request *CreateVpcGatewayEndpoint
 //
 // @return CreateVpcPrefixListResponse
 func (client *Client) CreateVpcPrefixListWithOptions(request *CreateVpcPrefixListRequest, runtime *dara.RuntimeOptions) (_result *CreateVpcPrefixListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -11270,9 +11459,11 @@ func (client *Client) CreateVpcPrefixList(request *CreateVpcPrefixListRequest) (
 //
 // @return CreateVpconnFromVbrResponse
 func (client *Client) CreateVpconnFromVbrWithOptions(request *CreateVpconnFromVbrRequest, runtime *dara.RuntimeOptions) (_result *CreateVpconnFromVbrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DryRun) {
@@ -11376,9 +11567,11 @@ func (client *Client) CreateVpconnFromVbr(request *CreateVpconnFromVbrRequest) (
 //
 // @return CreateVpnAttachmentResponse
 func (client *Client) CreateVpnAttachmentWithOptions(request *CreateVpnAttachmentRequest, runtime *dara.RuntimeOptions) (_result *CreateVpnAttachmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoConfigRoute) {
@@ -11569,9 +11762,11 @@ func (client *Client) CreateVpnAttachment(request *CreateVpnAttachmentRequest) (
 //
 // @return CreateVpnConnectionResponse
 func (client *Client) CreateVpnConnectionWithOptions(request *CreateVpnConnectionRequest, runtime *dara.RuntimeOptions) (_result *CreateVpnConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoConfigRoute) {
@@ -11758,9 +11953,11 @@ func (client *Client) CreateVpnConnection(request *CreateVpnConnectionRequest) (
 //
 // @return CreateVpnGatewayResponse
 func (client *Client) CreateVpnGatewayWithOptions(request *CreateVpnGatewayRequest, runtime *dara.RuntimeOptions) (_result *CreateVpnGatewayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -11920,9 +12117,11 @@ func (client *Client) CreateVpnGateway(request *CreateVpnGatewayRequest) (_resul
 //
 // @return CreateVpnPbrRouteEntryResponse
 func (client *Client) CreateVpnPbrRouteEntryWithOptions(request *CreateVpnPbrRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateVpnPbrRouteEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -12064,9 +12263,11 @@ func (client *Client) CreateVpnPbrRouteEntry(request *CreateVpnPbrRouteEntryRequ
 //
 // @return CreateVpnRouteEntryResponse
 func (client *Client) CreateVpnRouteEntryWithOptions(request *CreateVpnRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateVpnRouteEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -12186,9 +12387,11 @@ func (client *Client) CreateVpnRouteEntry(request *CreateVpnRouteEntryRequest) (
 //
 // @return DeactivateRouterInterfaceResponse
 func (client *Client) DeactivateRouterInterfaceWithOptions(request *DeactivateRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *DeactivateRouterInterfaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -12272,9 +12475,11 @@ func (client *Client) DeactivateRouterInterface(request *DeactivateRouterInterfa
 //
 // @return DeactiveFlowLogResponse
 func (client *Client) DeactiveFlowLogWithOptions(request *DeactiveFlowLogRequest, runtime *dara.RuntimeOptions) (_result *DeactiveFlowLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FlowLogId) {
@@ -12362,9 +12567,11 @@ func (client *Client) DeactiveFlowLog(request *DeactiveFlowLogRequest) (_result 
 //
 // @return DeleteBgpGroupResponse
 func (client *Client) DeleteBgpGroupWithOptions(request *DeleteBgpGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteBgpGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BgpGroupId) {
@@ -12446,9 +12653,11 @@ func (client *Client) DeleteBgpGroup(request *DeleteBgpGroupRequest) (_result *D
 //
 // @return DeleteBgpNetworkResponse
 func (client *Client) DeleteBgpNetworkWithOptions(request *DeleteBgpNetworkRequest, runtime *dara.RuntimeOptions) (_result *DeleteBgpNetworkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -12534,9 +12743,11 @@ func (client *Client) DeleteBgpNetwork(request *DeleteBgpNetworkRequest) (_resul
 //
 // @return DeleteBgpPeerResponse
 func (client *Client) DeleteBgpPeerWithOptions(request *DeleteBgpPeerRequest, runtime *dara.RuntimeOptions) (_result *DeleteBgpPeerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BgpPeerId) {
@@ -12622,9 +12833,11 @@ func (client *Client) DeleteBgpPeer(request *DeleteBgpPeerRequest) (_result *Del
 //
 // @return DeleteCommonBandwidthPackageResponse
 func (client *Client) DeleteCommonBandwidthPackageWithOptions(request *DeleteCommonBandwidthPackageRequest, runtime *dara.RuntimeOptions) (_result *DeleteCommonBandwidthPackageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BandwidthPackageId) {
@@ -12714,9 +12927,11 @@ func (client *Client) DeleteCommonBandwidthPackage(request *DeleteCommonBandwidt
 //
 // @return DeleteCustomerGatewayResponse
 func (client *Client) DeleteCustomerGatewayWithOptions(request *DeleteCustomerGatewayRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomerGatewayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -12814,9 +13029,11 @@ func (client *Client) DeleteCustomerGateway(request *DeleteCustomerGatewayReques
 //
 // @return DeleteDhcpOptionsSetResponse
 func (client *Client) DeleteDhcpOptionsSetWithOptions(request *DeleteDhcpOptionsSetRequest, runtime *dara.RuntimeOptions) (_result *DeleteDhcpOptionsSetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -12906,6 +13123,96 @@ func (client *Client) DeleteDhcpOptionsSet(request *DeleteDhcpOptionsSetRequest)
 
 // Summary:
 //
+// Deletes a Express Connect instance, including the initiator and acceptor.
+//
+// @param request - DeleteExpressConnectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteExpressConnectResponse
+func (client *Client) DeleteExpressConnectWithOptions(request *DeleteExpressConnectRequest, runtime *dara.RuntimeOptions) (_result *DeleteExpressConnectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Force) {
+		query["Force"] = request.Force
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.RouterInterfaceId) {
+		query["RouterInterfaceId"] = request.RouterInterfaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteExpressConnect"),
+		Version:     dara.String("2016-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteExpressConnectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a Express Connect instance, including the initiator and acceptor.
+//
+// @param request - DeleteExpressConnectRequest
+//
+// @return DeleteExpressConnectResponse
+func (client *Client) DeleteExpressConnect(request *DeleteExpressConnectRequest) (_result *DeleteExpressConnectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteExpressConnectResponse{}
+	_body, _err := client.DeleteExpressConnectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a quality of service (QoS) policy.
 //
 // @param request - DeleteExpressConnectTrafficQosRequest
@@ -12914,9 +13221,11 @@ func (client *Client) DeleteDhcpOptionsSet(request *DeleteDhcpOptionsSetRequest)
 //
 // @return DeleteExpressConnectTrafficQosResponse
 func (client *Client) DeleteExpressConnectTrafficQosWithOptions(request *DeleteExpressConnectTrafficQosRequest, runtime *dara.RuntimeOptions) (_result *DeleteExpressConnectTrafficQosResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -12998,9 +13307,11 @@ func (client *Client) DeleteExpressConnectTrafficQos(request *DeleteExpressConne
 //
 // @return DeleteExpressConnectTrafficQosQueueResponse
 func (client *Client) DeleteExpressConnectTrafficQosQueueWithOptions(request *DeleteExpressConnectTrafficQosQueueRequest, runtime *dara.RuntimeOptions) (_result *DeleteExpressConnectTrafficQosQueueResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -13086,9 +13397,11 @@ func (client *Client) DeleteExpressConnectTrafficQosQueue(request *DeleteExpress
 //
 // @return DeleteExpressConnectTrafficQosRuleResponse
 func (client *Client) DeleteExpressConnectTrafficQosRuleWithOptions(request *DeleteExpressConnectTrafficQosRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteExpressConnectTrafficQosRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -13182,9 +13495,11 @@ func (client *Client) DeleteExpressConnectTrafficQosRule(request *DeleteExpressC
 //
 // @return DeleteFailoverTestJobResponse
 func (client *Client) DeleteFailoverTestJobWithOptions(request *DeleteFailoverTestJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteFailoverTestJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -13280,9 +13595,11 @@ func (client *Client) DeleteFailoverTestJob(request *DeleteFailoverTestJobReques
 //
 // @return DeleteFlowLogResponse
 func (client *Client) DeleteFlowLogWithOptions(request *DeleteFlowLogRequest, runtime *dara.RuntimeOptions) (_result *DeleteFlowLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FlowLogId) {
@@ -13384,9 +13701,11 @@ func (client *Client) DeleteFlowLog(request *DeleteFlowLogRequest) (_result *Del
 //
 // @return DeleteForwardEntryResponse
 func (client *Client) DeleteForwardEntryWithOptions(request *DeleteForwardEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteForwardEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -13498,9 +13817,11 @@ func (client *Client) DeleteForwardEntry(request *DeleteForwardEntryRequest) (_r
 //
 // @return DeleteFullNatEntryResponse
 func (client *Client) DeleteFullNatEntryWithOptions(request *DeleteFullNatEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteFullNatEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -13612,9 +13933,11 @@ func (client *Client) DeleteFullNatEntry(request *DeleteFullNatEntryRequest) (_r
 //
 // @return DeleteGlobalAccelerationInstanceResponse
 func (client *Client) DeleteGlobalAccelerationInstanceWithOptions(request *DeleteGlobalAccelerationInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteGlobalAccelerationInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GlobalAccelerationInstanceId) {
@@ -13720,9 +14043,11 @@ func (client *Client) DeleteGlobalAccelerationInstance(request *DeleteGlobalAcce
 //
 // @return DeleteHaVipResponse
 func (client *Client) DeleteHaVipWithOptions(request *DeleteHaVipRequest, runtime *dara.RuntimeOptions) (_result *DeleteHaVipResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -13822,9 +14147,11 @@ func (client *Client) DeleteHaVip(request *DeleteHaVipRequest) (_result *DeleteH
 //
 // @return DeleteIPv6TranslatorResponse
 func (client *Client) DeleteIPv6TranslatorWithOptions(request *DeleteIPv6TranslatorRequest, runtime *dara.RuntimeOptions) (_result *DeleteIPv6TranslatorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -13908,9 +14235,11 @@ func (client *Client) DeleteIPv6Translator(request *DeleteIPv6TranslatorRequest)
 //
 // @return DeleteIPv6TranslatorAclListResponse
 func (client *Client) DeleteIPv6TranslatorAclListWithOptions(request *DeleteIPv6TranslatorAclListRequest, runtime *dara.RuntimeOptions) (_result *DeleteIPv6TranslatorAclListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclId) {
@@ -13997,9 +14326,11 @@ func (client *Client) DeleteIPv6TranslatorAclList(request *DeleteIPv6TranslatorA
 //
 // @return DeleteIPv6TranslatorEntryResponse
 func (client *Client) DeleteIPv6TranslatorEntryWithOptions(request *DeleteIPv6TranslatorEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteIPv6TranslatorEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -14098,9 +14429,11 @@ func (client *Client) DeleteIPv6TranslatorEntry(request *DeleteIPv6TranslatorEnt
 //
 // @return DeleteIpsecServerResponse
 func (client *Client) DeleteIpsecServerWithOptions(request *DeleteIpsecServerRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpsecServerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -14194,9 +14527,11 @@ func (client *Client) DeleteIpsecServer(request *DeleteIpsecServerRequest) (_res
 //
 // @return DeleteIpv4GatewayResponse
 func (client *Client) DeleteIpv4GatewayWithOptions(request *DeleteIpv4GatewayRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpv4GatewayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -14314,9 +14649,11 @@ func (client *Client) DeleteIpv4Gateway(request *DeleteIpv4GatewayRequest) (_res
 //
 // @return DeleteIpv6EgressOnlyRuleResponse
 func (client *Client) DeleteIpv6EgressOnlyRuleWithOptions(request *DeleteIpv6EgressOnlyRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpv6EgressOnlyRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -14424,9 +14761,11 @@ func (client *Client) DeleteIpv6EgressOnlyRule(request *DeleteIpv6EgressOnlyRule
 //
 // @return DeleteIpv6GatewayResponse
 func (client *Client) DeleteIpv6GatewayWithOptions(request *DeleteIpv6GatewayRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpv6GatewayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -14532,9 +14871,11 @@ func (client *Client) DeleteIpv6Gateway(request *DeleteIpv6GatewayRequest) (_res
 //
 // @return DeleteIpv6InternetBandwidthResponse
 func (client *Client) DeleteIpv6InternetBandwidthWithOptions(request *DeleteIpv6InternetBandwidthRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpv6InternetBandwidthResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -14646,9 +14987,11 @@ func (client *Client) DeleteIpv6InternetBandwidth(request *DeleteIpv6InternetBan
 //
 // @return DeleteNatGatewayResponse
 func (client *Client) DeleteNatGatewayWithOptions(request *DeleteNatGatewayRequest, runtime *dara.RuntimeOptions) (_result *DeleteNatGatewayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Force) {
@@ -14756,9 +15099,11 @@ func (client *Client) DeleteNatGateway(request *DeleteNatGatewayRequest) (_resul
 //
 // @return DeleteNatIpResponse
 func (client *Client) DeleteNatIpWithOptions(request *DeleteNatIpRequest, runtime *dara.RuntimeOptions) (_result *DeleteNatIpResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -14874,9 +15219,11 @@ func (client *Client) DeleteNatIp(request *DeleteNatIpRequest) (_result *DeleteN
 //
 // @return DeleteNatIpCidrResponse
 func (client *Client) DeleteNatIpCidrWithOptions(request *DeleteNatIpCidrRequest, runtime *dara.RuntimeOptions) (_result *DeleteNatIpCidrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -14982,9 +15329,11 @@ func (client *Client) DeleteNatIpCidr(request *DeleteNatIpCidrRequest) (_result 
 //
 // @return DeleteNetworkAclResponse
 func (client *Client) DeleteNetworkAclWithOptions(request *DeleteNetworkAclRequest, runtime *dara.RuntimeOptions) (_result *DeleteNetworkAclResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -15084,9 +15433,11 @@ func (client *Client) DeleteNetworkAcl(request *DeleteNetworkAclRequest) (_resul
 //
 // @return DeletePhysicalConnectionResponse
 func (client *Client) DeletePhysicalConnectionWithOptions(request *DeletePhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *DeletePhysicalConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -15186,9 +15537,11 @@ func (client *Client) DeletePhysicalConnection(request *DeletePhysicalConnection
 //
 // @return DeletePublicIpAddressPoolResponse
 func (client *Client) DeletePublicIpAddressPoolWithOptions(request *DeletePublicIpAddressPoolRequest, runtime *dara.RuntimeOptions) (_result *DeletePublicIpAddressPoolResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -15302,9 +15655,11 @@ func (client *Client) DeletePublicIpAddressPool(request *DeletePublicIpAddressPo
 //
 // @return DeletePublicIpAddressPoolCidrBlockResponse
 func (client *Client) DeletePublicIpAddressPoolCidrBlockWithOptions(request *DeletePublicIpAddressPoolCidrBlockRequest, runtime *dara.RuntimeOptions) (_result *DeletePublicIpAddressPoolCidrBlockResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CidrBlock) {
@@ -15424,9 +15779,11 @@ func (client *Client) DeletePublicIpAddressPoolCidrBlock(request *DeletePublicIp
 //
 // @return DeleteRouteEntriesResponse
 func (client *Client) DeleteRouteEntriesWithOptions(request *DeleteRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouteEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DryRun) {
@@ -15546,9 +15903,11 @@ func (client *Client) DeleteRouteEntries(request *DeleteRouteEntriesRequest) (_r
 //
 // @return DeleteRouteEntryResponse
 func (client *Client) DeleteRouteEntryWithOptions(request *DeleteRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouteEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DestinationCidrBlock) {
@@ -15676,9 +16035,11 @@ func (client *Client) DeleteRouteEntry(request *DeleteRouteEntryRequest) (_resul
 //
 // @return DeleteRouteTableResponse
 func (client *Client) DeleteRouteTableWithOptions(request *DeleteRouteTableRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouteTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -15780,9 +16141,11 @@ func (client *Client) DeleteRouteTable(request *DeleteRouteTableRequest) (_resul
 //
 // @return DeleteRouterInterfaceResponse
 func (client *Client) DeleteRouterInterfaceWithOptions(request *DeleteRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouterInterfaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -15882,9 +16245,11 @@ func (client *Client) DeleteRouterInterface(request *DeleteRouterInterfaceReques
 //
 // @return DeleteSnatEntryResponse
 func (client *Client) DeleteSnatEntryWithOptions(request *DeleteSnatEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteSnatEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -15998,9 +16363,11 @@ func (client *Client) DeleteSnatEntry(request *DeleteSnatEntryRequest) (_result 
 //
 // @return DeleteSslVpnClientCertResponse
 func (client *Client) DeleteSslVpnClientCertWithOptions(request *DeleteSslVpnClientCertRequest, runtime *dara.RuntimeOptions) (_result *DeleteSslVpnClientCertResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -16110,9 +16477,11 @@ func (client *Client) DeleteSslVpnClientCert(request *DeleteSslVpnClientCertRequ
 //
 // @return DeleteSslVpnServerResponse
 func (client *Client) DeleteSslVpnServerWithOptions(request *DeleteSslVpnServerRequest, runtime *dara.RuntimeOptions) (_result *DeleteSslVpnServerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -16214,9 +16583,11 @@ func (client *Client) DeleteSslVpnServer(request *DeleteSslVpnServerRequest) (_r
 //
 // @return DeleteTrafficMirrorFilterResponse
 func (client *Client) DeleteTrafficMirrorFilterWithOptions(request *DeleteTrafficMirrorFilterRequest, runtime *dara.RuntimeOptions) (_result *DeleteTrafficMirrorFilterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -16322,9 +16693,11 @@ func (client *Client) DeleteTrafficMirrorFilter(request *DeleteTrafficMirrorFilt
 //
 // @return DeleteTrafficMirrorFilterRulesResponse
 func (client *Client) DeleteTrafficMirrorFilterRulesWithOptions(request *DeleteTrafficMirrorFilterRulesRequest, runtime *dara.RuntimeOptions) (_result *DeleteTrafficMirrorFilterRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -16434,9 +16807,11 @@ func (client *Client) DeleteTrafficMirrorFilterRules(request *DeleteTrafficMirro
 //
 // @return DeleteTrafficMirrorSessionResponse
 func (client *Client) DeleteTrafficMirrorSessionWithOptions(request *DeleteTrafficMirrorSessionRequest, runtime *dara.RuntimeOptions) (_result *DeleteTrafficMirrorSessionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -16550,9 +16925,11 @@ func (client *Client) DeleteTrafficMirrorSession(request *DeleteTrafficMirrorSes
 //
 // @return DeleteVSwitchResponse
 func (client *Client) DeleteVSwitchWithOptions(request *DeleteVSwitchRequest, runtime *dara.RuntimeOptions) (_result *DeleteVSwitchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DryRun) {
@@ -16664,9 +17041,11 @@ func (client *Client) DeleteVSwitch(request *DeleteVSwitchRequest) (_result *Del
 //
 // @return DeleteVSwitchCidrReservationResponse
 func (client *Client) DeleteVSwitchCidrReservationWithOptions(request *DeleteVSwitchCidrReservationRequest, runtime *dara.RuntimeOptions) (_result *DeleteVSwitchCidrReservationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -16764,9 +17143,11 @@ func (client *Client) DeleteVSwitchCidrReservation(request *DeleteVSwitchCidrRes
 //
 // @return DeleteVbrHaResponse
 func (client *Client) DeleteVbrHaWithOptions(request *DeleteVbrHaRequest, runtime *dara.RuntimeOptions) (_result *DeleteVbrHaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -16858,9 +17239,11 @@ func (client *Client) DeleteVbrHa(request *DeleteVbrHaRequest) (_result *DeleteV
 //
 // @return DeleteVcoRouteEntryResponse
 func (client *Client) DeleteVcoRouteEntryWithOptions(request *DeleteVcoRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteVcoRouteEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -16974,9 +17357,11 @@ func (client *Client) DeleteVcoRouteEntry(request *DeleteVcoRouteEntryRequest) (
 //
 // @return DeleteVirtualBorderRouterResponse
 func (client *Client) DeleteVirtualBorderRouterWithOptions(request *DeleteVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *DeleteVirtualBorderRouterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -17084,9 +17469,11 @@ func (client *Client) DeleteVirtualBorderRouter(request *DeleteVirtualBorderRout
 //
 // @return DeleteVpcResponse
 func (client *Client) DeleteVpcWithOptions(request *DeleteVpcRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpcResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -17192,9 +17579,11 @@ func (client *Client) DeleteVpc(request *DeleteVpcRequest) (_result *DeleteVpcRe
 //
 // @return DeleteVpcGatewayEndpointResponse
 func (client *Client) DeleteVpcGatewayEndpointWithOptions(request *DeleteVpcGatewayEndpointRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpcGatewayEndpointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -17284,9 +17673,11 @@ func (client *Client) DeleteVpcGatewayEndpoint(request *DeleteVpcGatewayEndpoint
 //
 // @return DeleteVpcPrefixListResponse
 func (client *Client) DeleteVpcPrefixListWithOptions(request *DeleteVpcPrefixListRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpcPrefixListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -17382,9 +17773,11 @@ func (client *Client) DeleteVpcPrefixList(request *DeleteVpcPrefixListRequest) (
 //
 // @return DeleteVpnAttachmentResponse
 func (client *Client) DeleteVpnAttachmentWithOptions(request *DeleteVpnAttachmentRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpnAttachmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -17480,9 +17873,11 @@ func (client *Client) DeleteVpnAttachment(request *DeleteVpnAttachmentRequest) (
 //
 // @return DeleteVpnConnectionResponse
 func (client *Client) DeleteVpnConnectionWithOptions(request *DeleteVpnConnectionRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpnConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -17580,9 +17975,11 @@ func (client *Client) DeleteVpnConnection(request *DeleteVpnConnectionRequest) (
 //
 // @return DeleteVpnGatewayResponse
 func (client *Client) DeleteVpnGatewayWithOptions(request *DeleteVpnGatewayRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpnGatewayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -17678,9 +18075,11 @@ func (client *Client) DeleteVpnGateway(request *DeleteVpnGatewayRequest) (_resul
 //
 // @return DeleteVpnPbrRouteEntryResponse
 func (client *Client) DeleteVpnPbrRouteEntryWithOptions(request *DeleteVpnPbrRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpnPbrRouteEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -17806,9 +18205,11 @@ func (client *Client) DeleteVpnPbrRouteEntry(request *DeleteVpnPbrRouteEntryRequ
 //
 // @return DeleteVpnRouteEntryResponse
 func (client *Client) DeleteVpnRouteEntryWithOptions(request *DeleteVpnRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpnRouteEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -17920,9 +18321,11 @@ func (client *Client) DeleteVpnRouteEntry(request *DeleteVpnRouteEntryRequest) (
 //
 // @return DeletionProtectionResponse
 func (client *Client) DeletionProtectionWithOptions(request *DeletionProtectionRequest, runtime *dara.RuntimeOptions) (_result *DeletionProtectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -18016,9 +18419,11 @@ func (client *Client) DeletionProtection(request *DeletionProtectionRequest) (_r
 //
 // @return Describe95TrafficResponse
 func (client *Client) Describe95TrafficWithOptions(request *Describe95TrafficRequest, runtime *dara.RuntimeOptions) (_result *Describe95TrafficResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Day) {
@@ -18104,9 +18509,11 @@ func (client *Client) Describe95Traffic(request *Describe95TrafficRequest) (_res
 //
 // @return DescribeAccessPointsResponse
 func (client *Client) DescribeAccessPointsWithOptions(request *DescribeAccessPointsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAccessPointsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -18188,9 +18595,11 @@ func (client *Client) DescribeAccessPoints(request *DescribeAccessPointsRequest)
 //
 // @return DescribeBgpGroupsResponse
 func (client *Client) DescribeBgpGroupsWithOptions(request *DescribeBgpGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeBgpGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BgpGroupId) {
@@ -18284,9 +18693,11 @@ func (client *Client) DescribeBgpGroups(request *DescribeBgpGroupsRequest) (_res
 //
 // @return DescribeBgpNetworksResponse
 func (client *Client) DescribeBgpNetworksWithOptions(request *DescribeBgpNetworksRequest, runtime *dara.RuntimeOptions) (_result *DescribeBgpNetworksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -18372,9 +18783,11 @@ func (client *Client) DescribeBgpNetworks(request *DescribeBgpNetworksRequest) (
 //
 // @return DescribeBgpPeersResponse
 func (client *Client) DescribeBgpPeersWithOptions(request *DescribeBgpPeersRequest, runtime *dara.RuntimeOptions) (_result *DescribeBgpPeersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BgpGroupId) {
@@ -18472,9 +18885,11 @@ func (client *Client) DescribeBgpPeers(request *DescribeBgpPeersRequest) (_resul
 //
 // @return DescribeCommonBandwidthPackagesResponse
 func (client *Client) DescribeCommonBandwidthPackagesWithOptions(request *DescribeCommonBandwidthPackagesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCommonBandwidthPackagesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BandwidthPackageId) {
@@ -18584,9 +18999,11 @@ func (client *Client) DescribeCommonBandwidthPackages(request *DescribeCommonBan
 //
 // @return DescribeCustomerGatewayResponse
 func (client *Client) DescribeCustomerGatewayWithOptions(request *DescribeCustomerGatewayRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomerGatewayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustomerGatewayId) {
@@ -18664,9 +19081,11 @@ func (client *Client) DescribeCustomerGateway(request *DescribeCustomerGatewayRe
 //
 // @return DescribeCustomerGatewaysResponse
 func (client *Client) DescribeCustomerGatewaysWithOptions(request *DescribeCustomerGatewaysRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomerGatewaysResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustomerGatewayId) {
@@ -18760,9 +19179,11 @@ func (client *Client) DescribeCustomerGateways(request *DescribeCustomerGateways
 //
 // @return DescribeEcGrantRelationResponse
 func (client *Client) DescribeEcGrantRelationWithOptions(request *DescribeEcGrantRelationRequest, runtime *dara.RuntimeOptions) (_result *DescribeEcGrantRelationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -18840,9 +19261,11 @@ func (client *Client) DescribeEcGrantRelation(request *DescribeEcGrantRelationRe
 //
 // @return DescribeEipAddressesResponse
 func (client *Client) DescribeEipAddressesWithOptions(request *DescribeEipAddressesRequest, runtime *dara.RuntimeOptions) (_result *DescribeEipAddressesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllocationId) {
@@ -19004,9 +19427,11 @@ func (client *Client) DescribeEipAddresses(request *DescribeEipAddressesRequest)
 //
 // @return DescribeEipGatewayInfoResponse
 func (client *Client) DescribeEipGatewayInfoWithOptions(request *DescribeEipGatewayInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeEipGatewayInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -19096,9 +19521,11 @@ func (client *Client) DescribeEipGatewayInfo(request *DescribeEipGatewayInfoRequ
 //
 // @return DescribeEipMonitorDataResponse
 func (client *Client) DescribeEipMonitorDataWithOptions(request *DescribeEipMonitorDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeEipMonitorDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllocationId) {
@@ -19192,9 +19619,11 @@ func (client *Client) DescribeEipMonitorData(request *DescribeEipMonitorDataRequ
 //
 // @return DescribeEipSegmentResponse
 func (client *Client) DescribeEipSegmentWithOptions(request *DescribeEipSegmentRequest, runtime *dara.RuntimeOptions) (_result *DescribeEipSegmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -19284,9 +19713,11 @@ func (client *Client) DescribeEipSegment(request *DescribeEipSegmentRequest) (_r
 //
 // @return DescribeExpressConnectTrafficQosResponse
 func (client *Client) DescribeExpressConnectTrafficQosWithOptions(request *DescribeExpressConnectTrafficQosRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectTrafficQosResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -19388,9 +19819,11 @@ func (client *Client) DescribeExpressConnectTrafficQos(request *DescribeExpressC
 //
 // @return DescribeExpressConnectTrafficQosQueueResponse
 func (client *Client) DescribeExpressConnectTrafficQosQueueWithOptions(request *DescribeExpressConnectTrafficQosQueueRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectTrafficQosQueueResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -19480,9 +19913,11 @@ func (client *Client) DescribeExpressConnectTrafficQosQueue(request *DescribeExp
 //
 // @return DescribeExpressConnectTrafficQosRuleResponse
 func (client *Client) DescribeExpressConnectTrafficQosRuleWithOptions(request *DescribeExpressConnectTrafficQosRuleRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectTrafficQosRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -19576,9 +20011,11 @@ func (client *Client) DescribeExpressConnectTrafficQosRule(request *DescribeExpr
 //
 // @return DescribeFailoverTestJobResponse
 func (client *Client) DescribeFailoverTestJobWithOptions(request *DescribeFailoverTestJobRequest, runtime *dara.RuntimeOptions) (_result *DescribeFailoverTestJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -19660,9 +20097,11 @@ func (client *Client) DescribeFailoverTestJob(request *DescribeFailoverTestJobRe
 //
 // @return DescribeFailoverTestJobsResponse
 func (client *Client) DescribeFailoverTestJobsWithOptions(request *DescribeFailoverTestJobsRequest, runtime *dara.RuntimeOptions) (_result *DescribeFailoverTestJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -19752,9 +20191,11 @@ func (client *Client) DescribeFailoverTestJobs(request *DescribeFailoverTestJobs
 //
 // @return DescribeFlowLogsResponse
 func (client *Client) DescribeFlowLogsWithOptions(request *DescribeFlowLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeFlowLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -19884,9 +20325,11 @@ func (client *Client) DescribeFlowLogs(request *DescribeFlowLogsRequest) (_resul
 //
 // @return DescribeForwardTableEntriesResponse
 func (client *Client) DescribeForwardTableEntriesWithOptions(request *DescribeForwardTableEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeForwardTableEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExternalIp) {
@@ -20004,9 +20447,11 @@ func (client *Client) DescribeForwardTableEntries(request *DescribeForwardTableE
 //
 // @return DescribeGlobalAccelerationInstancesResponse
 func (client *Client) DescribeGlobalAccelerationInstancesWithOptions(request *DescribeGlobalAccelerationInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeGlobalAccelerationInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BandwidthType) {
@@ -20120,9 +20565,11 @@ func (client *Client) DescribeGlobalAccelerationInstances(request *DescribeGloba
 //
 // @return DescribeGrantRulesToCenResponse
 func (client *Client) DescribeGrantRulesToCenWithOptions(request *DescribeGrantRulesToCenRequest, runtime *dara.RuntimeOptions) (_result *DescribeGrantRulesToCenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -20212,6 +20659,88 @@ func (client *Client) DescribeGrantRulesToCen(request *DescribeGrantRulesToCenRe
 
 // Summary:
 //
+// Queries the cross-account authorization list of an Express Connect Router (ECR).
+//
+// @param request - DescribeGrantRulesToEcrRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGrantRulesToEcrResponse
+func (client *Client) DescribeGrantRulesToEcrWithOptions(request *DescribeGrantRulesToEcrRequest, runtime *dara.RuntimeOptions) (_result *DescribeGrantRulesToEcrResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeGrantRulesToEcr"),
+		Version:     dara.String("2016-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeGrantRulesToEcrResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the cross-account authorization list of an Express Connect Router (ECR).
+//
+// @param request - DescribeGrantRulesToEcrRequest
+//
+// @return DescribeGrantRulesToEcrResponse
+func (client *Client) DescribeGrantRulesToEcr(request *DescribeGrantRulesToEcrRequest) (_result *DescribeGrantRulesToEcrResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeGrantRulesToEcrResponse{}
+	_body, _err := client.DescribeGrantRulesToEcrWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries HaVips in a region.
 //
 // @param request - DescribeHaVipsRequest
@@ -20220,9 +20749,11 @@ func (client *Client) DescribeGrantRulesToCen(request *DescribeGrantRulesToCenRe
 //
 // @return DescribeHaVipsResponse
 func (client *Client) DescribeHaVipsWithOptions(request *DescribeHaVipsRequest, runtime *dara.RuntimeOptions) (_result *DescribeHaVipsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Filter) {
@@ -20316,9 +20847,11 @@ func (client *Client) DescribeHaVips(request *DescribeHaVipsRequest) (_result *D
 //
 // @return DescribeHighDefinitionMonitorLogAttributeResponse
 func (client *Client) DescribeHighDefinitionMonitorLogAttributeWithOptions(request *DescribeHighDefinitionMonitorLogAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeHighDefinitionMonitorLogAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -20400,9 +20933,11 @@ func (client *Client) DescribeHighDefinitionMonitorLogAttribute(request *Describ
 //
 // @return DescribeIPv6TranslatorAclListAttributesResponse
 func (client *Client) DescribeIPv6TranslatorAclListAttributesWithOptions(request *DescribeIPv6TranslatorAclListAttributesRequest, runtime *dara.RuntimeOptions) (_result *DescribeIPv6TranslatorAclListAttributesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclId) {
@@ -20490,9 +21025,11 @@ func (client *Client) DescribeIPv6TranslatorAclListAttributes(request *DescribeI
 //
 // @return DescribeIPv6TranslatorAclListsResponse
 func (client *Client) DescribeIPv6TranslatorAclListsWithOptions(request *DescribeIPv6TranslatorAclListsRequest, runtime *dara.RuntimeOptions) (_result *DescribeIPv6TranslatorAclListsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclId) {
@@ -20587,9 +21124,11 @@ func (client *Client) DescribeIPv6TranslatorAclLists(request *DescribeIPv6Transl
 //
 // @return DescribeIPv6TranslatorEntriesResponse
 func (client *Client) DescribeIPv6TranslatorEntriesWithOptions(request *DescribeIPv6TranslatorEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeIPv6TranslatorEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclId) {
@@ -20724,9 +21263,11 @@ func (client *Client) DescribeIPv6TranslatorEntries(request *DescribeIPv6Transla
 //
 // @return DescribeIPv6TranslatorsResponse
 func (client *Client) DescribeIPv6TranslatorsWithOptions(request *DescribeIPv6TranslatorsRequest, runtime *dara.RuntimeOptions) (_result *DescribeIPv6TranslatorsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllocateIpv4Addr) {
@@ -20843,9 +21384,11 @@ func (client *Client) DescribeIPv6Translators(request *DescribeIPv6TranslatorsRe
 //
 // @return DescribeIpv6AddressesResponse
 func (client *Client) DescribeIpv6AddressesWithOptions(request *DescribeIpv6AddressesRequest, runtime *dara.RuntimeOptions) (_result *DescribeIpv6AddressesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddressType) {
@@ -20987,9 +21530,11 @@ func (client *Client) DescribeIpv6Addresses(request *DescribeIpv6AddressesReques
 //
 // @return DescribeIpv6EgressOnlyRulesResponse
 func (client *Client) DescribeIpv6EgressOnlyRulesWithOptions(request *DescribeIpv6EgressOnlyRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeIpv6EgressOnlyRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -21095,9 +21640,11 @@ func (client *Client) DescribeIpv6EgressOnlyRules(request *DescribeIpv6EgressOnl
 //
 // @return DescribeIpv6GatewayAttributeResponse
 func (client *Client) DescribeIpv6GatewayAttributeWithOptions(request *DescribeIpv6GatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeIpv6GatewayAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Ipv6GatewayId) {
@@ -21179,9 +21726,11 @@ func (client *Client) DescribeIpv6GatewayAttribute(request *DescribeIpv6GatewayA
 //
 // @return DescribeIpv6GatewaysResponse
 func (client *Client) DescribeIpv6GatewaysWithOptions(request *DescribeIpv6GatewaysRequest, runtime *dara.RuntimeOptions) (_result *DescribeIpv6GatewaysResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Ipv6GatewayId) {
@@ -21279,7 +21828,7 @@ func (client *Client) DescribeIpv6Gateways(request *DescribeIpv6GatewaysRequest)
 
 // Summary:
 //
-// 查询NAT已绑定ENI信息
+// Queries elastic network interfaces (ENIs) associated with a virtual private cloud (VPC) NAT gateway when the VPC NAT gateway serves as a PrivateLink service resource. This feature is not publicly available.
 //
 // @param request - DescribeNatGatewayAssociateNetworkInterfacesRequest
 //
@@ -21287,9 +21836,11 @@ func (client *Client) DescribeIpv6Gateways(request *DescribeIpv6GatewaysRequest)
 //
 // @return DescribeNatGatewayAssociateNetworkInterfacesResponse
 func (client *Client) DescribeNatGatewayAssociateNetworkInterfacesWithOptions(request *DescribeNatGatewayAssociateNetworkInterfacesRequest, runtime *dara.RuntimeOptions) (_result *DescribeNatGatewayAssociateNetworkInterfacesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -21369,7 +21920,7 @@ func (client *Client) DescribeNatGatewayAssociateNetworkInterfacesWithOptions(re
 
 // Summary:
 //
-// 查询NAT已绑定ENI信息
+// Queries elastic network interfaces (ENIs) associated with a virtual private cloud (VPC) NAT gateway when the VPC NAT gateway serves as a PrivateLink service resource. This feature is not publicly available.
 //
 // @param request - DescribeNatGatewayAssociateNetworkInterfacesRequest
 //
@@ -21399,9 +21950,11 @@ func (client *Client) DescribeNatGatewayAssociateNetworkInterfaces(request *Desc
 //
 // @return DescribeNatGatewaysResponse
 func (client *Client) DescribeNatGatewaysWithOptions(request *DescribeNatGatewaysRequest, runtime *dara.RuntimeOptions) (_result *DescribeNatGatewaysResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DryRun) {
@@ -21535,9 +22088,11 @@ func (client *Client) DescribeNatGateways(request *DescribeNatGatewaysRequest) (
 //
 // @return DescribeNetworkAclAttributesResponse
 func (client *Client) DescribeNetworkAclAttributesWithOptions(request *DescribeNetworkAclAttributesRequest, runtime *dara.RuntimeOptions) (_result *DescribeNetworkAclAttributesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -21623,9 +22178,11 @@ func (client *Client) DescribeNetworkAclAttributes(request *DescribeNetworkAclAt
 //
 // @return DescribeNetworkAclsResponse
 func (client *Client) DescribeNetworkAclsWithOptions(request *DescribeNetworkAclsRequest, runtime *dara.RuntimeOptions) (_result *DescribeNetworkAclsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -21739,9 +22296,11 @@ func (client *Client) DescribeNetworkAcls(request *DescribeNetworkAclsRequest) (
 //
 // @return DescribePhysicalConnectionLOAResponse
 func (client *Client) DescribePhysicalConnectionLOAWithOptions(request *DescribePhysicalConnectionLOARequest, runtime *dara.RuntimeOptions) (_result *DescribePhysicalConnectionLOAResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -21827,9 +22386,11 @@ func (client *Client) DescribePhysicalConnectionLOA(request *DescribePhysicalCon
 //
 // @return DescribePhysicalConnectionsResponse
 func (client *Client) DescribePhysicalConnectionsWithOptions(request *DescribePhysicalConnectionsRequest, runtime *dara.RuntimeOptions) (_result *DescribePhysicalConnectionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -21939,9 +22500,11 @@ func (client *Client) DescribePhysicalConnections(request *DescribePhysicalConne
 //
 // @return DescribePublicIpAddressResponse
 func (client *Client) DescribePublicIpAddressWithOptions(request *DescribePublicIpAddressRequest, runtime *dara.RuntimeOptions) (_result *DescribePublicIpAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IpVersion) {
@@ -22035,9 +22598,11 @@ func (client *Client) DescribePublicIpAddress(request *DescribePublicIpAddressRe
 //
 // @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -22119,9 +22684,11 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 //
 // @return DescribeRouteEntryListResponse
 func (client *Client) DescribeRouteEntryListWithOptions(request *DescribeRouteEntryListRequest, runtime *dara.RuntimeOptions) (_result *DescribeRouteEntryListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DestCidrBlockList) {
@@ -22251,9 +22818,11 @@ func (client *Client) DescribeRouteEntryList(request *DescribeRouteEntryListRequ
 //
 // @return DescribeRouteTableListResponse
 func (client *Client) DescribeRouteTableListWithOptions(request *DescribeRouteTableListRequest, runtime *dara.RuntimeOptions) (_result *DescribeRouteTableListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -22369,9 +22938,11 @@ func (client *Client) DescribeRouteTableList(request *DescribeRouteTableListRequ
 //
 // @return DescribeRouteTablesResponse
 func (client *Client) DescribeRouteTablesWithOptions(request *DescribeRouteTablesRequest, runtime *dara.RuntimeOptions) (_result *DescribeRouteTablesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -22484,9 +23055,11 @@ func (client *Client) DescribeRouteTables(request *DescribeRouteTablesRequest) (
 //
 // @return DescribeRouterInterfaceAttributeResponse
 func (client *Client) DescribeRouterInterfaceAttributeWithOptions(request *DescribeRouterInterfaceAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeRouterInterfaceAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -22560,9 +23133,11 @@ func (client *Client) DescribeRouterInterfaceAttribute(request *DescribeRouterIn
 //
 // @return DescribeRouterInterfacesResponse
 func (client *Client) DescribeRouterInterfacesWithOptions(request *DescribeRouterInterfacesRequest, runtime *dara.RuntimeOptions) (_result *DescribeRouterInterfacesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Filter) {
@@ -22660,9 +23235,11 @@ func (client *Client) DescribeRouterInterfaces(request *DescribeRouterInterfaces
 //
 // @return DescribeServerRelatedGlobalAccelerationInstancesResponse
 func (client *Client) DescribeServerRelatedGlobalAccelerationInstancesWithOptions(request *DescribeServerRelatedGlobalAccelerationInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeServerRelatedGlobalAccelerationInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -22748,9 +23325,11 @@ func (client *Client) DescribeServerRelatedGlobalAccelerationInstances(request *
 //
 // @return DescribeSnatTableEntriesResponse
 func (client *Client) DescribeSnatTableEntriesWithOptions(request *DescribeSnatTableEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeSnatTableEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NatGatewayId) {
@@ -22864,9 +23443,11 @@ func (client *Client) DescribeSnatTableEntries(request *DescribeSnatTableEntries
 //
 // @return DescribeSslVpnClientCertResponse
 func (client *Client) DescribeSslVpnClientCertWithOptions(request *DescribeSslVpnClientCertRequest, runtime *dara.RuntimeOptions) (_result *DescribeSslVpnClientCertResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -22944,9 +23525,11 @@ func (client *Client) DescribeSslVpnClientCert(request *DescribeSslVpnClientCert
 //
 // @return DescribeSslVpnClientCertsResponse
 func (client *Client) DescribeSslVpnClientCertsWithOptions(request *DescribeSslVpnClientCertsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSslVpnClientCertsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -23050,9 +23633,11 @@ func (client *Client) DescribeSslVpnClientCerts(request *DescribeSslVpnClientCer
 //
 // @return DescribeSslVpnClientsResponse
 func (client *Client) DescribeSslVpnClientsWithOptions(request *DescribeSslVpnClientsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSslVpnClientsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -23144,9 +23729,11 @@ func (client *Client) DescribeSslVpnClients(request *DescribeSslVpnClientsReques
 //
 // @return DescribeSslVpnServersResponse
 func (client *Client) DescribeSslVpnServersWithOptions(request *DescribeSslVpnServersRequest, runtime *dara.RuntimeOptions) (_result *DescribeSslVpnServersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -23244,9 +23831,11 @@ func (client *Client) DescribeSslVpnServers(request *DescribeSslVpnServersReques
 //
 // @return DescribeTagKeysResponse
 func (client *Client) DescribeTagKeysWithOptions(request *DescribeTagKeysRequest, runtime *dara.RuntimeOptions) (_result *DescribeTagKeysResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -23340,9 +23929,11 @@ func (client *Client) DescribeTagKeys(request *DescribeTagKeysRequest) (_result 
 //
 // @return DescribeTagKeysForExpressConnectResponse
 func (client *Client) DescribeTagKeysForExpressConnectWithOptions(request *DescribeTagKeysForExpressConnectRequest, runtime *dara.RuntimeOptions) (_result *DescribeTagKeysForExpressConnectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -23446,9 +24037,11 @@ func (client *Client) DescribeTagKeysForExpressConnect(request *DescribeTagKeysF
 //
 // @return DescribeTagsResponse
 func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, runtime *dara.RuntimeOptions) (_result *DescribeTagsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResult) {
@@ -23552,9 +24145,11 @@ func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *Descr
 //
 // @return DescribeVRoutersResponse
 func (client *Client) DescribeVRoutersWithOptions(request *DescribeVRoutersRequest, runtime *dara.RuntimeOptions) (_result *DescribeVRoutersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -23640,9 +24235,11 @@ func (client *Client) DescribeVRouters(request *DescribeVRoutersRequest) (_resul
 //
 // @return DescribeVSwitchAttributesResponse
 func (client *Client) DescribeVSwitchAttributesWithOptions(request *DescribeVSwitchAttributesRequest, runtime *dara.RuntimeOptions) (_result *DescribeVSwitchAttributesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DryRun) {
@@ -23724,9 +24321,11 @@ func (client *Client) DescribeVSwitchAttributes(request *DescribeVSwitchAttribut
 //
 // @return DescribeVSwitchesResponse
 func (client *Client) DescribeVSwitchesWithOptions(request *DescribeVSwitchesRequest, runtime *dara.RuntimeOptions) (_result *DescribeVSwitchesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DryRun) {
@@ -23852,9 +24451,11 @@ func (client *Client) DescribeVSwitches(request *DescribeVSwitchesRequest) (_res
 //
 // @return DescribeVbrHaResponse
 func (client *Client) DescribeVbrHaWithOptions(request *DescribeVbrHaRequest, runtime *dara.RuntimeOptions) (_result *DescribeVbrHaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -23944,9 +24545,11 @@ func (client *Client) DescribeVbrHa(request *DescribeVbrHaRequest) (_result *Des
 //
 // @return DescribeVcoRouteEntriesResponse
 func (client *Client) DescribeVcoRouteEntriesWithOptions(request *DescribeVcoRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeVcoRouteEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -24036,9 +24639,11 @@ func (client *Client) DescribeVcoRouteEntries(request *DescribeVcoRouteEntriesRe
 //
 // @return DescribeVirtualBorderRoutersResponse
 func (client *Client) DescribeVirtualBorderRoutersWithOptions(request *DescribeVirtualBorderRoutersRequest, runtime *dara.RuntimeOptions) (_result *DescribeVirtualBorderRoutersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Filter) {
@@ -24132,9 +24737,11 @@ func (client *Client) DescribeVirtualBorderRouters(request *DescribeVirtualBorde
 //
 // @return DescribeVirtualBorderRoutersForPhysicalConnectionResponse
 func (client *Client) DescribeVirtualBorderRoutersForPhysicalConnectionWithOptions(request *DescribeVirtualBorderRoutersForPhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *DescribeVirtualBorderRoutersForPhysicalConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Filter) {
@@ -24220,9 +24827,11 @@ func (client *Client) DescribeVirtualBorderRoutersForPhysicalConnection(request 
 //
 // @return DescribeVpcAttributeResponse
 func (client *Client) DescribeVpcAttributeWithOptions(request *DescribeVpcAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DryRun) {
@@ -24300,7 +24909,7 @@ func (client *Client) DescribeVpcAttribute(request *DescribeVpcAttributeRequest)
 
 // Summary:
 //
-// 查询VPC跨账号授权给ECR
+// Queries the cross-account authorization information of an ECR for a specified network instance.
 //
 // @param request - DescribeVpcGrantRulesToEcrRequest
 //
@@ -24308,9 +24917,11 @@ func (client *Client) DescribeVpcAttribute(request *DescribeVpcAttributeRequest)
 //
 // @return DescribeVpcGrantRulesToEcrResponse
 func (client *Client) DescribeVpcGrantRulesToEcrWithOptions(request *DescribeVpcGrantRulesToEcrRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcGrantRulesToEcrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EcrInstanceId) {
@@ -24390,7 +25001,7 @@ func (client *Client) DescribeVpcGrantRulesToEcrWithOptions(request *DescribeVpc
 
 // Summary:
 //
-// 查询VPC跨账号授权给ECR
+// Queries the cross-account authorization information of an ECR for a specified network instance.
 //
 // @param request - DescribeVpcGrantRulesToEcrRequest
 //
@@ -24416,9 +25027,11 @@ func (client *Client) DescribeVpcGrantRulesToEcr(request *DescribeVpcGrantRulesT
 //
 // @return DescribeVpcsResponse
 func (client *Client) DescribeVpcsWithOptions(request *DescribeVpcsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DhcpOptionsSetId) {
@@ -24536,9 +25149,11 @@ func (client *Client) DescribeVpcs(request *DescribeVpcsRequest) (_result *Descr
 //
 // @return DescribeVpnAttachmentsResponse
 func (client *Client) DescribeVpnAttachmentsWithOptions(request *DescribeVpnAttachmentsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnAttachmentsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AttachType) {
@@ -24628,9 +25243,11 @@ func (client *Client) DescribeVpnAttachments(request *DescribeVpnAttachmentsRequ
 //
 // @return DescribeVpnConnectionResponse
 func (client *Client) DescribeVpnConnectionWithOptions(request *DescribeVpnConnectionRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -24708,9 +25325,11 @@ func (client *Client) DescribeVpnConnection(request *DescribeVpnConnectionReques
 //
 // @return DescribeVpnConnectionLogsResponse
 func (client *Client) DescribeVpnConnectionLogsWithOptions(request *DescribeVpnConnectionLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnConnectionLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -24812,9 +25431,11 @@ func (client *Client) DescribeVpnConnectionLogs(request *DescribeVpnConnectionLo
 //
 // @return DescribeVpnConnectionsResponse
 func (client *Client) DescribeVpnConnectionsWithOptions(request *DescribeVpnConnectionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnConnectionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustomerGatewayId) {
@@ -24916,9 +25537,11 @@ func (client *Client) DescribeVpnConnections(request *DescribeVpnConnectionsRequ
 //
 // @return DescribeVpnCrossAccountAuthorizationsResponse
 func (client *Client) DescribeVpnCrossAccountAuthorizationsWithOptions(request *DescribeVpnCrossAccountAuthorizationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnCrossAccountAuthorizationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -25004,9 +25627,11 @@ func (client *Client) DescribeVpnCrossAccountAuthorizations(request *DescribeVpn
 //
 // @return DescribeVpnGatewayResponse
 func (client *Client) DescribeVpnGatewayWithOptions(request *DescribeVpnGatewayRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnGatewayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IncludeReservationData) {
@@ -25088,9 +25713,11 @@ func (client *Client) DescribeVpnGateway(request *DescribeVpnGatewayRequest) (_r
 //
 // @return DescribeVpnGatewayAvailableZonesResponse
 func (client *Client) DescribeVpnGatewayAvailableZonesWithOptions(request *DescribeVpnGatewayAvailableZonesRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnGatewayAvailableZonesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -25144,9 +25771,11 @@ func (client *Client) DescribeVpnGatewayAvailableZones(request *DescribeVpnGatew
 //
 // @return DescribeVpnGatewaysResponse
 func (client *Client) DescribeVpnGatewaysWithOptions(request *DescribeVpnGatewaysRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnGatewaysResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessStatus) {
@@ -25256,9 +25885,11 @@ func (client *Client) DescribeVpnGateways(request *DescribeVpnGatewaysRequest) (
 //
 // @return DescribeVpnPbrRouteEntriesResponse
 func (client *Client) DescribeVpnPbrRouteEntriesWithOptions(request *DescribeVpnPbrRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnPbrRouteEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -25344,9 +25975,11 @@ func (client *Client) DescribeVpnPbrRouteEntries(request *DescribeVpnPbrRouteEnt
 //
 // @return DescribeVpnRouteEntriesResponse
 func (client *Client) DescribeVpnRouteEntriesWithOptions(request *DescribeVpnRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnRouteEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -25436,9 +26069,11 @@ func (client *Client) DescribeVpnRouteEntries(request *DescribeVpnRouteEntriesRe
 //
 // @return DescribeVpnSslServerLogsResponse
 func (client *Client) DescribeVpnSslServerLogsWithOptions(request *DescribeVpnSslServerLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnSslServerLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -25540,9 +26175,11 @@ func (client *Client) DescribeVpnSslServerLogs(request *DescribeVpnSslServerLogs
 //
 // @return DescribeZonesResponse
 func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, runtime *dara.RuntimeOptions) (_result *DescribeZonesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -25636,9 +26273,11 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 //
 // @return DetachDhcpOptionsSetFromVpcResponse
 func (client *Client) DetachDhcpOptionsSetFromVpcWithOptions(request *DetachDhcpOptionsSetFromVpcRequest, runtime *dara.RuntimeOptions) (_result *DetachDhcpOptionsSetFromVpcResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -25748,9 +26387,11 @@ func (client *Client) DetachDhcpOptionsSetFromVpc(request *DetachDhcpOptionsSetF
 //
 // @return DiagnoseVpnConnectionsResponse
 func (client *Client) DiagnoseVpnConnectionsWithOptions(request *DiagnoseVpnConnectionsRequest, runtime *dara.RuntimeOptions) (_result *DiagnoseVpnConnectionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -25840,9 +26481,11 @@ func (client *Client) DiagnoseVpnConnections(request *DiagnoseVpnConnectionsRequ
 //
 // @return DiagnoseVpnGatewayResponse
 func (client *Client) DiagnoseVpnGatewayWithOptions(request *DiagnoseVpnGatewayRequest, runtime *dara.RuntimeOptions) (_result *DiagnoseVpnGatewayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -25922,9 +26565,11 @@ func (client *Client) DiagnoseVpnGateway(request *DiagnoseVpnGatewayRequest) (_r
 //
 // @return DisableNatGatewayEcsMetricResponse
 func (client *Client) DisableNatGatewayEcsMetricWithOptions(request *DisableNatGatewayEcsMetricRequest, runtime *dara.RuntimeOptions) (_result *DisableNatGatewayEcsMetricResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DryRun) {
@@ -25997,9 +26642,11 @@ func (client *Client) DisableNatGatewayEcsMetric(request *DisableNatGatewayEcsMe
 //
 // @return DisableVpcClassicLinkResponse
 func (client *Client) DisableVpcClassicLinkWithOptions(request *DisableVpcClassicLinkRequest, runtime *dara.RuntimeOptions) (_result *DisableVpcClassicLinkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -26081,9 +26728,11 @@ func (client *Client) DisableVpcClassicLink(request *DisableVpcClassicLinkReques
 //
 // @return DissociateRouteTableFromGatewayResponse
 func (client *Client) DissociateRouteTableFromGatewayWithOptions(request *DissociateRouteTableFromGatewayRequest, runtime *dara.RuntimeOptions) (_result *DissociateRouteTableFromGatewayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -26181,9 +26830,11 @@ func (client *Client) DissociateRouteTableFromGateway(request *DissociateRouteTa
 //
 // @return DissociateRouteTablesFromVpcGatewayEndpointResponse
 func (client *Client) DissociateRouteTablesFromVpcGatewayEndpointWithOptions(request *DissociateRouteTablesFromVpcGatewayEndpointRequest, runtime *dara.RuntimeOptions) (_result *DissociateRouteTablesFromVpcGatewayEndpointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -26283,9 +26934,11 @@ func (client *Client) DissociateRouteTablesFromVpcGatewayEndpoint(request *Disso
 //
 // @return DissociateVpnGatewayWithCertificateResponse
 func (client *Client) DissociateVpnGatewayWithCertificateWithOptions(request *DissociateVpnGatewayWithCertificateRequest, runtime *dara.RuntimeOptions) (_result *DissociateVpnGatewayWithCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertificateId) {
@@ -26373,9 +27026,11 @@ func (client *Client) DissociateVpnGatewayWithCertificate(request *DissociateVpn
 //
 // @return DownloadVpnConnectionConfigResponse
 func (client *Client) DownloadVpnConnectionConfigWithOptions(request *DownloadVpnConnectionConfigRequest, runtime *dara.RuntimeOptions) (_result *DownloadVpnConnectionConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -26455,9 +27110,11 @@ func (client *Client) DownloadVpnConnectionConfig(request *DownloadVpnConnection
 //
 // @return EnableNatGatewayEcsMetricResponse
 func (client *Client) EnableNatGatewayEcsMetricWithOptions(request *EnableNatGatewayEcsMetricRequest, runtime *dara.RuntimeOptions) (_result *EnableNatGatewayEcsMetricResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DryRun) {
@@ -26542,9 +27199,11 @@ func (client *Client) EnableNatGatewayEcsMetric(request *EnableNatGatewayEcsMetr
 //
 // @return EnablePhysicalConnectionResponse
 func (client *Client) EnablePhysicalConnectionWithOptions(request *EnablePhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *EnablePhysicalConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ByPassSp) {
@@ -26642,9 +27301,11 @@ func (client *Client) EnablePhysicalConnection(request *EnablePhysicalConnection
 //
 // @return EnableVpcClassicLinkResponse
 func (client *Client) EnableVpcClassicLinkWithOptions(request *EnableVpcClassicLinkRequest, runtime *dara.RuntimeOptions) (_result *EnableVpcClassicLinkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -26738,9 +27399,11 @@ func (client *Client) EnableVpcClassicLink(request *EnableVpcClassicLinkRequest)
 //
 // @return EnableVpcIpv4GatewayResponse
 func (client *Client) EnableVpcIpv4GatewayWithOptions(request *EnableVpcIpv4GatewayRequest, runtime *dara.RuntimeOptions) (_result *EnableVpcIpv4GatewayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -26846,9 +27509,11 @@ func (client *Client) EnableVpcIpv4Gateway(request *EnableVpcIpv4GatewayRequest)
 //
 // @return GetDhcpOptionsSetResponse
 func (client *Client) GetDhcpOptionsSetWithOptions(request *GetDhcpOptionsSetRequest, runtime *dara.RuntimeOptions) (_result *GetDhcpOptionsSetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DhcpOptionsSetId) {
@@ -26926,9 +27591,11 @@ func (client *Client) GetDhcpOptionsSet(request *GetDhcpOptionsSetRequest) (_res
 //
 // @return GetFlowLogServiceStatusResponse
 func (client *Client) GetFlowLogServiceStatusWithOptions(request *GetFlowLogServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *GetFlowLogServiceStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -27010,9 +27677,11 @@ func (client *Client) GetFlowLogServiceStatus(request *GetFlowLogServiceStatusRe
 //
 // @return GetIpv4GatewayAttributeResponse
 func (client *Client) GetIpv4GatewayAttributeWithOptions(request *GetIpv4GatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetIpv4GatewayAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Ipv4GatewayId) {
@@ -27098,9 +27767,11 @@ func (client *Client) GetIpv4GatewayAttribute(request *GetIpv4GatewayAttributeRe
 //
 // @return GetNatGatewayAttributeResponse
 func (client *Client) GetNatGatewayAttributeWithOptions(request *GetNatGatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetNatGatewayAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NatGatewayId) {
@@ -27190,9 +27861,11 @@ func (client *Client) GetNatGatewayAttribute(request *GetNatGatewayAttributeRequ
 //
 // @return GetPhysicalConnectionServiceStatusResponse
 func (client *Client) GetPhysicalConnectionServiceStatusWithOptions(request *GetPhysicalConnectionServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *GetPhysicalConnectionServiceStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -27270,9 +27943,11 @@ func (client *Client) GetPhysicalConnectionServiceStatus(request *GetPhysicalCon
 //
 // @return GetPublicIpAddressPoolServiceStatusResponse
 func (client *Client) GetPublicIpAddressPoolServiceStatusWithOptions(request *GetPublicIpAddressPoolServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *GetPublicIpAddressPoolServiceStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -27354,9 +28029,11 @@ func (client *Client) GetPublicIpAddressPoolServiceStatus(request *GetPublicIpAd
 //
 // @return GetTrafficMirrorServiceStatusResponse
 func (client *Client) GetTrafficMirrorServiceStatusWithOptions(request *GetTrafficMirrorServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *GetTrafficMirrorServiceStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -27438,9 +28115,11 @@ func (client *Client) GetTrafficMirrorServiceStatus(request *GetTrafficMirrorSer
 //
 // @return GetVSwitchCidrReservationUsageResponse
 func (client *Client) GetVSwitchCidrReservationUsageWithOptions(request *GetVSwitchCidrReservationUsageRequest, runtime *dara.RuntimeOptions) (_result *GetVSwitchCidrReservationUsageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -27526,9 +28205,11 @@ func (client *Client) GetVSwitchCidrReservationUsage(request *GetVSwitchCidrRese
 //
 // @return GetVpcGatewayEndpointAttributeResponse
 func (client *Client) GetVpcGatewayEndpointAttributeWithOptions(request *GetVpcGatewayEndpointAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetVpcGatewayEndpointAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndpointId) {
@@ -27606,9 +28287,11 @@ func (client *Client) GetVpcGatewayEndpointAttribute(request *GetVpcGatewayEndpo
 //
 // @return GetVpcPrefixListAssociationsResponse
 func (client *Client) GetVpcPrefixListAssociationsWithOptions(request *GetVpcPrefixListAssociationsRequest, runtime *dara.RuntimeOptions) (_result *GetVpcPrefixListAssociationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -27694,9 +28377,11 @@ func (client *Client) GetVpcPrefixListAssociations(request *GetVpcPrefixListAsso
 //
 // @return GetVpcPrefixListEntriesResponse
 func (client *Client) GetVpcPrefixListEntriesWithOptions(request *GetVpcPrefixListEntriesRequest, runtime *dara.RuntimeOptions) (_result *GetVpcPrefixListEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -27782,9 +28467,11 @@ func (client *Client) GetVpcPrefixListEntries(request *GetVpcPrefixListEntriesRe
 //
 // @return GetVpcRouteEntrySummaryResponse
 func (client *Client) GetVpcRouteEntrySummaryWithOptions(request *GetVpcRouteEntrySummaryRequest, runtime *dara.RuntimeOptions) (_result *GetVpcRouteEntrySummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -27874,9 +28561,11 @@ func (client *Client) GetVpcRouteEntrySummary(request *GetVpcRouteEntrySummaryRe
 //
 // @return GetVpnGatewayDiagnoseResultResponse
 func (client *Client) GetVpnGatewayDiagnoseResultWithOptions(request *GetVpnGatewayDiagnoseResultRequest, runtime *dara.RuntimeOptions) (_result *GetVpnGatewayDiagnoseResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -27958,9 +28647,11 @@ func (client *Client) GetVpnGatewayDiagnoseResult(request *GetVpnGatewayDiagnose
 //
 // @return GrantInstanceToCenResponse
 func (client *Client) GrantInstanceToCenWithOptions(request *GrantInstanceToCenRequest, runtime *dara.RuntimeOptions) (_result *GrantInstanceToCenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -28068,9 +28759,11 @@ func (client *Client) GrantInstanceToCen(request *GrantInstanceToCenRequest) (_r
 //
 // @return GrantInstanceToVbrResponse
 func (client *Client) GrantInstanceToVbrWithOptions(tmpReq *GrantInstanceToVbrRequest, runtime *dara.RuntimeOptions) (_result *GrantInstanceToVbrResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GrantInstanceToVbrShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -28160,9 +28853,11 @@ func (client *Client) GrantInstanceToVbr(request *GrantInstanceToVbrRequest) (_r
 //
 // @return ListBusinessAccessPointsResponse
 func (client *Client) ListBusinessAccessPointsWithOptions(request *ListBusinessAccessPointsRequest, runtime *dara.RuntimeOptions) (_result *ListBusinessAccessPointsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -28216,6 +28911,68 @@ func (client *Client) ListBusinessAccessPoints(request *ListBusinessAccessPoints
 
 // Summary:
 //
+// Query the list of regions available for an Express Connect circuit.
+//
+// @param request - ListBusinessRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBusinessRegionsResponse
+func (client *Client) ListBusinessRegionsWithOptions(request *ListBusinessRegionsRequest, runtime *dara.RuntimeOptions) (_result *ListBusinessRegionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptLanguage) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListBusinessRegions"),
+		Version:     dara.String("2016-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListBusinessRegionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Query the list of regions available for an Express Connect circuit.
+//
+// @param request - ListBusinessRegionsRequest
+//
+// @return ListBusinessRegionsResponse
+func (client *Client) ListBusinessRegions(request *ListBusinessRegionsRequest) (_result *ListBusinessRegionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListBusinessRegionsResponse{}
+	_body, _err := client.ListBusinessRegionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries Dynamic Host Configuration Protocol (DHCP) options sets.
 //
 // @param request - ListDhcpOptionsSetsRequest
@@ -28224,9 +28981,11 @@ func (client *Client) ListBusinessAccessPoints(request *ListBusinessAccessPoints
 //
 // @return ListDhcpOptionsSetsResponse
 func (client *Client) ListDhcpOptionsSetsWithOptions(request *ListDhcpOptionsSetsRequest, runtime *dara.RuntimeOptions) (_result *ListDhcpOptionsSetsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DhcpOptionsSetId) {
@@ -28332,9 +29091,11 @@ func (client *Client) ListDhcpOptionsSets(request *ListDhcpOptionsSetsRequest) (
 //
 // @return ListEnhanhcedNatGatewayAvailableZonesResponse
 func (client *Client) ListEnhanhcedNatGatewayAvailableZonesWithOptions(request *ListEnhanhcedNatGatewayAvailableZonesRequest, runtime *dara.RuntimeOptions) (_result *ListEnhanhcedNatGatewayAvailableZonesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -28424,9 +29185,11 @@ func (client *Client) ListEnhanhcedNatGatewayAvailableZones(request *ListEnhanhc
 //
 // @return ListFullNatEntriesResponse
 func (client *Client) ListFullNatEntriesWithOptions(request *ListFullNatEntriesRequest, runtime *dara.RuntimeOptions) (_result *ListFullNatEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -28544,9 +29307,11 @@ func (client *Client) ListFullNatEntries(request *ListFullNatEntriesRequest) (_r
 //
 // @return ListGatewayRouteTableEntriesResponse
 func (client *Client) ListGatewayRouteTableEntriesWithOptions(request *ListGatewayRouteTableEntriesRequest, runtime *dara.RuntimeOptions) (_result *ListGatewayRouteTableEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DestinationCidrBlock) {
@@ -28687,9 +29452,11 @@ func (client *Client) ListGeographicSubRegions() (_result *ListGeographicSubRegi
 //
 // @return ListIpsecServerLogsResponse
 func (client *Client) ListIpsecServerLogsWithOptions(request *ListIpsecServerLogsRequest, runtime *dara.RuntimeOptions) (_result *ListIpsecServerLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
@@ -28771,9 +29538,11 @@ func (client *Client) ListIpsecServerLogs(request *ListIpsecServerLogsRequest) (
 //
 // @return ListIpsecServersResponse
 func (client *Client) ListIpsecServersWithOptions(request *ListIpsecServersRequest, runtime *dara.RuntimeOptions) (_result *ListIpsecServersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IpsecServerId) {
@@ -28855,9 +29624,11 @@ func (client *Client) ListIpsecServers(request *ListIpsecServersRequest) (_resul
 //
 // @return ListIpv4GatewaysResponse
 func (client *Client) ListIpv4GatewaysWithOptions(request *ListIpv4GatewaysRequest, runtime *dara.RuntimeOptions) (_result *ListIpv4GatewaysResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Ipv4GatewayId) {
@@ -28963,9 +29734,11 @@ func (client *Client) ListIpv4Gateways(request *ListIpv4GatewaysRequest) (_resul
 //
 // @return ListNatIpCidrsResponse
 func (client *Client) ListNatIpCidrsWithOptions(request *ListNatIpCidrsRequest, runtime *dara.RuntimeOptions) (_result *ListNatIpCidrsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -29079,9 +29852,11 @@ func (client *Client) ListNatIpCidrs(request *ListNatIpCidrsRequest) (_result *L
 //
 // @return ListNatIpsResponse
 func (client *Client) ListNatIpsWithOptions(request *ListNatIpsRequest, runtime *dara.RuntimeOptions) (_result *ListNatIpsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -29090,6 +29865,10 @@ func (client *Client) ListNatIpsWithOptions(request *ListNatIpsRequest, runtime 
 
 	if !dara.IsNil(request.DryRun) {
 		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.IpOrigin) {
+		query["IpOrigin"] = request.IpOrigin
 	}
 
 	if !dara.IsNil(request.MaxResults) {
@@ -29187,6 +29966,92 @@ func (client *Client) ListNatIps(request *ListNatIpsRequest) (_result *ListNatIp
 
 // Summary:
 //
+// Querying the connection features supported by a Express Connect circuit.
+//
+// @param request - ListPhysicalConnectionFeaturesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPhysicalConnectionFeaturesResponse
+func (client *Client) ListPhysicalConnectionFeaturesWithOptions(request *ListPhysicalConnectionFeaturesRequest, runtime *dara.RuntimeOptions) (_result *ListPhysicalConnectionFeaturesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PhysicalConnectionId) {
+		query["PhysicalConnectionId"] = request.PhysicalConnectionId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPhysicalConnectionFeatures"),
+		Version:     dara.String("2016-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPhysicalConnectionFeaturesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Querying the connection features supported by a Express Connect circuit.
+//
+// @param request - ListPhysicalConnectionFeaturesRequest
+//
+// @return ListPhysicalConnectionFeaturesResponse
+func (client *Client) ListPhysicalConnectionFeatures(request *ListPhysicalConnectionFeaturesRequest) (_result *ListPhysicalConnectionFeaturesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListPhysicalConnectionFeaturesResponse{}
+	_body, _err := client.ListPhysicalConnectionFeaturesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries prefix lists.
 //
 // @param request - ListPrefixListsRequest
@@ -29195,9 +30060,11 @@ func (client *Client) ListNatIps(request *ListNatIpsRequest) (_result *ListNatIp
 //
 // @return ListPrefixListsResponse
 func (client *Client) ListPrefixListsWithOptions(request *ListPrefixListsRequest, runtime *dara.RuntimeOptions) (_result *ListPrefixListsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -29295,9 +30162,11 @@ func (client *Client) ListPrefixLists(request *ListPrefixListsRequest) (_result 
 //
 // @return ListPublicIpAddressPoolCidrBlocksResponse
 func (client *Client) ListPublicIpAddressPoolCidrBlocksWithOptions(request *ListPublicIpAddressPoolCidrBlocksRequest, runtime *dara.RuntimeOptions) (_result *ListPublicIpAddressPoolCidrBlocksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CidrBlock) {
@@ -29391,9 +30260,11 @@ func (client *Client) ListPublicIpAddressPoolCidrBlocks(request *ListPublicIpAdd
 //
 // @return ListPublicIpAddressPoolsResponse
 func (client *Client) ListPublicIpAddressPoolsWithOptions(request *ListPublicIpAddressPoolsRequest, runtime *dara.RuntimeOptions) (_result *ListPublicIpAddressPoolsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DryRun) {
@@ -29519,9 +30390,11 @@ func (client *Client) ListPublicIpAddressPools(request *ListPublicIpAddressPools
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -29639,9 +30512,11 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 //
 // @return ListTagResourcesForExpressConnectResponse
 func (client *Client) ListTagResourcesForExpressConnectWithOptions(request *ListTagResourcesForExpressConnectRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesForExpressConnectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -29747,9 +30622,11 @@ func (client *Client) ListTagResourcesForExpressConnect(request *ListTagResource
 //
 // @return ListTrafficMirrorFiltersResponse
 func (client *Client) ListTrafficMirrorFiltersWithOptions(request *ListTrafficMirrorFiltersRequest, runtime *dara.RuntimeOptions) (_result *ListTrafficMirrorFiltersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -29847,9 +30724,11 @@ func (client *Client) ListTrafficMirrorFilters(request *ListTrafficMirrorFilters
 //
 // @return ListTrafficMirrorSessionsResponse
 func (client *Client) ListTrafficMirrorSessionsWithOptions(request *ListTrafficMirrorSessionsRequest, runtime *dara.RuntimeOptions) (_result *ListTrafficMirrorSessionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Enabled) {
@@ -29971,9 +30850,11 @@ func (client *Client) ListTrafficMirrorSessions(request *ListTrafficMirrorSessio
 //
 // @return ListVSwitchCidrReservationsResponse
 func (client *Client) ListVSwitchCidrReservationsWithOptions(request *ListVSwitchCidrReservationsRequest, runtime *dara.RuntimeOptions) (_result *ListVSwitchCidrReservationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IpVersion) {
@@ -30075,9 +30956,11 @@ func (client *Client) ListVSwitchCidrReservations(request *ListVSwitchCidrReserv
 //
 // @return ListVirtualPhysicalConnectionsResponse
 func (client *Client) ListVirtualPhysicalConnectionsWithOptions(request *ListVirtualPhysicalConnectionsRequest, runtime *dara.RuntimeOptions) (_result *ListVirtualPhysicalConnectionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IsConfirmed) {
@@ -30179,9 +31062,11 @@ func (client *Client) ListVirtualPhysicalConnections(request *ListVirtualPhysica
 //
 // @return ListVpcEndpointServicesByEndUserResponse
 func (client *Client) ListVpcEndpointServicesByEndUserWithOptions(request *ListVpcEndpointServicesByEndUserRequest, runtime *dara.RuntimeOptions) (_result *ListVpcEndpointServicesByEndUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -30267,9 +31152,11 @@ func (client *Client) ListVpcEndpointServicesByEndUser(request *ListVpcEndpointS
 //
 // @return ListVpcGatewayEndpointsResponse
 func (client *Client) ListVpcGatewayEndpointsWithOptions(request *ListVpcGatewayEndpointsRequest, runtime *dara.RuntimeOptions) (_result *ListVpcGatewayEndpointsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndpointId) {
@@ -30375,9 +31262,11 @@ func (client *Client) ListVpcGatewayEndpoints(request *ListVpcGatewayEndpointsRe
 //
 // @return ListVpcPublishedRouteEntriesResponse
 func (client *Client) ListVpcPublishedRouteEntriesWithOptions(request *ListVpcPublishedRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *ListVpcPublishedRouteEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DestinationCidrBlock) {
@@ -30491,9 +31380,11 @@ func (client *Client) ListVpcPublishedRouteEntries(request *ListVpcPublishedRout
 //
 // @return ListVpnCertificateAssociationsResponse
 func (client *Client) ListVpnCertificateAssociationsWithOptions(request *ListVpnCertificateAssociationsRequest, runtime *dara.RuntimeOptions) (_result *ListVpnCertificateAssociationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertificateId) {
@@ -30583,9 +31474,11 @@ func (client *Client) ListVpnCertificateAssociations(request *ListVpnCertificate
 //
 // @return ModifyBgpGroupAttributeResponse
 func (client *Client) ModifyBgpGroupAttributeWithOptions(request *ModifyBgpGroupAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyBgpGroupAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthKey) {
@@ -30699,9 +31592,11 @@ func (client *Client) ModifyBgpGroupAttribute(request *ModifyBgpGroupAttributeRe
 //
 // @return ModifyBgpPeerAttributeResponse
 func (client *Client) ModifyBgpPeerAttributeWithOptions(request *ModifyBgpPeerAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyBgpPeerAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BfdMultiHop) {
@@ -30799,9 +31694,11 @@ func (client *Client) ModifyBgpPeerAttribute(request *ModifyBgpPeerAttributeRequ
 //
 // @return ModifyCommonBandwidthPackageAttributeResponse
 func (client *Client) ModifyCommonBandwidthPackageAttributeWithOptions(request *ModifyCommonBandwidthPackageAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyCommonBandwidthPackageAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BandwidthPackageId) {
@@ -30901,9 +31798,11 @@ func (client *Client) ModifyCommonBandwidthPackageAttribute(request *ModifyCommo
 //
 // @return ModifyCommonBandwidthPackageIpBandwidthResponse
 func (client *Client) ModifyCommonBandwidthPackageIpBandwidthWithOptions(request *ModifyCommonBandwidthPackageIpBandwidthRequest, runtime *dara.RuntimeOptions) (_result *ModifyCommonBandwidthPackageIpBandwidthResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bandwidth) {
@@ -31015,9 +31914,11 @@ func (client *Client) ModifyCommonBandwidthPackageIpBandwidth(request *ModifyCom
 //
 // @return ModifyCommonBandwidthPackageSpecResponse
 func (client *Client) ModifyCommonBandwidthPackageSpecWithOptions(request *ModifyCommonBandwidthPackageSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyCommonBandwidthPackageSpecResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bandwidth) {
@@ -31123,9 +32024,11 @@ func (client *Client) ModifyCommonBandwidthPackageSpec(request *ModifyCommonBand
 //
 // @return ModifyCustomerGatewayAttributeResponse
 func (client *Client) ModifyCustomerGatewayAttributeWithOptions(request *ModifyCustomerGatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyCustomerGatewayAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthKey) {
@@ -31231,9 +32134,11 @@ func (client *Client) ModifyCustomerGatewayAttribute(request *ModifyCustomerGate
 //
 // @return ModifyEipAddressAttributeResponse
 func (client *Client) ModifyEipAddressAttributeWithOptions(request *ModifyEipAddressAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyEipAddressAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllocationId) {
@@ -31323,9 +32228,11 @@ func (client *Client) ModifyEipAddressAttribute(request *ModifyEipAddressAttribu
 //
 // @return ModifyEipForwardModeResponse
 func (client *Client) ModifyEipForwardModeWithOptions(request *ModifyEipForwardModeRequest, runtime *dara.RuntimeOptions) (_result *ModifyEipForwardModeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -31411,9 +32318,11 @@ func (client *Client) ModifyEipForwardMode(request *ModifyEipForwardModeRequest)
 //
 // @return ModifyExpressCloudConnectionAttributeResponse
 func (client *Client) ModifyExpressCloudConnectionAttributeWithOptions(request *ModifyExpressCloudConnectionAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressCloudConnectionAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BgpAs) {
@@ -31511,9 +32420,11 @@ func (client *Client) ModifyExpressCloudConnectionAttribute(request *ModifyExpre
 //
 // @return ModifyExpressCloudConnectionBandwidthResponse
 func (client *Client) ModifyExpressCloudConnectionBandwidthWithOptions(request *ModifyExpressCloudConnectionBandwidthRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressCloudConnectionBandwidthResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bandwidth) {
@@ -31595,9 +32506,11 @@ func (client *Client) ModifyExpressCloudConnectionBandwidth(request *ModifyExpre
 //
 // @return ModifyExpressConnectTrafficQosResponse
 func (client *Client) ModifyExpressConnectTrafficQosWithOptions(request *ModifyExpressConnectTrafficQosRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectTrafficQosResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddInstanceList) {
@@ -31695,9 +32608,11 @@ func (client *Client) ModifyExpressConnectTrafficQos(request *ModifyExpressConne
 //
 // @return ModifyExpressConnectTrafficQosQueueResponse
 func (client *Client) ModifyExpressConnectTrafficQosQueueWithOptions(request *ModifyExpressConnectTrafficQosQueueRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectTrafficQosQueueResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BandwidthPercent) {
@@ -31795,9 +32710,11 @@ func (client *Client) ModifyExpressConnectTrafficQosQueue(request *ModifyExpress
 //
 // @return ModifyExpressConnectTrafficQosRuleResponse
 func (client *Client) ModifyExpressConnectTrafficQosRuleWithOptions(request *ModifyExpressConnectTrafficQosRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectTrafficQosRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -31945,9 +32862,11 @@ func (client *Client) ModifyExpressConnectTrafficQosRule(request *ModifyExpressC
 //
 // @return ModifyFlowLogAttributeResponse
 func (client *Client) ModifyFlowLogAttributeWithOptions(request *ModifyFlowLogAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyFlowLogAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AggregationInterval) {
@@ -32061,9 +32980,11 @@ func (client *Client) ModifyFlowLogAttribute(request *ModifyFlowLogAttributeRequ
 //
 // @return ModifyForwardEntryResponse
 func (client *Client) ModifyForwardEntryWithOptions(request *ModifyForwardEntryRequest, runtime *dara.RuntimeOptions) (_result *ModifyForwardEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -32203,9 +33124,11 @@ func (client *Client) ModifyForwardEntry(request *ModifyForwardEntryRequest) (_r
 //
 // @return ModifyFullNatEntryAttributeResponse
 func (client *Client) ModifyFullNatEntryAttributeWithOptions(request *ModifyFullNatEntryAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyFullNatEntryAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessIp) {
@@ -32339,9 +33262,11 @@ func (client *Client) ModifyFullNatEntryAttribute(request *ModifyFullNatEntryAtt
 //
 // @return ModifyGlobalAccelerationInstanceAttributesResponse
 func (client *Client) ModifyGlobalAccelerationInstanceAttributesWithOptions(request *ModifyGlobalAccelerationInstanceAttributesRequest, runtime *dara.RuntimeOptions) (_result *ModifyGlobalAccelerationInstanceAttributesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -32433,9 +33358,11 @@ func (client *Client) ModifyGlobalAccelerationInstanceAttributes(request *Modify
 //
 // @return ModifyGlobalAccelerationInstanceSpecResponse
 func (client *Client) ModifyGlobalAccelerationInstanceSpecWithOptions(request *ModifyGlobalAccelerationInstanceSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyGlobalAccelerationInstanceSpecResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bandwidth) {
@@ -32527,9 +33454,11 @@ func (client *Client) ModifyGlobalAccelerationInstanceSpec(request *ModifyGlobal
 //
 // @return ModifyHaVipAttributeResponse
 func (client *Client) ModifyHaVipAttributeWithOptions(request *ModifyHaVipAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyHaVipAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -32625,9 +33554,11 @@ func (client *Client) ModifyHaVipAttribute(request *ModifyHaVipAttributeRequest)
 //
 // @return ModifyIPv6TranslatorAclAttributeResponse
 func (client *Client) ModifyIPv6TranslatorAclAttributeWithOptions(request *ModifyIPv6TranslatorAclAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyIPv6TranslatorAclAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclId) {
@@ -32716,9 +33647,11 @@ func (client *Client) ModifyIPv6TranslatorAclAttribute(request *ModifyIPv6Transl
 //
 // @return ModifyIPv6TranslatorAclListEntryResponse
 func (client *Client) ModifyIPv6TranslatorAclListEntryWithOptions(request *ModifyIPv6TranslatorAclListEntryRequest, runtime *dara.RuntimeOptions) (_result *ModifyIPv6TranslatorAclListEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclEntryComment) {
@@ -32804,9 +33737,11 @@ func (client *Client) ModifyIPv6TranslatorAclListEntry(request *ModifyIPv6Transl
 //
 // @return ModifyIPv6TranslatorAttributeResponse
 func (client *Client) ModifyIPv6TranslatorAttributeWithOptions(request *ModifyIPv6TranslatorAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyIPv6TranslatorAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -32896,9 +33831,11 @@ func (client *Client) ModifyIPv6TranslatorAttribute(request *ModifyIPv6Translato
 //
 // @return ModifyIPv6TranslatorBandwidthResponse
 func (client *Client) ModifyIPv6TranslatorBandwidthWithOptions(request *ModifyIPv6TranslatorBandwidthRequest, runtime *dara.RuntimeOptions) (_result *ModifyIPv6TranslatorBandwidthResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -32990,9 +33927,11 @@ func (client *Client) ModifyIPv6TranslatorBandwidth(request *ModifyIPv6Translato
 //
 // @return ModifyIPv6TranslatorEntryResponse
 func (client *Client) ModifyIPv6TranslatorEntryWithOptions(request *ModifyIPv6TranslatorEntryRequest, runtime *dara.RuntimeOptions) (_result *ModifyIPv6TranslatorEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclId) {
@@ -33113,9 +34052,11 @@ func (client *Client) ModifyIPv6TranslatorEntry(request *ModifyIPv6TranslatorEnt
 //
 // @return ModifyIpv6AddressAttributeResponse
 func (client *Client) ModifyIpv6AddressAttributeWithOptions(request *ModifyIpv6AddressAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyIpv6AddressAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -33213,9 +34154,11 @@ func (client *Client) ModifyIpv6AddressAttribute(request *ModifyIpv6AddressAttri
 //
 // @return ModifyIpv6GatewayAttributeResponse
 func (client *Client) ModifyIpv6GatewayAttributeWithOptions(request *ModifyIpv6GatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyIpv6GatewayAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -33317,9 +34260,11 @@ func (client *Client) ModifyIpv6GatewayAttribute(request *ModifyIpv6GatewayAttri
 //
 // @return ModifyIpv6InternetBandwidthResponse
 func (client *Client) ModifyIpv6InternetBandwidthWithOptions(request *ModifyIpv6InternetBandwidthRequest, runtime *dara.RuntimeOptions) (_result *ModifyIpv6InternetBandwidthResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bandwidth) {
@@ -33431,9 +34376,11 @@ func (client *Client) ModifyIpv6InternetBandwidth(request *ModifyIpv6InternetBan
 //
 // @return ModifyNatGatewayAttributeResponse
 func (client *Client) ModifyNatGatewayAttributeWithOptions(tmpReq *ModifyNatGatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyNatGatewayAttributeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyNatGatewayAttributeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -33571,9 +34518,11 @@ func (client *Client) ModifyNatGatewayAttribute(request *ModifyNatGatewayAttribu
 //
 // @return ModifyNatGatewaySpecResponse
 func (client *Client) ModifyNatGatewaySpecWithOptions(request *ModifyNatGatewaySpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyNatGatewaySpecResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -33693,9 +34642,11 @@ func (client *Client) ModifyNatGatewaySpec(request *ModifyNatGatewaySpecRequest)
 //
 // @return ModifyNatIpAttributeResponse
 func (client *Client) ModifyNatIpAttributeWithOptions(request *ModifyNatIpAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyNatIpAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -33799,9 +34750,11 @@ func (client *Client) ModifyNatIpAttribute(request *ModifyNatIpAttributeRequest)
 //
 // @return ModifyNatIpCidrAttributeResponse
 func (client *Client) ModifyNatIpCidrAttributeWithOptions(request *ModifyNatIpCidrAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyNatIpCidrAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -33903,9 +34856,11 @@ func (client *Client) ModifyNatIpCidrAttribute(request *ModifyNatIpCidrAttribute
 //
 // @return ModifyNetworkAclAttributesResponse
 func (client *Client) ModifyNetworkAclAttributesWithOptions(request *ModifyNetworkAclAttributesRequest, runtime *dara.RuntimeOptions) (_result *ModifyNetworkAclAttributesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -34013,9 +34968,11 @@ func (client *Client) ModifyNetworkAclAttributes(request *ModifyNetworkAclAttrib
 //
 // @return ModifyPhysicalConnectionAttributeResponse
 func (client *Client) ModifyPhysicalConnectionAttributeWithOptions(request *ModifyPhysicalConnectionAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyPhysicalConnectionAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CircuitCode) {
@@ -34147,9 +35104,11 @@ func (client *Client) ModifyPhysicalConnectionAttribute(request *ModifyPhysicalC
 //
 // @return ModifyRouteEntryResponse
 func (client *Client) ModifyRouteEntryWithOptions(request *ModifyRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *ModifyRouteEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -34263,9 +35222,11 @@ func (client *Client) ModifyRouteEntry(request *ModifyRouteEntryRequest) (_resul
 //
 // @return ModifyRouteTableAttributesResponse
 func (client *Client) ModifyRouteTableAttributesWithOptions(request *ModifyRouteTableAttributesRequest, runtime *dara.RuntimeOptions) (_result *ModifyRouteTableAttributesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -34359,9 +35320,11 @@ func (client *Client) ModifyRouteTableAttributes(request *ModifyRouteTableAttrib
 //
 // @return ModifyRouterInterfaceAttributeResponse
 func (client *Client) ModifyRouterInterfaceAttributeWithOptions(request *ModifyRouterInterfaceAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyRouterInterfaceAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeleteHealthCheckIp) {
@@ -34485,9 +35448,11 @@ func (client *Client) ModifyRouterInterfaceAttribute(request *ModifyRouterInterf
 //
 // @return ModifyRouterInterfaceSpecResponse
 func (client *Client) ModifyRouterInterfaceSpecWithOptions(request *ModifyRouterInterfaceSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyRouterInterfaceSpecResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -34593,9 +35558,11 @@ func (client *Client) ModifyRouterInterfaceSpec(request *ModifyRouterInterfaceSp
 //
 // @return ModifySnatEntryResponse
 func (client *Client) ModifySnatEntryWithOptions(request *ModifySnatEntryRequest, runtime *dara.RuntimeOptions) (_result *ModifySnatEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -34715,9 +35682,11 @@ func (client *Client) ModifySnatEntry(request *ModifySnatEntryRequest) (_result 
 //
 // @return ModifySslVpnClientCertResponse
 func (client *Client) ModifySslVpnClientCertWithOptions(request *ModifySslVpnClientCertRequest, runtime *dara.RuntimeOptions) (_result *ModifySslVpnClientCertResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -34817,9 +35786,11 @@ func (client *Client) ModifySslVpnClientCert(request *ModifySslVpnClientCertRequ
 //
 // @return ModifySslVpnServerResponse
 func (client *Client) ModifySslVpnServerWithOptions(request *ModifySslVpnServerRequest, runtime *dara.RuntimeOptions) (_result *ModifySslVpnServerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Cipher) {
@@ -34963,9 +35934,11 @@ func (client *Client) ModifySslVpnServer(request *ModifySslVpnServerRequest) (_r
 //
 // @return ModifyTunnelAttributeResponse
 func (client *Client) ModifyTunnelAttributeWithOptions(request *ModifyTunnelAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyTunnelAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -35059,9 +36032,11 @@ func (client *Client) ModifyTunnelAttribute(request *ModifyTunnelAttributeReques
 //
 // @return ModifyVRouterAttributeResponse
 func (client *Client) ModifyVRouterAttributeWithOptions(request *ModifyVRouterAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVRouterAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -35161,9 +36136,11 @@ func (client *Client) ModifyVRouterAttribute(request *ModifyVRouterAttributeRequ
 //
 // @return ModifyVSwitchAttributeResponse
 func (client *Client) ModifyVSwitchAttributeWithOptions(request *ModifyVSwitchAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVSwitchAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -35277,9 +36254,11 @@ func (client *Client) ModifyVSwitchAttribute(request *ModifyVSwitchAttributeRequ
 //
 // @return ModifyVSwitchCidrReservationAttributeResponse
 func (client *Client) ModifyVSwitchCidrReservationAttributeWithOptions(request *ModifyVSwitchCidrReservationAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVSwitchCidrReservationAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -35389,9 +36368,11 @@ func (client *Client) ModifyVSwitchCidrReservationAttribute(request *ModifyVSwit
 //
 // @return ModifyVcoRouteEntryWeightResponse
 func (client *Client) ModifyVcoRouteEntryWeightWithOptions(request *ModifyVcoRouteEntryWeightRequest, runtime *dara.RuntimeOptions) (_result *ModifyVcoRouteEntryWeightResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -35515,9 +36496,11 @@ func (client *Client) ModifyVcoRouteEntryWeight(request *ModifyVcoRouteEntryWeig
 //
 // @return ModifyVirtualBorderRouterAttributeResponse
 func (client *Client) ModifyVirtualBorderRouterAttributeWithOptions(request *ModifyVirtualBorderRouterAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVirtualBorderRouterAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AssociatedPhysicalConnections) {
@@ -35693,9 +36676,11 @@ func (client *Client) ModifyVirtualBorderRouterAttribute(request *ModifyVirtualB
 //
 // @return ModifyVpcAttributeResponse
 func (client *Client) ModifyVpcAttributeWithOptions(request *ModifyVpcAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpcAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CidrBlock) {
@@ -35819,9 +36804,11 @@ func (client *Client) ModifyVpcAttribute(request *ModifyVpcAttributeRequest) (_r
 //
 // @return ModifyVpcPrefixListResponse
 func (client *Client) ModifyVpcPrefixListWithOptions(request *ModifyVpcPrefixListRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpcPrefixListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddPrefixListEntry) {
@@ -35955,9 +36942,11 @@ func (client *Client) ModifyVpcPrefixList(request *ModifyVpcPrefixListRequest) (
 //
 // @return ModifyVpnAttachmentAttributeResponse
 func (client *Client) ModifyVpnAttachmentAttributeWithOptions(request *ModifyVpnAttachmentAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpnAttachmentAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoConfigRoute) {
@@ -36138,9 +37127,11 @@ func (client *Client) ModifyVpnAttachmentAttribute(request *ModifyVpnAttachmentA
 //
 // @return ModifyVpnConnectionAttributeResponse
 func (client *Client) ModifyVpnConnectionAttributeWithOptions(request *ModifyVpnConnectionAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpnConnectionAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoConfigRoute) {
@@ -36311,9 +37302,11 @@ func (client *Client) ModifyVpnConnectionAttribute(request *ModifyVpnConnectionA
 //
 // @return ModifyVpnGatewayAttributeResponse
 func (client *Client) ModifyVpnGatewayAttributeWithOptions(request *ModifyVpnGatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpnGatewayAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPropagate) {
@@ -36435,9 +37428,11 @@ func (client *Client) ModifyVpnGatewayAttribute(request *ModifyVpnGatewayAttribu
 //
 // @return ModifyVpnPbrRouteEntryAttributeResponse
 func (client *Client) ModifyVpnPbrRouteEntryAttributeWithOptions(request *ModifyVpnPbrRouteEntryAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpnPbrRouteEntryAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -36575,9 +37570,11 @@ func (client *Client) ModifyVpnPbrRouteEntryAttribute(request *ModifyVpnPbrRoute
 //
 // @return ModifyVpnPbrRouteEntryPriorityResponse
 func (client *Client) ModifyVpnPbrRouteEntryPriorityWithOptions(request *ModifyVpnPbrRouteEntryPriorityRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpnPbrRouteEntryPriorityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -36703,9 +37700,11 @@ func (client *Client) ModifyVpnPbrRouteEntryPriority(request *ModifyVpnPbrRouteE
 //
 // @return ModifyVpnPbrRouteEntryWeightResponse
 func (client *Client) ModifyVpnPbrRouteEntryWeightWithOptions(request *ModifyVpnPbrRouteEntryWeightRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpnPbrRouteEntryWeightResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -36837,9 +37836,11 @@ func (client *Client) ModifyVpnPbrRouteEntryWeight(request *ModifyVpnPbrRouteEnt
 //
 // @return ModifyVpnRouteEntryWeightResponse
 func (client *Client) ModifyVpnRouteEntryWeightWithOptions(request *ModifyVpnRouteEntryWeightRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpnRouteEntryWeightResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -36953,9 +37954,11 @@ func (client *Client) ModifyVpnRouteEntryWeight(request *ModifyVpnRouteEntryWeig
 //
 // @return MoveResourceGroupResponse
 func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NewResourceGroupId) {
@@ -37041,9 +38044,11 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 //
 // @return MoveVpnResourceGroupResponse
 func (client *Client) MoveVpnResourceGroupWithOptions(request *MoveVpnResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *MoveVpnResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -37135,9 +38140,11 @@ func (client *Client) MoveVpnResourceGroup(request *MoveVpnResourceGroupRequest)
 //
 // @return OpenFlowLogServiceResponse
 func (client *Client) OpenFlowLogServiceWithOptions(request *OpenFlowLogServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenFlowLogServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -37225,9 +38232,11 @@ func (client *Client) OpenFlowLogService(request *OpenFlowLogServiceRequest) (_r
 //
 // @return OpenPhysicalConnectionServiceResponse
 func (client *Client) OpenPhysicalConnectionServiceWithOptions(request *OpenPhysicalConnectionServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenPhysicalConnectionServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -37293,7 +38302,7 @@ func (client *Client) OpenPhysicalConnectionService(request *OpenPhysicalConnect
 
 // Summary:
 //
-// 开通IP地址池功能。
+// Enables the IP address pool feature.
 //
 // @param request - OpenPublicIpAddressPoolServiceRequest
 //
@@ -37301,9 +38310,11 @@ func (client *Client) OpenPhysicalConnectionService(request *OpenPhysicalConnect
 //
 // @return OpenPublicIpAddressPoolServiceResponse
 func (client *Client) OpenPublicIpAddressPoolServiceWithOptions(request *OpenPublicIpAddressPoolServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenPublicIpAddressPoolServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -37359,7 +38370,7 @@ func (client *Client) OpenPublicIpAddressPoolServiceWithOptions(request *OpenPub
 
 // Summary:
 //
-// 开通IP地址池功能。
+// Enables the IP address pool feature.
 //
 // @param request - OpenPublicIpAddressPoolServiceRequest
 //
@@ -37391,9 +38402,11 @@ func (client *Client) OpenPublicIpAddressPoolService(request *OpenPublicIpAddres
 //
 // @return OpenTrafficMirrorServiceResponse
 func (client *Client) OpenTrafficMirrorServiceWithOptions(request *OpenTrafficMirrorServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenTrafficMirrorServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -37481,9 +38494,11 @@ func (client *Client) OpenTrafficMirrorService(request *OpenTrafficMirrorService
 //
 // @return PublishVpcRouteEntriesResponse
 func (client *Client) PublishVpcRouteEntriesWithOptions(request *PublishVpcRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *PublishVpcRouteEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DryRun) {
@@ -37577,9 +38592,11 @@ func (client *Client) PublishVpcRouteEntries(request *PublishVpcRouteEntriesRequ
 //
 // @return PublishVpnRouteEntryResponse
 func (client *Client) PublishVpnRouteEntryWithOptions(request *PublishVpnRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *PublishVpnRouteEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -37683,9 +38700,11 @@ func (client *Client) PublishVpnRouteEntry(request *PublishVpnRouteEntryRequest)
 //
 // @return RecoverPhysicalConnectionResponse
 func (client *Client) RecoverPhysicalConnectionWithOptions(request *RecoverPhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *RecoverPhysicalConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DryRun) {
@@ -37771,9 +38790,11 @@ func (client *Client) RecoverPhysicalConnection(request *RecoverPhysicalConnecti
 //
 // @return RecoverVirtualBorderRouterResponse
 func (client *Client) RecoverVirtualBorderRouterWithOptions(request *RecoverVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *RecoverVirtualBorderRouterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -37883,9 +38904,11 @@ func (client *Client) RecoverVirtualBorderRouter(request *RecoverVirtualBorderRo
 //
 // @return ReleaseEipAddressResponse
 func (client *Client) ReleaseEipAddressWithOptions(request *ReleaseEipAddressRequest, runtime *dara.RuntimeOptions) (_result *ReleaseEipAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllocationId) {
@@ -37993,9 +39016,11 @@ func (client *Client) ReleaseEipAddress(request *ReleaseEipAddressRequest) (_res
 //
 // @return ReleaseEipSegmentAddressResponse
 func (client *Client) ReleaseEipSegmentAddressWithOptions(request *ReleaseEipSegmentAddressRequest, runtime *dara.RuntimeOptions) (_result *ReleaseEipSegmentAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -38089,9 +39114,11 @@ func (client *Client) ReleaseEipSegmentAddress(request *ReleaseEipSegmentAddress
 //
 // @return ReleaseIpv6AddressResponse
 func (client *Client) ReleaseIpv6AddressWithOptions(request *ReleaseIpv6AddressRequest, runtime *dara.RuntimeOptions) (_result *ReleaseIpv6AddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -38181,9 +39208,11 @@ func (client *Client) ReleaseIpv6Address(request *ReleaseIpv6AddressRequest) (_r
 //
 // @return RemoveCommonBandwidthPackageIpResponse
 func (client *Client) RemoveCommonBandwidthPackageIpWithOptions(request *RemoveCommonBandwidthPackageIpRequest, runtime *dara.RuntimeOptions) (_result *RemoveCommonBandwidthPackageIpResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BandwidthPackageId) {
@@ -38265,9 +39294,11 @@ func (client *Client) RemoveCommonBandwidthPackageIp(request *RemoveCommonBandwi
 //
 // @return RemoveGlobalAccelerationInstanceIpResponse
 func (client *Client) RemoveGlobalAccelerationInstanceIpWithOptions(request *RemoveGlobalAccelerationInstanceIpRequest, runtime *dara.RuntimeOptions) (_result *RemoveGlobalAccelerationInstanceIpResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GlobalAccelerationInstanceId) {
@@ -38345,9 +39376,11 @@ func (client *Client) RemoveGlobalAccelerationInstanceIp(request *RemoveGlobalAc
 //
 // @return RemoveIPv6TranslatorAclListEntryResponse
 func (client *Client) RemoveIPv6TranslatorAclListEntryWithOptions(request *RemoveIPv6TranslatorAclListEntryRequest, runtime *dara.RuntimeOptions) (_result *RemoveIPv6TranslatorAclListEntryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclEntryId) {
@@ -38443,9 +39476,11 @@ func (client *Client) RemoveIPv6TranslatorAclListEntry(request *RemoveIPv6Transl
 //
 // @return RemoveSourcesFromTrafficMirrorSessionResponse
 func (client *Client) RemoveSourcesFromTrafficMirrorSessionWithOptions(request *RemoveSourcesFromTrafficMirrorSessionRequest, runtime *dara.RuntimeOptions) (_result *RemoveSourcesFromTrafficMirrorSessionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -38555,9 +39590,11 @@ func (client *Client) RemoveSourcesFromTrafficMirrorSession(request *RemoveSourc
 //
 // @return ReplaceVpcDhcpOptionsSetResponse
 func (client *Client) ReplaceVpcDhcpOptionsSetWithOptions(request *ReplaceVpcDhcpOptionsSetRequest, runtime *dara.RuntimeOptions) (_result *ReplaceVpcDhcpOptionsSetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -38671,9 +39708,11 @@ func (client *Client) ReplaceVpcDhcpOptionsSet(request *ReplaceVpcDhcpOptionsSet
 //
 // @return RetryVpcPrefixListAssociationResponse
 func (client *Client) RetryVpcPrefixListAssociationWithOptions(request *RetryVpcPrefixListAssociationRequest, runtime *dara.RuntimeOptions) (_result *RetryVpcPrefixListAssociationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -38789,9 +39828,11 @@ func (client *Client) RetryVpcPrefixListAssociation(request *RetryVpcPrefixListA
 //
 // @return RevokeInstanceFromCenResponse
 func (client *Client) RevokeInstanceFromCenWithOptions(request *RevokeInstanceFromCenRequest, runtime *dara.RuntimeOptions) (_result *RevokeInstanceFromCenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -38893,9 +39934,11 @@ func (client *Client) RevokeInstanceFromCen(request *RevokeInstanceFromCenReques
 //
 // @return RevokeInstanceFromVbrResponse
 func (client *Client) RevokeInstanceFromVbrWithOptions(tmpReq *RevokeInstanceFromVbrRequest, runtime *dara.RuntimeOptions) (_result *RevokeInstanceFromVbrResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RevokeInstanceFromVbrShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -38979,9 +40022,11 @@ func (client *Client) RevokeInstanceFromVbr(request *RevokeInstanceFromVbrReques
 //
 // @return SecondApplyPhysicalConnectionLOAResponse
 func (client *Client) SecondApplyPhysicalConnectionLOAWithOptions(request *SecondApplyPhysicalConnectionLOARequest, runtime *dara.RuntimeOptions) (_result *SecondApplyPhysicalConnectionLOAResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bandwidth) {
@@ -39095,9 +40140,11 @@ func (client *Client) SecondApplyPhysicalConnectionLOA(request *SecondApplyPhysi
 //
 // @return SetHighDefinitionMonitorLogStatusResponse
 func (client *Client) SetHighDefinitionMonitorLogStatusWithOptions(request *SetHighDefinitionMonitorLogStatusRequest, runtime *dara.RuntimeOptions) (_result *SetHighDefinitionMonitorLogStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -39199,9 +40246,11 @@ func (client *Client) SetHighDefinitionMonitorLogStatus(request *SetHighDefiniti
 //
 // @return StartFailoverTestJobResponse
 func (client *Client) StartFailoverTestJobWithOptions(request *StartFailoverTestJobRequest, runtime *dara.RuntimeOptions) (_result *StartFailoverTestJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -39287,9 +40336,11 @@ func (client *Client) StartFailoverTestJob(request *StartFailoverTestJobRequest)
 //
 // @return StopFailoverTestJobResponse
 func (client *Client) StopFailoverTestJobWithOptions(request *StopFailoverTestJobRequest, runtime *dara.RuntimeOptions) (_result *StopFailoverTestJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -39389,9 +40440,11 @@ func (client *Client) StopFailoverTestJob(request *StopFailoverTestJobRequest) (
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -39511,9 +40564,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 //
 // @return TagResourcesForExpressConnectResponse
 func (client *Client) TagResourcesForExpressConnectWithOptions(request *TagResourcesForExpressConnectRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesForExpressConnectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -39623,9 +40678,11 @@ func (client *Client) TagResourcesForExpressConnect(request *TagResourcesForExpr
 //
 // @return TerminatePhysicalConnectionResponse
 func (client *Client) TerminatePhysicalConnectionWithOptions(request *TerminatePhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *TerminatePhysicalConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -39721,9 +40778,11 @@ func (client *Client) TerminatePhysicalConnection(request *TerminatePhysicalConn
 //
 // @return TerminateVirtualBorderRouterResponse
 func (client *Client) TerminateVirtualBorderRouterWithOptions(request *TerminateVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *TerminateVirtualBorderRouterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -39803,7 +40862,7 @@ func (client *Client) TerminateVirtualBorderRouter(request *TerminateVirtualBord
 
 // Summary:
 //
-// Migrate contiguous EIP groups to IP address pool by calling TransformEipSegmentToPublicIpAddressPool.
+// Migrate a contiguous EIP group to an IP address pool.
 //
 // @param request - TransformEipSegmentToPublicIpAddressPoolRequest
 //
@@ -39811,9 +40870,11 @@ func (client *Client) TerminateVirtualBorderRouter(request *TerminateVirtualBord
 //
 // @return TransformEipSegmentToPublicIpAddressPoolResponse
 func (client *Client) TransformEipSegmentToPublicIpAddressPoolWithOptions(request *TransformEipSegmentToPublicIpAddressPoolRequest, runtime *dara.RuntimeOptions) (_result *TransformEipSegmentToPublicIpAddressPoolResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -39865,7 +40926,7 @@ func (client *Client) TransformEipSegmentToPublicIpAddressPoolWithOptions(reques
 
 // Summary:
 //
-// Migrate contiguous EIP groups to IP address pool by calling TransformEipSegmentToPublicIpAddressPool.
+// Migrate a contiguous EIP group to an IP address pool.
 //
 // @param request - TransformEipSegmentToPublicIpAddressPoolRequest
 //
@@ -39891,9 +40952,11 @@ func (client *Client) TransformEipSegmentToPublicIpAddressPool(request *Transfor
 //
 // @return UnTagResourcesResponse
 func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UnTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -39993,9 +41056,11 @@ func (client *Client) UnTagResources(request *UnTagResourcesRequest) (_result *U
 //
 // @return UnassociateEipAddressResponse
 func (client *Client) UnassociateEipAddressWithOptions(request *UnassociateEipAddressRequest, runtime *dara.RuntimeOptions) (_result *UnassociateEipAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllocationId) {
@@ -40103,9 +41168,11 @@ func (client *Client) UnassociateEipAddress(request *UnassociateEipAddressReques
 //
 // @return UnassociateGlobalAccelerationInstanceResponse
 func (client *Client) UnassociateGlobalAccelerationInstanceWithOptions(request *UnassociateGlobalAccelerationInstanceRequest, runtime *dara.RuntimeOptions) (_result *UnassociateGlobalAccelerationInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GlobalAccelerationInstanceId) {
@@ -40205,9 +41272,11 @@ func (client *Client) UnassociateGlobalAccelerationInstance(request *Unassociate
 //
 // @return UnassociateHaVipResponse
 func (client *Client) UnassociateHaVipWithOptions(request *UnassociateHaVipRequest, runtime *dara.RuntimeOptions) (_result *UnassociateHaVipResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -40331,9 +41400,11 @@ func (client *Client) UnassociateHaVip(request *UnassociateHaVipRequest) (_resul
 //
 // @return UnassociateNetworkAclResponse
 func (client *Client) UnassociateNetworkAclWithOptions(request *UnassociateNetworkAclRequest, runtime *dara.RuntimeOptions) (_result *UnassociateNetworkAclResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -40439,9 +41510,11 @@ func (client *Client) UnassociateNetworkAcl(request *UnassociateNetworkAclReques
 //
 // @return UnassociatePhysicalConnectionFromVirtualBorderRouterResponse
 func (client *Client) UnassociatePhysicalConnectionFromVirtualBorderRouterWithOptions(request *UnassociatePhysicalConnectionFromVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *UnassociatePhysicalConnectionFromVirtualBorderRouterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -40539,9 +41612,11 @@ func (client *Client) UnassociatePhysicalConnectionFromVirtualBorderRouter(reque
 //
 // @return UnassociateRouteTableResponse
 func (client *Client) UnassociateRouteTableWithOptions(request *UnassociateRouteTableRequest, runtime *dara.RuntimeOptions) (_result *UnassociateRouteTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -40649,9 +41724,11 @@ func (client *Client) UnassociateRouteTable(request *UnassociateRouteTableReques
 //
 // @return UnassociateVpcCidrBlockResponse
 func (client *Client) UnassociateVpcCidrBlockWithOptions(request *UnassociateVpcCidrBlockRequest, runtime *dara.RuntimeOptions) (_result *UnassociateVpcCidrBlockResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IPv6CidrBlock) {
@@ -40747,9 +41824,11 @@ func (client *Client) UnassociateVpcCidrBlock(request *UnassociateVpcCidrBlockRe
 //
 // @return UntagResourcesForExpressConnectResponse
 func (client *Client) UntagResourcesForExpressConnectWithOptions(request *UntagResourcesForExpressConnectRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesForExpressConnectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -40839,9 +41918,11 @@ func (client *Client) UntagResourcesForExpressConnect(request *UntagResourcesFor
 //
 // @return UpdateDhcpOptionsSetAttributeResponse
 func (client *Client) UpdateDhcpOptionsSetAttributeWithOptions(request *UpdateDhcpOptionsSetAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateDhcpOptionsSetAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -40951,9 +42032,11 @@ func (client *Client) UpdateDhcpOptionsSetAttribute(request *UpdateDhcpOptionsSe
 //
 // @return UpdateFailoverTestJobResponse
 func (client *Client) UpdateFailoverTestJobWithOptions(request *UpdateFailoverTestJobRequest, runtime *dara.RuntimeOptions) (_result *UpdateFailoverTestJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -41055,9 +42138,11 @@ func (client *Client) UpdateFailoverTestJob(request *UpdateFailoverTestJobReques
 //
 // @return UpdateGatewayRouteTableEntryAttributeResponse
 func (client *Client) UpdateGatewayRouteTableEntryAttributeWithOptions(request *UpdateGatewayRouteTableEntryAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateGatewayRouteTableEntryAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -41183,9 +42268,11 @@ func (client *Client) UpdateGatewayRouteTableEntryAttribute(request *UpdateGatew
 //
 // @return UpdateIpsecServerResponse
 func (client *Client) UpdateIpsecServerWithOptions(request *UpdateIpsecServerRequest, runtime *dara.RuntimeOptions) (_result *UpdateIpsecServerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientIpPool) {
@@ -41303,9 +42390,11 @@ func (client *Client) UpdateIpsecServer(request *UpdateIpsecServerRequest) (_res
 //
 // @return UpdateIpv4GatewayAttributeResponse
 func (client *Client) UpdateIpv4GatewayAttributeWithOptions(request *UpdateIpv4GatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateIpv4GatewayAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -41429,9 +42518,11 @@ func (client *Client) UpdateIpv4GatewayAttribute(request *UpdateIpv4GatewayAttri
 //
 // @return UpdateNatGatewayNatTypeResponse
 func (client *Client) UpdateNatGatewayNatTypeWithOptions(request *UpdateNatGatewayNatTypeRequest, runtime *dara.RuntimeOptions) (_result *UpdateNatGatewayNatTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -41562,9 +42653,11 @@ func (client *Client) UpdateNatGatewayNatType(request *UpdateNatGatewayNatTypeRe
 //
 // @return UpdateNetworkAclEntriesResponse
 func (client *Client) UpdateNetworkAclEntriesWithOptions(request *UpdateNetworkAclEntriesRequest, runtime *dara.RuntimeOptions) (_result *UpdateNetworkAclEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -41684,9 +42777,11 @@ func (client *Client) UpdateNetworkAclEntries(request *UpdateNetworkAclEntriesRe
 //
 // @return UpdatePublicIpAddressPoolAttributeResponse
 func (client *Client) UpdatePublicIpAddressPoolAttributeWithOptions(request *UpdatePublicIpAddressPoolAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdatePublicIpAddressPoolAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -41788,9 +42883,11 @@ func (client *Client) UpdatePublicIpAddressPoolAttribute(request *UpdatePublicIp
 //
 // @return UpdateTrafficMirrorFilterAttributeResponse
 func (client *Client) UpdateTrafficMirrorFilterAttributeWithOptions(request *UpdateTrafficMirrorFilterAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateTrafficMirrorFilterAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -41898,9 +42995,11 @@ func (client *Client) UpdateTrafficMirrorFilterAttribute(request *UpdateTrafficM
 //
 // @return UpdateTrafficMirrorFilterRuleAttributeResponse
 func (client *Client) UpdateTrafficMirrorFilterRuleAttributeWithOptions(request *UpdateTrafficMirrorFilterRuleAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateTrafficMirrorFilterRuleAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -42036,9 +43135,11 @@ func (client *Client) UpdateTrafficMirrorFilterRuleAttribute(request *UpdateTraf
 //
 // @return UpdateTrafficMirrorSessionAttributeResponse
 func (client *Client) UpdateTrafficMirrorSessionAttributeWithOptions(request *UpdateTrafficMirrorSessionAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateTrafficMirrorSessionAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -42172,9 +43273,11 @@ func (client *Client) UpdateTrafficMirrorSessionAttribute(request *UpdateTraffic
 //
 // @return UpdateVirtualBorderBandwidthResponse
 func (client *Client) UpdateVirtualBorderBandwidthWithOptions(request *UpdateVirtualBorderBandwidthRequest, runtime *dara.RuntimeOptions) (_result *UpdateVirtualBorderBandwidthResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bandwidth) {
@@ -42260,9 +43363,11 @@ func (client *Client) UpdateVirtualBorderBandwidth(request *UpdateVirtualBorderB
 //
 // @return UpdateVirtualPhysicalConnectionResponse
 func (client *Client) UpdateVirtualPhysicalConnectionWithOptions(request *UpdateVirtualPhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *UpdateVirtualPhysicalConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DryRun) {
@@ -42350,9 +43455,11 @@ func (client *Client) UpdateVirtualPhysicalConnection(request *UpdateVirtualPhys
 //
 // @return UpdateVpcGatewayEndpointAttributeResponse
 func (client *Client) UpdateVpcGatewayEndpointAttributeWithOptions(request *UpdateVpcGatewayEndpointAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateVpcGatewayEndpointAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -42464,9 +43571,11 @@ func (client *Client) UpdateVpcGatewayEndpointAttribute(request *UpdateVpcGatewa
 //
 // @return VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse
 func (client *Client) VpcDescribeVpcNatGatewayNetworkInterfaceQuotaWithOptions(request *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest, runtime *dara.RuntimeOptions) (_result *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -42556,9 +43665,11 @@ func (client *Client) VpcDescribeVpcNatGatewayNetworkInterfaceQuota(request *Vpc
 //
 // @return WithdrawVpcPublishedRouteEntriesResponse
 func (client *Client) WithdrawVpcPublishedRouteEntriesWithOptions(request *WithdrawVpcPublishedRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *WithdrawVpcPublishedRouteEntriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DryRun) {

@@ -104,7 +104,12 @@ func (s *DescribeVirtualBorderRoutersResponseBody) SetVirtualBorderRouterSet(v *
 }
 
 func (s *DescribeVirtualBorderRoutersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VirtualBorderRouterSet != nil {
+		if err := s.VirtualBorderRouterSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSet struct {
@@ -129,7 +134,16 @@ func (s *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSet) SetVirt
 }
 
 func (s *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSet) Validate() error {
-	return dara.Validate(s)
+	if s.VirtualBorderRouterType != nil {
+		for _, item := range s.VirtualBorderRouterType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterType struct {
@@ -823,7 +837,22 @@ func (s *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBo
 }
 
 func (s *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterType) Validate() error {
-	return dara.Validate(s)
+	if s.AssociatedCens != nil {
+		if err := s.AssociatedCens.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AssociatedPhysicalConnections != nil {
+		if err := s.AssociatedPhysicalConnections.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeAssociatedCens struct {
@@ -848,7 +877,16 @@ func (s *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBo
 }
 
 func (s *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeAssociatedCens) Validate() error {
-	return dara.Validate(s)
+	if s.AssociatedCen != nil {
+		for _, item := range s.AssociatedCen {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeAssociatedCensAssociatedCen struct {
@@ -943,7 +981,16 @@ func (s *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBo
 }
 
 func (s *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeAssociatedPhysicalConnections) Validate() error {
-	return dara.Validate(s)
+	if s.AssociatedPhysicalConnection != nil {
+		for _, item := range s.AssociatedPhysicalConnection {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeAssociatedPhysicalConnectionsAssociatedPhysicalConnection struct {
@@ -1252,7 +1299,16 @@ func (s *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBo
 }
 
 func (s *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeTagsTags struct {

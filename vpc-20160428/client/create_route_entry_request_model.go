@@ -285,7 +285,16 @@ func (s *CreateRouteEntryRequest) SetRouteTableId(v string) *CreateRouteEntryReq
 }
 
 func (s *CreateRouteEntryRequest) Validate() error {
-	return dara.Validate(s)
+	if s.NextHopList != nil {
+		for _, item := range s.NextHopList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateRouteEntryRequestNextHopList struct {

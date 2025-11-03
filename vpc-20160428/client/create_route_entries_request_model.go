@@ -128,7 +128,16 @@ func (s *CreateRouteEntriesRequest) SetRouteEntries(v []*CreateRouteEntriesReque
 }
 
 func (s *CreateRouteEntriesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RouteEntries != nil {
+		for _, item := range s.RouteEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateRouteEntriesRequestRouteEntries struct {

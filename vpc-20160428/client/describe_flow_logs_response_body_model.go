@@ -125,7 +125,12 @@ func (s *DescribeFlowLogsResponseBody) SetTotalCount(v string) *DescribeFlowLogs
 }
 
 func (s *DescribeFlowLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FlowLogs != nil {
+		if err := s.FlowLogs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeFlowLogsResponseBodyFlowLogs struct {
@@ -150,7 +155,16 @@ func (s *DescribeFlowLogsResponseBodyFlowLogs) SetFlowLog(v []*DescribeFlowLogsR
 }
 
 func (s *DescribeFlowLogsResponseBodyFlowLogs) Validate() error {
-	return dara.Validate(s)
+	if s.FlowLog != nil {
+		for _, item := range s.FlowLog {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFlowLogsResponseBodyFlowLogsFlowLog struct {
@@ -499,7 +513,17 @@ func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLog) SetTrafficType(v string) *
 }
 
 func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLog) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TrafficPath != nil {
+		if err := s.TrafficPath.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeFlowLogsResponseBodyFlowLogsFlowLogTags struct {
@@ -524,7 +548,16 @@ func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLogTags) SetTag(v []*DescribeFl
 }
 
 func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLogTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFlowLogsResponseBodyFlowLogsFlowLogTagsTag struct {

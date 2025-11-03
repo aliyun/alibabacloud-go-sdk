@@ -179,7 +179,25 @@ func (s *CreateTrafficMirrorFilterRulesRequest) SetTrafficMirrorFilterId(v strin
 }
 
 func (s *CreateTrafficMirrorFilterRulesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EgressRules != nil {
+		for _, item := range s.EgressRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.IngressRules != nil {
+		for _, item := range s.IngressRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTrafficMirrorFilterRulesRequestEgressRules struct {

@@ -59,5 +59,10 @@ func (s *DescribeIpv6GatewaysResponse) SetBody(v *DescribeIpv6GatewaysResponseBo
 }
 
 func (s *DescribeIpv6GatewaysResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

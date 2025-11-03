@@ -524,7 +524,16 @@ func (s *ModifyVpnAttachmentAttributeRequest) SetVpnConnectionId(v string) *Modi
 }
 
 func (s *ModifyVpnAttachmentAttributeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TunnelOptionsSpecification != nil {
+		for _, item := range s.TunnelOptionsSpecification {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyVpnAttachmentAttributeRequestTunnelOptionsSpecification struct {
@@ -663,7 +672,22 @@ func (s *ModifyVpnAttachmentAttributeRequestTunnelOptionsSpecification) SetTunne
 }
 
 func (s *ModifyVpnAttachmentAttributeRequestTunnelOptionsSpecification) Validate() error {
-	return dara.Validate(s)
+	if s.TunnelBgpConfig != nil {
+		if err := s.TunnelBgpConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TunnelIkeConfig != nil {
+		if err := s.TunnelIkeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TunnelIpsecConfig != nil {
+		if err := s.TunnelIpsecConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyVpnAttachmentAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig struct {

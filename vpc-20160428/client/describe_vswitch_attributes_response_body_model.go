@@ -356,7 +356,17 @@ func (s *DescribeVSwitchAttributesResponseBody) SetZoneId(v string) *DescribeVSw
 }
 
 func (s *DescribeVSwitchAttributesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RouteTable != nil {
+		if err := s.RouteTable.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVSwitchAttributesResponseBodyRouteTable struct {
@@ -430,7 +440,16 @@ func (s *DescribeVSwitchAttributesResponseBodyTags) SetTag(v []*DescribeVSwitchA
 }
 
 func (s *DescribeVSwitchAttributesResponseBodyTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVSwitchAttributesResponseBodyTagsTag struct {

@@ -575,7 +575,22 @@ func (s *DescribeVpnGatewayResponseBody) SetVpnType(v string) *DescribeVpnGatewa
 }
 
 func (s *DescribeVpnGatewayResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EniInstanceIds != nil {
+		if err := s.EniInstanceIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReservationData != nil {
+		if err := s.ReservationData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVpnGatewayResponseBodyEniInstanceIds struct {
@@ -765,7 +780,16 @@ func (s *DescribeVpnGatewayResponseBodyTags) SetTag(v []*DescribeVpnGatewayRespo
 }
 
 func (s *DescribeVpnGatewayResponseBodyTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpnGatewayResponseBodyTagsTag struct {

@@ -108,7 +108,16 @@ func (s *GetVpcPrefixListAssociationsResponseBody) SetTotalCount(v int64) *GetVp
 }
 
 func (s *GetVpcPrefixListAssociationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PrefixListAssociation != nil {
+		for _, item := range s.PrefixListAssociation {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation struct {

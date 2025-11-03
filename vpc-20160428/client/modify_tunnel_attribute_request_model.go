@@ -162,7 +162,12 @@ func (s *ModifyTunnelAttributeRequest) SetVpnConnectionId(v string) *ModifyTunne
 }
 
 func (s *ModifyTunnelAttributeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TunnelOptionsSpecification != nil {
+		if err := s.TunnelOptionsSpecification.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyTunnelAttributeRequestTunnelOptionsSpecification struct {
@@ -280,7 +285,22 @@ func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecification) SetTunnelIpsecC
 }
 
 func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecification) Validate() error {
-	return dara.Validate(s)
+	if s.TunnelBgpConfig != nil {
+		if err := s.TunnelBgpConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TunnelIkeConfig != nil {
+		if err := s.TunnelIkeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TunnelIpsecConfig != nil {
+		if err := s.TunnelIpsecConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig struct {

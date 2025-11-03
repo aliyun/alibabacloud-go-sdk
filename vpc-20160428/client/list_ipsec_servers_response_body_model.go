@@ -108,7 +108,16 @@ func (s *ListIpsecServersResponseBody) SetTotalCount(v int32) *ListIpsecServersR
 }
 
 func (s *ListIpsecServersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IpsecServers != nil {
+		for _, item := range s.IpsecServers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIpsecServersResponseBodyIpsecServers struct {
@@ -399,7 +408,17 @@ func (s *ListIpsecServersResponseBodyIpsecServers) SetVpnGatewayId(v string) *Li
 }
 
 func (s *ListIpsecServersResponseBodyIpsecServers) Validate() error {
-	return dara.Validate(s)
+	if s.IkeConfig != nil {
+		if err := s.IkeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IpsecConfig != nil {
+		if err := s.IpsecConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListIpsecServersResponseBodyIpsecServersIkeConfig struct {

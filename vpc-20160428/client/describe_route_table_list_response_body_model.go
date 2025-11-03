@@ -104,7 +104,12 @@ func (s *DescribeRouteTableListResponseBody) SetTotalCount(v int32) *DescribeRou
 }
 
 func (s *DescribeRouteTableListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RouterTableList != nil {
+		if err := s.RouterTableList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRouteTableListResponseBodyRouterTableList struct {
@@ -129,7 +134,16 @@ func (s *DescribeRouteTableListResponseBodyRouterTableList) SetRouterTableListTy
 }
 
 func (s *DescribeRouteTableListResponseBodyRouterTableList) Validate() error {
-	return dara.Validate(s)
+	if s.RouterTableListType != nil {
+		for _, item := range s.RouterTableListType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRouteTableListResponseBodyRouterTableListRouterTableListType struct {
@@ -394,7 +408,22 @@ func (s *DescribeRouteTableListResponseBodyRouterTableListRouterTableListType) S
 }
 
 func (s *DescribeRouteTableListResponseBodyRouterTableListRouterTableListType) Validate() error {
-	return dara.Validate(s)
+	if s.GatewayIds != nil {
+		if err := s.GatewayIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VSwitchIds != nil {
+		if err := s.VSwitchIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRouteTableListResponseBodyRouterTableListRouterTableListTypeGatewayIds struct {
@@ -444,7 +473,16 @@ func (s *DescribeRouteTableListResponseBodyRouterTableListRouterTableListTypeTag
 }
 
 func (s *DescribeRouteTableListResponseBodyRouterTableListRouterTableListTypeTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRouteTableListResponseBodyRouterTableListRouterTableListTypeTagsTag struct {

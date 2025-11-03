@@ -36,40 +36,64 @@ type iDescribeNatGatewayAssociateNetworkInterfacesRequest interface {
 }
 
 type DescribeNatGatewayAssociateNetworkInterfacesRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// >  If you do not set this parameter, the value of **RequestId*	- is used.***	- The **RequestId*	- may be different for each request.
+	//
 	// example:
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B3FF****
-	ClientToken *string                                                      `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Filter      []*DescribeNatGatewayAssociateNetworkInterfacesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The filter information. You can specify a filter key and a filter value.
+	Filter []*DescribeNatGatewayAssociateNetworkInterfacesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The number of entries to return per page. Valid values: **1 to 100**. Default value: **20**.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The ID of the NAT gateway.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ngw-bp1uewa15k4iy5770****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid value:
+	//
+	// 	- If no value is returned for NetToken, you do not need to specify this parameter.
+	//
+	// 	- If a value is returned for NextToken, you must specify the token that is obtained from the previous query as the value of **NextToken**.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the Internet NAT gateway.
+	//
+	// Call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-acfmxazdjdhd****
-	ResourceGroupId      *string                                                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                                                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                                    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tag                  []*DescribeNatGatewayAssociateNetworkInterfacesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The information about resource tags.
+	Tag []*DescribeNatGatewayAssociateNetworkInterfacesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeNatGatewayAssociateNetworkInterfacesRequest) String() string {
@@ -189,14 +213,48 @@ func (s *DescribeNatGatewayAssociateNetworkInterfacesRequest) SetTag(v []*Descri
 }
 
 func (s *DescribeNatGatewayAssociateNetworkInterfacesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		for _, item := range s.Filter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNatGatewayAssociateNetworkInterfacesRequestFilter struct {
+	// The filter key.
+	//
+	// 	- ResourceId
+	//
+	// >  Specify the service resource ID in the Value field.
+	//
+	// 	- NetworkInterfaceId
+	//
+	// >  Specify the ENI ID in the Value field.
+	//
+	// 	- ResourceOwnerId
+	//
+	// >  Specify the UID of the account to which the service resource belongs.
+	//
 	// example:
 	//
 	// ResourceId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Separate multiple values with commas (,).
+	//
 	// example:
 	//
 	// ep-8psre8c8936596cd****
@@ -234,10 +292,18 @@ func (s *DescribeNatGatewayAssociateNetworkInterfacesRequestFilter) Validate() e
 }
 
 type DescribeNatGatewayAssociateNetworkInterfacesRequestTag struct {
+	// The tag key You can specify at most 20 tag keys. It cannot be an empty string,
+	//
+	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key. You can specify at most 20 tag keys. It cannot be an empty string.
+	//
+	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+	//
 	// example:
 	//
 	// FinanceJoshua

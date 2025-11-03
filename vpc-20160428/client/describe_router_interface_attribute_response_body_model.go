@@ -941,7 +941,12 @@ func (s *DescribeRouterInterfaceAttributeResponseBody) SetVpcInstanceId(v string
 }
 
 func (s *DescribeRouterInterfaceAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRouterInterfaceAttributeResponseBodyTags struct {
@@ -966,7 +971,16 @@ func (s *DescribeRouterInterfaceAttributeResponseBodyTags) SetTags(v []*Describe
 }
 
 func (s *DescribeRouterInterfaceAttributeResponseBodyTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRouterInterfaceAttributeResponseBodyTagsTags struct {

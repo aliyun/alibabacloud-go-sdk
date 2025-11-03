@@ -26,24 +26,44 @@ type iDescribeNatGatewayAssociateNetworkInterfacesResponseBody interface {
 }
 
 type DescribeNatGatewayAssociateNetworkInterfacesResponseBody struct {
+	// The ENIs associated with the VPC NAT gateway.
 	AssociateNetworkInterfaces *DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfaces `json:"AssociateNetworkInterfaces,omitempty" xml:"AssociateNetworkInterfaces,omitempty" type:"Struct"`
-	Count                      *int32                                                                              `json:"Count,omitempty" xml:"Count,omitempty"`
+	// Number of associated ENIs.
+	//
+	// example:
+	//
+	// 0
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of entries to return per page. Valid values: **1 to 100**. Default value: **20**.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The ID of the VPC NAT gateway.
+	//
 	// example:
 	//
 	// ngw-bp1uewa15k4iy5770****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// Indicates whether the token for the next query exists. Valid value:
+	//
+	// 	- If **NextToken*	- is empty, there is no next page.
+	//
+	// 	- If the value returned of **NextToken*	- is not empty, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 2315DEB7-5E92-423A-91F7-4C1EC9AD****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
@@ -122,7 +142,12 @@ func (s *DescribeNatGatewayAssociateNetworkInterfacesResponseBody) SetTotalCount
 }
 
 func (s *DescribeNatGatewayAssociateNetworkInterfacesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AssociateNetworkInterfaces != nil {
+		if err := s.AssociateNetworkInterfaces.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfaces struct {
@@ -147,29 +172,52 @@ func (s *DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetwor
 }
 
 func (s *DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfaces) Validate() error {
-	return dara.Validate(s)
+	if s.AssociateNetworkInterface != nil {
+		for _, item := range s.AssociateNetworkInterface {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfacesAssociateNetworkInterface struct {
+	// The IPv4 addresses of the ENIs.
 	IPv4Sets *DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfacesAssociateNetworkInterfaceIPv4Sets `json:"IPv4Sets,omitempty" xml:"IPv4Sets,omitempty" type:"Struct"`
+	// The ID of the ENI.
+	//
 	// example:
 	//
 	// eni-gw8g131ef2dnbu3k****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	// The ID of the service resource.
+	//
 	// example:
 	//
 	// ep-8psre8c8936596cd****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The UID of the account to which the service resource belongs.
+	//
 	// example:
 	//
 	// 138859086900****
 	ResourceOwnerId *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The type of the service resource.
+	//
 	// example:
 	//
 	// PrivateLink
 	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	ResourceVpcId *string `json:"ResourceVpcId,omitempty" xml:"ResourceVpcId,omitempty"`
-	TunnelIndex   *string `json:"TunnelIndex,omitempty" xml:"TunnelIndex,omitempty"`
+	// The ID of the tunnel index.
+	//
+	// example:
+	//
+	// 41a5489ea2a0****
+	TunnelIndex *string `json:"TunnelIndex,omitempty" xml:"TunnelIndex,omitempty"`
 }
 
 func (s DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfacesAssociateNetworkInterface) String() string {
@@ -244,7 +292,12 @@ func (s *DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetwor
 }
 
 func (s *DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfacesAssociateNetworkInterface) Validate() error {
-	return dara.Validate(s)
+	if s.IPv4Sets != nil {
+		if err := s.IPv4Sets.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfacesAssociateNetworkInterfaceIPv4Sets struct {
@@ -269,14 +322,31 @@ func (s *DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetwor
 }
 
 func (s *DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfacesAssociateNetworkInterfaceIPv4Sets) Validate() error {
-	return dara.Validate(s)
+	if s.IPv4Set != nil {
+		for _, item := range s.IPv4Set {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfacesAssociateNetworkInterfaceIPv4SetsIPv4Set struct {
+	// The primary private IP address of the ENI.
+	//
 	// example:
 	//
 	// ``172.17.**.**``
 	IPv4Address *string `json:"IPv4Address,omitempty" xml:"IPv4Address,omitempty"`
+	// Indicates whether the IP address is the primary private IP address. Valid values:
+	//
+	// 	- true: Primary private IP address
+	//
+	// 	- false: Secondary private IP addresses
+	//
 	// example:
 	//
 	// true

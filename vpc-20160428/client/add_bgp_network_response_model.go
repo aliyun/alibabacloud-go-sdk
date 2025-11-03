@@ -59,5 +59,10 @@ func (s *AddBgpNetworkResponse) SetBody(v *AddBgpNetworkResponseBody) *AddBgpNet
 }
 
 func (s *AddBgpNetworkResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

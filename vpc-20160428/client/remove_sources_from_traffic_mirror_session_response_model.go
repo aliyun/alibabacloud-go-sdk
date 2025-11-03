@@ -59,5 +59,10 @@ func (s *RemoveSourcesFromTrafficMirrorSessionResponse) SetBody(v *RemoveSources
 }
 
 func (s *RemoveSourcesFromTrafficMirrorSessionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

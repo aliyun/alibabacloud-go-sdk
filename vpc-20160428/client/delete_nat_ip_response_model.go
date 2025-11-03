@@ -59,5 +59,10 @@ func (s *DeleteNatIpResponse) SetBody(v *DeleteNatIpResponseBody) *DeleteNatIpRe
 }
 
 func (s *DeleteNatIpResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

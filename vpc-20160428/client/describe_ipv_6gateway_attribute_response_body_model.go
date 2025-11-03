@@ -288,7 +288,12 @@ func (s *DescribeIpv6GatewayAttributeResponseBody) SetVpcId(v string) *DescribeI
 }
 
 func (s *DescribeIpv6GatewayAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeIpv6GatewayAttributeResponseBodyTags struct {
@@ -313,7 +318,16 @@ func (s *DescribeIpv6GatewayAttributeResponseBodyTags) SetTag(v []*DescribeIpv6G
 }
 
 func (s *DescribeIpv6GatewayAttributeResponseBodyTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIpv6GatewayAttributeResponseBodyTagsTag struct {

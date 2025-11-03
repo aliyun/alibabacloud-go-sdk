@@ -96,7 +96,22 @@ func (s *CreateNatGatewayResponseBody) SetSnatTableIds(v *CreateNatGatewayRespon
 }
 
 func (s *CreateNatGatewayResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ForwardTableIds != nil {
+		if err := s.ForwardTableIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FullNatTableIds != nil {
+		if err := s.FullNatTableIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SnatTableIds != nil {
+		if err := s.SnatTableIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateNatGatewayResponseBodyForwardTableIds struct {

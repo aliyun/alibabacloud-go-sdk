@@ -74,7 +74,12 @@ func (s *ListTagResourcesForExpressConnectResponseBody) SetTagResources(v *ListT
 }
 
 func (s *ListTagResourcesForExpressConnectResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TagResources != nil {
+		if err := s.TagResources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTagResourcesForExpressConnectResponseBodyTagResources struct {
@@ -99,7 +104,16 @@ func (s *ListTagResourcesForExpressConnectResponseBodyTagResources) SetTagResour
 }
 
 func (s *ListTagResourcesForExpressConnectResponseBodyTagResources) Validate() error {
-	return dara.Validate(s)
+	if s.TagResource != nil {
+		for _, item := range s.TagResource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTagResourcesForExpressConnectResponseBodyTagResourcesTagResource struct {

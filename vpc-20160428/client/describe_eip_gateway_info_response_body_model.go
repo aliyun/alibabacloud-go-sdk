@@ -87,7 +87,12 @@ func (s *DescribeEipGatewayInfoResponseBody) SetRequestId(v string) *DescribeEip
 }
 
 func (s *DescribeEipGatewayInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EipInfos != nil {
+		if err := s.EipInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEipGatewayInfoResponseBodyEipInfos struct {
@@ -112,7 +117,16 @@ func (s *DescribeEipGatewayInfoResponseBodyEipInfos) SetEipInfo(v []*DescribeEip
 }
 
 func (s *DescribeEipGatewayInfoResponseBodyEipInfos) Validate() error {
-	return dara.Validate(s)
+	if s.EipInfo != nil {
+		for _, item := range s.EipInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEipGatewayInfoResponseBodyEipInfosEipInfo struct {

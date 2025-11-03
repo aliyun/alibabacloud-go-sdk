@@ -59,5 +59,10 @@ func (s *DeleteIpv6InternetBandwidthResponse) SetBody(v *DeleteIpv6InternetBandw
 }
 
 func (s *DeleteIpv6InternetBandwidthResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -91,7 +91,16 @@ func (s *ListDhcpOptionsSetsResponseBody) SetTotalCount(v string) *ListDhcpOptio
 }
 
 func (s *ListDhcpOptionsSetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DhcpOptionsSets != nil {
+		for _, item := range s.DhcpOptionsSets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDhcpOptionsSetsResponseBodyDhcpOptionsSets struct {
@@ -100,9 +109,14 @@ type ListDhcpOptionsSetsResponseBodyDhcpOptionsSets struct {
 	// example:
 	//
 	// 2
-	AssociateVpcCount *int32  `json:"AssociateVpcCount,omitempty" xml:"AssociateVpcCount,omitempty"`
-	CreationTime      *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The configuration information about the DHCP options set.
+	AssociateVpcCount *int32 `json:"AssociateVpcCount,omitempty" xml:"AssociateVpcCount,omitempty"`
+	// The creation time of the DHCP options sets.
+	//
+	// example:
+	//
+	// 2025-08-21 ***
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The details of DHCP options.
 	DhcpOptions *ListDhcpOptionsSetsResponseBodyDhcpOptionsSetsDhcpOptions `json:"DhcpOptions,omitempty" xml:"DhcpOptions,omitempty" type:"Struct"`
 	// The description of the DHCP options set.
 	//
@@ -251,7 +265,21 @@ func (s *ListDhcpOptionsSetsResponseBodyDhcpOptionsSets) SetTags(v []*ListDhcpOp
 }
 
 func (s *ListDhcpOptionsSetsResponseBodyDhcpOptionsSets) Validate() error {
-	return dara.Validate(s)
+	if s.DhcpOptions != nil {
+		if err := s.DhcpOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDhcpOptionsSetsResponseBodyDhcpOptionsSetsDhcpOptions struct {
@@ -267,11 +295,11 @@ type ListDhcpOptionsSetsResponseBodyDhcpOptionsSetsDhcpOptions struct {
 	//
 	// 192.168.XX.XX
 	DomainNameServers *string `json:"DomainNameServers,omitempty" xml:"DomainNameServers,omitempty"`
-	// The lease time of the IPv6 addresses for the DHCP options set.
+	// The lease time of the IPv6 DHCP options set.
 	//
-	// 	- If you use hours as the unit, valid values are **24h to 1176h*	- and **87600h to 175200h**. Default value: **87600h**.
+	// 	- If you use hours as the unit, Unit: h. Valid values are **24h to 1176h*	- and **87600h to 175200h**. Default value: **24h**.
 	//
-	// 	- If you use days as the unit, valid values are **1d to 49d*	- and **3650d to 7300d**. Default value: **3650d**.
+	// 	- If you use days as the unit, Unit: d. Valid values are **1d to 49d*	- and **3650d to 7300d**. Default value: **1d**.
 	//
 	// example:
 	//

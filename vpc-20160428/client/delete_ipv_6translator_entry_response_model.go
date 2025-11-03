@@ -59,5 +59,10 @@ func (s *DeleteIPv6TranslatorEntryResponse) SetBody(v *DeleteIPv6TranslatorEntry
 }
 
 func (s *DeleteIPv6TranslatorEntryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

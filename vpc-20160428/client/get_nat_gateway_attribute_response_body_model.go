@@ -452,7 +452,56 @@ func (s *GetNatGatewayAttributeResponseBody) SetVpcId(v string) *GetNatGatewayAt
 }
 
 func (s *GetNatGatewayAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AccessMode != nil {
+		if err := s.AccessMode.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BillingConfig != nil {
+		if err := s.BillingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeletionProtectionInfo != nil {
+		if err := s.DeletionProtectionInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ForwardTable != nil {
+		if err := s.ForwardTable.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FullNatTable != nil {
+		if err := s.FullNatTable.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IpList != nil {
+		for _, item := range s.IpList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LogDelivery != nil {
+		if err := s.LogDelivery.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrivateInfo != nil {
+		if err := s.PrivateInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SnatTable != nil {
+		if err := s.SnatTable.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNatGatewayAttributeResponseBodyAccessMode struct {

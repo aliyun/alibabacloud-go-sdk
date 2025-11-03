@@ -104,7 +104,12 @@ func (s *DescribeBgpPeersResponseBody) SetTotalCount(v int32) *DescribeBgpPeersR
 }
 
 func (s *DescribeBgpPeersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BgpPeers != nil {
+		if err := s.BgpPeers.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBgpPeersResponseBodyBgpPeers struct {
@@ -129,7 +134,16 @@ func (s *DescribeBgpPeersResponseBodyBgpPeers) SetBgpPeer(v []*DescribeBgpPeersR
 }
 
 func (s *DescribeBgpPeersResponseBodyBgpPeers) Validate() error {
-	return dara.Validate(s)
+	if s.BgpPeer != nil {
+		for _, item := range s.BgpPeer {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBgpPeersResponseBodyBgpPeersBgpPeer struct {

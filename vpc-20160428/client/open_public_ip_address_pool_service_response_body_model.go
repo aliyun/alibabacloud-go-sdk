@@ -18,14 +18,20 @@ type iOpenPublicIpAddressPoolServiceResponseBody interface {
 }
 
 type OpenPublicIpAddressPoolServiceResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response messages.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 28CF47AB-B6C0-5FA2-80C7-2B37726A92CB

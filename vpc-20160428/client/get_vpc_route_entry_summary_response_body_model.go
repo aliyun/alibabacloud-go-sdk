@@ -53,7 +53,16 @@ func (s *GetVpcRouteEntrySummaryResponseBody) SetRouteEntrySummarys(v []*GetVpcR
 }
 
 func (s *GetVpcRouteEntrySummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RouteEntrySummarys != nil {
+		for _, item := range s.RouteEntrySummarys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarys struct {
@@ -94,7 +103,16 @@ func (s *GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarys) SetRouteTableId(
 }
 
 func (s *GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarys) Validate() error {
-	return dara.Validate(s)
+	if s.EntrySummarys != nil {
+		for _, item := range s.EntrySummarys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarysEntrySummarys struct {

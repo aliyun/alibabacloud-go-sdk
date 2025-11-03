@@ -124,7 +124,12 @@ type DescribeVpcAttributeResponseBody struct {
 	//
 	// Available
 	DhcpOptionsSetStatus *string `json:"DhcpOptionsSetStatus,omitempty" xml:"DhcpOptionsSetStatus,omitempty"`
-	DnsHostnameStatus    *string `json:"DnsHostnameStatus,omitempty" xml:"DnsHostnameStatus,omitempty"`
+	// Indicates whether DNS hostname is enabled.
+	//
+	// example:
+	//
+	// DISABLED
+	DnsHostnameStatus *string `json:"DnsHostnameStatus,omitempty" xml:"DnsHostnameStatus,omitempty"`
 	// Indicates whether the VPC enables IPv6 .
 	//
 	// - true
@@ -492,7 +497,47 @@ func (s *DescribeVpcAttributeResponseBody) SetVpcName(v string) *DescribeVpcAttr
 }
 
 func (s *DescribeVpcAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AssociatedCens != nil {
+		if err := s.AssociatedCens.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AssociatedPropagationSources != nil {
+		if err := s.AssociatedPropagationSources.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CloudResources != nil {
+		if err := s.CloudResources.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Ipv6CidrBlocks != nil {
+		if err := s.Ipv6CidrBlocks.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecondaryCidrBlocks != nil {
+		if err := s.SecondaryCidrBlocks.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserCidrs != nil {
+		if err := s.UserCidrs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VSwitchIds != nil {
+		if err := s.VSwitchIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVpcAttributeResponseBodyAssociatedCens struct {
@@ -517,7 +562,16 @@ func (s *DescribeVpcAttributeResponseBodyAssociatedCens) SetAssociatedCen(v []*D
 }
 
 func (s *DescribeVpcAttributeResponseBodyAssociatedCens) Validate() error {
-	return dara.Validate(s)
+	if s.AssociatedCen != nil {
+		for _, item := range s.AssociatedCen {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcAttributeResponseBodyAssociatedCensAssociatedCen struct {
@@ -604,7 +658,16 @@ func (s *DescribeVpcAttributeResponseBodyAssociatedPropagationSources) SetAssoci
 }
 
 func (s *DescribeVpcAttributeResponseBodyAssociatedPropagationSources) Validate() error {
-	return dara.Validate(s)
+	if s.AssociatedPropagationSources != nil {
+		for _, item := range s.AssociatedPropagationSources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcAttributeResponseBodyAssociatedPropagationSourcesAssociatedPropagationSources struct {
@@ -733,7 +796,16 @@ func (s *DescribeVpcAttributeResponseBodyCloudResources) SetCloudResourceSetType
 }
 
 func (s *DescribeVpcAttributeResponseBodyCloudResources) Validate() error {
-	return dara.Validate(s)
+	if s.CloudResourceSetType != nil {
+		for _, item := range s.CloudResourceSetType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcAttributeResponseBodyCloudResourcesCloudResourceSetType struct {
@@ -809,7 +881,16 @@ func (s *DescribeVpcAttributeResponseBodyIpv6CidrBlocks) SetIpv6CidrBlock(v []*D
 }
 
 func (s *DescribeVpcAttributeResponseBodyIpv6CidrBlocks) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6CidrBlock != nil {
+		for _, item := range s.Ipv6CidrBlock {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock struct {
@@ -914,7 +995,16 @@ func (s *DescribeVpcAttributeResponseBodyTags) SetTag(v []*DescribeVpcAttributeR
 }
 
 func (s *DescribeVpcAttributeResponseBodyTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcAttributeResponseBodyTagsTag struct {

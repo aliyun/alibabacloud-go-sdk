@@ -104,7 +104,12 @@ func (s *DescribeVpnGatewaysResponseBody) SetVpnGateways(v *DescribeVpnGatewaysR
 }
 
 func (s *DescribeVpnGatewaysResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VpnGateways != nil {
+		if err := s.VpnGateways.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVpnGatewaysResponseBodyVpnGateways struct {
@@ -129,7 +134,16 @@ func (s *DescribeVpnGatewaysResponseBodyVpnGateways) SetVpnGateway(v []*Describe
 }
 
 func (s *DescribeVpnGatewaysResponseBodyVpnGateways) Validate() error {
-	return dara.Validate(s)
+	if s.VpnGateway != nil {
+		for _, item := range s.VpnGateway {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway struct {
@@ -627,7 +641,22 @@ func (s *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway) SetVpnType(v stri
 }
 
 func (s *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway) Validate() error {
-	return dara.Validate(s)
+	if s.EniInstanceIds != nil {
+		if err := s.EniInstanceIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReservationData != nil {
+		if err := s.ReservationData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayEniInstanceIds struct {
@@ -817,7 +846,16 @@ func (s *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayTags) SetTag(v []*D
 }
 
 func (s *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayTagsTag struct {

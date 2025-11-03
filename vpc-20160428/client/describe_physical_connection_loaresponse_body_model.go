@@ -53,7 +53,12 @@ func (s *DescribePhysicalConnectionLOAResponseBody) SetRequestId(v string) *Desc
 }
 
 func (s *DescribePhysicalConnectionLOAResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PhysicalConnectionLOAType != nil {
+		if err := s.PhysicalConnectionLOAType.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType struct {
@@ -289,7 +294,12 @@ func (s *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType) Set
 }
 
 func (s *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType) Validate() error {
-	return dara.Validate(s)
+	if s.PMInfo != nil {
+		if err := s.PMInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOATypePMInfo struct {
@@ -314,7 +324,16 @@ func (s *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOATypePMInf
 }
 
 func (s *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOATypePMInfo) Validate() error {
-	return dara.Validate(s)
+	if s.PMInfo != nil {
+		for _, item := range s.PMInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOATypePMInfoPMInfo struct {

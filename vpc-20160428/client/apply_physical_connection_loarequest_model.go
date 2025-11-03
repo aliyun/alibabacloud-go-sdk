@@ -265,7 +265,16 @@ func (s *ApplyPhysicalConnectionLOARequest) SetSi(v string) *ApplyPhysicalConnec
 }
 
 func (s *ApplyPhysicalConnectionLOARequest) Validate() error {
-	return dara.Validate(s)
+	if s.PMInfo != nil {
+		for _, item := range s.PMInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ApplyPhysicalConnectionLOARequestPMInfo struct {

@@ -160,7 +160,16 @@ func (s *AssociateNetworkAclRequest) SetResourceOwnerId(v int64) *AssociateNetwo
 }
 
 func (s *AssociateNetworkAclRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		for _, item := range s.Resource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AssociateNetworkAclRequestResource struct {

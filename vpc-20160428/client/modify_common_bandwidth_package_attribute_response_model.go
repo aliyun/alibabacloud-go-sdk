@@ -59,5 +59,10 @@ func (s *ModifyCommonBandwidthPackageAttributeResponse) SetBody(v *ModifyCommonB
 }
 
 func (s *ModifyCommonBandwidthPackageAttributeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

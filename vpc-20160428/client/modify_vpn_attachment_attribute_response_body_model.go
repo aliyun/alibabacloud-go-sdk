@@ -471,7 +471,36 @@ func (s *ModifyVpnAttachmentAttributeResponseBody) SetVpnGatewayId(v string) *Mo
 }
 
 func (s *ModifyVpnAttachmentAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IkeConfig != nil {
+		if err := s.IkeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IpsecConfig != nil {
+		if err := s.IpsecConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TunnelOptionsSpecification != nil {
+		for _, item := range s.TunnelOptionsSpecification {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VcoHealthCheck != nil {
+		if err := s.VcoHealthCheck.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VpnBgpConfig != nil {
+		if err := s.VpnBgpConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyVpnAttachmentAttributeResponseBodyIkeConfig struct {
@@ -898,7 +927,22 @@ func (s *ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecification) Set
 }
 
 func (s *ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecification) Validate() error {
-	return dara.Validate(s)
+	if s.TunnelBgpConfig != nil {
+		if err := s.TunnelBgpConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TunnelIkeConfig != nil {
+		if err := s.TunnelIkeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TunnelIpsecConfig != nil {
+		if err := s.TunnelIpsecConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecificationTunnelBgpConfig struct {

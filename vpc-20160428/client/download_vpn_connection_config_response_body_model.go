@@ -53,7 +53,12 @@ func (s *DownloadVpnConnectionConfigResponseBody) SetVpnConnectionConfig(v *Down
 }
 
 func (s *DownloadVpnConnectionConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VpnConnectionConfig != nil {
+		if err := s.VpnConnectionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig struct {
@@ -173,7 +178,27 @@ func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig) SetTunnelsC
 }
 
 func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig) Validate() error {
-	return dara.Validate(s)
+	if s.BgpConfigs != nil {
+		if err := s.BgpConfigs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IkeConfig != nil {
+		if err := s.IkeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IpsecConfig != nil {
+		if err := s.IpsecConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TunnelsConfig != nil {
+		if err := s.TunnelsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigBgpConfigs struct {
@@ -198,7 +223,16 @@ func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigBgpConfigs) S
 }
 
 func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigBgpConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.BgpConfig != nil {
+		for _, item := range s.BgpConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigBgpConfigsBgpConfig struct {
@@ -527,7 +561,16 @@ func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig
 }
 
 func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig) Validate() error {
-	return dara.Validate(s)
+	if s.TunnelConfig != nil {
+		for _, item := range s.TunnelConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig struct {
@@ -609,7 +652,17 @@ func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig
 }
 
 func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig) Validate() error {
-	return dara.Validate(s)
+	if s.IkeConfig != nil {
+		if err := s.IkeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IpsecConfig != nil {
+		if err := s.IpsecConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig struct {

@@ -104,7 +104,12 @@ func (s *DescribeIPv6TranslatorEntriesResponseBody) SetTotalCount(v int32) *Desc
 }
 
 func (s *DescribeIPv6TranslatorEntriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6TranslatorEntries != nil {
+		if err := s.Ipv6TranslatorEntries.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeIPv6TranslatorEntriesResponseBodyIpv6TranslatorEntries struct {
@@ -129,7 +134,16 @@ func (s *DescribeIPv6TranslatorEntriesResponseBodyIpv6TranslatorEntries) SetIpv6
 }
 
 func (s *DescribeIPv6TranslatorEntriesResponseBodyIpv6TranslatorEntries) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6TranslatorEntry != nil {
+		for _, item := range s.Ipv6TranslatorEntry {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIPv6TranslatorEntriesResponseBodyIpv6TranslatorEntriesIpv6TranslatorEntry struct {

@@ -59,5 +59,10 @@ func (s *DescribeVpnConnectionsResponse) SetBody(v *DescribeVpnConnectionsRespon
 }
 
 func (s *DescribeVpnConnectionsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

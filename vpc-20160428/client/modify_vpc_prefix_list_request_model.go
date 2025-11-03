@@ -232,7 +232,25 @@ func (s *ModifyVpcPrefixListRequest) SetResourceOwnerId(v int64) *ModifyVpcPrefi
 }
 
 func (s *ModifyVpcPrefixListRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AddPrefixListEntry != nil {
+		for _, item := range s.AddPrefixListEntry {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RemovePrefixListEntry != nil {
+		for _, item := range s.RemovePrefixListEntry {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyVpcPrefixListRequestAddPrefixListEntry struct {
@@ -246,7 +264,7 @@ type ModifyVpcPrefixListRequestAddPrefixListEntry struct {
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
 	// The description of the CIDR block to be added to the prefix list.
 	//
-	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+	// The description must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//

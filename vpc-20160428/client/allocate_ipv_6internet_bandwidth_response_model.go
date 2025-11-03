@@ -59,5 +59,10 @@ func (s *AllocateIpv6InternetBandwidthResponse) SetBody(v *AllocateIpv6InternetB
 }
 
 func (s *AllocateIpv6InternetBandwidthResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

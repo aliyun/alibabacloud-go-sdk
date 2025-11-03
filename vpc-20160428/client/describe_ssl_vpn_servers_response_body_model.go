@@ -104,7 +104,12 @@ func (s *DescribeSslVpnServersResponseBody) SetTotalCount(v int32) *DescribeSslV
 }
 
 func (s *DescribeSslVpnServersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SslVpnServers != nil {
+		if err := s.SslVpnServers.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSslVpnServersResponseBodySslVpnServers struct {
@@ -129,7 +134,16 @@ func (s *DescribeSslVpnServersResponseBodySslVpnServers) SetSslVpnServer(v []*De
 }
 
 func (s *DescribeSslVpnServersResponseBodySslVpnServers) Validate() error {
-	return dara.Validate(s)
+	if s.SslVpnServer != nil {
+		for _, item := range s.SslVpnServer {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer struct {

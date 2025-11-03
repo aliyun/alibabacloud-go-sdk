@@ -59,5 +59,10 @@ func (s *GrantInstanceToCenResponse) SetBody(v *GrantInstanceToCenResponseBody) 
 }
 
 func (s *GrantInstanceToCenResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -192,7 +192,16 @@ func (s *DeleteRouteEntryRequest) SetRouteTableId(v string) *DeleteRouteEntryReq
 }
 
 func (s *DeleteRouteEntryRequest) Validate() error {
-	return dara.Validate(s)
+	if s.NextHopList != nil {
+		for _, item := range s.NextHopList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteRouteEntryRequestNextHopList struct {

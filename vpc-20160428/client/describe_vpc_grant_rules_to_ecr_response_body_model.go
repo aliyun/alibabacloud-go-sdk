@@ -20,15 +20,26 @@ type iDescribeVpcGrantRulesToEcrResponseBody interface {
 }
 
 type DescribeVpcGrantRulesToEcrResponseBody struct {
+	// The authorization information.
 	GrantRuleModels []*DescribeVpcGrantRulesToEcrResponseBodyGrantRuleModels `json:"GrantRuleModels,omitempty" xml:"GrantRuleModels,omitempty" type:"Repeated"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, there is no next page.
+	//
+	// 	- ****
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The unique ID that Alibaba Cloud generates for the request.
+	//
 	// example:
 	//
 	// 66342E8E-5E87-5FF9-80C7-C3E3571A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of instances queried. If you specify the MaxResults and NextToken request parameters to perform a paged query, the value of the TotalCount response parameter is invalid.
+	//
 	// example:
 	//
 	// 10
@@ -80,34 +91,61 @@ func (s *DescribeVpcGrantRulesToEcrResponseBody) SetTotalCount(v string) *Descri
 }
 
 func (s *DescribeVpcGrantRulesToEcrResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GrantRuleModels != nil {
+		for _, item := range s.GrantRuleModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcGrantRulesToEcrResponseBodyGrantRuleModels struct {
+	// The creation time in milliseconds.
+	//
 	// example:
 	//
 	// 2024-09-09T02:14:51Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The ECR ID.
+	//
 	// example:
 	//
 	// ecr-tz7w3chlaptxr2****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the ECR belongs.
+	//
 	// example:
 	//
 	// 192732132151****
 	EcrOwnerId *int64 `json:"EcrOwnerId,omitempty" xml:"EcrOwnerId,omitempty"`
+	// The ID of the network instance.
+	//
 	// example:
 	//
 	// vpc-wz9ek66wd7tl5xqpy****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the instance belongs.
+	//
 	// example:
 	//
 	// 192745367151****
 	InstanceUid *int64 `json:"InstanceUid,omitempty" xml:"InstanceUid,omitempty"`
+	// The ID of the region where the instance is deployed.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The type of instance. Valid values:
+	//
+	// 	- **VBR**: queries the permissions that are granted to a VBR.
+	//
+	// 	- **VPC**: queries the permissions that are granted from a VPC.
+	//
 	// example:
 	//
 	// VPC

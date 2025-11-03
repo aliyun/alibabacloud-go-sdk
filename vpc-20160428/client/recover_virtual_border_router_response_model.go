@@ -59,5 +59,10 @@ func (s *RecoverVirtualBorderRouterResponse) SetBody(v *RecoverVirtualBorderRout
 }
 
 func (s *RecoverVirtualBorderRouterResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -195,7 +195,16 @@ func (s *GetVpnGatewayDiagnoseResultResponseBody) SetVpnGatewayId(v string) *Get
 }
 
 func (s *GetVpnGatewayDiagnoseResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DiagnoseResult != nil {
+		for _, item := range s.DiagnoseResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult struct {

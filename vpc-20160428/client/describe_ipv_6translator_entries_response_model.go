@@ -59,5 +59,10 @@ func (s *DescribeIPv6TranslatorEntriesResponse) SetBody(v *DescribeIPv6Translato
 }
 
 func (s *DescribeIPv6TranslatorEntriesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

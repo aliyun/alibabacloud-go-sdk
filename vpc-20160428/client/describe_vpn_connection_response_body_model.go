@@ -600,7 +600,37 @@ func (s *DescribeVpnConnectionResponseBody) SetZoneNo(v string) *DescribeVpnConn
 }
 
 func (s *DescribeVpnConnectionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IkeConfig != nil {
+		if err := s.IkeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IpsecConfig != nil {
+		if err := s.IpsecConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TunnelOptionsSpecification != nil {
+		if err := s.TunnelOptionsSpecification.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VcoHealthCheck != nil {
+		if err := s.VcoHealthCheck.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VpnBgpConfig != nil {
+		if err := s.VpnBgpConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVpnConnectionResponseBodyIkeConfig struct {
@@ -860,7 +890,16 @@ func (s *DescribeVpnConnectionResponseBodyTags) SetTag(v []*DescribeVpnConnectio
 }
 
 func (s *DescribeVpnConnectionResponseBodyTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpnConnectionResponseBodyTagsTag struct {
@@ -930,7 +969,16 @@ func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecification) SetTunnelO
 }
 
 func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecification) Validate() error {
-	return dara.Validate(s)
+	if s.TunnelOptions != nil {
+		for _, item := range s.TunnelOptions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions struct {
@@ -1179,7 +1227,22 @@ func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOption
 }
 
 func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions) Validate() error {
-	return dara.Validate(s)
+	if s.TunnelBgpConfig != nil {
+		if err := s.TunnelBgpConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TunnelIkeConfig != nil {
+		if err := s.TunnelIkeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TunnelIpsecConfig != nil {
+		if err := s.TunnelIpsecConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig struct {

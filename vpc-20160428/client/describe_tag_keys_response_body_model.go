@@ -74,7 +74,12 @@ func (s *DescribeTagKeysResponseBody) SetTagKeys(v *DescribeTagKeysResponseBodyT
 }
 
 func (s *DescribeTagKeysResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TagKeys != nil {
+		if err := s.TagKeys.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTagKeysResponseBodyTagKeys struct {
@@ -99,7 +104,16 @@ func (s *DescribeTagKeysResponseBodyTagKeys) SetTagKey(v []*DescribeTagKeysRespo
 }
 
 func (s *DescribeTagKeysResponseBodyTagKeys) Validate() error {
-	return dara.Validate(s)
+	if s.TagKey != nil {
+		for _, item := range s.TagKey {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTagKeysResponseBodyTagKeysTagKey struct {

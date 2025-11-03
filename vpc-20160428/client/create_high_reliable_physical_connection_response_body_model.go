@@ -74,7 +74,17 @@ func (s *CreateHighReliablePhysicalConnectionResponseBody) SetRequestId(v string
 }
 
 func (s *CreateHighReliablePhysicalConnectionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ErrorInfoList != nil {
+		if err := s.ErrorInfoList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PhysicalConnectionList != nil {
+		if err := s.PhysicalConnectionList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateHighReliablePhysicalConnectionResponseBodyErrorInfoList struct {
@@ -99,7 +109,16 @@ func (s *CreateHighReliablePhysicalConnectionResponseBodyErrorInfoList) SetError
 }
 
 func (s *CreateHighReliablePhysicalConnectionResponseBodyErrorInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.ErrorInfoList != nil {
+		for _, item := range s.ErrorInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateHighReliablePhysicalConnectionResponseBodyErrorInfoListErrorInfoList struct {
@@ -184,7 +203,16 @@ func (s *CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionList)
 }
 
 func (s *CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionList) Validate() error {
-	return dara.Validate(s)
+	if s.PhysicalConnectionList != nil {
+		for _, item := range s.PhysicalConnectionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionListPhysicalConnectionList struct {

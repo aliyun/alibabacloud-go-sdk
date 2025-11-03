@@ -108,7 +108,16 @@ func (s *ListPrefixListsResponseBody) SetTotalCount(v int64) *ListPrefixListsRes
 }
 
 func (s *ListPrefixListsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PrefixLists != nil {
+		for _, item := range s.PrefixLists {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrefixListsResponseBodyPrefixLists struct {
@@ -362,7 +371,16 @@ func (s *ListPrefixListsResponseBodyPrefixLists) SetTags(v []*ListPrefixListsRes
 }
 
 func (s *ListPrefixListsResponseBodyPrefixLists) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrefixListsResponseBodyPrefixListsTags struct {

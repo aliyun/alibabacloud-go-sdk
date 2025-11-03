@@ -59,5 +59,10 @@ func (s *DescribeEipMonitorDataResponse) SetBody(v *DescribeEipMonitorDataRespon
 }
 
 func (s *DescribeEipMonitorDataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

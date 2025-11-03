@@ -104,7 +104,12 @@ func (s *DescribeIpv6AddressesResponseBody) SetTotalCount(v int32) *DescribeIpv6
 }
 
 func (s *DescribeIpv6AddressesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6Addresses != nil {
+		if err := s.Ipv6Addresses.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeIpv6AddressesResponseBodyIpv6Addresses struct {
@@ -129,7 +134,16 @@ func (s *DescribeIpv6AddressesResponseBodyIpv6Addresses) SetIpv6Address(v []*Des
 }
 
 func (s *DescribeIpv6AddressesResponseBodyIpv6Addresses) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6Address != nil {
+		for _, item := range s.Ipv6Address {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address struct {
@@ -445,7 +459,17 @@ func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address) SetVpcId(v s
 }
 
 func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6InternetBandwidth != nil {
+		if err := s.Ipv6InternetBandwidth.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth struct {
@@ -655,7 +679,16 @@ func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressTags) SetTag(v
 }
 
 func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressTagsTag struct {

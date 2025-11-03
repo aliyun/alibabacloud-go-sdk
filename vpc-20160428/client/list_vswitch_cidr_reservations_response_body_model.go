@@ -108,7 +108,16 @@ func (s *ListVSwitchCidrReservationsResponseBody) SetVSwitchCidrReservations(v [
 }
 
 func (s *ListVSwitchCidrReservationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VSwitchCidrReservations != nil {
+		for _, item := range s.VSwitchCidrReservations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVSwitchCidrReservationsResponseBodyVSwitchCidrReservations struct {
@@ -326,7 +335,16 @@ func (s *ListVSwitchCidrReservationsResponseBodyVSwitchCidrReservations) SetVpcI
 }
 
 func (s *ListVSwitchCidrReservationsResponseBodyVSwitchCidrReservations) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVSwitchCidrReservationsResponseBodyVSwitchCidrReservationsTags struct {

@@ -59,5 +59,10 @@ func (s *DescribeVpnGatewayAvailableZonesResponse) SetBody(v *DescribeVpnGateway
 }
 
 func (s *DescribeVpnGatewayAvailableZonesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

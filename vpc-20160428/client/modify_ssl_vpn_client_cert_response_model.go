@@ -59,5 +59,10 @@ func (s *ModifySslVpnClientCertResponse) SetBody(v *ModifySslVpnClientCertRespon
 }
 
 func (s *ModifySslVpnClientCertResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

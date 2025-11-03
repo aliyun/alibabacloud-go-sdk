@@ -104,7 +104,16 @@ func (s *DescribeVpnCrossAccountAuthorizationsResponseBody) SetTotalCount(v int3
 }
 
 func (s *DescribeVpnCrossAccountAuthorizationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CrossAccountAuthorizations != nil {
+		for _, item := range s.CrossAccountAuthorizations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpnCrossAccountAuthorizationsResponseBodyCrossAccountAuthorizations struct {

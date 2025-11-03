@@ -125,7 +125,16 @@ func (s *DescribeExpressConnectTrafficQosResponseBody) SetTotalCount(v int32) *D
 }
 
 func (s *DescribeExpressConnectTrafficQosResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.QosList != nil {
+		for _, item := range s.QosList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeExpressConnectTrafficQosResponseBodyQosList struct {
@@ -273,7 +282,34 @@ func (s *DescribeExpressConnectTrafficQosResponseBodyQosList) SetTags(v []*Descr
 }
 
 func (s *DescribeExpressConnectTrafficQosResponseBodyQosList) Validate() error {
-	return dara.Validate(s)
+	if s.AssociatedInstanceList != nil {
+		for _, item := range s.AssociatedInstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.QueueList != nil {
+		for _, item := range s.QueueList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeExpressConnectTrafficQosResponseBodyQosListAssociatedInstanceList struct {

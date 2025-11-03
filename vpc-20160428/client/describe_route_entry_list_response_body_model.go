@@ -74,7 +74,12 @@ func (s *DescribeRouteEntryListResponseBody) SetRouteEntrys(v *DescribeRouteEntr
 }
 
 func (s *DescribeRouteEntryListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RouteEntrys != nil {
+		if err := s.RouteEntrys.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRouteEntryListResponseBodyRouteEntrys struct {
@@ -99,7 +104,16 @@ func (s *DescribeRouteEntryListResponseBodyRouteEntrys) SetRouteEntry(v []*Descr
 }
 
 func (s *DescribeRouteEntryListResponseBodyRouteEntrys) Validate() error {
-	return dara.Validate(s)
+	if s.RouteEntry != nil {
+		for _, item := range s.RouteEntry {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRouteEntryListResponseBodyRouteEntrysRouteEntry struct {
@@ -322,7 +336,12 @@ func (s *DescribeRouteEntryListResponseBodyRouteEntrysRouteEntry) SetType(v stri
 }
 
 func (s *DescribeRouteEntryListResponseBodyRouteEntrysRouteEntry) Validate() error {
-	return dara.Validate(s)
+	if s.NextHops != nil {
+		if err := s.NextHops.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRouteEntryListResponseBodyRouteEntrysRouteEntryNextHops struct {
@@ -347,7 +366,16 @@ func (s *DescribeRouteEntryListResponseBodyRouteEntrysRouteEntryNextHops) SetNex
 }
 
 func (s *DescribeRouteEntryListResponseBodyRouteEntrysRouteEntryNextHops) Validate() error {
-	return dara.Validate(s)
+	if s.NextHop != nil {
+		for _, item := range s.NextHop {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRouteEntryListResponseBodyRouteEntrysRouteEntryNextHopsNextHop struct {
@@ -482,7 +510,12 @@ func (s *DescribeRouteEntryListResponseBodyRouteEntrysRouteEntryNextHopsNextHop)
 }
 
 func (s *DescribeRouteEntryListResponseBodyRouteEntrysRouteEntryNextHopsNextHop) Validate() error {
-	return dara.Validate(s)
+	if s.NextHopRelatedInfo != nil {
+		if err := s.NextHopRelatedInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRouteEntryListResponseBodyRouteEntrysRouteEntryNextHopsNextHopNextHopRelatedInfo struct {

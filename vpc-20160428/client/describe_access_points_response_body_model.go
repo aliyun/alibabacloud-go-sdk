@@ -104,7 +104,12 @@ func (s *DescribeAccessPointsResponseBody) SetTotalCount(v int32) *DescribeAcces
 }
 
 func (s *DescribeAccessPointsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AccessPointSet != nil {
+		if err := s.AccessPointSet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAccessPointsResponseBodyAccessPointSet struct {
@@ -129,7 +134,16 @@ func (s *DescribeAccessPointsResponseBodyAccessPointSet) SetAccessPointType(v []
 }
 
 func (s *DescribeAccessPointsResponseBodyAccessPointSet) Validate() error {
-	return dara.Validate(s)
+	if s.AccessPointType != nil {
+		for _, item := range s.AccessPointType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAccessPointsResponseBodyAccessPointSetAccessPointType struct {
@@ -283,7 +297,12 @@ func (s *DescribeAccessPointsResponseBodyAccessPointSetAccessPointType) SetType(
 }
 
 func (s *DescribeAccessPointsResponseBodyAccessPointSetAccessPointType) Validate() error {
-	return dara.Validate(s)
+	if s.AccessPointFeatureModels != nil {
+		if err := s.AccessPointFeatureModels.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAccessPointsResponseBodyAccessPointSetAccessPointTypeAccessPointFeatureModels struct {
@@ -308,7 +327,16 @@ func (s *DescribeAccessPointsResponseBodyAccessPointSetAccessPointTypeAccessPoin
 }
 
 func (s *DescribeAccessPointsResponseBodyAccessPointSetAccessPointTypeAccessPointFeatureModels) Validate() error {
-	return dara.Validate(s)
+	if s.AccessPointFeatureModel != nil {
+		for _, item := range s.AccessPointFeatureModel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAccessPointsResponseBodyAccessPointSetAccessPointTypeAccessPointFeatureModelsAccessPointFeatureModel struct {

@@ -250,7 +250,22 @@ func (s *ModifyTunnelAttributeResponseBody) SetZoneNo(v string) *ModifyTunnelAtt
 }
 
 func (s *ModifyTunnelAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TunnelBgpConfig != nil {
+		if err := s.TunnelBgpConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TunnelIkeConfig != nil {
+		if err := s.TunnelIkeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TunnelIpsecConfig != nil {
+		if err := s.TunnelIpsecConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyTunnelAttributeResponseBodyTunnelBgpConfig struct {

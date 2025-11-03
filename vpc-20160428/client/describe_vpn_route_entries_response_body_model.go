@@ -119,7 +119,17 @@ func (s *DescribeVpnRouteEntriesResponseBody) SetVpnRouteEntries(v *DescribeVpnR
 }
 
 func (s *DescribeVpnRouteEntriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VpnRouteCounts != nil {
+		if err := s.VpnRouteCounts.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VpnRouteEntries != nil {
+		if err := s.VpnRouteEntries.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVpnRouteEntriesResponseBodyVpnRouteCounts struct {
@@ -144,7 +154,16 @@ func (s *DescribeVpnRouteEntriesResponseBodyVpnRouteCounts) SetVpnRouteCount(v [
 }
 
 func (s *DescribeVpnRouteEntriesResponseBodyVpnRouteCounts) Validate() error {
-	return dara.Validate(s)
+	if s.VpnRouteCount != nil {
+		for _, item := range s.VpnRouteCount {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpnRouteEntriesResponseBodyVpnRouteCountsVpnRouteCount struct {
@@ -237,7 +256,16 @@ func (s *DescribeVpnRouteEntriesResponseBodyVpnRouteEntries) SetVpnRouteEntry(v 
 }
 
 func (s *DescribeVpnRouteEntriesResponseBodyVpnRouteEntries) Validate() error {
-	return dara.Validate(s)
+	if s.VpnRouteEntry != nil {
+		for _, item := range s.VpnRouteEntry {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry struct {

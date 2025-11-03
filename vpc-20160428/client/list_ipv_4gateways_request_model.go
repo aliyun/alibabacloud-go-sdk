@@ -213,7 +213,16 @@ func (s *ListIpv4GatewaysRequest) SetVpcId(v string) *ListIpv4GatewaysRequest {
 }
 
 func (s *ListIpv4GatewaysRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIpv4GatewaysRequestTags struct {

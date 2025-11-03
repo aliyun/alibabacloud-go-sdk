@@ -59,5 +59,10 @@ func (s *CreateIPv6TranslatorAclListResponse) SetBody(v *CreateIPv6TranslatorAcl
 }
 
 func (s *CreateIPv6TranslatorAclListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

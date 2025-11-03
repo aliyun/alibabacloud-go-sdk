@@ -59,5 +59,10 @@ func (s *ModifyNetworkAclAttributesResponse) SetBody(v *ModifyNetworkAclAttribut
 }
 
 func (s *ModifyNetworkAclAttributesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *CreateIpsecServerResponse) SetBody(v *CreateIpsecServerResponseBody) *C
 }
 
 func (s *CreateIpsecServerResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

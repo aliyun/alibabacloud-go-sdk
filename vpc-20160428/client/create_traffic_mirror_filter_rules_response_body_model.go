@@ -66,7 +66,25 @@ func (s *CreateTrafficMirrorFilterRulesResponseBody) SetRequestId(v string) *Cre
 }
 
 func (s *CreateTrafficMirrorFilterRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EgressRules != nil {
+		for _, item := range s.EgressRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.IngressRules != nil {
+		for _, item := range s.IngressRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTrafficMirrorFilterRulesResponseBodyEgressRules struct {

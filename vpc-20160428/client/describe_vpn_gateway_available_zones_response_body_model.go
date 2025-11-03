@@ -70,7 +70,16 @@ func (s *DescribeVpnGatewayAvailableZonesResponseBody) SetRequestId(v string) *D
 }
 
 func (s *DescribeVpnGatewayAvailableZonesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableZoneIdList != nil {
+		for _, item := range s.AvailableZoneIdList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpnGatewayAvailableZonesResponseBodyAvailableZoneIdList struct {

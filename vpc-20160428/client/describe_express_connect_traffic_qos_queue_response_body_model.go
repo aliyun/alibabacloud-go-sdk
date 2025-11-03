@@ -53,7 +53,16 @@ func (s *DescribeExpressConnectTrafficQosQueueResponseBody) SetRequestId(v strin
 }
 
 func (s *DescribeExpressConnectTrafficQosQueueResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.QueueList != nil {
+		for _, item := range s.QueueList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeExpressConnectTrafficQosQueueResponseBodyQueueList struct {
@@ -208,7 +217,16 @@ func (s *DescribeExpressConnectTrafficQosQueueResponseBodyQueueList) SetStatus(v
 }
 
 func (s *DescribeExpressConnectTrafficQosQueueResponseBodyQueueList) Validate() error {
-	return dara.Validate(s)
+	if s.RuleList != nil {
+		for _, item := range s.RuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList struct {

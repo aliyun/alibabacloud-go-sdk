@@ -59,5 +59,10 @@ func (s *CreateDefaultVpcResponse) SetBody(v *CreateDefaultVpcResponseBody) *Cre
 }
 
 func (s *CreateDefaultVpcResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

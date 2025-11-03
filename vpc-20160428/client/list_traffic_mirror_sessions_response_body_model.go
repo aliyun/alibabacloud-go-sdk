@@ -91,7 +91,16 @@ func (s *ListTrafficMirrorSessionsResponseBody) SetTrafficMirrorSessions(v []*Li
 }
 
 func (s *ListTrafficMirrorSessionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficMirrorSessions != nil {
+		for _, item := range s.TrafficMirrorSessions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions struct {
@@ -360,7 +369,16 @@ func (s *ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions) SetVirtualN
 }
 
 func (s *ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessionsTags struct {

@@ -142,7 +142,16 @@ func (s *ListFullNatEntriesResponseBody) SetTotalCount(v int64) *ListFullNatEntr
 }
 
 func (s *ListFullNatEntriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FullNatEntries != nil {
+		for _, item := range s.FullNatEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFullNatEntriesResponseBodyFullNatEntries struct {

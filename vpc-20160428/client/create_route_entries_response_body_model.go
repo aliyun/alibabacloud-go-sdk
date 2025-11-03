@@ -100,7 +100,16 @@ func (s *CreateRouteEntriesResponseBody) SetSuccessCount(v int32) *CreateRouteEn
 }
 
 func (s *CreateRouteEntriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FailedRouteEntries != nil {
+		for _, item := range s.FailedRouteEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateRouteEntriesResponseBodyFailedRouteEntries struct {

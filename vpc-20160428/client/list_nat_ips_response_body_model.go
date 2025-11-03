@@ -91,7 +91,16 @@ func (s *ListNatIpsResponseBody) SetTotalCount(v string) *ListNatIpsResponseBody
 }
 
 func (s *ListNatIpsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NatIps != nil {
+		for _, item := range s.NatIps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNatIpsResponseBodyNatIps struct {

@@ -59,5 +59,10 @@ func (s *DescribeNatGatewayAssociateNetworkInterfacesResponse) SetBody(v *Descri
 }
 
 func (s *DescribeNatGatewayAssociateNetworkInterfacesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

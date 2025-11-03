@@ -91,7 +91,16 @@ func (s *ListNatIpCidrsResponseBody) SetTotalCount(v string) *ListNatIpCidrsResp
 }
 
 func (s *ListNatIpCidrsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NatIpCidrs != nil {
+		for _, item := range s.NatIpCidrs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNatIpCidrsResponseBodyNatIpCidrs struct {

@@ -59,5 +59,10 @@ func (s *WithdrawVpcPublishedRouteEntriesResponse) SetBody(v *WithdrawVpcPublish
 }
 
 func (s *WithdrawVpcPublishedRouteEntriesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -104,7 +104,12 @@ func (s *DescribeVSwitchesResponseBody) SetVSwitches(v *DescribeVSwitchesRespons
 }
 
 func (s *DescribeVSwitchesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VSwitches != nil {
+		if err := s.VSwitches.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVSwitchesResponseBodyVSwitches struct {
@@ -129,7 +134,16 @@ func (s *DescribeVSwitchesResponseBodyVSwitches) SetVSwitch(v []*DescribeVSwitch
 }
 
 func (s *DescribeVSwitchesResponseBodyVSwitches) Validate() error {
-	return dara.Validate(s)
+	if s.VSwitch != nil {
+		for _, item := range s.VSwitch {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVSwitchesResponseBodyVSwitchesVSwitch struct {
@@ -424,7 +438,17 @@ func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) SetZoneId(v string) *Des
 }
 
 func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) Validate() error {
-	return dara.Validate(s)
+	if s.RouteTable != nil {
+		if err := s.RouteTable.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVSwitchesResponseBodyVSwitchesVSwitchRouteTable struct {
@@ -498,7 +522,16 @@ func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitchTags) SetTag(v []*Describe
 }
 
 func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitchTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag struct {

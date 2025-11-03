@@ -108,7 +108,16 @@ func (s *ListVpnCertificateAssociationsResponseBody) SetVpnCertificateRelations(
 }
 
 func (s *ListVpnCertificateAssociationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VpnCertificateRelations != nil {
+		for _, item := range s.VpnCertificateRelations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVpnCertificateAssociationsResponseBodyVpnCertificateRelations struct {

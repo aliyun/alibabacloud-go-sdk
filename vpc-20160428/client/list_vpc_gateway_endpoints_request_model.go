@@ -52,7 +52,7 @@ type ListVpcGatewayEndpointsRequest struct {
 	//
 	// test
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries to return per page. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
@@ -95,8 +95,13 @@ type ListVpcGatewayEndpointsRequest struct {
 	// com.aliyun.cn-hangzhou.oss
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The tag list.
-	Tags  []*ListVpcGatewayEndpointsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	VpcId *string                               `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Tags []*ListVpcGatewayEndpointsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The ID of the virtual private cloud (VPC) to which the gateway endpoint belongs.
+	//
+	// example:
+	//
+	// vpc-bp1gsk7h12ew7oegk****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListVpcGatewayEndpointsRequest) String() string {
@@ -225,7 +230,16 @@ func (s *ListVpcGatewayEndpointsRequest) SetVpcId(v string) *ListVpcGatewayEndpo
 }
 
 func (s *ListVpcGatewayEndpointsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVpcGatewayEndpointsRequestTags struct {

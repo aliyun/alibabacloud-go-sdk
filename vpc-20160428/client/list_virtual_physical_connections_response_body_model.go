@@ -108,7 +108,16 @@ func (s *ListVirtualPhysicalConnectionsResponseBody) SetVirtualPhysicalConnectio
 }
 
 func (s *ListVirtualPhysicalConnectionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VirtualPhysicalConnections != nil {
+		for _, item := range s.VirtualPhysicalConnections {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections struct {
@@ -672,7 +681,16 @@ func (s *ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections) S
 }
 
 func (s *ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnectionsTags struct {

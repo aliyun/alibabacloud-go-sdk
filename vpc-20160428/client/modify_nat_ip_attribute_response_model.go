@@ -59,5 +59,10 @@ func (s *ModifyNatIpAttributeResponse) SetBody(v *ModifyNatIpAttributeResponseBo
 }
 
 func (s *ModifyNatIpAttributeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

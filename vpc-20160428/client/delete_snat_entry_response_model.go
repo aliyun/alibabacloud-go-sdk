@@ -59,5 +59,10 @@ func (s *DeleteSnatEntryResponse) SetBody(v *DeleteSnatEntryResponseBody) *Delet
 }
 
 func (s *DeleteSnatEntryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

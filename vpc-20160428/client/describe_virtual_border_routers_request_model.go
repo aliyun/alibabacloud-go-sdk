@@ -178,7 +178,25 @@ func (s *DescribeVirtualBorderRoutersRequest) SetTags(v []*DescribeVirtualBorder
 }
 
 func (s *DescribeVirtualBorderRoutersRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		for _, item := range s.Filter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVirtualBorderRoutersRequestFilter struct {

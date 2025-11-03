@@ -59,5 +59,10 @@ func (s *DeleteFlowLogResponse) SetBody(v *DeleteFlowLogResponseBody) *DeleteFlo
 }
 
 func (s *DeleteFlowLogResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

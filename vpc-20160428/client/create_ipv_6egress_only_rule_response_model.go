@@ -59,5 +59,10 @@ func (s *CreateIpv6EgressOnlyRuleResponse) SetBody(v *CreateIpv6EgressOnlyRuleRe
 }
 
 func (s *CreateIpv6EgressOnlyRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

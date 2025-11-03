@@ -225,7 +225,25 @@ func (s *UpdateNetworkAclEntriesRequest) SetUpdateIngressAclEntries(v bool) *Upd
 }
 
 func (s *UpdateNetworkAclEntriesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EgressAclEntries != nil {
+		for _, item := range s.EgressAclEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.IngressAclEntries != nil {
+		for _, item := range s.IngressAclEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateNetworkAclEntriesRequestEgressAclEntries struct {

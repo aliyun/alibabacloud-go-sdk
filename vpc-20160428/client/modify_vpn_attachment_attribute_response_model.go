@@ -59,5 +59,10 @@ func (s *ModifyVpnAttachmentAttributeResponse) SetBody(v *ModifyVpnAttachmentAtt
 }
 
 func (s *ModifyVpnAttachmentAttributeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

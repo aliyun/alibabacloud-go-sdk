@@ -53,7 +53,12 @@ func (s *Describe95TrafficResponseBody) SetTraffic95Summary(v *Describe95Traffic
 }
 
 func (s *Describe95TrafficResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Traffic95Summary != nil {
+		if err := s.Traffic95Summary.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type Describe95TrafficResponseBodyTraffic95Summary struct {
@@ -162,7 +167,12 @@ func (s *Describe95TrafficResponseBodyTraffic95Summary) SetTraffic95DetailList(v
 }
 
 func (s *Describe95TrafficResponseBodyTraffic95Summary) Validate() error {
-	return dara.Validate(s)
+	if s.Traffic95DetailList != nil {
+		if err := s.Traffic95DetailList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type Describe95TrafficResponseBodyTraffic95SummaryTraffic95DetailList struct {
@@ -187,7 +197,16 @@ func (s *Describe95TrafficResponseBodyTraffic95SummaryTraffic95DetailList) SetTr
 }
 
 func (s *Describe95TrafficResponseBodyTraffic95SummaryTraffic95DetailList) Validate() error {
-	return dara.Validate(s)
+	if s.Traffic95Detail != nil {
+		for _, item := range s.Traffic95Detail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type Describe95TrafficResponseBodyTraffic95SummaryTraffic95DetailListTraffic95Detail struct {

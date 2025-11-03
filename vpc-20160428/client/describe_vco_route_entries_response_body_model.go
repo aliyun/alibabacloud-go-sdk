@@ -119,7 +119,25 @@ func (s *DescribeVcoRouteEntriesResponseBody) SetVpnRouteCounts(v []*DescribeVco
 }
 
 func (s *DescribeVcoRouteEntriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VcoRouteEntries != nil {
+		for _, item := range s.VcoRouteEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VpnRouteCounts != nil {
+		for _, item := range s.VpnRouteCounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVcoRouteEntriesResponseBodyVcoRouteEntries struct {

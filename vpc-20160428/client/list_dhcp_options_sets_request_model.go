@@ -48,17 +48,31 @@ type ListDhcpOptionsSetsRequest struct {
 	//
 	// Valid values:
 	//
+	//
+	//
 	// 	- tf-testAccVpcDhcpOptionsSets-1585169790614573448
 	//
+	//
+	//
 	//     <!-- -->
+	//
+	//
 	//
 	//     :
 	//
+	//
+	//
 	//     <!-- -->
+	//
+	//
 	//
 	//     tf-testAccVpcDhcpOptionsSets-1585169790614573448
 	//
+	//
+	//
 	//     <!-- -->
+	//
+	//
 	//
 	//     .
 	//
@@ -231,7 +245,16 @@ func (s *ListDhcpOptionsSetsRequest) SetTags(v []*ListDhcpOptionsSetsRequestTags
 }
 
 func (s *ListDhcpOptionsSetsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDhcpOptionsSetsRequestTags struct {

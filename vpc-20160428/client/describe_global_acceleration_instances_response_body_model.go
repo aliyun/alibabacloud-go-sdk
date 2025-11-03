@@ -104,7 +104,12 @@ func (s *DescribeGlobalAccelerationInstancesResponseBody) SetTotalCount(v int32)
 }
 
 func (s *DescribeGlobalAccelerationInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GlobalAccelerationInstances != nil {
+		if err := s.GlobalAccelerationInstances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstances struct {
@@ -129,7 +134,16 @@ func (s *DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstan
 }
 
 func (s *DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstances) Validate() error {
-	return dara.Validate(s)
+	if s.GlobalAccelerationInstance != nil {
+		for _, item := range s.GlobalAccelerationInstance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstancesGlobalAccelerationInstance struct {
@@ -388,7 +402,17 @@ func (s *DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstan
 }
 
 func (s *DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstancesGlobalAccelerationInstance) Validate() error {
-	return dara.Validate(s)
+	if s.BackendServers != nil {
+		if err := s.BackendServers.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PublicIpAddresses != nil {
+		if err := s.PublicIpAddresses.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstancesGlobalAccelerationInstanceBackendServers struct {
@@ -413,7 +437,16 @@ func (s *DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstan
 }
 
 func (s *DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstancesGlobalAccelerationInstanceBackendServers) Validate() error {
-	return dara.Validate(s)
+	if s.BackendServer != nil {
+		for _, item := range s.BackendServer {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstancesGlobalAccelerationInstanceBackendServersBackendServer struct {
@@ -517,7 +550,16 @@ func (s *DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstan
 }
 
 func (s *DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstancesGlobalAccelerationInstancePublicIpAddresses) Validate() error {
-	return dara.Validate(s)
+	if s.PublicIpAddress != nil {
+		for _, item := range s.PublicIpAddress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstancesGlobalAccelerationInstancePublicIpAddressesPublicIpAddress struct {

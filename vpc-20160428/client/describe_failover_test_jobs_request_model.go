@@ -150,7 +150,16 @@ func (s *DescribeFailoverTestJobsRequest) SetResourceOwnerAccount(v string) *Des
 }
 
 func (s *DescribeFailoverTestJobsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		for _, item := range s.Filter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFailoverTestJobsRequestFilter struct {

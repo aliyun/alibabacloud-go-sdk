@@ -53,7 +53,12 @@ func (s *DescribeServerRelatedGlobalAccelerationInstancesResponseBody) SetReques
 }
 
 func (s *DescribeServerRelatedGlobalAccelerationInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GlobalAccelerationInstances != nil {
+		if err := s.GlobalAccelerationInstances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeServerRelatedGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstances struct {
@@ -78,7 +83,16 @@ func (s *DescribeServerRelatedGlobalAccelerationInstancesResponseBodyGlobalAccel
 }
 
 func (s *DescribeServerRelatedGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstances) Validate() error {
-	return dara.Validate(s)
+	if s.GlobalAccelerationInstance != nil {
+		for _, item := range s.GlobalAccelerationInstance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeServerRelatedGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstancesGlobalAccelerationInstance struct {

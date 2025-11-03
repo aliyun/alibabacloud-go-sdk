@@ -59,5 +59,10 @@ func (s *UpdateNatGatewayNatTypeResponse) SetBody(v *UpdateNatGatewayNatTypeResp
 }
 
 func (s *UpdateNatGatewayNatTypeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -125,7 +125,16 @@ func (s *ListTrafficMirrorFiltersResponseBody) SetTrafficMirrorFilters(v []*List
 }
 
 func (s *ListTrafficMirrorFiltersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficMirrorFilters != nil {
+		for _, item := range s.TrafficMirrorFilters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters struct {
@@ -271,7 +280,34 @@ func (s *ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters) SetTrafficMir
 }
 
 func (s *ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters) Validate() error {
-	return dara.Validate(s)
+	if s.EgressRules != nil {
+		for _, item := range s.EgressRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.IngressRules != nil {
+		for _, item := range s.IngressRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersEgressRules struct {
@@ -297,7 +333,12 @@ type ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersEgressRules struct 
 	//
 	// 22/40
 	DestinationPortRange *string `json:"DestinationPortRange,omitempty" xml:"DestinationPortRange,omitempty"`
-	IpVersion            *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The version of IP protocol.
+	//
+	// example:
+	//
+	// IPv4
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	// The priority of the outbound rule. A smaller value indicates a higher priority.
 	//
 	// example:
@@ -511,7 +552,12 @@ type ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules struct
 	//
 	// -1/-1
 	DestinationPortRange *string `json:"DestinationPortRange,omitempty" xml:"DestinationPortRange,omitempty"`
-	IpVersion            *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The version of IP protocol.
+	//
+	// example:
+	//
+	// IPv4
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	// The priority of the inbound rule. A smaller value indicates a higher priority.
 	//
 	// example:

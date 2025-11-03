@@ -108,7 +108,16 @@ func (s *GetVSwitchCidrReservationUsageResponseBody) SetTotalCount(v int64) *Get
 }
 
 func (s *GetVSwitchCidrReservationUsageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CidrReservationUsages != nil {
+		for _, item := range s.CidrReservationUsages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetVSwitchCidrReservationUsageResponseBodyCidrReservationUsages struct {

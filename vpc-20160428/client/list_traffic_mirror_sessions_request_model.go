@@ -302,7 +302,16 @@ func (s *ListTrafficMirrorSessionsRequest) SetVirtualNetworkId(v int32) *ListTra
 }
 
 func (s *ListTrafficMirrorSessionsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTrafficMirrorSessionsRequestTags struct {

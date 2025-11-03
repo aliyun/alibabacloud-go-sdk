@@ -104,7 +104,12 @@ func (s *DescribeVpnConnectionsResponseBody) SetVpnConnections(v *DescribeVpnCon
 }
 
 func (s *DescribeVpnConnectionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VpnConnections != nil {
+		if err := s.VpnConnections.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnections struct {
@@ -129,7 +134,16 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnections) SetVpnConnection(v []
 }
 
 func (s *DescribeVpnConnectionsResponseBodyVpnConnections) Validate() error {
-	return dara.Validate(s)
+	if s.VpnConnection != nil {
+		for _, item := range s.VpnConnection {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection struct {
@@ -629,7 +643,37 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection) SetVpnGa
 }
 
 func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection) Validate() error {
-	return dara.Validate(s)
+	if s.IkeConfig != nil {
+		if err := s.IkeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IpsecConfig != nil {
+		if err := s.IpsecConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tag != nil {
+		if err := s.Tag.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TunnelOptionsSpecification != nil {
+		if err := s.TunnelOptionsSpecification.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VcoHealthCheck != nil {
+		if err := s.VcoHealthCheck.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VpnBgpConfig != nil {
+		if err := s.VpnBgpConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIkeConfig struct {
@@ -889,7 +933,16 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTag) SetTa
 }
 
 func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTag) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTagTag struct {
@@ -959,7 +1012,16 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOpti
 }
 
 func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecification) Validate() error {
-	return dara.Validate(s)
+	if s.TunnelOptions != nil {
+		for _, item := range s.TunnelOptions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions struct {
@@ -1206,7 +1268,22 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOpti
 }
 
 func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions) Validate() error {
-	return dara.Validate(s)
+	if s.TunnelBgpConfig != nil {
+		if err := s.TunnelBgpConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TunnelIkeConfig != nil {
+		if err := s.TunnelIkeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TunnelIpsecConfig != nil {
+		if err := s.TunnelIpsecConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig struct {

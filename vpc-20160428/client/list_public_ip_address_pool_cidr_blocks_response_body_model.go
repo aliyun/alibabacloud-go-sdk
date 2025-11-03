@@ -91,7 +91,16 @@ func (s *ListPublicIpAddressPoolCidrBlocksResponseBody) SetTotalCount(v int32) *
 }
 
 func (s *ListPublicIpAddressPoolCidrBlocksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PublicIpPoolCidrBlockList != nil {
+		for _, item := range s.PublicIpPoolCidrBlockList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPublicIpAddressPoolCidrBlocksResponseBodyPublicIpPoolCidrBlockList struct {

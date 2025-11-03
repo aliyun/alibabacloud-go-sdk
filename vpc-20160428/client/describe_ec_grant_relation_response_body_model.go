@@ -121,7 +121,16 @@ func (s *DescribeEcGrantRelationResponseBody) SetTotalCount(v int32) *DescribeEc
 }
 
 func (s *DescribeEcGrantRelationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EcGrantRelations != nil {
+		for _, item := range s.EcGrantRelations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEcGrantRelationResponseBodyEcGrantRelations struct {

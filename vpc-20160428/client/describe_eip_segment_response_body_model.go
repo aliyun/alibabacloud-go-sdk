@@ -104,7 +104,12 @@ func (s *DescribeEipSegmentResponseBody) SetTotalCount(v int32) *DescribeEipSegm
 }
 
 func (s *DescribeEipSegmentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EipSegments != nil {
+		if err := s.EipSegments.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEipSegmentResponseBodyEipSegments struct {
@@ -129,7 +134,16 @@ func (s *DescribeEipSegmentResponseBodyEipSegments) SetEipSegment(v []*DescribeE
 }
 
 func (s *DescribeEipSegmentResponseBodyEipSegments) Validate() error {
-	return dara.Validate(s)
+	if s.EipSegment != nil {
+		for _, item := range s.EipSegment {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEipSegmentResponseBodyEipSegmentsEipSegment struct {

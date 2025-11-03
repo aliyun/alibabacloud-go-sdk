@@ -104,7 +104,12 @@ func (s *DescribeHaVipsResponseBody) SetTotalCount(v int32) *DescribeHaVipsRespo
 }
 
 func (s *DescribeHaVipsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HaVips != nil {
+		if err := s.HaVips.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHaVipsResponseBodyHaVips struct {
@@ -129,7 +134,16 @@ func (s *DescribeHaVipsResponseBodyHaVips) SetHaVip(v []*DescribeHaVipsResponseB
 }
 
 func (s *DescribeHaVipsResponseBodyHaVips) Validate() error {
-	return dara.Validate(s)
+	if s.HaVip != nil {
+		for _, item := range s.HaVip {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHaVipsResponseBodyHaVipsHaVip struct {
@@ -382,7 +396,22 @@ func (s *DescribeHaVipsResponseBodyHaVipsHaVip) SetVpcId(v string) *DescribeHaVi
 }
 
 func (s *DescribeHaVipsResponseBodyHaVipsHaVip) Validate() error {
-	return dara.Validate(s)
+	if s.AssociatedEipAddresses != nil {
+		if err := s.AssociatedEipAddresses.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AssociatedInstances != nil {
+		if err := s.AssociatedInstances.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHaVipsResponseBodyHaVipsHaVipAssociatedEipAddresses struct {
@@ -457,7 +486,16 @@ func (s *DescribeHaVipsResponseBodyHaVipsHaVipTags) SetTag(v []*DescribeHaVipsRe
 }
 
 func (s *DescribeHaVipsResponseBodyHaVipsHaVipTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHaVipsResponseBodyHaVipsHaVipTagsTag struct {

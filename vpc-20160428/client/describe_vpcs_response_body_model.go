@@ -104,7 +104,12 @@ func (s *DescribeVpcsResponseBody) SetVpcs(v *DescribeVpcsResponseBodyVpcs) *Des
 }
 
 func (s *DescribeVpcsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Vpcs != nil {
+		if err := s.Vpcs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVpcsResponseBodyVpcs struct {
@@ -129,7 +134,16 @@ func (s *DescribeVpcsResponseBodyVpcs) SetVpc(v []*DescribeVpcsResponseBodyVpcsV
 }
 
 func (s *DescribeVpcsResponseBodyVpcs) Validate() error {
-	return dara.Validate(s)
+	if s.Vpc != nil {
+		for _, item := range s.Vpc {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcsResponseBodyVpcsVpc struct {
@@ -500,7 +514,42 @@ func (s *DescribeVpcsResponseBodyVpcsVpc) SetVpcName(v string) *DescribeVpcsResp
 }
 
 func (s *DescribeVpcsResponseBodyVpcsVpc) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6CidrBlocks != nil {
+		if err := s.Ipv6CidrBlocks.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NatGatewayIds != nil {
+		if err := s.NatGatewayIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RouterTableIds != nil {
+		if err := s.RouterTableIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecondaryCidrBlocks != nil {
+		if err := s.SecondaryCidrBlocks.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserCidrs != nil {
+		if err := s.UserCidrs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VSwitchIds != nil {
+		if err := s.VSwitchIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVpcsResponseBodyVpcsVpcIpv6CidrBlocks struct {
@@ -525,7 +574,16 @@ func (s *DescribeVpcsResponseBodyVpcsVpcIpv6CidrBlocks) SetIpv6CidrBlock(v []*De
 }
 
 func (s *DescribeVpcsResponseBodyVpcsVpcIpv6CidrBlocks) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6CidrBlock != nil {
+		for _, item := range s.Ipv6CidrBlock {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcsResponseBodyVpcsVpcIpv6CidrBlocksIpv6CidrBlock struct {
@@ -680,7 +738,16 @@ func (s *DescribeVpcsResponseBodyVpcsVpcTags) SetTag(v []*DescribeVpcsResponseBo
 }
 
 func (s *DescribeVpcsResponseBodyVpcsVpcTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcsResponseBodyVpcsVpcTagsTag struct {

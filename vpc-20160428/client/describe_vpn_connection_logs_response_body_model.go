@@ -125,7 +125,12 @@ func (s *DescribeVpnConnectionLogsResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeVpnConnectionLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVpnConnectionLogsResponseBodyData struct {

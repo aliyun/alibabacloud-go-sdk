@@ -59,5 +59,10 @@ func (s *DescribePhysicalConnectionsResponse) SetBody(v *DescribePhysicalConnect
 }
 
 func (s *DescribePhysicalConnectionsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

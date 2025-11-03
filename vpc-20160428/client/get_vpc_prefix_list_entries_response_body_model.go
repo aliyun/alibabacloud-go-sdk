@@ -108,7 +108,16 @@ func (s *GetVpcPrefixListEntriesResponseBody) SetTotalCount(v int64) *GetVpcPref
 }
 
 func (s *GetVpcPrefixListEntriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PrefixListEntry != nil {
+		for _, item := range s.PrefixListEntry {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetVpcPrefixListEntriesResponseBodyPrefixListEntry struct {

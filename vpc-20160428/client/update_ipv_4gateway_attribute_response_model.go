@@ -59,5 +59,10 @@ func (s *UpdateIpv4GatewayAttributeResponse) SetBody(v *UpdateIpv4GatewayAttribu
 }
 
 func (s *UpdateIpv4GatewayAttributeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -104,7 +104,12 @@ func (s *DescribeCustomerGatewaysResponseBody) SetTotalCount(v int32) *DescribeC
 }
 
 func (s *DescribeCustomerGatewaysResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CustomerGateways != nil {
+		if err := s.CustomerGateways.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCustomerGatewaysResponseBodyCustomerGateways struct {
@@ -129,7 +134,16 @@ func (s *DescribeCustomerGatewaysResponseBodyCustomerGateways) SetCustomerGatewa
 }
 
 func (s *DescribeCustomerGatewaysResponseBodyCustomerGateways) Validate() error {
-	return dara.Validate(s)
+	if s.CustomerGateway != nil {
+		for _, item := range s.CustomerGateway {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway struct {
@@ -279,7 +293,12 @@ func (s *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway) Se
 }
 
 func (s *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTags struct {
@@ -304,7 +323,16 @@ func (s *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTags
 }
 
 func (s *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTagsTag struct {

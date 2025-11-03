@@ -59,5 +59,10 @@ func (s *OpenPublicIpAddressPoolServiceResponse) SetBody(v *OpenPublicIpAddressP
 }
 
 func (s *OpenPublicIpAddressPoolServiceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

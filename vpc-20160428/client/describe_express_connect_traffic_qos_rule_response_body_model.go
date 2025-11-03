@@ -53,7 +53,16 @@ func (s *DescribeExpressConnectTrafficQosRuleResponseBody) SetRuleList(v []*Desc
 }
 
 func (s *DescribeExpressConnectTrafficQosRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RuleList != nil {
+		for _, item := range s.RuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeExpressConnectTrafficQosRuleResponseBodyRuleList struct {

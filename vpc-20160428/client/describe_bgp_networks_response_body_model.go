@@ -104,7 +104,12 @@ func (s *DescribeBgpNetworksResponseBody) SetTotalCount(v int32) *DescribeBgpNet
 }
 
 func (s *DescribeBgpNetworksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BgpNetworks != nil {
+		if err := s.BgpNetworks.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBgpNetworksResponseBodyBgpNetworks struct {
@@ -129,7 +134,16 @@ func (s *DescribeBgpNetworksResponseBodyBgpNetworks) SetBgpNetwork(v []*Describe
 }
 
 func (s *DescribeBgpNetworksResponseBodyBgpNetworks) Validate() error {
-	return dara.Validate(s)
+	if s.BgpNetwork != nil {
+		for _, item := range s.BgpNetwork {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBgpNetworksResponseBodyBgpNetworksBgpNetwork struct {

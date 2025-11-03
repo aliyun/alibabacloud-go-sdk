@@ -13,6 +13,8 @@ type iListNatIpsRequest interface {
 	GetClientToken() *string
 	SetDryRun(v bool) *ListNatIpsRequest
 	GetDryRun() *bool
+	SetIpOrigin(v string) *ListNatIpsRequest
+	GetIpOrigin() *string
 	SetMaxResults(v string) *ListNatIpsRequest
 	GetMaxResults() *string
 	SetNatGatewayId(v string) *ListNatIpsRequest
@@ -60,6 +62,10 @@ type ListNatIpsRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// cidr
+	IpOrigin *string `json:"IpOrigin,omitempty" xml:"IpOrigin,omitempty"`
 	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
@@ -146,6 +152,10 @@ func (s *ListNatIpsRequest) GetDryRun() *bool {
 	return s.DryRun
 }
 
+func (s *ListNatIpsRequest) GetIpOrigin() *string {
+	return s.IpOrigin
+}
+
 func (s *ListNatIpsRequest) GetMaxResults() *string {
 	return s.MaxResults
 }
@@ -201,6 +211,11 @@ func (s *ListNatIpsRequest) SetClientToken(v string) *ListNatIpsRequest {
 
 func (s *ListNatIpsRequest) SetDryRun(v bool) *ListNatIpsRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *ListNatIpsRequest) SetIpOrigin(v string) *ListNatIpsRequest {
+	s.IpOrigin = &v
 	return s
 }
 

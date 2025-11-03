@@ -53,7 +53,12 @@ func (s *DescribeFailoverTestJobResponseBody) SetRequestId(v string) *DescribeFa
 }
 
 func (s *DescribeFailoverTestJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FailoverTestJobModel != nil {
+		if err := s.FailoverTestJobModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeFailoverTestJobResponseBodyFailoverTestJobModel struct {
