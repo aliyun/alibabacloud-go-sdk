@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -65,9 +66,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return CheckServiceLinkedRoleForProductResponse
 func (client *Client) CheckServiceLinkedRoleForProductWithOptions(request *CheckServiceLinkedRoleForProductRequest, runtime *dara.RuntimeOptions) (_result *CheckServiceLinkedRoleForProductResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProductName) {
@@ -129,9 +132,11 @@ func (client *Client) CheckServiceLinkedRoleForProduct(request *CheckServiceLink
 //
 // @return CreateApiDestinationResponse
 func (client *Client) CreateApiDestinationWithOptions(tmpReq *CreateApiDestinationRequest, runtime *dara.RuntimeOptions) (_result *CreateApiDestinationResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateApiDestinationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -215,9 +220,11 @@ func (client *Client) CreateApiDestination(request *CreateApiDestinationRequest)
 //
 // @return CreateConnectionResponse
 func (client *Client) CreateConnectionWithOptions(tmpReq *CreateConnectionRequest, runtime *dara.RuntimeOptions) (_result *CreateConnectionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateConnectionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -305,9 +312,11 @@ func (client *Client) CreateConnection(request *CreateConnectionRequest) (_resul
 //
 // @return CreateEventBusResponse
 func (client *Client) CreateEventBusWithOptions(request *CreateEventBusRequest, runtime *dara.RuntimeOptions) (_result *CreateEventBusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -377,9 +386,11 @@ func (client *Client) CreateEventBus(request *CreateEventBusRequest) (_result *C
 //
 // @return CreateEventSourceResponse
 func (client *Client) CreateEventSourceWithOptions(tmpReq *CreateEventSourceRequest, runtime *dara.RuntimeOptions) (_result *CreateEventSourceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateEventSourceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -535,9 +546,11 @@ func (client *Client) CreateEventSource(request *CreateEventSourceRequest) (_res
 //
 // @return CreateEventStreamingResponse
 func (client *Client) CreateEventStreamingWithOptions(tmpReq *CreateEventStreamingRequest, runtime *dara.RuntimeOptions) (_result *CreateEventStreamingResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateEventStreamingShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -649,9 +662,11 @@ func (client *Client) CreateEventStreaming(request *CreateEventStreamingRequest)
 //
 // @return CreateRuleResponse
 func (client *Client) CreateRuleWithOptions(tmpReq *CreateRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateRuleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateRuleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -743,9 +758,11 @@ func (client *Client) CreateRule(request *CreateRuleRequest) (_result *CreateRul
 //
 // @return CreateServiceLinkedRoleForProductResponse
 func (client *Client) CreateServiceLinkedRoleForProductWithOptions(request *CreateServiceLinkedRoleForProductRequest, runtime *dara.RuntimeOptions) (_result *CreateServiceLinkedRoleForProductResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProductName) {
@@ -811,9 +828,11 @@ func (client *Client) CreateServiceLinkedRoleForProduct(request *CreateServiceLi
 //
 // @return DeleteApiDestinationResponse
 func (client *Client) DeleteApiDestinationWithOptions(request *DeleteApiDestinationRequest, runtime *dara.RuntimeOptions) (_result *DeleteApiDestinationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApiDestinationName) {
@@ -879,9 +898,11 @@ func (client *Client) DeleteApiDestination(request *DeleteApiDestinationRequest)
 //
 // @return DeleteConnectionResponse
 func (client *Client) DeleteConnectionWithOptions(request *DeleteConnectionRequest, runtime *dara.RuntimeOptions) (_result *DeleteConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConnectionName) {
@@ -947,9 +968,11 @@ func (client *Client) DeleteConnection(request *DeleteConnectionRequest) (_resul
 //
 // @return DeleteEventBusResponse
 func (client *Client) DeleteEventBusWithOptions(request *DeleteEventBusRequest, runtime *dara.RuntimeOptions) (_result *DeleteEventBusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -1015,9 +1038,11 @@ func (client *Client) DeleteEventBus(request *DeleteEventBusRequest) (_result *D
 //
 // @return DeleteEventSourceResponse
 func (client *Client) DeleteEventSourceWithOptions(request *DeleteEventSourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteEventSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -1087,9 +1112,11 @@ func (client *Client) DeleteEventSource(request *DeleteEventSourceRequest) (_res
 //
 // @return DeleteEventStreamingResponse
 func (client *Client) DeleteEventStreamingWithOptions(request *DeleteEventStreamingRequest, runtime *dara.RuntimeOptions) (_result *DeleteEventStreamingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EventStreamingName) {
@@ -1155,9 +1182,11 @@ func (client *Client) DeleteEventStreaming(request *DeleteEventStreamingRequest)
 //
 // @return DeleteRuleResponse
 func (client *Client) DeleteRuleWithOptions(request *DeleteRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -1227,9 +1256,11 @@ func (client *Client) DeleteRule(request *DeleteRuleRequest) (_result *DeleteRul
 //
 // @return DeleteTargetsResponse
 func (client *Client) DeleteTargetsWithOptions(tmpReq *DeleteTargetsRequest, runtime *dara.RuntimeOptions) (_result *DeleteTargetsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteTargetsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1309,9 +1340,11 @@ func (client *Client) DeleteTargets(request *DeleteTargetsRequest) (_result *Del
 //
 // @return DisableRuleResponse
 func (client *Client) DisableRuleWithOptions(request *DisableRuleRequest, runtime *dara.RuntimeOptions) (_result *DisableRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -1377,9 +1410,11 @@ func (client *Client) DisableRule(request *DisableRuleRequest) (_result *Disable
 //
 // @return DiscoverEventSourceResponse
 func (client *Client) DiscoverEventSourceWithOptions(tmpReq *DiscoverEventSourceRequest, runtime *dara.RuntimeOptions) (_result *DiscoverEventSourceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DiscoverEventSourceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1447,9 +1482,11 @@ func (client *Client) DiscoverEventSource(request *DiscoverEventSourceRequest) (
 //
 // @return EnableRuleResponse
 func (client *Client) EnableRuleWithOptions(request *EnableRuleRequest, runtime *dara.RuntimeOptions) (_result *EnableRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -1515,9 +1552,11 @@ func (client *Client) EnableRule(request *EnableRuleRequest) (_result *EnableRul
 //
 // @return EventCenterQueryEventsResponse
 func (client *Client) EventCenterQueryEventsWithOptions(tmpReq *EventCenterQueryEventsRequest, runtime *dara.RuntimeOptions) (_result *EventCenterQueryEventsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &EventCenterQueryEventsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1599,9 +1638,11 @@ func (client *Client) EventCenterQueryEvents(request *EventCenterQueryEventsRequ
 //
 // @return GetApiDestinationResponse
 func (client *Client) GetApiDestinationWithOptions(request *GetApiDestinationRequest, runtime *dara.RuntimeOptions) (_result *GetApiDestinationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApiDestinationName) {
@@ -1667,9 +1708,11 @@ func (client *Client) GetApiDestination(request *GetApiDestinationRequest) (_res
 //
 // @return GetConnectionResponse
 func (client *Client) GetConnectionWithOptions(request *GetConnectionRequest, runtime *dara.RuntimeOptions) (_result *GetConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConnectionName) {
@@ -1735,9 +1778,11 @@ func (client *Client) GetConnection(request *GetConnectionRequest) (_result *Get
 //
 // @return GetEventBusResponse
 func (client *Client) GetEventBusWithOptions(request *GetEventBusRequest, runtime *dara.RuntimeOptions) (_result *GetEventBusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -1803,9 +1848,11 @@ func (client *Client) GetEventBus(request *GetEventBusRequest) (_result *GetEven
 //
 // @return GetEventStreamingResponse
 func (client *Client) GetEventStreamingWithOptions(request *GetEventStreamingRequest, runtime *dara.RuntimeOptions) (_result *GetEventStreamingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EventStreamingName) {
@@ -1871,9 +1918,11 @@ func (client *Client) GetEventStreaming(request *GetEventStreamingRequest) (_res
 //
 // @return GetRuleResponse
 func (client *Client) GetRuleWithOptions(request *GetRuleRequest, runtime *dara.RuntimeOptions) (_result *GetRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -1998,9 +2047,11 @@ func (client *Client) ListAliyunOfficialEventSources() (_result *ListAliyunOffic
 //
 // @return ListApiDestinationsResponse
 func (client *Client) ListApiDestinationsWithOptions(request *ListApiDestinationsRequest, runtime *dara.RuntimeOptions) (_result *ListApiDestinationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApiDestinationNamePrefix) {
@@ -2078,9 +2129,11 @@ func (client *Client) ListApiDestinations(request *ListApiDestinationsRequest) (
 //
 // @return ListConnectionsResponse
 func (client *Client) ListConnectionsWithOptions(request *ListConnectionsRequest, runtime *dara.RuntimeOptions) (_result *ListConnectionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ConnectionNamePrefix) {
@@ -2154,9 +2207,11 @@ func (client *Client) ListConnections(request *ListConnectionsRequest) (_result 
 //
 // @return ListEventBusesResponse
 func (client *Client) ListEventBusesWithOptions(request *ListEventBusesRequest, runtime *dara.RuntimeOptions) (_result *ListEventBusesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Limit) {
@@ -2230,9 +2285,11 @@ func (client *Client) ListEventBuses(request *ListEventBusesRequest) (_result *L
 //
 // @return ListEventStreamingsResponse
 func (client *Client) ListEventStreamingsWithOptions(request *ListEventStreamingsRequest, runtime *dara.RuntimeOptions) (_result *ListEventStreamingsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Limit) {
@@ -2318,9 +2375,11 @@ func (client *Client) ListEventStreamings(request *ListEventStreamingsRequest) (
 //
 // @return ListRulesResponse
 func (client *Client) ListRulesWithOptions(request *ListRulesRequest, runtime *dara.RuntimeOptions) (_result *ListRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -2394,9 +2453,11 @@ func (client *Client) ListRules(request *ListRulesRequest) (_result *ListRulesRe
 //
 // @return ListTargetsResponse
 func (client *Client) ListTargetsWithOptions(request *ListTargetsRequest, runtime *dara.RuntimeOptions) (_result *ListTargetsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Arn) {
@@ -2474,9 +2535,11 @@ func (client *Client) ListTargets(request *ListTargetsRequest) (_result *ListTar
 //
 // @return ListUserDefinedEventSourcesResponse
 func (client *Client) ListUserDefinedEventSourcesWithOptions(request *ListUserDefinedEventSourcesRequest, runtime *dara.RuntimeOptions) (_result *ListUserDefinedEventSourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -2554,9 +2617,11 @@ func (client *Client) ListUserDefinedEventSources(request *ListUserDefinedEventS
 //
 // @return PauseEventStreamingResponse
 func (client *Client) PauseEventStreamingWithOptions(request *PauseEventStreamingRequest, runtime *dara.RuntimeOptions) (_result *PauseEventStreamingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EventStreamingName) {
@@ -2622,9 +2687,11 @@ func (client *Client) PauseEventStreaming(request *PauseEventStreamingRequest) (
 //
 // @return PutTargetsResponse
 func (client *Client) PutTargetsWithOptions(tmpReq *PutTargetsRequest, runtime *dara.RuntimeOptions) (_result *PutTargetsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &PutTargetsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2704,9 +2771,11 @@ func (client *Client) PutTargets(request *PutTargetsRequest) (_result *PutTarget
 //
 // @return QueryEventResponse
 func (client *Client) QueryEventWithOptions(request *QueryEventRequest, runtime *dara.RuntimeOptions) (_result *QueryEventResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -2780,9 +2849,11 @@ func (client *Client) QueryEvent(request *QueryEventRequest) (_result *QueryEven
 //
 // @return QueryEventTracesResponse
 func (client *Client) QueryEventTracesWithOptions(request *QueryEventTracesRequest, runtime *dara.RuntimeOptions) (_result *QueryEventTracesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -2852,9 +2923,11 @@ func (client *Client) QueryEventTraces(request *QueryEventTracesRequest) (_resul
 //
 // @return QueryTracedEventByEventIdResponse
 func (client *Client) QueryTracedEventByEventIdWithOptions(request *QueryTracedEventByEventIdRequest, runtime *dara.RuntimeOptions) (_result *QueryTracedEventByEventIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -2928,9 +3001,11 @@ func (client *Client) QueryTracedEventByEventId(request *QueryTracedEventByEvent
 //
 // @return QueryTracedEventsResponse
 func (client *Client) QueryTracedEventsWithOptions(request *QueryTracedEventsRequest, runtime *dara.RuntimeOptions) (_result *QueryTracedEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -3024,9 +3099,11 @@ func (client *Client) QueryTracedEvents(request *QueryTracedEventsRequest) (_res
 //
 // @return StartEventStreamingResponse
 func (client *Client) StartEventStreamingWithOptions(request *StartEventStreamingRequest, runtime *dara.RuntimeOptions) (_result *StartEventStreamingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EventStreamingName) {
@@ -3092,9 +3169,11 @@ func (client *Client) StartEventStreaming(request *StartEventStreamingRequest) (
 //
 // @return TestEventPatternResponse
 func (client *Client) TestEventPatternWithOptions(request *TestEventPatternRequest, runtime *dara.RuntimeOptions) (_result *TestEventPatternResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Event) {
@@ -3164,9 +3243,11 @@ func (client *Client) TestEventPattern(request *TestEventPatternRequest) (_resul
 //
 // @return TestEventSourceConfigResponse
 func (client *Client) TestEventSourceConfigWithOptions(tmpReq *TestEventSourceConfigRequest, runtime *dara.RuntimeOptions) (_result *TestEventSourceConfigResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TestEventSourceConfigShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3238,9 +3319,11 @@ func (client *Client) TestEventSourceConfig(request *TestEventSourceConfigReques
 //
 // @return UpdateApiDestinationResponse
 func (client *Client) UpdateApiDestinationWithOptions(tmpReq *UpdateApiDestinationRequest, runtime *dara.RuntimeOptions) (_result *UpdateApiDestinationResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateApiDestinationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3324,9 +3407,11 @@ func (client *Client) UpdateApiDestination(request *UpdateApiDestinationRequest)
 //
 // @return UpdateConnectionResponse
 func (client *Client) UpdateConnectionWithOptions(tmpReq *UpdateConnectionRequest, runtime *dara.RuntimeOptions) (_result *UpdateConnectionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateConnectionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3414,9 +3499,11 @@ func (client *Client) UpdateConnection(request *UpdateConnectionRequest) (_resul
 //
 // @return UpdateEventBusResponse
 func (client *Client) UpdateEventBusWithOptions(request *UpdateEventBusRequest, runtime *dara.RuntimeOptions) (_result *UpdateEventBusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -3486,9 +3573,11 @@ func (client *Client) UpdateEventBus(request *UpdateEventBusRequest) (_result *U
 //
 // @return UpdateEventSourceResponse
 func (client *Client) UpdateEventSourceWithOptions(tmpReq *UpdateEventSourceRequest, runtime *dara.RuntimeOptions) (_result *UpdateEventSourceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateEventSourceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3644,9 +3733,11 @@ func (client *Client) UpdateEventSource(request *UpdateEventSourceRequest) (_res
 //
 // @return UpdateEventStreamingResponse
 func (client *Client) UpdateEventStreamingWithOptions(tmpReq *UpdateEventStreamingRequest, runtime *dara.RuntimeOptions) (_result *UpdateEventStreamingResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateEventStreamingShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3750,9 +3841,11 @@ func (client *Client) UpdateEventStreaming(request *UpdateEventStreamingRequest)
 //
 // @return UpdateEventStreamingBusinessOptionResponse
 func (client *Client) UpdateEventStreamingBusinessOptionWithOptions(request *UpdateEventStreamingBusinessOptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateEventStreamingBusinessOptionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessMode) {
@@ -3826,9 +3919,11 @@ func (client *Client) UpdateEventStreamingBusinessOption(request *UpdateEventStr
 //
 // @return UpdateRuleResponse
 func (client *Client) UpdateRuleWithOptions(request *UpdateRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {

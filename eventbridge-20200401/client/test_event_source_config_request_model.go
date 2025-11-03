@@ -36,10 +36,16 @@ func (s *TestEventSourceConfigRequest) SetSourceMySQLParameters(v *TestEventSour
 }
 
 func (s *TestEventSourceConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SourceMySQLParameters != nil {
+		if err := s.SourceMySQLParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TestEventSourceConfigRequestSourceMySQLParameters struct {
+	AllowedCIDRs *string `json:"AllowedCIDRs,omitempty" xml:"AllowedCIDRs,omitempty"`
 	// The database name.
 	//
 	// example:
@@ -122,6 +128,10 @@ func (s TestEventSourceConfigRequestSourceMySQLParameters) GoString() string {
 	return s.String()
 }
 
+func (s *TestEventSourceConfigRequestSourceMySQLParameters) GetAllowedCIDRs() *string {
+	return s.AllowedCIDRs
+}
+
 func (s *TestEventSourceConfigRequestSourceMySQLParameters) GetDatabaseName() *string {
 	return s.DatabaseName
 }
@@ -164,6 +174,11 @@ func (s *TestEventSourceConfigRequestSourceMySQLParameters) GetVSwitchIds() *str
 
 func (s *TestEventSourceConfigRequestSourceMySQLParameters) GetVpcId() *string {
 	return s.VpcId
+}
+
+func (s *TestEventSourceConfigRequestSourceMySQLParameters) SetAllowedCIDRs(v string) *TestEventSourceConfigRequestSourceMySQLParameters {
+	s.AllowedCIDRs = &v
+	return s
 }
 
 func (s *TestEventSourceConfigRequestSourceMySQLParameters) SetDatabaseName(v string) *TestEventSourceConfigRequestSourceMySQLParameters {

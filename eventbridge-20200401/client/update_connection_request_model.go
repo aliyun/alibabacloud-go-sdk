@@ -87,7 +87,17 @@ func (s *UpdateConnectionRequest) SetNetworkParameters(v *UpdateConnectionReques
 }
 
 func (s *UpdateConnectionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AuthParameters != nil {
+		if err := s.AuthParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkParameters != nil {
+		if err := s.NetworkParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateConnectionRequestAuthParameters struct {
@@ -156,7 +166,22 @@ func (s *UpdateConnectionRequestAuthParameters) SetOAuthParameters(v *UpdateConn
 }
 
 func (s *UpdateConnectionRequestAuthParameters) Validate() error {
-	return dara.Validate(s)
+	if s.ApiKeyAuthParameters != nil {
+		if err := s.ApiKeyAuthParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BasicAuthParameters != nil {
+		if err := s.BasicAuthParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OAuthParameters != nil {
+		if err := s.OAuthParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateConnectionRequestAuthParametersApiKeyAuthParameters struct {
@@ -325,7 +350,17 @@ func (s *UpdateConnectionRequestAuthParametersOAuthParameters) SetOAuthHttpParam
 }
 
 func (s *UpdateConnectionRequestAuthParametersOAuthParameters) Validate() error {
-	return dara.Validate(s)
+	if s.ClientParameters != nil {
+		if err := s.ClientParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OAuthHttpParameters != nil {
+		if err := s.OAuthHttpParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateConnectionRequestAuthParametersOAuthParametersClientParameters struct {
@@ -418,7 +453,34 @@ func (s *UpdateConnectionRequestAuthParametersOAuthParametersOAuthHttpParameters
 }
 
 func (s *UpdateConnectionRequestAuthParametersOAuthParametersOAuthHttpParameters) Validate() error {
-	return dara.Validate(s)
+	if s.BodyParameters != nil {
+		for _, item := range s.BodyParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HeaderParameters != nil {
+		for _, item := range s.HeaderParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.QueryStringParameters != nil {
+		for _, item := range s.QueryStringParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateConnectionRequestAuthParametersOAuthParametersOAuthHttpParametersBodyParameters struct {

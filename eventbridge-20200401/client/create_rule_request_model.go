@@ -125,7 +125,16 @@ func (s *CreateRuleRequest) SetStatus(v string) *CreateRuleRequest {
 }
 
 func (s *CreateRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EventTargets != nil {
+		for _, item := range s.EventTargets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateRuleRequestEventTargets struct {
@@ -252,7 +261,26 @@ func (s *CreateRuleRequestEventTargets) SetType(v string) *CreateRuleRequestEven
 }
 
 func (s *CreateRuleRequestEventTargets) Validate() error {
-	return dara.Validate(s)
+	if s.ConcurrentConfig != nil {
+		if err := s.ConcurrentConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeadLetterQueue != nil {
+		if err := s.DeadLetterQueue.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ParamList != nil {
+		for _, item := range s.ParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateRuleRequestEventTargetsConcurrentConfig struct {

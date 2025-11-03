@@ -87,7 +87,12 @@ func (s *CreateApiDestinationResponseBody) SetRequestId(v string) *CreateApiDest
 }
 
 func (s *CreateApiDestinationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Date != nil {
+		if err := s.Date.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateApiDestinationResponseBodyDate struct {

@@ -89,7 +89,12 @@ func (s *EventCenterQueryEventsRequest) SetNextToken(v string) *EventCenterQuery
 }
 
 func (s *EventCenterQueryEventsRequest) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type EventCenterQueryEventsRequestBody struct {
@@ -157,7 +162,12 @@ func (s *EventCenterQueryEventsRequestBody) SetSchemaId(v string) *EventCenterQu
 }
 
 func (s *EventCenterQueryEventsRequestBody) Validate() error {
-  return dara.Validate(s)
+  if s.Parameters != nil {
+    if err := s.Parameters.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type EventCenterQueryEventsRequestBodyParameters struct {
@@ -321,7 +331,34 @@ func (s *EventCenterQueryEventsRequestBodyParameters) SetTimeRange(v int64) *Eve
 }
 
 func (s *EventCenterQueryEventsRequestBodyParameters) Validate() error {
-  return dara.Validate(s)
+  if s.Calculations != nil {
+    for _, item := range s.Calculations {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  if s.Filters != nil {
+    for _, item := range s.Filters {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  if s.Orders != nil {
+    for _, item := range s.Orders {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type EventCenterQueryEventsRequestBodyParametersCalculations struct {
@@ -445,7 +482,16 @@ func (s *EventCenterQueryEventsRequestBodyParametersFilters) SetValues(v []*stri
 }
 
 func (s *EventCenterQueryEventsRequestBodyParametersFilters) Validate() error {
-  return dara.Validate(s)
+  if s.NestedFilters != nil {
+    for _, item := range s.NestedFilters {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type EventCenterQueryEventsRequestBodyParametersFiltersNestedFilters struct {

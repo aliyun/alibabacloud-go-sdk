@@ -104,7 +104,12 @@ func (s *ListAliyunOfficialEventSourcesResponseBody) SetSuccess(v bool) *ListAli
 }
 
 func (s *ListAliyunOfficialEventSourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAliyunOfficialEventSourcesResponseBodyData struct {
@@ -130,7 +135,16 @@ func (s *ListAliyunOfficialEventSourcesResponseBodyData) SetEventSourceList(v []
 }
 
 func (s *ListAliyunOfficialEventSourcesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.EventSourceList != nil {
+		for _, item := range s.EventSourceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAliyunOfficialEventSourcesResponseBodyDataEventSourceList struct {
@@ -272,7 +286,16 @@ func (s *ListAliyunOfficialEventSourcesResponseBodyDataEventSourceList) SetType(
 }
 
 func (s *ListAliyunOfficialEventSourcesResponseBodyDataEventSourceList) Validate() error {
-	return dara.Validate(s)
+	if s.EventTypes != nil {
+		for _, item := range s.EventTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAliyunOfficialEventSourcesResponseBodyDataEventSourceListEventTypes struct {

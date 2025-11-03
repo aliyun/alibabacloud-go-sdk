@@ -224,7 +224,47 @@ func (s *CreateEventSourceRequest) SetSourceScheduledEventParameters(v *CreateEv
 }
 
 func (s *CreateEventSourceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SourceHttpEventParameters != nil {
+		if err := s.SourceHttpEventParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceKafkaParameters != nil {
+		if err := s.SourceKafkaParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceMNSParameters != nil {
+		if err := s.SourceMNSParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceOSSEventParameters != nil {
+		if err := s.SourceOSSEventParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceRabbitMQParameters != nil {
+		if err := s.SourceRabbitMQParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceRocketMQParameters != nil {
+		if err := s.SourceRocketMQParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceSLSParameters != nil {
+		if err := s.SourceSLSParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceScheduledEventParameters != nil {
+		if err := s.SourceScheduledEventParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateEventSourceRequestSourceHttpEventParameters struct {

@@ -95,7 +95,12 @@ func (s *EventCenterQueryEventsResponseBody) SetSuccess(v bool) *EventCenterQuer
 }
 
 func (s *EventCenterQueryEventsResponseBody) Validate() error {
-  return dara.Validate(s)
+  if s.Data != nil {
+    if err := s.Data.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type EventCenterQueryEventsResponseBodyData struct {
@@ -169,7 +174,25 @@ func (s *EventCenterQueryEventsResponseBodyData) SetTotalCount(v int32) *EventCe
 }
 
 func (s *EventCenterQueryEventsResponseBodyData) Validate() error {
-  return dara.Validate(s)
+  if s.Table != nil {
+    for _, item := range s.Table {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  if s.TimeSeries != nil {
+    for _, item := range s.TimeSeries {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type EventCenterQueryEventsResponseBodyDataTable struct {

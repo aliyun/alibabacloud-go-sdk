@@ -112,7 +112,12 @@ func (s *ListTargetsResponseBody) SetSuccess(v bool) *ListTargetsResponseBody {
 }
 
 func (s *ListTargetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTargetsResponseBodyData struct {
@@ -168,7 +173,16 @@ func (s *ListTargetsResponseBodyData) SetTotal(v int32) *ListTargetsResponseBody
 }
 
 func (s *ListTargetsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Targets != nil {
+		for _, item := range s.Targets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTargetsResponseBodyDataTargets struct {
@@ -299,7 +313,21 @@ func (s *ListTargetsResponseBodyDataTargets) SetType(v string) *ListTargetsRespo
 }
 
 func (s *ListTargetsResponseBodyDataTargets) Validate() error {
-	return dara.Validate(s)
+	if s.ConcurrentConfig != nil {
+		if err := s.ConcurrentConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ParamList != nil {
+		for _, item := range s.ParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTargetsResponseBodyDataTargetsConcurrentConfig struct {

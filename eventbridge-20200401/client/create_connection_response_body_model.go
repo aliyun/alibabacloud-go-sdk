@@ -87,7 +87,12 @@ func (s *CreateConnectionResponseBody) SetRequestId(v string) *CreateConnectionR
 }
 
 func (s *CreateConnectionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateConnectionResponseBodyData struct {

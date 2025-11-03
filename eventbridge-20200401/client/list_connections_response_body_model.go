@@ -87,7 +87,12 @@ func (s *ListConnectionsResponseBody) SetRequestId(v string) *ListConnectionsRes
 }
 
 func (s *ListConnectionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListConnectionsResponseBodyData struct {
@@ -158,7 +163,16 @@ func (s *ListConnectionsResponseBodyData) SetTotal(v float32) *ListConnectionsRe
 }
 
 func (s *ListConnectionsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Connections != nil {
+		for _, item := range s.Connections {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListConnectionsResponseBodyDataConnections struct {
@@ -255,7 +269,17 @@ func (s *ListConnectionsResponseBodyDataConnections) SetNetworkParameters(v *Lis
 }
 
 func (s *ListConnectionsResponseBodyDataConnections) Validate() error {
-	return dara.Validate(s)
+	if s.AuthParameters != nil {
+		if err := s.AuthParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkParameters != nil {
+		if err := s.NetworkParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListConnectionsResponseBodyDataConnectionsAuthParameters struct {
@@ -324,7 +348,22 @@ func (s *ListConnectionsResponseBodyDataConnectionsAuthParameters) SetOAuthParam
 }
 
 func (s *ListConnectionsResponseBodyDataConnectionsAuthParameters) Validate() error {
-	return dara.Validate(s)
+	if s.ApiKeyAuthParameters != nil {
+		if err := s.ApiKeyAuthParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BasicAuthParameters != nil {
+		if err := s.BasicAuthParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OAuthParameters != nil {
+		if err := s.OAuthParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListConnectionsResponseBodyDataConnectionsAuthParametersApiKeyAuthParameters struct {
@@ -487,7 +526,17 @@ func (s *ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParameters
 }
 
 func (s *ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParameters) Validate() error {
-	return dara.Validate(s)
+	if s.ClientParameters != nil {
+		if err := s.ClientParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OAuthHttpParameters != nil {
+		if err := s.OAuthHttpParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersClientParameters struct {
@@ -580,7 +629,34 @@ func (s *ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParameters
 }
 
 func (s *ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersOAuthHttpParameters) Validate() error {
-	return dara.Validate(s)
+	if s.BodyParameters != nil {
+		for _, item := range s.BodyParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HeaderParameters != nil {
+		for _, item := range s.HeaderParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.QueryStringParameters != nil {
+		for _, item := range s.QueryStringParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersOAuthHttpParametersBodyParameters struct {

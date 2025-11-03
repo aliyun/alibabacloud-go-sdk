@@ -108,7 +108,12 @@ func (s *ListEventStreamingsResponseBody) SetSuccess(v bool) *ListEventStreaming
 }
 
 func (s *ListEventStreamingsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEventStreamingsResponseBodyData struct {
@@ -164,7 +169,16 @@ func (s *ListEventStreamingsResponseBodyData) SetTotal(v int32) *ListEventStream
 }
 
 func (s *ListEventStreamingsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.EventStreamings != nil {
+		for _, item := range s.EventStreamings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamings struct {
@@ -279,7 +293,31 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamings) SetTransforms(v []*
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamings) Validate() error {
-	return dara.Validate(s)
+	if s.RunOptions != nil {
+		if err := s.RunOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Sink != nil {
+		if err := s.Sink.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Source != nil {
+		if err := s.Source.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Transforms != nil {
+		for _, item := range s.Transforms {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsRunOptions struct {
@@ -377,7 +415,27 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions) SetThrott
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions) Validate() error {
-	return dara.Validate(s)
+	if s.BatchWindow != nil {
+		if err := s.BatchWindow.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BusinessOption != nil {
+		if err := s.BusinessOption.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeadLetterQueue != nil {
+		if err := s.DeadLetterQueue.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RetryStrategy != nil {
+		if err := s.RetryStrategy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsBatchWindow struct {
@@ -583,19 +641,19 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsRetryStrate
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSink struct {
-	SinkApacheKafkaParameters              *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters              `json:"SinkApacheKafkaParameters,omitempty" xml:"SinkApacheKafkaParameters,omitempty" type:"Struct"`
 	SinkApacheRocketMQCheckpointParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheRocketMQCheckpointParameters `json:"SinkApacheRocketMQCheckpointParameters,omitempty" xml:"SinkApacheRocketMQCheckpointParameters,omitempty" type:"Struct"`
+	SinkApiDestinationParameters           *SinkApiDestinationParameters                                                                 `json:"SinkApiDestinationParameters,omitempty" xml:"SinkApiDestinationParameters,omitempty"`
 	SinkBaiLianParameters                  *SinkBaiLianParameters                                                                        `json:"SinkBaiLianParameters,omitempty" xml:"SinkBaiLianParameters,omitempty"`
 	SinkCustomizedKafkaConnectorParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParameters `json:"SinkCustomizedKafkaConnectorParameters,omitempty" xml:"SinkCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
 	SinkCustomizedKafkaParameters          *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaParameters          `json:"SinkCustomizedKafkaParameters,omitempty" xml:"SinkCustomizedKafkaParameters,omitempty" type:"Struct"`
 	SinkDashVectorParameters               *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters               `json:"SinkDashVectorParameters,omitempty" xml:"SinkDashVectorParameters,omitempty" type:"Struct"`
 	SinkDataHubParameters                  *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters                  `json:"SinkDataHubParameters,omitempty" xml:"SinkDataHubParameters,omitempty" type:"Struct"`
-	SinkDataWorksTriggerParameters         *SinkDataWorksTriggerParameters                                                               `json:"SinkDataWorksTriggerParameters,omitempty" xml:"SinkDataWorksTriggerParameters,omitempty"`
 	SinkDorisParameters                    *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParameters                    `json:"SinkDorisParameters,omitempty" xml:"SinkDorisParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if Function Compute is specified as the event target.
 	SinkFcParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters `json:"SinkFcParameters,omitempty" xml:"SinkFcParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if CloudFlow is specified as the event target.
-	SinkFnfParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFnfParameters `json:"SinkFnfParameters,omitempty" xml:"SinkFnfParameters,omitempty" type:"Struct"`
+	SinkFnfParameters   *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFnfParameters `json:"SinkFnfParameters,omitempty" xml:"SinkFnfParameters,omitempty" type:"Struct"`
+	SinkHttpsParameters *SinkHttpsParameters                                                     `json:"SinkHttpsParameters,omitempty" xml:"SinkHttpsParameters,omitempty"`
 	// The parameters that are returned if ApsaraMQ for Kafka is specified as the event target.
 	SinkKafkaParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters `json:"SinkKafkaParameters,omitempty" xml:"SinkKafkaParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if MNS is specified as the event target.
@@ -618,12 +676,12 @@ func (s ListEventStreamingsResponseBodyDataEventStreamingsSink) GoString() strin
 	return s.String()
 }
 
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkApacheKafkaParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
-	return s.SinkApacheKafkaParameters
-}
-
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkApacheRocketMQCheckpointParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheRocketMQCheckpointParameters {
 	return s.SinkApacheRocketMQCheckpointParameters
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkApiDestinationParameters() *SinkApiDestinationParameters {
+	return s.SinkApiDestinationParameters
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkBaiLianParameters() *SinkBaiLianParameters {
@@ -646,10 +704,6 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkDataHubP
 	return s.SinkDataHubParameters
 }
 
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkDataWorksTriggerParameters() *SinkDataWorksTriggerParameters {
-	return s.SinkDataWorksTriggerParameters
-}
-
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkDorisParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParameters {
 	return s.SinkDorisParameters
 }
@@ -660,6 +714,10 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkFcParame
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkFnfParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFnfParameters {
 	return s.SinkFnfParameters
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkHttpsParameters() *SinkHttpsParameters {
+	return s.SinkHttpsParameters
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkKafkaParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters {
@@ -690,13 +748,13 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkSLSParam
 	return s.SinkSLSParameters
 }
 
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkApacheKafkaParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
-	s.SinkApacheKafkaParameters = v
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkApacheRocketMQCheckpointParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheRocketMQCheckpointParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
+	s.SinkApacheRocketMQCheckpointParameters = v
 	return s
 }
 
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkApacheRocketMQCheckpointParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheRocketMQCheckpointParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
-	s.SinkApacheRocketMQCheckpointParameters = v
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkApiDestinationParameters(v *SinkApiDestinationParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
+	s.SinkApiDestinationParameters = v
 	return s
 }
 
@@ -725,11 +783,6 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkDataHubP
 	return s
 }
 
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkDataWorksTriggerParameters(v *SinkDataWorksTriggerParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
-	s.SinkDataWorksTriggerParameters = v
-	return s
-}
-
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkDorisParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
 	s.SinkDorisParameters = v
 	return s
@@ -742,6 +795,11 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkFcParame
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkFnfParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFnfParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
 	s.SinkFnfParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkHttpsParameters(v *SinkHttpsParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
+	s.SinkHttpsParameters = v
 	return s
 }
 
@@ -781,422 +839,97 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkSLSParam
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) Validate() error {
-	return dara.Validate(s)
-}
-
-type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters struct {
-	Acks             *string                                                                                         `json:"Acks,omitempty" xml:"Acks,omitempty"`
-	Bootstraps       *string                                                                                         `json:"Bootstraps,omitempty" xml:"Bootstraps,omitempty"`
-	Key              *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey             `json:"Key,omitempty" xml:"Key,omitempty" type:"Struct"`
-	NetworkType      *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType     `json:"NetworkType,omitempty" xml:"NetworkType,omitempty" type:"Struct"`
-	SaslMechanism    *string                                                                                         `json:"SaslMechanism,omitempty" xml:"SaslMechanism,omitempty"`
-	SaslPassword     *string                                                                                         `json:"SaslPassword,omitempty" xml:"SaslPassword,omitempty"`
-	SaslUser         *string                                                                                         `json:"SaslUser,omitempty" xml:"SaslUser,omitempty"`
-	SecurityGroupId  *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Struct"`
-	SecurityProtocol *string                                                                                         `json:"SecurityProtocol,omitempty" xml:"SecurityProtocol,omitempty"`
-	Topic            *string                                                                                         `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	VSwitchIds       *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds      `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
-	Value            *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue           `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
-	VpcId            *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId           `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Struct"`
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) String() string {
-	return dara.Prettify(s)
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GoString() string {
-	return s.String()
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetAcks() *string {
-	return s.Acks
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetBootstraps() *string {
-	return s.Bootstraps
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetKey() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey {
-	return s.Key
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetNetworkType() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType {
-	return s.NetworkType
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetSaslMechanism() *string {
-	return s.SaslMechanism
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetSaslPassword() *string {
-	return s.SaslPassword
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetSaslUser() *string {
-	return s.SaslUser
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetSecurityGroupId() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId {
-	return s.SecurityGroupId
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetSecurityProtocol() *string {
-	return s.SecurityProtocol
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetTopic() *string {
-	return s.Topic
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetVSwitchIds() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds {
-	return s.VSwitchIds
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetValue() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue {
-	return s.Value
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetVpcId() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId {
-	return s.VpcId
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetAcks(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
-	s.Acks = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetBootstraps(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
-	s.Bootstraps = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetKey(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
-	s.Key = v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetNetworkType(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
-	s.NetworkType = v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetSaslMechanism(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
-	s.SaslMechanism = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetSaslPassword(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
-	s.SaslPassword = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetSaslUser(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
-	s.SaslUser = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetSecurityGroupId(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
-	s.SecurityGroupId = v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetSecurityProtocol(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
-	s.SecurityProtocol = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetTopic(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
-	s.Topic = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetVSwitchIds(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
-	s.VSwitchIds = v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetValue(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
-	s.Value = v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetVpcId(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
-	s.VpcId = v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) Validate() error {
-	return dara.Validate(s)
-}
-
-type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey) String() string {
-	return dara.Prettify(s)
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey) GoString() string {
-	return s.String()
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey) GetForm() *string {
-	return s.Form
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey) GetTemplate() *string {
-	return s.Template
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey) GetValue() *string {
-	return s.Value
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey {
-	s.Form = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey {
-	s.Template = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey {
-	s.Value = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey) Validate() error {
-	return dara.Validate(s)
-}
-
-type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType) String() string {
-	return dara.Prettify(s)
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType) GoString() string {
-	return s.String()
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType) GetForm() *string {
-	return s.Form
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType) GetTemplate() *string {
-	return s.Template
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType) GetValue() *string {
-	return s.Value
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType {
-	s.Form = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType {
-	s.Template = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType {
-	s.Value = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType) Validate() error {
-	return dara.Validate(s)
-}
-
-type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId) String() string {
-	return dara.Prettify(s)
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId) GoString() string {
-	return s.String()
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId) GetForm() *string {
-	return s.Form
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId) GetTemplate() *string {
-	return s.Template
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId) GetValue() *string {
-	return s.Value
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId {
-	s.Form = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId {
-	s.Template = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId {
-	s.Value = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId) Validate() error {
-	return dara.Validate(s)
-}
-
-type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds) String() string {
-	return dara.Prettify(s)
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds) GoString() string {
-	return s.String()
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds) GetForm() *string {
-	return s.Form
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds) GetTemplate() *string {
-	return s.Template
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds) GetValue() *string {
-	return s.Value
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds {
-	s.Form = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds {
-	s.Template = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds {
-	s.Value = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds) Validate() error {
-	return dara.Validate(s)
-}
-
-type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue) String() string {
-	return dara.Prettify(s)
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue) GoString() string {
-	return s.String()
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue) GetForm() *string {
-	return s.Form
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue) GetTemplate() *string {
-	return s.Template
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue) GetValue() *string {
-	return s.Value
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue {
-	s.Form = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue {
-	s.Template = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue {
-	s.Value = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue) Validate() error {
-	return dara.Validate(s)
-}
-
-type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId) String() string {
-	return dara.Prettify(s)
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId) GoString() string {
-	return s.String()
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId) GetForm() *string {
-	return s.Form
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId) GetTemplate() *string {
-	return s.Template
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId) GetValue() *string {
-	return s.Value
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId {
-	s.Form = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId {
-	s.Template = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId {
-	s.Value = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId) Validate() error {
-	return dara.Validate(s)
+	if s.SinkApacheRocketMQCheckpointParameters != nil {
+		if err := s.SinkApacheRocketMQCheckpointParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkApiDestinationParameters != nil {
+		if err := s.SinkApiDestinationParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkBaiLianParameters != nil {
+		if err := s.SinkBaiLianParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkCustomizedKafkaConnectorParameters != nil {
+		if err := s.SinkCustomizedKafkaConnectorParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkCustomizedKafkaParameters != nil {
+		if err := s.SinkCustomizedKafkaParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkDashVectorParameters != nil {
+		if err := s.SinkDashVectorParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkDataHubParameters != nil {
+		if err := s.SinkDataHubParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkDorisParameters != nil {
+		if err := s.SinkDorisParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkFcParameters != nil {
+		if err := s.SinkFcParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkFnfParameters != nil {
+		if err := s.SinkFnfParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkHttpsParameters != nil {
+		if err := s.SinkHttpsParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkKafkaParameters != nil {
+		if err := s.SinkKafkaParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkMNSParameters != nil {
+		if err := s.SinkMNSParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkOpenSourceRabbitMQParameters != nil {
+		if err := s.SinkOpenSourceRabbitMQParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkRabbitMQParameters != nil {
+		if err := s.SinkRabbitMQParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkRocketMQCheckpointParameters != nil {
+		if err := s.SinkRocketMQCheckpointParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkRocketMQParameters != nil {
+		if err := s.SinkRocketMQParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SinkSLSParameters != nil {
+		if err := s.SinkSLSParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheRocketMQCheckpointParameters struct {
@@ -1334,7 +1067,22 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheRocketM
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheRocketMQCheckpointParameters) Validate() error {
-	return dara.Validate(s)
+	if s.ConsumeTimestamp != nil {
+		if err := s.ConsumeTimestamp.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Group != nil {
+		if err := s.Group.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Topic != nil {
+		if err := s.Topic.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheRocketMQCheckpointParametersConsumeTimestamp struct {
@@ -1552,7 +1300,12 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKaf
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParameters) Validate() error {
-	return dara.Validate(s)
+	if s.ConnectorParameters != nil {
+		if err := s.ConnectorParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParametersConnectorParameters struct {
@@ -1640,8 +1393,8 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParamet
 	// example:
 	//
 	// collection1
-	Collection                 *string                                                                                                   `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	DashVectorSchemaParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters `json:"DashVectorSchemaParameters,omitempty" xml:"DashVectorSchemaParameters,omitempty" type:"Struct"`
+	Collection                 *string                                                                                                     `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DashVectorSchemaParameters []*ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters `json:"DashVectorSchemaParameters,omitempty" xml:"DashVectorSchemaParameters,omitempty" type:"Repeated"`
 	// example:
 	//
 	// vrs-cn-lbj3ru1***
@@ -1675,7 +1428,7 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorPar
 	return s.Collection
 }
 
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters) GetDashVectorSchemaParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters {
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters) GetDashVectorSchemaParameters() []*ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters {
 	return s.DashVectorSchemaParameters
 }
 
@@ -1713,7 +1466,7 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorPar
 	return s
 }
 
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters) SetDashVectorSchemaParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters {
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters) SetDashVectorSchemaParameters(v []*ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters {
 	s.DashVectorSchemaParameters = v
 	return s
 }
@@ -1749,50 +1502,37 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorPar
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters) Validate() error {
-	return dara.Validate(s)
+	if s.DashVectorSchemaParameters != nil {
+		for _, item := range s.DashVectorSchemaParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Partition != nil {
+		if err := s.Partition.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrimaryKeyId != nil {
+		if err := s.PrimaryKeyId.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Vector != nil {
+		if err := s.Vector.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters struct {
-	// example:
-	//
-	// TEMPLATE
-	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// example:
-	//
-	// [
-	//
-	//   {
-	//
-	//     "name": "schema1",
-	//
-	//     "type": "INT",
-	//
-	//     "value": "${value1}"
-	//
-	//   },
-	//
-	//   {
-	//
-	//     "name": "schema2",
-	//
-	//     "type": "FLOAT",
-	//
-	//     "value": "${value2}"
-	//
-	//   }
-	//
-	// ]
-	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// example:
-	//
-	// {
-	//
-	//   "value1":"v1",
-	//
-	//   "value2":"v2"
-	//
-	// }
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Name  *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersName  `json:"Name,omitempty" xml:"Name,omitempty" type:"Struct"`
+	Type  *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersType  `json:"Type,omitempty" xml:"Type,omitempty" type:"Struct"`
+	Value *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
 }
 
 func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters) String() string {
@@ -1803,34 +1543,184 @@ func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorPara
 	return s.String()
 }
 
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters) GetForm() *string {
-	return s.Form
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters) GetName() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersName {
+	return s.Name
 }
 
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters) GetTemplate() *string {
-	return s.Template
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters) GetType() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersType {
+	return s.Type
 }
 
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters) GetValue() *string {
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters) GetValue() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersValue {
 	return s.Value
 }
 
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters {
-	s.Form = &v
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters) SetName(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersName) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters {
+	s.Name = v
 	return s
 }
 
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters {
-	s.Template = &v
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters) SetType(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersType) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters {
+	s.Type = v
 	return s
 }
 
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters {
-	s.Value = &v
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters) SetValue(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersValue) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters {
+	s.Value = v
 	return s
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters) Validate() error {
+	if s.Name != nil {
+		if err := s.Name.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Type != nil {
+		if err := s.Type.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Value != nil {
+		if err := s.Value.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersName struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersName) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersName) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersName) GetForm() *string {
+	return s.Form
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersName) GetTemplate() *string {
+	return s.Template
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersName) GetValue() *string {
+	return s.Value
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersName) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersName {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersName) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersName {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersName) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersName {
+	s.Value = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersName) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersType struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersType) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersType) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersType) GetForm() *string {
+	return s.Form
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersType) GetTemplate() *string {
+	return s.Template
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersType) GetValue() *string {
+	return s.Value
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersType) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersType {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersType) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersType {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersType) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersType {
+	s.Value = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersType) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersValue struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersValue) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersValue) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersValue) GetForm() *string {
+	return s.Form
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersValue) GetTemplate() *string {
+	return s.Template
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersValue) GetValue() *string {
+	return s.Value
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersValue) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersValue {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersValue) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersValue {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersValue) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersValue {
+	s.Value = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParametersValue) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -2062,7 +1952,37 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParame
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Project != nil {
+		if err := s.Project.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RoleName != nil {
+		if err := s.RoleName.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Topic != nil {
+		if err := s.Topic.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TopicSchema != nil {
+		if err := s.TopicSchema.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TopicType != nil {
+		if err := s.TopicType.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersBody struct {
@@ -2500,7 +2420,67 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParamete
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParameters) Validate() error {
-	return dara.Validate(s)
+	if s.BeHttpEndpoint != nil {
+		if err := s.BeHttpEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Database != nil {
+		if err := s.Database.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FeHttpEndpoint != nil {
+		if err := s.FeHttpEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkType != nil {
+		if err := s.NetworkType.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Password != nil {
+		if err := s.Password.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QueryEndpoint != nil {
+		if err := s.QueryEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityGroupId != nil {
+		if err := s.SecurityGroupId.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Table != nil {
+		if err := s.Table.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserName != nil {
+		if err := s.UserName.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VSwitchIds != nil {
+		if err := s.VSwitchIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VpcId != nil {
+		if err := s.VpcId.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParametersBeHttpEndpoint struct {
@@ -3135,7 +3115,42 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters)
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Concurrency != nil {
+		if err := s.Concurrency.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataFormat != nil {
+		if err := s.DataFormat.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FunctionName != nil {
+		if err := s.FunctionName.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InvocationType != nil {
+		if err := s.InvocationType.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Qualifier != nil {
+		if err := s.Qualifier.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceName != nil {
+		if err := s.ServiceName.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersBody struct {
@@ -3600,7 +3615,27 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFnfParameters
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFnfParameters) Validate() error {
-	return dara.Validate(s)
+	if s.ExecutionName != nil {
+		if err := s.ExecutionName.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlowName != nil {
+		if err := s.FlowName.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RoleName != nil {
+		if err := s.RoleName.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFnfParametersExecutionName struct {
@@ -3916,7 +3951,32 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParamete
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters) Validate() error {
-	return dara.Validate(s)
+	if s.Acks != nil {
+		if err := s.Acks.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceId != nil {
+		if err := s.InstanceId.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Key != nil {
+		if err := s.Key.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Topic != nil {
+		if err := s.Topic.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Value != nil {
+		if err := s.Value.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersAcks struct {
@@ -4258,7 +4318,22 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParameters
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParameters) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IsBase64Encode != nil {
+		if err := s.IsBase64Encode.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QueueName != nil {
+		if err := s.QueueName.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParametersBody struct {
@@ -4647,7 +4722,27 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRab
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MessageId != nil {
+		if err := s.MessageId.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Properties != nil {
+		if err := s.Properties.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RoutingKey != nil {
+		if err := s.RoutingKey.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersBody struct {
@@ -4989,7 +5084,52 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParam
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParameters) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Exchange != nil {
+		if err := s.Exchange.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceId != nil {
+		if err := s.InstanceId.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MessageId != nil {
+		if err := s.MessageId.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Properties != nil {
+		if err := s.Properties.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QueueName != nil {
+		if err := s.QueueName.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RoutingKey != nil {
+		if err := s.RoutingKey.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TargetType != nil {
+		if err := s.TargetType.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VirtualHostName != nil {
+		if err := s.VirtualHostName.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParametersBody struct {
@@ -5588,7 +5728,22 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQCheck
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQCheckpointParameters) Validate() error {
-	return dara.Validate(s)
+	if s.ConsumeTimestamp != nil {
+		if err := s.ConsumeTimestamp.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Group != nil {
+		if err := s.Group.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Topic != nil {
+		if err := s.Topic.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQCheckpointParametersConsumeTimestamp struct {
@@ -5922,7 +6077,87 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParam
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeliveryOrderType != nil {
+		if err := s.DeliveryOrderType.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceEndpoint != nil {
+		if err := s.InstanceEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceId != nil {
+		if err := s.InstanceId.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstancePassword != nil {
+		if err := s.InstancePassword.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceType != nil {
+		if err := s.InstanceType.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceUsername != nil {
+		if err := s.InstanceUsername.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Keys != nil {
+		if err := s.Keys.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Network != nil {
+		if err := s.Network.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Properties != nil {
+		if err := s.Properties.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityGroupId != nil {
+		if err := s.SecurityGroupId.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ShardingKey != nil {
+		if err := s.ShardingKey.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Topic != nil {
+		if err := s.Topic.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VSwitchIds != nil {
+		if err := s.VSwitchIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VpcId != nil {
+		if err := s.VpcId.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersBody struct {
@@ -6890,7 +7125,42 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ContentSchema != nil {
+		if err := s.ContentSchema.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ContentType != nil {
+		if err := s.ContentType.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LogStore != nil {
+		if err := s.LogStore.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Project != nil {
+		if err := s.Project.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RoleName != nil {
+		if err := s.RoleName.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Topic != nil {
+		if err := s.Topic.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersBody struct {
@@ -7284,7 +7554,6 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSource struct {
-	SourceApacheKafkaParameters              *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters              `json:"SourceApacheKafkaParameters,omitempty" xml:"SourceApacheKafkaParameters,omitempty" type:"Struct"`
 	SourceApacheRocketMQCheckpointParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheRocketMQCheckpointParameters `json:"SourceApacheRocketMQCheckpointParameters,omitempty" xml:"SourceApacheRocketMQCheckpointParameters,omitempty" type:"Struct"`
 	SourceCustomizedKafkaConnectorParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParameters `json:"SourceCustomizedKafkaConnectorParameters,omitempty" xml:"SourceCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
 	SourceCustomizedKafkaParameters          *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaParameters          `json:"SourceCustomizedKafkaParameters,omitempty" xml:"SourceCustomizedKafkaParameters,omitempty" type:"Struct"`
@@ -7316,10 +7585,6 @@ func (s ListEventStreamingsResponseBodyDataEventStreamingsSource) String() strin
 
 func (s ListEventStreamingsResponseBodyDataEventStreamingsSource) GoString() string {
 	return s.String()
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) GetSourceApacheKafkaParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
-	return s.SourceApacheKafkaParameters
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) GetSourceApacheRocketMQCheckpointParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheRocketMQCheckpointParameters {
@@ -7384,11 +7649,6 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) GetSourceRock
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) GetSourceSLSParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceSLSParameters {
 	return s.SourceSLSParameters
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourceApacheKafkaParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSource {
-	s.SourceApacheKafkaParameters = v
-	return s
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourceApacheRocketMQCheckpointParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheRocketMQCheckpointParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSource {
@@ -7472,152 +7732,87 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourceSLSP
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) Validate() error {
-	return dara.Validate(s)
-}
-
-type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters struct {
-	Bootstraps       *string `json:"Bootstraps,omitempty" xml:"Bootstraps,omitempty"`
-	ConsumerGroup    *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
-	NetworkType      *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	OffsetReset      *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
-	SaslMechanism    *string `json:"SaslMechanism,omitempty" xml:"SaslMechanism,omitempty"`
-	SaslPassword     *string `json:"SaslPassword,omitempty" xml:"SaslPassword,omitempty"`
-	SaslUser         *string `json:"SaslUser,omitempty" xml:"SaslUser,omitempty"`
-	SecurityGroupId  *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SecurityProtocol *string `json:"SecurityProtocol,omitempty" xml:"SecurityProtocol,omitempty"`
-	Topic            *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	VSwitchIds       *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	ValueDataType    *string `json:"ValueDataType,omitempty" xml:"ValueDataType,omitempty"`
-	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) String() string {
-	return dara.Prettify(s)
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GoString() string {
-	return s.String()
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetBootstraps() *string {
-	return s.Bootstraps
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetConsumerGroup() *string {
-	return s.ConsumerGroup
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetNetworkType() *string {
-	return s.NetworkType
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetOffsetReset() *string {
-	return s.OffsetReset
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetSaslMechanism() *string {
-	return s.SaslMechanism
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetSaslPassword() *string {
-	return s.SaslPassword
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetSaslUser() *string {
-	return s.SaslUser
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetSecurityGroupId() *string {
-	return s.SecurityGroupId
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetSecurityProtocol() *string {
-	return s.SecurityProtocol
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetTopic() *string {
-	return s.Topic
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetVSwitchIds() *string {
-	return s.VSwitchIds
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetValueDataType() *string {
-	return s.ValueDataType
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetVpcId() *string {
-	return s.VpcId
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetBootstraps(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
-	s.Bootstraps = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetConsumerGroup(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
-	s.ConsumerGroup = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetNetworkType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
-	s.NetworkType = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetOffsetReset(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
-	s.OffsetReset = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetSaslMechanism(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
-	s.SaslMechanism = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetSaslPassword(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
-	s.SaslPassword = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetSaslUser(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
-	s.SaslUser = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetSecurityGroupId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
-	s.SecurityGroupId = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetSecurityProtocol(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
-	s.SecurityProtocol = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetTopic(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
-	s.Topic = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetVSwitchIds(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
-	s.VSwitchIds = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetValueDataType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
-	s.ValueDataType = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetVpcId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
-	s.VpcId = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) Validate() error {
-	return dara.Validate(s)
+	if s.SourceApacheRocketMQCheckpointParameters != nil {
+		if err := s.SourceApacheRocketMQCheckpointParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceCustomizedKafkaConnectorParameters != nil {
+		if err := s.SourceCustomizedKafkaConnectorParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceCustomizedKafkaParameters != nil {
+		if err := s.SourceCustomizedKafkaParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceDTSParameters != nil {
+		if err := s.SourceDTSParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceEventBusParameters != nil {
+		if err := s.SourceEventBusParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceKafkaParameters != nil {
+		if err := s.SourceKafkaParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceMNSParameters != nil {
+		if err := s.SourceMNSParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceMQTTParameters != nil {
+		if err := s.SourceMQTTParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceMySQLParameters != nil {
+		if err := s.SourceMySQLParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceOSSParameters != nil {
+		if err := s.SourceOSSParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceOpenSourceRabbitMQParameters != nil {
+		if err := s.SourceOpenSourceRabbitMQParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourcePrometheusParameters != nil {
+		if err := s.SourcePrometheusParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceRabbitMQParameters != nil {
+		if err := s.SourceRabbitMQParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceRocketMQCheckpointParameters != nil {
+		if err := s.SourceRocketMQCheckpointParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceRocketMQParameters != nil {
+		if err := s.SourceRocketMQParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceSLSParameters != nil {
+		if err := s.SourceSLSParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheRocketMQCheckpointParameters struct {
@@ -7813,7 +8008,12 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomize
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParameters) Validate() error {
-	return dara.Validate(s)
+	if s.ConnectorParameters != nil {
+		if err := s.ConnectorParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParametersConnectorParameters struct {
@@ -9277,7 +9477,9 @@ type ListEventStreamingsResponseBodyDataEventStreamingsTransforms struct {
 	// example:
 	//
 	// acs:fc:cn-hangzhou:*****:services/demo-service.LATEST/functions/demo-func
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Arn                             *string                          `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	BaiLianAgentTransformParameters *BaiLianAgentTransformParameters `json:"BaiLianAgentTransformParameters,omitempty" xml:"BaiLianAgentTransformParameters,omitempty"`
+	DashScopeTransformParameters    *DashScopeTransformParameters    `json:"DashScopeTransformParameters,omitempty" xml:"DashScopeTransformParameters,omitempty"`
 }
 
 func (s ListEventStreamingsResponseBodyDataEventStreamingsTransforms) String() string {
@@ -9292,11 +9494,39 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) GetArn() 
 	return s.Arn
 }
 
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) GetBaiLianAgentTransformParameters() *BaiLianAgentTransformParameters {
+	return s.BaiLianAgentTransformParameters
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) GetDashScopeTransformParameters() *DashScopeTransformParameters {
+	return s.DashScopeTransformParameters
+}
+
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) SetArn(v string) *ListEventStreamingsResponseBodyDataEventStreamingsTransforms {
 	s.Arn = &v
 	return s
 }
 
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) SetBaiLianAgentTransformParameters(v *BaiLianAgentTransformParameters) *ListEventStreamingsResponseBodyDataEventStreamingsTransforms {
+	s.BaiLianAgentTransformParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) SetDashScopeTransformParameters(v *DashScopeTransformParameters) *ListEventStreamingsResponseBodyDataEventStreamingsTransforms {
+	s.DashScopeTransformParameters = v
+	return s
+}
+
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) Validate() error {
-	return dara.Validate(s)
+	if s.BaiLianAgentTransformParameters != nil {
+		if err := s.BaiLianAgentTransformParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DashScopeTransformParameters != nil {
+		if err := s.DashScopeTransformParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -87,7 +87,12 @@ func (s *ListApiDestinationsResponseBody) SetRequestId(v string) *ListApiDestina
 }
 
 func (s *ListApiDestinationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListApiDestinationsResponseBodyData struct {
@@ -158,7 +163,16 @@ func (s *ListApiDestinationsResponseBodyData) SetTotal(v float32) *ListApiDestin
 }
 
 func (s *ListApiDestinationsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ApiDestinations != nil {
+		for _, item := range s.ApiDestinations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApiDestinationsResponseBodyDataApiDestinations struct {
@@ -244,7 +258,12 @@ func (s *ListApiDestinationsResponseBodyDataApiDestinations) SetHttpApiParameter
 }
 
 func (s *ListApiDestinationsResponseBodyDataApiDestinations) Validate() error {
-	return dara.Validate(s)
+	if s.HttpApiParameters != nil {
+		if err := s.HttpApiParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListApiDestinationsResponseBodyDataApiDestinationsHttpApiParameters struct {

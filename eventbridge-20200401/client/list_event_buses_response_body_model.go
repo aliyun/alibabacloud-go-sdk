@@ -108,7 +108,12 @@ func (s *ListEventBusesResponseBody) SetSuccess(v bool) *ListEventBusesResponseB
 }
 
 func (s *ListEventBusesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEventBusesResponseBodyData struct {
@@ -164,7 +169,16 @@ func (s *ListEventBusesResponseBodyData) SetTotal(v int32) *ListEventBusesRespon
 }
 
 func (s *ListEventBusesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.EventBuses != nil {
+		for _, item := range s.EventBuses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEventBusesResponseBodyDataEventBuses struct {

@@ -108,7 +108,12 @@ func (s *ListUserDefinedEventSourcesResponseBody) SetSuccess(v bool) *ListUserDe
 }
 
 func (s *ListUserDefinedEventSourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUserDefinedEventSourcesResponseBodyData struct {
@@ -164,7 +169,16 @@ func (s *ListUserDefinedEventSourcesResponseBodyData) SetTotal(v int32) *ListUse
 }
 
 func (s *ListUserDefinedEventSourcesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.EventSourceList != nil {
+		for _, item := range s.EventSourceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserDefinedEventSourcesResponseBodyDataEventSourceList struct {
@@ -371,7 +385,47 @@ func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceList) SetType(v s
 }
 
 func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceList) Validate() error {
-	return dara.Validate(s)
+	if s.SourceHttpEventParameters != nil {
+		if err := s.SourceHttpEventParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceKafkaParameters != nil {
+		if err := s.SourceKafkaParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceMNSParameters != nil {
+		if err := s.SourceMNSParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceOSSEventParameters != nil {
+		if err := s.SourceOSSEventParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceRabbitMQParameters != nil {
+		if err := s.SourceRabbitMQParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceRocketMQParameters != nil {
+		if err := s.SourceRocketMQParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceSLSParameters != nil {
+		if err := s.SourceSLSParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceScheduledEventParameters != nil {
+		if err := s.SourceScheduledEventParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceHttpEventParameters struct {

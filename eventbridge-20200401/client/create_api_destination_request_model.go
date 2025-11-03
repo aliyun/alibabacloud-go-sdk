@@ -93,7 +93,12 @@ func (s *CreateApiDestinationRequest) SetHttpApiParameters(v *CreateApiDestinati
 }
 
 func (s *CreateApiDestinationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.HttpApiParameters != nil {
+		if err := s.HttpApiParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateApiDestinationRequestHttpApiParameters struct {

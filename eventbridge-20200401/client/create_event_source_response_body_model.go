@@ -108,7 +108,12 @@ func (s *CreateEventSourceResponseBody) SetSuccess(v bool) *CreateEventSourceRes
 }
 
 func (s *CreateEventSourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateEventSourceResponseBodyData struct {

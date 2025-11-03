@@ -95,7 +95,12 @@ func (s *DiscoverEventSourceResponseBody) SetSuccess(v bool) *DiscoverEventSourc
 }
 
 func (s *DiscoverEventSourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DiscoverEventSourceResponseBodyData struct {
@@ -120,7 +125,12 @@ func (s *DiscoverEventSourceResponseBodyData) SetSourceMySQLDiscovery(v *Discove
 }
 
 func (s *DiscoverEventSourceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.SourceMySQLDiscovery != nil {
+		if err := s.SourceMySQLDiscovery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery struct {
@@ -208,7 +218,12 @@ func (s *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery) SetWaitTimeout
 }
 
 func (s *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery) Validate() error {
-	return dara.Validate(s)
+	if s.TableSchema != nil {
+		if err := s.TableSchema.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchema struct {
@@ -246,7 +261,16 @@ func (s *DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchema) Set
 }
 
 func (s *DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchema) Validate() error {
-	return dara.Validate(s)
+	if s.Columns != nil {
+		for _, item := range s.Columns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchemaColumns struct {

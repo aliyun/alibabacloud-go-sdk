@@ -131,7 +131,32 @@ func (s *SinkBaiLianParameters) SetWorkspaceId(v string) *SinkBaiLianParameters 
 }
 
 func (s *SinkBaiLianParameters) Validate() error {
-	return dara.Validate(s)
+	if s.After != nil {
+		if err := s.After.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Before != nil {
+		if err := s.Before.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Offset != nil {
+		if err := s.Offset.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Op != nil {
+		if err := s.Op.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Partition != nil {
+		if err := s.Partition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SinkBaiLianParametersAfter struct {

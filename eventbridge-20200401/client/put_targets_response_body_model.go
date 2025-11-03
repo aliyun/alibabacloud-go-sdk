@@ -112,7 +112,12 @@ func (s *PutTargetsResponseBody) SetSuccess(v bool) *PutTargetsResponseBody {
 }
 
 func (s *PutTargetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PutTargetsResponseBodyData struct {
@@ -157,7 +162,16 @@ func (s *PutTargetsResponseBodyData) SetErrorEntriesCount(v int32) *PutTargetsRe
 }
 
 func (s *PutTargetsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ErrorEntries != nil {
+		for _, item := range s.ErrorEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PutTargetsResponseBodyDataErrorEntries struct {

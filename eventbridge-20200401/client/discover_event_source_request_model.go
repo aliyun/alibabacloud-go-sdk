@@ -35,7 +35,12 @@ func (s *DiscoverEventSourceRequest) SetSourceMySQLParameters(v *DiscoverEventSo
 }
 
 func (s *DiscoverEventSourceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SourceMySQLParameters != nil {
+		if err := s.SourceMySQLParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DiscoverEventSourceRequestSourceMySQLParameters struct {

@@ -108,7 +108,16 @@ func (s *QueryTracedEventByEventIdResponseBody) SetSuccess(v bool) *QueryTracedE
 }
 
 func (s *QueryTracedEventByEventIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryTracedEventByEventIdResponseBodyData struct {
@@ -164,7 +173,16 @@ func (s *QueryTracedEventByEventIdResponseBodyData) SetTotal(v int32) *QueryTrac
 }
 
 func (s *QueryTracedEventByEventIdResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Events != nil {
+		for _, item := range s.Events {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryTracedEventByEventIdResponseBodyDataEvents struct {

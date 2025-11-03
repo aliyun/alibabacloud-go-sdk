@@ -104,7 +104,12 @@ func (s *GetRuleResponseBody) SetSuccess(v bool) *GetRuleResponseBody {
 }
 
 func (s *GetRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRuleResponseBodyData struct {
@@ -237,7 +242,16 @@ func (s *GetRuleResponseBodyData) SetTargets(v []*GetRuleResponseBodyDataTargets
 }
 
 func (s *GetRuleResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Targets != nil {
+		for _, item := range s.Targets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRuleResponseBodyDataTargets struct {
@@ -385,7 +399,26 @@ func (s *GetRuleResponseBodyDataTargets) SetType(v string) *GetRuleResponseBodyD
 }
 
 func (s *GetRuleResponseBodyDataTargets) Validate() error {
-	return dara.Validate(s)
+	if s.ConcurrentConfig != nil {
+		if err := s.ConcurrentConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeadLetterQueue != nil {
+		if err := s.DeadLetterQueue.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ParamList != nil {
+		for _, item := range s.ParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRuleResponseBodyDataTargetsConcurrentConfig struct {

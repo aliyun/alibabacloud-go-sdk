@@ -104,7 +104,12 @@ func (s *GetEventBusResponseBody) SetSuccess(v bool) *GetEventBusResponseBody {
 }
 
 func (s *GetEventBusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEventBusResponseBodyData struct {

@@ -104,7 +104,12 @@ func (s *DeleteTargetsResponseBody) SetSuccess(v bool) *DeleteTargetsResponseBod
 }
 
 func (s *DeleteTargetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteTargetsResponseBodyData struct {
@@ -145,7 +150,16 @@ func (s *DeleteTargetsResponseBodyData) SetErrorEntriesCount(v int32) *DeleteTar
 }
 
 func (s *DeleteTargetsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ErrorEntries != nil {
+		for _, item := range s.ErrorEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteTargetsResponseBodyDataErrorEntries struct {

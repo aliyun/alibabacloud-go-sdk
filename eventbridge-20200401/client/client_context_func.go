@@ -17,9 +17,11 @@ import (
 //
 // @return CheckServiceLinkedRoleForProductResponse
 func (client *Client) CheckServiceLinkedRoleForProductWithContext(ctx context.Context, request *CheckServiceLinkedRoleForProductRequest, runtime *dara.RuntimeOptions) (_result *CheckServiceLinkedRoleForProductResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProductName) {
@@ -63,9 +65,11 @@ func (client *Client) CheckServiceLinkedRoleForProductWithContext(ctx context.Co
 //
 // @return CreateApiDestinationResponse
 func (client *Client) CreateApiDestinationWithContext(ctx context.Context, tmpReq *CreateApiDestinationRequest, runtime *dara.RuntimeOptions) (_result *CreateApiDestinationResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateApiDestinationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -127,9 +131,11 @@ func (client *Client) CreateApiDestinationWithContext(ctx context.Context, tmpRe
 //
 // @return CreateConnectionResponse
 func (client *Client) CreateConnectionWithContext(ctx context.Context, tmpReq *CreateConnectionRequest, runtime *dara.RuntimeOptions) (_result *CreateConnectionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateConnectionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -195,9 +201,11 @@ func (client *Client) CreateConnectionWithContext(ctx context.Context, tmpReq *C
 //
 // @return CreateEventBusResponse
 func (client *Client) CreateEventBusWithContext(ctx context.Context, request *CreateEventBusRequest, runtime *dara.RuntimeOptions) (_result *CreateEventBusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -245,9 +253,11 @@ func (client *Client) CreateEventBusWithContext(ctx context.Context, request *Cr
 //
 // @return CreateEventSourceResponse
 func (client *Client) CreateEventSourceWithContext(ctx context.Context, tmpReq *CreateEventSourceRequest, runtime *dara.RuntimeOptions) (_result *CreateEventSourceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateEventSourceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -381,9 +391,11 @@ func (client *Client) CreateEventSourceWithContext(ctx context.Context, tmpReq *
 //
 // @return CreateEventStreamingResponse
 func (client *Client) CreateEventStreamingWithContext(ctx context.Context, tmpReq *CreateEventStreamingRequest, runtime *dara.RuntimeOptions) (_result *CreateEventStreamingResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateEventStreamingShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -473,9 +485,11 @@ func (client *Client) CreateEventStreamingWithContext(ctx context.Context, tmpRe
 //
 // @return CreateRuleResponse
 func (client *Client) CreateRuleWithContext(ctx context.Context, tmpReq *CreateRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateRuleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateRuleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -545,9 +559,11 @@ func (client *Client) CreateRuleWithContext(ctx context.Context, tmpReq *CreateR
 //
 // @return CreateServiceLinkedRoleForProductResponse
 func (client *Client) CreateServiceLinkedRoleForProductWithContext(ctx context.Context, request *CreateServiceLinkedRoleForProductRequest, runtime *dara.RuntimeOptions) (_result *CreateServiceLinkedRoleForProductResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProductName) {
@@ -591,9 +607,11 @@ func (client *Client) CreateServiceLinkedRoleForProductWithContext(ctx context.C
 //
 // @return DeleteApiDestinationResponse
 func (client *Client) DeleteApiDestinationWithContext(ctx context.Context, request *DeleteApiDestinationRequest, runtime *dara.RuntimeOptions) (_result *DeleteApiDestinationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApiDestinationName) {
@@ -637,9 +655,11 @@ func (client *Client) DeleteApiDestinationWithContext(ctx context.Context, reque
 //
 // @return DeleteConnectionResponse
 func (client *Client) DeleteConnectionWithContext(ctx context.Context, request *DeleteConnectionRequest, runtime *dara.RuntimeOptions) (_result *DeleteConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConnectionName) {
@@ -683,9 +703,11 @@ func (client *Client) DeleteConnectionWithContext(ctx context.Context, request *
 //
 // @return DeleteEventBusResponse
 func (client *Client) DeleteEventBusWithContext(ctx context.Context, request *DeleteEventBusRequest, runtime *dara.RuntimeOptions) (_result *DeleteEventBusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -729,9 +751,11 @@ func (client *Client) DeleteEventBusWithContext(ctx context.Context, request *De
 //
 // @return DeleteEventSourceResponse
 func (client *Client) DeleteEventSourceWithContext(ctx context.Context, request *DeleteEventSourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteEventSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -779,9 +803,11 @@ func (client *Client) DeleteEventSourceWithContext(ctx context.Context, request 
 //
 // @return DeleteEventStreamingResponse
 func (client *Client) DeleteEventStreamingWithContext(ctx context.Context, request *DeleteEventStreamingRequest, runtime *dara.RuntimeOptions) (_result *DeleteEventStreamingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EventStreamingName) {
@@ -825,9 +851,11 @@ func (client *Client) DeleteEventStreamingWithContext(ctx context.Context, reque
 //
 // @return DeleteRuleResponse
 func (client *Client) DeleteRuleWithContext(ctx context.Context, request *DeleteRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -875,9 +903,11 @@ func (client *Client) DeleteRuleWithContext(ctx context.Context, request *Delete
 //
 // @return DeleteTargetsResponse
 func (client *Client) DeleteTargetsWithContext(ctx context.Context, tmpReq *DeleteTargetsRequest, runtime *dara.RuntimeOptions) (_result *DeleteTargetsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteTargetsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -935,9 +965,11 @@ func (client *Client) DeleteTargetsWithContext(ctx context.Context, tmpReq *Dele
 //
 // @return DisableRuleResponse
 func (client *Client) DisableRuleWithContext(ctx context.Context, request *DisableRuleRequest, runtime *dara.RuntimeOptions) (_result *DisableRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -981,9 +1013,11 @@ func (client *Client) DisableRuleWithContext(ctx context.Context, request *Disab
 //
 // @return DiscoverEventSourceResponse
 func (client *Client) DiscoverEventSourceWithContext(ctx context.Context, tmpReq *DiscoverEventSourceRequest, runtime *dara.RuntimeOptions) (_result *DiscoverEventSourceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DiscoverEventSourceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1033,9 +1067,11 @@ func (client *Client) DiscoverEventSourceWithContext(ctx context.Context, tmpReq
 //
 // @return EnableRuleResponse
 func (client *Client) EnableRuleWithContext(ctx context.Context, request *EnableRuleRequest, runtime *dara.RuntimeOptions) (_result *EnableRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -1079,9 +1115,11 @@ func (client *Client) EnableRuleWithContext(ctx context.Context, request *Enable
 //
 // @return EventCenterQueryEventsResponse
 func (client *Client) EventCenterQueryEventsWithContext(ctx context.Context, tmpReq *EventCenterQueryEventsRequest, runtime *dara.RuntimeOptions) (_result *EventCenterQueryEventsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &EventCenterQueryEventsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1145,9 +1183,11 @@ func (client *Client) EventCenterQueryEventsWithContext(ctx context.Context, tmp
 //
 // @return GetApiDestinationResponse
 func (client *Client) GetApiDestinationWithContext(ctx context.Context, request *GetApiDestinationRequest, runtime *dara.RuntimeOptions) (_result *GetApiDestinationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApiDestinationName) {
@@ -1191,9 +1231,11 @@ func (client *Client) GetApiDestinationWithContext(ctx context.Context, request 
 //
 // @return GetConnectionResponse
 func (client *Client) GetConnectionWithContext(ctx context.Context, request *GetConnectionRequest, runtime *dara.RuntimeOptions) (_result *GetConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConnectionName) {
@@ -1237,9 +1279,11 @@ func (client *Client) GetConnectionWithContext(ctx context.Context, request *Get
 //
 // @return GetEventBusResponse
 func (client *Client) GetEventBusWithContext(ctx context.Context, request *GetEventBusRequest, runtime *dara.RuntimeOptions) (_result *GetEventBusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -1283,9 +1327,11 @@ func (client *Client) GetEventBusWithContext(ctx context.Context, request *GetEv
 //
 // @return GetEventStreamingResponse
 func (client *Client) GetEventStreamingWithContext(ctx context.Context, request *GetEventStreamingRequest, runtime *dara.RuntimeOptions) (_result *GetEventStreamingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EventStreamingName) {
@@ -1329,9 +1375,11 @@ func (client *Client) GetEventStreamingWithContext(ctx context.Context, request 
 //
 // @return GetRuleResponse
 func (client *Client) GetRuleWithContext(ctx context.Context, request *GetRuleRequest, runtime *dara.RuntimeOptions) (_result *GetRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -1379,9 +1427,11 @@ func (client *Client) GetRuleWithContext(ctx context.Context, request *GetRuleRe
 //
 // @return ListApiDestinationsResponse
 func (client *Client) ListApiDestinationsWithContext(ctx context.Context, request *ListApiDestinationsRequest, runtime *dara.RuntimeOptions) (_result *ListApiDestinationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApiDestinationNamePrefix) {
@@ -1437,9 +1487,11 @@ func (client *Client) ListApiDestinationsWithContext(ctx context.Context, reques
 //
 // @return ListConnectionsResponse
 func (client *Client) ListConnectionsWithContext(ctx context.Context, request *ListConnectionsRequest, runtime *dara.RuntimeOptions) (_result *ListConnectionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ConnectionNamePrefix) {
@@ -1491,9 +1543,11 @@ func (client *Client) ListConnectionsWithContext(ctx context.Context, request *L
 //
 // @return ListEventBusesResponse
 func (client *Client) ListEventBusesWithContext(ctx context.Context, request *ListEventBusesRequest, runtime *dara.RuntimeOptions) (_result *ListEventBusesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Limit) {
@@ -1545,9 +1599,11 @@ func (client *Client) ListEventBusesWithContext(ctx context.Context, request *Li
 //
 // @return ListEventStreamingsResponse
 func (client *Client) ListEventStreamingsWithContext(ctx context.Context, request *ListEventStreamingsRequest, runtime *dara.RuntimeOptions) (_result *ListEventStreamingsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Limit) {
@@ -1611,9 +1667,11 @@ func (client *Client) ListEventStreamingsWithContext(ctx context.Context, reques
 //
 // @return ListRulesResponse
 func (client *Client) ListRulesWithContext(ctx context.Context, request *ListRulesRequest, runtime *dara.RuntimeOptions) (_result *ListRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -1665,9 +1723,11 @@ func (client *Client) ListRulesWithContext(ctx context.Context, request *ListRul
 //
 // @return ListTargetsResponse
 func (client *Client) ListTargetsWithContext(ctx context.Context, request *ListTargetsRequest, runtime *dara.RuntimeOptions) (_result *ListTargetsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Arn) {
@@ -1727,9 +1787,11 @@ func (client *Client) ListTargetsWithContext(ctx context.Context, request *ListT
 //
 // @return ListUserDefinedEventSourcesResponse
 func (client *Client) ListUserDefinedEventSourcesWithContext(ctx context.Context, request *ListUserDefinedEventSourcesRequest, runtime *dara.RuntimeOptions) (_result *ListUserDefinedEventSourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -1785,9 +1847,11 @@ func (client *Client) ListUserDefinedEventSourcesWithContext(ctx context.Context
 //
 // @return PauseEventStreamingResponse
 func (client *Client) PauseEventStreamingWithContext(ctx context.Context, request *PauseEventStreamingRequest, runtime *dara.RuntimeOptions) (_result *PauseEventStreamingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EventStreamingName) {
@@ -1831,9 +1895,11 @@ func (client *Client) PauseEventStreamingWithContext(ctx context.Context, reques
 //
 // @return PutTargetsResponse
 func (client *Client) PutTargetsWithContext(ctx context.Context, tmpReq *PutTargetsRequest, runtime *dara.RuntimeOptions) (_result *PutTargetsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &PutTargetsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1891,9 +1957,11 @@ func (client *Client) PutTargetsWithContext(ctx context.Context, tmpReq *PutTarg
 //
 // @return QueryEventResponse
 func (client *Client) QueryEventWithContext(ctx context.Context, request *QueryEventRequest, runtime *dara.RuntimeOptions) (_result *QueryEventResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -1945,9 +2013,11 @@ func (client *Client) QueryEventWithContext(ctx context.Context, request *QueryE
 //
 // @return QueryEventTracesResponse
 func (client *Client) QueryEventTracesWithContext(ctx context.Context, request *QueryEventTracesRequest, runtime *dara.RuntimeOptions) (_result *QueryEventTracesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -1995,9 +2065,11 @@ func (client *Client) QueryEventTracesWithContext(ctx context.Context, request *
 //
 // @return QueryTracedEventByEventIdResponse
 func (client *Client) QueryTracedEventByEventIdWithContext(ctx context.Context, request *QueryTracedEventByEventIdRequest, runtime *dara.RuntimeOptions) (_result *QueryTracedEventByEventIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventBusName) {
@@ -2049,9 +2121,11 @@ func (client *Client) QueryTracedEventByEventIdWithContext(ctx context.Context, 
 //
 // @return QueryTracedEventsResponse
 func (client *Client) QueryTracedEventsWithContext(ctx context.Context, request *QueryTracedEventsRequest, runtime *dara.RuntimeOptions) (_result *QueryTracedEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -2123,9 +2197,11 @@ func (client *Client) QueryTracedEventsWithContext(ctx context.Context, request 
 //
 // @return StartEventStreamingResponse
 func (client *Client) StartEventStreamingWithContext(ctx context.Context, request *StartEventStreamingRequest, runtime *dara.RuntimeOptions) (_result *StartEventStreamingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EventStreamingName) {
@@ -2169,9 +2245,11 @@ func (client *Client) StartEventStreamingWithContext(ctx context.Context, reques
 //
 // @return TestEventPatternResponse
 func (client *Client) TestEventPatternWithContext(ctx context.Context, request *TestEventPatternRequest, runtime *dara.RuntimeOptions) (_result *TestEventPatternResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Event) {
@@ -2219,9 +2297,11 @@ func (client *Client) TestEventPatternWithContext(ctx context.Context, request *
 //
 // @return TestEventSourceConfigResponse
 func (client *Client) TestEventSourceConfigWithContext(ctx context.Context, tmpReq *TestEventSourceConfigRequest, runtime *dara.RuntimeOptions) (_result *TestEventSourceConfigResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TestEventSourceConfigShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2271,9 +2351,11 @@ func (client *Client) TestEventSourceConfigWithContext(ctx context.Context, tmpR
 //
 // @return UpdateApiDestinationResponse
 func (client *Client) UpdateApiDestinationWithContext(ctx context.Context, tmpReq *UpdateApiDestinationRequest, runtime *dara.RuntimeOptions) (_result *UpdateApiDestinationResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateApiDestinationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2335,9 +2417,11 @@ func (client *Client) UpdateApiDestinationWithContext(ctx context.Context, tmpRe
 //
 // @return UpdateConnectionResponse
 func (client *Client) UpdateConnectionWithContext(ctx context.Context, tmpReq *UpdateConnectionRequest, runtime *dara.RuntimeOptions) (_result *UpdateConnectionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateConnectionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2403,9 +2487,11 @@ func (client *Client) UpdateConnectionWithContext(ctx context.Context, tmpReq *U
 //
 // @return UpdateEventBusResponse
 func (client *Client) UpdateEventBusWithContext(ctx context.Context, request *UpdateEventBusRequest, runtime *dara.RuntimeOptions) (_result *UpdateEventBusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -2453,9 +2539,11 @@ func (client *Client) UpdateEventBusWithContext(ctx context.Context, request *Up
 //
 // @return UpdateEventSourceResponse
 func (client *Client) UpdateEventSourceWithContext(ctx context.Context, tmpReq *UpdateEventSourceRequest, runtime *dara.RuntimeOptions) (_result *UpdateEventSourceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateEventSourceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2589,9 +2677,11 @@ func (client *Client) UpdateEventSourceWithContext(ctx context.Context, tmpReq *
 //
 // @return UpdateEventStreamingResponse
 func (client *Client) UpdateEventStreamingWithContext(ctx context.Context, tmpReq *UpdateEventStreamingRequest, runtime *dara.RuntimeOptions) (_result *UpdateEventStreamingResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateEventStreamingShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2673,9 +2763,11 @@ func (client *Client) UpdateEventStreamingWithContext(ctx context.Context, tmpRe
 //
 // @return UpdateEventStreamingBusinessOptionResponse
 func (client *Client) UpdateEventStreamingBusinessOptionWithContext(ctx context.Context, request *UpdateEventStreamingBusinessOptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateEventStreamingBusinessOptionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessMode) {
@@ -2731,9 +2823,11 @@ func (client *Client) UpdateEventStreamingBusinessOptionWithContext(ctx context.
 //
 // @return UpdateRuleResponse
 func (client *Client) UpdateRuleWithContext(ctx context.Context, request *UpdateRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {

@@ -108,7 +108,12 @@ func (s *ListRulesResponseBody) SetSuccess(v bool) *ListRulesResponseBody {
 }
 
 func (s *ListRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRulesResponseBodyData struct {
@@ -164,7 +169,16 @@ func (s *ListRulesResponseBodyData) SetTotal(v int32) *ListRulesResponseBodyData
 }
 
 func (s *ListRulesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRulesResponseBodyDataRules struct {
@@ -314,7 +328,16 @@ func (s *ListRulesResponseBodyDataRules) SetTargets(v []*ListRulesResponseBodyDa
 }
 
 func (s *ListRulesResponseBodyDataRules) Validate() error {
-	return dara.Validate(s)
+	if s.Targets != nil {
+		for _, item := range s.Targets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRulesResponseBodyDataRulesTargets struct {

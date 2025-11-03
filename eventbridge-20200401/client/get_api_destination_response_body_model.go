@@ -87,7 +87,12 @@ func (s *GetApiDestinationResponseBody) SetRequestId(v string) *GetApiDestinatio
 }
 
 func (s *GetApiDestinationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetApiDestinationResponseBodyData struct {
@@ -173,7 +178,12 @@ func (s *GetApiDestinationResponseBodyData) SetHttpApiParameters(v *GetApiDestin
 }
 
 func (s *GetApiDestinationResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.HttpApiParameters != nil {
+		if err := s.HttpApiParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetApiDestinationResponseBodyDataHttpApiParameters struct {

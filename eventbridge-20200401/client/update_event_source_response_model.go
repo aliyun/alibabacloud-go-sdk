@@ -59,5 +59,10 @@ func (s *UpdateEventSourceResponse) SetBody(v *UpdateEventSourceResponseBody) *U
 }
 
 func (s *UpdateEventSourceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *ListApiDestinationsResponse) SetBody(v *ListApiDestinationsResponseBody
 }
 
 func (s *ListApiDestinationsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
