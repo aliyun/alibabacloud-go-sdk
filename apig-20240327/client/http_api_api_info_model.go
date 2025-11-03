@@ -31,6 +31,8 @@ type iHttpApiApiInfo interface {
 	GetHttpApiId() *string
 	SetIngressInfo(v *HttpApiApiInfoIngressInfo) *HttpApiApiInfo
 	GetIngressInfo() *HttpApiApiInfoIngressInfo
+	SetModelCategory(v string) *HttpApiApiInfo
+	GetModelCategory() *string
 	SetName(v string) *HttpApiApiInfo
 	GetName() *string
 	SetProtocols(v []*string) *HttpApiApiInfo
@@ -59,8 +61,9 @@ type HttpApiApiInfo struct {
 	// example:
 	//
 	// api-xxx
-	HttpApiId   *string                    `json:"httpApiId,omitempty" xml:"httpApiId,omitempty"`
-	IngressInfo *HttpApiApiInfoIngressInfo `json:"ingressInfo,omitempty" xml:"ingressInfo,omitempty" type:"Struct"`
+	HttpApiId     *string                    `json:"httpApiId,omitempty" xml:"httpApiId,omitempty"`
+	IngressInfo   *HttpApiApiInfoIngressInfo `json:"ingressInfo,omitempty" xml:"ingressInfo,omitempty" type:"Struct"`
+	ModelCategory *string                    `json:"modelCategory,omitempty" xml:"modelCategory,omitempty"`
 	// example:
 	//
 	// test
@@ -127,6 +130,10 @@ func (s *HttpApiApiInfo) GetHttpApiId() *string {
 
 func (s *HttpApiApiInfo) GetIngressInfo() *HttpApiApiInfoIngressInfo {
 	return s.IngressInfo
+}
+
+func (s *HttpApiApiInfo) GetModelCategory() *string {
+	return s.ModelCategory
 }
 
 func (s *HttpApiApiInfo) GetName() *string {
@@ -201,6 +208,11 @@ func (s *HttpApiApiInfo) SetHttpApiId(v string) *HttpApiApiInfo {
 
 func (s *HttpApiApiInfo) SetIngressInfo(v *HttpApiApiInfoIngressInfo) *HttpApiApiInfo {
 	s.IngressInfo = v
+	return s
+}
+
+func (s *HttpApiApiInfo) SetModelCategory(v string) *HttpApiApiInfo {
+	s.ModelCategory = &v
 	return s
 }
 

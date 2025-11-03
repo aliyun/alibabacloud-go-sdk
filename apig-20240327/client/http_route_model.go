@@ -11,6 +11,8 @@ type iHttpRoute interface {
 	GoString() string
 	SetBackend(v *Backend) *HttpRoute
 	GetBackend() *Backend
+	SetBuiltin(v string) *HttpRoute
+	GetBuiltin() *string
 	SetCreateTimestamp(v int64) *HttpRoute
 	GetCreateTimestamp() *int64
 	SetDeployStatus(v string) *HttpRoute
@@ -37,6 +39,7 @@ type iHttpRoute interface {
 
 type HttpRoute struct {
 	Backend         *Backend                  `json:"backend,omitempty" xml:"backend,omitempty"`
+	Builtin         *string                   `json:"builtin,omitempty" xml:"builtin,omitempty"`
 	CreateTimestamp *int64                    `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
 	DeployStatus    *string                   `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
 	Description     *string                   `json:"description,omitempty" xml:"description,omitempty"`
@@ -60,6 +63,10 @@ func (s HttpRoute) GoString() string {
 
 func (s *HttpRoute) GetBackend() *Backend {
 	return s.Backend
+}
+
+func (s *HttpRoute) GetBuiltin() *string {
+	return s.Builtin
 }
 
 func (s *HttpRoute) GetCreateTimestamp() *int64 {
@@ -108,6 +115,11 @@ func (s *HttpRoute) GetUpdateTimestamp() *int64 {
 
 func (s *HttpRoute) SetBackend(v *Backend) *HttpRoute {
 	s.Backend = v
+	return s
+}
+
+func (s *HttpRoute) SetBuiltin(v string) *HttpRoute {
+	s.Builtin = &v
 	return s
 }
 

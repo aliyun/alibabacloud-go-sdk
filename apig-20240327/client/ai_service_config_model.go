@@ -9,6 +9,8 @@ type iAiServiceConfig interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetApiKeyGenerateMode(v string) *AiServiceConfig
+	GetApiKeyGenerateMode() *string
 	SetAddress(v string) *AiServiceConfig
 	GetAddress() *string
 	SetApiKeys(v []*string) *AiServiceConfig
@@ -26,6 +28,7 @@ type iAiServiceConfig interface {
 }
 
 type AiServiceConfig struct {
+	ApiKeyGenerateMode *string `json:"ApiKeyGenerateMode,omitempty" xml:"ApiKeyGenerateMode,omitempty"`
 	// example:
 	//
 	// https://dashscope.aliyun.com
@@ -47,6 +50,10 @@ func (s AiServiceConfig) String() string {
 
 func (s AiServiceConfig) GoString() string {
 	return s.String()
+}
+
+func (s *AiServiceConfig) GetApiKeyGenerateMode() *string {
+	return s.ApiKeyGenerateMode
 }
 
 func (s *AiServiceConfig) GetAddress() *string {
@@ -75,6 +82,11 @@ func (s *AiServiceConfig) GetProtocols() []*string {
 
 func (s *AiServiceConfig) GetProvider() *string {
 	return s.Provider
+}
+
+func (s *AiServiceConfig) SetApiKeyGenerateMode(v string) *AiServiceConfig {
+	s.ApiKeyGenerateMode = &v
+	return s
 }
 
 func (s *AiServiceConfig) SetAddress(v string) *AiServiceConfig {
