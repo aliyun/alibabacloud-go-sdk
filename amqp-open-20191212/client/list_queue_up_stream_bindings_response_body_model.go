@@ -53,7 +53,12 @@ func (s *ListQueueUpStreamBindingsResponseBody) SetRequestId(v string) *ListQueu
 }
 
 func (s *ListQueueUpStreamBindingsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListQueueUpStreamBindingsResponseBodyData struct {
@@ -109,7 +114,16 @@ func (s *ListQueueUpStreamBindingsResponseBodyData) SetNextToken(v string) *List
 }
 
 func (s *ListQueueUpStreamBindingsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Bindings != nil {
+		for _, item := range s.Bindings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQueueUpStreamBindingsResponseBodyDataBindings struct {

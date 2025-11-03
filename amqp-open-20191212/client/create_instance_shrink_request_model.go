@@ -5,63 +5,63 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
-type iCreateInstanceRequest interface {
+type iCreateInstanceShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetAutoRenew(v bool) *CreateInstanceRequest
+	SetAutoRenew(v bool) *CreateInstanceShrinkRequest
 	GetAutoRenew() *bool
-	SetAutoRenewPeriod(v int32) *CreateInstanceRequest
+	SetAutoRenewPeriod(v int32) *CreateInstanceShrinkRequest
 	GetAutoRenewPeriod() *int32
-	SetClientToken(v string) *CreateInstanceRequest
+	SetClientToken(v string) *CreateInstanceShrinkRequest
 	GetClientToken() *string
-	SetEdition(v string) *CreateInstanceRequest
+	SetEdition(v string) *CreateInstanceShrinkRequest
 	GetEdition() *string
-	SetEncryptedInstance(v bool) *CreateInstanceRequest
+	SetEncryptedInstance(v bool) *CreateInstanceShrinkRequest
 	GetEncryptedInstance() *bool
-	SetInstanceName(v string) *CreateInstanceRequest
+	SetInstanceName(v string) *CreateInstanceShrinkRequest
 	GetInstanceName() *string
-	SetInstanceType(v string) *CreateInstanceRequest
+	SetInstanceType(v string) *CreateInstanceShrinkRequest
 	GetInstanceType() *string
-	SetKmsKeyId(v string) *CreateInstanceRequest
+	SetKmsKeyId(v string) *CreateInstanceShrinkRequest
 	GetKmsKeyId() *string
-	SetMaxConnections(v int32) *CreateInstanceRequest
+	SetMaxConnections(v int32) *CreateInstanceShrinkRequest
 	GetMaxConnections() *int32
-	SetMaxEipTps(v int64) *CreateInstanceRequest
+	SetMaxEipTps(v int64) *CreateInstanceShrinkRequest
 	GetMaxEipTps() *int64
-	SetMaxPrivateTps(v int64) *CreateInstanceRequest
+	SetMaxPrivateTps(v int64) *CreateInstanceShrinkRequest
 	GetMaxPrivateTps() *int64
-	SetPaymentType(v string) *CreateInstanceRequest
+	SetPaymentType(v string) *CreateInstanceShrinkRequest
 	GetPaymentType() *string
-	SetPeriod(v int32) *CreateInstanceRequest
+	SetPeriod(v int32) *CreateInstanceShrinkRequest
 	GetPeriod() *int32
-	SetPeriodCycle(v string) *CreateInstanceRequest
+	SetPeriodCycle(v string) *CreateInstanceShrinkRequest
 	GetPeriodCycle() *string
-	SetProvisionedCapacity(v int32) *CreateInstanceRequest
+	SetProvisionedCapacity(v int32) *CreateInstanceShrinkRequest
 	GetProvisionedCapacity() *int32
-	SetQueueCapacity(v int32) *CreateInstanceRequest
+	SetQueueCapacity(v int32) *CreateInstanceShrinkRequest
 	GetQueueCapacity() *int32
-	SetRenewStatus(v string) *CreateInstanceRequest
+	SetRenewStatus(v string) *CreateInstanceShrinkRequest
 	GetRenewStatus() *string
-	SetRenewalDurationUnit(v string) *CreateInstanceRequest
+	SetRenewalDurationUnit(v string) *CreateInstanceShrinkRequest
 	GetRenewalDurationUnit() *string
-	SetResourceGroupId(v string) *CreateInstanceRequest
+	SetResourceGroupId(v string) *CreateInstanceShrinkRequest
 	GetResourceGroupId() *string
-	SetServerlessChargeType(v string) *CreateInstanceRequest
+	SetServerlessChargeType(v string) *CreateInstanceShrinkRequest
 	GetServerlessChargeType() *string
-	SetStorageSize(v int32) *CreateInstanceRequest
+	SetStorageSize(v int32) *CreateInstanceShrinkRequest
 	GetStorageSize() *int32
-	SetSupportEip(v bool) *CreateInstanceRequest
+	SetSupportEip(v bool) *CreateInstanceShrinkRequest
 	GetSupportEip() *bool
-	SetSupportTracing(v bool) *CreateInstanceRequest
+	SetSupportTracing(v bool) *CreateInstanceShrinkRequest
 	GetSupportTracing() *bool
-	SetTags(v []*CreateInstanceRequestTags) *CreateInstanceRequest
-	GetTags() []*CreateInstanceRequestTags
-	SetTracingStorageTime(v int32) *CreateInstanceRequest
+	SetTagsShrink(v string) *CreateInstanceShrinkRequest
+	GetTagsShrink() *string
+	SetTracingStorageTime(v int32) *CreateInstanceShrinkRequest
 	GetTracingStorageTime() *int32
 }
 
-type CreateInstanceRequest struct {
+type CreateInstanceShrinkRequest struct {
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
 	// 	- true: enables auto-renewal.
@@ -265,8 +265,8 @@ type CreateInstanceRequest struct {
 	// example:
 	//
 	// true
-	SupportTracing *bool                        `json:"SupportTracing,omitempty" xml:"SupportTracing,omitempty"`
-	Tags           []*CreateInstanceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	SupportTracing *bool   `json:"SupportTracing,omitempty" xml:"SupportTracing,omitempty"`
+	TagsShrink     *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The retention period of messages. Unit: days. Valid values:
 	//
 	// 	- 3
@@ -283,289 +283,239 @@ type CreateInstanceRequest struct {
 	TracingStorageTime *int32 `json:"TracingStorageTime,omitempty" xml:"TracingStorageTime,omitempty"`
 }
 
-func (s CreateInstanceRequest) String() string {
+func (s CreateInstanceShrinkRequest) String() string {
 	return dara.Prettify(s)
 }
 
-func (s CreateInstanceRequest) GoString() string {
+func (s CreateInstanceShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateInstanceRequest) GetAutoRenew() *bool {
+func (s *CreateInstanceShrinkRequest) GetAutoRenew() *bool {
 	return s.AutoRenew
 }
 
-func (s *CreateInstanceRequest) GetAutoRenewPeriod() *int32 {
+func (s *CreateInstanceShrinkRequest) GetAutoRenewPeriod() *int32 {
 	return s.AutoRenewPeriod
 }
 
-func (s *CreateInstanceRequest) GetClientToken() *string {
+func (s *CreateInstanceShrinkRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
-func (s *CreateInstanceRequest) GetEdition() *string {
+func (s *CreateInstanceShrinkRequest) GetEdition() *string {
 	return s.Edition
 }
 
-func (s *CreateInstanceRequest) GetEncryptedInstance() *bool {
+func (s *CreateInstanceShrinkRequest) GetEncryptedInstance() *bool {
 	return s.EncryptedInstance
 }
 
-func (s *CreateInstanceRequest) GetInstanceName() *string {
+func (s *CreateInstanceShrinkRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
-func (s *CreateInstanceRequest) GetInstanceType() *string {
+func (s *CreateInstanceShrinkRequest) GetInstanceType() *string {
 	return s.InstanceType
 }
 
-func (s *CreateInstanceRequest) GetKmsKeyId() *string {
+func (s *CreateInstanceShrinkRequest) GetKmsKeyId() *string {
 	return s.KmsKeyId
 }
 
-func (s *CreateInstanceRequest) GetMaxConnections() *int32 {
+func (s *CreateInstanceShrinkRequest) GetMaxConnections() *int32 {
 	return s.MaxConnections
 }
 
-func (s *CreateInstanceRequest) GetMaxEipTps() *int64 {
+func (s *CreateInstanceShrinkRequest) GetMaxEipTps() *int64 {
 	return s.MaxEipTps
 }
 
-func (s *CreateInstanceRequest) GetMaxPrivateTps() *int64 {
+func (s *CreateInstanceShrinkRequest) GetMaxPrivateTps() *int64 {
 	return s.MaxPrivateTps
 }
 
-func (s *CreateInstanceRequest) GetPaymentType() *string {
+func (s *CreateInstanceShrinkRequest) GetPaymentType() *string {
 	return s.PaymentType
 }
 
-func (s *CreateInstanceRequest) GetPeriod() *int32 {
+func (s *CreateInstanceShrinkRequest) GetPeriod() *int32 {
 	return s.Period
 }
 
-func (s *CreateInstanceRequest) GetPeriodCycle() *string {
+func (s *CreateInstanceShrinkRequest) GetPeriodCycle() *string {
 	return s.PeriodCycle
 }
 
-func (s *CreateInstanceRequest) GetProvisionedCapacity() *int32 {
+func (s *CreateInstanceShrinkRequest) GetProvisionedCapacity() *int32 {
 	return s.ProvisionedCapacity
 }
 
-func (s *CreateInstanceRequest) GetQueueCapacity() *int32 {
+func (s *CreateInstanceShrinkRequest) GetQueueCapacity() *int32 {
 	return s.QueueCapacity
 }
 
-func (s *CreateInstanceRequest) GetRenewStatus() *string {
+func (s *CreateInstanceShrinkRequest) GetRenewStatus() *string {
 	return s.RenewStatus
 }
 
-func (s *CreateInstanceRequest) GetRenewalDurationUnit() *string {
+func (s *CreateInstanceShrinkRequest) GetRenewalDurationUnit() *string {
 	return s.RenewalDurationUnit
 }
 
-func (s *CreateInstanceRequest) GetResourceGroupId() *string {
+func (s *CreateInstanceShrinkRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
 
-func (s *CreateInstanceRequest) GetServerlessChargeType() *string {
+func (s *CreateInstanceShrinkRequest) GetServerlessChargeType() *string {
 	return s.ServerlessChargeType
 }
 
-func (s *CreateInstanceRequest) GetStorageSize() *int32 {
+func (s *CreateInstanceShrinkRequest) GetStorageSize() *int32 {
 	return s.StorageSize
 }
 
-func (s *CreateInstanceRequest) GetSupportEip() *bool {
+func (s *CreateInstanceShrinkRequest) GetSupportEip() *bool {
 	return s.SupportEip
 }
 
-func (s *CreateInstanceRequest) GetSupportTracing() *bool {
+func (s *CreateInstanceShrinkRequest) GetSupportTracing() *bool {
 	return s.SupportTracing
 }
 
-func (s *CreateInstanceRequest) GetTags() []*CreateInstanceRequestTags {
-	return s.Tags
+func (s *CreateInstanceShrinkRequest) GetTagsShrink() *string {
+	return s.TagsShrink
 }
 
-func (s *CreateInstanceRequest) GetTracingStorageTime() *int32 {
+func (s *CreateInstanceShrinkRequest) GetTracingStorageTime() *int32 {
 	return s.TracingStorageTime
 }
 
-func (s *CreateInstanceRequest) SetAutoRenew(v bool) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetAutoRenew(v bool) *CreateInstanceShrinkRequest {
 	s.AutoRenew = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetAutoRenewPeriod(v int32) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetAutoRenewPeriod(v int32) *CreateInstanceShrinkRequest {
 	s.AutoRenewPeriod = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetClientToken(v string) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetClientToken(v string) *CreateInstanceShrinkRequest {
 	s.ClientToken = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetEdition(v string) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetEdition(v string) *CreateInstanceShrinkRequest {
 	s.Edition = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetEncryptedInstance(v bool) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetEncryptedInstance(v bool) *CreateInstanceShrinkRequest {
 	s.EncryptedInstance = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetInstanceName(v string) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetInstanceName(v string) *CreateInstanceShrinkRequest {
 	s.InstanceName = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetInstanceType(v string) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetInstanceType(v string) *CreateInstanceShrinkRequest {
 	s.InstanceType = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetKmsKeyId(v string) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetKmsKeyId(v string) *CreateInstanceShrinkRequest {
 	s.KmsKeyId = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetMaxConnections(v int32) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetMaxConnections(v int32) *CreateInstanceShrinkRequest {
 	s.MaxConnections = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetMaxEipTps(v int64) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetMaxEipTps(v int64) *CreateInstanceShrinkRequest {
 	s.MaxEipTps = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetMaxPrivateTps(v int64) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetMaxPrivateTps(v int64) *CreateInstanceShrinkRequest {
 	s.MaxPrivateTps = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetPaymentType(v string) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetPaymentType(v string) *CreateInstanceShrinkRequest {
 	s.PaymentType = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetPeriod(v int32) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetPeriod(v int32) *CreateInstanceShrinkRequest {
 	s.Period = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetPeriodCycle(v string) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetPeriodCycle(v string) *CreateInstanceShrinkRequest {
 	s.PeriodCycle = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetProvisionedCapacity(v int32) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetProvisionedCapacity(v int32) *CreateInstanceShrinkRequest {
 	s.ProvisionedCapacity = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetQueueCapacity(v int32) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetQueueCapacity(v int32) *CreateInstanceShrinkRequest {
 	s.QueueCapacity = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetRenewStatus(v string) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetRenewStatus(v string) *CreateInstanceShrinkRequest {
 	s.RenewStatus = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetRenewalDurationUnit(v string) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetRenewalDurationUnit(v string) *CreateInstanceShrinkRequest {
 	s.RenewalDurationUnit = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetResourceGroupId(v string) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetResourceGroupId(v string) *CreateInstanceShrinkRequest {
 	s.ResourceGroupId = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetServerlessChargeType(v string) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetServerlessChargeType(v string) *CreateInstanceShrinkRequest {
 	s.ServerlessChargeType = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetStorageSize(v int32) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetStorageSize(v int32) *CreateInstanceShrinkRequest {
 	s.StorageSize = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetSupportEip(v bool) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetSupportEip(v bool) *CreateInstanceShrinkRequest {
 	s.SupportEip = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetSupportTracing(v bool) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetSupportTracing(v bool) *CreateInstanceShrinkRequest {
 	s.SupportTracing = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetTags(v []*CreateInstanceRequestTags) *CreateInstanceRequest {
-	s.Tags = v
+func (s *CreateInstanceShrinkRequest) SetTagsShrink(v string) *CreateInstanceShrinkRequest {
+	s.TagsShrink = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetTracingStorageTime(v int32) *CreateInstanceRequest {
+func (s *CreateInstanceShrinkRequest) SetTracingStorageTime(v int32) *CreateInstanceShrinkRequest {
 	s.TracingStorageTime = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) Validate() error {
-	if s.Tags != nil {
-		for _, item := range s.Tags {
-			if item != nil {
-				if err := item.Validate(); err != nil {
-					return err
-				}
-			}
-		}
-	}
-	return nil
-}
-
-type CreateInstanceRequestTags struct {
-	// example:
-	//
-	// testKey
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// example:
-	//
-	// testValue
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s CreateInstanceRequestTags) String() string {
-	return dara.Prettify(s)
-}
-
-func (s CreateInstanceRequestTags) GoString() string {
-	return s.String()
-}
-
-func (s *CreateInstanceRequestTags) GetKey() *string {
-	return s.Key
-}
-
-func (s *CreateInstanceRequestTags) GetValue() *string {
-	return s.Value
-}
-
-func (s *CreateInstanceRequestTags) SetKey(v string) *CreateInstanceRequestTags {
-	s.Key = &v
-	return s
-}
-
-func (s *CreateInstanceRequestTags) SetValue(v string) *CreateInstanceRequestTags {
-	s.Value = &v
-	return s
-}
-
-func (s *CreateInstanceRequestTags) Validate() error {
+func (s *CreateInstanceShrinkRequest) Validate() error {
 	return dara.Validate(s)
 }

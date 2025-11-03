@@ -53,7 +53,12 @@ func (s *ListExchangesResponseBody) SetRequestId(v string) *ListExchangesRespons
 }
 
 func (s *ListExchangesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListExchangesResponseBodyData struct {
@@ -113,7 +118,16 @@ func (s *ListExchangesResponseBodyData) SetNextToken(v string) *ListExchangesRes
 }
 
 func (s *ListExchangesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Exchanges != nil {
+		for _, item := range s.Exchanges {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListExchangesResponseBodyDataExchanges struct {

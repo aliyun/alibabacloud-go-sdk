@@ -53,7 +53,12 @@ func (s *ListQueuesResponseBody) SetRequestId(v string) *ListQueuesResponseBody 
 }
 
 func (s *ListQueuesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListQueuesResponseBodyData struct {
@@ -109,7 +114,16 @@ func (s *ListQueuesResponseBodyData) SetQueues(v []*ListQueuesResponseBodyDataQu
 }
 
 func (s *ListQueuesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Queues != nil {
+		for _, item := range s.Queues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQueuesResponseBodyDataQueues struct {

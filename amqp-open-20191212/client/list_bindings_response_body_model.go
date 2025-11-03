@@ -53,7 +53,12 @@ func (s *ListBindingsResponseBody) SetRequestId(v string) *ListBindingsResponseB
 }
 
 func (s *ListBindingsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListBindingsResponseBodyData struct {
@@ -109,7 +114,16 @@ func (s *ListBindingsResponseBodyData) SetNextToken(v string) *ListBindingsRespo
 }
 
 func (s *ListBindingsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Bindings != nil {
+		for _, item := range s.Bindings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListBindingsResponseBodyDataBindings struct {

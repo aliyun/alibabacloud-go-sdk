@@ -53,7 +53,12 @@ func (s *ListQueueConsumersResponseBody) SetRequestId(v string) *ListQueueConsum
 }
 
 func (s *ListQueueConsumersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListQueueConsumersResponseBodyData struct {
@@ -109,7 +114,16 @@ func (s *ListQueueConsumersResponseBodyData) SetNextToken(v string) *ListQueueCo
 }
 
 func (s *ListQueueConsumersResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Consumers != nil {
+		for _, item := range s.Consumers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQueueConsumersResponseBodyDataConsumers struct {

@@ -104,7 +104,12 @@ func (s *ListDownStreamBindingsResponseBody) SetSuccess(v bool) *ListDownStreamB
 }
 
 func (s *ListDownStreamBindingsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDownStreamBindingsResponseBodyData struct {
@@ -160,7 +165,16 @@ func (s *ListDownStreamBindingsResponseBodyData) SetNextToken(v string) *ListDow
 }
 
 func (s *ListDownStreamBindingsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Bindings != nil {
+		for _, item := range s.Bindings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDownStreamBindingsResponseBodyDataBindings struct {

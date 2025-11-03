@@ -53,7 +53,12 @@ func (s *ListInstancesResponseBody) SetRequestId(v string) *ListInstancesRespons
 }
 
 func (s *ListInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListInstancesResponseBodyData struct {
@@ -109,7 +114,16 @@ func (s *ListInstancesResponseBodyData) SetNextToken(v string) *ListInstancesRes
 }
 
 func (s *ListInstancesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstancesResponseBodyDataInstances struct {
@@ -475,7 +489,16 @@ func (s *ListInstancesResponseBodyDataInstances) SetTags(v []*ListInstancesRespo
 }
 
 func (s *ListInstancesResponseBodyDataInstances) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstancesResponseBodyDataInstancesTags struct {

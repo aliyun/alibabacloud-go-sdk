@@ -53,7 +53,12 @@ func (s *GetMetadataAmountResponseBody) SetRequestId(v string) *GetMetadataAmoun
 }
 
 func (s *GetMetadataAmountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMetadataAmountResponseBodyData struct {

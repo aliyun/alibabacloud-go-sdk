@@ -104,7 +104,12 @@ func (s *ListExchangeUpStreamBindingsResponseBody) SetSuccess(v bool) *ListExcha
 }
 
 func (s *ListExchangeUpStreamBindingsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListExchangeUpStreamBindingsResponseBodyData struct {
@@ -160,7 +165,16 @@ func (s *ListExchangeUpStreamBindingsResponseBodyData) SetNextToken(v string) *L
 }
 
 func (s *ListExchangeUpStreamBindingsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Bindings != nil {
+		for _, item := range s.Bindings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListExchangeUpStreamBindingsResponseBodyDataBindings struct {

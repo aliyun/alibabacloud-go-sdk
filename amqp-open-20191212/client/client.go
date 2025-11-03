@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -65,9 +66,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return CreateAccountResponse
 func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, runtime *dara.RuntimeOptions) (_result *CreateAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Remark) {
@@ -149,9 +152,11 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 //
 // @return CreateBindingResponse
 func (client *Client) CreateBindingWithOptions(request *CreateBindingRequest, runtime *dara.RuntimeOptions) (_result *CreateBindingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Argument) {
@@ -233,9 +238,11 @@ func (client *Client) CreateBinding(request *CreateBindingRequest) (_result *Cre
 //
 // @return CreateExchangeResponse
 func (client *Client) CreateExchangeWithOptions(request *CreateExchangeRequest, runtime *dara.RuntimeOptions) (_result *CreateExchangeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AlternateExchange) {
@@ -319,16 +326,24 @@ func (client *Client) CreateExchange(request *CreateExchangeRequest) (_result *C
 //
 // *Before you call this operation, make sure that you fully understand the [billing methods and pricing](https://help.aliyun.com/document_detail/606747.html) of ApsaraMQ for RabbitMQ.
 //
-// @param request - CreateInstanceRequest
+// @param tmpReq - CreateInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateInstanceResponse
-func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+func (client *Client) CreateInstanceWithOptions(tmpReq *CreateInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
+	request := &CreateInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Tags) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("Tags"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoRenew) {
 		query["AutoRenew"] = request.AutoRenew
@@ -422,6 +437,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		query["SupportTracing"] = request.SupportTracing
 	}
 
+	if !dara.IsNil(request.TagsShrink) {
+		query["Tags"] = request.TagsShrink
+	}
+
 	if !dara.IsNil(request.TracingStorageTime) {
 		query["TracingStorageTime"] = request.TracingStorageTime
 	}
@@ -481,9 +500,11 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 //
 // @return CreateQueueResponse
 func (client *Client) CreateQueueWithOptions(request *CreateQueueRequest, runtime *dara.RuntimeOptions) (_result *CreateQueueResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoDeleteState) {
@@ -581,9 +602,11 @@ func (client *Client) CreateQueue(request *CreateQueueRequest) (_result *CreateQ
 //
 // @return CreateVirtualHostResponse
 func (client *Client) CreateVirtualHostWithOptions(request *CreateVirtualHostRequest, runtime *dara.RuntimeOptions) (_result *CreateVirtualHostResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -645,9 +668,11 @@ func (client *Client) CreateVirtualHost(request *CreateVirtualHostRequest) (_res
 //
 // @return DeleteAccountResponse
 func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, runtime *dara.RuntimeOptions) (_result *DeleteAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreateTimestamp) {
@@ -709,9 +734,11 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 //
 // @return DeleteBindingResponse
 func (client *Client) DeleteBindingWithOptions(request *DeleteBindingRequest, runtime *dara.RuntimeOptions) (_result *DeleteBindingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BindingKey) {
@@ -797,9 +824,11 @@ func (client *Client) DeleteBinding(request *DeleteBindingRequest) (_result *Del
 //
 // @return DeleteExchangeResponse
 func (client *Client) DeleteExchangeWithOptions(request *DeleteExchangeRequest, runtime *dara.RuntimeOptions) (_result *DeleteExchangeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ExchangeName) {
@@ -873,9 +902,11 @@ func (client *Client) DeleteExchange(request *DeleteExchangeRequest) (_result *D
 //
 // @return DeleteQueueResponse
 func (client *Client) DeleteQueueWithOptions(request *DeleteQueueRequest, runtime *dara.RuntimeOptions) (_result *DeleteQueueResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -945,9 +976,11 @@ func (client *Client) DeleteQueue(request *DeleteQueueRequest) (_result *DeleteQ
 //
 // @return DeleteVirtualHostResponse
 func (client *Client) DeleteVirtualHostWithOptions(request *DeleteVirtualHostRequest, runtime *dara.RuntimeOptions) (_result *DeleteVirtualHostResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -1013,9 +1046,11 @@ func (client *Client) DeleteVirtualHost(request *DeleteVirtualHostRequest) (_res
 //
 // @return GetInstanceResponse
 func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1069,9 +1104,11 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 //
 // @return GetMetadataAmountResponse
 func (client *Client) GetMetadataAmountWithOptions(request *GetMetadataAmountRequest, runtime *dara.RuntimeOptions) (_result *GetMetadataAmountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1125,9 +1162,11 @@ func (client *Client) GetMetadataAmount(request *GetMetadataAmountRequest) (_res
 //
 // @return ListAccountsResponse
 func (client *Client) ListAccountsWithOptions(request *ListAccountsRequest, runtime *dara.RuntimeOptions) (_result *ListAccountsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -1185,9 +1224,11 @@ func (client *Client) ListAccounts(request *ListAccountsRequest) (_result *ListA
 //
 // @return ListBindingsResponse
 func (client *Client) ListBindingsWithOptions(request *ListBindingsRequest, runtime *dara.RuntimeOptions) (_result *ListBindingsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1241,9 +1282,11 @@ func (client *Client) ListBindings(request *ListBindingsRequest) (_result *ListB
 //
 // @return ListDownStreamBindingsResponse
 func (client *Client) ListDownStreamBindingsWithOptions(request *ListDownStreamBindingsRequest, runtime *dara.RuntimeOptions) (_result *ListDownStreamBindingsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1297,9 +1340,11 @@ func (client *Client) ListDownStreamBindings(request *ListDownStreamBindingsRequ
 //
 // @return ListExchangeUpStreamBindingsResponse
 func (client *Client) ListExchangeUpStreamBindingsWithOptions(request *ListExchangeUpStreamBindingsRequest, runtime *dara.RuntimeOptions) (_result *ListExchangeUpStreamBindingsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1353,9 +1398,11 @@ func (client *Client) ListExchangeUpStreamBindings(request *ListExchangeUpStream
 //
 // @return ListExchangesResponse
 func (client *Client) ListExchangesWithOptions(request *ListExchangesRequest, runtime *dara.RuntimeOptions) (_result *ListExchangesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1409,9 +1456,11 @@ func (client *Client) ListExchanges(request *ListExchangesRequest) (_result *Lis
 //
 // @return ListInstancesResponse
 func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1469,9 +1518,11 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 //
 // @return ListQueueConsumersResponse
 func (client *Client) ListQueueConsumersWithOptions(request *ListQueueConsumersRequest, runtime *dara.RuntimeOptions) (_result *ListQueueConsumersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1529,9 +1580,11 @@ func (client *Client) ListQueueConsumers(request *ListQueueConsumersRequest) (_r
 //
 // @return ListQueueUpStreamBindingsResponse
 func (client *Client) ListQueueUpStreamBindingsWithOptions(request *ListQueueUpStreamBindingsRequest, runtime *dara.RuntimeOptions) (_result *ListQueueUpStreamBindingsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1585,9 +1638,11 @@ func (client *Client) ListQueueUpStreamBindings(request *ListQueueUpStreamBindin
 //
 // @return ListQueuesResponse
 func (client *Client) ListQueuesWithOptions(request *ListQueuesRequest, runtime *dara.RuntimeOptions) (_result *ListQueuesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1641,9 +1696,11 @@ func (client *Client) ListQueues(request *ListQueuesRequest) (_result *ListQueue
 //
 // @return ListVirtualHostsResponse
 func (client *Client) ListVirtualHostsWithOptions(request *ListVirtualHostsRequest, runtime *dara.RuntimeOptions) (_result *ListVirtualHostsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1697,9 +1754,11 @@ func (client *Client) ListVirtualHosts(request *ListVirtualHostsRequest) (_resul
 //
 // @return UpdateInstanceResponse
 func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1821,9 +1880,11 @@ func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *U
 //
 // @return UpdateInstanceNameResponse
 func (client *Client) UpdateInstanceNameWithOptions(request *UpdateInstanceNameRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {

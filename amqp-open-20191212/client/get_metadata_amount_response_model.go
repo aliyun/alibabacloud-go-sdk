@@ -59,5 +59,10 @@ func (s *GetMetadataAmountResponse) SetBody(v *GetMetadataAmountResponseBody) *G
 }
 
 func (s *GetMetadataAmountResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

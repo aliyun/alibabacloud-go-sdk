@@ -53,7 +53,12 @@ func (s *ListVirtualHostsResponseBody) SetRequestId(v string) *ListVirtualHostsR
 }
 
 func (s *ListVirtualHostsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListVirtualHostsResponseBodyData struct {
@@ -109,7 +114,16 @@ func (s *ListVirtualHostsResponseBodyData) SetVirtualHosts(v []*ListVirtualHosts
 }
 
 func (s *ListVirtualHostsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.VirtualHosts != nil {
+		for _, item := range s.VirtualHosts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVirtualHostsResponseBodyDataVirtualHosts struct {

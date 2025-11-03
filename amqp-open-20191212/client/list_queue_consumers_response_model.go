@@ -59,5 +59,10 @@ func (s *ListQueueConsumersResponse) SetBody(v *ListQueueConsumersResponseBody) 
 }
 
 func (s *ListQueueConsumersResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
