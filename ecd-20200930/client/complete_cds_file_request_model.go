@@ -24,7 +24,7 @@ type iCompleteCdsFileRequest interface {
 }
 
 type CompleteCdsFileRequest struct {
-	// The ID of the cloud disk.
+	// The ID of the enterprise drive.
 	//
 	// This parameter is required.
 	//
@@ -32,22 +32,27 @@ type CompleteCdsFileRequest struct {
 	//
 	// cn-shanghai+cds-465878****
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	// The name of the end user.
+	// The username. You must specify at least one of `EndUserId` and `GroupId`.
 	//
 	// example:
 	//
 	// test0
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The file ID. An ID is the unique identifier of a file.
+	// The file ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 635a316c94f40f35f5354da29b2aee88c9d1****
-	FileId  *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The ID of the team space. You must specify at least one of `EndUserId` and `GroupId`.
+	//
+	// example:
+	//
+	// cg-i1ruuudp92qpj****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
 	//
 	// This parameter is required.
 	//
@@ -55,7 +60,7 @@ type CompleteCdsFileRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the file uploading task.
+	// The ID of the file upload task. Callable interface [CreateCdsFile](https://help.aliyun.com/document_detail/2247619.html).
 	//
 	// This parameter is required.
 	//

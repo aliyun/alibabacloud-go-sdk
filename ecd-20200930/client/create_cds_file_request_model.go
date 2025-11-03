@@ -161,8 +161,6 @@ type CreateCdsFileRequest struct {
 	GroupId  *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The ID of the parent folder.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 637c9163b453b1a384874264ba79f3f9eab9****

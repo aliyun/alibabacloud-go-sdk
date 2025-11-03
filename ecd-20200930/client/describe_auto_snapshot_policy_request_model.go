@@ -22,11 +22,11 @@ type iDescribeAutoSnapshotPolicyRequest interface {
 }
 
 type DescribeAutoSnapshotPolicyRequest struct {
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
-	// 	- Maximum value: 100
+	// 	- Maximum value: 50.
 	//
-	// 	- Default value: 20
+	// 	- Default value: 50.
 	//
 	// example:
 	//

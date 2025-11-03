@@ -16,7 +16,7 @@ type iStartDesktopsRequest interface {
 }
 
 type StartDesktopsRequest struct {
-	// The IDs of the cloud computers. You can specify 1 to 20 IDs.
+	// The cloud computer IDs. You can specify the IDs of 1 to 100 cloud computers.
 	//
 	// This parameter is required.
 	//

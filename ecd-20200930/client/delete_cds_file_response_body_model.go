@@ -22,7 +22,7 @@ type iDeleteCdsFileResponseBody interface {
 }
 
 type DeleteCdsFileResponseBody struct {
-	// The operation result. A value of success indicates that the operation is successful. If the operation failed, an error message is returned.
+	// The execution result of the operation. If the request was successful, `success` is returned. If the request failed, an error message is returned.
 	//
 	// example:
 	//
@@ -30,29 +30,17 @@ type DeleteCdsFileResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the data is returned.
 	//
-	// Valid values:
+	// Valid value:
 	//
 	// 	- true
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//
 	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The returned message.
+	// Error message. This parameter is not returned if the value of Code is `success`.
 	//
 	// example:
 	//
@@ -64,25 +52,13 @@ type DeleteCdsFileResponseBody struct {
 	//
 	// 5CC5E450-FC43-4F5B-B540-9964BD31****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the operation was successful.
 	//
-	// Valid values:
+	// Valid value:
 	//
 	// 	- true
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//

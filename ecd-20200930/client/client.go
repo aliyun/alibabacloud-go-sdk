@@ -288,7 +288,7 @@ func (client *Client) AddDevices(request *AddDevicesRequest) (_result *AddDevice
 
 // Summary:
 //
-// Shares a folder of a cloud disk with other users.
+// Adds a shared folder to the network disk.
 //
 // Description:
 //
@@ -362,7 +362,7 @@ func (client *Client) AddFilePermissionWithOptions(tmpReq *AddFilePermissionRequ
 
 // Summary:
 //
-// Shares a folder of a cloud disk with other users.
+// Adds a shared folder to the network disk.
 //
 // Description:
 //
@@ -1834,7 +1834,7 @@ func (client *Client) ClonePolicyGroup(request *ClonePolicyGroupRequest) (_resul
 
 // Summary:
 //
-// Completes a file uploading task.
+// After you create an object upload task, call this operation to upload the object.
 //
 // @param request - CompleteCdsFileRequest
 //
@@ -1898,7 +1898,7 @@ func (client *Client) CompleteCdsFileWithOptions(request *CompleteCdsFileRequest
 
 // Summary:
 //
-// Completes a file uploading task.
+// After you create an object upload task, call this operation to upload the object.
 //
 // @param request - CompleteCdsFileRequest
 //
@@ -4776,7 +4776,7 @@ func (client *Client) CreateDiskEncryptionService(request *CreateDiskEncryptionS
 
 // Summary:
 //
-// 创建网盘
+// Creates a user-level storage resource.
 //
 // @param request - CreateDriveRequest
 //
@@ -4856,7 +4856,7 @@ func (client *Client) CreateDriveWithOptions(request *CreateDriveRequest, runtim
 
 // Summary:
 //
-// 创建网盘
+// Creates a user-level storage resource.
 //
 // @param request - CreateDriveRequest
 //
@@ -4874,7 +4874,7 @@ func (client *Client) CreateDrive(request *CreateDriveRequest) (_result *CreateD
 
 // Summary:
 //
-// 创建无影数据报表导出任务
+// Creates a data report export task.
 //
 // @param request - CreateEcdReportTaskRequest
 //
@@ -4934,7 +4934,7 @@ func (client *Client) CreateEcdReportTaskWithOptions(request *CreateEcdReportTas
 
 // Summary:
 //
-// 创建无影数据报表导出任务
+// Creates a data report export task.
 //
 // @param request - CreateEcdReportTaskRequest
 //
@@ -6382,7 +6382,7 @@ func (client *Client) CreateSubnet(request *CreateSubnetRequest) (_result *Creat
 
 // Summary:
 //
-// 创建模板
+// Creates a custom cloud computer template. A cloud computer template (or simply "template") simplifies the process of creating cloud computers by providing a predefined set of configurations. This eliminates the need to manually configure each setting, saving significant time and effort.
 //
 // @param request - CreateTemplateRequest
 //
@@ -6513,7 +6513,7 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 
 // Summary:
 //
-// 创建模板
+// Creates a custom cloud computer template. A cloud computer template (or simply "template") simplifies the process of creating cloud computers by providing a predefined set of configurations. This eliminates the need to manually configure each setting, saving significant time and effort.
 //
 // @param request - CreateTemplateRequest
 //
@@ -6663,7 +6663,7 @@ func (client *Client) DeleteBundles(request *DeleteBundlesRequest) (_result *Del
 
 // Summary:
 //
-// Deletes a file from a cloud disk in Cloud Drive Service.
+// Delete files or folders from the network disk.
 //
 // @param request - DeleteCdsFileRequest
 //
@@ -6723,7 +6723,7 @@ func (client *Client) DeleteCdsFileWithOptions(request *DeleteCdsFileRequest, ru
 
 // Summary:
 //
-// Deletes a file from a cloud disk in Cloud Drive Service.
+// Delete files or folders from the network disk.
 //
 // @param request - DeleteCdsFileRequest
 //
@@ -7333,7 +7333,7 @@ func (client *Client) DeleteDirectories(request *DeleteDirectoriesRequest) (_res
 
 // Summary:
 //
-// 删除网盘
+// Deletes a drive.
 //
 // @param request - DeleteDriveRequest
 //
@@ -7381,7 +7381,7 @@ func (client *Client) DeleteDriveWithOptions(request *DeleteDriveRequest, runtim
 
 // Summary:
 //
-// 删除网盘
+// Deletes a drive.
 //
 // @param request - DeleteDriveRequest
 //
@@ -9167,6 +9167,162 @@ func (client *Client) DescribeClientEvents(request *DescribeClientEventsRequest)
 
 // Summary:
 //
+// 查询云盘团队空间列表
+//
+// @param request - DescribeCloudDiskGroupDrivesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudDiskGroupDrivesResponse
+func (client *Client) DescribeCloudDiskGroupDrivesWithOptions(request *DescribeCloudDiskGroupDrivesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudDiskGroupDrivesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CdsId) {
+		query["CdsId"] = request.CdsId
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCloudDiskGroupDrives"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeCloudDiskGroupDrivesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询云盘团队空间列表
+//
+// @param request - DescribeCloudDiskGroupDrivesRequest
+//
+// @return DescribeCloudDiskGroupDrivesResponse
+func (client *Client) DescribeCloudDiskGroupDrives(request *DescribeCloudDiskGroupDrivesRequest) (_result *DescribeCloudDiskGroupDrivesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeCloudDiskGroupDrivesResponse{}
+	_body, _err := client.DescribeCloudDiskGroupDrivesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询云盘团队列表
+//
+// @param request - DescribeCloudDiskGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudDiskGroupsResponse
+func (client *Client) DescribeCloudDiskGroupsWithOptions(request *DescribeCloudDiskGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudDiskGroupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CdsId) {
+		query["CdsId"] = request.CdsId
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.ParentOrgId) {
+		query["ParentOrgId"] = request.ParentOrgId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCloudDiskGroups"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeCloudDiskGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询云盘团队列表
+//
+// @param request - DescribeCloudDiskGroupsRequest
+//
+// @return DescribeCloudDiskGroupsResponse
+func (client *Client) DescribeCloudDiskGroups(request *DescribeCloudDiskGroupsRequest) (_result *DescribeCloudDiskGroupsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeCloudDiskGroupsResponse{}
+	_body, _err := client.DescribeCloudDiskGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of authorized team spaces.
 //
 // @param request - DescribeCloudDriveGroupsRequest
@@ -9573,7 +9729,7 @@ func (client *Client) DescribeCustomizedListHeaders(request *DescribeCustomizedL
 
 // Summary:
 //
-// Queries sessions in a desktop group.
+// Queries cloud computer shares.
 //
 // @param request - DescribeDesktopGroupSessionsRequest
 //
@@ -9661,7 +9817,7 @@ func (client *Client) DescribeDesktopGroupSessionsWithOptions(request *DescribeD
 
 // Summary:
 //
-// Queries sessions in a desktop group.
+// Queries cloud computer shares.
 //
 // @param request - DescribeDesktopGroupSessionsRequest
 //
@@ -10865,7 +11021,7 @@ func (client *Client) DescribeDirectories(request *DescribeDirectoriesRequest) (
 
 // Summary:
 //
-// 查询网盘列表
+// Queries user-level storage resources.
 //
 // @param request - DescribeDrivesRequest
 //
@@ -10929,7 +11085,7 @@ func (client *Client) DescribeDrivesWithOptions(request *DescribeDrivesRequest, 
 
 // Summary:
 //
-// 查询网盘列表
+// Queries user-level storage resources.
 //
 // @param request - DescribeDrivesRequest
 //
@@ -10947,7 +11103,7 @@ func (client *Client) DescribeDrives(request *DescribeDrivesRequest) (_result *D
 
 // Summary:
 //
-// 查询数据报表导出任务列表
+// Queries data report export tasks.
 //
 // @param request - DescribeEcdReportTasksRequest
 //
@@ -11011,7 +11167,7 @@ func (client *Client) DescribeEcdReportTasksWithOptions(request *DescribeEcdRepo
 
 // Summary:
 //
-// 查询数据报表导出任务列表
+// Queries data report export tasks.
 //
 // @param request - DescribeEcdReportTasksRequest
 //
@@ -11459,7 +11615,17 @@ func (client *Client) DescribeFotaTasks(request *DescribeFotaTasksRequest) (_res
 
 // Summary:
 //
-// 查询全局桌面记录
+// Queries the basic information of all cloud computers and the corresponding usage duration records.
+//
+// Description:
+//
+//	  Domestic site users query site selection Shanghai, international site users choose Singapore.
+//
+//		- By default, you can query all cloud computers that are deleted or not deleted.
+//
+//		- Deleted cloud computers can be queried only if the deletion time is less than three months.
+//
+//		- Sort criteria cannot be shared with other criteria.
 //
 // @param request - DescribeGlobalDesktopRecordsRequest
 //
@@ -11559,7 +11725,17 @@ func (client *Client) DescribeGlobalDesktopRecordsWithOptions(request *DescribeG
 
 // Summary:
 //
-// 查询全局桌面记录
+// Queries the basic information of all cloud computers and the corresponding usage duration records.
+//
+// Description:
+//
+//	  Domestic site users query site selection Shanghai, international site users choose Singapore.
+//
+//		- By default, you can query all cloud computers that are deleted or not deleted.
+//
+//		- Deleted cloud computers can be queried only if the deletion time is less than three months.
+//
+//		- Sort criteria cannot be shared with other criteria.
 //
 // @param request - DescribeGlobalDesktopRecordsRequest
 //
@@ -14071,7 +14247,7 @@ func (client *Client) DescribeSubnets(request *DescribeSubnetsRequest) (_result 
 
 // Summary:
 //
-// 查询模板列表
+// Queries the details of cloud computer templates.
 //
 // @param request - DescribeTemplatesRequest
 //
@@ -14151,7 +14327,7 @@ func (client *Client) DescribeTemplatesWithOptions(request *DescribeTemplatesReq
 
 // Summary:
 //
-// 查询模板列表
+// Queries the details of cloud computer templates.
 //
 // @param request - DescribeTemplatesRequest
 //
@@ -16247,7 +16423,7 @@ func (client *Client) HibernateDesktops(request *HibernateDesktopsRequest) (_res
 
 // Summary:
 //
-// Queries the files in a cloud disk.
+// Queries the list of files in the network disk and obtain the download link of the file.
 //
 // @param tmpReq - ListCdsFilesRequest
 //
@@ -16333,7 +16509,7 @@ func (client *Client) ListCdsFilesWithOptions(tmpReq *ListCdsFilesRequest, runti
 
 // Summary:
 //
-// Queries the files in a cloud disk.
+// Queries the list of files in the network disk and obtain the download link of the file.
 //
 // @param request - ListCdsFilesRequest
 //
@@ -16453,7 +16629,7 @@ func (client *Client) ListDirectoryUsers(request *ListDirectoryUsersRequest) (_r
 
 // Summary:
 //
-// Queries the information about shared files of cloud disks.
+// Queries the permissions on a shared file on a drive.
 //
 // @param request - ListFilePermissionRequest
 //
@@ -16513,7 +16689,7 @@ func (client *Client) ListFilePermissionWithOptions(request *ListFilePermissionR
 
 // Summary:
 //
-// Queries the information about shared files of cloud disks.
+// Queries the permissions on a shared file on a drive.
 //
 // @param request - ListFilePermissionRequest
 //
@@ -16522,6 +16698,76 @@ func (client *Client) ListFilePermission(request *ListFilePermissionRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListFilePermissionResponse{}
 	_body, _err := client.ListFilePermissionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询桌面内安装的应用
+//
+// @param request - ListInstalledAppsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstalledAppsResponse
+func (client *Client) ListInstalledAppsWithOptions(request *ListInstalledAppsRequest, runtime *dara.RuntimeOptions) (_result *ListInstalledAppsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DesktopId) {
+		query["DesktopId"] = request.DesktopId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstalledApps"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInstalledAppsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询桌面内安装的应用
+//
+// @param request - ListInstalledAppsRequest
+//
+// @return ListInstalledAppsResponse
+func (client *Client) ListInstalledApps(request *ListInstalledAppsRequest) (_result *ListInstalledAppsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListInstalledAppsResponse{}
+	_body, _err := client.ListInstalledAppsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16797,7 +17043,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// 获取文件下载地址
+// Queries the file information of a file transmission task.
 //
 // @param request - ListTransferFilesRequest
 //
@@ -16849,7 +17095,7 @@ func (client *Client) ListTransferFilesWithOptions(request *ListTransferFilesReq
 
 // Summary:
 //
-// 获取文件下载地址
+// Queries the file information of a file transmission task.
 //
 // @param request - ListTransferFilesRequest
 //
@@ -17649,7 +17895,7 @@ func (client *Client) ModifyBundle(request *ModifyBundleRequest) (_result *Modif
 
 // Summary:
 //
-// Modifies the files in a cloud disk.
+// Modifies the attributes of a disk file or folder, such as the file name.
 //
 // @param request - ModifyCdsFileRequest
 //
@@ -17717,7 +17963,7 @@ func (client *Client) ModifyCdsFileWithOptions(request *ModifyCdsFileRequest, ru
 
 // Summary:
 //
-// Modifies the files in a cloud disk.
+// Modifies the attributes of a disk file or folder, such as the file name.
 //
 // @param request - ModifyCdsFileRequest
 //
@@ -20575,7 +20821,7 @@ func (client *Client) ModifyOfficeSiteCrossDesktopAccess(request *ModifyOfficeSi
 
 // Summary:
 //
-// 修改工作区DNS信息
+// Modifies the DNS information of an office network.
 //
 // @param request - ModifyOfficeSiteDnsInfoRequest
 //
@@ -20627,7 +20873,7 @@ func (client *Client) ModifyOfficeSiteDnsInfoWithOptions(request *ModifyOfficeSi
 
 // Summary:
 //
-// 修改工作区DNS信息
+// Modifies the DNS information of an office network.
 //
 // @param request - ModifyOfficeSiteDnsInfoRequest
 //
@@ -21169,7 +21415,7 @@ func (client *Client) ModifySecurityGroupAttribute(request *ModifySecurityGroupA
 
 // Summary:
 //
-// 模板全量更新
+// Modifies a custom cloud computer template.
 //
 // @param request - ModifyTemplateRequest
 //
@@ -21296,7 +21542,7 @@ func (client *Client) ModifyTemplateWithOptions(request *ModifyTemplateRequest, 
 
 // Summary:
 //
-// 模板全量更新
+// Modifies a custom cloud computer template.
 //
 // @param request - ModifyTemplateRequest
 //
@@ -21318,7 +21564,7 @@ func (client *Client) ModifyTemplate(request *ModifyTemplateRequest) (_result *M
 //
 // Description:
 //
-// You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html) operation.
+// This operation allows you to modify only the name and description of a custom cloud computer template. To change other parameters of the template, call the [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html) operation.
 //
 // @param request - ModifyTemplateBaseInfoRequest
 //
@@ -21374,7 +21620,7 @@ func (client *Client) ModifyTemplateBaseInfoWithOptions(request *ModifyTemplateB
 //
 // Description:
 //
-// You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html) operation.
+// This operation allows you to modify only the name and description of a custom cloud computer template. To change other parameters of the template, call the [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html) operation.
 //
 // @param request - ModifyTemplateBaseInfoRequest
 //
@@ -21966,7 +22212,7 @@ func (client *Client) ReleaseIpAddress(request *ReleaseIpAddressRequest) (_resul
 
 // Summary:
 //
-// Removes the file sharing feature of a folder in a cloud disk.
+// Unshare a folder on the network disk.
 //
 // @param tmpReq - RemoveFilePermissionRequest
 //
@@ -22036,7 +22282,7 @@ func (client *Client) RemoveFilePermissionWithOptions(tmpReq *RemoveFilePermissi
 
 // Summary:
 //
-// Removes the file sharing feature of a folder in a cloud disk.
+// Unshare a folder on the network disk.
 //
 // @param request - RemoveFilePermissionRequest
 //
@@ -23300,7 +23546,11 @@ func (client *Client) SetDesktopGroupTimerStatus(request *SetDesktopGroupTimerSt
 
 // Summary:
 //
-// 设置桌面维护模式
+// Set the cloud computer maintenance mode.
+//
+// Description:
+//
+// If you need to perform some maintenance operations on the cloud computer and want to prohibit end user from connecting and using the cloud computer during this period, you can switch it to maintenance mode.
 //
 // @param request - SetDesktopMaintenanceRequest
 //
@@ -23352,7 +23602,11 @@ func (client *Client) SetDesktopMaintenanceWithOptions(request *SetDesktopMainte
 
 // Summary:
 //
-// 设置桌面维护模式
+// Set the cloud computer maintenance mode.
+//
+// Description:
+//
+// If you need to perform some maintenance operations on the cloud computer and want to prohibit end user from connecting and using the cloud computer during this period, you can switch it to maintenance mode.
 //
 // @param request - SetDesktopMaintenanceRequest
 //
@@ -23996,7 +24250,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// 文件传输审批回调
+// Queries the transmission and approval result for a submitted file.
 //
 // @param request - TransferTaskApprovalCallbackRequest
 //
@@ -24052,7 +24306,7 @@ func (client *Client) TransferTaskApprovalCallbackWithOptions(request *TransferT
 
 // Summary:
 //
-// 文件传输审批回调
+// Queries the transmission and approval result for a submitted file.
 //
 // @param request - TransferTaskApprovalCallbackRequest
 //

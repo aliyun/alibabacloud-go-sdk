@@ -78,7 +78,10 @@ type DescribeSnapshotsRequest struct {
 	//
 	// 8051af8d01b5479bec9f5ddf02e4a8fbd0ab6e7e43f8****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OsType    *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// example:
+	//
+	// Windows
+	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
 	//
 	// This parameter is required.

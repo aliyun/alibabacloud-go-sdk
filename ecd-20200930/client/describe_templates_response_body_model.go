@@ -33,7 +33,8 @@ type DescribeTemplatesResponseBody struct {
 	// example:
 	//
 	// success
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The templates.
 	Data []*DescribeTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -758,8 +759,14 @@ func (s *DescribeTemplatesResponseBodyDataResourceTagList) Validate() error {
 }
 
 type DescribeTemplatesResponseBodyDataSiteConfigList struct {
+	// example:
+	//
+	// bwr-5a5371e0*******
 	AppRuleId *string `json:"AppRuleId,omitempty" xml:"AppRuleId,omitempty"`
-	SiteId    *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// mainland
+	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s DescribeTemplatesResponseBodyDataSiteConfigList) String() string {

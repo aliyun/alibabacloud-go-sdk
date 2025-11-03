@@ -36,7 +36,10 @@ type iDescribeDesktopGroupSessionsRequest interface {
 }
 
 type DescribeDesktopGroupSessionsRequest struct {
+	// The IDs of shared desktop groups.
 	DesktopGroupIds []*string `json:"DesktopGroupIds,omitempty" xml:"DesktopGroupIds,omitempty" type:"Repeated"`
+	// The name of the shared desktop.
+	//
 	// example:
 	//
 	// ecd-4oyi32wmrctgx****
@@ -47,13 +50,16 @@ type DescribeDesktopGroupSessionsRequest struct {
 	//
 	// "2022-08-31T06:56:45Z"
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the end user.
+	// The user ID of the terminal that connects to the session.
 	//
 	// example:
 	//
 	// xianqiu
-	EndUserId        *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	FillTerminalInfo *bool   `json:"FillTerminalInfo,omitempty" xml:"FillTerminalInfo,omitempty"`
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// Whether to supplement terminal information.
+	FillTerminalInfo *bool `json:"FillTerminalInfo,omitempty" xml:"FillTerminalInfo,omitempty"`
+	// The language of the response.
+	//
 	// example:
 	//
 	// zh-CN
@@ -64,7 +70,7 @@ type DescribeDesktopGroupSessionsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
@@ -82,7 +88,7 @@ type DescribeDesktopGroupSessionsRequest struct {
 	//
 	// 1
 	OwnType *int32 `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
-	// The region ID.
+	// The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
 	//
 	// example:
 	//

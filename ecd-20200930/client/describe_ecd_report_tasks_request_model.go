@@ -24,23 +24,54 @@ type iDescribeEcdReportTasksRequest interface {
 }
 
 type DescribeEcdReportTasksRequest struct {
+	// The number of the page to return. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries returned per page. Maximum value: 200.
+	//
 	// example:
 	//
 	// 20。
-	PageSize *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status   []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The task status.
+	//
+	// Valid values:
+	//
+	// 	- INIT: initializing
+	//
+	// 	- FAILED
+	//
+	// 	- RUNNING
+	//
+	// 	- EXPIRED
+	//
+	// 	- FINISHED
+	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	// The sub-type of the report export task.
+	//
+	// Valid value:
+	//
+	// 	- DESKTOP: cloud computer
+	//
 	// example:
 	//
 	// DESKTOP
 	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	// The ID of the report export task.
+	//
 	// example:
 	//
 	// ret-sfkdsjfi*****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the report.
+	//
+	// Valid value:
+	//
+	// 	- RESOURCE_REPORT
+	//
 	// example:
 	//
 	// RESOURCE_REPORT

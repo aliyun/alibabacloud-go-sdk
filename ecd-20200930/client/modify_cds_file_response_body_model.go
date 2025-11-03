@@ -22,7 +22,7 @@ type iModifyCdsFileResponseBody interface {
 }
 
 type ModifyCdsFileResponseBody struct {
-	// The modification result. The value success indicates that the modification is successful. If the modification failed, an error message is returned.
+	// The execution result of the operation. If the request was successful, `success` is returned. If the request failed, an error message is returned.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ModifyCdsFileResponseBody struct {
 	//
 	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error message returned if the request failed.
+	// The returned error message. This parameter is not returned if the value of Code is `success`.
 	//
 	// example:
 	//
@@ -66,25 +66,13 @@ type ModifyCdsFileResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the operation was successful.
 	//
-	// Valid values:
+	// Valid value:
 	//
-	// 	- true: The request is successful.
+	// 	- true
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false: The request fails.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// 	- false
 	//
 	// example:
 	//

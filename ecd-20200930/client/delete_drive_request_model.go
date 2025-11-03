@@ -16,10 +16,14 @@ type iDeleteDriveRequest interface {
 }
 
 type DeleteDriveRequest struct {
+	// The ID of the user-level storage resource.
+	//
 	// example:
 	//
 	// dri-aaaa****
 	DriveId *string `json:"DriveId,omitempty" xml:"DriveId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

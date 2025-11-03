@@ -344,8 +344,22 @@ func (s *ModifyTemplateRequest) Validate() error {
 }
 
 type ModifyTemplateRequestDataDiskList struct {
+	// The PL of the data disk. Default value: `AutoPL`.
+	//
+	// Valid values:
+	//
+	// 	- PL1: a PL1 ESSD
+	//
+	// 	- PL0: a PL0 ESSD
+	//
+	// 	- AutoPL: an AutoPL ESSD
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	Size             *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The size of the data disk. Unit: GiB. Valid range: 40 to 2040 GiB with an increment of 10 GiB.
+	//
+	// example:
+	//
+	// 40
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s ModifyTemplateRequestDataDiskList) String() string {

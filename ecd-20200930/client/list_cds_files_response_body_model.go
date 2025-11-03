@@ -26,13 +26,13 @@ type iListCdsFilesResponseBody interface {
 }
 
 type ListCdsFilesResponseBody struct {
-	// The result of the operation. A value of success indicates that the operation is successful. If the operation failed, an error message is returned.
+	// The response parameters. If the request was successful, `success` is returned. If the request failed, an error message is returned.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The total number of entries.
+	// The total number of file list entries.
 	//
 	// example:
 	//
@@ -40,43 +40,31 @@ type ListCdsFilesResponseBody struct {
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The files.
 	FileModels []*ListCdsFilesResponseBodyFileModels `json:"FileModels,omitempty" xml:"FileModels,omitempty" type:"Repeated"`
-	// The error message returned if the request failed. This parameter is empty if the value of Code is success.
+	// Error message. This parameter is not returned if the value of Code is `success`.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The token used for the next query. If this parameter is empty, all results have been returned.
+	// The token used to start the next query. If the `NextToken` is empty, the next query does not exist.
 	//
 	// example:
 	//
 	// WyI2MzhmMjA2ZTFmZGZlZGVjZDk3OTRlNzVhZmIwMDFiZmM5NWQ3YTgwIiwibiIsIm4iLDEsLTEsMTY3MDMyNDMzNTAzMSwiNjM4ZjIwNmZjNDFkMzIwOTZmZWU0NGYxODkwY2I5ZjI0Mjg0NzM2****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID. An ID is the unique identifier of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// 40D86754-20FD-53DC-A9B8-25F7FECC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the operation was successful.
 	//
-	// Valid values:
+	// Valid value:
 	//
 	// 	- true
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- <!-- -->
-	//
-	//     false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// 	- false
 	//
 	// example:
 	//
@@ -169,7 +157,7 @@ func (s *ListCdsFilesResponseBody) Validate() error {
 }
 
 type ListCdsFilesResponseBodyFileModels struct {
-	// The file category. PDS categorizes files based on their suffixes and MIME types. The following major categories are included: doc, image, audio, and video.
+	// File type classification. The network disk will classify files according to their suffix and MIME Type. The main categories are `doc`, `image`, `audio` and `video`.
 	//
 	// example:
 	//
@@ -199,7 +187,7 @@ type ListCdsFilesResponseBodyFileModels struct {
 	//
 	// test1
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The URL that is used to download the file. The download URL is valid for only 15 minutes. If the URL is expired, you can call the GetFile operation to obtain the file.
+	// The download link. The default validity period is 15 minutes.
 	//
 	// example:
 	//
@@ -225,11 +213,17 @@ type ListCdsFilesResponseBodyFileModels struct {
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
 	// The file type.
 	//
+	// Valid value:
+	//
+	// 	- file
+	//
+	// 	- folder
+	//
 	// example:
 	//
 	// file
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The MD5 value of the file.
+	// The MD5 hash of the object.
 	//
 	// example:
 	//
@@ -241,13 +235,13 @@ type ListCdsFilesResponseBodyFileModels struct {
 	//
 	// 2022-09-06T07:27:08Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The user who modified the file.
+	// Modifier.
 	//
 	// example:
 	//
 	// user02
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	// The file name.
+	// The name of the file.
 	//
 	// example:
 	//
@@ -271,19 +265,19 @@ type ListCdsFilesResponseBodyFileModels struct {
 	//
 	// 3343213ff2f63db8470984e6c92c3213dfdw****
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The region ID You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to obtain the list of regions supported by cloud computers.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The SHA 1 file.
+	// The SHA1 hash of the data file.
 	//
 	// example:
 	//
 	// EA4942AA8761213890A5C386F88E6464D2C3****
 	Sha1 *string `json:"Sha1,omitempty" xml:"Sha1,omitempty"`
-	// The file size. Unit: bits.
+	// The size of the file. Unit: bytes.
 	//
 	// example:
 	//

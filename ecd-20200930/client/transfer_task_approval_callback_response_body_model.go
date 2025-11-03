@@ -14,6 +14,8 @@ type iTransferTaskApprovalCallbackResponseBody interface {
 }
 
 type TransferTaskApprovalCallbackResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// AE7B699F-625C-587E-BC5F-1395CA****

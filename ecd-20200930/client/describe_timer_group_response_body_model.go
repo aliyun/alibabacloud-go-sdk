@@ -16,7 +16,7 @@ type iDescribeTimerGroupResponseBody interface {
 }
 
 type DescribeTimerGroupResponseBody struct {
-	// The information about the scheduled task group.
+	// The configuration group.
 	Data *DescribeTimerGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -70,7 +70,7 @@ type DescribeTimerGroupResponseBodyData struct {
 	BindCount *int32 `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
 	// The number of bound resources.
 	BindCountMap map[string]*int32 `json:"BindCountMap,omitempty" xml:"BindCountMap,omitempty"`
-	// The scheduled task configurations.
+	// The scheduled tasks.
 	ConfigTimers []*DescribeTimerGroupResponseBodyDataConfigTimers `json:"ConfigTimers,omitempty" xml:"ConfigTimers,omitempty" type:"Repeated"`
 	// The description of the configuration group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`

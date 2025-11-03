@@ -143,8 +143,14 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	//
 	// Running
 	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
-	DiskStatus    *string `json:"DiskStatus,omitempty" xml:"DiskStatus,omitempty"`
-	OsType        *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// example:
+	//
+	// Available
+	DiskStatus *string `json:"DiskStatus,omitempty" xml:"DiskStatus,omitempty"`
+	// example:
+	//
+	// Windows
+	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	// The progress of creating the snapshot. Unit: %.
 	//
 	// example:

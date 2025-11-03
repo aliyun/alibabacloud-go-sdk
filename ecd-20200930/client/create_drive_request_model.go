@@ -32,42 +32,78 @@ type iCreateDriveRequest interface {
 }
 
 type CreateDriveRequest struct {
+	// The ID of your Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 1202****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The description of the user-level storage resource.
+	//
 	// example:
 	//
 	// test01
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the storage resource.
+	//
+	// >  Call the DescribeDrives operation to retrieve the storage resource ID.
+	//
 	// example:
 	//
 	// dom-aaaa****
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// The name of the user-level storage resource.
+	//
 	// example:
 	//
 	// test01
 	DriveName *string `json:"DriveName,omitempty" xml:"DriveName,omitempty"`
+	// The ID of the external storage resource.
+	//
+	// >  Call the DescribeDrives operation to retrieve the external storage resource ID.
+	//
 	// example:
 	//
 	// 1234****
 	ExternalDomainId *string `json:"ExternalDomainId,omitempty" xml:"ExternalDomainId,omitempty"`
+	// >  This parameter is deprecated.
+	//
 	// example:
 	//
 	// -
 	ProfileRoaming *bool `json:"ProfileRoaming,omitempty" xml:"ProfileRoaming,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of the storage resource.
+	//
+	// Valid values:
+	//
+	// 	- NAS: File Storage NAS
+	//
+	// 	- PDS: Drive and Photo Service
+	//
 	// example:
 	//
 	// NAS
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The usage of the storage resource.
+	//
+	// Valid values:
+	//
+	// 	- DESKTOP: data disk space
+	//
+	// 	- USER_PROFILE: space for personal data of the user
+	//
 	// example:
 	//
 	// USER_PROFILE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// user01

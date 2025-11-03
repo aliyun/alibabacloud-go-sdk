@@ -22,19 +22,28 @@ type iCreateDriveResponseBody interface {
 }
 
 type CreateDriveResponseBody struct {
+	// The response code. The value 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
-	Code  *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The user-level storage resource.
 	Drive *CreateDriveResponseBodyDrive `json:"Drive,omitempty" xml:"Drive,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// B7AA****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -104,68 +113,124 @@ func (s *CreateDriveResponseBody) Validate() error {
 }
 
 type CreateDriveResponseBodyDrive struct {
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 1202****
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The description of the storage resource.
+	//
 	// example:
 	//
 	// test****
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the storage resource.
+	//
 	// example:
 	//
 	// dom-aaaa****
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// The ID of the user-level storage resource.
+	//
 	// example:
 	//
 	// dri-aaaa****
 	DriveId *string `json:"DriveId,omitempty" xml:"DriveId,omitempty"`
+	// The ID of the external user-level storage resource.
+	//
+	// >  A value is returned for this parameter only if ResourceType is set to PDS.
+	//
 	// example:
 	//
 	// 1100****
 	ExternalDriveId *string `json:"ExternalDriveId,omitempty" xml:"ExternalDriveId,omitempty"`
+	// The ID of the external user.
+	//
 	// example:
 	//
 	// user01@cn-hangzhou.120****
 	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
+	// The time when the storage resource was created.
+	//
 	// example:
 	//
 	// 2025-07-02T08:42:26.000+00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the storage resource was last modified.
+	//
 	// example:
 	//
 	// 2025-07-07T02:46:04.000+00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// ID。
+	// The ID.
 	//
 	// example:
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the storage resource.
+	//
 	// example:
 	//
 	// test****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// >  This parameter is deprecated.
+	//
 	// example:
 	//
 	// -
 	ProfileRoaming *bool `json:"ProfileRoaming,omitempty" xml:"ProfileRoaming,omitempty"`
+	// The status of the user-level storage resource.
+	//
+	// Valid values:
+	//
+	// 	- INIT: initializing
+	//
+	// 	- MAINTAIN: maintaining
+	//
+	// 	- DELETING
+	//
+	// 	- INVALID
+	//
+	// 	- NORMAL
+	//
+	// 	- FAIL: failed
+	//
 	// example:
 	//
 	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total amount of the user-level storage resource capacity.
+	//
+	// >  Unit: bytes.
+	//
 	// example:
 	//
 	// 536870912000
 	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The usage of the storage resource.
+	//
+	// Valid values:
+	//
+	// 	- DESKTOP: data disk space
+	//
+	// 	- USER_PROFILE: space for personal data of the user
+	//
 	// example:
 	//
 	// USER_PROFILE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The amount of user-level storage resource capacity used.
+	//
+	// >  Unit: bytes.
+	//
 	// example:
 	//
 	// 243175936
 	UsedSize *int64 `json:"UsedSize,omitempty" xml:"UsedSize,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// user01

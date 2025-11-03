@@ -24,7 +24,7 @@ type iAddFilePermissionRequest interface {
 }
 
 type AddFilePermissionRequest struct {
-	// The ID of the cloud disk whose folder you want to share.
+	// The ID of the enterprise drive.
 	//
 	// This parameter is required.
 	//
@@ -32,13 +32,13 @@ type AddFilePermissionRequest struct {
 	//
 	// cn-hangzhou+cds-352282****
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	// The ID of the end user who uses the cloud disk.
+	// The ID of the user who uses the network disk.
 	//
 	// example:
 	//
 	// user01
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The ID of the file.
+	// The file ID. You can call the [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) operation to query the ID of the file.
 	//
 	// This parameter is required.
 	//
@@ -46,17 +46,17 @@ type AddFilePermissionRequest struct {
 	//
 	// 6333e553a133ce21e6f747cf948bb9ef95d7****
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The ID of the team that uses cloud disks in Cloud Drive Service.
+	// The ID of the team space.
 	//
 	// example:
 	//
 	// cg-i1ruuudp92qpj****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The members who are granted the folder permissions.
+	// The users that you want to authorize to use the cloud disk.
 	//
 	// This parameter is required.
 	MemberList []*AddFilePermissionRequestMemberList `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
-	// The region ID of the folder. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
 	//
 	// This parameter is required.
 	//
@@ -158,35 +158,35 @@ type AddFilePermissionRequestMemberList struct {
 	//
 	// 4775500800000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The ID of the role to which you want to attach the folder permissions. To configure the folder permissions: you can specify a role or create custom operation permissions. You can use RoleId to specify a role. RoleId is mutually exclusive with ActionList. If you specify both of them, the value of RoleId takes precedence.
+	// You can set permissions by specifying roles or by customizing operation permissions. This field is used to set permissions by specifying roles. This field is mutually exclusive with `ActionList`.
 	//
 	// Valid values:
 	//
-	// 	- SystemFileEditorWithoutShareLink
+	// 	- SystemFileEditorWithoutShareLink: The role that can edit but cannot share files.
 	//
-	// 	- SystemFileUploaderAndDownloaderWithShareLink
+	// 	- SystemFileUploaderAndDownloaderWithShareLink: The role that can upload, download, and share files.
 	//
-	// 	- SystemFileDownloader
+	// 	- SystemFileDownloader: The role that can download files.
 	//
-	// 	- SystemFileEditorWithoutDelete
+	// 	- SystemFileEditorWithoutDelete: The role that can edit but cannot edit files.
 	//
-	// 	- SystemFileOwner
+	// 	- SystemFileOwner: The role that can collaborate with others on files.
 	//
-	// 	- SystemFileDownloaderWithShareLink
+	// 	- SystemFileDownloaderWithShareLink: The role that can download and share files.
 	//
-	// 	- SystemFileUploaderAndViewer
+	// 	- SystemFileUploaderAndViewer: The role that can preview and upload files.
 	//
-	// 	- SystemFileViewer
+	// 	- SystemFileViewer: The role that can preview files.
 	//
-	// 	- SystemFileEditor
+	// 	- SystemFileEditor: The role that can edit files.
 	//
-	// 	- SystemFileUploaderWithShareLink
+	// 	- SystemFileUploaderWithShareLink: The role that can upload and share files.
 	//
-	// 	- SystemFileUploader
+	// 	- SystemFileUploader: The role that can upload files.
 	//
-	// 	- SystemFileUploaderAndDownloader
+	// 	- SystemFileUploaderAndDownloader: The role that can upload and download files.
 	//
-	// 	- SystemFileMetaViewer
+	// 	- SystemFileMetaViewer: The role that can view file list.
 	//
 	// This parameter is required.
 	//
@@ -250,7 +250,7 @@ func (s *AddFilePermissionRequestMemberList) Validate() error {
 }
 
 type AddFilePermissionRequestMemberListCdsIdentity struct {
-	// The ID of the user.
+	// The ID of the convenience user.
 	//
 	// This parameter is required.
 	//
@@ -258,25 +258,13 @@ type AddFilePermissionRequestMemberListCdsIdentity struct {
 	//
 	// user01
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The type of the user.
+	// The user type.
 	//
-	// Valid values:
+	// Set the value to TENANT_ADMIN.
 	//
-	// 	- <!-- -->
+	// 	- IT_Group: group.
 	//
-	//     IT_Group
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- <!-- -->
-	//
-	//     IT_User
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// 	- IT_User: user.
 	//
 	// This parameter is required.
 	//

@@ -18,7 +18,7 @@ type iDescribeCenterPolicyListResponseBody interface {
 }
 
 type DescribeCenterPolicyListResponseBody struct {
-	// The cloud computer policies.
+	// The details about the cloud computer policies.
 	DescribePolicyGroups []*DescribeCenterPolicyListResponseBodyDescribePolicyGroups `json:"DescribePolicyGroups,omitempty" xml:"DescribePolicyGroups,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -347,7 +347,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	//
 	// pg-gx2x1dhsmthe9****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// The policy type.
+	// The type of the policy.
 	//
 	// example:
 	//

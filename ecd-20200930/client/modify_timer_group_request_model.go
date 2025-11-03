@@ -22,7 +22,7 @@ type iModifyTimerGroupRequest interface {
 }
 
 type ModifyTimerGroupRequest struct {
-	// The scheduled task groups.
+	// The scheduled tasks.
 	ConfigTimers []*ModifyTimerGroupRequestConfigTimers `json:"ConfigTimers,omitempty" xml:"ConfigTimers,omitempty" type:"Repeated"`
 	// The description of the configuration group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -111,7 +111,7 @@ func (s *ModifyTimerGroupRequest) Validate() error {
 }
 
 type ModifyTimerGroupRequestConfigTimers struct {
-	// Specifies whether to allow end users to configure scheduled tasks.
+	// Specifies whether to allow end users to configure the scheduled task.
 	//
 	// example:
 	//
@@ -150,11 +150,11 @@ type ModifyTimerGroupRequestConfigTimers struct {
 	//
 	// Shutdown
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	// The process whitelist. If whitelisted processes are running, the scheduled task does not take effect upon inactivity.
+	// The process whitelist. If whitelisted processes are running, the scheduled task does not take effect.
 	ProcessWhitelist []*string `json:"ProcessWhitelist,omitempty" xml:"ProcessWhitelist,omitempty" type:"Repeated"`
 	// The reset option.
 	//
-	// Valid values:
+	// Valid value:
 	//
 	// 	- RESET_TYPE_SYSTEM: resets the system disk.
 	//
@@ -167,7 +167,7 @@ type ModifyTimerGroupRequestConfigTimers struct {
 	// RESET_TYPE_SYSTEM
 	ResetType     *string                                             `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
 	SegmentTimers []*ModifyTimerGroupRequestConfigTimersSegmentTimers `json:"SegmentTimers,omitempty" xml:"SegmentTimers,omitempty" type:"Repeated"`
-	// The scheduled task type.
+	// The type of the scheduled task.
 	//
 	// Valid value:
 	//
@@ -187,7 +187,7 @@ type ModifyTimerGroupRequestConfigTimers struct {
 	//
 	// 	- NoOperationReboot: scheduled restart upon inactivity.
 	//
-	// 	- TimerReboot: scheduled restart.
+	// 	- TimerReboot: Restarts the cloud computers on schedule.
 	//
 	// example:
 	//

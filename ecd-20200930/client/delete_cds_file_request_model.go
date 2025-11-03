@@ -22,7 +22,7 @@ type iDeleteCdsFileRequest interface {
 }
 
 type DeleteCdsFileRequest struct {
-	// The ID of the cloud disk.
+	// The ID of the enterprise drive.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,13 @@ type DeleteCdsFileRequest struct {
 	//
 	// cn-hangzhou+cds-066224****
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	// The ID of the end user who uses the cloud disk.
+	// The ID of the user who uses the network disk.
 	//
 	// example:
 	//
 	// user01
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The ID of the file. The ID is a unique identifier for the file.
+	// The file ID. You can call the [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) operation to query the ID of the file.
 	//
 	// This parameter is required.
 	//
@@ -44,9 +44,13 @@ type DeleteCdsFileRequest struct {
 	//
 	// 6333e553a133ce21e6f747cf948bb9ef95d7****
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The group ID.
+	// The ID of the team space.
+	//
+	// example:
+	//
+	// cg-i1ruuudp92qpj****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
 	//
 	// This parameter is required.
 	//

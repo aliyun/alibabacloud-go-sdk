@@ -18,13 +18,18 @@ type iModifyOfficeSiteDnsInfoRequest interface {
 }
 
 type ModifyOfficeSiteDnsInfoRequest struct {
+	// The IP addresses of the custom DNS servers. Up to 2 IP addresses can be specified.
 	DnsAddress []*string `json:"DnsAddress,omitempty" xml:"DnsAddress,omitempty" type:"Repeated"`
+	// The office network ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-778418****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The region ID of the instance. You can call the DescribeRegions operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:

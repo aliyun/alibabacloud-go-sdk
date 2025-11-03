@@ -18,14 +18,24 @@ type iListTransferFilesRequest interface {
 }
 
 type ListTransferFilesRequest struct {
+	// The number of entries to return on each page.
+	//
+	// Maximum value: 100.
+	//
+	// Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the transmission task.
+	//
 	// example:
 	//
 	// trt-03tdwg4tcuwdzv****

@@ -22,22 +22,32 @@ type iCreateEcdReportTaskResponseBody interface {
 }
 
 type CreateEcdReportTaskResponseBody struct {
+	// The request result. If the request was successful, `success` is returned. If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message returned if the request failed. This parameter is not returned if the value of Code is success.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the report export task.
+	//
 	// example:
 	//
 	// ret-g67ip******

@@ -26,27 +26,40 @@ type iDescribeDrivesResponseBody interface {
 }
 
 type DescribeDrivesResponseBody struct {
+	// The response code. The value 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The total number of storage resources.
+	//
 	// example:
 	//
 	// 2
-	Count  *int32                              `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The user-level storage resources.
 	Drives []*DescribeDrivesResponseBodyDrives `json:"Drives,omitempty" xml:"Drives,omitempty" type:"Repeated"`
+	// The returned message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// AAAA****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B7AA****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -138,79 +151,152 @@ func (s *DescribeDrivesResponseBody) Validate() error {
 }
 
 type DescribeDrivesResponseBodyDrives struct {
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 1202****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The introduction to the storage resource.
+	//
 	// example:
 	//
 	// test****
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The number of associated cloud computer pools.
+	//
+	// >  This parameter is returned only if ResourceType is set to NAS and Type is set to USER_PROFILE.
+	//
 	// example:
 	//
 	// 1
-	DesktopGroupCount *int32                                           `json:"DesktopGroupCount,omitempty" xml:"DesktopGroupCount,omitempty"`
-	DesktopGroups     []*DescribeDrivesResponseBodyDrivesDesktopGroups `json:"DesktopGroups,omitempty" xml:"DesktopGroups,omitempty" type:"Repeated"`
+	DesktopGroupCount *int32 `json:"DesktopGroupCount,omitempty" xml:"DesktopGroupCount,omitempty"`
+	// The details of the associated cloud computers.
+	//
+	// >  This parameter is returned only if ResourceType is set to NAS and Type is set to USER_PROFILE.
+	DesktopGroups []*DescribeDrivesResponseBodyDrivesDesktopGroups `json:"DesktopGroups,omitempty" xml:"DesktopGroups,omitempty" type:"Repeated"`
+	// The ID of the storage resource.
+	//
 	// example:
 	//
 	// dom-aaaa****
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// The ID of the user-level storage resource.
+	//
 	// example:
 	//
 	// dri-aaaa****
 	DriveId *string `json:"DriveId,omitempty" xml:"DriveId,omitempty"`
+	// Indicates whether the UPM feature is enabled.
+	//
 	// example:
 	//
 	// true
 	EnableProfileManagement *bool `json:"EnableProfileManagement,omitempty" xml:"EnableProfileManagement,omitempty"`
+	// The ID of the external storage resource.
+	//
+	// 	- If ResourceType is set to NAS, the NAS ID is returned for this parameter.
+	//
+	// 	- If ResourceType is set to PDS, the PDS ID is returned for this parameter.
+	//
 	// example:
 	//
 	// 0976****
 	ExternalDomainId *string `json:"ExternalDomainId,omitempty" xml:"ExternalDomainId,omitempty"`
+	// The ID of the storage resource at the external user level.
+	//
+	// >  This parameter is returned only if ResourceType is set to PDS.
+	//
 	// example:
 	//
 	// 1100****
 	ExternalDriveId *string `json:"ExternalDriveId,omitempty" xml:"ExternalDriveId,omitempty"`
+	// The ID of the external user.
+	//
+	// >  This parameter is returned only if ResourceType is set to PDS.
+	//
 	// example:
 	//
 	// user01@cn-hangzhou.120****
 	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
+	// The time when the storage resource was created.
+	//
 	// example:
 	//
 	// 2025-07-02T08:42:26.000+00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the storage resource was modified.
+	//
 	// example:
 	//
 	// 2025-07-07T02:46:04.000+00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The user ID.
+	//
+	// >  You can ignore this parameter.
+	//
 	// example:
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the storage resource.
+	//
 	// example:
 	//
 	// test****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// >  This parameter is deprecated.
+	//
 	// example:
 	//
 	// -
 	ProfileRoaming *bool `json:"ProfileRoaming,omitempty" xml:"ProfileRoaming,omitempty"`
+	// The status of the user-level storage resource.
+	//
+	// Valid values:
+	//
+	// 	- INIT: initializing
+	//
+	// 	- MAINTAIN: maintaining
+	//
+	// 	- DELETING: deleting
+	//
+	// 	- INVALID: invalid
+	//
+	// 	- NORMAL: normal
+	//
+	// 	- FAIL: failed
+	//
 	// example:
 	//
 	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total amount of user-level storage capacity.
+	//
 	// example:
 	//
 	// 536870912000
 	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The usage of the storage resource.
+	//
+	// Valid values:
+	//
+	// 	- DESKTOP: data disk space
+	//
+	// 	- USER_PROFILE: personal data space
+	//
 	// example:
 	//
 	// USER_PROFILE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The amount of user-level storage capacity used.
+	//
 	// example:
 	//
 	// 243175936
 	UsedSize *int64 `json:"UsedSize,omitempty" xml:"UsedSize,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// user01
@@ -419,10 +505,14 @@ func (s *DescribeDrivesResponseBodyDrives) Validate() error {
 }
 
 type DescribeDrivesResponseBodyDrivesDesktopGroups struct {
+	// The ID of the cloud computer pool.
+	//
 	// example:
 	//
 	// dg-aaaa****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	// The name of the cloud computer pool.
+	//
 	// example:
 	//
 	// group01

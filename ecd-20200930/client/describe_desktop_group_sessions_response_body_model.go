@@ -100,6 +100,8 @@ func (s *DescribeDesktopGroupSessionsResponseBody) Validate() error {
 }
 
 type DescribeDesktopGroupSessionsResponseBodySessions struct {
+	// 账号类型
+	//
 	// example:
 	//
 	// SIMPLE
@@ -110,7 +112,7 @@ type DescribeDesktopGroupSessionsResponseBodySessions struct {
 	//
 	// 172.21.XX.XX
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// The OS that the client runs.
+	// The operating system of the client.
 	//
 	// example:
 	//
@@ -122,24 +124,26 @@ type DescribeDesktopGroupSessionsResponseBodySessions struct {
 	//
 	// 2.0.0-R-20221030.08****
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	// The ID of the desktop group.
+	// The ID of the shared cloud computer.
 	//
 	// example:
 	//
 	// dg-iaqu3bi2xtie****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The name of the desktop group.
+	// The name of the cloud computer share.
 	//
 	// example:
 	//
 	// Test
 	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
-	// If the session is being established, the value of this parameter indicates the ID of the current cloud desktop. If the session is disconnected, the value of this parameter indicates the ID of the cloud desktop that was most recently connected.
+	// If the session status is Connected, it indicates the ID of the cloud computer that is currently connected. If the session status is Disconnected, it indicates the ID of the cloud computer that was last connected.
 	//
 	// example:
 	//
 	// ecd-g6t1ukbaea****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// 办公网络类型
+	//
 	// example:
 	//
 	// SIMPLE
@@ -150,7 +154,7 @@ type DescribeDesktopGroupSessionsResponseBodySessions struct {
 	//
 	// 1678794261000
 	EndUserApplyCoordinateTime *int64 `json:"EndUserApplyCoordinateTime,omitempty" xml:"EndUserApplyCoordinateTime,omitempty"`
-	// The ID of the end user.
+	// The user ID of the terminal that connects to the session.
 	//
 	// example:
 	//
@@ -168,29 +172,31 @@ type DescribeDesktopGroupSessionsResponseBodySessions struct {
 	//
 	// 2022-08-31 06:56:45
 	LastSessionStartTime *string `json:"LastSessionStartTime,omitempty" xml:"LastSessionStartTime,omitempty"`
-	// The duration of the most recent session.
+	// The duration of the most recent session. Unit: seconds.
 	//
 	// example:
 	//
 	// 120
 	LatestConnectionTime *int64 `json:"LatestConnectionTime,omitempty" xml:"LatestConnectionTime,omitempty"`
-	// The ID of the workspace.
+	// The office network ID.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-8904****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The name of the workspace.
+	// The office network name.
 	//
 	// example:
 	//
 	// Test
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	// The OS. Valid values:
+	// The operating system type of the cloud computer.
 	//
-	// 	- Windows
+	// Valid values:
 	//
-	// 	- Linux
+	// 	- linux.
+	//
+	// 	- Windows.
 	//
 	// example:
 	//
@@ -208,13 +214,19 @@ type DescribeDesktopGroupSessionsResponseBodySessions struct {
 	//
 	// 0
 	OwnType *int32 `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
-	// The type of the protocol.
+	// The protocol type supported by the rule.
+	//
+	// Valid value:
+	//
+	// 	- High-definition Experience (HDX).
+	//
+	// 	- ASP.
 	//
 	// example:
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The duration during which the cloud desktop stays in the Idle state.
+	// The idle duration of the cloud computer. Unit: seconds.
 	//
 	// example:
 	//
@@ -243,9 +255,10 @@ type DescribeDesktopGroupSessionsResponseBodySessions struct {
 	// example:
 	//
 	// Connected
-	SessionStatus *string                                                       `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
-	TerminalInfo  *DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo `json:"TerminalInfo,omitempty" xml:"TerminalInfo,omitempty" type:"Struct"`
-	// The total duration of the sessions.
+	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
+	// Terminal Info
+	TerminalInfo *DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo `json:"TerminalInfo,omitempty" xml:"TerminalInfo,omitempty" type:"Struct"`
+	// The total duration of the sessions. Unit: seconds.
 	//
 	// example:
 	//
@@ -469,18 +482,26 @@ func (s *DescribeDesktopGroupSessionsResponseBodySessions) Validate() error {
 }
 
 type DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo struct {
+	// The type of the terminal.
+	//
 	// example:
 	//
 	// wuying_mac_x86_64
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The terminal type.
+	//
 	// example:
 	//
 	// Mac
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// Terminal Serial Number
+	//
 	// example:
 	//
 	// 96c530bc-6095-4014-8bbc-d461b8ac****
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The terminal UUID.
+	//
 	// example:
 	//
 	// EBFDC7773BEBAD418A9F89429652****

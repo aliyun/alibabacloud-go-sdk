@@ -403,7 +403,10 @@ type CreateTemplateRequestRegionConfigList struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// eds.enterprise_office.8c16g
 	ResourceInstanceType *string `json:"ResourceInstanceType,omitempty" xml:"ResourceInstanceType,omitempty"`
 	// example:
 	//
@@ -540,8 +543,14 @@ func (s *CreateTemplateRequestResourceTagList) Validate() error {
 }
 
 type CreateTemplateRequestSiteConfigList struct {
+	// example:
+	//
+	// bwr-5a5371e0db954d********
 	AppRuleId *string `json:"AppRuleId,omitempty" xml:"AppRuleId,omitempty"`
-	SiteId    *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// mainland
+	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s CreateTemplateRequestSiteConfigList) String() string {

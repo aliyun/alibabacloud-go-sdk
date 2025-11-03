@@ -20,7 +20,7 @@ type iStopDesktopsRequest interface {
 }
 
 type StopDesktopsRequest struct {
-	// The IDs of the cloud computers. You can specify 1 to 20 IDs.
+	// The cloud computer IDs. You can specify the IDs of 1 to 100 cloud computers.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,12 @@ type StopDesktopsRequest struct {
 	//
 	// ecd-7w78ozhjcwa3u****
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	OsUpdate  *bool     `json:"OsUpdate,omitempty" xml:"OsUpdate,omitempty"`
+	// Whether to perform a patch update when the update is ready. A value of true indicates that a patch update is performed.
+	//
+	// example:
+	//
+	// false
+	OsUpdate *bool `json:"OsUpdate,omitempty" xml:"OsUpdate,omitempty"`
 	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
 	//
 	// This parameter is required.

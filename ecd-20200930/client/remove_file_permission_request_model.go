@@ -24,7 +24,7 @@ type iRemoveFilePermissionRequest interface {
 }
 
 type RemoveFilePermissionRequest struct {
-	// The ID of the cloud disk in Cloud Drive Service.
+	// The ID of the enterprise drive.
 	//
 	// This parameter is required.
 	//
@@ -32,13 +32,13 @@ type RemoveFilePermissionRequest struct {
 	//
 	// cn-hangzhou+cds-066224****
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	// The user ID.
+	// The ID of the end user.
 	//
 	// example:
 	//
 	// user01
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The file ID. The ID is a unique identifier for the file.
+	// The file ID. You can call the [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) operation to query the ID of the file.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +46,17 @@ type RemoveFilePermissionRequest struct {
 	//
 	// 6333e553a133ce21e6f747cf948bb9ef95d7****
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The group ID.
+	// The ID of the team space.
+	//
+	// example:
+	//
+	// cg-1fbmvrc7ug5m7****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The users that you want to authorize.
+	// The users that you want to authorize to use the cloud disk.
 	//
 	// This parameter is required.
 	MemberList []*RemoveFilePermissionRequestMemberList `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
 	//
 	// This parameter is required.
 	//
@@ -142,165 +146,35 @@ type RemoveFilePermissionRequestMemberList struct {
 	//
 	// This parameter is required.
 	CdsIdentity *RemoveFilePermissionRequestMemberListCdsIdentity `json:"CdsIdentity,omitempty" xml:"CdsIdentity,omitempty" type:"Struct"`
-	// The role ID. You can configure permissions on roles or actions. This parameter is used to specify the permissions on roles, which conflicts with the ActionList parameter. When you configure both the parameters, this parameter shall prevail.
+	// You can set permissions by specifying roles or by customizing operation permissions. This field is used to set permissions by specifying roles. This field is mutually exclusive with `ActionList`.
 	//
 	// Valid values:
 	//
-	// 	- SystemFileEditorWithoutShareLink
+	// 	- SystemFileEditorWithoutShareLink: the role that has the permissions to edit files but cannot share files.
 	//
-	//     <!-- -->
+	// 	- SystemFileUploaderAndDownloaderWithShareLink: the role that has the permissions to upload, download, and share files.
 	//
-	//     :
+	// 	- SystemFileDownloader: the role that has the permissions to download files.
 	//
-	//     <!-- -->
+	// 	- SystemFileEditorWithoutDelete: the role that has the permissions to edit files but cannot delete files.
 	//
-	//     the role that has the permissions to edit files but cannot share files
+	// 	- SystemFileOwner: the role that has the permissions to collaborate with others.
 	//
-	//     <!-- -->
+	// 	- SystemFileDownloaderWithShareLink: the role that has the permissions to download and share files
 	//
-	// 	- SystemFileUploaderAndDownloaderWithShareLink
+	// 	- SystemFileUploaderAndViewer: the role that has the permissions to preview or upload files.
 	//
-	//     <!-- -->
+	// 	- SystemFileViewer: the role that has the permissions to preview files.
 	//
-	//     :
+	// 	- SystemFileEditor: the role that has the permissions to edit files
 	//
-	//     <!-- -->
+	// 	- SystemFileUploaderWithShareLink: the role that has the permissions to upload or share files.
 	//
-	//     the role that has the permissions to upload, download, and share files
+	// 	- SystemFileUploader: the role that has the permission to upload files.
 	//
-	//     <!-- -->
+	// 	- SystemFileUploaderAndDownloader: the role that has the permissions to upload or download files.
 	//
-	// 	- SystemFileDownloader
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     the role that has the permissions to download files
-	//
-	//     <!-- -->
-	//
-	// 	- SystemFileEditorWithoutDelete
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     the role that has the permissions to edit files but cannot delete files
-	//
-	//     <!-- -->
-	//
-	// 	- SystemFileOwner
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     the role that has the permissions to collaborate with others
-	//
-	//     <!-- -->
-	//
-	// 	- SystemFileDownloaderWithShareLink
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     the role that has the permissions to download and share files
-	//
-	//     <!-- -->
-	//
-	// 	- SystemFileUploaderAndViewer
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     the role that has the permissions to preview or upload files
-	//
-	//     <!-- -->
-	//
-	// 	- SystemFileViewer
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     the role that has the permissions to preview files
-	//
-	//     <!-- -->
-	//
-	// 	- SystemFileEditor
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     the role that has the permissions to edit files
-	//
-	//     <!-- -->
-	//
-	// 	- SystemFileUploaderWithShareLink
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     the role that has the permissions to upload or share files
-	//
-	//     <!-- -->
-	//
-	// 	- SystemFileUploader
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     the role that has the permission to upload files
-	//
-	//     <!-- -->
-	//
-	// 	- SystemFileUploaderAndDownloader
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     the role that has the permissions to upload or download files
-	//
-	//     <!-- -->
-	//
-	// 	- SystemFileMetaViewer
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     the role that has the permissions to view files
-	//
-	//     <!-- -->
+	// 	- SystemFileMetaViewer: the role that has the permissions to view files
 	//
 	// This parameter is required.
 	//
@@ -358,29 +232,9 @@ type RemoveFilePermissionRequestMemberListCdsIdentity struct {
 	//
 	// Valid values:
 	//
-	// 	- IT_Group
+	// 	- IT_Group: group.
 	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     group
-	//
-	//     <!-- -->
-	//
-	// 	- IT_User
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     user
-	//
-	//     <!-- -->
+	// 	- IT_User: user.
 	//
 	// This parameter is required.
 	//

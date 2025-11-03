@@ -25,7 +25,7 @@ type iDescribePolicyGroupsResponseBody interface {
 
 type DescribePolicyGroupsResponseBody struct {
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The cloud computer policies.
+	// The details of the cloud computer policies.
 	DescribePolicyGroups []*DescribePolicyGroupsResponseBodyDescribePolicyGroups `json:"DescribePolicyGroups,omitempty" xml:"DescribePolicyGroups,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
 	//
@@ -143,6 +143,8 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	AuthorizeAccessPolicyRules []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules `json:"AuthorizeAccessPolicyRules,omitempty" xml:"AuthorizeAccessPolicyRules,omitempty" type:"Repeated"`
 	// The security group rules.
 	AuthorizeSecurityPolicyRules []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules `json:"AuthorizeSecurityPolicyRules,omitempty" xml:"AuthorizeSecurityPolicyRules,omitempty" type:"Repeated"`
+	// The automatic client connection recovery configurations.
+	//
 	// example:
 	//
 	// off
@@ -454,6 +456,8 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// off
 	MobileRestart *string `json:"MobileRestart,omitempty" xml:"MobileRestart,omitempty"`
+	// Indicates whether the Windows security control is enabled for mobile clients.
+	//
 	// example:
 	//
 	// off
@@ -472,10 +476,14 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// off
 	MobileShutdown *string `json:"MobileShutdown,omitempty" xml:"MobileShutdown,omitempty"`
+	// Indicates whether the Cloud Computer Manager is enabled for mobile clients.
+	//
 	// example:
 	//
 	// off
 	MobileWuyingKeeper *string `json:"MobileWuyingKeeper,omitempty" xml:"MobileWuyingKeeper,omitempty"`
+	// Indicates whether the Xiaoying AI Assistant is enabled for mobile clients.
+	//
 	// example:
 	//
 	// off
@@ -595,11 +603,13 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// 10
-	RecordEventDuration *int32    `json:"RecordEventDuration,omitempty" xml:"RecordEventDuration,omitempty"`
+	RecordEventDuration *int32 `json:"RecordEventDuration,omitempty" xml:"RecordEventDuration,omitempty"`
+	// The screen recording file suffix.
 	RecordEventFileExts []*string `json:"RecordEventFileExts,omitempty" xml:"RecordEventFileExts,omitempty" type:"Repeated"`
 	// The array of absolute paths of the monitored files in the screen recording audit policy.
-	RecordEventFilePaths []*string                                                                `json:"RecordEventFilePaths,omitempty" xml:"RecordEventFilePaths,omitempty" type:"Repeated"`
-	RecordEventLevels    []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsRecordEventLevels `json:"RecordEventLevels,omitempty" xml:"RecordEventLevels,omitempty" type:"Repeated"`
+	RecordEventFilePaths []*string `json:"RecordEventFilePaths,omitempty" xml:"RecordEventFilePaths,omitempty" type:"Repeated"`
+	// Indicates whether the screen recording event severity is enabled.
+	RecordEventLevels []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsRecordEventLevels `json:"RecordEventLevels,omitempty" xml:"RecordEventLevels,omitempty" type:"Repeated"`
 	// The array of absolute paths of the monitored registry entries in the screen recording audit policy.
 	RecordEventRegisters []*string `json:"RecordEventRegisters,omitempty" xml:"RecordEventRegisters,omitempty" type:"Repeated"`
 	// Indicates whether the screen recording feature is enabled.
@@ -2788,8 +2798,10 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroupsNetRedirectRule) Va
 }
 
 type DescribePolicyGroupsResponseBodyDescribePolicyGroupsRecordEventLevels struct {
+	// The event severity.
 	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
-	EventType  *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The event type.
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 }
 
 func (s DescribePolicyGroupsResponseBodyDescribePolicyGroupsRecordEventLevels) String() string {

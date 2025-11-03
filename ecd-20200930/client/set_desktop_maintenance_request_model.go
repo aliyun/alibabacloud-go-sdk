@@ -18,14 +18,26 @@ type iSetDesktopMaintenanceRequest interface {
 }
 
 type SetDesktopMaintenanceRequest struct {
+	// A list of cloud computer IDs for which you want to set maintenance mode. A maximum of 100 cloud computer IDs are supported.
+	//
 	// This parameter is required.
 	DesktopIds []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
+	// Enter or exit cloud computer maintenance mode.
+	//
+	// Enumerated values:
+	//
+	// 	- ENTER: The enters the maintenance mode.
+	//
+	// 	- EXIT: The exits the maintenance mode.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// enter
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -32,7 +32,7 @@ type iListCdsFilesShrinkRequest interface {
 }
 
 type ListCdsFilesShrinkRequest struct {
-	// The ID of the cloud disk.
+	// The ID of the enterprise drive.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type ListCdsFilesShrinkRequest struct {
 	//
 	// cn-hangzhou+cds-320357****
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	// The ID of the user to whom the cloud disk is allocated.
+	// The ID of the user to which the network disk is assigned.
 	//
 	// example:
 	//
@@ -48,14 +48,19 @@ type ListCdsFilesShrinkRequest struct {
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The IDs of the files to be queried.
 	FileIdsShrink *string `json:"FileIds,omitempty" xml:"FileIds,omitempty"`
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the team space.
+	//
+	// example:
+	//
+	// cg-i1ruuudp92qpj****
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The number of entries to return on each page. Default value: 100.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used for the next query. If this parameter is empty, all results are returned.
+	// The query token. Set the value to the value of the `NextToken` parameter returned in the last call to the operation. You do not need to set this parameter when you call the operation for the first time.
 	//
 	// example:
 	//
@@ -65,113 +70,33 @@ type ListCdsFilesShrinkRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- CreateTimeDesc
+	// 	- CreateTimeDesc: sorts the by creation time in descending order.
 	//
-	//     <!-- -->
+	// 	- ModifiedTimeAsc: sort the by modification time in ascending order.
 	//
-	//     :
+	// 	- NameDesc: sorts the by file name in descending order.
 	//
-	//     <!-- -->
+	// 	- SizeAsc: sorts by file size in ascending order.
 	//
-	//     sorts files in descending order based on the time when they are created.
+	// 	- ModifiedTimeDesc: sort the by modification time in descending order.
 	//
-	//     <!-- -->
+	// 	- CreateTimeAsc: sorts the by creation time in ascending order.
 	//
-	// 	- ModifiedTimeAsc
+	// 	- SizeDesc: sorts by file size in descending order.
 	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     sorts files in ascending order based on the time when they are modified.
-	//
-	//     <!-- -->
-	//
-	// 	- NameDesc
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     sorts files in descending order based on their names.
-	//
-	//     <!-- -->
-	//
-	// 	- SizeAsc
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     sorts files in ascending order based on their sizes.
-	//
-	//     <!-- -->
-	//
-	// 	- ModifiedTimeDesc
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     sorts files in descending order based on the time when they are modified.
-	//
-	//     <!-- -->
-	//
-	// 	- CreateTimeAsc
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     sorts files in ascending order based on the time when they are created.
-	//
-	//     <!-- -->
-	//
-	// 	- SizeDesc
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     sorts files in descending order based on their sizes.
-	//
-	//     <!-- -->
-	//
-	// 	- NameAsc
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     sorts files in ascending order based on their names.
-	//
-	//     <!-- -->
+	// 	- NameAsc: sorts by file name in ascending order.
 	//
 	// example:
 	//
 	// CreateTimeDesc
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The ID of the parent file.
+	// The parent folder ID. You can obtain the value by using the response parameter `FileId` of this operation.
 	//
 	// example:
 	//
 	// 63636837e47e5a24a8a940218bef395c210e****
 	ParentFileId *string `json:"ParentFileId,omitempty" xml:"ParentFileId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The ID of the logon region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to obtain the list of regions supported by cloud computers.
 	//
 	// example:
 	//
@@ -181,29 +106,9 @@ type ListCdsFilesShrinkRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- available
+	// 	- available: returns only normal file.
 	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     returns only normal files.
-	//
-	//     <!-- -->
-	//
-	// 	- uploading
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     returns only the files that are being uploaded.
-	//
-	//     <!-- -->
+	// 	- uploading: returns only the of objects that are being uploaded.
 	//
 	// example:
 	//

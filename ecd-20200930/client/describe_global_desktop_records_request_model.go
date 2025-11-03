@@ -42,61 +42,114 @@ type iDescribeGlobalDesktopRecordsRequest interface {
 }
 
 type DescribeGlobalDesktopRecordsRequest struct {
+	// The cloud computer IDs. You can specify 1 to 100 office network IDs.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
+	// The name of the cloud computer.
+	//
 	// example:
 	//
 	// DemoComputer
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	// The cloud computer type. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the IDs of the specifications supported by the cloud computer.
+	//
 	// example:
 	//
 	// eds.enterprise_office.2c4g
 	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
+	// The end time. The interval between the start time and end time can be up to 30 days. Supported formats:
+	//
+	// 	- Format: YYYY-MM-DDThh:mm:ssZ.
+	//
 	// example:
 	//
 	// 2022-08-31T06:56:45Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end user ID.
+	//
 	// example:
 	//
 	// TestUser
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The office network IDs.
+	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The sorting field. If this parameter is not provided, results are sorted by creation time in descending order. Valid values:
+	//
+	// 	- uptime: indicates that the cloud computers are sorted by startup duration.
+	//
 	// example:
 	//
 	// uptime
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The page number of the current page.\\
+	//
+	// Default value: 1
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// 	- China (Shanghai)
+	//
+	// 	- Singapore
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-3mtuc28rx95lx****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The query range. This parameter is empty by default. Optional values are:
+	//
+	// 	- ADVANCED: indicates that statistics such as the connection duration are queried.
+	//
 	// example:
 	//
 	// ADVANCED
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The sorting method. Default value: ascending. Valid value:
+	//
+	// 	- Asc: ascending order
+	//
+	// 	- Desc: descending.
+	//
 	// example:
 	//
 	// Asc
 	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
+	// The start time. Supported formats:
+	//
+	// 	- Format: YYYY-MM-DDThh:mm:ssZ.
+	//
 	// example:
 	//
 	// 2022-03-23T04:10:21Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The way to purchase cloud computers. Valid values:
+	//
+	// 	- prePaid: The monthly purchase is unlimited.
+	//
+	// 	- postPaid: pay-as-you-go
+	//
+	// 	- monthPackage: monthly duration.
+	//
 	// example:
 	//
 	// monthPackage

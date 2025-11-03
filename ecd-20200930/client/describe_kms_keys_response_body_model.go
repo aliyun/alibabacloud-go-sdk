@@ -22,13 +22,25 @@ type iDescribeKmsKeysResponseBody interface {
 type DescribeKmsKeysResponseBody struct {
 	// The authorization status.
 	//
+	// Valid value:
+	//
+	// 	- not_authorized
+	//
+	// 	- authorized
+	//
 	// example:
 	//
 	// authorized
 	AuthorizeStatus *string `json:"AuthorizeStatus,omitempty" xml:"AuthorizeStatus,omitempty"`
-	// Details about the customer master keys (CMKs).
+	// Customer master key (CMK)
 	Keys []*DescribeKmsKeysResponseBodyKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
 	// Indicates whether KMS is activated.
+	//
+	// Valid value:
+	//
+	// 	- disabled
+	//
+	// 	- enabled
 	//
 	// example:
 	//
