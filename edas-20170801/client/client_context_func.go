@@ -2355,6 +2355,10 @@ func (client *Client) DeployK8sApplicationWithContext(ctx context.Context, reque
 		query["RuntimeClassName"] = request.RuntimeClassName
 	}
 
+	if !dara.IsNil(request.SecurityContext) {
+		query["SecurityContext"] = request.SecurityContext
+	}
+
 	if !dara.IsNil(request.Sidecars) {
 		query["Sidecars"] = request.Sidecars
 	}
@@ -2521,6 +2525,57 @@ func (client *Client) DescribeApplicationScalingRulesWithContext(ctx context.Con
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeApplicationScalingRulesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeLocalitySettingRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLocalitySettingResponse
+func (client *Client) DescribeLocalitySettingWithContext(ctx context.Context, request *DescribeLocalitySettingRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeLocalitySettingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.NamespaceId) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !dara.IsNil(request.Region) {
+		query["Region"] = request.Region
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLocalitySetting"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/sp/applications/locality/setting"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLocalitySettingResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4537,6 +4592,10 @@ func (client *Client) InsertK8sApplicationWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.SecretName) {
 		query["SecretName"] = request.SecretName
+	}
+
+	if !dara.IsNil(request.SecurityContext) {
+		query["SecurityContext"] = request.SecurityContext
 	}
 
 	if !dara.IsNil(request.ServiceConfigs) {

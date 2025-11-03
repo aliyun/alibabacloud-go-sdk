@@ -403,7 +403,8 @@ type GetK8sApplicationResponseBodyApplcationApp struct {
 	// example:
 	//
 	// 1024
-	RequestMem *int32 `json:"RequestMem,omitempty" xml:"RequestMem,omitempty"`
+	RequestMem      *int32  `json:"RequestMem,omitempty" xml:"RequestMem,omitempty"`
+	SecurityContext *string `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty"`
 	// The configuration information about the Server Load Balancer (SLB).
 	//
 	// example:
@@ -606,6 +607,10 @@ func (s *GetK8sApplicationResponseBodyApplcationApp) GetRequestMem() *int32 {
 	return s.RequestMem
 }
 
+func (s *GetK8sApplicationResponseBodyApplcationApp) GetSecurityContext() *string {
+	return s.SecurityContext
+}
+
 func (s *GetK8sApplicationResponseBodyApplcationApp) GetSlbInfo() *string {
 	return s.SlbInfo
 }
@@ -775,6 +780,11 @@ func (s *GetK8sApplicationResponseBodyApplcationApp) SetRequestEphemeralStorage(
 
 func (s *GetK8sApplicationResponseBodyApplcationApp) SetRequestMem(v int32) *GetK8sApplicationResponseBodyApplcationApp {
 	s.RequestMem = &v
+	return s
+}
+
+func (s *GetK8sApplicationResponseBodyApplcationApp) SetSecurityContext(v string) *GetK8sApplicationResponseBodyApplcationApp {
+	s.SecurityContext = &v
 	return s
 }
 

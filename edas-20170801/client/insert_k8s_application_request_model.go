@@ -153,6 +153,8 @@ type iInsertK8sApplicationRequest interface {
 	GetRuntimeClassName() *string
 	SetSecretName(v string) *InsertK8sApplicationRequest
 	GetSecretName() *string
+	SetSecurityContext(v string) *InsertK8sApplicationRequest
+	GetSecurityContext() *string
 	SetServiceConfigs(v string) *InsertK8sApplicationRequest
 	GetServiceConfigs() *string
 	SetSidecars(v string) *InsertK8sApplicationRequest
@@ -713,7 +715,8 @@ type InsertK8sApplicationRequest struct {
 	// example:
 	//
 	// edas-app-01-image-secret
-	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	SecretName      *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	SecurityContext *string `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty"`
 	// The configurations of services in a Kubernetes cluster.
 	//
 	// example:
@@ -1144,6 +1147,10 @@ func (s *InsertK8sApplicationRequest) GetSecretName() *string {
 	return s.SecretName
 }
 
+func (s *InsertK8sApplicationRequest) GetSecurityContext() *string {
+	return s.SecurityContext
+}
+
 func (s *InsertK8sApplicationRequest) GetServiceConfigs() *string {
 	return s.ServiceConfigs
 }
@@ -1553,6 +1560,11 @@ func (s *InsertK8sApplicationRequest) SetRuntimeClassName(v string) *InsertK8sAp
 
 func (s *InsertK8sApplicationRequest) SetSecretName(v string) *InsertK8sApplicationRequest {
 	s.SecretName = &v
+	return s
+}
+
+func (s *InsertK8sApplicationRequest) SetSecurityContext(v string) *InsertK8sApplicationRequest {
+	s.SecurityContext = &v
 	return s
 }
 

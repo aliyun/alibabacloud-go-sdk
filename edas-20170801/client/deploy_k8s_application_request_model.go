@@ -119,6 +119,8 @@ type iDeployK8sApplicationRequest interface {
 	GetRequestsEphemeralStorage() *int32
 	SetRuntimeClassName(v string) *DeployK8sApplicationRequest
 	GetRuntimeClassName() *string
+	SetSecurityContext(v string) *DeployK8sApplicationRequest
+	GetSecurityContext() *string
 	SetSidecars(v string) *DeployK8sApplicationRequest
 	GetSidecars() *string
 	SetSlsConfigs(v string) *DeployK8sApplicationRequest
@@ -592,6 +594,7 @@ type DeployK8sApplicationRequest struct {
 	//
 	// runc
 	RuntimeClassName *string `json:"RuntimeClassName,omitempty" xml:"RuntimeClassName,omitempty"`
+	SecurityContext  *string `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty"`
 	// example:
 	//
 	// [
@@ -964,6 +967,10 @@ func (s *DeployK8sApplicationRequest) GetRuntimeClassName() *string {
 	return s.RuntimeClassName
 }
 
+func (s *DeployK8sApplicationRequest) GetSecurityContext() *string {
+	return s.SecurityContext
+}
+
 func (s *DeployK8sApplicationRequest) GetSidecars() *string {
 	return s.Sidecars
 }
@@ -1288,6 +1295,11 @@ func (s *DeployK8sApplicationRequest) SetRequestsEphemeralStorage(v int32) *Depl
 
 func (s *DeployK8sApplicationRequest) SetRuntimeClassName(v string) *DeployK8sApplicationRequest {
 	s.RuntimeClassName = &v
+	return s
+}
+
+func (s *DeployK8sApplicationRequest) SetSecurityContext(v string) *DeployK8sApplicationRequest {
+	s.SecurityContext = &v
 	return s
 }
 
