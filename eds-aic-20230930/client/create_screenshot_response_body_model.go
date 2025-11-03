@@ -72,6 +72,7 @@ type CreateScreenshotResponseBodyTasks struct {
 	//
 	// acp-bwhtebzah2fse****
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
+	ScreenshotId      *string `json:"ScreenshotId,omitempty" xml:"ScreenshotId,omitempty"`
 	// The ID of the task. You can use the task ID with the DescribeTasks operation to get the download link for the screenshot.
 	//
 	// example:
@@ -92,12 +93,21 @@ func (s *CreateScreenshotResponseBodyTasks) GetAndroidInstanceId() *string {
 	return s.AndroidInstanceId
 }
 
+func (s *CreateScreenshotResponseBodyTasks) GetScreenshotId() *string {
+	return s.ScreenshotId
+}
+
 func (s *CreateScreenshotResponseBodyTasks) GetTaskId() *string {
 	return s.TaskId
 }
 
 func (s *CreateScreenshotResponseBodyTasks) SetAndroidInstanceId(v string) *CreateScreenshotResponseBodyTasks {
 	s.AndroidInstanceId = &v
+	return s
+}
+
+func (s *CreateScreenshotResponseBodyTasks) SetScreenshotId(v string) *CreateScreenshotResponseBodyTasks {
+	s.ScreenshotId = &v
 	return s
 }
 

@@ -1068,6 +1068,10 @@ func (client *Client) CreateScreenshotWithContext(ctx context.Context, request *
 		query["OssBucketName"] = request.OssBucketName
 	}
 
+	if !dara.IsNil(request.ScreenshotId) {
+		query["ScreenshotId"] = request.ScreenshotId
+	}
+
 	if !dara.IsNil(request.SkipCheckPolicyConfig) {
 		query["SkipCheckPolicyConfig"] = request.SkipCheckPolicyConfig
 	}

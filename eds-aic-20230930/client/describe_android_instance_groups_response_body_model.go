@@ -119,10 +119,11 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	// example:
 	//
 	// 5
-	AvailableInstanceAmount *int32  `json:"AvailableInstanceAmount,omitempty" xml:"AvailableInstanceAmount,omitempty"`
-	BandwidthPackageId      *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	BandwidthPackageStatus  *string `json:"BandwidthPackageStatus,omitempty" xml:"BandwidthPackageStatus,omitempty"`
-	BandwidthPackageType    *string `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
+	AvailableInstanceAmount *int32                                                                   `json:"AvailableInstanceAmount,omitempty" xml:"AvailableInstanceAmount,omitempty"`
+	BandwidthPackageId      *string                                                                  `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	BandwidthPackageStatus  *string                                                                  `json:"BandwidthPackageStatus,omitempty" xml:"BandwidthPackageStatus,omitempty"`
+	BandwidthPackageType    *string                                                                  `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
+	BindQosRules            *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules `json:"BindQosRules,omitempty" xml:"BindQosRules,omitempty" type:"Struct"`
 	// The billing method.
 	//
 	// example:
@@ -288,6 +289,7 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	//
 	// vsw-t4n0yqs009ho024wt****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) String() string {
@@ -320,6 +322,10 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetBandwid
 
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetBandwidthPackageType() *string {
 	return s.BandwidthPackageType
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetBindQosRules() *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules {
+	return s.BindQosRules
 }
 
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetChargeType() *string {
@@ -442,6 +448,10 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetVSwitch
 	return s.VSwitchId
 }
 
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetZoneId() *string {
+	return s.ZoneId
+}
+
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetAppInstanceGroupId(v string) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
 	s.AppInstanceGroupId = &v
 	return s
@@ -469,6 +479,11 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetBandwid
 
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetBandwidthPackageType(v string) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
 	s.BandwidthPackageType = &v
+	return s
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetBindQosRules(v *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
+	s.BindQosRules = v
 	return s
 }
 
@@ -622,7 +637,17 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetVSwitch
 	return s
 }
 
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetZoneId(v string) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
+	s.ZoneId = &v
+	return s
+}
+
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) Validate() error {
+	if s.BindQosRules != nil {
+		if err := s.BindQosRules.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Disks != nil {
 		for _, item := range s.Disks {
 			if item != nil {
@@ -642,6 +667,85 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) Validate()
 		}
 	}
 	return nil
+}
+
+type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules struct {
+	InstanceQosRule []*DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule `json:"InstanceQosRule,omitempty" xml:"InstanceQosRule,omitempty" type:"Repeated"`
+	TotalCount      *int32                                                                                    `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules) GetInstanceQosRule() []*DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule {
+	return s.InstanceQosRule
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules) GetTotalCount() *int32 {
+	return s.TotalCount
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules) SetInstanceQosRule(v []*DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules {
+	s.InstanceQosRule = v
+	return s
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules) SetTotalCount(v int32) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules) Validate() error {
+	if s.InstanceQosRule != nil {
+		for _, item := range s.InstanceQosRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	QosRuleId  *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
+}
+
+func (s DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule) GetQosRuleId() *string {
+	return s.QosRuleId
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule) SetInstanceId(v string) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule) SetQosRuleId(v string) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule {
+	s.QosRuleId = &v
+	return s
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks struct {

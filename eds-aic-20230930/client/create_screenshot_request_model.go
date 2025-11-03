@@ -13,6 +13,8 @@ type iCreateScreenshotRequest interface {
 	GetAndroidInstanceIdList() []*string
 	SetOssBucketName(v string) *CreateScreenshotRequest
 	GetOssBucketName() *string
+	SetScreenshotId(v string) *CreateScreenshotRequest
+	GetScreenshotId() *string
 	SetSkipCheckPolicyConfig(v string) *CreateScreenshotRequest
 	GetSkipCheckPolicyConfig() *string
 }
@@ -28,6 +30,7 @@ type CreateScreenshotRequest struct {
 	//
 	// cloudphone-saved-bucket-cn-shanghai-default
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	ScreenshotId  *string `json:"ScreenshotId,omitempty" xml:"ScreenshotId,omitempty"`
 	// Specifies whether to bypass the snapshot policy control. Default value: false.
 	//
 	// example:
@@ -52,6 +55,10 @@ func (s *CreateScreenshotRequest) GetOssBucketName() *string {
 	return s.OssBucketName
 }
 
+func (s *CreateScreenshotRequest) GetScreenshotId() *string {
+	return s.ScreenshotId
+}
+
 func (s *CreateScreenshotRequest) GetSkipCheckPolicyConfig() *string {
 	return s.SkipCheckPolicyConfig
 }
@@ -63,6 +70,11 @@ func (s *CreateScreenshotRequest) SetAndroidInstanceIdList(v []*string) *CreateS
 
 func (s *CreateScreenshotRequest) SetOssBucketName(v string) *CreateScreenshotRequest {
 	s.OssBucketName = &v
+	return s
+}
+
+func (s *CreateScreenshotRequest) SetScreenshotId(v string) *CreateScreenshotRequest {
+	s.ScreenshotId = &v
 	return s
 }
 
