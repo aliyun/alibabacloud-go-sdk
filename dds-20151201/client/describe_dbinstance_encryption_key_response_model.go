@@ -59,5 +59,10 @@ func (s *DescribeDBInstanceEncryptionKeyResponse) SetBody(v *DescribeDBInstanceE
 }
 
 func (s *DescribeDBInstanceEncryptionKeyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *DescribeAvailableResourceResponseBody) SetSupportedDBTypes(v *DescribeA
 }
 
 func (s *DescribeAvailableResourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedDBTypes != nil {
+		if err := s.SupportedDBTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceResponseBodySupportedDBTypes struct {
@@ -78,7 +83,16 @@ func (s *DescribeAvailableResourceResponseBodySupportedDBTypes) SetSupportedDBTy
 }
 
 func (s *DescribeAvailableResourceResponseBodySupportedDBTypes) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedDBType != nil {
+		for _, item := range s.SupportedDBType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBType struct {
@@ -123,7 +137,12 @@ func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBType) S
 }
 
 func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBType) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableZones != nil {
+		if err := s.AvailableZones.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZones struct {
@@ -148,7 +167,16 @@ func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAva
 }
 
 func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZones) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableZone != nil {
+		for _, item := range s.AvailableZone {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZone struct {
@@ -204,7 +232,12 @@ func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAva
 }
 
 func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZone) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedEngineVersions != nil {
+		if err := s.SupportedEngineVersions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersions struct {
@@ -229,7 +262,16 @@ func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAva
 }
 
 func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersions) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedEngineVersion != nil {
+		for _, item := range s.SupportedEngineVersion {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersion struct {
@@ -270,7 +312,12 @@ func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAva
 }
 
 func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersion) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedEngines != nil {
+		if err := s.SupportedEngines.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEngines struct {
@@ -295,7 +342,16 @@ func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAva
 }
 
 func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEngines) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedEngine != nil {
+		for _, item := range s.SupportedEngine {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngine struct {
@@ -336,7 +392,12 @@ func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAva
 }
 
 func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngine) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedNodeTypes != nil {
+		if err := s.SupportedNodeTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypes struct {
@@ -361,7 +422,16 @@ func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAva
 }
 
 func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypes) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedNodeType != nil {
+		for _, item := range s.SupportedNodeType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeType struct {
@@ -417,7 +487,12 @@ func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAva
 }
 
 func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeType) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableResources != nil {
+		if err := s.AvailableResources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResources struct {
@@ -442,7 +517,16 @@ func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAva
 }
 
 func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResources) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableResource != nil {
+		for _, item := range s.AvailableResource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResource struct {
@@ -498,7 +582,12 @@ func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAva
 }
 
 func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResource) Validate() error {
-	return dara.Validate(s)
+	if s.DBInstanceStorageRange != nil {
+		if err := s.DBInstanceStorageRange.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResourceDBInstanceStorageRange struct {

@@ -64,8 +64,6 @@ type ReleaseNodePrivateNetworkAddressRequest struct {
 	//
 	// >  You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the ID of the shard or Configserver node.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// d-bp128a003436****

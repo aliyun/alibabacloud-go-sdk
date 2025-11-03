@@ -66,7 +66,17 @@ func (s *DescribeShardingNetworkAddressResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribeShardingNetworkAddressResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CompatibleConnections != nil {
+		if err := s.CompatibleConnections.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkAddresses != nil {
+		if err := s.NetworkAddresses.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeShardingNetworkAddressResponseBodyCompatibleConnections struct {
@@ -91,7 +101,16 @@ func (s *DescribeShardingNetworkAddressResponseBodyCompatibleConnections) SetCom
 }
 
 func (s *DescribeShardingNetworkAddressResponseBodyCompatibleConnections) Validate() error {
-	return dara.Validate(s)
+	if s.CompatibleConnection != nil {
+		for _, item := range s.CompatibleConnection {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeShardingNetworkAddressResponseBodyCompatibleConnectionsCompatibleConnection struct {
@@ -246,7 +265,16 @@ func (s *DescribeShardingNetworkAddressResponseBodyNetworkAddresses) SetNetworkA
 }
 
 func (s *DescribeShardingNetworkAddressResponseBodyNetworkAddresses) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkAddress != nil {
+		for _, item := range s.NetworkAddress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeShardingNetworkAddressResponseBodyNetworkAddressesNetworkAddress struct {

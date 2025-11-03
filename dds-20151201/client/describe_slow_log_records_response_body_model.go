@@ -121,7 +121,12 @@ func (s *DescribeSlowLogRecordsResponseBody) SetTotalRecordCount(v int32) *Descr
 }
 
 func (s *DescribeSlowLogRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSlowLogRecordsResponseBodyItems struct {
@@ -146,7 +151,16 @@ func (s *DescribeSlowLogRecordsResponseBodyItems) SetLogRecords(v []*DescribeSlo
 }
 
 func (s *DescribeSlowLogRecordsResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.LogRecords != nil {
+		for _, item := range s.LogRecords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSlowLogRecordsResponseBodyItemsLogRecords struct {

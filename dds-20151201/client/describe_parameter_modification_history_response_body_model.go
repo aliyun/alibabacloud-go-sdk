@@ -53,7 +53,12 @@ func (s *DescribeParameterModificationHistoryResponseBody) SetRequestId(v string
 }
 
 func (s *DescribeParameterModificationHistoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HistoricalParameters != nil {
+		if err := s.HistoricalParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeParameterModificationHistoryResponseBodyHistoricalParameters struct {
@@ -78,7 +83,16 @@ func (s *DescribeParameterModificationHistoryResponseBodyHistoricalParameters) S
 }
 
 func (s *DescribeParameterModificationHistoryResponseBodyHistoricalParameters) Validate() error {
-	return dara.Validate(s)
+	if s.HistoricalParameter != nil {
+		for _, item := range s.HistoricalParameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeParameterModificationHistoryResponseBodyHistoricalParametersHistoricalParameter struct {

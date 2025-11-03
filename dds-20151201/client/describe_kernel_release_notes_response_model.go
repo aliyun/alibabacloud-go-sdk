@@ -59,5 +59,10 @@ func (s *DescribeKernelReleaseNotesResponse) SetBody(v *DescribeKernelReleaseNot
 }
 
 func (s *DescribeKernelReleaseNotesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

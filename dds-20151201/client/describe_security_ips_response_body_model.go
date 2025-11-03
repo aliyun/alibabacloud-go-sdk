@@ -70,7 +70,12 @@ func (s *DescribeSecurityIpsResponseBody) SetSecurityIps(v string) *DescribeSecu
 }
 
 func (s *DescribeSecurityIpsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityIpGroups != nil {
+		if err := s.SecurityIpGroups.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityIpsResponseBodySecurityIpGroups struct {
@@ -95,7 +100,16 @@ func (s *DescribeSecurityIpsResponseBodySecurityIpGroups) SetSecurityIpGroup(v [
 }
 
 func (s *DescribeSecurityIpsResponseBodySecurityIpGroups) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityIpGroup != nil {
+		for _, item := range s.SecurityIpGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityIpsResponseBodySecurityIpGroupsSecurityIpGroup struct {

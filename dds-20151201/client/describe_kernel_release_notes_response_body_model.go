@@ -53,7 +53,12 @@ func (s *DescribeKernelReleaseNotesResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeKernelReleaseNotesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ReleaseNotes != nil {
+		if err := s.ReleaseNotes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeKernelReleaseNotesResponseBodyReleaseNotes struct {
@@ -78,7 +83,16 @@ func (s *DescribeKernelReleaseNotesResponseBodyReleaseNotes) SetReleaseNote(v []
 }
 
 func (s *DescribeKernelReleaseNotesResponseBodyReleaseNotes) Validate() error {
-	return dara.Validate(s)
+	if s.ReleaseNote != nil {
+		for _, item := range s.ReleaseNote {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeKernelReleaseNotesResponseBodyReleaseNotesReleaseNote struct {

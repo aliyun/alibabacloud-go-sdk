@@ -70,7 +70,16 @@ func (s *DescribeDBInstancesOverviewResponseBody) SetTotalCount(v string) *Descr
 }
 
 func (s *DescribeDBInstancesOverviewResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBInstances != nil {
+		for _, item := range s.DBInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstancesOverviewResponseBodyDBInstances struct {
@@ -502,7 +511,34 @@ func (s *DescribeDBInstancesOverviewResponseBodyDBInstances) SetZoneId(v string)
 }
 
 func (s *DescribeDBInstancesOverviewResponseBodyDBInstances) Validate() error {
-	return dara.Validate(s)
+	if s.MongosList != nil {
+		for _, item := range s.MongosList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ShardList != nil {
+		for _, item := range s.ShardList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstancesOverviewResponseBodyDBInstancesMongosList struct {

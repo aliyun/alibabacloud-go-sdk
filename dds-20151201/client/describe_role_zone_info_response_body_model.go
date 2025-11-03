@@ -53,7 +53,12 @@ func (s *DescribeRoleZoneInfoResponseBody) SetZoneInfos(v *DescribeRoleZoneInfoR
 }
 
 func (s *DescribeRoleZoneInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ZoneInfos != nil {
+		if err := s.ZoneInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRoleZoneInfoResponseBodyZoneInfos struct {
@@ -78,7 +83,16 @@ func (s *DescribeRoleZoneInfoResponseBodyZoneInfos) SetZoneInfo(v []*DescribeRol
 }
 
 func (s *DescribeRoleZoneInfoResponseBodyZoneInfos) Validate() error {
-	return dara.Validate(s)
+	if s.ZoneInfo != nil {
+		for _, item := range s.ZoneInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRoleZoneInfoResponseBodyZoneInfosZoneInfo struct {

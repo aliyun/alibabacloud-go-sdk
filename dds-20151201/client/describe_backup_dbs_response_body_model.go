@@ -104,7 +104,12 @@ func (s *DescribeBackupDBsResponseBody) SetTotalCount(v int32) *DescribeBackupDB
 }
 
 func (s *DescribeBackupDBsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Databases != nil {
+		if err := s.Databases.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBackupDBsResponseBodyDatabases struct {
@@ -129,7 +134,16 @@ func (s *DescribeBackupDBsResponseBodyDatabases) SetDatabase(v []*DescribeBackup
 }
 
 func (s *DescribeBackupDBsResponseBodyDatabases) Validate() error {
-	return dara.Validate(s)
+	if s.Database != nil {
+		for _, item := range s.Database {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBackupDBsResponseBodyDatabasesDatabase struct {

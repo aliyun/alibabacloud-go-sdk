@@ -53,7 +53,16 @@ func (s *DescribeClusterRecoverTimeResponseBody) SetRestoreRanges(v []*DescribeC
 }
 
 func (s *DescribeClusterRecoverTimeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RestoreRanges != nil {
+		for _, item := range s.RestoreRanges {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClusterRecoverTimeResponseBodyRestoreRanges struct {

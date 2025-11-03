@@ -39,6 +39,12 @@ type iModifyDBInstanceSpecRequest interface {
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *ModifyDBInstanceSpecRequest
 	GetResourceOwnerId() *int64
+	SetSearchNodeClass(v string) *ModifyDBInstanceSpecRequest
+	GetSearchNodeClass() *string
+	SetSearchNodeCount(v int64) *ModifyDBInstanceSpecRequest
+	GetSearchNodeCount() *int64
+	SetSearchNodeStorage(v int64) *ModifyDBInstanceSpecRequest
+	GetSearchNodeStorage() *int64
 	SetTargetHiddenZoneId(v string) *ModifyDBInstanceSpecRequest
 	GetTargetHiddenZoneId() *string
 	SetTargetSecondaryZoneId(v string) *ModifyDBInstanceSpecRequest
@@ -169,9 +175,21 @@ type ModifyDBInstanceSpecRequest struct {
 	// example:
 	//
 	// 3
-	ReplicationFactor     *string `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
-	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ReplicationFactor    *string `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// mdb.shard.2x.xlarge.d
+	SearchNodeClass *string `json:"SearchNodeClass,omitempty" xml:"SearchNodeClass,omitempty"`
+	// example:
+	//
+	// 2
+	SearchNodeCount *int64 `json:"SearchNodeCount,omitempty" xml:"SearchNodeCount,omitempty"`
+	// example:
+	//
+	// 20
+	SearchNodeStorage     *int64  `json:"SearchNodeStorage,omitempty" xml:"SearchNodeStorage,omitempty"`
 	TargetHiddenZoneId    *string `json:"TargetHiddenZoneId,omitempty" xml:"TargetHiddenZoneId,omitempty"`
 	TargetSecondaryZoneId *string `json:"TargetSecondaryZoneId,omitempty" xml:"TargetSecondaryZoneId,omitempty"`
 	TargetVswitchId       *string `json:"TargetVswitchId,omitempty" xml:"TargetVswitchId,omitempty"`
@@ -244,6 +262,18 @@ func (s *ModifyDBInstanceSpecRequest) GetResourceOwnerAccount() *string {
 
 func (s *ModifyDBInstanceSpecRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
+}
+
+func (s *ModifyDBInstanceSpecRequest) GetSearchNodeClass() *string {
+	return s.SearchNodeClass
+}
+
+func (s *ModifyDBInstanceSpecRequest) GetSearchNodeCount() *int64 {
+	return s.SearchNodeCount
+}
+
+func (s *ModifyDBInstanceSpecRequest) GetSearchNodeStorage() *int64 {
+	return s.SearchNodeStorage
 }
 
 func (s *ModifyDBInstanceSpecRequest) GetTargetHiddenZoneId() *string {
@@ -334,6 +364,21 @@ func (s *ModifyDBInstanceSpecRequest) SetResourceOwnerAccount(v string) *ModifyD
 
 func (s *ModifyDBInstanceSpecRequest) SetResourceOwnerId(v int64) *ModifyDBInstanceSpecRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSpecRequest) SetSearchNodeClass(v string) *ModifyDBInstanceSpecRequest {
+	s.SearchNodeClass = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSpecRequest) SetSearchNodeCount(v int64) *ModifyDBInstanceSpecRequest {
+	s.SearchNodeCount = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSpecRequest) SetSearchNodeStorage(v int64) *ModifyDBInstanceSpecRequest {
+	s.SearchNodeStorage = &v
 	return s
 }
 

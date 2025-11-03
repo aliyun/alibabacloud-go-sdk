@@ -115,7 +115,22 @@ func (s *DescribePriceResponseBody) SetTraceId(v string) *DescribePriceResponseB
 }
 
 func (s *DescribePriceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Order != nil {
+		if err := s.Order.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		if err := s.Rules.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubOrders != nil {
+		if err := s.SubOrders.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodyOrder struct {
@@ -368,7 +383,22 @@ func (s *DescribePriceResponseBodyOrder) SetTradeAmount(v string) *DescribePrice
 }
 
 func (s *DescribePriceResponseBodyOrder) Validate() error {
-	return dara.Validate(s)
+	if s.Coupons != nil {
+		if err := s.Coupons.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DepreciateInfo != nil {
+		if err := s.DepreciateInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuleIds != nil {
+		if err := s.RuleIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodyOrderCoupons struct {
@@ -393,7 +423,16 @@ func (s *DescribePriceResponseBodyOrderCoupons) SetCoupon(v []*DescribePriceResp
 }
 
 func (s *DescribePriceResponseBodyOrderCoupons) Validate() error {
-	return dara.Validate(s)
+	if s.Coupon != nil {
+		for _, item := range s.Coupon {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodyOrderCouponsCoupon struct {
@@ -532,7 +571,12 @@ func (s *DescribePriceResponseBodyOrderCouponsCoupon) SetPromotionRuleIdList(v *
 }
 
 func (s *DescribePriceResponseBodyOrderCouponsCoupon) Validate() error {
-	return dara.Validate(s)
+	if s.PromotionRuleIdList != nil {
+		if err := s.PromotionRuleIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodyOrderCouponsCouponPromotionRuleIdList struct {
@@ -718,7 +762,12 @@ func (s *DescribePriceResponseBodyOrderDepreciateInfo) SetOriginalStandAmount(v 
 }
 
 func (s *DescribePriceResponseBodyOrderDepreciateInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ContractActivity != nil {
+		if err := s.ContractActivity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodyOrderDepreciateInfoContractActivity struct {
@@ -834,7 +883,12 @@ func (s *DescribePriceResponseBodyOrderDepreciateInfoContractActivity) SetProdFe
 }
 
 func (s *DescribePriceResponseBodyOrderDepreciateInfoContractActivity) Validate() error {
-	return dara.Validate(s)
+	if s.OptionIds != nil {
+		if err := s.OptionIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodyOrderDepreciateInfoContractActivityOptionIds struct {
@@ -909,7 +963,16 @@ func (s *DescribePriceResponseBodyRules) SetRule(v []*DescribePriceResponseBodyR
 }
 
 func (s *DescribePriceResponseBodyRules) Validate() error {
-	return dara.Validate(s)
+	if s.Rule != nil {
+		for _, item := range s.Rule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodyRulesRule struct {
@@ -994,7 +1057,16 @@ func (s *DescribePriceResponseBodySubOrders) SetSubOrder(v []*DescribePriceRespo
 }
 
 func (s *DescribePriceResponseBodySubOrders) Validate() error {
-	return dara.Validate(s)
+	if s.SubOrder != nil {
+		for _, item := range s.SubOrder {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodySubOrdersSubOrder struct {
@@ -1199,7 +1271,32 @@ func (s *DescribePriceResponseBodySubOrdersSubOrder) SetTradeAmount(v string) *D
 }
 
 func (s *DescribePriceResponseBodySubOrdersSubOrder) Validate() error {
-	return dara.Validate(s)
+	if s.DepreciateInfo != nil {
+		if err := s.DepreciateInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ModuleInstance != nil {
+		if err := s.ModuleInstance.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OptionalPromotions != nil {
+		if err := s.OptionalPromotions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PromDetailList != nil {
+		if err := s.PromDetailList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuleIds != nil {
+		if err := s.RuleIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo struct {
@@ -1375,7 +1472,12 @@ func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) SetStartTime(
 }
 
 func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ContractActivity != nil {
+		if err := s.ContractActivity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity struct {
@@ -1491,7 +1593,12 @@ func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivit
 }
 
 func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity) Validate() error {
-	return dara.Validate(s)
+	if s.OptionIds != nil {
+		if err := s.OptionIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivityOptionIds struct {
@@ -1541,7 +1648,16 @@ func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstance) SetModuleInst
 }
 
 func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstance) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleInstance != nil {
+		for _, item := range s.ModuleInstance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance struct {
@@ -1809,7 +1925,22 @@ func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance)
 }
 
 func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) Validate() error {
-	return dara.Validate(s)
+	if s.DepreciateInfo != nil {
+		if err := s.DepreciateInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ModuleAttrs != nil {
+		if err := s.ModuleAttrs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PromDetailList != nil {
+		if err := s.PromDetailList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo struct {
@@ -1984,7 +2115,16 @@ func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceM
 }
 
 func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrs) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleAttr != nil {
+		for _, item := range s.ModuleAttr {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrsModuleAttr struct {
@@ -2084,7 +2224,16 @@ func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceP
 }
 
 func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailList) Validate() error {
-	return dara.Validate(s)
+	if s.PromDetail != nil {
+		for _, item := range s.PromDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailListPromDetail struct {
@@ -2248,7 +2397,16 @@ func (s *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotions) SetOption
 }
 
 func (s *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotions) Validate() error {
-	return dara.Validate(s)
+	if s.OptionalPromotion != nil {
+		for _, item := range s.OptionalPromotion {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion struct {
@@ -2409,7 +2567,17 @@ func (s *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPro
 }
 
 func (s *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion) Validate() error {
-	return dara.Validate(s)
+	if s.PromotionRuleIdList != nil {
+		if err := s.PromotionRuleIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TargetArticleItemCodes != nil {
+		if err := s.TargetArticleItemCodes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotionPromotionRuleIdList struct {
@@ -2484,7 +2652,16 @@ func (s *DescribePriceResponseBodySubOrdersSubOrderPromDetailList) SetPromDetail
 }
 
 func (s *DescribePriceResponseBodySubOrdersSubOrderPromDetailList) Validate() error {
-	return dara.Validate(s)
+	if s.PromDetail != nil {
+		for _, item := range s.PromDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetail struct {

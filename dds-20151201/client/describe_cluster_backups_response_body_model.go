@@ -104,7 +104,16 @@ func (s *DescribeClusterBackupsResponseBody) SetRequestId(v string) *DescribeClu
 }
 
 func (s *DescribeClusterBackupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterBackups != nil {
+		for _, item := range s.ClusterBackups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClusterBackupsResponseBodyClusterBackups struct {
@@ -329,7 +338,21 @@ func (s *DescribeClusterBackupsResponseBodyClusterBackups) SetProgress(v string)
 }
 
 func (s *DescribeClusterBackupsResponseBodyClusterBackups) Validate() error {
-	return dara.Validate(s)
+	if s.Backups != nil {
+		for _, item := range s.Backups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ExtraInfo != nil {
+		if err := s.ExtraInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterBackupsResponseBodyClusterBackupsBackups struct {
@@ -513,7 +536,12 @@ func (s *DescribeClusterBackupsResponseBodyClusterBackupsBackups) SetIsAvail(v s
 }
 
 func (s *DescribeClusterBackupsResponseBodyClusterBackupsBackups) Validate() error {
-	return dara.Validate(s)
+	if s.ExtraInfo != nil {
+		if err := s.ExtraInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClusterBackupsResponseBodyClusterBackupsBackupsExtraInfo struct {

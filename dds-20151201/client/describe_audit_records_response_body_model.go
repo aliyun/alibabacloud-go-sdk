@@ -104,7 +104,12 @@ func (s *DescribeAuditRecordsResponseBody) SetTotalRecordCount(v int32) *Describ
 }
 
 func (s *DescribeAuditRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAuditRecordsResponseBodyItems struct {
@@ -129,7 +134,16 @@ func (s *DescribeAuditRecordsResponseBodyItems) SetSQLRecord(v []*DescribeAuditR
 }
 
 func (s *DescribeAuditRecordsResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.SQLRecord != nil {
+		for _, item := range s.SQLRecord {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAuditRecordsResponseBodyItemsSQLRecord struct {

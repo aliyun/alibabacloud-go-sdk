@@ -17,6 +17,8 @@ type iDescribeInstanceRecoverTimeRequest interface {
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *DescribeInstanceRecoverTimeRequest
 	GetOwnerId() *int64
+	SetResourceGroupId(v string) *DescribeInstanceRecoverTimeRequest
+	GetResourceGroupId() *string
 	SetResourceOwnerAccount(v string) *DescribeInstanceRecoverTimeRequest
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *DescribeInstanceRecoverTimeRequest
@@ -35,10 +37,14 @@ type DescribeInstanceRecoverTimeRequest struct {
 	// example:
 	//
 	// dds-bpxxxxxxxx
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DestRegion           *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DestRegion   *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// rg-xxxx
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -67,6 +73,10 @@ func (s *DescribeInstanceRecoverTimeRequest) GetOwnerAccount() *string {
 
 func (s *DescribeInstanceRecoverTimeRequest) GetOwnerId() *int64 {
 	return s.OwnerId
+}
+
+func (s *DescribeInstanceRecoverTimeRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
 }
 
 func (s *DescribeInstanceRecoverTimeRequest) GetResourceOwnerAccount() *string {
@@ -102,6 +112,11 @@ func (s *DescribeInstanceRecoverTimeRequest) SetOwnerAccount(v string) *Describe
 
 func (s *DescribeInstanceRecoverTimeRequest) SetOwnerId(v int64) *DescribeInstanceRecoverTimeRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeInstanceRecoverTimeRequest) SetResourceGroupId(v string) *DescribeInstanceRecoverTimeRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 

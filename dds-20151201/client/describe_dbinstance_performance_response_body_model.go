@@ -87,7 +87,12 @@ func (s *DescribeDBInstancePerformanceResponseBody) SetStartTime(v string) *Desc
 }
 
 func (s *DescribeDBInstancePerformanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PerformanceKeys != nil {
+		if err := s.PerformanceKeys.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstancePerformanceResponseBodyPerformanceKeys struct {
@@ -112,7 +117,16 @@ func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeys) SetPerformanc
 }
 
 func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeys) Validate() error {
-	return dara.Validate(s)
+	if s.PerformanceKey != nil {
+		for _, item := range s.PerformanceKey {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey struct {
@@ -185,7 +199,12 @@ func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey)
 }
 
 func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey) Validate() error {
-	return dara.Validate(s)
+	if s.PerformanceValues != nil {
+		if err := s.PerformanceValues.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyPerformanceValues struct {
@@ -210,7 +229,16 @@ func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyP
 }
 
 func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyPerformanceValues) Validate() error {
-	return dara.Validate(s)
+	if s.PerformanceValue != nil {
+		for _, item := range s.PerformanceValue {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyPerformanceValuesPerformanceValue struct {

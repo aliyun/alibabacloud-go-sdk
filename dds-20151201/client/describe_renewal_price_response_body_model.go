@@ -79,7 +79,22 @@ func (s *DescribeRenewalPriceResponseBody) SetSubOrders(v *DescribeRenewalPriceR
 }
 
 func (s *DescribeRenewalPriceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Order != nil {
+		if err := s.Order.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		if err := s.Rules.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubOrders != nil {
+		if err := s.SubOrders.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRenewalPriceResponseBodyOrder struct {
@@ -180,7 +195,17 @@ func (s *DescribeRenewalPriceResponseBodyOrder) SetTradeAmount(v float32) *Descr
 }
 
 func (s *DescribeRenewalPriceResponseBodyOrder) Validate() error {
-	return dara.Validate(s)
+	if s.Coupons != nil {
+		if err := s.Coupons.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuleIds != nil {
+		if err := s.RuleIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRenewalPriceResponseBodyOrderCoupons struct {
@@ -205,7 +230,16 @@ func (s *DescribeRenewalPriceResponseBodyOrderCoupons) SetCoupon(v []*DescribeRe
 }
 
 func (s *DescribeRenewalPriceResponseBodyOrderCoupons) Validate() error {
-	return dara.Validate(s)
+	if s.Coupon != nil {
+		for _, item := range s.Coupon {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRenewalPriceResponseBodyOrderCouponsCoupon struct {
@@ -330,7 +364,16 @@ func (s *DescribeRenewalPriceResponseBodyRules) SetRule(v []*DescribeRenewalPric
 }
 
 func (s *DescribeRenewalPriceResponseBodyRules) Validate() error {
-	return dara.Validate(s)
+	if s.Rule != nil {
+		for _, item := range s.Rule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRenewalPriceResponseBodyRulesRule struct {
@@ -415,7 +458,16 @@ func (s *DescribeRenewalPriceResponseBodySubOrders) SetSubOrder(v []*DescribeRen
 }
 
 func (s *DescribeRenewalPriceResponseBodySubOrders) Validate() error {
-	return dara.Validate(s)
+	if s.SubOrder != nil {
+		for _, item := range s.SubOrder {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRenewalPriceResponseBodySubOrdersSubOrder struct {
@@ -501,7 +553,12 @@ func (s *DescribeRenewalPriceResponseBodySubOrdersSubOrder) SetTradeAmount(v flo
 }
 
 func (s *DescribeRenewalPriceResponseBodySubOrdersSubOrder) Validate() error {
-	return dara.Validate(s)
+	if s.RuleIds != nil {
+		if err := s.RuleIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRenewalPriceResponseBodySubOrdersSubOrderRuleIds struct {

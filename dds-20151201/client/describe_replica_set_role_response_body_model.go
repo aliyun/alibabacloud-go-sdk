@@ -70,7 +70,12 @@ func (s *DescribeReplicaSetRoleResponseBody) SetRequestId(v string) *DescribeRep
 }
 
 func (s *DescribeReplicaSetRoleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ReplicaSets != nil {
+		if err := s.ReplicaSets.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeReplicaSetRoleResponseBodyReplicaSets struct {
@@ -95,7 +100,16 @@ func (s *DescribeReplicaSetRoleResponseBodyReplicaSets) SetReplicaSet(v []*Descr
 }
 
 func (s *DescribeReplicaSetRoleResponseBodyReplicaSets) Validate() error {
-	return dara.Validate(s)
+	if s.ReplicaSet != nil {
+		for _, item := range s.ReplicaSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet struct {

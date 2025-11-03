@@ -59,5 +59,10 @@ func (s *DescribeMongoDBLogConfigResponse) SetBody(v *DescribeMongoDBLogConfigRe
 }
 
 func (s *DescribeMongoDBLogConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

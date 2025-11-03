@@ -104,7 +104,12 @@ func (s *DescribeDBInstancesResponseBody) SetTotalCount(v int32) *DescribeDBInst
 }
 
 func (s *DescribeDBInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBInstances != nil {
+		if err := s.DBInstances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstancesResponseBodyDBInstances struct {
@@ -129,7 +134,16 @@ func (s *DescribeDBInstancesResponseBodyDBInstances) SetDBInstance(v []*Describe
 }
 
 func (s *DescribeDBInstancesResponseBodyDBInstances) Validate() error {
-	return dara.Validate(s)
+	if s.DBInstance != nil {
+		for _, item := range s.DBInstance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstancesResponseBodyDBInstancesDBInstance struct {
@@ -734,7 +748,22 @@ func (s *DescribeDBInstancesResponseBodyDBInstancesDBInstance) SetZoneId(v strin
 }
 
 func (s *DescribeDBInstancesResponseBodyDBInstancesDBInstance) Validate() error {
-	return dara.Validate(s)
+	if s.MongosList != nil {
+		if err := s.MongosList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ShardList != nil {
+		if err := s.ShardList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstancesResponseBodyDBInstancesDBInstanceMongosList struct {
@@ -759,7 +788,16 @@ func (s *DescribeDBInstancesResponseBodyDBInstancesDBInstanceMongosList) SetMong
 }
 
 func (s *DescribeDBInstancesResponseBodyDBInstancesDBInstanceMongosList) Validate() error {
-	return dara.Validate(s)
+	if s.MongosAttribute != nil {
+		for _, item := range s.MongosAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstancesResponseBodyDBInstancesDBInstanceMongosListMongosAttribute struct {
@@ -844,7 +882,16 @@ func (s *DescribeDBInstancesResponseBodyDBInstancesDBInstanceShardList) SetShard
 }
 
 func (s *DescribeDBInstancesResponseBodyDBInstancesDBInstanceShardList) Validate() error {
-	return dara.Validate(s)
+	if s.ShardAttribute != nil {
+		for _, item := range s.ShardAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstancesResponseBodyDBInstancesDBInstanceShardListShardAttribute struct {
@@ -959,7 +1006,16 @@ func (s *DescribeDBInstancesResponseBodyDBInstancesDBInstanceTags) SetTag(v []*D
 }
 
 func (s *DescribeDBInstancesResponseBodyDBInstancesDBInstanceTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstancesResponseBodyDBInstancesDBInstanceTagsTag struct {

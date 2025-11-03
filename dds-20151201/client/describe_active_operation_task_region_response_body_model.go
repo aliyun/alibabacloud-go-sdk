@@ -53,7 +53,16 @@ func (s *DescribeActiveOperationTaskRegionResponseBody) SetRequestId(v string) *
 }
 
 func (s *DescribeActiveOperationTaskRegionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RegionList != nil {
+		for _, item := range s.RegionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeActiveOperationTaskRegionResponseBodyRegionList struct {

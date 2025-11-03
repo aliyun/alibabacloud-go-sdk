@@ -53,7 +53,16 @@ func (s *DescribeAvailabilityZonesResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeAvailabilityZonesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableZones != nil {
+		for _, item := range s.AvailableZones {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAvailabilityZonesResponseBodyAvailableZones struct {

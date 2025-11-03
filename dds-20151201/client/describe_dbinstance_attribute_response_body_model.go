@@ -53,7 +53,12 @@ func (s *DescribeDBInstanceAttributeResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeDBInstanceAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBInstances != nil {
+		if err := s.DBInstances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstances struct {
@@ -78,7 +83,16 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstances) SetDBInstance(v []*
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstances) Validate() error {
-	return dara.Validate(s)
+	if s.DBInstance != nil {
+		for _, item := range s.DBInstance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
@@ -433,6 +447,18 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
 	//
 	// rg-acfmyiu4ekp****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// mdb.shard.2x.xlarge.d
+	SearchNodeClass *string `json:"SearchNodeClass,omitempty" xml:"SearchNodeClass,omitempty"`
+	// example:
+	//
+	// 2
+	SearchNodeCount *int32 `json:"SearchNodeCount,omitempty" xml:"SearchNodeCount,omitempty"`
+	// example:
+	//
+	// 20
+	SearchNodeStorage *int32 `json:"SearchNodeStorage,omitempty" xml:"SearchNodeStorage,omitempty"`
 	// The ID of the secondary zone 1 of the instance. Valid values:
 	//
 	// 	- **cn-hangzhou-g**: Hangzhou Zone G
@@ -733,6 +759,18 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GetResour
 	return s.ResourceGroupId
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GetSearchNodeClass() *string {
+	return s.SearchNodeClass
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GetSearchNodeCount() *int32 {
+	return s.SearchNodeCount
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GetSearchNodeStorage() *int32 {
+	return s.SearchNodeStorage
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GetSecondaryZoneId() *string {
 	return s.SecondaryZoneId
 }
@@ -986,6 +1024,21 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetResour
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetSearchNodeClass(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
+	s.SearchNodeClass = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetSearchNodeCount(v int32) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
+	s.SearchNodeCount = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetSearchNodeStorage(v int32) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
+	s.SearchNodeStorage = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetSecondaryZoneId(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
 	s.SecondaryZoneId = &v
 	return s
@@ -1047,7 +1100,32 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetZoneId
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigserverList != nil {
+		if err := s.ConfigserverList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MongosList != nil {
+		if err := s.MongosList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReplicaSets != nil {
+		if err := s.ReplicaSets.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ShardList != nil {
+		if err := s.ShardList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverList struct {
@@ -1072,7 +1150,16 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserve
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverList) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigserverAttribute != nil {
+		for _, item := range s.ConfigserverAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverListConfigserverAttribute struct {
@@ -1287,7 +1374,16 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosList)
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosList) Validate() error {
-	return dara.Validate(s)
+	if s.MongosAttribute != nil {
+		for _, item := range s.MongosAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMongosAttribute struct {
@@ -1551,7 +1647,16 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceReplicaSets
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceReplicaSets) Validate() error {
-	return dara.Validate(s)
+	if s.ReplicaSet != nil {
+		for _, item := range s.ReplicaSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceReplicaSetsReplicaSet struct {
@@ -1710,7 +1815,16 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardList) 
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardList) Validate() error {
-	return dara.Validate(s)
+	if s.ShardAttribute != nil {
+		for _, item := range s.ShardAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute struct {
@@ -1965,7 +2079,16 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTags) SetTa
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTagsTag struct {

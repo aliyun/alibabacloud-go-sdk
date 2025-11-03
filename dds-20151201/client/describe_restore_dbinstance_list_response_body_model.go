@@ -104,7 +104,12 @@ func (s *DescribeRestoreDBInstanceListResponseBody) SetTotalCount(v int32) *Desc
 }
 
 func (s *DescribeRestoreDBInstanceListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBInstances != nil {
+		if err := s.DBInstances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRestoreDBInstanceListResponseBodyDBInstances struct {
@@ -129,7 +134,16 @@ func (s *DescribeRestoreDBInstanceListResponseBodyDBInstances) SetDBInstance(v [
 }
 
 func (s *DescribeRestoreDBInstanceListResponseBodyDBInstances) Validate() error {
-	return dara.Validate(s)
+	if s.DBInstance != nil {
+		for _, item := range s.DBInstance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRestoreDBInstanceListResponseBodyDBInstancesDBInstance struct {

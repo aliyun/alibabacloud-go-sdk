@@ -59,5 +59,10 @@ func (s *DescribeActiveOperationTaskRegionResponse) SetBody(v *DescribeActiveOpe
 }
 
 func (s *DescribeActiveOperationTaskRegionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -827,7 +827,43 @@ func (s *CreateShardingDBInstanceRequest) SetZoneId(v string) *CreateShardingDBI
 }
 
 func (s *CreateShardingDBInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigServer != nil {
+		for _, item := range s.ConfigServer {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Mongos != nil {
+		for _, item := range s.Mongos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ReplicaSet != nil {
+		for _, item := range s.ReplicaSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateShardingDBInstanceRequestConfigServer struct {

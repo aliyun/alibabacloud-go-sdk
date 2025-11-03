@@ -17,6 +17,8 @@ type iDescribeClusterRecoverTimeRequest interface {
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *DescribeClusterRecoverTimeRequest
 	GetOwnerId() *int64
+	SetResourceGroupId(v string) *DescribeClusterRecoverTimeRequest
+	GetResourceGroupId() *string
 	SetResourceOwnerAccount(v string) *DescribeClusterRecoverTimeRequest
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *DescribeClusterRecoverTimeRequest
@@ -33,10 +35,14 @@ type DescribeClusterRecoverTimeRequest struct {
 	// example:
 	//
 	// dds-bp18f7d6b6a7****
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DestRegion           *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DestRegion   *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// rg-xxxx
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SrcRegion            *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
@@ -64,6 +70,10 @@ func (s *DescribeClusterRecoverTimeRequest) GetOwnerAccount() *string {
 
 func (s *DescribeClusterRecoverTimeRequest) GetOwnerId() *int64 {
 	return s.OwnerId
+}
+
+func (s *DescribeClusterRecoverTimeRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
 }
 
 func (s *DescribeClusterRecoverTimeRequest) GetResourceOwnerAccount() *string {
@@ -95,6 +105,11 @@ func (s *DescribeClusterRecoverTimeRequest) SetOwnerAccount(v string) *DescribeC
 
 func (s *DescribeClusterRecoverTimeRequest) SetOwnerId(v int64) *DescribeClusterRecoverTimeRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeClusterRecoverTimeRequest) SetResourceGroupId(v string) *DescribeClusterRecoverTimeRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 

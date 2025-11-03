@@ -59,5 +59,10 @@ func (s *ModifyParametersResponse) SetBody(v *ModifyParametersResponseBody) *Mod
 }
 
 func (s *ModifyParametersResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

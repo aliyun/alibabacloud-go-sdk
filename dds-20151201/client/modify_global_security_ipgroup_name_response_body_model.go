@@ -53,7 +53,16 @@ func (s *ModifyGlobalSecurityIPGroupNameResponseBody) SetRequestId(v string) *Mo
 }
 
 func (s *ModifyGlobalSecurityIPGroupNameResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GlobalSecurityIPGroup != nil {
+		for _, item := range s.GlobalSecurityIPGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup struct {

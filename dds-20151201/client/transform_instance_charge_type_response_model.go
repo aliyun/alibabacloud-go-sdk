@@ -59,5 +59,10 @@ func (s *TransformInstanceChargeTypeResponse) SetBody(v *TransformInstanceCharge
 }
 
 func (s *TransformInstanceChargeTypeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -100,7 +100,17 @@ func (s *DescribeParametersResponseBody) SetRunningParameters(v *DescribeParamet
 }
 
 func (s *DescribeParametersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigParameters != nil {
+		if err := s.ConfigParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RunningParameters != nil {
+		if err := s.RunningParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeParametersResponseBodyConfigParameters struct {
@@ -125,7 +135,16 @@ func (s *DescribeParametersResponseBodyConfigParameters) SetParameter(v []*Descr
 }
 
 func (s *DescribeParametersResponseBodyConfigParameters) Validate() error {
-	return dara.Validate(s)
+	if s.Parameter != nil {
+		for _, item := range s.Parameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeParametersResponseBodyConfigParametersParameter struct {
@@ -263,7 +282,16 @@ func (s *DescribeParametersResponseBodyRunningParameters) SetParameter(v []*Desc
 }
 
 func (s *DescribeParametersResponseBodyRunningParameters) Validate() error {
-	return dara.Validate(s)
+	if s.Parameter != nil {
+		for _, item := range s.Parameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeParametersResponseBodyRunningParametersParameter struct {

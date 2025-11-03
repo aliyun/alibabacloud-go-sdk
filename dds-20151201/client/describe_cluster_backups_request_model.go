@@ -11,6 +11,8 @@ type iDescribeClusterBackupsRequest interface {
 	GoString() string
 	SetBackupId(v string) *DescribeClusterBackupsRequest
 	GetBackupId() *string
+	SetBackupJobId(v string) *DescribeClusterBackupsRequest
+	GetBackupJobId() *string
 	SetDBInstanceId(v string) *DescribeClusterBackupsRequest
 	GetDBInstanceId() *string
 	SetDestRegion(v string) *DescribeClusterBackupsRequest
@@ -27,6 +29,8 @@ type iDescribeClusterBackupsRequest interface {
 	GetPageNo() *int32
 	SetPageSize(v int32) *DescribeClusterBackupsRequest
 	GetPageSize() *int32
+	SetResourceGroupId(v string) *DescribeClusterBackupsRequest
+	GetResourceGroupId() *string
 	SetResourceOwnerAccount(v string) *DescribeClusterBackupsRequest
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *DescribeClusterBackupsRequest
@@ -44,6 +48,10 @@ type DescribeClusterBackupsRequest struct {
 	//
 	// 5664****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// example:
+	//
+	// 775051
+	BackupJobId *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
 	// The ID of the instance.
 	//
 	// This parameter is required.
@@ -95,7 +103,11 @@ type DescribeClusterBackupsRequest struct {
 	// example:
 	//
 	// 30
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// rg-xxxx
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The region ID of the instance.
@@ -130,6 +142,10 @@ func (s *DescribeClusterBackupsRequest) GetBackupId() *string {
 	return s.BackupId
 }
 
+func (s *DescribeClusterBackupsRequest) GetBackupJobId() *string {
+	return s.BackupJobId
+}
+
 func (s *DescribeClusterBackupsRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
 }
@@ -162,6 +178,10 @@ func (s *DescribeClusterBackupsRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *DescribeClusterBackupsRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *DescribeClusterBackupsRequest) GetResourceOwnerAccount() *string {
 	return s.ResourceOwnerAccount
 }
@@ -180,6 +200,11 @@ func (s *DescribeClusterBackupsRequest) GetStartTime() *string {
 
 func (s *DescribeClusterBackupsRequest) SetBackupId(v string) *DescribeClusterBackupsRequest {
 	s.BackupId = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsRequest) SetBackupJobId(v string) *DescribeClusterBackupsRequest {
+	s.BackupJobId = &v
 	return s
 }
 
@@ -220,6 +245,11 @@ func (s *DescribeClusterBackupsRequest) SetPageNo(v int32) *DescribeClusterBacku
 
 func (s *DescribeClusterBackupsRequest) SetPageSize(v int32) *DescribeClusterBackupsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsRequest) SetResourceGroupId(v string) *DescribeClusterBackupsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 

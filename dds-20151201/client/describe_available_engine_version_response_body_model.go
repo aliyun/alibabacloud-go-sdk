@@ -55,7 +55,12 @@ func (s *DescribeAvailableEngineVersionResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribeAvailableEngineVersionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EngineVersions != nil {
+		if err := s.EngineVersions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableEngineVersionResponseBodyEngineVersions struct {

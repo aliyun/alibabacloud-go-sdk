@@ -121,7 +121,16 @@ func (s *DescribeDBInstanceSwitchLogResponseBody) SetTotalCount(v int64) *Descri
 }
 
 func (s *DescribeDBInstanceSwitchLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LogItems != nil {
+		for _, item := range s.LogItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceSwitchLogResponseBodyLogItems struct {

@@ -53,7 +53,16 @@ func (s *DescribeActiveOperationTaskTypeResponseBody) SetTypeList(v []*DescribeA
 }
 
 func (s *DescribeActiveOperationTaskTypeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TypeList != nil {
+		for _, item := range s.TypeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeActiveOperationTaskTypeResponseBodyTypeList struct {
