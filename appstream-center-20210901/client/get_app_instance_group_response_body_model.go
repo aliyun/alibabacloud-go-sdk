@@ -60,11 +60,16 @@ func (s *GetAppInstanceGroupResponseBody) Validate() error {
 }
 
 type GetAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
+	// 接入类型。
+	//
 	// example:
 	//
 	// INTERNET
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	Amount     *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// example:
+	//
+	// 1
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// example:
 	//
 	// img-8z4nztpaqvay4****
@@ -91,6 +96,8 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	// pg-g3k5wa2ms2****
 	AppPolicyId *string                                                      `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
 	Apps        []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
+	// 授权模式。
+	//
 	// example:
 	//
 	// App
@@ -118,9 +125,13 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	// example:
 	//
 	// 1
-	MinAmount    *int32                                                           `json:"MinAmount,omitempty" xml:"MinAmount,omitempty"`
-	NodePool     []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Repeated"`
-	OfficeSiteId *string                                                          `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	MinAmount *int32 `json:"MinAmount,omitempty" xml:"MinAmount,omitempty"`
+	// The resource groups.
+	NodePool []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cn-beijing+dir-172301****
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
 	// example:
 	//
 	// Windows
@@ -166,7 +177,10 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	//
 	// 15
 	SessionTimeout *string `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	SessionType    *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
+	// example:
+	//
+	// NORMAL
+	SessionType *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
 	// example:
 	//
 	// false
@@ -175,11 +189,32 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	//
 	// spec-8o18t8uc31qib0****
 	SpecId *string `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+	// The status of the delivery group.
+	//
+	// Valid values:
+	//
+	// 	- PUBLISHED: The delivery group is published.
+	//
+	// 	- FAILED: The delivery group failed to be published.
+	//
+	// 	- MAINTAIN_FAILED: The delivery group failed to be updated.
+	//
+	// 	- EXPIRED: The delivery group is expired.
+	//
+	// 	- MAINTAINING: The delivery group is being updated.
+	//
+	// 	- CEASED: The delivery group has overdue payments.
+	//
+	// 	- EXPIRED_RECYCLING: The delivery group is expired and being recycled.
+	//
+	// 	- DEPLOYING: The delivery group is being published.
+	//
 	// example:
 	//
 	// PUBLISHED
-	Status *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 资源标签列表。
+	Tags []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s GetAppInstanceGroupResponseBodyAppInstanceGroupModels) String() string {
@@ -551,12 +586,18 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) Validate() error
 }
 
 type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps struct {
+	// example:
+	//
+	// https://app-center-icon-****.png
 	AppIcon *string `json:"AppIcon,omitempty" xml:"AppIcon,omitempty"`
 	// example:
 	//
 	// ca-i87mycyn419nu****
-	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// 1.0.0
 	AppVersion     *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
 	AppVersionName *string `json:"AppVersionName,omitempty" xml:"AppVersionName,omitempty"`
 }
@@ -622,7 +663,12 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool struct {
 	// example:
 	//
 	// 2
-	Amount                   *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The maximum number of idle sessions. After you specify a value for this parameter, auto scaling is triggered only if the number of idle sessions in the delivery group is smaller than the specified value and the session usage exceeds the value specified for `ScalingUsageThreshold`. Otherwise, the system determines that the idle sessions in the delivery group are sufficient and does not perform auto scaling.`` You can use this parameter to flexibly manage auto scaling and reduce costs.
+	//
+	// example:
+	//
+	// 3
 	MaxIdleAppInstanceAmount *int32 `json:"MaxIdleAppInstanceAmount,omitempty" xml:"MaxIdleAppInstanceAmount,omitempty"`
 	// example:
 	//
@@ -1046,8 +1092,27 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo) Validate(
 }
 
 type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 标签键。
+	//
+	// example:
+	//
+	// department
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 标签类型。取值范围：
+	//
+	// Custom：自定义标签。
+	//
+	// System：系统标签。
+	//
+	// example:
+	//
+	// Custom
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// 标签值。
+	//
+	// example:
+	//
+	// design
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

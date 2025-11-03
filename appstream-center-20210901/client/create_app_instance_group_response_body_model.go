@@ -17,7 +17,10 @@ type iCreateAppInstanceGroupResponseBody interface {
 
 type CreateAppInstanceGroupResponseBody struct {
 	AppInstanceGroupModel *CreateAppInstanceGroupResponseBodyAppInstanceGroupModel `json:"AppInstanceGroupModel,omitempty" xml:"AppInstanceGroupModel,omitempty" type:"Struct"`
-	RequestId             *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAppInstanceGroupResponseBody) String() string {

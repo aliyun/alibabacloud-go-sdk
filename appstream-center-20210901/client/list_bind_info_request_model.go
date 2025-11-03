@@ -26,19 +26,38 @@ type iListBindInfoRequest interface {
 }
 
 type ListBindInfoRequest struct {
-	AppIdList              []*string `json:"AppIdList,omitempty" xml:"AppIdList,omitempty" type:"Repeated"`
+	// The app IDs. You can specify 1 to 100 IDs.
+	//
+	// >  If you specify this parameter, only the bindings of the specified apps are returned.
+	AppIdList []*string `json:"AppIdList,omitempty" xml:"AppIdList,omitempty" type:"Repeated"`
+	// The IDs of the delivery groups. You can specify 1 to 100 IDs.
+	//
+	// >  If you specify this parameter, only the bindings of the specified delivery groups are returned.
 	AppInstanceGroupIdList []*string `json:"AppInstanceGroupIdList,omitempty" xml:"AppInstanceGroupIdList,omitempty" type:"Repeated"`
-	AppInstanceIdList      []*string `json:"AppInstanceIdList,omitempty" xml:"AppInstanceIdList,omitempty" type:"Repeated"`
+	// The IDs of app instances. You can specify 1 to 100 IDs.
+	//
+	// >  If you specify this parameter, only the bindings of the specified app instances are returned.
+	AppInstanceIdList []*string `json:"AppInstanceIdList,omitempty" xml:"AppInstanceIdList,omitempty" type:"Repeated"`
+	// The page number. Default value: `1`. We recommend that you specify this parameter.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. The value cannot be greater than `100`. Default value: `20`. We recommend that you specify this parameter.
+	//
 	// example:
 	//
 	// 10
-	PageSize   *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The user IDs. You can specify 1 to 100 IDs.
+	//
+	// >  If you specify this parameter, only the bindings of the specified users are returned.
 	UserIdList []*string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`
-	WyIdList   []*string `json:"WyIdList,omitempty" xml:"WyIdList,omitempty" type:"Repeated"`
+	// The IDs of the Alibaba Cloud Workspace users. You can specify 1 to 100 IDs.
+	//
+	// >  If you specify this parameter, only the bindings of the specified Alibaba Cloud Workspace users are returned.
+	WyIdList []*string `json:"WyIdList,omitempty" xml:"WyIdList,omitempty" type:"Repeated"`
 }
 
 func (s ListBindInfoRequest) String() string {

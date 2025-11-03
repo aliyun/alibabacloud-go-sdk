@@ -29,6 +29,8 @@ type iGetConnectionTicketRequest interface {
 	GetBizRegionId() *string
 	SetEndUserId(v string) *GetConnectionTicketRequest
 	GetEndUserId() *string
+	SetEnvironmentConfig(v string) *GetConnectionTicketRequest
+	GetEnvironmentConfig() *string
 	SetProductType(v string) *GetConnectionTicketRequest
 	GetProductType() *string
 	SetTaskId(v string) *GetConnectionTicketRequest
@@ -101,7 +103,8 @@ type GetConnectionTicketRequest struct {
 	// example:
 	//
 	// alice
-	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	EndUserId         *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	EnvironmentConfig *string `json:"EnvironmentConfig,omitempty" xml:"EnvironmentConfig,omitempty"`
 	// The product type.
 	//
 	// Valid values:
@@ -174,6 +177,10 @@ func (s *GetConnectionTicketRequest) GetEndUserId() *string {
 	return s.EndUserId
 }
 
+func (s *GetConnectionTicketRequest) GetEnvironmentConfig() *string {
+	return s.EnvironmentConfig
+}
+
 func (s *GetConnectionTicketRequest) GetProductType() *string {
 	return s.ProductType
 }
@@ -229,6 +236,11 @@ func (s *GetConnectionTicketRequest) SetBizRegionId(v string) *GetConnectionTick
 
 func (s *GetConnectionTicketRequest) SetEndUserId(v string) *GetConnectionTicketRequest {
 	s.EndUserId = &v
+	return s
+}
+
+func (s *GetConnectionTicketRequest) SetEnvironmentConfig(v string) *GetConnectionTicketRequest {
+	s.EnvironmentConfig = &v
 	return s
 }
 

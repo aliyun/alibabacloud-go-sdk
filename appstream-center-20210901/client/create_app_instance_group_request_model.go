@@ -73,8 +73,16 @@ type CreateAppInstanceGroupRequest struct {
 	// img-8z4nztpaqvay4****
 	AppCenterImageId     *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	AppPackageType       *string `json:"AppPackageType,omitempty" xml:"AppPackageType,omitempty"`
-	AppPolicyId          *string `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
+	// example:
+	//
+	// browser.package.5.250.appstreaming.general.basic
+	AppPackageType *string `json:"AppPackageType,omitempty" xml:"AppPackageType,omitempty"`
+	// example:
+	//
+	// pg-0clfzcy0adpcf****
+	AppPolicyId *string `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
+	// The authentication mode of the delivery group.
+	//
 	// if can be null:
 	// true
 	//
@@ -107,10 +115,13 @@ type CreateAppInstanceGroupRequest struct {
 	// example:
 	//
 	// PrePaid
-	ChargeType *string                                `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ClusterId  *string                                `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Network    *CreateAppInstanceGroupRequestNetwork  `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
-	NodePool   *CreateAppInstanceGroupRequestNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// cls-d39iq73l5c0a8****
+	ClusterId *string                                `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Network   *CreateAppInstanceGroupRequestNetwork  `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	NodePool  *CreateAppInstanceGroupRequestNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
@@ -118,6 +129,10 @@ type CreateAppInstanceGroupRequest struct {
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Week
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// example:
 	//
@@ -132,7 +147,8 @@ type CreateAppInstanceGroupRequest struct {
 	// example:
 	//
 	// 17440009****
-	PromotionId    *string                                      `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The runtime policy.
 	RuntimePolicy  *CreateAppInstanceGroupRequestRuntimePolicy  `json:"RuntimePolicy,omitempty" xml:"RuntimePolicy,omitempty" type:"Struct"`
 	SecurityPolicy *CreateAppInstanceGroupRequestSecurityPolicy `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty" type:"Struct"`
 	// This parameter is required.
@@ -140,8 +156,11 @@ type CreateAppInstanceGroupRequest struct {
 	// example:
 	//
 	// 15
-	SessionTimeout   *int32                                         `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	StoragePolicy    *CreateAppInstanceGroupRequestStoragePolicy    `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty" type:"Struct"`
+	SessionTimeout *int32                                      `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	StoragePolicy  *CreateAppInstanceGroupRequestStoragePolicy `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty" type:"Struct"`
+	// example:
+	//
+	// postPaid
 	SubPayType       *string                                        `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
 	UserDefinePolicy *CreateAppInstanceGroupRequestUserDefinePolicy `json:"UserDefinePolicy,omitempty" xml:"UserDefinePolicy,omitempty" type:"Struct"`
 	UserInfo         *CreateAppInstanceGroupRequestUserInfo         `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
@@ -449,9 +468,12 @@ type CreateAppInstanceGroupRequestNetwork struct {
 	// example:
 	//
 	// 60
-	IpExpireMinutes *int32                                        `json:"IpExpireMinutes,omitempty" xml:"IpExpireMinutes,omitempty"`
-	OfficeSiteId    *string                                       `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	Routes          []*CreateAppInstanceGroupRequestNetworkRoutes `json:"Routes,omitempty" xml:"Routes,omitempty" type:"Repeated"`
+	IpExpireMinutes *int32 `json:"IpExpireMinutes,omitempty" xml:"IpExpireMinutes,omitempty"`
+	// example:
+	//
+	// cn-hongkong+dir-842567****
+	OfficeSiteId *string                                       `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	Routes       []*CreateAppInstanceGroupRequestNetworkRoutes `json:"Routes,omitempty" xml:"Routes,omitempty" type:"Repeated"`
 	// example:
 	//
 	// Shared
@@ -544,7 +566,13 @@ func (s *CreateAppInstanceGroupRequestNetwork) Validate() error {
 }
 
 type CreateAppInstanceGroupRequestNetworkDomainRules struct {
+	// example:
+	//
+	// www.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// block
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 }
 
@@ -620,6 +648,9 @@ func (s *CreateAppInstanceGroupRequestNetworkRoutes) Validate() error {
 }
 
 type CreateAppInstanceGroupRequestNodePool struct {
+	// example:
+	//
+	// 3
 	MaxIdleAppInstanceAmount *int32 `json:"MaxIdleAppInstanceAmount,omitempty" xml:"MaxIdleAppInstanceAmount,omitempty"`
 	// example:
 	//
@@ -632,7 +663,10 @@ type CreateAppInstanceGroupRequestNodePool struct {
 	// example:
 	//
 	// 2
-	NodeCapacity        *int32                                                      `json:"NodeCapacity,omitempty" xml:"NodeCapacity,omitempty"`
+	NodeCapacity *int32 `json:"NodeCapacity,omitempty" xml:"NodeCapacity,omitempty"`
+	// example:
+	//
+	// appstreaming.general.4c8g
 	NodeInstanceType    *string                                                     `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
 	RecurrenceSchedules []*CreateAppInstanceGroupRequestNodePoolRecurrenceSchedules `json:"RecurrenceSchedules,omitempty" xml:"RecurrenceSchedules,omitempty" type:"Repeated"`
 	// example:
@@ -915,8 +949,32 @@ func (s *CreateAppInstanceGroupRequestNodePoolRecurrenceSchedulesTimerPeriods) V
 }
 
 type CreateAppInstanceGroupRequestRuntimePolicy struct {
-	DebugMode        *string `json:"DebugMode,omitempty" xml:"DebugMode,omitempty"`
-	PerSessionPerApp *bool   `json:"PerSessionPerApp,omitempty" xml:"PerSessionPerApp,omitempty"`
+	// Specifies whether to enable the debugging mode. If you want to call the `GetDebugAppInstance` and `CreateImageFromAppInstanceGroup` operations, you must set this parameter to `ON`.
+	//
+	// Valid values:
+	//
+	// 	- OFF
+	//
+	// 	- ON
+	//
+	// example:
+	//
+	// OFF
+	DebugMode *string `json:"DebugMode,omitempty" xml:"DebugMode,omitempty"`
+	// Specifies whether only one app can be opened in a session.
+	//
+	// 	- After you enable this feature, the system assigns a session to each app if you open multiple apps in a delivery group. This consumes a larger number of sessions.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	PerSessionPerApp *bool `json:"PerSessionPerApp,omitempty" xml:"PerSessionPerApp,omitempty"`
 	// if can be null:
 	// true
 	//
@@ -924,13 +982,39 @@ type CreateAppInstanceGroupRequestRuntimePolicy struct {
 	//
 	// DYNAMIC
 	PersistentAppInstanceScheduleMode *string `json:"PersistentAppInstanceScheduleMode,omitempty" xml:"PersistentAppInstanceScheduleMode,omitempty"`
-	SessionPreOpen                    *string `json:"SessionPreOpen,omitempty" xml:"SessionPreOpen,omitempty"`
-	// 会话类型。
+	// Specifies whether to enable pre-open for sessions.
+	//
+	// 	- Default value: true
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	SessionPreOpen *string `json:"SessionPreOpen,omitempty" xml:"SessionPreOpen,omitempty"`
+	// The session type.
+	//
+	// Valid values:
+	//
+	// 	- CONSOLE: console session
+	//
+	// 	- NORMAL: Remote Desktop Protocol (RDP)-based O\\&M session
 	//
 	// example:
 	//
 	// NORMAL
-	SessionType               *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
+	SessionType *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
+	// The generation mode of the session users. Valid value:
+	//
+	// 	- wyid. In this case, you must set sessionPreOpen to false.
+	//
+	// example:
+	//
+	// wyid
 	SessionUserGenerationMode *string `json:"SessionUserGenerationMode,omitempty" xml:"SessionUserGenerationMode,omitempty"`
 }
 
@@ -1082,9 +1166,18 @@ func (s *CreateAppInstanceGroupRequestStoragePolicy) Validate() error {
 }
 
 type CreateAppInstanceGroupRequestStoragePolicyUserProfile struct {
+	// example:
+	//
+	// ID20250101
 	RemoteStoragePath *string `json:"RemoteStoragePath,omitempty" xml:"RemoteStoragePath,omitempty"`
+	// example:
+	//
+	// NAS
 	RemoteStorageType *string `json:"RemoteStorageType,omitempty" xml:"RemoteStorageType,omitempty"`
-	UserProfileSwitch *bool   `json:"UserProfileSwitch,omitempty" xml:"UserProfileSwitch,omitempty"`
+	// example:
+	//
+	// false
+	UserProfileSwitch *bool `json:"UserProfileSwitch,omitempty" xml:"UserProfileSwitch,omitempty"`
 }
 
 func (s CreateAppInstanceGroupRequestStoragePolicyUserProfile) String() string {
@@ -1127,6 +1220,9 @@ func (s *CreateAppInstanceGroupRequestStoragePolicyUserProfile) Validate() error
 }
 
 type CreateAppInstanceGroupRequestUserDefinePolicy struct {
+	// example:
+	//
+	// [{"target":"agent","config":{"abc":"xxx"}}]
 	CustomConfig *string `json:"CustomConfig,omitempty" xml:"CustomConfig,omitempty"`
 }
 
@@ -1180,12 +1276,30 @@ func (s *CreateAppInstanceGroupRequestUserInfo) Validate() error {
 }
 
 type CreateAppInstanceGroupRequestVideoPolicy struct {
-	FrameRate                  *int32  `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
-	SessionResolutionHeight    *int32  `json:"SessionResolutionHeight,omitempty" xml:"SessionResolutionHeight,omitempty"`
-	SessionResolutionWidth     *int32  `json:"SessionResolutionWidth,omitempty" xml:"SessionResolutionWidth,omitempty"`
-	StreamingMode              *string `json:"StreamingMode,omitempty" xml:"StreamingMode,omitempty"`
-	TerminalResolutionAdaptive *bool   `json:"TerminalResolutionAdaptive,omitempty" xml:"TerminalResolutionAdaptive,omitempty"`
-	Webrtc                     *bool   `json:"Webrtc,omitempty" xml:"Webrtc,omitempty"`
+	// example:
+	//
+	// 60
+	FrameRate *int32 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	// example:
+	//
+	// 1080
+	SessionResolutionHeight *int32 `json:"SessionResolutionHeight,omitempty" xml:"SessionResolutionHeight,omitempty"`
+	// example:
+	//
+	// 1920
+	SessionResolutionWidth *int32 `json:"SessionResolutionWidth,omitempty" xml:"SessionResolutionWidth,omitempty"`
+	// example:
+	//
+	// video
+	StreamingMode *string `json:"StreamingMode,omitempty" xml:"StreamingMode,omitempty"`
+	// example:
+	//
+	// false
+	TerminalResolutionAdaptive *bool `json:"TerminalResolutionAdaptive,omitempty" xml:"TerminalResolutionAdaptive,omitempty"`
+	// example:
+	//
+	// true
+	Webrtc *bool `json:"Webrtc,omitempty" xml:"Webrtc,omitempty"`
 }
 
 func (s CreateAppInstanceGroupRequestVideoPolicy) String() string {

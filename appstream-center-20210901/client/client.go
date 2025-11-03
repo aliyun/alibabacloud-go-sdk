@@ -239,7 +239,7 @@ func (client *Client) AuthorizeInstanceGroup(request *AuthorizeInstanceGroupRequ
 
 // Summary:
 //
-// 创建云应用交付组
+// Creates a delivery group.
 //
 // @param tmpReq - CreateAppInstanceGroupRequest
 //
@@ -423,7 +423,7 @@ func (client *Client) CreateAppInstanceGroupWithOptions(tmpReq *CreateAppInstanc
 
 // Summary:
 //
-// 创建云应用交付组
+// Creates a delivery group.
 //
 // @param request - CreateAppInstanceGroupRequest
 //
@@ -1162,7 +1162,7 @@ func (client *Client) DescribeWuyingServerEipInfo(request *DescribeWuyingServerE
 
 // Summary:
 //
-// 获取交付组详情
+// Queries the details of a delivery group.
 //
 // @param request - GetAppInstanceGroupRequest
 //
@@ -1210,7 +1210,7 @@ func (client *Client) GetAppInstanceGroupWithOptions(request *GetAppInstanceGrou
 
 // Summary:
 //
-// 获取交付组详情
+// Queries the details of a delivery group.
 //
 // @param request - GetAppInstanceGroupRequest
 //
@@ -1289,6 +1289,10 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 
 	if !dara.IsNil(request.EndUserId) {
 		body["EndUserId"] = request.EndUserId
+	}
+
+	if !dara.IsNil(request.EnvironmentConfig) {
+		body["EnvironmentConfig"] = request.EnvironmentConfig
 	}
 
 	if !dara.IsNil(request.ProductType) {
@@ -1924,7 +1928,7 @@ func (client *Client) ListAuthorizedUserGroups(request *ListAuthorizedUserGroups
 
 // Summary:
 //
-// 查询绑定信息，支持分页
+// Queries the bindings between users and resources.
 //
 // @param request - ListBindInfoRequest
 //
@@ -1992,7 +1996,7 @@ func (client *Client) ListBindInfoWithOptions(request *ListBindInfoRequest, runt
 
 // Summary:
 //
-// 查询绑定信息，支持分页
+// Queries the bindings between users and resources.
 //
 // @param request - ListBindInfoRequest
 //
@@ -2416,7 +2420,7 @@ func (client *Client) ListOtaTask(request *ListOtaTaskRequest) (_result *ListOta
 
 // Summary:
 //
-// 查询交付组内持久会话列表
+// Queries app instances of the persistent session type in a delivery group.
 //
 // @param request - ListPersistentAppInstancesRequest
 //
@@ -2476,7 +2480,7 @@ func (client *Client) ListPersistentAppInstancesWithOptions(request *ListPersist
 
 // Summary:
 //
-// 查询交付组内持久会话列表
+// Queries app instances of the persistent session type in a delivery group.
 //
 // @param request - ListPersistentAppInstancesRequest
 //

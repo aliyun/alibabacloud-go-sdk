@@ -73,8 +73,16 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	// img-8z4nztpaqvay4****
 	AppCenterImageId     *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	AppPackageType       *string `json:"AppPackageType,omitempty" xml:"AppPackageType,omitempty"`
-	AppPolicyId          *string `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
+	// example:
+	//
+	// browser.package.5.250.appstreaming.general.basic
+	AppPackageType *string `json:"AppPackageType,omitempty" xml:"AppPackageType,omitempty"`
+	// example:
+	//
+	// pg-0clfzcy0adpcf****
+	AppPolicyId *string `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
+	// The authentication mode of the delivery group.
+	//
 	// if can be null:
 	// true
 	//
@@ -107,7 +115,10 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	// example:
 	//
 	// PrePaid
-	ChargeType     *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// cls-d39iq73l5c0a8****
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	NetworkShrink  *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	NodePoolShrink *string `json:"NodePool,omitempty" xml:"NodePool,omitempty"`
@@ -118,6 +129,10 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Week
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// example:
 	//
@@ -132,7 +147,8 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	// example:
 	//
 	// 17440009****
-	PromotionId          *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The runtime policy.
 	RuntimePolicyShrink  *string `json:"RuntimePolicy,omitempty" xml:"RuntimePolicy,omitempty"`
 	SecurityPolicyShrink *string `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty"`
 	// This parameter is required.
@@ -140,8 +156,11 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	// example:
 	//
 	// 15
-	SessionTimeout         *int32    `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	StoragePolicyShrink    *string   `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty"`
+	SessionTimeout      *int32  `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	StoragePolicyShrink *string `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty"`
+	// example:
+	//
+	// postPaid
 	SubPayType             *string   `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
 	UserDefinePolicyShrink *string   `json:"UserDefinePolicy,omitempty" xml:"UserDefinePolicy,omitempty"`
 	UserInfoShrink         *string   `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`

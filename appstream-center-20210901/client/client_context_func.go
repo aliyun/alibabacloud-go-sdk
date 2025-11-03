@@ -154,7 +154,7 @@ func (client *Client) AuthorizeInstanceGroupWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 创建云应用交付组
+// Creates a delivery group.
 //
 // @param tmpReq - CreateAppInstanceGroupRequest
 //
@@ -879,7 +879,7 @@ func (client *Client) DescribeWuyingServerEipInfoWithContext(ctx context.Context
 
 // Summary:
 //
-// 获取交付组详情
+// Queries the details of a delivery group.
 //
 // @param request - GetAppInstanceGroupRequest
 //
@@ -988,6 +988,10 @@ func (client *Client) GetConnectionTicketWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.EndUserId) {
 		body["EndUserId"] = request.EndUserId
+	}
+
+	if !dara.IsNil(request.EnvironmentConfig) {
+		body["EnvironmentConfig"] = request.EnvironmentConfig
 	}
 
 	if !dara.IsNil(request.ProductType) {
@@ -1471,7 +1475,7 @@ func (client *Client) ListAuthorizedUserGroupsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询绑定信息，支持分页
+// Queries the bindings between users and resources.
 //
 // @param request - ListBindInfoRequest
 //
@@ -1873,7 +1877,7 @@ func (client *Client) ListOtaTaskWithContext(ctx context.Context, request *ListO
 
 // Summary:
 //
-// 查询交付组内持久会话列表
+// Queries app instances of the persistent session type in a delivery group.
 //
 // @param request - ListPersistentAppInstancesRequest
 //

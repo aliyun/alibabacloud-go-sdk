@@ -22,19 +22,28 @@ type iListBindInfoResponseBody interface {
 }
 
 type ListBindInfoResponseBody struct {
+	// The bindings.
 	BindInfoModels []*ListBindInfoResponseBodyBindInfoModels `json:"BindInfoModels,omitempty" xml:"BindInfoModels,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AD2D0761-1FE5-549D-B169-D3F8D19C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 15
@@ -108,38 +117,70 @@ func (s *ListBindInfoResponseBody) Validate() error {
 }
 
 type ListBindInfoResponseBodyBindInfoModels struct {
+	// The account type.
+	//
+	// Valid values:
+	//
+	// 	- ad: Active Directory (AD) account
+	//
+	// 	- simple: convenience account
+	//
 	// example:
 	//
 	// simple
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// The app ID.
+	//
 	// example:
 	//
 	// ca-fq738or6vd854****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the delivery group.
+	//
 	// example:
 	//
 	// aig-0abxhr6ce35w8****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The ID of the app instance.
+	//
 	// example:
 	//
 	// ai-83oe276fre4l3****
 	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	// The app version.
+	//
 	// example:
 	//
 	// 1.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// The product type.
+	//
+	// Valid values:
+	//
+	// 	- CloudApp: App Streaming
+	//
+	// 	- CloudBrowser: Cloud-based Browser
+	//
+	// 	- AndroidCloud: Cloud Phone
+	//
 	// example:
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// Alice
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the Alibaba Cloud Workspace user.
+	//
 	// example:
 	//
 	// 2ca6f5a93536****
