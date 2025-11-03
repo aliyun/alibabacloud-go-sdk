@@ -40,7 +40,17 @@ type iDescribePropertyCountResponseBody interface {
 }
 
 type DescribePropertyCountResponseBody struct {
-	AgentlessLlmService     *int32 `json:"AgentlessLlmService,omitempty" xml:"AgentlessLlmService,omitempty"`
+	// The number of AI services.
+	//
+	// example:
+	//
+	// 3
+	AgentlessLlmService *int32 `json:"AgentlessLlmService,omitempty" xml:"AgentlessLlmService,omitempty"`
+	// The number of AI tools.
+	//
+	// example:
+	//
+	// 13
 	AgentlessScaAiComponent *int32 `json:"AgentlessScaAiComponent,omitempty" xml:"AgentlessScaAiComponent,omitempty"`
 	// The number of startup items.
 	//

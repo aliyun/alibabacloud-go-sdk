@@ -83,8 +83,19 @@ type DescribeCustomizeReportConfigDetailResponseBody struct {
 	// example:
 	//
 	// 1
-	IsDefault             *int32 `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	MemberAccountSyncFlag *bool  `json:"MemberAccountSyncFlag,omitempty" xml:"MemberAccountSyncFlag,omitempty"`
+	IsDefault *int32 `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// Whether the new account is connected by default. Values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
+	// > Only supported in version 2.0.0.
+	//
+	// example:
+	//
+	// true
+	MemberAccountSyncFlag *bool `json:"MemberAccountSyncFlag,omitempty" xml:"MemberAccountSyncFlag,omitempty"`
 	// The time when the report is pinned.
 	//
 	// example:

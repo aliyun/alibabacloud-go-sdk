@@ -63,8 +63,19 @@ type SaveCustomizeReportConfigRequest struct {
 	// example:
 	//
 	// SAS_GROUP
-	GroupType             *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	MemberAccountSyncFlag *bool   `json:"MemberAccountSyncFlag,omitempty" xml:"MemberAccountSyncFlag,omitempty"`
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// Whether the new account is connected by default. Values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
+	// > Only supported in version 2.0.0.
+	//
+	// example:
+	//
+	// true
+	MemberAccountSyncFlag *bool `json:"MemberAccountSyncFlag,omitempty" xml:"MemberAccountSyncFlag,omitempty"`
 	// The time when the report is pinned. Unit: milliseconds.
 	//
 	// >  This parameter is supported only in version 2.0.0.

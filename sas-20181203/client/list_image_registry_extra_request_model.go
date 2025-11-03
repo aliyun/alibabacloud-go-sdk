@@ -14,9 +14,9 @@ type iListImageRegistryExtraRequest interface {
 }
 
 type ListImageRegistryExtraRequest struct {
-	// Image registry ID.
+	// The ID of the image repository.
 	//
-	// > You can obtain this parameter by calling the [PageImageRegistry](~~PageImageRegistry~~) interface.
+	// >  You can call the [PageImageRegistry](~~PageImageRegistry~~) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//

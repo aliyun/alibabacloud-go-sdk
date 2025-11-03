@@ -78,6 +78,8 @@ type GenerateK8sAccessInfoRequest struct {
 	//
 	// test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// CPU architectures are divided into ARM architecture and x86 architecture.
+	//
 	// example:
 	//
 	// arm

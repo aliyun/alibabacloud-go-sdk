@@ -24,41 +24,41 @@ type iListUuidsByAppIdRequest interface {
 }
 
 type ListUuidsByAppIdRequest struct {
-	// SAE application ID.
+	// The ID of the SAE application.
 	//
 	// example:
 	//
 	// 5b41f4bf-349f-4263-89b1-9234c034****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	AppRegionId *string `json:"AppRegionId,omitempty" xml:"AppRegionId,omitempty"`
-	// The page number to display in a paginated query.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The language type for request and response, default is **zh**. Values:
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// 	- **zh**: Chinese.
 	//
-	// - **en**: English
+	// 	- **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of items to display per page in a paginated query.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Resource associated directory UID.
+	// The UID of the resource directory.
 	//
 	// example:
 	//

@@ -665,10 +665,14 @@ type DescribeCloudCenterInstancesResponseBodyInstances struct {
 	//
 	// Tencent
 	VendorName *string `json:"VendorName,omitempty" xml:"VendorName,omitempty"`
+	// Account ID of the multi-cloud instance.
+	//
 	// example:
 	//
 	// 123
 	VendorUid *string `json:"VendorUid,omitempty" xml:"VendorUid,omitempty"`
+	// Account name of the multi-cloud instance.
+	//
 	// example:
 	//
 	// VendorUserName

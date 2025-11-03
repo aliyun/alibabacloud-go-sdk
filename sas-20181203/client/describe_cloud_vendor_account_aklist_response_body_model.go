@@ -101,9 +101,19 @@ type DescribeCloudVendorAccountAKListResponseBodyCloudVendorAccountAKs struct {
 	// 2345
 	AuthId *int64 `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
 	// The modules that are associated with the AccessKey pair.
-	AuthModules     []*DescribeCloudVendorAccountAKListResponseBodyCloudVendorAccountAKsAuthModules `json:"AuthModules,omitempty" xml:"AuthModules,omitempty" type:"Repeated"`
-	CtdrCloudUserId *string                                                                         `json:"CtdrCloudUserId,omitempty" xml:"CtdrCloudUserId,omitempty"`
-	ExtendInfo      *string                                                                         `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	AuthModules []*DescribeCloudVendorAccountAKListResponseBodyCloudVendorAccountAKsAuthModules `json:"AuthModules,omitempty" xml:"AuthModules,omitempty" type:"Repeated"`
+	// The Account ID.
+	//
+	// example:
+	//
+	// azure_demo_1
+	CtdrCloudUserId *string `json:"CtdrCloudUserId,omitempty" xml:"CtdrCloudUserId,omitempty"`
+	// The extended information of the module.
+	//
+	// example:
+	//
+	// {\\"product\\":\\"webFirewall\\",\\"remark\\":\\"remark\\"}
+	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
 	// The error message of the AccessKey pair.
 	//
 	// example:
@@ -160,8 +170,18 @@ type DescribeCloudVendorAccountAKListResponseBodyCloudVendorAccountAKs struct {
 	//
 	// test
 	VendorAuthAlias *string `json:"VendorAuthAlias,omitempty" xml:"VendorAuthAlias,omitempty"`
-	VendorUid       *string `json:"VendorUid,omitempty" xml:"VendorUid,omitempty"`
-	VendorUserName  *string `json:"VendorUserName,omitempty" xml:"VendorUserName,omitempty"`
+	// Account ID of the multi-cloud instance.
+	//
+	// example:
+	//
+	// 123
+	VendorUid *string `json:"VendorUid,omitempty" xml:"VendorUid,omitempty"`
+	// Account name of the multi-cloud instance.
+	//
+	// example:
+	//
+	// VendorUserName
+	VendorUserName *string `json:"VendorUserName,omitempty" xml:"VendorUserName,omitempty"`
 }
 
 func (s DescribeCloudVendorAccountAKListResponseBodyCloudVendorAccountAKs) String() string {

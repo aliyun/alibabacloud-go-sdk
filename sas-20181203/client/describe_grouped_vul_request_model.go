@@ -175,7 +175,16 @@ type DescribeGroupedVulRequest struct {
 	// example:
 	//
 	// 20
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates whether the application protection feature is supported. Valid values:
+	//
+	// - **0**: no.
+	//
+	// - **1**: yes.
+	//
+	// example:
+	//
+	// 1
 	RaspDefend *int32 `json:"RaspDefend,omitempty" xml:"RaspDefend,omitempty"`
 	// The Alibaba Cloud account ID of the member in the resource directory.
 	//

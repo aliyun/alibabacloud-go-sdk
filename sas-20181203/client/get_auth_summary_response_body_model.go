@@ -85,7 +85,16 @@ type GetAuthSummaryResponseBody struct {
 	// example:
 	//
 	// 1
-	AutoBind         *int32 `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
+	AutoBind *int32 `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
+	// Cluster node need to check the machine version,  Value:
+	//
+	// - **0*	- : Not required
+	//
+	// - **1*	- : Required
+	//
+	// example:
+	//
+	// Required
 	ClusterNodeCheck *int32 `json:"ClusterNodeCheck,omitempty" xml:"ClusterNodeCheck,omitempty"`
 	// Indicates whether the protection quota is supported for all assets. Valid values:
 	//
@@ -126,7 +135,16 @@ type GetAuthSummaryResponseBody struct {
 	// example:
 	//
 	// 1
-	HighestVersion    *int32  `json:"HighestVersion,omitempty" xml:"HighestVersion,omitempty"`
+	HighestVersion *int32 `json:"HighestVersion,omitempty" xml:"HighestVersion,omitempty"`
+	// Binding effective status, value:
+	//
+	// - **NORMAL*	- : Effective
+	//
+	// - **INVALID_NODE_VERSION**: Invalid
+	//
+	// example:
+	//
+	// Effective
 	InvalidBindStatus *string `json:"InvalidBindStatus,omitempty" xml:"InvalidBindStatus,omitempty"`
 	// Indicates whether Security Center Multi-edition is purchased. Valid values:
 	//

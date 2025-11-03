@@ -85,9 +85,19 @@ type GetSwitchRegionDetailResponseBodyData struct {
 	// example:
 	//
 	// YES
-	IsNoticed  *string `json:"IsNoticed,omitempty" xml:"IsNoticed,omitempty"`
-	NeedNotice *bool   `json:"NeedNotice,omitempty" xml:"NeedNotice,omitempty"`
-	NeedSwitch *bool   `json:"NeedSwitch,omitempty" xml:"NeedSwitch,omitempty"`
+	IsNoticed *string `json:"IsNoticed,omitempty" xml:"IsNoticed,omitempty"`
+	// Specifies whether to notify the account.
+	//
+	// example:
+	//
+	// true
+	NeedNotice *bool `json:"NeedNotice,omitempty" xml:"NeedNotice,omitempty"`
+	// Specifies whether to switch.
+	//
+	// example:
+	//
+	// true
+	NeedSwitch *bool `json:"NeedSwitch,omitempty" xml:"NeedSwitch,omitempty"`
 	// The status of the switching to the region.
 	RegionStatus []*GetSwitchRegionDetailResponseBodyDataRegionStatus `json:"RegionStatus,omitempty" xml:"RegionStatus,omitempty" type:"Repeated"`
 }

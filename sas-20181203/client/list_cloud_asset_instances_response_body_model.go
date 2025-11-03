@@ -360,8 +360,18 @@ type ListCloudAssetInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// 0
-	Vendor         *int32  `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
-	VendorUid      *string `json:"VendorUid,omitempty" xml:"VendorUid,omitempty"`
+	Vendor *int32 `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// The account ID of the multi-cloud instance.
+	//
+	// example:
+	//
+	// 123xxx
+	VendorUid *string `json:"VendorUid,omitempty" xml:"VendorUid,omitempty"`
+	// The user name of the multi-cloud instance.
+	//
+	// example:
+	//
+	// testxxx
 	VendorUserName *string `json:"VendorUserName,omitempty" xml:"VendorUserName,omitempty"`
 }
 

@@ -91,7 +91,10 @@ type GetOssBucketScanStatisticResponseBodyData struct {
 	// example:
 	//
 	// 1
-	NoScanBucket *int32 `json:"NoScanBucket,omitempty" xml:"NoScanBucket,omitempty"`
+	NoScanBucket       *int32 `json:"NoScanBucket,omitempty" xml:"NoScanBucket,omitempty"`
+	PostPayInvokeCount *int64 `json:"PostPayInvokeCount,omitempty" xml:"PostPayInvokeCount,omitempty"`
+	PrePayAuthCount    *int64 `json:"PrePayAuthCount,omitempty" xml:"PrePayAuthCount,omitempty"`
+	PrePayInvokeCount  *int64 `json:"PrePayInvokeCount,omitempty" xml:"PrePayInvokeCount,omitempty"`
 	// The remaining quota.
 	//
 	// example:
@@ -152,6 +155,18 @@ func (s *GetOssBucketScanStatisticResponseBodyData) GetNoScanBucket() *int32 {
 	return s.NoScanBucket
 }
 
+func (s *GetOssBucketScanStatisticResponseBodyData) GetPostPayInvokeCount() *int64 {
+	return s.PostPayInvokeCount
+}
+
+func (s *GetOssBucketScanStatisticResponseBodyData) GetPrePayAuthCount() *int64 {
+	return s.PrePayAuthCount
+}
+
+func (s *GetOssBucketScanStatisticResponseBodyData) GetPrePayInvokeCount() *int64 {
+	return s.PrePayInvokeCount
+}
+
 func (s *GetOssBucketScanStatisticResponseBodyData) GetRemainAuth() *int32 {
 	return s.RemainAuth
 }
@@ -194,6 +209,21 @@ func (s *GetOssBucketScanStatisticResponseBodyData) SetMediumRisk(v int64) *GetO
 
 func (s *GetOssBucketScanStatisticResponseBodyData) SetNoScanBucket(v int32) *GetOssBucketScanStatisticResponseBodyData {
 	s.NoScanBucket = &v
+	return s
+}
+
+func (s *GetOssBucketScanStatisticResponseBodyData) SetPostPayInvokeCount(v int64) *GetOssBucketScanStatisticResponseBodyData {
+	s.PostPayInvokeCount = &v
+	return s
+}
+
+func (s *GetOssBucketScanStatisticResponseBodyData) SetPrePayAuthCount(v int64) *GetOssBucketScanStatisticResponseBodyData {
+	s.PrePayAuthCount = &v
+	return s
+}
+
+func (s *GetOssBucketScanStatisticResponseBodyData) SetPrePayInvokeCount(v int64) *GetOssBucketScanStatisticResponseBodyData {
+	s.PrePayInvokeCount = &v
 	return s
 }
 

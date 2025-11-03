@@ -481,7 +481,18 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	// example:
 	//
 	// "["authority_maintenance"]"
-	Stages             *string `json:"Stages,omitempty" xml:"Stages,omitempty"`
+	Stages *string `json:"Stages,omitempty" xml:"Stages,omitempty"`
+	// Supported alarm operation types:
+	//
+	// - **AI.false_positive**: Suspected false positive
+	//
+	// - **AI.real_attack**: Real attack
+	//
+	// - **AI.Insufficient_information_to_evaluate**: Insufficient information to evaluate
+	//
+	// example:
+	//
+	// AI.real_attack
 	SupportOperateCode *string `json:"SupportOperateCode,omitempty" xml:"SupportOperateCode,omitempty"`
 	// The display name of the attack stage.
 	TacticItems []*DescribeSuspEventsResponseBodySuspEventsTacticItems `json:"TacticItems,omitempty" xml:"TacticItems,omitempty" type:"Repeated"`

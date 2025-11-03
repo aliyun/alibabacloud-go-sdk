@@ -4262,6 +4262,10 @@ func (client *Client) CreateMaliciousFileWhitelistConfigWithContext(ctx context.
 		query["Operator"] = request.Operator
 	}
 
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
 	if !dara.IsNil(request.Source) {
 		query["Source"] = request.Source
 	}
@@ -19191,7 +19195,7 @@ func (client *Client) DescribeRestorePlansWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// This operation is phased out. You can use the ListCheckInstanceResult operation.
+// 该接口已下线，使用升级接口ListCheckInstanceResult替换。
 //
 // @param request - DescribeRiskCheckItemResultRequest
 //
@@ -27435,7 +27439,7 @@ func (client *Client) GetDockerhubImageRiskRankInfoWithContext(ctx context.Conte
 
 // Summary:
 //
-// Query the statistical counts of images across various dimensions.
+// Queries the risk statistics of Docker Hub images.
 //
 // @param request - GetDockerhubImageRiskStatisticRequest
 //
@@ -28961,7 +28965,7 @@ func (client *Client) GetOnceTaskResultInfoWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询集群镜像
+// Get cluster image information.
 //
 // @param request - GetOpaClusterImageListRequest
 //
@@ -34057,7 +34061,7 @@ func (client *Client) ListHoneypotProbeWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询已安装的探针
+// # Query installed probes
 //
 // @param request - ListHoneypotProbeUuidRequest
 //
@@ -34153,7 +34157,7 @@ func (client *Client) ListImageBuildRiskItemWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Query Image Registry Extended Information.
+// Queries the additional configuration information about an image repository.
 //
 // @param request - ListImageRegistryExtraRequest
 //
@@ -34725,7 +34729,7 @@ func (client *Client) ListK8sAccessInfoWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Paginate to query the application list.
+// Queries Serverless App Engine (SAE) applications.
 //
 // @param request - ListMachineAppsRequest
 //
@@ -34820,6 +34824,10 @@ func (client *Client) ListMaliciousFileWhitelistConfigsWithContext(ctx context.C
 		query["EventName"] = request.EventName
 	}
 
+	if !dara.IsNil(request.IdList) {
+		query["IdList"] = request.IdList
+	}
+
 	if !dara.IsNil(request.Lang) {
 		query["Lang"] = request.Lang
 	}
@@ -34872,12 +34880,20 @@ func (client *Client) ListObjectScanEventWithContext(ctx context.Context, reques
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BatchType) {
+		query["BatchType"] = request.BatchType
+	}
+
 	if !dara.IsNil(request.BucketName) {
 		query["BucketName"] = request.BucketName
 	}
 
 	if !dara.IsNil(request.CurrentPage) {
 		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
 	}
 
 	if !dara.IsNil(request.EventName) {
@@ -34910,6 +34926,10 @@ func (client *Client) ListObjectScanEventWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.Source) {
 		query["Source"] = request.Source
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
 	}
 
 	if !dara.IsNil(request.TimeEnd) {
@@ -36183,7 +36203,7 @@ func (client *Client) ListUserVpcWithContext(ctx context.Context, request *ListU
 
 // Summary:
 //
-// Query the list of instance UUIDs based on the application ID.
+// Queries the UUIDs of Serverless App Engine (SAE) instances based on an application ID.
 //
 // @param request - ListUuidsByAppIdRequest
 //
@@ -38477,7 +38497,7 @@ func (client *Client) ModifyGroupPropertyWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 修改代理集群
+// Modify proxy cluster.
 //
 // @param request - ModifyHybridProxyClusterRequest
 //
@@ -38525,7 +38545,7 @@ func (client *Client) ModifyHybridProxyClusterWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 修改代理策略
+// Modify proxy policy.
 //
 // @param request - ModifyHybridProxyPolicyRequest
 //
@@ -46142,6 +46162,10 @@ func (client *Client) UpdateMaliciousFileWhitelistConfigWithContext(ctx context.
 		query["Operator"] = request.Operator
 	}
 
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
 	if !dara.IsNil(request.Source) {
 		query["Source"] = request.Source
 	}
@@ -46789,7 +46813,7 @@ func (client *Client) UpdateTargetListByBatchWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modify Image Service Whitelist.
+// Updates the IP address whitelist of an image repository.
 //
 // @param request - UpdateWhiteListRequest
 //

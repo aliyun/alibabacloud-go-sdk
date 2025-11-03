@@ -177,6 +177,11 @@ type DescribePropertyProcDetailResponseBodyPropertys struct {
 	//
 	// root
 	EuidName *string `json:"EuidName,omitempty" xml:"EuidName,omitempty"`
+	// Process file hash information.
+	//
+	// example:
+	//
+	// 935c1861df1f4018d698e8b65abfa02d7e9037d8f68ca3c2065b6ca165d4****
 	FileHash *string `json:"FileHash,omitempty" xml:"FileHash,omitempty"`
 	// The ID of the server that is associated with the process.
 	//

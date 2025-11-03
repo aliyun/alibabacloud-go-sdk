@@ -27,8 +27,13 @@ type CreateCustomizedDictRequest struct {
 	// example:
 	//
 	// zh
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Override *bool   `json:"Override,omitempty" xml:"Override,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Whether to overwrite. Value range: - true: Overwrite. - false: Do not overwrite.
+	//
+	// example:
+	//
+	// false
+	Override *bool `json:"Override,omitempty" xml:"Override,omitempty"`
 	// The source IP address.
 	//
 	// example:

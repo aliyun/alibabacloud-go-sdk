@@ -127,7 +127,16 @@ type DescribeStrategyResponseBodyStrategies struct {
 	// example:
 	//
 	// 1
-	ExecStatus    *int32  `json:"ExecStatus,omitempty" xml:"ExecStatus,omitempty"`
+	ExecStatus *int32 `json:"ExecStatus,omitempty" xml:"ExecStatus,omitempty"`
+	// The triggering method of baseline scanning. Value:
+	//
+	// - **Schedule*	- : Periodic configuration of task triggers
+	//
+	// - **Manual*	- : Manually triggered
+	//
+	// example:
+	//
+	// Manual
 	ExecutionType *string `json:"ExecutionType,omitempty" xml:"ExecutionType,omitempty"`
 	// The ID of the baseline check policy.
 	//

@@ -18,7 +18,7 @@ type iListK8sAccessInfoResponseBody interface {
 type ListK8sAccessInfoResponseBody struct {
 	// The information about the Kubernetes clusters.
 	K8sAccessInfos []*ListK8sAccessInfoResponseBodyK8sAccessInfos `json:"K8sAccessInfos,omitempty" xml:"K8sAccessInfos,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	//
 	// example:
 	//
@@ -102,6 +102,8 @@ type ListK8sAccessInfoResponseBodyK8sAccessInfos struct {
 	//
 	// test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// CPU architecture, divided into ARM and x86 architectures.
+	//
 	// example:
 	//
 	// arm

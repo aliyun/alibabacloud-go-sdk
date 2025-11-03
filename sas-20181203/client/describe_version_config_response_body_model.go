@@ -119,7 +119,12 @@ type DescribeVersionConfigResponseBody struct {
 	// example:
 	//
 	// 1
-	AllowPartialBuy        *int32 `json:"AllowPartialBuy,omitempty" xml:"AllowPartialBuy,omitempty"`
+	AllowPartialBuy *int32 `json:"AllowPartialBuy,omitempty" xml:"AllowPartialBuy,omitempty"`
+	// 防勒索备份容量，单位GB。
+	//
+	// example:
+	//
+	// 160
 	AntiRansomwareCapacity *int32 `json:"AntiRansomwareCapacity,omitempty" xml:"AntiRansomwareCapacity,omitempty"`
 	// Switch of anti-ransomware hosting service. Valid values:
 	//
@@ -193,7 +198,12 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 8954
 	ImageScanCapacity *int64 `json:"ImageScanCapacity,omitempty" xml:"ImageScanCapacity,omitempty"`
-	InstanceBuyType   *int32 `json:"InstanceBuyType,omitempty" xml:"InstanceBuyType,omitempty"`
+	// Instance purchase type. Values: - **0**: Self-purchased - **1**: Multi-account allocation
+	//
+	// example:
+	//
+	// 0
+	InstanceBuyType *int32 `json:"InstanceBuyType,omitempty" xml:"InstanceBuyType,omitempty"`
 	// The ID of purchased Security Center.
 	//
 	// example:
@@ -275,8 +285,13 @@ type DescribeVersionConfigResponseBody struct {
 	// example:
 	//
 	// 7
-	MergedVersion *int32  `json:"MergedVersion,omitempty" xml:"MergedVersion,omitempty"`
-	MultiVersion  *string `json:"MultiVersion,omitempty" xml:"MultiVersion,omitempty"`
+	MergedVersion *int32 `json:"MergedVersion,omitempty" xml:"MergedVersion,omitempty"`
+	// Usage of multiple version numbers and license counts
+	//
+	// example:
+	//
+	// null
+	MultiVersion *string `json:"MultiVersion,omitempty" xml:"MultiVersion,omitempty"`
 	// Indicates whether the new version of the threat analysis and response feature is enabled. With the new version, you can purchase the amount of log data that you want to add to the feature and log storage capacity. Valid values:
 	//
 	// 	- **0**: no

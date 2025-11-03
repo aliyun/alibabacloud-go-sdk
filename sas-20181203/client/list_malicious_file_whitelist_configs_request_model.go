@@ -13,6 +13,8 @@ type iListMaliciousFileWhitelistConfigsRequest interface {
 	GetCurrentPage() *int32
 	SetEventName(v string) *ListMaliciousFileWhitelistConfigsRequest
 	GetEventName() *string
+	SetIdList(v int64) *ListMaliciousFileWhitelistConfigsRequest
+	GetIdList() *int64
 	SetLang(v string) *ListMaliciousFileWhitelistConfigsRequest
 	GetLang() *string
 	SetPageSize(v int32) *ListMaliciousFileWhitelistConfigsRequest
@@ -36,6 +38,7 @@ type ListMaliciousFileWhitelistConfigsRequest struct {
 	//
 	// ALL
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	IdList    *int64  `json:"IdList,omitempty" xml:"IdList,omitempty"`
 	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
 	// 	- **zh**: Chinese
@@ -76,6 +79,10 @@ func (s *ListMaliciousFileWhitelistConfigsRequest) GetEventName() *string {
 	return s.EventName
 }
 
+func (s *ListMaliciousFileWhitelistConfigsRequest) GetIdList() *int64 {
+	return s.IdList
+}
+
 func (s *ListMaliciousFileWhitelistConfigsRequest) GetLang() *string {
 	return s.Lang
 }
@@ -95,6 +102,11 @@ func (s *ListMaliciousFileWhitelistConfigsRequest) SetCurrentPage(v int32) *List
 
 func (s *ListMaliciousFileWhitelistConfigsRequest) SetEventName(v string) *ListMaliciousFileWhitelistConfigsRequest {
 	s.EventName = &v
+	return s
+}
+
+func (s *ListMaliciousFileWhitelistConfigsRequest) SetIdList(v int64) *ListMaliciousFileWhitelistConfigsRequest {
+	s.IdList = &v
 	return s
 }
 

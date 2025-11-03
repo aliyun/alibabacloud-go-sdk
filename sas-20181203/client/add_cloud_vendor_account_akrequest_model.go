@@ -51,8 +51,13 @@ type AddCloudVendorAccountAKRequest struct {
 	// primary
 	AkType *string `json:"AkType,omitempty" xml:"AkType,omitempty"`
 	// The modules that are associated with the AccessKey pair.
-	AuthModules     []*string `json:"AuthModules,omitempty" xml:"AuthModules,omitempty" type:"Repeated"`
-	CtdrCloudUserId *string   `json:"CtdrCloudUserId,omitempty" xml:"CtdrCloudUserId,omitempty"`
+	AuthModules []*string `json:"AuthModules,omitempty" xml:"AuthModules,omitempty" type:"Repeated"`
+	// Account ID. > The account ID of the cloud provider, required when permissions include threat analysis and response.
+	//
+	// example:
+	//
+	// azure_demo_1
+	CtdrCloudUserId *string `json:"CtdrCloudUserId,omitempty" xml:"CtdrCloudUserId,omitempty"`
 	// The Active Directory (AD) domain. This parameter takes effect only when Vendor is set to Azure. Valid values:
 	//
 	// 	- **china**
@@ -62,7 +67,14 @@ type AddCloudVendorAccountAKRequest struct {
 	// example:
 	//
 	// global
-	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// Extended information.
+	//
+	// > Used to record extended information from different vendors. > For Google Cloud, which is accessed via a service account, ExtendInfo stores the service key file in JSON format, excluding the private_key_id and zprivate_key fields. The file includes the following fields: type, project_id, client_email, client_id, auth_uri, token_uri, auth_provider_x509_cert_url, client_x509_cert_url, universe_domain.
+	//
+	// example:
+	//
+	// {\\"product\\":\\"webFirewall\\",\\"remark\\":\\"remark\\"}
 	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
 	// The language of the content in the request and response messages. Default value: **zh**. Valid values:
 	//

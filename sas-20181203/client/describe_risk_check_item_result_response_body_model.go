@@ -82,7 +82,7 @@ type DescribeRiskCheckItemResultResponseBodyPageContentResource struct {
 	//
 	// 3
 	PageCount *int32 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//

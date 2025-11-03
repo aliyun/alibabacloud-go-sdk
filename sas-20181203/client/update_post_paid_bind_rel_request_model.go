@@ -47,8 +47,13 @@ type UpdatePostPaidBindRelRequest struct {
 	// 3
 	AutoBindVersion *int32 `json:"AutoBindVersion,omitempty" xml:"AutoBindVersion,omitempty"`
 	// Parameters for the binding action.
-	BindAction        []*UpdatePostPaidBindRelRequestBindAction `json:"BindAction,omitempty" xml:"BindAction,omitempty" type:"Repeated"`
-	UpdateIfNecessary *bool                                     `json:"UpdateIfNecessary,omitempty" xml:"UpdateIfNecessary,omitempty"`
+	BindAction []*UpdatePostPaidBindRelRequestBindAction `json:"BindAction,omitempty" xml:"BindAction,omitempty" type:"Repeated"`
+	// Whether to force upgrade the version.
+	//
+	// example:
+	//
+	// false
+	UpdateIfNecessary *bool `json:"UpdateIfNecessary,omitempty" xml:"UpdateIfNecessary,omitempty"`
 }
 
 func (s UpdatePostPaidBindRelRequest) String() string {

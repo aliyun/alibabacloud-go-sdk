@@ -140,6 +140,15 @@ type ExportVulRequest struct {
   // 
   // /etc/test
   Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+  // Indicates whether the application protection feature is supported. Valid values:
+  // 
+  // - **0**: no.
+  // 
+  // - **1**: yes.
+  // 
+  // example:
+  // 
+  // 0
   RaspDefend *int32 `json:"RaspDefend,omitempty" xml:"RaspDefend,omitempty"`
   // The tag that is used to search for the vulnerabilities. Valid values:
   // 

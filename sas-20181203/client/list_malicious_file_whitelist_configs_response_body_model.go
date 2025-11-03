@@ -210,6 +210,7 @@ type ListMaliciousFileWhitelistConfigsResponseBodyList struct {
 	//
 	// strEqual
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Remark   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The feature to which this operation belongs.
 	//
 	// 	- The value is fixed as agentless, which indicates the agentless detection feature.
@@ -280,6 +281,10 @@ func (s *ListMaliciousFileWhitelistConfigsResponseBodyList) GetOperator() *strin
 	return s.Operator
 }
 
+func (s *ListMaliciousFileWhitelistConfigsResponseBodyList) GetRemark() *string {
+	return s.Remark
+}
+
 func (s *ListMaliciousFileWhitelistConfigsResponseBodyList) GetSource() *string {
 	return s.Source
 }
@@ -329,6 +334,11 @@ func (s *ListMaliciousFileWhitelistConfigsResponseBodyList) SetId(v int64) *List
 
 func (s *ListMaliciousFileWhitelistConfigsResponseBodyList) SetOperator(v string) *ListMaliciousFileWhitelistConfigsResponseBodyList {
 	s.Operator = &v
+	return s
+}
+
+func (s *ListMaliciousFileWhitelistConfigsResponseBodyList) SetRemark(v string) *ListMaliciousFileWhitelistConfigsResponseBodyList {
+	s.Remark = &v
 	return s
 }
 

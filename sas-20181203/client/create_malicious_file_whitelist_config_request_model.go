@@ -17,6 +17,8 @@ type iCreateMaliciousFileWhitelistConfigRequest interface {
 	GetFieldValue() *string
 	SetOperator(v string) *CreateMaliciousFileWhitelistConfigRequest
 	GetOperator() *string
+	SetRemark(v string) *CreateMaliciousFileWhitelistConfigRequest
+	GetRemark() *string
 	SetSource(v string) *CreateMaliciousFileWhitelistConfigRequest
 	GetSource() *string
 	SetTargetType(v string) *CreateMaliciousFileWhitelistConfigRequest
@@ -54,6 +56,7 @@ type CreateMaliciousFileWhitelistConfigRequest struct {
 	//
 	// strEqual
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Remark   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The feature to which this operation belongs.
 	//
 	// 	- Set the value to agentless, which indicates the agentless detection feature.
@@ -108,6 +111,10 @@ func (s *CreateMaliciousFileWhitelistConfigRequest) GetOperator() *string {
 	return s.Operator
 }
 
+func (s *CreateMaliciousFileWhitelistConfigRequest) GetRemark() *string {
+	return s.Remark
+}
+
 func (s *CreateMaliciousFileWhitelistConfigRequest) GetSource() *string {
 	return s.Source
 }
@@ -137,6 +144,11 @@ func (s *CreateMaliciousFileWhitelistConfigRequest) SetFieldValue(v string) *Cre
 
 func (s *CreateMaliciousFileWhitelistConfigRequest) SetOperator(v string) *CreateMaliciousFileWhitelistConfigRequest {
 	s.Operator = &v
+	return s
+}
+
+func (s *CreateMaliciousFileWhitelistConfigRequest) SetRemark(v string) *CreateMaliciousFileWhitelistConfigRequest {
+	s.Remark = &v
 	return s
 }
 

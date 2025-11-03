@@ -102,6 +102,7 @@ type ListObjectScanEventResponseBodyData struct {
 	//
 	// true
 	DisplaySandboxResult *string `json:"DisplaySandboxResult,omitempty" xml:"DisplaySandboxResult,omitempty"`
+	ErrorMsg             *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	// The ID of the alert.
 	//
 	// example:
@@ -141,19 +142,22 @@ type ListObjectScanEventResponseBodyData struct {
 	// example:
 	//
 	// 1694576692000
-	LastTime *int64 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	LastTime                    *int64  `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	MatchedWhiteListRuleI18nStr *string `json:"MatchedWhiteListRuleI18nStr,omitempty" xml:"MatchedWhiteListRuleI18nStr,omitempty"`
 	// The MD5 hash value of the file.
 	//
 	// example:
 	//
 	// 5b394b54ca632fe51c4ab4a6dbaf****
-	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	Md5           *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	OperateResult *string `json:"OperateResult,omitempty" xml:"OperateResult,omitempty"`
 	// The key of the file that is stored in the OSS bucket.
 	//
 	// example:
 	//
 	// 1/2023/07/21/10/18/16899059356518bcf6c64-a04e-492d-a421-4ae8b888****
 	OssKey *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The risk level of the alert. Valid values:
 	//
 	// 	- **high**
@@ -188,6 +192,7 @@ type ListObjectScanEventResponseBodyData struct {
 	//
 	// OSS
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListObjectScanEventResponseBodyData) String() string {
@@ -208,6 +213,10 @@ func (s *ListObjectScanEventResponseBodyData) GetDetails() []*ListObjectScanEven
 
 func (s *ListObjectScanEventResponseBodyData) GetDisplaySandboxResult() *string {
 	return s.DisplaySandboxResult
+}
+
+func (s *ListObjectScanEventResponseBodyData) GetErrorMsg() *string {
+	return s.ErrorMsg
 }
 
 func (s *ListObjectScanEventResponseBodyData) GetEventId() *int64 {
@@ -234,12 +243,24 @@ func (s *ListObjectScanEventResponseBodyData) GetLastTime() *int64 {
 	return s.LastTime
 }
 
+func (s *ListObjectScanEventResponseBodyData) GetMatchedWhiteListRuleI18nStr() *string {
+	return s.MatchedWhiteListRuleI18nStr
+}
+
 func (s *ListObjectScanEventResponseBodyData) GetMd5() *string {
 	return s.Md5
 }
 
+func (s *ListObjectScanEventResponseBodyData) GetOperateResult() *string {
+	return s.OperateResult
+}
+
 func (s *ListObjectScanEventResponseBodyData) GetOssKey() *string {
 	return s.OssKey
+}
+
+func (s *ListObjectScanEventResponseBodyData) GetRemark() *string {
+	return s.Remark
 }
 
 func (s *ListObjectScanEventResponseBodyData) GetRiskLevel() *string {
@@ -258,6 +279,10 @@ func (s *ListObjectScanEventResponseBodyData) GetSource() *string {
 	return s.Source
 }
 
+func (s *ListObjectScanEventResponseBodyData) GetStatus() *int32 {
+	return s.Status
+}
+
 func (s *ListObjectScanEventResponseBodyData) SetBucketName(v string) *ListObjectScanEventResponseBodyData {
 	s.BucketName = &v
 	return s
@@ -270,6 +295,11 @@ func (s *ListObjectScanEventResponseBodyData) SetDetails(v []*ListObjectScanEven
 
 func (s *ListObjectScanEventResponseBodyData) SetDisplaySandboxResult(v string) *ListObjectScanEventResponseBodyData {
 	s.DisplaySandboxResult = &v
+	return s
+}
+
+func (s *ListObjectScanEventResponseBodyData) SetErrorMsg(v string) *ListObjectScanEventResponseBodyData {
+	s.ErrorMsg = &v
 	return s
 }
 
@@ -303,13 +333,28 @@ func (s *ListObjectScanEventResponseBodyData) SetLastTime(v int64) *ListObjectSc
 	return s
 }
 
+func (s *ListObjectScanEventResponseBodyData) SetMatchedWhiteListRuleI18nStr(v string) *ListObjectScanEventResponseBodyData {
+	s.MatchedWhiteListRuleI18nStr = &v
+	return s
+}
+
 func (s *ListObjectScanEventResponseBodyData) SetMd5(v string) *ListObjectScanEventResponseBodyData {
 	s.Md5 = &v
 	return s
 }
 
+func (s *ListObjectScanEventResponseBodyData) SetOperateResult(v string) *ListObjectScanEventResponseBodyData {
+	s.OperateResult = &v
+	return s
+}
+
 func (s *ListObjectScanEventResponseBodyData) SetOssKey(v string) *ListObjectScanEventResponseBodyData {
 	s.OssKey = &v
+	return s
+}
+
+func (s *ListObjectScanEventResponseBodyData) SetRemark(v string) *ListObjectScanEventResponseBodyData {
+	s.Remark = &v
 	return s
 }
 
@@ -330,6 +375,11 @@ func (s *ListObjectScanEventResponseBodyData) SetSha256(v string) *ListObjectSca
 
 func (s *ListObjectScanEventResponseBodyData) SetSource(v string) *ListObjectScanEventResponseBodyData {
 	s.Source = &v
+	return s
+}
+
+func (s *ListObjectScanEventResponseBodyData) SetStatus(v int32) *ListObjectScanEventResponseBodyData {
+	s.Status = &v
 	return s
 }
 

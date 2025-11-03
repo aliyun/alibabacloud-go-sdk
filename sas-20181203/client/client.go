@@ -5652,6 +5652,10 @@ func (client *Client) CreateMaliciousFileWhitelistConfigWithOptions(request *Cre
 		query["Operator"] = request.Operator
 	}
 
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
 	if !dara.IsNil(request.Source) {
 		query["Source"] = request.Source
 	}
@@ -26657,7 +26661,7 @@ func (client *Client) DescribeRestorePlans(request *DescribeRestorePlansRequest)
 //
 // Description:
 //
-// This operation is phased out. You can use the ListCheckInstanceResult operation.
+// 该接口已下线，使用升级接口ListCheckInstanceResult替换。
 //
 // @param request - DescribeRiskCheckItemResultRequest
 //
@@ -26727,7 +26731,7 @@ func (client *Client) DescribeRiskCheckItemResultWithOptions(request *DescribeRi
 //
 // Description:
 //
-// This operation is phased out. You can use the ListCheckInstanceResult operation.
+// 该接口已下线，使用升级接口ListCheckInstanceResult替换。
 //
 // @param request - DescribeRiskCheckItemResultRequest
 //
@@ -38754,7 +38758,7 @@ func (client *Client) GetDockerhubImageRiskRankInfo(request *GetDockerhubImageRi
 
 // Summary:
 //
-// Query the statistical counts of images across various dimensions.
+// Queries the risk statistics of Docker Hub images.
 //
 // @param request - GetDockerhubImageRiskStatisticRequest
 //
@@ -38798,7 +38802,7 @@ func (client *Client) GetDockerhubImageRiskStatisticWithOptions(request *GetDock
 
 // Summary:
 //
-// Query the statistical counts of images across various dimensions.
+// Queries the risk statistics of Docker Hub images.
 //
 // @param request - GetDockerhubImageRiskStatisticRequest
 //
@@ -41030,7 +41034,7 @@ func (client *Client) GetOpaClusterBaseLineList() (_result *GetOpaClusterBaseLin
 
 // Summary:
 //
-// 查询集群镜像
+// Get cluster image information.
 //
 // @param request - GetOpaClusterImageListRequest
 //
@@ -41086,7 +41090,7 @@ func (client *Client) GetOpaClusterImageListWithOptions(request *GetOpaClusterIm
 
 // Summary:
 //
-// 查询集群镜像
+// Get cluster image information.
 //
 // @param request - GetOpaClusterImageListRequest
 //
@@ -41723,7 +41727,7 @@ func (client *Client) GetRdTree() (_result *GetRdTreeResponse, _err error) {
 
 // Summary:
 //
-// Query Image Scan Period.
+// Queries the time range of image scans.
 //
 // @param request - GetRegistryScanDayNumRequest
 //
@@ -41754,7 +41758,7 @@ func (client *Client) GetRegistryScanDayNumWithOptions(runtime *dara.RuntimeOpti
 
 // Summary:
 //
-// Query Image Scan Period.
+// Queries the time range of image scans.
 //
 // @return GetRegistryScanDayNumResponse
 func (client *Client) GetRegistryScanDayNum() (_result *GetRegistryScanDayNumResponse, _err error) {
@@ -48356,7 +48360,7 @@ func (client *Client) ListHoneypotProbe(request *ListHoneypotProbeRequest) (_res
 
 // Summary:
 //
-// 查询已安装的探针
+// # Query installed probes
 //
 // @param request - ListHoneypotProbeUuidRequest
 //
@@ -48408,7 +48412,7 @@ func (client *Client) ListHoneypotProbeUuidWithOptions(request *ListHoneypotProb
 
 // Summary:
 //
-// 查询已安装的探针
+// # Query installed probes
 //
 // @param request - ListHoneypotProbeUuidRequest
 //
@@ -48488,7 +48492,7 @@ func (client *Client) ListImageBuildRiskItem(request *ListImageBuildRiskItemRequ
 
 // Summary:
 //
-// Query Image Registry Extended Information.
+// Queries the additional configuration information about an image repository.
 //
 // @param request - ListImageRegistryExtraRequest
 //
@@ -48532,7 +48536,7 @@ func (client *Client) ListImageRegistryExtraWithOptions(request *ListImageRegist
 
 // Summary:
 //
-// Query Image Registry Extended Information.
+// Queries the additional configuration information about an image repository.
 //
 // @param request - ListImageRegistryExtraRequest
 //
@@ -49291,7 +49295,7 @@ func (client *Client) ListLogShipperRegions() (_result *ListLogShipperRegionsRes
 
 // Summary:
 //
-// Paginate to query the application list.
+// Queries Serverless App Engine (SAE) applications.
 //
 // @param request - ListMachineAppsRequest
 //
@@ -49363,7 +49367,7 @@ func (client *Client) ListMachineAppsWithOptions(request *ListMachineAppsRequest
 
 // Summary:
 //
-// Paginate to query the application list.
+// Queries Serverless App Engine (SAE) applications.
 //
 // @param request - ListMachineAppsRequest
 //
@@ -49402,6 +49406,10 @@ func (client *Client) ListMaliciousFileWhitelistConfigsWithOptions(request *List
 
 	if !dara.IsNil(request.EventName) {
 		query["EventName"] = request.EventName
+	}
+
+	if !dara.IsNil(request.IdList) {
+		query["IdList"] = request.IdList
 	}
 
 	if !dara.IsNil(request.Lang) {
@@ -49474,12 +49482,20 @@ func (client *Client) ListObjectScanEventWithOptions(request *ListObjectScanEven
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BatchType) {
+		query["BatchType"] = request.BatchType
+	}
+
 	if !dara.IsNil(request.BucketName) {
 		query["BucketName"] = request.BucketName
 	}
 
 	if !dara.IsNil(request.CurrentPage) {
 		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
 	}
 
 	if !dara.IsNil(request.EventName) {
@@ -49512,6 +49528,10 @@ func (client *Client) ListObjectScanEventWithOptions(request *ListObjectScanEven
 
 	if !dara.IsNil(request.Source) {
 		query["Source"] = request.Source
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
 	}
 
 	if !dara.IsNil(request.TimeEnd) {
@@ -51425,7 +51445,7 @@ func (client *Client) ListUserVpc(request *ListUserVpcRequest) (_result *ListUse
 
 // Summary:
 //
-// Query the list of instance UUIDs based on the application ID.
+// Queries the UUIDs of Serverless App Engine (SAE) instances based on an application ID.
 //
 // @param request - ListUuidsByAppIdRequest
 //
@@ -51489,7 +51509,7 @@ func (client *Client) ListUuidsByAppIdWithOptions(request *ListUuidsByAppIdReque
 
 // Summary:
 //
-// Query the list of instance UUIDs based on the application ID.
+// Queries the UUIDs of Serverless App Engine (SAE) instances based on an application ID.
 //
 // @param request - ListUuidsByAppIdRequest
 //
@@ -54419,7 +54439,7 @@ func (client *Client) ModifyGroupProperty(request *ModifyGroupPropertyRequest) (
 
 // Summary:
 //
-// 修改代理集群
+// Modify proxy cluster.
 //
 // @param request - ModifyHybridProxyClusterRequest
 //
@@ -54467,7 +54487,7 @@ func (client *Client) ModifyHybridProxyClusterWithOptions(request *ModifyHybridP
 
 // Summary:
 //
-// 修改代理集群
+// Modify proxy cluster.
 //
 // @param request - ModifyHybridProxyClusterRequest
 //
@@ -54485,7 +54505,7 @@ func (client *Client) ModifyHybridProxyCluster(request *ModifyHybridProxyCluster
 
 // Summary:
 //
-// 修改代理策略
+// Modify proxy policy.
 //
 // @param request - ModifyHybridProxyPolicyRequest
 //
@@ -54533,7 +54553,7 @@ func (client *Client) ModifyHybridProxyPolicyWithOptions(request *ModifyHybridPr
 
 // Summary:
 //
-// 修改代理策略
+// Modify proxy policy.
 //
 // @param request - ModifyHybridProxyPolicyRequest
 //
@@ -64885,6 +64905,10 @@ func (client *Client) UpdateMaliciousFileWhitelistConfigWithOptions(request *Upd
 		query["Operator"] = request.Operator
 	}
 
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
 	if !dara.IsNil(request.Source) {
 		query["Source"] = request.Source
 	}
@@ -65730,7 +65754,7 @@ func (client *Client) UpdateTargetListByBatch(request *UpdateTargetListByBatchRe
 
 // Summary:
 //
-// Modify Image Service Whitelist.
+// Updates the IP address whitelist of an image repository.
 //
 // @param request - UpdateWhiteListRequest
 //
@@ -65778,7 +65802,7 @@ func (client *Client) UpdateWhiteListWithOptions(request *UpdateWhiteListRequest
 
 // Summary:
 //
-// Modify Image Service Whitelist.
+// Updates the IP address whitelist of an image repository.
 //
 // @param request - UpdateWhiteListRequest
 //

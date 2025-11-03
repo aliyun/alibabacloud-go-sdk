@@ -39,7 +39,8 @@ type ListCheckStandardRequest struct {
 	// example:
 	//
 	// zh
-	Lang        *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// List of task sources.
 	TaskSources []*string `json:"TaskSources,omitempty" xml:"TaskSources,omitempty" type:"Repeated"`
 	// The cloud service providers. Valid values:
 	//

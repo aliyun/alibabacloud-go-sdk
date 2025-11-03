@@ -212,7 +212,12 @@ type DescribePropertyScaProcessDetailResponseBodyPropertys struct {
 	// example:
 	//
 	// 162eb349-c2d9-4f8b-805c-75b43d4c****
-	Uuid    *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// The version of web application service.
+	//
+	// example:
+	//
+	// 3.10.0
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 

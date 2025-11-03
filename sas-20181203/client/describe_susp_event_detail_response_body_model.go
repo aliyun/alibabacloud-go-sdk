@@ -50,6 +50,13 @@ type iDescribeSuspEventDetailResponseBody interface {
 }
 
 type DescribeSuspEventDetailResponseBody struct {
+	// The unique ID of the alarm event.
+	//
+	// > If querying the anomaly information of a single alarm event, you need to provide the unique ID of the alarm event, which can be obtained by calling the [DescribeSuspEvents](~~DescribeSuspEvents~~) interface.
+	//
+	// example:
+	//
+	// 8df914418f4211fb****
 	AlarmUniqueInfo *string `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
 	// Indicates whether the online processing of exceptions is supported, such as blocking an exception, adding an exception to the whitelist, and ignoring an exception. Valid values:
 	//

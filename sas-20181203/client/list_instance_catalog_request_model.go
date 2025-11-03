@@ -59,7 +59,8 @@ type ListInstanceCatalogRequest struct {
 	// The IDs of requirement items.
 	RequirementIds []*int64 `json:"RequirementIds,omitempty" xml:"RequirementIds,omitempty" type:"Repeated"`
 	// The IDs of standards.
-	StandardIds []*int64  `json:"StandardIds,omitempty" xml:"StandardIds,omitempty" type:"Repeated"`
+	StandardIds []*int64 `json:"StandardIds,omitempty" xml:"StandardIds,omitempty" type:"Repeated"`
+	// List of task sources.
 	TaskSources []*string `json:"TaskSources,omitempty" xml:"TaskSources,omitempty" type:"Repeated"`
 	// The types of check standards.
 	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`

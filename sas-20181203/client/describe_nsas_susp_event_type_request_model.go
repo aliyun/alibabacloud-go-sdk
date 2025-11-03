@@ -89,7 +89,8 @@ type DescribeNsasSuspEventTypeRequest struct {
 	// example:
 	//
 	// 180.212.XX.XX
-	SourceIp               *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// List of supported alarm operation types.
 	SupportOperateCodeList []*string `json:"SupportOperateCodeList,omitempty" xml:"SupportOperateCodeList,omitempty" type:"Repeated"`
 	// The UUIDs of servers. Separate multiple UUIDs with commas (,).
 	//

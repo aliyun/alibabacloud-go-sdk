@@ -192,7 +192,12 @@ type GetCloudAssetDetailResponseBodyInstances struct {
 	// example:
 	//
 	// 1.2.XX.XX
-	InternetIp        *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// Detailed asset information.
+	//
+	// example:
+	//
+	// {"owner":{"displayName":"123","id":"123"},"intranetEndpoint":"oss-cn-shanghai-internal.aliyuncs.com","extranetEndpoint":"oss-cn-shanghai.aliyuncs.com","storageClass":"Standard","name":"test","location":"oss-cn-shanghai","creationDate":1629882579000,"region":"cn-shanghai"}
 	OriginalAssetInfo *string `json:"OriginalAssetInfo,omitempty" xml:"OriginalAssetInfo,omitempty"`
 	// The region in which the cloud asset resides.
 	//
@@ -233,8 +238,18 @@ type GetCloudAssetDetailResponseBodyInstances struct {
 	// example:
 	//
 	// 0
-	Vendor         *int32  `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
-	VendorUid      *string `json:"VendorUid,omitempty" xml:"VendorUid,omitempty"`
+	Vendor *int32 `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// Account id for multi-cloud instances.
+	//
+	// example:
+	//
+	// 123
+	VendorUid *string `json:"VendorUid,omitempty" xml:"VendorUid,omitempty"`
+	// The account name of the multi-cloud instance.
+	//
+	// example:
+	//
+	// test
 	VendorUserName *string `json:"VendorUserName,omitempty" xml:"VendorUserName,omitempty"`
 }
 

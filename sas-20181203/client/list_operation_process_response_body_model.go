@@ -164,8 +164,18 @@ type ListOperationProcessResponseBodyProcesses struct {
 	// example:
 	//
 	// 1674388824000
-	CreateTime           *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Number of completed subtasks
+	//
+	// example:
+	//
+	// 5
 	DetailTaskReadyCount *int32 `json:"DetailTaskReadyCount,omitempty" xml:"DetailTaskReadyCount,omitempty"`
+	// Total number of subtasks.
+	//
+	// example:
+	//
+	// 10
 	DetailTaskTotalCount *int32 `json:"DetailTaskTotalCount,omitempty" xml:"DetailTaskTotalCount,omitempty"`
 	// The end time of the task. Unit: milliseconds.
 	//
@@ -204,7 +214,14 @@ type ListOperationProcessResponseBodyProcesses struct {
 	// example:
 	//
 	// 3d7a1b68-599f-4e16-9b45-e920a183b***
-	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Task source. Values:
+	//
+	// - **YAO_CHI**: YaoChi.
+	//
+	// example:
+	//
+	// YAO_CHI
 	TaskSource *string `json:"TaskSource,omitempty" xml:"TaskSource,omitempty"`
 	// The task type. Valid values:
 	//

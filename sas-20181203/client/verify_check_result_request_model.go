@@ -17,8 +17,13 @@ type iVerifyCheckResultRequest interface {
 
 type VerifyCheckResultRequest struct {
 	// The IDs of the check items.
-	CheckIds   []*int64 `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
-	TaskSource *string  `json:"TaskSource,omitempty" xml:"TaskSource,omitempty"`
+	CheckIds []*int64 `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
+	// The source of task.
+	//
+	// example:
+	//
+	// YAO_CHI
+	TaskSource *string `json:"TaskSource,omitempty" xml:"TaskSource,omitempty"`
 }
 
 func (s VerifyCheckResultRequest) String() string {

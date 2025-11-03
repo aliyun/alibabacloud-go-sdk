@@ -25,7 +25,12 @@ type SubmitCheckRequest struct {
 	// example:
 	//
 	// POLICY
-	ScanRange  *string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty"`
+	ScanRange *string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty"`
+	// The source of task.
+	//
+	// example:
+	//
+	// YAO_CHI
 	TaskSource *string `json:"TaskSource,omitempty" xml:"TaskSource,omitempty"`
 }
 

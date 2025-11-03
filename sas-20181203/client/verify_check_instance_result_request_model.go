@@ -28,7 +28,12 @@ type VerifyCheckInstanceResultRequest struct {
 	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
 	// The instance IDs of the assets on which risks are detected based on the check item.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	TaskSource  *string   `json:"TaskSource,omitempty" xml:"TaskSource,omitempty"`
+	// The source of task.
+	//
+	// example:
+	//
+	// YAO_CHI
+	TaskSource *string `json:"TaskSource,omitempty" xml:"TaskSource,omitempty"`
 }
 
 func (s VerifyCheckInstanceResultRequest) String() string {

@@ -14,7 +14,7 @@ type iGetDockerhubImageRiskStatisticRequest interface {
 }
 
 type GetDockerhubImageRiskStatisticRequest struct {
-	// The types of image risks to be queried.
+	// The risk types that you want to query.
 	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 }
 
