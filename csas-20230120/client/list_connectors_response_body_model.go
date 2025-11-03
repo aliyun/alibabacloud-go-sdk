@@ -83,6 +83,7 @@ func (s *ListConnectorsResponseBody) Validate() error {
 }
 
 type ListConnectorsResponseBodyConnectors struct {
+	AccelerateStatus *string `json:"AccelerateStatus,omitempty" xml:"AccelerateStatus,omitempty"`
 	// Collection of associated internal network access applications.
 	Applications []*ListConnectorsResponseBodyConnectorsApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
 	// Cluster IP.
@@ -155,6 +156,10 @@ func (s ListConnectorsResponseBodyConnectors) GoString() string {
 	return s.String()
 }
 
+func (s *ListConnectorsResponseBodyConnectors) GetAccelerateStatus() *string {
+	return s.AccelerateStatus
+}
+
 func (s *ListConnectorsResponseBodyConnectors) GetApplications() []*ListConnectorsResponseBodyConnectorsApplications {
 	return s.Applications
 }
@@ -197,6 +202,11 @@ func (s *ListConnectorsResponseBodyConnectors) GetSwitchStatus() *string {
 
 func (s *ListConnectorsResponseBodyConnectors) GetUpgradeTime() *ListConnectorsResponseBodyConnectorsUpgradeTime {
 	return s.UpgradeTime
+}
+
+func (s *ListConnectorsResponseBodyConnectors) SetAccelerateStatus(v string) *ListConnectorsResponseBodyConnectors {
+	s.AccelerateStatus = &v
+	return s
 }
 
 func (s *ListConnectorsResponseBodyConnectors) SetApplications(v []*ListConnectorsResponseBodyConnectorsApplications) *ListConnectorsResponseBodyConnectors {
