@@ -2556,6 +2556,10 @@ func (client *Client) CreateOriginProtectionWithContext(ctx context.Context, req
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoConfirmIPList) {
+		query["AutoConfirmIPList"] = request.AutoConfirmIPList
+	}
+
 	if !dara.IsNil(request.SiteId) {
 		query["SiteId"] = request.SiteId
 	}
@@ -16856,6 +16860,10 @@ func (client *Client) UpdateOriginProtectionWithContext(ctx context.Context, req
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoConfirmIPList) {
+		query["AutoConfirmIPList"] = request.AutoConfirmIPList
+	}
+
 	if !dara.IsNil(request.OriginConverge) {
 		query["OriginConverge"] = request.OriginConverge
 	}

@@ -347,7 +347,7 @@ type ListTransportLayerApplicationsResponseBodyApplicationsRules struct {
 	//
 	// example:
 	//
-	// 测试
+	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// Edge port. Supports:
 	//

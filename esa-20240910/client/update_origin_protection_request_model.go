@@ -9,6 +9,8 @@ type iUpdateOriginProtectionRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoConfirmIPList(v string) *UpdateOriginProtectionRequest
+	GetAutoConfirmIPList() *string
 	SetOriginConverge(v string) *UpdateOriginProtectionRequest
 	GetOriginConverge() *string
 	SetSiteId(v int64) *UpdateOriginProtectionRequest
@@ -16,6 +18,10 @@ type iUpdateOriginProtectionRequest interface {
 }
 
 type UpdateOriginProtectionRequest struct {
+	// example:
+	//
+	// off
+	AutoConfirmIPList *string `json:"AutoConfirmIPList,omitempty" xml:"AutoConfirmIPList,omitempty"`
 	// The IP convergence status.
 	//
 	// 	- on
@@ -46,12 +52,21 @@ func (s UpdateOriginProtectionRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateOriginProtectionRequest) GetAutoConfirmIPList() *string {
+	return s.AutoConfirmIPList
+}
+
 func (s *UpdateOriginProtectionRequest) GetOriginConverge() *string {
 	return s.OriginConverge
 }
 
 func (s *UpdateOriginProtectionRequest) GetSiteId() *int64 {
 	return s.SiteId
+}
+
+func (s *UpdateOriginProtectionRequest) SetAutoConfirmIPList(v string) *UpdateOriginProtectionRequest {
+	s.AutoConfirmIPList = &v
+	return s
 }
 
 func (s *UpdateOriginProtectionRequest) SetOriginConverge(v string) *UpdateOriginProtectionRequest {
