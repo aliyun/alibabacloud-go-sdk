@@ -2018,6 +2018,14 @@ func (client *Client) AddLiveRecordNotifyConfigWithContext(ctx context.Context, 
 		query["NeedStatusNotify"] = request.NeedStatusNotify
 	}
 
+	if !dara.IsNil(request.NotifyAuthKey) {
+		query["NotifyAuthKey"] = request.NotifyAuthKey
+	}
+
+	if !dara.IsNil(request.NotifyReqAuth) {
+		query["NotifyReqAuth"] = request.NotifyReqAuth
+	}
+
 	if !dara.IsNil(request.NotifyUrl) {
 		query["NotifyUrl"] = request.NotifyUrl
 	}
@@ -29832,6 +29840,14 @@ func (client *Client) UpdateLiveRecordNotifyConfigWithContext(ctx context.Contex
 
 	if !dara.IsNil(request.NeedStatusNotify) {
 		query["NeedStatusNotify"] = request.NeedStatusNotify
+	}
+
+	if !dara.IsNil(request.NotifyAuthKey) {
+		query["NotifyAuthKey"] = request.NotifyAuthKey
+	}
+
+	if !dara.IsNil(request.NotifyReqAuth) {
+		query["NotifyReqAuth"] = request.NotifyReqAuth
 	}
 
 	if !dara.IsNil(request.NotifyUrl) {

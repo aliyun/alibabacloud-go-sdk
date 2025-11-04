@@ -13,6 +13,10 @@ type iUpdateLiveRecordNotifyConfigRequest interface {
 	GetDomainName() *string
 	SetNeedStatusNotify(v bool) *UpdateLiveRecordNotifyConfigRequest
 	GetNeedStatusNotify() *bool
+	SetNotifyAuthKey(v string) *UpdateLiveRecordNotifyConfigRequest
+	GetNotifyAuthKey() *string
+	SetNotifyReqAuth(v bool) *UpdateLiveRecordNotifyConfigRequest
+	GetNotifyReqAuth() *bool
 	SetNotifyUrl(v string) *UpdateLiveRecordNotifyConfigRequest
 	GetNotifyUrl() *string
 	SetOnDemandUrl(v string) *UpdateLiveRecordNotifyConfigRequest
@@ -41,7 +45,9 @@ type UpdateLiveRecordNotifyConfigRequest struct {
 	// example:
 	//
 	// false
-	NeedStatusNotify *bool `json:"NeedStatusNotify,omitempty" xml:"NeedStatusNotify,omitempty"`
+	NeedStatusNotify *bool   `json:"NeedStatusNotify,omitempty" xml:"NeedStatusNotify,omitempty"`
+	NotifyAuthKey    *string `json:"NotifyAuthKey,omitempty" xml:"NotifyAuthKey,omitempty"`
+	NotifyReqAuth    *bool   `json:"NotifyReqAuth,omitempty" xml:"NotifyReqAuth,omitempty"`
 	// The callback URL that is used to receive notifications about recording events and status.
 	//
 	// >
@@ -88,6 +94,14 @@ func (s *UpdateLiveRecordNotifyConfigRequest) GetNeedStatusNotify() *bool {
 	return s.NeedStatusNotify
 }
 
+func (s *UpdateLiveRecordNotifyConfigRequest) GetNotifyAuthKey() *string {
+	return s.NotifyAuthKey
+}
+
+func (s *UpdateLiveRecordNotifyConfigRequest) GetNotifyReqAuth() *bool {
+	return s.NotifyReqAuth
+}
+
 func (s *UpdateLiveRecordNotifyConfigRequest) GetNotifyUrl() *string {
 	return s.NotifyUrl
 }
@@ -111,6 +125,16 @@ func (s *UpdateLiveRecordNotifyConfigRequest) SetDomainName(v string) *UpdateLiv
 
 func (s *UpdateLiveRecordNotifyConfigRequest) SetNeedStatusNotify(v bool) *UpdateLiveRecordNotifyConfigRequest {
 	s.NeedStatusNotify = &v
+	return s
+}
+
+func (s *UpdateLiveRecordNotifyConfigRequest) SetNotifyAuthKey(v string) *UpdateLiveRecordNotifyConfigRequest {
+	s.NotifyAuthKey = &v
+	return s
+}
+
+func (s *UpdateLiveRecordNotifyConfigRequest) SetNotifyReqAuth(v bool) *UpdateLiveRecordNotifyConfigRequest {
+	s.NotifyReqAuth = &v
 	return s
 }
 

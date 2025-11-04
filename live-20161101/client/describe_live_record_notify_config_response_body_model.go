@@ -77,7 +77,9 @@ type DescribeLiveRecordNotifyConfigResponseBodyLiveRecordNotifyConfig struct {
 	// example:
 	//
 	// false
-	NeedStatusNotify *bool `json:"NeedStatusNotify,omitempty" xml:"NeedStatusNotify,omitempty"`
+	NeedStatusNotify *bool   `json:"NeedStatusNotify,omitempty" xml:"NeedStatusNotify,omitempty"`
+	NotifyAuthKey    *string `json:"NotifyAuthKey,omitempty" xml:"NotifyAuthKey,omitempty"`
+	NotifyReqAuth    *bool   `json:"NotifyReqAuth,omitempty" xml:"NotifyReqAuth,omitempty"`
 	// The recording callback URL.
 	//
 	// example:
@@ -108,6 +110,14 @@ func (s *DescribeLiveRecordNotifyConfigResponseBodyLiveRecordNotifyConfig) GetNe
 	return s.NeedStatusNotify
 }
 
+func (s *DescribeLiveRecordNotifyConfigResponseBodyLiveRecordNotifyConfig) GetNotifyAuthKey() *string {
+	return s.NotifyAuthKey
+}
+
+func (s *DescribeLiveRecordNotifyConfigResponseBodyLiveRecordNotifyConfig) GetNotifyReqAuth() *bool {
+	return s.NotifyReqAuth
+}
+
 func (s *DescribeLiveRecordNotifyConfigResponseBodyLiveRecordNotifyConfig) GetNotifyUrl() *string {
 	return s.NotifyUrl
 }
@@ -123,6 +133,16 @@ func (s *DescribeLiveRecordNotifyConfigResponseBodyLiveRecordNotifyConfig) SetDo
 
 func (s *DescribeLiveRecordNotifyConfigResponseBodyLiveRecordNotifyConfig) SetNeedStatusNotify(v bool) *DescribeLiveRecordNotifyConfigResponseBodyLiveRecordNotifyConfig {
 	s.NeedStatusNotify = &v
+	return s
+}
+
+func (s *DescribeLiveRecordNotifyConfigResponseBodyLiveRecordNotifyConfig) SetNotifyAuthKey(v string) *DescribeLiveRecordNotifyConfigResponseBodyLiveRecordNotifyConfig {
+	s.NotifyAuthKey = &v
+	return s
+}
+
+func (s *DescribeLiveRecordNotifyConfigResponseBodyLiveRecordNotifyConfig) SetNotifyReqAuth(v bool) *DescribeLiveRecordNotifyConfigResponseBodyLiveRecordNotifyConfig {
+	s.NotifyReqAuth = &v
 	return s
 }
 

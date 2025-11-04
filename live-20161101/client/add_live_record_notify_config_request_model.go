@@ -13,6 +13,10 @@ type iAddLiveRecordNotifyConfigRequest interface {
 	GetDomainName() *string
 	SetNeedStatusNotify(v bool) *AddLiveRecordNotifyConfigRequest
 	GetNeedStatusNotify() *bool
+	SetNotifyAuthKey(v string) *AddLiveRecordNotifyConfigRequest
+	GetNotifyAuthKey() *string
+	SetNotifyReqAuth(v bool) *AddLiveRecordNotifyConfigRequest
+	GetNotifyReqAuth() *bool
 	SetNotifyUrl(v string) *AddLiveRecordNotifyConfigRequest
 	GetNotifyUrl() *string
 	SetOnDemandUrl(v string) *AddLiveRecordNotifyConfigRequest
@@ -41,7 +45,9 @@ type AddLiveRecordNotifyConfigRequest struct {
 	// example:
 	//
 	// false
-	NeedStatusNotify *bool `json:"NeedStatusNotify,omitempty" xml:"NeedStatusNotify,omitempty"`
+	NeedStatusNotify *bool   `json:"NeedStatusNotify,omitempty" xml:"NeedStatusNotify,omitempty"`
+	NotifyAuthKey    *string `json:"NotifyAuthKey,omitempty" xml:"NotifyAuthKey,omitempty"`
+	NotifyReqAuth    *bool   `json:"NotifyReqAuth,omitempty" xml:"NotifyReqAuth,omitempty"`
 	// The callback URL that is used to receive notifications about recording events and status.
 	//
 	// >  The URL must start with `http://` or `https://`. For more information, see [Callbacks for live stream recording](https://help.aliyun.com/document_detail/55016.html).
@@ -80,6 +86,14 @@ func (s *AddLiveRecordNotifyConfigRequest) GetNeedStatusNotify() *bool {
 	return s.NeedStatusNotify
 }
 
+func (s *AddLiveRecordNotifyConfigRequest) GetNotifyAuthKey() *string {
+	return s.NotifyAuthKey
+}
+
+func (s *AddLiveRecordNotifyConfigRequest) GetNotifyReqAuth() *bool {
+	return s.NotifyReqAuth
+}
+
 func (s *AddLiveRecordNotifyConfigRequest) GetNotifyUrl() *string {
 	return s.NotifyUrl
 }
@@ -103,6 +117,16 @@ func (s *AddLiveRecordNotifyConfigRequest) SetDomainName(v string) *AddLiveRecor
 
 func (s *AddLiveRecordNotifyConfigRequest) SetNeedStatusNotify(v bool) *AddLiveRecordNotifyConfigRequest {
 	s.NeedStatusNotify = &v
+	return s
+}
+
+func (s *AddLiveRecordNotifyConfigRequest) SetNotifyAuthKey(v string) *AddLiveRecordNotifyConfigRequest {
+	s.NotifyAuthKey = &v
+	return s
+}
+
+func (s *AddLiveRecordNotifyConfigRequest) SetNotifyReqAuth(v bool) *AddLiveRecordNotifyConfigRequest {
+	s.NotifyReqAuth = &v
 	return s
 }
 
