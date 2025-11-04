@@ -16,8 +16,12 @@ type iDeleteChunkRequest interface {
 }
 
 type DeleteChunkRequest struct {
+	// The list of text chunks to be deleted. You can specify up to 10 chunk IDs at a time.
+	//
 	// This parameter is required.
 	ChunkIds []*string `json:"ChunkIds,omitempty" xml:"ChunkIds,omitempty" type:"Repeated"`
+	// The knowledge base ID, which is the `Data.Id` parameter returned by **CreateIndex**.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -59,5 +59,10 @@ func (s *DescribeFileResponse) SetBody(v *DescribeFileResponseBody) *DescribeFil
 }
 
 func (s *DescribeFileResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -95,7 +95,16 @@ func (s *ListMemoryNodesResponseBody) SetTotalCount(v int32) *ListMemoryNodesRes
 }
 
 func (s *ListMemoryNodesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MemoryNodes != nil {
+		for _, item := range s.MemoryNodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMemoryNodesResponseBodyMemoryNodes struct {

@@ -83,7 +83,17 @@ func (s *CreateAndPulishAgentRequest) SetSampleLibrary(v *CreateAndPulishAgentRe
 }
 
 func (s *CreateAndPulishAgentRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicationConfig != nil {
+		if err := s.ApplicationConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SampleLibrary != nil {
+		if err := s.SampleLibrary.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAndPulishAgentRequestApplicationConfig struct {
@@ -168,7 +178,50 @@ func (s *CreateAndPulishAgentRequestApplicationConfig) SetWorkFlows(v []*CreateA
 }
 
 func (s *CreateAndPulishAgentRequestApplicationConfig) Validate() error {
-	return dara.Validate(s)
+	if s.HistoryConfig != nil {
+		if err := s.HistoryConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LongTermMemory != nil {
+		if err := s.LongTermMemory.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Parameters != nil {
+		if err := s.Parameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RagConfig != nil {
+		if err := s.RagConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityConfig != nil {
+		if err := s.SecurityConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tools != nil {
+		for _, item := range s.Tools {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.WorkFlows != nil {
+		for _, item := range s.WorkFlows {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAndPulishAgentRequestApplicationConfigHistoryConfig struct {

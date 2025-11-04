@@ -125,7 +125,12 @@ func (s *GetIndexJobStatusResponseBody) SetSuccess(v bool) *GetIndexJobStatusRes
 }
 
 func (s *GetIndexJobStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetIndexJobStatusResponseBodyData struct {
@@ -189,7 +194,16 @@ func (s *GetIndexJobStatusResponseBodyData) SetStatus(v string) *GetIndexJobStat
 }
 
 func (s *GetIndexJobStatusResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Documents != nil {
+		for _, item := range s.Documents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetIndexJobStatusResponseBodyDataDocuments struct {

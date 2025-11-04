@@ -112,7 +112,12 @@ func (s *AddFilesFromAuthorizedOssResponseBody) SetSuccess(v string) *AddFilesFr
 }
 
 func (s *AddFilesFromAuthorizedOssResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddFilesFromAuthorizedOssResponseBodyData struct {
@@ -137,7 +142,16 @@ func (s *AddFilesFromAuthorizedOssResponseBodyData) SetAddFileResultList(v []*Ad
 }
 
 func (s *AddFilesFromAuthorizedOssResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AddFileResultList != nil {
+		for _, item := range s.AddFileResultList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddFilesFromAuthorizedOssResponseBodyDataAddFileResultList struct {

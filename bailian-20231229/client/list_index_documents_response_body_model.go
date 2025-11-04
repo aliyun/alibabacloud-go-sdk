@@ -125,7 +125,12 @@ func (s *ListIndexDocumentsResponseBody) SetSuccess(v bool) *ListIndexDocumentsR
 }
 
 func (s *ListIndexDocumentsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListIndexDocumentsResponseBodyData struct {
@@ -211,7 +216,16 @@ func (s *ListIndexDocumentsResponseBodyData) SetTotalCount(v int64) *ListIndexDo
 }
 
 func (s *ListIndexDocumentsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Documents != nil {
+		for _, item := range s.Documents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIndexDocumentsResponseBodyDataDocuments struct {

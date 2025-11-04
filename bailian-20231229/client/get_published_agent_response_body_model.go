@@ -95,7 +95,12 @@ func (s *GetPublishedAgentResponseBody) SetSuccess(v bool) *GetPublishedAgentRes
 }
 
 func (s *GetPublishedAgentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPublishedAgentResponseBodyData struct {
@@ -160,7 +165,12 @@ func (s *GetPublishedAgentResponseBodyData) SetName(v string) *GetPublishedAgent
 }
 
 func (s *GetPublishedAgentResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicationConfig != nil {
+		if err := s.ApplicationConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPublishedAgentResponseBodyDataApplicationConfig struct {
@@ -245,7 +255,50 @@ func (s *GetPublishedAgentResponseBodyDataApplicationConfig) SetWorkFlows(v []*G
 }
 
 func (s *GetPublishedAgentResponseBodyDataApplicationConfig) Validate() error {
-	return dara.Validate(s)
+	if s.HistoryConfig != nil {
+		if err := s.HistoryConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LongTermMemory != nil {
+		if err := s.LongTermMemory.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Parameters != nil {
+		if err := s.Parameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RagConfig != nil {
+		if err := s.RagConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Security != nil {
+		if err := s.Security.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tools != nil {
+		for _, item := range s.Tools {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.WorkFlows != nil {
+		for _, item := range s.WorkFlows {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPublishedAgentResponseBodyDataApplicationConfigHistoryConfig struct {

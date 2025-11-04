@@ -59,5 +59,10 @@ func (s *DeleteMemoryNodeResponse) SetBody(v *DeleteMemoryNodeResponseBody) *Del
 }
 
 func (s *DeleteMemoryNodeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

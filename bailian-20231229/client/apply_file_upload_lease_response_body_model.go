@@ -125,7 +125,12 @@ func (s *ApplyFileUploadLeaseResponseBody) SetSuccess(v bool) *ApplyFileUploadLe
 }
 
 func (s *ApplyFileUploadLeaseResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ApplyFileUploadLeaseResponseBodyData struct {
@@ -185,7 +190,12 @@ func (s *ApplyFileUploadLeaseResponseBodyData) SetType(v string) *ApplyFileUploa
 }
 
 func (s *ApplyFileUploadLeaseResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Param != nil {
+		if err := s.Param.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ApplyFileUploadLeaseResponseBodyDataParam struct {

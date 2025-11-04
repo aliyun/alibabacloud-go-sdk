@@ -95,7 +95,12 @@ func (s *ListPublishedAgentResponseBody) SetSuccess(v string) *ListPublishedAgen
 }
 
 func (s *ListPublishedAgentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPublishedAgentResponseBodyData struct {
@@ -150,7 +155,16 @@ func (s *ListPublishedAgentResponseBodyData) SetTotal(v int32) *ListPublishedAge
 }
 
 func (s *ListPublishedAgentResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPublishedAgentResponseBodyDataList struct {
@@ -215,7 +229,12 @@ func (s *ListPublishedAgentResponseBodyDataList) SetName(v string) *ListPublishe
 }
 
 func (s *ListPublishedAgentResponseBodyDataList) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicationConfig != nil {
+		if err := s.ApplicationConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPublishedAgentResponseBodyDataListApplicationConfig struct {
@@ -300,7 +319,50 @@ func (s *ListPublishedAgentResponseBodyDataListApplicationConfig) SetWorkFlows(v
 }
 
 func (s *ListPublishedAgentResponseBodyDataListApplicationConfig) Validate() error {
-	return dara.Validate(s)
+	if s.HistoryConfig != nil {
+		if err := s.HistoryConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LongTermMemory != nil {
+		if err := s.LongTermMemory.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Parameters != nil {
+		if err := s.Parameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RagConfig != nil {
+		if err := s.RagConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Security != nil {
+		if err := s.Security.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tools != nil {
+		for _, item := range s.Tools {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.WorkFlows != nil {
+		for _, item := range s.WorkFlows {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPublishedAgentResponseBodyDataListApplicationConfigHistoryConfig struct {

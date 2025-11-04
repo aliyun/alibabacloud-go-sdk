@@ -14,6 +14,8 @@ type iGetAvailableParserTypesRequest interface {
 }
 
 type GetAvailableParserTypesRequest struct {
+	// The file type. Valid values: pdf, docx, and doc.
+	//
 	// This parameter is required.
 	//
 	// example:

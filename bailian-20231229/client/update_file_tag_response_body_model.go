@@ -112,7 +112,12 @@ func (s *UpdateFileTagResponseBody) SetSuccess(v bool) *UpdateFileTagResponseBod
 }
 
 func (s *UpdateFileTagResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateFileTagResponseBodyData struct {

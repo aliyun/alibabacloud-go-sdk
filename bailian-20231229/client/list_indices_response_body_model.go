@@ -125,7 +125,12 @@ func (s *ListIndicesResponseBody) SetSuccess(v bool) *ListIndicesResponseBody {
 }
 
 func (s *ListIndicesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListIndicesResponseBodyData struct {
@@ -196,7 +201,16 @@ func (s *ListIndicesResponseBodyData) SetTotalCount(v int32) *ListIndicesRespons
 }
 
 func (s *ListIndicesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Indices != nil {
+		for _, item := range s.Indices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIndicesResponseBodyDataIndices struct {

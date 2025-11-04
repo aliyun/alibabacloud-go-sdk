@@ -24,13 +24,13 @@ type iCreateIndexResponseBody interface {
 }
 
 type CreateIndexResponseBody struct {
-	// HTTP status code
+	// The error code.
 	//
 	// example:
 	//
 	// Forbidden
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data returned if the request is successful.
 	Data *CreateIndexResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -50,7 +50,7 @@ type CreateIndexResponseBody struct {
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indications whether the API call is successful. Valid values:
+	// Indications whether the request is successful. Valid values:
 	//
 	// 	- true
 	//
@@ -125,13 +125,18 @@ func (s *CreateIndexResponseBody) SetSuccess(v bool) *CreateIndexResponseBody {
 }
 
 func (s *CreateIndexResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateIndexResponseBodyData struct {
-	// The primary key ID of the knowledge base, `IndexId`.
+	// The knowledge base ID, or `IndexId`, is a unique identifier for the knowledge base created.
 	//
-	// >  We recommend that you store this ID. It is required for all subsequent API operations related to this knowledge base.
+	// > Keep this ID. It is required for all subsequent API operations related to this knowledge base.
 	//
 	// example:
 	//

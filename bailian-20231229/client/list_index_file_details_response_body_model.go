@@ -39,7 +39,10 @@ type ListIndexFileDetailsResponseBody struct {
 	//
 	// 35A267BF-xxxx-54DB-8394-AA3B0742D833
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// example:
 	//
 	// true
@@ -109,15 +112,32 @@ func (s *ListIndexFileDetailsResponseBody) SetSuccess(v bool) *ListIndexFileDeta
 }
 
 func (s *ListIndexFileDetailsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListIndexFileDetailsResponseBodyData struct {
-	Documents  []*ListIndexFileDetailsResponseBodyDataDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
-	IndexId    *string                                          `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
-	PageNumber *int32                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *int64                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Documents []*ListIndexFileDetailsResponseBodyDataDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 79c0alxxxx
+	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListIndexFileDetailsResponseBodyData) String() string {
@@ -174,24 +194,72 @@ func (s *ListIndexFileDetailsResponseBodyData) SetTotalCount(v int64) *ListIndex
 }
 
 func (s *ListIndexFileDetailsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Documents != nil {
+		for _, item := range s.Documents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIndexFileDetailsResponseBodyDataDocuments struct {
-	ChunkMode     *string `json:"ChunkMode,omitempty" xml:"ChunkMode,omitempty"`
-	ChunkSize     *string `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
-	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DocumentType  *string `json:"DocumentType,omitempty" xml:"DocumentType,omitempty"`
+	// example:
+	//
+	// DashSplitter
+	ChunkMode *string `json:"ChunkMode,omitempty" xml:"ChunkMode,omitempty"`
+	// example:
+	//
+	// 600
+	ChunkSize *string `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	// example:
+	//
+	// 110002
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// pdf
+	DocumentType *string `json:"DocumentType,omitempty" xml:"DocumentType,omitempty"`
+	// example:
+	//
+	// true
 	EnableHeaders *string `json:"EnableHeaders,omitempty" xml:"EnableHeaders,omitempty"`
-	GmtModified   *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OverlapSize   *string `json:"OverlapSize,omitempty" xml:"OverlapSize,omitempty"`
-	Size          *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
-	SourceId      *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Separator     *string `json:"separator,omitempty" xml:"separator,omitempty"`
+	// example:
+	//
+	// 1744856423000
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// doc_c134aa2073204a5d936d870bf960f56axxxxxxxx
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// check fileUrlKey[file_path] / fileNameKey[null] / fileExtensionKey[file_extension] is invalid
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 100
+	OverlapSize *string `json:"OverlapSize,omitempty" xml:"OverlapSize,omitempty"`
+	// example:
+	//
+	// 996764
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// cate_21a407a3372c4ba7aedc649709143f0cxxxxxxxx
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// " "
+	Separator *string `json:"separator,omitempty" xml:"separator,omitempty"`
 }
 
 func (s ListIndexFileDetailsResponseBodyDataDocuments) String() string {

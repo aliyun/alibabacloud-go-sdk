@@ -121,7 +121,16 @@ func (s *ListPromptTemplatesResponseBody) SetWorkspaceId(v string) *ListPromptTe
 }
 
 func (s *ListPromptTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PromptTemplates != nil {
+		for _, item := range s.PromptTemplates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPromptTemplatesResponseBodyPromptTemplates struct {

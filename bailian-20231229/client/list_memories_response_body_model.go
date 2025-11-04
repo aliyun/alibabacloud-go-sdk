@@ -110,7 +110,16 @@ func (s *ListMemoriesResponseBody) SetWorkspaceId(v string) *ListMemoriesRespons
 }
 
 func (s *ListMemoriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Memories != nil {
+		for _, item := range s.Memories {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMemoriesResponseBodyMemories struct {

@@ -112,7 +112,12 @@ func (s *ListCategoryResponseBody) SetSuccess(v bool) *ListCategoryResponseBody 
 }
 
 func (s *ListCategoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCategoryResponseBodyData struct {
@@ -189,7 +194,16 @@ func (s *ListCategoryResponseBodyData) SetTotalCount(v int32) *ListCategoryRespo
 }
 
 func (s *ListCategoryResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CategoryList != nil {
+		for _, item := range s.CategoryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCategoryResponseBodyDataCategoryList struct {

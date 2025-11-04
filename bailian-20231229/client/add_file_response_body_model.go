@@ -125,7 +125,12 @@ func (s *AddFileResponseBody) SetSuccess(v string) *AddFileResponseBody {
 }
 
 func (s *AddFileResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddFileResponseBodyData struct {

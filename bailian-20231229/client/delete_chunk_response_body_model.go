@@ -24,28 +24,42 @@ type iDeleteChunkResponseBody interface {
 }
 
 type DeleteChunkResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// InvalidParameter
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned if the request is successful.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Required parameter(%s) missing or invalid, please check the request parameters.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 35A267BF-xxxx-54DB-8394-AA3B0742D833
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indications whether the API call is successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true

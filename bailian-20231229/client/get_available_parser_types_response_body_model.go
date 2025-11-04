@@ -24,23 +24,38 @@ type iGetAvailableParserTypesResponseBody interface {
 }
 
 type GetAvailableParserTypesResponseBody struct {
+	// The error code returned.
+	//
 	// example:
 	//
 	// DataCenter.Throttling
-	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *GetAvailableParserTypesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message that is returned if the request failed.
+	//
 	// example:
 	//
 	// User not authorized to operate on the specified resource
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 17204B98-7734-4F9A-8464-2446XXXXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -110,14 +125,22 @@ func (s *GetAvailableParserTypesResponseBody) SetSuccess(v bool) *GetAvailablePa
 }
 
 func (s *GetAvailableParserTypesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAvailableParserTypesResponseBodyData struct {
+	// The file type, which is the same as the FileType in the input parameter.
+	//
 	// example:
 	//
 	// pdf
-	FileType   *string                                              `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The list of supported parsers
 	ParserList []*GetAvailableParserTypesResponseBodyDataParserList `json:"ParserList,omitempty" xml:"ParserList,omitempty" type:"Repeated"`
 }
 
@@ -148,11 +171,31 @@ func (s *GetAvailableParserTypesResponseBodyData) SetParserList(v []*GetAvailabl
 }
 
 func (s *GetAvailableParserTypesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ParserList != nil {
+		for _, item := range s.ParserList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAvailableParserTypesResponseBodyDataParserList struct {
+	// The display name of the parsing method.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The parser code. Valid values:
+	//
+	// 	- DOCMIND (Intelligent parsing)
+	//
+	// 	- DOCMIND_DIGITAL (Digital parsing)
+	//
+	// 	- DOCMIND_LLM_VERSION (LLM parsing)
+	//
+	// 	- DASH_QWEN_VL_PARSER (Qwen VL parsing)
+	//
 	// example:
 	//
 	// DOCMIND

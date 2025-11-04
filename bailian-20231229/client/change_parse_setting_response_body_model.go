@@ -24,23 +24,38 @@ type iChangeParseSettingResponseBody interface {
 }
 
 type ChangeParseSettingResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// InvalidParameter
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data fields.
 	Data *ChangeParseSettingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// User not authorized to operate on the specified resource.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7BA8ADD9-53D6-53F0-918F-A1E776AD230E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -110,10 +125,17 @@ func (s *ChangeParseSettingResponseBody) SetSuccess(v bool) *ChangeParseSettingR
 }
 
 func (s *ChangeParseSettingResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ChangeParseSettingResponseBodyData struct {
+	// The result of the modification.
+	//
 	// example:
 	//
 	// true

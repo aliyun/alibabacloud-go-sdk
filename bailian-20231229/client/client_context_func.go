@@ -19,9 +19,11 @@ import (
 //
 // @return AddCategoryResponse
 func (client *Client) AddCategoryWithContext(ctx context.Context, WorkspaceId *string, request *AddCategoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryName) {
@@ -84,9 +86,11 @@ func (client *Client) AddCategoryWithContext(ctx context.Context, WorkspaceId *s
 //
 // @return AddFileResponse
 func (client *Client) AddFileWithContext(ctx context.Context, WorkspaceId *string, tmpReq *AddFileRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddFileResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddFileShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -155,9 +159,11 @@ func (client *Client) AddFileWithContext(ctx context.Context, WorkspaceId *strin
 //
 // @return AddFilesFromAuthorizedOssResponse
 func (client *Client) AddFilesFromAuthorizedOssWithContext(ctx context.Context, WorkspaceId *string, tmpReq *AddFilesFromAuthorizedOssRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddFilesFromAuthorizedOssResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AddFilesFromAuthorizedOssShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -244,9 +250,11 @@ func (client *Client) AddFilesFromAuthorizedOssWithContext(ctx context.Context, 
 //
 // @return ApplyFileUploadLeaseResponse
 func (client *Client) ApplyFileUploadLeaseWithContext(ctx context.Context, CategoryId *string, WorkspaceId *string, request *ApplyFileUploadLeaseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ApplyFileUploadLeaseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryType) {
@@ -295,7 +303,58 @@ func (client *Client) ApplyFileUploadLeaseWithContext(ctx context.Context, Categ
 
 // Summary:
 //
-// 修改类目解析配置
+// 申请临时文件存储上传许可
+//
+// @param request - ApplyTempStorageLeaseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyTempStorageLeaseResponse
+func (client *Client) ApplyTempStorageLeaseWithContext(ctx context.Context, WorkspaceId *string, request *ApplyTempStorageLeaseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ApplyTempStorageLeaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FileName) {
+		body["FileName"] = request.FileName
+	}
+
+	if !dara.IsNil(request.SizeInBytes) {
+		body["SizeInBytes"] = request.SizeInBytes
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ApplyTempStorageLease"),
+		Version:     dara.String("2023-12-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/datacenter"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ApplyTempStorageLeaseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Configure the parsing method for a specific file type. For example, use LLM parsing for .pdf files, or use Qwen VL parsing for .jpg files.
 //
 // @param tmpReq - ChangeParseSettingRequest
 //
@@ -305,9 +364,11 @@ func (client *Client) ApplyFileUploadLeaseWithContext(ctx context.Context, Categ
 //
 // @return ChangeParseSettingResponse
 func (client *Client) ChangeParseSettingWithContext(ctx context.Context, WorkspaceId *string, tmpReq *ChangeParseSettingRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ChangeParseSettingResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ChangeParseSettingShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -368,9 +429,11 @@ func (client *Client) ChangeParseSettingWithContext(ctx context.Context, Workspa
 //
 // @return CreateAndPulishAgentResponse
 func (client *Client) CreateAndPulishAgentWithContext(ctx context.Context, workspaceId *string, tmpReq *CreateAndPulishAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAndPulishAgentResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateAndPulishAgentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -429,15 +492,25 @@ func (client *Client) CreateAndPulishAgentWithContext(ctx context.Context, works
 
 // Summary:
 //
-// Creates an unstructured knowledge base and imports one or more parsed documents into the knowledge base. You cannot create a structured knowledge base by calling an API operation. Use the console instead.
+// Create a knowledge base of the document search type.
 //
 // Description:
 //
-// 1.  You must first upload documents to [Data Management](https://bailian.console.aliyun.com/#/data-center) and obtain the `FileId`. The documents are the knowledge source of the knowledge base. For more information, see [Import Data](https://www.alibabacloud.com/help/en/model-studio/user-guide/data-import-instructions).
+//	  **Limits**: This operation can create only knowledge base of the document search type. Data query and image Q\\&A types are not supported. Use the console instead.
 //
-// 2.  This operation only initializes a knowledge base creation job. You must also call the [SubmitIndexJob](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) operation to complete the job.
+//		- **Required permissions**
 //
-// 3.  This interface is not idempotent.
+//	    	- **RAM users**: Must first obtain the [API permissions](https://help.aliyun.com/document_detail/2848578.html) of Model Studio (such as the `AliyunBailianDataFullAccess` policy, which includes the sfm:CreateIndex permission required), and [become member of a workspace](https://help.aliyun.com/document_detail/2851098.html).
+//
+//	    	- **Alibaba Cloud account**: Has the permission by default, and can call the operation directly.
+//
+//		- **Call method**: We recommend using the latest version of the [GenAI Service Platform SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29). The SDK encapsulates complex signature computational logic to simplify the call process.
+//
+//		- **What to do next**: This operation only initializes knowledge base creation job. After that, call **SubmitIndexJob*	- to complete the creation. Otherwise, you will get an empty knowledge base. For more information about the sample code, see [Knowledge base API guide](https://help.aliyun.com/document_detail/2852772.html).
+//
+//		- **Idempotence**: This operation is not idempotent. If you call the operation for multiple times, you may create several knowledge bases with the same name. We recommend following a "query first, then create" logic.
+//
+// **Rate limit:*	- Rate limiting will be triggered if you call this operation frequently. Do not exceed 10 times per second. If limiting is triggered, try again later.
 //
 // @param tmpReq - CreateIndexRequest
 //
@@ -447,9 +520,11 @@ func (client *Client) CreateAndPulishAgentWithContext(ctx context.Context, works
 //
 // @return CreateIndexResponse
 func (client *Client) CreateIndexWithContext(ctx context.Context, WorkspaceId *string, tmpReq *CreateIndexRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateIndexResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateIndexShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -606,9 +681,11 @@ func (client *Client) CreateIndexWithContext(ctx context.Context, WorkspaceId *s
 //
 // @return CreateMemoryResponse
 func (client *Client) CreateMemoryWithContext(ctx context.Context, workspaceId *string, request *CreateMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateMemoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -651,9 +728,11 @@ func (client *Client) CreateMemoryWithContext(ctx context.Context, workspaceId *
 //
 // @return CreateMemoryNodeResponse
 func (client *Client) CreateMemoryNodeWithContext(ctx context.Context, workspaceId *string, memoryId *string, request *CreateMemoryNodeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateMemoryNodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Content) {
@@ -696,9 +775,11 @@ func (client *Client) CreateMemoryNodeWithContext(ctx context.Context, workspace
 //
 // @return CreatePromptTemplateResponse
 func (client *Client) CreatePromptTemplateWithContext(ctx context.Context, workspaceId *string, request *CreatePromptTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePromptTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Content) {
@@ -801,7 +882,27 @@ func (client *Client) DeleteCategoryWithContext(ctx context.Context, CategoryId 
 
 // Summary:
 //
-// 删除切片信息
+// Deletes a specified text chunk from a knowledge base. The deleted chunk cannot be retrieved or recalled.
+//
+// Description:
+//
+// *
+//
+// **Warning*	- After a text chunk is deleted, it cannot be restored. Proceed with caution.
+//
+//   - **Required permissions**:
+//
+//   - **RAM users**: Must first obtain the [API permissions](https://help.aliyun.com/document_detail/2848578.html) of Model Studio (such as the `AliyunBailianDataFullAccess` policy, which includes the sfm:DeleteChunk permission required), and [become member of a workspace](https://help.aliyun.com/document_detail/2851098.html).
+//
+//   - **Alibaba Cloud account**: Has the permission by default, and can call the operation directly.
+//
+//   - **Call method**: We recommend using the latest version of the [GenAI Service Platform SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29). The SDK encapsulates complex signature computational logic to simplify the call process.
+//
+//   - **Delay**: The update takes effect immediately. During peak hours, the update may take place in seconds.
+//
+//   - **Idempotence**: This operation is idempotent. If you perform a repeated operation on a chunk that has already been deleted, the interface returns a success.
+//
+// **Rate limit:*	- Rate limiting will be triggered if you call this operation frequently. Do not exceed 10 times per second. If limiting is triggered, try again later.
 //
 // @param tmpReq - DeleteChunkRequest
 //
@@ -811,9 +912,11 @@ func (client *Client) DeleteCategoryWithContext(ctx context.Context, CategoryId 
 //
 // @return DeleteChunkResponse
 func (client *Client) DeleteChunkWithContext(ctx context.Context, WorkspaceId *string, tmpReq *DeleteChunkRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteChunkResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteChunkShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -911,9 +1014,11 @@ func (client *Client) DeleteFileWithContext(ctx context.Context, FileId *string,
 //
 // @return DeleteIndexResponse
 func (client *Client) DeleteIndexWithContext(ctx context.Context, WorkspaceId *string, request *DeleteIndexRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteIndexResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IndexId) {
@@ -968,9 +1073,11 @@ func (client *Client) DeleteIndexWithContext(ctx context.Context, WorkspaceId *s
 //
 // @return DeleteIndexDocumentResponse
 func (client *Client) DeleteIndexDocumentWithContext(ctx context.Context, WorkspaceId *string, tmpReq *DeleteIndexDocumentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteIndexDocumentResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteIndexDocumentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1165,9 +1272,11 @@ func (client *Client) DescribeFileWithContext(ctx context.Context, WorkspaceId *
 //
 // @return GetAlipayTransferStatusResponse
 func (client *Client) GetAlipayTransferStatusWithContext(ctx context.Context, request *GetAlipayTransferStatusRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAlipayTransferStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Code) {
@@ -1214,9 +1323,11 @@ func (client *Client) GetAlipayTransferStatusWithContext(ctx context.Context, re
 //
 // @return GetAlipayUrlResponse
 func (client *Client) GetAlipayUrlWithContext(ctx context.Context, request *GetAlipayUrlRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAlipayUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1253,7 +1364,7 @@ func (client *Client) GetAlipayUrlWithContext(ctx context.Context, request *GetA
 
 // Summary:
 //
-// 获取文件支持的解析器类型
+// Lists all supported parser types based on the input file type (file extension).
 //
 // @param request - GetAvailableParserTypesRequest
 //
@@ -1263,9 +1374,11 @@ func (client *Client) GetAlipayUrlWithContext(ctx context.Context, request *GetA
 //
 // @return GetAvailableParserTypesResponse
 func (client *Client) GetAvailableParserTypesWithContext(ctx context.Context, WorkspaceId *string, request *GetAvailableParserTypesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAvailableParserTypesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileType) {
@@ -1316,9 +1429,11 @@ func (client *Client) GetAvailableParserTypesWithContext(ctx context.Context, Wo
 //
 // @return GetIndexJobStatusResponse
 func (client *Client) GetIndexJobStatusWithContext(ctx context.Context, WorkspaceId *string, request *GetIndexJobStatusRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetIndexJobStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IndexId) {
@@ -1429,7 +1544,7 @@ func (client *Client) GetMemoryNodeWithContext(ctx context.Context, workspaceId 
 
 // Summary:
 //
-// 获取类目解析配置
+// Queries the data parsing settings in a specified category.
 //
 // @param request - GetParseSettingsRequest
 //
@@ -1439,9 +1554,11 @@ func (client *Client) GetMemoryNodeWithContext(ctx context.Context, workspaceId 
 //
 // @return GetParseSettingsResponse
 func (client *Client) GetParseSettingsWithContext(ctx context.Context, WorkspaceId *string, request *GetParseSettingsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetParseSettingsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryId) {
@@ -1550,9 +1667,11 @@ func (client *Client) GetPublishedAgentWithContext(ctx context.Context, workspac
 //
 // @return HighCodeDeployResponse
 func (client *Client) HighCodeDeployWithContext(ctx context.Context, workspaceId *string, request *HighCodeDeployRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *HighCodeDeployResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AgentDesc) {
@@ -1615,9 +1734,11 @@ func (client *Client) HighCodeDeployWithContext(ctx context.Context, workspaceId
 //
 // @return ListCategoryResponse
 func (client *Client) ListCategoryWithContext(ctx context.Context, WorkspaceId *string, request *ListCategoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryName) {
@@ -1682,9 +1803,11 @@ func (client *Client) ListCategoryWithContext(ctx context.Context, WorkspaceId *
 //
 // @return ListChunksResponse
 func (client *Client) ListChunksWithContext(ctx context.Context, WorkspaceId *string, request *ListChunksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListChunksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Fields) {
@@ -1737,7 +1860,17 @@ func (client *Client) ListChunksWithContext(ctx context.Context, WorkspaceId *st
 
 // Summary:
 //
-// 获取文档列表
+// Queries the details of one or more documents in a specified category.
+//
+// Description:
+//
+//	  If you are using a RAM user, you must first obtain the OpenAPI management permissions (namely sfm:ListFile) of Model Studio. For more information, see [Grant OpenAPI permissions to a RAM user](https://help.aliyun.com/document_detail/2848578.html). If you are using the Alibaba Cloud account, you do not need permissions. We recommend that you use [the latest version of the SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29) to call this operation.
+//
+//		- During a paged query, set `MaxResults` to specify the maximum number of entries to return. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you query subsequent pages, set the `NextToken` parameter to the `NextToken` obtained in the last returned result. You can also set the `MaxResults` parameter to limit the number of entries to be returned. If no `NextToken` is returned, the result is completely returned and no more requests are required.
+//
+//		- This operation is idempotent.
+//
+// **Throttling:*	- Throttling will be triggered if you call this operation frequently. Do not exceed 5 times per second. If throttling is triggered, try again later.
 //
 // @param request - ListFileRequest
 //
@@ -1747,9 +1880,11 @@ func (client *Client) ListChunksWithContext(ctx context.Context, WorkspaceId *st
 //
 // @return ListFileResponse
 func (client *Client) ListFileWithContext(ctx context.Context, WorkspaceId *string, request *ListFileRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListFileResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryId) {
@@ -1810,9 +1945,11 @@ func (client *Client) ListFileWithContext(ctx context.Context, WorkspaceId *stri
 //
 // @return ListIndexDocumentsResponse
 func (client *Client) ListIndexDocumentsWithContext(ctx context.Context, WorkspaceId *string, request *ListIndexDocumentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIndexDocumentsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DocumentName) {
@@ -1875,9 +2012,11 @@ func (client *Client) ListIndexDocumentsWithContext(ctx context.Context, Workspa
 //
 // @return ListIndexFileDetailsResponse
 func (client *Client) ListIndexFileDetailsWithContext(ctx context.Context, WorkspaceId *string, request *ListIndexFileDetailsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIndexFileDetailsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DocumentName) {
@@ -1944,9 +2083,11 @@ func (client *Client) ListIndexFileDetailsWithContext(ctx context.Context, Works
 //
 // @return ListIndicesResponse
 func (client *Client) ListIndicesWithContext(ctx context.Context, WorkspaceId *string, request *ListIndicesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIndicesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IndexName) {
@@ -1997,9 +2138,11 @@ func (client *Client) ListIndicesWithContext(ctx context.Context, WorkspaceId *s
 //
 // @return ListMemoriesResponse
 func (client *Client) ListMemoriesWithContext(ctx context.Context, workspaceId *string, request *ListMemoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMemoriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -2046,9 +2189,11 @@ func (client *Client) ListMemoriesWithContext(ctx context.Context, workspaceId *
 //
 // @return ListMemoryNodesResponse
 func (client *Client) ListMemoryNodesWithContext(ctx context.Context, workspaceId *string, memoryId *string, request *ListMemoryNodesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMemoryNodesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -2095,9 +2240,11 @@ func (client *Client) ListMemoryNodesWithContext(ctx context.Context, workspaceI
 //
 // @return ListPromptTemplatesResponse
 func (client *Client) ListPromptTemplatesWithContext(ctx context.Context, workspaceId *string, request *ListPromptTemplatesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPromptTemplatesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -2152,9 +2299,11 @@ func (client *Client) ListPromptTemplatesWithContext(ctx context.Context, worksp
 //
 // @return ListPublishedAgentResponse
 func (client *Client) ListPublishedAgentWithContext(ctx context.Context, workspaceId *string, request *ListPublishedAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPublishedAgentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNo) {
@@ -2209,9 +2358,11 @@ func (client *Client) ListPublishedAgentWithContext(ctx context.Context, workspa
 //
 // @return RetrieveResponse
 func (client *Client) RetrieveWithContext(ctx context.Context, WorkspaceId *string, tmpReq *RetrieveRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RetrieveResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RetrieveShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2338,9 +2489,11 @@ func (client *Client) RetrieveWithContext(ctx context.Context, WorkspaceId *stri
 //
 // @return SubmitIndexAddDocumentsJobResponse
 func (client *Client) SubmitIndexAddDocumentsJobWithContext(ctx context.Context, WorkspaceId *string, tmpReq *SubmitIndexAddDocumentsJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitIndexAddDocumentsJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitIndexAddDocumentsJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2435,9 +2588,11 @@ func (client *Client) SubmitIndexAddDocumentsJobWithContext(ctx context.Context,
 //
 // @return SubmitIndexJobResponse
 func (client *Client) SubmitIndexJobWithContext(ctx context.Context, WorkspaceId *string, request *SubmitIndexJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitIndexJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IndexId) {
@@ -2480,9 +2635,11 @@ func (client *Client) SubmitIndexJobWithContext(ctx context.Context, WorkspaceId
 //
 // @return UpdateAndPublishAgentResponse
 func (client *Client) UpdateAndPublishAgentWithContext(ctx context.Context, workspaceId *string, appCode *string, tmpReq *UpdateAndPublishAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAndPublishAgentResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateAndPublishAgentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2551,9 +2708,11 @@ func (client *Client) UpdateAndPublishAgentWithContext(ctx context.Context, work
 //
 // @return UpdateAndPublishAgentSelectiveResponse
 func (client *Client) UpdateAndPublishAgentSelectiveWithContext(ctx context.Context, workspaceId *string, appCode *string, tmpReq *UpdateAndPublishAgentSelectiveRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAndPublishAgentSelectiveResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateAndPublishAgentSelectiveShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2612,7 +2771,25 @@ func (client *Client) UpdateAndPublishAgentSelectiveWithContext(ctx context.Cont
 
 // Summary:
 //
-// 更新切片信息
+// Modifies the content and title of a specified text chunk in the knowledge base, and sets whether the chunk participates in knowledge base retrieval.
+//
+// Description:
+//
+//	  **Limits**: This operation supports only knowledge base of the document search type. Data query and image Q\\&A types are not supported.
+//
+//		- **Required permissions**:
+//
+//	    	- **RAM users**: Must first obtain the [API permissions](https://help.aliyun.com/document_detail/2848578.html) of Model Studio (such as the `AliyunBailianDataFullAccess` policy, which includes the sfm:UpdateChunk permission required), and [become member of a workspace](https://help.aliyun.com/document_detail/2851098.html).
+//
+//	    	- **Alibaba Cloud account**: Has the permission by default, and can call the operation directly.
+//
+//		- **Call method**: We recommend using the latest version of the [GenAI Service Platform SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29). The SDK encapsulates complex signature computational logic to simplify the call process.
+//
+//		- **Delay**: The update takes effect immediately. During peak hours, the update may take place in seconds.
+//
+//		- **Idempotence**: This operation is idempotent. If you perform a repeated operation on a chunk that has already been updated, the interface returns a success.
+//
+// **Rate limit:*	- Rate limiting will be triggered if you call this operation frequently. Do not exceed 10 times per second. If limiting is triggered, try again later.
 //
 // @param request - UpdateChunkRequest
 //
@@ -2622,9 +2799,11 @@ func (client *Client) UpdateAndPublishAgentSelectiveWithContext(ctx context.Cont
 //
 // @return UpdateChunkResponse
 func (client *Client) UpdateChunkWithContext(ctx context.Context, WorkspaceId *string, request *UpdateChunkRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateChunkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChunkId) {
@@ -2687,9 +2866,11 @@ func (client *Client) UpdateChunkWithContext(ctx context.Context, WorkspaceId *s
 //
 // @return UpdateFileTagResponse
 func (client *Client) UpdateFileTagWithContext(ctx context.Context, WorkspaceId *string, FileId *string, tmpReq *UpdateFileTagRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateFileTagResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateFileTagShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2738,9 +2919,11 @@ func (client *Client) UpdateFileTagWithContext(ctx context.Context, WorkspaceId 
 //
 // @return UpdateMemoryResponse
 func (client *Client) UpdateMemoryWithContext(ctx context.Context, workspaceId *string, memoryId *string, request *UpdateMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMemoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -2783,9 +2966,11 @@ func (client *Client) UpdateMemoryWithContext(ctx context.Context, workspaceId *
 //
 // @return UpdateMemoryNodeResponse
 func (client *Client) UpdateMemoryNodeWithContext(ctx context.Context, workspaceId *string, memoryId *string, memoryNodeId *string, request *UpdateMemoryNodeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMemoryNodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Content) {
@@ -2828,9 +3013,11 @@ func (client *Client) UpdateMemoryNodeWithContext(ctx context.Context, workspace
 //
 // @return UpdatePromptTemplateResponse
 func (client *Client) UpdatePromptTemplateWithContext(ctx context.Context, workspaceId *string, promptTemplateId *string, request *UpdatePromptTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdatePromptTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Content) {

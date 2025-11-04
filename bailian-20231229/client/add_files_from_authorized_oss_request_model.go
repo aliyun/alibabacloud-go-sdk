@@ -128,7 +128,16 @@ func (s *AddFilesFromAuthorizedOssRequest) SetTags(v []*string) *AddFilesFromAut
 }
 
 func (s *AddFilesFromAuthorizedOssRequest) Validate() error {
-	return dara.Validate(s)
+	if s.FileDetails != nil {
+		for _, item := range s.FileDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddFilesFromAuthorizedOssRequestFileDetails struct {

@@ -59,5 +59,10 @@ func (s *CreateMemoryResponse) SetBody(v *CreateMemoryResponseBody) *CreateMemor
 }
 
 func (s *CreateMemoryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

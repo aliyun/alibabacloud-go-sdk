@@ -59,5 +59,10 @@ func (s *DeleteCategoryResponse) SetBody(v *DeleteCategoryResponseBody) *DeleteC
 }
 
 func (s *DeleteCategoryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

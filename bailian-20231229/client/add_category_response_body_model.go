@@ -112,7 +112,12 @@ func (s *AddCategoryResponseBody) SetSuccess(v bool) *AddCategoryResponseBody {
 }
 
 func (s *AddCategoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddCategoryResponseBodyData struct {

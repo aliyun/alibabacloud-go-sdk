@@ -59,5 +59,10 @@ func (s *SubmitIndexAddDocumentsJobResponse) SetBody(v *SubmitIndexAddDocumentsJ
 }
 
 func (s *SubmitIndexAddDocumentsJobResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

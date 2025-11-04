@@ -59,5 +59,10 @@ func (s *DeletePromptTemplateResponse) SetBody(v *DeletePromptTemplateResponseBo
 }
 
 func (s *DeletePromptTemplateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

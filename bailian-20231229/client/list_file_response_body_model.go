@@ -27,7 +27,8 @@ type ListFileResponseBody struct {
 	// example:
 	//
 	// success
-	Code *string                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *ListFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// example:
 	//
@@ -112,10 +113,16 @@ func (s *ListFileResponseBody) SetSuccess(v bool) *ListFileResponseBody {
 }
 
 func (s *ListFileResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListFileResponseBodyData struct {
+	// The list of documents in the category.
 	FileList []*ListFileResponseBodyDataFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -189,7 +196,16 @@ func (s *ListFileResponseBodyData) SetTotalCount(v int32) *ListFileResponseBodyD
 }
 
 func (s *ListFileResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.FileList != nil {
+		for _, item := range s.FileList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFileResponseBodyDataFileList struct {
@@ -201,6 +217,8 @@ type ListFileResponseBodyDataFileList struct {
 	//
 	// 2023-08-18 11:03:35
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The document ID, which is the `FileId` parameter returned by the [AddFile](~~AddFile~~) operation. To view the ID, click the icon next to the file name on the [Data Management](https://bailian.console.alibabacloud.com/#/data-center) page.
+	//
 	// example:
 	//
 	// file_5ff599b3455a45db8c41b0054b361518_10098576

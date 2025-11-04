@@ -50,7 +50,12 @@ func (s *GetAlipayTransferStatusResponseBody) SetRequestId(v string) *GetAlipayT
 }
 
 func (s *GetAlipayTransferStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAlipayTransferStatusResponseBodyData struct {

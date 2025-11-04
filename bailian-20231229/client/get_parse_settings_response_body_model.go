@@ -24,23 +24,38 @@ type iGetParseSettingsResponseBody interface {
 }
 
 type GetParseSettingsResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// success
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data fields.
 	Data []*GetParseSettingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error message.
+	//
 	// example:
 	//
 	// workspace id is null or invalid.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 35A267BF-xxxx-54DB-8394-AA3B0742D833
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// True
@@ -110,20 +125,47 @@ func (s *GetParseSettingsResponseBody) SetSuccess(v bool) *GetParseSettingsRespo
 }
 
 func (s *GetParseSettingsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetParseSettingsResponseBodyData struct {
+	// The file type. Valid values are: pdf, docx, doc, etc. All supported file types in the category are listed here.
+	//
 	// example:
 	//
 	// pdf
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The parser used for files of the current type. Valid values:
+	//
+	// 	- DOCMIND (Intelligent parsing)
+	//
+	// 	- DOCMIND_DIGITAL (Digital parsing)
+	//
+	// 	- DOCMIND_LLM_VERSION (LLM parsing)
+	//
+	// 	- DASH_QWEN_VL_PARSER (Qwen VL parsing)
+	//
 	// example:
 	//
 	// DOCMIND
-	Parser            *string                                       `json:"Parser,omitempty" xml:"Parser,omitempty"`
-	ParserConfig      *GetParseSettingsResponseBodyDataParserConfig `json:"ParserConfig,omitempty" xml:"ParserConfig,omitempty" type:"Struct"`
-	ParserDisplayName *string                                       `json:"ParserDisplayName,omitempty" xml:"ParserDisplayName,omitempty"`
+	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	// The parser configuration. Currently, this is available only for Qwen VL parsing.
+	ParserConfig *GetParseSettingsResponseBodyDataParserConfig `json:"ParserConfig,omitempty" xml:"ParserConfig,omitempty" type:"Struct"`
+	// The display name of the parsing method.
+	//
+	// example:
+	//
+	// Digital parsing
+	ParserDisplayName *string `json:"ParserDisplayName,omitempty" xml:"ParserDisplayName,omitempty"`
 }
 
 func (s GetParseSettingsResponseBodyData) String() string {
@@ -171,16 +213,34 @@ func (s *GetParseSettingsResponseBodyData) SetParserDisplayName(v string) *GetPa
 }
 
 func (s *GetParseSettingsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ParserConfig != nil {
+		if err := s.ParserConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetParseSettingsResponseBodyDataParserConfig struct {
+	// The model name.
+	//
 	// example:
 	//
 	// - qwen-vl-max
 	//
 	// - qwen-vl-plus
-	ModelName   *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The prompt used for parsing.
+	//
+	// example:
+	//
+	// # Role
+	//
+	// You are a professional image content annotator, skilled in identifying and describing the contents of images.
+	//
+	// # Task Objective
+	//
+	// Based on the input image, provide a detailed description of its contents.
 	ModelPrompt *string `json:"ModelPrompt,omitempty" xml:"ModelPrompt,omitempty"`
 }
 

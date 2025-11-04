@@ -125,7 +125,12 @@ func (s *RetrieveResponseBody) SetSuccess(v bool) *RetrieveResponseBody {
 }
 
 func (s *RetrieveResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RetrieveResponseBodyData struct {
@@ -151,7 +156,16 @@ func (s *RetrieveResponseBodyData) SetNodes(v []*RetrieveResponseBodyDataNodes) 
 }
 
 func (s *RetrieveResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RetrieveResponseBodyDataNodes struct {

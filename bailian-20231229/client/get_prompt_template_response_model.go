@@ -59,5 +59,10 @@ func (s *GetPromptTemplateResponse) SetBody(v *GetPromptTemplateResponseBody) *G
 }
 
 func (s *GetPromptTemplateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

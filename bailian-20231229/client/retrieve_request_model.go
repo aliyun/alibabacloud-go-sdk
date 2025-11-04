@@ -261,7 +261,34 @@ func (s *RetrieveRequest) SetSparseSimilarityTopK(v int32) *RetrieveRequest {
 }
 
 func (s *RetrieveRequest) Validate() error {
-	return dara.Validate(s)
+	if s.QueryHistory != nil {
+		for _, item := range s.QueryHistory {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Rerank != nil {
+		for _, item := range s.Rerank {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Rewrite != nil {
+		for _, item := range s.Rewrite {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RetrieveRequestQueryHistory struct {

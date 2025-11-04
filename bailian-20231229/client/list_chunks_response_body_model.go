@@ -125,7 +125,12 @@ func (s *ListChunksResponseBody) SetSuccess(v bool) *ListChunksResponseBody {
 }
 
 func (s *ListChunksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListChunksResponseBodyData struct {
@@ -166,7 +171,16 @@ func (s *ListChunksResponseBodyData) SetTotal(v int64) *ListChunksResponseBodyDa
 }
 
 func (s *ListChunksResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListChunksResponseBodyDataNodes struct {
