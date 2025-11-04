@@ -238,7 +238,8 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	// example:
 	//
 	// 60
-	MaxExecutionTime *int64 `json:"MaxExecutionTime,omitempty" xml:"MaxExecutionTime,omitempty"`
+	MaxExecutionTime   *int64  `json:"MaxExecutionTime,omitempty" xml:"MaxExecutionTime,omitempty"`
+	MaxExecutionTimeMs *string `json:"MaxExecutionTimeMs,omitempty" xml:"MaxExecutionTimeMs,omitempty"`
 	// The longest lock duration that was caused by a specific SQL statement in the query. Unit: seconds.
 	//
 	// example:
@@ -325,6 +326,10 @@ func (s *DescribeSlowLogsResponseBodyItemsSQLSlowLog) GetMaxExecutionTime() *int
 	return s.MaxExecutionTime
 }
 
+func (s *DescribeSlowLogsResponseBodyItemsSQLSlowLog) GetMaxExecutionTimeMs() *string {
+	return s.MaxExecutionTimeMs
+}
+
 func (s *DescribeSlowLogsResponseBodyItemsSQLSlowLog) GetMaxLockTime() *int64 {
 	return s.MaxLockTime
 }
@@ -382,6 +387,11 @@ func (s *DescribeSlowLogsResponseBodyItemsSQLSlowLog) SetDBNodeId(v string) *Des
 
 func (s *DescribeSlowLogsResponseBodyItemsSQLSlowLog) SetMaxExecutionTime(v int64) *DescribeSlowLogsResponseBodyItemsSQLSlowLog {
 	s.MaxExecutionTime = &v
+	return s
+}
+
+func (s *DescribeSlowLogsResponseBodyItemsSQLSlowLog) SetMaxExecutionTimeMs(v string) *DescribeSlowLogsResponseBodyItemsSQLSlowLog {
+	s.MaxExecutionTimeMs = &v
 	return s
 }
 
