@@ -13,6 +13,8 @@ type iCreateApplicationShrinkRequest interface {
 	GetAcrAssumeRoleArn() *string
 	SetAcrInstanceId(v string) *CreateApplicationShrinkRequest
 	GetAcrInstanceId() *string
+	SetAgentVersion(v string) *CreateApplicationShrinkRequest
+	GetAgentVersion() *string
 	SetAppDescription(v string) *CreateApplicationShrinkRequest
 	GetAppDescription() *string
 	SetAppName(v string) *CreateApplicationShrinkRequest
@@ -51,6 +53,10 @@ type iCreateApplicationShrinkRequest interface {
 	GetEnableCpuBurst() *bool
 	SetEnableEbpf(v string) *CreateApplicationShrinkRequest
 	GetEnableEbpf() *string
+	SetEnableNamespaceAgentVersion(v bool) *CreateApplicationShrinkRequest
+	GetEnableNamespaceAgentVersion() *bool
+	SetEnableNamespaceSlsConfig(v bool) *CreateApplicationShrinkRequest
+	GetEnableNamespaceSlsConfig() *bool
 	SetEnableNewArms(v bool) *CreateApplicationShrinkRequest
 	GetEnableNewArms() *bool
 	SetEnablePrometheus(v bool) *CreateApplicationShrinkRequest
@@ -186,6 +192,7 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// cri-xxxxxx
 	AcrInstanceId *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	AgentVersion  *string `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty"`
 	// The description of the template. The description cannot exceed 1,024 characters in length.
 	//
 	// example:
@@ -376,7 +383,9 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// false
-	EnableEbpf *string `json:"EnableEbpf,omitempty" xml:"EnableEbpf,omitempty"`
+	EnableEbpf                  *string `json:"EnableEbpf,omitempty" xml:"EnableEbpf,omitempty"`
+	EnableNamespaceAgentVersion *bool   `json:"EnableNamespaceAgentVersion,omitempty" xml:"EnableNamespaceAgentVersion,omitempty"`
+	EnableNamespaceSlsConfig    *bool   `json:"EnableNamespaceSlsConfig,omitempty" xml:"EnableNamespaceSlsConfig,omitempty"`
 	// Indicates whether to enable the new ARMS feature:
 	//
 	// 	- true: enables this parameter.
@@ -964,6 +973,10 @@ func (s *CreateApplicationShrinkRequest) GetAcrInstanceId() *string {
 	return s.AcrInstanceId
 }
 
+func (s *CreateApplicationShrinkRequest) GetAgentVersion() *string {
+	return s.AgentVersion
+}
+
 func (s *CreateApplicationShrinkRequest) GetAppDescription() *string {
 	return s.AppDescription
 }
@@ -1038,6 +1051,14 @@ func (s *CreateApplicationShrinkRequest) GetEnableCpuBurst() *bool {
 
 func (s *CreateApplicationShrinkRequest) GetEnableEbpf() *string {
 	return s.EnableEbpf
+}
+
+func (s *CreateApplicationShrinkRequest) GetEnableNamespaceAgentVersion() *bool {
+	return s.EnableNamespaceAgentVersion
+}
+
+func (s *CreateApplicationShrinkRequest) GetEnableNamespaceSlsConfig() *bool {
+	return s.EnableNamespaceSlsConfig
 }
 
 func (s *CreateApplicationShrinkRequest) GetEnableNewArms() *bool {
@@ -1290,6 +1311,11 @@ func (s *CreateApplicationShrinkRequest) SetAcrInstanceId(v string) *CreateAppli
 	return s
 }
 
+func (s *CreateApplicationShrinkRequest) SetAgentVersion(v string) *CreateApplicationShrinkRequest {
+	s.AgentVersion = &v
+	return s
+}
+
 func (s *CreateApplicationShrinkRequest) SetAppDescription(v string) *CreateApplicationShrinkRequest {
 	s.AppDescription = &v
 	return s
@@ -1382,6 +1408,16 @@ func (s *CreateApplicationShrinkRequest) SetEnableCpuBurst(v bool) *CreateApplic
 
 func (s *CreateApplicationShrinkRequest) SetEnableEbpf(v string) *CreateApplicationShrinkRequest {
 	s.EnableEbpf = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetEnableNamespaceAgentVersion(v bool) *CreateApplicationShrinkRequest {
+	s.EnableNamespaceAgentVersion = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetEnableNamespaceSlsConfig(v bool) *CreateApplicationShrinkRequest {
+	s.EnableNamespaceSlsConfig = &v
 	return s
 }
 

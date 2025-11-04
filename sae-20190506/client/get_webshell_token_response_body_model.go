@@ -26,25 +26,56 @@ type iGetWebshellTokenResponseBody interface {
 }
 
 type GetWebshellTokenResponseBody struct {
+	// The HTTP status code. Valid values:
+	//
+	// 	- **2xx**: The request was successful.
+	//
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Response
-	Data      *GetWebshellTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The returned result.
+	Data *GetWebshellTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned if the call failed. Value values:
+	//
+	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	//
+	// 	- If the request failed, the **ErrorCode*	- parameter is returned. For more information, see **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// 400
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The returned message. Value description:
+	//
+	// 	- If the request was successful, a success message is returned.
+	//
+	// 	- An error code is returned if the request failed.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the trace.
+	//
 	// example:
 	//
 	// 0a98a02315955564772843261e****
@@ -132,14 +163,20 @@ func (s *GetWebshellTokenResponseBody) Validate() error {
 }
 
 type GetWebshellTokenResponseBodyData struct {
+	// Webshell page address
+	//
 	// example:
 	//
 	// HttpUrl :  "https://saenext.console.aliyun.com/cn-shenzhen/app-list/app1/micro-app/shell/pod1?tokenId=xxx
 	HttpUrl *string `json:"HttpUrl,omitempty" xml:"HttpUrl,omitempty"`
+	// The information about the token.
+	//
 	// example:
 	//
 	// zWWpvRj_5pzof4hfo7-hGynM8oGMmO_7
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The WebSocket address.
+	//
 	// example:
 	//
 	// wss://sae-webshell.console.aliyun.com/websocket/eamWebshell?tokenId=xxx&region=cn-shenzhen

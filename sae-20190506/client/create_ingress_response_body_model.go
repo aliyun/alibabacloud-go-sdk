@@ -26,13 +26,13 @@ type iCreateIngressResponseBody interface {
 }
 
 type CreateIngressResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The HTTP status code or the error code. Valid values:
 	//
-	// 	- **2xx**: The call was successful.
+	// 	- **2xx**: The request was successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// 	- **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// 	- **4xx**: The request failed.
 	//
 	// 	- **5xx**: A server error occurred.
 	//
@@ -40,23 +40,23 @@ type CreateIngressResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response.
+	// Responses.
 	Data *CreateIngressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned. Take note of the following rules:
+	// Error code. Valid values:
 	//
-	// 	- The **ErrorCode*	- parameter is not returned if the request succeeds.
+	// 	- If the request is successful, no **ErrorCode*	- fields are returned.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	// 	- Request failed: **ErrorCode*	- fields are returned. For more information, see **Error codes**.
 	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The additional information that is returned. Valid values:
+	// Additional information. Valid values:
 	//
-	// 	- success: If the call is successful, **success*	- is returned.
+	// 	- The error message returned because the request is normal and **success*	- is returned.
 	//
-	// 	- An error code: If the call fails, an error code is returned.
+	// 	- If the request is abnormal, the specific exception error code is returned.
 	//
 	// example:
 	//
@@ -68,17 +68,17 @@ type CreateIngressResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the Secret is successfully deleted. Valid values:
+	// Indicates whether the routing rule was created. Valid values:
 	//
-	// 	- **true**: The instance was deleted.
+	// 	- **true**: The ConfigMap was created.
 	//
-	// 	- **false**: The instance failed to be deleted.
+	// 	- **false**: The ConfigMap failed to be created.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It is used to query the details of a request.
+	// The ID of the trace. This parameter is used to query the exact call information.
 	//
 	// example:
 	//

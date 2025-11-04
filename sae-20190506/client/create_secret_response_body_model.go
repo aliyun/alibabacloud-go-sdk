@@ -26,24 +26,56 @@ type iCreateSecretResponseBody interface {
 }
 
 type CreateSecretResponseBody struct {
+	// The HTTP status code or the error code. Valid values:
+	//
+	// 	- **2xx**: The request was successful.
+	//
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
+	//
 	// example:
 	//
 	// 200
-	Code      *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateSecretResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned result.
+	Data *CreateSecretResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The status code. Value values:
+	//
+	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	//
+	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- in this topic.
+	//
+	// example:
+	//
+	// 400
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The message returned for the operation.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the Secret was created. Valid values:
+	//
+	// 	- **true**: The ConfigMap was created.
+	//
+	// 	- **false**: The ConfigMap failed to be created.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the trace. The ID is used to query the details of a request.
+	//
 	// example:
 	//
 	// 0a98a02315955564772843261e****
@@ -131,6 +163,8 @@ func (s *CreateSecretResponseBody) Validate() error {
 }
 
 type CreateSecretResponseBodyData struct {
+	// The ID of the created Secret.
+	//
 	// example:
 	//
 	// 16

@@ -16,12 +16,16 @@ type iUpdateApplicationDescriptionRequest interface {
 }
 
 type UpdateApplicationDescriptionRequest struct {
+	// The new description of the application. The description can be up to 1,024 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// newdesc
 	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
+	// The ID of the application that you want to update.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -13,6 +13,8 @@ type iDeployApplicationShrinkRequest interface {
 	GetAcrAssumeRoleArn() *string
 	SetAcrInstanceId(v string) *DeployApplicationShrinkRequest
 	GetAcrInstanceId() *string
+	SetAgentVersion(v string) *DeployApplicationShrinkRequest
+	GetAgentVersion() *string
 	SetAlbIngressReadinessGate(v string) *DeployApplicationShrinkRequest
 	GetAlbIngressReadinessGate() *string
 	SetAppId(v string) *DeployApplicationShrinkRequest
@@ -51,6 +53,8 @@ type iDeployApplicationShrinkRequest interface {
 	GetEnableCpuBurst() *bool
 	SetEnableGreyTagRoute(v bool) *DeployApplicationShrinkRequest
 	GetEnableGreyTagRoute() *bool
+	SetEnableNamespaceAgentVersion(v bool) *DeployApplicationShrinkRequest
+	GetEnableNamespaceAgentVersion() *bool
 	SetEnableNewArms(v bool) *DeployApplicationShrinkRequest
 	GetEnableNewArms() *bool
 	SetEnablePrometheus(v bool) *DeployApplicationShrinkRequest
@@ -184,6 +188,7 @@ type DeployApplicationShrinkRequest struct {
 	//
 	// cri-xxxxxx
 	AcrInstanceId           *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	AgentVersion            *string `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty"`
 	AlbIngressReadinessGate *string `json:"AlbIngressReadinessGate,omitempty" xml:"AlbIngressReadinessGate,omitempty"`
 	// The ID of the application.
 	//
@@ -371,7 +376,8 @@ type DeployApplicationShrinkRequest struct {
 	// example:
 	//
 	// false
-	EnableGreyTagRoute *bool `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
+	EnableGreyTagRoute          *bool `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
+	EnableNamespaceAgentVersion *bool `json:"EnableNamespaceAgentVersion,omitempty" xml:"EnableNamespaceAgentVersion,omitempty"`
 	// Enable new ARMS features.
 	//
 	// - true: enable
@@ -1027,6 +1033,10 @@ func (s *DeployApplicationShrinkRequest) GetAcrInstanceId() *string {
 	return s.AcrInstanceId
 }
 
+func (s *DeployApplicationShrinkRequest) GetAgentVersion() *string {
+	return s.AgentVersion
+}
+
 func (s *DeployApplicationShrinkRequest) GetAlbIngressReadinessGate() *string {
 	return s.AlbIngressReadinessGate
 }
@@ -1101,6 +1111,10 @@ func (s *DeployApplicationShrinkRequest) GetEnableCpuBurst() *bool {
 
 func (s *DeployApplicationShrinkRequest) GetEnableGreyTagRoute() *bool {
 	return s.EnableGreyTagRoute
+}
+
+func (s *DeployApplicationShrinkRequest) GetEnableNamespaceAgentVersion() *bool {
+	return s.EnableNamespaceAgentVersion
 }
 
 func (s *DeployApplicationShrinkRequest) GetEnableNewArms() *bool {
@@ -1349,6 +1363,11 @@ func (s *DeployApplicationShrinkRequest) SetAcrInstanceId(v string) *DeployAppli
 	return s
 }
 
+func (s *DeployApplicationShrinkRequest) SetAgentVersion(v string) *DeployApplicationShrinkRequest {
+	s.AgentVersion = &v
+	return s
+}
+
 func (s *DeployApplicationShrinkRequest) SetAlbIngressReadinessGate(v string) *DeployApplicationShrinkRequest {
 	s.AlbIngressReadinessGate = &v
 	return s
@@ -1441,6 +1460,11 @@ func (s *DeployApplicationShrinkRequest) SetEnableCpuBurst(v bool) *DeployApplic
 
 func (s *DeployApplicationShrinkRequest) SetEnableGreyTagRoute(v bool) *DeployApplicationShrinkRequest {
 	s.EnableGreyTagRoute = &v
+	return s
+}
+
+func (s *DeployApplicationShrinkRequest) SetEnableNamespaceAgentVersion(v bool) *DeployApplicationShrinkRequest {
+	s.EnableNamespaceAgentVersion = &v
 	return s
 }
 

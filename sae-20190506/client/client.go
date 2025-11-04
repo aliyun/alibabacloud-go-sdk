@@ -677,6 +677,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		query["AcrAssumeRoleArn"] = request.AcrAssumeRoleArn
 	}
 
+	if !dara.IsNil(request.AgentVersion) {
+		query["AgentVersion"] = request.AgentVersion
+	}
+
 	if !dara.IsNil(request.AppDescription) {
 		query["AppDescription"] = request.AppDescription
 	}
@@ -735,6 +739,14 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 
 	if !dara.IsNil(request.EnableEbpf) {
 		query["EnableEbpf"] = request.EnableEbpf
+	}
+
+	if !dara.IsNil(request.EnableNamespaceAgentVersion) {
+		query["EnableNamespaceAgentVersion"] = request.EnableNamespaceAgentVersion
+	}
+
+	if !dara.IsNil(request.EnableNamespaceSlsConfig) {
+		query["EnableNamespaceSlsConfig"] = request.EnableNamespaceSlsConfig
 	}
 
 	if !dara.IsNil(request.EnableNewArms) {
@@ -1044,19 +1056,21 @@ func (client *Client) CreateApplication(request *CreateApplicationRequest) (_res
 
 // Summary:
 //
-// # Null
+// Creates an auto scaling policy for an application.
 //
 // Description:
 //
-// The HTTP status code. Take note of the following rules:
+// ## [](#)Precautions
 //
-//   - **2xx**: The call was successful.
+//   - You can create up to five auto scaling policies for one application.
 //
-//   - **3xx**: The call was redirected.
+//   - You can create up to 20 trigger points within one day in a scheduled auto scaling policy.
 //
-//   - **4xx**: The call failed.
+//   - If an auto scaling policy is enabled for an application, you cannot manually manage the lifecycle of the application. For example, you cannot scale, deploy (including single-batch release, phased release, and canary release), stop, or restart the application, or change the instance type. If you want to perform the preceding operations on the application, disable the auto scaling policy and then manually perform the operations.
 //
-//   - **5xx**: A server error occurred.
+//   - If an application is in the process of scale-out, scale-in, deployment (including single-batch release, phased release, and canary release), instance type change, restart, or stop, you cannot add or enable an auto scaling policy for the application.
+//
+//   - If you want to configure more than 50 instances for an application, you must contact SAE technical support to add your account to the whitelist. For more information, see [Contact us](https://help.aliyun.com/document_detail/146530.html).
 //
 // @param request - CreateApplicationScalingRuleRequest
 //
@@ -1135,19 +1149,21 @@ func (client *Client) CreateApplicationScalingRuleWithOptions(request *CreateApp
 
 // Summary:
 //
-// # Null
+// Creates an auto scaling policy for an application.
 //
 // Description:
 //
-// The HTTP status code. Take note of the following rules:
+// ## [](#)Precautions
 //
-//   - **2xx**: The call was successful.
+//   - You can create up to five auto scaling policies for one application.
 //
-//   - **3xx**: The call was redirected.
+//   - You can create up to 20 trigger points within one day in a scheduled auto scaling policy.
 //
-//   - **4xx**: The call failed.
+//   - If an auto scaling policy is enabled for an application, you cannot manually manage the lifecycle of the application. For example, you cannot scale, deploy (including single-batch release, phased release, and canary release), stop, or restart the application, or change the instance type. If you want to perform the preceding operations on the application, disable the auto scaling policy and then manually perform the operations.
 //
-//   - **5xx**: A server error occurred.
+//   - If an application is in the process of scale-out, scale-in, deployment (including single-batch release, phased release, and canary release), instance type change, restart, or stop, you cannot add or enable an auto scaling policy for the application.
+//
+//   - If you want to configure more than 50 instances for an application, you must contact SAE technical support to add your account to the whitelist. For more information, see [Contact us](https://help.aliyun.com/document_detail/146530.html).
 //
 // @param request - CreateApplicationScalingRuleRequest
 //
@@ -3307,6 +3323,10 @@ func (client *Client) DeployApplicationWithOptions(tmpReq *DeployApplicationRequ
 		query["AcrAssumeRoleArn"] = request.AcrAssumeRoleArn
 	}
 
+	if !dara.IsNil(request.AgentVersion) {
+		query["AgentVersion"] = request.AgentVersion
+	}
+
 	if !dara.IsNil(request.AlbIngressReadinessGate) {
 		query["AlbIngressReadinessGate"] = request.AlbIngressReadinessGate
 	}
@@ -3369,6 +3389,10 @@ func (client *Client) DeployApplicationWithOptions(tmpReq *DeployApplicationRequ
 
 	if !dara.IsNil(request.EnableGreyTagRoute) {
 		query["EnableGreyTagRoute"] = request.EnableGreyTagRoute
+	}
+
+	if !dara.IsNil(request.EnableNamespaceAgentVersion) {
+		query["EnableNamespaceAgentVersion"] = request.EnableNamespaceAgentVersion
 	}
 
 	if !dara.IsNil(request.EnableNewArms) {
@@ -12279,7 +12303,7 @@ func (client *Client) UpdateWebCustomDomain(DomainName *string, request *UpdateW
 //
 // Description:
 //
-// You are charged when you use the ARMS advanced monitoring feature. Enable this feature based on your business requirements. For more information, see [Billing overview](https://icms.alibaba-inc.com/content/arms/arms?l=1\\&m=16992\\&n=3183148).
+// You are charged when you use the ARMS advanced monitoring feature. Enable this feature based on your business requirements. For more information, see [Billing overview](https://www.alibabacloud.com/help/zh/arms/application-monitoring/product-overview/billing-overview-1).
 //
 // @param request - UpgradeApplicationApmServiceRequest
 //
@@ -12330,7 +12354,7 @@ func (client *Client) UpgradeApplicationApmServiceWithOptions(request *UpgradeAp
 //
 // Description:
 //
-// You are charged when you use the ARMS advanced monitoring feature. Enable this feature based on your business requirements. For more information, see [Billing overview](https://icms.alibaba-inc.com/content/arms/arms?l=1\\&m=16992\\&n=3183148).
+// You are charged when you use the ARMS advanced monitoring feature. Enable this feature based on your business requirements. For more information, see [Billing overview](https://www.alibabacloud.com/help/zh/arms/application-monitoring/product-overview/billing-overview-1).
 //
 // @param request - UpgradeApplicationApmServiceRequest
 //

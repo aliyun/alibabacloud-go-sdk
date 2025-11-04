@@ -18,17 +18,19 @@ type iGetWebshellTokenRequest interface {
 }
 
 type GetWebshellTokenRequest struct {
+	// The ID of the interactive messaging application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 017f39b8-dfa4-4e16-a84b-1dcee4b1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the container.
+	// The name of the init container.
 	//
 	// Note:
 	//
-	// 	- If this parameter is specified, Cloud Assistant runs the command in the specified container of the instance.
+	// 	- If you specify this parameter, Cloud Assistant runs the command in the specified container of the instances.
 	//
 	// 	- If this parameter is specified, the command can run only on Linux instances on which Cloud Assistant Agent 2.2.3.344 or later is installed.
 	//
@@ -44,6 +46,8 @@ type GetWebshellTokenRequest struct {
 	//
 	// ad-helper
 	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	// The name of the pod.
+	//
 	// This parameter is required.
 	//
 	// example:

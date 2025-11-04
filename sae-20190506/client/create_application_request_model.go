@@ -13,6 +13,8 @@ type iCreateApplicationRequest interface {
 	GetAcrAssumeRoleArn() *string
 	SetAcrInstanceId(v string) *CreateApplicationRequest
 	GetAcrInstanceId() *string
+	SetAgentVersion(v string) *CreateApplicationRequest
+	GetAgentVersion() *string
 	SetAppDescription(v string) *CreateApplicationRequest
 	GetAppDescription() *string
 	SetAppName(v string) *CreateApplicationRequest
@@ -51,6 +53,10 @@ type iCreateApplicationRequest interface {
 	GetEnableCpuBurst() *bool
 	SetEnableEbpf(v string) *CreateApplicationRequest
 	GetEnableEbpf() *string
+	SetEnableNamespaceAgentVersion(v bool) *CreateApplicationRequest
+	GetEnableNamespaceAgentVersion() *bool
+	SetEnableNamespaceSlsConfig(v bool) *CreateApplicationRequest
+	GetEnableNamespaceSlsConfig() *bool
 	SetEnableNewArms(v bool) *CreateApplicationRequest
 	GetEnableNewArms() *bool
 	SetEnablePrometheus(v bool) *CreateApplicationRequest
@@ -186,6 +192,7 @@ type CreateApplicationRequest struct {
 	//
 	// cri-xxxxxx
 	AcrInstanceId *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	AgentVersion  *string `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty"`
 	// The description of the template. The description cannot exceed 1,024 characters in length.
 	//
 	// example:
@@ -376,7 +383,9 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// false
-	EnableEbpf *string `json:"EnableEbpf,omitempty" xml:"EnableEbpf,omitempty"`
+	EnableEbpf                  *string `json:"EnableEbpf,omitempty" xml:"EnableEbpf,omitempty"`
+	EnableNamespaceAgentVersion *bool   `json:"EnableNamespaceAgentVersion,omitempty" xml:"EnableNamespaceAgentVersion,omitempty"`
+	EnableNamespaceSlsConfig    *bool   `json:"EnableNamespaceSlsConfig,omitempty" xml:"EnableNamespaceSlsConfig,omitempty"`
 	// Indicates whether to enable the new ARMS feature:
 	//
 	// 	- true: enables this parameter.
@@ -964,6 +973,10 @@ func (s *CreateApplicationRequest) GetAcrInstanceId() *string {
 	return s.AcrInstanceId
 }
 
+func (s *CreateApplicationRequest) GetAgentVersion() *string {
+	return s.AgentVersion
+}
+
 func (s *CreateApplicationRequest) GetAppDescription() *string {
 	return s.AppDescription
 }
@@ -1038,6 +1051,14 @@ func (s *CreateApplicationRequest) GetEnableCpuBurst() *bool {
 
 func (s *CreateApplicationRequest) GetEnableEbpf() *string {
 	return s.EnableEbpf
+}
+
+func (s *CreateApplicationRequest) GetEnableNamespaceAgentVersion() *bool {
+	return s.EnableNamespaceAgentVersion
+}
+
+func (s *CreateApplicationRequest) GetEnableNamespaceSlsConfig() *bool {
+	return s.EnableNamespaceSlsConfig
 }
 
 func (s *CreateApplicationRequest) GetEnableNewArms() *bool {
@@ -1290,6 +1311,11 @@ func (s *CreateApplicationRequest) SetAcrInstanceId(v string) *CreateApplication
 	return s
 }
 
+func (s *CreateApplicationRequest) SetAgentVersion(v string) *CreateApplicationRequest {
+	s.AgentVersion = &v
+	return s
+}
+
 func (s *CreateApplicationRequest) SetAppDescription(v string) *CreateApplicationRequest {
 	s.AppDescription = &v
 	return s
@@ -1382,6 +1408,16 @@ func (s *CreateApplicationRequest) SetEnableCpuBurst(v bool) *CreateApplicationR
 
 func (s *CreateApplicationRequest) SetEnableEbpf(v string) *CreateApplicationRequest {
 	s.EnableEbpf = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetEnableNamespaceAgentVersion(v bool) *CreateApplicationRequest {
+	s.EnableNamespaceAgentVersion = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetEnableNamespaceSlsConfig(v bool) *CreateApplicationRequest {
+	s.EnableNamespaceSlsConfig = &v
 	return s
 }
 

@@ -175,6 +175,7 @@ type DescribeApplicationConfigResponseBodyData struct {
 	//
 	// cri-xxxxxx
 	AcrInstanceId           *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	AgentVersion            *string `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty"`
 	AlbIngressReadinessGate *string `json:"AlbIngressReadinessGate,omitempty" xml:"AlbIngressReadinessGate,omitempty"`
 	// The description of the application.
 	//
@@ -378,7 +379,8 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// example:
 	//
 	// false
-	EnableIdle *bool `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
+	EnableIdle                  *bool `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
+	EnableNamespaceAgentVersion *bool `json:"EnableNamespaceAgentVersion,omitempty" xml:"EnableNamespaceAgentVersion,omitempty"`
 	// Enable new ARMS feature.
 	//
 	// - true: enable
@@ -965,6 +967,10 @@ func (s *DescribeApplicationConfigResponseBodyData) GetAcrInstanceId() *string {
 	return s.AcrInstanceId
 }
 
+func (s *DescribeApplicationConfigResponseBodyData) GetAgentVersion() *string {
+	return s.AgentVersion
+}
+
 func (s *DescribeApplicationConfigResponseBodyData) GetAlbIngressReadinessGate() *string {
 	return s.AlbIngressReadinessGate
 }
@@ -1063,6 +1069,10 @@ func (s *DescribeApplicationConfigResponseBodyData) GetEnableGreyTagRoute() *boo
 
 func (s *DescribeApplicationConfigResponseBodyData) GetEnableIdle() *bool {
 	return s.EnableIdle
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) GetEnableNamespaceAgentVersion() *bool {
+	return s.EnableNamespaceAgentVersion
 }
 
 func (s *DescribeApplicationConfigResponseBodyData) GetEnableNewArms() *bool {
@@ -1351,6 +1361,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetAcrInstanceId(v string) *
 	return s
 }
 
+func (s *DescribeApplicationConfigResponseBodyData) SetAgentVersion(v string) *DescribeApplicationConfigResponseBodyData {
+	s.AgentVersion = &v
+	return s
+}
+
 func (s *DescribeApplicationConfigResponseBodyData) SetAlbIngressReadinessGate(v string) *DescribeApplicationConfigResponseBodyData {
 	s.AlbIngressReadinessGate = &v
 	return s
@@ -1473,6 +1488,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetEnableGreyTagRoute(v bool
 
 func (s *DescribeApplicationConfigResponseBodyData) SetEnableIdle(v bool) *DescribeApplicationConfigResponseBodyData {
 	s.EnableIdle = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetEnableNamespaceAgentVersion(v bool) *DescribeApplicationConfigResponseBodyData {
+	s.EnableNamespaceAgentVersion = &v
 	return s
 }
 

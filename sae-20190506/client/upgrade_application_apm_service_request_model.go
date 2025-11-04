@@ -14,6 +14,8 @@ type iUpgradeApplicationApmServiceRequest interface {
 }
 
 type UpgradeApplicationApmServiceRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:

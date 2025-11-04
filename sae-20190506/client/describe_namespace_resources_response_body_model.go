@@ -163,6 +163,7 @@ func (s *DescribeNamespaceResourcesResponseBody) Validate() error {
 }
 
 type DescribeNamespaceResourcesResponseBodyData struct {
+	ApmJavaAgentVersion *string `json:"ApmJavaAgentVersion,omitempty" xml:"ApmJavaAgentVersion,omitempty"`
 	// The number of applications.
 	//
 	// example:
@@ -314,6 +315,10 @@ func (s DescribeNamespaceResourcesResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeNamespaceResourcesResponseBodyData) GetApmJavaAgentVersion() *string {
+	return s.ApmJavaAgentVersion
+}
+
 func (s *DescribeNamespaceResourcesResponseBodyData) GetAppCount() *int64 {
 	return s.AppCount
 }
@@ -392,6 +397,11 @@ func (s *DescribeNamespaceResourcesResponseBodyData) GetVpcId() *string {
 
 func (s *DescribeNamespaceResourcesResponseBodyData) GetVpcName() *string {
 	return s.VpcName
+}
+
+func (s *DescribeNamespaceResourcesResponseBodyData) SetApmJavaAgentVersion(v string) *DescribeNamespaceResourcesResponseBodyData {
+	s.ApmJavaAgentVersion = &v
+	return s
 }
 
 func (s *DescribeNamespaceResourcesResponseBodyData) SetAppCount(v int64) *DescribeNamespaceResourcesResponseBodyData {
