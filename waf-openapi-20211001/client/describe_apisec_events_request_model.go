@@ -9,6 +9,8 @@ type iDescribeApisecEventsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccount(v string) *DescribeApisecEventsRequest
+	GetAccount() *string
 	SetApiFormat(v string) *DescribeApisecEventsRequest
 	GetApiFormat() *string
 	SetApiId(v string) *DescribeApisecEventsRequest
@@ -25,6 +27,8 @@ type iDescribeApisecEventsRequest interface {
 	GetEventId() *string
 	SetEventLevel(v string) *DescribeApisecEventsRequest
 	GetEventLevel() *string
+	SetEventScope(v string) *DescribeApisecEventsRequest
+	GetEventScope() *string
 	SetEventTag(v string) *DescribeApisecEventsRequest
 	GetEventTag() *string
 	SetInstanceId(v string) *DescribeApisecEventsRequest
@@ -52,6 +56,10 @@ type iDescribeApisecEventsRequest interface {
 }
 
 type DescribeApisecEventsRequest struct {
+	// example:
+	//
+	// 1818743389962696
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
 	// The API.
 	//
 	// example:
@@ -110,6 +118,10 @@ type DescribeApisecEventsRequest struct {
 	//
 	// low
 	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
+	// example:
+	//
+	// ip
+	EventScope *string `json:"EventScope,omitempty" xml:"EventScope,omitempty"`
 	// The type of the event.
 	//
 	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported event types.
@@ -222,6 +234,10 @@ func (s DescribeApisecEventsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeApisecEventsRequest) GetAccount() *string {
+	return s.Account
+}
+
 func (s *DescribeApisecEventsRequest) GetApiFormat() *string {
 	return s.ApiFormat
 }
@@ -252,6 +268,10 @@ func (s *DescribeApisecEventsRequest) GetEventId() *string {
 
 func (s *DescribeApisecEventsRequest) GetEventLevel() *string {
 	return s.EventLevel
+}
+
+func (s *DescribeApisecEventsRequest) GetEventScope() *string {
+	return s.EventScope
 }
 
 func (s *DescribeApisecEventsRequest) GetEventTag() *string {
@@ -302,6 +322,11 @@ func (s *DescribeApisecEventsRequest) GetUserStatus() *string {
 	return s.UserStatus
 }
 
+func (s *DescribeApisecEventsRequest) SetAccount(v string) *DescribeApisecEventsRequest {
+	s.Account = &v
+	return s
+}
+
 func (s *DescribeApisecEventsRequest) SetApiFormat(v string) *DescribeApisecEventsRequest {
 	s.ApiFormat = &v
 	return s
@@ -339,6 +364,11 @@ func (s *DescribeApisecEventsRequest) SetEventId(v string) *DescribeApisecEvents
 
 func (s *DescribeApisecEventsRequest) SetEventLevel(v string) *DescribeApisecEventsRequest {
 	s.EventLevel = &v
+	return s
+}
+
+func (s *DescribeApisecEventsRequest) SetEventScope(v string) *DescribeApisecEventsRequest {
+	s.EventScope = &v
 	return s
 }
 

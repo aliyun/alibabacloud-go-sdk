@@ -11,6 +11,8 @@ type iDescribeUserEventTrendRequest interface {
 	GoString() string
 	SetClusterId(v string) *DescribeUserEventTrendRequest
 	GetClusterId() *string
+	SetEventScope(v string) *DescribeUserEventTrendRequest
+	GetEventScope() *string
 	SetInstanceId(v string) *DescribeUserEventTrendRequest
 	GetInstanceId() *string
 	SetRegionId(v string) *DescribeUserEventTrendRequest
@@ -28,6 +30,10 @@ type DescribeUserEventTrendRequest struct {
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// ip
+	EventScope *string `json:"EventScope,omitempty" xml:"EventScope,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
 	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
@@ -68,6 +74,10 @@ func (s *DescribeUserEventTrendRequest) GetClusterId() *string {
 	return s.ClusterId
 }
 
+func (s *DescribeUserEventTrendRequest) GetEventScope() *string {
+	return s.EventScope
+}
+
 func (s *DescribeUserEventTrendRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -82,6 +92,11 @@ func (s *DescribeUserEventTrendRequest) GetResourceManagerResourceGroupId() *str
 
 func (s *DescribeUserEventTrendRequest) SetClusterId(v string) *DescribeUserEventTrendRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeUserEventTrendRequest) SetEventScope(v string) *DescribeUserEventTrendRequest {
+	s.EventScope = &v
 	return s
 }
 

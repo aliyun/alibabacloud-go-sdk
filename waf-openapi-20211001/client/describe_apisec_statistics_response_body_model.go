@@ -62,6 +62,10 @@ func (s *DescribeApisecStatisticsResponseBody) Validate() error {
 }
 
 type DescribeApisecStatisticsResponseBodyData struct {
+	// example:
+	//
+	// 1
+	Account *int64 `json:"Account,omitempty" xml:"Account,omitempty"`
 	// The number of handled events.
 	//
 	// example:
@@ -115,8 +119,14 @@ type DescribeApisecStatisticsResponseBodyData struct {
 	// example:
 	//
 	// 10
-	Medium      *int64 `json:"Medium,omitempty" xml:"Medium,omitempty"`
-	NotFixed    *int64 `json:"NotFixed,omitempty" xml:"NotFixed,omitempty"`
+	Medium *int64 `json:"Medium,omitempty" xml:"Medium,omitempty"`
+	// example:
+	//
+	// 0
+	NotFixed *int64 `json:"NotFixed,omitempty" xml:"NotFixed,omitempty"`
+	// example:
+	//
+	// 1
 	SystemFixed *int64 `json:"SystemFixed,omitempty" xml:"SystemFixed,omitempty"`
 	// The number of events to be confirmed.
 	//
@@ -129,7 +139,10 @@ type DescribeApisecStatisticsResponseBodyData struct {
 	// example:
 	//
 	// 10
-	ToBeFixed    *int64 `json:"ToBeFixed,omitempty" xml:"ToBeFixed,omitempty"`
+	ToBeFixed *int64 `json:"ToBeFixed,omitempty" xml:"ToBeFixed,omitempty"`
+	// example:
+	//
+	// 2
 	ToBeVerified *int64 `json:"ToBeVerified,omitempty" xml:"ToBeVerified,omitempty"`
 	// The number of new high-risk events today.
 	//
@@ -169,6 +182,10 @@ func (s DescribeApisecStatisticsResponseBodyData) String() string {
 
 func (s DescribeApisecStatisticsResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeApisecStatisticsResponseBodyData) GetAccount() *int64 {
+	return s.Account
 }
 
 func (s *DescribeApisecStatisticsResponseBodyData) GetActioned() *int64 {
@@ -245,6 +262,11 @@ func (s *DescribeApisecStatisticsResponseBodyData) GetTodayTotal() *string {
 
 func (s *DescribeApisecStatisticsResponseBodyData) GetTotal() *int64 {
 	return s.Total
+}
+
+func (s *DescribeApisecStatisticsResponseBodyData) SetAccount(v int64) *DescribeApisecStatisticsResponseBodyData {
+	s.Account = &v
+	return s
 }
 
 func (s *DescribeApisecStatisticsResponseBodyData) SetActioned(v int64) *DescribeApisecStatisticsResponseBodyData {

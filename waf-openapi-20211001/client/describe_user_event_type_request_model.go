@@ -13,6 +13,8 @@ type iDescribeUserEventTypeRequest interface {
 	GetClusterId() *string
 	SetEndTime(v int64) *DescribeUserEventTypeRequest
 	GetEndTime() *int64
+	SetEventScope(v string) *DescribeUserEventTypeRequest
+	GetEventScope() *string
 	SetInstanceId(v string) *DescribeUserEventTypeRequest
 	GetInstanceId() *string
 	SetRegionId(v string) *DescribeUserEventTypeRequest
@@ -40,6 +42,10 @@ type DescribeUserEventTypeRequest struct {
 	//
 	// 1726113600
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// ip
+	EventScope *string `json:"EventScope,omitempty" xml:"EventScope,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
 	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
@@ -91,6 +97,10 @@ func (s *DescribeUserEventTypeRequest) GetEndTime() *int64 {
 	return s.EndTime
 }
 
+func (s *DescribeUserEventTypeRequest) GetEventScope() *string {
+	return s.EventScope
+}
+
 func (s *DescribeUserEventTypeRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -118,6 +128,11 @@ func (s *DescribeUserEventTypeRequest) SetClusterId(v string) *DescribeUserEvent
 
 func (s *DescribeUserEventTypeRequest) SetEndTime(v int64) *DescribeUserEventTypeRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeUserEventTypeRequest) SetEventScope(v string) *DescribeUserEventTypeRequest {
+	s.EventScope = &v
 	return s
 }
 

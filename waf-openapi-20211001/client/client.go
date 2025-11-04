@@ -1564,96 +1564,6 @@ func (client *Client) CreateMajorProtectionBlackIp(request *CreateMajorProtectio
 
 // Summary:
 //
-// 添加重保场景黑IP
-//
-// @param request - CreateMajorProtectionBlackIpV2Request
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return CreateMajorProtectionBlackIpV2Response
-func (client *Client) CreateMajorProtectionBlackIpV2WithOptions(request *CreateMajorProtectionBlackIpV2Request, runtime *dara.RuntimeOptions) (_result *CreateMajorProtectionBlackIpV2Response, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.Description) {
-		query["Description"] = request.Description
-	}
-
-	if !dara.IsNil(request.ExpiredTime) {
-		query["ExpiredTime"] = request.ExpiredTime
-	}
-
-	if !dara.IsNil(request.InstanceId) {
-		query["InstanceId"] = request.InstanceId
-	}
-
-	if !dara.IsNil(request.IpList) {
-		query["IpList"] = request.IpList
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
-		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
-	}
-
-	if !dara.IsNil(request.RuleId) {
-		query["RuleId"] = request.RuleId
-	}
-
-	if !dara.IsNil(request.TemplateId) {
-		query["TemplateId"] = request.TemplateId
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("CreateMajorProtectionBlackIpV2"),
-		Version:     dara.String("2021-10-01"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &CreateMajorProtectionBlackIpV2Response{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 添加重保场景黑IP
-//
-// @param request - CreateMajorProtectionBlackIpV2Request
-//
-// @return CreateMajorProtectionBlackIpV2Response
-func (client *Client) CreateMajorProtectionBlackIpV2(request *CreateMajorProtectionBlackIpV2Request) (_result *CreateMajorProtectionBlackIpV2Response, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateMajorProtectionBlackIpV2Response{}
-	_body, _err := client.CreateMajorProtectionBlackIpV2WithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Adds members to use the multi-account management feature of Web Application Firewall (WAF).
 //
 // @param request - CreateMemberAccountsRequest
@@ -2061,6 +1971,10 @@ func (client *Client) DeleteApisecEventsWithOptions(request *DeleteApisecEventsR
 
 	if !dara.IsNil(request.EventIds) {
 		query["EventIds"] = request.EventIds
+	}
+
+	if !dara.IsNil(request.EventScope) {
+		query["EventScope"] = request.EventScope
 	}
 
 	if !dara.IsNil(request.InstanceId) {
@@ -3732,6 +3646,92 @@ func (client *Client) DescribeApisecAssetTrend(request *DescribeApisecAssetTrend
 
 // Summary:
 //
+// 查询安全事件详情
+//
+// @param request - DescribeApisecEventDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApisecEventDetailResponse
+func (client *Client) DescribeApisecEventDetailWithOptions(request *DescribeApisecEventDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeApisecEventDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.DetailType) {
+		query["DetailType"] = request.DetailType
+	}
+
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.EventScope) {
+		query["EventScope"] = request.EventScope
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeApisecEventDetail"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeApisecEventDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询安全事件详情
+//
+// @param request - DescribeApisecEventDetailRequest
+//
+// @return DescribeApisecEventDetailResponse
+func (client *Client) DescribeApisecEventDetail(request *DescribeApisecEventDetailRequest) (_result *DescribeApisecEventDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeApisecEventDetailResponse{}
+	_body, _err := client.DescribeApisecEventDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the statistics on domain names on which security events are detected by the API security module.
 //
 // @param request - DescribeApisecEventDomainStatisticRequest
@@ -3841,6 +3841,10 @@ func (client *Client) DescribeApisecEventsWithOptions(request *DescribeApisecEve
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Account) {
+		query["Account"] = request.Account
+	}
+
 	if !dara.IsNil(request.ApiFormat) {
 		query["ApiFormat"] = request.ApiFormat
 	}
@@ -3871,6 +3875,10 @@ func (client *Client) DescribeApisecEventsWithOptions(request *DescribeApisecEve
 
 	if !dara.IsNil(request.EventLevel) {
 		query["EventLevel"] = request.EventLevel
+	}
+
+	if !dara.IsNil(request.EventScope) {
+		query["EventScope"] = request.EventScope
 	}
 
 	if !dara.IsNil(request.EventTag) {
@@ -12637,6 +12645,10 @@ func (client *Client) DescribeSensitiveRequestLogWithOptions(request *DescribeSe
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Account) {
+		query["Account"] = request.Account
+	}
+
 	if !dara.IsNil(request.ApiFormat) {
 		query["ApiFormat"] = request.ApiFormat
 	}
@@ -13653,6 +13665,10 @@ func (client *Client) DescribeUserEventTrendWithOptions(request *DescribeUserEve
 		query["ClusterId"] = request.ClusterId
 	}
 
+	if !dara.IsNil(request.EventScope) {
+		query["EventScope"] = request.EventScope
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -13729,6 +13745,10 @@ func (client *Client) DescribeUserEventTypeWithOptions(request *DescribeUserEven
 
 	if !dara.IsNil(request.EndTime) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EventScope) {
+		query["EventScope"] = request.EventScope
 	}
 
 	if !dara.IsNil(request.InstanceId) {
@@ -14809,6 +14829,10 @@ func (client *Client) ModifyApisecEventsWithOptions(request *ModifyApisecEventsR
 
 	if !dara.IsNil(request.EventIds) {
 		query["EventIds"] = request.EventIds
+	}
+
+	if !dara.IsNil(request.EventScope) {
+		query["EventScope"] = request.EventScope
 	}
 
 	if !dara.IsNil(request.InstanceId) {

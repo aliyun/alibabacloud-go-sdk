@@ -83,6 +83,10 @@ func (s *DescribeSensitiveRequestLogResponseBody) Validate() error {
 }
 
 type DescribeSensitiveRequestLogResponseBodyData struct {
+	// example:
+	//
+	// admin
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
 	// The API.
 	//
 	// example:
@@ -165,6 +169,10 @@ func (s DescribeSensitiveRequestLogResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeSensitiveRequestLogResponseBodyData) GetAccount() *string {
+	return s.Account
+}
+
 func (s *DescribeSensitiveRequestLogResponseBodyData) GetApiFormat() *string {
 	return s.ApiFormat
 }
@@ -199,6 +207,11 @@ func (s *DescribeSensitiveRequestLogResponseBodyData) GetSensitiveList() *string
 
 func (s *DescribeSensitiveRequestLogResponseBodyData) GetTraceId() *string {
 	return s.TraceId
+}
+
+func (s *DescribeSensitiveRequestLogResponseBodyData) SetAccount(v string) *DescribeSensitiveRequestLogResponseBodyData {
+	s.Account = &v
+	return s
 }
 
 func (s *DescribeSensitiveRequestLogResponseBodyData) SetApiFormat(v string) *DescribeSensitiveRequestLogResponseBodyData {

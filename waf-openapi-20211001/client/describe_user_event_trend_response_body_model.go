@@ -84,6 +84,8 @@ type DescribeUserEventTrendResponseBodyTrend struct {
 	//
 	// 17
 	EventMedium *int64 `json:"EventMedium,omitempty" xml:"EventMedium,omitempty"`
+	// Deprecated
+	//
 	// The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
 	// 	Notice: The parameter has been deprecated, it is recommended to use the Timestamp parameter.

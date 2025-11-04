@@ -9,6 +9,8 @@ type iDescribeSensitiveRequestLogRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccount(v string) *DescribeSensitiveRequestLogRequest
+	GetAccount() *string
 	SetApiFormat(v string) *DescribeSensitiveRequestLogRequest
 	GetApiFormat() *string
 	SetClientIP(v string) *DescribeSensitiveRequestLogRequest
@@ -38,6 +40,10 @@ type iDescribeSensitiveRequestLogRequest interface {
 }
 
 type DescribeSensitiveRequestLogRequest struct {
+	// example:
+	//
+	// admin
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
 	// The API.
 	//
 	// example:
@@ -138,6 +144,10 @@ func (s DescribeSensitiveRequestLogRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeSensitiveRequestLogRequest) GetAccount() *string {
+	return s.Account
+}
+
 func (s *DescribeSensitiveRequestLogRequest) GetApiFormat() *string {
 	return s.ApiFormat
 }
@@ -188,6 +198,11 @@ func (s *DescribeSensitiveRequestLogRequest) GetSensitiveData() *string {
 
 func (s *DescribeSensitiveRequestLogRequest) GetStartTime() *int64 {
 	return s.StartTime
+}
+
+func (s *DescribeSensitiveRequestLogRequest) SetAccount(v string) *DescribeSensitiveRequestLogRequest {
+	s.Account = &v
+	return s
 }
 
 func (s *DescribeSensitiveRequestLogRequest) SetApiFormat(v string) *DescribeSensitiveRequestLogRequest {

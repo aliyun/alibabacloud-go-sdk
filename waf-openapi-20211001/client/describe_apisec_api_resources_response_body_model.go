@@ -89,6 +89,10 @@ type DescribeApisecApiResourcesResponseBodyData struct {
 	//
 	// 2
 	AbnormalNum *int64 `json:"AbnormalNum,omitempty" xml:"AbnormalNum,omitempty"`
+	// example:
+	//
+	// 1
+	AccountEventNum *int64 `json:"AccountEventNum,omitempty" xml:"AccountEventNum,omitempty"`
 	// The total number of calls to this API in the previous 30 days.
 	//
 	// example:
@@ -295,6 +299,10 @@ func (s *DescribeApisecApiResourcesResponseBodyData) GetAbnormalNum() *int64 {
 	return s.AbnormalNum
 }
 
+func (s *DescribeApisecApiResourcesResponseBodyData) GetAccountEventNum() *int64 {
+	return s.AccountEventNum
+}
+
 func (s *DescribeApisecApiResourcesResponseBodyData) GetAllCnt() *int64 {
 	return s.AllCnt
 }
@@ -385,6 +393,11 @@ func (s *DescribeApisecApiResourcesResponseBodyData) GetResources() []*string {
 
 func (s *DescribeApisecApiResourcesResponseBodyData) SetAbnormalNum(v int64) *DescribeApisecApiResourcesResponseBodyData {
 	s.AbnormalNum = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBodyData) SetAccountEventNum(v int64) *DescribeApisecApiResourcesResponseBodyData {
+	s.AccountEventNum = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iDeleteApisecEventsRequest interface {
 	GetClusterId() *string
 	SetEventIds(v []*string) *DeleteApisecEventsRequest
 	GetEventIds() []*string
+	SetEventScope(v string) *DeleteApisecEventsRequest
+	GetEventScope() *string
 	SetInstanceId(v string) *DeleteApisecEventsRequest
 	GetInstanceId() *string
 	SetRegionId(v string) *DeleteApisecEventsRequest
@@ -34,6 +36,10 @@ type DeleteApisecEventsRequest struct {
 	//
 	// This parameter is required.
 	EventIds []*string `json:"EventIds,omitempty" xml:"EventIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ip
+	EventScope *string `json:"EventScope,omitempty" xml:"EventScope,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
 	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
@@ -78,6 +84,10 @@ func (s *DeleteApisecEventsRequest) GetEventIds() []*string {
 	return s.EventIds
 }
 
+func (s *DeleteApisecEventsRequest) GetEventScope() *string {
+	return s.EventScope
+}
+
 func (s *DeleteApisecEventsRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -97,6 +107,11 @@ func (s *DeleteApisecEventsRequest) SetClusterId(v string) *DeleteApisecEventsRe
 
 func (s *DeleteApisecEventsRequest) SetEventIds(v []*string) *DeleteApisecEventsRequest {
 	s.EventIds = v
+	return s
+}
+
+func (s *DeleteApisecEventsRequest) SetEventScope(v string) *DeleteApisecEventsRequest {
+	s.EventScope = &v
 	return s
 }
 

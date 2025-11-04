@@ -13,6 +13,8 @@ type iModifyApisecEventsRequest interface {
 	GetClusterId() *string
 	SetEventIds(v []*string) *ModifyApisecEventsRequest
 	GetEventIds() []*string
+	SetEventScope(v string) *ModifyApisecEventsRequest
+	GetEventScope() *string
 	SetInstanceId(v string) *ModifyApisecEventsRequest
 	GetInstanceId() *string
 	SetNote(v string) *ModifyApisecEventsRequest
@@ -38,6 +40,10 @@ type ModifyApisecEventsRequest struct {
 	//
 	// This parameter is required.
 	EventIds []*string `json:"EventIds,omitempty" xml:"EventIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ip
+	EventScope *string `json:"EventScope,omitempty" xml:"EventScope,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
 	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
@@ -102,6 +108,10 @@ func (s *ModifyApisecEventsRequest) GetEventIds() []*string {
 	return s.EventIds
 }
 
+func (s *ModifyApisecEventsRequest) GetEventScope() *string {
+	return s.EventScope
+}
+
 func (s *ModifyApisecEventsRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -129,6 +139,11 @@ func (s *ModifyApisecEventsRequest) SetClusterId(v string) *ModifyApisecEventsRe
 
 func (s *ModifyApisecEventsRequest) SetEventIds(v []*string) *ModifyApisecEventsRequest {
 	s.EventIds = v
+	return s
+}
+
+func (s *ModifyApisecEventsRequest) SetEventScope(v string) *ModifyApisecEventsRequest {
+	s.EventScope = &v
 	return s
 }
 

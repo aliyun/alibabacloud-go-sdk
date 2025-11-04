@@ -144,7 +144,8 @@ type DescribeApisecEventsResponseBodyData struct {
 	// [{\\"ip\\":\\"72.*.*.119\\",\\"country_id\\":\\"US\\",\\"region_id\\":\\"\\",\\"cnt\\":\\"2100\\"}]
 	AttackIpInfo *string `json:"AttackIpInfo,omitempty" xml:"AttackIpInfo,omitempty"`
 	// The source IP addresses of the attacks.
-	AttackIps []*string `json:"AttackIps,omitempty" xml:"AttackIps,omitempty" type:"Repeated"`
+	AttackIps    []*string `json:"AttackIps,omitempty" xml:"AttackIps,omitempty" type:"Repeated"`
+	AttackerList []*string `json:"AttackerList,omitempty" xml:"AttackerList,omitempty" type:"Repeated"`
 	// The end of the time range to query. This value is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
@@ -309,6 +310,10 @@ func (s *DescribeApisecEventsResponseBodyData) GetAttackIps() []*string {
 	return s.AttackIps
 }
 
+func (s *DescribeApisecEventsResponseBodyData) GetAttackerList() []*string {
+	return s.AttackerList
+}
+
 func (s *DescribeApisecEventsResponseBodyData) GetEndTs() *int64 {
 	return s.EndTs
 }
@@ -411,6 +416,11 @@ func (s *DescribeApisecEventsResponseBodyData) SetAttackIpInfo(v string) *Descri
 
 func (s *DescribeApisecEventsResponseBodyData) SetAttackIps(v []*string) *DescribeApisecEventsResponseBodyData {
 	s.AttackIps = v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetAttackerList(v []*string) *DescribeApisecEventsResponseBodyData {
+	s.AttackerList = v
 	return s
 }
 

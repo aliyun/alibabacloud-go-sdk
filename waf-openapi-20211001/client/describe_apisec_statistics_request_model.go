@@ -36,7 +36,10 @@ type DescribeApisecStatisticsRequest struct {
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 4809859200000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
 	//
 	// 	- **cn-hangzhou**: Chinese mainland
@@ -65,7 +68,10 @@ type DescribeApisecStatisticsRequest struct {
 	//
 	// rg-aek2***uwbs5q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	StartTime                      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1668496310000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The type of the statistics. Valid values:
 	//
 	// 	- **risk**: risk-related statistics.
