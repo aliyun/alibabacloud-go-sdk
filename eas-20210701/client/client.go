@@ -6566,6 +6566,10 @@ func (client *Client) UpdateServiceInstanceWithOptions(ClusterId *string, Servic
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Hibernate) {
+		body["Hibernate"] = request.Hibernate
+	}
+
 	if !dara.IsNil(request.Isolate) {
 		body["Isolate"] = request.Isolate
 	}

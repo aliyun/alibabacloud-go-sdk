@@ -9,11 +9,14 @@ type iUpdateServiceInstanceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetHibernate(v bool) *UpdateServiceInstanceRequest
+	GetHibernate() *bool
 	SetIsolate(v bool) *UpdateServiceInstanceRequest
 	GetIsolate() *bool
 }
 
 type UpdateServiceInstanceRequest struct {
+	Hibernate *bool `json:"Hibernate,omitempty" xml:"Hibernate,omitempty"`
 	// Specifies whether to isolate the service instance. Valid values:
 	//
 	// 	- true
@@ -34,8 +37,17 @@ func (s UpdateServiceInstanceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateServiceInstanceRequest) GetHibernate() *bool {
+	return s.Hibernate
+}
+
 func (s *UpdateServiceInstanceRequest) GetIsolate() *bool {
 	return s.Isolate
+}
+
+func (s *UpdateServiceInstanceRequest) SetHibernate(v bool) *UpdateServiceInstanceRequest {
+	s.Hibernate = &v
+	return s
 }
 
 func (s *UpdateServiceInstanceRequest) SetIsolate(v bool) *UpdateServiceInstanceRequest {
