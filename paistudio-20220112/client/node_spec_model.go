@@ -13,6 +13,8 @@ type iNodeSpec interface {
 	GetBindingPolicy() *BindingPolicy
 	SetCount(v int64) *NodeSpec
 	GetCount() *int64
+	SetHyperType(v string) *NodeSpec
+	GetHyperType() *string
 	SetType(v string) *NodeSpec
 	GetType() *string
 }
@@ -22,7 +24,8 @@ type NodeSpec struct {
 	// example:
 	//
 	// 10
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count     *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	HyperType *string `json:"HyperType,omitempty" xml:"HyperType,omitempty"`
 	// example:
 	//
 	// ecs.g6.4xlarge
@@ -45,6 +48,10 @@ func (s *NodeSpec) GetCount() *int64 {
 	return s.Count
 }
 
+func (s *NodeSpec) GetHyperType() *string {
+	return s.HyperType
+}
+
 func (s *NodeSpec) GetType() *string {
 	return s.Type
 }
@@ -56,6 +63,11 @@ func (s *NodeSpec) SetBindingPolicy(v *BindingPolicy) *NodeSpec {
 
 func (s *NodeSpec) SetCount(v int64) *NodeSpec {
 	s.Count = &v
+	return s
+}
+
+func (s *NodeSpec) SetHyperType(v string) *NodeSpec {
+	s.HyperType = &v
 	return s
 }
 

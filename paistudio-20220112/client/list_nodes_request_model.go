@@ -55,6 +55,8 @@ type iListNodesRequest interface {
 	GetSortBy() *string
 	SetVerbose(v bool) *ListNodesRequest
 	GetVerbose() *bool
+	SetWorkspaceId(v string) *ListNodesRequest
+	GetWorkspaceId() *string
 }
 
 type ListNodesRequest struct {
@@ -128,7 +130,8 @@ type ListNodesRequest struct {
 	// example:
 	//
 	// false
-	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	Verbose     *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListNodesRequest) String() string {
@@ -229,6 +232,10 @@ func (s *ListNodesRequest) GetSortBy() *string {
 
 func (s *ListNodesRequest) GetVerbose() *bool {
 	return s.Verbose
+}
+
+func (s *ListNodesRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
 }
 
 func (s *ListNodesRequest) SetAcceleratorType(v string) *ListNodesRequest {
@@ -343,6 +350,11 @@ func (s *ListNodesRequest) SetSortBy(v string) *ListNodesRequest {
 
 func (s *ListNodesRequest) SetVerbose(v bool) *ListNodesRequest {
 	s.Verbose = &v
+	return s
+}
+
+func (s *ListNodesRequest) SetWorkspaceId(v string) *ListNodesRequest {
+	s.WorkspaceId = &v
 	return s
 }
 

@@ -2392,6 +2392,10 @@ func (client *Client) ListNodesWithOptions(request *ListNodesRequest, headers ma
 		query["Verbose"] = request.Verbose
 	}
 
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),

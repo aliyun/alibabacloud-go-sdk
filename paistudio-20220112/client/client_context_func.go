@@ -1722,6 +1722,10 @@ func (client *Client) ListNodesWithContext(ctx context.Context, request *ListNod
 		query["Verbose"] = request.Verbose
 	}
 
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),

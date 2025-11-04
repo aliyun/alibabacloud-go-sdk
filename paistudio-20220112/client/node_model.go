@@ -27,6 +27,10 @@ type iNode interface {
 	GetCreatorId() *string
 	SetDescendantQuotaWorkloadNum(v int64) *Node
 	GetDescendantQuotaWorkloadNum() *int64
+	SetDiskCapacity(v int64) *Node
+	GetDiskCapacity() *int64
+	SetDiskPL(v string) *Node
+	GetDiskPL() *string
 	SetGPU(v string) *Node
 	GetGPU() *string
 	SetGPUMemory(v string) *Node
@@ -99,6 +103,8 @@ type Node struct {
 	CPU                        *string        `json:"CPU,omitempty" xml:"CPU,omitempty"`
 	CreatorId                  *string        `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	DescendantQuotaWorkloadNum *int64         `json:"DescendantQuotaWorkloadNum,omitempty" xml:"DescendantQuotaWorkloadNum,omitempty"`
+	DiskCapacity               *int64         `json:"DiskCapacity,omitempty" xml:"DiskCapacity,omitempty"`
+	DiskPL                     *string        `json:"DiskPL,omitempty" xml:"DiskPL,omitempty"`
 	GPU                        *string        `json:"GPU,omitempty" xml:"GPU,omitempty"`
 	GPUMemory                  *string        `json:"GPUMemory,omitempty" xml:"GPUMemory,omitempty"`
 	GPUType                    *string        `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
@@ -173,6 +179,14 @@ func (s *Node) GetCreatorId() *string {
 
 func (s *Node) GetDescendantQuotaWorkloadNum() *int64 {
 	return s.DescendantQuotaWorkloadNum
+}
+
+func (s *Node) GetDiskCapacity() *int64 {
+	return s.DiskCapacity
+}
+
+func (s *Node) GetDiskPL() *string {
+	return s.DiskPL
 }
 
 func (s *Node) GetGPU() *string {
@@ -337,6 +351,16 @@ func (s *Node) SetCreatorId(v string) *Node {
 
 func (s *Node) SetDescendantQuotaWorkloadNum(v int64) *Node {
 	s.DescendantQuotaWorkloadNum = &v
+	return s
+}
+
+func (s *Node) SetDiskCapacity(v int64) *Node {
+	s.DiskCapacity = &v
+	return s
+}
+
+func (s *Node) SetDiskPL(v string) *Node {
+	s.DiskPL = &v
 	return s
 }
 
