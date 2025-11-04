@@ -8011,6 +8011,10 @@ func (client *Client) DescribeInstancesWithContext(ctx context.Context, tmpReq *
 	}
 	request := &DescribeInstancesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EipAddresses) {
+		request.EipAddressesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EipAddresses, dara.String("EipAddresses"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.ServiceStatus) {
 		request.ServiceStatusShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ServiceStatus, dara.String("ServiceStatus"), dara.String("json"))
 	}
@@ -8020,6 +8024,10 @@ func (client *Client) DescribeInstancesWithContext(ctx context.Context, tmpReq *
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.EipAddressesShrink) {
+		query["EipAddresses"] = request.EipAddressesShrink
+	}
+
 	if !dara.IsNil(request.EnsRegionId) {
 		query["EnsRegionId"] = request.EnsRegionId
 	}

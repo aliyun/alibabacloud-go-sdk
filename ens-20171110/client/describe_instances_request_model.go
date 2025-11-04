@@ -9,6 +9,8 @@ type iDescribeInstancesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEipAddresses(v []*string) *DescribeInstancesRequest
+	GetEipAddresses() []*string
 	SetEnsRegionId(v string) *DescribeInstancesRequest
 	GetEnsRegionId() *string
 	SetEnsRegionIds(v string) *DescribeInstancesRequest
@@ -52,6 +54,7 @@ type iDescribeInstancesRequest interface {
 }
 
 type DescribeInstancesRequest struct {
+	EipAddresses []*string `json:"EipAddresses,omitempty" xml:"EipAddresses,omitempty" type:"Repeated"`
 	// The region ID.
 	//
 	// example:
@@ -194,6 +197,10 @@ func (s DescribeInstancesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstancesRequest) GetEipAddresses() []*string {
+	return s.EipAddresses
+}
+
 func (s *DescribeInstancesRequest) GetEnsRegionId() *string {
 	return s.EnsRegionId
 }
@@ -272,6 +279,11 @@ func (s *DescribeInstancesRequest) GetTags() []*DescribeInstancesRequestTags {
 
 func (s *DescribeInstancesRequest) GetVSwitchId() *string {
 	return s.VSwitchId
+}
+
+func (s *DescribeInstancesRequest) SetEipAddresses(v []*string) *DescribeInstancesRequest {
+	s.EipAddresses = v
+	return s
 }
 
 func (s *DescribeInstancesRequest) SetEnsRegionId(v string) *DescribeInstancesRequest {

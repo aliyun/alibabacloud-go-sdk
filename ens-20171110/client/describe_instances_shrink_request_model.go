@@ -9,6 +9,8 @@ type iDescribeInstancesShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEipAddressesShrink(v string) *DescribeInstancesShrinkRequest
+	GetEipAddressesShrink() *string
 	SetEnsRegionId(v string) *DescribeInstancesShrinkRequest
 	GetEnsRegionId() *string
 	SetEnsRegionIds(v string) *DescribeInstancesShrinkRequest
@@ -52,6 +54,7 @@ type iDescribeInstancesShrinkRequest interface {
 }
 
 type DescribeInstancesShrinkRequest struct {
+	EipAddressesShrink *string `json:"EipAddresses,omitempty" xml:"EipAddresses,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -194,6 +197,10 @@ func (s DescribeInstancesShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstancesShrinkRequest) GetEipAddressesShrink() *string {
+	return s.EipAddressesShrink
+}
+
 func (s *DescribeInstancesShrinkRequest) GetEnsRegionId() *string {
 	return s.EnsRegionId
 }
@@ -272,6 +279,11 @@ func (s *DescribeInstancesShrinkRequest) GetTagsShrink() *string {
 
 func (s *DescribeInstancesShrinkRequest) GetVSwitchId() *string {
 	return s.VSwitchId
+}
+
+func (s *DescribeInstancesShrinkRequest) SetEipAddressesShrink(v string) *DescribeInstancesShrinkRequest {
+	s.EipAddressesShrink = &v
+	return s
 }
 
 func (s *DescribeInstancesShrinkRequest) SetEnsRegionId(v string) *DescribeInstancesShrinkRequest {
