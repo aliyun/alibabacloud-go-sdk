@@ -3,6 +3,7 @@ package client
 
 import (
 	"context"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
@@ -3641,6 +3642,77 @@ func (client *Client) GetDBInstanceConnectivityDiagnosisWithContext(ctx context.
 
 // Summary:
 //
+// # DAS大模型能力异步逻辑接口
+//
+// @param request - GetDasAgentSSERequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDasAgentSSEResponse
+func (client *Client) GetDasAgentSSEWithSSECtx(ctx context.Context, request *GetDasAgentSSERequest, runtime *dara.RuntimeOptions, _yield chan *GetDasAgentSSEResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.getDasAgentSSEWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, request, runtime)
+	return
+}
+
+// Summary:
+//
+// # DAS大模型能力异步逻辑接口
+//
+// @param request - GetDasAgentSSERequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDasAgentSSEResponse
+func (client *Client) GetDasAgentSSEWithContext(ctx context.Context, request *GetDasAgentSSERequest, runtime *dara.RuntimeOptions) (_result *GetDasAgentSSEResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDasAgentSSE"),
+		Version:     dara.String("2020-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDasAgentSSEResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the storage usage of a database instance for which Database Autonomy Service (DAS) Enterprise Edition V1 or V2 is enabled.
 //
 // Description:
@@ -7243,4 +7315,62 @@ func (client *Client) UpdateAutoThrottleRulesAsyncWithContext(ctx context.Contex
 	}
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
+}
+
+func (client *Client) getDasAgentSSEWithSSECtx_opYieldFunc(_yield chan *GetDasAgentSSEResponse, _yieldErr chan error, ctx context.Context, request *GetDasAgentSSERequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDasAgentSSE"),
+		Version:     dara.String("2020-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
 }
