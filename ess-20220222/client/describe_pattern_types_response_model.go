@@ -59,5 +59,10 @@ func (s *DescribePatternTypesResponse) SetBody(v *DescribePatternTypesResponseBo
 }
 
 func (s *DescribePatternTypesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

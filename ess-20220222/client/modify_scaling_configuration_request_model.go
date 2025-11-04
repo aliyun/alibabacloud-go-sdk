@@ -1073,7 +1073,86 @@ func (s *ModifyScalingConfigurationRequest) SetZoneId(v string) *ModifyScalingCo
 }
 
 func (s *ModifyScalingConfigurationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ImageOptions != nil {
+		if err := s.ImageOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrivatePoolOptions != nil {
+		if err := s.PrivatePoolOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SystemDisk != nil {
+		if err := s.SystemDisk.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomPriorities != nil {
+		for _, item := range s.CustomPriorities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DataDisks != nil {
+		for _, item := range s.DataDisks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InstancePatternInfos != nil {
+		for _, item := range s.InstancePatternInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InstanceTypeOverrides != nil {
+		for _, item := range s.InstanceTypeOverrides {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NetworkInterfaces != nil {
+		for _, item := range s.NetworkInterfaces {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResourcePoolOptions != nil {
+		if err := s.ResourcePoolOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityOptions != nil {
+		if err := s.SecurityOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SpotPriceLimits != nil {
+		for _, item := range s.SpotPriceLimits {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyScalingConfigurationRequestImageOptions struct {

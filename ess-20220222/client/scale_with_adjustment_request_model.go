@@ -258,7 +258,17 @@ func (s *ScaleWithAdjustmentRequest) SetSyncActivity(v bool) *ScaleWithAdjustmen
 }
 
 func (s *ScaleWithAdjustmentRequest) Validate() error {
-	return dara.Validate(s)
+	if s.LifecycleHookContext != nil {
+		if err := s.LifecycleHookContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Overrides != nil {
+		if err := s.Overrides.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ScaleWithAdjustmentRequestLifecycleHookContext struct {
@@ -372,7 +382,16 @@ func (s *ScaleWithAdjustmentRequestOverrides) SetUserData(v string) *ScaleWithAd
 }
 
 func (s *ScaleWithAdjustmentRequestOverrides) Validate() error {
-	return dara.Validate(s)
+	if s.ContainerOverrides != nil {
+		for _, item := range s.ContainerOverrides {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ScaleWithAdjustmentRequestOverridesContainerOverrides struct {
@@ -465,7 +484,16 @@ func (s *ScaleWithAdjustmentRequestOverridesContainerOverrides) SetName(v string
 }
 
 func (s *ScaleWithAdjustmentRequestOverridesContainerOverrides) Validate() error {
-	return dara.Validate(s)
+	if s.EnvironmentVars != nil {
+		for _, item := range s.EnvironmentVars {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ScaleWithAdjustmentRequestOverridesContainerOverridesEnvironmentVars struct {

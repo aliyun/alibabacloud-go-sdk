@@ -161,7 +161,16 @@ func (s *AttachLoadBalancersRequest) SetScalingGroupId(v string) *AttachLoadBala
 }
 
 func (s *AttachLoadBalancersRequest) Validate() error {
-	return dara.Validate(s)
+	if s.LoadBalancerConfigs != nil {
+		for _, item := range s.LoadBalancerConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AttachLoadBalancersRequestLoadBalancerConfigs struct {

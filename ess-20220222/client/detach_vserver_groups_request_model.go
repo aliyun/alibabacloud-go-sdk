@@ -142,7 +142,16 @@ func (s *DetachVServerGroupsRequest) SetVServerGroups(v []*DetachVServerGroupsRe
 }
 
 func (s *DetachVServerGroupsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.VServerGroups != nil {
+		for _, item := range s.VServerGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DetachVServerGroupsRequestVServerGroups struct {
@@ -185,7 +194,16 @@ func (s *DetachVServerGroupsRequestVServerGroups) SetVServerGroupAttributes(v []
 }
 
 func (s *DetachVServerGroupsRequestVServerGroups) Validate() error {
-	return dara.Validate(s)
+	if s.VServerGroupAttributes != nil {
+		for _, item := range s.VServerGroupAttributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DetachVServerGroupsRequestVServerGroupsVServerGroupAttributes struct {

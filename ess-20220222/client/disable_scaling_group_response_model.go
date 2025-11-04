@@ -59,5 +59,10 @@ func (s *DisableScalingGroupResponse) SetBody(v *DisableScalingGroupResponseBody
 }
 
 func (s *DisableScalingGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

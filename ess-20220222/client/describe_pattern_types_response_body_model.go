@@ -53,7 +53,16 @@ func (s *DescribePatternTypesResponseBody) SetRequestId(v string) *DescribePatte
 }
 
 func (s *DescribePatternTypesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PatternTypes != nil {
+		for _, item := range s.PatternTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePatternTypesResponseBodyPatternTypes struct {

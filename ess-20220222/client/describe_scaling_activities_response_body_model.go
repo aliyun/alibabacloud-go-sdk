@@ -104,7 +104,16 @@ func (s *DescribeScalingActivitiesResponseBody) SetTotalCount(v int32) *Describe
 }
 
 func (s *DescribeScalingActivitiesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ScalingActivities != nil {
+		for _, item := range s.ScalingActivities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeScalingActivitiesResponseBodyScalingActivities struct {
@@ -569,7 +578,21 @@ func (s *DescribeScalingActivitiesResponseBodyScalingActivities) SetTriggerSourc
 }
 
 func (s *DescribeScalingActivitiesResponseBodyScalingActivities) Validate() error {
-	return dara.Validate(s)
+	if s.ErrorMessages != nil {
+		for _, item := range s.ErrorMessages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LifecycleHookContext != nil {
+		if err := s.LifecycleHookContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeScalingActivitiesResponseBodyScalingActivitiesErrorMessages struct {

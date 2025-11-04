@@ -104,7 +104,16 @@ func (s *DescribeEciScalingConfigurationsResponseBody) SetTotalCount(v int32) *D
 }
 
 func (s *DescribeEciScalingConfigurationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ScalingConfigurations != nil {
+		for _, item := range s.ScalingConfigurations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
@@ -897,7 +906,88 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations) SetV
 }
 
 func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations) Validate() error {
-	return dara.Validate(s)
+	if s.AcrRegistryInfos != nil {
+		for _, item := range s.AcrRegistryInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Containers != nil {
+		for _, item := range s.Containers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DnsConfigOptions != nil {
+		for _, item := range s.DnsConfigOptions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HostAliases != nil {
+		for _, item := range s.HostAliases {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ImageRegistryCredentials != nil {
+		for _, item := range s.ImageRegistryCredentials {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InitContainers != nil {
+		for _, item := range s.InitContainers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SecurityContextSysCtls != nil {
+		for _, item := range s.SecurityContextSysCtls {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Volumes != nil {
+		for _, item := range s.Volumes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsAcrRegistryInfos struct {
@@ -1753,7 +1843,34 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContai
 }
 
 func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers) Validate() error {
-	return dara.Validate(s)
+	if s.EnvironmentVars != nil {
+		for _, item := range s.EnvironmentVars {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Ports != nil {
+		for _, item := range s.Ports {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VolumeMounts != nil {
+		for _, item := range s.VolumeMounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainersEnvironmentVars struct {
@@ -2328,7 +2445,34 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitCo
 }
 
 func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitContainers) Validate() error {
-	return dara.Validate(s)
+	if s.InitContainerEnvironmentVars != nil {
+		for _, item := range s.InitContainerEnvironmentVars {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InitContainerPorts != nil {
+		for _, item := range s.InitContainerPorts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InitContainerVolumeMounts != nil {
+		for _, item := range s.InitContainerVolumeMounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitContainersInitContainerEnvironmentVars struct {
@@ -2905,7 +3049,16 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolume
 }
 
 func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigFileVolumeConfigFileToPaths != nil {
+		for _, item := range s.ConfigFileVolumeConfigFileToPaths {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumesConfigFileVolumeConfigFileToPaths struct {

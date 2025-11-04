@@ -59,5 +59,10 @@ func (s *SetGroupDeletionProtectionResponse) SetBody(v *SetGroupDeletionProtecti
 }
 
 func (s *SetGroupDeletionProtectionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

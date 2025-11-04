@@ -59,5 +59,10 @@ func (s *DetachInstancesResponse) SetBody(v *DetachInstancesResponseBody) *Detac
 }
 
 func (s *DetachInstancesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

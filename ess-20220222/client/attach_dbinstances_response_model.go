@@ -59,5 +59,10 @@ func (s *AttachDBInstancesResponse) SetBody(v *AttachDBInstancesResponseBody) *A
 }
 
 func (s *AttachDBInstancesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

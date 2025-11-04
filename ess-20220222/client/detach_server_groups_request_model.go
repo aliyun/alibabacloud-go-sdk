@@ -142,7 +142,16 @@ func (s *DetachServerGroupsRequest) SetServerGroups(v []*DetachServerGroupsReque
 }
 
 func (s *DetachServerGroupsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ServerGroups != nil {
+		for _, item := range s.ServerGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DetachServerGroupsRequestServerGroups struct {

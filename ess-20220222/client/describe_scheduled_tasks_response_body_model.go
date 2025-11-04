@@ -104,7 +104,16 @@ func (s *DescribeScheduledTasksResponseBody) SetTotalCount(v int32) *DescribeSch
 }
 
 func (s *DescribeScheduledTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ScheduledTasks != nil {
+		for _, item := range s.ScheduledTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeScheduledTasksResponseBodyScheduledTasks struct {

@@ -104,7 +104,16 @@ func (s *DescribeLifecycleActionsResponseBody) SetTotalCount(v int32) *DescribeL
 }
 
 func (s *DescribeLifecycleActionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LifecycleActions != nil {
+		for _, item := range s.LifecycleActions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLifecycleActionsResponseBodyLifecycleActions struct {

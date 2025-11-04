@@ -262,7 +262,12 @@ func (s *RemoveInstancesRequest) SetStopInstanceTimeout(v int32) *RemoveInstance
 }
 
 func (s *RemoveInstancesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.LifecycleHookContext != nil {
+		if err := s.LifecycleHookContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RemoveInstancesRequestLifecycleHookContext struct {

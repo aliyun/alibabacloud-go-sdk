@@ -59,5 +59,10 @@ func (s *ModifyScheduledTaskResponse) SetBody(v *ModifyScheduledTaskResponseBody
 }
 
 func (s *ModifyScheduledTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

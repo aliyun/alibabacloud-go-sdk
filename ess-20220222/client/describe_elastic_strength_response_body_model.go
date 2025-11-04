@@ -110,7 +110,25 @@ func (s *DescribeElasticStrengthResponseBody) SetTotalStrength(v float64) *Descr
 }
 
 func (s *DescribeElasticStrengthResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ElasticStrengthModels != nil {
+		for _, item := range s.ElasticStrengthModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResourcePools != nil {
+		for _, item := range s.ResourcePools {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeElasticStrengthResponseBodyElasticStrengthModels struct {
@@ -191,7 +209,16 @@ func (s *DescribeElasticStrengthResponseBodyElasticStrengthModels) SetTotalStren
 }
 
 func (s *DescribeElasticStrengthResponseBodyElasticStrengthModels) Validate() error {
-	return dara.Validate(s)
+	if s.ResourcePools != nil {
+		for _, item := range s.ResourcePools {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools struct {
@@ -326,7 +353,12 @@ func (s *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools) 
 }
 
 func (s *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools) Validate() error {
-	return dara.Validate(s)
+	if s.InventoryHealth != nil {
+		if err := s.InventoryHealth.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePoolsInventoryHealth struct {
@@ -546,7 +578,12 @@ func (s *DescribeElasticStrengthResponseBodyResourcePools) SetZoneId(v string) *
 }
 
 func (s *DescribeElasticStrengthResponseBodyResourcePools) Validate() error {
-	return dara.Validate(s)
+	if s.InventoryHealth != nil {
+		if err := s.InventoryHealth.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth struct {

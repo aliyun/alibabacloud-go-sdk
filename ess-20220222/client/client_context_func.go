@@ -25,9 +25,11 @@ import (
 //
 // @return ApplyEciScalingConfigurationResponse
 func (client *Client) ApplyEciScalingConfigurationWithContext(ctx context.Context, request *ApplyEciScalingConfigurationRequest, runtime *dara.RuntimeOptions) (_result *ApplyEciScalingConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Content) {
@@ -149,9 +151,11 @@ func (client *Client) ApplyEciScalingConfigurationWithContext(ctx context.Contex
 //
 // @return ApplyScalingGroupResponse
 func (client *Client) ApplyScalingGroupWithContext(ctx context.Context, request *ApplyScalingGroupRequest, runtime *dara.RuntimeOptions) (_result *ApplyScalingGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Content) {
@@ -207,9 +211,11 @@ func (client *Client) ApplyScalingGroupWithContext(ctx context.Context, request 
 //
 // @return AttachAlbServerGroupsResponse
 func (client *Client) AttachAlbServerGroupsWithContext(ctx context.Context, request *AttachAlbServerGroupsRequest, runtime *dara.RuntimeOptions) (_result *AttachAlbServerGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlbServerGroups) {
@@ -289,9 +295,11 @@ func (client *Client) AttachAlbServerGroupsWithContext(ctx context.Context, requ
 //
 // @return AttachDBInstancesResponse
 func (client *Client) AttachDBInstancesWithContext(ctx context.Context, request *AttachDBInstancesRequest, runtime *dara.RuntimeOptions) (_result *AttachDBInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AttachMode) {
@@ -393,9 +401,11 @@ func (client *Client) AttachDBInstancesWithContext(ctx context.Context, request 
 //
 // @return AttachInstancesResponse
 func (client *Client) AttachInstancesWithContext(ctx context.Context, request *AttachInstancesRequest, runtime *dara.RuntimeOptions) (_result *AttachInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -495,9 +505,11 @@ func (client *Client) AttachInstancesWithContext(ctx context.Context, request *A
 //
 // @return AttachLoadBalancersResponse
 func (client *Client) AttachLoadBalancersWithContext(ctx context.Context, request *AttachLoadBalancersRequest, runtime *dara.RuntimeOptions) (_result *AttachLoadBalancersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Async) {
@@ -565,9 +577,11 @@ func (client *Client) AttachLoadBalancersWithContext(ctx context.Context, reques
 //
 // @return AttachServerGroupsResponse
 func (client *Client) AttachServerGroupsWithContext(ctx context.Context, request *AttachServerGroupsRequest, runtime *dara.RuntimeOptions) (_result *AttachServerGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -663,9 +677,11 @@ func (client *Client) AttachServerGroupsWithContext(ctx context.Context, request
 //
 // @return AttachVServerGroupsResponse
 func (client *Client) AttachVServerGroupsWithContext(ctx context.Context, request *AttachVServerGroupsRequest, runtime *dara.RuntimeOptions) (_result *AttachVServerGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -733,9 +749,11 @@ func (client *Client) AttachVServerGroupsWithContext(ctx context.Context, reques
 //
 // @return CancelInstanceRefreshResponse
 func (client *Client) CancelInstanceRefreshWithContext(ctx context.Context, request *CancelInstanceRefreshRequest, runtime *dara.RuntimeOptions) (_result *CancelInstanceRefreshResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceRefreshTaskId) {
@@ -797,9 +815,11 @@ func (client *Client) CancelInstanceRefreshWithContext(ctx context.Context, requ
 //
 // @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NewResourceGroupId) {
@@ -863,9 +883,11 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 //
 // @return CompleteLifecycleActionResponse
 func (client *Client) CompleteLifecycleActionWithContext(ctx context.Context, request *CompleteLifecycleActionRequest, runtime *dara.RuntimeOptions) (_result *CompleteLifecycleActionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -945,9 +967,11 @@ func (client *Client) CompleteLifecycleActionWithContext(ctx context.Context, re
 //
 // @return CreateAlarmResponse
 func (client *Client) CreateAlarmWithContext(ctx context.Context, request *CreateAlarmRequest, runtime *dara.RuntimeOptions) (_result *CreateAlarmResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlarmActions) {
@@ -1059,9 +1083,11 @@ func (client *Client) CreateAlarmWithContext(ctx context.Context, request *Creat
 //
 // @return CreateDiagnoseReportResponse
 func (client *Client) CreateDiagnoseReportWithContext(ctx context.Context, request *CreateDiagnoseReportRequest, runtime *dara.RuntimeOptions) (_result *CreateDiagnoseReportResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1103,9 +1129,11 @@ func (client *Client) CreateDiagnoseReportWithContext(ctx context.Context, reque
 //
 // @return CreateEciScalingConfigurationResponse
 func (client *Client) CreateEciScalingConfigurationWithContext(ctx context.Context, request *CreateEciScalingConfigurationRequest, runtime *dara.RuntimeOptions) (_result *CreateEciScalingConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcrRegistryInfos) {
@@ -1351,9 +1379,11 @@ func (client *Client) CreateEciScalingConfigurationWithContext(ctx context.Conte
 //
 // @return CreateLifecycleHookResponse
 func (client *Client) CreateLifecycleHookWithContext(ctx context.Context, request *CreateLifecycleHookRequest, runtime *dara.RuntimeOptions) (_result *CreateLifecycleHookResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DefaultResult) {
@@ -1437,9 +1467,11 @@ func (client *Client) CreateLifecycleHookWithContext(ctx context.Context, reques
 //
 // @return CreateNotificationConfigurationResponse
 func (client *Client) CreateNotificationConfigurationWithContext(ctx context.Context, request *CreateNotificationConfigurationRequest, runtime *dara.RuntimeOptions) (_result *CreateNotificationConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MessageEncoding) {
@@ -1523,9 +1555,11 @@ func (client *Client) CreateNotificationConfigurationWithContext(ctx context.Con
 //
 // @return CreateScalingConfigurationResponse
 func (client *Client) CreateScalingConfigurationWithContext(ctx context.Context, tmpReq *CreateScalingConfigurationRequest, runtime *dara.RuntimeOptions) (_result *CreateScalingConfigurationResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateScalingConfigurationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1857,9 +1891,11 @@ func (client *Client) CreateScalingConfigurationWithContext(ctx context.Context,
 //
 // @return CreateScalingGroupResponse
 func (client *Client) CreateScalingGroupWithContext(ctx context.Context, request *CreateScalingGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateScalingGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlbServerGroups) {
@@ -1870,8 +1906,16 @@ func (client *Client) CreateScalingGroupWithContext(ctx context.Context, request
 		query["AllocationStrategy"] = request.AllocationStrategy
 	}
 
+	if !dara.IsNil(request.AutoRebalance) {
+		query["AutoRebalance"] = request.AutoRebalance
+	}
+
 	if !dara.IsNil(request.AzBalance) {
 		query["AzBalance"] = request.AzBalance
+	}
+
+	if !dara.IsNil(request.BalanceMode) {
+		query["BalanceMode"] = request.BalanceMode
 	}
 
 	if !dara.IsNil(request.CapacityOptions) {
@@ -2109,9 +2153,11 @@ func (client *Client) CreateScalingGroupWithContext(ctx context.Context, request
 //
 // @return CreateScalingRuleResponse
 func (client *Client) CreateScalingRuleWithContext(ctx context.Context, request *CreateScalingRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateScalingRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AdjustmentType) {
@@ -2279,9 +2325,11 @@ func (client *Client) CreateScalingRuleWithContext(ctx context.Context, request 
 //
 // @return CreateScheduledTaskResponse
 func (client *Client) CreateScheduledTaskWithContext(ctx context.Context, request *CreateScheduledTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateScheduledTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -2389,9 +2437,11 @@ func (client *Client) CreateScheduledTaskWithContext(ctx context.Context, reques
 //
 // @return DeactivateScalingConfigurationResponse
 func (client *Client) DeactivateScalingConfigurationWithContext(ctx context.Context, request *DeactivateScalingConfigurationRequest, runtime *dara.RuntimeOptions) (_result *DeactivateScalingConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -2443,9 +2493,11 @@ func (client *Client) DeactivateScalingConfigurationWithContext(ctx context.Cont
 //
 // @return DeleteAlarmResponse
 func (client *Client) DeleteAlarmWithContext(ctx context.Context, request *DeleteAlarmRequest, runtime *dara.RuntimeOptions) (_result *DeleteAlarmResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlarmTaskId) {
@@ -2505,9 +2557,11 @@ func (client *Client) DeleteAlarmWithContext(ctx context.Context, request *Delet
 //
 // @return DeleteEciScalingConfigurationResponse
 func (client *Client) DeleteEciScalingConfigurationWithContext(ctx context.Context, request *DeleteEciScalingConfigurationRequest, runtime *dara.RuntimeOptions) (_result *DeleteEciScalingConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -2571,9 +2625,11 @@ func (client *Client) DeleteEciScalingConfigurationWithContext(ctx context.Conte
 //
 // @return DeleteLifecycleHookResponse
 func (client *Client) DeleteLifecycleHookWithContext(ctx context.Context, request *DeleteLifecycleHookRequest, runtime *dara.RuntimeOptions) (_result *DeleteLifecycleHookResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LifecycleHookId) {
@@ -2637,9 +2693,11 @@ func (client *Client) DeleteLifecycleHookWithContext(ctx context.Context, reques
 //
 // @return DeleteNotificationConfigurationResponse
 func (client *Client) DeleteNotificationConfigurationWithContext(ctx context.Context, request *DeleteNotificationConfigurationRequest, runtime *dara.RuntimeOptions) (_result *DeleteNotificationConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NotificationArn) {
@@ -2703,9 +2761,11 @@ func (client *Client) DeleteNotificationConfigurationWithContext(ctx context.Con
 //
 // @return DeleteScalingConfigurationResponse
 func (client *Client) DeleteScalingConfigurationWithContext(ctx context.Context, request *DeleteScalingConfigurationRequest, runtime *dara.RuntimeOptions) (_result *DeleteScalingConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -2779,9 +2839,11 @@ func (client *Client) DeleteScalingConfigurationWithContext(ctx context.Context,
 //
 // @return DeleteScalingGroupResponse
 func (client *Client) DeleteScalingGroupWithContext(ctx context.Context, request *DeleteScalingGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteScalingGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ForceDelete) {
@@ -2841,9 +2903,11 @@ func (client *Client) DeleteScalingGroupWithContext(ctx context.Context, request
 //
 // @return DeleteScalingRuleResponse
 func (client *Client) DeleteScalingRuleWithContext(ctx context.Context, request *DeleteScalingRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteScalingRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -2899,9 +2963,11 @@ func (client *Client) DeleteScalingRuleWithContext(ctx context.Context, request 
 //
 // @return DeleteScheduledTaskResponse
 func (client *Client) DeleteScheduledTaskWithContext(ctx context.Context, request *DeleteScheduledTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteScheduledTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -2957,9 +3023,11 @@ func (client *Client) DeleteScheduledTaskWithContext(ctx context.Context, reques
 //
 // @return DescribeAlarmsResponse
 func (client *Client) DescribeAlarmsWithContext(ctx context.Context, request *DescribeAlarmsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAlarmsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlarmTaskId) {
@@ -3039,9 +3107,11 @@ func (client *Client) DescribeAlarmsWithContext(ctx context.Context, request *De
 //
 // @return DescribeAlertConfigurationResponse
 func (client *Client) DescribeAlertConfigurationWithContext(ctx context.Context, request *DescribeAlertConfigurationRequest, runtime *dara.RuntimeOptions) (_result *DescribeAlertConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -3093,9 +3163,11 @@ func (client *Client) DescribeAlertConfigurationWithContext(ctx context.Context,
 //
 // @return DescribeDiagnoseReportsResponse
 func (client *Client) DescribeDiagnoseReportsWithContext(ctx context.Context, request *DescribeDiagnoseReportsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDiagnoseReportsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3131,9 +3203,11 @@ func (client *Client) DescribeDiagnoseReportsWithContext(ctx context.Context, re
 //
 // @return DescribeEciScalingConfigurationDetailResponse
 func (client *Client) DescribeEciScalingConfigurationDetailWithContext(ctx context.Context, request *DescribeEciScalingConfigurationDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeEciScalingConfigurationDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OutputFormat) {
@@ -3185,9 +3259,11 @@ func (client *Client) DescribeEciScalingConfigurationDetailWithContext(ctx conte
 //
 // @return DescribeEciScalingConfigurationsResponse
 func (client *Client) DescribeEciScalingConfigurationsWithContext(ctx context.Context, request *DescribeEciScalingConfigurationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeEciScalingConfigurationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -3263,9 +3339,11 @@ func (client *Client) DescribeEciScalingConfigurationsWithContext(ctx context.Co
 //
 // @return DescribeElasticStrengthResponse
 func (client *Client) DescribeElasticStrengthWithContext(ctx context.Context, request *DescribeElasticStrengthRequest, runtime *dara.RuntimeOptions) (_result *DescribeElasticStrengthResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3301,9 +3379,11 @@ func (client *Client) DescribeElasticStrengthWithContext(ctx context.Context, re
 //
 // @return DescribeInstanceRefreshesResponse
 func (client *Client) DescribeInstanceRefreshesWithContext(ctx context.Context, request *DescribeInstanceRefreshesRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceRefreshesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceRefreshTaskIds) {
@@ -3387,9 +3467,11 @@ func (client *Client) DescribeInstanceRefreshesWithContext(ctx context.Context, 
 //
 // @return DescribeLifecycleActionsResponse
 func (client *Client) DescribeLifecycleActionsWithContext(ctx context.Context, request *DescribeLifecycleActionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLifecycleActionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LifecycleActionStatus) {
@@ -3463,9 +3545,11 @@ func (client *Client) DescribeLifecycleActionsWithContext(ctx context.Context, r
 //
 // @return DescribeLifecycleHooksResponse
 func (client *Client) DescribeLifecycleHooksWithContext(ctx context.Context, request *DescribeLifecycleHooksRequest, runtime *dara.RuntimeOptions) (_result *DescribeLifecycleHooksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LifecycleHookIds) {
@@ -3537,9 +3621,11 @@ func (client *Client) DescribeLifecycleHooksWithContext(ctx context.Context, req
 //
 // @return DescribeLimitationResponse
 func (client *Client) DescribeLimitationWithContext(ctx context.Context, request *DescribeLimitationRequest, runtime *dara.RuntimeOptions) (_result *DescribeLimitationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -3583,9 +3669,11 @@ func (client *Client) DescribeLimitationWithContext(ctx context.Context, request
 //
 // @return DescribeNotificationConfigurationsResponse
 func (client *Client) DescribeNotificationConfigurationsWithContext(ctx context.Context, request *DescribeNotificationConfigurationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeNotificationConfigurationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -3637,9 +3725,11 @@ func (client *Client) DescribeNotificationConfigurationsWithContext(ctx context.
 //
 // @return DescribeNotificationTypesResponse
 func (client *Client) DescribeNotificationTypesWithContext(ctx context.Context, request *DescribeNotificationTypesRequest, runtime *dara.RuntimeOptions) (_result *DescribeNotificationTypesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -3683,9 +3773,11 @@ func (client *Client) DescribeNotificationTypesWithContext(ctx context.Context, 
 //
 // @return DescribePatternTypesResponse
 func (client *Client) DescribePatternTypesWithContext(ctx context.Context, request *DescribePatternTypesRequest, runtime *dara.RuntimeOptions) (_result *DescribePatternTypesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3721,9 +3813,11 @@ func (client *Client) DescribePatternTypesWithContext(ctx context.Context, reque
 //
 // @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -3783,9 +3877,11 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 //
 // @return DescribeScalingActivitiesResponse
 func (client *Client) DescribeScalingActivitiesWithContext(ctx context.Context, request *DescribeScalingActivitiesRequest, runtime *dara.RuntimeOptions) (_result *DescribeScalingActivitiesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceRefreshTaskId) {
@@ -3865,9 +3961,11 @@ func (client *Client) DescribeScalingActivitiesWithContext(ctx context.Context, 
 //
 // @return DescribeScalingActivityDetailResponse
 func (client *Client) DescribeScalingActivityDetailWithContext(ctx context.Context, request *DescribeScalingActivityDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeScalingActivityDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -3919,9 +4017,11 @@ func (client *Client) DescribeScalingActivityDetailWithContext(ctx context.Conte
 //
 // @return DescribeScalingConfigurationsResponse
 func (client *Client) DescribeScalingConfigurationsWithContext(ctx context.Context, request *DescribeScalingConfigurationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeScalingConfigurationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -3997,9 +4097,11 @@ func (client *Client) DescribeScalingConfigurationsWithContext(ctx context.Conte
 //
 // @return DescribeScalingGroupDetailResponse
 func (client *Client) DescribeScalingGroupDetailWithContext(ctx context.Context, request *DescribeScalingGroupDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeScalingGroupDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OutputFormat) {
@@ -4051,9 +4153,11 @@ func (client *Client) DescribeScalingGroupDetailWithContext(ctx context.Context,
 //
 // @return DescribeScalingGroupDiagnoseDetailsResponse
 func (client *Client) DescribeScalingGroupDiagnoseDetailsWithContext(ctx context.Context, request *DescribeScalingGroupDiagnoseDetailsRequest, runtime *dara.RuntimeOptions) (_result *DescribeScalingGroupDiagnoseDetailsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -4089,9 +4193,11 @@ func (client *Client) DescribeScalingGroupDiagnoseDetailsWithContext(ctx context
 //
 // @return DescribeScalingGroupsResponse
 func (client *Client) DescribeScalingGroupsWithContext(ctx context.Context, request *DescribeScalingGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeScalingGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupType) {
@@ -4179,9 +4285,11 @@ func (client *Client) DescribeScalingGroupsWithContext(ctx context.Context, requ
 //
 // @return DescribeScalingInstancesResponse
 func (client *Client) DescribeScalingInstancesWithContext(ctx context.Context, request *DescribeScalingInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeScalingInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreationType) {
@@ -4285,9 +4393,11 @@ func (client *Client) DescribeScalingInstancesWithContext(ctx context.Context, r
 //
 // @return DescribeScalingRulesResponse
 func (client *Client) DescribeScalingRulesWithContext(ctx context.Context, request *DescribeScalingRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeScalingRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -4379,9 +4489,11 @@ func (client *Client) DescribeScalingRulesWithContext(ctx context.Context, reque
 //
 // @return DescribeScheduledTasksResponse
 func (client *Client) DescribeScheduledTasksWithContext(ctx context.Context, request *DescribeScheduledTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeScheduledTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -4477,9 +4589,11 @@ func (client *Client) DescribeScheduledTasksWithContext(ctx context.Context, req
 //
 // @return DetachAlbServerGroupsResponse
 func (client *Client) DetachAlbServerGroupsWithContext(ctx context.Context, request *DetachAlbServerGroupsRequest, runtime *dara.RuntimeOptions) (_result *DetachAlbServerGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlbServerGroups) {
@@ -4543,9 +4657,11 @@ func (client *Client) DetachAlbServerGroupsWithContext(ctx context.Context, requ
 //
 // @return DetachDBInstancesResponse
 func (client *Client) DetachDBInstancesWithContext(ctx context.Context, request *DetachDBInstancesRequest, runtime *dara.RuntimeOptions) (_result *DetachDBInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -4635,9 +4751,11 @@ func (client *Client) DetachDBInstancesWithContext(ctx context.Context, request 
 //
 // @return DetachInstancesResponse
 func (client *Client) DetachInstancesWithContext(ctx context.Context, request *DetachInstancesRequest, runtime *dara.RuntimeOptions) (_result *DetachInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -4717,9 +4835,11 @@ func (client *Client) DetachInstancesWithContext(ctx context.Context, request *D
 //
 // @return DetachLoadBalancersResponse
 func (client *Client) DetachLoadBalancersWithContext(ctx context.Context, request *DetachLoadBalancersRequest, runtime *dara.RuntimeOptions) (_result *DetachLoadBalancersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Async) {
@@ -4787,9 +4907,11 @@ func (client *Client) DetachLoadBalancersWithContext(ctx context.Context, reques
 //
 // @return DetachServerGroupsResponse
 func (client *Client) DetachServerGroupsWithContext(ctx context.Context, request *DetachServerGroupsRequest, runtime *dara.RuntimeOptions) (_result *DetachServerGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -4867,9 +4989,11 @@ func (client *Client) DetachServerGroupsWithContext(ctx context.Context, request
 //
 // @return DetachVServerGroupsResponse
 func (client *Client) DetachVServerGroupsWithContext(ctx context.Context, request *DetachVServerGroupsRequest, runtime *dara.RuntimeOptions) (_result *DetachVServerGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -4937,9 +5061,11 @@ func (client *Client) DetachVServerGroupsWithContext(ctx context.Context, reques
 //
 // @return DisableAlarmResponse
 func (client *Client) DisableAlarmWithContext(ctx context.Context, request *DisableAlarmRequest, runtime *dara.RuntimeOptions) (_result *DisableAlarmResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlarmTaskId) {
@@ -4999,9 +5125,11 @@ func (client *Client) DisableAlarmWithContext(ctx context.Context, request *Disa
 //
 // @return DisableScalingGroupResponse
 func (client *Client) DisableScalingGroupWithContext(ctx context.Context, request *DisableScalingGroupRequest, runtime *dara.RuntimeOptions) (_result *DisableScalingGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -5057,9 +5185,11 @@ func (client *Client) DisableScalingGroupWithContext(ctx context.Context, reques
 //
 // @return EnableAlarmResponse
 func (client *Client) EnableAlarmWithContext(ctx context.Context, request *EnableAlarmRequest, runtime *dara.RuntimeOptions) (_result *EnableAlarmResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlarmTaskId) {
@@ -5125,9 +5255,11 @@ func (client *Client) EnableAlarmWithContext(ctx context.Context, request *Enabl
 //
 // @return EnableScalingGroupResponse
 func (client *Client) EnableScalingGroupWithContext(ctx context.Context, request *EnableScalingGroupRequest, runtime *dara.RuntimeOptions) (_result *EnableScalingGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActiveScalingConfigurationId) {
@@ -5223,9 +5355,11 @@ func (client *Client) EnableScalingGroupWithContext(ctx context.Context, request
 //
 // @return EnterStandbyResponse
 func (client *Client) EnterStandbyWithContext(ctx context.Context, request *EnterStandbyRequest, runtime *dara.RuntimeOptions) (_result *EnterStandbyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Async) {
@@ -5303,9 +5437,11 @@ func (client *Client) EnterStandbyWithContext(ctx context.Context, request *Ente
 //
 // @return ExecuteScalingRuleResponse
 func (client *Client) ExecuteScalingRuleWithContext(ctx context.Context, request *ExecuteScalingRuleRequest, runtime *dara.RuntimeOptions) (_result *ExecuteScalingRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BreachThreshold) {
@@ -5389,9 +5525,11 @@ func (client *Client) ExecuteScalingRuleWithContext(ctx context.Context, request
 //
 // @return ExitStandbyResponse
 func (client *Client) ExitStandbyWithContext(ctx context.Context, request *ExitStandbyRequest, runtime *dara.RuntimeOptions) (_result *ExitStandbyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Async) {
@@ -5455,9 +5593,11 @@ func (client *Client) ExitStandbyWithContext(ctx context.Context, request *ExitS
 //
 // @return ListTagKeysResponse
 func (client *Client) ListTagKeysWithContext(ctx context.Context, request *ListTagKeysRequest, runtime *dara.RuntimeOptions) (_result *ListTagKeysResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NextToken) {
@@ -5523,9 +5663,11 @@ func (client *Client) ListTagKeysWithContext(ctx context.Context, request *ListT
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NextToken) {
@@ -5589,9 +5731,11 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 //
 // @return ListTagValuesResponse
 func (client *Client) ListTagValuesWithContext(ctx context.Context, request *ListTagValuesRequest, runtime *dara.RuntimeOptions) (_result *ListTagValuesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Key) {
@@ -5667,9 +5811,11 @@ func (client *Client) ListTagValuesWithContext(ctx context.Context, request *Lis
 //
 // @return ModifyAlarmResponse
 func (client *Client) ModifyAlarmWithContext(ctx context.Context, request *ModifyAlarmRequest, runtime *dara.RuntimeOptions) (_result *ModifyAlarmResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlarmActions) {
@@ -5781,9 +5927,11 @@ func (client *Client) ModifyAlarmWithContext(ctx context.Context, request *Modif
 //
 // @return ModifyAlertConfigurationResponse
 func (client *Client) ModifyAlertConfigurationWithContext(ctx context.Context, request *ModifyAlertConfigurationRequest, runtime *dara.RuntimeOptions) (_result *ModifyAlertConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -5845,9 +5993,11 @@ func (client *Client) ModifyAlertConfigurationWithContext(ctx context.Context, r
 //
 // @return ModifyEciScalingConfigurationResponse
 func (client *Client) ModifyEciScalingConfigurationWithContext(ctx context.Context, request *ModifyEciScalingConfigurationRequest, runtime *dara.RuntimeOptions) (_result *ModifyEciScalingConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcrRegistryInfos) {
@@ -6087,9 +6237,11 @@ func (client *Client) ModifyEciScalingConfigurationWithContext(ctx context.Conte
 //
 // @return ModifyInstanceAttributeResponse
 func (client *Client) ModifyInstanceAttributeWithContext(ctx context.Context, request *ModifyInstanceAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Entrusted) {
@@ -6161,9 +6313,11 @@ func (client *Client) ModifyInstanceAttributeWithContext(ctx context.Context, re
 //
 // @return ModifyLifecycleHookResponse
 func (client *Client) ModifyLifecycleHookWithContext(ctx context.Context, request *ModifyLifecycleHookRequest, runtime *dara.RuntimeOptions) (_result *ModifyLifecycleHookResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DefaultResult) {
@@ -6251,9 +6405,11 @@ func (client *Client) ModifyLifecycleHookWithContext(ctx context.Context, reques
 //
 // @return ModifyNotificationConfigurationResponse
 func (client *Client) ModifyNotificationConfigurationWithContext(ctx context.Context, request *ModifyNotificationConfigurationRequest, runtime *dara.RuntimeOptions) (_result *ModifyNotificationConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MessageEncoding) {
@@ -6331,9 +6487,11 @@ func (client *Client) ModifyNotificationConfigurationWithContext(ctx context.Con
 //
 // @return ModifyScalingConfigurationResponse
 func (client *Client) ModifyScalingConfigurationWithContext(ctx context.Context, tmpReq *ModifyScalingConfigurationRequest, runtime *dara.RuntimeOptions) (_result *ModifyScalingConfigurationResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyScalingConfigurationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6639,9 +6797,11 @@ func (client *Client) ModifyScalingConfigurationWithContext(ctx context.Context,
 //
 // @return ModifyScalingGroupResponse
 func (client *Client) ModifyScalingGroupWithContext(ctx context.Context, request *ModifyScalingGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyScalingGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActiveScalingConfigurationId) {
@@ -6652,8 +6812,16 @@ func (client *Client) ModifyScalingGroupWithContext(ctx context.Context, request
 		query["AllocationStrategy"] = request.AllocationStrategy
 	}
 
+	if !dara.IsNil(request.AutoRebalance) {
+		query["AutoRebalance"] = request.AutoRebalance
+	}
+
 	if !dara.IsNil(request.AzBalance) {
 		query["AzBalance"] = request.AzBalance
+	}
+
+	if !dara.IsNil(request.BalanceMode) {
+		query["BalanceMode"] = request.BalanceMode
 	}
 
 	if !dara.IsNil(request.CapacityOptions) {
@@ -6813,9 +6981,11 @@ func (client *Client) ModifyScalingGroupWithContext(ctx context.Context, request
 //
 // @return ModifyScalingRuleResponse
 func (client *Client) ModifyScalingRuleWithContext(ctx context.Context, request *ModifyScalingRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifyScalingRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AdjustmentType) {
@@ -6969,9 +7139,11 @@ func (client *Client) ModifyScalingRuleWithContext(ctx context.Context, request 
 //
 // @return ModifyScheduledTaskResponse
 func (client *Client) ModifyScheduledTaskWithContext(ctx context.Context, request *ModifyScheduledTaskRequest, runtime *dara.RuntimeOptions) (_result *ModifyScheduledTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -7099,9 +7271,11 @@ func (client *Client) ModifyScheduledTaskWithContext(ctx context.Context, reques
 //
 // @return RebalanceInstancesResponse
 func (client *Client) RebalanceInstancesWithContext(ctx context.Context, request *RebalanceInstancesRequest, runtime *dara.RuntimeOptions) (_result *RebalanceInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -7167,9 +7341,11 @@ func (client *Client) RebalanceInstancesWithContext(ctx context.Context, request
 //
 // @return RecordLifecycleActionHeartbeatResponse
 func (client *Client) RecordLifecycleActionHeartbeatWithContext(ctx context.Context, request *RecordLifecycleActionHeartbeatRequest, runtime *dara.RuntimeOptions) (_result *RecordLifecycleActionHeartbeatResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -7251,9 +7427,11 @@ func (client *Client) RecordLifecycleActionHeartbeatWithContext(ctx context.Cont
 //
 // @return RemoveInstancesResponse
 func (client *Client) RemoveInstancesWithContext(ctx context.Context, tmpReq *RemoveInstancesRequest, runtime *dara.RuntimeOptions) (_result *RemoveInstancesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RemoveInstancesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7347,9 +7525,11 @@ func (client *Client) RemoveInstancesWithContext(ctx context.Context, tmpReq *Re
 //
 // @return ResumeInstanceRefreshResponse
 func (client *Client) ResumeInstanceRefreshWithContext(ctx context.Context, request *ResumeInstanceRefreshRequest, runtime *dara.RuntimeOptions) (_result *ResumeInstanceRefreshResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceRefreshTaskId) {
@@ -7405,9 +7585,11 @@ func (client *Client) ResumeInstanceRefreshWithContext(ctx context.Context, requ
 //
 // @return ResumeProcessesResponse
 func (client *Client) ResumeProcessesWithContext(ctx context.Context, request *ResumeProcessesRequest, runtime *dara.RuntimeOptions) (_result *ResumeProcessesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -7467,9 +7649,11 @@ func (client *Client) ResumeProcessesWithContext(ctx context.Context, request *R
 //
 // @return RollbackInstanceRefreshResponse
 func (client *Client) RollbackInstanceRefreshWithContext(ctx context.Context, request *RollbackInstanceRefreshRequest, runtime *dara.RuntimeOptions) (_result *RollbackInstanceRefreshResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceRefreshTaskId) {
@@ -7541,9 +7725,11 @@ func (client *Client) RollbackInstanceRefreshWithContext(ctx context.Context, re
 //
 // @return ScaleWithAdjustmentResponse
 func (client *Client) ScaleWithAdjustmentWithContext(ctx context.Context, tmpReq *ScaleWithAdjustmentRequest, runtime *dara.RuntimeOptions) (_result *ScaleWithAdjustmentResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ScaleWithAdjustmentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7641,9 +7827,11 @@ func (client *Client) ScaleWithAdjustmentWithContext(ctx context.Context, tmpReq
 //
 // @return SetGroupDeletionProtectionResponse
 func (client *Client) SetGroupDeletionProtectionWithContext(ctx context.Context, request *SetGroupDeletionProtectionRequest, runtime *dara.RuntimeOptions) (_result *SetGroupDeletionProtectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupDeletionProtection) {
@@ -7695,7 +7883,7 @@ func (client *Client) SetGroupDeletionProtectionWithContext(ctx context.Context,
 //
 // Description:
 //
-// Auto Scaling detects and removes unhealthy ECS instances or elastic container instances from the corresponding scaling groups. If you want to retain a specific instance in the corresponding scaling group, you can put the instance into the Standby or Protected state. For more information, see [EnterStandby](~~EnterStandby~~) and [SetInstancesProtection](~~SetInstancesProtection~~).
+// Auto Scaling detects and removes unhealthy ECS instances or elastic container instances from their scaling groups. To prevent a specific instance from being removed, you can put it in either the Standby or Protected state. For more information, see [EnterStandby](https://help.aliyun.com/document_detail/459345.html) and [SetInstancesProtection](https://help.aliyun.com/document_detail/459342.html).
 //
 // @param request - SetInstanceHealthRequest
 //
@@ -7703,9 +7891,11 @@ func (client *Client) SetGroupDeletionProtectionWithContext(ctx context.Context,
 //
 // @return SetInstanceHealthResponse
 func (client *Client) SetInstanceHealthWithContext(ctx context.Context, request *SetInstanceHealthRequest, runtime *dara.RuntimeOptions) (_result *SetInstanceHealthResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HealthStatus) {
@@ -7767,9 +7957,11 @@ func (client *Client) SetInstanceHealthWithContext(ctx context.Context, request 
 //
 // @return SetInstancesProtectionResponse
 func (client *Client) SetInstancesProtectionWithContext(ctx context.Context, request *SetInstancesProtectionRequest, runtime *dara.RuntimeOptions) (_result *SetInstancesProtectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceIds) {
@@ -7835,9 +8027,11 @@ func (client *Client) SetInstancesProtectionWithContext(ctx context.Context, req
 //
 // @return StartInstanceRefreshResponse
 func (client *Client) StartInstanceRefreshWithContext(ctx context.Context, request *StartInstanceRefreshRequest, runtime *dara.RuntimeOptions) (_result *StartInstanceRefreshResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckpointPauseTime) {
@@ -7921,9 +8115,11 @@ func (client *Client) StartInstanceRefreshWithContext(ctx context.Context, reque
 //
 // @return SuspendInstanceRefreshResponse
 func (client *Client) SuspendInstanceRefreshWithContext(ctx context.Context, request *SuspendInstanceRefreshRequest, runtime *dara.RuntimeOptions) (_result *SuspendInstanceRefreshResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceRefreshTaskId) {
@@ -7979,9 +8175,11 @@ func (client *Client) SuspendInstanceRefreshWithContext(ctx context.Context, req
 //
 // @return SuspendProcessesResponse
 func (client *Client) SuspendProcessesWithContext(ctx context.Context, request *SuspendProcessesRequest, runtime *dara.RuntimeOptions) (_result *SuspendProcessesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -8057,9 +8255,11 @@ func (client *Client) SuspendProcessesWithContext(ctx context.Context, request *
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -8119,9 +8319,11 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -8185,9 +8387,11 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 //
 // @return VerifyAuthenticationResponse
 func (client *Client) VerifyAuthenticationWithContext(ctx context.Context, request *VerifyAuthenticationRequest, runtime *dara.RuntimeOptions) (_result *VerifyAuthenticationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OnlyCheck) {
@@ -8243,9 +8447,11 @@ func (client *Client) VerifyAuthenticationWithContext(ctx context.Context, reque
 //
 // @return VerifyUserResponse
 func (client *Client) VerifyUserWithContext(ctx context.Context, request *VerifyUserRequest, runtime *dara.RuntimeOptions) (_result *VerifyUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {

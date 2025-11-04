@@ -121,7 +121,16 @@ func (s *DescribeScalingInstancesResponseBody) SetTotalSpotCount(v int32) *Descr
 }
 
 func (s *DescribeScalingInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ScalingInstances != nil {
+		for _, item := range s.ScalingInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeScalingInstancesResponseBodyScalingInstances struct {

@@ -116,7 +116,12 @@ func (s *DescribeScalingGroupDetailResponseBody) SetScalingGroup(v *DescribeScal
 }
 
 func (s *DescribeScalingGroupDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ScalingGroup != nil {
+		if err := s.ScalingGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeScalingGroupDetailResponseBodyScalingGroup struct {
@@ -1060,7 +1065,61 @@ func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) SetVpcId(v string) 
 }
 
 func (s *DescribeScalingGroupDetailResponseBodyScalingGroup) Validate() error {
-	return dara.Validate(s)
+	if s.AlbServerGroups != nil {
+		for _, item := range s.AlbServerGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LaunchTemplateOverrides != nil {
+		for _, item := range s.LaunchTemplateOverrides {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LoadBalancerConfigs != nil {
+		for _, item := range s.LoadBalancerConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ServerGroups != nil {
+		for _, item := range s.ServerGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VServerGroups != nil {
+		for _, item := range s.VServerGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeScalingGroupDetailResponseBodyScalingGroupAlbServerGroups struct {
@@ -1413,7 +1472,16 @@ func (s *DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroups) SetVSe
 }
 
 func (s *DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroups) Validate() error {
-	return dara.Validate(s)
+	if s.VServerGroupAttributes != nil {
+		for _, item := range s.VServerGroupAttributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeScalingGroupDetailResponseBodyScalingGroupVServerGroupsVServerGroupAttributes struct {

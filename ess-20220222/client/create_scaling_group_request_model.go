@@ -13,8 +13,12 @@ type iCreateScalingGroupRequest interface {
 	GetAlbServerGroups() []*CreateScalingGroupRequestAlbServerGroups
 	SetAllocationStrategy(v string) *CreateScalingGroupRequest
 	GetAllocationStrategy() *string
+	SetAutoRebalance(v bool) *CreateScalingGroupRequest
+	GetAutoRebalance() *bool
 	SetAzBalance(v bool) *CreateScalingGroupRequest
 	GetAzBalance() *bool
+	SetBalanceMode(v string) *CreateScalingGroupRequest
+	GetBalanceMode() *string
 	SetCapacityOptions(v *CreateScalingGroupRequestCapacityOptions) *CreateScalingGroupRequest
 	GetCapacityOptions() *CreateScalingGroupRequestCapacityOptions
 	SetClientToken(v string) *CreateScalingGroupRequest
@@ -120,6 +124,7 @@ type CreateScalingGroupRequest struct {
 	//
 	// priority
 	AllocationStrategy *string `json:"AllocationStrategy,omitempty" xml:"AllocationStrategy,omitempty"`
+	AutoRebalance      *bool   `json:"AutoRebalance,omitempty" xml:"AutoRebalance,omitempty"`
 	// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set `MultiAZPolicy` to `COMPOSABLE`. Valid values:
 	//
 	// 	- true
@@ -133,7 +138,8 @@ type CreateScalingGroupRequest struct {
 	// example:
 	//
 	// false
-	AzBalance *bool `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	AzBalance   *bool   `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	BalanceMode *string `json:"BalanceMode,omitempty" xml:"BalanceMode,omitempty"`
 	// The capacity options.
 	CapacityOptions *CreateScalingGroupRequestCapacityOptions `json:"CapacityOptions,omitempty" xml:"CapacityOptions,omitempty" type:"Struct"`
 	// The client token that is used to ensure the idempotence of the request.
@@ -501,8 +507,16 @@ func (s *CreateScalingGroupRequest) GetAllocationStrategy() *string {
 	return s.AllocationStrategy
 }
 
+func (s *CreateScalingGroupRequest) GetAutoRebalance() *bool {
+	return s.AutoRebalance
+}
+
 func (s *CreateScalingGroupRequest) GetAzBalance() *bool {
 	return s.AzBalance
+}
+
+func (s *CreateScalingGroupRequest) GetBalanceMode() *string {
+	return s.BalanceMode
 }
 
 func (s *CreateScalingGroupRequest) GetCapacityOptions() *CreateScalingGroupRequestCapacityOptions {
@@ -691,8 +705,18 @@ func (s *CreateScalingGroupRequest) SetAllocationStrategy(v string) *CreateScali
 	return s
 }
 
+func (s *CreateScalingGroupRequest) SetAutoRebalance(v bool) *CreateScalingGroupRequest {
+	s.AutoRebalance = &v
+	return s
+}
+
 func (s *CreateScalingGroupRequest) SetAzBalance(v bool) *CreateScalingGroupRequest {
 	s.AzBalance = &v
+	return s
+}
+
+func (s *CreateScalingGroupRequest) SetBalanceMode(v string) *CreateScalingGroupRequest {
+	s.BalanceMode = &v
 	return s
 }
 
@@ -917,7 +941,84 @@ func (s *CreateScalingGroupRequest) SetVSwitchIds(v []*string) *CreateScalingGro
 }
 
 func (s *CreateScalingGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AlbServerGroups != nil {
+		for _, item := range s.AlbServerGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.CapacityOptions != nil {
+		if err := s.CapacityOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DBInstances != nil {
+		for _, item := range s.DBInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LaunchTemplateOverrides != nil {
+		for _, item := range s.LaunchTemplateOverrides {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LifecycleHooks != nil {
+		for _, item := range s.LifecycleHooks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LoadBalancerConfigs != nil {
+		for _, item := range s.LoadBalancerConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ServerGroups != nil {
+		for _, item := range s.ServerGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VServerGroups != nil {
+		for _, item := range s.VServerGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateScalingGroupRequestAlbServerGroups struct {
@@ -1617,7 +1718,16 @@ func (s *CreateScalingGroupRequestVServerGroups) SetVServerGroupAttributes(v []*
 }
 
 func (s *CreateScalingGroupRequestVServerGroups) Validate() error {
-	return dara.Validate(s)
+	if s.VServerGroupAttributes != nil {
+		for _, item := range s.VServerGroupAttributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateScalingGroupRequestVServerGroupsVServerGroupAttributes struct {

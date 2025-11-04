@@ -28,6 +28,9 @@ type iCreateNotificationConfigurationRequest interface {
 }
 
 type CreateNotificationConfigurationRequest struct {
+	// example:
+	//
+	// PlainText
 	MessageEncoding *string `json:"MessageEncoding,omitempty" xml:"MessageEncoding,omitempty"`
 	// The Alibaba Cloud Resource Name (ARN) of the notification recipient. The following list describes the value formats of this parameter:
 	//

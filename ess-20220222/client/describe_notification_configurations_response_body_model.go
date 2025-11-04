@@ -53,10 +53,22 @@ func (s *DescribeNotificationConfigurationsResponseBody) SetRequestId(v string) 
 }
 
 func (s *DescribeNotificationConfigurationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NotificationConfigurationModels != nil {
+		for _, item := range s.NotificationConfigurationModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels struct {
+	// example:
+	//
+	// PlainText
 	MessageEncoding *string `json:"MessageEncoding,omitempty" xml:"MessageEncoding,omitempty"`
 	// The Alibaba Cloud Resource Name (ARN) of the notification recipient. The value is in one of the following formats:
 	//

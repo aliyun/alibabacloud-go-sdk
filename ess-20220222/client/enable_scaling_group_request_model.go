@@ -219,7 +219,16 @@ func (s *EnableScalingGroupRequest) SetScalingGroupId(v string) *EnableScalingGr
 }
 
 func (s *EnableScalingGroupRequest) Validate() error {
-  return dara.Validate(s)
+  if s.LaunchTemplateOverrides != nil {
+    for _, item := range s.LaunchTemplateOverrides {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type EnableScalingGroupRequestLaunchTemplateOverrides struct {

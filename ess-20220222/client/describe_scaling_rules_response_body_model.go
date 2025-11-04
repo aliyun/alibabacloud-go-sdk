@@ -104,7 +104,16 @@ func (s *DescribeScalingRulesResponseBody) SetTotalCount(v int32) *DescribeScali
 }
 
 func (s *DescribeScalingRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ScalingRules != nil {
+		for _, item := range s.ScalingRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeScalingRulesResponseBodyScalingRules struct {
@@ -559,7 +568,43 @@ func (s *DescribeScalingRulesResponseBodyScalingRules) SetTargetValue(v float32)
 }
 
 func (s *DescribeScalingRulesResponseBodyScalingRules) Validate() error {
-	return dara.Validate(s)
+	if s.AlarmDimensions != nil {
+		for _, item := range s.AlarmDimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Alarms != nil {
+		for _, item := range s.Alarms {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HybridMetrics != nil {
+		for _, item := range s.HybridMetrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.StepAdjustments != nil {
+		for _, item := range s.StepAdjustments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeScalingRulesResponseBodyScalingRulesAlarmDimensions struct {
@@ -783,7 +828,16 @@ func (s *DescribeScalingRulesResponseBodyScalingRulesAlarms) SetThreshold(v floa
 }
 
 func (s *DescribeScalingRulesResponseBodyScalingRulesAlarms) Validate() error {
-	return dara.Validate(s)
+	if s.Dimensions != nil {
+		for _, item := range s.Dimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeScalingRulesResponseBodyScalingRulesAlarmsDimensions struct {
@@ -926,7 +980,16 @@ func (s *DescribeScalingRulesResponseBodyScalingRulesHybridMetrics) SetStatistic
 }
 
 func (s *DescribeScalingRulesResponseBodyScalingRulesHybridMetrics) Validate() error {
-	return dara.Validate(s)
+	if s.Dimensions != nil {
+		for _, item := range s.Dimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeScalingRulesResponseBodyScalingRulesHybridMetricsDimensions struct {

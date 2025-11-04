@@ -104,7 +104,16 @@ func (s *DescribeAlarmsResponseBody) SetTotalCount(v int32) *DescribeAlarmsRespo
 }
 
 func (s *DescribeAlarmsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AlarmList != nil {
+		for _, item := range s.AlarmList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAlarmsResponseBodyAlarmList struct {
@@ -518,7 +527,34 @@ func (s *DescribeAlarmsResponseBodyAlarmList) SetThreshold(v float32) *DescribeA
 }
 
 func (s *DescribeAlarmsResponseBodyAlarmList) Validate() error {
-	return dara.Validate(s)
+	if s.Dimensions != nil {
+		for _, item := range s.Dimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Expressions != nil {
+		for _, item := range s.Expressions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HybridMetrics != nil {
+		for _, item := range s.HybridMetrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAlarmsResponseBodyAlarmListDimensions struct {
@@ -849,7 +885,16 @@ func (s *DescribeAlarmsResponseBodyAlarmListHybridMetrics) SetStatistic(v string
 }
 
 func (s *DescribeAlarmsResponseBodyAlarmListHybridMetrics) Validate() error {
-	return dara.Validate(s)
+	if s.Dimensions != nil {
+		for _, item := range s.Dimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAlarmsResponseBodyAlarmListHybridMetricsDimensions struct {

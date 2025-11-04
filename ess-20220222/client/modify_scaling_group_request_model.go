@@ -13,8 +13,12 @@ type iModifyScalingGroupRequest interface {
 	GetActiveScalingConfigurationId() *string
 	SetAllocationStrategy(v string) *ModifyScalingGroupRequest
 	GetAllocationStrategy() *string
+	SetAutoRebalance(v bool) *ModifyScalingGroupRequest
+	GetAutoRebalance() *bool
 	SetAzBalance(v bool) *ModifyScalingGroupRequest
 	GetAzBalance() *bool
+	SetBalanceMode(v string) *ModifyScalingGroupRequest
+	GetBalanceMode() *string
 	SetCapacityOptions(v *ModifyScalingGroupRequestCapacityOptions) *ModifyScalingGroupRequest
 	GetCapacityOptions() *ModifyScalingGroupRequestCapacityOptions
 	SetCompensateWithOnDemand(v bool) *ModifyScalingGroupRequest
@@ -98,6 +102,7 @@ type ModifyScalingGroupRequest struct {
 	//
 	// priority
 	AllocationStrategy *string `json:"AllocationStrategy,omitempty" xml:"AllocationStrategy,omitempty"`
+	AutoRebalance      *bool   `json:"AutoRebalance,omitempty" xml:"AutoRebalance,omitempty"`
 	// Specifies whether to evenly distribute instances in the scaling group across zones. This parameter takes effect only when you set the `MultiAZPolicy` parameter to `COMPOSABLE`. Valid values:
 	//
 	// 	- true
@@ -109,7 +114,8 @@ type ModifyScalingGroupRequest struct {
 	// example:
 	//
 	// false
-	AzBalance *bool `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	AzBalance   *bool   `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	BalanceMode *string `json:"BalanceMode,omitempty" xml:"BalanceMode,omitempty"`
 	// The capacity options.
 	CapacityOptions *ModifyScalingGroupRequestCapacityOptions `json:"CapacityOptions,omitempty" xml:"CapacityOptions,omitempty" type:"Struct"`
 	// Specifies whether to automatically create pay-as-you-go instances to meet the requirements on the number of ECS instances in the scaling group when the number of preemptible instances cannot be reached due to reasons such as cost-related issues and insufficient resources. This parameter takes effect only if you set `MultiAZPolicy` in the `CreateScalingGroup` operation to `COST_OPTIMIZED`. Valid values:
@@ -374,8 +380,16 @@ func (s *ModifyScalingGroupRequest) GetAllocationStrategy() *string {
 	return s.AllocationStrategy
 }
 
+func (s *ModifyScalingGroupRequest) GetAutoRebalance() *bool {
+	return s.AutoRebalance
+}
+
 func (s *ModifyScalingGroupRequest) GetAzBalance() *bool {
 	return s.AzBalance
+}
+
+func (s *ModifyScalingGroupRequest) GetBalanceMode() *string {
+	return s.BalanceMode
 }
 
 func (s *ModifyScalingGroupRequest) GetCapacityOptions() *ModifyScalingGroupRequestCapacityOptions {
@@ -512,8 +526,18 @@ func (s *ModifyScalingGroupRequest) SetAllocationStrategy(v string) *ModifyScali
 	return s
 }
 
+func (s *ModifyScalingGroupRequest) SetAutoRebalance(v bool) *ModifyScalingGroupRequest {
+	s.AutoRebalance = &v
+	return s
+}
+
 func (s *ModifyScalingGroupRequest) SetAzBalance(v bool) *ModifyScalingGroupRequest {
 	s.AzBalance = &v
+	return s
+}
+
+func (s *ModifyScalingGroupRequest) SetBalanceMode(v string) *ModifyScalingGroupRequest {
+	s.BalanceMode = &v
 	return s
 }
 
@@ -673,7 +697,21 @@ func (s *ModifyScalingGroupRequest) SetVSwitchIds(v []*string) *ModifyScalingGro
 }
 
 func (s *ModifyScalingGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CapacityOptions != nil {
+		if err := s.CapacityOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LaunchTemplateOverrides != nil {
+		for _, item := range s.LaunchTemplateOverrides {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyScalingGroupRequestCapacityOptions struct {

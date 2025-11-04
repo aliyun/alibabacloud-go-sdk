@@ -59,5 +59,10 @@ func (s *DescribeScalingGroupDiagnoseDetailsResponse) SetBody(v *DescribeScaling
 }
 
 func (s *DescribeScalingGroupDiagnoseDetailsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

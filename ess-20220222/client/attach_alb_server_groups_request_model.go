@@ -144,7 +144,16 @@ func (s *AttachAlbServerGroupsRequest) SetScalingGroupId(v string) *AttachAlbSer
 }
 
 func (s *AttachAlbServerGroupsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AlbServerGroups != nil {
+		for _, item := range s.AlbServerGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AttachAlbServerGroupsRequestAlbServerGroups struct {

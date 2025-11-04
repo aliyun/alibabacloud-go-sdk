@@ -208,7 +208,21 @@ func (s *StartInstanceRefreshRequest) SetSkipMatching(v bool) *StartInstanceRefr
 }
 
 func (s *StartInstanceRefreshRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Checkpoints != nil {
+		for _, item := range s.Checkpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DesiredConfiguration != nil {
+		if err := s.DesiredConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartInstanceRefreshRequestCheckpoints struct {
@@ -326,7 +340,25 @@ func (s *StartInstanceRefreshRequestDesiredConfiguration) SetScalingConfiguratio
 }
 
 func (s *StartInstanceRefreshRequestDesiredConfiguration) Validate() error {
-	return dara.Validate(s)
+	if s.Containers != nil {
+		for _, item := range s.Containers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LaunchTemplateOverrides != nil {
+		for _, item := range s.LaunchTemplateOverrides {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartInstanceRefreshRequestDesiredConfigurationContainers struct {
@@ -391,7 +423,16 @@ func (s *StartInstanceRefreshRequestDesiredConfigurationContainers) SetName(v st
 }
 
 func (s *StartInstanceRefreshRequestDesiredConfigurationContainers) Validate() error {
-	return dara.Validate(s)
+	if s.EnvironmentVars != nil {
+		for _, item := range s.EnvironmentVars {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars struct {

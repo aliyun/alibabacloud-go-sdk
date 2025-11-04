@@ -444,7 +444,25 @@ func (s *CreateAlarmRequest) SetThreshold(v float32) *CreateAlarmRequest {
 }
 
 func (s *CreateAlarmRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Dimensions != nil {
+		for _, item := range s.Dimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Expressions != nil {
+		for _, item := range s.Expressions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAlarmRequestDimensions struct {

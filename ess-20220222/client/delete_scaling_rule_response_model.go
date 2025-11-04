@@ -59,5 +59,10 @@ func (s *DeleteScalingRuleResponse) SetBody(v *DeleteScalingRuleResponseBody) *D
 }
 
 func (s *DeleteScalingRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

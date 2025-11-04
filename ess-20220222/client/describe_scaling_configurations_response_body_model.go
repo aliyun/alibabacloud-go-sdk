@@ -104,7 +104,16 @@ func (s *DescribeScalingConfigurationsResponseBody) SetTotalCount(v int32) *Desc
 }
 
 func (s *DescribeScalingConfigurationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ScalingConfigurations != nil {
+		for _, item := range s.ScalingConfigurations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
@@ -1269,7 +1278,76 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetZone
 }
 
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) Validate() error {
-	return dara.Validate(s)
+	if s.CustomPriorities != nil {
+		for _, item := range s.CustomPriorities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DataDisks != nil {
+		for _, item := range s.DataDisks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InstancePatternInfos != nil {
+		for _, item := range s.InstancePatternInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NetworkInterfaces != nil {
+		for _, item := range s.NetworkInterfaces {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResourcePoolOptions != nil {
+		if err := s.ResourcePoolOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SchedulerOptions != nil {
+		if err := s.SchedulerOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityOptions != nil {
+		if err := s.SecurityOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SpotPriceLimits != nil {
+		for _, item := range s.SpotPriceLimits {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsCustomPriorities struct {

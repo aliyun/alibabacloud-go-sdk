@@ -565,7 +565,39 @@ func (s *CreateScalingRuleRequest) SetTargetValue(v float32) *CreateScalingRuleR
 }
 
 func (s *CreateScalingRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AlarmDimensions != nil {
+		for _, item := range s.AlarmDimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AlarmOptions != nil {
+		if err := s.AlarmOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HybridMetrics != nil {
+		for _, item := range s.HybridMetrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.StepAdjustments != nil {
+		for _, item := range s.StepAdjustments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateScalingRuleRequestAlarmDimensions struct {
@@ -732,7 +764,16 @@ func (s *CreateScalingRuleRequestHybridMetrics) SetStatistic(v string) *CreateSc
 }
 
 func (s *CreateScalingRuleRequestHybridMetrics) Validate() error {
-	return dara.Validate(s)
+	if s.Dimensions != nil {
+		for _, item := range s.Dimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateScalingRuleRequestHybridMetricsDimensions struct {

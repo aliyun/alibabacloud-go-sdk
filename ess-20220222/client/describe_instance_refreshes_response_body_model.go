@@ -104,7 +104,16 @@ func (s *DescribeInstanceRefreshesResponseBody) SetTotalCount(v int32) *Describe
 }
 
 func (s *DescribeInstanceRefreshesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceRefreshTasks != nil {
+		for _, item := range s.InstanceRefreshTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks struct {
@@ -358,7 +367,21 @@ func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) SetTotalNeed
 }
 
 func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) Validate() error {
-	return dara.Validate(s)
+	if s.Checkpoints != nil {
+		for _, item := range s.Checkpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DesiredConfiguration != nil {
+		if err := s.DesiredConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksCheckpoints struct {
@@ -468,7 +491,25 @@ func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigu
 }
 
 func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration) Validate() error {
-	return dara.Validate(s)
+	if s.Containers != nil {
+		for _, item := range s.Containers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LaunchTemplateOverrides != nil {
+		for _, item := range s.LaunchTemplateOverrides {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers struct {
@@ -533,7 +574,16 @@ func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigu
 }
 
 func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers) Validate() error {
-	return dara.Validate(s)
+	if s.EnvironmentVars != nil {
+		for _, item := range s.EnvironmentVars {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars struct {

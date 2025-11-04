@@ -891,7 +891,88 @@ func (s *CreateEciScalingConfigurationRequest) SetVolumes(v []*CreateEciScalingC
 }
 
 func (s *CreateEciScalingConfigurationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AcrRegistryInfos != nil {
+		for _, item := range s.AcrRegistryInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Containers != nil {
+		for _, item := range s.Containers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DnsConfigOptions != nil {
+		for _, item := range s.DnsConfigOptions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HostAliases != nil {
+		for _, item := range s.HostAliases {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ImageRegistryCredentials != nil {
+		for _, item := range s.ImageRegistryCredentials {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InitContainers != nil {
+		for _, item := range s.InitContainers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SecurityContextSysctls != nil {
+		for _, item := range s.SecurityContextSysctls {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Volumes != nil {
+		for _, item := range s.Volumes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateEciScalingConfigurationRequestAcrRegistryInfos struct {
@@ -1440,7 +1521,49 @@ func (s *CreateEciScalingConfigurationRequestContainers) SetWorkingDir(v string)
 }
 
 func (s *CreateEciScalingConfigurationRequestContainers) Validate() error {
-	return dara.Validate(s)
+	if s.LivenessProbe != nil {
+		if err := s.LivenessProbe.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReadinessProbe != nil {
+		if err := s.ReadinessProbe.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityContext != nil {
+		if err := s.SecurityContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EnvironmentVars != nil {
+		for _, item := range s.EnvironmentVars {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Ports != nil {
+		for _, item := range s.Ports {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VolumeMounts != nil {
+		for _, item := range s.VolumeMounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateEciScalingConfigurationRequestContainersLivenessProbe struct {
@@ -1535,7 +1658,22 @@ func (s *CreateEciScalingConfigurationRequestContainersLivenessProbe) SetTimeout
 }
 
 func (s *CreateEciScalingConfigurationRequestContainersLivenessProbe) Validate() error {
-	return dara.Validate(s)
+	if s.Exec != nil {
+		if err := s.Exec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HttpGet != nil {
+		if err := s.HttpGet.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TcpSocket != nil {
+		if err := s.TcpSocket.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateEciScalingConfigurationRequestContainersLivenessProbeExec struct {
@@ -1725,7 +1863,22 @@ func (s *CreateEciScalingConfigurationRequestContainersReadinessProbe) SetTimeou
 }
 
 func (s *CreateEciScalingConfigurationRequestContainersReadinessProbe) Validate() error {
-	return dara.Validate(s)
+	if s.Exec != nil {
+		if err := s.Exec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HttpGet != nil {
+		if err := s.HttpGet.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TcpSocket != nil {
+		if err := s.TcpSocket.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateEciScalingConfigurationRequestContainersReadinessProbeExec struct {
@@ -1865,7 +2018,12 @@ func (s *CreateEciScalingConfigurationRequestContainersSecurityContext) SetRunAs
 }
 
 func (s *CreateEciScalingConfigurationRequestContainersSecurityContext) Validate() error {
-	return dara.Validate(s)
+	if s.Capability != nil {
+		if err := s.Capability.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateEciScalingConfigurationRequestContainersSecurityContextCapability struct {
@@ -2436,7 +2594,39 @@ func (s *CreateEciScalingConfigurationRequestInitContainers) SetWorkingDir(v str
 }
 
 func (s *CreateEciScalingConfigurationRequestInitContainers) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityContext != nil {
+		if err := s.SecurityContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InitContainerEnvironmentVars != nil {
+		for _, item := range s.InitContainerEnvironmentVars {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InitContainerPorts != nil {
+		for _, item := range s.InitContainerPorts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InitContainerVolumeMounts != nil {
+		for _, item := range s.InitContainerVolumeMounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateEciScalingConfigurationRequestInitContainersSecurityContext struct {
@@ -2481,7 +2671,12 @@ func (s *CreateEciScalingConfigurationRequestInitContainersSecurityContext) SetR
 }
 
 func (s *CreateEciScalingConfigurationRequestInitContainersSecurityContext) Validate() error {
-	return dara.Validate(s)
+	if s.Capability != nil {
+		if err := s.Capability.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateEciScalingConfigurationRequestInitContainersSecurityContextCapability struct {
@@ -2928,7 +3123,41 @@ func (s *CreateEciScalingConfigurationRequestVolumes) SetType(v string) *CreateE
 }
 
 func (s *CreateEciScalingConfigurationRequestVolumes) Validate() error {
-	return dara.Validate(s)
+	if s.DiskVolume != nil {
+		if err := s.DiskVolume.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EmptyDirVolume != nil {
+		if err := s.EmptyDirVolume.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FlexVolume != nil {
+		if err := s.FlexVolume.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HostPathVolume != nil {
+		if err := s.HostPathVolume.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NFSVolume != nil {
+		if err := s.NFSVolume.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ConfigFileVolumeConfigFileToPaths != nil {
+		for _, item := range s.ConfigFileVolumeConfigFileToPaths {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateEciScalingConfigurationRequestVolumesDiskVolume struct {

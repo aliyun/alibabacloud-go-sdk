@@ -104,7 +104,16 @@ func (s *DescribeScalingGroupsResponseBody) SetTotalCount(v int32) *DescribeScal
 }
 
 func (s *DescribeScalingGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ScalingGroups != nil {
+		for _, item := range s.ScalingGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeScalingGroupsResponseBodyScalingGroups struct {
@@ -132,6 +141,7 @@ type DescribeScalingGroupsResponseBodyScalingGroups struct {
 	//
 	// priority
 	AllocationStrategy *string `json:"AllocationStrategy,omitempty" xml:"AllocationStrategy,omitempty"`
+	AutoRebalance      *bool   `json:"AutoRebalance,omitempty" xml:"AutoRebalance,omitempty"`
 	// Indicates whether instances in the scaling group are evenly distributed across the specified zones. This parameter takes effect only if you set `MultiAZPolicy` to `COMPOSABLE`. Valid values:
 	//
 	// 	- true
@@ -141,7 +151,8 @@ type DescribeScalingGroupsResponseBodyScalingGroups struct {
 	// example:
 	//
 	// false
-	AzBalance *bool `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	AzBalance   *bool   `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	BalanceMode *string `json:"BalanceMode,omitempty" xml:"BalanceMode,omitempty"`
 	// The capacity options.
 	CapacityOptions *DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions `json:"CapacityOptions,omitempty" xml:"CapacityOptions,omitempty" type:"Struct"`
 	// Indicates whether Auto Scaling can create pay-as-you-go instances to supplement preemptible instances if preemptible instances cannot be created due to price-related factors or insufficient inventory when MultiAZPolicy is set to COST_OPTIMIZED. Valid values:
@@ -546,8 +557,16 @@ func (s *DescribeScalingGroupsResponseBodyScalingGroups) GetAllocationStrategy()
 	return s.AllocationStrategy
 }
 
+func (s *DescribeScalingGroupsResponseBodyScalingGroups) GetAutoRebalance() *bool {
+	return s.AutoRebalance
+}
+
 func (s *DescribeScalingGroupsResponseBodyScalingGroups) GetAzBalance() *bool {
 	return s.AzBalance
+}
+
+func (s *DescribeScalingGroupsResponseBodyScalingGroups) GetBalanceMode() *string {
+	return s.BalanceMode
 }
 
 func (s *DescribeScalingGroupsResponseBodyScalingGroups) GetCapacityOptions() *DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions {
@@ -802,8 +821,18 @@ func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetAllocationStrategy(v
 	return s
 }
 
+func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetAutoRebalance(v bool) *DescribeScalingGroupsResponseBodyScalingGroups {
+	s.AutoRebalance = &v
+	return s
+}
+
 func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetAzBalance(v bool) *DescribeScalingGroupsResponseBodyScalingGroups {
 	s.AzBalance = &v
+	return s
+}
+
+func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetBalanceMode(v string) *DescribeScalingGroupsResponseBodyScalingGroups {
+	s.BalanceMode = &v
 	return s
 }
 
@@ -1098,7 +1127,75 @@ func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetVpcId(v string) *Des
 }
 
 func (s *DescribeScalingGroupsResponseBodyScalingGroups) Validate() error {
-	return dara.Validate(s)
+	if s.AlbServerGroups != nil {
+		for _, item := range s.AlbServerGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.CapacityOptions != nil {
+		if err := s.CapacityOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DBInstances != nil {
+		for _, item := range s.DBInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LaunchTemplateOverrides != nil {
+		for _, item := range s.LaunchTemplateOverrides {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LoadBalancerConfigs != nil {
+		for _, item := range s.LoadBalancerConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ServerGroups != nil {
+		for _, item := range s.ServerGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VServerGroups != nil {
+		for _, item := range s.VServerGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeScalingGroupsResponseBodyScalingGroupsAlbServerGroups struct {
@@ -1617,7 +1714,16 @@ func (s *DescribeScalingGroupsResponseBodyScalingGroupsVServerGroups) SetVServer
 }
 
 func (s *DescribeScalingGroupsResponseBodyScalingGroupsVServerGroups) Validate() error {
-	return dara.Validate(s)
+	if s.VServerGroupAttributes != nil {
+		for _, item := range s.VServerGroupAttributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeScalingGroupsResponseBodyScalingGroupsVServerGroupsVServerGroupAttributes struct {

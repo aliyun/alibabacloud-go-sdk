@@ -91,7 +91,12 @@ func (s *ScaleWithAdjustmentResponseBody) SetScalingActivityId(v string) *ScaleW
 }
 
 func (s *ScaleWithAdjustmentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PlanResult != nil {
+		if err := s.PlanResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ScaleWithAdjustmentResponseBodyPlanResult struct {
@@ -117,7 +122,16 @@ func (s *ScaleWithAdjustmentResponseBodyPlanResult) SetResourceAllocations(v []*
 }
 
 func (s *ScaleWithAdjustmentResponseBodyPlanResult) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceAllocations != nil {
+		for _, item := range s.ResourceAllocations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ScaleWithAdjustmentResponseBodyPlanResultResourceAllocations struct {

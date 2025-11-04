@@ -142,7 +142,16 @@ func (s *DetachAlbServerGroupsRequest) SetScalingGroupId(v string) *DetachAlbSer
 }
 
 func (s *DetachAlbServerGroupsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AlbServerGroups != nil {
+		for _, item := range s.AlbServerGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DetachAlbServerGroupsRequestAlbServerGroups struct {

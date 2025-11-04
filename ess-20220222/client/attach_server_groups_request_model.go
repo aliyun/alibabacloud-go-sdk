@@ -142,7 +142,16 @@ func (s *AttachServerGroupsRequest) SetServerGroups(v []*AttachServerGroupsReque
 }
 
 func (s *AttachServerGroupsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ServerGroups != nil {
+		for _, item := range s.ServerGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AttachServerGroupsRequestServerGroups struct {

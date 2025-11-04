@@ -59,5 +59,10 @@ func (s *DeleteNotificationConfigurationResponse) SetBody(v *DeleteNotificationC
 }
 
 func (s *DeleteNotificationConfigurationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

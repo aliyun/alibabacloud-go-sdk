@@ -53,7 +53,16 @@ func (s *DescribeScalingGroupDiagnoseDetailsResponseBody) SetRequestId(v string)
 }
 
 func (s *DescribeScalingGroupDiagnoseDetailsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Details != nil {
+		for _, item := range s.Details {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeScalingGroupDiagnoseDetailsResponseBodyDetails struct {
