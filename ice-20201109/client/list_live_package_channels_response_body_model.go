@@ -117,7 +117,16 @@ func (s *ListLivePackageChannelsResponseBody) SetTotalCount(v int64) *ListLivePa
 }
 
 func (s *ListLivePackageChannelsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LivePackageChannels != nil {
+		for _, item := range s.LivePackageChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLivePackageChannelsResponseBodyLivePackageChannels struct {
@@ -259,7 +268,16 @@ func (s *ListLivePackageChannelsResponseBodyLivePackageChannels) SetSegmentDurat
 }
 
 func (s *ListLivePackageChannelsResponseBodyLivePackageChannels) Validate() error {
-	return dara.Validate(s)
+	if s.IngestEndpoints != nil {
+		for _, item := range s.IngestEndpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLivePackageChannelsResponseBodyLivePackageChannelsIngestEndpoints struct {

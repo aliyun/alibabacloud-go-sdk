@@ -192,7 +192,12 @@ func (s *SubmitDNAJobRequest) SetUserData(v string) *SubmitDNAJobRequest {
 }
 
 func (s *SubmitDNAJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitDNAJobRequestInput struct {

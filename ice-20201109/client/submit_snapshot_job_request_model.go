@@ -115,7 +115,27 @@ func (s *SubmitSnapshotJobRequest) SetUserData(v string) *SubmitSnapshotJobReque
 }
 
 func (s *SubmitSnapshotJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScheduleConfig != nil {
+		if err := s.ScheduleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TemplateConfig != nil {
+		if err := s.TemplateConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitSnapshotJobRequestInput struct {
@@ -308,7 +328,12 @@ func (s *SubmitSnapshotJobRequestTemplateConfig) SetTemplateId(v string) *Submit
 }
 
 func (s *SubmitSnapshotJobRequestTemplateConfig) Validate() error {
-	return dara.Validate(s)
+	if s.OverwriteParams != nil {
+		if err := s.OverwriteParams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitSnapshotJobRequestTemplateConfigOverwriteParams struct {
@@ -484,7 +509,12 @@ func (s *SubmitSnapshotJobRequestTemplateConfigOverwriteParams) SetWidth(v int32
 }
 
 func (s *SubmitSnapshotJobRequestTemplateConfigOverwriteParams) Validate() error {
-	return dara.Validate(s)
+	if s.SpriteSnapshotConfig != nil {
+		if err := s.SpriteSnapshotConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitSnapshotJobRequestTemplateConfigOverwriteParamsSpriteSnapshotConfig struct {

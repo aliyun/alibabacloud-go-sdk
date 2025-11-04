@@ -53,7 +53,12 @@ func (s *GetSystemTemplateResponseBody) SetSystemTemplate(v *GetSystemTemplateRe
 }
 
 func (s *GetSystemTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SystemTemplate != nil {
+		if err := s.SystemTemplate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSystemTemplateResponseBodySystemTemplate struct {

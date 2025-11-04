@@ -14,6 +14,8 @@ type iGetHotwordLibraryRequest interface {
 }
 
 type GetHotwordLibraryRequest struct {
+	// The ID of the hotword library.
+	//
 	// This parameter is required.
 	//
 	// example:

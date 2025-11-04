@@ -53,7 +53,16 @@ func (s *ListAIAgentInstanceResponseBody) SetRequestId(v string) *ListAIAgentIns
 }
 
 func (s *ListAIAgentInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAIAgentInstanceResponseBodyInstances struct {
@@ -159,5 +168,20 @@ func (s *ListAIAgentInstanceResponseBodyInstances) SetUserData(v string) *ListAI
 }
 
 func (s *ListAIAgentInstanceResponseBodyInstances) Validate() error {
-	return dara.Validate(s)
+	if s.AgentConfig != nil {
+		if err := s.AgentConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuntimeConfig != nil {
+		if err := s.RuntimeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TemplateConfig != nil {
+		if err := s.TemplateConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

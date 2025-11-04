@@ -155,7 +155,16 @@ func (s *ListAdInsertionsResponseBody) SetTotalCount(v int64) *ListAdInsertionsR
 }
 
 func (s *ListAdInsertionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Configs != nil {
+		for _, item := range s.Configs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAdInsertionsResponseBodyConfigs struct {
@@ -335,7 +344,17 @@ func (s *ListAdInsertionsResponseBodyConfigs) SetSlateAdUrl(v string) *ListAdIns
 }
 
 func (s *ListAdInsertionsResponseBodyConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.CdnConfig != nil {
+		if err := s.CdnConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ManifestEndpointConfig != nil {
+		if err := s.ManifestEndpointConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAdInsertionsResponseBodyConfigsCdnConfig struct {

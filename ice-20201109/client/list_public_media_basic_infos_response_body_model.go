@@ -104,7 +104,16 @@ func (s *ListPublicMediaBasicInfosResponseBody) SetTotalCount(v int64) *ListPubl
 }
 
 func (s *ListPublicMediaBasicInfosResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaInfos != nil {
+		for _, item := range s.MediaInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPublicMediaBasicInfosResponseBodyMediaInfos struct {
@@ -156,7 +165,21 @@ func (s *ListPublicMediaBasicInfosResponseBodyMediaInfos) SetMediaId(v string) *
 }
 
 func (s *ListPublicMediaBasicInfosResponseBodyMediaInfos) Validate() error {
-	return dara.Validate(s)
+	if s.FileInfoList != nil {
+		for _, item := range s.FileInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MediaBasicInfo != nil {
+		if err := s.MediaBasicInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoList struct {
@@ -182,7 +205,12 @@ func (s *ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoList) SetFileBas
 }
 
 func (s *ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.FileBasicInfo != nil {
+		if err := s.FileBasicInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInfo struct {

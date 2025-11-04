@@ -20,17 +20,22 @@ type iQueryTraceExtractJobResponseBody interface {
 }
 
 type QueryTraceExtractJobResponseBody struct {
+	// The data returned.
 	Data *QueryTraceExtractJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// *****ACB-44F2-5F2D-88D7-1283E70*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 200
@@ -82,10 +87,16 @@ func (s *QueryTraceExtractJobResponseBody) SetStatusCode(v int64) *QueryTraceExt
 }
 
 func (s *QueryTraceExtractJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryTraceExtractJobResponseBodyData struct {
+	// The trace watermark information.
 	Trace *string `json:"Trace,omitempty" xml:"Trace,omitempty"`
 }
 

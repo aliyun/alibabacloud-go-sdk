@@ -123,7 +123,27 @@ func (s *StartAIAgentInstanceRequest) SetUserData(v string) *StartAIAgentInstanc
 }
 
 func (s *StartAIAgentInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AgentConfig != nil {
+		if err := s.AgentConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ChatSyncConfig != nil {
+		if err := s.ChatSyncConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuntimeConfig != nil {
+		if err := s.RuntimeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TemplateConfig != nil {
+		if err := s.TemplateConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartAIAgentInstanceRequestChatSyncConfig struct {

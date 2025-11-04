@@ -26,18 +26,34 @@ type iDeleteRecognitionEntityRequest interface {
 }
 
 type DeleteRecognitionEntityRequest struct {
+	// The type of recognition algorithm associated with the entity. Valid values:
+	//
+	// 	- landmark
+	//
+	// 	- object
+	//
+	// 	- logo
+	//
+	// 	- face
+	//
+	// 	- label
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// landmark
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The ID of the entity to be deleted.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// **************544cb84754************
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The ID of the recognition library.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -28,12 +28,26 @@ type iListRecognitionEntitiesRequest interface {
 }
 
 type ListRecognitionEntitiesRequest struct {
+	// The type of recognition algorithm associated with the entity. Valid values:
+	//
+	// 	- landmark
+	//
+	// 	- object
+	//
+	// 	- logo
+	//
+	// 	- face
+	//
+	// 	- label
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// landmark
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The ID of the recognition library.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -42,12 +56,16 @@ type ListRecognitionEntitiesRequest struct {
 	LibId        *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 50.
+	//
 	// This parameter is required.
 	//
 	// example:

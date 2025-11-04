@@ -22,21 +22,28 @@ type iDescribePlayListResponseBody interface {
 }
 
 type DescribePlayListResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page. Default value: 20. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int64                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The playback records.
 	PlayList []*DescribePlayListResponseBodyPlayList `json:"PlayList,omitempty" xml:"PlayList,omitempty" type:"Repeated"`
-	// Id
+	// The ID of the request.
 	//
 	// example:
 	//
 	// B960580D-26FA-5547-8AFC-3CDC812DBF27
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total playback count.
+	//
 	// example:
 	//
 	// 49
@@ -97,46 +104,75 @@ func (s *DescribePlayListResponseBody) SetTotalNum(v int64) *DescribePlayListRes
 }
 
 func (s *DescribePlayListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PlayList != nil {
+		for _, item := range s.PlayList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePlayListResponseBodyPlayList struct {
+	// Time to first frame.
+	//
 	// example:
 	//
 	// 200
 	FirstFrameDuration *string `json:"FirstFrameDuration,omitempty" xml:"FirstFrameDuration,omitempty"`
+	// The playback duration.
+	//
 	// example:
 	//
 	// 1000
 	PlayDuration *string `json:"PlayDuration,omitempty" xml:"PlayDuration,omitempty"`
+	// The timestamp when the playback started.
+	//
 	// example:
 	//
 	// 1675922209572
 	PlayTs *string `json:"PlayTs,omitempty" xml:"PlayTs,omitempty"`
+	// The playback type.
+	//
 	// example:
 	//
 	// vod
 	PlayType *string `json:"PlayType,omitempty" xml:"PlayType,omitempty"`
+	// The ID of the player session.
+	//
 	// example:
 	//
 	// 91488be2-8381-40c9-8494-e8afe22c4a2d
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The playback status.
+	//
 	// example:
 	//
 	// complete
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The stuttering duration.
+	//
 	// example:
 	//
 	// 20
 	StuckDuration *string `json:"StuckDuration,omitempty" xml:"StuckDuration,omitempty"`
+	// The TraceId of the player.
+	//
 	// example:
 	//
 	// 0b736abf16724820210842673d9543
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// The duration of the video.
+	//
 	// example:
 	//
 	// 2000
 	VideoDuration *string `json:"VideoDuration,omitempty" xml:"VideoDuration,omitempty"`
+	// The ID of the video.
+	//
 	// example:
 	//
 	// 250314203f0171eebff17035d0b20102

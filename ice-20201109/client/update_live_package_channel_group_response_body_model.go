@@ -53,7 +53,12 @@ func (s *UpdateLivePackageChannelGroupResponseBody) SetRequestId(v string) *Upda
 }
 
 func (s *UpdateLivePackageChannelGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LivePackageChannelGroup != nil {
+		if err := s.LivePackageChannelGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateLivePackageChannelGroupResponseBodyLivePackageChannelGroup struct {

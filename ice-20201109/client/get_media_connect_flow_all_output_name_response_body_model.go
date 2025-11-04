@@ -20,15 +20,22 @@ type iGetMediaConnectFlowAllOutputNameResponseBody interface {
 }
 
 type GetMediaConnectFlowAllOutputNameResponseBody struct {
+	// The response body, as an array of strings.
 	Content []*string `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	// The call description.
+	//
 	// example:
 	//
 	// OK
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 559E9828-245D-5CBA-9C7A-4E01453F091F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned error code. A value of 0 indicates the call is successful.
+	//
 	// example:
 	//
 	// 0

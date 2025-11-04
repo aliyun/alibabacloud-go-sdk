@@ -59,5 +59,10 @@ func (s *SetDefaultStorageLocationResponse) SetBody(v *SetDefaultStorageLocation
 }
 
 func (s *SetDefaultStorageLocationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

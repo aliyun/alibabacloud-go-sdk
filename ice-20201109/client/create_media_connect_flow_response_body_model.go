@@ -87,7 +87,12 @@ func (s *CreateMediaConnectFlowResponseBody) SetRetCode(v int32) *CreateMediaCon
 }
 
 func (s *CreateMediaConnectFlowResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateMediaConnectFlowResponseBodyContent struct {

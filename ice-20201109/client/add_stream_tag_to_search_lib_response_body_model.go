@@ -20,10 +20,14 @@ type iAddStreamTagToSearchLibResponseBody interface {
 }
 
 type AddStreamTagToSearchLibResponseBody struct {
+	// The return code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
@@ -34,6 +38,12 @@ type AddStreamTagToSearchLibResponseBody struct {
 	//
 	// *****ACB-44F2-5F2D-88D7-1283E70*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Default value: true. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true

@@ -59,5 +59,10 @@ func (s *UpdateMediaLiveChannelResponse) SetBody(v *UpdateMediaLiveChannelRespon
 }
 
 func (s *UpdateMediaLiveChannelResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

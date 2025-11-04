@@ -145,7 +145,22 @@ func (s *GenerateAIAgentCallRequest) SetUserId(v string) *GenerateAIAgentCallReq
 }
 
 func (s *GenerateAIAgentCallRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AgentConfig != nil {
+		if err := s.AgentConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ChatSyncConfig != nil {
+		if err := s.ChatSyncConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TemplateConfig != nil {
+		if err := s.TemplateConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GenerateAIAgentCallRequestChatSyncConfig struct {

@@ -59,5 +59,10 @@ func (s *ListVodPackagingAssetsResponse) SetBody(v *ListVodPackagingAssetsRespon
 }
 
 func (s *ListVodPackagingAssetsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

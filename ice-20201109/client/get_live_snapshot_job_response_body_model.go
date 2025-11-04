@@ -253,7 +253,17 @@ func (s *GetLiveSnapshotJobResponseBody) SetTimeInterval(v int32) *GetLiveSnapsh
 }
 
 func (s *GetLiveSnapshotJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SnapshotOutput != nil {
+		if err := s.SnapshotOutput.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StreamInput != nil {
+		if err := s.StreamInput.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLiveSnapshotJobResponseBodySnapshotOutput struct {

@@ -14,6 +14,8 @@ type iGetMediaConnectFlowAllOutputNameRequest interface {
 }
 
 type GetMediaConnectFlowAllOutputNameRequest struct {
+	// The ID of the MediaConnect flow.
+	//
 	// This parameter is required.
 	//
 	// example:

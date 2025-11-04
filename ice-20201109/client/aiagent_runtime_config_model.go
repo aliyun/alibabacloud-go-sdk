@@ -98,7 +98,22 @@ func (s *AIAgentRuntimeConfig) SetVoiceChat(v *AIAgentRuntimeConfigVoiceChat) *A
 }
 
 func (s *AIAgentRuntimeConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AvatarChat3D != nil {
+		if err := s.AvatarChat3D.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VisionChat != nil {
+		if err := s.VisionChat.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VoiceChat != nil {
+		if err := s.VoiceChat.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AIAgentRuntimeConfigAvatarChat3D struct {

@@ -70,7 +70,16 @@ func (s *ListDynamicImageJobsResponseBody) SetRequestId(v string) *ListDynamicIm
 }
 
 func (s *ListDynamicImageJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Jobs != nil {
+		for _, item := range s.Jobs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDynamicImageJobsResponseBodyJobs struct {
@@ -271,7 +280,17 @@ func (s *ListDynamicImageJobsResponseBodyJobs) SetTriggerSource(v string) *ListD
 }
 
 func (s *ListDynamicImageJobsResponseBodyJobs) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDynamicImageJobsResponseBodyJobsInput struct {

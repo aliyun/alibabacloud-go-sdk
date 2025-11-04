@@ -70,7 +70,16 @@ func (s *ListLiveTranscodeTemplatesResponseBody) SetTotalCount(v int32) *ListLiv
 }
 
 func (s *ListLiveTranscodeTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TemplateContentList != nil {
+		for _, item := range s.TemplateContentList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLiveTranscodeTemplatesResponseBodyTemplateContentList struct {
@@ -171,7 +180,12 @@ func (s *ListLiveTranscodeTemplatesResponseBodyTemplateContentList) SetType(v st
 }
 
 func (s *ListLiveTranscodeTemplatesResponseBodyTemplateContentList) Validate() error {
-	return dara.Validate(s)
+	if s.TemplateConfig != nil {
+		if err := s.TemplateConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLiveTranscodeTemplatesResponseBodyTemplateContentListTemplateConfig struct {
@@ -208,7 +222,17 @@ func (s *ListLiveTranscodeTemplatesResponseBodyTemplateContentListTemplateConfig
 }
 
 func (s *ListLiveTranscodeTemplatesResponseBodyTemplateContentListTemplateConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AudioParams != nil {
+		if err := s.AudioParams.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoParams != nil {
+		if err := s.VideoParams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLiveTranscodeTemplatesResponseBodyTemplateContentListTemplateConfigAudioParams struct {

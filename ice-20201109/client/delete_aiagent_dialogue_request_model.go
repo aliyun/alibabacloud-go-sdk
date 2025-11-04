@@ -18,6 +18,8 @@ type iDeleteAIAgentDialogueRequest interface {
 }
 
 type DeleteAIAgentDialogueRequest struct {
+	// The ID of the dialog that you want to delete.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25,6 +27,8 @@ type DeleteAIAgentDialogueRequest struct {
 	// f27f9b9be28642a88e18*******
 	DialogueId *string `json:"DialogueId,omitempty" xml:"DialogueId,omitempty"`
 	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The session ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -59,5 +59,10 @@ func (s *AlterSearchIndexResponse) SetBody(v *AlterSearchIndexResponseBody) *Alt
 }
 
 func (s *AlterSearchIndexResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

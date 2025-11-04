@@ -53,7 +53,12 @@ func (s *GetLiveRecordTemplateResponseBody) SetRequestId(v string) *GetLiveRecor
 }
 
 func (s *GetLiveRecordTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RecordTemplate != nil {
+		if err := s.RecordTemplate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLiveRecordTemplateResponseBodyRecordTemplate struct {
@@ -164,7 +169,16 @@ func (s *GetLiveRecordTemplateResponseBodyRecordTemplate) SetType(v string) *Get
 }
 
 func (s *GetLiveRecordTemplateResponseBodyRecordTemplate) Validate() error {
-	return dara.Validate(s)
+	if s.RecordFormatList != nil {
+		for _, item := range s.RecordFormatList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLiveRecordTemplateResponseBodyRecordTemplateRecordFormatList struct {

@@ -155,7 +155,12 @@ func (s *MediaConvertJobWithoutDetail) SetUserData(v string) *MediaConvertJobWit
 }
 
 func (s *MediaConvertJobWithoutDetail) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MediaConvertJobWithoutDetailConfig struct {
@@ -210,5 +215,32 @@ func (s *MediaConvertJobWithoutDetailConfig) SetOutputs(v []*MediaConvertOutput)
 }
 
 func (s *MediaConvertJobWithoutDetailConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Inputs != nil {
+		for _, item := range s.Inputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OutputGroups != nil {
+		for _, item := range s.OutputGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Outputs != nil {
+		for _, item := range s.Outputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -53,5 +53,10 @@ func (s *CreateVodPackagingAssetResponseBody) SetRequestId(v string) *CreateVodP
 }
 
 func (s *CreateVodPackagingAssetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Asset != nil {
+		if err := s.Asset.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *GetMediaInfoJobResponseBody) SetRequestId(v string) *GetMediaInfoJobRes
 }
 
 func (s *GetMediaInfoJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaInfoJob != nil {
+		if err := s.MediaInfoJob.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMediaInfoJobResponseBodyMediaInfoJob struct {
@@ -247,7 +252,22 @@ func (s *GetMediaInfoJobResponseBodyMediaInfoJob) SetUserData(v string) *GetMedi
 }
 
 func (s *GetMediaInfoJobResponseBodyMediaInfoJob) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MediaInfoProperty != nil {
+		if err := s.MediaInfoProperty.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScheduleConfig != nil {
+		if err := s.ScheduleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMediaInfoJobResponseBodyMediaInfoJobInput struct {
@@ -344,7 +364,30 @@ func (s *GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty) SetVideoStrea
 }
 
 func (s *GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty) Validate() error {
-	return dara.Validate(s)
+	if s.AudioStreamInfoList != nil {
+		for _, item := range s.AudioStreamInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FileBasicInfo != nil {
+		if err := s.FileBasicInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoStreamInfoList != nil {
+		for _, item := range s.VideoStreamInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStreamInfoList struct {

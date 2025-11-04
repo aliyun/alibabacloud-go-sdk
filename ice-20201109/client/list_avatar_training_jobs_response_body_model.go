@@ -74,7 +74,12 @@ func (s *ListAvatarTrainingJobsResponseBody) SetSuccess(v bool) *ListAvatarTrain
 }
 
 func (s *ListAvatarTrainingJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAvatarTrainingJobsResponseBodyData struct {
@@ -115,7 +120,16 @@ func (s *ListAvatarTrainingJobsResponseBodyData) SetTotalCount(v int64) *ListAva
 }
 
 func (s *ListAvatarTrainingJobsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AvatarTrainingJobList != nil {
+		for _, item := range s.AvatarTrainingJobList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList struct {

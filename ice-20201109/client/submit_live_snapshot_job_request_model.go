@@ -110,7 +110,17 @@ func (s *SubmitLiveSnapshotJobRequest) SetTemplateId(v string) *SubmitLiveSnapsh
 }
 
 func (s *SubmitLiveSnapshotJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SnapshotOutput != nil {
+		if err := s.SnapshotOutput.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StreamInput != nil {
+		if err := s.StreamInput.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitLiveSnapshotJobRequestSnapshotOutput struct {

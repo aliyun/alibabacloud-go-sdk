@@ -14,6 +14,8 @@ type iSendMessageChatTextResponseBody interface {
 }
 
 type SendMessageChatTextResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******

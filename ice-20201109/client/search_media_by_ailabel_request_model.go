@@ -9,6 +9,8 @@ type iSearchMediaByAILabelRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCustomFilters(v string) *SearchMediaByAILabelRequest
+	GetCustomFilters() *string
 	SetMatchingMode(v string) *SearchMediaByAILabelRequest
 	GetMatchingMode() *string
 	SetMediaId(v string) *SearchMediaByAILabelRequest
@@ -31,10 +33,16 @@ type iSearchMediaByAILabelRequest interface {
 	GetSpecificSearch() *bool
 	SetText(v string) *SearchMediaByAILabelRequest
 	GetText() *string
+	SetUtcCreate(v string) *SearchMediaByAILabelRequest
+	GetUtcCreate() *string
 }
 
 type SearchMediaByAILabelRequest struct {
-	MatchingMode *string `json:"MatchingMode,omitempty" xml:"MatchingMode,omitempty"`
+	// example:
+	//
+	// {}
+	CustomFilters *string `json:"CustomFilters,omitempty" xml:"CustomFilters,omitempty"`
+	MatchingMode  *string `json:"MatchingMode,omitempty" xml:"MatchingMode,omitempty"`
 	// The ID of the media asset. This parameter is required if you want to query media asset clips.
 	//
 	// example:
@@ -108,6 +116,10 @@ type SearchMediaByAILabelRequest struct {
 	SpecificSearch *bool `json:"SpecificSearch,omitempty" xml:"SpecificSearch,omitempty"`
 	// The content that you want to query.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// {}
+	UtcCreate *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
 }
 
 func (s SearchMediaByAILabelRequest) String() string {
@@ -116,6 +128,10 @@ func (s SearchMediaByAILabelRequest) String() string {
 
 func (s SearchMediaByAILabelRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SearchMediaByAILabelRequest) GetCustomFilters() *string {
+	return s.CustomFilters
 }
 
 func (s *SearchMediaByAILabelRequest) GetMatchingMode() *string {
@@ -160,6 +176,15 @@ func (s *SearchMediaByAILabelRequest) GetSpecificSearch() *bool {
 
 func (s *SearchMediaByAILabelRequest) GetText() *string {
 	return s.Text
+}
+
+func (s *SearchMediaByAILabelRequest) GetUtcCreate() *string {
+	return s.UtcCreate
+}
+
+func (s *SearchMediaByAILabelRequest) SetCustomFilters(v string) *SearchMediaByAILabelRequest {
+	s.CustomFilters = &v
+	return s
 }
 
 func (s *SearchMediaByAILabelRequest) SetMatchingMode(v string) *SearchMediaByAILabelRequest {
@@ -214,6 +239,11 @@ func (s *SearchMediaByAILabelRequest) SetSpecificSearch(v bool) *SearchMediaByAI
 
 func (s *SearchMediaByAILabelRequest) SetText(v string) *SearchMediaByAILabelRequest {
 	s.Text = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelRequest) SetUtcCreate(v string) *SearchMediaByAILabelRequest {
+	s.UtcCreate = &v
 	return s
 }
 

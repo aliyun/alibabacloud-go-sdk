@@ -18,14 +18,20 @@ type iListAIAgentVoiceprintsRequest interface {
 }
 
 type ListAIAgentVoiceprintsRequest struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Value values: [1,100].
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// A unique identifier for the voiceprint. This parameter is optional. If provided, only the information for that ID is returned. If not specified, all voiceprints under the account are returned.
+	//
 	// example:
 	//
 	// vp_1699123456_8527

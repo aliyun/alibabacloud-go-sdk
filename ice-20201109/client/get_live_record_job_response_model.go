@@ -59,5 +59,10 @@ func (s *GetLiveRecordJobResponse) SetBody(v *GetLiveRecordJobResponseBody) *Get
 }
 
 func (s *GetLiveRecordJobResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

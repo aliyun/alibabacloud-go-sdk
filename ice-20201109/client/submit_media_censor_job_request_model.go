@@ -197,7 +197,17 @@ func (s *SubmitMediaCensorJobRequest) SetUserData(v string) *SubmitMediaCensorJo
 }
 
 func (s *SubmitMediaCensorJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScheduleConfig != nil {
+		if err := s.ScheduleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitMediaCensorJobRequestInput struct {

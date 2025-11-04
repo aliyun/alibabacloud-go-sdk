@@ -18,14 +18,20 @@ type iCloseStreamToSearchLibRequest interface {
 }
 
 type CloseStreamToSearchLibRequest struct {
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The namespace.
+	//
 	// example:
 	//
 	// name-1
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The search library.
+	//
 	// example:
 	//
 	// Stream_xxx

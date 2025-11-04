@@ -104,7 +104,16 @@ func (s *ListAlertsResponseBody) SetTotalCount(v int32) *ListAlertsResponseBody 
 }
 
 func (s *ListAlertsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Alerts != nil {
+		for _, item := range s.Alerts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAlertsResponseBodyAlerts struct {

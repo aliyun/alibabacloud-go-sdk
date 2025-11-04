@@ -104,7 +104,16 @@ func (s *ListChannelAlertsResponseBody) SetTotalCount(v int32) *ListChannelAlert
 }
 
 func (s *ListChannelAlertsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProgramAlerts != nil {
+		for _, item := range s.ProgramAlerts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListChannelAlertsResponseBodyProgramAlerts struct {

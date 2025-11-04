@@ -59,5 +59,10 @@ func (s *BatchCreateVodPackagingAssetResponse) SetBody(v *BatchCreateVodPackagin
 }
 
 func (s *BatchCreateVodPackagingAssetResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

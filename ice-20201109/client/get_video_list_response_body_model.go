@@ -108,7 +108,16 @@ func (s *GetVideoListResponseBody) SetTotal(v int64) *GetVideoListResponseBody {
 }
 
 func (s *GetVideoListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaList != nil {
+		for _, item := range s.MediaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetVideoListResponseBodyMediaList struct {

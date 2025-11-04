@@ -295,7 +295,22 @@ func (s *QueryIProductionJobResponseBody) SetUserData(v string) *QueryIProductio
 }
 
 func (s *QueryIProductionJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScheduleConfig != nil {
+		if err := s.ScheduleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryIProductionJobResponseBodyInput struct {

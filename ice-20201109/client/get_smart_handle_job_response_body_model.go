@@ -168,7 +168,17 @@ func (s *GetSmartHandleJobResponseBody) SetUserData(v string) *GetSmartHandleJob
 }
 
 func (s *GetSmartHandleJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.JobResult != nil {
+		if err := s.JobResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SmartJobInfo != nil {
+		if err := s.SmartJobInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSmartHandleJobResponseBodyJobResult struct {
@@ -365,7 +375,17 @@ func (s *GetSmartHandleJobResponseBodySmartJobInfo) SetUserId(v string) *GetSmar
 }
 
 func (s *GetSmartHandleJobResponseBodySmartJobInfo) Validate() error {
-	return dara.Validate(s)
+	if s.InputConfig != nil {
+		if err := s.InputConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OutputConfig != nil {
+		if err := s.OutputConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSmartHandleJobResponseBodySmartJobInfoInputConfig struct {

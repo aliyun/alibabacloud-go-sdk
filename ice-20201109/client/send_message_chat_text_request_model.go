@@ -26,34 +26,62 @@ type iSendMessageChatTextRequest interface {
 }
 
 type SendMessageChatTextRequest struct {
+	// The ID of the AI agent.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 39f8e0bc005e4f309379701645f4****
 	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	// The mode of message sending. Valid values:
+	//
+	// - online
+	//
+	// - offline
+	//
+	// Default value: offline.
+	//
 	// example:
 	//
 	// online
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// Specifies whether to archive chat records. Default value: true.
+	//
 	// example:
 	//
 	// true
 	NeedArchiving *bool `json:"NeedArchiving,omitempty" xml:"NeedArchiving,omitempty"`
+	// The ID of the user who receives the message. The ID can be up to 64 bytes in length and can contain letters and digits.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 60000042053
 	ReceiverId *string `json:"ReceiverId,omitempty" xml:"ReceiverId,omitempty"`
+	// The ID of the session.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f27f9b9be28642a88e18****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The content of the message.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Hello
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The type of the message. Valid values:
+	//
+	// - announcement: notification.
+	//
+	// - custom: custom message.
+	//
 	// This parameter is required.
 	//
 	// example:

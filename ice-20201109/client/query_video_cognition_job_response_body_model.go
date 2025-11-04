@@ -20,15 +20,30 @@ type iQueryVideoCognitionJobResponseBody interface {
 }
 
 type QueryVideoCognitionJobResponseBody struct {
+	// The status of the task. Valid values:
+	//
+	// 	- **Success**
+	//
+	// 	- **Fail**
+	//
+	// 	- **Processing**
+	//
+	// 	- **Submitted**
+	//
 	// example:
 	//
 	// Success
 	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   *QueryVideoCognitionJobResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// An array of analysis result objects.
+	Results *QueryVideoCognitionJobResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
+	// The user-defined data.
+	//
 	// example:
 	//
 	// {"userId":"123432412831"}
@@ -80,7 +95,12 @@ func (s *QueryVideoCognitionJobResponseBody) SetUserData(v string) *QueryVideoCo
 }
 
 func (s *QueryVideoCognitionJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		if err := s.Results.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryVideoCognitionJobResponseBodyResults struct {
@@ -105,14 +125,39 @@ func (s *QueryVideoCognitionJobResponseBodyResults) SetResult(v []*QueryVideoCog
 }
 
 func (s *QueryVideoCognitionJobResponseBodyResults) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryVideoCognitionJobResponseBodyResultsResult struct {
+	// A JSON string containing the detailed analysis data. The structure of this data depends on the Type field. For details, see the Result parameters section below.
+	//
 	// example:
 	//
 	// {"title":"example-title-****"}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The type of analysis result. Valid values:
+	//
+	// 1.  TextLabel: Tags from text content.
+	//
+	// 2.  VideoLabel: Tags from video content.
+	//
+	// 3.  ASR: Raw speech recognition results. Not returned by default.
+	//
+	// 4.  OCR: Raw text recognition results. Not returned by default.
+	//
+	// 5.  NLP: Natural Language Processing results. Not returned by default.
+	//
+	// 6.  Process: URL to the raw algorithm output. Not returned by default.
+	//
 	// example:
 	//
 	// ASR

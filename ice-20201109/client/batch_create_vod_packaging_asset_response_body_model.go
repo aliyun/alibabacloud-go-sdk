@@ -70,7 +70,16 @@ func (s *BatchCreateVodPackagingAssetResponseBody) SetResultList(v []*BatchCreat
 }
 
 func (s *BatchCreateVodPackagingAssetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultList != nil {
+		for _, item := range s.ResultList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchCreateVodPackagingAssetResponseBodyResultList struct {
@@ -126,5 +135,10 @@ func (s *BatchCreateVodPackagingAssetResponseBodyResultList) SetMessage(v string
 }
 
 func (s *BatchCreateVodPackagingAssetResponseBodyResultList) Validate() error {
-	return dara.Validate(s)
+	if s.Asset != nil {
+		if err := s.Asset.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

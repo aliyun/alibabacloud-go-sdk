@@ -59,5 +59,10 @@ func (s *ListLivePackageChannelsResponse) SetBody(v *ListLivePackageChannelsResp
 }
 
 func (s *ListLivePackageChannelsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

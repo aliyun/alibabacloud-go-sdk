@@ -59,5 +59,10 @@ func (s *ListAIAgentDialoguesResponse) SetBody(v *ListAIAgentDialoguesResponseBo
 }
 
 func (s *ListAIAgentDialoguesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -14,6 +14,8 @@ type iDeleteRecognitionSampleResponseBody interface {
 }
 
 type DeleteRecognitionSampleResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******

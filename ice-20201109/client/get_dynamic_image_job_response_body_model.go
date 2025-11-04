@@ -53,7 +53,12 @@ func (s *GetDynamicImageJobResponseBody) SetRequestId(v string) *GetDynamicImage
 }
 
 func (s *GetDynamicImageJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DynamicImageJob != nil {
+		if err := s.DynamicImageJob.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDynamicImageJobResponseBodyDynamicImageJob struct {
@@ -331,7 +336,17 @@ func (s *GetDynamicImageJobResponseBodyDynamicImageJob) SetUserData(v string) *G
 }
 
 func (s *GetDynamicImageJobResponseBodyDynamicImageJob) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDynamicImageJobResponseBodyDynamicImageJobInput struct {
@@ -397,7 +412,12 @@ func (s *GetDynamicImageJobResponseBodyDynamicImageJobInput) SetType(v string) *
 }
 
 func (s *GetDynamicImageJobResponseBodyDynamicImageJobInput) Validate() error {
-	return dara.Validate(s)
+	if s.OssFile != nil {
+		if err := s.OssFile.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDynamicImageJobResponseBodyDynamicImageJobInputOssFile struct {
@@ -517,7 +537,12 @@ func (s *GetDynamicImageJobResponseBodyDynamicImageJobOutput) SetType(v string) 
 }
 
 func (s *GetDynamicImageJobResponseBodyDynamicImageJobOutput) Validate() error {
-	return dara.Validate(s)
+	if s.OssFile != nil {
+		if err := s.OssFile.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDynamicImageJobResponseBodyDynamicImageJobOutputOssFile struct {

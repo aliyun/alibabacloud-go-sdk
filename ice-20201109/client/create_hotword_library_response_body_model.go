@@ -16,11 +16,13 @@ type iCreateHotwordLibraryResponseBody interface {
 }
 
 type CreateHotwordLibraryResponseBody struct {
+	// The ID of the hotword library.
+	//
 	// example:
 	//
 	// ****96e8864746a0b6f3****
 	HotwordLibraryId *string `json:"HotwordLibraryId,omitempty" xml:"HotwordLibraryId,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -24,25 +24,36 @@ type iSubmitAIAgentVideoAuditTaskShrinkRequest interface {
 }
 
 type SubmitAIAgentVideoAuditTaskShrinkRequest struct {
+	// The ID of the AI agent.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// *******3b3d94abda22******
 	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	// The interval, in milliseconds, at which to submit captured frames to the AI agent. Valid values: 0 to 5000. Default value: 3000. If it is set to 0, all captured frames are sent to the model in a single batch request. Otherwise, frames are sent sequentially with the specified interval between each request.
+	//
 	// example:
 	//
 	// 3000
 	AuditInterval *int32 `json:"AuditInterval,omitempty" xml:"AuditInterval,omitempty"`
+	// Callback configurations.
+	//
 	// example:
 	//
 	// {"Url":"https://yourcallback","Token":"yourtoken"}
 	CallbackConfigShrink *string `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty"`
+	// An array of frame-capturing policies. Each policy defines a set of frames to be analyzed and will generate a separate result from the model.
+	//
 	// This parameter is required.
 	CapturePoliciesShrink *string `json:"CapturePolicies,omitempty" xml:"CapturePolicies,omitempty"`
+	// The details of the input file.
+	//
 	// This parameter is required.
 	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The user-defined data.
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitAIAgentVideoAuditTaskShrinkRequest) String() string {

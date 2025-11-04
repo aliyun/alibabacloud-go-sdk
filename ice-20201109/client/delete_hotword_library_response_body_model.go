@@ -16,13 +16,14 @@ type iDeleteHotwordLibraryResponseBody interface {
 }
 
 type DeleteHotwordLibraryResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// ****83B7-7F87-4792-BFE9-63CD2137****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteHotwordLibraryResponseBody) String() string {

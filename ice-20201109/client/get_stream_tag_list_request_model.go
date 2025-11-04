@@ -30,38 +30,60 @@ type iGetStreamTagListRequest interface {
 }
 
 type GetStreamTagListRequest struct {
+	// The end of the query time range, based on the tagging timestamp. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2017-12-22T08:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ******b48fb04483915d4f2cd8******
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The namespace.
+	//
 	// example:
 	//
 	// name-1
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// ****73f33c91-d59383e8280b****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the search library.
+	//
 	// example:
 	//
 	// Stream_xxx
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+	// The sorting order for the results. Valid values:
+	//
+	// 	- StartTime:Desc (default): Sort by creation time in descending order.
+	//
+	// 	- StartTime:Asc: Sort by creation time in ascending order.
+	//
 	// example:
 	//
 	// StartTime:Asc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The start of the query time range, based on the tagging timestamp. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2025-04-23T02:26:00Z

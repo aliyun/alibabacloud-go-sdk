@@ -121,7 +121,16 @@ func (s *ListLiveSnapshotJobsResponseBody) SetTotalCount(v int64) *ListLiveSnaps
 }
 
 func (s *ListLiveSnapshotJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.JobList != nil {
+		for _, item := range s.JobList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLiveSnapshotJobsResponseBodyJobList struct {
@@ -252,7 +261,12 @@ func (s *ListLiveSnapshotJobsResponseBodyJobList) SetTimeInterval(v int32) *List
 }
 
 func (s *ListLiveSnapshotJobsResponseBodyJobList) Validate() error {
-	return dara.Validate(s)
+	if s.SnapshotOutput != nil {
+		if err := s.SnapshotOutput.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLiveSnapshotJobsResponseBodyJobListSnapshotOutput struct {

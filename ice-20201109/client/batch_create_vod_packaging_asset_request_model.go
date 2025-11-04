@@ -53,7 +53,16 @@ func (s *BatchCreateVodPackagingAssetRequest) SetGroupName(v string) *BatchCreat
 }
 
 func (s *BatchCreateVodPackagingAssetRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Assets != nil {
+		for _, item := range s.Assets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchCreateVodPackagingAssetRequestAssets struct {
@@ -109,7 +118,12 @@ func (s *BatchCreateVodPackagingAssetRequestAssets) SetInput(v *BatchCreateVodPa
 }
 
 func (s *BatchCreateVodPackagingAssetRequestAssets) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BatchCreateVodPackagingAssetRequestAssetsInput struct {

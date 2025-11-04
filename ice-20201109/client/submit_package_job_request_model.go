@@ -100,7 +100,26 @@ func (s *SubmitPackageJobRequest) SetUserData(v string) *SubmitPackageJobRequest
 }
 
 func (s *SubmitPackageJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Inputs != nil {
+		for _, item := range s.Inputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScheduleConfig != nil {
+		if err := s.ScheduleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitPackageJobRequestInputs struct {
@@ -128,7 +147,12 @@ func (s *SubmitPackageJobRequestInputs) SetInput(v *SubmitPackageJobRequestInput
 }
 
 func (s *SubmitPackageJobRequestInputs) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitPackageJobRequestInputsInput struct {

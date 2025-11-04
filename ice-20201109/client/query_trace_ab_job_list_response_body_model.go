@@ -20,17 +20,22 @@ type iQueryTraceAbJobListResponseBody interface {
 }
 
 type QueryTraceAbJobListResponseBody struct {
+	// The data returned.
 	Data []*QueryTraceAbJobListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The message returned.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 200
@@ -82,44 +87,73 @@ func (s *QueryTraceAbJobListResponseBody) SetStatusCode(v int64) *QueryTraceAbJo
 }
 
 func (s *QueryTraceAbJobListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryTraceAbJobListResponseBodyData struct {
+	// The creation time of the job.
+	//
 	// example:
 	//
 	// 1627357322
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The last modification time of the job.
+	//
 	// example:
 	//
 	// 1627357322
-	GmtModified *int64                                    `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Input       *QueryTraceAbJobListResponseBodyDataInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Information about the input video for watermarking.
+	Input *QueryTraceAbJobListResponseBodyDataInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The job ID.
+	//
 	// example:
 	//
 	// bfb786c639894f4d80648792021eff90
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The watermark level.
+	//
 	// example:
 	//
 	// 2
-	Level  *int64                                     `json:"Level,omitempty" xml:"Level,omitempty"`
+	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// Information about the output path for the A/B stream.
 	Output *QueryTraceAbJobListResponseBodyDataOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The job result.
+	//
 	// example:
 	//
 	// {"Code":"success","Message":"ok"}
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The status of the job.
+	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The media ID for the trace watermark.
+	//
 	// example:
 	//
 	// ****437bd2b51105d07b12a9****
 	TraceMediaId *string `json:"TraceMediaId,omitempty" xml:"TraceMediaId,omitempty"`
+	// The user-defined data.
+	//
 	// example:
 	//
 	// 123
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The ID of the user who initiated the job.
+	//
 	// example:
 	//
 	// 13466932****
@@ -234,14 +268,32 @@ func (s *QueryTraceAbJobListResponseBodyData) SetUserId(v int64) *QueryTraceAbJo
 }
 
 func (s *QueryTraceAbJobListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryTraceAbJobListResponseBodyDataInput struct {
+	// The specific input file information.
+	//
 	// example:
 	//
 	// oss://bucket/object
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the input file. Valid values:
+	//
+	// 1.  OSS: an Object Storage Service (OSS) object.
+	//
+	// 2.  Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -279,10 +331,18 @@ func (s *QueryTraceAbJobListResponseBodyDataInput) Validate() error {
 }
 
 type QueryTraceAbJobListResponseBodyDataOutput struct {
+	// The output directory.
+	//
 	// example:
 	//
 	// oss://bucket/dir/
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the output file. Valid values:
+	//
+	// 1.  OSS: an OSS object.
+	//
+	// 2.  Media: a media asset.
+	//
 	// example:
 	//
 	// OSS

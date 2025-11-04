@@ -53,7 +53,16 @@ func (s *ListAllPublicMediaTagsResponseBody) SetRequestId(v string) *ListAllPubl
 }
 
 func (s *ListAllPublicMediaTagsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaTagList != nil {
+		for _, item := range s.MediaTagList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAllPublicMediaTagsResponseBodyMediaTagList struct {
@@ -120,7 +129,16 @@ func (s *ListAllPublicMediaTagsResponseBodyMediaTagList) SetOptions(v []*ListAll
 }
 
 func (s *ListAllPublicMediaTagsResponseBodyMediaTagList) Validate() error {
-	return dara.Validate(s)
+	if s.Options != nil {
+		for _, item := range s.Options {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAllPublicMediaTagsResponseBodyMediaTagListOptions struct {

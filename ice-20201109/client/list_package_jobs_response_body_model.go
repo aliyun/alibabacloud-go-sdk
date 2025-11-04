@@ -53,7 +53,12 @@ func (s *ListPackageJobsResponseBody) SetRequestId(v string) *ListPackageJobsRes
 }
 
 func (s *ListPackageJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PackageJobList != nil {
+		if err := s.PackageJobList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPackageJobsResponseBodyPackageJobList struct {
@@ -94,7 +99,16 @@ func (s *ListPackageJobsResponseBodyPackageJobList) SetPackageJobs(v []*ListPack
 }
 
 func (s *ListPackageJobsResponseBodyPackageJobList) Validate() error {
-	return dara.Validate(s)
+	if s.PackageJobs != nil {
+		for _, item := range s.PackageJobs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPackageJobsResponseBodyPackageJobListPackageJobs struct {
@@ -332,7 +346,21 @@ func (s *ListPackageJobsResponseBodyPackageJobListPackageJobs) SetUserData(v str
 }
 
 func (s *ListPackageJobsResponseBodyPackageJobListPackageJobs) Validate() error {
-	return dara.Validate(s)
+	if s.Inputs != nil {
+		for _, item := range s.Inputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPackageJobsResponseBodyPackageJobListPackageJobsInputs struct {
@@ -358,7 +386,12 @@ func (s *ListPackageJobsResponseBodyPackageJobListPackageJobsInputs) SetInput(v 
 }
 
 func (s *ListPackageJobsResponseBodyPackageJobListPackageJobsInputs) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPackageJobsResponseBodyPackageJobListPackageJobsInputsInput struct {

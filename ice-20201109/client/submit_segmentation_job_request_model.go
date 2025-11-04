@@ -22,11 +22,34 @@ type iSubmitSegmentationJobRequest interface {
 }
 
 type SubmitSegmentationJobRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
 	// example:
 	//
 	// ****12e8864746a0a398****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The input configuration. For detailed parameters, see [InputConfig](~~2874121#cc59ad3082jbx~~).
+	//
+	// example:
+	//
+	// {
+	//
+	// 	"Type": "OSS",
+	//
+	// 	"Media": "http://test-bucket.oss-cn-shanghai.aliyuncs.com/test.mp4"
+	//
+	// }
+	//
+	// or {
+	//
+	// 	"Type": "Media",
+	//
+	// 	"Media": "ce49a020e****1ef81c1e6f6d5686302"
+	//
+	// }
 	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	// The task parameters. For details, see [JobParams](~~2874121#a60357f2d5iix~~).
+	//
 	// example:
 	//
 	// {
@@ -49,6 +72,8 @@ type SubmitSegmentationJobRequest struct {
 	//
 	// }
 	JobParams *string `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
+	// The output configuration. For detailed parameters, see [OutputConfig](~~2874121#cef23186a8d6w~~).
+	//
 	// example:
 	//
 	// {
@@ -67,7 +92,12 @@ type SubmitSegmentationJobRequest struct {
 	//
 	// }
 	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
-	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The user-defined data in the JSON format, which can be up to 512 bytes in length.
+	//
+	// example:
+	//
+	// {"test": "22"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitSegmentationJobRequest) String() string {

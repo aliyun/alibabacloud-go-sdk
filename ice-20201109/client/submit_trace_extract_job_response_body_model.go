@@ -20,17 +20,22 @@ type iSubmitTraceExtractJobResponseBody interface {
 }
 
 type SubmitTraceExtractJobResponseBody struct {
+	// The data returned.
 	Data *SubmitTraceExtractJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 200
@@ -82,10 +87,17 @@ func (s *SubmitTraceExtractJobResponseBody) SetStatusCode(v int64) *SubmitTraceE
 }
 
 func (s *SubmitTraceExtractJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitTraceExtractJobResponseBodyData struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// bfb786c639894f4d80648792021e****

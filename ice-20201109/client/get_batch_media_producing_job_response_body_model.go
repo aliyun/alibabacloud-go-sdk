@@ -53,7 +53,12 @@ func (s *GetBatchMediaProducingJobResponseBody) SetRequestId(v string) *GetBatch
 }
 
 func (s *GetBatchMediaProducingJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EditingBatchJob != nil {
+		if err := s.EditingBatchJob.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBatchMediaProducingJobResponseBodyEditingBatchJob struct {
@@ -309,7 +314,16 @@ func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) SetUserData(v str
 }
 
 func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) Validate() error {
-	return dara.Validate(s)
+	if s.SubJobList != nil {
+		for _, item := range s.SubJobList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList struct {

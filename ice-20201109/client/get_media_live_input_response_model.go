@@ -59,5 +59,10 @@ func (s *GetMediaLiveInputResponse) SetBody(v *GetMediaLiveInputResponseBody) *G
 }
 
 func (s *GetMediaLiveInputResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

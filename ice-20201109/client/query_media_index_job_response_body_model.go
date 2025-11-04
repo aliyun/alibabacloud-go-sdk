@@ -91,7 +91,16 @@ func (s *QueryMediaIndexJobResponseBody) SetSuccess(v string) *QueryMediaIndexJo
 }
 
 func (s *QueryMediaIndexJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IndexJobInfoList != nil {
+		for _, item := range s.IndexJobInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryMediaIndexJobResponseBodyIndexJobInfoList struct {

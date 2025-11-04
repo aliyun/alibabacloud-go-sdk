@@ -59,5 +59,10 @@ func (s *SubmitVideoTranslationJobResponse) SetBody(v *SubmitVideoTranslationJob
 }
 
 func (s *SubmitVideoTranslationJobResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

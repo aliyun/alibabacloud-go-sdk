@@ -30,38 +30,64 @@ type iListHotwordLibrariesRequest interface {
 }
 
 type ListHotwordLibrariesRequest struct {
+	// The end of the time range to query.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:10Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The maximum number of entries to return.
+	//
+	// Default value: 10. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The name of the hotword library.
+	//
 	// example:
 	//
 	// 热词库使用名称
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// ****73f33c91-d59383e8280b****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sorting order. By default, the query results are sorted by creation time in descending order.
+	//
 	// example:
 	//
 	// CreationTime:Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The beginning of the time range to query.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:10Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The usage scenario of the hotword library. Valid values:
+	//
+	// 	- ASR: Automatic Speech Recognition
+	//
+	// 	- StructuredMediaAssets: structured media analysis
+	//
+	// 	- VideoTranslation: Video translation. This field cannot be modified after the hotword library is created.
+	//
 	// example:
 	//
 	// ASR

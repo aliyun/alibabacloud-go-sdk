@@ -16,10 +16,14 @@ type iSubmitProjectExportJobResponseBody interface {
 }
 
 type SubmitProjectExportJobResponseBody struct {
+	// The ID of the project export task.
+	//
 	// example:
 	//
 	// ****cdb3e74639973036bc84****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******

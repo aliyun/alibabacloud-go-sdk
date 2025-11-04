@@ -24,12 +24,26 @@ type iDeleteRecognitionLibRequest interface {
 }
 
 type DeleteRecognitionLibRequest struct {
+	// The type of recognition algorithm. Valid values:
+	//
+	// 	- landmark
+	//
+	// 	- object
+	//
+	// 	- logo
+	//
+	// 	- face
+	//
+	// 	- label
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// landmark
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The ID of the recognition library.
+	//
 	// This parameter is required.
 	//
 	// example:

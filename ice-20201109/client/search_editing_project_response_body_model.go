@@ -108,7 +108,16 @@ func (s *SearchEditingProjectResponseBody) SetTotalCount(v int64) *SearchEditing
 }
 
 func (s *SearchEditingProjectResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProjectList != nil {
+		for _, item := range s.ProjectList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchEditingProjectResponseBodyProjectList struct {

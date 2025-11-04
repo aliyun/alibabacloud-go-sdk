@@ -84,5 +84,15 @@ func (s *UpdateAIAgentInstanceRequest) SetUserData(v string) *UpdateAIAgentInsta
 }
 
 func (s *UpdateAIAgentInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AgentConfig != nil {
+		if err := s.AgentConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TemplateConfig != nil {
+		if err := s.TemplateConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

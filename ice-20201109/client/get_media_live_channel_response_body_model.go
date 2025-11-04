@@ -53,7 +53,12 @@ func (s *GetMediaLiveChannelResponseBody) SetRequestId(v string) *GetMediaLiveCh
 }
 
 func (s *GetMediaLiveChannelResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Channel != nil {
+		if err := s.Channel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMediaLiveChannelResponseBodyChannel struct {
@@ -202,7 +207,43 @@ func (s *GetMediaLiveChannelResponseBodyChannel) SetVideoSettings(v []*GetMediaL
 }
 
 func (s *GetMediaLiveChannelResponseBodyChannel) Validate() error {
-	return dara.Validate(s)
+	if s.AudioSettings != nil {
+		for _, item := range s.AudioSettings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InputAttachments != nil {
+		for _, item := range s.InputAttachments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OutputGroups != nil {
+		for _, item := range s.OutputGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VideoSettings != nil {
+		for _, item := range s.VideoSettings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMediaLiveChannelResponseBodyChannelAudioSettings struct {
@@ -303,7 +344,12 @@ func (s *GetMediaLiveChannelResponseBodyChannelAudioSettings) SetName(v string) 
 }
 
 func (s *GetMediaLiveChannelResponseBodyChannelAudioSettings) Validate() error {
-	return dara.Validate(s)
+	if s.AudioCodecSetting != nil {
+		if err := s.AudioCodecSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMediaLiveChannelResponseBodyChannelAudioSettingsAudioCodecSetting struct {
@@ -436,7 +482,16 @@ func (s *GetMediaLiveChannelResponseBodyChannelInputAttachments) SetLanguageName
 }
 
 func (s *GetMediaLiveChannelResponseBodyChannelInputAttachments) Validate() error {
-	return dara.Validate(s)
+	if s.AudioSelectors != nil {
+		for _, item := range s.AudioSelectors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectors struct {
@@ -501,7 +556,26 @@ func (s *GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectors) S
 }
 
 func (s *GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectors) Validate() error {
-	return dara.Validate(s)
+	if s.AudioLanguageSelection != nil {
+		if err := s.AudioLanguageSelection.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AudioPidSelection != nil {
+		if err := s.AudioPidSelection.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AudioTrackSelection != nil {
+		for _, item := range s.AudioTrackSelection {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioLanguageSelection struct {
@@ -679,7 +753,21 @@ func (s *GetMediaLiveChannelResponseBodyChannelOutputGroups) SetType(v string) *
 }
 
 func (s *GetMediaLiveChannelResponseBodyChannelOutputGroups) Validate() error {
-	return dara.Validate(s)
+	if s.MediaPackageGroupSetting != nil {
+		if err := s.MediaPackageGroupSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Outputs != nil {
+		for _, item := range s.Outputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMediaLiveChannelResponseBodyChannelOutputGroupsMediaPackageGroupSetting struct {
@@ -806,7 +894,12 @@ func (s *GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputs) SetVideoSett
 }
 
 func (s *GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputs) Validate() error {
-	return dara.Validate(s)
+	if s.MediaPackageOutputSetting != nil {
+		if err := s.MediaPackageOutputSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputsMediaPackageOutputSetting struct {
@@ -952,7 +1045,12 @@ func (s *GetMediaLiveChannelResponseBodyChannelVideoSettings) SetWidth(v int32) 
 }
 
 func (s *GetMediaLiveChannelResponseBodyChannelVideoSettings) Validate() error {
-	return dara.Validate(s)
+	if s.VideoCodecSetting != nil {
+		if err := s.VideoCodecSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting struct {
@@ -1011,7 +1109,27 @@ func (s *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting) S
 }
 
 func (s *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting) Validate() error {
-	return dara.Validate(s)
+	if s.CodecDetail != nil {
+		if err := s.CodecDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Framerate != nil {
+		if err := s.Framerate.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Gop != nil {
+		if err := s.Gop.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rate != nil {
+		if err := s.Rate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingCodecDetail struct {

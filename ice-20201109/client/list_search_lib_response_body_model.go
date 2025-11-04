@@ -104,7 +104,16 @@ func (s *ListSearchLibResponseBody) SetTotal(v int64) *ListSearchLibResponseBody
 }
 
 func (s *ListSearchLibResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SearchLibInfoList != nil {
+		for _, item := range s.SearchLibInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSearchLibResponseBodySearchLibInfoList struct {
@@ -165,7 +174,16 @@ func (s *ListSearchLibResponseBodySearchLibInfoList) SetStatus(v string) *ListSe
 }
 
 func (s *ListSearchLibResponseBodySearchLibInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.IndexInfo != nil {
+		for _, item := range s.IndexInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSearchLibResponseBodySearchLibInfoListIndexInfo struct {

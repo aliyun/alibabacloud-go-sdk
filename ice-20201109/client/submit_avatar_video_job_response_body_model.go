@@ -18,15 +18,19 @@ type iSubmitAvatarVideoJobResponseBody interface {
 }
 
 type SubmitAvatarVideoJobResponseBody struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The media asset ID of the output file.
+	//
 	// example:
 	//
 	// ******70dcc471edaf00e6f6f4******
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

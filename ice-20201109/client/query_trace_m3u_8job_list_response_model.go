@@ -59,5 +59,10 @@ func (s *QueryTraceM3u8JobListResponse) SetBody(v *QueryTraceM3u8JobListResponse
 }
 
 func (s *QueryTraceM3u8JobListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

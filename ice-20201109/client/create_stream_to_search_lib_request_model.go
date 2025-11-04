@@ -18,14 +18,20 @@ type iCreateStreamToSearchLibRequest interface {
 }
 
 type CreateStreamToSearchLibRequest struct {
+	// The URL of the live stream to be ingested and analyzed.
+	//
 	// example:
 	//
 	// rtmp://xxx
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The namespace.
+	//
 	// example:
 	//
 	// name-1
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The search library.
+	//
 	// example:
 	//
 	// Stream_xxx

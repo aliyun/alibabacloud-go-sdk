@@ -85,7 +85,17 @@ func (s *SubmitMediaInfoJobRequest) SetUserData(v string) *SubmitMediaInfoJobReq
 }
 
 func (s *SubmitMediaInfoJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScheduleConfig != nil {
+		if err := s.ScheduleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitMediaInfoJobRequestInput struct {

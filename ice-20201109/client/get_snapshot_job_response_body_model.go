@@ -53,7 +53,12 @@ func (s *GetSnapshotJobResponseBody) SetSnapshotJob(v *GetSnapshotJobResponseBod
 }
 
 func (s *GetSnapshotJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SnapshotJob != nil {
+		if err := s.SnapshotJob.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSnapshotJobResponseBodySnapshotJob struct {
@@ -365,7 +370,17 @@ func (s *GetSnapshotJobResponseBodySnapshotJob) SetUserData(v string) *GetSnapsh
 }
 
 func (s *GetSnapshotJobResponseBodySnapshotJob) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSnapshotJobResponseBodySnapshotJobInput struct {
@@ -429,7 +444,12 @@ func (s *GetSnapshotJobResponseBodySnapshotJobInput) SetType(v string) *GetSnaps
 }
 
 func (s *GetSnapshotJobResponseBodySnapshotJobInput) Validate() error {
-	return dara.Validate(s)
+	if s.OssFile != nil {
+		if err := s.OssFile.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSnapshotJobResponseBodySnapshotJobInputOssFile struct {
@@ -555,7 +575,12 @@ func (s *GetSnapshotJobResponseBodySnapshotJobOutput) SetType(v string) *GetSnap
 }
 
 func (s *GetSnapshotJobResponseBodySnapshotJobOutput) Validate() error {
-	return dara.Validate(s)
+	if s.OssFile != nil {
+		if err := s.OssFile.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSnapshotJobResponseBodySnapshotJobOutputOssFile struct {

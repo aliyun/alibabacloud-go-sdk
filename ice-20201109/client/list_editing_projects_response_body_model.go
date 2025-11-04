@@ -89,7 +89,16 @@ func (s *ListEditingProjectsResponseBody) SetRequestId(v string) *ListEditingPro
 }
 
 func (s *ListEditingProjectsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProjectList != nil {
+		for _, item := range s.ProjectList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEditingProjectsResponseBodyProjectList struct {

@@ -26,31 +26,47 @@ type iListAIAgentDialoguesRequest interface {
 }
 
 type ListAIAgentDialoguesRequest struct {
+	// Specify the end of the time range to query using a UNIX timestamp accurate to milliseconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 17358082464030
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The sorting order. Valid values:
+	//
+	// - DESC: descending order (default)
+	//
+	// - ASC: ascending order
+	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RoundLimit *string `json:"RoundLimit,omitempty" xml:"RoundLimit,omitempty"`
+	// The session ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f27f9b9be28642a88e18****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Specify the start of the time range to query using a UNIX timestamp accurate to milliseconds.
+	//
 	// This parameter is required.
 	//
 	// example:

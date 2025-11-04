@@ -18,14 +18,19 @@ type iListAIAgentVoiceprintsResponseBody interface {
 }
 
 type ListAIAgentVoiceprintsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of voiceprints that match the query criteria.
+	//
 	// example:
 	//
 	// 2
-	TotalCount  *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The voiceprints.
 	Voiceprints []*ListAIAgentVoiceprintsResponseBodyVoiceprints `json:"Voiceprints,omitempty" xml:"Voiceprints,omitempty" type:"Repeated"`
 }
 
@@ -65,18 +70,33 @@ func (s *ListAIAgentVoiceprintsResponseBody) SetVoiceprints(v []*ListAIAgentVoic
 }
 
 func (s *ListAIAgentVoiceprintsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Voiceprints != nil {
+		for _, item := range s.Voiceprints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAIAgentVoiceprintsResponseBodyVoiceprints struct {
+	// The creation time of the voiceprint.
+	//
 	// example:
 	//
 	// 2025-07-28T10:03:58.000+00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The last modification time of the voiceprint.
+	//
 	// example:
 	//
 	// 2025-07-28T10:03:58.000+00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The unique identifier for the voiceprint.
+	//
 	// example:
 	//
 	// vp_1699123456_8527

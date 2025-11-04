@@ -53,7 +53,12 @@ func (s *GetMediaLiveInputSecurityGroupResponseBody) SetSecurityGroup(v *GetMedi
 }
 
 func (s *GetMediaLiveInputSecurityGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityGroup != nil {
+		if err := s.SecurityGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMediaLiveInputSecurityGroupResponseBodySecurityGroup struct {

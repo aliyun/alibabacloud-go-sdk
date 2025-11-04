@@ -118,7 +118,12 @@ func (s *StartRtcRobotInstanceRequest) SetUserId(v string) *StartRtcRobotInstanc
 }
 
 func (s *StartRtcRobotInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartRtcRobotInstanceRequestConfig struct {

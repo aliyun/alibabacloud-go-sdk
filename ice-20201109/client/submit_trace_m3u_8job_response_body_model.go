@@ -18,7 +18,10 @@ type iSubmitTraceM3u8JobResponseBody interface {
 }
 
 type SubmitTraceM3u8JobResponseBody struct {
+	// The data returned.
 	Data *SubmitTraceM3u8JobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// ok
@@ -67,10 +70,17 @@ func (s *SubmitTraceM3u8JobResponseBody) SetRequestId(v string) *SubmitTraceM3u8
 }
 
 func (s *SubmitTraceM3u8JobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitTraceM3u8JobResponseBodyData struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// bfb786c639894f4d8064879202****

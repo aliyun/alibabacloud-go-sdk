@@ -59,5 +59,19 @@ func (s *MediaConvertOutputGroup) SetOutputs(v []*MediaConvertOutputGroupOutput)
 }
 
 func (s *MediaConvertOutputGroup) Validate() error {
-	return dara.Validate(s)
+	if s.GroupConfig != nil {
+		if err := s.GroupConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Outputs != nil {
+		for _, item := range s.Outputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

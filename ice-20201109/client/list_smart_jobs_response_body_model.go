@@ -104,7 +104,16 @@ func (s *ListSmartJobsResponseBody) SetTotalCount(v string) *ListSmartJobsRespon
 }
 
 func (s *ListSmartJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SmartJobList != nil {
+		for _, item := range s.SmartJobList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSmartJobsResponseBodySmartJobList struct {
@@ -309,7 +318,17 @@ func (s *ListSmartJobsResponseBodySmartJobList) SetUserId(v int64) *ListSmartJob
 }
 
 func (s *ListSmartJobsResponseBodySmartJobList) Validate() error {
-	return dara.Validate(s)
+	if s.InputConfig != nil {
+		if err := s.InputConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OutputConfig != nil {
+		if err := s.OutputConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSmartJobsResponseBodySmartJobListInputConfig struct {

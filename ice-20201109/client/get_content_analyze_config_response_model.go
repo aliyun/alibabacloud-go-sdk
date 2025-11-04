@@ -59,5 +59,10 @@ func (s *GetContentAnalyzeConfigResponse) SetBody(v *GetContentAnalyzeConfigResp
 }
 
 func (s *GetContentAnalyzeConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

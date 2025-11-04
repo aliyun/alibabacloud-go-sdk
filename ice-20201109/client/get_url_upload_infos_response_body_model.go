@@ -66,7 +66,16 @@ func (s *GetUrlUploadInfosResponseBody) SetURLUploadInfoList(v []*GetUrlUploadIn
 }
 
 func (s *GetUrlUploadInfosResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.URLUploadInfoList != nil {
+		for _, item := range s.URLUploadInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetUrlUploadInfosResponseBodyURLUploadInfoList struct {

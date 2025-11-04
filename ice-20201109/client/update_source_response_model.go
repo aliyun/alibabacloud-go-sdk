@@ -59,5 +59,10 @@ func (s *UpdateSourceResponse) SetBody(v *UpdateSourceResponseBody) *UpdateSourc
 }
 
 func (s *UpdateSourceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -70,7 +70,16 @@ func (s *ListCustomTemplatesResponseBody) SetTotal(v int32) *ListCustomTemplates
 }
 
 func (s *ListCustomTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CustomTemplateList != nil {
+		for _, item := range s.CustomTemplateList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCustomTemplatesResponseBodyCustomTemplateList struct {
@@ -270,7 +279,12 @@ func (s *ListCustomTemplatesResponseBodyCustomTemplateList) SetTypeName(v string
 }
 
 func (s *ListCustomTemplatesResponseBodyCustomTemplateList) Validate() error {
-	return dara.Validate(s)
+	if s.FrontendHint != nil {
+		if err := s.FrontendHint.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCustomTemplatesResponseBodyCustomTemplateListFrontendHint struct {
@@ -295,7 +309,12 @@ func (s *ListCustomTemplatesResponseBodyCustomTemplateListFrontendHint) SetTrans
 }
 
 func (s *ListCustomTemplatesResponseBodyCustomTemplateListFrontendHint) Validate() error {
-	return dara.Validate(s)
+	if s.TranscodeTemplateHint != nil {
+		if err := s.TranscodeTemplateHint.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCustomTemplatesResponseBodyCustomTemplateListFrontendHintTranscodeTemplateHint struct {

@@ -22,19 +22,28 @@ type iListHotwordLibrariesResponseBody interface {
 }
 
 type ListHotwordLibrariesResponseBody struct {
+	// The hotword libraries.
 	HotwordLibraryList []*ListHotwordLibrariesResponseBodyHotwordLibraryList `json:"HotwordLibraryList,omitempty" xml:"HotwordLibraryList,omitempty" type:"Repeated"`
+	// The maximum number of hotword libraries that can be returned.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token that can be used in the next request to retrieve a new page of results. If it is empty, all results are returned.
+	//
 	// example:
 	//
 	// CBB6BC61D08
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ****9262E3DA-07FA-4862-FCBB6BC61D08*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of hotword libraries.
+	//
 	// example:
 	//
 	// 20
@@ -95,27 +104,53 @@ func (s *ListHotwordLibrariesResponseBody) SetTotalCount(v int32) *ListHotwordLi
 }
 
 func (s *ListHotwordLibrariesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HotwordLibraryList != nil {
+		for _, item := range s.HotwordLibraryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListHotwordLibrariesResponseBodyHotwordLibraryList struct {
+	// The time when the hotword library was created.
+	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the hotword library. It can be up to 200 characters in length.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the hotword library.
+	//
 	// example:
 	//
 	// a93b91141c0f422fa114af203f8b****
 	HotwordLibraryId *string `json:"HotwordLibraryId,omitempty" xml:"HotwordLibraryId,omitempty"`
+	// The time when the hotword library was last modified.
+	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The name of the hotword library.
+	//
 	// example:
 	//
 	// my_hotwords
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The usage scenario of the hotword library. Valid values:
+	//
+	// 	- ASR: Automatic Speech Recognition
+	//
+	// 	- StructuredMediaAssets: structured media analysis
+	//
+	// 	- VideoTranslation: Video translation This field cannot be modified after the hotword library is created.
+	//
 	// example:
 	//
 	// ASR

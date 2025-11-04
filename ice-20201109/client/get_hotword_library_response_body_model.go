@@ -26,29 +26,40 @@ type iGetHotwordLibraryResponseBody interface {
 }
 
 type GetHotwordLibraryResponseBody struct {
+	// The time when the hotword library was created.
+	//
 	// example:
 	//
 	// 2020-12-23T13:33:49Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The description of the hotword library.
+	//
 	// example:
 	//
 	// 热词库描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the hotword library.
+	//
 	// example:
 	//
 	// ****05512043f49f697f7425****
-	HotwordLibraryId *string    `json:"HotwordLibraryId,omitempty" xml:"HotwordLibraryId,omitempty"`
-	Hotwords         []*Hotword `json:"Hotwords,omitempty" xml:"Hotwords,omitempty" type:"Repeated"`
+	HotwordLibraryId *string `json:"HotwordLibraryId,omitempty" xml:"HotwordLibraryId,omitempty"`
+	// The hotword list.
+	Hotwords []*Hotword `json:"Hotwords,omitempty" xml:"Hotwords,omitempty" type:"Repeated"`
+	// The name of the hotword library.
+	//
 	// example:
 	//
 	// 热词库名称
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// ****12e8864746a0a398****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The usage scenario of the hotword library.
+	//
 	// example:
 	//
 	// ASR
@@ -127,5 +138,14 @@ func (s *GetHotwordLibraryResponseBody) SetUsageScenario(v string) *GetHotwordLi
 }
 
 func (s *GetHotwordLibraryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Hotwords != nil {
+		for _, item := range s.Hotwords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

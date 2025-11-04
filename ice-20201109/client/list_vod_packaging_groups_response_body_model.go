@@ -125,5 +125,14 @@ func (s *ListVodPackagingGroupsResponseBody) SetTotalCount(v int64) *ListVodPack
 }
 
 func (s *ListVodPackagingGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PackagingGroups != nil {
+		for _, item := range s.PackagingGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

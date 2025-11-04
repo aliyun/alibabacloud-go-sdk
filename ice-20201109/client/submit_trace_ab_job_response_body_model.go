@@ -20,17 +20,22 @@ type iSubmitTraceAbJobResponseBody interface {
 }
 
 type SubmitTraceAbJobResponseBody struct {
+	// The data returned.
 	Data *SubmitTraceAbJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// ******36-3C1E-4417-BDB2-1E034F******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 200
@@ -82,14 +87,23 @@ func (s *SubmitTraceAbJobResponseBody) SetStatusCode(v int64) *SubmitTraceAbJobR
 }
 
 func (s *SubmitTraceAbJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitTraceAbJobResponseBodyData struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// bfb786c639894f4d80648792021e****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The media ID.
+	//
 	// example:
 	//
 	// bf53333264f4d80648792021e****

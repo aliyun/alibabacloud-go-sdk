@@ -59,5 +59,10 @@ func (s *SubmitTraceM3u8JobResponse) SetBody(v *SubmitTraceM3u8JobResponseBody) 
 }
 
 func (s *SubmitTraceM3u8JobResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

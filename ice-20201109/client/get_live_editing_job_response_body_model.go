@@ -53,7 +53,12 @@ func (s *GetLiveEditingJobResponseBody) SetRequestId(v string) *GetLiveEditingJo
 }
 
 func (s *GetLiveEditingJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LiveEditingJob != nil {
+		if err := s.LiveEditingJob.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLiveEditingJobResponseBodyLiveEditingJob struct {
@@ -281,7 +286,22 @@ func (s *GetLiveEditingJobResponseBodyLiveEditingJob) SetUserData(v string) *Get
 }
 
 func (s *GetLiveEditingJobResponseBodyLiveEditingJob) Validate() error {
-	return dara.Validate(s)
+	if s.LiveStreamConfig != nil {
+		if err := s.LiveStreamConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MediaProduceConfig != nil {
+		if err := s.MediaProduceConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OutputMediaConfig != nil {
+		if err := s.OutputMediaConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig struct {

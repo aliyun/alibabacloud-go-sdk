@@ -30,46 +30,84 @@ type iDescribePlayListRequest interface {
 }
 
 type DescribePlayListRequest struct {
+	// The beginning of the time range to query. By default, the system queries data of the current day.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1676170500011
 	BeginTs *string `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
+	// The end of the time range to query. The time range cannot exceed 24 hours.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1682474405173
 	EndTs *string `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	// The criteria by which the sorting is performed. Valid values:
+	//
+	// - FirstFrameDuration
+	//
+	// - PlayDuration
+	//
+	// - VideoDuration
+	//
+	// - StuckDuration
+	//
 	// example:
 	//
 	// FirstFrameDuration
 	OrderName *string `json:"OrderName,omitempty" xml:"OrderName,omitempty"`
+	// The sort order. Valid values:
+	//
+	// - DESC: descending order.
+	//
+	// - ASC: ascending order.
+	//
 	// example:
 	//
 	// DESC
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The playback type. Valid value:
+	//
+	// - vod
+	//
 	// example:
 	//
 	// vod
 	PlayType *string `json:"PlayType,omitempty" xml:"PlayType,omitempty"`
+	// The playback status. Valid values:
+	//
+	// - complete
+	//
+	// - playing
+	//
+	// - unusual: A playback error occurs.
+	//
 	// example:
 	//
 	// complete
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The TraceId of the player.
+	//
 	// example:
 	//
 	// 0bc5e70516766285805381012d271e

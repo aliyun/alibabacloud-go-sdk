@@ -26,13 +26,28 @@ type iCreateRecognitionLibRequest interface {
 }
 
 type CreateRecognitionLibRequest struct {
+	// The type of recognition algorithm. Valid values:
+	//
+	// 	- landmark
+	//
+	// 	- object
+	//
+	// 	- logo
+	//
+	// 	- face
+	//
+	// 	- label
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// landmark
-	Algorithm      *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The description of the recognition library. Max length: 128 bytes.
 	LibDescription *string `json:"LibDescription,omitempty" xml:"LibDescription,omitempty"`
+	// The name of the recognition library. Max length: 64 bytes.
+	//
 	// This parameter is required.
 	LibName              *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`

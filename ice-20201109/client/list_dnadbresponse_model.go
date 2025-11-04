@@ -59,5 +59,10 @@ func (s *ListDNADBResponse) SetBody(v *ListDNADBResponseBody) *ListDNADBResponse
 }
 
 func (s *ListDNADBResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

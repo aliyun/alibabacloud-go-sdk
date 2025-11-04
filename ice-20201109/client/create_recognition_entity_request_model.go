@@ -28,15 +28,32 @@ type iCreateRecognitionEntityRequest interface {
 }
 
 type CreateRecognitionEntityRequest struct {
+	// The type of recognition algorithm. Valid values:
+	//
+	// 	- landmark
+	//
+	// 	- object
+	//
+	// 	- logo
+	//
+	// 	- face
+	//
+	// 	- label
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// landmark
-	Algorithm  *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The extra information about the custom entity, provided as a JSON string. Max length: 256 bytes.
 	EntityInfo *string `json:"EntityInfo,omitempty" xml:"EntityInfo,omitempty"`
+	// The name of the custom entity. Max length: 64 bytes.
+	//
 	// This parameter is required.
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	// The ID of the recognition library.
+	//
 	// This parameter is required.
 	//
 	// example:

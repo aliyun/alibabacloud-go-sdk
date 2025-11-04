@@ -104,7 +104,16 @@ func (s *ListMediaLiveInputsResponseBody) SetTotalCount(v int32) *ListMediaLiveI
 }
 
 func (s *ListMediaLiveInputsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Inputs != nil {
+		for _, item := range s.Inputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMediaLiveInputsResponseBodyInputs struct {
@@ -212,7 +221,16 @@ func (s *ListMediaLiveInputsResponseBodyInputs) SetType(v string) *ListMediaLive
 }
 
 func (s *ListMediaLiveInputsResponseBodyInputs) Validate() error {
-	return dara.Validate(s)
+	if s.InputInfos != nil {
+		for _, item := range s.InputInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMediaLiveInputsResponseBodyInputsInputInfos struct {

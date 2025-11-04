@@ -53,7 +53,12 @@ func (s *GetMediaLiveInputResponseBody) SetRequestId(v string) *GetMediaLiveInpu
 }
 
 func (s *GetMediaLiveInputResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMediaLiveInputResponseBodyInput struct {
@@ -161,7 +166,16 @@ func (s *GetMediaLiveInputResponseBodyInput) SetType(v string) *GetMediaLiveInpu
 }
 
 func (s *GetMediaLiveInputResponseBodyInput) Validate() error {
-	return dara.Validate(s)
+	if s.InputInfos != nil {
+		for _, item := range s.InputInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMediaLiveInputResponseBodyInputInputInfos struct {

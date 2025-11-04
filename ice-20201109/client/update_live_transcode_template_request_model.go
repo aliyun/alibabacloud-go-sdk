@@ -68,7 +68,12 @@ func (s *UpdateLiveTranscodeTemplateRequest) SetTemplateId(v string) *UpdateLive
 }
 
 func (s *UpdateLiveTranscodeTemplateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TemplateConfig != nil {
+		if err := s.TemplateConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateLiveTranscodeTemplateRequestTemplateConfig struct {
@@ -105,7 +110,17 @@ func (s *UpdateLiveTranscodeTemplateRequestTemplateConfig) SetVideoParams(v *Upd
 }
 
 func (s *UpdateLiveTranscodeTemplateRequestTemplateConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AudioParams != nil {
+		if err := s.AudioParams.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoParams != nil {
+		if err := s.VideoParams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateLiveTranscodeTemplateRequestTemplateConfigAudioParams struct {

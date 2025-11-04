@@ -59,5 +59,10 @@ func (s *SubmitMediaAiAnalysisJobResponse) SetBody(v *SubmitMediaAiAnalysisJobRe
 }
 
 func (s *SubmitMediaAiAnalysisJobResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

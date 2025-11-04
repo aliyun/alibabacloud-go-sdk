@@ -127,7 +127,16 @@ func (s *ListLiveRecordTemplatesResponseBody) SetTotalCount(v int64) *ListLiveRe
 }
 
 func (s *ListLiveRecordTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RecordTemplateList != nil {
+		for _, item := range s.RecordTemplateList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLiveRecordTemplatesResponseBodyRecordTemplateList struct {
@@ -232,7 +241,16 @@ func (s *ListLiveRecordTemplatesResponseBodyRecordTemplateList) SetType(v string
 }
 
 func (s *ListLiveRecordTemplatesResponseBodyRecordTemplateList) Validate() error {
-	return dara.Validate(s)
+	if s.RecordFormatList != nil {
+		for _, item := range s.RecordFormatList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList struct {

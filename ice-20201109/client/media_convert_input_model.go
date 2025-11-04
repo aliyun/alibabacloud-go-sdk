@@ -47,5 +47,10 @@ func (s *MediaConvertInput) SetName(v string) *MediaConvertInput {
 }
 
 func (s *MediaConvertInput) Validate() error {
-	return dara.Validate(s)
+	if s.InputFile != nil {
+		if err := s.InputFile.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

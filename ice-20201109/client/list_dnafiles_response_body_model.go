@@ -70,7 +70,16 @@ func (s *ListDNAFilesResponseBody) SetRequestId(v string) *ListDNAFilesResponseB
 }
 
 func (s *ListDNAFilesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FileList != nil {
+		for _, item := range s.FileList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDNAFilesResponseBodyFileList struct {
@@ -111,7 +120,12 @@ func (s *ListDNAFilesResponseBodyFileList) SetPrimaryKey(v string) *ListDNAFiles
 }
 
 func (s *ListDNAFilesResponseBodyFileList) Validate() error {
-	return dara.Validate(s)
+	if s.InputFile != nil {
+		if err := s.InputFile.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDNAFilesResponseBodyFileListInputFile struct {

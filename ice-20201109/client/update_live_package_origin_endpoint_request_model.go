@@ -209,5 +209,10 @@ func (s *UpdateLivePackageOriginEndpointRequest) SetTimeshiftVision(v int32) *Up
 }
 
 func (s *UpdateLivePackageOriginEndpointRequest) Validate() error {
-	return dara.Validate(s)
+	if s.LivePackagingConfig != nil {
+		if err := s.LivePackagingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

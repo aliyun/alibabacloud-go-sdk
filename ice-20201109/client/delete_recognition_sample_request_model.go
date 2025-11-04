@@ -28,18 +28,34 @@ type iDeleteRecognitionSampleRequest interface {
 }
 
 type DeleteRecognitionSampleRequest struct {
+	// The type of recognition algorithm. Valid values:
+	//
+	// 	- landmark
+	//
+	// 	- object
+	//
+	// 	- logo
+	//
+	// 	- face
+	//
+	// 	- label
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// landmark
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The ID of the entity.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// **************544cb84754************
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The ID of the recognition library.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -50,6 +66,8 @@ type DeleteRecognitionSampleRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the sample that you want to delete.
+	//
 	// This parameter is required.
 	//
 	// example:

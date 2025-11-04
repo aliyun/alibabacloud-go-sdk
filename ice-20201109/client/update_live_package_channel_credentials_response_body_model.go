@@ -53,7 +53,16 @@ func (s *UpdateLivePackageChannelCredentialsResponseBody) SetRequestId(v string)
 }
 
 func (s *UpdateLivePackageChannelCredentialsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IngestEndpoints != nil {
+		for _, item := range s.IngestEndpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateLivePackageChannelCredentialsResponseBodyIngestEndpoints struct {

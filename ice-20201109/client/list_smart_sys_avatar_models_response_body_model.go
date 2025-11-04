@@ -70,7 +70,16 @@ func (s *ListSmartSysAvatarModelsResponseBody) SetTotalCount(v int32) *ListSmart
 }
 
 func (s *ListSmartSysAvatarModelsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SmartSysAvatarModelList != nil {
+		for _, item := range s.SmartSysAvatarModelList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList struct {

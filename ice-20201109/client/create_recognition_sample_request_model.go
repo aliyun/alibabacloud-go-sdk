@@ -30,23 +30,42 @@ type iCreateRecognitionSampleRequest interface {
 }
 
 type CreateRecognitionSampleRequest struct {
+	// The type of recognition this sample is for.
+	//
+	// 	- landmark
+	//
+	// 	- object
+	//
+	// 	- logo
+	//
+	// 	- face
+	//
+	// 	- label
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// landmark
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The ID of the specific entity within the library.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// **************544cb84754************
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The URL of the sample image.
+	//
 	// example:
 	//
 	// https://example.com/sample.png
-	ImageUrl    *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The custom text label.
 	LabelPrompt *string `json:"LabelPrompt,omitempty" xml:"LabelPrompt,omitempty"`
+	// The ID of the recognition library.
+	//
 	// This parameter is required.
 	//
 	// example:

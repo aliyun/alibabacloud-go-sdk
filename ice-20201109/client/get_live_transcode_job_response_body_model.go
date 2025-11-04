@@ -53,7 +53,12 @@ func (s *GetLiveTranscodeJobResponseBody) SetRequestId(v string) *GetLiveTransco
 }
 
 func (s *GetLiveTranscodeJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Job != nil {
+		if err := s.Job.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLiveTranscodeJobResponseBodyJob struct {
@@ -216,7 +221,17 @@ func (s *GetLiveTranscodeJobResponseBodyJob) SetTemplateType(v string) *GetLiveT
 }
 
 func (s *GetLiveTranscodeJobResponseBodyJob) Validate() error {
-	return dara.Validate(s)
+	if s.OutputStream != nil {
+		if err := s.OutputStream.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StreamInput != nil {
+		if err := s.StreamInput.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLiveTranscodeJobResponseBodyJobOutputStream struct {
@@ -242,7 +257,16 @@ func (s *GetLiveTranscodeJobResponseBodyJobOutputStream) SetStreamInfos(v []*Get
 }
 
 func (s *GetLiveTranscodeJobResponseBodyJobOutputStream) Validate() error {
-	return dara.Validate(s)
+	if s.StreamInfos != nil {
+		for _, item := range s.StreamInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLiveTranscodeJobResponseBodyJobOutputStreamStreamInfos struct {

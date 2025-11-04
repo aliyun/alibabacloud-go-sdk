@@ -53,7 +53,12 @@ func (s *DecryptKMSDataKeyResponseBody) SetRequestId(v string) *DecryptKMSDataKe
 }
 
 func (s *DecryptKMSDataKeyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataKey != nil {
+		if err := s.DataKey.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DecryptKMSDataKeyResponseBodyDataKey struct {

@@ -59,5 +59,10 @@ func (s *SubmitStandardCustomizedVoiceJobResponse) SetBody(v *SubmitStandardCust
 }
 
 func (s *SubmitStandardCustomizedVoiceJobResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

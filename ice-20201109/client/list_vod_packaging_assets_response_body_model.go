@@ -125,7 +125,16 @@ func (s *ListVodPackagingAssetsResponseBody) SetTotalCount(v int32) *ListVodPack
 }
 
 func (s *ListVodPackagingAssetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Assets != nil {
+		for _, item := range s.Assets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVodPackagingAssetsResponseBodyAssets struct {
@@ -211,7 +220,12 @@ func (s *ListVodPackagingAssetsResponseBodyAssets) SetInput(v *ListVodPackagingA
 }
 
 func (s *ListVodPackagingAssetsResponseBodyAssets) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListVodPackagingAssetsResponseBodyAssetsInput struct {

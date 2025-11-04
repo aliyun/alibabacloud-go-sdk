@@ -59,5 +59,10 @@ func (s *SendLiveSnapshotJobCommandResponse) SetBody(v *SendLiveSnapshotJobComma
 }
 
 func (s *SendLiveSnapshotJobCommandResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

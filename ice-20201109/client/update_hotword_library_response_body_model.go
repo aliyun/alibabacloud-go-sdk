@@ -16,10 +16,14 @@ type iUpdateHotwordLibraryResponseBody interface {
 }
 
 type UpdateHotwordLibraryResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// *3B-0E1A-586A-AC29-742247*
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the hotword library.
+	//
 	// example:
 	//
 	// ****96e8864746a0b6f3****

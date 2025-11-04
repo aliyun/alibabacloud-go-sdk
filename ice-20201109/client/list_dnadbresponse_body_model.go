@@ -53,7 +53,16 @@ func (s *ListDNADBResponseBody) SetRequestId(v string) *ListDNADBResponseBody {
 }
 
 func (s *ListDNADBResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBList != nil {
+		for _, item := range s.DBList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDNADBResponseBodyDBList struct {

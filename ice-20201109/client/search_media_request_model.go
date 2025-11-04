@@ -9,6 +9,8 @@ type iSearchMediaRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCustomFilters(v string) *SearchMediaRequest
+	GetCustomFilters() *string
 	SetEntityId(v string) *SearchMediaRequest
 	GetEntityId() *string
 	SetMatch(v string) *SearchMediaRequest
@@ -26,6 +28,10 @@ type iSearchMediaRequest interface {
 }
 
 type SearchMediaRequest struct {
+	// example:
+	//
+	// {}
+	CustomFilters *string `json:"CustomFilters,omitempty" xml:"CustomFilters,omitempty"`
 	// The ID of the entity.
 	//
 	// example:
@@ -76,6 +82,10 @@ func (s SearchMediaRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SearchMediaRequest) GetCustomFilters() *string {
+	return s.CustomFilters
+}
+
 func (s *SearchMediaRequest) GetEntityId() *string {
 	return s.EntityId
 }
@@ -102,6 +112,11 @@ func (s *SearchMediaRequest) GetSearchLibName() *string {
 
 func (s *SearchMediaRequest) GetSortBy() *string {
 	return s.SortBy
+}
+
+func (s *SearchMediaRequest) SetCustomFilters(v string) *SearchMediaRequest {
+	s.CustomFilters = &v
+	return s
 }
 
 func (s *SearchMediaRequest) SetEntityId(v string) *SearchMediaRequest {

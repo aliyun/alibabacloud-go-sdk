@@ -14,6 +14,8 @@ type iClearAIAgentVoiceprintRequest interface {
 }
 
 type ClearAIAgentVoiceprintRequest struct {
+	// The unique identifier for the voiceprint.
+	//
 	// example:
 	//
 	// vp_1699123456_8527

@@ -9,6 +9,8 @@ type iSearchMediaByFaceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCustomFilters(v string) *SearchMediaByFaceRequest
+	GetCustomFilters() *string
 	SetEntityId(v string) *SearchMediaByFaceRequest
 	GetEntityId() *string
 	SetFaceSearchToken(v string) *SearchMediaByFaceRequest
@@ -25,9 +27,15 @@ type iSearchMediaByFaceRequest interface {
 	GetPersonImageUrl() *string
 	SetSearchLibName(v string) *SearchMediaByFaceRequest
 	GetSearchLibName() *string
+	SetUtcCreate(v string) *SearchMediaByFaceRequest
+	GetUtcCreate() *string
 }
 
 type SearchMediaByFaceRequest struct {
+	// example:
+	//
+	// {}
+	CustomFilters *string `json:"CustomFilters,omitempty" xml:"CustomFilters,omitempty"`
 	// The ID of the entity.
 	//
 	// example:
@@ -79,6 +87,10 @@ type SearchMediaByFaceRequest struct {
 	//
 	// test1
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+	// example:
+	//
+	// {}
+	UtcCreate *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
 }
 
 func (s SearchMediaByFaceRequest) String() string {
@@ -87,6 +99,10 @@ func (s SearchMediaByFaceRequest) String() string {
 
 func (s SearchMediaByFaceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SearchMediaByFaceRequest) GetCustomFilters() *string {
+	return s.CustomFilters
 }
 
 func (s *SearchMediaByFaceRequest) GetEntityId() *string {
@@ -119,6 +135,15 @@ func (s *SearchMediaByFaceRequest) GetPersonImageUrl() *string {
 
 func (s *SearchMediaByFaceRequest) GetSearchLibName() *string {
 	return s.SearchLibName
+}
+
+func (s *SearchMediaByFaceRequest) GetUtcCreate() *string {
+	return s.UtcCreate
+}
+
+func (s *SearchMediaByFaceRequest) SetCustomFilters(v string) *SearchMediaByFaceRequest {
+	s.CustomFilters = &v
+	return s
 }
 
 func (s *SearchMediaByFaceRequest) SetEntityId(v string) *SearchMediaByFaceRequest {
@@ -158,6 +183,11 @@ func (s *SearchMediaByFaceRequest) SetPersonImageUrl(v string) *SearchMediaByFac
 
 func (s *SearchMediaByFaceRequest) SetSearchLibName(v string) *SearchMediaByFaceRequest {
 	s.SearchLibName = &v
+	return s
+}
+
+func (s *SearchMediaByFaceRequest) SetUtcCreate(v string) *SearchMediaByFaceRequest {
+	s.UtcCreate = &v
 	return s
 }
 

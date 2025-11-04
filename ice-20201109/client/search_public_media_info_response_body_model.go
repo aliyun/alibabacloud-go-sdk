@@ -65,7 +65,16 @@ func (s *SearchPublicMediaInfoResponseBody) SetTotalCount(v int64) *SearchPublic
 }
 
 func (s *SearchPublicMediaInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PublicMediaInfos != nil {
+		for _, item := range s.PublicMediaInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchPublicMediaInfoResponseBodyPublicMediaInfos struct {
@@ -129,7 +138,12 @@ func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfos) SetRemainingAuthTime
 }
 
 func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfos) Validate() error {
-	return dara.Validate(s)
+	if s.MediaInfo != nil {
+		if err := s.MediaInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo struct {
@@ -178,7 +192,17 @@ func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo) SetMediaId(
 }
 
 func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DynamicMetaData != nil {
+		if err := s.DynamicMetaData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MediaBasicInfo != nil {
+		if err := s.MediaBasicInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoDynamicMetaData struct {

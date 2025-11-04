@@ -134,7 +134,16 @@ func (s *AppInfoDTO) SetUserId(v int64) *AppInfoDTO {
 }
 
 func (s *AppInfoDTO) Validate() error {
-	return dara.Validate(s)
+	if s.Platforms != nil {
+		for _, item := range s.Platforms {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AppInfoDTOPlatforms struct {

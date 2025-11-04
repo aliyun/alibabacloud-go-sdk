@@ -287,7 +287,52 @@ func (s *AIAgentConfig) SetWorkflowOverrideParams(v string) *AIAgentConfig {
 }
 
 func (s *AIAgentConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AmbientSoundConfig != nil {
+		if err := s.AmbientSoundConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AsrConfig != nil {
+		if err := s.AsrConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AvatarConfig != nil {
+		if err := s.AvatarConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InterruptConfig != nil {
+		if err := s.InterruptConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LlmConfig != nil {
+		if err := s.LlmConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TtsConfig != nil {
+		if err := s.TtsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TurnDetectionConfig != nil {
+		if err := s.TurnDetectionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VcrConfig != nil {
+		if err := s.VcrConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VoiceprintConfig != nil {
+		if err := s.VoiceprintConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AIAgentConfigAmbientSoundConfig struct {
@@ -562,7 +607,25 @@ func (s *AIAgentConfigLlmConfig) SetOutputMinLength(v int32) *AIAgentConfigLlmCo
 }
 
 func (s *AIAgentConfigLlmConfig) Validate() error {
-	return dara.Validate(s)
+	if s.FunctionMap != nil {
+		for _, item := range s.FunctionMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LlmHistory != nil {
+		for _, item := range s.LlmHistory {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AIAgentConfigLlmConfigFunctionMap struct {
@@ -717,7 +780,16 @@ func (s *AIAgentConfigTtsConfig) SetVoiceIdList(v []*string) *AIAgentConfigTtsCo
 }
 
 func (s *AIAgentConfigTtsConfig) Validate() error {
-	return dara.Validate(s)
+	if s.PronunciationRules != nil {
+		for _, item := range s.PronunciationRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AIAgentConfigTtsConfigPronunciationRules struct {
@@ -882,7 +954,37 @@ func (s *AIAgentConfigVcrConfig) SetStillFrameMotion(v *AIAgentConfigVcrConfigSt
 }
 
 func (s *AIAgentConfigVcrConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Equipment != nil {
+		if err := s.Equipment.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HeadMotion != nil {
+		if err := s.HeadMotion.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InvalidFrameMotion != nil {
+		if err := s.InvalidFrameMotion.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LookAway != nil {
+		if err := s.LookAway.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PeopleCount != nil {
+		if err := s.PeopleCount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StillFrameMotion != nil {
+		if err := s.StillFrameMotion.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AIAgentConfigVcrConfigEquipment struct {

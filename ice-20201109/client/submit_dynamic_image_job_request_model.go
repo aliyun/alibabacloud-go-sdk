@@ -115,7 +115,27 @@ func (s *SubmitDynamicImageJobRequest) SetUserData(v string) *SubmitDynamicImage
 }
 
 func (s *SubmitDynamicImageJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScheduleConfig != nil {
+		if err := s.ScheduleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TemplateConfig != nil {
+		if err := s.TemplateConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitDynamicImageJobRequestInput struct {
@@ -325,7 +345,12 @@ func (s *SubmitDynamicImageJobRequestTemplateConfig) SetTemplateId(v string) *Su
 }
 
 func (s *SubmitDynamicImageJobRequestTemplateConfig) Validate() error {
-	return dara.Validate(s)
+	if s.OverwriteParams != nil {
+		if err := s.OverwriteParams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitDynamicImageJobRequestTemplateConfigOverwriteParams struct {
@@ -457,7 +482,12 @@ func (s *SubmitDynamicImageJobRequestTemplateConfigOverwriteParams) SetWidth(v i
 }
 
 func (s *SubmitDynamicImageJobRequestTemplateConfigOverwriteParams) Validate() error {
-	return dara.Validate(s)
+	if s.TimeSpan != nil {
+		if err := s.TimeSpan.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitDynamicImageJobRequestTemplateConfigOverwriteParamsTimeSpan struct {

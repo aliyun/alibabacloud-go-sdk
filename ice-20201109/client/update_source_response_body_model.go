@@ -53,5 +53,10 @@ func (s *UpdateSourceResponseBody) SetSource(v *ChannelAssemblySource) *UpdateSo
 }
 
 func (s *UpdateSourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Source != nil {
+		if err := s.Source.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

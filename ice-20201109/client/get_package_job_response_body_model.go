@@ -53,7 +53,12 @@ func (s *GetPackageJobResponseBody) SetRequestId(v string) *GetPackageJobRespons
 }
 
 func (s *GetPackageJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PackageJob != nil {
+		if err := s.PackageJob.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPackageJobResponseBodyPackageJob struct {
@@ -306,7 +311,21 @@ func (s *GetPackageJobResponseBodyPackageJob) SetUserData(v string) *GetPackageJ
 }
 
 func (s *GetPackageJobResponseBodyPackageJob) Validate() error {
-	return dara.Validate(s)
+	if s.Inputs != nil {
+		for _, item := range s.Inputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPackageJobResponseBodyPackageJobInputs struct {
@@ -332,7 +351,12 @@ func (s *GetPackageJobResponseBodyPackageJobInputs) SetInput(v *GetPackageJobRes
 }
 
 func (s *GetPackageJobResponseBodyPackageJobInputs) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPackageJobResponseBodyPackageJobInputsInput struct {

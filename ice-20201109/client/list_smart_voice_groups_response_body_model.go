@@ -53,7 +53,16 @@ func (s *ListSmartVoiceGroupsResponseBody) SetVoiceGroups(v []*ListSmartVoiceGro
 }
 
 func (s *ListSmartVoiceGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VoiceGroups != nil {
+		for _, item := range s.VoiceGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSmartVoiceGroupsResponseBodyVoiceGroups struct {
@@ -90,7 +99,16 @@ func (s *ListSmartVoiceGroupsResponseBodyVoiceGroups) SetVoiceList(v []*ListSmar
 }
 
 func (s *ListSmartVoiceGroupsResponseBodyVoiceGroups) Validate() error {
-	return dara.Validate(s)
+	if s.VoiceList != nil {
+		for _, item := range s.VoiceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList struct {

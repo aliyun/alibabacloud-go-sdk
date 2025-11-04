@@ -53,7 +53,12 @@ func (s *GetTemplateResponseBody) SetTemplate(v *GetTemplateResponseBodyTemplate
 }
 
 func (s *GetTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Template != nil {
+		if err := s.Template.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTemplateResponseBodyTemplate struct {

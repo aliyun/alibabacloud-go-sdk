@@ -121,7 +121,16 @@ func (s *SearchMediaResponseBody) SetTotal(v int64) *SearchMediaResponseBody {
 }
 
 func (s *SearchMediaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaInfoList != nil {
+		for _, item := range s.MediaInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchMediaResponseBodyMediaInfoList struct {
@@ -129,6 +138,10 @@ type SearchMediaResponseBodyMediaInfoList struct {
 	AiData *SearchMediaResponseBodyMediaInfoListAiData `json:"AiData,omitempty" xml:"AiData,omitempty" type:"Struct"`
 	// The description of the AI job.
 	AiRoughData *SearchMediaResponseBodyMediaInfoListAiRoughData `json:"AiRoughData,omitempty" xml:"AiRoughData,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	CustomFields *string `json:"CustomFields,omitempty" xml:"CustomFields,omitempty"`
 	// The information about the files.
 	FileInfoList    []*SearchMediaResponseBodyMediaInfoListFileInfoList    `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
 	IndexStatusList []*SearchMediaResponseBodyMediaInfoListIndexStatusList `json:"IndexStatusList,omitempty" xml:"IndexStatusList,omitempty" type:"Repeated"`
@@ -158,6 +171,10 @@ func (s *SearchMediaResponseBodyMediaInfoList) GetAiRoughData() *SearchMediaResp
 	return s.AiRoughData
 }
 
+func (s *SearchMediaResponseBodyMediaInfoList) GetCustomFields() *string {
+	return s.CustomFields
+}
+
 func (s *SearchMediaResponseBodyMediaInfoList) GetFileInfoList() []*SearchMediaResponseBodyMediaInfoListFileInfoList {
 	return s.FileInfoList
 }
@@ -184,6 +201,11 @@ func (s *SearchMediaResponseBodyMediaInfoList) SetAiRoughData(v *SearchMediaResp
 	return s
 }
 
+func (s *SearchMediaResponseBodyMediaInfoList) SetCustomFields(v string) *SearchMediaResponseBodyMediaInfoList {
+	s.CustomFields = &v
+	return s
+}
+
 func (s *SearchMediaResponseBodyMediaInfoList) SetFileInfoList(v []*SearchMediaResponseBodyMediaInfoListFileInfoList) *SearchMediaResponseBodyMediaInfoList {
 	s.FileInfoList = v
 	return s
@@ -205,7 +227,40 @@ func (s *SearchMediaResponseBodyMediaInfoList) SetMediaId(v string) *SearchMedia
 }
 
 func (s *SearchMediaResponseBodyMediaInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.AiData != nil {
+		if err := s.AiData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AiRoughData != nil {
+		if err := s.AiRoughData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FileInfoList != nil {
+		for _, item := range s.FileInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.IndexStatusList != nil {
+		for _, item := range s.IndexStatusList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MediaBasicInfo != nil {
+		if err := s.MediaBasicInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchMediaResponseBodyMediaInfoListAiData struct {
@@ -253,7 +308,34 @@ func (s *SearchMediaResponseBodyMediaInfoListAiData) SetOcrInfo(v []*SearchMedia
 }
 
 func (s *SearchMediaResponseBodyMediaInfoListAiData) Validate() error {
-	return dara.Validate(s)
+	if s.AiLabelInfo != nil {
+		for _, item := range s.AiLabelInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AsrInfo != nil {
+		for _, item := range s.AsrInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OcrInfo != nil {
+		for _, item := range s.OcrInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo struct {
@@ -357,7 +439,16 @@ func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo) SetSource(v stri
 }
 
 func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Occurrences != nil {
+		for _, item := range s.Occurrences {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences struct {
@@ -510,7 +601,16 @@ func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences) SetCl
 }
 
 func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences) Validate() error {
-	return dara.Validate(s)
+	if s.Tracks != nil {
+		for _, item := range s.Tracks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrencesTracks struct {
@@ -858,7 +958,12 @@ func (s *SearchMediaResponseBodyMediaInfoListFileInfoList) SetFileBasicInfo(v *S
 }
 
 func (s *SearchMediaResponseBodyMediaInfoListFileInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.FileBasicInfo != nil {
+		if err := s.FileBasicInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo struct {

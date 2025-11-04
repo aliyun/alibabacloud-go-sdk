@@ -59,5 +59,10 @@ func (s *DropSearchLibResponse) SetBody(v *DropSearchLibResponseBody) *DropSearc
 }
 
 func (s *DropSearchLibResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

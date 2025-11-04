@@ -26,27 +26,40 @@ type iListWorkflowTasksRequest interface {
 }
 
 type ListWorkflowTasksRequest struct {
+	// The end of the time range for filtering tasks by their creation time. Supports querying data from the last 90 days only.
+	//
 	// example:
 	//
 	// 2025-07-15T00:00:00Z
 	EndOfCreateTime *string `json:"EndOfCreateTime,omitempty" xml:"EndOfCreateTime,omitempty"`
-	KeyText         *string `json:"KeyText,omitempty" xml:"KeyText,omitempty"`
+	// A keyword for fuzzy matching against the TaskInput, such as a file name or Media ID. Max length: 32 characters.
+	KeyText *string `json:"KeyText,omitempty" xml:"KeyText,omitempty"`
+	// The maximum number of media workflow instances to return. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+	//
 	// example:
 	//
 	// **************VRpbWUQARgBIpcBCgkA1bUtaAAAAAAKiQEDhAAAADFTMzg2NTY2NjU2MzM3NjU2NjYyMzkzMTYyMzI2MjYzNjY2**********
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The start of the time range for filtering tasks by their creation time. Supports querying data from the last 90 days only.
+	//
 	// example:
 	//
 	// 2025-07-12T00:00:00Z
 	StartOfCreateTime *string `json:"StartOfCreateTime,omitempty" xml:"StartOfCreateTime,omitempty"`
+	// The ID of the workflow template.[](https://ims.console.aliyun.com/settings/workflow/list)
+	//
 	// example:
 	//
 	// ******b4fb044839815d4f2cd8******
 	WorkflowId *string `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// The name of the workflow template.
+	//
 	// example:
 	//
 	// example-workflow-****

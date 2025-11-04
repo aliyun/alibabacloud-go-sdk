@@ -59,7 +59,30 @@ func (s *MediaConvertOutputDetailFileMeta) SetVideoStreamInfoList(v []*MediaConv
 }
 
 func (s *MediaConvertOutputDetailFileMeta) Validate() error {
-	return dara.Validate(s)
+	if s.AudioStreamInfoList != nil {
+		for _, item := range s.AudioStreamInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FileBasicInfo != nil {
+		if err := s.FileBasicInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoStreamInfoList != nil {
+		for _, item := range s.VideoStreamInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MediaConvertOutputDetailFileMetaAudioStreamInfoList struct {

@@ -71,7 +71,21 @@ func (s *LivePackagingConfig) SetUseAudioRenditionGroups(v bool) *LivePackagingC
 }
 
 func (s *LivePackagingConfig) Validate() error {
-	return dara.Validate(s)
+	if s.DrmConfig != nil {
+		if err := s.DrmConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LiveManifestConfigs != nil {
+		for _, item := range s.LiveManifestConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type LivePackagingConfigDrmConfig struct {

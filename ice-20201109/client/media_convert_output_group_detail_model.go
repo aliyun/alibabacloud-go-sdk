@@ -119,5 +119,14 @@ func (s *MediaConvertOutputGroupDetail) SetTaskId(v string) *MediaConvertOutputG
 }
 
 func (s *MediaConvertOutputGroupDetail) Validate() error {
-	return dara.Validate(s)
+	if s.Outputs != nil {
+		for _, item := range s.Outputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

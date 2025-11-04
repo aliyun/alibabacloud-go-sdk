@@ -167,7 +167,16 @@ func (s *ChannelAssemblyChannel) SetState(v int32) *ChannelAssemblyChannel {
 }
 
 func (s *ChannelAssemblyChannel) Validate() error {
-	return dara.Validate(s)
+	if s.OutPutConfigList != nil {
+		for _, item := range s.OutPutConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ChannelAssemblyChannelOutPutConfigList struct {

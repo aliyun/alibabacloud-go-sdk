@@ -74,7 +74,12 @@ func (s *GetCustomizedVoiceResponseBody) SetSuccess(v bool) *GetCustomizedVoiceR
 }
 
 func (s *GetCustomizedVoiceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCustomizedVoiceResponseBodyData struct {
@@ -100,7 +105,12 @@ func (s *GetCustomizedVoiceResponseBodyData) SetCustomizedVoice(v *GetCustomized
 }
 
 func (s *GetCustomizedVoiceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CustomizedVoice != nil {
+		if err := s.CustomizedVoice.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCustomizedVoiceResponseBodyDataCustomizedVoice struct {

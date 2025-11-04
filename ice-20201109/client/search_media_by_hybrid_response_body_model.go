@@ -22,19 +22,28 @@ type iSearchMediaByHybridResponseBody interface {
 }
 
 type SearchMediaByHybridResponseBody struct {
+	// The status code returned.
+	//
 	// example:
 	//
 	// 200
-	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The media assets that match the search query.
 	MediaList []*SearchMediaByHybridResponseBodyMediaList `json:"MediaList,omitempty" xml:"MediaList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of media assets that match the search criteria.
+	//
 	// example:
 	//
 	// 30
@@ -95,11 +104,23 @@ func (s *SearchMediaByHybridResponseBody) SetTotal(v int64) *SearchMediaByHybrid
 }
 
 func (s *SearchMediaByHybridResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaList != nil {
+		for _, item := range s.MediaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchMediaByHybridResponseBodyMediaList struct {
+	// The information about the relevant clips.
 	ClipInfo []*SearchMediaByHybridResponseBodyMediaListClipInfo `json:"ClipInfo,omitempty" xml:"ClipInfo,omitempty" type:"Repeated"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// a18936e0e28771edb59ae6f6f47a****
@@ -133,18 +154,33 @@ func (s *SearchMediaByHybridResponseBodyMediaList) SetMediaId(v string) *SearchM
 }
 
 func (s *SearchMediaByHybridResponseBodyMediaList) Validate() error {
-	return dara.Validate(s)
+	if s.ClipInfo != nil {
+		for _, item := range s.ClipInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchMediaByHybridResponseBodyMediaListClipInfo struct {
+	// The start time of the relevant clip.
+	//
 	// example:
 	//
 	// 2
 	From *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	// The relevance score of the clip for the query.
+	//
 	// example:
 	//
 	// 0.99
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The end time of the relevant clip.
+	//
 	// example:
 	//
 	// 4

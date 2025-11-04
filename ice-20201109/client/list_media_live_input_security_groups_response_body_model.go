@@ -104,7 +104,16 @@ func (s *ListMediaLiveInputSecurityGroupsResponseBody) SetTotalCount(v int32) *L
 }
 
 func (s *ListMediaLiveInputSecurityGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SecurityGroups != nil {
+		for _, item := range s.SecurityGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMediaLiveInputSecurityGroupsResponseBodySecurityGroups struct {

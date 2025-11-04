@@ -59,7 +59,22 @@ func (s *AIAgentTemplateConfig) SetVoiceChat(v *AIAgentTemplateConfigVoiceChat) 
 }
 
 func (s *AIAgentTemplateConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AvatarChat3D != nil {
+		if err := s.AvatarChat3D.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VisionChat != nil {
+		if err := s.VisionChat.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VoiceChat != nil {
+		if err := s.VoiceChat.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AIAgentTemplateConfigAvatarChat3D struct {
@@ -334,7 +349,16 @@ func (s *AIAgentTemplateConfigAvatarChat3D) SetWorkflowOverrideParams(v string) 
 }
 
 func (s *AIAgentTemplateConfigAvatarChat3D) Validate() error {
-	return dara.Validate(s)
+	if s.LlmHistory != nil {
+		for _, item := range s.LlmHistory {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AIAgentTemplateConfigAvatarChat3DLlmHistory struct {
@@ -634,7 +658,16 @@ func (s *AIAgentTemplateConfigVisionChat) SetWorkflowOverrideParams(v string) *A
 }
 
 func (s *AIAgentTemplateConfigVisionChat) Validate() error {
-	return dara.Validate(s)
+	if s.LlmHistory != nil {
+		for _, item := range s.LlmHistory {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AIAgentTemplateConfigVisionChatLlmHistory struct {
@@ -954,7 +987,16 @@ func (s *AIAgentTemplateConfigVoiceChat) SetWorkflowOverrideParams(v string) *AI
 }
 
 func (s *AIAgentTemplateConfigVoiceChat) Validate() error {
-	return dara.Validate(s)
+	if s.LlmHistory != nil {
+		for _, item := range s.LlmHistory {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AIAgentTemplateConfigVoiceChatLlmHistory struct {

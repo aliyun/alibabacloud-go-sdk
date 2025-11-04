@@ -20,20 +20,30 @@ type iCreateStreamToSearchLibResponseBody interface {
 }
 
 type CreateStreamToSearchLibResponseBody struct {
+	// The status code returned.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true: succeeded.
+	//
+	// 	- false: failed.
+	//
 	// example:
 	//
 	// true

@@ -70,7 +70,16 @@ func (s *GetTemplateParamsResponseBody) SetTemplateId(v string) *GetTemplatePara
 }
 
 func (s *GetTemplateParamsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ParamList != nil {
+		for _, item := range s.ParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTemplateParamsResponseBodyParamList struct {

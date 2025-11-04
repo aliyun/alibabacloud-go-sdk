@@ -53,7 +53,12 @@ func (s *UpdateLivePackageOriginEndpointResponseBody) SetRequestId(v string) *Up
 }
 
 func (s *UpdateLivePackageOriginEndpointResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LivePackageOriginEndpoint != nil {
+		if err := s.LivePackageOriginEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint struct {
@@ -269,5 +274,10 @@ func (s *UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint) S
 }
 
 func (s *UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint) Validate() error {
-	return dara.Validate(s)
+	if s.LivePackagingConfig != nil {
+		if err := s.LivePackagingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

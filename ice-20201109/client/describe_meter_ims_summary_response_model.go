@@ -59,5 +59,10 @@ func (s *DescribeMeterImsSummaryResponse) SetBody(v *DescribeMeterImsSummaryResp
 }
 
 func (s *DescribeMeterImsSummaryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

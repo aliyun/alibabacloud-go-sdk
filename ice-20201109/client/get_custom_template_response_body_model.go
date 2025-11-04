@@ -53,7 +53,12 @@ func (s *GetCustomTemplateResponseBody) SetRequestId(v string) *GetCustomTemplat
 }
 
 func (s *GetCustomTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CustomTemplate != nil {
+		if err := s.CustomTemplate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCustomTemplateResponseBodyCustomTemplate struct {
@@ -243,7 +248,12 @@ func (s *GetCustomTemplateResponseBodyCustomTemplate) SetTypeName(v string) *Get
 }
 
 func (s *GetCustomTemplateResponseBodyCustomTemplate) Validate() error {
-	return dara.Validate(s)
+	if s.FrontendHint != nil {
+		if err := s.FrontendHint.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCustomTemplateResponseBodyCustomTemplateFrontendHint struct {
@@ -268,7 +278,12 @@ func (s *GetCustomTemplateResponseBodyCustomTemplateFrontendHint) SetTranscodeTe
 }
 
 func (s *GetCustomTemplateResponseBodyCustomTemplateFrontendHint) Validate() error {
-	return dara.Validate(s)
+	if s.TranscodeTemplateHint != nil {
+		if err := s.TranscodeTemplateHint.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCustomTemplateResponseBodyCustomTemplateFrontendHintTranscodeTemplateHint struct {

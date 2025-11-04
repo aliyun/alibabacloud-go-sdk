@@ -24,26 +24,40 @@ type iSubmitAvatarVideoJobRequest interface {
 }
 
 type SubmitAvatarVideoJobRequest struct {
+	// The task description. Max length: 128 bytes.
+	//
 	// example:
 	//
-	// 测试描述
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The avatar configurations, including the avatar ID, voice, and speech rate.
+	//
 	// example:
 	//
 	// {"AvatarId":"yunqiao"}
 	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
-	// The input configurations of the video rendering job for an avatar. You can specify text, the Object Storage Service (OSS) URL of an audio file, or the ID of a media asset. The audio file must be in the MP3 or WAV format.
+	// The input configurations of the video rendering task for an avatar. You can specify text, the Object Storage Service (OSS) URL of an audio file, or the ID of a media asset. The audio file must be in the MP3 or WAV format.
 	//
-	// >  The text must be at least five words in length.
+	// 	Notice: The text must be at least five characters in length.
+	//
+	// example:
+	//
+	// {"Text": "To be, or not to be, that is the question."}
 	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	// The output configurations, including the destination URL for the rendered video.
+	//
 	// example:
 	//
-	// {"MediaURL":"https://your-bucket.oss-cn-shanghai.aliyuncs.com/xxx.mp4","Width":1920,"Height":1080}
+	// {"MediaURL":"https://your-bucket.oss-cn-shanghai.aliyuncs.com/xxx.mp4"}
 	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	// The task name. Max length: 128 bytes.
+	//
 	// example:
 	//
-	// 测试标题
+	// test
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// A user-defined JSON string for passing custom business information, such as environment details or task metadata.
+	//
 	// example:
 	//
 	// {"user":"data","env":"prod"}

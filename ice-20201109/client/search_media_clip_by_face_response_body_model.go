@@ -104,7 +104,16 @@ func (s *SearchMediaClipByFaceResponseBody) SetTotal(v int64) *SearchMediaClipBy
 }
 
 func (s *SearchMediaClipByFaceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaClipList != nil {
+		for _, item := range s.MediaClipList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchMediaClipByFaceResponseBodyMediaClipList struct {
@@ -186,7 +195,16 @@ func (s *SearchMediaClipByFaceResponseBodyMediaClipList) SetScore(v float32) *Se
 }
 
 func (s *SearchMediaClipByFaceResponseBodyMediaClipList) Validate() error {
-	return dara.Validate(s)
+	if s.OccurrencesInfos != nil {
+		for _, item := range s.OccurrencesInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos struct {
@@ -252,7 +270,16 @@ func (s *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos) SetTrac
 }
 
 func (s *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos) Validate() error {
-	return dara.Validate(s)
+	if s.TrackData != nil {
+		for _, item := range s.TrackData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackData struct {
@@ -293,7 +320,12 @@ func (s *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackData
 }
 
 func (s *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackData) Validate() error {
-	return dara.Validate(s)
+	if s.BoxPosition != nil {
+		if err := s.BoxPosition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackDataBoxPosition struct {

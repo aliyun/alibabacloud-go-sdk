@@ -16,12 +16,13 @@ type iGetStorageListResponseBody interface {
 }
 
 type GetStorageListResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// ******73-8B78-5D86-A50C-49B96C******
-	RequestId       *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The storage configurations.
 	StorageInfoList []*GetStorageListResponseBodyStorageInfoList `json:"StorageInfoList,omitempty" xml:"StorageInfoList,omitempty" type:"Repeated"`
 }
 
@@ -52,42 +53,69 @@ func (s *GetStorageListResponseBody) SetStorageInfoList(v []*GetStorageListRespo
 }
 
 func (s *GetStorageListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StorageInfoList != nil {
+		for _, item := range s.StorageInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetStorageListResponseBodyStorageInfoList struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The time when the configuration was created.
+	//
 	// example:
 	//
 	// 2024-06-06T01:55:07Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// Indicates whether it is the default storage location.
+	//
 	// example:
 	//
 	// true
 	DefaultStorage *bool `json:"DefaultStorage,omitempty" xml:"DefaultStorage,omitempty"`
+	// Indicates whether temporary files created during editing processes are stored in this location.
+	//
 	// example:
 	//
 	// false
 	EditingTempFileStorage *bool `json:"EditingTempFileStorage,omitempty" xml:"EditingTempFileStorage,omitempty"`
+	// The time when the configuration was last modified.
+	//
 	// example:
 	//
 	// 2024-06-06T03:07:07Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The file path.
+	//
 	// example:
 	//
 	// your-path/
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The OSS storage status.
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The bucket.
+	//
 	// example:
 	//
 	// your-bucket
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	// The storage type.
+	//
 	// example:
 	//
 	// vod_oss_bucket

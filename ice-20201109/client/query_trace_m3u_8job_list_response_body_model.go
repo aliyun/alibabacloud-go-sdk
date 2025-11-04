@@ -20,17 +20,22 @@ type iQueryTraceM3u8JobListResponseBody interface {
 }
 
 type QueryTraceM3u8JobListResponseBody struct {
+	// The data returned.
 	Data []*QueryTraceM3u8JobListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The message returned.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 200
@@ -82,39 +87,65 @@ func (s *QueryTraceM3u8JobListResponseBody) SetStatusCode(v int64) *QueryTraceM3
 }
 
 func (s *QueryTraceM3u8JobListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryTraceM3u8JobListResponseBodyData struct {
+	// The creation time of the job.
+	//
 	// example:
 	//
 	// 1627357322
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The last modification time of the job.
+	//
 	// example:
 	//
 	// 1627357322
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// ****d718e2ff4f018ccf419a7b71****
-	JobId  *string                                      `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The output video.
 	Output *QueryTraceM3u8JobListResponseBodyDataOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The current status of the job.
+	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The watermark information.
+	//
 	// example:
 	//
 	// test
 	Trace *string `json:"Trace,omitempty" xml:"Trace,omitempty"`
+	// The media ID for the trace watermark.
+	//
 	// example:
 	//
 	// ****437bd2b105d07b12a9a82****
 	TraceMediaId *string `json:"TraceMediaId,omitempty" xml:"TraceMediaId,omitempty"`
+	// The user-defined data.
+	//
 	// example:
 	//
 	// 112
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The ID of the user who initiated the job.
+	//
 	// example:
 	//
 	// 1346693276****
@@ -211,14 +242,27 @@ func (s *QueryTraceM3u8JobListResponseBodyData) SetUserId(v int64) *QueryTraceM3
 }
 
 func (s *QueryTraceM3u8JobListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryTraceM3u8JobListResponseBodyDataOutput struct {
+	// The specific output information.
+	//
 	// example:
 	//
 	// oss://bucket/object
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the output file. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS

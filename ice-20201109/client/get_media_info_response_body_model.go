@@ -53,7 +53,12 @@ func (s *GetMediaInfoResponseBody) SetRequestId(v string) *GetMediaInfoResponseB
 }
 
 func (s *GetMediaInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaInfo != nil {
+		if err := s.MediaInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMediaInfoResponseBodyMediaInfo struct {
@@ -116,7 +121,26 @@ func (s *GetMediaInfoResponseBodyMediaInfo) SetMediaId(v string) *GetMediaInfoRe
 }
 
 func (s *GetMediaInfoResponseBodyMediaInfo) Validate() error {
-	return dara.Validate(s)
+	if s.AiRoughData != nil {
+		if err := s.AiRoughData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FileInfoList != nil {
+		for _, item := range s.FileInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MediaBasicInfo != nil {
+		if err := s.MediaBasicInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMediaInfoResponseBodyMediaInfoAiRoughData struct {
@@ -247,7 +271,12 @@ func (s *GetMediaInfoResponseBodyMediaInfoAiRoughData) SetStatus(v string) *GetM
 }
 
 func (s *GetMediaInfoResponseBodyMediaInfoAiRoughData) Validate() error {
-	return dara.Validate(s)
+	if s.StandardSmartTagJob != nil {
+		if err := s.StandardSmartTagJob.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob struct {
@@ -324,7 +353,16 @@ func (s *GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob) SetSta
 }
 
 func (s *GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJobResults struct {
@@ -430,7 +468,39 @@ func (s *GetMediaInfoResponseBodyMediaInfoFileInfoList) SetVideoStreamInfoList(v
 }
 
 func (s *GetMediaInfoResponseBodyMediaInfoFileInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.AudioStreamInfoList != nil {
+		for _, item := range s.AudioStreamInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FileBasicInfo != nil {
+		if err := s.FileBasicInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubtitleStreamInfoList != nil {
+		for _, item := range s.SubtitleStreamInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VideoStreamInfoList != nil {
+		for _, item := range s.VideoStreamInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList struct {

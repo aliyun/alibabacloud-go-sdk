@@ -70,7 +70,12 @@ func (s *DetectAudioForCustomizedVoiceJobResponseBody) SetSuccess(v bool) *Detec
 }
 
 func (s *DetectAudioForCustomizedVoiceJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DetectAudioForCustomizedVoiceJobResponseBodyData struct {

@@ -16,10 +16,14 @@ type iSetAIAgentVoiceprintResponseBody interface {
 }
 
 type SetAIAgentVoiceprintResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 550e8400********55440000
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the registered voiceprint.
+	//
 	// example:
 	//
 	// vp_1699123456_8527

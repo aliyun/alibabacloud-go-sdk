@@ -104,5 +104,14 @@ func (s *ListSourceLocationsResponseBody) SetTotalCount(v int32) *ListSourceLoca
 }
 
 func (s *ListSourceLocationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SourceLocationList != nil {
+		for _, item := range s.SourceLocationList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

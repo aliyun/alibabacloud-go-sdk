@@ -53,7 +53,12 @@ func (s *GetLiveTranscodeTemplateResponseBody) SetTemplateContent(v *GetLiveTran
 }
 
 func (s *GetLiveTranscodeTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TemplateContent != nil {
+		if err := s.TemplateContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLiveTranscodeTemplateResponseBodyTemplateContent struct {
@@ -158,7 +163,12 @@ func (s *GetLiveTranscodeTemplateResponseBodyTemplateContent) SetType(v string) 
 }
 
 func (s *GetLiveTranscodeTemplateResponseBodyTemplateContent) Validate() error {
-	return dara.Validate(s)
+	if s.TemplateConfig != nil {
+		if err := s.TemplateConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLiveTranscodeTemplateResponseBodyTemplateContentTemplateConfig struct {
@@ -195,7 +205,17 @@ func (s *GetLiveTranscodeTemplateResponseBodyTemplateContentTemplateConfig) SetV
 }
 
 func (s *GetLiveTranscodeTemplateResponseBodyTemplateContentTemplateConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AudioParams != nil {
+		if err := s.AudioParams.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoParams != nil {
+		if err := s.VideoParams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLiveTranscodeTemplateResponseBodyTemplateContentTemplateConfigAudioParams struct {

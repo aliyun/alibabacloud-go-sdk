@@ -14,6 +14,8 @@ type iDeleteAIAgentDialogueResponseBody interface {
 }
 
 type DeleteAIAgentDialogueResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 7B117AF5-2A1******

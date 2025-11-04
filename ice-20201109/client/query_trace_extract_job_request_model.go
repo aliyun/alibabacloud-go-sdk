@@ -14,6 +14,8 @@ type iQueryTraceExtractJobRequest interface {
 }
 
 type QueryTraceExtractJobRequest struct {
+	// The job ID. You can obtain the value of this parameter from the response of the SubmitTraceExtractJob operation.
+	//
 	// This parameter is required.
 	//
 	// example:

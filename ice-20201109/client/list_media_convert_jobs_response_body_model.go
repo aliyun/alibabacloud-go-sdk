@@ -18,14 +18,17 @@ type iListMediaConvertJobsResponseBody interface {
 }
 
 type ListMediaConvertJobsResponseBody struct {
+	// The tasks.
 	Jobs []*MediaConvertJobWithoutDetail `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
+	// Indicates the read position returned by the current call. An empty value means all data has been read.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ****cdb3e74639973036bc84****
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -69,5 +72,14 @@ func (s *ListMediaConvertJobsResponseBody) SetRequestId(v string) *ListMediaConv
 }
 
 func (s *ListMediaConvertJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Jobs != nil {
+		for _, item := range s.Jobs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

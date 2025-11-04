@@ -53,7 +53,16 @@ func (s *DeleteLiveSnapshotFilesResponseBody) SetRequestId(v string) *DeleteLive
 }
 
 func (s *DeleteLiveSnapshotFilesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeleteFileResultList != nil {
+		for _, item := range s.DeleteFileResultList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteLiveSnapshotFilesResponseBodyDeleteFileResultList struct {

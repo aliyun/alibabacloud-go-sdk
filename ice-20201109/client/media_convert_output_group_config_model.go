@@ -59,5 +59,10 @@ func (s *MediaConvertOutputGroupConfig) SetType(v string) *MediaConvertOutputGro
 }
 
 func (s *MediaConvertOutputGroupConfig) Validate() error {
-	return dara.Validate(s)
+	if s.OutputFileBase != nil {
+		if err := s.OutputFileBase.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

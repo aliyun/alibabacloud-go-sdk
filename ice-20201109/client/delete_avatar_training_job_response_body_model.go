@@ -74,7 +74,12 @@ func (s *DeleteAvatarTrainingJobResponseBody) SetSuccess(v bool) *DeleteAvatarTr
 }
 
 func (s *DeleteAvatarTrainingJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteAvatarTrainingJobResponseBodyData struct {

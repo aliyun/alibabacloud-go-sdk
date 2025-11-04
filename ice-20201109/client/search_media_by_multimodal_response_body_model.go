@@ -104,7 +104,16 @@ func (s *SearchMediaByMultimodalResponseBody) SetTotal(v int64) *SearchMediaByMu
 }
 
 func (s *SearchMediaByMultimodalResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaList != nil {
+		for _, item := range s.MediaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchMediaByMultimodalResponseBodyMediaList struct {
@@ -145,7 +154,16 @@ func (s *SearchMediaByMultimodalResponseBodyMediaList) SetMediaId(v string) *Sea
 }
 
 func (s *SearchMediaByMultimodalResponseBodyMediaList) Validate() error {
-	return dara.Validate(s)
+	if s.ClipInfo != nil {
+		for _, item := range s.ClipInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchMediaByMultimodalResponseBodyMediaListClipInfo struct {

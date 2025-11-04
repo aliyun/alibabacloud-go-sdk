@@ -26,26 +26,42 @@ type iSubmitTraceAbJobRequest interface {
 }
 
 type SubmitTraceAbJobRequest struct {
+	// The key that is encoded by using the Base64 algorithm.
+	//
 	// example:
 	//
 	// Qh6OdgIMcliQSI1fReOw****
 	CipherBase64ed *string `json:"CipherBase64ed,omitempty" xml:"CipherBase64ed,omitempty"`
+	// The source video file for A/B watermarking.
+	//
+	// > OSS object or media asset must reside in the same region as the IMS service region. This API supports only videos that last at least 3 minutes. If the video is too short, the call may fail, or no output may be returned.
+	//
 	// This parameter is required.
 	Input *SubmitTraceAbJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The watermark level, which specifies the channel to embed watermarks. Valid values: 0 specifies the 0u channel, 1 specifies the 1uv channel, and 2 specifies the 2yuv channel.
+	//
 	// example:
 	//
 	// 0
 	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The output directory path.
+	//
 	// This parameter is required.
 	Output *SubmitTraceAbJobRequestOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The start point of watermark embedding. Unit: seconds.
+	//
 	// example:
 	//
 	// 0
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The duration of the watermark embedding. Unit: seconds.
+	//
 	// example:
 	//
 	// 360
 	TotalTime *int64 `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
+	// The custom data, which can be up to 1,024 bytes in size.
+	//
 	// example:
 	//
 	// 123
@@ -124,16 +140,40 @@ func (s *SubmitTraceAbJobRequest) SetUserData(v string) *SubmitTraceAbJobRequest
 }
 
 func (s *SubmitTraceAbJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitTraceAbJobRequestInput struct {
+	// The source file. The file can be an OSS object or a media asset. You can specify the path of an OSS object in one of the following formats:
+	//
+	// 1\\. oss://bucket/object
+	//
+	// 2\\. http(s)://bucket.oss-[regionId].aliyuncs.com/object
+	//
+	// where bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object path in OSS.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://bucket/object
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the source file. Valid values:
+	//
+	// 1.  OSS: an OSS object.
+	//
+	// 2.  Media: a media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -173,12 +213,26 @@ func (s *SubmitTraceAbJobRequestInput) Validate() error {
 }
 
 type SubmitTraceAbJobRequestOutput struct {
+	// The output file. The file can be an OSS object or a media asset. OSS URL formats:
+	//
+	// 1\\. oss://bucket/dir/
+	//
+	// 2\\. http(s)://bucket.oss-[regionId].aliyuncs.com/dir/
+	//
+	// In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and dir specifies the object path in OSS.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://bucket/dir/
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the output file. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// This parameter is required.
 	//
 	// example:

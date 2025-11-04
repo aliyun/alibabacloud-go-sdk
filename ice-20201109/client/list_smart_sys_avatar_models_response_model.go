@@ -59,5 +59,10 @@ func (s *ListSmartSysAvatarModelsResponse) SetBody(v *ListSmartSysAvatarModelsRe
 }
 
 func (s *ListSmartSysAvatarModelsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

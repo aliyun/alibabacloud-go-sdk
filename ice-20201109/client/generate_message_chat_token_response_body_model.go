@@ -28,34 +28,50 @@ type iGenerateMessageChatTokenResponseBody interface {
 }
 
 type GenerateMessageChatTokenResponseBody struct {
+	// The AppID of the user.
+	//
 	// example:
 	//
 	// ***********
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application signature.
+	//
 	// example:
 	//
 	// H4sIAAAAAAAE******************
 	AppSign *string `json:"AppSign,omitempty" xml:"AppSign,omitempty"`
+	// The nonce used to generate the token.
+	//
 	// example:
 	//
 	// AK-***********
 	Nonce *string `json:"Nonce,omitempty" xml:"Nonce,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// req_1234567890abcdef
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The role used to generate the token.
+	//
 	// example:
 	//
 	// admin
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The expiration time. Unit: seconds. Expiration time = Current time + Validity period.
+	//
 	// example:
 	//
 	// 1700000000
 	TimeStamp *int64 `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// The generated token.
+	//
 	// example:
 	//
 	// acet**********
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The ID of the user for joining the channel.
+	//
 	// example:
 	//
 	// YOURUSERID

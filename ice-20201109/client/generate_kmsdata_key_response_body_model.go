@@ -53,7 +53,12 @@ func (s *GenerateKMSDataKeyResponseBody) SetRequestId(v string) *GenerateKMSData
 }
 
 func (s *GenerateKMSDataKeyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataKey != nil {
+		if err := s.DataKey.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GenerateKMSDataKeyResponseBodyDataKey struct {

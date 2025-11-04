@@ -100,7 +100,25 @@ func (s *AddEditingProjectMaterialsResponseBody) SetRequestId(v string) *AddEdit
 }
 
 func (s *AddEditingProjectMaterialsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LiveMaterials != nil {
+		for _, item := range s.LiveMaterials {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MediaInfos != nil {
+		for _, item := range s.MediaInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddEditingProjectMaterialsResponseBodyLiveMaterials struct {
@@ -227,7 +245,21 @@ func (s *AddEditingProjectMaterialsResponseBodyMediaInfos) SetMediaId(v string) 
 }
 
 func (s *AddEditingProjectMaterialsResponseBodyMediaInfos) Validate() error {
-	return dara.Validate(s)
+	if s.FileInfoList != nil {
+		for _, item := range s.FileInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MediaBasicInfo != nil {
+		if err := s.MediaBasicInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoList struct {
@@ -253,7 +285,12 @@ func (s *AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoList) SetFileBa
 }
 
 func (s *AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.FileBasicInfo != nil {
+		if err := s.FileBasicInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo struct {

@@ -95,5 +95,10 @@ func (s *VodPackagingConfiguration) SetProtocol(v string) *VodPackagingConfigura
 }
 
 func (s *VodPackagingConfiguration) Validate() error {
-	return dara.Validate(s)
+	if s.PackageConfig != nil {
+		if err := s.PackageConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

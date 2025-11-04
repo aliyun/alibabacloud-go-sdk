@@ -52,7 +52,12 @@ func (s *GetPublicMediaInfoResponseBody) SetRequestId(v string) *GetPublicMediaI
 }
 
 func (s *GetPublicMediaInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaInfo != nil {
+		if err := s.MediaInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPublicMediaInfoResponseBodyMediaInfo struct {
@@ -112,7 +117,26 @@ func (s *GetPublicMediaInfoResponseBodyMediaInfo) SetMediaId(v string) *GetPubli
 }
 
 func (s *GetPublicMediaInfoResponseBodyMediaInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DynamicMetaData != nil {
+		if err := s.DynamicMetaData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FileInfoList != nil {
+		for _, item := range s.FileInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MediaBasicInfo != nil {
+		if err := s.MediaBasicInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPublicMediaInfoResponseBodyMediaInfoDynamicMetaData struct {
@@ -208,7 +232,39 @@ func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoList) SetVideoStreamInfo
 }
 
 func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.AudioStreamInfoList != nil {
+		for _, item := range s.AudioStreamInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FileBasicInfo != nil {
+		if err := s.FileBasicInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubtitleStreamInfoList != nil {
+		for _, item := range s.SubtitleStreamInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VideoStreamInfoList != nil {
+		for _, item := range s.VideoStreamInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList struct {

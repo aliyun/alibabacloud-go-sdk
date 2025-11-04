@@ -155,7 +155,16 @@ func (s *ChannelAssemblyProgram) SetTransition(v string) *ChannelAssemblyProgram
 }
 
 func (s *ChannelAssemblyProgram) Validate() error {
-	return dara.Validate(s)
+	if s.AdBreaks != nil {
+		for _, item := range s.AdBreaks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ChannelAssemblyProgramAdBreaks struct {

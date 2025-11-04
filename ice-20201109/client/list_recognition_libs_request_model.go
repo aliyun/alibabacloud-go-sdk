@@ -26,6 +26,18 @@ type iListRecognitionLibsRequest interface {
 }
 
 type ListRecognitionLibsRequest struct {
+	// The type of recognition algorithm. Valid values:
+	//
+	// 	- landmark
+	//
+	// 	- object
+	//
+	// 	- logo
+	//
+	// 	- face
+	//
+	// 	- label
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -34,12 +46,16 @@ type ListRecognitionLibsRequest struct {
 	Algorithm    *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 50.
+	//
 	// This parameter is required.
 	//
 	// example:

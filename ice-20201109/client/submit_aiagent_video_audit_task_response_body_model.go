@@ -16,10 +16,14 @@ type iSubmitAIAgentVideoAuditTaskResponseBody interface {
 }
 
 type SubmitAIAgentVideoAuditTaskResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// **********fb04483915d4f2**********
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// **********-586A-AC29-742247******

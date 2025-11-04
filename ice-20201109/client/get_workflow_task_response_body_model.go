@@ -53,7 +53,12 @@ func (s *GetWorkflowTaskResponseBody) SetWorkflowTask(v *GetWorkflowTaskResponse
 }
 
 func (s *GetWorkflowTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WorkflowTask != nil {
+		if err := s.WorkflowTask.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWorkflowTaskResponseBodyWorkflowTask struct {
@@ -198,7 +203,12 @@ func (s *GetWorkflowTaskResponseBodyWorkflowTask) SetWorkflow(v *GetWorkflowTask
 }
 
 func (s *GetWorkflowTaskResponseBodyWorkflowTask) Validate() error {
-	return dara.Validate(s)
+	if s.Workflow != nil {
+		if err := s.Workflow.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWorkflowTaskResponseBodyWorkflowTaskWorkflow struct {

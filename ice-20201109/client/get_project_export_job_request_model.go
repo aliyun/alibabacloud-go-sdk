@@ -14,6 +14,8 @@ type iGetProjectExportJobRequest interface {
 }
 
 type GetProjectExportJobRequest struct {
+	// The ID of the project export task.
+	//
 	// This parameter is required.
 	//
 	// example:

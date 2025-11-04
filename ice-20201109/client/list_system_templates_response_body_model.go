@@ -70,7 +70,16 @@ func (s *ListSystemTemplatesResponseBody) SetTotal(v int32) *ListSystemTemplates
 }
 
 func (s *ListSystemTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SystemTemplateList != nil {
+		for _, item := range s.SystemTemplateList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSystemTemplatesResponseBodySystemTemplateList struct {

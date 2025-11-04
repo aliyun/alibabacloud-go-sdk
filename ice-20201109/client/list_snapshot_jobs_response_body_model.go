@@ -70,7 +70,16 @@ func (s *ListSnapshotJobsResponseBody) SetRequestId(v string) *ListSnapshotJobsR
 }
 
 func (s *ListSnapshotJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Jobs != nil {
+		for _, item := range s.Jobs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSnapshotJobsResponseBodyJobs struct {
@@ -324,7 +333,17 @@ func (s *ListSnapshotJobsResponseBodyJobs) SetType(v string) *ListSnapshotJobsRe
 }
 
 func (s *ListSnapshotJobsResponseBodyJobs) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSnapshotJobsResponseBodyJobsInput struct {

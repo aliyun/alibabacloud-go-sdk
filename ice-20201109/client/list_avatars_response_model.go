@@ -59,5 +59,10 @@ func (s *ListAvatarsResponse) SetBody(v *ListAvatarsResponseBody) *ListAvatarsRe
 }
 
 func (s *ListAvatarsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

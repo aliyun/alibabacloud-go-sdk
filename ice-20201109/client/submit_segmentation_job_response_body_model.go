@@ -16,10 +16,14 @@ type iSubmitSegmentationJobResponseBody interface {
 }
 
 type SubmitSegmentationJobResponseBody struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// ****cdb3e74639973036bc84****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******

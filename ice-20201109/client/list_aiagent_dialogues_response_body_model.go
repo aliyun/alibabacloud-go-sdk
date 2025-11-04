@@ -16,7 +16,10 @@ type iListAIAgentDialoguesResponseBody interface {
 }
 
 type ListAIAgentDialoguesResponseBody struct {
+	// The dialog records.
 	Dialogues []*ListAIAgentDialoguesResponseBodyDialogues `json:"Dialogues,omitempty" xml:"Dialogues,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7B117AF5-***************
@@ -50,32 +53,93 @@ func (s *ListAIAgentDialoguesResponseBody) SetRequestId(v string) *ListAIAgentDi
 }
 
 func (s *ListAIAgentDialoguesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Dialogues != nil {
+		for _, item := range s.Dialogues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAIAgentDialoguesResponseBodyDialogues struct {
 	AttachedFileList []*ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList `json:"AttachedFileList,omitempty" xml:"AttachedFileList,omitempty" type:"Repeated"`
+	// The unique ID of the dialog.
+	//
 	// example:
 	//
 	// 19de81b3b3d94abda22****
 	DialogueId *string `json:"DialogueId,omitempty" xml:"DialogueId,omitempty"`
 	Extend     *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The speaker. Valid values:
+	//
+	// - user
+	//
+	// - agent
+	//
 	// example:
 	//
 	// user
-	Producer      *string `json:"Producer,omitempty" xml:"Producer,omitempty"`
+	Producer *string `json:"Producer,omitempty" xml:"Producer,omitempty"`
+	// The reasoning trace.
+	//
+	// example:
+	//
+	// I\\"m thinking
 	ReasoningText *string `json:"ReasoningText,omitempty" xml:"ReasoningText,omitempty"`
+	// The ID of the conversational turn.
+	//
 	// example:
 	//
 	// f27f9b9be28642a88e18****
 	RoundId *string `json:"RoundId,omitempty" xml:"RoundId,omitempty"`
-	Source  *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Text    *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The source of the message. Valid values:
+	//
+	// chat: messaging conversations.
+	//
+	// call: voice calls.
+	//
+	// example:
+	//
+	// chat
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The specific content.
+	//
+	// example:
+	//
+	// Hello
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The UNIX timestamp, measured in milliseconds, which indicates the time when the message was generated.
+	//
 	// example:
 	//
 	// 1734511087000
-	Time *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
+	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The message type. Valid values:
+	//
+	// Voice calls:
+	//
+	// 1.  greeting: the welcome message.
+	//
+	// 2.  normal: the voice response.
+	//
+	// 3.  speech: the proactive message.
+	//
+	// Messaging conversations:
+	//
+	// 1.  normal: the text reply.
+	//
+	// 2.  announcement: the proactive text message.
+	//
+	// 3.  custom: the custom message.
+	//
+	// example:
+	//
+	// announcement
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -187,7 +251,16 @@ func (s *ListAIAgentDialoguesResponseBodyDialogues) SetType(v string) *ListAIAge
 }
 
 func (s *ListAIAgentDialoguesResponseBodyDialogues) Validate() error {
-	return dara.Validate(s)
+	if s.AttachedFileList != nil {
+		for _, item := range s.AttachedFileList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList struct {

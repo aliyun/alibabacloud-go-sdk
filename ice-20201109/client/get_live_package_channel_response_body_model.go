@@ -53,7 +53,12 @@ func (s *GetLivePackageChannelResponseBody) SetRequestId(v string) *GetLivePacka
 }
 
 func (s *GetLivePackageChannelResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LivePackageChannel != nil {
+		if err := s.LivePackageChannel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLivePackageChannelResponseBodyLivePackageChannel struct {
@@ -195,7 +200,16 @@ func (s *GetLivePackageChannelResponseBodyLivePackageChannel) SetSegmentDuration
 }
 
 func (s *GetLivePackageChannelResponseBodyLivePackageChannel) Validate() error {
-	return dara.Validate(s)
+	if s.IngestEndpoints != nil {
+		for _, item := range s.IngestEndpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLivePackageChannelResponseBodyLivePackageChannelIngestEndpoints struct {

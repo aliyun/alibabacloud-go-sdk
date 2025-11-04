@@ -89,7 +89,16 @@ func (s *ListBatchMediaProducingJobsResponseBody) SetRequestId(v string) *ListBa
 }
 
 func (s *ListBatchMediaProducingJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EditingBatchJobList != nil {
+		for _, item := range s.EditingBatchJobList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListBatchMediaProducingJobsResponseBodyEditingBatchJobList struct {

@@ -59,5 +59,10 @@ func (s *ListWorkflowTasksResponse) SetBody(v *ListWorkflowTasksResponseBody) *L
 }
 
 func (s *ListWorkflowTasksResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

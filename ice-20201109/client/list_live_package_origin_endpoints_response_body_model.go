@@ -121,7 +121,16 @@ func (s *ListLivePackageOriginEndpointsResponseBody) SetTotalCount(v int64) *Lis
 }
 
 func (s *ListLivePackageOriginEndpointsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LivePackageOriginEndpoints != nil {
+		for _, item := range s.LivePackageOriginEndpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLivePackageOriginEndpointsResponseBodyLivePackageOriginEndpoints struct {

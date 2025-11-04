@@ -74,7 +74,12 @@ func (s *GetAvatarResponseBody) SetSuccess(v bool) *GetAvatarResponseBody {
 }
 
 func (s *GetAvatarResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAvatarResponseBodyData struct {
@@ -100,7 +105,12 @@ func (s *GetAvatarResponseBodyData) SetAvatar(v *GetAvatarResponseBodyDataAvatar
 }
 
 func (s *GetAvatarResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Avatar != nil {
+		if err := s.Avatar.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAvatarResponseBodyDataAvatar struct {

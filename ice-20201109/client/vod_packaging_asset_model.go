@@ -83,7 +83,12 @@ func (s *VodPackagingAsset) SetInput(v *VodPackagingAssetInput) *VodPackagingAss
 }
 
 func (s *VodPackagingAsset) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type VodPackagingAssetInput struct {

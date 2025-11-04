@@ -59,5 +59,10 @@ func (s *DeletePipelineResponse) SetBody(v *DeletePipelineResponseBody) *DeleteP
 }
 
 func (s *DeletePipelineResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

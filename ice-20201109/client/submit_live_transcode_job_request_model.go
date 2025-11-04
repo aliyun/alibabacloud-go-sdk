@@ -127,7 +127,22 @@ func (s *SubmitLiveTranscodeJobRequest) SetTranscodeOutput(v *SubmitLiveTranscod
 }
 
 func (s *SubmitLiveTranscodeJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.StreamInput != nil {
+		if err := s.StreamInput.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TimedConfig != nil {
+		if err := s.TimedConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TranscodeOutput != nil {
+		if err := s.TranscodeOutput.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitLiveTranscodeJobRequestStreamInput struct {

@@ -35,5 +35,10 @@ func (s *MediaConvertMuxConfig) SetSegment(v *MediaConvertSegment) *MediaConvert
 }
 
 func (s *MediaConvertMuxConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Segment != nil {
+		if err := s.Segment.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

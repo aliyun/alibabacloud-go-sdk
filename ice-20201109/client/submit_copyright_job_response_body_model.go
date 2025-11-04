@@ -20,17 +20,22 @@ type iSubmitCopyrightJobResponseBody interface {
 }
 
 type SubmitCopyrightJobResponseBody struct {
+	// The data returned.
 	Data *SubmitCopyrightJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// FA258E67-09B8-4EAA-8F33-BA567834A2C3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 200
@@ -82,10 +87,17 @@ func (s *SubmitCopyrightJobResponseBody) SetStatusCode(v int64) *SubmitCopyright
 }
 
 func (s *SubmitCopyrightJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitCopyrightJobResponseBodyData struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// bfb786c63****f4d80648792021eff90

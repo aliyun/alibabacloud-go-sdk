@@ -53,7 +53,12 @@ func (s *DescribeAIAgentInstanceResponseBody) SetRequestId(v string) *DescribeAI
 }
 
 func (s *DescribeAIAgentInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instance != nil {
+		if err := s.Instance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAIAgentInstanceResponseBodyInstance struct {
@@ -185,5 +190,20 @@ func (s *DescribeAIAgentInstanceResponseBodyInstance) SetUserData(v string) *Des
 }
 
 func (s *DescribeAIAgentInstanceResponseBodyInstance) Validate() error {
-	return dara.Validate(s)
+	if s.AgentConfig != nil {
+		if err := s.AgentConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuntimeConfig != nil {
+		if err := s.RuntimeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TemplateConfig != nil {
+		if err := s.TemplateConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

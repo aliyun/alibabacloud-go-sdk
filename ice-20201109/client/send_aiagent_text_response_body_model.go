@@ -14,6 +14,8 @@ type iSendAIAgentTextResponseBody interface {
 }
 
 type SendAIAgentTextResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// DB488837-3****

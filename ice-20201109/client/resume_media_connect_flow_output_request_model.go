@@ -16,10 +16,14 @@ type iResumeMediaConnectFlowOutputRequest interface {
 }
 
 type ResumeMediaConnectFlowOutputRequest struct {
+	// The ID of the MediaConnect flow.
+	//
 	// example:
 	//
 	// 34900dc6-90ec-4968-af3c-fcd87f231a5f
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The name of the output.
+	//
 	// example:
 	//
 	// AliTestOutput

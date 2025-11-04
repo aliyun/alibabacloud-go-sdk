@@ -70,7 +70,12 @@ func (s *ListCustomizedVoiceJobsResponseBody) SetSuccess(v bool) *ListCustomized
 }
 
 func (s *ListCustomizedVoiceJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCustomizedVoiceJobsResponseBodyData struct {
@@ -111,7 +116,16 @@ func (s *ListCustomizedVoiceJobsResponseBodyData) SetTotalCount(v int32) *ListCu
 }
 
 func (s *ListCustomizedVoiceJobsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CustomizedVoiceJobList != nil {
+		for _, item := range s.CustomizedVoiceJobList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList struct {

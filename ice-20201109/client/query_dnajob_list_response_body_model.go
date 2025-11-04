@@ -53,7 +53,16 @@ func (s *QueryDNAJobListResponseBody) SetRequestId(v string) *QueryDNAJobListRes
 }
 
 func (s *QueryDNAJobListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.JobList != nil {
+		for _, item := range s.JobList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryDNAJobListResponseBodyJobList struct {
@@ -252,7 +261,12 @@ func (s *QueryDNAJobListResponseBodyJobList) SetUserData(v string) *QueryDNAJobL
 }
 
 func (s *QueryDNAJobListResponseBodyJobList) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryDNAJobListResponseBodyJobListInput struct {

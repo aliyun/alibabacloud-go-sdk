@@ -20,18 +20,34 @@ type iCreateHotwordLibraryRequest interface {
 }
 
 type CreateHotwordLibraryRequest struct {
+	// The description of the hotword library. It can be up to 200 characters in length.
+	//
 	// example:
 	//
 	// 存放名人的词库
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The hotword list. You can add up to 300 hotword entries to a single library.
+	//
 	// This parameter is required.
 	Hotwords []*Hotword `json:"Hotwords,omitempty" xml:"Hotwords,omitempty" type:"Repeated"`
+	// The name of the hotword library. It can be up to 100 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// my_hotwords
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The usage scenario of the hotword library. Valid values:
+	//
+	// · ASR: Automatic Speech Recognition
+	//
+	// · StructuredMediaAssets: structured media analysis
+	//
+	// · VideoTranslation: Video translation.
+	//
+	// This field cannot be modified after the hotword library is created.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -85,5 +101,14 @@ func (s *CreateHotwordLibraryRequest) SetUsageScenario(v string) *CreateHotwordL
 }
 
 func (s *CreateHotwordLibraryRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Hotwords != nil {
+		for _, item := range s.Hotwords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

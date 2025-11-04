@@ -104,7 +104,16 @@ func (s *SearchMediaByFaceResponseBody) SetTotal(v int64) *SearchMediaByFaceResp
 }
 
 func (s *SearchMediaByFaceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaInfoList != nil {
+		for _, item := range s.MediaInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchMediaByFaceResponseBodyMediaInfoList struct {

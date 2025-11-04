@@ -53,7 +53,12 @@ func (s *GetVodPackagingAssetResponseBody) SetRequestId(v string) *GetVodPackagi
 }
 
 func (s *GetVodPackagingAssetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Asset != nil {
+		if err := s.Asset.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetVodPackagingAssetResponseBodyAsset struct {
@@ -150,7 +155,21 @@ func (s *GetVodPackagingAssetResponseBodyAsset) SetInput(v *GetVodPackagingAsset
 }
 
 func (s *GetVodPackagingAssetResponseBodyAsset) Validate() error {
-	return dara.Validate(s)
+	if s.EgressEndpoints != nil {
+		for _, item := range s.EgressEndpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetVodPackagingAssetResponseBodyAssetEgressEndpoints struct {

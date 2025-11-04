@@ -18,14 +18,20 @@ type iGetStorageListRequest interface {
 }
 
 type GetStorageListRequest struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The OSS storage status.
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The storage type.
+	//
 	// example:
 	//
 	// vod_oss_bucket

@@ -52,7 +52,12 @@ func (s *UpdateRtcRobotInstanceRequest) SetInstanceId(v string) *UpdateRtcRobotI
 }
 
 func (s *UpdateRtcRobotInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateRtcRobotInstanceRequestConfig struct {

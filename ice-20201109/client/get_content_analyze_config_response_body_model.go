@@ -50,7 +50,12 @@ func (s *GetContentAnalyzeConfigResponseBody) SetRequestId(v string) *GetContent
 }
 
 func (s *GetContentAnalyzeConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ContentAnalyzeConfig != nil {
+		if err := s.ContentAnalyzeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetContentAnalyzeConfigResponseBodyContentAnalyzeConfig struct {

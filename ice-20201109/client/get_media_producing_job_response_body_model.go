@@ -53,7 +53,12 @@ func (s *GetMediaProducingJobResponseBody) SetRequestId(v string) *GetMediaProdu
 }
 
 func (s *GetMediaProducingJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaProducingJob != nil {
+		if err := s.MediaProducingJob.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMediaProducingJobResponseBodyMediaProducingJob struct {

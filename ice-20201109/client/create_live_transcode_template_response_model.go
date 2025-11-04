@@ -59,5 +59,10 @@ func (s *CreateLiveTranscodeTemplateResponse) SetBody(v *CreateLiveTranscodeTemp
 }
 
 func (s *CreateLiveTranscodeTemplateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

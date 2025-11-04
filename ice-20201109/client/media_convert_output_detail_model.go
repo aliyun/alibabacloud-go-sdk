@@ -119,7 +119,12 @@ func (s *MediaConvertOutputDetail) SetTaskId(v string) *MediaConvertOutputDetail
 }
 
 func (s *MediaConvertOutputDetail) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MediaConvertOutputDetailResult struct {
@@ -154,7 +159,17 @@ func (s *MediaConvertOutputDetailResult) SetOutputFile(v *MediaConvertOutputDeta
 }
 
 func (s *MediaConvertOutputDetailResult) Validate() error {
-	return dara.Validate(s)
+	if s.OutFileMeta != nil {
+		if err := s.OutFileMeta.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OutputFile != nil {
+		if err := s.OutputFile.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MediaConvertOutputDetailResultOutputFile struct {

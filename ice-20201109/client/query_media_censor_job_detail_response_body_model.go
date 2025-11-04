@@ -53,7 +53,12 @@ func (s *QueryMediaCensorJobDetailResponseBody) SetRequestId(v string) *QueryMed
 }
 
 func (s *QueryMediaCensorJobDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaCensorJobDetail != nil {
+		if err := s.MediaCensorJobDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetail struct {
@@ -288,7 +293,42 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetail) SetVideoCens
 }
 
 func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetail) Validate() error {
-	return dara.Validate(s)
+	if s.BarrageCensorResult != nil {
+		if err := s.BarrageCensorResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CoverImageCensorResults != nil {
+		if err := s.CoverImageCensorResults.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DescCensorResult != nil {
+		if err := s.DescCensorResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TitleCensorResult != nil {
+		if err := s.TitleCensorResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VensorCensorResult != nil {
+		if err := s.VensorCensorResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoCensorConfig != nil {
+		if err := s.VideoCensorConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailBarrageCensorResult struct {
@@ -408,7 +448,16 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCens
 }
 
 func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorResults) Validate() error {
-	return dara.Validate(s)
+	if s.CoverImageCensorResult != nil {
+		for _, item := range s.CoverImageCensorResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorResultsCoverImageCensorResult struct {
@@ -479,7 +528,12 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCens
 }
 
 func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorResultsCoverImageCensorResult) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		if err := s.Results.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorResultsCoverImageCensorResultResults struct {
@@ -504,7 +558,16 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCens
 }
 
 func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorResultsCoverImageCensorResultResults) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorResultsCoverImageCensorResultResultsResult struct {
@@ -979,7 +1042,17 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorRe
 }
 
 func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResult) Validate() error {
-	return dara.Validate(s)
+	if s.CensorResults != nil {
+		if err := s.CensorResults.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoTimelines != nil {
+		if err := s.VideoTimelines.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultCensorResults struct {
@@ -1004,7 +1077,16 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorRe
 }
 
 func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultCensorResults) Validate() error {
-	return dara.Validate(s)
+	if s.CensorResult != nil {
+		for _, item := range s.CensorResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultCensorResultsCensorResult struct {
@@ -1202,7 +1284,16 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorRe
 }
 
 func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultVideoTimelines) Validate() error {
-	return dara.Validate(s)
+	if s.VideoTimeline != nil {
+		for _, item := range s.VideoTimeline {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultVideoTimelinesVideoTimeline struct {
@@ -1260,7 +1351,12 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorRe
 }
 
 func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultVideoTimelinesVideoTimeline) Validate() error {
-	return dara.Validate(s)
+	if s.CensorResults != nil {
+		if err := s.CensorResults.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultVideoTimelinesVideoTimelineCensorResults struct {
@@ -1285,7 +1381,16 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorRe
 }
 
 func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultVideoTimelinesVideoTimelineCensorResults) Validate() error {
-	return dara.Validate(s)
+	if s.CensorResult != nil {
+		for _, item := range s.CensorResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultVideoTimelinesVideoTimelineCensorResultsCensorResult struct {
@@ -1518,7 +1623,12 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVideoCensorCon
 }
 
 func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVideoCensorConfig) Validate() error {
-	return dara.Validate(s)
+	if s.OutputFile != nil {
+		if err := s.OutputFile.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVideoCensorConfigOutputFile struct {

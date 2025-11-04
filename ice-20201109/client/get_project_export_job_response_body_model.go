@@ -16,7 +16,10 @@ type iGetProjectExportJobResponseBody interface {
 }
 
 type GetProjectExportJobResponseBody struct {
+	// The project export task.
 	ProjectExportJob *GetProjectExportJobResponseBodyProjectExportJob `json:"ProjectExportJob,omitempty" xml:"ProjectExportJob,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ****2876-6263-4B75-8F2C-CD0F7FCF****
@@ -50,35 +53,71 @@ func (s *GetProjectExportJobResponseBody) SetRequestId(v string) *GetProjectExpo
 }
 
 func (s *GetProjectExportJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProjectExportJob != nil {
+		if err := s.ProjectExportJob.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetProjectExportJobResponseBodyProjectExportJob struct {
+	// The error code for the failed export task.
+	//
+	// 	Notice: Use the error code for troubleshooting.
+	//
 	// example:
 	//
 	// InvalidParameter
-	Code         *string                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The exported data.
 	ExportResult *GetProjectExportJobResponseBodyProjectExportJobExportResult `json:"ExportResult,omitempty" xml:"ExportResult,omitempty" type:"Struct"`
+	// The export type. Valid values:
+	//
+	// 	- **BaseTimeline**: exports the timeline.
+	//
+	// 	- **AdobePremierePro**: exports an Adobe Premiere Pro project.
+	//
 	// example:
 	//
 	// BaseTimeline
 	ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
+	// The ID of the project export task.
+	//
 	// example:
 	//
 	// ****cdb3e74639973036bc84****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The error message for the failed export task.
+	//
+	// 	Notice: Use the error message for troubleshooting.
+	//
 	// example:
 	//
 	// The specified parameter is not valid.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the online editing project.
+	//
 	// example:
 	//
 	// ****fddd7748b58bf1d47e95****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The status of the project export task. Valid values:
+	//
+	// - Init: Initializing
+	//
+	// - Processing
+	//
+	// - Success
+	//
+	// - Failed
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The user-defined data in the JSON format.
+	//
 	// example:
 	//
 	// {"NotifyAddress":"http://xx.xx.xxx","Key":"Valuexxx"}
@@ -166,11 +205,23 @@ func (s *GetProjectExportJobResponseBodyProjectExportJob) SetUserData(v string) 
 }
 
 func (s *GetProjectExportJobResponseBodyProjectExportJob) Validate() error {
-	return dara.Validate(s)
+	if s.ExportResult != nil {
+		if err := s.ExportResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetProjectExportJobResponseBodyProjectExportJobExportResult struct {
+	// The URL of the exported project, which is typically a signed OSS URL. This field is returned when ExportType is AdobePremierePro.
+	//
+	// example:
+	//
+	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example_prefix/exported_project_1e8c39a502c3436c84f88290cd713bf3.zip?Expires=1750331685&....
 	ProjectUrl *string `json:"ProjectUrl,omitempty" xml:"ProjectUrl,omitempty"`
+	// The timeline of the online editing job. This field is returned when ExportType is BaseTimeline. For data structure, see [Timeline](https://help.aliyun.com/document_detail/198823.html).
+	//
 	// example:
 	//
 	// {"VideoTracks":[{"VideoTrackClips":[{"Type":"Video","MediaId":"****4d7cf14dc7b83b0e801c****","MediaURL":"https://test-bucket.oss-cn-shanghai.aliyuncs.com/test.mp4","TimelineIn":0.0,"TimelineOut":5.0,"In":0.0,"Out":5.0,"Speed":1.0,"Duration":5.0,"VirginDuration":13.334,"Height":1.0,"Width":1.0,"X":0.0,"Y":0.0}]}]}

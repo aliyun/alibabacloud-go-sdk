@@ -22,19 +22,28 @@ type iListRecognitionSamplesResponseBody interface {
 }
 
 type ListRecognitionSamplesResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Samples   *ListRecognitionSamplesResponseBodySamples `json:"Samples,omitempty" xml:"Samples,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The samples.
+	Samples *ListRecognitionSamplesResponseBodySamples `json:"Samples,omitempty" xml:"Samples,omitempty" type:"Struct"`
+	// The total number of samples.
+	//
 	// example:
 	//
 	// 5
@@ -95,7 +104,12 @@ func (s *ListRecognitionSamplesResponseBody) SetTotalCount(v int64) *ListRecogni
 }
 
 func (s *ListRecognitionSamplesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Samples != nil {
+		if err := s.Samples.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRecognitionSamplesResponseBodySamples struct {
@@ -120,14 +134,27 @@ func (s *ListRecognitionSamplesResponseBodySamples) SetSample(v []*ListRecogniti
 }
 
 func (s *ListRecognitionSamplesResponseBodySamples) Validate() error {
-	return dara.Validate(s)
+	if s.Sample != nil {
+		for _, item := range s.Sample {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRecognitionSamplesResponseBodySamplesSample struct {
+	// The URL of the image sample.
+	//
 	// example:
 	//
 	// https://example.com/sample.png
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The sample ID.
+	//
 	// example:
 	//
 	// xxxxxxxxxxxxx

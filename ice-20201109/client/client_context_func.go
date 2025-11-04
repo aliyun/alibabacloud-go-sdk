@@ -17,9 +17,11 @@ import (
 //
 // @return AddAdInsertionResponse
 func (client *Client) AddAdInsertionWithContext(ctx context.Context, request *AddAdInsertionRequest, runtime *dara.RuntimeOptions) (_result *AddAdInsertionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AdMarkerPassthrough) {
@@ -99,9 +101,11 @@ func (client *Client) AddAdInsertionWithContext(ctx context.Context, request *Ad
 //
 // @return AddCategoryResponse
 func (client *Client) AddCategoryWithContext(ctx context.Context, request *AddCategoryRequest, runtime *dara.RuntimeOptions) (_result *AddCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CateName) {
@@ -149,9 +153,11 @@ func (client *Client) AddCategoryWithContext(ctx context.Context, request *AddCa
 //
 // @return AddEditingProjectMaterialsResponse
 func (client *Client) AddEditingProjectMaterialsWithContext(ctx context.Context, request *AddEditingProjectMaterialsRequest, runtime *dara.RuntimeOptions) (_result *AddEditingProjectMaterialsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaterialMaps) {
@@ -195,9 +201,11 @@ func (client *Client) AddEditingProjectMaterialsWithContext(ctx context.Context,
 //
 // @return AddFavoritePublicMediaResponse
 func (client *Client) AddFavoritePublicMediaWithContext(ctx context.Context, request *AddFavoritePublicMediaRequest, runtime *dara.RuntimeOptions) (_result *AddFavoritePublicMediaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MediaIds) {
@@ -255,9 +263,11 @@ func (client *Client) AddFavoritePublicMediaWithContext(ctx context.Context, req
 //
 // @return AddMediaConnectFlowInputResponse
 func (client *Client) AddMediaConnectFlowInputWithContext(ctx context.Context, request *AddMediaConnectFlowInputRequest, runtime *dara.RuntimeOptions) (_result *AddMediaConnectFlowInputResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Cidrs) {
@@ -359,9 +369,11 @@ func (client *Client) AddMediaConnectFlowInputWithContext(ctx context.Context, r
 //
 // @return AddMediaConnectFlowOutputResponse
 func (client *Client) AddMediaConnectFlowOutputWithContext(ctx context.Context, request *AddMediaConnectFlowOutputRequest, runtime *dara.RuntimeOptions) (_result *AddMediaConnectFlowOutputResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Cidrs) {
@@ -441,9 +453,11 @@ func (client *Client) AddMediaConnectFlowOutputWithContext(ctx context.Context, 
 //
 // @return AddMediaMarksResponse
 func (client *Client) AddMediaMarksWithContext(ctx context.Context, request *AddMediaMarksRequest, runtime *dara.RuntimeOptions) (_result *AddMediaMarksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MediaId) {
@@ -479,7 +493,7 @@ func (client *Client) AddMediaMarksWithContext(ctx context.Context, request *Add
 
 // Summary:
 //
-// 打标流媒资
+// Adds tags for a specific live stream media asset.
 //
 // @param request - AddStreamTagToSearchLibRequest
 //
@@ -487,9 +501,11 @@ func (client *Client) AddMediaMarksWithContext(ctx context.Context, request *Add
 //
 // @return AddStreamTagToSearchLibResponse
 func (client *Client) AddStreamTagToSearchLibWithContext(ctx context.Context, request *AddStreamTagToSearchLibRequest, runtime *dara.RuntimeOptions) (_result *AddStreamTagToSearchLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MediaId) {
@@ -549,9 +565,11 @@ func (client *Client) AddStreamTagToSearchLibWithContext(ctx context.Context, re
 //
 // @return AddTemplateResponse
 func (client *Client) AddTemplateWithContext(ctx context.Context, request *AddTemplateRequest, runtime *dara.RuntimeOptions) (_result *AddTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CoverUrl) {
@@ -621,9 +639,11 @@ func (client *Client) AddTemplateWithContext(ctx context.Context, request *AddTe
 //
 // @return AlterSearchIndexResponse
 func (client *Client) AlterSearchIndexWithContext(ctx context.Context, request *AlterSearchIndexRequest, runtime *dara.RuntimeOptions) (_result *AlterSearchIndexResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IndexConfig) {
@@ -675,9 +695,11 @@ func (client *Client) AlterSearchIndexWithContext(ctx context.Context, request *
 //
 // @return BatchCreateVodPackagingAssetResponse
 func (client *Client) BatchCreateVodPackagingAssetWithContext(ctx context.Context, tmpReq *BatchCreateVodPackagingAssetRequest, runtime *dara.RuntimeOptions) (_result *BatchCreateVodPackagingAssetResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &BatchCreateVodPackagingAssetShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -727,9 +749,11 @@ func (client *Client) BatchCreateVodPackagingAssetWithContext(ctx context.Contex
 //
 // @return BatchGetMediaInfosResponse
 func (client *Client) BatchGetMediaInfosWithContext(ctx context.Context, request *BatchGetMediaInfosRequest, runtime *dara.RuntimeOptions) (_result *BatchGetMediaInfosResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AdditionType) {
@@ -783,9 +807,11 @@ func (client *Client) BatchGetMediaInfosWithContext(ctx context.Context, request
 //
 // @return CancelDNAJobResponse
 func (client *Client) CancelDNAJobWithContext(ctx context.Context, request *CancelDNAJobRequest, runtime *dara.RuntimeOptions) (_result *CancelDNAJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -841,9 +867,11 @@ func (client *Client) CancelDNAJobWithContext(ctx context.Context, request *Canc
 //
 // @return CancelFavoritePublicMediaResponse
 func (client *Client) CancelFavoritePublicMediaWithContext(ctx context.Context, request *CancelFavoritePublicMediaRequest, runtime *dara.RuntimeOptions) (_result *CancelFavoritePublicMediaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MediaIds) {
@@ -875,7 +903,7 @@ func (client *Client) CancelFavoritePublicMediaWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 取消智能生产任务
+// Cancels an intelligent production job.
 //
 // @param request - CancelIProductionJobRequest
 //
@@ -883,9 +911,11 @@ func (client *Client) CancelFavoritePublicMediaWithContext(ctx context.Context, 
 //
 // @return CancelIProductionJobResponse
 func (client *Client) CancelIProductionJobWithContext(ctx context.Context, request *CancelIProductionJobRequest, runtime *dara.RuntimeOptions) (_result *CancelIProductionJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -921,7 +951,13 @@ func (client *Client) CancelIProductionJobWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 清除声纹ID对应的声纹
+// Deletes a voiceprint based on its ID.
+//
+// Description:
+//
+// ## [](#)
+//
+// ``````````
 //
 // @param request - ClearAIAgentVoiceprintRequest
 //
@@ -929,9 +965,11 @@ func (client *Client) CancelIProductionJobWithContext(ctx context.Context, reque
 //
 // @return ClearAIAgentVoiceprintResponse
 func (client *Client) ClearAIAgentVoiceprintWithContext(ctx context.Context, request *ClearAIAgentVoiceprintRequest, runtime *dara.RuntimeOptions) (_result *ClearAIAgentVoiceprintResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.VoiceprintId) {
@@ -963,7 +1001,11 @@ func (client *Client) ClearAIAgentVoiceprintWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 关闭MediaConnect实例的双流灾备功能
+// Disables Source Failover for a MediaConnect flow.
+//
+// Description:
+//
+//	If a flow has two sources, you cannot disable Source Failover. Delete one of them before this operation.
 //
 // @param request - CloseMediaConnectFlowFailoverRequest
 //
@@ -971,9 +1013,11 @@ func (client *Client) ClearAIAgentVoiceprintWithContext(ctx context.Context, req
 //
 // @return CloseMediaConnectFlowFailoverResponse
 func (client *Client) CloseMediaConnectFlowFailoverWithContext(ctx context.Context, request *CloseMediaConnectFlowFailoverRequest, runtime *dara.RuntimeOptions) (_result *CloseMediaConnectFlowFailoverResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FlowId) {
@@ -1005,7 +1049,7 @@ func (client *Client) CloseMediaConnectFlowFailoverWithContext(ctx context.Conte
 
 // Summary:
 //
-// 关闭流媒资
+// Stops the tagging and analysis process for a live stream media asset.
 //
 // @param request - CloseStreamToSearchLibRequest
 //
@@ -1013,9 +1057,11 @@ func (client *Client) CloseMediaConnectFlowFailoverWithContext(ctx context.Conte
 //
 // @return CloseStreamToSearchLibResponse
 func (client *Client) CloseStreamToSearchLibWithContext(ctx context.Context, request *CloseStreamToSearchLibRequest, runtime *dara.RuntimeOptions) (_result *CloseStreamToSearchLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MediaId) {
@@ -1063,9 +1109,11 @@ func (client *Client) CloseStreamToSearchLibWithContext(ctx context.Context, req
 //
 // @return CreateAuditResponse
 func (client *Client) CreateAuditWithContext(ctx context.Context, request *CreateAuditRequest, runtime *dara.RuntimeOptions) (_result *CreateAuditResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuditContent) {
@@ -1105,9 +1153,11 @@ func (client *Client) CreateAuditWithContext(ctx context.Context, request *Creat
 //
 // @return CreateAvatarTrainingJobResponse
 func (client *Client) CreateAvatarTrainingJobWithContext(ctx context.Context, request *CreateAvatarTrainingJobRequest, runtime *dara.RuntimeOptions) (_result *CreateAvatarTrainingJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AvatarDescription) {
@@ -1171,9 +1221,11 @@ func (client *Client) CreateAvatarTrainingJobWithContext(ctx context.Context, re
 //
 // @return CreateChannelResponse
 func (client *Client) CreateChannelWithContext(ctx context.Context, request *CreateChannelRequest, runtime *dara.RuntimeOptions) (_result *CreateChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessPolicy) {
@@ -1241,9 +1293,11 @@ func (client *Client) CreateChannelWithContext(ctx context.Context, request *Cre
 //
 // @return CreateCustomTemplateResponse
 func (client *Client) CreateCustomTemplateWithContext(ctx context.Context, request *CreateCustomTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -1295,9 +1349,11 @@ func (client *Client) CreateCustomTemplateWithContext(ctx context.Context, reque
 //
 // @return CreateCustomizedVoiceJobResponse
 func (client *Client) CreateCustomizedVoiceJobWithContext(ctx context.Context, request *CreateCustomizedVoiceJobRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomizedVoiceJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Gender) {
@@ -1357,9 +1413,11 @@ func (client *Client) CreateCustomizedVoiceJobWithContext(ctx context.Context, r
 //
 // @return CreateDNADBResponse
 func (client *Client) CreateDNADBWithContext(ctx context.Context, request *CreateDNADBRequest, runtime *dara.RuntimeOptions) (_result *CreateDNADBResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -1423,9 +1481,11 @@ func (client *Client) CreateDNADBWithContext(ctx context.Context, request *Creat
 //
 // @return CreateEditingProjectResponse
 func (client *Client) CreateEditingProjectWithContext(ctx context.Context, request *CreateEditingProjectRequest, runtime *dara.RuntimeOptions) (_result *CreateEditingProjectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessConfig) {
@@ -1495,7 +1555,7 @@ func (client *Client) CreateEditingProjectWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 创建热词库
+// Creates a hotword library.
 //
 // @param tmpReq - CreateHotwordLibraryRequest
 //
@@ -1503,9 +1563,11 @@ func (client *Client) CreateEditingProjectWithContext(ctx context.Context, reque
 //
 // @return CreateHotwordLibraryResponse
 func (client *Client) CreateHotwordLibraryWithContext(ctx context.Context, tmpReq *CreateHotwordLibraryRequest, runtime *dara.RuntimeOptions) (_result *CreateHotwordLibraryResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateHotwordLibraryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1581,9 +1643,11 @@ func (client *Client) CreateHotwordLibraryWithContext(ctx context.Context, tmpRe
 //
 // @return CreateLivePackageChannelResponse
 func (client *Client) CreateLivePackageChannelWithContext(ctx context.Context, request *CreateLivePackageChannelRequest, runtime *dara.RuntimeOptions) (_result *CreateLivePackageChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1653,9 +1717,11 @@ func (client *Client) CreateLivePackageChannelWithContext(ctx context.Context, r
 //
 // @return CreateLivePackageChannelGroupResponse
 func (client *Client) CreateLivePackageChannelGroupWithContext(ctx context.Context, request *CreateLivePackageChannelGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateLivePackageChannelGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1711,9 +1777,11 @@ func (client *Client) CreateLivePackageChannelGroupWithContext(ctx context.Conte
 //
 // @return CreateLivePackageOriginEndpointResponse
 func (client *Client) CreateLivePackageOriginEndpointWithContext(ctx context.Context, tmpReq *CreateLivePackageOriginEndpointRequest, runtime *dara.RuntimeOptions) (_result *CreateLivePackageOriginEndpointResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateLivePackageOriginEndpointShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1809,9 +1877,11 @@ func (client *Client) CreateLivePackageOriginEndpointWithContext(ctx context.Con
 //
 // @return CreateLiveRecordTemplateResponse
 func (client *Client) CreateLiveRecordTemplateWithContext(ctx context.Context, tmpReq *CreateLiveRecordTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveRecordTemplateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateLiveRecordTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1861,9 +1931,11 @@ func (client *Client) CreateLiveRecordTemplateWithContext(ctx context.Context, t
 //
 // @return CreateLiveSnapshotTemplateResponse
 func (client *Client) CreateLiveSnapshotTemplateWithContext(ctx context.Context, request *CreateLiveSnapshotTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveSnapshotTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.OverwriteFormat) {
@@ -1915,9 +1987,11 @@ func (client *Client) CreateLiveSnapshotTemplateWithContext(ctx context.Context,
 //
 // @return CreateLiveTranscodeTemplateResponse
 func (client *Client) CreateLiveTranscodeTemplateWithContext(ctx context.Context, tmpReq *CreateLiveTranscodeTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveTranscodeTemplateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateLiveTranscodeTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1977,9 +2051,11 @@ func (client *Client) CreateLiveTranscodeTemplateWithContext(ctx context.Context
 //
 // @return CreateMediaConnectFlowResponse
 func (client *Client) CreateMediaConnectFlowWithContext(ctx context.Context, request *CreateMediaConnectFlowRequest, runtime *dara.RuntimeOptions) (_result *CreateMediaConnectFlowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FlowName) {
@@ -2029,9 +2105,11 @@ func (client *Client) CreateMediaConnectFlowWithContext(ctx context.Context, req
 //
 // @return CreateMediaLiveChannelResponse
 func (client *Client) CreateMediaLiveChannelWithContext(ctx context.Context, tmpReq *CreateMediaLiveChannelRequest, runtime *dara.RuntimeOptions) (_result *CreateMediaLiveChannelResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateMediaLiveChannelShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2111,9 +2189,11 @@ func (client *Client) CreateMediaLiveChannelWithContext(ctx context.Context, tmp
 //
 // @return CreateMediaLiveInputResponse
 func (client *Client) CreateMediaLiveInputWithContext(ctx context.Context, tmpReq *CreateMediaLiveInputRequest, runtime *dara.RuntimeOptions) (_result *CreateMediaLiveInputResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateMediaLiveInputShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2181,9 +2261,11 @@ func (client *Client) CreateMediaLiveInputWithContext(ctx context.Context, tmpRe
 //
 // @return CreateMediaLiveInputSecurityGroupResponse
 func (client *Client) CreateMediaLiveInputSecurityGroupWithContext(ctx context.Context, tmpReq *CreateMediaLiveInputSecurityGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateMediaLiveInputSecurityGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateMediaLiveInputSecurityGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2233,9 +2315,11 @@ func (client *Client) CreateMediaLiveInputSecurityGroupWithContext(ctx context.C
 //
 // @return CreatePipelineResponse
 func (client *Client) CreatePipelineWithContext(ctx context.Context, request *CreatePipelineRequest, runtime *dara.RuntimeOptions) (_result *CreatePipelineResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -2283,9 +2367,11 @@ func (client *Client) CreatePipelineWithContext(ctx context.Context, request *Cr
 //
 // @return CreateProgramResponse
 func (client *Client) CreateProgramWithContext(ctx context.Context, request *CreateProgramRequest, runtime *dara.RuntimeOptions) (_result *CreateProgramResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AdBreaks) {
@@ -2345,7 +2431,13 @@ func (client *Client) CreateProgramWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// 创建自定义实体
+// Creates an entity to be recognized in a custom recognition library. The entity can be a landmark, object, logo, or person.
+//
+// Description:
+//
+//	  This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+//
+//		- You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
 //
 // @param request - CreateRecognitionEntityRequest
 //
@@ -2353,9 +2445,11 @@ func (client *Client) CreateProgramWithContext(ctx context.Context, request *Cre
 //
 // @return CreateRecognitionEntityResponse
 func (client *Client) CreateRecognitionEntityWithContext(ctx context.Context, request *CreateRecognitionEntityRequest, runtime *dara.RuntimeOptions) (_result *CreateRecognitionEntityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -2415,7 +2509,15 @@ func (client *Client) CreateRecognitionEntityWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 创建自定义库。
+// Creates a custom library to store the entity information for recognition.
+//
+// Description:
+//
+//	  This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+//
+//		- Workflow for using a custom recognition library: Create a library, create a custom object entity within the library, register sample images for the entity, create an analysis template that uses your custom library, and then submit an analysis task using the template.
+//
+//		- You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
 //
 // @param request - CreateRecognitionLibRequest
 //
@@ -2423,9 +2525,11 @@ func (client *Client) CreateRecognitionEntityWithContext(ctx context.Context, re
 //
 // @return CreateRecognitionLibResponse
 func (client *Client) CreateRecognitionLibWithContext(ctx context.Context, request *CreateRecognitionLibRequest, runtime *dara.RuntimeOptions) (_result *CreateRecognitionLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -2481,7 +2585,13 @@ func (client *Client) CreateRecognitionLibWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 注册自定义实体照片
+// Adds a sample image or a text label to a specific entity within a recognition library.
+//
+// Description:
+//
+//	  This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+//
+//		- You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
 //
 // @param request - CreateRecognitionSampleRequest
 //
@@ -2489,9 +2599,11 @@ func (client *Client) CreateRecognitionLibWithContext(ctx context.Context, reque
 //
 // @return CreateRecognitionSampleResponse
 func (client *Client) CreateRecognitionSampleWithContext(ctx context.Context, request *CreateRecognitionSampleRequest, runtime *dara.RuntimeOptions) (_result *CreateRecognitionSampleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -2567,9 +2679,11 @@ func (client *Client) CreateRecognitionSampleWithContext(ctx context.Context, re
 //
 // @return CreateSearchIndexResponse
 func (client *Client) CreateSearchIndexWithContext(ctx context.Context, request *CreateSearchIndexRequest, runtime *dara.RuntimeOptions) (_result *CreateSearchIndexResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IndexConfig) {
@@ -2621,9 +2735,11 @@ func (client *Client) CreateSearchIndexWithContext(ctx context.Context, request 
 //
 // @return CreateSearchLibResponse
 func (client *Client) CreateSearchLibWithContext(ctx context.Context, request *CreateSearchLibRequest, runtime *dara.RuntimeOptions) (_result *CreateSearchLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SearchLibName) {
@@ -2663,9 +2779,11 @@ func (client *Client) CreateSearchLibWithContext(ctx context.Context, request *C
 //
 // @return CreateSourceResponse
 func (client *Client) CreateSourceWithContext(ctx context.Context, request *CreateSourceRequest, runtime *dara.RuntimeOptions) (_result *CreateSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HttpPackageConfigurations) {
@@ -2717,9 +2835,11 @@ func (client *Client) CreateSourceWithContext(ctx context.Context, request *Crea
 //
 // @return CreateSourceLocationResponse
 func (client *Client) CreateSourceLocationWithContext(ctx context.Context, request *CreateSourceLocationRequest, runtime *dara.RuntimeOptions) (_result *CreateSourceLocationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseUrl) {
@@ -2763,7 +2883,7 @@ func (client *Client) CreateSourceLocationWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 创建流媒资
+// Registers a live stream as a media asset.
 //
 // @param request - CreateStreamToSearchLibRequest
 //
@@ -2771,9 +2891,11 @@ func (client *Client) CreateSourceLocationWithContext(ctx context.Context, reque
 //
 // @return CreateStreamToSearchLibResponse
 func (client *Client) CreateStreamToSearchLibWithContext(ctx context.Context, request *CreateStreamToSearchLibRequest, runtime *dara.RuntimeOptions) (_result *CreateStreamToSearchLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Input) {
@@ -2837,9 +2959,11 @@ func (client *Client) CreateStreamToSearchLibWithContext(ctx context.Context, re
 //
 // @return CreateUploadMediaResponse
 func (client *Client) CreateUploadMediaWithContext(ctx context.Context, request *CreateUploadMediaRequest, runtime *dara.RuntimeOptions) (_result *CreateUploadMediaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2911,9 +3035,11 @@ func (client *Client) CreateUploadMediaWithContext(ctx context.Context, request 
 //
 // @return CreateUploadStreamResponse
 func (client *Client) CreateUploadStreamWithContext(ctx context.Context, request *CreateUploadStreamRequest, runtime *dara.RuntimeOptions) (_result *CreateUploadStreamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Definition) {
@@ -2969,9 +3095,11 @@ func (client *Client) CreateUploadStreamWithContext(ctx context.Context, request
 //
 // @return CreateVodPackagingAssetResponse
 func (client *Client) CreateVodPackagingAssetWithContext(ctx context.Context, tmpReq *CreateVodPackagingAssetRequest, runtime *dara.RuntimeOptions) (_result *CreateVodPackagingAssetResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateVodPackagingAssetShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3033,9 +3161,11 @@ func (client *Client) CreateVodPackagingAssetWithContext(ctx context.Context, tm
 //
 // @return CreateVodPackagingConfigurationResponse
 func (client *Client) CreateVodPackagingConfigurationWithContext(ctx context.Context, tmpReq *CreateVodPackagingConfigurationRequest, runtime *dara.RuntimeOptions) (_result *CreateVodPackagingConfigurationResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateVodPackagingConfigurationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3097,9 +3227,11 @@ func (client *Client) CreateVodPackagingConfigurationWithContext(ctx context.Con
 //
 // @return CreateVodPackagingGroupResponse
 func (client *Client) CreateVodPackagingGroupWithContext(ctx context.Context, request *CreateVodPackagingGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateVodPackagingGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -3143,9 +3275,11 @@ func (client *Client) CreateVodPackagingGroupWithContext(ctx context.Context, re
 //
 // @return DecryptKMSDataKeyResponse
 func (client *Client) DecryptKMSDataKeyWithContext(ctx context.Context, request *DecryptKMSDataKeyRequest, runtime *dara.RuntimeOptions) (_result *DecryptKMSDataKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CiphertextBlob) {
@@ -3177,7 +3311,7 @@ func (client *Client) DecryptKMSDataKeyWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除智能体的对话历史记录。
+// Deletes dialog records of an AI agent.
 //
 // @param request - DeleteAIAgentDialogueRequest
 //
@@ -3185,9 +3319,11 @@ func (client *Client) DecryptKMSDataKeyWithContext(ctx context.Context, request 
 //
 // @return DeleteAIAgentDialogueResponse
 func (client *Client) DeleteAIAgentDialogueWithContext(ctx context.Context, request *DeleteAIAgentDialogueRequest, runtime *dara.RuntimeOptions) (_result *DeleteAIAgentDialogueResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DialogueId) {
@@ -3235,9 +3371,11 @@ func (client *Client) DeleteAIAgentDialogueWithContext(ctx context.Context, requ
 //
 // @return DeleteAdInsertionResponse
 func (client *Client) DeleteAdInsertionWithContext(ctx context.Context, request *DeleteAdInsertionRequest, runtime *dara.RuntimeOptions) (_result *DeleteAdInsertionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -3277,9 +3415,11 @@ func (client *Client) DeleteAdInsertionWithContext(ctx context.Context, request 
 //
 // @return DeleteAvatarTrainingJobResponse
 func (client *Client) DeleteAvatarTrainingJobWithContext(ctx context.Context, request *DeleteAvatarTrainingJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteAvatarTrainingJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -3323,9 +3463,11 @@ func (client *Client) DeleteAvatarTrainingJobWithContext(ctx context.Context, re
 //
 // @return DeleteCategoryResponse
 func (client *Client) DeleteCategoryWithContext(ctx context.Context, request *DeleteCategoryRequest, runtime *dara.RuntimeOptions) (_result *DeleteCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CateId) {
@@ -3365,9 +3507,11 @@ func (client *Client) DeleteCategoryWithContext(ctx context.Context, request *De
 //
 // @return DeleteChannelResponse
 func (client *Client) DeleteChannelWithContext(ctx context.Context, request *DeleteChannelRequest, runtime *dara.RuntimeOptions) (_result *DeleteChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelName) {
@@ -3407,9 +3551,11 @@ func (client *Client) DeleteChannelWithContext(ctx context.Context, request *Del
 //
 // @return DeleteCustomTemplateResponse
 func (client *Client) DeleteCustomTemplateWithContext(ctx context.Context, request *DeleteCustomTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TemplateId) {
@@ -3449,9 +3595,11 @@ func (client *Client) DeleteCustomTemplateWithContext(ctx context.Context, reque
 //
 // @return DeleteCustomizedVoiceJobResponse
 func (client *Client) DeleteCustomizedVoiceJobWithContext(ctx context.Context, request *DeleteCustomizedVoiceJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomizedVoiceJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -3491,9 +3639,11 @@ func (client *Client) DeleteCustomizedVoiceJobWithContext(ctx context.Context, r
 //
 // @return DeleteDNADBResponse
 func (client *Client) DeleteDNADBWithContext(ctx context.Context, request *DeleteDNADBRequest, runtime *dara.RuntimeOptions) (_result *DeleteDNADBResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBId) {
@@ -3549,9 +3699,11 @@ func (client *Client) DeleteDNADBWithContext(ctx context.Context, request *Delet
 //
 // @return DeleteDNAFilesResponse
 func (client *Client) DeleteDNAFilesWithContext(ctx context.Context, request *DeleteDNAFilesRequest, runtime *dara.RuntimeOptions) (_result *DeleteDNAFilesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBId) {
@@ -3611,9 +3763,11 @@ func (client *Client) DeleteDNAFilesWithContext(ctx context.Context, request *De
 //
 // @return DeleteEditingProjectMaterialsResponse
 func (client *Client) DeleteEditingProjectMaterialsWithContext(ctx context.Context, request *DeleteEditingProjectMaterialsRequest, runtime *dara.RuntimeOptions) (_result *DeleteEditingProjectMaterialsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaterialIds) {
@@ -3661,9 +3815,11 @@ func (client *Client) DeleteEditingProjectMaterialsWithContext(ctx context.Conte
 //
 // @return DeleteEditingProjectsResponse
 func (client *Client) DeleteEditingProjectsWithContext(ctx context.Context, request *DeleteEditingProjectsRequest, runtime *dara.RuntimeOptions) (_result *DeleteEditingProjectsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProjectIds) {
@@ -3695,7 +3851,17 @@ func (client *Client) DeleteEditingProjectsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 删除热词词库
+// Deletes a specified hotword library based on the ID.
+//
+// Description:
+//
+// ## [](#)
+//
+//   - You can call this operation to delete a specified hotword library.
+//
+//   - The delete operation is irreversible.
+//
+//   - You can create up to 100 hotword libraries in an account.
 //
 // @param request - DeleteHotwordLibraryRequest
 //
@@ -3703,9 +3869,11 @@ func (client *Client) DeleteEditingProjectsWithContext(ctx context.Context, requ
 //
 // @return DeleteHotwordLibraryResponse
 func (client *Client) DeleteHotwordLibraryWithContext(ctx context.Context, request *DeleteHotwordLibraryRequest, runtime *dara.RuntimeOptions) (_result *DeleteHotwordLibraryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HotwordLibraryId) {
@@ -3751,9 +3919,11 @@ func (client *Client) DeleteHotwordLibraryWithContext(ctx context.Context, reque
 //
 // @return DeleteLivePackageChannelResponse
 func (client *Client) DeleteLivePackageChannelWithContext(ctx context.Context, request *DeleteLivePackageChannelRequest, runtime *dara.RuntimeOptions) (_result *DeleteLivePackageChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelName) {
@@ -3803,9 +3973,11 @@ func (client *Client) DeleteLivePackageChannelWithContext(ctx context.Context, r
 //
 // @return DeleteLivePackageChannelGroupResponse
 func (client *Client) DeleteLivePackageChannelGroupWithContext(ctx context.Context, request *DeleteLivePackageChannelGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteLivePackageChannelGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupName) {
@@ -3851,9 +4023,11 @@ func (client *Client) DeleteLivePackageChannelGroupWithContext(ctx context.Conte
 //
 // @return DeleteLivePackageOriginEndpointResponse
 func (client *Client) DeleteLivePackageOriginEndpointWithContext(ctx context.Context, request *DeleteLivePackageOriginEndpointRequest, runtime *dara.RuntimeOptions) (_result *DeleteLivePackageOriginEndpointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelName) {
@@ -3901,9 +4075,11 @@ func (client *Client) DeleteLivePackageOriginEndpointWithContext(ctx context.Con
 //
 // @return DeleteLiveRecordFilesResponse
 func (client *Client) DeleteLiveRecordFilesWithContext(ctx context.Context, request *DeleteLiveRecordFilesRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveRecordFilesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RecordIds) {
@@ -3947,9 +4123,11 @@ func (client *Client) DeleteLiveRecordFilesWithContext(ctx context.Context, requ
 //
 // @return DeleteLiveRecordTemplateResponse
 func (client *Client) DeleteLiveRecordTemplateWithContext(ctx context.Context, request *DeleteLiveRecordTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveRecordTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TemplateId) {
@@ -3989,9 +4167,11 @@ func (client *Client) DeleteLiveRecordTemplateWithContext(ctx context.Context, r
 //
 // @return DeleteLiveSnapshotFilesResponse
 func (client *Client) DeleteLiveSnapshotFilesWithContext(ctx context.Context, tmpReq *DeleteLiveSnapshotFilesRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveSnapshotFilesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteLiveSnapshotFilesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4045,9 +4225,11 @@ func (client *Client) DeleteLiveSnapshotFilesWithContext(ctx context.Context, tm
 //
 // @return DeleteLiveSnapshotTemplateResponse
 func (client *Client) DeleteLiveSnapshotTemplateWithContext(ctx context.Context, request *DeleteLiveSnapshotTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveSnapshotTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.TemplateId) {
@@ -4087,9 +4269,11 @@ func (client *Client) DeleteLiveSnapshotTemplateWithContext(ctx context.Context,
 //
 // @return DeleteLiveTranscodeJobResponse
 func (client *Client) DeleteLiveTranscodeJobWithContext(ctx context.Context, request *DeleteLiveTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveTranscodeJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -4129,9 +4313,11 @@ func (client *Client) DeleteLiveTranscodeJobWithContext(ctx context.Context, req
 //
 // @return DeleteLiveTranscodeTemplateResponse
 func (client *Client) DeleteLiveTranscodeTemplateWithContext(ctx context.Context, request *DeleteLiveTranscodeTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveTranscodeTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TemplateId) {
@@ -4179,9 +4365,11 @@ func (client *Client) DeleteLiveTranscodeTemplateWithContext(ctx context.Context
 //
 // @return DeleteMediaConnectFlowResponse
 func (client *Client) DeleteMediaConnectFlowWithContext(ctx context.Context, request *DeleteMediaConnectFlowRequest, runtime *dara.RuntimeOptions) (_result *DeleteMediaConnectFlowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FlowId) {
@@ -4229,9 +4417,11 @@ func (client *Client) DeleteMediaConnectFlowWithContext(ctx context.Context, req
 //
 // @return DeleteMediaConnectFlowInputResponse
 func (client *Client) DeleteMediaConnectFlowInputWithContext(ctx context.Context, request *DeleteMediaConnectFlowInputRequest, runtime *dara.RuntimeOptions) (_result *DeleteMediaConnectFlowInputResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FlowId) {
@@ -4281,9 +4471,11 @@ func (client *Client) DeleteMediaConnectFlowInputWithContext(ctx context.Context
 //
 // @return DeleteMediaConnectFlowOutputResponse
 func (client *Client) DeleteMediaConnectFlowOutputWithContext(ctx context.Context, request *DeleteMediaConnectFlowOutputRequest, runtime *dara.RuntimeOptions) (_result *DeleteMediaConnectFlowOutputResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FlowId) {
@@ -4327,9 +4519,11 @@ func (client *Client) DeleteMediaConnectFlowOutputWithContext(ctx context.Contex
 //
 // @return DeleteMediaFromSearchLibResponse
 func (client *Client) DeleteMediaFromSearchLibWithContext(ctx context.Context, request *DeleteMediaFromSearchLibRequest, runtime *dara.RuntimeOptions) (_result *DeleteMediaFromSearchLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MediaId) {
@@ -4381,9 +4575,11 @@ func (client *Client) DeleteMediaFromSearchLibWithContext(ctx context.Context, r
 //
 // @return DeleteMediaInfosResponse
 func (client *Client) DeleteMediaInfosWithContext(ctx context.Context, request *DeleteMediaInfosRequest, runtime *dara.RuntimeOptions) (_result *DeleteMediaInfosResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeletePhysicalFiles) {
@@ -4439,9 +4635,11 @@ func (client *Client) DeleteMediaInfosWithContext(ctx context.Context, request *
 //
 // @return DeleteMediaLiveChannelResponse
 func (client *Client) DeleteMediaLiveChannelWithContext(ctx context.Context, request *DeleteMediaLiveChannelRequest, runtime *dara.RuntimeOptions) (_result *DeleteMediaLiveChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelId) {
@@ -4489,9 +4687,11 @@ func (client *Client) DeleteMediaLiveChannelWithContext(ctx context.Context, req
 //
 // @return DeleteMediaLiveInputResponse
 func (client *Client) DeleteMediaLiveInputWithContext(ctx context.Context, request *DeleteMediaLiveInputRequest, runtime *dara.RuntimeOptions) (_result *DeleteMediaLiveInputResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InputId) {
@@ -4539,9 +4739,11 @@ func (client *Client) DeleteMediaLiveInputWithContext(ctx context.Context, reque
 //
 // @return DeleteMediaLiveInputSecurityGroupResponse
 func (client *Client) DeleteMediaLiveInputSecurityGroupWithContext(ctx context.Context, request *DeleteMediaLiveInputSecurityGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteMediaLiveInputSecurityGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.SecurityGroupId) {
@@ -4581,9 +4783,11 @@ func (client *Client) DeleteMediaLiveInputSecurityGroupWithContext(ctx context.C
 //
 // @return DeleteMediaMarksResponse
 func (client *Client) DeleteMediaMarksWithContext(ctx context.Context, request *DeleteMediaMarksRequest, runtime *dara.RuntimeOptions) (_result *DeleteMediaMarksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MediaId) {
@@ -4627,9 +4831,11 @@ func (client *Client) DeleteMediaMarksWithContext(ctx context.Context, request *
 //
 // @return DeletePipelineResponse
 func (client *Client) DeletePipelineWithContext(ctx context.Context, request *DeletePipelineRequest, runtime *dara.RuntimeOptions) (_result *DeletePipelineResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PipelineId) {
@@ -4673,9 +4879,11 @@ func (client *Client) DeletePipelineWithContext(ctx context.Context, request *De
 //
 // @return DeletePlayInfoResponse
 func (client *Client) DeletePlayInfoWithContext(ctx context.Context, request *DeletePlayInfoRequest, runtime *dara.RuntimeOptions) (_result *DeletePlayInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeletePhysicalFiles) {
@@ -4723,9 +4931,11 @@ func (client *Client) DeletePlayInfoWithContext(ctx context.Context, request *De
 //
 // @return DeleteProgramResponse
 func (client *Client) DeleteProgramWithContext(ctx context.Context, request *DeleteProgramRequest, runtime *dara.RuntimeOptions) (_result *DeleteProgramResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelName) {
@@ -4761,7 +4971,13 @@ func (client *Client) DeleteProgramWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// 删除自定义库实体
+// Deletes an entity from the specified custom recognition library.
+//
+// Description:
+//
+//	  This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+//
+//		- You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
 //
 // @param request - DeleteRecognitionEntityRequest
 //
@@ -4769,9 +4985,11 @@ func (client *Client) DeleteProgramWithContext(ctx context.Context, request *Del
 //
 // @return DeleteRecognitionEntityResponse
 func (client *Client) DeleteRecognitionEntityWithContext(ctx context.Context, request *DeleteRecognitionEntityRequest, runtime *dara.RuntimeOptions) (_result *DeleteRecognitionEntityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -4827,7 +5045,13 @@ func (client *Client) DeleteRecognitionEntityWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 删除自定义库
+// Deletes a custom recognition library, including all entities and samples within it.
+//
+// Description:
+//
+//	  This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+//
+//		- You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
 //
 // @param request - DeleteRecognitionLibRequest
 //
@@ -4835,9 +5059,11 @@ func (client *Client) DeleteRecognitionEntityWithContext(ctx context.Context, re
 //
 // @return DeleteRecognitionLibResponse
 func (client *Client) DeleteRecognitionLibWithContext(ctx context.Context, request *DeleteRecognitionLibRequest, runtime *dara.RuntimeOptions) (_result *DeleteRecognitionLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -4889,7 +5115,13 @@ func (client *Client) DeleteRecognitionLibWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 删除自定义实体照片
+// Deletes a sample for a custom entity.
+//
+// Description:
+//
+//	  This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+//
+//		- You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
 //
 // @param request - DeleteRecognitionSampleRequest
 //
@@ -4897,9 +5129,11 @@ func (client *Client) DeleteRecognitionLibWithContext(ctx context.Context, reque
 //
 // @return DeleteRecognitionSampleResponse
 func (client *Client) DeleteRecognitionSampleWithContext(ctx context.Context, request *DeleteRecognitionSampleRequest, runtime *dara.RuntimeOptions) (_result *DeleteRecognitionSampleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -4967,9 +5201,11 @@ func (client *Client) DeleteRecognitionSampleWithContext(ctx context.Context, re
 //
 // @return DeleteSmartJobResponse
 func (client *Client) DeleteSmartJobWithContext(ctx context.Context, request *DeleteSmartJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteSmartJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -5009,9 +5245,11 @@ func (client *Client) DeleteSmartJobWithContext(ctx context.Context, request *De
 //
 // @return DeleteSourceResponse
 func (client *Client) DeleteSourceWithContext(ctx context.Context, request *DeleteSourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SoftDelete) {
@@ -5063,9 +5301,11 @@ func (client *Client) DeleteSourceWithContext(ctx context.Context, request *Dele
 //
 // @return DeleteSourceLocationResponse
 func (client *Client) DeleteSourceLocationWithContext(ctx context.Context, request *DeleteSourceLocationRequest, runtime *dara.RuntimeOptions) (_result *DeleteSourceLocationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SoftDelete) {
@@ -5117,9 +5357,11 @@ func (client *Client) DeleteSourceLocationWithContext(ctx context.Context, reque
 //
 // @return DeleteTemplateResponse
 func (client *Client) DeleteTemplateWithContext(ctx context.Context, request *DeleteTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -5155,9 +5397,11 @@ func (client *Client) DeleteTemplateWithContext(ctx context.Context, request *De
 //
 // @return DeleteVodPackagingAssetResponse
 func (client *Client) DeleteVodPackagingAssetWithContext(ctx context.Context, request *DeleteVodPackagingAssetRequest, runtime *dara.RuntimeOptions) (_result *DeleteVodPackagingAssetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AssetName) {
@@ -5197,9 +5441,11 @@ func (client *Client) DeleteVodPackagingAssetWithContext(ctx context.Context, re
 //
 // @return DeleteVodPackagingConfigurationResponse
 func (client *Client) DeleteVodPackagingConfigurationWithContext(ctx context.Context, request *DeleteVodPackagingConfigurationRequest, runtime *dara.RuntimeOptions) (_result *DeleteVodPackagingConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigurationName) {
@@ -5239,9 +5485,11 @@ func (client *Client) DeleteVodPackagingConfigurationWithContext(ctx context.Con
 //
 // @return DeleteVodPackagingGroupResponse
 func (client *Client) DeleteVodPackagingGroupWithContext(ctx context.Context, request *DeleteVodPackagingGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteVodPackagingGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupName) {
@@ -5289,9 +5537,11 @@ func (client *Client) DeleteVodPackagingGroupWithContext(ctx context.Context, re
 //
 // @return DescribeAIAgentInstanceResponse
 func (client *Client) DescribeAIAgentInstanceWithContext(ctx context.Context, request *DescribeAIAgentInstanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeAIAgentInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5331,9 +5581,11 @@ func (client *Client) DescribeAIAgentInstanceWithContext(ctx context.Context, re
 //
 // @return DescribeMeterImsEditUsageResponse
 func (client *Client) DescribeMeterImsEditUsageWithContext(ctx context.Context, request *DescribeMeterImsEditUsageRequest, runtime *dara.RuntimeOptions) (_result *DescribeMeterImsEditUsageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTs) {
@@ -5385,9 +5637,11 @@ func (client *Client) DescribeMeterImsEditUsageWithContext(ctx context.Context, 
 //
 // @return DescribeMeterImsMediaConvertUHDUsageResponse
 func (client *Client) DescribeMeterImsMediaConvertUHDUsageWithContext(ctx context.Context, request *DescribeMeterImsMediaConvertUHDUsageRequest, runtime *dara.RuntimeOptions) (_result *DescribeMeterImsMediaConvertUHDUsageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTs) {
@@ -5439,9 +5693,11 @@ func (client *Client) DescribeMeterImsMediaConvertUHDUsageWithContext(ctx contex
 //
 // @return DescribeMeterImsMediaConvertUsageResponse
 func (client *Client) DescribeMeterImsMediaConvertUsageWithContext(ctx context.Context, request *DescribeMeterImsMediaConvertUsageRequest, runtime *dara.RuntimeOptions) (_result *DescribeMeterImsMediaConvertUsageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTs) {
@@ -5493,9 +5749,11 @@ func (client *Client) DescribeMeterImsMediaConvertUsageWithContext(ctx context.C
 //
 // @return DescribeMeterImsMpsAiUsageResponse
 func (client *Client) DescribeMeterImsMpsAiUsageWithContext(ctx context.Context, request *DescribeMeterImsMpsAiUsageRequest, runtime *dara.RuntimeOptions) (_result *DescribeMeterImsMpsAiUsageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTs) {
@@ -5547,9 +5805,11 @@ func (client *Client) DescribeMeterImsMpsAiUsageWithContext(ctx context.Context,
 //
 // @return DescribeMeterImsSummaryResponse
 func (client *Client) DescribeMeterImsSummaryWithContext(ctx context.Context, request *DescribeMeterImsSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeMeterImsSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTs) {
@@ -5601,9 +5861,11 @@ func (client *Client) DescribeMeterImsSummaryWithContext(ctx context.Context, re
 //
 // @return DescribeNotifyConfigResponse
 func (client *Client) DescribeNotifyConfigWithContext(ctx context.Context, request *DescribeNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeNotifyConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AIAgentId) {
@@ -5633,15 +5895,21 @@ func (client *Client) DescribeNotifyConfigWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves playback records based on the player\\"s TraceId. This API supports pagination.
+//
 // @param request - DescribePlayListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePlayListResponse
 func (client *Client) DescribePlayListWithContext(ctx context.Context, request *DescribePlayListRequest, runtime *dara.RuntimeOptions) (_result *DescribePlayListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BeginTs) {
@@ -5713,9 +5981,11 @@ func (client *Client) DescribePlayListWithContext(ctx context.Context, request *
 //
 // @return DescribeRtcRobotInstanceResponse
 func (client *Client) DescribeRtcRobotInstanceWithContext(ctx context.Context, request *DescribeRtcRobotInstanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeRtcRobotInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5755,9 +6025,11 @@ func (client *Client) DescribeRtcRobotInstanceWithContext(ctx context.Context, r
 //
 // @return DetectAudioForCustomizedVoiceJobResponse
 func (client *Client) DetectAudioForCustomizedVoiceJobWithContext(ctx context.Context, request *DetectAudioForCustomizedVoiceJobRequest, runtime *dara.RuntimeOptions) (_result *DetectAudioForCustomizedVoiceJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AudioRecordId) {
@@ -5805,9 +6077,11 @@ func (client *Client) DetectAudioForCustomizedVoiceJobWithContext(ctx context.Co
 //
 // @return DropSearchIndexResponse
 func (client *Client) DropSearchIndexWithContext(ctx context.Context, request *DropSearchIndexRequest, runtime *dara.RuntimeOptions) (_result *DropSearchIndexResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IndexType) {
@@ -5851,9 +6125,11 @@ func (client *Client) DropSearchIndexWithContext(ctx context.Context, request *D
 //
 // @return DropSearchLibResponse
 func (client *Client) DropSearchLibWithContext(ctx context.Context, request *DropSearchLibRequest, runtime *dara.RuntimeOptions) (_result *DropSearchLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SearchLibName) {
@@ -5885,7 +6161,7 @@ func (client *Client) DropSearchLibWithContext(ctx context.Context, request *Dro
 
 // Summary:
 //
-// 禁用某个MediaConnect实例的某个输出
+// Disables an output of a MediaConnect flow. When disabled, the output retains its configuration, but no live stream is delivered to the destination.
 //
 // @param request - ForbidMediaConnectFlowOutputRequest
 //
@@ -5893,9 +6169,11 @@ func (client *Client) DropSearchLibWithContext(ctx context.Context, request *Dro
 //
 // @return ForbidMediaConnectFlowOutputResponse
 func (client *Client) ForbidMediaConnectFlowOutputWithContext(ctx context.Context, request *ForbidMediaConnectFlowOutputRequest, runtime *dara.RuntimeOptions) (_result *ForbidMediaConnectFlowOutputResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FlowId) {
@@ -5939,9 +6217,11 @@ func (client *Client) ForbidMediaConnectFlowOutputWithContext(ctx context.Contex
 //
 // @return ForwardAIAgentCallResponse
 func (client *Client) ForwardAIAgentCallWithContext(ctx context.Context, request *ForwardAIAgentCallRequest, runtime *dara.RuntimeOptions) (_result *ForwardAIAgentCallResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CalledNumber) {
@@ -5993,9 +6273,11 @@ func (client *Client) ForwardAIAgentCallWithContext(ctx context.Context, request
 //
 // @return GenerateAIAgentCallResponse
 func (client *Client) GenerateAIAgentCallWithContext(ctx context.Context, tmpReq *GenerateAIAgentCallRequest, runtime *dara.RuntimeOptions) (_result *GenerateAIAgentCallResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GenerateAIAgentCallShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6069,7 +6351,7 @@ func (client *Client) GenerateAIAgentCallWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 生成直播互动消息所需的token
+// Generates the token required for interactive messaging.
 //
 // @param request - GenerateMessageChatTokenRequest
 //
@@ -6077,9 +6359,11 @@ func (client *Client) GenerateAIAgentCallWithContext(ctx context.Context, tmpReq
 //
 // @return GenerateMessageChatTokenResponse
 func (client *Client) GenerateMessageChatTokenWithContext(ctx context.Context, request *GenerateMessageChatTokenRequest, runtime *dara.RuntimeOptions) (_result *GenerateMessageChatTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AIAgentId) {
@@ -6123,6 +6407,50 @@ func (client *Client) GenerateMessageChatTokenWithContext(ctx context.Context, r
 
 // Summary:
 //
+// Retrieves the details of a workflow task.
+//
+// @param request - GetAIWorkflowTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAIWorkflowTaskResponse
+func (client *Client) GetAIWorkflowTaskWithContext(ctx context.Context, request *GetAIWorkflowTaskRequest, runtime *dara.RuntimeOptions) (_result *GetAIWorkflowTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAIWorkflowTask"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAIWorkflowTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtains details of an ad insertion configuration.
 //
 // @param request - GetAdInsertionRequest
@@ -6131,9 +6459,11 @@ func (client *Client) GenerateMessageChatTokenWithContext(ctx context.Context, r
 //
 // @return GetAdInsertionResponse
 func (client *Client) GetAdInsertionWithContext(ctx context.Context, request *GetAdInsertionRequest, runtime *dara.RuntimeOptions) (_result *GetAdInsertionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -6173,9 +6503,11 @@ func (client *Client) GetAdInsertionWithContext(ctx context.Context, request *Ge
 //
 // @return GetAvatarResponse
 func (client *Client) GetAvatarWithContext(ctx context.Context, request *GetAvatarRequest, runtime *dara.RuntimeOptions) (_result *GetAvatarResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AvatarId) {
@@ -6215,9 +6547,11 @@ func (client *Client) GetAvatarWithContext(ctx context.Context, request *GetAvat
 //
 // @return GetAvatarTrainingJobResponse
 func (client *Client) GetAvatarTrainingJobWithContext(ctx context.Context, request *GetAvatarTrainingJobRequest, runtime *dara.RuntimeOptions) (_result *GetAvatarTrainingJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -6257,9 +6591,11 @@ func (client *Client) GetAvatarTrainingJobWithContext(ctx context.Context, reque
 //
 // @return GetBatchMediaProducingJobResponse
 func (client *Client) GetBatchMediaProducingJobWithContext(ctx context.Context, request *GetBatchMediaProducingJobRequest, runtime *dara.RuntimeOptions) (_result *GetBatchMediaProducingJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -6303,9 +6639,11 @@ func (client *Client) GetBatchMediaProducingJobWithContext(ctx context.Context, 
 //
 // @return GetCategoriesResponse
 func (client *Client) GetCategoriesWithContext(ctx context.Context, request *GetCategoriesRequest, runtime *dara.RuntimeOptions) (_result *GetCategoriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CateId) {
@@ -6361,9 +6699,11 @@ func (client *Client) GetCategoriesWithContext(ctx context.Context, request *Get
 //
 // @return GetChannelResponse
 func (client *Client) GetChannelWithContext(ctx context.Context, request *GetChannelRequest, runtime *dara.RuntimeOptions) (_result *GetChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelName) {
@@ -6461,9 +6801,11 @@ func (client *Client) GetChannelWithContext(ctx context.Context, request *GetCha
 //
 // @return GetCustomTemplateResponse
 func (client *Client) GetCustomTemplateWithContext(ctx context.Context, request *GetCustomTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetCustomTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Subtype) {
@@ -6511,9 +6853,11 @@ func (client *Client) GetCustomTemplateWithContext(ctx context.Context, request 
 //
 // @return GetCustomizedVoiceResponse
 func (client *Client) GetCustomizedVoiceWithContext(ctx context.Context, request *GetCustomizedVoiceRequest, runtime *dara.RuntimeOptions) (_result *GetCustomizedVoiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.VoiceId) {
@@ -6553,9 +6897,11 @@ func (client *Client) GetCustomizedVoiceWithContext(ctx context.Context, request
 //
 // @return GetCustomizedVoiceJobResponse
 func (client *Client) GetCustomizedVoiceJobWithContext(ctx context.Context, request *GetCustomizedVoiceJobRequest, runtime *dara.RuntimeOptions) (_result *GetCustomizedVoiceJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -6595,9 +6941,11 @@ func (client *Client) GetCustomizedVoiceJobWithContext(ctx context.Context, requ
 //
 // @return GetDemonstrationForCustomizedVoiceJobResponse
 func (client *Client) GetDemonstrationForCustomizedVoiceJobWithContext(ctx context.Context, request *GetDemonstrationForCustomizedVoiceJobRequest, runtime *dara.RuntimeOptions) (_result *GetDemonstrationForCustomizedVoiceJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Scenario) {
@@ -6637,9 +6985,11 @@ func (client *Client) GetDemonstrationForCustomizedVoiceJobWithContext(ctx conte
 //
 // @return GetDynamicImageJobResponse
 func (client *Client) GetDynamicImageJobWithContext(ctx context.Context, request *GetDynamicImageJobRequest, runtime *dara.RuntimeOptions) (_result *GetDynamicImageJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -6679,9 +7029,11 @@ func (client *Client) GetDynamicImageJobWithContext(ctx context.Context, request
 //
 // @return GetEditingProjectResponse
 func (client *Client) GetEditingProjectWithContext(ctx context.Context, request *GetEditingProjectRequest, runtime *dara.RuntimeOptions) (_result *GetEditingProjectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProjectId) {
@@ -6725,9 +7077,11 @@ func (client *Client) GetEditingProjectWithContext(ctx context.Context, request 
 //
 // @return GetEditingProjectMaterialsResponse
 func (client *Client) GetEditingProjectMaterialsWithContext(ctx context.Context, request *GetEditingProjectMaterialsRequest, runtime *dara.RuntimeOptions) (_result *GetEditingProjectMaterialsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProjectId) {
@@ -6759,7 +7113,13 @@ func (client *Client) GetEditingProjectMaterialsWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询热词词库
+// Queries the information about a specified hotword library based on the ID.
+//
+// Description:
+//
+// ## [](#)
+//
+// You can call this operation to retrieve details of a specified hotword library based on the ID, including the library name, description, and content and attributes of all hotwords in it.
 //
 // @param request - GetHotwordLibraryRequest
 //
@@ -6767,9 +7127,11 @@ func (client *Client) GetEditingProjectMaterialsWithContext(ctx context.Context,
 //
 // @return GetHotwordLibraryResponse
 func (client *Client) GetHotwordLibraryWithContext(ctx context.Context, request *GetHotwordLibraryRequest, runtime *dara.RuntimeOptions) (_result *GetHotwordLibraryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HotwordLibraryId) {
@@ -6809,9 +7171,11 @@ func (client *Client) GetHotwordLibraryWithContext(ctx context.Context, request 
 //
 // @return GetLiveEditingIndexFileResponse
 func (client *Client) GetLiveEditingIndexFileWithContext(ctx context.Context, request *GetLiveEditingIndexFileRequest, runtime *dara.RuntimeOptions) (_result *GetLiveEditingIndexFileResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -6863,9 +7227,11 @@ func (client *Client) GetLiveEditingIndexFileWithContext(ctx context.Context, re
 //
 // @return GetLiveEditingJobResponse
 func (client *Client) GetLiveEditingJobWithContext(ctx context.Context, request *GetLiveEditingJobRequest, runtime *dara.RuntimeOptions) (_result *GetLiveEditingJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -6911,9 +7277,11 @@ func (client *Client) GetLiveEditingJobWithContext(ctx context.Context, request 
 //
 // @return GetLivePackageChannelResponse
 func (client *Client) GetLivePackageChannelWithContext(ctx context.Context, request *GetLivePackageChannelRequest, runtime *dara.RuntimeOptions) (_result *GetLivePackageChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelName) {
@@ -6963,9 +7331,11 @@ func (client *Client) GetLivePackageChannelWithContext(ctx context.Context, requ
 //
 // @return GetLivePackageChannelGroupResponse
 func (client *Client) GetLivePackageChannelGroupWithContext(ctx context.Context, request *GetLivePackageChannelGroupRequest, runtime *dara.RuntimeOptions) (_result *GetLivePackageChannelGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupName) {
@@ -7009,9 +7379,11 @@ func (client *Client) GetLivePackageChannelGroupWithContext(ctx context.Context,
 //
 // @return GetLivePackageOriginEndpointResponse
 func (client *Client) GetLivePackageOriginEndpointWithContext(ctx context.Context, request *GetLivePackageOriginEndpointRequest, runtime *dara.RuntimeOptions) (_result *GetLivePackageOriginEndpointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelName) {
@@ -7059,9 +7431,11 @@ func (client *Client) GetLivePackageOriginEndpointWithContext(ctx context.Contex
 //
 // @return GetLiveRecordJobResponse
 func (client *Client) GetLiveRecordJobWithContext(ctx context.Context, request *GetLiveRecordJobRequest, runtime *dara.RuntimeOptions) (_result *GetLiveRecordJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -7097,9 +7471,11 @@ func (client *Client) GetLiveRecordJobWithContext(ctx context.Context, request *
 //
 // @return GetLiveRecordTemplateResponse
 func (client *Client) GetLiveRecordTemplateWithContext(ctx context.Context, request *GetLiveRecordTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetLiveRecordTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -7135,9 +7511,11 @@ func (client *Client) GetLiveRecordTemplateWithContext(ctx context.Context, requ
 //
 // @return GetLiveSnapshotJobResponse
 func (client *Client) GetLiveSnapshotJobWithContext(ctx context.Context, request *GetLiveSnapshotJobRequest, runtime *dara.RuntimeOptions) (_result *GetLiveSnapshotJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -7173,9 +7551,11 @@ func (client *Client) GetLiveSnapshotJobWithContext(ctx context.Context, request
 //
 // @return GetLiveSnapshotTemplateResponse
 func (client *Client) GetLiveSnapshotTemplateWithContext(ctx context.Context, request *GetLiveSnapshotTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetLiveSnapshotTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -7211,9 +7591,11 @@ func (client *Client) GetLiveSnapshotTemplateWithContext(ctx context.Context, re
 //
 // @return GetLiveTranscodeJobResponse
 func (client *Client) GetLiveTranscodeJobWithContext(ctx context.Context, request *GetLiveTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *GetLiveTranscodeJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -7253,9 +7635,11 @@ func (client *Client) GetLiveTranscodeJobWithContext(ctx context.Context, reques
 //
 // @return GetLiveTranscodeTemplateResponse
 func (client *Client) GetLiveTranscodeTemplateWithContext(ctx context.Context, request *GetLiveTranscodeTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetLiveTranscodeTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TemplateId) {
@@ -7301,9 +7685,11 @@ func (client *Client) GetLiveTranscodeTemplateWithContext(ctx context.Context, r
 //
 // @return GetMediaConnectFlowResponse
 func (client *Client) GetMediaConnectFlowWithContext(ctx context.Context, request *GetMediaConnectFlowRequest, runtime *dara.RuntimeOptions) (_result *GetMediaConnectFlowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FlowId) {
@@ -7335,7 +7721,7 @@ func (client *Client) GetMediaConnectFlowWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取某个MediaConnect实例下的所有output的名字
+// Retrieves the names of all outputs for a MediaConnect flow.
 //
 // @param request - GetMediaConnectFlowAllOutputNameRequest
 //
@@ -7343,9 +7729,11 @@ func (client *Client) GetMediaConnectFlowWithContext(ctx context.Context, reques
 //
 // @return GetMediaConnectFlowAllOutputNameResponse
 func (client *Client) GetMediaConnectFlowAllOutputNameWithContext(ctx context.Context, request *GetMediaConnectFlowAllOutputNameRequest, runtime *dara.RuntimeOptions) (_result *GetMediaConnectFlowAllOutputNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FlowId) {
@@ -7389,9 +7777,11 @@ func (client *Client) GetMediaConnectFlowAllOutputNameWithContext(ctx context.Co
 //
 // @return GetMediaConnectFlowInputResponse
 func (client *Client) GetMediaConnectFlowInputWithContext(ctx context.Context, request *GetMediaConnectFlowInputRequest, runtime *dara.RuntimeOptions) (_result *GetMediaConnectFlowInputResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FlowId) {
@@ -7435,9 +7825,11 @@ func (client *Client) GetMediaConnectFlowInputWithContext(ctx context.Context, r
 //
 // @return GetMediaConnectFlowOutputResponse
 func (client *Client) GetMediaConnectFlowOutputWithContext(ctx context.Context, request *GetMediaConnectFlowOutputRequest, runtime *dara.RuntimeOptions) (_result *GetMediaConnectFlowOutputResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FlowId) {
@@ -7481,9 +7873,11 @@ func (client *Client) GetMediaConnectFlowOutputWithContext(ctx context.Context, 
 //
 // @return GetMediaConvertJobResponse
 func (client *Client) GetMediaConvertJobWithContext(ctx context.Context, request *GetMediaConvertJobRequest, runtime *dara.RuntimeOptions) (_result *GetMediaConvertJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -7527,9 +7921,11 @@ func (client *Client) GetMediaConvertJobWithContext(ctx context.Context, request
 //
 // @return GetMediaInfoResponse
 func (client *Client) GetMediaInfoWithContext(ctx context.Context, request *GetMediaInfoRequest, runtime *dara.RuntimeOptions) (_result *GetMediaInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthTimeout) {
@@ -7585,9 +7981,11 @@ func (client *Client) GetMediaInfoWithContext(ctx context.Context, request *GetM
 //
 // @return GetMediaInfoJobResponse
 func (client *Client) GetMediaInfoJobWithContext(ctx context.Context, request *GetMediaInfoJobRequest, runtime *dara.RuntimeOptions) (_result *GetMediaInfoJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -7633,9 +8031,11 @@ func (client *Client) GetMediaInfoJobWithContext(ctx context.Context, request *G
 //
 // @return GetMediaLiveChannelResponse
 func (client *Client) GetMediaLiveChannelWithContext(ctx context.Context, request *GetMediaLiveChannelRequest, runtime *dara.RuntimeOptions) (_result *GetMediaLiveChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelId) {
@@ -7681,9 +8081,11 @@ func (client *Client) GetMediaLiveChannelWithContext(ctx context.Context, reques
 //
 // @return GetMediaLiveInputResponse
 func (client *Client) GetMediaLiveInputWithContext(ctx context.Context, request *GetMediaLiveInputRequest, runtime *dara.RuntimeOptions) (_result *GetMediaLiveInputResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InputId) {
@@ -7729,9 +8131,11 @@ func (client *Client) GetMediaLiveInputWithContext(ctx context.Context, request 
 //
 // @return GetMediaLiveInputSecurityGroupResponse
 func (client *Client) GetMediaLiveInputSecurityGroupWithContext(ctx context.Context, request *GetMediaLiveInputSecurityGroupRequest, runtime *dara.RuntimeOptions) (_result *GetMediaLiveInputSecurityGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.SecurityGroupId) {
@@ -7771,9 +8175,11 @@ func (client *Client) GetMediaLiveInputSecurityGroupWithContext(ctx context.Cont
 //
 // @return GetMediaMarksResponse
 func (client *Client) GetMediaMarksWithContext(ctx context.Context, request *GetMediaMarksRequest, runtime *dara.RuntimeOptions) (_result *GetMediaMarksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MediaId) {
@@ -7817,9 +8223,11 @@ func (client *Client) GetMediaMarksWithContext(ctx context.Context, request *Get
 //
 // @return GetMediaProducingJobResponse
 func (client *Client) GetMediaProducingJobWithContext(ctx context.Context, request *GetMediaProducingJobRequest, runtime *dara.RuntimeOptions) (_result *GetMediaProducingJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -7855,9 +8263,11 @@ func (client *Client) GetMediaProducingJobWithContext(ctx context.Context, reque
 //
 // @return GetPackageJobResponse
 func (client *Client) GetPackageJobWithContext(ctx context.Context, request *GetPackageJobRequest, runtime *dara.RuntimeOptions) (_result *GetPackageJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -7897,9 +8307,11 @@ func (client *Client) GetPackageJobWithContext(ctx context.Context, request *Get
 //
 // @return GetPipelineResponse
 func (client *Client) GetPipelineWithContext(ctx context.Context, request *GetPipelineRequest, runtime *dara.RuntimeOptions) (_result *GetPipelineResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PipelineId) {
@@ -7943,9 +8355,11 @@ func (client *Client) GetPipelineWithContext(ctx context.Context, request *GetPi
 //
 // @return GetPlayInfoResponse
 func (client *Client) GetPlayInfoWithContext(ctx context.Context, request *GetPlayInfoRequest, runtime *dara.RuntimeOptions) (_result *GetPlayInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthTimeout) {
@@ -7993,9 +8407,11 @@ func (client *Client) GetPlayInfoWithContext(ctx context.Context, request *GetPl
 //
 // @return GetProgramResponse
 func (client *Client) GetProgramWithContext(ctx context.Context, request *GetProgramRequest, runtime *dara.RuntimeOptions) (_result *GetProgramResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelName) {
@@ -8031,7 +8447,7 @@ func (client *Client) GetProgramWithContext(ctx context.Context, request *GetPro
 
 // Summary:
 //
-// 查询工程导出任务
+// Queries the information of a project export task.
 //
 // @param request - GetProjectExportJobRequest
 //
@@ -8039,9 +8455,11 @@ func (client *Client) GetProgramWithContext(ctx context.Context, request *GetPro
 //
 // @return GetProjectExportJobResponse
 func (client *Client) GetProjectExportJobWithContext(ctx context.Context, request *GetProjectExportJobRequest, runtime *dara.RuntimeOptions) (_result *GetProjectExportJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -8081,9 +8499,11 @@ func (client *Client) GetProjectExportJobWithContext(ctx context.Context, reques
 //
 // @return GetPublicMediaInfoResponse
 func (client *Client) GetPublicMediaInfoWithContext(ctx context.Context, request *GetPublicMediaInfoRequest, runtime *dara.RuntimeOptions) (_result *GetPublicMediaInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MediaId) {
@@ -8123,9 +8543,11 @@ func (client *Client) GetPublicMediaInfoWithContext(ctx context.Context, request
 //
 // @return GetSmartHandleJobResponse
 func (client *Client) GetSmartHandleJobWithContext(ctx context.Context, request *GetSmartHandleJobRequest, runtime *dara.RuntimeOptions) (_result *GetSmartHandleJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -8165,9 +8587,11 @@ func (client *Client) GetSmartHandleJobWithContext(ctx context.Context, request 
 //
 // @return GetSnapshotJobResponse
 func (client *Client) GetSnapshotJobWithContext(ctx context.Context, request *GetSnapshotJobRequest, runtime *dara.RuntimeOptions) (_result *GetSnapshotJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -8207,9 +8631,11 @@ func (client *Client) GetSnapshotJobWithContext(ctx context.Context, request *Ge
 //
 // @return GetSnapshotUrlsResponse
 func (client *Client) GetSnapshotUrlsWithContext(ctx context.Context, request *GetSnapshotUrlsRequest, runtime *dara.RuntimeOptions) (_result *GetSnapshotUrlsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -8265,9 +8691,11 @@ func (client *Client) GetSnapshotUrlsWithContext(ctx context.Context, request *G
 //
 // @return GetSourceResponse
 func (client *Client) GetSourceWithContext(ctx context.Context, request *GetSourceRequest, runtime *dara.RuntimeOptions) (_result *GetSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceLocationName) {
@@ -8315,9 +8743,11 @@ func (client *Client) GetSourceWithContext(ctx context.Context, request *GetSour
 //
 // @return GetSourceLocationResponse
 func (client *Client) GetSourceLocationWithContext(ctx context.Context, request *GetSourceLocationRequest, runtime *dara.RuntimeOptions) (_result *GetSourceLocationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SourceLocationName) {
@@ -8349,7 +8779,7 @@ func (client *Client) GetSourceLocationWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取存储地址列表
+// Obtains storage configurations.
 //
 // @param request - GetStorageListRequest
 //
@@ -8357,9 +8787,11 @@ func (client *Client) GetSourceLocationWithContext(ctx context.Context, request 
 //
 // @return GetStorageListResponse
 func (client *Client) GetStorageListWithContext(ctx context.Context, request *GetStorageListRequest, runtime *dara.RuntimeOptions) (_result *GetStorageListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -8399,7 +8831,7 @@ func (client *Client) GetStorageListWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 查询流媒资打标
+// Retrieves tags of a live stream media asset.
 //
 // @param request - GetStreamTagListRequest
 //
@@ -8407,9 +8839,11 @@ func (client *Client) GetStorageListWithContext(ctx context.Context, request *Ge
 //
 // @return GetStreamTagListResponse
 func (client *Client) GetStreamTagListWithContext(ctx context.Context, request *GetStreamTagListRequest, runtime *dara.RuntimeOptions) (_result *GetStreamTagListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -8481,9 +8915,11 @@ func (client *Client) GetStreamTagListWithContext(ctx context.Context, request *
 //
 // @return GetSystemTemplateResponse
 func (client *Client) GetSystemTemplateWithContext(ctx context.Context, request *GetSystemTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetSystemTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TemplateId) {
@@ -8531,9 +8967,11 @@ func (client *Client) GetSystemTemplateWithContext(ctx context.Context, request 
 //
 // @return GetTemplateResponse
 func (client *Client) GetTemplateWithContext(ctx context.Context, request *GetTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RelatedMediaidFlag) {
@@ -8577,9 +9015,11 @@ func (client *Client) GetTemplateWithContext(ctx context.Context, request *GetTe
 //
 // @return GetTemplateMaterialsResponse
 func (client *Client) GetTemplateMaterialsWithContext(ctx context.Context, request *GetTemplateMaterialsRequest, runtime *dara.RuntimeOptions) (_result *GetTemplateMaterialsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileList) {
@@ -8623,9 +9063,11 @@ func (client *Client) GetTemplateMaterialsWithContext(ctx context.Context, reque
 //
 // @return GetTemplateParamsResponse
 func (client *Client) GetTemplateParamsWithContext(ctx context.Context, request *GetTemplateParamsRequest, runtime *dara.RuntimeOptions) (_result *GetTemplateParamsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -8661,9 +9103,11 @@ func (client *Client) GetTemplateParamsWithContext(ctx context.Context, request 
 //
 // @return GetTranscodeJobResponse
 func (client *Client) GetTranscodeJobWithContext(ctx context.Context, request *GetTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *GetTranscodeJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ParentJobId) {
@@ -8709,9 +9153,11 @@ func (client *Client) GetTranscodeJobWithContext(ctx context.Context, request *G
 //
 // @return GetUrlUploadInfosResponse
 func (client *Client) GetUrlUploadInfosWithContext(ctx context.Context, request *GetUrlUploadInfosRequest, runtime *dara.RuntimeOptions) (_result *GetUrlUploadInfosResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobIds) {
@@ -8759,9 +9205,11 @@ func (client *Client) GetUrlUploadInfosWithContext(ctx context.Context, request 
 //
 // @return GetVideoListResponse
 func (client *Client) GetVideoListWithContext(ctx context.Context, request *GetVideoListRequest, runtime *dara.RuntimeOptions) (_result *GetVideoListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CateId) {
@@ -8825,9 +9273,11 @@ func (client *Client) GetVideoListWithContext(ctx context.Context, request *GetV
 //
 // @return GetVodPackagingAssetResponse
 func (client *Client) GetVodPackagingAssetWithContext(ctx context.Context, request *GetVodPackagingAssetRequest, runtime *dara.RuntimeOptions) (_result *GetVodPackagingAssetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AssetName) {
@@ -8867,9 +9317,11 @@ func (client *Client) GetVodPackagingAssetWithContext(ctx context.Context, reque
 //
 // @return GetVodPackagingConfigurationResponse
 func (client *Client) GetVodPackagingConfigurationWithContext(ctx context.Context, request *GetVodPackagingConfigurationRequest, runtime *dara.RuntimeOptions) (_result *GetVodPackagingConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigurationName) {
@@ -8909,9 +9361,11 @@ func (client *Client) GetVodPackagingConfigurationWithContext(ctx context.Contex
 //
 // @return GetVodPackagingGroupResponse
 func (client *Client) GetVodPackagingGroupWithContext(ctx context.Context, request *GetVodPackagingGroupRequest, runtime *dara.RuntimeOptions) (_result *GetVodPackagingGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupName) {
@@ -8951,9 +9405,11 @@ func (client *Client) GetVodPackagingGroupWithContext(ctx context.Context, reque
 //
 // @return GetWorkflowTaskResponse
 func (client *Client) GetWorkflowTaskWithContext(ctx context.Context, request *GetWorkflowTaskRequest, runtime *dara.RuntimeOptions) (_result *GetWorkflowTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -8993,9 +9449,11 @@ func (client *Client) GetWorkflowTaskWithContext(ctx context.Context, request *G
 //
 // @return InsertMediaToSearchLibResponse
 func (client *Client) InsertMediaToSearchLibWithContext(ctx context.Context, request *InsertMediaToSearchLibRequest, runtime *dara.RuntimeOptions) (_result *InsertMediaToSearchLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ImagesInput) {
@@ -9051,7 +9509,7 @@ func (client *Client) InsertMediaToSearchLibWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 列出智能体的对话历史记录。
+// Lists the dialog records of an AI agent.
 //
 // @param request - ListAIAgentDialoguesRequest
 //
@@ -9059,9 +9517,11 @@ func (client *Client) InsertMediaToSearchLibWithContext(ctx context.Context, req
 //
 // @return ListAIAgentDialoguesResponse
 func (client *Client) ListAIAgentDialoguesWithContext(ctx context.Context, request *ListAIAgentDialoguesRequest, runtime *dara.RuntimeOptions) (_result *ListAIAgentDialoguesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -9135,9 +9595,11 @@ func (client *Client) ListAIAgentDialoguesWithContext(ctx context.Context, reque
 //
 // @return ListAIAgentInstanceResponse
 func (client *Client) ListAIAgentInstanceWithContext(ctx context.Context, request *ListAIAgentInstanceRequest, runtime *dara.RuntimeOptions) (_result *ListAIAgentInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AIAgentId) {
@@ -9193,9 +9655,11 @@ func (client *Client) ListAIAgentInstanceWithContext(ctx context.Context, reques
 //
 // @return ListAIAgentPhoneNumberResponse
 func (client *Client) ListAIAgentPhoneNumberWithContext(ctx context.Context, request *ListAIAgentPhoneNumberRequest, runtime *dara.RuntimeOptions) (_result *ListAIAgentPhoneNumberResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Number) {
@@ -9239,7 +9703,7 @@ func (client *Client) ListAIAgentPhoneNumberWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 更新回调配置
+// Lists the registered voiceprints.
 //
 // @param request - ListAIAgentVoiceprintsRequest
 //
@@ -9247,9 +9711,11 @@ func (client *Client) ListAIAgentPhoneNumberWithContext(ctx context.Context, req
 //
 // @return ListAIAgentVoiceprintsResponse
 func (client *Client) ListAIAgentVoiceprintsWithContext(ctx context.Context, request *ListAIAgentVoiceprintsRequest, runtime *dara.RuntimeOptions) (_result *ListAIAgentVoiceprintsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -9297,9 +9763,11 @@ func (client *Client) ListAIAgentVoiceprintsWithContext(ctx context.Context, req
 //
 // @return ListAdInsertionsResponse
 func (client *Client) ListAdInsertionsWithContext(ctx context.Context, request *ListAdInsertionsRequest, runtime *dara.RuntimeOptions) (_result *ListAdInsertionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -9359,9 +9827,11 @@ func (client *Client) ListAdInsertionsWithContext(ctx context.Context, request *
 //
 // @return ListAlertsResponse
 func (client *Client) ListAlertsWithContext(ctx context.Context, request *ListAlertsRequest, runtime *dara.RuntimeOptions) (_result *ListAlertsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Category) {
@@ -9429,9 +9899,11 @@ func (client *Client) ListAlertsWithContext(ctx context.Context, request *ListAl
 //
 // @return ListAllPublicMediaTagsResponse
 func (client *Client) ListAllPublicMediaTagsWithContext(ctx context.Context, request *ListAllPublicMediaTagsRequest, runtime *dara.RuntimeOptions) (_result *ListAllPublicMediaTagsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessType) {
@@ -9475,9 +9947,11 @@ func (client *Client) ListAllPublicMediaTagsWithContext(ctx context.Context, req
 //
 // @return ListAvatarTrainingJobsResponse
 func (client *Client) ListAvatarTrainingJobsWithContext(ctx context.Context, request *ListAvatarTrainingJobsRequest, runtime *dara.RuntimeOptions) (_result *ListAvatarTrainingJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNo) {
@@ -9525,9 +9999,11 @@ func (client *Client) ListAvatarTrainingJobsWithContext(ctx context.Context, req
 //
 // @return ListAvatarsResponse
 func (client *Client) ListAvatarsWithContext(ctx context.Context, request *ListAvatarsRequest, runtime *dara.RuntimeOptions) (_result *ListAvatarsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AvatarType) {
@@ -9575,9 +10051,11 @@ func (client *Client) ListAvatarsWithContext(ctx context.Context, request *ListA
 //
 // @return ListBatchMediaProducingJobsResponse
 func (client *Client) ListBatchMediaProducingJobsWithContext(ctx context.Context, request *ListBatchMediaProducingJobsRequest, runtime *dara.RuntimeOptions) (_result *ListBatchMediaProducingJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -9645,9 +10123,11 @@ func (client *Client) ListBatchMediaProducingJobsWithContext(ctx context.Context
 //
 // @return ListChannelAlertsResponse
 func (client *Client) ListChannelAlertsWithContext(ctx context.Context, request *ListChannelAlertsRequest, runtime *dara.RuntimeOptions) (_result *ListChannelAlertsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Category) {
@@ -9711,9 +10191,11 @@ func (client *Client) ListChannelAlertsWithContext(ctx context.Context, request 
 //
 // @return ListChannelsResponse
 func (client *Client) ListChannelsWithContext(ctx context.Context, request *ListChannelsRequest, runtime *dara.RuntimeOptions) (_result *ListChannelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelName) {
@@ -9781,9 +10263,11 @@ func (client *Client) ListChannelsWithContext(ctx context.Context, request *List
 //
 // @return ListCustomTemplatesResponse
 func (client *Client) ListCustomTemplatesWithContext(ctx context.Context, request *ListCustomTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListCustomTemplatesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -9847,9 +10331,11 @@ func (client *Client) ListCustomTemplatesWithContext(ctx context.Context, reques
 //
 // @return ListCustomizedVoiceJobsResponse
 func (client *Client) ListCustomizedVoiceJobsWithContext(ctx context.Context, request *ListCustomizedVoiceJobsRequest, runtime *dara.RuntimeOptions) (_result *ListCustomizedVoiceJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNo) {
@@ -9897,9 +10383,11 @@ func (client *Client) ListCustomizedVoiceJobsWithContext(ctx context.Context, re
 //
 // @return ListCustomizedVoicesResponse
 func (client *Client) ListCustomizedVoicesWithContext(ctx context.Context, request *ListCustomizedVoicesRequest, runtime *dara.RuntimeOptions) (_result *ListCustomizedVoicesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNo) {
@@ -9947,9 +10435,11 @@ func (client *Client) ListCustomizedVoicesWithContext(ctx context.Context, reque
 //
 // @return ListDNADBResponse
 func (client *Client) ListDNADBWithContext(ctx context.Context, request *ListDNADBRequest, runtime *dara.RuntimeOptions) (_result *ListDNADBResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBIds) {
@@ -10009,9 +10499,11 @@ func (client *Client) ListDNADBWithContext(ctx context.Context, request *ListDNA
 //
 // @return ListDNAFilesResponse
 func (client *Client) ListDNAFilesWithContext(ctx context.Context, request *ListDNAFilesRequest, runtime *dara.RuntimeOptions) (_result *ListDNAFilesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBId) {
@@ -10075,9 +10567,11 @@ func (client *Client) ListDNAFilesWithContext(ctx context.Context, request *List
 //
 // @return ListDynamicImageJobsResponse
 func (client *Client) ListDynamicImageJobsWithContext(ctx context.Context, request *ListDynamicImageJobsRequest, runtime *dara.RuntimeOptions) (_result *ListDynamicImageJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndOfCreateTime) {
@@ -10141,9 +10635,11 @@ func (client *Client) ListDynamicImageJobsWithContext(ctx context.Context, reque
 //
 // @return ListEditingProjectsResponse
 func (client *Client) ListEditingProjectsWithContext(ctx context.Context, request *ListEditingProjectsRequest, runtime *dara.RuntimeOptions) (_result *ListEditingProjectsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreateSource) {
@@ -10211,7 +10707,21 @@ func (client *Client) ListEditingProjectsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询所有热词库的列表
+// Queries hotword libraries that meet specific search conditions.
+//
+// Description:
+//
+// ## [](#)
+//
+//   - You can call this operation to get information about all hotword libraries that you created.
+//
+//   - The API supports fuzzy search by `Name`, filtering by creation time range, and pagination.
+//
+//   - By default, the results are sorted by creation time in descending order. You can set `SortBy` to change the sorting order.
+//
+//   - The maximum number of entries returned for each request is 100. Default value: 10.
+//
+//   - Use `NextToken` for pagination.
 //
 // @param request - ListHotwordLibrariesRequest
 //
@@ -10219,9 +10729,11 @@ func (client *Client) ListEditingProjectsWithContext(ctx context.Context, reques
 //
 // @return ListHotwordLibrariesResponse
 func (client *Client) ListHotwordLibrariesWithContext(ctx context.Context, request *ListHotwordLibrariesRequest, runtime *dara.RuntimeOptions) (_result *ListHotwordLibrariesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -10297,9 +10809,11 @@ func (client *Client) ListHotwordLibrariesWithContext(ctx context.Context, reque
 //
 // @return ListLivePackageChannelGroupsResponse
 func (client *Client) ListLivePackageChannelGroupsWithContext(ctx context.Context, request *ListLivePackageChannelGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListLivePackageChannelGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -10367,9 +10881,11 @@ func (client *Client) ListLivePackageChannelGroupsWithContext(ctx context.Contex
 //
 // @return ListLivePackageChannelsResponse
 func (client *Client) ListLivePackageChannelsWithContext(ctx context.Context, request *ListLivePackageChannelsRequest, runtime *dara.RuntimeOptions) (_result *ListLivePackageChannelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupName) {
@@ -10431,9 +10947,11 @@ func (client *Client) ListLivePackageChannelsWithContext(ctx context.Context, re
 //
 // @return ListLivePackageOriginEndpointsResponse
 func (client *Client) ListLivePackageOriginEndpointsWithContext(ctx context.Context, request *ListLivePackageOriginEndpointsRequest, runtime *dara.RuntimeOptions) (_result *ListLivePackageOriginEndpointsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelName) {
@@ -10493,9 +11011,11 @@ func (client *Client) ListLivePackageOriginEndpointsWithContext(ctx context.Cont
 //
 // @return ListLiveRecordFilesResponse
 func (client *Client) ListLiveRecordFilesWithContext(ctx context.Context, request *ListLiveRecordFilesRequest, runtime *dara.RuntimeOptions) (_result *ListLiveRecordFilesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -10531,9 +11051,11 @@ func (client *Client) ListLiveRecordFilesWithContext(ctx context.Context, reques
 //
 // @return ListLiveRecordJobsResponse
 func (client *Client) ListLiveRecordJobsWithContext(ctx context.Context, request *ListLiveRecordJobsRequest, runtime *dara.RuntimeOptions) (_result *ListLiveRecordJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -10569,9 +11091,11 @@ func (client *Client) ListLiveRecordJobsWithContext(ctx context.Context, request
 //
 // @return ListLiveRecordTemplatesResponse
 func (client *Client) ListLiveRecordTemplatesWithContext(ctx context.Context, request *ListLiveRecordTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListLiveRecordTemplatesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -10607,9 +11131,11 @@ func (client *Client) ListLiveRecordTemplatesWithContext(ctx context.Context, re
 //
 // @return ListLiveSnapshotFilesResponse
 func (client *Client) ListLiveSnapshotFilesWithContext(ctx context.Context, request *ListLiveSnapshotFilesRequest, runtime *dara.RuntimeOptions) (_result *ListLiveSnapshotFilesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -10645,9 +11171,11 @@ func (client *Client) ListLiveSnapshotFilesWithContext(ctx context.Context, requ
 //
 // @return ListLiveSnapshotJobsResponse
 func (client *Client) ListLiveSnapshotJobsWithContext(ctx context.Context, request *ListLiveSnapshotJobsRequest, runtime *dara.RuntimeOptions) (_result *ListLiveSnapshotJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -10683,9 +11211,11 @@ func (client *Client) ListLiveSnapshotJobsWithContext(ctx context.Context, reque
 //
 // @return ListLiveSnapshotTemplatesResponse
 func (client *Client) ListLiveSnapshotTemplatesWithContext(ctx context.Context, request *ListLiveSnapshotTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListLiveSnapshotTemplatesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -10721,9 +11251,11 @@ func (client *Client) ListLiveSnapshotTemplatesWithContext(ctx context.Context, 
 //
 // @return ListLiveTranscodeJobsResponse
 func (client *Client) ListLiveTranscodeJobsWithContext(ctx context.Context, request *ListLiveTranscodeJobsRequest, runtime *dara.RuntimeOptions) (_result *ListLiveTranscodeJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyWord) {
@@ -10787,9 +11319,11 @@ func (client *Client) ListLiveTranscodeJobsWithContext(ctx context.Context, requ
 //
 // @return ListLiveTranscodeTemplatesResponse
 func (client *Client) ListLiveTranscodeTemplatesWithContext(ctx context.Context, request *ListLiveTranscodeTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListLiveTranscodeTemplatesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Category) {
@@ -10857,9 +11391,11 @@ func (client *Client) ListLiveTranscodeTemplatesWithContext(ctx context.Context,
 //
 // @return ListMediaBasicInfosResponse
 func (client *Client) ListMediaBasicInfosWithContext(ctx context.Context, request *ListMediaBasicInfosRequest, runtime *dara.RuntimeOptions) (_result *ListMediaBasicInfosResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthTimeout) {
@@ -10935,7 +11471,7 @@ func (client *Client) ListMediaBasicInfosWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询 MediaConvertJob 列表
+// Retrieves MediaConvert tasks.
 //
 // @param request - ListMediaConvertJobsRequest
 //
@@ -10943,9 +11479,11 @@ func (client *Client) ListMediaBasicInfosWithContext(ctx context.Context, reques
 //
 // @return ListMediaConvertJobsResponse
 func (client *Client) ListMediaConvertJobsWithContext(ctx context.Context, request *ListMediaConvertJobsRequest, runtime *dara.RuntimeOptions) (_result *ListMediaConvertJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndOfCreateTime) {
@@ -11009,9 +11547,11 @@ func (client *Client) ListMediaConvertJobsWithContext(ctx context.Context, reque
 //
 // @return ListMediaInfoJobsResponse
 func (client *Client) ListMediaInfoJobsWithContext(ctx context.Context, request *ListMediaInfoJobsRequest, runtime *dara.RuntimeOptions) (_result *ListMediaInfoJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndOfCreateTime) {
@@ -11081,9 +11621,11 @@ func (client *Client) ListMediaInfoJobsWithContext(ctx context.Context, request 
 //
 // @return ListMediaLiveChannelsResponse
 func (client *Client) ListMediaLiveChannelsWithContext(ctx context.Context, request *ListMediaLiveChannelsRequest, runtime *dara.RuntimeOptions) (_result *ListMediaLiveChannelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -11149,9 +11691,11 @@ func (client *Client) ListMediaLiveChannelsWithContext(ctx context.Context, requ
 //
 // @return ListMediaLiveInputSecurityGroupsResponse
 func (client *Client) ListMediaLiveInputSecurityGroupsWithContext(ctx context.Context, request *ListMediaLiveInputSecurityGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListMediaLiveInputSecurityGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -11213,9 +11757,11 @@ func (client *Client) ListMediaLiveInputSecurityGroupsWithContext(ctx context.Co
 //
 // @return ListMediaLiveInputsResponse
 func (client *Client) ListMediaLiveInputsWithContext(ctx context.Context, request *ListMediaLiveInputsRequest, runtime *dara.RuntimeOptions) (_result *ListMediaLiveInputsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -11275,9 +11821,11 @@ func (client *Client) ListMediaLiveInputsWithContext(ctx context.Context, reques
 //
 // @return ListMediaMarksResponse
 func (client *Client) ListMediaMarksWithContext(ctx context.Context, request *ListMediaMarksRequest, runtime *dara.RuntimeOptions) (_result *ListMediaMarksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MediaId) {
@@ -11321,9 +11869,11 @@ func (client *Client) ListMediaMarksWithContext(ctx context.Context, request *Li
 //
 // @return ListMediaProducingJobsResponse
 func (client *Client) ListMediaProducingJobsWithContext(ctx context.Context, request *ListMediaProducingJobsRequest, runtime *dara.RuntimeOptions) (_result *ListMediaProducingJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -11399,9 +11949,11 @@ func (client *Client) ListMediaProducingJobsWithContext(ctx context.Context, req
 //
 // @return ListPackageJobsResponse
 func (client *Client) ListPackageJobsWithContext(ctx context.Context, request *ListPackageJobsRequest, runtime *dara.RuntimeOptions) (_result *ListPackageJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndOfCreateTime) {
@@ -11465,9 +12017,11 @@ func (client *Client) ListPackageJobsWithContext(ctx context.Context, request *L
 //
 // @return ListPipelinesResponse
 func (client *Client) ListPipelinesWithContext(ctx context.Context, request *ListPipelinesRequest, runtime *dara.RuntimeOptions) (_result *ListPipelinesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Speed) {
@@ -11507,9 +12061,11 @@ func (client *Client) ListPipelinesWithContext(ctx context.Context, request *Lis
 //
 // @return ListProgramsResponse
 func (client *Client) ListProgramsWithContext(ctx context.Context, request *ListProgramsRequest, runtime *dara.RuntimeOptions) (_result *ListProgramsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelName) {
@@ -11565,9 +12121,11 @@ func (client *Client) ListProgramsWithContext(ctx context.Context, request *List
 //
 // @return ListPublicMediaBasicInfosResponse
 func (client *Client) ListPublicMediaBasicInfosWithContext(ctx context.Context, request *ListPublicMediaBasicInfosRequest, runtime *dara.RuntimeOptions) (_result *ListPublicMediaBasicInfosResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessType) {
@@ -11623,7 +12181,13 @@ func (client *Client) ListPublicMediaBasicInfosWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取自定义库下实体列表
+// Retrieves all entities in a specified recognition library. Pagination is supported.
+//
+// Description:
+//
+//	  This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+//
+//		- You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
 //
 // @param request - ListRecognitionEntitiesRequest
 //
@@ -11631,9 +12195,11 @@ func (client *Client) ListPublicMediaBasicInfosWithContext(ctx context.Context, 
 //
 // @return ListRecognitionEntitiesResponse
 func (client *Client) ListRecognitionEntitiesWithContext(ctx context.Context, request *ListRecognitionEntitiesRequest, runtime *dara.RuntimeOptions) (_result *ListRecognitionEntitiesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -11693,7 +12259,13 @@ func (client *Client) ListRecognitionEntitiesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取自定义库列表
+// Retrieves all custom recognition libraries. Pagination is supported.
+//
+// Description:
+//
+//	  This operation is supported only in the China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) regions.
+//
+//		- You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/zh/mps/developer-reference/qps-limits?spm=a2c4g.11186623.0.0.647e1081YGcerb).
 //
 // @param request - ListRecognitionLibsRequest
 //
@@ -11701,9 +12273,11 @@ func (client *Client) ListRecognitionEntitiesWithContext(ctx context.Context, re
 //
 // @return ListRecognitionLibsResponse
 func (client *Client) ListRecognitionLibsWithContext(ctx context.Context, request *ListRecognitionLibsRequest, runtime *dara.RuntimeOptions) (_result *ListRecognitionLibsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -11759,7 +12333,7 @@ func (client *Client) ListRecognitionLibsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取自定义库实体的图片列表
+// Retrieves all samples of a custom entity. Pagination is supported.
 //
 // @param request - ListRecognitionSamplesRequest
 //
@@ -11767,9 +12341,11 @@ func (client *Client) ListRecognitionLibsWithContext(ctx context.Context, reques
 //
 // @return ListRecognitionSamplesResponse
 func (client *Client) ListRecognitionSamplesWithContext(ctx context.Context, request *ListRecognitionSamplesRequest, runtime *dara.RuntimeOptions) (_result *ListRecognitionSamplesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
@@ -11841,9 +12417,11 @@ func (client *Client) ListRecognitionSamplesWithContext(ctx context.Context, req
 //
 // @return ListSchedulesResponse
 func (client *Client) ListSchedulesWithContext(ctx context.Context, request *ListSchedulesRequest, runtime *dara.RuntimeOptions) (_result *ListSchedulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelName) {
@@ -11895,9 +12473,11 @@ func (client *Client) ListSchedulesWithContext(ctx context.Context, request *Lis
 //
 // @return ListSearchLibResponse
 func (client *Client) ListSearchLibWithContext(ctx context.Context, request *ListSearchLibRequest, runtime *dara.RuntimeOptions) (_result *ListSearchLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNo) {
@@ -11941,9 +12521,11 @@ func (client *Client) ListSearchLibWithContext(ctx context.Context, request *Lis
 //
 // @return ListSmartJobsResponse
 func (client *Client) ListSmartJobsWithContext(ctx context.Context, request *ListSmartJobsRequest, runtime *dara.RuntimeOptions) (_result *ListSmartJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -11979,9 +12561,11 @@ func (client *Client) ListSmartJobsWithContext(ctx context.Context, request *Lis
 //
 // @return ListSmartSysAvatarModelsResponse
 func (client *Client) ListSmartSysAvatarModelsWithContext(ctx context.Context, request *ListSmartSysAvatarModelsRequest, runtime *dara.RuntimeOptions) (_result *ListSmartSysAvatarModelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNo) {
@@ -12029,9 +12613,11 @@ func (client *Client) ListSmartSysAvatarModelsWithContext(ctx context.Context, r
 //
 // @return ListSmartVoiceGroupsResponse
 func (client *Client) ListSmartVoiceGroupsWithContext(ctx context.Context, request *ListSmartVoiceGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListSmartVoiceGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -12067,9 +12653,11 @@ func (client *Client) ListSmartVoiceGroupsWithContext(ctx context.Context, reque
 //
 // @return ListSnapshotJobsResponse
 func (client *Client) ListSnapshotJobsWithContext(ctx context.Context, request *ListSnapshotJobsRequest, runtime *dara.RuntimeOptions) (_result *ListSnapshotJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndOfCreateTime) {
@@ -12133,9 +12721,11 @@ func (client *Client) ListSnapshotJobsWithContext(ctx context.Context, request *
 //
 // @return ListSourceLocationsResponse
 func (client *Client) ListSourceLocationsWithContext(ctx context.Context, request *ListSourceLocationsRequest, runtime *dara.RuntimeOptions) (_result *ListSourceLocationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FilterState) {
@@ -12195,9 +12785,11 @@ func (client *Client) ListSourceLocationsWithContext(ctx context.Context, reques
 //
 // @return ListSourcesResponse
 func (client *Client) ListSourcesWithContext(ctx context.Context, request *ListSourcesRequest, runtime *dara.RuntimeOptions) (_result *ListSourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FilterState) {
@@ -12321,9 +12913,11 @@ func (client *Client) ListSourcesWithContext(ctx context.Context, request *ListS
 //
 // @return ListSystemTemplatesResponse
 func (client *Client) ListSystemTemplatesWithContext(ctx context.Context, request *ListSystemTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListSystemTemplatesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -12395,9 +12989,11 @@ func (client *Client) ListSystemTemplatesWithContext(ctx context.Context, reques
 //
 // @return ListTemplatesResponse
 func (client *Client) ListTemplatesWithContext(ctx context.Context, request *ListTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListTemplatesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreateSource) {
@@ -12461,9 +13057,11 @@ func (client *Client) ListTemplatesWithContext(ctx context.Context, request *Lis
 //
 // @return ListTranscodeJobsResponse
 func (client *Client) ListTranscodeJobsWithContext(ctx context.Context, request *ListTranscodeJobsRequest, runtime *dara.RuntimeOptions) (_result *ListTranscodeJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndOfCreateTime) {
@@ -12527,9 +13125,11 @@ func (client *Client) ListTranscodeJobsWithContext(ctx context.Context, request 
 //
 // @return ListVodPackagingAssetsResponse
 func (client *Client) ListVodPackagingAssetsWithContext(ctx context.Context, request *ListVodPackagingAssetsRequest, runtime *dara.RuntimeOptions) (_result *ListVodPackagingAssetsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupName) {
@@ -12585,9 +13185,11 @@ func (client *Client) ListVodPackagingAssetsWithContext(ctx context.Context, req
 //
 // @return ListVodPackagingConfigurationsResponse
 func (client *Client) ListVodPackagingConfigurationsWithContext(ctx context.Context, request *ListVodPackagingConfigurationsRequest, runtime *dara.RuntimeOptions) (_result *ListVodPackagingConfigurationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupName) {
@@ -12643,9 +13245,11 @@ func (client *Client) ListVodPackagingConfigurationsWithContext(ctx context.Cont
 //
 // @return ListVodPackagingGroupsResponse
 func (client *Client) ListVodPackagingGroupsWithContext(ctx context.Context, request *ListVodPackagingGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListVodPackagingGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -12689,7 +13293,11 @@ func (client *Client) ListVodPackagingGroupsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 工作流任务实例列表
+// Retrieves workflow tasks.
+//
+// Description:
+//
+// This API only returns data from the last 90 days.
 //
 // @param request - ListWorkflowTasksRequest
 //
@@ -12697,9 +13305,11 @@ func (client *Client) ListVodPackagingGroupsWithContext(ctx context.Context, req
 //
 // @return ListWorkflowTasksResponse
 func (client *Client) ListWorkflowTasksWithContext(ctx context.Context, request *ListWorkflowTasksRequest, runtime *dara.RuntimeOptions) (_result *ListWorkflowTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndOfCreateTime) {
@@ -12755,7 +13365,13 @@ func (client *Client) ListWorkflowTasksWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 开启MediaConnect双流灾备
+// Enables Source Failover for a MediaConnect flow.
+//
+// Description:
+//
+//	  Before this operation, you must add a source to the flow.
+//
+//		- After Source Failover is enabled, you can add an additional source. The input type of the two sources must be identical.
 //
 // @param request - OpenMediaConnectFlowFailoverRequest
 //
@@ -12763,9 +13379,11 @@ func (client *Client) ListWorkflowTasksWithContext(ctx context.Context, request 
 //
 // @return OpenMediaConnectFlowFailoverResponse
 func (client *Client) OpenMediaConnectFlowFailoverWithContext(ctx context.Context, request *OpenMediaConnectFlowFailoverRequest, runtime *dara.RuntimeOptions) (_result *OpenMediaConnectFlowFailoverResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FlowId) {
@@ -12797,7 +13415,7 @@ func (client *Client) OpenMediaConnectFlowFailoverWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询版权水印提取任务
+// Queries a job for extracting a copyright watermark.
 //
 // @param request - QueryCopyrightExtractJobRequest
 //
@@ -12805,9 +13423,11 @@ func (client *Client) OpenMediaConnectFlowFailoverWithContext(ctx context.Contex
 //
 // @return QueryCopyrightExtractJobResponse
 func (client *Client) QueryCopyrightExtractJobWithContext(ctx context.Context, request *QueryCopyrightExtractJobRequest, runtime *dara.RuntimeOptions) (_result *QueryCopyrightExtractJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -12839,7 +13459,11 @@ func (client *Client) QueryCopyrightExtractJobWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询视频版权水印任务列表
+// Queries copyright watermarking jobs.
+//
+// Description:
+//
+//	This operation is supported only in the China (Shanghai) and China (Beijing) regions.
 //
 // @param request - QueryCopyrightJobListRequest
 //
@@ -12847,9 +13471,11 @@ func (client *Client) QueryCopyrightExtractJobWithContext(ctx context.Context, r
 //
 // @return QueryCopyrightJobListResponse
 func (client *Client) QueryCopyrightJobListWithContext(ctx context.Context, request *QueryCopyrightJobListRequest, runtime *dara.RuntimeOptions) (_result *QueryCopyrightJobListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreateTimeEnd) {
@@ -12909,9 +13535,11 @@ func (client *Client) QueryCopyrightJobListWithContext(ctx context.Context, requ
 //
 // @return QueryDNAJobListResponse
 func (client *Client) QueryDNAJobListWithContext(ctx context.Context, request *QueryDNAJobListRequest, runtime *dara.RuntimeOptions) (_result *QueryDNAJobListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobIds) {
@@ -12967,9 +13595,11 @@ func (client *Client) QueryDNAJobListWithContext(ctx context.Context, request *Q
 //
 // @return QueryIProductionJobResponse
 func (client *Client) QueryIProductionJobWithContext(ctx context.Context, request *QueryIProductionJobRequest, runtime *dara.RuntimeOptions) (_result *QueryIProductionJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -13017,9 +13647,11 @@ func (client *Client) QueryIProductionJobWithContext(ctx context.Context, reques
 //
 // @return QueryMediaCensorJobDetailResponse
 func (client *Client) QueryMediaCensorJobDetailWithContext(ctx context.Context, request *QueryMediaCensorJobDetailRequest, runtime *dara.RuntimeOptions) (_result *QueryMediaCensorJobDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -13087,9 +13719,11 @@ func (client *Client) QueryMediaCensorJobDetailWithContext(ctx context.Context, 
 //
 // @return QueryMediaCensorJobListResponse
 func (client *Client) QueryMediaCensorJobListWithContext(ctx context.Context, request *QueryMediaCensorJobListRequest, runtime *dara.RuntimeOptions) (_result *QueryMediaCensorJobListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndOfJobCreatedTimeRange) {
@@ -13169,9 +13803,11 @@ func (client *Client) QueryMediaCensorJobListWithContext(ctx context.Context, re
 //
 // @return QueryMediaIndexJobResponse
 func (client *Client) QueryMediaIndexJobWithContext(ctx context.Context, request *QueryMediaIndexJobRequest, runtime *dara.RuntimeOptions) (_result *QueryMediaIndexJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MediaId) {
@@ -13215,9 +13851,11 @@ func (client *Client) QueryMediaIndexJobWithContext(ctx context.Context, request
 //
 // @return QuerySearchIndexResponse
 func (client *Client) QuerySearchIndexWithContext(ctx context.Context, request *QuerySearchIndexRequest, runtime *dara.RuntimeOptions) (_result *QuerySearchIndexResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IndexType) {
@@ -13261,9 +13899,11 @@ func (client *Client) QuerySearchIndexWithContext(ctx context.Context, request *
 //
 // @return QuerySearchLibResponse
 func (client *Client) QuerySearchLibWithContext(ctx context.Context, request *QuerySearchLibRequest, runtime *dara.RuntimeOptions) (_result *QuerySearchLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SearchLibName) {
@@ -13303,9 +13943,11 @@ func (client *Client) QuerySearchLibWithContext(ctx context.Context, request *Qu
 //
 // @return QuerySmarttagJobResponse
 func (client *Client) QuerySmarttagJobWithContext(ctx context.Context, request *QuerySmarttagJobRequest, runtime *dara.RuntimeOptions) (_result *QuerySmarttagJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -13341,7 +13983,11 @@ func (client *Client) QuerySmarttagJobWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询视频溯源水印ab流任务
+// Queries A/B watermarking jobs.
+//
+// Description:
+//
+//	This operation is supported only in the China (Shanghai) and China (Beijing) regions.
 //
 // @param request - QueryTraceAbJobListRequest
 //
@@ -13349,9 +13995,11 @@ func (client *Client) QuerySmarttagJobWithContext(ctx context.Context, request *
 //
 // @return QueryTraceAbJobListResponse
 func (client *Client) QueryTraceAbJobListWithContext(ctx context.Context, request *QueryTraceAbJobListRequest, runtime *dara.RuntimeOptions) (_result *QueryTraceAbJobListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreateTimeEnd) {
@@ -13403,7 +14051,11 @@ func (client *Client) QueryTraceAbJobListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询溯源水印提取任务
+// Queries a job for extracting a trace watermark.
+//
+// Description:
+//
+// This operation is supported only in the China (Shanghai) and China (Beijing) regions.
 //
 // @param request - QueryTraceExtractJobRequest
 //
@@ -13411,9 +14063,11 @@ func (client *Client) QueryTraceAbJobListWithContext(ctx context.Context, reques
 //
 // @return QueryTraceExtractJobResponse
 func (client *Client) QueryTraceExtractJobWithContext(ctx context.Context, request *QueryTraceExtractJobRequest, runtime *dara.RuntimeOptions) (_result *QueryTraceExtractJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -13445,7 +14099,13 @@ func (client *Client) QueryTraceExtractJobWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询视频溯源水印m3u8任务
+// Queries jobs for generating M3U8 files containing specific trace watermark information.
+//
+// Description:
+//
+//	  This operation is supported only in the China (Shanghai) and China (Beijing) regions.
+//
+//		- The M3U8 file with absolute paths generated by the SubmitTraceM3u8Job API has a signed URL with an authentication validity period of 24 hours, starting from the moment the job is completed. After the signature expires, the M3U8 file will become inaccessible. You must submit a new M3U8 generation job.
 //
 // @param request - QueryTraceM3u8JobListRequest
 //
@@ -13453,9 +14113,11 @@ func (client *Client) QueryTraceExtractJobWithContext(ctx context.Context, reque
 //
 // @return QueryTraceM3u8JobListResponse
 func (client *Client) QueryTraceM3u8JobListWithContext(ctx context.Context, request *QueryTraceM3u8JobListRequest, runtime *dara.RuntimeOptions) (_result *QueryTraceM3u8JobListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreateTimeEnd) {
@@ -13503,7 +14165,7 @@ func (client *Client) QueryTraceM3u8JobListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询视频理解任务结果
+// Retrieves the results of an AI analysis and processing task.
 //
 // @param tmpReq - QueryVideoCognitionJobRequest
 //
@@ -13511,9 +14173,11 @@ func (client *Client) QueryTraceM3u8JobListWithContext(ctx context.Context, requ
 //
 // @return QueryVideoCognitionJobResponse
 func (client *Client) QueryVideoCognitionJobWithContext(ctx context.Context, tmpReq *QueryVideoCognitionJobRequest, runtime *dara.RuntimeOptions) (_result *QueryVideoCognitionJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &QueryVideoCognitionJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -13571,9 +14235,11 @@ func (client *Client) QueryVideoCognitionJobWithContext(ctx context.Context, tmp
 //
 // @return RefreshUploadMediaResponse
 func (client *Client) RefreshUploadMediaWithContext(ctx context.Context, request *RefreshUploadMediaRequest, runtime *dara.RuntimeOptions) (_result *RefreshUploadMediaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MediaId) {
@@ -13617,9 +14283,11 @@ func (client *Client) RefreshUploadMediaWithContext(ctx context.Context, request
 //
 // @return RegisterMediaInfoResponse
 func (client *Client) RegisterMediaInfoWithContext(ctx context.Context, request *RegisterMediaInfoRequest, runtime *dara.RuntimeOptions) (_result *RegisterMediaInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessType) {
@@ -13719,9 +14387,11 @@ func (client *Client) RegisterMediaInfoWithContext(ctx context.Context, request 
 //
 // @return RegisterMediaStreamResponse
 func (client *Client) RegisterMediaStreamWithContext(ctx context.Context, request *RegisterMediaStreamRequest, runtime *dara.RuntimeOptions) (_result *RegisterMediaStreamResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InputURL) {
@@ -13765,7 +14435,7 @@ func (client *Client) RegisterMediaStreamWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 恢复某个MediaConnect实例的某个输出
+// Resumes an output of a MediaConnect flow. When resumed, the output can deliver the live stream to the destination.
 //
 // @param request - ResumeMediaConnectFlowOutputRequest
 //
@@ -13773,9 +14443,11 @@ func (client *Client) RegisterMediaStreamWithContext(ctx context.Context, reques
 //
 // @return ResumeMediaConnectFlowOutputResponse
 func (client *Client) ResumeMediaConnectFlowOutputWithContext(ctx context.Context, request *ResumeMediaConnectFlowOutputRequest, runtime *dara.RuntimeOptions) (_result *ResumeMediaConnectFlowOutputResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FlowId) {
@@ -13819,9 +14491,11 @@ func (client *Client) ResumeMediaConnectFlowOutputWithContext(ctx context.Contex
 //
 // @return SearchEditingProjectResponse
 func (client *Client) SearchEditingProjectWithContext(ctx context.Context, request *SearchEditingProjectRequest, runtime *dara.RuntimeOptions) (_result *SearchEditingProjectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreateSource) {
@@ -13893,9 +14567,11 @@ func (client *Client) SearchEditingProjectWithContext(ctx context.Context, reque
 //
 // @return SearchIndexJobRerunResponse
 func (client *Client) SearchIndexJobRerunWithContext(ctx context.Context, request *SearchIndexJobRerunRequest, runtime *dara.RuntimeOptions) (_result *SearchIndexJobRerunResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MediaIds) {
@@ -13951,11 +14627,17 @@ func (client *Client) SearchIndexJobRerunWithContext(ctx context.Context, reques
 //
 // @return SearchMediaResponse
 func (client *Client) SearchMediaWithContext(ctx context.Context, request *SearchMediaRequest, runtime *dara.RuntimeOptions) (_result *SearchMediaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomFilters) {
+		query["CustomFilters"] = request.CustomFilters
+	}
+
 	if !dara.IsNil(request.EntityId) {
 		query["EntityId"] = request.EntityId
 	}
@@ -14021,11 +14703,17 @@ func (client *Client) SearchMediaWithContext(ctx context.Context, request *Searc
 //
 // @return SearchMediaByAILabelResponse
 func (client *Client) SearchMediaByAILabelWithContext(ctx context.Context, request *SearchMediaByAILabelRequest, runtime *dara.RuntimeOptions) (_result *SearchMediaByAILabelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomFilters) {
+		query["CustomFilters"] = request.CustomFilters
+	}
+
 	if !dara.IsNil(request.MatchingMode) {
 		query["MatchingMode"] = request.MatchingMode
 	}
@@ -14070,6 +14758,10 @@ func (client *Client) SearchMediaByAILabelWithContext(ctx context.Context, reque
 		query["Text"] = request.Text
 	}
 
+	if !dara.IsNil(request.UtcCreate) {
+		query["UtcCreate"] = request.UtcCreate
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14107,11 +14799,17 @@ func (client *Client) SearchMediaByAILabelWithContext(ctx context.Context, reque
 //
 // @return SearchMediaByFaceResponse
 func (client *Client) SearchMediaByFaceWithContext(ctx context.Context, request *SearchMediaByFaceRequest, runtime *dara.RuntimeOptions) (_result *SearchMediaByFaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomFilters) {
+		query["CustomFilters"] = request.CustomFilters
+	}
+
 	if !dara.IsNil(request.EntityId) {
 		query["EntityId"] = request.EntityId
 	}
@@ -14144,6 +14842,10 @@ func (client *Client) SearchMediaByFaceWithContext(ctx context.Context, request 
 		query["SearchLibName"] = request.SearchLibName
 	}
 
+	if !dara.IsNil(request.UtcCreate) {
+		query["UtcCreate"] = request.UtcCreate
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14169,7 +14871,7 @@ func (client *Client) SearchMediaByFaceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries media assets by using the hybrid search feature. This operation allows you to search for media assets by using natural language based on intelligent tag text search and the search capabilities of large language models (LLMs). This implements multimodal retrieval.
+// Performs a hybrid search for media assets. This API combines multiple recall strategies, including tag-based text search and large language model (LLM) search. You can locate media assets using natural language descriptions.
 //
 // @param request - SearchMediaByHybridRequest
 //
@@ -14177,11 +14879,17 @@ func (client *Client) SearchMediaByFaceWithContext(ctx context.Context, request 
 //
 // @return SearchMediaByHybridResponse
 func (client *Client) SearchMediaByHybridWithContext(ctx context.Context, request *SearchMediaByHybridRequest, runtime *dara.RuntimeOptions) (_result *SearchMediaByHybridResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomFilters) {
+		query["CustomFilters"] = request.CustomFilters
+	}
+
 	if !dara.IsNil(request.MediaId) {
 		query["MediaId"] = request.MediaId
 	}
@@ -14208,6 +14916,10 @@ func (client *Client) SearchMediaByHybridWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.Text) {
 		query["Text"] = request.Text
+	}
+
+	if !dara.IsNil(request.UtcCreate) {
+		query["UtcCreate"] = request.UtcCreate
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -14247,11 +14959,17 @@ func (client *Client) SearchMediaByHybridWithContext(ctx context.Context, reques
 //
 // @return SearchMediaByMultimodalResponse
 func (client *Client) SearchMediaByMultimodalWithContext(ctx context.Context, request *SearchMediaByMultimodalRequest, runtime *dara.RuntimeOptions) (_result *SearchMediaByMultimodalResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomFilters) {
+		query["CustomFilters"] = request.CustomFilters
+	}
+
 	if !dara.IsNil(request.MediaType) {
 		query["MediaType"] = request.MediaType
 	}
@@ -14274,6 +14992,10 @@ func (client *Client) SearchMediaByMultimodalWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.Text) {
 		query["Text"] = request.Text
+	}
+
+	if !dara.IsNil(request.UtcCreate) {
+		query["UtcCreate"] = request.UtcCreate
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -14313,9 +15035,11 @@ func (client *Client) SearchMediaByMultimodalWithContext(ctx context.Context, re
 //
 // @return SearchMediaClipByFaceResponse
 func (client *Client) SearchMediaClipByFaceWithContext(ctx context.Context, request *SearchMediaClipByFaceRequest, runtime *dara.RuntimeOptions) (_result *SearchMediaClipByFaceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EntityId) {
@@ -14375,9 +15099,11 @@ func (client *Client) SearchMediaClipByFaceWithContext(ctx context.Context, requ
 //
 // @return SearchPublicMediaInfoResponse
 func (client *Client) SearchPublicMediaInfoWithContext(ctx context.Context, request *SearchPublicMediaInfoRequest, runtime *dara.RuntimeOptions) (_result *SearchPublicMediaInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Authorized) {
@@ -14445,9 +15171,11 @@ func (client *Client) SearchPublicMediaInfoWithContext(ctx context.Context, requ
 //
 // @return SendAIAgentDataChannelMessageResponse
 func (client *Client) SendAIAgentDataChannelMessageWithContext(ctx context.Context, request *SendAIAgentDataChannelMessageRequest, runtime *dara.RuntimeOptions) (_result *SendAIAgentDataChannelMessageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -14503,9 +15231,11 @@ func (client *Client) SendAIAgentDataChannelMessageWithContext(ctx context.Conte
 //
 // @return SendAIAgentSpeechResponse
 func (client *Client) SendAIAgentSpeechWithContext(ctx context.Context, request *SendAIAgentSpeechRequest, runtime *dara.RuntimeOptions) (_result *SendAIAgentSpeechResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EnableInterrupt) {
@@ -14549,7 +15279,7 @@ func (client *Client) SendAIAgentSpeechWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 传入消息作为LLM输入。
+// Sends a message as input to the large language model (LLM).
 //
 // @param request - SendAIAgentTextRequest
 //
@@ -14557,9 +15287,11 @@ func (client *Client) SendAIAgentSpeechWithContext(ctx context.Context, request 
 //
 // @return SendAIAgentTextResponse
 func (client *Client) SendAIAgentTextWithContext(ctx context.Context, request *SendAIAgentTextRequest, runtime *dara.RuntimeOptions) (_result *SendAIAgentTextResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -14603,9 +15335,11 @@ func (client *Client) SendAIAgentTextWithContext(ctx context.Context, request *S
 //
 // @return SendLiveSnapshotJobCommandResponse
 func (client *Client) SendLiveSnapshotJobCommandWithContext(ctx context.Context, request *SendLiveSnapshotJobCommandRequest, runtime *dara.RuntimeOptions) (_result *SendLiveSnapshotJobCommandResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Command) {
@@ -14649,9 +15383,11 @@ func (client *Client) SendLiveSnapshotJobCommandWithContext(ctx context.Context,
 //
 // @return SendLiveTranscodeJobCommandResponse
 func (client *Client) SendLiveTranscodeJobCommandWithContext(ctx context.Context, request *SendLiveTranscodeJobCommandRequest, runtime *dara.RuntimeOptions) (_result *SendLiveTranscodeJobCommandResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Command) {
@@ -14687,7 +15423,7 @@ func (client *Client) SendLiveTranscodeJobCommandWithContext(ctx context.Context
 
 // Summary:
 //
-// 向IM客户端发送消息。
+// Sends a message to the client.
 //
 // @param request - SendMessageChatTextRequest
 //
@@ -14695,9 +15431,11 @@ func (client *Client) SendLiveTranscodeJobCommandWithContext(ctx context.Context
 //
 // @return SendMessageChatTextResponse
 func (client *Client) SendMessageChatTextWithContext(ctx context.Context, request *SendMessageChatTextRequest, runtime *dara.RuntimeOptions) (_result *SendMessageChatTextResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AIAgentId) {
@@ -14753,7 +15491,7 @@ func (client *Client) SendMessageChatTextWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 设置声纹
+// Registers a voiceprint.
 //
 // @param tmpReq - SetAIAgentVoiceprintRequest
 //
@@ -14761,9 +15499,11 @@ func (client *Client) SendMessageChatTextWithContext(ctx context.Context, reques
 //
 // @return SetAIAgentVoiceprintResponse
 func (client *Client) SetAIAgentVoiceprintWithContext(ctx context.Context, tmpReq *SetAIAgentVoiceprintRequest, runtime *dara.RuntimeOptions) (_result *SetAIAgentVoiceprintResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SetAIAgentVoiceprintShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14813,9 +15553,11 @@ func (client *Client) SetAIAgentVoiceprintWithContext(ctx context.Context, tmpRe
 //
 // @return SetContentAnalyzeConfigResponse
 func (client *Client) SetContentAnalyzeConfigWithContext(ctx context.Context, request *SetContentAnalyzeConfigRequest, runtime *dara.RuntimeOptions) (_result *SetContentAnalyzeConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Auto) {
@@ -14863,9 +15605,11 @@ func (client *Client) SetContentAnalyzeConfigWithContext(ctx context.Context, re
 //
 // @return SetDefaultCustomTemplateResponse
 func (client *Client) SetDefaultCustomTemplateWithContext(ctx context.Context, request *SetDefaultCustomTemplateRequest, runtime *dara.RuntimeOptions) (_result *SetDefaultCustomTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TemplateId) {
@@ -14905,9 +15649,11 @@ func (client *Client) SetDefaultCustomTemplateWithContext(ctx context.Context, r
 //
 // @return SetDefaultStorageLocationResponse
 func (client *Client) SetDefaultStorageLocationWithContext(ctx context.Context, request *SetDefaultStorageLocationRequest, runtime *dara.RuntimeOptions) (_result *SetDefaultStorageLocationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Bucket) {
@@ -14955,9 +15701,11 @@ func (client *Client) SetDefaultStorageLocationWithContext(ctx context.Context, 
 //
 // @return SetEventCallbackResponse
 func (client *Client) SetEventCallbackWithContext(ctx context.Context, request *SetEventCallbackRequest, runtime *dara.RuntimeOptions) (_result *SetEventCallbackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthKey) {
@@ -15023,9 +15771,11 @@ func (client *Client) SetEventCallbackWithContext(ctx context.Context, request *
 //
 // @return SetNotifyConfigResponse
 func (client *Client) SetNotifyConfigWithContext(ctx context.Context, request *SetNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *SetNotifyConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AIAgentId) {
@@ -15093,9 +15843,11 @@ func (client *Client) SetNotifyConfigWithContext(ctx context.Context, request *S
 //
 // @return StartAIAgentInstanceResponse
 func (client *Client) StartAIAgentInstanceWithContext(ctx context.Context, tmpReq *StartAIAgentInstanceRequest, runtime *dara.RuntimeOptions) (_result *StartAIAgentInstanceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &StartAIAgentInstanceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -15177,9 +15929,11 @@ func (client *Client) StartAIAgentInstanceWithContext(ctx context.Context, tmpRe
 //
 // @return StartAIAgentOutboundCallResponse
 func (client *Client) StartAIAgentOutboundCallWithContext(ctx context.Context, tmpReq *StartAIAgentOutboundCallRequest, runtime *dara.RuntimeOptions) (_result *StartAIAgentOutboundCallResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &StartAIAgentOutboundCallShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -15241,6 +15995,66 @@ func (client *Client) StartAIAgentOutboundCallWithContext(ctx context.Context, t
 
 // Summary:
 //
+// Initiates a workflow task for automated media processing based on a workflow template.
+//
+// Description:
+//
+//	You must specify a workflow template. To create one, go to the [Intelligent Media Services (IMS)](https://ims.console.aliyun.com/ai-workflow/template) console.
+//
+// @param request - StartAIWorkflowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartAIWorkflowResponse
+func (client *Client) StartAIWorkflowWithContext(ctx context.Context, request *StartAIWorkflowRequest, runtime *dara.RuntimeOptions) (_result *StartAIWorkflowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DispatchTag) {
+		query["DispatchTag"] = request.DispatchTag
+	}
+
+	if !dara.IsNil(request.Inputs) {
+		query["Inputs"] = request.Inputs
+	}
+
+	if !dara.IsNil(request.UserData) {
+		query["UserData"] = request.UserData
+	}
+
+	if !dara.IsNil(request.WorkflowId) {
+		query["WorkflowId"] = request.WorkflowId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartAIWorkflow"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartAIWorkflowResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Starts a channel.
 //
 // @param request - StartChannelRequest
@@ -15249,9 +16063,11 @@ func (client *Client) StartAIAgentOutboundCallWithContext(ctx context.Context, t
 //
 // @return StartChannelResponse
 func (client *Client) StartChannelWithContext(ctx context.Context, request *StartChannelRequest, runtime *dara.RuntimeOptions) (_result *StartChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelName) {
@@ -15299,9 +16115,11 @@ func (client *Client) StartChannelWithContext(ctx context.Context, request *Star
 //
 // @return StartMediaLiveChannelResponse
 func (client *Client) StartMediaLiveChannelWithContext(ctx context.Context, request *StartMediaLiveChannelRequest, runtime *dara.RuntimeOptions) (_result *StartMediaLiveChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelId) {
@@ -15341,9 +16159,11 @@ func (client *Client) StartMediaLiveChannelWithContext(ctx context.Context, requ
 //
 // @return StartRtcRobotInstanceResponse
 func (client *Client) StartRtcRobotInstanceWithContext(ctx context.Context, tmpReq *StartRtcRobotInstanceRequest, runtime *dara.RuntimeOptions) (_result *StartRtcRobotInstanceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &StartRtcRobotInstanceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -15415,9 +16235,11 @@ func (client *Client) StartRtcRobotInstanceWithContext(ctx context.Context, tmpR
 //
 // @return StartWorkflowResponse
 func (client *Client) StartWorkflowWithContext(ctx context.Context, request *StartWorkflowRequest, runtime *dara.RuntimeOptions) (_result *StartWorkflowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SkipInputVerification) {
@@ -15477,9 +16299,11 @@ func (client *Client) StartWorkflowWithContext(ctx context.Context, request *Sta
 //
 // @return StopAIAgentInstanceResponse
 func (client *Client) StopAIAgentInstanceWithContext(ctx context.Context, request *StopAIAgentInstanceRequest, runtime *dara.RuntimeOptions) (_result *StopAIAgentInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -15511,6 +16335,54 @@ func (client *Client) StopAIAgentInstanceWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// Manually stops a workflow task.
+//
+// Description:
+//
+// This operation is only used to stop workflow tasks in real-time scenarios such as live streaming and RTC. It cannot be used to stop tasks in offline scenarios.
+//
+// @param request - StopAIWorkflowTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopAIWorkflowTaskResponse
+func (client *Client) StopAIWorkflowTaskWithContext(ctx context.Context, request *StopAIWorkflowTaskRequest, runtime *dara.RuntimeOptions) (_result *StopAIWorkflowTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StopAIWorkflowTask"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StopAIWorkflowTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Stops a MediaWeaver channel.
 //
 // @param request - StopChannelRequest
@@ -15519,9 +16391,11 @@ func (client *Client) StopAIAgentInstanceWithContext(ctx context.Context, reques
 //
 // @return StopChannelResponse
 func (client *Client) StopChannelWithContext(ctx context.Context, request *StopChannelRequest, runtime *dara.RuntimeOptions) (_result *StopChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelName) {
@@ -15567,9 +16441,11 @@ func (client *Client) StopChannelWithContext(ctx context.Context, request *StopC
 //
 // @return StopMediaLiveChannelResponse
 func (client *Client) StopMediaLiveChannelWithContext(ctx context.Context, request *StopMediaLiveChannelRequest, runtime *dara.RuntimeOptions) (_result *StopMediaLiveChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelId) {
@@ -15609,9 +16485,11 @@ func (client *Client) StopMediaLiveChannelWithContext(ctx context.Context, reque
 //
 // @return StopRtcRobotInstanceResponse
 func (client *Client) StopRtcRobotInstanceWithContext(ctx context.Context, request *StopRtcRobotInstanceRequest, runtime *dara.RuntimeOptions) (_result *StopRtcRobotInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -15643,7 +16521,11 @@ func (client *Client) StopRtcRobotInstanceWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 提交视频送审任务
+// Submits a video to a specified AI agent for content moderation. This operation supports video input from OSS and delivers the results asynchronously via callbacks. You can define custom frame-capturing policies and moderation prompts.
+//
+// Description:
+//
+// Call SubmitAIAgentVideoAuditTask to submit a video moderation task with configurations such as a video URL, frame-capturing policies, and review interval. The system returns a unique JobId for tracking. When the task is complete, the service will push the results, including the moderation status and AI-generated analysis, to the configured callback URL. Only OSS URLs are supported as input. The underlying multi-modal large language model (MLLM) only supports interaction via the non-streaming OpenAI protocol.
 //
 // @param tmpReq - SubmitAIAgentVideoAuditTaskRequest
 //
@@ -15651,9 +16533,11 @@ func (client *Client) StopRtcRobotInstanceWithContext(ctx context.Context, reque
 //
 // @return SubmitAIAgentVideoAuditTaskResponse
 func (client *Client) SubmitAIAgentVideoAuditTaskWithContext(ctx context.Context, tmpReq *SubmitAIAgentVideoAuditTaskRequest, runtime *dara.RuntimeOptions) (_result *SubmitAIAgentVideoAuditTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitAIAgentVideoAuditTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -15727,9 +16611,11 @@ func (client *Client) SubmitAIAgentVideoAuditTaskWithContext(ctx context.Context
 //
 // @return SubmitASRJobResponse
 func (client *Client) SubmitASRJobWithContext(ctx context.Context, request *SubmitASRJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitASRJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -15793,9 +16679,11 @@ func (client *Client) SubmitASRJobWithContext(ctx context.Context, request *Subm
 //
 // @return SubmitAudioProduceJobResponse
 func (client *Client) SubmitAudioProduceJobWithContext(ctx context.Context, request *SubmitAudioProduceJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitAudioProduceJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -15859,9 +16747,11 @@ func (client *Client) SubmitAudioProduceJobWithContext(ctx context.Context, requ
 //
 // @return SubmitAvatarTrainingJobResponse
 func (client *Client) SubmitAvatarTrainingJobWithContext(ctx context.Context, request *SubmitAvatarTrainingJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitAvatarTrainingJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.JobId) {
@@ -15893,7 +16783,15 @@ func (client *Client) SubmitAvatarTrainingJobWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Submits a video rendering job for a digitized virtual human based on text or an audio file of a human voice.
+// Submits a task to render a video of an avatar speaking the content of the specified text or a human voice audio file.
+//
+// Description:
+//
+// - The input supports only text or a human voice audio file in MP3 or WAV format.
+//
+// - The output supports MP4 and WebM formats. For the MP4 format, the task produces two videos: one with the avatar on a green screen background and a separate alpha mask video. This is ideal for post-production. For the WebM format, the task produces a single video with a transparent alpha channel, suitable for direct web front-end display. Rendering WebM is slower due to encoding complexity.
+//
+// - The final output includes sentence-level timestamps, which are useful for subsequent video editing.
 //
 // @param request - SubmitAvatarVideoJobRequest
 //
@@ -15901,9 +16799,11 @@ func (client *Client) SubmitAvatarTrainingJobWithContext(ctx context.Context, re
 //
 // @return SubmitAvatarVideoJobResponse
 func (client *Client) SubmitAvatarVideoJobWithContext(ctx context.Context, request *SubmitAvatarVideoJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitAvatarVideoJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -15963,9 +16863,11 @@ func (client *Client) SubmitAvatarVideoJobWithContext(ctx context.Context, reque
 //
 // @return SubmitBatchMediaProducingJobResponse
 func (client *Client) SubmitBatchMediaProducingJobWithContext(ctx context.Context, request *SubmitBatchMediaProducingJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitBatchMediaProducingJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -16019,7 +16921,11 @@ func (client *Client) SubmitBatchMediaProducingJobWithContext(ctx context.Contex
 
 // Summary:
 //
-// 提交版权水印提取作业
+// Submits a job that extracts a copyright watermark.
+//
+// Description:
+//
+//	This operation is supported only in the China (Shanghai) and China (Beijing) regions.
 //
 // @param tmpReq - SubmitCopyrightExtractJobRequest
 //
@@ -16027,9 +16933,11 @@ func (client *Client) SubmitBatchMediaProducingJobWithContext(ctx context.Contex
 //
 // @return SubmitCopyrightExtractJobResponse
 func (client *Client) SubmitCopyrightExtractJobWithContext(ctx context.Context, tmpReq *SubmitCopyrightExtractJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitCopyrightExtractJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitCopyrightExtractJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16075,7 +16983,15 @@ func (client *Client) SubmitCopyrightExtractJobWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 提交版权水印任务
+// Submits a job for adding a copyright watermark to a video.
+//
+// Description:
+//
+//	  You can call this operation to add a copyright watermark to a video that lasts at least 3 minutes. If the video is too short, the call may fail, or no output may be returned. To add a copyright watermark to a video shorter than 3 minutes, specify the Params parameter to change the algorithm.
+//
+//		- Each API call supports processing only one video.
+//
+//		- This API is supported only in the China (Shanghai) and China (Beijing) regions.
 //
 // @param tmpReq - SubmitCopyrightJobRequest
 //
@@ -16083,9 +16999,11 @@ func (client *Client) SubmitCopyrightExtractJobWithContext(ctx context.Context, 
 //
 // @return SubmitCopyrightJobResponse
 func (client *Client) SubmitCopyrightJobWithContext(ctx context.Context, tmpReq *SubmitCopyrightJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitCopyrightJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitCopyrightJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16167,9 +17085,11 @@ func (client *Client) SubmitCopyrightJobWithContext(ctx context.Context, tmpReq 
 //
 // @return SubmitCustomizedVoiceJobResponse
 func (client *Client) SubmitCustomizedVoiceJobWithContext(ctx context.Context, request *SubmitCustomizedVoiceJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitCustomizedVoiceJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DemoAudioMediaURL) {
@@ -16221,9 +17141,11 @@ func (client *Client) SubmitCustomizedVoiceJobWithContext(ctx context.Context, r
 //
 // @return SubmitDNAJobResponse
 func (client *Client) SubmitDNAJobWithContext(ctx context.Context, tmpReq *SubmitDNAJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitDNAJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitDNAJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16339,9 +17261,11 @@ func (client *Client) SubmitDNAJobWithContext(ctx context.Context, tmpReq *Submi
 //
 // @return SubmitDynamicChartJobResponse
 func (client *Client) SubmitDynamicChartJobWithContext(ctx context.Context, request *SubmitDynamicChartJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitDynamicChartJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AxisParams) {
@@ -16429,9 +17353,11 @@ func (client *Client) SubmitDynamicChartJobWithContext(ctx context.Context, requ
 //
 // @return SubmitDynamicImageJobResponse
 func (client *Client) SubmitDynamicImageJobWithContext(ctx context.Context, tmpReq *SubmitDynamicImageJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitDynamicImageJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitDynamicImageJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16509,9 +17435,11 @@ func (client *Client) SubmitDynamicImageJobWithContext(ctx context.Context, tmpR
 //
 // @return SubmitHighlightExtractionJobResponse
 func (client *Client) SubmitHighlightExtractionJobWithContext(ctx context.Context, request *SubmitHighlightExtractionJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitHighlightExtractionJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -16565,9 +17493,11 @@ func (client *Client) SubmitHighlightExtractionJobWithContext(ctx context.Contex
 //
 // @return SubmitIProductionJobResponse
 func (client *Client) SubmitIProductionJobWithContext(ctx context.Context, tmpReq *SubmitIProductionJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitIProductionJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitIProductionJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16657,9 +17587,11 @@ func (client *Client) SubmitIProductionJobWithContext(ctx context.Context, tmpRe
 //
 // @return SubmitLiveEditingJobResponse
 func (client *Client) SubmitLiveEditingJobWithContext(ctx context.Context, request *SubmitLiveEditingJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitLiveEditingJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Clips) {
@@ -16731,9 +17663,11 @@ func (client *Client) SubmitLiveEditingJobWithContext(ctx context.Context, reque
 //
 // @return SubmitLiveRecordJobResponse
 func (client *Client) SubmitLiveRecordJobWithContext(ctx context.Context, tmpReq *SubmitLiveRecordJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitLiveRecordJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitLiveRecordJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16799,9 +17733,11 @@ func (client *Client) SubmitLiveRecordJobWithContext(ctx context.Context, tmpReq
 //
 // @return SubmitLiveSnapshotJobResponse
 func (client *Client) SubmitLiveSnapshotJobWithContext(ctx context.Context, tmpReq *SubmitLiveSnapshotJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitLiveSnapshotJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitLiveSnapshotJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16873,9 +17809,11 @@ func (client *Client) SubmitLiveSnapshotJobWithContext(ctx context.Context, tmpR
 //
 // @return SubmitLiveTranscodeJobResponse
 func (client *Client) SubmitLiveTranscodeJobWithContext(ctx context.Context, tmpReq *SubmitLiveTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitLiveTranscodeJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitLiveTranscodeJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -16949,9 +17887,11 @@ func (client *Client) SubmitLiveTranscodeJobWithContext(ctx context.Context, tmp
 //
 // @return SubmitMediaAiAnalysisJobResponse
 func (client *Client) SubmitMediaAiAnalysisJobWithContext(ctx context.Context, request *SubmitMediaAiAnalysisJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitMediaAiAnalysisJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AnalysisParams) {
@@ -17003,9 +17943,11 @@ func (client *Client) SubmitMediaAiAnalysisJobWithContext(ctx context.Context, r
 //
 // @return SubmitMediaCensorJobResponse
 func (client *Client) SubmitMediaCensorJobWithContext(ctx context.Context, tmpReq *SubmitMediaCensorJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitMediaCensorJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitMediaCensorJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17091,9 +18033,11 @@ func (client *Client) SubmitMediaCensorJobWithContext(ctx context.Context, tmpRe
 //
 // @return SubmitMediaConvertJobResponse
 func (client *Client) SubmitMediaConvertJobWithContext(ctx context.Context, request *SubmitMediaConvertJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitMediaConvertJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -17149,9 +18093,11 @@ func (client *Client) SubmitMediaConvertJobWithContext(ctx context.Context, requ
 //
 // @return SubmitMediaInfoJobResponse
 func (client *Client) SubmitMediaInfoJobWithContext(ctx context.Context, tmpReq *SubmitMediaInfoJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitMediaInfoJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitMediaInfoJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17243,9 +18189,11 @@ func (client *Client) SubmitMediaInfoJobWithContext(ctx context.Context, tmpReq 
 //
 // @return SubmitMediaProducingJobResponse
 func (client *Client) SubmitMediaProducingJobWithContext(ctx context.Context, request *SubmitMediaProducingJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitMediaProducingJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -17331,9 +18279,11 @@ func (client *Client) SubmitMediaProducingJobWithContext(ctx context.Context, re
 //
 // @return SubmitPackageJobResponse
 func (client *Client) SubmitPackageJobWithContext(ctx context.Context, tmpReq *SubmitPackageJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitPackageJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitPackageJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17395,7 +18345,7 @@ func (client *Client) SubmitPackageJobWithContext(ctx context.Context, tmpReq *S
 
 // Summary:
 //
-// 提交工程导出任务
+// Submits a project export task.
 //
 // @param request - SubmitProjectExportJobRequest
 //
@@ -17403,9 +18353,11 @@ func (client *Client) SubmitPackageJobWithContext(ctx context.Context, tmpReq *S
 //
 // @return SubmitProjectExportJobResponse
 func (client *Client) SubmitProjectExportJobWithContext(ctx context.Context, request *SubmitProjectExportJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitProjectExportJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExportType) {
@@ -17455,6 +18407,74 @@ func (client *Client) SubmitProjectExportJobWithContext(ctx context.Context, req
 
 // Summary:
 //
+// Selects suitable clips based on the submitted videos, images, and voiceovers, and returns the selection results. Two scenarios are supported: image-text matching and highlight mashup.
+//
+// Description:
+//
+//	After a job is submitted, you can call [ListBatchMediaProducingJob](https://help.aliyun.com/document_detail/2803751.html) to query submitted jobs, or [GetBatchMediaProducingJob](https://help.aliyun.com/document_detail/2693269.html) to query the job status and results.
+//
+// - The feature is in public preview and charges no fees.
+//
+// @param request - SubmitSceneMediaSelectionJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitSceneMediaSelectionJobResponse
+func (client *Client) SubmitSceneMediaSelectionJobWithContext(ctx context.Context, request *SubmitSceneMediaSelectionJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitSceneMediaSelectionJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobType) {
+		query["JobType"] = request.JobType
+	}
+
+	if !dara.IsNil(request.OutputConfig) {
+		query["OutputConfig"] = request.OutputConfig
+	}
+
+	if !dara.IsNil(request.UserData) {
+		query["UserData"] = request.UserData
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EditingConfig) {
+		body["EditingConfig"] = request.EditingConfig
+	}
+
+	if !dara.IsNil(request.InputConfig) {
+		body["InputConfig"] = request.InputConfig
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitSceneMediaSelectionJob"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitSceneMediaSelectionJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Submits a task to automatically recognize the highlight segments in the video input and compile them into a dramatic and engaging clip.
 //
 // @param request - SubmitScreenMediaHighlightsJobRequest
@@ -17463,9 +18483,11 @@ func (client *Client) SubmitProjectExportJobWithContext(ctx context.Context, req
 //
 // @return SubmitScreenMediaHighlightsJobResponse
 func (client *Client) SubmitScreenMediaHighlightsJobWithContext(ctx context.Context, request *SubmitScreenMediaHighlightsJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitScreenMediaHighlightsJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OutputConfig) {
@@ -17511,7 +18533,7 @@ func (client *Client) SubmitScreenMediaHighlightsJobWithContext(ctx context.Cont
 
 // Summary:
 //
-// 提交拆条任务
+// Splits a long video into multiple video clips and outputs as video files or media assets.
 //
 // @param request - SubmitSegmentationJobRequest
 //
@@ -17519,9 +18541,11 @@ func (client *Client) SubmitScreenMediaHighlightsJobWithContext(ctx context.Cont
 //
 // @return SubmitSegmentationJobResponse
 func (client *Client) SubmitSegmentationJobWithContext(ctx context.Context, request *SubmitSegmentationJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitSegmentationJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -17583,9 +18607,11 @@ func (client *Client) SubmitSegmentationJobWithContext(ctx context.Context, requ
 //
 // @return SubmitSmarttagJobResponse
 func (client *Client) SubmitSmarttagJobWithContext(ctx context.Context, tmpReq *SubmitSmarttagJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitSmarttagJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitSmarttagJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17671,9 +18697,11 @@ func (client *Client) SubmitSmarttagJobWithContext(ctx context.Context, tmpReq *
 //
 // @return SubmitSnapshotJobResponse
 func (client *Client) SubmitSnapshotJobWithContext(ctx context.Context, tmpReq *SubmitSnapshotJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitSnapshotJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitSnapshotJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17751,9 +18779,11 @@ func (client *Client) SubmitSnapshotJobWithContext(ctx context.Context, tmpReq *
 //
 // @return SubmitSportsHighlightsJobResponse
 func (client *Client) SubmitSportsHighlightsJobWithContext(ctx context.Context, request *SubmitSportsHighlightsJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitSportsHighlightsJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -17807,9 +18837,11 @@ func (client *Client) SubmitSportsHighlightsJobWithContext(ctx context.Context, 
 //
 // @return SubmitStandardCustomizedVoiceJobResponse
 func (client *Client) SubmitStandardCustomizedVoiceJobWithContext(ctx context.Context, request *SubmitStandardCustomizedVoiceJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitStandardCustomizedVoiceJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Audios) {
@@ -17869,9 +18901,11 @@ func (client *Client) SubmitStandardCustomizedVoiceJobWithContext(ctx context.Co
 //
 // @return SubmitSyncMediaInfoJobResponse
 func (client *Client) SubmitSyncMediaInfoJobWithContext(ctx context.Context, tmpReq *SubmitSyncMediaInfoJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitSyncMediaInfoJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitSyncMediaInfoJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17933,9 +18967,11 @@ func (client *Client) SubmitSyncMediaInfoJobWithContext(ctx context.Context, tmp
 //
 // @return SubmitTextGenerateJobResponse
 func (client *Client) SubmitTextGenerateJobWithContext(ctx context.Context, request *SubmitTextGenerateJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitTextGenerateJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -17983,7 +19019,11 @@ func (client *Client) SubmitTextGenerateJobWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 提交视频溯源水印ab流任务
+// Submits an A/B watermarking job.
+//
+// Description:
+//
+//	This API supports only videos that last at least 3 minutes. If the video is too short, the call may fail, or no output may be returned.
 //
 // @param tmpReq - SubmitTraceAbJobRequest
 //
@@ -17991,9 +19031,11 @@ func (client *Client) SubmitTextGenerateJobWithContext(ctx context.Context, requ
 //
 // @return SubmitTraceAbJobResponse
 func (client *Client) SubmitTraceAbJobWithContext(ctx context.Context, tmpReq *SubmitTraceAbJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitTraceAbJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitTraceAbJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -18059,7 +19101,13 @@ func (client *Client) SubmitTraceAbJobWithContext(ctx context.Context, tmpReq *S
 
 // Summary:
 //
-// 提交溯源水印提取任务
+// Submits a job to extract the trace watermark.
+//
+// Description:
+//
+//	  This operation is supported only in the China (Shanghai) and China (Beijing) regions.
+//
+//		- The input video must be 3 minutes or longer. Jobs submitted with shorter videos will fail.
 //
 // @param tmpReq - SubmitTraceExtractJobRequest
 //
@@ -18067,9 +19115,11 @@ func (client *Client) SubmitTraceAbJobWithContext(ctx context.Context, tmpReq *S
 //
 // @return SubmitTraceExtractJobResponse
 func (client *Client) SubmitTraceExtractJobWithContext(ctx context.Context, tmpReq *SubmitTraceExtractJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitTraceExtractJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitTraceExtractJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -18115,7 +19165,15 @@ func (client *Client) SubmitTraceExtractJobWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 提交视频溯源水印m3u8文件任务
+// Submits a job that generates an M3U8 file containing specific trace watermark information.
+//
+// Description:
+//
+//	  Before you call this operation, you must call SubmitTraceAbJob to get the TraceMediaId from its response.
+//
+//		- This operation is supported only in the China (Shanghai) and China (Beijing) regions.
+//
+//		- The M3U8 file generated by this job has a signed URL with an authentication validity period of 24 hours, starting from the moment the job is completed. Once the signature expires, you will no longer be able to trace the watermark information using that specific M3U8 file. If you need to use it after expiration, you must call this API again to generate a new M3U8 file.
 //
 // @param tmpReq - SubmitTraceM3u8JobRequest
 //
@@ -18123,9 +19181,11 @@ func (client *Client) SubmitTraceExtractJobWithContext(ctx context.Context, tmpR
 //
 // @return SubmitTraceM3u8JobResponse
 func (client *Client) SubmitTraceM3u8JobWithContext(ctx context.Context, tmpReq *SubmitTraceM3u8JobRequest, runtime *dara.RuntimeOptions) (_result *SubmitTraceM3u8JobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitTraceM3u8JobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -18187,9 +19247,11 @@ func (client *Client) SubmitTraceM3u8JobWithContext(ctx context.Context, tmpReq 
 //
 // @return SubmitTranscodeJobResponse
 func (client *Client) SubmitTranscodeJobWithContext(ctx context.Context, tmpReq *SubmitTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitTranscodeJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitTranscodeJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -18255,7 +19317,7 @@ func (client *Client) SubmitTranscodeJobWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 提交视频理解任务
+// Submits a video for AI analysis and processing.
 //
 // @param tmpReq - SubmitVideoCognitionJobRequest
 //
@@ -18263,9 +19325,11 @@ func (client *Client) SubmitTranscodeJobWithContext(ctx context.Context, tmpReq 
 //
 // @return SubmitVideoCognitionJobResponse
 func (client *Client) SubmitVideoCognitionJobWithContext(ctx context.Context, tmpReq *SubmitVideoCognitionJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitVideoCognitionJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitVideoCognitionJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -18331,9 +19395,11 @@ func (client *Client) SubmitVideoCognitionJobWithContext(ctx context.Context, tm
 //
 // @return SubmitVideoTranslationJobResponse
 func (client *Client) SubmitVideoTranslationJobWithContext(ctx context.Context, request *SubmitVideoTranslationJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitVideoTranslationJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -18417,9 +19483,11 @@ func (client *Client) SubmitVideoTranslationJobWithContext(ctx context.Context, 
 //
 // @return TakeoverAIAgentCallResponse
 func (client *Client) TakeoverAIAgentCallWithContext(ctx context.Context, request *TakeoverAIAgentCallRequest, runtime *dara.RuntimeOptions) (_result *TakeoverAIAgentCallResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HumanAgentUserId) {
@@ -18473,9 +19541,11 @@ func (client *Client) TakeoverAIAgentCallWithContext(ctx context.Context, reques
 //
 // @return UpdateAIAgentInstanceResponse
 func (client *Client) UpdateAIAgentInstanceWithContext(ctx context.Context, tmpReq *UpdateAIAgentInstanceRequest, runtime *dara.RuntimeOptions) (_result *UpdateAIAgentInstanceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateAIAgentInstanceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -18537,9 +19607,11 @@ func (client *Client) UpdateAIAgentInstanceWithContext(ctx context.Context, tmpR
 //
 // @return UpdateAdInsertionResponse
 func (client *Client) UpdateAdInsertionWithContext(ctx context.Context, request *UpdateAdInsertionRequest, runtime *dara.RuntimeOptions) (_result *UpdateAdInsertionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AdMarkerPassthrough) {
@@ -18611,9 +19683,11 @@ func (client *Client) UpdateAdInsertionWithContext(ctx context.Context, request 
 //
 // @return UpdateAvatarTrainingJobResponse
 func (client *Client) UpdateAvatarTrainingJobWithContext(ctx context.Context, request *UpdateAvatarTrainingJobRequest, runtime *dara.RuntimeOptions) (_result *UpdateAvatarTrainingJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AvatarDescription) {
@@ -18681,9 +19755,11 @@ func (client *Client) UpdateAvatarTrainingJobWithContext(ctx context.Context, re
 //
 // @return UpdateCategoryResponse
 func (client *Client) UpdateCategoryWithContext(ctx context.Context, request *UpdateCategoryRequest, runtime *dara.RuntimeOptions) (_result *UpdateCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CateId) {
@@ -18727,9 +19803,11 @@ func (client *Client) UpdateCategoryWithContext(ctx context.Context, request *Up
 //
 // @return UpdateChannelResponse
 func (client *Client) UpdateChannelWithContext(ctx context.Context, request *UpdateChannelRequest, runtime *dara.RuntimeOptions) (_result *UpdateChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessPolicy) {
@@ -18789,9 +19867,11 @@ func (client *Client) UpdateChannelWithContext(ctx context.Context, request *Upd
 //
 // @return UpdateCustomTemplateResponse
 func (client *Client) UpdateCustomTemplateWithContext(ctx context.Context, request *UpdateCustomTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateCustomTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -18839,9 +19919,11 @@ func (client *Client) UpdateCustomTemplateWithContext(ctx context.Context, reque
 //
 // @return UpdateCustomizedVoiceResponse
 func (client *Client) UpdateCustomizedVoiceWithContext(ctx context.Context, request *UpdateCustomizedVoiceRequest, runtime *dara.RuntimeOptions) (_result *UpdateCustomizedVoiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DemoAudioMediaId) {
@@ -18885,9 +19967,11 @@ func (client *Client) UpdateCustomizedVoiceWithContext(ctx context.Context, requ
 //
 // @return UpdateEditingProjectResponse
 func (client *Client) UpdateEditingProjectWithContext(ctx context.Context, request *UpdateEditingProjectRequest, runtime *dara.RuntimeOptions) (_result *UpdateEditingProjectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessStatus) {
@@ -18949,7 +20033,21 @@ func (client *Client) UpdateEditingProjectWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 更新热词库
+// Modifies a specified hotword library, including its name, description, and hotword list.
+//
+// Description:
+//
+// ## [](#)
+//
+//   - You can call this operation to modify a specified hotword library.
+//
+//   - The hotword library ID (`HotwordLibraryId`) is required to identify the library that requires modification.
+//
+//   - You can modify its name (`Name` ), description (`Description` ), and hotword list (`HotWords`).
+//
+//   - Each hotword in the list can also be modified, including its content (`Text`), weight (`Weight`), language (`Language`), and translation results (`TranspositionResultList`).
+//
+//   - A single account supports up to 100 hotword libraries, each containing a maximum of 300 hotword entries. In a library, the combination of `language` and `text` of an entry must be unique. The combination of `TranslatedText` and `TargetLanguage` in `TranspositionResultList` must also be unique.
 //
 // @param tmpReq - UpdateHotwordLibraryRequest
 //
@@ -18957,9 +20055,11 @@ func (client *Client) UpdateEditingProjectWithContext(ctx context.Context, reque
 //
 // @return UpdateHotwordLibraryResponse
 func (client *Client) UpdateHotwordLibraryWithContext(ctx context.Context, tmpReq *UpdateHotwordLibraryRequest, runtime *dara.RuntimeOptions) (_result *UpdateHotwordLibraryResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateHotwordLibraryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19023,9 +20123,11 @@ func (client *Client) UpdateHotwordLibraryWithContext(ctx context.Context, tmpRe
 //
 // @return UpdateLivePackageChannelResponse
 func (client *Client) UpdateLivePackageChannelWithContext(ctx context.Context, request *UpdateLivePackageChannelRequest, runtime *dara.RuntimeOptions) (_result *UpdateLivePackageChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelName) {
@@ -19091,9 +20193,11 @@ func (client *Client) UpdateLivePackageChannelWithContext(ctx context.Context, r
 //
 // @return UpdateLivePackageChannelCredentialsResponse
 func (client *Client) UpdateLivePackageChannelCredentialsWithContext(ctx context.Context, request *UpdateLivePackageChannelCredentialsRequest, runtime *dara.RuntimeOptions) (_result *UpdateLivePackageChannelCredentialsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ChannelName) {
@@ -19147,9 +20251,11 @@ func (client *Client) UpdateLivePackageChannelCredentialsWithContext(ctx context
 //
 // @return UpdateLivePackageChannelGroupResponse
 func (client *Client) UpdateLivePackageChannelGroupWithContext(ctx context.Context, request *UpdateLivePackageChannelGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateLivePackageChannelGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -19199,9 +20305,11 @@ func (client *Client) UpdateLivePackageChannelGroupWithContext(ctx context.Conte
 //
 // @return UpdateLivePackageOriginEndpointResponse
 func (client *Client) UpdateLivePackageOriginEndpointWithContext(ctx context.Context, tmpReq *UpdateLivePackageOriginEndpointRequest, runtime *dara.RuntimeOptions) (_result *UpdateLivePackageOriginEndpointResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateLivePackageOriginEndpointShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19291,9 +20399,11 @@ func (client *Client) UpdateLivePackageOriginEndpointWithContext(ctx context.Con
 //
 // @return UpdateLiveRecordTemplateResponse
 func (client *Client) UpdateLiveRecordTemplateWithContext(ctx context.Context, tmpReq *UpdateLiveRecordTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveRecordTemplateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateLiveRecordTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19347,9 +20457,11 @@ func (client *Client) UpdateLiveRecordTemplateWithContext(ctx context.Context, t
 //
 // @return UpdateLiveSnapshotTemplateResponse
 func (client *Client) UpdateLiveSnapshotTemplateWithContext(ctx context.Context, request *UpdateLiveSnapshotTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveSnapshotTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.OverwriteFormat) {
@@ -19411,9 +20523,11 @@ func (client *Client) UpdateLiveSnapshotTemplateWithContext(ctx context.Context,
 //
 // @return UpdateLiveTranscodeJobResponse
 func (client *Client) UpdateLiveTranscodeJobWithContext(ctx context.Context, tmpReq *UpdateLiveTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveTranscodeJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateLiveTranscodeJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19483,9 +20597,11 @@ func (client *Client) UpdateLiveTranscodeJobWithContext(ctx context.Context, tmp
 //
 // @return UpdateLiveTranscodeTemplateResponse
 func (client *Client) UpdateLiveTranscodeTemplateWithContext(ctx context.Context, tmpReq *UpdateLiveTranscodeTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveTranscodeTemplateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateLiveTranscodeTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19545,9 +20661,11 @@ func (client *Client) UpdateLiveTranscodeTemplateWithContext(ctx context.Context
 //
 // @return UpdateMediaConnectFlowInputResponse
 func (client *Client) UpdateMediaConnectFlowInputWithContext(ctx context.Context, request *UpdateMediaConnectFlowInputRequest, runtime *dara.RuntimeOptions) (_result *UpdateMediaConnectFlowInputResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Cidrs) {
@@ -19621,9 +20739,11 @@ func (client *Client) UpdateMediaConnectFlowInputWithContext(ctx context.Context
 //
 // @return UpdateMediaConnectFlowOutputResponse
 func (client *Client) UpdateMediaConnectFlowOutputWithContext(ctx context.Context, request *UpdateMediaConnectFlowOutputRequest, runtime *dara.RuntimeOptions) (_result *UpdateMediaConnectFlowOutputResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Cidrs) {
@@ -19691,9 +20811,11 @@ func (client *Client) UpdateMediaConnectFlowOutputWithContext(ctx context.Contex
 //
 // @return UpdateMediaConnectFlowStatusResponse
 func (client *Client) UpdateMediaConnectFlowStatusWithContext(ctx context.Context, request *UpdateMediaConnectFlowStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateMediaConnectFlowStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FlowId) {
@@ -19741,9 +20863,11 @@ func (client *Client) UpdateMediaConnectFlowStatusWithContext(ctx context.Contex
 //
 // @return UpdateMediaInfoResponse
 func (client *Client) UpdateMediaInfoWithContext(ctx context.Context, request *UpdateMediaInfoRequest, runtime *dara.RuntimeOptions) (_result *UpdateMediaInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppendTags) {
@@ -19835,9 +20959,11 @@ func (client *Client) UpdateMediaInfoWithContext(ctx context.Context, request *U
 //
 // @return UpdateMediaLiveChannelResponse
 func (client *Client) UpdateMediaLiveChannelWithContext(ctx context.Context, tmpReq *UpdateMediaLiveChannelRequest, runtime *dara.RuntimeOptions) (_result *UpdateMediaLiveChannelResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateMediaLiveChannelShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19923,9 +21049,11 @@ func (client *Client) UpdateMediaLiveChannelWithContext(ctx context.Context, tmp
 //
 // @return UpdateMediaLiveInputResponse
 func (client *Client) UpdateMediaLiveInputWithContext(ctx context.Context, tmpReq *UpdateMediaLiveInputRequest, runtime *dara.RuntimeOptions) (_result *UpdateMediaLiveInputResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateMediaLiveInputShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -19997,9 +21125,11 @@ func (client *Client) UpdateMediaLiveInputWithContext(ctx context.Context, tmpRe
 //
 // @return UpdateMediaLiveInputSecurityGroupResponse
 func (client *Client) UpdateMediaLiveInputSecurityGroupWithContext(ctx context.Context, tmpReq *UpdateMediaLiveInputSecurityGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateMediaLiveInputSecurityGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateMediaLiveInputSecurityGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -20053,9 +21183,11 @@ func (client *Client) UpdateMediaLiveInputSecurityGroupWithContext(ctx context.C
 //
 // @return UpdateMediaMarksResponse
 func (client *Client) UpdateMediaMarksWithContext(ctx context.Context, request *UpdateMediaMarksRequest, runtime *dara.RuntimeOptions) (_result *UpdateMediaMarksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MediaId) {
@@ -20099,9 +21231,11 @@ func (client *Client) UpdateMediaMarksWithContext(ctx context.Context, request *
 //
 // @return UpdateMediaToSearchLibResponse
 func (client *Client) UpdateMediaToSearchLibWithContext(ctx context.Context, request *UpdateMediaToSearchLibRequest, runtime *dara.RuntimeOptions) (_result *UpdateMediaToSearchLibResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MediaId) {
@@ -20153,9 +21287,11 @@ func (client *Client) UpdateMediaToSearchLibWithContext(ctx context.Context, req
 //
 // @return UpdatePipelineResponse
 func (client *Client) UpdatePipelineWithContext(ctx context.Context, request *UpdatePipelineRequest, runtime *dara.RuntimeOptions) (_result *UpdatePipelineResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -20207,9 +21343,11 @@ func (client *Client) UpdatePipelineWithContext(ctx context.Context, request *Up
 //
 // @return UpdateProgramResponse
 func (client *Client) UpdateProgramWithContext(ctx context.Context, request *UpdateProgramRequest, runtime *dara.RuntimeOptions) (_result *UpdateProgramResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AdBreaks) {
@@ -20277,9 +21415,11 @@ func (client *Client) UpdateProgramWithContext(ctx context.Context, request *Upd
 //
 // @return UpdateRtcRobotInstanceResponse
 func (client *Client) UpdateRtcRobotInstanceWithContext(ctx context.Context, tmpReq *UpdateRtcRobotInstanceRequest, runtime *dara.RuntimeOptions) (_result *UpdateRtcRobotInstanceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateRtcRobotInstanceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -20329,9 +21469,11 @@ func (client *Client) UpdateRtcRobotInstanceWithContext(ctx context.Context, tmp
 //
 // @return UpdateSourceResponse
 func (client *Client) UpdateSourceWithContext(ctx context.Context, request *UpdateSourceRequest, runtime *dara.RuntimeOptions) (_result *UpdateSourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HttpPackageConfigurations) {
@@ -20383,9 +21525,11 @@ func (client *Client) UpdateSourceWithContext(ctx context.Context, request *Upda
 //
 // @return UpdateSourceLocationResponse
 func (client *Client) UpdateSourceLocationWithContext(ctx context.Context, request *UpdateSourceLocationRequest, runtime *dara.RuntimeOptions) (_result *UpdateSourceLocationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BaseUrl) {
@@ -20443,9 +21587,11 @@ func (client *Client) UpdateSourceLocationWithContext(ctx context.Context, reque
 //
 // @return UpdateTemplateResponse
 func (client *Client) UpdateTemplateWithContext(ctx context.Context, request *UpdateTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CoverUrl) {
@@ -20529,9 +21675,11 @@ func (client *Client) UpdateTemplateWithContext(ctx context.Context, request *Up
 //
 // @return UploadMediaByURLResponse
 func (client *Client) UploadMediaByURLWithContext(ctx context.Context, request *UploadMediaByURLRequest, runtime *dara.RuntimeOptions) (_result *UploadMediaByURLResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -20603,9 +21751,11 @@ func (client *Client) UploadMediaByURLWithContext(ctx context.Context, request *
 //
 // @return UploadStreamByURLResponse
 func (client *Client) UploadStreamByURLWithContext(ctx context.Context, request *UploadStreamByURLRequest, runtime *dara.RuntimeOptions) (_result *UploadStreamByURLResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Definition) {

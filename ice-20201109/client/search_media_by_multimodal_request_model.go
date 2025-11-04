@@ -9,6 +9,8 @@ type iSearchMediaByMultimodalRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCustomFilters(v string) *SearchMediaByMultimodalRequest
+	GetCustomFilters() *string
 	SetMediaType(v string) *SearchMediaByMultimodalRequest
 	GetMediaType() *string
 	SetNamespace(v string) *SearchMediaByMultimodalRequest
@@ -21,9 +23,15 @@ type iSearchMediaByMultimodalRequest interface {
 	GetSearchLibName() *string
 	SetText(v string) *SearchMediaByMultimodalRequest
 	GetText() *string
+	SetUtcCreate(v string) *SearchMediaByMultimodalRequest
+	GetUtcCreate() *string
 }
 
 type SearchMediaByMultimodalRequest struct {
+	// example:
+	//
+	// {}
+	CustomFilters *string `json:"CustomFilters,omitempty" xml:"CustomFilters,omitempty"`
 	// The type of the media assets.
 	//
 	// Valid values:
@@ -57,6 +65,10 @@ type SearchMediaByMultimodalRequest struct {
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
 	// The content that you want to query. You can describe the content in natural language.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// {}
+	UtcCreate *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
 }
 
 func (s SearchMediaByMultimodalRequest) String() string {
@@ -65,6 +77,10 @@ func (s SearchMediaByMultimodalRequest) String() string {
 
 func (s SearchMediaByMultimodalRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SearchMediaByMultimodalRequest) GetCustomFilters() *string {
+	return s.CustomFilters
 }
 
 func (s *SearchMediaByMultimodalRequest) GetMediaType() *string {
@@ -89,6 +105,15 @@ func (s *SearchMediaByMultimodalRequest) GetSearchLibName() *string {
 
 func (s *SearchMediaByMultimodalRequest) GetText() *string {
 	return s.Text
+}
+
+func (s *SearchMediaByMultimodalRequest) GetUtcCreate() *string {
+	return s.UtcCreate
+}
+
+func (s *SearchMediaByMultimodalRequest) SetCustomFilters(v string) *SearchMediaByMultimodalRequest {
+	s.CustomFilters = &v
+	return s
 }
 
 func (s *SearchMediaByMultimodalRequest) SetMediaType(v string) *SearchMediaByMultimodalRequest {
@@ -118,6 +143,11 @@ func (s *SearchMediaByMultimodalRequest) SetSearchLibName(v string) *SearchMedia
 
 func (s *SearchMediaByMultimodalRequest) SetText(v string) *SearchMediaByMultimodalRequest {
 	s.Text = &v
+	return s
+}
+
+func (s *SearchMediaByMultimodalRequest) SetUtcCreate(v string) *SearchMediaByMultimodalRequest {
+	s.UtcCreate = &v
 	return s
 }
 

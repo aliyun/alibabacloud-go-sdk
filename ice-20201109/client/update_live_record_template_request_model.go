@@ -76,7 +76,16 @@ func (s *UpdateLiveRecordTemplateRequest) SetTemplateId(v string) *UpdateLiveRec
 }
 
 func (s *UpdateLiveRecordTemplateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RecordFormat != nil {
+		for _, item := range s.RecordFormat {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateLiveRecordTemplateRequestRecordFormat struct {

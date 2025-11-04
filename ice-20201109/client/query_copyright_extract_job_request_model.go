@@ -14,6 +14,8 @@ type iQueryCopyrightExtractJobRequest interface {
 }
 
 type QueryCopyrightExtractJobRequest struct {
+	// The job ID. You can obtain the value of this parameter from the response of the SubmitCopyrightExtractJob operation.
+	//
 	// This parameter is required.
 	//
 	// example:

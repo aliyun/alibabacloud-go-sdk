@@ -14,6 +14,8 @@ type iCloseMediaConnectFlowFailoverRequest interface {
 }
 
 type CloseMediaConnectFlowFailoverRequest struct {
+	// The ID of the MediaConnect flow.
+	//
 	// example:
 	//
 	// 34900dc6-90ec-4968-af3c-fcd87f231a5f

@@ -108,7 +108,17 @@ func (s *SubmitLiveRecordJobRequest) SetTemplateId(v string) *SubmitLiveRecordJo
 }
 
 func (s *SubmitLiveRecordJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RecordOutput != nil {
+		if err := s.RecordOutput.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StreamInput != nil {
+		if err := s.StreamInput.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitLiveRecordJobRequestRecordOutput struct {

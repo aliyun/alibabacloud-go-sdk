@@ -20,15 +20,22 @@ type iGetMediaConnectAvailableRegionResponseBody interface {
 }
 
 type GetMediaConnectAvailableRegionResponseBody struct {
+	// The rsponse body.
 	Content *GetMediaConnectAvailableRegionResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The call description.
+	//
 	// example:
 	//
 	// OK
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 41CB9D4C-4650-5723-BA89-D6824F706ACB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned error code. A value of 0 indicates the call is successful.
+	//
 	// example:
 	//
 	// 0
@@ -80,15 +87,23 @@ func (s *GetMediaConnectAvailableRegionResponseBody) SetRetCode(v int32) *GetMed
 }
 
 func (s *GetMediaConnectAvailableRegionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMediaConnectAvailableRegionResponseBodyContent struct {
+	// The default region. You can ignore the parameter.
+	//
 	// example:
 	//
 	// cn-shanghai
-	DefaultRegion *string   `json:"DefaultRegion,omitempty" xml:"DefaultRegion,omitempty"`
-	RegionList    []*string `json:"RegionList,omitempty" xml:"RegionList,omitempty" type:"Repeated"`
+	DefaultRegion *string `json:"DefaultRegion,omitempty" xml:"DefaultRegion,omitempty"`
+	// The supported regions.
+	RegionList []*string `json:"RegionList,omitempty" xml:"RegionList,omitempty" type:"Repeated"`
 }
 
 func (s GetMediaConnectAvailableRegionResponseBodyContent) String() string {

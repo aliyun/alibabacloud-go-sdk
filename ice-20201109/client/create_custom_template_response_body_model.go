@@ -53,7 +53,12 @@ func (s *CreateCustomTemplateResponseBody) SetRequestId(v string) *CreateCustomT
 }
 
 func (s *CreateCustomTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CustomTemplate != nil {
+		if err := s.CustomTemplate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateCustomTemplateResponseBodyCustomTemplate struct {

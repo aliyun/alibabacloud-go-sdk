@@ -129,7 +129,30 @@ func (s *SubmitTranscodeJobRequest) SetUserData(v string) *SubmitTranscodeJobReq
 }
 
 func (s *SubmitTranscodeJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.InputGroup != nil {
+		for _, item := range s.InputGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OutputGroup != nil {
+		for _, item := range s.OutputGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ScheduleConfig != nil {
+		if err := s.ScheduleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitTranscodeJobRequestInputGroup struct {
@@ -248,7 +271,17 @@ func (s *SubmitTranscodeJobRequestOutputGroup) SetProcessConfig(v *SubmitTransco
 }
 
 func (s *SubmitTranscodeJobRequestOutputGroup) Validate() error {
-	return dara.Validate(s)
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProcessConfig != nil {
+		if err := s.ProcessConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitTranscodeJobRequestOutputGroupOutput struct {
@@ -425,7 +458,53 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfig) SetTranscode(v *Subm
 }
 
 func (s *SubmitTranscodeJobRequestOutputGroupProcessConfig) Validate() error {
-	return dara.Validate(s)
+	if s.CombineConfigs != nil {
+		for _, item := range s.CombineConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Encryption != nil {
+		if err := s.Encryption.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageWatermarks != nil {
+		for _, item := range s.ImageWatermarks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Subtitles != nil {
+		for _, item := range s.Subtitles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TextWatermarks != nil {
+		for _, item := range s.TextWatermarks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Transcode != nil {
+		if err := s.Transcode.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigCombineConfigs struct {
@@ -630,7 +709,12 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarks) SetTe
 }
 
 func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarks) Validate() error {
-	return dara.Validate(s)
+	if s.OverwriteParams != nil {
+		if err := s.OverwriteParams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParams struct {
@@ -798,7 +882,17 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwri
 }
 
 func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParams) Validate() error {
-	return dara.Validate(s)
+	if s.File != nil {
+		if err := s.File.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Timeline != nil {
+		if err := s.Timeline.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParamsFile struct {
@@ -949,7 +1043,12 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitles) SetTemplate
 }
 
 func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitles) Validate() error {
-	return dara.Validate(s)
+	if s.OverwriteParams != nil {
+		if err := s.OverwriteParams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParams struct {
@@ -1005,7 +1104,12 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwritePara
 }
 
 func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParams) Validate() error {
-	return dara.Validate(s)
+	if s.File != nil {
+		if err := s.File.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParamsFile struct {
@@ -1101,7 +1205,12 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarks) SetTem
 }
 
 func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarks) Validate() error {
-	return dara.Validate(s)
+	if s.OverwriteParams != nil {
+		if err := s.OverwriteParams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarksOverwriteParams struct {
@@ -1329,7 +1438,12 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscode) SetTemplate
 }
 
 func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscode) Validate() error {
-	return dara.Validate(s)
+	if s.OverwriteParams != nil {
+		if err := s.OverwriteParams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams struct {
@@ -1399,7 +1513,32 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams) Validate() error {
-	return dara.Validate(s)
+	if s.Audio != nil {
+		if err := s.Audio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Container != nil {
+		if err := s.Container.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MuxConfig != nil {
+		if err := s.MuxConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TransConfig != nil {
+		if err := s.TransConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Video != nil {
+		if err := s.Video.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudio struct {
@@ -1515,7 +1654,12 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudio) Validate() error {
-	return dara.Validate(s)
+	if s.Volume != nil {
+		if err := s.Volume.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume struct {
@@ -1646,7 +1790,12 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Segment != nil {
+		if err := s.Segment.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment struct {

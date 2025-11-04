@@ -104,5 +104,14 @@ func (s *ListSchedulesResponseBody) SetTotalCount(v int32) *ListSchedulesRespons
 }
 
 func (s *ListSchedulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Programs != nil {
+		for _, item := range s.Programs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

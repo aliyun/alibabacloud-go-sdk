@@ -59,5 +59,10 @@ func (s *ListAdInsertionsResponse) SetBody(v *ListAdInsertionsResponseBody) *Lis
 }
 
 func (s *ListAdInsertionsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

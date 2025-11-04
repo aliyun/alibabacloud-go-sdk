@@ -22,19 +22,28 @@ type iListRecognitionEntitiesResponseBody interface {
 }
 
 type ListRecognitionEntitiesResponseBody struct {
+	// The entities.
 	Entities *ListRecognitionEntitiesResponseBodyEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Struct"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// **Request ID**
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -95,7 +104,12 @@ func (s *ListRecognitionEntitiesResponseBody) SetTotalCount(v int64) *ListRecogn
 }
 
 func (s *ListRecognitionEntitiesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Entities != nil {
+		if err := s.Entities.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRecognitionEntitiesResponseBodyEntities struct {
@@ -120,18 +134,32 @@ func (s *ListRecognitionEntitiesResponseBodyEntities) SetEntity(v []*ListRecogni
 }
 
 func (s *ListRecognitionEntitiesResponseBodyEntities) Validate() error {
-	return dara.Validate(s)
+	if s.Entity != nil {
+		for _, item := range s.Entity {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRecognitionEntitiesResponseBodyEntitiesEntity struct {
+	// The ID of the entity.
+	//
 	// example:
 	//
 	// **************544cb84754************
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The additional information of the entity, in JSON format.
+	//
 	// example:
 	//
 	// {}
 	EntityInfo *string `json:"EntityInfo,omitempty" xml:"EntityInfo,omitempty"`
+	// The name of the entity.
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
 }
 

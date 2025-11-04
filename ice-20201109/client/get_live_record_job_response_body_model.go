@@ -53,7 +53,12 @@ func (s *GetLiveRecordJobResponseBody) SetRequestId(v string) *GetLiveRecordJobR
 }
 
 func (s *GetLiveRecordJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RecordJob != nil {
+		if err := s.RecordJob.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLiveRecordJobResponseBodyRecordJob struct {
@@ -201,7 +206,17 @@ func (s *GetLiveRecordJobResponseBodyRecordJob) SetTemplateName(v string) *GetLi
 }
 
 func (s *GetLiveRecordJobResponseBodyRecordJob) Validate() error {
-	return dara.Validate(s)
+	if s.RecordOutput != nil {
+		if err := s.RecordOutput.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StreamInput != nil {
+		if err := s.StreamInput.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLiveRecordJobResponseBodyRecordJobRecordOutput struct {

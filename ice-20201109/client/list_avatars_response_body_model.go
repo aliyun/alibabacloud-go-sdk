@@ -74,7 +74,12 @@ func (s *ListAvatarsResponseBody) SetSuccess(v bool) *ListAvatarsResponseBody {
 }
 
 func (s *ListAvatarsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAvatarsResponseBodyData struct {
@@ -115,7 +120,16 @@ func (s *ListAvatarsResponseBodyData) SetTotalCount(v int64) *ListAvatarsRespons
 }
 
 func (s *ListAvatarsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AvatarList != nil {
+		for _, item := range s.AvatarList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAvatarsResponseBodyDataAvatarList struct {

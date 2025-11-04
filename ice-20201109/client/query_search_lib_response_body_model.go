@@ -132,7 +132,16 @@ func (s *QuerySearchLibResponseBody) SetSuccess(v string) *QuerySearchLibRespons
 }
 
 func (s *QuerySearchLibResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IndexInfo != nil {
+		for _, item := range s.IndexInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QuerySearchLibResponseBodyIndexInfo struct {

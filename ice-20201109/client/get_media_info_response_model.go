@@ -59,5 +59,10 @@ func (s *GetMediaInfoResponse) SetBody(v *GetMediaInfoResponseBody) *GetMediaInf
 }
 
 func (s *GetMediaInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

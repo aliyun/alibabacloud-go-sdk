@@ -20,18 +20,26 @@ type iForbidMediaConnectFlowOutputResponseBody interface {
 }
 
 type ForbidMediaConnectFlowOutputResponseBody struct {
+	// The response body.
+	//
 	// example:
 	//
 	// ""
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The call description.
+	//
 	// example:
 	//
 	// OK
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1BCA0CFC-CBD4-5656-9D04-21B1FADBB92A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned error code. A value of 0 indicates the call is successful.
+	//
 	// example:
 	//
 	// 0

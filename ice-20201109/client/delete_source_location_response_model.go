@@ -59,5 +59,10 @@ func (s *DeleteSourceLocationResponse) SetBody(v *DeleteSourceLocationResponseBo
 }
 
 func (s *DeleteSourceLocationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

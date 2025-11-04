@@ -53,7 +53,16 @@ func (s *BatchGetMediaInfosResponseBody) SetRequestId(v string) *BatchGetMediaIn
 }
 
 func (s *BatchGetMediaInfosResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaInfos != nil {
+		for _, item := range s.MediaInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfos struct {
@@ -105,7 +114,21 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfos) SetMediaId(v string) *BatchGe
 }
 
 func (s *BatchGetMediaInfosResponseBodyMediaInfos) Validate() error {
-	return dara.Validate(s)
+	if s.FileInfoList != nil {
+		for _, item := range s.FileInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MediaBasicInfo != nil {
+		if err := s.MediaBasicInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfosFileInfoList struct {
@@ -131,7 +154,12 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoList) SetFileBasicInfo(
 }
 
 func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.FileBasicInfo != nil {
+		if err := s.FileBasicInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo struct {

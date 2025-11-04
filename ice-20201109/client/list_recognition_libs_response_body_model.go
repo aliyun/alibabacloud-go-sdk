@@ -22,19 +22,28 @@ type iListRecognitionLibsResponseBody interface {
 }
 
 type ListRecognitionLibsResponseBody struct {
+	// The recognition libraries.
 	Libs *ListRecognitionLibsResponseBodyLibs `json:"Libs,omitempty" xml:"Libs,omitempty" type:"Struct"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 180
@@ -95,7 +104,12 @@ func (s *ListRecognitionLibsResponseBody) SetTotalCount(v int64) *ListRecognitio
 }
 
 func (s *ListRecognitionLibsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Libs != nil {
+		if err := s.Libs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRecognitionLibsResponseBodyLibs struct {
@@ -120,15 +134,28 @@ func (s *ListRecognitionLibsResponseBodyLibs) SetLib(v []*ListRecognitionLibsRes
 }
 
 func (s *ListRecognitionLibsResponseBodyLibs) Validate() error {
-	return dara.Validate(s)
+	if s.Lib != nil {
+		for _, item := range s.Lib {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRecognitionLibsResponseBodyLibsLib struct {
+	// The description of the recognition library.
 	LibDescription *string `json:"LibDescription,omitempty" xml:"LibDescription,omitempty"`
+	// The ID of the recognition library.
+	//
 	// example:
 	//
 	// *************24b47865c6**************
-	LibId   *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// The name of the recognition library.
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 }
 

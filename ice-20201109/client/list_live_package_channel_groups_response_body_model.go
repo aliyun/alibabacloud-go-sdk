@@ -121,7 +121,16 @@ func (s *ListLivePackageChannelGroupsResponseBody) SetTotalCount(v int64) *ListL
 }
 
 func (s *ListLivePackageChannelGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LivePackageChannelGroups != nil {
+		for _, item := range s.LivePackageChannelGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLivePackageChannelGroupsResponseBodyLivePackageChannelGroups struct {

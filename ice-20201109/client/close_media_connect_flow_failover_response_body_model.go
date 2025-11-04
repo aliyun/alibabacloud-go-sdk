@@ -20,18 +20,26 @@ type iCloseMediaConnectFlowFailoverResponseBody interface {
 }
 
 type CloseMediaConnectFlowFailoverResponseBody struct {
+	// The response body.
+	//
 	// example:
 	//
 	// ""
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The call description.
+	//
 	// example:
 	//
 	// OK
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 391DDF25-705C-5B38-9DB9-7A6B00D6065A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned error code. A value of 0 indicates the call is successful.
+	//
 	// example:
 	//
 	// 0

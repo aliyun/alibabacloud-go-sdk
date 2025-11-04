@@ -93,7 +93,16 @@ func (s *CreateMediaLiveInputRequest) SetType(v string) *CreateMediaLiveInputReq
 }
 
 func (s *CreateMediaLiveInputRequest) Validate() error {
-	return dara.Validate(s)
+	if s.InputSettings != nil {
+		for _, item := range s.InputSettings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateMediaLiveInputRequestInputSettings struct {

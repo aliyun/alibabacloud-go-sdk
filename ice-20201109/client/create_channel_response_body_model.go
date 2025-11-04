@@ -53,5 +53,10 @@ func (s *CreateChannelResponseBody) SetRequestId(v string) *CreateChannelRespons
 }
 
 func (s *CreateChannelResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Channel != nil {
+		if err := s.Channel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

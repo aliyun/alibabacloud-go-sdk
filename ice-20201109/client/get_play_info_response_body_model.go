@@ -66,7 +66,21 @@ func (s *GetPlayInfoResponseBody) SetRequestId(v string) *GetPlayInfoResponseBod
 }
 
 func (s *GetPlayInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MediaBase != nil {
+		if err := s.MediaBase.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PlayInfoList != nil {
+		for _, item := range s.PlayInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPlayInfoResponseBodyMediaBase struct {

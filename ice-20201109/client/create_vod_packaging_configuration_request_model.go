@@ -110,7 +110,12 @@ func (s *CreateVodPackagingConfigurationRequest) SetProtocol(v string) *CreateVo
 }
 
 func (s *CreateVodPackagingConfigurationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PackageConfig != nil {
+		if err := s.PackageConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateVodPackagingConfigurationRequestPackageConfig struct {
@@ -180,7 +185,17 @@ func (s *CreateVodPackagingConfigurationRequestPackageConfig) SetStreamSelection
 }
 
 func (s *CreateVodPackagingConfigurationRequestPackageConfig) Validate() error {
-	return dara.Validate(s)
+	if s.DrmProvider != nil {
+		if err := s.DrmProvider.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StreamSelection != nil {
+		if err := s.StreamSelection.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateVodPackagingConfigurationRequestPackageConfigDrmProvider struct {

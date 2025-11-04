@@ -70,7 +70,16 @@ func (s *ListLiveTranscodeJobsResponseBody) SetTotalCount(v int32) *ListLiveTran
 }
 
 func (s *ListLiveTranscodeJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.JobList != nil {
+		for _, item := range s.JobList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLiveTranscodeJobsResponseBodyJobList struct {
@@ -223,7 +232,17 @@ func (s *ListLiveTranscodeJobsResponseBodyJobList) SetTemplateType(v string) *Li
 }
 
 func (s *ListLiveTranscodeJobsResponseBodyJobList) Validate() error {
-	return dara.Validate(s)
+	if s.OutputStream != nil {
+		if err := s.OutputStream.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StreamInput != nil {
+		if err := s.StreamInput.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLiveTranscodeJobsResponseBodyJobListOutputStream struct {
@@ -249,7 +268,16 @@ func (s *ListLiveTranscodeJobsResponseBodyJobListOutputStream) SetStreamInfos(v 
 }
 
 func (s *ListLiveTranscodeJobsResponseBodyJobListOutputStream) Validate() error {
-	return dara.Validate(s)
+	if s.StreamInfos != nil {
+		for _, item := range s.StreamInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLiveTranscodeJobsResponseBodyJobListOutputStreamStreamInfos struct {

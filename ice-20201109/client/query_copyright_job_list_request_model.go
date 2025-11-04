@@ -24,26 +24,38 @@ type iQueryCopyrightJobListRequest interface {
 }
 
 type QueryCopyrightJobListRequest struct {
+	// The end of the creation time range for the query, in UNIX timestamp format.
+	//
 	// example:
 	//
 	// 1627357325
 	CreateTimeEnd *int64 `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// The start of the creation time range for the query, in UNIX timestamp format.
+	//
 	// example:
 	//
 	// 1627357322
 	CreateTimeStart *int64 `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// ****cdb3e74639973036bc84****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The watermark level, indicating the color channel for embedding. 0: U. 1: UV. 2: YUV.
+	//
 	// example:
 	//
 	// 0
 	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 0
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 10

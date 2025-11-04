@@ -16,7 +16,12 @@ type iCancelIProductionJobRequest interface {
 }
 
 type CancelIProductionJobRequest struct {
+	// example:
+	//
+	// ****12e8864746a0a398****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the intelligent production job.
+	//
 	// This parameter is required.
 	//
 	// example:

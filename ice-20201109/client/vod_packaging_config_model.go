@@ -71,7 +71,17 @@ func (s *VodPackagingConfig) SetStreamSelection(v *VodPackagingConfigStreamSelec
 }
 
 func (s *VodPackagingConfig) Validate() error {
-	return dara.Validate(s)
+	if s.DrmProvider != nil {
+		if err := s.DrmProvider.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StreamSelection != nil {
+		if err := s.StreamSelection.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type VodPackagingConfigDrmProvider struct {

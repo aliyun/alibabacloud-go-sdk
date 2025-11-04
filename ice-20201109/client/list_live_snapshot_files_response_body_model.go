@@ -70,7 +70,16 @@ func (s *ListLiveSnapshotFilesResponseBody) SetRequestId(v string) *ListLiveSnap
 }
 
 func (s *ListLiveSnapshotFilesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FileList != nil {
+		for _, item := range s.FileList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLiveSnapshotFilesResponseBodyFileList struct {

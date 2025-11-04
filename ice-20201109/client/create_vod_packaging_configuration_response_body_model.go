@@ -53,5 +53,10 @@ func (s *CreateVodPackagingConfigurationResponseBody) SetRequestId(v string) *Cr
 }
 
 func (s *CreateVodPackagingConfigurationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PackagingConfiguration != nil {
+		if err := s.PackagingConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

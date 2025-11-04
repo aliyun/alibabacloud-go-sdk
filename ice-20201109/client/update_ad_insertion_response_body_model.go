@@ -53,7 +53,12 @@ func (s *UpdateAdInsertionResponseBody) SetRequestId(v string) *UpdateAdInsertio
 }
 
 func (s *UpdateAdInsertionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateAdInsertionResponseBodyConfig struct {
@@ -225,7 +230,17 @@ func (s *UpdateAdInsertionResponseBodyConfig) SetSlateAdUrl(v string) *UpdateAdI
 }
 
 func (s *UpdateAdInsertionResponseBodyConfig) Validate() error {
-	return dara.Validate(s)
+	if s.CdnConfig != nil {
+		if err := s.CdnConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ManifestEndpointConfig != nil {
+		if err := s.ManifestEndpointConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateAdInsertionResponseBodyConfigCdnConfig struct {

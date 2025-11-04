@@ -14,6 +14,8 @@ type iClearAIAgentVoiceprintResponseBody interface {
 }
 
 type ClearAIAgentVoiceprintResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******

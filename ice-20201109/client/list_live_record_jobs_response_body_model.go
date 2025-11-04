@@ -121,7 +121,16 @@ func (s *ListLiveRecordJobsResponseBody) SetTotalCount(v int64) *ListLiveRecordJ
 }
 
 func (s *ListLiveRecordJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LiveRecordJobs != nil {
+		for _, item := range s.LiveRecordJobs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLiveRecordJobsResponseBodyLiveRecordJobs struct {
@@ -261,7 +270,17 @@ func (s *ListLiveRecordJobsResponseBodyLiveRecordJobs) SetTemplateName(v string)
 }
 
 func (s *ListLiveRecordJobsResponseBodyLiveRecordJobs) Validate() error {
-	return dara.Validate(s)
+	if s.RecordOutput != nil {
+		if err := s.RecordOutput.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StreamInput != nil {
+		if err := s.StreamInput.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLiveRecordJobsResponseBodyLiveRecordJobsRecordOutput struct {

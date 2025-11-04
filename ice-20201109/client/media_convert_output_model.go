@@ -95,5 +95,10 @@ func (s *MediaConvertOutput) SetTemplateId(v string) *MediaConvertOutput {
 }
 
 func (s *MediaConvertOutput) Validate() error {
-	return dara.Validate(s)
+	if s.OutputFile != nil {
+		if err := s.OutputFile.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

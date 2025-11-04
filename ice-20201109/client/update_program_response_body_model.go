@@ -53,5 +53,10 @@ func (s *UpdateProgramResponseBody) SetRequestId(v string) *UpdateProgramRespons
 }
 
 func (s *UpdateProgramResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Program != nil {
+		if err := s.Program.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

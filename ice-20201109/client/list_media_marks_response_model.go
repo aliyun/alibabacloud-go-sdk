@@ -59,5 +59,10 @@ func (s *ListMediaMarksResponse) SetBody(v *ListMediaMarksResponseBody) *ListMed
 }
 
 func (s *ListMediaMarksResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

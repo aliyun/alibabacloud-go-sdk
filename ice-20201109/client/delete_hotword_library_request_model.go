@@ -14,6 +14,8 @@ type iDeleteHotwordLibraryRequest interface {
 }
 
 type DeleteHotwordLibraryRequest struct {
+	// The ID of the hotword library that you want to delete.
+	//
 	// example:
 	//
 	// ****cdb3e74639973036bc84****

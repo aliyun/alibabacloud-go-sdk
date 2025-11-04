@@ -53,7 +53,12 @@ func (s *CreateDNADBResponseBody) SetRequestId(v string) *CreateDNADBResponseBod
 }
 
 func (s *CreateDNADBResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBInfo != nil {
+		if err := s.DBInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDNADBResponseBodyDBInfo struct {

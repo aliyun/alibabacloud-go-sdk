@@ -70,7 +70,12 @@ func (s *GetAvatarTrainingJobResponseBody) SetSuccess(v bool) *GetAvatarTraining
 }
 
 func (s *GetAvatarTrainingJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAvatarTrainingJobResponseBodyData struct {
@@ -96,7 +101,12 @@ func (s *GetAvatarTrainingJobResponseBodyData) SetAvatarTrainingJob(v *GetAvatar
 }
 
 func (s *GetAvatarTrainingJobResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AvatarTrainingJob != nil {
+		if err := s.AvatarTrainingJob.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob struct {

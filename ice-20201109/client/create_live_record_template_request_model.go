@@ -53,7 +53,16 @@ func (s *CreateLiveRecordTemplateRequest) SetRecordFormat(v []*CreateLiveRecordT
 }
 
 func (s *CreateLiveRecordTemplateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RecordFormat != nil {
+		for _, item := range s.RecordFormat {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateLiveRecordTemplateRequestRecordFormat struct {

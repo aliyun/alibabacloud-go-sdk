@@ -104,7 +104,12 @@ func (s *CreateVodPackagingAssetRequest) SetInput(v *CreateVodPackagingAssetRequ
 }
 
 func (s *CreateVodPackagingAssetRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateVodPackagingAssetRequestInput struct {

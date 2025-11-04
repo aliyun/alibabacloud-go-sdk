@@ -125,5 +125,10 @@ func (s *StartAIAgentOutboundCallRequest) SetUserData(v string) *StartAIAgentOut
 }
 
 func (s *StartAIAgentOutboundCallRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

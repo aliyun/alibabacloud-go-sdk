@@ -53,5 +53,10 @@ func (s *UpdateSourceLocationResponseBody) SetSourceLocation(v *ChannelAssemblyS
 }
 
 func (s *UpdateSourceLocationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SourceLocation != nil {
+		if err := s.SourceLocation.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

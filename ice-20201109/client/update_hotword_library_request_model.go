@@ -20,17 +20,24 @@ type iUpdateHotwordLibraryRequest interface {
 }
 
 type UpdateHotwordLibraryRequest struct {
+	// The description of the hotword library. It can be up to 200 characters in length.
+	//
 	// example:
 	//
 	// 存放名人的词库
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the hotword library.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// *a0052ff71efbfd4e7e6c66*
-	HotwordLibraryId *string    `json:"HotwordLibraryId,omitempty" xml:"HotwordLibraryId,omitempty"`
-	Hotwords         []*Hotword `json:"Hotwords,omitempty" xml:"Hotwords,omitempty" type:"Repeated"`
+	HotwordLibraryId *string `json:"HotwordLibraryId,omitempty" xml:"HotwordLibraryId,omitempty"`
+	// The hotword list. You can add up to 300 hotword entries to a single library.
+	Hotwords []*Hotword `json:"Hotwords,omitempty" xml:"Hotwords,omitempty" type:"Repeated"`
+	// The name of the hotword library. It can be up to 100 characters in length.
+	//
 	// example:
 	//
 	// my_hotwords
@@ -82,5 +89,14 @@ func (s *UpdateHotwordLibraryRequest) SetName(v string) *UpdateHotwordLibraryReq
 }
 
 func (s *UpdateHotwordLibraryRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Hotwords != nil {
+		for _, item := range s.Hotwords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -15,6 +15,8 @@ type iAIAgentOutboundCallConfig interface {
 	GetAsrConfig() *AIAgentOutboundCallConfigAsrConfig
 	SetEnableIntelligentSegment(v bool) *AIAgentOutboundCallConfig
 	GetEnableIntelligentSegment() *bool
+	SetExperimentalConfig(v string) *AIAgentOutboundCallConfig
+	GetExperimentalConfig() *string
 	SetGreeting(v string) *AIAgentOutboundCallConfig
 	GetGreeting() *string
 	SetGreetingDelay(v int32) *AIAgentOutboundCallConfig
@@ -33,6 +35,7 @@ type AIAgentOutboundCallConfig struct {
 	AmbientSoundConfig       *AIAgentOutboundCallConfigAmbientSoundConfig  `json:"AmbientSoundConfig,omitempty" xml:"AmbientSoundConfig,omitempty" type:"Struct"`
 	AsrConfig                *AIAgentOutboundCallConfigAsrConfig           `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
 	EnableIntelligentSegment *bool                                         `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
+	ExperimentalConfig       *string                                       `json:"ExperimentalConfig,omitempty" xml:"ExperimentalConfig,omitempty"`
 	Greeting                 *string                                       `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
 	GreetingDelay            *int32                                        `json:"GreetingDelay,omitempty" xml:"GreetingDelay,omitempty"`
 	InterruptConfig          *AIAgentOutboundCallConfigInterruptConfig     `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty" type:"Struct"`
@@ -59,6 +62,10 @@ func (s *AIAgentOutboundCallConfig) GetAsrConfig() *AIAgentOutboundCallConfigAsr
 
 func (s *AIAgentOutboundCallConfig) GetEnableIntelligentSegment() *bool {
 	return s.EnableIntelligentSegment
+}
+
+func (s *AIAgentOutboundCallConfig) GetExperimentalConfig() *string {
+	return s.ExperimentalConfig
 }
 
 func (s *AIAgentOutboundCallConfig) GetGreeting() *string {
@@ -100,6 +107,11 @@ func (s *AIAgentOutboundCallConfig) SetEnableIntelligentSegment(v bool) *AIAgent
 	return s
 }
 
+func (s *AIAgentOutboundCallConfig) SetExperimentalConfig(v string) *AIAgentOutboundCallConfig {
+	s.ExperimentalConfig = &v
+	return s
+}
+
 func (s *AIAgentOutboundCallConfig) SetGreeting(v string) *AIAgentOutboundCallConfig {
 	s.Greeting = &v
 	return s
@@ -131,7 +143,37 @@ func (s *AIAgentOutboundCallConfig) SetTurnDetectionConfig(v *AIAgentOutboundCal
 }
 
 func (s *AIAgentOutboundCallConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AmbientSoundConfig != nil {
+		if err := s.AmbientSoundConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AsrConfig != nil {
+		if err := s.AsrConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InterruptConfig != nil {
+		if err := s.InterruptConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LlmConfig != nil {
+		if err := s.LlmConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TtsConfig != nil {
+		if err := s.TtsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TurnDetectionConfig != nil {
+		if err := s.TurnDetectionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AIAgentOutboundCallConfigAmbientSoundConfig struct {
@@ -381,7 +423,25 @@ func (s *AIAgentOutboundCallConfigLlmConfig) SetOutputMinLength(v int32) *AIAgen
 }
 
 func (s *AIAgentOutboundCallConfigLlmConfig) Validate() error {
-	return dara.Validate(s)
+	if s.FunctionMap != nil {
+		for _, item := range s.FunctionMap {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LlmHistory != nil {
+		for _, item := range s.LlmHistory {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AIAgentOutboundCallConfigLlmConfigFunctionMap struct {
@@ -536,7 +596,16 @@ func (s *AIAgentOutboundCallConfigTtsConfig) SetVoiceIdList(v []*string) *AIAgen
 }
 
 func (s *AIAgentOutboundCallConfigTtsConfig) Validate() error {
-	return dara.Validate(s)
+	if s.PronunciationRules != nil {
+		for _, item := range s.PronunciationRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AIAgentOutboundCallConfigTtsConfigPronunciationRules struct {

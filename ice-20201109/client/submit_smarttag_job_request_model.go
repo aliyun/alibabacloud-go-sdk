@@ -193,7 +193,17 @@ func (s *SubmitSmarttagJobRequest) SetUserData(v string) *SubmitSmarttagJobReque
 }
 
 func (s *SubmitSmarttagJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScheduleConfig != nil {
+		if err := s.ScheduleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitSmarttagJobRequestInput struct {

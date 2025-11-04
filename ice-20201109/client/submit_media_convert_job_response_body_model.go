@@ -53,7 +53,12 @@ func (s *SubmitMediaConvertJobResponseBody) SetRequestId(v string) *SubmitMediaC
 }
 
 func (s *SubmitMediaConvertJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Job != nil {
+		if err := s.Job.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitMediaConvertJobResponseBodyJob struct {
@@ -231,7 +236,30 @@ func (s *SubmitMediaConvertJobResponseBodyJob) SetUserData(v string) *SubmitMedi
 }
 
 func (s *SubmitMediaConvertJobResponseBodyJob) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OutputDetails != nil {
+		for _, item := range s.OutputDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OutputGroupDetails != nil {
+		for _, item := range s.OutputGroupDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SubmitMediaConvertJobResponseBodyJobConfig struct {
@@ -294,5 +322,32 @@ func (s *SubmitMediaConvertJobResponseBodyJobConfig) SetOutputs(v []*MediaConver
 }
 
 func (s *SubmitMediaConvertJobResponseBodyJobConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Inputs != nil {
+		for _, item := range s.Inputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OutputGroups != nil {
+		for _, item := range s.OutputGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Outputs != nil {
+		for _, item := range s.Outputs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

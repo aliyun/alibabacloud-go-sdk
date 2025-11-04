@@ -59,5 +59,10 @@ func (s *DeleteLiveRecordFilesResponse) SetBody(v *DeleteLiveRecordFilesResponse
 }
 
 func (s *DeleteLiveRecordFilesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

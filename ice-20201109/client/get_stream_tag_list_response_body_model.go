@@ -24,25 +24,38 @@ type iGetStreamTagListResponseBody interface {
 }
 
 type GetStreamTagListResponseBody struct {
+	// The return code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// ****73f33c91-d59383e8280b****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
-	RequestId     *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tag information.
 	StreamTagList []*GetStreamTagListResponseBodyStreamTagList `json:"StreamTagList,omitempty" xml:"StreamTagList,omitempty" type:"Repeated"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries that are returned.
+	//
 	// example:
 	//
 	// 163
@@ -112,18 +125,33 @@ func (s *GetStreamTagListResponseBody) SetTotal(v int64) *GetStreamTagListRespon
 }
 
 func (s *GetStreamTagListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StreamTagList != nil {
+		for _, item := range s.StreamTagList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetStreamTagListResponseBodyStreamTagList struct {
+	// The end time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2025-02-25T02:24:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2025-04-26T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The user-defined data.
+	//
 	// example:
 	//
 	// {"result":"xxx"}

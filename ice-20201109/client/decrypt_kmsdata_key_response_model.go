@@ -59,5 +59,10 @@ func (s *DecryptKMSDataKeyResponse) SetBody(v *DecryptKMSDataKeyResponseBody) *D
 }
 
 func (s *DecryptKMSDataKeyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

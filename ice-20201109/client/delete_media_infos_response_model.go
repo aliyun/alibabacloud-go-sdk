@@ -59,5 +59,10 @@ func (s *DeleteMediaInfosResponse) SetBody(v *DeleteMediaInfosResponseBody) *Del
 }
 
 func (s *DeleteMediaInfosResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

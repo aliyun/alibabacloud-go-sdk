@@ -53,7 +53,12 @@ func (s *GetPipelineResponseBody) SetRequestId(v string) *GetPipelineResponseBod
 }
 
 func (s *GetPipelineResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Pipeline != nil {
+		if err := s.Pipeline.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPipelineResponseBodyPipeline struct {

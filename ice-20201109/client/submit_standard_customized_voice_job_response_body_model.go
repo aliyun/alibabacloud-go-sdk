@@ -74,7 +74,12 @@ func (s *SubmitStandardCustomizedVoiceJobResponseBody) SetSuccess(v bool) *Submi
 }
 
 func (s *SubmitStandardCustomizedVoiceJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitStandardCustomizedVoiceJobResponseBodyData struct {

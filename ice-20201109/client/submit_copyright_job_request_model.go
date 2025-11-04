@@ -30,37 +30,72 @@ type iSubmitCopyrightJobRequest interface {
 }
 
 type SubmitCopyrightJobRequest struct {
+	// The description of the watermark.
+	//
+	// example:
+	//
+	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The source video file that you want to add a watermark to.
+	//
+	// > The OSS object or media asset must reside in the same region as the IMS service region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"Bucket":"example-bucket","Location":"oss-cn-shanghai","Object":"example.mp4"}
 	Input *SubmitCopyrightJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The watermark level, which specifies the channel to embed watermarks. Valid values: 0 specifies the 0u channel, 1 specifies the 1uv channel, and 2 specifies the 2yuv channel.
+	//
 	// example:
 	//
 	// 0
 	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The information about the watermark to be added.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Test
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The URL of the output file.
+	//
+	// > The OSS bucket must reside in the same region as the IMS service region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"Bucket":"example-bucket","Location":"oss-cn-shanghai","Object":"example_result.mp4"}
 	Output *SubmitCopyrightJobRequestOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The parameters related to watermark jobs. The value is a JSON string. Supported parameter:
+	//
+	// 	- algoType: the algorithm type. Default value: v1.
+	//
+	//     	- v1: watermarking for long videos that last at least 3 minutes.
+	//
+	//     	- v2: watermarking for videos shorter than 3 minutes.
+	//
 	// example:
 	//
 	// {"algoType":"v2"}
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// The start time of the watermark. Unit: seconds. If you do not specify this parameter, the default value 0 is used.
+	//
 	// example:
 	//
 	// 0
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end time of the watermark. Unit: seconds. If you do not specify this parameter, the default value is the video duration.
+	//
 	// example:
 	//
 	// 10
 	TotalTime *int64 `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
+	// The custom data, which can be up to 1,024 bytes in size.
+	//
 	// example:
 	//
 	// 123
@@ -157,7 +192,17 @@ func (s *SubmitCopyrightJobRequest) SetUserData(v string) *SubmitCopyrightJobReq
 }
 
 func (s *SubmitCopyrightJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		if err := s.Input.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitCopyrightJobRequestInput struct {

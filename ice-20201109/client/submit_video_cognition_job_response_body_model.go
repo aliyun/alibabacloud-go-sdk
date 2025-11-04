@@ -16,10 +16,14 @@ type iSubmitVideoCognitionJobResponseBody interface {
 }
 
 type SubmitVideoCognitionJobResponseBody struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******

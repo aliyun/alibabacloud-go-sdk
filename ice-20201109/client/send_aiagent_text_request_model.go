@@ -16,13 +16,23 @@ type iSendAIAgentTextRequest interface {
 }
 
 type SendAIAgentTextRequest struct {
+	// The ID of the AI agent instance.
+	//
+	// > InstanceId is a unique identifier that is returned when the AI agent is started. To start an AI agent, call [StartAIAgentInstance ](https://help.aliyun.com/document_detail/2846201.html) or [GenerateAIAgentCall](https://help.aliyun.com/document_detail/2846209.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f27f9b9be28642a88e18****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The input to the LLM.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Hello
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 

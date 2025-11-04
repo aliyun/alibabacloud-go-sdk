@@ -119,7 +119,16 @@ func (s *ChannelAssemblyScheduleData) SetSourceType(v string) *ChannelAssemblySc
 }
 
 func (s *ChannelAssemblyScheduleData) Validate() error {
-	return dara.Validate(s)
+	if s.AdBreaks != nil {
+		for _, item := range s.AdBreaks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ChannelAssemblyScheduleDataAdBreaks struct {
