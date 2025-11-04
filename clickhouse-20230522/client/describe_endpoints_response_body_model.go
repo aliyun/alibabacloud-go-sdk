@@ -116,6 +116,10 @@ func (s *DescribeEndpointsResponseBodyData) Validate() error {
 }
 
 type DescribeEndpointsResponseBodyDataEndpoints struct {
+	// example:
+	//
+	// cc-ad321**-clickhouse
+	ComputingGroupId *string `json:"ComputingGroupId,omitempty" xml:"ComputingGroupId,omitempty"`
 	// The endpoint of the cluster.
 	//
 	// example:
@@ -174,6 +178,10 @@ func (s DescribeEndpointsResponseBodyDataEndpoints) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeEndpointsResponseBodyDataEndpoints) GetComputingGroupId() *string {
+	return s.ComputingGroupId
+}
+
 func (s *DescribeEndpointsResponseBodyDataEndpoints) GetConnectionString() *string {
 	return s.ConnectionString
 }
@@ -204,6 +212,11 @@ func (s *DescribeEndpointsResponseBodyDataEndpoints) GetVpcId() *string {
 
 func (s *DescribeEndpointsResponseBodyDataEndpoints) GetVpcInstanceId() *string {
 	return s.VpcInstanceId
+}
+
+func (s *DescribeEndpointsResponseBodyDataEndpoints) SetComputingGroupId(v string) *DescribeEndpointsResponseBodyDataEndpoints {
+	s.ComputingGroupId = &v
+	return s
 }
 
 func (s *DescribeEndpointsResponseBodyDataEndpoints) SetConnectionString(v string) *DescribeEndpointsResponseBodyDataEndpoints {
