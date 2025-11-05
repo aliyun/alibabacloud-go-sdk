@@ -1619,6 +1619,10 @@ func (client *Client) CreateClusterNodePoolWithOptions(ClusterId *string, reques
 		body["max_nodes"] = request.MaxNodes
 	}
 
+	if !dara.IsNil(request.NodeComponents) {
+		body["node_components"] = request.NodeComponents
+	}
+
 	if !dara.IsNil(request.NodeConfig) {
 		body["node_config"] = request.NodeConfig
 	}
@@ -6704,6 +6708,80 @@ func (client *Client) ListOperationPlans(request *ListOperationPlansRequest) (_r
 	headers := make(map[string]*string)
 	_result = &ListOperationPlansResponse{}
 	_body, _err := client.ListOperationPlansWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取单个地域的自动运维执行计划列表
+//
+// @param request - ListOperationPlansForRegionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOperationPlansForRegionResponse
+func (client *Client) ListOperationPlansForRegionWithOptions(regionId *string, request *ListOperationPlansForRegionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListOperationPlansForRegionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["cluster_id"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.State) {
+		query["state"] = request.State
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListOperationPlansForRegion"),
+		Version:     dara.String("2015-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/regions/" + dara.PercentEncode(dara.StringValue(regionId)) + "/operation/plans"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListOperationPlansForRegionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取单个地域的自动运维执行计划列表
+//
+// @param request - ListOperationPlansForRegionRequest
+//
+// @return ListOperationPlansForRegionResponse
+func (client *Client) ListOperationPlansForRegion(regionId *string, request *ListOperationPlansForRegionRequest) (_result *ListOperationPlansForRegionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListOperationPlansForRegionResponse{}
+	_body, _err := client.ListOperationPlansForRegionWithOptions(regionId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

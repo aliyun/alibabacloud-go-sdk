@@ -27,6 +27,8 @@ type iDescribeClusterNodePoolDetailResponseBody interface {
 	GetManagement() *DescribeClusterNodePoolDetailResponseBodyManagement
 	SetMaxNodes(v int64) *DescribeClusterNodePoolDetailResponseBody
 	GetMaxNodes() *int64
+	SetNodeComponents(v []*DescribeClusterNodePoolDetailResponseBodyNodeComponents) *DescribeClusterNodePoolDetailResponseBody
+	GetNodeComponents() []*DescribeClusterNodePoolDetailResponseBodyNodeComponents
 	SetNodeConfig(v *DescribeClusterNodePoolDetailResponseBodyNodeConfig) *DescribeClusterNodePoolDetailResponseBody
 	GetNodeConfig() *DescribeClusterNodePoolDetailResponseBodyNodeConfig
 	SetNodepoolInfo(v *DescribeClusterNodePoolDetailResponseBodyNodepoolInfo) *DescribeClusterNodePoolDetailResponseBody
@@ -86,7 +88,8 @@ type DescribeClusterNodePoolDetailResponseBody struct {
 	// example:
 	//
 	// 10
-	MaxNodes *int64 `json:"max_nodes,omitempty" xml:"max_nodes,omitempty"`
+	MaxNodes       *int64                                                     `json:"max_nodes,omitempty" xml:"max_nodes,omitempty"`
+	NodeComponents []*DescribeClusterNodePoolDetailResponseBodyNodeComponents `json:"node_components,omitempty" xml:"node_components,omitempty" type:"Repeated"`
 	// The node configurations.
 	NodeConfig *DescribeClusterNodePoolDetailResponseBodyNodeConfig `json:"node_config,omitempty" xml:"node_config,omitempty" type:"Struct"`
 	// The configuration of the node pool.
@@ -141,6 +144,10 @@ func (s *DescribeClusterNodePoolDetailResponseBody) GetManagement() *DescribeClu
 
 func (s *DescribeClusterNodePoolDetailResponseBody) GetMaxNodes() *int64 {
 	return s.MaxNodes
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBody) GetNodeComponents() []*DescribeClusterNodePoolDetailResponseBodyNodeComponents {
+	return s.NodeComponents
 }
 
 func (s *DescribeClusterNodePoolDetailResponseBody) GetNodeConfig() *DescribeClusterNodePoolDetailResponseBodyNodeConfig {
@@ -208,6 +215,11 @@ func (s *DescribeClusterNodePoolDetailResponseBody) SetMaxNodes(v int64) *Descri
 	return s
 }
 
+func (s *DescribeClusterNodePoolDetailResponseBody) SetNodeComponents(v []*DescribeClusterNodePoolDetailResponseBodyNodeComponents) *DescribeClusterNodePoolDetailResponseBody {
+	s.NodeComponents = v
+	return s
+}
+
 func (s *DescribeClusterNodePoolDetailResponseBody) SetNodeConfig(v *DescribeClusterNodePoolDetailResponseBodyNodeConfig) *DescribeClusterNodePoolDetailResponseBody {
 	s.NodeConfig = v
 	return s
@@ -257,6 +269,15 @@ func (s *DescribeClusterNodePoolDetailResponseBody) Validate() error {
 	if s.Management != nil {
 		if err := s.Management.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.NodeComponents != nil {
+		for _, item := range s.NodeComponents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	if s.NodeConfig != nil {
@@ -1088,6 +1109,87 @@ func (s *DescribeClusterNodePoolDetailResponseBodyManagementUpgradeConfig) SetSu
 }
 
 func (s *DescribeClusterNodePoolDetailResponseBodyManagementUpgradeConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeClusterNodePoolDetailResponseBodyNodeComponents struct {
+	Config *DescribeClusterNodePoolDetailResponseBodyNodeComponentsConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// example:
+	//
+	// kubelet
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 1.33.3-aliyun.1
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s DescribeClusterNodePoolDetailResponseBodyNodeComponents) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeClusterNodePoolDetailResponseBodyNodeComponents) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyNodeComponents) GetConfig() *DescribeClusterNodePoolDetailResponseBodyNodeComponentsConfig {
+	return s.Config
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyNodeComponents) GetName() *string {
+	return s.Name
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyNodeComponents) GetVersion() *string {
+	return s.Version
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyNodeComponents) SetConfig(v *DescribeClusterNodePoolDetailResponseBodyNodeComponentsConfig) *DescribeClusterNodePoolDetailResponseBodyNodeComponents {
+	s.Config = v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyNodeComponents) SetName(v string) *DescribeClusterNodePoolDetailResponseBodyNodeComponents {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyNodeComponents) SetVersion(v string) *DescribeClusterNodePoolDetailResponseBodyNodeComponents {
+	s.Version = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyNodeComponents) Validate() error {
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeClusterNodePoolDetailResponseBodyNodeComponentsConfig struct {
+	CustomConfig map[string]*string `json:"custom_config,omitempty" xml:"custom_config,omitempty"`
+}
+
+func (s DescribeClusterNodePoolDetailResponseBodyNodeComponentsConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeClusterNodePoolDetailResponseBodyNodeComponentsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyNodeComponentsConfig) GetCustomConfig() map[string]*string {
+	return s.CustomConfig
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyNodeComponentsConfig) SetCustomConfig(v map[string]*string) *DescribeClusterNodePoolDetailResponseBodyNodeComponentsConfig {
+	s.CustomConfig = v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyNodeComponentsConfig) Validate() error {
 	return dara.Validate(s)
 }
 

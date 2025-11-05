@@ -23,6 +23,8 @@ type iNodepool interface {
 	GetManagement() *NodepoolManagement
 	SetMaxNodes(v int64) *Nodepool
 	GetMaxNodes() *int64
+	SetNodeComponents(v []*NodepoolNodeComponents) *Nodepool
+	GetNodeComponents() []*NodepoolNodeComponents
 	SetNodeConfig(v *NodepoolNodeConfig) *Nodepool
 	GetNodeConfig() *NodepoolNodeConfig
 	SetNodepoolInfo(v *NodepoolNodepoolInfo) *Nodepool
@@ -52,11 +54,12 @@ type Nodepool struct {
 	// example:
 	//
 	// 10
-	MaxNodes     *int64                `json:"max_nodes,omitempty" xml:"max_nodes,omitempty"`
-	NodeConfig   *NodepoolNodeConfig   `json:"node_config,omitempty" xml:"node_config,omitempty" type:"Struct"`
-	NodepoolInfo *NodepoolNodepoolInfo `json:"nodepool_info,omitempty" xml:"nodepool_info,omitempty" type:"Struct"`
-	ScalingGroup *NodepoolScalingGroup `json:"scaling_group,omitempty" xml:"scaling_group,omitempty" type:"Struct"`
-	TeeConfig    *NodepoolTeeConfig    `json:"tee_config,omitempty" xml:"tee_config,omitempty" type:"Struct"`
+	MaxNodes       *int64                    `json:"max_nodes,omitempty" xml:"max_nodes,omitempty"`
+	NodeComponents []*NodepoolNodeComponents `json:"node_components,omitempty" xml:"node_components,omitempty" type:"Repeated"`
+	NodeConfig     *NodepoolNodeConfig       `json:"node_config,omitempty" xml:"node_config,omitempty" type:"Struct"`
+	NodepoolInfo   *NodepoolNodepoolInfo     `json:"nodepool_info,omitempty" xml:"nodepool_info,omitempty" type:"Struct"`
+	ScalingGroup   *NodepoolScalingGroup     `json:"scaling_group,omitempty" xml:"scaling_group,omitempty" type:"Struct"`
+	TeeConfig      *NodepoolTeeConfig        `json:"tee_config,omitempty" xml:"tee_config,omitempty" type:"Struct"`
 }
 
 func (s Nodepool) String() string {
@@ -93,6 +96,10 @@ func (s *Nodepool) GetManagement() *NodepoolManagement {
 
 func (s *Nodepool) GetMaxNodes() *int64 {
 	return s.MaxNodes
+}
+
+func (s *Nodepool) GetNodeComponents() []*NodepoolNodeComponents {
+	return s.NodeComponents
 }
 
 func (s *Nodepool) GetNodeConfig() *NodepoolNodeConfig {
@@ -146,6 +153,11 @@ func (s *Nodepool) SetMaxNodes(v int64) *Nodepool {
 	return s
 }
 
+func (s *Nodepool) SetNodeComponents(v []*NodepoolNodeComponents) *Nodepool {
+	s.NodeComponents = v
+	return s
+}
+
 func (s *Nodepool) SetNodeConfig(v *NodepoolNodeConfig) *Nodepool {
 	s.NodeConfig = v
 	return s
@@ -185,6 +197,15 @@ func (s *Nodepool) Validate() error {
 	if s.Management != nil {
 		if err := s.Management.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.NodeComponents != nil {
+		for _, item := range s.NodeComponents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	if s.NodeConfig != nil {
@@ -842,6 +863,87 @@ func (s *NodepoolManagementUpgradeConfig) SetSurgePercentage(v int64) *NodepoolM
 }
 
 func (s *NodepoolManagementUpgradeConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type NodepoolNodeComponents struct {
+	Config *NodepoolNodeComponentsConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// example:
+	//
+	// kubelet
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 1.33.3-aliyun.1
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s NodepoolNodeComponents) String() string {
+	return dara.Prettify(s)
+}
+
+func (s NodepoolNodeComponents) GoString() string {
+	return s.String()
+}
+
+func (s *NodepoolNodeComponents) GetConfig() *NodepoolNodeComponentsConfig {
+	return s.Config
+}
+
+func (s *NodepoolNodeComponents) GetName() *string {
+	return s.Name
+}
+
+func (s *NodepoolNodeComponents) GetVersion() *string {
+	return s.Version
+}
+
+func (s *NodepoolNodeComponents) SetConfig(v *NodepoolNodeComponentsConfig) *NodepoolNodeComponents {
+	s.Config = v
+	return s
+}
+
+func (s *NodepoolNodeComponents) SetName(v string) *NodepoolNodeComponents {
+	s.Name = &v
+	return s
+}
+
+func (s *NodepoolNodeComponents) SetVersion(v string) *NodepoolNodeComponents {
+	s.Version = &v
+	return s
+}
+
+func (s *NodepoolNodeComponents) Validate() error {
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type NodepoolNodeComponentsConfig struct {
+	CustomConfig map[string]*string `json:"custom_config,omitempty" xml:"custom_config,omitempty"`
+}
+
+func (s NodepoolNodeComponentsConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s NodepoolNodeComponentsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *NodepoolNodeComponentsConfig) GetCustomConfig() map[string]*string {
+	return s.CustomConfig
+}
+
+func (s *NodepoolNodeComponentsConfig) SetCustomConfig(v map[string]*string) *NodepoolNodeComponentsConfig {
+	s.CustomConfig = v
+	return s
+}
+
+func (s *NodepoolNodeComponentsConfig) Validate() error {
 	return dara.Validate(s)
 }
 

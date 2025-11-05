@@ -31,6 +31,8 @@ type iCreateClusterNodePoolRequest interface {
 	GetManagement() *CreateClusterNodePoolRequestManagement
 	SetMaxNodes(v int64) *CreateClusterNodePoolRequest
 	GetMaxNodes() *int64
+	SetNodeComponents(v []*CreateClusterNodePoolRequestNodeComponents) *CreateClusterNodePoolRequest
+	GetNodeComponents() []*CreateClusterNodePoolRequestNodeComponents
 	SetNodeConfig(v *CreateClusterNodePoolRequestNodeConfig) *CreateClusterNodePoolRequest
 	GetNodeConfig() *CreateClusterNodePoolRequestNodeConfig
 	SetNodepoolInfo(v *CreateClusterNodePoolRequestNodepoolInfo) *CreateClusterNodePoolRequest
@@ -105,7 +107,8 @@ type CreateClusterNodePoolRequest struct {
 	// example:
 	//
 	// 10
-	MaxNodes *int64 `json:"max_nodes,omitempty" xml:"max_nodes,omitempty"`
+	MaxNodes       *int64                                        `json:"max_nodes,omitempty" xml:"max_nodes,omitempty"`
+	NodeComponents []*CreateClusterNodePoolRequestNodeComponents `json:"node_components,omitempty" xml:"node_components,omitempty" type:"Repeated"`
 	// The node configurations.
 	NodeConfig *CreateClusterNodePoolRequestNodeConfig `json:"node_config,omitempty" xml:"node_config,omitempty" type:"Struct"`
 	// The configurations of the node pool.
@@ -166,6 +169,10 @@ func (s *CreateClusterNodePoolRequest) GetManagement() *CreateClusterNodePoolReq
 
 func (s *CreateClusterNodePoolRequest) GetMaxNodes() *int64 {
 	return s.MaxNodes
+}
+
+func (s *CreateClusterNodePoolRequest) GetNodeComponents() []*CreateClusterNodePoolRequestNodeComponents {
+	return s.NodeComponents
 }
 
 func (s *CreateClusterNodePoolRequest) GetNodeConfig() *CreateClusterNodePoolRequestNodeConfig {
@@ -239,6 +246,11 @@ func (s *CreateClusterNodePoolRequest) SetMaxNodes(v int64) *CreateClusterNodePo
 	return s
 }
 
+func (s *CreateClusterNodePoolRequest) SetNodeComponents(v []*CreateClusterNodePoolRequestNodeComponents) *CreateClusterNodePoolRequest {
+	s.NodeComponents = v
+	return s
+}
+
 func (s *CreateClusterNodePoolRequest) SetNodeConfig(v *CreateClusterNodePoolRequestNodeConfig) *CreateClusterNodePoolRequest {
 	s.NodeConfig = v
 	return s
@@ -288,6 +300,15 @@ func (s *CreateClusterNodePoolRequest) Validate() error {
 	if s.Management != nil {
 		if err := s.Management.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.NodeComponents != nil {
+		for _, item := range s.NodeComponents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	if s.NodeConfig != nil {
@@ -1288,6 +1309,87 @@ func (s *CreateClusterNodePoolRequestManagementUpgradeConfig) SetSurgePercentage
 }
 
 func (s *CreateClusterNodePoolRequestManagementUpgradeConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateClusterNodePoolRequestNodeComponents struct {
+	Config *CreateClusterNodePoolRequestNodeComponentsConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// example:
+	//
+	// kubelet
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 1.33.3-aliyun.1
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s CreateClusterNodePoolRequestNodeComponents) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateClusterNodePoolRequestNodeComponents) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterNodePoolRequestNodeComponents) GetConfig() *CreateClusterNodePoolRequestNodeComponentsConfig {
+	return s.Config
+}
+
+func (s *CreateClusterNodePoolRequestNodeComponents) GetName() *string {
+	return s.Name
+}
+
+func (s *CreateClusterNodePoolRequestNodeComponents) GetVersion() *string {
+	return s.Version
+}
+
+func (s *CreateClusterNodePoolRequestNodeComponents) SetConfig(v *CreateClusterNodePoolRequestNodeComponentsConfig) *CreateClusterNodePoolRequestNodeComponents {
+	s.Config = v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestNodeComponents) SetName(v string) *CreateClusterNodePoolRequestNodeComponents {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestNodeComponents) SetVersion(v string) *CreateClusterNodePoolRequestNodeComponents {
+	s.Version = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestNodeComponents) Validate() error {
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateClusterNodePoolRequestNodeComponentsConfig struct {
+	CustomConfig map[string]*string `json:"custom_config,omitempty" xml:"custom_config,omitempty"`
+}
+
+func (s CreateClusterNodePoolRequestNodeComponentsConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateClusterNodePoolRequestNodeComponentsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterNodePoolRequestNodeComponentsConfig) GetCustomConfig() map[string]*string {
+	return s.CustomConfig
+}
+
+func (s *CreateClusterNodePoolRequestNodeComponentsConfig) SetCustomConfig(v map[string]*string) *CreateClusterNodePoolRequestNodeComponentsConfig {
+	s.CustomConfig = v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestNodeComponentsConfig) Validate() error {
 	return dara.Validate(s)
 }
 
