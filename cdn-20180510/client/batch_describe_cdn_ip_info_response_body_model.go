@@ -53,7 +53,16 @@ func (s *BatchDescribeCdnIpInfoResponseBody) SetRequestId(v string) *BatchDescri
 }
 
 func (s *BatchDescribeCdnIpInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IpInfoList != nil {
+		for _, item := range s.IpInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchDescribeCdnIpInfoResponseBodyIpInfoList struct {

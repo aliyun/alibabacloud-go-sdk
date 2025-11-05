@@ -53,7 +53,12 @@ func (s *DescribeDomainRealTimeQpsDataResponseBody) SetRequestId(v string) *Desc
 }
 
 func (s *DescribeDomainRealTimeQpsDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainRealTimeQpsDataResponseBodyData struct {
@@ -78,7 +83,16 @@ func (s *DescribeDomainRealTimeQpsDataResponseBodyData) SetQpsModel(v []*Describ
 }
 
 func (s *DescribeDomainRealTimeQpsDataResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.QpsModel != nil {
+		for _, item := range s.QpsModel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainRealTimeQpsDataResponseBodyDataQpsModel struct {

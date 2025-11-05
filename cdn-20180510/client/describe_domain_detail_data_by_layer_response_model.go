@@ -59,5 +59,10 @@ func (s *DescribeDomainDetailDataByLayerResponse) SetBody(v *DescribeDomainDetai
 }
 
 func (s *DescribeDomainDetailDataByLayerResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

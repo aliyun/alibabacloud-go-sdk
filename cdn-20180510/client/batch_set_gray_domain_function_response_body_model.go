@@ -50,7 +50,16 @@ func (s *BatchSetGrayDomainFunctionResponseBody) SetRequestId(v string) *BatchSe
 }
 
 func (s *BatchSetGrayDomainFunctionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainConfigList != nil {
+		for _, item := range s.DomainConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchSetGrayDomainFunctionResponseBodyDomainConfigList struct {

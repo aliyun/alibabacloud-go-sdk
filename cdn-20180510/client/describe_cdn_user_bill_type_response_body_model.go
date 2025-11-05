@@ -53,7 +53,12 @@ func (s *DescribeCdnUserBillTypeResponseBody) SetRequestId(v string) *DescribeCd
 }
 
 func (s *DescribeCdnUserBillTypeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BillTypeData != nil {
+		if err := s.BillTypeData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCdnUserBillTypeResponseBodyBillTypeData struct {
@@ -78,7 +83,16 @@ func (s *DescribeCdnUserBillTypeResponseBodyBillTypeData) SetBillTypeDataItem(v 
 }
 
 func (s *DescribeCdnUserBillTypeResponseBodyBillTypeData) Validate() error {
-	return dara.Validate(s)
+	if s.BillTypeDataItem != nil {
+		for _, item := range s.BillTypeDataItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCdnUserBillTypeResponseBodyBillTypeDataBillTypeDataItem struct {

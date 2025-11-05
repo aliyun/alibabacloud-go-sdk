@@ -53,7 +53,12 @@ func (s *DescribeDomainRealTimeReqHitRateDataResponseBody) SetRequestId(v string
 }
 
 func (s *DescribeDomainRealTimeReqHitRateDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainRealTimeReqHitRateDataResponseBodyData struct {
@@ -78,7 +83,16 @@ func (s *DescribeDomainRealTimeReqHitRateDataResponseBodyData) SetReqHitRateData
 }
 
 func (s *DescribeDomainRealTimeReqHitRateDataResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ReqHitRateDataModel != nil {
+		for _, item := range s.ReqHitRateDataModel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainRealTimeReqHitRateDataResponseBodyDataReqHitRateDataModel struct {

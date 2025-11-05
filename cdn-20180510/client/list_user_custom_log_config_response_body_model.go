@@ -53,7 +53,12 @@ func (s *ListUserCustomLogConfigResponseBody) SetRequestId(v string) *ListUserCu
 }
 
 func (s *ListUserCustomLogConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigIds != nil {
+		if err := s.ConfigIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUserCustomLogConfigResponseBodyConfigIds struct {

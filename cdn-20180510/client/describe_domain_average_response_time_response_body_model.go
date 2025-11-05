@@ -121,7 +121,12 @@ func (s *DescribeDomainAverageResponseTimeResponseBody) SetStartTime(v string) *
 }
 
 func (s *DescribeDomainAverageResponseTimeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AvgRTPerInterval != nil {
+		if err := s.AvgRTPerInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainAverageResponseTimeResponseBodyAvgRTPerInterval struct {
@@ -146,7 +151,16 @@ func (s *DescribeDomainAverageResponseTimeResponseBodyAvgRTPerInterval) SetDataM
 }
 
 func (s *DescribeDomainAverageResponseTimeResponseBodyAvgRTPerInterval) Validate() error {
-	return dara.Validate(s)
+	if s.DataModule != nil {
+		for _, item := range s.DataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainAverageResponseTimeResponseBodyAvgRTPerIntervalDataModule struct {

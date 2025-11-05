@@ -53,7 +53,16 @@ func (s *DescribeCdnConditionIPBInfoResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeCdnConditionIPBInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Datas != nil {
+		for _, item := range s.Datas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCdnConditionIPBInfoResponseBodyDatas struct {

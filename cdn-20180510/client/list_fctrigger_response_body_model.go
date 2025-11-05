@@ -53,7 +53,16 @@ func (s *ListFCTriggerResponseBody) SetRequestId(v string) *ListFCTriggerRespons
 }
 
 func (s *ListFCTriggerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FCTriggers != nil {
+		for _, item := range s.FCTriggers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFCTriggerResponseBodyFCTriggers struct {

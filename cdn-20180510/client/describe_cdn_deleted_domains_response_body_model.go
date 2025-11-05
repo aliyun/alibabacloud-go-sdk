@@ -104,7 +104,12 @@ func (s *DescribeCdnDeletedDomainsResponseBody) SetTotalCount(v int64) *Describe
 }
 
 func (s *DescribeCdnDeletedDomainsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Domains != nil {
+		if err := s.Domains.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCdnDeletedDomainsResponseBodyDomains struct {
@@ -129,7 +134,16 @@ func (s *DescribeCdnDeletedDomainsResponseBodyDomains) SetPageData(v []*Describe
 }
 
 func (s *DescribeCdnDeletedDomainsResponseBodyDomains) Validate() error {
-	return dara.Validate(s)
+	if s.PageData != nil {
+		for _, item := range s.PageData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCdnDeletedDomainsResponseBodyDomainsPageData struct {

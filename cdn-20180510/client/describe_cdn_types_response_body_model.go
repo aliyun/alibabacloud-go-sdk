@@ -53,7 +53,12 @@ func (s *DescribeCdnTypesResponseBody) SetRequestId(v string) *DescribeCdnTypesR
 }
 
 func (s *DescribeCdnTypesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CdnTypes != nil {
+		if err := s.CdnTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCdnTypesResponseBodyCdnTypes struct {
@@ -78,7 +83,16 @@ func (s *DescribeCdnTypesResponseBodyCdnTypes) SetCdnType(v []*DescribeCdnTypesR
 }
 
 func (s *DescribeCdnTypesResponseBodyCdnTypes) Validate() error {
-	return dara.Validate(s)
+	if s.CdnType != nil {
+		for _, item := range s.CdnType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCdnTypesResponseBodyCdnTypesCdnType struct {

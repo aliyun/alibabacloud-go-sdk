@@ -59,5 +59,10 @@ func (s *DeleteCdnDomainResponse) SetBody(v *DeleteCdnDomainResponseBody) *Delet
 }
 
 func (s *DeleteCdnDomainResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

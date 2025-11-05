@@ -59,5 +59,10 @@ func (s *DescribeCdnCertificateDetailByIdResponse) SetBody(v *DescribeCdnCertifi
 }
 
 func (s *DescribeCdnCertificateDetailByIdResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

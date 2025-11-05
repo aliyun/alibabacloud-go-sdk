@@ -126,7 +126,12 @@ func (s *DescribeCdnUserBillPredictionResponseBody) SetStartTime(v string) *Desc
 }
 
 func (s *DescribeCdnUserBillPredictionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BillPredictionData != nil {
+		if err := s.BillPredictionData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCdnUserBillPredictionResponseBodyBillPredictionData struct {
@@ -151,7 +156,16 @@ func (s *DescribeCdnUserBillPredictionResponseBodyBillPredictionData) SetBillPre
 }
 
 func (s *DescribeCdnUserBillPredictionResponseBodyBillPredictionData) Validate() error {
-	return dara.Validate(s)
+	if s.BillPredictionDataItem != nil {
+		for _, item := range s.BillPredictionDataItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCdnUserBillPredictionResponseBodyBillPredictionDataBillPredictionDataItem struct {

@@ -53,7 +53,12 @@ func (s *DescribeBlockedRegionsResponseBody) SetRequestId(v string) *DescribeBlo
 }
 
 func (s *DescribeBlockedRegionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InfoList != nil {
+		if err := s.InfoList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBlockedRegionsResponseBodyInfoList struct {
@@ -78,7 +83,16 @@ func (s *DescribeBlockedRegionsResponseBodyInfoList) SetInfoItem(v []*DescribeBl
 }
 
 func (s *DescribeBlockedRegionsResponseBodyInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.InfoItem != nil {
+		for _, item := range s.InfoItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBlockedRegionsResponseBodyInfoListInfoItem struct {

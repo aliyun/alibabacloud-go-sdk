@@ -53,7 +53,16 @@ func (s *DescribeEsExceptionDataResponseBody) SetRequestId(v string) *DescribeEs
 }
 
 func (s *DescribeEsExceptionDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Contents != nil {
+		for _, item := range s.Contents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEsExceptionDataResponseBodyContents struct {

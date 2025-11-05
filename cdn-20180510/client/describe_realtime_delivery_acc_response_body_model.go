@@ -53,7 +53,12 @@ func (s *DescribeRealtimeDeliveryAccResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeRealtimeDeliveryAccResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ReatTimeDeliveryAccData != nil {
+		if err := s.ReatTimeDeliveryAccData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRealtimeDeliveryAccResponseBodyReatTimeDeliveryAccData struct {
@@ -78,7 +83,16 @@ func (s *DescribeRealtimeDeliveryAccResponseBodyReatTimeDeliveryAccData) SetAccD
 }
 
 func (s *DescribeRealtimeDeliveryAccResponseBodyReatTimeDeliveryAccData) Validate() error {
-	return dara.Validate(s)
+	if s.AccData != nil {
+		for _, item := range s.AccData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRealtimeDeliveryAccResponseBodyReatTimeDeliveryAccDataAccData struct {

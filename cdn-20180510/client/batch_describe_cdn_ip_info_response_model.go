@@ -59,5 +59,10 @@ func (s *BatchDescribeCdnIpInfoResponse) SetBody(v *BatchDescribeCdnIpInfoRespon
 }
 
 func (s *BatchDescribeCdnIpInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -138,7 +138,12 @@ func (s *DescribeDomainQpsDataByLayerResponseBody) SetStartTime(v string) *Descr
 }
 
 func (s *DescribeDomainQpsDataByLayerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.QpsDataInterval != nil {
+		if err := s.QpsDataInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainQpsDataByLayerResponseBodyQpsDataInterval struct {
@@ -163,7 +168,16 @@ func (s *DescribeDomainQpsDataByLayerResponseBodyQpsDataInterval) SetDataModule(
 }
 
 func (s *DescribeDomainQpsDataByLayerResponseBodyQpsDataInterval) Validate() error {
-	return dara.Validate(s)
+	if s.DataModule != nil {
+		for _, item := range s.DataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule struct {

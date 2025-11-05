@@ -53,7 +53,12 @@ func (s *DescribeCdnUserBillHistoryResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeCdnUserBillHistoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BillHistoryData != nil {
+		if err := s.BillHistoryData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCdnUserBillHistoryResponseBodyBillHistoryData struct {
@@ -78,7 +83,16 @@ func (s *DescribeCdnUserBillHistoryResponseBodyBillHistoryData) SetBillHistoryDa
 }
 
 func (s *DescribeCdnUserBillHistoryResponseBodyBillHistoryData) Validate() error {
-	return dara.Validate(s)
+	if s.BillHistoryDataItem != nil {
+		for _, item := range s.BillHistoryDataItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCdnUserBillHistoryResponseBodyBillHistoryDataBillHistoryDataItem struct {
@@ -149,7 +163,12 @@ func (s *DescribeCdnUserBillHistoryResponseBodyBillHistoryDataBillHistoryDataIte
 }
 
 func (s *DescribeCdnUserBillHistoryResponseBodyBillHistoryDataBillHistoryDataItem) Validate() error {
-	return dara.Validate(s)
+	if s.BillingData != nil {
+		if err := s.BillingData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCdnUserBillHistoryResponseBodyBillHistoryDataBillHistoryDataItemBillingData struct {
@@ -174,7 +193,16 @@ func (s *DescribeCdnUserBillHistoryResponseBodyBillHistoryDataBillHistoryDataIte
 }
 
 func (s *DescribeCdnUserBillHistoryResponseBodyBillHistoryDataBillHistoryDataItemBillingData) Validate() error {
-	return dara.Validate(s)
+	if s.BillingDataItem != nil {
+		for _, item := range s.BillingDataItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCdnUserBillHistoryResponseBodyBillHistoryDataBillHistoryDataItemBillingDataBillingDataItem struct {

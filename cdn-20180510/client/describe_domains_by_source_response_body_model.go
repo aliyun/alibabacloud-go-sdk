@@ -70,7 +70,12 @@ func (s *DescribeDomainsBySourceResponseBody) SetSources(v string) *DescribeDoma
 }
 
 func (s *DescribeDomainsBySourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainsList != nil {
+		if err := s.DomainsList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainsBySourceResponseBodyDomainsList struct {
@@ -95,7 +100,16 @@ func (s *DescribeDomainsBySourceResponseBodyDomainsList) SetDomainsData(v []*Des
 }
 
 func (s *DescribeDomainsBySourceResponseBodyDomainsList) Validate() error {
-	return dara.Validate(s)
+	if s.DomainsData != nil {
+		for _, item := range s.DomainsData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainsBySourceResponseBodyDomainsListDomainsData struct {
@@ -147,7 +161,17 @@ func (s *DescribeDomainsBySourceResponseBodyDomainsListDomainsData) SetSource(v 
 }
 
 func (s *DescribeDomainsBySourceResponseBodyDomainsListDomainsData) Validate() error {
-	return dara.Validate(s)
+	if s.DomainInfos != nil {
+		if err := s.DomainInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Domains != nil {
+		if err := s.Domains.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainsBySourceResponseBodyDomainsListDomainsDataDomainInfos struct {
@@ -172,7 +196,16 @@ func (s *DescribeDomainsBySourceResponseBodyDomainsListDomainsDataDomainInfos) S
 }
 
 func (s *DescribeDomainsBySourceResponseBodyDomainsListDomainsDataDomainInfos) Validate() error {
-	return dara.Validate(s)
+	if s.DomainInfo != nil {
+		for _, item := range s.DomainInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainsBySourceResponseBodyDomainsListDomainsDataDomainInfosDomainInfo struct {

@@ -95,7 +95,16 @@ func (s *DescribeCdnFullDomainsBlockIPHistoryResponseBody) SetRequestId(v string
 }
 
 func (s *DescribeCdnFullDomainsBlockIPHistoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IPBlockInfo != nil {
+		for _, item := range s.IPBlockInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCdnFullDomainsBlockIPHistoryResponseBodyIPBlockInfo struct {

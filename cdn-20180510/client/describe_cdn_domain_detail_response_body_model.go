@@ -53,7 +53,12 @@ func (s *DescribeCdnDomainDetailResponseBody) SetRequestId(v string) *DescribeCd
 }
 
 func (s *DescribeCdnDomainDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GetDomainDetailModel != nil {
+		if err := s.GetDomainDetailModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCdnDomainDetailResponseBodyGetDomainDetailModel struct {
@@ -270,7 +275,12 @@ func (s *DescribeCdnDomainDetailResponseBodyGetDomainDetailModel) SetSourceModel
 }
 
 func (s *DescribeCdnDomainDetailResponseBodyGetDomainDetailModel) Validate() error {
-	return dara.Validate(s)
+	if s.SourceModels != nil {
+		if err := s.SourceModels.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCdnDomainDetailResponseBodyGetDomainDetailModelSourceModels struct {
@@ -295,7 +305,16 @@ func (s *DescribeCdnDomainDetailResponseBodyGetDomainDetailModelSourceModels) Se
 }
 
 func (s *DescribeCdnDomainDetailResponseBodyGetDomainDetailModelSourceModels) Validate() error {
-	return dara.Validate(s)
+	if s.SourceModel != nil {
+		for _, item := range s.SourceModel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCdnDomainDetailResponseBodyGetDomainDetailModelSourceModelsSourceModel struct {

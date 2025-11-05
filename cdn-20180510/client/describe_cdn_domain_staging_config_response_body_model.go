@@ -70,7 +70,16 @@ func (s *DescribeCdnDomainStagingConfigResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribeCdnDomainStagingConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainConfigs != nil {
+		for _, item := range s.DomainConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCdnDomainStagingConfigResponseBodyDomainConfigs struct {
@@ -164,7 +173,16 @@ func (s *DescribeCdnDomainStagingConfigResponseBodyDomainConfigs) SetStatus(v st
 }
 
 func (s *DescribeCdnDomainStagingConfigResponseBodyDomainConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.FunctionArgs != nil {
+		for _, item := range s.FunctionArgs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCdnDomainStagingConfigResponseBodyDomainConfigsFunctionArgs struct {

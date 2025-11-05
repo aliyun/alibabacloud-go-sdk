@@ -53,7 +53,12 @@ func (s *DescribeStagingIpResponseBody) SetRequestId(v string) *DescribeStagingI
 }
 
 func (s *DescribeStagingIpResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IPV4s != nil {
+		if err := s.IPV4s.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeStagingIpResponseBodyIPV4s struct {

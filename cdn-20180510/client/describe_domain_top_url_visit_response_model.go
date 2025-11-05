@@ -59,5 +59,10 @@ func (s *DescribeDomainTopUrlVisitResponse) SetBody(v *DescribeDomainTopUrlVisit
 }
 
 func (s *DescribeDomainTopUrlVisitResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

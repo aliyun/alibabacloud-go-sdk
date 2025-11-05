@@ -134,7 +134,17 @@ func (s *DescribeDomainsUsageByDayResponseBody) SetUsageTotal(v *DescribeDomains
 }
 
 func (s *DescribeDomainsUsageByDayResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UsageByDays != nil {
+		if err := s.UsageByDays.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UsageTotal != nil {
+		if err := s.UsageTotal.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainsUsageByDayResponseBodyUsageByDays struct {
@@ -159,7 +169,16 @@ func (s *DescribeDomainsUsageByDayResponseBodyUsageByDays) SetUsageByDay(v []*De
 }
 
 func (s *DescribeDomainsUsageByDayResponseBodyUsageByDays) Validate() error {
-	return dara.Validate(s)
+	if s.UsageByDay != nil {
+		for _, item := range s.UsageByDay {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainsUsageByDayResponseBodyUsageByDaysUsageByDay struct {

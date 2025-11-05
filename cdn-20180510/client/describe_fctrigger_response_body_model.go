@@ -53,7 +53,12 @@ func (s *DescribeFCTriggerResponseBody) SetRequestId(v string) *DescribeFCTrigge
 }
 
 func (s *DescribeFCTriggerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FCTrigger != nil {
+		if err := s.FCTrigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeFCTriggerResponseBodyFCTrigger struct {

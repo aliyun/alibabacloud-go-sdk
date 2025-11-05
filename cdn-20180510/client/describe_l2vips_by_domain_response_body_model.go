@@ -70,7 +70,12 @@ func (s *DescribeL2VipsByDomainResponseBody) SetVips(v *DescribeL2VipsByDomainRe
 }
 
 func (s *DescribeL2VipsByDomainResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Vips != nil {
+		if err := s.Vips.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeL2VipsByDomainResponseBodyVips struct {

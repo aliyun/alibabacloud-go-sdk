@@ -53,7 +53,12 @@ func (s *ListDomainsByLogConfigIdResponseBody) SetRequestId(v string) *ListDomai
 }
 
 func (s *ListDomainsByLogConfigIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Domains != nil {
+		if err := s.Domains.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDomainsByLogConfigIdResponseBodyDomains struct {

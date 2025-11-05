@@ -59,5 +59,10 @@ func (s *CreateUsageDetailDataExportTaskResponse) SetBody(v *CreateUsageDetailDa
 }
 
 func (s *CreateUsageDetailDataExportTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

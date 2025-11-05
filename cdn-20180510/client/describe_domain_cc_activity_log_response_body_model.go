@@ -104,7 +104,16 @@ func (s *DescribeDomainCcActivityLogResponseBody) SetTotal(v int64) *DescribeDom
 }
 
 func (s *DescribeDomainCcActivityLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ActivityLog != nil {
+		for _, item := range s.ActivityLog {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainCcActivityLogResponseBodyActivityLog struct {

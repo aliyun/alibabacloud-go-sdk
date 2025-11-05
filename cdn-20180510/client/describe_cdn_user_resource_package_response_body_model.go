@@ -53,7 +53,12 @@ func (s *DescribeCdnUserResourcePackageResponseBody) SetResourcePackageInfos(v *
 }
 
 func (s *DescribeCdnUserResourcePackageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourcePackageInfos != nil {
+		if err := s.ResourcePackageInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCdnUserResourcePackageResponseBodyResourcePackageInfos struct {
@@ -78,7 +83,16 @@ func (s *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfos) SetReso
 }
 
 func (s *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfos) Validate() error {
-	return dara.Validate(s)
+	if s.ResourcePackageInfo != nil {
+		for _, item := range s.ResourcePackageInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo struct {

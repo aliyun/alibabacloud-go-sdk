@@ -170,7 +170,12 @@ func (s *DescribeCdnServiceResponseBody) SetRequestId(v string) *DescribeCdnServ
 }
 
 func (s *DescribeCdnServiceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OperationLocks != nil {
+		if err := s.OperationLocks.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCdnServiceResponseBodyOperationLocks struct {
@@ -195,7 +200,16 @@ func (s *DescribeCdnServiceResponseBodyOperationLocks) SetLockReason(v []*Descri
 }
 
 func (s *DescribeCdnServiceResponseBodyOperationLocks) Validate() error {
-	return dara.Validate(s)
+	if s.LockReason != nil {
+		for _, item := range s.LockReason {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCdnServiceResponseBodyOperationLocksLockReason struct {

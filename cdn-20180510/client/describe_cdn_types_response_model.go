@@ -59,5 +59,10 @@ func (s *DescribeCdnTypesResponse) SetBody(v *DescribeCdnTypesResponseBody) *Des
 }
 
 func (s *DescribeCdnTypesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

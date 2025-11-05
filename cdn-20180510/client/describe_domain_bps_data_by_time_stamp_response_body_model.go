@@ -87,7 +87,12 @@ func (s *DescribeDomainBpsDataByTimeStampResponseBody) SetTimeStamp(v string) *D
 }
 
 func (s *DescribeDomainBpsDataByTimeStampResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BpsDataList != nil {
+		if err := s.BpsDataList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainBpsDataByTimeStampResponseBodyBpsDataList struct {
@@ -112,7 +117,16 @@ func (s *DescribeDomainBpsDataByTimeStampResponseBodyBpsDataList) SetBpsDataMode
 }
 
 func (s *DescribeDomainBpsDataByTimeStampResponseBodyBpsDataList) Validate() error {
-	return dara.Validate(s)
+	if s.BpsDataModel != nil {
+		for _, item := range s.BpsDataModel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainBpsDataByTimeStampResponseBodyBpsDataListBpsDataModel struct {

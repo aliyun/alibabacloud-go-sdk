@@ -59,5 +59,10 @@ func (s *RollbackStagingConfigResponse) SetBody(v *RollbackStagingConfigResponse
 }
 
 func (s *RollbackStagingConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

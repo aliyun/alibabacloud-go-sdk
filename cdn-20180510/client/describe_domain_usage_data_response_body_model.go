@@ -155,7 +155,12 @@ func (s *DescribeDomainUsageDataResponseBody) SetUsageDataPerInterval(v *Describ
 }
 
 func (s *DescribeDomainUsageDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UsageDataPerInterval != nil {
+		if err := s.UsageDataPerInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainUsageDataResponseBodyUsageDataPerInterval struct {
@@ -180,7 +185,16 @@ func (s *DescribeDomainUsageDataResponseBodyUsageDataPerInterval) SetDataModule(
 }
 
 func (s *DescribeDomainUsageDataResponseBodyUsageDataPerInterval) Validate() error {
-	return dara.Validate(s)
+	if s.DataModule != nil {
+		for _, item := range s.DataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainUsageDataResponseBodyUsageDataPerIntervalDataModule struct {

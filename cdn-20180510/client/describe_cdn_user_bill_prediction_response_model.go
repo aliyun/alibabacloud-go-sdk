@@ -59,5 +59,10 @@ func (s *DescribeCdnUserBillPredictionResponse) SetBody(v *DescribeCdnUserBillPr
 }
 
 func (s *DescribeCdnUserBillPredictionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

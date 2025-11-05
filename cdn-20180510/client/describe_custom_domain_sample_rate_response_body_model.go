@@ -47,7 +47,12 @@ func (s *DescribeCustomDomainSampleRateResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribeCustomDomainSampleRateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCustomDomainSampleRateResponseBodyContent struct {
@@ -102,7 +107,16 @@ func (s *DescribeCustomDomainSampleRateResponseBodyContent) SetTotalCount(v int6
 }
 
 func (s *DescribeCustomDomainSampleRateResponseBodyContent) Validate() error {
-	return dara.Validate(s)
+	if s.DomainContent != nil {
+		for _, item := range s.DomainContent {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCustomDomainSampleRateResponseBodyContentDomainContent struct {

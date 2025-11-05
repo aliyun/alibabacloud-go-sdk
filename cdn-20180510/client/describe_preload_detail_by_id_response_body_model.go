@@ -70,7 +70,16 @@ func (s *DescribePreloadDetailByIdResponseBody) SetUrlDetails(v []*DescribePrelo
 }
 
 func (s *DescribePreloadDetailByIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UrlDetails != nil {
+		for _, item := range s.UrlDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePreloadDetailByIdResponseBodyUrlDetails struct {
@@ -211,7 +220,16 @@ func (s *DescribePreloadDetailByIdResponseBodyUrlDetails) SetUrls(v []*DescribeP
 }
 
 func (s *DescribePreloadDetailByIdResponseBodyUrlDetails) Validate() error {
-	return dara.Validate(s)
+	if s.Urls != nil {
+		for _, item := range s.Urls {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePreloadDetailByIdResponseBodyUrlDetailsUrls struct {

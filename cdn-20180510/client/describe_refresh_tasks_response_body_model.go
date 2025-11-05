@@ -104,7 +104,12 @@ func (s *DescribeRefreshTasksResponseBody) SetTotalCount(v int64) *DescribeRefre
 }
 
 func (s *DescribeRefreshTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Tasks != nil {
+		if err := s.Tasks.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRefreshTasksResponseBodyTasks struct {
@@ -129,7 +134,16 @@ func (s *DescribeRefreshTasksResponseBodyTasks) SetCDNTask(v []*DescribeRefreshT
 }
 
 func (s *DescribeRefreshTasksResponseBodyTasks) Validate() error {
-	return dara.Validate(s)
+	if s.CDNTask != nil {
+		for _, item := range s.CDNTask {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRefreshTasksResponseBodyTasksCDNTask struct {

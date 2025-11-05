@@ -172,7 +172,12 @@ func (s *DescribeDomainPathDataResponseBody) SetTotalCount(v int32) *DescribeDom
 }
 
 func (s *DescribeDomainPathDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PathDataPerInterval != nil {
+		if err := s.PathDataPerInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainPathDataResponseBodyPathDataPerInterval struct {
@@ -197,7 +202,16 @@ func (s *DescribeDomainPathDataResponseBodyPathDataPerInterval) SetUsageData(v [
 }
 
 func (s *DescribeDomainPathDataResponseBodyPathDataPerInterval) Validate() error {
-	return dara.Validate(s)
+	if s.UsageData != nil {
+		for _, item := range s.UsageData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainPathDataResponseBodyPathDataPerIntervalUsageData struct {

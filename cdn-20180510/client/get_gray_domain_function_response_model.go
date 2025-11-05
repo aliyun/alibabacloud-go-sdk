@@ -59,5 +59,10 @@ func (s *GetGrayDomainFunctionResponse) SetBody(v *GetGrayDomainFunctionResponse
 }
 
 func (s *GetGrayDomainFunctionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

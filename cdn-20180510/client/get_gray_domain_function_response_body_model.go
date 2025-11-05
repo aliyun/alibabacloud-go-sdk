@@ -89,7 +89,16 @@ func (s *GetGrayDomainFunctionResponseBody) SetStatus(v string) *GetGrayDomainFu
 }
 
 func (s *GetGrayDomainFunctionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainConfigList != nil {
+		for _, item := range s.DomainConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetGrayDomainFunctionResponseBodyDomainConfigList struct {
@@ -166,7 +175,16 @@ func (s *GetGrayDomainFunctionResponseBodyDomainConfigList) SetStatus(v string) 
 }
 
 func (s *GetGrayDomainFunctionResponseBodyDomainConfigList) Validate() error {
-	return dara.Validate(s)
+	if s.FunctionArgs != nil {
+		for _, item := range s.FunctionArgs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetGrayDomainFunctionResponseBodyDomainConfigListFunctionArgs struct {

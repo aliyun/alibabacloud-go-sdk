@@ -121,7 +121,12 @@ func (s *DescribeDomainISPDataResponseBody) SetValue(v *DescribeDomainISPDataRes
 }
 
 func (s *DescribeDomainISPDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Value != nil {
+		if err := s.Value.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainISPDataResponseBodyValue struct {
@@ -146,7 +151,16 @@ func (s *DescribeDomainISPDataResponseBodyValue) SetISPProportionData(v []*Descr
 }
 
 func (s *DescribeDomainISPDataResponseBodyValue) Validate() error {
-	return dara.Validate(s)
+	if s.ISPProportionData != nil {
+		for _, item := range s.ISPProportionData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainISPDataResponseBodyValueISPProportionData struct {

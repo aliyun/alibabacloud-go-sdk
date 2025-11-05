@@ -53,7 +53,16 @@ func (s *DescribeIpStatusResponseBody) SetRequestId(v string) *DescribeIpStatusR
 }
 
 func (s *DescribeIpStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IpStatus != nil {
+		for _, item := range s.IpStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIpStatusResponseBodyIpStatus struct {

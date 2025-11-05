@@ -53,7 +53,16 @@ func (s *SetCdnDomainStagingConfigResponseBody) SetRequestId(v string) *SetCdnDo
 }
 
 func (s *SetCdnDomainStagingConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainConfigList != nil {
+		for _, item := range s.DomainConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SetCdnDomainStagingConfigResponseBodyDomainConfigList struct {

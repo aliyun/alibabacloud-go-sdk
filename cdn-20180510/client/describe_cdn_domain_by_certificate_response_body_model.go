@@ -53,7 +53,12 @@ func (s *DescribeCdnDomainByCertificateResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribeCdnDomainByCertificateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CertInfos != nil {
+		if err := s.CertInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCdnDomainByCertificateResponseBodyCertInfos struct {
@@ -78,7 +83,16 @@ func (s *DescribeCdnDomainByCertificateResponseBodyCertInfos) SetCertInfo(v []*D
 }
 
 func (s *DescribeCdnDomainByCertificateResponseBodyCertInfos) Validate() error {
-	return dara.Validate(s)
+	if s.CertInfo != nil {
+		for _, item := range s.CertInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCdnDomainByCertificateResponseBodyCertInfosCertInfo struct {

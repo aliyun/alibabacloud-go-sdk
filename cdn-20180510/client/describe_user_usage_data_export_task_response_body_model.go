@@ -53,7 +53,12 @@ func (s *DescribeUserUsageDataExportTaskResponseBody) SetUsageDataPerPage(v *Des
 }
 
 func (s *DescribeUserUsageDataExportTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UsageDataPerPage != nil {
+		if err := s.UsageDataPerPage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeUserUsageDataExportTaskResponseBodyUsageDataPerPage struct {
@@ -124,7 +129,12 @@ func (s *DescribeUserUsageDataExportTaskResponseBodyUsageDataPerPage) SetTotalCo
 }
 
 func (s *DescribeUserUsageDataExportTaskResponseBodyUsageDataPerPage) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeUserUsageDataExportTaskResponseBodyUsageDataPerPageData struct {
@@ -149,7 +159,16 @@ func (s *DescribeUserUsageDataExportTaskResponseBodyUsageDataPerPageData) SetDat
 }
 
 func (s *DescribeUserUsageDataExportTaskResponseBodyUsageDataPerPageData) Validate() error {
-	return dara.Validate(s)
+	if s.DataItem != nil {
+		for _, item := range s.DataItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUserUsageDataExportTaskResponseBodyUsageDataPerPageDataDataItem struct {
@@ -271,7 +290,12 @@ func (s *DescribeUserUsageDataExportTaskResponseBodyUsageDataPerPageDataDataItem
 }
 
 func (s *DescribeUserUsageDataExportTaskResponseBodyUsageDataPerPageDataDataItem) Validate() error {
-	return dara.Validate(s)
+	if s.TaskConfig != nil {
+		if err := s.TaskConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeUserUsageDataExportTaskResponseBodyUsageDataPerPageDataDataItemTaskConfig struct {

@@ -53,7 +53,16 @@ func (s *DescribeDomainTopClientIpVisitResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribeDomainTopClientIpVisitResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ClientIpList != nil {
+		for _, item := range s.ClientIpList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainTopClientIpVisitResponseBodyClientIpList struct {

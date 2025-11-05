@@ -121,7 +121,12 @@ func (s *DescribeDomainQpsDataResponseBody) SetStartTime(v string) *DescribeDoma
 }
 
 func (s *DescribeDomainQpsDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.QpsDataInterval != nil {
+		if err := s.QpsDataInterval.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainQpsDataResponseBodyQpsDataInterval struct {
@@ -146,7 +151,16 @@ func (s *DescribeDomainQpsDataResponseBodyQpsDataInterval) SetDataModule(v []*De
 }
 
 func (s *DescribeDomainQpsDataResponseBodyQpsDataInterval) Validate() error {
-	return dara.Validate(s)
+	if s.DataModule != nil {
+		for _, item := range s.DataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainQpsDataResponseBodyQpsDataIntervalDataModule struct {

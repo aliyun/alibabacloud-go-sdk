@@ -53,7 +53,12 @@ func (s *DescribeDomainDetailDataByLayerResponseBody) SetRequestId(v string) *De
 }
 
 func (s *DescribeDomainDetailDataByLayerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainDetailDataByLayerResponseBodyData struct {
@@ -78,7 +83,16 @@ func (s *DescribeDomainDetailDataByLayerResponseBodyData) SetDataModule(v []*Des
 }
 
 func (s *DescribeDomainDetailDataByLayerResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DataModule != nil {
+		for _, item := range s.DataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainDetailDataByLayerResponseBodyDataDataModule struct {

@@ -121,7 +121,12 @@ func (s *DescribeDomainSrcHttpCodeDataResponseBody) SetStartTime(v string) *Desc
 }
 
 func (s *DescribeDomainSrcHttpCodeDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HttpCodeData != nil {
+		if err := s.HttpCodeData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeData struct {
@@ -146,7 +151,16 @@ func (s *DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeData) SetUsageData(v [
 }
 
 func (s *DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeData) Validate() error {
-	return dara.Validate(s)
+	if s.UsageData != nil {
+		for _, item := range s.UsageData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeDataUsageData struct {
@@ -187,7 +201,12 @@ func (s *DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeDataUsageData) SetValu
 }
 
 func (s *DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeDataUsageData) Validate() error {
-	return dara.Validate(s)
+	if s.Value != nil {
+		if err := s.Value.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeDataUsageDataValue struct {
@@ -212,7 +231,16 @@ func (s *DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeDataUsageDataValue) Se
 }
 
 func (s *DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeDataUsageDataValue) Validate() error {
-	return dara.Validate(s)
+	if s.CodeProportionData != nil {
+		for _, item := range s.CodeProportionData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeDataUsageDataValueCodeProportionData struct {

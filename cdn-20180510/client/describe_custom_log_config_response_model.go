@@ -59,5 +59,10 @@ func (s *DescribeCustomLogConfigResponse) SetBody(v *DescribeCustomLogConfigResp
 }
 
 func (s *DescribeCustomLogConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

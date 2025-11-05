@@ -29,9 +29,11 @@ import (
 //
 // @return AddCdnDomainResponse
 func (client *Client) AddCdnDomainWithContext(ctx context.Context, request *AddCdnDomainRequest, runtime *dara.RuntimeOptions) (_result *AddCdnDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CdnType) {
@@ -111,9 +113,11 @@ func (client *Client) AddCdnDomainWithContext(ctx context.Context, request *AddC
 //
 // @return AddFCTriggerResponse
 func (client *Client) AddFCTriggerWithContext(ctx context.Context, request *AddFCTriggerRequest, runtime *dara.RuntimeOptions) (_result *AddFCTriggerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TriggerARN) {
@@ -191,9 +195,11 @@ func (client *Client) AddFCTriggerWithContext(ctx context.Context, request *AddF
 //
 // @return BatchAddCdnDomainResponse
 func (client *Client) BatchAddCdnDomainWithContext(ctx context.Context, request *BatchAddCdnDomainRequest, runtime *dara.RuntimeOptions) (_result *BatchAddCdnDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CdnType) {
@@ -275,9 +281,11 @@ func (client *Client) BatchAddCdnDomainWithContext(ctx context.Context, request 
 //
 // @return BatchDeleteCdnDomainConfigResponse
 func (client *Client) BatchDeleteCdnDomainConfigWithContext(ctx context.Context, request *BatchDeleteCdnDomainConfigRequest, runtime *dara.RuntimeOptions) (_result *BatchDeleteCdnDomainConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainNames) {
@@ -337,9 +345,11 @@ func (client *Client) BatchDeleteCdnDomainConfigWithContext(ctx context.Context,
 //
 // @return BatchDescribeCdnIpInfoResponse
 func (client *Client) BatchDescribeCdnIpInfoWithContext(ctx context.Context, request *BatchDescribeCdnIpInfoRequest, runtime *dara.RuntimeOptions) (_result *BatchDescribeCdnIpInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IpAddrList) {
@@ -391,9 +401,11 @@ func (client *Client) BatchDescribeCdnIpInfoWithContext(ctx context.Context, req
 //
 // @return BatchSetCdnDomainConfigResponse
 func (client *Client) BatchSetCdnDomainConfigWithContext(ctx context.Context, request *BatchSetCdnDomainConfigRequest, runtime *dara.RuntimeOptions) (_result *BatchSetCdnDomainConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainNames) {
@@ -449,9 +461,11 @@ func (client *Client) BatchSetCdnDomainConfigWithContext(ctx context.Context, re
 //
 // @return BatchSetGrayDomainFunctionResponse
 func (client *Client) BatchSetGrayDomainFunctionWithContext(ctx context.Context, request *BatchSetGrayDomainFunctionRequest, runtime *dara.RuntimeOptions) (_result *BatchSetGrayDomainFunctionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Configs) {
@@ -503,9 +517,11 @@ func (client *Client) BatchSetGrayDomainFunctionWithContext(ctx context.Context,
 //
 // @return BatchStartCdnDomainResponse
 func (client *Client) BatchStartCdnDomainWithContext(ctx context.Context, request *BatchStartCdnDomainRequest, runtime *dara.RuntimeOptions) (_result *BatchStartCdnDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainNames) {
@@ -563,9 +579,11 @@ func (client *Client) BatchStartCdnDomainWithContext(ctx context.Context, reques
 //
 // @return BatchStopCdnDomainResponse
 func (client *Client) BatchStopCdnDomainWithContext(ctx context.Context, request *BatchStopCdnDomainRequest, runtime *dara.RuntimeOptions) (_result *BatchStopCdnDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainNames) {
@@ -619,9 +637,11 @@ func (client *Client) BatchStopCdnDomainWithContext(ctx context.Context, request
 //
 // @return BatchUpdateCdnDomainResponse
 func (client *Client) BatchUpdateCdnDomainWithContext(ctx context.Context, request *BatchUpdateCdnDomainRequest, runtime *dara.RuntimeOptions) (_result *BatchUpdateCdnDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -673,106 +693,6 @@ func (client *Client) BatchUpdateCdnDomainWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Registers the dynamic routing feature of Dynamic Content Delivery Network (DCDN) for an Alibaba Cloud CDN-accelerated domain name. After the registration is successful, the routing center generates the dynamic routing information and send it to DCDN points of presence (POPs). This is a prerequisite for you to transfer a domain name from Alibaba Cloud CDN to DCDN.
-//
-// @param request - CdnMigrateRegisterRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return CdnMigrateRegisterResponse
-func (client *Client) CdnMigrateRegisterWithContext(ctx context.Context, request *CdnMigrateRegisterRequest, runtime *dara.RuntimeOptions) (_result *CdnMigrateRegisterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.DomainName) {
-		query["DomainName"] = request.DomainName
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("CdnMigrateRegister"),
-		Version:     dara.String("2018-05-10"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &CdnMigrateRegisterResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Transfer a domain name from Alibaba Cloud CDN to DCDN.
-//
-// @param request - ChangeCdnDomainToDcdnRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ChangeCdnDomainToDcdnResponse
-func (client *Client) ChangeCdnDomainToDcdnWithContext(ctx context.Context, request *ChangeCdnDomainToDcdnRequest, runtime *dara.RuntimeOptions) (_result *ChangeCdnDomainToDcdnResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.DomainName) {
-		query["DomainName"] = request.DomainName
-	}
-
-	if !dara.IsNil(request.Operation) {
-		query["Operation"] = request.Operation
-	}
-
-	if !dara.IsNil(request.OwnerAccount) {
-		query["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !dara.IsNil(request.OwnerId) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !dara.IsNil(request.SecurityToken) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("ChangeCdnDomainToDcdn"),
-		Version:     dara.String("2018-05-10"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &ChangeCdnDomainToDcdnResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
 // Checks whether a domain name exists.
 //
 // @param request - CheckCdnDomainExistRequest
@@ -781,9 +701,11 @@ func (client *Client) ChangeCdnDomainToDcdnWithContext(ctx context.Context, requ
 //
 // @return CheckCdnDomainExistResponse
 func (client *Client) CheckCdnDomainExistWithContext(ctx context.Context, request *CheckCdnDomainExistRequest, runtime *dara.RuntimeOptions) (_result *CheckCdnDomainExistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -835,9 +757,11 @@ func (client *Client) CheckCdnDomainExistWithContext(ctx context.Context, reques
 //
 // @return CheckCdnDomainICPResponse
 func (client *Client) CheckCdnDomainICPWithContext(ctx context.Context, request *CheckCdnDomainICPRequest, runtime *dara.RuntimeOptions) (_result *CheckCdnDomainICPResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -893,9 +817,11 @@ func (client *Client) CheckCdnDomainICPWithContext(ctx context.Context, request 
 //
 // @return CreateCdnCertificateSigningRequestResponse
 func (client *Client) CreateCdnCertificateSigningRequestWithContext(ctx context.Context, request *CreateCdnCertificateSigningRequestRequest, runtime *dara.RuntimeOptions) (_result *CreateCdnCertificateSigningRequestResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.City) {
@@ -967,9 +893,11 @@ func (client *Client) CreateCdnCertificateSigningRequestWithContext(ctx context.
 //
 // @return CreateCdnDeliverTaskResponse
 func (client *Client) CreateCdnDeliverTaskWithContext(ctx context.Context, request *CreateCdnDeliverTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateCdnDeliverTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Deliver) {
@@ -1031,9 +959,11 @@ func (client *Client) CreateCdnDeliverTaskWithContext(ctx context.Context, reque
 //
 // @return CreateCdnSubTaskResponse
 func (client *Client) CreateCdnSubTaskWithContext(ctx context.Context, request *CreateCdnSubTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateCdnSubTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -1081,9 +1011,11 @@ func (client *Client) CreateCdnSubTaskWithContext(ctx context.Context, request *
 //
 // @return CreateRealTimeLogDeliveryResponse
 func (client *Client) CreateRealTimeLogDeliveryWithContext(ctx context.Context, request *CreateRealTimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *CreateRealTimeLogDeliveryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1125,9 +1057,11 @@ func (client *Client) CreateRealTimeLogDeliveryWithContext(ctx context.Context, 
 //
 // @return CreateUsageDetailDataExportTaskResponse
 func (client *Client) CreateUsageDetailDataExportTaskWithContext(ctx context.Context, request *CreateUsageDetailDataExportTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateUsageDetailDataExportTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainNames) {
@@ -1197,9 +1131,11 @@ func (client *Client) CreateUsageDetailDataExportTaskWithContext(ctx context.Con
 //
 // @return CreateUserUsageDataExportTaskResponse
 func (client *Client) CreateUserUsageDataExportTaskWithContext(ctx context.Context, request *CreateUserUsageDataExportTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateUserUsageDataExportTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -1255,9 +1191,11 @@ func (client *Client) CreateUserUsageDataExportTaskWithContext(ctx context.Conte
 //
 // @return DeleteCdnDeliverTaskResponse
 func (client *Client) DeleteCdnDeliverTaskWithContext(ctx context.Context, request *DeleteCdnDeliverTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteCdnDeliverTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeliverId) {
@@ -1305,9 +1243,11 @@ func (client *Client) DeleteCdnDeliverTaskWithContext(ctx context.Context, reque
 //
 // @return DeleteCdnDomainResponse
 func (client *Client) DeleteCdnDomainWithContext(ctx context.Context, request *DeleteCdnDomainRequest, runtime *dara.RuntimeOptions) (_result *DeleteCdnDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -1355,9 +1295,11 @@ func (client *Client) DeleteCdnDomainWithContext(ctx context.Context, request *D
 //
 // @return DeleteCustomDomainSampleRateResponse
 func (client *Client) DeleteCustomDomainSampleRateWithContext(ctx context.Context, request *DeleteCustomDomainSampleRateRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomDomainSampleRateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DomainNames) {
@@ -1397,9 +1339,11 @@ func (client *Client) DeleteCustomDomainSampleRateWithContext(ctx context.Contex
 //
 // @return DeleteFCTriggerResponse
 func (client *Client) DeleteFCTriggerWithContext(ctx context.Context, request *DeleteFCTriggerRequest, runtime *dara.RuntimeOptions) (_result *DeleteFCTriggerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TriggerARN) {
@@ -1443,9 +1387,11 @@ func (client *Client) DeleteFCTriggerWithContext(ctx context.Context, request *D
 //
 // @return DeleteRealTimeLogLogstoreResponse
 func (client *Client) DeleteRealTimeLogLogstoreWithContext(ctx context.Context, request *DeleteRealTimeLogLogstoreRequest, runtime *dara.RuntimeOptions) (_result *DeleteRealTimeLogLogstoreResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1485,9 +1431,11 @@ func (client *Client) DeleteRealTimeLogLogstoreWithContext(ctx context.Context, 
 //
 // @return DeleteRealtimeLogDeliveryResponse
 func (client *Client) DeleteRealtimeLogDeliveryWithContext(ctx context.Context, request *DeleteRealtimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *DeleteRealtimeLogDeliveryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1527,9 +1475,11 @@ func (client *Client) DeleteRealtimeLogDeliveryWithContext(ctx context.Context, 
 //
 // @return DeleteSpecificConfigResponse
 func (client *Client) DeleteSpecificConfigWithContext(ctx context.Context, request *DeleteSpecificConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteSpecificConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigId) {
@@ -1585,9 +1535,11 @@ func (client *Client) DeleteSpecificConfigWithContext(ctx context.Context, reque
 //
 // @return DeleteSpecificStagingConfigResponse
 func (client *Client) DeleteSpecificStagingConfigWithContext(ctx context.Context, request *DeleteSpecificStagingConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteSpecificStagingConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigId) {
@@ -1643,9 +1595,11 @@ func (client *Client) DeleteSpecificStagingConfigWithContext(ctx context.Context
 //
 // @return DeleteUsageDetailDataExportTaskResponse
 func (client *Client) DeleteUsageDetailDataExportTaskWithContext(ctx context.Context, request *DeleteUsageDetailDataExportTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteUsageDetailDataExportTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -1689,9 +1643,11 @@ func (client *Client) DeleteUsageDetailDataExportTaskWithContext(ctx context.Con
 //
 // @return DeleteUserUsageDataExportTaskResponse
 func (client *Client) DeleteUserUsageDataExportTaskWithContext(ctx context.Context, request *DeleteUserUsageDataExportTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteUserUsageDataExportTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -1735,9 +1691,11 @@ func (client *Client) DeleteUserUsageDataExportTaskWithContext(ctx context.Conte
 //
 // @return DescribeBlockedRegionsResponse
 func (client *Client) DescribeBlockedRegionsWithContext(ctx context.Context, request *DescribeBlockedRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeBlockedRegionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1777,9 +1735,11 @@ func (client *Client) DescribeBlockedRegionsWithContext(ctx context.Context, req
 //
 // @return DescribeCdnCertificateDetailResponse
 func (client *Client) DescribeCdnCertificateDetailWithContext(ctx context.Context, request *DescribeCdnCertificateDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnCertificateDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertName) {
@@ -1827,9 +1787,11 @@ func (client *Client) DescribeCdnCertificateDetailWithContext(ctx context.Contex
 //
 // @return DescribeCdnCertificateDetailByIdResponse
 func (client *Client) DescribeCdnCertificateDetailByIdWithContext(ctx context.Context, request *DescribeCdnCertificateDetailByIdRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnCertificateDetailByIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertId) {
@@ -1887,9 +1849,11 @@ func (client *Client) DescribeCdnCertificateDetailByIdWithContext(ctx context.Co
 //
 // @return DescribeCdnCertificateListResponse
 func (client *Client) DescribeCdnCertificateListWithContext(ctx context.Context, request *DescribeCdnCertificateListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnCertificateListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -1937,9 +1901,11 @@ func (client *Client) DescribeCdnCertificateListWithContext(ctx context.Context,
 //
 // @return DescribeCdnConditionIPBInfoResponse
 func (client *Client) DescribeCdnConditionIPBInfoWithContext(ctx context.Context, request *DescribeCdnConditionIPBInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnConditionIPBInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DataId) {
@@ -1983,9 +1949,11 @@ func (client *Client) DescribeCdnConditionIPBInfoWithContext(ctx context.Context
 //
 // @return DescribeCdnDeletedDomainsResponse
 func (client *Client) DescribeCdnDeletedDomainsWithContext(ctx context.Context, request *DescribeCdnDeletedDomainsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnDeletedDomainsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -2033,9 +2001,11 @@ func (client *Client) DescribeCdnDeletedDomainsWithContext(ctx context.Context, 
 //
 // @return DescribeCdnDeliverListResponse
 func (client *Client) DescribeCdnDeliverListWithContext(ctx context.Context, request *DescribeCdnDeliverListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnDeliverListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeliverId) {
@@ -2075,9 +2045,11 @@ func (client *Client) DescribeCdnDeliverListWithContext(ctx context.Context, req
 //
 // @return DescribeCdnDomainAtoaLogsResponse
 func (client *Client) DescribeCdnDomainAtoaLogsWithContext(ctx context.Context, request *DescribeCdnDomainAtoaLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnDomainAtoaLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -2137,9 +2109,11 @@ func (client *Client) DescribeCdnDomainAtoaLogsWithContext(ctx context.Context, 
 //
 // @return DescribeCdnDomainByCertificateResponse
 func (client *Client) DescribeCdnDomainByCertificateWithContext(ctx context.Context, request *DescribeCdnDomainByCertificateRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnDomainByCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Exact) {
@@ -2191,9 +2165,11 @@ func (client *Client) DescribeCdnDomainByCertificateWithContext(ctx context.Cont
 //
 // @return DescribeCdnDomainConfigsResponse
 func (client *Client) DescribeCdnDomainConfigsWithContext(ctx context.Context, request *DescribeCdnDomainConfigsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnDomainConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigId) {
@@ -2253,9 +2229,11 @@ func (client *Client) DescribeCdnDomainConfigsWithContext(ctx context.Context, r
 //
 // @return DescribeCdnDomainDetailResponse
 func (client *Client) DescribeCdnDomainDetailWithContext(ctx context.Context, request *DescribeCdnDomainDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnDomainDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -2313,9 +2291,11 @@ func (client *Client) DescribeCdnDomainDetailWithContext(ctx context.Context, re
 //
 // @return DescribeCdnDomainLogsResponse
 func (client *Client) DescribeCdnDomainLogsWithContext(ctx context.Context, request *DescribeCdnDomainLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnDomainLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -2371,9 +2351,11 @@ func (client *Client) DescribeCdnDomainLogsWithContext(ctx context.Context, requ
 //
 // @return DescribeCdnDomainLogsExTtlResponse
 func (client *Client) DescribeCdnDomainLogsExTtlWithContext(ctx context.Context, request *DescribeCdnDomainLogsExTtlRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnDomainLogsExTtlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -2433,9 +2415,11 @@ func (client *Client) DescribeCdnDomainLogsExTtlWithContext(ctx context.Context,
 //
 // @return DescribeCdnDomainStagingConfigResponse
 func (client *Client) DescribeCdnDomainStagingConfigWithContext(ctx context.Context, request *DescribeCdnDomainStagingConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnDomainStagingConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -2491,9 +2475,11 @@ func (client *Client) DescribeCdnDomainStagingConfigWithContext(ctx context.Cont
 //
 // @return DescribeCdnFullDomainsBlockIPConfigResponse
 func (client *Client) DescribeCdnFullDomainsBlockIPConfigWithContext(ctx context.Context, request *DescribeCdnFullDomainsBlockIPConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnFullDomainsBlockIPConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.IPList) {
@@ -2547,9 +2533,11 @@ func (client *Client) DescribeCdnFullDomainsBlockIPConfigWithContext(ctx context
 //
 // @return DescribeCdnFullDomainsBlockIPHistoryResponse
 func (client *Client) DescribeCdnFullDomainsBlockIPHistoryWithContext(ctx context.Context, request *DescribeCdnFullDomainsBlockIPHistoryRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnFullDomainsBlockIPHistoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -2601,9 +2589,11 @@ func (client *Client) DescribeCdnFullDomainsBlockIPHistoryWithContext(ctx contex
 //
 // @return DescribeCdnHttpsDomainListResponse
 func (client *Client) DescribeCdnHttpsDomainListWithContext(ctx context.Context, request *DescribeCdnHttpsDomainListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnHttpsDomainListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -2643,52 +2633,6 @@ func (client *Client) DescribeCdnHttpsDomainListWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the registration status of the dynamic routing feature of Dynamic Content Delivery Network (DCDN) for a domain name that is added to Alibaba Cloud CDN.
-//
-// Description:
-//
-// >  If a domain name is not transferred from Alibaba Cloud CDN to DCDN after it is registered in the routing center of DCDN, the registration information is retained for only one day.
-//
-// @param request - DescribeCdnMigrateRegisterStatusRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeCdnMigrateRegisterStatusResponse
-func (client *Client) DescribeCdnMigrateRegisterStatusWithContext(ctx context.Context, request *DescribeCdnMigrateRegisterStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnMigrateRegisterStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.DomainName) {
-		query["DomainName"] = request.DomainName
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("DescribeCdnMigrateRegisterStatus"),
-		Version:     dara.String("2018-05-10"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &DescribeCdnMigrateRegisterStatusResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
 // Queries the code of a commodity by account UID.
 //
 // @param request - DescribeCdnOrderCommodityCodeRequest
@@ -2697,9 +2641,11 @@ func (client *Client) DescribeCdnMigrateRegisterStatusWithContext(ctx context.Co
 //
 // @return DescribeCdnOrderCommodityCodeResponse
 func (client *Client) DescribeCdnOrderCommodityCodeWithContext(ctx context.Context, request *DescribeCdnOrderCommodityCodeRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnOrderCommodityCodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CommodityCode) {
@@ -2753,9 +2699,11 @@ func (client *Client) DescribeCdnOrderCommodityCodeWithContext(ctx context.Conte
 //
 // @return DescribeCdnRegionAndIspResponse
 func (client *Client) DescribeCdnRegionAndIspWithContext(ctx context.Context, request *DescribeCdnRegionAndIspRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnRegionAndIspResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -2803,9 +2751,11 @@ func (client *Client) DescribeCdnRegionAndIspWithContext(ctx context.Context, re
 //
 // @return DescribeCdnReportResponse
 func (client *Client) DescribeCdnReportWithContext(ctx context.Context, request *DescribeCdnReportRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnReportResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Area) {
@@ -2875,9 +2825,11 @@ func (client *Client) DescribeCdnReportWithContext(ctx context.Context, request 
 //
 // @return DescribeCdnReportListResponse
 func (client *Client) DescribeCdnReportListWithContext(ctx context.Context, request *DescribeCdnReportListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnReportListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ReportId) {
@@ -2921,9 +2873,11 @@ func (client *Client) DescribeCdnReportListWithContext(ctx context.Context, requ
 //
 // @return DescribeCdnSMCertificateDetailResponse
 func (client *Client) DescribeCdnSMCertificateDetailWithContext(ctx context.Context, request *DescribeCdnSMCertificateDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnSMCertificateDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertIdentifier) {
@@ -2975,9 +2929,11 @@ func (client *Client) DescribeCdnSMCertificateDetailWithContext(ctx context.Cont
 //
 // @return DescribeCdnSMCertificateListResponse
 func (client *Client) DescribeCdnSMCertificateListWithContext(ctx context.Context, request *DescribeCdnSMCertificateListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnSMCertificateListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -3025,9 +2981,11 @@ func (client *Client) DescribeCdnSMCertificateListWithContext(ctx context.Contex
 //
 // @return DescribeCdnSSLCertificateListResponse
 func (client *Client) DescribeCdnSSLCertificateListWithContext(ctx context.Context, request *DescribeCdnSSLCertificateListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnSSLCertificateListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -3087,9 +3045,11 @@ func (client *Client) DescribeCdnSSLCertificateListWithContext(ctx context.Conte
 //
 // @return DescribeCdnSecFuncInfoResponse
 func (client *Client) DescribeCdnSecFuncInfoWithContext(ctx context.Context, request *DescribeCdnSecFuncInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnSecFuncInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -3137,9 +3097,11 @@ func (client *Client) DescribeCdnSecFuncInfoWithContext(ctx context.Context, req
 //
 // @return DescribeCdnServiceResponse
 func (client *Client) DescribeCdnServiceWithContext(ctx context.Context, request *DescribeCdnServiceRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -3183,9 +3145,11 @@ func (client *Client) DescribeCdnServiceWithContext(ctx context.Context, request
 //
 // @return DescribeCdnTypesResponse
 func (client *Client) DescribeCdnTypesWithContext(ctx context.Context, request *DescribeCdnTypesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnTypesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -3239,9 +3203,11 @@ func (client *Client) DescribeCdnTypesWithContext(ctx context.Context, request *
 //
 // @return DescribeCdnUserBillHistoryResponse
 func (client *Client) DescribeCdnUserBillHistoryWithContext(ctx context.Context, request *DescribeCdnUserBillHistoryRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnUserBillHistoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -3301,9 +3267,11 @@ func (client *Client) DescribeCdnUserBillHistoryWithContext(ctx context.Context,
 //
 // @return DescribeCdnUserBillPredictionResponse
 func (client *Client) DescribeCdnUserBillPredictionWithContext(ctx context.Context, request *DescribeCdnUserBillPredictionRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnUserBillPredictionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Area) {
@@ -3359,9 +3327,11 @@ func (client *Client) DescribeCdnUserBillPredictionWithContext(ctx context.Conte
 //
 // @return DescribeCdnUserBillTypeResponse
 func (client *Client) DescribeCdnUserBillTypeWithContext(ctx context.Context, request *DescribeCdnUserBillTypeRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnUserBillTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -3409,9 +3379,11 @@ func (client *Client) DescribeCdnUserBillTypeWithContext(ctx context.Context, re
 //
 // @return DescribeCdnUserConfigsResponse
 func (client *Client) DescribeCdnUserConfigsWithContext(ctx context.Context, request *DescribeCdnUserConfigsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnUserConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FunctionName) {
@@ -3455,9 +3427,11 @@ func (client *Client) DescribeCdnUserConfigsWithContext(ctx context.Context, req
 //
 // @return DescribeCdnUserDomainsByFuncResponse
 func (client *Client) DescribeCdnUserDomainsByFuncWithContext(ctx context.Context, request *DescribeCdnUserDomainsByFuncRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnUserDomainsByFuncResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FuncId) {
@@ -3513,9 +3487,11 @@ func (client *Client) DescribeCdnUserDomainsByFuncWithContext(ctx context.Contex
 //
 // @return DescribeCdnUserQuotaResponse
 func (client *Client) DescribeCdnUserQuotaWithContext(ctx context.Context, request *DescribeCdnUserQuotaRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnUserQuotaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -3563,9 +3539,11 @@ func (client *Client) DescribeCdnUserQuotaWithContext(ctx context.Context, reque
 //
 // @return DescribeCdnUserResourcePackageResponse
 func (client *Client) DescribeCdnUserResourcePackageWithContext(ctx context.Context, request *DescribeCdnUserResourcePackageRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnUserResourcePackageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -3617,9 +3595,11 @@ func (client *Client) DescribeCdnUserResourcePackageWithContext(ctx context.Cont
 //
 // @return DescribeCdnWafDomainResponse
 func (client *Client) DescribeCdnWafDomainWithContext(ctx context.Context, request *DescribeCdnWafDomainRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnWafDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -3673,9 +3653,11 @@ func (client *Client) DescribeCdnWafDomainWithContext(ctx context.Context, reque
 //
 // @return DescribeCertificateInfoByIDResponse
 func (client *Client) DescribeCertificateInfoByIDWithContext(ctx context.Context, request *DescribeCertificateInfoByIDRequest, runtime *dara.RuntimeOptions) (_result *DescribeCertificateInfoByIDResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3711,9 +3693,11 @@ func (client *Client) DescribeCertificateInfoByIDWithContext(ctx context.Context
 //
 // @return DescribeCustomDomainSampleRateResponse
 func (client *Client) DescribeCustomDomainSampleRateWithContext(ctx context.Context, request *DescribeCustomDomainSampleRateRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomDomainSampleRateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3753,9 +3737,11 @@ func (client *Client) DescribeCustomDomainSampleRateWithContext(ctx context.Cont
 //
 // @return DescribeCustomLogConfigResponse
 func (client *Client) DescribeCustomLogConfigWithContext(ctx context.Context, request *DescribeCustomLogConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomLogConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3801,9 +3787,11 @@ func (client *Client) DescribeCustomLogConfigWithContext(ctx context.Context, re
 //
 // @return DescribeDomainAverageResponseTimeResponse
 func (client *Client) DescribeDomainAverageResponseTimeWithContext(ctx context.Context, request *DescribeDomainAverageResponseTimeRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainAverageResponseTimeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -3891,9 +3879,11 @@ func (client *Client) DescribeDomainAverageResponseTimeWithContext(ctx context.C
 //
 // @return DescribeDomainBpsDataResponse
 func (client *Client) DescribeDomainBpsDataWithContext(ctx context.Context, request *DescribeDomainBpsDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainBpsDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -3973,9 +3963,11 @@ func (client *Client) DescribeDomainBpsDataWithContext(ctx context.Context, requ
 //
 // @return DescribeDomainBpsDataByLayerResponse
 func (client *Client) DescribeDomainBpsDataByLayerWithContext(ctx context.Context, request *DescribeDomainBpsDataByLayerRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainBpsDataByLayerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -4049,9 +4041,11 @@ func (client *Client) DescribeDomainBpsDataByLayerWithContext(ctx context.Contex
 //
 // @return DescribeDomainBpsDataByTimeStampResponse
 func (client *Client) DescribeDomainBpsDataByTimeStampWithContext(ctx context.Context, request *DescribeDomainBpsDataByTimeStampRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainBpsDataByTimeStampResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -4113,9 +4107,11 @@ func (client *Client) DescribeDomainBpsDataByTimeStampWithContext(ctx context.Co
 //
 // @return DescribeDomainCcActivityLogResponse
 func (client *Client) DescribeDomainCcActivityLogWithContext(ctx context.Context, request *DescribeDomainCcActivityLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainCcActivityLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -4187,9 +4183,11 @@ func (client *Client) DescribeDomainCcActivityLogWithContext(ctx context.Context
 //
 // @return DescribeDomainCertificateInfoResponse
 func (client *Client) DescribeDomainCertificateInfoWithContext(ctx context.Context, request *DescribeDomainCertificateInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainCertificateInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -4229,9 +4227,11 @@ func (client *Client) DescribeDomainCertificateInfoWithContext(ctx context.Conte
 //
 // @return DescribeDomainCnameResponse
 func (client *Client) DescribeDomainCnameWithContext(ctx context.Context, request *DescribeDomainCnameRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainCnameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -4275,9 +4275,11 @@ func (client *Client) DescribeDomainCnameWithContext(ctx context.Context, reques
 //
 // @return DescribeDomainCustomLogConfigResponse
 func (client *Client) DescribeDomainCustomLogConfigWithContext(ctx context.Context, request *DescribeDomainCustomLogConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainCustomLogConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -4317,9 +4319,11 @@ func (client *Client) DescribeDomainCustomLogConfigWithContext(ctx context.Conte
 //
 // @return DescribeDomainDetailDataByLayerResponse
 func (client *Client) DescribeDomainDetailDataByLayerWithContext(ctx context.Context, request *DescribeDomainDetailDataByLayerRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainDetailDataByLayerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -4375,9 +4379,11 @@ func (client *Client) DescribeDomainDetailDataByLayerWithContext(ctx context.Con
 //
 // @return DescribeDomainHitRateDataResponse
 func (client *Client) DescribeDomainHitRateDataWithContext(ctx context.Context, request *DescribeDomainHitRateDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainHitRateDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -4449,9 +4455,11 @@ func (client *Client) DescribeDomainHitRateDataWithContext(ctx context.Context, 
 //
 // @return DescribeDomainHttpCodeDataResponse
 func (client *Client) DescribeDomainHttpCodeDataWithContext(ctx context.Context, request *DescribeDomainHttpCodeDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainHttpCodeDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -4531,9 +4539,11 @@ func (client *Client) DescribeDomainHttpCodeDataWithContext(ctx context.Context,
 //
 // @return DescribeDomainHttpCodeDataByLayerResponse
 func (client *Client) DescribeDomainHttpCodeDataByLayerWithContext(ctx context.Context, request *DescribeDomainHttpCodeDataByLayerRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainHttpCodeDataByLayerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -4607,9 +4617,11 @@ func (client *Client) DescribeDomainHttpCodeDataByLayerWithContext(ctx context.C
 //
 // @return DescribeDomainISPDataResponse
 func (client *Client) DescribeDomainISPDataWithContext(ctx context.Context, request *DescribeDomainISPDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainISPDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -4679,9 +4691,11 @@ func (client *Client) DescribeDomainISPDataWithContext(ctx context.Context, requ
 //
 // @return DescribeDomainMax95BpsDataResponse
 func (client *Client) DescribeDomainMax95BpsDataWithContext(ctx context.Context, request *DescribeDomainMax95BpsDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainMax95BpsDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Cycle) {
@@ -4749,9 +4763,11 @@ func (client *Client) DescribeDomainMax95BpsDataWithContext(ctx context.Context,
 //
 // @return DescribeDomainMultiUsageDataResponse
 func (client *Client) DescribeDomainMultiUsageDataWithContext(ctx context.Context, request *DescribeDomainMultiUsageDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainMultiUsageDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -4815,9 +4831,11 @@ func (client *Client) DescribeDomainMultiUsageDataWithContext(ctx context.Contex
 //
 // @return DescribeDomainPathDataResponse
 func (client *Client) DescribeDomainPathDataWithContext(ctx context.Context, request *DescribeDomainPathDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainPathDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -4861,9 +4879,11 @@ func (client *Client) DescribeDomainPathDataWithContext(ctx context.Context, req
 //
 // @return DescribeDomainPvDataResponse
 func (client *Client) DescribeDomainPvDataWithContext(ctx context.Context, request *DescribeDomainPvDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainPvDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -4931,9 +4951,11 @@ func (client *Client) DescribeDomainPvDataWithContext(ctx context.Context, reque
 //
 // @return DescribeDomainQpsDataResponse
 func (client *Client) DescribeDomainQpsDataWithContext(ctx context.Context, request *DescribeDomainQpsDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainQpsDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -5013,9 +5035,11 @@ func (client *Client) DescribeDomainQpsDataWithContext(ctx context.Context, requ
 //
 // @return DescribeDomainQpsDataByLayerResponse
 func (client *Client) DescribeDomainQpsDataByLayerWithContext(ctx context.Context, request *DescribeDomainQpsDataByLayerRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainQpsDataByLayerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -5097,9 +5121,11 @@ func (client *Client) DescribeDomainQpsDataByLayerWithContext(ctx context.Contex
 //
 // @return DescribeDomainRealTimeBpsDataResponse
 func (client *Client) DescribeDomainRealTimeBpsDataWithContext(ctx context.Context, request *DescribeDomainRealTimeBpsDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainRealTimeBpsDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -5157,9 +5183,11 @@ func (client *Client) DescribeDomainRealTimeBpsDataWithContext(ctx context.Conte
 //
 // @return DescribeDomainRealTimeByteHitRateDataResponse
 func (client *Client) DescribeDomainRealTimeByteHitRateDataWithContext(ctx context.Context, request *DescribeDomainRealTimeByteHitRateDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainRealTimeByteHitRateDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -5201,9 +5229,11 @@ func (client *Client) DescribeDomainRealTimeByteHitRateDataWithContext(ctx conte
 //
 // @return DescribeDomainRealTimeDetailDataResponse
 func (client *Client) DescribeDomainRealTimeDetailDataWithContext(ctx context.Context, request *DescribeDomainRealTimeDetailDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainRealTimeDetailDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -5259,9 +5289,11 @@ func (client *Client) DescribeDomainRealTimeDetailDataWithContext(ctx context.Co
 //
 // @return DescribeDomainRealTimeHttpCodeDataResponse
 func (client *Client) DescribeDomainRealTimeHttpCodeDataWithContext(ctx context.Context, request *DescribeDomainRealTimeHttpCodeDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainRealTimeHttpCodeDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -5337,9 +5369,11 @@ func (client *Client) DescribeDomainRealTimeHttpCodeDataWithContext(ctx context.
 //
 // @return DescribeDomainRealTimeQpsDataResponse
 func (client *Client) DescribeDomainRealTimeQpsDataWithContext(ctx context.Context, request *DescribeDomainRealTimeQpsDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainRealTimeQpsDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -5399,9 +5433,11 @@ func (client *Client) DescribeDomainRealTimeQpsDataWithContext(ctx context.Conte
 //
 // @return DescribeDomainRealTimeReqHitRateDataResponse
 func (client *Client) DescribeDomainRealTimeReqHitRateDataWithContext(ctx context.Context, request *DescribeDomainRealTimeReqHitRateDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainRealTimeReqHitRateDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -5457,9 +5493,11 @@ func (client *Client) DescribeDomainRealTimeReqHitRateDataWithContext(ctx contex
 //
 // @return DescribeDomainRealTimeSrcBpsDataResponse
 func (client *Client) DescribeDomainRealTimeSrcBpsDataWithContext(ctx context.Context, request *DescribeDomainRealTimeSrcBpsDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainRealTimeSrcBpsDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -5527,9 +5565,11 @@ func (client *Client) DescribeDomainRealTimeSrcBpsDataWithContext(ctx context.Co
 //
 // @return DescribeDomainRealTimeSrcHttpCodeDataResponse
 func (client *Client) DescribeDomainRealTimeSrcHttpCodeDataWithContext(ctx context.Context, request *DescribeDomainRealTimeSrcHttpCodeDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainRealTimeSrcHttpCodeDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -5597,9 +5637,11 @@ func (client *Client) DescribeDomainRealTimeSrcHttpCodeDataWithContext(ctx conte
 //
 // @return DescribeDomainRealTimeSrcTrafficDataResponse
 func (client *Client) DescribeDomainRealTimeSrcTrafficDataWithContext(ctx context.Context, request *DescribeDomainRealTimeSrcTrafficDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainRealTimeSrcTrafficDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -5667,9 +5709,11 @@ func (client *Client) DescribeDomainRealTimeSrcTrafficDataWithContext(ctx contex
 //
 // @return DescribeDomainRealTimeTrafficDataResponse
 func (client *Client) DescribeDomainRealTimeTrafficDataWithContext(ctx context.Context, request *DescribeDomainRealTimeTrafficDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainRealTimeTrafficDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -5729,9 +5773,11 @@ func (client *Client) DescribeDomainRealTimeTrafficDataWithContext(ctx context.C
 //
 // @return DescribeDomainRealtimeLogDeliveryResponse
 func (client *Client) DescribeDomainRealtimeLogDeliveryWithContext(ctx context.Context, request *DescribeDomainRealtimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainRealtimeLogDeliveryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -5777,9 +5823,11 @@ func (client *Client) DescribeDomainRealtimeLogDeliveryWithContext(ctx context.C
 //
 // @return DescribeDomainRegionDataResponse
 func (client *Client) DescribeDomainRegionDataWithContext(ctx context.Context, request *DescribeDomainRegionDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainRegionDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -5847,9 +5895,11 @@ func (client *Client) DescribeDomainRegionDataWithContext(ctx context.Context, r
 //
 // @return DescribeDomainReqHitRateDataResponse
 func (client *Client) DescribeDomainReqHitRateDataWithContext(ctx context.Context, request *DescribeDomainReqHitRateDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainReqHitRateDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -5921,9 +5971,11 @@ func (client *Client) DescribeDomainReqHitRateDataWithContext(ctx context.Contex
 //
 // @return DescribeDomainSrcBpsDataResponse
 func (client *Client) DescribeDomainSrcBpsDataWithContext(ctx context.Context, request *DescribeDomainSrcBpsDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainSrcBpsDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -5995,9 +6047,11 @@ func (client *Client) DescribeDomainSrcBpsDataWithContext(ctx context.Context, r
 //
 // @return DescribeDomainSrcHttpCodeDataResponse
 func (client *Client) DescribeDomainSrcHttpCodeDataWithContext(ctx context.Context, request *DescribeDomainSrcHttpCodeDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainSrcHttpCodeDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -6069,9 +6123,11 @@ func (client *Client) DescribeDomainSrcHttpCodeDataWithContext(ctx context.Conte
 //
 // @return DescribeDomainSrcQpsDataResponse
 func (client *Client) DescribeDomainSrcQpsDataWithContext(ctx context.Context, request *DescribeDomainSrcQpsDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainSrcQpsDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -6131,9 +6187,11 @@ func (client *Client) DescribeDomainSrcQpsDataWithContext(ctx context.Context, r
 //
 // @return DescribeDomainSrcTopUrlVisitResponse
 func (client *Client) DescribeDomainSrcTopUrlVisitWithContext(ctx context.Context, request *DescribeDomainSrcTopUrlVisitRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainSrcTopUrlVisitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -6205,9 +6263,11 @@ func (client *Client) DescribeDomainSrcTopUrlVisitWithContext(ctx context.Contex
 //
 // @return DescribeDomainSrcTrafficDataResponse
 func (client *Client) DescribeDomainSrcTrafficDataWithContext(ctx context.Context, request *DescribeDomainSrcTrafficDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainSrcTrafficDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -6269,9 +6329,11 @@ func (client *Client) DescribeDomainSrcTrafficDataWithContext(ctx context.Contex
 //
 // @return DescribeDomainTopClientIpVisitResponse
 func (client *Client) DescribeDomainTopClientIpVisitWithContext(ctx context.Context, request *DescribeDomainTopClientIpVisitRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainTopClientIpVisitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -6343,9 +6405,11 @@ func (client *Client) DescribeDomainTopClientIpVisitWithContext(ctx context.Cont
 //
 // @return DescribeDomainTopReferVisitResponse
 func (client *Client) DescribeDomainTopReferVisitWithContext(ctx context.Context, request *DescribeDomainTopReferVisitRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainTopReferVisitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -6409,9 +6473,11 @@ func (client *Client) DescribeDomainTopReferVisitWithContext(ctx context.Context
 //
 // @return DescribeDomainTopUrlVisitResponse
 func (client *Client) DescribeDomainTopUrlVisitWithContext(ctx context.Context, request *DescribeDomainTopUrlVisitRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainTopUrlVisitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -6483,9 +6549,11 @@ func (client *Client) DescribeDomainTopUrlVisitWithContext(ctx context.Context, 
 //
 // @return DescribeDomainTrafficDataResponse
 func (client *Client) DescribeDomainTrafficDataWithContext(ctx context.Context, request *DescribeDomainTrafficDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainTrafficDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -6561,9 +6629,11 @@ func (client *Client) DescribeDomainTrafficDataWithContext(ctx context.Context, 
 //
 // @return DescribeDomainUsageDataResponse
 func (client *Client) DescribeDomainUsageDataWithContext(ctx context.Context, request *DescribeDomainUsageDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainUsageDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Area) {
@@ -6647,9 +6717,11 @@ func (client *Client) DescribeDomainUsageDataWithContext(ctx context.Context, re
 //
 // @return DescribeDomainUvDataResponse
 func (client *Client) DescribeDomainUvDataWithContext(ctx context.Context, request *DescribeDomainUvDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainUvDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -6701,9 +6773,11 @@ func (client *Client) DescribeDomainUvDataWithContext(ctx context.Context, reque
 //
 // @return DescribeDomainVerifyDataResponse
 func (client *Client) DescribeDomainVerifyDataWithContext(ctx context.Context, request *DescribeDomainVerifyDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainVerifyDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -6751,9 +6825,11 @@ func (client *Client) DescribeDomainVerifyDataWithContext(ctx context.Context, r
 //
 // @return DescribeDomainsBySourceResponse
 func (client *Client) DescribeDomainsBySourceWithContext(ctx context.Context, request *DescribeDomainsBySourceRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainsBySourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -6809,9 +6885,11 @@ func (client *Client) DescribeDomainsBySourceWithContext(ctx context.Context, re
 //
 // @return DescribeDomainsUsageByDayResponse
 func (client *Client) DescribeDomainsUsageByDayWithContext(ctx context.Context, request *DescribeDomainsUsageByDayRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainsUsageByDayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -6863,9 +6941,11 @@ func (client *Client) DescribeDomainsUsageByDayWithContext(ctx context.Context, 
 //
 // @return DescribeEsExceptionDataResponse
 func (client *Client) DescribeEsExceptionDataWithContext(ctx context.Context, request *DescribeEsExceptionDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeEsExceptionDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -6917,9 +6997,11 @@ func (client *Client) DescribeEsExceptionDataWithContext(ctx context.Context, re
 //
 // @return DescribeEsExecuteDataResponse
 func (client *Client) DescribeEsExecuteDataWithContext(ctx context.Context, request *DescribeEsExecuteDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeEsExecuteDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -6967,9 +7049,11 @@ func (client *Client) DescribeEsExecuteDataWithContext(ctx context.Context, requ
 //
 // @return DescribeFCTriggerResponse
 func (client *Client) DescribeFCTriggerWithContext(ctx context.Context, request *DescribeFCTriggerRequest, runtime *dara.RuntimeOptions) (_result *DescribeFCTriggerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -7005,9 +7089,11 @@ func (client *Client) DescribeFCTriggerWithContext(ctx context.Context, request 
 //
 // @return DescribeIpInfoResponse
 func (client *Client) DescribeIpInfoWithContext(ctx context.Context, request *DescribeIpInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeIpInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IP) {
@@ -7051,9 +7137,11 @@ func (client *Client) DescribeIpInfoWithContext(ctx context.Context, request *De
 //
 // @return DescribeIpStatusResponse
 func (client *Client) DescribeIpStatusWithContext(ctx context.Context, request *DescribeIpStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeIpStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -7095,9 +7183,11 @@ func (client *Client) DescribeIpStatusWithContext(ctx context.Context, request *
 //
 // @return DescribeL2VipsByDomainResponse
 func (client *Client) DescribeL2VipsByDomainWithContext(ctx context.Context, request *DescribeL2VipsByDomainRequest, runtime *dara.RuntimeOptions) (_result *DescribeL2VipsByDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -7151,9 +7241,11 @@ func (client *Client) DescribeL2VipsByDomainWithContext(ctx context.Context, req
 //
 // @return DescribePreloadDetailByIdResponse
 func (client *Client) DescribePreloadDetailByIdWithContext(ctx context.Context, request *DescribePreloadDetailByIdRequest, runtime *dara.RuntimeOptions) (_result *DescribePreloadDetailByIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -7199,9 +7291,11 @@ func (client *Client) DescribePreloadDetailByIdWithContext(ctx context.Context, 
 //
 // @return DescribeRangeDataByLocateAndIspServiceResponse
 func (client *Client) DescribeRangeDataByLocateAndIspServiceWithContext(ctx context.Context, request *DescribeRangeDataByLocateAndIspServiceRequest, runtime *dara.RuntimeOptions) (_result *DescribeRangeDataByLocateAndIspServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainNames) {
@@ -7261,9 +7355,11 @@ func (client *Client) DescribeRangeDataByLocateAndIspServiceWithContext(ctx cont
 //
 // @return DescribeRealtimeDeliveryAccResponse
 func (client *Client) DescribeRealtimeDeliveryAccWithContext(ctx context.Context, request *DescribeRealtimeDeliveryAccRequest, runtime *dara.RuntimeOptions) (_result *DescribeRealtimeDeliveryAccResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -7323,9 +7419,11 @@ func (client *Client) DescribeRealtimeDeliveryAccWithContext(ctx context.Context
 //
 // @return DescribeRefreshQuotaResponse
 func (client *Client) DescribeRefreshQuotaWithContext(ctx context.Context, request *DescribeRefreshQuotaRequest, runtime *dara.RuntimeOptions) (_result *DescribeRefreshQuotaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -7375,9 +7473,11 @@ func (client *Client) DescribeRefreshQuotaWithContext(ctx context.Context, reque
 //
 // @return DescribeRefreshTaskByIdResponse
 func (client *Client) DescribeRefreshTaskByIdWithContext(ctx context.Context, request *DescribeRefreshTaskByIdRequest, runtime *dara.RuntimeOptions) (_result *DescribeRefreshTaskByIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -7429,9 +7529,11 @@ func (client *Client) DescribeRefreshTaskByIdWithContext(ctx context.Context, re
 //
 // @return DescribeRefreshTasksResponse
 func (client *Client) DescribeRefreshTasksWithContext(ctx context.Context, request *DescribeRefreshTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeRefreshTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -7519,9 +7621,11 @@ func (client *Client) DescribeRefreshTasksWithContext(ctx context.Context, reque
 //
 // @return DescribeTagResourcesResponse
 func (client *Client) DescribeTagResourcesWithContext(ctx context.Context, request *DescribeTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceId) {
@@ -7577,9 +7681,11 @@ func (client *Client) DescribeTagResourcesWithContext(ctx context.Context, reque
 //
 // @return DescribeTopDomainsByFlowResponse
 func (client *Client) DescribeTopDomainsByFlowWithContext(ctx context.Context, request *DescribeTopDomainsByFlowRequest, runtime *dara.RuntimeOptions) (_result *DescribeTopDomainsByFlowResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -7627,9 +7733,11 @@ func (client *Client) DescribeTopDomainsByFlowWithContext(ctx context.Context, r
 //
 // @return DescribeUserCdnStatusResponse
 func (client *Client) DescribeUserCdnStatusWithContext(ctx context.Context, request *DescribeUserCdnStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserCdnStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -7673,9 +7781,11 @@ func (client *Client) DescribeUserCdnStatusWithContext(ctx context.Context, requ
 //
 // @return DescribeUserConfigsResponse
 func (client *Client) DescribeUserConfigsWithContext(ctx context.Context, request *DescribeUserConfigsRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -7729,9 +7839,11 @@ func (client *Client) DescribeUserConfigsWithContext(ctx context.Context, reques
 //
 // @return DescribeUserDomainsResponse
 func (client *Client) DescribeUserDomainsWithContext(ctx context.Context, request *DescribeUserDomainsRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserDomainsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CdnType) {
@@ -7831,9 +7943,11 @@ func (client *Client) DescribeUserDomainsWithContext(ctx context.Context, reques
 //
 // @return DescribeUserUsageDataExportTaskResponse
 func (client *Client) DescribeUserUsageDataExportTaskWithContext(ctx context.Context, request *DescribeUserUsageDataExportTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserUsageDataExportTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -7883,9 +7997,11 @@ func (client *Client) DescribeUserUsageDataExportTaskWithContext(ctx context.Con
 //
 // @return DescribeUserUsageDetailDataExportTaskResponse
 func (client *Client) DescribeUserUsageDetailDataExportTaskWithContext(ctx context.Context, request *DescribeUserUsageDetailDataExportTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserUsageDetailDataExportTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -7933,9 +8049,11 @@ func (client *Client) DescribeUserUsageDetailDataExportTaskWithContext(ctx conte
 //
 // @return DescribeUserVipsByDomainResponse
 func (client *Client) DescribeUserVipsByDomainWithContext(ctx context.Context, request *DescribeUserVipsByDomainRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserVipsByDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -7971,9 +8089,11 @@ func (client *Client) DescribeUserVipsByDomainWithContext(ctx context.Context, r
 //
 // @return DescribeVerifyContentResponse
 func (client *Client) DescribeVerifyContentWithContext(ctx context.Context, request *DescribeVerifyContentRequest, runtime *dara.RuntimeOptions) (_result *DescribeVerifyContentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -8017,9 +8137,11 @@ func (client *Client) DescribeVerifyContentWithContext(ctx context.Context, requ
 //
 // @return DisableRealtimeLogDeliveryResponse
 func (client *Client) DisableRealtimeLogDeliveryWithContext(ctx context.Context, request *DisableRealtimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *DisableRealtimeLogDeliveryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -8059,9 +8181,11 @@ func (client *Client) DisableRealtimeLogDeliveryWithContext(ctx context.Context,
 //
 // @return EnableRealtimeLogDeliveryResponse
 func (client *Client) EnableRealtimeLogDeliveryWithContext(ctx context.Context, request *EnableRealtimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *EnableRealtimeLogDeliveryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -8097,9 +8221,11 @@ func (client *Client) EnableRealtimeLogDeliveryWithContext(ctx context.Context, 
 //
 // @return GetGrayDomainFunctionResponse
 func (client *Client) GetGrayDomainFunctionWithContext(ctx context.Context, request *GetGrayDomainFunctionRequest, runtime *dara.RuntimeOptions) (_result *GetGrayDomainFunctionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -8147,9 +8273,11 @@ func (client *Client) GetGrayDomainFunctionWithContext(ctx context.Context, requ
 //
 // @return ListDomainsByLogConfigIdResponse
 func (client *Client) ListDomainsByLogConfigIdWithContext(ctx context.Context, request *ListDomainsByLogConfigIdRequest, runtime *dara.RuntimeOptions) (_result *ListDomainsByLogConfigIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -8189,9 +8317,11 @@ func (client *Client) ListDomainsByLogConfigIdWithContext(ctx context.Context, r
 //
 // @return ListFCTriggerResponse
 func (client *Client) ListFCTriggerWithContext(ctx context.Context, request *ListFCTriggerRequest, runtime *dara.RuntimeOptions) (_result *ListFCTriggerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -8231,9 +8361,11 @@ func (client *Client) ListFCTriggerWithContext(ctx context.Context, request *Lis
 //
 // @return ListRealtimeLogDeliveryDomainsResponse
 func (client *Client) ListRealtimeLogDeliveryDomainsWithContext(ctx context.Context, request *ListRealtimeLogDeliveryDomainsRequest, runtime *dara.RuntimeOptions) (_result *ListRealtimeLogDeliveryDomainsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -8269,9 +8401,11 @@ func (client *Client) ListRealtimeLogDeliveryDomainsWithContext(ctx context.Cont
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NextToken) {
@@ -8335,9 +8469,11 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 //
 // @return ModifyCdnDomainResponse
 func (client *Client) ModifyCdnDomainWithContext(ctx context.Context, request *ModifyCdnDomainRequest, runtime *dara.RuntimeOptions) (_result *ModifyCdnDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -8405,9 +8541,11 @@ func (client *Client) ModifyCdnDomainWithContext(ctx context.Context, request *M
 //
 // @return ModifyCdnDomainOwnerResponse
 func (client *Client) ModifyCdnDomainOwnerWithContext(ctx context.Context, request *ModifyCdnDomainOwnerRequest, runtime *dara.RuntimeOptions) (_result *ModifyCdnDomainOwnerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -8463,9 +8601,11 @@ func (client *Client) ModifyCdnDomainOwnerWithContext(ctx context.Context, reque
 //
 // @return ModifyCdnDomainSchdmByPropertyResponse
 func (client *Client) ModifyCdnDomainSchdmByPropertyWithContext(ctx context.Context, request *ModifyCdnDomainSchdmByPropertyRequest, runtime *dara.RuntimeOptions) (_result *ModifyCdnDomainSchdmByPropertyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -8509,9 +8649,11 @@ func (client *Client) ModifyCdnDomainSchdmByPropertyWithContext(ctx context.Cont
 //
 // @return ModifyCdnServiceResponse
 func (client *Client) ModifyCdnServiceWithContext(ctx context.Context, request *ModifyCdnServiceRequest, runtime *dara.RuntimeOptions) (_result *ModifyCdnServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InternetChargeType) {
@@ -8559,9 +8701,11 @@ func (client *Client) ModifyCdnServiceWithContext(ctx context.Context, request *
 //
 // @return ModifyCustomDomainSampleRateResponse
 func (client *Client) ModifyCustomDomainSampleRateWithContext(ctx context.Context, request *ModifyCustomDomainSampleRateRequest, runtime *dara.RuntimeOptions) (_result *ModifyCustomDomainSampleRateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BaseConfigID) {
@@ -8617,9 +8761,11 @@ func (client *Client) ModifyCustomDomainSampleRateWithContext(ctx context.Contex
 //
 // @return ModifyRealtimeLogDeliveryResponse
 func (client *Client) ModifyRealtimeLogDeliveryWithContext(ctx context.Context, request *ModifyRealtimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *ModifyRealtimeLogDeliveryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -8661,9 +8807,11 @@ func (client *Client) ModifyRealtimeLogDeliveryWithContext(ctx context.Context, 
 //
 // @return OpenCdnServiceResponse
 func (client *Client) OpenCdnServiceWithContext(ctx context.Context, request *OpenCdnServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenCdnServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InternetChargeType) {
@@ -8711,9 +8859,11 @@ func (client *Client) OpenCdnServiceWithContext(ctx context.Context, request *Op
 //
 // @return PublishGrayDomainConfigResponse
 func (client *Client) PublishGrayDomainConfigWithContext(ctx context.Context, request *PublishGrayDomainConfigRequest, runtime *dara.RuntimeOptions) (_result *PublishGrayDomainConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CustomCountryId) {
@@ -8773,9 +8923,11 @@ func (client *Client) PublishGrayDomainConfigWithContext(ctx context.Context, re
 //
 // @return PublishStagingConfigToProductionResponse
 func (client *Client) PublishStagingConfigToProductionWithContext(ctx context.Context, request *PublishStagingConfigToProductionRequest, runtime *dara.RuntimeOptions) (_result *PublishStagingConfigToProductionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -8839,9 +8991,11 @@ func (client *Client) PublishStagingConfigToProductionWithContext(ctx context.Co
 //
 // @return PushObjectCacheResponse
 func (client *Client) PushObjectCacheWithContext(ctx context.Context, request *PushObjectCacheRequest, runtime *dara.RuntimeOptions) (_result *PushObjectCacheResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Area) {
@@ -8909,9 +9063,11 @@ func (client *Client) PushObjectCacheWithContext(ctx context.Context, request *P
 //
 // @return RefreshObjectCacheByCacheTagResponse
 func (client *Client) RefreshObjectCacheByCacheTagWithContext(ctx context.Context, request *RefreshObjectCacheByCacheTagRequest, runtime *dara.RuntimeOptions) (_result *RefreshObjectCacheByCacheTagResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CacheTag) {
@@ -8987,9 +9143,11 @@ func (client *Client) RefreshObjectCacheByCacheTagWithContext(ctx context.Contex
 //
 // @return RefreshObjectCachesResponse
 func (client *Client) RefreshObjectCachesWithContext(ctx context.Context, request *RefreshObjectCachesRequest, runtime *dara.RuntimeOptions) (_result *RefreshObjectCachesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerId) {
@@ -9051,9 +9209,11 @@ func (client *Client) RefreshObjectCachesWithContext(ctx context.Context, reques
 //
 // @return RollbackStagingConfigResponse
 func (client *Client) RollbackStagingConfigWithContext(ctx context.Context, request *RollbackStagingConfigRequest, runtime *dara.RuntimeOptions) (_result *RollbackStagingConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -9097,9 +9257,11 @@ func (client *Client) RollbackStagingConfigWithContext(ctx context.Context, requ
 //
 // @return SetCdnDomainCSRCertificateResponse
 func (client *Client) SetCdnDomainCSRCertificateWithContext(ctx context.Context, request *SetCdnDomainCSRCertificateRequest, runtime *dara.RuntimeOptions) (_result *SetCdnDomainCSRCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -9147,9 +9309,11 @@ func (client *Client) SetCdnDomainCSRCertificateWithContext(ctx context.Context,
 //
 // @return SetCdnDomainSMCertificateResponse
 func (client *Client) SetCdnDomainSMCertificateWithContext(ctx context.Context, request *SetCdnDomainSMCertificateRequest, runtime *dara.RuntimeOptions) (_result *SetCdnDomainSMCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertIdentifier) {
@@ -9211,9 +9375,11 @@ func (client *Client) SetCdnDomainSMCertificateWithContext(ctx context.Context, 
 //
 // @return SetCdnDomainSSLCertificateResponse
 func (client *Client) SetCdnDomainSSLCertificateWithContext(ctx context.Context, request *SetCdnDomainSSLCertificateRequest, runtime *dara.RuntimeOptions) (_result *SetCdnDomainSSLCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertId) {
@@ -9293,9 +9459,11 @@ func (client *Client) SetCdnDomainSSLCertificateWithContext(ctx context.Context,
 //
 // @return SetCdnDomainStagingConfigResponse
 func (client *Client) SetCdnDomainStagingConfigWithContext(ctx context.Context, request *SetCdnDomainStagingConfigRequest, runtime *dara.RuntimeOptions) (_result *SetCdnDomainStagingConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -9347,9 +9515,11 @@ func (client *Client) SetCdnDomainStagingConfigWithContext(ctx context.Context, 
 //
 // @return SetCdnFullDomainsBlockIPResponse
 func (client *Client) SetCdnFullDomainsBlockIPWithContext(ctx context.Context, request *SetCdnFullDomainsBlockIPRequest, runtime *dara.RuntimeOptions) (_result *SetCdnFullDomainsBlockIPResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BlockInterval) {
@@ -9401,9 +9571,11 @@ func (client *Client) SetCdnFullDomainsBlockIPWithContext(ctx context.Context, r
 //
 // @return SetReqHeaderConfigResponse
 func (client *Client) SetReqHeaderConfigWithContext(ctx context.Context, request *SetReqHeaderConfigRequest, runtime *dara.RuntimeOptions) (_result *SetReqHeaderConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigId) {
@@ -9467,9 +9639,11 @@ func (client *Client) SetReqHeaderConfigWithContext(ctx context.Context, request
 //
 // @return SetWaitingRoomConfigResponse
 func (client *Client) SetWaitingRoomConfigWithContext(ctx context.Context, request *SetWaitingRoomConfigRequest, runtime *dara.RuntimeOptions) (_result *SetWaitingRoomConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllowPct) {
@@ -9535,9 +9709,11 @@ func (client *Client) SetWaitingRoomConfigWithContext(ctx context.Context, reque
 //
 // @return StartCdnDomainResponse
 func (client *Client) StartCdnDomainWithContext(ctx context.Context, request *StartCdnDomainRequest, runtime *dara.RuntimeOptions) (_result *StartCdnDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -9591,9 +9767,11 @@ func (client *Client) StartCdnDomainWithContext(ctx context.Context, request *St
 //
 // @return StopCdnDomainResponse
 func (client *Client) StopCdnDomainWithContext(ctx context.Context, request *StopCdnDomainRequest, runtime *dara.RuntimeOptions) (_result *StopCdnDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -9645,9 +9823,11 @@ func (client *Client) StopCdnDomainWithContext(ctx context.Context, request *Sto
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceId) {
@@ -9699,9 +9879,11 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -9757,9 +9939,11 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 //
 // @return UpdateCdnDeliverTaskResponse
 func (client *Client) UpdateCdnDeliverTaskWithContext(ctx context.Context, request *UpdateCdnDeliverTaskRequest, runtime *dara.RuntimeOptions) (_result *UpdateCdnDeliverTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Deliver) {
@@ -9823,9 +10007,11 @@ func (client *Client) UpdateCdnDeliverTaskWithContext(ctx context.Context, reque
 //
 // @return UpdateCdnSubTaskResponse
 func (client *Client) UpdateCdnSubTaskWithContext(ctx context.Context, request *UpdateCdnSubTaskRequest, runtime *dara.RuntimeOptions) (_result *UpdateCdnSubTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -9877,9 +10063,11 @@ func (client *Client) UpdateCdnSubTaskWithContext(ctx context.Context, request *
 //
 // @return UpdateFCTriggerResponse
 func (client *Client) UpdateFCTriggerWithContext(ctx context.Context, request *UpdateFCTriggerRequest, runtime *dara.RuntimeOptions) (_result *UpdateFCTriggerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TriggerARN) {
@@ -9941,9 +10129,11 @@ func (client *Client) UpdateFCTriggerWithContext(ctx context.Context, request *U
 //
 // @return VerifyDomainOwnerResponse
 func (client *Client) VerifyDomainOwnerWithContext(ctx context.Context, request *VerifyDomainOwnerRequest, runtime *dara.RuntimeOptions) (_result *VerifyDomainOwnerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {

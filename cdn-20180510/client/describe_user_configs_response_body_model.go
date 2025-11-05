@@ -53,7 +53,12 @@ func (s *DescribeUserConfigsResponseBody) SetRequestId(v string) *DescribeUserCo
 }
 
 func (s *DescribeUserConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Configs != nil {
+		if err := s.Configs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeUserConfigsResponseBodyConfigs struct {
@@ -90,7 +95,17 @@ func (s *DescribeUserConfigsResponseBodyConfigs) SetWafConfig(v *DescribeUserCon
 }
 
 func (s *DescribeUserConfigsResponseBodyConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.OssLogConfig != nil {
+		if err := s.OssLogConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WafConfig != nil {
+		if err := s.WafConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeUserConfigsResponseBodyConfigsOssLogConfig struct {
