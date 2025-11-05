@@ -121,7 +121,12 @@ func (s *SetTopicAttributesResponseBody) SetSuccess(v bool) *SetTopicAttributesR
 }
 
 func (s *SetTopicAttributesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SetTopicAttributesResponseBodyData struct {

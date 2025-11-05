@@ -110,7 +110,12 @@ func (s *GetEventRuleResponseBody) SetSuccess(v bool) *GetEventRuleResponseBody 
 }
 
 func (s *GetEventRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEventRuleResponseBodyData struct {
@@ -204,7 +209,21 @@ func (s *GetEventRuleResponseBodyData) SetTopicName(v string) *GetEventRuleRespo
 }
 
 func (s *GetEventRuleResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Endpoint != nil {
+		if err := s.Endpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Subscriptions != nil {
+		for _, item := range s.Subscriptions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetEventRuleResponseBodyDataEndpoint struct {

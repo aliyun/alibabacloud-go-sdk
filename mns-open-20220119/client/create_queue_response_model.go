@@ -59,5 +59,10 @@ func (s *CreateQueueResponse) SetBody(v *CreateQueueResponseBody) *CreateQueueRe
 }
 
 func (s *CreateQueueResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

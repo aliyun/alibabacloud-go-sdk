@@ -121,7 +121,12 @@ func (s *GetEndpointAttributeResponseBody) SetSuccess(v bool) *GetEndpointAttrib
 }
 
 func (s *GetEndpointAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEndpointAttributeResponseBodyData struct {
@@ -162,7 +167,16 @@ func (s *GetEndpointAttributeResponseBodyData) SetEndpointEnabled(v bool) *GetEn
 }
 
 func (s *GetEndpointAttributeResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CidrList != nil {
+		for _, item := range s.CidrList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetEndpointAttributeResponseBodyDataCidrList struct {

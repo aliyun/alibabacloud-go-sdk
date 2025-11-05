@@ -131,7 +131,21 @@ func (s *CreateEventRuleRequest) SetRuleName(v string) *CreateEventRuleRequest {
 }
 
 func (s *CreateEventRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Endpoint != nil {
+		if err := s.Endpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Endpoints != nil {
+		for _, item := range s.Endpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateEventRuleRequestEndpoint struct {

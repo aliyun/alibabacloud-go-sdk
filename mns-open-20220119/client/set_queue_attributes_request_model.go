@@ -173,7 +173,17 @@ func (s *SetQueueAttributesRequest) SetVisibilityTimeout(v int64) *SetQueueAttri
 }
 
 func (s *SetQueueAttributesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DlqPolicy != nil {
+		if err := s.DlqPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TenantRateLimitPolicy != nil {
+		if err := s.TenantRateLimitPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SetQueueAttributesRequestDlqPolicy struct {

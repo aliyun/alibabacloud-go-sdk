@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -65,9 +66,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AuthorizeEndpointAclResponse
 func (client *Client) AuthorizeEndpointAclWithOptions(tmpReq *AuthorizeEndpointAclRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeEndpointAclResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AuthorizeEndpointAclShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -139,9 +142,11 @@ func (client *Client) AuthorizeEndpointAcl(request *AuthorizeEndpointAclRequest)
 //
 // @return CreateEventRuleResponse
 func (client *Client) CreateEventRuleWithOptions(tmpReq *CreateEventRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateEventRuleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateEventRuleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -245,9 +250,11 @@ func (client *Client) CreateEventRule(request *CreateEventRuleRequest) (_result 
 //
 // @return CreateQueueResponse
 func (client *Client) CreateQueueWithOptions(tmpReq *CreateQueueRequest, runtime *dara.RuntimeOptions) (_result *CreateQueueResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateQueueShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -355,9 +362,11 @@ func (client *Client) CreateQueue(request *CreateQueueRequest) (_result *CreateQ
 //
 // @return CreateTopicResponse
 func (client *Client) CreateTopicWithOptions(request *CreateTopicRequest, runtime *dara.RuntimeOptions) (_result *CreateTopicResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Tag) {
@@ -433,9 +442,11 @@ func (client *Client) CreateTopic(request *CreateTopicRequest) (_result *CreateT
 //
 // @return DeleteEventRuleResponse
 func (client *Client) DeleteEventRuleWithOptions(request *DeleteEventRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteEventRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProductName) {
@@ -497,9 +508,11 @@ func (client *Client) DeleteEventRule(request *DeleteEventRuleRequest) (_result 
 //
 // @return DeleteQueueResponse
 func (client *Client) DeleteQueueWithOptions(request *DeleteQueueRequest, runtime *dara.RuntimeOptions) (_result *DeleteQueueResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.QueueName) {
@@ -557,9 +570,11 @@ func (client *Client) DeleteQueue(request *DeleteQueueRequest) (_result *DeleteQ
 //
 // @return DeleteTopicResponse
 func (client *Client) DeleteTopicWithOptions(request *DeleteTopicRequest, runtime *dara.RuntimeOptions) (_result *DeleteTopicResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TopicName) {
@@ -617,9 +632,11 @@ func (client *Client) DeleteTopic(request *DeleteTopicRequest) (_result *DeleteT
 //
 // @return DisableEndpointResponse
 func (client *Client) DisableEndpointWithOptions(request *DisableEndpointRequest, runtime *dara.RuntimeOptions) (_result *DisableEndpointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndpointType) {
@@ -677,9 +694,11 @@ func (client *Client) DisableEndpoint(request *DisableEndpointRequest) (_result 
 //
 // @return EnableEndpointResponse
 func (client *Client) EnableEndpointWithOptions(request *EnableEndpointRequest, runtime *dara.RuntimeOptions) (_result *EnableEndpointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndpointType) {
@@ -737,9 +756,11 @@ func (client *Client) EnableEndpoint(request *EnableEndpointRequest) (_result *E
 //
 // @return GetEndpointAttributeResponse
 func (client *Client) GetEndpointAttributeWithOptions(request *GetEndpointAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetEndpointAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndpointType) {
@@ -797,9 +818,11 @@ func (client *Client) GetEndpointAttribute(request *GetEndpointAttributeRequest)
 //
 // @return GetEventRuleResponse
 func (client *Client) GetEventRuleWithOptions(request *GetEventRuleRequest, runtime *dara.RuntimeOptions) (_result *GetEventRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ProductName) {
@@ -861,9 +884,11 @@ func (client *Client) GetEventRule(request *GetEventRuleRequest) (_result *GetEv
 //
 // @return GetQueueAttributesResponse
 func (client *Client) GetQueueAttributesWithOptions(request *GetQueueAttributesRequest, runtime *dara.RuntimeOptions) (_result *GetQueueAttributesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.QueueName) {
@@ -925,9 +950,11 @@ func (client *Client) GetQueueAttributes(request *GetQueueAttributesRequest) (_r
 //
 // @return GetSubscriptionAttributesResponse
 func (client *Client) GetSubscriptionAttributesWithOptions(request *GetSubscriptionAttributesRequest, runtime *dara.RuntimeOptions) (_result *GetSubscriptionAttributesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SubscriptionName) {
@@ -989,9 +1016,11 @@ func (client *Client) GetSubscriptionAttributes(request *GetSubscriptionAttribut
 //
 // @return GetTopicAttributesResponse
 func (client *Client) GetTopicAttributesWithOptions(request *GetTopicAttributesRequest, runtime *dara.RuntimeOptions) (_result *GetTopicAttributesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Tag) {
@@ -1053,9 +1082,11 @@ func (client *Client) GetTopicAttributes(request *GetTopicAttributesRequest) (_r
 //
 // @return ListEventRulesResponse
 func (client *Client) ListEventRulesWithOptions(tmpReq *ListEventRulesRequest, runtime *dara.RuntimeOptions) (_result *ListEventRulesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListEventRulesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1151,9 +1182,11 @@ func (client *Client) ListEventRules(request *ListEventRulesRequest) (_result *L
 //
 // @return ListQueueResponse
 func (client *Client) ListQueueWithOptions(request *ListQueueRequest, runtime *dara.RuntimeOptions) (_result *ListQueueResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNum) {
@@ -1227,9 +1260,11 @@ func (client *Client) ListQueue(request *ListQueueRequest) (_result *ListQueueRe
 //
 // @return ListSubscriptionByTopicResponse
 func (client *Client) ListSubscriptionByTopicWithOptions(request *ListSubscriptionByTopicRequest, runtime *dara.RuntimeOptions) (_result *ListSubscriptionByTopicResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndpointType) {
@@ -1307,9 +1342,11 @@ func (client *Client) ListSubscriptionByTopic(request *ListSubscriptionByTopicRe
 //
 // @return ListTopicResponse
 func (client *Client) ListTopicWithOptions(request *ListTopicRequest, runtime *dara.RuntimeOptions) (_result *ListTopicResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNum) {
@@ -1383,9 +1420,11 @@ func (client *Client) ListTopic(request *ListTopicRequest) (_result *ListTopicRe
 //
 // @return RevokeEndpointAclResponse
 func (client *Client) RevokeEndpointAclWithOptions(tmpReq *RevokeEndpointAclRequest, runtime *dara.RuntimeOptions) (_result *RevokeEndpointAclResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RevokeEndpointAclShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1457,9 +1496,11 @@ func (client *Client) RevokeEndpointAcl(request *RevokeEndpointAclRequest) (_res
 //
 // @return SetQueueAttributesResponse
 func (client *Client) SetQueueAttributesWithOptions(tmpReq *SetQueueAttributesRequest, runtime *dara.RuntimeOptions) (_result *SetQueueAttributesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SetQueueAttributesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1559,9 +1600,11 @@ func (client *Client) SetQueueAttributes(request *SetQueueAttributesRequest) (_r
 //
 // @return SetSubscriptionAttributesResponse
 func (client *Client) SetSubscriptionAttributesWithOptions(tmpReq *SetSubscriptionAttributesRequest, runtime *dara.RuntimeOptions) (_result *SetSubscriptionAttributesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SetSubscriptionAttributesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1649,9 +1692,11 @@ func (client *Client) SetSubscriptionAttributes(request *SetSubscriptionAttribut
 //
 // @return SetTopicAttributesResponse
 func (client *Client) SetTopicAttributesWithOptions(request *SetTopicAttributesRequest, runtime *dara.RuntimeOptions) (_result *SetTopicAttributesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EnableLogging) {
@@ -1717,9 +1762,11 @@ func (client *Client) SetTopicAttributes(request *SetTopicAttributesRequest) (_r
 //
 // @return SubscribeResponse
 func (client *Client) SubscribeWithOptions(tmpReq *SubscribeRequest, runtime *dara.RuntimeOptions) (_result *SubscribeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubscribeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1847,9 +1894,11 @@ func (client *Client) Subscribe(request *SubscribeRequest) (_result *SubscribeRe
 //
 // @return UnsubscribeResponse
 func (client *Client) UnsubscribeWithOptions(request *UnsubscribeRequest, runtime *dara.RuntimeOptions) (_result *UnsubscribeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SubscriptionName) {

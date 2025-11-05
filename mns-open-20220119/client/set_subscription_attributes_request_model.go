@@ -122,7 +122,17 @@ func (s *SetSubscriptionAttributesRequest) SetTopicName(v string) *SetSubscripti
 }
 
 func (s *SetSubscriptionAttributesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DlqPolicy != nil {
+		if err := s.DlqPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TenantRateLimitPolicy != nil {
+		if err := s.TenantRateLimitPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SetSubscriptionAttributesRequestDlqPolicy struct {

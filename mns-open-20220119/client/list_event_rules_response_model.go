@@ -59,5 +59,10 @@ func (s *ListEventRulesResponse) SetBody(v *ListEventRulesResponseBody) *ListEve
 }
 
 func (s *ListEventRulesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

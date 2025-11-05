@@ -255,7 +255,32 @@ func (s *SubscribeRequest) SetTopicName(v string) *SubscribeRequest {
 }
 
 func (s *SubscribeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DlqPolicy != nil {
+		if err := s.DlqPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DmAttributes != nil {
+		if err := s.DmAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DysmsAttributes != nil {
+		if err := s.DysmsAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.KafkaAttributes != nil {
+		if err := s.KafkaAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TenantRateLimitPolicy != nil {
+		if err := s.TenantRateLimitPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubscribeRequestDlqPolicy struct {

@@ -121,7 +121,12 @@ func (s *ListQueueResponseBody) SetSuccess(v bool) *ListQueueResponseBody {
 }
 
 func (s *ListQueueResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListQueueResponseBodyData struct {
@@ -222,7 +227,16 @@ func (s *ListQueueResponseBodyData) SetTotal(v int64) *ListQueueResponseBodyData
 }
 
 func (s *ListQueueResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PageData != nil {
+		for _, item := range s.PageData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQueueResponseBodyDataPageData struct {
@@ -453,7 +467,21 @@ func (s *ListQueueResponseBodyDataPageData) SetVisibilityTimeout(v int64) *ListQ
 }
 
 func (s *ListQueueResponseBodyDataPageData) Validate() error {
-	return dara.Validate(s)
+	if s.DlqPolicy != nil {
+		if err := s.DlqPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQueueResponseBodyDataPageDataDlqPolicy struct {

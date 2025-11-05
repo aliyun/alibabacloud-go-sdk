@@ -121,7 +121,12 @@ func (s *GetSubscriptionAttributesResponseBody) SetSuccess(v bool) *GetSubscript
 }
 
 func (s *GetSubscriptionAttributesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSubscriptionAttributesResponseBodyData struct {
@@ -302,7 +307,17 @@ func (s *GetSubscriptionAttributesResponseBodyData) SetTopicOwner(v string) *Get
 }
 
 func (s *GetSubscriptionAttributesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DlqPolicy != nil {
+		if err := s.DlqPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TenantRateLimitPolicy != nil {
+		if err := s.TenantRateLimitPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSubscriptionAttributesResponseBodyDataDlqPolicy struct {

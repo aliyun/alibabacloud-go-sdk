@@ -121,7 +121,12 @@ func (s *ListSubscriptionByTopicResponseBody) SetSuccess(v bool) *ListSubscripti
 }
 
 func (s *ListSubscriptionByTopicResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSubscriptionByTopicResponseBodyData struct {
@@ -222,7 +227,16 @@ func (s *ListSubscriptionByTopicResponseBodyData) SetTotal(v int64) *ListSubscri
 }
 
 func (s *ListSubscriptionByTopicResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PageData != nil {
+		for _, item := range s.PageData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSubscriptionByTopicResponseBodyDataPageData struct {
@@ -393,7 +407,12 @@ func (s *ListSubscriptionByTopicResponseBodyDataPageData) SetTopicOwner(v string
 }
 
 func (s *ListSubscriptionByTopicResponseBodyDataPageData) Validate() error {
-	return dara.Validate(s)
+	if s.DlqPolicy != nil {
+		if err := s.DlqPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSubscriptionByTopicResponseBodyDataPageDataDlqPolicy struct {

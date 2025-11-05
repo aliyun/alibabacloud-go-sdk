@@ -110,7 +110,12 @@ func (s *ListEventRulesResponseBody) SetSuccess(v bool) *ListEventRulesResponseB
 }
 
 func (s *ListEventRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEventRulesResponseBodyData struct {
@@ -226,7 +231,16 @@ func (s *ListEventRulesResponseBodyData) SetTotal(v int64) *ListEventRulesRespon
 }
 
 func (s *ListEventRulesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PageData != nil {
+		for _, item := range s.PageData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEventRulesResponseBodyDataPageData struct {
@@ -320,7 +334,21 @@ func (s *ListEventRulesResponseBodyDataPageData) SetTopicName(v string) *ListEve
 }
 
 func (s *ListEventRulesResponseBodyDataPageData) Validate() error {
-	return dara.Validate(s)
+	if s.Endpoint != nil {
+		if err := s.Endpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Subscriptions != nil {
+		for _, item := range s.Subscriptions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEventRulesResponseBodyDataPageDataEndpoint struct {

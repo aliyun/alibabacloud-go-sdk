@@ -121,7 +121,12 @@ func (s *SetSubscriptionAttributesResponseBody) SetSuccess(v bool) *SetSubscript
 }
 
 func (s *SetSubscriptionAttributesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SetSubscriptionAttributesResponseBodyData struct {

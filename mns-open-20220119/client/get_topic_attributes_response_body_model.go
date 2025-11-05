@@ -121,7 +121,12 @@ func (s *GetTopicAttributesResponseBody) SetSuccess(v bool) *GetTopicAttributesR
 }
 
 func (s *GetTopicAttributesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTopicAttributesResponseBodyData struct {
@@ -167,6 +172,10 @@ type GetTopicAttributesResponseBodyData struct {
 	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
 	// The tags added to the resources.
 	Tags []*GetTopicAttributesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// http:// 111111111****.mns.us-west-1-internal.aliyuncs.com/topics/testTopic
+	TopicInnerUrl *string `json:"TopicInnerUrl,omitempty" xml:"TopicInnerUrl,omitempty"`
 	// The name of the topic.
 	//
 	// example:
@@ -174,6 +183,10 @@ type GetTopicAttributesResponseBodyData struct {
 	// demo-topic
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
 	TopicType *string `json:"TopicType,omitempty" xml:"TopicType,omitempty"`
+	// example:
+	//
+	// http:// 111111111****.mns.us-west-1.aliyuncs.com/topics/testTopic
+	TopicUrl *string `json:"TopicUrl,omitempty" xml:"TopicUrl,omitempty"`
 }
 
 func (s GetTopicAttributesResponseBodyData) String() string {
@@ -212,12 +225,20 @@ func (s *GetTopicAttributesResponseBodyData) GetTags() []*GetTopicAttributesResp
 	return s.Tags
 }
 
+func (s *GetTopicAttributesResponseBodyData) GetTopicInnerUrl() *string {
+	return s.TopicInnerUrl
+}
+
 func (s *GetTopicAttributesResponseBodyData) GetTopicName() *string {
 	return s.TopicName
 }
 
 func (s *GetTopicAttributesResponseBodyData) GetTopicType() *string {
 	return s.TopicType
+}
+
+func (s *GetTopicAttributesResponseBodyData) GetTopicUrl() *string {
+	return s.TopicUrl
 }
 
 func (s *GetTopicAttributesResponseBodyData) SetCreateTime(v int64) *GetTopicAttributesResponseBodyData {
@@ -255,6 +276,11 @@ func (s *GetTopicAttributesResponseBodyData) SetTags(v []*GetTopicAttributesResp
 	return s
 }
 
+func (s *GetTopicAttributesResponseBodyData) SetTopicInnerUrl(v string) *GetTopicAttributesResponseBodyData {
+	s.TopicInnerUrl = &v
+	return s
+}
+
 func (s *GetTopicAttributesResponseBodyData) SetTopicName(v string) *GetTopicAttributesResponseBodyData {
 	s.TopicName = &v
 	return s
@@ -265,8 +291,22 @@ func (s *GetTopicAttributesResponseBodyData) SetTopicType(v string) *GetTopicAtt
 	return s
 }
 
+func (s *GetTopicAttributesResponseBodyData) SetTopicUrl(v string) *GetTopicAttributesResponseBodyData {
+	s.TopicUrl = &v
+	return s
+}
+
 func (s *GetTopicAttributesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTopicAttributesResponseBodyDataTags struct {

@@ -121,7 +121,12 @@ func (s *ListTopicResponseBody) SetSuccess(v bool) *ListTopicResponseBody {
 }
 
 func (s *ListTopicResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTopicResponseBodyData struct {
@@ -192,7 +197,16 @@ func (s *ListTopicResponseBodyData) SetTotal(v int64) *ListTopicResponseBodyData
 }
 
 func (s *ListTopicResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PageData != nil {
+		for _, item := range s.PageData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTopicResponseBodyDataPageData struct {
@@ -367,7 +381,16 @@ func (s *ListTopicResponseBodyDataPageData) SetTopicUrl(v string) *ListTopicResp
 }
 
 func (s *ListTopicResponseBodyDataPageData) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTopicResponseBodyDataPageDataTags struct {

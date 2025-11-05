@@ -200,7 +200,26 @@ func (s *CreateQueueRequest) SetVisibilityTimeout(v int64) *CreateQueueRequest {
 }
 
 func (s *CreateQueueRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DlqPolicy != nil {
+		if err := s.DlqPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TenantRateLimitPolicy != nil {
+		if err := s.TenantRateLimitPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateQueueRequestDlqPolicy struct {

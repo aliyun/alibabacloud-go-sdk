@@ -155,7 +155,12 @@ func (s *ListEventRulesRequest) SetTopicName(v string) *ListEventRulesRequest {
 }
 
 func (s *ListEventRulesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Subscription != nil {
+		if err := s.Subscription.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEventRulesRequestSubscription struct {

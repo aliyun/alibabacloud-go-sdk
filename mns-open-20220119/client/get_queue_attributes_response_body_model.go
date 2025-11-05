@@ -121,7 +121,12 @@ func (s *GetQueueAttributesResponseBody) SetSuccess(v bool) *GetQueueAttributesR
 }
 
 func (s *GetQueueAttributesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetQueueAttributesResponseBodyData struct {
@@ -362,7 +367,26 @@ func (s *GetQueueAttributesResponseBodyData) SetVisibilityTimeout(v int64) *GetQ
 }
 
 func (s *GetQueueAttributesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DlqPolicy != nil {
+		if err := s.DlqPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TenantRateLimitPolicy != nil {
+		if err := s.TenantRateLimitPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetQueueAttributesResponseBodyDataDlqPolicy struct {
