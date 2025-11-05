@@ -672,6 +672,187 @@ func (client *Client) GetWarehouseDetailWithContext(ctx context.Context, instanc
 
 // Summary:
 //
+// # DB授权
+//
+// @param request - GrantDatabasePermissionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GrantDatabasePermissionResponse
+func (client *Client) GrantDatabasePermissionWithContext(ctx context.Context, instanceId *string, request *GrantDatabasePermissionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GrantDatabasePermissionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DatabaseName) {
+		body["databaseName"] = request.DatabaseName
+	}
+
+	if !dara.IsNil(request.Privileges) {
+		body["privileges"] = request.Privileges
+	}
+
+	if !dara.IsNil(request.UserName) {
+		body["userName"] = request.UserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GrantDatabasePermission"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/grantDatabasePermission"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GrantDatabasePermissionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DB授权
+//
+// @param request - GrantSchemaPermissionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GrantSchemaPermissionResponse
+func (client *Client) GrantSchemaPermissionWithContext(ctx context.Context, instanceId *string, request *GrantSchemaPermissionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GrantSchemaPermissionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DatabaseName) {
+		body["databaseName"] = request.DatabaseName
+	}
+
+	if !dara.IsNil(request.Privileges) {
+		body["privileges"] = request.Privileges
+	}
+
+	if !dara.IsNil(request.SchemaName) {
+		body["schemaName"] = request.SchemaName
+	}
+
+	if !dara.IsNil(request.UserName) {
+		body["userName"] = request.UserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GrantSchemaPermission"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/grantSchemaPermission"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GrantSchemaPermissionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DB授权
+//
+// @param request - GrantTablePermissionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GrantTablePermissionResponse
+func (client *Client) GrantTablePermissionWithContext(ctx context.Context, instanceId *string, request *GrantTablePermissionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GrantTablePermissionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AllTable) {
+		body["allTable"] = request.AllTable
+	}
+
+	if !dara.IsNil(request.DatabaseName) {
+		body["databaseName"] = request.DatabaseName
+	}
+
+	if !dara.IsNil(request.Privileges) {
+		body["privileges"] = request.Privileges
+	}
+
+	if !dara.IsNil(request.SchemaName) {
+		body["schemaName"] = request.SchemaName
+	}
+
+	if !dara.IsNil(request.TableName) {
+		body["tableName"] = request.TableName
+	}
+
+	if !dara.IsNil(request.UserName) {
+		body["userName"] = request.UserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GrantTablePermission"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/grantTablePermission"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GrantTablePermissionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of backups. A backup is a full data snapshot of an instance at the end of the snapshot time. You can purchase another instance to completely restore the original data.
 //
 // @param request - ListBackupDataRequest
@@ -713,6 +894,53 @@ func (client *Client) ListBackupDataWithContext(ctx context.Context, request *Li
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListBackupDataResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取DB列表
+//
+// @param request - ListDatabasesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDatabasesResponse
+func (client *Client) ListDatabasesWithContext(ctx context.Context, instanceId *string, request *ListDatabasesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDatabasesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.External) {
+		query["external"] = request.External
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDatabases"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/listDatabases"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDatabasesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1153,6 +1381,187 @@ func (client *Client) ResumeInstanceWithContext(ctx context.Context, instanceId 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResumeInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消DB授权
+//
+// @param request - RevokeDatabasePermissionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeDatabasePermissionResponse
+func (client *Client) RevokeDatabasePermissionWithContext(ctx context.Context, instanceId *string, request *RevokeDatabasePermissionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RevokeDatabasePermissionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DatabaseName) {
+		body["databaseName"] = request.DatabaseName
+	}
+
+	if !dara.IsNil(request.Privileges) {
+		body["privileges"] = request.Privileges
+	}
+
+	if !dara.IsNil(request.UserName) {
+		body["userName"] = request.UserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeDatabasePermission"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/revokeDatabasePermission"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevokeDatabasePermissionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消Schema授权
+//
+// @param request - RevokeSchemaPermissionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeSchemaPermissionResponse
+func (client *Client) RevokeSchemaPermissionWithContext(ctx context.Context, instanceId *string, request *RevokeSchemaPermissionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RevokeSchemaPermissionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DatabaseName) {
+		body["databaseName"] = request.DatabaseName
+	}
+
+	if !dara.IsNil(request.Privileges) {
+		body["privileges"] = request.Privileges
+	}
+
+	if !dara.IsNil(request.SchemaName) {
+		body["schemaName"] = request.SchemaName
+	}
+
+	if !dara.IsNil(request.UserName) {
+		body["userName"] = request.UserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeSchemaPermission"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/revokeSchemaPermission"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevokeSchemaPermissionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消表授权
+//
+// @param request - RevokeTablePermissionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeTablePermissionResponse
+func (client *Client) RevokeTablePermissionWithContext(ctx context.Context, instanceId *string, request *RevokeTablePermissionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RevokeTablePermissionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AllTable) {
+		body["allTable"] = request.AllTable
+	}
+
+	if !dara.IsNil(request.DatabaseName) {
+		body["databaseName"] = request.DatabaseName
+	}
+
+	if !dara.IsNil(request.Privileges) {
+		body["privileges"] = request.Privileges
+	}
+
+	if !dara.IsNil(request.SchemaName) {
+		body["schemaName"] = request.SchemaName
+	}
+
+	if !dara.IsNil(request.TableName) {
+		body["tableName"] = request.TableName
+	}
+
+	if !dara.IsNil(request.UserName) {
+		body["userName"] = request.UserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeTablePermission"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/revokeTablePermission"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevokeTablePermissionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
