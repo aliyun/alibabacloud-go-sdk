@@ -128,7 +128,9 @@ type DescribeNatFirewallListResponseBodyNatFirewallList struct {
 	// example:
 	//
 	// proxy-******
-	ProxyName *string `json:"ProxyName,omitempty" xml:"ProxyName,omitempty"`
+	ProxyName               *string `json:"ProxyName,omitempty" xml:"ProxyName,omitempty"`
+	ProxyNetworkInterfaceId *string `json:"ProxyNetworkInterfaceId,omitempty" xml:"ProxyNetworkInterfaceId,omitempty"`
+	ProxyRouteTableId       *string `json:"ProxyRouteTableId,omitempty" xml:"ProxyRouteTableId,omitempty"`
 	// The status of the NAT firewall. Valid values:
 	//
 	// 	- configuring
@@ -148,7 +150,8 @@ type DescribeNatFirewallListResponseBodyNatFirewallList struct {
 	// example:
 	//
 	// normal
-	ProxyStatus *string `json:"ProxyStatus,omitempty" xml:"ProxyStatus,omitempty"`
+	ProxyStatus    *string `json:"ProxyStatus,omitempty" xml:"ProxyStatus,omitempty"`
+	ProxyVSwitchId *string `json:"ProxyVSwitchId,omitempty" xml:"ProxyVSwitchId,omitempty"`
 	// The region ID of your Cloud Firewall.
 	//
 	// >  For more information about the supported regions of Cloud Firewall, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
@@ -217,8 +220,20 @@ func (s *DescribeNatFirewallListResponseBodyNatFirewallList) GetProxyName() *str
 	return s.ProxyName
 }
 
+func (s *DescribeNatFirewallListResponseBodyNatFirewallList) GetProxyNetworkInterfaceId() *string {
+	return s.ProxyNetworkInterfaceId
+}
+
+func (s *DescribeNatFirewallListResponseBodyNatFirewallList) GetProxyRouteTableId() *string {
+	return s.ProxyRouteTableId
+}
+
 func (s *DescribeNatFirewallListResponseBodyNatFirewallList) GetProxyStatus() *string {
 	return s.ProxyStatus
+}
+
+func (s *DescribeNatFirewallListResponseBodyNatFirewallList) GetProxyVSwitchId() *string {
+	return s.ProxyVSwitchId
 }
 
 func (s *DescribeNatFirewallListResponseBodyNatFirewallList) GetRegionId() *string {
@@ -277,8 +292,23 @@ func (s *DescribeNatFirewallListResponseBodyNatFirewallList) SetProxyName(v stri
 	return s
 }
 
+func (s *DescribeNatFirewallListResponseBodyNatFirewallList) SetProxyNetworkInterfaceId(v string) *DescribeNatFirewallListResponseBodyNatFirewallList {
+	s.ProxyNetworkInterfaceId = &v
+	return s
+}
+
+func (s *DescribeNatFirewallListResponseBodyNatFirewallList) SetProxyRouteTableId(v string) *DescribeNatFirewallListResponseBodyNatFirewallList {
+	s.ProxyRouteTableId = &v
+	return s
+}
+
 func (s *DescribeNatFirewallListResponseBodyNatFirewallList) SetProxyStatus(v string) *DescribeNatFirewallListResponseBodyNatFirewallList {
 	s.ProxyStatus = &v
+	return s
+}
+
+func (s *DescribeNatFirewallListResponseBodyNatFirewallList) SetProxyVSwitchId(v string) *DescribeNatFirewallListResponseBodyNatFirewallList {
+	s.ProxyVSwitchId = &v
 	return s
 }
 
