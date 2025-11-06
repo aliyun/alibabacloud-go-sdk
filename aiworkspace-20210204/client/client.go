@@ -1402,6 +1402,114 @@ func (client *Client) CreateExperiment(request *CreateExperimentRequest) (_resul
 
 // Summary:
 //
+// 创建镜像构建任务
+//
+// @param request - CreateImageBuildRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateImageBuildResponse
+func (client *Client) CreateImageBuildWithOptions(request *CreateImageBuildRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateImageBuildResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Accessibility) {
+		body["Accessibility"] = request.Accessibility
+	}
+
+	if !dara.IsNil(request.BuildConfig) {
+		body["BuildConfig"] = request.BuildConfig
+	}
+
+	if !dara.IsNil(request.Image) {
+		body["Image"] = request.Image
+	}
+
+	if !dara.IsNil(request.ImageBuildJobName) {
+		body["ImageBuildJobName"] = request.ImageBuildJobName
+	}
+
+	if !dara.IsNil(request.OverwriteImageTag) {
+		body["OverwriteImageTag"] = request.OverwriteImageTag
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Resource) {
+		body["Resource"] = request.Resource
+	}
+
+	if !dara.IsNil(request.TargetRegistry) {
+		body["TargetRegistry"] = request.TargetRegistry
+	}
+
+	if !dara.IsNil(request.UserVpc) {
+		body["UserVpc"] = request.UserVpc
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateImageBuild"),
+		Version:     dara.String("2021-02-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/imagebuilds"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateImageBuildResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建镜像构建任务
+//
+// @param request - CreateImageBuildRequest
+//
+// @return CreateImageBuildResponse
+func (client *Client) CreateImageBuild(request *CreateImageBuildRequest) (_result *CreateImageBuildResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateImageBuildResponse{}
+	_body, _err := client.CreateImageBuildWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds a user to a workspace as a member. You can add multiple users as members.
 //
 // @param request - CreateMemberRequest
