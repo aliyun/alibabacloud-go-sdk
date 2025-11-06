@@ -142,7 +142,12 @@ func (s *GetLosslessRuleByAppResponseBody) SetSuccess(v bool) *GetLosslessRuleBy
 }
 
 func (s *GetLosslessRuleByAppResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLosslessRuleByAppResponseBodyData struct {

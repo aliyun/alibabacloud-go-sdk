@@ -59,5 +59,10 @@ func (s *ListNamingTrackResponse) SetBody(v *ListNamingTrackResponseBody) *ListN
 }
 
 func (s *ListNamingTrackResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

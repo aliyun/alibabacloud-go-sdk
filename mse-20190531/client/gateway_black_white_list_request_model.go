@@ -121,7 +121,12 @@ func (s *GatewayBlackWhiteListRequest) SetPageSize(v int32) *GatewayBlackWhiteLi
 }
 
 func (s *GatewayBlackWhiteListRequest) Validate() error {
-	return dara.Validate(s)
+	if s.FilterParams != nil {
+		if err := s.FilterParams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GatewayBlackWhiteListRequestFilterParams struct {

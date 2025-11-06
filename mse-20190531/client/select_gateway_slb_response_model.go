@@ -59,5 +59,10 @@ func (s *SelectGatewaySlbResponse) SetBody(v *SelectGatewaySlbResponseBody) *Sel
 }
 
 func (s *SelectGatewaySlbResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

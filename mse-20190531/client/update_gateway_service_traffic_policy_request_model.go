@@ -110,5 +110,10 @@ func (s *UpdateGatewayServiceTrafficPolicyRequest) SetServiceId(v int64) *Update
 }
 
 func (s *UpdateGatewayServiceTrafficPolicyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.GatewayTrafficPolicy != nil {
+		if err := s.GatewayTrafficPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

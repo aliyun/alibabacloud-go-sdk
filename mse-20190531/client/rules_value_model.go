@@ -122,7 +122,12 @@ func (s *RulesValue) SetRules(v *RulesValueRules) *RulesValue {
 }
 
 func (s *RulesValue) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		if err := s.Rules.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RulesValueRules struct {
@@ -157,7 +162,25 @@ func (s *RulesValueRules) SetDubbo(v []*RulesValueRulesDubbo) *RulesValueRules {
 }
 
 func (s *RulesValueRules) Validate() error {
-	return dara.Validate(s)
+	if s.Springcloud != nil {
+		for _, item := range s.Springcloud {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Dubbo != nil {
+		for _, item := range s.Dubbo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RulesValueRulesSpringcloud struct {
@@ -262,7 +285,16 @@ func (s *RulesValueRulesSpringcloud) SetPath(v string) *RulesValueRulesSpringclo
 }
 
 func (s *RulesValueRulesSpringcloud) Validate() error {
-	return dara.Validate(s)
+	if s.RestItems != nil {
+		for _, item := range s.RestItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RulesValueRulesSpringcloudRestItems struct {
@@ -498,7 +530,16 @@ func (s *RulesValueRulesDubbo) SetArgumentItems(v []*RulesValueRulesDubboArgumen
 }
 
 func (s *RulesValueRulesDubbo) Validate() error {
-	return dara.Validate(s)
+	if s.ArgumentItems != nil {
+		for _, item := range s.ArgumentItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RulesValueRulesDubboArgumentItems struct {

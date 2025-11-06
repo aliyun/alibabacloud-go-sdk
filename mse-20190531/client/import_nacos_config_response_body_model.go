@@ -161,7 +161,12 @@ func (s *ImportNacosConfigResponseBody) SetSuccess(v bool) *ImportNacosConfigRes
 }
 
 func (s *ImportNacosConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ImportNacosConfigResponseBodyData struct {
@@ -228,7 +233,25 @@ func (s *ImportNacosConfigResponseBodyData) SetSuccCount(v int32) *ImportNacosCo
 }
 
 func (s *ImportNacosConfigResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.FailData != nil {
+		for _, item := range s.FailData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SkipData != nil {
+		for _, item := range s.SkipData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ImportNacosConfigResponseBodyDataFailData struct {

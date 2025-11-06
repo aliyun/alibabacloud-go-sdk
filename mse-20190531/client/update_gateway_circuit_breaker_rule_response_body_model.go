@@ -50,7 +50,12 @@ func (s *UpdateGatewayCircuitBreakerRuleResponseBody) SetRequestId(v string) *Up
 }
 
 func (s *UpdateGatewayCircuitBreakerRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateGatewayCircuitBreakerRuleResponseBodyData struct {

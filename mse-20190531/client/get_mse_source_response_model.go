@@ -59,5 +59,10 @@ func (s *GetMseSourceResponse) SetBody(v *GetMseSourceResponseBody) *GetMseSourc
 }
 
 func (s *GetMseSourceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

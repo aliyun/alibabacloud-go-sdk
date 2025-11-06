@@ -59,5 +59,10 @@ func (s *QueryGatewayRegionResponse) SetBody(v *QueryGatewayRegionResponseBody) 
 }
 
 func (s *QueryGatewayRegionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

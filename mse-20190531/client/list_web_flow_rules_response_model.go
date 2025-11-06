@@ -59,5 +59,10 @@ func (s *ListWebFlowRulesResponse) SetBody(v *ListWebFlowRulesResponseBody) *Lis
 }
 
 func (s *ListWebFlowRulesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

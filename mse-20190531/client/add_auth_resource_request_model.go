@@ -165,7 +165,16 @@ func (s *AddAuthResourceRequest) SetPath(v string) *AddAuthResourceRequest {
 }
 
 func (s *AddAuthResourceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AuthResourceHeaderList != nil {
+		for _, item := range s.AuthResourceHeaderList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddAuthResourceRequestAuthResourceHeaderList struct {

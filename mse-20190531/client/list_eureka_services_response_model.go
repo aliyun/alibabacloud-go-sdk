@@ -59,5 +59,10 @@ func (s *ListEurekaServicesResponse) SetBody(v *ListEurekaServicesResponseBody) 
 }
 
 func (s *ListEurekaServicesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

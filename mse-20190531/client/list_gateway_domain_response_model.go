@@ -59,5 +59,10 @@ func (s *ListGatewayDomainResponse) SetBody(v *ListGatewayDomainResponseBody) *L
 }
 
 func (s *ListGatewayDomainResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

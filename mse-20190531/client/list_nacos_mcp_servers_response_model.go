@@ -59,5 +59,10 @@ func (s *ListNacosMcpServersResponse) SetBody(v *ListNacosMcpServersResponseBody
 }
 
 func (s *ListNacosMcpServersResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

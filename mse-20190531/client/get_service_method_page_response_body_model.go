@@ -80,7 +80,12 @@ func (s *GetServiceMethodPageResponseBody) SetSuccess(v bool) *GetServiceMethodP
 }
 
 func (s *GetServiceMethodPageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetServiceMethodPageResponseBodyData struct {
@@ -144,7 +149,16 @@ func (s *GetServiceMethodPageResponseBodyData) SetTotalSize(v int32) *GetService
 }
 
 func (s *GetServiceMethodPageResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetServiceMethodPageResponseBodyDataResult struct {
@@ -274,7 +288,16 @@ func (s *GetServiceMethodPageResponseBodyDataResult) SetReturnType(v string) *Ge
 }
 
 func (s *GetServiceMethodPageResponseBodyDataResult) Validate() error {
-	return dara.Validate(s)
+	if s.ParameterDefinitions != nil {
+		for _, item := range s.ParameterDefinitions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetServiceMethodPageResponseBodyDataResultParameterDefinitions struct {

@@ -159,7 +159,12 @@ func (s *GetImportFileUrlResponseBody) SetSuccess(v bool) *GetImportFileUrlRespo
 }
 
 func (s *GetImportFileUrlResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetImportFileUrlResponseBodyData struct {

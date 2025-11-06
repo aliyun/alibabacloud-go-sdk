@@ -59,5 +59,10 @@ func (s *AddMockRuleResponse) SetBody(v *AddMockRuleResponseBody) *AddMockRuleRe
 }
 
 func (s *AddMockRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

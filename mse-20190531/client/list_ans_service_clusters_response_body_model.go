@@ -125,7 +125,12 @@ func (s *ListAnsServiceClustersResponseBody) SetSuccess(v bool) *ListAnsServiceC
 }
 
 func (s *ListAnsServiceClustersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAnsServiceClustersResponseBodyData struct {
@@ -277,7 +282,21 @@ func (s *ListAnsServiceClustersResponseBodyData) SetSource(v string) *ListAnsSer
 }
 
 func (s *ListAnsServiceClustersResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AppDetail != nil {
+		if err := s.AppDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Clusters != nil {
+		for _, item := range s.Clusters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAnsServiceClustersResponseBodyDataAppDetail struct {

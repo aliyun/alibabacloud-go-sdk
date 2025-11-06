@@ -191,7 +191,16 @@ func (s *ImportServicesRequest) SetTlsSetting(v string) *ImportServicesRequest {
 }
 
 func (s *ImportServicesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceList != nil {
+		for _, item := range s.ServiceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ImportServicesRequestServiceList struct {

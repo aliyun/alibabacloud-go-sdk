@@ -125,7 +125,12 @@ func (s *UpdateGatewayRouteWafStatusResponseBody) SetSuccess(v bool) *UpdateGate
 }
 
 func (s *UpdateGatewayRouteWafStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateGatewayRouteWafStatusResponseBodyData struct {
@@ -501,7 +506,56 @@ func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetTimeout(v *UpdateGatewa
 }
 
 func (s *UpdateGatewayRouteWafStatusResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Cors != nil {
+		if err := s.Cors.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DirectResponse != nil {
+		if err := s.DirectResponse.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HTTPRewrite != nil {
+		if err := s.HTTPRewrite.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HeaderOp != nil {
+		if err := s.HeaderOp.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Redirect != nil {
+		if err := s.Redirect.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Retry != nil {
+		if err := s.Retry.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RoutePredicates != nil {
+		if err := s.RoutePredicates.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RouteServices != nil {
+		for _, item := range s.RouteServices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Timeout != nil {
+		if err := s.Timeout.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateGatewayRouteWafStatusResponseBodyDataCors struct {
@@ -827,7 +881,16 @@ func (s *UpdateGatewayRouteWafStatusResponseBodyDataHeaderOp) SetStatus(v string
 }
 
 func (s *UpdateGatewayRouteWafStatusResponseBodyDataHeaderOp) Validate() error {
-	return dara.Validate(s)
+	if s.HeaderOpItems != nil {
+		for _, item := range s.HeaderOpItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateGatewayRouteWafStatusResponseBodyDataHeaderOpHeaderOpItems struct {
@@ -1088,7 +1151,30 @@ func (s *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicates) SetQueryPre
 }
 
 func (s *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicates) Validate() error {
-	return dara.Validate(s)
+	if s.HeaderPredicates != nil {
+		for _, item := range s.HeaderPredicates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PathPredicates != nil {
+		if err := s.PathPredicates.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QueryPredicates != nil {
+		for _, item := range s.QueryPredicates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesHeaderPredicates struct {

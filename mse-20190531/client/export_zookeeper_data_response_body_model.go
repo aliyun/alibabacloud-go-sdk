@@ -148,7 +148,12 @@ func (s *ExportZookeeperDataResponseBody) SetSuccess(v bool) *ExportZookeeperDat
 }
 
 func (s *ExportZookeeperDataResponseBody) Validate() error {
-  return dara.Validate(s)
+  if s.Data != nil {
+    if err := s.Data.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type ExportZookeeperDataResponseBodyData struct {

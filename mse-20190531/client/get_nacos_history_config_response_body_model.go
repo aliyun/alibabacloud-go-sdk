@@ -108,7 +108,12 @@ func (s *GetNacosHistoryConfigResponseBody) SetSuccess(v bool) *GetNacosHistoryC
 }
 
 func (s *GetNacosHistoryConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Configuration != nil {
+		if err := s.Configuration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNacosHistoryConfigResponseBodyConfiguration struct {

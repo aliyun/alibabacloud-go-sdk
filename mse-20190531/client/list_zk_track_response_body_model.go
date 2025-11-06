@@ -176,7 +176,16 @@ func (s *ListZkTrackResponseBody) SetTraces(v []*ListZkTrackResponseBodyTraces) 
 }
 
 func (s *ListZkTrackResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Traces != nil {
+		for _, item := range s.Traces {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListZkTrackResponseBodyTraces struct {

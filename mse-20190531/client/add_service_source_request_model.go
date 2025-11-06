@@ -191,7 +191,21 @@ func (s *AddServiceSourceRequest) SetType(v string) *AddServiceSourceRequest {
 }
 
 func (s *AddServiceSourceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.IngressOptionsRequest != nil {
+		if err := s.IngressOptionsRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ToAuthorizeSecurityGroups != nil {
+		for _, item := range s.ToAuthorizeSecurityGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddServiceSourceRequestIngressOptionsRequest struct {

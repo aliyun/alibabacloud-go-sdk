@@ -125,7 +125,12 @@ func (s *DeleteGatewayRouteResponseBody) SetSuccess(v bool) *DeleteGatewayRouteR
 }
 
 func (s *DeleteGatewayRouteResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteGatewayRouteResponseBodyData struct {

@@ -125,7 +125,12 @@ func (s *QueryConfigResponseBody) SetSuccess(v bool) *QueryConfigResponseBody {
 }
 
 func (s *QueryConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryConfigResponseBodyData struct {
@@ -668,7 +673,12 @@ func (s *QueryConfigResponseBodyData) SetUserName(v string) *QueryConfigResponse
 }
 
 func (s *QueryConfigResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.NacosRunningEnv != nil {
+		if err := s.NacosRunningEnv.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryConfigResponseBodyDataNacosRunningEnv struct {

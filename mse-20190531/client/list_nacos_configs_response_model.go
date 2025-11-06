@@ -59,5 +59,10 @@ func (s *ListNacosConfigsResponse) SetBody(v *ListNacosConfigsResponseBody) *Lis
 }
 
 func (s *ListNacosConfigsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

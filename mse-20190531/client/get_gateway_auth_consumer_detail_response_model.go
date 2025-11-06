@@ -59,5 +59,10 @@ func (s *GetGatewayAuthConsumerDetailResponse) SetBody(v *GetGatewayAuthConsumer
 }
 
 func (s *GetGatewayAuthConsumerDetailResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -83,7 +83,17 @@ func (s *GatewayOption) SetTraceDetails(v *GatewayOptionTraceDetails) *GatewayOp
 }
 
 func (s *GatewayOption) Validate() error {
-	return dara.Validate(s)
+	if s.LogConfigDetails != nil {
+		if err := s.LogConfigDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TraceDetails != nil {
+		if err := s.TraceDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GatewayOptionLogConfigDetails struct {

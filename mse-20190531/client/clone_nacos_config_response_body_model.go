@@ -161,7 +161,12 @@ func (s *CloneNacosConfigResponseBody) SetSuccess(v bool) *CloneNacosConfigRespo
 }
 
 func (s *CloneNacosConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CloneNacosConfigResponseBodyData struct {
@@ -228,7 +233,25 @@ func (s *CloneNacosConfigResponseBodyData) SetSuccCount(v int32) *CloneNacosConf
 }
 
 func (s *CloneNacosConfigResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.FailData != nil {
+		for _, item := range s.FailData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SkipData != nil {
+		for _, item := range s.SkipData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CloneNacosConfigResponseBodyDataFailData struct {

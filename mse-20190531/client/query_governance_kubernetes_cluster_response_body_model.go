@@ -87,7 +87,12 @@ func (s *QueryGovernanceKubernetesClusterResponseBody) SetSuccess(v bool) *Query
 }
 
 func (s *QueryGovernanceKubernetesClusterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryGovernanceKubernetesClusterResponseBodyData struct {
@@ -158,7 +163,16 @@ func (s *QueryGovernanceKubernetesClusterResponseBodyData) SetTotalSize(v int32)
 }
 
 func (s *QueryGovernanceKubernetesClusterResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryGovernanceKubernetesClusterResponseBodyDataResult struct {

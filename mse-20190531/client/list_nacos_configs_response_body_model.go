@@ -193,7 +193,16 @@ func (s *ListNacosConfigsResponseBody) SetTotalCount(v int32) *ListNacosConfigsR
 }
 
 func (s *ListNacosConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Configurations != nil {
+		for _, item := range s.Configurations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNacosConfigsResponseBodyConfigurations struct {

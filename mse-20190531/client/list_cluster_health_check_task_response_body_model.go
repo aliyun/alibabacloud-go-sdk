@@ -182,7 +182,12 @@ func (s *ListClusterHealthCheckTaskResponseBody) SetSuccess(v bool) *ListCluster
 }
 
 func (s *ListClusterHealthCheckTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListClusterHealthCheckTaskResponseBodyData struct {
@@ -253,7 +258,16 @@ func (s *ListClusterHealthCheckTaskResponseBodyData) SetTotalSize(v int32) *List
 }
 
 func (s *ListClusterHealthCheckTaskResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListClusterHealthCheckTaskResponseBodyDataResult struct {
@@ -534,7 +548,16 @@ func (s *ListClusterHealthCheckTaskResponseBodyDataResult) SetVersionCode(v stri
 }
 
 func (s *ListClusterHealthCheckTaskResponseBodyDataResult) Validate() error {
-	return dara.Validate(s)
+	if s.RiskList != nil {
+		for _, item := range s.RiskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListClusterHealthCheckTaskResponseBodyDataResultRiskList struct {

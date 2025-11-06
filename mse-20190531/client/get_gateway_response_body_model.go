@@ -125,7 +125,12 @@ func (s *GetGatewayResponseBody) SetSuccess(v bool) *GetGatewayResponseBody {
 }
 
 func (s *GetGatewayResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGatewayResponseBodyData struct {
@@ -557,7 +562,22 @@ func (s *GetGatewayResponseBodyData) SetXtraceDetails(v *GetGatewayResponseBodyD
 }
 
 func (s *GetGatewayResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ElasticPolicy != nil {
+		if err := s.ElasticPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LogConfigDetails != nil {
+		if err := s.LogConfigDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.XtraceDetails != nil {
+		if err := s.XtraceDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGatewayResponseBodyDataElasticPolicy struct {
@@ -615,7 +635,16 @@ func (s *GetGatewayResponseBodyDataElasticPolicy) SetTimePolicyList(v []*GetGate
 }
 
 func (s *GetGatewayResponseBodyDataElasticPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.TimePolicyList != nil {
+		for _, item := range s.TimePolicyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetGatewayResponseBodyDataElasticPolicyTimePolicyList struct {

@@ -59,5 +59,10 @@ func (s *GetAppMessageQueueRouteResponse) SetBody(v *GetAppMessageQueueRouteResp
 }
 
 func (s *GetAppMessageQueueRouteResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

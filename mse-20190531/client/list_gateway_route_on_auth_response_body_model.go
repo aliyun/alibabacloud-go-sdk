@@ -125,7 +125,16 @@ func (s *ListGatewayRouteOnAuthResponseBody) SetSuccess(v bool) *ListGatewayRout
 }
 
 func (s *ListGatewayRouteOnAuthResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewayRouteOnAuthResponseBodyData struct {
@@ -263,7 +272,12 @@ func (s *ListGatewayRouteOnAuthResponseBodyData) SetRoutePredicates(v *ListGatew
 }
 
 func (s *ListGatewayRouteOnAuthResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.RoutePredicates != nil {
+		if err := s.RoutePredicates.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListGatewayRouteOnAuthResponseBodyDataRoutePredicates struct {
@@ -289,7 +303,12 @@ func (s *ListGatewayRouteOnAuthResponseBodyDataRoutePredicates) SetPathPredicate
 }
 
 func (s *ListGatewayRouteOnAuthResponseBodyDataRoutePredicates) Validate() error {
-	return dara.Validate(s)
+	if s.PathPredicates != nil {
+		if err := s.PathPredicates.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListGatewayRouteOnAuthResponseBodyDataRoutePredicatesPathPredicates struct {

@@ -147,7 +147,16 @@ func (s *ListListenersByConfigRequest) SetRequestPars(v string) *ListListenersBy
 }
 
 func (s *ListListenersByConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ExtGrayRules != nil {
+		for _, item := range s.ExtGrayRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListListenersByConfigRequestExtGrayRules struct {

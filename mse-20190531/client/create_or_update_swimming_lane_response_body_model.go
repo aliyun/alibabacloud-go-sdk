@@ -146,7 +146,12 @@ func (s *CreateOrUpdateSwimmingLaneResponseBody) SetSuccess(v bool) *CreateOrUpd
 }
 
 func (s *CreateOrUpdateSwimmingLaneResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateSwimmingLaneResponseBodyData struct {
@@ -301,7 +306,16 @@ func (s *CreateOrUpdateSwimmingLaneResponseBodyData) SetTag(v string) *CreateOrU
 }
 
 func (s *CreateOrUpdateSwimmingLaneResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.EntryRules != nil {
+		for _, item := range s.EntryRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateSwimmingLaneResponseBodyDataEntryRules struct {
@@ -356,7 +370,16 @@ func (s *CreateOrUpdateSwimmingLaneResponseBodyDataEntryRules) SetRestItems(v []
 }
 
 func (s *CreateOrUpdateSwimmingLaneResponseBodyDataEntryRules) Validate() error {
-	return dara.Validate(s)
+	if s.RestItems != nil {
+		for _, item := range s.RestItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateSwimmingLaneResponseBodyDataEntryRulesRestItems struct {

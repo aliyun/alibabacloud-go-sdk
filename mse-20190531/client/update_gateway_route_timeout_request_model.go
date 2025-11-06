@@ -108,7 +108,12 @@ func (s *UpdateGatewayRouteTimeoutRequest) SetTimeoutJSON(v *UpdateGatewayRouteT
 }
 
 func (s *UpdateGatewayRouteTimeoutRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TimeoutJSON != nil {
+		if err := s.TimeoutJSON.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateGatewayRouteTimeoutRequestTimeoutJSON struct {

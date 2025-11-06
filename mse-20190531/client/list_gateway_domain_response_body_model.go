@@ -125,7 +125,16 @@ func (s *ListGatewayDomainResponseBody) SetSuccess(v bool) *ListGatewayDomainRes
 }
 
 func (s *ListGatewayDomainResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewayDomainResponseBodyData struct {
@@ -403,7 +412,17 @@ func (s *ListGatewayDomainResponseBodyData) SetType(v string) *ListGatewayDomain
 }
 
 func (s *ListGatewayDomainResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Comment != nil {
+		if err := s.Comment.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TlsCipherSuitesConfig != nil {
+		if err := s.TlsCipherSuitesConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListGatewayDomainResponseBodyDataComment struct {

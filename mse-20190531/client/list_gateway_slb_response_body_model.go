@@ -125,7 +125,16 @@ func (s *ListGatewaySlbResponseBody) SetSuccess(v bool) *ListGatewaySlbResponseB
 }
 
 func (s *ListGatewaySlbResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewaySlbResponseBodyData struct {
@@ -410,7 +419,16 @@ func (s *ListGatewaySlbResponseBodyData) SetVsMetaInfo(v string) *ListGatewaySlb
 }
 
 func (s *ListGatewaySlbResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.VServiceList != nil {
+		for _, item := range s.VServiceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewaySlbResponseBodyDataVServiceList struct {

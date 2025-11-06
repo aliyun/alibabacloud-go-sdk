@@ -238,7 +238,21 @@ func (s *CreateOrUpdateSwimmingLaneRequest) SetTag(v string) *CreateOrUpdateSwim
 }
 
 func (s *CreateOrUpdateSwimmingLaneRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EntryRules != nil {
+		for _, item := range s.EntryRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.GatewaySwimmingLaneRouteJson != nil {
+		if err := s.GatewaySwimmingLaneRouteJson.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateSwimmingLaneRequestEntryRules struct {
@@ -296,7 +310,16 @@ func (s *CreateOrUpdateSwimmingLaneRequestEntryRules) SetRestItems(v []*CreateOr
 }
 
 func (s *CreateOrUpdateSwimmingLaneRequestEntryRules) Validate() error {
-	return dara.Validate(s)
+	if s.RestItems != nil {
+		for _, item := range s.RestItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems struct {
@@ -534,7 +557,25 @@ func (s *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson) SetRoute
 }
 
 func (s *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RouteIndependentPercentageList != nil {
+		for _, item := range s.RouteIndependentPercentageList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions struct {

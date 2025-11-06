@@ -47,7 +47,17 @@ func (s *TrafficPolicy) SetTlsSetting(v *TrafficPolicyTlsSetting) *TrafficPolicy
 }
 
 func (s *TrafficPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.LoadBalancerSettings != nil {
+		if err := s.LoadBalancerSettings.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TlsSetting != nil {
+		if err := s.TlsSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrafficPolicyLoadBalancerSettings struct {
@@ -95,7 +105,12 @@ func (s *TrafficPolicyLoadBalancerSettings) SetWarmupDuration(v int64) *TrafficP
 }
 
 func (s *TrafficPolicyLoadBalancerSettings) Validate() error {
-	return dara.Validate(s)
+	if s.ConsistentHashLBConfig != nil {
+		if err := s.ConsistentHashLBConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrafficPolicyLoadBalancerSettingsConsistentHashLBConfig struct {
@@ -140,7 +155,12 @@ func (s *TrafficPolicyLoadBalancerSettingsConsistentHashLBConfig) SetParameterNa
 }
 
 func (s *TrafficPolicyLoadBalancerSettingsConsistentHashLBConfig) Validate() error {
-	return dara.Validate(s)
+	if s.HttpCookie != nil {
+		if err := s.HttpCookie.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TrafficPolicyLoadBalancerSettingsConsistentHashLBConfigHttpCookie struct {

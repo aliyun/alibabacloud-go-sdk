@@ -50,7 +50,12 @@ func (s *GetNacosMcpServerResponseBody) SetRequestId(v string) *GetNacosMcpServe
 }
 
 func (s *GetNacosMcpServerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNacosMcpServerResponseBodyData struct {
@@ -247,7 +252,40 @@ func (s *GetNacosMcpServerResponseBodyData) SetYamlConfig(v string) *GetNacosMcp
 }
 
 func (s *GetNacosMcpServerResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AllVersions != nil {
+		for _, item := range s.AllVersions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BackendEndpoints != nil {
+		for _, item := range s.BackendEndpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RemoteServerConfig != nil {
+		if err := s.RemoteServerConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ToolSpec != nil {
+		if err := s.ToolSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VersionDetail != nil {
+		if err := s.VersionDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNacosMcpServerResponseBodyDataAllVersions struct {
@@ -393,7 +431,12 @@ func (s *GetNacosMcpServerResponseBodyDataRemoteServerConfig) SetServiceRef(v *G
 }
 
 func (s *GetNacosMcpServerResponseBodyDataRemoteServerConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceRef != nil {
+		if err := s.ServiceRef.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNacosMcpServerResponseBodyDataRemoteServerConfigServiceRef struct {
@@ -453,6 +496,7 @@ func (s *GetNacosMcpServerResponseBodyDataRemoteServerConfigServiceRef) Validate
 type GetNacosMcpServerResponseBodyDataToolSpec struct {
 	SecuritySchemes   interface{}                                       `json:"SecuritySchemes,omitempty" xml:"SecuritySchemes,omitempty"`
 	SpecificationType *string                                           `json:"SpecificationType,omitempty" xml:"SpecificationType,omitempty"`
+	ToolDecryptStatus *string                                           `json:"ToolDecryptStatus,omitempty" xml:"ToolDecryptStatus,omitempty"`
 	Tools             []*GetNacosMcpServerResponseBodyDataToolSpecTools `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
 	ToolsMeta         map[string]*DataToolSpecToolsMetaValue            `json:"ToolsMeta,omitempty" xml:"ToolsMeta,omitempty"`
 }
@@ -473,6 +517,10 @@ func (s *GetNacosMcpServerResponseBodyDataToolSpec) GetSpecificationType() *stri
 	return s.SpecificationType
 }
 
+func (s *GetNacosMcpServerResponseBodyDataToolSpec) GetToolDecryptStatus() *string {
+	return s.ToolDecryptStatus
+}
+
 func (s *GetNacosMcpServerResponseBodyDataToolSpec) GetTools() []*GetNacosMcpServerResponseBodyDataToolSpecTools {
 	return s.Tools
 }
@@ -491,6 +539,11 @@ func (s *GetNacosMcpServerResponseBodyDataToolSpec) SetSpecificationType(v strin
 	return s
 }
 
+func (s *GetNacosMcpServerResponseBodyDataToolSpec) SetToolDecryptStatus(v string) *GetNacosMcpServerResponseBodyDataToolSpec {
+	s.ToolDecryptStatus = &v
+	return s
+}
+
 func (s *GetNacosMcpServerResponseBodyDataToolSpec) SetTools(v []*GetNacosMcpServerResponseBodyDataToolSpecTools) *GetNacosMcpServerResponseBodyDataToolSpec {
 	s.Tools = v
 	return s
@@ -502,7 +555,16 @@ func (s *GetNacosMcpServerResponseBodyDataToolSpec) SetToolsMeta(v map[string]*D
 }
 
 func (s *GetNacosMcpServerResponseBodyDataToolSpec) Validate() error {
-	return dara.Validate(s)
+	if s.Tools != nil {
+		for _, item := range s.Tools {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetNacosMcpServerResponseBodyDataToolSpecTools struct {

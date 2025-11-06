@@ -110,7 +110,12 @@ func (s *CreateSentinelBlockFallbackDefinitionResponseBody) SetSuccess(v string)
 }
 
 func (s *CreateSentinelBlockFallbackDefinitionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateSentinelBlockFallbackDefinitionResponseBodyData struct {

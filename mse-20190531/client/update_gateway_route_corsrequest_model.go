@@ -110,7 +110,12 @@ func (s *UpdateGatewayRouteCORSRequest) SetId(v int64) *UpdateGatewayRouteCORSRe
 }
 
 func (s *UpdateGatewayRouteCORSRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CorsJSON != nil {
+		if err := s.CorsJSON.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateGatewayRouteCORSRequestCorsJSON struct {

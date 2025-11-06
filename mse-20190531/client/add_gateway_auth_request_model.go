@@ -393,7 +393,21 @@ func (s *AddGatewayAuthRequest) SetType(v string) *AddGatewayAuthRequest {
 }
 
 func (s *AddGatewayAuthRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AuthResourceList != nil {
+		for _, item := range s.AuthResourceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ExternalAuthZJSON != nil {
+		if err := s.ExternalAuthZJSON.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddGatewayAuthRequestAuthResourceList struct {
@@ -474,7 +488,16 @@ func (s *AddGatewayAuthRequestAuthResourceList) SetPath(v string) *AddGatewayAut
 }
 
 func (s *AddGatewayAuthRequestAuthResourceList) Validate() error {
-	return dara.Validate(s)
+	if s.AuthResourceHeaderList != nil {
+		for _, item := range s.AuthResourceHeaderList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddGatewayAuthRequestAuthResourceListAuthResourceHeaderList struct {

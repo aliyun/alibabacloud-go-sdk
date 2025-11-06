@@ -108,7 +108,12 @@ func (s *AddMigrationTaskResponseBody) SetSuccess(v bool) *AddMigrationTaskRespo
 }
 
 func (s *AddMigrationTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddMigrationTaskResponseBodyData struct {

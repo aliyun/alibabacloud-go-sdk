@@ -129,7 +129,16 @@ func (s *QueryInstancesInfoResponseBody) SetSuccess(v bool) *QueryInstancesInfoR
 }
 
 func (s *QueryInstancesInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryInstancesInfoResponseBodyData struct {

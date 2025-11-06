@@ -91,7 +91,12 @@ func (s *GetGovernanceKubernetesClusterResponseBody) SetSuccess(v bool) *GetGove
 }
 
 func (s *GetGovernanceKubernetesClusterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGovernanceKubernetesClusterResponseBodyData struct {
@@ -242,7 +247,16 @@ func (s *GetGovernanceKubernetesClusterResponseBodyData) SetVersionLifeCycle(v s
 }
 
 func (s *GetGovernanceKubernetesClusterResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Namespaces != nil {
+		for _, item := range s.Namespaces {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetGovernanceKubernetesClusterResponseBodyDataNamespaces struct {

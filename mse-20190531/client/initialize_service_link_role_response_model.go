@@ -59,5 +59,10 @@ func (s *InitializeServiceLinkRoleResponse) SetBody(v *InitializeServiceLinkRole
 }
 
 func (s *InitializeServiceLinkRoleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

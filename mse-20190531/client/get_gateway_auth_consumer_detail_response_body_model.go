@@ -178,7 +178,12 @@ func (s *GetGatewayAuthConsumerDetailResponseBody) SetSuccess(v bool) *GetGatewa
 }
 
 func (s *GetGatewayAuthConsumerDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGatewayAuthConsumerDetailResponseBodyData struct {
@@ -487,7 +492,16 @@ func (s *GetGatewayAuthConsumerDetailResponseBodyData) SetType(v string) *GetGat
 }
 
 func (s *GetGatewayAuthConsumerDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceList != nil {
+		for _, item := range s.ResourceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetGatewayAuthConsumerDetailResponseBodyDataResourceList struct {

@@ -238,7 +238,16 @@ func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetTag(v string) *CreateOrUpda
 }
 
 func (s *CreateOrUpdateSwimmingLaneShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EntryRules != nil {
+		for _, item := range s.EntryRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateSwimmingLaneShrinkRequestEntryRules struct {
@@ -296,7 +305,16 @@ func (s *CreateOrUpdateSwimmingLaneShrinkRequestEntryRules) SetRestItems(v []*Cr
 }
 
 func (s *CreateOrUpdateSwimmingLaneShrinkRequestEntryRules) Validate() error {
-	return dara.Validate(s)
+	if s.RestItems != nil {
+		for _, item := range s.RestItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems struct {

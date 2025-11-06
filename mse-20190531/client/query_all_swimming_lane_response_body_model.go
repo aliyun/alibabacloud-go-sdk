@@ -112,7 +112,16 @@ func (s *QueryAllSwimmingLaneResponseBody) SetSuccess(v bool) *QueryAllSwimmingL
 }
 
 func (s *QueryAllSwimmingLaneResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryAllSwimmingLaneResponseBodyData struct {
@@ -328,7 +337,21 @@ func (s *QueryAllSwimmingLaneResponseBodyData) SetGmtModified(v string) *QueryAl
 }
 
 func (s *QueryAllSwimmingLaneResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.EntryRules != nil {
+		for _, item := range s.EntryRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.GatewaySwimmingLaneRoute != nil {
+		if err := s.GatewaySwimmingLaneRoute.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryAllSwimmingLaneResponseBodyDataEntryRules struct {
@@ -383,7 +406,16 @@ func (s *QueryAllSwimmingLaneResponseBodyDataEntryRules) SetRestItems(v []*Query
 }
 
 func (s *QueryAllSwimmingLaneResponseBodyDataEntryRules) Validate() error {
-	return dara.Validate(s)
+	if s.RestItems != nil {
+		for _, item := range s.RestItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryAllSwimmingLaneResponseBodyDataEntryRulesRestItems struct {
@@ -615,7 +647,25 @@ func (s *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute) SetRouteI
 }
 
 func (s *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RouteIndependentPercentageList != nil {
+		for _, item := range s.RouteIndependentPercentageList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions struct {

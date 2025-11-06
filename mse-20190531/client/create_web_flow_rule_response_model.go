@@ -59,5 +59,10 @@ func (s *CreateWebFlowRuleResponse) SetBody(v *CreateWebFlowRuleResponseBody) *C
 }
 
 func (s *CreateWebFlowRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

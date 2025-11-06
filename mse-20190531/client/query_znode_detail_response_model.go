@@ -59,5 +59,10 @@ func (s *QueryZnodeDetailResponse) SetBody(v *QueryZnodeDetailResponseBody) *Que
 }
 
 func (s *QueryZnodeDetailResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

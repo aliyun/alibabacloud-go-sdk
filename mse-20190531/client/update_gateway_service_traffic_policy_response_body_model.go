@@ -129,5 +129,10 @@ func (s *UpdateGatewayServiceTrafficPolicyResponseBody) SetSuccess(v bool) *Upda
 }
 
 func (s *UpdateGatewayServiceTrafficPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

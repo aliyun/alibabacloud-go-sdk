@@ -114,7 +114,12 @@ func (s *UpdateGatewayRouteAuthRequest) SetId(v int64) *UpdateGatewayRouteAuthRe
 }
 
 func (s *UpdateGatewayRouteAuthRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AuthJSON != nil {
+		if err := s.AuthJSON.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateGatewayRouteAuthRequestAuthJSON struct {

@@ -125,7 +125,12 @@ func (s *ListGatewayResponseBody) SetSuccess(v bool) *ListGatewayResponseBody {
 }
 
 func (s *ListGatewayResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListGatewayResponseBodyData struct {
@@ -196,7 +201,16 @@ func (s *ListGatewayResponseBodyData) SetTotalSize(v int64) *ListGatewayResponse
 }
 
 func (s *ListGatewayResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewayResponseBodyDataResult struct {
@@ -846,7 +860,49 @@ func (s *ListGatewayResponseBodyDataResult) SetVswitch2(v string) *ListGatewayRe
 }
 
 func (s *ListGatewayResponseBodyDataResult) Validate() error {
-	return dara.Validate(s)
+	if s.ElasticPolicy != nil {
+		if err := s.ElasticPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.GatewayEntry != nil {
+		for _, item := range s.GatewayEntry {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InitConfig != nil {
+		if err := s.InitConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InternetSlb != nil {
+		for _, item := range s.InternetSlb {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MaintenancePeriod != nil {
+		if err := s.MaintenancePeriod.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Slb != nil {
+		for _, item := range s.Slb {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewayResponseBodyDataResultElasticPolicy struct {
@@ -939,7 +995,25 @@ func (s *ListGatewayResponseBodyDataResultElasticPolicy) SetTimePolicyList(v []*
 }
 
 func (s *ListGatewayResponseBodyDataResultElasticPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.EnableScaleTimePolicyList != nil {
+		for _, item := range s.EnableScaleTimePolicyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TimePolicyList != nil {
+		for _, item := range s.TimePolicyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewayResponseBodyDataResultElasticPolicyEnableScaleTimePolicyList struct {

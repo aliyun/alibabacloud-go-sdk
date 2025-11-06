@@ -59,5 +59,10 @@ func (s *GetGatewayOptionResponse) SetBody(v *GetGatewayOptionResponseBody) *Get
 }
 
 func (s *GetGatewayOptionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

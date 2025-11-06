@@ -108,7 +108,12 @@ func (s *UpdateEngineNamespaceResponseBody) SetSuccess(v bool) *UpdateEngineName
 }
 
 func (s *UpdateEngineNamespaceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateEngineNamespaceResponseBodyData struct {

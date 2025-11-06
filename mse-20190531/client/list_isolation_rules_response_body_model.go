@@ -110,7 +110,12 @@ func (s *ListIsolationRulesResponseBody) SetSuccess(v bool) *ListIsolationRulesR
 }
 
 func (s *ListIsolationRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListIsolationRulesResponseBodyData struct {
@@ -174,7 +179,16 @@ func (s *ListIsolationRulesResponseBodyData) SetTotalSize(v int32) *ListIsolatio
 }
 
 func (s *ListIsolationRulesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIsolationRulesResponseBodyDataResult struct {

@@ -50,7 +50,12 @@ func (s *ListGatewayFlowRuleResponseBody) SetRequestId(v string) *ListGatewayFlo
 }
 
 func (s *ListGatewayFlowRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListGatewayFlowRuleResponseBodyData struct {
@@ -124,7 +129,25 @@ func (s *ListGatewayFlowRuleResponseBodyData) SetTotalSize(v int32) *ListGateway
 }
 
 func (s *ListGatewayFlowRuleResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewayFlowRuleResponseBodyDataResult struct {

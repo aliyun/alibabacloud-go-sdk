@@ -91,7 +91,12 @@ func (s *GetApplicationListResponseBody) SetSuccess(v bool) *GetApplicationListR
 }
 
 func (s *GetApplicationListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetApplicationListResponseBodyData struct {
@@ -162,7 +167,16 @@ func (s *GetApplicationListResponseBodyData) SetTotalSize(v int32) *GetApplicati
 }
 
 func (s *GetApplicationListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetApplicationListResponseBodyDataResult struct {

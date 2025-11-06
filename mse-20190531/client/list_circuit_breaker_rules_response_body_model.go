@@ -121,7 +121,12 @@ func (s *ListCircuitBreakerRulesResponseBody) SetSuccess(v bool) *ListCircuitBre
 }
 
 func (s *ListCircuitBreakerRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCircuitBreakerRulesResponseBodyData struct {
@@ -192,7 +197,16 @@ func (s *ListCircuitBreakerRulesResponseBodyData) SetTotalSize(v int32) *ListCir
 }
 
 func (s *ListCircuitBreakerRulesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCircuitBreakerRulesResponseBodyDataResult struct {

@@ -202,7 +202,12 @@ func (s *UpdateGatewayDomainRequest) SetTlsMin(v string) *UpdateGatewayDomainReq
 }
 
 func (s *UpdateGatewayDomainRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TlsCipherSuitesConfigJSON != nil {
+		if err := s.TlsCipherSuitesConfigJSON.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateGatewayDomainRequestTlsCipherSuitesConfigJSON struct {

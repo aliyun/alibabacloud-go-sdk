@@ -125,7 +125,12 @@ func (s *ListGatewayServiceResponseBody) SetSuccess(v bool) *ListGatewayServiceR
 }
 
 func (s *ListGatewayServiceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListGatewayServiceResponseBodyData struct {
@@ -196,7 +201,16 @@ func (s *ListGatewayServiceResponseBodyData) SetTotalSize(v int64) *ListGatewayS
 }
 
 func (s *ListGatewayServiceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewayServiceResponseBodyDataResult struct {
@@ -564,7 +578,26 @@ func (s *ListGatewayServiceResponseBodyDataResult) SetVersions(v []*ListGatewayS
 }
 
 func (s *ListGatewayServiceResponseBodyDataResult) Validate() error {
-	return dara.Validate(s)
+	if s.GatewayTrafficPolicy != nil {
+		if err := s.GatewayTrafficPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HealthCheckInfo != nil {
+		if err := s.HealthCheckInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Versions != nil {
+		for _, item := range s.Versions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicy struct {
@@ -601,7 +634,17 @@ func (s *ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicy) SetTls(v 
 }
 
 func (s *ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.LoadBalancerSettings != nil {
+		if err := s.LoadBalancerSettings.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tls != nil {
+		if err := s.Tls.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicyLoadBalancerSettings struct {
@@ -665,7 +708,12 @@ func (s *ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicyLoadBalance
 }
 
 func (s *ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicyLoadBalancerSettings) Validate() error {
-	return dara.Validate(s)
+	if s.ConsistentHashLBConfig != nil {
+		if err := s.ConsistentHashLBConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicyLoadBalancerSettingsConsistentHashLBConfig struct {
@@ -744,7 +792,12 @@ func (s *ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicyLoadBalance
 }
 
 func (s *ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicyLoadBalancerSettingsConsistentHashLBConfig) Validate() error {
-	return dara.Validate(s)
+	if s.HttpCookie != nil {
+		if err := s.HttpCookie.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicyLoadBalancerSettingsConsistentHashLBConfigHttpCookie struct {

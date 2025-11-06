@@ -112,7 +112,12 @@ func (s *QuerySwimmingLaneByIdResponseBody) SetSuccess(v bool) *QuerySwimmingLan
 }
 
 func (s *QuerySwimmingLaneByIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QuerySwimmingLaneByIdResponseBodyData struct {
@@ -267,7 +272,16 @@ func (s *QuerySwimmingLaneByIdResponseBodyData) SetTag(v string) *QuerySwimmingL
 }
 
 func (s *QuerySwimmingLaneByIdResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.EntryRules != nil {
+		for _, item := range s.EntryRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QuerySwimmingLaneByIdResponseBodyDataEntryRules struct {
@@ -322,7 +336,16 @@ func (s *QuerySwimmingLaneByIdResponseBodyDataEntryRules) SetRestItems(v []*Quer
 }
 
 func (s *QuerySwimmingLaneByIdResponseBodyDataEntryRules) Validate() error {
-	return dara.Validate(s)
+	if s.RestItems != nil {
+		for _, item := range s.RestItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QuerySwimmingLaneByIdResponseBodyDataEntryRulesRestItems struct {

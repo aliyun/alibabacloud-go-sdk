@@ -125,7 +125,12 @@ func (s *GetGatewayDomainDetailResponseBody) SetSuccess(v bool) *GetGatewayDomai
 }
 
 func (s *GetGatewayDomainDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGatewayDomainDetailResponseBodyData struct {
@@ -481,7 +486,12 @@ func (s *GetGatewayDomainDetailResponseBodyData) SetTlsMin(v string) *GetGateway
 }
 
 func (s *GetGatewayDomainDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.TlsCipherSuitesConfig != nil {
+		if err := s.TlsCipherSuitesConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGatewayDomainDetailResponseBodyDataTlsCipherSuitesConfig struct {

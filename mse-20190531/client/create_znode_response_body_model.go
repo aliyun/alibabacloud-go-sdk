@@ -125,7 +125,12 @@ func (s *CreateZnodeResponseBody) SetSuccess(v bool) *CreateZnodeResponseBody {
 }
 
 func (s *CreateZnodeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateZnodeResponseBodyData struct {

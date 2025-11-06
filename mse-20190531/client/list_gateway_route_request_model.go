@@ -125,7 +125,12 @@ func (s *ListGatewayRouteRequest) SetPageSize(v int32) *ListGatewayRouteRequest 
 }
 
 func (s *ListGatewayRouteRequest) Validate() error {
-	return dara.Validate(s)
+	if s.FilterParams != nil {
+		if err := s.FilterParams.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListGatewayRouteRequestFilterParams struct {

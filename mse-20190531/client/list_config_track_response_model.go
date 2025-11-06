@@ -59,5 +59,10 @@ func (s *ListConfigTrackResponse) SetBody(v *ListConfigTrackResponseBody) *ListC
 }
 
 func (s *ListConfigTrackResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

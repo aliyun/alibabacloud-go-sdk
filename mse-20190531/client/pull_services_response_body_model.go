@@ -125,7 +125,16 @@ func (s *PullServicesResponseBody) SetSuccess(v bool) *PullServicesResponseBody 
 }
 
 func (s *PullServicesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PullServicesResponseBodyData struct {
@@ -196,7 +205,16 @@ func (s *PullServicesResponseBodyData) SetServices(v []*PullServicesResponseBody
 }
 
 func (s *PullServicesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Services != nil {
+		for _, item := range s.Services {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PullServicesResponseBodyDataServices struct {

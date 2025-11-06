@@ -101,5 +101,10 @@ func (s *UpdateGatewayOptionRequest) SetGatewayUniqueId(v string) *UpdateGateway
 }
 
 func (s *UpdateGatewayOptionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.GatewayOption != nil {
+		if err := s.GatewayOption.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

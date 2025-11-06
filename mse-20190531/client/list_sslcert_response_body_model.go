@@ -125,7 +125,16 @@ func (s *ListSSLCertResponseBody) SetSuccess(v bool) *ListSSLCertResponseBody {
 }
 
 func (s *ListSSLCertResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSSLCertResponseBodyData struct {

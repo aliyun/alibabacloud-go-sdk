@@ -161,7 +161,12 @@ func (s *QueryClusterDiskSpecificationResponseBody) SetSuccess(v bool) *QueryClu
 }
 
 func (s *QueryClusterDiskSpecificationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryClusterDiskSpecificationResponseBodyData struct {

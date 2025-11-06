@@ -59,5 +59,10 @@ func (s *ListIsolationRulesResponse) SetBody(v *ListIsolationRulesResponseBody) 
 }
 
 func (s *ListIsolationRulesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

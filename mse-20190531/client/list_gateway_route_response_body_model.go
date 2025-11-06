@@ -125,7 +125,12 @@ func (s *ListGatewayRouteResponseBody) SetSuccess(v bool) *ListGatewayRouteRespo
 }
 
 func (s *ListGatewayRouteResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListGatewayRouteResponseBodyData struct {
@@ -196,7 +201,16 @@ func (s *ListGatewayRouteResponseBodyData) SetTotalSize(v int64) *ListGatewayRou
 }
 
 func (s *ListGatewayRouteResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewayRouteResponseBodyDataResult struct {
@@ -579,7 +593,45 @@ func (s *ListGatewayRouteResponseBodyDataResult) SetType(v string) *ListGatewayR
 }
 
 func (s *ListGatewayRouteResponseBodyDataResult) Validate() error {
-	return dara.Validate(s)
+	if s.Comment != nil {
+		if err := s.Comment.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DirectResponse != nil {
+		if err := s.DirectResponse.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FallbackServices != nil {
+		for _, item := range s.FallbackServices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Redirect != nil {
+		if err := s.Redirect.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RoutePredicates != nil {
+		if err := s.RoutePredicates.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RouteServices != nil {
+		for _, item := range s.RouteServices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewayRouteResponseBodyDataResultComment struct {
@@ -938,7 +990,30 @@ func (s *ListGatewayRouteResponseBodyDataResultRoutePredicates) SetQueryPredicat
 }
 
 func (s *ListGatewayRouteResponseBodyDataResultRoutePredicates) Validate() error {
-	return dara.Validate(s)
+	if s.HeaderPredicates != nil {
+		for _, item := range s.HeaderPredicates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PathPredicates != nil {
+		if err := s.PathPredicates.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QueryPredicates != nil {
+		for _, item := range s.QueryPredicates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewayRouteResponseBodyDataResultRoutePredicatesHeaderPredicates struct {
@@ -1317,7 +1392,12 @@ func (s *ListGatewayRouteResponseBodyDataResultRouteServices) SetVersion(v strin
 }
 
 func (s *ListGatewayRouteResponseBodyDataResultRouteServices) Validate() error {
-	return dara.Validate(s)
+	if s.HttpDubboTranscoder != nil {
+		if err := s.HttpDubboTranscoder.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoder struct {
@@ -1388,7 +1468,16 @@ func (s *ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoder)
 }
 
 func (s *ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoder) Validate() error {
-	return dara.Validate(s)
+	if s.MothedMapList != nil {
+		for _, item := range s.MothedMapList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoderMothedMapList struct {
@@ -1505,7 +1594,16 @@ func (s *ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoderM
 }
 
 func (s *ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoderMothedMapList) Validate() error {
-	return dara.Validate(s)
+	if s.ParamMapsList != nil {
+		for _, item := range s.ParamMapsList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoderMothedMapListParamMapsList struct {

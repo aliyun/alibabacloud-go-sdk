@@ -108,7 +108,12 @@ func (s *UpdateGatewayRouteRetryRequest) SetRetryJSON(v *UpdateGatewayRouteRetry
 }
 
 func (s *UpdateGatewayRouteRetryRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RetryJSON != nil {
+		if err := s.RetryJSON.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateGatewayRouteRetryRequestRetryJSON struct {

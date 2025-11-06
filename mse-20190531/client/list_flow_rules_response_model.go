@@ -59,5 +59,10 @@ func (s *ListFlowRulesResponse) SetBody(v *ListFlowRulesResponseBody) *ListFlowR
 }
 
 func (s *ListFlowRulesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

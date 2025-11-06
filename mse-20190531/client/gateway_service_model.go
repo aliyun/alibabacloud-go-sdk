@@ -119,5 +119,10 @@ func (s *GatewayService) SetSourceType(v string) *GatewayService {
 }
 
 func (s *GatewayService) Validate() error {
-	return dara.Validate(s)
+	if s.GatewayTrafficPolicy != nil {
+		if err := s.GatewayTrafficPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

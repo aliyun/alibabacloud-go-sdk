@@ -503,7 +503,25 @@ func (s *AddGatewayRequest) SetZoneInfo(v []*AddGatewayRequestZoneInfo) *AddGate
 }
 
 func (s *AddGatewayRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ZoneInfo != nil {
+		for _, item := range s.ZoneInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddGatewayRequestTag struct {

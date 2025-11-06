@@ -59,5 +59,10 @@ func (s *ListZnodeChildrenResponse) SetBody(v *ListZnodeChildrenResponseBody) *L
 }
 
 func (s *ListZnodeChildrenResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

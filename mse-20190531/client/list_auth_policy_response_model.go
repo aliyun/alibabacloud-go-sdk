@@ -59,5 +59,10 @@ func (s *ListAuthPolicyResponse) SetBody(v *ListAuthPolicyResponseBody) *ListAut
 }
 
 func (s *ListAuthPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *GetApplicationInstanceListResponse) SetBody(v *GetApplicationInstanceLi
 }
 
 func (s *GetApplicationInstanceListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

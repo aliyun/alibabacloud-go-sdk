@@ -50,7 +50,12 @@ func (s *UpdateGatewayIsolationRuleResponseBody) SetRequestId(v string) *UpdateG
 }
 
 func (s *UpdateGatewayIsolationRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateGatewayIsolationRuleResponseBodyData struct {

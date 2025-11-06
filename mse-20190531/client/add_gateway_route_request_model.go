@@ -325,7 +325,40 @@ func (s *AddGatewayRouteRequest) SetServices(v []*AddGatewayRouteRequestServices
 }
 
 func (s *AddGatewayRouteRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DirectResponseJSON != nil {
+		if err := s.DirectResponseJSON.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FallbackServices != nil {
+		for _, item := range s.FallbackServices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Predicates != nil {
+		if err := s.Predicates.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RedirectJSON != nil {
+		if err := s.RedirectJSON.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Services != nil {
+		for _, item := range s.Services {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddGatewayRouteRequestDirectResponseJSON struct {
@@ -579,7 +612,30 @@ func (s *AddGatewayRouteRequestPredicates) SetQueryPredicates(v []*AddGatewayRou
 }
 
 func (s *AddGatewayRouteRequestPredicates) Validate() error {
-	return dara.Validate(s)
+	if s.HeaderPredicates != nil {
+		for _, item := range s.HeaderPredicates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PathPredicates != nil {
+		if err := s.PathPredicates.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QueryPredicates != nil {
+		for _, item := range s.QueryPredicates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddGatewayRouteRequestPredicatesHeaderPredicates struct {
@@ -986,7 +1042,12 @@ func (s *AddGatewayRouteRequestServices) SetVersion(v string) *AddGatewayRouteRe
 }
 
 func (s *AddGatewayRouteRequestServices) Validate() error {
-	return dara.Validate(s)
+	if s.HttpDubboTranscoder != nil {
+		if err := s.HttpDubboTranscoder.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddGatewayRouteRequestServicesHttpDubboTranscoder struct {
@@ -1057,7 +1118,16 @@ func (s *AddGatewayRouteRequestServicesHttpDubboTranscoder) SetMothedMapList(v [
 }
 
 func (s *AddGatewayRouteRequestServicesHttpDubboTranscoder) Validate() error {
-	return dara.Validate(s)
+	if s.MothedMapList != nil {
+		for _, item := range s.MothedMapList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddGatewayRouteRequestServicesHttpDubboTranscoderMothedMapList struct {
@@ -1174,7 +1244,16 @@ func (s *AddGatewayRouteRequestServicesHttpDubboTranscoderMothedMapList) SetPass
 }
 
 func (s *AddGatewayRouteRequestServicesHttpDubboTranscoderMothedMapList) Validate() error {
-	return dara.Validate(s)
+	if s.ParamMapsList != nil {
+		for _, item := range s.ParamMapsList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddGatewayRouteRequestServicesHttpDubboTranscoderMothedMapListParamMapsList struct {

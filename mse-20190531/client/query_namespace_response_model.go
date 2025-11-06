@@ -59,5 +59,10 @@ func (s *QueryNamespaceResponse) SetBody(v *QueryNamespaceResponseBody) *QueryNa
 }
 
 func (s *QueryNamespaceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

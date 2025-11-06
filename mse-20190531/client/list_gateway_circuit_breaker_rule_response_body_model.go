@@ -50,7 +50,12 @@ func (s *ListGatewayCircuitBreakerRuleResponseBody) SetRequestId(v string) *List
 }
 
 func (s *ListGatewayCircuitBreakerRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListGatewayCircuitBreakerRuleResponseBodyData struct {
@@ -124,7 +129,25 @@ func (s *ListGatewayCircuitBreakerRuleResponseBodyData) SetTotalSize(v int32) *L
 }
 
 func (s *ListGatewayCircuitBreakerRuleResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewayCircuitBreakerRuleResponseBodyDataResult struct {

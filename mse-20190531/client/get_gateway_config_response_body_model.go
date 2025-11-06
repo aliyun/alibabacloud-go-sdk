@@ -155,7 +155,12 @@ func (s *GetGatewayConfigResponseBody) SetSuccess(v bool) *GetGatewayConfigRespo
 }
 
 func (s *GetGatewayConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGatewayConfigResponseBodyData struct {
@@ -558,7 +563,27 @@ func (s *GetGatewayConfigResponseBodyData) SetZipAlgorithm(v string) *GetGateway
 }
 
 func (s *GetGatewayConfigResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.EnableK8sSourceWorkloadFilter != nil {
+		if err := s.EnableK8sSourceWorkloadFilter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EnableXffTrustedCidrs != nil {
+		if err := s.EnableXffTrustedCidrs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SlsConfigDetails != nil {
+		if err := s.SlsConfigDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.XtraceDetails != nil {
+		if err := s.XtraceDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGatewayConfigResponseBodyDataEnableK8sSourceWorkloadFilter struct {

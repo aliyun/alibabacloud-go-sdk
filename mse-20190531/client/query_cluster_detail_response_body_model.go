@@ -108,7 +108,12 @@ func (s *QueryClusterDetailResponseBody) SetSuccess(v bool) *QueryClusterDetailR
 }
 
 func (s *QueryClusterDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryClusterDetailResponseBodyData struct {
@@ -690,7 +695,16 @@ func (s *QueryClusterDetailResponseBodyData) SetVpcId(v string) *QueryClusterDet
 }
 
 func (s *QueryClusterDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceModels != nil {
+		for _, item := range s.InstanceModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryClusterDetailResponseBodyDataInstanceModels struct {

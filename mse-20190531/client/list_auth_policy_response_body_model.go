@@ -121,7 +121,12 @@ func (s *ListAuthPolicyResponseBody) SetSuccess(v bool) *ListAuthPolicyResponseB
 }
 
 func (s *ListAuthPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAuthPolicyResponseBodyData struct {
@@ -192,7 +197,16 @@ func (s *ListAuthPolicyResponseBodyData) SetTotalSize(v int32) *ListAuthPolicyRe
 }
 
 func (s *ListAuthPolicyResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAuthPolicyResponseBodyDataResult struct {
@@ -427,7 +441,16 @@ func (s *ListAuthPolicyResponseBodyDataResult) SetStatus(v int32) *ListAuthPolic
 }
 
 func (s *ListAuthPolicyResponseBodyDataResult) Validate() error {
-	return dara.Validate(s)
+	if s.AuthRule != nil {
+		for _, item := range s.AuthRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAuthPolicyResponseBodyDataResultAuthRule struct {
@@ -524,7 +547,12 @@ func (s *ListAuthPolicyResponseBodyDataResultAuthRule) SetPath(v string) *ListAu
 }
 
 func (s *ListAuthPolicyResponseBodyDataResultAuthRule) Validate() error {
-	return dara.Validate(s)
+	if s.Method != nil {
+		if err := s.Method.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAuthPolicyResponseBodyDataResultAuthRuleMethod struct {

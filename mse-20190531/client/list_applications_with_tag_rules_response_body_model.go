@@ -112,7 +112,12 @@ func (s *ListApplicationsWithTagRulesResponseBody) SetSuccess(v bool) *ListAppli
 }
 
 func (s *ListApplicationsWithTagRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListApplicationsWithTagRulesResponseBodyData struct {
@@ -183,7 +188,16 @@ func (s *ListApplicationsWithTagRulesResponseBodyData) SetTotalSize(v int32) *Li
 }
 
 func (s *ListApplicationsWithTagRulesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApplicationsWithTagRulesResponseBodyDataResult struct {
@@ -273,7 +287,16 @@ func (s *ListApplicationsWithTagRulesResponseBodyDataResult) SetRouteStatus(v in
 }
 
 func (s *ListApplicationsWithTagRulesResponseBodyDataResult) Validate() error {
-	return dara.Validate(s)
+	if s.RouteRules != nil {
+		for _, item := range s.RouteRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApplicationsWithTagRulesResponseBodyDataResultRouteRules struct {
@@ -442,7 +465,12 @@ func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetTag(v 
 }
 
 func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		if err := s.Rules.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRules struct {
@@ -477,7 +505,25 @@ func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRules) SetS
 }
 
 func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRules) Validate() error {
-	return dara.Validate(s)
+	if s.Dubbo != nil {
+		for _, item := range s.Dubbo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Springcloud != nil {
+		for _, item := range s.Springcloud {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo struct {
@@ -592,7 +638,16 @@ func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo)
 }
 
 func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo) Validate() error {
-	return dara.Validate(s)
+	if s.ArgumentItems != nil {
+		for _, item := range s.ArgumentItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems struct {
@@ -812,7 +867,16 @@ func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpring
 }
 
 func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud) Validate() error {
-	return dara.Validate(s)
+	if s.RestItems != nil {
+		for _, item := range s.RestItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems struct {

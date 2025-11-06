@@ -59,5 +59,10 @@ func (s *RemoveAuthPolicyResponse) SetBody(v *RemoveAuthPolicyResponseBody) *Rem
 }
 
 func (s *RemoveAuthPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

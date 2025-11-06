@@ -201,7 +201,16 @@ func (s *AddGatewaySlbRequest) SetVServiceList(v []*AddGatewaySlbRequestVService
 }
 
 func (s *AddGatewaySlbRequest) Validate() error {
-	return dara.Validate(s)
+	if s.VServiceList != nil {
+		for _, item := range s.VServiceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddGatewaySlbRequestVServiceList struct {

@@ -59,5 +59,10 @@ func (s *UpdateGatewaySpecResponse) SetBody(v *UpdateGatewaySpecResponseBody) *U
 }
 
 func (s *UpdateGatewaySpecResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

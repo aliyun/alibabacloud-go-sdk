@@ -125,7 +125,12 @@ func (s *GetGatewayRouteDetailResponseBody) SetSuccess(v bool) *GetGatewayRouteD
 }
 
 func (s *GetGatewayRouteDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGatewayRouteDetailResponseBodyData struct {
@@ -607,7 +612,70 @@ func (s *GetGatewayRouteDetailResponseBodyData) SetTimeout(v *GetGatewayRouteDet
 }
 
 func (s *GetGatewayRouteDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Cors != nil {
+		if err := s.Cors.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DirectResponse != nil {
+		if err := s.DirectResponse.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FallbackServices != nil {
+		for _, item := range s.FallbackServices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FlowMirror != nil {
+		if err := s.FlowMirror.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HTTPRewrite != nil {
+		if err := s.HTTPRewrite.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HeaderOp != nil {
+		if err := s.HeaderOp.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Redirect != nil {
+		if err := s.Redirect.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Retry != nil {
+		if err := s.Retry.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RoutePredicates != nil {
+		if err := s.RoutePredicates.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RouteServices != nil {
+		for _, item := range s.RouteServices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Timeout != nil {
+		if err := s.Timeout.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGatewayRouteDetailResponseBodyDataCors struct {
@@ -1192,7 +1260,16 @@ func (s *GetGatewayRouteDetailResponseBodyDataHeaderOp) SetStatus(v string) *Get
 }
 
 func (s *GetGatewayRouteDetailResponseBodyDataHeaderOp) Validate() error {
-	return dara.Validate(s)
+	if s.HeaderOpItems != nil {
+		for _, item := range s.HeaderOpItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetGatewayRouteDetailResponseBodyDataHeaderOpHeaderOpItems struct {
@@ -1453,7 +1530,30 @@ func (s *GetGatewayRouteDetailResponseBodyDataRoutePredicates) SetQueryPredicate
 }
 
 func (s *GetGatewayRouteDetailResponseBodyDataRoutePredicates) Validate() error {
-	return dara.Validate(s)
+	if s.HeaderPredicates != nil {
+		for _, item := range s.HeaderPredicates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PathPredicates != nil {
+		if err := s.PathPredicates.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QueryPredicates != nil {
+		for _, item := range s.QueryPredicates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetGatewayRouteDetailResponseBodyDataRoutePredicatesHeaderPredicates struct {
@@ -1831,7 +1931,12 @@ func (s *GetGatewayRouteDetailResponseBodyDataRouteServices) SetVersion(v string
 }
 
 func (s *GetGatewayRouteDetailResponseBodyDataRouteServices) Validate() error {
-	return dara.Validate(s)
+	if s.HttpDubboTranscoder != nil {
+		if err := s.HttpDubboTranscoder.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGatewayRouteDetailResponseBodyDataRouteServicesHttpDubboTranscoder struct {
@@ -1886,7 +1991,16 @@ func (s *GetGatewayRouteDetailResponseBodyDataRouteServicesHttpDubboTranscoder) 
 }
 
 func (s *GetGatewayRouteDetailResponseBodyDataRouteServicesHttpDubboTranscoder) Validate() error {
-	return dara.Validate(s)
+	if s.MothedMapList != nil {
+		for _, item := range s.MothedMapList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetGatewayRouteDetailResponseBodyDataRouteServicesHttpDubboTranscoderMothedMapList struct {
@@ -1961,7 +2075,16 @@ func (s *GetGatewayRouteDetailResponseBodyDataRouteServicesHttpDubboTranscoderMo
 }
 
 func (s *GetGatewayRouteDetailResponseBodyDataRouteServicesHttpDubboTranscoderMothedMapList) Validate() error {
-	return dara.Validate(s)
+	if s.ParamMapsList != nil {
+		for _, item := range s.ParamMapsList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetGatewayRouteDetailResponseBodyDataRouteServicesHttpDubboTranscoderMothedMapListParamMapsList struct {

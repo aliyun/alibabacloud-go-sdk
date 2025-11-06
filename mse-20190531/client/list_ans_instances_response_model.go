@@ -59,5 +59,10 @@ func (s *ListAnsInstancesResponse) SetBody(v *ListAnsInstancesResponseBody) *Lis
 }
 
 func (s *ListAnsInstancesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

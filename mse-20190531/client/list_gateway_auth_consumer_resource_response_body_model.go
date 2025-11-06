@@ -178,7 +178,12 @@ func (s *ListGatewayAuthConsumerResourceResponseBody) SetSuccess(v bool) *ListGa
 }
 
 func (s *ListGatewayAuthConsumerResourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListGatewayAuthConsumerResourceResponseBodyData struct {
@@ -249,7 +254,16 @@ func (s *ListGatewayAuthConsumerResourceResponseBodyData) SetTotalSize(v int64) 
 }
 
 func (s *ListGatewayAuthConsumerResourceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewayAuthConsumerResourceResponseBodyDataResult struct {

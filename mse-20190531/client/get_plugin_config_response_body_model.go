@@ -172,7 +172,12 @@ func (s *GetPluginConfigResponseBody) SetSuccess(v bool) *GetPluginConfigRespons
 }
 
 func (s *GetPluginConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPluginConfigResponseBodyData struct {
@@ -556,7 +561,16 @@ func (s *GetPluginConfigResponseBodyData) SetWasmLang(v int32) *GetPluginConfigR
 }
 
 func (s *GetPluginConfigResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.GatewayConfigList != nil {
+		for _, item := range s.GatewayConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPluginConfigResponseBodyDataGatewayConfigList struct {
@@ -722,7 +736,16 @@ func (s *GetPluginConfigResponseBodyDataGatewayConfigList) SetResourceList(v []*
 }
 
 func (s *GetPluginConfigResponseBodyDataGatewayConfigList) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceList != nil {
+		for _, item := range s.ResourceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPluginConfigResponseBodyDataGatewayConfigListResourceList struct {

@@ -176,7 +176,16 @@ func (s *ListEurekaServicesResponseBody) SetTotalCount(v int32) *ListEurekaServi
 }
 
 func (s *ListEurekaServicesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEurekaServicesResponseBodyData struct {

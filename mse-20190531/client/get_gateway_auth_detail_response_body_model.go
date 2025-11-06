@@ -110,7 +110,12 @@ func (s *GetGatewayAuthDetailResponseBody) SetSuccess(v bool) *GetGatewayAuthDet
 }
 
 func (s *GetGatewayAuthDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGatewayAuthDetailResponseBodyData struct {
@@ -454,7 +459,21 @@ func (s *GetGatewayAuthDetailResponseBodyData) SetType(v string) *GetGatewayAuth
 }
 
 func (s *GetGatewayAuthDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ExternalAuthZ != nil {
+		if err := s.ExternalAuthZ.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceList != nil {
+		for _, item := range s.ResourceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetGatewayAuthDetailResponseBodyDataExternalAuthZ struct {
@@ -600,7 +619,12 @@ func (s *GetGatewayAuthDetailResponseBodyDataExternalAuthZ) SetWithRequestBody(v
 }
 
 func (s *GetGatewayAuthDetailResponseBodyDataExternalAuthZ) Validate() error {
-	return dara.Validate(s)
+	if s.Service != nil {
+		if err := s.Service.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGatewayAuthDetailResponseBodyDataExternalAuthZService struct {
@@ -848,7 +872,16 @@ func (s *GetGatewayAuthDetailResponseBodyDataResourceList) SetPath(v string) *Ge
 }
 
 func (s *GetGatewayAuthDetailResponseBodyDataResourceList) Validate() error {
-	return dara.Validate(s)
+	if s.AuthResourceHeaderList != nil {
+		for _, item := range s.AuthResourceHeaderList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetGatewayAuthDetailResponseBodyDataResourceListAuthResourceHeaderList struct {

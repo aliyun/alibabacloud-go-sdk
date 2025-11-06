@@ -50,7 +50,12 @@ func (s *ListGatewayIsolationRuleResponseBody) SetRequestId(v string) *ListGatew
 }
 
 func (s *ListGatewayIsolationRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListGatewayIsolationRuleResponseBodyData struct {
@@ -124,7 +129,25 @@ func (s *ListGatewayIsolationRuleResponseBodyData) SetTotalSize(v int32) *ListGa
 }
 
 func (s *ListGatewayIsolationRuleResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGatewayIsolationRuleResponseBodyDataResult struct {

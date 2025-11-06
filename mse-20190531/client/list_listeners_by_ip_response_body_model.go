@@ -176,7 +176,16 @@ func (s *ListListenersByIpResponseBody) SetTotalCount(v int32) *ListListenersByI
 }
 
 func (s *ListListenersByIpResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Listeners != nil {
+		for _, item := range s.Listeners {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListListenersByIpResponseBodyListeners struct {

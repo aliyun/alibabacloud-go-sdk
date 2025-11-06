@@ -59,5 +59,10 @@ func (s *UpdateNacosConfigResponse) SetBody(v *UpdateNacosConfigResponseBody) *U
 }
 
 func (s *UpdateNacosConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

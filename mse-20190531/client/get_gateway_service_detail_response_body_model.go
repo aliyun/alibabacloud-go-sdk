@@ -125,7 +125,12 @@ func (s *GetGatewayServiceDetailResponseBody) SetSuccess(v bool) *GetGatewayServ
 }
 
 func (s *GetGatewayServiceDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGatewayServiceDetailResponseBodyData struct {
@@ -476,7 +481,48 @@ func (s *GetGatewayServiceDetailResponseBodyData) SetVersions(v []*GetGatewaySer
 }
 
 func (s *GetGatewayServiceDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.GatewayTrafficPolicy != nil {
+		if err := s.GatewayTrafficPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LabelDetails != nil {
+		for _, item := range s.LabelDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PortTrafficPolicyList != nil {
+		for _, item := range s.PortTrafficPolicyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VersionDetails != nil {
+		for _, item := range s.VersionDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Versions != nil {
+		for _, item := range s.Versions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetGatewayServiceDetailResponseBodyDataLabelDetails struct {
@@ -633,7 +679,12 @@ func (s *GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList) SetTraffi
 }
 
 func (s *GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList) Validate() error {
-	return dara.Validate(s)
+	if s.TrafficPolicy != nil {
+		if err := s.TrafficPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGatewayServiceDetailResponseBodyDataVersionDetails struct {
@@ -689,7 +740,12 @@ func (s *GetGatewayServiceDetailResponseBodyDataVersionDetails) SetServiceVersio
 }
 
 func (s *GetGatewayServiceDetailResponseBodyDataVersionDetails) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceVersion != nil {
+		if err := s.ServiceVersion.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGatewayServiceDetailResponseBodyDataVersionDetailsServiceVersion struct {
@@ -730,7 +786,16 @@ func (s *GetGatewayServiceDetailResponseBodyDataVersionDetailsServiceVersion) Se
 }
 
 func (s *GetGatewayServiceDetailResponseBodyDataVersionDetailsServiceVersion) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetGatewayServiceDetailResponseBodyDataVersionDetailsServiceVersionLabels struct {

@@ -50,7 +50,12 @@ func (s *ListNacosMcpServersResponseBody) SetRequestId(v string) *ListNacosMcpSe
 }
 
 func (s *ListNacosMcpServersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListNacosMcpServersResponseBodyData struct {
@@ -118,7 +123,16 @@ func (s *ListNacosMcpServersResponseBodyData) SetTotalCount(v int32) *ListNacosM
 }
 
 func (s *ListNacosMcpServersResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PageItems != nil {
+		for _, item := range s.PageItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNacosMcpServersResponseBodyDataPageItems struct {
@@ -233,7 +247,12 @@ func (s *ListNacosMcpServersResponseBodyDataPageItems) SetVersionDetail(v *ListN
 }
 
 func (s *ListNacosMcpServersResponseBodyDataPageItems) Validate() error {
-	return dara.Validate(s)
+	if s.VersionDetail != nil {
+		if err := s.VersionDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListNacosMcpServersResponseBodyDataPageItemsVersionDetail struct {

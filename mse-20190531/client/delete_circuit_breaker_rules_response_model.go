@@ -59,5 +59,10 @@ func (s *DeleteCircuitBreakerRulesResponse) SetBody(v *DeleteCircuitBreakerRules
 }
 
 func (s *DeleteCircuitBreakerRulesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

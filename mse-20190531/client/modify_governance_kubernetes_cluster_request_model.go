@@ -95,7 +95,16 @@ func (s *ModifyGovernanceKubernetesClusterRequest) SetRegionId(v string) *Modify
 }
 
 func (s *ModifyGovernanceKubernetesClusterRequest) Validate() error {
-	return dara.Validate(s)
+	if s.NamespaceInfos != nil {
+		for _, item := range s.NamespaceInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyGovernanceKubernetesClusterRequestNamespaceInfos struct {

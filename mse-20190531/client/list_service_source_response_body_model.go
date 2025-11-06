@@ -125,7 +125,16 @@ func (s *ListServiceSourceResponseBody) SetSuccess(v bool) *ListServiceSourceRes
 }
 
 func (s *ListServiceSourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListServiceSourceResponseBodyData struct {
@@ -348,7 +357,12 @@ func (s *ListServiceSourceResponseBodyData) SetType(v string) *ListServiceSource
 }
 
 func (s *ListServiceSourceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.IngressOptions != nil {
+		if err := s.IngressOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListServiceSourceResponseBodyDataIngressOptions struct {

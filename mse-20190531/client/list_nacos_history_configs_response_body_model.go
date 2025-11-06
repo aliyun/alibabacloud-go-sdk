@@ -176,7 +176,16 @@ func (s *ListNacosHistoryConfigsResponseBody) SetTotalCount(v int32) *ListNacosH
 }
 
 func (s *ListNacosHistoryConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HistoryItems != nil {
+		for _, item := range s.HistoryItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNacosHistoryConfigsResponseBodyHistoryItems struct {

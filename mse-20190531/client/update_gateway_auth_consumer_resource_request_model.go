@@ -95,7 +95,16 @@ func (s *UpdateGatewayAuthConsumerResourceRequest) SetResourceList(v []*UpdateGa
 }
 
 func (s *UpdateGatewayAuthConsumerResourceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceList != nil {
+		for _, item := range s.ResourceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateGatewayAuthConsumerResourceRequestResourceList struct {

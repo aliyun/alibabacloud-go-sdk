@@ -59,6 +59,11 @@ func (s *EnableHttp2Response) SetBody(v *EnableHttp2ResponseBody) *EnableHttp2Re
 }
 
 func (s *EnableHttp2Response) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

@@ -95,7 +95,12 @@ func (s *CreateIsolationRuleResponseBody) SetSuccess(v bool) *CreateIsolationRul
 }
 
 func (s *CreateIsolationRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateIsolationRuleResponseBodyData struct {

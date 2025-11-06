@@ -125,7 +125,12 @@ func (s *GetBlackWhiteListResponseBody) SetSuccess(v bool) *GetBlackWhiteListRes
 }
 
 func (s *GetBlackWhiteListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBlackWhiteListResponseBodyData struct {

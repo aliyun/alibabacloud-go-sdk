@@ -108,7 +108,12 @@ func (s *GetNacosConfigResponseBody) SetSuccess(v bool) *GetNacosConfigResponseB
 }
 
 func (s *GetNacosConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Configuration != nil {
+		if err := s.Configuration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNacosConfigResponseBodyConfiguration struct {
@@ -284,7 +289,16 @@ func (s *GetNacosConfigResponseBodyConfiguration) SetType(v string) *GetNacosCon
 }
 
 func (s *GetNacosConfigResponseBodyConfiguration) Validate() error {
-	return dara.Validate(s)
+	if s.GrayVersions != nil {
+		for _, item := range s.GrayVersions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetNacosConfigResponseBodyConfigurationGrayVersions struct {

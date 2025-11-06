@@ -59,5 +59,10 @@ func (s *GatewayBlackWhiteListResponse) SetBody(v *GatewayBlackWhiteListResponse
 }
 
 func (s *GatewayBlackWhiteListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

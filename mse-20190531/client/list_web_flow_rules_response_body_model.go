@@ -110,7 +110,12 @@ func (s *ListWebFlowRulesResponseBody) SetSuccess(v bool) *ListWebFlowRulesRespo
 }
 
 func (s *ListWebFlowRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListWebFlowRulesResponseBodyData struct {
@@ -174,7 +179,16 @@ func (s *ListWebFlowRulesResponseBodyData) SetTotalSize(v int32) *ListWebFlowRul
 }
 
 func (s *ListWebFlowRulesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWebFlowRulesResponseBodyDataResult struct {

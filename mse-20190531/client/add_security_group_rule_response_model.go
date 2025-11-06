@@ -59,5 +59,10 @@ func (s *AddSecurityGroupRuleResponse) SetBody(v *AddSecurityGroupRuleResponseBo
 }
 
 func (s *AddSecurityGroupRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

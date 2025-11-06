@@ -36,7 +36,12 @@ func (s *GetApplicationInstanceListResponseBody) SetData(v *GetApplicationInstan
 }
 
 func (s *GetApplicationInstanceListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetApplicationInstanceListResponseBodyData struct {
@@ -107,7 +112,16 @@ func (s *GetApplicationInstanceListResponseBodyData) SetTotalSize(v int32) *GetA
 }
 
 func (s *GetApplicationInstanceListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetApplicationInstanceListResponseBodyDataResult struct {
@@ -163,7 +177,16 @@ func (s *GetApplicationInstanceListResponseBodyDataResult) SetTags(v []*GetAppli
 }
 
 func (s *GetApplicationInstanceListResponseBodyDataResult) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetApplicationInstanceListResponseBodyDataResultTags struct {

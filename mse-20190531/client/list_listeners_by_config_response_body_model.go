@@ -176,7 +176,16 @@ func (s *ListListenersByConfigResponseBody) SetTotalCount(v int32) *ListListener
 }
 
 func (s *ListListenersByConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Listeners != nil {
+		for _, item := range s.Listeners {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListListenersByConfigResponseBodyListeners struct {

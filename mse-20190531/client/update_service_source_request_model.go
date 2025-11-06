@@ -201,7 +201,12 @@ func (s *UpdateServiceSourceRequest) SetType(v string) *UpdateServiceSourceReque
 }
 
 func (s *UpdateServiceSourceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.IngressOptionsRequest != nil {
+		if err := s.IngressOptionsRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateServiceSourceRequestIngressOptionsRequest struct {

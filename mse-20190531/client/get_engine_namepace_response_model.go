@@ -59,5 +59,10 @@ func (s *GetEngineNamepaceResponse) SetBody(v *GetEngineNamepaceResponseBody) *G
 }
 
 func (s *GetEngineNamepaceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -122,7 +122,12 @@ func (s *CreateCircuitBreakerRuleResponseBody) SetSuccess(v bool) *CreateCircuit
 }
 
 func (s *CreateCircuitBreakerRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateCircuitBreakerRuleResponseBodyData struct {
