@@ -16,7 +16,7 @@ type iListTaskInstancesResponseBody interface {
 }
 
 type ListTaskInstancesResponseBody struct {
-	// The pagination details.
+	// The pagination information.
 	PagingInfo *ListTaskInstancesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -258,6 +258,8 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	Runtime *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
 	// The information about the resource group with which the instance is associated.
 	RuntimeResource *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	// The script parameter list.
+	//
 	// example:
 	//
 	// para1=val1 para2=val2
@@ -350,10 +352,14 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// Scheduler
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The timestamp for when it started waiting for resources.
+	//
 	// example:
 	//
 	// 1710239005403
 	WaitingResourceTime *int64 `json:"WaitingResourceTime,omitempty" xml:"WaitingResourceTime,omitempty"`
+	// The timestamp for when it started waiting for the scheduled time.
+	//
 	// example:
 	//
 	// 1710239005403

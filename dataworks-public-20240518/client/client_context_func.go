@@ -9423,6 +9423,124 @@ func (client *Client) ListProjectsWithContext(ctx context.Context, tmpReq *ListP
 
 // Summary:
 //
+// # Query the list of workspaces with which a resource group is associated
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  **Make sure that the AliyunServiceRoleForDataWorks service-linked role is created before you call this operation.
+//
+// @param request - ListResourceGroupAssociateProjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResourceGroupAssociateProjectsResponse
+func (client *Client) ListResourceGroupAssociateProjectsWithContext(ctx context.Context, request *ListResourceGroupAssociateProjectsRequest, runtime *dara.RuntimeOptions) (_result *ListResourceGroupAssociateProjectsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListResourceGroupAssociateProjects"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListResourceGroupAssociateProjectsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定资源组的监控指标数据
+//
+// @param request - ListResourceGroupMetricDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResourceGroupMetricDataResponse
+func (client *Client) ListResourceGroupMetricDataWithContext(ctx context.Context, request *ListResourceGroupMetricDataRequest, runtime *dara.RuntimeOptions) (_result *ListResourceGroupMetricDataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BeginTime) {
+		body["BeginTime"] = request.BeginTime
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Length) {
+		body["Length"] = request.Length
+	}
+
+	if !dara.IsNil(request.MetricName) {
+		body["MetricName"] = request.MetricName
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Period) {
+		body["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListResourceGroupMetricData"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListResourceGroupMetricDataResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of resource groups.
 //
 // @param tmpReq - ListResourceGroupsRequest

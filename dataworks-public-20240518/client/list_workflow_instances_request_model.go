@@ -104,6 +104,8 @@ type ListWorkflowInstancesRequest struct {
 	//
 	// 	- ManualWorkflow: Manually triggered workflow
 	//
+	// 	- TriggerWorkflow: Triggered Workflow
+	//
 	// example:
 	//
 	// Normal

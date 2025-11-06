@@ -22,7 +22,7 @@ type GetCreateWorkflowInstancesResultResponseBody struct {
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of asynchronously creating a workflow instance.
+	// The creation result of the workflow instance.
 	Result *GetCreateWorkflowInstancesResultResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 

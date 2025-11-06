@@ -128,6 +128,20 @@ type ListTaskInstancesShrinkRequest struct {
 	//
 	// Id Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The status of the task instance.
+	//
+	// 	- `NotRun`: Not started
+	//
+	// 	- `Running`
+	//
+	// 	- `Failure`
+	//
+	// 	- `Success`
+	//
+	// 	- `WaitTime`: Awaiting scheduled time
+	//
+	// 	- `WaitResource`: Awaiting resources
+	//
 	// example:
 	//
 	// Success
@@ -188,15 +202,15 @@ type ListTaskInstancesShrinkRequest struct {
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
 	// The type of the workflow instance. Valid values:
 	//
-	// 	- SmokeTest
+	// 	- SmokeTest: Testing
 	//
-	// 	- Manual
+	// 	- Manual: Manually triggered node
 	//
-	// 	- SupplementData
+	// 	- SupplementData: Data backfill
 	//
-	// 	- ManualWorkflow
+	// 	- ManualWorkflow: Manually triggered workflow
 	//
-	// 	- Normal
+	// 	- Normal: Scheduled execution
 	//
 	// example:
 	//

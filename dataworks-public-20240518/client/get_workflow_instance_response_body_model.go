@@ -119,7 +119,10 @@ type GetWorkflowInstanceResponseBodyWorkflowInstance struct {
 	// example:
 	//
 	// WorkInstance1
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The workspace ID.
 	//
@@ -159,15 +162,17 @@ type GetWorkflowInstanceResponseBodyWorkflowInstance struct {
 	Tags []*GetWorkflowInstanceResponseBodyWorkflowInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The type of the workflow instance. Valid values:
 	//
-	// 	- Normal
+	// 	- Normal: Scheduled execution
 	//
-	// 	- Manual
+	// 	- Manual: Manually triggered node
 	//
-	// 	- SmokeTest
+	// 	- SmokeTest: Testing
 	//
-	// 	- SupplementData
+	// 	- SupplementData: Data backfill
 	//
-	// 	- ManualWorkflow
+	// 	- ManualWorkflow: Manually triggered workflow
+	//
+	// 	- TriggerWorkflow: Triggered Workflow
 	//
 	// example:
 	//
@@ -180,8 +185,11 @@ type GetWorkflowInstanceResponseBodyWorkflowInstance struct {
 	// 1234
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 	// The workflow parameters.
-	WorkflowParameters     *string `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty"`
-	WorkflowTaskInstanceId *int64  `json:"WorkflowTaskInstanceId,omitempty" xml:"WorkflowTaskInstanceId,omitempty"`
+	WorkflowParameters *string `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowTaskInstanceId *int64 `json:"WorkflowTaskInstanceId,omitempty" xml:"WorkflowTaskInstanceId,omitempty"`
 }
 
 func (s GetWorkflowInstanceResponseBodyWorkflowInstance) String() string {
@@ -368,10 +376,14 @@ func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) Validate() error {
 }
 
 type GetWorkflowInstanceResponseBodyWorkflowInstanceTags struct {
+	// The key of a tag.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of a tag.
+	//
 	// example:
 	//
 	// value1

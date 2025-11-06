@@ -197,7 +197,10 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	// example:
 	//
 	// WorkflowInstance1
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The workspace ID.
 	//
@@ -235,6 +238,20 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The task tag.
 	Tags []*ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The type of the workflow instance. Valid values:
+	//
+	// 	- Normal: Scheduled execution
+	//
+	// 	- Manual: Manually triggered node
+	//
+	// 	- SmokeTest: Smoke test
+	//
+	// 	- SupplementData: Data backfill
+	//
+	// 	- ManualWorkflow: Manually triggered workflow
+	//
+	// 	- TriggerWorkflow: Triggered Workflow
+	//
 	// example:
 	//
 	// Normal
@@ -246,8 +263,11 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	// 1234
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 	// The workflow parameters.
-	WorkflowParameters     *string `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty"`
-	WorkflowTaskInstanceId *int64  `json:"WorkflowTaskInstanceId,omitempty" xml:"WorkflowTaskInstanceId,omitempty"`
+	WorkflowParameters *string `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowTaskInstanceId *int64 `json:"WorkflowTaskInstanceId,omitempty" xml:"WorkflowTaskInstanceId,omitempty"`
 }
 
 func (s ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) String() string {
@@ -434,10 +454,14 @@ func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) Validate(
 }
 
 type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags struct {
+	// The key of a tag.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of a tag.
+	//
 	// example:
 	//
 	// value1
