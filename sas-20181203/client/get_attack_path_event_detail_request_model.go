@@ -11,6 +11,8 @@ type iGetAttackPathEventDetailRequest interface {
 	GoString() string
 	SetEventId(v int64) *GetAttackPathEventDetailRequest
 	GetEventId() *int64
+	SetEventSource(v string) *GetAttackPathEventDetailRequest
+	GetEventSource() *string
 	SetLang(v string) *GetAttackPathEventDetailRequest
 	GetLang() *string
 }
@@ -24,6 +26,10 @@ type GetAttackPathEventDetailRequest struct {
 	//
 	// 123
 	EventId *int64 `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// default
+	EventSource *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
 	// The language type for request and response, default is **zh**. Values:
 	//
 	// - **zh**: Chinese
@@ -48,12 +54,21 @@ func (s *GetAttackPathEventDetailRequest) GetEventId() *int64 {
 	return s.EventId
 }
 
+func (s *GetAttackPathEventDetailRequest) GetEventSource() *string {
+	return s.EventSource
+}
+
 func (s *GetAttackPathEventDetailRequest) GetLang() *string {
 	return s.Lang
 }
 
 func (s *GetAttackPathEventDetailRequest) SetEventId(v int64) *GetAttackPathEventDetailRequest {
 	s.EventId = &v
+	return s
+}
+
+func (s *GetAttackPathEventDetailRequest) SetEventSource(v string) *GetAttackPathEventDetailRequest {
+	s.EventSource = &v
 	return s
 }
 

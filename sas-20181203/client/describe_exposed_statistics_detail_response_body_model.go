@@ -217,6 +217,10 @@ type DescribeExposedStatisticsDetailResponseBodyStatisticsDetails struct {
 	//
 	// ngw-bp1vkbju8f3w87c9v****
 	ExposureTypeInstanceName *string `json:"ExposureTypeInstanceName,omitempty" xml:"ExposureTypeInstanceName,omitempty"`
+	// example:
+	//
+	// 80
+	ForwardPort *string `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
 	// The region ID of the asset.
 	//
 	// example:
@@ -261,6 +265,10 @@ func (s *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails) GetExposu
 	return s.ExposureTypeInstanceName
 }
 
+func (s *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails) GetForwardPort() *string {
+	return s.ForwardPort
+}
+
 func (s *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails) GetRegionId() *string {
 	return s.RegionId
 }
@@ -297,6 +305,11 @@ func (s *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails) SetExposu
 
 func (s *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails) SetExposureTypeInstanceName(v string) *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails {
 	s.ExposureTypeInstanceName = &v
+	return s
+}
+
+func (s *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails) SetForwardPort(v string) *DescribeExposedStatisticsDetailResponseBodyStatisticsDetails {
+	s.ForwardPort = &v
 	return s
 }
 

@@ -9,6 +9,8 @@ type iDescribeExposedStatisticsDetailRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCriteria(v string) *DescribeExposedStatisticsDetailRequest
+	GetCriteria() *string
 	SetCurrentPage(v int32) *DescribeExposedStatisticsDetailRequest
 	GetCurrentPage() *int32
 	SetPageSize(v int32) *DescribeExposedStatisticsDetailRequest
@@ -21,9 +23,15 @@ type iDescribeExposedStatisticsDetailRequest interface {
 	GetStatisticsTypeGatewayType() *string
 	SetStatisticsTypeInstanceValue(v string) *DescribeExposedStatisticsDetailRequest
 	GetStatisticsTypeInstanceValue() *string
+	SetUuid(v string) *DescribeExposedStatisticsDetailRequest
+	GetUuid() *string
 }
 
 type DescribeExposedStatisticsDetailRequest struct {
+	// example:
+	//
+	// {}
+	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
 	// The number of the page to return.
 	//
 	// example:
@@ -78,6 +86,10 @@ type DescribeExposedStatisticsDetailRequest struct {
 	//
 	// lb-2ze4rso39h4nczcqs****
 	StatisticsTypeInstanceValue *string `json:"StatisticsTypeInstanceValue,omitempty" xml:"StatisticsTypeInstanceValue,omitempty"`
+	// example:
+	//
+	// c9107c04-942f-40c1-981a-f1c1***
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeExposedStatisticsDetailRequest) String() string {
@@ -86,6 +98,10 @@ func (s DescribeExposedStatisticsDetailRequest) String() string {
 
 func (s DescribeExposedStatisticsDetailRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeExposedStatisticsDetailRequest) GetCriteria() *string {
+	return s.Criteria
 }
 
 func (s *DescribeExposedStatisticsDetailRequest) GetCurrentPage() *int32 {
@@ -110,6 +126,15 @@ func (s *DescribeExposedStatisticsDetailRequest) GetStatisticsTypeGatewayType() 
 
 func (s *DescribeExposedStatisticsDetailRequest) GetStatisticsTypeInstanceValue() *string {
 	return s.StatisticsTypeInstanceValue
+}
+
+func (s *DescribeExposedStatisticsDetailRequest) GetUuid() *string {
+	return s.Uuid
+}
+
+func (s *DescribeExposedStatisticsDetailRequest) SetCriteria(v string) *DescribeExposedStatisticsDetailRequest {
+	s.Criteria = &v
+	return s
 }
 
 func (s *DescribeExposedStatisticsDetailRequest) SetCurrentPage(v int32) *DescribeExposedStatisticsDetailRequest {
@@ -139,6 +164,11 @@ func (s *DescribeExposedStatisticsDetailRequest) SetStatisticsTypeGatewayType(v 
 
 func (s *DescribeExposedStatisticsDetailRequest) SetStatisticsTypeInstanceValue(v string) *DescribeExposedStatisticsDetailRequest {
 	s.StatisticsTypeInstanceValue = &v
+	return s
+}
+
+func (s *DescribeExposedStatisticsDetailRequest) SetUuid(v string) *DescribeExposedStatisticsDetailRequest {
+	s.Uuid = &v
 	return s
 }
 

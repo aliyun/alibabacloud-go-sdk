@@ -84,6 +84,7 @@ func (s *ListCheckItemWarningMachineResponseBody) Validate() error {
 }
 
 type ListCheckItemWarningMachineResponseBodyList struct {
+	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
 	// The edition of Security Center that is authorized to protect the asset. Valid values:
 	//
 	// 	- **1**: Basic edition
@@ -254,6 +255,10 @@ func (s ListCheckItemWarningMachineResponseBodyList) GoString() string {
 	return s.String()
 }
 
+func (s *ListCheckItemWarningMachineResponseBodyList) GetAssetType() *string {
+	return s.AssetType
+}
+
 func (s *ListCheckItemWarningMachineResponseBodyList) GetAuthVersion() *int32 {
 	return s.AuthVersion
 }
@@ -336,6 +341,11 @@ func (s *ListCheckItemWarningMachineResponseBodyList) GetUuid() *string {
 
 func (s *ListCheckItemWarningMachineResponseBodyList) GetWarningRiskList() []*ListCheckItemWarningMachineResponseBodyListWarningRiskList {
 	return s.WarningRiskList
+}
+
+func (s *ListCheckItemWarningMachineResponseBodyList) SetAssetType(v string) *ListCheckItemWarningMachineResponseBodyList {
+	s.AssetType = &v
+	return s
 }
 
 func (s *ListCheckItemWarningMachineResponseBodyList) SetAuthVersion(v int32) *ListCheckItemWarningMachineResponseBodyList {

@@ -498,6 +498,10 @@ func (s *GetAttackPathEventDetailResponseBodyAttackPathEventPathEventEdgeList) V
 }
 
 type GetAttackPathEventDetailResponseBodyAttackPathEventPathEventNodeList struct {
+	// example:
+	//
+	// 1
+	AiAssetFlag *int32 `json:"AiAssetFlag,omitempty" xml:"AiAssetFlag,omitempty"`
 	// Node element type.
 	//
 	// example:
@@ -548,6 +552,10 @@ func (s GetAttackPathEventDetailResponseBodyAttackPathEventPathEventNodeList) Go
 	return s.String()
 }
 
+func (s *GetAttackPathEventDetailResponseBodyAttackPathEventPathEventNodeList) GetAiAssetFlag() *int32 {
+	return s.AiAssetFlag
+}
+
 func (s *GetAttackPathEventDetailResponseBodyAttackPathEventPathEventNodeList) GetElementType() *string {
 	return s.ElementType
 }
@@ -570,6 +578,11 @@ func (s *GetAttackPathEventDetailResponseBodyAttackPathEventPathEventNodeList) G
 
 func (s *GetAttackPathEventDetailResponseBodyAttackPathEventPathEventNodeList) GetSensitiveAssetFlag() *int32 {
 	return s.SensitiveAssetFlag
+}
+
+func (s *GetAttackPathEventDetailResponseBodyAttackPathEventPathEventNodeList) SetAiAssetFlag(v int32) *GetAttackPathEventDetailResponseBodyAttackPathEventPathEventNodeList {
+	s.AiAssetFlag = &v
+	return s
 }
 
 func (s *GetAttackPathEventDetailResponseBodyAttackPathEventPathEventNodeList) SetElementType(v string) *GetAttackPathEventDetailResponseBodyAttackPathEventPathEventNodeList {

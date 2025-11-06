@@ -19061,6 +19061,10 @@ func (client *Client) DescribeExposedStatisticsDetailWithOptions(request *Descri
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Criteria) {
+		query["Criteria"] = request.Criteria
+	}
+
 	if !dara.IsNil(request.CurrentPage) {
 		query["CurrentPage"] = request.CurrentPage
 	}
@@ -19083,6 +19087,10 @@ func (client *Client) DescribeExposedStatisticsDetailWithOptions(request *Descri
 
 	if !dara.IsNil(request.StatisticsTypeInstanceValue) {
 		query["StatisticsTypeInstanceValue"] = request.StatisticsTypeInstanceValue
+	}
+
+	if !dara.IsNil(request.Uuid) {
+		query["Uuid"] = request.Uuid
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -36545,6 +36553,10 @@ func (client *Client) GetAttackPathEventDetailWithOptions(request *GetAttackPath
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventId) {
 		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.EventSource) {
+		query["EventSource"] = request.EventSource
 	}
 
 	if !dara.IsNil(request.Lang) {
