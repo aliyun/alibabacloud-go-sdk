@@ -13,6 +13,8 @@ type iDeleteServiceInstancesRequest interface {
 	GetContainer() *string
 	SetInstanceList(v string) *DeleteServiceInstancesRequest
 	GetInstanceList() *string
+	SetIsReplica(v bool) *DeleteServiceInstancesRequest
+	GetIsReplica() *bool
 	SetSoftRestart(v bool) *DeleteServiceInstancesRequest
 	GetSoftRestart() *bool
 }
@@ -26,12 +28,11 @@ type DeleteServiceInstancesRequest struct {
 	Container *string `json:"Container,omitempty" xml:"Container,omitempty"`
 	// The instances that you want to restart. Separate multiple instance names with commas (,). For more information about how to query the instance name, see [ListServiceInstances](https://help.aliyun.com/document_detail/412108.html).
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// foo-rdsbxxxx,foo-rdsaxxxx
 	InstanceList *string `json:"InstanceList,omitempty" xml:"InstanceList,omitempty"`
+	IsReplica    *bool   `json:"IsReplica,omitempty" xml:"IsReplica,omitempty"`
 	// Specifies whether to restart only the container process without recreating the instance. Default value: false. Valid values: true and false.
 	//
 	// example:
@@ -56,6 +57,10 @@ func (s *DeleteServiceInstancesRequest) GetInstanceList() *string {
 	return s.InstanceList
 }
 
+func (s *DeleteServiceInstancesRequest) GetIsReplica() *bool {
+	return s.IsReplica
+}
+
 func (s *DeleteServiceInstancesRequest) GetSoftRestart() *bool {
 	return s.SoftRestart
 }
@@ -67,6 +72,11 @@ func (s *DeleteServiceInstancesRequest) SetContainer(v string) *DeleteServiceIns
 
 func (s *DeleteServiceInstancesRequest) SetInstanceList(v string) *DeleteServiceInstancesRequest {
 	s.InstanceList = &v
+	return s
+}
+
+func (s *DeleteServiceInstancesRequest) SetIsReplica(v bool) *DeleteServiceInstancesRequest {
+	s.IsReplica = &v
 	return s
 }
 

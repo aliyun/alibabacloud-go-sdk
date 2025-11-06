@@ -11,6 +11,8 @@ type iInstance interface {
 	GoString() string
 	SetCurrentAmount(v float32) *Instance
 	GetCurrentAmount() *float32
+	SetDetached(v bool) *Instance
+	GetDetached() *bool
 	SetExternalIP(v string) *Instance
 	GetExternalIP() *string
 	SetExternalInstancePort(v int32) *Instance
@@ -29,6 +31,8 @@ type iInstance interface {
 	GetInstanceType() *string
 	SetIsLatest(v bool) *Instance
 	GetIsLatest() *bool
+	SetIsReplica(v bool) *Instance
+	GetIsReplica() *bool
 	SetIsSpot(v bool) *Instance
 	GetIsSpot() *bool
 	SetIsolated(v bool) *Instance
@@ -43,6 +47,8 @@ type iInstance interface {
 	GetReadyProcesses() *int32
 	SetReason(v string) *Instance
 	GetReason() *string
+	SetReplicaName(v string) *Instance
+	GetReplicaName() *string
 	SetResourceType(v string) *Instance
 	GetResourceType() *string
 	SetRestartCount(v int32) *Instance
@@ -70,6 +76,7 @@ type Instance struct {
 	//
 	// 0.444
 	CurrentAmount *float32 `json:"CurrentAmount,omitempty" xml:"CurrentAmount,omitempty"`
+	Detached      *bool    `json:"Detached,omitempty" xml:"Detached,omitempty"`
 	// example:
 	//
 	// 192.168.1.100
@@ -88,6 +95,7 @@ type Instance struct {
 	// ecs.c7.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	IsLatest     *bool   `json:"IsLatest,omitempty" xml:"IsLatest,omitempty"`
+	IsReplica    *bool   `json:"IsReplica,omitempty" xml:"IsReplica,omitempty"`
 	// example:
 	//
 	// false
@@ -104,6 +112,7 @@ type Instance struct {
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
 	ReadyProcesses *int32   `json:"ReadyProcesses,omitempty" xml:"ReadyProcesses,omitempty"`
 	Reason         *string  `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReplicaName    *string  `json:"ReplicaName,omitempty" xml:"ReplicaName,omitempty"`
 	// example:
 	//
 	// PublicResource
@@ -144,6 +153,10 @@ func (s *Instance) GetCurrentAmount() *float32 {
 	return s.CurrentAmount
 }
 
+func (s *Instance) GetDetached() *bool {
+	return s.Detached
+}
+
 func (s *Instance) GetExternalIP() *string {
 	return s.ExternalIP
 }
@@ -180,6 +193,10 @@ func (s *Instance) GetIsLatest() *bool {
 	return s.IsLatest
 }
 
+func (s *Instance) GetIsReplica() *bool {
+	return s.IsReplica
+}
+
 func (s *Instance) GetIsSpot() *bool {
 	return s.IsSpot
 }
@@ -206,6 +223,10 @@ func (s *Instance) GetReadyProcesses() *int32 {
 
 func (s *Instance) GetReason() *string {
 	return s.Reason
+}
+
+func (s *Instance) GetReplicaName() *string {
+	return s.ReplicaName
 }
 
 func (s *Instance) GetResourceType() *string {
@@ -250,6 +271,11 @@ func (s *Instance) GetZone() *string {
 
 func (s *Instance) SetCurrentAmount(v float32) *Instance {
 	s.CurrentAmount = &v
+	return s
+}
+
+func (s *Instance) SetDetached(v bool) *Instance {
+	s.Detached = &v
 	return s
 }
 
@@ -298,6 +324,11 @@ func (s *Instance) SetIsLatest(v bool) *Instance {
 	return s
 }
 
+func (s *Instance) SetIsReplica(v bool) *Instance {
+	s.IsReplica = &v
+	return s
+}
+
 func (s *Instance) SetIsSpot(v bool) *Instance {
 	s.IsSpot = &v
 	return s
@@ -330,6 +361,11 @@ func (s *Instance) SetReadyProcesses(v int32) *Instance {
 
 func (s *Instance) SetReason(v string) *Instance {
 	s.Reason = &v
+	return s
+}
+
+func (s *Instance) SetReplicaName(v string) *Instance {
+	s.ReplicaName = &v
 	return s
 }
 

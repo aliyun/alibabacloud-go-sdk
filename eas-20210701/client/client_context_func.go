@@ -325,6 +325,57 @@ func (client *Client) CreateBenchmarkTaskWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 创建故障注入任务
+//
+// @param request - CreateFaultInjectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFaultInjectionResponse
+func (client *Client) CreateFaultInjectionWithContext(ctx context.Context, ClusterId *string, ServiceName *string, InstanceName *string, request *CreateFaultInjectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateFaultInjectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FaultArgs) {
+		body["FaultArgs"] = request.FaultArgs
+	}
+
+	if !dara.IsNil(request.FaultType) {
+		body["FaultType"] = request.FaultType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateFaultInjection"),
+		Version:     dara.String("2021-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/services/" + dara.PercentEncode(dara.StringValue(ClusterId)) + "/" + dara.PercentEncode(dara.StringValue(ServiceName)) + "/instances/" + dara.PercentEncode(dara.StringValue(InstanceName)) + "/faults"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateFaultInjectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a gateway.
 //
 // @param request - CreateGatewayRequest
@@ -1107,6 +1158,39 @@ func (client *Client) DeleteBenchmarkTaskWithContext(ctx context.Context, Cluste
 
 // Summary:
 //
+// 删除故障注入任务
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFaultInjectionResponse
+func (client *Client) DeleteFaultInjectionWithContext(ctx context.Context, ClusterId *string, ServiceName *string, InstanceName *string, FaultType *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteFaultInjectionResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteFaultInjection"),
+		Version:     dara.String("2021-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/services/" + dara.PercentEncode(dara.StringValue(ClusterId)) + "/" + dara.PercentEncode(dara.StringValue(ServiceName)) + "/instances/" + dara.PercentEncode(dara.StringValue(InstanceName)) + "/faults/" + dara.PercentEncode(dara.StringValue(FaultType))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteFaultInjectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a private gateway.
 //
 // @param headers - map
@@ -1593,6 +1677,10 @@ func (client *Client) DeleteServiceInstancesWithContext(ctx context.Context, Clu
 
 	if !dara.IsNil(request.InstanceList) {
 		query["InstanceList"] = request.InstanceList
+	}
+
+	if !dara.IsNil(request.IsReplica) {
+		query["IsReplica"] = request.IsReplica
 	}
 
 	if !dara.IsNil(request.SoftRestart) {
@@ -3491,6 +3579,39 @@ func (client *Client) ListServiceContainersWithContext(ctx context.Context, Clus
 
 // Summary:
 //
+// 获取故障注入信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceInstanceFaultInjectionInfoResponse
+func (client *Client) ListServiceInstanceFaultInjectionInfoWithContext(ctx context.Context, ClusterId *string, ServiceName *string, InstanceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListServiceInstanceFaultInjectionInfoResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListServiceInstanceFaultInjectionInfo"),
+		Version:     dara.String("2021-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/services/" + dara.PercentEncode(dara.StringValue(ClusterId)) + "/" + dara.PercentEncode(dara.StringValue(ServiceName)) + "/instances/" + dara.PercentEncode(dara.StringValue(InstanceName)) + "/faults"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListServiceInstanceFaultInjectionInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries instances of a service.
 //
 // @param request - ListServiceInstancesRequest
@@ -3536,6 +3657,10 @@ func (client *Client) ListServiceInstancesWithContext(ctx context.Context, Clust
 		query["IsSpot"] = request.IsSpot
 	}
 
+	if !dara.IsNil(request.ListReplica) {
+		query["ListReplica"] = request.ListReplica
+	}
+
 	if !dara.IsNil(request.MemberType) {
 		query["MemberType"] = request.MemberType
 	}
@@ -3550,6 +3675,10 @@ func (client *Client) ListServiceInstancesWithContext(ctx context.Context, Clust
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ReplicaName) {
+		query["ReplicaName"] = request.ReplicaName
 	}
 
 	if !dara.IsNil(request.ResourceType) {
@@ -4778,7 +4907,16 @@ func (client *Client) UpdateServiceInstanceWithContext(ctx context.Context, Clus
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IsReplica) {
+		query["IsReplica"] = request.IsReplica
+	}
+
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Detach) {
+		body["Detach"] = request.Detach
+	}
+
 	if !dara.IsNil(request.Hibernate) {
 		body["Hibernate"] = request.Hibernate
 	}
@@ -4789,6 +4927,7 @@ func (client *Client) UpdateServiceInstanceWithContext(ctx context.Context, Clus
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{

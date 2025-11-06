@@ -23,6 +23,8 @@ type iListServiceInstancesRequest interface {
 	GetInstanceType() *string
 	SetIsSpot(v bool) *ListServiceInstancesRequest
 	GetIsSpot() *bool
+	SetListReplica(v bool) *ListServiceInstancesRequest
+	GetListReplica() *bool
 	SetMemberType(v string) *ListServiceInstancesRequest
 	GetMemberType() *string
 	SetOrder(v string) *ListServiceInstancesRequest
@@ -31,6 +33,8 @@ type iListServiceInstancesRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListServiceInstancesRequest
 	GetPageSize() *int32
+	SetReplicaName(v string) *ListServiceInstancesRequest
+	GetReplicaName() *string
 	SetResourceType(v string) *ListServiceInstancesRequest
 	GetResourceType() *string
 	SetRole(v string) *ListServiceInstancesRequest
@@ -81,8 +85,9 @@ type ListServiceInstancesRequest struct {
 	// example:
 	//
 	// false
-	IsSpot     *bool   `json:"IsSpot,omitempty" xml:"IsSpot,omitempty"`
-	MemberType *string `json:"MemberType,omitempty" xml:"MemberType,omitempty"`
+	IsSpot      *bool   `json:"IsSpot,omitempty" xml:"IsSpot,omitempty"`
+	ListReplica *bool   `json:"ListReplica,omitempty" xml:"ListReplica,omitempty"`
+	MemberType  *string `json:"MemberType,omitempty" xml:"MemberType,omitempty"`
 	// The sorting order.
 	//
 	// Valid values:
@@ -126,7 +131,8 @@ type ListServiceInstancesRequest struct {
 	// example:
 	//
 	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ReplicaName *string `json:"ReplicaName,omitempty" xml:"ReplicaName,omitempty"`
 	// The type of the resource group to which the instance belongs.
 	//
 	// Valid values:
@@ -271,6 +277,10 @@ func (s *ListServiceInstancesRequest) GetIsSpot() *bool {
 	return s.IsSpot
 }
 
+func (s *ListServiceInstancesRequest) GetListReplica() *bool {
+	return s.ListReplica
+}
+
 func (s *ListServiceInstancesRequest) GetMemberType() *string {
 	return s.MemberType
 }
@@ -285,6 +295,10 @@ func (s *ListServiceInstancesRequest) GetPageNumber() *int32 {
 
 func (s *ListServiceInstancesRequest) GetPageSize() *int32 {
 	return s.PageSize
+}
+
+func (s *ListServiceInstancesRequest) GetReplicaName() *string {
+	return s.ReplicaName
 }
 
 func (s *ListServiceInstancesRequest) GetResourceType() *string {
@@ -334,6 +348,11 @@ func (s *ListServiceInstancesRequest) SetIsSpot(v bool) *ListServiceInstancesReq
 	return s
 }
 
+func (s *ListServiceInstancesRequest) SetListReplica(v bool) *ListServiceInstancesRequest {
+	s.ListReplica = &v
+	return s
+}
+
 func (s *ListServiceInstancesRequest) SetMemberType(v string) *ListServiceInstancesRequest {
 	s.MemberType = &v
 	return s
@@ -351,6 +370,11 @@ func (s *ListServiceInstancesRequest) SetPageNumber(v int32) *ListServiceInstanc
 
 func (s *ListServiceInstancesRequest) SetPageSize(v int32) *ListServiceInstancesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListServiceInstancesRequest) SetReplicaName(v string) *ListServiceInstancesRequest {
+	s.ReplicaName = &v
 	return s
 }
 
