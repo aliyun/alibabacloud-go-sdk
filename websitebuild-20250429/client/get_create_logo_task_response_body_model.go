@@ -97,7 +97,12 @@ func (s *GetCreateLogoTaskResponseBody) SetTask(v *GetCreateLogoTaskResponseBody
 }
 
 func (s *GetCreateLogoTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Task != nil {
+		if err := s.Task.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCreateLogoTaskResponseBodyTask struct {

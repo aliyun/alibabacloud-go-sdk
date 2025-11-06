@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -65,9 +66,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return BindAppDomainResponse
 func (client *Client) BindAppDomainWithOptions(request *BindAppDomainRequest, runtime *dara.RuntimeOptions) (_result *BindAppDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -137,9 +140,11 @@ func (client *Client) BindAppDomain(request *BindAppDomainRequest) (_result *Bin
 //
 // @return CreateLogoTaskResponse
 func (client *Client) CreateLogoTaskWithOptions(request *CreateLogoTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateLogoTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LogoVersion) {
@@ -209,9 +214,11 @@ func (client *Client) CreateLogoTask(request *CreateLogoTaskRequest) (_result *C
 //
 // @return DeleteAppDomainCertificateResponse
 func (client *Client) DeleteAppDomainCertificateWithOptions(request *DeleteAppDomainCertificateRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppDomainCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -273,9 +280,11 @@ func (client *Client) DeleteAppDomainCertificate(request *DeleteAppDomainCertifi
 //
 // @return DeleteAppDomainRedirectResponse
 func (client *Client) DeleteAppDomainRedirectWithOptions(request *DeleteAppDomainRedirectRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppDomainRedirectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -337,9 +346,11 @@ func (client *Client) DeleteAppDomainRedirect(request *DeleteAppDomainRedirectRe
 //
 // @return DescribeAppDomainDnsRecordResponse
 func (client *Client) DescribeAppDomainDnsRecordWithOptions(request *DescribeAppDomainDnsRecordRequest, runtime *dara.RuntimeOptions) (_result *DescribeAppDomainDnsRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -397,6 +408,84 @@ func (client *Client) DescribeAppDomainDnsRecord(request *DescribeAppDomainDnsRe
 
 // Summary:
 //
+// # DispatchConsoleAPIForPartner
+//
+// @param request - DispatchConsoleAPIForPartnerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DispatchConsoleAPIForPartnerResponse
+func (client *Client) DispatchConsoleAPIForPartnerWithOptions(request *DispatchConsoleAPIForPartnerRequest, runtime *dara.RuntimeOptions) (_result *DispatchConsoleAPIForPartnerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.LiveToken) {
+		query["LiveToken"] = request.LiveToken
+	}
+
+	if !dara.IsNil(request.Operation) {
+		query["Operation"] = request.Operation
+	}
+
+	if !dara.IsNil(request.Params) {
+		query["Params"] = request.Params
+	}
+
+	if !dara.IsNil(request.Product) {
+		query["Product"] = request.Product
+	}
+
+	if !dara.IsNil(request.SiteHost) {
+		query["SiteHost"] = request.SiteHost
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DispatchConsoleAPIForPartner"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DispatchConsoleAPIForPartnerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DispatchConsoleAPIForPartner
+//
+// @param request - DispatchConsoleAPIForPartnerRequest
+//
+// @return DispatchConsoleAPIForPartnerResponse
+func (client *Client) DispatchConsoleAPIForPartner(request *DispatchConsoleAPIForPartnerRequest) (_result *DispatchConsoleAPIForPartnerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DispatchConsoleAPIForPartnerResponse{}
+	_body, _err := client.DispatchConsoleAPIForPartnerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询Logo创建任务
 //
 // @param request - GetCreateLogoTaskRequest
@@ -405,9 +494,11 @@ func (client *Client) DescribeAppDomainDnsRecord(request *DescribeAppDomainDnsRe
 //
 // @return GetCreateLogoTaskResponse
 func (client *Client) GetCreateLogoTaskWithOptions(request *GetCreateLogoTaskRequest, runtime *dara.RuntimeOptions) (_result *GetCreateLogoTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -465,9 +556,11 @@ func (client *Client) GetCreateLogoTask(request *GetCreateLogoTaskRequest) (_res
 //
 // @return GetDomainInfoForPartnerResponse
 func (client *Client) GetDomainInfoForPartnerWithOptions(request *GetDomainInfoForPartnerRequest, runtime *dara.RuntimeOptions) (_result *GetDomainInfoForPartnerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -533,9 +626,11 @@ func (client *Client) GetDomainInfoForPartner(request *GetDomainInfoForPartnerRe
 //
 // @return GetIcpFilingInfoForPartnerResponse
 func (client *Client) GetIcpFilingInfoForPartnerWithOptions(request *GetIcpFilingInfoForPartnerRequest, runtime *dara.RuntimeOptions) (_result *GetIcpFilingInfoForPartnerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -589,6 +684,72 @@ func (client *Client) GetIcpFilingInfoForPartner(request *GetIcpFilingInfoForPar
 
 // Summary:
 //
+// 通过授权码得到accessToken
+//
+// @param request - GetUserAccessTokenForPartnerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserAccessTokenForPartnerResponse
+func (client *Client) GetUserAccessTokenForPartnerWithOptions(request *GetUserAccessTokenForPartnerRequest, runtime *dara.RuntimeOptions) (_result *GetUserAccessTokenForPartnerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SiteHost) {
+		query["SiteHost"] = request.SiteHost
+	}
+
+	if !dara.IsNil(request.Ticket) {
+		query["Ticket"] = request.Ticket
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetUserAccessTokenForPartner"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetUserAccessTokenForPartnerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过授权码得到accessToken
+//
+// @param request - GetUserAccessTokenForPartnerRequest
+//
+// @return GetUserAccessTokenForPartnerResponse
+func (client *Client) GetUserAccessTokenForPartner(request *GetUserAccessTokenForPartnerRequest) (_result *GetUserAccessTokenForPartnerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetUserAccessTokenForPartnerResponse{}
+	_body, _err := client.GetUserAccessTokenForPartnerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 合作伙伴获取用户SLR角色授权临时凭证
 //
 // @param request - GetUserTmpIdentityForPartnerRequest
@@ -597,9 +758,11 @@ func (client *Client) GetIcpFilingInfoForPartner(request *GetIcpFilingInfoForPar
 //
 // @return GetUserTmpIdentityForPartnerResponse
 func (client *Client) GetUserTmpIdentityForPartnerWithOptions(request *GetUserTmpIdentityForPartnerRequest, runtime *dara.RuntimeOptions) (_result *GetUserTmpIdentityForPartnerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthPurpose) {
@@ -673,9 +836,11 @@ func (client *Client) GetUserTmpIdentityForPartner(request *GetUserTmpIdentityFo
 //
 // @return ListAppDomainRedirectRecordsResponse
 func (client *Client) ListAppDomainRedirectRecordsWithOptions(request *ListAppDomainRedirectRecordsRequest, runtime *dara.RuntimeOptions) (_result *ListAppDomainRedirectRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -741,9 +906,11 @@ func (client *Client) ListAppDomainRedirectRecords(request *ListAppDomainRedirec
 //
 // @return ListAppInstanceDomainsResponse
 func (client *Client) ListAppInstanceDomainsWithOptions(request *ListAppInstanceDomainsRequest, runtime *dara.RuntimeOptions) (_result *ListAppInstanceDomainsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -825,9 +992,11 @@ func (client *Client) ListAppInstanceDomains(request *ListAppInstanceDomainsRequ
 //
 // @return OperateAppInstanceForPartnerResponse
 func (client *Client) OperateAppInstanceForPartnerWithOptions(request *OperateAppInstanceForPartnerRequest, runtime *dara.RuntimeOptions) (_result *OperateAppInstanceForPartnerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Extend) {
@@ -889,9 +1058,11 @@ func (client *Client) OperateAppInstanceForPartner(request *OperateAppInstanceFo
 //
 // @return OperateAppServiceForPartnerResponse
 func (client *Client) OperateAppServiceForPartnerWithOptions(request *OperateAppServiceForPartnerRequest, runtime *dara.RuntimeOptions) (_result *OperateAppServiceForPartnerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -961,9 +1132,11 @@ func (client *Client) OperateAppServiceForPartner(request *OperateAppServiceForP
 //
 // @return SearchImageResponse
 func (client *Client) SearchImageWithOptions(tmpReq *SearchImageRequest, runtime *dara.RuntimeOptions) (_result *SearchImageResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SearchImageShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1083,9 +1256,11 @@ func (client *Client) SearchImage(request *SearchImageRequest) (_result *SearchI
 //
 // @return SetAppDomainCertificateResponse
 func (client *Client) SetAppDomainCertificateWithOptions(request *SetAppDomainCertificateRequest, runtime *dara.RuntimeOptions) (_result *SetAppDomainCertificateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -1163,9 +1338,11 @@ func (client *Client) SetAppDomainCertificate(request *SetAppDomainCertificateRe
 //
 // @return SyncAppInstanceForPartnerResponse
 func (client *Client) SyncAppInstanceForPartnerWithOptions(tmpReq *SyncAppInstanceForPartnerRequest, runtime *dara.RuntimeOptions) (_result *SyncAppInstanceForPartnerResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SyncAppInstanceForPartnerShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1245,9 +1422,11 @@ func (client *Client) SyncAppInstanceForPartner(request *SyncAppInstanceForPartn
 //
 // @return UnbindAppDomainResponse
 func (client *Client) UnbindAppDomainWithOptions(request *UnbindAppDomainRequest, runtime *dara.RuntimeOptions) (_result *UnbindAppDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {

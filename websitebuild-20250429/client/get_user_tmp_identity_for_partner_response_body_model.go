@@ -97,7 +97,12 @@ func (s *GetUserTmpIdentityForPartnerResponseBody) SetSuccess(v bool) *GetUserTm
 }
 
 func (s *GetUserTmpIdentityForPartnerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserTmpIdentityForPartnerResponseBodyData struct {
@@ -132,7 +137,12 @@ func (s *GetUserTmpIdentityForPartnerResponseBodyData) SetHasCustomRoleAuth(v bo
 }
 
 func (s *GetUserTmpIdentityForPartnerResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Credentials != nil {
+		if err := s.Credentials.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserTmpIdentityForPartnerResponseBodyDataCredentials struct {

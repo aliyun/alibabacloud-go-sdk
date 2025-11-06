@@ -59,5 +59,10 @@ func (s *UnbindAppDomainResponse) SetBody(v *UnbindAppDomainResponseBody) *Unbin
 }
 
 func (s *UnbindAppDomainResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

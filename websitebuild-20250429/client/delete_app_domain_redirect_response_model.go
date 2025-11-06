@@ -59,5 +59,10 @@ func (s *DeleteAppDomainRedirectResponse) SetBody(v *DeleteAppDomainRedirectResp
 }
 
 func (s *DeleteAppDomainRedirectResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

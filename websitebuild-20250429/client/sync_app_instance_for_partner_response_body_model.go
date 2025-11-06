@@ -52,7 +52,12 @@ func (s *SyncAppInstanceForPartnerResponseBody) SetRequestId(v string) *SyncAppI
 }
 
 func (s *SyncAppInstanceForPartnerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SyncAppInstanceForPartnerResponseBodyData struct {
@@ -77,7 +82,12 @@ func (s *SyncAppInstanceForPartnerResponseBodyData) SetAppInstance(v *SyncAppIns
 }
 
 func (s *SyncAppInstanceForPartnerResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AppInstance != nil {
+		if err := s.AppInstance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SyncAppInstanceForPartnerResponseBodyDataAppInstance struct {

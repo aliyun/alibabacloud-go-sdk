@@ -211,7 +211,12 @@ func (s *ListAppDomainRedirectRecordsResponseBody) SetSynchro(v bool) *ListAppDo
 }
 
 func (s *ListAppDomainRedirectRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAppDomainRedirectRecordsResponseBodyModule struct {
@@ -328,7 +333,21 @@ func (s *ListAppDomainRedirectRecordsResponseBodyModule) SetTotalPageNum(v int32
 }
 
 func (s *ListAppDomainRedirectRecordsResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Next != nil {
+		if err := s.Next.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAppDomainRedirectRecordsResponseBodyModuleData struct {

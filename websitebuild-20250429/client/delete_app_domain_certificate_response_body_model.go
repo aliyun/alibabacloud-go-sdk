@@ -181,7 +181,12 @@ func (s *DeleteAppDomainCertificateResponseBody) SetSynchro(v bool) *DeleteAppDo
 }
 
 func (s *DeleteAppDomainCertificateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteAppDomainCertificateResponseBodyModule struct {

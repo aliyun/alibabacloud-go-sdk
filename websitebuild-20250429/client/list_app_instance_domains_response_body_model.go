@@ -211,7 +211,12 @@ func (s *ListAppInstanceDomainsResponseBody) SetSynchro(v bool) *ListAppInstance
 }
 
 func (s *ListAppInstanceDomainsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAppInstanceDomainsResponseBodyModule struct {
@@ -328,7 +333,21 @@ func (s *ListAppInstanceDomainsResponseBodyModule) SetTotalPageNum(v int32) *Lis
 }
 
 func (s *ListAppInstanceDomainsResponseBodyModule) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Next != nil {
+		if err := s.Next.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAppInstanceDomainsResponseBodyModuleData struct {
@@ -422,7 +441,27 @@ func (s *ListAppInstanceDomainsResponseBodyModuleData) SetVerification(v *ListAp
 }
 
 func (s *ListAppInstanceDomainsResponseBodyModuleData) Validate() error {
-	return dara.Validate(s)
+	if s.Certificate != nil {
+		if err := s.Certificate.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Ownership != nil {
+		if err := s.Ownership.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Resolution != nil {
+		if err := s.Resolution.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Verification != nil {
+		if err := s.Verification.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAppInstanceDomainsResponseBodyModuleDataCertificate struct {
@@ -594,7 +633,12 @@ func (s *ListAppInstanceDomainsResponseBodyModuleDataResolution) SetResolutionSt
 }
 
 func (s *ListAppInstanceDomainsResponseBodyModuleDataResolution) Validate() error {
-	return dara.Validate(s)
+	if s.DnsRecord != nil {
+		if err := s.DnsRecord.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAppInstanceDomainsResponseBodyModuleDataResolutionDnsRecord struct {
@@ -712,7 +756,12 @@ func (s *ListAppInstanceDomainsResponseBodyModuleDataVerification) SetVerificati
 }
 
 func (s *ListAppInstanceDomainsResponseBodyModuleDataVerification) Validate() error {
-	return dara.Validate(s)
+	if s.DnsRecord != nil {
+		if err := s.DnsRecord.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAppInstanceDomainsResponseBodyModuleDataVerificationDnsRecord struct {
@@ -860,7 +909,27 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNext) SetVerification(v *ListAp
 }
 
 func (s *ListAppInstanceDomainsResponseBodyModuleNext) Validate() error {
-	return dara.Validate(s)
+	if s.Certificate != nil {
+		if err := s.Certificate.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Ownership != nil {
+		if err := s.Ownership.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Resolution != nil {
+		if err := s.Resolution.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Verification != nil {
+		if err := s.Verification.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAppInstanceDomainsResponseBodyModuleNextCertificate struct {
@@ -1016,7 +1085,12 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNextResolution) SetResolutionSt
 }
 
 func (s *ListAppInstanceDomainsResponseBodyModuleNextResolution) Validate() error {
-	return dara.Validate(s)
+	if s.DnsRecord != nil {
+		if err := s.DnsRecord.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAppInstanceDomainsResponseBodyModuleNextResolutionDnsRecord struct {
@@ -1121,7 +1195,12 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNextVerification) SetVerificati
 }
 
 func (s *ListAppInstanceDomainsResponseBodyModuleNextVerification) Validate() error {
-	return dara.Validate(s)
+	if s.DnsRecord != nil {
+		if err := s.DnsRecord.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAppInstanceDomainsResponseBodyModuleNextVerificationDnsRecord struct {

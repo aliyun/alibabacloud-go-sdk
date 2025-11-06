@@ -181,7 +181,12 @@ func (s *DescribeAppDomainDnsRecordResponseBody) SetSynchro(v bool) *DescribeApp
 }
 
 func (s *DescribeAppDomainDnsRecordResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAppDomainDnsRecordResponseBodyModule struct {

@@ -181,7 +181,12 @@ func (s *DeleteAppDomainRedirectResponseBody) SetSynchro(v bool) *DeleteAppDomai
 }
 
 func (s *DeleteAppDomainRedirectResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteAppDomainRedirectResponseBodyModule struct {

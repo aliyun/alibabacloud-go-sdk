@@ -95,7 +95,12 @@ func (s *SyncAppInstanceForPartnerRequest) SetSourceType(v string) *SyncAppInsta
 }
 
 func (s *SyncAppInstanceForPartnerRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AppInstance != nil {
+		if err := s.AppInstance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SyncAppInstanceForPartnerRequestAppInstance struct {
@@ -316,7 +321,12 @@ func (s *SyncAppInstanceForPartnerRequestAppInstance) SetUserId(v string) *SyncA
 }
 
 func (s *SyncAppInstanceForPartnerRequestAppInstance) Validate() error {
-	return dara.Validate(s)
+	if s.Profile != nil {
+		if err := s.Profile.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SyncAppInstanceForPartnerRequestAppInstanceProfile struct {

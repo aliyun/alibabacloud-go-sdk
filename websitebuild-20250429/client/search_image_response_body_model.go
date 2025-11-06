@@ -97,7 +97,12 @@ func (s *SearchImageResponseBody) SetSuccess(v string) *SearchImageResponseBody 
 }
 
 func (s *SearchImageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ImageResponse != nil {
+		if err := s.ImageResponse.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchImageResponseBodyImageResponse struct {
@@ -148,7 +153,16 @@ func (s *SearchImageResponseBodyImageResponse) SetNextToken(v string) *SearchIma
 }
 
 func (s *SearchImageResponseBodyImageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.ImageList != nil {
+		for _, item := range s.ImageList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchImageResponseBodyImageResponseImageList struct {

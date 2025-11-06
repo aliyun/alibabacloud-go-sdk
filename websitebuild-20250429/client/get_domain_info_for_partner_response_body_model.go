@@ -52,7 +52,12 @@ func (s *GetDomainInfoForPartnerResponseBody) SetRequestId(v string) *GetDomainI
 }
 
 func (s *GetDomainInfoForPartnerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDomainInfoForPartnerResponseBodyData struct {
@@ -116,7 +121,12 @@ func (s *GetDomainInfoForPartnerResponseBodyData) SetRegistrar(v string) *GetDom
 }
 
 func (s *GetDomainInfoForPartnerResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Ownership != nil {
+		if err := s.Ownership.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDomainInfoForPartnerResponseBodyDataOwnership struct {

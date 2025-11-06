@@ -181,7 +181,12 @@ func (s *UnbindAppDomainResponseBody) SetSynchro(v bool) *UnbindAppDomainRespons
 }
 
 func (s *UnbindAppDomainResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UnbindAppDomainResponseBodyModule struct {

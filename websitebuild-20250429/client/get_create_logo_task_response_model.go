@@ -59,5 +59,10 @@ func (s *GetCreateLogoTaskResponse) SetBody(v *GetCreateLogoTaskResponseBody) *G
 }
 
 func (s *GetCreateLogoTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
