@@ -611,6 +611,53 @@ func (client *Client) DeleteMmsJobWithContext(ctx context.Context, sourceId *str
 
 // Summary:
 //
+// Deletes a MaxCompute project.
+//
+// @param request - DeleteProjectRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProjectResponse
+func (client *Client) DeleteProjectWithContext(ctx context.Context, projectName *string, request *DeleteProjectRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IsLogical) {
+		query["isLogical"] = request.IsLogical
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteProject"),
+		Version:     dara.String("2022-01-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/projects/" + dara.PercentEncode(dara.StringValue(projectName))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteProjectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a quota plan.
 //
 // @param request - DeleteQuotaPlanRequest
