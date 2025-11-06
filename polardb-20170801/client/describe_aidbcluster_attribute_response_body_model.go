@@ -441,6 +441,10 @@ type DescribeAIDBClusterAttributeResponseBodyDBNodes struct {
 	CpuCores *string `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
 	// example:
 	//
+	// 2020-08-14T05:58:42Z
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// example:
+	//
 	// polar.pg.g8.8xlarge.gu30
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
 	// example:
@@ -505,6 +509,10 @@ func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetCpuCores() *string 
 	return s.CpuCores
 }
 
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetCreationTime() *string {
+	return s.CreationTime
+}
+
 func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) GetDBNodeClass() *string {
 	return s.DBNodeClass
 }
@@ -560,6 +568,11 @@ func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetChildVolumes(v []*D
 
 func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetCpuCores(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodes {
 	s.CpuCores = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyDBNodes) SetCreationTime(v string) *DescribeAIDBClusterAttributeResponseBodyDBNodes {
+	s.CreationTime = &v
 	return s
 }
 
