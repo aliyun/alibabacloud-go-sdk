@@ -270,9 +270,11 @@ type EnrichRequestJourneyParamListSegmentParamList struct {
   // 
   // SHA
   DepartureCity *string `json:"departure_city,omitempty" xml:"departure_city,omitempty"`
-  // departure time in string format (yyyy-MM-dd HH:mm:ss)
+  // example:
   // 
-  // This parameter is required.
+  // 2023-03-10
+  DepartureDate *string `json:"departure_date,omitempty" xml:"departure_date,omitempty"`
+  // departure time in string format (yyyy-MM-dd HH:mm:ss)
   // 
   // example:
   // 
@@ -320,6 +322,10 @@ func (s *EnrichRequestJourneyParamListSegmentParamList) GetDepartureCity() *stri
   return s.DepartureCity
 }
 
+func (s *EnrichRequestJourneyParamListSegmentParamList) GetDepartureDate() *string  {
+  return s.DepartureDate
+}
+
 func (s *EnrichRequestJourneyParamListSegmentParamList) GetDepartureTime() *string  {
   return s.DepartureTime
 }
@@ -355,6 +361,11 @@ func (s *EnrichRequestJourneyParamListSegmentParamList) SetDepartureAirport(v st
 
 func (s *EnrichRequestJourneyParamListSegmentParamList) SetDepartureCity(v string) *EnrichRequestJourneyParamListSegmentParamList {
   s.DepartureCity = &v
+  return s
+}
+
+func (s *EnrichRequestJourneyParamListSegmentParamList) SetDepartureDate(v string) *EnrichRequestJourneyParamListSegmentParamList {
+  s.DepartureDate = &v
   return s
 }
 

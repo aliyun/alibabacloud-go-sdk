@@ -25,6 +25,22 @@ type iDataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingV
 	GetCarryOnWeightUnit() *string
 	SetIsAllCarryOnWeight(v bool) *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue
 	GetIsAllCarryOnWeight() *bool
+	SetCarryLength(v int32) *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue
+	GetCarryLength() *int32
+	SetCarryWidth(v int32) *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue
+	GetCarryWidth() *int32
+	SetCarryHeight(v int32) *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue
+	GetCarryHeight() *int32
+	SetCarrySumOfLengthWidthHeight(v int32) *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue
+	GetCarrySumOfLengthWidthHeight() *int32
+	SetLength(v int32) *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue
+	GetLength() *int32
+	SetWidth(v int32) *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue
+	GetWidth() *int32
+	SetHeight(v int32) *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue
+	GetHeight() *int32
+	SetSumOfLengthWidthHeight(v int32) *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue
+	GetSumOfLengthWidthHeight() *int32
 }
 
 type DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue struct {
@@ -76,6 +92,38 @@ type DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingVa
 	//
 	// true
 	IsAllCarryOnWeight *bool `json:"is_all_carry_on_weight,omitempty" xml:"is_all_carry_on_weight,omitempty"`
+	// example:
+	//
+	// 55
+	CarryLength *int32 `json:"carry_length,omitempty" xml:"carry_length,omitempty"`
+	// example:
+	//
+	// 40
+	CarryWidth *int32 `json:"carry_width,omitempty" xml:"carry_width,omitempty"`
+	// example:
+	//
+	// 20
+	CarryHeight *int32 `json:"carry_height,omitempty" xml:"carry_height,omitempty"`
+	// example:
+	//
+	// 115
+	CarrySumOfLengthWidthHeight *int32 `json:"carry_sum_of_length_width_height,omitempty" xml:"carry_sum_of_length_width_height,omitempty"`
+	// example:
+	//
+	// 60
+	Length *int32 `json:"length,omitempty" xml:"length,omitempty"`
+	// example:
+	//
+	// 40
+	Width *int32 `json:"width,omitempty" xml:"width,omitempty"`
+	// example:
+	//
+	// 60
+	Height *int32 `json:"height,omitempty" xml:"height,omitempty"`
+	// example:
+	//
+	// 200
+	SumOfLengthWidthHeight *int32 `json:"sum_of_length_width_height,omitempty" xml:"sum_of_length_width_height,omitempty"`
 }
 
 func (s DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue) String() string {
@@ -118,6 +166,38 @@ func (s *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappi
 	return s.IsAllCarryOnWeight
 }
 
+func (s *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue) GetCarryLength() *int32 {
+	return s.CarryLength
+}
+
+func (s *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue) GetCarryWidth() *int32 {
+	return s.CarryWidth
+}
+
+func (s *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue) GetCarryHeight() *int32 {
+	return s.CarryHeight
+}
+
+func (s *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue) GetCarrySumOfLengthWidthHeight() *int32 {
+	return s.CarrySumOfLengthWidthHeight
+}
+
+func (s *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue) GetLength() *int32 {
+	return s.Length
+}
+
+func (s *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue) GetWidth() *int32 {
+	return s.Width
+}
+
+func (s *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue) GetHeight() *int32 {
+	return s.Height
+}
+
+func (s *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue) GetSumOfLengthWidthHeight() *int32 {
+	return s.SumOfLengthWidthHeight
+}
+
 func (s *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue) SetBaggageAmount(v int32) *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue {
 	s.BaggageAmount = &v
 	return s
@@ -155,6 +235,46 @@ func (s *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappi
 
 func (s *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue) SetIsAllCarryOnWeight(v bool) *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue {
 	s.IsAllCarryOnWeight = &v
+	return s
+}
+
+func (s *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue) SetCarryLength(v int32) *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue {
+	s.CarryLength = &v
+	return s
+}
+
+func (s *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue) SetCarryWidth(v int32) *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue {
+	s.CarryWidth = &v
+	return s
+}
+
+func (s *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue) SetCarryHeight(v int32) *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue {
+	s.CarryHeight = &v
+	return s
+}
+
+func (s *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue) SetCarrySumOfLengthWidthHeight(v int32) *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue {
+	s.CarrySumOfLengthWidthHeight = &v
+	return s
+}
+
+func (s *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue) SetLength(v int32) *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue {
+	s.Length = &v
+	return s
+}
+
+func (s *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue) SetWidth(v int32) *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue {
+	s.Width = &v
+	return s
+}
+
+func (s *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue) SetHeight(v int32) *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue {
+	s.Height = &v
+	return s
+}
+
+func (s *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue) SetSumOfLengthWidthHeight(v int32) *DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue {
+	s.SumOfLengthWidthHeight = &v
 	return s
 }
 
