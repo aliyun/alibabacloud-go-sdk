@@ -59,5 +59,10 @@ func (s *DeleteMcdpZoneResponse) SetBody(v *DeleteMcdpZoneResponseBody) *DeleteM
 }
 
 func (s *DeleteMcdpZoneResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -71,7 +71,12 @@ func (s *QueryMcubeMiniTaskResponseBody) SetResultMessage(v string) *QueryMcubeM
 }
 
 func (s *QueryMcubeMiniTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.QueryMiniTaskResult != nil {
+		if err := s.QueryMiniTaskResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMcubeMiniTaskResponseBodyQueryMiniTaskResult struct {
@@ -116,7 +121,12 @@ func (s *QueryMcubeMiniTaskResponseBodyQueryMiniTaskResult) SetSuccess(v bool) *
 }
 
 func (s *QueryMcubeMiniTaskResponseBodyQueryMiniTaskResult) Validate() error {
-	return dara.Validate(s)
+	if s.MiniTaskInfo != nil {
+		if err := s.MiniTaskInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMcubeMiniTaskResponseBodyQueryMiniTaskResultMiniTaskInfo struct {

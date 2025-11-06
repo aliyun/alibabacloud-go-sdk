@@ -59,5 +59,10 @@ func (s *CreateMcubeWhitelistForIdeResponse) SetBody(v *CreateMcubeWhitelistForI
 }
 
 func (s *CreateMcubeWhitelistForIdeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

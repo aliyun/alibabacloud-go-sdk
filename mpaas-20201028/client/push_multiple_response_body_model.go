@@ -71,7 +71,12 @@ func (s *PushMultipleResponseBody) SetResultMessage(v string) *PushMultipleRespo
 }
 
 func (s *PushMultipleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PushResult != nil {
+		if err := s.PushResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PushMultipleResponseBodyPushResult struct {

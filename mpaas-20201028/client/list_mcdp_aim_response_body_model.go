@@ -71,7 +71,12 @@ func (s *ListMcdpAimResponseBody) SetResultMessage(v string) *ListMcdpAimRespons
 }
 
 func (s *ListMcdpAimResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMcdpAimResponseBodyResultContent struct {

@@ -71,7 +71,12 @@ func (s *UploadUserAppToMsaResponseBody) SetResultMessage(v string) *UploadUserA
 }
 
 func (s *UploadUserAppToMsaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UploadUserAppToMsaResponseBodyResultContent struct {
@@ -136,7 +141,12 @@ func (s *UploadUserAppToMsaResponseBodyResultContent) SetSuccess(v bool) *Upload
 }
 
 func (s *UploadUserAppToMsaResponseBodyResultContent) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UploadUserAppToMsaResponseBodyResultContentData struct {
@@ -201,7 +211,12 @@ func (s *UploadUserAppToMsaResponseBodyResultContentData) SetStatus(v int64) *Up
 }
 
 func (s *UploadUserAppToMsaResponseBodyResultContentData) Validate() error {
-	return dara.Validate(s)
+	if s.ApkInfo != nil {
+		if err := s.ApkInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UploadUserAppToMsaResponseBodyResultContentDataApkInfo struct {
@@ -386,7 +401,12 @@ func (s *UploadUserAppToMsaResponseBodyResultContentDataApkInfo) SetVersionName(
 }
 
 func (s *UploadUserAppToMsaResponseBodyResultContentDataApkInfo) Validate() error {
-	return dara.Validate(s)
+	if s.EnhanceMapping != nil {
+		if err := s.EnhanceMapping.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UploadUserAppToMsaResponseBodyResultContentDataApkInfoEnhanceMapping struct {

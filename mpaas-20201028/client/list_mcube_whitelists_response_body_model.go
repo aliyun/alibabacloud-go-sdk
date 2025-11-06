@@ -71,7 +71,12 @@ func (s *ListMcubeWhitelistsResponseBody) SetResultMessage(v string) *ListMcubeW
 }
 
 func (s *ListMcubeWhitelistsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ListWhitelistResult != nil {
+		if err := s.ListWhitelistResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMcubeWhitelistsResponseBodyListWhitelistResult struct {
@@ -156,7 +161,16 @@ func (s *ListMcubeWhitelistsResponseBodyListWhitelistResult) SetWhitelists(v []*
 }
 
 func (s *ListMcubeWhitelistsResponseBodyListWhitelistResult) Validate() error {
-	return dara.Validate(s)
+	if s.Whitelists != nil {
+		for _, item := range s.Whitelists {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMcubeWhitelistsResponseBodyListWhitelistResultWhitelists struct {

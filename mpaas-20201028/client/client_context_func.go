@@ -13,9 +13,11 @@ import (
 //
 // @return AddMdsMiniConfigResponse
 func (client *Client) AddMdsMiniConfigWithContext(ctx context.Context, request *AddMdsMiniConfigRequest, runtime *dara.RuntimeOptions) (_result *AddMdsMiniConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -63,9 +65,11 @@ func (client *Client) AddMdsMiniConfigWithContext(ctx context.Context, request *
 //
 // @return CancelPushSchedulerResponse
 func (client *Client) CancelPushSchedulerWithContext(ctx context.Context, request *CancelPushSchedulerRequest, runtime *dara.RuntimeOptions) (_result *CancelPushSchedulerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -117,9 +121,11 @@ func (client *Client) CancelPushSchedulerWithContext(ctx context.Context, reques
 //
 // @return ChangeMcubeMiniTaskStatusResponse
 func (client *Client) ChangeMcubeMiniTaskStatusWithContext(ctx context.Context, request *ChangeMcubeMiniTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *ChangeMcubeMiniTaskStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -179,9 +185,11 @@ func (client *Client) ChangeMcubeMiniTaskStatusWithContext(ctx context.Context, 
 //
 // @return ChangeMcubeNebulaTaskStatusResponse
 func (client *Client) ChangeMcubeNebulaTaskStatusWithContext(ctx context.Context, request *ChangeMcubeNebulaTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *ChangeMcubeNebulaTaskStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -241,9 +249,11 @@ func (client *Client) ChangeMcubeNebulaTaskStatusWithContext(ctx context.Context
 //
 // @return ChangeMcubePublicTaskStatusResponse
 func (client *Client) ChangeMcubePublicTaskStatusWithContext(ctx context.Context, request *ChangeMcubePublicTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *ChangeMcubePublicTaskStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -289,15 +299,77 @@ func (client *Client) ChangeMcubePublicTaskStatusWithContext(ctx context.Context
 	return _result, _err
 }
 
+// @param request - ChangeMdsCubeTaskStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeMdsCubeTaskStatusResponse
+func (client *Client) ChangeMdsCubeTaskStatusWithContext(ctx context.Context, request *ChangeMdsCubeTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *ChangeMdsCubeTaskStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.TaskStatus) {
+		body["TaskStatus"] = request.TaskStatus
+	}
+
+	if !dara.IsNil(request.TemplateResourceId) {
+		body["TemplateResourceId"] = request.TemplateResourceId
+	}
+
+	if !dara.IsNil(request.TemplateTaskId) {
+		body["TemplateTaskId"] = request.TemplateTaskId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ChangeMdsCubeTaskStatus"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ChangeMdsCubeTaskStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - CopyMcdpGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CopyMcdpGroupResponse
 func (client *Client) CopyMcdpGroupWithContext(ctx context.Context, request *CopyMcdpGroupRequest, runtime *dara.RuntimeOptions) (_result *CopyMcdpGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -349,9 +421,11 @@ func (client *Client) CopyMcdpGroupWithContext(ctx context.Context, request *Cop
 //
 // @return CreateLinkResponse
 func (client *Client) CreateLinkWithContext(ctx context.Context, request *CreateLinkRequest, runtime *dara.RuntimeOptions) (_result *CreateLinkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -407,9 +481,11 @@ func (client *Client) CreateLinkWithContext(ctx context.Context, request *Create
 //
 // @return CreateMcdpGroupResponse
 func (client *Client) CreateMcdpGroupWithContext(ctx context.Context, request *CreateMcdpGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateMcdpGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -457,9 +533,11 @@ func (client *Client) CreateMcdpGroupWithContext(ctx context.Context, request *C
 //
 // @return CreateMcdpMaterialResponse
 func (client *Client) CreateMcdpMaterialWithContext(ctx context.Context, request *CreateMcdpMaterialRequest, runtime *dara.RuntimeOptions) (_result *CreateMcdpMaterialResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -507,9 +585,11 @@ func (client *Client) CreateMcdpMaterialWithContext(ctx context.Context, request
 //
 // @return CreateMcdpZoneResponse
 func (client *Client) CreateMcdpZoneWithContext(ctx context.Context, request *CreateMcdpZoneRequest, runtime *dara.RuntimeOptions) (_result *CreateMcdpZoneResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -557,9 +637,11 @@ func (client *Client) CreateMcdpZoneWithContext(ctx context.Context, request *Cr
 //
 // @return CreateMcubeMiniAppResponse
 func (client *Client) CreateMcubeMiniAppWithContext(ctx context.Context, request *CreateMcubeMiniAppRequest, runtime *dara.RuntimeOptions) (_result *CreateMcubeMiniAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -611,9 +693,11 @@ func (client *Client) CreateMcubeMiniAppWithContext(ctx context.Context, request
 //
 // @return CreateMcubeMiniTaskResponse
 func (client *Client) CreateMcubeMiniTaskWithContext(ctx context.Context, request *CreateMcubeMiniTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateMcubeMiniTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -689,9 +773,11 @@ func (client *Client) CreateMcubeMiniTaskWithContext(ctx context.Context, reques
 //
 // @return CreateMcubeNebulaAppResponse
 func (client *Client) CreateMcubeNebulaAppWithContext(ctx context.Context, request *CreateMcubeNebulaAppRequest, runtime *dara.RuntimeOptions) (_result *CreateMcubeNebulaAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -743,9 +829,11 @@ func (client *Client) CreateMcubeNebulaAppWithContext(ctx context.Context, reque
 //
 // @return CreateMcubeNebulaResourceResponse
 func (client *Client) CreateMcubeNebulaResourceWithContext(ctx context.Context, request *CreateMcubeNebulaResourceRequest, runtime *dara.RuntimeOptions) (_result *CreateMcubeNebulaResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -857,9 +945,11 @@ func (client *Client) CreateMcubeNebulaResourceWithContext(ctx context.Context, 
 //
 // @return CreateMcubeNebulaTaskResponse
 func (client *Client) CreateMcubeNebulaTaskWithContext(ctx context.Context, request *CreateMcubeNebulaTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateMcubeNebulaTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppCode) {
@@ -1043,9 +1133,11 @@ func (client *Client) CreateMcubeNebulaTaskWithContext(ctx context.Context, requ
 //
 // @return CreateMcubeUpgradePackageResponse
 func (client *Client) CreateMcubeUpgradePackageWithContext(ctx context.Context, request *CreateMcubeUpgradePackageRequest, runtime *dara.RuntimeOptions) (_result *CreateMcubeUpgradePackageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1080,6 +1172,10 @@ func (client *Client) CreateMcubeUpgradePackageWithContext(ctx context.Context, 
 		body["FileUrl"] = request.FileUrl
 	}
 
+	if !dara.IsNil(request.HarmonyLabel) {
+		body["HarmonyLabel"] = request.HarmonyLabel
+	}
+
 	if !dara.IsNil(request.IconFileUrl) {
 		body["IconFileUrl"] = request.IconFileUrl
 	}
@@ -1094,6 +1190,10 @@ func (client *Client) CreateMcubeUpgradePackageWithContext(ctx context.Context, 
 
 	if !dara.IsNil(request.IsEnterprise) {
 		body["IsEnterprise"] = request.IsEnterprise
+	}
+
+	if !dara.IsNil(request.LargeIconUrl) {
+		body["LargeIconUrl"] = request.LargeIconUrl
 	}
 
 	if !dara.IsNil(request.NeedCheck) {
@@ -1149,9 +1249,11 @@ func (client *Client) CreateMcubeUpgradePackageWithContext(ctx context.Context, 
 //
 // @return CreateMcubeUpgradeTaskResponse
 func (client *Client) CreateMcubeUpgradeTaskWithContext(ctx context.Context, request *CreateMcubeUpgradeTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateMcubeUpgradeTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1239,9 +1341,11 @@ func (client *Client) CreateMcubeUpgradeTaskWithContext(ctx context.Context, req
 //
 // @return CreateMcubeVhostResponse
 func (client *Client) CreateMcubeVhostWithContext(ctx context.Context, request *CreateMcubeVhostRequest, runtime *dara.RuntimeOptions) (_result *CreateMcubeVhostResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1289,9 +1393,11 @@ func (client *Client) CreateMcubeVhostWithContext(ctx context.Context, request *
 //
 // @return CreateMcubeWhitelistResponse
 func (client *Client) CreateMcubeWhitelistWithContext(ctx context.Context, request *CreateMcubeWhitelistRequest, runtime *dara.RuntimeOptions) (_result *CreateMcubeWhitelistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1343,9 +1449,11 @@ func (client *Client) CreateMcubeWhitelistWithContext(ctx context.Context, reque
 //
 // @return CreateMcubeWhitelistForIdeResponse
 func (client *Client) CreateMcubeWhitelistForIdeWithContext(ctx context.Context, request *CreateMcubeWhitelistForIdeRequest, runtime *dara.RuntimeOptions) (_result *CreateMcubeWhitelistForIdeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1391,15 +1499,117 @@ func (client *Client) CreateMcubeWhitelistForIdeWithContext(ctx context.Context,
 	return _result, _err
 }
 
-// @param request - CreateMdsMiniprogramTaskRequest
+// @param request - CreateMdsCubeResourceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
-// @return CreateMdsMiniprogramTaskResponse
-func (client *Client) CreateMdsMiniprogramTaskWithContext(ctx context.Context, request *CreateMdsMiniprogramTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateMdsMiniprogramTaskResponse, _err error) {
-	_err = request.Validate()
+// @return CreateMdsCubeResourceResponse
+func (client *Client) CreateMdsCubeResourceWithContext(ctx context.Context, request *CreateMdsCubeResourceRequest, runtime *dara.RuntimeOptions) (_result *CreateMdsCubeResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AndroidMaxVersion) {
+		body["AndroidMaxVersion"] = request.AndroidMaxVersion
+	}
+
+	if !dara.IsNil(request.AndroidMinVersion) {
+		body["AndroidMinVersion"] = request.AndroidMinVersion
+	}
+
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.ExtendInfo) {
+		body["ExtendInfo"] = request.ExtendInfo
+	}
+
+	if !dara.IsNil(request.FileUrl) {
+		body["FileUrl"] = request.FileUrl
+	}
+
+	if !dara.IsNil(request.IosMaxVersion) {
+		body["IosMaxVersion"] = request.IosMaxVersion
+	}
+
+	if !dara.IsNil(request.IosMinVersion) {
+		body["IosMinVersion"] = request.IosMinVersion
+	}
+
+	if !dara.IsNil(request.MockDataUrl) {
+		body["MockDataUrl"] = request.MockDataUrl
+	}
+
+	if !dara.IsNil(request.OnexFlag) {
+		body["OnexFlag"] = request.OnexFlag
+	}
+
+	if !dara.IsNil(request.Platform) {
+		body["Platform"] = request.Platform
+	}
+
+	if !dara.IsNil(request.PreviewPictureUrl) {
+		body["PreviewPictureUrl"] = request.PreviewPictureUrl
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.TemplateResourceDesc) {
+		body["TemplateResourceDesc"] = request.TemplateResourceDesc
+	}
+
+	if !dara.IsNil(request.TemplateResourceVersion) {
+		body["TemplateResourceVersion"] = request.TemplateResourceVersion
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMdsCubeResource"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMdsCubeResourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateMdsCubeTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMdsCubeTaskResponse
+func (client *Client) CreateMdsCubeTaskWithContext(ctx context.Context, request *CreateMdsCubeTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateMdsCubeTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1416,6 +1626,150 @@ func (client *Client) CreateMdsMiniprogramTaskWithContext(ctx context.Context, r
 
 	if !dara.IsNil(request.GreyNum) {
 		body["GreyNum"] = request.GreyNum
+	}
+
+	if !dara.IsNil(request.PublishMode) {
+		body["PublishMode"] = request.PublishMode
+	}
+
+	if !dara.IsNil(request.PublishType) {
+		body["PublishType"] = request.PublishType
+	}
+
+	if !dara.IsNil(request.TaskDesc) {
+		body["TaskDesc"] = request.TaskDesc
+	}
+
+	if !dara.IsNil(request.TemplateResourceId) {
+		body["TemplateResourceId"] = request.TemplateResourceId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WhitelistIds) {
+		body["WhitelistIds"] = request.WhitelistIds
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMdsCubeTask"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMdsCubeTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateMdsCubeTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMdsCubeTemplateResponse
+func (client *Client) CreateMdsCubeTemplateWithContext(ctx context.Context, request *CreateMdsCubeTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateMdsCubeTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.TemplateDesc) {
+		body["TemplateDesc"] = request.TemplateDesc
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		body["TemplateName"] = request.TemplateName
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMdsCubeTemplate"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMdsCubeTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateMdsMiniprogramTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMdsMiniprogramTaskResponse
+func (client *Client) CreateMdsMiniprogramTaskWithContext(ctx context.Context, request *CreateMdsMiniprogramTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateMdsMiniprogramTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.GreyConfigInfo) {
+		body["GreyConfigInfo"] = request.GreyConfigInfo
+	}
+
+	if !dara.IsNil(request.GreyEndtimeData) {
+		body["GreyEndtimeData"] = request.GreyEndtimeData
+	}
+
+	if !dara.IsNil(request.GreyNum) {
+		body["GreyNum"] = request.GreyNum
+	}
+
+	if !dara.IsNil(request.H5Id) {
+		body["H5Id"] = request.H5Id
 	}
 
 	if !dara.IsNil(request.Id) {
@@ -1483,9 +1837,11 @@ func (client *Client) CreateMdsMiniprogramTaskWithContext(ctx context.Context, r
 //
 // @return CreateOpenGlobalDataResponse
 func (client *Client) CreateOpenGlobalDataWithContext(ctx context.Context, request *CreateOpenGlobalDataRequest, runtime *dara.RuntimeOptions) (_result *CreateOpenGlobalDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1577,9 +1933,11 @@ func (client *Client) CreateOpenGlobalDataWithContext(ctx context.Context, reque
 //
 // @return CreateOpenSingleDataResponse
 func (client *Client) CreateOpenSingleDataWithContext(ctx context.Context, request *CreateOpenSingleDataRequest, runtime *dara.RuntimeOptions) (_result *CreateOpenSingleDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1661,15 +2019,113 @@ func (client *Client) CreateOpenSingleDataWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建模版
+//
+// @param request - CreateTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTemplateResponse
+func (client *Client) CreateTemplateWithContext(ctx context.Context, request *CreateTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.Content) {
+		body["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.DescInfo) {
+		body["DescInfo"] = request.DescInfo
+	}
+
+	if !dara.IsNil(request.IconUrls) {
+		body["IconUrls"] = request.IconUrls
+	}
+
+	if !dara.IsNil(request.ImageUrls) {
+		body["ImageUrls"] = request.ImageUrls
+	}
+
+	if !dara.IsNil(request.JumpAction) {
+		body["JumpAction"] = request.JumpAction
+	}
+
+	if !dara.IsNil(request.PushStyle) {
+		body["PushStyle"] = request.PushStyle
+	}
+
+	if !dara.IsNil(request.ShowStyle) {
+		body["ShowStyle"] = request.ShowStyle
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		body["TemplateName"] = request.TemplateName
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.Title) {
+		body["Title"] = request.Title
+	}
+
+	if !dara.IsNil(request.Uri) {
+		body["Uri"] = request.Uri
+	}
+
+	if !dara.IsNil(request.Variables) {
+		body["Variables"] = request.Variables
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTemplate"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - DeleteCubecardWhitelistContentRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCubecardWhitelistContentResponse
 func (client *Client) DeleteCubecardWhitelistContentWithContext(ctx context.Context, request *DeleteCubecardWhitelistContentRequest, runtime *dara.RuntimeOptions) (_result *DeleteCubecardWhitelistContentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1721,9 +2177,11 @@ func (client *Client) DeleteCubecardWhitelistContentWithContext(ctx context.Cont
 //
 // @return DeleteMcdpAimResponse
 func (client *Client) DeleteMcdpAimWithContext(ctx context.Context, request *DeleteMcdpAimRequest, runtime *dara.RuntimeOptions) (_result *DeleteMcdpAimResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1771,9 +2229,11 @@ func (client *Client) DeleteMcdpAimWithContext(ctx context.Context, request *Del
 //
 // @return DeleteMcdpCrowdResponse
 func (client *Client) DeleteMcdpCrowdWithContext(ctx context.Context, request *DeleteMcdpCrowdRequest, runtime *dara.RuntimeOptions) (_result *DeleteMcdpCrowdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1821,9 +2281,11 @@ func (client *Client) DeleteMcdpCrowdWithContext(ctx context.Context, request *D
 //
 // @return DeleteMcdpZoneResponse
 func (client *Client) DeleteMcdpZoneWithContext(ctx context.Context, request *DeleteMcdpZoneRequest, runtime *dara.RuntimeOptions) (_result *DeleteMcdpZoneResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1871,9 +2333,11 @@ func (client *Client) DeleteMcdpZoneWithContext(ctx context.Context, request *De
 //
 // @return DeleteMcubeMiniAppResponse
 func (client *Client) DeleteMcubeMiniAppWithContext(ctx context.Context, request *DeleteMcubeMiniAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteMcubeMiniAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1921,9 +2385,11 @@ func (client *Client) DeleteMcubeMiniAppWithContext(ctx context.Context, request
 //
 // @return DeleteMcubeNebulaAppResponse
 func (client *Client) DeleteMcubeNebulaAppWithContext(ctx context.Context, request *DeleteMcubeNebulaAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteMcubeNebulaAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -1971,9 +2437,11 @@ func (client *Client) DeleteMcubeNebulaAppWithContext(ctx context.Context, reque
 //
 // @return DeleteMcubeUpgradeResourceResponse
 func (client *Client) DeleteMcubeUpgradeResourceWithContext(ctx context.Context, request *DeleteMcubeUpgradeResourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteMcubeUpgradeResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2025,9 +2493,11 @@ func (client *Client) DeleteMcubeUpgradeResourceWithContext(ctx context.Context,
 //
 // @return DeleteMcubeWhitelistResponse
 func (client *Client) DeleteMcubeWhitelistWithContext(ctx context.Context, request *DeleteMcubeWhitelistRequest, runtime *dara.RuntimeOptions) (_result *DeleteMcubeWhitelistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2075,9 +2545,11 @@ func (client *Client) DeleteMcubeWhitelistWithContext(ctx context.Context, reque
 //
 // @return DeleteMdsWhitelistContentResponse
 func (client *Client) DeleteMdsWhitelistContentWithContext(ctx context.Context, request *DeleteMdsWhitelistContentRequest, runtime *dara.RuntimeOptions) (_result *DeleteMdsWhitelistContentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2123,15 +2595,77 @@ func (client *Client) DeleteMdsWhitelistContentWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除模版
+//
+// @param request - DeleteTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTemplateResponse
+func (client *Client) DeleteTemplateWithContext(ctx context.Context, request *DeleteTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		body["TemplateName"] = request.TemplateName
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteTemplate"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - ExistMcubeRsaKeyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExistMcubeRsaKeyResponse
 func (client *Client) ExistMcubeRsaKeyWithContext(ctx context.Context, request *ExistMcubeRsaKeyRequest, runtime *dara.RuntimeOptions) (_result *ExistMcubeRsaKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2175,9 +2709,11 @@ func (client *Client) ExistMcubeRsaKeyWithContext(ctx context.Context, request *
 //
 // @return ExportMappCenterAppConfigResponse
 func (client *Client) ExportMappCenterAppConfigWithContext(ctx context.Context, request *ExportMappCenterAppConfigRequest, runtime *dara.RuntimeOptions) (_result *ExportMappCenterAppConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ApkFileUrl) {
@@ -2237,9 +2773,11 @@ func (client *Client) ExportMappCenterAppConfigWithContext(ctx context.Context, 
 //
 // @return GetFileTokenForUploadToMsaResponse
 func (client *Client) GetFileTokenForUploadToMsaWithContext(ctx context.Context, request *GetFileTokenForUploadToMsaRequest, runtime *dara.RuntimeOptions) (_result *GetFileTokenForUploadToMsaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2287,9 +2825,11 @@ func (client *Client) GetFileTokenForUploadToMsaWithContext(ctx context.Context,
 //
 // @return GetLogUrlInMsaResponse
 func (client *Client) GetLogUrlInMsaWithContext(ctx context.Context, request *GetLogUrlInMsaRequest, runtime *dara.RuntimeOptions) (_result *GetLogUrlInMsaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2337,9 +2877,11 @@ func (client *Client) GetLogUrlInMsaWithContext(ctx context.Context, request *Ge
 //
 // @return GetMcubeFileTokenResponse
 func (client *Client) GetMcubeFileTokenWithContext(ctx context.Context, request *GetMcubeFileTokenRequest, runtime *dara.RuntimeOptions) (_result *GetMcubeFileTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2387,9 +2929,11 @@ func (client *Client) GetMcubeFileTokenWithContext(ctx context.Context, request 
 //
 // @return GetMcubeNebulaResourceResponse
 func (client *Client) GetMcubeNebulaResourceWithContext(ctx context.Context, request *GetMcubeNebulaResourceRequest, runtime *dara.RuntimeOptions) (_result *GetMcubeNebulaResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2437,9 +2981,11 @@ func (client *Client) GetMcubeNebulaResourceWithContext(ctx context.Context, req
 //
 // @return GetMcubeNebulaTaskDetailResponse
 func (client *Client) GetMcubeNebulaTaskDetailWithContext(ctx context.Context, request *GetMcubeNebulaTaskDetailRequest, runtime *dara.RuntimeOptions) (_result *GetMcubeNebulaTaskDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2487,9 +3033,11 @@ func (client *Client) GetMcubeNebulaTaskDetailWithContext(ctx context.Context, r
 //
 // @return GetMcubeUpgradePackageInfoResponse
 func (client *Client) GetMcubeUpgradePackageInfoWithContext(ctx context.Context, request *GetMcubeUpgradePackageInfoRequest, runtime *dara.RuntimeOptions) (_result *GetMcubeUpgradePackageInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2537,9 +3085,11 @@ func (client *Client) GetMcubeUpgradePackageInfoWithContext(ctx context.Context,
 //
 // @return GetMcubeUpgradeTaskInfoResponse
 func (client *Client) GetMcubeUpgradeTaskInfoWithContext(ctx context.Context, request *GetMcubeUpgradeTaskInfoRequest, runtime *dara.RuntimeOptions) (_result *GetMcubeUpgradeTaskInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2587,9 +3137,11 @@ func (client *Client) GetMcubeUpgradeTaskInfoWithContext(ctx context.Context, re
 //
 // @return GetMdsMiniConfigResponse
 func (client *Client) GetMdsMiniConfigWithContext(ctx context.Context, request *GetMdsMiniConfigRequest, runtime *dara.RuntimeOptions) (_result *GetMdsMiniConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2631,15 +3183,77 @@ func (client *Client) GetMdsMiniConfigWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取模版
+//
+// @param request - GetTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTemplateResponse
+func (client *Client) GetTemplateWithContext(ctx context.Context, request *GetTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		body["TemplateName"] = request.TemplateName
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTemplate"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - GetUserAppDonwloadUrlInMsaRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetUserAppDonwloadUrlInMsaResponse
 func (client *Client) GetUserAppDonwloadUrlInMsaWithContext(ctx context.Context, request *GetUserAppDonwloadUrlInMsaRequest, runtime *dara.RuntimeOptions) (_result *GetUserAppDonwloadUrlInMsaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2687,9 +3301,11 @@ func (client *Client) GetUserAppDonwloadUrlInMsaWithContext(ctx context.Context,
 //
 // @return GetUserAppEnhanceProcessInMsaResponse
 func (client *Client) GetUserAppEnhanceProcessInMsaWithContext(ctx context.Context, request *GetUserAppEnhanceProcessInMsaRequest, runtime *dara.RuntimeOptions) (_result *GetUserAppEnhanceProcessInMsaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2737,9 +3353,11 @@ func (client *Client) GetUserAppEnhanceProcessInMsaWithContext(ctx context.Conte
 //
 // @return GetUserAppUploadProcessInMsaResponse
 func (client *Client) GetUserAppUploadProcessInMsaWithContext(ctx context.Context, request *GetUserAppUploadProcessInMsaRequest, runtime *dara.RuntimeOptions) (_result *GetUserAppUploadProcessInMsaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2781,15 +3399,93 @@ func (client *Client) GetUserAppUploadProcessInMsaWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询报表
+//
+// @param request - ListAnalysisCoreIndexRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAnalysisCoreIndexResponse
+func (client *Client) ListAnalysisCoreIndexWithContext(ctx context.Context, request *ListAnalysisCoreIndexRequest, runtime *dara.RuntimeOptions) (_result *ListAnalysisCoreIndexResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.Channel) {
+		body["Channel"] = request.Channel
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Platform) {
+		body["Platform"] = request.Platform
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAnalysisCoreIndex"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAnalysisCoreIndexResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - ListMcdpAimRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListMcdpAimResponse
 func (client *Client) ListMcdpAimWithContext(ctx context.Context, request *ListMcdpAimRequest, runtime *dara.RuntimeOptions) (_result *ListMcdpAimResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2865,9 +3561,11 @@ func (client *Client) ListMcdpAimWithContext(ctx context.Context, request *ListM
 //
 // @return ListMcubeMiniAppsResponse
 func (client *Client) ListMcubeMiniAppsWithContext(ctx context.Context, request *ListMcubeMiniAppsRequest, runtime *dara.RuntimeOptions) (_result *ListMcubeMiniAppsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2923,9 +3621,11 @@ func (client *Client) ListMcubeMiniAppsWithContext(ctx context.Context, request 
 //
 // @return ListMcubeMiniPackagesResponse
 func (client *Client) ListMcubeMiniPackagesWithContext(ctx context.Context, request *ListMcubeMiniPackagesRequest, runtime *dara.RuntimeOptions) (_result *ListMcubeMiniPackagesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -2985,9 +3685,11 @@ func (client *Client) ListMcubeMiniPackagesWithContext(ctx context.Context, requ
 //
 // @return ListMcubeMiniTasksResponse
 func (client *Client) ListMcubeMiniTasksWithContext(ctx context.Context, request *ListMcubeMiniTasksRequest, runtime *dara.RuntimeOptions) (_result *ListMcubeMiniTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -3035,9 +3737,11 @@ func (client *Client) ListMcubeMiniTasksWithContext(ctx context.Context, request
 //
 // @return ListMcubeNebulaAppsResponse
 func (client *Client) ListMcubeNebulaAppsWithContext(ctx context.Context, request *ListMcubeNebulaAppsRequest, runtime *dara.RuntimeOptions) (_result *ListMcubeNebulaAppsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -3093,9 +3797,11 @@ func (client *Client) ListMcubeNebulaAppsWithContext(ctx context.Context, reques
 //
 // @return ListMcubeNebulaResourcesResponse
 func (client *Client) ListMcubeNebulaResourcesWithContext(ctx context.Context, request *ListMcubeNebulaResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListMcubeNebulaResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -3151,9 +3857,11 @@ func (client *Client) ListMcubeNebulaResourcesWithContext(ctx context.Context, r
 //
 // @return ListMcubeNebulaTasksResponse
 func (client *Client) ListMcubeNebulaTasksWithContext(ctx context.Context, request *ListMcubeNebulaTasksRequest, runtime *dara.RuntimeOptions) (_result *ListMcubeNebulaTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -3201,9 +3909,11 @@ func (client *Client) ListMcubeNebulaTasksWithContext(ctx context.Context, reque
 //
 // @return ListMcubeUpgradePackagesResponse
 func (client *Client) ListMcubeUpgradePackagesWithContext(ctx context.Context, request *ListMcubeUpgradePackagesRequest, runtime *dara.RuntimeOptions) (_result *ListMcubeUpgradePackagesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -3255,9 +3965,11 @@ func (client *Client) ListMcubeUpgradePackagesWithContext(ctx context.Context, r
 //
 // @return ListMcubeUpgradeTasksResponse
 func (client *Client) ListMcubeUpgradeTasksWithContext(ctx context.Context, request *ListMcubeUpgradeTasksRequest, runtime *dara.RuntimeOptions) (_result *ListMcubeUpgradeTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -3305,9 +4017,11 @@ func (client *Client) ListMcubeUpgradeTasksWithContext(ctx context.Context, requ
 //
 // @return ListMcubeWhitelistsResponse
 func (client *Client) ListMcubeWhitelistsWithContext(ctx context.Context, request *ListMcubeWhitelistsRequest, runtime *dara.RuntimeOptions) (_result *ListMcubeWhitelistsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -3357,15 +4071,201 @@ func (client *Client) ListMcubeWhitelistsWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// @param request - ListMdsCubeResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMdsCubeResourcesResponse
+func (client *Client) ListMdsCubeResourcesWithContext(ctx context.Context, request *ListMdsCubeResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListMdsCubeResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		body["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.Test) {
+		body["test"] = request.Test
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMdsCubeResources"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMdsCubeResourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListMdsCubeTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMdsCubeTasksResponse
+func (client *Client) ListMdsCubeTasksWithContext(ctx context.Context, request *ListMdsCubeTasksRequest, runtime *dara.RuntimeOptions) (_result *ListMdsCubeTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		body["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.TemplateResourceId) {
+		body["TemplateResourceId"] = request.TemplateResourceId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMdsCubeTasks"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMdsCubeTasksResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListMdsCubeTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMdsCubeTemplatesResponse
+func (client *Client) ListMdsCubeTemplatesWithContext(ctx context.Context, request *ListMdsCubeTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListMdsCubeTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		body["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMdsCubeTemplates"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMdsCubeTemplatesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - ListMgsApiRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListMgsApiResponse
 func (client *Client) ListMgsApiWithContext(ctx context.Context, request *ListMgsApiRequest, runtime *dara.RuntimeOptions) (_result *ListMgsApiResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ApiStatus) {
@@ -3457,6 +4357,66 @@ func (client *Client) ListMgsApiWithContext(ctx context.Context, request *ListMg
 
 // Summary:
 //
+// 分页查询模版列表
+//
+// @param request - ListTemplatePageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTemplatePageResponse
+func (client *Client) ListTemplatePageWithContext(ctx context.Context, request *ListTemplatePageRequest, runtime *dara.RuntimeOptions) (_result *ListTemplatePageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		body["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTemplatePage"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTemplatePageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # OCR通用接口
 //
 // @param request - MTRSOCRServiceRequest
@@ -3465,9 +4425,11 @@ func (client *Client) ListMgsApiWithContext(ctx context.Context, request *ListMg
 //
 // @return MTRSOCRServiceResponse
 func (client *Client) MTRSOCRServiceWithContext(ctx context.Context, request *MTRSOCRServiceRequest, runtime *dara.RuntimeOptions) (_result *MTRSOCRServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -3523,9 +4485,11 @@ func (client *Client) MTRSOCRServiceWithContext(ctx context.Context, request *MT
 //
 // @return PushBindResponse
 func (client *Client) PushBindWithContext(ctx context.Context, request *PushBindRequest, runtime *dara.RuntimeOptions) (_result *PushBindResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -3585,12 +4549,18 @@ func (client *Client) PushBindWithContext(ctx context.Context, request *PushBind
 //
 // @return PushBroadcastResponse
 func (client *Client) PushBroadcastWithContext(ctx context.Context, tmpReq *PushBroadcastRequest, runtime *dara.RuntimeOptions) (_result *PushBroadcastResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &PushBroadcastShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.NotifyLevel) {
+		request.NotifyLevelShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NotifyLevel, dara.String("NotifyLevel"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.ThirdChannelCategory) {
 		request.ThirdChannelCategoryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ThirdChannelCategory, dara.String("ThirdChannelCategory"), dara.String("json"))
 	}
@@ -3604,8 +4574,16 @@ func (client *Client) PushBroadcastWithContext(ctx context.Context, tmpReq *Push
 		body["AppId"] = request.AppId
 	}
 
+	if !dara.IsNil(request.BindEndTime) {
+		body["BindEndTime"] = request.BindEndTime
+	}
+
 	if !dara.IsNil(request.BindPeriod) {
 		body["BindPeriod"] = request.BindPeriod
+	}
+
+	if !dara.IsNil(request.BindStartTime) {
+		body["BindStartTime"] = request.BindStartTime
 	}
 
 	if !dara.IsNil(request.ChannelId) {
@@ -3634,6 +4612,10 @@ func (client *Client) PushBroadcastWithContext(ctx context.Context, tmpReq *Push
 
 	if !dara.IsNil(request.Msgkey) {
 		body["Msgkey"] = request.Msgkey
+	}
+
+	if !dara.IsNil(request.NotifyLevelShrink) {
+		body["NotifyLevel"] = request.NotifyLevelShrink
 	}
 
 	if !dara.IsNil(request.NotifyType) {
@@ -3680,6 +4662,10 @@ func (client *Client) PushBroadcastWithContext(ctx context.Context, tmpReq *Push
 		body["ThirdChannelCategory"] = request.ThirdChannelCategoryShrink
 	}
 
+	if !dara.IsNil(request.TimeMode) {
+		body["TimeMode"] = request.TimeMode
+	}
+
 	if !dara.IsNil(request.TransparentMessagePayload) {
 		body["TransparentMessagePayload"] = request.TransparentMessagePayload
 	}
@@ -3688,8 +4674,16 @@ func (client *Client) PushBroadcastWithContext(ctx context.Context, tmpReq *Push
 		body["TransparentMessageUrgency"] = request.TransparentMessageUrgency
 	}
 
+	if !dara.IsNil(request.UnBindEndTime) {
+		body["UnBindEndTime"] = request.UnBindEndTime
+	}
+
 	if !dara.IsNil(request.UnBindPeriod) {
 		body["UnBindPeriod"] = request.UnBindPeriod
+	}
+
+	if !dara.IsNil(request.UnBindStartTime) {
+		body["UnBindStartTime"] = request.UnBindStartTime
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -3725,12 +4719,18 @@ func (client *Client) PushBroadcastWithContext(ctx context.Context, tmpReq *Push
 //
 // @return PushMultipleResponse
 func (client *Client) PushMultipleWithContext(ctx context.Context, tmpReq *PushMultipleRequest, runtime *dara.RuntimeOptions) (_result *PushMultipleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &PushMultipleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.NotifyLevel) {
+		request.NotifyLevelShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NotifyLevel, dara.String("NotifyLevel"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.ThirdChannelCategory) {
 		request.ThirdChannelCategoryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ThirdChannelCategory, dara.String("ThirdChannelCategory"), dara.String("json"))
 	}
@@ -3774,6 +4774,10 @@ func (client *Client) PushMultipleWithContext(ctx context.Context, tmpReq *PushM
 
 	if !dara.IsNil(request.MiChannelId) {
 		body["MiChannelId"] = request.MiChannelId
+	}
+
+	if !dara.IsNil(request.NotifyLevelShrink) {
+		body["NotifyLevel"] = request.NotifyLevelShrink
 	}
 
 	if !dara.IsNil(request.NotifyType) {
@@ -3851,15 +4855,77 @@ func (client *Client) PushMultipleWithContext(ctx context.Context, tmpReq *PushM
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询设备状态信息
+//
+// @param request - PushQueryDeviceStateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushQueryDeviceStateResponse
+func (client *Client) PushQueryDeviceStateWithContext(ctx context.Context, request *PushQueryDeviceStateRequest, runtime *dara.RuntimeOptions) (_result *PushQueryDeviceStateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.Target) {
+		body["Target"] = request.Target
+	}
+
+	if !dara.IsNil(request.TargetType) {
+		body["TargetType"] = request.TargetType
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PushQueryDeviceState"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PushQueryDeviceStateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - PushReportRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PushReportResponse
 func (client *Client) PushReportWithContext(ctx context.Context, request *PushReportRequest, runtime *dara.RuntimeOptions) (_result *PushReportResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -3951,12 +5017,18 @@ func (client *Client) PushReportWithContext(ctx context.Context, request *PushRe
 //
 // @return PushSimpleResponse
 func (client *Client) PushSimpleWithContext(ctx context.Context, tmpReq *PushSimpleRequest, runtime *dara.RuntimeOptions) (_result *PushSimpleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &PushSimpleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.NotifyLevel) {
+		request.NotifyLevelShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NotifyLevel, dara.String("NotifyLevel"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.ThirdChannelCategory) {
 		request.ThirdChannelCategoryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ThirdChannelCategory, dara.String("ThirdChannelCategory"), dara.String("json"))
 	}
@@ -4012,6 +5084,10 @@ func (client *Client) PushSimpleWithContext(ctx context.Context, tmpReq *PushSim
 
 	if !dara.IsNil(request.MiChannelId) {
 		body["MiChannelId"] = request.MiChannelId
+	}
+
+	if !dara.IsNil(request.NotifyLevelShrink) {
+		body["NotifyLevel"] = request.NotifyLevelShrink
 	}
 
 	if !dara.IsNil(request.NotifyType) {
@@ -4119,12 +5195,18 @@ func (client *Client) PushSimpleWithContext(ctx context.Context, tmpReq *PushSim
 //
 // @return PushTemplateResponse
 func (client *Client) PushTemplateWithContext(ctx context.Context, tmpReq *PushTemplateRequest, runtime *dara.RuntimeOptions) (_result *PushTemplateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &PushTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.NotifyLevel) {
+		request.NotifyLevelShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NotifyLevel, dara.String("NotifyLevel"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.ThirdChannelCategory) {
 		request.ThirdChannelCategoryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ThirdChannelCategory, dara.String("ThirdChannelCategory"), dara.String("json"))
 	}
@@ -4168,6 +5250,10 @@ func (client *Client) PushTemplateWithContext(ctx context.Context, tmpReq *PushT
 
 	if !dara.IsNil(request.MiChannelId) {
 		body["MiChannelId"] = request.MiChannelId
+	}
+
+	if !dara.IsNil(request.NotifyLevelShrink) {
+		body["NotifyLevel"] = request.NotifyLevelShrink
 	}
 
 	if !dara.IsNil(request.NotifyType) {
@@ -4271,9 +5357,11 @@ func (client *Client) PushTemplateWithContext(ctx context.Context, tmpReq *PushT
 //
 // @return PushUnBindResponse
 func (client *Client) PushUnBindWithContext(ctx context.Context, request *PushUnBindRequest, runtime *dara.RuntimeOptions) (_result *PushUnBindResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4319,6 +5407,58 @@ func (client *Client) PushUnBindWithContext(ctx context.Context, request *PushUn
 	return _result, _err
 }
 
+// @param request - QueryCubecardFiletokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCubecardFiletokenResponse
+func (client *Client) QueryCubecardFiletokenWithContext(ctx context.Context, request *QueryCubecardFiletokenRequest, runtime *dara.RuntimeOptions) (_result *QueryCubecardFiletokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.OnexFlag) {
+		body["OnexFlag"] = request.OnexFlag
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryCubecardFiletoken"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryCubecardFiletokenResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // Summary:
 //
 // 查询Device+服务的
@@ -4329,9 +5469,11 @@ func (client *Client) PushUnBindWithContext(ctx context.Context, request *PushUn
 //
 // @return QueryInfoFromMdpResponse
 func (client *Client) QueryInfoFromMdpWithContext(ctx context.Context, request *QueryInfoFromMdpRequest, runtime *dara.RuntimeOptions) (_result *QueryInfoFromMdpResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4395,9 +5537,11 @@ func (client *Client) QueryInfoFromMdpWithContext(ctx context.Context, request *
 //
 // @return QueryLinkResponse
 func (client *Client) QueryLinkWithContext(ctx context.Context, request *QueryLinkRequest, runtime *dara.RuntimeOptions) (_result *QueryLinkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4441,9 +5585,11 @@ func (client *Client) QueryLinkWithContext(ctx context.Context, request *QueryLi
 //
 // @return QueryMappCenterAppResponse
 func (client *Client) QueryMappCenterAppWithContext(ctx context.Context, request *QueryMappCenterAppRequest, runtime *dara.RuntimeOptions) (_result *QueryMappCenterAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4483,9 +5629,11 @@ func (client *Client) QueryMappCenterAppWithContext(ctx context.Context, request
 //
 // @return QueryMcdpAimResponse
 func (client *Client) QueryMcdpAimWithContext(ctx context.Context, request *QueryMcdpAimRequest, runtime *dara.RuntimeOptions) (_result *QueryMcdpAimResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4533,9 +5681,11 @@ func (client *Client) QueryMcdpAimWithContext(ctx context.Context, request *Quer
 //
 // @return QueryMcdpZoneResponse
 func (client *Client) QueryMcdpZoneWithContext(ctx context.Context, request *QueryMcdpZoneRequest, runtime *dara.RuntimeOptions) (_result *QueryMcdpZoneResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4583,9 +5733,11 @@ func (client *Client) QueryMcdpZoneWithContext(ctx context.Context, request *Que
 //
 // @return QueryMcubeMiniPackageResponse
 func (client *Client) QueryMcubeMiniPackageWithContext(ctx context.Context, request *QueryMcubeMiniPackageRequest, runtime *dara.RuntimeOptions) (_result *QueryMcubeMiniPackageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4637,9 +5789,11 @@ func (client *Client) QueryMcubeMiniPackageWithContext(ctx context.Context, requ
 //
 // @return QueryMcubeMiniTaskResponse
 func (client *Client) QueryMcubeMiniTaskWithContext(ctx context.Context, request *QueryMcubeMiniTaskRequest, runtime *dara.RuntimeOptions) (_result *QueryMcubeMiniTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4687,9 +5841,11 @@ func (client *Client) QueryMcubeMiniTaskWithContext(ctx context.Context, request
 //
 // @return QueryMcubeVhostResponse
 func (client *Client) QueryMcubeVhostWithContext(ctx context.Context, request *QueryMcubeVhostRequest, runtime *dara.RuntimeOptions) (_result *QueryMcubeVhostResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4733,9 +5889,11 @@ func (client *Client) QueryMcubeVhostWithContext(ctx context.Context, request *Q
 //
 // @return QueryMdsUpgradeTaskDetailResponse
 func (client *Client) QueryMdsUpgradeTaskDetailWithContext(ctx context.Context, request *QueryMdsUpgradeTaskDetailRequest, runtime *dara.RuntimeOptions) (_result *QueryMdsUpgradeTaskDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4783,9 +5941,11 @@ func (client *Client) QueryMdsUpgradeTaskDetailWithContext(ctx context.Context, 
 //
 // @return QueryMgsApipageResponse
 func (client *Client) QueryMgsApipageWithContext(ctx context.Context, request *QueryMgsApipageRequest, runtime *dara.RuntimeOptions) (_result *QueryMgsApipageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ApiStatus) {
@@ -4881,9 +6041,11 @@ func (client *Client) QueryMgsApipageWithContext(ctx context.Context, request *Q
 //
 // @return QueryMgsApirestResponse
 func (client *Client) QueryMgsApirestWithContext(ctx context.Context, request *QueryMgsApirestRequest, runtime *dara.RuntimeOptions) (_result *QueryMgsApirestResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4939,9 +6101,11 @@ func (client *Client) QueryMgsApirestWithContext(ctx context.Context, request *Q
 //
 // @return QueryMgsTestreqbodyautogenResponse
 func (client *Client) QueryMgsTestreqbodyautogenWithContext(ctx context.Context, request *QueryMgsTestreqbodyautogenRequest, runtime *dara.RuntimeOptions) (_result *QueryMgsTestreqbodyautogenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -4993,9 +6157,11 @@ func (client *Client) QueryMgsTestreqbodyautogenWithContext(ctx context.Context,
 //
 // @return QueryMpsSchedulerListResponse
 func (client *Client) QueryMpsSchedulerListWithContext(ctx context.Context, request *QueryMpsSchedulerListRequest, runtime *dara.RuntimeOptions) (_result *QueryMpsSchedulerListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -5059,9 +6225,11 @@ func (client *Client) QueryMpsSchedulerListWithContext(ctx context.Context, requ
 //
 // @return QueryPushAnalysisCoreIndexResponse
 func (client *Client) QueryPushAnalysisCoreIndexWithContext(ctx context.Context, request *QueryPushAnalysisCoreIndexRequest, runtime *dara.RuntimeOptions) (_result *QueryPushAnalysisCoreIndexResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -5129,9 +6297,11 @@ func (client *Client) QueryPushAnalysisCoreIndexWithContext(ctx context.Context,
 //
 // @return QueryPushAnalysisTaskDetailResponse
 func (client *Client) QueryPushAnalysisTaskDetailWithContext(ctx context.Context, request *QueryPushAnalysisTaskDetailRequest, runtime *dara.RuntimeOptions) (_result *QueryPushAnalysisTaskDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -5179,9 +6349,11 @@ func (client *Client) QueryPushAnalysisTaskDetailWithContext(ctx context.Context
 //
 // @return QueryPushAnalysisTaskListResponse
 func (client *Client) QueryPushAnalysisTaskListWithContext(ctx context.Context, request *QueryPushAnalysisTaskListRequest, runtime *dara.RuntimeOptions) (_result *QueryPushAnalysisTaskListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -5245,9 +6417,11 @@ func (client *Client) QueryPushAnalysisTaskListWithContext(ctx context.Context, 
 //
 // @return QueryPushSchedulerListResponse
 func (client *Client) QueryPushSchedulerListWithContext(ctx context.Context, request *QueryPushSchedulerListRequest, runtime *dara.RuntimeOptions) (_result *QueryPushSchedulerListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -5315,9 +6489,11 @@ func (client *Client) QueryPushSchedulerListWithContext(ctx context.Context, req
 //
 // @return RevokePushMessageResponse
 func (client *Client) RevokePushMessageWithContext(ctx context.Context, request *RevokePushMessageRequest, runtime *dara.RuntimeOptions) (_result *RevokePushMessageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -5369,9 +6545,11 @@ func (client *Client) RevokePushMessageWithContext(ctx context.Context, request 
 //
 // @return RevokePushTaskResponse
 func (client *Client) RevokePushTaskWithContext(ctx context.Context, request *RevokePushTaskRequest, runtime *dara.RuntimeOptions) (_result *RevokePushTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -5419,9 +6597,11 @@ func (client *Client) RevokePushTaskWithContext(ctx context.Context, request *Re
 //
 // @return RunMsaDiffResponse
 func (client *Client) RunMsaDiffWithContext(ctx context.Context, request *RunMsaDiffRequest, runtime *dara.RuntimeOptions) (_result *RunMsaDiffResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -5469,9 +6649,11 @@ func (client *Client) RunMsaDiffWithContext(ctx context.Context, request *RunMsa
 //
 // @return SaveMgsApirestResponse
 func (client *Client) SaveMgsApirestWithContext(ctx context.Context, request *SaveMgsApirestRequest, runtime *dara.RuntimeOptions) (_result *SaveMgsApirestResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -5519,9 +6701,11 @@ func (client *Client) SaveMgsApirestWithContext(ctx context.Context, request *Sa
 //
 // @return StartUserAppAsyncEnhanceInMsaResponse
 func (client *Client) StartUserAppAsyncEnhanceInMsaWithContext(ctx context.Context, request *StartUserAppAsyncEnhanceInMsaRequest, runtime *dara.RuntimeOptions) (_result *StartUserAppAsyncEnhanceInMsaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ApkProtector) {
@@ -5637,9 +6821,11 @@ func (client *Client) StartUserAppAsyncEnhanceInMsaWithContext(ctx context.Conte
 //
 // @return UpdateLinkResponse
 func (client *Client) UpdateLinkWithContext(ctx context.Context, request *UpdateLinkRequest, runtime *dara.RuntimeOptions) (_result *UpdateLinkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -5699,9 +6885,11 @@ func (client *Client) UpdateLinkWithContext(ctx context.Context, request *Update
 //
 // @return UpdateMcubeWhitelistResponse
 func (client *Client) UpdateMcubeWhitelistWithContext(ctx context.Context, request *UpdateMcubeWhitelistRequest, runtime *dara.RuntimeOptions) (_result *UpdateMcubeWhitelistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -5755,15 +6943,77 @@ func (client *Client) UpdateMcubeWhitelistWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// @param request - UpdateMdsCubeResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMdsCubeResourceResponse
+func (client *Client) UpdateMdsCubeResourceWithContext(ctx context.Context, request *UpdateMdsCubeResourceRequest, runtime *dara.RuntimeOptions) (_result *UpdateMdsCubeResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.MockDataUrl) {
+		body["MockDataUrl"] = request.MockDataUrl
+	}
+
+	if !dara.IsNil(request.OnexFlag) {
+		body["OnexFlag"] = request.OnexFlag
+	}
+
+	if !dara.IsNil(request.TemplateResourceId) {
+		body["TemplateResourceId"] = request.TemplateResourceId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMdsCubeResource"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMdsCubeResourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - UpdateMpaasAppInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateMpaasAppInfoResponse
 func (client *Client) UpdateMpaasAppInfoWithContext(ctx context.Context, request *UpdateMpaasAppInfoRequest, runtime *dara.RuntimeOptions) (_result *UpdateMpaasAppInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -5827,9 +7077,11 @@ func (client *Client) UpdateMpaasAppInfoWithContext(ctx context.Context, request
 //
 // @return UploadBitcodeToMsaResponse
 func (client *Client) UploadBitcodeToMsaWithContext(ctx context.Context, request *UploadBitcodeToMsaRequest, runtime *dara.RuntimeOptions) (_result *UploadBitcodeToMsaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -5889,9 +7141,11 @@ func (client *Client) UploadBitcodeToMsaWithContext(ctx context.Context, request
 //
 // @return UploadMcubeMiniPackageResponse
 func (client *Client) UploadMcubeMiniPackageWithContext(ctx context.Context, request *UploadMcubeMiniPackageRequest, runtime *dara.RuntimeOptions) (_result *UploadMcubeMiniPackageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -6023,9 +7277,11 @@ func (client *Client) UploadMcubeMiniPackageWithContext(ctx context.Context, req
 //
 // @return UploadMcubeRsaKeyResponse
 func (client *Client) UploadMcubeRsaKeyWithContext(ctx context.Context, request *UploadMcubeRsaKeyRequest, runtime *dara.RuntimeOptions) (_result *UploadMcubeRsaKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
@@ -6077,13 +7333,19 @@ func (client *Client) UploadMcubeRsaKeyWithContext(ctx context.Context, request 
 //
 // @return UploadUserAppToMsaResponse
 func (client *Client) UploadUserAppToMsaWithContext(ctx context.Context, request *UploadUserAppToMsaRequest, runtime *dara.RuntimeOptions) (_result *UploadUserAppToMsaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
 		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.FileName) {
+		body["FileName"] = request.FileName
 	}
 
 	if !dara.IsNil(request.FileUrl) {

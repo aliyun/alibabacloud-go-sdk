@@ -71,7 +71,12 @@ func (s *UpdateMpaasAppInfoResponseBody) SetResultMessage(v string) *UpdateMpaas
 }
 
 func (s *UpdateMpaasAppInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateMpaasAppInfoResponseBodyResultContent struct {
@@ -106,7 +111,12 @@ func (s *UpdateMpaasAppInfoResponseBodyResultContent) SetRequestId(v string) *Up
 }
 
 func (s *UpdateMpaasAppInfoResponseBodyResultContent) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateMpaasAppInfoResponseBodyResultContentData struct {

@@ -29,6 +29,8 @@ type iPushMultipleRequest interface {
 	GetExtendedParams() *string
 	SetMiChannelId(v string) *PushMultipleRequest
 	GetMiChannelId() *string
+	SetNotifyLevel(v map[string]interface{}) *PushMultipleRequest
+	GetNotifyLevel() map[string]interface{}
 	SetNotifyType(v string) *PushMultipleRequest
 	GetNotifyType() *string
 	SetPushAction(v int64) *PushMultipleRequest
@@ -68,14 +70,15 @@ type PushMultipleRequest struct {
 	DeliveryType  *int64 `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
 	DismissalDate *int64 `json:"DismissalDate,omitempty" xml:"DismissalDate,omitempty"`
 	// This parameter is required.
-	ExpiredSeconds  *int64  `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
-	ExtendedParams  *string `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
-	MiChannelId     *string `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
-	NotifyType      *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
-	PushAction      *int64  `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
-	Silent          *int64  `json:"Silent,omitempty" xml:"Silent,omitempty"`
-	StrategyContent *string `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
-	StrategyType    *int32  `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	ExpiredSeconds  *int64                 `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
+	ExtendedParams  *string                `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
+	MiChannelId     *string                `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
+	NotifyLevel     map[string]interface{} `json:"NotifyLevel,omitempty" xml:"NotifyLevel,omitempty"`
+	NotifyType      *string                `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	PushAction      *int64                 `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
+	Silent          *int64                 `json:"Silent,omitempty" xml:"Silent,omitempty"`
+	StrategyContent *string                `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
+	StrategyType    *int32                 `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
 	// This parameter is required.
 	TargetMsg []*PushMultipleRequestTargetMsg `json:"TargetMsg,omitempty" xml:"TargetMsg,omitempty" type:"Repeated"`
 	TaskName  *string                         `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
@@ -135,6 +138,10 @@ func (s *PushMultipleRequest) GetExtendedParams() *string {
 
 func (s *PushMultipleRequest) GetMiChannelId() *string {
 	return s.MiChannelId
+}
+
+func (s *PushMultipleRequest) GetNotifyLevel() map[string]interface{} {
+	return s.NotifyLevel
 }
 
 func (s *PushMultipleRequest) GetNotifyType() *string {
@@ -239,6 +246,11 @@ func (s *PushMultipleRequest) SetMiChannelId(v string) *PushMultipleRequest {
 	return s
 }
 
+func (s *PushMultipleRequest) SetNotifyLevel(v map[string]interface{}) *PushMultipleRequest {
+	s.NotifyLevel = v
+	return s
+}
+
 func (s *PushMultipleRequest) SetNotifyType(v string) *PushMultipleRequest {
 	s.NotifyType = &v
 	return s
@@ -305,7 +317,16 @@ func (s *PushMultipleRequest) SetWorkspaceId(v string) *PushMultipleRequest {
 }
 
 func (s *PushMultipleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TargetMsg != nil {
+		for _, item := range s.TargetMsg {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PushMultipleRequestTargetMsg struct {

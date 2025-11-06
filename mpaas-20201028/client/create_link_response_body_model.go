@@ -82,7 +82,12 @@ func (s *CreateLinkResponseBody) SetResultMessage(v string) *CreateLinkResponseB
 }
 
 func (s *CreateLinkResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateLinkResponseBodyResultContent struct {

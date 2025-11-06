@@ -71,7 +71,12 @@ func (s *ListMcubeNebulaTasksResponseBody) SetResultMessage(v string) *ListMcube
 }
 
 func (s *ListMcubeNebulaTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ListMcubeNebulaTaskResult != nil {
+		if err := s.ListMcubeNebulaTaskResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMcubeNebulaTasksResponseBodyListMcubeNebulaTaskResult struct {
@@ -136,7 +141,16 @@ func (s *ListMcubeNebulaTasksResponseBodyListMcubeNebulaTaskResult) SetSuccess(v
 }
 
 func (s *ListMcubeNebulaTasksResponseBodyListMcubeNebulaTaskResult) Validate() error {
-	return dara.Validate(s)
+	if s.NebulaTaskInfo != nil {
+		for _, item := range s.NebulaTaskInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMcubeNebulaTasksResponseBodyListMcubeNebulaTaskResultNebulaTaskInfo struct {

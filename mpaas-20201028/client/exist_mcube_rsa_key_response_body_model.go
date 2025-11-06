@@ -71,7 +71,12 @@ func (s *ExistMcubeRsaKeyResponseBody) SetResultMessage(v string) *ExistMcubeRsa
 }
 
 func (s *ExistMcubeRsaKeyResponseBody) Validate() error {
-  return dara.Validate(s)
+  if s.CheckRsaKeyResult != nil {
+    if err := s.CheckRsaKeyResult.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type ExistMcubeRsaKeyResponseBodyCheckRsaKeyResult struct {

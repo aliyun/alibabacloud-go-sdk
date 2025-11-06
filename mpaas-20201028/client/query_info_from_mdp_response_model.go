@@ -59,5 +59,10 @@ func (s *QueryInfoFromMdpResponse) SetBody(v *QueryInfoFromMdpResponseBody) *Que
 }
 
 func (s *QueryInfoFromMdpResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

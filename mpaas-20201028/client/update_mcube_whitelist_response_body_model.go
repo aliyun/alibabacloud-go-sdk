@@ -71,7 +71,12 @@ func (s *UpdateMcubeWhitelistResponseBody) SetResultMessage(v string) *UpdateMcu
 }
 
 func (s *UpdateMcubeWhitelistResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AddWhitelistResult != nil {
+		if err := s.AddWhitelistResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateMcubeWhitelistResponseBodyAddWhitelistResult struct {
@@ -116,7 +121,12 @@ func (s *UpdateMcubeWhitelistResponseBodyAddWhitelistResult) SetSuccess(v bool) 
 }
 
 func (s *UpdateMcubeWhitelistResponseBodyAddWhitelistResult) Validate() error {
-	return dara.Validate(s)
+	if s.AddWhitelistInfo != nil {
+		if err := s.AddWhitelistInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateMcubeWhitelistResponseBodyAddWhitelistResultAddWhitelistInfo struct {

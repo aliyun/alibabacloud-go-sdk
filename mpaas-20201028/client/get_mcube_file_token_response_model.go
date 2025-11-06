@@ -59,5 +59,10 @@ func (s *GetMcubeFileTokenResponse) SetBody(v *GetMcubeFileTokenResponseBody) *G
 }
 
 func (s *GetMcubeFileTokenResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

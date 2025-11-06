@@ -59,5 +59,10 @@ func (s *MTRSOCRServiceResponse) SetBody(v *MTRSOCRServiceResponseBody) *MTRSOCR
 }
 
 func (s *MTRSOCRServiceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

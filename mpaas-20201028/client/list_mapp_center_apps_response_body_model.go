@@ -71,7 +71,12 @@ func (s *ListMappCenterAppsResponseBody) SetResultMessage(v string) *ListMappCen
 }
 
 func (s *ListMappCenterAppsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ListMappCenterAppResult != nil {
+		if err := s.ListMappCenterAppResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMappCenterAppsResponseBodyListMappCenterAppResult struct {
@@ -116,7 +121,16 @@ func (s *ListMappCenterAppsResponseBodyListMappCenterAppResult) SetSuccess(v boo
 }
 
 func (s *ListMappCenterAppsResponseBodyListMappCenterAppResult) Validate() error {
-	return dara.Validate(s)
+	if s.MappCenterAppList != nil {
+		for _, item := range s.MappCenterAppList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMappCenterAppsResponseBodyListMappCenterAppResultMappCenterAppList struct {
@@ -291,7 +305,17 @@ func (s *ListMappCenterAppsResponseBodyListMappCenterAppResultMappCenterAppList)
 }
 
 func (s *ListMappCenterAppsResponseBodyListMappCenterAppResultMappCenterAppList) Validate() error {
-	return dara.Validate(s)
+	if s.AndroidConfig != nil {
+		if err := s.AndroidConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IosConfig != nil {
+		if err := s.IosConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMappCenterAppsResponseBodyListMappCenterAppResultMappCenterAppListAndroidConfig struct {

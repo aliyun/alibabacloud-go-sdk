@@ -71,7 +71,12 @@ func (s *GetLogUrlInMsaResponseBody) SetResultMessage(v string) *GetLogUrlInMsaR
 }
 
 func (s *GetLogUrlInMsaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLogUrlInMsaResponseBodyResultContent struct {

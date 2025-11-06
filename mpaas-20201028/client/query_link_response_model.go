@@ -59,5 +59,10 @@ func (s *QueryLinkResponse) SetBody(v *QueryLinkResponseBody) *QueryLinkResponse
 }
 
 func (s *QueryLinkResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

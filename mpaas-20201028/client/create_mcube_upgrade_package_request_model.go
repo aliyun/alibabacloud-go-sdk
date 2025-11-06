@@ -25,6 +25,8 @@ type iCreateMcubeUpgradePackageRequest interface {
 	GetDownloadUrl() *string
 	SetFileUrl(v string) *CreateMcubeUpgradePackageRequest
 	GetFileUrl() *string
+	SetHarmonyLabel(v string) *CreateMcubeUpgradePackageRequest
+	GetHarmonyLabel() *string
 	SetIconFileUrl(v string) *CreateMcubeUpgradePackageRequest
 	GetIconFileUrl() *string
 	SetInstallAmount(v int32) *CreateMcubeUpgradePackageRequest
@@ -33,6 +35,8 @@ type iCreateMcubeUpgradePackageRequest interface {
 	GetIosSymbolfileUrl() *string
 	SetIsEnterprise(v int32) *CreateMcubeUpgradePackageRequest
 	GetIsEnterprise() *int32
+	SetLargeIconUrl(v string) *CreateMcubeUpgradePackageRequest
+	GetLargeIconUrl() *string
 	SetNeedCheck(v int32) *CreateMcubeUpgradePackageRequest
 	GetNeedCheck() *int32
 	SetOnexFlag(v bool) *CreateMcubeUpgradePackageRequest
@@ -56,10 +60,12 @@ type CreateMcubeUpgradePackageRequest struct {
 	Desc             *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	DownloadUrl      *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
 	FileUrl          *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	HarmonyLabel     *string `json:"HarmonyLabel,omitempty" xml:"HarmonyLabel,omitempty"`
 	IconFileUrl      *string `json:"IconFileUrl,omitempty" xml:"IconFileUrl,omitempty"`
 	InstallAmount    *int32  `json:"InstallAmount,omitempty" xml:"InstallAmount,omitempty"`
 	IosSymbolfileUrl *string `json:"IosSymbolfileUrl,omitempty" xml:"IosSymbolfileUrl,omitempty"`
 	IsEnterprise     *int32  `json:"IsEnterprise,omitempty" xml:"IsEnterprise,omitempty"`
+	LargeIconUrl     *string `json:"LargeIconUrl,omitempty" xml:"LargeIconUrl,omitempty"`
 	NeedCheck        *int32  `json:"NeedCheck,omitempty" xml:"NeedCheck,omitempty"`
 	OnexFlag         *bool   `json:"OnexFlag,omitempty" xml:"OnexFlag,omitempty"`
 	Platform         *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
@@ -108,6 +114,10 @@ func (s *CreateMcubeUpgradePackageRequest) GetFileUrl() *string {
 	return s.FileUrl
 }
 
+func (s *CreateMcubeUpgradePackageRequest) GetHarmonyLabel() *string {
+	return s.HarmonyLabel
+}
+
 func (s *CreateMcubeUpgradePackageRequest) GetIconFileUrl() *string {
 	return s.IconFileUrl
 }
@@ -122,6 +132,10 @@ func (s *CreateMcubeUpgradePackageRequest) GetIosSymbolfileUrl() *string {
 
 func (s *CreateMcubeUpgradePackageRequest) GetIsEnterprise() *int32 {
 	return s.IsEnterprise
+}
+
+func (s *CreateMcubeUpgradePackageRequest) GetLargeIconUrl() *string {
+	return s.LargeIconUrl
 }
 
 func (s *CreateMcubeUpgradePackageRequest) GetNeedCheck() *int32 {
@@ -188,6 +202,11 @@ func (s *CreateMcubeUpgradePackageRequest) SetFileUrl(v string) *CreateMcubeUpgr
 	return s
 }
 
+func (s *CreateMcubeUpgradePackageRequest) SetHarmonyLabel(v string) *CreateMcubeUpgradePackageRequest {
+	s.HarmonyLabel = &v
+	return s
+}
+
 func (s *CreateMcubeUpgradePackageRequest) SetIconFileUrl(v string) *CreateMcubeUpgradePackageRequest {
 	s.IconFileUrl = &v
 	return s
@@ -205,6 +224,11 @@ func (s *CreateMcubeUpgradePackageRequest) SetIosSymbolfileUrl(v string) *Create
 
 func (s *CreateMcubeUpgradePackageRequest) SetIsEnterprise(v int32) *CreateMcubeUpgradePackageRequest {
 	s.IsEnterprise = &v
+	return s
+}
+
+func (s *CreateMcubeUpgradePackageRequest) SetLargeIconUrl(v string) *CreateMcubeUpgradePackageRequest {
+	s.LargeIconUrl = &v
 	return s
 }
 

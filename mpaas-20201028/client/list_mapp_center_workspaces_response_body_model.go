@@ -71,7 +71,12 @@ func (s *ListMappCenterWorkspacesResponseBody) SetResultMessage(v string) *ListM
 }
 
 func (s *ListMappCenterWorkspacesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ListMappCenterWorkspaceResult != nil {
+		if err := s.ListMappCenterWorkspaceResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMappCenterWorkspacesResponseBodyListMappCenterWorkspaceResult struct {
@@ -126,7 +131,16 @@ func (s *ListMappCenterWorkspacesResponseBodyListMappCenterWorkspaceResult) SetU
 }
 
 func (s *ListMappCenterWorkspacesResponseBodyListMappCenterWorkspaceResult) Validate() error {
-	return dara.Validate(s)
+	if s.MappCenterWorkspaceList != nil {
+		for _, item := range s.MappCenterWorkspaceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMappCenterWorkspacesResponseBodyListMappCenterWorkspaceResultMappCenterWorkspaceList struct {

@@ -59,6 +59,11 @@ func (s *ExistMcubeRsaKeyResponse) SetBody(v *ExistMcubeRsaKeyResponseBody) *Exi
 }
 
 func (s *ExistMcubeRsaKeyResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

@@ -71,7 +71,12 @@ func (s *QueryMappCenterAppResponseBody) SetResultMessage(v string) *QueryMappCe
 }
 
 func (s *QueryMappCenterAppResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.QueryMappCenterAppResult != nil {
+		if err := s.QueryMappCenterAppResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMappCenterAppResponseBodyQueryMappCenterAppResult struct {
@@ -116,7 +121,12 @@ func (s *QueryMappCenterAppResponseBodyQueryMappCenterAppResult) SetSuccess(v bo
 }
 
 func (s *QueryMappCenterAppResponseBodyQueryMappCenterAppResult) Validate() error {
-	return dara.Validate(s)
+	if s.MappCenterApp != nil {
+		if err := s.MappCenterApp.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMappCenterAppResponseBodyQueryMappCenterAppResultMappCenterApp struct {
@@ -291,7 +301,17 @@ func (s *QueryMappCenterAppResponseBodyQueryMappCenterAppResultMappCenterApp) Se
 }
 
 func (s *QueryMappCenterAppResponseBodyQueryMappCenterAppResultMappCenterApp) Validate() error {
-	return dara.Validate(s)
+	if s.AndroidConfig != nil {
+		if err := s.AndroidConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IosConfig != nil {
+		if err := s.IosConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMappCenterAppResponseBodyQueryMappCenterAppResultMappCenterAppAndroidConfig struct {

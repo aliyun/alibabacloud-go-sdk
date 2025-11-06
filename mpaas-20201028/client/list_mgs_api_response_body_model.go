@@ -71,7 +71,12 @@ func (s *ListMgsApiResponseBody) SetResultMessage(v string) *ListMgsApiResponseB
 }
 
 func (s *ListMgsApiResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMgsApiResponseBodyResultContent struct {
@@ -116,7 +121,16 @@ func (s *ListMgsApiResponseBodyResultContent) SetValue(v []*ListMgsApiResponseBo
 }
 
 func (s *ListMgsApiResponseBodyResultContent) Validate() error {
-	return dara.Validate(s)
+	if s.Value != nil {
+		for _, item := range s.Value {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMgsApiResponseBodyResultContentValue struct {
@@ -501,7 +515,64 @@ func (s *ListMgsApiResponseBodyResultContentValue) SetWorkspaceId(v string) *Lis
 }
 
 func (s *ListMgsApiResponseBodyResultContentValue) Validate() error {
-	return dara.Validate(s)
+	if s.ApiInvoker != nil {
+		if err := s.ApiInvoker.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CacheRule != nil {
+		if err := s.CacheRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CircuitBreakerRule != nil {
+		if err := s.CircuitBreakerRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HeaderRule != nil {
+		for _, item := range s.HeaderRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HeaderRules != nil {
+		for _, item := range s.HeaderRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LimitRule != nil {
+		if err := s.LimitRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MigrateRule != nil {
+		if err := s.MigrateRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MockRule != nil {
+		if err := s.MockRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RequestParams != nil {
+		for _, item := range s.RequestParams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMgsApiResponseBodyResultContentValueApiInvoker struct {
@@ -536,7 +607,12 @@ func (s *ListMgsApiResponseBodyResultContentValueApiInvoker) SetRpcInvoker(v str
 }
 
 func (s *ListMgsApiResponseBodyResultContentValueApiInvoker) Validate() error {
-	return dara.Validate(s)
+	if s.HttpInvoker != nil {
+		if err := s.HttpInvoker.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMgsApiResponseBodyResultContentValueApiInvokerHttpInvoker struct {

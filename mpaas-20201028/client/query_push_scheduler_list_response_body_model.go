@@ -71,7 +71,12 @@ func (s *QueryPushSchedulerListResponseBody) SetResultMessage(v string) *QueryPu
 }
 
 func (s *QueryPushSchedulerListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryPushSchedulerListResponseBodyResultContent struct {
@@ -96,7 +101,12 @@ func (s *QueryPushSchedulerListResponseBodyResultContent) SetData(v *QueryPushSc
 }
 
 func (s *QueryPushSchedulerListResponseBodyResultContent) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryPushSchedulerListResponseBodyResultContentData struct {
@@ -131,7 +141,16 @@ func (s *QueryPushSchedulerListResponseBodyResultContentData) SetTotalCount(v in
 }
 
 func (s *QueryPushSchedulerListResponseBodyResultContentData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryPushSchedulerListResponseBodyResultContentDataList struct {

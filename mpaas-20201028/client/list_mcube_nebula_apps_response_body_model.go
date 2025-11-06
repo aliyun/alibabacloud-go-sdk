@@ -71,7 +71,12 @@ func (s *ListMcubeNebulaAppsResponseBody) SetResultMessage(v string) *ListMcubeN
 }
 
 func (s *ListMcubeNebulaAppsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ListMcubeNebulaAppsResult != nil {
+		if err := s.ListMcubeNebulaAppsResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMcubeNebulaAppsResponseBodyListMcubeNebulaAppsResult struct {
@@ -176,7 +181,16 @@ func (s *ListMcubeNebulaAppsResponseBodyListMcubeNebulaAppsResult) SetTotalCount
 }
 
 func (s *ListMcubeNebulaAppsResponseBodyListMcubeNebulaAppsResult) Validate() error {
-	return dara.Validate(s)
+	if s.NebulaAppInfos != nil {
+		for _, item := range s.NebulaAppInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMcubeNebulaAppsResponseBodyListMcubeNebulaAppsResultNebulaAppInfos struct {

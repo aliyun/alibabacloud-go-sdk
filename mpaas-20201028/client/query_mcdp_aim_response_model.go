@@ -59,5 +59,10 @@ func (s *QueryMcdpAimResponse) SetBody(v *QueryMcdpAimResponseBody) *QueryMcdpAi
 }
 
 func (s *QueryMcdpAimResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

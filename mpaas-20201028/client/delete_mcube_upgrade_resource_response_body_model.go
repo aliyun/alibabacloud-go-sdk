@@ -71,7 +71,12 @@ func (s *DeleteMcubeUpgradeResourceResponseBody) SetResultMessage(v string) *Del
 }
 
 func (s *DeleteMcubeUpgradeResourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeleteResult != nil {
+		if err := s.DeleteResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteMcubeUpgradeResourceResponseBodyDeleteResult struct {

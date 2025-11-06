@@ -71,7 +71,12 @@ func (s *CreateMcdpGroupResponseBody) SetResultMessage(v string) *CreateMcdpGrou
 }
 
 func (s *CreateMcdpGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateMcdpGroupResponseBodyResultContent struct {

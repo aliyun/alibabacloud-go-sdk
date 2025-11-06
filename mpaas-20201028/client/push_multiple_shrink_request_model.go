@@ -29,6 +29,8 @@ type iPushMultipleShrinkRequest interface {
 	GetExtendedParams() *string
 	SetMiChannelId(v string) *PushMultipleShrinkRequest
 	GetMiChannelId() *string
+	SetNotifyLevelShrink(v string) *PushMultipleShrinkRequest
+	GetNotifyLevelShrink() *string
 	SetNotifyType(v string) *PushMultipleShrinkRequest
 	GetNotifyType() *string
 	SetPushAction(v int64) *PushMultipleShrinkRequest
@@ -68,14 +70,15 @@ type PushMultipleShrinkRequest struct {
 	DeliveryType  *int64 `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
 	DismissalDate *int64 `json:"DismissalDate,omitempty" xml:"DismissalDate,omitempty"`
 	// This parameter is required.
-	ExpiredSeconds  *int64  `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
-	ExtendedParams  *string `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
-	MiChannelId     *string `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
-	NotifyType      *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
-	PushAction      *int64  `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
-	Silent          *int64  `json:"Silent,omitempty" xml:"Silent,omitempty"`
-	StrategyContent *string `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
-	StrategyType    *int32  `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	ExpiredSeconds    *int64  `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
+	ExtendedParams    *string `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
+	MiChannelId       *string `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
+	NotifyLevelShrink *string `json:"NotifyLevel,omitempty" xml:"NotifyLevel,omitempty"`
+	NotifyType        *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	PushAction        *int64  `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
+	Silent            *int64  `json:"Silent,omitempty" xml:"Silent,omitempty"`
+	StrategyContent   *string `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
+	StrategyType      *int32  `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
 	// This parameter is required.
 	TargetMsg []*PushMultipleShrinkRequestTargetMsg `json:"TargetMsg,omitempty" xml:"TargetMsg,omitempty" type:"Repeated"`
 	TaskName  *string                               `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
@@ -135,6 +138,10 @@ func (s *PushMultipleShrinkRequest) GetExtendedParams() *string {
 
 func (s *PushMultipleShrinkRequest) GetMiChannelId() *string {
 	return s.MiChannelId
+}
+
+func (s *PushMultipleShrinkRequest) GetNotifyLevelShrink() *string {
+	return s.NotifyLevelShrink
 }
 
 func (s *PushMultipleShrinkRequest) GetNotifyType() *string {
@@ -239,6 +246,11 @@ func (s *PushMultipleShrinkRequest) SetMiChannelId(v string) *PushMultipleShrink
 	return s
 }
 
+func (s *PushMultipleShrinkRequest) SetNotifyLevelShrink(v string) *PushMultipleShrinkRequest {
+	s.NotifyLevelShrink = &v
+	return s
+}
+
 func (s *PushMultipleShrinkRequest) SetNotifyType(v string) *PushMultipleShrinkRequest {
 	s.NotifyType = &v
 	return s
@@ -305,7 +317,16 @@ func (s *PushMultipleShrinkRequest) SetWorkspaceId(v string) *PushMultipleShrink
 }
 
 func (s *PushMultipleShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TargetMsg != nil {
+		for _, item := range s.TargetMsg {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PushMultipleShrinkRequestTargetMsg struct {

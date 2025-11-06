@@ -71,7 +71,12 @@ func (s *GetUserAppUploadProcessInMsaResponseBody) SetResultMessage(v string) *G
 }
 
 func (s *GetUserAppUploadProcessInMsaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserAppUploadProcessInMsaResponseBodyResultContent struct {
@@ -126,7 +131,12 @@ func (s *GetUserAppUploadProcessInMsaResponseBodyResultContent) SetSuccess(v boo
 }
 
 func (s *GetUserAppUploadProcessInMsaResponseBodyResultContent) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserAppUploadProcessInMsaResponseBodyResultContentData struct {
@@ -191,7 +201,12 @@ func (s *GetUserAppUploadProcessInMsaResponseBodyResultContentData) SetStatus(v 
 }
 
 func (s *GetUserAppUploadProcessInMsaResponseBodyResultContentData) Validate() error {
-	return dara.Validate(s)
+	if s.ApkInfo != nil {
+		if err := s.ApkInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserAppUploadProcessInMsaResponseBodyResultContentDataApkInfo struct {
@@ -416,7 +431,16 @@ func (s *GetUserAppUploadProcessInMsaResponseBodyResultContentDataApkInfo) SetVe
 }
 
 func (s *GetUserAppUploadProcessInMsaResponseBodyResultContentDataApkInfo) Validate() error {
-	return dara.Validate(s)
+	if s.EnhanceMapping != nil {
+		for _, item := range s.EnhanceMapping {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetUserAppUploadProcessInMsaResponseBodyResultContentDataApkInfoEnhanceMapping struct {

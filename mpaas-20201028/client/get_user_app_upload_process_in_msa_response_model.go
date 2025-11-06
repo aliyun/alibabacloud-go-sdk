@@ -59,5 +59,10 @@ func (s *GetUserAppUploadProcessInMsaResponse) SetBody(v *GetUserAppUploadProces
 }
 
 func (s *GetUserAppUploadProcessInMsaResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -71,7 +71,12 @@ func (s *GetUserAppDonwloadUrlInMsaResponseBody) SetResultMessage(v string) *Get
 }
 
 func (s *GetUserAppDonwloadUrlInMsaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserAppDonwloadUrlInMsaResponseBodyResultContent struct {
@@ -126,7 +131,12 @@ func (s *GetUserAppDonwloadUrlInMsaResponseBodyResultContent) SetSuccess(v bool)
 }
 
 func (s *GetUserAppDonwloadUrlInMsaResponseBodyResultContent) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserAppDonwloadUrlInMsaResponseBodyResultContentData struct {

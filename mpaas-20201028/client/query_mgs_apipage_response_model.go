@@ -59,5 +59,10 @@ func (s *QueryMgsApipageResponse) SetBody(v *QueryMgsApipageResponseBody) *Query
 }
 
 func (s *QueryMgsApipageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

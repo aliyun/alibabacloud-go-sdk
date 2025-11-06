@@ -71,7 +71,12 @@ func (s *GetMcubeUpgradePackageInfoResponseBody) SetResultMessage(v string) *Get
 }
 
 func (s *GetMcubeUpgradePackageInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GetPackageResult != nil {
+		if err := s.GetPackageResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMcubeUpgradePackageInfoResponseBodyGetPackageResult struct {
@@ -136,7 +141,12 @@ func (s *GetMcubeUpgradePackageInfoResponseBodyGetPackageResult) SetSuccess(v bo
 }
 
 func (s *GetMcubeUpgradePackageInfoResponseBodyGetPackageResult) Validate() error {
-	return dara.Validate(s)
+	if s.PackageInfo != nil {
+		if err := s.PackageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMcubeUpgradePackageInfoResponseBodyGetPackageResultPackageInfo struct {
@@ -171,7 +181,17 @@ func (s *GetMcubeUpgradePackageInfoResponseBodyGetPackageResultPackageInfo) SetU
 }
 
 func (s *GetMcubeUpgradePackageInfoResponseBodyGetPackageResultPackageInfo) Validate() error {
-	return dara.Validate(s)
+	if s.MobileTestFlightConfigDO != nil {
+		if err := s.MobileTestFlightConfigDO.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UpgradeBaseInfoDO != nil {
+		if err := s.UpgradeBaseInfoDO.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMcubeUpgradePackageInfoResponseBodyGetPackageResultPackageInfoMobileTestFlightConfigDO struct {

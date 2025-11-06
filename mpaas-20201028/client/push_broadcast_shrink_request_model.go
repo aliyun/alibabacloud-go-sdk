@@ -13,8 +13,12 @@ type iPushBroadcastShrinkRequest interface {
 	GetAndroidChannel() *int32
 	SetAppId(v string) *PushBroadcastShrinkRequest
 	GetAppId() *string
+	SetBindEndTime(v int64) *PushBroadcastShrinkRequest
+	GetBindEndTime() *int64
 	SetBindPeriod(v int32) *PushBroadcastShrinkRequest
 	GetBindPeriod() *int32
+	SetBindStartTime(v int64) *PushBroadcastShrinkRequest
+	GetBindStartTime() *int64
 	SetChannelId(v string) *PushBroadcastShrinkRequest
 	GetChannelId() *string
 	SetClassification(v string) *PushBroadcastShrinkRequest
@@ -29,6 +33,8 @@ type iPushBroadcastShrinkRequest interface {
 	GetMiChannelId() *string
 	SetMsgkey(v string) *PushBroadcastShrinkRequest
 	GetMsgkey() *string
+	SetNotifyLevelShrink(v string) *PushBroadcastShrinkRequest
+	GetNotifyLevelShrink() *string
 	SetNotifyType(v string) *PushBroadcastShrinkRequest
 	GetNotifyType() *string
 	SetPushAction(v int64) *PushBroadcastShrinkRequest
@@ -51,12 +57,18 @@ type iPushBroadcastShrinkRequest interface {
 	GetTenantId() *string
 	SetThirdChannelCategoryShrink(v string) *PushBroadcastShrinkRequest
 	GetThirdChannelCategoryShrink() *string
+	SetTimeMode(v int32) *PushBroadcastShrinkRequest
+	GetTimeMode() *int32
 	SetTransparentMessagePayload(v interface{}) *PushBroadcastShrinkRequest
 	GetTransparentMessagePayload() interface{}
 	SetTransparentMessageUrgency(v string) *PushBroadcastShrinkRequest
 	GetTransparentMessageUrgency() *string
+	SetUnBindEndTime(v int64) *PushBroadcastShrinkRequest
+	GetUnBindEndTime() *int64
 	SetUnBindPeriod(v int64) *PushBroadcastShrinkRequest
 	GetUnBindPeriod() *int64
+	SetUnBindStartTime(v int64) *PushBroadcastShrinkRequest
+	GetUnBindStartTime() *int64
 	SetWorkspaceId(v string) *PushBroadcastShrinkRequest
 	GetWorkspaceId() *string
 }
@@ -65,7 +77,9 @@ type PushBroadcastShrinkRequest struct {
 	AndroidChannel *int32 `json:"AndroidChannel,omitempty" xml:"AndroidChannel,omitempty"`
 	// This parameter is required.
 	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	BindEndTime    *int64  `json:"BindEndTime,omitempty" xml:"BindEndTime,omitempty"`
 	BindPeriod     *int32  `json:"BindPeriod,omitempty" xml:"BindPeriod,omitempty"`
+	BindStartTime  *int64  `json:"BindStartTime,omitempty" xml:"BindStartTime,omitempty"`
 	ChannelId      *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	Classification *string `json:"Classification,omitempty" xml:"Classification,omitempty"`
 	// This parameter is required.
@@ -75,22 +89,26 @@ type PushBroadcastShrinkRequest struct {
 	ExtendedParams *string `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
 	MiChannelId    *string `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
 	// This parameter is required.
-	Msgkey           *string `json:"Msgkey,omitempty" xml:"Msgkey,omitempty"`
-	NotifyType       *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
-	PushAction       *int64  `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
-	PushStatus       *int64  `json:"PushStatus,omitempty" xml:"PushStatus,omitempty"`
-	Silent           *int64  `json:"Silent,omitempty" xml:"Silent,omitempty"`
-	StrategyContent  *string `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
-	StrategyType     *int32  `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
-	TaskName         *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TemplateKeyValue *string `json:"TemplateKeyValue,omitempty" xml:"TemplateKeyValue,omitempty"`
+	Msgkey            *string `json:"Msgkey,omitempty" xml:"Msgkey,omitempty"`
+	NotifyLevelShrink *string `json:"NotifyLevel,omitempty" xml:"NotifyLevel,omitempty"`
+	NotifyType        *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	PushAction        *int64  `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
+	PushStatus        *int64  `json:"PushStatus,omitempty" xml:"PushStatus,omitempty"`
+	Silent            *int64  `json:"Silent,omitempty" xml:"Silent,omitempty"`
+	StrategyContent   *string `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
+	StrategyType      *int32  `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	TaskName          *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TemplateKeyValue  *string `json:"TemplateKeyValue,omitempty" xml:"TemplateKeyValue,omitempty"`
 	// This parameter is required.
 	TemplateName               *string     `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	TenantId                   *string     `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	ThirdChannelCategoryShrink *string     `json:"ThirdChannelCategory,omitempty" xml:"ThirdChannelCategory,omitempty"`
+	TimeMode                   *int32      `json:"TimeMode,omitempty" xml:"TimeMode,omitempty"`
 	TransparentMessagePayload  interface{} `json:"TransparentMessagePayload,omitempty" xml:"TransparentMessagePayload,omitempty"`
 	TransparentMessageUrgency  *string     `json:"TransparentMessageUrgency,omitempty" xml:"TransparentMessageUrgency,omitempty"`
+	UnBindEndTime              *int64      `json:"UnBindEndTime,omitempty" xml:"UnBindEndTime,omitempty"`
 	UnBindPeriod               *int64      `json:"UnBindPeriod,omitempty" xml:"UnBindPeriod,omitempty"`
+	UnBindStartTime            *int64      `json:"UnBindStartTime,omitempty" xml:"UnBindStartTime,omitempty"`
 	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -111,8 +129,16 @@ func (s *PushBroadcastShrinkRequest) GetAppId() *string {
 	return s.AppId
 }
 
+func (s *PushBroadcastShrinkRequest) GetBindEndTime() *int64 {
+	return s.BindEndTime
+}
+
 func (s *PushBroadcastShrinkRequest) GetBindPeriod() *int32 {
 	return s.BindPeriod
+}
+
+func (s *PushBroadcastShrinkRequest) GetBindStartTime() *int64 {
+	return s.BindStartTime
 }
 
 func (s *PushBroadcastShrinkRequest) GetChannelId() *string {
@@ -141,6 +167,10 @@ func (s *PushBroadcastShrinkRequest) GetMiChannelId() *string {
 
 func (s *PushBroadcastShrinkRequest) GetMsgkey() *string {
 	return s.Msgkey
+}
+
+func (s *PushBroadcastShrinkRequest) GetNotifyLevelShrink() *string {
+	return s.NotifyLevelShrink
 }
 
 func (s *PushBroadcastShrinkRequest) GetNotifyType() *string {
@@ -187,6 +217,10 @@ func (s *PushBroadcastShrinkRequest) GetThirdChannelCategoryShrink() *string {
 	return s.ThirdChannelCategoryShrink
 }
 
+func (s *PushBroadcastShrinkRequest) GetTimeMode() *int32 {
+	return s.TimeMode
+}
+
 func (s *PushBroadcastShrinkRequest) GetTransparentMessagePayload() interface{} {
 	return s.TransparentMessagePayload
 }
@@ -195,8 +229,16 @@ func (s *PushBroadcastShrinkRequest) GetTransparentMessageUrgency() *string {
 	return s.TransparentMessageUrgency
 }
 
+func (s *PushBroadcastShrinkRequest) GetUnBindEndTime() *int64 {
+	return s.UnBindEndTime
+}
+
 func (s *PushBroadcastShrinkRequest) GetUnBindPeriod() *int64 {
 	return s.UnBindPeriod
+}
+
+func (s *PushBroadcastShrinkRequest) GetUnBindStartTime() *int64 {
+	return s.UnBindStartTime
 }
 
 func (s *PushBroadcastShrinkRequest) GetWorkspaceId() *string {
@@ -213,8 +255,18 @@ func (s *PushBroadcastShrinkRequest) SetAppId(v string) *PushBroadcastShrinkRequ
 	return s
 }
 
+func (s *PushBroadcastShrinkRequest) SetBindEndTime(v int64) *PushBroadcastShrinkRequest {
+	s.BindEndTime = &v
+	return s
+}
+
 func (s *PushBroadcastShrinkRequest) SetBindPeriod(v int32) *PushBroadcastShrinkRequest {
 	s.BindPeriod = &v
+	return s
+}
+
+func (s *PushBroadcastShrinkRequest) SetBindStartTime(v int64) *PushBroadcastShrinkRequest {
+	s.BindStartTime = &v
 	return s
 }
 
@@ -250,6 +302,11 @@ func (s *PushBroadcastShrinkRequest) SetMiChannelId(v string) *PushBroadcastShri
 
 func (s *PushBroadcastShrinkRequest) SetMsgkey(v string) *PushBroadcastShrinkRequest {
 	s.Msgkey = &v
+	return s
+}
+
+func (s *PushBroadcastShrinkRequest) SetNotifyLevelShrink(v string) *PushBroadcastShrinkRequest {
+	s.NotifyLevelShrink = &v
 	return s
 }
 
@@ -308,6 +365,11 @@ func (s *PushBroadcastShrinkRequest) SetThirdChannelCategoryShrink(v string) *Pu
 	return s
 }
 
+func (s *PushBroadcastShrinkRequest) SetTimeMode(v int32) *PushBroadcastShrinkRequest {
+	s.TimeMode = &v
+	return s
+}
+
 func (s *PushBroadcastShrinkRequest) SetTransparentMessagePayload(v interface{}) *PushBroadcastShrinkRequest {
 	s.TransparentMessagePayload = v
 	return s
@@ -318,8 +380,18 @@ func (s *PushBroadcastShrinkRequest) SetTransparentMessageUrgency(v string) *Pus
 	return s
 }
 
+func (s *PushBroadcastShrinkRequest) SetUnBindEndTime(v int64) *PushBroadcastShrinkRequest {
+	s.UnBindEndTime = &v
+	return s
+}
+
 func (s *PushBroadcastShrinkRequest) SetUnBindPeriod(v int64) *PushBroadcastShrinkRequest {
 	s.UnBindPeriod = &v
+	return s
+}
+
+func (s *PushBroadcastShrinkRequest) SetUnBindStartTime(v int64) *PushBroadcastShrinkRequest {
+	s.UnBindStartTime = &v
 	return s
 }
 

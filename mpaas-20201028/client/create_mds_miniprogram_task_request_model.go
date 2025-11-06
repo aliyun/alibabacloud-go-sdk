@@ -17,6 +17,8 @@ type iCreateMdsMiniprogramTaskRequest interface {
 	GetGreyEndtimeData() *string
 	SetGreyNum(v string) *CreateMdsMiniprogramTaskRequest
 	GetGreyNum() *string
+	SetH5Id(v string) *CreateMdsMiniprogramTaskRequest
+	GetH5Id() *string
 	SetId(v int64) *CreateMdsMiniprogramTaskRequest
 	GetId() *int64
 	SetMemo(v string) *CreateMdsMiniprogramTaskRequest
@@ -42,9 +44,9 @@ type CreateMdsMiniprogramTaskRequest struct {
 	GreyConfigInfo  *string `json:"GreyConfigInfo,omitempty" xml:"GreyConfigInfo,omitempty"`
 	GreyEndtimeData *string `json:"GreyEndtimeData,omitempty" xml:"GreyEndtimeData,omitempty"`
 	GreyNum         *string `json:"GreyNum,omitempty" xml:"GreyNum,omitempty"`
-	// This parameter is required.
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Memo *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
+	H5Id            *string `json:"H5Id,omitempty" xml:"H5Id,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Memo            *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
 	// This parameter is required.
 	PackageId   *int64  `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
 	PublishMode *string `json:"PublishMode,omitempty" xml:"PublishMode,omitempty"`
@@ -78,6 +80,10 @@ func (s *CreateMdsMiniprogramTaskRequest) GetGreyEndtimeData() *string {
 
 func (s *CreateMdsMiniprogramTaskRequest) GetGreyNum() *string {
 	return s.GreyNum
+}
+
+func (s *CreateMdsMiniprogramTaskRequest) GetH5Id() *string {
+	return s.H5Id
 }
 
 func (s *CreateMdsMiniprogramTaskRequest) GetId() *int64 {
@@ -133,6 +139,11 @@ func (s *CreateMdsMiniprogramTaskRequest) SetGreyEndtimeData(v string) *CreateMd
 
 func (s *CreateMdsMiniprogramTaskRequest) SetGreyNum(v string) *CreateMdsMiniprogramTaskRequest {
 	s.GreyNum = &v
+	return s
+}
+
+func (s *CreateMdsMiniprogramTaskRequest) SetH5Id(v string) *CreateMdsMiniprogramTaskRequest {
+	s.H5Id = &v
 	return s
 }
 

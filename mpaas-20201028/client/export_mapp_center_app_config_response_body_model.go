@@ -71,7 +71,12 @@ func (s *ExportMappCenterAppConfigResponseBody) SetResultMessage(v string) *Expo
 }
 
 func (s *ExportMappCenterAppConfigResponseBody) Validate() error {
-  return dara.Validate(s)
+  if s.ExportMappCenterAppConfigResult != nil {
+    if err := s.ExportMappCenterAppConfigResult.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type ExportMappCenterAppConfigResponseBodyExportMappCenterAppConfigResult struct {

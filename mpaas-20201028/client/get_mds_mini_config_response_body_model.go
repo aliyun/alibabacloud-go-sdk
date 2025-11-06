@@ -71,7 +71,12 @@ func (s *GetMdsMiniConfigResponseBody) SetResultMessage(v string) *GetMdsMiniCon
 }
 
 func (s *GetMdsMiniConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMdsMiniConfigResponseBodyResultContent struct {
@@ -106,7 +111,12 @@ func (s *GetMdsMiniConfigResponseBodyResultContent) SetRequestId(v string) *GetM
 }
 
 func (s *GetMdsMiniConfigResponseBodyResultContent) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMdsMiniConfigResponseBodyResultContentData struct {
@@ -161,7 +171,12 @@ func (s *GetMdsMiniConfigResponseBodyResultContentData) SetSuccess(v bool) *GetM
 }
 
 func (s *GetMdsMiniConfigResponseBodyResultContentData) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMdsMiniConfigResponseBodyResultContentDataContent struct {
@@ -256,7 +271,39 @@ func (s *GetMdsMiniConfigResponseBodyResultContentDataContent) SetWebviewDomainC
 }
 
 func (s *GetMdsMiniConfigResponseBodyResultContentDataContent) Validate() error {
-	return dara.Validate(s)
+	if s.ApiConfigList != nil {
+		for _, item := range s.ApiConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PrivilegeSwitch != nil {
+		if err := s.PrivilegeSwitch.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServerDomainConfigList != nil {
+		for _, item := range s.ServerDomainConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.WebviewDomainConfigList != nil {
+		for _, item := range s.WebviewDomainConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMdsMiniConfigResponseBodyResultContentDataContentApiConfigList struct {

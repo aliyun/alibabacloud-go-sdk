@@ -71,7 +71,12 @@ func (s *StartUserAppAsyncEnhanceInMsaResponseBody) SetResultMessage(v string) *
 }
 
 func (s *StartUserAppAsyncEnhanceInMsaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartUserAppAsyncEnhanceInMsaResponseBodyResultContent struct {
@@ -126,7 +131,12 @@ func (s *StartUserAppAsyncEnhanceInMsaResponseBodyResultContent) SetSuccess(v bo
 }
 
 func (s *StartUserAppAsyncEnhanceInMsaResponseBodyResultContent) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartUserAppAsyncEnhanceInMsaResponseBodyResultContentData struct {
@@ -351,7 +361,16 @@ func (s *StartUserAppAsyncEnhanceInMsaResponseBodyResultContentData) SetVersionN
 }
 
 func (s *StartUserAppAsyncEnhanceInMsaResponseBodyResultContentData) Validate() error {
-	return dara.Validate(s)
+	if s.EnhanceMapping != nil {
+		for _, item := range s.EnhanceMapping {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartUserAppAsyncEnhanceInMsaResponseBodyResultContentDataEnhanceMapping struct {

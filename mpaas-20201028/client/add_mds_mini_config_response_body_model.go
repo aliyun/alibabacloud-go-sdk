@@ -71,7 +71,12 @@ func (s *AddMdsMiniConfigResponseBody) SetResultMessage(v string) *AddMdsMiniCon
 }
 
 func (s *AddMdsMiniConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddMdsMiniConfigResponseBodyResultContent struct {
@@ -106,7 +111,12 @@ func (s *AddMdsMiniConfigResponseBodyResultContent) SetRequestId(v string) *AddM
 }
 
 func (s *AddMdsMiniConfigResponseBodyResultContent) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddMdsMiniConfigResponseBodyResultContentData struct {

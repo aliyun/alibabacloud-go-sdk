@@ -71,7 +71,12 @@ func (s *GetMcubeNebulaResourceResponseBody) SetResultMessage(v string) *GetMcub
 }
 
 func (s *GetMcubeNebulaResourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GetNebulaResourceResult != nil {
+		if err := s.GetNebulaResourceResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMcubeNebulaResourceResponseBodyGetNebulaResourceResult struct {
@@ -136,7 +141,12 @@ func (s *GetMcubeNebulaResourceResponseBodyGetNebulaResourceResult) SetSuccess(v
 }
 
 func (s *GetMcubeNebulaResourceResponseBodyGetNebulaResourceResult) Validate() error {
-	return dara.Validate(s)
+	if s.NebulaResourceInfo != nil {
+		if err := s.NebulaResourceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMcubeNebulaResourceResponseBodyGetNebulaResourceResultNebulaResourceInfo struct {

@@ -71,7 +71,12 @@ func (s *CreateMcdpMaterialResponseBody) SetResultMessage(v string) *CreateMcdpM
 }
 
 func (s *CreateMcdpMaterialResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateMcdpMaterialResponseBodyResultContent struct {

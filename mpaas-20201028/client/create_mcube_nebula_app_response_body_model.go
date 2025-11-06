@@ -71,7 +71,12 @@ func (s *CreateMcubeNebulaAppResponseBody) SetResultMessage(v string) *CreateMcu
 }
 
 func (s *CreateMcubeNebulaAppResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CreateNebulaAppResult != nil {
+		if err := s.CreateNebulaAppResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateMcubeNebulaAppResponseBodyCreateNebulaAppResult struct {

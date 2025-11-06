@@ -71,7 +71,12 @@ func (s *CreateMcubeNebulaTaskResponseBody) SetResultMessage(v string) *CreateMc
 }
 
 func (s *CreateMcubeNebulaTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CreateMcubeNebulaTaskResult != nil {
+		if err := s.CreateMcubeNebulaTaskResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateMcubeNebulaTaskResponseBodyCreateMcubeNebulaTaskResult struct {

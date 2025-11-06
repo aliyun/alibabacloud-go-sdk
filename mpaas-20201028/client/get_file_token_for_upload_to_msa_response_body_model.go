@@ -71,7 +71,12 @@ func (s *GetFileTokenForUploadToMsaResponseBody) SetResultMessage(v string) *Get
 }
 
 func (s *GetFileTokenForUploadToMsaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetFileTokenForUploadToMsaResponseBodyResultContent struct {
@@ -136,7 +141,12 @@ func (s *GetFileTokenForUploadToMsaResponseBodyResultContent) SetSuccess(v strin
 }
 
 func (s *GetFileTokenForUploadToMsaResponseBodyResultContent) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetFileTokenForUploadToMsaResponseBodyResultContentContent struct {

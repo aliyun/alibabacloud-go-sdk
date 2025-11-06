@@ -71,7 +71,12 @@ func (s *RevokePushTaskResponseBody) SetResultMessage(v string) *RevokePushTaskR
 }
 
 func (s *RevokePushTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PushResult != nil {
+		if err := s.PushResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RevokePushTaskResponseBodyPushResult struct {

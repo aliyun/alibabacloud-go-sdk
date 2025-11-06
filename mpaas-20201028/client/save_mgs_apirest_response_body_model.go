@@ -71,7 +71,12 @@ func (s *SaveMgsApirestResponseBody) SetResultMessage(v string) *SaveMgsApirestR
 }
 
 func (s *SaveMgsApirestResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SaveMgsApirestResponseBodyResultContent struct {

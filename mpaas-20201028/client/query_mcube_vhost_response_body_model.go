@@ -71,7 +71,12 @@ func (s *QueryMcubeVhostResponseBody) SetResultMessage(v string) *QueryMcubeVhos
 }
 
 func (s *QueryMcubeVhostResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.QueryVhostResult != nil {
+		if err := s.QueryVhostResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMcubeVhostResponseBodyQueryVhostResult struct {

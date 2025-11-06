@@ -71,7 +71,12 @@ func (s *ListMcubeUpgradePackagesResponseBody) SetResultMessage(v string) *ListM
 }
 
 func (s *ListMcubeUpgradePackagesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ListPackagesResult != nil {
+		if err := s.ListPackagesResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMcubeUpgradePackagesResponseBodyListPackagesResult struct {
@@ -176,7 +181,16 @@ func (s *ListMcubeUpgradePackagesResponseBodyListPackagesResult) SetTotalCount(v
 }
 
 func (s *ListMcubeUpgradePackagesResponseBodyListPackagesResult) Validate() error {
-	return dara.Validate(s)
+	if s.Packages != nil {
+		for _, item := range s.Packages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMcubeUpgradePackagesResponseBodyListPackagesResultPackages struct {

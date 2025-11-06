@@ -59,5 +59,10 @@ func (s *CreateMcubeNebulaAppResponse) SetBody(v *CreateMcubeNebulaAppResponseBo
 }
 
 func (s *CreateMcubeNebulaAppResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

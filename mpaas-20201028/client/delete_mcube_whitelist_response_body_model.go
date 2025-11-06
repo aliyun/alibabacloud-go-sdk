@@ -71,7 +71,12 @@ func (s *DeleteMcubeWhitelistResponseBody) SetResultMessage(v string) *DeleteMcu
 }
 
 func (s *DeleteMcubeWhitelistResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeleteWhitelistResult != nil {
+		if err := s.DeleteWhitelistResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteMcubeWhitelistResponseBodyDeleteWhitelistResult struct {

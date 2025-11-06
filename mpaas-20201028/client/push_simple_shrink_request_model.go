@@ -35,6 +35,8 @@ type iPushSimpleShrinkRequest interface {
 	GetImageUrls() *string
 	SetMiChannelId(v string) *PushSimpleShrinkRequest
 	GetMiChannelId() *string
+	SetNotifyLevelShrink(v string) *PushSimpleShrinkRequest
+	GetNotifyLevelShrink() *string
 	SetNotifyType(v string) *PushSimpleShrinkRequest
 	GetNotifyType() *string
 	SetPushAction(v int64) *PushSimpleShrinkRequest
@@ -88,21 +90,22 @@ type PushSimpleShrinkRequest struct {
 	DeliveryType  *int64 `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
 	DismissalDate *int64 `json:"DismissalDate,omitempty" xml:"DismissalDate,omitempty"`
 	// This parameter is required.
-	ExpiredSeconds   *int64  `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
-	ExtendedParams   *string `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
-	IconUrls         *string `json:"IconUrls,omitempty" xml:"IconUrls,omitempty"`
-	ImageUrls        *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
-	MiChannelId      *string `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
-	NotifyType       *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
-	PushAction       *int64  `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
-	PushStyle        *int32  `json:"PushStyle,omitempty" xml:"PushStyle,omitempty"`
-	Silent           *int64  `json:"Silent,omitempty" xml:"Silent,omitempty"`
-	SmsSignName      *string `json:"SmsSignName,omitempty" xml:"SmsSignName,omitempty"`
-	SmsStrategy      *int32  `json:"SmsStrategy,omitempty" xml:"SmsStrategy,omitempty"`
-	SmsTemplateCode  *string `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
-	SmsTemplateParam *string `json:"SmsTemplateParam,omitempty" xml:"SmsTemplateParam,omitempty"`
-	StrategyContent  *string `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
-	StrategyType     *int32  `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	ExpiredSeconds    *int64  `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
+	ExtendedParams    *string `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
+	IconUrls          *string `json:"IconUrls,omitempty" xml:"IconUrls,omitempty"`
+	ImageUrls         *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
+	MiChannelId       *string `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
+	NotifyLevelShrink *string `json:"NotifyLevel,omitempty" xml:"NotifyLevel,omitempty"`
+	NotifyType        *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	PushAction        *int64  `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
+	PushStyle         *int32  `json:"PushStyle,omitempty" xml:"PushStyle,omitempty"`
+	Silent            *int64  `json:"Silent,omitempty" xml:"Silent,omitempty"`
+	SmsSignName       *string `json:"SmsSignName,omitempty" xml:"SmsSignName,omitempty"`
+	SmsStrategy       *int32  `json:"SmsStrategy,omitempty" xml:"SmsStrategy,omitempty"`
+	SmsTemplateCode   *string `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
+	SmsTemplateParam  *string `json:"SmsTemplateParam,omitempty" xml:"SmsTemplateParam,omitempty"`
+	StrategyContent   *string `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
+	StrategyType      *int32  `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
 	// This parameter is required.
 	TargetMsgkey               *string `json:"TargetMsgkey,omitempty" xml:"TargetMsgkey,omitempty"`
 	TaskName                   *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
@@ -175,6 +178,10 @@ func (s *PushSimpleShrinkRequest) GetImageUrls() *string {
 
 func (s *PushSimpleShrinkRequest) GetMiChannelId() *string {
 	return s.MiChannelId
+}
+
+func (s *PushSimpleShrinkRequest) GetNotifyLevelShrink() *string {
+	return s.NotifyLevelShrink
 }
 
 func (s *PushSimpleShrinkRequest) GetNotifyType() *string {
@@ -315,6 +322,11 @@ func (s *PushSimpleShrinkRequest) SetImageUrls(v string) *PushSimpleShrinkReques
 
 func (s *PushSimpleShrinkRequest) SetMiChannelId(v string) *PushSimpleShrinkRequest {
 	s.MiChannelId = &v
+	return s
+}
+
+func (s *PushSimpleShrinkRequest) SetNotifyLevelShrink(v string) *PushSimpleShrinkRequest {
+	s.NotifyLevelShrink = &v
 	return s
 }
 

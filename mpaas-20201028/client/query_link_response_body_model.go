@@ -82,7 +82,12 @@ func (s *QueryLinkResponseBody) SetResultMessage(v string) *QueryLinkResponseBod
 }
 
 func (s *QueryLinkResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryLinkResponseBodyResultContent struct {

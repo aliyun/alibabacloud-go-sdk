@@ -71,7 +71,12 @@ func (s *CreateMcubeWhitelistResponseBody) SetResultMessage(v string) *CreateMcu
 }
 
 func (s *CreateMcubeWhitelistResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CreateWhitelistResult != nil {
+		if err := s.CreateWhitelistResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateMcubeWhitelistResponseBodyCreateWhitelistResult struct {

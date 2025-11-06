@@ -71,7 +71,12 @@ func (s *GetMcubeNebulaTaskDetailResponseBody) SetResultMessage(v string) *GetMc
 }
 
 func (s *GetMcubeNebulaTaskDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GetMcubeNebulaTaskDetailResult != nil {
+		if err := s.GetMcubeNebulaTaskDetailResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMcubeNebulaTaskDetailResponseBodyGetMcubeNebulaTaskDetailResult struct {
@@ -136,7 +141,12 @@ func (s *GetMcubeNebulaTaskDetailResponseBodyGetMcubeNebulaTaskDetailResult) Set
 }
 
 func (s *GetMcubeNebulaTaskDetailResponseBodyGetMcubeNebulaTaskDetailResult) Validate() error {
-	return dara.Validate(s)
+	if s.NebulaTaskDetail != nil {
+		if err := s.NebulaTaskDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMcubeNebulaTaskDetailResponseBodyGetMcubeNebulaTaskDetailResultNebulaTaskDetail struct {
@@ -651,7 +661,16 @@ func (s *GetMcubeNebulaTaskDetailResponseBodyGetMcubeNebulaTaskDetailResultNebul
 }
 
 func (s *GetMcubeNebulaTaskDetailResponseBodyGetMcubeNebulaTaskDetailResultNebulaTaskDetail) Validate() error {
-	return dara.Validate(s)
+	if s.RuleJsonList != nil {
+		for _, item := range s.RuleJsonList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMcubeNebulaTaskDetailResponseBodyGetMcubeNebulaTaskDetailResultNebulaTaskDetailRuleJsonList struct {

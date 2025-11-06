@@ -71,7 +71,12 @@ func (s *CreateMcubeUpgradePackageResponseBody) SetResultMessage(v string) *Crea
 }
 
 func (s *CreateMcubeUpgradePackageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateMcubeUpgradePackageResponseBodyResultContent struct {

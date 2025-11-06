@@ -11,6 +11,8 @@ type iUploadUserAppToMsaRequest interface {
 	GoString() string
 	SetAppId(v string) *UploadUserAppToMsaRequest
 	GetAppId() *string
+	SetFileName(v string) *UploadUserAppToMsaRequest
+	GetFileName() *string
 	SetFileUrl(v string) *UploadUserAppToMsaRequest
 	GetFileUrl() *string
 	SetTenantId(v string) *UploadUserAppToMsaRequest
@@ -21,8 +23,9 @@ type iUploadUserAppToMsaRequest interface {
 
 type UploadUserAppToMsaRequest struct {
 	// This parameter is required.
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrl  *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	// This parameter is required.
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// This parameter is required.
@@ -41,6 +44,10 @@ func (s *UploadUserAppToMsaRequest) GetAppId() *string {
 	return s.AppId
 }
 
+func (s *UploadUserAppToMsaRequest) GetFileName() *string {
+	return s.FileName
+}
+
 func (s *UploadUserAppToMsaRequest) GetFileUrl() *string {
 	return s.FileUrl
 }
@@ -55,6 +62,11 @@ func (s *UploadUserAppToMsaRequest) GetWorkspaceId() *string {
 
 func (s *UploadUserAppToMsaRequest) SetAppId(v string) *UploadUserAppToMsaRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *UploadUserAppToMsaRequest) SetFileName(v string) *UploadUserAppToMsaRequest {
+	s.FileName = &v
 	return s
 }
 

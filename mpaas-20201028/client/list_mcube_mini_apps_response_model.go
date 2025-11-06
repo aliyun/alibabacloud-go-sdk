@@ -59,5 +59,10 @@ func (s *ListMcubeMiniAppsResponse) SetBody(v *ListMcubeMiniAppsResponseBody) *L
 }
 
 func (s *ListMcubeMiniAppsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

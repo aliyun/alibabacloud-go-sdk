@@ -71,7 +71,12 @@ func (s *QueryMdsUpgradeTaskDetailResponseBody) SetResultMessage(v string) *Quer
 }
 
 func (s *QueryMdsUpgradeTaskDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultContent != nil {
+		if err := s.ResultContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMdsUpgradeTaskDetailResponseBodyResultContent struct {
@@ -106,7 +111,12 @@ func (s *QueryMdsUpgradeTaskDetailResponseBodyResultContent) SetRequestId(v stri
 }
 
 func (s *QueryMdsUpgradeTaskDetailResponseBodyResultContent) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMdsUpgradeTaskDetailResponseBodyResultContentData struct {
@@ -171,7 +181,12 @@ func (s *QueryMdsUpgradeTaskDetailResponseBodyResultContentData) SetSuccess(v bo
 }
 
 func (s *QueryMdsUpgradeTaskDetailResponseBodyResultContentData) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryMdsUpgradeTaskDetailResponseBodyResultContentDataContent struct {
@@ -696,7 +711,25 @@ func (s *QueryMdsUpgradeTaskDetailResponseBodyResultContentDataContent) SetWhite
 }
 
 func (s *QueryMdsUpgradeTaskDetailResponseBodyResultContentDataContent) Validate() error {
-	return dara.Validate(s)
+	if s.RuleJsonList != nil {
+		for _, item := range s.RuleJsonList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Whitelist != nil {
+		for _, item := range s.Whitelist {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryMdsUpgradeTaskDetailResponseBodyResultContentDataContentRuleJsonList struct {

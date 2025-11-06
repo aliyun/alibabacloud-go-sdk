@@ -59,5 +59,10 @@ func (s *QueryPushAnalysisCoreIndexResponse) SetBody(v *QueryPushAnalysisCoreInd
 }
 
 func (s *QueryPushAnalysisCoreIndexResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -71,7 +71,12 @@ func (s *ListMcubeMiniPackagesResponseBody) SetResultMessage(v string) *ListMcub
 }
 
 func (s *ListMcubeMiniPackagesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ListMiniPackageResult != nil {
+		if err := s.ListMiniPackageResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMcubeMiniPackagesResponseBodyListMiniPackageResult struct {
@@ -156,7 +161,16 @@ func (s *ListMcubeMiniPackagesResponseBodyListMiniPackageResult) SetTotalCount(v
 }
 
 func (s *ListMcubeMiniPackagesResponseBodyListMiniPackageResult) Validate() error {
-	return dara.Validate(s)
+	if s.MiniPackageList != nil {
+		for _, item := range s.MiniPackageList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMcubeMiniPackagesResponseBodyListMiniPackageResultMiniPackageList struct {

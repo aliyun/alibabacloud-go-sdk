@@ -59,5 +59,10 @@ func (s *CreateMcubeUpgradeTaskResponse) SetBody(v *CreateMcubeUpgradeTaskRespon
 }
 
 func (s *CreateMcubeUpgradeTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
