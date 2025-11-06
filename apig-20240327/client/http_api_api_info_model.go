@@ -9,6 +9,8 @@ type iHttpApiApiInfo interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentProtocols(v []*string) *HttpApiApiInfo
+	GetAgentProtocols() []*string
 	SetAiProtocols(v []*string) *HttpApiApiInfo
 	GetAiProtocols() []*string
 	SetAuthConfig(v *AuthConfig) *HttpApiApiInfo
@@ -46,8 +48,9 @@ type iHttpApiApiInfo interface {
 }
 
 type HttpApiApiInfo struct {
-	AiProtocols []*string   `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
-	AuthConfig  *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	AgentProtocols []*string   `json:"agentProtocols,omitempty" xml:"agentProtocols,omitempty" type:"Repeated"`
+	AiProtocols    []*string   `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
+	AuthConfig     *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
 	// example:
 	//
 	// /v1
@@ -86,6 +89,10 @@ func (s HttpApiApiInfo) String() string {
 
 func (s HttpApiApiInfo) GoString() string {
 	return s.String()
+}
+
+func (s *HttpApiApiInfo) GetAgentProtocols() []*string {
+	return s.AgentProtocols
 }
 
 func (s *HttpApiApiInfo) GetAiProtocols() []*string {
@@ -154,6 +161,11 @@ func (s *HttpApiApiInfo) GetType() *string {
 
 func (s *HttpApiApiInfo) GetVersionInfo() *HttpApiVersionInfo {
 	return s.VersionInfo
+}
+
+func (s *HttpApiApiInfo) SetAgentProtocols(v []*string) *HttpApiApiInfo {
+	s.AgentProtocols = v
+	return s
 }
 
 func (s *HttpApiApiInfo) SetAiProtocols(v []*string) *HttpApiApiInfo {

@@ -1242,6 +1242,10 @@ func (client *Client) CreateMcpServerWithOptions(request *CreateMcpServerRequest
 		body["backendConfig"] = request.BackendConfig
 	}
 
+	if !dara.IsNil(request.CreateFromType) {
+		body["createFromType"] = request.CreateFromType
+	}
+
 	if !dara.IsNil(request.Description) {
 		body["description"] = request.Description
 	}
@@ -6310,6 +6314,10 @@ func (client *Client) UpdateMcpServerWithOptions(mcpServerId *string, request *U
 
 	if !dara.IsNil(request.BackendConfig) {
 		body["backendConfig"] = request.BackendConfig
+	}
+
+	if !dara.IsNil(request.CreateFromType) {
+		body["createFromType"] = request.CreateFromType
 	}
 
 	if !dara.IsNil(request.Description) {

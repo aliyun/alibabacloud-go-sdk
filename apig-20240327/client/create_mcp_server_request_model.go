@@ -13,6 +13,8 @@ type iCreateMcpServerRequest interface {
 	GetAssembledSources() []*CreateMcpServerRequestAssembledSources
 	SetBackendConfig(v *CreateMcpServerRequestBackendConfig) *CreateMcpServerRequest
 	GetBackendConfig() *CreateMcpServerRequestBackendConfig
+	SetCreateFromType(v string) *CreateMcpServerRequest
+	GetCreateFromType() *string
 	SetDescription(v string) *CreateMcpServerRequest
 	GetDescription() *string
 	SetDomainIds(v []*string) *CreateMcpServerRequest
@@ -36,6 +38,7 @@ type iCreateMcpServerRequest interface {
 type CreateMcpServerRequest struct {
 	AssembledSources []*CreateMcpServerRequestAssembledSources `json:"assembledSources,omitempty" xml:"assembledSources,omitempty" type:"Repeated"`
 	BackendConfig    *CreateMcpServerRequestBackendConfig      `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
+	CreateFromType   *string                                   `json:"createFromType,omitempty" xml:"createFromType,omitempty"`
 	// example:
 	//
 	// mcp tool fetch time
@@ -90,6 +93,10 @@ func (s *CreateMcpServerRequest) GetBackendConfig() *CreateMcpServerRequestBacke
 	return s.BackendConfig
 }
 
+func (s *CreateMcpServerRequest) GetCreateFromType() *string {
+	return s.CreateFromType
+}
+
 func (s *CreateMcpServerRequest) GetDescription() *string {
 	return s.Description
 }
@@ -133,6 +140,11 @@ func (s *CreateMcpServerRequest) SetAssembledSources(v []*CreateMcpServerRequest
 
 func (s *CreateMcpServerRequest) SetBackendConfig(v *CreateMcpServerRequestBackendConfig) *CreateMcpServerRequest {
 	s.BackendConfig = v
+	return s
+}
+
+func (s *CreateMcpServerRequest) SetCreateFromType(v string) *CreateMcpServerRequest {
+	s.CreateFromType = &v
 	return s
 }
 

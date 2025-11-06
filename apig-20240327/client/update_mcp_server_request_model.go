@@ -13,6 +13,8 @@ type iUpdateMcpServerRequest interface {
 	GetAssembledSources() []*UpdateMcpServerRequestAssembledSources
 	SetBackendConfig(v *UpdateMcpServerRequestBackendConfig) *UpdateMcpServerRequest
 	GetBackendConfig() *UpdateMcpServerRequestBackendConfig
+	SetCreateFromType(v string) *UpdateMcpServerRequest
+	GetCreateFromType() *string
 	SetDescription(v string) *UpdateMcpServerRequest
 	GetDescription() *string
 	SetDomainIds(v []*string) *UpdateMcpServerRequest
@@ -32,6 +34,7 @@ type iUpdateMcpServerRequest interface {
 type UpdateMcpServerRequest struct {
 	AssembledSources []*UpdateMcpServerRequestAssembledSources `json:"assembledSources,omitempty" xml:"assembledSources,omitempty" type:"Repeated"`
 	BackendConfig    *UpdateMcpServerRequestBackendConfig      `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
+	CreateFromType   *string                                   `json:"createFromType,omitempty" xml:"createFromType,omitempty"`
 	Description      *string                                   `json:"description,omitempty" xml:"description,omitempty"`
 	DomainIds        []*string                                 `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
 	// example:
@@ -73,6 +76,10 @@ func (s *UpdateMcpServerRequest) GetBackendConfig() *UpdateMcpServerRequestBacke
 	return s.BackendConfig
 }
 
+func (s *UpdateMcpServerRequest) GetCreateFromType() *string {
+	return s.CreateFromType
+}
+
 func (s *UpdateMcpServerRequest) GetDescription() *string {
 	return s.Description
 }
@@ -108,6 +115,11 @@ func (s *UpdateMcpServerRequest) SetAssembledSources(v []*UpdateMcpServerRequest
 
 func (s *UpdateMcpServerRequest) SetBackendConfig(v *UpdateMcpServerRequestBackendConfig) *UpdateMcpServerRequest {
 	s.BackendConfig = v
+	return s
+}
+
+func (s *UpdateMcpServerRequest) SetCreateFromType(v string) *UpdateMcpServerRequest {
+	s.CreateFromType = &v
 	return s
 }
 
