@@ -31,6 +31,8 @@ type iQuota interface {
 	GetParentQuotaId() *string
 	SetQueueStrategy(v string) *Quota
 	GetQueueStrategy() *string
+	SetQuotaCluster(v *QuotaCluster) *Quota
+	GetQuotaCluster() *QuotaCluster
 	SetQuotaConfig(v *QuotaConfig) *Quota
 	GetQuotaConfig() *QuotaConfig
 	SetQuotaDetails(v *QuotaDetails) *Quota
@@ -69,6 +71,7 @@ type Quota struct {
 	Min               *ResourceSpec `json:"Min,omitempty" xml:"Min,omitempty"`
 	ParentQuotaId     *string       `json:"ParentQuotaId,omitempty" xml:"ParentQuotaId,omitempty"`
 	QueueStrategy     *string       `json:"QueueStrategy,omitempty" xml:"QueueStrategy,omitempty"`
+	QuotaCluster      *QuotaCluster `json:"QuotaCluster,omitempty" xml:"QuotaCluster,omitempty"`
 	QuotaConfig       *QuotaConfig  `json:"QuotaConfig,omitempty" xml:"QuotaConfig,omitempty"`
 	QuotaDetails      *QuotaDetails `json:"QuotaDetails,omitempty" xml:"QuotaDetails,omitempty"`
 	// example:
@@ -139,6 +142,10 @@ func (s *Quota) GetParentQuotaId() *string {
 
 func (s *Quota) GetQueueStrategy() *string {
 	return s.QueueStrategy
+}
+
+func (s *Quota) GetQuotaCluster() *QuotaCluster {
+	return s.QuotaCluster
 }
 
 func (s *Quota) GetQuotaConfig() *QuotaConfig {
@@ -244,6 +251,11 @@ func (s *Quota) SetQueueStrategy(v string) *Quota {
 	return s
 }
 
+func (s *Quota) SetQuotaCluster(v *QuotaCluster) *Quota {
+	s.QuotaCluster = v
+	return s
+}
+
 func (s *Quota) SetQuotaConfig(v *QuotaConfig) *Quota {
 	s.QuotaConfig = v
 	return s
@@ -316,6 +328,11 @@ func (s *Quota) Validate() error {
 	}
 	if s.Min != nil {
 		if err := s.Min.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QuotaCluster != nil {
+		if err := s.QuotaCluster.Validate(); err != nil {
 			return err
 		}
 	}

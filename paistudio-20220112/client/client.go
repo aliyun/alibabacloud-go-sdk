@@ -366,6 +366,10 @@ func (client *Client) CreateQuotaWithOptions(request *CreateQuotaRequest, header
 		body["AllocateStrategy"] = request.AllocateStrategy
 	}
 
+	if !dara.IsNil(request.ClusterSpec) {
+		body["ClusterSpec"] = request.ClusterSpec
+	}
+
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
 	}
@@ -2596,6 +2600,10 @@ func (client *Client) ListQuotasWithOptions(request *ListQuotasRequest, headers 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterType) {
+		query["ClusterType"] = request.ClusterType
+	}
+
 	if !dara.IsNil(request.HasResource) {
 		query["HasResource"] = request.HasResource
 	}

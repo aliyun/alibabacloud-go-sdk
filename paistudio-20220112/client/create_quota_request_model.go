@@ -11,6 +11,8 @@ type iCreateQuotaRequest interface {
 	GoString() string
 	SetAllocateStrategy(v string) *CreateQuotaRequest
 	GetAllocateStrategy() *string
+	SetClusterSpec(v *ClusterSpec) *CreateQuotaRequest
+	GetClusterSpec() *ClusterSpec
 	SetDescription(v string) *CreateQuotaRequest
 	GetDescription() *string
 	SetLabels(v []*Label) *CreateQuotaRequest
@@ -35,7 +37,8 @@ type CreateQuotaRequest struct {
 	// example:
 	//
 	// ByNodeSpecs
-	AllocateStrategy *string `json:"AllocateStrategy,omitempty" xml:"AllocateStrategy,omitempty"`
+	AllocateStrategy *string      `json:"AllocateStrategy,omitempty" xml:"AllocateStrategy,omitempty"`
+	ClusterSpec      *ClusterSpec `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
 	// example:
 	//
 	// this is a test quota
@@ -77,6 +80,10 @@ func (s *CreateQuotaRequest) GetAllocateStrategy() *string {
 	return s.AllocateStrategy
 }
 
+func (s *CreateQuotaRequest) GetClusterSpec() *ClusterSpec {
+	return s.ClusterSpec
+}
+
 func (s *CreateQuotaRequest) GetDescription() *string {
 	return s.Description
 }
@@ -115,6 +122,11 @@ func (s *CreateQuotaRequest) GetResourceType() *string {
 
 func (s *CreateQuotaRequest) SetAllocateStrategy(v string) *CreateQuotaRequest {
 	s.AllocateStrategy = &v
+	return s
+}
+
+func (s *CreateQuotaRequest) SetClusterSpec(v *ClusterSpec) *CreateQuotaRequest {
+	s.ClusterSpec = v
 	return s
 }
 
@@ -164,6 +176,11 @@ func (s *CreateQuotaRequest) SetResourceType(v string) *CreateQuotaRequest {
 }
 
 func (s *CreateQuotaRequest) Validate() error {
+	if s.ClusterSpec != nil {
+		if err := s.ClusterSpec.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Labels != nil {
 		for _, item := range s.Labels {
 			if item != nil {

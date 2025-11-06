@@ -9,6 +9,8 @@ type iListQuotasRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClusterType(v string) *ListQuotasRequest
+	GetClusterType() *string
 	SetHasResource(v string) *ListQuotasRequest
 	GetHasResource() *string
 	SetLabels(v string) *ListQuotasRequest
@@ -44,6 +46,10 @@ type iListQuotasRequest interface {
 }
 
 type ListQuotasRequest struct {
+	// example:
+	//
+	// RayCluster
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	HasResource *string `json:"HasResource,omitempty" xml:"HasResource,omitempty"`
 	// example:
 	//
@@ -104,6 +110,10 @@ func (s ListQuotasRequest) String() string {
 
 func (s ListQuotasRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListQuotasRequest) GetClusterType() *string {
+	return s.ClusterType
 }
 
 func (s *ListQuotasRequest) GetHasResource() *string {
@@ -168,6 +178,11 @@ func (s *ListQuotasRequest) GetWorkspaceIds() *string {
 
 func (s *ListQuotasRequest) GetWorkspaceName() *string {
 	return s.WorkspaceName
+}
+
+func (s *ListQuotasRequest) SetClusterType(v string) *ListQuotasRequest {
+	s.ClusterType = &v
+	return s
 }
 
 func (s *ListQuotasRequest) SetHasResource(v string) *ListQuotasRequest {

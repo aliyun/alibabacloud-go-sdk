@@ -222,6 +222,10 @@ func (client *Client) CreateQuotaWithContext(ctx context.Context, request *Creat
 		body["AllocateStrategy"] = request.AllocateStrategy
 	}
 
+	if !dara.IsNil(request.ClusterSpec) {
+		body["ClusterSpec"] = request.ClusterSpec
+	}
+
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
 	}
@@ -1888,6 +1892,10 @@ func (client *Client) ListQuotasWithContext(ctx context.Context, request *ListQu
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterType) {
+		query["ClusterType"] = request.ClusterType
+	}
+
 	if !dara.IsNil(request.HasResource) {
 		query["HasResource"] = request.HasResource
 	}
