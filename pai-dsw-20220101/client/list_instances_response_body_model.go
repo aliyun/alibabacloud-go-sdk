@@ -354,7 +354,8 @@ type ListInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// resource_group
-	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceName  *string        `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ServiceConfig *ServiceConfig `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
 	// The instance status.
 	//
 	// example:
@@ -555,6 +556,10 @@ func (s *ListInstancesResponseBodyInstances) GetResourceId() *string {
 
 func (s *ListInstancesResponseBodyInstances) GetResourceName() *string {
 	return s.ResourceName
+}
+
+func (s *ListInstancesResponseBodyInstances) GetServiceConfig() *ServiceConfig {
+	return s.ServiceConfig
 }
 
 func (s *ListInstancesResponseBodyInstances) GetStatus() *string {
@@ -772,6 +777,11 @@ func (s *ListInstancesResponseBodyInstances) SetResourceName(v string) *ListInst
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstances) SetServiceConfig(v *ServiceConfig) *ListInstancesResponseBodyInstances {
+	s.ServiceConfig = v
+	return s
+}
+
 func (s *ListInstancesResponseBodyInstances) SetStatus(v string) *ListInstancesResponseBodyInstances {
 	s.Status = &v
 	return s
@@ -891,6 +901,11 @@ func (s *ListInstancesResponseBodyInstances) Validate() error {
 	}
 	if s.RequestedResource != nil {
 		if err := s.RequestedResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceConfig != nil {
+		if err := s.ServiceConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -1868,6 +1883,7 @@ type ListInstancesResponseBodyInstancesUserVpc struct {
 	ExtendedCIDRs []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
 	// The forward information.
 	ForwardInfos []*ForwardInfoResponse `json:"ForwardInfos,omitempty" xml:"ForwardInfos,omitempty" type:"Repeated"`
+	Ip           *string                `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The security group ID.
 	//
 	// example:
@@ -1912,6 +1928,10 @@ func (s *ListInstancesResponseBodyInstancesUserVpc) GetForwardInfos() []*Forward
 	return s.ForwardInfos
 }
 
+func (s *ListInstancesResponseBodyInstancesUserVpc) GetIp() *string {
+	return s.Ip
+}
+
 func (s *ListInstancesResponseBodyInstancesUserVpc) GetSecurityGroupId() *string {
 	return s.SecurityGroupId
 }
@@ -1941,6 +1961,11 @@ func (s *ListInstancesResponseBodyInstancesUserVpc) SetExtendedCIDRs(v []*string
 
 func (s *ListInstancesResponseBodyInstancesUserVpc) SetForwardInfos(v []*ForwardInfoResponse) *ListInstancesResponseBodyInstancesUserVpc {
 	s.ForwardInfos = v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesUserVpc) SetIp(v string) *ListInstancesResponseBodyInstancesUserVpc {
+	s.Ip = &v
 	return s
 }
 

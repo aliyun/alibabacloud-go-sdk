@@ -87,6 +87,8 @@ type iGetInstanceResponseBody interface {
 	GetResourceId() *string
 	SetResourceName(v string) *GetInstanceResponseBody
 	GetResourceName() *string
+	SetServiceConfig(v *ServiceConfig) *GetInstanceResponseBody
+	GetServiceConfig() *ServiceConfig
 	SetStatus(v string) *GetInstanceResponseBody
 	GetStatus() *string
 	SetSuccess(v bool) *GetInstanceResponseBody
@@ -349,7 +351,8 @@ type GetInstanceResponseBody struct {
 	// example:
 	//
 	// ecs.g7.xlarge
-	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceName  *string        `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ServiceConfig *ServiceConfig `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
 	// The instance status.
 	//
 	// Valid values:
@@ -611,6 +614,10 @@ func (s *GetInstanceResponseBody) GetResourceName() *string {
 	return s.ResourceName
 }
 
+func (s *GetInstanceResponseBody) GetServiceConfig() *ServiceConfig {
+	return s.ServiceConfig
+}
+
 func (s *GetInstanceResponseBody) GetStatus() *string {
 	return s.Status
 }
@@ -854,6 +861,11 @@ func (s *GetInstanceResponseBody) SetResourceName(v string) *GetInstanceResponse
 	return s
 }
 
+func (s *GetInstanceResponseBody) SetServiceConfig(v *ServiceConfig) *GetInstanceResponseBody {
+	s.ServiceConfig = v
+	return s
+}
+
 func (s *GetInstanceResponseBody) SetStatus(v string) *GetInstanceResponseBody {
 	s.Status = &v
 	return s
@@ -988,6 +1000,11 @@ func (s *GetInstanceResponseBody) Validate() error {
 	}
 	if s.RequestedResource != nil {
 		if err := s.RequestedResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceConfig != nil {
+		if err := s.ServiceConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -2109,6 +2126,7 @@ type GetInstanceResponseBodyUserVpc struct {
 	ExtendedCIDRs []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
 	// The forward information.
 	ForwardInfos []*ForwardInfoResponse `json:"ForwardInfos,omitempty" xml:"ForwardInfos,omitempty" type:"Repeated"`
+	Ip           *string                `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The security group ID.
 	//
 	// example:
@@ -2153,6 +2171,10 @@ func (s *GetInstanceResponseBodyUserVpc) GetForwardInfos() []*ForwardInfoRespons
 	return s.ForwardInfos
 }
 
+func (s *GetInstanceResponseBodyUserVpc) GetIp() *string {
+	return s.Ip
+}
+
 func (s *GetInstanceResponseBodyUserVpc) GetSecurityGroupId() *string {
 	return s.SecurityGroupId
 }
@@ -2182,6 +2204,11 @@ func (s *GetInstanceResponseBodyUserVpc) SetExtendedCIDRs(v []*string) *GetInsta
 
 func (s *GetInstanceResponseBodyUserVpc) SetForwardInfos(v []*ForwardInfoResponse) *GetInstanceResponseBodyUserVpc {
 	s.ForwardInfos = v
+	return s
+}
+
+func (s *GetInstanceResponseBodyUserVpc) SetIp(v string) *GetInstanceResponseBodyUserVpc {
+	s.Ip = &v
 	return s
 }
 
