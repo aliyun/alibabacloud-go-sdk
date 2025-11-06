@@ -17,6 +17,8 @@ type iListUserRatePlanInstancesRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListUserRatePlanInstancesRequest
 	GetPageSize() *int32
+	SetPlanType(v string) *ListUserRatePlanInstancesRequest
+	GetPlanType() *string
 	SetRemainingExpireDays(v int32) *ListUserRatePlanInstancesRequest
 	GetRemainingExpireDays() *int32
 	SetSortBy(v string) *ListUserRatePlanInstancesRequest
@@ -57,8 +59,9 @@ type ListUserRatePlanInstancesRequest struct {
 	// example:
 	//
 	// 500
-	PageSize            *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RemainingExpireDays *int32 `json:"RemainingExpireDays,omitempty" xml:"RemainingExpireDays,omitempty"`
+	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PlanType            *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+	RemainingExpireDays *int32  `json:"RemainingExpireDays,omitempty" xml:"RemainingExpireDays,omitempty"`
 	// The sorting field. By default, the queried plans are sorted by purchase time. Valid values:
 	//
 	// 	- CreateTime: the time when the plans were purchased.
@@ -123,6 +126,10 @@ func (s *ListUserRatePlanInstancesRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListUserRatePlanInstancesRequest) GetPlanType() *string {
+	return s.PlanType
+}
+
 func (s *ListUserRatePlanInstancesRequest) GetRemainingExpireDays() *int32 {
 	return s.RemainingExpireDays
 }
@@ -160,6 +167,11 @@ func (s *ListUserRatePlanInstancesRequest) SetPageNumber(v int32) *ListUserRateP
 
 func (s *ListUserRatePlanInstancesRequest) SetPageSize(v int32) *ListUserRatePlanInstancesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesRequest) SetPlanType(v string) *ListUserRatePlanInstancesRequest {
+	s.PlanType = &v
 	return s
 }
 

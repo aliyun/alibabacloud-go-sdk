@@ -7737,6 +7737,54 @@ func (client *Client) ExportRecordsWithContext(ctx context.Context, request *Exp
 
 // Summary:
 //
+// 获取架构文件套餐使用情况
+//
+// @param request - GetApiSchemaUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApiSchemaUsageResponse
+func (client *Client) GetApiSchemaUsageWithContext(ctx context.Context, request *GetApiSchemaUsageRequest, runtime *dara.RuntimeOptions) (_result *GetApiSchemaUsageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.SiteVersion) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetApiSchemaUsage"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetApiSchemaUsageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query a single cache configuration
 //
 // @param request - GetCacheRuleRequest
