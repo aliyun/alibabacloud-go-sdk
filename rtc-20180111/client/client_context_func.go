@@ -411,6 +411,60 @@ func (client *Client) CreateAppStreamingOutTemplateWithContext(ctx context.Conte
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建应用合流模版
+//
+// @param tmpReq - CreateAppViewTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppViewTemplateResponse
+func (client *Client) CreateAppViewTemplateWithContext(ctx context.Context, tmpReq *CreateAppViewTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateAppViewTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateAppViewTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Template) {
+		request.TemplateShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Template, dara.String("Template"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.TemplateShrink) {
+		query["Template"] = request.TemplateShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAppViewTemplate"),
+		Version:     dara.String("2018-01-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAppViewTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - CreateAutoLiveStreamRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -871,6 +925,60 @@ func (client *Client) DeleteAppStreamingOutTemplateWithContext(ctx context.Conte
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAppStreamingOutTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除应用合流模版
+//
+// @param tmpReq - DeleteAppViewTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppViewTemplateResponse
+func (client *Client) DeleteAppViewTemplateWithContext(ctx context.Context, tmpReq *DeleteAppViewTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppViewTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteAppViewTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Template) {
+		request.TemplateShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Template, dara.String("Template"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.TemplateShrink) {
+		query["Template"] = request.TemplateShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAppViewTemplate"),
+		Version:     dara.String("2018-01-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAppViewTemplateResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1685,6 +1793,112 @@ func (client *Client) DescribeAppStreamingOutTemplatesWithContext(ctx context.Co
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAppStreamingOutTemplatesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看合流开关
+//
+// @param request - DescribeAppViewStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppViewStatusResponse
+func (client *Client) DescribeAppViewStatusWithContext(ctx context.Context, request *DescribeAppViewStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeAppViewStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAppViewStatus"),
+		Version:     dara.String("2018-01-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAppViewStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用合流模版列表
+//
+// @param tmpReq - DescribeAppViewTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppViewTemplatesResponse
+func (client *Client) DescribeAppViewTemplatesWithContext(ctx context.Context, tmpReq *DescribeAppViewTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DescribeAppViewTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DescribeAppViewTemplatesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Condition) {
+		request.ConditionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Condition, dara.String("Condition"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.ConditionShrink) {
+		query["Condition"] = request.ConditionShrink
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAppViewTemplates"),
+		Version:     dara.String("2018-01-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAppViewTemplatesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5047,6 +5261,104 @@ func (client *Client) ModifyAppStreamingOutTemplateWithContext(ctx context.Conte
 
 // Summary:
 //
+// 修改合流开关
+//
+// @param request - ModifyAppViewStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAppViewStatusResponse
+func (client *Client) ModifyAppViewStatusWithContext(ctx context.Context, request *ModifyAppViewStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyAppViewStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyAppViewStatus"),
+		Version:     dara.String("2018-01-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyAppViewStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新应用合流模版
+//
+// @param tmpReq - ModifyAppViewTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAppViewTemplateResponse
+func (client *Client) ModifyAppViewTemplateWithContext(ctx context.Context, tmpReq *ModifyAppViewTemplateRequest, runtime *dara.RuntimeOptions) (_result *ModifyAppViewTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModifyAppViewTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Template) {
+		request.TemplateShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Template, dara.String("Template"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.TemplateShrink) {
+		query["Template"] = request.TemplateShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyAppViewTemplate"),
+		Version:     dara.String("2018-01-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyAppViewTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新app回调
 //
 // @param tmpReq - ModifyCallbackMetaRequest
@@ -5209,6 +5521,158 @@ func (client *Client) ModifyMPULayoutWithContext(ctx context.Context, request *M
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyMPULayoutResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置流属性
+//
+// @param tmpReq - ModifyStreamingPropertyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyStreamingPropertyResponse
+func (client *Client) ModifyStreamingPropertyWithContext(ctx context.Context, tmpReq *ModifyStreamingPropertyRequest, runtime *dara.RuntimeOptions) (_result *ModifyStreamingPropertyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModifyStreamingPropertyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ViewSubscribers) {
+		request.ViewSubscribersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ViewSubscribers, dara.String("ViewSubscribers"), dara.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.ChannelId) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.ViewContent) {
+		query["ViewContent"] = request.ViewContent
+	}
+
+	if !dara.IsNil(request.ViewSubscribersShrink) {
+		query["ViewSubscribers"] = request.ViewSubscribersShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyStreamingProperty"),
+		Version:     dara.String("2018-01-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyStreamingPropertyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置合流布局
+//
+// @param tmpReq - ModifyViewLayoutRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyViewLayoutResponse
+func (client *Client) ModifyViewLayoutWithContext(ctx context.Context, tmpReq *ModifyViewLayoutRequest, runtime *dara.RuntimeOptions) (_result *ModifyViewLayoutResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModifyViewLayoutShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.LayoutSpecifiedUsers) {
+		request.LayoutSpecifiedUsersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LayoutSpecifiedUsers, dara.String("LayoutSpecifiedUsers"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.Backgrounds) {
+		query["Backgrounds"] = request.Backgrounds
+	}
+
+	if !dara.IsNil(request.ChannelId) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !dara.IsNil(request.ClockWidgets) {
+		query["ClockWidgets"] = request.ClockWidgets
+	}
+
+	if !dara.IsNil(request.Images) {
+		query["Images"] = request.Images
+	}
+
+	if !dara.IsNil(request.LayoutSpecifiedUsersShrink) {
+		query["LayoutSpecifiedUsers"] = request.LayoutSpecifiedUsersShrink
+	}
+
+	if !dara.IsNil(request.Panes) {
+		query["Panes"] = request.Panes
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.Texts) {
+		query["Texts"] = request.Texts
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyViewLayout"),
+		Version:     dara.String("2018-01-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyViewLayoutResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5391,6 +5855,210 @@ func (client *Client) RemoveUsersWithContext(ctx context.Context, request *Remov
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveUsersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消Sip邀请
+//
+// @param request - RtcCancelSipInviteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RtcCancelSipInviteResponse
+func (client *Client) RtcCancelSipInviteWithContext(ctx context.Context, request *RtcCancelSipInviteRequest, runtime *dara.RuntimeOptions) (_result *RtcCancelSipInviteResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.ChannelId) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !dara.IsNil(request.DeviceType) {
+		query["DeviceType"] = request.DeviceType
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RtcCancelSipInvite"),
+		Version:     dara.String("2018-01-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RtcCancelSipInviteResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 邀请SIP加入频道
+//
+// @param request - RtcSipInviteMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RtcSipInviteMemberResponse
+func (client *Client) RtcSipInviteMemberWithContext(ctx context.Context, request *RtcSipInviteMemberRequest, runtime *dara.RuntimeOptions) (_result *RtcSipInviteMemberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AppToken) {
+		query["AppToken"] = request.AppToken
+	}
+
+	if !dara.IsNil(request.CallNumber) {
+		query["CallNumber"] = request.CallNumber
+	}
+
+	if !dara.IsNil(request.ChannelId) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !dara.IsNil(request.DeviceType) {
+		query["DeviceType"] = request.DeviceType
+	}
+
+	if !dara.IsNil(request.Registered) {
+		query["Registered"] = request.Registered
+	}
+
+	if !dara.IsNil(request.ServerAddress) {
+		query["ServerAddress"] = request.ServerAddress
+	}
+
+	if !dara.IsNil(request.SipDisplayName) {
+		query["SipDisplayName"] = request.SipDisplayName
+	}
+
+	if !dara.IsNil(request.SipRoomId) {
+		query["SipRoomId"] = request.SipRoomId
+	}
+
+	if !dara.IsNil(request.SipUri) {
+		query["SipUri"] = request.SipUri
+	}
+
+	if !dara.IsNil(request.SipUserAgent) {
+		query["SipUserAgent"] = request.SipUserAgent
+	}
+
+	if !dara.IsNil(request.SipUserId) {
+		query["SipUserId"] = request.SipUserId
+	}
+
+	if !dara.IsNil(request.SipUserPassword) {
+		query["SipUserPassword"] = request.SipUserPassword
+	}
+
+	if !dara.IsNil(request.Uid) {
+		query["Uid"] = request.Uid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RtcSipInviteMember"),
+		Version:     dara.String("2018-01-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RtcSipInviteMemberResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Mute操作
+//
+// @param request - RtcSipMuteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RtcSipMuteResponse
+func (client *Client) RtcSipMuteWithContext(ctx context.Context, request *RtcSipMuteRequest, runtime *dara.RuntimeOptions) (_result *RtcSipMuteResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.ChannelId) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !dara.IsNil(request.Operations) {
+		query["Operations"] = request.Operations
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RtcSipMute"),
+		Version:     dara.String("2018-01-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RtcSipMuteResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6204,6 +6872,96 @@ func (client *Client) StartStreamingOutWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
+// 开始合流
+//
+// @param tmpReq - StartViewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartViewResponse
+func (client *Client) StartViewWithContext(ctx context.Context, tmpReq *StartViewRequest, runtime *dara.RuntimeOptions) (_result *StartViewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &StartViewShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ViewSubscribers) {
+		request.ViewSubscribersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ViewSubscribers, dara.String("ViewSubscribers"), dara.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.BgColor) {
+		query["BgColor"] = request.BgColor
+	}
+
+	if !dara.IsNil(request.ChannelId) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !dara.IsNil(request.CropMode) {
+		query["CropMode"] = request.CropMode
+	}
+
+	if !dara.IsNil(request.RegionColor) {
+		query["RegionColor"] = request.RegionColor
+	}
+
+	if !dara.IsNil(request.StartWithoutChannel) {
+		query["StartWithoutChannel"] = request.StartWithoutChannel
+	}
+
+	if !dara.IsNil(request.StartWithoutChannelWaitTime) {
+		query["StartWithoutChannelWaitTime"] = request.StartWithoutChannelWaitTime
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.ViewContent) {
+		query["ViewContent"] = request.ViewContent
+	}
+
+	if !dara.IsNil(request.ViewSubscribersShrink) {
+		query["ViewSubscribers"] = request.ViewSubscribersShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartView"),
+		Version:     dara.String("2018-01-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartViewResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 停止AI Agent
 //
 // @param request - StopAgentRequest
@@ -6604,6 +7362,58 @@ func (client *Client) StopStreamingOutWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopStreamingOutResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止合流
+//
+// @param request - StopViewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopViewResponse
+func (client *Client) StopViewWithContext(ctx context.Context, request *StopViewRequest, runtime *dara.RuntimeOptions) (_result *StopViewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.ChannelId) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StopView"),
+		Version:     dara.String("2018-01-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StopViewResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
