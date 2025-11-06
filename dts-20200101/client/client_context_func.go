@@ -1510,6 +1510,10 @@ func (client *Client) CreateDocParserJobWithContext(ctx context.Context, request
 		query["FileUrl"] = request.FileUrl
 	}
 
+	if !dara.IsNil(request.RagInstanceId) {
+		query["RagInstanceId"] = request.RagInstanceId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -3476,6 +3480,10 @@ func (client *Client) DescribeDocParserJobResultWithContext(ctx context.Context,
 		query["DtsJobId"] = request.DtsJobId
 	}
 
+	if !dara.IsNil(request.RagInstanceId) {
+		query["RagInstanceId"] = request.RagInstanceId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -3526,6 +3534,10 @@ func (client *Client) DescribeDocParserJobStatusWithContext(ctx context.Context,
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsJobId) {
 		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !dara.IsNil(request.RagInstanceId) {
+		query["RagInstanceId"] = request.RagInstanceId
 	}
 
 	if !dara.IsNil(request.RegionId) {

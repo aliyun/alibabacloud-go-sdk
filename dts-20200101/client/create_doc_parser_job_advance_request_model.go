@@ -14,6 +14,8 @@ type iCreateDocParserJobAdvanceRequest interface {
 	GetFileName() *string
 	SetFileUrlObject(v io.Reader) *CreateDocParserJobAdvanceRequest
 	GetFileUrlObject() io.Reader
+	SetRagInstanceId(v string) *CreateDocParserJobAdvanceRequest
+	GetRagInstanceId() *string
 	SetRegionId(v string) *CreateDocParserJobAdvanceRequest
 	GetRegionId() *string
 	SetResourceGroupId(v string) *CreateDocParserJobAdvanceRequest
@@ -31,6 +33,7 @@ type CreateDocParserJobAdvanceRequest struct {
 	//
 	// https://oss-cn-hangzhou.aliyuncs.com/storage/pdf/40184458-fbb0-44cf-a391-350628ceccdd17375122****
 	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	RagInstanceId *string   `json:"RagInstanceId,omitempty" xml:"RagInstanceId,omitempty"`
 	// example:
 	//
 	// cn-hangzhou
@@ -61,6 +64,10 @@ func (s *CreateDocParserJobAdvanceRequest) GetFileUrlObject() io.Reader {
 	return s.FileUrlObject
 }
 
+func (s *CreateDocParserJobAdvanceRequest) GetRagInstanceId() *string {
+	return s.RagInstanceId
+}
+
 func (s *CreateDocParserJobAdvanceRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -80,6 +87,11 @@ func (s *CreateDocParserJobAdvanceRequest) SetFileName(v string) *CreateDocParse
 
 func (s *CreateDocParserJobAdvanceRequest) SetFileUrlObject(v io.Reader) *CreateDocParserJobAdvanceRequest {
 	s.FileUrlObject = v
+	return s
+}
+
+func (s *CreateDocParserJobAdvanceRequest) SetRagInstanceId(v string) *CreateDocParserJobAdvanceRequest {
+	s.RagInstanceId = &v
 	return s
 }
 

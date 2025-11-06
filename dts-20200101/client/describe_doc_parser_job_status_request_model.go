@@ -11,6 +11,8 @@ type iDescribeDocParserJobStatusRequest interface {
 	GoString() string
 	SetDtsJobId(v string) *DescribeDocParserJobStatusRequest
 	GetDtsJobId() *string
+	SetRagInstanceId(v string) *DescribeDocParserJobStatusRequest
+	GetRagInstanceId() *string
 	SetRegionId(v string) *DescribeDocParserJobStatusRequest
 	GetRegionId() *string
 	SetResourceGroupId(v string) *DescribeDocParserJobStatusRequest
@@ -21,7 +23,8 @@ type DescribeDocParserJobStatusRequest struct {
 	// example:
 	//
 	// dts-20250729-l3m1213ye7l****
-	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobId      *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	RagInstanceId *string `json:"RagInstanceId,omitempty" xml:"RagInstanceId,omitempty"`
 	// example:
 	//
 	// cn-hangzhou
@@ -44,6 +47,10 @@ func (s *DescribeDocParserJobStatusRequest) GetDtsJobId() *string {
 	return s.DtsJobId
 }
 
+func (s *DescribeDocParserJobStatusRequest) GetRagInstanceId() *string {
+	return s.RagInstanceId
+}
+
 func (s *DescribeDocParserJobStatusRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -54,6 +61,11 @@ func (s *DescribeDocParserJobStatusRequest) GetResourceGroupId() *string {
 
 func (s *DescribeDocParserJobStatusRequest) SetDtsJobId(v string) *DescribeDocParserJobStatusRequest {
 	s.DtsJobId = &v
+	return s
+}
+
+func (s *DescribeDocParserJobStatusRequest) SetRagInstanceId(v string) *DescribeDocParserJobStatusRequest {
+	s.RagInstanceId = &v
 	return s
 }
 
