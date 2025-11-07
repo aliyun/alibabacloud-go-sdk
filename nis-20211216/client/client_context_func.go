@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("nis"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -69,7 +20,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAndAnalyzeNetworkPathResponse
-func (client *Client) CreateAndAnalyzeNetworkPathWithOptions(request *CreateAndAnalyzeNetworkPathRequest, runtime *dara.RuntimeOptions) (_result *CreateAndAnalyzeNetworkPathResponse, _err error) {
+func (client *Client) CreateAndAnalyzeNetworkPathWithContext(ctx context.Context, request *CreateAndAnalyzeNetworkPathRequest, runtime *dara.RuntimeOptions) (_result *CreateAndAnalyzeNetworkPathResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -92,33 +43,11 @@ func (client *Client) CreateAndAnalyzeNetworkPathWithOptions(request *CreateAndA
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAndAnalyzeNetworkPathResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Initiates a task for analyzing network reachability.
-//
-// Description:
-//
-// You can call this operation to initiate a task for analyzing network reachability by specifying only the information about the source and destination. You do not need to create a network path for reachability analysis. The analysis result is not recorded in the system. If you want to record the path parameters and analysis result in the Network Intelligence Service (NIS) console, we recommend that you call the **createNetworkReachableAnalysis*	- operation.
-//
-// @param request - CreateAndAnalyzeNetworkPathRequest
-//
-// @return CreateAndAnalyzeNetworkPathResponse
-func (client *Client) CreateAndAnalyzeNetworkPath(request *CreateAndAnalyzeNetworkPathRequest) (_result *CreateAndAnalyzeNetworkPathResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAndAnalyzeNetworkPathResponse{}
-	_body, _err := client.CreateAndAnalyzeNetworkPathWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -137,7 +66,7 @@ func (client *Client) CreateAndAnalyzeNetworkPath(request *CreateAndAnalyzeNetwo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateNetworkPathResponse
-func (client *Client) CreateNetworkPathWithOptions(request *CreateNetworkPathRequest, runtime *dara.RuntimeOptions) (_result *CreateNetworkPathResponse, _err error) {
+func (client *Client) CreateNetworkPathWithContext(ctx context.Context, request *CreateNetworkPathRequest, runtime *dara.RuntimeOptions) (_result *CreateNetworkPathResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -216,35 +145,11 @@ func (client *Client) CreateNetworkPathWithOptions(request *CreateNetworkPathReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateNetworkPathResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a network path in the cloud for reachability analysis.
-//
-// Description:
-//
-//	  You can call the **CreateNetworkPath*	- operation to create network paths in multiple networking scenarios and between multiple resources. After a path is created, the path parameters are saved for repeated analysis.
-//
-//		- You can create up to 100 network paths within one Alibaba Cloud account.
-//
-// @param request - CreateNetworkPathRequest
-//
-// @return CreateNetworkPathResponse
-func (client *Client) CreateNetworkPath(request *CreateNetworkPathRequest) (_result *CreateNetworkPathResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateNetworkPathResponse{}
-	_body, _err := client.CreateNetworkPathWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -265,7 +170,7 @@ func (client *Client) CreateNetworkPath(request *CreateNetworkPathRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateNetworkReachableAnalysisResponse
-func (client *Client) CreateNetworkReachableAnalysisWithOptions(request *CreateNetworkReachableAnalysisRequest, runtime *dara.RuntimeOptions) (_result *CreateNetworkReachableAnalysisResponse, _err error) {
+func (client *Client) CreateNetworkReachableAnalysisWithContext(ctx context.Context, request *CreateNetworkReachableAnalysisRequest, runtime *dara.RuntimeOptions) (_result *CreateNetworkReachableAnalysisResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -300,37 +205,11 @@ func (client *Client) CreateNetworkReachableAnalysisWithOptions(request *CreateN
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateNetworkReachableAnalysisResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a task for analyzing network reachability.
-//
-// Description:
-//
-//	  The **CreateNetworkReachableAnalysis*	- operation is used to create a task for analyzing the reachability of the network path that is created by calling the **CreateNetworkPath*	- operation and record the analysis results.
-//
-//		- The **CreateNetworkReachableAnalysis*	- operation can be called to repeatedly analyze the reachability of a network path.
-//
-//		- You can create up to 1,000 reachability analysis records within one Alibaba Cloud account.
-//
-// @param request - CreateNetworkReachableAnalysisRequest
-//
-// @return CreateNetworkReachableAnalysisResponse
-func (client *Client) CreateNetworkReachableAnalysis(request *CreateNetworkReachableAnalysisRequest) (_result *CreateNetworkReachableAnalysisResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateNetworkReachableAnalysisResponse{}
-	_body, _err := client.CreateNetworkReachableAnalysisWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -343,7 +222,7 @@ func (client *Client) CreateNetworkReachableAnalysis(request *CreateNetworkReach
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteNetworkPathResponse
-func (client *Client) DeleteNetworkPathWithOptions(tmpReq *DeleteNetworkPathRequest, runtime *dara.RuntimeOptions) (_result *DeleteNetworkPathResponse, _err error) {
+func (client *Client) DeleteNetworkPathWithContext(ctx context.Context, tmpReq *DeleteNetworkPathRequest, runtime *dara.RuntimeOptions) (_result *DeleteNetworkPathResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -380,29 +259,11 @@ func (client *Client) DeleteNetworkPathWithOptions(tmpReq *DeleteNetworkPathRequ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteNetworkPathResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a network path.
-//
-// @param request - DeleteNetworkPathRequest
-//
-// @return DeleteNetworkPathResponse
-func (client *Client) DeleteNetworkPath(request *DeleteNetworkPathRequest) (_result *DeleteNetworkPathResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteNetworkPathResponse{}
-	_body, _err := client.DeleteNetworkPathWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -415,7 +276,7 @@ func (client *Client) DeleteNetworkPath(request *DeleteNetworkPathRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteNetworkReachableAnalysisResponse
-func (client *Client) DeleteNetworkReachableAnalysisWithOptions(tmpReq *DeleteNetworkReachableAnalysisRequest, runtime *dara.RuntimeOptions) (_result *DeleteNetworkReachableAnalysisResponse, _err error) {
+func (client *Client) DeleteNetworkReachableAnalysisWithContext(ctx context.Context, tmpReq *DeleteNetworkReachableAnalysisRequest, runtime *dara.RuntimeOptions) (_result *DeleteNetworkReachableAnalysisResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -452,29 +313,11 @@ func (client *Client) DeleteNetworkReachableAnalysisWithOptions(tmpReq *DeleteNe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteNetworkReachableAnalysisResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a task for analyzing network reachability.
-//
-// @param request - DeleteNetworkReachableAnalysisRequest
-//
-// @return DeleteNetworkReachableAnalysisResponse
-func (client *Client) DeleteNetworkReachableAnalysis(request *DeleteNetworkReachableAnalysisRequest) (_result *DeleteNetworkReachableAnalysisResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteNetworkReachableAnalysisResponse{}
-	_body, _err := client.DeleteNetworkReachableAnalysisWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -487,7 +330,7 @@ func (client *Client) DeleteNetworkReachableAnalysis(request *DeleteNetworkReach
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteNisInspectionReportResponse
-func (client *Client) DeleteNisInspectionReportWithOptions(request *DeleteNisInspectionReportRequest, runtime *dara.RuntimeOptions) (_result *DeleteNisInspectionReportResponse, _err error) {
+func (client *Client) DeleteNisInspectionReportWithContext(ctx context.Context, request *DeleteNisInspectionReportRequest, runtime *dara.RuntimeOptions) (_result *DeleteNisInspectionReportResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -514,29 +357,11 @@ func (client *Client) DeleteNisInspectionReportWithOptions(request *DeleteNisIns
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteNisInspectionReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除报告
-//
-// @param request - DeleteNisInspectionReportRequest
-//
-// @return DeleteNisInspectionReportResponse
-func (client *Client) DeleteNisInspectionReport(request *DeleteNisInspectionReportRequest) (_result *DeleteNisInspectionReportResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteNisInspectionReportResponse{}
-	_body, _err := client.DeleteNisInspectionReportWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -549,7 +374,7 @@ func (client *Client) DeleteNisInspectionReport(request *DeleteNisInspectionRepo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteNisInspectionTaskResponse
-func (client *Client) DeleteNisInspectionTaskWithOptions(request *DeleteNisInspectionTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteNisInspectionTaskResponse, _err error) {
+func (client *Client) DeleteNisInspectionTaskWithContext(ctx context.Context, request *DeleteNisInspectionTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteNisInspectionTaskResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -576,29 +401,11 @@ func (client *Client) DeleteNisInspectionTaskWithOptions(request *DeleteNisInspe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteNisInspectionTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除巡检任务
-//
-// @param request - DeleteNisInspectionTaskRequest
-//
-// @return DeleteNisInspectionTaskResponse
-func (client *Client) DeleteNisInspectionTask(request *DeleteNisInspectionTaskRequest) (_result *DeleteNisInspectionTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteNisInspectionTaskResponse{}
-	_body, _err := client.DeleteNisInspectionTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -611,7 +418,7 @@ func (client *Client) DeleteNisInspectionTask(request *DeleteNisInspectionTaskRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeNisInspectionRecommendationResourcesResponse
-func (client *Client) DescribeNisInspectionRecommendationResourcesWithOptions(request *DescribeNisInspectionRecommendationResourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeNisInspectionRecommendationResourcesResponse, _err error) {
+func (client *Client) DescribeNisInspectionRecommendationResourcesWithContext(ctx context.Context, request *DescribeNisInspectionRecommendationResourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeNisInspectionRecommendationResourcesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -654,29 +461,11 @@ func (client *Client) DescribeNisInspectionRecommendationResourcesWithOptions(re
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeNisInspectionRecommendationResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 受影响资源列表
-//
-// @param request - DescribeNisInspectionRecommendationResourcesRequest
-//
-// @return DescribeNisInspectionRecommendationResourcesResponse
-func (client *Client) DescribeNisInspectionRecommendationResources(request *DescribeNisInspectionRecommendationResourcesRequest) (_result *DescribeNisInspectionRecommendationResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeNisInspectionRecommendationResourcesResponse{}
-	_body, _err := client.DescribeNisInspectionRecommendationResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -689,7 +478,7 @@ func (client *Client) DescribeNisInspectionRecommendationResources(request *Desc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeNisInspectionReportCheckItemsResponse
-func (client *Client) DescribeNisInspectionReportCheckItemsWithOptions(tmpReq *DescribeNisInspectionReportCheckItemsRequest, runtime *dara.RuntimeOptions) (_result *DescribeNisInspectionReportCheckItemsResponse, _err error) {
+func (client *Client) DescribeNisInspectionReportCheckItemsWithContext(ctx context.Context, tmpReq *DescribeNisInspectionReportCheckItemsRequest, runtime *dara.RuntimeOptions) (_result *DescribeNisInspectionReportCheckItemsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -750,29 +539,11 @@ func (client *Client) DescribeNisInspectionReportCheckItemsWithOptions(tmpReq *D
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeNisInspectionReportCheckItemsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 报告巡检项列表
-//
-// @param request - DescribeNisInspectionReportCheckItemsRequest
-//
-// @return DescribeNisInspectionReportCheckItemsResponse
-func (client *Client) DescribeNisInspectionReportCheckItems(request *DescribeNisInspectionReportCheckItemsRequest) (_result *DescribeNisInspectionReportCheckItemsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeNisInspectionReportCheckItemsResponse{}
-	_body, _err := client.DescribeNisInspectionReportCheckItemsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -785,7 +556,7 @@ func (client *Client) DescribeNisInspectionReportCheckItems(request *DescribeNis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeNisInspectionReportStatusResponse
-func (client *Client) DescribeNisInspectionReportStatusWithOptions(request *DescribeNisInspectionReportStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeNisInspectionReportStatusResponse, _err error) {
+func (client *Client) DescribeNisInspectionReportStatusWithContext(ctx context.Context, request *DescribeNisInspectionReportStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeNisInspectionReportStatusResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -812,29 +583,11 @@ func (client *Client) DescribeNisInspectionReportStatusWithOptions(request *Desc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeNisInspectionReportStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询报告状态
-//
-// @param request - DescribeNisInspectionReportStatusRequest
-//
-// @return DescribeNisInspectionReportStatusResponse
-func (client *Client) DescribeNisInspectionReportStatus(request *DescribeNisInspectionReportStatusRequest) (_result *DescribeNisInspectionReportStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeNisInspectionReportStatusResponse{}
-	_body, _err := client.DescribeNisInspectionReportStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -847,7 +600,7 @@ func (client *Client) DescribeNisInspectionReportStatus(request *DescribeNisInsp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeNisInspectionReportSummaryResponse
-func (client *Client) DescribeNisInspectionReportSummaryWithOptions(request *DescribeNisInspectionReportSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeNisInspectionReportSummaryResponse, _err error) {
+func (client *Client) DescribeNisInspectionReportSummaryWithContext(ctx context.Context, request *DescribeNisInspectionReportSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeNisInspectionReportSummaryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -874,29 +627,11 @@ func (client *Client) DescribeNisInspectionReportSummaryWithOptions(request *Des
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeNisInspectionReportSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 报告总结信息
-//
-// @param request - DescribeNisInspectionReportSummaryRequest
-//
-// @return DescribeNisInspectionReportSummaryResponse
-func (client *Client) DescribeNisInspectionReportSummary(request *DescribeNisInspectionReportSummaryRequest) (_result *DescribeNisInspectionReportSummaryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeNisInspectionReportSummaryResponse{}
-	_body, _err := client.DescribeNisInspectionReportSummaryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -909,7 +644,7 @@ func (client *Client) DescribeNisInspectionReportSummary(request *DescribeNisIns
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeNisInspectionTaskResponse
-func (client *Client) DescribeNisInspectionTaskWithOptions(request *DescribeNisInspectionTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeNisInspectionTaskResponse, _err error) {
+func (client *Client) DescribeNisInspectionTaskWithContext(ctx context.Context, request *DescribeNisInspectionTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeNisInspectionTaskResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -936,29 +671,11 @@ func (client *Client) DescribeNisInspectionTaskWithOptions(request *DescribeNisI
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeNisInspectionTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询巡检任务
-//
-// @param request - DescribeNisInspectionTaskRequest
-//
-// @return DescribeNisInspectionTaskResponse
-func (client *Client) DescribeNisInspectionTask(request *DescribeNisInspectionTaskRequest) (_result *DescribeNisInspectionTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeNisInspectionTaskResponse{}
-	_body, _err := client.DescribeNisInspectionTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -973,7 +690,7 @@ func (client *Client) DescribeNisInspectionTask(request *DescribeNisInspectionTa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetInternetTupleResponse
-func (client *Client) GetInternetTupleWithOptions(tmpReq *GetInternetTupleRequest, runtime *dara.RuntimeOptions) (_result *GetInternetTupleResponse, _err error) {
+func (client *Client) GetInternetTupleWithContext(ctx context.Context, tmpReq *GetInternetTupleRequest, runtime *dara.RuntimeOptions) (_result *GetInternetTupleResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1094,32 +811,11 @@ func (client *Client) GetInternetTupleWithOptions(tmpReq *GetInternetTupleReques
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetInternetTupleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI GetInternetTuple is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
-//
-// Summary:
-//
-// Queries the rankings of Internet traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Internet traffic data can be ranked by metrics such as traffic volumes and the number of packets.
-//
-// @param request - GetInternetTupleRequest
-//
-// @return GetInternetTupleResponse
-// Deprecated
-func (client *Client) GetInternetTuple(request *GetInternetTupleRequest) (_result *GetInternetTupleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetInternetTupleResponse{}
-	_body, _err := client.GetInternetTupleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1134,7 +830,7 @@ func (client *Client) GetInternetTuple(request *GetInternetTupleRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetNatTopNResponse
-func (client *Client) GetNatTopNWithOptions(request *GetNatTopNRequest, runtime *dara.RuntimeOptions) (_result *GetNatTopNResponse, _err error) {
+func (client *Client) GetNatTopNWithContext(ctx context.Context, request *GetNatTopNRequest, runtime *dara.RuntimeOptions) (_result *GetNatTopNResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1185,32 +881,11 @@ func (client *Client) GetNatTopNWithOptions(request *GetNatTopNRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetNatTopNResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI GetNatTopN is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
-//
-// Summary:
-//
-// Queries the real-time SNAT performance ranking of a NAT gateway.
-//
-// @param request - GetNatTopNRequest
-//
-// @return GetNatTopNResponse
-// Deprecated
-func (client *Client) GetNatTopN(request *GetNatTopNRequest) (_result *GetNatTopNResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetNatTopNResponse{}
-	_body, _err := client.GetNatTopNWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1231,7 +906,7 @@ func (client *Client) GetNatTopN(request *GetNatTopNRequest) (_result *GetNatTop
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetNetworkReachableAnalysisResponse
-func (client *Client) GetNetworkReachableAnalysisWithOptions(request *GetNetworkReachableAnalysisRequest, runtime *dara.RuntimeOptions) (_result *GetNetworkReachableAnalysisResponse, _err error) {
+func (client *Client) GetNetworkReachableAnalysisWithContext(ctx context.Context, request *GetNetworkReachableAnalysisRequest, runtime *dara.RuntimeOptions) (_result *GetNetworkReachableAnalysisResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1262,37 +937,11 @@ func (client *Client) GetNetworkReachableAnalysisWithOptions(request *GetNetwork
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetNetworkReachableAnalysisResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the results of network reachability analysis.
-//
-// Description:
-//
-// *GetNetworkReachableAnalysis*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can query the state of the task for analyzing network reachability.
-//
-//   - The **init*	- state indicates that the task is in progress.
-//
-//   - The **finish*	- state indicates that the task is complete. In this state, you can obtain the analysis result.
-//
-// @param request - GetNetworkReachableAnalysisRequest
-//
-// @return GetNetworkReachableAnalysisResponse
-func (client *Client) GetNetworkReachableAnalysis(request *GetNetworkReachableAnalysisRequest) (_result *GetNetworkReachableAnalysisResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetNetworkReachableAnalysisResponse{}
-	_body, _err := client.GetNetworkReachableAnalysisWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1305,7 +954,7 @@ func (client *Client) GetNetworkReachableAnalysis(request *GetNetworkReachableAn
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetNisNetworkMetricsResponse
-func (client *Client) GetNisNetworkMetricsWithOptions(tmpReq *GetNisNetworkMetricsRequest, runtime *dara.RuntimeOptions) (_result *GetNisNetworkMetricsResponse, _err error) {
+func (client *Client) GetNisNetworkMetricsWithContext(ctx context.Context, tmpReq *GetNisNetworkMetricsRequest, runtime *dara.RuntimeOptions) (_result *GetNisNetworkMetricsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1374,29 +1023,11 @@ func (client *Client) GetNisNetworkMetricsWithOptions(tmpReq *GetNisNetworkMetri
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetNisNetworkMetricsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取云网络指标趋势
-//
-// @param request - GetNisNetworkMetricsRequest
-//
-// @return GetNisNetworkMetricsResponse
-func (client *Client) GetNisNetworkMetrics(request *GetNisNetworkMetricsRequest) (_result *GetNisNetworkMetricsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetNisNetworkMetricsResponse{}
-	_body, _err := client.GetNisNetworkMetricsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1409,7 +1040,7 @@ func (client *Client) GetNisNetworkMetrics(request *GetNisNetworkMetricsRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetNisNetworkRankingResponse
-func (client *Client) GetNisNetworkRankingWithOptions(tmpReq *GetNisNetworkRankingRequest, runtime *dara.RuntimeOptions) (_result *GetNisNetworkRankingResponse, _err error) {
+func (client *Client) GetNisNetworkRankingWithContext(ctx context.Context, tmpReq *GetNisNetworkRankingRequest, runtime *dara.RuntimeOptions) (_result *GetNisNetworkRankingResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1486,29 +1117,11 @@ func (client *Client) GetNisNetworkRankingWithOptions(tmpReq *GetNisNetworkRanki
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetNisNetworkRankingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取云网络指标排名
-//
-// @param request - GetNisNetworkRankingRequest
-//
-// @return GetNisNetworkRankingResponse
-func (client *Client) GetNisNetworkRanking(request *GetNisNetworkRankingRequest) (_result *GetNisNetworkRankingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetNisNetworkRankingResponse{}
-	_body, _err := client.GetNisNetworkRankingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1523,7 +1136,7 @@ func (client *Client) GetNisNetworkRanking(request *GetNisNetworkRankingRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTransitRouterFlowTopNResponse
-func (client *Client) GetTransitRouterFlowTopNWithOptions(tmpReq *GetTransitRouterFlowTopNRequest, runtime *dara.RuntimeOptions) (_result *GetTransitRouterFlowTopNResponse, _err error) {
+func (client *Client) GetTransitRouterFlowTopNWithContext(ctx context.Context, tmpReq *GetTransitRouterFlowTopNRequest, runtime *dara.RuntimeOptions) (_result *GetTransitRouterFlowTopNResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1624,32 +1237,11 @@ func (client *Client) GetTransitRouterFlowTopNWithOptions(tmpReq *GetTransitRout
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTransitRouterFlowTopNResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI GetTransitRouterFlowTopN is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
-//
-// Summary:
-//
-// Queries the rankings of inter-region traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Inter-region traffic data can be ranked by metrics such as traffic volumes and the number of packets.
-//
-// @param request - GetTransitRouterFlowTopNRequest
-//
-// @return GetTransitRouterFlowTopNResponse
-// Deprecated
-func (client *Client) GetTransitRouterFlowTopN(request *GetTransitRouterFlowTopNRequest) (_result *GetTransitRouterFlowTopNResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetTransitRouterFlowTopNResponse{}
-	_body, _err := client.GetTransitRouterFlowTopNWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1664,7 +1256,7 @@ func (client *Client) GetTransitRouterFlowTopN(request *GetTransitRouterFlowTopN
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetVbrFlowTopNResponse
-func (client *Client) GetVbrFlowTopNWithOptions(tmpReq *GetVbrFlowTopNRequest, runtime *dara.RuntimeOptions) (_result *GetVbrFlowTopNResponse, _err error) {
+func (client *Client) GetVbrFlowTopNWithContext(ctx context.Context, tmpReq *GetVbrFlowTopNRequest, runtime *dara.RuntimeOptions) (_result *GetVbrFlowTopNResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1765,79 +1357,11 @@ func (client *Client) GetVbrFlowTopNWithOptions(tmpReq *GetVbrFlowTopNRequest, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVbrFlowTopNResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI GetVbrFlowTopN is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
-//
-// Summary:
-//
-// Queries the rankings of hybrid cloud traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Hybrid cloud traffic data can be ranked by metrics such as traffic volumes and the number of packets.
-//
-// @param request - GetVbrFlowTopNRequest
-//
-// @return GetVbrFlowTopNResponse
-// Deprecated
-func (client *Client) GetVbrFlowTopN(request *GetVbrFlowTopNRequest) (_result *GetVbrFlowTopNResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetVbrFlowTopNResponse{}
-	_body, _err := client.GetVbrFlowTopNWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 巡检资源类型列表
-//
-// @param request - ListNisInspectionResourceTypeRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListNisInspectionResourceTypeResponse
-func (client *Client) ListNisInspectionResourceTypeWithOptions(runtime *dara.RuntimeOptions) (_result *ListNisInspectionResourceTypeResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("ListNisInspectionResourceType"),
-		Version:     dara.String("2021-12-16"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &ListNisInspectionResourceTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 巡检资源类型列表
-//
-// @return ListNisInspectionResourceTypeResponse
-func (client *Client) ListNisInspectionResourceType() (_result *ListNisInspectionResourceTypeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListNisInspectionResourceTypeResponse{}
-	_body, _err := client.ListNisInspectionResourceTypeWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1850,7 +1374,7 @@ func (client *Client) ListNisInspectionResourceType() (_result *ListNisInspectio
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListNisInspectionTaskReportsResponse
-func (client *Client) ListNisInspectionTaskReportsWithOptions(request *ListNisInspectionTaskReportsRequest, runtime *dara.RuntimeOptions) (_result *ListNisInspectionTaskReportsResponse, _err error) {
+func (client *Client) ListNisInspectionTaskReportsWithContext(ctx context.Context, request *ListNisInspectionTaskReportsRequest, runtime *dara.RuntimeOptions) (_result *ListNisInspectionTaskReportsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1885,29 +1409,11 @@ func (client *Client) ListNisInspectionTaskReportsWithOptions(request *ListNisIn
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListNisInspectionTaskReportsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询巡检报告列表
-//
-// @param request - ListNisInspectionTaskReportsRequest
-//
-// @return ListNisInspectionTaskReportsResponse
-func (client *Client) ListNisInspectionTaskReports(request *ListNisInspectionTaskReportsRequest) (_result *ListNisInspectionTaskReportsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListNisInspectionTaskReportsResponse{}
-	_body, _err := client.ListNisInspectionTaskReportsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1920,7 +1426,7 @@ func (client *Client) ListNisInspectionTaskReports(request *ListNisInspectionTas
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListNisInspectionTasksResponse
-func (client *Client) ListNisInspectionTasksWithOptions(request *ListNisInspectionTasksRequest, runtime *dara.RuntimeOptions) (_result *ListNisInspectionTasksResponse, _err error) {
+func (client *Client) ListNisInspectionTasksWithContext(ctx context.Context, request *ListNisInspectionTasksRequest, runtime *dara.RuntimeOptions) (_result *ListNisInspectionTasksResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1967,29 +1473,11 @@ func (client *Client) ListNisInspectionTasksWithOptions(request *ListNisInspecti
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListNisInspectionTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 巡检任务列表
-//
-// @param request - ListNisInspectionTasksRequest
-//
-// @return ListNisInspectionTasksResponse
-func (client *Client) ListNisInspectionTasks(request *ListNisInspectionTasksRequest) (_result *ListNisInspectionTasksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListNisInspectionTasksResponse{}
-	_body, _err := client.ListNisInspectionTasksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2002,7 +1490,7 @@ func (client *Client) ListNisInspectionTasks(request *ListNisInspectionTasksRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartNisInspectionTaskResponse
-func (client *Client) StartNisInspectionTaskWithOptions(request *StartNisInspectionTaskRequest, runtime *dara.RuntimeOptions) (_result *StartNisInspectionTaskResponse, _err error) {
+func (client *Client) StartNisInspectionTaskWithContext(ctx context.Context, request *StartNisInspectionTaskRequest, runtime *dara.RuntimeOptions) (_result *StartNisInspectionTaskResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2029,29 +1517,11 @@ func (client *Client) StartNisInspectionTaskWithOptions(request *StartNisInspect
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartNisInspectionTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 请补充描述开启任务
-//
-// @param request - StartNisInspectionTaskRequest
-//
-// @return StartNisInspectionTaskResponse
-func (client *Client) StartNisInspectionTask(request *StartNisInspectionTaskRequest) (_result *StartNisInspectionTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartNisInspectionTaskResponse{}
-	_body, _err := client.StartNisInspectionTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2064,7 +1534,7 @@ func (client *Client) StartNisInspectionTask(request *StartNisInspectionTaskRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateNisInspectionTaskResponse
-func (client *Client) UpdateNisInspectionTaskWithOptions(request *UpdateNisInspectionTaskRequest, runtime *dara.RuntimeOptions) (_result *UpdateNisInspectionTaskResponse, _err error) {
+func (client *Client) UpdateNisInspectionTaskWithContext(ctx context.Context, request *UpdateNisInspectionTaskRequest, runtime *dara.RuntimeOptions) (_result *UpdateNisInspectionTaskResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2095,28 +1565,10 @@ func (client *Client) UpdateNisInspectionTaskWithOptions(request *UpdateNisInspe
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateNisInspectionTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改巡检项
-//
-// @param request - UpdateNisInspectionTaskRequest
-//
-// @return UpdateNisInspectionTaskResponse
-func (client *Client) UpdateNisInspectionTask(request *UpdateNisInspectionTaskRequest) (_result *UpdateNisInspectionTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateNisInspectionTaskResponse{}
-	_body, _err := client.UpdateNisInspectionTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
