@@ -53,7 +53,16 @@ func (s *UpdateStateConfigurationResponseBody) SetStateConfiguration(v []*Update
 }
 
 func (s *UpdateStateConfigurationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StateConfiguration != nil {
+		for _, item := range s.StateConfiguration {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateStateConfigurationResponseBodyStateConfiguration struct {

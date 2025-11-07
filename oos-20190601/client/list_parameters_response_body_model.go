@@ -104,7 +104,16 @@ func (s *ListParametersResponseBody) SetTotalCount(v int32) *ListParametersRespo
 }
 
 func (s *ListParametersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Parameters != nil {
+		for _, item := range s.Parameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListParametersResponseBodyParameters struct {

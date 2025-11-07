@@ -53,7 +53,12 @@ func (s *CreateApplicationGroupResponseBody) SetRequestId(v string) *CreateAppli
 }
 
 func (s *CreateApplicationGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicationGroup != nil {
+		if err := s.ApplicationGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateApplicationGroupResponseBodyApplicationGroup struct {

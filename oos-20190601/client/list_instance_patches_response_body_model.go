@@ -87,7 +87,16 @@ func (s *ListInstancePatchesResponseBody) SetRequestId(v string) *ListInstancePa
 }
 
 func (s *ListInstancePatchesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Patches != nil {
+		for _, item := range s.Patches {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstancePatchesResponseBodyPatches struct {

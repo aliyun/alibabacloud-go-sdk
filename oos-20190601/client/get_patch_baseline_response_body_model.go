@@ -53,7 +53,12 @@ func (s *GetPatchBaselineResponseBody) SetRequestId(v string) *GetPatchBaselineR
 }
 
 func (s *GetPatchBaselineResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PatchBaseline != nil {
+		if err := s.PatchBaseline.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPatchBaselineResponseBodyPatchBaseline struct {
@@ -322,7 +327,16 @@ func (s *GetPatchBaselineResponseBodyPatchBaseline) SetUpdatedDate(v string) *Ge
 }
 
 func (s *GetPatchBaselineResponseBodyPatchBaseline) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPatchBaselineResponseBodyPatchBaselineTags struct {

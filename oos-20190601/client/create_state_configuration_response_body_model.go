@@ -53,7 +53,12 @@ func (s *CreateStateConfigurationResponseBody) SetStateConfiguration(v *CreateSt
 }
 
 func (s *CreateStateConfigurationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StateConfiguration != nil {
+		if err := s.StateConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateStateConfigurationResponseBodyStateConfiguration struct {

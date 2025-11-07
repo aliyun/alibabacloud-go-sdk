@@ -59,5 +59,10 @@ func (s *ListInventoryEntriesResponse) SetBody(v *ListInventoryEntriesResponseBo
 }
 
 func (s *ListInventoryEntriesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

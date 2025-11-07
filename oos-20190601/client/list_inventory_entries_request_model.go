@@ -141,7 +141,16 @@ func (s *ListInventoryEntriesRequest) SetTypeName(v string) *ListInventoryEntrie
 }
 
 func (s *ListInventoryEntriesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		for _, item := range s.Filter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInventoryEntriesRequestFilter struct {

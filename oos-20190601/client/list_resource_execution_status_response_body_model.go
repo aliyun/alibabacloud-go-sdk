@@ -87,7 +87,16 @@ func (s *ListResourceExecutionStatusResponseBody) SetResourceExecutionStatus(v [
 }
 
 func (s *ListResourceExecutionStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceExecutionStatus != nil {
+		for _, item := range s.ResourceExecutionStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourceExecutionStatusResponseBodyResourceExecutionStatus struct {

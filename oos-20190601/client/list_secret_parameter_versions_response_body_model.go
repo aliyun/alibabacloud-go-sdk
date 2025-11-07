@@ -206,7 +206,16 @@ func (s *ListSecretParameterVersionsResponseBody) SetType(v string) *ListSecretP
 }
 
 func (s *ListSecretParameterVersionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ParameterVersions != nil {
+		for _, item := range s.ParameterVersions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSecretParameterVersionsResponseBodyParameterVersions struct {

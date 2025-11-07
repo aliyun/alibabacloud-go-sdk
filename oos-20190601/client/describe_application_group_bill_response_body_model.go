@@ -87,7 +87,16 @@ func (s *DescribeApplicationGroupBillResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribeApplicationGroupBillResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicationGroupConsume != nil {
+		for _, item := range s.ApplicationGroupConsume {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationGroupBillResponseBodyApplicationGroupConsume struct {

@@ -206,7 +206,16 @@ func (s *ListParameterVersionsResponseBody) SetType(v string) *ListParameterVers
 }
 
 func (s *ListParameterVersionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ParameterVersions != nil {
+		for _, item := range s.ParameterVersions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListParameterVersionsResponseBodyParameterVersions struct {

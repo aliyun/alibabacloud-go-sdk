@@ -9,6 +9,8 @@ type iUpdateInstancePackageStateRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetConfigurationInfo(v string) *UpdateInstancePackageStateRequest
+	GetConfigurationInfo() *string
 	SetConfigureAction(v string) *UpdateInstancePackageStateRequest
 	GetConfigureAction() *string
 	SetInstanceId(v string) *UpdateInstancePackageStateRequest
@@ -24,6 +26,7 @@ type iUpdateInstancePackageStateRequest interface {
 }
 
 type UpdateInstancePackageStateRequest struct {
+	ConfigurationInfo *string `json:"ConfigurationInfo,omitempty" xml:"ConfigurationInfo,omitempty"`
 	// The operation type.
 	//
 	// Valid values:
@@ -82,6 +85,10 @@ func (s UpdateInstancePackageStateRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateInstancePackageStateRequest) GetConfigurationInfo() *string {
+	return s.ConfigurationInfo
+}
+
 func (s *UpdateInstancePackageStateRequest) GetConfigureAction() *string {
 	return s.ConfigureAction
 }
@@ -104,6 +111,11 @@ func (s *UpdateInstancePackageStateRequest) GetTemplateName() *string {
 
 func (s *UpdateInstancePackageStateRequest) GetTemplateVersion() *string {
 	return s.TemplateVersion
+}
+
+func (s *UpdateInstancePackageStateRequest) SetConfigurationInfo(v string) *UpdateInstancePackageStateRequest {
+	s.ConfigurationInfo = &v
+	return s
 }
 
 func (s *UpdateInstancePackageStateRequest) SetConfigureAction(v string) *UpdateInstancePackageStateRequest {

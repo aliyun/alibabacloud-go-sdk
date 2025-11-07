@@ -17,6 +17,8 @@ type iDeployApplicationGroupRequest interface {
 	GetName() *string
 	SetRegionId(v string) *DeployApplicationGroupRequest
 	GetRegionId() *string
+	SetRevisionId(v string) *DeployApplicationGroupRequest
+	GetRevisionId() *string
 }
 
 type DeployApplicationGroupRequest struct {
@@ -49,7 +51,8 @@ type DeployApplicationGroupRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RevisionId *string `json:"RevisionId,omitempty" xml:"RevisionId,omitempty"`
 }
 
 func (s DeployApplicationGroupRequest) String() string {
@@ -76,6 +79,10 @@ func (s *DeployApplicationGroupRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *DeployApplicationGroupRequest) GetRevisionId() *string {
+	return s.RevisionId
+}
+
 func (s *DeployApplicationGroupRequest) SetApplicationName(v string) *DeployApplicationGroupRequest {
 	s.ApplicationName = &v
 	return s
@@ -93,6 +100,11 @@ func (s *DeployApplicationGroupRequest) SetName(v string) *DeployApplicationGrou
 
 func (s *DeployApplicationGroupRequest) SetRegionId(v string) *DeployApplicationGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeployApplicationGroupRequest) SetRevisionId(v string) *DeployApplicationGroupRequest {
+	s.RevisionId = &v
 	return s
 }
 

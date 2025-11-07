@@ -53,7 +53,16 @@ func (s *GetServiceSettingsResponseBody) SetServiceSettings(v []*GetServiceSetti
 }
 
 func (s *GetServiceSettingsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceSettings != nil {
+		for _, item := range s.ServiceSettings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetServiceSettingsResponseBodyServiceSettings struct {

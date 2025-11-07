@@ -59,5 +59,10 @@ func (s *ListParametersResponse) SetBody(v *ListParametersResponseBody) *ListPar
 }
 
 func (s *ListParametersResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

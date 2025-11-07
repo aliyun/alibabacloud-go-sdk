@@ -70,7 +70,12 @@ func (s *GetTemplateResponseBody) SetTemplate(v *GetTemplateResponseBodyTemplate
 }
 
 func (s *GetTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Template != nil {
+		if err := s.Template.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTemplateResponseBodyTemplate struct {
@@ -115,7 +120,8 @@ type GetTemplateResponseBodyTemplate struct {
 	// example:
 	//
 	// Public
-	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	ShareType      *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	SharedAccounts *string `json:"SharedAccounts,omitempty" xml:"SharedAccounts,omitempty"`
 	// The tag keys and values. The number of key-value pairs ranges from 1 to 20.
 	//
 	// example:
@@ -208,6 +214,10 @@ func (s *GetTemplateResponseBodyTemplate) GetShareType() *string {
 	return s.ShareType
 }
 
+func (s *GetTemplateResponseBodyTemplate) GetSharedAccounts() *string {
+	return s.SharedAccounts
+}
+
 func (s *GetTemplateResponseBodyTemplate) GetTags() map[string]interface{} {
 	return s.Tags
 }
@@ -276,6 +286,11 @@ func (s *GetTemplateResponseBodyTemplate) SetResourceGroupId(v string) *GetTempl
 
 func (s *GetTemplateResponseBodyTemplate) SetShareType(v string) *GetTemplateResponseBodyTemplate {
 	s.ShareType = &v
+	return s
+}
+
+func (s *GetTemplateResponseBodyTemplate) SetSharedAccounts(v string) *GetTemplateResponseBodyTemplate {
+	s.SharedAccounts = &v
 	return s
 }
 

@@ -53,7 +53,12 @@ func (s *RegisterDefaultPatchBaselineResponseBody) SetRequestId(v string) *Regis
 }
 
 func (s *RegisterDefaultPatchBaselineResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PatchBaseline != nil {
+		if err := s.PatchBaseline.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RegisterDefaultPatchBaselineResponseBodyPatchBaseline struct {

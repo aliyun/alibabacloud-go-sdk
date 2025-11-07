@@ -59,5 +59,10 @@ func (s *ListExecutionRiskyTasksResponse) SetBody(v *ListExecutionRiskyTasksResp
 }
 
 func (s *ListExecutionRiskyTasksResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

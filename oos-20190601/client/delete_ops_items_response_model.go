@@ -59,5 +59,10 @@ func (s *DeleteOpsItemsResponse) SetBody(v *DeleteOpsItemsResponseBody) *DeleteO
 }
 
 func (s *DeleteOpsItemsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

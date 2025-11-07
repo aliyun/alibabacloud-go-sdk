@@ -87,7 +87,16 @@ func (s *ListActionsResponseBody) SetRequestId(v string) *ListActionsResponseBod
 }
 
 func (s *ListActionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Actions != nil {
+		for _, item := range s.Actions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListActionsResponseBodyActions struct {

@@ -53,7 +53,12 @@ func (s *GetOpsItemResponseBody) SetRequestId(v string) *GetOpsItemResponseBody 
 }
 
 func (s *GetOpsItemResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OpsItem != nil {
+		if err := s.OpsItem.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOpsItemResponseBodyOpsItem struct {

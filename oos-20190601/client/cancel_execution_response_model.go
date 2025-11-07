@@ -59,5 +59,10 @@ func (s *CancelExecutionResponse) SetBody(v *CancelExecutionResponseBody) *Cance
 }
 
 func (s *CancelExecutionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -87,7 +87,16 @@ func (s *GetInventorySchemaResponseBody) SetSchemas(v []*GetInventorySchemaRespo
 }
 
 func (s *GetInventorySchemaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Schemas != nil {
+		for _, item := range s.Schemas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInventorySchemaResponseBodySchemas struct {
@@ -143,7 +152,16 @@ func (s *GetInventorySchemaResponseBodySchemas) SetVersion(v string) *GetInvento
 }
 
 func (s *GetInventorySchemaResponseBodySchemas) Validate() error {
-	return dara.Validate(s)
+	if s.Attributes != nil {
+		for _, item := range s.Attributes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInventorySchemaResponseBodySchemasAttributes struct {

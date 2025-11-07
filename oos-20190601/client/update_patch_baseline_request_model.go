@@ -213,7 +213,16 @@ func (s *UpdatePatchBaselineRequest) SetTags(v []*UpdatePatchBaselineRequestTags
 }
 
 func (s *UpdatePatchBaselineRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdatePatchBaselineRequestTags struct {

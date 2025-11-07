@@ -104,7 +104,16 @@ func (s *ListExecutionsResponseBody) SetTotalCount(v int32) *ListExecutionsRespo
 }
 
 func (s *ListExecutionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Executions != nil {
+		for _, item := range s.Executions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListExecutionsResponseBodyExecutions struct {
@@ -629,7 +638,16 @@ func (s *ListExecutionsResponseBodyExecutions) SetWaitingStatus(v string) *ListE
 }
 
 func (s *ListExecutionsResponseBodyExecutions) Validate() error {
-	return dara.Validate(s)
+	if s.CurrentTasks != nil {
+		for _, item := range s.CurrentTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListExecutionsResponseBodyExecutionsCurrentTasks struct {

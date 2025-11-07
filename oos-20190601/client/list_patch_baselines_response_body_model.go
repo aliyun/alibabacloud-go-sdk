@@ -87,7 +87,16 @@ func (s *ListPatchBaselinesResponseBody) SetRequestId(v string) *ListPatchBaseli
 }
 
 func (s *ListPatchBaselinesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PatchBaselines != nil {
+		for _, item := range s.PatchBaselines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPatchBaselinesResponseBodyPatchBaselines struct {
@@ -315,7 +324,16 @@ func (s *ListPatchBaselinesResponseBodyPatchBaselines) SetUpdatedDate(v string) 
 }
 
 func (s *ListPatchBaselinesResponseBodyPatchBaselines) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPatchBaselinesResponseBodyPatchBaselinesTags struct {

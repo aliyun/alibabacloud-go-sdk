@@ -87,7 +87,16 @@ func (s *ListApplicationGroupsResponseBody) SetRequestId(v string) *ListApplicat
 }
 
 func (s *ListApplicationGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicationGroups != nil {
+		for _, item := range s.ApplicationGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApplicationGroupsResponseBodyApplicationGroups struct {
@@ -130,6 +139,7 @@ type ListApplicationGroupsResponseBodyApplicationGroups struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ErrorDetail *string `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty"`
 	ErrorType   *string `json:"ErrorType,omitempty" xml:"ErrorType,omitempty"`
+	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	// The tag key.
 	//
 	// example:
@@ -212,6 +222,10 @@ func (s *ListApplicationGroupsResponseBodyApplicationGroups) GetErrorType() *str
 	return s.ErrorType
 }
 
+func (s *ListApplicationGroupsResponseBodyApplicationGroups) GetExecutionId() *string {
+	return s.ExecutionId
+}
+
 func (s *ListApplicationGroupsResponseBodyApplicationGroups) GetImportTagKey() *string {
 	return s.ImportTagKey
 }
@@ -278,6 +292,11 @@ func (s *ListApplicationGroupsResponseBodyApplicationGroups) SetErrorDetail(v st
 
 func (s *ListApplicationGroupsResponseBodyApplicationGroups) SetErrorType(v string) *ListApplicationGroupsResponseBodyApplicationGroups {
 	s.ErrorType = &v
+	return s
+}
+
+func (s *ListApplicationGroupsResponseBodyApplicationGroups) SetExecutionId(v string) *ListApplicationGroupsResponseBodyApplicationGroups {
+	s.ExecutionId = &v
 	return s
 }
 

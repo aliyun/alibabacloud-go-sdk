@@ -59,5 +59,10 @@ func (s *GetInventorySchemaResponse) SetBody(v *GetInventorySchemaResponseBody) 
 }
 
 func (s *GetInventorySchemaResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

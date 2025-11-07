@@ -104,7 +104,16 @@ func (s *ListExecutionLogsResponseBody) SetRequestId(v string) *ListExecutionLog
 }
 
 func (s *ListExecutionLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ExecutionLogs != nil {
+		for _, item := range s.ExecutionLogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListExecutionLogsResponseBodyExecutionLogs struct {

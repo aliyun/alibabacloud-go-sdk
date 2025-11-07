@@ -53,7 +53,16 @@ func (s *ListExecutionRiskyTasksResponseBody) SetRiskyTasks(v []*ListExecutionRi
 }
 
 func (s *ListExecutionRiskyTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RiskyTasks != nil {
+		for _, item := range s.RiskyTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListExecutionRiskyTasksResponseBodyRiskyTasks struct {

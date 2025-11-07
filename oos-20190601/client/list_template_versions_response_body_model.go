@@ -87,7 +87,16 @@ func (s *ListTemplateVersionsResponseBody) SetTemplateVersions(v []*ListTemplate
 }
 
 func (s *ListTemplateVersionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TemplateVersions != nil {
+		for _, item := range s.TemplateVersions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTemplateVersionsResponseBodyTemplateVersions struct {

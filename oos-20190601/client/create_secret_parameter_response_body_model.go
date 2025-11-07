@@ -53,7 +53,12 @@ func (s *CreateSecretParameterResponseBody) SetRequestId(v string) *CreateSecret
 }
 
 func (s *CreateSecretParameterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Parameter != nil {
+		if err := s.Parameter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateSecretParameterResponseBodyParameter struct {

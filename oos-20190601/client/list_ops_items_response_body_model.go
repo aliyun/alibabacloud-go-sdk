@@ -104,7 +104,16 @@ func (s *ListOpsItemsResponseBody) SetTotalCount(v int32) *ListOpsItemsResponseB
 }
 
 func (s *ListOpsItemsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OpsItems != nil {
+		for _, item := range s.OpsItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListOpsItemsResponseBodyOpsItems struct {

@@ -174,7 +174,12 @@ func (s *CreateApplicationRequest) SetTags(v map[string]interface{}) *CreateAppl
 }
 
 func (s *CreateApplicationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AlarmConfig != nil {
+		if err := s.AlarmConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateApplicationRequestAlarmConfig struct {

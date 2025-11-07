@@ -123,7 +123,12 @@ func (s *UpdateApplicationRequest) SetTags(v map[string]interface{}) *UpdateAppl
 }
 
 func (s *UpdateApplicationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AlarmConfig != nil {
+		if err := s.AlarmConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateApplicationRequestAlarmConfig struct {

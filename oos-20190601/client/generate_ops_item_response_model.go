@@ -59,5 +59,10 @@ func (s *GenerateOpsItemResponse) SetBody(v *GenerateOpsItemResponseBody) *Gener
 }
 
 func (s *GenerateOpsItemResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

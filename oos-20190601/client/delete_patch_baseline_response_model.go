@@ -59,5 +59,10 @@ func (s *DeletePatchBaselineResponse) SetBody(v *DeletePatchBaselineResponseBody
 }
 
 func (s *DeletePatchBaselineResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,7 +59,16 @@ func (s *AnalyzeGitRepositoryResponseBody) SetRequestId(v string) *AnalyzeGitRep
 }
 
 func (s *AnalyzeGitRepositoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AnalysisResults != nil {
+		for _, item := range s.AnalysisResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AnalyzeGitRepositoryResponseBodyAnalysisResults struct {
@@ -104,7 +113,16 @@ func (s *AnalyzeGitRepositoryResponseBodyAnalysisResults) SetRuntimeType(v strin
 }
 
 func (s *AnalyzeGitRepositoryResponseBodyAnalysisResults) Validate() error {
-	return dara.Validate(s)
+	if s.BuildFiles != nil {
+		for _, item := range s.BuildFiles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AnalyzeGitRepositoryResponseBodyAnalysisResultsBuildFiles struct {

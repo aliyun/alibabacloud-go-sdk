@@ -104,7 +104,16 @@ func (s *GetSecretParametersByPathResponseBody) SetTotalCount(v int32) *GetSecre
 }
 
 func (s *GetSecretParametersByPathResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Parameters != nil {
+		for _, item := range s.Parameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSecretParametersByPathResponseBodyParameters struct {

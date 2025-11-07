@@ -70,7 +70,16 @@ func (s *ListStateConfigurationsResponseBody) SetStateConfigurations(v []*ListSt
 }
 
 func (s *ListStateConfigurationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StateConfigurations != nil {
+		for _, item := range s.StateConfigurations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListStateConfigurationsResponseBodyStateConfigurations struct {

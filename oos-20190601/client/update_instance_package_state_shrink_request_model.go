@@ -9,6 +9,8 @@ type iUpdateInstancePackageStateShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetConfigurationInfo(v string) *UpdateInstancePackageStateShrinkRequest
+	GetConfigurationInfo() *string
 	SetConfigureAction(v string) *UpdateInstancePackageStateShrinkRequest
 	GetConfigureAction() *string
 	SetInstanceId(v string) *UpdateInstancePackageStateShrinkRequest
@@ -24,6 +26,7 @@ type iUpdateInstancePackageStateShrinkRequest interface {
 }
 
 type UpdateInstancePackageStateShrinkRequest struct {
+	ConfigurationInfo *string `json:"ConfigurationInfo,omitempty" xml:"ConfigurationInfo,omitempty"`
 	// The operation type.
 	//
 	// Valid values:
@@ -82,6 +85,10 @@ func (s UpdateInstancePackageStateShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateInstancePackageStateShrinkRequest) GetConfigurationInfo() *string {
+	return s.ConfigurationInfo
+}
+
 func (s *UpdateInstancePackageStateShrinkRequest) GetConfigureAction() *string {
 	return s.ConfigureAction
 }
@@ -104,6 +111,11 @@ func (s *UpdateInstancePackageStateShrinkRequest) GetTemplateName() *string {
 
 func (s *UpdateInstancePackageStateShrinkRequest) GetTemplateVersion() *string {
 	return s.TemplateVersion
+}
+
+func (s *UpdateInstancePackageStateShrinkRequest) SetConfigurationInfo(v string) *UpdateInstancePackageStateShrinkRequest {
+	s.ConfigurationInfo = &v
+	return s
 }
 
 func (s *UpdateInstancePackageStateShrinkRequest) SetConfigureAction(v string) *UpdateInstancePackageStateShrinkRequest {

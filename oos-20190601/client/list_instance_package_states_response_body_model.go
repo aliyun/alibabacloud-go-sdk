@@ -87,10 +87,20 @@ func (s *ListInstancePackageStatesResponseBody) SetRequestId(v string) *ListInst
 }
 
 func (s *ListInstancePackageStatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PackageStates != nil {
+		for _, item := range s.PackageStates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstancePackageStatesResponseBodyPackageStates struct {
+	ConfigurationInfo *string `json:"ConfigurationInfo,omitempty" xml:"ConfigurationInfo,omitempty"`
 	// Description
 	//
 	// example:
@@ -155,6 +165,10 @@ func (s ListInstancePackageStatesResponseBodyPackageStates) GoString() string {
 	return s.String()
 }
 
+func (s *ListInstancePackageStatesResponseBodyPackageStates) GetConfigurationInfo() *string {
+	return s.ConfigurationInfo
+}
+
 func (s *ListInstancePackageStatesResponseBodyPackageStates) GetDescription() *string {
 	return s.Description
 }
@@ -189,6 +203,11 @@ func (s *ListInstancePackageStatesResponseBodyPackageStates) GetTemplateVersionN
 
 func (s *ListInstancePackageStatesResponseBodyPackageStates) GetUpdateTime() *string {
 	return s.UpdateTime
+}
+
+func (s *ListInstancePackageStatesResponseBodyPackageStates) SetConfigurationInfo(v string) *ListInstancePackageStatesResponseBodyPackageStates {
+	s.ConfigurationInfo = &v
+	return s
 }
 
 func (s *ListInstancePackageStatesResponseBodyPackageStates) SetDescription(v string) *ListInstancePackageStatesResponseBodyPackageStates {

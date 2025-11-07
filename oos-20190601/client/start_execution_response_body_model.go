@@ -53,7 +53,12 @@ func (s *StartExecutionResponseBody) SetRequestId(v string) *StartExecutionRespo
 }
 
 func (s *StartExecutionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Execution != nil {
+		if err := s.Execution.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartExecutionResponseBodyExecution struct {
@@ -424,7 +429,16 @@ func (s *StartExecutionResponseBodyExecution) SetUpdateDate(v string) *StartExec
 }
 
 func (s *StartExecutionResponseBodyExecution) Validate() error {
-	return dara.Validate(s)
+	if s.CurrentTasks != nil {
+		for _, item := range s.CurrentTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartExecutionResponseBodyExecutionCurrentTasks struct {

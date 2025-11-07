@@ -53,7 +53,12 @@ func (s *GetParameterResponseBody) SetRequestId(v string) *GetParameterResponseB
 }
 
 func (s *GetParameterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Parameter != nil {
+		if err := s.Parameter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetParameterResponseBodyParameter struct {
