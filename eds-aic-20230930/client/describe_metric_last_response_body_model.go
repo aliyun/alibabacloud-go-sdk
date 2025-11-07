@@ -210,6 +210,7 @@ type DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints str
 	//
 	// 99.52
 	Average *float64 `json:"Average,omitempty" xml:"Average,omitempty"`
+	GpuId   *string  `json:"GpuId,omitempty" xml:"GpuId,omitempty"`
 	// example:
 	//
 	// 100
@@ -236,6 +237,10 @@ func (s *DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints
 	return s.Average
 }
 
+func (s *DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints) GetGpuId() *string {
+	return s.GpuId
+}
+
 func (s *DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints) GetMaximum() *float64 {
 	return s.Maximum
 }
@@ -250,6 +255,11 @@ func (s *DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints
 
 func (s *DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints) SetAverage(v float64) *DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints {
 	s.Average = &v
+	return s
+}
+
+func (s *DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints) SetGpuId(v string) *DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints {
+	s.GpuId = &v
 	return s
 }
 
