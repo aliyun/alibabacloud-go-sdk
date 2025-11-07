@@ -20,13 +20,13 @@ type iDataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValue
 }
 
 type DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValue struct {
-	// refund rule for fully-unused tickets
+	// Full unused ticket refund rules
 	RefundRuleAllUnusedList []*DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueRefundRuleAllUnusedList `json:"refund_rule_all_unused_list,omitempty" xml:"refund_rule_all_unused_list,omitempty" type:"Repeated"`
-	// refund rule for partially-used tickets
+	// Partial unused ticket refund rules
 	RefundRulePartUnusedList []*DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueRefundRulePartUnusedList `json:"refund_rule_part_unused_list,omitempty" xml:"refund_rule_part_unused_list,omitempty" type:"Repeated"`
-	// change rule for inbound segment unused tickets
+	// Unused return flight change rules
 	ChangeRuleInUnusedList []*DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueChangeRuleInUnusedList `json:"change_rule_in_unused_list,omitempty" xml:"change_rule_in_unused_list,omitempty" type:"Repeated"`
-	// change rule for outbound segment unused tickets
+	// Unused outbound change rules
 	ChangeRuleOutUnusedList []*DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueChangeRuleOutUnusedList `json:"change_rule_out_unused_list,omitempty" xml:"change_rule_out_unused_list,omitempty" type:"Repeated"`
 }
 
@@ -115,49 +115,49 @@ func (s *DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapVa
 }
 
 type DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueRefundRuleAllUnusedList struct {
-	// type: 0 - fully-unused ticket; 1 - partially used ticket
+	// The type of itinerary this refund rule applies to 0: fully unused; 1: partially unused
 	//
 	// example:
 	//
 	// 0
 	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
-	// time unit: day/hour
+	// Time unit: day/hour
 	//
 	// example:
 	//
 	// hour
 	TimeUnit *string `json:"time_unit,omitempty" xml:"time_unit,omitempty"`
-	// applicable refund rule start time, time unit (day/hour)
+	// The start time of the refund time interval for this refund rule, in units of (days/hours)
 	//
 	// example:
 	//
 	// 36
 	RuleStartTime *int32 `json:"rule_start_time,omitempty" xml:"rule_start_time,omitempty"`
-	// applicable refund rule end time, time unit (day/hour)
+	// The end time of the refund time interval for this refund rule, in units of (days/hours)
 	//
 	// example:
 	//
 	// 12
 	RuleEndTime *int32 `json:"rule_end_time,omitempty" xml:"rule_end_time,omitempty"`
-	// whether refundable X-Y hour(day) before departure
+	// Whether a refund is allowed X-Y hours (days) before departure
 	//
 	// example:
 	//
 	// true
 	CanRefund *bool `json:"can_refund,omitempty" xml:"can_refund,omitempty"`
-	// refund fee X-Y hour(day) before departure
+	// Refund fee X-Y hours (days) before departure
 	//
 	// example:
 	//
 	// 20
 	RefundFee *float64 `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
-	// whether tax is fully refundable X-Y hour(day) before departure
+	// Whether full tax refund is allowed X-Y hours (days) before departure
 	//
 	// example:
 	//
 	// true
 	CanReturnAllTax *bool `json:"can_return_all_tax,omitempty" xml:"can_return_all_tax,omitempty"`
-	// tax amount refundable X-Y hour(day) before departure
+	// Partial tax refund amount X-Y hours (days) before departure
 	//
 	// example:
 	//
@@ -250,49 +250,49 @@ func (s *DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapVa
 }
 
 type DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueRefundRulePartUnusedList struct {
-	// type: 0 - fully-unused ticket; 1 - partially used ticket
+	// The type of itinerary usage for this refund rule. 0: Entirely unused; 1: Partially unused
 	//
 	// example:
 	//
 	// 1
 	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
-	// time unit: day/hour
+	// Time unit: day/hour
 	//
 	// example:
 	//
 	// hour
 	TimeUnit *string `json:"time_unit,omitempty" xml:"time_unit,omitempty"`
-	// applicable refund rule start time, time unit (day/hour)
+	// The start time of the refund time interval for this refund rule, in units of days/hours
 	//
 	// example:
 	//
 	// 36
 	RuleStartTime *int32 `json:"rule_start_time,omitempty" xml:"rule_start_time,omitempty"`
-	// applicable refund rule end time, time unit (day/hour)
+	// The end time of the refund time interval for this refund rule, in units of days/hours
 	//
 	// example:
 	//
 	// 12
 	RuleEndTime *int32 `json:"rule_end_time,omitempty" xml:"rule_end_time,omitempty"`
-	// whether refundable X-Y hour(day) before departure
+	// Whether a refund is allowed X-Y hours (days) before departure
 	//
 	// example:
 	//
 	// true
 	CanRefund *bool `json:"can_refund,omitempty" xml:"can_refund,omitempty"`
-	// refund fee X-Y hour(day) before departure
+	// Refund fee X-Y hours (days) before departure
 	//
 	// example:
 	//
 	// 20
 	RefundFee *float64 `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
-	// whether tax is fully refundable X-Y hour(day) before departure
+	// Whether full tax refund is allowed X-Y hours (days) before departure
 	//
 	// example:
 	//
 	// 30
 	CanReturnAllTax *bool `json:"can_return_all_tax,omitempty" xml:"can_return_all_tax,omitempty"`
-	// tax amount refundable X-Y hour(day) before departure
+	// Partial tax refund amount X-Y hours (days) before departure
 	//
 	// example:
 	//
@@ -385,37 +385,37 @@ func (s *DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapVa
 }
 
 type DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueChangeRuleInUnusedList struct {
-	// type: 2 - outbound segment unused; 3 - inbound segment unused
+	// Type of itinerary usage for the change rule 2: outbound unused; 3: return unused
 	//
 	// example:
 	//
 	// 2
 	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
-	// time unit: day/hour
+	// Time unit: day/hour
 	//
 	// example:
 	//
 	// hour
 	TimeUnit *string `json:"time_unit,omitempty" xml:"time_unit,omitempty"`
-	// applicable change rule start time, time unit (day/hour)
+	// Start time of the refund time interval, in units of days/hours, to which this refund rule applies
 	//
 	// example:
 	//
 	// 36
 	RuleStartTime *int32 `json:"rule_start_time,omitempty" xml:"rule_start_time,omitempty"`
-	// applicable change rule end time, time unit (day/hour)
+	// End time of the refund time interval, in units of days/hours, to which this refund rule applies
 	//
 	// example:
 	//
 	// 12
 	RuleEndTime *int32 `json:"rule_end_time,omitempty" xml:"rule_end_time,omitempty"`
-	// whether changeable X-Y hour(day) before departure
+	// Whether it is possible to change the ticket X-Y hours (days) before departure
 	//
 	// example:
 	//
 	// true
 	CanChange *bool `json:"can_change,omitempty" xml:"can_change,omitempty"`
-	// change fee X-Y hour(day) before departure
+	// Change fee X-Y hours (days) before departure
 	//
 	// example:
 	//
@@ -490,37 +490,37 @@ func (s *DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapVa
 }
 
 type DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueChangeRuleOutUnusedList struct {
-	// type: 2 - outbound segment unused; 3 - inbound segment unused
+	// The type of itinerary usage for this change rule 2: unused outbound; 3: unused return
 	//
 	// example:
 	//
 	// 2
 	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
-	// time unit: day/hour
+	// Time unit: day/hour
 	//
 	// example:
 	//
 	// hour
 	TimeUnit *string `json:"time_unit,omitempty" xml:"time_unit,omitempty"`
-	// applicable change rule start time, time unit (day/hour)
+	// Start time of the refund time interval for this refund rule, in days/hours
 	//
 	// example:
 	//
 	// 36
 	RuleStartTime *int32 `json:"rule_start_time,omitempty" xml:"rule_start_time,omitempty"`
-	// applicable change rule end time, time unit (day/hour)
+	// End time of the refund time interval for this refund rule, in days/hours
 	//
 	// example:
 	//
 	// 12
 	RuleEndTime *int32 `json:"rule_end_time,omitempty" xml:"rule_end_time,omitempty"`
-	// whether changeable X-Y hour(day) before departure
+	// Whether it is possible to change the ticket X-Y hours (days) before departure
 	//
 	// example:
 	//
 	// true
 	CanChange *bool `json:"can_change,omitempty" xml:"can_change,omitempty"`
-	// change fee X-Y hour(day) before departure
+	// Change fee X-Y hours (days) before departure
 	//
 	// example:
 	//

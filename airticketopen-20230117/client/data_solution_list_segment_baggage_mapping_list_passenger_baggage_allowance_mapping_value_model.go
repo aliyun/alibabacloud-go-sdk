@@ -44,82 +44,98 @@ type iDataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingV
 }
 
 type DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue struct {
-	// checked baggage quantity
+	// Number of checked baggage pieces
 	//
 	// example:
 	//
 	// 22
 	BaggageAmount *int32 `json:"baggage_amount,omitempty" xml:"baggage_amount,omitempty"`
-	// checked baggage weight
+	// Weight of checked baggage
 	//
 	// example:
 	//
 	// 2
 	BaggageWeight *int32 `json:"baggage_weight,omitempty" xml:"baggage_weight,omitempty"`
-	// checked baggage weight unit
+	// Unit of checked baggage weight (KG)
 	//
 	// example:
 	//
-	// kg
+	// KG
 	BaggageWeightUnit *string `json:"baggage_weight_unit,omitempty" xml:"baggage_weight_unit,omitempty"`
-	// Whether the weight is for all baggages
+	// Whether the weight applies to all checked baggage
 	//
 	// example:
 	//
 	// true
 	IsAllWeight *bool `json:"is_all_weight,omitempty" xml:"is_all_weight,omitempty"`
-	// carry-on baggage quantity
+	// Number of carry-on baggage pieces
 	//
 	// example:
 	//
 	// 1
 	CarryOnAmount *int32 `json:"carry_on_amount,omitempty" xml:"carry_on_amount,omitempty"`
-	// carry-on baggage weight
+	// Weight of carry-on baggage
 	//
 	// example:
 	//
 	// 2
 	CarryOnWeight *int32 `json:"carry_on_weight,omitempty" xml:"carry_on_weight,omitempty"`
-	// carry-on baggage weight unit
+	// Carry-on luggage weight unit KG
 	//
 	// example:
 	//
-	// kg
+	// KG
 	CarryOnWeightUnit *string `json:"carry_on_weight_unit,omitempty" xml:"carry_on_weight_unit,omitempty"`
-	// Whether the weight is for all baggages
+	// Whether it is the total carry-on luggage weight
 	//
 	// example:
 	//
 	// true
 	IsAllCarryOnWeight *bool `json:"is_all_carry_on_weight,omitempty" xml:"is_all_carry_on_weight,omitempty"`
+	// Carry-on luggage length (unit: centimeters)
+	//
 	// example:
 	//
 	// 55
 	CarryLength *int32 `json:"carry_length,omitempty" xml:"carry_length,omitempty"`
+	// Carry-on luggage width (unit: centimeters)
+	//
 	// example:
 	//
 	// 40
 	CarryWidth *int32 `json:"carry_width,omitempty" xml:"carry_width,omitempty"`
+	// Carry-on luggage height (unit: centimeters)
+	//
 	// example:
 	//
 	// 20
 	CarryHeight *int32 `json:"carry_height,omitempty" xml:"carry_height,omitempty"`
+	// Sum of three sides of the Carry-on luggage (unit: centimeters)
+	//
 	// example:
 	//
 	// 115
 	CarrySumOfLengthWidthHeight *int32 `json:"carry_sum_of_length_width_height,omitempty" xml:"carry_sum_of_length_width_height,omitempty"`
+	// Check-in luggage length (unit: centimeters)
+	//
 	// example:
 	//
 	// 60
 	Length *int32 `json:"length,omitempty" xml:"length,omitempty"`
+	// Check-in luggage width (unit: centimeters)
+	//
 	// example:
 	//
 	// 40
 	Width *int32 `json:"width,omitempty" xml:"width,omitempty"`
+	// Check-in luggage height (unit: centimeters)
+	//
 	// example:
 	//
 	// 60
 	Height *int32 `json:"height,omitempty" xml:"height,omitempty"`
+	// Sum of three sides of the Check-in luggage (unit: centimeters)
+	//
 	// example:
 	//
 	// 200
