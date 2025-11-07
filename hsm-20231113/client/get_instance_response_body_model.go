@@ -183,6 +183,7 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	// vsm
 	TenantIsolationType *string `json:"TenantIsolationType,omitempty" xml:"TenantIsolationType,omitempty"`
+	TpsEnabled          *int32  `json:"TpsEnabled,omitempty" xml:"TpsEnabled,omitempty"`
 	// The ID of the vSwitch that is configured for the HSM.
 	//
 	// example:
@@ -291,6 +292,10 @@ func (s *GetInstanceResponseBodyInstance) GetTenantIsolationType() *string {
 	return s.TenantIsolationType
 }
 
+func (s *GetInstanceResponseBodyInstance) GetTpsEnabled() *int32 {
+	return s.TpsEnabled
+}
+
 func (s *GetInstanceResponseBodyInstance) GetVSwitchId() *string {
 	return s.VSwitchId
 }
@@ -393,6 +398,11 @@ func (s *GetInstanceResponseBodyInstance) SetStatus(v string) *GetInstanceRespon
 
 func (s *GetInstanceResponseBodyInstance) SetTenantIsolationType(v string) *GetInstanceResponseBodyInstance {
 	s.TenantIsolationType = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstance) SetTpsEnabled(v int32) *GetInstanceResponseBodyInstance {
+	s.TpsEnabled = &v
 	return s
 }
 
