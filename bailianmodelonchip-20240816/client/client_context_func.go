@@ -183,3 +183,60 @@ func (client *Client) GetTokenWithContext(ctx context.Context, request *GetToken
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
 }
+
+// Summary:
+//
+// 模型类型识别
+//
+// @param tmpReq - ModelTypeDetermineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelTypeDetermineResponse
+func (client *Client) ModelTypeDetermineWithContext(ctx context.Context, tmpReq *ModelTypeDetermineRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelTypeDetermineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModelTypeDetermineShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.History) {
+		request.HistoryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.History, dara.String("history"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.HistoryShrink) {
+		body["history"] = request.HistoryShrink
+	}
+
+	if !dara.IsNil(request.InputText) {
+		body["inputText"] = request.InputText
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelTypeDetermine"),
+		Version:     dara.String("2024-08-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/open/api/v1/model/type/determine"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelTypeDetermineResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
