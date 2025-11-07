@@ -17,9 +17,11 @@ import (
 //
 // @return AIGCFaceVerifyResponse
 func (client *Client) AIGCFaceVerifyWithContext(ctx context.Context, request *AIGCFaceVerifyRequest, runtime *dara.RuntimeOptions) (_result *AIGCFaceVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FaceContrastPictureUrl) {
@@ -99,9 +101,11 @@ func (client *Client) AIGCFaceVerifyWithContext(ctx context.Context, request *AI
 //
 // @return BankMetaVerifyResponse
 func (client *Client) BankMetaVerifyWithContext(ctx context.Context, request *BankMetaVerifyRequest, runtime *dara.RuntimeOptions) (_result *BankMetaVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BankCard) {
@@ -193,9 +197,11 @@ func (client *Client) BankMetaVerifyWithContext(ctx context.Context, request *Ba
 //
 // @return CompareFaceVerifyResponse
 func (client *Client) CompareFaceVerifyWithContext(ctx context.Context, request *CompareFaceVerifyRequest, runtime *dara.RuntimeOptions) (_result *CompareFaceVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Crop) {
@@ -315,9 +321,11 @@ func (client *Client) CompareFaceVerifyWithContext(ctx context.Context, request 
 //
 // @return CompareFacesResponse
 func (client *Client) CompareFacesWithContext(ctx context.Context, request *CompareFacesRequest, runtime *dara.RuntimeOptions) (_result *CompareFacesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.SourceImageType) {
@@ -393,9 +401,11 @@ func (client *Client) CompareFacesWithContext(ctx context.Context, request *Comp
 //
 // @return ContrastFaceVerifyResponse
 func (client *Client) ContrastFaceVerifyWithContext(ctx context.Context, request *ContrastFaceVerifyRequest, runtime *dara.RuntimeOptions) (_result *ContrastFaceVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Model) {
@@ -501,6 +511,80 @@ func (client *Client) ContrastFaceVerifyWithContext(ctx context.Context, request
 
 // Summary:
 //
+// # Create a financial-grade authentication scenario
+//
+// Description:
+//
+// Request Method: Supports sending requests via HTTPS POST and GET methods.
+//
+// > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+//
+// @param request - CreateAntCloudAuthSceneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAntCloudAuthSceneResponse
+func (client *Client) CreateAntCloudAuthSceneWithContext(ctx context.Context, request *CreateAntCloudAuthSceneRequest, runtime *dara.RuntimeOptions) (_result *CreateAntCloudAuthSceneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BindMiniProgram) {
+		query["BindMiniProgram"] = request.BindMiniProgram
+	}
+
+	if !dara.IsNil(request.CheckFileBody) {
+		query["CheckFileBody"] = request.CheckFileBody
+	}
+
+	if !dara.IsNil(request.CheckFileName) {
+		query["CheckFileName"] = request.CheckFileName
+	}
+
+	if !dara.IsNil(request.MiniProgramName) {
+		query["MiniProgramName"] = request.MiniProgramName
+	}
+
+	if !dara.IsNil(request.Platform) {
+		query["Platform"] = request.Platform
+	}
+
+	if !dara.IsNil(request.SceneName) {
+		query["SceneName"] = request.SceneName
+	}
+
+	if !dara.IsNil(request.StoreImage) {
+		query["StoreImage"] = request.StoreImage
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAntCloudAuthScene"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAntCloudAuthSceneResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Call CreateAuthKey to get the authorization key, which is used for offline face recognition SDK activation.
 //
 // Description:
@@ -515,9 +599,11 @@ func (client *Client) ContrastFaceVerifyWithContext(ctx context.Context, request
 //
 // @return CreateAuthKeyResponse
 func (client *Client) CreateAuthKeyWithContext(ctx context.Context, request *CreateAuthKeyRequest, runtime *dara.RuntimeOptions) (_result *CreateAuthKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthYears) {
@@ -561,6 +647,124 @@ func (client *Client) CreateAuthKeyWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
+// # Create Cloud Scene
+//
+// Description:
+//
+// Request Method: Supports sending requests via HTTPS POST and GET methods.
+//
+// > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+//
+// @param request - CreateCloudauthstSceneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCloudauthstSceneResponse
+func (client *Client) CreateCloudauthstSceneWithContext(ctx context.Context, request *CreateCloudauthstSceneRequest, runtime *dara.RuntimeOptions) (_result *CreateCloudauthstSceneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.SceneName) {
+		query["SceneName"] = request.SceneName
+	}
+
+	if !dara.IsNil(request.StoreImage) {
+		query["StoreImage"] = request.StoreImage
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCloudauthstScene"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCloudauthstSceneResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Create Scene Configuration
+//
+// Description:
+//
+// Request Method: Supports sending requests via HTTPS POST.
+//
+// Request Address: cloudauth.aliyuncs.com.
+//
+// > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+//
+// @param request - CreateSceneConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSceneConfigResponse
+func (client *Client) CreateSceneConfigWithContext(ctx context.Context, request *CreateSceneConfigRequest, runtime *dara.RuntimeOptions) (_result *CreateSceneConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		body["config"] = request.Config
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		body["sceneId"] = request.SceneId
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSceneConfig"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSceneConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Call CreateVerifySetting to create a verification scenario configuration. This operation is equivalent to creating a new verification scenario on the console.
 //
 // Description:
@@ -573,9 +777,11 @@ func (client *Client) CreateAuthKeyWithContext(ctx context.Context, request *Cre
 //
 // @return CreateVerifySettingResponse
 func (client *Client) CreateVerifySettingWithContext(ctx context.Context, request *CreateVerifySettingRequest, runtime *dara.RuntimeOptions) (_result *CreateVerifySettingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizName) {
@@ -627,6 +833,82 @@ func (client *Client) CreateVerifySettingWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// # Create Whitelist
+//
+// Description:
+//
+// Request Method: Only supports sending requests via HTTPS POST.
+//
+// @param request - CreateWhitelistSettingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWhitelistSettingResponse
+func (client *Client) CreateWhitelistSettingWithContext(ctx context.Context, request *CreateWhitelistSettingRequest, runtime *dara.RuntimeOptions) (_result *CreateWhitelistSettingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertNo) {
+		query["CertNo"] = request.CertNo
+	}
+
+	if !dara.IsNil(request.CertifyId) {
+		query["CertifyId"] = request.CertifyId
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !dara.IsNil(request.ServiceCode) {
+		query["ServiceCode"] = request.ServiceCode
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.ValidDay) {
+		query["ValidDay"] = request.ValidDay
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWhitelistSetting"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWhitelistSettingResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Product Credential Verification
 //
 // Description:
@@ -639,9 +921,11 @@ func (client *Client) CreateVerifySettingWithContext(ctx context.Context, reques
 //
 // @return CredentialProductVerifyV2Response
 func (client *Client) CredentialProductVerifyV2WithContext(ctx context.Context, request *CredentialProductVerifyV2Request, runtime *dara.RuntimeOptions) (_result *CredentialProductVerifyV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CredName) {
@@ -703,9 +987,11 @@ func (client *Client) CredentialProductVerifyV2WithContext(ctx context.Context, 
 //
 // @return CredentialVerifyResponse
 func (client *Client) CredentialVerifyWithContext(ctx context.Context, tmpReq *CredentialVerifyRequest, runtime *dara.RuntimeOptions) (_result *CredentialVerifyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CredentialVerifyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -809,9 +1095,11 @@ func (client *Client) CredentialVerifyWithContext(ctx context.Context, tmpReq *C
 //
 // @return CredentialVerifyV2Response
 func (client *Client) CredentialVerifyV2WithContext(ctx context.Context, tmpReq *CredentialVerifyV2Request, runtime *dara.RuntimeOptions) (_result *CredentialVerifyV2Response, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CredentialVerifyV2ShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -925,9 +1213,11 @@ func (client *Client) CredentialVerifyV2WithContext(ctx context.Context, tmpReq 
 //
 // @return DeepfakeDetectResponse
 func (client *Client) DeepfakeDetectWithContext(ctx context.Context, request *DeepfakeDetectRequest, runtime *dara.RuntimeOptions) (_result *DeepfakeDetectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FaceInputType) {
@@ -973,6 +1263,344 @@ func (client *Client) DeepfakeDetectWithContext(ctx context.Context, request *De
 
 // Summary:
 //
+// # Delete All Custom Flow Control Strategies
+//
+// Description:
+//
+// Request Method: Supports sending requests via HTTPS POST and GET methods.
+//
+// > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+//
+// @param request - DeleteAllCustomizeFlowStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAllCustomizeFlowStrategyResponse
+func (client *Client) DeleteAllCustomizeFlowStrategyWithContext(ctx context.Context, request *DeleteAllCustomizeFlowStrategyRequest, runtime *dara.RuntimeOptions) (_result *DeleteAllCustomizeFlowStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAllCustomizeFlowStrategy"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAllCustomizeFlowStrategyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Delete Watermark Scene
+//
+// Description:
+//
+// - Service Address: cloudauth.aliyuncs.com.
+//
+// - Request Method: HTTPS POST and GET.
+//
+// @param request - DeleteAntCloudAuthSceneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAntCloudAuthSceneResponse
+func (client *Client) DeleteAntCloudAuthSceneWithContext(ctx context.Context, request *DeleteAntCloudAuthSceneRequest, runtime *dara.RuntimeOptions) (_result *DeleteAntCloudAuthSceneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SceneId) {
+		query["SceneId"] = request.SceneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAntCloudAuthScene"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAntCloudAuthSceneResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Delete Black and White List Policy
+//
+// Description:
+//
+// Request Method: Only supports sending requests via HTTPS POST method.
+//
+// @param request - DeleteBlackListStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBlackListStrategyResponse
+func (client *Client) DeleteBlackListStrategyWithContext(ctx context.Context, request *DeleteBlackListStrategyRequest, runtime *dara.RuntimeOptions) (_result *DeleteBlackListStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.ProductName) {
+		query["ProductName"] = request.ProductName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteBlackListStrategy"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteBlackListStrategyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Delete Cloud Scene
+//
+// Description:
+//
+// Request Method: Supports sending requests using HTTPS POST and GET methods.
+//
+// > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
+//
+// @param request - DeleteCloudauthstSceneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCloudauthstSceneResponse
+func (client *Client) DeleteCloudauthstSceneWithContext(ctx context.Context, request *DeleteCloudauthstSceneRequest, runtime *dara.RuntimeOptions) (_result *DeleteCloudauthstSceneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SceneId) {
+		query["SceneId"] = request.SceneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCloudauthstScene"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCloudauthstSceneResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Delete Security Control Strategy
+//
+// Description:
+//
+// Request Method: Supports sending requests via HTTPS POST.
+//
+// Request URL: cloudauth.aliyuncs.com.
+//
+// @param request - DeleteControlStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteControlStrategyResponse
+func (client *Client) DeleteControlStrategyWithContext(ctx context.Context, request *DeleteControlStrategyRequest, runtime *dara.RuntimeOptions) (_result *DeleteControlStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiName) {
+		query["ApiName"] = request.ApiName
+	}
+
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteControlStrategy"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteControlStrategyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Delete Customized Flow Control Strategy
+//
+// Description:
+//
+// Request Method: Supports sending requests using HTTPS POST and GET methods.
+//
+// > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+//
+// @param request - DeleteCustomizeFlowStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCustomizeFlowStrategyResponse
+func (client *Client) DeleteCustomizeFlowStrategyWithContext(ctx context.Context, request *DeleteCustomizeFlowStrategyRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomizeFlowStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiName) {
+		query["ApiName"] = request.ApiName
+	}
+
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCustomizeFlowStrategy"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCustomizeFlowStrategyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Financial Level Sensitive Data Deletion Interface
 //
 // Description:
@@ -985,9 +1613,11 @@ func (client *Client) DeepfakeDetectWithContext(ctx context.Context, request *De
 //
 // @return DeleteFaceVerifyResultResponse
 func (client *Client) DeleteFaceVerifyResultWithContext(ctx context.Context, request *DeleteFaceVerifyResultRequest, runtime *dara.RuntimeOptions) (_result *DeleteFaceVerifyResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertifyId) {
@@ -1023,6 +1653,118 @@ func (client *Client) DeleteFaceVerifyResultWithContext(ctx context.Context, req
 
 // Summary:
 //
+// # Delete Scene Configuration
+//
+// Description:
+//
+// - Request Method: Supports sending requests via HTTPS POST and GET methods.
+//
+// - Request URL: cloudauth.aliyuncs.com.
+//
+// > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
+//
+// @param request - DeleteSceneConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSceneConfigResponse
+func (client *Client) DeleteSceneConfigWithContext(ctx context.Context, request *DeleteSceneConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteSceneConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SceneConfigId) {
+		body["sceneConfigId"] = request.SceneConfigId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSceneConfig"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSceneConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Delete Whitelist Configuration
+//
+// Description:
+//
+// Request Method: Only supports sending requests via HTTPS POST method.
+//
+// @param request - DeleteWhitelistSettingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWhitelistSettingResponse
+func (client *Client) DeleteWhitelistSettingWithContext(ctx context.Context, request *DeleteWhitelistSettingRequest, runtime *dara.RuntimeOptions) (_result *DeleteWhitelistSettingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Ids) {
+		query["Ids"] = request.Ids
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.ServiceCode) {
+		query["ServiceCode"] = request.ServiceCode
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteWhitelistSetting"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteWhitelistSettingResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Obtain Authentication Results from Image Element Verification
 //
 // Description:
@@ -1035,9 +1777,11 @@ func (client *Client) DeleteFaceVerifyResultWithContext(ctx context.Context, req
 //
 // @return DescribeCardVerifyResponse
 func (client *Client) DescribeCardVerifyWithContext(ctx context.Context, request *DescribeCardVerifyRequest, runtime *dara.RuntimeOptions) (_result *DescribeCardVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertifyId) {
@@ -1069,6 +1813,56 @@ func (client *Client) DescribeCardVerifyWithContext(ctx context.Context, request
 
 // Summary:
 //
+// # Query Dashboard Data
+//
+// Description:
+//
+// Request Method: Supports sending requests via HTTPS POST and GET methods.
+//
+// > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
+//
+// @param request - DescribeCloudauthstSceneListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudauthstSceneListResponse
+func (client *Client) DescribeCloudauthstSceneListWithContext(ctx context.Context, request *DescribeCloudauthstSceneListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudauthstSceneListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCloudauthstSceneList"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeCloudauthstSceneListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Call DescribeDeviceInfo to query device-related information, such as the validity period of authorization, business identifiers customized by the access party, and device ID, etc.
 //
 // Description:
@@ -1081,9 +1875,11 @@ func (client *Client) DescribeCardVerifyWithContext(ctx context.Context, request
 //
 // @return DescribeDeviceInfoResponse
 func (client *Client) DescribeDeviceInfoWithContext(ctx context.Context, request *DescribeDeviceInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeDeviceInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -1147,9 +1943,11 @@ func (client *Client) DescribeDeviceInfoWithContext(ctx context.Context, request
 //
 // @return DescribeFaceGuardRiskResponse
 func (client *Client) DescribeFaceGuardRiskWithContext(ctx context.Context, request *DescribeFaceGuardRiskRequest, runtime *dara.RuntimeOptions) (_result *DescribeFaceGuardRiskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -1207,9 +2005,11 @@ func (client *Client) DescribeFaceGuardRiskWithContext(ctx context.Context, requ
 //
 // @return DescribeFaceVerifyResponse
 func (client *Client) DescribeFaceVerifyWithContext(ctx context.Context, request *DescribeFaceVerifyRequest, runtime *dara.RuntimeOptions) (_result *DescribeFaceVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertifyId) {
@@ -1249,6 +2049,564 @@ func (client *Client) DescribeFaceVerifyWithContext(ctx context.Context, request
 
 // Summary:
 //
+// 查询任务导出记录
+//
+// @param request - DescribeInfoCheckExportRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInfoCheckExportRecordResponse
+func (client *Client) DescribeInfoCheckExportRecordWithContext(ctx context.Context, request *DescribeInfoCheckExportRecordRequest, runtime *dara.RuntimeOptions) (_result *DescribeInfoCheckExportRecordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInfoCheckExportRecord"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInfoCheckExportRecordResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query the cloud scenario authentication records of a specific region
+//
+// Description:
+//
+// Request Method: Supports sending requests via HTTPS POST and GET methods.
+//
+// > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
+//
+// @param request - DescribeListAntCloudAuthScenesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeListAntCloudAuthScenesResponse
+func (client *Client) DescribeListAntCloudAuthScenesWithContext(ctx context.Context, request *DescribeListAntCloudAuthScenesRequest, runtime *dara.RuntimeOptions) (_result *DescribeListAntCloudAuthScenesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SceneId) {
+		query["SceneId"] = request.SceneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeListAntCloudAuthScenes"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeListAntCloudAuthScenesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query Face Verification Data
+//
+// Description:
+//
+// - Service Address: cloudauth.aliyuncs.com.
+//
+// - Request Method: HTTPS POST and GET.
+//
+// @param request - DescribeListFaceVerifyDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeListFaceVerifyDataResponse
+func (client *Client) DescribeListFaceVerifyDataWithContext(ctx context.Context, request *DescribeListFaceVerifyDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeListFaceVerifyDataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GmtEnd) {
+		query["GmtEnd"] = request.GmtEnd
+	}
+
+	if !dara.IsNil(request.GmtStart) {
+		query["GmtStart"] = request.GmtStart
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		query["SceneId"] = request.SceneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeListFaceVerifyData"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeListFaceVerifyDataResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Get Face Verification Information
+//
+// Description:
+//
+// - Service address: cloudauth.aliyuncs.com.
+//
+// - Request method: HTTPS POST and GET.
+//
+// @param request - DescribeListFaceVerifyInfosRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeListFaceVerifyInfosResponse
+func (client *Client) DescribeListFaceVerifyInfosWithContext(ctx context.Context, request *DescribeListFaceVerifyInfosRequest, runtime *dara.RuntimeOptions) (_result *DescribeListFaceVerifyInfosResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertifyId) {
+		query["CertifyId"] = request.CertifyId
+	}
+
+	if !dara.IsNil(request.GmtEnd) {
+		query["GmtEnd"] = request.GmtEnd
+	}
+
+	if !dara.IsNil(request.GmtStart) {
+		query["GmtStart"] = request.GmtStart
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeListFaceVerifyInfos"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeListFaceVerifyInfosResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询页面元数据
+//
+// @param request - DescribeMetaSearchPageListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMetaSearchPageListResponse
+func (client *Client) DescribeMetaSearchPageListWithContext(ctx context.Context, request *DescribeMetaSearchPageListRequest, runtime *dara.RuntimeOptions) (_result *DescribeMetaSearchPageListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Api) {
+		query["Api"] = request.Api
+	}
+
+	if !dara.IsNil(request.BankCard) {
+		query["BankCard"] = request.BankCard
+	}
+
+	if !dara.IsNil(request.BizCode) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.IdentifyNum) {
+		query["IdentifyNum"] = request.IdentifyNum
+	}
+
+	if !dara.IsNil(request.IspName) {
+		query["IspName"] = request.IspName
+	}
+
+	if !dara.IsNil(request.Mobile) {
+		query["Mobile"] = request.Mobile
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ReqId) {
+		query["ReqId"] = request.ReqId
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.SubCode) {
+		query["SubCode"] = request.SubCode
+	}
+
+	if !dara.IsNil(request.UserName) {
+		query["UserName"] = request.UserName
+	}
+
+	if !dara.IsNil(request.VehicleNum) {
+		query["VehicleNum"] = request.VehicleNum
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeMetaSearchPageList"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeMetaSearchPageListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询认证统计信息
+//
+// @param request - DescribeMetaStatisticsListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMetaStatisticsListResponse
+func (client *Client) DescribeMetaStatisticsListWithContext(ctx context.Context, request *DescribeMetaStatisticsListRequest, runtime *dara.RuntimeOptions) (_result *DescribeMetaStatisticsListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Api) {
+		query["Api"] = request.Api
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeMetaStatisticsList"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeMetaStatisticsListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询认证统计页面
+//
+// @param request - DescribeMetaStatisticsPageListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMetaStatisticsPageListResponse
+func (client *Client) DescribeMetaStatisticsPageListWithContext(ctx context.Context, request *DescribeMetaStatisticsPageListRequest, runtime *dara.RuntimeOptions) (_result *DescribeMetaStatisticsPageListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Api) {
+		query["Api"] = request.Api
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeMetaStatisticsPageList"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeMetaStatisticsPageListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query OSS status
+//
+// Description:
+//
+// - Request Method: Supports sending requests via HTTPS POST and GET methods.
+//
+// - Service Address: cloudauth.aliyuncs.com.
+//
+// @param request - DescribeOssStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOssStatusResponse
+func (client *Client) DescribeOssStatusWithContext(ctx context.Context, request *DescribeOssStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeOssStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ServiceCode) {
+		query["ServiceCode"] = request.ServiceCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOssStatus"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOssStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Get OSS Activation Status
+//
+// Description:
+//
+// - Request Method: Supports sending requests via HTTPS POST and GET methods.
+//
+// - Service Address: cloudauth.aliyuncs.com.
+//
+// @param request - DescribeOssStatusV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOssStatusV2Response
+func (client *Client) DescribeOssStatusV2WithContext(ctx context.Context, request *DescribeOssStatusV2Request, runtime *dara.RuntimeOptions) (_result *DescribeOssStatusV2Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ServiceCode) {
+		query["ServiceCode"] = request.ServiceCode
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOssStatusV2"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOssStatusV2Response{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Open API adds financial-grade data statistics API
 //
 // @param request - DescribePageFaceVerifyDataRequest
@@ -1257,9 +2615,11 @@ func (client *Client) DescribeFaceVerifyWithContext(ctx context.Context, request
 //
 // @return DescribePageFaceVerifyDataResponse
 func (client *Client) DescribePageFaceVerifyDataWithContext(ctx context.Context, request *DescribePageFaceVerifyDataRequest, runtime *dara.RuntimeOptions) (_result *DescribePageFaceVerifyDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -1319,9 +2679,11 @@ func (client *Client) DescribePageFaceVerifyDataWithContext(ctx context.Context,
 //
 // @return DescribeSmartStatisticsPageListResponse
 func (client *Client) DescribeSmartStatisticsPageListWithContext(ctx context.Context, request *DescribeSmartStatisticsPageListRequest, runtime *dara.RuntimeOptions) (_result *DescribeSmartStatisticsPageListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -1373,6 +2735,394 @@ func (client *Client) DescribeSmartStatisticsPageListWithContext(ctx context.Con
 
 // Summary:
 //
+// # Get Verification Device Statistics
+//
+// Description:
+//
+// - Service address: cloudauth.aliyuncs.com.
+//
+// - Request method: HTTPS POST and GET.
+//
+// @param request - DescribeVerifyDeviceRiskStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVerifyDeviceRiskStatisticsResponse
+func (client *Client) DescribeVerifyDeviceRiskStatisticsWithContext(ctx context.Context, request *DescribeVerifyDeviceRiskStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVerifyDeviceRiskStatisticsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !dara.IsNil(request.ServiceCode) {
+		query["ServiceCode"] = request.ServiceCode
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVerifyDeviceRiskStatistics"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVerifyDeviceRiskStatisticsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Overview of authentication request statistics
+//
+// Description:
+//
+// - Service address: cloudauth.aliyuncs.com.
+//
+// - Request method: HTTPS POST and GET.
+//
+// @param request - DescribeVerifyFailStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVerifyFailStatisticsResponse
+func (client *Client) DescribeVerifyFailStatisticsWithContext(ctx context.Context, request *DescribeVerifyFailStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVerifyFailStatisticsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgeGt) {
+		query["AgeGt"] = request.AgeGt
+	}
+
+	if !dara.IsNil(request.Api) {
+		query["Api"] = request.Api
+	}
+
+	if !dara.IsNil(request.DeviceType) {
+		query["DeviceType"] = request.DeviceType
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.ServiceCode) {
+		query["ServiceCode"] = request.ServiceCode
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVerifyFailStatistics"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVerifyFailStatisticsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query Statistics on Device Face Comparison
+//
+// Description:
+//
+// - Service Address: cloudauth.aliyuncs.com.
+//
+// - Request Method: HTTPS POST and GET.
+//
+// @param request - DescribeVerifyPersonasDeviceModelStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVerifyPersonasDeviceModelStatisticsResponse
+func (client *Client) DescribeVerifyPersonasDeviceModelStatisticsWithContext(ctx context.Context, request *DescribeVerifyPersonasDeviceModelStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVerifyPersonasDeviceModelStatisticsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !dara.IsNil(request.ServiceCode) {
+		query["ServiceCode"] = request.ServiceCode
+	}
+
+	if !dara.IsNil(request.TimeRange) {
+		query["TimeRange"] = request.TimeRange
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVerifyPersonasDeviceModelStatistics"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVerifyPersonasDeviceModelStatisticsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query Authentication Personnel Statistics
+//
+// Description:
+//
+// - Service address: cloudauth.aliyuncs.com.
+//
+// - Request method: HTTPS POST and GET.
+//
+// @param request - DescribeVerifyPersonasOsStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVerifyPersonasOsStatisticsResponse
+func (client *Client) DescribeVerifyPersonasOsStatisticsWithContext(ctx context.Context, request *DescribeVerifyPersonasOsStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVerifyPersonasOsStatisticsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !dara.IsNil(request.ServiceCode) {
+		query["ServiceCode"] = request.ServiceCode
+	}
+
+	if !dara.IsNil(request.TimeRange) {
+		query["TimeRange"] = request.TimeRange
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVerifyPersonasOsStatistics"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVerifyPersonasOsStatisticsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Obtain statistical information on the location of authenticated individuals
+//
+// Description:
+//
+// - Service Address: cloudauth.aliyuncs.com.
+//
+// - Request Method: HTTPS POST and GET.
+//
+// @param request - DescribeVerifyPersonasProvinceStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVerifyPersonasProvinceStatisticsResponse
+func (client *Client) DescribeVerifyPersonasProvinceStatisticsWithContext(ctx context.Context, request *DescribeVerifyPersonasProvinceStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVerifyPersonasProvinceStatisticsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !dara.IsNil(request.ServiceCode) {
+		query["ServiceCode"] = request.ServiceCode
+	}
+
+	if !dara.IsNil(request.TimeRange) {
+		query["TimeRange"] = request.TimeRange
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVerifyPersonasProvinceStatistics"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVerifyPersonasProvinceStatisticsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query gender statistics of authentication
+//
+// Description:
+//
+// - Service address: cloudauth.aliyuncs.com.
+//
+// - Request method: HTTPS POST and GET.
+//
+// @param request - DescribeVerifyPersonasSexStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVerifyPersonasSexStatisticsResponse
+func (client *Client) DescribeVerifyPersonasSexStatisticsWithContext(ctx context.Context, request *DescribeVerifyPersonasSexStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVerifyPersonasSexStatisticsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !dara.IsNil(request.ServiceCode) {
+		query["ServiceCode"] = request.ServiceCode
+	}
+
+	if !dara.IsNil(request.TimeRange) {
+		query["TimeRange"] = request.TimeRange
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVerifyPersonasSexStatistics"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVerifyPersonasSexStatisticsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Query the result of real-person authentication.
 //
 // Description:
@@ -1393,9 +3143,11 @@ func (client *Client) DescribeSmartStatisticsPageListWithContext(ctx context.Con
 //
 // @return DescribeVerifyResultResponse
 func (client *Client) DescribeVerifyResultWithContext(ctx context.Context, request *DescribeVerifyResultRequest, runtime *dara.RuntimeOptions) (_result *DescribeVerifyResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -1445,9 +3197,11 @@ func (client *Client) DescribeVerifyResultWithContext(ctx context.Context, reque
 //
 // @return DescribeVerifySDKResponse
 func (client *Client) DescribeVerifySDKWithContext(ctx context.Context, request *DescribeVerifySDKRequest, runtime *dara.RuntimeOptions) (_result *DescribeVerifySDKResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -1469,6 +3223,186 @@ func (client *Client) DescribeVerifySDKWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVerifySDKResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query the list of authentication schemes
+//
+// Description:
+//
+// - Service Address: cloudauth.aliyuncs.com.
+//
+// - Request Method: HTTPS POST and GET.
+//
+// @param request - DescribeVerifySearchPageListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVerifySearchPageListResponse
+func (client *Client) DescribeVerifySearchPageListWithContext(ctx context.Context, request *DescribeVerifySearchPageListRequest, runtime *dara.RuntimeOptions) (_result *DescribeVerifySearchPageListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertNo) {
+		query["CertNo"] = request.CertNo
+	}
+
+	if !dara.IsNil(request.CertifyId) {
+		query["CertifyId"] = request.CertifyId
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.HasDeviceRisk) {
+		query["HasDeviceRisk"] = request.HasDeviceRisk
+	}
+
+	if !dara.IsNil(request.Model) {
+		query["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.OuterOrderNo) {
+		query["OuterOrderNo"] = request.OuterOrderNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Passed) {
+		query["Passed"] = request.Passed
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.Root) {
+		query["Root"] = request.Root
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !dara.IsNil(request.Simulator) {
+		query["Simulator"] = request.Simulator
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.SubCode) {
+		query["SubCode"] = request.SubCode
+	}
+
+	if !dara.IsNil(request.SubCodes) {
+		query["SubCodes"] = request.SubCodes
+	}
+
+	if !dara.IsNil(request.VirtualVideo) {
+		query["VirtualVideo"] = request.VirtualVideo
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVerifySearchPageList"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVerifySearchPageListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query Authentication Statistics
+//
+// Description:
+//
+// - Request Method: Supports sending requests using HTTPS POST and GET methods.
+//
+// - Service Address: cloudauth.aliyuncs.com.
+//
+// @param request - DescribeVerifyStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVerifyStatisticsResponse
+func (client *Client) DescribeVerifyStatisticsWithContext(ctx context.Context, request *DescribeVerifyStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVerifyStatisticsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgeGt) {
+		query["AgeGt"] = request.AgeGt
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.ServiceCode) {
+		query["ServiceCode"] = request.ServiceCode
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVerifyStatistics"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVerifyStatisticsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1509,9 +3443,11 @@ func (client *Client) DescribeVerifySDKWithContext(ctx context.Context, request 
 //
 // @return DescribeVerifyTokenResponse
 func (client *Client) DescribeVerifyTokenWithContext(ctx context.Context, request *DescribeVerifyTokenRequest, runtime *dara.RuntimeOptions) (_result *DescribeVerifyTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -1599,6 +3535,94 @@ func (client *Client) DescribeVerifyTokenWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// # Get Whitelist Collection Get Whitelist Collection
+//
+// Description:
+//
+// Request Method: Only supports sending requests via HTTPS POST method.
+//
+// @param request - DescribeWhitelistSettingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWhitelistSettingResponse
+func (client *Client) DescribeWhitelistSettingWithContext(ctx context.Context, request *DescribeWhitelistSettingRequest, runtime *dara.RuntimeOptions) (_result *DescribeWhitelistSettingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertNo) {
+		query["CertNo"] = request.CertNo
+	}
+
+	if !dara.IsNil(request.CertifyId) {
+		query["CertifyId"] = request.CertifyId
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !dara.IsNil(request.ServiceCode) {
+		query["ServiceCode"] = request.ServiceCode
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.ValidEndDate) {
+		query["ValidEndDate"] = request.ValidEndDate
+	}
+
+	if !dara.IsNil(request.ValidStartDate) {
+		query["ValidStartDate"] = request.ValidStartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeWhitelistSetting"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeWhitelistSettingResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Detect Validity Attributes in Face Photos
 //
 // Description:
@@ -1629,9 +3653,11 @@ func (client *Client) DescribeVerifyTokenWithContext(ctx context.Context, reques
 //
 // @return DetectFaceAttributesResponse
 func (client *Client) DetectFaceAttributesWithContext(ctx context.Context, request *DetectFaceAttributesRequest, runtime *dara.RuntimeOptions) (_result *DetectFaceAttributesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -1667,6 +3693,64 @@ func (client *Client) DetectFaceAttributesWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// # Real-person Authentication Record Download
+//
+// Description:
+//
+// Obtain the download link for statistical call data files under the product plan based on query conditions.
+//
+// - Method: HTTPS POST
+//
+// - Service Address: cloudauth.aliyuncs.com
+//
+// > Real-person authentication products use CertifyId to count call volumes. For ease of reconciliation, please retain the CertifyId field in your system.
+//
+// @param request - DownloadVerifyRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DownloadVerifyRecordsResponse
+func (client *Client) DownloadVerifyRecordsWithContext(ctx context.Context, request *DownloadVerifyRecordsRequest, runtime *dara.RuntimeOptions) (_result *DownloadVerifyRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizParam) {
+		query["BizParam"] = request.BizParam
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		query["ProductType"] = request.ProductType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DownloadVerifyRecords"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DownloadVerifyRecordsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Two-Factor Validity Verification API
 //
 // @param request - Id2MetaPeriodVerifyRequest
@@ -1675,9 +3759,11 @@ func (client *Client) DetectFaceAttributesWithContext(ctx context.Context, reque
 //
 // @return Id2MetaPeriodVerifyResponse
 func (client *Client) Id2MetaPeriodVerifyWithContext(ctx context.Context, request *Id2MetaPeriodVerifyRequest, runtime *dara.RuntimeOptions) (_result *Id2MetaPeriodVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.IdentifyNum) {
@@ -1733,9 +3819,11 @@ func (client *Client) Id2MetaPeriodVerifyWithContext(ctx context.Context, reques
 //
 // @return Id2MetaStandardVerifyResponse
 func (client *Client) Id2MetaStandardVerifyWithContext(ctx context.Context, request *Id2MetaStandardVerifyRequest, runtime *dara.RuntimeOptions) (_result *Id2MetaStandardVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.IdentifyNum) {
@@ -1791,9 +3879,11 @@ func (client *Client) Id2MetaStandardVerifyWithContext(ctx context.Context, requ
 //
 // @return Id2MetaVerifyResponse
 func (client *Client) Id2MetaVerifyWithContext(ctx context.Context, request *Id2MetaVerifyRequest, runtime *dara.RuntimeOptions) (_result *Id2MetaVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.IdentifyNum) {
@@ -1845,9 +3935,11 @@ func (client *Client) Id2MetaVerifyWithContext(ctx context.Context, request *Id2
 //
 // @return Id2MetaVerifyWithOCRResponse
 func (client *Client) Id2MetaVerifyWithOCRWithContext(ctx context.Context, request *Id2MetaVerifyWithOCRRequest, runtime *dara.RuntimeOptions) (_result *Id2MetaVerifyWithOCRResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CertFile) {
@@ -1903,9 +3995,11 @@ func (client *Client) Id2MetaVerifyWithOCRWithContext(ctx context.Context, reque
 //
 // @return Id3MetaVerifyResponse
 func (client *Client) Id3MetaVerifyWithContext(ctx context.Context, request *Id3MetaVerifyRequest, runtime *dara.RuntimeOptions) (_result *Id3MetaVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Crop) {
@@ -1957,6 +4051,66 @@ func (client *Client) Id3MetaVerifyWithContext(ctx context.Context, request *Id3
 
 // Summary:
 //
+// # Identity Three Elements Image Verification
+//
+// Description:
+//
+// Upload both sides of the ID card to get the verification result of the three identity elements from an authoritative data source.
+//
+// @param request - Id3MetaVerifyWithOCRRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return Id3MetaVerifyWithOCRResponse
+func (client *Client) Id3MetaVerifyWithOCRWithContext(ctx context.Context, request *Id3MetaVerifyWithOCRRequest, runtime *dara.RuntimeOptions) (_result *Id3MetaVerifyWithOCRResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CertFile) {
+		body["CertFile"] = request.CertFile
+	}
+
+	if !dara.IsNil(request.CertNationalFile) {
+		body["CertNationalFile"] = request.CertNationalFile
+	}
+
+	if !dara.IsNil(request.CertNationalUrl) {
+		body["CertNationalUrl"] = request.CertNationalUrl
+	}
+
+	if !dara.IsNil(request.CertUrl) {
+		body["CertUrl"] = request.CertUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("Id3MetaVerifyWithOCR"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &Id3MetaVerifyWithOCRResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Initiate an authentication request for image verification
 //
 // Description:
@@ -1969,9 +4123,11 @@ func (client *Client) Id3MetaVerifyWithContext(ctx context.Context, request *Id3
 //
 // @return InitCardVerifyResponse
 func (client *Client) InitCardVerifyWithContext(ctx context.Context, request *InitCardVerifyRequest, runtime *dara.RuntimeOptions) (_result *InitCardVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CallbackToken) {
@@ -2069,9 +4225,11 @@ func (client *Client) InitCardVerifyWithContext(ctx context.Context, request *In
 //
 // @return InitFaceVerifyResponse
 func (client *Client) InitFaceVerifyWithContext(ctx context.Context, request *InitFaceVerifyRequest, runtime *dara.RuntimeOptions) (_result *InitFaceVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppQualityCheck) {
@@ -2128,6 +4286,10 @@ func (client *Client) InitFaceVerifyWithContext(ctx context.Context, request *In
 
 	if !dara.IsNil(request.FaceGuardOutput) {
 		query["FaceGuardOutput"] = request.FaceGuardOutput
+	}
+
+	if !dara.IsNil(request.H5DegradeConfirmBtn) {
+		query["H5DegradeConfirmBtn"] = request.H5DegradeConfirmBtn
 	}
 
 	if !dara.IsNil(request.Ip) {
@@ -2261,9 +4423,11 @@ func (client *Client) InitFaceVerifyWithContext(ctx context.Context, request *In
 //
 // @return InsertWhiteListSettingResponse
 func (client *Client) InsertWhiteListSettingWithContext(ctx context.Context, request *InsertWhiteListSettingRequest, runtime *dara.RuntimeOptions) (_result *InsertWhiteListSettingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertNo) {
@@ -2327,9 +4491,11 @@ func (client *Client) InsertWhiteListSettingWithContext(ctx context.Context, req
 //
 // @return LivenessFaceVerifyResponse
 func (client *Client) LivenessFaceVerifyWithContext(ctx context.Context, request *LivenessFaceVerifyRequest, runtime *dara.RuntimeOptions) (_result *LivenessFaceVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Model) {
@@ -2427,9 +4593,11 @@ func (client *Client) LivenessFaceVerifyWithContext(ctx context.Context, request
 //
 // @return Mobile2MetaVerifyResponse
 func (client *Client) Mobile2MetaVerifyWithContext(ctx context.Context, request *Mobile2MetaVerifyRequest, runtime *dara.RuntimeOptions) (_result *Mobile2MetaVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Mobile) {
@@ -2481,9 +4649,11 @@ func (client *Client) Mobile2MetaVerifyWithContext(ctx context.Context, request 
 //
 // @return Mobile3MetaDetailStandardVerifyResponse
 func (client *Client) Mobile3MetaDetailStandardVerifyWithContext(ctx context.Context, request *Mobile3MetaDetailStandardVerifyRequest, runtime *dara.RuntimeOptions) (_result *Mobile3MetaDetailStandardVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.IdentifyNum) {
@@ -2543,9 +4713,11 @@ func (client *Client) Mobile3MetaDetailStandardVerifyWithContext(ctx context.Con
 //
 // @return Mobile3MetaDetailVerifyResponse
 func (client *Client) Mobile3MetaDetailVerifyWithContext(ctx context.Context, request *Mobile3MetaDetailVerifyRequest, runtime *dara.RuntimeOptions) (_result *Mobile3MetaDetailVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.IdentifyNum) {
@@ -2601,9 +4773,11 @@ func (client *Client) Mobile3MetaDetailVerifyWithContext(ctx context.Context, re
 //
 // @return Mobile3MetaSimpleStandardVerifyResponse
 func (client *Client) Mobile3MetaSimpleStandardVerifyWithContext(ctx context.Context, request *Mobile3MetaSimpleStandardVerifyRequest, runtime *dara.RuntimeOptions) (_result *Mobile3MetaSimpleStandardVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.IdentifyNum) {
@@ -2663,9 +4837,11 @@ func (client *Client) Mobile3MetaSimpleStandardVerifyWithContext(ctx context.Con
 //
 // @return Mobile3MetaSimpleVerifyResponse
 func (client *Client) Mobile3MetaSimpleVerifyWithContext(ctx context.Context, request *Mobile3MetaSimpleVerifyRequest, runtime *dara.RuntimeOptions) (_result *Mobile3MetaSimpleVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.IdentifyNum) {
@@ -2717,9 +4893,11 @@ func (client *Client) Mobile3MetaSimpleVerifyWithContext(ctx context.Context, re
 //
 // @return MobileDetectResponse
 func (client *Client) MobileDetectWithContext(ctx context.Context, request *MobileDetectRequest, runtime *dara.RuntimeOptions) (_result *MobileDetectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Mobiles) {
@@ -2763,9 +4941,11 @@ func (client *Client) MobileDetectWithContext(ctx context.Context, request *Mobi
 //
 // @return MobileOnlineStatusResponse
 func (client *Client) MobileOnlineStatusWithContext(ctx context.Context, request *MobileOnlineStatusRequest, runtime *dara.RuntimeOptions) (_result *MobileOnlineStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Mobile) {
@@ -2809,9 +4989,11 @@ func (client *Client) MobileOnlineStatusWithContext(ctx context.Context, request
 //
 // @return MobileOnlineTimeResponse
 func (client *Client) MobileOnlineTimeWithContext(ctx context.Context, request *MobileOnlineTimeRequest, runtime *dara.RuntimeOptions) (_result *MobileOnlineTimeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Mobile) {
@@ -2847,6 +5029,192 @@ func (client *Client) MobileOnlineTimeWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// # Modify Black and White List Policy
+//
+// Description:
+//
+// - Service Address: cloudauth.aliyuncs.com.
+//
+// - Request Method: HTTPS POST and GET.
+//
+// - Interface Description: Add or modify blacklist rule.
+//
+// @param tmpReq - ModifyBlackListStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyBlackListStrategyResponse
+func (client *Client) ModifyBlackListStrategyWithContext(ctx context.Context, tmpReq *ModifyBlackListStrategyRequest, runtime *dara.RuntimeOptions) (_result *ModifyBlackListStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModifyBlackListStrategyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BlackListStrategy) {
+		request.BlackListStrategyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BlackListStrategy, dara.String("BlackListStrategy"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BlackListStrategyShrink) {
+		query["BlackListStrategy"] = request.BlackListStrategyShrink
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyBlackListStrategy"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyBlackListStrategyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Modify Security Control Strategy
+//
+// Description:
+//
+// - Request Method: Supports sending requests via HTTPS POST method.
+//
+// - Request Address: cloudauth.aliyuncs.com.
+//
+// @param tmpReq - ModifyControlStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyControlStrategyResponse
+func (client *Client) ModifyControlStrategyWithContext(ctx context.Context, tmpReq *ModifyControlStrategyRequest, runtime *dara.RuntimeOptions) (_result *ModifyControlStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModifyControlStrategyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ControlStrategyList) {
+		request.ControlStrategyListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ControlStrategyList, dara.String("ControlStrategyList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ControlStrategyListShrink) {
+		query["ControlStrategyList"] = request.ControlStrategyListShrink
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyControlStrategy"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyControlStrategyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Information Verification Security Management
+//
+// Description:
+//
+// - Request Method: Supports sending requests via HTTPS POST and GET methods.
+//
+// - Service Address: cloudauth.aliyuncs.com.
+//
+// @param tmpReq - ModifyCustomizeFlowStrategyListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyCustomizeFlowStrategyListResponse
+func (client *Client) ModifyCustomizeFlowStrategyListWithContext(ctx context.Context, tmpReq *ModifyCustomizeFlowStrategyListRequest, runtime *dara.RuntimeOptions) (_result *ModifyCustomizeFlowStrategyListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModifyCustomizeFlowStrategyListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.StrategyObject) {
+		request.StrategyObjectShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StrategyObject, dara.String("StrategyObject"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProductType) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.StrategyObjectShrink) {
+		query["StrategyObject"] = request.StrategyObjectShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyCustomizeFlowStrategyList"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyCustomizeFlowStrategyListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Call ModifyDeviceInfo to update device-related information, such as extending the device authorization validity period, updating the business party\\"s custom business identifier, and device ID. Suitable for scenarios like renewing the device validity period.
 //
 // Description:
@@ -2859,9 +5227,11 @@ func (client *Client) MobileOnlineTimeWithContext(ctx context.Context, request *
 //
 // @return ModifyDeviceInfoResponse
 func (client *Client) ModifyDeviceInfoWithContext(ctx context.Context, request *ModifyDeviceInfoRequest, runtime *dara.RuntimeOptions) (_result *ModifyDeviceInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -2917,9 +5287,11 @@ func (client *Client) ModifyDeviceInfoWithContext(ctx context.Context, request *
 //
 // @return PageQueryWhiteListSettingResponse
 func (client *Client) PageQueryWhiteListSettingWithContext(ctx context.Context, request *PageQueryWhiteListSettingRequest, runtime *dara.RuntimeOptions) (_result *PageQueryWhiteListSettingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertNo) {
@@ -2983,6 +5355,406 @@ func (client *Client) PageQueryWhiteListSettingWithContext(ctx context.Context, 
 
 // Summary:
 //
+// # Query Blacklist and Whitelist Policies
+//
+// Description:
+//
+// - Request URL: cloudauth.aliyuncs.com
+//
+// - Request Method: HTTPS POST and GET.
+//
+// > Supports setting blacklists for IP, ID number, phone number, bank card number, etc. When a blacklist is hit, the system rejects the request and returns a fixed error code.
+//
+// Supports setting blacklists for IP, ID number, phone number, bank card number, etc. When a blacklist is hit, the system rejects the request and returns a fixed error code.
+//
+// @param request - QueryBlackListStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryBlackListStrategyResponse
+func (client *Client) QueryBlackListStrategyWithContext(ctx context.Context, request *QueryBlackListStrategyRequest, runtime *dara.RuntimeOptions) (_result *QueryBlackListStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryBlackListStrategy"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryBlackListStrategyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query Security Control Strategy
+//
+// Description:
+//
+// - Request Method: Supports sending requests via HTTPS POST and GET methods.
+//
+// - Request Address: cloudauth.aliyuncs.com.
+//
+// @param request - QueryControlStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryControlStrategyResponse
+func (client *Client) QueryControlStrategyWithContext(ctx context.Context, request *QueryControlStrategyRequest, runtime *dara.RuntimeOptions) (_result *QueryControlStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProductType) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryControlStrategy"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryControlStrategyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query Custom Flow Control Strategy
+//
+// Description:
+//
+// - Service Address: cloudauth.aliyuncs.com
+//
+// - Request Method: HTTPS POST and GET.
+//
+// - Security Rules: These are rules to ensure system security, such as monitoring for API abuse, account theft, etc. When a threshold is triggered, the system supports alerting.
+//
+// @param request - QueryCustomizeFlowStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCustomizeFlowStrategyResponse
+func (client *Client) QueryCustomizeFlowStrategyWithContext(ctx context.Context, request *QueryCustomizeFlowStrategyRequest, runtime *dara.RuntimeOptions) (_result *QueryCustomizeFlowStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProductType) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryCustomizeFlowStrategy"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryCustomizeFlowStrategyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query Scene Configuration
+//
+// Description:
+//
+// - Service address: cloudauth.aliyuncs.com.
+//
+// - Request method: HTTPS POST and GET.
+//
+// @param request - QuerySceneConfigsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySceneConfigsResponse
+func (client *Client) QuerySceneConfigsWithContext(ctx context.Context, request *QuerySceneConfigsRequest, runtime *dara.RuntimeOptions) (_result *QuerySceneConfigsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Type) {
+		query["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QuerySceneConfigs"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QuerySceneConfigsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query Real-Person Download Task
+//
+// Description:
+//
+// Obtain the download link for statistical call data files under the product plan based on query conditions.
+//
+// - Method: HTTPS POST
+//
+// - Service Address: cloudauth.aliyuncs.com
+//
+// > The real-person authentication product uses CertifyId to count the number of calls. For ease of reconciliation, please retain the CertifyId field in your system.
+//
+// @param request - QueryVerifyDownloadTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryVerifyDownloadTaskResponse
+func (client *Client) QueryVerifyDownloadTaskWithContext(ctx context.Context, request *QueryVerifyDownloadTaskRequest, runtime *dara.RuntimeOptions) (_result *QueryVerifyDownloadTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryVerifyDownloadTask"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryVerifyDownloadTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query Flow Package
+//
+// Description:
+//
+// - Service address: cloudauth.aliyuncs.com
+//
+// - Request method: HTTPS POST and GET.
+//
+// - This interface uses different parameters for different product solutions. For details, please refer to the [official documentation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/product-overview/introduction/?spm=a2c4g.11186623.help-menu-2401581.d_0_0.13f644ecRzFHfm&scm=20140722.H_99169._.OR_help-T_cn~zh-V_1).
+//
+// @param request - QueryVerifyFlowPackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryVerifyFlowPackageResponse
+func (client *Client) QueryVerifyFlowPackageWithContext(ctx context.Context, request *QueryVerifyFlowPackageRequest, runtime *dara.RuntimeOptions) (_result *QueryVerifyFlowPackageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProductType) {
+		query["ProductType"] = request.ProductType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryVerifyFlowPackage"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryVerifyFlowPackageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Call Volume Statistics
+//
+// Description:
+//
+// - Request URL: cloudauth.aliyuncs.com
+//
+// - Request Method: HTTPS POST and GET.
+//
+// > Real-person authentication products use CertifyId to count call volume. For ease of reconciliation, please retain the CertifyId field in your system.
+//
+// @param request - QueryVerifyInvokeSatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryVerifyInvokeSatisticResponse
+func (client *Client) QueryVerifyInvokeSatisticWithContext(ctx context.Context, request *QueryVerifyInvokeSatisticRequest, runtime *dara.RuntimeOptions) (_result *QueryVerifyInvokeSatisticResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductProgramList) {
+		query["ProductProgramList"] = request.ProductProgramList
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.SceneIdList) {
+		query["SceneIdList"] = request.SceneIdList
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.StatisticsType) {
+		query["StatisticsType"] = request.StatisticsType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryVerifyInvokeSatistic"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryVerifyInvokeSatisticResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Delete Real Person Whitelist
 //
 // @param tmpReq - RemoveWhiteListSettingRequest
@@ -2991,9 +5763,11 @@ func (client *Client) PageQueryWhiteListSettingWithContext(ctx context.Context, 
 //
 // @return RemoveWhiteListSettingResponse
 func (client *Client) RemoveWhiteListSettingWithContext(ctx context.Context, tmpReq *RemoveWhiteListSettingRequest, runtime *dara.RuntimeOptions) (_result *RemoveWhiteListSettingResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RemoveWhiteListSettingShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3035,6 +5809,148 @@ func (client *Client) RemoveWhiteListSettingWithContext(ctx context.Context, tmp
 
 // Summary:
 //
+// # Update Ant Blockchain Transaction Scenario
+//
+// Description:
+//
+// Update the information of a financial-level authentication scenario based on the scenario ID.
+//
+// - Service address: cloudauth.aliyuncs.com.
+//
+// - Request method: HTTPS POST.
+//
+// @param request - UpdateAntCloudAuthSceneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAntCloudAuthSceneResponse
+func (client *Client) UpdateAntCloudAuthSceneWithContext(ctx context.Context, request *UpdateAntCloudAuthSceneRequest, runtime *dara.RuntimeOptions) (_result *UpdateAntCloudAuthSceneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BindMiniProgram) {
+		query["BindMiniProgram"] = request.BindMiniProgram
+	}
+
+	if !dara.IsNil(request.CheckFileBody) {
+		query["CheckFileBody"] = request.CheckFileBody
+	}
+
+	if !dara.IsNil(request.CheckFileName) {
+		query["CheckFileName"] = request.CheckFileName
+	}
+
+	if !dara.IsNil(request.MiniProgramName) {
+		query["MiniProgramName"] = request.MiniProgramName
+	}
+
+	if !dara.IsNil(request.Platform) {
+		query["Platform"] = request.Platform
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !dara.IsNil(request.SceneName) {
+		query["SceneName"] = request.SceneName
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.StoreImage) {
+		query["StoreImage"] = request.StoreImage
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAntCloudAuthScene"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAntCloudAuthSceneResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Update Scene Configuration
+//
+// Description:
+//
+// - Request Method: Supports sending requests via HTTPS POST.
+//
+// - Request URL: cloudauth.aliyuncs.com.
+//
+// @param request - UpdateSceneConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSceneConfigResponse
+func (client *Client) UpdateSceneConfigWithContext(ctx context.Context, request *UpdateSceneConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateSceneConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		body["config"] = request.Config
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["id"] = request.Id
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		body["sceneId"] = request.SceneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateSceneConfig"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateSceneConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Five-Item Vehicle Information Recognition
 //
 // Description:
@@ -3047,9 +5963,11 @@ func (client *Client) RemoveWhiteListSettingWithContext(ctx context.Context, tmp
 //
 // @return Vehicle5ItemQueryResponse
 func (client *Client) Vehicle5ItemQueryWithContext(ctx context.Context, request *Vehicle5ItemQueryRequest, runtime *dara.RuntimeOptions) (_result *Vehicle5ItemQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ParamType) {
@@ -3101,9 +6019,11 @@ func (client *Client) Vehicle5ItemQueryWithContext(ctx context.Context, request 
 //
 // @return VehicleInsureQueryResponse
 func (client *Client) VehicleInsureQueryWithContext(ctx context.Context, request *VehicleInsureQueryRequest, runtime *dara.RuntimeOptions) (_result *VehicleInsureQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ParamType) {
@@ -3159,9 +6079,11 @@ func (client *Client) VehicleInsureQueryWithContext(ctx context.Context, request
 //
 // @return VehicleMetaVerifyResponse
 func (client *Client) VehicleMetaVerifyWithContext(ctx context.Context, request *VehicleMetaVerifyRequest, runtime *dara.RuntimeOptions) (_result *VehicleMetaVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IdentifyNum) {
@@ -3225,9 +6147,11 @@ func (client *Client) VehicleMetaVerifyWithContext(ctx context.Context, request 
 //
 // @return VehicleMetaVerifyV2Response
 func (client *Client) VehicleMetaVerifyV2WithContext(ctx context.Context, request *VehicleMetaVerifyV2Request, runtime *dara.RuntimeOptions) (_result *VehicleMetaVerifyV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IdentifyNum) {
@@ -3291,9 +6215,11 @@ func (client *Client) VehicleMetaVerifyV2WithContext(ctx context.Context, reques
 //
 // @return VehicleQueryResponse
 func (client *Client) VehicleQueryWithContext(ctx context.Context, request *VehicleQueryRequest, runtime *dara.RuntimeOptions) (_result *VehicleQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ParamType) {
@@ -3367,9 +6293,11 @@ func (client *Client) VehicleQueryWithContext(ctx context.Context, request *Vehi
 //
 // @return VerifyMaterialResponse
 func (client *Client) VerifyMaterialWithContext(ctx context.Context, request *VerifyMaterialRequest, runtime *dara.RuntimeOptions) (_result *VerifyMaterialResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {

@@ -59,5 +59,10 @@ func (s *DescribeSmartStatisticsPageListResponse) SetBody(v *DescribeSmartStatis
 }
 
 func (s *DescribeSmartStatisticsPageListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

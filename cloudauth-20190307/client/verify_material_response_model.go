@@ -59,5 +59,10 @@ func (s *VerifyMaterialResponse) SetBody(v *VerifyMaterialResponseBody) *VerifyM
 }
 
 func (s *VerifyMaterialResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

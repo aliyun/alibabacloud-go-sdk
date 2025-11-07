@@ -59,5 +59,10 @@ func (s *Id3MetaVerifyResponse) SetBody(v *Id3MetaVerifyResponseBody) *Id3MetaVe
 }
 
 func (s *Id3MetaVerifyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

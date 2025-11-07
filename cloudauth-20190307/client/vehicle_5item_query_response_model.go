@@ -59,5 +59,10 @@ func (s *Vehicle5ItemQueryResponse) SetBody(v *Vehicle5ItemQueryResponseBody) *V
 }
 
 func (s *Vehicle5ItemQueryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

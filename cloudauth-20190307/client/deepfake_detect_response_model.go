@@ -59,5 +59,10 @@ func (s *DeepfakeDetectResponse) SetBody(v *DeepfakeDetectResponseBody) *Deepfak
 }
 
 func (s *DeepfakeDetectResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

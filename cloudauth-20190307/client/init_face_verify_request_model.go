@@ -43,6 +43,8 @@ type iInitFaceVerifyRequest interface {
 	GetFaceContrastPictureUrl() *string
 	SetFaceGuardOutput(v string) *InitFaceVerifyRequest
 	GetFaceGuardOutput() *string
+	SetH5DegradeConfirmBtn(v string) *InitFaceVerifyRequest
+	GetH5DegradeConfirmBtn() *string
 	SetIp(v string) *InitFaceVerifyRequest
 	GetIp() *string
 	SetMetaInfo(v string) *InitFaceVerifyRequest
@@ -250,7 +252,8 @@ type InitFaceVerifyRequest struct {
 	// example:
 	//
 	// DeviceRisk
-	FaceGuardOutput *string `json:"FaceGuardOutput,omitempty" xml:"FaceGuardOutput,omitempty"`
+	FaceGuardOutput     *string `json:"FaceGuardOutput,omitempty" xml:"FaceGuardOutput,omitempty"`
+	H5DegradeConfirmBtn *string `json:"H5DegradeConfirmBtn,omitempty" xml:"H5DegradeConfirmBtn,omitempty"`
 	// User\\"s IP address.
 	//
 	// example:
@@ -557,6 +560,10 @@ func (s *InitFaceVerifyRequest) GetFaceGuardOutput() *string {
 	return s.FaceGuardOutput
 }
 
+func (s *InitFaceVerifyRequest) GetH5DegradeConfirmBtn() *string {
+	return s.H5DegradeConfirmBtn
+}
+
 func (s *InitFaceVerifyRequest) GetIp() *string {
 	return s.Ip
 }
@@ -723,6 +730,11 @@ func (s *InitFaceVerifyRequest) SetFaceContrastPictureUrl(v string) *InitFaceVer
 
 func (s *InitFaceVerifyRequest) SetFaceGuardOutput(v string) *InitFaceVerifyRequest {
 	s.FaceGuardOutput = &v
+	return s
+}
+
+func (s *InitFaceVerifyRequest) SetH5DegradeConfirmBtn(v string) *InitFaceVerifyRequest {
+	s.H5DegradeConfirmBtn = &v
 	return s
 }
 

@@ -87,7 +87,12 @@ func (s *Mobile3MetaDetailStandardVerifyResponseBody) SetResultObject(v *Mobile3
 }
 
 func (s *Mobile3MetaDetailStandardVerifyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type Mobile3MetaDetailStandardVerifyResponseBodyResultObject struct {

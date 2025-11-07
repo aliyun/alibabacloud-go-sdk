@@ -104,7 +104,12 @@ func (s *CompareFacesResponseBody) SetSuccess(v bool) *CompareFacesResponseBody 
 }
 
 func (s *CompareFacesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CompareFacesResponseBodyData struct {

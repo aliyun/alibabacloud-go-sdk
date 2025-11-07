@@ -59,5 +59,10 @@ func (s *Mobile3MetaSimpleStandardVerifyResponse) SetBody(v *Mobile3MetaSimpleSt
 }
 
 func (s *Mobile3MetaSimpleStandardVerifyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

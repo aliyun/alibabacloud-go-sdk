@@ -87,7 +87,12 @@ func (s *InitFaceVerifyResponseBody) SetResultObject(v *InitFaceVerifyResponseBo
 }
 
 func (s *InitFaceVerifyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InitFaceVerifyResponseBodyResultObject struct {

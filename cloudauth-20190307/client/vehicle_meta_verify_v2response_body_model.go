@@ -87,7 +87,12 @@ func (s *VehicleMetaVerifyV2ResponseBody) SetResultObject(v *VehicleMetaVerifyV2
 }
 
 func (s *VehicleMetaVerifyV2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type VehicleMetaVerifyV2ResponseBodyResultObject struct {

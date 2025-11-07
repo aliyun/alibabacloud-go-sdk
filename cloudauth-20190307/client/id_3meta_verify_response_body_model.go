@@ -97,7 +97,12 @@ func (s *Id3MetaVerifyResponseBody) SetResultObject(v *Id3MetaVerifyResponseBody
 }
 
 func (s *Id3MetaVerifyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type Id3MetaVerifyResponseBodyResultObject struct {

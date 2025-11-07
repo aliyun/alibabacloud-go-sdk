@@ -87,7 +87,12 @@ func (s *VehicleQueryResponseBody) SetResultObject(v *VehicleQueryResponseBodyRe
 }
 
 func (s *VehicleQueryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type VehicleQueryResponseBodyResultObject struct {

@@ -87,7 +87,12 @@ func (s *MobileDetectResponseBody) SetResultObject(v *MobileDetectResponseBodyRe
 }
 
 func (s *MobileDetectResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MobileDetectResponseBodyResultObject struct {
@@ -128,7 +133,16 @@ func (s *MobileDetectResponseBodyResultObject) SetItems(v []*MobileDetectRespons
 }
 
 func (s *MobileDetectResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MobileDetectResponseBodyResultObjectItems struct {

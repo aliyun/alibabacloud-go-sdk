@@ -87,7 +87,12 @@ func (s *DescribeVerifyTokenResponseBody) SetVerifyToken(v string) *DescribeVeri
 }
 
 func (s *DescribeVerifyTokenResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OssUploadToken != nil {
+		if err := s.OssUploadToken.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVerifyTokenResponseBodyOssUploadToken struct {

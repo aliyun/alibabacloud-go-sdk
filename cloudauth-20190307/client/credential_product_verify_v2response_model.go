@@ -59,5 +59,10 @@ func (s *CredentialProductVerifyV2Response) SetBody(v *CredentialProductVerifyV2
 }
 
 func (s *CredentialProductVerifyV2Response) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

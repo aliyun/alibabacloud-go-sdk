@@ -59,5 +59,10 @@ func (s *LivenessFaceVerifyResponse) SetBody(v *LivenessFaceVerifyResponseBody) 
 }
 
 func (s *LivenessFaceVerifyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

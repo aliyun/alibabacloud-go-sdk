@@ -59,5 +59,10 @@ func (s *Id2MetaVerifyWithOCRResponse) SetBody(v *Id2MetaVerifyWithOCRResponseBo
 }
 
 func (s *Id2MetaVerifyWithOCRResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

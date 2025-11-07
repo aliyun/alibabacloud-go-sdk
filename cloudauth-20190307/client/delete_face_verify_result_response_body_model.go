@@ -87,7 +87,12 @@ func (s *DeleteFaceVerifyResultResponseBody) SetResultObject(v *DeleteFaceVerify
 }
 
 func (s *DeleteFaceVerifyResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteFaceVerifyResultResponseBodyResultObject struct {

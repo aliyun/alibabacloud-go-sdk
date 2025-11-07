@@ -87,7 +87,12 @@ func (s *DeepfakeDetectResponseBody) SetResultObject(v *DeepfakeDetectResponseBo
 }
 
 func (s *DeepfakeDetectResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeepfakeDetectResponseBodyResultObject struct {

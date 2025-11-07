@@ -59,5 +59,10 @@ func (s *MobileDetectResponse) SetBody(v *MobileDetectResponseBody) *MobileDetec
 }
 
 func (s *MobileDetectResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

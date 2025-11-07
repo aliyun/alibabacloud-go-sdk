@@ -149,7 +149,12 @@ func (s *DescribeVerifyResultResponseBody) SetVerifyStatus(v int32) *DescribeVer
 }
 
 func (s *DescribeVerifyResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Material != nil {
+		if err := s.Material.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVerifyResultResponseBodyMaterial struct {
@@ -294,7 +299,12 @@ func (s *DescribeVerifyResultResponseBodyMaterial) SetVideoUrls(v []*string) *De
 }
 
 func (s *DescribeVerifyResultResponseBodyMaterial) Validate() error {
-	return dara.Validate(s)
+	if s.IdCardInfo != nil {
+		if err := s.IdCardInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVerifyResultResponseBodyMaterialIdCardInfo struct {

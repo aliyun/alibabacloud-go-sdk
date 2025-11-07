@@ -97,7 +97,12 @@ func (s *Id2MetaVerifyWithOCRResponseBody) SetResultObject(v *Id2MetaVerifyWithO
 }
 
 func (s *Id2MetaVerifyWithOCRResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type Id2MetaVerifyWithOCRResponseBodyResultObject struct {

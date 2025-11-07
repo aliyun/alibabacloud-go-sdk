@@ -87,7 +87,12 @@ func (s *AIGCFaceVerifyResponseBody) SetResultObject(v *AIGCFaceVerifyResponseBo
 }
 
 func (s *AIGCFaceVerifyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AIGCFaceVerifyResponseBodyResultObject struct {

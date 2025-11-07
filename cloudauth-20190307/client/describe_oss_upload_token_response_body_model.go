@@ -53,7 +53,12 @@ func (s *DescribeOssUploadTokenResponseBody) SetRequestId(v string) *DescribeOss
 }
 
 func (s *DescribeOssUploadTokenResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OssUploadToken != nil {
+		if err := s.OssUploadToken.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeOssUploadTokenResponseBodyOssUploadToken struct {

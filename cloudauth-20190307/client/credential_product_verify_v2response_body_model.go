@@ -87,7 +87,12 @@ func (s *CredentialProductVerifyV2ResponseBody) SetResultObject(v *CredentialPro
 }
 
 func (s *CredentialProductVerifyV2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CredentialProductVerifyV2ResponseBodyResultObject struct {

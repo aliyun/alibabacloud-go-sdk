@@ -59,5 +59,10 @@ func (s *Mobile2MetaVerifyResponse) SetBody(v *Mobile2MetaVerifyResponseBody) *M
 }
 
 func (s *Mobile2MetaVerifyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

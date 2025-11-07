@@ -97,7 +97,12 @@ func (s *DescribeCardVerifyResponseBody) SetResultObject(v *DescribeCardVerifyRe
 }
 
 func (s *DescribeCardVerifyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCardVerifyResponseBodyResultObject struct {

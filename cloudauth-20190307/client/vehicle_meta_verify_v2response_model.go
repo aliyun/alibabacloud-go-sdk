@@ -59,5 +59,10 @@ func (s *VehicleMetaVerifyV2Response) SetBody(v *VehicleMetaVerifyV2ResponseBody
 }
 
 func (s *VehicleMetaVerifyV2Response) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

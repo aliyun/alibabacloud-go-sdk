@@ -87,7 +87,12 @@ func (s *ContrastFaceVerifyResponseBody) SetResultObject(v *ContrastFaceVerifyRe
 }
 
 func (s *ContrastFaceVerifyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ContrastFaceVerifyResponseBodyResultObject struct {

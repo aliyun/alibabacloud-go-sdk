@@ -87,7 +87,12 @@ func (s *CredentialVerifyV2ResponseBody) SetResultObject(v *CredentialVerifyV2Re
 }
 
 func (s *CredentialVerifyV2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CredentialVerifyV2ResponseBodyResultObject struct {
@@ -266,7 +271,12 @@ func (s *CredentialVerifyV2ResponseBodyResultObject) SetVlResult(v *CredentialVe
 }
 
 func (s *CredentialVerifyV2ResponseBodyResultObject) Validate() error {
-	return dara.Validate(s)
+	if s.VlResult != nil {
+		if err := s.VlResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CredentialVerifyV2ResponseBodyResultObjectVlResult struct {

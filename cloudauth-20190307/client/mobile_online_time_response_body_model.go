@@ -87,7 +87,12 @@ func (s *MobileOnlineTimeResponseBody) SetResultObject(v *MobileOnlineTimeRespon
 }
 
 func (s *MobileOnlineTimeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResultObject != nil {
+		if err := s.ResultObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MobileOnlineTimeResponseBodyResultObject struct {

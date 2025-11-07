@@ -104,7 +104,12 @@ func (s *DetectFaceAttributesResponseBody) SetSuccess(v bool) *DetectFaceAttribu
 }
 
 func (s *DetectFaceAttributesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DetectFaceAttributesResponseBodyData struct {
@@ -160,7 +165,12 @@ func (s *DetectFaceAttributesResponseBodyData) SetImgWidth(v int32) *DetectFaceA
 }
 
 func (s *DetectFaceAttributesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.FaceInfos != nil {
+		if err := s.FaceInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DetectFaceAttributesResponseBodyDataFaceInfos struct {
@@ -185,7 +195,16 @@ func (s *DetectFaceAttributesResponseBodyDataFaceInfos) SetFaceAttributesDetectI
 }
 
 func (s *DetectFaceAttributesResponseBodyDataFaceInfos) Validate() error {
-	return dara.Validate(s)
+	if s.FaceAttributesDetectInfo != nil {
+		for _, item := range s.FaceAttributesDetectInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfo struct {
@@ -222,7 +241,17 @@ func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfo) 
 }
 
 func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfo) Validate() error {
-	return dara.Validate(s)
+	if s.FaceAttributes != nil {
+		if err := s.FaceAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FaceRect != nil {
+		if err := s.FaceRect.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes struct {
@@ -367,7 +396,17 @@ func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFa
 }
 
 func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes) Validate() error {
-	return dara.Validate(s)
+	if s.Headpose != nil {
+		if err := s.Headpose.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Smiling != nil {
+		if err := s.Smiling.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose struct {

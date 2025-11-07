@@ -59,5 +59,10 @@ func (s *BankMetaVerifyResponse) SetBody(v *BankMetaVerifyResponseBody) *BankMet
 }
 
 func (s *BankMetaVerifyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

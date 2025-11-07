@@ -147,7 +147,12 @@ func (s *VerifyMaterialResponseBody) SetVerifyToken(v string) *VerifyMaterialRes
 }
 
 func (s *VerifyMaterialResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Material != nil {
+		if err := s.Material.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type VerifyMaterialResponseBodyMaterial struct {
@@ -279,7 +284,12 @@ func (s *VerifyMaterialResponseBodyMaterial) SetIdCardNumber(v string) *VerifyMa
 }
 
 func (s *VerifyMaterialResponseBodyMaterial) Validate() error {
-	return dara.Validate(s)
+	if s.IdCardInfo != nil {
+		if err := s.IdCardInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type VerifyMaterialResponseBodyMaterialIdCardInfo struct {

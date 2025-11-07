@@ -104,7 +104,12 @@ func (s *DescribeDeviceInfoResponseBody) SetTotalCount(v int32) *DescribeDeviceI
 }
 
 func (s *DescribeDeviceInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfoList != nil {
+		if err := s.DeviceInfoList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDeviceInfoResponseBodyDeviceInfoList struct {
@@ -129,7 +134,16 @@ func (s *DescribeDeviceInfoResponseBodyDeviceInfoList) SetDeviceInfo(v []*Descri
 }
 
 func (s *DescribeDeviceInfoResponseBodyDeviceInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfo != nil {
+		for _, item := range s.DeviceInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo struct {

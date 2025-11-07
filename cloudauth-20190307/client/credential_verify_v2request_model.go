@@ -330,7 +330,16 @@ func (s *CredentialVerifyV2Request) SetUserName(v string) *CredentialVerifyV2Req
 }
 
 func (s *CredentialVerifyV2Request) Validate() error {
-	return dara.Validate(s)
+	if s.MerchantDetail != nil {
+		for _, item := range s.MerchantDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CredentialVerifyV2RequestMerchantDetail struct {
