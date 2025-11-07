@@ -316,7 +316,8 @@ type ListOriginPoolsResponseBodyOriginPoolsOrigins struct {
 	// example:
 	//
 	// 997502094872132
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	IpVersionPolicy *string `json:"IpVersionPolicy,omitempty" xml:"IpVersionPolicy,omitempty"`
 	// Origin name.
 	//
 	// example:
@@ -371,6 +372,10 @@ func (s *ListOriginPoolsResponseBodyOriginPoolsOrigins) GetId() *int64 {
 	return s.Id
 }
 
+func (s *ListOriginPoolsResponseBodyOriginPoolsOrigins) GetIpVersionPolicy() *string {
+	return s.IpVersionPolicy
+}
+
 func (s *ListOriginPoolsResponseBodyOriginPoolsOrigins) GetName() *string {
 	return s.Name
 }
@@ -405,6 +410,11 @@ func (s *ListOriginPoolsResponseBodyOriginPoolsOrigins) SetHeader(v interface{})
 
 func (s *ListOriginPoolsResponseBodyOriginPoolsOrigins) SetId(v int64) *ListOriginPoolsResponseBodyOriginPoolsOrigins {
 	s.Id = &v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPoolsOrigins) SetIpVersionPolicy(v string) *ListOriginPoolsResponseBodyOriginPoolsOrigins {
+	s.IpVersionPolicy = &v
 	return s
 }
 

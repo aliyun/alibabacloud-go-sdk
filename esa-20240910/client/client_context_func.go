@@ -7737,7 +7737,7 @@ func (client *Client) ExportRecordsWithContext(ctx context.Context, request *Exp
 
 // Summary:
 //
-// 获取架构文件套餐使用情况
+// Queries the usage of the upload file quota for API security schema verification.
 //
 // @param request - GetApiSchemaUsageRequest
 //

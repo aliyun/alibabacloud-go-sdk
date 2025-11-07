@@ -139,7 +139,8 @@ type UpdateOriginPoolRequestOrigins struct {
 	//         ]
 	//
 	//       }
-	Header interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
+	Header          interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
+	IpVersionPolicy *string     `json:"IpVersionPolicy,omitempty" xml:"IpVersionPolicy,omitempty"`
 	// The name of the origin, which must be unique under one origin pool.
 	//
 	// example:
@@ -190,6 +191,10 @@ func (s *UpdateOriginPoolRequestOrigins) GetHeader() interface{} {
 	return s.Header
 }
 
+func (s *UpdateOriginPoolRequestOrigins) GetIpVersionPolicy() *string {
+	return s.IpVersionPolicy
+}
+
 func (s *UpdateOriginPoolRequestOrigins) GetName() *string {
 	return s.Name
 }
@@ -219,6 +224,11 @@ func (s *UpdateOriginPoolRequestOrigins) SetEnabled(v bool) *UpdateOriginPoolReq
 
 func (s *UpdateOriginPoolRequestOrigins) SetHeader(v interface{}) *UpdateOriginPoolRequestOrigins {
 	s.Header = v
+	return s
+}
+
+func (s *UpdateOriginPoolRequestOrigins) SetIpVersionPolicy(v string) *UpdateOriginPoolRequestOrigins {
+	s.IpVersionPolicy = &v
 	return s
 }
 
