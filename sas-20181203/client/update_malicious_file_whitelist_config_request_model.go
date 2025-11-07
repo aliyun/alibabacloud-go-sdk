@@ -64,7 +64,12 @@ type UpdateMaliciousFileWhitelistConfigRequest struct {
 	//
 	// strEqual
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Remark   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Remark.
+	//
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The feature to which this operation belongs.
 	//
 	// 	- Set the value to agentless, which indicates the agentless detection feature.

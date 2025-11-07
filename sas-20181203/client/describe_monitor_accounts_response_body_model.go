@@ -18,6 +18,7 @@ type iDescribeMonitorAccountsResponseBody interface {
 }
 
 type DescribeMonitorAccountsResponseBody struct {
+	// List of member account information.
 	AccountIdInfos []*DescribeMonitorAccountsResponseBodyAccountIdInfos `json:"AccountIdInfos,omitempty" xml:"AccountIdInfos,omitempty" type:"Repeated"`
 	// The IDs of the members.
 	AccountIds []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
@@ -78,11 +79,50 @@ func (s *DescribeMonitorAccountsResponseBody) Validate() error {
 }
 
 type DescribeMonitorAccountsResponseBodyAccountIdInfos struct {
-	AccountId        *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AddTime          *int64  `json:"AddTime,omitempty" xml:"AddTime,omitempty"`
-	OperatorUid      *string `json:"OperatorUid,omitempty" xml:"OperatorUid,omitempty"`
-	PostBasicService *int32  `json:"PostBasicService,omitempty" xml:"PostBasicService,omitempty"`
-	SasVersion       *string `json:"SasVersion,omitempty" xml:"SasVersion,omitempty"`
+	// The Alibaba Cloud account ID of the member.
+	//
+	// example:
+	//
+	// 119593010538****
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The time when it was added to the control list, in timestamp format with second precision.
+	//
+	// example:
+	//
+	// 1760520684000
+	AddTime *int64 `json:"AddTime,omitempty" xml:"AddTime,omitempty"`
+	// The account ID of the operator.
+	//
+	// example:
+	//
+	// 106635707417****
+	OperatorUid *string `json:"OperatorUid,omitempty" xml:"OperatorUid,omitempty"`
+	// Basic service switch. Values:
+	//
+	// - **0**: Off
+	//
+	// - **1**: On
+	//
+	// example:
+	//
+	// 1
+	PostBasicService *int32 `json:"PostBasicService,omitempty" xml:"PostBasicService,omitempty"`
+	// The purchased version of Cloud Security Center. Values:
+	//
+	// - **0*	- or **1**: Free Edition
+	//
+	// - **2*	- or **3**: Enterprise Edition
+	//
+	//  - **5**: Advanced Edition
+	//
+	// - **6**: Anti-Virus Edition
+	//
+	// - **7**: Flagship Edition
+	//
+	// example:
+	//
+	// 7
+	SasVersion *string `json:"SasVersion,omitempty" xml:"SasVersion,omitempty"`
 }
 
 func (s DescribeMonitorAccountsResponseBodyAccountIdInfos) String() string {

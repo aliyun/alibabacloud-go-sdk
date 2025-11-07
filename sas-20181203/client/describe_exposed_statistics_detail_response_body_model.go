@@ -217,6 +217,8 @@ type DescribeExposedStatisticsDetailResponseBodyStatisticsDetails struct {
 	//
 	// ngw-bp1vkbju8f3w87c9v****
 	ExposureTypeInstanceName *string `json:"ExposureTypeInstanceName,omitempty" xml:"ExposureTypeInstanceName,omitempty"`
+	// The listener port that is used to redirect HTTP requests.
+	//
 	// example:
 	//
 	// 80

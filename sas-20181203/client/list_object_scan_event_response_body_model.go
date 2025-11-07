@@ -102,7 +102,12 @@ type ListObjectScanEventResponseBodyData struct {
 	//
 	// true
 	DisplaySandboxResult *string `json:"DisplaySandboxResult,omitempty" xml:"DisplaySandboxResult,omitempty"`
-	ErrorMsg             *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// connect timed out
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	// The ID of the alert.
 	//
 	// example:
@@ -142,14 +147,24 @@ type ListObjectScanEventResponseBodyData struct {
 	// example:
 	//
 	// 1694576692000
-	LastTime                    *int64  `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	LastTime *int64 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	// Information on whitelisting rule hits.
+	//
+	// example:
+	//
+	// <strong></strong>&nbsp&nbspmd5&nbsp&nbsp contains &nbsp&nbsp23&nbsp&nbsp
 	MatchedWhiteListRuleI18nStr *string `json:"MatchedWhiteListRuleI18nStr,omitempty" xml:"MatchedWhiteListRuleI18nStr,omitempty"`
 	// The MD5 hash value of the file.
 	//
 	// example:
 	//
 	// 5b394b54ca632fe51c4ab4a6dbaf****
-	Md5           *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// Alarm handling result
+	//
+	// example:
+	//
+	// fail
 	OperateResult *string `json:"OperateResult,omitempty" xml:"OperateResult,omitempty"`
 	// The key of the file that is stored in the OSS bucket.
 	//
@@ -157,6 +172,11 @@ type ListObjectScanEventResponseBodyData struct {
 	//
 	// 1/2023/07/21/10/18/16899059356518bcf6c64-a04e-492d-a421-4ae8b888****
 	OssKey *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
+	// Remark.
+	//
+	// example:
+	//
+	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The risk level of the alert. Valid values:
 	//
@@ -192,7 +212,22 @@ type ListObjectScanEventResponseBodyData struct {
 	//
 	// OSS
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Event status. Valid values::
+	//
+	// - **0**: Unprocessed
+	//
+	// - **1**: Processed manually
+	//
+	// - **2**: Whitelisted
+	//
+	// - **3**: Ignored
+	//
+	// - **4**: Access denied
+	//
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListObjectScanEventResponseBodyData) String() string {

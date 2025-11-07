@@ -428,7 +428,8 @@ type DescribeCloudCenterInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// 1024
-	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	Mem       *int32  `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The operating system of the asset.
 	//
 	// example:
@@ -849,6 +850,10 @@ func (s *DescribeCloudCenterInstancesResponseBodyInstances) GetMem() *int32 {
 	return s.Mem
 }
 
+func (s *DescribeCloudCenterInstancesResponseBodyInstances) GetNamespace() *string {
+	return s.Namespace
+}
+
 func (s *DescribeCloudCenterInstancesResponseBodyInstances) GetOs() *string {
 	return s.Os
 }
@@ -1113,6 +1118,11 @@ func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetMacListString(v s
 
 func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetMem(v int32) *DescribeCloudCenterInstancesResponseBodyInstances {
 	s.Mem = &v
+	return s
+}
+
+func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetNamespace(v string) *DescribeCloudCenterInstancesResponseBodyInstances {
+	s.Namespace = &v
 	return s
 }
 

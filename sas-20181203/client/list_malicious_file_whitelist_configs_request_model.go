@@ -38,7 +38,14 @@ type ListMaliciousFileWhitelistConfigsRequest struct {
 	//
 	// ALL
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	IdList    *int64  `json:"IdList,omitempty" xml:"IdList,omitempty"`
+	// Deprecated
+	//
+	// Event ID. <notice>Field is deprecated.</notice>
+	//
+	// example:
+	//
+	// 123
+	IdList *int64 `json:"IdList,omitempty" xml:"IdList,omitempty"`
 	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
 	// 	- **zh**: Chinese

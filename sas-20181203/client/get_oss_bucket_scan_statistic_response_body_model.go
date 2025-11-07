@@ -91,10 +91,25 @@ type GetOssBucketScanStatisticResponseBodyData struct {
 	// example:
 	//
 	// 1
-	NoScanBucket       *int32 `json:"NoScanBucket,omitempty" xml:"NoScanBucket,omitempty"`
+	NoScanBucket *int32 `json:"NoScanBucket,omitempty" xml:"NoScanBucket,omitempty"`
+	// Postpaid usage count.
+	//
+	// example:
+	//
+	// 1000
 	PostPayInvokeCount *int64 `json:"PostPayInvokeCount,omitempty" xml:"PostPayInvokeCount,omitempty"`
-	PrePayAuthCount    *int64 `json:"PrePayAuthCount,omitempty" xml:"PrePayAuthCount,omitempty"`
-	PrePayInvokeCount  *int64 `json:"PrePayInvokeCount,omitempty" xml:"PrePayInvokeCount,omitempty"`
+	// Prepaid authorized count.
+	//
+	// example:
+	//
+	// 10000
+	PrePayAuthCount *int64 `json:"PrePayAuthCount,omitempty" xml:"PrePayAuthCount,omitempty"`
+	// Prepaid usage count.
+	//
+	// example:
+	//
+	// 100
+	PrePayInvokeCount *int64 `json:"PrePayInvokeCount,omitempty" xml:"PrePayInvokeCount,omitempty"`
 	// The remaining quota.
 	//
 	// example:

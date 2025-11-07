@@ -42,6 +42,15 @@ type iListObjectScanEventRequest interface {
 }
 
 type ListObjectScanEventRequest struct {
+	// Batch operation type. Valid values:
+	//
+	// - **sha256**: Same file content
+	//
+	// - **eventName**: Same alert type
+	//
+	// example:
+	//
+	// sha256
 	BatchType *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
 	// The name of the OSS bucket.
 	//
@@ -57,7 +66,12 @@ type ListObjectScanEventRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EventId     *int64 `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// Event ID.
+	//
+	// example:
+	//
+	// 8925****
+	EventId *int64 `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	// The name of the alert.
 	//
 	// example:
@@ -122,7 +136,22 @@ type ListObjectScanEventRequest struct {
 	//
 	// OSS
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Event status. The values are as follows:
+	//
+	// - **0**: Unprocessed
+	//
+	// - **1**: I have processed manually
+	//
+	// - **2**: Whitelisted
+	//
+	// - **3**: Ignored
+	//
+	// - **4**: Access denied
+	//
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The end of the time range during which the exception is detected.
 	//
 	// example:

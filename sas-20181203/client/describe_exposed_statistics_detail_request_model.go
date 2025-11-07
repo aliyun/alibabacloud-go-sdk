@@ -28,6 +28,8 @@ type iDescribeExposedStatisticsDetailRequest interface {
 }
 
 type DescribeExposedStatisticsDetailRequest struct {
+	// The search condition for components.
+	//
 	// example:
 	//
 	// {}
@@ -86,6 +88,8 @@ type DescribeExposedStatisticsDetailRequest struct {
 	//
 	// lb-2ze4rso39h4nczcqs****
 	StatisticsTypeInstanceValue *string `json:"StatisticsTypeInstanceValue,omitempty" xml:"StatisticsTypeInstanceValue,omitempty"`
+	// The UUID of the server.
+	//
 	// example:
 	//
 	// c9107c04-942f-40c1-981a-f1c1***
