@@ -36,7 +36,7 @@ type ListIntegrationPoliciesResponseBody struct {
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Pagination Token
+	// Pagination token
 	//
 	// example:
 	//
@@ -127,7 +127,7 @@ func (s *ListIntegrationPoliciesResponseBody) Validate() error {
 type ListIntegrationPoliciesResponseBodyPolicies struct {
 	// Bound resource information
 	BindResource *ListIntegrationPoliciesResponseBodyPoliciesBindResource `json:"bindResource,omitempty" xml:"bindResource,omitempty" type:"Struct"`
-	// Cs Umodel Status
+	// Container environment umodel installation status.
 	//
 	// example:
 	//
@@ -135,7 +135,12 @@ type ListIntegrationPoliciesResponseBodyPolicies struct {
 	CsUmodelStatus *bool `json:"csUmodelStatus,omitempty" xml:"csUmodelStatus,omitempty"`
 	// Entity group
 	EntityGroup *ListIntegrationPoliciesResponseBodyPoliciesEntityGroup `json:"entityGroup,omitempty" xml:"entityGroup,omitempty" type:"Struct"`
-	FeePackage  *string                                                 `json:"feePackage,omitempty" xml:"feePackage,omitempty"`
+	// Billing type.
+	//
+	// example:
+	//
+	// CS_Pro
+	FeePackage *string `json:"feePackage,omitempty" xml:"feePackage,omitempty"`
 	// Policy network management information.
 	ManagedInfo *ListIntegrationPoliciesResponseBodyPoliciesManagedInfo `json:"managedInfo,omitempty" xml:"managedInfo,omitempty" type:"Struct"`
 	// Policy ID.
@@ -449,7 +454,7 @@ type ListIntegrationPoliciesResponseBodyPoliciesEntityGroup struct {
 	EntityGroupName *string `json:"entityGroupName,omitempty" xml:"entityGroupName,omitempty"`
 	// Entity group
 	EntityRules *ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRules `json:"entityRules,omitempty" xml:"entityRules,omitempty" type:"Struct"`
-	// Search keyword, supports document library name and description
+	// Search keywords, supporting document library name and description
 	//
 	// example:
 	//
@@ -577,7 +582,7 @@ type ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRules struct {
 	IpMatchRule *ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesIpMatchRule `json:"ipMatchRule,omitempty" xml:"ipMatchRule,omitempty" type:"Struct"`
 	// Labels
 	Labels []*ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
-	// List of region IDs
+	// List of region IDs.
 	RegionIds []*string `json:"regionIds,omitempty" xml:"regionIds,omitempty" type:"Repeated"`
 	// Resource group ID.
 	//
@@ -730,7 +735,7 @@ type ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesAnnotation
 	//
 	// add
 	Op *string `json:"op,omitempty" xml:"op,omitempty"`
-	// Tag key
+	// Tag key.
 	//
 	// example:
 	//
@@ -786,7 +791,7 @@ type ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesFieldRules
 	//
 	// test
 	FieldKey *string `json:"fieldKey,omitempty" xml:"fieldKey,omitempty"`
-	// Field content, multiple values separated by commas.
+	// Field content, multiple values separated by English commas.
 	FieldValues []*string `json:"fieldValues,omitempty" xml:"fieldValues,omitempty" type:"Repeated"`
 	// Operation to be performed.
 	//

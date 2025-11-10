@@ -40,37 +40,37 @@ type iListIntegrationPoliciesShrinkRequest interface {
 }
 
 type ListIntegrationPoliciesShrinkRequest struct {
-	// Addon Name.
+	// Addon name.
 	//
 	// example:
 	//
 	// cs-default
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
-	// Bound Resource ID.
+	// Bound resource ID
 	//
 	// example:
 	//
 	// 622d27c2e87d49debceeebc7c642610e
 	BindResourceId *string `json:"bindResourceId,omitempty" xml:"bindResourceId,omitempty"`
-	// Filter for entity IDs, separated by commas.
+	// Filter for entity IDs, separated by commas
 	//
 	// example:
 	//
 	// eg-1,eg-2,eg-3
 	EntityGroupIds *string `json:"entityGroupIds,omitempty" xml:"entityGroupIds,omitempty"`
-	// Used for Region query, separated by commas.
+	// Used for Region query, separated by commas
 	//
 	// example:
 	//
 	// cn-beijing,cn-hangzhou
 	FilterRegionIds *string `json:"filterRegionIds,omitempty" xml:"filterRegionIds,omitempty"`
-	// Maximum number of results to return, default is 30, with a maximum of 100.
+	// Maximum number of results to return. Default is 30, with a maximum of 100.
 	//
 	// example:
 	//
 	// 30
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Used to return more results. This parameter is not required for the first query; for subsequent queries, use the Token obtained from the previous response.
+	// Used to return more results. This parameter is not required for the first query. For subsequent queries, use the Token obtained from the response.
 	//
 	// example:
 	//
@@ -82,13 +82,13 @@ type ListIntegrationPoliciesShrinkRequest struct {
 	//
 	// policy-93817a401f78435596d745a97d2e85a1
 	PolicyId *string `json:"policyId,omitempty" xml:"policyId,omitempty"`
-	// Rule Name.
+	// Rule name.
 	//
 	// example:
 	//
 	// prod-database
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
-	// Policy Type
+	// Policy type
 	//
 	// example:
 	//
@@ -100,13 +100,13 @@ type ListIntegrationPoliciesShrinkRequest struct {
 	//
 	// cmee-622d27c2e87d49debceeebc7c642610e
 	PrometheusInstanceId *string `json:"prometheusInstanceId,omitempty" xml:"prometheusInstanceId,omitempty"`
-	// Used for general queries.
+	// Used for general queries
 	//
 	// example:
 	//
 	// test
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// Resource Group ID.
+	// Resource group ID.
 	//
 	// example:
 	//

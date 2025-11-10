@@ -18,7 +18,7 @@ type iCreateIntegrationPolicyResponseBody interface {
 }
 
 type CreateIntegrationPolicyResponseBody struct {
-	// Whether it was created.
+	// Whether it is created.
 	//
 	// example:
 	//

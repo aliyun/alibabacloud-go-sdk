@@ -149,7 +149,7 @@ type CreateIntegrationPolicyRequestEntityGroup struct {
 	//
 	// na61prod3-na61cloudhdfsssd
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	// Whether to disable unique binding of the Policy. If enabled, multiple Policies can be created for a single container cluster.
+	// Whether to disable the unique binding of the Policy. If enabled, multiple Policies can be created for a single container cluster.
 	//
 	// example:
 	//
@@ -161,8 +161,13 @@ type CreateIntegrationPolicyRequestEntityGroup struct {
 	//
 	// eg-b79f65d11fb94e779867cf937c3a3002
 	EntityGroupId *string `json:"entityGroupId,omitempty" xml:"entityGroupId,omitempty"`
-	EntityUserId  *string `json:"entityUserId,omitempty" xml:"entityUserId,omitempty"`
-	// VPC (Virtual Private Cloud) ID.
+	// User ID to which the cluster belongs.
+	//
+	// example:
+	//
+	// 12xxxx
+	EntityUserId *string `json:"entityUserId,omitempty" xml:"entityUserId,omitempty"`
+	// VPC ID.
 	//
 	// example:
 	//

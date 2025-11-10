@@ -1436,6 +1436,72 @@ func (client *Client) DeleteUmodel(workspace *string) (_result *DeleteUmodelResp
 
 // Summary:
 //
+// 删除Umodel配置信息
+//
+// @param request - DeleteUmodelCommonSchemaRefRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUmodelCommonSchemaRefResponse
+func (client *Client) DeleteUmodelCommonSchemaRefWithOptions(workspace *string, request *DeleteUmodelCommonSchemaRefRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteUmodelCommonSchemaRefResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Group) {
+		query["group"] = request.Group
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteUmodelCommonSchemaRef"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/umodel/common-schema-ref"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteUmodelCommonSchemaRefResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Umodel配置信息
+//
+// @param request - DeleteUmodelCommonSchemaRefRequest
+//
+// @return DeleteUmodelCommonSchemaRefResponse
+func (client *Client) DeleteUmodelCommonSchemaRef(workspace *string, request *DeleteUmodelCommonSchemaRefRequest) (_result *DeleteUmodelCommonSchemaRefResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteUmodelCommonSchemaRefResponse{}
+	_body, _err := client.DeleteUmodelCommonSchemaRefWithOptions(workspace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Delete Umodel Elements
 //
 // Description:
@@ -2165,6 +2231,56 @@ func (client *Client) GetUmodel(workspace *string) (_result *GetUmodelResponse, 
 
 // Summary:
 //
+// 获取Umodel配置信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUmodelCommonSchemaRefResponse
+func (client *Client) GetUmodelCommonSchemaRefWithOptions(workspace *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetUmodelCommonSchemaRefResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetUmodelCommonSchemaRef"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/umodel/common-schema-ref"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetUmodelCommonSchemaRefResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Umodel配置信息
+//
+// @return GetUmodelCommonSchemaRefResponse
+func (client *Client) GetUmodelCommonSchemaRef(workspace *string) (_result *GetUmodelCommonSchemaRefResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetUmodelCommonSchemaRefResponse{}
+	_body, _err := client.GetUmodelCommonSchemaRefWithOptions(workspace, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Retrieve associated Umodel graph data
 //
 // Description:
@@ -2565,7 +2681,7 @@ func (client *Client) ListAlertActions(request *ListAlertActionsRequest) (_resul
 //
 // Description:
 //
-// # Query Integration List
+// # Query integration list
 //
 // @param tmpReq - ListIntegrationPoliciesRequest
 //
@@ -2674,7 +2790,7 @@ func (client *Client) ListIntegrationPoliciesWithOptions(tmpReq *ListIntegration
 //
 // Description:
 //
-// # Query Integration List
+// # Query integration list
 //
 // @param request - ListIntegrationPoliciesRequest
 //
@@ -3981,6 +4097,73 @@ func (client *Client) UpdateIntegrationPolicy(integrationPolicyId *string, reque
 
 // Summary:
 //
+// 更新订阅
+//
+// @param request - UpdateNotifyStrategyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNotifyStrategyResponse
+func (client *Client) UpdateNotifyStrategyWithOptions(notifyStrategyId *string, request *UpdateNotifyStrategyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateNotifyStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateNotifyStrategy"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/notifyStrategies/" + dara.PercentEncode(dara.StringValue(notifyStrategyId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateNotifyStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新订阅
+//
+// @param request - UpdateNotifyStrategyRequest
+//
+// @return UpdateNotifyStrategyResponse
+func (client *Client) UpdateNotifyStrategy(notifyStrategyId *string, request *UpdateNotifyStrategyRequest) (_result *UpdateNotifyStrategyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateNotifyStrategyResponse{}
+	_body, _err := client.UpdateNotifyStrategyWithOptions(notifyStrategyId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Update Prometheus instance information
 //
 // Description:
@@ -4271,6 +4454,73 @@ func (client *Client) UpdateService(workspace *string, serviceId *string, reques
 
 // Summary:
 //
+// 更新订阅
+//
+// @param request - UpdateSubscriptionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSubscriptionResponse
+func (client *Client) UpdateSubscriptionWithOptions(subscriptionId *string, request *UpdateSubscriptionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateSubscriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateSubscription"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/subscriptions/" + dara.PercentEncode(dara.StringValue(subscriptionId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateSubscriptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新订阅
+//
+// @param request - UpdateSubscriptionRequest
+//
+// @return UpdateSubscriptionResponse
+func (client *Client) UpdateSubscription(subscriptionId *string, request *UpdateSubscriptionRequest) (_result *UpdateSubscriptionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateSubscriptionResponse{}
+	_body, _err := client.UpdateSubscriptionWithOptions(subscriptionId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Update Umodel configuration information
 //
 // Description:
@@ -4336,6 +4586,76 @@ func (client *Client) UpdateUmodel(workspace *string, request *UpdateUmodelReque
 	headers := make(map[string]*string)
 	_result = &UpdateUmodelResponse{}
 	_body, _err := client.UpdateUmodelWithOptions(workspace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Umodel配置信息
+//
+// @param request - UpsertUmodelCommonSchemaRefRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpsertUmodelCommonSchemaRefResponse
+func (client *Client) UpsertUmodelCommonSchemaRefWithOptions(workspace *string, request *UpsertUmodelCommonSchemaRefRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpsertUmodelCommonSchemaRefResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Group) {
+		query["group"] = request.Group
+	}
+
+	if !dara.IsNil(request.Version) {
+		query["version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpsertUmodelCommonSchemaRef"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/umodel/common-schema-ref"),
+		Method:      dara.String("PATCH"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpsertUmodelCommonSchemaRefResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Umodel配置信息
+//
+// @param request - UpsertUmodelCommonSchemaRefRequest
+//
+// @return UpsertUmodelCommonSchemaRefResponse
+func (client *Client) UpsertUmodelCommonSchemaRef(workspace *string, request *UpsertUmodelCommonSchemaRefRequest) (_result *UpsertUmodelCommonSchemaRefResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpsertUmodelCommonSchemaRefResponse{}
+	_body, _err := client.UpsertUmodelCommonSchemaRefWithOptions(workspace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
