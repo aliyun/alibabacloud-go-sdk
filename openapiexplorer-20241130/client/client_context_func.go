@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("openapiexplorer"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -67,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ApiMcpServerValidateHclResponse
-func (client *Client) ApiMcpServerValidateHclWithOptions(request *ApiMcpServerValidateHclRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ApiMcpServerValidateHclResponse, _err error) {
+func (client *Client) ApiMcpServerValidateHclWithContext(ctx context.Context, request *ApiMcpServerValidateHclRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ApiMcpServerValidateHclResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -95,30 +46,11 @@ func (client *Client) ApiMcpServerValidateHclWithOptions(request *ApiMcpServerVa
 		BodyType:    dara.String("json"),
 	}
 	_result = &ApiMcpServerValidateHclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 验证 Terraform HCL 语法
-//
-// @param request - ApiMcpServerValidateHclRequest
-//
-// @return ApiMcpServerValidateHclResponse
-func (client *Client) ApiMcpServerValidateHcl(request *ApiMcpServerValidateHclRequest) (_result *ApiMcpServerValidateHclResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ApiMcpServerValidateHclResponse{}
-	_body, _err := client.ApiMcpServerValidateHclWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -133,7 +65,7 @@ func (client *Client) ApiMcpServerValidateHcl(request *ApiMcpServerValidateHclRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateApiMcpServerResponse
-func (client *Client) CreateApiMcpServerWithOptions(request *CreateApiMcpServerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateApiMcpServerResponse, _err error) {
+func (client *Client) CreateApiMcpServerWithContext(ctx context.Context, request *CreateApiMcpServerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateApiMcpServerResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -213,30 +145,11 @@ func (client *Client) CreateApiMcpServerWithOptions(request *CreateApiMcpServerR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateApiMcpServerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建ApiMcpServer
-//
-// @param request - CreateApiMcpServerRequest
-//
-// @return CreateApiMcpServerResponse
-func (client *Client) CreateApiMcpServer(request *CreateApiMcpServerRequest) (_result *CreateApiMcpServerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateApiMcpServerResponse{}
-	_body, _err := client.CreateApiMcpServerWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -251,7 +164,7 @@ func (client *Client) CreateApiMcpServer(request *CreateApiMcpServerRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteApiMcpServerResponse
-func (client *Client) DeleteApiMcpServerWithOptions(request *DeleteApiMcpServerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteApiMcpServerResponse, _err error) {
+func (client *Client) DeleteApiMcpServerWithContext(ctx context.Context, request *DeleteApiMcpServerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteApiMcpServerResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -283,30 +196,11 @@ func (client *Client) DeleteApiMcpServerWithOptions(request *DeleteApiMcpServerR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteApiMcpServerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除ApiMcpServer
-//
-// @param request - DeleteApiMcpServerRequest
-//
-// @return DeleteApiMcpServerResponse
-func (client *Client) DeleteApiMcpServer(request *DeleteApiMcpServerRequest) (_result *DeleteApiMcpServerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteApiMcpServerResponse{}
-	_body, _err := client.DeleteApiMcpServerWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -321,7 +215,7 @@ func (client *Client) DeleteApiMcpServer(request *DeleteApiMcpServerRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GenerateCLICommandResponse
-func (client *Client) GenerateCLICommandWithOptions(tmpReq *GenerateCLICommandRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GenerateCLICommandResponse, _err error) {
+func (client *Client) GenerateCLICommandWithContext(ctx context.Context, tmpReq *GenerateCLICommandRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GenerateCLICommandResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -371,30 +265,11 @@ func (client *Client) GenerateCLICommandWithOptions(tmpReq *GenerateCLICommandRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &GenerateCLICommandResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 动态生成Aliyun CLI命令
-//
-// @param request - GenerateCLICommandRequest
-//
-// @return GenerateCLICommandResponse
-func (client *Client) GenerateCLICommand(request *GenerateCLICommandRequest) (_result *GenerateCLICommandResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GenerateCLICommandResponse{}
-	_body, _err := client.GenerateCLICommandWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -409,7 +284,7 @@ func (client *Client) GenerateCLICommand(request *GenerateCLICommandRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetApiDefinitionResponse
-func (client *Client) GetApiDefinitionWithOptions(request *GetApiDefinitionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetApiDefinitionResponse, _err error) {
+func (client *Client) GetApiDefinitionWithContext(ctx context.Context, request *GetApiDefinitionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetApiDefinitionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -445,30 +320,11 @@ func (client *Client) GetApiDefinitionWithOptions(request *GetApiDefinitionReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetApiDefinitionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取产品相关接口的开放元数据
-//
-// @param request - GetApiDefinitionRequest
-//
-// @return GetApiDefinitionResponse
-func (client *Client) GetApiDefinition(request *GetApiDefinitionRequest) (_result *GetApiDefinitionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetApiDefinitionResponse{}
-	_body, _err := client.GetApiDefinitionWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -483,7 +339,7 @@ func (client *Client) GetApiDefinition(request *GetApiDefinitionRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetApiMcpServerResponse
-func (client *Client) GetApiMcpServerWithOptions(request *GetApiMcpServerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetApiMcpServerResponse, _err error) {
+func (client *Client) GetApiMcpServerWithContext(ctx context.Context, request *GetApiMcpServerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetApiMcpServerResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -511,30 +367,11 @@ func (client *Client) GetApiMcpServerWithOptions(request *GetApiMcpServerRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetApiMcpServerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询 ApiMcpServer
-//
-// @param request - GetApiMcpServerRequest
-//
-// @return GetApiMcpServerResponse
-func (client *Client) GetApiMcpServer(request *GetApiMcpServerRequest) (_result *GetApiMcpServerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetApiMcpServerResponse{}
-	_body, _err := client.GetApiMcpServerWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -553,7 +390,7 @@ func (client *Client) GetApiMcpServer(request *GetApiMcpServerRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetErrorCodeSolutionsResponse
-func (client *Client) GetErrorCodeSolutionsWithOptions(request *GetErrorCodeSolutionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetErrorCodeSolutionsResponse, _err error) {
+func (client *Client) GetErrorCodeSolutionsWithContext(ctx context.Context, request *GetErrorCodeSolutionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetErrorCodeSolutionsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -593,34 +430,11 @@ func (client *Client) GetErrorCodeSolutionsWithOptions(request *GetErrorCodeSolu
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetErrorCodeSolutionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries an error solution by error code.
-//
-// Description:
-//
-// You can call this API operation to query public information instead of special information, such as the account ownership. Permissions on this API operation cannot be granted to other members.
-//
-// @param request - GetErrorCodeSolutionsRequest
-//
-// @return GetErrorCodeSolutionsResponse
-func (client *Client) GetErrorCodeSolutions(request *GetErrorCodeSolutionsRequest) (_result *GetErrorCodeSolutionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetErrorCodeSolutionsResponse{}
-	_body, _err := client.GetErrorCodeSolutionsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -639,7 +453,7 @@ func (client *Client) GetErrorCodeSolutions(request *GetErrorCodeSolutionsReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetOwnRequestLogResponse
-func (client *Client) GetOwnRequestLogWithOptions(request *GetOwnRequestLogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetOwnRequestLogResponse, _err error) {
+func (client *Client) GetOwnRequestLogWithContext(ctx context.Context, request *GetOwnRequestLogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetOwnRequestLogResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -667,34 +481,11 @@ func (client *Client) GetOwnRequestLogWithOptions(request *GetOwnRequestLogReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetOwnRequestLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the log of an API call performed by using the current account based on the returned request ID of the API to troubleshoot issues.
-//
-// Description:
-//
-// Permissions on this API cannot be granted to other members.
-//
-// @param request - GetOwnRequestLogRequest
-//
-// @return GetOwnRequestLogResponse
-func (client *Client) GetOwnRequestLog(request *GetOwnRequestLogRequest) (_result *GetOwnRequestLogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetOwnRequestLogResponse{}
-	_body, _err := client.GetOwnRequestLogWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -709,7 +500,7 @@ func (client *Client) GetOwnRequestLog(request *GetOwnRequestLogRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetProductEndpointsResponse
-func (client *Client) GetProductEndpointsWithOptions(request *GetProductEndpointsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetProductEndpointsResponse, _err error) {
+func (client *Client) GetProductEndpointsWithContext(ctx context.Context, request *GetProductEndpointsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetProductEndpointsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -737,30 +528,11 @@ func (client *Client) GetProductEndpointsWithOptions(request *GetProductEndpoint
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetProductEndpointsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取产品的接入点信息
-//
-// @param request - GetProductEndpointsRequest
-//
-// @return GetProductEndpointsResponse
-func (client *Client) GetProductEndpoints(request *GetProductEndpointsRequest) (_result *GetProductEndpointsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetProductEndpointsResponse{}
-	_body, _err := client.GetProductEndpointsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -779,7 +551,7 @@ func (client *Client) GetProductEndpoints(request *GetProductEndpointsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRequestLogResponse
-func (client *Client) GetRequestLogWithOptions(request *GetRequestLogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRequestLogResponse, _err error) {
+func (client *Client) GetRequestLogWithContext(ctx context.Context, request *GetRequestLogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRequestLogResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -807,34 +579,11 @@ func (client *Client) GetRequestLogWithOptions(request *GetRequestLogRequest, he
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRequestLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the log of an API call based on the returned request ID of the API to troubleshoot issues.
-//
-// Description:
-//
-// You can grant permissions to a Resource Access Management (RAM) user or assume a role to query the log of an API call across RAM users or Alibaba Cloud accounts. For more information, see [Grant permissions to troubleshoot API errors across accounts](https://help.aliyun.com/document_detail/2868101.html).
-//
-// @param request - GetRequestLogRequest
-//
-// @return GetRequestLogResponse
-func (client *Client) GetRequestLog(request *GetRequestLogRequest) (_result *GetRequestLogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetRequestLogResponse{}
-	_body, _err := client.GetRequestLogWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -849,7 +598,7 @@ func (client *Client) GetRequestLog(request *GetRequestLogRequest) (_result *Get
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListApiDefinitionsResponse
-func (client *Client) ListApiDefinitionsWithOptions(request *ListApiDefinitionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListApiDefinitionsResponse, _err error) {
+func (client *Client) ListApiDefinitionsWithContext(ctx context.Context, request *ListApiDefinitionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListApiDefinitionsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -881,30 +630,11 @@ func (client *Client) ListApiDefinitionsWithOptions(request *ListApiDefinitionsR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListApiDefinitionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取产品的开放元数据
-//
-// @param request - ListApiDefinitionsRequest
-//
-// @return ListApiDefinitionsResponse
-func (client *Client) ListApiDefinitions(request *ListApiDefinitionsRequest) (_result *ListApiDefinitionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListApiDefinitionsResponse{}
-	_body, _err := client.ListApiDefinitionsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -919,7 +649,7 @@ func (client *Client) ListApiDefinitions(request *ListApiDefinitionsRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListApiMcpServerSystemToolsResponse
-func (client *Client) ListApiMcpServerSystemToolsWithOptions(request *ListApiMcpServerSystemToolsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListApiMcpServerSystemToolsResponse, _err error) {
+func (client *Client) ListApiMcpServerSystemToolsWithContext(ctx context.Context, request *ListApiMcpServerSystemToolsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListApiMcpServerSystemToolsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -955,30 +685,11 @@ func (client *Client) ListApiMcpServerSystemToolsWithOptions(request *ListApiMcp
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListApiMcpServerSystemToolsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询系统工具列表
-//
-// @param request - ListApiMcpServerSystemToolsRequest
-//
-// @return ListApiMcpServerSystemToolsResponse
-func (client *Client) ListApiMcpServerSystemTools(request *ListApiMcpServerSystemToolsRequest) (_result *ListApiMcpServerSystemToolsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListApiMcpServerSystemToolsResponse{}
-	_body, _err := client.ListApiMcpServerSystemToolsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -993,7 +704,7 @@ func (client *Client) ListApiMcpServerSystemTools(request *ListApiMcpServerSyste
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListApiMcpServersResponse
-func (client *Client) ListApiMcpServersWithOptions(request *ListApiMcpServersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListApiMcpServersResponse, _err error) {
+func (client *Client) ListApiMcpServersWithContext(ctx context.Context, request *ListApiMcpServersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListApiMcpServersResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1057,30 +768,11 @@ func (client *Client) ListApiMcpServersWithOptions(request *ListApiMcpServersReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListApiMcpServersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 列出资源ApiMcpServer
-//
-// @param request - ListApiMcpServersRequest
-//
-// @return ListApiMcpServersResponse
-func (client *Client) ListApiMcpServers(request *ListApiMcpServersRequest) (_result *ListApiMcpServersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListApiMcpServersResponse{}
-	_body, _err := client.ListApiMcpServersWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1095,7 +787,7 @@ func (client *Client) ListApiMcpServers(request *ListApiMcpServersRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateApiMcpServerResponse
-func (client *Client) UpdateApiMcpServerWithOptions(request *UpdateApiMcpServerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateApiMcpServerResponse, _err error) {
+func (client *Client) UpdateApiMcpServerWithContext(ctx context.Context, request *UpdateApiMcpServerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateApiMcpServerResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1177,29 +869,10 @@ func (client *Client) UpdateApiMcpServerWithOptions(request *UpdateApiMcpServerR
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateApiMcpServerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新UpdateApiMcpServer
-//
-// @param request - UpdateApiMcpServerRequest
-//
-// @return UpdateApiMcpServerResponse
-func (client *Client) UpdateApiMcpServer(request *UpdateApiMcpServerRequest) (_result *UpdateApiMcpServerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateApiMcpServerResponse{}
-	_body, _err := client.UpdateApiMcpServerWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
