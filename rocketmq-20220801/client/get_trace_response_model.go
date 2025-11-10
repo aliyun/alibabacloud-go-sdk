@@ -59,5 +59,10 @@ func (s *GetTraceResponse) SetBody(v *GetTraceResponseBody) *GetTraceResponse {
 }
 
 func (s *GetTraceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

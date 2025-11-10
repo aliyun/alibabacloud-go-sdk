@@ -172,7 +172,12 @@ func (s *ListDisasterRecoveryPlansResponseBody) SetSuccess(v bool) *ListDisaster
 }
 
 func (s *ListDisasterRecoveryPlansResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDisasterRecoveryPlansResponseBodyData struct {
@@ -258,7 +263,16 @@ func (s *ListDisasterRecoveryPlansResponseBodyData) SetTotalCount(v int64) *List
 }
 
 func (s *ListDisasterRecoveryPlansResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDisasterRecoveryPlansResponseBodyDataList struct {
@@ -440,7 +454,16 @@ func (s *ListDisasterRecoveryPlansResponseBodyDataList) SetUpdateTime(v string) 
 }
 
 func (s *ListDisasterRecoveryPlansResponseBodyDataList) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDisasterRecoveryPlansResponseBodyDataListInstances struct {
@@ -661,7 +684,12 @@ func (s *ListDisasterRecoveryPlansResponseBodyDataListInstances) SetVpcId(v stri
 }
 
 func (s *ListDisasterRecoveryPlansResponseBodyDataListInstances) Validate() error {
-	return dara.Validate(s)
+	if s.MessageProperty != nil {
+		if err := s.MessageProperty.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDisasterRecoveryPlansResponseBodyDataListInstancesMessageProperty struct {

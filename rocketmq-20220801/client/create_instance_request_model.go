@@ -361,7 +361,26 @@ func (s *CreateInstanceRequest) SetClientToken(v string) *CreateInstanceRequest 
 }
 
 func (s *CreateInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkInfo != nil {
+		if err := s.NetworkInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProductInfo != nil {
+		if err := s.ProductInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateInstanceRequestNetworkInfo struct {
@@ -402,7 +421,17 @@ func (s *CreateInstanceRequestNetworkInfo) SetVpcInfo(v *CreateInstanceRequestNe
 }
 
 func (s *CreateInstanceRequestNetworkInfo) Validate() error {
-	return dara.Validate(s)
+	if s.InternetInfo != nil {
+		if err := s.InternetInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VpcInfo != nil {
+		if err := s.VpcInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateInstanceRequestNetworkInfoInternetInfo struct {
@@ -588,7 +617,16 @@ func (s *CreateInstanceRequestNetworkInfoVpcInfo) SetVpcId(v string) *CreateInst
 }
 
 func (s *CreateInstanceRequestNetworkInfoVpcInfo) Validate() error {
-	return dara.Validate(s)
+	if s.VSwitches != nil {
+		for _, item := range s.VSwitches {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateInstanceRequestNetworkInfoVpcInfoVSwitches struct {

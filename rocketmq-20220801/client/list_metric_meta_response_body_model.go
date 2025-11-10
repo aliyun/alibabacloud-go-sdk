@@ -155,7 +155,12 @@ func (s *ListMetricMetaResponseBody) SetSuccess(v bool) *ListMetricMetaResponseB
 }
 
 func (s *ListMetricMetaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMetricMetaResponseBodyData struct {
@@ -226,7 +231,16 @@ func (s *ListMetricMetaResponseBodyData) SetTotalCount(v int64) *ListMetricMetaR
 }
 
 func (s *ListMetricMetaResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMetricMetaResponseBodyDataList struct {

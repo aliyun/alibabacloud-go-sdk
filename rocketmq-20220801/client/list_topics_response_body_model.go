@@ -155,7 +155,12 @@ func (s *ListTopicsResponseBody) SetSuccess(v bool) *ListTopicsResponseBody {
 }
 
 func (s *ListTopicsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTopicsResponseBodyData struct {
@@ -226,7 +231,16 @@ func (s *ListTopicsResponseBodyData) SetTotalCount(v int64) *ListTopicsResponseB
 }
 
 func (s *ListTopicsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTopicsResponseBodyDataList struct {
@@ -242,6 +256,10 @@ type ListTopicsResponseBodyDataList struct {
 	//
 	// rmq-cn-7e22ody****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// 20
+	LiteTopicExpiration *int64 `json:"liteTopicExpiration,omitempty" xml:"liteTopicExpiration,omitempty"`
 	// The maximum TPS for message sending.
 	//
 	// example:
@@ -318,6 +336,10 @@ func (s *ListTopicsResponseBodyDataList) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *ListTopicsResponseBodyDataList) GetLiteTopicExpiration() *int64 {
+	return s.LiteTopicExpiration
+}
+
 func (s *ListTopicsResponseBodyDataList) GetMaxSendTps() *int64 {
 	return s.MaxSendTps
 }
@@ -353,6 +375,11 @@ func (s *ListTopicsResponseBodyDataList) SetCreateTime(v string) *ListTopicsResp
 
 func (s *ListTopicsResponseBodyDataList) SetInstanceId(v string) *ListTopicsResponseBodyDataList {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListTopicsResponseBodyDataList) SetLiteTopicExpiration(v int64) *ListTopicsResponseBodyDataList {
+	s.LiteTopicExpiration = &v
 	return s
 }
 

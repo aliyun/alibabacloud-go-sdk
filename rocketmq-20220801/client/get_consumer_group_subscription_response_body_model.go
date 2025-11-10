@@ -155,7 +155,16 @@ func (s *GetConsumerGroupSubscriptionResponseBody) SetSuccess(v bool) *GetConsum
 }
 
 func (s *GetConsumerGroupSubscriptionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetConsumerGroupSubscriptionResponseBodyData struct {
@@ -192,7 +201,17 @@ func (s *GetConsumerGroupSubscriptionResponseBodyData) SetSubscriptionDTO(v *Get
 }
 
 func (s *GetConsumerGroupSubscriptionResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ConnectionDTO != nil {
+		if err := s.ConnectionDTO.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubscriptionDTO != nil {
+		if err := s.SubscriptionDTO.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetConsumerGroupSubscriptionResponseBodyDataConnectionDTO struct {

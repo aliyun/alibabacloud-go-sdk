@@ -11,6 +11,8 @@ type iListTracesRequest interface {
 	GoString() string
 	SetEndTime(v string) *ListTracesRequest
 	GetEndTime() *string
+	SetLiteTopicName(v string) *ListTracesRequest
+	GetLiteTopicName() *string
 	SetMessageId(v string) *ListTracesRequest
 	GetMessageId() *string
 	SetMessageKey(v string) *ListTracesRequest
@@ -34,6 +36,10 @@ type ListTracesRequest struct {
 	//
 	// 2023-05-19 10:10:09
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// abc
+	LiteTopicName *string `json:"liteTopicName,omitempty" xml:"liteTopicName,omitempty"`
 	// The message ID.
 	//
 	// This parameter is required if you set queryType to MESSAGE_ID.
@@ -104,6 +110,10 @@ func (s *ListTracesRequest) GetEndTime() *string {
 	return s.EndTime
 }
 
+func (s *ListTracesRequest) GetLiteTopicName() *string {
+	return s.LiteTopicName
+}
+
 func (s *ListTracesRequest) GetMessageId() *string {
 	return s.MessageId
 }
@@ -130,6 +140,11 @@ func (s *ListTracesRequest) GetStartTime() *string {
 
 func (s *ListTracesRequest) SetEndTime(v string) *ListTracesRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *ListTracesRequest) SetLiteTopicName(v string) *ListTracesRequest {
+	s.LiteTopicName = &v
 	return s
 }
 

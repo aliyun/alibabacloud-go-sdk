@@ -50,7 +50,12 @@ func (s *ExecuteMigrationOperationRequest) SetInstanceId(v string) *ExecuteMigra
 }
 
 func (s *ExecuteMigrationOperationRequest) Validate() error {
-  return dara.Validate(s)
+  if s.OperationParam != nil {
+    if err := s.OperationParam.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type ExecuteMigrationOperationRequestOperationParam struct {

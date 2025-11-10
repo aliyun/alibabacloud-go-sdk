@@ -172,7 +172,12 @@ func (s *GetDisasterRecoveryPlanResponseBody) SetSuccess(v bool) *GetDisasterRec
 }
 
 func (s *GetDisasterRecoveryPlanResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDisasterRecoveryPlanResponseBodyData struct {
@@ -368,7 +373,16 @@ func (s *GetDisasterRecoveryPlanResponseBodyData) SetUpdateTime(v string) *GetDi
 }
 
 func (s *GetDisasterRecoveryPlanResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDisasterRecoveryPlanResponseBodyDataInstances struct {
@@ -589,7 +603,12 @@ func (s *GetDisasterRecoveryPlanResponseBodyDataInstances) SetVpcId(v string) *G
 }
 
 func (s *GetDisasterRecoveryPlanResponseBodyDataInstances) Validate() error {
-	return dara.Validate(s)
+	if s.MessageProperty != nil {
+		if err := s.MessageProperty.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDisasterRecoveryPlanResponseBodyDataInstancesMessageProperty struct {

@@ -140,7 +140,12 @@ func (s *ListMigrationOperationsResponseBody) SetSuccess(v bool) *ListMigrationO
 }
 
 func (s *ListMigrationOperationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMigrationOperationsResponseBodyData struct {
@@ -204,7 +209,16 @@ func (s *ListMigrationOperationsResponseBodyData) SetTotalCount(v int64) *ListMi
 }
 
 func (s *ListMigrationOperationsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMigrationOperationsResponseBodyDataList struct {
@@ -356,7 +370,17 @@ func (s *ListMigrationOperationsResponseBodyDataList) SetUpdateTime(v string) *L
 }
 
 func (s *ListMigrationOperationsResponseBodyDataList) Validate() error {
-	return dara.Validate(s)
+	if s.OperationParam != nil {
+		if err := s.OperationParam.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OperationResult != nil {
+		if err := s.OperationResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMigrationOperationsResponseBodyDataListOperationParam struct {

@@ -172,7 +172,12 @@ func (s *ListDisasterRecoveryItemsResponseBody) SetSuccess(v bool) *ListDisaster
 }
 
 func (s *ListDisasterRecoveryItemsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDisasterRecoveryItemsResponseBodyData struct {
@@ -258,7 +263,16 @@ func (s *ListDisasterRecoveryItemsResponseBodyData) SetTotalCount(v int64) *List
 }
 
 func (s *ListDisasterRecoveryItemsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDisasterRecoveryItemsResponseBodyDataList struct {
@@ -380,7 +394,16 @@ func (s *ListDisasterRecoveryItemsResponseBodyDataList) SetUpdateTime(v string) 
 }
 
 func (s *ListDisasterRecoveryItemsResponseBodyDataList) Validate() error {
-	return dara.Validate(s)
+	if s.Topics != nil {
+		for _, item := range s.Topics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDisasterRecoveryItemsResponseBodyDataListTopics struct {

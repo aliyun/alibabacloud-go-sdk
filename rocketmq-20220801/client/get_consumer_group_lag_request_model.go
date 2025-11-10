@@ -9,11 +9,17 @@ type iGetConsumerGroupLagRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetLiteTopicName(v string) *GetConsumerGroupLagRequest
+	GetLiteTopicName() *string
 	SetTopicName(v string) *GetConsumerGroupLagRequest
 	GetTopicName() *string
 }
 
 type GetConsumerGroupLagRequest struct {
+	// example:
+	//
+	// abc
+	LiteTopicName *string `json:"liteTopicName,omitempty" xml:"liteTopicName,omitempty"`
 	// The topic name.
 	//
 	// example:
@@ -30,8 +36,17 @@ func (s GetConsumerGroupLagRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetConsumerGroupLagRequest) GetLiteTopicName() *string {
+	return s.LiteTopicName
+}
+
 func (s *GetConsumerGroupLagRequest) GetTopicName() *string {
 	return s.TopicName
+}
+
+func (s *GetConsumerGroupLagRequest) SetLiteTopicName(v string) *GetConsumerGroupLagRequest {
+	s.LiteTopicName = &v
+	return s
 }
 
 func (s *GetConsumerGroupLagRequest) SetTopicName(v string) *GetConsumerGroupLagRequest {

@@ -155,7 +155,12 @@ func (s *ListConsumerConnectionsResponseBody) SetSuccess(v bool) *ListConsumerCo
 }
 
 func (s *ListConsumerConnectionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListConsumerConnectionsResponseBodyData struct {
@@ -226,7 +231,16 @@ func (s *ListConsumerConnectionsResponseBodyData) SetRegionId(v string) *ListCon
 }
 
 func (s *ListConsumerConnectionsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Connections != nil {
+		for _, item := range s.Connections {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListConsumerConnectionsResponseBodyDataConnections struct {

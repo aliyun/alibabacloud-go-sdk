@@ -172,7 +172,12 @@ func (s *GetDisasterRecoveryItemResponseBody) SetSuccess(v bool) *GetDisasterRec
 }
 
 func (s *GetDisasterRecoveryItemResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDisasterRecoveryItemResponseBodyData struct {
@@ -284,7 +289,16 @@ func (s *GetDisasterRecoveryItemResponseBodyData) SetUpdateTime(v string) *GetDi
 }
 
 func (s *GetDisasterRecoveryItemResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Topics != nil {
+		for _, item := range s.Topics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDisasterRecoveryItemResponseBodyDataTopics struct {

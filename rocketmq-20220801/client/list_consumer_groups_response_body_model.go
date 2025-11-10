@@ -155,7 +155,12 @@ func (s *ListConsumerGroupsResponseBody) SetSuccess(v bool) *ListConsumerGroupsR
 }
 
 func (s *ListConsumerGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListConsumerGroupsResponseBodyData struct {
@@ -226,7 +231,16 @@ func (s *ListConsumerGroupsResponseBodyData) SetTotalCount(v int64) *ListConsume
 }
 
 func (s *ListConsumerGroupsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListConsumerGroupsResponseBodyDataList struct {
@@ -254,6 +268,10 @@ type ListConsumerGroupsResponseBodyDataList struct {
 	//
 	// 1000
 	MaxReceiveTps *int64 `json:"maxReceiveTps,omitempty" xml:"maxReceiveTps,omitempty"`
+	// example:
+	//
+	// LITE_SELECTIVE
+	MessageModel *string `json:"messageModel,omitempty" xml:"messageModel,omitempty"`
 	// The region ID to which the instance belongs.
 	//
 	// example:
@@ -272,6 +290,10 @@ type ListConsumerGroupsResponseBodyDataList struct {
 	//
 	// RUNNING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// test1
+	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
 	// Last update time of the consumer group.
 	//
 	// example:
@@ -304,6 +326,10 @@ func (s *ListConsumerGroupsResponseBodyDataList) GetMaxReceiveTps() *int64 {
 	return s.MaxReceiveTps
 }
 
+func (s *ListConsumerGroupsResponseBodyDataList) GetMessageModel() *string {
+	return s.MessageModel
+}
+
 func (s *ListConsumerGroupsResponseBodyDataList) GetRegionId() *string {
 	return s.RegionId
 }
@@ -314,6 +340,10 @@ func (s *ListConsumerGroupsResponseBodyDataList) GetRemark() *string {
 
 func (s *ListConsumerGroupsResponseBodyDataList) GetStatus() *string {
 	return s.Status
+}
+
+func (s *ListConsumerGroupsResponseBodyDataList) GetTopicName() *string {
+	return s.TopicName
 }
 
 func (s *ListConsumerGroupsResponseBodyDataList) GetUpdateTime() *string {
@@ -340,6 +370,11 @@ func (s *ListConsumerGroupsResponseBodyDataList) SetMaxReceiveTps(v int64) *List
 	return s
 }
 
+func (s *ListConsumerGroupsResponseBodyDataList) SetMessageModel(v string) *ListConsumerGroupsResponseBodyDataList {
+	s.MessageModel = &v
+	return s
+}
+
 func (s *ListConsumerGroupsResponseBodyDataList) SetRegionId(v string) *ListConsumerGroupsResponseBodyDataList {
 	s.RegionId = &v
 	return s
@@ -352,6 +387,11 @@ func (s *ListConsumerGroupsResponseBodyDataList) SetRemark(v string) *ListConsum
 
 func (s *ListConsumerGroupsResponseBodyDataList) SetStatus(v string) *ListConsumerGroupsResponseBodyDataList {
 	s.Status = &v
+	return s
+}
+
+func (s *ListConsumerGroupsResponseBodyDataList) SetTopicName(v string) *ListConsumerGroupsResponseBodyDataList {
+	s.TopicName = &v
 	return s
 }
 

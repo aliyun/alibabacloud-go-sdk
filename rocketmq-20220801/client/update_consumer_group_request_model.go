@@ -97,7 +97,12 @@ func (s *UpdateConsumerGroupRequest) SetRemark(v string) *UpdateConsumerGroupReq
 }
 
 func (s *UpdateConsumerGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ConsumeRetryPolicy != nil {
+		if err := s.ConsumeRetryPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateConsumerGroupRequestConsumeRetryPolicy struct {

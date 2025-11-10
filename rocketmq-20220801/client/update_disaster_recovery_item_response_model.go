@@ -59,5 +59,10 @@ func (s *UpdateDisasterRecoveryItemResponse) SetBody(v *UpdateDisasterRecoveryIt
 }
 
 func (s *UpdateDisasterRecoveryItemResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

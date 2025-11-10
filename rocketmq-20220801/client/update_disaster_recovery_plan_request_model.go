@@ -139,7 +139,16 @@ func (s *UpdateDisasterRecoveryPlanRequest) SetSyncCheckpointEnabled(v bool) *Up
 }
 
 func (s *UpdateDisasterRecoveryPlanRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateDisasterRecoveryPlanRequestInstances struct {
@@ -382,7 +391,12 @@ func (s *UpdateDisasterRecoveryPlanRequestInstances) SetVpcId(v string) *UpdateD
 }
 
 func (s *UpdateDisasterRecoveryPlanRequestInstances) Validate() error {
-	return dara.Validate(s)
+	if s.MessageProperty != nil {
+		if err := s.MessageProperty.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateDisasterRecoveryPlanRequestInstancesMessageProperty struct {

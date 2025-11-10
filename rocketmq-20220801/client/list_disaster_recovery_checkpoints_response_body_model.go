@@ -155,7 +155,12 @@ func (s *ListDisasterRecoveryCheckpointsResponseBody) SetSuccess(v bool) *ListDi
 }
 
 func (s *ListDisasterRecoveryCheckpointsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDisasterRecoveryCheckpointsResponseBodyData struct {
@@ -226,7 +231,16 @@ func (s *ListDisasterRecoveryCheckpointsResponseBodyData) SetTotalCount(v int64)
 }
 
 func (s *ListDisasterRecoveryCheckpointsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDisasterRecoveryCheckpointsResponseBodyDataList struct {
@@ -323,7 +337,17 @@ func (s *ListDisasterRecoveryCheckpointsResponseBodyDataList) SetTargetProgress(
 }
 
 func (s *ListDisasterRecoveryCheckpointsResponseBodyDataList) Validate() error {
-	return dara.Validate(s)
+	if s.SourceProgress != nil {
+		if err := s.SourceProgress.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TargetProgress != nil {
+		if err := s.TargetProgress.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress struct {
@@ -443,7 +467,12 @@ func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress) SetT
 }
 
 func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress) Validate() error {
-	return dara.Validate(s)
+	if s.ProgressData != nil {
+		if err := s.ProgressData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgressProgressData struct {
@@ -593,7 +622,12 @@ func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress) SetT
 }
 
 func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress) Validate() error {
-	return dara.Validate(s)
+	if s.ProgressData != nil {
+		if err := s.ProgressData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgressProgressData struct {

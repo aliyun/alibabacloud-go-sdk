@@ -19,9 +19,11 @@ import (
 //
 // @return AddDisasterRecoveryItemResponse
 func (client *Client) AddDisasterRecoveryItemWithContext(ctx context.Context, planId *string, request *AddDisasterRecoveryItemRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddDisasterRecoveryItemResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Topics) {
@@ -64,9 +66,11 @@ func (client *Client) AddDisasterRecoveryItemWithContext(ctx context.Context, pl
 //
 // @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, request *ChangeResourceGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -133,9 +137,11 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 //
 // @return CreateConsumerGroupResponse
 func (client *Client) CreateConsumerGroupWithContext(ctx context.Context, instanceId *string, consumerGroupId *string, request *CreateConsumerGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateConsumerGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ConsumeRetryPolicy) {
@@ -150,8 +156,16 @@ func (client *Client) CreateConsumerGroupWithContext(ctx context.Context, instan
 		body["maxReceiveTps"] = request.MaxReceiveTps
 	}
 
+	if !dara.IsNil(request.MessageModel) {
+		body["messageModel"] = request.MessageModel
+	}
+
 	if !dara.IsNil(request.Remark) {
 		body["remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.TopicName) {
+		body["topicName"] = request.TopicName
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -190,9 +204,11 @@ func (client *Client) CreateConsumerGroupWithContext(ctx context.Context, instan
 //
 // @return CreateDisasterRecoveryPlanResponse
 func (client *Client) CreateDisasterRecoveryPlanWithContext(ctx context.Context, request *CreateDisasterRecoveryPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDisasterRecoveryPlanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoSyncCheckpoint) {
@@ -259,9 +275,11 @@ func (client *Client) CreateDisasterRecoveryPlanWithContext(ctx context.Context,
 //
 // @return CreateInstanceResponse
 func (client *Client) CreateInstanceWithContext(ctx context.Context, request *CreateInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -366,9 +384,11 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 //
 // @return CreateInstanceAccountResponse
 func (client *Client) CreateInstanceAccountWithContext(ctx context.Context, instanceId *string, request *CreateInstanceAccountRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateInstanceAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Password) {
@@ -415,9 +435,11 @@ func (client *Client) CreateInstanceAccountWithContext(ctx context.Context, inst
 //
 // @return CreateInstanceAclResponse
 func (client *Client) CreateInstanceAclWithContext(ctx context.Context, instanceId *string, username *string, request *CreateInstanceAclRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateInstanceAclResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Actions) {
@@ -476,9 +498,11 @@ func (client *Client) CreateInstanceAclWithContext(ctx context.Context, instance
 //
 // @return CreateInstanceIpWhitelistResponse
 func (client *Client) CreateInstanceIpWhitelistWithContext(ctx context.Context, instanceId *string, request *CreateInstanceIpWhitelistRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateInstanceIpWhitelistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.IpWhitelists) {
@@ -521,11 +545,17 @@ func (client *Client) CreateInstanceIpWhitelistWithContext(ctx context.Context, 
 //
 // @return CreateTopicResponse
 func (client *Client) CreateTopicWithContext(ctx context.Context, instanceId *string, topicName *string, request *CreateTopicRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTopicResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.LiteTopicExpiration) {
+		body["liteTopicExpiration"] = request.LiteTopicExpiration
+	}
+
 	if !dara.IsNil(request.MaxSendTps) {
 		body["maxSendTps"] = request.MaxSendTps
 	}
@@ -613,9 +643,11 @@ func (client *Client) DeleteConsumerGroupWithContext(ctx context.Context, instan
 //
 // @return DeleteConsumerGroupSubscriptionResponse
 func (client *Client) DeleteConsumerGroupSubscriptionWithContext(ctx context.Context, instanceId *string, consumerGroupId *string, request *DeleteConsumerGroupSubscriptionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteConsumerGroupSubscriptionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FilterExpression) {
@@ -806,9 +838,11 @@ func (client *Client) DeleteInstanceAccountWithContext(ctx context.Context, inst
 //
 // @return DeleteInstanceAclResponse
 func (client *Client) DeleteInstanceAclWithContext(ctx context.Context, instanceId *string, username *string, request *DeleteInstanceAclRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteInstanceAclResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceName) {
@@ -855,9 +889,11 @@ func (client *Client) DeleteInstanceAclWithContext(ctx context.Context, instance
 //
 // @return DeleteInstanceIpWhitelistResponse
 func (client *Client) DeleteInstanceIpWhitelistWithContext(ctx context.Context, instanceId *string, tmpReq *DeleteInstanceIpWhitelistRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteInstanceIpWhitelistResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteInstanceIpWhitelistShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -947,9 +983,11 @@ func (client *Client) DeleteTopicWithContext(ctx context.Context, instanceId *st
 //
 // @return ExecuteMigrationOperationResponse
 func (client *Client) ExecuteMigrationOperationWithContext(ctx context.Context, migrationId *string, stageType *string, operationId *string, request *ExecuteMigrationOperationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecuteMigrationOperationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -998,9 +1036,11 @@ func (client *Client) ExecuteMigrationOperationWithContext(ctx context.Context, 
 //
 // @return FinishMigrationStageResponse
 func (client *Client) FinishMigrationStageWithContext(ctx context.Context, migrationId *string, stageType *string, request *FinishMigrationStageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *FinishMigrationStageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -1023,6 +1063,39 @@ func (client *Client) FinishMigrationStageWithContext(ctx context.Context, migra
 		BodyType:    dara.String("json"),
 	}
 	_result = &FinishMigrationStageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询topic可重置时间范围
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConsumeTimespanResponse
+func (client *Client) GetConsumeTimespanWithContext(ctx context.Context, instanceId *string, consumerGroupId *string, topicName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetConsumeTimespanResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetConsumeTimespan"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/consumerGroups/" + dara.PercentEncode(dara.StringValue(consumerGroupId)) + "/consumeTimespan/" + dara.PercentEncode(dara.StringValue(topicName))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetConsumeTimespanResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1080,11 +1153,17 @@ func (client *Client) GetConsumerGroupWithContext(ctx context.Context, instanceI
 //
 // @return GetConsumerGroupLagResponse
 func (client *Client) GetConsumerGroupLagWithContext(ctx context.Context, instanceId *string, consumerGroupId *string, request *GetConsumerGroupLagRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetConsumerGroupLagResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.LiteTopicName) {
+		query["liteTopicName"] = request.LiteTopicName
+	}
+
 	if !dara.IsNil(request.TopicName) {
 		query["topicName"] = request.TopicName
 	}
@@ -1158,9 +1237,11 @@ func (client *Client) GetConsumerGroupSubscriptionWithContext(ctx context.Contex
 //
 // @return GetConsumerStackResponse
 func (client *Client) GetConsumerStackWithContext(ctx context.Context, instanceId *string, consumerGroupId *string, request *GetConsumerStackRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetConsumerStackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -1306,9 +1387,11 @@ func (client *Client) GetInstanceWithContext(ctx context.Context, instanceId *st
 //
 // @return GetInstanceAccountResponse
 func (client *Client) GetInstanceAccountWithContext(ctx context.Context, instanceId *string, request *GetInstanceAccountRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Username) {
@@ -1351,9 +1434,11 @@ func (client *Client) GetInstanceAccountWithContext(ctx context.Context, instanc
 //
 // @return GetInstanceAclResponse
 func (client *Client) GetInstanceAclWithContext(ctx context.Context, instanceId *string, username *string, request *GetInstanceAclRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceAclResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceName) {
@@ -1400,9 +1485,11 @@ func (client *Client) GetInstanceAclWithContext(ctx context.Context, instanceId 
 //
 // @return GetInstanceIpWhitelistResponse
 func (client *Client) GetInstanceIpWhitelistWithContext(ctx context.Context, instanceId *string, tmpReq *GetInstanceIpWhitelistRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceIpWhitelistResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetInstanceIpWhitelistShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1517,9 +1604,11 @@ func (client *Client) GetTopicWithContext(ctx context.Context, instanceId *strin
 //
 // @return GetTraceResponse
 func (client *Client) GetTraceWithContext(ctx context.Context, instanceId *string, topicName *string, messageId *string, request *GetTraceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTraceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -1591,14 +1680,32 @@ func (client *Client) ListAvailableZonesWithContext(ctx context.Context, headers
 //
 // 查询消费者客户端连接信息
 //
+// @param request - ListConsumerConnectionsRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListConsumerConnectionsResponse
-func (client *Client) ListConsumerConnectionsWithContext(ctx context.Context, instanceId *string, consumerGroupId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListConsumerConnectionsResponse, _err error) {
+func (client *Client) ListConsumerConnectionsWithContext(ctx context.Context, instanceId *string, consumerGroupId *string, request *ListConsumerConnectionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListConsumerConnectionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.LiteTopicName) {
+		query["liteTopicName"] = request.LiteTopicName
+	}
+
+	if !dara.IsNil(request.TopicName) {
+		query["topicName"] = request.TopicName
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ListConsumerConnections"),
@@ -1632,9 +1739,11 @@ func (client *Client) ListConsumerConnectionsWithContext(ctx context.Context, in
 //
 // @return ListConsumerGroupSubscriptionsResponse
 func (client *Client) ListConsumerGroupSubscriptionsWithContext(ctx context.Context, instanceId *string, consumerGroupId *string, request *ListConsumerGroupSubscriptionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListConsumerGroupSubscriptionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TopicName) {
@@ -1681,9 +1790,11 @@ func (client *Client) ListConsumerGroupSubscriptionsWithContext(ctx context.Cont
 //
 // @return ListConsumerGroupsResponse
 func (client *Client) ListConsumerGroupsWithContext(ctx context.Context, instanceId *string, request *ListConsumerGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListConsumerGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Filter) {
@@ -1734,9 +1845,11 @@ func (client *Client) ListConsumerGroupsWithContext(ctx context.Context, instanc
 //
 // @return ListDisasterRecoveryCheckpointsResponse
 func (client *Client) ListDisasterRecoveryCheckpointsWithContext(ctx context.Context, planId *string, itemId *string, request *ListDisasterRecoveryCheckpointsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDisasterRecoveryCheckpointsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Filter) {
@@ -1791,9 +1904,11 @@ func (client *Client) ListDisasterRecoveryCheckpointsWithContext(ctx context.Con
 //
 // @return ListDisasterRecoveryItemsResponse
 func (client *Client) ListDisasterRecoveryItemsWithContext(ctx context.Context, planId *string, request *ListDisasterRecoveryItemsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDisasterRecoveryItemsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Filter) {
@@ -1848,9 +1963,11 @@ func (client *Client) ListDisasterRecoveryItemsWithContext(ctx context.Context, 
 //
 // @return ListDisasterRecoveryPlansResponse
 func (client *Client) ListDisasterRecoveryPlansWithContext(ctx context.Context, request *ListDisasterRecoveryPlansRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDisasterRecoveryPlansResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Filter) {
@@ -1905,9 +2022,11 @@ func (client *Client) ListDisasterRecoveryPlansWithContext(ctx context.Context, 
 //
 // @return ListInstanceAccountResponse
 func (client *Client) ListInstanceAccountWithContext(ctx context.Context, instanceId *string, request *ListInstanceAccountRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstanceAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountStatus) {
@@ -1966,9 +2085,11 @@ func (client *Client) ListInstanceAccountWithContext(ctx context.Context, instan
 //
 // @return ListInstanceAclResponse
 func (client *Client) ListInstanceAclWithContext(ctx context.Context, instanceId *string, request *ListInstanceAclRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstanceAclResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Filter) {
@@ -2019,9 +2140,11 @@ func (client *Client) ListInstanceAclWithContext(ctx context.Context, instanceId
 //
 // @return ListInstanceIpWhitelistResponse
 func (client *Client) ListInstanceIpWhitelistWithContext(ctx context.Context, instanceId *string, request *ListInstanceIpWhitelistRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstanceIpWhitelistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IpWhitelist) {
@@ -2076,9 +2199,11 @@ func (client *Client) ListInstanceIpWhitelistWithContext(ctx context.Context, in
 //
 // @return ListInstancesResponse
 func (client *Client) ListInstancesWithContext(ctx context.Context, tmpReq *ListInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListInstancesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2151,13 +2276,19 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, tmpReq *List
 //
 // @return ListMessagesResponse
 func (client *Client) ListMessagesWithContext(ctx context.Context, instanceId *string, topicName *string, request *ListMessagesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMessagesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
 		query["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.LiteTopicName) {
+		query["liteTopicName"] = request.LiteTopicName
 	}
 
 	if !dara.IsNil(request.MessageId) {
@@ -2220,9 +2351,11 @@ func (client *Client) ListMessagesWithContext(ctx context.Context, instanceId *s
 //
 // @return ListMetricMetaResponse
 func (client *Client) ListMetricMetaWithContext(ctx context.Context, request *ListMetricMetaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMetricMetaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -2269,9 +2402,11 @@ func (client *Client) ListMetricMetaWithContext(ctx context.Context, request *Li
 //
 // @return ListMigrationOperationsResponse
 func (client *Client) ListMigrationOperationsWithContext(ctx context.Context, migrationId *string, stageType *string, request *ListMigrationOperationsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMigrationOperationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Filter) {
@@ -2310,6 +2445,69 @@ func (client *Client) ListMigrationOperationsWithContext(ctx context.Context, mi
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListMigrationOperationsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询迁移列表
+//
+// @param request - ListMigrationsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMigrationsResponse
+func (client *Client) ListMigrationsWithContext(ctx context.Context, request *ListMigrationsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMigrationsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Filter) {
+		query["filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.MigrationType) {
+		query["migrationType"] = request.MigrationType
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMigrations"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/migrations"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMigrationsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2363,9 +2561,11 @@ func (client *Client) ListRegionsWithContext(ctx context.Context, headers map[st
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NextToken) {
@@ -2461,9 +2661,11 @@ func (client *Client) ListTopicSubscriptionsWithContext(ctx context.Context, ins
 //
 // @return ListTopicsResponse
 func (client *Client) ListTopicsWithContext(ctx context.Context, instanceId *string, tmpReq *ListTopicsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTopicsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListTopicsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2524,13 +2726,19 @@ func (client *Client) ListTopicsWithContext(ctx context.Context, instanceId *str
 //
 // @return ListTracesResponse
 func (client *Client) ListTracesWithContext(ctx context.Context, instanceId *string, topicName *string, request *ListTracesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTracesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
 		query["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.LiteTopicName) {
+		query["liteTopicName"] = request.LiteTopicName
 	}
 
 	if !dara.IsNil(request.MessageId) {
@@ -2593,9 +2801,11 @@ func (client *Client) ListTracesWithContext(ctx context.Context, instanceId *str
 //
 // @return ResetConsumeOffsetResponse
 func (client *Client) ResetConsumeOffsetWithContext(ctx context.Context, instanceId *string, consumerGroupId *string, topicName *string, request *ResetConsumeOffsetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ResetConsumeOffsetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ResetTime) {
@@ -2741,9 +2951,11 @@ func (client *Client) SyncDisasterRecoveryCheckpointWithContext(ctx context.Cont
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -2798,9 +3010,11 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -2863,9 +3077,11 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 //
 // @return UpdateConsumerGroupResponse
 func (client *Client) UpdateConsumerGroupWithContext(ctx context.Context, instanceId *string, consumerGroupId *string, request *UpdateConsumerGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateConsumerGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ConsumeRetryPolicy) {
@@ -2920,9 +3136,11 @@ func (client *Client) UpdateConsumerGroupWithContext(ctx context.Context, instan
 //
 // @return UpdateDisasterRecoveryItemResponse
 func (client *Client) UpdateDisasterRecoveryItemWithContext(ctx context.Context, planId *string, itemId *string, request *UpdateDisasterRecoveryItemRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDisasterRecoveryItemResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Topics) {
@@ -2965,9 +3183,11 @@ func (client *Client) UpdateDisasterRecoveryItemWithContext(ctx context.Context,
 //
 // @return UpdateDisasterRecoveryPlanResponse
 func (client *Client) UpdateDisasterRecoveryPlanWithContext(ctx context.Context, planId *string, request *UpdateDisasterRecoveryPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDisasterRecoveryPlanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoSyncCheckpoint) {
@@ -3034,9 +3254,11 @@ func (client *Client) UpdateDisasterRecoveryPlanWithContext(ctx context.Context,
 //
 // @return UpdateInstanceResponse
 func (client *Client) UpdateInstanceWithContext(ctx context.Context, instanceId *string, request *UpdateInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AclInfo) {
@@ -3095,9 +3317,11 @@ func (client *Client) UpdateInstanceWithContext(ctx context.Context, instanceId 
 //
 // @return UpdateInstanceAccountResponse
 func (client *Client) UpdateInstanceAccountWithContext(ctx context.Context, instanceId *string, username *string, request *UpdateInstanceAccountRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateInstanceAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountStatus) {
@@ -3144,9 +3368,11 @@ func (client *Client) UpdateInstanceAccountWithContext(ctx context.Context, inst
 //
 // @return UpdateInstanceAclResponse
 func (client *Client) UpdateInstanceAclWithContext(ctx context.Context, instanceId *string, username *string, request *UpdateInstanceAclRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateInstanceAclResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Actions) {
@@ -3205,11 +3431,17 @@ func (client *Client) UpdateInstanceAclWithContext(ctx context.Context, instance
 //
 // @return UpdateTopicResponse
 func (client *Client) UpdateTopicWithContext(ctx context.Context, instanceId *string, topicName *string, request *UpdateTopicRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTopicResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.LiteTopicExpiration) {
+		body["liteTopicExpiration"] = request.LiteTopicExpiration
+	}
+
 	if !dara.IsNil(request.MaxSendTps) {
 		body["maxSendTps"] = request.MaxSendTps
 	}
@@ -3254,9 +3486,11 @@ func (client *Client) UpdateTopicWithContext(ctx context.Context, instanceId *st
 //
 // @return VerifyConsumeMessageResponse
 func (client *Client) VerifyConsumeMessageWithContext(ctx context.Context, instanceId *string, topicName *string, messageId *string, request *VerifyConsumeMessageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *VerifyConsumeMessageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -3303,11 +3537,17 @@ func (client *Client) VerifyConsumeMessageWithContext(ctx context.Context, insta
 //
 // @return VerifySendMessageResponse
 func (client *Client) VerifySendMessageWithContext(ctx context.Context, instanceId *string, topicName *string, request *VerifySendMessageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *VerifySendMessageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.LiteTopicName) {
+		body["liteTopicName"] = request.LiteTopicName
+	}
+
 	if !dara.IsNil(request.Message) {
 		body["message"] = request.Message
 	}

@@ -15,8 +15,12 @@ type iCreateConsumerGroupRequest interface {
 	GetDeliveryOrderType() *string
 	SetMaxReceiveTps(v int64) *CreateConsumerGroupRequest
 	GetMaxReceiveTps() *int64
+	SetMessageModel(v string) *CreateConsumerGroupRequest
+	GetMessageModel() *string
 	SetRemark(v string) *CreateConsumerGroupRequest
 	GetRemark() *string
+	SetTopicName(v string) *CreateConsumerGroupRequest
+	GetTopicName() *string
 }
 
 type CreateConsumerGroupRequest struct {
@@ -44,12 +48,20 @@ type CreateConsumerGroupRequest struct {
 	//
 	// 300
 	MaxReceiveTps *int64 `json:"maxReceiveTps,omitempty" xml:"maxReceiveTps,omitempty"`
+	// example:
+	//
+	// CLUSTERING
+	MessageModel *string `json:"messageModel,omitempty" xml:"messageModel,omitempty"`
 	// The description of the consumer group.
 	//
 	// example:
 	//
 	// This is the remark for test.
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// example:
+	//
+	// test1
+	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
 }
 
 func (s CreateConsumerGroupRequest) String() string {
@@ -72,8 +84,16 @@ func (s *CreateConsumerGroupRequest) GetMaxReceiveTps() *int64 {
 	return s.MaxReceiveTps
 }
 
+func (s *CreateConsumerGroupRequest) GetMessageModel() *string {
+	return s.MessageModel
+}
+
 func (s *CreateConsumerGroupRequest) GetRemark() *string {
 	return s.Remark
+}
+
+func (s *CreateConsumerGroupRequest) GetTopicName() *string {
+	return s.TopicName
 }
 
 func (s *CreateConsumerGroupRequest) SetConsumeRetryPolicy(v *CreateConsumerGroupRequestConsumeRetryPolicy) *CreateConsumerGroupRequest {
@@ -91,13 +111,28 @@ func (s *CreateConsumerGroupRequest) SetMaxReceiveTps(v int64) *CreateConsumerGr
 	return s
 }
 
+func (s *CreateConsumerGroupRequest) SetMessageModel(v string) *CreateConsumerGroupRequest {
+	s.MessageModel = &v
+	return s
+}
+
 func (s *CreateConsumerGroupRequest) SetRemark(v string) *CreateConsumerGroupRequest {
 	s.Remark = &v
 	return s
 }
 
+func (s *CreateConsumerGroupRequest) SetTopicName(v string) *CreateConsumerGroupRequest {
+	s.TopicName = &v
+	return s
+}
+
 func (s *CreateConsumerGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ConsumeRetryPolicy != nil {
+		if err := s.ConsumeRetryPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateConsumerGroupRequestConsumeRetryPolicy struct {

@@ -9,6 +9,8 @@ type iUpdateTopicRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetLiteTopicExpiration(v int64) *UpdateTopicRequest
+	GetLiteTopicExpiration() *int64
 	SetMaxSendTps(v int64) *UpdateTopicRequest
 	GetMaxSendTps() *int64
 	SetRemark(v string) *UpdateTopicRequest
@@ -16,6 +18,10 @@ type iUpdateTopicRequest interface {
 }
 
 type UpdateTopicRequest struct {
+	// example:
+	//
+	// 20
+	LiteTopicExpiration *int64 `json:"liteTopicExpiration,omitempty" xml:"liteTopicExpiration,omitempty"`
 	// Maximum send message tps
 	//
 	// example:
@@ -38,12 +44,21 @@ func (s UpdateTopicRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateTopicRequest) GetLiteTopicExpiration() *int64 {
+	return s.LiteTopicExpiration
+}
+
 func (s *UpdateTopicRequest) GetMaxSendTps() *int64 {
 	return s.MaxSendTps
 }
 
 func (s *UpdateTopicRequest) GetRemark() *string {
 	return s.Remark
+}
+
+func (s *UpdateTopicRequest) SetLiteTopicExpiration(v int64) *UpdateTopicRequest {
+	s.LiteTopicExpiration = &v
+	return s
 }
 
 func (s *UpdateTopicRequest) SetMaxSendTps(v int64) *UpdateTopicRequest {

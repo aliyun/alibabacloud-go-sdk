@@ -155,7 +155,12 @@ func (s *GetConsumerStackResponseBody) SetSuccess(v bool) *GetConsumerStackRespo
 }
 
 func (s *GetConsumerStackResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetConsumerStackResponseBodyData struct {
@@ -226,7 +231,16 @@ func (s *GetConsumerStackResponseBodyData) SetStacks(v []*GetConsumerStackRespon
 }
 
 func (s *GetConsumerStackResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Stacks != nil {
+		for _, item := range s.Stacks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetConsumerStackResponseBodyDataStacks struct {

@@ -11,6 +11,8 @@ type iListMessagesRequest interface {
 	GoString() string
 	SetEndTime(v string) *ListMessagesRequest
 	GetEndTime() *string
+	SetLiteTopicName(v string) *ListMessagesRequest
+	GetLiteTopicName() *string
 	SetMessageId(v string) *ListMessagesRequest
 	GetMessageId() *string
 	SetMessageKey(v string) *ListMessagesRequest
@@ -32,6 +34,10 @@ type ListMessagesRequest struct {
 	//
 	// 2024-09-09 09:00:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// abc
+	LiteTopicName *string `json:"liteTopicName,omitempty" xml:"liteTopicName,omitempty"`
 	// Message Id.
 	//
 	// example:
@@ -84,6 +90,10 @@ func (s *ListMessagesRequest) GetEndTime() *string {
 	return s.EndTime
 }
 
+func (s *ListMessagesRequest) GetLiteTopicName() *string {
+	return s.LiteTopicName
+}
+
 func (s *ListMessagesRequest) GetMessageId() *string {
 	return s.MessageId
 }
@@ -110,6 +120,11 @@ func (s *ListMessagesRequest) GetStartTime() *string {
 
 func (s *ListMessagesRequest) SetEndTime(v string) *ListMessagesRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *ListMessagesRequest) SetLiteTopicName(v string) *ListMessagesRequest {
+	s.LiteTopicName = &v
 	return s
 }
 

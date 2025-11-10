@@ -59,5 +59,10 @@ func (s *GetConsumerGroupSubscriptionResponse) SetBody(v *GetConsumerGroupSubscr
 }
 
 func (s *GetConsumerGroupSubscriptionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

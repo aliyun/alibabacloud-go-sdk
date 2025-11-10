@@ -36,7 +36,16 @@ func (s *UpdateDisasterRecoveryItemRequest) SetTopics(v []*UpdateDisasterRecover
 }
 
 func (s *UpdateDisasterRecoveryItemRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Topics != nil {
+		for _, item := range s.Topics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateDisasterRecoveryItemRequestTopics struct {

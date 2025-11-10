@@ -155,7 +155,12 @@ func (s *GetConsumerGroupResponseBody) SetSuccess(v bool) *GetConsumerGroupRespo
 }
 
 func (s *GetConsumerGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetConsumerGroupResponseBodyData struct {
@@ -197,6 +202,10 @@ type GetConsumerGroupResponseBodyData struct {
 	//
 	// 1000
 	MaxReceiveTps *int64 `json:"maxReceiveTps,omitempty" xml:"maxReceiveTps,omitempty"`
+	// example:
+	//
+	// LITE_SELECTIVE
+	MessageModel *string `json:"messageModel,omitempty" xml:"messageModel,omitempty"`
 	// The ID of the region in which the instance resides.
 	//
 	// example:
@@ -221,6 +230,10 @@ type GetConsumerGroupResponseBodyData struct {
 	//
 	// RUNNING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// test1
+	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
 	// The time when the consumer group was last updated.
 	//
 	// example:
@@ -261,6 +274,10 @@ func (s *GetConsumerGroupResponseBodyData) GetMaxReceiveTps() *int64 {
 	return s.MaxReceiveTps
 }
 
+func (s *GetConsumerGroupResponseBodyData) GetMessageModel() *string {
+	return s.MessageModel
+}
+
 func (s *GetConsumerGroupResponseBodyData) GetRegionId() *string {
 	return s.RegionId
 }
@@ -271,6 +288,10 @@ func (s *GetConsumerGroupResponseBodyData) GetRemark() *string {
 
 func (s *GetConsumerGroupResponseBodyData) GetStatus() *string {
 	return s.Status
+}
+
+func (s *GetConsumerGroupResponseBodyData) GetTopicName() *string {
+	return s.TopicName
 }
 
 func (s *GetConsumerGroupResponseBodyData) GetUpdateTime() *string {
@@ -307,6 +328,11 @@ func (s *GetConsumerGroupResponseBodyData) SetMaxReceiveTps(v int64) *GetConsume
 	return s
 }
 
+func (s *GetConsumerGroupResponseBodyData) SetMessageModel(v string) *GetConsumerGroupResponseBodyData {
+	s.MessageModel = &v
+	return s
+}
+
 func (s *GetConsumerGroupResponseBodyData) SetRegionId(v string) *GetConsumerGroupResponseBodyData {
 	s.RegionId = &v
 	return s
@@ -322,13 +348,23 @@ func (s *GetConsumerGroupResponseBodyData) SetStatus(v string) *GetConsumerGroup
 	return s
 }
 
+func (s *GetConsumerGroupResponseBodyData) SetTopicName(v string) *GetConsumerGroupResponseBodyData {
+	s.TopicName = &v
+	return s
+}
+
 func (s *GetConsumerGroupResponseBodyData) SetUpdateTime(v string) *GetConsumerGroupResponseBodyData {
 	s.UpdateTime = &v
 	return s
 }
 
 func (s *GetConsumerGroupResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ConsumeRetryPolicy != nil {
+		if err := s.ConsumeRetryPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetConsumerGroupResponseBodyDataConsumeRetryPolicy struct {

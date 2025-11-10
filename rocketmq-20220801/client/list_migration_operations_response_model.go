@@ -59,5 +59,10 @@ func (s *ListMigrationOperationsResponse) SetBody(v *ListMigrationOperationsResp
 }
 
 func (s *ListMigrationOperationsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -155,7 +155,12 @@ func (s *ListMessagesResponseBody) SetSuccess(v bool) *ListMessagesResponseBody 
 }
 
 func (s *ListMessagesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMessagesResponseBodyData struct {
@@ -243,7 +248,16 @@ func (s *ListMessagesResponseBodyData) SetTotalCount(v int64) *ListMessagesRespo
 }
 
 func (s *ListMessagesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMessagesResponseBodyDataList struct {
@@ -277,6 +291,10 @@ type ListMessagesResponseBodyDataList struct {
 	//
 	// rmq-cn-7e22ody****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// abc
+	LiteTopicName *string `json:"liteTopicName,omitempty" xml:"liteTopicName,omitempty"`
 	// The message group. This parameter is returned only for ordered messages.
 	//
 	// example:
@@ -359,6 +377,10 @@ func (s *ListMessagesResponseBodyDataList) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *ListMessagesResponseBodyDataList) GetLiteTopicName() *string {
+	return s.LiteTopicName
+}
+
 func (s *ListMessagesResponseBodyDataList) GetMessageGroup() *string {
 	return s.MessageGroup
 }
@@ -421,6 +443,11 @@ func (s *ListMessagesResponseBodyDataList) SetBornTime(v string) *ListMessagesRe
 
 func (s *ListMessagesResponseBodyDataList) SetInstanceId(v string) *ListMessagesResponseBodyDataList {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataList) SetLiteTopicName(v string) *ListMessagesResponseBodyDataList {
+	s.LiteTopicName = &v
 	return s
 }
 

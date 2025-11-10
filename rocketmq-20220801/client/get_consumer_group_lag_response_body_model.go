@@ -155,7 +155,12 @@ func (s *GetConsumerGroupLagResponseBody) SetSuccess(v bool) *GetConsumerGroupLa
 }
 
 func (s *GetConsumerGroupLagResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetConsumerGroupLagResponseBodyData struct {
@@ -170,7 +175,8 @@ type GetConsumerGroupLagResponseBodyData struct {
 	// example:
 	//
 	// rmq-cn-7e22ody****
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceId      *string                              `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	LiteTopicLagMap map[string]*DataLiteTopicLagMapValue `json:"liteTopicLagMap,omitempty" xml:"liteTopicLagMap,omitempty"`
 	// Region ID
 	//
 	// example:
@@ -179,6 +185,10 @@ type GetConsumerGroupLagResponseBodyData struct {
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// Backlog for each topic
 	TopicLagMap map[string]*DataTopicLagMapValue `json:"topicLagMap,omitempty" xml:"topicLagMap,omitempty"`
+	// example:
+	//
+	// test1
+	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
 	// Total lag count
 	TotalLag *GetConsumerGroupLagResponseBodyDataTotalLag `json:"totalLag,omitempty" xml:"totalLag,omitempty" type:"Struct"`
 }
@@ -199,12 +209,20 @@ func (s *GetConsumerGroupLagResponseBodyData) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *GetConsumerGroupLagResponseBodyData) GetLiteTopicLagMap() map[string]*DataLiteTopicLagMapValue {
+	return s.LiteTopicLagMap
+}
+
 func (s *GetConsumerGroupLagResponseBodyData) GetRegionId() *string {
 	return s.RegionId
 }
 
 func (s *GetConsumerGroupLagResponseBodyData) GetTopicLagMap() map[string]*DataTopicLagMapValue {
 	return s.TopicLagMap
+}
+
+func (s *GetConsumerGroupLagResponseBodyData) GetTopicName() *string {
+	return s.TopicName
 }
 
 func (s *GetConsumerGroupLagResponseBodyData) GetTotalLag() *GetConsumerGroupLagResponseBodyDataTotalLag {
@@ -221,6 +239,11 @@ func (s *GetConsumerGroupLagResponseBodyData) SetInstanceId(v string) *GetConsum
 	return s
 }
 
+func (s *GetConsumerGroupLagResponseBodyData) SetLiteTopicLagMap(v map[string]*DataLiteTopicLagMapValue) *GetConsumerGroupLagResponseBodyData {
+	s.LiteTopicLagMap = v
+	return s
+}
+
 func (s *GetConsumerGroupLagResponseBodyData) SetRegionId(v string) *GetConsumerGroupLagResponseBodyData {
 	s.RegionId = &v
 	return s
@@ -231,13 +254,23 @@ func (s *GetConsumerGroupLagResponseBodyData) SetTopicLagMap(v map[string]*DataT
 	return s
 }
 
+func (s *GetConsumerGroupLagResponseBodyData) SetTopicName(v string) *GetConsumerGroupLagResponseBodyData {
+	s.TopicName = &v
+	return s
+}
+
 func (s *GetConsumerGroupLagResponseBodyData) SetTotalLag(v *GetConsumerGroupLagResponseBodyDataTotalLag) *GetConsumerGroupLagResponseBodyData {
 	s.TotalLag = v
 	return s
 }
 
 func (s *GetConsumerGroupLagResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.TotalLag != nil {
+		if err := s.TotalLag.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetConsumerGroupLagResponseBodyDataTotalLag struct {

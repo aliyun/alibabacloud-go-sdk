@@ -96,7 +96,22 @@ func (s *UpdateInstanceRequest) SetRemark(v string) *UpdateInstanceRequest {
 }
 
 func (s *UpdateInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AclInfo != nil {
+		if err := s.AclInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkInfo != nil {
+		if err := s.NetworkInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProductInfo != nil {
+		if err := s.ProductInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateInstanceRequestAclInfo struct {
@@ -171,7 +186,12 @@ func (s *UpdateInstanceRequestNetworkInfo) SetInternetInfo(v *UpdateInstanceRequ
 }
 
 func (s *UpdateInstanceRequestNetworkInfo) Validate() error {
-	return dara.Validate(s)
+	if s.InternetInfo != nil {
+		if err := s.InternetInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateInstanceRequestNetworkInfoInternetInfo struct {

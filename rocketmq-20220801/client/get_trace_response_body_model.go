@@ -155,7 +155,12 @@ func (s *GetTraceResponseBody) SetSuccess(v bool) *GetTraceResponseBody {
 }
 
 func (s *GetTraceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTraceResponseBodyData struct {
@@ -259,7 +264,31 @@ func (s *GetTraceResponseBodyData) SetTopicName(v string) *GetTraceResponseBodyD
 }
 
 func (s *GetTraceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.BrokerInfo != nil {
+		if err := s.BrokerInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ConsumerInfos != nil {
+		for _, item := range s.ConsumerInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MessageInfo != nil {
+		if err := s.MessageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProducerInfo != nil {
+		if err := s.ProducerInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTraceResponseBodyDataBrokerInfo struct {
@@ -330,7 +359,16 @@ func (s *GetTraceResponseBodyDataBrokerInfo) SetRecallResult(v string) *GetTrace
 }
 
 func (s *GetTraceResponseBodyDataBrokerInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Operations != nil {
+		for _, item := range s.Operations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTraceResponseBodyDataBrokerInfoOperations struct {
@@ -457,7 +495,21 @@ func (s *GetTraceResponseBodyDataConsumerInfos) SetRecords(v []*GetTraceResponse
 }
 
 func (s *GetTraceResponseBodyDataConsumerInfos) Validate() error {
-	return dara.Validate(s)
+	if s.DeadLetterInfo != nil {
+		if err := s.DeadLetterInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTraceResponseBodyDataConsumerInfosDeadLetterInfo struct {
@@ -618,7 +670,16 @@ func (s *GetTraceResponseBodyDataConsumerInfosRecords) SetUserName(v string) *Ge
 }
 
 func (s *GetTraceResponseBodyDataConsumerInfosRecords) Validate() error {
-	return dara.Validate(s)
+	if s.Operations != nil {
+		for _, item := range s.Operations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTraceResponseBodyDataConsumerInfosRecordsOperations struct {
@@ -721,6 +782,10 @@ type GetTraceResponseBodyDataMessageInfo struct {
 	//
 	// rmq-cn-u0t2ygjq505
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// abc
+	LiteTopicName *string `json:"liteTopicName,omitempty" xml:"liteTopicName,omitempty"`
 	// Message grpup.
 	//
 	// example:
@@ -805,6 +870,10 @@ func (s *GetTraceResponseBodyDataMessageInfo) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *GetTraceResponseBodyDataMessageInfo) GetLiteTopicName() *string {
+	return s.LiteTopicName
+}
+
 func (s *GetTraceResponseBodyDataMessageInfo) GetMessageGroup() *string {
 	return s.MessageGroup
 }
@@ -866,6 +935,11 @@ func (s *GetTraceResponseBodyDataMessageInfo) SetBornTime(v string) *GetTraceRes
 
 func (s *GetTraceResponseBodyDataMessageInfo) SetInstanceId(v string) *GetTraceResponseBodyDataMessageInfo {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataMessageInfo) SetLiteTopicName(v string) *GetTraceResponseBodyDataMessageInfo {
+	s.LiteTopicName = &v
 	return s
 }
 
@@ -951,7 +1025,16 @@ func (s *GetTraceResponseBodyDataProducerInfo) SetRecords(v []*GetTraceResponseB
 }
 
 func (s *GetTraceResponseBodyDataProducerInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTraceResponseBodyDataProducerInfoRecords struct {

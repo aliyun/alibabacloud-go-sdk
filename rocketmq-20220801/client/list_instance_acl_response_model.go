@@ -59,5 +59,10 @@ func (s *ListInstanceAclResponse) SetBody(v *ListInstanceAclResponseBody) *ListI
 }
 
 func (s *ListInstanceAclResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

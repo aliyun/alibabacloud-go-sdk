@@ -155,7 +155,12 @@ func (s *GetTopicResponseBody) SetSuccess(v bool) *GetTopicResponseBody {
 }
 
 func (s *GetTopicResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTopicResponseBodyData struct {
@@ -171,6 +176,10 @@ type GetTopicResponseBodyData struct {
 	//
 	// rmq-cn-7e22ody****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// 20
+	LiteTopicExpiration *int64 `json:"liteTopicExpiration,omitempty" xml:"liteTopicExpiration,omitempty"`
 	// The maximum TPS for message sending.
 	//
 	// example:
@@ -257,6 +266,10 @@ func (s *GetTopicResponseBodyData) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *GetTopicResponseBodyData) GetLiteTopicExpiration() *int64 {
+	return s.LiteTopicExpiration
+}
+
 func (s *GetTopicResponseBodyData) GetMaxSendTps() *int64 {
 	return s.MaxSendTps
 }
@@ -292,6 +305,11 @@ func (s *GetTopicResponseBodyData) SetCreateTime(v string) *GetTopicResponseBody
 
 func (s *GetTopicResponseBodyData) SetInstanceId(v string) *GetTopicResponseBodyData {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetTopicResponseBodyData) SetLiteTopicExpiration(v int64) *GetTopicResponseBodyData {
+	s.LiteTopicExpiration = &v
 	return s
 }
 

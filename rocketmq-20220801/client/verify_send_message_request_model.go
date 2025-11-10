@@ -9,6 +9,8 @@ type iVerifySendMessageRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetLiteTopicName(v string) *VerifySendMessageRequest
+	GetLiteTopicName() *string
 	SetMessage(v string) *VerifySendMessageRequest
 	GetMessage() *string
 	SetMessageKey(v string) *VerifySendMessageRequest
@@ -18,6 +20,10 @@ type iVerifySendMessageRequest interface {
 }
 
 type VerifySendMessageRequest struct {
+	// example:
+	//
+	// abc
+	LiteTopicName *string `json:"liteTopicName,omitempty" xml:"liteTopicName,omitempty"`
 	// The message body.
 	//
 	// example:
@@ -46,6 +52,10 @@ func (s VerifySendMessageRequest) GoString() string {
 	return s.String()
 }
 
+func (s *VerifySendMessageRequest) GetLiteTopicName() *string {
+	return s.LiteTopicName
+}
+
 func (s *VerifySendMessageRequest) GetMessage() *string {
 	return s.Message
 }
@@ -56,6 +66,11 @@ func (s *VerifySendMessageRequest) GetMessageKey() *string {
 
 func (s *VerifySendMessageRequest) GetMessageTag() *string {
 	return s.MessageTag
+}
+
+func (s *VerifySendMessageRequest) SetLiteTopicName(v string) *VerifySendMessageRequest {
+	s.LiteTopicName = &v
+	return s
 }
 
 func (s *VerifySendMessageRequest) SetMessage(v string) *VerifySendMessageRequest {

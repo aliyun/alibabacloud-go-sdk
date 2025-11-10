@@ -155,7 +155,12 @@ func (s *GetMessageDetailResponseBody) SetSuccess(v bool) *GetMessageDetailRespo
 }
 
 func (s *GetMessageDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMessageDetailResponseBodyData struct {
@@ -189,6 +194,10 @@ type GetMessageDetailResponseBodyData struct {
 	//
 	// rmq-cn-7e22ody****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// abc
+	LiteTopicName *string `json:"liteTopicName,omitempty" xml:"liteTopicName,omitempty"`
 	// The sharding key. This parameter is returned only for ordered messages.
 	//
 	// example:
@@ -273,6 +282,10 @@ func (s *GetMessageDetailResponseBodyData) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *GetMessageDetailResponseBodyData) GetLiteTopicName() *string {
+	return s.LiteTopicName
+}
+
 func (s *GetMessageDetailResponseBodyData) GetMessageGroup() *string {
 	return s.MessageGroup
 }
@@ -339,6 +352,11 @@ func (s *GetMessageDetailResponseBodyData) SetBornTime(v string) *GetMessageDeta
 
 func (s *GetMessageDetailResponseBodyData) SetInstanceId(v string) *GetMessageDetailResponseBodyData {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetMessageDetailResponseBodyData) SetLiteTopicName(v string) *GetMessageDetailResponseBodyData {
+	s.LiteTopicName = &v
 	return s
 }
 

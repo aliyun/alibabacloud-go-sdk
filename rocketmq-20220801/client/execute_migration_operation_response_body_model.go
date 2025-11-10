@@ -140,7 +140,12 @@ func (s *ExecuteMigrationOperationResponseBody) SetSuccess(v bool) *ExecuteMigra
 }
 
 func (s *ExecuteMigrationOperationResponseBody) Validate() error {
-  return dara.Validate(s)
+  if s.Data != nil {
+    if err := s.Data.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type ExecuteMigrationOperationResponseBodyData struct {
@@ -292,7 +297,17 @@ func (s *ExecuteMigrationOperationResponseBodyData) SetUpdateTime(v string) *Exe
 }
 
 func (s *ExecuteMigrationOperationResponseBodyData) Validate() error {
-  return dara.Validate(s)
+  if s.OperationParam != nil {
+    if err := s.OperationParam.Validate(); err != nil {
+      return err
+    }
+  }
+  if s.OperationResult != nil {
+    if err := s.OperationResult.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type ExecuteMigrationOperationResponseBodyDataOperationParam struct {

@@ -172,7 +172,12 @@ func (s *ListInstanceAclResponseBody) SetSuccess(v bool) *ListInstanceAclRespons
 }
 
 func (s *ListInstanceAclResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListInstanceAclResponseBodyData struct {
@@ -243,7 +248,16 @@ func (s *ListInstanceAclResponseBodyData) SetTotalCount(v int64) *ListInstanceAc
 }
 
 func (s *ListInstanceAclResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstanceAclResponseBodyDataList struct {
