@@ -53,7 +53,12 @@ func (s *GetAccountDeletionStatusResponseBody) SetRequestId(v string) *GetAccoun
 }
 
 func (s *GetAccountDeletionStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RdAccountDeletionStatus != nil {
+		if err := s.RdAccountDeletionStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus struct {
@@ -170,7 +175,16 @@ func (s *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus) SetStatus(
 }
 
 func (s *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus) Validate() error {
-	return dara.Validate(s)
+	if s.FailReasonList != nil {
+		for _, item := range s.FailReasonList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList struct {

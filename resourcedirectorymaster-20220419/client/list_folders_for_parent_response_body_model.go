@@ -104,7 +104,12 @@ func (s *ListFoldersForParentResponseBody) SetTotalCount(v int32) *ListFoldersFo
 }
 
 func (s *ListFoldersForParentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Folders != nil {
+		if err := s.Folders.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListFoldersForParentResponseBodyFolders struct {
@@ -129,7 +134,16 @@ func (s *ListFoldersForParentResponseBodyFolders) SetFolder(v []*ListFoldersForP
 }
 
 func (s *ListFoldersForParentResponseBodyFolders) Validate() error {
-	return dara.Validate(s)
+	if s.Folder != nil {
+		for _, item := range s.Folder {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFoldersForParentResponseBodyFoldersFolder struct {
@@ -200,7 +214,12 @@ func (s *ListFoldersForParentResponseBodyFoldersFolder) SetTags(v *ListFoldersFo
 }
 
 func (s *ListFoldersForParentResponseBodyFoldersFolder) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListFoldersForParentResponseBodyFoldersFolderTags struct {
@@ -225,7 +244,16 @@ func (s *ListFoldersForParentResponseBodyFoldersFolderTags) SetTag(v []*ListFold
 }
 
 func (s *ListFoldersForParentResponseBodyFoldersFolderTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFoldersForParentResponseBodyFoldersFolderTagsTag struct {

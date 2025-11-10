@@ -59,5 +59,10 @@ func (s *SendEmailVerificationForMessageContactResponse) SetBody(v *SendEmailVer
 }
 
 func (s *SendEmailVerificationForMessageContactResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

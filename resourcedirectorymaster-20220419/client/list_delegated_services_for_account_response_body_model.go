@@ -55,7 +55,12 @@ func (s *ListDelegatedServicesForAccountResponseBody) SetRequestId(v string) *Li
 }
 
 func (s *ListDelegatedServicesForAccountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DelegatedServices != nil {
+		if err := s.DelegatedServices.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDelegatedServicesForAccountResponseBodyDelegatedServices struct {
@@ -80,7 +85,16 @@ func (s *ListDelegatedServicesForAccountResponseBodyDelegatedServices) SetDelega
 }
 
 func (s *ListDelegatedServicesForAccountResponseBodyDelegatedServices) Validate() error {
-	return dara.Validate(s)
+	if s.DelegatedService != nil {
+		for _, item := range s.DelegatedService {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedService struct {

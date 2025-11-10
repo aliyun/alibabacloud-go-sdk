@@ -53,7 +53,12 @@ func (s *InviteAccountToResourceDirectoryResponseBody) SetRequestId(v string) *I
 }
 
 func (s *InviteAccountToResourceDirectoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Handshake != nil {
+		if err := s.Handshake.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InviteAccountToResourceDirectoryResponseBodyHandshake struct {

@@ -59,5 +59,10 @@ func (s *DisassociateMembersResponse) SetBody(v *DisassociateMembersResponseBody
 }
 
 func (s *DisassociateMembersResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

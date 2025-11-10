@@ -53,7 +53,12 @@ func (s *CreateResourceAccountResponseBody) SetRequestId(v string) *CreateResour
 }
 
 func (s *CreateResourceAccountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Account != nil {
+		if err := s.Account.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateResourceAccountResponseBodyAccount struct {

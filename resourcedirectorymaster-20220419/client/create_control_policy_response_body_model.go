@@ -53,7 +53,12 @@ func (s *CreateControlPolicyResponseBody) SetRequestId(v string) *CreateControlP
 }
 
 func (s *CreateControlPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ControlPolicy != nil {
+		if err := s.ControlPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateControlPolicyResponseBodyControlPolicy struct {

@@ -104,7 +104,12 @@ func (s *ListDelegatedAdministratorsResponseBody) SetTotalCount(v int64) *ListDe
 }
 
 func (s *ListDelegatedAdministratorsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Accounts != nil {
+		if err := s.Accounts.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDelegatedAdministratorsResponseBodyAccounts struct {
@@ -129,7 +134,16 @@ func (s *ListDelegatedAdministratorsResponseBodyAccounts) SetAccount(v []*ListDe
 }
 
 func (s *ListDelegatedAdministratorsResponseBodyAccounts) Validate() error {
-	return dara.Validate(s)
+	if s.Account != nil {
+		for _, item := range s.Account {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDelegatedAdministratorsResponseBodyAccountsAccount struct {

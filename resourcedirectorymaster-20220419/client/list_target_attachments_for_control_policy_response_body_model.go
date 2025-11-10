@@ -104,7 +104,12 @@ func (s *ListTargetAttachmentsForControlPolicyResponseBody) SetTotalCount(v int3
 }
 
 func (s *ListTargetAttachmentsForControlPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TargetAttachments != nil {
+		if err := s.TargetAttachments.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachments struct {
@@ -129,7 +134,16 @@ func (s *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachments) Set
 }
 
 func (s *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachments) Validate() error {
-	return dara.Validate(s)
+	if s.TargetAttachment != nil {
+		for _, item := range s.TargetAttachment {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment struct {

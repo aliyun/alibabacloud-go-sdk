@@ -53,7 +53,12 @@ func (s *GetAccountDeletionCheckResultResponseBody) SetRequestId(v string) *GetA
 }
 
 func (s *GetAccountDeletionCheckResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AccountDeletionCheckResultInfo != nil {
+		if err := s.AccountDeletionCheckResultInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo struct {
@@ -132,7 +137,25 @@ func (s *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo
 }
 
 func (s *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo) Validate() error {
-	return dara.Validate(s)
+	if s.AbandonableChecks != nil {
+		for _, item := range s.AbandonableChecks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NotAllowReason != nil {
+		for _, item := range s.NotAllowReason {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoAbandonableChecks struct {

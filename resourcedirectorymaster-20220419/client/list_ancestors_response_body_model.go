@@ -53,7 +53,12 @@ func (s *ListAncestorsResponseBody) SetRequestId(v string) *ListAncestorsRespons
 }
 
 func (s *ListAncestorsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Folders != nil {
+		if err := s.Folders.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAncestorsResponseBodyFolders struct {
@@ -78,7 +83,16 @@ func (s *ListAncestorsResponseBodyFolders) SetFolder(v []*ListAncestorsResponseB
 }
 
 func (s *ListAncestorsResponseBodyFolders) Validate() error {
-	return dara.Validate(s)
+	if s.Folder != nil {
+		for _, item := range s.Folder {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAncestorsResponseBodyFoldersFolder struct {

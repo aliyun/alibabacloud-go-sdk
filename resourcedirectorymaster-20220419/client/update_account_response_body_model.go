@@ -53,7 +53,12 @@ func (s *UpdateAccountResponseBody) SetRequestId(v string) *UpdateAccountRespons
 }
 
 func (s *UpdateAccountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Account != nil {
+		if err := s.Account.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateAccountResponseBodyAccount struct {

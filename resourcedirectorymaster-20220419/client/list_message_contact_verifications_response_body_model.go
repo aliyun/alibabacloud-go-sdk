@@ -104,7 +104,16 @@ func (s *ListMessageContactVerificationsResponseBody) SetTotalCount(v int32) *Li
 }
 
 func (s *ListMessageContactVerificationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ContactVerifications != nil {
+		for _, item := range s.ContactVerifications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMessageContactVerificationsResponseBodyContactVerifications struct {

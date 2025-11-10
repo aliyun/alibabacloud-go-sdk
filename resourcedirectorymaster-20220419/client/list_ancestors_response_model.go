@@ -59,5 +59,10 @@ func (s *ListAncestorsResponse) SetBody(v *ListAncestorsResponseBody) *ListAnces
 }
 
 func (s *ListAncestorsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

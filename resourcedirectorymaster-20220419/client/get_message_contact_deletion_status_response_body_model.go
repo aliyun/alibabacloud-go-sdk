@@ -53,7 +53,12 @@ func (s *GetMessageContactDeletionStatusResponseBody) SetRequestId(v string) *Ge
 }
 
 func (s *GetMessageContactDeletionStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ContactDeletionStatus != nil {
+		if err := s.ContactDeletionStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMessageContactDeletionStatusResponseBodyContactDeletionStatus struct {
@@ -113,7 +118,16 @@ func (s *GetMessageContactDeletionStatusResponseBodyContactDeletionStatus) SetSt
 }
 
 func (s *GetMessageContactDeletionStatusResponseBodyContactDeletionStatus) Validate() error {
-	return dara.Validate(s)
+	if s.FailReasonList != nil {
+		for _, item := range s.FailReasonList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMessageContactDeletionStatusResponseBodyContactDeletionStatusFailReasonList struct {

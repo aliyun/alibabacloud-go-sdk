@@ -53,7 +53,12 @@ func (s *UpdateControlPolicyResponseBody) SetRequestId(v string) *UpdateControlP
 }
 
 func (s *UpdateControlPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ControlPolicy != nil {
+		if err := s.ControlPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateControlPolicyResponseBodyControlPolicy struct {

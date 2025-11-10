@@ -53,7 +53,12 @@ func (s *GetAccountResponseBody) SetRequestId(v string) *GetAccountResponseBody 
 }
 
 func (s *GetAccountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Account != nil {
+		if err := s.Account.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAccountResponseBodyAccount struct {
@@ -143,6 +148,7 @@ type GetAccountResponseBodyAccount struct {
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
 	// The path of the member in the resource directory.
 	ResourceDirectoryPath *string `json:"ResourceDirectoryPath,omitempty" xml:"ResourceDirectoryPath,omitempty"`
+	SecureMobilePhone     *string `json:"SecureMobilePhone,omitempty" xml:"SecureMobilePhone,omitempty"`
 	// The status of the member. Valid values:
 	//
 	// 	- CreateSuccess: The member is created.
@@ -237,6 +243,10 @@ func (s *GetAccountResponseBodyAccount) GetResourceDirectoryPath() *string {
 	return s.ResourceDirectoryPath
 }
 
+func (s *GetAccountResponseBodyAccount) GetSecureMobilePhone() *string {
+	return s.SecureMobilePhone
+}
+
 func (s *GetAccountResponseBodyAccount) GetStatus() *string {
 	return s.Status
 }
@@ -314,6 +324,11 @@ func (s *GetAccountResponseBodyAccount) SetResourceDirectoryPath(v string) *GetA
 	return s
 }
 
+func (s *GetAccountResponseBodyAccount) SetSecureMobilePhone(v string) *GetAccountResponseBodyAccount {
+	s.SecureMobilePhone = &v
+	return s
+}
+
 func (s *GetAccountResponseBodyAccount) SetStatus(v string) *GetAccountResponseBodyAccount {
 	s.Status = &v
 	return s
@@ -330,7 +345,16 @@ func (s *GetAccountResponseBodyAccount) SetType(v string) *GetAccountResponseBod
 }
 
 func (s *GetAccountResponseBodyAccount) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAccountResponseBodyAccountTags struct {

@@ -53,7 +53,12 @@ func (s *GetResourceDirectoryResponseBody) SetResourceDirectory(v *GetResourceDi
 }
 
 func (s *GetResourceDirectoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceDirectory != nil {
+		if err := s.ResourceDirectory.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResourceDirectoryResponseBodyResourceDirectory struct {

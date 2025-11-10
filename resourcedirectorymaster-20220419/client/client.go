@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -69,9 +70,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AcceptHandshakeResponse
 func (client *Client) AcceptHandshakeWithOptions(request *AcceptHandshakeRequest, runtime *dara.RuntimeOptions) (_result *AcceptHandshakeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HandshakeId) {
@@ -133,9 +136,11 @@ func (client *Client) AcceptHandshake(request *AcceptHandshakeRequest) (_result 
 //
 // @return AddMessageContactResponse
 func (client *Client) AddMessageContactWithOptions(request *AddMessageContactRequest, runtime *dara.RuntimeOptions) (_result *AddMessageContactResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EmailAddress) {
@@ -209,9 +214,11 @@ func (client *Client) AddMessageContact(request *AddMessageContactRequest) (_res
 //
 // @return AssociateMembersResponse
 func (client *Client) AssociateMembersWithOptions(request *AssociateMembersRequest, runtime *dara.RuntimeOptions) (_result *AssociateMembersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactId) {
@@ -283,9 +290,11 @@ func (client *Client) AssociateMembers(request *AssociateMembersRequest) (_resul
 //
 // @return AttachControlPolicyResponse
 func (client *Client) AttachControlPolicyWithOptions(request *AttachControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *AttachControlPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PolicyId) {
@@ -363,9 +372,11 @@ func (client *Client) AttachControlPolicy(request *AttachControlPolicyRequest) (
 //
 // @return BindSecureMobilePhoneResponse
 func (client *Client) BindSecureMobilePhoneWithOptions(request *BindSecureMobilePhoneRequest, runtime *dara.RuntimeOptions) (_result *BindSecureMobilePhoneResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -437,9 +448,11 @@ func (client *Client) BindSecureMobilePhone(request *BindSecureMobilePhoneReques
 //
 // @return CancelChangeAccountEmailResponse
 func (client *Client) CancelChangeAccountEmailWithOptions(request *CancelChangeAccountEmailRequest, runtime *dara.RuntimeOptions) (_result *CancelChangeAccountEmailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -497,9 +510,11 @@ func (client *Client) CancelChangeAccountEmail(request *CancelChangeAccountEmail
 //
 // @return CancelHandshakeResponse
 func (client *Client) CancelHandshakeWithOptions(request *CancelHandshakeRequest, runtime *dara.RuntimeOptions) (_result *CancelHandshakeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HandshakeId) {
@@ -557,9 +572,11 @@ func (client *Client) CancelHandshake(request *CancelHandshakeRequest) (_result 
 //
 // @return CancelMessageContactUpdateResponse
 func (client *Client) CancelMessageContactUpdateWithOptions(request *CancelMessageContactUpdateRequest, runtime *dara.RuntimeOptions) (_result *CancelMessageContactUpdateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactId) {
@@ -625,9 +642,11 @@ func (client *Client) CancelMessageContactUpdate(request *CancelMessageContactUp
 //
 // @return ChangeAccountEmailResponse
 func (client *Client) ChangeAccountEmailWithOptions(request *ChangeAccountEmailRequest, runtime *dara.RuntimeOptions) (_result *ChangeAccountEmailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -693,9 +712,11 @@ func (client *Client) ChangeAccountEmail(request *ChangeAccountEmailRequest) (_r
 //
 // @return CheckAccountDeleteResponse
 func (client *Client) CheckAccountDeleteWithOptions(request *CheckAccountDeleteRequest, runtime *dara.RuntimeOptions) (_result *CheckAccountDeleteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -757,9 +778,11 @@ func (client *Client) CheckAccountDelete(request *CheckAccountDeleteRequest) (_r
 //
 // @return CreateControlPolicyResponse
 func (client *Client) CreateControlPolicyWithOptions(request *CreateControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateControlPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -837,9 +860,11 @@ func (client *Client) CreateControlPolicy(request *CreateControlPolicyRequest) (
 //
 // @return CreateFolderResponse
 func (client *Client) CreateFolderWithOptions(request *CreateFolderRequest, runtime *dara.RuntimeOptions) (_result *CreateFolderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FolderName) {
@@ -915,9 +940,11 @@ func (client *Client) CreateFolder(request *CreateFolderRequest) (_result *Creat
 //
 // @return CreateResourceAccountResponse
 func (client *Client) CreateResourceAccountWithOptions(request *CreateResourceAccountRequest, runtime *dara.RuntimeOptions) (_result *CreateResourceAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountNamePrefix) {
@@ -1005,9 +1032,11 @@ func (client *Client) CreateResourceAccount(request *CreateResourceAccountReques
 //
 // @return DeclineHandshakeResponse
 func (client *Client) DeclineHandshakeWithOptions(request *DeclineHandshakeRequest, runtime *dara.RuntimeOptions) (_result *DeclineHandshakeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HandshakeId) {
@@ -1071,9 +1100,11 @@ func (client *Client) DeclineHandshake(request *DeclineHandshakeRequest) (_resul
 //
 // @return DeleteAccountResponse
 func (client *Client) DeleteAccountWithOptions(tmpReq *DeleteAccountRequest, runtime *dara.RuntimeOptions) (_result *DeleteAccountResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteAccountShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1151,9 +1182,11 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 //
 // @return DeleteControlPolicyResponse
 func (client *Client) DeleteControlPolicyWithOptions(request *DeleteControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteControlPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PolicyId) {
@@ -1219,9 +1252,11 @@ func (client *Client) DeleteControlPolicy(request *DeleteControlPolicyRequest) (
 //
 // @return DeleteFolderResponse
 func (client *Client) DeleteFolderWithOptions(request *DeleteFolderRequest, runtime *dara.RuntimeOptions) (_result *DeleteFolderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FolderId) {
@@ -1283,9 +1318,11 @@ func (client *Client) DeleteFolder(request *DeleteFolderRequest) (_result *Delet
 //
 // @return DeleteMessageContactResponse
 func (client *Client) DeleteMessageContactWithOptions(request *DeleteMessageContactRequest, runtime *dara.RuntimeOptions) (_result *DeleteMessageContactResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactId) {
@@ -1351,9 +1388,11 @@ func (client *Client) DeleteMessageContact(request *DeleteMessageContactRequest)
 //
 // @return DeregisterDelegatedAdministratorResponse
 func (client *Client) DeregisterDelegatedAdministratorWithOptions(request *DeregisterDelegatedAdministratorRequest, runtime *dara.RuntimeOptions) (_result *DeregisterDelegatedAdministratorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -1488,9 +1527,11 @@ func (client *Client) DestroyResourceDirectory() (_result *DestroyResourceDirect
 //
 // @return DetachControlPolicyResponse
 func (client *Client) DetachControlPolicyWithOptions(request *DetachControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *DetachControlPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PolicyId) {
@@ -1617,9 +1658,11 @@ func (client *Client) DisableControlPolicy() (_result *DisableControlPolicyRespo
 //
 // @return DisassociateMembersResponse
 func (client *Client) DisassociateMembersWithOptions(request *DisassociateMembersRequest, runtime *dara.RuntimeOptions) (_result *DisassociateMembersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactId) {
@@ -1740,9 +1783,11 @@ func (client *Client) EnableControlPolicy() (_result *EnableControlPolicyRespons
 //
 // @return EnableResourceDirectoryResponse
 func (client *Client) EnableResourceDirectoryWithOptions(request *EnableResourceDirectoryRequest, runtime *dara.RuntimeOptions) (_result *EnableResourceDirectoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DryRun) {
@@ -1820,9 +1865,11 @@ func (client *Client) EnableResourceDirectory(request *EnableResourceDirectoryRe
 //
 // @return GetAccountResponse
 func (client *Client) GetAccountWithOptions(request *GetAccountRequest, runtime *dara.RuntimeOptions) (_result *GetAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -1888,9 +1935,11 @@ func (client *Client) GetAccount(request *GetAccountRequest) (_result *GetAccoun
 //
 // @return GetAccountDeletionCheckResultResponse
 func (client *Client) GetAccountDeletionCheckResultWithOptions(request *GetAccountDeletionCheckResultRequest, runtime *dara.RuntimeOptions) (_result *GetAccountDeletionCheckResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -1952,9 +2001,11 @@ func (client *Client) GetAccountDeletionCheckResult(request *GetAccountDeletionC
 //
 // @return GetAccountDeletionStatusResponse
 func (client *Client) GetAccountDeletionStatusWithOptions(request *GetAccountDeletionStatusRequest, runtime *dara.RuntimeOptions) (_result *GetAccountDeletionStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -2012,9 +2063,11 @@ func (client *Client) GetAccountDeletionStatus(request *GetAccountDeletionStatus
 //
 // @return GetControlPolicyResponse
 func (client *Client) GetControlPolicyWithOptions(request *GetControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *GetControlPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Language) {
@@ -2123,9 +2176,11 @@ func (client *Client) GetControlPolicyEnablementStatus() (_result *GetControlPol
 //
 // @return GetFolderResponse
 func (client *Client) GetFolderWithOptions(request *GetFolderRequest, runtime *dara.RuntimeOptions) (_result *GetFolderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FolderId) {
@@ -2183,9 +2238,11 @@ func (client *Client) GetFolder(request *GetFolderRequest) (_result *GetFolderRe
 //
 // @return GetHandshakeResponse
 func (client *Client) GetHandshakeWithOptions(request *GetHandshakeRequest, runtime *dara.RuntimeOptions) (_result *GetHandshakeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HandshakeId) {
@@ -2243,9 +2300,11 @@ func (client *Client) GetHandshake(request *GetHandshakeRequest) (_result *GetHa
 //
 // @return GetMessageContactResponse
 func (client *Client) GetMessageContactWithOptions(request *GetMessageContactRequest, runtime *dara.RuntimeOptions) (_result *GetMessageContactResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactId) {
@@ -2303,9 +2362,11 @@ func (client *Client) GetMessageContact(request *GetMessageContactRequest) (_res
 //
 // @return GetMessageContactDeletionStatusResponse
 func (client *Client) GetMessageContactDeletionStatusWithOptions(request *GetMessageContactDeletionStatusRequest, runtime *dara.RuntimeOptions) (_result *GetMessageContactDeletionStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactId) {
@@ -2363,9 +2424,11 @@ func (client *Client) GetMessageContactDeletionStatus(request *GetMessageContact
 //
 // @return GetPayerForAccountResponse
 func (client *Client) GetPayerForAccountWithOptions(request *GetPayerForAccountRequest, runtime *dara.RuntimeOptions) (_result *GetPayerForAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -2470,9 +2533,11 @@ func (client *Client) GetResourceDirectory() (_result *GetResourceDirectoryRespo
 //
 // @return InviteAccountToResourceDirectoryResponse
 func (client *Client) InviteAccountToResourceDirectoryWithOptions(request *InviteAccountToResourceDirectoryRequest, runtime *dara.RuntimeOptions) (_result *InviteAccountToResourceDirectoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Note) {
@@ -2550,9 +2615,11 @@ func (client *Client) InviteAccountToResourceDirectory(request *InviteAccountToR
 //
 // @return ListAccountsResponse
 func (client *Client) ListAccountsWithOptions(request *ListAccountsRequest, runtime *dara.RuntimeOptions) (_result *ListAccountsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IncludeTags) {
@@ -2638,9 +2705,11 @@ func (client *Client) ListAccounts(request *ListAccountsRequest) (_result *ListA
 //
 // @return ListAccountsForParentResponse
 func (client *Client) ListAccountsForParentWithOptions(request *ListAccountsForParentRequest, runtime *dara.RuntimeOptions) (_result *ListAccountsForParentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IncludeTags) {
@@ -2718,9 +2787,11 @@ func (client *Client) ListAccountsForParent(request *ListAccountsForParentReques
 //
 // @return ListAncestorsResponse
 func (client *Client) ListAncestorsWithOptions(request *ListAncestorsRequest, runtime *dara.RuntimeOptions) (_result *ListAncestorsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ChildId) {
@@ -2778,9 +2849,11 @@ func (client *Client) ListAncestors(request *ListAncestorsRequest) (_result *Lis
 //
 // @return ListControlPoliciesResponse
 func (client *Client) ListControlPoliciesWithOptions(request *ListControlPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListControlPoliciesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Language) {
@@ -2854,9 +2927,11 @@ func (client *Client) ListControlPolicies(request *ListControlPoliciesRequest) (
 //
 // @return ListControlPolicyAttachmentsForTargetResponse
 func (client *Client) ListControlPolicyAttachmentsForTargetWithOptions(request *ListControlPolicyAttachmentsForTargetRequest, runtime *dara.RuntimeOptions) (_result *ListControlPolicyAttachmentsForTargetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Language) {
@@ -2918,9 +2993,11 @@ func (client *Client) ListControlPolicyAttachmentsForTarget(request *ListControl
 //
 // @return ListDelegatedAdministratorsResponse
 func (client *Client) ListDelegatedAdministratorsWithOptions(request *ListDelegatedAdministratorsRequest, runtime *dara.RuntimeOptions) (_result *ListDelegatedAdministratorsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -2986,9 +3063,11 @@ func (client *Client) ListDelegatedAdministrators(request *ListDelegatedAdminist
 //
 // @return ListDelegatedServicesForAccountResponse
 func (client *Client) ListDelegatedServicesForAccountWithOptions(request *ListDelegatedServicesForAccountRequest, runtime *dara.RuntimeOptions) (_result *ListDelegatedServicesForAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -3050,9 +3129,11 @@ func (client *Client) ListDelegatedServicesForAccount(request *ListDelegatedServ
 //
 // @return ListFoldersForParentResponse
 func (client *Client) ListFoldersForParentWithOptions(request *ListFoldersForParentRequest, runtime *dara.RuntimeOptions) (_result *ListFoldersForParentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -3130,9 +3211,11 @@ func (client *Client) ListFoldersForParent(request *ListFoldersForParentRequest)
 //
 // @return ListHandshakesForAccountResponse
 func (client *Client) ListHandshakesForAccountWithOptions(request *ListHandshakesForAccountRequest, runtime *dara.RuntimeOptions) (_result *ListHandshakesForAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -3194,9 +3277,11 @@ func (client *Client) ListHandshakesForAccount(request *ListHandshakesForAccount
 //
 // @return ListHandshakesForResourceDirectoryResponse
 func (client *Client) ListHandshakesForResourceDirectoryWithOptions(request *ListHandshakesForResourceDirectoryRequest, runtime *dara.RuntimeOptions) (_result *ListHandshakesForResourceDirectoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -3258,9 +3343,11 @@ func (client *Client) ListHandshakesForResourceDirectory(request *ListHandshakes
 //
 // @return ListMessageContactVerificationsResponse
 func (client *Client) ListMessageContactVerificationsWithOptions(request *ListMessageContactVerificationsRequest, runtime *dara.RuntimeOptions) (_result *ListMessageContactVerificationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactId) {
@@ -3326,9 +3413,11 @@ func (client *Client) ListMessageContactVerifications(request *ListMessageContac
 //
 // @return ListMessageContactsResponse
 func (client *Client) ListMessageContactsWithOptions(request *ListMessageContactsRequest, runtime *dara.RuntimeOptions) (_result *ListMessageContactsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactId) {
@@ -3398,9 +3487,11 @@ func (client *Client) ListMessageContacts(request *ListMessageContactsRequest) (
 //
 // @return ListTagKeysResponse
 func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtime *dara.RuntimeOptions) (_result *ListTagKeysResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyFilter) {
@@ -3470,9 +3561,11 @@ func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTag
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -3546,9 +3639,11 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 //
 // @return ListTagValuesResponse
 func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, runtime *dara.RuntimeOptions) (_result *ListTagValuesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -3622,9 +3717,11 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 //
 // @return ListTargetAttachmentsForControlPolicyResponse
 func (client *Client) ListTargetAttachmentsForControlPolicyWithOptions(request *ListTargetAttachmentsForControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *ListTargetAttachmentsForControlPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -3694,9 +3791,11 @@ func (client *Client) ListTargetAttachmentsForControlPolicy(request *ListTargetA
 //
 // @return ListTrustedServiceStatusResponse
 func (client *Client) ListTrustedServiceStatusWithOptions(request *ListTrustedServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *ListTrustedServiceStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AdminAccountId) {
@@ -3766,9 +3865,11 @@ func (client *Client) ListTrustedServiceStatus(request *ListTrustedServiceStatus
 //
 // @return MoveAccountResponse
 func (client *Client) MoveAccountWithOptions(request *MoveAccountRequest, runtime *dara.RuntimeOptions) (_result *MoveAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -3830,9 +3931,11 @@ func (client *Client) MoveAccount(request *MoveAccountRequest) (_result *MoveAcc
 //
 // @return PrecheckForConsolidatedBillingAccountResponse
 func (client *Client) PrecheckForConsolidatedBillingAccountWithOptions(request *PrecheckForConsolidatedBillingAccountRequest, runtime *dara.RuntimeOptions) (_result *PrecheckForConsolidatedBillingAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillingAccountId) {
@@ -3900,9 +4003,11 @@ func (client *Client) PrecheckForConsolidatedBillingAccount(request *PrecheckFor
 //
 // @return RegisterDelegatedAdministratorResponse
 func (client *Client) RegisterDelegatedAdministratorWithOptions(request *RegisterDelegatedAdministratorRequest, runtime *dara.RuntimeOptions) (_result *RegisterDelegatedAdministratorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -3974,9 +4079,11 @@ func (client *Client) RegisterDelegatedAdministrator(request *RegisterDelegatedA
 //
 // @return RemoveCloudAccountResponse
 func (client *Client) RemoveCloudAccountWithOptions(request *RemoveCloudAccountRequest, runtime *dara.RuntimeOptions) (_result *RemoveCloudAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -4034,9 +4141,11 @@ func (client *Client) RemoveCloudAccount(request *RemoveCloudAccountRequest) (_r
 //
 // @return RetryChangeAccountEmailResponse
 func (client *Client) RetryChangeAccountEmailWithOptions(request *RetryChangeAccountEmailRequest, runtime *dara.RuntimeOptions) (_result *RetryChangeAccountEmailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -4094,9 +4203,11 @@ func (client *Client) RetryChangeAccountEmail(request *RetryChangeAccountEmailRe
 //
 // @return SendEmailVerificationForMessageContactResponse
 func (client *Client) SendEmailVerificationForMessageContactWithOptions(request *SendEmailVerificationForMessageContactRequest, runtime *dara.RuntimeOptions) (_result *SendEmailVerificationForMessageContactResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactId) {
@@ -4158,9 +4269,11 @@ func (client *Client) SendEmailVerificationForMessageContact(request *SendEmailV
 //
 // @return SendPhoneVerificationForMessageContactResponse
 func (client *Client) SendPhoneVerificationForMessageContactWithOptions(request *SendPhoneVerificationForMessageContactRequest, runtime *dara.RuntimeOptions) (_result *SendPhoneVerificationForMessageContactResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactId) {
@@ -4226,9 +4339,11 @@ func (client *Client) SendPhoneVerificationForMessageContact(request *SendPhoneV
 //
 // @return SendVerificationCodeForBindSecureMobilePhoneResponse
 func (client *Client) SendVerificationCodeForBindSecureMobilePhoneWithOptions(request *SendVerificationCodeForBindSecureMobilePhoneRequest, runtime *dara.RuntimeOptions) (_result *SendVerificationCodeForBindSecureMobilePhoneResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -4298,9 +4413,11 @@ func (client *Client) SendVerificationCodeForBindSecureMobilePhone(request *Send
 //
 // @return SendVerificationCodeForEnableRDResponse
 func (client *Client) SendVerificationCodeForEnableRDWithOptions(request *SendVerificationCodeForEnableRDRequest, runtime *dara.RuntimeOptions) (_result *SendVerificationCodeForEnableRDResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SecureMobilePhone) {
@@ -4366,9 +4483,11 @@ func (client *Client) SendVerificationCodeForEnableRD(request *SendVerificationC
 //
 // @return SetMemberDeletionPermissionResponse
 func (client *Client) SetMemberDeletionPermissionWithOptions(request *SetMemberDeletionPermissionRequest, runtime *dara.RuntimeOptions) (_result *SetMemberDeletionPermissionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Status) {
@@ -4430,9 +4549,11 @@ func (client *Client) SetMemberDeletionPermission(request *SetMemberDeletionPerm
 //
 // @return SetMemberDisplayNameSyncStatusResponse
 func (client *Client) SetMemberDisplayNameSyncStatusWithOptions(request *SetMemberDisplayNameSyncStatusRequest, runtime *dara.RuntimeOptions) (_result *SetMemberDisplayNameSyncStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Status) {
@@ -4490,9 +4611,11 @@ func (client *Client) SetMemberDisplayNameSyncStatus(request *SetMemberDisplayNa
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceId) {
@@ -4558,9 +4681,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -4638,9 +4763,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 //
 // @return UpdateAccountResponse
 func (client *Client) UpdateAccountWithOptions(request *UpdateAccountRequest, runtime *dara.RuntimeOptions) (_result *UpdateAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -4718,9 +4845,11 @@ func (client *Client) UpdateAccount(request *UpdateAccountRequest) (_result *Upd
 //
 // @return UpdateControlPolicyResponse
 func (client *Client) UpdateControlPolicyWithOptions(request *UpdateControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *UpdateControlPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NewDescription) {
@@ -4790,9 +4919,11 @@ func (client *Client) UpdateControlPolicy(request *UpdateControlPolicyRequest) (
 //
 // @return UpdateFolderResponse
 func (client *Client) UpdateFolderWithOptions(request *UpdateFolderRequest, runtime *dara.RuntimeOptions) (_result *UpdateFolderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FolderId) {
@@ -4854,9 +4985,11 @@ func (client *Client) UpdateFolder(request *UpdateFolderRequest) (_result *Updat
 //
 // @return UpdateMessageContactResponse
 func (client *Client) UpdateMessageContactWithOptions(request *UpdateMessageContactRequest, runtime *dara.RuntimeOptions) (_result *UpdateMessageContactResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContactId) {
@@ -4934,9 +5067,11 @@ func (client *Client) UpdateMessageContact(request *UpdateMessageContactRequest)
 //
 // @return UpdatePayerForAccountResponse
 func (client *Client) UpdatePayerForAccountWithOptions(request *UpdatePayerForAccountRequest, runtime *dara.RuntimeOptions) (_result *UpdatePayerForAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {

@@ -59,5 +59,10 @@ func (s *ListAccountsForParentResponse) SetBody(v *ListAccountsForParentResponse
 }
 
 func (s *ListAccountsForParentResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

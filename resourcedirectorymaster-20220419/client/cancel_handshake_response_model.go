@@ -59,5 +59,10 @@ func (s *CancelHandshakeResponse) SetBody(v *CancelHandshakeResponseBody) *Cance
 }
 
 func (s *CancelHandshakeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

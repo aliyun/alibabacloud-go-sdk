@@ -59,5 +59,10 @@ func (s *ListTrustedServiceStatusResponse) SetBody(v *ListTrustedServiceStatusRe
 }
 
 func (s *ListTrustedServiceStatusResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

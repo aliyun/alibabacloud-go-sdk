@@ -53,7 +53,12 @@ func (s *ListControlPolicyAttachmentsForTargetResponseBody) SetRequestId(v strin
 }
 
 func (s *ListControlPolicyAttachmentsForTargetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ControlPolicyAttachments != nil {
+		if err := s.ControlPolicyAttachments.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachments struct {
@@ -78,7 +83,16 @@ func (s *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmen
 }
 
 func (s *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachments) Validate() error {
-	return dara.Validate(s)
+	if s.ControlPolicyAttachment != nil {
+		for _, item := range s.ControlPolicyAttachment {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment struct {

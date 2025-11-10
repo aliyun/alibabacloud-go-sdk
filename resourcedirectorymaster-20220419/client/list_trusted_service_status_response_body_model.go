@@ -104,7 +104,12 @@ func (s *ListTrustedServiceStatusResponseBody) SetTotalCount(v int32) *ListTrust
 }
 
 func (s *ListTrustedServiceStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EnabledServicePrincipals != nil {
+		if err := s.EnabledServicePrincipals.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTrustedServiceStatusResponseBodyEnabledServicePrincipals struct {
@@ -129,7 +134,16 @@ func (s *ListTrustedServiceStatusResponseBodyEnabledServicePrincipals) SetEnable
 }
 
 func (s *ListTrustedServiceStatusResponseBodyEnabledServicePrincipals) Validate() error {
-	return dara.Validate(s)
+	if s.EnabledServicePrincipal != nil {
+		for _, item := range s.EnabledServicePrincipal {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTrustedServiceStatusResponseBodyEnabledServicePrincipalsEnabledServicePrincipal struct {

@@ -104,7 +104,12 @@ func (s *ListHandshakesForAccountResponseBody) SetTotalCount(v int32) *ListHands
 }
 
 func (s *ListHandshakesForAccountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Handshakes != nil {
+		if err := s.Handshakes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListHandshakesForAccountResponseBodyHandshakes struct {
@@ -129,7 +134,16 @@ func (s *ListHandshakesForAccountResponseBodyHandshakes) SetHandshake(v []*ListH
 }
 
 func (s *ListHandshakesForAccountResponseBodyHandshakes) Validate() error {
-	return dara.Validate(s)
+	if s.Handshake != nil {
+		for _, item := range s.Handshake {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListHandshakesForAccountResponseBodyHandshakesHandshake struct {

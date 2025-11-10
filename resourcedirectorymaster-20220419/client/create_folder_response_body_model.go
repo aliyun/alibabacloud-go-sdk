@@ -53,7 +53,12 @@ func (s *CreateFolderResponseBody) SetRequestId(v string) *CreateFolderResponseB
 }
 
 func (s *CreateFolderResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Folder != nil {
+		if err := s.Folder.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateFolderResponseBodyFolder struct {

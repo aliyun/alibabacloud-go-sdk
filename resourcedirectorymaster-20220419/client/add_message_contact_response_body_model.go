@@ -53,7 +53,12 @@ func (s *AddMessageContactResponseBody) SetRequestId(v string) *AddMessageContac
 }
 
 func (s *AddMessageContactResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Contact != nil {
+		if err := s.Contact.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddMessageContactResponseBodyContact struct {

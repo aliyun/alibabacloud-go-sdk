@@ -74,7 +74,16 @@ func (s *PrecheckForConsolidatedBillingAccountResponseBody) SetResult(v bool) *P
 }
 
 func (s *PrecheckForConsolidatedBillingAccountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Reasons != nil {
+		for _, item := range s.Reasons {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PrecheckForConsolidatedBillingAccountResponseBodyReasons struct {

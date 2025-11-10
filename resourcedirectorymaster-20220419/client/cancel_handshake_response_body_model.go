@@ -53,7 +53,12 @@ func (s *CancelHandshakeResponseBody) SetRequestId(v string) *CancelHandshakeRes
 }
 
 func (s *CancelHandshakeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Handshake != nil {
+		if err := s.Handshake.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CancelHandshakeResponseBodyHandshake struct {

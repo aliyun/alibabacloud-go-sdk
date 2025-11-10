@@ -104,7 +104,12 @@ func (s *ListControlPoliciesResponseBody) SetTotalCount(v int32) *ListControlPol
 }
 
 func (s *ListControlPoliciesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ControlPolicies != nil {
+		if err := s.ControlPolicies.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListControlPoliciesResponseBodyControlPolicies struct {
@@ -129,7 +134,16 @@ func (s *ListControlPoliciesResponseBodyControlPolicies) SetControlPolicy(v []*L
 }
 
 func (s *ListControlPoliciesResponseBodyControlPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.ControlPolicy != nil {
+		for _, item := range s.ControlPolicy {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListControlPoliciesResponseBodyControlPoliciesControlPolicy struct {
@@ -283,7 +297,12 @@ func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicy) SetUpdateD
 }
 
 func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListControlPoliciesResponseBodyControlPoliciesControlPolicyTags struct {
@@ -308,7 +327,16 @@ func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicyTags) SetTag
 }
 
 func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicyTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListControlPoliciesResponseBodyControlPoliciesControlPolicyTagsTag struct {

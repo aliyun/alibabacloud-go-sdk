@@ -121,7 +121,12 @@ func (s *ListAccountsResponseBody) SetTotalCount(v int32) *ListAccountsResponseB
 }
 
 func (s *ListAccountsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Accounts != nil {
+		if err := s.Accounts.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAccountsResponseBodyAccounts struct {
@@ -146,7 +151,16 @@ func (s *ListAccountsResponseBodyAccounts) SetAccount(v []*ListAccountsResponseB
 }
 
 func (s *ListAccountsResponseBodyAccounts) Validate() error {
-	return dara.Validate(s)
+	if s.Account != nil {
+		for _, item := range s.Account {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAccountsResponseBodyAccountsAccount struct {
@@ -380,7 +394,12 @@ func (s *ListAccountsResponseBodyAccountsAccount) SetType(v string) *ListAccount
 }
 
 func (s *ListAccountsResponseBodyAccountsAccount) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAccountsResponseBodyAccountsAccountTags struct {
@@ -405,7 +424,16 @@ func (s *ListAccountsResponseBodyAccountsAccountTags) SetTag(v []*ListAccountsRe
 }
 
 func (s *ListAccountsResponseBodyAccountsAccountTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAccountsResponseBodyAccountsAccountTagsTag struct {
