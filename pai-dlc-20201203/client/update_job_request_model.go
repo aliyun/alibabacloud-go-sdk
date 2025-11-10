@@ -11,6 +11,8 @@ type iUpdateJobRequest interface {
 	GoString() string
 	SetAccessibility(v string) *UpdateJobRequest
 	GetAccessibility() *string
+	SetJobSpecs(v []*JobSpec) *UpdateJobRequest
+	GetJobSpecs() []*JobSpec
 	SetPriority(v int32) *UpdateJobRequest
 	GetPriority() *int32
 }
@@ -25,7 +27,8 @@ type UpdateJobRequest struct {
 	// example:
 	//
 	// PRIVATE
-	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Accessibility *string    `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	JobSpecs      []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
 	// The job priority. Valid values: 1 to 9.
 	//
 	// 	- 1: the lowest priority.
@@ -50,6 +53,10 @@ func (s *UpdateJobRequest) GetAccessibility() *string {
 	return s.Accessibility
 }
 
+func (s *UpdateJobRequest) GetJobSpecs() []*JobSpec {
+	return s.JobSpecs
+}
+
 func (s *UpdateJobRequest) GetPriority() *int32 {
 	return s.Priority
 }
@@ -59,11 +66,25 @@ func (s *UpdateJobRequest) SetAccessibility(v string) *UpdateJobRequest {
 	return s
 }
 
+func (s *UpdateJobRequest) SetJobSpecs(v []*JobSpec) *UpdateJobRequest {
+	s.JobSpecs = v
+	return s
+}
+
 func (s *UpdateJobRequest) SetPriority(v int32) *UpdateJobRequest {
 	s.Priority = &v
 	return s
 }
 
 func (s *UpdateJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.JobSpecs != nil {
+		for _, item := range s.JobSpecs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

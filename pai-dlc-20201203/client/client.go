@@ -515,7 +515,11 @@ func (client *Client) DeleteTensorboard(TensorboardId *string, request *DeleteTe
 
 // Summary:
 //
-// 获取 Dashboard 链接
+// Gets the DLC task\\"s Dashboard URL, if one exists.
+//
+// Description:
+//
+// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
 //
 // @param request - GetDashboardRequest
 //
@@ -566,7 +570,11 @@ func (client *Client) GetDashboardWithOptions(jobId *string, request *GetDashboa
 
 // Summary:
 //
-// 获取 Dashboard 链接
+// Gets the DLC task\\"s Dashboard URL, if one exists.
+//
+// Description:
+//
+// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
 //
 // @param request - GetDashboardRequest
 //
@@ -2074,6 +2082,10 @@ func (client *Client) UpdateJobWithOptions(JobId *string, request *UpdateJobRequ
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {
 		body["Accessibility"] = request.Accessibility
+	}
+
+	if !dara.IsNil(request.JobSpecs) {
+		body["JobSpecs"] = request.JobSpecs
 	}
 
 	if !dara.IsNil(request.Priority) {

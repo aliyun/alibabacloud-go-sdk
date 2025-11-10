@@ -343,7 +343,11 @@ func (client *Client) DeleteTensorboardWithContext(ctx context.Context, Tensorbo
 
 // Summary:
 //
-// 获取 Dashboard 链接
+// Gets the DLC task\\"s Dashboard URL, if one exists.
+//
+// Description:
+//
+// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
 //
 // @param request - GetDashboardRequest
 //
@@ -1539,6 +1543,10 @@ func (client *Client) UpdateJobWithContext(ctx context.Context, JobId *string, r
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {
 		body["Accessibility"] = request.Accessibility
+	}
+
+	if !dara.IsNil(request.JobSpecs) {
+		body["JobSpecs"] = request.JobSpecs
 	}
 
 	if !dara.IsNil(request.Priority) {

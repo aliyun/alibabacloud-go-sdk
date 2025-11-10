@@ -14,6 +14,8 @@ type iGetDashboardResponseBody interface {
 }
 
 type GetDashboardResponseBody struct {
+	// The Dashboard URL
+	//
 	// example:
 	//
 	// https://dlcj1jzm1p01saqw-spark.pre-dsw-gateway-cn-hangzhou.data.aliyun.com
