@@ -16342,6 +16342,10 @@ func (client *Client) DescribeImageRepoListWithContext(ctx context.Context, requ
 		query["RepoNamespace"] = request.RepoNamespace
 	}
 
+	if !dara.IsNil(request.Selected) {
+		query["Selected"] = request.Selected
+	}
+
 	if !dara.IsNil(request.TargetType) {
 		query["TargetType"] = request.TargetType
 	}

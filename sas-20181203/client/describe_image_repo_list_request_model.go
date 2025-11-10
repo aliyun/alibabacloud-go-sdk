@@ -23,6 +23,8 @@ type iDescribeImageRepoListRequest interface {
 	GetRepoName() *string
 	SetRepoNamespace(v string) *DescribeImageRepoListRequest
 	GetRepoNamespace() *string
+	SetSelected(v int32) *DescribeImageRepoListRequest
+	GetSelected() *int32
 	SetTargetType(v string) *DescribeImageRepoListRequest
 	GetTargetType() *string
 	SetType(v string) *DescribeImageRepoListRequest
@@ -86,6 +88,7 @@ type DescribeImageRepoListRequest struct {
 	//
 	// libssh2
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
+	Selected      *int32  `json:"Selected,omitempty" xml:"Selected,omitempty"`
 	// The condition by which the feature is applied. Valid values:
 	//
 	// 	- **image_repo**: the ID of the image repository
@@ -144,6 +147,10 @@ func (s *DescribeImageRepoListRequest) GetRepoNamespace() *string {
 	return s.RepoNamespace
 }
 
+func (s *DescribeImageRepoListRequest) GetSelected() *int32 {
+	return s.Selected
+}
+
 func (s *DescribeImageRepoListRequest) GetTargetType() *string {
 	return s.TargetType
 }
@@ -184,6 +191,11 @@ func (s *DescribeImageRepoListRequest) SetRepoName(v string) *DescribeImageRepoL
 
 func (s *DescribeImageRepoListRequest) SetRepoNamespace(v string) *DescribeImageRepoListRequest {
 	s.RepoNamespace = &v
+	return s
+}
+
+func (s *DescribeImageRepoListRequest) SetSelected(v int32) *DescribeImageRepoListRequest {
+	s.Selected = &v
 	return s
 }
 

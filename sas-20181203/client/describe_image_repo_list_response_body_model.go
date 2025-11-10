@@ -144,7 +144,8 @@ type DescribeImageRepoListResponseBodyImageRepoList struct {
 	// example:
 	//
 	// add
-	Flag *string `json:"Flag,omitempty" xml:"Flag,omitempty"`
+	Flag       *string `json:"Flag,omitempty" xml:"Flag,omitempty"`
+	ImageCount *int32  `json:"ImageCount,omitempty" xml:"ImageCount,omitempty"`
 	// The name of the image repository.
 	//
 	// example:
@@ -171,6 +172,10 @@ func (s *DescribeImageRepoListResponseBodyImageRepoList) GetFlag() *string {
 	return s.Flag
 }
 
+func (s *DescribeImageRepoListResponseBodyImageRepoList) GetImageCount() *int32 {
+	return s.ImageCount
+}
+
 func (s *DescribeImageRepoListResponseBodyImageRepoList) GetRepoName() *string {
 	return s.RepoName
 }
@@ -181,6 +186,11 @@ func (s *DescribeImageRepoListResponseBodyImageRepoList) GetRepoNamespace() *str
 
 func (s *DescribeImageRepoListResponseBodyImageRepoList) SetFlag(v string) *DescribeImageRepoListResponseBodyImageRepoList {
 	s.Flag = &v
+	return s
+}
+
+func (s *DescribeImageRepoListResponseBodyImageRepoList) SetImageCount(v int32) *DescribeImageRepoListResponseBodyImageRepoList {
+	s.ImageCount = &v
 	return s
 }
 
