@@ -123,7 +123,16 @@ func (s *RenewServiceInstanceResourcesRequest) SetServiceInstanceId(v string) *R
 }
 
 func (s *RenewServiceInstanceResourcesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ResourcePeriod != nil {
+		for _, item := range s.ResourcePeriod {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RenewServiceInstanceResourcesRequestResourcePeriod struct {

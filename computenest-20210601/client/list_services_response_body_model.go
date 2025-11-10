@@ -104,7 +104,16 @@ func (s *ListServicesResponseBody) SetTotalCount(v int32) *ListServicesResponseB
 }
 
 func (s *ListServicesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Services != nil {
+		for _, item := range s.Services {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListServicesResponseBodyServices struct {
@@ -502,7 +511,39 @@ func (s *ListServicesResponseBodyServices) SetVirtualInternetService(v string) *
 }
 
 func (s *ListServicesResponseBodyServices) Validate() error {
-	return dara.Validate(s)
+	if s.Commodity != nil {
+		if err := s.Commodity.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceInfos != nil {
+		for _, item := range s.ServiceInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ServiceLocaleConfigs != nil {
+		for _, item := range s.ServiceLocaleConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListServicesResponseBodyServicesCommodity struct {
@@ -639,7 +680,16 @@ func (s *ListServicesResponseBodyServicesServiceInfos) SetSoftwares(v []*ListSer
 }
 
 func (s *ListServicesResponseBodyServicesServiceInfos) Validate() error {
-	return dara.Validate(s)
+	if s.Softwares != nil {
+		for _, item := range s.Softwares {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListServicesResponseBodyServicesServiceInfosSoftwares struct {

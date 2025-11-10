@@ -70,7 +70,16 @@ func (s *ListBackupsRequest) SetNextToken(v string) *ListBackupsRequest {
 }
 
 func (s *ListBackupsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		for _, item := range s.Filter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListBackupsRequestFilter struct {

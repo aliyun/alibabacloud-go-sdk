@@ -381,7 +381,26 @@ func (s *CreateServiceInstanceShrinkRequest) SetTrialType(v string) *CreateServi
 }
 
 func (s *CreateServiceInstanceShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Commodity != nil {
+		if err := s.Commodity.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OperationMetadata != nil {
+		if err := s.OperationMetadata.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateServiceInstanceShrinkRequestCommodity struct {

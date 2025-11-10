@@ -11,6 +11,8 @@ type iUpdateServiceUsageRequest interface {
 	GoString() string
 	SetClientToken(v string) *UpdateServiceUsageRequest
 	GetClientToken() *string
+	SetRegionId(v string) *UpdateServiceUsageRequest
+	GetRegionId() *string
 	SetServiceId(v string) *UpdateServiceUsageRequest
 	GetServiceId() *string
 	SetUserInformation(v map[string]*string) *UpdateServiceUsageRequest
@@ -24,6 +26,7 @@ type UpdateServiceUsageRequest struct {
 	//
 	// AAAAAYChudnQUoBH+mGWFpb6oP0=
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The service ID.
 	//
 	// This parameter is required.
@@ -48,6 +51,10 @@ func (s *UpdateServiceUsageRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *UpdateServiceUsageRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
 func (s *UpdateServiceUsageRequest) GetServiceId() *string {
 	return s.ServiceId
 }
@@ -58,6 +65,11 @@ func (s *UpdateServiceUsageRequest) GetUserInformation() map[string]*string {
 
 func (s *UpdateServiceUsageRequest) SetClientToken(v string) *UpdateServiceUsageRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateServiceUsageRequest) SetRegionId(v string) *UpdateServiceUsageRequest {
+	s.RegionId = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iUpdateServiceUsageShrinkRequest interface {
 	GoString() string
 	SetClientToken(v string) *UpdateServiceUsageShrinkRequest
 	GetClientToken() *string
+	SetRegionId(v string) *UpdateServiceUsageShrinkRequest
+	GetRegionId() *string
 	SetServiceId(v string) *UpdateServiceUsageShrinkRequest
 	GetServiceId() *string
 	SetUserInformationShrink(v string) *UpdateServiceUsageShrinkRequest
@@ -24,6 +26,7 @@ type UpdateServiceUsageShrinkRequest struct {
 	//
 	// AAAAAYChudnQUoBH+mGWFpb6oP0=
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The service ID.
 	//
 	// This parameter is required.
@@ -48,6 +51,10 @@ func (s *UpdateServiceUsageShrinkRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *UpdateServiceUsageShrinkRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
 func (s *UpdateServiceUsageShrinkRequest) GetServiceId() *string {
 	return s.ServiceId
 }
@@ -58,6 +65,11 @@ func (s *UpdateServiceUsageShrinkRequest) GetUserInformationShrink() *string {
 
 func (s *UpdateServiceUsageShrinkRequest) SetClientToken(v string) *UpdateServiceUsageShrinkRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateServiceUsageShrinkRequest) SetRegionId(v string) *UpdateServiceUsageShrinkRequest {
+	s.RegionId = &v
 	return s
 }
 

@@ -70,7 +70,16 @@ func (s *GenerateServicePolicyResponseBody) SetRequestId(v string) *GenerateServ
 }
 
 func (s *GenerateServicePolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MissingPolicy != nil {
+		for _, item := range s.MissingPolicy {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GenerateServicePolicyResponseBodyMissingPolicy struct {

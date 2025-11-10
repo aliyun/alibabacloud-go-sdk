@@ -222,7 +222,16 @@ func (s *GetServiceTemplateParameterConstraintsRequest) SetTrialType(v string) *
 }
 
 func (s *GetServiceTemplateParameterConstraintsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Parameters != nil {
+		for _, item := range s.Parameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetServiceTemplateParameterConstraintsRequestParameters struct {

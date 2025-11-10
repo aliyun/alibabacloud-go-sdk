@@ -53,7 +53,16 @@ func (s *CheckServiceDeployableResponseBody) SetRequestId(v string) *CheckServic
 }
 
 func (s *CheckServiceDeployableResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CheckResults != nil {
+		for _, item := range s.CheckResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CheckServiceDeployableResponseBodyCheckResults struct {

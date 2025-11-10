@@ -11,6 +11,8 @@ type iCreateServiceUsageShrinkRequest interface {
 	GoString() string
 	SetClientToken(v string) *CreateServiceUsageShrinkRequest
 	GetClientToken() *string
+	SetRegionId(v string) *CreateServiceUsageShrinkRequest
+	GetRegionId() *string
 	SetServiceId(v string) *CreateServiceUsageShrinkRequest
 	GetServiceId() *string
 	SetUserInformationShrink(v string) *CreateServiceUsageShrinkRequest
@@ -24,6 +26,7 @@ type CreateServiceUsageShrinkRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The service ID.
 	//
 	// This parameter is required.
@@ -48,6 +51,10 @@ func (s *CreateServiceUsageShrinkRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *CreateServiceUsageShrinkRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
 func (s *CreateServiceUsageShrinkRequest) GetServiceId() *string {
 	return s.ServiceId
 }
@@ -58,6 +65,11 @@ func (s *CreateServiceUsageShrinkRequest) GetUserInformationShrink() *string {
 
 func (s *CreateServiceUsageShrinkRequest) SetClientToken(v string) *CreateServiceUsageShrinkRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateServiceUsageShrinkRequest) SetRegionId(v string) *CreateServiceUsageShrinkRequest {
+	s.RegionId = &v
 	return s
 }
 

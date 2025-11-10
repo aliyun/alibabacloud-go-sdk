@@ -104,7 +104,16 @@ func (s *ListServiceInstancesResponseBody) SetTotalCount(v int64) *ListServiceIn
 }
 
 func (s *ListServiceInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceInstances != nil {
+		for _, item := range s.ServiceInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListServiceInstancesResponseBodyServiceInstances struct {
@@ -143,7 +152,8 @@ type ListServiceInstancesResponseBodyServiceInstances struct {
 	// example:
 	//
 	// 2022-01-01T12:00:00
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime           *string                                                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GrantedPermission *ListServiceInstancesResponseBodyServiceInstancesGrantedPermission `json:"GrantedPermission,omitempty" xml:"GrantedPermission,omitempty" type:"Struct"`
 	// The ID of the Alibaba Cloud Marketplace instance.
 	//
 	// example:
@@ -205,7 +215,8 @@ type ListServiceInstancesResponseBodyServiceInstances struct {
 	// example:
 	//
 	// Subscription
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PayType     *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PolicyNames *string `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty"`
 	// The deployment progress of the service instance, in percentage.
 	//
 	// example:
@@ -326,6 +337,10 @@ func (s *ListServiceInstancesResponseBodyServiceInstances) GetEndTime() *string 
 	return s.EndTime
 }
 
+func (s *ListServiceInstancesResponseBodyServiceInstances) GetGrantedPermission() *ListServiceInstancesResponseBodyServiceInstancesGrantedPermission {
+	return s.GrantedPermission
+}
+
 func (s *ListServiceInstancesResponseBodyServiceInstances) GetMarketInstanceId() *string {
 	return s.MarketInstanceId
 }
@@ -360,6 +375,10 @@ func (s *ListServiceInstancesResponseBodyServiceInstances) GetParameters() *stri
 
 func (s *ListServiceInstancesResponseBodyServiceInstances) GetPayType() *string {
 	return s.PayType
+}
+
+func (s *ListServiceInstancesResponseBodyServiceInstances) GetPolicyNames() *string {
+	return s.PolicyNames
 }
 
 func (s *ListServiceInstancesResponseBodyServiceInstances) GetProgress() *int64 {
@@ -434,6 +453,11 @@ func (s *ListServiceInstancesResponseBodyServiceInstances) SetEndTime(v string) 
 	return s
 }
 
+func (s *ListServiceInstancesResponseBodyServiceInstances) SetGrantedPermission(v *ListServiceInstancesResponseBodyServiceInstancesGrantedPermission) *ListServiceInstancesResponseBodyServiceInstances {
+	s.GrantedPermission = v
+	return s
+}
+
 func (s *ListServiceInstancesResponseBodyServiceInstances) SetMarketInstanceId(v string) *ListServiceInstancesResponseBodyServiceInstances {
 	s.MarketInstanceId = &v
 	return s
@@ -476,6 +500,11 @@ func (s *ListServiceInstancesResponseBodyServiceInstances) SetParameters(v strin
 
 func (s *ListServiceInstancesResponseBodyServiceInstances) SetPayType(v string) *ListServiceInstancesResponseBodyServiceInstances {
 	s.PayType = &v
+	return s
+}
+
+func (s *ListServiceInstancesResponseBodyServiceInstances) SetPolicyNames(v string) *ListServiceInstancesResponseBodyServiceInstances {
+	s.PolicyNames = &v
 	return s
 }
 
@@ -545,6 +574,60 @@ func (s *ListServiceInstancesResponseBodyServiceInstances) SetUpdateTime(v strin
 }
 
 func (s *ListServiceInstancesResponseBodyServiceInstances) Validate() error {
+	if s.GrantedPermission != nil {
+		if err := s.GrantedPermission.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Service != nil {
+		if err := s.Service.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListServiceInstancesResponseBodyServiceInstancesGrantedPermission struct {
+	OperationEndTime *string `json:"OperationEndTime,omitempty" xml:"OperationEndTime,omitempty"`
+	PolicyNames      *string `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty"`
+}
+
+func (s ListServiceInstancesResponseBodyServiceInstancesGrantedPermission) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListServiceInstancesResponseBodyServiceInstancesGrantedPermission) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstancesResponseBodyServiceInstancesGrantedPermission) GetOperationEndTime() *string {
+	return s.OperationEndTime
+}
+
+func (s *ListServiceInstancesResponseBodyServiceInstancesGrantedPermission) GetPolicyNames() *string {
+	return s.PolicyNames
+}
+
+func (s *ListServiceInstancesResponseBodyServiceInstancesGrantedPermission) SetOperationEndTime(v string) *ListServiceInstancesResponseBodyServiceInstancesGrantedPermission {
+	s.OperationEndTime = &v
+	return s
+}
+
+func (s *ListServiceInstancesResponseBodyServiceInstancesGrantedPermission) SetPolicyNames(v string) *ListServiceInstancesResponseBodyServiceInstancesGrantedPermission {
+	s.PolicyNames = &v
+	return s
+}
+
+func (s *ListServiceInstancesResponseBodyServiceInstancesGrantedPermission) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -733,7 +816,21 @@ func (s *ListServiceInstancesResponseBodyServiceInstancesService) SetVersionName
 }
 
 func (s *ListServiceInstancesResponseBodyServiceInstancesService) Validate() error {
-	return dara.Validate(s)
+	if s.Commodity != nil {
+		if err := s.Commodity.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceInfos != nil {
+		for _, item := range s.ServiceInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListServiceInstancesResponseBodyServiceInstancesServiceCommodity struct {

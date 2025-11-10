@@ -59,5 +59,10 @@ func (s *GetServiceTemplateParameterConstraintsResponse) SetBody(v *GetServiceTe
 }
 
 func (s *GetServiceTemplateParameterConstraintsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

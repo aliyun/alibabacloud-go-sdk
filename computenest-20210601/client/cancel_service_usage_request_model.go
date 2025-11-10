@@ -13,6 +13,8 @@ type iCancelServiceUsageRequest interface {
 	GetClientToken() *string
 	SetNeedDelete(v bool) *CancelServiceUsageRequest
 	GetNeedDelete() *bool
+	SetRegionId(v string) *CancelServiceUsageRequest
+	GetRegionId() *string
 	SetServiceId(v string) *CancelServiceUsageRequest
 	GetServiceId() *string
 }
@@ -31,7 +33,8 @@ type CancelServiceUsageRequest struct {
 	// example:
 	//
 	// true
-	NeedDelete *bool `json:"NeedDelete,omitempty" xml:"NeedDelete,omitempty"`
+	NeedDelete *bool   `json:"NeedDelete,omitempty" xml:"NeedDelete,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The service ID.
 	//
 	// This parameter is required.
@@ -58,6 +61,10 @@ func (s *CancelServiceUsageRequest) GetNeedDelete() *bool {
 	return s.NeedDelete
 }
 
+func (s *CancelServiceUsageRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
 func (s *CancelServiceUsageRequest) GetServiceId() *string {
 	return s.ServiceId
 }
@@ -69,6 +76,11 @@ func (s *CancelServiceUsageRequest) SetClientToken(v string) *CancelServiceUsage
 
 func (s *CancelServiceUsageRequest) SetNeedDelete(v bool) *CancelServiceUsageRequest {
 	s.NeedDelete = &v
+	return s
+}
+
+func (s *CancelServiceUsageRequest) SetRegionId(v string) *CancelServiceUsageRequest {
+	s.RegionId = &v
 	return s
 }
 

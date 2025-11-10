@@ -142,7 +142,16 @@ func (s *GetServiceInstanceSubscriptionEstimateCostRequest) SetServiceInstanceId
 }
 
 func (s *GetServiceInstanceSubscriptionEstimateCostRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ResourcePeriod != nil {
+		for _, item := range s.ResourcePeriod {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetServiceInstanceSubscriptionEstimateCostRequestResourcePeriod struct {

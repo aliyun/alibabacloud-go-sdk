@@ -15,6 +15,8 @@ type iListServiceUsagesRequest interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListServiceUsagesRequest
 	GetNextToken() *string
+	SetRegionId(v string) *ListServiceUsagesRequest
+	GetRegionId() *string
 }
 
 type ListServiceUsagesRequest struct {
@@ -32,6 +34,7 @@ type ListServiceUsagesRequest struct {
 	//
 	// AAAAAWns8w4MmhzeptXVRG0PUEU=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListServiceUsagesRequest) String() string {
@@ -54,6 +57,10 @@ func (s *ListServiceUsagesRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *ListServiceUsagesRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
 func (s *ListServiceUsagesRequest) SetFilter(v []*ListServiceUsagesRequestFilter) *ListServiceUsagesRequest {
 	s.Filter = v
 	return s
@@ -69,8 +76,22 @@ func (s *ListServiceUsagesRequest) SetNextToken(v string) *ListServiceUsagesRequ
 	return s
 }
 
+func (s *ListServiceUsagesRequest) SetRegionId(v string) *ListServiceUsagesRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *ListServiceUsagesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		for _, item := range s.Filter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListServiceUsagesRequestFilter struct {

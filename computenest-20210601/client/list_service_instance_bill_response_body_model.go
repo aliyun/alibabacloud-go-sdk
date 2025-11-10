@@ -104,7 +104,16 @@ func (s *ListServiceInstanceBillResponseBody) SetTotalCount(v int64) *ListServic
 }
 
 func (s *ListServiceInstanceBillResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		for _, item := range s.Item {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListServiceInstanceBillResponseBodyItem struct {

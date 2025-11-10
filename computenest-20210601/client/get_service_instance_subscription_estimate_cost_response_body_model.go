@@ -53,7 +53,16 @@ func (s *GetServiceInstanceSubscriptionEstimateCostResponseBody) SetResourcePric
 }
 
 func (s *GetServiceInstanceSubscriptionEstimateCostResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourcePrices != nil {
+		for _, item := range s.ResourcePrices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices struct {
@@ -201,7 +210,25 @@ func (s *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices) S
 }
 
 func (s *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices) Validate() error {
-	return dara.Validate(s)
+	if s.DetailInfos != nil {
+		for _, item := range s.DetailInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesDetailInfos struct {

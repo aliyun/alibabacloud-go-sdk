@@ -11,6 +11,8 @@ type iUpdateServiceInstanceAttributesRequest interface {
 	GoString() string
 	SetEnableOperation(v bool) *UpdateServiceInstanceAttributesRequest
 	GetEnableOperation() *bool
+	SetGrantedPermission(v *UpdateServiceInstanceAttributesRequestGrantedPermission) *UpdateServiceInstanceAttributesRequest
+	GetGrantedPermission() *UpdateServiceInstanceAttributesRequestGrantedPermission
 	SetRegionId(v string) *UpdateServiceInstanceAttributesRequest
 	GetRegionId() *string
 	SetServiceInstanceId(v string) *UpdateServiceInstanceAttributesRequest
@@ -23,7 +25,8 @@ type UpdateServiceInstanceAttributesRequest struct {
 	// example:
 	//
 	// true
-	EnableOperation *bool `json:"EnableOperation,omitempty" xml:"EnableOperation,omitempty"`
+	EnableOperation   *bool                                                    `json:"EnableOperation,omitempty" xml:"EnableOperation,omitempty"`
+	GrantedPermission *UpdateServiceInstanceAttributesRequestGrantedPermission `json:"GrantedPermission,omitempty" xml:"GrantedPermission,omitempty" type:"Struct"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -56,6 +59,10 @@ func (s *UpdateServiceInstanceAttributesRequest) GetEnableOperation() *bool {
 	return s.EnableOperation
 }
 
+func (s *UpdateServiceInstanceAttributesRequest) GetGrantedPermission() *UpdateServiceInstanceAttributesRequestGrantedPermission {
+	return s.GrantedPermission
+}
+
 func (s *UpdateServiceInstanceAttributesRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -66,6 +73,11 @@ func (s *UpdateServiceInstanceAttributesRequest) GetServiceInstanceId() *string 
 
 func (s *UpdateServiceInstanceAttributesRequest) SetEnableOperation(v bool) *UpdateServiceInstanceAttributesRequest {
 	s.EnableOperation = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceAttributesRequest) SetGrantedPermission(v *UpdateServiceInstanceAttributesRequestGrantedPermission) *UpdateServiceInstanceAttributesRequest {
+	s.GrantedPermission = v
 	return s
 }
 
@@ -80,5 +92,45 @@ func (s *UpdateServiceInstanceAttributesRequest) SetServiceInstanceId(v string) 
 }
 
 func (s *UpdateServiceInstanceAttributesRequest) Validate() error {
+	if s.GrantedPermission != nil {
+		if err := s.GrantedPermission.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type UpdateServiceInstanceAttributesRequestGrantedPermission struct {
+	OperationEndTime *string `json:"OperationEndTime,omitempty" xml:"OperationEndTime,omitempty"`
+	PolicyNames      *string `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty"`
+}
+
+func (s UpdateServiceInstanceAttributesRequestGrantedPermission) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateServiceInstanceAttributesRequestGrantedPermission) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceInstanceAttributesRequestGrantedPermission) GetOperationEndTime() *string {
+	return s.OperationEndTime
+}
+
+func (s *UpdateServiceInstanceAttributesRequestGrantedPermission) GetPolicyNames() *string {
+	return s.PolicyNames
+}
+
+func (s *UpdateServiceInstanceAttributesRequestGrantedPermission) SetOperationEndTime(v string) *UpdateServiceInstanceAttributesRequestGrantedPermission {
+	s.OperationEndTime = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceAttributesRequestGrantedPermission) SetPolicyNames(v string) *UpdateServiceInstanceAttributesRequestGrantedPermission {
+	s.PolicyNames = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceAttributesRequestGrantedPermission) Validate() error {
 	return dara.Validate(s)
 }

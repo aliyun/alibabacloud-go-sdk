@@ -55,7 +55,12 @@ func (s *UpdateUserInformationRequest) SetRegionId(v string) *UpdateUserInformat
 }
 
 func (s *UpdateUserInformationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeliverySettings != nil {
+		if err := s.DeliverySettings.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateUserInformationRequestDeliverySettings struct {

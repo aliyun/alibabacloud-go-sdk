@@ -66,7 +66,16 @@ func (s *GetServiceTemplateParameterConstraintsResponseBody) SetRequestId(v stri
 }
 
 func (s *GetServiceTemplateParameterConstraintsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ParameterConstraints != nil {
+		for _, item := range s.ParameterConstraints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints struct {
@@ -193,7 +202,25 @@ func (s *GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints)
 }
 
 func (s *GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints) Validate() error {
-	return dara.Validate(s)
+	if s.OriginalConstraints != nil {
+		for _, item := range s.OriginalConstraints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.QueryErrors != nil {
+		for _, item := range s.QueryErrors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints struct {

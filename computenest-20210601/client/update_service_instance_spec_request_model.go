@@ -191,7 +191,12 @@ func (s *UpdateServiceInstanceSpecRequest) SetServiceInstanceId(v string) *Updat
 }
 
 func (s *UpdateServiceInstanceSpecRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Commodity != nil {
+		if err := s.Commodity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateServiceInstanceSpecRequestCommodity struct {

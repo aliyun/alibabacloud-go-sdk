@@ -66,7 +66,21 @@ func (s *RenewServiceInstanceResourcesResponseBody) SetRequestId(v string) *Rene
 }
 
 func (s *RenewServiceInstanceResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FailureDetails != nil {
+		for _, item := range s.FailureDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RenewalResult != nil {
+		if err := s.RenewalResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RenewServiceInstanceResourcesResponseBodyFailureDetails struct {

@@ -104,7 +104,16 @@ func (s *ListServiceUsagesResponseBody) SetTotalCount(v int32) *ListServiceUsage
 }
 
 func (s *ListServiceUsagesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceUsages != nil {
+		for _, item := range s.ServiceUsages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListServiceUsagesResponseBodyServiceUsages struct {

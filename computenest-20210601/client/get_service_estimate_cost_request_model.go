@@ -212,7 +212,12 @@ func (s *GetServiceEstimateCostRequest) SetTrialType(v string) *GetServiceEstima
 }
 
 func (s *GetServiceEstimateCostRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Commodity != nil {
+		if err := s.Commodity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetServiceEstimateCostRequestCommodity struct {

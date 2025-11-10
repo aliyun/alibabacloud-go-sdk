@@ -87,7 +87,16 @@ func (s *ListServiceInstanceLogsResponseBody) SetServiceInstancesLogs(v []*ListS
 }
 
 func (s *ListServiceInstanceLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceInstancesLogs != nil {
+		for _, item := range s.ServiceInstancesLogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListServiceInstanceLogsResponseBodyServiceInstancesLogs struct {

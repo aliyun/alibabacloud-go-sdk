@@ -11,6 +11,8 @@ type iCreateServiceUsageRequest interface {
 	GoString() string
 	SetClientToken(v string) *CreateServiceUsageRequest
 	GetClientToken() *string
+	SetRegionId(v string) *CreateServiceUsageRequest
+	GetRegionId() *string
 	SetServiceId(v string) *CreateServiceUsageRequest
 	GetServiceId() *string
 	SetUserInformation(v map[string]*string) *CreateServiceUsageRequest
@@ -24,6 +26,7 @@ type CreateServiceUsageRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The service ID.
 	//
 	// This parameter is required.
@@ -48,6 +51,10 @@ func (s *CreateServiceUsageRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *CreateServiceUsageRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
 func (s *CreateServiceUsageRequest) GetServiceId() *string {
 	return s.ServiceId
 }
@@ -58,6 +65,11 @@ func (s *CreateServiceUsageRequest) GetUserInformation() map[string]*string {
 
 func (s *CreateServiceUsageRequest) SetClientToken(v string) *CreateServiceUsageRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateServiceUsageRequest) SetRegionId(v string) *CreateServiceUsageRequest {
+	s.RegionId = &v
 	return s
 }
 

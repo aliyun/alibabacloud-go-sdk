@@ -36,7 +36,12 @@ func (s *CommodityValue) SetResult(v *CommodityValueResult) *CommodityValue {
 }
 
 func (s *CommodityValue) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CommodityValueResult struct {
@@ -103,7 +108,26 @@ func (s *CommodityValueResult) SetCoupons(v []*CommodityValueResultCoupons) *Com
 }
 
 func (s *CommodityValueResult) Validate() error {
-	return dara.Validate(s)
+	if s.Order != nil {
+		if err := s.Order.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubOrders != nil {
+		if err := s.SubOrders.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Coupons != nil {
+		for _, item := range s.Coupons {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CommodityValueResultOrder struct {
@@ -204,7 +228,16 @@ func (s *CommodityValueResultSubOrders) SetSubOrder(v []*CommodityValueResultSub
 }
 
 func (s *CommodityValueResultSubOrders) Validate() error {
-	return dara.Validate(s)
+	if s.SubOrder != nil {
+		for _, item := range s.SubOrder {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CommodityValueResultSubOrdersSubOrder struct {
@@ -230,7 +263,16 @@ func (s *CommodityValueResultSubOrdersSubOrder) SetModuleInstance(v []*Commodity
 }
 
 func (s *CommodityValueResultSubOrdersSubOrder) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleInstance != nil {
+		for _, item := range s.ModuleInstance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CommodityValueResultSubOrdersSubOrderModuleInstance struct {
@@ -436,7 +478,16 @@ func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) SetPriceUnitEn(v s
 }
 
 func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleAttrs != nil {
+		for _, item := range s.ModuleAttrs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs struct {

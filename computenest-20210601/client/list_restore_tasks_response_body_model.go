@@ -106,7 +106,16 @@ func (s *ListRestoreTasksResponseBody) SetTotalCount(v int32) *ListRestoreTasksR
 }
 
 func (s *ListRestoreTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RestoreTasks != nil {
+		for _, item := range s.RestoreTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRestoreTasksResponseBodyRestoreTasks struct {

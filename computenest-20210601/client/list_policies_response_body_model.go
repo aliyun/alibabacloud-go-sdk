@@ -87,7 +87,16 @@ func (s *ListPoliciesResponseBody) SetRequestId(v string) *ListPoliciesResponseB
 }
 
 func (s *ListPoliciesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Policies != nil {
+		for _, item := range s.Policies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPoliciesResponseBodyPolicies struct {

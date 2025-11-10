@@ -53,7 +53,12 @@ func (s *GetUserInformationResponseBody) SetRequestId(v string) *GetUserInformat
 }
 
 func (s *GetUserInformationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeliverySettings != nil {
+		if err := s.DeliverySettings.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserInformationResponseBodyDeliverySettings struct {
