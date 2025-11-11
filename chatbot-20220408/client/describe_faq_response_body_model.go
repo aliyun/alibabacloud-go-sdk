@@ -438,7 +438,8 @@ type DescribeFaqResponseBodySolutions struct {
 	// example:
 	//
 	// 10000003071
-	SolutionId *int64 `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+	SolutionId *int64   `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+	TagIdList  []*int64 `json:"TagIdList,omitempty" xml:"TagIdList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeFaqResponseBodySolutions) String() string {
@@ -477,6 +478,10 @@ func (s *DescribeFaqResponseBodySolutions) GetSolutionId() *int64 {
 	return s.SolutionId
 }
 
+func (s *DescribeFaqResponseBodySolutions) GetTagIdList() []*int64 {
+	return s.TagIdList
+}
+
 func (s *DescribeFaqResponseBodySolutions) SetContent(v string) *DescribeFaqResponseBodySolutions {
 	s.Content = &v
 	return s
@@ -509,6 +514,11 @@ func (s *DescribeFaqResponseBodySolutions) SetPlainText(v string) *DescribeFaqRe
 
 func (s *DescribeFaqResponseBodySolutions) SetSolutionId(v int64) *DescribeFaqResponseBodySolutions {
 	s.SolutionId = &v
+	return s
+}
+
+func (s *DescribeFaqResponseBodySolutions) SetTagIdList(v []*int64) *DescribeFaqResponseBodySolutions {
+	s.TagIdList = v
 	return s
 }
 
