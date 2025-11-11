@@ -68,7 +68,16 @@ func (s *UploadDocRequest) SetWorkspaceId(v string) *UploadDocRequest {
 }
 
 func (s *UploadDocRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Docs != nil {
+		for _, item := range s.Docs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UploadDocRequestDocs struct {

@@ -59,5 +59,10 @@ func (s *ListCustomTextResponse) SetBody(v *ListCustomTextResponseBody) *ListCus
 }
 
 func (s *ListCustomTextResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

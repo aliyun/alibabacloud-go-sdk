@@ -52,7 +52,12 @@ func (s *InsertInterveneRuleRequest) SetInterveneRuleConfig(v *InsertInterveneRu
 }
 
 func (s *InsertInterveneRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.InterveneRuleConfig != nil {
+		if err := s.InterveneRuleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type InsertInterveneRuleRequestInterveneRuleConfig struct {
@@ -146,7 +151,30 @@ func (s *InsertInterveneRuleRequestInterveneRuleConfig) SetRuleName(v string) *I
 }
 
 func (s *InsertInterveneRuleRequestInterveneRuleConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AnswerConfig != nil {
+		for _, item := range s.AnswerConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EffectConfig != nil {
+		if err := s.EffectConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InterveneConfigList != nil {
+		for _, item := range s.InterveneConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InsertInterveneRuleRequestInterveneRuleConfigAnswerConfig struct {

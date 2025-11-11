@@ -110,7 +110,12 @@ func (s *GenerateImageTaskResponseBody) SetSuccess(v bool) *GenerateImageTaskRes
 }
 
 func (s *GenerateImageTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GenerateImageTaskResponseBodyData struct {
@@ -135,7 +140,16 @@ func (s *GenerateImageTaskResponseBodyData) SetTaskList(v []*GenerateImageTaskRe
 }
 
 func (s *GenerateImageTaskResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.TaskList != nil {
+		for _, item := range s.TaskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GenerateImageTaskResponseBodyDataTaskList struct {

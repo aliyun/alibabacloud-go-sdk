@@ -81,7 +81,12 @@ func (s *RunWriteToneGenerationRequest) SetWorkspaceId(v string) *RunWriteToneGe
 }
 
 func (s *RunWriteToneGenerationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ReferenceData != nil {
+		if err := s.ReferenceData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunWriteToneGenerationRequestReferenceData struct {

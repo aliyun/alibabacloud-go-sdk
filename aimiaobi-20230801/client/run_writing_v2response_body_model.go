@@ -77,7 +77,17 @@ func (s *RunWritingV2ResponseBody) SetRequestId(v string) *RunWritingV2ResponseB
 }
 
 func (s *RunWritingV2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Header != nil {
+		if err := s.Header.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunWritingV2ResponseBodyHeader struct {
@@ -231,7 +241,17 @@ func (s *RunWritingV2ResponseBodyPayload) SetUsage(v *RunWritingV2ResponseBodyPa
 }
 
 func (s *RunWritingV2ResponseBodyPayload) Validate() error {
-	return dara.Validate(s)
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunWritingV2ResponseBodyPayloadOutput struct {
@@ -335,7 +355,35 @@ func (s *RunWritingV2ResponseBodyPayloadOutput) SetTitle(v string) *RunWritingV2
 }
 
 func (s *RunWritingV2ResponseBodyPayloadOutput) Validate() error {
-	return dara.Validate(s)
+	if s.Articles != nil {
+		for _, item := range s.Articles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.GenerateTraceability != nil {
+		if err := s.GenerateTraceability.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Outlines != nil {
+		for _, item := range s.Outlines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SearchResult != nil {
+		if err := s.SearchResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunWritingV2ResponseBodyPayloadOutputArticles struct {

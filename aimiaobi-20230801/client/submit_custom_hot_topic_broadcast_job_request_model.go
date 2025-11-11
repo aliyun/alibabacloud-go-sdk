@@ -80,7 +80,12 @@ func (s *SubmitCustomHotTopicBroadcastJobRequest) SetWorkspaceId(v string) *Subm
 }
 
 func (s *SubmitCustomHotTopicBroadcastJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.HotTopicBroadcastConfig != nil {
+		if err := s.HotTopicBroadcastConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfig struct {
@@ -117,7 +122,17 @@ func (s *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfig) SetStep
 }
 
 func (s *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfig) Validate() error {
-	return dara.Validate(s)
+	if s.StepForCustomSummaryStyleConfig != nil {
+		if err := s.StepForCustomSummaryStyleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StepForNewsBroadcastContentConfig != nil {
+		if err := s.StepForNewsBroadcastContentConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForCustomSummaryStyleConfig struct {
@@ -222,7 +237,16 @@ func (s *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNe
 }
 
 func (s *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfig) Validate() error {
-	return dara.Validate(s)
+	if s.CustomHotValueWeights != nil {
+		for _, item := range s.CustomHotValueWeights {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfigCustomHotValueWeights struct {

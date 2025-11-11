@@ -110,7 +110,12 @@ func (s *GetInterveneImportTaskInfoResponseBody) SetSuccess(v bool) *GetInterven
 }
 
 func (s *GetInterveneImportTaskInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInterveneImportTaskInfoResponseBodyData struct {
@@ -145,7 +150,12 @@ func (s *GetInterveneImportTaskInfoResponseBodyData) SetStatus(v *GetInterveneIm
 }
 
 func (s *GetInterveneImportTaskInfoResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Status != nil {
+		if err := s.Status.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInterveneImportTaskInfoResponseBodyDataStatus struct {

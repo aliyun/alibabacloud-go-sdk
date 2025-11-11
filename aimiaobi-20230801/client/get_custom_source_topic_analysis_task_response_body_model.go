@@ -110,7 +110,12 @@ func (s *GetCustomSourceTopicAnalysisTaskResponseBody) SetSuccess(v bool) *GetCu
 }
 
 func (s *GetCustomSourceTopicAnalysisTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCustomSourceTopicAnalysisTaskResponseBodyData struct {
@@ -220,7 +225,16 @@ func (s *GetCustomSourceTopicAnalysisTaskResponseBodyData) SetUsages(v map[strin
 }
 
 func (s *GetCustomSourceTopicAnalysisTaskResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterResults != nil {
+		for _, item := range s.ClusterResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResults struct {
@@ -255,7 +269,16 @@ func (s *GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResults) SetTopi
 }
 
 func (s *GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResults) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterNews != nil {
+		for _, item := range s.ClusterNews {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResultsClusterNews struct {

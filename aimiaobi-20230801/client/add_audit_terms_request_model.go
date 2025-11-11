@@ -17,6 +17,8 @@ type iAddAuditTermsRequest interface {
 	GetSuggestWord() *string
 	SetTermsDesc(v string) *AddAuditTermsRequest
 	GetTermsDesc() *string
+	SetTermsName(v string) *AddAuditTermsRequest
+	GetTermsName() *string
 	SetWorkspaceId(v string) *AddAuditTermsRequest
 	GetWorkspaceId() *string
 }
@@ -35,6 +37,7 @@ type AddAuditTermsRequest struct {
 	//
 	// 龙行龘龘出自四库本《玉篇》23龙部第8字，文字释义为群龙腾飞的样子，昂扬而热烈。
 	TermsDesc *string `json:"TermsDesc,omitempty" xml:"TermsDesc,omitempty"`
+	TermsName *string `json:"TermsName,omitempty" xml:"TermsName,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -67,6 +70,10 @@ func (s *AddAuditTermsRequest) GetTermsDesc() *string {
 	return s.TermsDesc
 }
 
+func (s *AddAuditTermsRequest) GetTermsName() *string {
+	return s.TermsName
+}
+
 func (s *AddAuditTermsRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
@@ -88,6 +95,11 @@ func (s *AddAuditTermsRequest) SetSuggestWord(v string) *AddAuditTermsRequest {
 
 func (s *AddAuditTermsRequest) SetTermsDesc(v string) *AddAuditTermsRequest {
 	s.TermsDesc = &v
+	return s
+}
+
+func (s *AddAuditTermsRequest) SetTermsName(v string) *AddAuditTermsRequest {
+	s.TermsName = &v
 	return s
 }
 

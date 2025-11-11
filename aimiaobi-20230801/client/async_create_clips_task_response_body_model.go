@@ -103,7 +103,12 @@ func (s *AsyncCreateClipsTaskResponseBody) SetSuccess(v bool) *AsyncCreateClipsT
 }
 
 func (s *AsyncCreateClipsTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AsyncCreateClipsTaskResponseBodyData struct {

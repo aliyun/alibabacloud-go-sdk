@@ -110,7 +110,12 @@ func (s *SubmitAsyncTaskResponseBody) SetSuccess(v bool) *SubmitAsyncTaskRespons
 }
 
 func (s *SubmitAsyncTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitAsyncTaskResponseBodyData struct {

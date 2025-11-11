@@ -59,5 +59,10 @@ func (s *GenerateFileUrlByKeyResponse) SetBody(v *GenerateFileUrlByKeyResponseBo
 }
 
 func (s *GenerateFileUrlByKeyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *ListBiddingDocResponse) SetBody(v *ListBiddingDocResponseBody) *ListBid
 }
 
 func (s *ListBiddingDocResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

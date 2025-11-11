@@ -74,7 +74,17 @@ func (s *RunContinueContentResponseBody) SetRequestId(v string) *RunContinueCont
 }
 
 func (s *RunContinueContentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Header != nil {
+		if err := s.Header.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunContinueContentResponseBodyHeader struct {
@@ -215,7 +225,17 @@ func (s *RunContinueContentResponseBodyPayload) SetUsage(v *RunContinueContentRe
 }
 
 func (s *RunContinueContentResponseBodyPayload) Validate() error {
-	return dara.Validate(s)
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunContinueContentResponseBodyPayloadOutput struct {

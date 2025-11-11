@@ -110,7 +110,16 @@ func (s *ListBuildConfigsResponseBody) SetSuccess(v bool) *ListBuildConfigsRespo
 }
 
 func (s *ListBuildConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListBuildConfigsResponseBodyData struct {
@@ -246,7 +255,16 @@ func (s *ListBuildConfigsResponseBodyData) SetUpdateUser(v string) *ListBuildCon
 }
 
 func (s *ListBuildConfigsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Keywords != nil {
+		for _, item := range s.Keywords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListBuildConfigsResponseBodyDataKeywords struct {

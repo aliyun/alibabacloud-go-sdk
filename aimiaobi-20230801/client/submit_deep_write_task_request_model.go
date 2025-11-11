@@ -90,7 +90,21 @@ func (s *SubmitDeepWriteTaskRequest) SetWorkspaceId(v string) *SubmitDeepWriteTa
 }
 
 func (s *SubmitDeepWriteTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AgentOrchestration != nil {
+		if err := s.AgentOrchestration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Files != nil {
+		for _, item := range s.Files {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SubmitDeepWriteTaskRequestAgentOrchestration struct {
@@ -135,7 +149,22 @@ func (s *SubmitDeepWriteTaskRequestAgentOrchestration) SetReporterAgent(v *Submi
 }
 
 func (s *SubmitDeepWriteTaskRequestAgentOrchestration) Validate() error {
-	return dara.Validate(s)
+	if s.DataAnalystAgent != nil {
+		if err := s.DataAnalystAgent.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataCollectorAgent != nil {
+		if err := s.DataCollectorAgent.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReporterAgent != nil {
+		if err := s.ReporterAgent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitDeepWriteTaskRequestAgentOrchestrationDataAnalystAgent struct {

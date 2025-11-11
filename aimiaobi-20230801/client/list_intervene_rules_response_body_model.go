@@ -110,7 +110,12 @@ func (s *ListInterveneRulesResponseBody) SetSuccess(v bool) *ListInterveneRulesR
 }
 
 func (s *ListInterveneRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListInterveneRulesResponseBodyData struct {
@@ -184,7 +189,16 @@ func (s *ListInterveneRulesResponseBodyData) SetPageSize(v int32) *ListIntervene
 }
 
 func (s *ListInterveneRulesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.InterveneRuleList != nil {
+		for _, item := range s.InterveneRuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInterveneRulesResponseBodyDataInterveneRuleList struct {
@@ -284,7 +298,16 @@ func (s *ListInterveneRulesResponseBodyDataInterveneRuleList) SetRuleName(v stri
 }
 
 func (s *ListInterveneRulesResponseBodyDataInterveneRuleList) Validate() error {
-	return dara.Validate(s)
+	if s.AnswerConfig != nil {
+		for _, item := range s.AnswerConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInterveneRulesResponseBodyDataInterveneRuleListAnswerConfig struct {

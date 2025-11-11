@@ -59,5 +59,10 @@ func (s *ListHotSourcesResponse) SetBody(v *ListHotSourcesResponseBody) *ListHot
 }
 
 func (s *ListHotSourcesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

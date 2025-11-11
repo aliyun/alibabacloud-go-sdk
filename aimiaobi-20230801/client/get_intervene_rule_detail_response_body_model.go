@@ -110,7 +110,12 @@ func (s *GetInterveneRuleDetailResponseBody) SetSuccess(v bool) *GetInterveneRul
 }
 
 func (s *GetInterveneRuleDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInterveneRuleDetailResponseBodyData struct {
@@ -145,7 +150,12 @@ func (s *GetInterveneRuleDetailResponseBodyData) SetInterveneRuleDetail(v *GetIn
 }
 
 func (s *GetInterveneRuleDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.InterveneRuleDetail != nil {
+		if err := s.InterveneRuleDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail struct {
@@ -226,7 +236,21 @@ func (s *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail) SetRuleName(
 }
 
 func (s *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail) Validate() error {
-	return dara.Validate(s)
+	if s.AnswerConfig != nil {
+		for _, item := range s.AnswerConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EffectConfig != nil {
+		if err := s.EffectConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailAnswerConfig struct {

@@ -112,7 +112,12 @@ func (s *AsyncWritingBiddingDocResponseBody) SetSuccess(v bool) *AsyncWritingBid
 }
 
 func (s *AsyncWritingBiddingDocResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AsyncWritingBiddingDocResponseBodyData struct {

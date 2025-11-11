@@ -59,5 +59,10 @@ func (s *CancelAuditTaskResponse) SetBody(v *CancelAuditTaskResponseBody) *Cance
 }
 
 func (s *CancelAuditTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *GenerateImageTaskResponse) SetBody(v *GenerateImageTaskResponseBody) *G
 }
 
 func (s *GenerateImageTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

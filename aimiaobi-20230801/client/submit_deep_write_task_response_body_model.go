@@ -112,7 +112,12 @@ func (s *SubmitDeepWriteTaskResponseBody) SetSuccess(v bool) *SubmitDeepWriteTas
 }
 
 func (s *SubmitDeepWriteTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitDeepWriteTaskResponseBodyData struct {

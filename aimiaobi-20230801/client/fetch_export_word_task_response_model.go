@@ -59,5 +59,10 @@ func (s *FetchExportWordTaskResponse) SetBody(v *FetchExportWordTaskResponseBody
 }
 
 func (s *FetchExportWordTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,6 +59,11 @@ func (s *ExportCustomSourceAnalysisTaskResponse) SetBody(v *ExportCustomSourceAn
 }
 
 func (s *ExportCustomSourceAnalysisTaskResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

@@ -136,7 +136,16 @@ func (s *ListWritingStylesResponseBody) SetTotalCount(v int32) *ListWritingStyle
 }
 
 func (s *ListWritingStylesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWritingStylesResponseBodyData struct {
@@ -234,5 +243,15 @@ func (s *ListWritingStylesResponseBodyData) SetTemplateDefine(v *WritingStyleTem
 }
 
 func (s *ListWritingStylesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DistributeStepTemplateDefine != nil {
+		if err := s.DistributeStepTemplateDefine.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TemplateDefine != nil {
+		if err := s.TemplateDefine.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

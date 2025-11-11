@@ -11,6 +11,8 @@ type iSubmitAuditNoteRequest interface {
 	GoString() string
 	SetFileKey(v string) *SubmitAuditNoteRequest
 	GetFileKey() *string
+	SetNoteId(v string) *SubmitAuditNoteRequest
+	GetNoteId() *string
 	SetWorkspaceId(v string) *SubmitAuditNoteRequest
 	GetWorkspaceId() *string
 }
@@ -22,6 +24,7 @@ type SubmitAuditNoteRequest struct {
 	//
 	// oss://default/your/file/key
 	FileKey *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	NoteId  *string `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -42,12 +45,21 @@ func (s *SubmitAuditNoteRequest) GetFileKey() *string {
 	return s.FileKey
 }
 
+func (s *SubmitAuditNoteRequest) GetNoteId() *string {
+	return s.NoteId
+}
+
 func (s *SubmitAuditNoteRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
 
 func (s *SubmitAuditNoteRequest) SetFileKey(v string) *SubmitAuditNoteRequest {
 	s.FileKey = &v
+	return s
+}
+
+func (s *SubmitAuditNoteRequest) SetNoteId(v string) *SubmitAuditNoteRequest {
+	s.NoteId = &v
 	return s
 }
 

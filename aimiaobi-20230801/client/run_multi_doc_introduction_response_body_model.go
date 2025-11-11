@@ -64,7 +64,17 @@ func (s *RunMultiDocIntroductionResponseBody) SetRequestId(v string) *RunMultiDo
 }
 
 func (s *RunMultiDocIntroductionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Header != nil {
+		if err := s.Header.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunMultiDocIntroductionResponseBodyHeader struct {
@@ -202,7 +212,17 @@ func (s *RunMultiDocIntroductionResponseBodyPayload) SetUsage(v *RunMultiDocIntr
 }
 
 func (s *RunMultiDocIntroductionResponseBodyPayload) Validate() error {
-	return dara.Validate(s)
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunMultiDocIntroductionResponseBodyPayloadOutput struct {
@@ -237,7 +257,16 @@ func (s *RunMultiDocIntroductionResponseBodyPayloadOutput) SetSummary(v string) 
 }
 
 func (s *RunMultiDocIntroductionResponseBodyPayloadOutput) Validate() error {
-	return dara.Validate(s)
+	if s.KeyPoints != nil {
+		for _, item := range s.KeyPoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunMultiDocIntroductionResponseBodyPayloadOutputKeyPoints struct {

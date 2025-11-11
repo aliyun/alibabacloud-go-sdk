@@ -83,7 +83,12 @@ func (s *AddDatasetDocumentRequest) SetWorkspaceId(v string) *AddDatasetDocument
 }
 
 func (s *AddDatasetDocumentRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Document != nil {
+		if err := s.Document.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddDatasetDocumentRequestDocument struct {
@@ -290,7 +295,16 @@ func (s *AddDatasetDocumentRequestDocument) SetUrl(v string) *AddDatasetDocument
 }
 
 func (s *AddDatasetDocumentRequestDocument) Validate() error {
-	return dara.Validate(s)
+	if s.MultimodalMedias != nil {
+		for _, item := range s.MultimodalMedias {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddDatasetDocumentRequestDocumentMultimodalMedias struct {

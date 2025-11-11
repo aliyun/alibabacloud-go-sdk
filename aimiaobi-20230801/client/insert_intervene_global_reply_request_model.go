@@ -52,7 +52,16 @@ func (s *InsertInterveneGlobalReplyRequest) SetReplyMessagList(v []*InsertInterv
 }
 
 func (s *InsertInterveneGlobalReplyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ReplyMessagList != nil {
+		for _, item := range s.ReplyMessagList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type InsertInterveneGlobalReplyRequestReplyMessagList struct {

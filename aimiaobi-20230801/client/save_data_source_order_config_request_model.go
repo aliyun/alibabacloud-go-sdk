@@ -85,7 +85,16 @@ func (s *SaveDataSourceOrderConfigRequest) SetUserConfigDataSourceList(v []*Save
 }
 
 func (s *SaveDataSourceOrderConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UserConfigDataSourceList != nil {
+		for _, item := range s.UserConfigDataSourceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SaveDataSourceOrderConfigRequestUserConfigDataSourceList struct {

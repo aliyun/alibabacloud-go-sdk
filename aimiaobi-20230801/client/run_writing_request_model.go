@@ -126,7 +126,17 @@ func (s *RunWritingRequest) SetWritingConfig(v *RunWritingRequestWritingConfig) 
 }
 
 func (s *RunWritingRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ReferenceData != nil {
+		if err := s.ReferenceData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WritingConfig != nil {
+		if err := s.WritingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunWritingRequestReferenceData struct {
@@ -151,7 +161,16 @@ func (s *RunWritingRequestReferenceData) SetArticles(v []*RunWritingRequestRefer
 }
 
 func (s *RunWritingRequestReferenceData) Validate() error {
-	return dara.Validate(s)
+	if s.Articles != nil {
+		for _, item := range s.Articles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunWritingRequestReferenceDataArticles struct {
@@ -357,7 +376,21 @@ func (s *RunWritingRequestWritingConfig) SetUseSearch(v bool) *RunWritingRequest
 }
 
 func (s *RunWritingRequestWritingConfig) Validate() error {
-	return dara.Validate(s)
+	if s.PromptTag != nil {
+		if err := s.PromptTag.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunWritingRequestWritingConfigPromptTag struct {

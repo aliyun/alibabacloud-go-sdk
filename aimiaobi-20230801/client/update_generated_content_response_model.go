@@ -59,5 +59,10 @@ func (s *UpdateGeneratedContentResponse) SetBody(v *UpdateGeneratedContentRespon
 }
 
 func (s *UpdateGeneratedContentResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

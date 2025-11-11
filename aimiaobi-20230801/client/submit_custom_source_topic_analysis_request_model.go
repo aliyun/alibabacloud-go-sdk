@@ -109,7 +109,16 @@ func (s *SubmitCustomSourceTopicAnalysisRequest) SetWorkspaceId(v string) *Submi
 }
 
 func (s *SubmitCustomSourceTopicAnalysisRequest) Validate() error {
-	return dara.Validate(s)
+	if s.News != nil {
+		for _, item := range s.News {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SubmitCustomSourceTopicAnalysisRequestNews struct {
@@ -190,7 +199,16 @@ func (s *SubmitCustomSourceTopicAnalysisRequestNews) SetUrl(v string) *SubmitCus
 }
 
 func (s *SubmitCustomSourceTopicAnalysisRequestNews) Validate() error {
-	return dara.Validate(s)
+	if s.Comments != nil {
+		for _, item := range s.Comments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SubmitCustomSourceTopicAnalysisRequestNewsComments struct {

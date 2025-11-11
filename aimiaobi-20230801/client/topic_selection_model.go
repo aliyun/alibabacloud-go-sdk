@@ -59,7 +59,16 @@ func (s *TopicSelection) SetSummary(v string) *TopicSelection {
 }
 
 func (s *TopicSelection) Validate() error {
-	return dara.Validate(s)
+	if s.Outlines != nil {
+		for _, item := range s.Outlines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TopicSelectionOutlines struct {

@@ -110,7 +110,12 @@ func (s *GetTopicByIdResponseBody) SetSuccess(v bool) *GetTopicByIdResponseBody 
 }
 
 func (s *GetTopicByIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTopicByIdResponseBodyData struct {
@@ -278,7 +283,16 @@ func (s *GetTopicByIdResponseBodyData) SetVersion(v string) *GetTopicByIdRespons
 }
 
 func (s *GetTopicByIdResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.StructureSummary != nil {
+		for _, item := range s.StructureSummary {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTopicByIdResponseBodyDataStructureSummary struct {
@@ -329,7 +343,16 @@ func (s *GetTopicByIdResponseBodyDataStructureSummary) SetTitle(v string) *GetTo
 }
 
 func (s *GetTopicByIdResponseBodyDataStructureSummary) Validate() error {
-	return dara.Validate(s)
+	if s.DocList != nil {
+		for _, item := range s.DocList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTopicByIdResponseBodyDataStructureSummaryDocList struct {

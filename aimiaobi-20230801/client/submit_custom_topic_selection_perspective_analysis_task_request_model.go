@@ -84,7 +84,16 @@ func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest) SetTopic(v st
 }
 
 func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Documents != nil {
+		for _, item := range s.Documents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments struct {

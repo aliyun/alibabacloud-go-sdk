@@ -110,7 +110,12 @@ func (s *SubmitDocClusterTaskResponseBody) SetSuccess(v bool) *SubmitDocClusterT
 }
 
 func (s *SubmitDocClusterTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitDocClusterTaskResponseBodyData struct {

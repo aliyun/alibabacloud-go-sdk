@@ -92,7 +92,12 @@ func (s *RunTitleGenerationRequest) SetWorkspaceId(v string) *RunTitleGeneration
 }
 
 func (s *RunTitleGenerationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ReferenceData != nil {
+		if err := s.ReferenceData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunTitleGenerationRequestReferenceData struct {

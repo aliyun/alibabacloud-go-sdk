@@ -203,7 +203,30 @@ func (s *WritingStyleTemplateField) SetStyle(v *WritingStyleTemplateFieldStyle) 
 }
 
 func (s *WritingStyleTemplateField) Validate() error {
-	return dara.Validate(s)
+	if s.CascadingFields != nil {
+		for _, item := range s.CascadingFields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Enums != nil {
+		for _, item := range s.Enums {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Style != nil {
+		if err := s.Style.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type WritingStyleTemplateFieldEnums struct {

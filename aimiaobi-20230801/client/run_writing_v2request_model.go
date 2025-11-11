@@ -319,7 +319,61 @@ func (s *RunWritingV2Request) SetWritingStyle(v string) *RunWritingV2Request {
 }
 
 func (s *RunWritingV2Request) Validate() error {
-	return dara.Validate(s)
+	if s.Articles != nil {
+		for _, item := range s.Articles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MiniDocs != nil {
+		for _, item := range s.MiniDocs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OutlineList != nil {
+		for _, item := range s.OutlineList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Outlines != nil {
+		for _, item := range s.Outlines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SearchSources != nil {
+		for _, item := range s.SearchSources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Summarization != nil {
+		for _, item := range s.Summarization {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunWritingV2RequestArticles struct {
@@ -486,7 +540,16 @@ func (s *RunWritingV2RequestOutlines) SetOutline(v string) *RunWritingV2RequestO
 }
 
 func (s *RunWritingV2RequestOutlines) Validate() error {
-	return dara.Validate(s)
+	if s.Articles != nil {
+		for _, item := range s.Articles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunWritingV2RequestOutlinesArticles struct {

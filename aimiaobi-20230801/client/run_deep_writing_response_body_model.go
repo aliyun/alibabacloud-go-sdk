@@ -122,7 +122,17 @@ func (s *RunDeepWritingResponseBody) SetSuccess(v bool) *RunDeepWritingResponseB
 }
 
 func (s *RunDeepWritingResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Header != nil {
+		if err := s.Header.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunDeepWritingResponseBodyHeader struct {
@@ -250,7 +260,12 @@ func (s *RunDeepWritingResponseBodyPayload) SetOutput(v *RunDeepWritingResponseB
 }
 
 func (s *RunDeepWritingResponseBodyPayload) Validate() error {
-	return dara.Validate(s)
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunDeepWritingResponseBodyPayloadOutput struct {
@@ -321,7 +336,17 @@ func (s *RunDeepWritingResponseBodyPayloadOutput) SetType(v string) *RunDeepWrit
 }
 
 func (s *RunDeepWritingResponseBodyPayloadOutput) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		if err := s.Item.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Response != nil {
+		if err := s.Response.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunDeepWritingResponseBodyPayloadOutputItem struct {
@@ -428,7 +453,16 @@ func (s *RunDeepWritingResponseBodyPayloadOutputItem) SetType(v string) *RunDeep
 }
 
 func (s *RunDeepWritingResponseBodyPayloadOutputItem) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		for _, item := range s.Content {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunDeepWritingResponseBodyPayloadOutputItemContent struct {

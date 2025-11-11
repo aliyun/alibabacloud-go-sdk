@@ -112,7 +112,12 @@ func (s *UploadBookResponseBody) SetSuccess(v bool) *UploadBookResponseBody {
 }
 
 func (s *UploadBookResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UploadBookResponseBodyData struct {

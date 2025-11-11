@@ -96,7 +96,12 @@ func (s *RunSearchSimilarArticlesRequest) SetWorkspaceId(v string) *RunSearchSim
 }
 
 func (s *RunSearchSimilarArticlesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ChatConfig != nil {
+		if err := s.ChatConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunSearchSimilarArticlesRequestChatConfig struct {
@@ -121,7 +126,12 @@ func (s *RunSearchSimilarArticlesRequestChatConfig) SetSearchParam(v *RunSearchS
 }
 
 func (s *RunSearchSimilarArticlesRequestChatConfig) Validate() error {
-	return dara.Validate(s)
+	if s.SearchParam != nil {
+		if err := s.SearchParam.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunSearchSimilarArticlesRequestChatConfigSearchParam struct {
@@ -146,7 +156,16 @@ func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) SetSearchSources(
 }
 
 func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) Validate() error {
-	return dara.Validate(s)
+	if s.SearchSources != nil {
+		for _, item := range s.SearchSources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchSimilarArticlesRequestChatConfigSearchParamSearchSources struct {

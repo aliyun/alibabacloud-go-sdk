@@ -110,7 +110,12 @@ func (s *UpdateDatasetResponseBody) SetSuccess(v bool) *UpdateDatasetResponseBod
 }
 
 func (s *UpdateDatasetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateDatasetResponseBodyData struct {
@@ -226,7 +231,16 @@ func (s *UpdateDatasetResponseBodyData) SetSearchDatasetEnable(v int32) *UpdateD
 }
 
 func (s *UpdateDatasetResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.NewsArticleResults != nil {
+		for _, item := range s.NewsArticleResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateDatasetResponseBodyDataNewsArticleResults struct {
@@ -316,7 +330,16 @@ func (s *UpdateDatasetResponseBodyDataNewsArticleResults) SetTotal(v int32) *Upd
 }
 
 func (s *UpdateDatasetResponseBodyDataNewsArticleResults) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateDatasetResponseBodyDataNewsArticleResultsData struct {

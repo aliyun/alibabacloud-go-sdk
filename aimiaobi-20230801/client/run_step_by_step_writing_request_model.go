@@ -126,7 +126,17 @@ func (s *RunStepByStepWritingRequest) SetWritingConfig(v *RunStepByStepWritingRe
 }
 
 func (s *RunStepByStepWritingRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ReferenceData != nil {
+		if err := s.ReferenceData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WritingConfig != nil {
+		if err := s.WritingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunStepByStepWritingRequestReferenceData struct {
@@ -181,7 +191,25 @@ func (s *RunStepByStepWritingRequestReferenceData) SetSummarization(v []*string)
 }
 
 func (s *RunStepByStepWritingRequestReferenceData) Validate() error {
-	return dara.Validate(s)
+	if s.Articles != nil {
+		for _, item := range s.Articles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Outlines != nil {
+		for _, item := range s.Outlines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunStepByStepWritingRequestReferenceDataArticles struct {
@@ -377,7 +405,16 @@ func (s *RunStepByStepWritingRequestReferenceDataOutlines) SetOutline(v string) 
 }
 
 func (s *RunStepByStepWritingRequestReferenceDataOutlines) Validate() error {
-	return dara.Validate(s)
+	if s.Articles != nil {
+		for _, item := range s.Articles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunStepByStepWritingRequestReferenceDataOutlinesArticles struct {
@@ -538,7 +575,21 @@ func (s *RunStepByStepWritingRequestWritingConfig) SetUseSearch(v bool) *RunStep
 }
 
 func (s *RunStepByStepWritingRequestWritingConfig) Validate() error {
-	return dara.Validate(s)
+	if s.PromptTag != nil {
+		if err := s.PromptTag.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunStepByStepWritingRequestWritingConfigPromptTag struct {

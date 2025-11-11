@@ -110,7 +110,12 @@ func (s *GetDatasetResponseBody) SetSuccess(v bool) *GetDatasetResponseBody {
 }
 
 func (s *GetDatasetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDatasetResponseBodyData struct {
@@ -236,7 +241,17 @@ func (s *GetDatasetResponseBodyData) SetSearchDatasetEnable(v int32) *GetDataset
 }
 
 func (s *GetDatasetResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DatasetConfig != nil {
+		if err := s.DatasetConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DocumentHandleConfig != nil {
+		if err := s.DocumentHandleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDatasetResponseBodyDataDatasetConfig struct {
@@ -261,7 +276,16 @@ func (s *GetDatasetResponseBodyDataDatasetConfig) SetSearchSourceConfigs(v []*Ge
 }
 
 func (s *GetDatasetResponseBodyDataDatasetConfig) Validate() error {
-	return dara.Validate(s)
+	if s.SearchSourceConfigs != nil {
+		for _, item := range s.SearchSourceConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs struct {
@@ -322,7 +346,17 @@ func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs) SetSize(v i
 }
 
 func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.SearchSourceRequestConfig != nil {
+		if err := s.SearchSourceRequestConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SearchSourceResponseConfig != nil {
+		if err := s.SearchSourceResponseConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig struct {
@@ -435,7 +469,25 @@ func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceR
 }
 
 func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Headers != nil {
+		for _, item := range s.Headers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Params != nil {
+		for _, item := range s.Params {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders struct {
@@ -594,7 +646,16 @@ func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceR
 }
 
 func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfig) Validate() error {
-	return dara.Validate(s)
+	if s.JqNodes != nil {
+		for _, item := range s.JqNodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes struct {
@@ -658,7 +719,16 @@ func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceR
 }
 
 func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes) Validate() error {
-	return dara.Validate(s)
+	if s.JqNodes != nil {
+		for _, item := range s.JqNodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes struct {
@@ -722,7 +792,16 @@ func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceR
 }
 
 func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes) Validate() error {
-	return dara.Validate(s)
+	if s.JqNodes != nil {
+		for _, item := range s.JqNodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes struct {

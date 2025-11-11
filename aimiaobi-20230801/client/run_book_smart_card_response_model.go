@@ -59,5 +59,10 @@ func (s *RunBookSmartCardResponse) SetBody(v *RunBookSmartCardResponseBody) *Run
 }
 
 func (s *RunBookSmartCardResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

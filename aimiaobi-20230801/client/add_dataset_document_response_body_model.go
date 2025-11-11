@@ -110,7 +110,12 @@ func (s *AddDatasetDocumentResponseBody) SetSuccess(v bool) *AddDatasetDocumentR
 }
 
 func (s *AddDatasetDocumentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddDatasetDocumentResponseBodyData struct {

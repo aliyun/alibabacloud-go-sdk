@@ -155,7 +155,16 @@ func (s *ListFreshViewPointsResponseBody) SetTotalCount(v int32) *ListFreshViewP
 }
 
 func (s *ListFreshViewPointsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFreshViewPointsResponseBodyData struct {
@@ -206,7 +215,16 @@ func (s *ListFreshViewPointsResponseBodyData) SetSummary(v string) *ListFreshVie
 }
 
 func (s *ListFreshViewPointsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Outlines != nil {
+		for _, item := range s.Outlines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFreshViewPointsResponseBodyDataOutlines struct {

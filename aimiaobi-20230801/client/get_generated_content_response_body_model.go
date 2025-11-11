@@ -110,7 +110,12 @@ func (s *GetGeneratedContentResponseBody) SetSuccess(v bool) *GetGeneratedConten
 }
 
 func (s *GetGeneratedContentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetGeneratedContentResponseBodyData struct {

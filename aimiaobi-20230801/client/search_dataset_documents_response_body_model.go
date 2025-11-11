@@ -110,7 +110,12 @@ func (s *SearchDatasetDocumentsResponseBody) SetSuccess(v bool) *SearchDatasetDo
 }
 
 func (s *SearchDatasetDocumentsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchDatasetDocumentsResponseBodyData struct {
@@ -135,7 +140,16 @@ func (s *SearchDatasetDocumentsResponseBodyData) SetDocuments(v []*SearchDataset
 }
 
 func (s *SearchDatasetDocumentsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Documents != nil {
+		for _, item := range s.Documents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchDatasetDocumentsResponseBodyDataDocuments struct {

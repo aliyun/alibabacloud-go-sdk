@@ -110,7 +110,16 @@ func (s *ListHotNewsWithTypeResponseBody) SetSuccess(v bool) *ListHotNewsWithTyp
 }
 
 func (s *ListHotNewsWithTypeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListHotNewsWithTypeResponseBodyData struct {
@@ -171,7 +180,16 @@ func (s *ListHotNewsWithTypeResponseBodyData) SetTotalPages(v int32) *ListHotNew
 }
 
 func (s *ListHotNewsWithTypeResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.News != nil {
+		for _, item := range s.News {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListHotNewsWithTypeResponseBodyDataNews struct {

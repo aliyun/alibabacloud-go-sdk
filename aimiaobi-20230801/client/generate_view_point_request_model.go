@@ -52,7 +52,12 @@ func (s *GenerateViewPointRequest) SetReferenceData(v *GenerateViewPointRequestR
 }
 
 func (s *GenerateViewPointRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ReferenceData != nil {
+		if err := s.ReferenceData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GenerateViewPointRequestReferenceData struct {

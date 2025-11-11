@@ -155,7 +155,16 @@ func (s *ListDatasetDocumentsResponseBody) SetTotalCount(v int32) *ListDatasetDo
 }
 
 func (s *ListDatasetDocumentsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDatasetDocumentsResponseBodyData struct {
@@ -403,7 +412,16 @@ func (s *ListDatasetDocumentsResponseBodyData) SetUrl(v string) *ListDatasetDocu
 }
 
 func (s *ListDatasetDocumentsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.MultimodalMedias != nil {
+		for _, item := range s.MultimodalMedias {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDatasetDocumentsResponseBodyDataMultimodalMedias struct {

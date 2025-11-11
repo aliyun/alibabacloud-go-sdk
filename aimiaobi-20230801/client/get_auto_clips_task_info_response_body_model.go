@@ -103,7 +103,12 @@ func (s *GetAutoClipsTaskInfoResponseBody) SetSuccess(v bool) *GetAutoClipsTaskI
 }
 
 func (s *GetAutoClipsTaskInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAutoClipsTaskInfoResponseBodyData struct {
@@ -289,7 +294,25 @@ func (s *GetAutoClipsTaskInfoResponseBodyData) SetVoiceVolume(v int32) *GetAutoC
 }
 
 func (s *GetAutoClipsTaskInfoResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ColorWords != nil {
+		for _, item := range s.ColorWords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Timelines != nil {
+		for _, item := range s.Timelines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAutoClipsTaskInfoResponseBodyDataColorWords struct {
@@ -440,7 +463,16 @@ func (s *GetAutoClipsTaskInfoResponseBodyDataTimelines) SetTimelineId(v string) 
 }
 
 func (s *GetAutoClipsTaskInfoResponseBodyDataTimelines) Validate() error {
-	return dara.Validate(s)
+	if s.Clips != nil {
+		for _, item := range s.Clips {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAutoClipsTaskInfoResponseBodyDataTimelinesClips struct {

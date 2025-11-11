@@ -59,5 +59,10 @@ func (s *SubmitTopicSelectionPerspectiveAnalysisTaskResponse) SetBody(v *SubmitT
 }
 
 func (s *SubmitTopicSelectionPerspectiveAnalysisTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

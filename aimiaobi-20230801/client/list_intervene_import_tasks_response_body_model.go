@@ -110,7 +110,12 @@ func (s *ListInterveneImportTasksResponseBody) SetSuccess(v bool) *ListIntervene
 }
 
 func (s *ListInterveneImportTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListInterveneImportTasksResponseBodyData struct {
@@ -184,7 +189,16 @@ func (s *ListInterveneImportTasksResponseBodyData) SetTotalSize(v int32) *ListIn
 }
 
 func (s *ListInterveneImportTasksResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.StatusList != nil {
+		for _, item := range s.StatusList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInterveneImportTasksResponseBodyDataStatusList struct {

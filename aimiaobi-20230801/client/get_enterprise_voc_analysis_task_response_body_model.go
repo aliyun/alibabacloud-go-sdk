@@ -110,7 +110,12 @@ func (s *GetEnterpriseVocAnalysisTaskResponseBody) SetSuccess(v bool) *GetEnterp
 }
 
 func (s *GetEnterpriseVocAnalysisTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEnterpriseVocAnalysisTaskResponseBodyData struct {
@@ -171,7 +176,17 @@ func (s *GetEnterpriseVocAnalysisTaskResponseBodyData) SetUsage(v *GetEnterprise
 }
 
 func (s *GetEnterpriseVocAnalysisTaskResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.StatisticsOverview != nil {
+		if err := s.StatisticsOverview.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview struct {
@@ -219,7 +234,17 @@ func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview) SetTagD
 }
 
 func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview) Validate() error {
-	return dara.Validate(s)
+	if s.FilterDimensionStatistics != nil {
+		if err := s.FilterDimensionStatistics.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TagDimensionStatistics != nil {
+		if err := s.TagDimensionStatistics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatistics struct {
@@ -244,7 +269,16 @@ func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDim
 }
 
 func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatistics) Validate() error {
-	return dara.Validate(s)
+	if s.TagValueCountStatistic != nil {
+		for _, item := range s.TagValueCountStatistic {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic struct {
@@ -323,7 +357,16 @@ func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimens
 }
 
 func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatistics) Validate() error {
-	return dara.Validate(s)
+	if s.TagValueCountStatistic != nil {
+		for _, item := range s.TagValueCountStatistic {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic struct {

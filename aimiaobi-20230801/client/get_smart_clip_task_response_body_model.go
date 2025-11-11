@@ -110,7 +110,12 @@ func (s *GetSmartClipTaskResponseBody) SetSuccess(v bool) *GetSmartClipTaskRespo
 }
 
 func (s *GetSmartClipTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSmartClipTaskResponseBodyData struct {
@@ -158,7 +163,16 @@ func (s *GetSmartClipTaskResponseBodyData) SetSubJobs(v []*GetSmartClipTaskRespo
 }
 
 func (s *GetSmartClipTaskResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.SubJobs != nil {
+		for _, item := range s.SubJobs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSmartClipTaskResponseBodyDataSubJobs struct {
@@ -235,7 +249,12 @@ func (s *GetSmartClipTaskResponseBodyDataSubJobs) SetSubJobId(v string) *GetSmar
 }
 
 func (s *GetSmartClipTaskResponseBodyDataSubJobs) Validate() error {
-	return dara.Validate(s)
+	if s.FileAttr != nil {
+		if err := s.FileAttr.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSmartClipTaskResponseBodyDataSubJobsFileAttr struct {

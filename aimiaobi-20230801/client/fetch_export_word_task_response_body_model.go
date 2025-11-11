@@ -110,7 +110,12 @@ func (s *FetchExportWordTaskResponseBody) SetSuccess(v bool) *FetchExportWordTas
 }
 
 func (s *FetchExportWordTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FetchExportWordTaskResponseBodyData struct {

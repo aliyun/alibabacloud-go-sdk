@@ -155,7 +155,16 @@ func (s *ListSearchTaskDialoguesResponseBody) SetTotalCount(v int32) *ListSearch
 }
 
 func (s *ListSearchTaskDialoguesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSearchTaskDialoguesResponseBodyData struct {
@@ -320,7 +329,12 @@ func (s *ListSearchTaskDialoguesResponseBodyData) SetText(v string) *ListSearchT
 }
 
 func (s *ListSearchTaskDialoguesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ChatConfig != nil {
+		if err := s.ChatConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSearchTaskDialoguesResponseBodyDataChatConfig struct {
@@ -404,7 +418,12 @@ func (s *ListSearchTaskDialoguesResponseBodyDataChatConfig) SetSearchParam(v *Li
 }
 
 func (s *ListSearchTaskDialoguesResponseBodyDataChatConfig) Validate() error {
-	return dara.Validate(s)
+	if s.SearchParam != nil {
+		if err := s.SearchParam.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParam struct {
@@ -459,7 +478,16 @@ func (s *ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParam) SetStartT
 }
 
 func (s *ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParam) Validate() error {
-	return dara.Validate(s)
+	if s.SearchSources != nil {
+		for _, item := range s.SearchSources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParamSearchSources struct {

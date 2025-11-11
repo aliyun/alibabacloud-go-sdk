@@ -110,7 +110,12 @@ func (s *GetStyleLearningResultResponseBody) SetSuccess(v bool) *GetStyleLearnin
 }
 
 func (s *GetStyleLearningResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStyleLearningResultResponseBodyData struct {
@@ -230,7 +235,25 @@ func (s *GetStyleLearningResultResponseBodyData) SetTaskId(v string) *GetStyleLe
 }
 
 func (s *GetStyleLearningResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ContentList != nil {
+		for _, item := range s.ContentList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MaterialInfoList != nil {
+		for _, item := range s.MaterialInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetStyleLearningResultResponseBodyDataContentList struct {

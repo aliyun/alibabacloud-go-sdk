@@ -59,5 +59,10 @@ func (s *RunExpandContentResponse) SetBody(v *RunExpandContentResponseBody) *Run
 }
 
 func (s *RunExpandContentResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

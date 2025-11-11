@@ -59,5 +59,10 @@ func (s *ListInterveneImportTasksResponse) SetBody(v *ListInterveneImportTasksRe
 }
 
 func (s *ListInterveneImportTasksResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

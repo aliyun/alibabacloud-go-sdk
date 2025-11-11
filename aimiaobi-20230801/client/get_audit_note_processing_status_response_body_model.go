@@ -112,7 +112,12 @@ func (s *GetAuditNoteProcessingStatusResponseBody) SetSuccess(v bool) *GetAuditN
 }
 
 func (s *GetAuditNoteProcessingStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAuditNoteProcessingStatusResponseBodyData struct {

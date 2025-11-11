@@ -110,7 +110,12 @@ func (s *GetPropertiesResponseBody) SetSuccess(v bool) *GetPropertiesResponseBod
 }
 
 func (s *GetPropertiesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPropertiesResponseBodyData struct {
@@ -238,7 +243,63 @@ func (s *GetPropertiesResponseBodyData) SetWanxiangImageStyleConfig(v []*GetProp
 }
 
 func (s *GetPropertiesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ConsoleConfig != nil {
+		if err := s.ConsoleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IntelligentSearchConfig != nil {
+		if err := s.IntelligentSearchConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MiaosouConfig != nil {
+		if err := s.MiaosouConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SearchSourceList != nil {
+		for _, item := range s.SearchSourceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SearchSources != nil {
+		for _, item := range s.SearchSources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WanxiangImageSizeConfig != nil {
+		for _, item := range s.WanxiangImageSizeConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.WanxiangImageStyleConfig != nil {
+		for _, item := range s.WanxiangImageStyleConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPropertiesResponseBodyDataConsoleConfig struct {
@@ -334,7 +395,34 @@ func (s *GetPropertiesResponseBodyDataIntelligentSearchConfig) SetSearchSources(
 }
 
 func (s *GetPropertiesResponseBodyDataIntelligentSearchConfig) Validate() error {
-	return dara.Validate(s)
+	if s.CopilotPreciseSearchSources != nil {
+		for _, item := range s.CopilotPreciseSearchSources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SearchSamples != nil {
+		for _, item := range s.SearchSamples {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SearchSources != nil {
+		for _, item := range s.SearchSources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPropertiesResponseBodyDataIntelligentSearchConfigCopilotPreciseSearchSources struct {
@@ -439,7 +527,16 @@ func (s *GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSamples) SetT
 }
 
 func (s *GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSamples) Validate() error {
-	return dara.Validate(s)
+	if s.Articles != nil {
+		for _, item := range s.Articles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSamplesArticles struct {
@@ -611,7 +708,16 @@ func (s *GetPropertiesResponseBodyDataMiaosouConfig) SetUseDocSize(v int64) *Get
 }
 
 func (s *GetPropertiesResponseBodyDataMiaosouConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ModelInfos != nil {
+		for _, item := range s.ModelInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPropertiesResponseBodyDataMiaosouConfigModelInfos struct {

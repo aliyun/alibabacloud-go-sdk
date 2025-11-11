@@ -178,7 +178,34 @@ func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetWorkspaceId(v string) *Submi
 }
 
 func (s *SubmitEnterpriseVocAnalysisTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ContentTags != nil {
+		for _, item := range s.ContentTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Contents != nil {
+		for _, item := range s.Contents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FilterTags != nil {
+		for _, item := range s.FilterTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SubmitEnterpriseVocAnalysisTaskRequestContentTags struct {

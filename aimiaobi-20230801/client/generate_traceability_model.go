@@ -35,7 +35,16 @@ func (s *GenerateTraceability) SetNews(v []*GenerateTraceabilityNews) *GenerateT
 }
 
 func (s *GenerateTraceability) Validate() error {
-	return dara.Validate(s)
+	if s.News != nil {
+		for _, item := range s.News {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GenerateTraceabilityNews struct {

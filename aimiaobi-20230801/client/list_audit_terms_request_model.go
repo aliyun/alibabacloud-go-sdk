@@ -13,6 +13,8 @@ type iListAuditTermsRequest interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListAuditTermsRequest
 	GetNextToken() *string
+	SetTermsName(v string) *ListAuditTermsRequest
+	GetTermsName() *string
 	SetWorkspaceId(v string) *ListAuditTermsRequest
 	GetWorkspaceId() *string
 }
@@ -26,6 +28,7 @@ type ListAuditTermsRequest struct {
 	//
 	// XXXX
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	TermsName *string `json:"TermsName,omitempty" xml:"TermsName,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -50,6 +53,10 @@ func (s *ListAuditTermsRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *ListAuditTermsRequest) GetTermsName() *string {
+	return s.TermsName
+}
+
 func (s *ListAuditTermsRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
@@ -61,6 +68,11 @@ func (s *ListAuditTermsRequest) SetMaxResults(v int32) *ListAuditTermsRequest {
 
 func (s *ListAuditTermsRequest) SetNextToken(v string) *ListAuditTermsRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListAuditTermsRequest) SetTermsName(v string) *ListAuditTermsRequest {
+	s.TermsName = &v
 	return s
 }
 

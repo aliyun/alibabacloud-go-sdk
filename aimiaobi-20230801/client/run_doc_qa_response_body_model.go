@@ -62,7 +62,17 @@ func (s *RunDocQaResponseBody) SetRequestId(v string) *RunDocQaResponseBody {
 }
 
 func (s *RunDocQaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Header != nil {
+		if err := s.Header.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunDocQaResponseBodyHeader struct {
@@ -200,7 +210,17 @@ func (s *RunDocQaResponseBodyPayload) SetUsage(v *RunDocQaResponseBodyPayloadUsa
 }
 
 func (s *RunDocQaResponseBodyPayload) Validate() error {
-	return dara.Validate(s)
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunDocQaResponseBodyPayloadOutput struct {
@@ -278,7 +298,34 @@ func (s *RunDocQaResponseBodyPayloadOutput) SetReferences(v []*RunDocQaResponseB
 }
 
 func (s *RunDocQaResponseBodyPayloadOutput) Validate() error {
-	return dara.Validate(s)
+	if s.MediaUrlList != nil {
+		for _, item := range s.MediaUrlList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Recommends != nil {
+		for _, item := range s.Recommends {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.References != nil {
+		for _, item := range s.References {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunDocQaResponseBodyPayloadOutputMediaUrlList struct {
@@ -329,7 +376,16 @@ func (s *RunDocQaResponseBodyPayloadOutputMediaUrlList) SetMediaType(v string) *
 }
 
 func (s *RunDocQaResponseBodyPayloadOutputMediaUrlList) Validate() error {
-	return dara.Validate(s)
+	if s.ClipInfos != nil {
+		for _, item := range s.ClipInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunDocQaResponseBodyPayloadOutputMediaUrlListClipInfos struct {

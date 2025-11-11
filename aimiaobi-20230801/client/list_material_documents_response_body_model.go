@@ -155,7 +155,16 @@ func (s *ListMaterialDocumentsResponseBody) SetTotal(v int32) *ListMaterialDocum
 }
 
 func (s *ListMaterialDocumentsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMaterialDocumentsResponseBodyData struct {
@@ -436,7 +445,12 @@ func (s *ListMaterialDocumentsResponseBodyData) SetUrl(v string) *ListMaterialDo
 }
 
 func (s *ListMaterialDocumentsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.FileAttr != nil {
+		if err := s.FileAttr.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMaterialDocumentsResponseBodyDataFileAttr struct {

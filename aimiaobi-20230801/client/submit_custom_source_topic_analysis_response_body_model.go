@@ -110,7 +110,12 @@ func (s *SubmitCustomSourceTopicAnalysisResponseBody) SetSuccess(v bool) *Submit
 }
 
 func (s *SubmitCustomSourceTopicAnalysisResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitCustomSourceTopicAnalysisResponseBodyData struct {

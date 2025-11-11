@@ -59,5 +59,10 @@ func (s *RunWriteToneGenerationResponse) SetBody(v *RunWriteToneGenerationRespon
 }
 
 func (s *RunWriteToneGenerationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

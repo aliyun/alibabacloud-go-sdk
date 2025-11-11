@@ -62,7 +62,17 @@ func (s *RunDocSummaryResponseBody) SetRequestId(v string) *RunDocSummaryRespons
 }
 
 func (s *RunDocSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Header != nil {
+		if err := s.Header.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunDocSummaryResponseBodyHeader struct {
@@ -200,7 +210,17 @@ func (s *RunDocSummaryResponseBodyPayload) SetUsage(v *RunDocSummaryResponseBody
 }
 
 func (s *RunDocSummaryResponseBodyPayload) Validate() error {
-	return dara.Validate(s)
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunDocSummaryResponseBodyPayloadOutput struct {

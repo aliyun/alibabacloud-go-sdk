@@ -155,7 +155,16 @@ func (s *ListGeneratedContentsResponseBody) SetTotal(v int32) *ListGeneratedCont
 }
 
 func (s *ListGeneratedContentsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGeneratedContentsResponseBodyData struct {
@@ -367,7 +376,12 @@ func (s *ListGeneratedContentsResponseBodyData) SetUuid(v string) *ListGenerated
 }
 
 func (s *ListGeneratedContentsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.FileAttr != nil {
+		if err := s.FileAttr.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListGeneratedContentsResponseBodyDataFileAttr struct {

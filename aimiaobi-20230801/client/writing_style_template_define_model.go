@@ -47,7 +47,25 @@ func (s *WritingStyleTemplateDefine) SetFields(v []*WritingStyleTemplateField) *
 }
 
 func (s *WritingStyleTemplateDefine) Validate() error {
-	return dara.Validate(s)
+	if s.Example != nil {
+		for _, item := range s.Example {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Fields != nil {
+		for _, item := range s.Fields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type WritingStyleTemplateDefineExample struct {

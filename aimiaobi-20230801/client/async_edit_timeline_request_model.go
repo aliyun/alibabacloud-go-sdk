@@ -82,7 +82,16 @@ func (s *AsyncEditTimelineRequest) SetWorkspaceId(v string) *AsyncEditTimelineRe
 }
 
 func (s *AsyncEditTimelineRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Timelines != nil {
+		for _, item := range s.Timelines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AsyncEditTimelineRequestTimelines struct {
@@ -118,7 +127,16 @@ func (s *AsyncEditTimelineRequestTimelines) SetTimelineId(v string) *AsyncEditTi
 }
 
 func (s *AsyncEditTimelineRequestTimelines) Validate() error {
-	return dara.Validate(s)
+	if s.Clips != nil {
+		for _, item := range s.Clips {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AsyncEditTimelineRequestTimelinesClips struct {

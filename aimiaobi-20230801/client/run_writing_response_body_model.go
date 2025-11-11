@@ -74,7 +74,17 @@ func (s *RunWritingResponseBody) SetRequestId(v string) *RunWritingResponseBody 
 }
 
 func (s *RunWritingResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Header != nil {
+		if err := s.Header.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunWritingResponseBodyHeader struct {
@@ -228,7 +238,17 @@ func (s *RunWritingResponseBodyPayload) SetUsage(v *RunWritingResponseBodyPayloa
 }
 
 func (s *RunWritingResponseBodyPayload) Validate() error {
-	return dara.Validate(s)
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunWritingResponseBodyPayloadOutput struct {
@@ -292,7 +312,16 @@ func (s *RunWritingResponseBodyPayloadOutput) SetText(v string) *RunWritingRespo
 }
 
 func (s *RunWritingResponseBodyPayloadOutput) Validate() error {
-	return dara.Validate(s)
+	if s.Articles != nil {
+		for _, item := range s.Articles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunWritingResponseBodyPayloadOutputArticles struct {

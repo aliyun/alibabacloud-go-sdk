@@ -59,5 +59,10 @@ func (s *GetBiddingDocInfoResponse) SetBody(v *GetBiddingDocInfoResponseBody) *G
 }
 
 func (s *GetBiddingDocInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

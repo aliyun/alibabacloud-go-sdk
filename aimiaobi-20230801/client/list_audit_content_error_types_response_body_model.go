@@ -154,7 +154,16 @@ func (s *ListAuditContentErrorTypesResponseBody) SetTotalCount(v int32) *ListAud
 }
 
 func (s *ListAuditContentErrorTypesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAuditContentErrorTypesResponseBodyData struct {
@@ -202,7 +211,16 @@ func (s *ListAuditContentErrorTypesResponseBodyData) SetSubClasses(v []*ListAudi
 }
 
 func (s *ListAuditContentErrorTypesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.SubClasses != nil {
+		for _, item := range s.SubClasses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAuditContentErrorTypesResponseBodyDataSubClasses struct {

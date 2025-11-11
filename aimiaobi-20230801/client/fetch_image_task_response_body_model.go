@@ -110,7 +110,12 @@ func (s *FetchImageTaskResponseBody) SetSuccess(v bool) *FetchImageTaskResponseB
 }
 
 func (s *FetchImageTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FetchImageTaskResponseBodyData struct {
@@ -135,7 +140,16 @@ func (s *FetchImageTaskResponseBodyData) SetTaskInfoList(v []*FetchImageTaskResp
 }
 
 func (s *FetchImageTaskResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.TaskInfoList != nil {
+		for _, item := range s.TaskInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FetchImageTaskResponseBodyDataTaskInfoList struct {
@@ -199,7 +213,16 @@ func (s *FetchImageTaskResponseBodyDataTaskInfoList) SetTaskStatus(v string) *Fe
 }
 
 func (s *FetchImageTaskResponseBodyDataTaskInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.ImageList != nil {
+		for _, item := range s.ImageList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FetchImageTaskResponseBodyDataTaskInfoListImageList struct {

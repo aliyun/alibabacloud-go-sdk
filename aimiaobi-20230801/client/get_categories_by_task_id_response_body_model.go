@@ -110,7 +110,16 @@ func (s *GetCategoriesByTaskIdResponseBody) SetSuccess(v bool) *GetCategoriesByT
 }
 
 func (s *GetCategoriesByTaskIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCategoriesByTaskIdResponseBodyData struct {
@@ -158,7 +167,16 @@ func (s *GetCategoriesByTaskIdResponseBodyData) SetCount(v int32) *GetCategories
 }
 
 func (s *GetCategoriesByTaskIdResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Children != nil {
+		for _, item := range s.Children {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCategoriesByTaskIdResponseBodyDataChildren struct {

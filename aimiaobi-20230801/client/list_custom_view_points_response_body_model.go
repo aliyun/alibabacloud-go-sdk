@@ -155,7 +155,16 @@ func (s *ListCustomViewPointsResponseBody) SetTotalCount(v int32) *ListCustomVie
 }
 
 func (s *ListCustomViewPointsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCustomViewPointsResponseBodyData struct {
@@ -284,7 +293,16 @@ func (s *ListCustomViewPointsResponseBodyData) SetViewPoints(v []*ListCustomView
 }
 
 func (s *ListCustomViewPointsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ViewPoints != nil {
+		for _, item := range s.ViewPoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCustomViewPointsResponseBodyDataViewPoints struct {
@@ -335,7 +353,16 @@ func (s *ListCustomViewPointsResponseBodyDataViewPoints) SetSummary(v string) *L
 }
 
 func (s *ListCustomViewPointsResponseBodyDataViewPoints) Validate() error {
-	return dara.Validate(s)
+	if s.Outlines != nil {
+		for _, item := range s.Outlines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCustomViewPointsResponseBodyDataViewPointsOutlines struct {

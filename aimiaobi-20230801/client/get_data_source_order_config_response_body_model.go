@@ -110,7 +110,12 @@ func (s *GetDataSourceOrderConfigResponseBody) SetSuccess(v bool) *GetDataSource
 }
 
 func (s *GetDataSourceOrderConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataSourceOrderConfigResponseBodyData struct {
@@ -148,7 +153,16 @@ func (s *GetDataSourceOrderConfigResponseBodyData) SetUserConfigDataSourceList(v
 }
 
 func (s *GetDataSourceOrderConfigResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.UserConfigDataSourceList != nil {
+		for _, item := range s.UserConfigDataSourceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDataSourceOrderConfigResponseBodyDataUserConfigDataSourceList struct {

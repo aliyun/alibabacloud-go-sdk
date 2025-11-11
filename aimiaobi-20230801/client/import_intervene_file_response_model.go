@@ -59,5 +59,10 @@ func (s *ImportInterveneFileResponse) SetBody(v *ImportInterveneFileResponseBody
 }
 
 func (s *ImportInterveneFileResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

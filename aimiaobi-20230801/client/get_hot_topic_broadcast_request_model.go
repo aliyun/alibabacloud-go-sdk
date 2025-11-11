@@ -190,7 +190,17 @@ func (s *GetHotTopicBroadcastRequest) SetWorkspaceId(v string) *GetHotTopicBroad
 }
 
 func (s *GetHotTopicBroadcastRequest) Validate() error {
-	return dara.Validate(s)
+	if s.StepForCustomSummaryStyleConfig != nil {
+		if err := s.StepForCustomSummaryStyleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StepForNewsBroadcastContentConfig != nil {
+		if err := s.StepForNewsBroadcastContentConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHotTopicBroadcastRequestStepForCustomSummaryStyleConfig struct {
@@ -296,7 +306,16 @@ func (s *GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfig) SetTopicC
 }
 
 func (s *GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfig) Validate() error {
-	return dara.Validate(s)
+	if s.CustomHotValueWeights != nil {
+		for _, item := range s.CustomHotValueWeights {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfigCustomHotValueWeights struct {

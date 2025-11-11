@@ -155,7 +155,16 @@ func (s *ListHotViewPointsResponseBody) SetTotalCount(v int32) *ListHotViewPoint
 }
 
 func (s *ListHotViewPointsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListHotViewPointsResponseBodyData struct {
@@ -229,7 +238,25 @@ func (s *ListHotViewPointsResponseBodyData) SetViewPoints(v []*ListHotViewPoints
 }
 
 func (s *ListHotViewPointsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.News != nil {
+		for _, item := range s.News {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ViewPoints != nil {
+		for _, item := range s.ViewPoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListHotViewPointsResponseBodyDataNews struct {
@@ -451,7 +478,16 @@ func (s *ListHotViewPointsResponseBodyDataViewPoints) SetSummary(v string) *List
 }
 
 func (s *ListHotViewPointsResponseBodyDataViewPoints) Validate() error {
-	return dara.Validate(s)
+	if s.Outlines != nil {
+		for _, item := range s.Outlines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListHotViewPointsResponseBodyDataViewPointsOutlines struct {

@@ -85,7 +85,22 @@ func (s *SubmitSmartClipTaskRequest) SetWorkspaceId(v string) *SubmitSmartClipTa
 }
 
 func (s *SubmitSmartClipTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EditingConfig != nil {
+		if err := s.EditingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InputConfig != nil {
+		if err := s.InputConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OutputConfig != nil {
+		if err := s.OutputConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitSmartClipTaskRequestEditingConfig struct {
@@ -140,7 +155,27 @@ func (s *SubmitSmartClipTaskRequestEditingConfig) SetTitleConfig(v *SubmitSmartC
 }
 
 func (s *SubmitSmartClipTaskRequestEditingConfig) Validate() error {
-	return dara.Validate(s)
+	if s.BackgroundMusicConfig != nil {
+		if err := s.BackgroundMusicConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MediaConfig != nil {
+		if err := s.MediaConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SpeechConfig != nil {
+		if err := s.SpeechConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TitleConfig != nil {
+		if err := s.TitleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitSmartClipTaskRequestEditingConfigBackgroundMusicConfig struct {
@@ -274,7 +309,12 @@ func (s *SubmitSmartClipTaskRequestEditingConfigSpeechConfig) SetVolume(v float6
 }
 
 func (s *SubmitSmartClipTaskRequestEditingConfigSpeechConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AsrConfig != nil {
+		if err := s.AsrConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig struct {
@@ -517,7 +557,34 @@ func (s *SubmitSmartClipTaskRequestInputConfig) SetVideoIds(v []*SubmitSmartClip
 }
 
 func (s *SubmitSmartClipTaskRequestInputConfig) Validate() error {
-	return dara.Validate(s)
+	if s.BackgroundMusics != nil {
+		for _, item := range s.BackgroundMusics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Stickers != nil {
+		for _, item := range s.Stickers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VideoIds != nil {
+		for _, item := range s.VideoIds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SubmitSmartClipTaskRequestInputConfigBackgroundMusics struct {
@@ -648,7 +715,12 @@ func (s *SubmitSmartClipTaskRequestInputConfigStickers) SetY(v float64) *SubmitS
 }
 
 func (s *SubmitSmartClipTaskRequestInputConfigStickers) Validate() error {
-	return dara.Validate(s)
+	if s.StickerId != nil {
+		if err := s.StickerId.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitSmartClipTaskRequestInputConfigStickersStickerId struct {

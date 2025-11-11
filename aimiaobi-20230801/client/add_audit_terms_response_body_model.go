@@ -130,7 +130,12 @@ func (s *AddAuditTermsResponseBody) SetSuccess(v bool) *AddAuditTermsResponseBod
 }
 
 func (s *AddAuditTermsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataV1 != nil {
+		if err := s.DataV1.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddAuditTermsResponseBodyDataV1 struct {

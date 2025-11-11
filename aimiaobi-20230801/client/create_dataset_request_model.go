@@ -141,7 +141,17 @@ func (s *CreateDatasetRequest) SetWorkspaceId(v string) *CreateDatasetRequest {
 }
 
 func (s *CreateDatasetRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DatasetConfig != nil {
+		if err := s.DatasetConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DocumentHandleConfig != nil {
+		if err := s.DocumentHandleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDatasetRequestDatasetConfig struct {
@@ -166,7 +176,16 @@ func (s *CreateDatasetRequestDatasetConfig) SetSearchSourceConfigs(v []*CreateDa
 }
 
 func (s *CreateDatasetRequestDatasetConfig) Validate() error {
-	return dara.Validate(s)
+	if s.SearchSourceConfigs != nil {
+		for _, item := range s.SearchSourceConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDatasetRequestDatasetConfigSearchSourceConfigs struct {
@@ -227,7 +246,17 @@ func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigs) SetSize(v int32) 
 }
 
 func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.SearchSourceRequestConfig != nil {
+		if err := s.SearchSourceRequestConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SearchSourceResponseConfig != nil {
+		if err := s.SearchSourceResponseConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig struct {
@@ -340,7 +369,25 @@ func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequest
 }
 
 func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Headers != nil {
+		for _, item := range s.Headers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Params != nil {
+		for _, item := range s.Params {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders struct {
@@ -499,7 +546,16 @@ func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRespons
 }
 
 func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfig) Validate() error {
-	return dara.Validate(s)
+	if s.JqNodes != nil {
+		for _, item := range s.JqNodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes struct {
@@ -563,7 +619,16 @@ func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRespons
 }
 
 func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes) Validate() error {
-	return dara.Validate(s)
+	if s.JqNodes != nil {
+		for _, item := range s.JqNodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes struct {
@@ -624,7 +689,16 @@ func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRespons
 }
 
 func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes) Validate() error {
-	return dara.Validate(s)
+	if s.JqNodes != nil {
+		for _, item := range s.JqNodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes struct {

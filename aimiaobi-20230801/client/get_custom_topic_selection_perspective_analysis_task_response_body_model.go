@@ -110,7 +110,12 @@ func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody) SetSuccess(
 }
 
 func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData struct {
@@ -161,7 +166,12 @@ func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData) SetStat
 }
 
 func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CustomViewPointsResult != nil {
+		if err := s.CustomViewPointsResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResult struct {
@@ -199,7 +209,16 @@ func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomVie
 }
 
 func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResult) Validate() error {
-	return dara.Validate(s)
+	if s.Attitudes != nil {
+		for _, item := range s.Attitudes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudes struct {
@@ -263,7 +282,16 @@ func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomVie
 }
 
 func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudes) Validate() error {
-	return dara.Validate(s)
+	if s.ViewPoints != nil {
+		for _, item := range s.ViewPoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPoints struct {
@@ -314,7 +342,16 @@ func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomVie
 }
 
 func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPoints) Validate() error {
-	return dara.Validate(s)
+	if s.Outlines != nil {
+		for _, item := range s.Outlines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPointsOutlines struct {

@@ -59,5 +59,10 @@ func (s *RunWritingV2Response) SetBody(v *RunWritingV2ResponseBody) *RunWritingV
 }
 
 func (s *RunWritingV2Response) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

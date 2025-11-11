@@ -62,7 +62,17 @@ func (s *RunCustomHotTopicAnalysisResponseBody) SetRequestId(v string) *RunCusto
 }
 
 func (s *RunCustomHotTopicAnalysisResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Header != nil {
+		if err := s.Header.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunCustomHotTopicAnalysisResponseBodyHeader struct {
@@ -203,7 +213,17 @@ func (s *RunCustomHotTopicAnalysisResponseBodyPayload) SetUsage(v *RunCustomHotT
 }
 
 func (s *RunCustomHotTopicAnalysisResponseBodyPayload) Validate() error {
-	return dara.Validate(s)
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunCustomHotTopicAnalysisResponseBodyPayloadOutput struct {
@@ -303,7 +323,16 @@ func (s *RunCustomHotTopicAnalysisResponseBodyPayloadOutput) SetTopicId(v string
 }
 
 func (s *RunCustomHotTopicAnalysisResponseBodyPayloadOutput) Validate() error {
-	return dara.Validate(s)
+	if s.Articles != nil {
+		for _, item := range s.Articles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles struct {

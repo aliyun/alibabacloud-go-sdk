@@ -9,6 +9,8 @@ type iDownloadAuditNoteRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetNoteId(v string) *DownloadAuditNoteRequest
+	GetNoteId() *string
 	SetTaskId(v string) *DownloadAuditNoteRequest
 	GetTaskId() *string
 	SetWorkspaceId(v string) *DownloadAuditNoteRequest
@@ -16,6 +18,7 @@ type iDownloadAuditNoteRequest interface {
 }
 
 type DownloadAuditNoteRequest struct {
+	NoteId *string `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
 	// example:
 	//
 	// xxx_Default_1241541251241
@@ -36,12 +39,21 @@ func (s DownloadAuditNoteRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DownloadAuditNoteRequest) GetNoteId() *string {
+	return s.NoteId
+}
+
 func (s *DownloadAuditNoteRequest) GetTaskId() *string {
 	return s.TaskId
 }
 
 func (s *DownloadAuditNoteRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *DownloadAuditNoteRequest) SetNoteId(v string) *DownloadAuditNoteRequest {
+	s.NoteId = &v
+	return s
 }
 
 func (s *DownloadAuditNoteRequest) SetTaskId(v string) *DownloadAuditNoteRequest {

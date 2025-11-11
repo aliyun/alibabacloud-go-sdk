@@ -110,7 +110,12 @@ func (s *GetCustomTextResponseBody) SetSuccess(v bool) *GetCustomTextResponseBod
 }
 
 func (s *GetCustomTextResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCustomTextResponseBodyData struct {

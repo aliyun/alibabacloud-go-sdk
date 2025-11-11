@@ -62,7 +62,17 @@ func (s *RunTranslateGenerationResponseBody) SetRequestId(v string) *RunTranslat
 }
 
 func (s *RunTranslateGenerationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Header != nil {
+		if err := s.Header.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunTranslateGenerationResponseBodyHeader struct {
@@ -190,7 +200,17 @@ func (s *RunTranslateGenerationResponseBodyPayload) SetUsage(v *RunTranslateGene
 }
 
 func (s *RunTranslateGenerationResponseBodyPayload) Validate() error {
-	return dara.Validate(s)
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunTranslateGenerationResponseBodyPayloadOutput struct {

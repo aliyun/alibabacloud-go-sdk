@@ -80,7 +80,12 @@ func (s *RunKeywordsExtractionGenerationRequest) SetWorkspaceId(v string) *RunKe
 }
 
 func (s *RunKeywordsExtractionGenerationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ReferenceData != nil {
+		if err := s.ReferenceData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunKeywordsExtractionGenerationRequestReferenceData struct {

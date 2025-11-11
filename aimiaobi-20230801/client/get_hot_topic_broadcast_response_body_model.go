@@ -110,7 +110,12 @@ func (s *GetHotTopicBroadcastResponseBody) SetSuccess(v bool) *GetHotTopicBroadc
 }
 
 func (s *GetHotTopicBroadcastResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHotTopicBroadcastResponseBodyData struct {
@@ -158,7 +163,21 @@ func (s *GetHotTopicBroadcastResponseBodyData) SetTotalTokenInfo(v *GetHotTopicB
 }
 
 func (s *GetHotTopicBroadcastResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TotalTokenInfo != nil {
+		if err := s.TotalTokenInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHotTopicBroadcastResponseBodyDataData struct {
@@ -376,7 +395,30 @@ func (s *GetHotTopicBroadcastResponseBodyDataData) SetUrl(v string) *GetHotTopic
 }
 
 func (s *GetHotTopicBroadcastResponseBodyDataData) Validate() error {
-	return dara.Validate(s)
+	if s.Images != nil {
+		for _, item := range s.Images {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.News != nil {
+		for _, item := range s.News {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Summary != nil {
+		if err := s.Summary.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHotTopicBroadcastResponseBodyDataDataImages struct {
@@ -631,7 +673,16 @@ func (s *GetHotTopicBroadcastResponseBodyDataDataNews) SetWebsite(v string) *Get
 }
 
 func (s *GetHotTopicBroadcastResponseBodyDataDataNews) Validate() error {
-	return dara.Validate(s)
+	if s.Comments != nil {
+		for _, item := range s.Comments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetHotTopicBroadcastResponseBodyDataDataNewsComments struct {
@@ -723,7 +774,16 @@ func (s *GetHotTopicBroadcastResponseBodyDataDataSummary) SetSummaries(v []*GetH
 }
 
 func (s *GetHotTopicBroadcastResponseBodyDataDataSummary) Validate() error {
-	return dara.Validate(s)
+	if s.Summaries != nil {
+		for _, item := range s.Summaries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetHotTopicBroadcastResponseBodyDataDataSummarySummaries struct {

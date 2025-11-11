@@ -142,7 +142,17 @@ func (s *RunSearchGenerationRequest) SetWorkspaceId(v string) *RunSearchGenerati
 }
 
 func (s *RunSearchGenerationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AgentContext != nil {
+		if err := s.AgentContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ChatConfig != nil {
+		if err := s.ChatConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationRequestAgentContext struct {
@@ -167,7 +177,12 @@ func (s *RunSearchGenerationRequestAgentContext) SetBizContext(v *RunSearchGener
 }
 
 func (s *RunSearchGenerationRequestAgentContext) Validate() error {
-	return dara.Validate(s)
+	if s.BizContext != nil {
+		if err := s.BizContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationRequestAgentContextBizContext struct {
@@ -282,7 +297,12 @@ func (s *RunSearchGenerationRequestAgentContextBizContext) SetUserBackKeywords(v
 }
 
 func (s *RunSearchGenerationRequestAgentContextBizContext) Validate() error {
-	return dara.Validate(s)
+	if s.MultimodalMediaSelection != nil {
+		if err := s.MultimodalMediaSelection.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection struct {
@@ -372,7 +392,12 @@ func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectio
 }
 
 func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection) Validate() error {
-	return dara.Validate(s)
+	if s.TextSearchResult != nil {
+		if err := s.TextSearchResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResult struct {
@@ -397,7 +422,16 @@ func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectio
 }
 
 func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResult) Validate() error {
-	return dara.Validate(s)
+	if s.SearchResult != nil {
+		for _, item := range s.SearchResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult struct {
@@ -659,7 +693,12 @@ func (s *RunSearchGenerationRequestChatConfig) SetSearchParam(v *RunSearchGenera
 }
 
 func (s *RunSearchGenerationRequestChatConfig) Validate() error {
-	return dara.Validate(s)
+	if s.SearchParam != nil {
+		if err := s.SearchParam.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationRequestChatConfigSearchParam struct {
@@ -720,7 +759,16 @@ func (s *RunSearchGenerationRequestChatConfigSearchParam) SetStartTime(v int64) 
 }
 
 func (s *RunSearchGenerationRequestChatConfigSearchParam) Validate() error {
-	return dara.Validate(s)
+	if s.SearchSources != nil {
+		for _, item := range s.SearchSources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationRequestChatConfigSearchParamSearchSources struct {

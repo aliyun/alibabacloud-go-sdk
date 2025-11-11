@@ -62,7 +62,17 @@ func (s *RunTextPolishingResponseBody) SetRequestId(v string) *RunTextPolishingR
 }
 
 func (s *RunTextPolishingResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Header != nil {
+		if err := s.Header.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunTextPolishingResponseBodyHeader struct {
@@ -203,7 +213,17 @@ func (s *RunTextPolishingResponseBodyPayload) SetUsage(v *RunTextPolishingRespon
 }
 
 func (s *RunTextPolishingResponseBodyPayload) Validate() error {
-	return dara.Validate(s)
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunTextPolishingResponseBodyPayloadOutput struct {

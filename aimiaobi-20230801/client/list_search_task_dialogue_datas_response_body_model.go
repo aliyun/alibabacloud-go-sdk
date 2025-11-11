@@ -221,7 +221,43 @@ func (s *ListSearchTaskDialogueDatasResponseBody) SetVideos(v []*ListSearchTaskD
 }
 
 func (s *ListSearchTaskDialogueDatasResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Articles != nil {
+		for _, item := range s.Articles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Audios != nil {
+		for _, item := range s.Audios {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Images != nil {
+		for _, item := range s.Images {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Videos != nil {
+		for _, item := range s.Videos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSearchTaskDialogueDatasResponseBodyArticles struct {
@@ -428,7 +464,16 @@ func (s *ListSearchTaskDialogueDatasResponseBodyArticles) SetUrl(v string) *List
 }
 
 func (s *ListSearchTaskDialogueDatasResponseBodyArticles) Validate() error {
-	return dara.Validate(s)
+	if s.MultimodalMedias != nil {
+		for _, item := range s.MultimodalMedias {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSearchTaskDialogueDatasResponseBodyArticlesMultimodalMedias struct {

@@ -155,7 +155,16 @@ func (s *ListWebReviewPointsResponseBody) SetTotalCount(v int32) *ListWebReviewP
 }
 
 func (s *ListWebReviewPointsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWebReviewPointsResponseBodyData struct {
@@ -229,7 +238,25 @@ func (s *ListWebReviewPointsResponseBodyData) SetViewPoints(v []*ListWebReviewPo
 }
 
 func (s *ListWebReviewPointsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Comments != nil {
+		for _, item := range s.Comments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ViewPoints != nil {
+		for _, item := range s.ViewPoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWebReviewPointsResponseBodyDataComments struct {
@@ -360,7 +387,16 @@ func (s *ListWebReviewPointsResponseBodyDataViewPoints) SetSummary(v string) *Li
 }
 
 func (s *ListWebReviewPointsResponseBodyDataViewPoints) Validate() error {
-	return dara.Validate(s)
+	if s.Outlines != nil {
+		for _, item := range s.Outlines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWebReviewPointsResponseBodyDataViewPointsOutlines struct {

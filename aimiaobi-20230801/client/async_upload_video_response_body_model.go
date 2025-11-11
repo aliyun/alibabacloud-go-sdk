@@ -103,7 +103,12 @@ func (s *AsyncUploadVideoResponseBody) SetSuccess(v bool) *AsyncUploadVideoRespo
 }
 
 func (s *AsyncUploadVideoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AsyncUploadVideoResponseBodyData struct {
@@ -141,7 +146,16 @@ func (s *AsyncUploadVideoResponseBodyData) SetVideoInfos(v []*AsyncUploadVideoRe
 }
 
 func (s *AsyncUploadVideoResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.VideoInfos != nil {
+		for _, item := range s.VideoInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AsyncUploadVideoResponseBodyDataVideoInfos struct {

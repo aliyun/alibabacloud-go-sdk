@@ -62,7 +62,17 @@ func (s *RunSearchGenerationResponseBody) SetRequestId(v string) *RunSearchGener
 }
 
 func (s *RunSearchGenerationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Header != nil {
+		if err := s.Header.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyHeader struct {
@@ -229,7 +239,17 @@ func (s *RunSearchGenerationResponseBodyPayload) SetUsage(v *RunSearchGeneration
 }
 
 func (s *RunSearchGenerationResponseBodyPayload) Validate() error {
-	return dara.Validate(s)
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutput struct {
@@ -264,7 +284,21 @@ func (s *RunSearchGenerationResponseBodyPayloadOutput) SetMessages(v []*RunSearc
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutput) Validate() error {
-	return dara.Validate(s)
+	if s.AgentContext != nil {
+		if err := s.AgentContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Messages != nil {
+		for _, item := range s.Messages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContext struct {
@@ -289,7 +323,12 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContext) SetBizContext
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContext) Validate() error {
-	return dara.Validate(s)
+	if s.BizContext != nil {
+		if err := s.BizContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext struct {
@@ -439,7 +478,17 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) Set
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) Validate() error {
-	return dara.Validate(s)
+	if s.GeneratedContent != nil {
+		if err := s.GeneratedContent.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TokenCalculate != nil {
+		if err := s.TokenCalculate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent struct {
@@ -544,7 +593,52 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent) Validate() error {
-	return dara.Validate(s)
+	if s.AudioSearchResult != nil {
+		if err := s.AudioSearchResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ClusterTopicResult != nil {
+		if err := s.ClusterTopicResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExcerptResult != nil {
+		if err := s.ExcerptResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageSearchResult != nil {
+		if err := s.ImageSearchResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NewsElementResult != nil {
+		if err := s.NewsElementResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TextGenerateResult != nil {
+		if err := s.TextGenerateResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TextSearchResult != nil {
+		if err := s.TextSearchResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TimelineResult != nil {
+		if err := s.TimelineResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoSearchResult != nil {
+		if err := s.VideoSearchResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResult struct {
@@ -569,7 +663,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResult) Validate() error {
-	return dara.Validate(s)
+	if s.SearchResult != nil {
+		for _, item := range s.SearchResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult struct {
@@ -643,7 +746,21 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult) Validate() error {
-	return dara.Validate(s)
+	if s.Article != nil {
+		if err := s.Article.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ClipInfos != nil {
+		for _, item := range s.ClipInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle struct {
@@ -867,7 +984,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResult) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterTopics != nil {
+		for _, item := range s.ClusterTopics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics struct {
@@ -935,7 +1061,27 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics) Validate() error {
-	return dara.Validate(s)
+	if s.AudioSearchResult != nil {
+		if err := s.AudioSearchResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageSearchResult != nil {
+		if err := s.ImageSearchResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TextSearchResult != nil {
+		if err := s.TextSearchResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoSearchResult != nil {
+		if err := s.VideoSearchResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResult struct {
@@ -999,7 +1145,12 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResult) Validate() error {
-	return dara.Validate(s)
+	if s.SearchResult != nil {
+		if err := s.SearchResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResult struct {
@@ -1060,7 +1211,21 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResult) Validate() error {
-	return dara.Validate(s)
+	if s.Article != nil {
+		if err := s.Article.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ClipInfos != nil {
+		for _, item := range s.ClipInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle struct {
@@ -1297,7 +1462,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResult) Validate() error {
-	return dara.Validate(s)
+	if s.SearchResult != nil {
+		for _, item := range s.SearchResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResult struct {
@@ -1348,7 +1522,12 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResult) Validate() error {
-	return dara.Validate(s)
+	if s.Article != nil {
+		if err := s.Article.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle struct {
@@ -1505,7 +1684,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResult) Validate() error {
-	return dara.Validate(s)
+	if s.SearchResult != nil {
+		for _, item := range s.SearchResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult struct {
@@ -1647,7 +1835,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) Validate() error {
-	return dara.Validate(s)
+	if s.MultimodalMedias != nil {
+		for _, item := range s.MultimodalMedias {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResultMultimodalMedias struct {
@@ -1765,7 +1962,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResult) Validate() error {
-	return dara.Validate(s)
+	if s.SearchResult != nil {
+		for _, item := range s.SearchResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResult struct {
@@ -1826,7 +2032,21 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResult) Validate() error {
-	return dara.Validate(s)
+	if s.Article != nil {
+		if err := s.Article.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ClipInfos != nil {
+		for _, item := range s.ClipInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle struct {
@@ -2073,7 +2293,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResult) Validate() error {
-	return dara.Validate(s)
+	if s.SearchResult != nil {
+		for _, item := range s.SearchResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult struct {
@@ -2300,7 +2529,25 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) Validate() error {
-	return dara.Validate(s)
+	if s.MultimodalMedias != nil {
+		for _, item := range s.MultimodalMedias {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TextGenerateMultimodalMediaList != nil {
+		for _, item := range s.TextGenerateMultimodalMediaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultMultimodalMedias struct {
@@ -2418,7 +2665,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaList) Validate() error {
-	return dara.Validate(s)
+	if s.MultimodalMediaList != nil {
+		for _, item := range s.MultimodalMediaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaList struct {
@@ -2482,7 +2738,12 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaList) Validate() error {
-	return dara.Validate(s)
+	if s.Article != nil {
+		if err := s.Article.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaListArticle struct {
@@ -2587,7 +2848,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResult) Validate() error {
-	return dara.Validate(s)
+	if s.SearchResult != nil {
+		for _, item := range s.SearchResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult struct {
@@ -2651,7 +2921,12 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult) Validate() error {
-	return dara.Validate(s)
+	if s.Article != nil {
+		if err := s.Article.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle struct {
@@ -2795,7 +3070,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResult) Validate() error {
-	return dara.Validate(s)
+	if s.NewsElementArticleList != nil {
+		for _, item := range s.NewsElementArticleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleList struct {
@@ -2843,7 +3127,21 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleList) Validate() error {
-	return dara.Validate(s)
+	if s.Article != nil {
+		if err := s.Article.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NewsElementList != nil {
+		for _, item := range s.NewsElementList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle struct {
@@ -3081,7 +3379,12 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementList) Validate() error {
-	return dara.Validate(s)
+	if s.Event != nil {
+		if err := s.Event.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementListEvent struct {
@@ -3230,7 +3533,39 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult) Validate() error {
-	return dara.Validate(s)
+	if s.GenerateTraceability != nil {
+		if err := s.GenerateTraceability.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MultimodalSearchResultList != nil {
+		for _, item := range s.MultimodalSearchResultList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ReferenceList != nil {
+		for _, item := range s.ReferenceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TextGenerateMultimodalMediaList != nil {
+		for _, item := range s.TextGenerateMultimodalMediaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceability struct {
@@ -3268,7 +3603,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceability) Validate() error {
-	return dara.Validate(s)
+	if s.Coordinates != nil {
+		for _, item := range s.Coordinates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinates struct {
@@ -3303,7 +3647,17 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinates) Validate() error {
-	return dara.Validate(s)
+	if s.GenerateCoordinate != nil {
+		if err := s.GenerateCoordinate.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NewsCoordinate != nil {
+		if err := s.NewsCoordinate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesGenerateCoordinate struct {
@@ -3527,7 +3881,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList) Validate() error {
-	return dara.Validate(s)
+	if s.SearchResult != nil {
+		for _, item := range s.SearchResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResult struct {
@@ -3601,7 +3964,21 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResult) Validate() error {
-	return dara.Validate(s)
+	if s.Article != nil {
+		if err := s.Article.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ClipInfos != nil {
+		for _, item := range s.ClipInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultArticle struct {
@@ -4032,7 +4409,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaList) Validate() error {
-	return dara.Validate(s)
+	if s.MultimodalMediaList != nil {
+		for _, item := range s.MultimodalMediaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaList struct {
@@ -4096,7 +4482,12 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaList) Validate() error {
-	return dara.Validate(s)
+	if s.Article != nil {
+		if err := s.Article.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaListArticle struct {
@@ -4244,7 +4635,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResult) Validate() error {
-	return dara.Validate(s)
+	if s.SearchResult != nil {
+		for _, item := range s.SearchResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult struct {
@@ -4493,7 +4893,39 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult) Validate() error {
-	return dara.Validate(s)
+	if s.GenerateTraceability != nil {
+		if err := s.GenerateTraceability.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MultimodalSearchResultList != nil {
+		for _, item := range s.MultimodalSearchResultList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ReferenceList != nil {
+		for _, item := range s.ReferenceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TextGenerateMultimodalMediaList != nil {
+		for _, item := range s.TextGenerateMultimodalMediaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceability struct {
@@ -4531,7 +4963,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceability) Validate() error {
-	return dara.Validate(s)
+	if s.Coordinates != nil {
+		for _, item := range s.Coordinates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinates struct {
@@ -4566,7 +5007,17 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinates) Validate() error {
-	return dara.Validate(s)
+	if s.GenerateCoordinate != nil {
+		if err := s.GenerateCoordinate.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NewsCoordinate != nil {
+		if err := s.NewsCoordinate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesGenerateCoordinate struct {
@@ -4725,7 +5176,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultList) Validate() error {
-	return dara.Validate(s)
+	if s.SearchResult != nil {
+		for _, item := range s.SearchResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResult struct {
@@ -4799,7 +5259,21 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResult) Validate() error {
-	return dara.Validate(s)
+	if s.Article != nil {
+		if err := s.Article.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ClipInfos != nil {
+		for _, item := range s.ClipInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultArticle struct {
@@ -5230,7 +5704,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaList) Validate() error {
-	return dara.Validate(s)
+	if s.MultimodalMediaList != nil {
+		for _, item := range s.MultimodalMediaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaList struct {
@@ -5294,7 +5777,12 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaList) Validate() error {
-	return dara.Validate(s)
+	if s.Article != nil {
+		if err := s.Article.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaListArticle struct {
@@ -5412,7 +5900,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResult) Validate() error {
-	return dara.Validate(s)
+	if s.SearchResult != nil {
+		for _, item := range s.SearchResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult struct {
@@ -5486,7 +5983,21 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult) Validate() error {
-	return dara.Validate(s)
+	if s.Article != nil {
+		if err := s.Article.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ClipInfos != nil {
+		for _, item := range s.ClipInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle struct {
@@ -5831,7 +6342,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputMessages) SetSearchResult(v
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputMessages) Validate() error {
-	return dara.Validate(s)
+	if s.SearchResult != nil {
+		for _, item := range s.SearchResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult struct {
@@ -5899,7 +6419,43 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult) SetVi
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult) Validate() error {
-	return dara.Validate(s)
+	if s.Audios != nil {
+		for _, item := range s.Audios {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Images != nil {
+		for _, item := range s.Images {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Texts != nil {
+		for _, item := range s.Texts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Videos != nil {
+		for _, item := range s.Videos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultAudios struct {

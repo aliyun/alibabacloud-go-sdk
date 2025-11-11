@@ -81,7 +81,12 @@ func (s *UpdateDatasetDocumentRequest) SetWorkspaceId(v string) *UpdateDatasetDo
 }
 
 func (s *UpdateDatasetDocumentRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Document != nil {
+		if err := s.Document.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateDatasetDocumentRequestDocument struct {

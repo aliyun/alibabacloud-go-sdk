@@ -98,7 +98,16 @@ func (s *SubmitDocClusterTaskRequest) SetTopicCount(v int32) *SubmitDocClusterTa
 }
 
 func (s *SubmitDocClusterTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Documents != nil {
+		for _, item := range s.Documents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SubmitDocClusterTaskRequestDocuments struct {

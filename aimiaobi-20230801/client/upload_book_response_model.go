@@ -59,5 +59,10 @@ func (s *UploadBookResponse) SetBody(v *UploadBookResponseBody) *UploadBookRespo
 }
 
 func (s *UploadBookResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

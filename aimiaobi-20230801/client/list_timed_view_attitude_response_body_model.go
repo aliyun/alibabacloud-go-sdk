@@ -155,7 +155,16 @@ func (s *ListTimedViewAttitudeResponseBody) SetTotalCount(v int32) *ListTimedVie
 }
 
 func (s *ListTimedViewAttitudeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTimedViewAttitudeResponseBodyData struct {
@@ -271,7 +280,16 @@ func (s *ListTimedViewAttitudeResponseBodyData) SetViewPoints(v []*ListTimedView
 }
 
 func (s *ListTimedViewAttitudeResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ViewPoints != nil {
+		for _, item := range s.ViewPoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTimedViewAttitudeResponseBodyDataViewPoints struct {
@@ -322,7 +340,16 @@ func (s *ListTimedViewAttitudeResponseBodyDataViewPoints) SetSummary(v string) *
 }
 
 func (s *ListTimedViewAttitudeResponseBodyDataViewPoints) Validate() error {
-	return dara.Validate(s)
+	if s.Outlines != nil {
+		for _, item := range s.Outlines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTimedViewAttitudeResponseBodyDataViewPointsOutlines struct {

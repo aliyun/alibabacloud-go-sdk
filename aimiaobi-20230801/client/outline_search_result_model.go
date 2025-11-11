@@ -83,5 +83,14 @@ func (s *OutlineSearchResult) SetQuery(v string) *OutlineSearchResult {
 }
 
 func (s *OutlineSearchResult) Validate() error {
-	return dara.Validate(s)
+	if s.Articles != nil {
+		for _, item := range s.Articles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

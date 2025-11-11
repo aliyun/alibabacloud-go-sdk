@@ -155,7 +155,16 @@ func (s *ListPlanningProposalResponseBody) SetTotalCount(v int32) *ListPlanningP
 }
 
 func (s *ListPlanningProposalResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPlanningProposalResponseBodyData struct {
@@ -200,7 +209,16 @@ func (s *ListPlanningProposalResponseBodyData) SetTitle(v string) *ListPlanningP
 }
 
 func (s *ListPlanningProposalResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Outlines != nil {
+		for _, item := range s.Outlines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPlanningProposalResponseBodyDataOutlines struct {

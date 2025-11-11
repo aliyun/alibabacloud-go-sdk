@@ -155,7 +155,16 @@ func (s *ListHotTopicsResponseBody) SetTotalCount(v int32) *ListHotTopicsRespons
 }
 
 func (s *ListHotTopicsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListHotTopicsResponseBodyData struct {
@@ -323,7 +332,16 @@ func (s *ListHotTopicsResponseBodyData) SetVersion(v string) *ListHotTopicsRespo
 }
 
 func (s *ListHotTopicsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.StructureSummary != nil {
+		for _, item := range s.StructureSummary {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListHotTopicsResponseBodyDataStructureSummary struct {
@@ -374,7 +392,16 @@ func (s *ListHotTopicsResponseBodyDataStructureSummary) SetTitle(v string) *List
 }
 
 func (s *ListHotTopicsResponseBodyDataStructureSummary) Validate() error {
-	return dara.Validate(s)
+	if s.DocList != nil {
+		for _, item := range s.DocList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListHotTopicsResponseBodyDataStructureSummaryDocList struct {

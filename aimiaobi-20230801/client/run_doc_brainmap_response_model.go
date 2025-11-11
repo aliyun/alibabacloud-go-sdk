@@ -59,5 +59,10 @@ func (s *RunDocBrainmapResponse) SetBody(v *RunDocBrainmapResponseBody) *RunDocB
 }
 
 func (s *RunDocBrainmapResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

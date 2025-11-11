@@ -89,7 +89,21 @@ func (s *AsyncUploadVideoRequest) SetWorkspaceId(v string) *AsyncUploadVideoRequ
 }
 
 func (s *AsyncUploadVideoRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ReferenceVideo != nil {
+		if err := s.ReferenceVideo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceVideos != nil {
+		for _, item := range s.SourceVideos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AsyncUploadVideoRequestReferenceVideo struct {

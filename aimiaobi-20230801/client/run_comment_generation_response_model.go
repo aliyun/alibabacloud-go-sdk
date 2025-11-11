@@ -59,5 +59,10 @@ func (s *RunCommentGenerationResponse) SetBody(v *RunCommentGenerationResponseBo
 }
 
 func (s *RunCommentGenerationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

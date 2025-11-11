@@ -79,7 +79,17 @@ func (s *RunDocWashingResponseBody) SetRequestId(v string) *RunDocWashingRespons
 }
 
 func (s *RunDocWashingResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Header != nil {
+		if err := s.Header.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunDocWashingResponseBodyHeader struct {
@@ -204,7 +214,17 @@ func (s *RunDocWashingResponseBodyPayload) SetUsage(v *RunDocWashingResponseBody
 }
 
 func (s *RunDocWashingResponseBodyPayload) Validate() error {
-	return dara.Validate(s)
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunDocWashingResponseBodyPayloadOutput struct {

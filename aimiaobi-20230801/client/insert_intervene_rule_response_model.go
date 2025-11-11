@@ -59,5 +59,10 @@ func (s *InsertInterveneRuleResponse) SetBody(v *InsertInterveneRuleResponseBody
 }
 
 func (s *InsertInterveneRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

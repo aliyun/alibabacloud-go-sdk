@@ -59,5 +59,10 @@ func (s *FeedbackDialogueResponse) SetBody(v *FeedbackDialogueResponseBody) *Fee
 }
 
 func (s *FeedbackDialogueResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

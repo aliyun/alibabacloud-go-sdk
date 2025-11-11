@@ -62,7 +62,17 @@ func (s *RunDocIntroductionResponseBody) SetRequestId(v string) *RunDocIntroduct
 }
 
 func (s *RunDocIntroductionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Header != nil {
+		if err := s.Header.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunDocIntroductionResponseBodyHeader struct {
@@ -200,7 +210,17 @@ func (s *RunDocIntroductionResponseBodyPayload) SetUsage(v *RunDocIntroductionRe
 }
 
 func (s *RunDocIntroductionResponseBodyPayload) Validate() error {
-	return dara.Validate(s)
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunDocIntroductionResponseBodyPayloadOutput struct {
@@ -245,7 +265,16 @@ func (s *RunDocIntroductionResponseBodyPayloadOutput) SetSummary(v string) *RunD
 }
 
 func (s *RunDocIntroductionResponseBodyPayloadOutput) Validate() error {
-	return dara.Validate(s)
+	if s.Introductions != nil {
+		for _, item := range s.Introductions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunDocIntroductionResponseBodyPayloadOutputIntroductions struct {
@@ -303,7 +332,16 @@ func (s *RunDocIntroductionResponseBodyPayloadOutputIntroductions) SetTitle(v st
 }
 
 func (s *RunDocIntroductionResponseBodyPayloadOutputIntroductions) Validate() error {
-	return dara.Validate(s)
+	if s.Blocks != nil {
+		for _, item := range s.Blocks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks struct {

@@ -112,7 +112,12 @@ func (s *QueryAuditTaskResponseBody) SetSuccess(v bool) *QueryAuditTaskResponseB
 }
 
 func (s *QueryAuditTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryAuditTaskResponseBodyData struct {
@@ -209,7 +214,12 @@ func (s *QueryAuditTaskResponseBodyData) SetTitle(v string) *QueryAuditTaskRespo
 }
 
 func (s *QueryAuditTaskResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Response != nil {
+		if err := s.Response.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryAuditTaskResponseBodyDataResponse struct {
@@ -244,7 +254,17 @@ func (s *QueryAuditTaskResponseBodyDataResponse) SetPayload(v *QueryAuditTaskRes
 }
 
 func (s *QueryAuditTaskResponseBodyDataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Header != nil {
+		if err := s.Header.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryAuditTaskResponseBodyDataResponseHeader struct {
@@ -359,7 +379,17 @@ func (s *QueryAuditTaskResponseBodyDataResponsePayload) SetUsage(v *QueryAuditTa
 }
 
 func (s *QueryAuditTaskResponseBodyDataResponsePayload) Validate() error {
-	return dara.Validate(s)
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryAuditTaskResponseBodyDataResponsePayloadOutput struct {

@@ -112,7 +112,12 @@ func (s *GetSmartAuditResultResponseBody) SetSuccess(v bool) *GetSmartAuditResul
 }
 
 func (s *GetSmartAuditResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSmartAuditResultResponseBodyData struct {
@@ -160,7 +165,16 @@ func (s *GetSmartAuditResultResponseBodyData) SetStatus(v string) *GetSmartAudit
 }
 
 func (s *GetSmartAuditResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ErrorItemDetails != nil {
+		for _, item := range s.ErrorItemDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSmartAuditResultResponseBodyDataErrorItemDetails struct {

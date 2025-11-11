@@ -110,7 +110,12 @@ func (s *GetDocClusterTaskResponseBody) SetSuccess(v bool) *GetDocClusterTaskRes
 }
 
 func (s *GetDocClusterTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDocClusterTaskResponseBodyData struct {
@@ -161,7 +166,16 @@ func (s *GetDocClusterTaskResponseBodyData) SetTopics(v []*GetDocClusterTaskResp
 }
 
 func (s *GetDocClusterTaskResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Topics != nil {
+		for _, item := range s.Topics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDocClusterTaskResponseBodyDataTopics struct {

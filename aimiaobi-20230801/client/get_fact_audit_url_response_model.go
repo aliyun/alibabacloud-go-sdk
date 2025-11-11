@@ -59,5 +59,10 @@ func (s *GetFactAuditUrlResponse) SetBody(v *GetFactAuditUrlResponseBody) *GetFa
 }
 
 func (s *GetFactAuditUrlResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

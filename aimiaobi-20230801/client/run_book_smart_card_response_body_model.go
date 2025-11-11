@@ -64,7 +64,17 @@ func (s *RunBookSmartCardResponseBody) SetRequestId(v string) *RunBookSmartCardR
 }
 
 func (s *RunBookSmartCardResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Header != nil {
+		if err := s.Header.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunBookSmartCardResponseBodyHeader struct {
@@ -202,7 +212,17 @@ func (s *RunBookSmartCardResponseBodyPayload) SetUsage(v *RunBookSmartCardRespon
 }
 
 func (s *RunBookSmartCardResponseBodyPayload) Validate() error {
-	return dara.Validate(s)
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunBookSmartCardResponseBodyPayloadOutput struct {

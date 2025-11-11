@@ -59,5 +59,10 @@ func (s *ListGeneratedContentsResponse) SetBody(v *ListGeneratedContentsResponse
 }
 
 func (s *ListGeneratedContentsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

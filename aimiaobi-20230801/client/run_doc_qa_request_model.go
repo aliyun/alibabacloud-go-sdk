@@ -147,7 +147,16 @@ func (s *RunDocQaRequest) SetWorkspaceId(v string) *RunDocQaRequest {
 }
 
 func (s *RunDocQaRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ConversationContexts != nil {
+		for _, item := range s.ConversationContexts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunDocQaRequestConversationContexts struct {

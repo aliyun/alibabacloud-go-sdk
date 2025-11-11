@@ -155,7 +155,16 @@ func (s *SearchNewsResponseBody) SetTotal(v int32) *SearchNewsResponseBody {
 }
 
 func (s *SearchNewsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchNewsResponseBodyData struct {

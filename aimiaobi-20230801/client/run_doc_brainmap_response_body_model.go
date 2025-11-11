@@ -62,7 +62,17 @@ func (s *RunDocBrainmapResponseBody) SetRequestId(v string) *RunDocBrainmapRespo
 }
 
 func (s *RunDocBrainmapResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Header != nil {
+		if err := s.Header.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunDocBrainmapResponseBodyHeader struct {
@@ -200,7 +210,17 @@ func (s *RunDocBrainmapResponseBodyPayload) SetUsage(v *RunDocBrainmapResponseBo
 }
 
 func (s *RunDocBrainmapResponseBodyPayload) Validate() error {
-	return dara.Validate(s)
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunDocBrainmapResponseBodyPayloadOutput struct {

@@ -82,7 +82,16 @@ func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequest) SetTopic(v string) 
 }
 
 func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Documents != nil {
+		for _, item := range s.Documents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments struct {
@@ -200,7 +209,16 @@ func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments) SetUrl(v s
 }
 
 func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments) Validate() error {
-	return dara.Validate(s)
+	if s.Comments != nil {
+		for _, item := range s.Comments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocumentsComments struct {

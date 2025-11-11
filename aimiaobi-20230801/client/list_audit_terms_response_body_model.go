@@ -157,7 +157,16 @@ func (s *ListAuditTermsResponseBody) SetTotalCount(v int32) *ListAuditTermsRespo
 }
 
 func (s *ListAuditTermsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAuditTermsResponseBodyData struct {
@@ -178,6 +187,7 @@ type ListAuditTermsResponseBodyData struct {
 	//
 	// 龙行龘龘出自四库本《玉篇》23龙部第8字，文字释义为群龙腾飞的样子，昂扬而热烈。
 	TermsDesc *string `json:"TermsDesc,omitempty" xml:"TermsDesc,omitempty"`
+	TermsName *string `json:"TermsName,omitempty" xml:"TermsName,omitempty"`
 }
 
 func (s ListAuditTermsResponseBodyData) String() string {
@@ -208,6 +218,10 @@ func (s *ListAuditTermsResponseBodyData) GetTermsDesc() *string {
 	return s.TermsDesc
 }
 
+func (s *ListAuditTermsResponseBodyData) GetTermsName() *string {
+	return s.TermsName
+}
+
 func (s *ListAuditTermsResponseBodyData) SetExceptionWord(v []*string) *ListAuditTermsResponseBodyData {
 	s.ExceptionWord = v
 	return s
@@ -230,6 +244,11 @@ func (s *ListAuditTermsResponseBodyData) SetSuggestWord(v string) *ListAuditTerm
 
 func (s *ListAuditTermsResponseBodyData) SetTermsDesc(v string) *ListAuditTermsResponseBodyData {
 	s.TermsDesc = &v
+	return s
+}
+
+func (s *ListAuditTermsResponseBodyData) SetTermsName(v string) *ListAuditTermsResponseBodyData {
+	s.TermsName = &v
 	return s
 }
 

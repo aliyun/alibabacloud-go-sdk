@@ -110,7 +110,12 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBody) SetSuccess(v bool
 }
 
 func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData struct {
@@ -214,7 +219,32 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData) SetWebReviewP
 }
 
 func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.FreshViewPointsResult != nil {
+		if err := s.FreshViewPointsResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HotViewPointsResult != nil {
+		if err := s.HotViewPointsResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TimedViewPointsResult != nil {
+		if err := s.TimedViewPointsResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TopicSummaryResult != nil {
+		if err := s.TopicSummaryResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WebReviewPointsResult != nil {
+		if err := s.WebReviewPointsResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResult struct {
@@ -239,7 +269,16 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPoints
 }
 
 func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResult) Validate() error {
-	return dara.Validate(s)
+	if s.Attitudes != nil {
+		for _, item := range s.Attitudes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudes struct {
@@ -303,7 +342,16 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPoints
 }
 
 func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudes) Validate() error {
-	return dara.Validate(s)
+	if s.ViewPoints != nil {
+		for _, item := range s.ViewPoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPoints struct {
@@ -354,7 +402,16 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPoints
 }
 
 func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPoints) Validate() error {
-	return dara.Validate(s)
+	if s.Outlines != nil {
+		for _, item := range s.Outlines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPointsOutlines struct {
@@ -420,7 +477,16 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsRe
 }
 
 func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResult) Validate() error {
-	return dara.Validate(s)
+	if s.Attitudes != nil {
+		for _, item := range s.Attitudes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudes struct {
@@ -494,7 +560,25 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsRe
 }
 
 func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudes) Validate() error {
-	return dara.Validate(s)
+	if s.News != nil {
+		for _, item := range s.News {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ViewPoints != nil {
+		for _, item := range s.ViewPoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews struct {
@@ -695,7 +779,16 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsRe
 }
 
 func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPoints) Validate() error {
-	return dara.Validate(s)
+	if s.Outlines != nil {
+		for _, item := range s.Outlines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPointsOutlines struct {
@@ -761,7 +854,16 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPoints
 }
 
 func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResult) Validate() error {
-	return dara.Validate(s)
+	if s.Attitudes != nil {
+		for _, item := range s.Attitudes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes struct {
@@ -877,7 +979,16 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPoints
 }
 
 func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes) Validate() error {
-	return dara.Validate(s)
+	if s.ViewPoints != nil {
+		for _, item := range s.ViewPoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPoints struct {
@@ -928,7 +1039,16 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPoints
 }
 
 func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPoints) Validate() error {
-	return dara.Validate(s)
+	if s.Outlines != nil {
+		for _, item := range s.Outlines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPointsOutlines struct {
@@ -994,7 +1114,16 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryRes
 }
 
 func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResult) Validate() error {
-	return dara.Validate(s)
+	if s.Summaries != nil {
+		for _, item := range s.Summaries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummaries struct {
@@ -1045,7 +1174,16 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryRes
 }
 
 func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummaries) Validate() error {
-	return dara.Validate(s)
+	if s.DocList != nil {
+		for _, item := range s.DocList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummariesDocList struct {
@@ -1118,7 +1256,16 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPoints
 }
 
 func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResult) Validate() error {
-	return dara.Validate(s)
+	if s.Attitudes != nil {
+		for _, item := range s.Attitudes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudes struct {
@@ -1192,7 +1339,25 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPoints
 }
 
 func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudes) Validate() error {
-	return dara.Validate(s)
+	if s.Comments != nil {
+		for _, item := range s.Comments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ViewPoints != nil {
+		for _, item := range s.ViewPoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesComments struct {
@@ -1323,7 +1488,16 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPoints
 }
 
 func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPoints) Validate() error {
-	return dara.Validate(s)
+	if s.Outlines != nil {
+		for _, item := range s.Outlines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPointsOutlines struct {
