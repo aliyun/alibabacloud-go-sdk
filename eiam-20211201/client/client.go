@@ -552,6 +552,80 @@ func (client *Client) AuthorizeApplicationToUsers(request *AuthorizeApplicationT
 
 // Summary:
 //
+// 绑定三方登录账户
+//
+// @param request - BindUserAuthnSourceMappingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindUserAuthnSourceMappingResponse
+func (client *Client) BindUserAuthnSourceMappingWithOptions(request *BindUserAuthnSourceMappingRequest, runtime *dara.RuntimeOptions) (_result *BindUserAuthnSourceMappingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IdentityProviderId) {
+		query["IdentityProviderId"] = request.IdentityProviderId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.UserExternalId) {
+		query["UserExternalId"] = request.UserExternalId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BindUserAuthnSourceMapping"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BindUserAuthnSourceMappingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 绑定三方登录账户
+//
+// @param request - BindUserAuthnSourceMappingRequest
+//
+// @return BindUserAuthnSourceMappingResponse
+func (client *Client) BindUserAuthnSourceMapping(request *BindUserAuthnSourceMappingRequest) (_result *BindUserAuthnSourceMappingResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &BindUserAuthnSourceMappingResponse{}
+	_body, _err := client.BindUserAuthnSourceMappingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds an application to an Enterprise Identity Access Management (EIAM) instance of Identity as a Service (IDaaS).
 //
 // Description:
@@ -10371,6 +10445,92 @@ func (client *Client) ListSynchronizationJobs(request *ListSynchronizationJobsRe
 
 // Summary:
 //
+// 查询三方登录账户绑定关系
+//
+// @param request - ListUserAuthnSourceMappingsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserAuthnSourceMappingsResponse
+func (client *Client) ListUserAuthnSourceMappingsWithOptions(request *ListUserAuthnSourceMappingsRequest, runtime *dara.RuntimeOptions) (_result *ListUserAuthnSourceMappingsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IdentityProviderId) {
+		query["IdentityProviderId"] = request.IdentityProviderId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PreviousToken) {
+		query["PreviousToken"] = request.PreviousToken
+	}
+
+	if !dara.IsNil(request.UserExternalId) {
+		query["UserExternalId"] = request.UserExternalId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUserAuthnSourceMappings"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUserAuthnSourceMappingsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询三方登录账户绑定关系
+//
+// @param request - ListUserAuthnSourceMappingsRequest
+//
+// @return ListUserAuthnSourceMappingsResponse
+func (client *Client) ListUserAuthnSourceMappings(request *ListUserAuthnSourceMappingsRequest) (_result *ListUserAuthnSourceMappingsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListUserAuthnSourceMappingsResponse{}
+	_body, _err := client.ListUserAuthnSourceMappingsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of accounts in Identity as a Service (IDaaS) Employee IAM (EIAM) by page.
 //
 // @param request - ListUsersRequest
@@ -12428,6 +12588,80 @@ func (client *Client) SetUserPrimaryOrganizationalUnit(request *SetUserPrimaryOr
 	runtime := &dara.RuntimeOptions{}
 	_result = &SetUserPrimaryOrganizationalUnitResponse{}
 	_body, _err := client.SetUserPrimaryOrganizationalUnitWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 解绑三方登录账户
+//
+// @param request - UnbindUserAuthnSourceMappingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindUserAuthnSourceMappingResponse
+func (client *Client) UnbindUserAuthnSourceMappingWithOptions(request *UnbindUserAuthnSourceMappingRequest, runtime *dara.RuntimeOptions) (_result *UnbindUserAuthnSourceMappingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IdentityProviderId) {
+		query["IdentityProviderId"] = request.IdentityProviderId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.UserExternalId) {
+		query["UserExternalId"] = request.UserExternalId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UnbindUserAuthnSourceMapping"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UnbindUserAuthnSourceMappingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 解绑三方登录账户
+//
+// @param request - UnbindUserAuthnSourceMappingRequest
+//
+// @return UnbindUserAuthnSourceMappingResponse
+func (client *Client) UnbindUserAuthnSourceMapping(request *UnbindUserAuthnSourceMappingRequest) (_result *UnbindUserAuthnSourceMappingResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UnbindUserAuthnSourceMappingResponse{}
+	_body, _err := client.UnbindUserAuthnSourceMappingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
