@@ -625,9 +625,17 @@ type RunSearchGenerationRequestChatConfig struct {
 	// example:
 	//
 	// copilotPrecise
-	GenerateTechnology *string                                          `json:"GenerateTechnology,omitempty" xml:"GenerateTechnology,omitempty"`
-	SearchModels       []*string                                        `json:"SearchModels,omitempty" xml:"SearchModels,omitempty" type:"Repeated"`
-	SearchParam        *RunSearchGenerationRequestChatConfigSearchParam `json:"SearchParam,omitempty" xml:"SearchParam,omitempty" type:"Struct"`
+	GenerateTechnology *string `json:"GenerateTechnology,omitempty" xml:"GenerateTechnology,omitempty"`
+	// example:
+	//
+	// # 角色 你是一个专业的文章检索和问答机器人，擅长文章检索和回答用户问题。  # 任务目标 请你根据检索到的相关文章，回答或表述用户问题“{query}”。  # 任务限制 - 如果用户问题中提到具体日期，请考虑知识日期做筛选。 - 生成内容结构条理。 - 生成内容尽量精简。 - 控制在30字以内 - 不要使用其他数据，不要杜撰。 - 如果不能回答用户问题，请输出对应语言的拒识文案:   - 中文：\"根据已知信息无法回答。\"   - 英文：\"Unable to answer based on the known information.\"  # 输入数据 ## 检索到的相关文章 {content}
+	ModelCustomPromptTemplate *string `json:"ModelCustomPromptTemplate,omitempty" xml:"ModelCustomPromptTemplate,omitempty"`
+	// example:
+	//
+	// # 角色 你是一个专业的文章检索和问答机器人，擅长文章检索和回答用户问题。   # 任务目标 请你根据检索到的相关文章和图片，回答或表述用户问题“{query}”。  # 任务限制  - 如果用户问题中提到具体日期，请考虑知识日期做筛选。  - 生成内容结构条理。  - 生成内容尽量精简。  - 控制在30字以内。 - 如果图片内容可以回答，可以忽略文章内容。 - 不要使用其他数据，不要杜撰。  - 如果不能回答用户问题，请输出对应语言的拒识文案:    	- 中文：\"根据已知信息无法回答。\"    	- 英文：\"Unable to answer based on the known information.\"    # 输入数据  ## 检索到的相关文章  {content}
+	ModelCustomVlPromptTemplate *string                                          `json:"ModelCustomVlPromptTemplate,omitempty" xml:"ModelCustomVlPromptTemplate,omitempty"`
+	SearchModels                []*string                                        `json:"SearchModels,omitempty" xml:"SearchModels,omitempty" type:"Repeated"`
+	SearchParam                 *RunSearchGenerationRequestChatConfigSearchParam `json:"SearchParam,omitempty" xml:"SearchParam,omitempty" type:"Struct"`
 }
 
 func (s RunSearchGenerationRequestChatConfig) String() string {
@@ -652,6 +660,14 @@ func (s *RunSearchGenerationRequestChatConfig) GetGenerateLevel() *string {
 
 func (s *RunSearchGenerationRequestChatConfig) GetGenerateTechnology() *string {
 	return s.GenerateTechnology
+}
+
+func (s *RunSearchGenerationRequestChatConfig) GetModelCustomPromptTemplate() *string {
+	return s.ModelCustomPromptTemplate
+}
+
+func (s *RunSearchGenerationRequestChatConfig) GetModelCustomVlPromptTemplate() *string {
+	return s.ModelCustomVlPromptTemplate
 }
 
 func (s *RunSearchGenerationRequestChatConfig) GetSearchModels() []*string {
@@ -682,6 +698,16 @@ func (s *RunSearchGenerationRequestChatConfig) SetGenerateTechnology(v string) *
 	return s
 }
 
+func (s *RunSearchGenerationRequestChatConfig) SetModelCustomPromptTemplate(v string) *RunSearchGenerationRequestChatConfig {
+	s.ModelCustomPromptTemplate = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestChatConfig) SetModelCustomVlPromptTemplate(v string) *RunSearchGenerationRequestChatConfig {
+	s.ModelCustomVlPromptTemplate = &v
+	return s
+}
+
 func (s *RunSearchGenerationRequestChatConfig) SetSearchModels(v []*string) *RunSearchGenerationRequestChatConfig {
 	s.SearchModels = v
 	return s
@@ -705,9 +731,25 @@ type RunSearchGenerationRequestChatConfigSearchParam struct {
 	// example:
 	//
 	// 1725983999999
-	EndTime               *int64                                                          `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	MultimodalSearchTypes []*string                                                       `json:"MultimodalSearchTypes,omitempty" xml:"MultimodalSearchTypes,omitempty" type:"Repeated"`
-	SearchSources         []*RunSearchGenerationRequestChatConfigSearchParamSearchSources `json:"SearchSources,omitempty" xml:"SearchSources,omitempty" type:"Repeated"`
+	EndTime               *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	MultimodalSearchTypes []*string `json:"MultimodalSearchTypes,omitempty" xml:"MultimodalSearchTypes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0.6
+	SearchAudioMinScore *float64 `json:"SearchAudioMinScore,omitempty" xml:"SearchAudioMinScore,omitempty"`
+	// example:
+	//
+	// 0.6
+	SearchImageMinScore *float64                                                        `json:"SearchImageMinScore,omitempty" xml:"SearchImageMinScore,omitempty"`
+	SearchSources       []*RunSearchGenerationRequestChatConfigSearchParamSearchSources `json:"SearchSources,omitempty" xml:"SearchSources,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0.6
+	SearchTextMinScore *float64 `json:"SearchTextMinScore,omitempty" xml:"SearchTextMinScore,omitempty"`
+	// example:
+	//
+	// 0.6
+	SearchVideoMinScore *float64 `json:"SearchVideoMinScore,omitempty" xml:"SearchVideoMinScore,omitempty"`
 	// example:
 	//
 	// 1725983999999
@@ -730,8 +772,24 @@ func (s *RunSearchGenerationRequestChatConfigSearchParam) GetMultimodalSearchTyp
 	return s.MultimodalSearchTypes
 }
 
+func (s *RunSearchGenerationRequestChatConfigSearchParam) GetSearchAudioMinScore() *float64 {
+	return s.SearchAudioMinScore
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) GetSearchImageMinScore() *float64 {
+	return s.SearchImageMinScore
+}
+
 func (s *RunSearchGenerationRequestChatConfigSearchParam) GetSearchSources() []*RunSearchGenerationRequestChatConfigSearchParamSearchSources {
 	return s.SearchSources
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) GetSearchTextMinScore() *float64 {
+	return s.SearchTextMinScore
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) GetSearchVideoMinScore() *float64 {
+	return s.SearchVideoMinScore
 }
 
 func (s *RunSearchGenerationRequestChatConfigSearchParam) GetStartTime() *int64 {
@@ -748,8 +806,28 @@ func (s *RunSearchGenerationRequestChatConfigSearchParam) SetMultimodalSearchTyp
 	return s
 }
 
+func (s *RunSearchGenerationRequestChatConfigSearchParam) SetSearchAudioMinScore(v float64) *RunSearchGenerationRequestChatConfigSearchParam {
+	s.SearchAudioMinScore = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) SetSearchImageMinScore(v float64) *RunSearchGenerationRequestChatConfigSearchParam {
+	s.SearchImageMinScore = &v
+	return s
+}
+
 func (s *RunSearchGenerationRequestChatConfigSearchParam) SetSearchSources(v []*RunSearchGenerationRequestChatConfigSearchParamSearchSources) *RunSearchGenerationRequestChatConfigSearchParam {
 	s.SearchSources = v
+	return s
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) SetSearchTextMinScore(v float64) *RunSearchGenerationRequestChatConfigSearchParam {
+	s.SearchTextMinScore = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) SetSearchVideoMinScore(v float64) *RunSearchGenerationRequestChatConfigSearchParam {
+	s.SearchVideoMinScore = &v
 	return s
 }
 
