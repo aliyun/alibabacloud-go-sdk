@@ -2323,6 +2323,62 @@ func (client *Client) GetMemberWithContext(ctx context.Context, namespace *strin
 
 // Summary:
 //
+// 获取上传文件URL
+//
+// @param request - GetPreSignedUrlForPutObjectRequest
+//
+// @param headers - GetPreSignedUrlForPutObjectHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPreSignedUrlForPutObjectResponse
+func (client *Client) GetPreSignedUrlForPutObjectWithContext(ctx context.Context, namespace *string, request *GetPreSignedUrlForPutObjectRequest, headers *GetPreSignedUrlForPutObjectHeaders, runtime *dara.RuntimeOptions) (_result *GetPreSignedUrlForPutObjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileName) {
+		query["fileName"] = request.FileName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPreSignedUrlForPutObject"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/artifacts/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/getPreSignedUrlForPutObject"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPreSignedUrlForPutObjectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries details of a savepoint and checkpoint.
 //
 // @param headers - GetSavepointHeaders
