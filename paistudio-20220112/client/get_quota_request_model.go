@@ -11,10 +11,13 @@ type iGetQuotaRequest interface {
 	GoString() string
 	SetVerbose(v bool) *GetQuotaRequest
 	GetVerbose() *bool
+	SetWithNodeMeta(v bool) *GetQuotaRequest
+	GetWithNodeMeta() *bool
 }
 
 type GetQuotaRequest struct {
-	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	Verbose      *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	WithNodeMeta *bool `json:"WithNodeMeta,omitempty" xml:"WithNodeMeta,omitempty"`
 }
 
 func (s GetQuotaRequest) String() string {
@@ -29,8 +32,17 @@ func (s *GetQuotaRequest) GetVerbose() *bool {
 	return s.Verbose
 }
 
+func (s *GetQuotaRequest) GetWithNodeMeta() *bool {
+	return s.WithNodeMeta
+}
+
 func (s *GetQuotaRequest) SetVerbose(v bool) *GetQuotaRequest {
 	s.Verbose = &v
+	return s
+}
+
+func (s *GetQuotaRequest) SetWithNodeMeta(v bool) *GetQuotaRequest {
+	s.WithNodeMeta = &v
 	return s
 }
 

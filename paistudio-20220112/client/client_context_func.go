@@ -955,6 +955,10 @@ func (client *Client) GetQuotaWithContext(ctx context.Context, QuotaId *string, 
 		query["Verbose"] = request.Verbose
 	}
 
+	if !dara.IsNil(request.WithNodeMeta) {
+		query["WithNodeMeta"] = request.WithNodeMeta
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),

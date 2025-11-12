@@ -1376,6 +1376,10 @@ func (client *Client) GetQuotaWithOptions(QuotaId *string, request *GetQuotaRequ
 		query["Verbose"] = request.Verbose
 	}
 
+	if !dara.IsNil(request.WithNodeMeta) {
+		query["WithNodeMeta"] = request.WithNodeMeta
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
