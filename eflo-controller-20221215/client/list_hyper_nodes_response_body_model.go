@@ -141,8 +141,14 @@ type ListHyperNodesResponseBodyHyperNodes struct {
 	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
 	// example:
 	//
+	// Using
+	OperatingState *string `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
+	// example:
+	//
 	// rg-acfmwfm33rlt6zi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// Extending
@@ -208,6 +214,10 @@ func (s *ListHyperNodesResponseBodyHyperNodes) GetNodeGroupId() *string {
 
 func (s *ListHyperNodesResponseBodyHyperNodes) GetNodeGroupName() *string {
 	return s.NodeGroupName
+}
+
+func (s *ListHyperNodesResponseBodyHyperNodes) GetOperatingState() *string {
+	return s.OperatingState
 }
 
 func (s *ListHyperNodesResponseBodyHyperNodes) GetResourceGroupId() *string {
@@ -282,6 +292,11 @@ func (s *ListHyperNodesResponseBodyHyperNodes) SetNodeGroupId(v string) *ListHyp
 
 func (s *ListHyperNodesResponseBodyHyperNodes) SetNodeGroupName(v string) *ListHyperNodesResponseBodyHyperNodes {
 	s.NodeGroupName = &v
+	return s
+}
+
+func (s *ListHyperNodesResponseBodyHyperNodes) SetOperatingState(v string) *ListHyperNodesResponseBodyHyperNodes {
+	s.OperatingState = &v
 	return s
 }
 

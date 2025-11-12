@@ -9,6 +9,8 @@ type iDescribeNodeTypeResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDiskQuantity(v int32) *DescribeNodeTypeResponseBody
+	GetDiskQuantity() *int32
 	SetEniHighDenseQuantity(v int32) *DescribeNodeTypeResponseBody
 	GetEniHighDenseQuantity() *int32
 	SetEniIpv6AddressQuantity(v int32) *DescribeNodeTypeResponseBody
@@ -22,6 +24,7 @@ type iDescribeNodeTypeResponseBody interface {
 }
 
 type DescribeNodeTypeResponseBody struct {
+	DiskQuantity *int32 `json:"DiskQuantity,omitempty" xml:"DiskQuantity,omitempty"`
 	// example:
 	//
 	// 63
@@ -52,6 +55,10 @@ func (s DescribeNodeTypeResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeNodeTypeResponseBody) GetDiskQuantity() *int32 {
+	return s.DiskQuantity
+}
+
 func (s *DescribeNodeTypeResponseBody) GetEniHighDenseQuantity() *int32 {
 	return s.EniHighDenseQuantity
 }
@@ -70,6 +77,11 @@ func (s *DescribeNodeTypeResponseBody) GetEniQuantity() *int32 {
 
 func (s *DescribeNodeTypeResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *DescribeNodeTypeResponseBody) SetDiskQuantity(v int32) *DescribeNodeTypeResponseBody {
+	s.DiskQuantity = &v
+	return s
 }
 
 func (s *DescribeNodeTypeResponseBody) SetEniHighDenseQuantity(v int32) *DescribeNodeTypeResponseBody {

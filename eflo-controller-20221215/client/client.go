@@ -202,6 +202,78 @@ func (client *Client) ChangeNodeGroup(request *ChangeNodeGroupRequest) (_result 
 
 // Summary:
 //
+// 节点规格变配
+//
+// @param tmpReq - ChangeNodeTypesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeNodeTypesResponse
+func (client *Client) ChangeNodeTypesWithOptions(tmpReq *ChangeNodeTypesRequest, runtime *dara.RuntimeOptions) (_result *ChangeNodeTypesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ChangeNodeTypesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.NodeIds) {
+		request.NodeIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodeIds, dara.String("NodeIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.NodeIdsShrink) {
+		body["NodeIds"] = request.NodeIdsShrink
+	}
+
+	if !dara.IsNil(request.NodeType) {
+		body["NodeType"] = request.NodeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ChangeNodeTypes"),
+		Version:     dara.String("2022-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ChangeNodeTypesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 节点规格变配
+//
+// @param request - ChangeNodeTypesRequest
+//
+// @return ChangeNodeTypesResponse
+func (client *Client) ChangeNodeTypes(request *ChangeNodeTypesRequest) (_result *ChangeNodeTypesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ChangeNodeTypesResponse{}
+	_body, _err := client.ChangeNodeTypesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Moves a resource from one resource group to another.
 //
 // @param request - ChangeResourceGroupRequest
@@ -968,6 +1040,68 @@ func (client *Client) DeleteCluster(request *DeleteClusterRequest) (_result *Del
 
 // Summary:
 //
+// 删除一个未使用超节点
+//
+// @param request - DeleteHyperNodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHyperNodeResponse
+func (client *Client) DeleteHyperNodeWithOptions(request *DeleteHyperNodeRequest, runtime *dara.RuntimeOptions) (_result *DeleteHyperNodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.HyperNodeId) {
+		body["HyperNodeId"] = request.HyperNodeId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteHyperNode"),
+		Version:     dara.String("2022-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteHyperNodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除一个未使用超节点
+//
+// @param request - DeleteHyperNodeRequest
+//
+// @return DeleteHyperNodeResponse
+func (client *Client) DeleteHyperNode(request *DeleteHyperNodeRequest) (_result *DeleteHyperNodeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteHyperNodeResponse{}
+	_body, _err := client.DeleteHyperNodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除一个未使用节点
 //
 // @param request - DeleteNodeRequest
@@ -1296,6 +1430,68 @@ func (client *Client) DescribeDiagnosticResult(request *DescribeDiagnosticResult
 
 // Summary:
 //
+// 查询节点列表
+//
+// @param request - DescribeHyperNodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHyperNodeResponse
+func (client *Client) DescribeHyperNodeWithOptions(request *DescribeHyperNodeRequest, runtime *dara.RuntimeOptions) (_result *DescribeHyperNodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.HyperNodeId) {
+		body["HyperNodeId"] = request.HyperNodeId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeHyperNode"),
+		Version:     dara.String("2022-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeHyperNodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询节点列表
+//
+// @param request - DescribeHyperNodeRequest
+//
+// @return DescribeHyperNodeResponse
+func (client *Client) DescribeHyperNode(request *DescribeHyperNodeRequest) (_result *DescribeHyperNodeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeHyperNodeResponse{}
+	_body, _err := client.DescribeHyperNodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the execution list and status of O\\&M Assistant commands.
 //
 // @param request - DescribeInvocationsRequest
@@ -1485,6 +1681,68 @@ func (client *Client) DescribeNode(request *DescribeNodeRequest) (_result *Descr
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeNodeResponse{}
 	_body, _err := client.DescribeNodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询节点分组
+//
+// @param request - DescribeNodeGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNodeGroupResponse
+func (client *Client) DescribeNodeGroupWithOptions(request *DescribeNodeGroupRequest, runtime *dara.RuntimeOptions) (_result *DescribeNodeGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.NodeGroupId) {
+		body["NodeGroupId"] = request.NodeGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeNodeGroup"),
+		Version:     dara.String("2022-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeNodeGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询节点分组
+//
+// @param request - DescribeNodeGroupRequest
+//
+// @return DescribeNodeGroupResponse
+func (client *Client) DescribeNodeGroup(request *DescribeNodeGroupRequest) (_result *DescribeNodeGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeNodeGroupResponse{}
+	_body, _err := client.DescribeNodeGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1957,68 +2215,6 @@ func (client *Client) ExtendCluster(request *ExtendClusterRequest) (_result *Ext
 	runtime := &dara.RuntimeOptions{}
 	_result = &ExtendClusterResponse{}
 	_body, _err := client.ExtendClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询节点列表
-//
-// @param request - GetHyperNodeRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetHyperNodeResponse
-func (client *Client) GetHyperNodeWithOptions(request *GetHyperNodeRequest, runtime *dara.RuntimeOptions) (_result *GetHyperNodeResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.HyperNodeId) {
-		body["HyperNodeId"] = request.HyperNodeId
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("GetHyperNode"),
-		Version:     dara.String("2022-12-15"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GetHyperNodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询节点列表
-//
-// @param request - GetHyperNodeRequest
-//
-// @return GetHyperNodeResponse
-func (client *Client) GetHyperNode(request *GetHyperNodeRequest) (_result *GetHyperNodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetHyperNodeResponse{}
-	_body, _err := client.GetHyperNodeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2969,6 +3165,88 @@ func (client *Client) ListNodeGroups(request *ListNodeGroupsRequest) (_result *L
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListNodeGroupsResponse{}
 	_body, _err := client.ListNodeGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询系统日志
+//
+// @param request - ListSyslogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSyslogsResponse
+func (client *Client) ListSyslogsWithOptions(request *ListSyslogsRequest, runtime *dara.RuntimeOptions) (_result *ListSyslogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FromTime) {
+		body["FromTime"] = request.FromTime
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.NodeId) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !dara.IsNil(request.Query) {
+		body["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.Reverse) {
+		body["Reverse"] = request.Reverse
+	}
+
+	if !dara.IsNil(request.ToTime) {
+		body["ToTime"] = request.ToTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSyslogs"),
+		Version:     dara.String("2022-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSyslogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询系统日志
+//
+// @param request - ListSyslogsRequest
+//
+// @return ListSyslogsResponse
+func (client *Client) ListSyslogs(request *ListSyslogsRequest) (_result *ListSyslogsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListSyslogsResponse{}
+	_body, _err := client.ListSyslogsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

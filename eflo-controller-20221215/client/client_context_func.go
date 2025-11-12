@@ -117,6 +117,60 @@ func (client *Client) ChangeNodeGroupWithContext(ctx context.Context, tmpReq *Ch
 
 // Summary:
 //
+// 节点规格变配
+//
+// @param tmpReq - ChangeNodeTypesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeNodeTypesResponse
+func (client *Client) ChangeNodeTypesWithContext(ctx context.Context, tmpReq *ChangeNodeTypesRequest, runtime *dara.RuntimeOptions) (_result *ChangeNodeTypesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ChangeNodeTypesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.NodeIds) {
+		request.NodeIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodeIds, dara.String("NodeIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.NodeIdsShrink) {
+		body["NodeIds"] = request.NodeIdsShrink
+	}
+
+	if !dara.IsNil(request.NodeType) {
+		body["NodeType"] = request.NodeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ChangeNodeTypes"),
+		Version:     dara.String("2022-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ChangeNodeTypesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Moves a resource from one resource group to another.
 //
 // @param request - ChangeResourceGroupRequest
@@ -713,6 +767,50 @@ func (client *Client) DeleteClusterWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
+// 删除一个未使用超节点
+//
+// @param request - DeleteHyperNodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHyperNodeResponse
+func (client *Client) DeleteHyperNodeWithContext(ctx context.Context, request *DeleteHyperNodeRequest, runtime *dara.RuntimeOptions) (_result *DeleteHyperNodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.HyperNodeId) {
+		body["HyperNodeId"] = request.HyperNodeId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteHyperNode"),
+		Version:     dara.String("2022-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteHyperNodeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除一个未使用节点
 //
 // @param request - DeleteNodeRequest
@@ -947,6 +1045,50 @@ func (client *Client) DescribeDiagnosticResultWithContext(ctx context.Context, r
 
 // Summary:
 //
+// 查询节点列表
+//
+// @param request - DescribeHyperNodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHyperNodeResponse
+func (client *Client) DescribeHyperNodeWithContext(ctx context.Context, request *DescribeHyperNodeRequest, runtime *dara.RuntimeOptions) (_result *DescribeHyperNodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.HyperNodeId) {
+		body["HyperNodeId"] = request.HyperNodeId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeHyperNode"),
+		Version:     dara.String("2022-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeHyperNodeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the execution list and status of O\\&M Assistant commands.
 //
 // @param request - DescribeInvocationsRequest
@@ -1081,6 +1223,50 @@ func (client *Client) DescribeNodeWithContext(ctx context.Context, request *Desc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeNodeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询节点分组
+//
+// @param request - DescribeNodeGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNodeGroupResponse
+func (client *Client) DescribeNodeGroupWithContext(ctx context.Context, request *DescribeNodeGroupRequest, runtime *dara.RuntimeOptions) (_result *DescribeNodeGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.NodeGroupId) {
+		body["NodeGroupId"] = request.NodeGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeNodeGroup"),
+		Version:     dara.String("2022-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeNodeGroupResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1427,50 +1613,6 @@ func (client *Client) ExtendClusterWithContext(ctx context.Context, tmpReq *Exte
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExtendClusterResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询节点列表
-//
-// @param request - GetHyperNodeRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetHyperNodeResponse
-func (client *Client) GetHyperNodeWithContext(ctx context.Context, request *GetHyperNodeRequest, runtime *dara.RuntimeOptions) (_result *GetHyperNodeResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.HyperNodeId) {
-		body["HyperNodeId"] = request.HyperNodeId
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("GetHyperNode"),
-		Version:     dara.String("2022-12-15"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GetHyperNodeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2201,6 +2343,70 @@ func (client *Client) ListNodeGroupsWithContext(ctx context.Context, request *Li
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListNodeGroupsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询系统日志
+//
+// @param request - ListSyslogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSyslogsResponse
+func (client *Client) ListSyslogsWithContext(ctx context.Context, request *ListSyslogsRequest, runtime *dara.RuntimeOptions) (_result *ListSyslogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FromTime) {
+		body["FromTime"] = request.FromTime
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.NodeId) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !dara.IsNil(request.Query) {
+		body["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.Reverse) {
+		body["Reverse"] = request.Reverse
+	}
+
+	if !dara.IsNil(request.ToTime) {
+		body["ToTime"] = request.ToTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSyslogs"),
+		Version:     dara.String("2022-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSyslogsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

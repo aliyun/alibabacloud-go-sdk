@@ -123,8 +123,14 @@ type ListFreeHyperNodesResponseBodyHyperNodes struct {
 	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
 	// example:
 	//
+	// Using
+	OperatingState *string `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
+	// example:
+	//
 	// rg-acfmwaateahzoii
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// Using
@@ -170,6 +176,10 @@ func (s *ListFreeHyperNodesResponseBodyHyperNodes) GetHyperNodeId() *string {
 
 func (s *ListFreeHyperNodesResponseBodyHyperNodes) GetMachineType() *string {
 	return s.MachineType
+}
+
+func (s *ListFreeHyperNodesResponseBodyHyperNodes) GetOperatingState() *string {
+	return s.OperatingState
 }
 
 func (s *ListFreeHyperNodesResponseBodyHyperNodes) GetResourceGroupId() *string {
@@ -220,6 +230,11 @@ func (s *ListFreeHyperNodesResponseBodyHyperNodes) SetHyperNodeId(v string) *Lis
 
 func (s *ListFreeHyperNodesResponseBodyHyperNodes) SetMachineType(v string) *ListFreeHyperNodesResponseBodyHyperNodes {
 	s.MachineType = &v
+	return s
+}
+
+func (s *ListFreeHyperNodesResponseBodyHyperNodes) SetOperatingState(v string) *ListFreeHyperNodesResponseBodyHyperNodes {
+	s.OperatingState = &v
 	return s
 }
 

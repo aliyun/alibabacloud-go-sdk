@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/eflo-controller-20221215/v2
+module github.com/alibabacloud-go/eflo-controller-20221215/v3
 
 go 1.14
 

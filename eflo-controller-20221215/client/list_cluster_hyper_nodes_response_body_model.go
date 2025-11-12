@@ -122,6 +122,12 @@ type ListClusterHyperNodesResponseBodyHyperNodes struct {
 	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
 	// example:
 	//
+	// Using
+	OperatingState *string `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
+	// Deprecated
+	//
+	// example:
+	//
 	// Extending
 	Status *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags   []*ListClusterHyperNodesResponseBodyHyperNodesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -189,6 +195,10 @@ func (s *ListClusterHyperNodesResponseBodyHyperNodes) GetNodeGroupId() *string {
 
 func (s *ListClusterHyperNodesResponseBodyHyperNodes) GetNodeGroupName() *string {
 	return s.NodeGroupName
+}
+
+func (s *ListClusterHyperNodesResponseBodyHyperNodes) GetOperatingState() *string {
+	return s.OperatingState
 }
 
 func (s *ListClusterHyperNodesResponseBodyHyperNodes) GetStatus() *string {
@@ -262,6 +272,11 @@ func (s *ListClusterHyperNodesResponseBodyHyperNodes) SetNodeGroupId(v string) *
 
 func (s *ListClusterHyperNodesResponseBodyHyperNodes) SetNodeGroupName(v string) *ListClusterHyperNodesResponseBodyHyperNodes {
 	s.NodeGroupName = &v
+	return s
+}
+
+func (s *ListClusterHyperNodesResponseBodyHyperNodes) SetOperatingState(v string) *ListClusterHyperNodesResponseBodyHyperNodes {
+	s.OperatingState = &v
 	return s
 }
 

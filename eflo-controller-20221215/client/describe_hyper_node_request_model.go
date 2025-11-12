@@ -5,15 +5,15 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
-type iGetHyperNodeRequest interface {
+type iDescribeHyperNodeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetHyperNodeId(v string) *GetHyperNodeRequest
+	SetHyperNodeId(v string) *DescribeHyperNodeRequest
 	GetHyperNodeId() *string
 }
 
-type GetHyperNodeRequest struct {
+type DescribeHyperNodeRequest struct {
 	// This parameter is required.
 	//
 	// example:
@@ -22,23 +22,23 @@ type GetHyperNodeRequest struct {
 	HyperNodeId *string `json:"HyperNodeId,omitempty" xml:"HyperNodeId,omitempty"`
 }
 
-func (s GetHyperNodeRequest) String() string {
+func (s DescribeHyperNodeRequest) String() string {
 	return dara.Prettify(s)
 }
 
-func (s GetHyperNodeRequest) GoString() string {
+func (s DescribeHyperNodeRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetHyperNodeRequest) GetHyperNodeId() *string {
+func (s *DescribeHyperNodeRequest) GetHyperNodeId() *string {
 	return s.HyperNodeId
 }
 
-func (s *GetHyperNodeRequest) SetHyperNodeId(v string) *GetHyperNodeRequest {
+func (s *DescribeHyperNodeRequest) SetHyperNodeId(v string) *DescribeHyperNodeRequest {
 	s.HyperNodeId = &v
 	return s
 }
 
-func (s *GetHyperNodeRequest) Validate() error {
+func (s *DescribeHyperNodeRequest) Validate() error {
 	return dara.Validate(s)
 }
