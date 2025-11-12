@@ -241,6 +241,10 @@ type DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitor struct {
 	// f5783760-1b39-4b6b-80e8-453d962a****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The name of the site monitoring task.
+	//
+	// example:
+	//
+	// 域名检测_example.com.cn
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The task status. Valid values:
 	//

@@ -3253,7 +3253,7 @@ func (client *Client) DescribeAlertingMetricRuleResourcesWithContext(ctx context
 
 // Summary:
 //
-// Queries alert groups.
+// Call the DescribeContactGroupList interface to query the list of alarm contact groups.
 //
 // @param request - DescribeContactGroupListRequest
 //

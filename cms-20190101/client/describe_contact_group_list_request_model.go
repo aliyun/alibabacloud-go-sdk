@@ -18,17 +18,17 @@ type iDescribeContactGroupListRequest interface {
 }
 
 type DescribeContactGroupListRequest struct {
-	// The number of the page to return.
-	//
-	// example:
-	//
-	// 10
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// Page number.
 	//
 	// example:
 	//
 	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of records per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }

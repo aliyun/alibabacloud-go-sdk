@@ -4431,7 +4431,7 @@ func (client *Client) DescribeAlertingMetricRuleResources(request *DescribeAlert
 
 // Summary:
 //
-// Queries alert groups.
+// Call the DescribeContactGroupList interface to query the list of alarm contact groups.
 //
 // @param request - DescribeContactGroupListRequest
 //
@@ -4479,7 +4479,7 @@ func (client *Client) DescribeContactGroupListWithOptions(request *DescribeConta
 
 // Summary:
 //
-// Queries alert groups.
+// Call the DescribeContactGroupList interface to query the list of alarm contact groups.
 //
 // @param request - DescribeContactGroupListRequest
 //

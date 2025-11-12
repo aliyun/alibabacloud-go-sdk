@@ -28,6 +28,17 @@ type iDescribeSiteMonitorListRequest interface {
 }
 
 type DescribeSiteMonitorListRequest struct {
+	// Task network type. Valid values:
+	//
+	// - PC: Cable Network
+	//
+	// - MOBILE: Mobile Cellular Network
+	//
+	// - FC: Alibaba Cloud VPC Network
+	//
+	// example:
+	//
+	// PC
 	AgentGroup *string `json:"AgentGroup,omitempty" xml:"AgentGroup,omitempty"`
 	// The keyword to be matched.
 	//
