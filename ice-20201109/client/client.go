@@ -116,6 +116,76 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 激活AI实时互动授权信息
+//
+// @param request - ActiveAiRtcLicenseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ActiveAiRtcLicenseResponse
+func (client *Client) ActiveAiRtcLicenseWithOptions(request *ActiveAiRtcLicenseRequest, runtime *dara.RuntimeOptions) (_result *ActiveAiRtcLicenseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthCode) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !dara.IsNil(request.DeviceId) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !dara.IsNil(request.LicenseItemId) {
+		query["LicenseItemId"] = request.LicenseItemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ActiveAiRtcLicense"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ActiveAiRtcLicenseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 激活AI实时互动授权信息
+//
+// @param request - ActiveAiRtcLicenseRequest
+//
+// @return ActiveAiRtcLicenseResponse
+func (client *Client) ActiveAiRtcLicense(request *ActiveAiRtcLicenseRequest) (_result *ActiveAiRtcLicenseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ActiveAiRtcLicenseResponse{}
+	_body, _err := client.ActiveAiRtcLicenseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds an ad insertion configuration.
 //
 // @param request - AddAdInsertionRequest
@@ -8575,8 +8645,16 @@ func (client *Client) ForwardAIAgentCallWithOptions(request *ForwardAIAgentCallR
 		query["CalledNumber"] = request.CalledNumber
 	}
 
+	if !dara.IsNil(request.ErrorPrompt) {
+		query["ErrorPrompt"] = request.ErrorPrompt
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.TransferPrompt) {
+		query["TransferPrompt"] = request.TransferPrompt
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -8978,6 +9056,170 @@ func (client *Client) GetAdInsertion(request *GetAdInsertionRequest) (_result *G
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetAdInsertionResponse{}
 	_body, _err := client.GetAdInsertionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取AI实时互动授权码列表
+//
+// @param request - GetAiRtcAuthCodeListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAiRtcAuthCodeListResponse
+func (client *Client) GetAiRtcAuthCodeListWithOptions(request *GetAiRtcAuthCodeListRequest, runtime *dara.RuntimeOptions) (_result *GetAiRtcAuthCodeListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.LicenseItemId) {
+		query["LicenseItemId"] = request.LicenseItemId
+	}
+
+	if !dara.IsNil(request.NeedTotalCount) {
+		query["NeedTotalCount"] = request.NeedTotalCount
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAiRtcAuthCodeList"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAiRtcAuthCodeListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取AI实时互动授权码列表
+//
+// @param request - GetAiRtcAuthCodeListRequest
+//
+// @return GetAiRtcAuthCodeListResponse
+func (client *Client) GetAiRtcAuthCodeList(request *GetAiRtcAuthCodeListRequest) (_result *GetAiRtcAuthCodeListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAiRtcAuthCodeListResponse{}
+	_body, _err := client.GetAiRtcAuthCodeListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取AI实时互动授权批次列表
+//
+// @param request - GetAiRtcLicenseInfoListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAiRtcLicenseInfoListResponse
+func (client *Client) GetAiRtcLicenseInfoListWithOptions(request *GetAiRtcLicenseInfoListRequest, runtime *dara.RuntimeOptions) (_result *GetAiRtcLicenseInfoListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.LicenseItemId) {
+		query["LicenseItemId"] = request.LicenseItemId
+	}
+
+	if !dara.IsNil(request.NeedTotalCount) {
+		query["NeedTotalCount"] = request.NeedTotalCount
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAiRtcLicenseInfoList"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAiRtcLicenseInfoListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取AI实时互动授权批次列表
+//
+// @param request - GetAiRtcLicenseInfoListRequest
+//
+// @return GetAiRtcLicenseInfoListResponse
+func (client *Client) GetAiRtcLicenseInfoList(request *GetAiRtcLicenseInfoListRequest) (_result *GetAiRtcLicenseInfoListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAiRtcLicenseInfoListResponse{}
+	_body, _err := client.GetAiRtcLicenseInfoListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25207,6 +25449,76 @@ func (client *Client) SubmitProjectExportJob(request *SubmitProjectExportJobRequ
 
 // Summary:
 //
+// 提交场景化批量合成任务
+//
+// @param request - SubmitSceneBatchEditingJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitSceneBatchEditingJobResponse
+func (client *Client) SubmitSceneBatchEditingJobWithOptions(request *SubmitSceneBatchEditingJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitSceneBatchEditingJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OutputConfig) {
+		query["OutputConfig"] = request.OutputConfig
+	}
+
+	if !dara.IsNil(request.ProjectIds) {
+		query["ProjectIds"] = request.ProjectIds
+	}
+
+	if !dara.IsNil(request.UserData) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitSceneBatchEditingJob"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitSceneBatchEditingJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交场景化批量合成任务
+//
+// @param request - SubmitSceneBatchEditingJobRequest
+//
+// @return SubmitSceneBatchEditingJobResponse
+func (client *Client) SubmitSceneBatchEditingJob(request *SubmitSceneBatchEditingJobRequest) (_result *SubmitSceneBatchEditingJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitSceneBatchEditingJobResponse{}
+	_body, _err := client.SubmitSceneBatchEditingJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Selects suitable clips based on the submitted videos, images, and voiceovers, and returns the selection results. Two scenarios are supported: image-text matching and highlight mashup.
 //
 // Description:
@@ -25290,6 +25602,90 @@ func (client *Client) SubmitSceneMediaSelectionJob(request *SubmitSceneMediaSele
 	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitSceneMediaSelectionJobResponse{}
 	_body, _err := client.SubmitSceneMediaSelectionJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交场景化时间线编排任务
+//
+// @param request - SubmitSceneTimelineOrganizationJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitSceneTimelineOrganizationJobResponse
+func (client *Client) SubmitSceneTimelineOrganizationJobWithOptions(request *SubmitSceneTimelineOrganizationJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitSceneTimelineOrganizationJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobType) {
+		query["JobType"] = request.JobType
+	}
+
+	if !dara.IsNil(request.MediaSelectResult) {
+		query["MediaSelectResult"] = request.MediaSelectResult
+	}
+
+	if !dara.IsNil(request.OutputConfig) {
+		query["OutputConfig"] = request.OutputConfig
+	}
+
+	if !dara.IsNil(request.UserData) {
+		query["UserData"] = request.UserData
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EditingConfig) {
+		body["EditingConfig"] = request.EditingConfig
+	}
+
+	if !dara.IsNil(request.InputConfig) {
+		body["InputConfig"] = request.InputConfig
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitSceneTimelineOrganizationJob"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitSceneTimelineOrganizationJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交场景化时间线编排任务
+//
+// @param request - SubmitSceneTimelineOrganizationJobRequest
+//
+// @return SubmitSceneTimelineOrganizationJobResponse
+func (client *Client) SubmitSceneTimelineOrganizationJob(request *SubmitSceneTimelineOrganizationJobRequest) (_result *SubmitSceneTimelineOrganizationJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitSceneTimelineOrganizationJobResponse{}
+	_body, _err := client.SubmitSceneTimelineOrganizationJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

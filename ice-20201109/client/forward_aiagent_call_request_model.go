@@ -11,8 +11,12 @@ type iForwardAIAgentCallRequest interface {
 	GoString() string
 	SetCalledNumber(v string) *ForwardAIAgentCallRequest
 	GetCalledNumber() *string
+	SetErrorPrompt(v string) *ForwardAIAgentCallRequest
+	GetErrorPrompt() *string
 	SetInstanceId(v string) *ForwardAIAgentCallRequest
 	GetInstanceId() *string
+	SetTransferPrompt(v string) *ForwardAIAgentCallRequest
+	GetTransferPrompt() *string
 }
 
 type ForwardAIAgentCallRequest struct {
@@ -20,10 +24,12 @@ type ForwardAIAgentCallRequest struct {
 	//
 	// 13**********
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	ErrorPrompt  *string `json:"ErrorPrompt,omitempty" xml:"ErrorPrompt,omitempty"`
 	// example:
 	//
 	// call_instance_202******
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TransferPrompt *string `json:"TransferPrompt,omitempty" xml:"TransferPrompt,omitempty"`
 }
 
 func (s ForwardAIAgentCallRequest) String() string {
@@ -38,8 +44,16 @@ func (s *ForwardAIAgentCallRequest) GetCalledNumber() *string {
 	return s.CalledNumber
 }
 
+func (s *ForwardAIAgentCallRequest) GetErrorPrompt() *string {
+	return s.ErrorPrompt
+}
+
 func (s *ForwardAIAgentCallRequest) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *ForwardAIAgentCallRequest) GetTransferPrompt() *string {
+	return s.TransferPrompt
 }
 
 func (s *ForwardAIAgentCallRequest) SetCalledNumber(v string) *ForwardAIAgentCallRequest {
@@ -47,8 +61,18 @@ func (s *ForwardAIAgentCallRequest) SetCalledNumber(v string) *ForwardAIAgentCal
 	return s
 }
 
+func (s *ForwardAIAgentCallRequest) SetErrorPrompt(v string) *ForwardAIAgentCallRequest {
+	s.ErrorPrompt = &v
+	return s
+}
+
 func (s *ForwardAIAgentCallRequest) SetInstanceId(v string) *ForwardAIAgentCallRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ForwardAIAgentCallRequest) SetTransferPrompt(v string) *ForwardAIAgentCallRequest {
+	s.TransferPrompt = &v
 	return s
 }
 
