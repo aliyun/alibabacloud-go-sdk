@@ -9520,6 +9520,10 @@ func (client *Client) ListIdentityProvidersWithOptions(request *ListIdentityProv
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Direction) {
+		query["Direction"] = request.Direction
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}

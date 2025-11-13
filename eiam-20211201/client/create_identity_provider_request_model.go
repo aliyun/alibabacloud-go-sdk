@@ -898,6 +898,14 @@ type CreateIdentityProviderRequestLdapConfig struct {
 	//
 	// organizationUnit,top
 	OrganizationUnitObjectClass *string `json:"OrganizationUnitObjectClass,omitempty" xml:"OrganizationUnitObjectClass,omitempty"`
+	// example:
+	//
+	// ou
+	OrganizationalUnitRdn *string `json:"OrganizationalUnitRdn,omitempty" xml:"OrganizationalUnitRdn,omitempty"`
+	// example:
+	//
+	// enabled
+	PasswordSyncStatus *string `json:"PasswordSyncStatus,omitempty" xml:"PasswordSyncStatus,omitempty"`
 	// Whether startTLS is enabled. Value range:
 	//
 	// - Disabled: disabled
@@ -926,6 +934,10 @@ type CreateIdentityProviderRequestLdapConfig struct {
 	//
 	// (|(cn=test)(mail=test@test.com))
 	UserObjectClassCustomFilter *string `json:"UserObjectClassCustomFilter,omitempty" xml:"UserObjectClassCustomFilter,omitempty"`
+	// example:
+	//
+	// cn
+	UserRdn *string `json:"UserRdn,omitempty" xml:"UserRdn,omitempty"`
 }
 
 func (s CreateIdentityProviderRequestLdapConfig) String() string {
@@ -980,6 +992,14 @@ func (s *CreateIdentityProviderRequestLdapConfig) GetOrganizationUnitObjectClass
 	return s.OrganizationUnitObjectClass
 }
 
+func (s *CreateIdentityProviderRequestLdapConfig) GetOrganizationalUnitRdn() *string {
+	return s.OrganizationalUnitRdn
+}
+
+func (s *CreateIdentityProviderRequestLdapConfig) GetPasswordSyncStatus() *string {
+	return s.PasswordSyncStatus
+}
+
 func (s *CreateIdentityProviderRequestLdapConfig) GetStartTlsStatus() *string {
 	return s.StartTlsStatus
 }
@@ -994,6 +1014,10 @@ func (s *CreateIdentityProviderRequestLdapConfig) GetUserObjectClass() *string {
 
 func (s *CreateIdentityProviderRequestLdapConfig) GetUserObjectClassCustomFilter() *string {
 	return s.UserObjectClassCustomFilter
+}
+
+func (s *CreateIdentityProviderRequestLdapConfig) GetUserRdn() *string {
+	return s.UserRdn
 }
 
 func (s *CreateIdentityProviderRequestLdapConfig) SetAdministratorPassword(v string) *CreateIdentityProviderRequestLdapConfig {
@@ -1051,6 +1075,16 @@ func (s *CreateIdentityProviderRequestLdapConfig) SetOrganizationUnitObjectClass
 	return s
 }
 
+func (s *CreateIdentityProviderRequestLdapConfig) SetOrganizationalUnitRdn(v string) *CreateIdentityProviderRequestLdapConfig {
+	s.OrganizationalUnitRdn = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestLdapConfig) SetPasswordSyncStatus(v string) *CreateIdentityProviderRequestLdapConfig {
+	s.PasswordSyncStatus = &v
+	return s
+}
+
 func (s *CreateIdentityProviderRequestLdapConfig) SetStartTlsStatus(v string) *CreateIdentityProviderRequestLdapConfig {
 	s.StartTlsStatus = &v
 	return s
@@ -1068,6 +1102,11 @@ func (s *CreateIdentityProviderRequestLdapConfig) SetUserObjectClass(v string) *
 
 func (s *CreateIdentityProviderRequestLdapConfig) SetUserObjectClassCustomFilter(v string) *CreateIdentityProviderRequestLdapConfig {
 	s.UserObjectClassCustomFilter = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestLdapConfig) SetUserRdn(v string) *CreateIdentityProviderRequestLdapConfig {
+	s.UserRdn = &v
 	return s
 }
 
@@ -1547,7 +1586,8 @@ type CreateIdentityProviderRequestUdPushConfig struct {
 	// example:
 	//
 	// disabled
-	IncrementalCallbackStatus *string `json:"IncrementalCallbackStatus,omitempty" xml:"IncrementalCallbackStatus,omitempty"`
+	IncrementalCallbackStatus *string                                                      `json:"IncrementalCallbackStatus,omitempty" xml:"IncrementalCallbackStatus,omitempty"`
+	PeriodicSyncConfig        *CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig `json:"PeriodicSyncConfig,omitempty" xml:"PeriodicSyncConfig,omitempty" type:"Struct"`
 	// Periodic check status. This field is currently not in use, please ignore it.
 	//
 	// example:
@@ -1570,6 +1610,10 @@ func (s *CreateIdentityProviderRequestUdPushConfig) GetIncrementalCallbackStatus
 	return s.IncrementalCallbackStatus
 }
 
+func (s *CreateIdentityProviderRequestUdPushConfig) GetPeriodicSyncConfig() *CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig {
+	return s.PeriodicSyncConfig
+}
+
 func (s *CreateIdentityProviderRequestUdPushConfig) GetPeriodicSyncStatus() *string {
 	return s.PeriodicSyncStatus
 }
@@ -1580,6 +1624,11 @@ func (s *CreateIdentityProviderRequestUdPushConfig) GetUdSyncScopeConfigs() []*C
 
 func (s *CreateIdentityProviderRequestUdPushConfig) SetIncrementalCallbackStatus(v string) *CreateIdentityProviderRequestUdPushConfig {
 	s.IncrementalCallbackStatus = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestUdPushConfig) SetPeriodicSyncConfig(v *CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig) *CreateIdentityProviderRequestUdPushConfig {
+	s.PeriodicSyncConfig = v
 	return s
 }
 
@@ -1594,6 +1643,11 @@ func (s *CreateIdentityProviderRequestUdPushConfig) SetUdSyncScopeConfigs(v []*C
 }
 
 func (s *CreateIdentityProviderRequestUdPushConfig) Validate() error {
+	if s.PeriodicSyncConfig != nil {
+		if err := s.PeriodicSyncConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.UdSyncScopeConfigs != nil {
 		for _, item := range s.UdSyncScopeConfigs {
 			if item != nil {
@@ -1604,6 +1658,57 @@ func (s *CreateIdentityProviderRequestUdPushConfig) Validate() error {
 		}
 	}
 	return nil
+}
+
+type CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig struct {
+	// example:
+	//
+	// 0 45 1 	- 	- ?
+	PeriodicSyncCron  *string  `json:"PeriodicSyncCron,omitempty" xml:"PeriodicSyncCron,omitempty"`
+	PeriodicSyncTimes []*int32 `json:"PeriodicSyncTimes,omitempty" xml:"PeriodicSyncTimes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cron
+	PeriodicSyncType *string `json:"PeriodicSyncType,omitempty" xml:"PeriodicSyncType,omitempty"`
+}
+
+func (s CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig) GetPeriodicSyncCron() *string {
+	return s.PeriodicSyncCron
+}
+
+func (s *CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig) GetPeriodicSyncTimes() []*int32 {
+	return s.PeriodicSyncTimes
+}
+
+func (s *CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig) GetPeriodicSyncType() *string {
+	return s.PeriodicSyncType
+}
+
+func (s *CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig) SetPeriodicSyncCron(v string) *CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig {
+	s.PeriodicSyncCron = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig) SetPeriodicSyncTimes(v []*int32) *CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig {
+	s.PeriodicSyncTimes = v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig) SetPeriodicSyncType(v string) *CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig {
+	s.PeriodicSyncType = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestUdPushConfigPeriodicSyncConfig) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateIdentityProviderRequestUdPushConfigUdSyncScopeConfigs struct {

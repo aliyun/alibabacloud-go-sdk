@@ -9,6 +9,8 @@ type iListIdentityProvidersRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDirection(v string) *ListIdentityProvidersRequest
+	GetDirection() *string
 	SetInstanceId(v string) *ListIdentityProvidersRequest
 	GetInstanceId() *string
 	SetPageNumber(v int64) *ListIdentityProvidersRequest
@@ -18,6 +20,10 @@ type iListIdentityProvidersRequest interface {
 }
 
 type ListIdentityProvidersRequest struct {
+	// example:
+	//
+	// pull
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	// The instance ID.
 	//
 	// This parameter is required.
@@ -48,6 +54,10 @@ func (s ListIdentityProvidersRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListIdentityProvidersRequest) GetDirection() *string {
+	return s.Direction
+}
+
 func (s *ListIdentityProvidersRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -58,6 +68,11 @@ func (s *ListIdentityProvidersRequest) GetPageNumber() *int64 {
 
 func (s *ListIdentityProvidersRequest) GetPageSize() *int64 {
 	return s.PageSize
+}
+
+func (s *ListIdentityProvidersRequest) SetDirection(v string) *ListIdentityProvidersRequest {
+	s.Direction = &v
+	return s
 }
 
 func (s *ListIdentityProvidersRequest) SetInstanceId(v string) *ListIdentityProvidersRequest {

@@ -6996,6 +6996,10 @@ func (client *Client) ListIdentityProvidersWithContext(ctx context.Context, requ
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Direction) {
+		query["Direction"] = request.Direction
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
