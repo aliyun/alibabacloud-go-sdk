@@ -107,7 +107,12 @@ func (s *ListSkillGroupStatesResponseBody) SetSuccess(v bool) *ListSkillGroupSta
 }
 
 func (s *ListSkillGroupStatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSkillGroupStatesResponseBodyData struct {
@@ -171,7 +176,16 @@ func (s *ListSkillGroupStatesResponseBodyData) SetTotalCount(v int32) *ListSkill
 }
 
 func (s *ListSkillGroupStatesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSkillGroupStatesResponseBodyDataList struct {

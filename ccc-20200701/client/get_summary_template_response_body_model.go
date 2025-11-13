@@ -104,7 +104,12 @@ func (s *GetSummaryTemplateResponseBody) SetRequestId(v string) *GetSummaryTempl
 }
 
 func (s *GetSummaryTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSummaryTemplateResponseBodyData struct {
@@ -204,7 +209,16 @@ func (s *GetSummaryTemplateResponseBodyData) SetTemplateId(v string) *GetSummary
 }
 
 func (s *GetSummaryTemplateResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.PropertyList != nil {
+		for _, item := range s.PropertyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSummaryTemplateResponseBodyDataPropertyList struct {

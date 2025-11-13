@@ -59,5 +59,10 @@ func (s *ListAttemptsResponse) SetBody(v *ListAttemptsResponseBody) *ListAttempt
 }
 
 func (s *ListAttemptsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

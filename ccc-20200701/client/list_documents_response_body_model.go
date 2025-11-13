@@ -104,7 +104,12 @@ func (s *ListDocumentsResponseBody) SetRequestId(v string) *ListDocumentsRespons
 }
 
 func (s *ListDocumentsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDocumentsResponseBodyData struct {
@@ -166,7 +171,12 @@ func (s *ListDocumentsResponseBodyData) SetTotalCount(v int64) *ListDocumentsRes
 }
 
 func (s *ListDocumentsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Schema != nil {
+		if err := s.Schema.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDocumentsResponseBodyDataSchema struct {

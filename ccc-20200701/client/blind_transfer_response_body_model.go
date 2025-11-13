@@ -104,7 +104,12 @@ func (s *BlindTransferResponseBody) SetRequestId(v string) *BlindTransferRespons
 }
 
 func (s *BlindTransferResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BlindTransferResponseBodyData struct {
@@ -152,7 +157,17 @@ func (s *BlindTransferResponseBodyData) SetUserContext(v *BlindTransferResponseB
 }
 
 func (s *BlindTransferResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CallContext != nil {
+		if err := s.CallContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserContext != nil {
+		if err := s.UserContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BlindTransferResponseBodyDataCallContext struct {
@@ -216,7 +231,16 @@ func (s *BlindTransferResponseBodyDataCallContext) SetJobId(v string) *BlindTran
 }
 
 func (s *BlindTransferResponseBodyDataCallContext) Validate() error {
-	return dara.Validate(s)
+	if s.ChannelContexts != nil {
+		for _, item := range s.ChannelContexts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BlindTransferResponseBodyDataCallContextChannelContexts struct {

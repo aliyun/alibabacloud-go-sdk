@@ -104,7 +104,12 @@ func (s *ListFlashSmsApplicationsResponseBody) SetRequestId(v string) *ListFlash
 }
 
 func (s *ListFlashSmsApplicationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListFlashSmsApplicationsResponseBodyData struct {
@@ -168,7 +173,16 @@ func (s *ListFlashSmsApplicationsResponseBodyData) SetTotalCount(v int32) *ListF
 }
 
 func (s *ListFlashSmsApplicationsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFlashSmsApplicationsResponseBodyDataList struct {

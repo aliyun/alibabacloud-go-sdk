@@ -104,7 +104,12 @@ func (s *ListUsersResponseBody) SetRequestId(v string) *ListUsersResponseBody {
 }
 
 func (s *ListUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUsersResponseBodyData struct {
@@ -168,7 +173,16 @@ func (s *ListUsersResponseBodyData) SetTotalCount(v int32) *ListUsersResponseBod
 }
 
 func (s *ListUsersResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUsersResponseBodyDataList struct {
@@ -405,7 +419,25 @@ func (s *ListUsersResponseBodyDataList) SetWorkMode(v string) *ListUsersResponse
 }
 
 func (s *ListUsersResponseBodyDataList) Validate() error {
-	return dara.Validate(s)
+	if s.PersonalOutboundNumberList != nil {
+		for _, item := range s.PersonalOutboundNumberList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SkillLevelList != nil {
+		for _, item := range s.SkillLevelList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUsersResponseBodyDataListPersonalOutboundNumberList struct {

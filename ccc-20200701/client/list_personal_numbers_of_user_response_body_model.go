@@ -92,7 +92,12 @@ func (s *ListPersonalNumbersOfUserResponseBody) SetRequestId(v string) *ListPers
 }
 
 func (s *ListPersonalNumbersOfUserResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPersonalNumbersOfUserResponseBodyData struct {
@@ -156,7 +161,16 @@ func (s *ListPersonalNumbersOfUserResponseBodyData) SetTotalCount(v int32) *List
 }
 
 func (s *ListPersonalNumbersOfUserResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPersonalNumbersOfUserResponseBodyDataList struct {

@@ -94,7 +94,12 @@ func (s *ListVisitorChatMessagesResponseBody) SetRequestId(v string) *ListVisito
 }
 
 func (s *ListVisitorChatMessagesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListVisitorChatMessagesResponseBodyData struct {
@@ -132,7 +137,16 @@ func (s *ListVisitorChatMessagesResponseBodyData) SetNextPageToken(v string) *Li
 }
 
 func (s *ListVisitorChatMessagesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		for _, item := range s.Messages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVisitorChatMessagesResponseBodyDataMessages struct {

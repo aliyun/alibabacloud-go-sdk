@@ -59,5 +59,10 @@ func (s *GetConversationDetailResponse) SetBody(v *GetConversationDetailResponse
 }
 
 func (s *GetConversationDetailResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -92,7 +92,12 @@ func (s *ListUnassignedNumbersResponseBody) SetRequestId(v string) *ListUnassign
 }
 
 func (s *ListUnassignedNumbersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUnassignedNumbersResponseBodyData struct {
@@ -156,7 +161,16 @@ func (s *ListUnassignedNumbersResponseBodyData) SetTotalCount(v int32) *ListUnas
 }
 
 func (s *ListUnassignedNumbersResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUnassignedNumbersResponseBodyDataList struct {

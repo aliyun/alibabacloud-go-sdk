@@ -107,7 +107,12 @@ func (s *GetSchemaResponseBody) SetRequestId(v string) *GetSchemaResponseBody {
 }
 
 func (s *GetSchemaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSchemaResponseBodyData struct {

@@ -104,7 +104,12 @@ func (s *StartPredictiveCallResponseBody) SetRequestId(v string) *StartPredictiv
 }
 
 func (s *StartPredictiveCallResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartPredictiveCallResponseBodyData struct {
@@ -139,7 +144,17 @@ func (s *StartPredictiveCallResponseBodyData) SetUserContext(v *StartPredictiveC
 }
 
 func (s *StartPredictiveCallResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CallContext != nil {
+		if err := s.CallContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserContext != nil {
+		if err := s.UserContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartPredictiveCallResponseBodyDataCallContext struct {
@@ -203,7 +218,16 @@ func (s *StartPredictiveCallResponseBodyDataCallContext) SetJobId(v string) *Sta
 }
 
 func (s *StartPredictiveCallResponseBodyDataCallContext) Validate() error {
-	return dara.Validate(s)
+	if s.ChannelContexts != nil {
+		for _, item := range s.ChannelContexts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartPredictiveCallResponseBodyDataCallContextChannelContexts struct {

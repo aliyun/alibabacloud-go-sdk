@@ -107,7 +107,12 @@ func (s *ListCampaignsResponseBody) SetSuccess(v bool) *ListCampaignsResponseBod
 }
 
 func (s *ListCampaignsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCampaignsResponseBodyData struct {
@@ -171,7 +176,16 @@ func (s *ListCampaignsResponseBodyData) SetTotalCount(v int64) *ListCampaignsRes
 }
 
 func (s *ListCampaignsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCampaignsResponseBodyDataList struct {

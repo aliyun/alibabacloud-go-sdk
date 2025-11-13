@@ -92,7 +92,12 @@ func (s *ListInstancesOfUserResponseBody) SetRequestId(v string) *ListInstancesO
 }
 
 func (s *ListInstancesOfUserResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListInstancesOfUserResponseBodyData struct {
@@ -156,7 +161,16 @@ func (s *ListInstancesOfUserResponseBodyData) SetTotalCount(v int32) *ListInstan
 }
 
 func (s *ListInstancesOfUserResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstancesOfUserResponseBodyDataList struct {
@@ -276,7 +290,25 @@ func (s *ListInstancesOfUserResponseBodyDataList) SetStatus(v string) *ListInsta
 }
 
 func (s *ListInstancesOfUserResponseBodyDataList) Validate() error {
-	return dara.Validate(s)
+	if s.AdminList != nil {
+		for _, item := range s.AdminList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NumberList != nil {
+		for _, item := range s.NumberList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstancesOfUserResponseBodyDataListAdminList struct {
@@ -541,7 +573,16 @@ func (s *ListInstancesOfUserResponseBodyDataListNumberList) SetUserId(v string) 
 }
 
 func (s *ListInstancesOfUserResponseBodyDataListNumberList) Validate() error {
-	return dara.Validate(s)
+	if s.SkillGroups != nil {
+		for _, item := range s.SkillGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstancesOfUserResponseBodyDataListNumberListSkillGroups struct {

@@ -92,7 +92,12 @@ func (s *GetHistoricalInstanceReportResponseBody) SetRequestId(v string) *GetHis
 }
 
 func (s *GetHistoricalInstanceReportResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHistoricalInstanceReportResponseBodyData struct {
@@ -147,7 +152,27 @@ func (s *GetHistoricalInstanceReportResponseBodyData) SetOverall(v *GetHistorica
 }
 
 func (s *GetHistoricalInstanceReportResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Inbound != nil {
+		if err := s.Inbound.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Internal != nil {
+		if err := s.Internal.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Outbound != nil {
+		if err := s.Outbound.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Overall != nil {
+		if err := s.Overall.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHistoricalInstanceReportResponseBodyDataInbound struct {
@@ -938,7 +963,16 @@ func (s *GetHistoricalInstanceReportResponseBodyDataInbound) SetTotalWorkTime(v 
 }
 
 func (s *GetHistoricalInstanceReportResponseBodyDataInbound) Validate() error {
-	return dara.Validate(s)
+	if s.AccessChannelTypeDetailList != nil {
+		for _, item := range s.AccessChannelTypeDetailList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetHistoricalInstanceReportResponseBodyDataInboundAccessChannelTypeDetailList struct {

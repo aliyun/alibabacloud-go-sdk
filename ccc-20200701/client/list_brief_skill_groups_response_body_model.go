@@ -92,7 +92,12 @@ func (s *ListBriefSkillGroupsResponseBody) SetRequestId(v string) *ListBriefSkil
 }
 
 func (s *ListBriefSkillGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListBriefSkillGroupsResponseBodyData struct {
@@ -156,7 +161,16 @@ func (s *ListBriefSkillGroupsResponseBodyData) SetTotalCount(v int32) *ListBrief
 }
 
 func (s *ListBriefSkillGroupsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListBriefSkillGroupsResponseBodyDataList struct {

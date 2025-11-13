@@ -59,5 +59,10 @@ func (s *StartBack2BackCallResponse) SetBody(v *StartBack2BackCallResponseBody) 
 }
 
 func (s *StartBack2BackCallResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

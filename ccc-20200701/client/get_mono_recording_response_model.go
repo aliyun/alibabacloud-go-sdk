@@ -59,5 +59,10 @@ func (s *GetMonoRecordingResponse) SetBody(v *GetMonoRecordingResponseBody) *Get
 }
 
 func (s *GetMonoRecordingResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

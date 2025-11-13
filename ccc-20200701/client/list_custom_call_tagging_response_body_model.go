@@ -92,7 +92,12 @@ func (s *ListCustomCallTaggingResponseBody) SetRequestId(v string) *ListCustomCa
 }
 
 func (s *ListCustomCallTaggingResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCustomCallTaggingResponseBodyData struct {
@@ -156,7 +161,16 @@ func (s *ListCustomCallTaggingResponseBodyData) SetTotalCount(v int32) *ListCust
 }
 
 func (s *ListCustomCallTaggingResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCustomCallTaggingResponseBodyDataList struct {
@@ -243,7 +257,16 @@ func (s *ListCustomCallTaggingResponseBodyDataList) SetUpdateTime(v string) *Lis
 }
 
 func (s *ListCustomCallTaggingResponseBodyDataList) Validate() error {
-	return dara.Validate(s)
+	if s.CallTagList != nil {
+		for _, item := range s.CallTagList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCustomCallTaggingResponseBodyDataListCallTagList struct {

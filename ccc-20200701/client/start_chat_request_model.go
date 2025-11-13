@@ -81,7 +81,16 @@ func (s *StartChatRequest) SetUserList(v []*StartChatRequestUserList) *StartChat
 }
 
 func (s *StartChatRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UserList != nil {
+		for _, item := range s.UserList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartChatRequestUserList struct {

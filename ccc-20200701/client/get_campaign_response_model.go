@@ -59,5 +59,10 @@ func (s *GetCampaignResponse) SetBody(v *GetCampaignResponseBody) *GetCampaignRe
 }
 
 func (s *GetCampaignResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

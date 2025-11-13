@@ -92,15 +92,22 @@ func (s *GetInstanceResponseBody) SetRequestId(v string) *GetInstanceResponseBod
 }
 
 func (s *GetInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceResponseBodyData struct {
 	AdminList []*GetInstanceResponseBodyDataAdminList `json:"AdminList,omitempty" xml:"AdminList,omitempty" type:"Repeated"`
+	AgentType *string                                 `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
 	// example:
 	//
 	// 157123456789****
-	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	AliyunUid           *string                                         `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	ChatbotBusinessUnit *GetInstanceResponseBodyDataChatbotBusinessUnit `json:"ChatbotBusinessUnit,omitempty" xml:"ChatbotBusinessUnit,omitempty" type:"Struct"`
 	// example:
 	//
 	// https://ccc-v2.aliyun.com/#/workbench/ccc-test
@@ -134,8 +141,16 @@ func (s *GetInstanceResponseBodyData) GetAdminList() []*GetInstanceResponseBodyD
 	return s.AdminList
 }
 
+func (s *GetInstanceResponseBodyData) GetAgentType() *string {
+	return s.AgentType
+}
+
 func (s *GetInstanceResponseBodyData) GetAliyunUid() *string {
 	return s.AliyunUid
+}
+
+func (s *GetInstanceResponseBodyData) GetChatbotBusinessUnit() *GetInstanceResponseBodyDataChatbotBusinessUnit {
+	return s.ChatbotBusinessUnit
 }
 
 func (s *GetInstanceResponseBodyData) GetConsoleUrl() *string {
@@ -171,8 +186,18 @@ func (s *GetInstanceResponseBodyData) SetAdminList(v []*GetInstanceResponseBodyD
 	return s
 }
 
+func (s *GetInstanceResponseBodyData) SetAgentType(v string) *GetInstanceResponseBodyData {
+	s.AgentType = &v
+	return s
+}
+
 func (s *GetInstanceResponseBodyData) SetAliyunUid(v string) *GetInstanceResponseBodyData {
 	s.AliyunUid = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetChatbotBusinessUnit(v *GetInstanceResponseBodyDataChatbotBusinessUnit) *GetInstanceResponseBodyData {
+	s.ChatbotBusinessUnit = v
 	return s
 }
 
@@ -212,7 +237,30 @@ func (s *GetInstanceResponseBodyData) SetStatus(v string) *GetInstanceResponseBo
 }
 
 func (s *GetInstanceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AdminList != nil {
+		for _, item := range s.AdminList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ChatbotBusinessUnit != nil {
+		if err := s.ChatbotBusinessUnit.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NumberList != nil {
+		for _, item := range s.NumberList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstanceResponseBodyDataAdminList struct {
@@ -357,6 +405,41 @@ func (s *GetInstanceResponseBodyDataAdminList) Validate() error {
 	return dara.Validate(s)
 }
 
+type GetInstanceResponseBodyDataChatbotBusinessUnit struct {
+	UnitId  *int64  `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
+	UnitKey *string `json:"UnitKey,omitempty" xml:"UnitKey,omitempty"`
+}
+
+func (s GetInstanceResponseBodyDataChatbotBusinessUnit) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyDataChatbotBusinessUnit) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyDataChatbotBusinessUnit) GetUnitId() *int64 {
+	return s.UnitId
+}
+
+func (s *GetInstanceResponseBodyDataChatbotBusinessUnit) GetUnitKey() *string {
+	return s.UnitKey
+}
+
+func (s *GetInstanceResponseBodyDataChatbotBusinessUnit) SetUnitId(v int64) *GetInstanceResponseBodyDataChatbotBusinessUnit {
+	s.UnitId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDataChatbotBusinessUnit) SetUnitKey(v string) *GetInstanceResponseBodyDataChatbotBusinessUnit {
+	s.UnitKey = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDataChatbotBusinessUnit) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetInstanceResponseBodyDataNumberList struct {
 	// example:
 	//
@@ -477,7 +560,16 @@ func (s *GetInstanceResponseBodyDataNumberList) SetUserId(v string) *GetInstance
 }
 
 func (s *GetInstanceResponseBodyDataNumberList) Validate() error {
-	return dara.Validate(s)
+	if s.SkillGroups != nil {
+		for _, item := range s.SkillGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstanceResponseBodyDataNumberListSkillGroups struct {

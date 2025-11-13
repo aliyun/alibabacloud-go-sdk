@@ -104,7 +104,12 @@ func (s *ListTicketTemplatesResponseBody) SetRequestId(v string) *ListTicketTemp
 }
 
 func (s *ListTicketTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTicketTemplatesResponseBodyData struct {
@@ -168,7 +173,16 @@ func (s *ListTicketTemplatesResponseBodyData) SetTotalCount(v int32) *ListTicket
 }
 
 func (s *ListTicketTemplatesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTicketTemplatesResponseBodyDataList struct {
@@ -317,7 +331,16 @@ func (s *ListTicketTemplatesResponseBodyDataList) SetUpdatedTime(v int64) *ListT
 }
 
 func (s *ListTicketTemplatesResponseBodyDataList) Validate() error {
-	return dara.Validate(s)
+	if s.TicketFields != nil {
+		for _, item := range s.TicketFields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTicketTemplatesResponseBodyDataListTicketFields struct {

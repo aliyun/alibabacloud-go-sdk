@@ -104,7 +104,12 @@ func (s *UnmuteCallResponseBody) SetRequestId(v string) *UnmuteCallResponseBody 
 }
 
 func (s *UnmuteCallResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UnmuteCallResponseBodyData struct {
@@ -139,7 +144,17 @@ func (s *UnmuteCallResponseBodyData) SetUserContext(v *UnmuteCallResponseBodyDat
 }
 
 func (s *UnmuteCallResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CallContext != nil {
+		if err := s.CallContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserContext != nil {
+		if err := s.UserContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UnmuteCallResponseBodyDataCallContext struct {
@@ -203,7 +218,16 @@ func (s *UnmuteCallResponseBodyDataCallContext) SetJobId(v string) *UnmuteCallRe
 }
 
 func (s *UnmuteCallResponseBodyDataCallContext) Validate() error {
-	return dara.Validate(s)
+	if s.ChannelContexts != nil {
+		for _, item := range s.ChannelContexts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UnmuteCallResponseBodyDataCallContextChannelContexts struct {

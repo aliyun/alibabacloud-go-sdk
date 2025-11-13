@@ -107,7 +107,12 @@ func (s *ListLegacyAppraiseLogsResponseBody) SetSuccess(v bool) *ListLegacyAppra
 }
 
 func (s *ListLegacyAppraiseLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLegacyAppraiseLogsResponseBodyData struct {
@@ -171,7 +176,16 @@ func (s *ListLegacyAppraiseLogsResponseBodyData) SetTotalCount(v int32) *ListLeg
 }
 
 func (s *ListLegacyAppraiseLogsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLegacyAppraiseLogsResponseBodyDataList struct {

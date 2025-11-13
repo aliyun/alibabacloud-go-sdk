@@ -86,7 +86,12 @@ func (s *AddSchemaPropertyRequest) SetSchemaId(v string) *AddSchemaPropertyReque
 }
 
 func (s *AddSchemaPropertyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Property != nil {
+		if err := s.Property.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddSchemaPropertyRequestProperty struct {

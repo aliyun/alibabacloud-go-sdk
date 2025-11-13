@@ -107,7 +107,12 @@ func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBody) SetSuccess(v boo
 }
 
 func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagedSkillGroupSummaryReport != nil {
+		if err := s.PagedSkillGroupSummaryReport.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReport struct {
@@ -171,7 +176,16 @@ func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSum
 }
 
 func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReport) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportList struct {
@@ -265,7 +279,22 @@ func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSum
 }
 
 func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportList) Validate() error {
-	return dara.Validate(s)
+	if s.Inbound != nil {
+		if err := s.Inbound.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Outbound != nil {
+		if err := s.Outbound.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Overall != nil {
+		if err := s.Overall.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound struct {

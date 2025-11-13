@@ -59,5 +59,10 @@ func (s *RemovePhoneNumbersResponse) SetBody(v *RemovePhoneNumbersResponseBody) 
 }
 
 func (s *RemovePhoneNumbersResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

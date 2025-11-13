@@ -92,7 +92,16 @@ func (s *ListIntervalAgentSkillGroupReportResponseBody) SetRequestId(v string) *
 }
 
 func (s *ListIntervalAgentSkillGroupReportResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIntervalAgentSkillGroupReportResponseBodyData struct {
@@ -170,7 +179,32 @@ func (s *ListIntervalAgentSkillGroupReportResponseBodyData) SetStatsTime(v int64
 }
 
 func (s *ListIntervalAgentSkillGroupReportResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Back2Back != nil {
+		if err := s.Back2Back.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Inbound != nil {
+		if err := s.Inbound.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Internal != nil {
+		if err := s.Internal.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Outbound != nil {
+		if err := s.Outbound.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Overall != nil {
+		if err := s.Overall.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back struct {
@@ -1731,7 +1765,16 @@ func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetTotalWorkT
 }
 
 func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) Validate() error {
-	return dara.Validate(s)
+	if s.BreakCodeDetailList != nil {
+		for _, item := range s.BreakCodeDetailList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIntervalAgentSkillGroupReportResponseBodyDataOverallBreakCodeDetailList struct {

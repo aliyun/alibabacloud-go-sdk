@@ -92,7 +92,16 @@ func (s *ListIntervalInstanceReportResponseBody) SetRequestId(v string) *ListInt
 }
 
 func (s *ListIntervalInstanceReportResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIntervalInstanceReportResponseBodyData struct {
@@ -150,7 +159,22 @@ func (s *ListIntervalInstanceReportResponseBodyData) SetStatsTime(v int64) *List
 }
 
 func (s *ListIntervalInstanceReportResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Inbound != nil {
+		if err := s.Inbound.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Outbound != nil {
+		if err := s.Outbound.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Overall != nil {
+		if err := s.Overall.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListIntervalInstanceReportResponseBodyDataInbound struct {

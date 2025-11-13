@@ -92,7 +92,12 @@ func (s *ListUserLevelsOfSkillGroupResponseBody) SetRequestId(v string) *ListUse
 }
 
 func (s *ListUserLevelsOfSkillGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListUserLevelsOfSkillGroupResponseBodyData struct {
@@ -156,7 +161,16 @@ func (s *ListUserLevelsOfSkillGroupResponseBodyData) SetTotalCount(v int32) *Lis
 }
 
 func (s *ListUserLevelsOfSkillGroupResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserLevelsOfSkillGroupResponseBodyDataList struct {

@@ -92,7 +92,12 @@ func (s *ListIvrTrackingDetailsResponseBody) SetRequestId(v string) *ListIvrTrac
 }
 
 func (s *ListIvrTrackingDetailsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListIvrTrackingDetailsResponseBodyData struct {
@@ -156,7 +161,16 @@ func (s *ListIvrTrackingDetailsResponseBodyData) SetTotalCount(v int32) *ListIvr
 }
 
 func (s *ListIvrTrackingDetailsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIvrTrackingDetailsResponseBodyDataList struct {

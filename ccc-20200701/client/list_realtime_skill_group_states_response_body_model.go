@@ -92,7 +92,12 @@ func (s *ListRealtimeSkillGroupStatesResponseBody) SetRequestId(v string) *ListR
 }
 
 func (s *ListRealtimeSkillGroupStatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRealtimeSkillGroupStatesResponseBodyData struct {
@@ -156,7 +161,16 @@ func (s *ListRealtimeSkillGroupStatesResponseBodyData) SetTotalCount(v int32) *L
 }
 
 func (s *ListRealtimeSkillGroupStatesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRealtimeSkillGroupStatesResponseBodyDataList struct {
@@ -334,7 +348,16 @@ func (s *ListRealtimeSkillGroupStatesResponseBodyDataList) SetWorkingAgents(v in
 }
 
 func (s *ListRealtimeSkillGroupStatesResponseBodyDataList) Validate() error {
-	return dara.Validate(s)
+	if s.BreakCodeDetailList != nil {
+		for _, item := range s.BreakCodeDetailList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRealtimeSkillGroupStatesResponseBodyDataListBreakCodeDetailList struct {

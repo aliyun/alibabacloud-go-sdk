@@ -104,7 +104,12 @@ func (s *CancelAttendedTransferResponseBody) SetRequestId(v string) *CancelAtten
 }
 
 func (s *CancelAttendedTransferResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CancelAttendedTransferResponseBodyData struct {
@@ -152,7 +157,17 @@ func (s *CancelAttendedTransferResponseBodyData) SetUserContext(v *CancelAttende
 }
 
 func (s *CancelAttendedTransferResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CallContext != nil {
+		if err := s.CallContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserContext != nil {
+		if err := s.UserContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CancelAttendedTransferResponseBodyDataCallContext struct {
@@ -216,7 +231,16 @@ func (s *CancelAttendedTransferResponseBodyDataCallContext) SetJobId(v string) *
 }
 
 func (s *CancelAttendedTransferResponseBodyDataCallContext) Validate() error {
-	return dara.Validate(s)
+	if s.ChannelContexts != nil {
+		for _, item := range s.ChannelContexts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CancelAttendedTransferResponseBodyDataCallContextChannelContexts struct {

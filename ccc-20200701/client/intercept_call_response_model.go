@@ -59,5 +59,10 @@ func (s *InterceptCallResponse) SetBody(v *InterceptCallResponseBody) *Intercept
 }
 
 func (s *InterceptCallResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

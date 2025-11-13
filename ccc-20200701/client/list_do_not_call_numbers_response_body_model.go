@@ -104,7 +104,12 @@ func (s *ListDoNotCallNumbersResponseBody) SetRequestId(v string) *ListDoNotCall
 }
 
 func (s *ListDoNotCallNumbersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDoNotCallNumbersResponseBodyData struct {
@@ -168,7 +173,16 @@ func (s *ListDoNotCallNumbersResponseBodyData) SetTotalCount(v int32) *ListDoNot
 }
 
 func (s *ListDoNotCallNumbersResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDoNotCallNumbersResponseBodyDataList struct {

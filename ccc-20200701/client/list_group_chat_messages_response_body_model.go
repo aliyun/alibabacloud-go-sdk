@@ -92,7 +92,12 @@ func (s *ListGroupChatMessagesResponseBody) SetRequestId(v string) *ListGroupCha
 }
 
 func (s *ListGroupChatMessagesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListGroupChatMessagesResponseBodyData struct {
@@ -130,7 +135,16 @@ func (s *ListGroupChatMessagesResponseBodyData) SetNextPageToken(v string) *List
 }
 
 func (s *ListGroupChatMessagesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		for _, item := range s.Messages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGroupChatMessagesResponseBodyDataMessages struct {

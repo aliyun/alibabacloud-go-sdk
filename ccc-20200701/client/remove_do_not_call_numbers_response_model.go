@@ -59,5 +59,10 @@ func (s *RemoveDoNotCallNumbersResponse) SetBody(v *RemoveDoNotCallNumbersRespon
 }
 
 func (s *RemoveDoNotCallNumbersResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

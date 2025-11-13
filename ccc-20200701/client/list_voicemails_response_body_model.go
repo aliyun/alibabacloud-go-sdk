@@ -92,7 +92,12 @@ func (s *ListVoicemailsResponseBody) SetRequestId(v string) *ListVoicemailsRespo
 }
 
 func (s *ListVoicemailsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListVoicemailsResponseBodyData struct {
@@ -156,7 +161,16 @@ func (s *ListVoicemailsResponseBodyData) SetTotalCount(v int32) *ListVoicemailsR
 }
 
 func (s *ListVoicemailsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVoicemailsResponseBodyDataList struct {

@@ -59,5 +59,10 @@ func (s *GetChatRoutingProfileResponse) SetBody(v *GetChatRoutingProfileResponse
 }
 
 func (s *GetChatRoutingProfileResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

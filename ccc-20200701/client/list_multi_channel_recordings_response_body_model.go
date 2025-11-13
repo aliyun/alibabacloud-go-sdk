@@ -92,7 +92,16 @@ func (s *ListMultiChannelRecordingsResponseBody) SetRequestId(v string) *ListMul
 }
 
 func (s *ListMultiChannelRecordingsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMultiChannelRecordingsResponseBodyData struct {
@@ -244,7 +253,16 @@ func (s *ListMultiChannelRecordingsResponseBodyData) SetStartTime(v int64) *List
 }
 
 func (s *ListMultiChannelRecordingsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.HoldTimeSegments != nil {
+		for _, item := range s.HoldTimeSegments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMultiChannelRecordingsResponseBodyDataHoldTimeSegments struct {

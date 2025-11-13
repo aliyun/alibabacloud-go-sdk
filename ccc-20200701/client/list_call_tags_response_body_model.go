@@ -92,7 +92,12 @@ func (s *ListCallTagsResponseBody) SetRequestId(v string) *ListCallTagsResponseB
 }
 
 func (s *ListCallTagsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCallTagsResponseBodyData struct {
@@ -156,7 +161,16 @@ func (s *ListCallTagsResponseBodyData) SetTotalCount(v int32) *ListCallTagsRespo
 }
 
 func (s *ListCallTagsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCallTagsResponseBodyDataList struct {

@@ -59,6 +59,11 @@ func (s *ExportContactFlowResponse) SetBody(v *ExportContactFlowResponseBody) *E
 }
 
 func (s *ExportContactFlowResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

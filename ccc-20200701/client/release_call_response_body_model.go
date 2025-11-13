@@ -104,7 +104,12 @@ func (s *ReleaseCallResponseBody) SetRequestId(v string) *ReleaseCallResponseBod
 }
 
 func (s *ReleaseCallResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ReleaseCallResponseBodyData struct {
@@ -152,7 +157,17 @@ func (s *ReleaseCallResponseBodyData) SetUserContext(v *ReleaseCallResponseBodyD
 }
 
 func (s *ReleaseCallResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CallContext != nil {
+		if err := s.CallContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserContext != nil {
+		if err := s.UserContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ReleaseCallResponseBodyDataCallContext struct {
@@ -203,7 +218,16 @@ func (s *ReleaseCallResponseBodyDataCallContext) SetJobId(v string) *ReleaseCall
 }
 
 func (s *ReleaseCallResponseBodyDataCallContext) Validate() error {
-	return dara.Validate(s)
+	if s.ChannelContexts != nil {
+		for _, item := range s.ChannelContexts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ReleaseCallResponseBodyDataCallContextChannelContexts struct {

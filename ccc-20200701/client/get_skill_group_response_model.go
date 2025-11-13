@@ -59,5 +59,10 @@ func (s *GetSkillGroupResponse) SetBody(v *GetSkillGroupResponseBody) *GetSkillG
 }
 
 func (s *GetSkillGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

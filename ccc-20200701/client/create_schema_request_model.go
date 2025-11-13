@@ -99,7 +99,16 @@ func (s *CreateSchemaRequest) SetRequestId(v string) *CreateSchemaRequest {
 }
 
 func (s *CreateSchemaRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Properties != nil {
+		for _, item := range s.Properties {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateSchemaRequestProperties struct {

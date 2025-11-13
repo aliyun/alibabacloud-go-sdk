@@ -92,7 +92,16 @@ func (s *ListIntervalAgentReportResponseBody) SetRequestId(v string) *ListInterv
 }
 
 func (s *ListIntervalAgentReportResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIntervalAgentReportResponseBodyData struct {
@@ -170,7 +179,32 @@ func (s *ListIntervalAgentReportResponseBodyData) SetStatsTime(v int64) *ListInt
 }
 
 func (s *ListIntervalAgentReportResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Back2Back != nil {
+		if err := s.Back2Back.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Inbound != nil {
+		if err := s.Inbound.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Internal != nil {
+		if err := s.Internal.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Outbound != nil {
+		if err := s.Outbound.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Overall != nil {
+		if err := s.Overall.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListIntervalAgentReportResponseBodyDataBack2Back struct {
@@ -755,7 +789,16 @@ func (s *ListIntervalAgentReportResponseBodyDataInbound) SetTotalWorkTime(v int6
 }
 
 func (s *ListIntervalAgentReportResponseBodyDataInbound) Validate() error {
-	return dara.Validate(s)
+	if s.AccessChannelTypeDetails != nil {
+		for _, item := range s.AccessChannelTypeDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIntervalAgentReportResponseBodyDataInboundAccessChannelTypeDetails struct {
@@ -1693,7 +1736,16 @@ func (s *ListIntervalAgentReportResponseBodyDataOverall) SetTotalWorkTime(v int6
 }
 
 func (s *ListIntervalAgentReportResponseBodyDataOverall) Validate() error {
-	return dara.Validate(s)
+	if s.BreakCodeDetailList != nil {
+		for _, item := range s.BreakCodeDetailList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIntervalAgentReportResponseBodyDataOverallBreakCodeDetailList struct {

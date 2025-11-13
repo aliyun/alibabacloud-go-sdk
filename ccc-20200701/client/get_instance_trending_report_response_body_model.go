@@ -92,7 +92,12 @@ func (s *GetInstanceTrendingReportResponseBody) SetRequestId(v string) *GetInsta
 }
 
 func (s *GetInstanceTrendingReportResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceTrendingReportResponseBodyData struct {
@@ -137,7 +142,34 @@ func (s *GetInstanceTrendingReportResponseBodyData) SetOverall(v []*GetInstanceT
 }
 
 func (s *GetInstanceTrendingReportResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Inbound != nil {
+		for _, item := range s.Inbound {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Outbound != nil {
+		for _, item := range s.Outbound {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Overall != nil {
+		for _, item := range s.Overall {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstanceTrendingReportResponseBodyDataInbound struct {

@@ -104,7 +104,12 @@ func (s *RedialCallResponseBody) SetRequestId(v string) *RedialCallResponseBody 
 }
 
 func (s *RedialCallResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RedialCallResponseBodyData struct {
@@ -152,7 +157,17 @@ func (s *RedialCallResponseBodyData) SetUserContext(v *RedialCallResponseBodyDat
 }
 
 func (s *RedialCallResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CallContext != nil {
+		if err := s.CallContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserContext != nil {
+		if err := s.UserContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RedialCallResponseBodyDataCallContext struct {
@@ -216,7 +231,16 @@ func (s *RedialCallResponseBodyDataCallContext) SetJobId(v string) *RedialCallRe
 }
 
 func (s *RedialCallResponseBodyDataCallContext) Validate() error {
-	return dara.Validate(s)
+	if s.ChannelContexts != nil {
+		for _, item := range s.ChannelContexts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RedialCallResponseBodyDataCallContextChannelContexts struct {

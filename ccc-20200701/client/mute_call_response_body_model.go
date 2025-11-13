@@ -104,7 +104,12 @@ func (s *MuteCallResponseBody) SetRequestId(v string) *MuteCallResponseBody {
 }
 
 func (s *MuteCallResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MuteCallResponseBodyData struct {
@@ -139,7 +144,17 @@ func (s *MuteCallResponseBodyData) SetUserContext(v *MuteCallResponseBodyDataUse
 }
 
 func (s *MuteCallResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CallContext != nil {
+		if err := s.CallContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserContext != nil {
+		if err := s.UserContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MuteCallResponseBodyDataCallContext struct {
@@ -203,7 +218,16 @@ func (s *MuteCallResponseBodyDataCallContext) SetJobId(v string) *MuteCallRespon
 }
 
 func (s *MuteCallResponseBodyDataCallContext) Validate() error {
-	return dara.Validate(s)
+	if s.ChannelContexts != nil {
+		for _, item := range s.ChannelContexts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MuteCallResponseBodyDataCallContextChannelContexts struct {

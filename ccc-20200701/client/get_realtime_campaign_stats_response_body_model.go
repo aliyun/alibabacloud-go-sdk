@@ -92,7 +92,12 @@ func (s *GetRealtimeCampaignStatsResponseBody) SetRequestId(v string) *GetRealti
 }
 
 func (s *GetRealtimeCampaignStatsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRealtimeCampaignStatsResponseBodyData struct {

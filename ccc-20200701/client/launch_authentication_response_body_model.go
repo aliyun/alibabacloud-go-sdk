@@ -104,7 +104,12 @@ func (s *LaunchAuthenticationResponseBody) SetRequestId(v string) *LaunchAuthent
 }
 
 func (s *LaunchAuthenticationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type LaunchAuthenticationResponseBodyData struct {
@@ -139,7 +144,17 @@ func (s *LaunchAuthenticationResponseBodyData) SetUserContext(v *LaunchAuthentic
 }
 
 func (s *LaunchAuthenticationResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CallContext != nil {
+		if err := s.CallContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserContext != nil {
+		if err := s.UserContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type LaunchAuthenticationResponseBodyDataCallContext struct {
@@ -203,7 +218,16 @@ func (s *LaunchAuthenticationResponseBodyDataCallContext) SetJobId(v string) *La
 }
 
 func (s *LaunchAuthenticationResponseBodyDataCallContext) Validate() error {
-	return dara.Validate(s)
+	if s.ChannelContexts != nil {
+		for _, item := range s.ChannelContexts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type LaunchAuthenticationResponseBodyDataCallContextChannelContexts struct {

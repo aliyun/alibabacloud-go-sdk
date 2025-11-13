@@ -92,7 +92,16 @@ func (s *ListWaitingChatsResponseBody) SetRequestId(v string) *ListWaitingChatsR
 }
 
 func (s *ListWaitingChatsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWaitingChatsResponseBodyData struct {
@@ -215,7 +224,25 @@ func (s *ListWaitingChatsResponseBodyData) SetUserList(v []*ListWaitingChatsResp
 }
 
 func (s *ListWaitingChatsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		for _, item := range s.Messages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserList != nil {
+		for _, item := range s.UserList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWaitingChatsResponseBodyDataMessages struct {

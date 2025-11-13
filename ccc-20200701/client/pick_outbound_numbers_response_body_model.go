@@ -92,7 +92,16 @@ func (s *PickOutboundNumbersResponseBody) SetRequestId(v string) *PickOutboundNu
 }
 
 func (s *PickOutboundNumbersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PickOutboundNumbersResponseBodyData struct {
@@ -127,7 +136,17 @@ func (s *PickOutboundNumbersResponseBodyData) SetCaller(v *PickOutboundNumbersRe
 }
 
 func (s *PickOutboundNumbersResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Callee != nil {
+		if err := s.Callee.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Caller != nil {
+		if err := s.Caller.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PickOutboundNumbersResponseBodyDataCallee struct {

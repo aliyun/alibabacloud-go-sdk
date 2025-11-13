@@ -95,7 +95,12 @@ func (s *GetDataChannelCredentialsResponseBody) SetRequestId(v string) *GetDataC
 }
 
 func (s *GetDataChannelCredentialsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataChannelCredentialsResponseBodyData struct {

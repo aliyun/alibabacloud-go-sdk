@@ -92,7 +92,12 @@ func (s *GetCallDetailRecordResponseBody) SetRequestId(v string) *GetCallDetailR
 }
 
 func (s *GetCallDetailRecordResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCallDetailRecordResponseBodyData struct {
@@ -464,7 +469,48 @@ func (s *GetCallDetailRecordResponseBodyData) SetStartTime(v int64) *GetCallDeta
 }
 
 func (s *GetCallDetailRecordResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AgentEvents != nil {
+		for _, item := range s.AgentEvents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AnalyticsReport != nil {
+		if err := s.AnalyticsReport.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomerEvents != nil {
+		for _, item := range s.CustomerEvents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.IvrEvents != nil {
+		for _, item := range s.IvrEvents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.QueueEvents != nil {
+		for _, item := range s.QueueEvents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCallDetailRecordResponseBodyDataAgentEvents struct {
@@ -525,7 +571,16 @@ func (s *GetCallDetailRecordResponseBodyDataAgentEvents) SetSkillGroupId(v strin
 }
 
 func (s *GetCallDetailRecordResponseBodyDataAgentEvents) Validate() error {
-	return dara.Validate(s)
+	if s.EventSequence != nil {
+		for _, item := range s.EventSequence {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCallDetailRecordResponseBodyDataAgentEventsEventSequence struct {
@@ -634,7 +689,27 @@ func (s *GetCallDetailRecordResponseBodyDataAnalyticsReport) SetTodoList(v *GetC
 }
 
 func (s *GetCallDetailRecordResponseBodyDataAnalyticsReport) Validate() error {
-	return dara.Validate(s)
+	if s.Emotion != nil {
+		if err := s.Emotion.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProblemSolving != nil {
+		if err := s.ProblemSolving.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Satisfaction != nil {
+		if err := s.Satisfaction.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TodoList != nil {
+		if err := s.TodoList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion struct {
@@ -902,7 +977,16 @@ func (s *GetCallDetailRecordResponseBodyDataCustomerEvents) SetEventSequence(v [
 }
 
 func (s *GetCallDetailRecordResponseBodyDataCustomerEvents) Validate() error {
-	return dara.Validate(s)
+	if s.EventSequence != nil {
+		for _, item := range s.EventSequence {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCallDetailRecordResponseBodyDataCustomerEventsEventSequence struct {
@@ -994,7 +1078,16 @@ func (s *GetCallDetailRecordResponseBodyDataIvrEvents) SetFlowType(v string) *Ge
 }
 
 func (s *GetCallDetailRecordResponseBodyDataIvrEvents) Validate() error {
-	return dara.Validate(s)
+	if s.EventSequence != nil {
+		for _, item := range s.EventSequence {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCallDetailRecordResponseBodyDataIvrEventsEventSequence struct {
@@ -1109,7 +1202,16 @@ func (s *GetCallDetailRecordResponseBodyDataQueueEvents) SetQueueType(v int32) *
 }
 
 func (s *GetCallDetailRecordResponseBodyDataQueueEvents) Validate() error {
-	return dara.Validate(s)
+	if s.EventSequence != nil {
+		for _, item := range s.EventSequence {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCallDetailRecordResponseBodyDataQueueEventsEventSequence struct {

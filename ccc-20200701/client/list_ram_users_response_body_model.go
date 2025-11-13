@@ -104,7 +104,12 @@ func (s *ListRamUsersResponseBody) SetRequestId(v string) *ListRamUsersResponseB
 }
 
 func (s *ListRamUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRamUsersResponseBodyData struct {
@@ -168,7 +173,16 @@ func (s *ListRamUsersResponseBodyData) SetTotalCount(v int32) *ListRamUsersRespo
 }
 
 func (s *ListRamUsersResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRamUsersResponseBodyDataList struct {

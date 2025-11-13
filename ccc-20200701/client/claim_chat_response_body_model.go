@@ -104,7 +104,12 @@ func (s *ClaimChatResponseBody) SetRequestId(v string) *ClaimChatResponseBody {
 }
 
 func (s *ClaimChatResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ClaimChatResponseBodyData struct {
@@ -152,7 +157,21 @@ func (s *ClaimChatResponseBodyData) SetUserContext(v *ClaimChatResponseBodyDataU
 }
 
 func (s *ClaimChatResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ChatContexts != nil {
+		for _, item := range s.ChatContexts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserContext != nil {
+		if err := s.UserContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ClaimChatResponseBodyDataChatContexts struct {

@@ -107,7 +107,12 @@ func (s *ListAgentStatesResponseBody) SetSuccess(v bool) *ListAgentStatesRespons
 }
 
 func (s *ListAgentStatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAgentStatesResponseBodyData struct {
@@ -171,7 +176,16 @@ func (s *ListAgentStatesResponseBodyData) SetTotalCount(v int32) *ListAgentState
 }
 
 func (s *ListAgentStatesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAgentStatesResponseBodyDataList struct {

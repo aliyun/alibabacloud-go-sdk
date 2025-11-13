@@ -92,7 +92,12 @@ func (s *ListPhoneNumbersResponseBody) SetRequestId(v string) *ListPhoneNumbersR
 }
 
 func (s *ListPhoneNumbersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListPhoneNumbersResponseBodyData struct {
@@ -156,7 +161,16 @@ func (s *ListPhoneNumbersResponseBodyData) SetTotalCount(v int32) *ListPhoneNumb
 }
 
 func (s *ListPhoneNumbersResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPhoneNumbersResponseBodyDataList struct {
@@ -328,7 +342,16 @@ func (s *ListPhoneNumbersResponseBodyDataList) SetUserId(v string) *ListPhoneNum
 }
 
 func (s *ListPhoneNumbersResponseBodyDataList) Validate() error {
-	return dara.Validate(s)
+	if s.SkillGroups != nil {
+		for _, item := range s.SkillGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPhoneNumbersResponseBodyDataListSkillGroups struct {

@@ -104,7 +104,12 @@ func (s *CompleteAttendedTransferResponseBody) SetRequestId(v string) *CompleteA
 }
 
 func (s *CompleteAttendedTransferResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CompleteAttendedTransferResponseBodyData struct {
@@ -152,7 +157,17 @@ func (s *CompleteAttendedTransferResponseBodyData) SetUserContext(v *CompleteAtt
 }
 
 func (s *CompleteAttendedTransferResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CallContext != nil {
+		if err := s.CallContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserContext != nil {
+		if err := s.UserContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CompleteAttendedTransferResponseBodyDataCallContext struct {
@@ -216,7 +231,16 @@ func (s *CompleteAttendedTransferResponseBodyDataCallContext) SetJobId(v string)
 }
 
 func (s *CompleteAttendedTransferResponseBodyDataCallContext) Validate() error {
-	return dara.Validate(s)
+	if s.ChannelContexts != nil {
+		for _, item := range s.ChannelContexts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CompleteAttendedTransferResponseBodyDataCallContextChannelContexts struct {

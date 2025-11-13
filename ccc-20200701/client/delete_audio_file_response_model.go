@@ -59,5 +59,10 @@ func (s *DeleteAudioFileResponse) SetBody(v *DeleteAudioFileResponseBody) *Delet
 }
 
 func (s *DeleteAudioFileResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

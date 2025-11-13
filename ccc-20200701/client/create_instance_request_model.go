@@ -37,8 +37,6 @@ type CreateInstanceRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// This parameter is required.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// ["0830011xxxx", "0830312xxxx"]

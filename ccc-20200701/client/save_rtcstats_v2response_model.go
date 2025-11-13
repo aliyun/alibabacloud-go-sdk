@@ -59,5 +59,10 @@ func (s *SaveRTCStatsV2Response) SetBody(v *SaveRTCStatsV2ResponseBody) *SaveRTC
 }
 
 func (s *SaveRTCStatsV2Response) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

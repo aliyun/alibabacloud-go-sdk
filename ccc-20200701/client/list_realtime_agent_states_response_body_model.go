@@ -92,7 +92,12 @@ func (s *ListRealtimeAgentStatesResponseBody) SetRequestId(v string) *ListRealti
 }
 
 func (s *ListRealtimeAgentStatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRealtimeAgentStatesResponseBodyData struct {
@@ -156,7 +161,16 @@ func (s *ListRealtimeAgentStatesResponseBodyData) SetTotalCount(v int32) *ListRe
 }
 
 func (s *ListRealtimeAgentStatesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRealtimeAgentStatesResponseBodyDataList struct {

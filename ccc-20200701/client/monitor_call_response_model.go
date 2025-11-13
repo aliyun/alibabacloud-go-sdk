@@ -59,5 +59,10 @@ func (s *MonitorCallResponse) SetBody(v *MonitorCallResponseBody) *MonitorCallRe
 }
 
 func (s *MonitorCallResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

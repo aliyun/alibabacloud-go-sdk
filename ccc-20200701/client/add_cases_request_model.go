@@ -69,7 +69,16 @@ func (s *AddCasesRequest) SetInstanceId(v string) *AddCasesRequest {
 }
 
 func (s *AddCasesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CaseList != nil {
+		for _, item := range s.CaseList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddCasesRequestCaseList struct {

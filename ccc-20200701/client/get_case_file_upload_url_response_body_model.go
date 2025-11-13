@@ -92,7 +92,12 @@ func (s *GetCaseFileUploadUrlResponseBody) SetRequestId(v string) *GetCaseFileUp
 }
 
 func (s *GetCaseFileUploadUrlResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCaseFileUploadUrlResponseBodyData struct {

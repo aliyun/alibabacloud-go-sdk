@@ -21,6 +21,10 @@ type iCreateCampaignShrinkRequest interface {
 	GetEndTime() *string
 	SetExecutingUntilTimeout(v bool) *CreateCampaignShrinkRequest
 	GetExecutingUntilTimeout() *bool
+	SetFlashSmsParameters(v string) *CreateCampaignShrinkRequest
+	GetFlashSmsParameters() *string
+	SetInstGroupId(v string) *CreateCampaignShrinkRequest
+	GetInstGroupId() *string
 	SetInstanceId(v string) *CreateCampaignShrinkRequest
 	GetInstanceId() *string
 	SetMaxAttemptCount(v int64) *CreateCampaignShrinkRequest
@@ -29,6 +33,8 @@ type iCreateCampaignShrinkRequest interface {
 	GetMinAttemptInterval() *int64
 	SetName(v string) *CreateCampaignShrinkRequest
 	GetName() *string
+	SetNumberListShrink(v string) *CreateCampaignShrinkRequest
+	GetNumberListShrink() *string
 	SetQueueId(v string) *CreateCampaignShrinkRequest
 	GetQueueId() *string
 	SetSimulation(v bool) *CreateCampaignShrinkRequest
@@ -68,6 +74,14 @@ type CreateCampaignShrinkRequest struct {
 	// 1634313600000
 	EndTime               *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	ExecutingUntilTimeout *bool   `json:"ExecutingUntilTimeout,omitempty" xml:"ExecutingUntilTimeout,omitempty"`
+	// example:
+	//
+	// {"applicationId":"08e6b63a-****-****-****-689a288cdbb5","templateId":"325"}
+	FlashSmsParameters *string `json:"FlashSmsParameters,omitempty" xml:"FlashSmsParameters,omitempty"`
+	// example:
+	//
+	// 0d368091-2c70-4d26-979a-6997ddc9c34f
+	InstGroupId *string `json:"InstGroupId,omitempty" xml:"InstGroupId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -91,7 +105,8 @@ type CreateCampaignShrinkRequest struct {
 	// example:
 	//
 	// test-campaign
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NumberListShrink *string `json:"NumberList,omitempty" xml:"NumberList,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -152,6 +167,14 @@ func (s *CreateCampaignShrinkRequest) GetExecutingUntilTimeout() *bool {
 	return s.ExecutingUntilTimeout
 }
 
+func (s *CreateCampaignShrinkRequest) GetFlashSmsParameters() *string {
+	return s.FlashSmsParameters
+}
+
+func (s *CreateCampaignShrinkRequest) GetInstGroupId() *string {
+	return s.InstGroupId
+}
+
 func (s *CreateCampaignShrinkRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -166,6 +189,10 @@ func (s *CreateCampaignShrinkRequest) GetMinAttemptInterval() *int64 {
 
 func (s *CreateCampaignShrinkRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *CreateCampaignShrinkRequest) GetNumberListShrink() *string {
+	return s.NumberListShrink
 }
 
 func (s *CreateCampaignShrinkRequest) GetQueueId() *string {
@@ -222,6 +249,16 @@ func (s *CreateCampaignShrinkRequest) SetExecutingUntilTimeout(v bool) *CreateCa
 	return s
 }
 
+func (s *CreateCampaignShrinkRequest) SetFlashSmsParameters(v string) *CreateCampaignShrinkRequest {
+	s.FlashSmsParameters = &v
+	return s
+}
+
+func (s *CreateCampaignShrinkRequest) SetInstGroupId(v string) *CreateCampaignShrinkRequest {
+	s.InstGroupId = &v
+	return s
+}
+
 func (s *CreateCampaignShrinkRequest) SetInstanceId(v string) *CreateCampaignShrinkRequest {
 	s.InstanceId = &v
 	return s
@@ -239,6 +276,11 @@ func (s *CreateCampaignShrinkRequest) SetMinAttemptInterval(v int64) *CreateCamp
 
 func (s *CreateCampaignShrinkRequest) SetName(v string) *CreateCampaignShrinkRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateCampaignShrinkRequest) SetNumberListShrink(v string) *CreateCampaignShrinkRequest {
+	s.NumberListShrink = &v
 	return s
 }
 

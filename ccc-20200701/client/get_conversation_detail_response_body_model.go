@@ -92,7 +92,16 @@ func (s *GetConversationDetailResponseBody) SetRequestId(v string) *GetConversat
 }
 
 func (s *GetConversationDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Phrases != nil {
+		for _, item := range s.Phrases {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetConversationDetailResponseBodyPhrases struct {

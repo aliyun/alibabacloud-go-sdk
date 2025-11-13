@@ -104,7 +104,12 @@ func (s *GetTicketTemplateResponseBody) SetRequestId(v string) *GetTicketTemplat
 }
 
 func (s *GetTicketTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTicketTemplateResponseBodyData struct {
@@ -227,7 +232,16 @@ func (s *GetTicketTemplateResponseBodyData) SetUpdatedTime(v int64) *GetTicketTe
 }
 
 func (s *GetTicketTemplateResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.TicketFields != nil {
+		for _, item := range s.TicketFields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTicketTemplateResponseBodyDataTicketFields struct {

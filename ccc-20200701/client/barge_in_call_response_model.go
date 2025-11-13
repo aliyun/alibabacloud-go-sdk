@@ -59,5 +59,10 @@ func (s *BargeInCallResponse) SetBody(v *BargeInCallResponseBody) *BargeInCallRe
 }
 
 func (s *BargeInCallResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

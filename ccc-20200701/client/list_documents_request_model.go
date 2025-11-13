@@ -128,7 +128,16 @@ func (s *ListDocumentsRequest) SetSorts(v []*ListDocumentsRequestSorts) *ListDoc
 }
 
 func (s *ListDocumentsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Sorts != nil {
+		for _, item := range s.Sorts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDocumentsRequestSorts struct {

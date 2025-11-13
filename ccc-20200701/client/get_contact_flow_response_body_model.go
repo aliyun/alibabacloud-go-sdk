@@ -92,7 +92,12 @@ func (s *GetContactFlowResponseBody) SetRequestId(v string) *GetContactFlowRespo
 }
 
 func (s *GetContactFlowResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetContactFlowResponseBodyData struct {

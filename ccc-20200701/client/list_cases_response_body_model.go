@@ -92,7 +92,12 @@ func (s *ListCasesResponseBody) SetRequestId(v string) *ListCasesResponseBody {
 }
 
 func (s *ListCasesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCasesResponseBodyData struct {
@@ -156,7 +161,16 @@ func (s *ListCasesResponseBodyData) SetTotalCount(v int64) *ListCasesResponseBod
 }
 
 func (s *ListCasesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCasesResponseBodyDataList struct {

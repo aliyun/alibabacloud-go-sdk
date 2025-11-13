@@ -59,5 +59,10 @@ func (s *GetNumberLocationResponse) SetBody(v *GetNumberLocationResponseBody) *G
 }
 
 func (s *GetNumberLocationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

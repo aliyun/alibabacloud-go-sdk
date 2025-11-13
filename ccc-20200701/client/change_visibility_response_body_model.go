@@ -107,7 +107,12 @@ func (s *ChangeVisibilityResponseBody) SetRequestId(v string) *ChangeVisibilityR
 }
 
 func (s *ChangeVisibilityResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ChangeVisibilityResponseBodyData struct {

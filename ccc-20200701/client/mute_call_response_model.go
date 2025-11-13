@@ -59,5 +59,10 @@ func (s *MuteCallResponse) SetBody(v *MuteCallResponseBody) *MuteCallResponse {
 }
 
 func (s *MuteCallResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

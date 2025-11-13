@@ -59,5 +59,10 @@ func (s *CreateChatMediaUrlResponse) SetBody(v *CreateChatMediaUrlResponseBody) 
 }
 
 func (s *CreateChatMediaUrlResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

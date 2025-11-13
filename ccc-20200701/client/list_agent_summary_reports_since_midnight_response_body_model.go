@@ -107,7 +107,12 @@ func (s *ListAgentSummaryReportsSinceMidnightResponseBody) SetSuccess(v bool) *L
 }
 
 func (s *ListAgentSummaryReportsSinceMidnightResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagedAgentSummaryReport != nil {
+		if err := s.PagedAgentSummaryReport.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReport struct {
@@ -171,7 +176,16 @@ func (s *ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReport
 }
 
 func (s *ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReport) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReportList struct {
@@ -301,7 +315,22 @@ func (s *ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReport
 }
 
 func (s *ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReportList) Validate() error {
-	return dara.Validate(s)
+	if s.Inbound != nil {
+		if err := s.Inbound.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Outbound != nil {
+		if err := s.Outbound.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Overall != nil {
+		if err := s.Overall.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReportListInbound struct {

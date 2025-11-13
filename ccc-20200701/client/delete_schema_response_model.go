@@ -59,5 +59,10 @@ func (s *DeleteSchemaResponse) SetBody(v *DeleteSchemaResponseBody) *DeleteSchem
 }
 
 func (s *DeleteSchemaResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

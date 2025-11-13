@@ -92,7 +92,12 @@ func (s *GetRealtimeInstanceStatesResponseBody) SetRequestId(v string) *GetRealt
 }
 
 func (s *GetRealtimeInstanceStatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRealtimeInstanceStatesResponseBodyData struct {
@@ -247,7 +252,16 @@ func (s *GetRealtimeInstanceStatesResponseBodyData) SetWorkingAgents(v int64) *G
 }
 
 func (s *GetRealtimeInstanceStatesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.BreakCodeDetailList != nil {
+		for _, item := range s.BreakCodeDetailList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRealtimeInstanceStatesResponseBodyDataBreakCodeDetailList struct {

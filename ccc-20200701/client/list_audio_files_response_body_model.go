@@ -92,7 +92,12 @@ func (s *ListAudioFilesResponseBody) SetRequestId(v string) *ListAudioFilesRespo
 }
 
 func (s *ListAudioFilesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAudioFilesResponseBodyData struct {
@@ -156,7 +161,16 @@ func (s *ListAudioFilesResponseBodyData) SetTotalCount(v int32) *ListAudioFilesR
 }
 
 func (s *ListAudioFilesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAudioFilesResponseBodyDataList struct {

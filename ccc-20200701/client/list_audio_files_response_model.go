@@ -59,5 +59,10 @@ func (s *ListAudioFilesResponse) SetBody(v *ListAudioFilesResponseBody) *ListAud
 }
 
 func (s *ListAudioFilesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

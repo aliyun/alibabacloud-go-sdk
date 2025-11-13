@@ -104,7 +104,12 @@ func (s *LaunchSurveyResponseBody) SetRequestId(v string) *LaunchSurveyResponseB
 }
 
 func (s *LaunchSurveyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type LaunchSurveyResponseBodyData struct {
@@ -152,7 +157,17 @@ func (s *LaunchSurveyResponseBodyData) SetUserContext(v *LaunchSurveyResponseBod
 }
 
 func (s *LaunchSurveyResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CallContext != nil {
+		if err := s.CallContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserContext != nil {
+		if err := s.UserContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type LaunchSurveyResponseBodyDataCallContext struct {
@@ -216,7 +231,16 @@ func (s *LaunchSurveyResponseBodyDataCallContext) SetJobId(v string) *LaunchSurv
 }
 
 func (s *LaunchSurveyResponseBodyDataCallContext) Validate() error {
-	return dara.Validate(s)
+	if s.ChannelContexts != nil {
+		for _, item := range s.ChannelContexts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type LaunchSurveyResponseBodyDataCallContextChannelContexts struct {

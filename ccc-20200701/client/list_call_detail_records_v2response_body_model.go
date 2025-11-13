@@ -92,7 +92,12 @@ func (s *ListCallDetailRecordsV2ResponseBody) SetRequestId(v string) *ListCallDe
 }
 
 func (s *ListCallDetailRecordsV2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCallDetailRecordsV2ResponseBodyData struct {
@@ -156,7 +161,16 @@ func (s *ListCallDetailRecordsV2ResponseBodyData) SetTotalCount(v int32) *ListCa
 }
 
 func (s *ListCallDetailRecordsV2ResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCallDetailRecordsV2ResponseBodyDataList struct {
@@ -900,7 +914,17 @@ func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetWaitTime(v int64) *List
 }
 
 func (s *ListCallDetailRecordsV2ResponseBodyDataList) Validate() error {
-	return dara.Validate(s)
+	if s.AnalyticsReport != nil {
+		if err := s.AnalyticsReport.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SummaryIndex != nil {
+		if err := s.SummaryIndex.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport struct {
@@ -955,7 +979,27 @@ func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport) SetTodoList
 }
 
 func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport) Validate() error {
-	return dara.Validate(s)
+	if s.Emotion != nil {
+		if err := s.Emotion.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProblemSolving != nil {
+		if err := s.ProblemSolving.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Satisfaction != nil {
+		if err := s.Satisfaction.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TodoList != nil {
+		if err := s.TodoList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion struct {

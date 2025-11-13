@@ -92,7 +92,12 @@ func (s *GetVoicemailRecordingResponseBody) SetRequestId(v string) *GetVoicemail
 }
 
 func (s *GetVoicemailRecordingResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetVoicemailRecordingResponseBodyData struct {

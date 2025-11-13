@@ -59,5 +59,10 @@ func (s *RejectChatResponse) SetBody(v *RejectChatResponseBody) *RejectChatRespo
 }
 
 func (s *RejectChatResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

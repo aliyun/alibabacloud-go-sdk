@@ -104,7 +104,12 @@ func (s *StartBack2BackCallResponseBody) SetRequestId(v string) *StartBack2BackC
 }
 
 func (s *StartBack2BackCallResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartBack2BackCallResponseBodyData struct {
@@ -139,7 +144,17 @@ func (s *StartBack2BackCallResponseBodyData) SetUserContext(v *StartBack2BackCal
 }
 
 func (s *StartBack2BackCallResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CallContext != nil {
+		if err := s.CallContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserContext != nil {
+		if err := s.UserContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartBack2BackCallResponseBodyDataCallContext struct {
@@ -203,7 +218,16 @@ func (s *StartBack2BackCallResponseBodyDataCallContext) SetJobId(v string) *Star
 }
 
 func (s *StartBack2BackCallResponseBodyDataCallContext) Validate() error {
-	return dara.Validate(s)
+	if s.ChannelContexts != nil {
+		for _, item := range s.ChannelContexts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type StartBack2BackCallResponseBodyDataCallContextChannelContexts struct {

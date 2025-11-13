@@ -21,6 +21,10 @@ type iCreateCampaignRequest interface {
 	GetEndTime() *string
 	SetExecutingUntilTimeout(v bool) *CreateCampaignRequest
 	GetExecutingUntilTimeout() *bool
+	SetFlashSmsParameters(v string) *CreateCampaignRequest
+	GetFlashSmsParameters() *string
+	SetInstGroupId(v string) *CreateCampaignRequest
+	GetInstGroupId() *string
 	SetInstanceId(v string) *CreateCampaignRequest
 	GetInstanceId() *string
 	SetMaxAttemptCount(v int64) *CreateCampaignRequest
@@ -29,6 +33,8 @@ type iCreateCampaignRequest interface {
 	GetMinAttemptInterval() *int64
 	SetName(v string) *CreateCampaignRequest
 	GetName() *string
+	SetNumberList(v []*string) *CreateCampaignRequest
+	GetNumberList() []*string
 	SetQueueId(v string) *CreateCampaignRequest
 	GetQueueId() *string
 	SetSimulation(v bool) *CreateCampaignRequest
@@ -68,6 +74,14 @@ type CreateCampaignRequest struct {
 	// 1634313600000
 	EndTime               *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	ExecutingUntilTimeout *bool   `json:"ExecutingUntilTimeout,omitempty" xml:"ExecutingUntilTimeout,omitempty"`
+	// example:
+	//
+	// {"applicationId":"08e6b63a-****-****-****-689a288cdbb5","templateId":"325"}
+	FlashSmsParameters *string `json:"FlashSmsParameters,omitempty" xml:"FlashSmsParameters,omitempty"`
+	// example:
+	//
+	// 0d368091-2c70-4d26-979a-6997ddc9c34f
+	InstGroupId *string `json:"InstGroupId,omitempty" xml:"InstGroupId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -91,7 +105,8 @@ type CreateCampaignRequest struct {
 	// example:
 	//
 	// test-campaign
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	NumberList []*string `json:"NumberList,omitempty" xml:"NumberList,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -152,6 +167,14 @@ func (s *CreateCampaignRequest) GetExecutingUntilTimeout() *bool {
 	return s.ExecutingUntilTimeout
 }
 
+func (s *CreateCampaignRequest) GetFlashSmsParameters() *string {
+	return s.FlashSmsParameters
+}
+
+func (s *CreateCampaignRequest) GetInstGroupId() *string {
+	return s.InstGroupId
+}
+
 func (s *CreateCampaignRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -166,6 +189,10 @@ func (s *CreateCampaignRequest) GetMinAttemptInterval() *int64 {
 
 func (s *CreateCampaignRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *CreateCampaignRequest) GetNumberList() []*string {
+	return s.NumberList
 }
 
 func (s *CreateCampaignRequest) GetQueueId() *string {
@@ -222,6 +249,16 @@ func (s *CreateCampaignRequest) SetExecutingUntilTimeout(v bool) *CreateCampaign
 	return s
 }
 
+func (s *CreateCampaignRequest) SetFlashSmsParameters(v string) *CreateCampaignRequest {
+	s.FlashSmsParameters = &v
+	return s
+}
+
+func (s *CreateCampaignRequest) SetInstGroupId(v string) *CreateCampaignRequest {
+	s.InstGroupId = &v
+	return s
+}
+
 func (s *CreateCampaignRequest) SetInstanceId(v string) *CreateCampaignRequest {
 	s.InstanceId = &v
 	return s
@@ -239,6 +276,11 @@ func (s *CreateCampaignRequest) SetMinAttemptInterval(v int64) *CreateCampaignRe
 
 func (s *CreateCampaignRequest) SetName(v string) *CreateCampaignRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateCampaignRequest) SetNumberList(v []*string) *CreateCampaignRequest {
+	s.NumberList = v
 	return s
 }
 
@@ -273,7 +315,16 @@ func (s *CreateCampaignRequest) SetStrategyType(v string) *CreateCampaignRequest
 }
 
 func (s *CreateCampaignRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CaseList != nil {
+		for _, item := range s.CaseList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateCampaignRequestCaseList struct {

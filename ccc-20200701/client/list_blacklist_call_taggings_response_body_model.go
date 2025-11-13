@@ -94,7 +94,16 @@ func (s *ListBlacklistCallTaggingsResponseBody) SetRequestId(v string) *ListBlac
 }
 
 func (s *ListBlacklistCallTaggingsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListBlacklistCallTaggingsResponseBodyData struct {

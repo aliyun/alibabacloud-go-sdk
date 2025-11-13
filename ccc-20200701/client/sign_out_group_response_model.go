@@ -59,5 +59,10 @@ func (s *SignOutGroupResponse) SetBody(v *SignOutGroupResponseBody) *SignOutGrou
 }
 
 func (s *SignOutGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

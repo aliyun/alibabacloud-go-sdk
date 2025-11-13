@@ -104,7 +104,12 @@ func (s *PollUserStatusResponseBody) SetRequestId(v string) *PollUserStatusRespo
 }
 
 func (s *PollUserStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PollUserStatusResponseBodyData struct {
@@ -162,7 +167,26 @@ func (s *PollUserStatusResponseBodyData) SetUserContext(v *PollUserStatusRespons
 }
 
 func (s *PollUserStatusResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CallContext != nil {
+		if err := s.CallContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ChatContexts != nil {
+		for _, item := range s.ChatContexts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserContext != nil {
+		if err := s.UserContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PollUserStatusResponseBodyDataCallContext struct {
@@ -239,7 +263,16 @@ func (s *PollUserStatusResponseBodyDataCallContext) SetJobId(v string) *PollUser
 }
 
 func (s *PollUserStatusResponseBodyDataCallContext) Validate() error {
-	return dara.Validate(s)
+	if s.ChannelContexts != nil {
+		for _, item := range s.ChannelContexts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PollUserStatusResponseBodyDataCallContextChannelContexts struct {
@@ -514,7 +547,16 @@ func (s *PollUserStatusResponseBodyDataChatContexts) SetMembers(v []*PollUserSta
 }
 
 func (s *PollUserStatusResponseBodyDataChatContexts) Validate() error {
-	return dara.Validate(s)
+	if s.Members != nil {
+		for _, item := range s.Members {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PollUserStatusResponseBodyDataChatContextsMembers struct {
@@ -790,7 +832,16 @@ func (s *PollUserStatusResponseBodyDataUserContext) SetWorkMode(v string) *PollU
 }
 
 func (s *PollUserStatusResponseBodyDataUserContext) Validate() error {
-	return dara.Validate(s)
+	if s.ParallelJobList != nil {
+		for _, item := range s.ParallelJobList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PollUserStatusResponseBodyDataUserContextParallelJobList struct {

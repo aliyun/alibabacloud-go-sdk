@@ -92,7 +92,12 @@ func (s *ListAttemptsResponseBody) SetRequestId(v string) *ListAttemptsResponseB
 }
 
 func (s *ListAttemptsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAttemptsResponseBodyData struct {
@@ -156,7 +161,16 @@ func (s *ListAttemptsResponseBodyData) SetTotalCount(v int32) *ListAttemptsRespo
 }
 
 func (s *ListAttemptsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAttemptsResponseBodyDataList struct {

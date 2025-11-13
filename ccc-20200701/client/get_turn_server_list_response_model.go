@@ -59,5 +59,10 @@ func (s *GetTurnServerListResponse) SetBody(v *GetTurnServerListResponseBody) *G
 }
 
 func (s *GetTurnServerListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

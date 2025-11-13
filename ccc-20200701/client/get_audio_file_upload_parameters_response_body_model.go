@@ -92,7 +92,12 @@ func (s *GetAudioFileUploadParametersResponseBody) SetRequestId(v string) *GetAu
 }
 
 func (s *GetAudioFileUploadParametersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAudioFileUploadParametersResponseBodyData struct {

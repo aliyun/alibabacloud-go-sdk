@@ -92,7 +92,16 @@ func (s *ListIntervalSkillGroupReportResponseBody) SetRequestId(v string) *ListI
 }
 
 func (s *ListIntervalSkillGroupReportResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIntervalSkillGroupReportResponseBodyData struct {
@@ -160,7 +169,27 @@ func (s *ListIntervalSkillGroupReportResponseBodyData) SetStatsTime(v int64) *Li
 }
 
 func (s *ListIntervalSkillGroupReportResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Back2Back != nil {
+		if err := s.Back2Back.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Inbound != nil {
+		if err := s.Inbound.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Outbound != nil {
+		if err := s.Outbound.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Overall != nil {
+		if err := s.Overall.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListIntervalSkillGroupReportResponseBodyDataBack2Back struct {
@@ -1695,7 +1724,16 @@ func (s *ListIntervalSkillGroupReportResponseBodyDataOverall) SetTotalWorkTime(v
 }
 
 func (s *ListIntervalSkillGroupReportResponseBodyDataOverall) Validate() error {
-	return dara.Validate(s)
+	if s.BreakCodeDetailList != nil {
+		for _, item := range s.BreakCodeDetailList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIntervalSkillGroupReportResponseBodyDataOverallBreakCodeDetailList struct {

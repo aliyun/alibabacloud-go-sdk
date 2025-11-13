@@ -59,5 +59,10 @@ func (s *RegisterDeviceResponse) SetBody(v *RegisterDeviceResponseBody) *Registe
 }
 
 func (s *RegisterDeviceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *CreateCallSummaryResponse) SetBody(v *CreateCallSummaryResponseBody) *C
 }
 
 func (s *CreateCallSummaryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

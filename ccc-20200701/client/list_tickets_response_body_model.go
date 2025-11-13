@@ -92,7 +92,12 @@ func (s *ListTicketsResponseBody) SetRequestId(v string) *ListTicketsResponseBod
 }
 
 func (s *ListTicketsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTicketsResponseBodyData struct {
@@ -156,7 +161,16 @@ func (s *ListTicketsResponseBodyData) SetTotalCount(v int64) *ListTicketsRespons
 }
 
 func (s *ListTicketsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTicketsResponseBodyDataList struct {

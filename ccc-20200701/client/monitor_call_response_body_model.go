@@ -104,7 +104,12 @@ func (s *MonitorCallResponseBody) SetRequestId(v string) *MonitorCallResponseBod
 }
 
 func (s *MonitorCallResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MonitorCallResponseBodyData struct {
@@ -139,7 +144,17 @@ func (s *MonitorCallResponseBodyData) SetUserContext(v *MonitorCallResponseBodyD
 }
 
 func (s *MonitorCallResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CallContext != nil {
+		if err := s.CallContext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserContext != nil {
+		if err := s.UserContext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MonitorCallResponseBodyDataCallContext struct {
@@ -203,7 +218,16 @@ func (s *MonitorCallResponseBodyDataCallContext) SetJobId(v string) *MonitorCall
 }
 
 func (s *MonitorCallResponseBodyDataCallContext) Validate() error {
-	return dara.Validate(s)
+	if s.ChannelContexts != nil {
+		for _, item := range s.ChannelContexts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MonitorCallResponseBodyDataCallContextChannelContexts struct {

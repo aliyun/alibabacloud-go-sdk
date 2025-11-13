@@ -104,7 +104,12 @@ func (s *ListSmsMetadataResponseBody) SetRequestId(v string) *ListSmsMetadataRes
 }
 
 func (s *ListSmsMetadataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSmsMetadataResponseBodyData struct {
@@ -168,7 +173,16 @@ func (s *ListSmsMetadataResponseBodyData) SetTotalCount(v int32) *ListSmsMetadat
 }
 
 func (s *ListSmsMetadataResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSmsMetadataResponseBodyDataList struct {
