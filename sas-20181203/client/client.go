@@ -3914,6 +3914,126 @@ func (client *Client) CreateBinarySecurityPolicy(request *CreateBinarySecurityPo
 
 // Summary:
 //
+// # User creates a custom check item
+//
+// @param tmpReq - CreateCheckItemRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCheckItemResponse
+func (client *Client) CreateCheckItemWithOptions(tmpReq *CreateCheckItemRequest, runtime *dara.RuntimeOptions) (_result *CreateCheckItemResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateCheckItemShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AssistInfo) {
+		request.AssistInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AssistInfo, dara.String("AssistInfo"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Description) {
+		request.DescriptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Description, dara.String("Description"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Solution) {
+		request.SolutionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Solution, dara.String("Solution"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AssistInfoShrink) {
+		query["AssistInfo"] = request.AssistInfoShrink
+	}
+
+	if !dara.IsNil(request.CheckRule) {
+		query["CheckRule"] = request.CheckRule
+	}
+
+	if !dara.IsNil(request.CheckShowName) {
+		query["CheckShowName"] = request.CheckShowName
+	}
+
+	if !dara.IsNil(request.DescriptionShrink) {
+		query["Description"] = request.DescriptionShrink
+	}
+
+	if !dara.IsNil(request.InstanceSubType) {
+		query["InstanceSubType"] = request.InstanceSubType
+	}
+
+	if !dara.IsNil(request.InstanceType) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.RiskLevel) {
+		query["RiskLevel"] = request.RiskLevel
+	}
+
+	if !dara.IsNil(request.SectionIds) {
+		query["SectionIds"] = request.SectionIds
+	}
+
+	if !dara.IsNil(request.SolutionShrink) {
+		query["Solution"] = request.SolutionShrink
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Vendor) {
+		query["Vendor"] = request.Vendor
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCheckItem"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCheckItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # User creates a custom check item
+//
+// @param request - CreateCheckItemRequest
+//
+// @return CreateCheckItemResponse
+func (client *Client) CreateCheckItem(request *CreateCheckItemRequest) (_result *CreateCheckItemResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateCheckItemResponse{}
+	_body, _err := client.CreateCheckItemWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a container scan task.
 //
 // @param request - CreateContainerScanTaskRequest
@@ -8172,6 +8292,68 @@ func (client *Client) DeleteBinarySecurityPolicy(request *DeleteBinarySecurityPo
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteBinarySecurityPolicyResponse{}
 	_body, _err := client.DeleteBinarySecurityPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Delete custom check item for Situation Awareness
+//
+// @param request - DeleteCheckItemRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCheckItemResponse
+func (client *Client) DeleteCheckItemWithOptions(request *DeleteCheckItemRequest, runtime *dara.RuntimeOptions) (_result *DeleteCheckItemResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CheckIds) {
+		query["CheckIds"] = request.CheckIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCheckItem"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCheckItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Delete custom check item for Situation Awareness
+//
+// @param request - DeleteCheckItemRequest
+//
+// @return DeleteCheckItemResponse
+func (client *Client) DeleteCheckItem(request *DeleteCheckItemRequest) (_result *DeleteCheckItemResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteCheckItemResponse{}
+	_body, _err := client.DeleteCheckItemWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15448,6 +15630,76 @@ func (client *Client) DescribeClusterNetwork(request *DescribeClusterNetworkRequ
 
 // Summary:
 //
+// 查询集群扫描组件状态
+//
+// @param request - DescribeClusterScannerListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeClusterScannerListResponse
+func (client *Client) DescribeClusterScannerListWithOptions(request *DescribeClusterScannerListRequest, runtime *dara.RuntimeOptions) (_result *DescribeClusterScannerListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterIdList) {
+		query["ClusterIdList"] = request.ClusterIdList
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.StatusList) {
+		query["StatusList"] = request.StatusList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeClusterScannerList"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeClusterScannerListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询集群扫描组件状态
+//
+// @param request - DescribeClusterScannerListRequest
+//
+// @return DescribeClusterScannerListResponse
+func (client *Client) DescribeClusterScannerList(request *DescribeClusterScannerListRequest) (_result *DescribeClusterScannerListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeClusterScannerListResponse{}
+	_body, _err := client.DescribeClusterScannerListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the statistics of vulnerabilities that are detected on a cluster.
 //
 // @param request - DescribeClusterVulStatisticsRequest
@@ -17054,6 +17306,68 @@ func (client *Client) DescribeCustomizeReportList(request *DescribeCustomizeRepo
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeCustomizeReportListResponse{}
 	_body, _err := client.DescribeCustomizeReportListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看自定义弱口令上传结果
+//
+// @param request - DescribeCustomizedDictRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCustomizedDictResponse
+func (client *Client) DescribeCustomizedDictWithOptions(request *DescribeCustomizedDictRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomizedDictResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCustomizedDict"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeCustomizedDictResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看自定义弱口令上传结果
+//
+// @param request - DescribeCustomizedDictRequest
+//
+// @return DescribeCustomizedDictResponse
+func (client *Client) DescribeCustomizedDict(request *DescribeCustomizedDictRequest) (_result *DescribeCustomizedDictResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeCustomizedDictResponse{}
+	_body, _err := client.DescribeCustomizedDictWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35586,6 +35900,72 @@ func (client *Client) FixCheckWarnings(request *FixCheckWarningsRequest) (_resul
 
 // Summary:
 //
+// 生成K8s集群扫描接入配置
+//
+// @param request - GenerateClusterScannerWebhookYamlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateClusterScannerWebhookYamlResponse
+func (client *Client) GenerateClusterScannerWebhookYamlWithOptions(request *GenerateClusterScannerWebhookYamlRequest, runtime *dara.RuntimeOptions) (_result *GenerateClusterScannerWebhookYamlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.WebhookOpen) {
+		query["WebhookOpen"] = request.WebhookOpen
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateClusterScannerWebhookYaml"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GenerateClusterScannerWebhookYamlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成K8s集群扫描接入配置
+//
+// @param request - GenerateClusterScannerWebhookYamlRequest
+//
+// @return GenerateClusterScannerWebhookYamlResponse
+func (client *Client) GenerateClusterScannerWebhookYaml(request *GenerateClusterScannerWebhookYamlRequest) (_result *GenerateClusterScannerWebhookYamlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GenerateClusterScannerWebhookYamlResponse{}
+	_body, _err := client.GenerateClusterScannerWebhookYamlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Generates a custom dictionary of weak passwords for the baseline check feature.
 //
 // @param request - GenerateDynamicDictRequest
@@ -36103,6 +36483,68 @@ func (client *Client) GetAgentlessTaskCount(request *GetAgentlessTaskCountReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetAgentlessTaskCountResponse{}
 	_body, _err := client.GetAgentlessTaskCountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Query the estimated volume for agentless detection.
+//
+// @param request - GetAgentlessTaskUsedSizeEstimateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentlessTaskUsedSizeEstimateResponse
+func (client *Client) GetAgentlessTaskUsedSizeEstimateWithOptions(request *GetAgentlessTaskUsedSizeEstimateRequest, runtime *dara.RuntimeOptions) (_result *GetAgentlessTaskUsedSizeEstimateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AssetSelectionType) {
+		query["AssetSelectionType"] = request.AssetSelectionType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgentlessTaskUsedSizeEstimate"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgentlessTaskUsedSizeEstimateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Query the estimated volume for agentless detection.
+//
+// @param request - GetAgentlessTaskUsedSizeEstimateRequest
+//
+// @return GetAgentlessTaskUsedSizeEstimateResponse
+func (client *Client) GetAgentlessTaskUsedSizeEstimate(request *GetAgentlessTaskUsedSizeEstimateRequest) (_result *GetAgentlessTaskUsedSizeEstimateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAgentlessTaskUsedSizeEstimateResponse{}
+	_body, _err := client.GetAgentlessTaskUsedSizeEstimateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38228,6 +38670,68 @@ func (client *Client) GetClusterRuleSummary(request *GetClusterRuleSummaryReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetClusterRuleSummaryResponse{}
 	_body, _err := client.GetClusterRuleSummaryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询K8s集群扫描接入配置
+//
+// @param request - GetClusterScannerYamlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetClusterScannerYamlResponse
+func (client *Client) GetClusterScannerYamlWithOptions(request *GetClusterScannerYamlRequest, runtime *dara.RuntimeOptions) (_result *GetClusterScannerYamlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetClusterScannerYaml"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetClusterScannerYamlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询K8s集群扫描接入配置
+//
+// @param request - GetClusterScannerYamlRequest
+//
+// @return GetClusterScannerYamlResponse
+func (client *Client) GetClusterScannerYaml(request *GetClusterScannerYamlRequest) (_result *GetClusterScannerYamlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetClusterScannerYamlResponse{}
+	_body, _err := client.GetClusterScannerYamlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -43190,6 +43694,92 @@ func (client *Client) HandleSecurityEvents(request *HandleSecurityEventsRequest)
 
 // Summary:
 //
+// 批量处理恶意样本告警。
+//
+// Description:
+//
+// ***
+//
+// @param request - HandleSimilarMaliciousFilesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HandleSimilarMaliciousFilesResponse
+func (client *Client) HandleSimilarMaliciousFilesWithOptions(request *HandleSimilarMaliciousFilesRequest, runtime *dara.RuntimeOptions) (_result *HandleSimilarMaliciousFilesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Operation) {
+		query["Operation"] = request.Operation
+	}
+
+	if !dara.IsNil(request.ScanRange) {
+		query["ScanRange"] = request.ScanRange
+	}
+
+	if !dara.IsNil(request.Scenario) {
+		query["Scenario"] = request.Scenario
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("HandleSimilarMaliciousFiles"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &HandleSimilarMaliciousFilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量处理恶意样本告警。
+//
+// Description:
+//
+// ***
+//
+// @param request - HandleSimilarMaliciousFilesRequest
+//
+// @return HandleSimilarMaliciousFilesResponse
+func (client *Client) HandleSimilarMaliciousFiles(request *HandleSimilarMaliciousFilesRequest) (_result *HandleSimilarMaliciousFilesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &HandleSimilarMaliciousFilesResponse{}
+	_body, _err := client.HandleSimilarMaliciousFilesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Handles multiple alert events that are triggered by the same IP address rule or IP address rules of the same type at a time.
 //
 // @param request - HandleSimilarSecurityEventsRequest
@@ -46011,6 +46601,122 @@ func (client *Client) ListCheckItemWarningSummary(request *ListCheckItemWarningS
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListCheckItemWarningSummaryResponse{}
 	_body, _err := client.ListCheckItemWarningSummaryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # List custom check items for situational awareness
+//
+// @param request - ListCheckItemsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCheckItemsResponse
+func (client *Client) ListCheckItemsWithOptions(request *ListCheckItemsRequest, runtime *dara.RuntimeOptions) (_result *ListCheckItemsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCheckItems"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCheckItemsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # List custom check items for situational awareness
+//
+// @param request - ListCheckItemsRequest
+//
+// @return ListCheckItemsResponse
+func (client *Client) ListCheckItems(request *ListCheckItemsRequest) (_result *ListCheckItemsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCheckItemsResponse{}
+	_body, _err := client.ListCheckItemsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # List User Policies
+//
+// @param request - ListCheckPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCheckPoliciesResponse
+func (client *Client) ListCheckPoliciesWithOptions(request *ListCheckPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListCheckPoliciesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCheckPolicies"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCheckPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # List User Policies
+//
+// @param request - ListCheckPoliciesRequest
+//
+// @return ListCheckPoliciesResponse
+func (client *Client) ListCheckPolicies(request *ListCheckPoliciesRequest) (_result *ListCheckPoliciesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCheckPoliciesResponse{}
+	_body, _err := client.ListCheckPoliciesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -51300,6 +52006,84 @@ func (client *Client) ListUnfinishedOnceTask(request *ListUnfinishedOnceTaskRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListUnfinishedOnceTaskResponse{}
 	_body, _err := client.ListUnfinishedOnceTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # List Database Backup Records
+//
+// @param request - ListUniBackupRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUniBackupRecordResponse
+func (client *Client) ListUniBackupRecordWithOptions(request *ListUniBackupRecordRequest, runtime *dara.RuntimeOptions) (_result *ListUniBackupRecordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BackupRegionId) {
+		query["BackupRegionId"] = request.BackupRegionId
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.MachineRemark) {
+		query["MachineRemark"] = request.MachineRemark
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.State) {
+		query["State"] = request.State
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUniBackupRecord"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUniBackupRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # List Database Backup Records
+//
+// @param request - ListUniBackupRecordRequest
+//
+// @return ListUniBackupRecordResponse
+func (client *Client) ListUniBackupRecord(request *ListUniBackupRecordRequest) (_result *ListUniBackupRecordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListUniBackupRecordResponse{}
+	_body, _err := client.ListUniBackupRecordWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -63615,6 +64399,130 @@ func (client *Client) UpdateBaselineCheckWhiteRecord(request *UpdateBaselineChec
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateBaselineCheckWhiteRecordResponse{}
 	_body, _err := client.UpdateBaselineCheckWhiteRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # User creates a custom check item
+//
+// @param tmpReq - UpdateCheckItemRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCheckItemResponse
+func (client *Client) UpdateCheckItemWithOptions(tmpReq *UpdateCheckItemRequest, runtime *dara.RuntimeOptions) (_result *UpdateCheckItemResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateCheckItemShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AssistInfo) {
+		request.AssistInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AssistInfo, dara.String("AssistInfo"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Description) {
+		request.DescriptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Description, dara.String("Description"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Solution) {
+		request.SolutionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Solution, dara.String("Solution"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AssistInfoShrink) {
+		query["AssistInfo"] = request.AssistInfoShrink
+	}
+
+	if !dara.IsNil(request.CheckId) {
+		query["CheckId"] = request.CheckId
+	}
+
+	if !dara.IsNil(request.CheckRule) {
+		query["CheckRule"] = request.CheckRule
+	}
+
+	if !dara.IsNil(request.CheckShowName) {
+		query["CheckShowName"] = request.CheckShowName
+	}
+
+	if !dara.IsNil(request.DescriptionShrink) {
+		query["Description"] = request.DescriptionShrink
+	}
+
+	if !dara.IsNil(request.InstanceSubType) {
+		query["InstanceSubType"] = request.InstanceSubType
+	}
+
+	if !dara.IsNil(request.InstanceType) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.RiskLevel) {
+		query["RiskLevel"] = request.RiskLevel
+	}
+
+	if !dara.IsNil(request.SectionIds) {
+		query["SectionIds"] = request.SectionIds
+	}
+
+	if !dara.IsNil(request.SolutionShrink) {
+		query["Solution"] = request.SolutionShrink
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Vendor) {
+		query["Vendor"] = request.Vendor
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCheckItem"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCheckItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # User creates a custom check item
+//
+// @param request - UpdateCheckItemRequest
+//
+// @return UpdateCheckItemResponse
+func (client *Client) UpdateCheckItem(request *UpdateCheckItemRequest) (_result *UpdateCheckItemResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateCheckItemResponse{}
+	_body, _err := client.UpdateCheckItemWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

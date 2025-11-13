@@ -428,7 +428,12 @@ type DescribeCloudCenterInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// 1024
-	Mem       *int32  `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	// The namespace.
+	//
+	// example:
+	//
+	// crm-test
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The operating system of the asset.
 	//

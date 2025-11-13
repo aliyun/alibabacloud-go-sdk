@@ -172,6 +172,12 @@ type AddClientUserDefineRuleRequest struct {
 	//
 	// 	- **7**: File Renaming
 	//
+	// 	- **8**: Network domain name
+	//
+	// 	- **9**: Network ip
+	//
+	// 	- **10**: File Path
+	//
 	// This parameter is required.
 	//
 	// example:

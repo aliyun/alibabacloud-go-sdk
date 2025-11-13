@@ -88,7 +88,16 @@ type DescribeImageRepoListRequest struct {
 	//
 	// libssh2
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	Selected      *int32  `json:"Selected,omitempty" xml:"Selected,omitempty"`
+	// Whether it is selected. Values:
+	//
+	// 	- **0**: NO
+	//
+	// 	- **1**: YES
+	//
+	// example:
+	//
+	// 1
+	Selected *int32 `json:"Selected,omitempty" xml:"Selected,omitempty"`
 	// The condition by which the feature is applied. Valid values:
 	//
 	// 	- **image_repo**: the ID of the image repository

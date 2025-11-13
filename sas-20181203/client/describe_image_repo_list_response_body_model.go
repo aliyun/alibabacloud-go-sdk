@@ -144,8 +144,13 @@ type DescribeImageRepoListResponseBodyImageRepoList struct {
 	// example:
 	//
 	// add
-	Flag       *string `json:"Flag,omitempty" xml:"Flag,omitempty"`
-	ImageCount *int32  `json:"ImageCount,omitempty" xml:"ImageCount,omitempty"`
+	Flag *string `json:"Flag,omitempty" xml:"Flag,omitempty"`
+	// Number of images.
+	//
+	// example:
+	//
+	// 1
+	ImageCount *int32 `json:"ImageCount,omitempty" xml:"ImageCount,omitempty"`
 	// The name of the image repository.
 	//
 	// example:

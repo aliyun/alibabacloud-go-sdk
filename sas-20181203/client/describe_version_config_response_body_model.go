@@ -23,6 +23,8 @@ type iDescribeVersionConfigResponseBody interface {
 	GetAppWhiteListAuthCount() *int64
 	SetAssetLevel(v int32) *DescribeVersionConfigResponseBody
 	GetAssetLevel() *int32
+	SetCanTryPostPaidPackage(v int32) *DescribeVersionConfigResponseBody
+	GetCanTryPostPaidPackage() *int32
 	SetCspmCapacity(v int64) *DescribeVersionConfigResponseBody
 	GetCspmCapacity() *int64
 	SetHighestVersion(v int32) *DescribeVersionConfigResponseBody
@@ -159,7 +161,8 @@ type DescribeVersionConfigResponseBody struct {
 	// example:
 	//
 	// 30
-	AssetLevel *int32 `json:"AssetLevel,omitempty" xml:"AssetLevel,omitempty"`
+	AssetLevel            *int32 `json:"AssetLevel,omitempty" xml:"AssetLevel,omitempty"`
+	CanTryPostPaidPackage *int32 `json:"CanTryPostPaidPackage,omitempty" xml:"CanTryPostPaidPackage,omitempty"`
 	// The purchased quota for configuration assessment. Unit: times/month.
 	//
 	// example:
@@ -506,6 +509,10 @@ func (s *DescribeVersionConfigResponseBody) GetAssetLevel() *int32 {
 	return s.AssetLevel
 }
 
+func (s *DescribeVersionConfigResponseBody) GetCanTryPostPaidPackage() *int32 {
+	return s.CanTryPostPaidPackage
+}
+
 func (s *DescribeVersionConfigResponseBody) GetCspmCapacity() *int64 {
 	return s.CspmCapacity
 }
@@ -690,6 +697,11 @@ func (s *DescribeVersionConfigResponseBody) SetAppWhiteListAuthCount(v int64) *D
 
 func (s *DescribeVersionConfigResponseBody) SetAssetLevel(v int32) *DescribeVersionConfigResponseBody {
 	s.AssetLevel = &v
+	return s
+}
+
+func (s *DescribeVersionConfigResponseBody) SetCanTryPostPaidPackage(v int32) *DescribeVersionConfigResponseBody {
+	s.CanTryPostPaidPackage = &v
 	return s
 }
 
