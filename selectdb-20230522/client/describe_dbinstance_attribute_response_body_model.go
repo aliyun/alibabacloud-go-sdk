@@ -67,6 +67,8 @@ type iDescribeDBInstanceAttributeResponseBody interface {
 	GetTags() []*DescribeDBInstanceAttributeResponseBodyTags
 	SetVSwitchId(v string) *DescribeDBInstanceAttributeResponseBody
 	GetVSwitchId() *string
+	SetVirtualClusterList(v []*DescribeDBInstanceAttributeResponseBodyVirtualClusterList) *DescribeDBInstanceAttributeResponseBody
+	GetVirtualClusterList() []*DescribeDBInstanceAttributeResponseBodyVirtualClusterList
 	SetVpcId(v string) *DescribeDBInstanceAttributeResponseBody
 	GetVpcId() *string
 	SetZoneId(v string) *DescribeDBInstanceAttributeResponseBody
@@ -240,7 +242,8 @@ type DescribeDBInstanceAttributeResponseBody struct {
 	// example:
 	//
 	// vsw-bp18iztwqrs8qj2nc6nyu
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchId          *string                                                      `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VirtualClusterList []*DescribeDBInstanceAttributeResponseBodyVirtualClusterList `json:"VirtualClusterList,omitempty" xml:"VirtualClusterList,omitempty" type:"Repeated"`
 	// The VPC ID.
 	//
 	// example:
@@ -377,6 +380,10 @@ func (s *DescribeDBInstanceAttributeResponseBody) GetTags() []*DescribeDBInstanc
 
 func (s *DescribeDBInstanceAttributeResponseBody) GetVSwitchId() *string {
 	return s.VSwitchId
+}
+
+func (s *DescribeDBInstanceAttributeResponseBody) GetVirtualClusterList() []*DescribeDBInstanceAttributeResponseBodyVirtualClusterList {
+	return s.VirtualClusterList
 }
 
 func (s *DescribeDBInstanceAttributeResponseBody) GetVpcId() *string {
@@ -532,6 +539,11 @@ func (s *DescribeDBInstanceAttributeResponseBody) SetVSwitchId(v string) *Descri
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBody) SetVirtualClusterList(v []*DescribeDBInstanceAttributeResponseBodyVirtualClusterList) *DescribeDBInstanceAttributeResponseBody {
+	s.VirtualClusterList = v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBody) SetVpcId(v string) *DescribeDBInstanceAttributeResponseBody {
 	s.VpcId = &v
 	return s
@@ -543,7 +555,43 @@ func (s *DescribeDBInstanceAttributeResponseBody) SetZoneId(v string) *DescribeD
 }
 
 func (s *DescribeDBInstanceAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBClusterList != nil {
+		for _, item := range s.DBClusterList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MultiZone != nil {
+		for _, item := range s.MultiZone {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VirtualClusterList != nil {
+		for _, item := range s.VirtualClusterList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBClusterList struct {
@@ -1018,5 +1066,100 @@ func (s *DescribeDBInstanceAttributeResponseBodyTags) SetTagValue(v string) *Des
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyTags) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeDBInstanceAttributeResponseBodyVirtualClusterList struct {
+	ActiveClusterId    *string `json:"ActiveClusterId,omitempty" xml:"ActiveClusterId,omitempty"`
+	ActiveClusterName  *string `json:"ActiveClusterName,omitempty" xml:"ActiveClusterName,omitempty"`
+	CreatedTime        *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DbClusterId        *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
+	DbClusterName      *string `json:"DbClusterName,omitempty" xml:"DbClusterName,omitempty"`
+	StandbyClusterId   *string `json:"StandbyClusterId,omitempty" xml:"StandbyClusterId,omitempty"`
+	StandbyClusterName *string `json:"StandbyClusterName,omitempty" xml:"StandbyClusterName,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyVirtualClusterList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyVirtualClusterList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyVirtualClusterList) GetActiveClusterId() *string {
+	return s.ActiveClusterId
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyVirtualClusterList) GetActiveClusterName() *string {
+	return s.ActiveClusterName
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyVirtualClusterList) GetCreatedTime() *string {
+	return s.CreatedTime
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyVirtualClusterList) GetDbClusterId() *string {
+	return s.DbClusterId
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyVirtualClusterList) GetDbClusterName() *string {
+	return s.DbClusterName
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyVirtualClusterList) GetStandbyClusterId() *string {
+	return s.StandbyClusterId
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyVirtualClusterList) GetStandbyClusterName() *string {
+	return s.StandbyClusterName
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyVirtualClusterList) GetStatus() *string {
+	return s.Status
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyVirtualClusterList) SetActiveClusterId(v string) *DescribeDBInstanceAttributeResponseBodyVirtualClusterList {
+	s.ActiveClusterId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyVirtualClusterList) SetActiveClusterName(v string) *DescribeDBInstanceAttributeResponseBodyVirtualClusterList {
+	s.ActiveClusterName = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyVirtualClusterList) SetCreatedTime(v string) *DescribeDBInstanceAttributeResponseBodyVirtualClusterList {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyVirtualClusterList) SetDbClusterId(v string) *DescribeDBInstanceAttributeResponseBodyVirtualClusterList {
+	s.DbClusterId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyVirtualClusterList) SetDbClusterName(v string) *DescribeDBInstanceAttributeResponseBodyVirtualClusterList {
+	s.DbClusterName = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyVirtualClusterList) SetStandbyClusterId(v string) *DescribeDBInstanceAttributeResponseBodyVirtualClusterList {
+	s.StandbyClusterId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyVirtualClusterList) SetStandbyClusterName(v string) *DescribeDBInstanceAttributeResponseBodyVirtualClusterList {
+	s.StandbyClusterName = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyVirtualClusterList) SetStatus(v string) *DescribeDBInstanceAttributeResponseBodyVirtualClusterList {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyVirtualClusterList) Validate() error {
 	return dara.Validate(s)
 }

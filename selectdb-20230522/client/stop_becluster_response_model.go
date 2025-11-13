@@ -59,5 +59,10 @@ func (s *StopBEClusterResponse) SetBody(v *StopBEClusterResponseBody) *StopBEClu
 }
 
 func (s *StopBEClusterResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

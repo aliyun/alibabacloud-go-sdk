@@ -59,5 +59,10 @@ func (s *DeleteDBClusterBindingResponse) SetBody(v *DeleteDBClusterBindingRespon
 }
 
 func (s *DeleteDBClusterBindingResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

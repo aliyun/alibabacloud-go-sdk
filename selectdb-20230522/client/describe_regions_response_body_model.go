@@ -53,7 +53,16 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 func (s *DescribeRegionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RegionModelList != nil {
+		for _, item := range s.RegionModelList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRegionsResponseBodyRegionModelList struct {
@@ -94,7 +103,16 @@ func (s *DescribeRegionsResponseBodyRegionModelList) SetZones(v []*DescribeRegio
 }
 
 func (s *DescribeRegionsResponseBodyRegionModelList) Validate() error {
-	return dara.Validate(s)
+	if s.Zones != nil {
+		for _, item := range s.Zones {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRegionsResponseBodyRegionModelListZones struct {

@@ -100,7 +100,12 @@ func (s *DescribeDBClusterConfigChangeLogsResponseBody) SetRequestId(v string) *
 }
 
 func (s *DescribeDBClusterConfigChangeLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterConfigChangeLogsResponseBodyData struct {
@@ -184,7 +189,16 @@ func (s *DescribeDBClusterConfigChangeLogsResponseBodyData) SetTaskId(v int32) *
 }
 
 func (s *DescribeDBClusterConfigChangeLogsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ParamChangeLogs != nil {
+		for _, item := range s.ParamChangeLogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs struct {

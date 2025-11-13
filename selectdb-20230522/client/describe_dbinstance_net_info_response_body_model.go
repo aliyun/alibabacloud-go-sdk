@@ -66,7 +66,25 @@ func (s *DescribeDBInstanceNetInfoResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeDBInstanceNetInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBClustersNetInfos != nil {
+		for _, item := range s.DBClustersNetInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DBInstanceNetInfos != nil {
+		for _, item := range s.DBInstanceNetInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos struct {
@@ -211,7 +229,16 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos) SetVswitchId(v
 }
 
 func (s *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos) Validate() error {
-	return dara.Validate(s)
+	if s.PortList != nil {
+		for _, item := range s.PortList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList struct {
@@ -410,7 +437,16 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos) SetVswitchId(v
 }
 
 func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos) Validate() error {
-	return dara.Validate(s)
+	if s.PortList != nil {
+		for _, item := range s.PortList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosPortList struct {

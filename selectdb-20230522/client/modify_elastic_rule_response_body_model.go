@@ -53,7 +53,12 @@ func (s *ModifyElasticRuleResponseBody) SetRequestId(v string) *ModifyElasticRul
 }
 
 func (s *ModifyElasticRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyElasticRuleResponseBodyData struct {

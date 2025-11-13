@@ -70,7 +70,16 @@ func (s *DescribeSecurityIPListResponseBody) SetRequestId(v string) *DescribeSec
 }
 
 func (s *DescribeSecurityIPListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GroupItems != nil {
+		for _, item := range s.GroupItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSecurityIPListResponseBodyGroupItems struct {

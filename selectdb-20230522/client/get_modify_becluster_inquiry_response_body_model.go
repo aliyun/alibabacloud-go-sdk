@@ -53,7 +53,12 @@ func (s *GetModifyBEClusterInquiryResponseBody) SetRequestId(v string) *GetModif
 }
 
 func (s *GetModifyBEClusterInquiryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetModifyBEClusterInquiryResponseBodyData struct {
@@ -133,7 +138,16 @@ func (s *GetModifyBEClusterInquiryResponseBodyData) SetTradeAmount(v string) *Ge
 }
 
 func (s *GetModifyBEClusterInquiryResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.OptionalPromotions != nil {
+		for _, item := range s.OptionalPromotions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions struct {

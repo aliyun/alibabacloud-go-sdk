@@ -95,7 +95,12 @@ func (s *DescribeDBClusterStorageLimitationResponseBody) SetRequestId(v string) 
 }
 
 func (s *DescribeDBClusterStorageLimitationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterStorageLimitationResponseBodyData struct {
@@ -120,7 +125,16 @@ func (s *DescribeDBClusterStorageLimitationResponseBodyData) SetClassCodeList(v 
 }
 
 func (s *DescribeDBClusterStorageLimitationResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ClassCodeList != nil {
+		for _, item := range s.ClassCodeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterStorageLimitationResponseBodyDataClassCodeList struct {

@@ -59,5 +59,10 @@ func (s *DeleteElasticRuleResponse) SetBody(v *DeleteElasticRuleResponseBody) *D
 }
 
 func (s *DeleteElasticRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

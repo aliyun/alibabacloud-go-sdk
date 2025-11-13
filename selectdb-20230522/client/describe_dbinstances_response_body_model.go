@@ -110,7 +110,16 @@ func (s *DescribeDBInstancesResponseBody) SetTotalRecordCount(v int64) *Describe
 }
 
 func (s *DescribeDBInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstancesResponseBodyItems struct {
@@ -705,7 +714,25 @@ func (s *DescribeDBInstancesResponseBodyItems) SetConnectionString(v string) *De
 }
 
 func (s *DescribeDBInstancesResponseBodyItems) Validate() error {
-	return dara.Validate(s)
+	if s.MultiZone != nil {
+		for _, item := range s.MultiZone {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstancesResponseBodyItemsMultiZone struct {

@@ -53,7 +53,12 @@ func (s *CreateDBClusterBindingResponseBody) SetRequestId(v string) *CreateDBClu
 }
 
 func (s *CreateDBClusterBindingResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDBClusterBindingResponseBodyData struct {

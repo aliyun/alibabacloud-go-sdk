@@ -59,5 +59,10 @@ func (s *DescribeAllDBInstanceClassResponse) SetBody(v *DescribeAllDBInstanceCla
 }
 
 func (s *DescribeAllDBInstanceClassResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

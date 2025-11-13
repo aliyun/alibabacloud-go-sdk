@@ -99,7 +99,12 @@ func (s *ModifyDBClusterConfigResponseBody) SetRequestId(v string) *ModifyDBClus
 }
 
 func (s *ModifyDBClusterConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyDBClusterConfigResponseBodyData struct {

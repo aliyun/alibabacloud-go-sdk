@@ -1,3 +1,7 @@
+2025-11-13 Version: v4.4.1
+- Update API DescribeDBInstanceAttribute: add response parameters Body.VirtualClusterList.
+
+
 2025-10-10 Version: v4.4.0
 - Support API ChangeResourceGroup.
 - Support API CheckIpExistsInSecurityIpList.

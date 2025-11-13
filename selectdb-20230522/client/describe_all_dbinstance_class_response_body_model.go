@@ -51,7 +51,16 @@ func (s *DescribeAllDBInstanceClassResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeAllDBInstanceClassResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ClassCodeList != nil {
+		for _, item := range s.ClassCodeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAllDBInstanceClassResponseBodyClassCodeList struct {

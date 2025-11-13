@@ -104,7 +104,12 @@ func (s *DescribeDBClusterConfigResponseBody) SetRequestId(v string) *DescribeDB
 }
 
 func (s *DescribeDBClusterConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterConfigResponseBodyData struct {
@@ -190,7 +195,16 @@ func (s *DescribeDBClusterConfigResponseBodyData) SetTaskId(v int32) *DescribeDB
 }
 
 func (s *DescribeDBClusterConfigResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Params != nil {
+		for _, item := range s.Params {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBClusterConfigResponseBodyDataParams struct {

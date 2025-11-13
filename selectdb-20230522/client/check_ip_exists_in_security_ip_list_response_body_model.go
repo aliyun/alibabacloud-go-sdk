@@ -52,7 +52,12 @@ func (s *CheckIpExistsInSecurityIpListResponseBody) SetRequestId(v string) *Chec
 }
 
 func (s *CheckIpExistsInSecurityIpListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CheckIpExistsInSecurityIpListResponseBodyData struct {

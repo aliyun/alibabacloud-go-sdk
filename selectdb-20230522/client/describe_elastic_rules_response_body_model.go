@@ -53,7 +53,12 @@ func (s *DescribeElasticRulesResponseBody) SetRequestId(v string) *DescribeElast
 }
 
 func (s *DescribeElasticRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeElasticRulesResponseBodyData struct {
@@ -109,7 +114,16 @@ func (s *DescribeElasticRulesResponseBodyData) SetRules(v []*DescribeElasticRule
 }
 
 func (s *DescribeElasticRulesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeElasticRulesResponseBodyDataRules struct {
