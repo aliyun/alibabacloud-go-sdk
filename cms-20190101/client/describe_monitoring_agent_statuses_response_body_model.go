@@ -182,8 +182,9 @@ type DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus struct 
 	// example:
 	//
 	// i-hp3dunahluwajv6f****
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LoongCollectorStatus *string `json:"LoongCollectorStatus,omitempty" xml:"LoongCollectorStatus,omitempty"`
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LoongCollectorStatus  *string `json:"LoongCollectorStatus,omitempty" xml:"LoongCollectorStatus,omitempty"`
+	LoongCollectorVersion *string `json:"LoongCollectorVersion,omitempty" xml:"LoongCollectorVersion,omitempty"`
 	// Indicates whether the SysAK monitoring feature is enabled.`` Valid values:
 	//
 	// 	- `true`: The SysAK monitoring feature is enabled.
@@ -292,6 +293,10 @@ func (s *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus) Ge
 	return s.LoongCollectorStatus
 }
 
+func (s *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus) GetLoongCollectorVersion() *string {
+	return s.LoongCollectorVersion
+}
+
 func (s *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus) GetOsMonitorConfig() *string {
 	return s.OsMonitorConfig
 }
@@ -333,6 +338,11 @@ func (s *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus) Se
 
 func (s *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus) SetLoongCollectorStatus(v string) *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus {
 	s.LoongCollectorStatus = &v
+	return s
+}
+
+func (s *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus) SetLoongCollectorVersion(v string) *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus {
+	s.LoongCollectorVersion = &v
 	return s
 }
 
