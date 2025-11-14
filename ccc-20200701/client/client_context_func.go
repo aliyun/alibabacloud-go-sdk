@@ -9959,6 +9959,68 @@ func (client *Client) ModifyAudioFileWithContext(ctx context.Context, request *M
 
 // Summary:
 //
+// 修改活动外呼号码
+//
+// @param tmpReq - ModifyCampaignNumbersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyCampaignNumbersResponse
+func (client *Client) ModifyCampaignNumbersWithContext(ctx context.Context, tmpReq *ModifyCampaignNumbersRequest, runtime *dara.RuntimeOptions) (_result *ModifyCampaignNumbersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModifyCampaignNumbersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.NumberList) {
+		request.NumberListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NumberList, dara.String("NumberList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CampaignId) {
+		query["CampaignId"] = request.CampaignId
+	}
+
+	if !dara.IsNil(request.InstGroupId) {
+		query["InstGroupId"] = request.InstGroupId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NumberListShrink) {
+		query["NumberList"] = request.NumberListShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyCampaignNumbers"),
+		Version:     dara.String("2020-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyCampaignNumbersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 编辑呼入控制号码
 //
 // @param request - ModifyCustomCallTaggingRequest
