@@ -31,6 +31,8 @@ type iDescribeBackupFilesRequest interface {
 	GetMaxResults() *int64
 	SetNextToken(v string) *DescribeBackupFilesRequest
 	GetNextToken() *string
+	SetSaleMode(v string) *DescribeBackupFilesRequest
+	GetSaleMode() *string
 	SetStartTime(v string) *DescribeBackupFilesRequest
 	GetStartTime() *string
 	SetStatusList(v []*string) *DescribeBackupFilesRequest
@@ -110,6 +112,7 @@ type DescribeBackupFilesRequest struct {
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uON****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	SaleMode  *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
 	// The beginning of the period for querying generated backup files.
 	//
 	// example:
@@ -172,6 +175,10 @@ func (s *DescribeBackupFilesRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *DescribeBackupFilesRequest) GetSaleMode() *string {
+	return s.SaleMode
+}
+
 func (s *DescribeBackupFilesRequest) GetStartTime() *string {
 	return s.StartTime
 }
@@ -232,6 +239,11 @@ func (s *DescribeBackupFilesRequest) SetMaxResults(v int64) *DescribeBackupFiles
 
 func (s *DescribeBackupFilesRequest) SetNextToken(v string) *DescribeBackupFilesRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeBackupFilesRequest) SetSaleMode(v string) *DescribeBackupFilesRequest {
+	s.SaleMode = &v
 	return s
 }
 

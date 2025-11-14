@@ -2461,6 +2461,10 @@ func (client *Client) DescribeBackupFilesWithOptions(request *DescribeBackupFile
 		query["NextToken"] = request.NextToken
 	}
 
+	if !dara.IsNil(request.SaleMode) {
+		query["SaleMode"] = request.SaleMode
+	}
+
 	if !dara.IsNil(request.StartTime) {
 		query["StartTime"] = request.StartTime
 	}
