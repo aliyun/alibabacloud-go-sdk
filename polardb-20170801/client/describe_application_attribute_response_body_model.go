@@ -828,7 +828,8 @@ type DescribeApplicationAttributeResponseBodyEndpoints struct {
 	// example:
 	//
 	// 8080
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Port            *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	PortDescription *string `json:"PortDescription,omitempty" xml:"PortDescription,omitempty"`
 }
 
 func (s DescribeApplicationAttributeResponseBodyEndpoints) String() string {
@@ -859,6 +860,10 @@ func (s *DescribeApplicationAttributeResponseBodyEndpoints) GetPort() *string {
 	return s.Port
 }
 
+func (s *DescribeApplicationAttributeResponseBodyEndpoints) GetPortDescription() *string {
+	return s.PortDescription
+}
+
 func (s *DescribeApplicationAttributeResponseBodyEndpoints) SetDescription(v string) *DescribeApplicationAttributeResponseBodyEndpoints {
 	s.Description = &v
 	return s
@@ -881,6 +886,11 @@ func (s *DescribeApplicationAttributeResponseBodyEndpoints) SetNetType(v string)
 
 func (s *DescribeApplicationAttributeResponseBodyEndpoints) SetPort(v string) *DescribeApplicationAttributeResponseBodyEndpoints {
 	s.Port = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyEndpoints) SetPortDescription(v string) *DescribeApplicationAttributeResponseBodyEndpoints {
+	s.PortDescription = &v
 	return s
 }
 
