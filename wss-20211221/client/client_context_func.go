@@ -17,9 +17,11 @@ import (
 //
 // @return CreateMultiOrderResponse
 func (client *Client) CreateMultiOrderWithContext(ctx context.Context, tmpReq *CreateMultiOrderRequest, runtime *dara.RuntimeOptions) (_result *CreateMultiOrderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateMultiOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -77,9 +79,11 @@ func (client *Client) CreateMultiOrderWithContext(ctx context.Context, tmpReq *C
 //
 // @return DescribeMultiPriceResponse
 func (client *Client) DescribeMultiPriceWithContext(ctx context.Context, request *DescribeMultiPriceRequest, runtime *dara.RuntimeOptions) (_result *DescribeMultiPriceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderItems) {
@@ -131,9 +135,11 @@ func (client *Client) DescribeMultiPriceWithContext(ctx context.Context, request
 //
 // @return DescribePackageDeductionsResponse
 func (client *Client) DescribePackageDeductionsWithContext(ctx context.Context, request *DescribePackageDeductionsRequest, runtime *dara.RuntimeOptions) (_result *DescribePackageDeductionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -201,9 +207,11 @@ func (client *Client) DescribePackageDeductionsWithContext(ctx context.Context, 
 //
 // @return ModifyInstancePropertiesResponse
 func (client *Client) ModifyInstancePropertiesWithContext(ctx context.Context, request *ModifyInstancePropertiesRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstancePropertiesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {

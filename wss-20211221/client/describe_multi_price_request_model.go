@@ -80,7 +80,16 @@ func (s *DescribeMultiPriceRequest) SetResellerOwnerUid(v int64) *DescribeMultiP
 }
 
 func (s *DescribeMultiPriceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.OrderItems != nil {
+		for _, item := range s.OrderItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMultiPriceRequestOrderItems struct {
@@ -106,7 +115,8 @@ type DescribeMultiPriceRequestOrderItems struct {
 	// example:
 	//
 	// DurationPackage
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceType     *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SavingPlanPeriod *string `json:"SavingPlanPeriod,omitempty" xml:"SavingPlanPeriod,omitempty"`
 }
 
 func (s DescribeMultiPriceRequestOrderItems) String() string {
@@ -149,6 +159,10 @@ func (s *DescribeMultiPriceRequestOrderItems) GetResourceType() *string {
 	return s.ResourceType
 }
 
+func (s *DescribeMultiPriceRequestOrderItems) GetSavingPlanPeriod() *string {
+	return s.SavingPlanPeriod
+}
+
 func (s *DescribeMultiPriceRequestOrderItems) SetAmount(v int32) *DescribeMultiPriceRequestOrderItems {
 	s.Amount = &v
 	return s
@@ -189,8 +203,22 @@ func (s *DescribeMultiPriceRequestOrderItems) SetResourceType(v string) *Describ
 	return s
 }
 
+func (s *DescribeMultiPriceRequestOrderItems) SetSavingPlanPeriod(v string) *DescribeMultiPriceRequestOrderItems {
+	s.SavingPlanPeriod = &v
+	return s
+}
+
 func (s *DescribeMultiPriceRequestOrderItems) Validate() error {
-	return dara.Validate(s)
+	if s.Components != nil {
+		for _, item := range s.Components {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMultiPriceRequestOrderItemsComponents struct {

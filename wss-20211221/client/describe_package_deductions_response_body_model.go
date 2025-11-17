@@ -119,7 +119,16 @@ func (s *DescribePackageDeductionsResponseBody) SetTotalUsedTime(v int64) *Descr
 }
 
 func (s *DescribePackageDeductionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Deductions != nil {
+		for _, item := range s.Deductions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePackageDeductionsResponseBodyDeductions struct {

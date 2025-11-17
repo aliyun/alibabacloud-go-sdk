@@ -74,7 +74,16 @@ func (s *CreateMultiOrderShrinkRequest) SetResellerOwnerUid(v int64) *CreateMult
 }
 
 func (s *CreateMultiOrderShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.OrderItems != nil {
+		for _, item := range s.OrderItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateMultiOrderShrinkRequestOrderItems struct {
@@ -212,7 +221,16 @@ func (s *CreateMultiOrderShrinkRequestOrderItems) SetResourceType(v string) *Cre
 }
 
 func (s *CreateMultiOrderShrinkRequestOrderItems) Validate() error {
-	return dara.Validate(s)
+	if s.Components != nil {
+		for _, item := range s.Components {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateMultiOrderShrinkRequestOrderItemsComponents struct {

@@ -59,5 +59,10 @@ func (s *DescribePackageDeductionsResponse) SetBody(v *DescribePackageDeductions
 }
 
 func (s *DescribePackageDeductionsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

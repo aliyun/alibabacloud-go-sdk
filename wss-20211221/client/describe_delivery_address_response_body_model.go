@@ -65,7 +65,16 @@ func (s *DescribeDeliveryAddressResponseBody) SetTotalCount(v int32) *DescribeDe
 }
 
 func (s *DescribeDeliveryAddressResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Addresses != nil {
+		for _, item := range s.Addresses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDeliveryAddressResponseBodyAddresses struct {
@@ -182,7 +191,27 @@ func (s *DescribeDeliveryAddressResponseBodyAddresses) SetTown(v *DescribeDelive
 }
 
 func (s *DescribeDeliveryAddressResponseBodyAddresses) Validate() error {
-	return dara.Validate(s)
+	if s.Area != nil {
+		if err := s.Area.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.City != nil {
+		if err := s.City.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Province != nil {
+		if err := s.Province.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Town != nil {
+		if err := s.Town.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDeliveryAddressResponseBodyAddressesArea struct {

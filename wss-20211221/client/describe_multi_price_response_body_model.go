@@ -50,7 +50,12 @@ func (s *DescribeMultiPriceResponseBody) SetRequestId(v string) *DescribeMultiPr
 }
 
 func (s *DescribeMultiPriceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PriceInfo != nil {
+		if err := s.PriceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMultiPriceResponseBodyPriceInfo struct {
@@ -85,7 +90,21 @@ func (s *DescribeMultiPriceResponseBodyPriceInfo) SetRules(v []*DescribeMultiPri
 }
 
 func (s *DescribeMultiPriceResponseBodyPriceInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Price != nil {
+		if err := s.Price.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMultiPriceResponseBodyPriceInfoPrice struct {
@@ -195,7 +214,25 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPrice) SetTradePrice(v float32) 
 }
 
 func (s *DescribeMultiPriceResponseBodyPriceInfoPrice) Validate() error {
-	return dara.Validate(s)
+	if s.PriceDetails != nil {
+		for _, item := range s.PriceDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Promotions != nil {
+		for _, item := range s.Promotions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails struct {
@@ -243,7 +280,21 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails) SetPriceDetai
 }
 
 func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleDetails != nil {
+		for _, item := range s.ModuleDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PriceDetail != nil {
+		if err := s.PriceDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails struct {
@@ -263,7 +314,8 @@ type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails struc
 	// example:
 	//
 	// 10900
-	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	OriginalPrice           *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	SavingPlanDiscountPrice *float32 `json:"SavingPlanDiscountPrice,omitempty" xml:"SavingPlanDiscountPrice,omitempty"`
 	// example:
 	//
 	// 292.2
@@ -298,6 +350,10 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails) 
 	return s.OriginalPrice
 }
 
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails) GetSavingPlanDiscountPrice() *float32 {
+	return s.SavingPlanDiscountPrice
+}
+
 func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails) GetTradePrice() *float32 {
 	return s.TradePrice
 }
@@ -327,6 +383,11 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails) 
 	return s
 }
 
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails) SetSavingPlanDiscountPrice(v float32) *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails {
+	s.SavingPlanDiscountPrice = &v
+	return s
+}
+
 func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails) SetTradePrice(v float32) *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails {
 	s.TradePrice = &v
 	return s
@@ -348,7 +409,8 @@ type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail struct 
 	// example:
 	//
 	// DurationPackage
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceType             *string  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SavingPlanRecommendPrice *float32 `json:"SavingPlanRecommendPrice,omitempty" xml:"SavingPlanRecommendPrice,omitempty"`
 	// example:
 	//
 	// 80.00
@@ -375,6 +437,10 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail) Ge
 	return s.ResourceType
 }
 
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail) GetSavingPlanRecommendPrice() *float32 {
+	return s.SavingPlanRecommendPrice
+}
+
 func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail) GetTradePrice() *float32 {
 	return s.TradePrice
 }
@@ -391,6 +457,11 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail) Se
 
 func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail) SetResourceType(v string) *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail {
 	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail) SetSavingPlanRecommendPrice(v float32) *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail {
+	s.SavingPlanRecommendPrice = &v
 	return s
 }
 
