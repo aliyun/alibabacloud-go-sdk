@@ -25,6 +25,8 @@ type iPodItem interface {
 	GetPodId() *string
 	SetPodIp(v string) *PodItem
 	GetPodIp() *string
+	SetPodIps(v []*PodNetworkInterface) *PodItem
+	GetPodIps() []*PodNetworkInterface
 	SetPodUid(v string) *PodItem
 	GetPodUid() *string
 	SetStatus(v string) *PodItem
@@ -57,8 +59,9 @@ type PodItem struct {
 	// example:
 	//
 	// dlc-20210126170216-mtl37ge7gkvdz-worker-0
-	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
-	PodIp *string `json:"PodIp,omitempty" xml:"PodIp,omitempty"`
+	PodId  *string                `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	PodIp  *string                `json:"PodIp,omitempty" xml:"PodIp,omitempty"`
+	PodIps []*PodNetworkInterface `json:"PodIps,omitempty" xml:"PodIps,omitempty" type:"Repeated"`
 	// example:
 	//
 	// fe846462-af2c-4521-bd6f-96787a57591d
@@ -112,6 +115,10 @@ func (s *PodItem) GetPodId() *string {
 
 func (s *PodItem) GetPodIp() *string {
 	return s.PodIp
+}
+
+func (s *PodItem) GetPodIps() []*PodNetworkInterface {
+	return s.PodIps
 }
 
 func (s *PodItem) GetPodUid() *string {
@@ -170,6 +177,11 @@ func (s *PodItem) SetPodIp(v string) *PodItem {
 	return s
 }
 
+func (s *PodItem) SetPodIps(v []*PodNetworkInterface) *PodItem {
+	s.PodIps = v
+	return s
+}
+
 func (s *PodItem) SetPodUid(v string) *PodItem {
 	s.PodUid = &v
 	return s
@@ -193,6 +205,15 @@ func (s *PodItem) SetType(v string) *PodItem {
 func (s *PodItem) Validate() error {
 	if s.HistoryPods != nil {
 		for _, item := range s.HistoryPods {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PodIps != nil {
+		for _, item := range s.PodIps {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
