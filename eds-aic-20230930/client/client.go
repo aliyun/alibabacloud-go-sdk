@@ -3070,6 +3070,190 @@ func (client *Client) DescribeMetricLast(request *DescribeMetricLastRequest) (_r
 
 // Summary:
 //
+// 查询指定监控项的监控数据
+//
+// @param request - DescribeMetricListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMetricListResponse
+func (client *Client) DescribeMetricListWithOptions(request *DescribeMetricListRequest, runtime *dara.RuntimeOptions) (_result *DescribeMetricListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AndroidInstanceIds) {
+		body["AndroidInstanceIds"] = request.AndroidInstanceIds
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		body["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.Length) {
+		body["Length"] = request.Length
+	}
+
+	if !dara.IsNil(request.MetricNames) {
+		body["MetricNames"] = request.MetricNames
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Period) {
+		body["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.ProcessInfos) {
+		body["ProcessInfos"] = request.ProcessInfos
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeMetricList"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeMetricListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定监控项的监控数据
+//
+// @param request - DescribeMetricListRequest
+//
+// @return DescribeMetricListResponse
+func (client *Client) DescribeMetricList(request *DescribeMetricListRequest) (_result *DescribeMetricListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeMetricListResponse{}
+	_body, _err := client.DescribeMetricListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定监控项的最新监控数据
+//
+// @param request - DescribeMetricTopRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMetricTopResponse
+func (client *Client) DescribeMetricTopWithOptions(request *DescribeMetricTopRequest, runtime *dara.RuntimeOptions) (_result *DescribeMetricTopResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AndroidInstanceIds) {
+		body["AndroidInstanceIds"] = request.AndroidInstanceIds
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		body["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.Length) {
+		body["Length"] = request.Length
+	}
+
+	if !dara.IsNil(request.MetricNames) {
+		body["MetricNames"] = request.MetricNames
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Period) {
+		body["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeMetricTop"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeMetricTopResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定监控项的最新监控数据
+//
+// @param request - DescribeMetricTopRequest
+//
+// @return DescribeMetricTopResponse
+func (client *Client) DescribeMetricTop(request *DescribeMetricTopRequest) (_result *DescribeMetricTopResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeMetricTopResponse{}
+	_body, _err := client.DescribeMetricTopWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Query available regions.
 //
 // @param request - DescribeRegionsRequest
@@ -4461,6 +4645,92 @@ func (client *Client) InstanceHealer(request *InstanceHealerRequest) (_result *I
 	runtime := &dara.RuntimeOptions{}
 	_result = &InstanceHealerResponse{}
 	_body, _err := client.InstanceHealerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询ADB端口连接信息
+//
+// @param request - ListInstanceAdbAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceAdbAttributesResponse
+func (client *Client) ListInstanceAdbAttributesWithOptions(request *ListInstanceAdbAttributesRequest, runtime *dara.RuntimeOptions) (_result *ListInstanceAdbAttributesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExternalIp) {
+		query["ExternalIp"] = request.ExternalIp
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.InternalIp) {
+		query["InternalIp"] = request.InternalIp
+	}
+
+	if !dara.IsNil(request.InternalPort) {
+		query["InternalPort"] = request.InternalPort
+	}
+
+	if !dara.IsNil(request.IpProtocol) {
+		query["IpProtocol"] = request.IpProtocol
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstanceAdbAttributes"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInstanceAdbAttributesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询ADB端口连接信息
+//
+// @param request - ListInstanceAdbAttributesRequest
+//
+// @return ListInstanceAdbAttributesResponse
+func (client *Client) ListInstanceAdbAttributes(request *ListInstanceAdbAttributesRequest) (_result *ListInstanceAdbAttributesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListInstanceAdbAttributesResponse{}
+	_body, _err := client.ListInstanceAdbAttributesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6220,6 +6490,68 @@ func (client *Client) StartAndroidInstance(request *StartAndroidInstanceRequest)
 
 // Summary:
 //
+// 开启实例ADB端口并创建端口转发条目
+//
+// @param request - StartInstanceAdbRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartInstanceAdbResponse
+func (client *Client) StartInstanceAdbWithOptions(request *StartInstanceAdbRequest, runtime *dara.RuntimeOptions) (_result *StartInstanceAdbResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartInstanceAdb"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartInstanceAdbResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启实例ADB端口并创建端口转发条目
+//
+// @param request - StartInstanceAdbRequest
+//
+// @return StartInstanceAdbResponse
+func (client *Client) StartInstanceAdb(request *StartInstanceAdbRequest) (_result *StartInstanceAdbResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &StartInstanceAdbResponse{}
+	_body, _err := client.StartInstanceAdbWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Stops a cloud phone instance.
 //
 // Description:
@@ -6289,6 +6621,68 @@ func (client *Client) StopAndroidInstance(request *StopAndroidInstanceRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &StopAndroidInstanceResponse{}
 	_body, _err := client.StopAndroidInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止实例ADB端口并删除端口转发条目
+//
+// @param request - StopInstanceAdbRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopInstanceAdbResponse
+func (client *Client) StopInstanceAdbWithOptions(request *StopInstanceAdbRequest, runtime *dara.RuntimeOptions) (_result *StopInstanceAdbResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StopInstanceAdb"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StopInstanceAdbResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止实例ADB端口并删除端口转发条目
+//
+// @param request - StopInstanceAdbRequest
+//
+// @return StopInstanceAdbResponse
+func (client *Client) StopInstanceAdb(request *StopInstanceAdbRequest) (_result *StopInstanceAdbResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &StopInstanceAdbResponse{}
+	_body, _err := client.StopInstanceAdbWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
