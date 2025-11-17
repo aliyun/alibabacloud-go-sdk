@@ -74,7 +74,12 @@ func (s *QueryDatasetListResponseBody) SetSuccess(v bool) *QueryDatasetListRespo
 }
 
 func (s *QueryDatasetListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryDatasetListResponseBodyResult struct {
@@ -172,7 +177,16 @@ func (s *QueryDatasetListResponseBodyResult) SetTotalPages(v int32) *QueryDatase
 }
 
 func (s *QueryDatasetListResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryDatasetListResponseBodyResultData struct {
@@ -373,7 +387,17 @@ func (s *QueryDatasetListResponseBodyResultData) SetWorkspaceName(v string) *Que
 }
 
 func (s *QueryDatasetListResponseBodyResultData) Validate() error {
-	return dara.Validate(s)
+	if s.DataSource != nil {
+		if err := s.DataSource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Directory != nil {
+		if err := s.Directory.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryDatasetListResponseBodyResultDataDataSource struct {

@@ -59,5 +59,10 @@ func (s *AddShareReportResponse) SetBody(v *AddShareReportResponseBody) *AddShar
 }
 
 func (s *AddShareReportResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

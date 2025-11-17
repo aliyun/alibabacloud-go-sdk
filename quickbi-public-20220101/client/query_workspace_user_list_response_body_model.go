@@ -74,7 +74,12 @@ func (s *QueryWorkspaceUserListResponseBody) SetSuccess(v bool) *QueryWorkspaceU
 }
 
 func (s *QueryWorkspaceUserListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryWorkspaceUserListResponseBodyResult struct {
@@ -160,7 +165,16 @@ func (s *QueryWorkspaceUserListResponseBodyResult) SetTotalPages(v int32) *Query
 }
 
 func (s *QueryWorkspaceUserListResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryWorkspaceUserListResponseBodyResultData struct {
@@ -246,7 +260,12 @@ func (s *QueryWorkspaceUserListResponseBodyResultData) SetUserId(v string) *Quer
 }
 
 func (s *QueryWorkspaceUserListResponseBodyResultData) Validate() error {
-	return dara.Validate(s)
+	if s.Role != nil {
+		if err := s.Role.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryWorkspaceUserListResponseBodyResultDataRole struct {

@@ -59,5 +59,10 @@ func (s *QueryAuditLogResponse) SetBody(v *QueryAuditLogResponseBody) *QueryAudi
 }
 
 func (s *QueryAuditLogResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

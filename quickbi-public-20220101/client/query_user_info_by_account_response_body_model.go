@@ -74,7 +74,12 @@ func (s *QueryUserInfoByAccountResponseBody) SetSuccess(v bool) *QueryUserInfoBy
 }
 
 func (s *QueryUserInfoByAccountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryUserInfoByAccountResponseBodyResult struct {

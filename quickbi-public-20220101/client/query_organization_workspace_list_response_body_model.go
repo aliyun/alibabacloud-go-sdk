@@ -74,7 +74,12 @@ func (s *QueryOrganizationWorkspaceListResponseBody) SetSuccess(v bool) *QueryOr
 }
 
 func (s *QueryOrganizationWorkspaceListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryOrganizationWorkspaceListResponseBodyResult struct {
@@ -160,7 +165,16 @@ func (s *QueryOrganizationWorkspaceListResponseBodyResult) SetTotalPages(v int32
 }
 
 func (s *QueryOrganizationWorkspaceListResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryOrganizationWorkspaceListResponseBodyResultData struct {

@@ -74,7 +74,16 @@ func (s *ListWorkspaceRolesResponseBody) SetSuccess(v bool) *ListWorkspaceRolesR
 }
 
 func (s *ListWorkspaceRolesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWorkspaceRolesResponseBodyResult struct {
@@ -159,7 +168,16 @@ func (s *ListWorkspaceRolesResponseBodyResult) SetRoleName(v string) *ListWorksp
 }
 
 func (s *ListWorkspaceRolesResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.AuthConfigList != nil {
+		for _, item := range s.AuthConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWorkspaceRolesResponseBodyResultAuthConfigList struct {

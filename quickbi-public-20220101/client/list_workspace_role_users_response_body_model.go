@@ -74,7 +74,12 @@ func (s *ListWorkspaceRoleUsersResponseBody) SetSuccess(v bool) *ListWorkspaceRo
 }
 
 func (s *ListWorkspaceRoleUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListWorkspaceRoleUsersResponseBodyResult struct {
@@ -160,7 +165,16 @@ func (s *ListWorkspaceRoleUsersResponseBodyResult) SetTotalPages(v int32) *ListW
 }
 
 func (s *ListWorkspaceRoleUsersResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWorkspaceRoleUsersResponseBodyResultData struct {

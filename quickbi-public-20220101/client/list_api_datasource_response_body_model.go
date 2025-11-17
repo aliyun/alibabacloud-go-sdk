@@ -74,7 +74,12 @@ func (s *ListApiDatasourceResponseBody) SetSuccess(v bool) *ListApiDatasourceRes
 }
 
 func (s *ListApiDatasourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListApiDatasourceResponseBodyResult struct {
@@ -145,7 +150,16 @@ func (s *ListApiDatasourceResponseBodyResult) SetTotalNum(v int32) *ListApiDatas
 }
 
 func (s *ListApiDatasourceResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApiDatasourceResponseBodyResultData struct {

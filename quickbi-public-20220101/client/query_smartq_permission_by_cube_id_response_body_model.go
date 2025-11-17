@@ -74,7 +74,12 @@ func (s *QuerySmartqPermissionByCubeIdResponseBody) SetSuccess(v bool) *QuerySma
 }
 
 func (s *QuerySmartqPermissionByCubeIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QuerySmartqPermissionByCubeIdResponseBodyResult struct {

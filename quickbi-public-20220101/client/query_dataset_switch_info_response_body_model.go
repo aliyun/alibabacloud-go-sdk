@@ -18,11 +18,20 @@ type iQueryDatasetSwitchInfoResponseBody interface {
 }
 
 type QueryDatasetSwitchInfoResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// FAECEFA8-09BB-58AB-BC58-C8ACEFE4D232
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *QueryDatasetSwitchInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of the dataset\\"s row and column permission switches.
+	Result *QueryDatasetSwitchInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -65,18 +74,37 @@ func (s *QueryDatasetSwitchInfoResponseBody) SetSuccess(v bool) *QueryDatasetSwi
 }
 
 func (s *QueryDatasetSwitchInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryDatasetSwitchInfoResponseBodyResult struct {
+	// Dataset ID.
+	//
 	// example:
 	//
 	// 7c7223ae-****-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// Status of the column-level field permission switch. Possible values:
+	//
+	// - 1: Enabled
+	//
+	// - 0: Disabled
+	//
 	// example:
 	//
 	// 1
 	IsOpenColumnLevelPermission *int32 `json:"IsOpenColumnLevelPermission,omitempty" xml:"IsOpenColumnLevelPermission,omitempty"`
+	// Status of the row-level permission switch.
+	//
+	// - 1: Enabled
+	//
+	// - 0: Disabled
+	//
 	// example:
 	//
 	// 1

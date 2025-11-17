@@ -74,7 +74,16 @@ func (s *ListPortalMenuAuthorizationResponseBody) SetSuccess(v bool) *ListPortal
 }
 
 func (s *ListPortalMenuAuthorizationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPortalMenuAuthorizationResponseBodyResult struct {
@@ -134,7 +143,16 @@ func (s *ListPortalMenuAuthorizationResponseBodyResult) SetShowOnlyWithAccess(v 
 }
 
 func (s *ListPortalMenuAuthorizationResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Receivers != nil {
+		for _, item := range s.Receivers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPortalMenuAuthorizationResponseBodyResultReceivers struct {

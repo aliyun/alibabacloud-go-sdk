@@ -74,7 +74,12 @@ func (s *ListRecentViewReportsResponseBody) SetSuccess(v bool) *ListRecentViewRe
 }
 
 func (s *ListRecentViewReportsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRecentViewReportsResponseBodyResult struct {
@@ -179,7 +184,16 @@ func (s *ListRecentViewReportsResponseBodyResult) SetTotalPages(v int32) *ListRe
 }
 
 func (s *ListRecentViewReportsResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRecentViewReportsResponseBodyResultData struct {

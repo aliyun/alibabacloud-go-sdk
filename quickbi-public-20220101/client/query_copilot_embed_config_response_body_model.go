@@ -74,7 +74,16 @@ func (s *QueryCopilotEmbedConfigResponseBody) SetSuccess(v bool) *QueryCopilotEm
 }
 
 func (s *QueryCopilotEmbedConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryCopilotEmbedConfigResponseBodyResult struct {
@@ -205,7 +214,12 @@ func (s *QueryCopilotEmbedConfigResponseBodyResult) SetShowName(v string) *Query
 }
 
 func (s *QueryCopilotEmbedConfigResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.DataRange != nil {
+		if err := s.DataRange.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryCopilotEmbedConfigResponseBodyResultDataRange struct {

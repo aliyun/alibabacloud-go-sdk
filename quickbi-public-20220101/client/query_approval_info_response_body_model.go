@@ -74,7 +74,12 @@ func (s *QueryApprovalInfoResponseBody) SetSuccess(v bool) *QueryApprovalInfoRes
 }
 
 func (s *QueryApprovalInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryApprovalInfoResponseBodyResult struct {
@@ -175,7 +180,16 @@ func (s *QueryApprovalInfoResponseBodyResult) SetTotalPages(v int32) *QueryAppro
 }
 
 func (s *QueryApprovalInfoResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryApprovalInfoResponseBodyResultData struct {

@@ -74,7 +74,12 @@ func (s *ListFavoriteReportsResponseBody) SetSuccess(v bool) *ListFavoriteReport
 }
 
 func (s *ListFavoriteReportsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListFavoriteReportsResponseBodyResult struct {
@@ -160,7 +165,16 @@ func (s *ListFavoriteReportsResponseBodyResult) SetTotalPages(v int32) *ListFavo
 }
 
 func (s *ListFavoriteReportsResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFavoriteReportsResponseBodyResultData struct {

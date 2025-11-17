@@ -74,7 +74,12 @@ func (s *QueryEmbeddedInfoResponseBody) SetSuccess(v bool) *QueryEmbeddedInfoRes
 }
 
 func (s *QueryEmbeddedInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryEmbeddedInfoResponseBodyResult struct {
@@ -130,7 +135,12 @@ func (s *QueryEmbeddedInfoResponseBodyResult) SetMaxCount(v int32) *QueryEmbedde
 }
 
 func (s *QueryEmbeddedInfoResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		if err := s.Detail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryEmbeddedInfoResponseBodyResultDetail struct {

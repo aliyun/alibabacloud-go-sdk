@@ -78,7 +78,12 @@ func (s *QueryDataResponseBody) SetSuccess(v bool) *QueryDataResponseBody {
 }
 
 func (s *QueryDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryDataResponseBodyResult struct {
@@ -132,7 +137,16 @@ func (s *QueryDataResponseBodyResult) SetValues(v []map[string]interface{}) *Que
 }
 
 func (s *QueryDataResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Headers != nil {
+		for _, item := range s.Headers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryDataResponseBodyResultHeaders struct {

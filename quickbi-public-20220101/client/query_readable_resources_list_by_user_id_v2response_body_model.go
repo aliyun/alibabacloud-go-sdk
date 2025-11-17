@@ -74,7 +74,16 @@ func (s *QueryReadableResourcesListByUserIdV2ResponseBody) SetSuccess(v bool) *Q
 }
 
 func (s *QueryReadableResourcesListByUserIdV2ResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryReadableResourcesListByUserIdV2ResponseBodyResult struct {
@@ -338,7 +347,12 @@ func (s *QueryReadableResourcesListByUserIdV2ResponseBodyResult) SetWorkspaceNam
 }
 
 func (s *QueryReadableResourcesListByUserIdV2ResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Directory != nil {
+		if err := s.Directory.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryReadableResourcesListByUserIdV2ResponseBodyResultDirectory struct {

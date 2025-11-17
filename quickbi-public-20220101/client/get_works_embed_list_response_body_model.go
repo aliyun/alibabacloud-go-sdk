@@ -70,7 +70,12 @@ func (s *GetWorksEmbedListResponseBody) SetSuccess(v bool) *GetWorksEmbedListRes
 }
 
 func (s *GetWorksEmbedListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWorksEmbedListResponseBodyResult struct {
@@ -156,7 +161,16 @@ func (s *GetWorksEmbedListResponseBodyResult) SetTotalPages(v int64) *GetWorksEm
 }
 
 func (s *GetWorksEmbedListResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetWorksEmbedListResponseBodyResultData struct {

@@ -74,7 +74,12 @@ func (s *QueryDatasetInfoResponseBody) SetSuccess(v bool) *QueryDatasetInfoRespo
 }
 
 func (s *QueryDatasetInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryDatasetInfoResponseBodyResult struct {
@@ -363,7 +368,39 @@ func (s *QueryDatasetInfoResponseBodyResult) SetWorkspaceName(v string) *QueryDa
 }
 
 func (s *QueryDatasetInfoResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.CubeTableList != nil {
+		for _, item := range s.CubeTableList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DimensionList != nil {
+		for _, item := range s.DimensionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Directory != nil {
+		if err := s.Directory.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MeasureList != nil {
+		for _, item := range s.MeasureList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryDatasetInfoResponseBodyResultCubeTableList struct {

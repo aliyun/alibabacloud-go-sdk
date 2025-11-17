@@ -11,6 +11,8 @@ type iSmartqQueryAbilityRequest interface {
 	GoString() string
 	SetCubeId(v string) *SmartqQueryAbilityRequest
 	GetCubeId() *string
+	SetMultipleCubeIds(v string) *SmartqQueryAbilityRequest
+	GetMultipleCubeIds() *string
 	SetUserId(v string) *SmartqQueryAbilityRequest
 	GetUserId() *string
 	SetUserQuestion(v string) *SmartqQueryAbilityRequest
@@ -20,12 +22,14 @@ type iSmartqQueryAbilityRequest interface {
 type SmartqQueryAbilityRequest struct {
 	// Dataset ID.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 7c7223ae-****-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// example:
+	//
+	// 123124
+	MultipleCubeIds *string `json:"MultipleCubeIds,omitempty" xml:"MultipleCubeIds,omitempty"`
 	// User ID.
 	//
 	// 	Notice: If this field is not filled, the data will be queried by default as the organization owner.
@@ -56,6 +60,10 @@ func (s *SmartqQueryAbilityRequest) GetCubeId() *string {
 	return s.CubeId
 }
 
+func (s *SmartqQueryAbilityRequest) GetMultipleCubeIds() *string {
+	return s.MultipleCubeIds
+}
+
 func (s *SmartqQueryAbilityRequest) GetUserId() *string {
 	return s.UserId
 }
@@ -66,6 +74,11 @@ func (s *SmartqQueryAbilityRequest) GetUserQuestion() *string {
 
 func (s *SmartqQueryAbilityRequest) SetCubeId(v string) *SmartqQueryAbilityRequest {
 	s.CubeId = &v
+	return s
+}
+
+func (s *SmartqQueryAbilityRequest) SetMultipleCubeIds(v string) *SmartqQueryAbilityRequest {
+	s.MultipleCubeIds = &v
 	return s
 }
 

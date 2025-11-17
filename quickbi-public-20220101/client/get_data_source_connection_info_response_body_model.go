@@ -70,7 +70,12 @@ func (s *GetDataSourceConnectionInfoResponseBody) SetSuccess(v bool) *GetDataSou
 }
 
 func (s *GetDataSourceConnectionInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataSourceConnectionInfoResponseBodyResult struct {

@@ -59,5 +59,10 @@ func (s *QueryUserGroupListByParentIdResponse) SetBody(v *QueryUserGroupListByPa
 }
 
 func (s *QueryUserGroupListByParentIdResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

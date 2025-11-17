@@ -74,7 +74,12 @@ func (s *QueryDataServiceListResponseBody) SetSuccess(v bool) *QueryDataServiceL
 }
 
 func (s *QueryDataServiceListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryDataServiceListResponseBodyResult struct {
@@ -160,7 +165,16 @@ func (s *QueryDataServiceListResponseBodyResult) SetTotalPages(v int32) *QueryDa
 }
 
 func (s *QueryDataServiceListResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryDataServiceListResponseBodyResultData struct {
@@ -411,7 +425,12 @@ func (s *QueryDataServiceListResponseBodyResultData) SetWorkspaceName(v string) 
 }
 
 func (s *QueryDataServiceListResponseBodyResultData) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryDataServiceListResponseBodyResultDataContent struct {
@@ -493,7 +512,21 @@ func (s *QueryDataServiceListResponseBodyResultDataContent) SetReturnFields(v []
 }
 
 func (s *QueryDataServiceListResponseBodyResultDataContent) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		if err := s.Filter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReturnFields != nil {
+		for _, item := range s.ReturnFields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryDataServiceListResponseBodyResultDataContentFilter struct {
@@ -649,7 +682,12 @@ func (s *QueryDataServiceListResponseBodyResultDataContentReturnFields) SetOrder
 }
 
 func (s *QueryDataServiceListResponseBodyResultDataContentReturnFields) Validate() error {
-	return dara.Validate(s)
+	if s.Field != nil {
+		if err := s.Field.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryDataServiceListResponseBodyResultDataContentReturnFieldsField struct {

@@ -74,7 +74,12 @@ func (s *AddWorkspaceUsersResponseBody) SetSuccess(v bool) *AddWorkspaceUsersRes
 }
 
 func (s *AddWorkspaceUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddWorkspaceUsersResponseBodyResult struct {

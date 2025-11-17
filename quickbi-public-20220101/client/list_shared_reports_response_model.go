@@ -59,5 +59,10 @@ func (s *ListSharedReportsResponse) SetBody(v *ListSharedReportsResponseBody) *L
 }
 
 func (s *ListSharedReportsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -74,7 +74,12 @@ func (s *ListByUserGroupIdResponseBody) SetSuccess(v bool) *ListByUserGroupIdRes
 }
 
 func (s *ListByUserGroupIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListByUserGroupIdResponseBodyResult struct {
@@ -111,7 +116,16 @@ func (s *ListByUserGroupIdResponseBodyResult) SetUserGroupModels(v []*ListByUser
 }
 
 func (s *ListByUserGroupIdResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.UserGroupModels != nil {
+		for _, item := range s.UserGroupModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListByUserGroupIdResponseBodyResultUserGroupModels struct {

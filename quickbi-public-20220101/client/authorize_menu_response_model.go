@@ -59,5 +59,10 @@ func (s *AuthorizeMenuResponse) SetBody(v *AuthorizeMenuResponseBody) *Authorize
 }
 
 func (s *AuthorizeMenuResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -18,11 +18,24 @@ type iQueryDashboardNl2sqlResponseBody interface {
 }
 
 type QueryDashboardNl2sqlResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 46e537a5****,3dadsu****
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*QueryDashboardNl2sqlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Result of the API execution. Possible values:
+	//
+	// - true: Request succeeded
+	//
+	// - false: Request failed
+	Result []*QueryDashboardNl2sqlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: Request succeeded
+	//
+	// - false: Request failed
+	//
 	// example:
 	//
 	// true
@@ -65,19 +78,35 @@ func (s *QueryDashboardNl2sqlResponseBody) SetSuccess(v bool) *QueryDashboardNl2
 }
 
 func (s *QueryDashboardNl2sqlResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryDashboardNl2sqlResponseBodyResult struct {
+	// If this parameter has a value and includes "READ", it indicates that the user has read permission for the dashboard question resource.
 	Authorities []*string `json:"Authorities,omitempty" xml:"Authorities,omitempty" type:"Repeated"`
+	// Dashboard name
+	//
 	// example:
 	//
 	// 612b
 	DashboardName *string `json:"DashboardName,omitempty" xml:"DashboardName,omitempty"`
+	// Dashboard question resource ID
+	//
 	// example:
 	//
 	// sasdas****sawdau
 	DashboardNl2sqlId *string `json:"DashboardNl2sqlId,omitempty" xml:"DashboardNl2sqlId,omitempty"`
+	// UserID of the dashboard creator
+	//
 	// example:
 	//
 	// 46e5374665ba4b679ee22e2a2927****

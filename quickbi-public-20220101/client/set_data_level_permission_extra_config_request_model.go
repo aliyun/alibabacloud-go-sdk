@@ -18,18 +18,32 @@ type iSetDataLevelPermissionExtraConfigRequest interface {
 }
 
 type SetDataLevelPermissionExtraConfigRequest struct {
+	// Dataset ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7c7223ae-******-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// Policy when no rule is matched:
+	//
+	// - NONE: No permission
+	//
+	// - ALL: Full permission
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// NONE
 	MissHitPolicy *string `json:"MissHitPolicy,omitempty" xml:"MissHitPolicy,omitempty"`
+	// Type of dataset row and column permissions. Possible values:
+	//
+	// - ROW_LEVEL: Row-level permission
+	//
+	// - COLUMN_LEVEL: Column-level permission
+	//
 	// This parameter is required.
 	//
 	// example:

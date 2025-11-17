@@ -59,5 +59,10 @@ func (s *QueryReadableResourcesListByUserIdV2Response) SetBody(v *QueryReadableR
 }
 
 func (s *QueryReadableResourcesListByUserIdV2Response) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

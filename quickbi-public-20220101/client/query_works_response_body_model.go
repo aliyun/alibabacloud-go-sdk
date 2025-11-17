@@ -74,7 +74,12 @@ func (s *QueryWorksResponseBody) SetSuccess(v bool) *QueryWorksResponseBody {
 }
 
 func (s *QueryWorksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryWorksResponseBodyResult struct {
@@ -374,7 +379,12 @@ func (s *QueryWorksResponseBodyResult) SetWorkspaceName(v string) *QueryWorksRes
 }
 
 func (s *QueryWorksResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Directory != nil {
+		if err := s.Directory.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryWorksResponseBodyResultDirectory struct {

@@ -74,7 +74,16 @@ func (s *QueryCubeOptimizationResponseBody) SetSuccess(v bool) *QueryCubeOptimiz
 }
 
 func (s *QueryCubeOptimizationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryCubeOptimizationResponseBodyResult struct {
@@ -121,7 +130,12 @@ func (s *QueryCubeOptimizationResponseBodyResult) SetCubePerformanceDiagnoseMode
 }
 
 func (s *QueryCubeOptimizationResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.CubePerformanceDiagnoseModel != nil {
+		if err := s.CubePerformanceDiagnoseModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel struct {

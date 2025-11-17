@@ -18,14 +18,28 @@ type iBatchAddFeishuUsersResponseBody interface {
 }
 
 type BatchAddFeishuUsersResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Result of adding members to the user group. Possible values:
+	//
+	// - true: Addition successful
+	//
+	// - false: Addition failed
+	//
 	// example:
 	//
 	// True
 	Result *BatchAddFeishuUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Whether the request was successful. Possible values:
+	//
+	// - true: Request successful
+	//
+	// - false: Request failed
+	//
 	// example:
 	//
 	// True
@@ -68,15 +82,25 @@ func (s *BatchAddFeishuUsersResponseBody) SetSuccess(v bool) *BatchAddFeishuUser
 }
 
 func (s *BatchAddFeishuUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BatchAddFeishuUsersResponseBodyResult struct {
+	// Number of failed validations.
+	//
 	// example:
 	//
 	// 10
-	FailCount   *int32                                              `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	FailCount *int32 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	// Details of the failures.
 	FailResults []*BatchAddFeishuUsersResponseBodyResultFailResults `json:"FailResults,omitempty" xml:"FailResults,omitempty" type:"Repeated"`
+	// Count of successes.
+	//
 	// example:
 	//
 	// 1
@@ -119,10 +143,20 @@ func (s *BatchAddFeishuUsersResponseBodyResult) SetOkCount(v int32) *BatchAddFei
 }
 
 func (s *BatchAddFeishuUsersResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.FailResults != nil {
+		for _, item := range s.FailResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchAddFeishuUsersResponseBodyResultFailResults struct {
+	// Reasons for errors.
 	FailInfos []*BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos `json:"FailInfos,omitempty" xml:"FailInfos,omitempty" type:"Repeated"`
 }
 
@@ -144,15 +178,33 @@ func (s *BatchAddFeishuUsersResponseBodyResultFailResults) SetFailInfos(v []*Bat
 }
 
 func (s *BatchAddFeishuUsersResponseBodyResultFailResults) Validate() error {
-	return dara.Validate(s)
+	if s.FailInfos != nil {
+		for _, item := range s.FailInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos struct {
+	// Error code.
+	//
 	// example:
 	//
 	// ACCOUNT_EXIST
-	Code     *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Description of the error code.
+	//
+	// example:
+	//
+	// TEST
 	CodeDesc *string `json:"CodeDesc,omitempty" xml:"CodeDesc,omitempty"`
+	// Incorrect input value.
+	//
 	// example:
 	//
 	// 20

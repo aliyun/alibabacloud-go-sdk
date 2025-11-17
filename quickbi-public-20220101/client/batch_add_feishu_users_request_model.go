@@ -22,19 +22,50 @@ type iBatchAddFeishuUsersRequest interface {
 }
 
 type BatchAddFeishuUsersRequest struct {
+	// Information of the users to be added
+	//
+	// example:
+	//
+	// {"ad****fd": "TEST", "82****5a": "TEST"}"
 	FeishuUsers *string `json:"FeishuUsers,omitempty" xml:"FeishuUsers,omitempty"`
+	// Whether the user is an admin user:
+	//
+	// - true
+	//
+	// - false
+	//
+	// Default is false if not provided
+	//
 	// example:
 	//
 	// False
 	IsAdmin *bool `json:"IsAdmin,omitempty" xml:"IsAdmin,omitempty"`
+	// Whether the user is an authorization administrator
+	//
+	// - true
+	//
+	// - false
+	//
+	// Default is false if not provided
+	//
 	// example:
 	//
 	// true
 	IsAuthAdmin *bool `json:"IsAuthAdmin,omitempty" xml:"IsAuthAdmin,omitempty"`
+	// User group ID(s)
+	//
 	// example:
 	//
 	// "0d5fb19b-5555-41f0-99da-1248fc27ca51,0f868dd6_68dd_4d13_8422_c5dca3bd4b61"
 	UserGroupIds *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
+	// User type
+	//
+	// - Developer: 1
+	//
+	// - Visitor: 2
+	//
+	// - Analyst: 3
+	//
 	// example:
 	//
 	// 1

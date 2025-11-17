@@ -74,7 +74,12 @@ func (s *QueryWorksByOrganizationResponseBody) SetSuccess(v bool) *QueryWorksByO
 }
 
 func (s *QueryWorksByOrganizationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryWorksByOrganizationResponseBodyResult struct {
@@ -160,7 +165,16 @@ func (s *QueryWorksByOrganizationResponseBodyResult) SetTotalPages(v int32) *Que
 }
 
 func (s *QueryWorksByOrganizationResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryWorksByOrganizationResponseBodyResultData struct {
@@ -456,7 +470,12 @@ func (s *QueryWorksByOrganizationResponseBodyResultData) SetWorkspaceName(v stri
 }
 
 func (s *QueryWorksByOrganizationResponseBodyResultData) Validate() error {
-	return dara.Validate(s)
+	if s.Directory != nil {
+		if err := s.Directory.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryWorksByOrganizationResponseBodyResultDataDirectory struct {

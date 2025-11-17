@@ -74,7 +74,12 @@ func (s *QueryOrganizationRoleConfigResponseBody) SetSuccess(v bool) *QueryOrgan
 }
 
 func (s *QueryOrganizationRoleConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryOrganizationRoleConfigResponseBodyResult struct {
@@ -157,7 +162,16 @@ func (s *QueryOrganizationRoleConfigResponseBodyResult) SetRoleName(v string) *Q
 }
 
 func (s *QueryOrganizationRoleConfigResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.AuthConfigList != nil {
+		for _, item := range s.AuthConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryOrganizationRoleConfigResponseBodyResultAuthConfigList struct {

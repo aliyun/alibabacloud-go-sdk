@@ -18,11 +18,20 @@ type iQueryLastAccelerationEngineJobResponseBody interface {
 }
 
 type QueryLastAccelerationEngineJobResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 46e53*********92704c8
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *QueryLastAccelerationEngineJobResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The entity of the most recent acceleration task.
+	Result *QueryLastAccelerationEngineJobResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -65,22 +74,47 @@ func (s *QueryLastAccelerationEngineJobResponseBody) SetSuccess(v bool) *QueryLa
 }
 
 func (s *QueryLastAccelerationEngineJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryLastAccelerationEngineJobResponseBodyResult struct {
+	// Execution time, in the format yyyy-MM-dd hh:mm:ss.
+	//
 	// example:
 	//
 	// 2025-06-18 17:07:43
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Completion time, in the format yyyy-MM-dd hh:mm:ss.
+	//
 	// example:
 	//
 	// 2025-06-18 17:08:26
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Acceleration task ID.
+	//
 	// example:
 	//
 	// 46e53********5464564
 	JobHistoryId *string `json:"JobHistoryId,omitempty" xml:"JobHistoryId,omitempty"`
+	// Task status. Possible values:
+	//
+	// - TODO -- To be run
+	//
+	// - RUNNING -- Running
+	//
+	// - SUCCESS -- Successfully completed
+	//
+	// - FAILURE -- Abnormally terminated
+	//
+	// - CANCELED -- Canceled
+	//
+	// - CHECK_DEPENDENCY -- Checking dependencies
+	//
 	// example:
 	//
 	// SUCCESS

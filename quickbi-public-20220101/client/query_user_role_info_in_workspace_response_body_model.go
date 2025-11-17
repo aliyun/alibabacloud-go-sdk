@@ -74,7 +74,12 @@ func (s *QueryUserRoleInfoInWorkspaceResponseBody) SetSuccess(v bool) *QueryUser
 }
 
 func (s *QueryUserRoleInfoInWorkspaceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryUserRoleInfoInWorkspaceResponseBodyResult struct {

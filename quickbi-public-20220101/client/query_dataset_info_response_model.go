@@ -59,5 +59,10 @@ func (s *QueryDatasetInfoResponse) SetBody(v *QueryDatasetInfoResponseBody) *Que
 }
 
 func (s *QueryDatasetInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

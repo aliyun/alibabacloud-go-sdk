@@ -74,7 +74,16 @@ func (s *QuerySharesToUserListResponseBody) SetSuccess(v bool) *QuerySharesToUse
 }
 
 func (s *QuerySharesToUserListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QuerySharesToUserListResponseBodyResult struct {
@@ -344,7 +353,12 @@ func (s *QuerySharesToUserListResponseBodyResult) SetWorkspaceName(v string) *Qu
 }
 
 func (s *QuerySharesToUserListResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Directory != nil {
+		if err := s.Directory.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QuerySharesToUserListResponseBodyResultDirectory struct {

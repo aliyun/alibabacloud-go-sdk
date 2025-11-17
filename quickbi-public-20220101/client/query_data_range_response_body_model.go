@@ -74,7 +74,12 @@ func (s *QueryDataRangeResponseBody) SetSuccess(v bool) *QueryDataRangeResponseB
 }
 
 func (s *QueryDataRangeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryDataRangeResponseBodyResult struct {
@@ -111,7 +116,25 @@ func (s *QueryDataRangeResponseBodyResult) SetApiCopilotThemeModels(v []*QueryDa
 }
 
 func (s *QueryDataRangeResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.ApiCopilotLlmCubeModels != nil {
+		for _, item := range s.ApiCopilotLlmCubeModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ApiCopilotThemeModels != nil {
+		for _, item := range s.ApiCopilotThemeModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels struct {
@@ -242,7 +265,16 @@ func (s *QueryDataRangeResponseBodyResultApiCopilotThemeModels) SetThemeName(v s
 }
 
 func (s *QueryDataRangeResponseBodyResultApiCopilotThemeModels) Validate() error {
-	return dara.Validate(s)
+	if s.ApiCopilotLlmCubeModels != nil {
+		for _, item := range s.ApiCopilotLlmCubeModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeModels struct {

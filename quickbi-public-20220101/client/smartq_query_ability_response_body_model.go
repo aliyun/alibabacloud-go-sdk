@@ -72,7 +72,12 @@ func (s *SmartqQueryAbilityResponseBody) SetSuccess(v bool) *SmartqQueryAbilityR
 }
 
 func (s *SmartqQueryAbilityResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SmartqQueryAbilityResponseBodyResult struct {
@@ -90,7 +95,8 @@ type SmartqQueryAbilityResponseBodyResult struct {
 	// example:
 	//
 	// Schedule
-	ConclusionText *string `json:"ConclusionText,omitempty" xml:"ConclusionText,omitempty"`
+	ConclusionText *string   `json:"ConclusionText,omitempty" xml:"ConclusionText,omitempty"`
+	DataList       []*string `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
 	// Visualized logical SQL.
 	//
 	// example:
@@ -119,6 +125,10 @@ func (s *SmartqQueryAbilityResponseBodyResult) GetConclusionText() *string {
 	return s.ConclusionText
 }
 
+func (s *SmartqQueryAbilityResponseBodyResult) GetDataList() []*string {
+	return s.DataList
+}
+
 func (s *SmartqQueryAbilityResponseBodyResult) GetLogicSql() *string {
 	return s.LogicSql
 }
@@ -141,6 +151,11 @@ func (s *SmartqQueryAbilityResponseBodyResult) SetConclusionText(v string) *Smar
 	return s
 }
 
+func (s *SmartqQueryAbilityResponseBodyResult) SetDataList(v []*string) *SmartqQueryAbilityResponseBodyResult {
+	s.DataList = v
+	return s
+}
+
 func (s *SmartqQueryAbilityResponseBodyResult) SetLogicSql(v string) *SmartqQueryAbilityResponseBodyResult {
 	s.LogicSql = &v
 	return s
@@ -157,7 +172,25 @@ func (s *SmartqQueryAbilityResponseBodyResult) SetValues(v []*SmartqQueryAbility
 }
 
 func (s *SmartqQueryAbilityResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.MetaType != nil {
+		for _, item := range s.MetaType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Values != nil {
+		for _, item := range s.Values {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SmartqQueryAbilityResponseBodyResultMetaType struct {

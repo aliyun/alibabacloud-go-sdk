@@ -59,5 +59,10 @@ func (s *QueryOrganizationRoleConfigResponse) SetBody(v *QueryOrganizationRoleCo
 }
 
 func (s *QueryOrganizationRoleConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

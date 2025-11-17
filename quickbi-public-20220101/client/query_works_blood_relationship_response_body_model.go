@@ -74,7 +74,16 @@ func (s *QueryWorksBloodRelationshipResponseBody) SetSuccess(v bool) *QueryWorks
 }
 
 func (s *QueryWorksBloodRelationshipResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryWorksBloodRelationshipResponseBodyResult struct {
@@ -190,7 +199,16 @@ func (s *QueryWorksBloodRelationshipResponseBodyResult) SetQueryParams(v []*Quer
 }
 
 func (s *QueryWorksBloodRelationshipResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.QueryParams != nil {
+		for _, item := range s.QueryParams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryWorksBloodRelationshipResponseBodyResultQueryParams struct {

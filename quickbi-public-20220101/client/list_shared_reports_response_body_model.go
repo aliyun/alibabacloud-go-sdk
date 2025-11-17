@@ -74,7 +74,12 @@ func (s *ListSharedReportsResponseBody) SetSuccess(v bool) *ListSharedReportsRes
 }
 
 func (s *ListSharedReportsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSharedReportsResponseBodyResult struct {
@@ -160,7 +165,16 @@ func (s *ListSharedReportsResponseBodyResult) SetTotalPages(v int32) *ListShared
 }
 
 func (s *ListSharedReportsResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSharedReportsResponseBodyResultData struct {

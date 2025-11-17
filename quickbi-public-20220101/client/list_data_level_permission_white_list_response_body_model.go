@@ -74,7 +74,12 @@ func (s *ListDataLevelPermissionWhiteListResponseBody) SetSuccess(v bool) *ListD
 }
 
 func (s *ListDataLevelPermissionWhiteListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataLevelPermissionWhiteListResponseBodyResult struct {
@@ -134,7 +139,12 @@ func (s *ListDataLevelPermissionWhiteListResponseBodyResult) SetUsersModel(v *Li
 }
 
 func (s *ListDataLevelPermissionWhiteListResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.UsersModel != nil {
+		if err := s.UsersModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataLevelPermissionWhiteListResponseBodyResultUsersModel struct {

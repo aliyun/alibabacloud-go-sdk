@@ -74,7 +74,12 @@ func (s *QueryUserListResponseBody) SetSuccess(v bool) *QueryUserListResponseBod
 }
 
 func (s *QueryUserListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryUserListResponseBodyResult struct {
@@ -160,7 +165,16 @@ func (s *QueryUserListResponseBodyResult) SetTotalPages(v int32) *QueryUserListR
 }
 
 func (s *QueryUserListResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryUserListResponseBodyResultData struct {

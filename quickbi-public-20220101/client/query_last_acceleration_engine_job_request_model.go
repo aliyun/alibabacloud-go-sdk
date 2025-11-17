@@ -14,6 +14,8 @@ type iQueryLastAccelerationEngineJobRequest interface {
 }
 
 type QueryLastAccelerationEngineJobRequest struct {
+	// Dataset ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -59,5 +59,10 @@ func (s *QueryDashboardNl2sqlResponse) SetBody(v *QueryDashboardNl2sqlResponseBo
 }
 
 func (s *QueryDashboardNl2sqlResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *QueryApprovalInfoResponse) SetBody(v *QueryApprovalInfoResponseBody) *Q
 }
 
 func (s *QueryApprovalInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
