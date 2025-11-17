@@ -13,6 +13,8 @@ type iListRecognitionSamplesRequest interface {
 	GetAlgorithm() *string
 	SetEntityId(v string) *ListRecognitionSamplesRequest
 	GetEntityId() *string
+	SetEntityName(v string) *ListRecognitionSamplesRequest
+	GetEntityName() *string
 	SetLibId(v string) *ListRecognitionSamplesRequest
 	GetLibId() *string
 	SetOwnerAccount(v string) *ListRecognitionSamplesRequest
@@ -53,7 +55,8 @@ type ListRecognitionSamplesRequest struct {
 	// example:
 	//
 	// e6b985c05174412dbc77c92496b7373b
-	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	EntityId   *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
 	// The ID of the recognition library.
 	//
 	// This parameter is required.
@@ -100,6 +103,10 @@ func (s *ListRecognitionSamplesRequest) GetEntityId() *string {
 	return s.EntityId
 }
 
+func (s *ListRecognitionSamplesRequest) GetEntityName() *string {
+	return s.EntityName
+}
+
 func (s *ListRecognitionSamplesRequest) GetLibId() *string {
 	return s.LibId
 }
@@ -135,6 +142,11 @@ func (s *ListRecognitionSamplesRequest) SetAlgorithm(v string) *ListRecognitionS
 
 func (s *ListRecognitionSamplesRequest) SetEntityId(v string) *ListRecognitionSamplesRequest {
 	s.EntityId = &v
+	return s
+}
+
+func (s *ListRecognitionSamplesRequest) SetEntityName(v string) *ListRecognitionSamplesRequest {
+	s.EntityName = &v
 	return s
 }
 

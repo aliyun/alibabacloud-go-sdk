@@ -13,6 +13,8 @@ type iSubmitVideoCognitionJobShrinkRequest interface {
 	GetInputShrink() *string
 	SetParams(v string) *SubmitVideoCognitionJobShrinkRequest
 	GetParams() *string
+	SetTemplateConfig(v string) *SubmitVideoCognitionJobShrinkRequest
+	GetTemplateConfig() *string
 	SetTemplateId(v string) *SubmitVideoCognitionJobShrinkRequest
 	GetTemplateId() *string
 	SetTitle(v string) *SubmitVideoCognitionJobShrinkRequest
@@ -53,7 +55,8 @@ type SubmitVideoCognitionJobShrinkRequest struct {
 	// 	}
 	//
 	// }
-	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	Params         *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// The ID of the template that specifies the analysis algorithms to be used. For details, see [CreateCustomTemplate](https://help.aliyun.com/zh/ims/developer-reference/api-ice-2020-11-09-createcustomtemplate?spm=a2c4g.11186623.help-menu-193643.d_5_0_3_3_0_0.17b66afamjKySv) and [smart tagging template](https://help.aliyun.com/zh/ims/user-guide/smart-tagging-template?spm=a2c4g.11186623.0.i15).
 	//
 	// example:
@@ -90,6 +93,10 @@ func (s *SubmitVideoCognitionJobShrinkRequest) GetParams() *string {
 	return s.Params
 }
 
+func (s *SubmitVideoCognitionJobShrinkRequest) GetTemplateConfig() *string {
+	return s.TemplateConfig
+}
+
 func (s *SubmitVideoCognitionJobShrinkRequest) GetTemplateId() *string {
 	return s.TemplateId
 }
@@ -109,6 +116,11 @@ func (s *SubmitVideoCognitionJobShrinkRequest) SetInputShrink(v string) *SubmitV
 
 func (s *SubmitVideoCognitionJobShrinkRequest) SetParams(v string) *SubmitVideoCognitionJobShrinkRequest {
 	s.Params = &v
+	return s
+}
+
+func (s *SubmitVideoCognitionJobShrinkRequest) SetTemplateConfig(v string) *SubmitVideoCognitionJobShrinkRequest {
+	s.TemplateConfig = &v
 	return s
 }
 

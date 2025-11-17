@@ -11,6 +11,8 @@ type iListRecognitionLibsRequest interface {
 	GoString() string
 	SetAlgorithm(v string) *ListRecognitionLibsRequest
 	GetAlgorithm() *string
+	SetLibId(v string) *ListRecognitionLibsRequest
+	GetLibId() *string
 	SetOwnerAccount(v string) *ListRecognitionLibsRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *ListRecognitionLibsRequest
@@ -44,6 +46,7 @@ type ListRecognitionLibsRequest struct {
 	//
 	// landmark
 	Algorithm    *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	LibId        *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number.
@@ -78,6 +81,10 @@ func (s *ListRecognitionLibsRequest) GetAlgorithm() *string {
 	return s.Algorithm
 }
 
+func (s *ListRecognitionLibsRequest) GetLibId() *string {
+	return s.LibId
+}
+
 func (s *ListRecognitionLibsRequest) GetOwnerAccount() *string {
 	return s.OwnerAccount
 }
@@ -104,6 +111,11 @@ func (s *ListRecognitionLibsRequest) GetResourceOwnerId() *int64 {
 
 func (s *ListRecognitionLibsRequest) SetAlgorithm(v string) *ListRecognitionLibsRequest {
 	s.Algorithm = &v
+	return s
+}
+
+func (s *ListRecognitionLibsRequest) SetLibId(v string) *ListRecognitionLibsRequest {
+	s.LibId = &v
 	return s
 }
 

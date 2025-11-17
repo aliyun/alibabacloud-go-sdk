@@ -23,6 +23,8 @@ type iSubmitSmarttagJobShrinkRequest interface {
 	GetParams() *string
 	SetScheduleConfigShrink(v string) *SubmitSmarttagJobShrinkRequest
 	GetScheduleConfigShrink() *string
+	SetTemplateConfig(v string) *SubmitSmarttagJobShrinkRequest
+	GetTemplateConfig() *string
 	SetTemplateId(v string) *SubmitSmarttagJobShrinkRequest
 	GetTemplateId() *string
 	SetTitle(v string) *SubmitSmarttagJobShrinkRequest
@@ -74,6 +76,7 @@ type SubmitSmarttagJobShrinkRequest struct {
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	// The scheduling configurations.
 	ScheduleConfigShrink *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
+	TemplateConfig       *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// The ID of the template that specifies the analysis algorithms. For more information about template operations, see [Configure templates](https://help.aliyun.com/document_detail/445702.html).
 	//
 	// example:
@@ -130,6 +133,10 @@ func (s *SubmitSmarttagJobShrinkRequest) GetScheduleConfigShrink() *string {
 	return s.ScheduleConfigShrink
 }
 
+func (s *SubmitSmarttagJobShrinkRequest) GetTemplateConfig() *string {
+	return s.TemplateConfig
+}
+
 func (s *SubmitSmarttagJobShrinkRequest) GetTemplateId() *string {
 	return s.TemplateId
 }
@@ -174,6 +181,11 @@ func (s *SubmitSmarttagJobShrinkRequest) SetParams(v string) *SubmitSmarttagJobS
 
 func (s *SubmitSmarttagJobShrinkRequest) SetScheduleConfigShrink(v string) *SubmitSmarttagJobShrinkRequest {
 	s.ScheduleConfigShrink = &v
+	return s
+}
+
+func (s *SubmitSmarttagJobShrinkRequest) SetTemplateConfig(v string) *SubmitSmarttagJobShrinkRequest {
+	s.TemplateConfig = &v
 	return s
 }
 

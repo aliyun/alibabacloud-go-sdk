@@ -17320,6 +17320,10 @@ func (client *Client) ListRecognitionLibsWithOptions(request *ListRecognitionLib
 		query["Algorithm"] = request.Algorithm
 	}
 
+	if !dara.IsNil(request.LibId) {
+		query["LibId"] = request.LibId
+	}
+
 	if !dara.IsNil(request.OwnerAccount) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -17414,6 +17418,10 @@ func (client *Client) ListRecognitionSamplesWithOptions(request *ListRecognition
 
 	if !dara.IsNil(request.EntityId) {
 		query["EntityId"] = request.EntityId
+	}
+
+	if !dara.IsNil(request.EntityName) {
+		query["EntityName"] = request.EntityName
 	}
 
 	if !dara.IsNil(request.LibId) {
@@ -25908,6 +25916,10 @@ func (client *Client) SubmitSmarttagJobWithOptions(tmpReq *SubmitSmarttagJobRequ
 		query["ScheduleConfig"] = request.ScheduleConfigShrink
 	}
 
+	if !dara.IsNil(request.TemplateConfig) {
+		query["TemplateConfig"] = request.TemplateConfig
+	}
+
 	if !dara.IsNil(request.TemplateId) {
 		query["TemplateId"] = request.TemplateId
 	}
@@ -26806,6 +26818,10 @@ func (client *Client) SubmitVideoCognitionJobWithOptions(tmpReq *SubmitVideoCogn
 
 	if !dara.IsNil(request.Params) {
 		query["Params"] = request.Params
+	}
+
+	if !dara.IsNil(request.TemplateConfig) {
+		query["TemplateConfig"] = request.TemplateConfig
 	}
 
 	if !dara.IsNil(request.TemplateId) {

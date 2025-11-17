@@ -12472,6 +12472,10 @@ func (client *Client) ListRecognitionLibsWithContext(ctx context.Context, reques
 		query["Algorithm"] = request.Algorithm
 	}
 
+	if !dara.IsNil(request.LibId) {
+		query["LibId"] = request.LibId
+	}
+
 	if !dara.IsNil(request.OwnerAccount) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -12542,6 +12546,10 @@ func (client *Client) ListRecognitionSamplesWithContext(ctx context.Context, req
 
 	if !dara.IsNil(request.EntityId) {
 		query["EntityId"] = request.EntityId
+	}
+
+	if !dara.IsNil(request.EntityName) {
+		query["EntityName"] = request.EntityName
 	}
 
 	if !dara.IsNil(request.LibId) {
@@ -18958,6 +18966,10 @@ func (client *Client) SubmitSmarttagJobWithContext(ctx context.Context, tmpReq *
 		query["ScheduleConfig"] = request.ScheduleConfigShrink
 	}
 
+	if !dara.IsNil(request.TemplateConfig) {
+		query["TemplateConfig"] = request.TemplateConfig
+	}
+
 	if !dara.IsNil(request.TemplateId) {
 		query["TemplateId"] = request.TemplateId
 	}
@@ -19650,6 +19662,10 @@ func (client *Client) SubmitVideoCognitionJobWithContext(ctx context.Context, tm
 
 	if !dara.IsNil(request.Params) {
 		query["Params"] = request.Params
+	}
+
+	if !dara.IsNil(request.TemplateConfig) {
+		query["TemplateConfig"] = request.TemplateConfig
 	}
 
 	if !dara.IsNil(request.TemplateId) {

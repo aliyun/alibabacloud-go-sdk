@@ -147,12 +147,14 @@ func (s *ListRecognitionSamplesResponseBodySamples) Validate() error {
 }
 
 type ListRecognitionSamplesResponseBodySamplesSample struct {
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	// The URL of the image sample.
 	//
 	// example:
 	//
 	// https://example.com/sample.png
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	LibId    *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
 	// The sample ID.
 	//
 	// example:
@@ -169,16 +171,34 @@ func (s ListRecognitionSamplesResponseBodySamplesSample) GoString() string {
 	return s.String()
 }
 
+func (s *ListRecognitionSamplesResponseBodySamplesSample) GetEntityId() *string {
+	return s.EntityId
+}
+
 func (s *ListRecognitionSamplesResponseBodySamplesSample) GetImageUrl() *string {
 	return s.ImageUrl
+}
+
+func (s *ListRecognitionSamplesResponseBodySamplesSample) GetLibId() *string {
+	return s.LibId
 }
 
 func (s *ListRecognitionSamplesResponseBodySamplesSample) GetSampleId() *string {
 	return s.SampleId
 }
 
+func (s *ListRecognitionSamplesResponseBodySamplesSample) SetEntityId(v string) *ListRecognitionSamplesResponseBodySamplesSample {
+	s.EntityId = &v
+	return s
+}
+
 func (s *ListRecognitionSamplesResponseBodySamplesSample) SetImageUrl(v string) *ListRecognitionSamplesResponseBodySamplesSample {
 	s.ImageUrl = &v
+	return s
+}
+
+func (s *ListRecognitionSamplesResponseBodySamplesSample) SetLibId(v string) *ListRecognitionSamplesResponseBodySamplesSample {
+	s.LibId = &v
 	return s
 }
 

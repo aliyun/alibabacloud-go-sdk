@@ -23,6 +23,8 @@ type iSubmitSmarttagJobRequest interface {
 	GetParams() *string
 	SetScheduleConfig(v *SubmitSmarttagJobRequestScheduleConfig) *SubmitSmarttagJobRequest
 	GetScheduleConfig() *SubmitSmarttagJobRequestScheduleConfig
+	SetTemplateConfig(v string) *SubmitSmarttagJobRequest
+	GetTemplateConfig() *string
 	SetTemplateId(v string) *SubmitSmarttagJobRequest
 	GetTemplateId() *string
 	SetTitle(v string) *SubmitSmarttagJobRequest
@@ -74,6 +76,7 @@ type SubmitSmarttagJobRequest struct {
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	// The scheduling configurations.
 	ScheduleConfig *SubmitSmarttagJobRequestScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	TemplateConfig *string                                 `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// The ID of the template that specifies the analysis algorithms. For more information about template operations, see [Configure templates](https://help.aliyun.com/document_detail/445702.html).
 	//
 	// example:
@@ -130,6 +133,10 @@ func (s *SubmitSmarttagJobRequest) GetScheduleConfig() *SubmitSmarttagJobRequest
 	return s.ScheduleConfig
 }
 
+func (s *SubmitSmarttagJobRequest) GetTemplateConfig() *string {
+	return s.TemplateConfig
+}
+
 func (s *SubmitSmarttagJobRequest) GetTemplateId() *string {
 	return s.TemplateId
 }
@@ -174,6 +181,11 @@ func (s *SubmitSmarttagJobRequest) SetParams(v string) *SubmitSmarttagJobRequest
 
 func (s *SubmitSmarttagJobRequest) SetScheduleConfig(v *SubmitSmarttagJobRequestScheduleConfig) *SubmitSmarttagJobRequest {
 	s.ScheduleConfig = v
+	return s
+}
+
+func (s *SubmitSmarttagJobRequest) SetTemplateConfig(v string) *SubmitSmarttagJobRequest {
+	s.TemplateConfig = &v
 	return s
 }
 
