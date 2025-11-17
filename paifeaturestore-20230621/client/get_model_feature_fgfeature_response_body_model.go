@@ -86,7 +86,34 @@ func (s *GetModelFeatureFGFeatureResponseBody) SetSequenceFeatures(v []*GetModel
 }
 
 func (s *GetModelFeatureFGFeatureResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LookupFeatures != nil {
+		for _, item := range s.LookupFeatures {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RawFeatures != nil {
+		for _, item := range s.RawFeatures {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SequenceFeatures != nil {
+		for _, item := range s.SequenceFeatures {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetModelFeatureFGFeatureResponseBodyLookupFeatures struct {
@@ -362,7 +389,16 @@ func (s *GetModelFeatureFGFeatureResponseBodySequenceFeatures) SetSubFeatures(v 
 }
 
 func (s *GetModelFeatureFGFeatureResponseBodySequenceFeatures) Validate() error {
-	return dara.Validate(s)
+	if s.SubFeatures != nil {
+		for _, item := range s.SubFeatures {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures struct {

@@ -101,7 +101,16 @@ func (s *ListLLMConfigsResponseBody) SetTotalCount(v int64) *ListLLMConfigsRespo
 }
 
 func (s *ListLLMConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LLMConfigs != nil {
+		for _, item := range s.LLMConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLLMConfigsResponseBodyLLMConfigs struct {

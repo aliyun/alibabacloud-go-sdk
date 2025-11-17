@@ -50,7 +50,16 @@ func (s *ListFeatureViewRelationshipsResponseBody) SetRequestId(v string) *ListF
 }
 
 func (s *ListFeatureViewRelationshipsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Relationships != nil {
+		for _, item := range s.Relationships {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFeatureViewRelationshipsResponseBodyRelationships struct {
@@ -101,7 +110,16 @@ func (s *ListFeatureViewRelationshipsResponseBodyRelationships) SetProjectName(v
 }
 
 func (s *ListFeatureViewRelationshipsResponseBodyRelationships) Validate() error {
-	return dara.Validate(s)
+	if s.Models != nil {
+		for _, item := range s.Models {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFeatureViewRelationshipsResponseBodyRelationshipsModels struct {

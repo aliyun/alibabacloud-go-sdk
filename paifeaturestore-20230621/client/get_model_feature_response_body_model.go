@@ -242,7 +242,21 @@ func (s *GetModelFeatureResponseBody) SetTrainingSetTable(v string) *GetModelFea
 }
 
 func (s *GetModelFeatureResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Features != nil {
+		for _, item := range s.Features {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Relations != nil {
+		if err := s.Relations.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetModelFeatureResponseBodyFeatures struct {
@@ -357,7 +371,25 @@ func (s *GetModelFeatureResponseBodyRelations) SetLinks(v []*GetModelFeatureResp
 }
 
 func (s *GetModelFeatureResponseBodyRelations) Validate() error {
-	return dara.Validate(s)
+	if s.Domains != nil {
+		for _, item := range s.Domains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Links != nil {
+		for _, item := range s.Links {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetModelFeatureResponseBodyRelationsDomains struct {

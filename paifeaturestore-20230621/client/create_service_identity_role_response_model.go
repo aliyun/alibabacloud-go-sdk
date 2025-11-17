@@ -59,5 +59,10 @@ func (s *CreateServiceIdentityRoleResponse) SetBody(v *CreateServiceIdentityRole
 }
 
 func (s *CreateServiceIdentityRoleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

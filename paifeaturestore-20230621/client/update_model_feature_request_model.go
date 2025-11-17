@@ -77,7 +77,16 @@ func (s *UpdateModelFeatureRequest) SetSequenceFeatureViewIds(v []*string) *Upda
 }
 
 func (s *UpdateModelFeatureRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Features != nil {
+		for _, item := range s.Features {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateModelFeatureRequestFeatures struct {

@@ -79,7 +79,21 @@ func (s *ListDatasourceFeatureViewsResponseBody) SetRequestId(v string) *ListDat
 }
 
 func (s *ListDatasourceFeatureViewsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FeatureViews != nil {
+		for _, item := range s.FeatureViews {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TotalUsageStatistics != nil {
+		if err := s.TotalUsageStatistics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDatasourceFeatureViewsResponseBodyFeatureViews struct {
@@ -195,7 +209,12 @@ func (s *ListDatasourceFeatureViewsResponseBodyFeatureViews) SetUsageStatistics(
 }
 
 func (s *ListDatasourceFeatureViewsResponseBodyFeatureViews) Validate() error {
-	return dara.Validate(s)
+	if s.UsageStatistics != nil {
+		if err := s.UsageStatistics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics struct {
@@ -259,7 +278,16 @@ func (s *ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics) SetR
 }
 
 func (s *ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics) Validate() error {
-	return dara.Validate(s)
+	if s.ReadWriteCount != nil {
+		for _, item := range s.ReadWriteCount {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatisticsReadWriteCount struct {
@@ -364,7 +392,16 @@ func (s *ListDatasourceFeatureViewsResponseBodyTotalUsageStatistics) SetTotalRea
 }
 
 func (s *ListDatasourceFeatureViewsResponseBodyTotalUsageStatistics) Validate() error {
-	return dara.Validate(s)
+	if s.TotalReadWriteCount != nil {
+		for _, item := range s.TotalReadWriteCount {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDatasourceFeatureViewsResponseBodyTotalUsageStatisticsTotalReadWriteCount struct {

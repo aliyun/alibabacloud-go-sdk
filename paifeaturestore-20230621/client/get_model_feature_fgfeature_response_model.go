@@ -59,5 +59,10 @@ func (s *GetModelFeatureFGFeatureResponse) SetBody(v *GetModelFeatureFGFeatureRe
 }
 
 func (s *GetModelFeatureFGFeatureResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

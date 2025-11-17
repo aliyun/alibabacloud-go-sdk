@@ -67,7 +67,16 @@ func (s *ListProjectFeaturesResponseBody) SetRequestId(v string) *ListProjectFea
 }
 
 func (s *ListProjectFeaturesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Features != nil {
+		for _, item := range s.Features {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProjectFeaturesResponseBodyFeatures struct {

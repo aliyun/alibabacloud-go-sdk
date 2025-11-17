@@ -13,6 +13,8 @@ type iCreateFeatureEntityRequest interface {
 	GetJoinId() *string
 	SetName(v string) *CreateFeatureEntityRequest
 	GetName() *string
+	SetParentFeatureEntityId(v string) *CreateFeatureEntityRequest
+	GetParentFeatureEntityId() *string
 	SetProjectId(v string) *CreateFeatureEntityRequest
 	GetProjectId() *string
 }
@@ -30,6 +32,10 @@ type CreateFeatureEntityRequest struct {
 	//
 	// feature_entity_1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	ParentFeatureEntityId *string `json:"ParentFeatureEntityId,omitempty" xml:"ParentFeatureEntityId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -54,6 +60,10 @@ func (s *CreateFeatureEntityRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateFeatureEntityRequest) GetParentFeatureEntityId() *string {
+	return s.ParentFeatureEntityId
+}
+
 func (s *CreateFeatureEntityRequest) GetProjectId() *string {
 	return s.ProjectId
 }
@@ -65,6 +75,11 @@ func (s *CreateFeatureEntityRequest) SetJoinId(v string) *CreateFeatureEntityReq
 
 func (s *CreateFeatureEntityRequest) SetName(v string) *CreateFeatureEntityRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateFeatureEntityRequest) SetParentFeatureEntityId(v string) *CreateFeatureEntityRequest {
+	s.ParentFeatureEntityId = &v
 	return s
 }
 

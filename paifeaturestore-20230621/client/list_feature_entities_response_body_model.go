@@ -65,7 +65,16 @@ func (s *ListFeatureEntitiesResponseBody) SetTotalCount(v int32) *ListFeatureEnt
 }
 
 func (s *ListFeatureEntitiesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FeatureEntities != nil {
+		for _, item := range s.FeatureEntities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFeatureEntitiesResponseBodyFeatureEntities struct {
@@ -89,6 +98,18 @@ type ListFeatureEntitiesResponseBodyFeatureEntities struct {
 	//
 	// 123456789****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	ParentFeatureEntityId *string `json:"ParentFeatureEntityId,omitempty" xml:"ParentFeatureEntityId,omitempty"`
+	// example:
+	//
+	// user
+	ParentFeatureEntityName *string `json:"ParentFeatureEntityName,omitempty" xml:"ParentFeatureEntityName,omitempty"`
+	// example:
+	//
+	// user_id
+	ParentJoinId *string `json:"ParentJoinId,omitempty" xml:"ParentJoinId,omitempty"`
 	// example:
 	//
 	// 3
@@ -127,6 +148,18 @@ func (s *ListFeatureEntitiesResponseBodyFeatureEntities) GetOwner() *string {
 	return s.Owner
 }
 
+func (s *ListFeatureEntitiesResponseBodyFeatureEntities) GetParentFeatureEntityId() *string {
+	return s.ParentFeatureEntityId
+}
+
+func (s *ListFeatureEntitiesResponseBodyFeatureEntities) GetParentFeatureEntityName() *string {
+	return s.ParentFeatureEntityName
+}
+
+func (s *ListFeatureEntitiesResponseBodyFeatureEntities) GetParentJoinId() *string {
+	return s.ParentJoinId
+}
+
 func (s *ListFeatureEntitiesResponseBodyFeatureEntities) GetProjectId() *string {
 	return s.ProjectId
 }
@@ -157,6 +190,21 @@ func (s *ListFeatureEntitiesResponseBodyFeatureEntities) SetName(v string) *List
 
 func (s *ListFeatureEntitiesResponseBodyFeatureEntities) SetOwner(v string) *ListFeatureEntitiesResponseBodyFeatureEntities {
 	s.Owner = &v
+	return s
+}
+
+func (s *ListFeatureEntitiesResponseBodyFeatureEntities) SetParentFeatureEntityId(v string) *ListFeatureEntitiesResponseBodyFeatureEntities {
+	s.ParentFeatureEntityId = &v
+	return s
+}
+
+func (s *ListFeatureEntitiesResponseBodyFeatureEntities) SetParentFeatureEntityName(v string) *ListFeatureEntitiesResponseBodyFeatureEntities {
+	s.ParentFeatureEntityName = &v
+	return s
+}
+
+func (s *ListFeatureEntitiesResponseBodyFeatureEntities) SetParentJoinId(v string) *ListFeatureEntitiesResponseBodyFeatureEntities {
+	s.ParentJoinId = &v
 	return s
 }
 

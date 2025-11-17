@@ -19,9 +19,11 @@ import (
 //
 // @return CheckInstanceDatasourceResponse
 func (client *Client) CheckInstanceDatasourceWithContext(ctx context.Context, InstanceId *string, request *CheckInstanceDatasourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CheckInstanceDatasourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -105,9 +107,11 @@ func (client *Client) CheckModelFeatureFGFeatureWithContext(ctx context.Context,
 //
 // @return CreateDatasourceResponse
 func (client *Client) CreateDatasourceWithContext(ctx context.Context, InstanceId *string, request *CreateDatasourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDatasourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -166,9 +170,11 @@ func (client *Client) CreateDatasourceWithContext(ctx context.Context, InstanceI
 //
 // @return CreateFeatureEntityResponse
 func (client *Client) CreateFeatureEntityWithContext(ctx context.Context, InstanceId *string, request *CreateFeatureEntityRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateFeatureEntityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.JoinId) {
@@ -177,6 +183,10 @@ func (client *Client) CreateFeatureEntityWithContext(ctx context.Context, Instan
 
 	if !dara.IsNil(request.Name) {
 		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ParentFeatureEntityId) {
+		body["ParentFeatureEntityId"] = request.ParentFeatureEntityId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -219,9 +229,11 @@ func (client *Client) CreateFeatureEntityWithContext(ctx context.Context, Instan
 //
 // @return CreateFeatureViewResponse
 func (client *Client) CreateFeatureViewWithContext(ctx context.Context, InstanceId *string, request *CreateFeatureViewRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateFeatureViewResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -312,9 +324,11 @@ func (client *Client) CreateFeatureViewWithContext(ctx context.Context, Instance
 //
 // @return CreateInstanceResponse
 func (client *Client) CreateInstanceWithContext(ctx context.Context, request *CreateInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Type) {
@@ -357,9 +371,11 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 //
 // @return CreateLLMConfigResponse
 func (client *Client) CreateLLMConfigWithContext(ctx context.Context, InstanceId *string, request *CreateLLMConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateLLMConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ApiKey) {
@@ -430,9 +446,11 @@ func (client *Client) CreateLLMConfigWithContext(ctx context.Context, InstanceId
 //
 // @return CreateLabelTableResponse
 func (client *Client) CreateLabelTableWithContext(ctx context.Context, InstanceId *string, request *CreateLabelTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateLabelTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DatasourceId) {
@@ -487,9 +505,11 @@ func (client *Client) CreateLabelTableWithContext(ctx context.Context, InstanceI
 //
 // @return CreateModelFeatureResponse
 func (client *Client) CreateModelFeatureWithContext(ctx context.Context, InstanceId *string, request *CreateModelFeatureRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateModelFeatureResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Features) {
@@ -552,9 +572,11 @@ func (client *Client) CreateModelFeatureWithContext(ctx context.Context, Instanc
 //
 // @return CreateProjectResponse
 func (client *Client) CreateProjectWithContext(ctx context.Context, InstanceId *string, request *CreateProjectRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -617,9 +639,11 @@ func (client *Client) CreateProjectWithContext(ctx context.Context, InstanceId *
 //
 // @return CreateServiceIdentityRoleResponse
 func (client *Client) CreateServiceIdentityRoleWithContext(ctx context.Context, request *CreateServiceIdentityRoleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateServiceIdentityRoleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RoleName) {
@@ -893,9 +917,11 @@ func (client *Client) DeleteProjectWithContext(ctx context.Context, InstanceId *
 //
 // @return ExportModelFeatureTrainingSetTableResponse
 func (client *Client) ExportModelFeatureTrainingSetTableWithContext(ctx context.Context, InstanceId *string, ModelFeatureId *string, request *ExportModelFeatureTrainingSetTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExportModelFeatureTrainingSetTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FeatureViewConfig) {
@@ -1416,9 +1442,11 @@ func (client *Client) GetTaskWithContext(ctx context.Context, InstanceId *string
 //
 // @return ListDatasourceFeatureViewsResponse
 func (client *Client) ListDatasourceFeatureViewsWithContext(ctx context.Context, InstanceId *string, DatasourceId *string, request *ListDatasourceFeatureViewsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDatasourceFeatureViewsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -1509,9 +1537,11 @@ func (client *Client) ListDatasourceFeatureViewsWithContext(ctx context.Context,
 //
 // @return ListDatasourceTablesResponse
 func (client *Client) ListDatasourceTablesWithContext(ctx context.Context, InstanceId *string, DatasourceId *string, request *ListDatasourceTablesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDatasourceTablesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SchemaName) {
@@ -1558,9 +1588,11 @@ func (client *Client) ListDatasourceTablesWithContext(ctx context.Context, Insta
 //
 // @return ListDatasourcesResponse
 func (client *Client) ListDatasourcesWithContext(ctx context.Context, InstanceId *string, request *ListDatasourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDatasourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -1627,9 +1659,11 @@ func (client *Client) ListDatasourcesWithContext(ctx context.Context, InstanceId
 //
 // @return ListFeatureEntitiesResponse
 func (client *Client) ListFeatureEntitiesWithContext(ctx context.Context, InstanceId *string, tmpReq *ListFeatureEntitiesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListFeatureEntitiesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListFeatureEntitiesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1660,6 +1694,10 @@ func (client *Client) ListFeatureEntitiesWithContext(ctx context.Context, Instan
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ParentFeatureEntityId) {
+		query["ParentFeatureEntityId"] = request.ParentFeatureEntityId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -1739,9 +1777,11 @@ func (client *Client) ListFeatureViewFieldRelationshipsWithContext(ctx context.C
 //
 // @return ListFeatureViewOnlineFeaturesResponse
 func (client *Client) ListFeatureViewOnlineFeaturesWithContext(ctx context.Context, InstanceId *string, FeatureViewId *string, tmpReq *ListFeatureViewOnlineFeaturesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListFeatureViewOnlineFeaturesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListFeatureViewOnlineFeaturesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1823,9 +1863,11 @@ func (client *Client) ListFeatureViewRelationshipsWithContext(ctx context.Contex
 //
 // @return ListFeatureViewsResponse
 func (client *Client) ListFeatureViewsWithContext(ctx context.Context, InstanceId *string, tmpReq *ListFeatureViewsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListFeatureViewsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListFeatureViewsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1914,9 +1956,11 @@ func (client *Client) ListFeatureViewsWithContext(ctx context.Context, InstanceI
 //
 // @return ListInstancesResponse
 func (client *Client) ListInstancesWithContext(ctx context.Context, request *ListInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Order) {
@@ -1975,9 +2019,11 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 //
 // @return ListLLMConfigsResponse
 func (client *Client) ListLLMConfigsWithContext(ctx context.Context, InstanceId *string, request *ListLLMConfigsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListLLMConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -2048,9 +2094,11 @@ func (client *Client) ListLLMConfigsWithContext(ctx context.Context, InstanceId 
 //
 // @return ListLabelTablesResponse
 func (client *Client) ListLabelTablesWithContext(ctx context.Context, InstanceId *string, tmpReq *ListLabelTablesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListLabelTablesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListLabelTablesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2127,9 +2175,11 @@ func (client *Client) ListLabelTablesWithContext(ctx context.Context, InstanceId
 //
 // @return ListModelFeatureAvailableFeaturesResponse
 func (client *Client) ListModelFeatureAvailableFeaturesWithContext(ctx context.Context, InstanceId *string, ModelFeatureId *string, request *ListModelFeatureAvailableFeaturesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListModelFeatureAvailableFeaturesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FeatureName) {
@@ -2172,9 +2222,11 @@ func (client *Client) ListModelFeatureAvailableFeaturesWithContext(ctx context.C
 //
 // @return ListModelFeaturesResponse
 func (client *Client) ListModelFeaturesWithContext(ctx context.Context, InstanceId *string, tmpReq *ListModelFeaturesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListModelFeaturesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListModelFeaturesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2284,9 +2336,11 @@ func (client *Client) ListProjectFeatureViewsWithContext(ctx context.Context, In
 //
 // @return ListProjectFeaturesResponse
 func (client *Client) ListProjectFeaturesWithContext(ctx context.Context, InstanceId *string, ProjectId *string, request *ListProjectFeaturesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListProjectFeaturesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliasName) {
@@ -2353,9 +2407,11 @@ func (client *Client) ListProjectFeaturesWithContext(ctx context.Context, Instan
 //
 // @return ListProjectsResponse
 func (client *Client) ListProjectsWithContext(ctx context.Context, InstanceId *string, tmpReq *ListProjectsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListProjectsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2432,9 +2488,11 @@ func (client *Client) ListProjectsWithContext(ctx context.Context, InstanceId *s
 //
 // @return ListTaskLogsResponse
 func (client *Client) ListTaskLogsWithContext(ctx context.Context, InstanceId *string, TaskId *string, request *ListTaskLogsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTaskLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -2481,9 +2539,11 @@ func (client *Client) ListTaskLogsWithContext(ctx context.Context, InstanceId *s
 //
 // @return ListTasksResponse
 func (client *Client) ListTasksWithContext(ctx context.Context, InstanceId *string, tmpReq *ListTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTasksResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListTasksShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2560,9 +2620,11 @@ func (client *Client) ListTasksWithContext(ctx context.Context, InstanceId *stri
 //
 // @return PublishFeatureViewTableResponse
 func (client *Client) PublishFeatureViewTableWithContext(ctx context.Context, InstanceId *string, FeatureViewId *string, request *PublishFeatureViewTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PublishFeatureViewTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -2654,9 +2716,11 @@ func (client *Client) StopTaskWithContext(ctx context.Context, InstanceId *strin
 //
 // @return UpdateDatasourceResponse
 func (client *Client) UpdateDatasourceWithContext(ctx context.Context, InstanceId *string, DatasourceId *string, request *UpdateDatasourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDatasourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -2707,9 +2771,11 @@ func (client *Client) UpdateDatasourceWithContext(ctx context.Context, InstanceI
 //
 // @return UpdateLLMConfigResponse
 func (client *Client) UpdateLLMConfigWithContext(ctx context.Context, InstanceId *string, LLMConfigId *string, request *UpdateLLMConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateLLMConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ApiKey) {
@@ -2776,9 +2842,11 @@ func (client *Client) UpdateLLMConfigWithContext(ctx context.Context, InstanceId
 //
 // @return UpdateLabelTableResponse
 func (client *Client) UpdateLabelTableWithContext(ctx context.Context, InstanceId *string, LabelTableId *string, request *UpdateLabelTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateLabelTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DatasourceId) {
@@ -2829,9 +2897,11 @@ func (client *Client) UpdateLabelTableWithContext(ctx context.Context, InstanceI
 //
 // @return UpdateModelFeatureResponse
 func (client *Client) UpdateModelFeatureWithContext(ctx context.Context, InstanceId *string, ModelFeatureId *string, request *UpdateModelFeatureRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateModelFeatureResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Features) {
@@ -2886,9 +2956,11 @@ func (client *Client) UpdateModelFeatureWithContext(ctx context.Context, Instanc
 //
 // @return UpdateModelFeatureFGFeatureResponse
 func (client *Client) UpdateModelFeatureFGFeatureWithContext(ctx context.Context, InstanceId *string, ModelFeatureId *string, request *UpdateModelFeatureFGFeatureRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateModelFeatureFGFeatureResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.LookupFeatures) {
@@ -2943,9 +3015,11 @@ func (client *Client) UpdateModelFeatureFGFeatureWithContext(ctx context.Context
 //
 // @return UpdateProjectResponse
 func (client *Client) UpdateProjectWithContext(ctx context.Context, InstanceId *string, ProjectId *string, request *UpdateProjectRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateProjectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -2992,9 +3066,11 @@ func (client *Client) UpdateProjectWithContext(ctx context.Context, InstanceId *
 //
 // @return WriteFeatureViewTableResponse
 func (client *Client) WriteFeatureViewTableWithContext(ctx context.Context, InstanceId *string, FeatureViewId *string, request *WriteFeatureViewTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *WriteFeatureViewTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Mode) {

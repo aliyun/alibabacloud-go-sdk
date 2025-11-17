@@ -59,5 +59,10 @@ func (s *GetLabelTableResponse) SetBody(v *GetLabelTableResponseBody) *GetLabelT
 }
 
 func (s *GetLabelTableResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

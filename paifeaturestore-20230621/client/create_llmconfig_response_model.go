@@ -59,5 +59,10 @@ func (s *CreateLLMConfigResponse) SetBody(v *CreateLLMConfigResponseBody) *Creat
 }
 
 func (s *CreateLLMConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

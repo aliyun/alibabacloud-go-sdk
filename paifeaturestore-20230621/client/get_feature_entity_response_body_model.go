@@ -17,6 +17,12 @@ type iGetFeatureEntityResponseBody interface {
 	GetName() *string
 	SetOwner(v string) *GetFeatureEntityResponseBody
 	GetOwner() *string
+	SetParentFeatureEntityId(v string) *GetFeatureEntityResponseBody
+	GetParentFeatureEntityId() *string
+	SetParentFeatureEntityName(v string) *GetFeatureEntityResponseBody
+	GetParentFeatureEntityName() *string
+	SetParentJoinId(v string) *GetFeatureEntityResponseBody
+	GetParentJoinId() *string
 	SetProjectId(v string) *GetFeatureEntityResponseBody
 	GetProjectId() *string
 	SetProjectName(v string) *GetFeatureEntityResponseBody
@@ -42,6 +48,18 @@ type GetFeatureEntityResponseBody struct {
 	//
 	// 123456789*****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	ParentFeatureEntityId *string `json:"ParentFeatureEntityId,omitempty" xml:"ParentFeatureEntityId,omitempty"`
+	// example:
+	//
+	// user
+	ParentFeatureEntityName *string `json:"ParentFeatureEntityName,omitempty" xml:"ParentFeatureEntityName,omitempty"`
+	// example:
+	//
+	// user_id
+	ParentJoinId *string `json:"ParentJoinId,omitempty" xml:"ParentJoinId,omitempty"`
 	// example:
 	//
 	// 3
@@ -80,6 +98,18 @@ func (s *GetFeatureEntityResponseBody) GetOwner() *string {
 	return s.Owner
 }
 
+func (s *GetFeatureEntityResponseBody) GetParentFeatureEntityId() *string {
+	return s.ParentFeatureEntityId
+}
+
+func (s *GetFeatureEntityResponseBody) GetParentFeatureEntityName() *string {
+	return s.ParentFeatureEntityName
+}
+
+func (s *GetFeatureEntityResponseBody) GetParentJoinId() *string {
+	return s.ParentJoinId
+}
+
 func (s *GetFeatureEntityResponseBody) GetProjectId() *string {
 	return s.ProjectId
 }
@@ -109,6 +139,21 @@ func (s *GetFeatureEntityResponseBody) SetName(v string) *GetFeatureEntityRespon
 
 func (s *GetFeatureEntityResponseBody) SetOwner(v string) *GetFeatureEntityResponseBody {
 	s.Owner = &v
+	return s
+}
+
+func (s *GetFeatureEntityResponseBody) SetParentFeatureEntityId(v string) *GetFeatureEntityResponseBody {
+	s.ParentFeatureEntityId = &v
+	return s
+}
+
+func (s *GetFeatureEntityResponseBody) SetParentFeatureEntityName(v string) *GetFeatureEntityResponseBody {
+	s.ParentFeatureEntityName = &v
+	return s
+}
+
+func (s *GetFeatureEntityResponseBody) SetParentJoinId(v string) *GetFeatureEntityResponseBody {
+	s.ParentJoinId = &v
 	return s
 }
 

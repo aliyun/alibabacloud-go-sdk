@@ -83,7 +83,17 @@ func (s *ExportModelFeatureTrainingSetTableRequest) SetTrainingSetConfig(v *Expo
 }
 
 func (s *ExportModelFeatureTrainingSetTableRequest) Validate() error {
-  return dara.Validate(s)
+  if s.LabelInputConfig != nil {
+    if err := s.LabelInputConfig.Validate(); err != nil {
+      return err
+    }
+  }
+  if s.TrainingSetConfig != nil {
+    if err := s.TrainingSetConfig.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type ExportModelFeatureTrainingSetTableRequestLabelInputConfig struct {

@@ -65,7 +65,16 @@ func (s *ListLabelTablesResponseBody) SetTotalCount(v int64) *ListLabelTablesRes
 }
 
 func (s *ListLabelTablesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LabelTables != nil {
+		for _, item := range s.LabelTables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLabelTablesResponseBodyLabelTables struct {

@@ -168,7 +168,17 @@ func (s *GetInstanceResponseBody) SetType(v string) *GetInstanceResponseBody {
 }
 
 func (s *GetInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FeatureDBInfo != nil {
+		if err := s.FeatureDBInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FeatureDBInstanceInfo != nil {
+		if err := s.FeatureDBInstanceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceResponseBodyFeatureDBInfo struct {

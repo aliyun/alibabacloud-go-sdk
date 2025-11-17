@@ -65,7 +65,16 @@ func (s *ListProjectFeatureViewsResponseBody) SetTotalCount(v int64) *ListProjec
 }
 
 func (s *ListProjectFeatureViewsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FeatureViews != nil {
+		for _, item := range s.FeatureViews {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProjectFeatureViewsResponseBodyFeatureViews struct {
@@ -76,9 +85,17 @@ type ListProjectFeatureViewsResponseBodyFeatureViews struct {
 	Features      []*ListProjectFeatureViewsResponseBodyFeatureViewsFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
 	// example:
 	//
+	// item_id
+	JoinId *string `json:"JoinId,omitempty" xml:"JoinId,omitempty"`
+	// example:
+	//
 	// feature_view1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// item_id
+	ParentJoinId *string `json:"ParentJoinId,omitempty" xml:"ParentJoinId,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListProjectFeatureViewsResponseBodyFeatureViews) String() string {
@@ -97,8 +114,16 @@ func (s *ListProjectFeatureViewsResponseBodyFeatureViews) GetFeatures() []*ListP
 	return s.Features
 }
 
+func (s *ListProjectFeatureViewsResponseBodyFeatureViews) GetJoinId() *string {
+	return s.JoinId
+}
+
 func (s *ListProjectFeatureViewsResponseBodyFeatureViews) GetName() *string {
 	return s.Name
+}
+
+func (s *ListProjectFeatureViewsResponseBodyFeatureViews) GetParentJoinId() *string {
+	return s.ParentJoinId
 }
 
 func (s *ListProjectFeatureViewsResponseBodyFeatureViews) GetType() *string {
@@ -115,8 +140,18 @@ func (s *ListProjectFeatureViewsResponseBodyFeatureViews) SetFeatures(v []*ListP
 	return s
 }
 
+func (s *ListProjectFeatureViewsResponseBodyFeatureViews) SetJoinId(v string) *ListProjectFeatureViewsResponseBodyFeatureViews {
+	s.JoinId = &v
+	return s
+}
+
 func (s *ListProjectFeatureViewsResponseBodyFeatureViews) SetName(v string) *ListProjectFeatureViewsResponseBodyFeatureViews {
 	s.Name = &v
+	return s
+}
+
+func (s *ListProjectFeatureViewsResponseBodyFeatureViews) SetParentJoinId(v string) *ListProjectFeatureViewsResponseBodyFeatureViews {
+	s.ParentJoinId = &v
 	return s
 }
 
@@ -126,7 +161,16 @@ func (s *ListProjectFeatureViewsResponseBodyFeatureViews) SetType(v string) *Lis
 }
 
 func (s *ListProjectFeatureViewsResponseBodyFeatureViews) Validate() error {
-	return dara.Validate(s)
+	if s.Features != nil {
+		for _, item := range s.Features {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProjectFeatureViewsResponseBodyFeatureViewsFeatures struct {

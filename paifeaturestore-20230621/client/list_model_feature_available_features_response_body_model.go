@@ -65,7 +65,16 @@ func (s *ListModelFeatureAvailableFeaturesResponseBody) SetRequestId(v string) *
 }
 
 func (s *ListModelFeatureAvailableFeaturesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AvaliableFeatures != nil {
+		for _, item := range s.AvaliableFeatures {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListModelFeatureAvailableFeaturesResponseBodyAvaliableFeatures struct {

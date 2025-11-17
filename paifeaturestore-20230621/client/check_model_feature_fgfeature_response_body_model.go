@@ -50,7 +50,16 @@ func (s *CheckModelFeatureFGFeatureResponseBody) SetRequestId(v string) *CheckMo
 }
 
 func (s *CheckModelFeatureFGFeatureResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FGCheckResults != nil {
+		for _, item := range s.FGCheckResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CheckModelFeatureFGFeatureResponseBodyFGCheckResults struct {

@@ -59,5 +59,10 @@ func (s *ListFeatureViewOnlineFeaturesResponse) SetBody(v *ListFeatureViewOnline
 }
 
 func (s *ListFeatureViewOnlineFeaturesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

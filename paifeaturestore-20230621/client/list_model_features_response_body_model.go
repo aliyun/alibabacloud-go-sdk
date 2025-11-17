@@ -65,7 +65,16 @@ func (s *ListModelFeaturesResponseBody) SetTotalCount(v int64) *ListModelFeature
 }
 
 func (s *ListModelFeaturesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ModelFeatures != nil {
+		for _, item := range s.ModelFeatures {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListModelFeaturesResponseBodyModelFeatures struct {

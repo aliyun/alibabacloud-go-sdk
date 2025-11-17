@@ -21,6 +21,8 @@ type iListFeatureEntitiesShrinkRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListFeatureEntitiesShrinkRequest
 	GetPageSize() *int32
+	SetParentFeatureEntityId(v string) *ListFeatureEntitiesShrinkRequest
+	GetParentFeatureEntityId() *string
 	SetProjectId(v string) *ListFeatureEntitiesShrinkRequest
 	GetProjectId() *string
 	SetSortBy(v string) *ListFeatureEntitiesShrinkRequest
@@ -49,6 +51,10 @@ type ListFeatureEntitiesShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	ParentFeatureEntityId *string `json:"ParentFeatureEntityId,omitempty" xml:"ParentFeatureEntityId,omitempty"`
 	// example:
 	//
 	// 3
@@ -91,6 +97,10 @@ func (s *ListFeatureEntitiesShrinkRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListFeatureEntitiesShrinkRequest) GetParentFeatureEntityId() *string {
+	return s.ParentFeatureEntityId
+}
+
 func (s *ListFeatureEntitiesShrinkRequest) GetProjectId() *string {
 	return s.ProjectId
 }
@@ -126,6 +136,11 @@ func (s *ListFeatureEntitiesShrinkRequest) SetPageNumber(v int32) *ListFeatureEn
 
 func (s *ListFeatureEntitiesShrinkRequest) SetPageSize(v int32) *ListFeatureEntitiesShrinkRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListFeatureEntitiesShrinkRequest) SetParentFeatureEntityId(v string) *ListFeatureEntitiesShrinkRequest {
+	s.ParentFeatureEntityId = &v
 	return s
 }
 

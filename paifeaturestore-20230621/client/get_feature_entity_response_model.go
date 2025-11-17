@@ -59,5 +59,10 @@ func (s *GetFeatureEntityResponse) SetBody(v *GetFeatureEntityResponseBody) *Get
 }
 
 func (s *GetFeatureEntityResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

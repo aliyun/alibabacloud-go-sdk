@@ -64,7 +64,12 @@ func (s *WriteFeatureViewTableRequest) SetUrlDatasource(v *WriteFeatureViewTable
 }
 
 func (s *WriteFeatureViewTableRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UrlDatasource != nil {
+		if err := s.UrlDatasource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type WriteFeatureViewTableRequestUrlDatasource struct {

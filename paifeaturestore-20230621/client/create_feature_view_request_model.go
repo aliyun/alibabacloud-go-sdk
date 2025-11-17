@@ -219,7 +219,16 @@ func (s *CreateFeatureViewRequest) SetWriteToFeatureDB(v bool) *CreateFeatureVie
 }
 
 func (s *CreateFeatureViewRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Fields != nil {
+		for _, item := range s.Fields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateFeatureViewRequestFields struct {
@@ -280,7 +289,16 @@ func (s *CreateFeatureViewRequestFields) SetType(v string) *CreateFeatureViewReq
 }
 
 func (s *CreateFeatureViewRequestFields) Validate() error {
-	return dara.Validate(s)
+	if s.Transform != nil {
+		for _, item := range s.Transform {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateFeatureViewRequestFieldsTransform struct {
@@ -325,7 +343,16 @@ func (s *CreateFeatureViewRequestFieldsTransform) SetType(v string) *CreateFeatu
 }
 
 func (s *CreateFeatureViewRequestFieldsTransform) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		for _, item := range s.Input {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateFeatureViewRequestFieldsTransformInput struct {

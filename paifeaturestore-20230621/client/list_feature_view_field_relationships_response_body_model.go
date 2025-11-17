@@ -50,7 +50,16 @@ func (s *ListFeatureViewFieldRelationshipsResponseBody) SetRequestId(v string) *
 }
 
 func (s *ListFeatureViewFieldRelationshipsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Relationships != nil {
+		for _, item := range s.Relationships {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFeatureViewFieldRelationshipsResponseBodyRelationships struct {
@@ -114,7 +123,16 @@ func (s *ListFeatureViewFieldRelationshipsResponseBodyRelationships) SetOnlineTa
 }
 
 func (s *ListFeatureViewFieldRelationshipsResponseBodyRelationships) Validate() error {
-	return dara.Validate(s)
+	if s.Models != nil {
+		for _, item := range s.Models {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFeatureViewFieldRelationshipsResponseBodyRelationshipsModels struct {

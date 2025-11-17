@@ -409,7 +409,16 @@ func (s *GetFeatureViewResponseBody) SetWriteToFeatureDB(v bool) *GetFeatureView
 }
 
 func (s *GetFeatureViewResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Fields != nil {
+		for _, item := range s.Fields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetFeatureViewResponseBodyFields struct {
@@ -470,7 +479,16 @@ func (s *GetFeatureViewResponseBodyFields) SetType(v string) *GetFeatureViewResp
 }
 
 func (s *GetFeatureViewResponseBodyFields) Validate() error {
-	return dara.Validate(s)
+	if s.Transform != nil {
+		for _, item := range s.Transform {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetFeatureViewResponseBodyFieldsTransform struct {
@@ -515,7 +533,16 @@ func (s *GetFeatureViewResponseBodyFieldsTransform) SetType(v string) *GetFeatur
 }
 
 func (s *GetFeatureViewResponseBodyFieldsTransform) Validate() error {
-	return dara.Validate(s)
+	if s.Input != nil {
+		for _, item := range s.Input {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetFeatureViewResponseBodyFieldsTransformInput struct {

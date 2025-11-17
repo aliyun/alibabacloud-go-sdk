@@ -65,7 +65,16 @@ func (s *ListInstancesResponseBody) SetTotalCount(v int64) *ListInstancesRespons
 }
 
 func (s *ListInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstancesResponseBodyInstances struct {
@@ -179,7 +188,17 @@ func (s *ListInstancesResponseBodyInstances) SetType(v string) *ListInstancesRes
 }
 
 func (s *ListInstancesResponseBodyInstances) Validate() error {
-	return dara.Validate(s)
+	if s.FeatureDBInfo != nil {
+		if err := s.FeatureDBInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FeatureDBInstanceInfo != nil {
+		if err := s.FeatureDBInstanceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListInstancesResponseBodyInstancesFeatureDBInfo struct {
