@@ -948,6 +948,7 @@ func (s *GetJobResponseBodyDataSources) Validate() error {
 }
 
 type GetJobResponseBodyPods struct {
+	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The time when the node was created (UTC).
 	//
 	// example:
@@ -973,13 +974,15 @@ type GetJobResponseBodyPods struct {
 	// example:
 	//
 	// 10.0.1.2
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Ip       *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	// The node ID. It can be used in the GetPodLogs and GetPodEvents operations to obtain the detailed logs and events of the node.
 	//
 	// example:
 	//
 	// Worker
-	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	PodId  *string                `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	PodIps []*PodNetworkInterface `json:"PodIps,omitempty" xml:"PodIps,omitempty" type:"Repeated"`
 	// The UID of the node.
 	//
 	// example:
@@ -1034,6 +1037,10 @@ func (s GetJobResponseBodyPods) GoString() string {
 	return s.String()
 }
 
+func (s *GetJobResponseBodyPods) GetDuration() *float64 {
+	return s.Duration
+}
+
 func (s *GetJobResponseBodyPods) GetGmtCreateTime() *string {
 	return s.GmtCreateTime
 }
@@ -1054,8 +1061,16 @@ func (s *GetJobResponseBodyPods) GetIp() *string {
 	return s.Ip
 }
 
+func (s *GetJobResponseBodyPods) GetNodeName() *string {
+	return s.NodeName
+}
+
 func (s *GetJobResponseBodyPods) GetPodId() *string {
 	return s.PodId
+}
+
+func (s *GetJobResponseBodyPods) GetPodIps() []*PodNetworkInterface {
+	return s.PodIps
 }
 
 func (s *GetJobResponseBodyPods) GetPodUid() *string {
@@ -1076,6 +1091,11 @@ func (s *GetJobResponseBodyPods) GetSubStatus() *string {
 
 func (s *GetJobResponseBodyPods) GetType() *string {
 	return s.Type
+}
+
+func (s *GetJobResponseBodyPods) SetDuration(v float64) *GetJobResponseBodyPods {
+	s.Duration = &v
+	return s
 }
 
 func (s *GetJobResponseBodyPods) SetGmtCreateTime(v string) *GetJobResponseBodyPods {
@@ -1103,8 +1123,18 @@ func (s *GetJobResponseBodyPods) SetIp(v string) *GetJobResponseBodyPods {
 	return s
 }
 
+func (s *GetJobResponseBodyPods) SetNodeName(v string) *GetJobResponseBodyPods {
+	s.NodeName = &v
+	return s
+}
+
 func (s *GetJobResponseBodyPods) SetPodId(v string) *GetJobResponseBodyPods {
 	s.PodId = &v
+	return s
+}
+
+func (s *GetJobResponseBodyPods) SetPodIps(v []*PodNetworkInterface) *GetJobResponseBodyPods {
+	s.PodIps = v
 	return s
 }
 
@@ -1143,10 +1173,20 @@ func (s *GetJobResponseBodyPods) Validate() error {
 			}
 		}
 	}
+	if s.PodIps != nil {
+		for _, item := range s.PodIps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	return nil
 }
 
 type GetJobResponseBodyPodsHistoryPods struct {
+	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The time when the node was created (UTC).
 	//
 	// example:
@@ -1170,13 +1210,15 @@ type GetJobResponseBodyPodsHistoryPods struct {
 	// example:
 	//
 	// 10.0.1.3
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Ip       *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	// The ID of the node.
 	//
 	// example:
 	//
 	// Worker
-	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	PodId  *string                `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	PodIps []*PodNetworkInterface `json:"PodIps,omitempty" xml:"PodIps,omitempty" type:"Repeated"`
 	// The UID of the node.
 	//
 	// example:
@@ -1221,6 +1263,10 @@ func (s GetJobResponseBodyPodsHistoryPods) GoString() string {
 	return s.String()
 }
 
+func (s *GetJobResponseBodyPodsHistoryPods) GetDuration() *float64 {
+	return s.Duration
+}
+
 func (s *GetJobResponseBodyPodsHistoryPods) GetGmtCreateTime() *string {
 	return s.GmtCreateTime
 }
@@ -1237,8 +1283,16 @@ func (s *GetJobResponseBodyPodsHistoryPods) GetIp() *string {
 	return s.Ip
 }
 
+func (s *GetJobResponseBodyPodsHistoryPods) GetNodeName() *string {
+	return s.NodeName
+}
+
 func (s *GetJobResponseBodyPodsHistoryPods) GetPodId() *string {
 	return s.PodId
+}
+
+func (s *GetJobResponseBodyPodsHistoryPods) GetPodIps() []*PodNetworkInterface {
+	return s.PodIps
 }
 
 func (s *GetJobResponseBodyPodsHistoryPods) GetPodUid() *string {
@@ -1261,6 +1315,11 @@ func (s *GetJobResponseBodyPodsHistoryPods) GetType() *string {
 	return s.Type
 }
 
+func (s *GetJobResponseBodyPodsHistoryPods) SetDuration(v float64) *GetJobResponseBodyPodsHistoryPods {
+	s.Duration = &v
+	return s
+}
+
 func (s *GetJobResponseBodyPodsHistoryPods) SetGmtCreateTime(v string) *GetJobResponseBodyPodsHistoryPods {
 	s.GmtCreateTime = &v
 	return s
@@ -1281,8 +1340,18 @@ func (s *GetJobResponseBodyPodsHistoryPods) SetIp(v string) *GetJobResponseBodyP
 	return s
 }
 
+func (s *GetJobResponseBodyPodsHistoryPods) SetNodeName(v string) *GetJobResponseBodyPodsHistoryPods {
+	s.NodeName = &v
+	return s
+}
+
 func (s *GetJobResponseBodyPodsHistoryPods) SetPodId(v string) *GetJobResponseBodyPodsHistoryPods {
 	s.PodId = &v
+	return s
+}
+
+func (s *GetJobResponseBodyPodsHistoryPods) SetPodIps(v []*PodNetworkInterface) *GetJobResponseBodyPodsHistoryPods {
+	s.PodIps = v
 	return s
 }
 
@@ -1312,7 +1381,16 @@ func (s *GetJobResponseBodyPodsHistoryPods) SetType(v string) *GetJobResponseBod
 }
 
 func (s *GetJobResponseBodyPodsHistoryPods) Validate() error {
-	return dara.Validate(s)
+	if s.PodIps != nil {
+		for _, item := range s.PodIps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetJobResponseBodyRestartRecord struct {
