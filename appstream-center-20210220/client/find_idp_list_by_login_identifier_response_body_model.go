@@ -101,7 +101,26 @@ func (s *FindIdpListByLoginIdentifierResponseBody) SetTenantAliasInfo(v *FindIdp
 }
 
 func (s *FindIdpListByLoginIdentifierResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IdpInfos != nil {
+		for _, item := range s.IdpInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OfficeSiteInfo != nil {
+		if err := s.OfficeSiteInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TenantAliasInfo != nil {
+		if err := s.TenantAliasInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FindIdpListByLoginIdentifierResponseBodyIdpInfos struct {

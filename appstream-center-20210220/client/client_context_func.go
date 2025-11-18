@@ -17,9 +17,11 @@ import (
 //
 // @return FindIdpListByLoginIdentifierResponse
 func (client *Client) FindIdpListByLoginIdentifierWithContext(ctx context.Context, tmpReq *FindIdpListByLoginIdentifierRequest, runtime *dara.RuntimeOptions) (_result *FindIdpListByLoginIdentifierResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FindIdpListByLoginIdentifierShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -99,9 +101,11 @@ func (client *Client) FindIdpListByLoginIdentifierWithContext(ctx context.Contex
 //
 // @return GetLoginTokenResponse
 func (client *Client) GetLoginTokenWithContext(ctx context.Context, tmpReq *GetLoginTokenRequest, runtime *dara.RuntimeOptions) (_result *GetLoginTokenResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetLoginTokenShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -110,6 +114,10 @@ func (client *Client) GetLoginTokenWithContext(ctx context.Context, tmpReq *GetL
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AreaSite) {
+		query["AreaSite"] = request.AreaSite
+	}
+
 	if !dara.IsNil(request.AuthenticationCode) {
 		query["AuthenticationCode"] = request.AuthenticationCode
 	}
@@ -291,9 +299,11 @@ func (client *Client) GetLoginTokenWithContext(ctx context.Context, tmpReq *GetL
 //
 // @return GetStsTokenResponse
 func (client *Client) GetStsTokenWithContext(ctx context.Context, request *GetStsTokenRequest, runtime *dara.RuntimeOptions) (_result *GetStsTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AuthCode) {
@@ -349,9 +359,11 @@ func (client *Client) GetStsTokenWithContext(ctx context.Context, request *GetSt
 //
 // @return RefreshLoginTokenResponse
 func (client *Client) RefreshLoginTokenWithContext(ctx context.Context, request *RefreshLoginTokenRequest, runtime *dara.RuntimeOptions) (_result *RefreshLoginTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {

@@ -9,6 +9,8 @@ type iGetLoginTokenShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAreaSite(v string) *GetLoginTokenShrinkRequest
+	GetAreaSite() *string
 	SetAuthenticationCode(v string) *GetLoginTokenShrinkRequest
 	GetAuthenticationCode() *string
 	SetAvailableFeaturesShrink(v string) *GetLoginTokenShrinkRequest
@@ -86,6 +88,7 @@ type iGetLoginTokenShrinkRequest interface {
 }
 
 type GetLoginTokenShrinkRequest struct {
+	AreaSite *string `json:"AreaSite,omitempty" xml:"AreaSite,omitempty"`
 	// example:
 	//
 	// 182901
@@ -229,6 +232,10 @@ func (s GetLoginTokenShrinkRequest) String() string {
 
 func (s GetLoginTokenShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetLoginTokenShrinkRequest) GetAreaSite() *string {
+	return s.AreaSite
 }
 
 func (s *GetLoginTokenShrinkRequest) GetAuthenticationCode() *string {
@@ -377,6 +384,11 @@ func (s *GetLoginTokenShrinkRequest) GetUmidToken() *string {
 
 func (s *GetLoginTokenShrinkRequest) GetUuid() *string {
 	return s.Uuid
+}
+
+func (s *GetLoginTokenShrinkRequest) SetAreaSite(v string) *GetLoginTokenShrinkRequest {
+	s.AreaSite = &v
+	return s
 }
 
 func (s *GetLoginTokenShrinkRequest) SetAuthenticationCode(v string) *GetLoginTokenShrinkRequest {

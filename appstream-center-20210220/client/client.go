@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -65,9 +66,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return FindIdpListByLoginIdentifierResponse
 func (client *Client) FindIdpListByLoginIdentifierWithOptions(tmpReq *FindIdpListByLoginIdentifierRequest, runtime *dara.RuntimeOptions) (_result *FindIdpListByLoginIdentifierResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &FindIdpListByLoginIdentifierShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -165,9 +168,11 @@ func (client *Client) FindIdpListByLoginIdentifier(request *FindIdpListByLoginId
 //
 // @return GetLoginTokenResponse
 func (client *Client) GetLoginTokenWithOptions(tmpReq *GetLoginTokenRequest, runtime *dara.RuntimeOptions) (_result *GetLoginTokenResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetLoginTokenShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -176,6 +181,10 @@ func (client *Client) GetLoginTokenWithOptions(tmpReq *GetLoginTokenRequest, run
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AreaSite) {
+		query["AreaSite"] = request.AreaSite
+	}
+
 	if !dara.IsNil(request.AuthenticationCode) {
 		query["AuthenticationCode"] = request.AuthenticationCode
 	}
@@ -375,9 +384,11 @@ func (client *Client) GetLoginToken(request *GetLoginTokenRequest) (_result *Get
 //
 // @return GetStsTokenResponse
 func (client *Client) GetStsTokenWithOptions(request *GetStsTokenRequest, runtime *dara.RuntimeOptions) (_result *GetStsTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AuthCode) {
@@ -451,9 +462,11 @@ func (client *Client) GetStsToken(request *GetStsTokenRequest) (_result *GetStsT
 //
 // @return RefreshLoginTokenResponse
 func (client *Client) RefreshLoginTokenWithOptions(request *RefreshLoginTokenRequest, runtime *dara.RuntimeOptions) (_result *RefreshLoginTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {

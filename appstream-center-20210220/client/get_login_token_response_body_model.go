@@ -437,7 +437,35 @@ func (s *GetLoginTokenResponseBody) SetWyId(v string) *GetLoginTokenResponseBody
 }
 
 func (s *GetLoginTokenResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MfaTypeList != nil {
+		for _, item := range s.MfaTypeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PasswordStrategy != nil {
+		if err := s.PasswordStrategy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RiskVerifyInfo != nil {
+		if err := s.RiskVerifyInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TenantInfos != nil {
+		for _, item := range s.TenantInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLoginTokenResponseBodyMfaTypeList struct {

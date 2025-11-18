@@ -50,7 +50,12 @@ func (s *GetStsTokenResponseBody) SetStsTokenModel(v *GetStsTokenResponseBodySts
 }
 
 func (s *GetStsTokenResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StsTokenModel != nil {
+		if err := s.StsTokenModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetStsTokenResponseBodyStsTokenModel struct {

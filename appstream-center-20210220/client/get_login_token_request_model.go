@@ -9,6 +9,8 @@ type iGetLoginTokenRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAreaSite(v string) *GetLoginTokenRequest
+	GetAreaSite() *string
 	SetAuthenticationCode(v string) *GetLoginTokenRequest
 	GetAuthenticationCode() *string
 	SetAvailableFeatures(v map[string]*string) *GetLoginTokenRequest
@@ -86,6 +88,7 @@ type iGetLoginTokenRequest interface {
 }
 
 type GetLoginTokenRequest struct {
+	AreaSite *string `json:"AreaSite,omitempty" xml:"AreaSite,omitempty"`
 	// example:
 	//
 	// 182901
@@ -229,6 +232,10 @@ func (s GetLoginTokenRequest) String() string {
 
 func (s GetLoginTokenRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetLoginTokenRequest) GetAreaSite() *string {
+	return s.AreaSite
 }
 
 func (s *GetLoginTokenRequest) GetAuthenticationCode() *string {
@@ -377,6 +384,11 @@ func (s *GetLoginTokenRequest) GetUmidToken() *string {
 
 func (s *GetLoginTokenRequest) GetUuid() *string {
 	return s.Uuid
+}
+
+func (s *GetLoginTokenRequest) SetAreaSite(v string) *GetLoginTokenRequest {
+	s.AreaSite = &v
+	return s
 }
 
 func (s *GetLoginTokenRequest) SetAuthenticationCode(v string) *GetLoginTokenRequest {
