@@ -138,7 +138,7 @@ type ListImagesResponseBodyImages struct {
 	// example:
 	//
 	// 2
-	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 	// 镜像来源 ID
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	// 镜像来源类型
@@ -201,7 +201,7 @@ func (s *ListImagesResponseBodyImages) GetParentUserId() *string {
 	return s.ParentUserId
 }
 
-func (s *ListImagesResponseBodyImages) GetSize() *int32 {
+func (s *ListImagesResponseBodyImages) GetSize() *int64 {
 	return s.Size
 }
 
@@ -266,7 +266,7 @@ func (s *ListImagesResponseBodyImages) SetParentUserId(v string) *ListImagesResp
 	return s
 }
 
-func (s *ListImagesResponseBodyImages) SetSize(v int32) *ListImagesResponseBodyImages {
+func (s *ListImagesResponseBodyImages) SetSize(v int64) *ListImagesResponseBodyImages {
 	s.Size = &v
 	return s
 }

@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/aiworkspace-20210204/v5
+module github.com/alibabacloud-go/aiworkspace-20210204/v6
 
 go 1.14
 

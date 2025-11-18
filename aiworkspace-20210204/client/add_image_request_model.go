@@ -21,8 +21,8 @@ type iAddImageRequest interface {
 	GetLabels() []*AddImageRequestLabels
 	SetName(v string) *AddImageRequest
 	GetName() *string
-	SetSize(v int32) *AddImageRequest
-	GetSize() *int32
+	SetSize(v int64) *AddImageRequest
+	GetSize() *int64
 	SetSourceId(v string) *AddImageRequest
 	GetSourceId() *string
 	SetSourceType(v string) *AddImageRequest
@@ -115,7 +115,7 @@ type AddImageRequest struct {
 	// example:
 	//
 	// 2
-	Size       *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Size       *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 	SourceId   *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
@@ -158,7 +158,7 @@ func (s *AddImageRequest) GetName() *string {
 	return s.Name
 }
 
-func (s *AddImageRequest) GetSize() *int32 {
+func (s *AddImageRequest) GetSize() *int64 {
 	return s.Size
 }
 
@@ -204,7 +204,7 @@ func (s *AddImageRequest) SetName(v string) *AddImageRequest {
 	return s
 }
 
-func (s *AddImageRequest) SetSize(v int32) *AddImageRequest {
+func (s *AddImageRequest) SetSize(v int64) *AddImageRequest {
 	s.Size = &v
 	return s
 }

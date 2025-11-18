@@ -27,8 +27,8 @@ type iGetImageResponseBody interface {
 	GetParentUserId() *string
 	SetRequestId(v string) *GetImageResponseBody
 	GetRequestId() *string
-	SetSize(v int32) *GetImageResponseBody
-	GetSize() *int32
+	SetSize(v int64) *GetImageResponseBody
+	GetSize() *int64
 	SetSourceId(v string) *GetImageResponseBody
 	GetSourceId() *string
 	SetSourceType(v string) *GetImageResponseBody
@@ -95,7 +95,7 @@ type GetImageResponseBody struct {
 	// example:
 	//
 	// 10
-	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 	// 镜像来源 ID
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	// 镜像来源类型
@@ -158,7 +158,7 @@ func (s *GetImageResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *GetImageResponseBody) GetSize() *int32 {
+func (s *GetImageResponseBody) GetSize() *int64 {
 	return s.Size
 }
 
@@ -223,7 +223,7 @@ func (s *GetImageResponseBody) SetRequestId(v string) *GetImageResponseBody {
 	return s
 }
 
-func (s *GetImageResponseBody) SetSize(v int32) *GetImageResponseBody {
+func (s *GetImageResponseBody) SetSize(v int64) *GetImageResponseBody {
 	s.Size = &v
 	return s
 }
