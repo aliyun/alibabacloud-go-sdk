@@ -52,7 +52,7 @@ type OrderDetailResponseBody struct {
 	//
 	// null
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
-	// http reqeust has been processed successfully，status code is 200
+	// http request has been processed successfully，status code is 200
 	//
 	// example:
 	//
@@ -527,7 +527,8 @@ type OrderDetailResponseBodyDataAncillaryItemDetailListAncillary struct {
 	// example:
 	//
 	// 4
-	AncillaryType    *int32                                                                       `json:"ancillary_type,omitempty" xml:"ancillary_type,omitempty"`
+	AncillaryType *int32 `json:"ancillary_type,omitempty" xml:"ancillary_type,omitempty"`
+	// Ancillary Service Details
 	BaggageAncillary *OrderDetailResponseBodyDataAncillaryItemDetailListAncillaryBaggageAncillary `json:"baggage_ancillary,omitempty" xml:"baggage_ancillary,omitempty" type:"Struct"`
 }
 
@@ -576,19 +577,28 @@ func (s *OrderDetailResponseBodyDataAncillaryItemDetailListAncillary) Validate()
 }
 
 type OrderDetailResponseBodyDataAncillaryItemDetailListAncillaryBaggageAncillary struct {
+	// Number of luggage pieces. Values can be: 3, 2, 1, 0, -2. -2 indicates weight-based calculation.
+	//
 	// example:
 	//
 	// 0
 	BaggageAmount *int32 `json:"baggage_amount,omitempty" xml:"baggage_amount,omitempty"`
+	// Luggage weight, 0-50. When isAllWeght=true, it indicates the total weight of all items.
+	//
 	// example:
 	//
 	// 0
 	BaggageWeight *int32 `json:"baggage_weight,omitempty" xml:"baggage_weight,omitempty"`
+	// Unit of luggage weight
+	//
 	// example:
 	//
 	// KG
 	BaggageWeightUnit *string `json:"baggage_weight_unit,omitempty" xml:"baggage_weight_unit,omitempty"`
-	IsAllWeight       *bool   `json:"is_all_weight,omitempty" xml:"is_all_weight,omitempty"`
+	// whether all luggage weight
+	IsAllWeight *bool `json:"is_all_weight,omitempty" xml:"is_all_weight,omitempty"`
+	// Total Price
+	//
 	// example:
 	//
 	// 10.0
@@ -1619,25 +1629,14 @@ type OrderDetailResponseBodyDataSolution struct {
 	InfantTax *float64 `json:"infant_tax,omitempty" xml:"infant_tax,omitempty"`
 	// journey list
 	JourneyList []*OrderDetailResponseBodyDataSolutionJourneyList `json:"journey_list,omitempty" xml:"journey_list,omitempty" type:"Repeated"`
-	// product type description
-	//
-	// example:
-	//
-	// description
-	ProductTypeDescription *string `json:"product_type_description,omitempty" xml:"product_type_description,omitempty"`
-	// refund coupon description
-	//
-	// example:
-	//
-	// description
-	RefundTicketCouponDescription *string `json:"refund_ticket_coupon_description,omitempty" xml:"refund_ticket_coupon_description,omitempty"`
 	// through check-in baggage policy
 	SegmentBaggageCheckInInfoList []*OrderDetailResponseBodyDataSolutionSegmentBaggageCheckInInfoList `json:"segment_baggage_check_in_info_list,omitempty" xml:"segment_baggage_check_in_info_list,omitempty" type:"Repeated"`
 	// baggage rule list
 	SegmentBaggageMappingList []*OrderDetailResponseBodyDataSolutionSegmentBaggageMappingList `json:"segment_baggage_mapping_list,omitempty" xml:"segment_baggage_mapping_list,omitempty" type:"Repeated"`
 	// change and refund policy
 	SegmentRefundChangeRuleMappingList []*OrderDetailResponseBodyDataSolutionSegmentRefundChangeRuleMappingList `json:"segment_refund_change_rule_mapping_list,omitempty" xml:"segment_refund_change_rule_mapping_list,omitempty" type:"Repeated"`
-	SolutionAttribute                  *OrderDetailResponseBodyDataSolutionSolutionAttribute                    `json:"solution_attribute,omitempty" xml:"solution_attribute,omitempty" type:"Struct"`
+	// Quotation Attributes
+	SolutionAttribute *OrderDetailResponseBodyDataSolutionSolutionAttribute `json:"solution_attribute,omitempty" xml:"solution_attribute,omitempty" type:"Struct"`
 	// solution_id
 	//
 	// example:
@@ -1680,14 +1679,6 @@ func (s *OrderDetailResponseBodyDataSolution) GetInfantTax() *float64 {
 
 func (s *OrderDetailResponseBodyDataSolution) GetJourneyList() []*OrderDetailResponseBodyDataSolutionJourneyList {
 	return s.JourneyList
-}
-
-func (s *OrderDetailResponseBodyDataSolution) GetProductTypeDescription() *string {
-	return s.ProductTypeDescription
-}
-
-func (s *OrderDetailResponseBodyDataSolution) GetRefundTicketCouponDescription() *string {
-	return s.RefundTicketCouponDescription
 }
 
 func (s *OrderDetailResponseBodyDataSolution) GetSegmentBaggageCheckInInfoList() []*OrderDetailResponseBodyDataSolutionSegmentBaggageCheckInInfoList {
@@ -1742,16 +1733,6 @@ func (s *OrderDetailResponseBodyDataSolution) SetInfantTax(v float64) *OrderDeta
 
 func (s *OrderDetailResponseBodyDataSolution) SetJourneyList(v []*OrderDetailResponseBodyDataSolutionJourneyList) *OrderDetailResponseBodyDataSolution {
 	s.JourneyList = v
-	return s
-}
-
-func (s *OrderDetailResponseBodyDataSolution) SetProductTypeDescription(v string) *OrderDetailResponseBodyDataSolution {
-	s.ProductTypeDescription = &v
-	return s
-}
-
-func (s *OrderDetailResponseBodyDataSolution) SetRefundTicketCouponDescription(v string) *OrderDetailResponseBodyDataSolution {
-	s.RefundTicketCouponDescription = &v
 	return s
 }
 
@@ -2344,8 +2325,10 @@ func (s *OrderDetailResponseBodyDataSolutionSegmentRefundChangeRuleMappingList) 
 }
 
 type OrderDetailResponseBodyDataSolutionSolutionAttribute struct {
-	IssueTimeInfo    *OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo `json:"issue_time_info,omitempty" xml:"issue_time_info,omitempty" type:"Struct"`
-	SupplySourceType *string                                                            `json:"supply_source_type,omitempty" xml:"supply_source_type,omitempty"`
+	// Issue ticket time related
+	IssueTimeInfo *OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo `json:"issue_time_info,omitempty" xml:"issue_time_info,omitempty" type:"Struct"`
+	// Supply source type 1: Self-operated; 2: Agent; 3: Flagship store
+	SupplySourceType *string `json:"supply_source_type,omitempty" xml:"supply_source_type,omitempty"`
 }
 
 func (s OrderDetailResponseBodyDataSolutionSolutionAttribute) String() string {
@@ -2384,8 +2367,10 @@ func (s *OrderDetailResponseBodyDataSolutionSolutionAttribute) Validate() error 
 }
 
 type OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo struct {
+	// Issue ticket type: 1: after payment; 2: before departure; -1: unknown
 	IssueTicketType *int32 `json:"issue_ticket_type,omitempty" xml:"issue_ticket_type,omitempty"`
-	IssueTimeLimit  *int32 `json:"issue_time_limit,omitempty" xml:"issue_time_limit,omitempty"`
+	// Estimated issue ticket time, unit: minutes
+	IssueTimeLimit *int32 `json:"issue_time_limit,omitempty" xml:"issue_time_limit,omitempty"`
 }
 
 func (s OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo) String() string {

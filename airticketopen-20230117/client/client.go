@@ -723,7 +723,7 @@ func (client *Client) ChangeConfirm(request *ChangeConfirmRequest) (_result *Cha
 
 // Summary:
 //
-// 改签-Detail
+// # Change-Detail
 //
 // @param request - ChangeDetailRequest
 //
@@ -783,7 +783,7 @@ func (client *Client) ChangeDetailWithOptions(request *ChangeDetailRequest, head
 
 // Summary:
 //
-// 改签-Detail
+// # Change-Detail
 //
 // @param request - ChangeDetailRequest
 //
@@ -1689,7 +1689,7 @@ func (client *Client) OrderList(request *OrderListRequest) (_result *OrderListRe
 
 // Summary:
 //
-// # Trade - Seat and Price Verification
+// # Transaction - Seat and Price Verification
 //
 // Description:
 //
@@ -1753,7 +1753,7 @@ func (client *Client) PricingWithOptions(request *PricingRequest, headers *Prici
 
 // Summary:
 //
-// # Trade - Seat and Price Verification
+// # Transaction - Seat and Price Verification
 //
 // Description:
 //
@@ -1776,11 +1776,7 @@ func (client *Client) Pricing(request *PricingRequest) (_result *PricingResponse
 
 // Summary:
 //
-// 退票-申请
-//
-// Description:
-//
-// Apply for a refund and generate a refund order.
+// # Ticket Refund - Application
 //
 // @param tmpReq - RefundApplyRequest
 //
@@ -1866,11 +1862,7 @@ func (client *Client) RefundApplyWithOptions(tmpReq *RefundApplyRequest, headers
 
 // Summary:
 //
-// 退票-申请
-//
-// Description:
-//
-// Apply for a refund and generate a refund order.
+// # Ticket Refund - Application
 //
 // @param request - RefundApplyRequest
 //
@@ -1890,10 +1882,6 @@ func (client *Client) RefundApply(request *RefundApplyRequest) (_result *RefundA
 // Summary:
 //
 // # Refund - Detail
-//
-// Description:
-//
-// Query refund order detail.
 //
 // @param request - RefundDetailRequest
 //
@@ -1955,10 +1943,6 @@ func (client *Client) RefundDetailWithOptions(request *RefundDetailRequest, head
 //
 // # Refund - Detail
 //
-// Description:
-//
-// Query refund order detail.
-//
 // @param request - RefundDetailRequest
 //
 // @return RefundDetailResponse
@@ -1977,10 +1961,6 @@ func (client *Client) RefundDetail(request *RefundDetailRequest) (_result *Refun
 // Summary:
 //
 // # Refund - Detail List
-//
-// Description:
-//
-// Query refund order detail.
 //
 // @param request - RefundDetailListRequest
 //
@@ -2058,10 +2038,6 @@ func (client *Client) RefundDetailListWithOptions(request *RefundDetailListReque
 //
 // # Refund - Detail List
 //
-// Description:
-//
-// Query refund order detail.
-//
 // @param request - RefundDetailListRequest
 //
 // @return RefundDetailListResponse
@@ -2079,7 +2055,7 @@ func (client *Client) RefundDetailList(request *RefundDetailListRequest) (_resul
 
 // Summary:
 //
-// search
+// # Search
 //
 // Description:
 //
@@ -2173,7 +2149,7 @@ func (client *Client) SearchWithOptions(tmpReq *SearchRequest, headers *SearchHe
 
 // Summary:
 //
-// search
+// # Search
 //
 // Description:
 //
@@ -2187,6 +2163,115 @@ func (client *Client) Search(request *SearchRequest) (_result *SearchResponse, _
 	headers := &SearchHeaders{}
 	_result = &SearchResponse{}
 	_body, _err := client.SearchWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 标准搜索
+//
+// @param tmpReq - StandardSearchRequest
+//
+// @param headers - StandardSearchHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StandardSearchResponse
+func (client *Client) StandardSearchWithOptions(tmpReq *StandardSearchRequest, headers *StandardSearchHeaders, runtime *dara.RuntimeOptions) (_result *StandardSearchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &StandardSearchShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AirLegs) {
+		request.AirLegsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AirLegs, dara.String("air_legs"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SearchControlOptions) {
+		request.SearchControlOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SearchControlOptions, dara.String("search_control_options"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Adults) {
+		body["adults"] = request.Adults
+	}
+
+	if !dara.IsNil(request.AirLegsShrink) {
+		body["air_legs"] = request.AirLegsShrink
+	}
+
+	if !dara.IsNil(request.CabinClass) {
+		body["cabin_class"] = request.CabinClass
+	}
+
+	if !dara.IsNil(request.Children) {
+		body["children"] = request.Children
+	}
+
+	if !dara.IsNil(request.Infants) {
+		body["infants"] = request.Infants
+	}
+
+	if !dara.IsNil(request.SearchControlOptionsShrink) {
+		body["search_control_options"] = request.SearchControlOptionsShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XAcsAirticketAccessToken) {
+		realHeaders["x-acs-airticket-access-token"] = dara.String(dara.ToString(dara.StringValue(headers.XAcsAirticketAccessToken)))
+	}
+
+	if !dara.IsNil(headers.XAcsAirticketLanguage) {
+		realHeaders["x-acs-airticket-language"] = dara.String(dara.ToString(dara.StringValue(headers.XAcsAirticketLanguage)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StandardSearch"),
+		Version:     dara.String("2023-01-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/airticket/v1/trade/action-standardsearch"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StandardSearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 标准搜索
+//
+// @param request - StandardSearchRequest
+//
+// @return StandardSearchResponse
+func (client *Client) StandardSearch(request *StandardSearchRequest) (_result *StandardSearchResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &StandardSearchHeaders{}
+	_result = &StandardSearchResponse{}
+	_body, _err := client.StandardSearchWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -22,25 +22,25 @@ type iRefundDetailListRequest interface {
 }
 
 type RefundDetailListRequest struct {
-	// order number returned by Book
+	// Order number
 	//
 	// example:
 	//
 	// 49884*****950
 	OrderNum *int64 `json:"order_num,omitempty" xml:"order_num,omitempty"`
-	// pagination query parameters, from which page to start querying
+	// Page index
 	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"page_index,omitempty" xml:"page_index,omitempty"`
-	// pagination query parameters, how many orders to return
+	// Page size
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// the earliest time(timestamp) of refund order creation
+	// Refund order creation start time, UTC timestamp
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type RefundDetailListRequest struct {
 	//
 	// 1677229002000
 	RefundCreateBeginTime *int64 `json:"refund_create_begin_time,omitempty" xml:"refund_create_begin_time,omitempty"`
-	// the latest time(timestamp) of refund order creation
+	// Refund order creation end time, UTC timestamp
 	//
 	// This parameter is required.
 	//

@@ -26,13 +26,13 @@ type iRefundDetailResponseBody interface {
 }
 
 type RefundDetailResponseBody struct {
-	// RequestId
+	// Request RequestId
 	//
 	// example:
 	//
 	// 51593418-8C73-5E47-8BA8-3F1D4A00CC0B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// data
+	// Correctly processed return data
 	Data *RefundDetailResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// error code
 	//
@@ -40,25 +40,25 @@ type RefundDetailResponseBody struct {
 	//
 	// null
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
-	// error data
+	// Error handling carries data
 	//
 	// example:
 	//
 	// null
 	ErrorData interface{} `json:"error_data,omitempty" xml:"error_data,omitempty"`
-	// error message
+	// Error message
 	//
 	// example:
 	//
 	// null
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
-	// http reqeust has been processed successfully，status code is 200
+	// HTTP request successful, status value is 200
 	//
 	// example:
 	//
 	// 200
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// true represents success, false represents failure
+	// Whether the request was successful
 	//
 	// example:
 	//
@@ -147,91 +147,73 @@ func (s *RefundDetailResponseBody) Validate() error {
 }
 
 type RefundDetailResponseBodyData struct {
-	// whether it is a supplementary refund order (if the refund amount is not enough, you can use RefundApply to create a supplementary refund order)
+	// Whether it contains additional refunds
 	//
 	// example:
 	//
 	// false
 	ContainMultiRefund *bool `json:"contain_multi_refund,omitempty" xml:"contain_multi_refund,omitempty"`
-	// supplementary refund orders
+	// List of additional refund details associated with the initial refund
 	MultiRefundDetails []*RefundDetailResponseBodyDataMultiRefundDetails `json:"multi_refund_details,omitempty" xml:"multi_refund_details,omitempty" type:"Repeated"`
-	// order number that returned by Book
+	// Order number
 	//
 	// example:
 	//
 	// 4966***617111
 	OrderNum *int64 `json:"order_num,omitempty" xml:"order_num,omitempty"`
-	// refund details by passenger dimension
+	// List of passenger refund details, refund information by passenger
 	PassengerRefundDetails []*RefundDetailResponseBodyDataPassengerRefundDetails `json:"passenger_refund_details,omitempty" xml:"passenger_refund_details,omitempty" type:"Repeated"`
-	// refund completed time(timestamp)
+	// Actual refund time, UTC timestamp
 	//
 	// example:
 	//
 	// 1677229005000
 	PaySuccessUtcTime *int64 `json:"pay_success_utc_time,omitempty" xml:"pay_success_utc_time,omitempty"`
-	// URLs for refund attachments
+	// List of URLs for medical refund attachments
 	//
 	// example:
 	//
 	// [zzz,yyy]
 	RefundAttachmentUrls []*string `json:"refund_attachment_urls,omitempty" xml:"refund_attachment_urls,omitempty" type:"Repeated"`
-	// refunded journey
+	// Refund journey
 	RefundJourneys []*RefundDetailResponseBodyDataRefundJourneys `json:"refund_journeys,omitempty" xml:"refund_journeys,omitempty" type:"Repeated"`
-	// refund order number that returned by RefundApply
+	// Refund order number
 	//
 	// example:
 	//
 	// 4966***617654
 	RefundOrderNum *int64 `json:"refund_order_num,omitempty" xml:"refund_order_num,omitempty"`
-	// reason for refund
+	// Reason for refund
 	//
 	// example:
 	//
 	// desc reason
 	RefundReason *string `json:"refund_reason,omitempty" xml:"refund_reason,omitempty"`
-	// refund type
-	//
-	// 2: voluntary application
-	//
-	// 5: flight delay or cancellation, flight schedule change, etc., due to airline reasons
-	//
-	// 6: health reasons with a certificate from a secondary class A hospital or above
-	//
-	// 7: non-voluntary confirmed guidance
-	//
-	// 100: non-voluntary non-confirmed guidance
+	// 2: Voluntary application; 5: Flight delay or cancellation, flight schedule change, etc., due to airline reasons; 6: Health reasons with a report from a hospital of at least secondary level A; 7: Involuntary emergency guidance; 100: Involuntary non-emergency
 	//
 	// example:
 	//
 	// 5
 	RefundType *int32 `json:"refund_type,omitempty" xml:"refund_type,omitempty"`
-	// reason for refund rejection
+	// Reason for refund rejection
 	//
 	// example:
 	//
 	// refuse reason
 	RefuseReason *string `json:"refuse_reason,omitempty" xml:"refuse_reason,omitempty"`
-	// refund order status
-	//
-	// 0: refund application
-	//
-	// 1: refund in progress
-	//
-	// 2: refund failed
-	//
-	// 3: refund succeeded
+	// Refund order status 0: Refund application; 1: Refund in progress; 2: Refund failed; 3: Refund successful
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// transaction number
+	// Transaction serial number
 	//
 	// example:
 	//
 	// 1677229005000
 	TransactionNo *string `json:"transaction_no,omitempty" xml:"transaction_no,omitempty"`
-	// refund order created time(timestamp)
+	// Refund order creation time, UTC timestamp
 	//
 	// example:
 	//
@@ -405,19 +387,19 @@ func (s *RefundDetailResponseBodyData) Validate() error {
 }
 
 type RefundDetailResponseBodyDataMultiRefundDetails struct {
-	// supplementary refund order number
+	// Additional refund order number
 	//
 	// example:
 	//
 	// 498843***6950
 	MultiRefundOrderNum *int64 `json:"multi_refund_order_num,omitempty" xml:"multi_refund_order_num,omitempty"`
-	// transaction number of the supplementary refund order
+	// Transaction number of the Additional Refund order
 	//
 	// example:
 	//
 	// 498843***6950
 	MultiRefundTransactionNo *string `json:"multi_refund_transaction_no,omitempty" xml:"multi_refund_transaction_no,omitempty"`
-	// supplementary refund details in passenger dimension
+	// Additional refund details from the passenger\\"s
 	PassengerMultiRefundDetails []*RefundDetailResponseBodyDataMultiRefundDetailsPassengerMultiRefundDetails `json:"passenger_multi_refund_details,omitempty" xml:"passenger_multi_refund_details,omitempty" type:"Repeated"`
 }
 
@@ -470,19 +452,19 @@ func (s *RefundDetailResponseBodyDataMultiRefundDetails) Validate() error {
 }
 
 type RefundDetailResponseBodyDataMultiRefundDetailsPassengerMultiRefundDetails struct {
-	// amount of the supplementary refund for the change order
+	// Amount refunded from the Change order
 	//
 	// example:
 	//
 	// 30
 	ChangeOrderRefundFee *float64 `json:"change_order_refund_fee,omitempty" xml:"change_order_refund_fee,omitempty"`
-	// amount of the supplementary refund for the original order
+	// Amount refunded from the Ticketing order
 	//
 	// example:
 	//
 	// 30
 	OriginalOrderRefundFee *float64 `json:"original_order_refund_fee,omitempty" xml:"original_order_refund_fee,omitempty"`
-	// passenger for the refund
+	// Passenger for the refund
 	Passenger *RefundDetailResponseBodyDataMultiRefundDetailsPassengerMultiRefundDetailsPassenger `json:"passenger,omitempty" xml:"passenger,omitempty" type:"Struct"`
 }
 
@@ -531,19 +513,19 @@ func (s *RefundDetailResponseBodyDataMultiRefundDetailsPassengerMultiRefundDetai
 }
 
 type RefundDetailResponseBodyDataMultiRefundDetailsPassengerMultiRefundDetailsPassenger struct {
-	// credential number
+	// Document number
 	//
 	// example:
 	//
 	// 411***********4411
 	Document *string `json:"document,omitempty" xml:"document,omitempty"`
-	// first name
+	// Passenger\\"s first name
 	//
 	// example:
 	//
 	// SAN
 	FirstName *string `json:"first_name,omitempty" xml:"first_name,omitempty"`
-	// last name
+	// Passenger\\"s last name
 	//
 	// example:
 	//
@@ -591,9 +573,9 @@ func (s *RefundDetailResponseBodyDataMultiRefundDetailsPassengerMultiRefundDetai
 }
 
 type RefundDetailResponseBodyDataPassengerRefundDetails struct {
-	// information of the passenger applying for a refund
+	// Information of the passenger applying for a refund
 	Passenger *RefundDetailResponseBodyDataPassengerRefundDetailsPassenger `json:"passenger,omitempty" xml:"passenger,omitempty" type:"Struct"`
-	// details of the refund fee
+	// Refund fee details
 	RefundFee *RefundDetailResponseBodyDataPassengerRefundDetailsRefundFee `json:"refund_fee,omitempty" xml:"refund_fee,omitempty" type:"Struct"`
 }
 
@@ -638,19 +620,19 @@ func (s *RefundDetailResponseBodyDataPassengerRefundDetails) Validate() error {
 }
 
 type RefundDetailResponseBodyDataPassengerRefundDetailsPassenger struct {
-	// credential number
+	// Document number
 	//
 	// example:
 	//
 	// 411***********4411
 	Document *string `json:"document,omitempty" xml:"document,omitempty"`
-	// first name
+	// Passenger\\"s first name
 	//
 	// example:
 	//
 	// SAN
 	FirstName *string `json:"first_name,omitempty" xml:"first_name,omitempty"`
-	// last name
+	// Passenger\\"s last name
 	//
 	// example:
 	//
@@ -698,43 +680,43 @@ func (s *RefundDetailResponseBodyDataPassengerRefundDetailsPassenger) Validate()
 }
 
 type RefundDetailResponseBodyDataPassengerRefundDetailsRefundFee struct {
-	// total price of the used flight tickets
+	// Total price of the used segments
 	//
 	// example:
 	//
 	// 30
 	AlreadyUsedTotalFee *float64 `json:"already_used_total_fee,omitempty" xml:"already_used_total_fee,omitempty"`
-	// amount refunded to the user after change (only available when has change order)
+	// Amount refunded to the user after a change
 	//
 	// example:
 	//
 	// 30
 	ModifyRefundToBuyerMoney *float64 `json:"modify_refund_to_buyer_money,omitempty" xml:"modify_refund_to_buyer_money,omitempty"`
-	// non-refundable change service fee
+	// Non-refundable change penalty
 	//
 	// example:
 	//
 	// 30
 	NonRefundableChangeServiceFee *float64 `json:"non_refundable_change_service_fee,omitempty" xml:"non_refundable_change_service_fee,omitempty"`
-	// non-refundable upgrade fee
+	// Non-refundable fare difference
 	//
 	// example:
 	//
 	// 30
 	NonRefundableChangeUpgradeFee *float64 `json:"non_refundable_change_upgrade_fee,omitempty" xml:"non_refundable_change_upgrade_fee,omitempty"`
-	// non-refundable tax amount, i.e., tax refund fee
+	// tax penalty
 	//
 	// example:
 	//
 	// 30
 	NonRefundableTaxFee *float64 `json:"non_refundable_tax_fee,omitempty" xml:"non_refundable_tax_fee,omitempty"`
-	// non-refundable ticket amount, i.e., ticket refund fee
+	// fare penalty
 	//
 	// example:
 	//
 	// 30
 	NonRefundableTicketFee *float64 `json:"non_refundable_ticket_fee,omitempty" xml:"non_refundable_ticket_fee,omitempty"`
-	// amount refundable to the user from the original ticket (fare + tax - non_refundable_ticket_fee - non_refundable_tax_fee - already_used_total_fee - discount)
+	// Amount refundable to the user (ticket price + taxes - fare penalty - tax penalty - total price of used segments)
 	//
 	// example:
 	//
@@ -818,9 +800,9 @@ func (s *RefundDetailResponseBodyDataPassengerRefundDetailsRefundFee) Validate()
 }
 
 type RefundDetailResponseBodyDataRefundJourneys struct {
-	// segment list info
+	// Segment information
 	SegmentList []*RefundDetailResponseBodyDataRefundJourneysSegmentList `json:"segment_list,omitempty" xml:"segment_list,omitempty" type:"Repeated"`
-	// transfer count
+	// Number of transfers
 	//
 	// example:
 	//
@@ -868,133 +850,133 @@ func (s *RefundDetailResponseBodyDataRefundJourneys) Validate() error {
 }
 
 type RefundDetailResponseBodyDataRefundJourneysSegmentList struct {
-	// arrival airport code
+	// Three-letter code of the arrival airport (in uppercase)
 	//
 	// example:
 	//
 	// MFM
 	ArrivalAirport *string `json:"arrival_airport,omitempty" xml:"arrival_airport,omitempty"`
-	// arrival city code
+	// Three-letter code of the arrival city (in uppercase)
 	//
 	// example:
 	//
 	// MFM
 	ArrivalCity *string `json:"arrival_city,omitempty" xml:"arrival_city,omitempty"`
-	// arrival terminal
+	// Arrival terminal of the flight
 	//
 	// example:
 	//
 	// T1
 	ArrivalTerminal *string `json:"arrival_terminal,omitempty" xml:"arrival_terminal,omitempty"`
-	// arrival time (yyyy-MM-dd HH:mm:ss)
+	// Arrival date and time in string format (yyyy-mm-dd hh:mm:ss)
 	//
 	// example:
 	//
 	// 2023-03-10 10:40:00
 	ArrivalTime *string `json:"arrival_time,omitempty" xml:"arrival_time,omitempty"`
-	// field deprecated
+	// Number of available seats
 	//
 	// example:
 	//
 	// 7
 	Availability *string `json:"availability,omitempty" xml:"availability,omitempty"`
-	// carbin
+	// RBD
 	//
 	// example:
 	//
 	// V
 	Cabin *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
-	// cabin class
+	// service class ( compartment )
 	//
 	// example:
 	//
 	// Y
 	CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-	// code share or not
+	// Indicates whether it is a codeshare flight
 	//
 	// example:
 	//
 	// false
 	CodeShare *bool `json:"code_share,omitempty" xml:"code_share,omitempty"`
-	// departure airport code
+	// Three-letter code of the departure airport (in uppercase)
 	//
 	// example:
 	//
 	// PVG
 	DepartureAirport *string `json:"departure_airport,omitempty" xml:"departure_airport,omitempty"`
-	// departure city code
+	// Three-letter code of the departure city (in uppercase)
 	//
 	// example:
 	//
 	// SHA
 	DepartureCity *string `json:"departure_city,omitempty" xml:"departure_city,omitempty"`
-	// departure terminal
+	// Departure terminal of the flight
 	//
 	// example:
 	//
 	// T2
 	DepartureTerminal *string `json:"departure_terminal,omitempty" xml:"departure_terminal,omitempty"`
-	// departure time (yyyy-MM-dd HH:mm:ss)
+	// Departure date and time in string format (yyyy-mm-dd hh:mm:ss)
 	//
 	// example:
 	//
 	// 2023-03-10 07:55:00
 	DepartureTime *string `json:"departure_time,omitempty" xml:"departure_time,omitempty"`
-	// equipment type
+	// Aircraft type
 	//
 	// example:
 	//
 	// 32Q
 	EquipType *string `json:"equip_type,omitempty" xml:"equip_type,omitempty"`
-	// flight time, unit: minute
+	// Flight duration in minutes
 	//
 	// example:
 	//
 	// 165
 	FlightDuration *int32 `json:"flight_duration,omitempty" xml:"flight_duration,omitempty"`
-	// marketing airline code (eg: KA)
+	// Marketing airline (e.g., HO)
 	//
 	// example:
 	//
 	// HO
 	MarketingAirline *string `json:"marketing_airline,omitempty" xml:"marketing_airline,omitempty"`
-	// marketing flight no. (eg: KA5809)
+	// Marketing flight number (e.g., HO1295)
 	//
 	// example:
 	//
 	// HO1295
 	MarketingFlightNo *string `json:"marketing_flight_no,omitempty" xml:"marketing_flight_no,omitempty"`
-	// marketing flight no. (eg: 5809)
+	// Marketing flight number (numeric part, e.g., 1295)
 	//
 	// example:
 	//
 	// 1295
 	MarketingFlightNoInt *int32 `json:"marketing_flight_no_int,omitempty" xml:"marketing_flight_no_int,omitempty"`
-	// operating airline code (eg: CX)
+	// Operating airline (e.g., CX)
 	//
 	// example:
 	//
 	// HO
 	OperatingAirline *string `json:"operating_airline,omitempty" xml:"operating_airline,omitempty"`
-	// operating flight no. (eg: CX601)
+	// Operating flight number (e.g., CX601)
 	//
 	// example:
 	//
 	// HO1295
 	OperatingFlightNo *string `json:"operating_flight_no,omitempty" xml:"operating_flight_no,omitempty"`
-	// segment ID: flight no.+departure airport+arrival airport+departure time(MMdd)
+	// Segment ID format: flight number + departure airport + arrival airport + departure date (MMdd)
 	//
 	// example:
 	//
 	// HO1295-PVG-MFM-20230310
 	SegmentId *string `json:"segment_id,omitempty" xml:"segment_id,omitempty"`
-	// stopover city list when stop_quantity > 0 , use “,” for seperation use
+	// List of stop cities, present when stopQuantity > 0, multiple values separated by commas
 	//
 	// example:
 	//
 	// SEL,HKG
 	StopCityList *string `json:"stop_city_list,omitempty" xml:"stop_city_list,omitempty"`
-	// number of stopover
+	// Number of stop cities
 	//
 	// example:
 	//

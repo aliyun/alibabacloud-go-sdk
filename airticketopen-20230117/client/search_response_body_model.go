@@ -52,7 +52,7 @@ type SearchResponseBody struct {
 	//
 	// ""
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
-	// http reqeust has been processed successfully，status code is 200
+	// http request has been processed successfully，status code is 200
 	//
 	// example:
 	//
@@ -226,7 +226,7 @@ type SearchResponseBodyDataSolutionList struct {
 	SegmentBaggageMappingList []*SearchResponseBodyDataSolutionListSegmentBaggageMappingList `json:"segment_baggage_mapping_list,omitempty" xml:"segment_baggage_mapping_list,omitempty" type:"Repeated"`
 	// change and refund policy
 	SegmentRefundChangeRuleMappingList []*SearchResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList `json:"segment_refund_change_rule_mapping_list,omitempty" xml:"segment_refund_change_rule_mapping_list,omitempty" type:"Repeated"`
-	// supply source type
+	// Quotation attributes
 	SolutionAttribute *SearchResponseBodyDataSolutionListSolutionAttribute `json:"solution_attribute,omitempty" xml:"solution_attribute,omitempty" type:"Struct"`
 	// solution ID
 	//
@@ -924,8 +924,9 @@ func (s *SearchResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList) V
 }
 
 type SearchResponseBodyDataSolutionListSolutionAttribute struct {
+	// Issue ticket time related
 	IssueTimeInfo *SearchResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo `json:"issue_time_info,omitempty" xml:"issue_time_info,omitempty" type:"Struct"`
-	// supply source: 1;2;3
+	// Supply source type 1: Self-operated; 2: Agent; 3: Flagship store
 	//
 	// example:
 	//
@@ -969,8 +970,10 @@ func (s *SearchResponseBodyDataSolutionListSolutionAttribute) Validate() error {
 }
 
 type SearchResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo struct {
+	// Issue ticket type: 1: after payment; 2: before departure; -1: unknown
 	IssueTicketType *int32 `json:"issue_ticket_type,omitempty" xml:"issue_ticket_type,omitempty"`
-	IssueTimeLimit  *int32 `json:"issue_time_limit,omitempty" xml:"issue_time_limit,omitempty"`
+	// Estimated issue ticket time, unit: minutes
+	IssueTimeLimit *int32 `json:"issue_time_limit,omitempty" xml:"issue_time_limit,omitempty"`
 }
 
 func (s SearchResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo) String() string {

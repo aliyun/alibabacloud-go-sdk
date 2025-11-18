@@ -26,27 +26,40 @@ type iChangeDetailResponseBody interface {
 }
 
 type ChangeDetailResponseBody struct {
+	// Request RequestId
+	//
 	// example:
 	//
 	// 51593418-8C73-5E47-8BA8-3F1D4A00CC0B
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *ChangeDetailResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Correctly processed return data
+	Data *ChangeDetailResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// error code
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
+	// Data carried in error handling
+	//
 	// example:
 	//
 	// null
 	ErrorData interface{} `json:"error_data,omitempty" xml:"error_data,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// null
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
+	// HTTP request successful, status value is 200
+	//
 	// example:
 	//
 	// 200
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// Whether it is successful
+	//
 	// example:
 	//
 	// true
@@ -134,56 +147,92 @@ func (s *ChangeDetailResponseBody) Validate() error {
 }
 
 type ChangeDetailResponseBodyData struct {
+	// Change fee details, per passenger
 	ChangeFeeDetails []*ChangeDetailResponseBodyDataChangeFeeDetails `json:"change_fee_details,omitempty" xml:"change_fee_details,omitempty" type:"Repeated"`
+	// Change order number
+	//
 	// example:
 	//
 	// 4988430***950
-	ChangeOrderNum   *int64                                          `json:"change_order_num,omitempty" xml:"change_order_num,omitempty"`
+	ChangeOrderNum *int64 `json:"change_order_num,omitempty" xml:"change_order_num,omitempty"`
+	// List of passengers for the change
 	ChangePassengers []*ChangeDetailResponseBodyDataChangePassengers `json:"change_passengers,omitempty" xml:"change_passengers,omitempty" type:"Repeated"`
+	// Change reason type.
+	//
+	// 0: Voluntary change;
+	//
+	// 1: Involuntary change, due to flight delay or cancellation, schedule changes, or other airline reasons;
+	//
+	// 2: Involuntary change, due to health reasons with a medical report
+	//
 	// example:
 	//
 	// 1
-	ChangeReasonType *int32                                         `json:"change_reason_type,omitempty" xml:"change_reason_type,omitempty"`
-	ChangedJourneys  []*ChangeDetailResponseBodyDataChangedJourneys `json:"changed_journeys,omitempty" xml:"changed_journeys,omitempty" type:"Repeated"`
+	ChangeReasonType *int32 `json:"change_reason_type,omitempty" xml:"change_reason_type,omitempty"`
+	// New journeys
+	ChangedJourneys []*ChangeDetailResponseBodyDataChangedJourneys `json:"changed_journeys,omitempty" xml:"changed_journeys,omitempty" type:"Repeated"`
+	// Reason for closing the change order
+	//
 	// example:
 	//
 	// reason desc
 	CloseReason *string `json:"close_reason,omitempty" xml:"close_reason,omitempty"`
+	// The time when the order was closed, in UTC timestamp
+	//
 	// example:
 	//
 	// 1677415244000
-	CloseUtcTime *int64                               `json:"close_utc_time,omitempty" xml:"close_utc_time,omitempty"`
-	Contact      *ChangeDetailResponseBodyDataContact `json:"contact,omitempty" xml:"contact,omitempty" type:"Struct"`
+	CloseUtcTime *int64 `json:"close_utc_time,omitempty" xml:"close_utc_time,omitempty"`
+	// Contact information for the change request
+	Contact *ChangeDetailResponseBodyDataContact `json:"contact,omitempty" xml:"contact,omitempty" type:"Struct"`
+	// Creation time of the change order, UTC timestamp
+	//
 	// example:
 	//
 	// 1677415276000
 	CreateUtcTime *int64 `json:"create_utc_time,omitempty" xml:"create_utc_time,omitempty"`
+	// Latest payment time for the buyer, UTC timestamp
+	//
 	// example:
 	//
 	// 1677415278000
-	LastConfirmUtcTime *int64                                      `json:"last_confirm_utc_time,omitempty" xml:"last_confirm_utc_time,omitempty"`
-	LastJourneys       []*ChangeDetailResponseBodyDataLastJourneys `json:"last_journeys,omitempty" xml:"last_journeys,omitempty" type:"Repeated"`
+	LastConfirmUtcTime *int64 `json:"last_confirm_utc_time,omitempty" xml:"last_confirm_utc_time,omitempty"`
+	// The itinerary of the last change
+	LastJourneys []*ChangeDetailResponseBodyDataLastJourneys `json:"last_journeys,omitempty" xml:"last_journeys,omitempty" type:"Repeated"`
+	// Ticketing Order number
+	//
 	// example:
 	//
 	// 5988430***541
 	OrderNum *int64 `json:"order_num,omitempty" xml:"order_num,omitempty"`
+	// Change order status 0: Initial state; 1: Pending payment; 2: Payment successful; 3: Change successful; 4: Change closed
+	//
 	// example:
 	//
 	// 2
-	OrderStatus      *int32                                          `json:"order_status,omitempty" xml:"order_status,omitempty"`
+	OrderStatus *int32 `json:"order_status,omitempty" xml:"order_status,omitempty"`
+	// Original journeys
 	OriginalJourneys []*ChangeDetailResponseBodyDataOriginalJourneys `json:"original_journeys,omitempty" xml:"original_journeys,omitempty" type:"Repeated"`
+	// Payment status 0: initial state; 1: pending payment; 2: payment successful; 4: successfully closed paid order; 5: successfully closed unpaid order
+	//
 	// example:
 	//
 	// 2
 	PayStatus *int32 `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
+	// The time when the buyer successfully paid, in UTC timestamp
+	//
 	// example:
 	//
 	// 1677415255000
 	PaySuccessUtcTime *int64 `json:"pay_success_utc_time,omitempty" xml:"pay_success_utc_time,omitempty"`
+	// Total payment amount for the change order
+	//
 	// example:
 	//
 	// 300
 	TotalAmount *float64 `json:"total_amount,omitempty" xml:"total_amount,omitempty"`
+	// Transaction serial number
+	//
 	// example:
 	//
 	// hkduendkd-2023-dj0
@@ -415,7 +464,9 @@ func (s *ChangeDetailResponseBodyData) Validate() error {
 }
 
 type ChangeDetailResponseBodyDataChangeFeeDetails struct {
+	// Change fee details for the passenger
 	ChangeFee *ChangeDetailResponseBodyDataChangeFeeDetailsChangeFee `json:"change_fee,omitempty" xml:"change_fee,omitempty" type:"Struct"`
+	// Information of the passenger for the change
 	Passenger *ChangeDetailResponseBodyDataChangeFeeDetailsPassenger `json:"passenger,omitempty" xml:"passenger,omitempty" type:"Struct"`
 }
 
@@ -460,14 +511,20 @@ func (s *ChangeDetailResponseBodyDataChangeFeeDetails) Validate() error {
 }
 
 type ChangeDetailResponseBodyDataChangeFeeDetailsChangeFee struct {
+	// fare penalty
+	//
 	// example:
 	//
 	// 50
 	ServiceFee *float64 `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
+	// tax penalty
+	//
 	// example:
 	//
 	// 20
 	TaxFee *float64 `json:"tax_fee,omitempty" xml:"tax_fee,omitempty"`
+	// price difference
+	//
 	// example:
 	//
 	// 30
@@ -514,14 +571,20 @@ func (s *ChangeDetailResponseBodyDataChangeFeeDetailsChangeFee) Validate() error
 }
 
 type ChangeDetailResponseBodyDataChangeFeeDetailsPassenger struct {
+	// Document number
+	//
 	// example:
 	//
 	// 411***********4411
 	Document *string `json:"document,omitempty" xml:"document,omitempty"`
+	// Passenger\\"s first name
+	//
 	// example:
 	//
 	// SAN
 	FirstName *string `json:"first_name,omitempty" xml:"first_name,omitempty"`
+	// Passenger\\"s last name
+	//
 	// example:
 	//
 	// ZHANG
@@ -568,14 +631,20 @@ func (s *ChangeDetailResponseBodyDataChangeFeeDetailsPassenger) Validate() error
 }
 
 type ChangeDetailResponseBodyDataChangePassengers struct {
+	// Document number
+	//
 	// example:
 	//
 	// 411***********4411
 	Document *string `json:"document,omitempty" xml:"document,omitempty"`
+	// Passenger first name
+	//
 	// example:
 	//
 	// SAN
 	FirstName *string `json:"first_name,omitempty" xml:"first_name,omitempty"`
+	// Passenger last name
+	//
 	// example:
 	//
 	// ZHANG
@@ -622,7 +691,10 @@ func (s *ChangeDetailResponseBodyDataChangePassengers) Validate() error {
 }
 
 type ChangeDetailResponseBodyDataChangedJourneys struct {
+	// Segment information
 	SegmentList []*ChangeDetailResponseBodyDataChangedJourneysSegmentList `json:"segment_list,omitempty" xml:"segment_list,omitempty" type:"Repeated"`
+	// Number of transfers
+	//
 	// example:
 	//
 	// 0
@@ -669,90 +741,134 @@ func (s *ChangeDetailResponseBodyDataChangedJourneys) Validate() error {
 }
 
 type ChangeDetailResponseBodyDataChangedJourneysSegmentList struct {
+	// Arrival airport three-letter code (uppercase)
+	//
 	// example:
 	//
 	// MFM
 	ArrivalAirport *string `json:"arrival_airport,omitempty" xml:"arrival_airport,omitempty"`
+	// Arrival city three-letter code (uppercase)
+	//
 	// example:
 	//
 	// MFM
 	ArrivalCity *string `json:"arrival_city,omitempty" xml:"arrival_city,omitempty"`
+	// Arrival terminal of the flight
+	//
 	// example:
 	//
 	// T1
 	ArrivalTerminal *string `json:"arrival_terminal,omitempty" xml:"arrival_terminal,omitempty"`
+	// Flight arrival date and time, in the format (yyyy-MM-dd HH:mm:ss)
+	//
 	// example:
 	//
 	// 2023-03-10 10:40:00
 	ArrivalTime *string `json:"arrival_time,omitempty" xml:"arrival_time,omitempty"`
+	// Number of available seats
+	//
 	// example:
 	//
 	// 7
 	Availability *string `json:"availability,omitempty" xml:"availability,omitempty"`
+	// RBD
+	//
 	// example:
 	//
 	// V
 	Cabin *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	// service class ( compartment )
+	//
 	// example:
 	//
 	// Y
 	CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	// Whether it is a code-share flight
+	//
 	// example:
 	//
 	// false
 	CodeShare *bool `json:"code_share,omitempty" xml:"code_share,omitempty"`
+	// Departure airport three-letter code (uppercase)
+	//
 	// example:
 	//
 	// PVG
 	DepartureAirport *string `json:"departure_airport,omitempty" xml:"departure_airport,omitempty"`
+	// Departure city three-letter code (uppercase)
+	//
 	// example:
 	//
 	// SHA
 	DepartureCity *string `json:"departure_city,omitempty" xml:"departure_city,omitempty"`
+	// Departure terminal of the flight
+	//
 	// example:
 	//
 	// T2
 	DepartureTerminal *string `json:"departure_terminal,omitempty" xml:"departure_terminal,omitempty"`
+	// Flight departure date and time, in the format (yyyy-MM-dd HH:mm:ss)
+	//
 	// example:
 	//
 	// 2023-03-10 07:55:00
 	DepartureTime *string `json:"departure_time,omitempty" xml:"departure_time,omitempty"`
+	// Aircraft type
+	//
 	// example:
 	//
 	// 32Q
 	EquipType *string `json:"equip_type,omitempty" xml:"equip_type,omitempty"`
+	// Flight duration in minutes
+	//
 	// example:
 	//
 	// 165
 	FlightDuration *int32 `json:"flight_duration,omitempty" xml:"flight_duration,omitempty"`
+	// Market airline (e.g., HO)
+	//
 	// example:
 	//
 	// HO
 	MarketingAirline *string `json:"marketing_airline,omitempty" xml:"marketing_airline,omitempty"`
+	// Marketing flight number (e.g., HO1295)
+	//
 	// example:
 	//
 	// HO1295
 	MarketingFlightNo *string `json:"marketing_flight_no,omitempty" xml:"marketing_flight_no,omitempty"`
+	// Marketing flight number (e.g., 1295)
+	//
 	// example:
 	//
 	// 1295
 	MarketingFlightNoInt *int32 `json:"marketing_flight_no_int,omitempty" xml:"marketing_flight_no_int,omitempty"`
+	// Operating airline (e.g., CX)
+	//
 	// example:
 	//
 	// HO
 	OperatingAirline *string `json:"operating_airline,omitempty" xml:"operating_airline,omitempty"`
+	// Operating flight number (e.g., CX601)
+	//
 	// example:
 	//
 	// HO1295
 	OperatingFlightNo *string `json:"operating_flight_no,omitempty" xml:"operating_flight_no,omitempty"`
+	// Segment ID format: flight number + departure airport + arrival airport + departure date (MMdd)
+	//
 	// example:
 	//
 	// HO1295-PVG-MFM-20230310
 	SegmentId *string `json:"segment_id,omitempty" xml:"segment_id,omitempty"`
+	// List of stop cities, with values when stopQuantity > 0, separated by commas
+	//
 	// example:
 	//
 	// SEL,HKG
 	StopCityList *string `json:"stop_city_list,omitempty" xml:"stop_city_list,omitempty"`
+	// Number of stop cities
+	//
 	// example:
 	//
 	// 0
@@ -970,14 +1086,20 @@ func (s *ChangeDetailResponseBodyDataChangedJourneysSegmentList) Validate() erro
 }
 
 type ChangeDetailResponseBodyDataContact struct {
+	// Email address
+	//
 	// example:
 	//
 	// gao******@gmail.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// Country code
+	//
 	// example:
 	//
 	// 86
 	MobileCountryCode *string `json:"mobile_country_code,omitempty" xml:"mobile_country_code,omitempty"`
+	// Contact\\"s mobile phone number
+	//
 	// example:
 	//
 	// 183*****92
@@ -1024,7 +1146,10 @@ func (s *ChangeDetailResponseBodyDataContact) Validate() error {
 }
 
 type ChangeDetailResponseBodyDataLastJourneys struct {
+	// Segment information
 	SegmentList []*ChangeDetailResponseBodyDataLastJourneysSegmentList `json:"segment_list,omitempty" xml:"segment_list,omitempty" type:"Repeated"`
+	// Number of transfers
+	//
 	// example:
 	//
 	// 0
@@ -1071,90 +1196,134 @@ func (s *ChangeDetailResponseBodyDataLastJourneys) Validate() error {
 }
 
 type ChangeDetailResponseBodyDataLastJourneysSegmentList struct {
+	// Arrival airport three-letter code (uppercase)
+	//
 	// example:
 	//
 	// MFM
 	ArrivalAirport *string `json:"arrival_airport,omitempty" xml:"arrival_airport,omitempty"`
+	// Arrival city three-letter code (uppercase)
+	//
 	// example:
 	//
 	// MFM
 	ArrivalCity *string `json:"arrival_city,omitempty" xml:"arrival_city,omitempty"`
+	// Arrival terminal of the flight
+	//
 	// example:
 	//
 	// T1
 	ArrivalTerminal *string `json:"arrival_terminal,omitempty" xml:"arrival_terminal,omitempty"`
+	// Flight arrival date and time, in the format (yyyy-MM-dd HH:mm:ss)
+	//
 	// example:
 	//
 	// 2023-03-10 10:40:00
 	ArrivalTime *string `json:"arrival_time,omitempty" xml:"arrival_time,omitempty"`
+	// Number of available seats
+	//
 	// example:
 	//
 	// 7
 	Availability *string `json:"availability,omitempty" xml:"availability,omitempty"`
+	// RBD
+	//
 	// example:
 	//
 	// V
 	Cabin *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	// service class ( compartment )
+	//
 	// example:
 	//
 	// Y
 	CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	// Whether it is a codeshare flight
+	//
 	// example:
 	//
 	// false
 	CodeShare *bool `json:"code_share,omitempty" xml:"code_share,omitempty"`
+	// Departure airport three-letter code (uppercase)
+	//
 	// example:
 	//
 	// PVG
 	DepartureAirport *string `json:"departure_airport,omitempty" xml:"departure_airport,omitempty"`
+	// Departure city three-letter code (uppercase)
+	//
 	// example:
 	//
 	// SHA
 	DepartureCity *string `json:"departure_city,omitempty" xml:"departure_city,omitempty"`
+	// Departure terminal of the flight
+	//
 	// example:
 	//
 	// T2
 	DepartureTerminal *string `json:"departure_terminal,omitempty" xml:"departure_terminal,omitempty"`
+	// Flight departure date and time, in the format (yyyy-MM-dd HH:mm:ss)
+	//
 	// example:
 	//
 	// 2023-03-10 07:55:00
 	DepartureTime *string `json:"departure_time,omitempty" xml:"departure_time,omitempty"`
+	// Aircraft type
+	//
 	// example:
 	//
 	// 32Q
 	EquipType *string `json:"equip_type,omitempty" xml:"equip_type,omitempty"`
+	// Flight duration in minutes
+	//
 	// example:
 	//
 	// 165
 	FlightDuration *int32 `json:"flight_duration,omitempty" xml:"flight_duration,omitempty"`
+	// Marketing airline (e.g., HO)
+	//
 	// example:
 	//
 	// HO
 	MarketingAirline *string `json:"marketing_airline,omitempty" xml:"marketing_airline,omitempty"`
+	// Marketing flight number (e.g., HO1295)
+	//
 	// example:
 	//
 	// HO1295
 	MarketingFlightNo *string `json:"marketing_flight_no,omitempty" xml:"marketing_flight_no,omitempty"`
+	// Marketing flight number (e.g., 1295)
+	//
 	// example:
 	//
 	// 1295
 	MarketingFlightNoInt *int32 `json:"marketing_flight_no_int,omitempty" xml:"marketing_flight_no_int,omitempty"`
+	// Operating airline (e.g., CX)
+	//
 	// example:
 	//
 	// HO
 	OperatingAirline *string `json:"operating_airline,omitempty" xml:"operating_airline,omitempty"`
+	// Operating flight number (e.g., CX601)
+	//
 	// example:
 	//
 	// HO1295
 	OperatingFlightNo *string `json:"operating_flight_no,omitempty" xml:"operating_flight_no,omitempty"`
+	// Segment ID format: flight number + departure airport + arrival airport + departure date (MMdd)
+	//
 	// example:
 	//
 	// HO1295-PVG-MFM-20230310
 	SegmentId *string `json:"segment_id,omitempty" xml:"segment_id,omitempty"`
+	// List of stop cities, with values when stopQuantity > 0, separated by commas
+	//
 	// example:
 	//
 	// SEL,HKG
 	StopCityList *string `json:"stop_city_list,omitempty" xml:"stop_city_list,omitempty"`
+	// Number of stop cities
+	//
 	// example:
 	//
 	// 0
@@ -1372,7 +1541,10 @@ func (s *ChangeDetailResponseBodyDataLastJourneysSegmentList) Validate() error {
 }
 
 type ChangeDetailResponseBodyDataOriginalJourneys struct {
+	// Segment information
 	SegmentList []*ChangeDetailResponseBodyDataOriginalJourneysSegmentList `json:"segment_list,omitempty" xml:"segment_list,omitempty" type:"Repeated"`
+	// Number of transfers
+	//
 	// example:
 	//
 	// 0
@@ -1419,90 +1591,134 @@ func (s *ChangeDetailResponseBodyDataOriginalJourneys) Validate() error {
 }
 
 type ChangeDetailResponseBodyDataOriginalJourneysSegmentList struct {
+	// Arrival airport three-letter code (uppercase)
+	//
 	// example:
 	//
 	// MFM
 	ArrivalAirport *string `json:"arrival_airport,omitempty" xml:"arrival_airport,omitempty"`
+	// Arrival city three-letter code (uppercase)
+	//
 	// example:
 	//
 	// MFM
 	ArrivalCity *string `json:"arrival_city,omitempty" xml:"arrival_city,omitempty"`
+	// Arrival terminal of the flight
+	//
 	// example:
 	//
 	// T1
 	ArrivalTerminal *string `json:"arrival_terminal,omitempty" xml:"arrival_terminal,omitempty"`
+	// Flight arrival date and time in string format (yyyy-MM-dd HH:mm:ss)
+	//
 	// example:
 	//
 	// 2023-03-10 10:40:00
 	ArrivalTime *string `json:"arrival_time,omitempty" xml:"arrival_time,omitempty"`
+	// Number of available seats
+	//
 	// example:
 	//
 	// 7
 	Availability *string `json:"availability,omitempty" xml:"availability,omitempty"`
+	// RBD
+	//
 	// example:
 	//
 	// V
 	Cabin *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	// service class ( compartment )
+	//
 	// example:
 	//
 	// Y
 	CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	// Whether it is a codeshare flight
+	//
 	// example:
 	//
 	// false
 	CodeShare *bool `json:"code_share,omitempty" xml:"code_share,omitempty"`
+	// Departure airport three-letter code (uppercase)
+	//
 	// example:
 	//
 	// PVG
 	DepartureAirport *string `json:"departure_airport,omitempty" xml:"departure_airport,omitempty"`
+	// Departure city three-letter code (uppercase)
+	//
 	// example:
 	//
 	// SHA
 	DepartureCity *string `json:"departure_city,omitempty" xml:"departure_city,omitempty"`
+	// Departure terminal of the flight
+	//
 	// example:
 	//
 	// T2
 	DepartureTerminal *string `json:"departure_terminal,omitempty" xml:"departure_terminal,omitempty"`
+	// Flight departure date and time in string format (yyyy-MM-dd HH:mm:ss)
+	//
 	// example:
 	//
 	// 2023-03-10 07:55:00
 	DepartureTime *string `json:"departure_time,omitempty" xml:"departure_time,omitempty"`
+	// Aircraft type
+	//
 	// example:
 	//
 	// 32Q
 	EquipType *string `json:"equip_type,omitempty" xml:"equip_type,omitempty"`
+	// Flight duration in minutes
+	//
 	// example:
 	//
 	// 165
 	FlightDuration *int32 `json:"flight_duration,omitempty" xml:"flight_duration,omitempty"`
+	// Marketing airline (e.g., HO)
+	//
 	// example:
 	//
 	// HO
 	MarketingAirline *string `json:"marketing_airline,omitempty" xml:"marketing_airline,omitempty"`
+	// Marketing flight number (e.g., HO1295)
+	//
 	// example:
 	//
 	// HO1295
 	MarketingFlightNo *string `json:"marketing_flight_no,omitempty" xml:"marketing_flight_no,omitempty"`
+	// Marketing airline\\"s numeric flight number (e.g., 1295)
+	//
 	// example:
 	//
 	// 1295
 	MarketingFlightNoInt *int32 `json:"marketing_flight_no_int,omitempty" xml:"marketing_flight_no_int,omitempty"`
+	// Operating airline (e.g., CX)
+	//
 	// example:
 	//
 	// HO
 	OperatingAirline *string `json:"operating_airline,omitempty" xml:"operating_airline,omitempty"`
+	// Operating airline\\"s flight number (e.g., CX601)
+	//
 	// example:
 	//
 	// HO1295
 	OperatingFlightNo *string `json:"operating_flight_no,omitempty" xml:"operating_flight_no,omitempty"`
+	// Segment ID format: flight number + departure airport + arrival airport + departure date (yyyyMMdd)
+	//
 	// example:
 	//
 	// HO1295-PVG-MFM-20230310
 	SegmentId *string `json:"segment_id,omitempty" xml:"segment_id,omitempty"`
+	// List of stop cities, with values when stopQuantity > 0, separated by commas
+	//
 	// example:
 	//
 	// SEL,HKG
 	StopCityList *string `json:"stop_city_list,omitempty" xml:"stop_city_list,omitempty"`
+	// Number of stop cities
+	//
 	// example:
 	//
 	// 0

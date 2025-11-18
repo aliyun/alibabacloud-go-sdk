@@ -25,6 +25,22 @@ type iDataBaggageAllowanceMapValue interface {
 	GetCarryOnWeightUnit() *string
 	SetIsAllCarryOnWeight(v bool) *DataBaggageAllowanceMapValue
 	GetIsAllCarryOnWeight() *bool
+	SetCarryLength(v int32) *DataBaggageAllowanceMapValue
+	GetCarryLength() *int32
+	SetCarryWidth(v int32) *DataBaggageAllowanceMapValue
+	GetCarryWidth() *int32
+	SetCarryHeight(v int32) *DataBaggageAllowanceMapValue
+	GetCarryHeight() *int32
+	SetCarrySumOfLengthWidthHeight(v int32) *DataBaggageAllowanceMapValue
+	GetCarrySumOfLengthWidthHeight() *int32
+	SetLength(v int32) *DataBaggageAllowanceMapValue
+	GetLength() *int32
+	SetWidth(v int32) *DataBaggageAllowanceMapValue
+	GetWidth() *int32
+	SetHeight(v int32) *DataBaggageAllowanceMapValue
+	GetHeight() *int32
+	SetSumOfLengthWidthHeight(v int32) *DataBaggageAllowanceMapValue
+	GetSumOfLengthWidthHeight() *int32
 }
 
 type DataBaggageAllowanceMapValue struct {
@@ -76,6 +92,38 @@ type DataBaggageAllowanceMapValue struct {
 	//
 	// true
 	IsAllCarryOnWeight *bool `json:"is_all_carry_on_weight,omitempty" xml:"is_all_carry_on_weight,omitempty"`
+	// example:
+	//
+	// 55
+	CarryLength *int32 `json:"carry_length,omitempty" xml:"carry_length,omitempty"`
+	// example:
+	//
+	// 40
+	CarryWidth *int32 `json:"carry_width,omitempty" xml:"carry_width,omitempty"`
+	// example:
+	//
+	// 20
+	CarryHeight *int32 `json:"carry_height,omitempty" xml:"carry_height,omitempty"`
+	// example:
+	//
+	// 115
+	CarrySumOfLengthWidthHeight *int32 `json:"carry_sum_of_length_width_height,omitempty" xml:"carry_sum_of_length_width_height,omitempty"`
+	// example:
+	//
+	// 60
+	Length *int32 `json:"length,omitempty" xml:"length,omitempty"`
+	// example:
+	//
+	// 40
+	Width *int32 `json:"width,omitempty" xml:"width,omitempty"`
+	// example:
+	//
+	// 60
+	Height *int32 `json:"height,omitempty" xml:"height,omitempty"`
+	// example:
+	//
+	// 200
+	SumOfLengthWidthHeight *int32 `json:"sum_of_length_width_height,omitempty" xml:"sum_of_length_width_height,omitempty"`
 }
 
 func (s DataBaggageAllowanceMapValue) String() string {
@@ -118,6 +166,38 @@ func (s *DataBaggageAllowanceMapValue) GetIsAllCarryOnWeight() *bool {
 	return s.IsAllCarryOnWeight
 }
 
+func (s *DataBaggageAllowanceMapValue) GetCarryLength() *int32 {
+	return s.CarryLength
+}
+
+func (s *DataBaggageAllowanceMapValue) GetCarryWidth() *int32 {
+	return s.CarryWidth
+}
+
+func (s *DataBaggageAllowanceMapValue) GetCarryHeight() *int32 {
+	return s.CarryHeight
+}
+
+func (s *DataBaggageAllowanceMapValue) GetCarrySumOfLengthWidthHeight() *int32 {
+	return s.CarrySumOfLengthWidthHeight
+}
+
+func (s *DataBaggageAllowanceMapValue) GetLength() *int32 {
+	return s.Length
+}
+
+func (s *DataBaggageAllowanceMapValue) GetWidth() *int32 {
+	return s.Width
+}
+
+func (s *DataBaggageAllowanceMapValue) GetHeight() *int32 {
+	return s.Height
+}
+
+func (s *DataBaggageAllowanceMapValue) GetSumOfLengthWidthHeight() *int32 {
+	return s.SumOfLengthWidthHeight
+}
+
 func (s *DataBaggageAllowanceMapValue) SetBaggageAmount(v int32) *DataBaggageAllowanceMapValue {
 	s.BaggageAmount = &v
 	return s
@@ -155,6 +235,46 @@ func (s *DataBaggageAllowanceMapValue) SetCarryOnWeightUnit(v string) *DataBagga
 
 func (s *DataBaggageAllowanceMapValue) SetIsAllCarryOnWeight(v bool) *DataBaggageAllowanceMapValue {
 	s.IsAllCarryOnWeight = &v
+	return s
+}
+
+func (s *DataBaggageAllowanceMapValue) SetCarryLength(v int32) *DataBaggageAllowanceMapValue {
+	s.CarryLength = &v
+	return s
+}
+
+func (s *DataBaggageAllowanceMapValue) SetCarryWidth(v int32) *DataBaggageAllowanceMapValue {
+	s.CarryWidth = &v
+	return s
+}
+
+func (s *DataBaggageAllowanceMapValue) SetCarryHeight(v int32) *DataBaggageAllowanceMapValue {
+	s.CarryHeight = &v
+	return s
+}
+
+func (s *DataBaggageAllowanceMapValue) SetCarrySumOfLengthWidthHeight(v int32) *DataBaggageAllowanceMapValue {
+	s.CarrySumOfLengthWidthHeight = &v
+	return s
+}
+
+func (s *DataBaggageAllowanceMapValue) SetLength(v int32) *DataBaggageAllowanceMapValue {
+	s.Length = &v
+	return s
+}
+
+func (s *DataBaggageAllowanceMapValue) SetWidth(v int32) *DataBaggageAllowanceMapValue {
+	s.Width = &v
+	return s
+}
+
+func (s *DataBaggageAllowanceMapValue) SetHeight(v int32) *DataBaggageAllowanceMapValue {
+	s.Height = &v
+	return s
+}
+
+func (s *DataBaggageAllowanceMapValue) SetSumOfLengthWidthHeight(v int32) *DataBaggageAllowanceMapValue {
+	s.SumOfLengthWidthHeight = &v
 	return s
 }
 

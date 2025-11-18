@@ -52,7 +52,7 @@ type PricingResponseBody struct {
 	//
 	// null
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
-	// http reqeust has been processed successfully，status code is 200
+	// http request has been processed successfully，status code is 200
 	//
 	// example:
 	//
@@ -488,25 +488,14 @@ type PricingResponseBodyDataSolution struct {
 	InfantTax *float64 `json:"infant_tax,omitempty" xml:"infant_tax,omitempty"`
 	// journey list
 	JourneyList []*PricingResponseBodyDataSolutionJourneyList `json:"journey_list,omitempty" xml:"journey_list,omitempty" type:"Repeated"`
-	// product type description
-	//
-	// example:
-	//
-	// description
-	ProductTypeDescription *string `json:"product_type_description,omitempty" xml:"product_type_description,omitempty"`
-	// refund coupon description
-	//
-	// example:
-	//
-	// description
-	RefundTicketCouponDescription *string `json:"refund_ticket_coupon_description,omitempty" xml:"refund_ticket_coupon_description,omitempty"`
 	// through check-in baggage policy
 	SegmentBaggageCheckInInfoList []*PricingResponseBodyDataSolutionSegmentBaggageCheckInInfoList `json:"segment_baggage_check_in_info_list,omitempty" xml:"segment_baggage_check_in_info_list,omitempty" type:"Repeated"`
 	// baggage rule list
 	SegmentBaggageMappingList []*PricingResponseBodyDataSolutionSegmentBaggageMappingList `json:"segment_baggage_mapping_list,omitempty" xml:"segment_baggage_mapping_list,omitempty" type:"Repeated"`
 	// change and refund policy
 	SegmentRefundChangeRuleMappingList []*PricingResponseBodyDataSolutionSegmentRefundChangeRuleMappingList `json:"segment_refund_change_rule_mapping_list,omitempty" xml:"segment_refund_change_rule_mapping_list,omitempty" type:"Repeated"`
-	SolutionAttribute                  *PricingResponseBodyDataSolutionSolutionAttribute                    `json:"solution_attribute,omitempty" xml:"solution_attribute,omitempty" type:"Struct"`
+	// Quotation attributes
+	SolutionAttribute *PricingResponseBodyDataSolutionSolutionAttribute `json:"solution_attribute,omitempty" xml:"solution_attribute,omitempty" type:"Struct"`
 	// solution_id, equals to solution_id in request
 	//
 	// example:
@@ -549,14 +538,6 @@ func (s *PricingResponseBodyDataSolution) GetInfantTax() *float64 {
 
 func (s *PricingResponseBodyDataSolution) GetJourneyList() []*PricingResponseBodyDataSolutionJourneyList {
 	return s.JourneyList
-}
-
-func (s *PricingResponseBodyDataSolution) GetProductTypeDescription() *string {
-	return s.ProductTypeDescription
-}
-
-func (s *PricingResponseBodyDataSolution) GetRefundTicketCouponDescription() *string {
-	return s.RefundTicketCouponDescription
 }
 
 func (s *PricingResponseBodyDataSolution) GetSegmentBaggageCheckInInfoList() []*PricingResponseBodyDataSolutionSegmentBaggageCheckInInfoList {
@@ -611,16 +592,6 @@ func (s *PricingResponseBodyDataSolution) SetInfantTax(v float64) *PricingRespon
 
 func (s *PricingResponseBodyDataSolution) SetJourneyList(v []*PricingResponseBodyDataSolutionJourneyList) *PricingResponseBodyDataSolution {
 	s.JourneyList = v
-	return s
-}
-
-func (s *PricingResponseBodyDataSolution) SetProductTypeDescription(v string) *PricingResponseBodyDataSolution {
-	s.ProductTypeDescription = &v
-	return s
-}
-
-func (s *PricingResponseBodyDataSolution) SetRefundTicketCouponDescription(v string) *PricingResponseBodyDataSolution {
-	s.RefundTicketCouponDescription = &v
 	return s
 }
 
@@ -1213,8 +1184,10 @@ func (s *PricingResponseBodyDataSolutionSegmentRefundChangeRuleMappingList) Vali
 }
 
 type PricingResponseBodyDataSolutionSolutionAttribute struct {
-	IssueTimeInfo    *PricingResponseBodyDataSolutionSolutionAttributeIssueTimeInfo `json:"issue_time_info,omitempty" xml:"issue_time_info,omitempty" type:"Struct"`
-	SupplySourceType *string                                                        `json:"supply_source_type,omitempty" xml:"supply_source_type,omitempty"`
+	// Issue ticket time related
+	IssueTimeInfo *PricingResponseBodyDataSolutionSolutionAttributeIssueTimeInfo `json:"issue_time_info,omitempty" xml:"issue_time_info,omitempty" type:"Struct"`
+	// Supply source type 1: Self-operated; 2: Agent; 3: Flagship store
+	SupplySourceType *string `json:"supply_source_type,omitempty" xml:"supply_source_type,omitempty"`
 }
 
 func (s PricingResponseBodyDataSolutionSolutionAttribute) String() string {
@@ -1253,8 +1226,10 @@ func (s *PricingResponseBodyDataSolutionSolutionAttribute) Validate() error {
 }
 
 type PricingResponseBodyDataSolutionSolutionAttributeIssueTimeInfo struct {
+	// Issue ticket type: 1: after payment; 2: before departure; -1: unknown
 	IssueTicketType *int32 `json:"issue_ticket_type,omitempty" xml:"issue_ticket_type,omitempty"`
-	IssueTimeLimit  *int32 `json:"issue_time_limit,omitempty" xml:"issue_time_limit,omitempty"`
+	// Estimated issue ticket time, unit: minutes
+	IssueTimeLimit *int32 `json:"issue_time_limit,omitempty" xml:"issue_time_limit,omitempty"`
 }
 
 func (s PricingResponseBodyDataSolutionSolutionAttributeIssueTimeInfo) String() string {

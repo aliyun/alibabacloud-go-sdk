@@ -26,13 +26,13 @@ type iRefundApplyResponseBody interface {
 }
 
 type RefundApplyResponseBody struct {
-	// request ID
+	// Request RequestId
 	//
 	// example:
 	//
 	// 51593418-8C73-5E47-8BA8-3F1D4A00CC0B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// data
+	// Correctly processed return data
 	Data *RefundApplyResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// error code
 	//
@@ -40,25 +40,25 @@ type RefundApplyResponseBody struct {
 	//
 	// null
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
-	// error data
+	// Data carried in error handling
 	//
 	// example:
 	//
 	// null
 	ErrorData interface{} `json:"error_data,omitempty" xml:"error_data,omitempty"`
-	// error message
+	// Error message
 	//
 	// example:
 	//
 	// null
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
-	// http reqeust has been processed successfully，status code is 200
+	// HTTP request successful, status value is always 200
 	//
 	// example:
 	//
 	// 200
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// true represents success, false represents failure
+	// Whether the request was successful
 	//
 	// example:
 	//
@@ -147,13 +147,13 @@ func (s *RefundApplyResponseBody) Validate() error {
 }
 
 type RefundApplyResponseBodyData struct {
-	// order number
+	// Order number
 	//
 	// example:
 	//
 	// 4966***617111
 	OrderNum *int64 `json:"order_num,omitempty" xml:"order_num,omitempty"`
-	// refund results
+	// List of refund application results
 	RefundResults []*RefundApplyResponseBodyDataRefundResults `json:"refund_results,omitempty" xml:"refund_results,omitempty" type:"Repeated"`
 }
 
@@ -197,25 +197,21 @@ func (s *RefundApplyResponseBodyData) Validate() error {
 }
 
 type RefundApplyResponseBodyDataRefundResults struct {
-	// reason for refund application failure
+	// Reason for refund application failure
 	//
 	// example:
 	//
 	// desc reason
 	FailReason *string `json:"fail_reason,omitempty" xml:"fail_reason,omitempty"`
-	// refund order number
+	// Refund order number
 	//
 	// example:
 	//
 	// 4966***617202
 	RefundOrderNum *int64 `json:"refund_order_num,omitempty" xml:"refund_order_num,omitempty"`
-	// passengers of current refund order
+	// List of passengers for the refund order
 	RefundPassengers []*RefundApplyResponseBodyDataRefundResultsRefundPassengers `json:"refund_passengers,omitempty" xml:"refund_passengers,omitempty" type:"Repeated"`
-	// refund order status
-	//
-	// 0: refund order created successfully
-	//
-	// 1: refund order creation failed
+	// Refund order status 0: Refund order created successfully; 1: Refund order creation failed
 	//
 	// example:
 	//
@@ -281,19 +277,19 @@ func (s *RefundApplyResponseBodyDataRefundResults) Validate() error {
 }
 
 type RefundApplyResponseBodyDataRefundResultsRefundPassengers struct {
-	// credential number
+	// Document number
 	//
 	// example:
 	//
 	// 411***********4411
 	Document *string `json:"document,omitempty" xml:"document,omitempty"`
-	// first name
+	// Passenger first name
 	//
 	// example:
 	//
 	// SAN
 	FirstName *string `json:"first_name,omitempty" xml:"first_name,omitempty"`
-	// last name
+	// Passenger last name
 	//
 	// example:
 	//

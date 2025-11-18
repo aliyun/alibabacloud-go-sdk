@@ -26,13 +26,13 @@ type iRefundDetailListResponseBody interface {
 }
 
 type RefundDetailListResponseBody struct {
-	// request ID
+	// Request RequestId
 	//
 	// example:
 	//
 	// 51593418-8C73-5E47-8BA8-3F1D4A00CC0B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// data
+	// Properly processed return data
 	Data *RefundDetailListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// error code
 	//
@@ -40,25 +40,25 @@ type RefundDetailListResponseBody struct {
 	//
 	// null
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
-	// error data
+	// Data carried in error handling
 	//
 	// example:
 	//
 	// null
 	ErrorData interface{} `json:"error_data,omitempty" xml:"error_data,omitempty"`
-	// error message
+	// Error message
 	//
 	// example:
 	//
 	// null
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
-	// http reqeust has been processed successfully，status code is 200
+	// HTTP request successful, status value is 200
 	//
 	// example:
 	//
 	// 200
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// true represents success, false represents failure
+	// Whether the operation was successful
 	//
 	// example:
 	//
@@ -147,9 +147,9 @@ func (s *RefundDetailListResponseBody) Validate() error {
 }
 
 type RefundDetailListResponseBodyData struct {
-	// refund order list
+	// Data list
 	List []*RefundDetailListResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	// information of pagination
+	// Pagination information
 	Pagination *RefundDetailListResponseBodyDataPagination `json:"pagination,omitempty" xml:"pagination,omitempty" type:"Struct"`
 }
 
@@ -198,51 +198,43 @@ func (s *RefundDetailListResponseBodyData) Validate() error {
 }
 
 type RefundDetailListResponseBodyDataList struct {
-	// whether it is a supplementary refund order (if the refund amount is not enough, you can use RefundApply to create a supplementary refund order)
+	// Whether it is a supplementary refund
 	//
 	// example:
 	//
 	// true
 	IsMultiRefund *bool `json:"is_multi_refund,omitempty" xml:"is_multi_refund,omitempty"`
-	// order number that returned by Book
+	// Order number （ Ticketing Order Number）
 	//
 	// example:
 	//
 	// 49884*****2345
 	OrderNum *int64 `json:"order_num,omitempty" xml:"order_num,omitempty"`
-	// refund order number that returned by RefundApply
+	// Refund order number
 	//
 	// example:
 	//
 	// 49884*****950
 	RefundOrderNum *int64 `json:"refund_order_num,omitempty" xml:"refund_order_num,omitempty"`
-	// refund order status
-	//
-	// 0: refund application
-	//
-	// 1: refund in progress
-	//
-	// 2: refund failed
-	//
-	// 3: refund succeeded
+	// Refund order status: 0: Refund application; 1: Refund in progress; 2: Refund failed; 3: Refund succeeded
 	//
 	// example:
 	//
 	// 1
 	RefundOrderStatus *int32 `json:"refund_order_status,omitempty" xml:"refund_order_status,omitempty"`
-	// the original refund order number associated with this supplementary refund order, only avaliable when is_multi_refund=true
+	// The original refund order number associated with this supplementary refund. Only present for supplementary refunds, indicating the ID of the original refund order.
 	//
 	// example:
 	//
 	// 49884*****2387
 	RelatedRefundOrderNum *string `json:"related_refund_order_num,omitempty" xml:"related_refund_order_num,omitempty"`
-	// transaction number
+	// Transaction serial number
 	//
 	// example:
 	//
 	// 49884**tde-95za
 	TransactionNo *string `json:"transaction_no,omitempty" xml:"transaction_no,omitempty"`
-	// refund time(timestamp)
+	// Creation time, UTC timestamp
 	//
 	// example:
 	//
@@ -326,25 +318,25 @@ func (s *RefundDetailListResponseBodyDataList) Validate() error {
 }
 
 type RefundDetailListResponseBodyDataPagination struct {
-	// current page index
+	// Current page number
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"current_page,omitempty" xml:"current_page,omitempty"`
-	// page size
+	// Number of items per page
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// the number of total refund orders
+	// Total count
 	//
 	// example:
 	//
 	// 5
 	TotalCount *int32 `json:"total_count,omitempty" xml:"total_count,omitempty"`
-	// the number of total pages
+	// Total pages
 	//
 	// example:
 	//

@@ -5,21 +5,21 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
-type iRefundDetailListHeaders interface {
+type iStandardSearchHeaders interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetCommonHeaders(v map[string]*string) *RefundDetailListHeaders
+	SetCommonHeaders(v map[string]*string) *StandardSearchHeaders
 	GetCommonHeaders() map[string]*string
-	SetXAcsAirticketAccessToken(v string) *RefundDetailListHeaders
+	SetXAcsAirticketAccessToken(v string) *StandardSearchHeaders
 	GetXAcsAirticketAccessToken() *string
-	SetXAcsAirticketLanguage(v string) *RefundDetailListHeaders
+	SetXAcsAirticketLanguage(v string) *StandardSearchHeaders
 	GetXAcsAirticketLanguage() *string
 }
 
-type RefundDetailListHeaders struct {
+type StandardSearchHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// Access token
+	// access_token
 	//
 	// This parameter is required.
 	//
@@ -27,49 +27,47 @@ type RefundDetailListHeaders struct {
 	//
 	// eyJhbGciOiJSUzI1NiIsImtpZCI6InN1ZXpfa2V5aWQifQ.eyJqdGkiOiJCQldMaWIzN0VxbC0xMjhhR2N5elJ3IiwiaWF0IjoxNjc3MDY2NTAxLCJleHAiOjE2NzcwNzM3MDEsIm5iZiI6MTY3NzA2NjQ0MX0.AF0DxsZK4Edyg0C6ObRQFUo36R1VYrb5IYmak25TmL1OfR5RkIUc3PpqFuQKNLKXf5fOtVQaKjaexzwodVeWZQDKEG_RPt_Ybb99EnEm6vPKs6e3pWFbKiBq71WleLHhVrdFb4YPowRKjc7bG0jyGUxiQ2iXy0RWDj9tIjfI-KEdzNp5oVnX7j4p3H12DwQrRPmd1nz3BciAQNINvDpzqusuIUw8JXyLFCz838Y0NhwB1_bYZyctxRLSzrGZuI5rrWtItgupqMsOlJ3RNy1QrIbQ2g6nPmzl-atOqcQ4Nw0HeDLR8dhM1OsIcFLbKXBUtwXofflhzAQrkDxhwYiXii
 	XAcsAirticketAccessToken *string `json:"x-acs-airticket-access-token,omitempty" xml:"x-acs-airticket-access-token,omitempty"`
-	// Multi-language, default to buyer account configuration
-	//
 	// example:
 	//
 	// en_US
 	XAcsAirticketLanguage *string `json:"x-acs-airticket-language,omitempty" xml:"x-acs-airticket-language,omitempty"`
 }
 
-func (s RefundDetailListHeaders) String() string {
+func (s StandardSearchHeaders) String() string {
 	return dara.Prettify(s)
 }
 
-func (s RefundDetailListHeaders) GoString() string {
+func (s StandardSearchHeaders) GoString() string {
 	return s.String()
 }
 
-func (s *RefundDetailListHeaders) GetCommonHeaders() map[string]*string {
+func (s *StandardSearchHeaders) GetCommonHeaders() map[string]*string {
 	return s.CommonHeaders
 }
 
-func (s *RefundDetailListHeaders) GetXAcsAirticketAccessToken() *string {
+func (s *StandardSearchHeaders) GetXAcsAirticketAccessToken() *string {
 	return s.XAcsAirticketAccessToken
 }
 
-func (s *RefundDetailListHeaders) GetXAcsAirticketLanguage() *string {
+func (s *StandardSearchHeaders) GetXAcsAirticketLanguage() *string {
 	return s.XAcsAirticketLanguage
 }
 
-func (s *RefundDetailListHeaders) SetCommonHeaders(v map[string]*string) *RefundDetailListHeaders {
+func (s *StandardSearchHeaders) SetCommonHeaders(v map[string]*string) *StandardSearchHeaders {
 	s.CommonHeaders = v
 	return s
 }
 
-func (s *RefundDetailListHeaders) SetXAcsAirticketAccessToken(v string) *RefundDetailListHeaders {
+func (s *StandardSearchHeaders) SetXAcsAirticketAccessToken(v string) *StandardSearchHeaders {
 	s.XAcsAirticketAccessToken = &v
 	return s
 }
 
-func (s *RefundDetailListHeaders) SetXAcsAirticketLanguage(v string) *RefundDetailListHeaders {
+func (s *StandardSearchHeaders) SetXAcsAirticketLanguage(v string) *StandardSearchHeaders {
 	s.XAcsAirticketLanguage = &v
 	return s
 }
 
-func (s *RefundDetailListHeaders) Validate() error {
+func (s *StandardSearchHeaders) Validate() error {
 	return dara.Validate(s)
 }

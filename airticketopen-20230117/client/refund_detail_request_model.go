@@ -14,7 +14,7 @@ type iRefundDetailRequest interface {
 }
 
 type RefundDetailRequest struct {
-	// refund order number
+	// Refund order number
 	//
 	// This parameter is required.
 	//

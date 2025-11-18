@@ -20,7 +20,7 @@ type iRefundApplyRequest interface {
 }
 
 type RefundApplyRequest struct {
-	// order number
+	// Order number
 	//
 	// This parameter is required.
 	//
@@ -28,15 +28,17 @@ type RefundApplyRequest struct {
 	//
 	// 4966***617111
 	OrderNum *int64 `json:"order_num,omitempty" xml:"order_num,omitempty"`
-	// journeys for which a refund is being requested
+	// Itinerary for which a refund is being requested
 	//
 	// This parameter is required.
 	RefundJourneys []*RefundApplyRequestRefundJourneys `json:"refund_journeys,omitempty" xml:"refund_journeys,omitempty" type:"Repeated"`
-	// passengers that applying for a refund
+	// List of passengers applying for a refund
 	//
 	// This parameter is required.
 	RefundPassengerList []*RefundApplyRequestRefundPassengerList `json:"refund_passenger_list,omitempty" xml:"refund_passenger_list,omitempty" type:"Repeated"`
-	// refund type and attachments
+	// Refund type - involuntary or voluntary.
+	//
+	// attachments are required for involuntary refund application.
 	//
 	// This parameter is required.
 	RefundType *RefundApplyRequestRefundType `json:"refund_type,omitempty" xml:"refund_type,omitempty" type:"Struct"`
@@ -114,7 +116,7 @@ func (s *RefundApplyRequest) Validate() error {
 }
 
 type RefundApplyRequestRefundJourneys struct {
-	// segment list
+	// Flight segment information
 	//
 	// This parameter is required.
 	SegmentList []*RefundApplyRequestRefundJourneysSegmentList `json:"segment_list,omitempty" xml:"segment_list,omitempty" type:"Repeated"`
@@ -151,7 +153,7 @@ func (s *RefundApplyRequestRefundJourneys) Validate() error {
 }
 
 type RefundApplyRequestRefundJourneysSegmentList struct {
-	// arrival airport code (capitalized)
+	// Three-letter code of the arrival airport (uppercase)
 	//
 	// This parameter is required.
 	//
@@ -159,7 +161,7 @@ type RefundApplyRequestRefundJourneysSegmentList struct {
 	//
 	// MFM
 	ArrivalAirport *string `json:"arrival_airport,omitempty" xml:"arrival_airport,omitempty"`
-	// arrival city code (capitalized)
+	// Three-letter code of the arrival city (uppercase)
 	//
 	// This parameter is required.
 	//
@@ -167,7 +169,7 @@ type RefundApplyRequestRefundJourneysSegmentList struct {
 	//
 	// MFM
 	ArrivalCity *string `json:"arrival_city,omitempty" xml:"arrival_city,omitempty"`
-	// departure airport code (capitalized)
+	// Three-letter code of the departure airport (uppercase)
 	//
 	// This parameter is required.
 	//
@@ -175,7 +177,7 @@ type RefundApplyRequestRefundJourneysSegmentList struct {
 	//
 	// PVG
 	DepartureAirport *string `json:"departure_airport,omitempty" xml:"departure_airport,omitempty"`
-	// departure city code (capitalized)
+	// Three-letter code of the departure city (uppercase)
 	//
 	// This parameter is required.
 	//
@@ -234,13 +236,13 @@ func (s *RefundApplyRequestRefundJourneysSegmentList) Validate() error {
 }
 
 type RefundApplyRequestRefundPassengerList struct {
-	// credential number
+	// Document number
 	//
 	// example:
 	//
 	// 411***********4411
 	Document *string `json:"document,omitempty" xml:"document,omitempty"`
-	// first name
+	// Passenger\\"s first name
 	//
 	// This parameter is required.
 	//
@@ -248,7 +250,7 @@ type RefundApplyRequestRefundPassengerList struct {
 	//
 	// SAN
 	FirstName *string `json:"first_name,omitempty" xml:"first_name,omitempty"`
-	// last name
+	// Passenger\\"s last name
 	//
 	// This parameter is required.
 	//
@@ -298,23 +300,17 @@ func (s *RefundApplyRequestRefundPassengerList) Validate() error {
 }
 
 type RefundApplyRequestRefundType struct {
-	// attachment file URLs
-	//
-	// (note: upload the files using a separate file upload interface to get the file URLs)
+	// Array of attachment file URLs. First, upload the files using a separate file upload interface to get the file URLs.
 	//
 	// example:
 	//
 	// [xxx,yyy]
 	File []*string `json:"file,omitempty" xml:"file,omitempty" type:"Repeated"`
-	// refund type
+	// 2: Voluntary (I want to change my travel plan/I don\\"t want to fly).
 	//
-	// 2: voluntary (I want to change my travel plan/I don\\"t want to fly)
+	// 5: Involuntary, due to flight delay or cancellation, schedule changes, or other airline reasons.
 	//
-	// 5: involuntary, due to flight delay or cancellation, schedule changes, etc., by the airline
-	//
-	// 6: involuntary, due to health reasons with a certificate from a hospital of at least secondary level A or above
-	//
-	//  (note: attachments are not mandatory, but it is recommended to provide them for involuntary refunds as they can increase the success rate)
+	// 6: Involuntary, due to health reasons with a medical report from a hospital of at least secondary level A or above.
 	//
 	// This parameter is required.
 	//
@@ -322,7 +318,7 @@ type RefundApplyRequestRefundType struct {
 	//
 	// 2
 	RefundTypeId *int32 `json:"refund_type_id,omitempty" xml:"refund_type_id,omitempty"`
-	// remark
+	// Remark: detailed description about the refund application
 	//
 	// example:
 	//
