@@ -65,7 +65,16 @@ func (s *ModifyInstanceAuthConfigRequest) SetRegionId(v string) *ModifyInstanceA
 }
 
 func (s *ModifyInstanceAuthConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigList != nil {
+		for _, item := range s.ConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyInstanceAuthConfigRequestConfigList struct {

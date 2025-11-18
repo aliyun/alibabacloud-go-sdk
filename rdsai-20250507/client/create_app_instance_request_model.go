@@ -212,7 +212,12 @@ func (s *CreateAppInstanceRequest) SetVSwitchId(v string) *CreateAppInstanceRequ
 }
 
 func (s *CreateAppInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DBInstanceConfig != nil {
+		if err := s.DBInstanceConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAppInstanceRequestDBInstanceConfig struct {

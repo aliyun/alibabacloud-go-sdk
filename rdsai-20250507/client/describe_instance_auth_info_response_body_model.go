@@ -90,7 +90,21 @@ func (s *DescribeInstanceAuthInfoResponseBody) SetRequestId(v string) *DescribeI
 }
 
 func (s *DescribeInstanceAuthInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApiKeys != nil {
+		if err := s.ApiKeys.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ConfigList != nil {
+		for _, item := range s.ConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceAuthInfoResponseBodyApiKeys struct {

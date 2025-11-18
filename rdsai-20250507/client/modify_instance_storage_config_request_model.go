@@ -82,7 +82,16 @@ func (s *ModifyInstanceStorageConfigRequest) SetRegionId(v string) *ModifyInstan
 }
 
 func (s *ModifyInstanceStorageConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigList != nil {
+		for _, item := range s.ConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyInstanceStorageConfigRequestConfigList struct {

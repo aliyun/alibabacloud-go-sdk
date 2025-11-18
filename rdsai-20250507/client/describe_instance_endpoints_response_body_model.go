@@ -65,7 +65,16 @@ func (s *DescribeInstanceEndpointsResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeInstanceEndpointsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceEndpoints != nil {
+		for _, item := range s.InstanceEndpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceEndpointsResponseBodyInstanceEndpoints struct {
