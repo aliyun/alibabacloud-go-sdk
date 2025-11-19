@@ -9,6 +9,8 @@ type iModifyCloudResourceShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCloudResourceId(v string) *ModifyCloudResourceShrinkRequest
+	GetCloudResourceId() *string
 	SetInstanceId(v string) *ModifyCloudResourceShrinkRequest
 	GetInstanceId() *string
 	SetListenShrink(v string) *ModifyCloudResourceShrinkRequest
@@ -22,6 +24,7 @@ type iModifyCloudResourceShrinkRequest interface {
 }
 
 type ModifyCloudResourceShrinkRequest struct {
+	CloudResourceId *string `json:"CloudResourceId,omitempty" xml:"CloudResourceId,omitempty"`
 	// The ID of the WAF instance.
 	//
 	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
@@ -66,6 +69,10 @@ func (s ModifyCloudResourceShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyCloudResourceShrinkRequest) GetCloudResourceId() *string {
+	return s.CloudResourceId
+}
+
 func (s *ModifyCloudResourceShrinkRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -84,6 +91,11 @@ func (s *ModifyCloudResourceShrinkRequest) GetRegionId() *string {
 
 func (s *ModifyCloudResourceShrinkRequest) GetResourceManagerResourceGroupId() *string {
 	return s.ResourceManagerResourceGroupId
+}
+
+func (s *ModifyCloudResourceShrinkRequest) SetCloudResourceId(v string) *ModifyCloudResourceShrinkRequest {
+	s.CloudResourceId = &v
+	return s
 }
 
 func (s *ModifyCloudResourceShrinkRequest) SetInstanceId(v string) *ModifyCloudResourceShrinkRequest {

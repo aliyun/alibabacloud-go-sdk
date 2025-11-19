@@ -9,6 +9,8 @@ type iReCreateCloudResourceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCloudResourceId(v string) *ReCreateCloudResourceRequest
+	GetCloudResourceId() *string
 	SetInstanceId(v string) *ReCreateCloudResourceRequest
 	GetInstanceId() *string
 	SetPort(v int32) *ReCreateCloudResourceRequest
@@ -24,13 +26,14 @@ type iReCreateCloudResourceRequest interface {
 }
 
 type ReCreateCloudResourceRequest struct {
+	CloudResourceId *string `json:"CloudResourceId,omitempty" xml:"CloudResourceId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v2_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// This parameter is required.
+	// Deprecated
 	//
 	// example:
 	//
@@ -40,7 +43,7 @@ type ReCreateCloudResourceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// This parameter is required.
+	// Deprecated
 	//
 	// example:
 	//
@@ -50,7 +53,7 @@ type ReCreateCloudResourceRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// This parameter is required.
+	// Deprecated
 	//
 	// example:
 	//
@@ -64,6 +67,10 @@ func (s ReCreateCloudResourceRequest) String() string {
 
 func (s ReCreateCloudResourceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ReCreateCloudResourceRequest) GetCloudResourceId() *string {
+	return s.CloudResourceId
 }
 
 func (s *ReCreateCloudResourceRequest) GetInstanceId() *string {
@@ -88,6 +95,11 @@ func (s *ReCreateCloudResourceRequest) GetResourceManagerResourceGroupId() *stri
 
 func (s *ReCreateCloudResourceRequest) GetResourceProduct() *string {
 	return s.ResourceProduct
+}
+
+func (s *ReCreateCloudResourceRequest) SetCloudResourceId(v string) *ReCreateCloudResourceRequest {
+	s.CloudResourceId = &v
+	return s
 }
 
 func (s *ReCreateCloudResourceRequest) SetInstanceId(v string) *ReCreateCloudResourceRequest {

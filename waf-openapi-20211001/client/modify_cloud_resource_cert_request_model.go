@@ -11,6 +11,8 @@ type iModifyCloudResourceCertRequest interface {
 	GoString() string
 	SetCertificates(v []*ModifyCloudResourceCertRequestCertificates) *ModifyCloudResourceCertRequest
 	GetCertificates() []*ModifyCloudResourceCertRequestCertificates
+	SetCloudResourceId(v string) *ModifyCloudResourceCertRequest
+	GetCloudResourceId() *string
 	SetInstanceId(v string) *ModifyCloudResourceCertRequest
 	GetInstanceId() *string
 	SetPort(v int32) *ModifyCloudResourceCertRequest
@@ -25,14 +27,15 @@ type iModifyCloudResourceCertRequest interface {
 
 type ModifyCloudResourceCertRequest struct {
 	// This parameter is required.
-	Certificates []*ModifyCloudResourceCertRequestCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	Certificates    []*ModifyCloudResourceCertRequestCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	CloudResourceId *string                                       `json:"CloudResourceId,omitempty" xml:"CloudResourceId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v2_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// This parameter is required.
+	// Deprecated
 	//
 	// example:
 	//
@@ -44,13 +47,13 @@ type ModifyCloudResourceCertRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// This parameter is required.
+	// Deprecated
 	//
 	// example:
 	//
 	// lb-bp1*****jqnnqk5uj2p
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
-	// This parameter is required.
+	// Deprecated
 	//
 	// example:
 	//
@@ -68,6 +71,10 @@ func (s ModifyCloudResourceCertRequest) GoString() string {
 
 func (s *ModifyCloudResourceCertRequest) GetCertificates() []*ModifyCloudResourceCertRequestCertificates {
 	return s.Certificates
+}
+
+func (s *ModifyCloudResourceCertRequest) GetCloudResourceId() *string {
+	return s.CloudResourceId
 }
 
 func (s *ModifyCloudResourceCertRequest) GetInstanceId() *string {
@@ -92,6 +99,11 @@ func (s *ModifyCloudResourceCertRequest) GetResourceProduct() *string {
 
 func (s *ModifyCloudResourceCertRequest) SetCertificates(v []*ModifyCloudResourceCertRequestCertificates) *ModifyCloudResourceCertRequest {
 	s.Certificates = v
+	return s
+}
+
+func (s *ModifyCloudResourceCertRequest) SetCloudResourceId(v string) *ModifyCloudResourceCertRequest {
+	s.CloudResourceId = &v
 	return s
 }
 

@@ -9,6 +9,8 @@ type iDeleteCloudResourceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCloudResourceId(v string) *DeleteCloudResourceRequest
+	GetCloudResourceId() *string
 	SetInstanceId(v string) *DeleteCloudResourceRequest
 	GetInstanceId() *string
 	SetPort(v int32) *DeleteCloudResourceRequest
@@ -24,6 +26,7 @@ type iDeleteCloudResourceRequest interface {
 }
 
 type DeleteCloudResourceRequest struct {
+	CloudResourceId *string `json:"CloudResourceId,omitempty" xml:"CloudResourceId,omitempty"`
 	// The ID of the WAF instance.
 	//
 	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
@@ -34,9 +37,9 @@ type DeleteCloudResourceRequest struct {
 	//
 	// waf_v2_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The port of the resource that is added to WAF.
+	// Deprecated
 	//
-	// This parameter is required.
+	// The port of the resource that is added to WAF.
 	//
 	// example:
 	//
@@ -54,9 +57,9 @@ type DeleteCloudResourceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the instance.
+	// Deprecated
 	//
-	// This parameter is required.
+	// The ID of the instance.
 	//
 	// example:
 	//
@@ -68,6 +71,8 @@ type DeleteCloudResourceRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// Deprecated
+	//
 	// The cloud service. Valid values:
 	//
 	// 	- **clb4**: Layer 4 CLB.
@@ -75,8 +80,6 @@ type DeleteCloudResourceRequest struct {
 	// 	- **clb7**: Layer 7 CLB.
 	//
 	// 	- **ecs**: ECS.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -90,6 +93,10 @@ func (s DeleteCloudResourceRequest) String() string {
 
 func (s DeleteCloudResourceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteCloudResourceRequest) GetCloudResourceId() *string {
+	return s.CloudResourceId
 }
 
 func (s *DeleteCloudResourceRequest) GetInstanceId() *string {
@@ -114,6 +121,11 @@ func (s *DeleteCloudResourceRequest) GetResourceManagerResourceGroupId() *string
 
 func (s *DeleteCloudResourceRequest) GetResourceProduct() *string {
 	return s.ResourceProduct
+}
+
+func (s *DeleteCloudResourceRequest) SetCloudResourceId(v string) *DeleteCloudResourceRequest {
+	s.CloudResourceId = &v
+	return s
 }
 
 func (s *DeleteCloudResourceRequest) SetInstanceId(v string) *DeleteCloudResourceRequest {

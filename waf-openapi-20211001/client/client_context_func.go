@@ -1572,6 +1572,10 @@ func (client *Client) DeleteCloudResourceWithContext(ctx context.Context, reques
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudResourceId) {
+		query["CloudResourceId"] = request.CloudResourceId
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -11888,6 +11892,10 @@ func (client *Client) ModifyCloudResourceWithContext(ctx context.Context, tmpReq
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudResourceId) {
+		query["CloudResourceId"] = request.CloudResourceId
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -11950,6 +11958,10 @@ func (client *Client) ModifyCloudResourceCertWithContext(ctx context.Context, re
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Certificates) {
 		query["Certificates"] = request.Certificates
+	}
+
+	if !dara.IsNil(request.CloudResourceId) {
+		query["CloudResourceId"] = request.CloudResourceId
 	}
 
 	if !dara.IsNil(request.InstanceId) {
@@ -14048,6 +14060,10 @@ func (client *Client) ReCreateCloudResourceWithContext(ctx context.Context, requ
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudResourceId) {
+		query["CloudResourceId"] = request.CloudResourceId
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}

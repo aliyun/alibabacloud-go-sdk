@@ -96,7 +96,8 @@ type DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails struct 
 	// example:
 	//
 	// 1
-	CipherSuite *int32 `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	CipherSuite     *int32  `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	CloudResourceId *string `json:"CloudResourceId,omitempty" xml:"CloudResourceId,omitempty"`
 	// The custom cipher suites that you want to add. This parameter is available only if you set **CipherSuite*	- to **99**.
 	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
 	// Indicates whether to support TLS 1.3. Valid values:
@@ -255,6 +256,10 @@ func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) Ge
 	return s.CipherSuite
 }
 
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) GetCloudResourceId() *string {
+	return s.CloudResourceId
+}
+
 func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) GetCustomCiphers() []*string {
 	return s.CustomCiphers
 }
@@ -338,6 +343,11 @@ func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) Se
 
 func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetCipherSuite(v int32) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
 	s.CipherSuite = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetCloudResourceId(v string) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
+	s.CloudResourceId = &v
 	return s
 }
 

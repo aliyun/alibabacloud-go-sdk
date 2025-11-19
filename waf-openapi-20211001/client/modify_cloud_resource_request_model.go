@@ -9,6 +9,8 @@ type iModifyCloudResourceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCloudResourceId(v string) *ModifyCloudResourceRequest
+	GetCloudResourceId() *string
 	SetInstanceId(v string) *ModifyCloudResourceRequest
 	GetInstanceId() *string
 	SetListen(v *ModifyCloudResourceRequestListen) *ModifyCloudResourceRequest
@@ -22,6 +24,7 @@ type iModifyCloudResourceRequest interface {
 }
 
 type ModifyCloudResourceRequest struct {
+	CloudResourceId *string `json:"CloudResourceId,omitempty" xml:"CloudResourceId,omitempty"`
 	// The ID of the WAF instance.
 	//
 	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
@@ -66,6 +69,10 @@ func (s ModifyCloudResourceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyCloudResourceRequest) GetCloudResourceId() *string {
+	return s.CloudResourceId
+}
+
 func (s *ModifyCloudResourceRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -84,6 +91,11 @@ func (s *ModifyCloudResourceRequest) GetRegionId() *string {
 
 func (s *ModifyCloudResourceRequest) GetResourceManagerResourceGroupId() *string {
 	return s.ResourceManagerResourceGroupId
+}
+
+func (s *ModifyCloudResourceRequest) SetCloudResourceId(v string) *ModifyCloudResourceRequest {
+	s.CloudResourceId = &v
+	return s
 }
 
 func (s *ModifyCloudResourceRequest) SetInstanceId(v string) *ModifyCloudResourceRequest {
@@ -165,9 +177,9 @@ type ModifyCloudResourceRequestListen struct {
 	//
 	// true
 	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
-	// The port of the cloud service instance that is added to WAF.
+	// Deprecated
 	//
-	// This parameter is required.
+	// The port of the cloud service instance that is added to WAF.
 	//
 	// example:
 	//
@@ -185,14 +197,16 @@ type ModifyCloudResourceRequestListen struct {
 	//
 	// http
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The ID of the cloud service instance that is added to WAF.
+	// Deprecated
 	//
-	// This parameter is required.
+	// The ID of the cloud service instance that is added to WAF.
 	//
 	// example:
 	//
 	// lb-***
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// Deprecated
+	//
 	// The type of the cloud service. Valid values:
 	//
 	// 	- **clb4**: Layer 4 Classic Load Balancer (CLB).
@@ -202,8 +216,6 @@ type ModifyCloudResourceRequestListen struct {
 	// 	- **ecs**: Elastic Compute Service (ECS).
 	//
 	// 	- **nlb**: Network Load Balancer (NLB).
-	//
-	// This parameter is required.
 	//
 	// example:
 	//

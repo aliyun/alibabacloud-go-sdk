@@ -65,7 +65,8 @@ func (s *DescribeAbnormalCloudResourcesResponseBody) Validate() error {
 }
 
 type DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources struct {
-	Details []*DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	CloudResourceId *string                                                                    `json:"CloudResourceId,omitempty" xml:"CloudResourceId,omitempty"`
+	Details         []*DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
 	// example:
 	//
 	// CertExpired
@@ -96,6 +97,10 @@ func (s DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources) GoStri
 	return s.String()
 }
 
+func (s *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources) GetCloudResourceId() *string {
+	return s.CloudResourceId
+}
+
 func (s *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources) GetDetails() []*DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails {
 	return s.Details
 }
@@ -118,6 +123,11 @@ func (s *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources) GetRe
 
 func (s *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources) GetResourceProduct() *string {
 	return s.ResourceProduct
+}
+
+func (s *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources) SetCloudResourceId(v string) *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources {
+	s.CloudResourceId = &v
+	return s
 }
 
 func (s *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources) SetDetails(v []*DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails) *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources {
